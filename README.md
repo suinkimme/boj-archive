@@ -6,8 +6,11 @@
 
 | 파일 | 내용 | 크기 |
 |------|------|------|
-| [problems.tar.gz](../../releases/latest) | 전체 문제 JSON (33,828개) | ~50MB |
-| [images.tar.gz](../../releases/latest) | 문제에 포함된 이미지 | ~590MB |
+| [problems.tar.gz](../../releases/latest) | 전체 문제 JSON + 이미지 (33,828개) | 560MB |
+
+```bash
+tar -xzf problems.tar.gz
+```
 
 ## 빠른 탐색
 
@@ -29,9 +32,23 @@
 ]
 ```
 
+## 폴더 구조
+
+```
+problems/
+├── 1000/
+│   └── problem.json
+├── 1003/
+│   └── problem.json
+├── 13232/
+│   ├── problem.json
+│   └── 1.png          ← 이미지가 있는 경우 같은 폴더에 저장
+└── ...
+```
+
 ## 문제 JSON 스키마
 
-`problems/{id}.json` 파일 구조:
+`problems/{id}/problem.json` 파일 구조:
 
 ```json
 {
@@ -55,6 +72,8 @@
 }
 ```
 
+이미지 src는 `problem.json`과 같은 폴더 기준 상대경로입니다. (예: `src="1.png"`)
+
 ### `level` 난이도 티어 (solved.ac 기준)
 
 | 값 | 티어 |
@@ -66,21 +85,6 @@
 | 16–20 | Platinum V–I |
 | 21–25 | Diamond V–I |
 | 26–30 | Ruby V–I |
-
-## 이미지 경로
-
-문제 JSON 내 이미지 src는 `images/{problem_id}/{n}.{ext}` 형태의 상대경로로 저장되어 있습니다.
-
-```
-data/
-├── problems/
-│   ├── 1000.json
-│   └── ...
-└── images/
-    ├── 1000/
-    │   └── 1.png
-    └── ...
-```
 
 ## 저작권 고지
 
