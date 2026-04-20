@@ -11,7 +11,47 @@
     gtag('js', new Date());
     gtag('config', 'G-SC07CYN68V');
   </script>
-  <title>BOJ Archive</title>
+  <title>BOJ Archive — 백준 온라인 저지 문제 아카이브</title>
+
+  <!-- SEO -->
+  <meta name="description" content="백준 온라인 저지(acmicpc.net) 서비스 종료에 따라 수집한 33,828개 알고리즘 문제 아카이브. 난이도·태그별 검색, 문제 본문 전체 열람 가능.">
+  <meta name="keywords" content="백준,BOJ,알고리즘,코딩테스트,문제,아카이브,acmicpc,자료구조,그래프,DP,동적계획법,solved.ac">
+  <meta name="author" content="suinkimme">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://suinkimme.github.io/boj-archive/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://suinkimme.github.io/boj-archive/">
+  <meta property="og:title" content="BOJ Archive — 백준 온라인 저지 문제 아카이브">
+  <meta property="og:description" content="백준 온라인 저지 33,828개 문제 전체 아카이브. 난이도·태그별 검색, 문제 본문 전체 열람 가능.">
+  <meta property="og:image" content="https://suinkimme.github.io/boj-archive/og-image.svg">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="BOJ Archive">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BOJ Archive — 백준 온라인 저지 문제 아카이브">
+  <meta name="twitter:description" content="백준 온라인 저지 33,828개 문제 전체 아카이브. 난이도·태그별 검색, 문제 본문 전체 열람 가능.">
+  <meta name="twitter:image" content="https://suinkimme.github.io/boj-archive/og-image.svg">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BOJ Archive",
+    "description": "백준 온라인 저지 알고리즘 문제 아카이브",
+    "url": "https://suinkimme.github.io/boj-archive/",
+    "inLanguage": "ko",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://suinkimme.github.io/boj-archive/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -473,11 +513,29 @@ fetch('index.json')
       sel.appendChild(o);
     });
 
+    // URL 파라미터로 초기 검색어 적용 (?q=검색어)
+    const params = new URLSearchParams(location.search);
+    const qParam = params.get('q');
+    if (qParam) {
+      query = qParam;
+      document.getElementById('search').value = qParam;
+    }
+
     render();
   })
   .catch(() => {
     document.getElementById('content').innerHTML = '<div class="empty">index.json 로딩 실패</div>';
   });
+
+// 검색 시 URL 업데이트 (뒤로가기/북마크 지원)
+const origApplyFilter = applyFilter;
+function applyFilter() {
+  origApplyFilter();
+  const params = new URLSearchParams();
+  if (query) params.set('q', query);
+  const newUrl = params.toString() ? `?${params}` : location.pathname;
+  history.replaceState(null, '', newUrl);
+}
 </script>
 </body>
 </html>
