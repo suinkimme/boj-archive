@@ -81,10 +81,18 @@
       background: rgba(15,23,42,0.95); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       padding: 0 24px;
-      height: 60px; display: flex; align-items: center; gap: 20px;
+      height: 60px; display: flex; align-items: center; gap: 16px;
     }
-    .logo { font-size: 18px; font-weight: 700; color: var(--text); white-space: nowrap; }
-    .logo span { color: var(--accent); }
+    .site-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+    .site-logo img { width: 28px; height: 28px; }
+    .github-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 7px; font-size: 13px; font-weight: 500;
+      color: var(--text-muted); background: var(--surface2);
+      border: 1px solid var(--border); text-decoration: none;
+      transition: all .15s; white-space: nowrap; flex-shrink: 0;
+    }
+    .github-btn:hover { color: var(--text); border-color: var(--text-muted); }
     #search {
       flex: 1; max-width: 480px;
       background: var(--surface); border: 1px solid var(--border);
@@ -253,9 +261,15 @@
 <body>
 
 <header>
-  <div class="logo">BOJ <span>Archive</span></div>
+  <a class="site-logo" href="." aria-label="BOJ Archive">
+    <img src="favicon.svg" alt="BOJ Archive">
+  </a>
   <input id="search" type="text" placeholder="문제 번호 또는 제목 검색...">
   <div class="header-stat" id="stat"></div>
+  <a class="github-btn" href="https://github.com/suinkimme/boj-archive" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+    GitHub
+  </a>
 </header>
 
 <div class="filters">
@@ -446,11 +460,11 @@ function renderModal(p) {
       ${tags ? `<div class="modal-tags">${tags}</div>` : ''}
     </div>
     <hr class="modal-divider">
-    ${section('문제', p.description)}
-    ${section('입력', p.input)}
-    ${section('출력', p.output)}
+    ${section('문제', p.description, p.id)}
+    ${section('입력', p.input, p.id)}
+    ${section('출력', p.output, p.id)}
     ${samples ? `<div class="modal-section"><div class="modal-section-title">예제</div>${samples}</div>` : ''}
-    ${p.hint ? section('힌트', p.hint) : ''}
+    ${p.hint ? section('힌트', p.hint, p.id) : ''}
     ${p.source ? `<div class="modal-section"><div class="modal-section-title">출처</div><div style="color:var(--text-muted);font-size:14px">${escHtml(p.source)}</div></div>` : ''}
   `;
 
@@ -465,9 +479,14 @@ function renderModal(p) {
   });
 }
 
-function section(title, html) {
+function fixImgPaths(html, id) {
+  return html.replace(/(<img\s[^>]*src=["'])(?!https?:\/\/|\/\/|problems\/)(.*?)(["'])/gi,
+    (_, pre, src, suf) => `${pre}problems/${id}/${src}${suf}`);
+}
+
+function section(title, html, id) {
   if (!html) return '';
-  return `<div class="modal-section"><div class="modal-section-title">${title}</div><div class="problem-content">${html}</div></div>`;
+  return `<div class="modal-section"><div class="modal-section-title">${title}</div><div class="problem-content">${fixImgPaths(html, id)}</div></div>`;
 }
 
 function escHtml(s) {
