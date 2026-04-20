@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOJ Archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface2: #273449;
+      --border: #334155;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --bronze: #ad5600;
+      --silver: #435f7a;
+      --gold: #d97706;
+      --platinum: #059669;
+      --diamond: #0284c7;
+      --ruby: #e11d48;
+      --unrated: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,23,42,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px; display: flex; align-items: center; gap: 20px;
+    }
+    .logo { font-size: 18px; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .logo span { color: var(--accent); }
+    #search {
+      flex: 1; max-width: 480px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 14px;
+      color: var(--text); font-size: 14px; font-family: 'Inter', sans-serif;
+      outline: none; transition: border-color .2s;
+    }
+    #search:focus { border-color: var(--accent); }
+    #search::placeholder { color: var(--text-muted); }
+    .header-stat { color: var(--text-muted); font-size: 13px; white-space: nowrap; margin-left: auto; }
+
+    /* Filters */
+    .filters {
+      padding: 12px 24px; background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    }
+    .filter-label { font-size: 12px; color: var(--text-muted); margin-right: 4px; }
+    .tier-btn {
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+      cursor: pointer; border: 2px solid transparent; transition: all .15s;
+      background: var(--surface2);
+    }
+    .tier-btn.active, .tier-btn:hover { opacity: 1; }
+    .tier-btn:not(.active) { opacity: 0.6; }
+    .divider { width: 1px; height: 20px; background: var(--border); margin: 0 4px; }
+    #tag-select {
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text); border-radius: 6px; padding: 4px 8px;
+      font-size: 12px; cursor: pointer; outline: none;
+    }
+    .clear-btn {
+      padding: 4px 10px; border-radius: 6px; font-size: 12px;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text-muted); cursor: pointer;
+    }
+    .clear-btn:hover { border-color: var(--text-muted); color: var(--text); }
+
+    /* Main */
+    main { max-width: 1200px; margin: 0 auto; padding: 20px 24px; }
+
+    /* Problem Table */
+    .problem-table { width: 100%; border-collapse: collapse; }
+    .problem-table th {
+      text-align: left; padding: 10px 14px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .05em; color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .problem-table th:last-child { text-align: right; }
+    .problem-row {
+      border-bottom: 1px solid var(--border);
+      cursor: pointer; transition: background .1s;
+    }
+    .problem-row:hover { background: var(--surface); }
+    .problem-row td { padding: 12px 14px; font-size: 14px; }
+    .problem-num { color: var(--text-muted); font-size: 13px; font-family: 'JetBrains Mono', monospace; }
+    .problem-title { font-weight: 500; }
+    .tier-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 12px;
+      font-size: 11px; font-weight: 700; white-space: nowrap;
+    }
+    .tag-list { display: flex; gap: 4px; flex-wrap: wrap; }
+    .tag {
+      padding: 2px 8px; border-radius: 12px; font-size: 11px;
+      background: var(--surface2); color: var(--text-muted); white-space: nowrap;
+    }
+    .accept-count { text-align: right; color: var(--text-muted); font-size: 13px; font-family: 'JetBrains Mono', monospace; }
+
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; padding: 24px 0; }
+    .page-btn {
+      padding: 6px 12px; border-radius: 6px; font-size: 14px; cursor: pointer;
+      background: var(--surface); border: 1px solid var(--border); color: var(--text);
+      transition: all .1s;
+    }
+    .page-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .page-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+    .page-btn:disabled { opacity: 0.3; cursor: default; }
+    .page-info { color: var(--text-muted); font-size: 14px; }
+
+    /* Modal */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.7); backdrop-filter: blur(4px);
+      overflow-y: auto; padding: 40px 20px;
+    }
+    .modal-overlay.open { display: flex; justify-content: center; align-items: flex-start; }
+    .modal {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; width: 100%; max-width: 860px;
+      padding: 32px; position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text-muted); border-radius: 6px;
+      width: 32px; height: 32px; font-size: 18px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .modal-close:hover { color: var(--text); }
+    .modal-header { margin-bottom: 20px; }
+    .modal-num { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+    .modal-title { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    .modal-meta { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .meta-item { font-size: 13px; color: var(--text-muted); }
+    .meta-item span { color: var(--text); }
+    .modal-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .modal-tag {
+      padding: 3px 10px; border-radius: 12px; font-size: 12px;
+      background: var(--surface2); color: var(--text-muted);
+      cursor: pointer; border: 1px solid var(--border);
+    }
+    .modal-tag:hover { border-color: var(--accent); color: var(--accent); }
+    .modal-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+    .modal-section-title {
+      font-size: 13px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .05em; color: var(--text-muted); margin-bottom: 10px;
+    }
+    .modal-section { margin-bottom: 24px; }
+
+    /* Problem HTML content */
+    .problem-content { line-height: 1.8; font-size: 15px; }
+    .problem-content p { margin-bottom: 12px; }
+    .problem-content pre {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; padding: 12px 16px;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      overflow-x: auto; margin-bottom: 12px;
+    }
+    .problem-content code {
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      background: var(--bg); padding: 1px 5px; border-radius: 4px;
+    }
+    .problem-content img { max-width: 100%; height: auto; border-radius: 6px; }
+    .problem-content img[src] { display: block; margin: 12px 0; }
+    .problem-content table { border-collapse: collapse; margin-bottom: 12px; }
+    .problem-content td, .problem-content th {
+      border: 1px solid var(--border); padding: 6px 12px; font-size: 14px;
+    }
+    .problem-content ul, .problem-content ol { padding-left: 20px; margin-bottom: 12px; }
+
+    /* Sample I/O */
+    .sample-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .sample-box { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .sample-box-header { padding: 6px 12px; font-size: 11px; font-weight: 600; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .sample-box pre { padding: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; white-space: pre-wrap; word-break: break-all; }
+
+    /* Loading / Error */
+    .loading { text-align: center; padding: 60px; color: var(--text-muted); }
+    .spinner {
+      width: 32px; height: 32px; border: 3px solid var(--border);
+      border-top-color: var(--accent); border-radius: 50%;
+      animation: spin .7s linear infinite; margin: 0 auto 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .empty { text-align: center; padding: 60px; color: var(--text-muted); font-size: 15px; }
+
+    @media (max-width: 640px) {
+      .tag-list, .accept-count { display: none; }
+      .sample-grid { grid-template-columns: 1fr; }
+      .modal { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BOJ <span>Archive</span></div>
+  <input id="search" type="text" placeholder="문제 번호 또는 제목 검색...">
+  <div class="header-stat" id="stat"></div>
+</header>
+
+<div class="filters">
+  <span class="filter-label">난이도</span>
+  <button class="tier-btn active" data-tier="all" style="color:#e2e8f0">전체</button>
+  <button class="tier-btn" data-tier="0" style="color:var(--unrated)">Unrated</button>
+  <button class="tier-btn" data-tier="1-5" style="color:var(--bronze)">Bronze</button>
+  <button class="tier-btn" data-tier="6-10" style="color:var(--silver)">Silver</button>
+  <button class="tier-btn" data-tier="11-15" style="color:var(--gold)">Gold</button>
+  <button class="tier-btn" data-tier="16-20" style="color:var(--platinum)">Platinum</button>
+  <button class="tier-btn" data-tier="21-25" style="color:var(--diamond)">Diamond</button>
+  <button class="tier-btn" data-tier="26-30" style="color:var(--ruby)">Ruby</button>
+  <div class="divider"></div>
+  <span class="filter-label">태그</span>
+  <select id="tag-select"><option value="">전체 태그</option></select>
+  <button class="clear-btn" id="clear-btn">초기화</button>
+</div>
+
+<main>
+  <div id="content">
+    <div class="loading"><div class="spinner"></div>문제 목록 로딩 중...</div>
+  </div>
+  <div class="pagination" id="pagination"></div>
+</main>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close">×</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+const PER_PAGE = 50;
+let all = [], filtered = [], page = 1;
+let tierFilter = 'all', tagFilter = '', query = '';
+
+const TIER_COLORS = ['#64748b','#ad5600','#ad5600','#ad5600','#ad5600','#ad5600','#435f7a','#435f7a','#435f7a','#435f7a','#435f7a','#d97706','#d97706','#d97706','#d97706','#d97706','#059669','#059669','#059669','#059669','#059669','#0284c7','#0284c7','#0284c7','#0284c7','#0284c7','#e11d48','#e11d48','#e11d48','#e11d48','#e11d48'];
+const TIER_NAMES = ['Unrated','Bronze V','Bronze IV','Bronze III','Bronze II','Bronze I','Silver V','Silver IV','Silver III','Silver II','Silver I','Gold V','Gold IV','Gold III','Gold II','Gold I','Platinum V','Platinum IV','Platinum III','Platinum II','Platinum I','Diamond V','Diamond IV','Diamond III','Diamond II','Diamond I','Ruby V','Ruby IV','Ruby III','Ruby II','Ruby I'];
+
+function tierBadge(level) {
+  const name = TIER_NAMES[level] ?? 'Unrated';
+  const color = TIER_COLORS[level] ?? '#64748b';
+  return `<span class="tier-badge" style="color:${color};background:${color}18;border:1px solid ${color}44">${name}</span>`;
+}
+
+function fmtCount(n) {
+  if (!n) return '-';
+  return n >= 10000 ? (n/1000).toFixed(0)+'k' : n.toLocaleString();
+}
+
+function matchesTier(level, f) {
+  if (f === 'all') return true;
+  if (f === '0') return level === 0 || level == null;
+  const [a, b] = f.split('-').map(Number);
+  return level >= a && level <= b;
+}
+
+function applyFilter() {
+  filtered = all.filter(p => {
+    if (!matchesTier(p.level, tierFilter)) return false;
+    if (tagFilter && !p.tags?.includes(tagFilter)) return false;
+    if (query) {
+      const q = query.toLowerCase();
+      return String(p.id).includes(q) || p.title?.toLowerCase().includes(q);
+    }
+    return true;
+  });
+  page = 1;
+  render();
+}
+
+function render() {
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / PER_PAGE);
+  const start = (page - 1) * PER_PAGE;
+  const items = filtered.slice(start, start + PER_PAGE);
+
+  document.getElementById('stat').textContent = `${total.toLocaleString()} 문제`;
+
+  if (items.length === 0) {
+    document.getElementById('content').innerHTML = '<div class="empty">검색 결과가 없습니다.</div>';
+    document.getElementById('pagination').innerHTML = '';
+    return;
+  }
+
+  const rows = items.map(p => `
+    <tr class="problem-row" data-id="${p.id}">
+      <td class="problem-num">#${p.id}</td>
+      <td class="problem-title">${escHtml(p.title ?? '')}</td>
+      <td>${tierBadge(p.level ?? 0)}</td>
+      <td class="tag-list">${(p.tags ?? []).slice(0,3).map(t => `<span class="tag">${t}</span>`).join('')}</td>
+      <td class="accept-count">${fmtCount(p.accepted_user_count)}</td>
+    </tr>`).join('');
+
+  document.getElementById('content').innerHTML = `
+    <table class="problem-table">
+      <thead><tr>
+        <th style="width:80px">번호</th>
+        <th>제목</th>
+        <th style="width:120px">난이도</th>
+        <th style="width:200px">태그</th>
+        <th style="width:90px">정답자</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+
+  // Pagination
+  const pages = [];
+  pages.push(`<button class="page-btn" ${page===1?'disabled':''} id="prev-btn">‹</button>`);
+  let lo = Math.max(1, page-2), hi = Math.min(totalPages, page+2);
+  if (lo > 1) { pages.push(`<button class="page-btn" data-p="1">1</button>`); if (lo > 2) pages.push(`<span class="page-info">…</span>`); }
+  for (let i = lo; i <= hi; i++) pages.push(`<button class="page-btn${i===page?' active':''}" data-p="${i}">${i}</button>`);
+  if (hi < totalPages) { if (hi < totalPages-1) pages.push(`<span class="page-info">…</span>`); pages.push(`<button class="page-btn" data-p="${totalPages}">${totalPages}</button>`); }
+  pages.push(`<button class="page-btn" ${page===totalPages?'disabled':''} id="next-btn">›</button>`);
+  pages.push(`<span class="page-info">${start+1}–${Math.min(start+PER_PAGE,total)} / ${total.toLocaleString()}</span>`);
+  document.getElementById('pagination').innerHTML = pages.join('');
+
+  // Row click
+  document.querySelectorAll('.problem-row').forEach(r => {
+    r.addEventListener('click', () => openProblem(+r.dataset.id));
+  });
+  document.getElementById('prev-btn')?.addEventListener('click', () => { page--; render(); scrollTo(0,0); });
+  document.getElementById('next-btn')?.addEventListener('click', () => { page++; render(); scrollTo(0,0); });
+  document.querySelectorAll('[data-p]').forEach(b => {
+    b.addEventListener('click', () => { page = +b.dataset.p; render(); scrollTo(0,0); });
+  });
+}
+
+async function openProblem(id) {
+  document.getElementById('modal-content').innerHTML = '<div class="loading"><div class="spinner"></div>로딩 중...</div>';
+  document.getElementById('modal-overlay').classList.add('open');
+
+  try {
+    const res = await fetch(`problems/${id}/problem.json`);
+    if (!res.ok) throw new Error('not found');
+    const p = await res.json();
+    renderModal(p);
+  } catch {
+    document.getElementById('modal-content').innerHTML = '<div class="empty">문제 데이터를 불러올 수 없습니다.</div>';
+  }
+}
+
+function renderModal(p) {
+  const samples = (p.samples ?? []).map((s, i) => `
+    <div class="sample-grid" style="margin-bottom:12px">
+      <div class="sample-box">
+        <div class="sample-box-header">예제 입력 ${i+1}</div>
+        <pre>${escHtml(s.input ?? '')}</pre>
+      </div>
+      <div class="sample-box">
+        <div class="sample-box-header">예제 출력 ${i+1}</div>
+        <pre>${escHtml(s.output ?? '')}</pre>
+      </div>
+    </div>`).join('');
+
+  const tags = (p.tags ?? []).map(t =>
+    `<span class="modal-tag" data-tag="${t}">${t}</span>`).join('');
+
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-header">
+      <div class="modal-num">문제 #${p.id}</div>
+      <div class="modal-title">${escHtml(p.title ?? '')}</div>
+      <div class="modal-meta">
+        ${tierBadge(p.level ?? 0)}
+        ${p.time_limit ? `<span class="meta-item">시간 <span>${p.time_limit}</span></span>` : ''}
+        ${p.memory_limit ? `<span class="meta-item">메모리 <span>${p.memory_limit}</span></span>` : ''}
+        ${p.accepted_user_count ? `<span class="meta-item">정답자 <span>${p.accepted_user_count.toLocaleString()}</span></span>` : ''}
+        ${p.average_tries ? `<span class="meta-item">평균 시도 <span>${p.average_tries.toFixed(1)}</span></span>` : ''}
+      </div>
+      ${tags ? `<div class="modal-tags">${tags}</div>` : ''}
+    </div>
+    <hr class="modal-divider">
+    ${section('문제', p.description)}
+    ${section('입력', p.input)}
+    ${section('출력', p.output)}
+    ${samples ? `<div class="modal-section"><div class="modal-section-title">예제</div>${samples}</div>` : ''}
+    ${p.hint ? section('힌트', p.hint) : ''}
+    ${p.source ? `<div class="modal-section"><div class="modal-section-title">출처</div><div style="color:var(--text-muted);font-size:14px">${escHtml(p.source)}</div></div>` : ''}
+  `;
+
+  // Tag click → filter
+  document.querySelectorAll('.modal-tag').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('tag-select').value = el.dataset.tag;
+      tagFilter = el.dataset.tag;
+      closeModal();
+      applyFilter();
+    });
+  });
+}
+
+function section(title, html) {
+  if (!html) return '';
+  return `<div class="modal-section"><div class="modal-section-title">${title}</div><div class="problem-content">${html}</div></div>`;
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+
+// Init
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+let searchTimer;
+document.getElementById('search').addEventListener('input', e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => { query = e.target.value.trim(); applyFilter(); }, 200);
+});
+
+document.querySelectorAll('.tier-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    tierFilter = btn.dataset.tier;
+    applyFilter();
+  });
+});
+
+document.getElementById('tag-select').addEventListener('change', e => {
+  tagFilter = e.target.value;
+  applyFilter();
+});
+
+document.getElementById('clear-btn').addEventListener('click', () => {
+  query = ''; tierFilter = 'all'; tagFilter = '';
+  document.getElementById('search').value = '';
+  document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('[data-tier="all"]').classList.add('active');
+  document.getElementById('tag-select').value = '';
+  applyFilter();
+});
+
+// Load index.json
+fetch('index.json')
+  .then(r => r.json())
+  .then(data => {
+    all = data;
+    filtered = data;
+
+    // Build tag list
+    const tagCount = {};
+    data.forEach(p => (p.tags ?? []).forEach(t => tagCount[t] = (tagCount[t]||0)+1));
+    const topTags = Object.entries(tagCount).sort((a,b)=>b[1]-a[1]).map(([t])=>t);
+    const sel = document.getElementById('tag-select');
+    topTags.forEach(t => {
+      const o = document.createElement('option');
+      o.value = t; o.textContent = `${t} (${tagCount[t]})`;
+      sel.appendChild(o);
+    });
+
+    render();
+  })
+  .catch(() => {
+    document.getElementById('content').innerHTML = '<div class="empty">index.json 로딩 실패</div>';
+  });
+</script>
+</body>
+</html>
