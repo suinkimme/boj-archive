@@ -1,0 +1,38 @@
+{
+  "id": 2385,
+  "title": "Secret Sharing",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>일반적으로, 대부분의 &nbsp;암호알고리즘은 단 하나만의 암호 키를 사용해서 암호화 파일을 해독한다. 만약 공격자가 해킹으로 암호 키를 취득하게 되면, 정보가 샐 위험이 있게 된다. 이를 막기 위해 고안된 것이 &ldquo;Secret sharing&rdquo;이란 기술이다.</p>\r\n\r\n<p>&ldquo;Secret Sharing&ldquo;은 암호 키를 그룹에 있는 여러 사람에게 키를 나눠서 저장하는 방법이다.&rdquo;Secret sharing&ldquo; 에서는 암호 키를 N개의 조각으로 분리하고 각각의 조각들은 share라고 부른다.</p>\r\n\r\n<p>N개의 모든 조각을 얻지 못하면 암호 키를 복원할 수 없다. &nbsp;예를 들면 &#39;password&#39;란 암호 키를 4개의 share들(pa, ss, wo, rd)로 나눌 때, 모든 share들이 있어야만 &lsquo;password&rsquo;란 암호 키를 복원해 낼 수 있다. 그리고, 암호를 복원할 때에는 모든 share뿐 아니라 share의 순서를 알아야만 한다. 만약 순서를 모른다면 &lsquo;wosspard&#39; 나 &rsquo;pawordss&#39; 같은 잘못된 암호 키를 복원 해낼 수도 있기 때문이다.</p>\r\n\r\n<p>최근, 새로운 암호 알고리즘에서는 매우 긴 10진수를 암호 키로 쓴다. 암호 키는 0이 아닌 숫자로 시작 되며, 그 암호 키는 여러 개의 share들로 분할된다. 이 share들의 순서는 매우 간단한 방법으로 되어있다. 모든 share를 써서 만들 수 있는 모든 키중 가장 작은 값이 암호 키가 되는 것이다. 예를 들면 2, 4, 11, 33, 00 이라는 5개의 share가 있다면 암호 키는 11002334 가 된다. (00112334 는 0으로 시작하기 때문에 암호 키가 될 수 없다).</p>\r\n\r\n<p>N개의 share들로부터 암호 키를 복원해내는 프로그램을 작성하여 보자.</p>\r\n",
+  "input": "<p>첫 번째 줄에는 share들의 개수 N(1 &le; N &le; 100)이 주어지고, 다음 줄에는 5자리 이하인 N개의 조각들이 입력으로 주어진다.</p>\r\n",
+  "output": "<p>암호 키를 한 줄에 출력한다. 단, 위의 조건을 만족하는 암호 키가 존재하지 않는다면 &ldquo;INVALID&rdquo;를 출력한다.﻿</p>\r\n",
+  "samples": [
+    {
+      "input": "5\n2 4 11 33 00\n",
+      "output": "11002334\n"
+    },
+    {
+      "input": "3\n20 202 2020\n",
+      "output": "202020202\n"
+    },
+    {
+      "input": "6\n3 4 5 3 44 555\n",
+      "output": "334445555\n"
+    },
+    {
+      "input": "3\n0 00 007\n",
+      "output": "INVALID\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2004, bachjs, ntopia",
+  "level": 18,
+  "tags": [
+    "greedy",
+    "string",
+    "sorting"
+  ],
+  "accepted_user_count": 247,
+  "submission_count": null,
+  "average_tries": 4.8703999519348145
+}

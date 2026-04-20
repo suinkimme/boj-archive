@@ -1,0 +1,24 @@
+{
+  "id": 5763,
+  "title": "Magic Trick",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A magician invented a new card trick and presented it in the prestigious American Conference of Magicians (ACM). The trick was so nice it received the ‘Best Magic Award’ at the conference. The trick requires three participants: the magician himself, a spectator and an assistant. During the trick the spectator is asked to shuffle a deck of 52 cards and pick randomly 5 cards out of the deck. The five cards are given to the assistant (without the magician seeing the cards) who looks at them and shows four of the five cards one by one to the magician. After seeing the four cards the magician magically guesses the missing fifth card!</p>\n<p>The trick works because once the assistant has the five cards he can always choose four of them and use those to ‘code’ information about the fifth one. The code is based on an ordering of the cards. Cards are ordered first by their suits and then by their face value. We will use the following order:</p>\n<ul>\n<li>H &lt; C &lt; D &lt; S (Hearts, Clubs, Diamonds, Spades) for suits; and</li>\n<li>1 &lt; 2 &lt; ... &lt; 9 &lt; T &lt; J &lt; Q &lt; K for face values, where T, J, Q and K stand for Ten, Jack, Queen and King, respectively.</li>\n</ul>\n<p>Assume the spectator chose the cards JD, 8S, 7H, 8C, QH (Jack of Diamonds, 8 of Spades, 7 of Hearts, 8 of Clubs and Queen of Hearts). The strategy for the assistant is the following:</p>\n<ul>\n<li>Find a suit s which appears at least twice in the set of chosen cards (Hearts in the example). If more than one suit appears two times, choose the one with lowest order.</li>\n<li>Hide the card x with suit s that is at most six positions ahead in the cyclic order 1 &lt; 2 &lt; ... &lt; T &lt; J &lt; Q &lt; K &lt; 1 &lt; 2 &lt; ... of another card y of the same suit. That is always possible since there are only thirteen cards with the same suit (in the example the assistant hides QH). If two or more cards satisfy the criteria above, choose the one with the smallest face value.</li>\n<li>Show y to the magician. At this point the magician knows the suit of the hidden card, and also knows that the face value of the hidden card x is at most six positions in front of the face value of y.</li>\n<li>With the three cards the assistant has left, he must code a number between 1 and 6. That can be done as follows. Say the three cards z1, z2, z3 are in the order z1 &lt; z2 &lt; z3. Each of six possible orders in which these three cards can be shown may be interpreted to convey information about a number.\n\t<ul>\n<li>z1, z2, z3 means 1,</li>\n<li>z1, z3, z2 means 2,</li>\n<li>z2, z1, z3 means 3,</li>\n<li>z2, z3, z1 means 4,</li>\n<li>z3, z1, z2 means 5,</li>\n<li>z3, z2, z1 means 6.</li>\n</ul>\n</li>\n</ul>\n<p>In this way, once the magician is shown the four cards one by one, he has enough information to “magically” guess the fifth one!</p>\n<p>Your job is to develop a program that, given the four cards shown by the assistant, informs the magician which is the hidden card.</p>",
+  "input": "<p>The input contains several test cases. The first line in the input contains an integer N specifying the number of test cases (1 ≤ N ≤ 10000). Each test case is composed by one line, which contains the description of the four cards, separated by a space, in the order they were presented by the assistant.</p>",
+  "output": "<p>For each test case in the input your program must produce one line of output, containing the description of the hidden card.</p>",
+  "samples": [
+    {
+      "input": "2\n7H 8S 8C JD\nTC 2D 1S 5H\n",
+      "output": "QH\n1C\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, South America Regional Contests 2004",
+  "level": 8,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.0714000463485718
+}

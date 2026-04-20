@@ -1,0 +1,35 @@
+{
+  "id": 27418,
+  "title": "Secure the Top Secret",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are responsible for the security of ICPC (the Institute for Computer Program Critiques). The institute is in a one-storied building. Its rectangular floor is partitioned into square sections of the same size in a grid form. Two sections are said to be adjacent if they share an edge. Some of the sections in the building are blocked. All the sides of a blocked section are walled up and no entry is possible. All the other sections have no walls in between, and adjacent sections normally intercommunicate. However, roll-down shutters are equipped between some of the adjacent sections, so that closing such a shutter makes direct moves between the two sections impossible.</p>\n<p>The top-secret research is being conducted in one of the outermost sections of the building. The section is called the top-secret section. The building has only one entrance at one of its outermost sections, which should be the only entry to the building. However, you have noticed that a window of one of the outermost sections is so fragile that it may allow trespassers to enter the building.</p>\n<p>You must secure the top secret from trespassers. To do so, you may have to close some of the shutters so that breaking two or more closed shutters is required to make a route from the section with the fragile window to the top-secret section. In addition, there should exist at least one route from the entrance section to the top-secret section with no shutters closed on it.</p>\n<p>You are to write a program that finds the minimum number of shutters to close to secure the top secret.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<blockquote>\n<p>$n$ $m$</p>\n<p>$s_1$</p>\n<p>$\\vdots$</p>\n<p>$s_n$</p>\n<p>$k$</p>\n<p>$r_1$ $c_1$ $d_1$</p>\n<p>$\\vdots$</p>\n<p>$r_k$ $c_k$ $d_k$</p>\n</blockquote>\n<p>$n$ and $m$ are integers between $2$ and $100$, inclusive, representing that the building floor has $n$ rows and $m$ columns of sections. The section in the $j$-th column of the $i$-th row is identified as section $(i, j)$. The $i$-th line of the following $n$ lines has a string $s_i$ of length $m$ describing the sections in the $i$-th row. Each character of $s_i$ is one of <code>.</code>, <code>#</code>, <code>S</code>, <code>T</code>, and <code>U</code>. If the $j$-th character of $s_i$ is <code>#</code>, section $(i, j)$ is blocked and is impassable; otherwise, the section is passable. The $j$-th character of $s_i$ being <code>S</code> means that section $(i, j)$ is the entrance section, <code>T</code> means the top-secret section, and <code>U</code> means the entry point of the trespassers, that is, the section with a fragile window. Each of <code>S</code>, <code>T</code>, and <code>U</code> occurs exactly once in the input as an outermost section. The top-secret section is reachable from the entrance through passable sections with no shutters closed.</p>\n<p>$k$ is the number of the shutters in the building. The $i$-th line in the following $k$ lines describes a shutter by two integers $r_i$ and $c_i$, and a character $d_i$. $d_i$ is either <code>r</code> or <code>b</code>. If $d_i$ is <code>r</code>, $1 ≤ r_i ≤ n$ and $1 ≤ c_i &lt; m$ hold, and a shutter is equipped between sections $(r_i , c_i)$ and $(r_i , c_i + 1)$. If $d_i$ is <code>b</code>, $1 ≤ r_i &lt; n$ and $1 ≤ c_i ≤ m$ hold, and a shutter is equipped between sections $(r_i , c_i)$ and $(r_i + 1, c_i)$. The same combination of $r_i$, $c_i$, and $d_i$ appears only once. Each shutter is equipped only between two unblocked adjacent sections.</p>",
+  "output": "<p>Output a single integer in a line which is the minimum number of shutters to close to secure the top secret. If that is not possible, output $-1$. If trespassing to the top-secret section is not possible with all shutters open, output $0$.</p>",
+  "samples": [
+    {
+      "input": "3 3\nS..\n#..\nU.T\n7\n1 2 b\n1 3 b\n2 2 b\n2 2 r\n2 3 b\n3 1 r\n3 2 r\n",
+      "output": "3\n"
+    },
+    {
+      "input": "2 2\nST\n.U\n4\n1 1 r\n1 1 b\n1 2 b\n2 1 r\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "7 10\nU.........\n..........\n###.......\n..........\n.......###\n..........\nS........T\n18\n4 4 r\n5 4 r\n6 7 r\n7 7 r\n3 4 b\n3 5 b\n3 6 b\n3 7 b\n3 8 b\n3 9 b\n3 10 b\n5 1 b\n5 2 b\n5 3 b\n5 4 b\n5 5 b\n5 6 b\n5 7 b\n",
+      "output": "14\n"
+    }
+  ],
+  "hint": "<p>Sample Input 1 is depicted in the following figure. The dotted lines represent where the shutters are equipped.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 172px; height: 171px;\"/></p>\n<p style=\"text-align: center;\">Figure C.1. Sample Input 1</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2022 Asia Yokohama Regional, Camp, Petrozavodsk Programming Camp, Summer 2023, Day 1: Starting Contest",
+  "level": 23,
+  "tags": [
+    "flow",
+    "graphs",
+    "implementation",
+    "planar_graph"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 5
+}

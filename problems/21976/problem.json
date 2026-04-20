@@ -1,0 +1,32 @@
+{
+  "id": 21976,
+  "title": "Crossing",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Do you know Just Odd Investigations Laboratory? The business of this laboratory is to do “just odd investigations.” In the following, we call it JOI Laboratory for short.</p>\n<p>In recent years, broad gardens with splendid flowers were discovered in several historical ruins in the world. JOI Laboratory discovered that the flowers in these gardens are new species, and their genes have similar features. The genes of these new flowers are strings of length N consisting of <code>J</code>, <code>O</code>, <code>I</code>. These strings are called <strong>gene sequences</strong>.</p>\n<p>You are a researcher working in JOI Laboratory. You initially have three flowers of new species. Their gene sequences are S<sub>A</sub>, S<sub>B</sub>, S<sub>C</sub>, respectively.</p>\n<p>You can obtain a flower of new species from two flowers of new species by an operation called <strong>crossing</strong>. The i-th character (1 ≤ i ≤ N) of the gene sequence of the new flower is determined by the following rule.</p>\n<ul>\n<li>If the i-th characters of the gene sequences of the two flowers are the same, the i-th character of the gene sequence of the new flower will be the same character.</li>\n<li>If the i-th characters of the gene sequences of the two flowers are different, the i-th character of the gene sequence of the new flower will be one of <code>J</code>, <code>O</code>, or <code>I</code> which is different from these two characters.</li>\n</ul>\n<p>In other words, if the i-th characters of the gene sequences of the two flowers are c<sub>1</sub> and c<sub>2</sub>, the i-th character c<sub>3</sub> of the gene sequence of the new flower is given by the following table.</p>\n<table class=\"table table-bordered table-center-50 td-center th-center\">\n<tbody>\n<tr>\n<th>c<sub>1</sub></th>\n<td>J</td>\n<td>J</td>\n<td>J</td>\n<td>O</td>\n<td>O</td>\n<td>O</td>\n<td>I</td>\n<td>I</td>\n<td>I</td>\n</tr>\n<tr>\n<th>c<sub>2</sub></th>\n<td>J</td>\n<td>O</td>\n<td>I</td>\n<td>J</td>\n<td>O</td>\n<td>I</td>\n<td>J</td>\n<td>O</td>\n<td>I</td>\n</tr>\n<tr>\n<th>c<sub>3</sub></th>\n<td>J</td>\n<td>I</td>\n<td>O</td>\n<td>I</td>\n<td>O</td>\n<td>J</td>\n<td>O</td>\n<td>J</td>\n<td>I</td>\n</tr>\n</tbody>\n</table>\n<p>You may use the same flower for crossing as many times as you want. If you obtain a new flower by crossing, you may use it for subsequent crossings.</p>\n<p>In order to obtain more beautiful flowers, JOI Laboratory proposed (Q + 1) gene sequences numbered from 0 to Q as candidate gene sequences. You are given a list describing the candidate gene sequences. The list contains a string T<sub>0</sub> and, for each j (1 ≤ j ≤ Q), integers L<sub>j</sub>, R<sub>j</sub> and a character C<sub>j</sub>. The candidate gene sequences are given as follows.</p>\n<ul>\n<li>The candidate gene sequence 0 is T<sub>0</sub>.</li>\n<li>The candidate gene sequence j (1 ≤ j ≤ Q) is obtained from the candidate gene sequence j − 1 by replacing the characters from the L<sub>j</sub>-th position to the R<sub>j</sub>-th position by the character C<sub>j</sub>.</li>\n</ul>\n<p>Write a program which, given an integer N, the gene sequences of the three initial flowers, and the list describing the candidate gene sequences, determines, for each candidate gene sequence, whether it is possible to obtain a flower whose gene sequence is the given one from the three initial flowers by crossing zero or more times.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<pre>\nN\nS<sub>A</sub>\nS<sub>B</sub>\nS<sub>C</sub>\nQ\nT<sub>0</sub>\nL<sub>1</sub> R<sub>1</sub> C<sub>1</sub>\n.\n.\n.\nL<sub>Q</sub> R<sub>Q</sub> C<sub>Q</sub></pre>",
+  "output": "<p>Write (Q + 1) lines to the standard output. In the (j + 1)-th line (0 ≤ j ≤ Q), output <code>Yes</code> if it is possible to obtain a flower whose gene sequence is the candidate gene sequence j from the three initial flowers by crossing zero or more times. Otherwise, output <code>No</code>.</p>",
+  "samples": [
+    {
+      "input": "4\nJOJO\nJJOI\nOJOO\n3\nIJOJ\n1 4 O\n2 2 J\n2 4 I\n",
+      "output": "Yes\nNo\nYes\nYes\n"
+    },
+    {
+      "input": "3\nJOI\nJOI\nJOI\n2\nOJI\n1 2 O\n1 1 J\n",
+      "output": "No\nNo\nYes\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, JOI Open Contest, JOI Open Contest 2021",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "set",
+    "lazyprop",
+    "hashing"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.899999976158142
+}

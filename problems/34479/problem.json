@@ -1,0 +1,32 @@
+{
+  "id": 34479,
+  "title": "Buggy Rover",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The International Center for Planetary Cartography (ICPC) uses rovers to explore the surfaces of other planets. As we all know, other planets are flat surfaces which can be perfectly and evenly discretized into a rectangular grid structure. Each cell in this grid is either flat and can be explored by the rover, or rocky and cannot.</p>\n<p>Today marks the launch of their brand-new <em>Hornet</em> rover. The rover is set to explore the planet using a simple algorithm. Internally, the rover maintains a direction ordering, a permutation of the directions north, east, south, and west. When the rover makes a move, it goes through its <em>direction ordering</em>, chooses the first direction that does not move it off the face of the planet or onto an impassable rock, and makes one step in that direction.</p>\n<p>Between two consecutive moves, the rover may be hit by a cosmic ray, replacing its direction ordering with a different one. ICPC scientists have a log of the rover’s moves, but it is difficult to determine by hand if and when the rover’s direction ordering changed. Given the moves that the rover has made, what is the smallest number of times that it could have been hit by cosmic rays?</p>",
+  "input": "<p>The first line of input contains two integers $r$ and $c$, where $r$ ($1 ≤ r ≤ 200$) is the number of rows on the planet, and $c$ ($1 ≤ c ≤ 200$) is the number of columns. The rows run north to south, while the columns run west to east.</p>\n<p>The next $r$ lines each contain $c$ characters, representing the layout of the planet. Each character is either ‘<code>#</code>’, a rocky space; ‘<code>.</code>’, a flat space; or ‘<code>S</code>’, a flat space that marks the starting position of the rover. There is exactly one ‘<code>S</code>’ in the grid.</p>\n<p>The following line contains a string $s$, where each character of s is ‘<code>N</code>’, ‘<code>E</code>’, ‘<code>S</code>’, or ‘<code>W</code>’, representing the sequence of the moves performed by the rover. The string $s$ contains between $1$ and $10\\, 000$ characters, inclusive. All of the moves lead to flat spaces.</p>",
+  "output": "<p>Output the minimum number of times the rover’s direction ordering could have changed to be consistent with the moves it made.</p>",
+  "samples": [
+    {
+      "input": "5 3\n#..\n...\n...\n...\n.S.\nNNEN\n",
+      "output": "1\n"
+    },
+    {
+      "input": "3 5\n.###.\n....#\n.S...\nNEESNS\n",
+      "output": "0\n"
+    },
+    {
+      "input": "3 3\n...\n...\nS#.\nNEESNNWWSENESS\n",
+      "output": "4\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2025",
+  "level": 15,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1
+}

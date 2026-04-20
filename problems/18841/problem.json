@@ -1,0 +1,44 @@
+{
+  "id": 18841,
+  "title": "Sweeping",
+  "time_limit": "11 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Bitaro’s room is an isosceles right-angled triangle whose leg has length N. A point in Bitaro’s room is represented as the coordinate (x, y) with 0 ≤ x ≤ N, 0 ≤ y ≤ N, x + y ≤ N. The vertex of the right angle is the origin. The two legs of the triangle are the x-axis and the y-axis.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 319px; height: 263px;\"/></p>\n<p>One day, Bitaro noticed that his room is full of dust. In the beginning, there are M dusts in the room. The i-th dust (1 ≤ i ≤ M) lies in the point (X<sub>i</sub>, Y<sub>i</sub>). More than one dust may lie at the same point.</p>\n<p>Now, Bitaro is planning to sweep the room using brooms. We consider a broom as a segment in the room and we call the length of the segment its width. Since Bitaro is well-organized, he can use a broom only in the following two ways.</p>\n<ul>\n<li>Bitaro puts the broom in the room so that one of its corners lies at the origin, and the broom is parallel to the y-axis. Then, he moves the broom horizontally to the positive direction of the x-axis as much as possible, keeping it parallel to the y-axis and one of its corners lying on the x-axis. If the broom has width l, a dust lying in (x, y) with x &lt; N − l and y ≤ l will be moved to (N − l, y) (There may exist other dusts at (N − l, y)). This is called the <strong>procedure H</strong>.</li>\n<li>Bitaro puts the broom in the room so that one of its corners lies at the origin, and the broom is parallel to the x-axis. Then, he moves the broom vertically to the positive direction of the y-axis as much as possible, keeping it parallel to the x-axis and one of its corners lying on the y-axis. If the broom has width l, a dust lying in (x, y) with x ≤ l and y &lt; N − l will be moved to (x, N − l) (There may exist other dusts at (x, N − l)). This is called the <strong>procedure V</strong>.</li>\n</ul>\n<p>In Bitaro’s room, Q events will happen sequentially. The event j (1 ≤ j ≤ Q) is one of the following.</p>\n<ul>\n<li>Bitaro calculates the coordinates of the dust P<sub>j</sub>.</li>\n<li>Bitaro uses a broom with width L<sub>j</sub> and performs the procedure H.</li>\n<li>Bitaro uses a broom with width L<sub>j</sub> and performs the procedure V.</li>\n<li>A new dust is added at the point (A<sub>j</sub>, B<sub>j</sub>). If there are c dusts before this event, the new dust is the (c + 1)-th dust in the room.</li>\n</ul>\n<p>Write a program which, given the length of the legs of the room, the coordinates of the dusts in the room, and the details of the events, calculates the coordinates of the dusts.</p>",
+  "input": "<p>Read the following data from the standard input. All the values in the input are integers.</p>\n<pre>\nN M Q\nX<sub>1</sub> Y<sub>1</sub>\n.\n.\n.\nX<sub>M</sub> Y<sub>M</sub>\n(Query 1)\n.\n.\n.\n(Query Q)</pre>\n<p>Two or three space separated integers are written in each (Query j) (1 ≤ j ≤ Q). Let T<sub>j</sub> be the first integer. Then the meaning of this line is as follows.</p>\n<ul>\n<li>If T<sub>j</sub> = 1, two integers T<sub>j</sub>, P<sub>j</sub> are written in this line. This means, in the event j, Bitaro calculates the coordinates of the dust P<sub>j</sub>.</li>\n<li>If T<sub>j</sub> = 2, two integers T<sub>j</sub>, L<sub>j</sub> are written in this line. This means, in the event j, Bitaro uses a broom with width L<sub>j</sub> and performs the procedure H.</li>\n<li>If T<sub>j</sub> = 3, two integers T<sub>j</sub>, L<sub>j</sub> are written in this line. This means, in the event j, Bitaro uses a broom with width L<sub>j</sub> and performs the procedure V.</li>\n<li>If T<sub>j</sub> = 4, three integers T<sub>j</sub>, A<sub>j</sub>, B<sub>j</sub> are written in this line. This means, in the event j, a new dust is added at the point (A<sub>j</sub>, B<sub>j</sub>).</li>\n</ul>",
+  "output": "<p>For each event with T<sub>j</sub> = 1, write one line to the standard output. Output the x-coordinate and the y-coordinate of the dust P<sub>j</sub> when the event j happens.</p>",
+  "samples": [
+    {
+      "input": "6 2 10\n1 1\n4 0\n4 2 3\n3 3\n1 1\n4 1 2\n2 3\n2 0\n1 4\n3 2\n1 3\n1 2\n",
+      "output": "1 3\n3 2\n3 3\n6 0\n"
+    },
+    {
+      "input": "9 4 8\n2 3\n3 1\n1 6\n4 3\n2 6\n1 3\n2 2\n1 4\n2 3\n1 2\n2 4\n1 1\n",
+      "output": "3 6\n4 3\n7 1\n6 3\n"
+    },
+    {
+      "input": "8 1 8\n1 5\n4 4 1\n2 6\n1 2\n2 3\n4 2 2\n2 5\n1 1\n1 3\n",
+      "output": "4 1\n3 5\n3 2\n"
+    },
+    {
+      "input": "7 4 9\n1 5\n2 2\n4 2\n5 0\n2 6\n2 3\n1 2\n3 6\n1 4\n3 1\n1 1\n2 2\n1 3\n",
+      "output": "4 2\n5 1\n1 6\n5 2\n"
+    },
+    {
+      "input": "20 5 25\n10 6\n0 4\n2 1\n1 0\n2 3\n2 18\n3 9\n4 1 5\n4 0 2\n3 10\n4 3 3\n3 3\n2 9\n4 9 1\n3 12\n1 4\n3 19\n1 3\n1 9\n2 1\n1 7\n1 6\n4 3 3\n1 10\n1 1\n1 5\n2 0\n1 2\n2 2\n1 7\n",
+      "output": "2 17\n2 17\n9 8\n0 17\n1 17\n3 3\n10 10\n2 17\n2 17\n0 17\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Camp, JOI Spring Training Camp, JOI 2019/2020 Spring Training Camp",
+  "level": 26,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "divide_and_conquer",
+    "segtree",
+    "smaller_to_larger"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 2
+}

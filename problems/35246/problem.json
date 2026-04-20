@@ -1,0 +1,30 @@
+{
+  "id": 35246,
+  "title": "Hybrid Search",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are the proud owner of a newly built house in the Efficient Residences complex, so effectively built that there are no redundant streets in it, looking like a tree from higher up. Rumor has it that the constructor will start connecting houses to the sewage network. You know in which order will the constructor go through the houses. Since you want yours connected as soon as possible, you count up a bribe to change a small part of the ordering process in your favour.</p>\n<p>You are given a tree with $N$ nodes that is rooted in the node with index $1$. You are also given the index of a node $K$, $1 \\leq K \\leq N$. We can do the following types of tree searches:</p>\n<ul>\n<li>Start with a BFS from $1$, and at some point change into a DFS (possibly immediately in $1$). We don't necessarily have to change into DFS during the search.</li>\n<li>Start with a DFS from $1$, and at some point change into a BFS (possibly immediately in $1$). We don't necessarily have to change into BFS during the search.</li>\n</ul>\n<p>After we change the search type (e.g. in node $z$), we will only visit the nodes from $z$'s subtree further on. We suppose that $z$ was already visited in the first search.</p>\n<p>You must compute for each of the two types of hybrid searches what is the smallest position in which the node with index $K$ can appear.</p>\n<p><strong>The tree neighbours are considered in the Breadth/Depth-First Searches in the order given in the input.</strong> You can consult below the exact implementations we use for DFS and BFS:</p>\n<p><strong>Algorithm 1</strong> Depth-First Search (DFS) / Breadth-First Search (BFS)</p>\n<pre>\n<strong>function</strong> traversal(<em>adj_lists</em>, <em>type</em>):\n    <em>p</em> ← empty list {will contain the traversal nodes}\n    <em>waiting</em> ← empty list {behaves as either a stack or a queue, depending on type}\n    <strong>append</strong> (1, <em>None</em>) to <em>waiting\n    </em><strong>while</strong> <em>waiting</em> is not empty:\n        (<em>node</em>, <em>father</em>) ← <strong>assign and pop rightmost if</strong> <em>type</em> = <strong>DFS else leftmost</strong> from <em>waiting\n</em>        <strong>append</strong> <em>node</em> to <em>p\n</em>        <strong>for each</strong> <em>neigh</em> in <strong>reversed</strong>(<em>adj_lists[node]</em>) <strong>if</strong> <em>type</em> = <strong>DFS else</strong> <em>adj_lists[node]</em>: {we need to reverse to enforce the input ordering for DFS}\n            <strong>if</strong> <em>neigh</em> ≠ <em>father</em>:\n                <strong>append</strong> (<em>neigh</em>, <em>node</em>) to <em>waiting\n</em>traversal(<em>adj_lists</em>, <em>type</em> ← <strong>DFS</strong> or <strong>BFS</strong>)\n</pre>",
+  "input": "<p>The first line contains two numbers, $N$ and $K$ ($1 \\leq N \\leq 10^5$).</p>\n<p>The next $N - 1$ lines contain two numbers each, $A$ and $B$ ($1 \\leq A, B \\leq N$). There is an edge in the tree between the nodes indexed $A$ and $B$.</p>\n<p><strong>If $Y$ and $Z$ are children of $X$ and the edge $X$ $Y$ (or $Y$ $X$) appears before the edge $X$ $Z$ (or $Z$ $X$) in the input, then $Y$ will appear before $Z$ in any DFS or BFS from a node whose subtree contains $X$.</strong></p>",
+  "output": "<p>Write on the first line the smallest position in the hybrid search the node indexed $K$ may be found (counting from $1$), if we start with a BFS.</p>\n<p>Write on the second line the analog if we start with a DFS.</p>",
+  "samples": [
+    {
+      "input": "16 13\n1 2\n1 3\n1 4\n1 5\n2 6\n2 7\n3 11\n4 15\n4 16\n7 8\n7 9\n11 12\n11 13\n9 10\n12 14\n",
+      "output": "7\n11\n"
+    },
+    {
+      "input": "15 10\n1 2\n1 3\n2 4\n2 5\n3 6\n3 7\n4 8\n4 9\n5 10\n5 11\n6 12\n6 13\n7 14\n7 15\n",
+      "output": "6\n7\n"
+    },
+    {
+      "input": "11 10\n1 2\n1 3\n3 4\n4 5\n4 6\n5 7\n7 8\n6 9\n6 10\n1 11\n",
+      "output": "9\n9\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 600px; height: 304px;\"/></p>\n<p style=\"text-align: center;\">Figure H.1: For the first example, if we start with BFS, it is optimal to switch to DFS in node $3$, $K = 13$ being the seventh visited node. If we switched in node $11$ instead, we would have needed $11$ positions instead. If we start with DFS, we could optimally change in either node $3$ or node $11$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 600px; height: 183px;\"/></p>\n<p style=\"text-align: center;\">Figure H.2: For the second example, if we start with DFS, it is also possible to achieve $7$ if we never change to BFS.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 600px; height: 341px;\"/></p>\n<p style=\"text-align: center;\">Figure H.3: For the third example, it doesn't matter with which search we begin, as both hybrid strategies have an optimal answer of $9$. Note that if we instead only used one of the two basic searches, we would have gotten both times an answer of $10$.</p>",
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, The UK & Ireland Programming Contest, UKIEPC 2025",
+  "level": 17,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

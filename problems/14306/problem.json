@@ -1,0 +1,30 @@
+{
+  "id": 14306,
+  "title": "Monster Path (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Codejamon is a mobile game in which monster trainers walk around in the real world to catch monsters. You have an old smartphone with a short battery life, so you need to choose your path carefully to catch as many monsters as possible.</p>\n<p>Suppose the Codejamon world is a rectangular grid with R rows and C columns. Rows are numbered from top to bottom, starting from 0; columns are numbered from left to right, starting from 0. You start in the cell in the R<sub>s</sub>th row and the C<sub>s</sub>th column. You will take a total of S unit steps; each step must be to a cell sharing an edge (not just a corner) with your current cell.</p>\n<p>Whenever you take a step into a cell in which you have not already caught a monster, you will catch the monster in that cell with probability P if the cell has a monster attractor, or Q otherwise. If you do catch the monster in a cell, it goes away, and you cannot catch any more monsters in that cell, even on future visits. If you do not catch the monster in a cell, you may still try to catch the monster on a future visit to that cell. The starting cell is special: you have no chance of catching a monster there before taking your first step.</p>\n<p>If you plan your path optimally before making any move, what is the maximum possible expected number of monsters that you will be able to catch?</p>\n<p>The battery can only support limited steps, so hurry up!</p>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T test cases follow.</p>\n<p>Each test case starts with a line of five integers: R, C, R<sub>s</sub>, C<sub>s</sub> and S. R and C are the numbers of rows and columns in the grid; R<sub>s</sub> and C<sub>s</sub><br/>\nare the numbers of the row and column of your starting position, and S is the number of steps you are allowed to take.</p>\n<p>The next line contains two decimals P and Q, where P is the probability of meeting a monster in cells with a monster attractor, and Q is the probability of meeting a monster in cells without a monster attractor. P and Q are each given to exactly four decimal places.</p>\n<p>Each of the next R lines contains contains C space-separated characters; the j-th character of the i-th line represents the cell at row i and column j. Each element is either <code>.</code> (meaning there is no attractor in that cell) or <code>A</code> (meaning there is an attractor in that cell).</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ T ≤ 100.</li>\n<li>0 ≤ R<sub>s</sub> &lt; R.</li>\n<li>0 ≤ C<sub>s</sub> &lt; C.</li>\n<li>0 ≤ Q &lt; P ≤ 1.</li>\n<li>1 ≤ R ≤ 10.</li>\n<li>1 ≤ C ≤ 10.</li>\n<li>0 ≤ S ≤ 5.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the largest possible expected number of monsters that the player can catch in the given amount of steps.</p>\n<p><code>y</code> will be considered correct if <code>y</code> is within an absolute or relative error of 10<sup>-6</sup> of the correct answer. </p>",
+  "samples": [
+    {
+      "input": "2\n4 4 0 0 5\n0.8000 0.2000\n. . . .\n. . . .\n. . A .\n. A . A\n10 10 9 1 4\n0.6121 0.1000\n. . A A . . . . . .\nA . . . . . . . . .\n. . A . . . . A . .\n. . . A A . . . . .\n. A A A . . . . . A\nA . A A . . . . A .\n. A . . . . . A . .\n. . . . A A . . . .\n. . A . . . A . . A\n. . . . A . . A . .\n",
+      "output": "Case #1: 1.6000000\nCase #2: 1.0495336\n"
+    }
+  ],
+  "hint": "<p>In Case #1, one of the best paths is (0,0)-&gt;(0,1)-&gt;(0,2)-&gt;(1,2)-&gt;(2,2)-&gt;(2,3). On this path, the expected number of monsters that you will catch is 0.2 + 0.2 + 0.2 + 0.8 + 0.2 = 1.6. Remember that there is no chance of catching a monster before taking your first step, which is why there are five probabilities in the calculation, not six.</p>\n<p>In Case #2, one of the best paths is (9,1)-&gt;(9,2)-&gt;(8,2)-&gt;(8,3)-&gt;(8,2). On this path, the expected number of monsters that you will catch is 0.1 + 0.6121 + 0.1 + 0.23743359 = 1.04953359. Since we accept results within an absolute or relative error of 10<sup>-6</sup> of the correct answer (1.04953359), 1.0495336 is accepted.</p>",
+  "source": "Contest, Google, Google's Coding Competitions, Google APAC 2017 University Test, Round C APAC Test 2017, Contest, Google, Kick Start, Google Kick Start 2016, Round C",
+  "level": 11,
+  "tags": [
+    "backtracking",
+    "bruteforcing",
+    "dfs",
+    "graphs",
+    "graph_traversal",
+    "math",
+    "probability"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

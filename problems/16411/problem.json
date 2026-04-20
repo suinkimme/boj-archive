@@ -1,0 +1,50 @@
+{
+  "id": 16411,
+  "title": "Illiteracy",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Illiteracy is a simple puzzle game created by Le Sio. After the contest, you can play it at <a href=\"https://le-slo.itch.io/illiteracy\">https://le-slo.itch.io/illiteracy</a>. The game consists of a sequence of eight icons; the actual icons are very artistic, but for simplicity, we’ll label the icons using a capital letter <code>A</code>—<code>F</code>. Clicking any icon has a unique effect on the other icons, based on which icon is clicked and that icon’s position in the sequence. Most of the icons rotate the type of other icons. A rotation changes an <code>A</code> to a <code>B</code>, <code>B</code> to <code>C</code>, <code>C</code> to <code>D</code>, <code>D</code> to <code>E</code>, <code>E</code> to <code>F</code>, and <code>F</code> back to <code>A</code>.</p>\n<p>Here’s what the icons do when you click on one, based on the type of the icon and its position x in the sequence (1 ≤ x ≤ 8):</p>\n<table class=\"table table-bordered\" style=\"width: 100%;\">\n<thead>\n<tr>\n<th style=\"width: 10%;\">Type</th>\n<th style=\"width: 90%;\">Effect</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>A</code></td>\n<td>Rotates the icons immediately to the left and right (at positions x − 1 and x + 1), ignoring any icon that doesn’t exist (when x = 1 or 8).</td>\n</tr>\n<tr>\n<td><code>B</code></td>\n<td>If the icon is at either end of the sequence, does nothing. Otherwise, changes the icon at position x + 1 to the same type as the current icon at x − 1.</td>\n</tr>\n<tr>\n<td><code>C</code></td>\n<td>Rotates the icon at position 9 − x.</td>\n</tr>\n<tr>\n<td><code>D</code></td>\n<td>Rotates all icons between position x and the closest of the sequence’s two ends. (Does nothing if x is one of the two ends, and does not change the icon at position x itself). For example, if x = 3, the icons at x = 1 and 2 would be rotated. If x = 5, then the icons at positions 6, 7, and 8 would be rotated.</td>\n</tr>\n<tr>\n<td><code>E</code></td>\n<td>If the icon is at either end of the sequence, does nothing. Otherwise, let y be the number of icons between position x and the closest of the sequence’s two ends. Rotates the two icons at positions x − y and x + y. For example, if x = 3, the icons at x = 1 and 5 would be rotated. If x = 5, the icons at positions 8 and 2 would be rotated.</td>\n</tr>\n<tr>\n<td><code>F</code></td>\n<td>If x is odd, rotates the icon at position (x + 9)/2. If x is even, rotates the icon at position x/2.</td>\n</tr>\n</tbody>\n</table>\n<p>Given a starting sequence of icons and a target sequence, what is the minimal number of clicks required to transform the starting sequence into the target sequence?</p>",
+  "input": "<p>The input consists of exactly two lines of eight characters each. The first line is the starting icon sequence, and the second is the target sequence. Each character on each line is one of the six capital letters <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>, <code>E</code>, or <code>F</code>.</p>",
+  "output": "<p>Output a single integer, the smallest number of icon clicks needed to get from the starting sequence to the target sequence or -1 if it isn’t possible..</p>",
+  "samples": [
+    {
+      "input": "ABCDEFCD\nBCEDEFCD\n",
+      "output": "2\n"
+    },
+    {
+      "input": "DCDAFCBA\nECEABCCC\n",
+      "output": "4\n"
+    },
+    {
+      "input": "ABCDEFCD\nABCDEFCD\n",
+      "output": "0\n"
+    },
+    {
+      "input": "ACFEFBEB\nEDBFEFDE\n",
+      "output": "22\n"
+    },
+    {
+      "input": "ABCDEFCD\nBBBBBBBB\n",
+      "output": "9\n"
+    },
+    {
+      "input": "BBBBBBBB\nABCDEFCD\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>For the cases below, we illustrate one possible minimal sequence of clicks to get from the top configuration to the bottom one. The carets indicate which icon on the previous line was clicked to generate the sequence on the following line. The sequence on the left takes 2 clicks; the sequence on the right takes 4 clicks.</p>\n<pre>\nABCDEFCD        DCDAFCBA\n   ^               ^\nBCDDEFCD        DCEAACBA\n     ^                ^\nBCEDEFCD        DCEAACBC\n                 ^\n                DCEAACCC\n                  ^\n                ECEABCCC</pre>",
+  "source": ", ICPC, Regionals, North America, Mid-Central Regional, 2018 Mid-Central Regional Programming Contest, ICPC, Regionals, North America, Southeast USA Regional, 2018 Southeast USA Regional Programming Contest, Division 1, ICPC, Regionals, North America, Southeast USA Regional, 2018 Southeast USA Regional Programming Contest, Division 2",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "graphs",
+    "data_structures",
+    "string",
+    "graph_traversal",
+    "bfs",
+    "hash_set"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 1.892899990081787
+}

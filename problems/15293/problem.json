@@ -1,0 +1,24 @@
+{
+  "id": 15293,
+  "title": "Knapsack Cryptosystem",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The Merkle–Hellman Knapsack Cryptosystem was one of the earliest public key cryptosystems invented by Ralph Merkle and Martin Hellman in 1978. Here is its description</p>\n<p>Alice chooses n positive integers {a<sub>1</sub>, . . . , a<sub>n</sub>} such that each a<sub>i</sub> &gt; Σ<sup>i−1</sup><sub>j=1</sub>a<sub>j</sub>, a positive integer q which is greater than the sum of all a<sub>i</sub>, and a positive integer r which is coprime with q. These n + 2 integers are Alice’s private key.</p>\n<p>Then Alice calculates bi = (a<sub>i</sub> · r) mod q. These n integers are Alice’s public key.</p>\n<p>Knowing her public key, Bob can transmit a message of n bits to Alice. To do that he calculates s, the sum of b<sub>i</sub> with indices i such that his message has bit 1 in i-th position. This value s is the encrypted message.</p>\n<p>Note that an eavesdropper Eve, who knows the encrypted message and the public key, has to solve a (presumably hard) instance of the knapsack problem to find the original message. Meanwhile, after receiving s, Alice can calculate the original message in linear time; we leave it to you as an exercise.</p>\n<p>In this problem you deal with the implementation of the Merkle–Hellman Knapsack Cryptosystem in which Alice chose q = 2<sup>64</sup>, for obvious performance reasons, and published this information. Since everyone knows her q, she asks Bob to send her the calculated value s taken modulo 2<sup>64</sup> for simplicity of communication.</p>\n<p>You are to break this implementation. Given the public key and an encrypted message, restore the original message.</p>",
+  "input": "<p>The first line contains one integer n (1 ≤ n ≤ 64).</p>\n<p>Each of the next n lines contains one integer b<sub>i</sub> (1 ≤ b<sub>i</sub> &lt; 2<sup>64</sup>).</p>\n<p>The last line contains one integer s mod q — the encrypted message s taken modulo q (0 ≤ s mod q &lt; 2<sup>64</sup>).</p>\n<p>The given sequence b<sub>i</sub> is a valid public key in the described implementation, and the given value s mod q is a valid encrypted message.</p>",
+  "output": "<p>Output exactly n bits (0 or 1 digits) — the original message.</p>",
+  "samples": [
+    {
+      "input": "5\n10\n20\n50\n140\n420\n440\n",
+      "output": "01001\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2017",
+  "level": 24,
+  "tags": [
+    "mitm"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 7.428599834442139
+}

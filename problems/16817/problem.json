@@ -1,0 +1,32 @@
+{
+  "id": 16817,
+  "title": "Ninja Map",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Intersections of Crossing Path City are aligned to a grid. There are $N$ east-west streets which are numbered from 1 to $N$, from north to south. There are also $N$ north-south streets which are numbered from 1 to $N$, from west to east. Every pair of east-west and north-south streets has an intersection; therefore there are $N^2$ intersections which are numbered from 1 to $N^2$.</p>\n<p>Surprisingly, all of the residents in the city are Ninja. To prevent outsiders from knowing their locations, the numbering of intersections is shuffled.</p>\n<p>You know the connections between the intersections and try to deduce their positions from the information. If there are more than one possible set of positions, you can output any of them.</p>",
+  "input": "<p>The input consists of a single test case formatted as follows.</p>\n<pre class=\"mathjax\">$N$ $a_1 \\ b_1$ $\\cdots$ $a_{2N^2-2N} \\ b_{2N^2-2N}$</pre>\n<p>The first line consists of an integer $N \\ (2 \\le N \\le 100)$. The following $2N^2-2N$ lines represent connections between intersections. The $(i+1)$-th line consists of two integers $a_i$ and $b_i$ ($1 \\le a_i, b_i \\le N^2$, $a_i \\ne b_i$), which represent that the $a_i$-th and $b_i$-th intersections are adjacent. More precisely, let's denote by $(r, c)$ the intersection of the $r$-th east-west street and the $c$-th north-south street. If the intersection number of $(r, c)$ is $a_i$ for some $r$ and $c$, then the intersection number of either $(r - 1, c)$, $(r + 1, c)$, $(r, c - 1)$ or $(r, c + 1)$ must be $b_i$. All inputs of adjacencies are different, i.e., $(a_i,b_i)\\ne(a_j,b_j)$ and $(a_i,b_i)\\ne(b_j,a_j)$ for all $1 \\le i &lt; j \\le 2N^2-2N$. This means that you are given information of all adjacencies on the grid.</p>\n<p>The input is guaranteed to describe a valid map.</p>",
+  "output": "<p>Print a possible set of positions of the intersections. More precisely, the output consists of $N$ lines each of which has space-separated $N$ integers. The $c$-th integer of the $r$-th line should be the intersection number of $(r, c)$.</p>\n<p>If there are more than one possible set of positions, you can output any of them.</p>",
+  "samples": [
+    {
+      "input": "3\n1 2\n4 7\n8 6\n2 3\n8 9\n5 3\n4 6\n5 6\n7 8\n1 4\n2 6\n5 9\n",
+      "output": "7 4 1\n8 6 2\n9 5 3\n"
+    },
+    {
+      "input": "4\n12 1\n3 8\n10 7\n13 14\n8 2\n9 12\n6 14\n11 3\n3 13\n1 10\n11 15\n4 15\n4 9\n14 10\n5 7\n2 5\n6 1\n14 5\n16 11\n15 6\n15 13\n9 6\n16 4\n13 2\n",
+      "output": "8 2 5 7\n3 13 14 10\n11 15 6 1\n16 4 9 12\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2017 Day 3",
+  "level": 13,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "ad_hoc",
+    "constructive",
+    "dfs"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.2609000205993652
+}

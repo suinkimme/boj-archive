@@ -1,0 +1,30 @@
+{
+  "id": 16759,
+  "title": "Praktični",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>While writing an exam, Ivan had problems with the following task:</p>\n<blockquote>\n<p>\"In the input there is an integer number N. Find the N<sup>th</sup> digit of the number 0.135791113151719 ...\"</p>\n</blockquote>\n<p>In order to succeed in the next attempt to pass the exam and so saving himself from repeating the academic year, he decided to practice by being the main character in tasks such as the following:</p>\n<p>An undirected graph of N nodes and M edges is given. Each edge has a value, an integer number less than 10<sup>9</sup>.</p>\n<p>A simple cycle (a cycle without repeating nodes) is good if the bitwise XOR of all the values of the cycle’s edges is equal to zero.</p>\n<p>Ivan can make a number of operations on the graph. An operation consists of the following steps:</p>\n<ul>\n<li>Ivan selects an integer number x;</li>\n<li>then he selects a non-empty subset of edges of the given graph;</li>\n<li>and then he applies bitwise XOR by number x on all the the selected edges (If one of the selected edges has a value p, after the described operation, the new value of that edge will be equal to p XOR x)</li>\n</ul>\n<p>Ivan wants to obtain a graph in which every simple cycle is good. Also, he wants to do so in as few operations as possible. Determine the minimum possible number of operations after which each simple cycle is good and print them. It can be proved that it is always possible to meet Ivan's requirements with a certain sequence of operations.</p>",
+  "input": "<p>The first line contains two positive integers N and M (1 ≤ N, M ≤ 100 000), the number of nodes and the number of edges.</p>\n<p>In the i<sup>th</sup> of the following M lines there is a description of the i<sup>th</sup> edge: three integer numbers a<sub>i</sub>, b<sub>i</sub> i p<sub>i</sub> (1 ≤ a<sub>i</sub>, b<sub>i</sub> ≤ N, a<sub>i</sub> ≠ b<sub>i</sub>, 0 ≤ p<sub>i</sub> ≤ 10<sup>9</sup>), the nodes connected with the i<sup>th</sup> edge and the value of the edge. The graph is connected and all the edges are different.</p>",
+  "output": "<p>In the first line of output, print K, minimum number of task operations.</p>\n<p>In each of the following K lines, print a sequence numbers separated by space:</p>\n<ul>\n<li>the first number in the row is the number x from the operation;</li>\n<li>the second number is B, the number of selected bridges;</li>\n<li>then follows B numbers, E<sub>i</sub> (1 ≤ E<sub>i</sub> ≤ M) which indicate labels of the selected edges in the ascending order.</li>\n</ul>\n<p>All numbers in the output should be less than or equal to 2·10<sup>9</sup>.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2 10\n2 3 9\n3 4 8\n4 1 7\n",
+      "output": "1\n12 3 1 2 3\n"
+    },
+    {
+      "input": "2 1\n1 2 3\n",
+      "output": "0\n"
+    },
+    {
+      "input": "6 8\n1 2 6\n2 3 1\n3 5 6\n3 1 5\n4 5 0\n3 6 0\n4 2 8\n4 1 1\n",
+      "output": "2\n2 2 4 6\n15 1 7\n"
+    }
+  ],
+  "hint": "<p>Explanation of test samples:</p>\n<p>In the first test sample, the initial graph is given in the image left below, and the final graph (after applying XOR on the first three edges with 12) is given in the image right below. The only cycle in the graph is good because XOR of its edges is 0.</p>\n<p>In the second test sample, there is no cycle, so the claim \"every simple cycle is good\" is trivially fulfilled. That is why the number of required operations is 0.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 532px; height: 221px;\"/></p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2018/2019, Contest #3, koosaga",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

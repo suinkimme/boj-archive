@@ -1,0 +1,28 @@
+{
+  "id": 32183,
+  "title": "바이러스",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>신종 컴퓨터 바이러스가 전 세계를 휩쓸고 있다! 바이러스를 분석하고 치료하는 데 당신의 도움이 필요하다.</p>\n<p>현재 가용한 정보를 취합해서 얻어낸 바이러스의 비트 패턴은 정규 표현식으로 다음과 같다.</p>\n<pre>\n(1(10)+1*|0+10)+</pre>\n<p>정규 표현식은 문자열에 여러 가지 연산을 추가해 원하는 패턴을 기술할 수 있게 한 것으로, 다음과 같이 읽으면 된다.</p>\n<ul>\n<li>비트를 그대로 적으면 정확히 일치하는 한 글자의 비트열을 찾는다.\n\t<ul>\n<li><code>0</code> = { <code>\"0\"</code> }</li>\n<li><code>1</code> = { <code>\"1\"</code> }</li>\n</ul>\n</li>\n<li>모든 정규 표현식 <code>x</code>와 <code>y</code>에 대해 다음 연산이 성립한다.\n\t<ul>\n<li>괄호를 씌운 <code>(x)</code>는 <code>x</code>와 일치하는 비트열을 동일하게 찾는다.\n\t\t<ul>\n<li><code>(0)</code> = { <code>\"0\"</code> }</li>\n<li><code>(1)</code> = { <code>\"1\"</code> }</li>\n</ul>\n</li>\n<li>연산자 없이 두 정규 표현식을 연결한 <code>xy</code>는 두 정규 표현식과 일치하는 비트열 중 하나씩을 순서대로 연결한 비트열을 찾는다.\n\t\t<ul>\n<li><code>000</code> = { <code>\"000\"</code> }</li>\n<li><code>10010110</code> = { <code>\"10010110\"</code> }</li>\n</ul>\n</li>\n<li><code>x|y</code>는 <code>x</code>와 일치하는 비트열과 <code>y</code>와 일치하는 비트열 중 아무 비트열을 찾는다.\n\t\t<ul>\n<li><code>0|1</code> = { <code>\"0\"</code>, <code>\"1\"</code> }</li>\n<li><code>0(0|1)1</code> = { <code>\"001\"</code>, <code>\"011\"</code> }</li>\n<li><code>1|111|11111</code> = { <code>\"1\"</code>, <code>\"111\"</code>, <code>\"11111\"</code> }</li>\n</ul>\n</li>\n<li><code>x*</code>는 <code>x</code>와 일치하는 비트열이 $0$개 이상 연결되어 있는 비트열을 찾는다. 즉, <code>x*</code>는 <code>(빈 문자열)|x|xx|xxx|...</code>와 같은 의미를 가진다.\n\t\t<ul>\n<li><code>0*</code> = { <code>\"\"</code>, <code>\"0\"</code>, <code>\"00\"</code>, <code>\"000\"</code>, … }</li>\n<li><code>01*</code> = { <code>\"0\"</code>, <code>\"01\"</code>, <code>\"011\"</code>, <code>\"0111\"</code>, … }</li>\n<li><code>(01)*</code> = { \"\", <code>\"01\"</code>, <code>\"0101\"</code>, <code>\"010101\"</code>, … }</li>\n<li><code>111(01|001)*</code> = { <code>\"111\"</code>, <code>\"11101\"</code>, <code>\"111001\"</code>, <code>\"1110101\"</code>, <code>\"11100100101\"</code>, <code>\"1110100100101\"</code>, … }</li>\n</ul>\n</li>\n<li><code>x+</code>는 <code>x</code>와 일치하는 비트열이 $1$개 이상 연결되어 있는 비트열을 찾는다. 즉, <code>x</code>는 <code>x|xx|xxx|...</code>와 같은 의미를 가진다.\n\t\t<ul>\n<li><code>0+</code> = { <code>\"0\"</code>, <code>\"00\"</code>, <code>\"000\"</code>, … }</li>\n<li><code>01+</code> = { <code>\"01\"</code>, <code>\"011\"</code>, <code>\"0111\"</code>, … }</li>\n<li><code>(01)+</code> = { <code>\"01\"</code>, <code>\"0101\"</code>, <code>\"010101\"</code>, … }</li>\n<li><code>(01+)+</code> = { <code>\"01\"</code>, <code>\"011\"</code>, <code>\"01111\"</code>, <code>\"01011\"</code>, <code>\"0111010101\"</code>, <code>\"01111011111011\"</code>, … }</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n<p>연산자를 적용하는 순서는 다음과 같다. 예를 들어, <code>01|10**</code>는 <code>(01)|(1((0*)*))</code>와 같이 읽는다.</p>\n<ul>\n<li><code>(x)</code></li>\n<li><code>x*</code>, <code>x+</code>\n<ul>\n<li>두 연산자의 우선순위는 같다.</li>\n</ul>\n</li>\n<li><code>xy</code></li>\n<li><code>x|y</code></li>\n</ul>\n<p>특히 이 바이러스는 자신의 비트열을 계속 바꾸면서 예측할 수 없는 움직임을 보이기 때문에 비트열이 바뀔 때마다 빠른 연산과 탐지를 필요로 한다. 구체적으로 비트열이 다음과 같이 갱신될 수 있다.</p>\n<ul>\n<li>$fg\\,\\,l\\,\\,r$: $l$번째 비트부터 $r$번째 비트까지가 다음과 같이 갱신된다. 비트 번호는 왼쪽에서 오른쪽으로 <strong>$0$부터</strong> 세며, $l$과 $r$이 모두 포함된다.\n\n\t<ul>\n<li>갱신 이전에 <span style=\"color:#e74c3c;\"><code>0</code></span>이었던 비트는 $f$로 바뀐다.</li>\n<li>갱신 이전에 <span style=\"color:#e74c3c;\"><code>1</code></span>이었던 비트는 $g$로 바뀐다.</li>\n</ul>\n</li>\n<li>갱신된 데이터는 이후 다시 갱신될 때까지 메모리에 계속 유지된다.</li>\n</ul>\n<p>미리 탐지한 메모리 구역에 해당하는 비트열이 주어지면, 해당 비트열이 갱신될 때마다 바이러스의 비트 패턴과 일치하는지 확인하는 프로그램을 작성하라.</p>",
+  "input": "<p>첫 번째 줄에 메모리 구역의 비트 수 $N$이 주어진다.</p>\n<p>두 번째 줄에 해당 메모리 구역의 초기 데이터 $S$가 숫자 <span style=\"color:#e74c3c;\"><code>0</code></span>과 <span style=\"color:#e74c3c;\"><code>1</code></span>만으로 이루어진 문자열로 주어진다.</p>\n<p>세 번째 줄에는 데이터가 갱신되는 횟수 $Q$가 주어진다.</p>\n<p>네 번째 줄부터 $Q$개의 줄에 걸쳐 데이터 갱신 정보가 한 줄에 하나씩, $fg\\,\\,l\\,\\,r$ 형태로 주어진다. <strong>$f$와 $g$ 사이에 공백 문자가 오지 않음</strong>에 유의하라.</p>",
+  "output": "<p>첫 번째 줄에 초기 비트열이 바이러스의 비트 패턴과 일치하면 <span style=\"color:#e74c3c;\"><code>YES</code></span>를, 그렇지 않으면 <span style=\"color:#e74c3c;\"><code>NO</code></span>를 출력한다.</p>\n<p>두 번째 줄부터 비트열이 갱신될 때마다 갱신된 비트열이 바이러스의 비트 패턴과 일치하면 <span style=\"color:#e74c3c;\"><code>YES</code></span>를, 그렇지 않으면 <span style=\"color:#e74c3c;\"><code>NO</code></span>를 각각 한 줄로 출력한다.</p>\n<p>출력하는 모든 문자는 대문자이다.</p>",
+  "samples": [
+    {
+      "input": "10\n0010110101\n4\n10 0 4\n10 7 9\n11 0 5\n00 4 9\n",
+      "output": "YES\nYES\nYES\nNO\nNO\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 중앙대학교, 중앙대학교 프로그래밍 경진대회 (CPC), 2024 중앙대학교 프로그래밍 경진대회 (CPC), Open Contest, dlaud5379, jk410, mujigae, utilforever, wapas",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "string",
+    "segtree",
+    "lazyprop",
+    "regex"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.75
+}

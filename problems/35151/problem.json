@@ -1,0 +1,29 @@
+{
+  "id": 35151,
+  "title": "포켓몬 마스터 이민재",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>포켓몬을 사랑하는 민재는 요즘 모든 포켓몬을 포획하는 일명 도감 채우기를 하고 있다. 그러나 포켓몬마다 잡을 수 있는 확률이 존재한다.</p>\r\n\r\n<p>포켓몬은 각각 체력이 존재하며, 최대 체력과 현재 체력에 따른 체력 계수 $h:=\\frac{3\\times HP_{max}-2\\times HP_{now}}{3\\times HP_{max}}$로 정의된다. 즉, 현재 체력이 최대 체력과 같다면, $h=\\frac{1}{3}$이고, 현재 체력이 낮아질수록 $h$의 값은 $1$에 가까워진다. 또한 포켓몬별 고유 포획률 $r$, 볼의 종류 $b$, 상태 계수 $s$가 존재하여, 포켓몬을 잡을 수 있는 확률인 포획률 $p$는 다음과 같이 계산된다.</p>\r\n\r\n<p>\\[p:=\\min\\left\\{ \\frac{h\\times r\\times b\\times s}{255} ,1 \\right\\}\\]</p>\r\n\r\n<p>순정파인 민재는 볼은 무조건 몬스터볼을 사용해 잡으려 하므로 $b=1$로 고정되며, 포켓몬의 초기 상태계수 $s=1$, 초기 체력 $HP_{now}=HP_{max}$이다.</p>\r\n\r\n<p>민재는 매 턴 다음 행동 중 하나를 선택하여 할 수 있다.</p>\r\n\r\n<ul>\r\n<li>칼등치기(<span style=\"color:#e74c3c;\"><code>F</code></span>)\r\n\r\n<ul>\r\n<li>$HP_{now}$가 $f$ 이하라면 $1$로 만든다.</li>\r\n<li>$HP_{now}$가 $f$보다 크다면 $f$만큼 감소시킨다.</li>\r\n</ul>\r\n</li>\r\n<li>뱀눈초리(<span style=\"color:#e74c3c;\"><code>G</code></span>)\r\n<ul>\r\n<li>$s$가 $1$이라면 $s$를 $1.5$로 만든다.</li>\r\n<li>$s$가 $1$이 아니라면 아무 일도 일어나지 않는다.</li>\r\n</ul>\r\n</li>\r\n<li>하품(<span style=\"color:#e74c3c;\"><code>Y</code></span>)\r\n<ul>\r\n<li>이번 턴은 아무 일도 일어나지 않는다.</li>\r\n<li>다음 턴이 끝난 후 $s$가 $1$이라면 $s$를 $2.5$로 만든다.</li>\r\n<li>다음 턴이 끝난 후 $s$가 $1$이 아니라면 아무 일도 일어나지 않는다.</li>\r\n</ul>\r\n</li>\r\n<li>튀어오르기(<span style=\"color:#e74c3c;\"><code>S</code></span>)\r\n<ul>\r\n<li>공격도 하지 않고 팔딱팔딱 튈 뿐 아무 일도 일어나지 않는다...</li>\r\n</ul>\r\n</li>\r\n<li>포획하기(<span style=\"color:#e74c3c;\"><code>C</code></span>)\r\n\r\n<ul>\r\n<li>현재 상태에서 몬스터볼을 던져 계산된 $p$의 확률로 포켓몬을 포획한다.</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n\r\n<p>포켓몬은 한 번 포획에 실패하면 반드시 도망가게 되어 포획할 수 없다. 즉, 포획은 마지막 한 번만 가능하다.</p>\r\n\r\n<p>도감을 빨리 채워야 하는 민재는 가장 확률이 높은 방법으로, 확률이 가장 높은 방법 중에서는 최소한의 행동으로 포켓몬을 포획해야 한다.</p>\r\n\r\n<p>민재는 첫 턴의 행동을 하기 전 모든 행동을 미리 정한 후 행동한다.</p>\r\n\r\n<p>최적으로 행동했을 때의 행동을 찾아 출력해 보자.</p>\r\n",
+  "input": "<p>첫 번째 줄에 테스트 케이스의 개수 $T(1\\le T\\le 1\\, 000)$가 주어진다.</p>\r\n\r\n<p>각 테스트 케이스의 첫 번째 줄에 잡고 싶은 포켓몬의 포획률과 최대 체력을 의미하는 정수 $r(1\\le r\\le 765)$과 $HP_{max}(1\\le HP_{max}\\le 1\\, 000)$가 한 줄에 공백으로 구분되어 주어진다.</p>\r\n\r\n<p>각 테스트 케이스의 두 번째 줄에 칼등치기의 데미지를 의미하는 정수 $f(1\\le f\\le 1\\, 000)$가 주어진다.</p>\r\n",
+  "output": "<p>첫 번째 줄부터 $T$줄에 걸쳐 각 테스트 케이스 별로 한 줄에 최적으로 행동했을 때의 행동을 의미하는 <span style=\"color:#e74c3c;\"><code>F</code></span>, <span style=\"color:#e74c3c;\"><code>G</code></span>, <span style=\"color:#e74c3c;\"><code>Y</code></span>, <span style=\"color:#e74c3c;\"><code>S</code></span>, <span style=\"color:#e74c3c;\"><code>C</code></span>로만 이루어진 문자열 $S$를 출력한다. 문자열의 마지막 문자는 <span style=\"color:#e74c3c;\"><code>C</code></span>여야 하며, <span style=\"color:#e74c3c;\"><code>C</code></span>는 문자열의 마지막을 제외하고 나타나면 안 된다.</p>\r\n",
+  "samples": [
+    {
+      "input": "7\n765 1000\n1000\n666 666\n1\n256 255\n254\n256 255\n253\n255 255\n255\n255 1\n255\n1 1\n1\n",
+      "output": "C\nGC\nFC\nFFC\nGFC\nYFC\nYSC\n"
+    },
+    {
+      "input": "1\n1 1\n1\n",
+      "output": "YFC\n"
+    }
+  ],
+  "hint": "<p>실제 포획률은 최소 $3$, 최대 $255$이고, 하품을 통한 상태 변화는 최소 $1$턴에서 최대 $3$턴 유지되며, 데미지 식, 도주율 등 훨씬 더 다양한 변수와 복잡한 식을 통해 계산되는 등 고증 오류가 일부 있다. 단, 개사기 포켓몬 <strong>루브도</strong>를 사용한다면 위의 기술배치를 실제로 사용할 수 있다.</p>\r\n\r\n<p>실제로 동우가 이 문제를 만들던 당시 민재는 한 게임의 포켓몬 도감을 채우던 중이었고, 문제가 선정된 시점에는 이미 모두 완성하였다.</p>\r\n",
+  "source": "University, 고려대학교, 고려대학교 프로그래밍 경시대회, 2025 고려대학교 프로그래밍 경시대회 (KCPC), Div. 2, kidw0124, foxpython, cywohoy, dong0625, ezh8n, foxpython, leeminjae, sshs29hanul, tlsdydaud1, utilforever",
+  "level": 11,
+  "tags": [
+    "greedy",
+    "case_work"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 1.8181999921798706
+}

@@ -1,0 +1,37 @@
+{
+  "id": 28692,
+  "title": "선형 회귀는 너무 쉬워 2",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>유림이는 선형 회귀에 자신이 있다. 그래서 MatKor 동아리에서 선형 회귀에 관한 수업을 할 때 집중하지 않았다. 당시 강사였던 동우는 이를 못마땅하게 여겨 유림이에게 다른 문제 <a href=\"/problem/27295\">선형 회귀는 너무 쉬워 1</a>을 내주었고, 유림이는 문제를 쉽게 풀었다.</p>\n<p>동우는 이제 기존의 선형 회귀 문제를 내주었다. 데이터 $(x_1, y_1), (x_2, y_2), \\cdots , (x_n, y_n)$이 주어졌을 때, 이를 가장 잘 설명하는 일차함수 $y=ax+b$를 찾는 문제이다. 여기서 주어진 점들 $(x_i, y_i)$에 대해 $x_i$를 통해 얻는 추정치 $\\hat{y_i} = ax_i+b$로 정의하고, 실제 $y_i$에서 예측치인 $\\hat{y_i}$를 뺀 값 $y_i-\\hat{y_i}$를 잔차 $\\epsilon_i$로 정의한다.</p>\n<p>선형 회귀 문제는 이 잔차 제곱의 합이 $0$에 가장 가깝도록, 즉 $\\displaystyle\\sum_{i=1}^n \\epsilon_i^2 = \\displaystyle\\sum_{i=1}^n (y_i-ax_i-b)^2$이 최소가 되도록 하는 실수 $a$와 $b$를 찾는 문제이다. 이 값이 최소가 되도록 하는 $a$와 $b$를 $a_2$, $b_2$라고 한다. 여기서 $\\displaystyle\\sum_{i=1}^n \\epsilon_i^2$은 $\\epsilon_1^2+\\epsilon_2^2+\\cdots+\\epsilon_n^2$를, $\\displaystyle\\sum_{i=1}^n (y_i-ax_i-b)^2$은 $(y_1-ax_1-b)^2+(y_2-ax_2-b)^2+\\cdots+(y_n-ax_n-b)^2$를 나타낸다.</p>\n<p>동우는 유림이에게 주어진 점들에 대해 잔차 제곱의 합이 최소가 되도록 하는 실수 $a_2$와 $b_2$를 구해보라는 문제를 내주었다.</p>\n<p>그러나 유림이는 이미 답을 알고 있고, 바로 코딩하기로 했다. 답은 다음과 같다.</p>\n<ul>\n<li>먼저 $x_i$의 합을 $S_x$, $y_i$의 합을 $S_y$, $x_i^2$의 합을 $S_{xx}$, $x_iy_i$의 합을 $S_{xy}$라 하고, 이를 구하자. 그렇다면 $a_2$와 $b_2$는 경우에 따라 다음과 같다.\n\t<ul>\n<li>만약 $S_x^2\\ne nS_{xx}$라면 아래와 같이 답을 구할 수 있다. \\[\\begin{align*}a_2&amp;=\\frac{nS_{xy}-S_xS_y}{nS_{xx}-S_x^2}\\\\ b_2&amp;=\\frac{S_y-a_2S_x}{n}\\end{align*}\\]\n\t\t<ul>\n<li>계산 중 분자와 분모에 대해 $2\\times 10^{18}$의 큰 수가 등장할 수 있음에 유의해 적절한 자료형을 사용하도록 하자.</li>\n</ul>\n</li>\n<li>만약 $S_x^2=nS_{xx}$이라면 가능한 $a_2$와 $b_2$ 쌍이 유일하지 않고 여러 개 존재한다.</li>\n</ul>\n</li>\n</ul>\n<p>위의 결과에 대한 구체적인 증명 과정은 아래 <strong>노트</strong>에 있으므로, 관심이 있다면 나중에 읽어보자.</p>",
+  "input": "<p>첫 줄에 데이터의 개수를 의미하는 정수 $n(2 \\le n \\le 10^6)$이 주어진다.</p>\n<p>두 번째 줄부터 $n$개의 줄에 걸쳐 한 줄에 하나씩 점의 좌표를 나타내는 정수 $x_i$와 $y_i$($-10^3 \\le x_i, y_i \\le 10^3$)의 값이 주어진다.</p>\n<p>이때, 서로 같은 점이 여러 번 주어질 수 있음에 유의한다.</p>",
+  "output": "<p>첫 번째 줄에 $\\displaystyle\\sum_{i=1}^n (a_2x_i+b_2-y_i)^2$의 값이 $0$에 가장 가깝도록 하는 $a_2$와 $b_2$가 유일하게 존재한다면, 이를 공백으로 구분하여 출력한다</p>\n<p>만약 답으로 가능한 $a_2$와 $b_2$ 쌍이 여러 개 존재한다면, 첫 줄에 <span style=\"color:#e74c3c;\"><code>EZPZ</code></span>를 출력한다.</p>\n<p>정답과의 절대 혹은 상대 오차가 $10^{-6}$ 이하라면 정답으로 간주한다.</p>",
+  "samples": [
+    {
+      "input": "3\n7 32\n18 67\n40 137\n",
+      "output": "3.1818181818 9.7272727272\n"
+    },
+    {
+      "input": "2\n1 30\n899 30\n",
+      "output": "0.0 30\n"
+    },
+    {
+      "input": "2\n124 30\n124 30\n",
+      "output": "EZPZ\n"
+    },
+    {
+      "input": "14\n-61 632\n-37 465\n11 119\n-30 416\n-46 526\n-79 746\n89 432\n69 -293\n57 203\n59 223\n-42 492\n51 165\n-69 677\n-8 256\n",
+      "output": "-3.6088744257783 352.077180047999\n"
+    }
+  ],
+  "hint": "<p>선형 회귀식을 구하는 방식은 행렬을 이용하는 법, 미분을 이용하는 법 등 다양하지만 다음과 같은 방식을 소개하겠다.</p>\n<p><em><strong>&lt;과정&gt;</strong></em></p>\n<p>선형 회귀를 하기 위해 $f(a,b)= \\displaystyle\\sum_{i=1}^n (ax_i+b-y_i)^2$을 0과 가장 가깝게 만들라는 것은, 각 오차의 제곱들의 합이므로 각 항이 0보다 커, 해당 식을 최소로 만드는 $a$와 $b$를 찾으면 된다. 이때, 해당 값이 $a_2$와 $b_2$가 될 것인데 그 말은, $\\forall (a,b)\\in \\mathbb{R}^2,~f(a_2, b_2) \\le f(a,b)$를 만족해야 한다는 것이다. 즉, $b = b_2$일 때, $f(a,b_2)$의 최솟값일 때 $a$의 값이 결국 $a_2$가 될 것이고, 반대로 $a=a_2$일 때로 고정하면 $b_2$도 최솟값이다. 즉, 서로 다른 변수에 대해 고정하고 미분했을 때 0이 나오는 $a$와 $b$를 찾으면 된다. 즉, $\\frac{\\partial f}{\\partial a}=0$, $\\frac{\\partial f}{\\partial b}=0$을 만족시키는 $a$와 $b$를 찾으면 된다. 즉, 이를 Gradient 벡터라고 정의하고 $\\nabla f = \\left(\\frac{\\partial f}{\\partial a}, \\frac{\\partial f}{\\partial b}\\right) = \\mathbf{0}$을 구하면 된다.</p>\n<p>여기서 $S_x$를 $x_i$들의 합, $S_y$를 $y_i$들의 합, $S_{xy}$를 $x_iy_i$들의 합, $S_{xx}$를 $x_i^2$들의 합으로 정의하자. 수식으로 나타내면 $S_x = \\displaystyle\\sum_{i=1}^n{x_i}$, $S_y = \\displaystyle\\sum_{i=1}^n{x_i}$, $S_{xy} = \\displaystyle\\sum_{i=1}^n{x_iy_i}$, $S_{xx} = \\displaystyle\\sum_{i=1}^n{x_i^2}$가 된다. 우선 이 값들을 먼저 구해 놓은 뒤, Gradient 벡터를 보면 다음과 같다.</p>\n<p>$\\frac{\\partial f}{\\partial a} $$= \\frac{\\partial}{\\partial a}\\displaystyle\\sum_{i=1}^n (ax_i+b-y_i)^2 $$= \\displaystyle\\sum_{i=1}^n{\\frac{\\partial}{\\partial a}\\left( (ax_i+b-y_i)^2\\right)}$$= 2\\displaystyle\\sum_{i=1}^n{x_i(ax_i+b-y_i)}$$=2\\left(a\\displaystyle\\sum_{i=1}^n{x_i^2}+b\\displaystyle\\sum_{i=1}^n{x_i}-\\displaystyle\\sum_{i=1}^n{x_iy_i}\\right)$이고, 이 값이 $0$일 때 최적이므로, $S_{xx}a_2+S_xb_2=S_{xy}$을 만족한다. 이 식을 $①$이라 하자.</p>\n<p>마찬가지로 $\\frac{\\partial f}{\\partial b} $$= \\frac{\\partial}{\\partial b}\\displaystyle\\sum_{i=1}^n (ax_i+b-y_i)^2 $$= \\displaystyle\\sum_{i=1}^n{\\frac{\\partial}{\\partial b} \\left((ax_i+b-y_i)^2\\right)}$$= 2\\displaystyle\\sum_{i=1}^n{(ax_i+b-y_i)}$$=2\\left(a\\displaystyle\\sum_{i=1}^n{x_i}+b\\displaystyle\\sum_{i=1}^n{1}-\\displaystyle\\sum_{i=1}^n{y_i}\\right)$이고, 이 값이 $0$일 때 최적이므로, $S_xa_2+nb_2=S_y$을 만족한다. 이 식을 $②$라 하자.</p>\n<p>$\\left(①\\times n - ②\\times S_x\\right)$의 식을 변변 계산하면, $\\left(nS_{xx} - S_x^2\\right)a_2=nS_{xy}-S_xS_y$가 된다.</p>\n<p>여기서 $n = \\displaystyle\\sum_{i=1}^n{1}$으로 생각하면, $S_x^2\\le nS_{xx}$라는 것은 코시-슈바르츠 부등식을 통해 쉽게 알 수 있다.(혹은 분산이 0보다 크며, 제곱의 평균에서 평균의 제곱을 뺀 값이라는 성질을 통해 알 수 있다) 또한, 등호는 모든 $x$좌표가 같을 때라는 것 역시 등호 성립 조건에서 알 수 있다.</p>\n<p><em><strong>&lt;결론&gt;</strong></em></p>\n<ul>\n<li>만약 $S_x^2\\ne nS_{xx}$라면, $a_2=\\frac{nS_{xy}-S_xS_y}{nS_{xx}-S_x^2}$을 만족한다. 여기서 구한 $a_2$를 $②$의 $S_xa_2+nb_2=S_y$에 대입하면, $b_2=\\frac{S_y-a_2S_x}{n}$가 된다. 즉, 이 식에 값을 넣고 계산하여 최적해를 구할 수 있다.</li>\n<li>만약 $S_x^2=nS_{xx}$이라면, 코시-슈바르츠 부등식 혹은 분산과 0의 등호 조건과 같으므로, 모든 $x_i$의 좌표가 같다는 것을 의미하고, 그 값을 $x$라 하자. $f(a,b)$가 $a=a_2$이고 $b=b_2$일 때, 최솟값을 가진다면, $a=a_2+1$이고 $b=b_2-x$일 때도 $f(a,b) =\\displaystyle\\sum_{i=1}^n ((a_2+1) x+(b_2-x) -y_i)^2=\\displaystyle\\sum_{i=1}^n (a_2x+b_2-y_i)^2=f(a_2,b_2)$이므로, 마찬가지로 최솟값을 가진다. 즉, 가능한 $a_2$와 $b_2$ 쌍이 여러 개 존재한다.</li>\n</ul>\n<p><em><strong>&lt;추가 증명&gt;</strong></em></p>\n<p>추가로, Gradient 벡터(변수가 여러 개일 경우는 Jacobian Matrix)를 한 번 더 편미분해 구한 것을 Hessian Matrix라고 부른다. 이는 $H(f) = \\left( \\begin{matrix}     \\frac{\\partial^2}{\\partial a^2} &amp; \\frac{\\partial^2}{\\partial a\\partial b} \\\\     \\frac{\\partial^2}{\\partial b\\partial a} &amp; \\frac{\\partial^2}{\\partial b^2} \\\\ \\end{matrix} \\right)f$로 표현할 수 있다.</p>\n<p>이 경우 Hessian Matrix를 보면, $\\frac{\\partial^2}{\\partial a^2}f = 2S_{xx}$, $\\frac{\\partial^2}{\\partial a\\partial b}f =\\frac{\\partial^2}{\\partial b\\partial a}f =2S_x$, $\\frac{\\partial^2}{\\partial b^2}f =2n$이다. 즉, $\\left|H(f)\\right| = 4 \\left(nS_{xx} - S_x^2\\right) \\ge 0$이 변수 및 조건과 관계없이 성립한다는 사실을 알 수 있고, 이는 결국 점의 좌표 관계없이 $a$와 $b$ 두 축에 대해 convex 함을 의미하며, local minimum 즉, 위에서 구한 $a_2$와 $b_2$가 global minimum도 된다는 것을 알 수 있다.</p>",
+  "source": "University, 고려대학교, MatKor Cup, 제3회 고려대학교 MatKor Cup: 2023 Summer, Div. 2, University, 고려대학교, MatKor Cup, 제3회 고려대학교 MatKor Cup: 2023 Summer, Open Contest - Phase 2, kidw0124, cologne, leeminjae, lighter, shiftpsh, sshs29hanul, tlsdydaud1, utilforever, w8385, wnguscjf01, yijw0930",
+  "level": 6,
+  "tags": [
+    "math",
+    "implementation"
+  ],
+  "accepted_user_count": 217,
+  "submission_count": null,
+  "average_tries": 1.6359000205993652
+}

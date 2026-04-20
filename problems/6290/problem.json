@@ -1,0 +1,28 @@
+{
+  "id": 6290,
+  "title": "Pipes",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The city of Hotham is once again attacked by its most prominent villain, the Jester. This time his target is Hotham’s water supply. The fresh water of Hotham is stored in N reservoirs, which are connected by a set of M pipes. There is at least one path (potentially consisting of several pipes) from any reservoir to any other reservoir. Moreover, every pipe connects two different reservoirs, and there is at most one pipe between any pair of reservoirs.</p>\n<p>The Jester has breached some of the pipes and has been draining water from them. Following his playful nature, the Jester ensured that water drained from any one pipe amounts to an even number of cubic meters per second (m<sup>3</sup>/s). If 2d m<sup>3</sup>/s of water is drained from a pipe joining reservoirs u and v, then u and v lose d m<sup>3</sup>/s of water each.</p>\n<p>To make matters more confusing, the Jester actually pumps water into some of the breached pipes instead of draining from them. Again, the water pumped into any one pipe is an even number of m<sup>3</sup>/s. If 2p m<sup>3</sup>/s of water is pumped into a pipe joining reservoirs u and v, then u and v gain p m<sup>3</sup>/s of water each. The net change of water volume in each reservoir is the total sum of gains and losses acquired from the pipes connected to it. Formally, if a reservoir is connected to pipes from which 2d<sub>1</sub>, 2d<sub>2</sub>, . . . , 2d<sub>a</sub> m<sup>3</sup>/s of water is drained and to pipes into which 2p<sub>1</sub>, 2p<sub>2</sub>, . . . , 2p<sub>b</sub> m<sup>3</sup>/s of water is pumped, then the net change of water volume in this reservoir is p<sub>1</sub>+p<sub>2</sub>+. . .+p<sub>b</sub>−d<sub>1</sub>−d<sub>2</sub>−. . .−d<sub>a</sub>.</p>\n<p>The mayor of Hotham has installed sensors in the reservoirs, but not in the pipes. Therefore, he can observe the net change of water in each reservoir but does not how much water is drained from or pumped into each pipe.</p>\n<p>Your task is to write a program that helps the mayor. Given full information about the reservoir network and the net changes in each reservoir, your program should decide if this information is enough to uniquely determine the Jester’s plan. The plan can be determined uniquely if there is exactly one possibility for how much water is drained from or pumped into each pipe. Note that these amounts of water need not be the same for all pipes. If there is exactly one possibility, your program should print it.</p>",
+  "input": "<p>The first line of the input contains two integers: N, the number of reservoirs in Hotham, and M, the number of pipes. The following N lines contain an integer c<sub>i</sub> each: the net change in reservoir i (1 ≤ i ≤ N). Line i of these N lines contains c<sub>i</sub>. The following M lines contain two integers u<sub>i</sub> and v<sub>i</sub> each (1 ≤ i ≤ M). Each such line indicates that there is a pipe between resevoirs u<sub>i</sub> and v<sub>i</sub> (1 ≤ u<sub>i</sub>, v<sub>i</sub> ≤ N). Line i of these M lines contains u<sub>i</sub> and v<sub>i</sub>.</p>\n<p>The input always describes a set of reservoir changes that can be realized by the Jester.</p>",
+  "output": "<p>If the Jester’s plan cannot be determined uniquely, your program should output a single line containing 0. Otherwise, your program should output M lines with one integer x<sub>i</sub> each (1 ≤ i ≤ M). Line i should contain x<sub>i</sub>. If the Jester drains d<sub>i</sub> m<sup>3</sup>/s of water from the pipe between u<sub>i</sub> and v<sub>i</sub>, let x<sub>i</sub> = −d<sub>i</sub>. If the Jester pumps p<sub>i</sub> m<sup>3</sup>/s of water into the pipe between u<sub>i</sub> and v<sub>i</sub>, let x<sub>i</sub> = p<sub>i</sub>. If the Jester does not add or remove water from the pipe between u<sub>i</sub> and v<sub>i</sub>, let x<sub>i</sub> = 0.</p>",
+  "samples": [
+    {
+      "input": "4 3\n-1\n1\n-3\n1\n1 2\n1 3\n1 4\n",
+      "output": "2\n-6\n2\n"
+    },
+    {
+      "input": "4 5\n1\n2\n1\n2\n1 2\n2 3\n3 4\n4 1\n1 3\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2013",
+  "level": 21,
+  "tags": [
+    "graphs"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.5788999795913696
+}

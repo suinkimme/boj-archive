@@ -1,0 +1,27 @@
+{
+  "id": 15416,
+  "title": "Cordon Bleu",
+  "time_limit": "7 초",
+  "memory_limit": "512 MB",
+  "description": "<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:184px; width:160px\"/></p>\n<p>A Parisian entrepreneur has just opened a new restaurant “Au bon cordon bleu”, named after a famous French recipe. However, no one has any idea of which wine would be appropriate with such a dish. The entrepreneur plans to sample many different wines in order to build the wine menu.</p>\n<p>The various bottles of wine he plans to taste can be obtained from different wine merchants located in or around Paris. Being a very sensitive product, high-quality wine can only be transported by highly trained couriers on motorbikes. Therefore, those couriers are very expensive.</p>\n<p>A courier can be used for the transportation of several wine bottles, but can transport only one bottle at a time. All couriers get paid at the same fixed rate: one euro per kilometer. The distance function used is the Manhattan distance (also known as taxicab metric) of every individual segment of the trip: the distance from a point (x1, y1) to a point (x2, y2) is |x1 − x2| + |y1 − y2|.</p>\n<p>A courier in charge of transporting a single wine bottle will get paid as many euros as the sum of the following two (Manhattan) distances: from her base to the wine merchant place, and from the wine merchant place to the restaurant.</p>\n<p>Consider a more complex example: a courier in charge of transporting two wine bottles, one after the other. The amount paid will be the sum of the following distances: from his base to the location of the first bottle, then to the restaurant, then to the location of the second bottle, then to the restaurant.</p>\n<p>Help the entrepreneur minimize the costs of hiring the couriers. Given a set of Cartesian coordinates corresponding to available couriers, a set of Cartesian coordinates corresponding to the locations of the precious wine bottles they need to collect, and the location of the restaurant, compute the smallest number of kilometers that the couriers will be paid for. There is no obligation to use all available couriers, and bottles can be collected in an arbitrary order.</p>",
+  "input": "<p>The input comprises several lines, each consisting of integers separated with single spaces:</p>\n<ul>\n<li>The first line consists of the number N of wine bottles to collect and the number M of available couriers.</li>\n<li>The N following lines consist of the coordinates of each bottle as two integers x and y.</li>\n<li>The M following lines consist of the coordinates of each courier’s base as two integers x and y.</li>\n<li>The last line contains the coordinates of the restaurant as two integers x and y.</li>\n</ul>\n<p>Limits</p>\n<ul>\n<li>1 ≤ N ≤ 1 000;</li>\n<li>1 ≤ M ≤ 1 000;</li>\n<li>all coordinates (x, y) verify −1 000 ≤ x ≤ 1 000 and −1 000 ≤ y ≤ 1 000.</li>\n</ul>",
+  "output": "<p>A single integer: the smallest number of euros that needs to be paid to collect all bottles.</p>",
+  "samples": [
+    {
+      "input": "2 2\n1 0\n0 -1\n-1 1\n2 -1\n0 0\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": "<p>There might be more than one item at the same initial location. For example, it would be possible for two bottles, ten couriers, and the restaurant to share the same starting position.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"2.png\" style=\"height:248px; width:312px\"/></p>\n<p style=\"text-align:center\">On this example, only one courier (C<sub>2</sub>) is used to retrieve the two bottles B<sub>1</sub> and B<sub>2</sub>, and bring them to the restaurant R by performing the moves labeled 1 to 4 in succession. The total number of kilometers is 5. This is one of the optimal solutions.</p>",
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2017",
+  "level": 22,
+  "tags": [
+    "graphs",
+    "flow",
+    "mcmf",
+    "hungarian"
+  ],
+  "accepted_user_count": 40,
+  "submission_count": null,
+  "average_tries": 2.875
+}

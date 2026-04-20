@@ -1,0 +1,33 @@
+{
+  "id": 14642,
+  "title": "Son of Pipe Stream",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Two years ago, you helped install the nation’s very first Flubber pipe network in your hometown, to great success. Polls show that everyone loves having their own Flubber dispenser in their kitchen, and now a few enterprising citizens have discovered a use for it. Apparently Flubber, when mixed with water, can help extinguish fires! This is a very timely discovery, as out-of-control fires have lately been surprisingly common.</p>\n<p>Your hometown’s city council would like to make use of this property of Flubber by creating the Flubber/water mixture at a centrally located station. This station, which is called the Flubber Department (FD) will also have specialized employees trained to travel to the locations of fires and make use of their processed Flubber to control the blazes.</p>\n<p>The pipes are already in place all around the city. You are given a layout of the pipes, and must determine how to route Flubber from the Flubber factory and water from a local source through the pipes to the FD.</p>\n<p>Note that both Flubber and water will be flowing through the same network of pipes, perhaps even the same pipe. All pipes are bidirectional, but Flubber and water cannot move in opposite directions through the same pipe. Furthermore, if both liquids are sent in the same direction through the same pipe, they will inevitably mix. Therefore the nodes in the network have been equipped with special membranes and filters that enable you to separate and reorganize all incoming mixtures as you see fit. The network is a closed system, so the total rate of each fluid going into a node must equal the total rate of that fluid going out, except at the source of that fluid and the destination (the FD).</p>\n<p>Each pipe has a certain capacity. Flubber, being somewhat sluggish, has a viscosity value v, so a pipe that can transport v liters/second of water can transport only 1 liter/second of Flubber. The pipe’s capacity scales linearly for mixtures of the two. To be precise, if c denotes the water capacity of the pipe and f and w are the rates of Flubber and water moving through the pipe (all measured in liters/second), then the capacity constraint is given by the inequality v · f + w ≤ c.</p>\n<p>Your main concern is balancing the mixture that reaches the FD. You would like as much total liquid as possible, but you also need a sufficient amount of water – because undiluted Flubber is highly flammable – and a sufficient amount of Flubber – because it would not be much of a “Flubber Department” without Flubber! You have come up with a formula to measure the “value” of the final mixture: F<sup>a</sup> · W<sup>1−a</sup>, where F is the rate of incoming Flubber in liters/second, W is the rate of incoming water in liters/second, and a is a given constant between 0 and 1.</p>\n<p>Determine the maximum value of F<sup>a</sup> · W<sup>1−a</sup> that can be achieved and how to route the Flubber and water to achieve it.</p>",
+  "input": "<p>The input starts with a line containing the number of locations n (3 ≤ n ≤ 200), the number of pipes p (n − 1 ≤ p ≤ n(n − 1)/2), and the real values v (1 ≤ v ≤ 10) and a (0.01 ≤ a ≤ 0.99). Locations are numbered from 1 to n; 1 is the Flubber factory, 2 is the water source, and 3 is the FD. The real values have at most 10 digits after the decimal point.</p>\n<p>The following p lines each describe one pipe. Each line contains two integers j and k (1 ≤ j &lt; k ≤ n), giving the locations connected by the pipe, and an integer c (1 ≤ c ≤ 10), giving the water capacity of the pipe in liters/second.</p>\n<p>No two pipes connect the same pair of locations. Furthermore, it is guaranteed that the network is connected.</p>",
+  "output": "<p>First, for each pipe (in the order given in the input), display two values: the rate of Flubber moving through it, and the rate of water moving through it (negative if the liquid is moving from k to j), such that F<sup>a</sup> ·W<sup>1−a</sup> is maximized. Then display that maximum value accurate to within an absolute error of 10<sup>−4</sup>.</p>\n<p>If there are multiple solutions, any one will be accepted. All constraints (not sending Flubber and water in opposite directions along the same pipe, flow conservation, pipe capacities, and consistency between the constructed solution and its claimed value) must be satisfied within an absolute error of 10<sup>−4</sup>.</p>",
+  "samples": [
+    {
+      "input": "6 6 3.0 0.66\n2 4 8\n4 6 1\n3 6 1\n4 5 5\n1 5 7\n3 5 3\n",
+      "output": "0.000000000 1.360000000\n0.000000000 1.000000000\n0.000000000 -1.000000000\n0.000000000 0.360000000\n0.880000000 0.000000000\n-0.880000000 -0.360000000\n1.02037965897\n"
+    },
+    {
+      "input": "5 5 1.0 0.5\n1 2 10\n2 3 10\n3 4 10\n4 5 10\n3 5 10\n",
+      "output": "5 0\n5 5\n4.2 3.14159\n4.2 3.14159\n-4.2 -3.14159\n5\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2017, xiaowuc1",
+  "level": 24,
+  "tags": [
+    "binary_search",
+    "calculus",
+    "flow",
+    "implementation",
+    "math",
+    "graphs"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 2.5
+}

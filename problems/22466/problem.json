@@ -1,0 +1,34 @@
+{
+  "id": 22466,
+  "title": "marukaite",
+  "time_limit": "8 초",
+  "memory_limit": "512 MB",
+  "description": "<p>太郎君は小学生で、チラシの裏に落書きをしています。 ある時、太郎君は次のゲームを思いつきました。</p>\n<ul>\n<li><var>n×n</var>の格子状のマス目を書いておきます。</li>\n<li>それぞれのマス目の初期状態は、丸印が書かれているか、書かれていないかのどちらか一方です。</li>\n<li>これらの丸印を消したり書いたりして最終的にどの一列を見ても必ずちょうど1つのみの丸印が、どの一行を見ても必ず1つのみの丸印が存在するようにすることが目標であり、この状態にすればゲームをクリアしたことになります。</li>\n</ul>\n<p>太郎君はこのゲームを思いつきましたが、太郎君はこのゲームをクリアするのに大変時間がかかってしまいます。そこで、大学生であるあなたに助けを求めました。 太郎君の兄であり大学生であるあなたの仕事は以下の通りです。 厳密な状況を考えるために、あるマス目に丸印を書き込むコスト、あるマス目にある丸印を消すコストをあなたは導き出しました。このコストを用いてこのゲームをクリアするためにかかる操作のコストを最小化するような手順を考える。 このとき、最小のコストおよびそのコストを達成するような手順を出力するプログラムを書いてください。 出力については、最小コストを達成する手順なら、どのような操作、順番でも出力してもよいものとする。</p>",
+  "input": "<pre>\n<var>n</var>\n<var>W<sub>11</sub></var> <var>W<sub>12</sub></var> .. <var>W<sub>1n</sub></var>\n<var>W<sub>21</sub></var> <var>W<sub>22</sub></var> .. <var>W<sub>2n</sub></var>\n..\n<var>W<sub>n1</sub></var> <var>W<sub>n2</sub></var> .. <var>W<sub>nn</sub></var>\n<var>E<sub>11</sub></var> <var>E<sub>12</sub></var> .. <var>E<sub>1n</sub></var>\n<var>E<sub>21</sub></var> <var>E<sub>22</sub></var> .. <var>E<sub>2n</sub></var>\n..\n<var>E<sub>n1</sub></var> <var>E<sub>n2</sub></var> .. <var>E<sub>nn</sub></var>\n<var>F<sub>1</sub></var>(<var>n</var>文字)\n<var>F<sub>2</sub></var>(<var>n</var>文字)\n..\n<var>F<sub>n</sub></var>(<var>n</var>文字)\n</pre>\n<ul>\n<li><var>n</var>は太郎君の作ったマス目が一辺にいくつあるかを表す</li>\n<li><var>W<sub>ij</sub></var>は上から<var>i</var>番目、左から<var>j</var>番目のマス目に丸印を書き込むコストを表す</li>\n<li><var>E<sub>ij</sub></var>は上から<var>i</var>番目、左から<var>j</var>番目のマス目に書かれてある丸印を消すコストを表す</li>\n<li><var>F<sub>i</sub></var>は上から<var>i</var>番目の行のマス目の初期状態を表す</li>\n<li><var>F<sub>i</sub></var>の左から<var>j</var>文字目について\n\t<ul>\n<li>'o'のとき、上から<var>i</var>番目、左から<var>j</var>番目のマス目に丸印が書かれてあることを表す。</li>\n<li>'.'のとき、上から<var>i</var>番目、左から<var>j</var>番目のマス目が空白であることを表す。</li>\n</ul>\n</li>\n</ul>",
+  "output": "<pre>\n<var>mincost</var>\n<var>cnt</var>\n<var>R<sub>1</sub></var> <var>C<sub>1</sub></var> <var>operate<sub>1</sub></var>\n<var>R<sub>2</sub></var> <var>C<sub>2</sub></var> <var>operate<sub>2</sub></var>\n..\n<var>R<sub>cnt</sub></var> <var>C<sub>cnt</sub></var> <var>operate<sub>cnt</sub></var>\n</pre>\n<ul>\n<li><var>mincost</var>は、太郎君のゲームをクリアするために必要な最小コストを表す。</li>\n<li><var>mincost</var>は書き込み操作、消去操作で発生するコストの総和で計算される。</li>\n<li><var>cnt</var> : <var>mincost</var>のコストを達成する操作を行った回数を表す</li>\n<li><var>k</var>回目<var>(1≤k≤cnt)</var>に実行する操作は<var>k+2</var>行目に記述する</li>\n<li><var>k</var>回目<var>(1≤k≤cnt)</var>の操作に対して\n\t<ul>\n<li>上から<var>i</var>番目のマス目、左から<var>j</var>番目のマス目に対して行ったものとすると</li>\n<li><var>R<sub>kkである。 </sub></var></li>\n<li>この操作が丸印を消す操作であるならば<var>operate<sub>k</sub></var> = \"erase\"とせよ</li>\n<li>この操作が丸印を書き込む操作であるならば<var>operate<sub>k</sub></var> = \"write\"とせよ</li>\n<li><var>R<sub>k</sub>,C<sub>k</sub>,operate<sub>k</sub></var>は一行に空白区切りで出力しなければならない</li>\n</ul>\n</li>\n<li>丸印の書かれてあるマス目に対して丸印を記述する操作、および丸印が書かれていないマス目に対して丸印を消去する操作をした場合はWrongAnswerである</li>\n<li><var>cnt</var>個の操作にかかるコストの総和が<var>mincost</var>に一致しないときはWrongAnswerである</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3\n1 1 1\n1 1 1\n1 1 1\n1 1 1\n1 1 1\n1 1 1\no.o\n...\n.o.\n",
+      "output": "2\n2\n1 3 erase\n2 3 write\n"
+    },
+    {
+      "input": "4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\noooo\noooo\noooo\noooo\n",
+      "output": "30\n12\n1 1 erase\n1 2 erase\n1 3 erase\n2 1 erase\n2 2 erase\n2 4 erase\n3 1 erase\n3 3 erase\n3 4 erase\n4 2 erase\n4 3 erase\n4 4 erase\n"
+    },
+    {
+      "input": "3\n1 1 1\n1 1 1\n1 1 1\n1 1 1\n1 1 1\n1 1 1\no..\n.o.\n..o\n",
+      "output": "0\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2012 Day 2",
+  "level": 18,
+  "tags": [
+    "graphs",
+    "flow",
+    "mcmf"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.5455000400543213
+}

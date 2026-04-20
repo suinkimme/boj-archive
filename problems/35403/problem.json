@@ -1,0 +1,40 @@
+{
+  "id": 35403,
+  "title": "Gridoland Power Gauge",
+  "time_limit": "5.5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Gridoland is a city consisting of a grid of $N \\times M$ blocks, designed for robust energy distribution. The city’s power supply is a dam that can effectively generate an arbitrarily large current, and it is connected to the top-left block, at coordinates $(1,1)$. The mayor is planning to host a big, energy-hungry celebration at the city hall, which is located at coordinates $(N,M)$, and she has hired you to help the planning committee.</p>\n<p>Each block in Gridoland has its own energy transformer. Each transformer has an initial capacity to pass current, but this capacity changes linearly over time at a possibly different rate for each transformer. To help your job, technicians have determined each transformer’s initial capacity $C_{ij}$ and its rate of change $R_{ij}$ (which can be positive, negative, or zero). Therefore, you know that the capacity of the transformer on block $(i,j)$ at minute $t$ will be $C_{ij} + t \\cdot R_{ij}$.</p>\n<p>Current flows within the city thanks to a number of power cables. All power cables in Gridoland are made of a superconductor material that can pass arbitrarily high current in either direction. The mayor herself handed you the city’s connectivity map, containing all pairs of (vertically or horizontally) adjacent blocks that are connected by a power cable.</p>\n<p>During the celebration there will be no energy consumption in any block except for the city hall, so all the current entering the energy grid will be used for the celebration. The celebration must happen at most $K$ minutes in the future, because the mayor’s term will end at that time. You must answer the following question to the planning committee: what will be the grid’s peak capacity to supply the celebration at an integer number of minutes $t$ in the range $[0,K]$?</p>\n<p>At each moment, the grid’s capacity from the city hall’s point of view is equal to the maximum amount of current that can flow from the power supply to the city hall. The current entering each transformer is limited by that transformer’s capacity, and by the constraint that all of the current that enters a block has to leave (except for the city hall, which during the celebration will consume all energy it receives).</p>",
+  "input": "<p>The first line contains four integers $N$, $M$, $P$ and $K$, ($2 \\le N, M \\le 300$, $P \\ge 0$ and $0 \\le K \\le 10^{12}$). The values $N$ and $M$ indicate the city dimensions, $P$ represents the number of power cables in the city’s connectivity map, and $K$ is the number of minutes left in the mayor’s term.</p>\n<p>Each of the next $N$ lines contains $M$ integers. In the $i$-th line, the $j$-th integer is $C_{ij}$, the initial capacity of the transformer on block $(i,j)$ ($0 \\le C_{ij} \\le 10^{12}$ for $i = 1, 2, \\ldots, N$ and $j = 1, 2, \\ldots, M$).</p>\n<p>Each of the next $N$ lines contains $M$ integers. In the $i$-th line, the $j$-th integer is $R_{ij}$, the rate of change of the transformer on block $(i,j)$ ($-10^{6} \\le R_{ij} \\le 10^{6}$ for $i = 1, 2, \\ldots, N$ and $j = 1, 2, \\ldots, M$).</p>\n<p>Each of the next $P$ lines describes a bidirectional power cable with four integers $X_1$, $Y_1$, $X_2$ and $Y_2$ ($1 \\le X_1, X_2 \\le N$ and $1 \\le Y_1, Y_2 \\le M$), indicating that the cable connects block $(X_1,Y_1)$ with block $(X_2,Y_2)$.</p>\n<p>It is guaranteed that all transformers have a non-negative capacity at every moment in the range $[0,K]$, that is, $C_{ij} + t \\cdot R_{ij} \\ge 0$ for every block $(i,j)$ and every $t \\in [0,K]$.</p>\n<p>It is guaranteed that each cable connects a different pair of blocks, and that any two blocks connected by a cable share a side.</p>",
+  "output": "<p>Output a single line with an integer indicating the grid’s peak capacity to supply the celebration at an integer number of minutes $t$ in the range $[0,K]$.</p>",
+  "samples": [
+    {
+      "input": "2 2 3 10\n5 4\n5 6\n0 0\n0 0\n2 1 1 1\n1 1 1 2\n1 2 2 2\n",
+      "output": "4\n"
+    },
+    {
+      "input": "2 3 6 12\n25 1 18\n10 2 50\n0 2 -1\n1 0 -2\n1 1 1 2\n1 2 1 3\n1 3 2 3\n1 1 2 1\n2 1 2 2\n2 2 2 3\n",
+      "output": "14\n"
+    },
+    {
+      "input": "2 2 1 1000000000000\n5 4\n5 6\n0 0\n0 0\n2 1 1 1\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2025",
+  "level": 26,
+  "tags": [
+    "graphs",
+    "binary_search",
+    "shortest_path",
+    "dijkstra",
+    "flow",
+    "ternary_search",
+    "mfmc",
+    "planar_graph",
+    "dual_graph"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 3
+}

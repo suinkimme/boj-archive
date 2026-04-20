@@ -1,0 +1,36 @@
+{
+  "id": 24687,
+  "title": "Casual Dancers",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Three friends are studying random walks. To delve deeper into the topic, they have decided to play a game.</p>\n<p>Initially, the friends stand at integer points $x_1, x_2, x_3$ on the number line.</p>\n<p>The game lasts for $k$ seconds.</p>\n<p>Each second, an integer $j$ is chosen uniformly at random from the set $\\{ 1, 2, 3 \\}$. Then, friend $j$ increases their coordinate by $1$ with probability $p$ percent, or decreases their coordinate by $1$ with probability $(100 - p)$ percent.</p>\n<p>Note that multiple friends can stand at the same point, both initially and during the game.</p>\n<p>The <em>stretch</em> is defined as the length of the shortest segment on the number line containing all three friends.</p>\n<p>Find the expected stretch after $k$ seconds, modulo $998\\,244\\,353$ (see the Output section for details).</p>",
+  "input": "<p>The first line contains three integers $x_1$, $x_2$, and $x_3$ ($-10^5 \\le x_i \\le 10^5$).</p>\n<p>The second line contains a single integer $k$ ($1 \\le k \\le 2 \\cdot 10^5$).</p>\n<p>The third line contains a single integer $p$ ($0 \\le p \\le 100$).</p>",
+  "output": "<p>Print the expected stretch after $k$ seconds, modulo $998\\,244\\,353$.</p>\n<p>Formally, let $M = 998\\,244\\,353$. It can be shown that the required expected stretch can be expressed as an irreducible fraction $\\frac{p}{q}$, where $p$ and $q$ are integers and $q \\not \\equiv 0 \\pmod{M}$. Print the integer equal to $p \\cdot q^{-1} \\bmod M$. In other words, print such an integer $x$ that $0 \\le x &lt; M$ and $x \\cdot q \\equiv p \\pmod{M}$.</p>",
+  "samples": [
+    {
+      "input": "0 0 0\n1\n58\n",
+      "output": "1\n"
+    },
+    {
+      "input": "1 2 2\n1\n100\n",
+      "output": "332748119\n"
+    },
+    {
+      "input": "5 2 3\n4\n50\n",
+      "output": "160212060\n"
+    }
+  ],
+  "hint": "<p>In the first example test, regardless of which friend and direction are chosen, the stretch will be equal to $1$.</p>\n<p>In the second example test, the actual expected stretch is $\\frac{4}{3}$.</p>\n<p>In the third example test, the actual expected stretch is $\\frac{271}{81}$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2022, Day 7: ICPC Camp Day 2, Gennady Korotkevich Contest 6, Contest, Open Cup, 2021/2022 Season, Stage 13: Grand Prix of Gomel",
+  "level": 22,
+  "tags": [
+    "exponentiation_by_squaring",
+    "fft",
+    "linearity_of_expectation",
+    "math",
+    "probability"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.083299994468689
+}

@@ -1,0 +1,25 @@
+{
+  "id": 16767,
+  "title": "Convention II",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Despite long delays in airport pickups, Farmer John's convention for cows interested in eating grass has been going well so far. It has attracted cows from all over the world.</p>\n<p>The main event of the conference, however, is looking like it might cause Farmer John some further scheduling woes. A very small pasture on his farm features a rare form of grass that is supposed to be the tastiest in the world, according to discerning cows. As a result, all of the $N$ cows at the conference ($1 \\leq N \\leq 10^5$) want to sample this grass. This will likely cause long lines to form, since the pasture is so small it can only accommodate one cow at a time.</p>\n<p>Farmer John knows the time $a_i$ that each cow $i$ plans to arrive at the special pasture, as well as the amount of time $t_i$ she plans to spend sampling the special grass, once it becomes her turn. Once cow $i$ starts eating the grass, she spends her full time of $t_i$ before leaving, during which other arriving cows need to wait. If multiple cows are waiting when the pasture becomes available again, the cow with the highest seniority is the next to be allowed to sample the grass. For this purpose, a cow who arrives right as another cow is finishing is considered \"waiting\". Similarly, if a number of cows all arrive at exactly the same time while no cow is currently eating, then the one with highest seniority is the next to eat.</p>\n<p>Please help FJ compute the maximum amount of time any cow might possibly have to wait in line (between time $a_i$ and the time the cow begins eating).</p>",
+  "input": "<p>The first line of input contains $N$. Each of the next $N$ lines specify the details of the $N$ cows in order of seniority (the most senior cow being first). Each line contains $a_i$ and $t_i$ for one cow. The $t_i$'s are positive integers each at most $10^4$, and the $a_i$'s are positive integers at most $10^9$.</p>",
+  "output": "<p>Please print the longest potential waiting time over all the cows.</p>",
+  "samples": [
+    {
+      "input": "5\n25 3\n105 30\n20 50\n10 17\n100 10\n",
+      "output": "10\n"
+    }
+  ],
+  "hint": "<p>In this example, we have 5 cows (numbered 1..5 according to their order in the input). Cow 4 is the first to arrive (at time 10), and before she can finish eating (at time 27) cows 1 and 3 both arrive. Since cow 1 has higher seniority, she gets to eat next, having waited 2 units of time beyond her arrival time. She finishes at time 30, and then cow 3 starts eating, having waited for 10 units of time beyond her starting time. After a gap where no cow eats, cow 5 arrives and then while she is eating cow 2 arrives, eating 5 units of time later. The cow who is delayed the most relative to her arrival time is cow 3.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2018-2019 Season, USACO 2018 December Contest, Silver",
+  "level": 14,
+  "tags": [
+    "data_structures",
+    "priority_queue"
+  ],
+  "accepted_user_count": 289,
+  "submission_count": null,
+  "average_tries": 1.871999979019165
+}

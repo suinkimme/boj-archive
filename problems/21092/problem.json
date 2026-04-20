@@ -1,0 +1,28 @@
+{
+  "id": 21092,
+  "title": "Rectangle Painting",
+  "time_limit": "12 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There is an cell grid infinite in left, right, and upwards directions (all the cells with coordinates $(x, y)$ with $x \\in \\mathbb{Z}$, $y \\ge 0$ exist). Initially all the cells are white. You have to process $q$ queries of two types:</p>\n<ol>\n<li>$y_{i}$ $l_{i}$ $r_{i}$: paint all cells $(x, y_{i})$ for $l_{i} \\le x \\le r_{i}$ black. If the cell is already black, its color doesn't change.</li>\n<li>$l_{i}$ $r_{i}$: consider all cells with $x$ coordinate on the segment $[l_{i}; r_{i}]$. Find the highest cell such that all cells exactly under it are black. Formally, you have to find maximal $h$ such that $\\exists \\: x \\in [l_{i}; r_{i}] \\: \\forall \\: y \\in [0;h)$ cell $(x, y)$ is black.</li>\n</ol>\n<p>To enforce processing the queries online they are encrypted using previous answers.</p>",
+  "input": "<p>The first line contains one integer $q$ ($1 \\le q \\le 10^{5}$) --- the number of queries to process.</p>\n<p>The next $q$ lines will contain encrypted descriptions of queries. Let $S$ be the sum of answers to all queries of second type processed so far.</p>\n<p>Each description has form either $1$ $(y_{i} \\oplus S)$ $(l_{i} \\oplus S)$ $(r_{i} \\oplus S)$ or $2$ $(l_{i} \\oplus S)$ $(r_{i} \\oplus S)$. It is guaranteed that $0 \\le y_{i} \\le 2 \\cdot 10^{5}$, $0 \\le l_{i} \\le r_{i} \\le 2 \\cdot 10^{5}$. Note that the guarantees are given on parameters after decryption, the numbers in input might not fit in 32-bit integers.</p>\n<p>Don't forget to add the new answer to $S$ after each query of the second type.</p>",
+  "output": "<p>Print the answers to all queries of the second type on separate lines.</p>",
+  "samples": [
+    {
+      "input": "10\n1 0 1 1\n2 0 10\n1 1 9 9\n1 0 0 6\n1 0 3 9\n2 5 5\n1 1 5 5\n2 5 5\n2 0 5\n1 7 6 3\n",
+      "output": "1\n0\n2\n2\n"
+    }
+  ],
+  "hint": "<table class=\"table table-bordered th-center td-center table-center-50\">\n<thead>\n<tr>\n<th>S</th>\n<th>Encrypted</th>\n<th>Query</th>\n<th>Ans</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>0</td>\n<td>1 0 1 1</td>\n<td>1 0 1 1</td>\n<td>-</td>\n</tr>\n<tr>\n<td>0</td>\n<td>2 0 10</td>\n<td>2 0 10</td>\n<td>1</td>\n</tr>\n<tr>\n<td>1</td>\n<td>1 1 9 9</td>\n<td>1 0 8 8</td>\n<td>-</td>\n</tr>\n<tr>\n<td>1</td>\n<td>1 0 0 6</td>\n<td>1 1 1 7</td>\n<td>-</td>\n</tr>\n<tr>\n<td>1</td>\n<td>1 0 3 9</td>\n<td>1 1 2 8</td>\n<td>-</td>\n</tr>\n<tr>\n<td>1</td>\n<td>2 5 5</td>\n<td>2 4 4</td>\n<td>0</td>\n</tr>\n<tr>\n<td>1</td>\n<td>1 1 5 5</td>\n<td>1 0 4 4</td>\n<td>-</td>\n</tr>\n<tr>\n<td>1</td>\n<td>2 5 5</td>\n<td>2 4 4</td>\n<td>2</td>\n</tr>\n<tr>\n<td>3</td>\n<td>2 0 5</td>\n<td>2 3 6</td>\n<td>2</td>\n</tr>\n<tr>\n<td>5</td>\n<td>1 7 6 3</td>\n<td>1 2 3 6</td>\n<td>-</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 5: Almost Retired Dandelion Contest, ICPC Camp Contest 2, Contest, Open Cup, 2020/2021 Season, Stage 11: Grand Prix of Nizhny Novgorod",
+  "level": 29,
+  "tags": [
+    "data_structures",
+    "lazyprop",
+    "segtree",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.5
+}

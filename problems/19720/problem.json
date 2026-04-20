@@ -1,0 +1,22 @@
+{
+  "id": 19720,
+  "title": "Jet Trains",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The year is 3019. By now the humanity is living in cities floating in the atmosphere on air balloons and jet engines. There are $n$ cities on the planet connected by the jet trains network. If the cities $a$ and $b$ are connected by the train route, people can travel between them in any direction. The $a$-th city can be reached from the $b$-th city if and only if there is a path between $a$ and $b$, where each edge of the path represent a train route.</p>\n<p>People of 3019 love to be friends, and it happens so people from the same city have many friends in common. Let us say that the friendship connects not pairs of people, but pairs of cities. The friendship of two cities is mutual.</p>\n<p>Sometimes people from a city may decide to organize a celebration and invite all the people from friendly cities. If the celebration is announced to be in city $a$, all people from the friendly cities of $a$ try to get to $a$ using jet trains network. People from all friendly cities of $a$ that can reach the city $a$ join the celebration.</p>\n<p>It has been decided to create a special system called \"Celebration 3019\" to evaluate the number of people on a certain celebration. There is information about cities which are friends, and the current state of the jet trains network. The system must handle the following requests: \"If the celebration is announced in the city $v$, people from how many cities will attend it?\". Besides, there should be an option to add an information about new pair of friendly cities, and about new jet train route. Fortunately, the train routes never cancel and once friended, the cities remain friends forever.</p>\n<p>Please help the mankind to develop such a system.</p>",
+  "input": "<p>The first line contains three integers $n$, $m$, $k$ --- number of cities, number of pairs of friendly cities and number of jet trains routes ($1 \\le n \\le 10^5$, $0 \\le m, k \\le 10^5$). </p>\n<p>The following $m$ lines contain two integers $a$ and $b$ each ($1 \\le a, b \\le n$, $a \\neq b$) --- pairs of friendly cities. It is guaranteed that each pair is listed at most once.</p>\n<p>The following $k$ lines contain two integers $a$, $b$ ($1 \\le a, b \\le n$, $a \\neq b$) --- pairs of cities connected by the jet train routes. There is at most one route between each pair of cities.</p>\n<p>The next line contains the integer $q$ ($0 \\le q \\le 10^5$) --- the number of requests to handle, and the following $q$ lines represent requests.</p>\n<ul>\n<li>Request \"<code>T</code> $a$ $b$\" means that there is now a jet train route between $a$ and $b$ ($1 \\le a, b \\le n$, $a \\neq b$). It is guaranteed that there was no direct route between $a$ and $b$ before the request.</li>\n<li>Request \"<code>F</code> $a$ $b$\" means that $a$ and $b$ are friends now ($1 \\le a, b \\le n$, $a \\neq b$). It is guaranteed that $a$ and $b$ were not friends before the request.</li>\n<li>Request \"<code>?</code> $v$\" means that a request is made to the system: \"If the celebraion is announced in the city $v$, people from how many cities will attend it?\" ($1 \\le v \\le n$)</li>\n</ul>",
+  "output": "<p>For each request \"<code>?</code> $v$\" print the answer to it on a new line.</p>",
+  "samples": [
+    {
+      "input": "4 2 2\n1 2\n1 3\n1 2\n1 4\n5\n? 1\nF 4 1\n? 1\nT 4 3\n? 1\n",
+      "output": "1\n2\n3\n"
+    }
+  ],
+  "hint": "<p>The answer to the first request equals one, because only one of the cities ${2, 3}$ has a train route to the city $1$.</p>\n<p>The answer to the second request equals two, because before the request cities $1$ and $4$ became friends, and they had a train route connecting them.</p>\n<p>The answer to the third request equals three, because there is now possible to travel from the city $3$ to the city $1$ using trains network: first, people can travel to city $4$, and then to city $1$.</p>",
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia High School Programming Contest, Russia High School Programming Contest 2019",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 3.6666998863220215
+}

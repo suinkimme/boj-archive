@@ -1,0 +1,39 @@
+{
+  "id": 24959,
+  "title": "Reversible Compression",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Data compression is an essential technology in our information society. It is to encode a given string into a (preferably) more compact code string so that it can be stored and/or transferred efficiently.</p>\n<p>You are asked to design a novel compression algorithm such that even a code string is reversed it can be decoded into the given string.</p>\n<p>Currently, you are considering the following specification as a candidate.</p>\n<ul>\n<li>A given string is a sequence of decimal digits, namely, <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, and <code>9</code>.</li>\n<li>A code string is a sequence of code words, and a code word consists of two decimal digits <code>A</code> and <code>L</code>. So, a code string is a sequence of even number of decimal digits.</li>\n<li>A code string <code class=\"no-padding-right\">A</code><sub>$1$</sub><code class=\"no-padding-right\">L</code><sub>$1$</sub> · · · <code class=\"no-padding-right\">A</code><sub>$k$</sub><code class=\"no-padding-right\">L</code><sub>$k$</sub> is decoded into a string by the following procedure. Here, for brevity, a decimal digit (<code class=\"no-padding-right\">A</code><sub>$i$</sub> or <code class=\"no-padding-right\">L</code><sub>$i$</sub>) is also treated as the single digit decimal integer it represents.\n\t<ol>\n<li>$i$ ← 1</li>\n<li>while ($i$ is not greater than $k$) {</li>\n<li>    if (<code class=\"no-padding-right\">A</code><sub>$i$</sub> is zero) { output <code>L</code><sub>$i$</sub> }</li>\n<li>    else if (<code class=\"no-padding-right\">L</code><sub>$i$</sub> is zero) { do nothing }</li>\n<li>    else if (<code class=\"no-padding-right\">A</code><sub>$i$</sub> is larger than the number of digits output so far) { raise an error }</li>\n<li>    else {</li>\n<li>        repeat <code class=\"no-padding-right\">L</code><sub>$i$</sub> times {</li>\n<li>            output the <code class=\"no-padding-right\">A</code><sub>$i$</sub>-th of the already output digits counted backwards</li>\n<li>        }</li>\n<li>    }</li>\n<li>    $i$ ← $i + 1$</li>\n<li>}</li>\n</ol>\n</li>\n</ul>\n<p>For example, a code string <code>000125</code> is decoded into a string <code>0101010</code> as follows:</p>\n<ol>\n<li>The first code word <code>00</code> outputs <code>0</code>.</li>\n<li>The second code word <code>01</code> outputs <code>1</code>.</li>\n<li>The first digit <code>2</code> of the last code word <code>25</code> means that the second digit in the already decoded digits, counted backwards, should be output. This should be repeated five times. For the first repetition, the decoded digits so far are <code>0</code> and <code>1</code>, and thus the second last digit is <code>0</code>, which is output. For the second repetition, digits decoded so far are <code>0</code>, <code>1</code>, and <code>0</code>, and the second last is <code>1</code>, which is output. Repeating this three more times outputs <code>0</code>, <code>1</code>, and <code>0</code>.</li>\n</ol>\n<p>A sequence of code words that raises no error is a valid code string. A valid code string is said to be <em>reversible</em> when its reverse is also valid and both the original and its reverse are decoded into the same string.</p>\n<p>For example, the code string <code>000125</code> is not reversible, because its reverse, <code>521000</code>, raises an error and thus is not valid. The code string <code>0010</code> is not reversible though its reverse is valid. It is decoded into <code>0</code>, but its reverse <code>0100</code> is decoded into <code>10</code>. On the other hand, <code>0015599100</code> is reversible, because this and its reverse, <code>0019955100</code>, are both decoded into <code>00000000000000000</code>.</p>\n<p>You want to evaluate the performance of this compression method when applied to a variety of cases. Your task is to write a program that, for an arbitrary given digit string, finds the shortest reversible code string that is decoded into the given string.</p>",
+  "input": "<p>The input consists of a single line containing a non-empty string $s$ of decimal digits. The length of $s$ does not exceed 500.</p>",
+  "output": "<p>Output the shortest reversible code string that is decoded into $s$. If there are multiple solutions with the same shortest length, output the earliest in the lexicographic order. Note that it is easily shown that a reversible code string always exists for any input string (e.g., see Sample Output 4).</p>",
+  "samples": [
+    {
+      "input": "00000000000000000\n",
+      "output": "0015599100\n"
+    },
+    {
+      "input": "0101010\n",
+      "output": "000122221000\n"
+    },
+    {
+      "input": "123123123123123123123123123123\n",
+      "output": "01020336699993302010\n"
+    },
+    {
+      "input": "123456789\n",
+      "output": "010203040506070809908070605040302010\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2021 Asia Yokohama Regional",
+  "level": 19,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "traceback"
+  ],
+  "accepted_user_count": 30,
+  "submission_count": null,
+  "average_tries": 2.5
+}

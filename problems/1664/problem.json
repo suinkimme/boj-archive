@@ -1,0 +1,34 @@
+{
+  "id": 1664,
+  "title": "주민등록번호",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>내일이면 대한민국에 새로운 대통령이 취임하게 된다. 새로운 정부는, 아래와 같이 19자리로 된 새로운 주민등록번호 체계를 도입한다고 한다.</p>\r\n\r\n<p>DDMMYYYYAAAAAAAAAAC</p>\r\n\r\n<p>YYYY는 생년, MM은 생월, DD는 생일을 의미한다. 생년은 0001 이상 9999 이하의 수가 되며, MM은 01 이상 12 이하, DD는 01 이상 31 이하이다. 1, 3, 5, 7, 8, 10, 12월은 31일까지, 4, 6, 9, 11월은 30일까지이며, 2월은 평년은 28일까지, 윤년은 29일까지이다. 윤년이란 YYYY가 (1) 100의 배수를 제외한 4의 배수이거나 (2) 400의 배수인 경우가 해당된다.</p>\r\n\r\n<p>A로 된 10자리는 어떤 숫자라도 올 수 있다. 마지막 자리인 C는 CONTROL-DIGIT으로, 아래와 같은 알고리즘에 의해 생성된다.</p>\r\n\r\n<ol>\r\n\t<li>C를 제외한 주민등록번호상의 18자리의 수를 순서대로 Z1, Z2, &hellip;, Z18이라고 하자.</li>\r\n\t<li>S = (10&times;Z1 + 9&times;Z2 + 8&times;Z3 + &hellip; + 2&times;Z9 + 10&times;Z10 + 9&times;Z11 + 8&times;Z12 + &hellip; + 2&times;Z18) % 19</li>\r\n\t<li>S가 9 이하이면 C=S, 아니면 C = 19 - S</li>\r\n</ol>\r\n\r\n<p>이러한 새로운 주민등록번호 체계상의 한 주민등록번호의 일부 숫자가 지워져 있다. 위의 조건을 만족시키는 가능한 모든 주민등록번호의 경우의 수를 세는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>첫째 줄에 19자리의 주민등록번호가 주어진다. 숫자 또는 X로 주어지게 되는데 X는 숫자가 지워졌음을 의미한다.</p>\r\n",
+  "output": "<p>첫째 줄에 조건을 만족시키는 가능한 모든 주민등록번호의 경우의 수를 출력한다. 답은 항상 2<sup>63</sup>보다 작다.</p>\r\n",
+  "samples": [
+    {
+      "input": "XX0220051234567890X\n",
+      "output": "28\n"
+    },
+    {
+      "input": "XXXX200577XXXXXXX7X\n",
+      "output": "3650000000\n"
+    },
+    {
+      "input": "0XX52X0512X456X8903\n",
+      "output": "946\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2005, National Competition #1 - Seniors, author5",
+  "level": 16,
+  "tags": [
+    "implementation",
+    "dp",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 46,
+  "submission_count": null,
+  "average_tries": 2.2390999794006348
+}

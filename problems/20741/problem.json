@@ -1,0 +1,35 @@
+{
+  "id": 20741,
+  "title": "Subway Map",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In the year 2120 there is a vast subway network under all of Lund, consisting of $N$ stations and $M$ tunnels. Each tunnel connects two stations and the stations are numbered $1$, $\\ldots$, $N$.</p>\n<p>Erik has had enough of Skånetrafiken's terrible route planning software and plans to build his own. To do this, he needs to know the length of each of the tunnels, but the subway map is incomplete in this regard. By looking out the window, Erik has noticed that some tunnels have special cables running alongside them, probably for providing power to the stations. The cables connect the stations so that every station is connected to the central station (the station numbered $1$). Knowing how greedy Skånetrafiken is, he is certain that the cables are placed so that the total length of cable is minimized.</p>\n<p>Erik knows the precise length of some tunnels, and which tunnels contain cables. Using this information he wants to find the minimum possible length for each tunnel with unknown length. Unfortunately, Erik's algorithm isn't efficient enough to process the enormous size of Lund's subway network. Can you help him by implementing a more efficient algorithm?</p>",
+  "input": "<p>The first line of input contains two integers $N$ and $M$, where $2 \\leq N \\leq 10^5$ and  $N - 1 \\leq M \\leq 2 \\cdot 10^5$, the number of stations and the number of tunnels, respectively. Each of the next $M$ lines contains the values $a_i$, $b_i$, $l_i$ and $c_i$. The integers $a_i$ and $b_i$, with $1 \\leq a_i, b_i \\leq N$ and $a_i\\neq b_i$, denote the two stations connected by the $i$th tunnel. The value $l_i$ is either an integer satisfying $1 \\leq l_i \\leq 10^9$, the length of the $i$th tunnel if it is known, or a question mark “<code>?</code>”. Finally, $c_i$ is $1$ if the $i$th tunnel contains a cable, and $0$ if not.</p>\n<p>It is guaranteed that there is at most one tunnel connecting the same pair of stations, and that it is possible to travel between any pair of stations using the subway. It is also guaranteed that there exists a path between any station and station number $1$ using only tunnels where $c_i = 1$.</p>",
+  "output": "<p>For each tunnel with $l_i=<code>?</code>$, output one line with a single integer, the minimum possible length for that tunnel. Tunnel lengths should be output in the same order as the tunnels are listed in the input.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2 5 1\n2 3 3 1\n3 1 ? 0\n",
+      "output": "5\n"
+    },
+    {
+      "input": "4 3\n1 2 ? 1\n1 3 ? 1\n2 4 ? 1\n",
+      "output": "1\n1\n1\n"
+    }
+  ],
+  "hint": "<p>In the first sample case, the minimal distance for the unknown tunnel (between stations $3$ and $1$) is $5$. This is because, if the length were less than $5$, it would be more efficient for Skånetrafiken to run cables through the second and third tunnels.</p>",
+  "source": ", Contest, Swedish Coding Cup, LTH Challenge 2020",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "trees",
+    "disjoint_set",
+    "mst",
+    "lca",
+    "sparse_table",
+    "smaller_to_larger"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 3.75
+}

@@ -1,0 +1,26 @@
+{
+  "id": 20713,
+  "title": "Optimum Server Location",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The world's best IT company Oondex is coming to Lineland! After years of facing annoying \"This service is not available in your area\" error messages, Linelanders will finally be able to listen to the most popular music, watch fresh viral videos and use lots of other opportunities provided by Oondex's services. </p>\n<p>Lineland can be seen as a real coordinate line. It has unusual network tariffs: connecting two servers $d$ kilometers apart from each other with a network channel of throughput $t$ Mbit/s costs $d \\cdot t$ dollars. </p>\n<p>In order to provide better user experience, Oondex is going to place $n$ servers in Lineland. These servers will be performing regular data processing activities which requires intense pairwise network interaction between these servers. At the same time, these servers are going to serve external users using $m$ special CDN servers (which are specialized content delivery servers) already present in Lineland. </p>\n<p>Analysts of Oondex determined for each pair $i$, $j$ ($1 \\leq i &lt; j \\leq n$) the required throughput $d_{ij}$ Mbit/sec between servers $i$ and $j$, and also for each pair $i$, $k$ ($1 \\leq i \\leq n$; $1 \\leq k \\leq m$) the required throughput $c_{ik}$ Mbit/sec between server $i$ and CDN server $k$. </p>\n<p>Given the locations of CDN servers $a_k$ ($1 \\leq k \\leq m$), determine the locations $x_i$ ($1 \\leq i \\leq n$) such that the cost of placing servers into them is the minimum possible. Formally, determine $x_i$ such that the cost value of $v = \\sum\\limits_{1 \\leq i &lt; j \\leq n} |x_i - x_j| \\cdot d_{ij} + \\sum\\limits_{\\substack{1 \\leq i \\leq n \\\\ 1 \\leq k \\leq m}} |x_i - a_k| \\cdot c_{ik}$ is the minimum possible. Multiple servers (both Oondex and CDN) may be located at the same point.</p>",
+  "input": "<p>The first line contains two integers $n$ and $m$ ($1 \\leq n, m \\leq 70$) --- the number of Oondex servers to place and the number of existing CDN servers.</p>\n<p>The second line contains $m$ integers $a_1, a_2, \\ldots, a_m$ ($0 \\leq a_k \\leq 10^6$) --- the locations of existing CDN servers.</p>\n<p>The $i$-th of the next $n$ lines contains $m$ integers $c_{i1}, c_{i2}, \\ldots, c_{im}$ where $c_{ik}$ ($0 \\leq c_{ik} \\leq 50$) is the throughput between $i$-th Oondex server and the $k$-th CDN server.</p>\n<p>Finally, the $i$-th of the next $n$ lines contains $n$ integers $d_{i1}, d_{i2}, \\ldots, d_{in}$ ($0 \\leq d_{ij} \\leq 50$; $d_{ij} = d_{ji}$; $d_{ii} = 0$) where $d_{ij}$ is the throughput between $j$-th Oondex server and the $i$-th Oondex server.</p>",
+  "output": "<p>On the first line output the value $v$ --- the minimum possible cost of placing $n$ Oondex servers.</p>\n<p>On the second line output $n$ integers $x_1, x_2, \\ldots, x_n$ where $x_i$ ($0 \\leq x_i \\leq 10^6$) --- the coordinates at which the $i$-th Oondex server should be placed. It can be proven that an optimum answer satisfying these restrictions on $x_i$ (range and integrality) exists.</p>",
+  "samples": [
+    {
+      "input": "3 4\n20 14 5 2\n1 2 3 0\n3 0 3 0\n0 0 0 20\n0 15 0\n15 0 0\n0 0 0\n",
+      "output": "78\n9 9 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2020 (Online)",
+  "level": 24,
+  "tags": [
+    "graphs",
+    "flow",
+    "mfmc"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.899999976158142
+}

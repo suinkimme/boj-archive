@@ -1,0 +1,40 @@
+{
+  "id": 9826,
+  "title": "Pancake",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given a stack of N pancakes, where 1 ≤ N ≤ 8. The pancake at the bottom and at the top of the stack has index 0 and index N − 1 respectively. The size of a pancake is its diameter which is a positive integer. All pancakes in the stack have different sizes. A stack A of N = 5 pancakes with size 3, 8, 7, 6, and 10 can be visualized as:</p>\n<pre>\n4 (top)        10\n3               6\n2               7\n1               8\n0 (bottom)      3\n-----------------------\nindex i      A[i]</pre>\n<p>We want to sort the stack in descending order, that is, the largest pancake is at the bottom and the smallest pancake is at the top. To make the problem more real-life like, sorting a stack of pancakes can only be done by a sequence of pancake ‘flips’, denoted by flip(i). The flip(i) operation inserts a spatula into the stack, lifts up pancakes from index i to index N −1 and flips them. As a result, the position of the pancakes from index i to N − 1 are reversed.</p>\n<p>For example, stack A can be transformed to stack B via flip(0), i.e. inserting a spatula and flipping the pancakes from index 0 and 4. Stack B can be transformed to stack C via flip(3). Stack C can be transformed to stack D via flip(1), and so on. Our target is to make the stack sorted in descending order, i.e. we want the stack to be like stack E, using minimum number of flips.</p>\n<pre>\n4 (top)      10  &lt;--   3  &lt;--   8  &lt;--   6                 3\n3             6        8  &lt;--   3        7     ...         6\n2             7        7        7        3                 7\n1             8        6        6  &lt;--   8                 8\n0 (bottom)    3  &lt;--  10       10       10                10\n--------------------------------------------------------------\nindex i    A[i]     B[i]     C[i]     D[i]     ...      E[i]</pre>\n<p>Bill Gates (Microsoft founder, former CEO, and current chairman) wrote only one research paper so far, and it is about this pancake sorting<sup>1</sup>.</p>\n<p>In this question, given the starting configuration of N pancakes, your task is to compute the minimum number of flips required to sort them.</p>\n<p><sup>1</sup>Gates, W. and Papadimitriou, C. Bounds for Sorting by Prefix Reversal, Discrete Mathematics, 27, 47-57, 1979.</p>",
+  "input": "<p>The first line of input contains an integer T which is the number of test cases. Each of the next T lines corresponds to a test case. Each test case starts with the number of pancakes N, and then followed by a sequence of N integers indicating the size of each pancake. The bottom pancake (i.e the pancake with index 0) appears first in the sequence.</p>",
+  "output": "<p>For each test case, output in one line the minimum number of flips required to sort the test case. Hence, the output contains T lines with one integer per line.</p>",
+  "samples": [
+    {
+      "input": "2\n4 4 3 2 1\n8 8 7 6 5 4 1 2 3\n",
+      "output": "0\n1\n"
+    },
+    {
+      "input": "3\n4 4 3 2 1\n8 8 7 6 5 4 1 2 3\n5 5 1 2 4 3\n",
+      "output": "0\n1\n2\n"
+    },
+    {
+      "input": "2\n5 555555 111111 222222 444444 333333\n8 1000000 999999 999998 999997 999996 999995 999994 999993\n",
+      "output": "2\n0\n"
+    },
+    {
+      "input": "3\n5 555555 111111 222222 444444 333333\n8 1000000 999999 999998 999997 999996 999995 999994 999993\n5 3 8 7 6 10\n",
+      "output": "2\n0\n4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2012",
+  "level": 15,
+  "tags": [
+    "graphs",
+    "bruteforcing",
+    "graph_traversal",
+    "bfs",
+    "precomputation"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.5
+}

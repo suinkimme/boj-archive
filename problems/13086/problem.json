@@ -1,0 +1,36 @@
+{
+  "id": 13086,
+  "title": "Shifting a Matrix",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given N×N matrix A initialized with A<sub>i,j</sub>=(i−1)N+j, where A<sub>i,j</sub> is the entry of the i-th row and the j-th column of A. Note that i and j are 1-based.</p>\n<p>You are also given an operation sequence which consists of the four types of shift operations: left, right, up, and down shifts. More precisely, these operations are defined as follows:</p>\n<ul>\n<li>Left shift with i: circular shift of the i-th row to the left, i.e., setting previous A<sub>i,k</sub> to new A<sub>i,k−1</sub> for 2 ≤ k ≤ N, and previous A<sub>i,1</sub> to new A<sub>i,N</sub>.</li>\n<li>Right shift with i: circular shift of the i-th row to the right, i.e., setting previous A<sub>i,k</sub> to new A<sub>i,k+1</sub> for 1 ≤ k ≤ N−1, and previous A<sub>i,N</sub> to new A<sub>i,1</sub>.</li>\n<li>Up shift with j: circular shift of the j-th column to the above, i.e., setting previous A<sub>k,j</sub> to new A<sub>k−1,j</sub> for 2 ≤ k ≤ N, and previous A<sub>1,j</sub> to new A<sub>N,j</sub>.</li>\n<li>Down shift with j: circular shift of the j-th column to the below, i.e., setting previous A<sub>k,j</sub> to new A<sub>k+1,j</sub> for 1 ≤ k ≤ N−1, and previous A<sub>N,j</sub> to new A<sub>1,j</sub>.</li>\n</ul>\n<p>An operation sequence is given as a string. You have to apply operations to a given matrix from left to right in a given string. Left, right, up, and down shifts are referred as 'L', 'R', 'U', and 'D' respectively in a string, and the following number indicates the row/column to be shifted. For example, \"R25\" means we should perform right shift with 25. In addition, the notion supports repetition of operation sequences. An operation sequence surrounded by a pair of parentheses must be repeated exactly m times, where m is the number following the close parenthesis. For example, \"(L1R2)10\" means we should repeat exactly 10 times the set of the two operations: left shift with 1 and right shift with 2 in this order.</p>\n<p>Given operation sequences are guaranteed to follow the following BNF:</p>\n<pre>\n<code>&lt;sequence&gt; := &lt;sequence&gt;&lt;repetition&gt; | &lt;sequence&gt;&lt;operation&gt; | &lt;repetition&gt; | &lt;operation&gt;\n&lt;repetition&gt; := '('&lt;sequence&gt;')'&lt;number&gt;\n&lt;operation&gt; := &lt;shift&gt;&lt;number&gt;\n&lt;shift&gt; := 'L' | 'R' | 'U' | 'D'\n&lt;number&gt; := &lt;nonzero_digit&gt; |&lt;number&gt;&lt;digit&gt;\n&lt;digit&gt; := '0' | &lt;nonzero_digit&gt;\n&lt;nonzero_digit&gt; := '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'</code></pre>\n<p>Given N and an operation sequence as a string, make a program to compute the N×N matrix after operations indicated by the operation sequence.</p>",
+  "input": "<p>The input consists of a single test case. The test case is formatted as follows.</p>\n<pre>\nN L\nS</pre>\n<p>The first line contains two integers N and L, where N (1 ≤ N ≤ 100) is the size of the given matrix and L (2 ≤ L ≤ 1,000) is the length of the following string. The second line contains a string S representing the given operation sequence. You can assume that S follows the above BNF. You can also assume numbers representing rows and columns are no less than 1 and no more than N, and the number of each repetition is no less than 1 and no more than 10<sup>9</sup> in the given string.</p>",
+  "output": "<p>Output the matrix after the operations in N lines, where the i-th line contains single-space separated N integers representing the i-th row of A after the operations.</p>",
+  "samples": [
+    {
+      "input": "3 2\nR1\n",
+      "output": "3 1 2\n4 5 6\n7 8 9\n"
+    },
+    {
+      "input": "3 7\n(U2)300\n",
+      "output": "1 2 3\n4 5 6\n7 8 9\n"
+    },
+    {
+      "input": "3 7\n(R1D1)3\n",
+      "output": "3 4 7\n1 5 6\n2 8 9\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ACM-ICPC Asia Regional 2015",
+  "level": 17,
+  "tags": [
+    "math",
+    "implementation",
+    "string",
+    "parsing",
+    "exponentiation_by_squaring"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.5384999513626099
+}

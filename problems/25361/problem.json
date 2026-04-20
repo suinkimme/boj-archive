@@ -1,0 +1,33 @@
+{
+  "id": 25361,
+  "title": "Global Warming",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are developing a new computer game. Let's consider an island in the middle of the ocean in a three-dimensional space with $z$-axis pointing upwards. The surface of the ocean is a horizontal plane with $z = 0$. The island is a polyhedron of a special form.</p>\n<p>You are given $n$ points $(x_i, y_i, z_i)$; there are some edges between them. If we look at the island from above or if we discard $z$ coordinate of each point, points and edges form a planar connected graph. Every face of this planar graph, except the external one, is a nondegenerate triangle. Every edge of the graph belongs to at least one internal face. All points that lie on the edge of the external face of the graph have $z$ coordinates equal to zero. Other points may have arbitrary non-negative $z$ coordinates. Every face of the planar graph corresponds to the face of the polyhedron with the same vertices.</p>\n<p>Due to global warming, the level of the ocean is increasing and floods the island. Your task is to compute various global warming scenarios for the game.</p>\n<p>In each scenario, the level of the ocean increased to the height $h$, so that the surface of the ocean is a plane $z = h$. Parts of the island that are <strong>below or at the height $h$</strong> are now <em>flooded</em>, even though some parts may be not reachable from the ocean by water (see the illustration for the second example). In a scenario, a player is standing in $p$-th point. You shall compute the area of the surface of the part of the island where the player is standing, or determine that the player is standing at or below the water level and has drowned.</p>\n<p>Formally, we say that two points on the surface of the island belong to the same part if a player can move between them walking by the surface of the island staying strictly higher than ocean level. Note that you should find the area of the surface of the island itself, not the area of its projection on a horizontal plane.</p>",
+  "input": "<p>The first line contains a single integer $n$ --- the number of points ($1 \\le n \\le 10^5$).</p>\n<p>Each of the next $n$ lines contains three integers $x_i$, $y_i$, and $z_i$ --- the coordinates of $i$-th point ($-10^6 \\le x_i, y_i \\le 10^6$; $0 \\le z_i \\le 10^6$).</p>\n<p>The next line contains a single integer $m$ --- the number of internal faces of the planar graph ($1 \\le m \\le 10^5$). They are also the faces of the island's polyhedron.</p>\n<p>Each of the next $m$ lines contains three integers $a_i$, $b_i$, and $c_i$ --- the indices of three points that are vertices of $i$-th internal face ($1 \\le a_i, b_i, c_i \\le n$).</p>\n<p>It is guaranteed that if $z$ coordinate is discarded, then the resulting graph is a connected and planar graph. All its faces, except the external one, are nondegenerate triangles. All points that lie on the edge of the external face of the planar graph have $z$ coordinate equal to zero.</p>\n<p>The next line contains an integer $q$ --- the number of global warming scenarios to compute ($1 \\le q \\le 10^5$).</p>\n<p>Each of the next $q$ lines contains two integers $h_i$ and $p_i$ --- the level of the ocean and the index of the point where the player is standing respectively ($0 \\le h_i \\le 10^6$; $1 \\le p_i \\le n$).</p>",
+  "output": "<p>For every scenario output a single real number --- the area of the surface of part of the island where the player is standing. If the player's position is flooded by water, output $-1$ instead.</p>\n<p>The answer is considered correct if its absolute or relative error does not exceed $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "5\n0 0 0\n2 0 0\n2 2 0\n0 2 0\n1 1 4\n4\n1 2 5\n2 3 5\n3 4 5\n4 1 5\n7\n0 1\n0 5\n1 5\n2 5\n3 5\n4 5\n5 5\n",
+      "output": "-1\n16.492422502470642\n9.276987657639736\n4.123105625617661\n1.030776406404415\n-1\n-1\n"
+    },
+    {
+      "input": "16\n0 5 0\n1 2 0\n2 5 5\n3 7 0\n4 0 0\n4 3 5\n5 5 1\n6 2 0\n6 6 5\n7 4 4\n7 8 0\n8 2 0\n9 4 0\n4 6 4\n6 3 3\n2 4 5\n22\n11 10 9\n12 8 10\n2 6 5\n9 10 7\n8 15 6\n16 3 6\n15 6 7\n7 3 14\n8 10 15\n11 13 10\n16 6 2\n12 10 13\n10 7 15\n16 3 2\n3 4 1\n14 7 9\n11 9 4\n3 6 7\n5 6 8\n14 4 3\n3 1 2\n9 4 14\n7\n0 7\n1 7\n1 16\n2 10\n3 9\n4 16\n5 16\n",
+      "output": "120.483405354306325\n-1\n93.929895222484783\n68.181919663536940\n40.918561474148331\n11.067441790921070\n-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2021",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "geometry",
+    "sweeping",
+    "disjoint_set",
+    "offline_queries",
+    "geometry_3d"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 5.444399833679199
+}

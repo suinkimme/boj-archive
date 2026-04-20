@@ -1,0 +1,28 @@
+{
+  "id": 17311,
+  "title": "Random Number Generator",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Little H has recently been studying randomized algorithms. Randomized algorithms often use random number generation functions (e.g. <code>random</code> from Pascal and <code>rand</code> from C/C++) to obtain their randomness. In reality, random number functions are not truly \"random.\" Instead, they work off of some specific algorithms.</p>\n<p>As such, the following recursive quadratic polynomial is one method:</p>\n<p>The algorithm selects nonnegative integers <var>x</var><sub>0</sub>, <var>a</var>, <var>b</var>, <var>c</var>, and <var>d</var> as its seed values and uses the following recursive calculations to generate a random number.</p>\n<p>For any <var>i</var> ≥ 1, $x_i = (a \\times x_{i-1}^2 + b \\times x_{i-1} + c) \\mod d$</p>\n<p>This way, a sequence of nonnegative integers x<sub>i</sub> of arbitrary length can be obtained. Typically, we can consider this sequence to be random. Using the sequence x<sub>i</sub>, we can use the following algorithm to produce T<sub>i</sub>, a random permutation of the numbers 1 to <var>K</var>.</p>\n<ol>\n<li>Initialize <var>T</var> to the sequence of integers from 1 to <var>K</var>.</li>\n<li>Perform <var>K</var> swaps on the sequence <var>T</var>. The <var>i</var>-th swap will swap the value of <var>T<sub>i</sub></var> with the value of <var>T</var><sub>(<var>x<sub>i</sub></var> mod <var>i</var>) + 1</sub>.</li>\n</ol>\n<p>Outside of this base number of <var>K</var> swaps, little H has made <b>an additional</b> <var>Q</var> swaps. For the <var>i</var>-th additional swap, little H will choose two positions <var>u<sub>i</sub></var> and <var>v<sub>i</sub></var> and swap the values of <var>T<sub>u<sub>i</sub></sub></var> and <var>T<sub>v<sub>i</sub></sub></var>.</p>\n<p>To check the effectiveness of the random permutation generator, little H designed the following problem:</p>\n<p>Little H has an <var>N</var> row by <var>M</var> column grid. She initially follows the above process, producing a random permutation T<sub>i</sub> of the integers from 1 to <var>N</var>×<var>M</var> after <var>N</var>×<var>M</var> + <var>Q</var> swaps. Then these <var>N</var>×<var>M</var> values are then placed back into the grid, row for row, column for column. That is, the cell at column <var>j</var> of row <var>i</var> in the original grid will now take on the value of <var>T</var><sub>(<var>i</var>−1)·<var>M</var>+<var>j</var></sub>.</p>\n<p>Afterwards, little H wishes to start from the top-left corner of the grid (i.e. row 1, column 1), <b>each step moving either right or down under the precondition that she does not move outside of the grid,</b> and reach the bottom-right corner (i.e. row <var>N</var>, column <var>M</var>).</p>\n<p>Little H writes down the value of every cell she travels through, <b>ordered from least to greatest</b>. This way, for any valid path, little H can obtain an increasing sequence of length <var>N</var> + <var>M</var> − 1 which we will call the <b>path sequence</b>. Little H wishes to know the <b>lexicographically smallest</b> path sequence that she can obtain.</p>",
+  "input": "<p>Line 1 of input consists of five integers <var>x</var><sub>0</sub>, <var>a</var>, <var>b</var>, <var>c</var>, and <var>d</var>, representing the seed values to little H's random number generator.</p>\n<p>Line 2 of input consists of three integers <var>N</var>, <var>M</var>, and <var>Q</var>, indicating that little H generates a permutation from 1 to <var>N</var>×<var>M</var> to fill her <var>N</var>×<var>M</var> grid. Also, after little H performs her <var>N</var> × <var>M</var> swaps, she will perform an additional <var>Q</var> swaps.</p>\n<p>The final <var>Q</var> lines will each contain two integers <var>u<sub>i</sub></var> and <var>v<sub>i</sub></var>, indicating that the <var>i</var>-th additional swap involves swapping <var>T<sub>u<sub>i</sub></sub></var> and <var>T<sub>v<sub>i</sub></sub></var>.</p>",
+  "output": "<p>The output should consist of one line containing <var>N</var> + <var>M</var> − 1 space-separated positive integers, representing the lexicographically smallest path sequence that little H can obtain.</p>",
+  "samples": [
+    {
+      "input": "1 3 5 1 71\n3 4 3\n1 7\n9 9\n4 9\n",
+      "output": "1 2 6 8 9 12\n"
+    },
+    {
+      "input": "654321 209 111 23 70000001\n10 10 0\n",
+      "output": "1 3 7 10 14 15 16 21 23 30 44 52 55 70 72 88 94 95 97\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2014",
+  "level": 20,
+  "tags": [
+    "prefix_sum"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 8.63640022277832
+}

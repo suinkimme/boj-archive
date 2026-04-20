@@ -1,0 +1,34 @@
+{
+  "id": 30952,
+  "title": "Human Resources",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You work at ECorp and your Human Resources department is migrating employee data from an on-premise system provided by Hooli to a new Cloud Native solution provided by a fresh startup Pied Piper. Sadly the new system does not yet have feature parity with the old one and they need your help to store and display the entire management structure. The system is lean and conscious of resource usage so they can only afford to increase their storage by two kilobits.</p>",
+  "input": "<p>The first line of the input will be a command to execute either <code>ENCODE</code> or <code>DECODE</code>.</p>\n<p><strong>Encode</strong></p>\n<p>You will receive lines describing managers and their direct reports/subordinates. All lines will start with the name of the manager, followed by a colon, followed by a space-separated list of their direct reports ordered from their most to least favorite. Colons have a trailing space. No manager is listed before their manager, if they have one.</p>\n<p><strong>Decode</strong></p>\n<p>In the decode case you will be given the output that your program printed in the encode case: a list of all employee names in an arbitrary order, one per line, followed by a single line with a binary string $B$.</p>",
+  "output": "<p><strong>Encode</strong></p>\n<p>Your program must first output the names of all the employees, one per line in an arbitrary order (this was a requirement from upper management). One additional line is dedicated for your encoding string $B$ which must consist of ones and zeros and not exceed 2048 characters.</p>\n<p><strong>Decode</strong></p>\n<p>Output the original structure in the same format as it was originally given. The order of manager definitions does not have to be the same, but every one must come after their manager if they have one. However, the order of reports for any specific manager has to remain the same (from their most to least favorite).</p>",
+  "samples": [
+    {
+      "input": "ENCODE\nJanez: Josip Zofia\nZofia: Karolina\n",
+      "output": "Josip\nKarolina\nJanez\nZofia\n00101100\n"
+    },
+    {
+      "input": "DECODE\nJosip\nKarolina\nJanez\nZofia\n00101100\n",
+      "output": "Janez: Josip Zofia\nZofia: Karolina\n"
+    }
+  ],
+  "hint": "<p>The encoding in the example above uses two consecutive characters for every person as they are ordered in the list. 11 denotes the CEO (Janez). 00 denotes a person at the second level of hierarchy. Their order in the CEO's list of direct reports is the same as in the encoded list of names (Josip and Zofia). Luckily, there are just two in this case. 10 denotes Zofia's report and 01 would denote Josip's reports, which he does not have.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2023",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "string",
+    "graph_traversal",
+    "constructive",
+    "dfs",
+    "bitmask",
+    "parsing"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 3.3461999893188477
+}

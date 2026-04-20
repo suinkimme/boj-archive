@@ -1,0 +1,36 @@
+{
+  "id": 22933,
+  "title": "TraveLog",
+  "time_limit": "4 초",
+  "memory_limit": "2048 MB (추가 메모리 없음)",
+  "description": "<p>After a long time apart, Alice and Bob have reunited. They live in a country with $n$ cities, creatively named city $1$ to city $n$. Bob drove from his home in city $1$ to Alice's home in city $n$.</p>\n<p>When Alice asked Bob which path he took, he was stunned to find he didn't remember. Bob is efficient, and drove without stopping, and knows there is no path faster than the one he took. He also has a brand new National Adventuring Company (NAC) TraveLog! Every time Bob drives through a city, the TraveLog records the time between when he left city $1$ and when he arrived in the current city.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>In the above layout, there are two possible fastest paths Bob can take from city $1$ to city $n$: $1 \\to 2 \\to 3 \\to 5$ or $1 \\to 4 \\to 5$. Both paths take a total of $9$ units of time. The first path would have a TraveLog of $0, 3, 7, 9$, and the second would have a TraveLog of $0, 5, 9$.</p>\n<p>Unfortunately, the memory in Bob's TraveLog is corrupted. Bob thinks that some of the times are gone, and the remaining times are shuffled arbitrarily. Given what remains of the TraveLog, can you reconstruct Bob's path?</p>",
+  "input": "<p>The first line of input contains three integers $n$ ($2 \\le n \\le 2 \\cdot 10^{5}$), $m$ ($1 \\le m \\le 3 \\cdot 10^{5}$) and \\mbox{$d$ ($1 \\le d \\le n$)}, where $n$ is the number of cities in the country, $m$ is the number of one-way roads between those cities, and $d$ is the number of times remaining in Bob's corrupted TraveLog. The cities are identified by number, $1$ through $n$. Bob lives in city $1$, and Alice lives in city $n$.</p>\n<p>Each of the next $m$ lines contains three integers $u$, $v$ ($1 \\le u,v \\le n, u \\ne v$) and $h$ ($1 \\le h \\le 10^{6}$). Each line describes a one-way road from city $u$ to city $v$ that takes $h$ units of time to traverse. There is guaranteed to be at least one path from city $1$ to city $n$. There may be several roads between any given pair of cities.</p>\n<p>Each of the next $d$ lines contains a single integer $t$ ($0 \\le t \\le 10^{18}$). This is what remains of Bob's TraveLog. Each line is a record of the amount of time Bob took driving from city $1$ to another city on his path. These values are guaranteed to be distinct.</p>",
+  "output": "<p>The output format depends on the number of paths consistent with Bob's TraveLog.</p>\n<ul>\n<li>If there is no path consistent with Bob's TraveLog, output $0$.</li>\n<li>If multiple paths are consistent with Bob's TraveLog, output $1$.</li>\n<li>Otherwise, on the first line, output the number of cities on Bob's path. On subsequent lines, output the cities Bob visited, one per line, in the order he visited them.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "5 5 2\n1 2 3\n2 3 4\n3 5 2\n1 4 5\n4 5 4\n5\n9\n",
+      "output": "3\n1\n4\n5\n"
+    },
+    {
+      "input": "6 8 2\n1 2 1\n2 3 2\n3 6 8\n1 4 3\n4 5 4\n5 6 4\n5 2 7\n1 6 13\n0\n3\n",
+      "output": "1\n"
+    },
+    {
+      "input": "2 1 1\n1 2 10\n5\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Championship, North America Championship 2021, Camp, Petrozavodsk Programming Camp, Summer 2021, Day 2: The American Contest",
+  "level": 17,
+  "tags": [
+    "dp",
+    "graphs",
+    "binary_search",
+    "shortest_path",
+    "dijkstra"
+  ],
+  "accepted_user_count": 46,
+  "submission_count": null,
+  "average_tries": 3.8478000164031982
+}

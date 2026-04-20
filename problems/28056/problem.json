@@ -1,0 +1,29 @@
+{
+  "id": 28056,
+  "title": "Merging Branches",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Moloco is an ad-tech company in KAIST city which can be described as a 1-dimensional line. There are $N$ branches in Moloco, and the sales territory of the $i$th branch is range $[l_i, r_i]$. Also it is known that $l_i &lt; r_i$ for $1 \\leq i \\leq N$ and $r_i \\leq l_{i+1}$ for $1 \\leq i \\leq N-1$.</p>\n<p>Moloco defines two branches to intersect if there exists a point which is included in both branches' sales territory. For example $[3, 5]$ and $[5, 7]$ intersect, $[1, 4]$ and $[2, 5]$ intersect while $[1, 2]$ and $[3, 5]$ does not.</p>\n<p>Moloco can widen the whole branch's sales territory by efficient advertisement. If Moloco spends $K$ won, then <strong>every</strong> branch may widen its sales territory by at most $K$ length units. Start and end of widened sales territory should have integer value. </p>\n<p>Formally, let the new sales territory of $i$th branch be $[l_i', r_i']$. Below conditions should satisfy.</p>\n<ul>\n<li>$l_i' \\leq l_i$ and $r_i \\leq r_i'$</li>\n<li>$(l_i-l_i')+(r_i'-r_i) \\leq K$ </li>\n<li>$l_i'$ and $r_i'$ are both integers.</li>\n</ul>\n<p>Since too many branches cause difficulty in company management, Moloco is trying to merge all branches into one. Two branch can be merged if they intersect. The sales territory of the new branch will be the union of sales territories of two branches.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 383px; width: 1000px;\"/></p>\n<p style=\"text-align: center;\">Fig 1. Illustration of sample 1 when $K=4$</p>\n<p>You are employed to Moloco. You are curious of hypothetical scenarios when Moloco only owns $s$th to $e$th branches. For each of these scenarios, you want to find the minimum cost to merge the branches owned by Moloco. Given $Q$ queries where Moloco only owns $s$th to $e$th branches, solve the minimum cost to merge all branches into one.</p>",
+  "input": "<p>First line contains two integers $N$, $Q$ ($1 \\leq N \\leq 5000, 1 \\leq Q \\leq 10^6$).</p>\n<p>$N$ lines follow. $i$-th line contains two integers $l_i$, $r_i$ ($1 \\leq l_i &lt; r_i \\leq 10^9$), denoting the sales territory of $i$th branch. Additionaly, $r_i \\leq l_{i+1}$ for all $1 \\leq i \\leq N-1$.</p>\n<p>$Q$ lines follow. $i$-th line contains two integers $s_i$, $e_i$ ($1 \\leq s_i \\leq e_i \\leq N$), denoting the $i$th query.</p>",
+  "output": "<p>Print $Q$ lines. On the $i$th line, print the answer to the $i$th query, the minimum cost to merge all branches from $s_i$-th to $e_i$-th.</p>",
+  "samples": [
+    {
+      "input": "5 2\n1 3\n5 6\n10 15\n20 24\n28 33\n1 5\n3 5\n",
+      "output": "4\n3\n"
+    },
+    {
+      "input": "7 7\n1 3\n6 10\n14 18\n18 19\n22 24\n28 29\n32 40\n1 7\n3 5\n2 6\n1 2\n4 4\n4 7\n3 4\n",
+      "output": "3\n2\n3\n2\n0\n3\n0\n"
+    }
+  ],
+  "hint": "<p>Notice that you don't need any cost if there is only one branch.</p>",
+  "source": "University, KAIST, KAIST RUN Spring Contest, 2023 KAIST RUN Spring Contest, azberjibiou, mhy908, sean9892, sjimed, songc",
+  "level": 20,
+  "tags": [
+    "dp",
+    "hall"
+  ],
+  "accepted_user_count": 43,
+  "submission_count": null,
+  "average_tries": 1.4185999631881714
+}

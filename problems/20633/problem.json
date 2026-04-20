@@ -1,0 +1,26 @@
+{
+  "id": 20633,
+  "title": "N-by-M grid calculation",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Have you experienced 1010-by-1010 grid calculation? It's a mathematical exercise common in Japan. In this problem, we consider the generalization of the exercise, N-by-M grid calculation.</p>\n<p>In this exercise, you are given an $N$-by-$M$ grid (i.e. a grid with $N$ rows and $M$ columns) with an additional column and row at the top and the left of the grid, respectively. Each cell of the additional column and row has a positive integer. Let's denote the sequence of integers on the column and row by $a$ and $b$, and the $i$-th integer from the top in the column is $a_i$ and the $j$-th integer from the left in the row is $b_j$, respectively.</p>\n<p>Initially, each cell in the grid (other than the additional column and row) is blank. Let $(i,j)$ be the cell at the $i$-th from the top and the $j$-th from the left. The exercise expects you to fill all the cells so that the cell $(i,j)$ has $a_i \\times b_j$. You have to start at the top-left cell. You repeat to calculate the multiplication $a_i \\times b_j$ for a current cell $(i,j)$, and then move from left to right until you reach the rightmost cell, then move to the leftmost cell of the next row below.</p>\n<p>At the end of the exercise, you will write a lot, really a lot of digits on the cells. Your teacher, who gave this exercise to you, looks like bothering to check entire cells on the grid to confirm that you have done this exercise. So the teacher thinks it is OK if you can answer the $d$-th digit (not integer, see an example below), you have written for randomly chosen $x$. Let's see an example.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 256px; height: 192px;\"/></p>\n<p>For this example, you calculate values on cells, which are 8, 56, 24, 1, 7, 3 in order. Thus, you would write digits 8, 5, 6, 2, 4, 1, 7, 3. So the answer to a question 4 is 2.</p>\n<p>You noticed that you can answer such questions even if you haven't completed the given exercise. Given a column $a$, a row $b$, and $Q$ integers $d_1$,$d_2$, $\\ldots$, $d_Q$, your task is to answer the $d_k$-th digit you would write if you had completed this exercise on the given grid for each $k$. Note that your teacher is not so kind (unfortunately), so may ask you numbers greater than you would write. For such questions, you should answer '<code>x</code>' instead of a digit.</p>",
+  "input": "<p>The first line of the input contains two integers $N$ ($1 \\le N \\le 10^5$) and $M$ ($1 \\le M \\le 10^5$), which are the number of rows and columns of the grid, respectively.</p>\n<p>The second line represents a sequence aa of $N$ integers, the $i$-th of which is the integer at the $i$-th from the top of the additional column on the left. It holds $1 \\le a_i \\le 10^9$ for $1 \\le i \\le N$.</p>\n<p>The third line represents a sequence $b$ of $M$ integers, the $j$-th of which is the integer at the $j$-th from the left of the additional row on the top. It holds $1 \\le b_j \\le 10^9$ for $1 \\le j \\le M$.</p>\n<p>The fourth line contains an integer $Q$ ($1 \\le Q \\le 3 \\cdot 10^5$), which is the number of questions your teacher would ask.</p>\n<p>The fifth line contains a sequence $d$ of $Q$ integers, the $k$-th of which is the $k$-th question from the teacher, and it means you should answer the $d_k$-th digit you would write in this exercise. It holds $1 \\le d_k \\le 10^{15}$ for $1 \\le k \\le Q$.</p>",
+  "output": "<p>Output a string with $Q$ characters, the $k$-th of which is the answer to the $k$-th question in one line, where the answer to $k$-th question is the $d_k$-th digit you would write if $d_k$ is no more than the number of digits you would write, otherwise '<code>x</code>'.</p>",
+  "samples": [
+    {
+      "input": "2 3\n8 1\n1 7 3\n5\n1 2 8 9 1000000000000000\n",
+      "output": "853xx\n"
+    },
+    {
+      "input": "3 4\n271 828 18\n2845 90 45235 3\n7\n30 71 8 61 28 90 42\n",
+      "output": "7x406x0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2020, Day 5: JAG Summer+ Opening Contest, Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2019 Day 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,34 @@
+{
+  "id": 25951,
+  "title": "Magic Potion",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>When making a potion, you first set the intensity of the heat to a certain degree, put ingredients in certain order into the cauldron according to its recipe, and boil the mixture until ready. In the brewing process, it is very important to prevent the heat from fluctuating, because the heat intensity decides the number of ingredients that form an alchemic bond.</p>\n<p>Given a sequence $X$ of ingredients in order, when the heat intensity is $i$ ($≥ 1$), all subsequences of length $i$ in $X$ are alchemic bonds of the corresponding potion; here duplicate bonds are irrelevant. Thus, there can be several different ingredient sequences that produce the same potion if they have the same set of alchemic bonds. On the other hand, different sets of alchemic bonds always produce different potions. Therefore, a potion recipe consists of an intensity of the heat and a sequence of ingredients in order. For instance, the following is a recipe for “the draught of anti-drowsiness”.</p>\n<ul>\n<li>Heat intensity $i = 2$</li>\n<li>Ingredient sequence $X = bsm$,</li>\n</ul>\n<p>where $b$ denotes coffee bean, $s$ denotes sugar, and $m$ denotes milk.</p>\n<p>Then, because the heat intensity is $2$, its alchemic bonds are {$bm$, $bs$, $sm$}. If the heat intensity is $3$, then there will be only one alchemic bond $bsm$. Moreover, if the heat intensity is greater than $3$, then there will be no bonds. If someone wants to produce the draught of anti-drowsiness and puts ingredients in $bms$ order under the heat intensity of $2$, then the alchemic bonds are {$bm$, $bs$, $ms$}. Thus, this ingredient sequence does not produce the desired potion since the alchemic bond $sm$ is missing.</p>\n<p>Here is another example. For the heat intensity of $2$, both ingredient sequences $X = abcabc$ and $Y = babcccab$ produce the same potion since their alchemic bond sets are the same as {$aa$, $ab$, $ac$, $ba$, $bb$, $bc$, $ca$, $cb$, $cc$}. On the other hand, it is easy to confirm that an ingredient sequence $Z = abbacb$ does not produce the same potion because there are no $ca$ and $ac$ bonds.</p>\n<p>The potions department of the ICPC school holds a Potions Olympiad every year. Given two ingredient sequences, participants are asked to find the maximum heat intensity that results in the same potion from two sequences.</p>\n<p>Given two ingredient sequences, write a program to output the maximum heat intensity in which both sequences produce the same potion.</p>",
+  "input": "<p>Your program is to read from standard input. The input consists of two lines. The first line contains a string $X$ of length $m$ ($1 ≤ m ≤ 200\\,000$), and the second line contains a string $Y$ of length $n$ ($1 ≤ n ≤ 200\\,000$), where all ingredient characters of $X$ and $Y$ consist of uppercase English letters (from ‘<code>A</code>’ to ‘<code>Z</code>’), lowercase English letters (from ‘<code>a</code>’ to ‘<code>z</code>’) and digits (from ‘<code>0</code>’ to ‘<code>9</code>’). Note that uppercase and lowercase letters are different (for example, ‘<code>A</code>’ is treated as different from ‘<code>a</code>’).</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line. The line should print the maximum heat intensity $i$ in which the input ingredient sequences $X$ and $Y$ produce the same potion. If it is impossible to make the same potions from $X$ and $Y$, then the output should be $0$.</p>",
+  "samples": [
+    {
+      "input": "icpc2022bsm\nbms02icc\n",
+      "output": "0\n"
+    },
+    {
+      "input": "abcabc\nbabcccab\n",
+      "output": "2\n"
+    },
+    {
+      "input": "abccbaabc\nbabbccabaccacb\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Nationwide Internet Competition, Seoul Nationalwide Internet Competition 2022",
+  "level": 24,
+  "tags": [
+    "ad_hoc",
+    "binary_search",
+    "string"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.833299994468689
+}

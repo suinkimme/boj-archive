@@ -1,0 +1,34 @@
+{
+  "id": 35381,
+  "title": "Number Pyramid",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Uneedtoth, Inc. is a company that makes mathematical games for elementary school students, and Pam D. Monium has just been put in charge of their latest product: Number Pyramids.  The game consists of cards each containing a pyramid of squares, some filled with numbers and some empty (see the first card on the left in Fig 1).  The object of the game is to find values that go in each of the empty squares so that the value in every square (except those on the bottom) is the sum of the values in the two squares below it.  To keep things, well, elementary, the final values in the squares are always integers that are $&lt; 100$ in absolute value.  The cards are also set up so that they can be solved by multiple passes through the card, each pass going from the top to the bottom row and left to right in each row, filling in any value that can be determined by its neighbors.  An example of this is shown in the remaining three cards in Fig 1.  Note that there may be other ways to solve a given card, but if a unique solution cannot be found using this method, the card should not be issued to the students.  Pam calls cards like this \"ambiguous\".</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 820px; height: 250px;\"/></p>\n<p style=\"text-align: center;\"><strong>Figure 1</strong>: Sample Number Pyramid card and one way to solve it.</p>\n<p>Things seemed to be going smoothly for Pam, with machines in Uneedtoth's factory spitting out card after card.  But when Pam started doing some product testing she noticed that there was a glitch in the machine and some of the cards were either ambiguous, or led to contradictory values for one or more squares.  For example, if the card on the left in Fig 1 was missing the $6$ in the lower left corner, that card would be ambiguous as it would allow multiple solutions; if that card had a $5$ in the rightmost square in the last row, or a $3$ in the rightmost square in the second from the top row, each of these would lead to a contradiction and the card would have no solution.  Finally, if the $18$ was changed to a $-90$, there would be no solution as one of the values solved for would be outside of the range $-99,\\ \\ldots,\\ 99$</p>\n<p>As Pam sees it, there are two paths she could take now.  The first is to ignore the testing and ship out the cards, relying on American children's terrible math skills to give her enough time to find another job; or she can have someone write software to detect the bad cards and remove them.  After much soul searching and a look at her bank account she's decided on the latter and has come to you for help.</p>",
+  "input": "<p>The input begins with a line $n$ ($2 \\leq n \\leq 100$) which is the number of rows on a pyramid card.  Following this are $n$ lines specifying the rows of the pyramid.  The first line containing a single value, the second line two values, and so on.  All values $v$ will be integers in the range $-99 \\leq v \\leq 100$, where the special value of $100$ indicates an empty square.</p>",
+  "output": "<p>Output one of three things: if the card has multiple solutions with all values in the range $-99,\\ \\ldots,\\ 99$, output <code>ambiguous</code>; if the card has no solution, or has a solution with one or more values outside the range $-99,\\ \\ldots,\\ 99$, output <code>no solution</code>; otherwise output <code>solvable</code> and then output the solution using the format shown in the Sample Output.</p>",
+  "samples": [
+    {
+      "input": "6\n15\n18 100\n100 100 -6\n100 100 -3 100\n100 100 100 -5 100\n6 100 100 100 100 100\n",
+      "output": "solvable\n15 \n18 -3 \n15 3 -6 \n9 6 -3 -3 \n5 4 2 -5 2 \n6 -1 5 -3 -2 4 \n"
+    },
+    {
+      "input": "2\n100\n10 100\n",
+      "output": "ambiguous\n"
+    },
+    {
+      "input": "2\n10\n10 10\n",
+      "output": "no solution\n"
+    },
+    {
+      "input": "2\n100\n51 51\n",
+      "output": "no solution\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2025 East Central NA Regional Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

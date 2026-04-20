@@ -1,0 +1,29 @@
+{
+  "id": 27701,
+  "title": "Matrix nightmare",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>As Obi-Wan would put it: “This isn’t the problem statement you are looking for. Move along.”</p>\n<p>The <em>double factorial</em> numbers are the numbers $d_i$ defined by the following recursive formula: $d_0 = 1$, and $∀i &gt; 0$ : $d_i = d_{i-1} \\cdot i!$. For example, $d_3 = 1! \\cdot 2! \\cdot 3! = 12$.</p>\n<p>Sequences of length $n$ with all elements belonging into the set $\\{0, \\dots ,n-1\\}$ are called <em>limited sequences of order</em> $n$. For example, $(0, 2, 0, 1)$ is a limited sequence of order $4$. The set of all limited sequences of order $n$ will be denoted $S_n$.</p>\n<p>The <em>spread factor</em> of a sequence $A = (a_0, \\dots , a_{n-1})$ is the value $σ(A) = \\displaystyle\\prod_{i=0}^{n-1}\\prod_{j=i+1}^{n-1}{(a_i - a_j)}$.</p>\n<p>There is a direct isomorphism between pairs of sequences and sequences of pairs. Formally: Let $A, B ∈ S_n$. We can denote their elements as follows: $A = (a_0, \\dots , a_{n-1})$, $B = (b_0, \\dots , b_{n-1})$. The corresponding sequence of pairs $\\left((a_0, b_0), \\dots ,(a_{n-1}, b_{n-1})\\right)$ will be denoted $P_{A,B}$.</p>\n<p>Pairs of integers can be ordered lexicographically in the usual fashion: $(a, b) ≤ (c, d)$ if either $a &lt; c$, or ($a = c ∧ b ≤ d$). A sequence $P = (p_0, \\dots , p_{n-1})$ of pairs of integers is ordered lexicographically if for all $i$, $p_i ≤ p_{i+1}$. Let $ρ(P) =$ [if $P$ is ordered lexicographically then $1$ else $0$].</p>\n<p>Let $M$ be a $n \\times n$ matrix, with rows and columns indexed from $0$ to $n - 1$. Elements of $M$ will be denoted $m_{r,c}$. A matrix is called a $\\mathbb{Z}$-<em>var matrix</em> if each element in the matrix is either an integer or a variable. The $n$-<em>step traversal weight</em> of $M$ is the following value</p>\n<p>$$φ(M) = \\frac{1}{d_{n-1}^2} \\cdot \\sum_{A=(a_0,\\dots ,a_{n-1}), A∈S} \\sum_{B=(b_0,\\dots ,b_{n-1}), B∈S} \\left( ρ\\left(P_{A,B}\\right) \\cdot  \\left|ρ(A)  \\right|  \\cdot ρ(B) \\cdot \\prod_{i=0}^{n-1}{m_{a_i,b_i}}\\right) $$</p>\n<p>Given is a multivariate polynomial $p$ with integer coefficients. Produce any reasonably small $\\mathbb{Z}$-var matrix $M$ such that $φ(M) = p$.</p>",
+  "input": "<p>The first line of the input file contains an integer $t$ specifying the number of test cases. Each test case is preceded by a blank line.</p>\n<p>Each test case consists of a single line describing the polynomial. The variables are the letters <code>a</code> through <code>z</code>, the syntax will be clear from the input file. Each polynomial in the input file contains less than $50$ operations (i.e., additions, subtractions and multiplications)</p>",
+  "output": "<p>For each test case output one matrix in the following format: First its size $n$, then all its elements in row major order. The elements may be separated by any positive amounts of whitespace. The size of the matrix must not exceed $70$. All integers must be between $-10^9$ and $10^9$, inclusive.</p>\n<p>If for a given polynomial no such matrix exists, output a single zero instead</p>",
+  "samples": [
+    {
+      "input": "1\n\nxy\n",
+      "output": "2\n1 y\nx 0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Internet Problem Solving Contest, IPSC 2012",
+  "level": 22,
+  "tags": [
+    "math",
+    "graphs",
+    "string",
+    "constructive",
+    "parsing",
+    "linear_algebra"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

@@ -1,0 +1,25 @@
+{
+  "id": 21107,
+  "title": "Robot",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There is an infinitely large 2-dimensional chessboard, in which every cell has a unique integer coordinate $(x, y)$. The starting cell has coordinate $(0, 0)$. If we start from this cell, walk $x$ steps to the right, and then walk $y$ steps upwards, we will arrive at cell $(x, y)$. Note that $x$ and $y$ could be negative, which means walking in the opposite direction.</p>\n<p>There is a robot that starts from cell $(0,0)$ and then executes a sequence of commands $c_1 c_2 \\ldots c_n$, where each $c_i \\in \\{\\mathtt{L}, \\mathtt{R}, \\mathtt{D}, \\mathtt{U}\\}$, meaning walking one step in the direction of Left, Right, Down, Up, respectively. For example, if the sequence of commands is $\\mathtt{LRLD}$, then the cells traveled are $(0, 0) \\to (-1, 0) \\to (0, 0) \\to (-1, 0) \\to (-1, -1)$. We call such sequence the <em>travel history</em> of the robot (in this example, the history contains five elements).</p>\n<p>For every cell $(x, y)$ in the travel history, if it is the $i$-th time the robot visits this cell, then the robot earns a score of $$f(x, y, i) = i \\cdot \\left((|x| + 1) \\mathrm{xor} (|y| + 1)\\right) + i\\text{.}$$ The total score is the sum of the score of every cell in the travel history. In this example, the total score is $f(0, 0, 1) + f(-1, 0, 1) + f(0, 0, 2) + f(-1, 0, 2) + f(-1, -1, 1) = 1 + 4 + 2 + 8 + 1 = 16$.</p>\n<p>For every $i$ from $1$ to $n$, please answer: if we remove $c_i$ from the sequence of commands, what is the total score earned by the robot after executing the remaining sequence $c_1 c_2 \\ldots c_{i - 1} c_{i + 1} \\ldots c_n$?</p>",
+  "input": "<p>The first line contains an integer $n$ ($2 \\le n \\le 3 \\cdot 10^{5}$).</p>\n<p>The second line contains a string $c_1 c_2 \\ldots c_n$ of length $n$, denoting the sequence of commands.</p>",
+  "output": "<p>Output $n$ lines. The $i$-th line must contain the total score if we remove command $c_i$.</p>",
+  "samples": [
+    {
+      "input": "5\nLRLDD\n",
+      "output": "14\n11\n14\n16\n16\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 7: North American Contest 1",
+  "level": 17,
+  "tags": [
+    "ad_hoc",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.0714000463485718
+}

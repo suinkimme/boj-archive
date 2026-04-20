@@ -1,0 +1,34 @@
+{
+  "id": 15278,
+  "title": "Decisions, Decisions",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Let x<sub>0</sub>, . . . , x<sub>n−1</sub> denote n boolean variables (i.e., variables taking only values 0 and 1). A binary decision diagram (BDD) over these variables is a diagrammatic representation of a boolean function f(x<sub>0</sub>, . . . , x<sub>n−1</sub>) as inputs.</p>\n<p>A BDD is a rooted binary tree such that all internal vertices v have precisely two children. The edges connecting an internal vertex v with its children are labelled with a 0 or 1 (exactly one of each). Each leaf vertex is also labelled with a 0 or 1. We note that a BDD may consist of a single vertex, which is considered to be both the root and a leaf vertex.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:345px; width:407px\"/></p>\n<p>Given input (x<sub>0</sub>, . . . , x<sub>n−1</sub>), the boolean function represented by the BDD is evaluated as follows.</p>\n<ul>\n<li>let v be the root vertex</li>\n<li>let i ← 0</li>\n<li>while v is not a leaf do\n\t<ul>\n<li>replace v with the child vertex of v by traversing the edge labelled x<sub>i</sub></li>\n<li>increase i by 1</li>\n</ul>\n</li>\n<li>output the label of leaf vertex v</li>\n</ul>\n<p>Consider the function f(x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>) represented by the BDD above. To evaluate f(1, 0, 1), we start from the root, we descend along edges labelled 1, 0, and then 1. We reach a leaf vertex labelled 1, so f(1, 0, 1) = 1.</p>\n<p>A BDD is minimal if there is no way to replace any subtree of an internal vertex of the BDD by a single leaf vertex to get a new BDD defining the same boolean function. The BDD depicted above is minimal. It is a fact that for each boolean function f, there is a unique minimal BDD that represents the boolean function.</p>\n<p>In this problem, you are given an n-variable boolean function specified by a list of the 2<sup>n</sup> different values the function should take for various inputs. Compute the number of vertices in the minimal BDD representing this function.</p>",
+  "input": "<p>The first line of input consists of a single integer 1 ≤ n ≤ 18. Then one more line follows that contains 2<sup>n</sup> values (either 0 or 1) describing an n-variable boolean function.</p>\n<p>We think of these values as being indexed from 0 to 2<sup>n</sup> − 1. The ith such value represents f(x<sub>0</sub>, . . . , x<sub>n−1</sub>) where x<sub>j</sub> is the jth least-significant bit of the binary representation of i. In other words, x<sub>j</sub> is the coefficient of 2 j in the binary expansion of i.</p>\n<p>The third sample input below corresponds to the BDD depicted above.</p>",
+  "output": "<p>Output consists of a single integer m that is the number of vertices in the unique minimal BDD representing the boolean function from the input.</p>",
+  "samples": [
+    {
+      "input": "2\n1 1 0 1\n",
+      "output": "5\n"
+    },
+    {
+      "input": "2\n0 0 0 0\n",
+      "output": "1\n"
+    },
+    {
+      "input": "3\n1 0 1 0 1 1 1 0\n",
+      "output": "7\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Rocky Mountain Regional, 2017 Rocky Mountain Regional Contest",
+  "level": 12,
+  "tags": [
+    "bitmask",
+    "divide_and_conquer",
+    "recursion"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

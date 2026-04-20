@@ -1,0 +1,31 @@
+{
+  "id": 9256,
+  "title": "Call Me Back, Please!",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In the previous question, we were trying to find all the friends of a given person. In this question, we will have a closer look at how one could generate a network from raw meta-data about calls. This is the kind of stuff that is presumably going on inside the NSA with the data sets they obtain from phone companies and from logging calls themselves with (or without) warrants.</p>\n<p>You will be given a list of phone calls, sorted non-decreasingly by the date/time at which they were initiated. Each entry will specify the date and time the call started, the duration in minutes, and the phone number that originated it and the one that received it. We will declare that two people (or phone numbers) A and B are connected if there is a 24-hour period during which they had calls each way. For instance, if on 01/15 at 6:00am, A called B for 20 minutes, and on 01/16 at 6:20am, B called A for 1 minute, then they are connected. If A had initiated both calls, that wouldn’t be enough evidence. If B had called back A at 6:21am, again, that wouldn’t be enough evidence.</p>\n<p>Your task is to take the list of all phone calls, and output a list of all connections.</p>",
+  "input": "<p>The first line is the number K of input data sets, followed by the K data sets, each of the following form:</p>\n<p>The first line contains an integer n, the total number of calls (with 0 ≤ n ≤ 100000). This is followed by n lines, each of the following form:</p>\n<pre>\nyyyy/mm/dd hh:mm T &lt;number1&gt; &lt;number2&gt;</pre>\n<p>Here, yyyy/mm/dd is the date (there will be leading 0s if needed), and hh:mm is the time, where the hour is in the 0–23 format. T is the duration of the call (in minutes), an integer. Finally, &lt;number1&gt; and &lt;number2&gt; are the number initiating and receiving the call; both are simply 10-digit numbers without any other characters.</p>",
+  "output": "<p>For each data set, output “Data Set x:” on a line by itself, where x is its number. Then, output the connections for each number, in the following format. For each phone number, there will be one line, whose format is</p>\n<pre>\n&lt;number&gt;: &lt;conn1&gt; &lt;conn2&gt; &lt;conn3&gt; ...</pre>\n<p>Here, &lt;number&gt; is the number itself, and after the colon, there will be a list of all the connections according to our definition. The lines must be sorted by increasing &lt;number&gt;, and within each line, all the connections must also be sorted by increasing phone numbers.</p>\n<p>Each data set should be followed by a blank line.</p>",
+  "samples": [
+    {
+      "input": "1\n8\n2013/10/01 10:00 20 0000000001 0000000002\n2013/10/01 11:00 20 0000000002 0000000003\n2013/10/01 11:50 20 0000000002 0000000003\n2013/10/01 12:00 20 0000000003 0000000004\n2013/10/02 10:19 20 0000000002 0000000001\n2013/10/02 14:00 10 0000000004 0000000003\n2013/10/02 15:00 10 0000000001 0000000003\n2013/10/02 16:00 10 0000000003 0000000001\n",
+      "output": "Data Set 1:\n0000000001: 0000000002 0000000003\n0000000002: 0000000001\n0000000003: 0000000001\n0000000004:\n\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Fall 2013: PRISM",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "graphs",
+    "string",
+    "set",
+    "sweeping",
+    "parsing",
+    "difference_array"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 3.8333001136779785
+}

@@ -1,0 +1,24 @@
+{
+  "id": 12141,
+  "title": "Kiddie Pool (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A kiddie pool is a big container in which you can put water, so that small children can play in it.</p>\n<p>You have access to <strong>N</strong> different sources of water. The i<sup>th</sup> source of water produces water at rate <strong>R</strong><sub>i</sub> and at temperature <strong>C</strong><sub>i</sub>. Initially, all of the water sources are off. Each source of water can be switched on only once, and switched off only once; the act of switching a source on or off takes no additional time. Multiple sources can be on at the same time.</p>\n<p>Your pool can hold an infinite amount of water, but you want to fill the pool to a volume of exactly <strong>V</strong> with a temperature of exactly <strong>X</strong>, as quickly as possible. If you turn sources on and off optimally (not every source necessarily has to be used), what's the minimum number of seconds it will take you to do this?</p>\n<p>For the purposes of this problem, combining water that has volume <strong>V</strong><sub>0</sub> and temperature <strong>X</strong><sub>0</sub> with water that has volume <strong>V</strong><sub>1</sub> and temperature <strong>X</strong><sub>1</sub> will <strong>instantaneously</strong> create water with volume <strong>V</strong><sub>0</sub>+<strong>V</strong><sub>1</sub> and temperature (<strong>V</strong><sub>0</sub><strong>X</strong><sub>0</sub> + <strong>V</strong><sub>1</sub><strong>X</strong><sub>1</sub>) / (<strong>V</strong><sub>0</sub> + <strong>V</strong><sub>1</sub>). For example, combining 5L of water at 10 degrees with 10L of water at 40 degrees will result in 15L of water at 30 degrees. You should also assume that water does not heat or cool over time except as a result of being combined with other water.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>.  <strong>T</strong> test cases follow. The first line of each test case contains three space-separated numbers: an integer <strong>N</strong>, and real numbers <strong>V</strong> and <strong>X</strong> as described above.</p>\n<p>The next <strong>N</strong> lines each contain two space-separated real numbers, <strong>R</strong><sub>i</sub> and <strong>C</strong><sub>i</sub>, the rate of flow and temperature of the i<sup>th</sup> water source respectively. The volume is expressed in liters, rates of flow are expressed in liters per second, and temperatures are expressed in degrees Celsius.</p>\n<p>All real numbers will be exactly specified to four decimal places.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>0.1 ≤ <strong>X</strong> ≤ 99.9.</li>\n<li>0.1 ≤ <strong>C</strong><sub>i</sub> ≤ 99.9.</li>\n<li>1 ≤ <strong>N</strong> ≤ 2.</li>\n<li>0.0001 ≤ <strong>V</strong> ≤ 100.0.</li>\n<li>0.0001 ≤ <strong>R</strong><sub>i</sub> ≤ 100.0.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #x: y\", where x is the test case number (starting from 1) and y is the minimum number of seconds it takes to fill the kiddie pool to the right volume and temperature. If it is impossible to do so given the inputs, y should be the string <code>IMPOSSIBLE</code>.</p>\n<p>y will be considered correct if it is within an absolute or relative error of 10<sup>-6</sup> of the correct answer.</p>",
+  "samples": [
+    {
+      "input": "6\n1 10.0000 50.0000\n0.2000 50.0000\n2 30.0000 65.4321\n0.0001 50.0000\n100.0000 99.9000\n2 5.0000 99.9000\n30.0000 99.8999\n20.0000 99.7000\n2 0.0001 77.2831\n0.0001 97.3911\n0.0001 57.1751\n2 100.0000 75.6127\n70.0263 75.6127\n27.0364 27.7990\n4 5000.0000 75.0000\n10.0000 30.0000\n20.0000 50.0000\n300.0000 95.0000\n40.0000 2.0000\n",
+      "output": "Case #1: 50.0000000\nCase #2: 207221.843687375\nCase #3: IMPOSSIBLE\nCase #4: 0.500000000\nCase #5: 1.428034895\nCase #6: 18.975332068\n"
+    }
+  ],
+  "hint": "<p>Note that Case #6 is not within the limits for the Small dataset.<br/>\n<br/>\nIn Case #1, the one available source happens to be the exact temperature we need. The optimal strategy is to immediately turn it on and let it run until we have 10 L. Since 0.2 L will come out every second, this takes 50 seconds.<br/>\n<br/>\nIn Case #2, one optimal strategy is to turn on the first source and let it run for 207221.843687375 seconds, and then, about 0.092778156 seconds before the end, also turn on the second source.<br/>\n<br/>\nIn Case #3, both available water sources are cooler than the target temperature, so there is no way to reach it.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2015, Round 2",
+  "level": 11,
+  "tags": [
+    "math"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.5881999731063843
+}

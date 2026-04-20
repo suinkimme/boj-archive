@@ -1,0 +1,36 @@
+{
+  "id": 27624,
+  "title": "Card Game",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Two brothers, Aldo and Bondan, are stuck in their home as their city is going into lockdown again due to the worsening situation of the COVID-19 pandemic. They have finished their semester and are on holiday, but what kind of holiday can you enjoy if you cannot get out of your house. However, boredom does spark creativity. They created a new card game during their boring holiday.</p>\n<p>This game is played by two players on N cards (both players play the same set of cards). Each card has two faces, the front and the back. A number P<sub>i</sub> is written on the front face while a number Q<sub>i</sub> is written on the back face of the i<sup>th</sup> card. All written numbers are between 1 and N. There are no two cards with the same number P<sub>i</sub> written on their front face, and there are no two cards with the same number Q<sub>i</sub> written on their back face.</p>\n<p>Two opposing players play alternatingly. In their turn, the player picks a card among those that can be picked (initially, any cards can be picked). Let the picked card be the c<sup>th</sup> card. The player then ends their turn by choosing a number from the picked card, either P<sub>c</sub> or Q<sub>c</sub>. Let the chosen number be x. Then, from this moment until the end of the game, any card that contains the number x on either face cannot be picked. The game continues to the opposing player. A player who cannot make any move loses.</p>\n<p>Aldo and Bondan are both equally good at such a game. They will always play the game optimally; it means that if there exists a move that guarantees their win, then they will always choose that move.</p>\n<p>Your task in this problem is to determine who will win the game if both players play optimally.</p>\n<p>For example, let there be N = 4 cards where the cards faces (P<sub>i</sub>, Q<sub>i</sub>) are {(2, 3),(3, 1),(1, 2),(4, 4)}. In this example, there is a way for the first player to win the game. The following are two example plays.</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<th>Chosen Numbers</th>\n<th>Available Cards</th>\n<th>Turn</th>\n<th>Move</th>\n</tr>\n<tr>\n<td>{}</td>\n<td>(2, 3), (3, 1), (1, 2), (4, 4)</td>\n<td>1st player</td>\n<td>pick card (4, 4) choose number 4</td>\n</tr>\n<tr>\n<td>{4}</td>\n<td>(2, 3), (3, 1), (1, 2), <s>(4, 4)</s></td>\n<td>2nd player</td>\n<td>pick card (2, 3) choose number 2</td>\n</tr>\n<tr>\n<td>{4, 2}</td>\n<td><s>(2, 3)</s>, (3, 1), <s>(1, 2)</s>, <s>(4, 4)</s></td>\n<td>1st player</td>\n<td>pick card (3, 1) choose number 1</td>\n</tr>\n<tr>\n<td>{4, 2, 1}</td>\n<td><s>(2, 3)</s>, <s>(3, 1)</s>, <s>(1, 2)</s>, <s>(4, 4)</s></td>\n<td>2nd player</td>\n<td>cannot pick any card</td>\n</tr>\n</tbody>\n</table>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<th>Chosen Numbers</th>\n<th>Available Cards</th>\n<th>Turn</th>\n<th>Move</th>\n</tr>\n<tr>\n<td>{}</td>\n<td>(2, 3), (3, 1), (1, 2), (4, 4)</td>\n<td>1st player pick card (3, 1)</td>\n<td>choose number 1</td>\n</tr>\n<tr>\n<td>{1}</td>\n<td>(2, 3), <s>(3, 1)</s>, <s>(1, 2)</s>, (4, 4)</td>\n<td>2nd player pick card (4, 4)</td>\n<td>choose number 4</td>\n</tr>\n<tr>\n<td>{1, 4}</td>\n<td>(2, 3), <s>(3, 1)</s>, <s>(1, 2)</s>, <s>(4, 4)</s></td>\n<td>1st player pick card (2, 3)</td>\n<td>choose number 3</td>\n</tr>\n<tr>\n<td>{1, 4, 3}</td>\n<td><s>(2, 3)</s>, <s>(3, 1)</s>, <s>(1, 2)</s>, <s>(4, 4)</s></td>\n<td>2nd player</td>\n<td>cannot pick any card</td>\n</tr>\n</tbody>\n</table>",
+  "input": "<p>Input begins with a line containing an integer N (1 ≤ N ≤ 100 000) representing the number of cards. The second line contains N integers P<sub>i</sub> (1 ≤ P<sub>i</sub> ≤ N) representing the number on the front face of the i<sup>th</sup> card. The third line contains N integers Q<sub>i</sub> (1 ≤ Q<sub>i</sub> ≤ N) representing the number on the back face of the i<sup>th</sup> card. It is guaranteed that all numbers on the front face of all cards are unique. It is also guaranteed that all numbers on the back face of all cards are unique.</p>",
+  "output": "<p>Output a string “First” in a line if the first player will win the game assuming both players play the game optimally. Otherwise, output a string “Second” in a line.</p>",
+  "samples": [
+    {
+      "input": "4\n2 3 1 4\n3 1 2 4\n",
+      "output": "First\n"
+    },
+    {
+      "input": "3\n2 3 1\n3 1 2\n",
+      "output": "Second\n"
+    },
+    {
+      "input": "6\n1 2 3 4 5 6\n3 5 1 6 4 2\n",
+      "output": "First\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2021",
+  "level": 20,
+  "tags": [
+    "dp",
+    "game_theory",
+    "precomputation",
+    "sprague_grundy",
+    "permutation_cycle_decomposition"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.7777999639511108
+}

@@ -1,0 +1,22 @@
+{
+  "id": 9173,
+  "title": "Constant Irritation",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Even for a single architecture – or even a single processor – there may be multiple assembler (or assembly) languages with different syntax rules, different directives (or “pseudo-ops”), and different mnemonics for the operation codes. Even the definition of integer constants can differ!</p>\n<p>For example, one assembler for the Intel IA-32 architecture (that is, the x86, Pentium, and Xeon), uses a letter following a number to indicate the base, while another uses C/C++/Java style constants:</p>\n<pre>\n1f34h     = 0x1f34   (a hex constant; C/C++/Java uses a leading 0x) \n11001100b = 0xc0     (binary, but no direct C equivalent, so use hex)\n377o      = 0377     (octal; C/C++/Java uses a leading zero)\n925       = 925      (decimal; C/C++/Java decimals must NOT begin with 0)\n925d      = 925      (also decimal)\n</pre>\n<p>And if that wasn’t sufficient, the directives used to allocate and initialize storage for constants also differ:</p>\n<pre>\ndb =    .byte        (one byte)\ndw =    .word        (two bytes)\ndd =    .long        (four bytes)\ndq =    .quad        (eight bytes)</pre>\n<p>So using the assembler “A” (Intel IA-32 Architecture) we might write</p>\n<pre>\ndb   1fh, 377o, 99d</pre>\n<p>but for assembler “B” (C/C++/Java style) we'd have to write</p>\n<pre>\n.byte     0x1f, 0377, 99</pre>\n<p>Each line of input for this problem will contain a directive that allocates and initializes storage, written in the style of assembler \"A\". Translate each such to the style required by assembler \"B\" and display it.</p>",
+  "input": "<p>Each input line contains, in order, the following items:</p>\n<ul>\n<li>zero or more whitespace characters (blanks and/or tabs)</li>\n<li>one of the directives \"db\", \"dw\", \"dd\", or \"dq\", in lowercase</li>\n<li>one or more whitespace characters</li>\n<li>one or more constants, separated from each other by a comma and zero or more whitespace characters (in any order)</li>\n<li>zero or more trailing whitespace characters</li>\n<li>the end of line character</li>\n</ul>\n<p>There will be no more than 100 characters in any input line. The last input line (line with data) is followed by a line that contains only whitespace followed by an end of line character.</p>",
+  "output": "<p>For each input line you are to display one output line. The line is to contain the equivalent assembler “B” line for the input assembler “A” line. Specifically, it will contain, in order, the following items:</p>\n<ul>\n<li>exactly one tab character</li>\n<li>one of the directives \".byte\", \".word\", \".long\" or \".quad\", in lowercase letters, corresponding to the directive in the input line</li>\n<li>exactly one tab character</li>\n<li>one or more constants, separated from each other by a comma and then a blank. Each constant must be in the style supported by assembler \"B\", and (if possible) use the same base as that given for the corresponding constant in the input line. For each binary constant in the assembler \"A\" form, use the hexadecimal form for assembler “B”.</li>\n<li>the end of line character</li>\n</ul>\n<p>You are not to consider whether the given constant will fit in the storage allocated by the directive. Thus input like \" db 99999 \" is acceptable, even though that value will not fit in a byte.</p>",
+  "samples": [
+    {
+      "input": "    dd    1,2  ,   13h,   1010b  , 12d,   377o \n               dw  each  ,   0001b,  999999999999d\n      dq   1234h, 1200h\n",
+      "output": "\t.long\t1, 2, 0x13, 0xa, 12, 0377\n\t.word\t0xeac, 0x1, 999999999999\n\t.quad\t0x1234, 0x1200\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2005 Pacific Northwest Region Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

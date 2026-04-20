@@ -1,0 +1,31 @@
+{
+  "id": 17635,
+  "title": "다리",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<blockquote>\r\n<p style=\"text-align: right;\">상트페테르부르크 시의 수로 길이의 총합은 약 282 km이고, 도시 면적 중 물이 차지하는 비중은 약 7%이다.</p>\r\n\r\n<hr />\r\n<p style=\"text-align: right;\">Wikipedia</p>\r\n</blockquote>\r\n\r\n<p>상트페테르부르크는 n개의 섬을 m개의 다리로 이어 만든 도시이다. 섬은 1부터 n까지 정수로 표현할 수 있고, 다리는 1부터 m까지 정수로 표현한다. 각각의 다리는 서로 다른 두 섬을 연결한다. 어떤 다리는 표트르 대제 시절에 만들었고, 어떤 다리는 만든지 얼마 되지 않는다. 그래서 다리들마다 다양한 무게 제한이 있다. 즉, 자동차가 다리 i를 지나려면 무게가 d<sub>i</sub> 이하여야 한다. 때떄로 상트페테르부르크의 다리들을 보수할 때가 있다. 그렇지만 보수를 한다고 꼭 다리가 더 튼튼해지는 것은 아니어서, d<sub>i</sub> 값이 늘 수도 있고 줄어들 수도 있다. 이 도시의 시민과 관광객을 위해서, 다음 두 가지 질의를 처리할 수 있는 프로그램이 있다면 좋을 것이다.</p>\r\n\r\n<ol>\r\n\t<li>다리 b<sub>j</sub>의 무게 제한이 r<sub>j</sub>로 바뀌었다.</li>\r\n\t<li>무게가 w<sub>j</sub>인 자동차로 섬 s<sub>j</sub>에서 출발해서 도착할 수 있는 섬의 수를 구하시오.</li>\r\n</ol>\r\n\r\n<p>두번째 형태의 질의를 모두 답하시오.</p>\r\n",
+  "input": "<p>첫 번째 줄에는 두 정수 n, m가 주어진다. &mdash; 이는 각각 상트페테르부르크의 섬과 다리의 수이다. (1 &le; n &le; 50 000, 0 &le; m &le; 100 000)</p>\r\n\r\n<p>다음 m 줄 중 i 번째 줄에는 세 정수 u<sub>i</sub>, v<sub>i</sub>, d<sub>i</sub>가 주어지는데, 섬 u<sub>i</sub>과 섬 v<sub>i</sub>를 잇는 다리의 무게 제한은 최초에는 d<sub>i</sub>라는 뜻이다. (1 &le; u<sub>i</sub>, v<sub>i</sub> &le; n; u<sub>i</sub>&nbsp;&ne; v<sub>i</sub> ; 1 &le; d<sub>i</sub> &le; 10<sup>9</sup>)</p>\r\n\r\n<p>그 다음 줄에는 하나의 정수 q가 주어진다. &mdash; 이는 질의의 수이다. (1 &le; q &le; 100 000). 다음 q 줄에 질의가 주어진다.</p>\r\n\r\n<p>각 질의는 정수 t<sub>j</sub>로 시작한다. (t<sub>j</sub> &isin; {1, 2})</p>\r\n\r\n<p>만약 t<sub>j</sub> = 1이라면, 이 질의는 첫 번째 형태이고, 두 정수 b<sub>j</sub>와 r<sub>j</sub>가 뒤따라 주어지는데, 이는 다리 b<sub>j</sub>의 무게 제한이 r<sub>j</sub>로 바뀐다는 뜻이다. (1 &le; b<sub>j</sub> &le; m, 1 &le; r<sub>j</sub> &le; 10<sup>9</sup>)</p>\r\n\r\n<p>만약 t<sub>j</sub> = 2이면, 이 질의는 두번째 형태이고, 두 정수 s<sub>j</sub>와 w<sub>j</sub>가 뒤따라 주어지는데, 이는 무게가 w<sub>j</sub>인 자동차가 섬 s<sub>j</sub>에서 출발하여 도착할 수 있는 섬의 수를 구하라는 뜻이다. (1 &le; s<sub>j</sub> &le; n, 1 &le; w<sub>j</sub> &le; 10<sup>9</sup>)</p>\r\n",
+  "output": "<p>두번째 형태의 질의 하나마다 한 줄에 하나씩 질의의 답을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3 4\n1 2 5\n2 3 2\n3 1 4\n2 3 8\n5\n2 1 5\n1 4 1\n2 2 5\n1 1 1\n2 3 2\n",
+      "output": "3\n2\n3\n"
+    },
+    {
+      "input": "7 8\n1 2 5\n1 6 5\n2 3 5\n2 7 5\n3 4 5\n4 5 5\n5 6 5\n6 7 5\n12\n2 1 6\n1 1 1\n2 1 2\n1 2 3\n2 2 2\n1 5 2\n1 3 1\n2 2 4\n2 4 2\n1 8 1\n2 1 1\n2 1 3\n",
+      "output": "1\n7\n7\n5\n7\n7\n4\n"
+    }
+  ],
+  "hint": "<p>녹색 에지는 질의에서 물어보는 자동차가 건널 수 있는 다리를 나타낸다. 녹색 노드는 이 자동차가 도착할 수 있는 섬을 나타낸다. 화살표가 가리키는 섬은 이 자동차가 처음에 있던 곳이다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 564px; height: 174px;\" /></p>\r\n\r\n<p style=\"text-align: center;\">첫 번째 테스트 데이터</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 550px; height: 479px;\" /></p>\r\n\r\n<p style=\"text-align: center;\">두번째 테스트 데이터</p>\r\n",
+  "source": "Olympiad, Asia-Pacific Informatics Olympiad, APIO 2019",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "offline_queries",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 72,
+  "submission_count": null,
+  "average_tries": 4.263899803161621
+}

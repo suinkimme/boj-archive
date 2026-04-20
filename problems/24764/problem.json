@@ -1,0 +1,38 @@
+{
+  "id": 24764,
+  "title": "Wordle with Friends",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 378px; height: 157px;\"/></p>\n<p>Zoe and her friends enjoy playing Wordle (<a href=\"https://www.nytimes.com/games/wordle/\">Wordle</a> was created by Josh Wardle, and is now owned by the New York Times.) together and have decided to work cooperatively to solve the daily puzzle.</p>\n<p>Wordle is a game where players get six attempts to guess a hidden 5-letter word.  With each word guessed, the system will mark each letter with one of three feedback colors:</p>\n<ol>\n<li><code>Green</code> - this letter is in the word and occurs at this location.</li>\n<li><code>Yellow</code> - this letter is in the word, but not at this location.</li>\n<li><code>Gray</code> - this letter is not in the hidden word (with an exception for duplicate letters, see below).</li>\n</ol>\n<p>Note that duplicate letters can be a little tricky. First, <code>Green</code> letters are marked. For a single letter, suppose there are $X$ non-<code>Green</code> occurrences in the hidden word and $Y$ non-<code>Green</code> occurrences in the guess. The <em>leftmost</em> $\\min(X,Y)$ of the non-<code>Green</code> occurrences of this letter will be marked <code>Yellow</code> and the rest will be <code>Gray</code>.</p>\n<p>For example, if the hidden word was <code>FREED</code> and a guessed word was <code>GEESE</code>, the feedback would show the second <code>E</code> (the third letter) in <code>Green</code>, and the first and third <code>E</code>s (second and fifth letters of <code>GEESE</code>) respectively in <code>Yellow</code> and <code>Gray</code>.</p>\n<p>Knowing the list of all guessable words, help Zoe determine which words are still valid given their original guesses.</p>",
+  "input": "<p>The first line of input contains two integers $N$ ($1 \\leq N \\leq 10$), which is the number of guesses Zoe and her friends have made, and $W$ ($1 \\leq W \\leq 10^4$), which is the number of guessable words.</p>\n<p>The next $N$ lines describe the guesses. Each line contains two 5-letter strings $g$ and $f$. The first string, $g$, is the guess which consists only of uppercase English letters and is in the list of guessable words. The second string, $f$, is the feedback. The feedback is composed of the characters <code>G</code>, <code>Y</code>, and <code>-</code>, respectively indicating <code>Green</code>, <code>Yellow</code>, and <code>Gray</code> for the guess.</p>\n<p>The last $W$ lines describe the list of distinct guessable words. Each line contains a 5-letter string of uppercase English letters.</p>",
+  "output": "<p>Display all valid words, in the order they appear, from the guessable list of words. There will always be at least one valid word.</p>",
+  "samples": [
+    {
+      "input": "2 5\nBERRY -G---\nAPPLE ---YY\nMELON\nBERRY\nLEMON\nLIMES\nAPPLE\n",
+      "output": "MELON\nLEMON\n"
+    },
+    {
+      "input": "3 5\nBERRY -G---\nAPPLE ---YY\nLIMES G-GY-\nAPPLE\nBERRY\nLEMON\nLIMES\nMELON\n",
+      "output": "LEMON\n"
+    },
+    {
+      "input": "3 5\nBLANK --Y--\nSIGHS ----G\nSTORM YGG-Y\nATOMS\nBLANK\nMOATS\nSIGHS\nSTORM\n",
+      "output": "ATOMS\n"
+    },
+    {
+      "input": "4 5\nFRUIT -G--Y\nNUTTY --Y--\nROOTS Y--YG\nSEEDS -YG-G\nFRUIT\nNUTTY\nROOTS\nSEEDS\nTREES\n",
+      "output": "TREES\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Rocky Mountain Regional, 2021 Rocky Mountain Regional Contest",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "simulation",
+    "string"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 2.8499999046325684
+}

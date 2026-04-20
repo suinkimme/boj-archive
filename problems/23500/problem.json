@@ -1,0 +1,27 @@
+{
+  "id": 23500,
+  "title": "MST Camera",
+  "time_limit": "7 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>On a recent team contest your team was the best, and therefore won the best award. A camera. But it's not an ordinary camera, manufacturer of the camera, the famous \"MST\" company claims that this camera has unique capability. If you use it to picture some set of undirected edges of some graph, it is capable of calculating wheter it is possible to form a tree with these edges, and even better, if edges are weighted it is capable of finding a tree with minimum possible sum of weights of edges.</p>\n<p>Your task is to check whether your camera works or not. You have a matrix with $R$ rows and $C$ columns, as well as the number $N$ - the number of nodes in the graph. In every field of the matrix, you have one undirected edge of the graph. You should answer on $Q$ queries, where each query is some submatrix of the original matrix. Answer to that query is the sum of weights of edges of minimum spanning tree, formed with edges in the given submatrix.</p>\n<p>Formally, in field which is in row $i$ and column $j$ ($1 \\leq i \\leq R$, $1 \\leq j \\leq C$), you have three numbers $U_{i,j}$, $V_{i,j}$ and $W_{i,j}$, which means that in the field $(i,j)$, there is an edge between node $U_{i,j}$ and $V_{i,j}$, with weight $W_{i,j}$. After that you have $Q$ queries.  Each query is described by four numbers $X_{1},Y_{1},X_{2},Y_{2}$ ($1 \\leq X_{1} \\leq X_{2} \\leq R$, $1 \\leq Y_{1} \\leq Y_{2} \\leq C$), where $(X_{1},Y_{1})$ is the upper left corner of the given submatrix, and $(X_{2},Y_{2})$ is the bottom right corner of the submatrix. For each query consider graph with all $N$ nodes and edges from the given submatrix. If there exists minimum spanning tree, you should print the sum of weights of tree edges. If spanning tree doesn't exist, you should print \"$-1$\" (quotes for clarity). For each query, condition: $\\frac{2}{3} \\leq \\frac{X_{2}-X_{1}+1}{Y_{2}-Y_{1}+1} \\leq \\frac{3}{2}$ holds.</p>",
+  "input": "<p>In first line, there are numbers $N$, $R$, $C$ and $Q$ ($2 \\leq N \\leq 40$, $1 \\leq R,C \\leq 250$, $1 \\leq Q \\leq 200000$).</p>\n<p>$R$ rows follow and in each of them $3C$ numbers. In $i$th row the numbers are: $U_{i,1}$, $V_{i,1}$, $W_{i,1}$, $U_{i,2}$, $V_{i,2}$, $W_{i,2}$,...,$U_{i,C}$, $V_{i,C}$, $W_{i,C}$ ($0 \\leq W_{i,j} \\leq 65535$, for each $1 \\leq j \\leq C$).</p>\n<p>$Q$ rows follow and in each of them $4$ numbers - $X_{1}$, $Y_{1}$, $X_{2}$ and $Y_{2}$.</p>",
+  "output": "<p>Print $Q$ rows, in $i$th row answer to the $i$th query.</p>",
+  "samples": [
+    {
+      "input": "4 3 4 3\n1 2 1 1 2 2 1 2 3 1 2 100\n2 3 2 2 3 3 2 3 1 2 3 101\n3 4 3 3 4 1 3 4 2 3 4 102\n1 1 3 4\n1 2 3 3\n3 4 3 4\n",
+      "output": "3\n4\n-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 19: The Grand Prix of Serbia",
+  "level": 22,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "mst",
+    "sparse_table"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.833299994468689
+}

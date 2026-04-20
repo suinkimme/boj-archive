@@ -1,0 +1,27 @@
+{
+  "id": 6174,
+  "title": "The Loathesome Hay Baler",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Farmer John has purchased the world's most loathesome hay baler. Instead of having a drive-roller that drives maybe an idler roller that drives the power take-off for the baler, it has N rollers (2 &lt;= N &lt;= 1050) which drive and are driven by various rollers.</p>\n<p>FJ has meticulously cataloged data for each roller i: X_i,Y_i are the center of the roller (-5000 &lt;= X_i &lt;= 5000; -5000 &lt;= Y_i &lt;= 5000); R_i is the roller's radius (3 &lt;= R_i &lt;= 800). The drive-roller is located at 0,0; the baler power take-off is located at X_t,Y_t (numbers supplied in the input).</p>\n<p>The drive-roller turns clockwise at 10,000 revolutions per hour. Your job is to determine the speeds of all the rollers that are in the power-train: from the drive-roller through the power take-off roller. Rollers that do not transfer power to the take-off roller are to be ignored. A roller of radius Rd that is turning at S rph and driving another roller of radius Rx will cause the second roller to turn at the speed -S*Rd/Rx (where the sign denotes whether the roller is turning clockwise or counterclockwise (anticlockwise for our British friends)).</p>\n<p>Determine the power-train path and report the sum of the absolute values of all those rollers' speeds. All the rollers in the input set except the driver-roller are driven by some other roller; power is never transferred to a roller from more than one other roller.</p>\n<p>Report your answer as an integer that is the truncated value after summing all the speeds.</p>",
+  "input": "<ul>\n<li>Line 1: Three space-separated integers: N, X_t, and Y_t</li>\n<li>Lines 2..N+1: Line i+1 describes roller i's properties: X_i, Y_i, and R_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: A single integer that is the truncated version of the sum of the absolute value of the speeds of the rollers in the power-train including the drive-roller, all the driven rollers, and the power take-off roller.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "4 32 54\n0 0 10\n0 30 20\n32 54 20\n-40 30 20\n",
+      "output": "20000\n"
+    }
+  ],
+  "hint": "<pre>\n Roller   Radius   Speed\n1 (0,0)     10     10,000\n2 (0,30)    20     -5,000\n3 (32,54)   20      5,000\n                   ------\nSum of abs values: 20,000</pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2007-2008 Season, USACO March 2008 Contest, Silver",
+  "level": 10,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "geometry",
+    "dfs"
+  ],
+  "accepted_user_count": 49,
+  "submission_count": null,
+  "average_tries": 3.4286000728607178
+}

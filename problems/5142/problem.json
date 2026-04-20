@@ -1,0 +1,28 @@
+{
+  "id": 5142,
+  "title": "Oily Currents",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>One major problem with something like an oil spill is that the oil doesn’t just stay where it comes from. If we just had a big cloud of oil forming right above the ruptured oil well itself, while still being a big problem, it would be much easier to clean up. But instead, the oil spreads both under the water and on top, due to wind, waves, and currents. Once it is covering hundreds of square miles, it becomes much harder to clean. Here, we will use a simple model to calculate the area that will find itself covered by oil due to currents. For simplicity, we will focus only on two dimensions and a bounded region; any oil leaving that region is assumed to never return to it.</p>\n<p>You will be given the information on currents in the following form: for a 2-dimensional grid, each location will tell you the strength (0–4) and direction (N,S,E,W) of the current. For instance, 2N means that once the current square gets contaminated with oil, within one time step, the two squares immediately to the north of this square will also be contaminated. You will also be given the coordiantes of the square where the oil spread starts, and the duration t to simulate. Your task is to output the map of the oil spread after those t steps.</p>",
+  "input": "<p>The first line contains the number K of data sets. This is followed by K data sets, each of the following form:</p>\n<p>The first line contains five integers x,y,x0,y0,t. 1 ≤ x,y ≤ 100 are the width and height of the map. 1 ≤ x0 ≤ x, 1 ≤ y0 ≤ y are the coordinates of the square where the oil spill starts. 0 ≤ t ≤ 100 is the duration you are to simulate.</p>\n<p>This is followed by y lines, each consisting of 2x characters. The characters in columns 2j − 1 and 2j of line i describe the current at position (j,i). The first one (a digit between 0 and 4) is the strength, and the second one (N, S, E, or W) is the direction of the current.</p>",
+  "output": "<p>For each data set, output “Data Set x:” on a line by itself, where x is its number. Then output the map after t steps of the oil spill. The map should consist of y lines of x characters each. The jth character of line i should be a dot (‘.’) if the square was not reached by the oil, and an ‘X’ if it was reached. Each data set should be followed by a blank line.</p>",
+  "samples": [
+    {
+      "input": "1\n15 7 8 4 5\n2W2S2W2S4W1S2W2W2S0E2S4E2S2E2S\n0E0E0S0N0S2E1E1N0E0W0S0N0E0S0N\n0E0E0S0N0S0E0E1E4S0W0S0N0E0S0N\n4W4W4W4W4W4W4W4N4E4E4E4E4E4E4E\n4W4W4W4W4W4W4W4W3E3E3E3E3E3E3E\n4W4W4W4W4W4W4W4W2E2E2E2E2E2E2E\n4W4W4W4W4W4W4W4W4W4E4E4E4E4E4E\n",
+      "output": "Data Set 1:\nXXXXXXXX.......\n.X.X.XXX.......\n.X.X...XX......\n.......XXXXXXXX\n........XXXXXXX\n........XXXXX..\nXXXXXXXXX......\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Fall 2010: Oil Spill",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "simulation",
+    "bfs"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.631600022315979
+}

@@ -1,0 +1,46 @@
+{
+  "id": 26916,
+  "title": "Fiskspelet",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Du spelar fiskspelet. Du är en fisk som ska äta mindre fiskar men aldrig får bli uppäten av större fiskar. Fiskarna ändrar aldrig storlek. Du får poäng för varje fisk du äter och självklart vill du ha så mycket poäng som möjligt.</p>\n<p>Spelplanen kan ses som ett rutnät med $H$ rader (numrerade från $1$ till $H$) men obegränsat antal kolumner. Du befinner dig i kolumnen $x=0$ och kan bara röra dig vertikalt (uppåt och nedåt). De andra fiskarna rör sig däremot aldrig vertikalt utan börjar i en viss kolumn $x&gt;0$ och flyter med konstant fart åt vänster (mot din kolumn). </p>\n<p>Alla fiskar (även du) har bredden $1$ ruta. Din höjd är $7$. Det finns tre andra sorters fiskar: \"liten\" med höjd $3$, \"mellan\" med höjd $5$ och \"stor\" med höjd $9$. Fiskarna har olika hastigheter. Varje sekund kan du röra dig en ruta uppåt eller nedåt (eller stå stilla). På samma tid rör sig en liten fisk $1$ ruta, en mellanfisk $2$ rutor och en stor fisk $3$ rutor åt vänster. Du väljer själv på vilken höjd-nivå din fisk ska börja, men observera att <em>hela</em> fisken alltid måste vara inom spelplanen. </p>\n<p>En fisk kan äta fiskar som är mindre än den själv. Du kan alltså äta fiskar av storlek $3$ och $5$, och får då $10$ respektive $20$ poäng. Men fiskar av höjd $9$ kommer att äta upp dig, och du måste akta dig för dem. Skulle du bli uppäten förlorar du. För att det inte ska bli orättvist vem som äter vem så har sjöjungfrun Arashiel bestämt att följande sker i varje diskret sekundsteg:</p>\n<ol>\n<li>Du gör ditt drag (flyttar upp, ner, eller stannar kvar).</li>\n<li>Stora fiskar avancerar tre steg, mellan-fiskar avancerar två steg och små fiskar avancerar ett steg.</li>\n<li>Stora fiskar äter mellan- och småfiskar (eller dig) om de är i samma kolumn och överlappar vertikalt (minst en ruta gemensam).</li>\n<li>Mellanfiskar som överlevt äter småfiskar om de är i samma kolumn och överlappar vertikalt.</li>\n<li>Du äter små- och mellanfiskar om de är i din kolumn ($x=0$) och överlappar vertikalt.</li>\n</ol>",
+  "input": "<p>På första raden står två heltal, $N$ ($1 \\leq N \\leq 50\\,000$), antalet fiskar, och $H$ ($20 \\leq H \\leq 1\\,000$), höjden på banan. </p>\n<p>Sedan följer $N$ rader, en för varje fisk. På varje rad står först en bokstav, <code>L</code>/<code>M</code>/<code>S</code>, alltså om fisken är liten, mellan eller stor. Därefter följer kolumnen $x$ som fisken startar på ($2 \\leq x \\leq 10^{16}$), samt vilken rad $y$ som utgör fiskens mellersta ruta (alltid vald så att hela fisken får plats inom intervallet $[1, h]$). De tre värdena åtskiljs med blanksteg.</p>\n<p>Dessutom gäller att:</p>\n<ul>\n<li>Inga fiskar i indata kommer överlappa varken helt eller delvis (initialt).</li>\n<li>$x$-koordinaten för varje fisk kommer alltid att vara jämn. För den större fiskstorleken kommer den även alltid att vara delbar med 3. Detta eftersom vi vill att alla krockar ska ske på heltalskoordinater.</li>\n<li>Du kommer alltid kunna klara dig från att bli uppäten, dvs spelet har alltid en lösning.</li>\n</ul>",
+  "output": "<p>Skriv ut en rad med ett enda heltal, antalet poäng du får om du spelar spelet optimalt.</p>",
+  "samples": [
+    {
+      "input": "3 20\nL 4 2\nS 30 8\nM 20 18\n",
+      "output": "20\n"
+    },
+    {
+      "input": "3 20\nL 4 2\nS 42 8\nM 22 18\n",
+      "output": "30 \n"
+    },
+    {
+      "input": "2 20\nL 6 3\nL 6 12\n",
+      "output": "10\n"
+    },
+    {
+      "input": "4 20\nL 10 6\nL 20 5\nL 30 7\nM 40 6\n",
+      "output": "30\n"
+    },
+    {
+      "input": "3 20\nL 18 3\nL 16 9\nM 20 6\n",
+      "output": "20\n"
+    },
+    {
+      "input": "3 20\nL 12345678901234 3\nL 12345678901234 9\nM 12345678901232 6\n",
+      "output": "40\n"
+    },
+    {
+      "input": "3 20\nL 12345678901234 3\nL 12345678901234 9\nM 12345678901236 6\n",
+      "output": "20\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 548px; height: 333px;\"/></p>\n<p style=\"text-align: center;\">Figure 1: Situationen i exempelfall 1</p>\n<p>En möjlig lösning till det första exemplet visas i figure 1. De heldragna färgade rektanglarna visar fiskarnas utgångspositioner och de streckade rektanglarna visar deras positioner efter $4$ respektive $8$ sekunder. Den svarta rektangeln visar en av flera optimala utgångspositioner för dig. I detta fall kan du helt enkelt stå stilla och invänta den gröna mellanfisken.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 548px; height: 333px;\"/></p>\n<p style=\"text-align: center;\">Figure 2: Situationen i exempelfall 2</p>\n<p>En möjlig lösning till det andra exemplet visas i figure 2. Den svarta rektangeln visar var du måste befinna dig vid tiden $t=4$ sekunder när du äter den blå lilla fisken (det går bra att även ha detta som utgångsposition). Den delade rutan markerar att fiskarna överlappar på denna ruta. Sedan måste du röra dig i full fart uppåt för att kunna äta den gröna mellanfisken vid $t=11$ (din position visas då av den grå streckade rektangeln). Slutligen måste du fortsätta uppåt för att undkomma den röda stora fisken som når din kolumn vid $t=14$ (detta skulle bli för kladdigt att visa i figuren).</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2014, Final",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

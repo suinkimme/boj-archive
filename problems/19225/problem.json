@@ -1,0 +1,26 @@
+{
+  "id": 19225,
+  "title": "Help BerLine",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Very soon, the new cell phone services provider \"BerLine\" will begin its work in Berland!</p>\n<p>The start of customer service is planned along the main street of the capital. There are $n$ base stations that are already installed. They are located one after another along the main street in the order from the $1$-st to the $n$-th from left to right. </p>\n<p>Currently, all these base stations are turned off. They will be turned on one by one, one base station per day, according to some permutation $p = [p_1, p_2, \\dots, p_n]$ ($ 1 \\le p_i \\le n$), where $p_i$ is the index of a base station that will be turned on on the $i$-th day. Thus, it will take $n$ days to turn on all base stations.</p>\n<p>Each base station is characterized by its operating frequency $f_i$ --- an integer between $1$ and $24$, inclusive.</p>\n<p>There is an important requirement for operating frequencies of base stations. Consider an arbitrary moment in time. For any phone owner, if we consider all base stations turned on in the access area of their phone, then in this set of base stations there should be at least one whose operating frequency is unique among the frequencies of these stations. Since the power of the phone and the position are not known in advance, this means that for any nonempty subsegment of turned on base stations, at least one of them has to have the operating frequency that is unique among the stations of this subsegment.</p>\n<p>For example, let's take a look at a case of $n = 7$, all $n$ stations are turned on, and their frequencies are equal to $f = [1, 2, 1, 3, 1, 2, 1]$. Consider any subsegment of the base stations --- there is a base station with a unique frequency within this subsegment. However, if $f = [1, 2, 1, 2, 3, 2, 1]$, then there is no unique frequency on the segment $[1, 2, 1, 2]$ from the index $1$ to the index $4$, inclusive.</p>\n<p>Your task is to assign a frequency from $1$ to $24$ to each of $n$ base stations in such a way that the frequency requirement is met at every moment. Remember that the base stations are turned on in the order of the given permutation $p$.</p>",
+  "input": "<p>The first line of the input contains an integer $t$ ($1 \\le t \\le 50$) --- the number of test cases in the input. Then $t$ test case descriptions follow.</p>\n<p>The first line of a test case contains an integer $n$ ($ 1 \\le n \\le 8\\,500$) --- the number of \"BerLine\" base stations.</p>\n<p>The following line contains $n$ distinct integers $p_1, p_2, \\dots, p_n$ ($1 \\le p_i \\le n$) --- the order in which the base stations are turned on, i. e. on the $i$-th day the base station with the index $p_i$ is turned on.</p>\n<p>It is guaranteed that a correct answer exists for all test cases in the input.</p>",
+  "output": "<p>Print exactly $t$ lines, where the $j$-th line contains the answer for the $j$-th test case in the input. Print the required frequencies $f_1, f_2, \\dots, f_n$ ($1 \\le f_i \\le 24$). If there are several possible answers, print any of them.</p>",
+  "samples": [
+    {
+      "input": "5\n3\n1 3 2\n3\n1 2 3\n1\n1\n10\n6 10 4 2 7 9 5 8 3 1\n10\n2 4 6 9 1 8 10 5 3 7\n",
+      "output": "1 3 2\n10 20 10\n1\n2 3 4 5 3 1 3 5 4 2\n1 2 3 4 5 6 7 8 9 10\n"
+    }
+  ],
+  "hint": "<p>In the first test case $n = 3$ and $p = [1, 3, 2]$. The base stations can be assigned frequencies $[1, 3, 2]$.</p>\n<ul>\n<li>Day 1: only the base station $1$ is turned on, its frequency is $1$.</li>\n<li>Day 2: the base stations $1$ and $3$ are turned on, their frequencies are $[1, 2]$.</li>\n<li>Day 3: all base stations are turned on, their frequencies are $[1, 3, 2]$ (in the direction along the street).</li>\n</ul>\n<p>On each day, each nonempty subsegment of turned on base stations has a base station with a unique frequency among this subsegment. It can be shown that three distinct frequencies are necessary in this test case.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2019",
+  "level": 26,
+  "tags": [
+    "constructive",
+    "divide_and_conquer",
+    "recursion"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2.8333001136779785
+}

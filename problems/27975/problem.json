@@ -1,0 +1,34 @@
+{
+  "id": 27975,
+  "title": "트리와 쿼리 22",
+  "time_limit": "10 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>$N$ 개의 정점으로 이루어진 트리가 있다. 정점은 $1$번부터 $N$ 번까지 번호가 매겨져 있다. $i$ 번 정점에는 숫자 $a_i$ 가 쓰여 있다. 초기에는 $a_i = i$ 으로 설정되어 있다.</p>\n<p>$f(u, v)$ 를, $u$ 에서 $v$ 로 가는 경로 $p_0 = u, p_1, p_2, \\ldots ,p_t = v$ 상에 있는 숫자 $a_{p_0}, a_{p_1}, \\ldots, a_{p_t}$ 를 순서대로 늘어 쓴 수열이라고 하자.</p>\n<p>다음과 같은 쿼리를 수행해야 한다.</p>\n<ul>\n<li><code>u v</code>: $a_u, a_v$ 를 바꾼다. 그 후, $f(u, w)$ 를 최대화하는 $w$ 를 출력한다. 수열은 사전순으로 비교한다.</li>\n</ul>\n<p>쿼리는 온라인으로 주어짐에 유의하라. 자세한 것은 입력 부분을 참고하면 된다.</p>",
+  "input": "<p>첫째 줄에 트리의 크기 N이 주어진다. (2 ≤ N ≤ 200,000)</p>\n<p>다음 N-1 개의 줄에 두 정수 u, v 가 주어진다. 두 정점 u, v를 잇는 간선이 존재함을 뜻한다. (1 ≤ u, v ≤ N)</p>\n<p>다음 줄에 쿼리의 개수 Q가 주어진다. (1 ≤ Q ≤ 200,000)</p>\n<p>다음 Q개의 줄에 두 정수 x, y가 주어진다. (1 ≤ x, y ≤ n, x ≠ y)</p>\n<p>정수 x, y 에서 u, v 를 얻어내기 위해서는 다음과 같이 하면 된다. $last$ 를 직전 쿼리의 정답이라고 하자. (만약 첫 쿼리일 경우 $last = 0$), 이 때 $(u, v) = (((x + N - 1 + last) \\text{ mod } N) + 1, ((y + N - 1 + last) \\text{ mod } N) + 1)$ 이 성립한다.</p>",
+  "output": "<p>Q개의 줄에 걸쳐 문제의 정답을 출력하라.</p>",
+  "samples": [
+    {
+      "input": "3\n1 2\n2 3\n4\n3 1\n3 2\n2 1\n1 3\n",
+      "output": "1\n3\n3\n3\n"
+    },
+    {
+      "input": "10\n9 8\n10 3\n2 3\n10 9\n1 10\n6 4\n4 1\n1 5\n6 7\n15\n8 10\n2 8\n9 8\n8 2\n9 1\n2 8\n1 4\n4 1\n6 2\n6 9\n7 8\n4 2\n4 3\n10 2\n1 9\n",
+      "output": "2\n7\n5\n8\n5\n5\n5\n8\n7\n8\n2\n7\n5\n7\n5\n"
+    }
+  ],
+  "hint": null,
+  "source": "koosaga",
+  "level": 27,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "trees",
+    "segtree",
+    "tree_set",
+    "hld",
+    "top_tree"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.2000000476837158
+}

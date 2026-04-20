@@ -1,0 +1,35 @@
+{
+  "id": 17075,
+  "title": "유물 복원",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>서울 Y모 대학에서 끊임없이 소음과 분진을 발생시키며 공사를 진행하던 중, 고대 유물로 추정되는 석판 하나가 발굴되었다. 이 석판은 <em>N</em>개의 행과 <em>M</em>개의 열로 나누어진 격자 형태로, 각 칸은 텅 빈 칸이거나 사람 한 명이 그려진 칸이었다. 석판은 아쉽게도 온전한 형태로 발굴되지는 않았으며, 칸들 중에는 일부가 부서져 있어 내용을 식별할 수 없는 칸도 있었다.</p>\n<p>그 후 얼마 지나지 않아, 관련 자료를 통해 이 석판의 규칙을 알 수 있게 되었다. 이 석판에서 가능한 모든 부분 직사각형에 대해 내부의 사람 수를 구하고, 그 수들을 모두 더해서 얻는 값이 <em>K</em>의 배수여야 한다는 것이다. 0은 모든 수의 배수가 될 수 있다.</p>\n<p>예를 들어, 2 × 2 크기의 아래 석판을 보자.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 252px; width: 250px;\"/></p>\n<p>위 석판에는 아래와 같이 9개의 부분 직사각형이 있다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height: 151px; width: 150px;\"/><img alt=\"\" src=\"3.png\" style=\"height: 151px; width: 150px;\"/><img alt=\"\" src=\"4.png\" style=\"height: 151px; width: 150px;\"/><img alt=\"\" src=\"5.png\" style=\"height: 151px; width: 150px;\"/><img alt=\"\" src=\"6.png\" style=\"height: 151px; width: 150px;\"/><img alt=\"\" src=\"7.png\" style=\"height: 151px; width: 150px;\"/></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"8.png\" style=\"height: 151px; width: 150px;\"/><img alt=\"\" src=\"9.png\" style=\"height: 151px; width: 150px;\"/><img alt=\"\" src=\"10.png\" style=\"height: 151px; width: 150px;\"/></p>\n<p>각 부분 직사각형 내부의 합은 1, 0, 0, 1, 1, 1, 1, 1, 2가 되고, 이들의 총합은 8이 된다.</p>\n<p>학교 측은 얻은 정보를 토대로 석판을 가능한 형태 중 하나로 복원하기 위해 연세대학교 컴퓨터과학과에 복원작업을 의뢰하었고, 자연스럽게 이 과제는 2019 교내 대회의 문제로 출제되게 되었다. 당신은 석판의 형태와 <em>K</em>를 입력으로 받아 석판의 복원이 가능한지 알아보고, 가능할 경우 조건을 만족하는 석판 하나를 복원해야 한다.</p>",
+  "input": "<p>첫째 줄에 석판의 행의 수 <em>N</em>과 열의 수 <em>M</em>, 문제에 제시된 <em>K</em>가 주어진다. (1 ≤ <em>N, M </em>≤ 50, 2 ≤ <em>K</em> ≤ 2500)</p>\n<p>둘째 줄부터 <em>N+1</em>번째 줄까지, 각 줄에 <em>M</em>개의 정수 <em>a<sub>i,j</sub></em>가 공백으로 구분되어 주어진다. (<em>a<sub>i,j</sub></em> ∈ { -1, 0, 1})</p>\n<p><em>a<sub>i,j</sub></em>  = -1일 경우 석판의 <em>i</em>번째 행 <em>j</em>번째 열이 부서져 있음을, <em>a<sub>i,j</sub></em>  = 0 일 경우 해당 칸이 비어 있음을, <em>a<sub>i,j</sub></em>  = 1일 경우 해당 칸에 사람 한 명이 그려져 있음을 의미한다.</p>",
+  "output": "<p>복원이 가능할 경우 첫 줄에 1을, 불가능할 경우 -1을 출력한다.</p>\n<p>만약 첫 줄에 1을 출력했다면, 이어 <em>N</em>개의 줄에 <em>M</em>개의 정수로 행렬에 존재하는 모든 -1을 0 또는 1로 대체하여 문제의 조건에 맞게 복원한 석판 하나를 출력한다. 입력에서 -1이 아니었던 모든 칸은 입력과 동일해야 하며, -1인 모든 칸은 0 또는 1 중 하나로 복원되어야 한다.</p>\n<p>조건을 만족하는 석판이 여러 가지라면 아무 것이나 하나만 출력한다.</p>",
+  "samples": [
+    {
+      "input": "2 2 8\n1 0\n0 -1\n",
+      "output": "1\n1 0\n0 1\n"
+    },
+    {
+      "input": "2 2 7\n1 0\n0 -1\n",
+      "output": "-1"
+    },
+    {
+      "input": "5 7 10\n-1 -1 -1 -1 -1 -1 -1\n-1 -1 0 0 0 -1 -1\n-1 -1 0 1 0 -1 -1\n-1 -1 0 0 0 -1 -1\n-1 -1 -1 -1 -1 -1 -1\n",
+      "output": "1\n1 1 1 1 1 1 1\n1 1 0 0 0 1 1\n1 1 0 1 0 1 1\n0 0 0 0 0 0 0\n1 1 1 1 1 1 1\n"
+    }
+  ],
+  "hint": "<p>부분 직사각형이란, 행을 위부터 1, 2, …, <em>N</em>으로 번호를 매기고 열을 왼쪽부터 1, 2, …, <em>M</em>으로 번호를 매길 때, 1<em> </em>≤<em> r<sub>1</sub> </em>≤<em> r<sub>2</sub> </em>≤<em> N, </em>1<em> </em>≤<em> c<sub>1</sub> </em>≤<em> c<sub>2</sub> </em>≤<em> M</em>인 어떤 <em>r<sub>1</sub>, r<sub>2</sub>, c<sub>1</sub>, c<sub>2</sub></em>에 대하여 행의 번호가 <em>r<sub>1</sub></em> 이상 <em>r<sub>2</sub></em> 이하이며, 열의 번호가 <em>c<sub>1</sub> </em>이상 <em>c<sub>2</sub></em> 이하인 모든 칸의 집합을 뜻한다. 가능한 모든 부분 직사각형이란, 부등식을 만족하는 모든 서로 다른 (<em>r<sub>1</sub>,c<sub>1</sub>,r<sub>2</sub>,c<sub>2</sub></em>)에 대해 한 번씩 직사각형을 만든 것을 뜻한다.</p>",
+  "source": "University, 연세대학교, 2019 연세대학교 컴퓨터과학과 프로그래밍 경진대회, portableangel, djm03178",
+  "level": 16,
+  "tags": [
+    "math",
+    "dp",
+    "knapsack",
+    "traceback"
+  ],
+  "accepted_user_count": 143,
+  "submission_count": null,
+  "average_tries": 3.4614999294281006
+}

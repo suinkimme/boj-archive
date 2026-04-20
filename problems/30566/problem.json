@@ -1,0 +1,30 @@
+{
+  "id": 30566,
+  "title": "International Travel",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>When you arrive into a new country, one of the first questions is \"can I charge my phone here?\". Nowadays, the question of voltage is often secondary, as modern IT equipment is mostly voltage insensitive. The shapes of outlets and plugs, however, are still a problem.</p>\n<p>In this problem we give you descriptions of electrical plugs and sockets, and you must determine whether one can insert such a plug into such a socket. In our simplified world, each plug pin is a cylinder, and each socket hole is cylindrical too. Since sockets have springs to ensure a tight contact, the diameter of a pin may be smaller than the diameter of the matching hole. We also neglect pin lengths and hole depths, so both plug and socket are described by three circles.</p>\n<p>In both, the plug and the socket, one of these three circles corresponds to the earth wire, so they have to match. The other circles represent different power phases, and since most countries use alternating current (AC), the corresponding plug pins are allowed to match the socket holes in either way.</p>\n<p>Given the descriptions of a plug and a socket, is it possible to insert this plug into this socket?</p>\n<p>An illustration for the second sample test comes below.</p>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"1.png\" style=\"width: 166px; height: 300px;\"/></td>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 166px; height: 300px;\"/></td>\n<td><img alt=\"\" src=\"3.png\" style=\"width: 166px; height: 300px;\"/></td>\n</tr>\n<tr>\n<td>The socket</td>\n<td>The plug</td>\n<td>How to insert the plug</td>\n</tr>\n</tbody>\n</table>",
+  "input": "<p>The input file consists of six lines. The first three lines describe the plug, the next three lines describe the socket. The $i$-th line contains three positive integers $x_i$, $y_i$, $r_i$, defining the coordinates of the center of the pin or the hole and its radius. All these values are integers that do not exceed $10^4$.</p>\n<p>In both the plug and the socket, no two circles intersect or touch. The first pin or hole corresponds to the earth wire.</p>",
+  "output": "<p>If it is impossible to insert the plug into the socket, output <code>NO</code>.</p>\n<p>Otherwise, output <code>YES</code> in the first line. In the next three lines, print the new coordinates of centres of the plugs after the necessary translations and/or rotations, which would allow the plug to be inserted into the socket. Your answer is accepted if the following all hold:</p>\n<ul>\n<li>the pairwise distances between the plug pins in the input file match those in the output file with an absolute precision of $10^{-6}$;</li>\n<li>one can indeed obtain the configuration in the output file by translating and/or rotating the plug described in the input file;</li>\n<li>if the plug pin radius needs to be reduced by at most $10^{-6}$ to completely fit the hole. </li>\n</ul>\n<p>If the answer is <code>NO</code>, it is guaranteed that even all the plug pins become smaller by $2 \\cdot 10^{-6}$, it is still impossible to fit the plug into the socket.</p>",
+  "samples": [
+    {
+      "input": "1 1 1\n4 1 1\n1 4 1\n1 1 1\n1 4 1\n4 1 1\n",
+      "output": "YES\n1 1\n4 1\n1 4\n"
+    },
+    {
+      "input": "1 4 1\n3 1 1\n1 7 1\n2 4 2\n1 1 1\n3 7 1\n",
+      "output": "YES\n1.2 4.6\n1 1\n3 7\n"
+    },
+    {
+      "input": "1 4 1\n3 1 1\n1 7 1\n1 1 1\n1 4 1\n4 1 1\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, The UK & Ireland Programming Contest, UKIEPC 2023",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

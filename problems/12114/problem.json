@@ -1,0 +1,30 @@
+{
+  "id": 12114,
+  "title": "Gauss",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>It is a little-known story that the young Carl Friedrich Gauss was restless in class, so his teacher came up with a task to keep him preoccupied.</p>\n<p>The teacher gave him a series of positive integers F(1), F(2), …, F(K). We consider F(t) = 0 for t &gt; K. Aditionally, she has given him a set of lucky numbers and the price of each lucky number. If X is a lucky number, then C(X) denotes its price.</p>\n<p>Initially, there’s a positive integer A written on the board. In each move, Carl must make one of the following things:</p>\n<ul>\n<li>If number N is currently written on the board, then Carl can write one of its divisors M, smaller than N, instead of N. If he writes the number M, the price of the move is F(d(N / M)), where d(N/M) is the number of divisors of the positive integer N/M (inlucluding N/M).</li>\n<li>If N is a lucky number, Carl can leave that number on the board, and the price of the move is C(N).</li>\n</ul>\n<p>Carl must make exactly​ L moves, and after he has made all of his moves, the number B must be written on the board. Let’s denote G(A, B, L) as the minimal price with which Carl can achieve this.<br/>\nIf it is not possible to make L such moves, we define G(A, B, L) = -1.</p>\n<p>The teacher has given Carl Q queries. In each query, Carl gets numbers A and B and must calculate the value G(A, B, L<sub>1</sub>) + G(A, B, L<sub>2</sub>) + … + G(A, B, L<sub>M</sub>), where numbers L<sub>1</sub> , …, L<sub>M</sub> are the same for all queries.</p>",
+  "input": "<p>The first line of input contains the positive integer K (1 ≤ K ≤ 10 000).<br/>\nThe second line contains K positive integers F(1), F(2), …, F(K) that are less than or equal to 1 000.<br/>\nThe following line contains the positive integer M (1 ≤ M ≤ 1 000).<br/>\nThe following line contains M positive integers L<sub>1</sub> , L<sub>2</sub> , …, L<sub>M</sub> that are less than or equal to 10 000.<br/>\nThe following line contains the positive integer T, the total number of lucky numbers (1 ≤ T ≤ 50).<br/>\nEach of the following T lines contains numbers X and C(X) that denote that X is a lucky number, and C(X) is his price (1 ≤ X ≤ 1 000 000, 1 ≤ C(X) ≤ 1 000).<br/>\nEach lucky number appears at most once. The following line contains the positive integer Q (1 ≤ Q ≤ 50 000). Each of the following Q lines contains 2 positive integers A and B (1 ≤ A, B ≤ 1 000 000).</p>",
+  "output": "<p>You must output Q lines. The ith line contains the answer to the ith query defined in the task.</p>",
+  "samples": [
+    {
+      "input": "4\n1 1 1 1\n2\n1 2\n2\n2 5\n4 10\n1\n4 2\n",
+      "output": "7\n"
+    },
+    {
+      "input": "3\n6 9 4\n2\n5 7\n3\n1 1\n7 8\n6 10\n2\n6 2\n70 68\n",
+      "output": "118\n-2\n"
+    },
+    {
+      "input": "3\n8 3 10\n2\n8 4\n3\n1 6\n5 1\n3 7\n2\n5 1\n3 1\n",
+      "output": "16\n66\n"
+    }
+  ],
+  "hint": "<p>L<sub>1</sub> = 1, so Carl can make exactly one move - replace number 4 with number 2, so G(4, 2, 1) = F(d(2)) = 1.</p>\n<p>L<sub>2</sub> = 2 so Carl has two options:</p>\n<ul>\n<li>He can replace number 4 with number 2 and then leave number 2 (because it’s a lucky number), so he pays the price F(d(4/2)) + C(2) = 1 + 5 = 6</li>\n<li>He can leave number 4 in the first move, and replace it in the second move with number 2, so the price is C(4) + F(d(4/2)) = 10 + 1 = 11</li>\n</ul>\n<p>The first option costs less, so G(4, 2, 2) = 6.</p>\n<p>The answer to the query is G(4,2,1) + G(4,2,2) = 7.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2016/2017, Contest #6",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.600000023841858
+}

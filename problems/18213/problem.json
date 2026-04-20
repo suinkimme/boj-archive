@@ -1,0 +1,53 @@
+{
+  "id": 18213,
+  "title": "Twin Trees Bros.",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>To meet the demand of ICPC (International Cacao Plantation Consortium), you have to check whether two given trees are twins or not.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 242px; height: 171px;\"/></p>\n<p style=\"text-align: center;\">Example of two trees in the three-dimensional space.</p>\n<p>The term tree in the graph theory means a connected graph where the number of edges is one less than the number of nodes. ICPC, in addition, gives three-dimensional grid points as the locations of the tree nodes. Their definition of two trees being twins is that, there exists a geometric transformation function which gives a one-to-one mapping of all the nodes of one tree to the nodes of the other such that for each edge of one tree, there exists an edge in the other tree connecting the corresponding nodes. The geometric transformation should be a combination of the following transformations:</p>\n<ul>\n<li>translations, in which coordinate values are added with some constants,</li>\n<li>uniform scaling with positive scale factors, in which all three coordinate values are multiplied by the same positive constant, and</li>\n<li>rotations of any amounts around either x−, y−, and z−axes.</li>\n</ul>\n<p>Note that two trees can be twins in more than one way, that is, with different correspondences of nodes.</p>\n<p>Write a program that decides whether two trees are twins or not and outputs the number of different node correspondences.</p>\n<p>Hereinafter, transformations will be described in the right-handed xyz-coordinate system.</p>\n<p>Trees in the sample inputs 1 through 4 are shown in the following figures. The numbers in the figures are the node numbers defined below.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 593px; height: 519px;\"/></p>\n<p>For the sample input 1, each node of the red tree is mapped to the corresponding node of the blue tree by the transformation that translates (−3, 0, 0), rotates −π/2 around the z-axis, rotates π/4 around the x-axis, and finally scales by √2. By this mapping, nodes #1, #2, and #3 of the red tree at (0, 0, 0), (1, 0, 0), and (3, 0, 0) correspond to nodes #6, #5, and #4 of the blue tree at (0, 3, 3), (0, 2, 2), and (0, 0, 0), respectively. This is the only possible correspondence of the twin trees.</p>\n<p>For the sample input 2, red nodes #1, #2, #3, and #4 can be mapped to blue nodes #6, #5, #7, and #8. Another node correspondence exists that maps nodes #1, #2, #3, and #4 to #6, #5, #8, and #7.</p>\n<p>For the sample input 3, the two trees are not twins. There exist transformations that map nodes of one tree to distinct nodes of the other, but the edge connections do not agree.</p>\n<p>For the sample input 4, there is no transformation that maps nodes of one tree to those of the other.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\nn\nx<sub>1</sub> y<sub>1</sub> z<sub>1</sub>\n.\n.\n.\nx<sub>n</sub> y<sub>n</sub> z<sub>n</sub>\nu<sub>1</sub> v<sub>1</sub>\n.\n.\n.\nu<sub>n−1</sub> v<sub>n−1</sub>\nx<sub>n+1</sub> y<sub>n+1</sub> z<sub>n+1</sub>\n.\n.\n.\nx<sub>2n</sub> y<sub>2n</sub> z<sub>2n</sub>\nu<sub>n</sub> v<sub>n</sub>\n.\n.\n.\nu<sub>2n−2</sub> v2<sub>n−2</sub></pre>\n<p>The input describes two trees. The first line contains an integer n representing the number of nodes of each tree (3 ≤ n ≤ 200). Descriptions of two trees follow.</p>\n<p>Description of a tree consists of n lines that give the vertex positions and n − 1 lines that show the connection relation of the vertices.</p>\n<p>Nodes are numbered 1 through n for the first tree, and n + 1 through 2n for the second tree.</p>\n<p>The triplet (x<sub>i</sub>, y<sub>i</sub>, z<sub>i</sub>) gives the coordinates of the node numbered i. x<sub>i</sub>, y<sub>i</sub>, and z<sub>i</sub> are integers in the range between −1000 and 1000, inclusive. Nodes of a single tree have distinct coordinates.</p>\n<p>The pair of integers (u<sub>j</sub>, v<sub>j</sub>) means that an edge exists between nodes numbered u<sub>j</sub> and v<sub>j</sub> (u<sub>j</sub> ≠ v<sub>j</sub>). 1 ≤ u<sub>j</sub> ≤ n and 1 ≤ v<sub>j</sub> ≤ n hold for 1 ≤ j ≤ n − 1, and n + 1 ≤ u<sub>j</sub> ≤ 2n and n + 1 ≤ v<sub>j</sub> ≤ 2n hold for n ≤ j ≤ 2n − 2.</p>",
+  "output": "<p>Output the number of different node correspondences if two trees are twins. Output a zero, otherwise.</p>",
+  "samples": [
+    {
+      "input": "3\n0 0 0\n1 0 0\n3 0 0\n1 2\n2 3\n0 0 0\n0 2 2\n0 3 3\n4 5\n5 6\n",
+      "output": "1\n"
+    },
+    {
+      "input": "4\n1 0 0\n2 0 0\n2 1 0\n2 -1 0\n1 2\n2 3\n2 4\n0 1 1\n0 0 0\n0 2 0\n0 0 2\n5 6\n5 7\n5 8\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4\n1 0 0\n2 0 0\n2 1 0\n2 -1 0\n1 2\n1 3\n2 4\n0 1 1\n0 0 0\n0 2 0\n0 0 2\n5 6\n5 7\n5 8\n",
+      "output": "0\n"
+    },
+    {
+      "input": "4\n1 0 0\n2 0 0\n2 2 0\n2 -1 0\n1 2\n2 3\n2 4\n0 1 1\n0 0 0\n0 2 0\n0 0 2\n5 6\n5 7\n5 8\n",
+      "output": "0\n"
+    },
+    {
+      "input": "3\n0 0 0\n0 0 1\n0 0 2\n1 2\n1 3\n10 4 6\n0 0 0\n5 2 3\n4 5\n5 6\n",
+      "output": "1\n"
+    },
+    {
+      "input": "4\n0 0 0\n1 3 3\n-1 5 5\n-10 2 2\n1 2\n1 3\n1 4\n1 1 6\n0 0 0\n-1 -1 10\n-10 -10 4\n5 6\n6 7\n6 8\n",
+      "output": "1\n"
+    },
+    {
+      "input": "7\n0 0 0\n1 0 0\n-1 0 0\n0 1 0\n0 -1 0\n0 0 1\n0 0 -1\n1 2\n1 3\n1 4\n1 5\n1 6\n1 7\n0 0 0\n2 0 0\n-2 0 0\n0 2 0\n0 -2 0\n0 0 2\n0 0 -2\n8 9\n8 10\n8 11\n8 12\n8 13\n8 14\n",
+      "output": "24\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2019 Asia Yokohama Regional, Camp, Petrozavodsk Programming Camp, Winter 2020, Day 2: Greetings from Japan",
+  "level": 24,
+  "tags": [
+    "math",
+    "geometry",
+    "trees",
+    "linear_algebra",
+    "geometry_3d",
+    "centroid"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 2.0555999279022217
+}

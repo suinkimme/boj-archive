@@ -1,0 +1,37 @@
+{
+  "id": 20174,
+  "title": "Ink Mix",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are <em>n</em> ink bottles, numbered from 1 to <em>n</em>. The bottles are initially empty. The first <em>m</em> bottles are fed with inks of <em>m</em> different colors, and the <em>n</em> ink bottles may be fed from each other with hoses. The ink colors of the bottles may change as inks are continuously fed and mixed, but at the end of the day, the colors reach an equilibrium and do not change any longer. At an equilibrium, the following properties hold:</p>\n<ul>\n<li>A bottle, say A, contains ink if and only if the inks fed to the first <em>m</em> bottles may flow to A via possibly multiple hoses. Otherwise, A is empty.</li>\n<li>Each non-empty bottle contains ink of a single color.</li>\n<li>If a bottle, say B, is fed from multiple ink sources (either inks of <em>m</em> different colors fed to the first <em>m</em> bottles or inks of non-empty bottles fed to hoses), and not all the ink colors of the sources are the same, then B is called “mixer”.</li>\n<li>A non-empty non-mixer bottle contains ink of the same color with those contained in its sources.</li>\n<li>A mixer bottle contains ink of a whole new color that is different from those of the inks fed to the first <em>m</em> bottles. Furthermore, different mixer bottles contain inks of different colors.</li>\n</ul>\n<p>You want to know the minimum possible number of different ink colors in the bottles at an equilibrium.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"width: 330px; height: 198px; float: right;\"/>For example, the figure right shows four ink bottles at an equilibrium. The first two bottles are fed with red and blue ink, respectively. The first bottle’s ink is fed to the third bottle, and the second bottle’s ink is fed to the third and fourth bottles. The first and second bottles contain red and blue ink, respectively. The third bottle is a mixer because it is fed from two source bottles of inks with different colors, red and blue, so it contains the ink with a new color, say purple, which is the mixture of red and blue inks. The fourth bottle contains the blue ink. Overall, there are three different ink colors: red, blue, and purple, which is the minimum.</p>\n<div class=\"clearfix\"> </div>\n<p><img alt=\"\" src=\"2.png\" style=\"width: 322px; height: 198px; float: right;\"/>In the figure right, the first two bottles are again fed with red and blue ink, respectively. Their inks are fed to the third and fourth bottles. Blue and red inks into bottle 3 are mixed as a new color, say purple, as in the previous example. Even though the inks of the same blue and red are fed to bottle 4 like the case of bottle 3, the resulting color, say violet, is different from the color of bottle 3 because bottles 3 and 4 are different mixers. Overall, there are four different ink colors: red, blue, purple, and violet, which is the minimum.</p>\n<div class=\"clearfix\"> </div>\n<p><img alt=\"\" src=\"3.png\" style=\"width: 328px; height: 223px; float: right;\"/>The first <em>m</em> bottles may also feed their inks to each other. In the figure right, the first two bottles are fed with red and blue ink, respectively, but they are fed to each other. The first bottle’s ink is fed to the third bottle, the third bottle’s ink is fed to the fourth bottle, and the fourth bottle’s ink is fed to itself. The first and the second bottles are mixers that create the inks with different colors: purple and violet. The ink color of the third bottle is the same with the ink color of the first bottle because only the first bottle supplies the ink to the third. The fourth bottle is fed with two inks but with the same color, so it is not a mixer and the resulting color is the same. Overall, there are two different ink colors: purple and violet, which is the minimum.</p>\n<p>Given the configuration of bottles, write a program that prints the minimum possible number of different ink colors in the bottles at an equilibrium. Empty bottles may exist, but they are not counted.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing three integers, <em>n</em>, <em>m</em>, and <em>k</em> (1 ≤ <em>m</em> ≤ <em>n</em> ≤ 100,000, 1 ≤ <em>k</em> ≤ 500,000), where <em>n</em> is the number of ink bottles, <em>m</em> is the number of bottles that are fed with unique ink, and <em>k</em> is the number of hoses. The ink bottles are numbered from 1 to <em>n</em>. In the following <em>k</em> lines, the <em>i</em>-th line contains two nonnegative integers, <em>f<sub>i</sub></em> and <em>t<sub>i</sub></em>, that means the <em>f<sub>i</sub></em> -th bottle’s ink is fed to the <em>t<sub>i</sub></em>-th bottle by the <em>i</em>-th hose. Multiple hoses may connect the same pairs of bottles.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line. The line should contain the minimum possible number of different ink colors in the bottles at an equilibrium.</p>",
+  "samples": [
+    {
+      "input": "4 2 3\n1 3\n2 3\n2 4\n",
+      "output": "3\n"
+    },
+    {
+      "input": "4 2 4\n1 3\n1 4\n2 3\n2 4\n",
+      "output": "4\n"
+    },
+    {
+      "input": "4 2 5\n1 2\n2 1\n1 3\n3 4\n4 4\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 2 1\n3 4\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2020",
+  "level": 24,
+  "tags": [
+    "trees",
+    "dominator_tree"
+  ],
+  "accepted_user_count": 43,
+  "submission_count": null,
+  "average_tries": 1.7674000263214111
+}

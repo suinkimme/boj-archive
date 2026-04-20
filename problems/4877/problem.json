@@ -1,0 +1,25 @@
+{
+  "id": 4877,
+  "title": "GYM",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Model a stochastic gym exercise.</p>\n<p>An entertaining game for elementary school children in gym class is set up as follows:</p>\n<ul>\n<li>N baskets are placed at various locations on the gym floor, each with a distinguishing picture on them.</li>\n<li>Each basket contains some index cards. Each index card has a destination written on them.</li>\n</ul>\n<p>The game proceed as follows: the children gather at a specified start basket. They each take a turn picking a random card from the basket, memorizing the destination, and returning the card before the next child picks one. When the teacher blows the whistle, all the children move to the basket indicated on the notecard.</p>\n<p>Given the configuration of index cards at each basket, you are to determine the probabiliites a kindergardener will appear at each basket for the first ten steps of the game.</p>\n<p>For example, suppose there are four baskets, \"tree,\" \"house,\" \"car\" and \"park.\" Each basket has the following index cards:</p>\n<ul>\n<li>The \"tree\" basket has 2 cards with \"tree\" on it, 1 card with \"house\", and 2 cards with \"car.\"</li>\n<li>The \"house\" basket has 1 card with \"tree\" on it, 1 card with \"car\" on it, and 2 cards with \"park\" on it.</li>\n<li>The \"car\" basket has 1 card with \"tree\" on it.</li>\n<li>The \"park\" basket has one of each card in it.</li>\n</ul>\n<p>This arrangement is summarized by the following table:</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<td> </td>\n<td colspan=\"4\"><b>destination</b></td>\n</tr>\n<tr>\n<td><b>basket</b></td>\n<td><b>tree</b></td>\n<td><b>house</b></td>\n<td><b>car</b></td>\n<td><b>park</b></td>\n</tr>\n<tr>\n<td><b>tree</b></td>\n<td>2</td>\n<td>1</td>\n<td>2</td>\n<td>0</td>\n</tr>\n<tr>\n<td><b>house</b></td>\n<td>1</td>\n<td>0</td>\n<td>1</td>\n<td>2</td>\n</tr>\n<tr>\n<td><b>car</b></td>\n<td>1</td>\n<td>0</td>\n<td>0</td>\n<td>0</td>\n</tr>\n<tr>\n<td><b>park</b></td>\n<td>1</td>\n<td>1</td>\n<td>1</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>\n<p>Everyone starts at the tree, so initially,</p>\n<ul>\n<li>P<sub>0</sub>(tree)=1, and P<sub>0</sub>(else where)=0</li>\n</ul>\n<p>In the middle of the game, the probablity of being at some new location is equal to the sum of the probabilities of being at any location on the previous step, times the probablity of moving to the destination location from that past location. For the example,</p>\n<ul>\n<li>P<sub>s+1</sub>(tree)=0.20*P<sub>s</sub>(tree)+0.25*P<sub>s</sub>(house)+1.00*P<sub>s</sub>(car)+0.25*P<sub>s</sub>(park)</li>\n</ul>",
+  "input": "<p>For N baskets, 2&lt;=N&lt;=10, the input file will contain N lines of information. The N lines will give the index card count as in the table for the example above. There will be at most 10 cards of the same name in any given basket, and each basket will contain at least one card.</p>",
+  "output": "<p>There should be 10 lines of output for any given input. Other than the standard header and footer, you should print out the probabilites for seeing a kindergardener at any given basked for the first 10 steps in the game.</p>\n<p>Your results should give the correct probablities to at least four digits of precision. We recommend you do the internal computations using double precision arithmetic.</p>",
+  "samples": [
+    {
+      "input": "2 1 2 0\n1 0 1 2\n1 0 0 0\n1 1 1 1\n",
+      "output": "1.00000 0.00000 0.00000 0.00000\n0.40000 0.20000 0.40000 0.00000\n0.61000 0.08000 0.21000 0.10000\n0.49900 0.14700 0.28900 0.06500\n0.54160 0.11605 0.25260 0.08975\n0.52069 0.13076 0.26809 0.08046\n0.52917 0.12425 0.26108 0.08549\n0.52519 0.12721 0.26411 0.08350\n0.52686 0.12591 0.26275 0.08448\n0.52609 0.12649 0.26334 0.08408\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2003 Rocky Mountain Regional Contest",
+  "level": 6,
+  "tags": [
+    "math",
+    "probability"
+  ],
+  "accepted_user_count": 40,
+  "submission_count": null,
+  "average_tries": 1.5750000476837158
+}

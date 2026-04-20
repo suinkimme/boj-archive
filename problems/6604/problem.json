@@ -1,0 +1,27 @@
+{
+  "id": 6604,
+  "title": "Matrix Chain Multiplication",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Suppose you have to evaluate an expression like A*B*C*D*E where A,B,C,D and E are matrices.</p>\n<p>Since matrix multiplication is associative, the order in which multiplications are performed is arbitrary. However, the number of elementary multiplications needed strongly depends on the evaluation order you choose.</p>\n<p>For example, let A be a 50*10 matrix, B a 10*20 matrix and C a 20*5 matrix.</p>\n<p>There are two different strategies to compute A*B*C, namely (A*B)*C and A*(B*C).</p>\n<p>The first one takes 15000 elementary multiplications, but the second one only 3500.</p>\n<p>Your job is to write a program that determines the number of elementary multiplications needed for a given evaluation strategy.</p>",
+  "input": "<p>Input consists of two parts: a list of matrices and a list of expressions.</p>\n<p>The first line of the input file contains one integer <em>n</em> (1 n n lines each contain one capital letter, specifying the name of the matrix, and two integers, specifying the number of rows and columns of the matrix.</p>\n<p>The second part of the input file strictly adheres to the following syntax (given in EBNF):</p>\n<pre>\nSecondPart = Line { Line } &lt;EOF&gt;\nLine       = Expression &lt;CR&gt;\nExpression = Matrix | \"(\" Expression Expression \")\"\nMatrix     = \"A\" | \"B\" | \"C\" | ... | \"X\" | \"Y\" | \"Z\"</pre>",
+  "output": "<p>For each expression found in the second part of the input file, print one line containing the word \"error\" if evaluation of the expression leads to an error due to non-matching matrices. Otherwise print one line containing the number of elementary multiplications needed to evaluate the expression in the way specified by the parentheses.</p>",
+  "samples": [
+    {
+      "input": "9\nA 50 10\nB 10 20\nC 20 5\nD 30 35\nE 35 15\nF 15 5\nG 5 10\nH 10 20\nI 20 25\nA\nB\nC\n(AA)\n(AB)\n(AC)\n(A(BC))\n((AB)C)\n(((((DE)F)G)H)I)\n(D(E(F(G(HI)))))\n((D(EF))((GH)I))\n",
+      "output": "0\n0\n0\nerror\n10000\nerror\n3500\n15000\n40500\n47500\n15125\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, University of Ulm Local Contest, University of Ulm Local Contest 1996",
+  "level": 8,
+  "tags": [
+    "data_structures",
+    "parsing",
+    "stack",
+    "string"
+  ],
+  "accepted_user_count": 112,
+  "submission_count": null,
+  "average_tries": 1.642899990081787
+}

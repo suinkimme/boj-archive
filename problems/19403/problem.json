@@ -1,0 +1,24 @@
+{
+  "id": 19403,
+  "title": "Cyclic Shifts",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Let $s = s_1 s_2 \\ldots s_k$ be a string of length $k$. For any integer $i$ between 0 and $k-1$, inclusive, we define the $i$-th <em>cyclic shift</em> of $s$ as the string $s_{i+1}s_{i+2} \\ldots s_k s_1 \\ldots s_i$. For example, the 4-th cyclic shift of \"<code>wellplayed</code>\" is \"<code>playedwell</code>\", while the 0-th cyclic shift of \"<code>metro</code>\" is \"<code>metro</code>\" itself.</p>\n<p>Let's define a function $f(s)$ which, for a string of length $k$, is equal to $i$ such that the $i$-th cyclic shift of $s$ is the lexicographically smallest among all its cyclic shifts. If there are several such $i$'s, then $f(s)$ is equal to the smallest of them. For example, $f($\"<code>acabbac</code>\"$) = 2$, while $f($\"<code>cabcab</code>\"$) = 1$.</p>\n<p>Let's define a function $g(s)$ which, for a string of length $n$, is equal to the sum of $f(s_1 s_2...s_k) \\cdot 8753^{k-1}$ over all $k$ between $1$ and $n$, inclusive.</p>\n<p>For each given string $s$, find the value of $g(s)$ modulo $10^9 + 123$.</p>",
+  "input": "<p>The first line of the input contains a single integer $t$ ($1 \\le t \\le 10^4$) --- the number of test cases.</p>\n<p>Each of the next $t$ lines contains a non-empty string consisting of lowercase English letters.</p>\n<p>The total length of the input strings doesn't exceed $10^6$.</p>",
+  "output": "<p>For each string $s$ in order of input, output a single integer --- the value of $g(s)$ modulo $10^9 + 123$.</p>",
+  "samples": [
+    {
+      "input": "2\naab\nacabbac\n",
+      "output": "0\n38098220\n"
+    }
+  ],
+  "hint": "<p>In the first example test case, $f($\"<code>a</code>\"$) = 0$, $f($\"<code>aa</code>\"$) = 0$, and $f($\"<code>aab</code>\"$) = 0$. Therefore, $g($\"<code>aab</code>\"$) = 0$.</p>\n<p>Here is the list of values of $f(s_1s_2 \\ldots s_k)$ for the second example test case:</p>\n<ul>\n<li>$f($\"<code>a</code>\"$) = 0$;</li>\n<li>$f($\"<code>ac</code>\"$) = 0$;</li>\n<li>$f($\"<code>aca</code>\"$) = 2$;</li>\n<li>$f($\"<code>acab</code>\"$) = 2$;</li>\n<li>$f($\"<code>acabb</code>\"$) = 2$;</li>\n<li>$f($\"<code>acabba</code>\"$) = 5$;</li>\n<li>$f($\"<code>acabbac</code>\"$) = 2$.</li>\n</ul>\n<p>Thus, $g($\"<code>acabbac</code>\"$) = 2 \\cdot 8753^2 + 2 \\cdot 8753^3 + 2 \\cdot 8753^4 + 5 \\cdot 8753^5 + 2 \\cdot 8753^6 = 899695598935764095704157$, which is equal to $38098220$ modulo $10^9 + 123$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2017, Day 6: Gennady Korotkevich Contest 2, Head of Republic of Karelia Cup, Round II, Contest, Open Cup, 2016/2017 Season, Stage 10: Grand Prix of Gomel",
+  "level": 27,
+  "tags": [
+    "string"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 4.5
+}

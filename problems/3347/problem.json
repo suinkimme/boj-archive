@@ -1,0 +1,35 @@
+{
+  "id": 3347,
+  "title": "Peaks",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>An alpinist who lives on a mountainous island has climbed to some peak and now wants to reach a higher peak.</p>\n<p>To be more precise, every point on the island has a positive elevation above sea level (the elevation of the sea is 0) and if the peak the alpinist is currently on has elevation Ei, then his aim is to reach some peak with elevation Ej(Ej&gt;Ei). Because he is on a peak there is no immediate path uphill – to get to a higher point the alpinist first needs to go downhill to some lower level and only then he can go uphill again. The way down is never as remarkable as the way up, thus, the alpinist wants to maximize the elevation of the lowest point on the path from the current location to the higher peak.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"float:right; height:203px; width:257px\"/>For example, if the profile of the island is as shown in the figure and the alpinist is at the peak with elevation E<sub>4</sub>, then there are three peaks with higher elevation (E<sub>5</sub>, E<sub>6</sub> and E<sub>7</sub>), but the path with the lowest point having the highest elevation is the path to the peak with elevation E<sub>7</sub> – on this path he never goes below level E<sub>2</sub> (in the other cases he will be forced to go down to level E<sub>1</sub>). If he started from E<sub>5</sub>, the corresponding lowest level would be E<sub>3</sub> (path to E<sub>6</sub>), but if he started from E<sub>6</sub> it would be E<sub>1</sub>.</p>\n<p>The map of the island is a two-dimensional rectangular table containing N×M squares and it describes the elevation of particular parts of the island – the number in a cell describes the elevation of the corresponding region of the island. Two cells are adjacent if they share a common point. Thus, each cell (except those on the border) is adjacent to eight other. A path is a sequence of cells where each two consecutive cells are adjacent. A flat area is a set of one or more cells having the same elevation, any pair of them being connected by a path only visiting cells within the set. Any two adjacent cells with equal elevation belong to the same flat area. A peak is a flat area whose cells don’t have any adjacent cells with higher elevation.</p>\n<p>Write a program which finds all peaks on the island and for each of them finds the elevation of the highest possible lowest point on a path to some peak with a higher elevation. For the highest peak on the island (for which there is no higher peak on this island) we assume that the alpinist will leave the island looking for higher peaks, thus, the lowest point will be 0 (the level of the sea).</p>",
+  "input": "<p>The first line of input contains two positive integers N and M (1≤N,M≤2000, N×M≤10<sup>5</sup>), the height and the width of the map, respectively. The next N lines contain the description of the map of the island. Each of these lines contains M integers E<sub>ij</sub>(1≤E<sub>ij</sub>≤10<sup>6</sup>) separated by spaces. The elevation of the cell E<sub>ij</sub> (corresponding to i-th row and j-th column on the map) is given as the j-th number in the i+1-st line of the file.</p>",
+  "output": "<p>The first line of output must contain one integer P, the number of peaks found on the island. The next P lines must each contain two integers: the elevation of the particular peak and the elevation of the highest possible lowest point on the path to some higher peak. The information about peaks should be written in descending order of their elevation; if several peaks have the same elevation then they should be sorted in descending order of the lowest point elevation.</p>",
+  "samples": [
+    {
+      "input": "6 6\n21 16 9 11 6 7\n21 21 10 14 15 9\n18 20 8 9 13 14\n11 10 9 9 8 13\n8 12 12 14 13 8\n7 13 12 9 5 1\n",
+      "output": "4\n21 0\n15 11\n14 13\n13 12\n"
+    },
+    {
+      "input": "5 3\n16 14 16\n14 14 15\n12 17 16\n12 13 10\n16 11 16\n",
+      "output": "5\n17 0\n16 15\n16 14\n16 13\n16 13\n"
+    }
+  ],
+  "hint": "<p><img alt=\"\" src=\"2.png\" style=\"height:288px; width:334px\"/></p>\n<p>All peaks are marked by circles. One of the possible paths from peak with elevation 15 is shown with dark colouring.</p>",
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2012",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "binary_search",
+    "dfs",
+    "disjoint_set",
+    "flood_fill",
+    "pbs"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 2.2188000679016113
+}

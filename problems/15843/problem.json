@@ -1,0 +1,27 @@
+{
+  "id": 15843,
+  "title": "Travelling Merchant",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>After many days' journey through the great Australian outback, you have finally arrived at the great city of Cobar with nothing but a small backpack. Enamoured by the wonder and beauty of its markets, you decide to become a merchant and make Cobar your new home. Cobar has N markets, numbered from 1 to N, connected by M one-way footpaths, each taking a particular number of minutes to walk along.</p>\n<p>The markets of Cobar trade in K different items, numbered from 1 to K. Each market has a fixed price for buying or selling each item. Not every market will trade in every item, and it is possible that for any given item, a market may only support buying it, but not selling it, or vice-versa. You may assume that each market that has a given item for sale has an infinite quantity of it available, and similarly, if a market wants to buy a given item, it is willing to buy it repeatedly, forever.</p>\n<p>To earn money as quickly as possible, you would like to find the most efficient profit cycle. A profit cycle is a walk through Cobar that starts at some market v with your backpack empty, continues along Cobar's footpaths and through its markets (possibly buying and selling items along the way), and finally returns to v, again with an empty backpack. It may visit a market and/or walk along a footpath multiple times. Once an item is bought, it must be placed immediately in your backpack and since your backpack is small, it can only hold up to a single item at any point in time. You may assume that you are always able to buy an item if it is available, regardless of the amount of money you possess so far and that you are prohibited from selling an item that you do not possess.</p>\n<p>The profit earned from such a cycle is the total amount of money you earned from selling items, minus the total amount of money you spent buying them. The duration of a cycle is the total number of minutes you spend walking along its constituent footpaths. The efficiency of a profit cycle is the profit earned from it, divided by its duration. Note that a profit cycle that does not involve buying or selling any items has an efficiency of 0.</p>\n<p>Your task is to find the maximum efficiency among all profit cycles with strictly positive duration. You should report this value rounded down, to the nearest integer. If no such profit cycle exists, you should report 0.</p>",
+  "input": "<p>Your program should read from standard input.</p>\n<p>The first line will contain 3 integers, N, M and K : the number of markets, footpaths and items respectively.</p>\n<p>N lines follow. The ith of these lines contains 2K integers B<sub>i,1</sub>, S<sub>i,1</sub>, B<sub>i,2</sub>, S<sub>i,2</sub>, ..., B<sub>i,K</sub>, S<sub>i,K</sub> describing a market. For all 1 ≤ j ≤ K, the pair of integers B<sub>i,j</sub> and S<sub>i,j</sub> describe the price at which you can buy and sell item j at market i, respectively. If an item cannot be bought or sold, then -1 will be used as a placeholder.</p>\n<p>M lines follow. The pth of these contains 3 integers, V<sub>p</sub>, W<sub>p</sub> and T<sub>p</sub>, describing a one-way footpath from market V<sub>p</sub> to another market W<sub>p</sub>, taking T<sub>p</sub> minutes to traverse.</p>",
+  "output": "<p>Your program should write to standard output.</p>\n<p>Print a single integer, the maximum efficiency among all profit cycles, rounded down to the nearest integer.</p>",
+  "samples": [
+    {
+      "input": "4 5 2\n10 9 5 2\n6 4 20 15\n9 7 10 9\n-1 -1 16 11\n1 2 3\n2 3 3\n1 4 1\n4 3 1\n3 1 1\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p>In the sample case there are two cycles we will consider, \"1 to 2 to 3 to 1\" and \"1 to 4 to 3 to 1\".</p>\n<p>Considering \"1 to 2 to 3 to 1\", we see that this cycle takes 7 minutes to walk over (3 + 3 + 1). The most profitable sequence of trades on this cycle is to purchase item 2 at market 1 (cost of 5), sell it at market 2 (profit of 15), immediately buy item 1 from market 2 (cost of 6), carry item 1 through market 3, and finally sell item 1 at market 1 (profit of 9). Therefore in this cycle we can make -5 + 15 - 6 + 9 = 13 profit in this profit cycle. 13/7 rounded down gives an efficiency of 1 for this cycle.</p>\n<p>Considering \"1 to 4 to 3 to 1\", we see that this cycle takes 3 minutes to walk over (1 + 1 + 1). The most profitable sequence of trades on this cycle is to purchase item 2 at market 1 (cost of 5), sell it at market 4 (profit of 11), then walk through market 3 and back to market 1. Therefore in this cycle we can make -5 + 11 = 6 profit in this profit cycle. 6/3 rounded down gives an efficiency of 2 for this cycle.</p>\n<p>Therefore the best efficiency of any profit cycle in Cobar is 2.</p>",
+  "source": "Olympiad, Asia-Pacific Informatics Olympiad, APIO 2017",
+  "level": 20,
+  "tags": [
+    "floyd_warshall",
+    "graphs",
+    "parametric_search",
+    "shortest_path"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 4.088200092315674
+}

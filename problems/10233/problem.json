@@ -1,0 +1,27 @@
+{
+  "id": 10233,
+  "title": "Tax Rate Changed",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>VAT (value-added tax) is a tax imposed at a certain rate proportional to the sale price.</p>\n<p>Our store uses the following rules to calculate the after-tax prices.</p>\n<ul>\n<li>When the VAT rate is <i>x</i>%, for an item with the before-tax price of <i>p</i> yen, its after-tax price of the item is <i>p</i> (100+<i>x</i>) / 100 yen, fractions rounded off.</li>\n<li>The total after-tax price of multiple items paid at once is the sum of after-tax prices of the items.</li>\n</ul>\n<p>The VAT rate is changed quite often. Our accountant has become aware that \"different pairs of items that had the same total after-tax price may have different total after-tax prices after VAT rate changes.\" For example, when the VAT rate rises from 5% to 8%, a pair of items that had the total after-tax prices of 105 yen before can now have after-tax prices either of 107, 108, or 109 yen, as shown in the table below.</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<th>Before-tax prices of two items</th>\n<th>After-tax price with 5% VAT</th>\n<th>After-tax price with 8% VAT</th>\n</tr>\n<tr>\n<td>20, 80</td>\n<td>21 + 84 = 105</td>\n<td>21 + 86 = 107</td>\n</tr>\n<tr>\n<td>2, 99</td>\n<td>2 + 103 = 105</td>\n<td>2 + 106 = 108</td>\n</tr>\n<tr>\n<td>13, 88</td>\n<td>13 + 92 = 105</td>\n<td>14 + 95 = 109</td>\n</tr>\n</tbody>\n</table>\n<p>Our accountant is examining effects of VAT-rate changes on after-tax prices. You are asked to write a program that calculates the possible maximum total after-tax price of two items with the new VAT rate, knowing their total after-tax price before the VAT rate change.</p>",
+  "input": "<p>The input consists of multiple datasets. Each dataset is in one line, which consists of three integers <i>x</i>, <i>y</i>, and <i>s</i> separated by a space. <i>x</i> is the VAT rate in percent <i>before</i> the VAT-rate change, <i>y</i> is the VAT rate in percent <i>after</i> the VAT-rate change, and <i>s</i> is the sum of after-tax prices of two items <i>before</i> the VAT-rate change. For these integers, 0 &lt; <i>x</i> &lt; 100, 0 &lt; <i>y</i> &lt; 100, 10 &lt; <i>s</i> &lt; 1000, and <i>x</i> ≠ <i>y</i> hold. For before-tax prices of items, all possibilities of 1 yen through <i>s</i>-1 yen should be considered.</p>\n<p>The end of the input is specified by three zeros separated by a space.</p>",
+  "output": "<p>For each dataset, output in a line the possible maximum total after-tax price when the VAT rate is changed to <i>y</i>%.</p>",
+  "samples": [
+    {
+      "input": "5 8 105\n8 5 105\n1 2 24\n99 98 24\n12 13 26\n1 22 23\n1 13 201\n13 16 112\n2 24 50\n1 82 61\n1 84 125\n1 99 999\n99 1 999\n98 99 999\n1 99 11\n99 1 12\n0 0 0\n",
+      "output": "109\n103\n24\n24\n26\n27\n225\n116\n62\n111\n230\n1972\n508\n1004\n20\n7\n"
+    }
+  ],
+  "hint": "<p>In the following table, an instance of a before-tax price pair that has the maximum after-tax price after the VAT-rate change is given for each dataset of the sample input.</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<th>Dataset</th>\n<th>Before-tax prices</th>\n<th>After-tax price with <i>y</i>% VAT</th>\n</tr>\n<tr>\n<td>5 8 105</td>\n<td>13, 88</td>\n<td>14 + 95 = 109</td>\n</tr>\n<tr>\n<td>8 5 105</td>\n<td>12, 87</td>\n<td>12 + 91 = 103</td>\n</tr>\n<tr>\n<td>1 2 24</td>\n<td>1, 23</td>\n<td>1 + 23 = 24</td>\n</tr>\n<tr>\n<td>99 98 24</td>\n<td>1, 12</td>\n<td>1 + 23 = 24</td>\n</tr>\n<tr>\n<td>12 13 26</td>\n<td>1, 23</td>\n<td>1 + 25 = 26</td>\n</tr>\n<tr>\n<td>1 22 23</td>\n<td>1, 22</td>\n<td>1 + 26 = 27</td>\n</tr>\n<tr>\n<td>1 13 201</td>\n<td>1,199</td>\n<td>1 +224 = 225</td>\n</tr>\n<tr>\n<td>13 16 112</td>\n<td>25, 75</td>\n<td>29 + 87 = 116</td>\n</tr>\n<tr>\n<td>2 24 50</td>\n<td>25, 25</td>\n<td>31 + 31 = 62</td>\n</tr>\n<tr>\n<td>1 82 61</td>\n<td>11, 50</td>\n<td>20 + 91 = 111</td>\n</tr>\n<tr>\n<td>1 84 125</td>\n<td>50, 75</td>\n<td>92 +138 = 230</td>\n</tr>\n<tr>\n<td>1 99 999</td>\n<td>92,899</td>\n<td>183+1789 =1972</td>\n</tr>\n<tr>\n<td>99 1 999</td>\n<td>1,502</td>\n<td>1 +507 = 508</td>\n</tr>\n<tr>\n<td>98 99 999</td>\n<td>5,500</td>\n<td>9 +995 =1004</td>\n</tr>\n<tr>\n<td>1 99 11</td>\n<td>1, 10</td>\n<td>1 + 19 = 20</td>\n</tr>\n<tr>\n<td>99 1 12</td>\n<td>1, 6</td>\n<td>1 + 6 = 7</td>\n</tr>\n</tbody>\n</table>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2014 Japan Domestic Contest",
+  "level": 8,
+  "tags": [
+    "math",
+    "implementation",
+    "bruteforcing",
+    "arithmetic"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 1.38100004196167
+}

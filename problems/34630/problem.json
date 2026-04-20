@@ -1,0 +1,27 @@
+{
+  "id": 34630,
+  "title": "Monotone Subsequence",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p><em>This is an interactive problem.</em></p>\n<p>Faker is being naughty again. You asked him to create a nice query problem, but he created an interactive problem where he is answering a query instead! Faker hid a permutation from you, and you have to infer some interesting information by interacting with him.</p>\n<p>You are given an integer $n$. Faker hid a hidden permutation<sup>*</sup> $p_1, p_2, \\ldots, p_{n^2+1}$ of length $n^2+1$. Your goal is to find a monotone subsequence (either increasing or decreasing) of the hidden permutation, with length exactly $n+1$. It can be proved that every permutation of length $n^2 + 1$ contains a monotone subsequence of length $n+1$. For more information about the proof, you can check out <a href=\"https://en.wikipedia.org/wiki/Erdos-Szekeres theorem\">this Wikipedia page</a>.</p>\n<p>To find it, you can make at most $n$ <strong>skyscraper queries</strong> to the interactor, which is defined as follows:</p>\n<ul>\n<li>You provide a set of $k$ indices as a strictly increasing sequence: $i_1, i_2, \\ldots, i_k$.</li>\n<li>The interactor considers the values of the hidden permutation at these indices: $p_{i_1}, p_{i_2}, \\ldots, p_{i_k}$.</li>\n<li>The interactor then returns the indices corresponding to the <strong>visible skyscrapers</strong> from this set. An index $i_j$ is visible if its value $p_{i_j}$ is greater than the values of all preceding elements in your query, i.e., $p_{i_j} &gt; p_{i_m}$ for all $1 \\le m &lt; j$. This is equivalent to finding the indices of the left-to-right maxima of the sequence $(p_{i_1}, \\ldots, p_{i_k})$.</li>\n</ul>\n<p>After making at most $n$ queries, you must report a valid monotone subsequence of length <strong>exactly</strong> $n+1$.</p>\n<p>Note that the permutation $p$ is fixed <strong>before</strong> any queries are made and does not depend on the queries.</p>\n<hr/>\n<p><sup>*</sup>A permutation of length $m$ is an array consisting of $m$ distinct integers from $1$ to $m$ in arbitrary order. For example, $[2,3,1,5,4]$ is a permutation, but $[1,2,2]$ is not a permutation ($2$ appears twice in the array), and $[1,3,4]$ is also not a permutation ($m=3$ but there is $4$ in the array).</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains the number of test cases $t$ ($1 \\le t \\le 5000$). The description of the test cases follows.</p>\n<p>The first and only line of each test case contains a single integer $n$ ($1 \\le n \\le 100$).</p>\n<p>It is guaranteed that the sum of $n^2+1$ over all test cases does not exceed $10\\,001$.</p>",
+  "output": "",
+  "samples": [
+    {
+      "input": "2\n1\n\n2 1 2\n\n2\n\n1 1\n\n2 2 3\n\n",
+      "output": "\n\n\n? 2 1 2\n\n! 1 2\n\n? 3 1 2 3\n\n? 3 2 3 5\n\n! 1 3 4\n"
+    }
+  ],
+  "hint": "<p>For the first test case, $n=1$. The hidden permutation is $p=[1, 2]$.</p>\n<ul>\n<li>For the query <code>? 2 1 2</code>, the visible skyscrapers are at indices $1$ and $2$. The interactor returns <code>2 1 2</code>.</li>\n<li>An increasing subsequence of length $2$ at indices $1, 2$ is reported.</li>\n</ul>\n<p>For the second test case, $n=2$. The hidden permutation is $p=[5, 3, 4, 1, 2]$.</p>\n<ul>\n<li>For the query <code>? 3 1 2 3</code>, the visible skyscraper is at index $1$. The interactor returns <code>1 1</code>.</li>\n<li>For the query <code>? 3 2 3 5</code>, the visible skyscrapers are at indices $2$ and $3$. The interactor returns <code>2 2 3</code>.</li>\n<li>A decreasing subsequence of length $3$ at indices $1, 3, 4$ is reported.</li>\n</ul>\n<p><em>Although Faker will play the role of interactor, the interactor will never lie to you.</em></p>",
+  "source": "Contest, Codeforces, Squarepoint Challenge (Codeforces Round 1055, Div. 1 + Div. 2), koosaga, ainta, ncy09, qwerasdfzxcl, sadtreap, urd05, wizardrabbit",
+  "level": 19,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "constructive",
+    "pigeonhole_principle"
+  ],
+  "accepted_user_count": 50,
+  "submission_count": null,
+  "average_tries": 1.1799999475479126
+}

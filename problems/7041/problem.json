@@ -1,0 +1,28 @@
+{
+  "id": 7041,
+  "title": "Dividing the Path",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Farmer John's cows have discovered that the clover growing along the ridge of the hill in his field is particularly good. To keep the clover watered, Farmer John is installing water sprinklers along the ridge of the hill. </p>\n<p>To make installation easier, each sprinkler head must be installed along the ridge of the hill (which we can think of as a one-dimensional number line of length L (1 &lt;= L &lt;= 1,000,000); L is even). </p>\n<p>Each sprinkler waters the ground along the ridge for some distance in both directions. Each spray radius is an integer in the range A..B (1 &lt;= A &lt;= B &lt;= 1000). Farmer John needs to water the entire ridge in a manner that covers each location on the ridge by exactly one sprinkler head. Furthermore, FJ will not water past the end of the ridge in either direction. </p>\n<p>Each of Farmer John's N (1 &lt;= N &lt;= 1000) cows has a range of clover that she particularly likes (these ranges might overlap). The ranges are defined by a closed interval (S,E). Each of the cow's preferred ranges must be watered by a single sprinkler, which might or might not spray beyond the given range. </p>\n<p>Find the minimum number of sprinklers required to water the entire ridge without overlap. </p>",
+  "input": "<ul>\n<li>Line 1: Two space-separated integers: N and L </li>\n<li>Line 2: Two space-separated integers: A and B </li>\n<li>Lines 3..N+2: Each line contains two integers, S and E (0 &lt;= S &lt; E &lt;= L) specifying the start end location respectively of a range preferred by some cow. Locations are given as distance from the start of the ridge and so are in the range 0..L.</li>\n</ul>",
+  "output": "<ul>\n<li>Line 1: The minimum number of sprinklers required. If it is not possible to design a sprinkler head configuration for Farmer John, output -1.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "2 8\n1 2\n6 7\n3 6\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<p> </p>\n<p>Three sprinklers are required: one at 1 with spray distance 1, and one at 4 with spray distance 2, and one at 7 with spray distance 1. The second sprinkler waters all the clover of the range like by the second cow (3-6). The last sprinkler waters all the clover of the range liked by the first cow (6-7). Here's a diagram: </p>\n<pre>\n                 |-----c2----|-c1|       cows' preferred ranges\n\n     |---1---|-------2-------|---3---|   sprinklers\n\n     +---+---+---+---+---+---+---+---+\n\n     0   1   2   3   4   5   6   7   8\n</pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2004-2005 Season, USACO December 2004 Contest, Gold",
+  "level": 17,
+  "tags": [
+    "data_structures",
+    "deque",
+    "deque_trick",
+    "dp",
+    "sliding_window"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 2.875
+}

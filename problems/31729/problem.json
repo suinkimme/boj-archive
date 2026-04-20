@@ -1,0 +1,48 @@
+{
+  "id": 31729,
+  "title": "Board Game",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There is a board game for $K$ players. The board of this game consists of $N$ cells numbered from $1$ to $N$, and $M$ paths numbered from $1$ to $M$, where path $j$ ($1 ≤ j ≤ M$) connects cells $U_j$ and $V_j$ bidirectionally.</p>\n<p>There are two types of cells on the board: <strong>re-activate cells</strong> and <strong>stop cells</strong>.</p>\n<p>This information is given by a string $S$ of length $N$ consisting of '<code>0</code>' and '<code>1</code>’, where the $i$-th character of $S$ ($1 ≤ i ≤ N$) is '<code>0</code>' if cell $i$ is a re-activate cell, and '<code>1</code>' if cell $i$ is a stop cell.</p>\n<p>This board game is played by $K$ players numbered from $1$ to $K$. Each player has their own piece, and the game starts with each player placing their piece on a specified cell. At the beginning, player $p$ ($1 ≤ p ≤ K$) places their piece on cell $X_p$. Note that multiple players’ pieces can be placed on the same cell.</p>\n<p>The game progresses with each player taking turns starting from player $1$ and proceeding in numerical order. After player $p$ finishes their turn, the turn moves to player $p + 1$ (if $p = K$, then the turn goes to player $1$). Each player takes the following actions on their turn:</p>\n<ol>\n<li>Choose one cell connected to the cell where their piece is placed via a path, and move their piece to the chosen cell.</li>\n<li>If the destination cell is a re-activate cell, repeat step 1 and continue their turn. If the destination cell is a stop cell, end their turn.</li>\n</ol>\n<p>The team consisting of $K$ members, including JOI-Kun, who represent Japan in this board game, are researching cooperative strategies to quickly conquer the game. They are currently studying the following problem:</p>\n<blockquote>\n<p>What is the minimum total number of moves required by the $K$ players in order to place player $1$’s piece on cell $T$? Even if it’s in the middle of a turn, if player $1$’s piece is placed on cell $T$, the condition is considered satisfied.</p>\n</blockquote>\n<p>Given the information about the board of the game and the initial placement of each player’s piece, create a program to calculate the answer to this problem for each $T = 1, 2, \\dots , N$.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<blockquote>\n<p>$N$ $M$ $K$</p>\n<p>$U_1$ $V_1$</p>\n<p>$U_2$ $V_2$</p>\n<p>$\\vdots$</p>\n<p>$U_M$ $V_M$</p>\n<p>$S$</p>\n<p>$X_1$ $X_2$ $\\cdots$ $X_K$</p>\n</blockquote>",
+  "output": "<p>Output $N$ lines to the standard output. On the $T$-th line ($1 ≤ T ≤ N$), output the minimum total number of moves required by the $K$ players to place player $1$’s piece on cell $T$.</p>",
+  "samples": [
+    {
+      "input": "5 5 2\n1 2\n2 3\n2 4\n3 5\n4 5\n00000\n1 5\n",
+      "output": "0\n1\n2\n2\n3\n"
+    },
+    {
+      "input": "5 5 2\n1 2\n2 3\n2 4\n3 5\n4 5\n01000\n1 5\n",
+      "output": "0\n1\n4\n4\n5\n"
+    },
+    {
+      "input": "5 5 2\n1 2\n2 3\n2 4\n3 5\n4 5\n01100\n1 5\n",
+      "output": "0\n1\n3\n3\n4\n"
+    },
+    {
+      "input": "8 7 5\n1 3\n5 7\n4 6\n2 6\n2 3\n7 8\n1 5\n10011010\n4 6 4 7 1\n",
+      "output": "4\n2\n3\n0\n10\n1\n17\n24\n"
+    },
+    {
+      "input": "12 13 3\n1 2\n2 3\n3 4\n4 5\n5 6\n6 7\n7 8\n8 9\n9 10\n1 10\n2 9\n7 12\n11 12\n110000011101\n1 9 11\n",
+      "output": "0\n1\n4\n5\n6\n7\n8\n8\n4\n1\n13\n9\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, JOI Spring Training Camp, JOI 2023/2024 Spring Training Camp",
+  "level": 25,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "case_work",
+    "shortest_path",
+    "dijkstra",
+    "sqrt_decomposition",
+    "0_1_bfs"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 7.3333001136779785
+}

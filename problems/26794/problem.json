@@ -1,0 +1,28 @@
+{
+  "id": 26794,
+  "title": "Konkurs tańca towarzyskiego",
+  "time_limit": "10 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Bajtazar został wybrany na organizatora Bajtockiego Konkursu Tańca Towarzyskiego. Aby usprawnić zapisy na konkurs, Bajtazar przygotował formularz dla zgłaszających się tancerzy. Uczestnicy rejestrują się na konkurs pojedynczo. Każda zgłaszająca się osoba widzi tancerzy już zarejestrowanych, po czym deklaruje ona, z którymi z tych osób mogłaby zatańczyć. Przyjmujemy, że jeśli osoba A deklaruje chęć zatańczenia z osobą B, to osoba B może zatańczyć z osobą A.</p>\n<p>Bajtazar zauważył, że zgłaszających się tancerzy można podzielić na wybrednych i zazdrosnych. Osoby wybredne deklarują, że spośród zarejestrowanych już osób mogą zatańczyć tylko z jedną osobą. Osoby zazdrosne deklarują, że spośród zarejestrowanych już osób mogą tańczyć z tymi samymi osobami, co jeden z zarejestrowanych uczestników. Dla uproszczenia zgłaszający się uczestnicy numerowani są kolejnymi liczbami naturalnymi począwszy od 1. Początkowo zapisani są uczestnicy o numerach 1 i 2, którzy mogą ze sobą tańczyć.</p>\n<p>Bajtazar napisał już program, który pozwoli kojarzyć uczestników w pary. Aby jego program działał poprawnie, Bajtazar potrzebuje co jakiś czas dowiadywać się, z iloma osobami może tańczyć wskazany przez niego uczestnik. Twoim zadaniem będzie napisanie programu, który pomoże Bajtazarowi odpowiadać na takie zapytania.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajduje się liczba całkowita q (1 ≤ q ≤ 1 000 000) oznaczająca liczbę akcji do przetworzenia. Każdy z kolejnych q wierszy jest jednej z następujących postaci:</p>\n<ul>\n<li><code>W</code> x – oznacza przyjście nowej wybrednej osoby (o kolejnym numerze), która deklaruje możliwość zatańczenia z osobą o numerze x;</li>\n<li><code>Z</code> x – oznacza przyjście nowej zazdrosnej osoby (o kolejnym numerze), która deklaruje, że spośród zarejestrowanych już osób może tańczyć z tymi samymi, co osoba o numerze x;</li>\n<li><code>?</code> x – oznacza pytanie programu Bajtazara o to, z iloma osobami może tańczyć w tym momencie osoba o numerze x (możesz założyć, że program Bajtazara zada zawsze co najmniej jedno takie pytanie).</li>\n</ul>",
+  "output": "<p>Wyjście powinno zawierać dokładnie tyle wierszy, ile było zapytań <code>?</code> na wejściu. Kolejne wiersze powinny zawierać po jednej liczbie całkowitej będącej odpowiedzią na pytanie programu Bajtazara.</p>",
+  "samples": [
+    {
+      "input": "7\n? 1\nZ 2\n? 1\nZ 1\nW 2\n? 2\n? 3\n",
+      "output": "1\n2\n3\n2\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: Poniżej opisujemy, z kim mogą tańczyć osoby po kolejnych zgłoszeniach oraz których uczestników dotyczyły pytania:</p>\n<table class=\"table table-bordered td-center table-center-40\">\n<tbody>\n<tr>\n<td>Osoba</td>\n<td> </td>\n<td><code>?</code> 1</td>\n<td><code>Z</code> 2</td>\n<td><code>?</code> 1</td>\n<td><code>Z</code> 1</td>\n<td><code>W</code> 2</td>\n<td><code>?</code> 2</td>\n<td><code>?</code> 3</td>\n</tr>\n<tr>\n<td>1</td>\n<td>2</td>\n<td>←</td>\n<td>2, 3</td>\n<td>←</td>\n<td>2, 3</td>\n<td>2, 3</td>\n<td> </td>\n<td> </td>\n</tr>\n<tr>\n<td>2</td>\n<td>1</td>\n<td> </td>\n<td>1</td>\n<td> </td>\n<td>1, 4</td>\n<td>1, 4, 5</td>\n<td>←</td>\n<td> </td>\n</tr>\n<tr>\n<td>3</td>\n<td> </td>\n<td> </td>\n<td>1</td>\n<td> </td>\n<td>1, 4</td>\n<td>1, 4</td>\n<td> </td>\n<td>←</td>\n</tr>\n<tr>\n<td>4</td>\n<td> </td>\n<td> </td>\n<td> </td>\n<td> </td>\n<td>2, 3</td>\n<td>2, 3</td>\n<td> </td>\n<td> </td>\n</tr>\n<tr>\n<td>5</td>\n<td> </td>\n<td> </td>\n<td> </td>\n<td> </td>\n<td> </td>\n<td>2</td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>",
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2021/2022, Stage 2",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "lazyprop",
+    "euler_tour_technique"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

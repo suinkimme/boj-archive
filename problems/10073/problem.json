@@ -1,0 +1,24 @@
+{
+  "id": 10073,
+  "title": "곤돌라 - 교체 수열",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>마오공 곤돌라는 타이페이의 명소 중 하나이다. 곤돌라 시스템은 원형의 레일과, 하나의 정류장이 있고, 1 부터 n까지 순서대로 번호가 붙은 n개의 곤돌라가 모두 단일한 방향으로 레일을 따라 움직이는 형태이다. i번 곤돌라가 정류장을 지난 직후에는 i+1번 곤돌라가 정류장을 지나가게 된다. (단, i=n번 곤돌라가 지나간 직후에 1 번 곤돌라가 지나가게 된다.)</p>\r\n\r\n<p>곤돌라들은 고장이 나기도 한다. 다행히 무제한으로 많은 곤돌라의 여분이 있고, 여분 곤돌라들은 n+1, n+2과 같이 순차적으로 번호가 붙어 있다. 특정한 곤돌라가 고장이 나면 고장난 곤돌라는 빼고, 동일한 위치에 여분 곤돌라를 배치한다. 여분 곤돌라는 작은 번호부터 사용된다. 예를 들어, 사용하는 곤돌라 수가 총 5 개이고, 1 번 곤돌라가 고장난다면, 그 곤돌라는 6번으로 교체된다.</p>\r\n\r\n<p>당신은 정류장에 서서 곤돌라들이 지나가는 것을 즐겨 본다. 곤돌라 수열이라는 것은 임의의 시점에서 시작해서 정류장을 지나가는 n개의 곤돌라들의 번호를 순서대로 적은 것이다. 곤돌라 수열을 적기 시작하는 시점 이전에 이미 몇개의 곤돌라가 고장나서 교체되었을 수 있다. 하지만, 곤돌라 수열을 적는 도중에는 아무 곤돌라도 고장이 나지 않는다.</p>\r\n\r\n<p>전체적으로 곤돌라들의 배치가 동일하더라도 어떤 시점에 곤돌라 수열을 적기 시작하느냐에 따라 서로 다른 곤돌라 수열이 나올수 있다는 점에 주의하자. 예를 들어, 총 5개의 곤돌라들 중 고장난 곤돌라가 없는 경우에 (2, 3, 4, 5, 1) 과 (4, 5, 1, 2, 3) 은 모두 가능한 곤돌라 수열들이다. 하지만, 이경우 (4, 3, 2, 5, 1) 은 가능한 곤돌라 수열이 아니다. (곤돌라 번호의 순서가 잘못되어 있다.)</p>\r\n\r\n<p>만약 곤돌라 1번 만이 고장난 상황이라면, (4, 5, 6, 2, 3) 의 곤돌라 수열을 만들 수 있다. 만약 이후 4번 곤돌라가 고장난다면, 7번 곤돌라가 그 자리에 있게 되고, (6, 2, 3, 7, 5) 가 가능한 곤돌라 수열이 된다. 만약 7번 곤돌라가 이후에 고장이 난다면, 8번이 그 자리를 차지할 것이고 (3, 8, 5, 6, 2) 가 가능한 곤돌라 수열들 중 하나가 된다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:40%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>고장난 곤돌라</th>\r\n\t\t\t<th>새 곤돌라</th>\r\n\t\t\t<th>가능한 곤돌라 수열 중 하나</th>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>6</td>\r\n\t\t\t<td>(4, 5, 6, 2, 3)</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>4</td>\r\n\t\t\t<td>7</td>\r\n\t\t\t<td>(6, 2, 3, 7, 5)</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>7</td>\r\n\t\t\t<td>8</td>\r\n\t\t\t<td>(3, 8, 5, 6, 2)</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>교체 수열이라는 것은 고장난 곤돌라들의 번호를 고장난 순서에 따라 쓴 것이다. 직전의 예에서 교체 수열은 (1, 4, 7) 이다. 교체 수열 e이 곤돌라 수열 g를 만든다고 말을 할 수 있는데, 그것은 초기 상황에서 시작해서 r에 해당하는 방법으로 곤돌라들이 고장난 직후에, g가 가능한 곤돌라 수열들 중 하나인 경우를 의미한다.</p>\r\n\r\n<p>이 문제들에서는 주어진 곤돌라 수열을 만들 수 있는 교체 수열을 생성하여야 한다. 여러 개의 교체 수열이 가능한 경우 그 중 하나를 생성하면 된다. 다음과 같이 선언된 함수 replacement 를 구현해야 한다.</p>\r\n\r\n<ul>\r\n\t<li>replacement(n, gondolaSeq, replacementSeq)</li>\r\n\t<li>n: 입력 곤돌라 수열의 길이이다.</li>\r\n\t<li>gondolaSeq: 크기 n인 배열; gondolaSeq 는 항상 가능한 곤돌라 수열이며, gondolaSeq[i] 는 번 원소이다 (1 &le; i &le; n-1).</li>\r\n\t<li>함수는 교체 수열의 길이 l을 리턴해야 한다.</li>\r\n\t<li>replacementSeq: 교체 수열을 저장하기에 충분한 크기의 배열; replacementSeq[i] 에는 계산된 교체 수열의 i번 원소가 저장되어야 한다 (0 &le; i &le; l-1).</li>\r\n</ul>\r\n",
+  "input": "<p>첫째 줄에 입력 수열의 길이 n이 주어진다.</p>\r\n\r\n<p>둘째 줄에는 gondolaSeq[0], ..., gondolaSeq[n-1]이 주어진다.</p>\r\n",
+  "output": "<p>replacement함수의 리턴 값을 출력하고, 공백을 출력한 다음, replacementSeq를 공백으로 구분해 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2\n3 2\n",
+      "output": "1 1\n"
+    }
+  ],
+  "hint": "<table class=\"table table-bordered\" style=\"width:50%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>서브태스크</th>\r\n\t\t\t<th>gondolaSeq</th>\r\n\t\t\t<th>리턴 값</th>\r\n\t\t\t<th>replacementSeq</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>(3, 1, 4)</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>(2)</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>(5, 1, 2, 3, 4)</td>\r\n\t\t\t<td>0</td>\r\n\t\t\t<td>()</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>(2, 3, 4, 9, 6, 7, 1)</td>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>(5, 8)</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n",
+  "source": ", Olympiad, International Olympiad in Informatics, IOI 2014, Day 2, yclock",
+  "level": 15,
+  "tags": [
+    "constructive"
+  ],
+  "accepted_user_count": 81,
+  "submission_count": null,
+  "average_tries": 2.1851999759674072
+}

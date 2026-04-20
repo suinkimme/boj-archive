@@ -1,0 +1,25 @@
+{
+  "id": 6568,
+  "title": "귀도 반 로썸은 크리스마스날 심심하다고 파이썬을 만들었다",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>그래서 여러분도 크리스마스날 심심해서 컴퓨터를 하나 만들었다. 이 컴퓨터는 아주 적은 수의 명령어를 사용하는 하나의 프로세서, 32바이트 메모리, 8비트짜리 가산기, 5비트짜리 프로그램 카운터(pc)로 이루어져 있다. 폰 노이만 구조를 표방하여 이 컴퓨터는 메모리와 프로그램 구문을 공유한다.</p>\r\n\r\n<p>프로그램 카운터는 다음에 실행되어야 하는 명령어의 주소를 갖고 있다. 각 명령어의 길이는 1바이트이며, 상위 3비트는 명령어의 종류를, 하위 5비트는 피연산자를 표현한다. 피연산자는 언제나 메모리 값(XXXXX)이다. 피연산자가 필요하지 않은 명령어도 있는데, 이때는 하위 5비트는 무의미하다(-----). 사용되는 명령어들의 의미는 다음과 같다.</p>\r\n\r\n<blockquote><code>000xxxxx&nbsp;&nbsp; STA x</code>&nbsp;&nbsp; 메모리 주소 x에 가산기의 값을 저장한다.<br />\r\n<code>001xxxxx&nbsp;&nbsp; LDA x</code> &nbsp; 메모리 주소 x의 값을 가산기로 불러온다.<br />\r\n<code>010xxxxx&nbsp;&nbsp; BEQ x</code>&nbsp;&nbsp; 가산기의 값이 0이면 PC 값을 x로 바꾼다.<br />\r\n<code>011-----&nbsp;&nbsp; NOP</code>&nbsp;&nbsp;&nbsp;&nbsp; 아무 연산도 하지 않는다.<br />\r\n<code>100-----&nbsp;&nbsp; DEC</code>&nbsp;&nbsp;&nbsp;&nbsp; 가산기 값을 1 감소시킨다.<br />\r\n<code>101-----&nbsp;&nbsp; INC</code>&nbsp;&nbsp;&nbsp;&nbsp; 가산기 값을 1 증가시킨다.<br />\r\n<code>110xxxxx&nbsp;&nbsp; JMP x</code>&nbsp;&nbsp; PC 값을 x로 바꾼다.<br />\r\n<code>111-----&nbsp;&nbsp; HLT</code>&nbsp;&nbsp;&nbsp;&nbsp; 프로그램을 종료한다.</blockquote>\r\n\r\n<p>초기엔 PC와 가산기 값은 모두 0이다. 명령어를 불러와 해독한 뒤, 그 명령어를 실행하기 전에 PC 값은 1 증가한다. 프로그램은 언제나 종료된다고 가정해도 좋다.</p>\r\n",
+  "input": "<p>입력은 여러 개의 테스트 케이스로 주어진다. 각 테스트 케이스는 32개의 줄에 걸쳐 각 메모리 값, 즉 코드가 순서대로 8비트 2진수의 형태로 주어진다. 왼쪽에 있는 비트일수록 상위 비트이다. 입력은 EOF와 함께 종료된다.</p>\r\n",
+  "output": "<p>각 테스트 케이스마다 한 줄에 걸쳐 프로그램이 종료되었을 때의 가산기 값을 역시 8비트 2진수 형태로 출력한다. 이때도 왼쪽에 출력될수록 상위 비트이다.</p>",
+  "samples": [
+    {
+      "input": "00111110\n10100000\n01010000\n11100000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00111111\n10000000\n00000010\n11000010\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n00000000\n11111111\n10001001\n",
+      "output": "10000111\n"
+    }
+  ],
+  "hint": "<p>누산기의 값은 8비트이므로 그 범위를 초과하면 하위 8비트만 남겨두고 잘린다. 2번째 명령어인 INC를 수행하기 직전 가산기 값은 11111111이었는데, INC 수행 후 00000000이 된다.</p>\r\n",
+  "source": "Contest, University of Ulm Local Contest, University of Ulm Local Contest 2000, kks227",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 411,
+  "submission_count": null,
+  "average_tries": 4.328499794006348
+}

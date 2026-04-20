@@ -1,0 +1,32 @@
+{
+  "id": 19490,
+  "title": "Robots",
+  "time_limit": "10 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Captain Byteasar supervises the colonization of a natural asteroid BA-1T which is rich in raw materials. His job is controlling the robot-miners extracting ardanium. The space weather forecast predicts a meteor shower, and it would be better if all the robots were hidden in armoured strongholds once the shower happens.</p>\n<p>Unfortunately, the miners control system leaves much to be desired. The only thing one can do is to input a single non-negative integer $k$ into it, which will result in sending $k$ \"Move up!\" commands to every robot.</p>\n<p>There are $n$ sectors marked out on the surface of the planet. Some of the sectors are the strongholds, and the other ones are the open pit ardanium mines. Robot-miners are equipped with quantum brains and therefore they work nondeterministically. For each sector $s$, Byteasar knows a non-empty set $A_s$, such that any robot located in the sector $s$ will move to one of the sectors of $A_s$ after receiving a command. It is generally not known which sector of $A_s$ will be picked; one can neither count on any repeatability -- even if a certain robot has been in the sector $s$ a few times already, next time it can move to a sector completely different than before.</p>\n<p>Now Byteasar wonders whether there exists such $k$, that after issuing $k$ \"Move up!\" commands, each robot will be in one of the strongholds for sure.</p>",
+  "input": "<p>The first line of the input contains three integers $n$, $b$ and $r$ ($2 \\le n \\le 200$, ${1 \\le b, r \\le n}$), denoting the number of sectors, the number of strongholds and the number of robot-miners, respectively. The sectors are numbered $1$ through $n$ and the sectors numbered $1$ through $b$ are the strongholds.</p>\n<p>This is then followed by $n$ lines containing descriptions of possible transitions after receiving the \"Move up!\" command. The $i$-th of these lines contains a string of $n$ digits from the set {<code>0</code>, <code>1</code>}; the $j$-th of these numbers is equal to <code>1</code> if and only if a miner can move from sector $i$ to sector $j$ after receiving a command. At least one digit in a line is equal to <code>1</code>.</p>\n<p>The last line of the input contains an increasing sequence of $r$ numbers ranging from $1$ to $n$, indicating the sectors where the robot-miners are initially present.</p>",
+  "output": "<p>In case a number $k$, sought by Byteasar, does not exist, you should output the number $-1$. Otherwise we guarantee that there exists a non-negative integer satisfying Byteasar's requirements and having at most 200 digits (in decimal notation). Then, you should output any such number.</p>",
+  "samples": [
+    {
+      "input": "4 2 2\n0100\n0010\n1001\n1000\n3 4\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 2 2\n0100\n0010\n1001\n1000\n2 3\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2016, Day 6: Warsaw U Contest, XVI Open Cup Onsite",
+  "level": 28,
+  "tags": [
+    "bitset",
+    "crt",
+    "dp",
+    "math",
+    "number_theory"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 3.6666998863220215
+}

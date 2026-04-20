@@ -1,0 +1,26 @@
+{
+  "id": 9614,
+  "title": "잠금 패턴과 스패닝 트리",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>안드로이드는 스마트폰을 잠글때 패턴을 이용한다. 보통 잠근 패턴은 3&times;3 그리드에 노드 9개로 이루어져 있다. 상현이는 보다 더 높은 보안을 위해 아래와 같은 잠금 패턴을 제공하는 앱을 만들려고 한다.</p>\r\n\r\n<p>상현이가 만들 앱의 잠금 패턴의 크기는 2&times;2부터 m&times;m까지로 다양하며, 항상 인접한 노드만 연결할 수 있다. 잠금 패턴은 그래프로 나타낼 수 있다. 아래 그림은 2&times;2, 3&times;3, 4&times;4 잠금 패턴을 그래프로 나타낸 것이다. 꼭짓점에 해당하는 정점은 총 3개와 연결되어 있고, 나머지 정점은 최대 8개와 연결될 수도 있다. 항상 아래 그림과 같이 인접한 점과만 연결할 수 있다.</p>\r\n\r\n<p><img alt=\"\" src=\"/upload/images/securespanning.png\" /></p>\r\n\r\n<p>잠금 패턴은 항상 스패닝 트리를 이루어야 한다. 스패닝 트리는 그래프 상의 간선의 집합으로, 닫힌 루프를 포함하지 않아야 한다. 또, 임의의 두 점 사이의 경로가 존재해야 하고, 모든 m<sup>2</sup> = n개의 정점과 n-1개의 edge로 이루어져 있어야 한다. 잠금 패턴 상에서 스패닝 트리는 여러 가지 경우가 나올 수 있다.</p>\r\n\r\n<p>그래프 G의 스패닝 트리의 개수를 구하기 위해 모든 정점에 번호 v<sub>1</sub>, ..., v<sub>n</sub>을 붙인다. 이제 행렬 T = [t<sub>ij</sub>]를 아래와 같이 만들 수 있다.</p>\r\n\r\n<ul>\r\n\t<li>i = j인 경우에는 v<sub>i</sub>와 연결된 간선의 개수</li>\r\n\t<li>i &ne; j인 경우에 v<sub>i</sub>와 v<sub>j</sub> 사이에 간선이 있으면 -1, 없으면 0</li>\r\n</ul>\r\n\r\n<p>스패닝 트리의 개수는 다음과 같이 구할 수 있다.</p>\r\n\r\n<p>cofactor of a<sub>ij</sub> = (-1)<sup>i+j</sup>M<sub>ij</sub>&nbsp;</p>\r\n\r\n<p>여기서 M<sub>ij</sub>는 T에서 i행과 j열을 지워서 얻은 (n-1) &times; (n-1) 행렬의 행렬식(determinant)이다. T의 모든 cofactor는 같은 결과를 갖는다.</p>\r\n\r\n<p>예를 들어, 2&times;2 패턴의 행렬 T는 다음과 같다.</p>\r\n\r\n<p>\\[T=\\begin{pmatrix} 3 &amp; -1 &amp; -1 &amp; -1 \\\\ -1 &amp; 3 &amp; -1 &amp; -1 \\\\ &nbsp;-1&amp;-1&amp;3&amp;-1 \\\\ -1&amp;-1&amp;-1&amp;3 &nbsp;\\end{pmatrix}\\]</p>\r\n\r\n<p>i=1, j=1로 두고 cofator를 구해보면 아래와 같다.</p>\r\n\r\n<p>\\[(-1)^{1+1}M_{11} = &nbsp;\\begin{vmatrix} &nbsp;3&amp; -1&amp;-1 \\\\ &nbsp;-1&amp;3&amp;-1 \\\\ -1&amp;-1&amp;3 &nbsp;\\end{vmatrix} = 16\\]</p>\r\n\r\n<p>따라서, 스패닝 트리의 개수는 16개임을 알 수 있다.&nbsp;</p>\r\n\r\n<p>두 번째 예제로 3&times;3 패턴의 행렬 T는 다음과 같다.</p>\r\n\r\n<p>\\[T = \\begin{pmatrix} &nbsp;3&amp;-1&amp;0&amp;-1&amp;-1&amp;0&amp;0&amp;0&amp;0 \\\\ -1&amp;5&amp;-1&amp;-1&amp;-1&amp;-1&amp;0&amp;0&amp;0 \\\\ 0&amp;-1&amp;3&amp;0&amp;-1&amp;-1&amp;0&amp;0&amp;0 \\\\ -1&amp;-1&amp;0&amp;5&amp;-1&amp;0&amp;-1&amp;-1&amp;0 \\\\ -1&amp;-1&amp;-1&amp;-1&amp;8&amp;-1&amp;-1&amp;-1&amp;-1 \\\\ 0 &amp; -1&amp;-1&amp;0&amp;-1&amp;5&amp;0&amp;-1&amp;-1 \\\\ 0&amp;0&amp;0&amp;-1&amp;-1&amp;0&amp;3&amp;-1&amp;0 \\\\ 0&amp;0&amp;0&amp;-1&amp;-1&amp;-1&amp;-1&amp;5&amp;-1 \\\\ 0&amp;0&amp;0&amp;0&amp;-1&amp;-1&amp;0&amp;-1&amp;3 &nbsp;\\end{pmatrix}\\]</p>\r\n\r\n<p>T의 모든 cofactor는 같은 결과를 갖고, 이 답이 스패닝 트리의 개수가 된다.</p>\r\n\r\n<p>m&times;m 패턴에서 만들 수 있는 스패닝 트리의 개수를 구하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>첫째 줄에 테스트 케이스의 개수 N (1 &le; N &le; 5)가 주어진다. 다음 N개 줄에는 테스트케이스 한 줄에 하나씩 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고, 패턴의 크기 m이 주어진다. (2 &le; m &le; 6)</p>\r\n",
+  "output": "<p>각 테스트 케이스마다 m&times;m 패턴에서 만들 수 있는 스패닝 트리의 개수를 한 줄에 하나씩 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "1\n2\n",
+      "output": "16\n"
+    }
+  ],
+  "hint": "<p>m = 2인 경우 아래와 같이 16가지 경우가 있다.</p>\r\n\r\n<p><img alt=\"\" src=\"/upload/images/securexm.png\" style=\"height:389px; width:533px\" /></p>\r\n",
+  "source": "ICPC, Regionals, Asia Pacific, Thailand, 2013 ACM-ICPC Asia Phuket Regional Programming Contest, baekjoon",
+  "level": 16,
+  "tags": [
+    "math",
+    "linear_algebra",
+    "gaussian_elimination"
+  ],
+  "accepted_user_count": 74,
+  "submission_count": null,
+  "average_tries": 1.8378000259399414
+}

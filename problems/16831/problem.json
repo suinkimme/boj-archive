@@ -1,0 +1,33 @@
+{
+  "id": 16831,
+  "title": "Nim without Zero",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Alice: \"Hi, Bob! Let's play Nim!\"</p>\n<p>Bob: \"Are you serious? I don't want to play it. I know how to win the game.\"</p>\n<p>Alice: \"Right, there is an algorithm to calculate the optimal move using XOR. How about changing the rule so that a player loses a game if he or she makes the XOR to $0$?\"</p>\n<p>Bob: \"It sounds much better now, but I suspect you know the surefire way to win.\"</p>\n<p>Alice: \"Do you wanna test me?\"</p>\n<p>This game is defined as follows.</p>\n<ol>\n<li>The game starts with $N$ heaps where the $i$-th of them consists of $a_i$ stones.</li>\n<li>A player takes any positive number of stones from any single one of the heaps in one move.</li>\n<li>Alice moves first. The two players alternately move.</li>\n<li>If the XOR sum, $a_1$ XOR $a_2$ XOR $\\cdots$ XOR $a_N$, of the numbers of remaining stones of these heaps becomes $0$ as a result of a player's move, the player loses.</li>\n</ol>\n<p>Your task is to find which player will win if they do the best move.</p>",
+  "input": "<p>The input consists of a single test case in the format below.</p>\n<pre class=\"mathjax\">\n$N$\n$a_{1}$\n$\\vdots$\n$a_{N}$</pre>\n<p>The first line contains an integer $N$ which is the number of the heaps ($1 \\le N \\le 10^5$). Each of the following $N$ lines gives the number of stones in each heap ($1 \\le a_i \\le 10^9$).</p>",
+  "output": "<p>Output the winner, Alice or Bob, when they do the best move.</p>",
+  "samples": [
+    {
+      "input": "2\n1\n1\n",
+      "output": "Alice\n"
+    },
+    {
+      "input": "5\n1\n2\n3\n4\n5\n",
+      "output": "Bob\n"
+    },
+    {
+      "input": "10\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n",
+      "output": "Alice\n"
+    }
+  ],
+  "hint": "<p>In the first example, the XOR sum is 0 in the initial state, but the game is going because nobody moves yet. First Alice takes a stone and the XOR sum becomes 1, then Bob takes the last stone and the XOR sum becomes 0. Therefore, Alice will win, and Bob will lose.</p>",
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2018 Day 3",
+  "level": 20,
+  "tags": [
+    "game_theory",
+    "sprague_grundy"
+  ],
+  "accepted_user_count": 59,
+  "submission_count": null,
+  "average_tries": 2.440700054168701
+}

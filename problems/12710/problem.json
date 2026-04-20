@@ -1,0 +1,27 @@
+{
+  "id": 12710,
+  "title": "PermRLE (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You've invented a slight modification of the run-length encoding (RLE) compression algorithm, called PermRLE.</p>\n<p>To compress a string, this algorithm chooses some permutation of integers between 1 and <strong>k</strong>, applies this permutation to the first <strong>k</strong> letters of the given string, then to the next block of <strong>k</strong> letters, and so on. The length of the string must be divisible by <strong>k</strong>. After permuting all blocks, the new string is compressed using RLE, which is described later.</p>\n<p>To apply the given permutation <em>p</em> to a block of <strong>k</strong> letters means to place the <em>p[1]</em>-th of these letters in the first position, then <em>p[2]</em>-th of these letters in the second position, and so on. For example, applying the permutation {3,1,4,2} to the block \"abcd\" yields \"cadb\". Applying it to the longer string \"abcdefghijkl\" in blocks yields \"cadbgehfkilj\".</p>\n<p>The permuted string is then compressed using run-length encoding. To simplify, we will consider the <em>compressed size</em> of the string to be the number of groups of consecutive equal letters. For example, the compressed size of \"aabcaaaa\" is 4; the first of the four groups is a group of two letters \"a\", then two groups \"b\" and \"c\" each containing only one letter, and finally a longer group of letters \"a\".</p>\n<p>Obviously, the compressed size may depend on the chosen permutation. Since the goal of compression algorithms is to minimize the size of the compressed text, it is your job to choose the permutation that yields the smallest possible compressed size, and output that size.</p>",
+  "input": "<p>The first line of input gives the number of cases, <strong>N</strong>. <strong>N</strong> test cases follow.</p>\n<p>The first line of each case will contain <strong>k</strong>. The second line will contain <strong>S</strong>, the string to be compressed.</p>\n<p>Limits</p>\n<ul>\n<li><strong>N</strong> = 20</li>\n<li><strong>S</strong> will contain only lowercase letters 'a' through 'z'</li>\n<li>The length of <strong>S</strong> will be divisible by <strong>k</strong></li>\n<li>2 ≤ <strong>k</strong> ≤ 16</li>\n<li>1 ≤ length of <strong>S</strong> ≤ 50000</li>\n</ul>",
+  "output": "<p>For each test case you should output one line containing \"Case #<strong>X</strong>: <strong>Y</strong>\" (quotes for clarity) where <strong>X</strong> is the number of the test case and <strong>Y</strong> is the minimum compressed size of <strong>S</strong>.</p>",
+  "samples": [
+    {
+      "input": "2\n4\nabcabcabcabc\n3\nabcabcabcabc\n",
+      "output": "Case #1: 7\nCase #2: 12\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Code Jam, Google Code Jam 2008, Round 2",
+  "level": 18,
+  "tags": [
+    "dp",
+    "bitmask",
+    "dp_bitfield",
+    "tsp"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 2.047600030899048
+}

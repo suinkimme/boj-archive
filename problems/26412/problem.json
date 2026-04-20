@@ -1,0 +1,35 @@
+{
+  "id": 26412,
+  "title": "Khalin Graph",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p><em>Little George Khalin designed a new type of graphs. He doesn't like the letter K, so he dropped it</em>. </p>\n<p><strong>Preorder</strong> of a tree (sometimes called <strong>time-in order</strong>) is obtained using the following procedure:</p>\n<p>Let's fix the root of the tree, and direct all edges away from the root. Preorder of the subtree of a vertex $v$ is $v$ followed by preorders of subtrees of all its children (if any) in some order. A preorder of a tree with a fixed root is any preorder of the subtree of the root.</p>\n<p>Note that there are multiple preorders of the same tree, since a preorder depends on the choice of the root, as well as the order in which children subtrees are considered at every vertex.</p>\n<p>A <strong>Halin graph</strong> is a graph obtained using the following procedure: \\\\ There is a tree that we will call the <strong>base tree</strong> of the graph, which has at least 4 vertices and has no vertices of degree 2. One of its preorders is specified. The root of the tree with respect to this preorder is not a leaf.</p>\n<p>Let $v_1, v_2, ..., v_m$ be the leaves of the tree in order they appear in the preorder. For each $i$ from $1$ to $m$, add an edge between the vertices $v_i$ and $v_{(i \\bmod m) + 1}$ to the tree. Those edges are called <strong>additional</strong>. The resulting graph is the Halin graph with respect to the base tree and the specified preorder.</p>\n<p>A <strong>3-matching</strong> of a graph $G$ is a set of edges $S$ such that the connected components of the graph formed by removal of all edges not in $S$ from $G$ are trees of size 3 or 1.</p>\n<p>You are given a Halin graph. Find the number of its 3-matchings modulo $998\\,244\\,353.$ </p>",
+  "input": "<p>The first line contains a single integer $n$ ($4 \\leq n \\leq 10^5$) the number of vertices in the base tree. Vertices are enumerated according to the preorder.</p>\n<p>The second line contains $n-1$ integers. $i$-th of them is $p_i$ ($1 \\leq p_i \\leq i$), describing an edge between $p_i$-th and $i+1$-th vertices in the base tree.</p>\n<p>It is guaranteed that the base tree is a tree, has no vertices of degree 2, and that the vertex $1$ is not a leaf.</p>",
+  "output": "<p>Output a single integer --- the number of 3-matchings of the given graph modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "4\n1 1 1\n",
+      "output": "13\n"
+    },
+    {
+      "input": "6\n1 1 3 3 1\n",
+      "output": "34\n"
+    },
+    {
+      "input": "11\n1 1 3 4 4 3 3 1 9 9\n",
+      "output": "737\n"
+    }
+  ],
+  "hint": "<p>In the first example the actual Halin graph is the complete graph on four vertices.</p>\n<p>In the second example the leaves are $[2, 4, 5, 6]$, thus there are four additional edges --- (2, 4), (4, 5), (5, 6), (6, 2).</p>\n<p><em>Note that there is no letter K in the meaningful parts of the statement.</em></p>",
+  "source": "Camp, Moscow Pre-Finals ACM ICPC Workshop, Moscow Pre-Finals ACM ICPC Workshop 2018",
+  "level": 26,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "implementation",
+    "trees"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

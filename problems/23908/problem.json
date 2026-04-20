@@ -1,0 +1,25 @@
+{
+  "id": 23908,
+  "title": "Candies",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Carl has an array of <b>N</b> candies. The i-th element of the array (indexed starting from 1) is <b>A<sub>i</sub></b> representing <i>sweetness value</i> of the i-th candy. He would like to perform a series of <b>Q</b> operations. There are two types of operation:</p>\n<ul>\n<li>Update the sweetness value of a candy in the array.</li>\n<li>Query the <i>sweetness score</i> of a subarray.</li>\n</ul>\n<p>The sweetness score of a subarray from index l to r is: <b>A<sub>l</sub></b> × 1 - <b>A<sub>l+1</sub></b> × 2 + <b>A<sub>l+2</sub></b> × 3 - <b>A<sub>l+3</sub></b> × 4 + <b>A<sub>l+4</sub></b> × 5 ...</p>\n<p>More formally, the sweetness score is the sum of (-1)<sup>i-l</sup><b>A<sub>i</sub></b> × (i - l + 1), for all i from l to r inclusive.</p>\n<p>For example, the sweetness score of:</p>\n<ul>\n<li>[3, 1, 6] is 3 × 1 - 1 × 2 + 6 × 3 = 19</li>\n<li>[40, 30, 20, 10] is 40 × 1 - 30 × 2 + 20 × 3 - 10 × 4 = 0</li>\n<li>[2, 100] is 2 × 1 - 100 × 2 = -198</li>\n</ul>\n<p>Carl is interested in finding out the total sum of sweetness scores of all queries. If there is no query operation, the sum is considered to be 0. Can you help Carl find the sum?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case begins with a line containing <b>N</b> and <b>Q</b>. The second line contains <b>N</b> integers describing the array. The i-th integer is <b>A<sub>i</sub></b>. The j-th of the following <b>Q</b> lines describe the j-th operation. Each line begins with a single character describing the type of operation (<code>U</code> for update, <code>Q</code> for query).</p>\n<ul>\n<li>For an update operation, two integers <b>X<sub>j</sub></b> and <b>V<sub>j</sub></b> follow, indicating that the <b>X<sub>j</sub></b>-th element of the array is changed to <b>V<sub>j</sub></b>.</li>\n<li>For a query operation, two integers <b>L<sub>j</sub></b> and <b>R<sub>j</sub></b> follow, querying the sweetness score of the subarray from the <b>L<sub>j</sub></b>-th element to the <b>R<sub>j</sub></b>-th element (inclusive).</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the total sum of sweetness scores of all the queries.</p>",
+  "samples": [
+    {
+      "input": "2\n5 4\n1 3 9 8 2\nQ 2 4\nQ 5 5\nU 2 10\nQ 1 2\n3 3\n4 5 5\nU 1 2\nU 1 7\nQ 1 2\n",
+      "output": "Case #1: -8\nCase #2: -3\n"
+    }
+  ],
+  "hint": "<p>In sample case #1:</p>\n<ul>\n<li>The first query asks for the sweetness score of [3, 9, 8] which is 3 × 1 - 9 × 2 + 8 × 3 = 9.</li>\n<li>The second query asks for the sweetness score of [2] which is 2 × 1 = 2.</li>\n<li>The third query asks for the sweetness score of [1, 10] which is 1 × 1 - 10 × 2 = -19.</li>\n</ul>\n<p>Thus, the final output should be 9 + 2 - 19 = -8.</p>\n<p>In sample case #2:</p>\n<ul>\n<li>The first and only query asks for the sweetness score of [7, 5] which is 7 × 1 - 5 × 2 = -3.</li>\n</ul>\n<p>Thus, the final output should be -3.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2020, Round C",
+  "level": 17,
+  "tags": [
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

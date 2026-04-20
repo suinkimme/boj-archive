@@ -1,0 +1,33 @@
+{
+  "id": 17784,
+  "title": "Conveyor Belts",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are an employee of the Boxing And Processing Company and you are tasked with distributing boxes in one of the company’s enormous warehouses. At BAPC Ltd., boxes travel by conveyor belt. Two conveyor belts can be merged into one by letting one drop its content onto the other. On the other hand, a belt can be split into two by using a splitter, which sends a specific portion of its input to its first output and the rest to its second output. Normally your splitters are adjustable, being able to distribute its input over its output belts in any conceivable ratio, but in an attempt to cut costs your boss has ordered cheap knock-off splitters which can only distribute its input in a fixed ratio a : b. Instead of arguing with your boss about how you really need some c : d splitters, you decide to make them yourself.</p>\n<p>Of course, with your frugal boss, you have to watch your costs. You cannot build your splitter system in such a way that there are boxes that never leave the system. Nor can you use splitters that never receive any boxes. Finally, you cannot use too many a : b splitters in total.</p>\n<p>Given the ratios a : b and c : d, construct a network of belts and at most 200 knock-off a : b splitters that has a single global input belt and two global output belts over which the global input is distributed in a ratio c : d.</p>\n<p>Note that a splitter of ratio x : y sends exactly x/(x+y) of the incoming boxes to the first output and exactly y/(x+y) of them to the second output.</p>",
+  "input": "<ul>\n<li>The first line contains two integers 1 ≤ a, b ≤ 10<sup>9</sup> with a + b ≤ 10<sup>9</sup> denoting the ratio a : b of your knock-off splitter.</li>\n<li>The second line contains two integers 1 ≤ c, d ≤ 10<sup>9</sup> with c + d ≤ 10<sup>9</sup> denoting the ratio c : d of your desired splitter.</li>\n</ul>",
+  "output": "<ul>\n<li>The first line contains an integer 1 ≤ n ≤ 200, the number of a : b splitters used.</li>\n<li>Then follow n lines, the i-th of which contains two integers −2 ≤ l<sub>i</sub>, r<sub>i</sub> &lt; n.</li>\n</ul>\n<p>Here l<sub>i</sub> is the index of the splitter connected to the left output of the i-th splitter, where it deposits a/(a + b) of its input. Similarly r<sub>i</sub> is the index of the splitter receiving b/(a + b) of the input of the i-th splitter. The splitters are indexed starting from 0. The global input is connected to splitter 0. The special values −1 and −2 for l<sub>i</sub> and r<sub>i</sub> correspond to the first and second global output, which need to receive c/(c + d) and d/(c + d) of the global input respectively.</p>\n<p>Note that you cannot place a splitter in such a way that no box ever reaches it, nor in such a way that a box that passes through it will never reach the output.</p>\n<p>If there are multiple possible solutions, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "2 3\n3 2\n",
+      "output": "1\n-2 -1\n"
+    },
+    {
+      "input": "1 2\n3 4\n",
+      "output": "3\n-1 1\n2 1\n0 -2\n"
+    },
+    {
+      "input": "1 2\n1 2\n",
+      "output": "3\n-2 1\n2 0\n1 -1\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2019",
+  "level": 22,
+  "tags": [
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 4.357100009918213
+}

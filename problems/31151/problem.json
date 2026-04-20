@@ -1,0 +1,33 @@
+{
+  "id": 31151,
+  "title": "to Pay Respects",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are playing a game, and you are going to fight the secret boss. In this game, the boss doesn't attack you, but they can cast regeneration spells.</p>\n<p>The fight consists of exactly $N$ rounds, in each round the following actions can happen, in this order:</p>\n<ol>\n<li>The boss can choose to cast the \"Regeneration\" spell.</li>\n<li>You can choose to cast the \"Poison\" spell if you have any mana left.</li>\n<li>You attack with a sword, dealing $X$ damage.</li>\n<li>All the passive effects are applied.</li>\n</ol>\n<p>There are two types of passive effects: regeneration and poison. The effects stack, which means that the current state of the boss can be described with three integers: current health points ($hp$), current poison stacks ($p$) and current regeneration stacks ($r$). At the beginning of the fight, there are no poison stacks and no regeneration stacks ($p=r=0$). Each poison stack deals $P$ damage, each regeneration stack heals $R$ health points.</p>\n<p>Spells have the following effects:</p>\n<p>\"Regeneration\": increase the number of regenerations stacks $r$ by $1$.</p>\n<p>\"Poison\": increase the number of poison stacks $p$ by $1$. <strong>If the number of regeneration stacks is strictly positive</strong> ($r &gt; 0$), then decrease it by $1$.</p>\n<p>After the round the $hp$ will decrease by $X + P \\cdot p - R \\cdot r$ (this value can be negative if the boss heals faster than you deal damage).</p>\n<p>For each round you know if the boss will cast \"Regeneration\". You have enough mana to cast \"Poison\" $K$ times (you don't have to use all of your mana). What's the largest total damage you can deal to the boss, in other words, what is the maximum value of $hp_{start} - hp_{end}$? Assume that $hp_{start} = 10^{1000}$, so you can't actually kill the boss in $N$ rounds. Boss $hp$ can go higher than the initial value (see the third sample case).</p>",
+  "input": "<p>The first line of the input contains $5$ integers $N$, $X$, $R$, $P$, $K$ ($1 \\le N, X, R, P \\le 10^6$, $0 \\le K \\le N$).</p>\n<p>The second line of the input contains a binary string of length $N$. The $i$-th character of this string is <code>1</code>, if the boss casts \"Regeneration\" at the beginning of the $i$-th round, and <code>0</code> otherwise.</p>",
+  "output": "<p>Output a single integer --- the largest total damage you can deal during the fight.</p>",
+  "samples": [
+    {
+      "input": "2 1010 1 1 1\n01\n",
+      "output": "2021\n"
+    },
+    {
+      "input": "3 2 1 1 1\n001\n",
+      "output": "8\n"
+    },
+    {
+      "input": "10 1 10 40 1\n1111111111\n",
+      "output": "-40\n"
+    }
+  ],
+  "hint": "<p>Let's look at the first sample. We can cast the \"Poison\" spell at most once. Let's look at what will happen if we cast this spell during the first round.</p>\n<ul>\n<li>During the first round, we apply a \"Poison\" spell, so at the end of this round there will be $0$ regeneration stacks, and $1$ poison stack. Therefore, the $hp$ will decrease by $X + P\\cdot 1 - R\\cdot 0 = 1011$ this round.</li>\n<li>At the beginning of the second round, the boss will cast the \"Regeneration\" spell, so there will be $1$ regeneration stack and $1$ poison stack at the end of the second round. So, the $hp$ will decrease by $X + P\\cdot 1 - R\\cdot 1 = 1010$ this round. Overall, the health of the boss decreased by $1011 + 1010 = 2021$.</li>\n</ul>\n<p>Now let's look at what will happen if we cast this spell during the second round.</p>\n<ul>\n<li>During the first round, no spells are applied, so at the end of this round there will be $0$ regeneration stacks, and $0$ poison stacks. Therefore, the $hp$ will decrease by $X + P\\cdot 0 - R\\cdot 0 = 1010$ this round.</li>\n<li>At the beginning of the second round, the boss will cast the \"Regeneration\" spell, so that there will be one regeneration stack after that. Then, we will we apply a \"Poison\" spell, decreasing the number of regeneration stacks by one. So, there will be $0$ regeneration stacks and $1$ poison stack at the end of the second round. Therefore, the $hp$ will decrease by $X + P\\cdot 1 - R\\cdot 0 = 1011$ this round. Overall, the health of the boss decreased by $1010 + 1011 = 2021$ again.</li>\n</ul>\n<p>So, no matter when we cast the \"Poison\" spell in this sample, we will still decrease the $hp$ by $2021$.</p>",
+  "source": "Contest, Open Cup, 2021/2022 Season, Stage 7: Grand Prix of Southeastern Europe, ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2021",
+  "level": 13,
+  "tags": [
+    "greedy",
+    "sorting"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

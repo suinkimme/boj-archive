@@ -1,0 +1,47 @@
+{
+  "id": 22631,
+  "title": "Queen’s Case",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>A small country called Maltius was governed by a queen. The queen was known as an oppressive ruler. People in the country suffered from heavy taxes and forced labor. So some young people decided to form a revolutionary army and fight against the queen. Now, they besieged the palace and have just rushed into the entrance.</p>\n<p>Your task is to write a program to determine whether the queen can escape or will be caught by the army.</p>\n<p>Here is detailed description.</p>\n<ul>\n<li>The palace can be considered as grid squares.</li>\n<li>The queen and the army move alternately. The queen moves first.</li>\n<li>At each of their turns, they either move to an adjacent cell or stay at the same cell.</li>\n<li>Each of them must follow the optimal strategy.</li>\n<li>If the queen and the army are at the same cell, the queen will be caught by the army immediately.</li>\n<li>If the queen is at any of exit cells alone after the army’s turn, the queen can escape from the army.</li>\n<li>There may be cases in which the queen cannot escape but won’t be caught by the army forever, under their optimal strategies.</li>\n</ul>",
+  "input": "<p>The input describes a map of the palace. The first line of the input contains two integers <i>W</i> (1 ≤ <i>W</i> ≤ 30) and <i>H</i> (1 ≤ <i>H</i> ≤ 30), which indicate the width and height of the palace. The following <i>H</i> lines, each of which contains <i>W</i> characters, denote the map of the palace. \"Q\" indicates the queen, \"A\" the army,\"E\" an exit,\"#\" a wall and \".\" a floor.</p>\n<p>The map contains exactly one \"Q\", exactly one \"A\" and at least one \"E\". You can assume both the queen and the army can reach all the exits.</p>",
+  "output": "<p>Output \"Queen can escape.\", \"Army can catch Queen.\" or \"Queen can not escape and Army can not catch Queen.\" in a line.</p>",
+  "samples": [
+    {
+      "input": "2 2\nQE\nEA\n",
+      "output": "Queen can not escape and Army can not catch Queen.\n"
+    },
+    {
+      "input": "3 1\nQAE\n",
+      "output": "Army can catch Queen.\n"
+    },
+    {
+      "input": "3 1\nAQE\n",
+      "output": "Queen can escape.\n"
+    },
+    {
+      "input": "5 5\n..E..\n.###.\nA###Q\n.###.\n..E..\n",
+      "output": "Queen can not escape and Army can not catch Queen.\n"
+    },
+    {
+      "input": "5 1\nA.E.Q\n",
+      "output": "Army can catch Queen.\n"
+    },
+    {
+      "input": "5 5\nA....\n####.\n..E..\n.####\n....Q\n",
+      "output": "Army can catch Queen.\n"
+    }
+  ],
+  "hint": "<p>On the first sample input, the queen can move to exit cells, but either way the queen will be caught at the next army’s turn. So the optimal strategy for the queen is staying at the same cell. Then the army can move to exit cells as well, but again either way the army will miss the queen from the other exit. So the optimal strategy for the army is also staying at the same cell. Thus the queen cannot escape but won’t be caught.</p>",
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2009 Day 3",
+  "level": 18,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "game_theory"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 3
+}

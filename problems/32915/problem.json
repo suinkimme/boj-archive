@@ -1,0 +1,31 @@
+{
+  "id": 32915,
+  "title": "Definitely Not Chess",
+  "time_limit": "15 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Your task is to checkmate the black king using the white king, a camel, and a wazir.</p>\n<p>The camel (represented by an inverted knight symbol) is a chess piece that moves in an elongated knight's move: three squares in one direction (one more than a knight) and one square in the other. The wazir (represented by an inverted rook symbol) always moves to an adjacent square along a rank or file, in other words, makes rook moves of length 1. The king moves as in regular chess: to any adjacent square along a rank, file, or diagonal.</p>\n<p>Below are the possible moves of all pieces from the <code>e4</code> square. Squares reachable in one move are marked by a cross.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 645px; height: 200px;\"/></p>\n<p>The rule of declaring a draw after $50$ moves does not apply.</p>",
+  "input": "<p>The first line contains an integer $t$: the number of test cases ($1 \\leq t \\leq 2 \\cdot 10^6$). Then $t$ test cases follow.</p>\n<p>Each test case is given on a separate line in the following format: squares of the white king, black king, white camel, and white wazir in algebraic notation, followed by a letter \"<code>w</code>\" or \"<code>b</code>\" indicating whether it is White's or Black's turn, respectively. Algebraic notation for chessboard squares consists of two characters: a file number encoded by a letter from \"<code>a</code>\" to \"<code>h</code>\", and a rank number encoded by a digit from \"<code>1</code>\" to \"<code>8</code>\". Ranks are numbered from bottom to top, and files from left to right, as shown in the pictures.</p>\n<p>In each test case:</p>\n<ul>\n<li>All pieces are on distinct squares.</li>\n<li>The player that is not to move is not in check.</li>\n<li>The game is not over, meaning there cannot be a stalemate or a checkmate on the board.</li>\n</ul>",
+  "output": "<p>For each test case, print the evaluation of the position on a separate line. The evaluation of the position should be either the number <code>0</code> if the position is drawn, or the character \"<code>\\#</code>\" immediately followed by the minimum number of moves required to guarantee a checkmate.</p>",
+  "samples": [
+    {
+      "input": "3\nf3 f1 f4 g2 w\nf3 f1 e1 g2 b\na1 c3 e5 h8 b\n",
+      "output": "#1\n0\n#66\n"
+    }
+  ],
+  "hint": "<p>The positions in the example look as follows:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 726px; height: 200px;\"/></p>\n<p>This problem assumes the following standard chess rules and concepts:</p>\n<ul>\n<li>Players alternate moves: one for black and the other for white pieces.</li>\n<li>During their turn, a player must choose one of their pieces and make a move with it.</li>\n<li>It is forbidden to move pieces to squares occupied by pieces of the same color.</li>\n<li>Moving to a square occupied by a piece of the opposite color is called <em>capturing</em>. The captured piece is removed from the game.</li>\n<li><em>Check</em> is a state when one of the pieces can move to the square occupied by the king of the opposing color.</li>\n<li>A player is forbidden from making a move that puts their king in check at the end of the turn.</li>\n<li>A state where the player with the turn has no valid moves and their king is <strong>not</strong> in check is called <em>stalemate</em> and results in a draw.</li>\n<li>A state where the player with the turn is in check and has no valid moves is called <em>checkmate</em> and is declared a victory for their opponent. In this problem, only White can achieve a victory.</li>\n<li>When counting the number of moves until checkmate, only the moves of the checkmating side are considered.</li>\n<li>Positions from which the game could proceed indefinitely with optimal play are considered drawn in this problem.</li>\n</ul>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2024-2025 Northwestern Russia Qualification",
+  "level": 21,
+  "tags": [
+    "implementation",
+    "graphs",
+    "data_structures",
+    "graph_traversal",
+    "set",
+    "bfs",
+    "hash_set",
+    "game_theory"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

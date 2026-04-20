@@ -1,0 +1,29 @@
+{
+  "id": 3313,
+  "title": "The Alliances",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In a fantasy world, there is a large island of a rectangular shape. The sides of the island happen to be exactly R miles and C miles long, and the whole island is divided into a grid of areas. Some of the areas are uninhabited, and the rest are occupied by villages of fantasy beings: elves, humans, dwarves, and hobbits. Each area contains at most one village. Two villages are considered neighbours if their areas share a side.</p>\n<p>Recently, the villages became terrified of the Great Evil. In order to feel safer, each village has decided to form military alliances with some of its neighbours. An alliance always involves two neighbouring villages, and it is a mutual and symmetric agreement.</p>\n<p>Depending on the species living in the village, the inhabitants will not feel safe unless a specific configuration of alliances is formed:</p>\n<ul>\n<li>The elves feel confident, and therefore need exactly one alliance.</li>\n<li>Human villages require alliances with exactly two neighbours. Moreover, leaving two opposite sides of the village exposed is bad for tactical reasons. Therefore the two allied neighbours cannot be located on opposite sides of the village.</li>\n<li>Dwarves require alliances with exactly three neighbours.</li>\n<li>Hobbits are extremely scared, and therefore need to have alliances with all four of their neighbours.</li>\n</ul>\n<p>In other words, except for humans each village requires a particular number of alliances, but does not care which neighbours will be its allies. For humans there is an additional restriction: the allied neighbours must not be on opposite sides of the village.</p>\n<p>The conditions must be fulfilled irrespective of the position of the village on the map. For example, a dwarf village desires three alliances. If it is located on the coast, this means that it must have alliances with all three neighbours. If there is a dwarf village in a corner of the island, its inhabitants will never feel safe.</p>\n<p>For a given island description, your task is to decide whether it is possible to form alliances so that all inhabitants of the island will feel safe. In case of a positive answer, your task is also to suggest one viable configuration of alliances. In case of multiple solutions, choose an arbitrary one.</p>",
+  "input": "<p>The first line of the input contains two integers R and C specifying the size of the island. The following R lines encode a description of the island. Each line consists of C space-separated numbers between 0 and 4:</p>\n<ul>\n<li>0 means uninhabited area,</li>\n<li>1 means an elf village,<br/>\n\t2 means a human village,</li>\n<li>3 means a dwarf village.</li>\n<li>4 means a hobbit village,</li>\n</ul>\n<p>(Note that the number in the input always corresponds to the number of desired alliances for that village.)</p>",
+  "output": "<p>If there is no solution, output a single line with the string \"Impossible!\" (quotes for clarity). Otherwise, output one valid map of alliances in the following format.</p>\n<p>Each area should appear in the output as a matrix of 3 × 3 characters. If the area is uninhabited, the corresponding section of the output will be filled with . (dot) symbols. If the area has a village there should be a a symbol O (uppercase letter O) in the middle representing the village itself, and there should be symbols X (uppercase letter X) representing a configuration of its allies. The rest of the 3 × 3 matrix should be filled with . (dot) symbols.</p>\n<p>For each village type, all possible layouts of alliances are shown in the image below.</p>\n<pre style=\"text-align: center;\">\n -elves---------------       -humans--------------       -dwarves-------------       -hobbits------------- \n|...   .X.   ...   ...|     |.X.   .X.   ...   ...|     |.X.   .X.   .X.   ...|     |.X.                  |\n|.OX   .O.   XO.   .O.|     |.OX   XO.   XO.   .OX|     |.OX   XOX   XO.   XOX|     |XOX                  |\n|...   ...   ...   .X.|     |...   ...   .X.   .X.|     |.X.   ...   .X.   .X.|     |.X.                  |\n ---------------------       ---------------------       ---------------------       --------------------- \n</pre>",
+  "samples": [
+    {
+      "input": "3 4\n2 3 2 0\n3 4 3 0\n2 3 3 1\n",
+      "output": "............\n.OXXOXXO....\n.X..X..X....\n.X..X..X....\n.OXXOXXO....\n.X..X..X....\n.X..X..X....\n.OXXOXXOXXO.\n............\n"
+    },
+    {
+      "input": "1 2\n2 1\n",
+      "output": "Impossible!\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2010, Day 1",
+  "level": 21,
+  "tags": [
+    "bipartite_matching",
+    "implementation"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 3.75
+}

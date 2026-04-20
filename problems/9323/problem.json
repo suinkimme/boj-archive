@@ -1,0 +1,27 @@
+{
+  "id": 9323,
+  "title": "무임승차",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>상현이는 어떤 기밀 단체의 요원이다. 상현이는 매일 아침 기차를 타고 출근한다. 어느 날 출근을 하던 상현이는 무언가 불합리하다는 것을 알아챘다. 상현이는&nbsp;매일&nbsp;요금을 내고 기차를 타지만, 실제로 승무원이 티켓을 확인하는 경우는 드물었기 때문이다. 결국&nbsp;몇 년에 걸쳐, 상현이는 각 기차마다&nbsp;어느 정도의 확률로 티켓을 확인받게 되는지에 대한 정보를 모두 작성하는 데 성공했다.</p>\r\n\r\n<p>하지만 무임승차 벌금은 일반적으로&nbsp;실제 요금보다 많기 때문에, 상현이는 모든 역에서 요금을 내지 않기보다는 요금과 벌금, 티켓을 확인받을 확률을 계산하여 기댓값이 가장 작은 방법으로 출근을 하기로&nbsp;했다. 아마 어떤 역에서는 요금을 내고 탑승하는 것이 나을 것이고, 어떤 역에서는 무임승차를 하는 것이 나을 것이다.</p>\r\n\r\n<p>기차&nbsp;티켓은 기본 s원에 출발지&nbsp;A와 도착지&nbsp;B 사이의 최단거리에 비례하여 1 킬로미터당 p의&nbsp;요금이 추가된다. 당연히 이 티켓으로는 A와 B 사이를 최단거리로 운행하는 기차만 탈 수 있다. 만일 기차가&nbsp;운행하던 도중&nbsp;티켓을 체크받았는데 티켓을 소지하지 않았다면, 기본 y원의 벌금에 지금 탑승한 기차가 마지막으로 방문한 도시에서부터 기차의 이번 정차역까지의 거리에 비례하여 1 킬로미터당 역시 p의&nbsp;추가 벌금을 지불하게 된다. 일반적으로 무임승차가 적발될 경우 기차에서 즉시 내려야 하지만, 상현이는 기밀 요원이기에 변장술에 능하다. 따라서 적발되더라도 벌금을 지불한 뒤 계속 기차를 탈 수 있다.</p>\r\n\r\n<p>이제 상현이가 통근 요금의 기댓값이 가장 적도록 출근할 수 있는 경로를 찾아 줄 프로그램을 작성하면 된다.</p>\r\n\r\n<p><img src=\"/upload/images/dogging.png\" /></p>\r\n\r\n<p>위는 세 번째 예제이다. 도시 1에서 도시 4까지 가는 최적의 경로는 아래와 같다.</p>\r\n\r\n<p>도시&nbsp;1에서 도시&nbsp;2까지는 20의&nbsp;요금을 지불하고 티켓을 구입(10 + 1&nbsp;&times; 10), 2에서 3까지 가는 경로에선 무임승차를 하며(이때의 벌금의&nbsp;기댓값은 0.1&nbsp;&times; (100 + 1&nbsp;&times; 120) = 22), 그리고 3에서 4까지는 20의 요금을 지불하고 티켓을 구입한다(10 + 1&nbsp;&times; 10). 이와 같이 출근할 경우, 총&nbsp;요금의 기댓값은 62이며(20 + 22 + 20)&nbsp;이 경우가 최소의 기댓값으로 출근하는 방법이다.</p>\r\n",
+  "input": "<p>첫 줄에 테스트 케이스의 수 T가 주어진다. (T&le;100)</p>\r\n\r\n<p>각 테스트 케이스는 아래와 같이 구성되어 있다</p>\r\n\r\n<ul>\r\n\t<li>첫 줄에 공백으로 구분된 7개의 정수가 주어진다.\r\n\t<ol>\r\n\t\t<li>n ( 2&nbsp;&le;&nbsp;n&nbsp;&le;&nbsp;200&nbsp;) : 기차의 운행 경로에 놓인&nbsp;도시의 수</li>\r\n\t\t<li>m ( 1&nbsp;&le;&nbsp;m&nbsp;&le;&nbsp;n(n-1)&nbsp;/&nbsp;2&nbsp;) : 두 도시를 직접적으로 잇는 선로의 수</li>\r\n\t\t<li>start&nbsp;( 1&nbsp;&le; start&nbsp;&le; n ) : 출발지</li>\r\n\t\t<li>end (&nbsp;1&nbsp;&le; end&nbsp;&le; n, start &ne; end ) : 도착지</li>\r\n\t\t<li>s ( 1&nbsp;&le; s&nbsp;&le; 1000 ) : 티켓의 기본 요금 s</li>\r\n\t\t<li>p ( 1&nbsp;&le; p&nbsp;&le; 1000 ) : 티켓 혹은 벌금에 추가되는 1 킬로미터당 추가 요금</li>\r\n\t\t<li>y ( s &lt; y&nbsp;&le; 1000 ) : 무임승차 벌금의&nbsp;기본 요금 y</li>\r\n\t</ol>\r\n\t</li>\r\n\t<li>다음 m개의 줄에는 각각 i 번째 선로에 대한 정보가&nbsp;네 개의 공백으로 구분된 정수로 주어진다. 모든 선로는 양방향이다. i&nbsp;번째 줄의 데이터는 다음과 같다.\r\n\t<ol>\r\n\t\t<li>ai ( 1&nbsp;&le; ai&nbsp;&le; n ) : i 번째 선로의 한쪽 끝 도시 번호</li>\r\n\t\t<li>bi ( ai &lt; bi&nbsp;&le; n ) : i&nbsp;번째 선로의 다른 쪽 끝 도시</li>\r\n\t\t<li>ci ( 0&nbsp;&le; ci&nbsp;&le; 100 ) : i&nbsp;번째 선로를 운행하는 기차에서 티켓을 확인받을 확률( % 값으로 주어진다. )</li>\r\n\t\t<li>di ( 1&nbsp;&le; di&nbsp;&le; 1000 ) : i 번째 선로의 길이(단위는 킬로미터)</li>\r\n\t</ol>\r\n\t</li>\r\n</ul>\r\n\r\n<p>i&nbsp;&ne; j 인&nbsp;모든 (ai, bi) 와 (aj, bj) 쌍에 대하여,&nbsp;(ai, bi)&nbsp;&ne;&nbsp;(aj, bj) 이다. (중복되어 입력되는 선로는 없다)</p>\r\n",
+  "output": "<p>각 테스트 케이스에 대해 다음을 출력한다.</p>\r\n\r\n<ul>\r\n\t<li>start에서 end까지 가는 데 드는 요금의 기댓값의 최솟값을 소수 두 번째 자리까지 반올림한 값</li>\r\n</ul>\r\n\r\n<p>모든 테스트 케이스에서, 계산 과정에서의 절대 오차가 10^-6 이하인 경우 결과값은 달라지지 않는다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3\n2 1 1 2 10 1 100\n1 2 20 50\n2 1 1 2 10 1 100\n1 2 60 50\n4 4 1 4 10 1 100\n1 4 50 90\n1 2 90 10\n2 3 10 120\n3 4 90 10\n",
+      "output": "30.00\n60.00\n62.00\n"
+    }
+  ],
+  "hint": "<p>벌금의 기댓값은 확인받을 확률 * 벌금 으로 계산할 수 있으며, 각 운행 경로는 독립적이므로&nbsp;경로 X에서의 기댓값을 E[X], 경로 Y에서의 기댓값을 E[Y]라 할 때, X-Y 경로의 기댓값은 E[X]+E[Y]가 된다.</p>\r\n",
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2013 Preliminaries, portableangel",
+  "level": 17,
+  "tags": [
+    "dp",
+    "graphs",
+    "shortest_path",
+    "dijkstra"
+  ],
+  "accepted_user_count": 84,
+  "submission_count": null,
+  "average_tries": 4.38100004196167
+}

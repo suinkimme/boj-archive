@@ -1,0 +1,31 @@
+{
+  "id": 16347,
+  "title": "Alloc",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Napišite program koji će simulirati izvršavanje naredbi za rezerviranje i oslobadanje memorije. Memorija računala je niz od 100 000 uzastopnih memorijskih lokacija, redom označenih adresama od 1 do 100 000. Na početku su sve lokacije slobodne. Naredbe koje se mogu pojaviti su:</p>\n<ul>\n<li><code>var=malloc(s);</code> Ova naredba pronalazi prvi niz od <code>s</code> uzastopnih slobodnih memorijskih lokacija i rezervira ih. Funkcija vraća adresu prve rezervirane lokacije. Ako ne postoji niz od <code>s</code> uzastopnih slobodnih memorijskih lokacija, onda funkcija ništa ne rezervira te vraća vrijednost 0.</li>\n<li><code>free(var);</code> Ova naredba oslobada memorijske lokacije dodijeljene varijabli var (prethodnim pozivom funkcije <code>malloc</code>) i postavlja vrijednost varijable <code>var</code> na 0. Ako je vrijednost varijable <code>var</code> već jednaka 0 prije poziva funkcije, onda funkcija ne radi ništa.</li>\n<li><code>print(var);</code> Ova naredba ispisuje vrijednost varijable <code>var</code>.</li>\n</ul>\n<p>Svaka naredba završava znakom “<code>;</code>” (točkazarez). Varijable su nizovi sastavljeni od točno 4 mala slova engleske abecede. Sve varijable su na početku inicijalizirane na vrijednost 0.</p>",
+  "input": "<p>U prvom redu se nalazi cijeli broj n (1 ≤ n ≤ 100 000) – broj naredbi. U j-tom od sljedećih n redova se nalazi j-ta naredba, formatirana točno kao u tekstu zadatka bez viška praznih znakova. Ukupni broj različitih varijabli će biti manji ili jednak od 1000. Barem jedna od naredbi će biti naredba <code>print</code>. U svakoj naredbi <code>malloc</code> vrijedi 100 ≤ s ≤ 100 000.</p>",
+  "output": "<p>U j-ti red ispišite rezultat j-te po redu naredbe <code>print</code>.</p>",
+  "samples": [
+    {
+      "input": "3\nmama=malloc(140);\ntata=malloc(120);\nprint(tata);\n",
+      "output": "141\n"
+    },
+    {
+      "input": "5\naabb=malloc(50001);\nbbaa=malloc(50000);\nprint(aabb);\nfree(aabb);\nprint(bbaa);\n",
+      "output": "1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2018",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "segtree",
+    "linked_list"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 1.9375
+}

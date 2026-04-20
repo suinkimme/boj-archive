@@ -1,0 +1,24 @@
+{
+  "id": 7006,
+  "title": "To bet, or not to bet",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Alexander Charles McMillan loves to gamble, and during his last trip to the casino he ran across a new game. It is played on a linear sequence of squares as shown below.</p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:300px\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">Start</td>\n<td style=\"text-align: center;\">      </td>\n<td style=\"text-align: center;\">      </td>\n<td style=\"text-align: center;\">  ...   </td>\n<td style=\"text-align: center;\">      </td>\n<td style=\"text-align: center;\">      </td>\n<td style=\"text-align: center;\">End</td>\n</tr>\n</tbody>\n</table>\n<p>A chip is initially placed on the Start square. The player then tries to move the chip to the End square through a series of turns, at which point the game ends. In each turn a coin is fl ipped: if the coin is heads the chip is moved one square to the right and if the coin is tails the chip is moved two squares to the right (unless the chip is one square away from the End square, in which case it just moves to the End square). At that point, any instruction on the square the coin lands on must be followed. Each instruction is one of the following: </p>\n<ol>\n<li>Move right n squares (where n is some positive integer) </li>\n<li>Move left n squares (where n is some positive integer) </li>\n<li>Lose a turn </li>\n<li>No instruction </li>\n</ol>\n<p>After following the instruction, the turn ends and a new one begins. Note that the chip only follows the instruction on the square it lands on after the coin flip. If, for example, the chip lands on a square that instructs it to move 3 spaces to the left, the move is made, but the instruction on the resulting square is ignored and the turn ends. Gambling for this game proceeds as follows: given a board layout and an integer T, you must wager whether or not you think the game will end within T turns. </p>\n<p>After losing his shirt and several other articles of clothing, Alexander has decided he needs professional help-not in beating his gambling addiction, but in writing a program to help decide how to bet in this game.</p>",
+  "input": "<p>Input will consist of multiple problem instances. The first line will consist of an integer n indicating the number of problem instances. Each instance will consist of two lines: the first will contain two integers m and T (1 &lt;= m &lt;= 50, 1 &lt;= T &lt;= 40), where m is the size of the board excluding the Start and End squares, and T is the target number of turns. The next line will contain instructions for each of the m interior squares on the board. Instructions for the squares will be separated by a single space, and a square instruction will be one of the following: +n, -n, L or 0 (the digit zero). The first indicates a right move of n squares, the second a left move of n squares, the third a lose-a-turn square, and the fourth indicates no instruction for the square. No right or left move will ever move you off the board.</p>",
+  "output": "<p>Output for each problem instance will consist of one line, either <br/>\nBet for. x.xxxx </p>\n<p>if you think that there is a greater than 50% chance that the game will end in T or fewer turns, or <br/>\nBet against. x.xxxx </p>\n<p>if you think there is a less than 50% chance that the game will end in T or fewer turns, or <br/>\nPush. 0.5000 </p>\n<p>otherwise, where x.xxxx is the probability of the game ending in T or fewer turns rounded to 4 decimal places. (Note that due to rounding the calculated probability for display, a probability of 0.5000 may appear after the Bet for. or Bet against. message.)</p>",
+  "samples": [
+    {
+      "input": "5\n4 4\n0 0 0 0\n3 3\n0 -1 L\n3 4\n0 -1 L\n3 5\n0 -1 L\n10 20\n+1 0 0 -1 L L 0 +3 -7 0\n",
+      "output": "Bet for. 0.9375\nBet against. 0.0000\nPush. 0.5000\nBet for. 0.7500\nBet for. 0.8954\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Waterloo's local Programming Contests, 3 March, 2013, ICPC, Regionals, North America, East Central North America Regional, 2000 East Central Regional Contest",
+  "level": 13,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.2856999635696411
+}

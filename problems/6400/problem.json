@@ -1,0 +1,25 @@
+{
+  "id": 6400,
+  "title": "Calculator Language",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Calculator Language (CL) supports assignment, positive and negative integers and simple arithmetic. The allowable characters in a CL statement are thus:</p>\n<table class=\"table table-bordered\" style=\"width:50%\">\n<tbody>\n<tr>\n<th><code>A..Z</code></th>\n<td>variable names</td>\n</tr>\n<tr>\n<th><code>0..9</code></th>\n<td>digits</td>\n</tr>\n<tr>\n<th><code>+</code></th>\n<td>addition operator</td>\n</tr>\n<tr>\n<th><code>-</code></th>\n<td>subtraction operator</td>\n</tr>\n<tr>\n<th><code>*</code></th>\n<td>multiplication operator</td>\n</tr>\n<tr>\n<th><code>/</code></th>\n<td>integer division operator</td>\n</tr>\n<tr>\n<th><code>=</code></th>\n<td>assignment operator</td>\n</tr>\n<tr>\n<th><code>()</code></th>\n<td>bracket</td>\n</tr>\n<tr>\n<th><code>_</code></th>\n<td>negative sign</td>\n</tr>\n</tbody>\n</table>\n<p>All operators have the same precedence and are right associative, thus 15 - 8 - 3 = 15 - (8 - 3) = 10. As one would expect, brackets will force the expression within them to be evaluated first. Brackets may be nested arbitrarily deeply. An expression never has two operators next to each other (even if separated by a bracket), an assignment operator is always immediately preceded by a variable and the leftmost operator on a line is always an assignment. For readability, spaces may be freely inserted into an expression, except between a negative sign and a number. A negative sign will appear right before an integer only. All variables are initialized to zero (0) and retain their values until changed explicitly. In addition, The second operand must be evaluated first; for example, an expression (A = 10) / (A = 5) evaluates (A = 5) first, then evaluates (A = 10), and finally evaluates 10 / 5. All integer divisions follow the C/C++ integer division rule and there is no division by zero.</p>\n<p>Write a program that will accept and evaluate expressions written in this language. Each expression occupies one line and contains at least one assignment operator, and maybe more.</p>",
+  "input": "<p>Input will consist of a series of lines, each line containing a correct CL expression. No line will be longer than 100 characters. The file will be terminated by a line consisting of a single #.</p>",
+  "output": "<p>Output will consist of a series of lines, one for each line of the input. Each line will consist of a list of the final values of all variables whose value changes as a result of the evaluation of that expression. If more than one variable changes value, they should be listed in alphabetical order, separated by commas. If a variable changes value more than once in an expression, only the final value is output. A variable is said to change value if its value after the expression has been evaluated is different from its value before the expression was evaluated. If no variables change value, then print the message `No Change'. Follow the format shown below exactly.</p>",
+  "samples": [
+    {
+      "input": "A = B = 4\nC = (D = 2)*_2\nC = D = 2 * _2\nF = C - D\nE = D * _10\nZ = 10 / 3\n#\n",
+      "output": "A = 4, B = 4\nC = -4, D = 2\nD = -4\nNo Change\nE = 40\nZ = 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, 1992 ACM South Pacific Programming Contest, jung2381187",
+  "level": 19,
+  "tags": [
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 3.4286000728607178
+}

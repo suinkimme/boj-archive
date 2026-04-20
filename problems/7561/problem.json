@@ -1,0 +1,25 @@
+{
+  "id": 7561,
+  "title": "크래머의 공식",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>세 변수 \\(x_1\\), \\(x_2\\), \\(x_3\\)로 이루어진 일차 방정식 세 개가 있다. \\(a_{ij}\\)와 \\(b_i\\)가 주어졌을 때, 다음과 같이 표현할 수 있다.</p>\r\n\r\n<p>\\(\\begin{vmatrix} a_{ 11 }x_{ 1 }+a_{ 12 }x_{ 2 }+a_{ 13 }x_{ 3 }=b_{ 1 } \\\\ a_{ 21 }x_{ 1 }+a_{ 22 }x_{ 2 }+a_{ 23 }x_{ 3 }=b_{ 2 } \\\\ a_{ 31 }x_{ 1 }+a_{ 32 }x_{ 2 }+a_{ 33 }x_{ 3 }=b_{ 3 } \\end{vmatrix}\\)</p>\r\n\r\n<p>행렬과 벡터를 이용하면 다음과 같이 나타낼 수 있다.</p>\r\n\r\n<p>\\(A\\cdot x=b\\), where \\(A=\\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\\\ a_{21} &amp; a_{22} &amp; a_{23} \\\\ a_{31} &amp; a_{32} &amp; a_{33} \\end{pmatrix}\\), \\(b=\\begin{pmatrix} b_1 \\\\ b_2 \\\\ b_3 \\end{pmatrix}\\), x=\\(\\begin{pmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{pmatrix}\\)</p>\r\n\r\n<p>크래머의 공식을 이용하면 방정식의 해는 행렬식(determinant)를 이용해 다음과 같이 구할 수 있다.</p>\r\n\r\n<p>\\(x_i = \\frac {det~A_i}{det~A}\\)</p>\r\n\r\n<p>\\(A_i\\) 는 행렬 \\(A\\)의 \\(i\\)번째 열을 벡터 \\(b\\)로 대체한 것이다. 예를 들어, \\(3 \\times 3\\) 행렬의 행렬식은 아래와 같이 구할 수 있다.</p>\r\n\r\n<p>\\(det\\begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13} \\\\ a_{21} &amp; a_{22} &amp; a_{23} \\\\ a_{31} &amp; a_{32} &amp; a_{33} \\end{pmatrix} = a_{11}(a_{22}a_{33} - a_{23}a_{32})&nbsp;- a_{12}(a_{21}a_{33} - a_{23}a_{31}) + a_{13}(a_{21}a_{32}-a_{22}a_{31})\\)</p>\r\n\r\n<p>크래머의 공식은 \\(det~A \\ne 0\\)인 경우에만 해를 구할 수 있다. \\(det~A \\ne 0\\)인 경우에 방정식의 해는 유일하고, 그렇지 않은 경우에는 해가 없거나 무수히 많은 해를 가진다.</p>\r\n\r\n<p>방정식이 많은 경우에는 행렬식을 구하는데 시간이 너무 많이 걸린다. 따라서, 이런 경우에는 다른 방법을 사용하는 것이 더 효율적이다.</p>\r\n\r\n<p>세 변수로 이루어진 일차 방정식 세 개가 주어진다. 크래머의 공식을 이용해서 해를 구하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>입력은 여러 개의 테스트 케이스로 이루어져 있다.</p>\r\n\r\n<p>각 테스트 케이스는 세 줄로 이루어져 있고, 아래와 같은 순서로 주어진다.</p>\r\n\r\n<p>\\(\\begin{matrix} a_{11} &amp; a_{12} &amp; a_{13} &amp; b_1 \\\\ a_{21} &amp; a_{22} &nbsp;&amp; a_{23} &amp; b_{2} &nbsp;\\\\ a_{31} &nbsp;&amp; a_{32} &amp; a_{33} &amp; b_{3} &nbsp;\\end{matrix}\\)</p>\r\n\r\n<p>모든 숫자는 -1000보다 크거나 같고, 1000보다 작거나 같은 정수이며, 공백 한 칸으로 구분되어져 있다.&nbsp;</p>\r\n",
+  "output": "<p>각 테스트 케이스마다 두 줄을 출력한다.</p>\r\n\r\n<p>첫째 줄에는 행렬 \\(A_1\\), \\(A_2\\), \\(A_3\\), \\(A\\)의 행렬식을 출력한다.&nbsp;</p>\r\n\r\n<p>방정식의 해가 존재하지 않는 경우에는 둘째 줄에 &quot;No unique solution&quot;을 출력하고, 해가 존재하는 경우에는 &quot;Unique solution: &quot;와 \\(x_1\\), \\(x_2\\), \\(x_3\\) 값을 소수점 셋째자리까지 출력한다.</p>\r\n\r\n<p>방정식의 해 \\(x_i\\)가 -0.0005 &lt; \\(x_i\\) &lt; 0.0005 인 경우에는 &quot;-0.000&quot; 대신에 &quot;0.000&quot;을 출력한다.</p>\r\n\r\n<p>각 테스트 케이스 사이에는 빈 줄을 하나 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3\n4 0 0 1\n0 2 0 2\n0 0 1 4\n1 2 3 1\n1 1 1 2\n2 2 2 3\n1 0 0 1\n0 1 0 0\n0 0 -1 0\n",
+      "output": "2 8 32 8\nUnique solution: 0.250 1.000 4.000\n\n1 -2 1 0\nNo unique solution\n\n-1 0 0 -1\nUnique solution: 1.000 0.000 0.000\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, Tu-Darmstadt Programming Contest, TUD Contest 2001, baekjoon",
+  "level": 12,
+  "tags": [
+    "math",
+    "linear_algebra"
+  ],
+  "accepted_user_count": 221,
+  "submission_count": null,
+  "average_tries": 4.271500110626221
+}

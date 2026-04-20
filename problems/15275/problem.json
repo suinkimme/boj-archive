@@ -1,0 +1,29 @@
+{
+  "id": 15275,
+  "title": "Polyline Simplification",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Mapping applications often represent the boundaries of countries, cities, etc. as polylines, which are connected sequences of line segments. Since fine details have to be shown when the user zooms into the map, these polylines often contain a very large number of segments. When the user zooms out, however, these fine details are not important and it is wasteful to process and draw the polylines with so many segments. In this problem, we consider a particular polyline simplification algorithm designed to approximate the original polyline with a polyline with fewer segments.</p>\n<p>A polyline with n segments is described by n + 1 points p<sub>0</sub> = (x<sub>0</sub>, y<sub>0</sub>), . . . , p<sub>n</sub> = (x<sub>n</sub>, y<sub>n</sub>), with the ith line segment being p<sub>i−1</sub>−p<sub>i</sub>. The polyline can be simplified by removing an interior point p<sub>i</sub> (1 ≤ i ≤ n − 1), so that the line segments p<sub>i−1</sub>−p<sub>i</sub> and p<sub>i</sub>−p<sub>i+1</sub> are replaced by the line segment p<sub>i−1</sub>−p<sub>i+1</sub>. To select the point to be removed, we examine the area of the triangle formed by p<sub>i−1</sub>, p<sub>i</sub>, and p<sub>i+1</sub> (the area is 0 if the three points are colinear), and choose the point p<sub>i</sub> such that the area of the triangle is smallest. Ties are broken by choosing the point with the lowest index. This can be applied again to the resulting polyline, until the desired number m of line segments is reached.</p>\n<p>Consider the example below.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:283px; width:412px\"/></p>\n<p>The original polyline is shown at the top. The area of the triangle formed by p<sub>2</sub>, p<sub>3</sub>, and p<sub>4</sub> is considered (middle), and p<sub>3</sub> is removed if the area is the smallest among all such triangles. The resulting polyline after p<sub>3</sub> is removed is shown at the bottom.</p>",
+  "input": "<p>The first line of input contains two integers n (2 ≤ n ≤ 200 000) and m (1 ≤ m &lt; n). The next n + 1 lines specify p<sub>0</sub>, . . . , p<sub>n</sub>. Each point is given by its x and y coordinates which are integers between −5000 and 5000 inclusive. You may assume that the given points are strictly increasing in lexicographical order. That is, x<sub>i</sub> &lt; x<sub>i+1</sub>, or x<sub>i</sub> = x<sub>i+1</sub> and y<sub>i</sub> &lt; y<sub>i+1</sub> for all 0 ≤ i &lt; n.</p>",
+  "output": "<p>Print on the kth line the index of the point removed in the kth step of the algorithm described above (use the index in the original polyline).</p>",
+  "samples": [
+    {
+      "input": "10 7\n0 0\n1 10\n2 20\n25 17\n32 19\n33 5\n40 10\n50 13\n65 27\n75 22\n85 17\n",
+      "output": "1\n9\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Rocky Mountain Regional, 2017 Rocky Mountain Regional Contest",
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "geometry",
+    "implementation",
+    "simulation",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 3.157900094985962
+}

@@ -1,0 +1,33 @@
+{
+  "id": 18616,
+  "title": "Defying Gravity",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Planet Oz is located in the origin of two-dimensional euclidean space. Elphaba wants to show everyone that her powers lie far beyond the laws of physics. To do this, she wants to take off from Oz and fly away along some <strong>straight line</strong> to infinity and beyond.</p>\n<p>The task is complicated by the fact that Oz has n satellites revolving around it. For each satellite, its polar coordinates (ρ<sub>i</sub>; φ<sub>i</sub>) and mass mi are known. Here, the planet and satellites are considered points, ρ<sub>i</sub> is the radial distance from Oz to the i-th satellite, and φ<sub>i</sub> is the polar angle between the satellite and some fixed reference direction measured in arc seconds.</p>\n<p>Assume that Elphaba is located in the point denoted by vector \\(\\vec{r}\\) and has mass m, while i-th satellite is located in the point denoted by vector \\(\\vec{r}_i\\). The satellite attracts Elphaba with the force directed from Elphaba to the satellite. This force is proportional to Elphaba’s mass m and satellite’s mass m<sub>i</sub>, and inversely proportional to the squared distance between them, |\\(\\vec{r}\\) − \\(\\vec{r}_i\\)|<sup>2</sup>. Thus, exact value of force \\(\\vec{F}_i\\) applied to Elphaba by i-th satellite is as follows:</p>\n<p style=\"text-align: center;\">\\[\\vec{F}_i = - \\frac{Gmm_i(\\vec{r} - \\vec{r}_i)}{|\\vec{r} - \\vec{r}_i|^3}\\]</p>\n<p>Here, G is the universal gravitational constant, the value of which does not concern us in this problem.</p>\n<p>Forces applied from different satellites sum up directly. Therefore, the overall force \\(\\vec{F}\\) applied to Elphaba by all satellites is equal to \\(\\vec{F} = \\vec{F}_1 + \\cdots + \\vec{F}_n\\).</p>\n<p>Elphaba wants to choose the direction of her flight in such a way that it doesn’t pass through any of the satellites, and its direction is not affected by satellites at any moment of time. In other words, the force \\(\\vec{F}\\) must be collinear to  \\(\\vec{r}\\) for all points \\(\\vec{r}\\) on Elphaba’s trajectory.</p>\n<p>Your task is to find all possible directions for Elphaba’s flight.</p>",
+  "input": "<p>The first line of input contains a single integer n (2 ≤ n ≤ 2 · 10<sup>5</sup>), the number of satellites.</p>\n<p>Each of the following n lines contains three integers ρ<sub>i</sub>, φ<sub>i</sub>, and m<sub>i</sub> (1 ≤ ρi ≤ 10<sup>18</sup>, 0 ≤ φ<sub>i</sub> &lt; 129 600, 1 ≤ m<sub>i</sub> ≤ 10<sup>9</sup>) representing polar coordinates and mass of the i-th satellite.</p>\n<p>It is guaranteed that no two satellites have the same polar angle φ.</p>",
+  "output": "<p>Output a sorted list of real numbers α (0 ≤ α &lt; 129 600) denoting polar angles in arc seconds of all possible flight directions. Your answer would be considered correct if absolute or relative error of every number in the list is at most 10<sup>−6</sup>. It is guaranteed that the answer always contains at most 2 · 10<sup>5</sup> directions.</p>",
+  "samples": [
+    {
+      "input": "2\n1 0 1\n1 64800 1\n",
+      "output": "2\n32400.0000000\n97200.0000000\n"
+    },
+    {
+      "input": "3\n1 0 1\n1 1 1\n1 2 1\n",
+      "output": "1\n64801.0000000\n"
+    }
+  ],
+  "hint": "<p>One arc second (denoted as 1′′) is equal to one sixtieth of one arc minute (denoted as 1′), which in turn is equal to one sixtieth of one arc degree (denoted as 1<sup>◦</sup>). Therefore, 60′′ = 1′, 60′ = 1<sup>◦</sup>, and 129 600′′ = 360<sup>◦</sup>, which means that 129 600 arc seconds constitute the full arc.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 568px; height: 567px;\"/></p>\n<p>In the first example, the first satellite is located at point A(1; 0), and the second one is located at point B(−1; 0). The only possible flight directions on the picture are denoted by \\(\\vec{r}_1\\) and \\(\\vec{r}_2\\) having polar angles 90<sup>◦</sup> = 32 400′′ and 270<sup>◦</sup> = 97 200′′ correspondingly.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 4: Oleksandr Kulkov Contest 2",
+  "level": 21,
+  "tags": [
+    "geometry",
+    "hashing",
+    "manacher",
+    "physics",
+    "sorting",
+    "string"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 4
+}

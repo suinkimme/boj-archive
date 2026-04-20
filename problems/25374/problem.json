@@ -1,0 +1,31 @@
+{
+  "id": 25374,
+  "title": "등급 계산하기",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>중학교에서는 절대 평가로 내신이 산출되었다면, 동래고등학교에 재학 중인 여러분은 1등급부터 9등급까지의 등급을 받는 상대 평가로 내신과 수능 등급이 산출된다.</p>\n<p>찬솔이는 고등학교를 졸업할 때까지 수능과 담을 쌓고 살았기 때문에 수능 등급을 산출하는 자세한 기준은 고등학교를 졸업한 지금도 모르고 있다. 찬솔이를 위해 한 과목에 응시한 사람의 수와 각 사람이 받은 점수가 주어지면, 1등급부터 9등급까지의 각 등급을 받는 인원수를 구해주자.</p>\n<p>수능 등급을 산출하는 비율은 아래와 같다.</p>\n<table class=\"table table-bordered\">\n<thead>\n<tr>\n<th>등급</th>\n<th>누적 비율</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1등급</td>\n<td>상위 누적 4%</td>\n</tr>\n<tr>\n<td>2등급</td>\n<td>상위 누적 11%</td>\n</tr>\n<tr>\n<td>3등급</td>\n<td>상위 누적 23%</td>\n</tr>\n<tr>\n<td>4등급</td>\n<td>상위 누적 40%</td>\n</tr>\n<tr>\n<td>5등급</td>\n<td>상위 누적 60%</td>\n</tr>\n<tr>\n<td>6등급</td>\n<td>상위 누적 77%</td>\n</tr>\n<tr>\n<td>7등급</td>\n<td>상위 누적 89%</td>\n</tr>\n<tr>\n<td>8등급</td>\n<td>상위 누적 96%</td>\n</tr>\n<tr>\n<td>9등급</td>\n<td>상위 누적 100%</td>\n</tr>\n</tbody>\n</table>\n<p>구체적으로, $i$점부터 100점 사이에 있는 사람의 비율이 4% 이상인 가장 큰 $i$를 1등급의 등급구분점수라고 한다. $i$점 이상의 점수를 받은 모든 학생은 1등급을 받는다. 비슷하게 $j$점부터 100점 사이에 있는 사람의 비율이 11% 이상인 가장 큰 $j$점을 2등급의 등급구분점수라고 한다. 1등급의 등급구분점수 미만이면서 2등급의 등급구분점수 이상의 점수를 받은 모든 학생은 2등급을 받는다. 만약, 1등급의 등급구분점수 이상을 받은 학생의 비율이 11% 이상이라면, 이 학생들은 모두 1등급을 받고, 2등급의 등급구분점수가 1등급의 등급구분점수와 동일하므로 2등급을 받는 학생은 없다.</p>\n<p>등급을 산출하는 조건을 정리한 표와 등급블랭크와 관련한 자세한 내용은 문제의 하단을 참고하자.</p>",
+  "input": "<p>첫째 줄에 한 과목에 응시한 사람의 수 $N$이 주어진다.</p>\n<p>둘째 줄에 각 사람이 받은 점수 $A_1, A_2, \\cdots, A_N$이 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>1등급, 2등급, $\\cdots$, 9등급을 받는 학생의 수를 줄마다 출력한다.</p>\n<p>만약, 해당 등급을 받는 학생이 없다면 $0$을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "100\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100\n",
+      "output": "4\n7\n12\n17\n20\n17\n12\n7\n4\n"
+    },
+    {
+      "input": "100\n100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100\n",
+      "output": "100\n0\n0\n0\n0\n0\n0\n0\n0\n"
+    }
+  ],
+  "hint": "<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 100%;\">\n<tbody>\n<tr>\n<th style=\"text-align: center;\">등급</th>\n<th style=\"text-align: center;\">조건</th>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1등급</td>\n<td style=\"text-align: center;\">($x_1$점 초과인 사람의 비율)% $\\lt$ 4%</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2등급</td>\n<td style=\"text-align: center;\">4% $\\leq$ ($x_2$점 초과인 사람의 비율)% $\\lt$ 11%</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3등급</td>\n<td style=\"text-align: center;\">11% $\\leq$ ($x_3$점 초과인 사람의 비율)% $\\lt$ 23%</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">4등급</td>\n<td style=\"text-align: center;\">23% $\\leq$ ($x_4$점 초과인 사람의 비율)% $\\lt$ 40%</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">5등급</td>\n<td style=\"text-align: center;\">40% $\\leq$ ($x_5$점 초과인 사람의 비율)% $\\lt$ 60%</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">6등급</td>\n<td style=\"text-align: center;\">60% $\\leq$ ($x_6$점 초과인 사람의 비율)% $\\lt$ 77%</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">7등급</td>\n<td style=\"text-align: center;\">77% $\\leq$ ($x_7$점 초과인 사람의 비율)% $\\lt$ 89%</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">8등급</td>\n<td style=\"text-align: center;\">89% $\\leq$ ($x_8$점 초과인 사람의 비율)% $\\lt$ 96%</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">9등급</td>\n<td style=\"text-align: center;\">96% $\\leq$ ($x_9$점 초과인 사람의 비율)%</td>\n</tr>\n</tbody>\n</table>\n<ul>\n<li>$i$등급의 조건에 해당하는 점수 $x_i$점을 받은 사람은 $i$등급을 받는다.</li>\n</ul>\n<p>예를 들어서, $N=100$이고, 100점을 받은 사람이 11명이고, 99점을 받은 사람이 1명인 경우를 가정해보자. (나머지 사람들은 99점 미만이라고 가정한다) 100점 초과인 사람은 0%이므로 100점을 받은 11명은 모두 1등급을 받는다. 99점 초과인 비율은 11%이기 때문에, 99점을 받은 1명은 2등급이 아닌 3등급을 받는다.</p>\n<p>위 예에서 2등급을 받은 사람이 없는 것과 같이, 등급블랭크는 특정 등급을 받은 사람이 존재하지 않는다는 것을 의미한다.</p>",
+  "source": "School, 동래고등학교, 2022 동래고등학교 정보과학 문제해결 대회, chansol, chogahui05, jhnah917, mjhmjh1104, tlsdydaud1, tony9402",
+  "level": 6,
+  "tags": [
+    "math",
+    "implementation",
+    "sorting",
+    "arithmetic"
+  ],
+  "accepted_user_count": 171,
+  "submission_count": null,
+  "average_tries": 1.9708000421524048
+}

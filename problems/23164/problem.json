@@ -1,0 +1,31 @@
+{
+  "id": 23164,
+  "title": "The Last Samurai",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p><em>This is an output-only problem.</em></p>\n<p>The chess developers released a new custom mode called \"The Last Samurai\". On the initial configuration of the board there is one black king and multiple white pieces. The only moving piece is the black king, and the goal is to capture all white pieces without ever putting itself under attack.</p>\n<p>Consider a strategy that repeats the following steps:</p>\n<ol>\n<li>If there are no white pieces left, black have won.</li>\n<li>If there is no way to capture any of the remaining white pieces, black have lost.</li>\n<li>Otherwise, consider the shortest sequence of moves that the black king can take to capture a white piece while not placing itself under attack at any point (including immediately after capturing). If there are several different pieces that can be captured in the smallest number of moves, pick one in the topmost possible row; if there is still a tie, pick the leftmost possible piece.</li>\n<li>Perform the chosen sequence of moves to capture a piece; repeat from step 1.</li>\n</ol>\n<p>You need to design a level with the following properties:</p>\n<ul>\n<li>The board size is at most $200 \\times 200$ (that is, no side exceeds $200$).</li>\n<li>Each white piece is either a rook, or a bishop, or a knight.</li>\n<li>There is exactly one black king on the board, which is initially not under attack from any white piece.</li>\n<li>The greedy strategy above successfully completes the level, but makes more than $10^6$ moves with the black king.</li>\n</ul>\n<p>Please provide any level satisfying these requirements.</p>",
+  "input": "<p>The problem has no input.</p>",
+  "output": "<p>In the first line print two space-separated integers $n$ and $m$ ($1\\leq n, m\\leq 200$) standing for the size of the board. In the next $n$ lines print the level description. More specifically, the $i$-th of them must be a string consisting of characters from \"<code>.rbnkRBNK</code>\", where the $j$-th of them is</p>\n<ul>\n<li>\"<code>.</code>\" if the corresponding cell is free,</li>\n<li>\"<code>r</code>\" or \"<code>R</code>\" if the corresponding cell is occupied by a white rook,</li>\n<li>\"<code>b</code>\" or \"<code>B</code>\" if the corresponding cell is occupied by a white bishop,</li>\n<li>\"<code>n</code>\" or \"<code>N</code>\" if the corresponding cell is occupied by a white knight,</li>\n<li>\"<code>k</code>\" or \"<code>K</code>\" if the corresponding cell is occupied by the black king.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "",
+      "output": "8 8\nr.......\n........\n........\n........\n.K......\n.....b..\n........\n....n...\n"
+    }
+  ],
+  "hint": "<p>The sample output is only given to clarify the output format. The greedy strategy captures all pieces in 10 moves, with the king's route shown below:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 300px; height: 300px;\"/></p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2021, Day 7: Moscow IPT Contest, Contest, Open Cup, 2021/2022 Season, Stage 1: Grand Prix of Dolgoprudny",
+  "level": 27,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "ad_hoc",
+    "constructive",
+    "simulation",
+    "bfs",
+    "grid_graph"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

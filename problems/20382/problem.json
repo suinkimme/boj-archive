@@ -1,0 +1,27 @@
+{
+  "id": 20382,
+  "title": "VCR++ Codes",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>VCR plus codes were designed to make programming VCRs an easier task. A VCR plus code is a single number, usually about 5 or 6 digits, which encapsulates channel, date, start time, and program length information. A similar code is the VCR++ code, which fits entirely within a 32-bit integer. The VCR++ code is structed as shown in the table below (0 is the low-order bit).</p>\n<table class=\"table table-bordered table-center-30\">\n<thead>\n<tr>\n<th>Offset</th>\n<th>Bits</th>\n<th>Field</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>0</td>\n<td>4</td>\n<td>Program length</td>\n</tr>\n<tr>\n<td>4</td>\n<td>6</td>\n<td>Start time</td>\n</tr>\n<tr>\n<td>10</td>\n<td>5</td>\n<td>Day of month</td>\n</tr>\n<tr>\n<td>15</td>\n<td>4</td>\n<td>Month</td>\n</tr>\n<tr>\n<td>19</td>\n<td>6</td>\n<td>Channel</td>\n</tr>\n<tr>\n<td>25</td>\n<td>7</td>\n<td>Year</td>\n</tr>\n</tbody>\n</table>\n<p>The program length and start time fields are in increments of 30 minutes. In the start time field, 0 represents midnight, 1 represents 12:30 AM, 2 represents 1:00 AM, and so on, up to 47 which represents 11:30 PM. The year field is added to 1994 to determine the actual year. For example, if the year field contains 3, then the year represented is 1994 + 3 = 1997. The day of month field ranges from 1 to 31, the month field from 1 to 12 (representing January through December, respectively), and the channel field from 1 to 63.</p>\n<p>For example, a one-hour program on channel 28 starting at 10:00 AM on July 30, 1994, would have the VCR++ code of 14940482. This is the decimal representation of the binary number 111000111111100101000010, generated from the above information as shown below.</p>\n<pre>\n0000000  011100  0111  11110  010100  0010\n Year    Channel Month  Day   Start   Length\n</pre>",
+  "input": "<p>Each line of the input for this problem specifies programming information for which a VCR++ code is to be output. The end of the input is marked by the end of the file.</p>\n<p>Each input line is formatted as follows. The keyword \"Channel\" always begins in column 1, followed by a space, the channel number, a comma, and another space. Next, the name of the month is spelled out (with only the first letter capitalized), followed by a space, the day of the month, another space, the year, a comma, and another space. The start time is specified next, with the hour and minutes separated by a colon. Next come either the characters \"am\" or \"pm\", a space, the length of the program in minutes, and then the characters \"min\". Note that the staring time will always fall on a half-hour boundary, and the program length will always be a multiple of 30 minutes.</p>",
+  "output": "",
+  "samples": [
+    {
+      "input": "Channel 28, July 30 1994, 10:00am 60min\nChannel 3, January 1 1995, 4:00am 120min\nChannel 7, May 5 1996, 1:00pm 120min\n",
+      "output": "14940482\n35161220\n70948260\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Central Regional, 1994 Mid-Central Regional Programming Contest",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "string",
+    "bitmask",
+    "parsing"
+  ],
+  "accepted_user_count": 36,
+  "submission_count": null,
+  "average_tries": 2.8889000415802
+}

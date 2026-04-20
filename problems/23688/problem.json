@@ -1,0 +1,33 @@
+{
+  "id": 23688,
+  "title": "Kutije",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"width: 124px; height: 119px; float: right;\"/>Martin has n boxes labeled with positive integers from 1 to n. Each box contains a toy. The toys are also labeled with positive integers from 1 to n and in such a way that initially the toy with label i is contained in the box with label i.</p>\n<p>From time to time, Martin calls one of his m friends to come over and hang out. Once they meet up, his friend takes the toys out of the boxes and starts having fun with them. In the meantime, Martin is more interested in the boxes. Once they become bored, his friend puts the toys back into the boxes. However, he doesn’t necessarily put every toy in the box it was taken from.</p>\n<p>Martin has noticed that each of his m friends scrambles the toys in the same way each time. More precisely, each of his friends has his own array of n positive integers p<sub>1</sub>, ..., p<sub>n</sub> which determines the way he will put the toys back into the boxes. Every positive integer from 1 to n appears exactly once in this array. His friend scrambles the toys in such a way that at the end of their meeting the box with label i contains the toy that was in the box with label p<sub>i</sub> at the start of their meeting. Notice that, because every positive integer from 1 to n appears exactly once in the array, after all the toys are back in the boxes, each box will again have exactly one toy in it.</p>\n<p>Martin is now interested in answering questions of the following form: he is wondering whether it is possible that the toy with label a (which is initially in box with label a) can end up in the box with label b via a sequence of meetups with his friends. A sequence of meetups means that Martin can call whichever friends he wants and in any order. He can call a friend multiple times, or not at all. Martin is interested in answering q such questions.</p>",
+  "input": "<p>The first line contains positive integers n, m and q - the number of boxes (also toys), the number of Martin’s friends and the number of questions, respectively.</p>\n<p>The k-th of the following m lines contains an array of positive integers p<sub>1</sub>, ..., p<sub>n</sub> that is used by Martin’s k-th friend for putting the toys back into the boxes. Each positive integer from 1 to n appears exactly once in the array.</p>\n<p>Each of the following q lines contains two positive integers a and b (1 ≤ a, b ≤ n) which represent a question.</p>",
+  "output": "<p>In q lines print the answer to the given qustions, in order: <code>DA</code> if it is possible to get the toy in question to the desired box, and <code>NE</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "4 1 3\n1 2 4 3\n1 1\n1 2\n3 4\n",
+      "output": "DA\nNE\nDA\n"
+    },
+    {
+      "input": "4 2 4\n2 1 3 4\n1 2 4 3\n2 1\n3 4\n1 4\n2 3\n",
+      "output": "DA\nDA\nNE\nNE\n"
+    },
+    {
+      "input": "6 2 2\n2 1 4 5 3 6\n3 2 4 1 5 6\n1 5\n6 3\n",
+      "output": "DA\nNE\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example:</p>\n<p>For the first question, the toy with label 1 is already initially in the box with label 1 so the answer is immediately <code>DA</code>.</p>\n<p>For the second question, notice that however many times Martin calls his friend over, the boxes with labels 1 and 2 never change their content, so the answer is <code>NE</code>.</p>\n<p>For the third question, notice that after each meetup, the contents of boxes 3 and 4 get exchanged, so after only one meetup the toy with label 3 will find itself in box with label 4 and the answer is <code>DA</code>.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2021/2022, Contest #2",
+  "level": 12,
+  "tags": [
+    "data_structures",
+    "disjoint_set"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.8260999917984009
+}

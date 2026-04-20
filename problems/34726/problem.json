@@ -1,0 +1,37 @@
+{
+  "id": 34726,
+  "title": "DRS",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>2010년, F덕트라는 기술이 등장하여 레이스카의 다운포스를 줄임으로써 최고 속도를 향상시킬 수 있게 되었다.</p>\n<p>그러나 국제자동차연맹(FIA)은 안전상의 이유로 이 기술을 금지하였고, 2011년부터는 이를 대체하는 기술인 <strong>DRS(Drag Reduction System)</strong> 를 도입하였다.</p>\n<p><strong>DRS</strong>는 레이스카의 리어윙을 조작해 다운포스를 줄이는 장치이다.</p>\n<p>이 문제에서는 규칙을 단순화하여, 아래 조건일 때 DRS 사용이 가능하다.</p>\n<ol>\n<li>각 드라이버는 바로 앞 차량과의 거리 차이가<strong> 0 <span style=\"color:#e74c3c;\">초과</span> 1000 <span style=\"color:#e74c3c;\">이하</span></strong>일 경우 트랙 어디에서나 <strong>DRS</strong>를 사용할 수 있다.</li>\n<li>랩 차이가 있어도 바로 앞차와의 실제 거리 차이가 이 범위면 <strong>DRS</strong>를 사용할 수 있다.</li>\n</ol>\n<p>트랙은 길이 $T$의 원형이며, 모든 드라이버는 동일한 방향으로 트랙을 따라 주행한다.</p>\n<p>예를 들어, $N$이 $4$이고, $T$가 $60000$인 원형 트랙에서 경기하고 있다고 생각하자. 레이스를 하는 드라이버의 이름은 $A$, $B$, $C$, $D$이고, 각각 $1$, $2$, $3$, $4$등이라고 생각하자.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"max-width: 60%; height: auto;\"/></p>\n<p>이 경우에, $B$는 $A$보다 $30000$ 만큼, $C$는 $B$보다 $29000$ 만큼, $D$는 $C$보다 $1500$만큼 뒤쳐져 있다고 하자.</p>\n<p>$A$를 기준으로 $B$는 $30000$만큼, $C$는 $59000$만큼, $D$는 $60500$만큼 뒤쳐져 있다.</p>\n<p>이때 물리적으로 $D$는 바로 앞 차량인 $A$에게서 $500$만큼 뒤에 있을 것이다.</p>\n<p><strong>DRS</strong>의 사용 조건에서, $0$ 초과 $1000$ 이하의 간격인 상황이라면 <strong>DRS</strong>를 사용할 수 있기 때문에, $A$는 $C$보다 $1000$ 만큼 뒤에 있으므로 <strong>DRS</strong>를 사용할 수 있고, $D$는 $A$보다 $500$ 만큼 뒤에 있기 때문에 <strong>DRS</strong>를 사용할 수 있다. 그렇기 때문에 <strong>DRS</strong>를 사용할 수 있는 드라이버는 $A$와 $D$이다.</p>\n<p>예시를 참고하여 각 드라이버가 <strong>DRS</strong>를 사용할 수 있는지 여부를 판단해보자.</p>",
+  "input": "<p>첫째 줄에 드라이버 수 $N$과 트랙 한 바퀴의 길이 $T$가 주어진다. $(2 \\leq N \\leq 200\\,000 ; 1\\,000 \\leq T \\leq 3\\,000\\,000)$</p>\n<p>둘째 줄부터 $N$개의 줄에 걸쳐, 순위가 높은 드라이버부터 차례대로 드라이버 이름 $D_i$와 바로 앞 등수와의 거리 차이 $t_i$가 주어진다. 거리는 앞 등수와의 상대적인 거리다. 가장 선두에 있는 드라이버는 앞에 차량이 없으므로, $t_1 = 0$ 임이 보장된다. 또한, 두 대 이상의 차가 같은 위치에 존재하지 않음이 보장된다.</p>",
+  "output": "<p>DRS를 사용할 수 있는 드라이버들의 이름을 사전순으로 출력한다.</p>\n<p>DRS를 사용할 수 있는 드라이버가 없다면 <span style=\"color:#c0392b;\"><code>-1</code></span>을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 60000\nA 0\nB 30000\nC 29000\nD 1500\n",
+      "output": "A D\n"
+    },
+    {
+      "input": "2 80000\nsdmf 0\nHirasawaYui 80682\n",
+      "output": "HirasawaYui\n"
+    },
+    {
+      "input": "8 200000\nHakureiReimu 0\nKirisameMarisa 5399\nYagokoroEirin 8888\nChirno 9999\nReisenUdongeinInaba 1234\nFlandreScarlet 4300\nKonpakuYoumu 2003\nKomeijiSatori 2008\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "19 80000\nNOR 0\nPIA 698\nRUS 21218\nLEC 20644\nALO 16480\nBOR 7129\nSTR 2005\nLAW 1277\nVER 3194\nANT 17208\nHAD 851\nHAM 1361\nHUL 21407\nSAI 2058\nALB 4785\nOCO 7147\nTSU 1685\nCOL 427\nGAS 8974\n",
+      "output": "ALO COL HAD PIA\n"
+    }
+  ],
+  "hint": "<p>2025년은 DRS를 사용하는 마지막 해이다. 2026년부터는 새로운 기능으로 대체될 예정이다.</p>",
+  "source": "University, 동국대학교, 2025 동국대학교 프로그래밍 경진대회 DGUPC, sadang_mofun, exzile_27, kckyoung2, kevinlys00, pgggggggggh, swoon, wlgh7407",
+  "level": 8,
+  "tags": [
+    "sorting",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 131,
+  "submission_count": null,
+  "average_tries": 2.0840001106262207
+}

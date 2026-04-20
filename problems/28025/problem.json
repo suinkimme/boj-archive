@@ -1,0 +1,25 @@
+{
+  "id": 28025,
+  "title": "Pareidolia",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Pareidolia is the phenomenon where your eyes tend to see familiar patterns in images where none really exist -- for example seeing a face in a cloud. As you might imagine, with Farmer John's constant proximity to cows, he often sees cow-related patterns in everyday objects. For example, if he looks at the string \"bqessiyexbesszieb\", Farmer John's eyes ignore some of the letters and all he sees is \"bessiebessie\".</p>\n<p>Given a string $s$, let $B(s)$ represent the maximum number of repeated copies of \"bessie\" one can form by deleting zero or more of the characters from $s$. In the example above, $B($\"bqessiyexbesszieb\"$) = 2$. Furthermore, given a string $t$, let $A(t)$ represent the sum of $B(s)$ over all contiguous substrings $s$ of $t$.</p>\n<p>Farmer John has a string $t$ of length at most $2\\cdot 10^5$ consisting only of characters a-z. Please compute $A(t)$, and how $A(t)$ would change after $U$ ($1\\le U\\le 2\\cdot 10^5$) updates, each changing a character of $t$. Updates are cumulative.</p>",
+  "input": "<p>The first line of input contains $t$.</p>\n<p>The next line contains $U$, followed by $U$ lines each containing a position $p$ ($1\\le p\\le N$) and a character $c$ in the range a-z, meaning that the $p$th character of $t$ is changed to $c$.</p>",
+  "output": "<p>Output $U+1$ lines, the total number of bessies that can be made across all substrings of $t$ before any updates and after each update.</p>",
+  "samples": [
+    {
+      "input": "bessiebessie\n3\n3 l\n7 s\n3 s\n",
+      "output": "14\n7\n1\n7\n"
+    }
+  ],
+  "hint": "<p>Before any updates, twelve substrings contain exactly 1 \"bessie\" and 1 string contains exactly 2 \"bessie\"s, so the total number of bessies is $12\\cdot 1 + 1 \\cdot 2 = 14$.</p>\n<p>After one update, $t$ is \"belsiebessie.\" Seven substrings contain exactly one \"bessie.\"</p>\n<p>After two updates, $t$ is \"belsiesessie.\" Only the entire string contains \"bessie.\"</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2022-2023 Season, USACO 2023 US Open Contest, Platinum",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

@@ -1,0 +1,30 @@
+{
+  "id": 9923,
+  "title": "Triple",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>An ordered triple of ordered pairs is written as $&lt;(a,b), (c,d), (e,f)&gt;$.</p>\n<p>Rule 1.  A triple vanishes if two of its three ordered pairs are identical. That is</p>\n<p>$$\\begin{align*}&lt; (a,b), (a,b), (a,b) &gt; = 0 \\\\ &lt; (a,b), (a,b), (e,f) &gt; = 0 \\\\ &lt; (a,b), (c,d), (a,b) &gt; = 0 \\\\ &lt; (a,b), (c,d), (c,d) &gt; = 0 \\end{align*}$$</p>\n<p>A triple that vanishes is called a <strong>zero triple</strong>.</p>\n<p>Rule 2.  Two triples differ in sign if one can be transformed to another with an odd number of adjacent swaps.  Two triples are equal if one can be transformed to another with an even number of adjacent swaps.  Let “$\\rightarrow$” mean the operation of adjacent swap.  Since</p>\n<p>$$&lt;(1,2), (3,4), (5,6)&gt;$$ $$\\downarrow$$ $$&lt;(3,4),(1,2),(5,6)&gt;$$ $$\\downarrow$$ $$&lt;(3,4),(5,6),(1,2)&gt;$$ $$\\downarrow$$ $$&lt;(5,6),(3,4),(1,2)&gt;$$ $$\\downarrow$$ $$&lt;(5,6),(1,2),(3,4)&gt;$$ $$\\downarrow$$ $$&lt;(1,2),(5,6),(3,4)&gt;$$</p>\n<p>we have</p>\n<p>$$\\begin{align*} &lt;(1,2),(3,4),(5,6) &amp; = -&lt;(3,4), (1,2), (5,6)&gt; \\\\ &amp; = &lt;(3,4), (5,6), (1,2)&gt; \\\\ &amp; = -&lt;(5,6), (3,4), (1,2)&gt; \\\\ &amp; = &lt;(5,6), (1, 2), (3,4)&gt;  \\\\ &amp; = -&lt;(1,2), (5,6), (3,4)&gt;\\end{align*}$$</p>\n<p>Consider summing all the triples $&lt; (a,b), (c,d), (e,f) &gt;$ where</p>\n<p>$$ a_1 ≤ a ≤ a_2 , b_1 ≤ b ≤ b_2; \\, c_1 ≤ c ≤ c_2 , d_1 ≤ d ≤ d_2 ; \\, e_1 ≤ e ≤ e_2 , f_1 ≤ f ≤ f_2 \\text{.}$$</p>\n<p>and all the values are integers.  After discarding zero triples (Rule 1) and cancelling pairs of triples that differ in sign (Rule 2), you are to determine the number of distinct non-zero triples in the sum.</p>\n<p>Example 1.  Let $1 ≤ a ≤ 1,$ $2 ≤ b ≤ 2$, $3 ≤ c ≤ 3$, $4 ≤ d ≤ 4$, $5 ≤ e ≤ 5$, $6 ≤ f ≤ 8$.  There are only $3$ triples in these ranges and none is zero and no two differ in sign, so there are $3$ distinct non-zero triples if we sum them:</p>\n<p>$$&lt; (1,2), (3,4), (5,6) &gt; + &lt; (1,2), (3,4), (5,7) &gt; + &lt; (1,2), (3,4), (5,8) &gt; \\text{.}$$</p>\n<p>Example 2.  Now consider $1 ≤ a ≤ 1$, $2 ≤ b ≤ 2$, $4 ≤ c ≤ 5$, $7 ≤ d ≤ 8$, $5 ≤ e ≤ 5$, $6 ≤ f ≤ 8$.  There are $12$ triples in these ranges.  The $2$ triples $&lt; (1,2),(5,7),(5,7) &gt;$ and $&lt; (1,2), (5,8), (5,8) &gt;$ are zero by Rule 1.  The $2$ triples $&lt; (1,2),(5,7),(5,8) &gt;$ and $&lt; (1,2), (5,8), (5,7) &gt;$ cancel each other (they sum to zero) by Rule 2.  Thus the sum of the original $12$ triples has $8$ distinct non-zero triples:</p>\n<p>$$&lt; (1,2), (4,7), (5,6) &gt; + &lt; (1,2), (4,7), (5,7) &gt; + &lt; (1,2), (4,7), (5,8) &gt; +$$ $$&lt; (1,2), (4,8), (5,6) &gt; + &lt; (1,2), (4,8), (5,7) &gt; + &lt; (1,2), (4,8), (5,8) &gt; + $$ $$&lt; (1,2), (5,7), (5,6) &gt; + &lt; (1,2), (5,8), (5,6) &gt; \\text{.}$$</p>\n<p>Example 3.  Let the ranges be $0 ≤ a ≤ 0$, $0 ≤ b ≤ 0$, $0 ≤ c ≤ 0$, $0 ≤ d ≤ 1$, $0 ≤ e ≤ 1$, $0 ≤ f ≤ 1$.  The six triples</p>\n<p>$$&lt; (0,0), (0,0), (0,0) &gt;, &lt; (0,0), (0,0), (0,1) &gt;, &lt; (0,0), (0,0), (1,0) &gt;,$$ $$&lt; (0,0), (0,0), (1,1) &gt;, &lt; (0,0), (0,1), (0,0) &gt;, &lt; (0,0), (0,1), (0,1) &gt;$$</p>\n<p>are zero by Rule 1.  Thus the sum of the original eight triples has $2$ distinct non-zero triples:</p>\n<p>$$&lt; (0,0), (0,1), (1,0) &gt; + &lt; (0,0), (0,1), (1,1) &gt;$$</p>\n<ol>\n<li>Read the input to obtain the ranges of $a$, $b$, $c$, $d$, $e$, $f$.  For each of $a$, $b$, $c$, $d$, $e$, $f$, the lowest value is $0$ and the highest value is $100$.</li>\n<li>Sum all the triples $&lt; (a,b), (c,d), (e,f) &gt;$ within the given ranges using Rule 1 and Rule 2.  Determine the number of non-zero distinct triples in the sum.  This number is between $0$ and $1000$ inclusively.</li>\n<li>Write the number of non-zero distinct triples in the sum to the output.</li>\n</ol>",
+  "input": "<p>The input contains $12$ integers (there is a space between two adjacent integers) for the ranges on a single line.  The integers are given in the order of $$ a_1  \\, a_2 \\,  b_1 \\,  b_2 \\, c_1 \\, c_2 \\, d_1 \\, d_2 \\, e_1 \\, e_2 \\, f_1 \\, f_2 $$</p>",
+  "output": "<p>The output contains one integer which is the number of non-zero distinct triples in the sum of the original triples within the given ranges.</p>",
+  "samples": [
+    {
+      "input": "1 1 2 2 3 3 4 4 5 5 6 8\n",
+      "output": "3\n"
+    },
+    {
+      "input": "1 1 2 2 4 5 7 8 5 5 6 8\n",
+      "output": "8\n"
+    },
+    {
+      "input": "0 0 0 0 0 0 0 1 0 1 0 1\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2000",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 3.25
+}

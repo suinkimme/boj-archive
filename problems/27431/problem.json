@@ -1,0 +1,22 @@
+{
+  "id": 27431,
+  "title": "Pixels",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are given an N*N square matrix of pixels. Your task is to color each pixel of the matrix in black or white such that the end result is as pleasant as possible. To do that, you are given three pieces of information. First, for each pixel you know what bonus of pleasantness A<sub>ij</sub> you get if you color it white. Second, for each pixel you know what bonus of pleasantness B<sub>ij</sub> you get if you color it black. Lastly, you know for each pair of adjacent pixels (meaning that they share an edge) which cost of pleasantness C<sub>ijk</sub> you pay if they are colored differently.</p>\n<p>The cost of pleasantness is given for each pixel and for each of the four directions. That is, for a given pixel at coordinate (i, j), C<sub>ij0</sub> is the cost you pay if that pixel and the pixel at (i - 1, j) are colored differently, C<sub>ij1</sub> is the cost you pay if that pixel and the pixel at (i , j + 1) are colored differently, C<sub>ij2</sub> is the cost you pay if that pixel and the pixel at (i + 1, j) are colored differently, C<sub>ij3</sub> is the cost you pay if that pixel and the pixel at (i, j - 1) are colored differently. If the pixel does not have a legal neighbor (that is, one which is in the matrix), the cost will still be given as 0. Note that C<sub>ij0</sub> and C<sub>(i-1)j2</sub> will be always the same and so on (the cost for each pair is symmetric).</p>\n<p>Your task is to maximize the total pleasantness, that is: sum of A<sub>ij</sub> for all pixels colored white + sum of B<sub>ij</sub> for all pixels colored black - sum of costs of all pairs of adjacent pixels colored differently. Please note that each pair of adjacent pixels colored differently contributes only once (not two times) to the total cost for adjacent pixels colored diferently. Good luck !</p>",
+  "input": "<p>The standard input will contain on the first line the number N, size of the matrix. Then, N lines with N values on each line follow. The j-th value on line i out of this group contains A<sub>ij</sub>. In the same format, N lines with N values on each line follow for B<sub>ij</sub>. Lastly, N * N lines with four values each follow. The (i-1) * N + j-th line out of this group contains the values C<sub>ij0</sub> C<sub>ij1</sub> C<sub>ij2</sub> C<sub>ij3</sub>.</p>",
+  "output": "<p>You must print to the standard output one line containing the maximum possible value for the pleasantness.</p>",
+  "samples": [
+    {
+      "input": "2\n1 10\n2 2\n10 1\n3 3\n0 1 1 0\n0 0 1 1\n1 53 0 0\n1 0 0 53\n",
+      "output": "24\n"
+    }
+  ],
+  "hint": "<p>The only possible coloring for the optimal pleasantness is:</p>\n<pre>\nBlack White\nBlack Black</pre>\n<p>Notice that the cost for coloring (2, 1) and (2, 2) differently is very high, so you want to color them the same, black beeing the better option. For cell (1, 1) and (1, 2) it is pretty clear what is the better coloring option.</p>",
+  "source": "Olympiad, Romanian Master of Informatics, Romanian Master of Informatics 2011",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

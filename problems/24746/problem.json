@@ -1,0 +1,33 @@
+{
+  "id": 24746,
+  "title": "Pooling PCR Tests",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The Polymerase chain reaction (PCR) test is a test for COVID which repeatedly copies a DNA sample and then tests for the presence of COVID specific DNA segments. This can take time and the required reagents may be limited. One suggestion for improving throughput is pooling of samples.</p>\n<p>The idea is to combine N samples and run the PCR test on the combined sample. If the test is negative then no further test is required. If the test is positive, all N people must be retested individually. If the probability of a positive test is low, this will significantly reduce the number of tests required.</p>\n<p>Write a program which takes as input the probability, p, that a single person tests positive and outputs the optimum number of samples, N, to combine.</p>\n<p>If P is the probability that all N people test negative then the expected number of tests, E(T), required is:</p>\n<p style=\"text-align: center;\">E(T) = 1*P + N*(1 – P)</p>\n<p>Choose N to minimize E(T) / N.</p>\n<p>For example, if N is 2 and p is 0.5, P is 0.25 and E(T) = 0.25 + 2*0.75 = 1.75 which is only slightly less than N.</p>\n<p>In order to be sure that the sample from each person is sufficient, N must be no more than 16.</p>",
+  "input": "<p>Input consists of a single line containing a single decimal floating point value p, (0 &lt; p &lt; 1), the probability that a single person tests positive for Covid.</p>",
+  "output": "<p>Output is a single line containing a single decimal integer. If E(T) ≥ N for all N, output the value 1. Otherwise, the value is N, 2 ≤ N ≤ 16, which minimizes E(T) / N.</p>",
+  "samples": [
+    {
+      "input": "0.1\n",
+      "output": "4\n"
+    },
+    {
+      "input": "0.02\n",
+      "output": "8\n"
+    },
+    {
+      "input": "0.01\n",
+      "output": "10\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Greater New York Region, 2021 Greater New York Programming Contest",
+  "level": 6,
+  "tags": [
+    "math",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 61,
+  "submission_count": null,
+  "average_tries": 1.4098000526428223
+}

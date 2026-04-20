@@ -1,0 +1,36 @@
+{
+  "id": 21150,
+  "title": "All in the Family",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The scientists working at the Family Genetics Institute are tracing the spread of a hereditary disease through family trees.  They have started by listing the family members that have the disease, and the parent who passed the disease on to each child (we will assume that each child gets the disease from only one parent).  However, the scientists are confused about the names of different family relationships.  Parents, grandparents, and siblings they have a handle on.  But a relationship like \"third cousin, twice removed\" has been hard for them to wrap their heads around.   After much discussion they came up with some definitions that cleared things up.</p>\n<p>Suppose we have two people conveniently named $A$ and $B$ and their closest common ancestor is named $C$ (what are the odds!).  We say that $A$ is <em>$m$ generations removed from $C$\\/</em> if there are $m$ direct descendants from $C$ ending with $A$.  Thus if $A$ is the daughter of $C$ she is $1$ generation removed; if she is the granddaughter of $C$ she is $2$ generations removed, and so on.  Any person is $0$ generations removed from themselves.</p>\n<p>Now let $A$ be $m$ generations removed from $C$ and $B$ be $n$ generations removed from $C$ where $m \\leq n$.  We can determine the relationship between $A$ and $B$ using the following rules:</p>\n<ol>\n<li>if $m = 0$ then $B$ is the child of $A$ if $n=1$ or the $\\mbox{great}^{n-2}$ grandchild of $A$ if $n &gt; 1$.</li>\n<li>if $0 &lt; m = n$ then $A$ and $B$ are siblings if $n=1$ or $(n-1)$-th cousins if $n &gt; 1$.</li>\n<li>if $0 &lt; m &lt; n$ then $A$ and $B$ are $(m-1)$-th cousins $(n-m)$ times removed.</li>\n</ol>\n<p>Notice that if $m = 1$ and $n = 2$ we get the interestingly named \"$0$th cousins, $1$ time removed\" for the relationships we typically describe as \"aunt/uncle\" or \"niece/nephew\".</p>\n<p>Figure 1 below shows some examples for two new people named (what else) $D$ and $E$.</p>\n<table class=\"table table-bordered table-center-70 th-center\">\n<thead>\n<tr>\n<th colspan=\"2\"># of generations removed from common ancestor</th>\n<th rowspan=\"2\">Relationship</th>\n</tr>\n<tr>\n<th>$D$</th>\n<th>$E$</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>$0$</th>\n<th>$1$</th>\n<td>$E$ is the child of $D$</td>\n</tr>\n<tr>\n<th>$4$</th>\n<th>$0$</th>\n<td>$D$ is the great great grandchild of $E$</td>\n</tr>\n<tr>\n<th>$3$</th>\n<th>$3$</th>\n<td>$D$ and $E$ are $2$nd cousins</td>\n</tr>\n<tr>\n<th>$9$</th>\n<th>$8$</th>\n<td>$D$ and $E$ are $7$th cousins, $1$ time removed</td>\n</tr>\n<tr>\n<th>$1$</th>\n<th>$4$</th>\n<td>$D$ and $E$ are $0$th cousins, $3$ times removed</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure 1: Some example relationships</p>\n<p>The scientists have given you the description of a family tree and pairs of people in the tree and have asked you to determine the relationships between members of each pair.</p>",
+  "input": "<p>Input begins with a line containing two positive integers $t$ $p$ ($t \\leq 100, p \\leq 1\\,000$) specifying the  number of tree descriptions (described below) and the number of query pairs.  Following these are $t$ lines, each with one tree description.  Each tree description will be of the form $s_0$ $d$ $s_1$ $s_2 \\ldots s_d$ indicating that person $s_0$ has $d$ children named $s_1$ through $s_d$.  All names are unique and contain only alphabetic characters.  Tree descriptions may be given in any order (i.e., the root of the entire tree may not necessarily be in the very first tree description).  No name will appear more than once as $s_0$ in the tree descriptions.  All the tree descriptions will combine to form exactly one tree, and the tree will have at least $2$ nodes and at most $100$ nodes.</p>\n<p>Following this are $p$ lines of the form $s_i$ $s_j$ where $s_i \\neq s_j$ and both names are guaranteed to be in the tree.</p>",
+  "output": "<p>Output the relationship for each pair of people, one per line, using the formats shown in Figure 1.  Always output $s_i$'s name first for each pair except when $s_j$ is the direct descendant of $s_i$ (as in the first example in Figure 1).  For the $n$-th ordinal number output <code>$n$th</code> except for $n=1,2,3,21,22,23,31,32,33,\\ldots$  in which case you should output <code>1st</code>, <code>2nd</code>, <code>3rd</code>, <code>21st</code>, <code>22nd</code>, <code>23rd</code>, <code>31st</code>, <code>32nd</code>, <code>33rd</code>, etc.  Also be sure to use <code>times</code> for all times removed except one, where you should use the word <code>time</code>.</p>",
+  "samples": [
+    {
+      "input": "4 5\nHoratio 1 Irene\nChris 2 Gina Horatio\nAlice 3 Dan Emily Frank\nBob 2 Alice Chris\nIrene Bob\nDan Frank\nChris Emily\nAlice Chris\nDan Irene\n",
+      "output": "Irene is the great grandchild of Bob\nDan and Frank are siblings\nChris and Emily are 0th cousins, 1 time removed\nAlice and Chris are siblings\nDan and Irene are 1st cousins, 1 time removed\n"
+    },
+    {
+      "input": "4 6\nA 4 B C D E\nH 3 I J K\nC 2 F G\nD 1 H\nG C\nH A\nF G\nF H\nF K\nB K\n",
+      "output": "G is the child of C\nH is the grandchild of A\nF and G are siblings\nF and H are 1st cousins\nF and K are 1st cousins, 1 time removed\nB and K are 0th cousins, 2 times removed\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2020 East Central Regional Contest",
+  "level": 14,
+  "tags": [
+    "case_work",
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "hash_set",
+    "implementation",
+    "lca",
+    "trees",
+    "set"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 3.5555999279022217
+}

@@ -1,0 +1,22 @@
+{
+  "id": 3558,
+  "title": "Image Recognition",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Irene works for <em>Novel Efforts in Effective Recognition of Characters</em> (<em>NEERC</em>). Her new project concerns image recognition using robots.</p>\n<p>Since the approach is quite innovative, Irene starts with a very simple model first. She fixed $d$ images which are called digits $0$ to $d - 1$. Each image is a $w \\times h$ rectangle filled with white and black unit squares (call them pixels). All images are distinct (that is, each two images differ in at least one pixel).</p>\n<p>The robot is placed in the upper left pixel of one of the images. It starts executing a program written in a specific programming language described below. The task of the robot is to recognize which of the $d$ images it was placed onto.</p>\n<p>The programming language for the robot consists of the following commands:</p>\n<ul>\n<li>'<code>U</code>', '<code>D</code>', '<code>L</code>', '<code>R</code>' --- movement commands. The robot moves one pixel up, down, left, or right respectively. If a movement command moves robot outside the image, the task is failed.</li>\n<li>'<code>(</code>' $\\langle subprogram_w \\rangle$ '<code>:</code>' $\\langle subprogram_b \\rangle$ '<code>)</code>' --- conditional operator. The robot checks the color of the pixel underneath itself. If it is white then $\\langle subprogram_w \\rangle$ is executed, otherwise $\\langle subprogram_b \\rangle$ is executed.</li>\n<li>'<code>0</code>', '<code>1</code>', ..., '<code>9</code>' --- recognized image commands. The robot must execute one of these commands when it knows which image it was placed onto. After such command, the program terminates.</li>\n</ul>\n<p>Each movement command takes one time unit to execute. The execution of conditional operator and image recognized commands is instantaneous.</p>\n<p>Irene is interested in the program that always works correctly. That is, if a robot is placed onto the image corresponding to the digit $i$, then the execution of the program must end with the command '<code>i</code>'.</p>\n<p>Given the set of images, design a correct program for the robot, such that its execution time in the worst case is minimal.</p>",
+  "input": "<p>The first line contains three integers $d$, $h$, and $w$ ($1 \\le d \\le 10$; $1 \\le h, w \\le 10$) --- the number of considered images, the height and the width of each image.</p>\n<p>The rest if the input file contains $d$ descriptions of images. Each description consists of $h$ lines of length $w$. All characters are either <code>B</code> or <code>W</code>, representing a black or a white pixel respectively.</p>\n<p>Image descriptions are given in the order from $0$ to $d - 1$. Descriptions are separated by an empty line.</p>",
+  "output": "<p>Return a correct program for the robot with minimal possible worst-case execution time. If there are multiple possible programs, output any of them.</p>\n<p>All whitespace is ignored when parsing a program.</p>",
+  "samples": [
+    {
+      "input": "3 5 4\nWBBW\nBWWB\nBWWB\nBWWB\nWBBW\n\nWWBW\nWBBW\nBWBW\nWWBW\nWWBW\n\nWBBW\nBWWB\nWWBW\nWBWW\nBBBB\n",
+      "output": "D(1:D(2:0))\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 372px; height: 106px;\"/></p>\n<p style=\"text-align: center;\">The robot has to distinguish between these three images in the example.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2009",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

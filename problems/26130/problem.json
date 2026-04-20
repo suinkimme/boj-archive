@@ -1,0 +1,31 @@
+{
+  "id": 26130,
+  "title": "Crystal Crosswind",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are part of a scientific team developing a new technique to image crystal structures at the molecular level. The technique involves blowing a very fine wind over the surface of the crystal at various angles to detect boundaries (indicated by molecules that are exposed to the wind). This is repeated with different wind directions and the boundaries observed for each direction are recorded. Your team has already collected the data, but – as is often the case with applied science – now the real work, analysis, must begin.</p>\n<p>For a given crystal, you will receive the directions in which wind blew over the surface, and the locations of all boundaries encountered by each of these winds. For a wind blowing in direction (w<sub>x</sub>, w<sub>y</sub>), a boundary is defined as a location (x, y) such that a molecule exists at (x, y) and no molecule exists at (x − w<sub>x</sub>, y − w<sub>y</sub>). Note that for technical reasons wx and wy are not necessarily relatively prime.</p>\n<p>The data might not uniquely determine the structure of the crystal. You must find the two unique structures with the minimal and maximal number of molecules consistent with the observations.</p>\n<p>For example, in the first sample input, nine different molecules are directly encountered by the given winds. There must be a molecule at location (3, 3) because otherwise (4, 2) would be a boundary for the third wind. For similar reasons, there must be molecules at (4, 4) and (5, 5). There cannot be any further molecules as they would result in additional observations for some of the winds.</p>",
+  "input": "<p>The first line of input contains three integers d<sub>x</sub>, d<sub>y</sub>, and k, where d<sub>x</sub> and d<sub>y</sub> (1 ≤ d<sub>x</sub>, d<sub>y</sub> ≤ 10<sup>3</sup>) are the maximum dimensions of the crystal structure, and k (1 ≤ k ≤ 10) is the number of times wind was blown over the crystal.</p>\n<p>Each of the remaining k lines specifies the data for one wind. These lines each start with two integers w<sub>x</sub> and w<sub>y</sub> (-d<sub>x</sub> ≤ w<sub>x</sub> ≤ d<sub>x</sub> and -d<sub>y</sub> ≤ w<sub>y</sub> ≤ d<sub>y</sub>, but not both zero) denoting the direction of the wind. Then comes an integer b (0 ≤ b ≤ 10<sup>5</sup>) giving the number of boundaries encountered by this wind. The line finishes with b distinct pairs of integers x, y (1 ≤ x ≤ d<sub>x</sub> and 1 ≤ y ≤ d<sub>y</sub>) listing each observed boundary.</p>\n<p>You may assume the input is consistent with at least one crystal and that no molecules exist outside the specified dimensions.</p>",
+  "output": "<p>Output two textual representations of the crystal structure separated by an empty line. Each structure has d<sub>y</sub> rows of d<sub>x</sub> characters, with the top-left corner corresponding to location (1, 1). The first is the structure with the minimal number of molecules consistent with the observations, the second is the maximal one. Use ‘#’ for a location where a molecule exists and ‘.’ for a location where no molecule exists.</p>",
+  "samples": [
+    {
+      "input": "6 6 3\n1 1 3 3 1 1 3 2 2\n0 2 6 3 1 1 3 2 2 6 4 5 3 4 2\n1 -1 4 1 3 2 4 3 5 4 6\n",
+      "output": "..#...\n.#.#..\n#.#.#.\n.#.#.#\n..#.#.\n...#..\n\n..#...\n.#.#..\n#.#.#.\n.#.#.#\n..#.#.\n...#..\n"
+    },
+    {
+      "input": "5 4 2\n1 0 6 1 1 4 1 2 2 5 2 2 3 3 4\n0 -1 7 1 1 4 1 5 2 2 3 3 4 4 4 5 4\n",
+      "output": "#..#.\n.#..#\n.#...\n..###\n\n##.##\n.##.#\n.###.\n..###\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2021",
+  "level": 18,
+  "tags": [
+    "graphs",
+    "greedy",
+    "graph_traversal",
+    "bfs"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 1.2000000476837158
+}

@@ -1,0 +1,22 @@
+{
+  "id": 13779,
+  "title": "Obfustication",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The NZPC data service has a need to secretly transmit trees of numbers from office to office (obviously, we  can’t  tell you why).  Of course  the  transmission is encrypted, but in order  to  further confound would‐be  spies, the service decided to obfusticate the tree before encryption. </p>\n<p>Trees are linearized to text.  The chosen obfustication is done by randomly varying the sub‐tree ordering  between pre‐order, in‐order and post‐order on a per‐node basis.  For, example consider the following tree  of integers.  If we use pre‐ordering on node A, post‐ordering on B and E, and in‐order  on node C, the obfusticated tree data (OTD) will have node values   in order</p>\n<p>     5  2  8  1  7  8  3  9  2 </p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:218px; width:250px\"/></p>\n<p>Note that sub‐trees are output in left to right order. </p>\n<p>The tree cannot be reconstructed from this form.  To make reconstruction possible, additional  information is added.  The output for each non‐leaf  node is preceded by one or two values: first a   negative number to specify ordering</p>\n<p>           ‐1 for pre      ‐2  for in       ‐3 for post </p>\n<p>and then for pre or post ordering, a positive number, being the number of sub‐trees of the node.  The  second number isn’t needed for in‐order nodes as they always have exactly two sub‐trees. </p>\n<p>For the sample tree this gives:      ‐1  3  5  ‐3  1  ‐3  2  2  8  1  7  ‐2  8  3  9  2 </p>\n<p>Your task is to read obfusticated trees, and display the tree data in pre‐order sequence. </p>\n<p>For the sample tree the output should be     5  7  1  2  8  3  8  9  2 </p>",
+  "input": "<p>Input will consist of a sequence of problems.  There will be one line for each problem.  A problem line will  hold a space separated series of integers:  the first will be the number of code values in the problem C: 0 &lt;  C &lt;= 2000; followed by C integer values V<sub>i</sub>:  ‐3 &lt;= V<sub>i </sub>&lt;= 9, being the obfusticated tree data.  Note that the numbers in the tree are always in the range 0 to 9.  Negative values are only present for coding the ordering. End of input will be denoted by a line with a single 0. </p>",
+  "output": "<p>Output will be a single line per problem, with space separated numbers, being the pre‐order sequence of  the data in the tree. </p>",
+  "samples": [
+    {
+      "input": "16 ‐1 3 5 ‐3 1 ‐3 2 2 8 1 7 ‐2 8 3 9 2\n0\n",
+      "output": "5 7 1 2 8 3 8 9 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, New Zealand Programming Contest, NZPC 2016",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

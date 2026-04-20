@@ -1,0 +1,22 @@
+{
+  "id": 30421,
+  "title": "Depth First Search",
+  "time_limit": "6 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Depth-first search is a common search algorithm. Using this algorithm, we can obtain a tree $T$ from an undirected connected graph $G = (V,E)$ with no self-loops nor parallel edges, and a certain starting point $s$.</p>\n<p>The algorithm can be described as follows:</p>\n<ul>\n<li>Set the stack $S$ to be empty, and let $T = (V, \\emptyset)$, which means that the edge set of $T$ is initially empty.</li>\n<li>First, push the starting point $s$ into $S$.</li>\n<li>Visit the top vertex $u$ of the stack and mark u as \"visited\".</li>\n<li>If there is a vertex $v$ adjacent to u and not yet visited, arbitrarily select one from these vertices and let $(u, v)$ be added to the edge set of $T$. Then, push $v$ into the stack $S$, and go back to step $3$. If there is no such vertex, pop $u$ out of the stack.</li>\n</ul>\n<p>It can be proved that when $G$ is a connected graph, the algorithm will obtain a certain spanning tree $T$ of $G$. However, the tree $T$ obtained by the algorithm may not be unique, depending on the search order, i.e., the vertex selected in step 4. If a specific search order can be chosen so that the tree obtained by the algorithm is exactly $T$, then we call $T$ an $s$-dfs tree of $G$ with respect to the starting point $s$.</p>\n<p>Now, given a tree $T$ with $n$ vertices labeled from $1$ to $n$, and an additional $m$ edges, we guarantee that these $m$ edges are distinct and connect different vertices, and are different from the $n-1$ tree edges in $T$. We call these additional $m$ edges non-tree edges. Among these $n$ vertices, we specify exactly $k$ vertices as special vertices.</p>\n<p>Now, you want to know how many ways there are to select a subset of these $m$ non-tree edges (you can possibly select none) such that: after the tree edges of $T$ and the selected non-tree edges are combined to form a graph $G$, there exists a special vertex $s$ such that $T$ is an $s$-dfs tree of $G$.</p>\n<p>Since the answer may be very large, you only need to output the number of solutions modulo $(10^9+7)$.</p>",
+  "input": "<p>The first line of input contains an integer $c$, which represents the test case number. $c = 0$ represents that this test case is a sample test.</p>\n<p>The second line of input contains three positive integers $n, m, k$, which represent the number of vertices, the number of non-tree edges, and the number of critical points, respectively.</p>\n<p>Then $n-1$ lines follow, each containing two positive integers $u, v$, representing a tree edge of $T$. It is guaranteed that these $n-1$ edges form a tree.</p>\n<p>Then $m$ lines follow, each containing two positive integers $a, b$, representing a non-tree edge. It is guaranteed that $(a, b)$ does not coincide with an edge on the tree and there are no duplicate edges.</p>\n<p>The last line of input contains $k$ positive integers $s_1, s_2, ..., s_k$, representing the labels of the $k$ special vertices. It is guaranteed that $s_1, s_2, ..., s_k$ are distinct from each other.</p>",
+  "output": "<p>Output a line containing an integer, representing the number of solutions, taken modulo $(10^9+7)$.</p>",
+  "samples": [
+    {
+      "input": "0\n4 2 2\n1 2\n2 3\n3 4\n1 3\n2 4\n2 3\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2023",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

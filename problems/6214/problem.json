@@ -1,0 +1,24 @@
+{
+  "id": 6214,
+  "title": "Problem Solving",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In easier times, Farmer John's cows had no problems. These days, though, they have problems, lots of problems; they have P (1 &lt;= P &lt;= 300) problems, to be exact. They have quit providing milk and have taken regular jobs like all other good citizens.  In fact, on a normal month they make M (1 &lt;= M &lt;= 1000) money.</p>\n<p>Their problems, however, are so complex they must hire consultants to solve them. Consultants are not free, but they are competent: consultants can solve any problem in a single month. Each consultant demands two payments: one in advance (1 &lt;= payment &lt;= M) to be paid at the start of the month problem-solving is commenced and one more payment at the start of the month after the problem is solved (1 &lt;= payment &lt;= M). Thus, each month the cows can spend the money earned during the previous month to pay for consultants. Cows are spendthrifts: they can never save any money from month-to-month; money not used is wasted on cow candy.</p>\n<p>Since the problems to be solved depend on each other, they must be solved mostly in order. For example, problem 3 must be solved before problem 4 or during the same month as problem 4.</p>\n<p>Determine the number of months it takes to solve all of the cows' problems and pay for the solutions.</p>",
+  "input": "<ul>\n<li>Line 1: Two space-separated integers: M and P.</li>\n<li>Lines 2..P+1: Line i+1 describes problem i with two space-separated integers: B_i and A_i. B_i is the payment to the consult BEFORE the problem is solved; A_i is the payment to the consult AFTER the problem is solved.</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: The number of months it takes to solve and pay for all the cows' problems.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "100 5\n40 20\n60 20\n30 50\n30 50\n40 40\n",
+      "output": "6\n"
+    }
+  ],
+  "hint": "<pre>\n+------+------+--------+---------+---------+--------+\n|      | Avail | Probs  | Before  |  After  |  Candy |\n|Month | Money | Solved | Payment | Payment |  Money |\n+------+-------+--------+---------+---------+--------+\n|  1   |  0    | -none- |    0    |    0    |     0  |\n|  2   | 100   |  1, 2  | 40+60   |    0    |     0  |\n|  3   | 100   |  3, 4  | 30+30   |  20+20  |     0  |\n|  4   | 100   | -none- |    0    |  50+50  |     0  |\n|  5   | 100   |   5    |   40    |    0    |    60  |\n|  6   | 100   | -none- |    0    |   40    |    60  | \n+------+-------+--------+---------+---------+--------+</pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2006-2007 Season, USACO January 2007 Contest, Gold",
+  "level": 16,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 2.125
+}

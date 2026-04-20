@@ -1,0 +1,24 @@
+{
+  "id": 19631,
+  "title": "Wrong Answer",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Troy made the following problem (titled WA) for a programming contest:</p>\n<blockquote>\n<p>There is a game with N levels numbered from 1 to N. There are two characters, both are initially at level 1. For i &lt; j, it costs A<sub>i,j</sub> coins to move a character from level i to level j. It is not allowed to move a character from level i to level j if i &gt; j. To win the game, every level (except level 1) must be visited by exactly one character. What is the minimum number of coins needed to win?</p>\n</blockquote>\n<p>JP is a contestant and submitted the following Python solution.</p>\n<pre>\ndef Solve(N, A):\n  # A[i][j] is cost of moving from level i to level j\n  # N is the number of levels\n  x, y, sx, sy = 1, 1, 0, 0 # Initialize x and y to 1, sx and sy to 0\n  for i in range(2, N + 1): # loop from 2 to N\n    if sx + A[x][i] &lt; sy + A[y][i]:\n      sx += A[x][i]\n      x = i\n    else:\n      sy += A[y][i]\n      y = i\n  return sx + sy</pre>\n<p>Troy is certain that JP’s solution is wrong. Suppose for an input to WA, JP’s solution returns X but the minimum number of coins needed is Y. To show how wrong JP’s solution is, help Troy find an input N and A<sub>i,j</sub> such that X/Y is maximized.</p>",
+  "input": "<p>There is no input.</p>",
+  "output": "<p>Print an input to WA in the following format:</p>\n<p>On the first line, print one integer N (2 ≤ N ≤ 100). Then print N−1 lines; the i-th line should contain N−i integers A<sub>i,i+1</sub>, · · ·, A<sub>i,N</sub> (1 ≤ A<sub>i,j</sub> ≤ 100). If your output is not the correct format, it will get an incorrect verdict on the sample test in the grader and score 0 points.</p>\n<p>Otherwise, suppose that for your input, JP’s solution returns X but the minimum number of coins needed is Y. Then you will receive X/(4Y) points.</p>",
+  "samples": [
+    {
+      "input": "",
+      "output": "5\n1 2 3 4\n10 9 8\n7 6\n5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2018, CCO 2018",
+  "level": 19,
+  "tags": [
+    "constructive"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 3.4286000728607178
+}

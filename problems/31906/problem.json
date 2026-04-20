@@ -1,0 +1,37 @@
+{
+  "id": 31906,
+  "title": "Alea Iacta Est",
+  "time_limit": "10 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You play a game with multiple fair six-sided dice. Each die’s face displays a single symbol. The objective of the game is to roll the dice and create a valid word from the symbols on top of each die. If you cannot form a word, you may reroll the dice for another attempt.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 330px; height: 100px;\"/></p>\n<p style=\"text-align: center;\"><b>Figure 1</b>: Five dice making a valid word corresponding to Sample Input 1.</p>\n<p>Suppose there are five dice: one of them contains letters <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>, <code>E</code>, and <code>P</code> (abbreviated as <code>ABCDEP</code>), and the other dice contain letters <code>AEHOXU</code>, <code>AISOLR</code>, <code>ABCDEF</code>, and <code>ABCSCC</code>. The first roll yields the following letters on the tops of respective dice: <code>P</code>, <code>X</code>, <code>R</code>, <code>E</code>, and <code>S</code>. As it is impossible to arrange these letters into a valid word, you decide to keep the <code>P</code>, <code>S</code>, and <code>E</code>, and reroll the other dice, in an attempt to make words like <code>PARSE</code>, <code>PAUSE</code>, <code>PHASE</code>, <code>POISE</code>, <code>PROSE</code>, <code>PULSE</code>, or <code>PURSE</code>. The two dice yield <code>E</code> and <code>A</code>, resulting in the following five letters: <code>P</code>, <code>E</code>, <code>A</code>, <code>E</code>, and <code>S</code>. You still cannot think of a valid word, so you decide to keep four letters and reroll only the last die, which has three sides with letter <code>C</code>. By doing so, there is a $50\\%$ chance that it will be possible to make a final valid word: <code>PEACE</code>, as shown in Figure 1.</p>\n<p>When you roll a die, it lands on any one of its faces with equal probability. What is the expected number of rolls needed to make a valid word, assuming you use an optimal strategy?</p>",
+  "input": "<p>The first line of input contains two numbers $d$ and $w$, where $d$ ($1≤d≤6$) is the number of dice and $w$ ($1≤w≤2\\cdot 10^5$) is the number of valid words in the dictionary. The following $d$ lines each have $6$ symbols, one for each face of the die. The final $w$ lines contain $w$ distinct valid words in the dictionary. Every word has exactly $d$ symbols.</p>\n<p>All symbols in the input are either uppercase letters (<code>A</code>–<code>Z</code>) or digits (<code>0</code>–<code>9</code>).</p>",
+  "output": "<p>If it is possible to make a valid word, output the expected number of rolls needed to make a valid word when using an optimal strategy. Otherwise, output <code>impossible</code>. Your answer should have an absolute or relative error of at most $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "5 8\nABCDEP\nAEHOXU\nAISOLR\nABCDEF\nABCSCC\nPARSE\nPAUSE\nPHASE\nPOISE\nPROSE\nPULSE\nPURSE\nPEACE\n",
+      "output": "9.677887141\n"
+    },
+    {
+      "input": "2 1\nAAAAAA\nBBBBBB\nAB\n",
+      "output": "1.0\n"
+    },
+    {
+      "input": "3 1\n123456\n123456\n123456\n666\n",
+      "output": "10.555444555\n"
+    },
+    {
+      "input": "2 1\nABCDEF\nGHI234\nAB\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2023",
+  "level": 24,
+  "tags": [
+    "dp",
+    "math"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 2.450000047683716
+}

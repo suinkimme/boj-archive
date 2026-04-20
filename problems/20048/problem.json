@@ -1,0 +1,37 @@
+{
+  "id": 20048,
+  "title": "Paint",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>We will represent the drawing area of <em>MS Paint</em> as a rectangular grid of unit squares divided into R rows and S columns. Each square of the grid represents a single pixel that can be colored in one of the 10<sup>5</sup> different colors. When the user applies the so called <em>bucket tool</em> with color A on a pixel (r, s) which is colored in the color B, then all pixels in the <em>monochrome neighborhood</em> of pixel (r, s) change their color to A. Monochrome neighborhood of a pixel (r, s) is a set of pixels that are reachable by <em>walking</em> from (r, s) in the four general directions (up, down, left and right) without changing the color of the pixel along the way. Note that the pixel (r, s) is itself a part of its monochrome neighborhood.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 492px; height: 117px;\"/></p>\n<p>You are given a starting image drawn in <em>MS Paint</em> along with Q instructions that should be executed in the given order. Each instruction tells you on which pixel should you apply the bucket tool and with what color. Your task is to how the image looks like after all instructions are executed.</p>",
+  "input": "<p>The first line contains integers R and S from the task description.</p>\n<p>Each of the next R lines contains S non-negative integers less than 100 000 that represent the starting image drawn in <em>MS Paint</em>. More precisely, the j-th number in the i-th row of the image represents the color of the pixel (i, j).</p>\n<p>The next line contains an integer Q from the task description. The i-th of the next Q lines contains integers r<sub>i</sub>, s<sub>i</sub> and c<sub>i</sub> (1 ≤ r<sub>i</sub> ≤ R, 1 ≤ s<sub>i</sub> ≤ S, 0 ≤ c<sub>i</sub> &lt; 100 000), which represent the i-th instruction that tells you to use the bucket tool with color ci on the pixel (r<sub>i</sub>, s<sub>i</sub>).</p>",
+  "output": "<p>You should output the final state of the image in the same format as it was given in the input.</p>",
+  "samples": [
+    {
+      "input": "12 11\n1 1 1 1 1 1 1 1 1 1 1\n1 1 1 1 0 0 0 1 1 1 1\n1 1 1 0 0 0 0 0 1 1 1\n1 1 0 0 0 0 0 0 0 1 1\n1 0 0 0 2 2 2 0 0 0 1\n1 0 0 0 2 2 2 0 0 0 1\n1 0 0 0 2 2 2 0 0 0 1\n1 0 0 0 0 0 0 0 0 0 1\n1 1 0 0 0 2 0 0 0 1 1\n0 1 1 0 0 2 0 0 1 1 0\n0 0 1 1 0 0 0 1 1 0 0\n0 0 0 1 1 1 1 1 0 0 0\n2\n5 5 3\n6 2 4\n",
+      "output": "1 1 1 1 1 1 1 1 1 1 1\n1 1 1 1 4 4 4 1 1 1 1\n1 1 1 4 4 4 4 4 1 1 1\n1 1 4 4 4 4 4 4 4 1 1\n1 4 4 4 3 3 3 4 4 4 1\n1 4 4 4 3 3 3 4 4 4 1\n1 4 4 4 3 3 3 4 4 4 1\n1 4 4 4 4 4 4 4 4 4 1\n1 1 4 4 4 2 4 4 4 1 1\n0 1 1 4 4 2 4 4 1 1 0\n0 0 1 1 4 4 4 1 1 0 0\n0 0 0 1 1 1 1 1 0 0 0\n"
+    },
+    {
+      "input": "4 4\n1 0 1 3\n1 3 2 2\n3 3 1 2\n2 2 1 3\n3\n1 2 3\n3 2 1\n4 2 3\n",
+      "output": "1 1 1 3\n1 1 2 2\n1 1 1 2\n3 3 1 3\n"
+    },
+    {
+      "input": "6 6\n1 2 1 2 2 2\n3 1 2 1 3 1\n3 3 2 3 2 2\n2 3 1 3 3 2\n3 3 3 3 3 3\n2 3 2 2 2 1\n4\n6 2 2\n3 5 2\n3 2 3\n1 2 3\n",
+      "output": "1 3 1 2 2 2\n3 1 3 1 3 1\n3 3 3 3 3 3\n3 3 1 3 3 3\n3 3 3 3 3 3\n3 3 3 3 3 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2020, Croatian Olympiad in Informatics 2020",
+  "level": 26,
+  "tags": [
+    "case_work",
+    "data_structures",
+    "disjoint_set",
+    "graphs",
+    "smaller_to_larger",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 10.600000381469727
+}

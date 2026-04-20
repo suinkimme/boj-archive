@@ -1,0 +1,30 @@
+{
+  "id": 13362,
+  "title": "Interception",
+  "time_limit": "8 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are helping your local Neighborhood Surveillance Association setting up a surveillance system on your street in order to identify the culprits behind some recent unfortunate dog doo incidents.</p>\n<p>The system in question consists of listening devices placed on the tin-can phone lines of the street (the idea being that sooner or later the dog doo malefactors will mess up and discuss their dirty deeds over the phone). Each listening device is placed on one of the phone lines connecting the houses, and will intercept all calls that are routed along that phone line.</p>\n<p>The phone line network looks as follows. One side of the street has odd-numbered houses, and the other side has even-numbered houses. The numbers are lined up so that odd-numbered house i is directly across the street from even-numbered house i + 1. On both sides of the street, there are direct phone lines between adjacent pairs of houses. In addition there are two direct phone lines connecting the two sides of the street. Both of these two phone lines connect a house with the house directly across from it.</p>\n<p>Calls between two houses on the same side of the street are routed along the direct path between the two houses, without going to the other side of the street. For calls between two houses on opposite sides of the street, we have information about which of the two direct connections across the street the call will use. From previous ventures, we do know which people on the street are on speaking terms with each other. We would like to place listening devices in such a way that we can intercept all phone calls. In other words, for every pair of people that are on speaking terms with each other, there must be a listening device on the route between their houses.</p>\n<p>Your job is to find a way to do this using the minimum possible number of listening devices (since they are kind of expensive and we burnt most of our budget on the barbecue last week).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:108px; width:360px\"/></p>\n<p>Figure I.1: Illustration of the phone line network in Sample Input 1. There are 14 houses, 7 on each side, and the two direct connections across the street connect house 3 with house 4, and house 9 with house 10. The people in houses 7 and 11 are on speaking terms, and calls between them are routed via house 9. The people in houses 5 and 6 are also on speaking terms, and calls between them are routed via houses 7, 9, 10, and 8. Sample Input 2 is similar, but there the calls between 5 and 6 are instead routed via the direct connection between houses 3 and 4.</p>",
+  "input": "<p>The first line of input consists of four integers n, m, c<sub>1</sub>, and c<sub>2</sub> (4 ≤ n ≤ 250 000, 1 ≤ m ≤ 500 000, 1 ≤ c<sub>1</sub> &lt; c<sub>2</sub> &lt; n), where n is even and denotes the number of houses on the street, m is the number of pairs of people that are on speaking terms with each other, and finally c<sub>1</sub> and c<sub>2</sub> are odd, denoting that the two wires crossing the street go between houses c<sub>1</sub> and c<sub>1</sub> + 1, and between houses c<sub>2</sub> and c<sub>2</sub> + 1.</p>\n<p>Then follow m lines, each beginning with two distinct integers a and b between 1 and n (inclusive), indicating that the person in house a is on speaking terms with the person in house b. If the houses are on opposite sides of the street, they are followed by an integer c ∈ {c<sub>1</sub>, c<sub>2</sub>} indicating that calls between a and b are routed along the direct connection between c and c + 1. Each pair {a, b} appears at most once in the input.</p>",
+  "output": "<p>Output one line with an integer l,  the smallest possible number of listening devices needed. Then output l lines, each containing a pair of integers, describing between which pairs of houses listening devices should be placed (of course, each of these pairs must be directly connected by a phone line). If there is more than one optimal solution, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "14 2 3 9\n7 11\n5 6 9\n",
+      "output": "1\n7 9\n"
+    },
+    {
+      "input": "14 2 3 9\n7 11\n5 6 3\n",
+      "output": "2\n3 4\n7 9\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2016",
+  "level": 27,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "sparse_table"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 12.800000190734863
+}

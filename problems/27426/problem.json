@@ -1,0 +1,30 @@
+{
+  "id": 27426,
+  "title": "New Year Festival",
+  "time_limit": "7 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The <em>ICPC (Incredibly Colossal and Particularly Comfortable) Theater</em> is giving a number of traditional events to celebrate the New Year!</p>\n<p>Each of the events has its own unalterable duration. Start times of the events are flexible as long as no two events overlap. An event may start immediately after another event ends.</p>\n<p>Start times of the events influence the costs. The cost of an event is given by a continuous piecewise linear function (a polygonal line function) of its start time. Different events may have different cost functions.</p>\n<p>You are asked to schedule all the events minimizing the total cost.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<blockquote>\n<p>$n$</p>\n<p>$\\text{Description}_1$</p>\n<p>$\\vdots$</p>\n<p>$\\text{Description}_n$</p>\n</blockquote>\n<p>The first line contains an integer $n$, representing the number of events. $2 ≤ n ≤ 11$ holds. The descriptions of the events follow. The description of the $i$-th event, $\\text{Description}_i$ ($1 ≤ i ≤ n$), has the following format.</p>\n<blockquote>\n<p>$m$ $l$</p>\n<p>$x_1$ $y_1$</p>\n<p>$\\vdots$</p>\n<p>$x_m$ $y_m$</p>\n</blockquote>\n<p>The integer $m$ in the first line is the number of vertices of the cost function of the event. The integer $l$ in the same line is the duration of the event. $1 ≤ m ≤ 60$ and $1 ≤ l ≤ 10^8$ hold.</p>\n<p>The following $m$ lines describe the cost function. The $j$-th line of the $m$ lines consists of the two integers $x_j$ and $y_j$ specifying the $j$-th vertex of the cost function. $0 ≤ x_1 &lt; \\cdots &lt; x_m ≤ 10^8$ and $0 ≤ y_j ≤ 10^8$ hold. In addition, $(y_{j+1} - y_j)/(x_{j+1} - x_j)$ is an integer for any $1 ≤ j &lt; m$.</p>\n<p>The start time $t$ of the event must satisfy $x_1 ≤ t ≤ x_m$. For $j$ ($1 ≤ j &lt; m$) satisfying $x_j ≤ t ≤ x_{j+1}$, the cost of the event is given as $y_j + (t - x_j) \\times (y_{j+1} - y_j)/(x_{j+1} - x_j)$.</p>\n<p>The total number of the vertices of all the cost functions is not greater than $60$.</p>",
+  "output": "<p>Output the minimum possible total cost of the events in a line.</p>\n<p>It is guaranteed that there is at least one possible schedule containing no overlap. It can be proved that the answer is an integer.</p>",
+  "samples": [
+    {
+      "input": "3\n3 50\n300 2500\n350 0\n400 3000\n2 120\n380 0\n400 2400\n4 160\n0 800\n400 0\n450 100\n950 4600\n",
+      "output": "1460\n"
+    },
+    {
+      "input": "4\n2 160\n384 0\n1000 2464\n3 280\n0 2646\n441 0\n1000 2795\n1 160\n544 0\n2 240\n720 0\n1220 2000\n",
+      "output": "2022\n"
+    }
+  ],
+  "hint": "<p>For Sample Input 1, making the (start time, end time) pairs of the three events to be $(330, 380)$, $(380, 500)$, and $(170, 330)$, respectively, achieves the minimum total cost without event overlaps. The cost of the event $1$ is $2500 + (330 - 300) \\times (0 - 2500)/(350 - 300) = 1000$. Similarly, the costs of the events $2$ and $3$ are $0$ and $460$, respectively.</p>\n<p>For Sample Input 2, the minimum cost is achieved by $(384, 544)$, $(104, 384)$, $(544, 704)$, and $(720, 960)$ for the four events.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 480px; height: 185px;\"/></p>\n<p style=\"text-align: center;\">Figure K.1. Cost functions in Sample Input 1 and a sample schedule</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 480px; height: 187px;\"/></p>\n<p style=\"text-align: center;\">Figure K.2. Cost functions in Sample Input 2 and a sample schedule</p>\n<p>In Figures K.1 and K.2, polylines in the top figure represent cost functions, and rectangles in the bottom figure represent event durations of a schedule achieving the minimum total cost.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2022 Asia Yokohama Regional, Camp, Petrozavodsk Programming Camp, Summer 2023, Day 1: Starting Contest",
+  "level": 23,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 5.076900005340576
+}

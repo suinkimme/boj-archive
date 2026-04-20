@@ -1,0 +1,27 @@
+{
+  "id": 33792,
+  "title": "Walkable Strings",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are given an undirected graph where each edge is colored either red or blue. We define a string $s$ consisting of characters <code>R</code> and <code>B</code> to be <em>walkable</em> if there exists a path in the graph where the colors of the edges in the path match the characters of $s$ in order. The path is not required to be simple, so it is allowed to visit edges and vertices multiple times.</p>\n<p>For example, consider the below graph:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 250px; height: 145px;\"/></p>\n<p>In this case, the string <code>BRRBB</code> is walkable, because you can use this path:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 500px; height: 49px;\"/></p>\n<p>Find a non-walkable string of minimum length or determine that all strings are walkable.</p>",
+  "input": "<p>The first line of the input contains a single integer $t$ ($1 \\le t \\le 10^4$) --- the number of test cases. The description of the test cases follows.</p>\n<p>The first line of each test case contains two integers $n$ and $m$ ($1 \\le n \\le 2\\cdot 10^5$, $0 \\le m \\le 2\\cdot 10^5$) --- the number of vertices and edges in the graph, respectively.</p>\n<p>Each of the next $m$ lines of the input describes an edge of the graph. It contains two integers $u$ and $v$, and a character $c$ ($1 \\le u, v \\le n$, $u \\ne v$, $c = $<code>B</code> or <code>R</code>) --- the endpoints of the edge and its color. It is guaranteed that there is at most one edge between each unordered pair of vertices.</p>\n<p>It is guaranteed that the sum of $n$ across all test cases is at most $2\\cdot 10^5$, and the sum of $m$ across all test cases is at most $2\\cdot 10^5$.</p>",
+  "output": "<p>For each test case, print a single line containing a minimum-length non-walkable string, or $-1$ if all strings are walkable.</p>\n<p>If there are multiple answers, you may print any.</p>",
+  "samples": [
+    {
+      "input": "5\n4 4\n1 2 B\n3 1 B\n3 4 R\n4 1 R\n3 3\n1 2 R\n2 3 R\n3 1 R\n4 2\n1 2 R\n3 4 B\n7 10\n1 2 B\n1 4 R\n2 4 B\n4 5 B\n6 7 R\n6 2 R\n5 7 B\n3 6 B\n3 7 R\n1 7 B\n3 0\n",
+      "output": "BRB\nB\nRB\n-1\nR\n"
+    }
+  ],
+  "hint": "<p>The graph in the first sample case corresponds to the picture above. It can be shown that all strings of length 2 or less are walkable on this graph.</p>\n<p>The graph in the second sample case contains no blue edges, so the string $<code>B</code>$ is not walkable.</p>\n<p>It can be shown that all strings are walkable on the graph in the fourth sample case.</p>",
+  "source": "University, Rutgers University, Rutgers University Programming Contest Spring 2025",
+  "level": 21,
+  "tags": [
+    "dp",
+    "graphs",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.7999999523162842
+}

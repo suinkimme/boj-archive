@@ -1,0 +1,22 @@
+{
+  "id": 23413,
+  "title": "Eggs",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Gosha has an egg tray for $16$ eggs on the refridgerator door: two rows of sockets, eight sockets in each row, with an immovable separator in the middle. Initially, there are no eggs in the tray.</p>\n<p>When there is at least one egg in the tray, Gosha can take one of them and eat it. When there are at most five eggs in the tray, Gosha can go to a grocery store, buy ten eggs there and place them in the tray. Please note that, after he buys new eggs and placing them in the tray, there is always at least one free socket left.</p>\n<p>The eggs will spoil if they are not eaten for too long. So, every time Gosha takes an egg to eat, he should pick one of the oldest eggs in the tray: the ones which were bought earliest. He wants to place the newly bought eggs in such a way that, when he sees the positions of all eggs in the tray, he immediately knows which of them are the oldest. Help Gosha devise a strategy: where to place the eggs he buys and which egg to pick for eating so that the picked egg is one of the oldest.</p>",
+  "input": "<p>There are two tests in this problem. In the first test, the first line contains the word \"<code>sample</code>\", and in the second test the word \"<code>test</code>\". The answer for the first test is checked for validity only, and on the second test, the strategy is also checked.</p>",
+  "output": "<p>Print your strategy as a list of instructions.</p>\n<p>Each instruction consists of an initial state (to the left), an action (at the center) and a final state (to the right). Please follow the format shown in the example! The formal output rules are given below the example.</p>\n<p>The \"<code>buy</code>\" action must add exactly ten eggs, and the \"<code>eat</code>\" action must remove exactly one egg. A single initial state can occur in the instructions at most twice: at most once with the \"<code>buy</code>\" action and at most once with the \"<code>eat</code>\" action.</p>\n<p>In this problem, formatting and the above rules are checked on both tests. However, the strategy checks described below are performed only on the second test.</p>\n<p>Gosha uses the strategy as follows. First, he chooses the next possible action: he can eat an egg if there is at least one in the refridgerator, and he can place ten eggs he bought if there are at most five eggs in the refridgerator. After that, Gosha searches for an instruction with the action he chose where the initial state is the actual state of eggs in his refridgerator. Finally, Gosha changes the state to the final state of this instruction.</p>\n<p>If there exists a sequence of possible actions such that, eventually, Gosha can not find the instruction he needs, or he picks an egg to eat which is not one of the oldest, the strategy is considered incorrect. If, for every sequence of possible actions, Gosha can find the next instruction, and the egg he eats is always one of the oldest, the strategy is considered correct. Please note that the strategy should account for every sequence of possible actions: when Gosha has two options (eat or buy), both have to be covered.</p>\n<p>You are allowed to print instructions with initial states that can not be reached by any sequence of possible actions.</p>",
+  "samples": [
+    {
+      "input": "sample\n",
+      "output": "****|**** eat ****|****\n...*|****     ....|****\n---\n....|.... buy ...*|****\n....|....     ...*|****\n---\n"
+    }
+  ],
+  "hint": "<p>Here are the rules for printing instructions. Each instruction takes three lines: the first two describe the states and the action, and the third one consists of three \"<code>-</code>\" characters (minus, ASCII code 45). In each state, empty sockets are denoted by \"<code>.</code>\" (dot, ASCII code 46), eggs by \"<code>*</code>\" (asterisk, ASCII code 42), and separators by \"<code>|</code>\" (vertical line, ASCII code 124). The actions are denoted by words \"<code>buy</code>\" (add ten new eggs) and \"<code>eat</code>\" (remove one egg). On the first line, the action is separated from the states by single spaces, and on the second line, the states are separated by five spaces.</p>",
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 3: Grand Prix of SPb",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

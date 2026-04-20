@@ -1,0 +1,39 @@
+{
+  "id": 28494,
+  "title": "Network",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Rui Yuan the Duck is building a new network to run all of his new applications. This network is comprised of $n$ servers numbered from $1$ to $n$. There are also $n - 1$ network links, numbered from $1$ to $n - 1$ connecting these servers.</p>\n<p>The $i$-th of these links connects servers $u[i]$ and $v[i]$ <strong>bidirectionally</strong>. It is guaranteed that it is possible to travel from any server to any other server using only the servers and network links.</p>\n<p>Initially, all $n$ servers are active. Rui Yuan has $m$ applications running, which have distinct IDs from $1$ to $m$. Each application has $2$ databases. Application $j$ has databases in servers $a[j]$ and $b[j]$ (which may be the same server). It is possible for two different applications to have a database on the same server.</p>\n<p>In order for application $j$ to work, both of its databases must be connected through network links and active servers. To be precise, application $j$ is working if both of the following conditions are met:</p>\n<ul>\n<li>Servers $a[j]$ and $b[j]$ are both active.</li>\n<li>One can travel from server $a[j]$ to server $b[j]$ using only network links and active servers.</li>\n</ul>\n<p>Rui Yuan has asked Benson the Rabbit to test his network. Using his hacking skills, Benson can select any set of servers and deactivate all of them simultaneously. The robustness of the network is the minimum number of servers that must be deactivated to ensure <strong>all</strong> $m$ applications are not working.</p>\n<p>Benson is very busy, so he wants you to help him compute the robustness of the network and the selection of servers he should deactivate so that he doesn’t waste time deactivating more servers than needed.</p>",
+  "input": "<p>The first line of input contains two integers, $n$ and $m$.</p>\n<p>$n - 1$ lines will follow. The $i$-th line contains two integers, $u[i]$ and $v[i]$ respectively, which are the servers connected by the $i$-th network link.</p>\n<p>Another $m$ lines will follow. The $j$-th line contains two integers, $a[j]$ and $b[j]$ respectively, which are the servers storing the databases for application $j$.</p>",
+  "output": "<p>Output two lines. The first line should contain a single integer, representing the robustness of the network, which we will denote as $x$.</p>\n<p>The second line should contain $x$ integers, representing the servers that should be deactivated. All $x$ integers must be pairwise distinct. You may output them in any order.</p>",
+  "samples": [
+    {
+      "input": "9 4\n1 2\n2 3\n2 6\n3 4\n4 5\n4 7\n6 9\n7 8\n6 2\n5 3\n4 8\n5 9\n",
+      "output": "2\n4 2\n"
+    },
+    {
+      "input": "6 5\n1 2\n2 3\n4 1\n3 5\n4 6\n1 1\n2 2\n3 3\n2 2\n4 4\n",
+      "output": "4\n3 2 4 1\n"
+    },
+    {
+      "input": "8 3\n1 2\n2 3\n3 4\n4 5\n5 6\n6 7\n7 8\n3 5\n8 5\n4 4\n",
+      "output": "2\n4 6\n"
+    },
+    {
+      "input": "6 2\n1 2\n1 3\n1 4\n1 5\n1 6\n2 2\n5 6\n",
+      "output": "2\n2 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), Qualification, NOI 2023 Qualification",
+  "level": 20,
+  "tags": [
+    "greedy",
+    "lca",
+    "smaller_to_larger",
+    "trees"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.75
+}

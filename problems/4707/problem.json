@@ -1,0 +1,22 @@
+{
+  "id": 4707,
+  "title": "Raggedy, Raggedy",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Consider the problem of laying out text in lines of a fixed maximum width L (a.k.a., “line filling”).</p>\n<p>If you do a poor job, the ends of the lines are unnecessarily ragged - like this paragraph. Now, by convention, we allow the last line of a paragraph to be arbitrarily ragged. We don’t mind if that final line contains just a few characters, but we expect the earlier lines to be of approximately uniform length, filling up the column in which we are setting the text.</p>\n<p>The straightforward approach of filling each line with as many words as will fit and then moving to the next line does not always yield the most aesthetically pleasing results. For example, the sequence</p>\n<p>See if we care.</p>\n<p>could be laid out in L=6 like this:</p>\n<p>See if<br/>\nwe<br/>\ncare.</p>\n<p>That layout is, arguably, not as visually pleasing as</p>\n<p>See<br/>\nif we<br/>\ncare.</p>\n<p>Define a “word” as any sequence of non-whitespace characters bounded by a line start or end or by a blank. The legal “whitespace characters” in this problem are blanks and the line terminator characters.</p>\n<p>Given a sequence of N words of width w<sub>1</sub>, w<sub>2</sub>, . . . , w<sub>N</sub> , and a maximum line width L, with the guarantee that for all i, w<sub>i </sub>≥ L, define w(i, j) as the width of the line containing words i through j, inclusive, plus one blank space between each pair of words.</p>\n<p>Then we can define the raggedness of a line containing words i though j as </p>\n<p>r(i, j) = (L − w(i, j))<sup>2</sup></p>\n<p>Write a program to read paragraphs of text and to lay them out in a way that no line contains more than L characters, for a specified L, and so that you minimize the total raggedness added up over all lines except the last one. (The final line of a paragraph can be arbitrarily shorter then the lines above it.) Line terminator characters are not counted as part of the line width.</p>",
+  "input": "<p>Input will consist of one or more datasets.</p>\n<p>Each dataset begins with a line containing one integer, L, denoting the maximum line width (not counting line terminator characters). You are guaranteed that 0 &lt; L ≤ 80. A value of zero indicates the end of input.</p>\n<p>The remainder of the dataset consists of up to 250 lines containing a paragraph of text, terminated by an empty line. Paragraphs may contain from 1 to 500 words, where a word is any consecutive sequence of non-whitespace characters.</p>\n<p>No line of text will contain a word of length greater than L.</p>",
+  "output": "<p>Print each paragraph laid out optimally as described above. After each paragraph print a line containing “===” (three equal signs).</p>\n<p>If there is more than one way to fill a paragraph with the optimal raggedness, any such layout may be printed.</p>",
+  "samples": [
+    {
+      "input": "6\nSee if we\ncare.\n\n25\nRaggedy, raggedy are we.\nJust as raggedy as raggedy can be.\nWe don’t get nothin’ for our labor.\nSo raggedy, raggedy are we.\n- P Seeger\n\n0\n",
+      "output": "See\nif we\ncare.\n===\nRaggedy, raggedy are\nwe. Just as raggedy\nas raggedy can be. We\ndon’t get nothin’ for\nour labor. So raggedy,\nraggedy are we. - P\nSeeger\n===\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 2011 Mid-Atlantic Regional Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

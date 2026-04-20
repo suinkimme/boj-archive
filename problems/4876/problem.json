@@ -1,0 +1,22 @@
+{
+  "id": 4876,
+  "title": "SHEET",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>See if a spreadsheet has a consistent formulation.</p>\n<p>Any given cell of a spreadsheet can have a formula that depends on the value from some other cell. Before trying to calculate the value of a cell it is important to determine if the definition of the formula for that cell is circular.</p>\n<p>Our spreadsheet only has a limited formulation for expressions:</p>\n<pre>\ndefinition := cell \"=\" expression\nexpression := term | expression \"+\" term | expression \" \" term\nterm := factor | term \"*\" factor | term \"/\" factor\nfactor := number | cell | \"(\" expression \")\"\nnumber := digit | number digit\ndigit := \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"\ncell := \"R\" digit digit \"C\" digit digit\n</pre>\n<p>Valid cell rows and columns are 1 through 20, so that a total of 400 cells are available in our spreadsheet.</p>",
+  "input": "<p>The input file will contain one or more lines, each representing cells that are defined in the spreadsheet.</p>",
+  "output": "<p>Other than the standard header and trailer messages, a single line is printed for each cell defined in the input file (and in the same order). This should be the cell name followed by \"circular\" if evaluating the cell results in a circular definition (either directly or indirectly). If the cell can be evaluated without a circular definition, then the word \"ok\" should follow the cell.</p>",
+  "samples": [
+    {
+      "input": "R01C01=1\nR01C02=2\nR01C03=R01C01+R01C02\nR02C01=(R03C02+1)*R01C03\nR03C02=R02C01\n",
+      "output": "R01C01 ok\nR01C02 ok\nR01C03 ok\nR02C01 circular\nR03C02 circular\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2003 Rocky Mountain Regional Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

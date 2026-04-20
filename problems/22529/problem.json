@@ -1,0 +1,22 @@
+{
+  "id": 22529,
+  "title": "Sakura Poetry",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Nathan O. Davis は集積回路コースの学生である．</p>\n<p>Nathan は足りない単位を補充するために，日本文化に関する授業を履修している．今日の課題は詩の作成である．</p>\n<p>Nathan は勉強不足で日本語が不得手なため，プログラムに詩を自動生成させようと考えた．手始めに彼は，日本語の単語の接続辞書を入手した． あとは単語の接続にしたがってランダムな文章を生成するだけである．</p>\n<p>しかしながら，ランダムに生成された全ての文字列が詩として認められるわけではない． 詩には，いくつかの季語のうち1つが，一度だけ現れていなければならない．ある季語が2回以上出現することや，2種類以上の季語が1回ずつ出現することは許されない． また，季語は単語の接続の境界をまたいで出現してもよい．</p>\n<p>あなたの仕事は，入力で与えられた単語の接続辞書と季語のリストから，指定された長さの詩が何通りに作られるかを求めるプログラムを作成することである． 違う単語を繋げて詩となる同じ文字列が得られた場合，それらは重複して数え上げるものとする．答えは非常に大きくなりうるので， 1,000,000,007 で割った余りを出力せよ．</p>",
+  "input": "<p>入力は複数のテストケースを含んでいる．1つのテストケースは，以下の形式で与えられる．</p>\n<pre>\n<i>N</i> <i>M</i> <i>K</i>\n<i>from<sub>1</sub></i> <i>to<sub>1</sub></i>\n<i>from<sub>2</sub></i> <i>to<sub>2</sub></i>\n:\nfrom<sub>N</sub> <i>to<sub>N</sub></i>\n<i>seasonword<sub>1</sub></i>\n<i>seasonword<sub>2</sub></i>\n:\n<i>seasonword<sub>K</sub></i>\n</pre>\n<p>入力の最初の行には3つの整数 <i>N</i> (1 ≤ <i>N</i> ≤ 250), <i>M</i> (1 ≤ <i>M</i> ≤ 500), <i>K</i> (1 ≤ <i>K</i> ≤ 30) が含まれ，それぞれ単語の接続辞書の大きさ，作成すべき詩の長さ，季語の数を表す．</p>\n<p>続く <i>N</i> 行は単語の接続辞書の情報を表す． 各行は2つの文字列 <i>from<sub>i</sub></i> , <i>to<sub>i</sub></i> を含み，単語 <i>from<sub>i</sub></i> の後に続けて単語 <i>to<sub>i</sub></i> が出現してもよいということを表す． <i>to<sub>i</sub></i> の後に続けて <i>from<sub>i</sub></i> が出現してもよいということを表すものではないことに注意せよ．また，<i>from<sub>i</sub></i> で終わるような他の文字列の後に続けて <i>to<sub>i</sub></i> が出現してもよいということを表すものでもない．詩は，接続辞書に含まれるどの単語から始めてもよい． 続く <i>K</i> 行は1つの文字列 <i>seasonword<sub>i</sub></i> からなり，それぞれ季語を表す． 入力中に現れる文字列は全て小文字のアルファベットからなり，その長さは 1 以上 20 以下である． 接続辞書の各項目，および季語は互いに異なる． すなわち， <i>i</i> ≠ <i>j</i> に対して <i>from<sub>i</sub></i> ≠ <i>from<sub>j</sub></i> または <i>to<sub>i</sub></i> ≠ <i>to<sub>j</sub></i> が成り立つ． 同様に，<i>i</i> ≠ <i>j</i> に対して <i>seasonword<sub>i</sub></i> ≠ <i>seasonword<sub>j</sub></i> が成り立つ． 入力の末尾には，入力の終了を表す 3 つの 0 がある．</p>",
+  "output": "<p>生成される異なる詩の数を 1,000,000,007 で割った余りを1行に出力せよ． 先に言及したように，違う単語を繋げて詩となる同じ文字列が得られた場合，それらは重複して数え上げるものとする． 厳密に言えば，2つの詩 <i>s</i>, <i>t</i> があり，それぞれ単語の列 [<i>a<sub>1</sub></i> , <i>a<sub>2</sub></i> , ..., <i>a<sub>n</sub></i> ], [<i>b<sub>1</sub></i> , <i>b<sub>2</sub></i> , ..., <i>b<sub>m</sub></i> ] を順に連結して得られたものであるとき， <i>n</i> = <i>m</i> かつすべての 1 ≤ <i>i</i> ≤ <i>n</i> に対して <i>a<sub>i</sub></i> = <i>b<sub>i</sub></i> であるとき，またそのときに限って，2つの詩 <i>s</i>, <i>t</i> は同一の詩とみなされる．</p>",
+  "samples": [
+    {
+      "input": "4 64 2\nnegawakuha hananoshitanite\nhananoshitanite harushinan\nharushinan sonokisaragino\nsonokisaragino mochizukinokoro\nsakura\nhana\n2 15 2\nnaha naha\nnaha gachoon\nsakura\nhana\n3 7 2\nasakur a\na sakura\nasa kura\nsakura\nhana\n9 100 2\na a\na h\na n\nh a\nh h\nh n\nn a\nn h\nn n\nsakura\nhana\n4 2 2\na a\na b\nb a\nb b\nab\nb\n4 7 4\ni cpc\nmi cp\nac mi\ncp c\nac\nwa\ntle\nre\n0 0 0\n",
+      "output": "1\n1\n3\n715991824\n1\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2011",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

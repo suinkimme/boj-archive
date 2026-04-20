@@ -1,0 +1,25 @@
+{
+  "id": 25218,
+  "title": "케이크 자르기",
+  "time_limit": "1 초  (하단 참고)",
+  "memory_limit": "512 MB",
+  "description": "<p>Alice와 Bob은 함께 과일 케이크를 만들었다. 케이크는 $R \\times C$ 크기의 직사각형 모양이고, 각 $1 \\times 1$ 크기의 칸에는 딸기(<code>S</code>), 블루베리(<code>B</code>), 라즈베리(<code>R</code>) 중 딱 한 종류의 과일이 토핑으로 올라가 있거나 혹은 크림(<code>.</code>)만 발라져 있다.</p>\r\n\r\n<p>아래 그림은 크기가 $2 \\times 2$인 케이크이다.</p>\r\n\r\n<ul>\r\n\t<li>좌측 상단 $(1, 1)$에는 딸기가(<code>S</code>) 있고, 우측 상단 $(1, 2)$에는 과일은 없고 크림만(<code>.</code>) 있다.</li>\r\n\t<li>좌측 하단 $(2, 1)$에는 블루베리가(<code>B</code>) 있고 우측 하단 $(2, 2)$에는 라즈베리가(<code>R</code>) 있다.</li>\r\n</ul>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 79px; width: 80px;\" /></p>\r\n\r\n<p>Bob은 케이크를 총 $N-1$번 가로나 세로로 잘라서 총 $N$조각의 직사각형 모양의 크기가 더 작은 케이크를 만들어 친구들에게 나눠주고 싶다. 단, Bob이 케이크를 자를 때에는 아래 규칙에 따라 케이크를 $N-1$번 잘라야 한다.</p>\r\n\r\n<ul>\r\n\t<li>$1$번째 부터 $N-1$번째 자르는 동안: Bob은 현재 자신이 가진 직사각형 모양의 케이크를 가로로 끝까지 자르거나 세로로 끝까지 잘라서 두 개의 직사각형 모양의 케이크 조각으로 만들어야 한다. 이때, 두 개의 케이크 조각은 크기가 최소한 $1 \\times 1$ 이어야 한다.\r\n\t<ul>\r\n\t\t<li>만약 $i$번째에 가로로 케이크를 잘랐다면, 두 케이크 조각 중 상단에 위치한 케이크 조각을 $i$번째 친구에게 주고, 하단에 위치한 케이크를 갖고 이어서 자르기를 진행한다.</li>\r\n\t\t<li>만약 $i$번째에 세로로 케이크를 잘랐다면, 두 케이크 조각 중 좌측에 위치한 케이크 조각을 $i$번째 친구에게 주고, 우측에 위치한 케이크를 갖고 이어서 자르기를 진행한다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>$N-1$번 자르고 난 후, $N-1$번째 친구에게 케이크를 주고 난 후 마지막에 남은 케이크는 그대로 $N$번째 친구에게 준다. 따라서 $R \\times C$ 크기의 케이크는 한 칸도 남김없이 $N$명의 친구들에게 주게 된다.</li>\r\n</ul>\r\n\r\n<p>Alice는 $N$명의 친구들이 좋아하는 과일이 무엇인지 알기 때문에, 각 친구가 받게 될 케이크에는 그 친구가 좋아하는 과일이 반드시 $1$개 이상 있도록 하고 싶다. <em>단, 위에 언급한 대로 케이크를 잘라 얻어진 조각은 반드시 $1$번 친구부터 $N$번 친구까지 순서대로 주어야 한다.</em></p>\r\n\r\n<p>예를 들어 $N = 3$이고, 세 친구가 좋아하는 과일이 순서대로 딸기(<code>S</code>), 블루베리(<code>B</code>), 그리고 라즈베리(<code>R</code>)라 하자. 이때, 위의 $2 \\times 2$ 케이크를 $3$조각으로 자르기 위해 Bob은 총 $2$번 케이크를 잘라야 하고, 위 규칙을 따르면 아래와 같이 두 가지 방법이 있다.</p>\r\n\r\n<table class=\"table table-bordered\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>방법 1</td>\r\n\t\t\t<td>\r\n\t\t\t<p><img alt=\"\" src=\"2.png\" style=\"height: 107px; width: 100px;\" /></p>\r\n\r\n\t\t\t<p>1번째 자르기: 가로로 자르기</p>\r\n\r\n\t\t\t<p>규칙대로 $1$번 친구에게 <strong>상단</strong>의 $1 \\times 2$ 케이크 조각을 준다. 이 조각은 딸기를 하나 포함한다.</p>\r\n\r\n\t\t\t<p><strong>하단</strong>의 $1 \\times 2$ 케이크를 $2$, $3$번 친구에게 준다.</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p><img alt=\"\" src=\"3.png\" style=\"height: 49px; width: 100px;\" /></p>\r\n\r\n\t\t\t<p>2번째 자르기: 세로로 자르기</p>\r\n\r\n\t\t\t<p>$1 \\times 2$ 케이크를 세로로 잘라 좌측의 블루베리(<code>B</code>) 조각은 $2$번 친구에게 주고, 우측의 라즈베리(<code>R</code>) 조각은 $3$번 친구에게 준다.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>방법 2</td>\r\n\t\t\t<td><img alt=\"\" src=\"4.png\" style=\"height: 88px; width: 100px;\" />\r\n\t\t\t<p>1번째 자르기: 세로로 자르기</p>\r\n\r\n\t\t\t<p>규칙대로 $1$번 친구에게 <strong>좌측</strong>의 $2 \\times 1$ 케이크 조각을 준다. 이 조각은 딸기 하나와 블루베리 하나를 포함한다.</p>\r\n\r\n\t\t\t<p><strong>우측</strong>의 $2 \\times 1$ 케이크를 $2$, $3$번 친구에게 준다.</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p><img alt=\"\" src=\"5.png\" style=\"height: 101px; width: 50px;\" /></p>\r\n\r\n\t\t\t<p>2번째 자르기: 가로로 자르기</p>\r\n\r\n\t\t\t<p>$2 \\times 1$ 케이크를 가로로 잘라 상단의 크림(<code>.</code>) 조각은 $2$번 친구에게 주고, 하단의 라즈베리(<code>R</code>) 조각은 $3$번 친구에게 준다.</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>위의 두 가지 방법 중 세 친구 모두가 자신의 좋아하는 과일을 포함한 조각을 얻는 방법은 첫 번째 방법뿐이다.</p>\r\n\r\n<p>입력으로 케이크의 크기 및 과일이 올려진 형태, 그리고 친구들이 좋아하는 과일이 주어졌을 때, 몇 가지 다른 방법으로 케이크를 자를 수 있는지 구해보자.</p>\r\n",
+  "input": "<p>입력 첫 줄에는 테스트 케이스의 수 $T$가 주어진다.</p>\r\n\r\n<p>각 테스트 케이스의 첫 줄에는 $R$, $C$, $N$이 공백으로 구분되어 주어진다. 다음 $R$줄에 걸쳐 각 줄에 길이가 $C$인 문자열이 주어지는데, 이는 케이크의 토핑 과일이 무엇인지 (혹은 크림만 있는지) 알려준다. $R+2$번째 줄에는 길이 $N$인 문자열이 주어지는데, 이는 $N$명의 친구가 좋아하는 과일의 종류이다.</p>\r\n",
+  "output": "<p>본문에 기술된 규칙에 따라 Bob이 $N-1$번 케이크를 자를 때 $N$명의 친구가 모두 만족할 수 있도록 (즉, 각 친구가 원하는 과일이 케이크 조각에 최소 $1$개 이상 포함되도록) 자르는 방법의 수를 구해 출력한다. 단, 이 값이 매우 클 수 있으므로 $10^9+7$로 나눈 나머지를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "6\n2 2 3\nS.\nBR\nSBR\n2 2 3\nS.\nBR\nSRB\n1 6 3\nSBRSBR\nSBR\n3 4 4\nS...\n.SR.\n...B\nSSRB\n3 3 2\nSBS\nBSB\nSBS\nSB\n1 50 10\nSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\nSSSSSSSSSS\n",
+      "output": "1\n0\n7\n4\n4\n54455620\n"
+    }
+  ],
+  "hint": null,
+  "source": null,
+  "level": 15,
+  "tags": [
+    "dp",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.8235000371932983
+}

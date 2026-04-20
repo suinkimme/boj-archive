@@ -1,0 +1,27 @@
+{
+  "id": 7672,
+  "title": "Pool",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Billiards, also commonly known as “pool,” is a popular game in North America. The game is played on a rectangular table with six pockets—one at each corner and one in the middle of each of the two longer sides of the table. The object of the game is to strike a cue ball so that it collides with other balls, knocking them into the pockets.</p>\n<p>The surface of our pool table measures 108” by 54”, and to facilitate computation, we place it on the Cartesian plane with its southwest corner situated at (0, 0), and its northeast corner at (108, 54). Therefore, the centers of the 6 pockets, numbered 1 through 6, will have coordinates of (0, 0), (54, 0), (108, 0), (0, 54), (54, 54), and (108, 54), respectively (see Figure 2). The billiard balls are spherical and measure 2” in diameter.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:264px; width:422px\"/></p>\n<p style=\"text-align: center;\">Figure 2: Diagram of pool table.</p>\n<p>Given the location of the cue ball, a target ball, and a number of other balls on the table, your task for this problem is to write a program to determine whether or not you can successfully make a particular pool shot. The cue ball can be struck in any direction in a straight line. We consider collisions between the balls to be perfectly elastic, so that the target ball will always travel in a straight line, away from the point on its surface contacted by the cue ball (see Figure 3).<sup>2</sup></p>\n<p>A shot is considered possible if the cue ball can be struck so that it collides directly with the target ball, in turn sending the target ball directly into a pocket. Neither ball should collide with any other balls, bounce off the edges of the table (cushions), nor should their centers cross the boundaries of the table. In other words, you are not to consider any bank shots, combination shots, spin shots, or any other trick shots in this problem. Note that the difference between the incoming angle of the cue ball and the outgoing angle of the target ball must be greater than 90◦ . The target ball is considered to land in a pocket when its center coincides with the center of that pocket.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height:194px; width:273px\"/></p>\n<p style=\"text-align: center;\">Figure 3: Diagram of pool ball collision.</p>\n<p><sup>2</sup>You may assume that the cue ball disappears immediately after making contact with the target ball.</p>",
+  "input": "<p>The input test file will contain multiple cases. The first line of each test case contains four real numbers, xc yc xt yt, where (xc, yc) is the location of the cue ball and (xt, yt) is the location of the target ball. The second line of the test case contains an integer n (where 0 ≤ n ≤ 14), the number of additional balls on the table, followed by n pairs of real numbers, x<sub>1</sub> y<sub>1</sub> . . . x<sub>n</sub> y<sub>n</sub>, where (x<sub>i</sub> , y<sub>i</sub>) is the location of the ith additional (possibly obstructing) ball. No two balls overlap, and all balls are strictly in the interior of the table; in particular, all provided coordinates obey 3 &lt; x &lt; 105 and 3 &lt; y &lt; 51.</p>\n<p>Input is terminated with a single line containing only the number 0; do not process this line.</p>",
+  "output": "<p>For each test case, output on a single line the number(s) of the pocket(s) into which the target ball can be shot, sorted in ascending numerical order. Separate pocket numbers with a single space. If there are no pockets for which a clear shot exists, output the words “no shot”.</p>",
+  "samples": [
+    {
+      "input": "30 27 70 24\n0\n80 27 40 27\n2 38 28 38 26\n81.0 27.0 54.5 27.0\n1 54.0 33.3\n81.0 27.0 54.5 25.0\n1 54.0 33.3\n0\n",
+      "output": "3 6\nno shot\n1 4\n1 2 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, Stanford Local ACM Programming Contest, SLPC 2007",
+  "level": 0,
+  "tags": [
+    "geometry",
+    "implementation",
+    "physics",
+    "simulation"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

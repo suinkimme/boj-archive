@@ -1,0 +1,32 @@
+{
+  "id": 14036,
+  "title": "Timpanist",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Computer scientists don’t often help percussionists, but today, that will change. Since we cannot help all percussionists at the same time, we focus on timpanists first. By way of terminology, the timpani is the plural of timpano and the player of the timpani is a timpanist.</p>\n<p>A timpano is a large drum which can be tuned to a certain pitch, and a timpanist uses an ordered set of D timpani. On this occasion, they’re playing a piece which has N notes. Note i occurs T<sub>i</sub> seconds into the piece, and has pitch P<sub>i</sub>. P<sub>i</sub> is one of the following twelve notes:</p>\n<p style=\"text-align: center;\">{ F, F#, G, G#, A, A#, B, C, C#, D, D#, E }</p>\n<p>At a given time, a timpano can only be used to play the pitch it is currently tuned to, and thus the timpanist can play a note i if and only if one of the timpani is tuned to pitch P<sub>i</sub> at time T<sub>i</sub>.</p>\n<p>Every note in this piece is in the range of a single octave, from F up to E, which means that the above list of possible notes is in ascending order of pitch. In order to make your computation slightly easier, we will use integers from 1 to 12 to indicate these 12 tones:</p>\n<table class=\"table table-bordered\" style=\"width: 100%;\">\n<tbody>\n<tr>\n<th>1</th>\n<th>2</th>\n<th>3</th>\n<th>4</th>\n<th>5</th>\n<th>6</th>\n<th>7</th>\n<th>8</th>\n<th>9</th>\n<th>10</th>\n<th>11</th>\n<th>12</th>\n</tr>\n<tr>\n<td>F</td>\n<td>F#</td>\n<td>G</td>\n<td>G#</td>\n<td>A</td>\n<td>A#</td>\n<td>B</td>\n<td>C</td>\n<td>C#</td>\n<td>D</td>\n<td>D#</td>\n<td>E</td>\n</tr>\n</tbody>\n</table>\n<p>(i.e., F will be represented by 1, F# by 2, . . ., E by 12).</p>\n<p>These are the only pitches to which timpani can be tuned.</p>\n<p>Before the piece starts, the timpanist can freely tune each timpano to any pitch they’d like. However, during the piece, they may need to quickly retune them in between notes in order to be able to play the required pitches at the correct times. The drums are numbered from 1 to D. At every point in time, the drum i + 1 must be kept tuned to a pitch higher than drum i. Retuning a single drum must be done in an uninterrupted interval of time, in which no notes are being played and no other drums are being retuned. Because this is not an easy process, the timpanist would like to give themselves as much time as possible. In particular, they’d like to maximize the amount of time they have for the fastest retuning they must perform within the piece.</p>",
+  "input": "<p>The first line contains two integers, N and D, the number of notes to be played and the number of drums available to be played (1 ≤ N ≤ 100; 1 ≤ D ≤ 4). The next N lines each contain two integers T<sub>i</sub> and P<sub>i</sub> representing the time and pitch of the ith note played (0 ≤ T<sub>1</sub> &lt; T<sub>2</sub> &lt; ... &lt; T<sub>N−1</sub> &lt; T<sub>N</sub> ≤ 10<sup>9</sup>; 1 ≤ P<sub>i</sub> ≤ 12 for 1 ≤ i ≤ N).</p>",
+  "output": "<p>The output is one line containing one real number (rounded off to 2 decimal places), which is the maximum amount of time (in seconds) that the timpanist can have for their fastest retuning, or 0.00 if no retunings are necessary</p>",
+  "samples": [
+    {
+      "input": "7 1\n100 1\n120 3\n130 5\n140 6\n150 8\n165 10\n170 12\n",
+      "output": "5.00\n"
+    },
+    {
+      "input": "12 4\n0 1\n2 1\n3 3\n6 1\n9 6\n12 5\n21 1\n23 1\n24 3\n27 1\n30 8\n33 6\n",
+      "output": "4.50\n"
+    },
+    {
+      "input": "2 4\n40287 8\n20338194 8\n",
+      "output": "0.00\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2015, CCO 2015",
+  "level": 15,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

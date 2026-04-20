@@ -1,0 +1,22 @@
+{
+  "id": 4858,
+  "title": "Open and Close",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Morphological operations are tools that are used for extracting image components to represent and describe region shapes. Two common morphological operations are open and close. Before we define these operations, we first have to define how images are represented.</p>\n<p>Given a binary image <em>A</em> with <em>M</em> rows and <em>N</em> columns, we can represent <em>A</em> as a set of the coordinates <em>(r, c)</em> (1 &lt;= <em>r</em> &lt;= <em>M</em>, 1 &lt;= <em>c</em> &lt;= <em>N</em>) such that the pixel at the specified coordinates is 1. The coordinates of the top-left corner are (1, 1). We are also given a binary image <em>B</em> (called the <em>structuring element</em>) with <em>2S+1</em> rows and columns. The structuring element can be represented as a set as before, except that <em>(-S,-S)</em> are the coordinates of the pixel at the top-left corner.</p>\n<p>Two operations important in morphological image processing are dilation and erosion. Dilation of an image <em>A</em> by the structuring element <em>B</em> is defined by:</p>\n<pre>\n         A ^ B = { a + b | a in A, b in B } intersect Z\n</pre>\n<p>where the addition of coordinates is defined componentwise, and <em>Z</em> is the set of coordinates <em>(i,j)</em> with 1 &lt;= <em>i</em> &lt;= <em>M</em> and 1 &lt;= <em>j</em> &lt;= <em>N</em>. Similarly, erosion of <em>A</em> by <em>B</em> is defined by:</p>\n<pre>\n         A v B = { w | w + b in A for every b in B }\n</pre>\n<p>With these two operations defined, the opening of <em>A</em> by <em>B</em> is defined by</p>\n<pre>\n         A o B = (A v B) ^ B\n</pre>\n<p>and the closing of <em>A</em> by <em>B</em> is defined by</p>\n<pre>\n         A . B = (A ^ B) v B\n</pre>\n<p>Roughly speaking, the opening operation is used to remove small details while preserving the overall shape. The closing operation is used to fill in gaps while preserving the overall shape.</p>",
+  "input": "<p>The input consists of a number of cases. Each case starts with a line containing the integers <em>M</em>, <em>N</em>, and <em>S</em> separated by spaces (10 &lt;= <em>M, N</em> &lt;= 256, 1 &lt;= <em>S</em> &lt;= 4). The next <em>M</em> lines contain the rows of the image <em>A</em> specified by <em>N</em> characters that are '.' (0) or '*' (1). The next <em>2S+1</em> lines specify the structuring element <em>B</em> in a similar manner. The input is terminated by <em>M = N = S = 0</em>.</p>",
+  "output": "<p>For each case, print the case number followed by a blank line. Then display the result of <code>A o B</code> followed by a blank line, followed by the result of <code>A . B</code>. The format of the resulting images is the same as those of the input images. Separate the output for different cases by a line consisting of 75 equal signs (=).</p>",
+  "samples": [
+    {
+      "input": "10 12 1\n............\n..*.........\n.***...***..\n.***...***..\n.*********..\n.**********.\n.*********..\n.***...*.*..\n............\n............\n***\n***\n***\n10 12 1\n............\n..*.........\n.***...***..\n.***...***..\n.*********..\n.**********.\n.*********..\n.***...*.*..\n............\n............\n.*.\n***\n.*.\n0 0 0\n",
+      "output": "Case 1\n\n............\n............\n.***...***..\n.***...***..\n.*********..\n.*********..\n.*********..\n.***........\n............\n............\n\n............\n..*.........\n.***...***..\n.***...***..\n.*********..\n.**********.\n.*********..\n.***...***..\n............\n............\n===========================================================================\nCase 2\n\n............\n..*.........\n.***....*...\n.***...***..\n.*********..\n.**********.\n.*********..\n..**...*....\n............\n............\n\n............\n..*.........\n.***...***..\n.****.****..\n.*********..\n.**********.\n.*********..\n.***...*.*..\n............\n............\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2005 Rocky Mountain Regional Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

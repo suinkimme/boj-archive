@@ -1,0 +1,35 @@
+{
+  "id": 19012,
+  "title": "Road Connectivity",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>There are $n$ cities in the country of Byteland. Every two cities are connected by a bidirectional road. For every road, the passage through it is either permitted (open) or prohibited (closed). On day $0$, only $m$ roads are open.</p>\n<p>Every day (starting from day $1$), the government of Byteland chooses a road. Each road has the same probability to be chosen. Then, if the passage through the road is permitted, the government closes the road; otherwise, if it is prohibited, the government opens it.</p>\n<p>The government of Byteland is very concerned about communication between cities. There are $q$ periods of days $[l, r]$ for which the government wants to know the probability that there is a day within the period such that in this day the country is <em>connected</em>. We say that the country is <em>connected</em> if one can travel from any city to any other using one or several permitted roads.</p>\n<p>It can be shown that the required probabilities can be expressed as rational numbers of the form $P/Q$ where $P$ and $Q$ are coprime and $Q \\not\\equiv 0 \\pmod{10^9 + 7}$. You, as the most cognitive citizen of Byteland, are asked to calculate them and print in the form $P \\cdot Q^{-1} \\pmod{10^9 + 7}$.</p>",
+  "input": "<p>The first line contains two integers $n$ and $m$ ($2 \\le n \\le 5$, $0 \\le m \\le \\frac{n \\cdot (n - 1)}{2}$), the number of cities in Byteland and the number of roads for which passage is permitted on day $0$.</p>\n<p>Each of the following $m$ lines contains two integers $u_i$ and $v_i$ ($1 \\le u_i, v_i \\le n$, $u_i \\ne v_i$), the cities which are connected by the $i$-th permitted road. It is guaranteed that all permitted roads are pairwise different.</p>\n<p>The next line contains one integer $q$ ($1 \\le q \\le 1000$), the number of queries.</p>\n<p>Each of the following $q$ lines contains two integers $l$ and $r$ ($0 \\le l \\le r \\le 10^{15}$), the periods of days about which the government is concerned.</p>",
+  "output": "<p>Output $q$ lines, one integer per line. The $i$-th line must contain the answer for the $i$-th query in the form $P \\cdot Q^{-1} \\pmod{10^9 + 7}$, where $P/Q$ is the corresponding probability.</p>",
+  "samples": [
+    {
+      "input": "3 1\n1 2\n9\n0 0\n0 1\n0 2\n0 3\n0 4\n1 1\n2 2\n3 3\n4 4\n",
+      "output": "0\n666666672\n666666672\n888888896\n888888896\n666666672\n222222224\n407407411\n469135806\n"
+    },
+    {
+      "input": "2 1\n1 2\n5\n0 0\n0 1\n1 1\n1 1000\n0 1000\n",
+      "output": "1\n1\n0\n1\n1\n"
+    }
+  ],
+  "hint": "<p>Let us consider the first example. In the first request, the government has not chosen any road, and the country is not connected from the beginning, so the probability is $0$. In the 2nd to 9th queries, the probabilities are equal to $2/3$, $2/3$, $8/9$, $8/9$, $2/3$, $2/9$, $20/27$, and $20/81$, respectively.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2018, Day 7: Izhevsk STU + Ufa SATU Contest, Contest, Open Cup, 2018/2019 Season, Stage 2: Grand Prix of Udmurtia",
+  "level": 23,
+  "tags": [
+    "math",
+    "implementation",
+    "data_structures",
+    "graphs",
+    "backtracking",
+    "probability",
+    "exponentiation_by_squaring",
+    "sparse_table"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 2.6666998863220215
+}

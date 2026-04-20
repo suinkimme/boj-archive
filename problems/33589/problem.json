@@ -1,0 +1,29 @@
+{
+  "id": 33589,
+  "title": "Funny or Scary?",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are designing a new video game. It has $n$ scenarios, which the player may play in any order, but each scenario must be played exactly once. When a player switches from a scenario to another scenario, the game shows a specially crafted transition video to make it all feel part of one big story. This video is specific to a pair of scenarios, but not to their order, in other words, the video playing when switching from scenario $a$ to scenario $b$ is the same as the video playing when switching from scenario $b$ to scenario $a$. Therefore, you need to create $\\frac{n(n-1)}{ 2}$ different transition videos, one for each possible pair of different scenarios.</p>\n<p>Each transition video can be either <em>funny</em> or <em>scary</em>. It is boring to see too many funny videos or too many scary videos in a row. Therefore, your goal is to create the videos in such a way that no matter in which order does the player approach the scenarios, they will never see more than $\\left\\lceil \\frac{3n}{4} \\right\\rceil$ transition videos of the same type in a row.</p>\n<p>You have already come up with ideas for at most $\\left\\lfloor \\frac{n}{2} \\right\\rfloor$ of the transition videos, and therefore already know if those will be funny or scary. Now you need to choose funny or scary for all other transition videos in such a way that the above requirement is satisfied.</p>",
+  "input": "<p>The first line contains a single integer $n$ ($2 ≤ n ≤ 24$) — the number of scenarios in the game.</p>\n<p>The next $n$ lines describe the partial transition video plan. Each of those lines contains $n$ characters. The $j$-th character of the $i$-th line corresponds to the transition video between the $i$-th and the $j$-th scenarios. It will be <code>F</code> if the corresponding transition video will be funny, <code>S</code> if the corresponding transition video will be scary, <code>?</code> if the corresponding transition video is still undecided, or <code>.</code> if $i = j$.</p>\n<p>It is guaranteed that the $i$-th character of the $j$-th line and the $j$-th character of the $i$-th line will be the same for all $i$ and $j$. It is guaranteed that at most $\\left\\lfloor \\frac{n}{ 2} \\right\\rfloor$ ($n$ divided by $2$, rounded down) transition videos will already be decided, in other words, that at most $2\\left\\lfloor \\frac{n}{ 2} \\right\\rfloor$ characters in the input will be <code>F</code> or <code>S</code>.</p>",
+  "output": "<p>Print $n$ lines describing the full transition video plan in the same format as the input. Each of those lines must contain $n$ characters. The $j$-th character of the $i$-th line must be <code>F</code> if the corresponding transition video is funny, <code>S</code> if the corresponding transition video is scary, or <code>.</code> if $i = j$.</p>\n<p>Each <code>?</code> character from the input must be replaced with either <code>F</code> or <code>S</code>, and all other characters from the input must remain unchanged. It must still hold that the $i$-th character of the $j$-th line and the $j$-th character of the $i$-th line are the same for all $i$ and $j$.</p>\n<p>For each permutation of the $n$ scenarios, it must hold that the transition videos corresponding to playing the scenarios in this order do not have more than $\\left\\lceil \\frac{3n}{4} \\right\\rceil$ ($3n$ divided by $4$, rounded up) videos of the same type consecutively.</p>\n<p>If there are multiple solutions, print any of them. It can be proven that for all inputs satisfying the constraints of this problem a solution always exists.</p>",
+  "samples": [
+    {
+      "input": "5\n.?F??\n?.???\nF?.S?\n??S.?\n????.\n",
+      "output": ".FFFF\nF.FFF\nFF.SF\nFFS.F\nFFFF.\n"
+    },
+    {
+      "input": "12\n.???????????\n?.??????????\n??.?????????\n???.????????\n????.???????\n?????.??????\n??????.?????\n???????.????\n????????.???\n?????????.??\n??????????.?\n???????????.\n",
+      "output": ".SSSFFSSSSFS\nS.SFFSFSFFFS\nSS.SFFFSSSFS\nSFS.FFSSSSFS\nFFFF.FFFFFSF\nFSFFF.SFFSFF\nSFFSFS.SSSFS\nSSSSFFS.SSFS\nSFSSFFSS.SFS\nSFSSFSSSS.FS\nFFFFSFFFFF.F\nSSSSFFSSSSF.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, European Championship, The 2024 ICPC European Championship",
+  "level": 21,
+  "tags": [
+    "graphs",
+    "constructive"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

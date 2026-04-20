@@ -1,0 +1,30 @@
+{
+  "id": 18094,
+  "title": "Popcount",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p><em><strong>M</strong>iniature <strong>A</strong>lgebraic <strong>N</strong>atural <strong>R</strong>elay</em> (also called <code>MALNAR</code>) is the latest technological advancement in the flourishing realm of small programmable devices. You can write your own programs for this device using <em>MalnarScript</em>, an esoteric programming language with the following set of features:</p>\n<ul>\n<li>Input to the program is a single non-negative integer strictly less than 2<sup>N</sup>.</li>\n<li>Output of the program is a single non-negative integer strictly less than 2<sup>N</sup>.</li>\n<li>When programming in <em>MalnarScript</em> you can only use one N-bit unsigned integer variable A. At the beginning of the program, this variable holds the input and its value at the end of the program is considered to be the program’s output.</li>\n<li>The source code of <em>MalnarScript</em> must consist of at most K commands of the form <code>A=&lt;expr&gt;</code> which are executed in order and each of them must consist of <strong>at most a thousand</strong> characters. The symbol <code>&lt;expr&gt;</code> is defined recursively as follows:</li>\n</ul>\n<p style=\"text-align: center;\"><code>&lt;expr&gt; = A | &lt;num&gt; | (&lt;expr&gt;&lt;operator&gt;&lt;expr&gt;)</code></p>\n<p>In other words, symbol <code>&lt;expr&gt;</code> can either be a variable A, or it can conform to the definition of symbol <code>&lt;num&gt;</code>, or it can (inside parentheses) represent a two-membered expression in which each operand conforms to the same <code>&lt;expr&gt; </code>definition.</p>\n<p>The symbol <code>&lt;num&gt;</code> in the definition above represents a non-negative decimal integer strictly less than 2<sup>N</sup>, while the symbol can either be <code>+</code>, <code>-</code>, <code>|</code>, <code>&amp;</code>, <code>&lt;&lt;</code> or <code>&gt;&gt;</code> which (in order) represent the operations of addition, subtraction, bitwise or, bitwise and, left shift and right shift.</p>\n<p>Also the character <code>A</code> can appear <strong>at most 5 times</strong> in the <code>&lt;expr&gt;</code> symbol.</p>\n<p>In the case of overflow or underflow when performing the operations of addition and subtraction, <em>MalnarScript</em> will perform those operations modulo 2<sup>N</sup>. For example, when N = 3 the expression (7 + 3) will evaluate to 2 and the expression (2 − 5) will evaluate to 5 in <em>MalnarScript</em>.</p>\n<p>The right side of the equation in each command evaluates into a single number which will then be stored into A. In order to evaluate the right hand side expression, <em>MalnarScript</em> first replaces each occurrence of A with its current value. The calculation of expression then proceeds as it would in any mathematical expression, i.e., the parentheses take precedence. Note that the priorities of operators (in term of operation order) are irrelevant because the final result is completely defined by placement of parentheses.</p>\n<p>Your task is to write a program which outputs a program in <em>MalnarScript</em> which calculates the number of ones in a binary representation of the input value.</p>",
+  "input": "<p>The first line contains two integers N and K from the task description.</p>",
+  "output": "<p>In the first line you should output the number of commands of the produced <em>MalnarScript</em> program.</p>\n<p>In the remaining lines you should output the commands of the sought program. Each command must be printed in a separate line and must satisfy the syntax of <em>MalnarScript</em> as described in the task description.</p>\n<p>It is important that there are no unnecessary empty lines or extra whitespace characters in the output. Each line (including the last) must be terminated by the end-of-line character (<code>'\\n'</code>).</p>",
+  "samples": [
+    {
+      "input": "2 2\n",
+      "output": "1\nA=(A-((A&2)>>1))\n"
+    },
+    {
+      "input": "3 5\n",
+      "output": "2\nA=((A&4)|((A&3)-((A&2)>>1)))\nA=((A&3)+((A&4)>>2))\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2019/2020, Contest #2",
+  "level": 18,
+  "tags": [
+    "ad_hoc",
+    "arbitrary_precision",
+    "divide_and_conquer"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 3.25
+}

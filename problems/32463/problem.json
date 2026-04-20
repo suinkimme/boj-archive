@@ -1,0 +1,31 @@
+{
+  "id": 32463,
+  "title": "Counting Regions",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>You are given an $N\\times N$ grid. A cell in the $i$-th row and $j$-th column is denoted as $(i,j)$. Initially, every cell on the grid is colored white.</p>\n<p>We will color each cell using $2N-2$ operations. The $i$-th operation is denoted as $(d_i,x_i,c_i)$. An operation of form $(d,x,c)$ indicates the following:</p>\n<ul>\n<li>For $d=0$, we color cells in the $x$-th column. For $d=1$, we color cells in a $x$-th row.</li>\n<li>For $c=0$, we color the column/row white. For $c=1$, we color the column/row black.</li>\n</ul>\n<p>It is guaranteed that if you carry out the operation in the order, each of the $2,3,4,\\ldots ,N$-th row will be colored <strong>exactly once in that order</strong>, and each of the $2,3,4,\\ldots ,N$-th column will be colored <strong>exactly once in that order</strong>. Note that no operation colors the first row and the first column. Formally, the following holds:</p>\n<ul>\n<li>For all integers $i,j$ such that $0\\le i\\le 1$ and $2\\le j\\le N$, there is a unique integer $1\\le k\\le 2N-2$ such that $(d_k,x_k) =(i,j)$.</li>\n<li>For all integers $i,j$ such that $1\\le i&lt;j\\le 2N-2$ and $d_i=d_j$, $x_i&lt;x_j$ holds.</li>\n</ul>\n<p>A region is defined as maximal sections of neighboring cells of the same color, where two cells are considered neighbors if they share an edge. You need to find the number of regions after performing each $2N-2$ operation in the given order.</p>\n<p>Of course, this problem is too easy, so we prepared $Q$ queries for you! Each query is denoted as $3$ integers $(z,l,r)$. After the query, you should set $c_i=1-c_i$ for all $i$-th operation where $l\\le x_i\\le r,d_i=z$ holds. Then, with the changed operation sequence, you need to find the number of regions after performing each $2N-2$ operation. Note that the queries are cumulative.</p>",
+  "input": "<p>The first line contains two space-separated integers $N$ and $Q$.</p>\n<p>The $i$-th line of the next $2N-2$ lines contains three space-separated integers $d_i$, $x_i$, $c_i$.</p>\n<p>The $i$-th line of next $Q$ lines contains three space-separated integer $z$, $l$, $r$, describing the $i$-th query.</p>",
+  "output": "<p>After each query, output a line with a single integer, which is the number of regions.</p>",
+  "samples": [
+    {
+      "input": "5 7\n1 2 0\n0 2 0\n1 3 1\n1 4 0\n1 5 1\n0 3 1\n0 4 1\n0 5 1\n1 3 5\n0 4 4\n0 2 5\n1 2 3\n1 5 5\n1 3 4\n0 2 4\n",
+      "output": "3\n5\n5\n5\n5\n6\n4\n"
+    },
+    {
+      "input": "3 6\n0 2 0\n1 2 1\n0 3 0\n1 3 1\n0 2 2\n0 2 3\n0 3 3\n1 2 2\n1 2 3\n1 3 3\n",
+      "output": "3\n2\n2\n2\n2\n2\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 500px; height: 291px;\"/></p>\n<p style=\"text-align: center;\">State of the grid after each operation for example 2</p>",
+  "source": "University, KAIST, KAIST ICPC Mock Competition, 2024 KAIST 14th ICPC Mock Competition, azberjibiou, cologne, jhwest2, koosaga, urd05",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "ad_hoc",
+    "segtree",
+    "lazyprop"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.5
+}

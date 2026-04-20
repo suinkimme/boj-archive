@@ -1,0 +1,26 @@
+{
+  "id": 3605,
+  "title": "Billing Tables",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In the world of telecommunications phone calls to different phone numbers have to be charged using different rate or different billing plan. International Carrier of Phone Communications (ICPC) has an antique billing table that determines which phone call has to be charged using which billing plan.</p>\n<p>Each international phone number has 11 digits. The billing table has n lines. Each line specifies a range of prefixes of phone numbers like “7919 - 921”. This specification means that all phone numbers starting from 7919, 7920, and 7921 match this line. A billing plan name is specified for each prefix. To determine a billing plan for a call, the table is scanned from top to bottom and the first matching line determines the billing plan. If no match is found, the phone number is invalid and no billing plan is needed. A special billing plan named “invalid” (without quotes) is used as an alternative way to define invalid phone numbers. Some billing plans are used for quite differently looking phone numbers and their names may be specified on different lines in different places of the table.</p>\n<p>ICPC’s billing table is old and contains many entries. Some of those entries may not be even used anymore. It is very hard to figure out which phone numbers each billing plan is actually used for. The ICPC’s management has reached a decision to transform this billing table into a more legible format. In this new format table consists of the lexicographically ordered list of simple prefixes (without the “-” range feature of the old format) with a billing plan name for each prefix. No prefix of this new billing table should be a prefix of any other prefix from the table. Thus, a simple dictionary lookup (binary search, for example) will be sufficient to figure out a billing plan for a given phone number. Finding all phone numbers for a given billing plan will also become quite a simple task. The number of lines in the new billing table should be minimized. Billing plan named “invalid” should not be present in the new billing table at all, since invalid phone numbers will be denoted by absence of the corresponding prefix in the new billing table.</p>",
+  "input": "<p>The first line of the input file contains a single integer number n (1 ≤ n ≤ 100) — the number of lines in the old billing table. The following n lines describe the old billing table with one rule on a line. Each rule contains four tokens separated by spaces — prefix A, minus sign (“-”), prefix B, and billing plan name. Prefixes contain from 1 to 11 digits each, and the billing plan name contains from 1 to 20 lower case letters.</p>\n<p>Further, let us denote with |A| the number of digits in the prefix A. It is true that 1 ≤ |B| ≤ |A| ≤ 11. Moreover, last |B| digits of prefix A form a string that is lexicographically equal or precedes B.</p>\n<p>Such pair of prefixes A and B matches all phone numbers with the first |A| − |B| digits matching the first digits of A and with the following |B| digits being lexicographically between the last |B| digits of A and B (inclusive).</p>",
+  "output": "<p>Write to the output file a single integer number k — the minimal number of lines that the new table should contain to describe the given old billing table. Then write k lines with the lexicographically ordered new billing table. Write two tokens separated by a space on each line — the prefix and the billing plan name. Note, that the prefix in the new billing table shall contain at least one digit.</p>\n<p>If all phone numbers are invalid (every phone number has no matching line or matches line with billing plan “invalid”) then the output file should contain just number zero.</p>",
+  "samples": [
+    {
+      "input": "8\n7919 - 921 cell\n7921800 - 999 priv\n1 - 1 usa\n760 - 9 rsv\n7928 - 29 rsv\n7600 - 7899 spec\n73 - 77 invalid\n7 - 7 cis\n",
+      "output": "35\n1 usa\n70 cis\n71 cis\n72 cis\n76 rsv\n77 spec\n78 spec\n790 cis\n7910 cis\n7911 cis\n7912 cis\n7913 cis\n7914 cis\n7915 cis\n7916 cis\n7917 cis\n7918 cis\n7919 cell\n7920 cell\n7921 cell\n7922 cis\n7923 cis\n7924 cis\n7925 cis\n7926 cis\n7927 cis\n7928 rsv\n7929 rsv\n793 cis\n794 cis\n795 cis\n796 cis\n797 cis\n798 cis\n799 cis\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2006",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2.5
+}

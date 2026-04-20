@@ -1,0 +1,41 @@
+{
+  "id": 25712,
+  "title": "인경강",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>평생을 시골에서 보낸 시은이는 첫 서울 여행에서 한강을 보고 크게 감동받았다. 그 감동을 INPC 참가자들에게도 전하기 위해, 대회가 진행되는 동안 인하대학교에 한강처럼 생긴 <strong>인경강</strong>을 만들기로 했다.</p>\n<table align=\"center\" border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 450px;\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">인경강을 만들 수 있는 예</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">인경강을 만들 수 없는 예</td>\n</tr>\n</tbody>\n</table>\n<p>인하대학교의 부지는 직사각형으로, <em>N</em>행 <em>M</em>열의 정사각형 칸들로 구분할 수 있다. 1행이 가장 위, 1열이 가장 왼쪽이다. 각 칸을 땅 또는 물로 구분할 때, 다음 조건을 모두 만족하면 인경강을 만들 수 있다. 특히 마지막 조건에서 왼쪽으로 이동할 수 없음에 유의하자.</p>\n<ul>\n<li>1번 열에 물이 한 칸 이상 있다.</li>\n<li><em>M</em>번 열에 물이 한 칸 이상 있다.</li>\n<li>어떤(적어도 하나) 1번 열의 물에서 출발하면 위 · 아래 · 오른쪽으로 인접한 물로 0번 이상 이동해 <em>M</em>번 열의 물에 도달할 수 있다.</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\"/></p>\n<p>입력으로 1열부터 <em>M</em>열까지 <em>M</em>개의 <strong>열 정보</strong>가 주어진다. 열 정보는 각 열에 물이 어떻게 분포하는지 나타내는 길이가 짝수인 수열이다. 수열은 빈 수열에서 시작해 다음 과정을 순서대로 시행해 만들어지며, 열에 물이 하나도 없는 경우는 주어지지 않는다.</p>\n<ol>\n<li>수열이 비어있다면 가장 위에 있는 물의 행 번호를, 그렇지 않다면 행 번호가 수열의 마지막 수보다 큰 물 중 가장 위에 있는 것의 행 번호를 수열의 맨 뒤에 추가한다.</li>\n<li>행 번호가 수열의 마지막 수인 물에서 출발해, 아래로 인접한 물로 0번 이상 이동해 도달할 수 있는 물 중 행 번호가 가장 큰 것을 수열의 맨 뒤에 추가한다.</li>\n<li>행 번호가 수열의 마지막 수보다 큰 물이 있다면 1번 과정으로 돌아가고, 없다면 열 정보가 완성되었으므로 마친다.</li>\n</ol>\n<p>인하대학교 부지의 크기와 M개의 열 정보가 주어지면, 인경강을 만들 수 있는지 판별해보자.</p>",
+  "input": "<p>첫째 줄에 인하대학교 부지의 크기 <em>N</em>과 <em>M</em>이 공백을 구분으로 주어진다.</p>\n<p>둘째 줄에 1열의 열 정보의 길이, 2열의 열 정보의 길이, …, <em>M</em>열의 열 정보의 길이를 나타내는 <em>M</em>개의 정수가 공백을 구분으로 주어진다.</p>\n<p>다음 <em>M</em>개의 줄에 걸쳐, <em>M</em>개의 열 정보가 열의 오름차순으로 주어진다. 각 열 정보의 수들은 공백으로 구분해 주어진다.</p>",
+  "output": "<p>인경강을 만들 수 있다면 YES, 아니라면 NO를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "8 10\n2 4 2 2 2 2 4 4 4 2\n4 4\n2 2 4 5\n5 5\n4 5\n3 4\n3 6\n2 4 6 6\n2 2 4 6\n2 2 5 5\n4 7\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "5 5\n2 2 2 2 2\n1 5\n1 5\n1 5\n1 5\n1 5\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "10 3\n4 4 2\n3 4 8 9\n3 4 8 9\n7 8\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "5 4\n2 4 4 2\n1 1\n1 1 3 5\n1 3 5 5\n4 5\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "2000 5\n2 4 8 4 2\n1 1999\n1 1 1999 1999\n1 1 134 135 1279 1947 1999 1999\n2 2 2000 2000\n2 2000\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 인하대학교, 2022 IGRUS Newbie Programming Contest, yooshnn, 39dll, aym506, chlwnsgud7, gumgood, wjdclgns12, yuja",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 93,
+  "submission_count": null,
+  "average_tries": 1.871000051498413
+}

@@ -1,0 +1,26 @@
+{
+  "id": 28157,
+  "title": "Lucky Stars Management",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The company Lucky Stars, where Bill works as the President, has $N$ employees, enumerated from 1 to $N$ in order of their position in the company. </p>\n<p>Bill have the employee ID 1. Any other employee, except for the President Bill, have exactly one direct supervisor. The direct supervisor of the employee $i$ is denoted as $P_i&lt;i$. For each of $N$ employees the annual income of this employee is an integer $A_j$ between $0$ and $10^9+6$.</p>\n<p>Once Bill decided to consult with a fortune-teller who is absolutely right about the future of the company and heard something like \"someday, $K$ mistakes will be done, and Lucky Stars management became difficult.\"</p>\n<p>Each mistake is caused by exactly 1 employee, and for $i=1,2, \\ldots, N$ the probability that the mistake is caused by employee $i$ is $1/N$ (note that the mistakes are independent, i.e. it can happen that some employee caused several mistakes).</p>\n<p>Bill held a meeting and decided to enforce the personal responsibility in case if fortune-teller was right. Bill wants to find <strong>one</strong> employee and let him pay a fine if $K$ types of mistakes were made by the Lucky Stars personnel at one day. The employee who pays the fine is determined according to the following rules.</p>\n<ul>\n<li>When an employee makes a mistake, not only that employee but also the employee's direct superior, the superior's superior, and so on, are responsible (this rule includes Bill himself).</li>\n<li>Therefore, among the employees who are responsible for all $K$ types of mistakes, the employee with the largest employee number pays the fine.</li>\n<li>Let $A_j$ be the annual salary of the employee who made the $j$-th mistake for $j = 1,2,\\ldots,K$, and let him be fined $A_1 \\times A_2 \\times \\ldots \\times A_K$.</li>\n</ul>\n<p>Bill calculated the expected value $E_i$ of the fine paid by the employee number $i$ if the fortune-telling was correct, and represented it modulo $10^9+7$. </p>\n<p>In other words, for $i=1,2,…,N$, the expected fine to be paid by employee number $i$ is expressed as $Y_i/X_i$ (where $X_i$ and $Y_i$ are relatively prime integers and $X_i$ is not divisible by $10^9+7$), then answer is $Y_i$ div $X_i$ modulo $10^9+7$.</p>\n<p>Now, you have the information about structure of the company (i.e. the value of $P_i$ for each employee) and the values of $E_i$ of the expected value of fines, calculated by Bill.</p>\n<p>Please determine whether all of the obtained information is likely to be correct, and if so, find the minimum possible Bill's annual salary.</p>",
+  "input": "<p>The first line of the input contains two integers $N$ ($1 \\le N \\le 2 \\cdot 10^5$) and $K$ ($1 \\le K \\le 10^9$, $K$ is odd).</p>\n<p>The second line of the input contains $N-1$ integers $P_2$, $\\ldots$, $P_N$ ($1 \\le P_i \\le i-1$) --- the number $P_i$ of the direct supervisor of the employee $i$. If $N=1$, the second line is empty.</p>\n<p>The third line of the input contains $N$ integers $E_i$ --- the calculated expected fines for $i$-th employee ($0 \\le E_i \\le 10^9+6$).</p>",
+  "output": "<p>If the calculation is definitely wrong, print $-1$. Otherwise print one integer --- the minimum possible annual salary of Bill.</p>",
+  "samples": [
+    {
+      "input": "2 1\n1\n2 1\n",
+      "output": "4\n"
+    },
+    {
+      "input": "1 1\n\n2\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2023, Day 1: JAGain in Petrozavodsk",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

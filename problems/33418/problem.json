@@ -1,0 +1,22 @@
+{
+  "id": 33418,
+  "title": "Colored Slime Balls",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>There are $n$ slime balls arranged in a row, where the $i$-th slime ball has color $c_i$ and mass $m_i$.</p>\n<p>You can perform any number of operations to increase the mass of a slime ball by $1$, and it costs $w$ per operation.</p>\n<p>However, once the mass of a slime ball reaches $k$ or more, it becomes unstable, and must be sold <strong>before</strong> the next operation. You can only sell slime balls with mass greater than or equal to $k$. According to the market price, selling a slime ball with mass $i$ earns you income $p_i$.</p>\n<p>It is guaranteed that $p_i - p_{i-1} &lt; w$, but $p_i$ is not necessarily monotonically non-decreasing.</p>\n<p>After you sell a slime ball, all the slime balls on its two sides move to close the gap. Moreover, if the ball you sold had two neighbors of the same color, they will merge into one slime ball whose mass is the sum of the two. This new slime ball may also need to be sold, continuing the process.</p>\n<p>You want to know the maximum net profit after you sell all the slime balls.</p>",
+  "input": "<p>The first line contains three positive integers $n$, $k$, $w$ ($1 \\le n \\le 150$, $2 \\le k \\le 10$, $1 \\le w \\le 10^6$).</p>\n<p>The second line contains $n$ positive integers, where the $i$-th integer is the color $c_i$ of the $i$-th slime ball ($1 \\le c_i \\le n$). It is guaranteed that $c_i \\ne c_{i-1}$. In other words, initially, there are no neighboring balls that have the same color.</p>\n<p>The third line contains $n$ positive integers, where the $i$-th integer represents the initial mass $m_i$ of the $i$-th slime ball ($1 \\le m_i &lt; k)$.</p>\n<p>The fourth line contains $k - 1$ integers representing the income from selling slime balls with masses $k$ to $2 k - 2$. Specifically, the numbers are $p_k, p_{k + 1}, \\ldots, p_{2 k - 2}$ ($0 \\le p_i \\le 10^9$, and $p_i - p_{i - 1} &lt; w$).</p>",
+  "output": "<p>Print a line with a single integer: the maximum net profit from selling all the slime balls.</p>",
+  "samples": [
+    {
+      "input": "4 5 6\n2 1 2 3\n3 3 3 4\n5 7 9 11\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>In the example, first, increase the mass of the slime ball with color $3$. Then, it is sold, earning income $5$.</p>\n<p>Then, increase the mass of the slime ball with color $1$ twice. Then, it is sold, earning income $5$. Next, the two slime balls with color $2$ merge and are sold, earning income $7$.</p>\n<p>After three operations incurring a total cost of $18$, the net profit is $-1$. It can be proved that there is no better solution.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2024, Day 2: CCPC Contest 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,40 @@
+{
+  "id": 14392,
+  "title": "문자열 테이블",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>두 문자열 s와 t가 주어진다. s와 t의 모든 문자는 다르다. s에 등장하는 모든 문자는 t에 등장하지 않으며, t에 등장하는 모든 문자는 s에도 등장하지 않는다.</p>\n<p>s의 길이를 N, t의 길이를 M이라고 한다. 또, 다음과 같이 정의되는 2차원 배열 table이 있다.</p>\n<ul>\n<li>table[i][0] = s[i-1] (1 ≤ i ≤ N)</li>\n<li>table[0][j] = t[j-1] (1 ≤ j ≤ M)</li>\n<li>table[i][j] = min(table[i-1][j], table[i][j-1]) + max(table[i-1][j], table[i][j-1]) (1 ≤ i ≤ N, 1 ≤ j ≤ M)</li>\n</ul>\n<p>min은 두 문자열 중 사전 순으로 앞서는 것을 리턴하는 함수이며, max는 두 문자열 중 사전 순으로 뒤에 있는 것을 리턴하는 함수이다. 또, A+B는 문자열A의 뒤에 B를 연결하는 연산이다.</p>\n<p>table[N][M]의 부분 문자열을 구하는 프로그램을 작성하시오. 이때, 부분 문자열의 길이가 너무 길어질 수 있기 때문에, pos번째부터 min(50, L-pos)개의 문자를 출력한다. 여기서 L은 table[N][M]의 길이이다.</p>",
+  "input": "<p>첫째 줄에 s, 둘째 줄에 t, 셋째 줄에 pos가 주어진다. (0 ≤ pos &lt; L)</p>\n<p>s와 t의 길이는 30보다 작거나 같은 자연수이며, 알파벳 대문자/소문자와 숫자로만 이루어져 있다.</p>",
+  "output": "<p>첫째 줄에 table[N][M]의 pos번째부터 min(50, L-pos)개수 만큼 부분 문자열을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "ad\ncb\n0\n",
+      "output": "acbacd\n"
+    },
+    {
+      "input": "fox\ncat\n0\n",
+      "output": "acfcfoacftacfcfocfox\n"
+    },
+    {
+      "input": "Ra6b1t\nW0lf\n66\n",
+      "output": "RWab0RWRWa0RWl0RWRWa6RWa0RWRWa6RWa6RWab0RWRWa6RWa6\n"
+    },
+    {
+      "input": "M0HAXG\nCOFU12\n919\n",
+      "output": "MOFU2\n"
+    },
+    {
+      "input": "a0B1c2D3e4F5gHiJkLmN\nA9b8C7d6EfGhIjKlMn\n9876543210\n",
+      "output": "B10AaB1c0Aa9Aa0AaB0AaB10AaB1c0AaB1c20Aa9Aa0AaB0Aa9\n"
+    }
+  ],
+  "hint": null,
+  "source": "baekjoon",
+  "level": 18,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.5
+}

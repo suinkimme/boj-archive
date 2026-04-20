@@ -1,0 +1,35 @@
+{
+  "id": 20808,
+  "title": "Rikka with Composite Number",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Rikka is a professional problem setter. Today, she is going to generate test cases for a problem about Composite Number.</p>\n<p>To randomly generate composite numbers, Rikka starts from a non-empty subset $D$ of digits $\\{1,2,\\dots, 9\\}$ and integer $c = 0$, and then generates in turns. In each turn:</p>\n<ol>\n<li>Rikka selects a digit $d$ from $D$ uniformly at random, and then changes $c$ to $c \\times 10 + d$;</li>\n<li>If $c$ has already been a composite integer, Rikka takes $c$ as the result. Otherwise, Rikka returns to Step $1$ and starts a new turn.</li>\n</ol>\n<p>The time cost of a generator is crucial. Therefore, Rikka wants you to calculate the expected number of the turns used by the generator to generate a composite number.</p>\n<p>A positive integer $n$ is a composite integer if and only if there exists an integer $k \\in [2, n - 1]$ satisfying $k$ is a factor of $n$.</p>",
+  "input": "<p>The first line contains a $01$-string of length $9$. The $i$-th character is $1$ if and only if digit $i$ is inside $D$.</p>\n<p>The input guarantees that $D$ is not empty.</p>",
+  "output": "<p>Output a single integer, representing the expected number of turns.</p>\n<p>The answer is guaranteed to be a rational number. You are required to output the answer module $998244353$. Formally, if the simplest fraction representation of the answer is $\\frac{x}{y}$, you need to output $x \\times y^{998244351} \\text{ mod } 998244353$.</p>",
+  "samples": [
+    {
+      "input": "100000000\n",
+      "output": "3\n"
+    },
+    {
+      "input": "001100000\n",
+      "output": "499122178\n"
+    }
+  ],
+  "hint": "<p>For the first sample, the generator must return $111$ in the third turn.</p>\n<p>For the second sample, there are $3$ possibilities:</p>\n<ul>\n<li>Return $4$ in the first turn, with probability $\\frac{1}{2}$;</li>\n<li>Return $33$ in the second turn, with probability $\\frac{1}{4}$;</li>\n<li>Return $34$ in the second turn, with probability $\\frac{1}{4}$.</li>\n</ul>\n<p>Therefore, the expected number of turns is $\\frac{3}{2}$.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 7: Grand Prix of Xiaomi",
+  "level": 16,
+  "tags": [
+    "ad_hoc",
+    "math",
+    "modular_multiplicative_inverse",
+    "number_theory",
+    "primality_test",
+    "probability",
+    "recursion",
+    "sieve"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.4706000089645386
+}

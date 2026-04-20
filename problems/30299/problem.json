@@ -1,0 +1,32 @@
+{
+  "id": 30299,
+  "title": "Wrong Queue",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>A 'Queue' is a linear data structure that can either</p>\n<ol>\n<li>Insert an element at the back (push)</li>\n<li>Delete an element at the front (pop).</li>\n</ol>\n<p>However we misimplemented the pop function; for each pop query, we simultaneously delete $N$ certain elements from different indices, instead of deleting only one element at the front.</p>\n<p>Specifically, there are $N$ distinct locations where our pop function deletes its elements, noted by $A_1$, $A_2$, ..., $A_N$. The queue is indexed from $1$ starting at the front. After deletion, the indices are renamed with the same rule described above.</p>\n<p>But we are curious what the misimplemented queue will look like after $D$ pop operations.</p>\n<p>In order to conduct an experiment, we first pushed infinitely many integers in the queue starting from 1. So the initial queue will look like \"1 2 3 4 5 6 7 8...\".</p>\n<p>Then without further push operations, we will pop the queue $D$ times.</p>\n<p>For example, assume the current queue was \"1 2 3 4 5 6 7 8...\". If we delete the 2nd and 5th element, the queue will change to \"1 3 4 6 7 8 9 10...\". If we do it again, it will be \"1 4 6 8 9 10 11 12...\" and so on.</p>\n<p>We want to process $Q$ queries consisting of a single integer $x$. For each query, we need to calculate the number written in the $x$th index of the queue after $D$ pop operations.</p>",
+  "input": "<p>The first line contains $N$.</p>\n<p>The second line contains $N$ space-seperated integers $A_1$, $A_2$, ..., $A_N$ denoting the indexes we delete for each pop operation.</p>\n<p>The third line contains two space-seperated integers $Q$, $D$ denoting the number of queries and the number of pop operations respectively.</p>\n<p>The following $Q$ lines contain an integer $x$ denoting each query.</p>",
+  "output": "<p>Output $Q$ lines, where the $i$th line contains a single integer denoting the answer of the $i$th query.</p>",
+  "samples": [
+    {
+      "input": "2\n2 5\n8 2\n1\n2\n3\n4\n5\n6\n7\n8\n",
+      "output": "1\n4\n6\n8\n9\n10\n11\n12\n"
+    },
+    {
+      "input": "3\n7 1 32\n8 5\n2\n8\n7\n17\n26\n19\n3\n1\n",
+      "output": "8\n18\n17\n27\n39\n29\n10\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, KAIST, KAIST ICPC Mock Competition, 2023 KAIST 13th ICPC Mock Competition, Camp, Petrozavodsk Programming Camp, Summer 2024, Day 2: K-ontest, mhy908, jhwest2, koosaga, kyo20111, ncy09, whqkrkt04",
+  "level": 25,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "segtree",
+    "sweeping",
+    "two_pointer"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 6.75
+}

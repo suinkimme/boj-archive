@@ -1,0 +1,43 @@
+{
+  "id": 21928,
+  "title": "Short Coding",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You participate in a project to explore an asteroid called <em>Yokohama 2020</em>. A maze-like space in its underground was found by a survey a couple of years ago. The project is to investigate the maze more in detail using an exploration robot.</p>\n<p>The shape of the maze was fully grasped by a survey with ground penetrating radars. For planning the exploration, the maze is represented as a grid of cells, where the first cell of the first row is the upper left corner of the grid, and the last cell of the last row is the lower right corner.</p>\n<p>Each of the grid cell is either vacant, allowing robot’s moves to it from an adjacent vacant cell, or filled with rocks, obstructing such moves. The entrance of the maze is located in a cell in the uppermost row and the exit is in a cell in the lowermost row.</p>\n<p>The exploration robot is controlled by a program stored in it, which consists of sequentially numbered lines, each containing one of the five kinds of commands described below. The register <code>pc</code> specifies the line number of the program to be executed. Each command specifies an action of the robot and a value to be set to <code>pc</code>.</p>\n<p>The robot starts at the entrance of the maze facing downwards, and the value of <code>pc</code> is set to 1. The program commands on the lines specified by <code>pc</code> are executed repetitively, one by one, until the robot reaches the exit of the maze.</p>\n<p>When the value of <code>pc</code> exceeds the number of lines of the program by its increment, it is reset to 1. The robot stops on reaching the exit cell, which is the goal of the project.</p>\n<p>As the capacity of the program store for the robot is quite limited, the number of lines of the program should be minimal. Your job is to develop a program with the fewest possible number of lines among those which eventually lead the robot to the exit.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\nn m\ns<sub>1</sub>\n.\n.\n.\ns<sub>n</sub></pre>\n<p>The first line contains two integers n (2 ≤ n ≤ 10) and m (2 ≤ m ≤ 10). The maze is represented as a grid with n rows and m columns. The next n lines describe the grid. Each of the lines contains a string of length m corresponding to one grid row. The i-th character of the j-th string, either ‘<code>.</code>’, ‘<code>#</code>’, ‘<code>S</code>’ or ‘<code>G</code>’, describes the i-th cell of the j-th row. ‘<code>.</code>’ means that the cell is vacant and the robot in one of the four adjacent cells can move to it. ‘<code>#</code>’ means that the cell is filled obstructing the robot’s moves to it. ‘<code>S</code>’ means that the cell is the entrance, and ‘<code>G</code>’ means that the cell is the exit. These cells are vacant, of course.</p>\n<p>It is known that a program exists that leads the robot to the exit.</p>\n<table class=\"table table-bordered\">\n<thead>\n<tr>\n<th>command</th>\n<th>description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>GOTO l</code></td>\n<td>Set l to <code>pc</code>. The command parameter l is a positive integer less than or equal to the number of lines of the program.</td>\n</tr>\n<tr>\n<td><code>IF-OPEN l</code></td>\n<td>If there is a vacant adjacent cell in its current direction, set l to <code>pc</code>; otherwise, that is, facing a filled cell or a border of the grid, increment <code>pc</code> by one. The command parameter l is a positive integer less than or equal to the number of lines of the program.</td>\n</tr>\n<tr>\n<td><code>FORWARD</code></td>\n<td>If there is a vacant adjacent cell in its current direction, move there; otherwise, stay in the current cell. In either case, increment <code>pc</code> by one.</td>\n</tr>\n<tr>\n<td><code>LEFT</code></td>\n<td>Turn 90 degrees to the left without changing the position, and increment <code>pc</code> by one.</td>\n</tr>\n<tr>\n<td><code>RIGHT</code></td>\n<td>Turn 90 degrees to the right without changing the position, and increment <code>pc</code> by one.</td>\n</tr>\n</tbody>\n</table>",
+  "output": "<p>The first line of the output should have the number of lines of the program. The commands in the program lines should follow, one per each line, in the order of their line numbers. When the command has a parameter, output only one space between the command name and the parameter.</p>\n<p>If more than one appropriate program has the fewest lines, whichever is acceptable.</p>",
+  "samples": [
+    {
+      "input": "2 2\n.S\nG#\n",
+      "output": "2\nFORWARD\nLEFT\n"
+    },
+    {
+      "input": "5 2\nS.\n..\n..\n..\n.G\n",
+      "output": "3\nIF-OPEN 3\nLEFT\nFORWARD\n"
+    },
+    {
+      "input": "2 6\n..S...\n..#.G#\n",
+      "output": "4\nRIGHT\nRIGHT\nFORWARD\nGOTO 2\n"
+    },
+    {
+      "input": "10 10\n.##S...##.\n..#...#...\n..#...#...\n.###...##.\n..........\n..........\n.##....##.\n.#.#..#...\n.##...#...\n.#.....G#.\n",
+      "output": "5\nLEFT\nFORWARD\nRIGHT\nFORWARD\nIF-OPEN 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2020 Asia Yokohama Regional",
+  "level": 18,
+  "tags": [
+    "implementation",
+    "graphs",
+    "bruteforcing",
+    "graph_traversal",
+    "constructive",
+    "simulation",
+    "dfs",
+    "backtracking"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 1.6857000589370728
+}

@@ -1,0 +1,28 @@
+{
+  "id": 25271,
+  "title": "Box and Arrow Diagram",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 263px; height: 160px;\"/></p>\n<p style=\"text-align: center;\">An example of a box and arrow diagram, taken from <a href=\"https://github.com/dicander/box_arrow_diagram\">github.com/dicander/box_arrow_diagram</a></p>\n<p>What an embarrassment! Itaf got 0/5 points in her last \"Fundamental programming in Python\" exam. She studies Engineering physics at KTH and is struggling with this course. She is not alone, as $60\\%$ of her classmates failed the exam this year. The reason for this oddly high percentage is the so called <em>box and arrow diagram</em> (låd- och pildiagram).</p>\n<p>In this part of the exam you are given a piece of Python code and you have to draw how the memory structure will look like when the program reaches a given line. Since Itaf is a high-rated competitive programmer her ego always came in the way whenever she tried to study for the test, because it felt \"too easy\". But now she has become desperate and needs your help.</p>\n<p>The <em>box and arrow diagram</em> is used to explain the memory structure inside Python. Simplified, the diagram can be seen as a directed graph with nodes (boxes) labeled from $1$ to $N$ and edges (arrows) labeled from $1$ to $M$. The boxes corresponds to the objects in the memory of a Python program. Box 1 is special, it represents the <em>global</em> object. An arrow being drawn from box $u$ to box $v$ in the diagram means that object $u$ stores a reference of object $v$. If $u$ stores multiple references of $v$, then you draw multiple arrows from $u$ to $v$. It is also possible for an object to contain references to itself.</p>\n<p>An object $u$ is said to be <em>alive</em> if there exists a path from the <em>global</em> object to $u$ in the <em>box and arrow diagram</em>. Each object also has a reference counter. The reference counter of an object $u$ is defined as the number of arrows $(v,u)$ such that $v$ is alive.</p>\n<p>Itaf now needs your help, and she will ask you $Q$ queries, each query can be one of two types.</p>\n<ul>\n<li><code>1 X</code> Remove the arrow with label $X$ from the diagram.}</li>\n<li><code>2 Y</code> Output the reference counter of the object with label $Y$.}</li>\n</ul>",
+  "input": "<p>The first line consists of two space separated integers $N,M$ ($1 \\leq N,M \\leq 2 \\cdot 10^5$), where $N$ is the number of boxes in the diagram and $M$ is the number of arrows in the diagram.</p>\n<p>The next $M$ lines describe the arrows in the diagram. The $i$-th line contains $2$ space separated integers $U_i,V_i$ ($1 \\leq U_i,V_i \\leq N$), meaning the arrow with label $i$ goes from box $U_i$ to box $V_i$. Note that arrows forming loops and multi-edges are allowed.</p>\n<p>The next line contains an integer $Q$ ($1 \\leq Q \\leq 2 \\cdot 10^5$), the number of queries. The next $Q$ lines describe the $Q$ queries. The $j$-th query is given as a pair of space separated integers $C_j, X_j$ ($1 \\leq C_j \\leq 2$).</p>\n<ul>\n<li>If $C_j = 1$ then remove the arrow labeled $X_j$ from the diagram ($1 \\leq X_j \\leq M$).</li>\n<li>If $C_j = 2$ then output the reference counter of object $X_j$ ($1 \\leq X_j \\leq N$).</li>\n</ul>\n<p>It is guaranteed that there will not be two queries of type $1$ with same value of $X_j$, meaning the same arrow will never be deleted twice.</p>",
+  "output": "<p>For each query of type $2$, output a single line containing the reference count of object $Y_j$.</p>",
+  "samples": [
+    {
+      "input": "3 4\n1 2\n2 3\n1 2\n3 3\n7\n2 2\n2 3\n1 4\n2 3\n1 1\n1 3\n2 3\n",
+      "output": "2\n2\n1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, KTH Challenge, KTH Challenge 2022",
+  "level": 18,
+  "tags": [
+    "bfs",
+    "dfs",
+    "graphs",
+    "graph_traversal",
+    "offline_queries"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 4.142899990081787
+}

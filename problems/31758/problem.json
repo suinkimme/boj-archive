@@ -1,0 +1,35 @@
+{
+  "id": 31758,
+  "title": "Harmonic Operations",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>In this problem we consider three types of operations that can be applied to any $0$-based string $t$ of length $|t| ≥ 2$.</p>\n<blockquote>\n<p>$I(t)$: Reverses $t$.</p>\n<p>$R(t, D)$: Rotates $t$ to the right $D$ positions, for some positive integer $D &lt; |t|$. That is, for each $0 ≤ i &lt; |t|$, the character at position $(i+D) \\bmod |t|$ in $R(t, D)$ is the character at position $i$ in $t$.</p>\n<p>$L(t, D)$: Analogous to $R(t, D)$, but rotates $t$ to the left instead of to the right.</p>\n</blockquote>\n<p>For example, $I($“<code>pda</code>”$) = $“<code>adp</code>”, $R($“<code>pda</code>”$, 2) = $“<code>dap</code>”, and $L($“<code>pda</code>”$, 2) = $“<code>apd</code>”. Note that for any $t$ and any $D$ it holds that $|I(t)| = |R(t, D)| = |L(t, D)| = |t|$.</p>\n<p>When a list of the above operations is applied to a string, it is done sequentially in list order. That is, the first operation of the list is applied to the original string, the second operation is applied to the result after having applied the first operation, the third operation is applied to the result after having applied the first two operations, and so on.</p>\n<p>You are given a string $S$ consisting of lowercase letters, and a list of $K$ operations $F_1, F_2, \\dots , F_K$. Your task is to find out how many pairs of indices $(i, j)$ there are such that $1 ≤ i ≤ j ≤ K$, and applying the sublist of operations $F_i , F_{i+1}, \\dots , F_j$ to $S$ yields $S$ as the final result.</p>\n<p>Consider for instance $S = $“<code>pda</code>”, $K = 2$, $F_1 = R(t, 2)$ and $F_2 = L(t, 2)$. The result of applying the sublist $F_1$ to $S$ is $R($“<code>pda</code>”$, 2) = $“<code>dap</code>”, which is different from $S$. The result of applying the sublist $F_1$, $F_2$ to $S$ is $L(R($“<code>pda</code>”$, 2), 2) = L($“<code>dap</code>”$, 2) = $“<code>pda</code>” $= S$. Finally, the result of applying the sublist $F_2$ to $S$ is $L($“<code>pda</code>”$, 2) = $“<code>apd</code>”, which is different from $S$. Thus, in this example the answer is $1$.</p>",
+  "input": "<p>The first line contains a string $S$ ($2 ≤ |S| ≤ 2 \\cdot 10^5$) which is made up of lowercase letters.</p>\n<p>The second line contains an integer $K$ ($1 ≤ K ≤ 2 \\cdot 10^5$) indicating the number of operations in the list of operations that is being considered.</p>\n<p>Operations are described in the next $K$ lines, in the order they appear in the list, one operation per line. If the operation is $I(t)$, the line contains the uppercase letter “<code>I</code>”. If the operation is $R(t, D)$, the line contains the uppercase letter “<code>R</code>” and the integer $D$ ($1 ≤ D &lt; |S|$). Finally, if the operation is $L(t, D)$, the line contains the uppercase letter “<code>L</code>” and the integer $D$ ($1 ≤ D &lt; |S|$).</p>",
+  "output": "<p>Output a single line with an integer indicating the requested number of pairs.</p>",
+  "samples": [
+    {
+      "input": "pda\n2\nR 2\nL 2\n",
+      "output": "1\n"
+    },
+    {
+      "input": "aaa\n4\nR 1\nI\nI\nR 1\n",
+      "output": "10\n"
+    },
+    {
+      "input": "caso\n6\nL 1\nI\nI\nR 1\nI\nI\n",
+      "output": "4\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Championship, The 2024 ICPC Latin America Championship",
+  "level": 22,
+  "tags": [
+    "kmp",
+    "prefix_sum",
+    "string",
+    "z"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 3.4667000770568848
+}

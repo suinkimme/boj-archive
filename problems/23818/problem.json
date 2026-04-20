@@ -1,0 +1,33 @@
+{
+  "id": 23818,
+  "title": "원수의 원수",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>원수의 원수는 친구라는 속담이 있다! 이 속담과 함께라면 어떤 두 사람이든 그 쌍의 관계를 알 수 있다. A와 C라는 사람이 직접적으로 관계가 없더라도, A와 B가 관계가 있고 B와 C가 관계가 있다면 A와 C라는 사람도 간접적으로 관계가 있다. 이를 정리하면 아래와 같다.</p>\n<ol>\n<li>A와 B가 원수 관계이고 B와 C가 원수 관계이면 A와 C는 친구 관계이다.</li>\n<li>A와 B가 원수 관계이고 B와 C가 친구 관계이면 A와 C는 원수 관계이다.</li>\n<li>A와 B가 친구 관계이고 B와 C가 친구 관계이면 A와 C는 친구 관계이다.</li>\n</ol>\n<p>이를 바탕으로 사람들 간의 관계가 주어질 때, 특정 사람 간의 관계가 무엇인지를 확인해보자!</p>",
+  "input": "<p>사람의 수 $N \\, (2 \\leq N \\leq 100,000)$과 관계의 수 $M \\, (0\\leq M \\leq 100,000)$, 그리고 대답해야 할 관계의 수 $K \\, (1\\leq K \\leq 100,000)$가 입력으로 들어온다.</p>\n<p>그 후 $M$개의 줄에 걸쳐 $t \\in \\{0, 1\\}$, $a$, $b$ $(1\\leq a, b \\leq N, a \\neq b)$가 입력으로 들어오게 된다.</p>\n<p>$t$ = 0일 경우 $a$, $b$가 친구 관계임을 의미한다.</p>\n<p>$t$ = 1일 경우 $a$, $b$가 원수 관계임을 의미한다.</p>\n<p>그 후 $K$개의 줄에 걸쳐 쿼리 $a$, $b$ $(1\\leq a, b \\leq N, a \\neq b)$가 입력으로 들어오게 된다.</p>",
+  "output": "<p>각 쿼리에 대해 $a$와 $b$의 관계를 각 줄마다 출력하면 된다.</p>\n<p>$a$와 $b$가 전혀 관련이 없을 경우 'Unknown'을 출력한다.</p>\n<p>$a$와 $b$가 친구 관계인 경우 'Friend'를 출력한다.</p>\n<p>$a$와 $b$가 원수 관계인 경우 'Enemy'를 출력한다.</p>\n<p>$a$와 $b$가 친구 관계이자 원수 관계인 경우 'Error'를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 4 4\n1 1 2\n1 2 3\n0 3 4\n0 4 5\n1 3\n2 4\n3 5\n1 5\n",
+      "output": "Friend\nEnemy\nFriend\nFriend\n"
+    },
+    {
+      "input": "5 4 3\n1 1 2\n0 2 3\n0 1 3\n0 1 5\n1 4\n1 2\n1 5\n",
+      "output": "Unknown\nError\nError\n"
+    }
+  ],
+  "hint": "<p>두번째 예제의 경우, 1과 2는 직접적으로 원수 관계이지만, 1과 3 그리고 2와 3이 친구 관계이므로 간접적으로 친구 관계이다. 따라서 1과 2는 원수 관계이면서도 친구 관계가 되어 Error가 된다.</p>",
+  "source": "University, POSTECH, 2021 POSTECH Programming Contest, qjatn0120baek, gravekper, hitonanode, hojoon0205, shiftpsh",
+  "level": 15,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "dfs",
+    "disjoint_set",
+    "bipartite_graph"
+  ],
+  "accepted_user_count": 105,
+  "submission_count": null,
+  "average_tries": 2.3619000911712646
+}

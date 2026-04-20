@@ -1,0 +1,35 @@
+{
+  "id": 20534,
+  "title": "PCB 설계",
+  "time_limit": "1 초",
+  "memory_limit": "1536 MB",
+  "description": "<p>동규는 단면 PCB 회로를 설계하려고 한다. PCB 회로는 부품을 장착하는 곳인 패드와, 패드를 잇는 도선으로 구성된다. 회로를 그릴 PCB는 무한한 2차원 평면, 패드는 평면 위의 점, 도선은 평면 위에서&nbsp;이어진 선분들로&nbsp;생각할 수 있다.</p>\r\n\r\n<p>동규가 설계하려는 회로에는 $2N$개의 패드가 수평 방향으로 나열되어 있다. 왼쪽에서 $i$번째에 위치한 패드의 좌표는 $(i-1, 0)$이다. 패드마다 $1$번부터 $N$번까지의 번호 중 하나가 붙어 있으며, 같은 번호를 가진 패드는 각각 두 개씩 존재한다.</p>\r\n\r\n<p>동규는 <strong>번호가 같은 패드 쌍</strong>들을 <strong>서로 만나지 않는 도선</strong>들로 이어야 한다. 각 도선은 $x$축 또는 $y$축에 평행한 하나 이상의 선분이 차례로 이어져 있는 모양이고, 자기 자신과 교차하지 않아야 한다. 또한 도선을 구성하는 각 선분은 길이가 양의 정수여야 한다.</p>\r\n\r\n<p>패드의 번호가 순서대로 주어졌을 때, 회로를 설계하는 프로그램을 작성하시오.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"max-width: 100%; width: 480px;\" /></p>\r\n",
+  "input": "<p>첫 번째 줄에 $N$이 주어진다. $(1 &le; N &le; 1,000)$</p>\r\n\r\n<p>두 번째 줄에 패드의 번호를 나타내는 $2N$개의 정수가 순서대로 주어진다. $i$번째 정수는 왼쪽에서 $i$번째에 위치한 패드의 번호이다.</p>\r\n",
+  "output": "<p>회로 설계가 불가능하다면 <samp>NO</samp>를 출력한다.</p>\r\n\r\n<p>회로 설계가 가능하다면 첫 줄에 <samp>YES</samp>를 출력한 다음, 회로를 나타내는 $N$개의 줄을 출력한다. $i$번째 줄에는 $i$번 패드 둘을 잇는 도선을 출력한다. 도선의 시작점은 둘 중 왼쪽에 있는 패드, 끝점은 오른쪽에 있는 패드이며, 도선을 출력하는 형식은 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>도선을 구성하는 선분의 개수를 출력한다.</li>\r\n\t<li>도선을 구성하는 선분을 순서대로 그리는 과정을 다음과 같이 출력한다. 시작점 또는 이전 선분을 그리고 난 뒤의 위치에서 시작해서, 다음 선분을 어느 방향으로 그릴지와 어느 길이만큼 그릴지를 각각 출력한다. 끝점에 도달할 때까지 반복한다. 방향을 나타내는 문자는 <samp>U,&nbsp;D, L, R</samp> 중 하나이며, 각각 위, 아래, 왼쪽, 오른쪽을 나타낸다.</li>\r\n</ul>\r\n\r\n<p>또한 구성된 회로는 다음 조건을 만족해야 한다. 회로 설계가 가능하다면 아래 조건을 만족하는 회로가 존재함이 보장된다.</p>\r\n\r\n<ul>\r\n\t<li>각 도선을 구성하는 선분의 개수는 $10$개 이하여야 한다.</li>\r\n\t<li>도선을 구성하는 선분의 끝점들은 $x, y$ 좌표의 절댓값이 $10,000$ 이하인 정수여야 한다.</li>\r\n</ul>\r\n\r\n<p>가능한 회로가 여러 가지라면 아무거나 하나만 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "4\n1 2 3 4 1 2 3 4\n",
+      "output": "YES\n3 U 1 R 4 D 1\n5 D 1 L 2 U 3 R 6 D 2\n5 D 2 R 6 U 3 L 2 D 1\n3 D 1 R 4 U 1\n"
+    },
+    {
+      "input": "4\n1 2 3 4 1 3 2 4\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, Good Bye, BOJ, Good Bye, BOJ 2020!, Camp, Petrozavodsk Programming Camp, Winter 2021, Day 9: Grand Prix of Suwon, Contest, Open Cup, 2020/2021 Season, Stage 13: Grand Prix of Suwon, queued_q, kdh9949, koosaga, leejseo",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "ad_hoc",
+    "dfs",
+    "disjoint_set",
+    "scc",
+    "2_sat"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.9443999528884888
+}

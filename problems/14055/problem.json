@@ -1,0 +1,40 @@
+{
+  "id": 14055,
+  "title": "Pirates",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A group of N pirates found K gold coins. They must decide on a way to distribute the coins amongst themselves. They have agreed on the following rules:</p>\n<p>The oldest pirate proposes a distribution. (You can assume that all the pirates’ ages are distinct.) A distribution assigns an non-negative integer number of coins to each pirate such that the sum of these numbers equals K.</p>\n<p>Then, each pirate will vote either ‘yes’ or ‘no’ on the proposal. The number of ‘yes’ votes required for the proposal to pass depends on the number of pirates. If there are X pirates, then V [X] ‘yes’ votes are required for the proposal to pass. If the proposal passes, the coins are assigned according the proposed distribution and the process ends. Otherwise, the oldest pirate is thrown overboard and the process is repeated without him.</p>\n<p>The pirates act according to the following rules. The rules are given in order of priority; for example, rule 2 is only applied to distinguish between multiple options that are optimal according to rule 1.</p>\n<ol>\n<li>A pirate will act to prevent himself from being thrown overboard.</li>\n<li>A pirate will act to maximize the number of coins he receives.</li>\n<li>A pirate will act to maximize the number of pirates thrown overboard (excepting himself, because rule 1 takes priority).</li>\n<li>A pirate will act to maximize the number of coins received by the oldest pirate.</li>\n</ol>\n<p>If there are still multiple choices that fit these rules, he will maximize the gold received by the secondoldest pirate, then the third-oldest pirate, etc. If there are multiple options that are optimal according to these rules, then the pirate chooses an action arbitrarily. (You can assume that the answer to this problem does not depend on the pirate’s choice in this case.) Additionally, all the pirates are perfectly logical and know all the information contained in this problem statement. They cannot form agreements or coalitions because they do not trust each other.</p>\n<p>We will number the pirates from 1 to N, where these are numbered from the youngest (pirate 1) to the oldest (pirate N).</p>\n<p>If there were only i pirates (where i = 1, . . . , N), how many coins would the oldest of them get?</p>",
+  "input": "<p>The first line of input will be the number N (2 ≤ N ≤ 10<sup>6</sup>).</p>\n<p>The second line of input will be the integer K (1 ≤ K ≤ 10<sup>18</sup>).</p>\n<p>The next N lines of input contain V [i] (1 ≤ V [i] ≤ i) indicating the number of ‘yes’ votes required for a proposal to pass if there are i pirates remaining (i = 1, . . . , N).</p>",
+  "output": "<p>The output should consist of N integers, printed one per line. The ith line of output is the number of coins that the ith pirate would get if they were the oldest pirate; in other words, if only pirates 1, . . . , i existed. If the ith pirate is thrown overboard, output -1 on the ith line.</p>",
+  "samples": [
+    {
+      "input": "5\n100\n1\n1\n2\n2\n3\n",
+      "output": "100\n100\n99\n99\n98\n"
+    },
+    {
+      "input": "5\n100\n1\n2\n3\n4\n4\n",
+      "output": "100\n-1\n-1\n-1\n100\n"
+    },
+    {
+      "input": "4\n100\n1\n1\n2\n3\n",
+      "output": "100\n100\n99\n97\n"
+    },
+    {
+      "input": "4\n2\n1\n1\n2\n3\n",
+      "output": "2\n2\n1\n-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2016, CCO 2016",
+  "level": 25,
+  "tags": [
+    "ad_hoc",
+    "data_structures",
+    "game_theory",
+    "splay_tree",
+    "trees"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 3.3333001136779785
+}

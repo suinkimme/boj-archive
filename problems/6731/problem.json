@@ -1,0 +1,22 @@
+{
+  "id": 6731,
+  "title": "Comment removal",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Given an arbitrary, syntactically correct Pascal program, you are to compress it. (Note that you do not have to know the programming language Pascal to solve this problem; all relevant information is given below.) Here are the guidelines describing how to compress the program:</p>\n<ul>\n<li>Replace all sequences of blanks, except those within a string constant, with a single blank. Also, remove all blanks at the beginning of a line and all blanks at the end of a line.<br/>\n\tIn Pascal, strings are delimited by single quotes (“’”). Inside a string, two consecutive single quotes denote a single quote character. Examples are<br/>\n<code>’this i</code><code>s a string’<br/>\n\t’isn’’t this fun?’</code><br/>\n\tStrings may not cross line boundries.</li>\n<li>Replace all comments with a single space. (If this space comes next to another space, the two are compressed as described above.)<br/>\n\tIn Pascal, comments are enclosed by either “<code>(* · · · *)</code>” or “<code>{ · · · }</code>”, as in<br/>\n<code>(* This is a comment! *)<br/>\n\t{ A comment with a ‘*)’. } <br/>\n\t(* A (* comment *)</code><br/>\n\tComments may span several lines. They may not be nested.</li>\n<li>Eliminate totally blank lines, i.e., lines that contain only spaces (initially, or after comment removel).</li>\n<li>You can assume that the source contains no TABs or other non-printing characters (except, of course, line separators).</li>\n<li>You can assume that no source text line is longer than 255 characters.</li>\n</ul>",
+  "input": "<p>The input file contains a syntactically correct Pascal program, like this:</p>\n<pre>\n{_The_famous_’Hello_world’_program_}\n\nprogram__Hello__(output);\n__(*_no_declarations_*)\nbegin\n__WriteLn(’Hello_,__’’quaint’’__world_!’);\nend.</pre>\n<p>(Note that space characters are shown as “_” to make them easier to spot.)</p>",
+  "output": "<p>The output should be a compressed Pascal program. For example, the program shown above should be reduced to</p>\n<pre>\nprogram_Hello_(output);\nbegin\nWriteLn(’Hello_,__’’quaint’’__world_!’); \nend.</pre>",
+  "samples": [
+    {
+      "input": "{ The famous 'Hello world' program }\n\nprogram  Hello  (output):\n  (* no declarations *)\nbegin\n  WriteLn('Hello ,  ''quaint'' world !');\nend.\n",
+      "output": "program Hello (output):\nbegin\nWriteLn('Hello ,  ''quaint'' world !');\nend.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2000",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

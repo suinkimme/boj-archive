@@ -1,0 +1,30 @@
+{
+  "id": 15101,
+  "title": "Faulty Robot",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>As part of a CS course, Alice just finished programming her robot to explore a graph having n nodes, labeled 1, 2, . . . , n, and m directed edges. Initially the robot starts at node 1.</p>\n<p>While nodes may have several outgoing edges, Alice programmed the robot so that any node may have a forced move to a specific one of its neighbors. For example, it may be that node 5 has outgoing edges to neighbors 1, 4, and 6 but that Alice programs the robot so that if it leaves 5 it must go to neighbor 4.</p>\n<p>If operating correctly, the robot will always follow forced moves away from a node, and if reaching a node that does not have a forced move, the robot stops. Unfortunately, the robot is a bit buggy, and it might violate those rules and move to a randomly chosen neighbor of a node (whether or not there had been a designated forced move from that node). However, such a bug will occur at most once (and might never happen).</p>\n<p>Alice is having trouble debugging the robot, and would like your help to determine what are the possible nodes where the robot could stop and not move again.</p>\n<p>We consider two sample graphs, as given in Figures G.1 and G.2. In these figures, a red arrow indicate an edge corresponding to a forced move, while black arrows indicate edges to other neighbors. The circle around a node is red if it is a possible stopping node.</p>\n<table class=\"table\" style=\"width:100%\">\n<tbody>\n<tr>\n<td style=\"text-align:center; width:50%\"><img alt=\"\" src=\"1.png\" style=\"height:127px; width:295px\"/></td>\n<td style=\"text-align:center; width:50%\"><img alt=\"\" src=\"2.png\" style=\"height:118px; width:134px\"/></td>\n</tr>\n<tr>\n<td style=\"text-align:center; width:50%\">Figure G.1: First sample graph.</td>\n<td style=\"text-align:center; width:50%\">Figure G.2: Second sample graph.</td>\n</tr>\n</tbody>\n</table>\n<p>In the first example, the robot will cycle forever through nodes 1, 5, and 4 if it does not make a buggy move. A bug could cause it to jump from 1 to 2, but that would be the only buggy move, and so it would never move on from there. It might also jump from 5 to 6 and then have a forced move to end at 7.</p>\n<p>In the second example, there are no forced moves, so the robot would stay at 1 without any buggy moves. It might also make a buggy move from 1 to either 2 or 3, after which it would stop.</p>",
+  "input": "<p>The first line contains two integers n and m, designating the number of nodes and number of edges such that 1 ≤ n ≤ 10<sup>3</sup>, 0 ≤ m ≤ 10<sup>4</sup>. The next m lines will each have two integers a and b, 1 ≤ |a|, b ≤ n and |a| ≠ b. If a &gt; 0, there is a directed edge between nodes a and b that is not forced. If a &lt; 0, then there is a forced directed edge from −a to b. There will be at most 900 such forced moves. No two directed edges will be the same. No two starting nodes for forced moves will be the same.</p>",
+  "output": "<p>Display the number of nodes at which the robot might come to a rest.</p>",
+  "samples": [
+    {
+      "input": "7 9\n1 2\n2 3\n-1 5\n2 6\n5 1\n-4 1\n5 6\n-6 7\n-5 4\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 2\n1 2\n1 3\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Mid-Central Regional, 2017 Mid-Central Regional Programming Contest, ICPC, Regionals, North America, South Central USA Regional, 2017 South Central USA Regional Programming Contest",
+  "level": 13,
+  "tags": [
+    "bfs",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.2173999547958374
+}

@@ -1,0 +1,28 @@
+{
+  "id": 11168,
+  "title": "Abandon Ship",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>As a Starph1337 Captain, you know that the list of tasks on a starship can be long. Even on the flagship of the International Planet of Federations, a lot of things need to be taken care of during battle: power needs to be diverted, matrices need to be re-inverted, and some day you might have to get to those well-decorated emergency escape pods. A brand new software program with the somewhat cumbersome and long yet completely informative name of CaptainsLogStardate41254.7TheseAreTheVoyagesOfTheStarship (Enterprise Edition) is under development. The first version should support giving orders during battle. There are three types of systems that should be supported:</p>\n<ul>\n<li>Category I: Systems will simply go out of whack once in a while. When they do, recalibrate them!</li>\n<li>Category II: Systems will suddenly (and for no apparent reason) no longer be usable in their current state. Invert them, or re-invert them, as needed. While you take care of these systems, the engineers are grepping the source code for do_damage_to_self.</li>\n<li>Category III: Life-critical. Divert power to them if you can, or abandon ship! You have 20 units of extra power.</li>\n</ul>",
+  "input": "<p>The first line of input will be T, the number of cases. T cases follow.</p>\n<p>The first line of each case will be four numbers A, B, C, D, separated by spaces. The first three numbers will be the number of systems in Category I, II and III, respectively. The fourth number is the number of damaged systems.</p>\n<p>After this line follow A lines with the names of Category I systems, B lines with the names of Category II systems, C lines with Category III systems, and then D lines with names of damaged systems (in the order they were damaged).</p>\n<ul>\n<li>0 ≤ T ≤ 100</li>\n<li>0 ≤ A, B, C, D ≤ 100</li>\n<li>Each system name will start and end with a lowercase letter a - z.</li>\n<li>Each system name will consists of between 2 and 22 characters, and only lowercase letters a-z and spaces.</li>\n</ul>\n<p>Given a SYSTEM, the orders will be one of the following:</p>\n<ul>\n<li>recalibrate SYSTEM</li>\n<li>invert SYSTEM</li>\n<li>re-invert SYSTEM</li>\n<li>divert all power to SYSTEM</li>\n<li>ABANDON SHIP. REPEAT. ALL HANDS ABANDON SHIP.</li>\n</ul>",
+  "output": "<p>For each damage, output the correct order that should be given to your crew. Category I systems will always need to be recalibrated when they are damaged, hence, output <code>recalibrate [system name]</code>. Category II systems will need to be inverted the first time they are damaged, then re-inverted the next time, then inverted again, and so on. Output <code>invert [system name]</code> or <code>re-invert [system name]</code> as needed. Category III systems start with 100 units of power and will lose 10 units for each damage taken.</p>\n<p>The ship has 20 units of extra power in total that can be diverted to these damaged systems. Output <code>divert all power to [system name]</code>. As long as the system is still alive, give the order to divert extra power (even if the 20 extra units has been diverted). Whenever you divert power, your crew will use as much as they need to get it back to 100 units. When a life-critical (Category III) system’s power is 10 units or less, give the order to abandon ship by outputting <code>ABANDON SHIP. REPEAT. ALL HANDS ABANDON SHIP.</code> to your crew and terminate the case (do not give further orders after this). All orders need to be in lower case except for the abandon ship order, which needs to be in upper case and with the punctuation exactly as written.</p>",
+  "samples": [
+    {
+      "input": "2\n1 1 2 5\nplasma shifter\nauxiliary matrix\nlife support\nshields\nplasma shifter\nauxiliary matrix\nauxiliary matrix\nlife support\nshields\n0 0 1 11\nshields\nshields\nshields\nshields\nshields\nshields\nshields\nshields\nshields\nshields\nshields\nshields\n",
+      "output": "recalibrate plasma shifter\ninvert auxiliary matrix\nre-invert auxiliary matrix\ndivert all power to life support\ndivert all power to shields\ndivert all power to shields\ndivert all power to shields\ndivert all power to shields\ndivert all power to shields\ndivert all power to shields\ndivert all power to shields\ndivert all power to shields\ndivert all power to shields\ndivert all power to shields\ndivert all power to shields\nABANDON SHIP. REPEAT. ALL HANDS ABANDON SHIP.\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, IDI Open Contest, IDI Open 2014",
+  "level": 8,
+  "tags": [
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "simulation",
+    "set"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 4.111100196838379
+}

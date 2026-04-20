@@ -1,0 +1,34 @@
+{
+  "id": 33517,
+  "title": "징검다리 게임",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>상혁이는 징검다리 게임을 하고 있다. 이 게임에는 $N$개의 칸으로 구성된 징검다리가 있으며, 플레이어는 첫 번째 칸에서 출발하여 마지막 칸에 도달하면 게임에서 승리한다.</p>\n<p>징검다리의 각 칸은 비어 있거나 곰 또는 지뢰 중 하나가 존재하며, 모든 곰의 체력은 $1$ 이상의 정수이다. 또한 첫 번째 칸과 마지막 칸은 비어 있다. 징검다리 게임의 명령어는 아래와 같다.</p>\n<ul>\n<li>점프 (<span style=\"color:#e74c3c;\"><code>J</code></span>): 다음 칸으로 이동한다. 이동한 칸에 곰이나 지뢰가 있다면 플레이어는 패배한다.</li>\n<li>공격 (<span style=\"color:#e74c3c;\"><code>A</code></span>): 다음 칸에 있는 곰의 체력을 $1$ 깎는다. 곰의 체력이 $0$이 되면 다음 칸의 곰은 사라진다. 다음 칸이 빈칸이라면 아무 일도 일어나지 않으며, 다음 칸에 지뢰가 있다면 지뢰가 폭발하여 플레이어는 패배한다.</li>\n<li>지뢰 제거 (<span style=\"color:#e74c3c;\"><code>D</code></span>): 다음 칸에 있는 지뢰를 제거한다. 다음 칸에 지뢰가 없다면 아무 일도 일어나지 않는다.</li>\n</ul>\n<p>상혁이는 징검다리 게임에서 승리하기 위해 키 매크로를 개발했다. 키 매크로는 점프(<span style=\"color:#e74c3c;\"><code>J</code></span>), 공격(<span style=\"color:#e74c3c;\"><code>A</code></span>), 지뢰 제거(<span style=\"color:#e74c3c;\"><code>D</code></span>)로 구성된 길이 $K$의 문자열을 입력받으면 문자열의 첫 번째 명령어부터 차례대로 실행한다. 마지막 명령어를 수행한 이후에는 첫 번째 명령어부터 다시 실행한다. 명령어를 $10^{100}$회 실행했을 때 마지막 칸에 도달하지 못했다면 플레이어는 패배하며, 키 매크로는 실행 중 게임에서 승리하거나 패배할 경우 즉시 종료된다.</p>\n<p>징검다리의 상태와 상혁이가 입력한 문자열이 주어졌을 때, 상혁이가 마지막 칸에 도달하여 게임에서 승리할 수 있다면 <span style=\"color:#e74c3c;\"><code>YES</code></span>, 승리할 수 없다면 <span style=\"color:#e74c3c;\"><code>NO</code></span>를 출력하시오.</p>",
+  "input": "<p>첫 번째 줄에 징검다리의 칸의 개수 $N$이 주어진다. $(3 \\leq N \\leq 500\\,000)$</p>\n<p>두 번째 줄에 징검다리의 각 칸의 상태를 의미하는 정수 $A_1, A_2, \\cdots, A_N$가 공백으로 구분되어 주어진다. $(-1 \\leq A_i \\leq 500\\,000$; $A_1 = A_N = 0)$</p>\n<ul>\n<li>$i$번째 칸은 $A_i = -1$이면 지뢰가 있는 칸, $A_i \\geq 1$이면 체력이 $A_i$인 곰이 있는 칸, $A_i = 0$이면 빈칸이다.</li>\n</ul>\n<p>세 번째 줄에 상혁이가 키 매크로에 입력한 문자열의 길이 $K$가 주어진다. $(1 \\leq K \\leq 1\\,000\\,000)$</p>\n<p>네 번째 줄에 점프(<span style=\"color:#e74c3c;\"><code>J</code></span>), 공격(<span style=\"color:#e74c3c;\"><code>A</code></span>), 지뢰 제거(<span style=\"color:#e74c3c;\"><code>D</code></span>)로 구성된 길이 $K$의 문자열이 주어진다.</p>",
+  "output": "<p>상혁이가 마지막 칸에 도달하여 게임에서 승리할 수 있다면 <span style=\"color:#e74c3c;\"><code>YES</code></span>, 승리할 수 없다면 <span style=\"color:#e74c3c;\"><code>NO</code></span>를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5\n0 -1 1 -1 0\n3\nDAJ\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "7\n0 3 -1 5 0 5 0\n10\nAADAJDJAAA\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "3\n0 0 0\n5\nADADA\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 신촌지역 대학생 프로그래밍 대회 동아리 연합, 2025 신촌지역 대학교 프로그래밍 동아리 연합 겨울 대회 (SUAPC 2025 Winter), golazcc83, isekaijoucho, jinhan814, jthis, kidw0124, leo020630, lky7674, plast, tony9402, we12223, young_out",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "simulation",
+    "case_work"
+  ],
+  "accepted_user_count": 94,
+  "submission_count": null,
+  "average_tries": 2.3935999870300293
+}

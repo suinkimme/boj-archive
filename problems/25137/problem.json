@@ -1,0 +1,48 @@
+{
+  "id": 25137,
+  "title": "PERIOD",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ivica je ljubitelj decimalnih brojeva. To su brojevi koji imaju cijeli dio, decimalnu točku i decimalni dio (decimale). Posebno voli one u kojima je cijeli dio nula, a koji imaju beskonačno mnogo decimala od kojih se neke periodički ponavljaju. Npr. u broju 0.333... beskonačno puta se ponavlja decimala 3, u broju 0.252525... decimale 25, a u broju 0.57424242... decimale 42). Nedavno je pronašao matematički članak jednog našeg studenta s Cambridge-a u kojem je objašnjeno kako se takvi <strong>decimalni brojevi mogu zapisati u obliku razlomka</strong>. Evo i kako.</p>\n<p>Označimo s D decimalni broj, s x broj decimala koje se ne ponavljaju te s y pozitivan broj decimala koje se ponavljaju. Npr, za D=0.064333.. vrijedi da je x=3 i y=1, a za D=0.333.. vrijedi da je x=0 i y=1. Promotrimo dva slučaja.</p>\n<p>U prvom slučaju vrijedi da je x=0. Tada:</p>\n<ol>\n<li>prvo pomnožimo broj D s 10<sup>y</sup>;</li>\n<li>oduzmimo od lijeve i desne strane broj D;</li>\n<li>brojnik traženog razlomka je broj koji piše na desnoj strani, a nazivnik je broj koji piše uz D;</li>\n</ol>\n<p>Primjer 1.</p>\n<blockquote>\n<p>D = 0.333... (x=0, y=1)</p>\n<p>10 • D = 3.333... // pomnožimo lijevu i desnu stranu s 10<sup>1</sup>=10</p>\n<p>10 • D – D = 3.333... – D // oduzmimo D od lijeve i desne strane</p>\n<p>9 • D = 3</p>\n<p>D = 3/9 = 1/3 (brojnik = 1, nazivnik =3)</p>\n</blockquote>\n<p>U drugom slučaju vrijedi da je x&gt;0. Tada:</p>\n<ol>\n<li>prvo pomnožimo broj D s 10<sup>(x+y)</sup>;</li>\n<li>zatim pomnožimo orginalni broj D i s 10<sup>x</sup>;</li>\n<li>3. oduzmimo lijeve strane tako dobivenih dvaju izraza te njihove desne strane;</li>\n<li>brojnik traženog razlomka je broj koji piše na desnoj strani, a nazivnik je broj koji piše uz D;</li>\n</ol>\n<p>Primjer 2.</p>\n<blockquote>\n<p>D = 0.01838383... (x=2, y=2)</p>\n<p>1) 10000 • D = 183.838383... // pomnožimo lijevu i desnu stranu s 10<sup>4</sup></p>\n<p>2) 100 • D = 1.838383... // pomnožimo orginalni broj D i s 10<sup>2</sup></p>\n<p>10000 • D - 100 • D = 183.838383... - 1.838383...//oduzmimo lijeve i desne strane izraza 1) i 2) 9900 • D = 182</p>\n<p>D = 182/9900 = 91/4950 (brojnik = 91, nazivnik =4950)</p>\n</blockquote>\n<p>U oba opisana slučaja razlomak mora biti <strong>skraćen do kraja</strong>. Razlomak je skraćen do kraja ako ne postoji prirodan broj kojim se može bez ostatka podijeliti i brojnik i nazivnik.</p>\n<p>U slučaju da za zadani broj postoji više različitih (x,y) opisanih u gornjem tekstu tada se bira onaj par s <strong>minimalnim y</strong>.</p>\n<p>Napiši program koji će na osnovu zadanog decimalnog broja <strong>ispisati do kraja skraćen razlomak</strong> koji predstavlja zapis zadanog decimalnog broja.</p>",
+  "input": "<p>U prvom retku nalazi se realni broj D (0 &lt; D &lt; 1), decimalni broj iz teksta zadatka. Grupa decimala koje se ponavljaju, pojavit će se točno tri puta. Dodatno će vrijediti x+3y ≤ 15.</p>",
+  "output": "<p>U prvi redak izlaza treba ispisati brojnik, a u drugi redak nazivnik razlomka iz teksta zadatka.</p>",
+  "samples": [
+    {
+      "input": "0.222\n",
+      "output": "2\n9\n"
+    },
+    {
+      "input": "0.252525\n",
+      "output": "25\n99\n"
+    },
+    {
+      "input": "0.123123123\n",
+      "output": "41\n333\n"
+    },
+    {
+      "input": "0.1222\n",
+      "output": "11\n90\n"
+    },
+    {
+      "input": "0.8161616\n",
+      "output": "404\n495\n"
+    },
+    {
+      "input": "0.000555\n",
+      "output": "1\n1800\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2014, Junior Croatian Olympiad in Informatics 2014",
+  "level": 9,
+  "tags": [
+    "euclidean",
+    "implementation",
+    "math",
+    "number_theory",
+    "string"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.583299994468689
+}

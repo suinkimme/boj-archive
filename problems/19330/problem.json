@@ -1,0 +1,32 @@
+{
+  "id": 19330,
+  "title": "Berland Post",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Berland Post is the national postal service of Berland. There is exactly one post office in each of $n$ Berland cities. Cities and their respective offices are numbered by integers from $1$ to $n$.</p>\n<p>There are $m$ pairs of cities $(a, b)$ such that there is direct post traffic from $a$ to $b$. For each such pair of cities, the delivery time is known: formally, you are given $m$ triples $(a_j, b_j, d_j)$ meaning that each day, the post office in $a_j$ has to send correspondence to the post office in $b_j$, and $d_j$ is the time elapsed between sending the correspondence from $a_j$ and receiving it at $b_j$.</p>\n<p>Each day, all offices must be open for the equal consecutive amount of time, which is denoted as $T$. But opening times may differ. If the opening time of $i$-th office is $o_i$, then the closing time is $o_i + T$.</p>\n<p>Some values of $o_i$ are known and fixed, but some of them are up to you. Your goal is to find such values $T \\ge 0$ and $o_i$ that each office receives all the correspondence no later than at closing time, and $T$ is the minimum possible. It is allowed for an office to receive the correspondence even before opening. Assume that each office sends the correspondence instantly after opening.</p>\n<p>Formally, find the minimum possible non-negative $T$ and values $o_i$ such that $o_{a_j} + d_j \\le o_{b_j} + T$ for each of the $m$ given triples $(a_j, b_j, d_j)$.</p>",
+  "input": "<p>The input contains one or more test cases.</p>\n<p>Each test case starts with a line containing two integers: $n$, the number of cities, and $m$, the number of direct traffic paths ($1 \\le n \\le 1000, 0 \\le m \\le 2000$).</p>\n<p>The second line of each test case contains $n$ tokens $o_i$, where $o_i$ is either a question mark (\"<code>?</code>\") if the opening time of the office $i$ is not given and your task is to define it, or an integer ($-10^5 \\le o_i \\le 10^5$) if the opening time of the office $i$ is known and you can not change it.</p>\n<p>The following $m$ lines contain descriptions of direct traffic paths, one per line. Each line contains three integers: $a_j$, $b_j$, and $d_j$, denoting direct post traffic from the city $a_j$ to the city $b_j$ with delivery time $d_j$ ($1 \\le a_j, b_j \\le n$, $a_j \\ne b_j$, $1 \\le d_j \\le 100$). It is guaranteed that, for each pair of the cities $(a, b)$, there is at most one direct traffic path from $a$ to $b$.</p>\n<p>The sum of all values $n$ in a test case does not exceed $1000$. The sum of all values $m$ in a test case does not exceed $2000$. The test cases just follow one another without any special separators.</p>",
+  "output": "<p>For each test case, print exactly two lines.</p>\n<p>Print the minimum possible non-negative real value of $T$ on the first line and the values $o_1$, $o_2$, $\\ldots$, $o_n$ on the second line. The values of $o_i$ must be in the range $[-10^9, 10^9]$. Print $T$ and $o_i$ with absolute error of at most $10^{-4}$.</p>\n<p>The values $o_i \\ne $\"<code>?</code>\" in the input must not change. For each of the $m$ given triples $(a_j, b_j, d_j)$, it must be true that $o_{a_j} + d_j \\le o_{b_j} + T$.</p>",
+  "samples": [
+    {
+      "input": "2 1\n5 7\n1 2 3\n",
+      "output": "1\n5 7\n"
+    },
+    {
+      "input": "2 2\n? ?\n1 2 3\n2 1 1\n3 0\n? ? 3\n",
+      "output": "2\n9 10\n0\n1 -1 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2018, Day 8: Saratov SU Contest, Contest, Open Cup, 2017/2018 Season, Stage 13: Grand Prix of Saratov",
+  "level": 21,
+  "tags": [
+    "bellman_ford",
+    "binary_search",
+    "graphs",
+    "parametric_search",
+    "shortest_path"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 4.3333001136779785
+}

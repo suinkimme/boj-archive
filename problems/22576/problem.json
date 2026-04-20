@@ -1,0 +1,30 @@
+{
+  "id": 22576,
+  "title": "How to Create a Good Game",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>A video game company called ICPC (International Company for Playing and Competing) is now developing a new arcade game. The new game features a lot of branches. This makes the game enjoyable for everyone, since players can choose their routes in the game depending on their skills. Rookie players can choose an easy route to enjoy the game, and talented players can choose their favorite routes to get high scores.</p>\n<p>In the game, there are many checkpoints connected by paths. Each path consists of several stages, and completing stages on a path leads players to the next checkpoint. The game ends when players reach a particular checkpoint. At some checkpoints, players can choose which way to go, so routes diverge at that time. Sometimes different routes join together at a checkpoint. The paths between checkpoints are directed, and there is no loop (otherwise, players can play the game forever). In other words, the structure of the game can be viewed as a DAG (directed acyclic graph), when considering paths between checkpoints as directed edges.</p>\n<p>Recently, the development team completed the beta version of the game and received feedbacks from other teams. They were quite positive overall, but there are some comments that should be taken into consideration. Some testers pointed out that some routes were very short compared to the longest ones. Indeed, in the beta version, the number of stages in one play can vary drastically depending on the routes. Game designers complained many brilliant ideas of theirs were unused in the beta version because of the tight development schedule. They wanted to have more stages included in the final product.</p>\n<p>However, it’s not easy to add more stages. this is an arcade game – if the playing time was too long, it would bring down the income of the game and owners of arcades would complain. So, the longest route of the final product can’t be longer than that of the beta version. Moreover, the producer of the game didn’t want to change the structure of paths (i.e., how the checkpoints connect to each other), since it would require rewriting the scenario, recording voices, creating new cutscenes, etc.</p>\n<p>Considering all together, the producer decided to add as many new stages as possible, while keeping the maximum possible number of stages in one play and the structure of paths unchanged. How many new stages can be added to the game?</p>",
+  "input": "<pre>\n<i>N M</i>\n<i>x</i><sub>1</sub> <i>y</i><sub>1</sub> <i>s</i><sub>1</sub>\n.\n.\n.\n<i>x</i><sub><i>M</i></sub> <i>y</i><sub><i>M</i></sub> <i>s</i><sub><i>M</i></sub></pre>\n<p>The first line of the input contains two positive integers <i>N</i> and <i>M</i> (2 ≤ <i>N</i> ≤ 100, 1 ≤ <i>M</i> ≤ 1000). <i>N</i> indicates the number of checkpoints, including the opening and ending of the game. <i>M</i> indicates the number of paths between checkpoints.</p>\n<p>The following <i>M</i> lines describe the structure of paths in the beta version of the game. The <i>i</i>-th line contains three integers <i>x<sub>i</sub></i> , <i>y<sub>i</sub></i> and <i>s<sub>i</sub></i> (0 ≤ <i>x<sub>i</sub></i> &lt; <i>y<sub>i</sub></i> ≤ <i>N</i> - 1, 1 ≤ <i>s<sub>i</sub></i> ≤ 1000), which describe that there is a path from checkpoint <i>x<sub>i</sub></i> to <i>y<sub>i</sub></i> consists of si stages. As for indices of the checkpoints, note that 0 indicates the opening of the game and <i>N</i> - 1 indicates the ending of the game. You can assume that, for every checkpoint <i>i</i>, there exists a route from the opening to the ending which passes through checkpoint <i>i</i>. You can also assume that no two paths connect the same pair of checkpoints.</p>",
+  "output": "<p>Output a line containing the maximum number of new stages that can be added to the game under the following constraints:</p>\n<ul>\n<li>You can’t increase the maximum possible number of stages in one play (i.e., the length of the longest route to the ending).</li>\n<li>You can’t change the structure of paths (i.e., how the checkpoints connect to each other).</li>\n<li>You can’t delete any stage that already exists in the beta version.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3 3\n0 1 5\n1 2 3\n0 2 2\n",
+      "output": "6\n"
+    },
+    {
+      "input": "2 1\n0 1 10\n",
+      "output": "0\n"
+    },
+    {
+      "input": "4 6\n0 1 5\n0 2 5\n0 3 5\n1 2 5\n1 3 5\n2 3 5\n",
+      "output": "20\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2010 Day 4",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1
+}

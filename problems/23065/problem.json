@@ -1,0 +1,32 @@
+{
+  "id": 23065,
+  "title": "Newspapers",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>„<em>Ulovi me, ulovi me, kupit ću ti novine!</em>” – a popular play song among Croatian children. Translates to <em>catch me, and I’ll buy you newspapers</em>.</p>\n<p>Ankica and Branko are playing a chasing game on an undirected, connected graph. Namely, Branko is moving around the graph, while Ankica is attempting to catch him. The game proceeds in turns, and a single turn consists of the following:</p>\n<ul>\n<li><strong>Ankica makes a guess on Branko’s whereabouts.</strong> More precisely, she guesses that Branko is currently located at a specific node. If she guesses correctly, Branko is caught and the game ends. Otherwise,</li>\n<li><strong>Branko traverses an edge incident to his current location.</strong> In other words, Branko moves to one of his neighbouring nodes. Note that Branko cannot stay at his present location.</li>\n</ul>\n<p>Given a graph, determine if Ankica has a finite strategy which always catches Branko regardless of the way Branko plays and what his starting position may be.</p>\n<p>More formally, we represent Ankica’s strategy as an array $A = (a_1, a_2, \\dots , a_k)$, where $a_i$ denotes Ankica’s guess in the $i$-th turn (i.e. she guesses that Branko is located in the node $a_i$).</p>\n<p>Similarly, we represent Branko’s movements as an array $B = (b_1, b_2, \\dots , b_k)$, where $b_i$ represents the node in which Branko is located before the $i$-th turn. Additionally, for each two successive elements $b_i$ and $b_{i+1}$ ($1 \\le i &lt; k$), there must exist an edge in the graph connecting nodes $b_i$ and $b_{i+1}$. Note that no such constraint is imposed on array $A$.</p>\n<p>We say that Ankica’s strategy is successful, i.e. she catches Branko in at most $k$ turns, if, for every valid array $B$ of length $k$, there exists some $i$ ($1 \\le i \\le k$) such that $a_i = b_i$ holds.</p>\n<p>If such strategy exists, you should find one that minimizes the number $k$.</p>\n<p>You can score some points in this task if you are able to provide a succesful, but not optimal, strategy for Ankica (i.e. a strategy where $k$ is not minimal). See the <em>Scoring</em> section for more details.</p>",
+  "input": "<p>The first line contains two integers $N$ and $M$ ($N - 1 \\le M \\le \\frac{N(N-1)}{2}$) that represent the number of nodes and edges in the graph (respectively). Nodes of the graph are denoted with integers from 1 to $N$.</p>\n<p>The $i$-th of the next $M$ lines contains two space-separated integers $u_i$ and $v_i$ ($1 \\le u_i, v_i \\le N$, $u_i \\ne v_i$), representing that an undirected edge connects nodes $u_i$ and $v_i$. No edge will appear more than once in the input, and the graph will be connected.</p>",
+  "output": "<p>If there is no successful strategy for Ankica, simply output \"<code>NO</code>\" in the first line and terminate the program.</p>\n<p>Otherwise, you should output \"<code>YES</code>\" in the first line.</p>\n<p>The second line should contain the number $k$ from the task description. The third line should contain $k$ numbers $a_1, a_2, \\dots , a_k$ from the task description.</p>",
+  "samples": [
+    {
+      "input": "7 6\n1 2\n1 3\n1 4\n1 5\n1 6\n1 7\n",
+      "output": "YES\n2\n1 1\n"
+    },
+    {
+      "input": "6 6\n1 2\n2 3\n3 1\n1 4\n2 5\n3 6\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2021, Day 1",
+  "level": 23,
+  "tags": [
+    "graphs",
+    "trees",
+    "constructive",
+    "parity",
+    "tree_diameter"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 3.9130001068115234
+}

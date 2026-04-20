@@ -1,0 +1,30 @@
+{
+  "id": 25923,
+  "title": "동아리 박람회",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>기나긴 비대면의 시대가 끝나고 연세대에도 동아리 박람회가 열리게 되었다! 오랜만에 신촌에 오게 된 건우도 설레는 마음으로 동아리 박람회를 둘러보기로 했다. </p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 1000px; height: 196px;\"/></p>\n<p>동아리 박람회는 각 동아리가 부스에서 동아리를 홍보하는 행사이다. 동아리 부스는 백양로를 따라 일렬로 설치되어 있으며, $1$번부터 $N$번까지의 번호가 차례대로 붙어 있다. 이웃한 부스 사이의 거리는 $1$이며, $i$번 부스와 $j$번 부스 사이의 거리는 $|i-j|$이다. </p>\n<p>건우는 $1$번 부스에서 시작해서 $2$번부터 $N$번 부스를 <strong>한 번씩만</strong> 방문하고 $1$번 부스로 돌아오려고 한다. 그러나 건우는 두 수를 보면 bitwise AND 연산을 하는 습관이 있고, 그 값이 $0$이 되는 것을 싫어한다. 그러므로 $i$번 부스에서 $j$번 부스로 이동할 때, $i$와 $j$에 AND 연산을 적용한 값이 $0$이 아닐 때만 이동할 수 있다. AND 연산의 정의는 하단의 힌트에 있다. 그리고 오래 걷는 것은 힘들기 때문에, 한 번에 이동할 수 있는 최대 거리는 $K$이다. </p>\n<p>건우는 이동 거리의 합을 최소화하기 위해, 가능한 부스 방문 순서를 모두 찾은 다음에 이동 거리의 합이 가장 작은 것을 찾으려고 한다. 즉 가능한 경로들 중에서 최단 경로를 찾으려고 한다. 그러나 동아리의 수가 너무 많아서 최단 경로를 찾다가 박람회가 끝날 것이다. 건우를 위해 최단 경로를 빠르게 찾아 주는 프로그램을 작성하시오. </p>",
+  "input": "<p>입력은 아래와 같이 주어진다.</p>\n<div style=\"background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;\">\n<p>$N$ $K$</p>\n</div>",
+  "output": "<p>조건을 만족하는 경로가 존재한다면, 첫째 줄에 최단 경로의 길이를 출력한다. 둘째 줄에 방문할 부스의 번호를 순서대로 출력한다. $1$로 시작해서 $1$로 끝나야 한다.</p>\n<p>조건을 만족하는 경로가 존재하지 않는다면, 첫째 줄에 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력한다. </p>",
+  "samples": [
+    {
+      "input": "7 5\n",
+      "output": "16\n1 3 2 7 6 4 5 1\n"
+    },
+    {
+      "input": "3 2\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>Bitwise AND 연산은 두 값을 이진수로 나타낸 다음, 같은 자릿수끼리 비교해서 둘 다 1일 때만 1을, 나머지 경우에는 0을 계산하는 연산이다. </p>\n<table class=\"table table-bordered\" style=\"width: 200px;\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">비트1</td>\n<td style=\"text-align: center;\">비트2</td>\n<td style=\"text-align: center;\">결과</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">0</td>\n<td style=\"text-align: center;\">0</td>\n<td style=\"text-align: center;\">0</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">0</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">0</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">0</td>\n<td style=\"text-align: center;\">0</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">1</td>\n</tr>\n</tbody>\n</table>\n<p>다음은 12 AND 5의 값을 구하는 과정을 나타낸 것이다. </p>\n<table class=\"table table-bordered\" style=\"width: 400px;\">\n<tbody>\n<tr>\n<td style=\"width: 100px; text-align: center;\"> </td>\n<td style=\"text-align: center; width: 25%;\">십진수 표현</td>\n<td colspan=\"4\" rowspan=\"1\" style=\"text-align: center;\">이진수 표현</td>\n</tr>\n<tr>\n<td style=\"width: 25px; text-align: center;\">X</td>\n<td style=\"width: 25%; text-align: center;\">12</td>\n<td style=\"width: 75px; text-align: center;\">1</td>\n<td style=\"width: 75px; text-align: center;\">1</td>\n<td style=\"width: 75px; text-align: center;\">0</td>\n<td style=\"width: 75px; text-align: center;\">0</td>\n</tr>\n<tr>\n<td style=\"width: 25px; text-align: center;\">Y</td>\n<td style=\"width: 25%; text-align: center;\">5</td>\n<td style=\"width: 75px; text-align: center;\">0</td>\n<td style=\"width: 75px; text-align: center;\">1</td>\n<td style=\"width: 75px; text-align: center;\">0</td>\n<td style=\"width: 75px; text-align: center;\">1</td>\n</tr>\n<tr>\n<td style=\"width: 25px; text-align: center;\">X AND Y</td>\n<td style=\"width: 25%; text-align: center;\">4</td>\n<td style=\"width: 75px; text-align: center;\">0</td>\n<td style=\"width: 75px; text-align: center;\">1</td>\n<td style=\"width: 75px; text-align: center;\">0</td>\n<td style=\"width: 75px; text-align: center;\">0</td>\n</tr>\n</tbody>\n</table>",
+  "source": "University, 연세대학교, 2022 연세대학교 프로그래밍 경진대회, coconut99, dadada2413, ggoh, Juno, lky7674, ystaeyoon113",
+  "level": 18,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "bitmask"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 1.5428999662399292
+}

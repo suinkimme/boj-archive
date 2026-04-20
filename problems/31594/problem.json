@@ -1,0 +1,32 @@
+{
+  "id": 31594,
+  "title": "Attraction Score",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There are $n$ cities, numbered from $1$ to $n$, in the fictional country of Manteiv. We can consider these cities to be on a flat plane with a 2D coordinate system, where city i is at coordinates $(x_i , y_i)$. No two cities are located at the same position.</p>\n<p>There are $m$ highways, numbered from $1$ to $m$, each of which is a line segment with two different cities as its endpoints and has a number of attraction points alongside it. Specifically, highway $j$ has $a_j$ attraction points and connects cities $u_j$ and $v_j $as its endpoints. Having intersections on highways causes traffic jams, and building a highway on top of another highway costs a lot of money. Therefore, it is guaranteed that</p>\n<ul>\n<li>no two highways intersect at any point other than at a city,</li>\n<li>no highway passes through a city other than its two endpoints, and</li>\n<li>there is at most one highway connecting each pair of cities.</li>\n</ul>\n<p>The Manteiv Ministry of Tourism would like to choose a subset of cities as tourist attractions. Intuitively, the ministry would like many pairs of chosen cities to be connected by a highway with many attraction points. Formally, the <em>attraction score</em> of a non-empty subset of cities $S$ is defined as follows:</p>\n<ul>\n<li>For every pair of integers $(a, b)$ where $a &lt; b$, cities $a$ and $b$ are in $S$, and they are connected by a highway, add the number of attraction points on the highway to the score.</li>\n<li>Let $f(S)$ be the number of pairs of integers $(a, b)$ where $a &lt; b$, cities $a$ and $b$ are in $S$, and they are <strong>not</strong> connected by a highway. The score incurs a penalty (negative) score of $10^6$ multiplied by <strong>the square of</strong> $f(S)$. In other words, subtract $10^6 × f(S)^2$ from the score.</li>\n</ul>\n<p>For example, let $n = 3$, cities $1$ and $2$ be connected by a highway with $10$ attraction points, cities $2$ and $3$ be connected by a highway with $20$ attraction points, and cities $1$ and $3$ not be connected by a highway.</p>\n<ul>\n<li>The attraction score of the subset of cities $\\{1\\}$ is $0$.</li>\n<li>The attraction score of the subset of cities $\\{1, 2\\}$ is $10 - 10^6 \\times 0^2 = 10$.</li>\n<li>The attraction score of the subset of cities $\\{2, 3\\}$ is $20 - 10^6 \\times 0^2 = 20$.</li>\n<li>The attraction score of the subset of cities $\\{1, 2, 3\\}$ is $10 + 20 - 10^6 \\times 1^2 = -999\\, 970$.</li>\n</ul>\n<p>As an advisor to the ministry, you would like to find the maximum attraction score among all possible non-empty subsets of cities $S$.</p>",
+  "input": "<p>The first line of input contains two integers $n$ and $m$ ($1 ≤ n ≤ 100\\, 000$; $0 ≤ m ≤ 300\\, 000$). Each of the next $n$ lines contains two integers. The $i$-th line contains $x_i$ and $y_i$ ($0 ≤ x_i , y_i ≤ 10^9$). Each of the next $m$ lines contains three integers. The $j$-th line contains $u_j$, $v_j$, and $a_j$ ($1 ≤ u_j &lt; v_j ≤ n$; $0 ≤ a_j ≤ 10^6$). The highways are guaranteed to satisfy the conditions in the problem statement.</p>",
+  "output": "<p>Output an integer representing the maximum attraction score among all possible non-empty subsets of cities $S$.</p>",
+  "samples": [
+    {
+      "input": "3 2\n0 0\n0 1\n1 0\n1 2 10\n2 3 20\n",
+      "output": "20\n"
+    },
+    {
+      "input": "3 3\n0 0\n0 1\n1 0\n1 2 10\n2 3 20\n1 3 30\n",
+      "output": "60\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Asia Pacific Championship, The 2024 ICPC Asia Pacific Championship",
+  "level": 23,
+  "tags": [
+    "implementation",
+    "graphs",
+    "sorting",
+    "case_work",
+    "planar_graph"
+  ],
+  "accepted_user_count": 31,
+  "submission_count": null,
+  "average_tries": 4.064499855041504
+}

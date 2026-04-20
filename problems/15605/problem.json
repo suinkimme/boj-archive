@@ -1,0 +1,30 @@
+{
+  "id": 15605,
+  "title": "Glyph Recognition",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are an archaeologist working at an excavation site where your team has found hundreds of clay tablets containing glyphs written in some ancient language. Not much is known about the language yet, but you know that there are only six different glyphs, each of them in the shape of a regular polygon with one vertex pointing to the right (see Figure G.1(a) below). Only the boundary of each polygon is carved out of the clay.</p>\n<table class=\"table\" style=\"width: 100%;\">\n<tbody>\n<tr>\n<td style=\"width: 33%; text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 114px; height: 185px;\"/></td>\n<td style=\"width: 34%; text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 159px; height: 164px;\"/></td>\n<td style=\"width: 33%; text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 224px; height: 119px;\"/></td>\n</tr>\n<tr>\n<td style=\"width: 33%; text-align: center;\">(a) The six glyphs.</td>\n<td style=\"width: 34%; text-align: center;\">(b) The first sample input.</td>\n<td style=\"width: 33%; text-align: center;\">(c) Fitting triangles and hexagons to the first sample. The triangles’ score is higher.</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure G.1</p>\n<p>You want to start analysing the language right away, so you need to get the text on the tablets into some machine readable format. Ideally, you would like to use an OCR (optical character recognition) tool for that, but you do not have one installed on your laptop and there is no internet connection at the site.</p>\n<p>Because of this you have devised your own scheme to digitise the ancient writings: for every glyph on a tablet you first find a number of sample points that are in the carved out region, i.e. on the boundary of the polygon. Based on those sample points you then calculate a score for each of the six glyphs and mark the one with the highest score as the recognised glyph.</p>\n<p>For a given number of corners k (3 ≤ k ≤ 8), the score is computed as follows. Two regular k-gons are fitted to the sample points, one from the inside and one from the outside, such that the following hold:</p>\n<ul>\n<li>Each polygon is centered at the origin, i.e. all vertices have equal distance to (0, 0).</li>\n<li>Each polygon has a vertex on the positive x-axis.</li>\n<li>The inner polygon is the largest such polygon containing none of the sample points.</li>\n<li>The outer polygon is the smallest such polygon containing all of the sample points.</li>\n</ul>\n<p>An example can be seen in Figure G.1(c). The score for this value of k is A<sub>inner</sub>/A<sub>outer</sub> , where A<sub>inner</sub> and A<sub>outer</sub> are the areas of the inner and outer polygon, respectively.</p>\n<p>Given a set of sample points, find the glyph with the highest score.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with one integer n (1 ≤ n ≤ 1 000), the number of sample points.</li>\n<li>n lines, each with two integers x, y (−10<sup>6</sup> ≤ x, y ≤ 10<sup>6</sup>), specifying a point at coordinates (x, y).</li>\n</ul>\n<p>No sample point is at the origin and all points are distinct.</p>",
+  "output": "<p>Output the optimal number of corners k (3 ≤ k ≤ 8), followed by the score obtained for that value of k. Your answer will be accepted if the absolute error does not exceed 10<sup>−6</sup>. If several values of k result in a score that is within 10<sup>−6</sup> of the optimal score, any one of them will be accepted.</p>",
+  "samples": [
+    {
+      "input": "9\n-4 -1\n-4 6\n-3 -6\n-3 4\n0 -4\n2 -3\n2 3\n5 1\n7 0\n",
+      "output": "3 0.5625000000\n"
+    },
+    {
+      "input": "4\n1 0\n0 1\n-1 0\n0 -1\n",
+      "output": "8 1.0000000000\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2017",
+  "level": 17,
+  "tags": [
+    "geometry",
+    "binary_search",
+    "point_in_convex_polygon"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 1.3157999515533447
+}

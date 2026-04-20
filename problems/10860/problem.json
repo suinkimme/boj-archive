@@ -1,0 +1,29 @@
+{
+  "id": 10860,
+  "title": "Ruka",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Stjepan is programming a robot arm that can use a chalk to draw on a blackboard located in a standard coordinate plane (x coordinate increases to the right, y coordinate increases upwards).</p>\n<p>The robot arm’s plan is an array of precisely N vectors (x<sub>1</sub>, y<sub>1</sub>), . . . , (x<sub>N</sub>, y<sub>N</sub>) where each x<sub>i</sub> and y<sub>i</sub> are even integers. The plan is executed by the robot arm starting from point (1, 1) and making N steps: in the i th step, the arm moves the chalk from the current point (x, y) straight to the point (x + x<sub>i</sub>, y + y<sub>i</sub>). Therefore, the robot arm is drawing a kind of a broken line in the coordinate plane, and the segments of that broken line are the given vectors.</p>\n<p>While Stjepan is devising and changing his plan, sometimes he wants to know how many times the chalk will go over the coordinate axes. Write a programme that will simulate the process of changing the plan and that will give answers to Stjepan’s queries.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:520px; width:501px\"/></p>\n<p style=\"text-align: center;\">The layout of the plan on each ‘Q‘ command in the second test case. The dotted line marks the segment that was most recently changed.</p>\n<p>Let us assume that Stjepan wrote down his plan in a text file that consists of N lines – the ith line contains the vector (x<sub>i</sub>, y<sub>i</sub>). Initially, Stjepan’s cursor is located at the first line of the file. Your programme should simulate the following commands:</p>\n<ul>\n<li>‘B‘ – the cursor moves to the previous line (if it’s already located at the first line, nothing happens).</li>\n<li>‘F‘ – the cursor moves to the next line (if it’s already located at the last line, nothing happens).</li>\n<li>‘C nx ny‘ – where nx and ny are even integers. The row of the file where the cursor is located at changes in a way that the current vector is replaced with the vector (nx, ny).</li>\n<li>‘Q‘ – you need to output how many times the dotted line which is described by the current plan went over the coordinate axes. If the dotted line goes through the starting point, then we count that as two times going over the coordinate axes.</li>\n</ul>",
+  "input": "<p>The first line of input contains the integer N – the number of vectors in the plan. The i<sup>th</sup> of the following N lines contains two even integers x<sub>i</sub> and y<sub>i</sub> separated by a single space – the coordinates of the i<sup>th</sup> vector in the initial plan.</p>\n<p>The following line contains the integer M – the number of commands which execution you need to simulate. Each of the following M lines contains a single command. A command is either one of the uppercase letters ‘B’, ‘F’ or ‘Q’ or an expression in the form ‘C nx ny’ where nx and ny are even integers described in the task.</p>",
+  "output": "<p>For each ‘Q‘ command from the input, you must output its result in a single line. The results need to be printed in the order which the commands appear in the input.</p>",
+  "samples": [
+    {
+      "input": "6\n2 2\n2 -6\n-2 -4\n-6 4\n10 -10\n-8 12\n16\nQ\nC -4 -4\nF\nF\nQ\nF\nC 6 -2\nB\nB\nB\nQ\nC 0 6\nQ\nF\nC -8 4\nQ\n",
+      "output": "4\n4\n3\n1\n5\n"
+    },
+    {
+      "input": "5\n6 2\n0 -6\n-2 2\n-6 -8\n4 0\n12\nQ\nC 4 4\nQ\nF\nF\nF\nC -6 -2\nQ\nB\nB\nC -4 -6\nQ\n",
+      "output": "3\n5\n5\n4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2015, Final Exam #1",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.25
+}

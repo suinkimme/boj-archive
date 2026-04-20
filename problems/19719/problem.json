@@ -1,0 +1,29 @@
+{
+  "id": 19719,
+  "title": "Cash Gap",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A recently founded \"NERC\" (New Era Russian Coders) company, of course, has an accounting department. And they are very concerned about the budget of the company. In particular, they don't want the company to experience a <em>cash gap</em> --- a condition where they need to pay more money than they have in their account now.</p>\n<p>At the moment the company has $s$ euros on its account. The chief accountant has prepared a plan of transactions for $m$ following days. During this period $n$ transactions are planned.</p>\n<p>For each transaction the change it makes to the company's account is known, but the exact date of the operation is unknown. Money transferred by clients may not be credited to the account immediately, and on the other hand, a claim to pay a bill can suddenly be received. For each transaction, only the range of days the transaction can happen is known in advance. If several transactions would happen on the same day, they can be performed in any order.</p>\n<p>Help the accounting department to check if there exists an order of transactions such that the company will experience a cash gap. </p>",
+  "input": "<p>The first line contains integers $n$, $m$ and $s$ --- the number of payments, the number of days in the plan and the initial amount of money the company has ($1 \\leqslant n, m \\leqslant 1000$; $1 \\leqslant s \\leqslant 10^6$).</p>\n<p>The $i$-th of the following $n$ lines contains a description of the $i$-th payment in the following format: \"$\\mathtt{count}~\\mathtt{from}~\\mathtt{to}$\", which means that on any day from $\\mathtt{from}$ to $\\mathtt{to}$, the amount of money will be changed by $\\mathtt{count}$ euros ($-10^6 \\leqslant \\mathtt{count} \\leqslant 10^6$; $1 \\leqslant \\mathtt{from} \\leqslant \\mathtt{to} \\leqslant m$).</p>",
+  "output": "<p>Print \"<code>YES</code>\" if a cash gap can occur, or \"<code>NO</code>\" if such situation is impossible.</p>",
+  "samples": [
+    {
+      "input": "4 3 100\n100 1 2\n-100 1 2\n1 2 3\n0 3 3\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "4 3 100\n100 1 2\n-100 1 2\n1 2 3\n-1 2 2\n",
+      "output": "YES\n"
+    }
+  ],
+  "hint": "<p>In the first example there is a single transfer from the account, and thus before it there will be at least $100$ euros available in the account, so the cash gap is impossible.</p>\n<p>In the second example, it could happen that both transfers from the account (for $100$ euros and for $1$ euro) will be requested on the second day, before all other transactions. In this case by the time the second transaction occurs there will be no money left on the account --- it's a cash gap.</p>",
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia High School Programming Contest, Russia High School Programming Contest 2019",
+  "level": 6,
+  "tags": [
+    "greedy",
+    "sorting"
+  ],
+  "accepted_user_count": 52,
+  "submission_count": null,
+  "average_tries": 1.6730999946594238
+}

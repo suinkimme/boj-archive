@@ -1,0 +1,30 @@
+{
+  "id": 14310,
+  "title": "Evaluation (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Given an unordered list of assignment statements, write a program to determine whether the assignment statements can be put in some order in which all variables can be evaluated.</p>\n<p>For our problem, an assignment statement will consist of an assignment variable, an assignment operator, and an expression, in that order. Statements will be evaluated one at a time, in the order you choose for them. A variable can be evaluated if and only if it has been the assignment variable of a previous assignment statement.</p>\n<p>To simplify the problem, all the expressions are single function calls. Functions can take an arbitrary number of arguments, including zero; a function with zero arguments is always valid, and a function with variable arguments is valid as long as all of the variables are evaluatable.</p>\n<p>For example, for the following list of assignment statements:</p>\n<pre>\na=f(b,c)\nb=g()\nc=h()</pre>\n<p>this is one order that makes every statement valid:</p>\n<pre>\nb=g()\nc=h()\na=f(b,c)</pre>\n<p>This is because: (1) <code>b</code> and <code>c</code> can be evaluated because the expressions <code>g()</code> and <code>h()</code> don't depend on any variables; and (2)<code>a</code> can also be evaluated because expression <code>a</code> depends on <code>b</code> and <code>c</code>, which are evaluatable.</p>\n<p>However, the order</p>\n<pre>\nb=g()\na=f(b,c)\nc=h()</pre>\n<p>would not be valid, because <code>f(b, c)</code> has variable c as an argument, but variable c has not been an assignment variable yet.</p>\n<p>Another example is: <code>a=f(a)</code>. This list of statements can't be evaluated because the expression <code>f(a)</code> depends on the variable <code>a</code> itself, which makes it impossible to evaluate the statement.</p>\n<ul>\n</ul>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T test cases follow. The first line of each test case contains an integer N: the number of assignment statements. Then, N lines follow. Each contains one assignment statement.</p>\n<p>Each assignment statement consists of three parts: the assignment variable, the assignment operator, and the expression, with no spaces in between. The assignment operator is always <code>=</code>. All expressions consist of a function name, then <code>(</code>, then zero or more comma-separated variable names, then <code>)</code>. All variables and function names consist of one or more lowercase English alphabet letters. No variable has the same name as a function. No variable will appear more than once as the assignment variable. However, variables may appear more than once in various functions (even within the same function), and functions may appear more than once.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ T ≤ 20.</li>\n<li>All functions take between 0 and 10 arguments, inclusive. All variable names consist of between 1 and 20 lowercase English alphabet letters.</li>\n<li>1 ≤ N ≤ 100.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is <code>GOOD</code> if all variables are evaluatable or <code>BAD</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "4\n3\na=f(b,c)\nb=g()\nc=h()\n2\na=f(b)\nb=f(a)\n2\naaa=foo(x,y)\nbbb=bar(aaa,bbb)\n2\nx=f()\ny=g(x,x)\n",
+      "output": "Case #1: GOOD\nCase #2: BAD\nCase #3: BAD\nCase #4: GOOD\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Google's Coding Competitions, Google APAC 2017 University Test, Round C APAC Test 2017, Contest, Google, Kick Start, Google Kick Start 2016, Round C",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "graphs",
+    "string",
+    "graph_traversal",
+    "set",
+    "parsing",
+    "dag"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 1.5356999635696411
+}

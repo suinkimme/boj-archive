@@ -1,0 +1,32 @@
+{
+  "id": 18625,
+  "title": "Gurdurr",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Gurdurr are often helping people on construction sites. Don’t worry, Gurdurr are treated very well at work — they’re given free food and are allowed frequent breaks from the work. During these breaks, they like to play their favorite game — Jenga. As they are really strong, they play Jenga with heavy steel blocks — the things that they never part with. Their Jenga has the following rules:</p>\n<p>There is a tower consisting of n layers of blocks. Each layer consists of three long steel blocks. The blocks in each layer lie parallel to each other. The blocks in two neighboring layers are perpendicular to each other. Some blocks might be missing at the start of the game. Two players make their moves alternately. During one move a player must choose a block and remove it from the tower provided that the tower remains stable afterwards. The tower is stable if all the following conditions are met:</p>\n<ul>\n<li>Each layer contains at least one block.</li>\n<li>If a layer contains exactly one block, it’s the middle one.</li>\n<li>There are no two neighboring layers such that both of them contains only one block.</li>\n</ul>\n<p>A player who is unable to make any move loses. Gurdurr are quite good at this game, so you can assume that they play optimally. You are given a starting state of the tower, possibly with some blocks already removed. It’s guaranteed that the initial tower is stable. Your task is to determine which player will win this game.</p>\n<p><em>Please note that in this version of Jenga, players don’t put the blocks on the top of the tower.</em></p>",
+  "input": "<p>The first line contains one integer t (1 ≤ t ≤ 30 000) — the number of testcases. Each of the next t blocks describes one testcase.</p>\n<p>Each block starts with a line with a single integer n (1 ≤ n ≤ 20) — the number of layers in the tower. Then there are n lines, the i-th of them describes the i-th layer from the top of the tower.</p>\n<p>Each of these lines contains a string which consists of exactly three characters. Each of them is either ‘I’ or ‘.’. If the j-th character in the i-th line is ‘I’, then the j-th block in the i-th layer from the top hasn’t been removed. If this character is ‘.’, then this block has been removed. We assume the natural numbering of the blocks in each layer, so the second block is the middle one and the first and the third blocks are on the exterior of a layer.</p>\n<p>It’s guaranteed that all the described towers are stable.</p>",
+  "output": "<p>For each testcase output one line with one string which is either First or Second, depending on which player will win.</p>",
+  "samples": [
+    {
+      "input": "5\n1\nIII\n1\nI.I\n1\n.I.\n1\n.II\n2\nIII\nIII\n",
+      "output": "First\nSecond\nSecond\nFirst\nFirst\n"
+    },
+    {
+      "input": "1\n3\nII.\n.II\nIII\n",
+      "output": "Second\n"
+    }
+  ],
+  "hint": "<p>Note that in the second and third testcase from the first sample test it isn’t possible to do any move, so the first player loses immediately.</p>\n<p>Here is the tower from the second sample test together with two Gurdurr with their own metal beams (which are not taken from the tower):</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 693px; height: 200px;\"/></p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 5: Radewoosh + mnbvmar Contest, Contest, Open Cup, 2019/2020 Season, Stage 2: Grand Prix of Warsaw",
+  "level": 21,
+  "tags": [
+    "dp",
+    "bitmask",
+    "game_theory",
+    "dp_bitfield",
+    "sprague_grundy"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 2.3076999187469482
+}

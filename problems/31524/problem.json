@@ -1,0 +1,35 @@
+{
+  "id": 31524,
+  "title": "Magic Cube",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>Imagine you are holding an $n \\times n \\times n$ cube, which is split up into $n^3$ smaller cubes labeled from 1 to $n^3$. The orientation of the axes is left-to-right for the $x$-axis, back-to-front for the $y$-axis, and bottom-to-top for the $z$-axis. For example, a $2 \\times 2 \\times 2$ cube is labeled as such:</p>\n<p>Bottom layer ($z=1$):</p>\n<pre>\n1 2 \n3 4</pre>\n<p>Top layer ($z=2$):</p>\n<pre>\n5 6 \n7 8\n</pre>\n<p>In the context of a $2 \\times 2 \\times 2$ cube:</p>\n<ul>\n<li>Cube 1 is at (1, 1, 1).</li>\n<li>Cube 2 is at (2, 1, 1).</li>\n<li>Cube 3 is at (1, 2, 1).</li>\n<li>Cube 5 is at (1, 1, 2).</li>\n</ul>\n<p>Each time you rotate the cube at slice $k$ along one of the $x$-, $y$-, and $z$- axes, you are rotating the $(k+1)$th layer along the corresponding axis, as well as all the layers after $k$ in the increasing direction of that axis.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 512px; height: 220px;\"/></p>",
+  "input": "<p>The first line contains two integers, $n$ ($2 \\leq n \\leq 1\\,000$) and $m$ ($1 \\leq m \\leq 2\\,000$), the size of the cube and the number of operations.</p>\n<p>Each of the next $m$ lines contains the information regarding an operation, and will be one of the following:</p>\n<ul>\n<li><code>x</code>, $\\theta$, $k$: Rotate slices $k+1$ through slice $n$ by $\\theta$ degrees counterclockwise around the $x$-axis.</li>\n<li><code>y</code>, $\\theta$, $k$: Rotate slices $k+1$ through slice $n$ by $\\theta$ degrees counterclockwise around the $y$-axis.</li>\n<li><code>z</code>, $\\theta$, $k$: Rotate slices $k+1$ through slice $n$ by $\\theta$ degrees counterclockwise around the $z$-axis.</li>\n<li><code>q x y z</code>: This is a query operation. Output which cube is at location $(x, y, z)$.</li>\n</ul>\n<p>For the first three operations, it is guaranteed that $0 \\leq k \\leq n-1$ and $\\theta \\in \\{90, 180, 270, 360\\}$. For queries, $(x, y, z)$ denotes the query location and $1 \\leq x, y, z \\leq n$. It is guaranteed there will be at least one query. The cube does not reset between operations. That is, rotations are cumulative.</p>",
+  "output": "<p>For each query operation, output which cube is at the given location.</p>",
+  "samples": [
+    {
+      "input": "2 8\nx 360 1\ny 360 1\nq 1 1 2\nz 90 1\nx 360 1\nq 1 2 1\nq 2 1 1\nq 2 2 2\n",
+      "output": "5\n3\n2\n7\n"
+    },
+    {
+      "input": "2 7\nx 180 1\nq 1 1 1\nq 1 1 2\ny 270 1\nq 2 1 1\nq 2 1 2\nq 2 2 1\n",
+      "output": "1\n5\n8\n4\n2\n"
+    },
+    {
+      "input": "3 7\ny 270 1\nq 1 1 1\nq 1 2 3\nz 360 2\nq 3 2 1\nq 2 2 2\nq 3 3 3\n",
+      "output": "1\n4\n24\n14\n25\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Pacific Northwest Regional, 2023 ICPC Pacific Northwest Region, Division 2",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "geometry",
+    "simulation",
+    "geometry_3d"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

@@ -1,0 +1,35 @@
+{
+  "id": 28387,
+  "title": "Sličnost",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ona je nosila u rukama odvratno, uznemiravajuće žuto cvijeće. Ipak, svidjela mu se.</p>\n<p>Prema poznatom teoremu, osobnost svake osobe može se prikazati permutacijom duljine $N$. Tako se i osobnost našeg junaka, Majstora, može prikazati permutacijom $p$. A osobnost Margarite, dame koja mu je zapala za oko, može se prikazati permutacijom $q$.</p>\n<p>Mjerilo za sličnost permutacija, a time i sreću u bračnom životu, može se prikazati kao najveća veličina presjeka nekog podintervala duljine $K$ permutacije $p$ te podintervala duljine $K$ permutacije $q$. Pri tome, presjek se promatra u skupovnom smislu, tj. nije bitan poredak brojeva u podintervalima. Primjerice, u slučaju $N = 4$, $K = 3$, sličnost permutacija $(2\\,4\\,1\\,3)$ te $(1\\,2\\,3\\,4)$ je $2$ i ona se postiže za bilo koji izbor podintervala.</p>\n<p>Otkada je vidio Margaritu, Majstor je opsjednut sličnošću svoje i njezine permutacije, te je njegova osobnost postala veoma promjenjiva. Tako svakog dana, u njegovoj će se permutaciji zamijeniti dva susjedna elementa. Napomenimo da je ta promjena stalna tj. ta dva elementa ostaju zamijenjena tijekom sljedećih dana. Sada ga zanima sličnost njegove i njezine permutacije kad ju je tek ugledao, te sličnost nakon promjene tijekom sljedećih $Q$ dana. Dodatno, zanima ga i za koliko se parova podintervala postiže tolika sličnost. U svojim ljubavnim jadima, zamolio Vas je za pomoć!</p>",
+  "input": "<p>U prvom su retku brojevi $N$, $K$ i $Q$.</p>\n<p>U drugom se retku nalazi $N$ brojeva gdje $i$-ti označava $p_i$.</p>\n<p>U trećem se retku nalazi $N$ brojeva gdje $j$-ti označava $q_j$.</p>\n<p>U sljedećih $Q$ redaka nalaze se opisi promjena. U $i$-tom se retku nalazi broj $t_i$ ($1 ≤ t_i &lt; N$) koji označava da su se u Majstorovoj permutaciji $p$ zamijenili brojevi na pozicijama $t_i$ i $t_i + 1$.</p>",
+  "output": "<p>U prvi redak potrebno je ispisati početnu sličnost permutacija i broj parova podintervala za koje se ta sličnost postiže.</p>\n<p>U sljedećih $Q$ redaka potrebno je ispisati isto, nakon promjene toga dana.</p>",
+  "samples": [
+    {
+      "input": "2 1 1\n1 2\n1 2\n1\n",
+      "output": "1 2\n1 2\n"
+    },
+    {
+      "input": "4 3 0\n2 4 1 3\n1 2 3 4\n",
+      "output": "2 4\n"
+    },
+    {
+      "input": "5 3 3\n1 4 3 2 5\n4 5 1 2 3\n3\n1\n4\n",
+      "output": "2 5\n2 6\n3 1\n3 1\n"
+    }
+  ],
+  "hint": "<p>Pojašnjenje drugog probnog primjera:</p>\n<p>Podintervali duljine tri u prvoj permutaciji su $(2\\,4\\,1)$ i $(4\\,1\\,3)$, a u drugoj $(1\\,2\\,3)$ i $(2\\,3\\,4)$. Za presjeke imamo:</p>\n<p>$$\\{2, 4, 1\\} ∩ \\{1, 2, 3\\} = \\{1, 2\\}, \\{2, 4, 1\\} ∩ \\{2, 3, 4\\} = \\{2, 4\\},$$ $$\\{4, 1, 3\\} ∩ \\{1, 2, 3\\} = \\{1, 3\\}, \\{4, 1, 3\\} ∩ \\{2, 3, 4\\} = \\{3, 4\\},$$</p>\n<p>pa vidimo da sličnost iznosi 2 te da se postiže za četiri para podintervala.</p>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2023, Croatian Olympiad in Informatics 2023",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "offline_queries",
+    "segtree",
+    "sweeping"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2
+}

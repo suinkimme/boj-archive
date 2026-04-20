@@ -1,0 +1,28 @@
+{
+  "id": 16646,
+  "title": "Game with Polynomials",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>이 문제에서</p>\n<ul>\n<li>편의상 $0^{0} := 1$로 둡니다.</li>\n<li>$p = 10^{9} + 7$로 고정합니다. 이 수는 소수입니다.</li>\n<li>모든 다항식 계산은 $\\mathbb{Z}_{p}$에서 이루어집니다. 즉,\n\t<ul>\n<li>$(-2x)$는 $(p - 2)x$와 같은 다항식입니다.</li>\n<li>$(x + p - 1)$과 $(x + 2)$를 더하면 $(2x + 1)$입니다.</li>\n</ul>\n</li>\n</ul>\n<p>키파는 이런 인터랙티브 문제를 내려고 했습니다.</p>\n<blockquote>다음과 같은 함수를 호출할 수 있습니다:\n<ul style=\"margin-top: 10px;\">\n<li><code>evaluate(x)</code>: <code>x</code>를 다항식 $Q(x)$에 대입한 후 $p$로 나눈 나머지를 돌려줍니다.</li>\n</ul>\n<code>evaluate</code> 함수의 호출을 최대 $2N$번 할 수 있습니다. 당신의 프로그램은 입력으로 $N$을 받아 $Q(x)$의 계수를 출력해야 합니다.</blockquote>\n<p>그런데, 테스트 케이스를 준비하면서 최대 $2N$개의 수에 대해 차수가 $N$인 다항식을 평가하는 것은 $\\mathcal{O}(N^{2})$이라는 것을 깨달았습니다! 키파는</p>\n<blockquote><code>evaluate</code>의 각 call은 $\\mathcal{O}(\\log N)$만에 돌아옴이 보장되고, F 어쩌구 알고리즘을 사용하면 값을 알 때 다항식을 $N \\log N$에 구할 수 있기 때문에, 전체 시간복잡도는 $\\mathcal{O}(N \\log N)$입니다!</blockquote>\n<p>라고 에디토리얼에 쓰고 싶었기 때문에, 다음과 같이 다항식 $Q(x)$를 만들었습니다:</p>\n<ol>\n<li>차수가 $N$이고 최대 $\\left\\lceil\\log_{2}(N+1)\\right\\rceil$개의 계수만이 0이 아닌 다항식 $P(x)$를 준비합니다.</li>\n<li>어떤 상수 $c$에 대해, $P(x + c) =: Q(x)$를 계산합니다.</li>\n</ol>\n<p>이렇게 만들 수 있는 다항식 $Q(x)$를 <b>키파 다항식</b>이라고 부릅시다.</p>\n<p>테스트 케이스가 너무 약하죠? 문제의 검수진인 실버는 검수비를 많이 받기 위해 키파 다항식 $Q(x)$의 계수가 주어졌을 때 $c$와 $P(x)$를 빠르게 구하는 코드를 짜서 키파의 뚝배기를 깨고 싶었습니다. 그러나 실버는 이 일을 하기에는 너무 귀찮았기 때문에, 여러분에게 이 일을 떠넘겼습니다. 이 일을 해결해 줄 수 있나요?</p>",
+  "input": "<p>첫째 줄에 $3\\cdot 10^{5}$ 이하의 양의 정수 $N$이 주어집니다.</p>\n<p>둘째 줄에 $(N+1)$개의 정수 $a_{N}$, $a_{N-1}$, $\\cdots$, $a_{0}$이 공백을 사이에 두고 주어집니다. 이 수는 $0$ 이상 $p$ 미만이며,$$Q(x)=\\sum_{i=0}^{N}{a_{i}x^{i}}$$로 주어집니다.</p>\n<p>주어지는 다항식은 키파 다항식임이 보장됩니다.</p>",
+  "output": "<p>첫째 줄에 $0$이 아닌 항의 개수 $k$와 $P(x + c) = Q(x)$를 만족하는 $c$를 출력합니다. $k$는 $\\left\\lceil\\log_{2}(N+1)\\right\\rceil$보다 작거나 같은 양의 정수여야 하며, $c$는 $0$ 이상 $p$ 미만의 정수여야 합니다.</p>\n<p>$1 \\leq j \\leq k$인 모든 $j$에 대하여, $(j+1)$번째 줄에 각각 두 개의 정수 $c_{j}$와 $d_{j}$를 공백을 사이에 두고 출력합니다. $c_{j}$는 $1$ 이상 $p$ 미만의 정수여야 하고, $d_{j}$는 $0$ 이상 $N$ 이하의 서로 다른 정수여야 하며,$$Q(x) = P(x+c) = \\sum_{j=1}^{k} c_{j}(x+c)^{d_{j}}$$를 만족해야 합니다.</p>\n<p>조건을 만족하는 $c$가 여러 개 있다면 아무 거나 하나 출력해도 됩니다.</p>",
+  "samples": [
+    {
+      "input": "4\n1 4 7 6 2\n",
+      "output": "2 1\n1 4\n1 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 키파컵, 제1회 키파컵, kipa00",
+  "level": 27,
+  "tags": [
+    "math",
+    "number_theory",
+    "randomization",
+    "fft",
+    "berlekamp_massey"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 7.375
+}

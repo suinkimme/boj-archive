@@ -1,0 +1,36 @@
+{
+  "id": 26174,
+  "title": "Alternating Algorithm",
+  "time_limit": "7 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>In recent years, CPU manufacturers have found it increasingly difficult to keep up with Moore's law of doubling the number of transistors on integrated circuit chips every two years. To address this, manufacturers have instead started creating CPUs with an increasingly higher number of cores. In fact, you just purchased a CPU with a staggering $n$ number of cores, no less!</p>\n<p>Incidentally, you also have an array of $n+1$ integers, $a_0, a_1, \\ldots, a_n$, that you need to sort. To make good use of the large number of cores on your CPU, you have devised a parallel sorting algorithm in which there is a dedicated core for comparing each adjacent pair of integers. As long as the array is not sorted in non-decreasing order, the algorithm proceeds in rounds that alternate between:</p>\n<ul>\n<li>Odd rounds (starting with the first): The first core compares $a_0$ and $a_1$, the third core compares $a_2$ and $a_3$, the fifth core compares $a_4$ and $a_5$, and so on. If a pair of compared elements are out of order, the corresponding core will swap their positions. If $n$ is even, $a_n$ will be left untouched.</li>\n<li>Even rounds: The second core compares $a_1$ and $a_2$, the fourth core compares $a_3$ and $a_4$, the sixth core compares $a_5$ and $a_6$, and so on. If a pair of compared elements are out of order, the corresponding core will swap their positions. If $n$ is odd, $a_n$ will be left untouched, and $a_0$ will be left untouched no matter what the parity of $n$ is.</li>\n</ul>\n<p>Note that in both types of rounds some cores may be idle.</p>\n<p>Before implementing this algorithm, you have decided to do some analysis. In particular, you noticed that the time complexity of the algorithm does not depend on the value of $n$, but rather it depends on the number of rounds that the algorithm runs. Given the initial contents of the array, determine the number of rounds that the parallel sorting algorithm runs before the array becomes sorted.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with an integer $n$ ($1 \\leq n \\leq 4\\cdot10^5$), the number of cores and the size of the array.</li>\n<li>One line with $n+1$ integers $a_0, a_1, \\ldots, a_n$ ($0 \\leq a_i \\leq 10^9$ for each $i$), the initial contents of the array.</li>\n</ul>",
+  "output": "<p>Output the number of rounds that the parallel sorting algorithm runs before the array becomes sorted in non-decreasing order.</p>",
+  "samples": [
+    {
+      "input": "3\n8 13 4 10\n",
+      "output": "3\n"
+    },
+    {
+      "input": "5\n13 12 14 10 14 12\n",
+      "output": "3\n"
+    },
+    {
+      "input": "2\n2 2 1\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2022",
+  "level": 24,
+  "tags": [
+    "ad_hoc",
+    "coordinate_compression",
+    "data_structures",
+    "lazyprop",
+    "segtree"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

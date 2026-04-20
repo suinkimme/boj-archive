@@ -1,0 +1,30 @@
+{
+  "id": 14692,
+  "title": "Vera and Modern Art",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>After being inspired by the great painter Picowso, Vera decided to make her own masterpiece. She has an empty painting surface which can be modeled as an infinite 2D coordinate plane. Vera likes powers of two (1, 2, 4, 8, 16, . . .) and will paint some some points in a repeated manner using step sizes which are a power of two.</p>\n<p>Vera will paint N times. The i-th time can be described by three integers x<sub>i</sub>, y<sub>i</sub>, v<sub>i</sub>. Let ai be the largest power of two not greater than x<sub>i</sub> and let b<sub>i</sub> be the largest power of two not greater than y<sub>i</sub>. Vera will add a paint drop with colour v<sub>i</sub> to all points that are of the form (x<sub>i</sub> +a<sub>i</sub>p, y<sub>i</sub> +b<sub>i</sub>q), where p, q are non-negative integers. A point may have multiple paint drops on it or have multiple drops of the same colour.</p>\n<p>Then Vera will ask Q questions. For the j-th question she wants to know the colour at the point (r<sub>j</sub>, c<sub>j</sub>). The colour at a point is equal to the sum of the colours of all paint drops at that point. If there are no paint drops at a point, the colour of that point is 0.</p>\n<p>Since you are forced to be her art assistant, you will have to answer Vera’s questions.</p>",
+  "input": "<p>The first line contains two integers N, Q, separated by one space (1 ≤ N, Q ≤ 2 · 10<sup>5</sup>).</p>\n<p>The next N lines each contain three space-separated integers, x<sub>i</sub>, y<sub>i</sub>, v<sub>i</sub> representing the paint drops of colour v<sub>i</sub> (1 ≤ i ≤ N; 1 ≤ v<sub>i</sub> ≤ 10 000; 1 ≤ x<sub>i</sub>, y<sub>i</sub> ≤ 10<sup>18</sup>).</p>\n<p>The next Q lines each contain two space-separated integers r<sub>j</sub>, c<sub>j</sub>, representing the Q questions about the point (r<sub>j</sub>, c<sub>j</sub>) (1 ≤ j ≤ Q; 1 ≤ r<sub>j</sub> ≤ 10<sup>18</sup>; 1 ≤ c<sub>j</sub> ≤ 10<sup>18</sup>).</p>\n<p>For 5 of the 25 available marks, N, Q ≤ 2000.</p>\n<p>For an additional 5 of the 25 available marks, y<sub>i</sub> = 1 (1 ≤ i ≤ N).</p>\n<p>For an additional 5 of the 25 available marks, N, Q ≤ 10<sup>5</sup> and 1 ≤ r<sub>j</sub>, c<sub>j</sub> ≤ 10<sup>9</sup> (1 ≤ j ≤ Q).</p>",
+  "output": "<p>The output will be Q lines. The j-th line (1 ≤ j ≤ Q) should have one integer, which is the colour of point (r<sub>j</sub>, c<sub>j</sub>).</p>",
+  "samples": [
+    {
+      "input": "5 6\n1 2 1\n3 4 2\n4 5 3\n6 3 4\n7 1 5\n2 6\n7 8\n5 9\n11 2\n10 7\n4 5\n",
+      "output": "1\n8\n0\n6\n4\n3\n"
+    }
+  ],
+  "hint": "<p>Explanation of Output for Sample Input</p>\n<p>Let colour 1, 2, 3, 4, 5 be red, blue, green, orange, purple respectively.</p>\n<p>Let p, q be non-negative integers, then:</p>\n<ul>\n<li>Points (1 + p, 2 + 2q) have a red paint drop.</li>\n<li>Points (3 + 2p, 4 + 4q) have a blue paint drop.</li>\n<li>Points (4 + 4p, 5 + 4q) have a green paint drop.</li>\n<li>Points (6 + 4p, 3 + 2q) have a orange paint drop.</li>\n<li>Points (7 + 4p, 1 + q) have a purple paint drop.</li>\n</ul>\n<p>The painting from (0, 0) to (11, 11) is shown on the next page:</p>\n<p>We can see that:</p>\n<ul>\n<li>(2, 6) has a red paint drop, so it has colour 1.</li>\n<li>(7, 8) has a red, blue and purple paint drop, so it has colour 1 + 2 + 5 = 8.</li>\n<li>(5, 9) has no paint drops, so it has colour 0.</li>\n<li>(11, 2) has a red and purple paint drop, so it has colour 1 + 5 = 6.</li>\n<li>(10, 7) has a orange paint drop, so it has colour 4.</li>\n<li>(4, 5) has a green paint drop, so it has colour 3.</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:588px; width:582px\"/></p>",
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2017, CCO 2017",
+  "level": 23,
+  "tags": [
+    "ad_hoc",
+    "data_structures",
+    "offline_queries",
+    "segtree",
+    "sweeping",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.833299994468689
+}

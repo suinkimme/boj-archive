@@ -1,0 +1,22 @@
+{
+  "id": 25066,
+  "title": "Intersecting Paths",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There is a directed graph such that the vertices may be partitioned into $k$ levels. The $i$-th level has $n_i$ vertices, and the number of vertices in level $1$ and level $k$ are the same (i.e. $n_1 = n_k$), and for the $j$-th level $(2 \\le j \\le k-1)$, we have $n_1 \\le n_j \\le 2n_1$. Edges whose tails are vertices in level $j$ $(1 \\le j &lt; k)$ will only go to vertices in level $j+1$. There are no edges whose heads are vertices in level $1$, and there are no edges whose tails are vertices in level $k$.</p>\n<p>Now we want to choose a set of paths with $n_1$ paths in the set. Each path in the set starts from a vertex in level $1$ and ends in a vertex in level $k$, and <em>a vertex in the graph may only occur in one path</em>. More formally, if we number the vertices in each level by $1, 2, \\dots, n_i$, then each path may be written as a $k$-tuple $(p_1, p_2, \\dots, p_k)$ denoting that the path passes through vertex $p_j$ $(1 \\le p_j \\le n_j)$ in level $j$, and there exists an edge connecting vertex $p_j$ in level $j$ $(1 \\le j &lt; k)$ to vertex $p_{j+1}$ in level $j+1$.</p>\n<p>If we draw the paths on paper, we know they will produce some intersections. For paths $P,Q$, suppose the edges between level $j$ and level $j+1$ in the paths are $(P_j,P_{j+1})$ and $(Q_j,Q_{j+1})$, then if $(P_j - Q_j) \\times (P_{j+1} - Q_{j+1}) &lt; 0$, we say the two paths produce an intersection in level $j$. The number of intersections of two paths is the sum of number of intersections they produce in level $1, 2, \\dots, j-1$. For a set of paths, the number of intersections is defined to be <em>sum of number of intersections between two different paths</em>. In the following example, there are 3 paths producing 3 intersections in total. The red dots are the intersections:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 228px; height: 323px;\"/></p>\n<p>Now we want to compute the difference between the number of sets of paths with even number of intersections and the number of sets of paths with odd number of intersections. Two sets of paths are considered to be the same if and only if the $k$-tuple corresponding to the $n_1$ paths are the same. Since the final result might be large, please output the answer modulo $998\\,244\\,353$, a prime.</p>",
+  "input": "<p>There are multiple test cases in one test set. The first line is an integer $T$ denoting the number of test cases.</p>\n<p>For each test case, the first line is an integer $k$ denoting there are $k$ levels of vertices.</p>\n<p>The second line contains $k$ integers $n_1, n_2, \\dots, n_k$ denoting the number of vertices in each level. It is guaranteed that $n_1 = n_k$ and $n_1 \\le n_i \\le 2n_1$ for $2 \\le i \\le k-1$.</p>\n<p>The third line contains $k-1$ integers $m_1, m_2, \\dots, m_{k-1}$ denoting the number of edges between vertices in level $j$ and vertices in level $j+1$. It is guaranteed that $m_j \\le n_j \\times n_{j+1}$.</p>\n<p>There are $k-1$ sections of input following. The $j$-th section $(1 \\le j &lt; k)$ contains $m_j$ lines. Each line contains two integers $u,v$ denoting vertex $u$ in level $j$ has an edge whose head is vertex $v$ in level $j+1$.</p>\n<p>It is guaranteed there are no parallel edges.</p>",
+  "output": "<p>The output has $T$ lines. Each line contains an integer denoting the answer (the number of sets of paths with even number of intersections minus the number of sets of paths with odd number of intersections) modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "1\n3\n2 3 2\n4 4\n1 1\n1 2\n2 1\n2 3\n1 2\n2 1\n3 1\n3 2\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": "<p>There are two sets of paths with even number of intersections and one with odd number of intersections, so the output is 1.</p>\n<p>In set 1, the two paths are $(1,1,2)$ and $(2,3,1)$ in the $k$-tuple notation. There is one intersection in total. Notice if we swap the two paths, we obtain the same set of paths, and we do not count the same set twice.</p>\n<p>In set 2, the two paths are $(1,2,1)$ and $(2,1,2)$. There are 2 intersections.</p>\n<p>In set 3, the two paths are $(1,2,1)$ and $(2,3,2)$. There are 0 intersections.</p>",
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2021",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

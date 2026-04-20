@@ -1,0 +1,42 @@
+{
+  "id": 23629,
+  "title": "이 얼마나 끔찍하고 무시무시한 수식이니",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>하루 종일 숫자만 보다가 정신이 나가버린 사람이 무시무시한 일을 저질러 버렸다. 숫자가 보기 싫으면 없애면 된다고 생각하며 아래와 같은 무시무시한 문자열을 쓴 것이다.</p>\n<p><code>ONETWOTHREEFOUR+TWOTHREEFOURFIVE=</code></p>\n<p>그렇다. 숫자만 안 보이면 된다. 그래서, 아래의 표를 보고 숫자를 모두 영단어로 바꾸었다.</p>\n<table align=\"center\" border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 200px;\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">숫자</td>\n<td style=\"text-align: center;\">영단어</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>0</code></td>\n<td style=\"text-align: center;\"><code>ZERO</code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>1</code></td>\n<td style=\"text-align: center;\"><code>ONE</code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>2</code></td>\n<td style=\"text-align: center;\"><code>TWO</code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>3</code></td>\n<td style=\"text-align: center;\"><code>THREE</code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>4</code></td>\n<td style=\"text-align: center;\"><code>FOUR</code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>5</code></td>\n<td style=\"text-align: center;\"><code>FIVE</code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>6</code></td>\n<td style=\"text-align: center;\"><code>SIX</code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>7</code></td>\n<td style=\"text-align: center;\"><code>SEVEN</code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>8</code></td>\n<td style=\"text-align: center;\"><code>EIGHT</code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>9</code></td>\n<td style=\"text-align: center;\"><code>NINE</code></td>\n</tr>\n</tbody>\n</table>\n<p>그런데 이런, 문자열을 보다가 그만 문자열을 적은 사람이 정신을 잃었다. 우리가 문자열을 보고 원래의 식을 계산해서 알려주자. 변환되기 전의 수식을 정확하게 판단하여 정답을 구할 수 있다면, 정답을 출력하자. 만약 변환되기 전의 수식으로 가능한 것이 없다면 <code>\"</code><strong>Madness!</strong><code>\"</code>를 출력하자.</p>\n<p>변환되기 전의 수식은 양의 정수로 시작해서 양의 정수와 연산자가 번갈아서 등장하며, 마지막 연산자는 =이고, =은 수식의 마지막에만 등장한다. 등장하는 연산자는 +, -, x, /, =으로 총 5가지가 있다. 기존의 사칙연산 방식과는 다르게 앞에서부터 순서대로 계산이 이루어지며, / 연산의 결과로 정수가 아닌 수가 나오면 0에 가까운 방향으로 반올림된다. 예를 들어 1.8은 1로, -1.8은 -1로 반올림된다.</p>",
+  "input": "<p>영문 대문자 및 <code>+,-,x,/,=</code>로 이루어진 문자열이 주어진다. 문자열은 =로 끝나며, 연산자로 시작하지 않는다. =은 항상 문자열의 마지막에만 등장한다. 문자열의 시작 또는 연산자의 바로 다음에 <code>\"ZERO\"</code>가 등장하는 경우는 없다.</p>\n<p>주어지는 문자열 $S$의 길이는 $4 ≤ \\lvert S\\rvert ≤ 100,000$ 이고, 문자열에 포함된 수는 $1$ 이상 $1,000,000$ 이하이다.</p>",
+  "output": "<p>변환되기 전의 수식으로 가능한 것이 없는 경우, <strong>Madness!</strong> 를 출력한다.</p>\n<p>가능한 수식이 있을 경우, 첫 번째 줄에는 그 수식을 출력하고, 두 번째 줄에는 식의 계산값을 모든 숫자를 다시 영단어로 변환하여 출력한다.</p>",
+  "samples": [
+    {
+      "input": "ONETWOTHREEFOUR+FIVESIXSEVEN=\n",
+      "output": "1234+567=\nONEEIGHTZEROONE\n"
+    },
+    {
+      "input": "FIVEZEROxTWOTWO-ONEONEONEONE=\n",
+      "output": "50x22-1111=\n-ONEONE\n"
+    },
+    {
+      "input": "ONE-SIX/THREE=\n",
+      "output": "1-6/3=\n-ONE\n"
+    },
+    {
+      "input": "ONE+-THREE=\n",
+      "output": "Madness!\n"
+    },
+    {
+      "input": "ONETWOFIVENINEEIGHTSEVEN=\n",
+      "output": "125987=\nONETWOFIVENINEEIGHTSEVEN\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 경북대학교, 2021 Goricon, kadrick, ai4youej, djs100201, jh05013, wbcho0504, WeissBlume",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "string",
+    "set"
+  ],
+  "accepted_user_count": 275,
+  "submission_count": null,
+  "average_tries": 5.429100036621094
+}

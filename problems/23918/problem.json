@@ -1,0 +1,27 @@
+{
+  "id": 23918,
+  "title": "Metal Harvest",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are in charge of deploying robots to harvest Kickium from a nearby asteroid. Robots are not designed to work as a team, so only one robot can harvest at any point of time. A single robot can be deployed for up to <b>K</b> units of time in a row before it returns for calibration, regardless of how much time it spends on harvesting during that period. Harvesting can only be done during specific time intervals. These time intervals do not overlap. Given <b>K</b> and the time intervals in which harvesting is allowed, what is the minimum number of robot deployments required to harvest at all possible times?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow.</p>\n<p>The first line of each test case gives two space separated integers <b>N</b> and <b>K</b>: the number of time intervals in which harvesting is allowed, and the maximum duration a robot can be deployed for before returning for calibration.</p>\n<p>The next <b>N</b> lines contain a pair of space separated integers <b>S<sub>i</sub></b> and <b>E<sub>i</sub></b>: the start time and the end time of the i-th interval respectively. Please note that intervals don't include the time unit starting at the moment <b>E<sub>i</sub></b>, so for example an interval with (<b>S<sub>i</sub></b> = 2; <b>E<sub>i</sub></b> = 5) has duration of 3 time units.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the number of times robot deployment is needed so that for each interval there is one robot harvesting at that time.</p>",
+  "samples": [
+    {
+      "input": "2\n3 5\n1 5\n10 11\n8 9\n3 2\n1 2\n3 5\n13 14\n",
+      "output": "Case #1: 2\nCase #2: 3\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, we deploy the robot at time instant 1 and it becomes available for the interval [1, 6]. However, it harvests only for the time range [1, 5]. After that we deploy the robot at 6 and it becomes available for the time interval [6, 11]. This deployment covers both the remaining intervals [8, 9] and [10, 11]. There are multiple optimal strategies here. For example, we can deploy the second robot at 7. It would then cover the range [7, 12], thus harvesting for the intervals [8, 9] and [10, 11].</p>\n<p>In Sample Case #2, we deploy the robot at time instant 1, and it becomes available for [1, 3], but harvests for [1, 2] as [2, 3] is not part of any interval. After that we deploy the robot at 3 for the time range [3, 5] in which the robot harvests for the interval [3, 5]. The third deployment is done at time instant 13 making the robot available for time range [13, 15]. However, it harvests only for the interval [13, 14]. Thus three deployments are needed to cover all the intervals.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2020, Round F",
+  "level": 8,
+  "tags": [
+    "math",
+    "greedy",
+    "sorting",
+    "arithmetic"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 2.076900005340576
+}

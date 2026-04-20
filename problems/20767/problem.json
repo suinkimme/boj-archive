@@ -1,0 +1,34 @@
+{
+  "id": 20767,
+  "title": "Antiwaist",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Outstanding Siberian scientists received the Ig Nobel Prize in anatomy for their work titled &lt;&lt;Waist and Antiwaist&gt;&gt;. As it always happens with groundbreaking scientific achievements, the new idea began to seep into other areas of science and technology. It turns out that the concept of antiwaist is useful in engineering: it allows to find the most durable parts of a structure. There is, however, a problem: engineers do not have a program yet to find the antiwaist in a solid body.</p>\n<p>Let us consider a solid body. We can build a planar section of this body with any horizontal plane $z = \\operatorname{const}$. An <em>antiwaist</em> is a horizontal section with maximum section area.</p>\n<p>A solid body is a closed regular set of points in a three-dimensional space. It cannot have infinitely thin elements. A body is defined by its boundary, which is presented as a triangulation.</p>\n<p>The triangulation is provided in indexed format: as an array of vertices and an array of triangles. All vertices have integer coordinates. All vertices are different. Each triangle is defined by its vertices: their indices in the global array of vertices are provided. All three indices of a triangle are different. Every triangle has non-zero surface area. The indices of a triangle are enumerated in counter-clockwise order when looking from outside the body.</p>\n<p>Since triangulation bounds a solid body, it has no self-intersections and no self-touchings. Two triangles can share a segment if they have two common vertices, or share a point if they have one common vertex. They cannot have any other common points. There are no non-manifold edges or vertices, i.e.: each edge belongs to two triangles; the set of triangles containing a vertex is linked by their sides into a single loop. A body can be disconnected and can have hollows.</p>",
+  "input": "<p>The first line of the input file contains two integers: $V$ --- the number of vertices, $T$ --- the number of triangles ($4 \\le V, T \\le 200\\,000$).</p>\n<p>The following $V$ lines describe the vertices. Each line contains three integers --- $x$, $y$ and $z$ coordinates of the vertex, respectively. The remaining $T$ lines describe triangles. Each line contains three integers --- the indices of the vertices of this triangle. Vertices are numbered in the order of description starting from zero.</p>\n<p>The coordinates do not exceed $500\\,000$ in absolute value. Right-handed coordinate system is used.</p>",
+  "output": "<p>Write the found antiwaist into the only line of the output file. Print two real numbers: the $z$-coordinate of the plane section and the surface area of this section. If there are several horizontal sections with maximum area, print the $z$-coordinate of any of them.</p>\n<p>It is recommended to print real numbers with maximum precision. The absolute or relative error of the area of the printed section must not exceed $10^{-8}$.</p>",
+  "samples": [
+    {
+      "input": "6 8\n1 0 0\n-1 0 0\n0 1 0\n0 -1 0\n0 0 1\n0 0 -1\n2 0 5\n1 4 2\n0 2 4\n5 0 3\n1 3 4\n3 1 5\n2 5 1\n4 3 0\n",
+      "output": "0 2\n"
+    },
+    {
+      "input": "6 8\n0 0 0\n2 0 0\n0 1 0\n0 0 1\n1 0 1\n0 2 1\n1 0 2\n4 5 3\n0 1 3\n3 1 4\n3 5 0\n5 2 0\n4 1 5\n5 1 2\n",
+      "output": "0.5 1.5\n"
+    },
+    {
+      "input": "32 60\n...\nThe complete data are in the samples archive!\n",
+      "output": "0.7913756716346761 5\n"
+    },
+    {
+      "input": "896 1788\n...\nThe complete data are in the samples archive!\n",
+      "output": "-3318.6080203949518 4003775.6378878844\n"
+    }
+  ],
+  "hint": "<p>The input data for the last two examples in the table are <strong>not</strong> shown. They can be found in the samples archive, available for download near the problem statements.</p>\n<p>In the first example, the body is a regular octahedron with its center at the origin, and all its vertices lie on the coordinate axes. The maximum section area is achieved at the middle section $z = 0$, which is a square with the side of $\\sqrt{2}$. In the second example, the largest section is also obtained at the middle by $z$. In the third example, there is a cross made up of six cubic protrusions. The section of maximum area is obtained at $0 \\le z \\le 1$, being a planar cross. In the last example, the body is a human body. You can see the usual location of the antiwaist in a human.</p>\n<p>Illustrations of sample tests are provided below.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 300px; height: 227px;\"/><img alt=\"\" src=\"2.png\" style=\"width: 300px; height: 227px;\"/></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 412px; height: 200px;\"/><img alt=\"\" src=\"4.png\" style=\"width: 415px; height: 200px;\"/></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 386px; height: 300px;\"/><img alt=\"\" src=\"6.png\" style=\"width: 398px; height: 300px;\"/></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"7.png\" style=\"width: 260px; height: 357px;\"/><img alt=\"\" src=\"8.png\" style=\"width: 260px; height: 373px;\"/></p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 4: Grand Prix of Siberia, Division 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

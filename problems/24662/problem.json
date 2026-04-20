@@ -1,0 +1,35 @@
+{
+  "id": 24662,
+  "title": "Juggler's Trick",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>$N$ balls are lined up in a row from left to right. Each ball may be either uncolored (white), blue, or red. Additionally, two integers $r$ and $b$ are given. Let us represent the ordering as a string consisting of letters '<code>W</code>', '<code>B</code>' and '<code>R</code>' for uncolored, black, and red balls, respectively.</p>\n<p>For each trick, the juggler may choose a <em>combo</em> of $r + b$ consecutive balls such that there are exactly $r$ red balls and exactly $b$ blue balls, in any order, and remove them. The remaining balls are concatenated while keeping their relative order. For example, if the initial order was \"<code>RRBRBBR</code>\", and the juggler removed \"<code>RBB</code>\", the result would be \"<code>RRBR</code>\".</p>\n<p>Before the process starts, the juggler shall paint each uncolored ball either red or blue. The juggler wants to do as many tricks as possible. Find the maximal number of tricks if the juggler will choose the colors for the uncolored balls optimally.</p>",
+  "input": "<p>The first line of input contains three integers $N$, $r$ and $b$ ($1 \\le N \\le 2 \\cdot 10^5$, $1 \\le r,b \\le N-1$, $r+b \\le N$): the total number of balls, the number of red balls in a combo and the number of the blue balls in a combo, respectively. The second line contains the string $S$. This string encodes the initial order of balls and consists of exactly $N$ letters '<code>B</code>', '<code>R</code>' and '<code>W</code>', representing blue, red, and uncolored balls, respectively.</p>",
+  "output": "<p>Print one integer: the maximum number of tricks that can be done by the juggler.</p>",
+  "samples": [
+    {
+      "input": "4 1 1\nBBWR\n",
+      "output": "2\n"
+    },
+    {
+      "input": "6 2 1\nRBBBWB\n",
+      "output": "0\n"
+    },
+    {
+      "input": "13 3 3\nWWWWWWWWWWWWW\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p>In Example 1, the juggler paints the white ball in red, obtaining the order \"<code>BBRR</code>\", then removes combo \"<code>BR</code>\"; the remaining balls have order \"<code>BR</code>\", so they can be removed. Since there are 4 balls initially, and after each trick, exactly two balls are removed, 2 is the maximal possible number of tricks that can be done.</p>\n<p>In Example 2, the juggler cannot obtain any sequence of 3 balls with two red and one blue ball regardless of the coloring of the white ball, so the answer is 0.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2022, Day 1: Kyoto U Contest 2, Contest, Open Cup, 2021/2022 Season, Stage 10: Grand Prix of Kyoto",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "dp",
+    "multi_segtree",
+    "segtree"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 2.5
+}

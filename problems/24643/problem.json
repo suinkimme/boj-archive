@@ -1,0 +1,28 @@
+{
+  "id": 24643,
+  "title": "First to Solve",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>The famous Forcedeltas Programming Contest features $n$ contestants, $m$ problems, and lasts for $k$ minutes.</p>\n<p>For each contestant $i$ and each problem $j$, an integer $a_{i, j}$ is known. If $a_{i, j} = 0$, it means that contestant $i$ can not solve problem $j$. Otherwise, it means that contestant $i$ can solve problem $j$ in exactly $a_{i, j}$ minutes.</p>\n<p>All contestants will follow the same strategy. Specifically, each contestant will form a list of all problems they can solve, shuffle the list uniformly at random, and solve the problems in that order, until the list ends or the contest is over.</p>\n<p>For example, if the list for contestant $i$ looks like $j_1, j_2, \\ldots$ after shuffling, then they will solve problem $j_1$ at minute $a_{i, j_1}$, problem $j_2$ at minute $a_{i, j_1} + a_{i, j_2}$, and so on. Note that no problem can be solved at minute $k + 1$ or later.</p>\n<p>We'll say that contestant $i$ gets the <em>First to Solve</em> award for problem $j$ if no other contestant solves problem $j$ strictly earlier. In particular, it means that multiple contestants can get the award for the same problem.</p>\n<p>Find the expected number of awards each contestant will get, modulo $998\\,244\\,353$ (see the Output section for details).</p>",
+  "input": "<p>The first line contains three integers $n$, $m$, and $k$ --- the number of contestants, the number of problems, and the length of the contest in minutes ($1 \\le n \\le 500$; $1 \\le m \\le 26$; $1 \\le k \\le 300$).</p>\n<p>The $i$-th of the following $n$ lines contains $m$ integers $a_{i, 1}, a_{i, 2}, \\ldots, a_{i, m}$ ($0 \\le a_{i, j} \\le k$). The $j$-th of these integers denotes the number of minutes required for contestant $i$ to solve problem $j$, or $0$ if contestant $i$ can not solve problem $j$.</p>",
+  "output": "<p>Print $n$ integers --- the expected number of awards contestants $1, 2, \\ldots, n$ will get, modulo $998\\,244\\,353$.</p>\n<p>Formally, let $M = 998\\,244\\,353$. It can be shown that the expected number of awards can be expressed as an irreducible fraction $\\frac{p}{q}$, where $p$ and $q$ are integers and $q \\not \\equiv 0 \\pmod{M}$. Print the integer equal to $p \\cdot q^{-1} \\bmod M$. In other words, print such an integer $x$ that $0 \\le x &lt; M$ and $x \\cdot q \\equiv p \\pmod{M}$.</p>",
+  "samples": [
+    {
+      "input": "5 3 60\n30 0 0\n40 20 0\n30 60 0\n0 0 0\n60 60 1\n",
+      "output": "1\n1\n249561089\n0\n499122177\n"
+    }
+  ],
+  "hint": "<p>In the example test, contestant $1$ will always get the award for problem $1$, contestant $2$ will always get the award for problem $2$, the expected number of awards contestant $3$ will get is $\\frac{3}{4}$, contestant $4$ will never get any awards, and the expected number of awards contestant $5$ will get is $\\frac{1}{2}$.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2021-2022 North-Western Russia Regional Contest",
+  "level": 21,
+  "tags": [
+    "combinatorics",
+    "dp",
+    "linearity_of_expectation",
+    "math",
+    "probability"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2
+}

@@ -1,0 +1,29 @@
+{
+  "id": 18554,
+  "title": "Employees",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are n employees in the company Yooglex. The i-th employee has to work t<sub>i</sub> time units per day. These values are different for all employees. Yooglex work process is weird in such a way that at every moment in time only one employee can work, and the rest of them have to wait until he’s done.</p>\n<p>Yooglex office consists of a hall and a room. No more than k employees can be in the hall at the same time. Employees form a queue outside the office to enter the hall. Then the next algorithm applies:</p>\n<ol>\n<li>While there are less than k employees in the hall and at least one employee in the queue, the front employee from the queue enters the hall.</li>\n<li>If the hall is empty, the day is considered over and the room is locked.</li>\n<li>Employees in the hall choose the one among themselves whose workload for the day is minimal.</li>\n<li>The chosen employee from the hall enters the room, works his time and leaves the office for the day.</li>\n<li>The process returns to step 1.</li>\n</ol>\n<p>The board of Yooglex finally tasked themselves with evaluating their employees to assign sensible salaries. Two methods of evaluation have been coined.</p>\n<p>The first one is quite simple. For each of n! possible permutations of employee queues and each employee i, the time between the first employee in the queue entering the room and employee i exiting the room is calculated. For each employee, these times are summed over all the n! queue permutations. The resulting sums are the final evaluation scores.</p>\n<p>The second method is even simpler. For i-th employee and each queue permutation, consider all such employees j that t<sub>j</sub> &gt; t<sub>i</sub>, but employee j is going to finish his job before employee i. The number of such employees j will be the score for employee i.</p>\n<p>It has been decided that attempting to choose one of two methods is a fruitless task, and instead the third method has been suggested, which is simply a product of respective scores from the first two methods.</p>\n<p>Can you calculate the third evaluation method scores quick enough?</p>",
+  "input": "<p>The first line of input consists of two integers n and k: the number of employees and the hall capacity, respectively (1 ≤ n ≤ 300, 1 ≤ k ≤ n).</p>\n<p>The second line consists of n integers t<sub>1</sub>, . . . , t<sub>n</sub>: the workloads of each employee (1 ≤ t<sub>i</sub> ≤ 10<sup>9</sup>). All t<sub>i</sub> are different.</p>",
+  "output": "<p>Output n integers: the evaluation scores for employees, listed in the same order as their workloads in the input. Since the scores can be very large, output them modulo 10<sup>9</sup> + 7.</p>",
+  "samples": [
+    {
+      "input": "3 1\n2 1 3\n",
+      "output": "72 126 0\n"
+    },
+    {
+      "input": "4 2\n10 30 2 7\n",
+      "output": "0 0 3564 2208\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2019, Day 8: Petrozavodsk SU Contest",
+  "level": 21,
+  "tags": [
+    "combinatorics",
+    "math"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

@@ -1,0 +1,22 @@
+{
+  "id": 34508,
+  "title": "Polynomial Equation",
+  "time_limit": "1.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Busy Beaver has a polynomial equation that he doesn't know how to solve, and he needs your help!</p>\n<p>For a bivariate polynomial $P(x,y)=\\sum\\limits_{i,j \\ge 0}a_{i,j}x^iy^j$, define its degree $\\deg P = \\max\\limits_{a_{i,j}\\neq 0}(i+j)$. For example, $\\deg (x + y + xy) = 2$. Furthermore, we take the degree of the zero polynomial $\\deg 0$ to be $-1$.</p>\n<p>Given a bivariate polynomial $P(x,y)$ with integer coefficients and an integer $d \\geq -1$, determine whether there exists a bivariate polynomial $S(x, y)$ and non-constant univariate polynomials $Q, R$ such that</p>\n<ul>\n<li>for $p = 10^9 + 7$, we have $$(P(x, y) + S(x, y))(Q(x) - Q(y)) = R(x) - R(y)$$ as polynomials in $\\mathbb F_p[x, y]$<sup>1</sup>,</li>\n<li>$\\deg S \\leq d$.</li>\n</ul>\n<p>If a solution exists, output any valid $Q, R$. <strong>Note that you do not need to output $S$.</strong></p>\n<hr/>\n<p><sup>1</sup>i.e. when expanded, the two sides of the equation have equal coefficients modulo $p$.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains the number of test cases $T$ ($1 \\leq T \\leq 100$). The description of the test cases follows.</p>\n<p>The first line of each test case contains two integers $n, d$ ($1 \\leq n \\leq 2.5 \\cdot 10^3$, $-1 \\leq d &lt; n$) --- the value of $\\deg P$ and the upper bound on $\\deg S$, respectively.</p>\n<p>The $i$-th of the next $n + 1$ lines contains $n + 2 - i$ integers $a_{i-1, 0}, \\dots, a_{i-1, n+1-i}$ ($0 \\leq a_{i,j} &lt; 10^9 + 7$) --- the coefficients of $P$ so that $P(x,y)=\\sum\\limits_{i,j \\ge 0, i+j \\leq n}a_{i,j}x^iy^j$. It is guaranteed that $P$ has degree $n$, i.e. at least one of $a_{0,n}, a_{1,n-1}, \\dots, a_{n,0}$ is nonzero.</p>\n<p>It is guaranteed that the sum of $n$ across all test cases is no more than $2.5 \\cdot 10^3$.</p>",
+  "output": "<p>The first line of output for each test case should contain the string \"<code>YES</code>\" (without quotes) if a solution exists, and \"<code>NO</code>\" (without quotes) otherwise.</p>\n<p>If you claim that a solution exists, continue outputting the solution as follows:</p>\n<p>The second line of output for each test case should contain three integers $q, r$ ($1 \\leq q, r \\leq 5 \\cdot 10^3$) --- the degrees of the polynomials $Q, R$ respectively.</p>\n<p>The third line of output for each test case should contain $q + 1$ integers $b_0, \\dots, b_q$ ($0 \\leq b_i &lt; 10^9 + 7$, $b_q \\neq 0$) --- the coefficients of $Q(t) = \\sum_{i=0}^q b_i t^i$.</p>\n<p>The fourth line of output for each test case should contain $r + 1$ integers $c_0, \\dots, c_r$ ($0 \\leq c_i &lt; 10^9 + 7$, $c_r \\neq 0$) --- the coefficients of $R(t) = \\sum_{i=0}^r c_i t^i$.</p>\n<p><strong>Note that you do not need to output $S$ --- the judge will determine if a suitable choice of $S$ exists for your claimed $Q, R$.</strong></p>",
+  "samples": [
+    {
+      "input": "5\n2 -1\n40 9 13\n9 0\n13\n4 2\n1000000000 1 1000000001 2 1\n1 1000000000 2 0\n999999999 2 1\n2 0\n1\n4 2\n1000000000 1 1000000001 2 1\n1 1000000000 1 0\n999999999 1 1\n2 0\n1\n4 2\n120 50 61 235 169\n50 81 119 0\n61 119 169\n235 0\n169\n9 5\n17 18 19 20 21 22 2 6 0 1\n16 8 8 4 8 0 2 0 0\n15 8 0 4 0 0 0 0\n14 4 4 2 4 0 1\n13 8 0 4 0 0\n12 0 0 0 0\n2 2 0 1\n6 0 0\n0 0\n1\n",
+      "output": "YES\n2 4\n20 9 13\n400 360 601 234 169\nNO\nYES\n2 6\n1 1 1\n2 4 7 7 6 3 1\nNO\nYES\n3 12\n0 2 0 1\n0 0 0 16 16 24 32 12 24 2 8 0 1\n"
+    }
+  ],
+  "hint": "<p>In the first test case, the given polynomial is $$P(x, y) = 13x^2 + 13y^2 + 9x + 9y + 40.$$ We can take $S = 0$, $Q(t) = 13t^2 + 9t + 20$, $R(t) = (13t^2 + 9t + 20)^2$, which gives a valid solution.</p>\n<p>In the second test case, it can be shown that no solution exists.</p>",
+  "source": "University, MIT, M(IT)^2, M(IT)^2 Spring 2025 Invitational, Finals",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 2
+}

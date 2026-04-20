@@ -1,0 +1,30 @@
+{
+  "id": 18623,
+  "title": "Eevee",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>As you may know, Eevee can evolve in various ways. For instance, it will evolve when it comes close to one of the evolution stones.</p>\n<p>Let’s assume that there are n different evolution stones, numbered with integers from 1 to n. Each of them was split into k fragments. Eevee has grouped all the fragments into k stacks, numbered with integers from 1 to k. Each stack contains exactly n fragments, each of which comes from a different stone. Therefore, we can consider each stack as a permutation of the fragments of the different stones.</p>\n<p>Eevee will perform the following operation k · n times: pick one of the non-empty stacks, remove its topmost fragment and add it to the end of a sequence of fragments (which is initially empty). Two ways of combining the stacks into one sequence are considered distinct if at any step we choose a stack with a different index. If after this process there are k neighboring fragments of the same stone in the sequence, Eevee can accidentally evolve. As he is the cutest without any evolutions, we call some way to combine the stacks good if there is no interval of length k containing only the fragments of the same stone.</p>\n<p>Let \\(f(i, j)\\) denote the number of good ways to combine the stacks with indices from the range [i, j]. Here, when we consider some interval of length ℓ, we assume that Eevee performs the operation only ℓ · n times and that we prohibit any interval of length ℓ from containing only the fragments of the same stone.</p>\n<p>Your task is to calculate</p>\n<p>\\[\\left(\\sum_{i=1}^{k}\\sum_{j=i+1}^{k}f(i,j)\\right) \\mod{(10^9+7)}\\text{.}\\]</p>\n<p>However, it turned out that Eevee <strong>shuffled each stack</strong> before the process! Therefore, each stack contains a random permutation of the fragments. Each of the input permutations is chosen equiprobably from all n! possible permutations and independently from each other.</p>",
+  "input": "<p>The first line contains two integers k and n (2 ≤ k, n ≤ 300) — the number of stacks and the number of fragments in each stack.</p>\n<p>Each of the next k lines contains n integers. The j-th number in the i-th line is a<sub>i,j</sub> (1 ≤ a<sub>i,j</sub> ≤ n, a<sub>i,j</sub> ≠ a<sub>i,l</sub> for j ≠ l) and denotes the j-th number from the top in the i-th stack.</p>",
+  "output": "<p>Output the value of the sum described in the problem statement.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2 3\n3 2 1\n1 3 2\n",
+      "output": "1464\n"
+    },
+    {
+      "input": "4 2\n1 2\n2 1\n1 2\n2 1\n",
+      "output": "2466\n"
+    }
+  ],
+  "hint": "<p>Consider calculating f(1, 3) in the first sample. Eevee has three stacks of the fragments of the stones:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 175px; height: 100px;\"/></p>\n<p>One of the good ways to combine them is as follows:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 619px; height: 110px;\"/></p>\n<p>The following one isn’t good as it contains three 3s in a row:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 599px; height: 115px;\"/></p>\n<p>In the first sample f(1, 2) = 8, f(1, 3) = 1446 and f(2, 3) = 10.</p>\n<p>In the second sample f(1, 2) = 2, f(1, 3) = 66, f(1, 4) = 2328, f(2, 3) = 2, f(2, 4) = 66 and f(3, 4) = 2.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 5: Radewoosh + mnbvmar Contest, Contest, Open Cup, 2019/2020 Season, Stage 2: Grand Prix of Warsaw",
+  "level": 23,
+  "tags": [
+    "combinatorics",
+    "dp",
+    "math"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.5556000471115112
+}

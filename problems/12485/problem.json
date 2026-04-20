@@ -1,0 +1,22 @@
+{
+  "id": 12485,
+  "title": "Spinning Blade (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Being bored with the traps in your secret hideout design, you decided to go for something classical, but always enjoyable - the <em>spinning blade</em>. You ordered a really heavy metal sheet out of which you will cut the blade; a uniform square <strong>C</strong>-by-<strong>R</strong> grid will be painted on the sheet. You have determined the best shape for the blade -- you will first cut a large square consisting of <strong>K</strong>-by-<strong>K</strong> grid cells, where <strong>K</strong> ≥ 3. Then, you will cut out the four 1-by-1 corner cells out of the square to end up with a <em>blade</em>. After determining all this, you started waiting for the sheet to arrive.</p>\n<p>When the sheet arrived, you were shocked to find out that the sheet had imperfections in it! You expected each cell to have mass <strong>D</strong>, but it turned out that the mass can vary a bit because of differences in thickness. This is bad because you want to insert a shaft exactly in the center of the blade and spin it very fast, so the center of mass of the blade must be exactly in its center as well. The definition of the center of mass of a flat body can be found below.</p>\n<p>Given the grid and the mass of each cell, what is the largest possible size of the blade you can make so that the center of mass is exactly in its center?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>.  <strong>T</strong> test cases follow. Each one starts with a line containing 3 integers: <strong>R</strong>, <strong>C</strong> and <strong>D</strong> — the dimensions of the grid and the mass you expected each cell to have. The next <strong>R</strong> lines each contain <strong>C</strong> digits <strong>w<sub>ij</sub></strong> each, giving the differences between the actual and the expected mass of the grid cells. Each cell has a uniform density, but could have an integer mass between <strong>D + 0</strong> and <strong>D + 9</strong>, inclusive.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 20.</li>\n<li>0 ≤ <strong>w<sub>ij</sub></strong> ≤ 9.</li>\n<li>The size of the input file will not exceed 625KB.</li>\n<li>3 ≤ <strong>R</strong> ≤ 10.</li>\n<li>3 ≤ <strong>C</strong> ≤ 10.</li>\n<li>1 ≤ <strong>D</strong> ≤ 100.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #x: <strong>K</strong>\", where x is the case number (starting from 1) and <strong>K</strong> is the largest possible size of the blade you can cut out. If no acceptable blade of size at least 3 can be found, print \"IMPOSSIBLE\" instead.</p>",
+  "samples": [
+    {
+      "input": "2\n6 7 2\n1111111\n1122271\n1211521\n1329131\n1242121\n1122211\n3 3 7\n123\n234\n345\n",
+      "output": "Case #1: 5\nCase #2: IMPOSSIBLE\n"
+    }
+  ],
+  "hint": "<h3>Note</h3>\n<p>The <em>center of mass</em> of a 2D object is formally defined as a point <strong>c</strong>. If you compute the sum of (<strong>p</strong> - <strong>c</strong>) * mass(<strong>p</strong>) for all points <strong>p</strong> in the object, you must get <strong>0</strong>. Here, <strong>p</strong>, <strong>c</strong> and <strong>0</strong> are two-dimensional vectors. This definition also works if you treat each grid cell as a \"point\", with all of its mass at its center.</p>\n<p>In real life, you could place your finger under a flat object's center of mass, and balance that object on your finger. It would not fall.</p>\n<p>To illustrate with an example, the only blade that is possible to cut out in the second sample test case, the 3x3 blade created by cutting away the corners, has its center of mass at the point (1.54, 1.46), where we assume the bottom-left corner of the sheet has coordinates (0, 0), and the coordinates grow right and up, respectively. This is verified by checking the following equality: (-1.04, 0.04) * 9 + (-0.04, 1.04) * 9 + (-0.04, 0.04) * 10 + (-0.04, -0.96) * 11 + (0.96, 0.04) * 11 = (0, 0).</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2011, Round 2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

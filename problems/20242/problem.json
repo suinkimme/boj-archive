@@ -1,0 +1,45 @@
+{
+  "id": 20242,
+  "title": "Keys and Locks Boolean Logic",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Karen and her friends play in a music band in Karen's garage. She has complicated thoughts on which subsets of the band should be allowed to enter the garage. She designed a boolean formula $F$ in which each variable denotes the presence of a certain band member. She wants a group of people to be able to enter the garage if and only if $F$ is true.</p>\n<p>You are asked to create a system of wires and locks that will fulfill the formula $F$. Each band member will receive a key that opens all the locks that are denoted by their letter.</p>\n<p>For example, suppose that $F = a \\lor (b \\land c)$ and band members $a$ and $b$ are present. Then they should be able to enter the garage with their keys because $true \\lor (true \\land false) = true$.</p>\n<p>A band member doesn't have to use their key to open all the locks possible. For example, suppose that $F = a \\oplus b$. Then band member $a$ alone should be able to enter the garage because $true \\oplus false = true$. But if both $a$ and $b$ come to the garage, they can just disregard $b$'s key and open the garage using $a$'s one. However, $true \\oplus true = false$, so this formula $F$ is not fulfillable.</p>\n<p>The system must be a rectangular grid of size at most $50 \\times 50$ containing horizontal wires '<code>-</code>', vertical wires '<code>|</code>', wire connections '<code>+</code>', and locks. The upper leftmost and the upper rightmost cells of the grid must contain wire connections that will be attached to the doors of the garage. The garage doors stay closed as long as there is a path between these two connections via wires and locked locks.</p>\n<p>You are to design such a system corresponding to the given formula $F$, or to state that there is no such system.</p>",
+  "input": "<p>The input contains a non-empty boolean formula $F$.</p>\n<p>The formula can contain letters <code>a</code>, ..., <code>h</code> denoting the presence of band members, operators \"<code>and</code>\", \"<code>or</code>\", \"<code>not</code>\", and parentheses. The length of the formula does not exceed 2020. The \"<code>not</code>\" operator has the highest priority. The \"<code>and</code>\" operator has higher priority than the \"<code>or</code>\" operator. There are single spaces around each \"<code>and</code>\", around each \"<code>or</code>\", and after each \"<code>not</code>\". There are no spaces other than those.</p>",
+  "output": "<p>If it is impossible to design the desired system, print one line \"<code>IMPOSSIBLE</code>\".</p>\n<p>Otherwise, output a rectangular grid of characters --- the system corresponding to formula $F$. The system can only contain spaces, '<code>-</code>', '<code>|</code>', '<code>+</code>', and letters corresponding to the band members that are mentioned in the input.</p>\n<p>The upper leftmost and the upper rightmost cells should be wire connections. The width of the grid should be between 2 and 50, inclusive, the height of the grid should be between 1 and 50, inclusive.</p>\n<p>Character '<code>-</code>' must be used for a wire if and only if it connects something on the left and something on the right with empty cells below and above. Similarly, '<code>|</code>' must be used for a wire if and only if it connects something below and something above with empty cells on the left and on the right.</p>",
+  "samples": [
+    {
+      "input": "a or (b and c)\n",
+      "output": "+-+ +b-+\n| | |  |\n+-a-+-c+\n"
+    },
+    {
+      "input": "(a or f) and ((a and g) or (a and h))\n",
+      "output": "+a-f+\n|   |\n+g+h+\na | a\n+-+-+\n"
+    },
+    {
+      "input": "a and not b or not a and b\n",
+      "output": "IMPOSSIBLE\n"
+    },
+    {
+      "input": "b or not b\n",
+      "output": "+ +\n"
+    },
+    {
+      "input": "d and not d\n",
+      "output": "+  +---+  +---+--+---+\n|  |      |   |  |    \n+--+      +---+  |    \n|  |      |      |    \n+  +------+      +---+\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2020-2021 North-Western Russia Regional Contest",
+  "level": 22,
+  "tags": [
+    "bitmask",
+    "constructive",
+    "data_structures",
+    "parsing",
+    "sparse_table",
+    "string"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 9.142900466918945
+}

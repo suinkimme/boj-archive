@@ -1,0 +1,24 @@
+{
+  "id": 12138,
+  "title": "River Flow (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The city you live in lies on the banks of the spectacular Binary river. The water in the river comes from some tributary streams that start way up in the mountains. Unfortunately for your city, there are farmers who live in the mountains who need to use up some of the water in the tributary streams for their crops.</p>\n<p>Long ago, the city struck a deal with the farmers to allow them to farm while keeping the river flowing: each farmer was allowed to use the water for her crops exactly half the time. The farmers would alternately divert water for their crops for a day and leave the water to run down the river for a day. The result was a disaster! Because the farmers' water usage was synchronized, with everyone either diverting or not diverting water at the same time, the river would run dry every other day and then flood the city the next.</p>\n<p>To solve this problem, the city went back to the farmers and asked each one to choose some integer power of 2 (this is the Binary River after all) between 1 and <strong>D</strong>, inclusive, and toggle her water usage (either start or stop collecting water) every time that number of days has elapsed. (Not every power of 2 between 1 and <strong>D</strong> was necessarily represented, and multiple farmers may have selected the same integer. 1 counts as a power of 2.) The idea was that this would make the water usage more even overall, and so the droughts and flooding would become less frequent.</p>\n<p>This all happened a long time ago, and you and the other citizens have recently become suspicious that the farmers aren't sticking to the agreement. (You're not even sure how many farmers there are right now!) However, the only data you have is <strong>N</strong> days' history of the amount of water flowing through the city. Can you tell if the farmers are being honest?</p>\n<p>Each tributary stream has flow 1 and the flow through the main river is the sum of all the tributary streams that are not being diverted for farming. (Before looking at the records, you don't know how many tributary streams there are.) At most 1 farmer will divert the water from each tributary stream, but there may be some tributary streams from which no farmers ever divert water. Note that the farmers started their water diversion cycles long before the city started recording the water flow, but there is no guarantee that they all started on the same day.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow. Each test case starts with a line containing two space-separated integers <strong>N</strong> and <strong>D</strong>. The next line contains <strong>N</strong> space-separated integers, with the ith integer <strong>d<sub>i</sub></strong> giving the river flow on the ith day.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 50.</li>\n<li><strong>D</strong> will be a power of 2.</li>\n<li>1 ≤ <strong>D</strong> ≤ floor(<strong>N</strong> / 2).</li>\n<li>1 ≤ <strong>N</strong> ≤ 5000.</li>\n<li>0 ≤ <strong>d<sub>i</sub></strong> ≤ 1000.</li>\n</ul>",
+  "output": "<p>For each case, output one line containing \"Case #x: <strong>M</strong>\", where x is the test case number (starting from 1) and <strong>M</strong> is the smallest number of farmers who could be diverting water from the streams according to the described model, consistent with the observed flow through the river.</p>\n<p>If you are sure that at least one farmer is active, but there is no way that the supplied input could be explained by farmers obeying the rules, then output <code>CHEATERS!</code> instead of a number.</p>",
+  "samples": [
+    {
+      "input": "4\n5 2\n2 2 2 2 2\n6 2\n1 1 1 0 0 0\n8 4\n2 1 1 0 0 1 1 2\n8 4\n0 1 1 3 1 2 2 2\n",
+      "output": "Case #1: 0\nCase #2: CHEATERS!\nCase #3: 2\nCase #4: 3\n"
+    }
+  ],
+  "hint": "<p>Case #1 is consistent with two tributary streams with no farmers drawing from them.</p>\n<p>Case #2 could a single tributary stream being diverted every 4 days. However, <strong>D</strong> is 2 in this case, so this farmer is breaking the agreement.</p>\n<p>Case #3 could be two farmers each with a diversion cycle of 4 days.</p>\n<p>Case #4 could be three farmers with diversion cycles of 1, 2 and 4 days.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2015, Round 3",
+  "level": 23,
+  "tags": [
+    "ad_hoc"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 2.421099901199341
+}

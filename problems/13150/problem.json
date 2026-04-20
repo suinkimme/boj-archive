@@ -1,0 +1,30 @@
+{
+  "id": 13150,
+  "title": "Matrix Cypher",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Alice and Bob communicate via a matrix channel. Alice wants to send a message to Bob. She has a bitstring representing her message and performs a bitwise encoding algorithm: She starts with the identity matrix</p>\n<p>\\[A =\\begin{pmatrix} 1 &amp; 0 \\\\ 0 &amp; 1 \\end{pmatrix} \\]</p>\n<p>and then reads the bitstring starting from the left-most bit. For each 0-bit she multiplies the matrix \\(A\\) from the right with</p>\n<p>\\[A = \\begin{pmatrix} 1 &amp; 0 \\\\ 1 &amp; 1 \\end{pmatrix} \\text{ , i.e. } A \\leftarrow  A \\cdot \\begin{pmatrix} 1 &amp; 0 \\\\ 1 &amp; 1 \\end{pmatrix}  \\]</p>\n<p>For each 1-bit she multiplies the matrix \\(A\\) from the right with</p>\n<p>\\[A = \\begin{pmatrix} 1 &amp; 1 \\\\ 0 &amp; 1 \\end{pmatrix} \\text{ , i.e. } A \\leftarrow  A \\cdot \\begin{pmatrix} 1 &amp; 1 \\\\ 0 &amp; 1 \\end{pmatrix}  \\]</p>\n<p>Then the result is transmitted.</p>\n<p>Now Bob accidentally deleted the software to decrypt a message from Alice. Can you help him to rewrite it?</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>two lines, the \\(i\\)-th of them with two integers \\(a_{i1}\\) and \\(a_{i2}\\) (0 ≤ \\(a_{i1}\\), \\(a_{i2}\\) ≤ 2<sup>128</sup> − 1 for all 1 ≤ \\(i\\) ≤ 2), where \\[ \\begin{pmatrix} a_{11} &amp; a_{12} \\\\ a_{21} &amp; a_{22} \\end{pmatrix} \\]is the matrix containing the encoded message.</li>\n</ul>\n<p>The bitstring representing the message consists of at most 120 characters.</p>",
+  "output": "<p>Output the decoded bitstring.</p>",
+  "samples": [
+    {
+      "input": "2 1\n3 2\n",
+      "output": "010\n"
+    },
+    {
+      "input": "18 29\n13 21\n",
+      "output": "10010101\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2016",
+  "level": 10,
+  "tags": [
+    "math",
+    "arbitrary_precision",
+    "linear_algebra"
+  ],
+  "accepted_user_count": 83,
+  "submission_count": null,
+  "average_tries": 1.843400001525879
+}

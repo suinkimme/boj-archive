@@ -1,0 +1,32 @@
+{
+  "id": 29152,
+  "title": "디지털 트윈",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 50%;\"/></p>\n<p><b>디지털 트윈</b>은 현실 속 환경을 디지털 가상 공간에 복제하여 물리 환경에서 발생 가능한 상황을 예측하고 최적화하는 기술이다.</p>\n<p>미래 제조업의 핵심 경쟁력인 스마트 팩토리 SW 기술을 개발하는 현대오토에버는, 디지털 트윈 기술을 자체 개발한 스마트 팩토리 솔루션에 접목하여 고객의 스마트 팩토리가 최적의 상태로 운영되도록 지원하고 있다.</p>\n<p>현대오토에버의 스마트 팩토리 설계자인 당신은 기존에 설계된 공장 컨테이너 벨트 위치를 더욱 효율적이고 생산적으로 바꾸려고 한다. 개선 작업을 시작하기 앞서, 당신은 디지털 트윈 기술을 활용하여 실제 공장 내에서의 작업을 가상 공간에서 시뮬레이션해 보고자 한다.</p>\n<p>가상 공간에서의 공장은 $N \\times N$ 크기의 격자로 나타낼 수 있고, $1 \\times 1$ 크기의 격자 위에 컨테이너 벨트를 하나 설치할 수 있다. 공장의 시작 점 $(1, 1)$은 왼쪽 위이고 공장의 끝 지점 $(N, N)$은 오른쪽 아래이며, 컨테이너 벨트는 공장의 시작 점에서 시작하여 끝 점을 통해 격자 밖으로 나오는 하나의 경로를 이뤄야 한다. 또한, 이동하는 도중에 격자를 벗어나서는 안 된다. 효율적으로 컨테이너 벨트를 설치하기 위한 디지털 트윈 기술의 피드백으로, 컨테이너 벨트는 세 가지 방향 $\\leftarrow$, $\\rightarrow$, $\\downarrow$ 중 하나로만 설치할 수 있다. 구체적으로 현재 컨테이너 벨트의 위치가 $(r, c)$일 때, 현재 벨트의 방향에 따라 이동하는 위치는 다음과 같다.</p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 500px; margin: 0 auto;\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\"><strong>방향</strong></td>\n<td style=\"text-align: center;\"><strong>다음 위치</strong></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">$\\leftarrow$</td>\n<td style=\"text-align: center;\">$(r, c - 1)$</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">$\\rightarrow$</td>\n<td style=\"text-align: center;\">$(r, c + 1)$</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">$\\downarrow$</td>\n<td style=\"text-align: center;\">$(r + 1, c)$</td>\n</tr>\n</tbody>\n</table>\n<p>따라서, 끝 점에서는 $\\rightarrow$ 또는 $\\downarrow$를 사용해야 격자 밖으로 나오는 올바른 경로를 구성할 수 있음에 유의하자.</p>\n<p>생산 기계들의 위치가 가상 공간에서의 위치로 주어질 때, 컨테이너 벨트는 안정적인 생산을 위해 모든 생산 기계를 꼭 지나가야 한다. 가상 공간이 주어졌을 때, 효율성의 극대화를 위해서 시작 점에서 출발하고 끝 점을 통과하여 격자 밖으로 나오도록 하는 컨테이너 벨트의 최소 개수를 구하라.</p>\n<p>예시로 다음 그림을 살펴보자. 3, 4번 그림은 정답이 아닌 컨테이너 벨트의 상태를 나타낸다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 80%;\"/></p>\n<ul>\n<li>첫 번째 그림은 공장의 상태와 생산 기계들의 상태를 보여준다.</li>\n<li>두 번째 그림은 모든 기계를 지나가며 컨테이너 벨트를 설치하는 최소 경로이다.</li>\n<li>세 번째 그림은 모든 기계를 지나가지만 최소 경로가 아니다.</li>\n<li>네 번째 그림은 모든 생산 기계를 지나가지 않는다.</li>\n</ul>",
+  "input": "<p>첫 줄에 공장의 크기 $N$이 주어진다. $( 2 \\le N \\le 5\\, 000)$</p>\n<p>둘째 줄부터 $N$개의 줄에 걸쳐 ‘<span style=\"color:#e74c3c;\"><code>0</code></span>’, ‘<span style=\"color:#e74c3c;\"><code>1</code></span>’로 이루어진 $N \\times N$ 크기의 격자가 공백 없이 주어진다.</p>\n<p>빈 부분의 위치는 ‘<span style=\"color:#e74c3c;\"><code>0</code></span>’, 생산 기계의 위치는 ‘<span style=\"color:#e74c3c;\"><code>1</code></span>’로 나타난다.</p>",
+  "output": "<p>공장의 시작에서 생산 기계를 모두 연결하면서 끝에 도달할 때 컨테이너 벨트의 최소 길이를 구하라.</p>\n<p>만약, 모두 연결하는 것이 불가능하다면 “<span style=\"color:#e74c3c;\"><code>-1</code></span>”을 출력해라.</p>",
+  "samples": [
+    {
+      "input": "2\n01\n00\n",
+      "output": "3\n"
+    },
+    {
+      "input": "2\n01\n10\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "3\n000\n011\n010\n",
+      "output": "7\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 신촌지역 대학생 프로그래밍 대회 동아리 연합, 2023 신촌지역 대학생 프로그래밍 대회 동아리 연합 여름 대회 (SUAPC 2023 Summer), dlguq0107, 2093ab, chansol, cologne, lky7674",
+  "level": 16,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 83,
+  "submission_count": null,
+  "average_tries": 3.5782999992370605
+}

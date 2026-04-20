@@ -1,0 +1,30 @@
+{
+  "id": 23109,
+  "title": "Generate the Sequences",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Consider $S$, the sequence of integer sequences. Initially, $S_0 = (1)$. After that, we construct $S_1, S_2, \\ldots, S_n$ as follows.</p>\n<p>Let $|S_i|$ be the length of the sequence $S_i$, and $s_{i,j}$ be the $j$-th element of $S_i$. Then $S_{i+1}$ will have length $|S_i|+1$ and can be obtained from $|S_i|$ using one of the following two operations:</p>\n<ul>\n<li>Write $1$ or the given integer $m$ as the element with number $|S_i| + 1$ of the new sequence.  </li>\n<li>Select an index $j$ ($1 \\le j &lt; |S_i|$), choose integer $x$ such that $s_{i,j} &lt; x &lt; s_{i,j + 1}$ or $s_{i,j} &gt; x &gt; s_{i,j + 1}$, and place it between $s_{i,j}$ and $s_{i,j+1}$, shifting the right part's indices by $1$.</li>\n</ul>\n<p>Given $n$ and $m$, find the number of different ordered sets of sequences $S_1 \\ldots S_n$. Two sets are considered different if, at least for one $i$ from $1$ to $n$, the sequences $S_i$ in those sets differ. As the answer may be too large, print it modulo $998\\,244\\,353$.</p>",
+  "input": "<p>The input consists of one line containing two integers $n$ and $m$ ($1 \\le n \\le 3000$, $2 \\le m \\le 10^8$).</p>",
+  "output": "<p>Print the number of different sequences $S$ modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "2 3\n",
+      "output": "5\n"
+    },
+    {
+      "input": "1024 52689658\n",
+      "output": "654836147\n"
+    }
+  ],
+  "hint": "<p>Here are the possible sequences in the first example:</p>\n<ul>\n<li>$S_1=(1,3)$ (first operation), then $S_2=(1,2,3)$ (second operation);</li>\n<li>$S_1=(1,1)$ (first operation), then $S_2=(1,1,3)$ (first operation);</li>\n<li>$S_1=(1,1)$ (first operation), then $S_2=(1,1,1)$ (first operation);</li>\n<li>$S_1=(1,3)$ (first operation), then $S_2=(1,3,3)$ (first operation);</li>\n<li>$S_1=(1,3)$ (first operation), then $S_2=(1,3,1)$ (first operation).</li>\n</ul>\n<p>Therefore, the answer is $5$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2021, Day 1: Kyoto U Contest 1",
+  "level": 20,
+  "tags": [
+    "combinatorics",
+    "dp",
+    "math"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.1175999641418457
+}

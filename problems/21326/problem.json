@@ -1,0 +1,25 @@
+{
+  "id": 21326,
+  "title": "Lab planning",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ah, university. A bastion of knowledge, the Mecca of education, and the core of bureaucracy.</p>\n<p>Wille and Kaski are currently waiting in a computer lab to present a lab in a course. In total, there are $N$ groups waiting to present their lab. Group $i$ is going to present $m_i$ different labs, where lab $j$ takes $a_{i, j}$ minutes.</p>\n<p>To be fair, all groups need to wait a really long time to present. There is only a single teacher taking presentations, and letting each group present all their labs in a single go would mean that they don't have to wait unnecessarily for other groups! Therefore, the teacher takes presentations in a seemingly arbitrary order...</p>\n<p>Kashi has had enough. She wants to go home and play Pokémon, and is complaining about the inefficiencies in the presentation scheme. To demonstrate how inefficient the system is, she'll compute the longest possible total waiting time, and show just how close the teacher's system is to this value.</p>\n<p>Assume that a group starts presenting their first lab at time $a$, and completes their final lab at time $b$. Then its waiting time is $b - a$. The total waiting time is the sum of the waiting time over all groups.</p>\n<p>The order in which a group must present its labs must be the same as the order they are given in the input.</p>",
+  "input": "<p>The first line contains a single integer $N \\ge 1$.</p>\n<p>Then follow $N$ lines, each containing first the number $m_i \\ge 1$, and then $m_i$ integers $a_{i,j}$, all between 1 och 60.</p>",
+  "output": "<p>You should output a single number: the longest possible total waiting time for the students over all possible presentation orders.</p>",
+  "samples": [
+    {
+      "input": "3\n2 5 15\n2 10 20\n1 60\n",
+      "output": "260\n"
+    }
+  ],
+  "hint": "<p>In the given sample, three groups need to present their labs: the first group has labs taking 5 and 15 minutes, the second group takes 10 and 20 minutes, and the third group has a single lab taking an entire hour.</p>\n<p>If we choose the order $5, 10, 60, 20, 15$, the third group will wait only for 60 minutes. The second group will, besides their own labs, have to wait for the lab of the third group, and therefore take $10+60+20 = 90$ minutes. The first group will instead take $5 + 10 + 60 + 20 + 15 = 110$ minutes.</p>\n<p>The sum of this is $60 + 90 + 110 = 260$ minutes.</p>\n<p>Note that the order 10, 15, 60, 20, 5 would have resulted in a worse time of $265$, but this is not allowed: group 1 may not present their second lab before their first.</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2016, Final",
+  "level": 12,
+  "tags": [
+    "greedy",
+    "sorting"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.5333000421524048
+}

@@ -1,0 +1,67 @@
+{
+  "id": 32241,
+  "title": "나머지가 같아지도록",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>나머지와 나누어떨어짐에 대한 정의를 양의 정수뿐만 아니라 정수로 확장시키면 다음과 같다.</p>\n<ul>\n<li>어떤 정수 $a$를 양의 정수 $q$로 나눈 나머지 $r$은 $a=qx+r$을 만족하는 정수 $x$가 존재하며, $0\\le r&lt;q$인 수로 정의한다. 그리고 이를 $a\\equiv r\\pmod q$와 같이 나타낼 수 있다.</li>\n<li>마찬가지로 어떤 정수 $a$가 양의 정수 $q$로 나누어떨어짐은, $a$를 $q$로 나눈 나머지가 $0$인 경우이다.</li>\n</ul>\n<p>정수 집합 $A$가 주어진다. 이때, $S\\left( A \\right)$과 양의 정수 $M$에 대하여 $A^M$을 다음과 같이 정의한다.</p>\n<ul>\n<li>$S\\left( A \\right) :=\\left\\{ q\\in\\mathbb{Z}^{+}\\middle |\\exists r\\ne 0:\\forall x\\in A,x\\equiv r\\pmod q\\land\\gcd{\\left( q,x \\right)} =1 \\right\\}$</li>\n<li>$A^M:=\\left\\{ \\operatorname{sgn}\\left( x \\right)\\cdot\\left\\lvert x \\right\\rvert^M\\middle |x\\in A \\right\\}$\n\t<ul>\n<li>단, $\\operatorname{sgn}\\left( x \\right) :=\\begin{cases}\\cfrac x{|x|}&amp;\\text{if } x\\ne 0\\\\ 0&amp;\\text{if } x=0\\end{cases}$로 정의되는 부호함수이다.</li>\n</ul>\n</li>\n</ul>\n<p>위의 정의를 풀어서 말하면 $A$의 각 원소를 $q$로 나눈 나머지가 $0$이 아닌 값으로 모두 같으며, 모든 $A$의 원소와 $q$가 서로소인 양의 정수 $q$의 집합을 $S\\left( A \\right)$라고 정의한다. 또한 양의 정수 $M$에 대하여 $A$의 각 원소와 부호는 같고 절댓값은 $M$제곱인 원소들로 이루어진 집합을 $A^M$이라 정의한다.</p>\n<p>$N$개의 서로 다른 원소로 이루어진 정수 집합 $A$와 음이 아닌 정수 $K$가 주어질 때, 다음을 만족하는 최소의 양의 정수 $M$을 찾아보자.</p>\n<ul>\n<li>$\\forall s\\in S\\left( A \\right) ,s^K\\in S\\left( A^M \\right)$</li>\n</ul>",
+  "input": "<p>첫 번째 줄에 양의 정수 $N(2\\le N\\le 10^5)$과 $K(1\\le K\\le 10^{17})$가 공백으로 구분되어 주어진다.</p>\n<p>두 번째 줄에 $N$개의 서로 다른 정수 $A_i(-10^{18}\\le A_i\\le 10^{18})$가 공백으로 구분되어 오름차순으로 주어진다.</p>",
+  "output": "<p>첫 번째 줄에 조건을 만족하는 최소의 양의 정수 $M$을 출력한다. 단, 답이 너무 커질 수 있으므로 답을 $10^9+7$로 나눈 나머지를 출력한다.</p>\n<p>만약 조건을 만족하는 $M$이 존재하지 않는다면 첫 번째 줄에 $M$ 대신 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "2 4\n3 5\n",
+      "output": "2\n"
+    },
+    {
+      "input": "2 5\n3 5\n",
+      "output": "4\n"
+    },
+    {
+      "input": "2 1\n-1 1\n",
+      "output": "1\n"
+    },
+    {
+      "input": "2 2\n-1 1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "3 100000000000000000\n-1000000000000000000 -371681469282041354 570796326794896615\n",
+      "output": "487180136\n"
+    },
+    {
+      "input": "3 10\n-25 -7 5\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "3 6\n1 15 71\n",
+      "output": "134456\n"
+    },
+    {
+      "input": "2 100000000000000000\n1 123456789864197523\n",
+      "output": "500000003\n"
+    },
+    {
+      "input": "2 100000000000000000\n1 123456789864197524\n",
+      "output": "0\n"
+    },
+    {
+      "input": "4 99999999999999999\n-113 -7 535353535353535293 535353535353535346\n",
+      "output": "977315351\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제5회 고려대학교 MatKor Cup: 2024 Summer/Fall, kidw0124, finimage, sshs29hanul, utilforever, yijw0930",
+  "level": 25,
+  "tags": [
+    "math",
+    "number_theory",
+    "case_work",
+    "primality_test",
+    "prime_factorization",
+    "miller_rabin",
+    "pollard_rho",
+    "lte"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 3.6666998863220215
+}

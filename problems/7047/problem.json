@@ -1,0 +1,30 @@
+{
+  "id": 7047,
+  "title": "Clouds",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>There are n clouds in the sky, all moving con with a wind in the same direction and with the same constant velocity v = (v<sub>x</sub>, v<sub>y</sub>), i.e. for any real number t ≥ 0 and any point of a cloud with initial coordinates (x, y) the position of this point at time t is (x + t × v<sub>x</sub>, y + t × v<sub>y</sub>).</p>\n<p>For the sake of simplicity, we assume that every cloud is a polygon (containing its periphery), whose vertices have integer coordinates. This polygon does not have to be convex, but no two of its edges cross each other (with exception of the common endpoints of consecutive edges). The clouds may intersect.</p>\n<p>On the ground there is a satellite control center, at coordinates (0, 0), and there is a satellite directly above the control center and above the clouds. Straight upwards from the control center to the satellite goes a laser beam. The laser beam is used to communicate with the satellite. However, when the beam crosses a cloud, the communication is not possible. Initially, the beam does not cross any cloud. During the observation, there may be several moments, when the laser beam crosses (one or more) clouds, interrupting the communication. Even when the laser beam crosses a single vertex of a cloud, the communication is interrupted for an instant. You are to write a program that computes how many times the communication is interrupted, until all the clouds drift away.</p>\n<p>Write a program, that:</p>\n<ul>\n<li>reads from the standard input the positions, shapes and velocity of the clouds,</li>\n<li>determines how many times communication is interrupted,</li>\n<li>writes the result to the standard output.</li>\n</ul>",
+  "input": "<p>The first line of input contains three integers n, v x and vy, separated by single spaces, 1 ≤ n ≤ 1 000, −1 000 000 000 ≤ v<sub>x</sub>, v<sub>y</sub> ≤ 1 000 000 000; n is the number of clouds, v = (v<sub>x</sub>, v<sub>y</sub>) is the velocity vector of the clouds (v = (0, 0)). The x-coordinates correspond to the West-East direction and the y-coordinates correspond to the North-South direction. The following n lines contain descriptions of the clouds, one cloud per line. Each of these lines consists of a sequence of integers, separated by single spaces.The first integer in a line is the number of cloud’s vertices k, 3 ≤ k ≤ 1 000. It is followed by 2k integers: x<sub>1</sub>, y<sub>1</sub>, x<sub>2</sub>, y<sub>2</sub>, ..., x<sub>k</sub>, y<sub>k</sub>, −1 000 000 000 ≤ x<sub>i</sub>, y<sub>i</sub> ≤ 1 000 000 000; (x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>), ..., (x<sub>k</sub>, y<sub>k</sub>) are the coordinates of the consecutive vertices in a clockwise order. The laser beam crosses clouds peripheries at most 100 000 times.</p>",
+  "output": "<p>The first and only line of output should contain exactly one integer: the number of times the communication is interrupted.</p>",
+  "samples": [
+    {
+      "input": "4 -2 -1\n4 6 2 6 4 8 4 8 2\n4 2 3 1 -1 2 5 4 2\n3 -3 1 -1 2 -1 -1\n5 5 3 3 3 3 5 6 5 6 -1\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 622px; height: 375px;\"/></p>\n<p>The figure shows the clouds seen from above. The dashed line marks the points that will cross the laser beam.</p>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2004, Day 1",
+  "level": 25,
+  "tags": [
+    "arbitrary_precision",
+    "coordinate_compression",
+    "geometry",
+    "implementation",
+    "line_intersection",
+    "sorting",
+    "sweeping"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 7
+}

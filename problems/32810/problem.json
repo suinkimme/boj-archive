@@ -1,0 +1,32 @@
+{
+  "id": 32810,
+  "title": "Leapfrog Encryption",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>We've come up with a new encryption method we call Leapfrog Encryption. It is a key-based encryption scheme where an alphabetic key specifies how letters in the <em>plaintext</em> (the text to be encrypted) are placed in the <em>ciphertext</em> (the resulting encrypted string). Here's how Leapfrog Encryption works:</p>\n<ol>\n<li>Remove all non-alphabetic characters from the plaintext and convert all remaining letters to lowercase.</li>\n<li>Convert the letters of the key to their location in the alphabet $+ 1$ (so that '<code>a</code>' converts to $2$, '<code>b</code>' converts to $3$ and so on). This gives us a sequence of numbers $d_1, d_2, \\ldots, d_n$ where $n$ is the length of the key.</li>\n<li>Going left-to-right, place the first letters in the plaintext in every $d_1$-th location of the ciphertext until you run out of positions in the ciphertext (where the length of the ciphertext is equal to the number of letters in the plaintext). So for example, if $d_1=5$ the first letter in the plaintext goes in position $5$ of the ciphertext (numbering the first location in the ciphertext as position $1$), the second letter in the plaintext goes in position $10$ in the ciphertext, and so on.</li>\n<li>Repeat this with $d_2$ but this time going right-to-left through the ciphertext, only counting the empty positions (leapfrogging over the letters already in the ciphertext).</li>\n<li>Continue with $d_3$, $d_4$, etc., alternating the direction you go through the ciphertext each time.</li>\n<li>If there are still letters left in the plaintext after using $d_n$, fill in the remaining empty locations in the ciphertext with these remaining letters, again going in the opposite direction of the previous pass (this is equivalent to having $d_{n+1} = 1$).</li>\n</ol>\n<p>For example, if our plaintext is \"Send more monkeys!\" and our key is \"bea\", the encryption proceeds as follows:</p>\n<table class=\"table table-bordered td-center table-center-40\">\n<tbody>\n<tr>\n<td>b $\\rightarrow$ 3, left-to-right:</td>\n<td><code>_ _ s _ _ e _ _ n _ _ d _ _ m</code></td>\n</tr>\n<tr>\n<td>e $\\rightarrow$ 6, right-to-left:</td>\n<td><code>_ _ s _ _ e o _ n _ _ d _ _ m</code></td>\n</tr>\n<tr>\n<td>a $\\rightarrow$ 2, left-to-right:</td>\n<td><code>_ r s _ e e o _ n m _ d o _ m</code></td>\n</tr>\n<tr>\n<td>last pass, right-to-left:</td>\n<td><code>s r s y e e o e n m k d o n m</code></td>\n</tr>\n</tbody>\n</table>\n<p>Decryption is done by $\\ldots$ hey, you know what? We're going to let you figure that out.</p>",
+  "input": "<p>The first line of input contains two strings $t$ $k$ where $t$ is either <code>E</code> or <code>D</code> indicating whether to perform encryption or decryption and $k$ is the lowercase alphabetic key. The length of $k$ will be between $1$ and $100$, inclusive. The second and final line of input contains the plaintext to encrypt (if $t$ is <code>E</code>) or the ciphertext to decrypt (if $t$ is <code>D</code>). This string is non-empty and has a maximum length of $2\\,000$. A ciphertext string consists of lowercase letters only, while a plaintext string may contain uppercase letters, numbers, punctuation and spaces as well (all counted as part of the length of the string) and is guaranteed to contain at least one letter.</p>",
+  "output": "<p>Output the encrypted or decrypted text. Your output should only contain lowercase letters.</p>",
+  "samples": [
+    {
+      "input": "E bea\nSend more monkeys!\n",
+      "output": "srsyeeoenmkdonm\n"
+    },
+    {
+      "input": "D bea\nsrsyeeoenmkdonm\n",
+      "output": "sendmoremonkeys\n"
+    },
+    {
+      "input": "D zyxwvutsrqponmlkjihgfedcba\nlafogrpe\n",
+      "output": "leapfrog\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2024 East Central NA Regional Contest, ICPC, Regionals, North America, Greater New York Region, 2024 Greater New York Regional Contest, ICPC, Regionals, North America, Northeast North America Regional, 2024 Northeast North America Regional Contest",
+  "level": 8,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 1.2963000535964966
+}

@@ -1,0 +1,28 @@
+{
+  "id": 3904,
+  "title": "The Teacher's Side of Math",
+  "time_limit": "5 초",
+  "memory_limit": "128 MB",
+  "description": "<p>One of the tasks students routinely carry out in their mathematics classes is to solve a polynomial equation. It is, given a polynomial, say \\(X^2 − 4X + 1\\), to find its roots \\((2\\pm \\sqrt{3})\\).</p>\n<p>￼If the students’ task is to find the roots of a given polynomial, the teacher’s task is then to find a polynomial that has a given root. Ms. Galsone is an enthusiastic mathematics teacher who is</p>\n<p>bored with finding solutions of quadratic equations that are as simple as \\(a+b\\sqrt{c}\\). She wanted ￼to make higher-degree equations whose solutions are a little more complicated. As usual in problems in mathematics classes, she wants to maintain all coefficients to be integers and keep the degree of the polynomial as small as possible (provided it has the specified root). Please help her by writing a program that carries out the task of the teacher’s side.</p>\n<p>You are given a number t of the form:</p>\n<p>\\[t = \\sqrt[m]{a} + \\sqrt[n]{b}\\]</p>\n<p>where a and b are distinct prime numbers, and m and n are integers greater than 1.</p>\n<p>In this problem, you are asked to find t’s minimal polynomial on integers, which is the polynomial \\(F(X)=a_dX^d+a_{d-1}X^{d-1}+···+a_1X+a_0\\) satisfying the following conditions.</p>\n<ol>\n<li>Coefficients \\(a_0,\\, \\cdots,\\, a_d\\) are integers and \\(a_d&gt;0\\).</li>\n<li>\\(F(t)=0\\).</li>\n<li>The degree d is minimum among polynomials satisfying the above two conditions.</li>\n<li>\\(F(X)\\) is primitive. That is, coefficients \\(a_0,\\, \\cdots,\\, a_d\\) have no common divisors greater than one.</li>\n</ol>\n<p>For example, the minimal polynomial of \\(\\sqrt{3}+\\sqrt{2}\\) on integers is \\(F(X) = X^4 - 10 X^2 + 1\\). Verifying \\(F(t) = 0\\) is as simple as the following \\((\\alpha =\\sqrt{3},\\,\\beta=\\sqrt{2})\\).</p>\n<p>\\[F(t)=(\\alpha+\\beta)^4 −10(\\alpha+\\beta)^2 +1\\] \\[=(\\alpha^4 +4\\alpha^3\\beta+6\\alpha^2\\beta^2 +4\\alpha\\beta^3 +\\beta^4) -10 (\\alpha^2 +2\\alpha\\beta+\\beta^2)+1\\] \\[= 9 + 12\\alpha\\beta + 36 + 8\\alpha\\beta + 4 -10 (3 + 2\\alpha\\beta + 2) + 1\\] \\[= (9 + 36 + 4 -50 + 1) + (12 + 8 - 20)\\alpha\\beta\\] \\[=0\\]</p>\n<p>Verifying that the degree of \\(F(t)\\) is in fact minimum is a bit more difficult. Fortunately, under the condition given in this problem, which is that a and b are distinct prime numbers and m and n greater than one, the degree of the minimal polynomial is always mn. Moreover, it is always monic. That is, the coefficient of its highest-order term \\((a_d)\\) is one.</p>\n<p>The input consists of multiple datasets, each in the following format.</p>\n<pre>\na m b n</pre>\n<p>This line represents \\(\\sqrt[m]{a}+\\sqrt[n]{b}\\). The last dataset is followed by a single line consisting of four zeros. Numbers in a single line are separated by a single space.</p>\n<p>Every dataset satisfies the following conditions.</p>\n<ol>\n<li>\\(\\sqrt[m]{a}+\\sqrt[n]{b}\\le4\\).</li>\n<li>\\(mn\\le20\\).</li>\n<li>The coefficients of the answer \\(a_0,\\, \\cdots,\\, a_d\\) are between (−2<sup>31</sup> + 1) and (2<sup>31</sup> − 1), inclusive.</li>\n</ol>",
+  "input": "<p>The input consists of multiple datasets, each in the following format.</p>\n<pre>\na m b n</pre>\n<p>This line represents \\(\\sqrt[m]{a}+\\sqrt[n]{b}\\). The last dataset is followed by a single line consisting of four zeros. Numbers in a single line are separated by a single space.</p>\n<p>Every dataset satisfies the following conditions.</p>\n<ol>\n<li>\\(\\sqrt[m]{a}+\\sqrt[n]{b}\\le4\\).</li>\n<li>\\(mn\\le20\\).</li>\n<li>The coefficients of the answer \\(a_0,\\, \\cdots,\\, a_d\\) are between (−2<sup>31</sup> + 1) and (2<sup>31</sup> − 1), inclusive.</li>\n</ol>",
+  "output": "<p>For each dataset, output the coefficients of its minimal polynomial on integers \\(F(X)=a_dX^d+a_{d-1}X^{d-1}+···+a_1X+a_0\\), in the following format.</p>\n<pre>\na<sub>d</sub> a<sub>d-1</sub> ... a<sub>1</sub> a<sub>0</sub></pre>\n<p>Non-negative integers must be printed without a sign (+ or −). Numbers in a single line must be separated by a single space and no other characters or extra spaces may appear in the output.</p>",
+  "samples": [
+    {
+      "input": "3 2 2 2\n3 2 2 3\n2 2 3 4\n31 4 2 3\n3 2 2 7\n0 0 0 0\n",
+      "output": "1 0 -10 0 1\n1 0 -9 -4 27 -36 -23\n1 0 -8 0 18 0 -104 0 1\n1 0 0 -8 -93 0 24 -2976 2883 -32 -3720 -23064 -29775\n1 0 -21 0 189 0 -945 -4 2835 -252 -5103 -1260 5103 -756 -2183\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2007 in Tokyo",
+  "level": 23,
+  "tags": [
+    "math",
+    "number_theory",
+    "linear_algebra",
+    "gaussian_elimination",
+    "polynomial_interpolation"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 1.9189000129699707
+}

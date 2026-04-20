@@ -1,0 +1,34 @@
+{
+  "id": 22012,
+  "title": "Railway",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There is a railway between Zürich and Lugano of length $s$ kilometers. The railway crosses the beautiful Alps, resulting in a spectacular scenery during the ride. Since some passes are too high for the railway, there are $t$ tunnels on the track. The $i$-th of them starts $a_i$ kilometers from Zürich and ends $b_i$ kilometers from Zürich. (Thus, the length of the $i$-th tunnel is $b_i - a_i$.)</p>\n<p>You have a timetable of the rail $m$ service between the two cities. There are services from Zürich to Lugano, the $j$-th of which departs at $c_j$ minutes, and $n$ services from Lugano to Zürich, the $k$-th of which departs at $d_k$ minutes. All trains operating on the track have a constant speed of $1$ kilometer per minute, regardless of their direction and whether they are in a tunnel or not. There are no stations on the route, and the trains never stop at semaphores. Hence, each service arrives to its destination in exactly $s$ minutes.</p>\n<p>The length of a train is negligible in comparison to the length of the railway, so in this problem <strong>please assume that each train is a point</strong> that moves along the railway.</p>\n<p>Usually, the railway has two tracks: one in each direction. The only exception are the tunnels. Each tunnel has just a single track that can be used in either direction.</p>\n<p>Whenever two trains going in the opposite directions meet outside a tunnel, they can pass each other safely. This includes trains meeting exactly at either end of a tunnel. On the other hand, if a pair of trains meets strictly inside a tunnel, there is a collision.</p>\n<p>Given the description of the tunnels and the train services, determine whether there will be any collision.</p>",
+  "input": "<p>The first line contains four space-separated integers $s$, $t$, $m$, $n$ ($1 \\le s \\le 1\\,000\\,000\\,000$, $0 \\le t \\le 100\\,000$, $0 \\le m, n \\le 2\\,000$) — the length of the track, the number of tunnels, the number of services from Zürich and the number of services from Lugano, respectively.</p>\n<p>The second line contains $t$ space-separated integers $a_i$ ($0 \\le a_i &lt; s$) — the starting positions of the tunnels.</p>\n<p>The third line contains $t$ space-separated integers $b_i$ ($0 &lt; b_i \\le s$) — the ending positions of the tunnels.</p>\n<p>For each $i$ between $1$ and $t$, $a_i &lt; b_i$ holds. Additionally, for each $i$ between $1$ and $t-1$, $b_i &lt; a_{i+1}$. (In other words, each tunnel has a positive length, the tunnels are pairwise disjoint, and they are given in increasing order of distance from Zürich.)</p>\n<p>The fourth line contains $m$ space-separated integers $c_j$ ($0 \\le c_j \\le 1\\,000\\,000\\,000$) — the starting times (in minutes) of the services starting in Zürich. The times are given in increasing order, that is, $c_j &lt; c_{j+1}$ for all valid $j$.</p>\n<p>The fifth line contains $n$ space-separated integers $d_k$ ($0 \\le d_k \\le 1\\,000\\,000\\,000$) — the starting times (in minutes) of the services starting in Lugano. The times are given in increasing order, that is, $d_k &lt; d_{k+1}$ for all valid $k$.</p>",
+  "output": "<p>Output a single line, containing \"<code>YES</code>\" (quotes for clarity) if at least one crash occurs, or \"<code>NO</code>\" if all trains reach their destination safely.</p>",
+  "samples": [
+    {
+      "input": "100 2 1 4\n20 50\n30 60\n120\n30 100 200 250\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "1000 1 1 1\n600\n700\n100\n400\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "1000 1 1 1\n600\n700\n100\n300\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "1000 1 1 1\n600\n700\n100\n500\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": "<p>In the first example there are two tunnels on a track of length $100$ kilometers: one $20$ to $30$ kilometers from Zürich, the other $50$ to $60$ kilometers from Zürich. The only train coming from Zürich manages to avoid all the Lugano services as follows:</p>\n<ul>\n<li>the first is met $5$ kilometers from Zürich,</li>\n<li>the second is met halfway between the tunnels,</li>\n<li>the third is met $10$ kilometers from Lugano,</li>\n<li>the fourth starts long after the Zürich train had arrived at its destination.</li>\n</ul>\n<p>In the second example the only two trains meet exactly in the middle of the only tunnel, resulting in a crash.</p>\n<p>In the third example the two trains meet exactly at the end of the tunnel that is closer to Zürich. In the fourth example they meet exactly at the other end of the tunnel. Both cases are fine, the trains pass each other and reach their destination safely.</p>",
+  "source": "Olympiad, European Girls' Olympiad in Informatics, EGOI 2021, Day 2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.5999999046325684
+}

@@ -1,0 +1,35 @@
+{
+  "id": 18549,
+  "title": "Quoridor",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>“Quoridor” is a strategy board game for two or four players. It is played on a square game board consisting of square cells. Each player has a pawn and a set of walls, each wall two cells long. Pawns can stand inside the square cells, and walls can be put between cells. The goal of the game is to move your pawn across the board before all the other players do. Pawns move only to adjacent cells and can not move through walls. In case a pawn is moving to a cell already occupied by another player’s pawn, the cell can be “skipped over” by moving further to an adjacent cell. Walls can not overlap or cross, but they can touch. Walls should be placed in such a way that all the players always have an option to cross the board: you can not block a player from finishing the game completely.</p>\n<p>Three players play a new version of the game for three players. The board in the new game is hexagonal, with hexagonal cells. Player pawns start from three board corners such that no two corners are neighbors. The objective of each player is to cross over to the opposite corner. Walls here also have the length of two cell sides, but now they are bent because of the new shapes of the cells. No portion of a wall can run along the edge of the board. Here is an example of the game being played:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 363px; height: 400px;\"/></p>\n<p style=\"text-align: center;\">Uppercase characters are players’ pawns, lowercase characters are their respective goals</p>\n<p>Player A has to move now. They don’t want to move their pawn yet, so they consider all the possible ways they can place a wall on the board. How many such placements are there?</p>",
+  "input": "<p>The first line of input contains an integer n: the number of cells along one side of the hexagonal board, 2 ≤ n ≤ 250.</p>\n<p>The rest of the input lines are depiction of the current game situation in a form of ASCII art. The number of lines in the board description is equal to the number of characters in each line, and is 4n − 1. Cell borders are drawn with characters “\\”, “/”, and “ ”. Walls are depicted by characters “@” in place of cell borders. Uppercase letters “A”, “B”, and “C” depict player pawns. Lowercase letters “a”, “b”, and “c” are those players’ respective goals. Each of the six letters appears on the board exactly once. The lowercase letters are placed according to the rules of the game.</p>\n<p>The remaining characters in the board description are all space characters. Note that most lines, but not all of them, start and end with a space character, and each line contains at least one non-space character.</p>",
+  "output": "<p>Print a single line containing a single integer: the number of possible ways for player A to place a wall on the board.</p>",
+  "samples": [
+    {
+      "input": "2\n   _   \n _/a\\_ \n/B\\_/C\\\n\\_/ \\_/\n/c\\_/b\\\n\\_/A\\_/\n  \\_/  \n",
+      "output": "18\n"
+    },
+    {
+      "input": "2\n   _   \n _/a\\_ \n/B@@/C\\\n\\@/ \\_/\n/c@_@b\\\n\\_/A@_/\n  \\_/  \n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p>In the first example, wall can be put to any of the two available positions adjacent to any of the six border cells, and at the six available positions adjacent to the center cell, for a total of 2 · 6 + 6 · 1 = 18 placements.</p>\n<p>The second example presents a situation in which walls can not be put anywhere without blocking some of the players from winning.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 144px; height: 150px;\"/></p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2019, Day 8: Petrozavodsk SU Contest",
+  "level": 24,
+  "tags": [
+    "bcc",
+    "data_structures",
+    "disjoint_set",
+    "divide_and_conquer",
+    "graphs",
+    "offline_dynamic_connectivity",
+    "offline_queries",
+    "planar_graph"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 4
+}

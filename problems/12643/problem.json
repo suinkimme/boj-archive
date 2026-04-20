@@ -1,0 +1,28 @@
+{
+  "id": 12643,
+  "title": "Decision Tree (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Decision trees -- in particular, a type called classification trees -- are data structures that are used to classify <em>items</em> into <em>categories</em> using <em>features</em> of those items. For example, each animal is either \"cute\" or not. For any given animal, we can decide whether it is cute by looking at the animal's features and using the following decision tree.</p>\n<pre>\n(0.2 furry\n  (0.81 fast\n    (0.3)\n    (0.2)\n  )\n  (0.1 fishy\n    (0.3 freshwater\n      (0.01)\n      (0.01)\n    )\n    (0.1)\n  )\n)\n</pre>\n<p>A decision tree is defined recursively. It always has a root node and a weight. It also, optionally, has a feature name and two sub-trees, which are themselves decision trees.</p>\n<p>More formally, a decision tree is defined using the following grammar.</p>\n<pre>\n<em>tree</em> <strong>::=</strong> (<em>weight</em> <strong>[</strong><em>feature</em> <em>tree</em> <em>tree</em><strong>]</strong>)\n<em>weight</em> is a real number between 0 and 1, inclusive\n<em>feature</em> is a string of 1 or more lower case English letters\n</pre>\n<p>The part inside the square brackets, <strong>[]</strong>, is optional. The parentheses, (), <em>weight</em> and <em>feature</em> are tokens. There will be at least one whitespace character between any two tokens, except (possibly) after an open-bracket '(' or before a close-bracket ')'. Whitespace characters are space (' ') and endline ('\\n').</p>\n<p> </p>\n<p>To figure out how likely the animal is to be cute, we start at the root of the tree with probability <em>p</em> set to 1. At each node, we multiply <em>p</em> by the weight of the node. If the node is a leaf (has no sub-trees), then we stop, and the value of <em>p</em> is the probability that our animal is cute. Otherwise, we look at the feature associated with the node. If our animal has this feature, we move down into the first sub-tree and continue recursively. If it does not have this feature, then we move down into the second sub-tree and continue in the same way.</p>\n<p>For example, a beaver is an animal that has two features: <em>furry</em> and <em>freshwater</em>. We start at the root with <em>p</em> equal to 1. We multiply <em>p</em> by 0.2, the weight of the root and move into the first sub-tree because the beaver has the <em>furry</em> feature. There, we multiply <em>p</em> by 0.81, which makes <em>p</em> equal to 0.162. From there we move further down into the second sub-tree because the beaver does not have the <em>fast</em> feature. Finally, we multiply <em>p</em> by 0.2 and end up with 0.0324 -- the probability that the beaver is cute.</p>\n<p>You will be given a decision tree and a list of animals with their features. For each item, you need to return the probability that the animal is cute.</p>",
+  "input": "<p>The first line of input contains a single integer, <strong>N</strong>, the number of test cases.  <strong>N</strong> test cases follow.</p>\n<p>Each test case description will start with a line that contains an integer <strong>L</strong> -- the number of lines that describe a decision tree. The next <strong>L</strong> lines will contain a decision tree in the format described above. The line after that will contain <strong>A</strong> -- the number of animals. The next <strong>A</strong> lines will each contain the description of one animal in the following format.</p>\n<pre>\n<em>animal</em> <strong>n</strong> <em>feature</em><sub>1</sub> <em>feature</em><sub>2</sub> ... <em>feature</em><sub><strong>n</strong></sub></pre>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>N</strong> ≤ 100</li>\n<li>All weights will be between 0 and 1, inclusive.</li>\n<li>All weights will consist of only digits with at most one decimal point.</li>\n<li>The weights will not start or end with a decimal point.</li>\n<li>The weights will not have more than one 0 before a decimal point.</li>\n<li>All animals and features will consist of between 1 and 10 lower case English letters.</li>\n<li>All animal names within a test case will be distinct.</li>\n<li>All feature names for a single animal will be distinct.</li>\n<li>Each of the <strong>L</strong> lines in a decision tree definition will have at most 80 characters, not including the endlines.</li>\n<li>1 ≤ <strong>L</strong> ≤ 10</li>\n<li>1 ≤ <strong>A</strong> ≤ 10</li>\n<li>0 ≤ <strong>n</strong> ≤ 5</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #<strong>x</strong>:\" followed by exactly <strong>A</strong> lines, one per animal, in the same order as they appear in the input. Each line should contain the probability that the animal is cute. Answers that are precise to within an absolute or relative error of 10<sup>-6</sup> will be considered correct.</p>",
+  "samples": [
+    {
+      "input": "2\n3\n(0.5 cool\n  ( 1.000)\n  (0.5 ))\n2\nanteater 1 cool\ncockroach 0\n13\n(0.2 furry\n  (0.81 fast\n    (0.3)\n    (0.2)\n  )\n  (0.1 fishy\n    (0.3 freshwater\n      (0.01)\n      (0.01)\n    )\n    (0.1)\n  )\n)\n3\nbeaver 2 furry freshwater\ntrout 4 fast freshwater fishy rainbowy\ndodo 1 extinct\n",
+      "output": "Case #1:\n0.5000000\n0.2500000\nCase #2:\n0.0324000\n0.0000600\n0.0020000\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Code Jam, Google Code Jam 2009, Round 1B",
+  "level": 14,
+  "tags": [
+    "data_structures",
+    "implementation",
+    "parsing",
+    "string",
+    "trees"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.357100009918213
+}

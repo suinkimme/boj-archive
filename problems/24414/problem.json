@@ -1,0 +1,30 @@
+{
+  "id": 24414,
+  "title": "Venn Intervals",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A <em>Venn interval diagram</em> is a graphical way to illustrate intersections of sets in 1D, similar to the more familiar Venn diagrams in 2D. A Venn interval diagram is defined by assigning a non-zero-length integer interval $[l_i , u_i)$ to each set $S_i$. The <em>regions</em> where different intervals overlap correspond to intersections of different combinations of the sets (see Figure N.1).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 474px; height: 112px;\"/></p>\n<p style=\"text-align: center;\">Figure N.1: Venn interval diagram corresponding to Sample Input 1. The intervals assigned to each of the six sets $A$ through $F$ are shown at the top; the regions encoded by the diagram are labeled along the number line. This Venn interval diagram has nine regions, and is not degenerate (since no interval is contained in any other.)</p>\n<p>More formally, given the interval assigned to each set, you can compute the regions that appear in the Venn interval diagram with the following algorithm:</p>\n<ul>\n<li>Combine together all of the interval starting points $l_i$ and ending points $u_i$ into a single set, and sort them to get an integer sequence $p_1 &lt; p_2 &lt; \\cdots &lt; p_m$.</li>\n<li>Label each interval $(p_j , p_{j+1})$ spanning consecutive $p$ values with all the sets $S_i$ for which $(p_j , p_{j+1})$ is contained within $[l_i , u_i)$. (Note that partial overlaps are not possible: the $p$-interval is either contained within, or disjoint from, each set-interval).</li>\n<li>The set of all non-empty labels are the regions of the Venn interval diagram. Each label $\\{S_a, S_b, \\dots \\}$ represents an intersection of sets $S_a ∩ S_b ∩ \\cdots$.</li>\n</ul>\n<p>In the example Venn interval diagram shown above, there are six sets ($A$ through $F$) and nine regions ($B$, $A ∩ B$, $A$, $A ∩ C$, $A ∩ C ∩ D$, $C ∩ D$, $D$, $E$, and $F$). This example Venn interval diagram has a “hole” where no sets overlap (between the end of region $D$ and the start of $E$); this is allowed. Note also that $E ∩ F$ is not a region: $E$ and $F$’s intervals touch at their endpoints, but the two do not overlap on a $p$-interval.</p>\n<p>Not every list of regions has a corresponding illustration as a Venn interval diagram. Consider for example the regions $A ∩ B$, $B ∩ C$, and $C ∩ A$. There is no way to lay out intervals for $A$, $B$, and $C$ on the real line to form exactly these three regions (any Venn interval diagram that includes these three regions must also include $A ∩ B ∩ C$). In addition, a Venn interval diagram is <em>degenerate</em> if any interval is contained within another interval: if $l_i ≤ l_j$ and $u_j ≤ u_i$ for some $i \\ne j$. For example, if $C$’s right endpoint were at $4$ instead of $5$, the Venn interval diagram in Figure N.1 would become degenerate, since the interval assigned to the set $C$ would then be contained within $A$’s interval (corresponding to Sample Input 3).</p>\n<p>Given a list of regions, construct a <strong>non-degenerate</strong> Venn interval diagram containing exactly those regions, if possible.</p>",
+  "input": "<p>The first line of the input contains a single integer $n$, the number of regions required in your diagram ($1 ≤ n ≤ 4\\,000$). The next $n$ lines each describe one region. Each line begins with an integer $k$, the number of sets that intersect to form the region ($1 ≤ k ≤ 2\\,000$), followed by $k$ space-separated set names. Each set name contains only lowercase or uppercase letters (<code>a-z</code>, <code>A-Z</code>) and no set name is longer than ten characters. All set names listed on the same line are distinct, and no two regions list the exact same collection of set names. No more than $2\\,000$ unique set names appear in total across all regions.</p>",
+  "output": "<p>If a non-degenerate Venn interval diagram does not exist whose regions match the input, print <code>IMPOSSIBLE</code> and produce no further output.</p>\n<p>Otherwise, print the intervals describing any one valid diagram. For each set name that appears in the input, print a line of output starting with that set name, followed by two space-separated integers $l$ and $r$: the left and right endpoints of the interval assigned to that set name in your diagram. The endpoints must satisfy $-10^6 ≤ l &lt; u ≤ 10^6$. You may list the sets in any order, but every set name that appears in the input must correspond to exactly one line of output.</p>\n<p>Every region in the input must appear at least once in your Venn interval diagram, and your diagram must not contain any regions other than those specified in the input. You diagram must not be degenerate: no interval should be enclosed inside another.</p>",
+  "samples": [
+    {
+      "input": "9\n1 A\n2 A B\n1 B\n2 A C\n3 A C D\n2 C D\n1 D\n1 E\n1 F\n",
+      "output": "B -1 1\nA 0 4\nC 2 5\nD 3 6\nE 7 8\nF 8 9\n"
+    },
+    {
+      "input": "3\n2 A B\n2 B C\n2 C A\n",
+      "output": "IMPOSSIBLE\n"
+    },
+    {
+      "input": "8\n1 A\n2 A B\n1 B\n2 A C\n3 A C D\n1 D\n1 E\n1 F\n",
+      "output": "IMPOSSIBLE\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Qualification Contest, ICPC North America Qualifier 2021",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.200000047683716
+}

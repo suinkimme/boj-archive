@@ -1,0 +1,22 @@
+{
+  "id": 20619,
+  "title": "Paper-cutting",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Paper-cutting is one of the oldest and most popular folk arts in China. It can be geographically divided into a southern and a northern style. The southern style, represented by works from Yangzhou in Jiangsu Province and Yueqing in Zhejiang Province, features ingenious and beautiful designs, exquisite carving and interesting shapes. The northern style, mainly from Yuxian and Fengning in Hebei Province and best represented by works from northern Shaanxi, features exaggerated shapes, vigorousness, vivid depictions, and diverse patterns.</p>\n<p>There are basic cut-outs, consisting of a single image, and symmetrical designs, that are usually created by some folding over a proportioned crease, and then cutting a shape, so that when unfolded, it forms a symmetrical design. Chinese paper cuttings are usually symmetrical. The paper cutouts are usually in an even number series of $2$, $4$, $24$, etc.</p>\n<p>You are given a piece of paper in the shape of a matrix of size $n \\times m$. It is partitioned into $n \\times m$ blocks of size $1 \\times 1$. The piece of paper can be folded in the following way:</p>\n<ol>\n<li>You choose a vertical line between two of its columns or a horizontal line between two of its rows. This line splits the paper into two sides. </li>\n<li>You use the line as the folding axis and fold the smaller side of the paper onto the larger one going over the axis. If both sides of the paper are of equal size, you may fold from either side.</li>\n</ol>\n<p>You would like to make a paper-cutting masterpiece from this paper. At first, you fold the paper using the method above several times (including zero times). Then you use scissors to cut the paper. Each time you cut, you can cut out a connected component from the folded paper (even if the component is not reachable from outside) and throw it away. Note that two $1 \\times 1$ blocks are connected if they share an edge.</p>\n<p>Given the final look of the paper, which is a matrix of size $n \\times m$ containing $0$s and $1$s, you would like to know the minimum number of cuts needed when using the scissors. </p>",
+  "input": "<p>There are multiple test cases. The first line of the input contains an integer $T$, indicating the number of test cases. For each test case:</p>\n<p>The first line contains two integers $n$ and $m$ ($1 \\le n \\times m \\le 10^6$): the size of the paper.</p>\n<p>Each of the next $n$ lines contains a binary string of length $m$, where \"<code>0</code>\" means the $1 \\times 1$ block is cut out and \"<code>1</code>\" means the $1 \\times 1$ block remains on the final paper-cutting.</p>\n<p>It is guaranteed that the sum of $n \\times m$ over all test cases does not exceed $10^6$.</p>",
+  "output": "<p>For each test case output one line containing one integer, indicating the minimum number of cuts needed.</p>",
+  "samples": [
+    {
+      "input": "3\n2 5\n11001\n11001\n5 7\n1001100\n0110011\n0101101\n0010010\n1000000\n3 2\n11\n11\n11\n",
+      "output": "1\n4\n0\n"
+    }
+  ],
+  "hint": "<p>For the first sample test case, you can fold in the following way and cut the only $0$ out: $$\\begin{array}{ccc|cc} 1&amp;1&amp;0&amp;0&amp;1\\\\1&amp;1&amp;0&amp;0&amp;1\\end{array} \\to \\begin{array}{ccc} 1&amp;1&amp;0\\\\ \\hline 1&amp;1&amp;0\\end{array} \\to \\begin{array}{ccc} 1&amp;1&amp;0\\end{array}$$</p>\n<p>For the second sample test case, you can fold in the following way and cut the $4$ connected components of $0$s out: $$\\begin{array}{cccc|ccc} 1&amp;0&amp;0&amp;1&amp;1&amp;0&amp;0\\\\0&amp;1&amp;1&amp;0&amp;0&amp;1&amp;1\\\\0&amp;1&amp;0&amp;1&amp;1&amp;0&amp;1\\\\0&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0\\\\1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\end{array} \\to \\begin{array}{cccc} 1&amp;0&amp;0&amp;1\\\\0&amp;1&amp;1&amp;0\\\\0&amp;1&amp;0&amp;1\\\\0&amp;0&amp;1&amp;0\\\\1&amp;0&amp;0&amp;0\\end{array}$$</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2020, Day 4: Xi Lin Contest 6",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

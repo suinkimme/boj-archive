@@ -1,0 +1,26 @@
+{
+  "id": 3925,
+  "title": "암호화의 취약점 찾기",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>여기 암호화해서 전송하고싶은 데이터가 32bit unsigned int 8개 형태로 주어져있다.</p>\r\n\r\n<p>N1 N2 N3 ... N8</p>\r\n\r\n<p>우선 이 데이터가 올바른 데이터인지 확인해주는 checksum을 구해서 9번째 데이터로 추가해줬다. (checksum은 데이터의 무결성을 확인하는데 자주 사용되는 방식이다.)</p>\r\n\r\n<p>N9 = sigma(Ni) mod 2^32</p>\r\n\r\n<p>그다음 특정 32bit 키값 K를 이용해서 이 9개의 숫자를 암호화하려고 한다. 암호화는 XOR 연산을 통해 이루어진다고 보자. (XOR은 데이터의 암호화를 위해 자주 사용되는 연산자다.)</p>\r\n\r\n<p>M1 = N1 ^K, M2 = N2 ^ K ... M9 = N9 ^ K</p>\r\n\r\n<p>이렇게 해서 만들어진 M1 ~ M9 9개의 데이터를 전송하면 K값을 알고있는 사람은 원래 데이터 N1 ~ N8을 알아낼 수 있다. 그리고 K값을 모르는 사람은 원래 데이터 N1 ~ N8을 알아낼 수.....있다!</p>\r\n\r\n<p>놀랍게도 위의 방식에는 취약점이 존재한다. 취약점을 발견해서 9개의 정수 M1 ~ M9 가 16진수 형태로 주어졌을 때, 키값 K를 구하는 프로그램을 작성해보자.</p>\r\n",
+  "input": "<p>입력의 첫째 줄에는 테스트데이터의 개수 T가 주어진다. T는 1000을 넘지 않는다.</p>\r\n\r\n<p>그 다음 각 테스트데이터마다 9개의 정수 M1 ~ M9 가 16진수 형태로 주어진다. 16진수는 &#39;0&#39; ~ &#39;9&#39; 그리고 소문자로만 이루어져 있고, 불필요한 0은 들어오지 않는다. 9개의 숫자가 한 줄에 모두 입력되지 않을 수도 있다.</p>\r\n",
+  "output": "<p>각 테스트데이터마다 한줄에 하나씩 키값 K를 소문자 16진수 형태로 출력한다. 불필요한 0은 출력하지 않는다.</p>\r\n",
+  "samples": [
+    {
+      "input": "8\n1 1 1 1 1 1 1 1 8\n3 2 3 2 3 2 3 2 6\n3 4 4 7 7 b a 2 2e\ne1 13 ce 28 ca 6 ab 46 a6d\nb08 49e2 6128 f27 8cf2 bc50 7380 7fe1 723b\n4eba eb4 a352 fd14 6ac1 eed1 dd06 bb83 392bc\nef593c08 847e522f 74c02b9c 26f3a4e1 e2720a01 6fe66007\n7a4e96ad 6ee5cef6 3853cd88\n60202fb8 757d6d66 9c3a9525 fbcd7983 82b9571c ddc54bab 853e52da\n22047c88 e5524401\n",
+      "output": "0\n2\n6\n1c6\n4924afc7\nffff95c5\n546991d\n901c4a16\n"
+    }
+  ],
+  "hint": "<p>원문으로 볼 시 스포일러 주의</p>\r\n",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2004 in Ehime, pichulia",
+  "level": 12,
+  "tags": [
+    "math",
+    "implementation",
+    "bitmask"
+  ],
+  "accepted_user_count": 53,
+  "submission_count": null,
+  "average_tries": 1.2264000177383423
+}

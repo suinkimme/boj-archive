@@ -1,0 +1,24 @@
+{
+  "id": 23939,
+  "title": "Latest Guests",
+  "time_limit": "15 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The city of Circleburg has a large circular street with <b>N</b> consulates along it. The consulates are numbered 1, 2, ..., <b>N</b> in clockwise order.</p>\n<p>Today <b>G</b> guests, numbered 1, 2, ..., <b>G</b> will drive along the circular street for <b>M</b> minutes. Each guest is either a <i>clockwise</i> guest (denoted by the character <code>C</code>) or an <i>anti-clockwise</i> guest (denoted by the character <code>A</code>).</p>\n<p>The i-th guest starts at the consulate numbered <b>H<sub>i</sub></b> and at the end of each minute will drive to an adjacent consulate. The i-th guest starts at the j-th consulate. If that guest is:</p>\n<ul>\n<li>a clockwise guest, they will drive to the (j+1)-th consulate (unless they are at the <b>N</b>-th consulate, then they will drive to the 1st consulate).</li>\n<li>an anti-clockwise guest, they will drive to the (j-1)-th consulate (unless they are at the 1st consulate, then they will drive to the <b>N</b>-th consulate).</li>\n</ul>\n<p>Each consulate will only remember the guest that visited them last. If there are multiple guests who visited last, then the consulate will remember all of those guests.</p>\n<p>For each guest, determine how many consulates will remember them.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each testcase begins with a line containing the three integers <b>N</b>, <b>G</b> and <b>M</b>, which are the number of consulates, the number of guests and the number of minutes respectively. Then, <b>G</b> lines follow. The i-th line contains the integer <b>H<sub>i</sub></b> followed by a single character; <code>C</code> if the i-th guest is a clockwise guest or <code>A</code> if the i-th guest is an anti-clockwise guest.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y<sub>1</sub> y<sub>2</sub> ... y<sub>G</sub></code>, where <code>x</code> is the test case number (starting from 1) and <code>y<sub>i</sub></code> is the number of consulates that remember the i-th guest.</p>",
+  "samples": [
+    {
+      "input": "4\n5 3 2\n5 C\n2 A\n1 A\n2 4 0\n1 A\n1 C\n1 A\n1 C\n3 2 10\n3 C\n2 A\n6 1 6\n4 A\n",
+      "output": "Case #1: 2 2 1\nCase #2: 1 1 1 1\nCase #3: 2 2\nCase #4: 6\n"
+    }
+  ],
+  "hint": "<p>In the first sample case, there are <b>N</b> = 5 consulates, <b>G</b> = 3 guests, who will drive for <b>M</b> = 2 minutes.</p>\n<ul>\n<li>For the 1st consulate, it is last visited by guests 1 and 2 (at the end of the 1st minute).</li>\n<li>For the 2nd consulate, it is last visited by guest 1 (at the end of the 2nd minute).</li>\n<li>The 3rd consulate, is never visited.</li>\n<li>For the 4th consulate, it is last visited by guest 3 (at the end of the 2nd minute).</li>\n<li>For the 5th consulate, it is last visited by guest 2 (at the end of the 2nd minute).</li>\n</ul>\n<p>Thus the answer should be 2, 2, 1 for the 1st, 2nd and 3rd guests respectively.</p>\n<p>In the second sample case, there are <b>N</b> = 2 consulates, <b>G</b> = 4 guests, who will drive for <b>M</b> = 0 minutes.</p>\n<ul>\n<li>For the 1st consulate, it is last visited by guests 1, 2, 3 and 4 (all the guests start at this consulate).</li>\n<li>The 2nd consulate, is never visited.</li>\n</ul>\n<p>Thus the answer should be 1, 1, 1, 1 for the 1st, 2nd, 3rd and 4th guests respectively.</p>\n<p>In the third sample case, there are <b>N</b> = 3 consulates, <b>G</b> = 2 guests, who will drive for <b>M</b> = 10 minutes.</p>\n<ul>\n<li>For the 1st consulate, it is last visited by guests 1, and 2 (at the end of the 10th minute).</li>\n<li>For the 2nd consulate, it is last visited by guest 2 (at the end of the 9th minute).</li>\n<li>For the 3rd consulate, it is last visited by guest 1 (at the end of the 9th minute).</li>\n</ul>\n<p>Thus the answer should be 2, 2 for the 1st and 2nd guests respectively.</p>\n<p>In the fourth sample case, there is only one guest. This guest visits all the consulates eventually, so is remembered by all of them. Thus the answer is 6.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2019, Round D",
+  "level": 15,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.5
+}

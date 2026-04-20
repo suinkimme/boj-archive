@@ -1,0 +1,27 @@
+{
+  "id": 4654,
+  "title": "Index Generation",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Most nonfiction and reference books have an index to help readers find references to specific terms or concepts in the text. Here is a sample index.</p>\n<p style=\"margin-left:40px\">larch, 4, 237, 238, 414<br/>\n+ Monty Python and, 64, 65, 66<br/>\n+ planting of, 17<br/>\nLenny Kravitz, 50<br/>\n+ going his way, 53<br/>\nlumbago, 107<br/>\nmango<br/>\n+ Chris Kattan, 380<br/>\n+ storage of, 87, 90<br/>\n+ use in Nethack, 500, 501<br/>\n+ Vitamin C content, 192</p>\n<p>Each index entry contains a primary entry followed by zero or more secondary entries, which begin with a '+'. Entries will normally be followed by a list of page references, but a primary entry might not be if at least one secondary entry is present (as is the case with mango, above). Primary entries are sorted, and secondary entries following a primary entry are also sorted. Sorting is case-insensitive. Page references for an entry are in ascending order and do not include duplicates. (A duplicate could occur if there are two or more identical entries on the same page.)</p>\n<p>Your task is to read a document that has index information embedded within it and produce the index. Documents consist of one or more lines of ASCII text. The page number starts at 1, and the character '&amp;' indicates the start of a new page (which adds 1 to the current page number). Index entries are indicated by a marker, which in its most elaborate form has the following syntax:</p>\n<p style=\"margin-left:40px\">{text%primary\\$secondary}</p>\n<p>Here text is the text to be indexed, primary is an alternative primary entry, and secondary is a secondary entry. Both '%primary' and '\\$secondary' are optional, but if both are present they must appear in the order given. If primary is present then it is used as the primary entry, and if not then text is used as the primary entry. If secondary is present then the marker adds a page reference for that secondary entry; otherwise it adds a page reference for the primary entry. A single marker cannot add a page reference for both a primary and secondary entry. Here are examples of each of the four possible types of marker, which correspond to four of the entries in the sample index above.</p>\n<p style=\"margin-left:40px\">... his {lumbago} was acting up, so ...<br/>\n... {Lenny%Lenny Kravitz} lit up the crowd with his version of ...<br/>\n... Monty Python often used the {larch\\$Monty Python and} in ...<br/>\n... when storing {mangos%mango\\$storage of}, be sure to ...</p>",
+  "input": "<p>The input consists of one or more documents, followed by a line containing only '**' that signals the end of the input. Documents are implictly numbered starting with 1. Each document consists of one or more lines of text followed by a line containing only '*'. Each line of text will be at most 79 characters long, not counting end-of-line characters.</p>",
+  "output": "<p>For document i, output the line 'DOCUMENT i' followed by the sorted index using the exact output format shown in the examples.</p>",
+  "samples": [
+    {
+      "input": "Call me Ishmael.\n*\nOne {fish $unary}, two {fish$ binary},&red {fish $ scarlet}, blue {fish$\nazure}. & By { Dr. Seuss }.\n*\nThis is a {simple } & & { document} that &{\nsimply %simple\n$adverb\n} & {illustrates %vision} &&&&& one {simple-minded% simple} {Judge}'s {vision} \nfor what a {document } might { look % vision} like.\n*\n**\n",
+      "output": "DOCUMENT 1\nDOCUMENT 2\nDr. Seuss, 3\nfish\n+ azure, 2\n+ binary, 1\n+ scarlet, 2\n+ unary, 1\nDOCUMENT 3\ndocument, 3, 10\nJudge, 10\nsimple, 1, 10\n+ adverb, 4\nvision, 5, 10\n"
+    }
+  ],
+  "hint": "<p>Be sure to read Notes to Teams, which has general formatting guidelines that pertain to all problem input files, including this one. Also note:</p>\n<ul>\n<li>A document will contain at most 100 markers, with at most 20 primary entries.</li>\n<li>A primary entry will have at most 5 secondary entries.</li>\n<li>An entry will have at most 10 unique page references (not including duplicates).</li>\n<li>The character '&amp;' will not appear anywhere within a marker, and will appear at most 500 times within a document.</li>\n<li>The character '*' is used only to signal the end of a document or the end of the input.</li>\n<li>The characters '{', '}', '%', and '\\$' will only be used to define markers, and will not appear in any text or entries.</li>\n<li>A marker may span one or more lines. Every end-of-line within a marker must be converted to a single space.</li>\n<li>A space within a marker (including a converted end-of-line) is normally included in the text/entry, just like any other character. However, any space that immediately follows '{', immediately precedes '}', or is immediately adjacent to '%' or '\\$' must be ignored.</li>\n<li>The total length of a marker, measured from the opening '{' to the closing '}', and in which all embedded end-of-lines are converted to spaces, will be at most 79 characters.</li>\n</ul>",
+  "source": "ICPC, Regionals, North America, Mid-Central Regional, 2001 Mid-Central Regional Programming Contest",
+  "level": 16,
+  "tags": [
+    "implementation",
+    "string",
+    "sorting",
+    "parsing"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.125
+}

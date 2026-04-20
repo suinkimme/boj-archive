@@ -1,0 +1,22 @@
+{
+  "id": 7020,
+  "title": "Generic Poker",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You have a deck of N × M cards. Each card in the deck has a rank. The range of ranks is 1 through M, and the deck includes N cards of each rank.</p>\n<p>We denote a card with rank m by m here.</p>\n<p>You can draw a hand of L cards at random from the deck. If the hand matches the given pattern, some bonus will be rewarded. A pattern is described as follows.</p>\n<pre>\nhand_pattern = card_pattern1 ' ' card_pattern2 ' ' ... ' ' card_patternL\ncard_pattern = '*' | var_plus\nvar_plus = variable | var_plus '+'\nvariable = 'a' | 'b' | 'c'</pre>\n<ul>\n<li>hand_pattern\n\t<ul>\n<li>A hand matches the hand_pattern if each card_pattern in the hand_pattern matches with a distinct card in the hand.</li>\n</ul>\n</li>\n<li>card_pattern\n\t<ul>\n<li>If the card_pattern is an asterisk ('*'), it matches any card. Characters 'a', 'b', and 'c' denote variables and all the occurrences of the same variable match cards of the same rank. A card_pattern with a variable followed by plus ('+') characters matches a card whose rank is the sum of the rank corresponding to the variable and the number of plus characters. You can assume that, when a hand_pattern includes a card_pattern with a variable followed by some number of plus characters, it also includes card_patterns with that variable and all smaller numbers (including zero) of plus characters. For example, if 'a+++' appears in a hand_pattern, card_patterns 'a', 'a+', and 'a++' also appear in the hand_pattern.</li>\n</ul>\n</li>\n</ul>\n<p>There is no restriction on which ranks different variables mean. For example, 'a' and 'b' may or may not match cards of the same rank.</p>\n<p>We show some example hand_patterns. The pattern</p>\n<pre>a * b a b </pre>\n<p>matches the hand:</p>\n<pre>3 3 10 10 9</pre>\n<p>with 'a's and 'b's meaning 3 and 10 (or 10 and 3), respectively. This pattern also matches the following hand.</p>\n<pre>3 3 3 3 9</pre>\n<p>In this case, both 'a's and 'b's mean 3. The pattern</p>\n<pre>a a+ a++ a+++ a++++</pre>\n<p>matches the following hand.</p>\n<pre>4 5 6 7 8</pre>\n<p>In this case, 'a' should mean 4.</p>\n<p>Your mission is to write a program that computes the probability that a hand randomly drawn from the deck matches the given hand_pattern.</p>",
+  "input": "<p>The input is a sequence of datasets. Each dataset is formatted as follows.</p>\n<pre>\nN M L\ncard_pattern<sub>1</sub> card_pattern<sub>2</sub> ... card_pattern<sub>L</sub></pre>\n<p>The first line consists of three positive integers N, M, and L. N indicates the number of cards in each rank, M indicates the number of ranks, and L indicates the number of cards in a hand. N, M, and L are constrained as follows.</p>\n<ul>\n<li>1 ≤ N ≤ 7</li>\n<li>1 ≤ M ≤ 60</li>\n<li>1 ≤ L ≤ 7</li>\n<li>L ≤ N × M</li>\n</ul>\n<p>The second line describes a hand_pattern.</p>\n<p>The end of the input is indicated by a line containing three zeros separated by a single space.</p>",
+  "output": "<p>For each dataset, output a line containing a decimal fraction which means the probability of a hand matching the hand_pattern.</p>\n<p>The output should not contain an error greater than 10<sup>−8</sup>.</p>\n<p>No other characters should be contained in the output.</p>",
+  "samples": [
+    {
+      "input": "1 1 1\na\n3 3 4\na+ * a *\n2 2 3\na a b\n2 2 3\n* * *\n2 2 3\n* b b\n2 2 2\na a\n2 3 3\na a+ a++\n2 6 6\na a+ a++ b b+ b++\n4 13 5\na a * * *\n4 13 5\na a b b *\n4 13 5\na a a * *\n4 13 5\na a+ a++ a+++ a++++\n4 13 5\n* * * * *\n4 13 5\na a a b b\n4 13 5\na a a a *\n7 60 7\na b a b c c *\n7 60 7\n* * * * * * *\n7 60 7\na a+ a++ a+++ a++++ a+++++ a++++++\n1 14 4\nb a+ a a\n0 0 0\n",
+      "output": "1.0000000000\n0.8809523810\n1.0000000000\n1.0000000000\n1.0000000000\n0.3333333333\n0.4000000000\n0.1212121212\n0.4929171669\n0.0492196879\n0.0228091236\n0.0035460338\n1.0000000000\n0.0014405762\n0.0002400960\n0.0002967709\n1.0000000000\n0.0000001022\n0.0000000000\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2012 Japan Domestic Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

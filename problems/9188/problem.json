@@ -1,0 +1,25 @@
+{
+  "id": 9188,
+  "title": "String Matching",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>It's easy to tell if two words are identical - just check the letters. But how do you tell if two words are almost identical?  And how close is \"almost\"?</p>\n<p>There are lots of techniques for approximate word matching.  One is to determine the best substring match, which is the number of common letters when the words are compared letter-by-letter.  The key to this approach is that the words can overlap in any way.  For example, consider the words CAPILLARY and MARSUPIAL.  One way to compare them is to overlay them:</p>\n<pre>\nCAPILLARY\nMARSUPIAL</pre>\n<p>There is only one common letter (A).  Better is the following overlay:</p>\n<pre>\nCAPILLARY\n     MARSUPIAL</pre>\n<p>with two common letters (A and R), but the best is:</p>\n<pre>\n   CAPILLARY\nMARSUPIAL</pre>\n<p>Which has three common letters (P, I and L).</p>\n<p>The approximation measure appx(word1, word2) for two words is given by:</p>\n<pre>\n     common letters * 2\n-----------------------------\nlength(word1) + length(word2)\n</pre>\n<p>Thus, for this example, appx(CAPILLARY, MARSUPIAL) = 6 / (9 + 9) = 1/3.  Obviously, for any word W appx(W, W) = 1, which is a nice property, while words with no common letters have an appx value of 0.</p>",
+  "input": "<p>The input for your program will be a series of words, two per line, until the end-of-file flag of -1.  Using the above technique, you are to calculate appx() for the pair of words on the line and print the result. The words will all be uppercase.</p>",
+  "output": "<p>Print the value for appx() for each pair as a reduced fraction. Fractions reducing to zero or one should have no denominator.</p>",
+  "samples": [
+    {
+      "input": "CAR CART\nTURKEY CHICKEN\nMONEY POVERTY\nROUGH PESKY\nA A\n-1\n",
+      "output": "appx(CAR,CART) = 6/7\nappx(TURKEY,CHICKEN) = 4/13\nappx(MONEY,POVERTY) = 1/3\nappx(ROUGH,PESKY) = 0\nappx(A,A) = 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 1999 Pacific Northwest Region Programming Contest",
+  "level": 7,
+  "tags": [
+    "string",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 39,
+  "submission_count": null,
+  "average_tries": 1.4358999729156494
+}

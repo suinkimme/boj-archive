@@ -1,0 +1,39 @@
+{
+  "id": 16747,
+  "title": "Ranks",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A <em>finite field</em> <strong>F</strong><sub>2</sub> consists of two elements: 0 and 1. Addition and multiplication on <strong>F</strong><sub>2</sub> are those on integers modulo two, as defined below.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 207px; height: 70px;\"/></p>\n<p>A set of vectors <strong>v</strong><sub>1</sub>, . . . , <strong>v</strong><sub>k</sub> over <strong>F</strong><sub>2</sub> with the same dimension is said to be linearly independent when, for c<sub>1</sub>, . . . , c<sub>k</sub> ∈ <strong>F</strong><sub>2</sub>, c<sub>1</sub><strong>v</strong><sub>1</sub> + · · · + c<sub>k</sub><strong>v</strong><sub>k</sub> = <strong>0</strong> is equivalent to c<sub>1</sub> = · · · = c<sub>k</sub> = 0, where <strong>0</strong> is the zero vector, the vector with all its elements being zero.</p>\n<p>The <em>rank</em> of a matrix is the maximum cardinality of its linearly independent sets of column vectors. For example, the rank of the matrix \\(\\begin{bmatrix} 0 &amp; 0 &amp; 1 \\\\ 1 &amp; 0 &amp; 1 \\end{bmatrix}\\) is two; the column vectors \\(\\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix}\\) and \\(\\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}\\) (the first and the third columns) are linearly independent while the set of all three column vectors is not linearly independent. Note that the rank is zero for the zero matrix.</p>\n<p>Given the above definition of the rank of matrices, the following may be an intriguing question. <em>How does a modification of an entry in a matrix change the rank of the matrix?</em> To investigate this question, let us suppose that we are given a matrix A over <strong>F</strong><sub>2</sub>. For any indices i and j, let A<sup>(ij)</sup> be a matrix equivalent to A except that the (i, j) entry is flipped.</p>\n<p>\\[A_{kl}^{\\left(ij\\right)} = \\begin{cases} A_{kl} + 1 &amp; (k = i \\text{ and } l = j) \\\\ A_{kl} &amp; (\\text{otherwise}) \\end{cases}\\]</p>\n<p>In this problem, we are interested in the rank of the matrix A<sup>(ij)</sup>. Let us denote the rank of A by r, and that of A<sup>(ij)</sup> by r<sup>(ij)</sup>. Your task is to determine, for all (i, j) entries, the relation of ranks before and after flipping the entry out of the following possibilities: (i) r<sup>(ij)</sup> &lt; r, (ii) r<sup>(ij)</sup> = r, or (iii) r<sup>(ij)</sup> &gt; r.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\nn m\nA<sub>11</sub> . . . A<sub>1m</sub>\n.\n.\n.\nA<sub>n1</sub> . . . A<sub>nm</sub></pre>\n<p>n and m are the numbers of rows and columns in the matrix A, respectively (1 ≤ n ≤ 1000, 1 ≤ m ≤ 1000). In the next n lines, the entries of A are listed without spaces in between. A<sub>ij</sub> is the entry in the i-th row and j-th column, which is either 0 or 1.</p>",
+  "output": "<p>Output n lines, each consisting of m characters. The character in the i-th line at the j-th position must be either - (minus), 0 (zero), or + (plus). They correspond to the possibilities (i), (ii), and (iii) in the problem statement respectively.</p>",
+  "samples": [
+    {
+      "input": "2 3\n001\n101\n",
+      "output": "-0-\n-00\n"
+    },
+    {
+      "input": "5 4\n1111\n1000\n1000\n1000\n1000\n",
+      "output": "0000\n0+++\n0+++\n0+++\n0+++\n"
+    },
+    {
+      "input": "10 10\n1000001001\n0000010100\n0000100010\n0001000001\n0010000010\n0100000100\n1000001000\n0000010000\n0000100000\n0001000001\n",
+      "output": "000-00000-\n0-00000-00\n00-00000-0\n+00000+000\n00-0000000\n0-00000000\n000-00000-\n0-000-0-00\n00-0-000-0\n+00000+000\n"
+    },
+    {
+      "input": "1 1\n0\n",
+      "output": "+\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Yokohama Regional Contest 2018, Camp, Petrozavodsk Programming Camp, Winter 2019, Day 3: Japanese Contest",
+  "level": 24,
+  "tags": [
+    "bitset",
+    "gaussian_elimination",
+    "linear_algebra",
+    "math"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.7647000551223755
+}

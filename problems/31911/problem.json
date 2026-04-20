@@ -1,0 +1,33 @@
+{
+  "id": 31911,
+  "title": "ChatGPT 만들기",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>GIST AI대학원에 재학 중인 지원이는 원칙적으로는 집에서 가정용 ChatGPT 정도는 쉽게 만들 수 있어야 한다. 하지만 지원이는 귀찮기 때문에 딥 러닝을 사용한 언어 모델 대신에 기본 NLP 기술인 n-gram 모델을 약간 수정하여 사용할 것이다.</p>\n<p>지원이의 언어 모델은 문자 하나가 주어지면 훈련 코퍼스를 참조하여 다음 문자를 예측해 낸다. 훈련 코퍼스는 문자열 여러 개로 이루어져 있다. 어떤 문자 $c$가 주어지면, 지원이의 언어 모델은 훈련 코퍼스에 있는 모든 문자 $c$를 검색한 다음, 훈련 코퍼스에서 $c$ 바로 다음 위치에 가장 많이 나오는 문자 $c'$를 찾아서 $c$ 다음 문자가 $c'$일 것이라고 예측한다. $c=c'$일 수도 있음에 주의하라. 만약 그런 문자가 여러 개 있다면, 아스키 코드가 가장 작은 것을 선택한다. 만약 훈련 코퍼스에 문자 $c$가 존재하지 않는다면, 언어 모델이 다음 문자를 예측할 수 없어 오류가 발생한다.</p>\n<p>훈련 코퍼스는 문장의 시작을 나타내는 문자 <span style=\"color:#e74c3c;\"><code>[</code></span>와 문장의 끝을 나타내는 문자 <span style=\"color:#e74c3c;\"><code>]</code></span>, 알파벳 소문자 <span style=\"color:#e74c3c;\"><code>a</code></span>-<span style=\"color:#e74c3c;\"><code>z</code></span>, 그리고 띄어쓰기를 대체하는 문자 <span style=\"color:#e74c3c;\"><code>-</code></span>로만 구성되어 있다. 훈련 코퍼스 내의 모든 문장은 <span style=\"color:#e74c3c;\"><code>[</code></span>로 시작하고 <span style=\"color:#e74c3c;\"><code>]</code></span>로 끝나며 길이가 $3$ 이상이다. 문자 <span style=\"color:#e74c3c;\"><code>[</code></span>는 반드시 문장의 시작에만 등장하고, 문자 <span style=\"color:#e74c3c;\"><code>]</code></span>는 반드시 문장의 끝에만 등장한다.</p>\n<p>언어 모델을 사용하여 문장을 생성하는 방법은 다음과 같다. 먼저 언어 모델에 문장의 시작을 나타내는 문자 <span style=\"color:#e74c3c;\"><code>[</code></span>을 입력한다. 그 다음 언어 모델이 다음 문자 $c_1$을 예측하면, 생성하고 있는 문장의 끝에 예측한 문자를 추가한다. 그 다음 문자 $c_1$을 다시 언어 모델에 입력해 다음 문자 $c_2$를 예측한다. 이를 반복한다. 만약 반복 과정에서 문장의 끝을 나타내는 문자 <span style=\"color:#e74c3c;\"><code>]</code></span>가 등장하면 반복을 끝내고 예측을 종료한다. 그렇지 않다면, 다음 문자를 예측하는 과정은 무한히 반복된다. 훈련 코퍼스가 공집합이 아닌 한, 이 과정에서 언어 모델이 다음 문자를 예측할 수 없는 오류가 발생하지 않음을 증명할 수 있다.</p>\n<p>훈련 코퍼스가 주어지면, 지원이와 함께 이 모델이 생성하는 문자열의 부분 문자열을 추측해 보자.</p>",
+  "input": "<p>첫째 줄에 세 정수 $N, K, M$이 공백으로 구분되어 주어진다. 이는 훈련 코퍼스가 총 $N$개의 문장으로 이루어져 있고, 프로그램은 이 훈련 코퍼스로 훈련한 언어 모델이 생성한 문자열의 $K$번째 문자부터 $K+M-1$번째 문자까지를 출력해야 한다는 것을 의미한다. ($1 \\leq N \\leq 100\\,000$, $1 \\leq K \\leq 10^{18}$, $1 \\leq M \\leq 1\\,000$)</p>\n<p>둘째 줄부터 $N$개의 줄에 걸쳐 훈련 코퍼스에 들어 있는 문장들이 문자열의 형태로 한 줄에 하나씩 주어진다. 각 줄은 <span style=\"color:#e74c3c;\"><code>[</code></span>로 시작하고 <span style=\"color:#e74c3c;\"><code>]</code></span>로 끝나며 길이가 $3$ 이상이다. 문자 <span style=\"color:#e74c3c;\"><code>[</code></span>는 반드시 각 줄의 시작에만 등장하고, 문자 <span style=\"color:#e74c3c;\"><code>]</code></span>는 반드시 각 줄의 끝에만 등장한다.</p>\n<p>훈련 코퍼스에 존재하는 모든 문자의 길이의 합은 $300\\,000$을 넘지 않는다.</p>",
+  "output": "<p>입력된 훈련 코퍼스로 훈련한 언어 모델이 생성한 문자열의 $K$번째 문자부터 $K+M-1$번째 문자까지를 출력한다. $i$번째 문자를 출력할 때, 만약 언어 모델이 생성한 문자열의 길이가 짧아 $i$번째 문자가 존재하지 않는다면, 문자 <span style=\"color:#e74c3c;\"><code>.</code></span>를 대신 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3 1 15\n[i-love-you]\n[my-name-is-james]\n[gist-algorithm-masters]\n",
+      "output": "[gis]..........\n"
+    },
+    {
+      "input": "4 1 15\n[i-love-you]\n[my-name-is-james]\n[gist-algorithm-masters]\n[dresscode]\n",
+      "output": "[de-ame-ame-ame\n"
+    }
+  ],
+  "hint": "<p>문자 <span style=\"color:#e74c3c;\"><code>-</code></span>의 아스키 코드는 <code>45</code>, <span style=\"color:#e74c3c;\"><code>[</code></span>의 아스키 코드는 <code>91</code>, <span style=\"color:#e74c3c;\"><code><samp>]</samp></code></span>의 아스키 코드는 <code>93</code>, <span style=\"color:#e74c3c;\"><code>a</code></span>의 아스키 코드는 <code>97</code>이다.</p>",
+  "source": "University, 광주과학기술원, 2024 GIST 알고리즘 마스터즈, invrtd_h, 99asdfg, dohoon, gs22123, leo020630, lys9546, petamingks",
+  "level": 13,
+  "tags": [
+    "implementation",
+    "graphs",
+    "data_structures",
+    "string",
+    "set",
+    "hash_set"
+  ],
+  "accepted_user_count": 106,
+  "submission_count": null,
+  "average_tries": 3.603800058364868
+}

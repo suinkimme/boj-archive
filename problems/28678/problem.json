@@ -1,0 +1,30 @@
+{
+  "id": 28678,
+  "title": "Carnival General",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Every four years, the students of Lund come together to organize the Lund Carnival. For a few days, a park fills with tents where all kinds of festive activities take place. The person in charge of making this happen is the carnival general.</p>\n<p>In total, there have been $N$ carnivals, each with a different general. The generals are numbered from $0$ to $N-1$ in chronological order. Every general $i$ has given their opinion on how good their predecessors were, by publishing a ranking of the generals $0, 1, \\ldots, i-1$ in order from best to worst.</p>\n<p>The next Lund Carnival will be in 2026. In the meantime, all past carnival generals have gathered to take a group photo. However, it would be awkward if generals $i$ and $j$ (where $i &lt; j)$ end up next to each other if $i$ is <strong>strictly</strong> in the second half of $j$'s ranking.</p>\n<p>For example:</p>\n<ul>\n<li>If general $4$ has given the ranking <code>3 2 1 0</code>, then $4$ can stand next to $3$, or $2$, but not $1$ or $0$.</li>\n<li>If general $5$ has given the ranking <code>4 3 2 1 0</code>, then $5$ can stand next to $4, 3$ or $2$, but not $1$ or $0$.</li>\n</ul>\n<p>Note that it is fine if one general is exactly in the middle of another's ranking.</p>\n<p>The following figure illustrates sample 1. Here, general $5$ stands next to generals $2$ and $3$, and general $4$ stands next to general $2$ only.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 416px; height: 200px;\"/></p>\n<p>You are given the rankings that the generals published. Your task is to arrange the generals $0,1,\\ldots, N-1$ in a row, so that if $i$ and $j$ are adjacent (where $i &lt; j$) then $i$ is <strong>not</strong> strictly in the second half of $j$'s ranking.</p>",
+  "input": "<p>The first line contains the positive integer $N$, the number of generals.</p>\n<p>The following $N-1$ lines contain the rankings. The first of these lines contains general $1$'s ranking, the second line contains general $2$'s ranking, and so on until general $N-1$. General $0$ is absent since general $0$ didn't have any predecessors to rank.</p>\n<p>The ranking of general $i$ is a list with $i$ integers $p_{i,0}, p_{i,1}, \\ldots, p_{i,i-1}$ in which every integer from $0$ to $i-1$ occurs exactly once. Specifically, $p_{i,0}$ is the best and $p_{i,i-1}$ is the worst general according to general $i$.</p>",
+  "output": "<p>Print a list of integers, an ordering of the numbers $0, 1, \\ldots, N-1$, such that for each pair of adjacent numbers, neither is strictly in the second half of the other's ranking.</p>\n<p>It can be proven that a solution always exists. If there are multiple solutions, you may print any of them.</p>",
+  "samples": [
+    {
+      "input": "6\n0\n1 0\n2 1 0\n3 2 1 0\n4 3 2 1 0\n",
+      "output": "4 2 5 3 1 0\n"
+    },
+    {
+      "input": "5\n0\n0 1\n0 1 2\n0 1 2 3\n",
+      "output": "2 0 4 1 3\n"
+    },
+    {
+      "input": "4\n0\n1 0\n0 2 1\n",
+      "output": "3 0 1 2\n"
+    }
+  ],
+  "hint": "<p>The first sample matches the condition of test group $1$. In this sample, neither general $2$ nor $3$ can stand next to general $0$, and neither general $4$ nor $5$ can stand next to generals $0$ and $1$. The sample output was illustrated in the figure above.</p>\n<p>The second sample matches the condition of test group $2$. In this sample, general $2$ can't stand next to general $1$, general $3$ can't stand next to general $2$, and general $4$ can't stand next to generals $3$ and $2$.</p>\n<p>The third sample matches the condition of test group $3$. In this sample, the only pairs of generals that can't stand next to each other are $(1, 3)$ and $(0, 2)$. Hence, there are no conflicts if they are arranged <code>3 0 1 2</code>. Another possible answer is <code>0 1 2 3</code>.</p>",
+  "source": ", Olympiad, European Girls' Olympiad in Informatics, EGOI 2023, Day 2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

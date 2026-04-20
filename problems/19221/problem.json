@@ -1,0 +1,31 @@
+{
+  "id": 19221,
+  "title": "DevOps Best Practices",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Daisy is a senior software engineer at RainyDay, LLC. She has just implemented three new features in their product: the first feature makes their product work, the second one makes their product fast, and the third one makes their product correct.<br/>\nThe company encourages at least some testing of new features, so Daisy appointed her intern Demid to write some tests for the new features.</p>\n<p>Interestingly enough, these three features pass all the tests on Demid's development server, which has index 1, but might fail the tests on some other servers.</p>\n<p>After Demid has completed this task, Daisy appointed you to deploy these three features to all $n$ servers of your company. For every feature $f$ and every server $s$, Daisy told you whether she wants the feature $f$ to be deployed on the server $s$. If she wants it to be deployed, it must be done even if the feature $f$ fails the tests on the server $s$. If she does not want it to be deployed, you may not deploy it there.</p>\n<p>Your company has two important instruments for the deployment of new features to servers: Continuous Deployment (CD) and Continuous Testing (CT). CD can be established between several pairs of servers, forming a directed graph. CT can be set up on some set of servers.</p>\n<p>If CD is configured from the server $s_1$ to the server $s_2$ then every time $s_1$ receives a new feature $f$ the system starts the following deployment process of $f$ to $s_2$:</p>\n<ul>\n<li>If the feature $f$ is already deployed on the server $s_2$, then nothing is done.</li>\n<li>Otherwise, if CT is not set up on the server $s_1$, then the server $s_1$ just deploys the feature $f$ to the server $s_2$ without any testing.</li>\n<li>Otherwise, the server $s_1$ runs tests for the feature $f$. If the tests fail on the server $s_1$, nothing is done. If the tests pass, then the server $s_1$ deploys the feature $f$ to the server $s_2$. </li>\n</ul>\n<p>You are to configure the CD/CT system, and after that Demid will deploy all three features on his development server. Your CD/CT system must deploy each feature exactly to the set of servers that Daisy wants.</p>\n<p>Your company does not have a lot of computing resources, so you can establish CD from one server to another at most $264$ times.</p>",
+  "input": "<p>The first line contains integer $n$ ($2 \\le n \\le 256$) --- the number of servers in your company.</p>\n<p>Next $n$ lines contain three integers each. The $j$-th integer in the $i$-th line is $1$ if Daisy wants the $j$-th feature to be deployed to the $i$-th server, or $0$ otherwise.</p>\n<p>Next $n$ lines contain three integers each. The $j$-th integer in the $i$-th line is $1$ if tests pass for the $j$-th feature on the $i$-th server, or $0$ otherwise.</p>\n<p>Demid's development server has index $1$. It is guaranteed that Daisy wants all three features to be deployed to the server number 1, and all three features pass their tests on the server number 1.</p>",
+  "output": "<p>If it is impossible to configure CD/CT system with CD being set up between at most $264$ pairs of servers, then output the single line \"<code>Impossible</code>\".</p>\n<p>Otherwise, the first line of the output must contain the line \"<code>Possible</code>\".</p>\n<p>Next line must contain $n$ space-separated integers --- the configuration of CT. The $i$-th integer should be $1$ if you set up CT on the $i$-th server, or $0$ otherwise.</p>\n<p>Next line must contain the integer $m$ ($0 \\le m \\le 264$) --- the number of CD pairs you want to set up.</p>\n<p>Each of the next $m$ lines must describe CD configuration, each line with two integers $s_i$ and $t_i$ ($1 \\le s_i, t_i \\le n$; $s_i \\ne t_i$), establishing automated deployment of new features from the server $s_i$ to the server $t_i$.</p>",
+  "samples": [
+    {
+      "input": "3\n1 1 1\n1 0 1\n1 1 1\n1 1 1\n0 0 0\n1 0 1\n",
+      "output": "Possible\n1 1 1\n2\n3 2\n1 3\n"
+    },
+    {
+      "input": "2\n1 1 1\n0 0 1\n1 1 1\n1 1 0\n",
+      "output": "Impossible\n"
+    }
+  ],
+  "hint": "<p>CD/CT system for the first sample test is shown below.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 768px; height: 645px;\"/></p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2019",
+  "level": 22,
+  "tags": [
+    "implementation",
+    "graphs",
+    "constructive",
+    "case_work"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.363600015640259
+}

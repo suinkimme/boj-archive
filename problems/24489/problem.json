@@ -1,0 +1,30 @@
+{
+  "id": 24489,
+  "title": "Farm Updates",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Farmer John operates a collection of $N$ farms ($1\\le N\\le 10^5$), conveniently numbered $1\\ldots N$. Initially, there are no roads connecting these farms to each-other, and each farm is actively producing milk.</p>\n<p>Due to the dynamic nature of the economy, Farmer John needs to make changes to his farms according to a series of $Q$ update operations ($0\\le Q\\le 2\\cdot 10^5$). Update operations come in three possible forms:</p>\n<ul>\n<li>(D x) Deactivate an active farm $x$, so it no longer produces milk.</li>\n<li>(A x y) Add a road between two active farms $x$ and $y$.</li>\n<li>(R e) Remove the $e$th road that was previously added ($e = 1$ is the first road that was added).</li>\n</ul>\n<p>A farm $x$ that is actively producing milk, or that can reach another active farm via a series of roads, is called a \"relevant\" farm. For each farm $x$, please calculate the maximum $i$ ($0\\le i\\le Q$) such that $x$ is relevant after the $i$-th update.</p>",
+  "input": "<p>The first line of input contains $N$ and $Q$. The next $Q$ lines each contain an update of one of the following forms:</p>\n<pre>\nD x\nA x y\nR e\n</pre>\n<p>It is guaranteed that for updates of type R, $e$ is at most the number of roads that have been added so far, and no two updates of type R have the same value of $e$.</p>",
+  "output": "<p>Please output $N$ lines, each containing an integer in the range $0\\ldots Q$.</p>",
+  "samples": [
+    {
+      "input": "5 9\nA 1 2\nA 2 3\nD 1\nD 3\nA 2 4\nD 2\nR 2\nR 1\nR 3\n",
+      "output": "7\n8\n6\n9\n9\n"
+    }
+  ],
+  "hint": "<p>In this example, roads are removed in the order $(2,3), (1,2), (2,4)$.</p>\n<ul>\n<li>Farm $1$ is relevant just before $(1,2)$ is removed.</li>\n<li>Farm $2$ is relevant just before $(2,4)$ is removed.</li>\n<li>Farm $3$ is relevant just before $(2,3)$ is removed.</li>\n<li>Farms $4$ and $5$ are still active after all queries. Therefore they both stay relevant, and the output for both should be $Q$.</li>\n</ul>",
+  "source": "Olympiad, USA Computing Olympiad, 2021-2022 Season, USACO 2022 January Contest, Gold",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "dfs",
+    "disjoint_set",
+    "graphs",
+    "graph_traversal",
+    "offline_queries",
+    "smaller_to_larger"
+  ],
+  "accepted_user_count": 65,
+  "submission_count": null,
+  "average_tries": 2.9537999629974365
+}

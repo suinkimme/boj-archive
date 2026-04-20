@@ -1,0 +1,34 @@
+{
+  "id": 27973,
+  "title": "지연 평가",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>지연이는 자신이 가진 배열 $S$의 상태를 평가하려고 한다. <strong>처음에 $S$에는 $1$부터 $1 \\, 234 \\, 567 \\, 890 \\, 123$까지의 모든 정수가 $1$개씩 들어 있다.</strong></p>\n<p>지연이를 도와 다음 명령을 수행하는 프로그램을 작성하시오.</p>\n<ul>\n<li><code>0 x</code>: $S$의 모든 원소에 <code>x</code>를 더한다. $(-100 \\, 000 \\leq$ <code>x</code> $\\leq 100 \\, 000)$</li>\n<li><code>1 x</code>: $S$의 모든 원소에 <code>x</code>를 곱한다. $(1 \\leq$ <code>x</code> $\\leq 100)$</li>\n<li><code>2 n</code>: $S$에서 작은 원소부터 차례대로 <code>n</code>개를 제거한다. $(1 \\leq$ <code>n</code> $\\leq 100 \\, 000 \\, 000)$</li>\n<li><code>3</code>: $S$에서 가장 작은 원소를 출력한다.</li>\n</ul>\n<p><strong>이 문제의 풀이를 작성하기 전에, <code>예제</code> 밑의 <code>힌트</code>를 참조할 수 있다.</strong></p>",
+  "input": "<p>첫 줄에 명령의 개수 $Q$가 주어진다. $(1 \\leq Q \\leq 170 \\, 000)$</p>\n<p>다음 줄부터 위에서 설명한 네 개의 명령 중 하나가 주어진다. <code>x</code>, <code>n</code>은 정수이다.</p>\n<p>하나의 테스트케이스에서 <code>2</code>번 명령으로 들어오는 모든 <code>n</code>의 합은 $1 \\, 234 \\, 567 \\, 890 \\, 120$ 이하이다.</p>\n<p>하나의 테스트케이스에서 배열 $S$에 들어 있는 어떤 수든지 그 절댓값이 언제나 $10^{18}$ 이하가 되도록 하는 명령만이 주어진다.</p>\n<p>마지막 명령은 항상 <code>3</code>이다.</p>",
+  "output": "<p>3번 명령이 들어올 때마다 그 시점에서 $S$에서 가장 작은 값을 한 줄에 하나씩 출력한다.</p>",
+  "samples": [
+    {
+      "input": "10\n3\n2 999999\n3\n1 2\n3\n0 2\n1 2\n0 2\n2 7\n3\n",
+      "output": "1\n1000000\n2000000\n4000034\n"
+    },
+    {
+      "input": "9\n3\n0 -10000\n3\n2 100000000\n3\n1 99\n3\n2 8244353\n3\n",
+      "output": "1\n-9999\n99990001\n9899010099\n10715201046\n"
+    },
+    {
+      "input": "12\n0 1\n1 2\n2 3\n3\n0 5\n1 6\n2 7\n3\n0 9\n1 10\n2 11\n3\n",
+      "output": "10\n174\n3150\n"
+    }
+  ],
+  "hint": "<p>Python 사용자라면, 간단한 테스트로 다음 두 프로그램을 로컬에서 돌려 보자.</p>\n<pre>\n<code>a = [0] * (10 ** 15) # 10**15 byte is 1 Petabyte\nprint(\"calculating done!\")</code></pre>\n<pre>\n<code>a = range(10 ** 15)\nprint(\"calculating done!\")</code></pre>\n<p>두 번째 프로그램은 바로 끝나지만, 첫 번째 프로그램은 메모리 에러가 발생하는 것을 알 수 있다. 이는 <code>range(10 ** 15)</code> 구문이 $0$부터 $10^{15} - 1$까지의 모든 수를 즉시 생성하는 구문이 아니기 때문이다! 대신, 이 객체는 일단 어딘가에 이 모든 수가 만들어져 있다고 가정하고, 필요할 때마다 수를 $0$, $1$, $2$, $3$, ... 순으로 만들어서 준다. 따라서 파이썬의 range 객체는 실제로는 start, stop, step이라는 <a href=\"https://docs.python.org/ko/3/library/stdtypes.html?highlight=range#range\">단 3개의 정수만을 내부에 저장하고</a> 있다. 이처럼 결과가 필요할 때까지 표현식의 평가를 미루어 두는 기법을 <strong>지연 평가(Lazy evaluation)</strong>라고 한다. 만약 실제로 $10^{15}$까지의 수가 모두 필요한 것이 아니라면(예를 들어, $100$번째 소수를 발견했을 때 for문을 멈추고 그 값을 리턴하고 싶다면), 지연 평가가 많은 도움이 된다. 마찬가지로 이 문제를 풀기 위해서 $1$부터 $1\\,234\\,567\\,890\\,123$까지의 모든 자연수를 하나씩 직접 생성한다면 시간과 메모리를 엄청나게 잡아먹을 것이다. 지연 평가를 사용해서 이 문제를 보다 효율적으로 풀 수 있는 방법을 찾아보자.</p>",
+  "source": "Contest, BOJ User Contest, 와쿠(AGCU)컵, 제1회 와쿠(AGCU)컵, invrtd_h, bnb2011, cgiosy, eaststar, jyheo98, lms0806, parkky, pjshwa, qawbecrdtey, tony9402, yooyou7",
+  "level": 10,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "arithmetic"
+  ],
+  "accepted_user_count": 351,
+  "submission_count": null,
+  "average_tries": 1.760699987411499
+}

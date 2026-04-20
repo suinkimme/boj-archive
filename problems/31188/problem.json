@@ -1,0 +1,29 @@
+{
+  "id": 31188,
+  "title": "Avio Algoritam",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Naše nacionalno blago, <em>Croatia Airlines</em>, ulaže milijarde eura u sofisticirani algoritam koji će dodijeliti bolja zrakoplovna sjedala onim putnicima koji su ranije kupili kartu.</p>\n<p>Sjedala se u zrakoplovu protežu kroz $r$ redova, gdje je $r$ paran broj. Također postoje tri <em>izlazna reda</em> koji služe kao pristup izlazima u slučaju nužde, te ne sadrže sjedala. Prvi izlazni red nalazi se na samom početku zrakoplova (prije prvog reda sjedala), drugi se nalazi točno u sredini zrakoplova, a treći se nalazi na kraju zrakoplova (nakon posljednjeg reda sjedala). Redovi zrakoplova numerirani su prirodnim brojevima od $1$ do $r + 3$ koji rastu od početka prema kraju zrakoplova. Odnosno, redovi numerirani brojevima $1$, $r/2 + 2$ i $r + 3$ su izlazni redovi, dok svi ostali redovi sadrže sjedala.</p>\n<p>Konfiguracija sjedala u zrakoplovu je <code>3-3-3</code>, odnosno svaki red sjedala sastoji se od tri grupe po tri sjedala između kojih se nalazi prolaz za putnike. Sjedala svakog retka označena su uzastopnim slovima prema sljedećem uzorku <code>ABC.DEF.GHI</code> slijeva nadesno.</p>\n<p>Kada putnik kupi avionsku kartu, sofisticirani mu algoritam dodijeli sjedalo prema sljedećim pravilima:</p>\n<ol>\n<li>\n<p>Ako postoji prazno sjedalo u redu koji se nalazi direktno iza nekog izlaznog reda, svi se ostali redovi (za koje ne vrijedi ovo svojstvo) ignoriraju u idućem pravilu.</p>\n</li>\n<li>\n<p>Najprije se odabire red s najvećim brojem praznih sjedala. Ako postoji više takvih redova, odabire se onaj red koji je najbliži nekom izlaznom redu (udaljenost između redova $a$ i $b$ je $|a − b|$). Ako i dalje postoji više takvih redova, odabire se onaj s najmanjim brojem.</p>\n</li>\n<li>\n<p>Potom se u obzir uzmu sva prazna sjedala u odabranom redu, te se odabire ono koje ima <em>najveći prioritet</em>. Poredak sjedala prema prioritetu (od najvećeg do najmanjeg) jest:</p>\n<ol style=\"list-style-type: lower-alpha;\">\n<li>Sjedala uz prolaz srednje grupe (<code>D</code> i <code>F</code>)</li>\n<li>Sjedala uz prolaz prve i treće grupe (<code>C</code> i <code>G</code>)</li>\n<li>Sjedala uz prozor (<code>A</code> i <code>I</code>)</li>\n<li>Srednje sjedalo srednje grupe (<code>E</code>)</li>\n<li>Preostala srednja sjedala (<code>B</code> i <code>H</code>)</li>\n</ol>\n<p>Ako postoje dva prazna sjedala s istim najvećim prioritetom, tada je potrebno uzeti u obzir balans cijelog zrakoplova. Putnici s <em>lijeve strane</em> zrakoplova sjede na sjedalima s oznakama <code>A</code>, <code>B</code>, <code>C</code> i <code>D</code>, dok putnici s desne strane zrakoplova sjede na sjedalima s oznakama <code>F</code>, <code>G</code>, <code>H</code> i <code>I</code>. Algoritam odabire sjedalo koje se nalazi na strani zrakoplova s više praznih sjedala. Ako obje strane zrakoplova sadrže jednak broj praznih sjedala, algoritam odabire sjedalo s lijeve strane zrakoplova.</p>\n</li>\n</ol>\n<p>Neka su sjedala u zrakoplovu unaprijed rezervirana (ne nužno koristeći opisani algoritam), a vaš je zadatak dodijeliti dodijeliti sjedala za sljedećih $n$ putnika prema opisanom algoritmu.</p>",
+  "input": "<p>U prvom su retku prirodni brojevi $r$ i $n$ ($2 ≤ r ≤ 50$, $1 ≤ n ≤ 26$) iz teksta zadatka.</p>\n<p>Idućih $r + 3$ redaka predstavlja trenutno stanje sjedala u zrakoplovu. Preciznije, $j$-ti se redak sastoji od točno $11$ znakova koji predstavljaju stanje $j$-tog reda u zrakoplovu. Izlazni redovi i prolazi za putnike označeni su znakovima '<code>.</code>', znak '<code>#</code>' označava rezervirano sjedalo, dok znak '<code>-</code>' označava prazno sjedalo.</p>\n<p>Možete pretpostaviti da se u zrakoplovu nalazi barem n praznih sjedala.</p>",
+  "output": "<p>Potrebno je ispisati $r + 3$ redaka koji predstavljaju stanje sjedala u zrakoplovu nakon dodjele sjedala idućih $n$ putnika. Izlazni format mora biti jednak ulaznom uz dodatno svojstvo da je sjedalo koje je dodijeljeno $j$-tom putniku označeno $j$-tim malim slovom engleske abecede.</p>",
+  "samples": [
+    {
+      "input": "2 17\n...........\n---.#--.---\n...........\n---.---.---\n...........\n",
+      "output": "...........\nhnd.#lb.fpj\n...........\nkqg.cma.eoi\n...........\n"
+    },
+    {
+      "input": "6 26\n...........\n---.---.###\n#-#.---.---\n---.###.---\n...........\n---.###.---\n#--.#-#.--#\n#--.--#.#-#\n...........\n",
+      "output": "...........\ngke.aic.###\n#-#.mzo.r-v\nx-p.###.n-t\n...........\nfjb.###.dlh\n#-s.#-#.w-#\n#-u.qy#.#-#\n...........\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2023",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1
+}

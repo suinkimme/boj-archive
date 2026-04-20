@@ -1,0 +1,27 @@
+{
+  "id": 12227,
+  "title": "Magical, Marvelous Tour (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The mysterious owner of an electronics factory has decided to do something very intriguing. She has hidden <em>golden transistors</em> inside seven electronic devices, and the people who buy those devices will be invited to a magical, marvelous tour of the factory.</p>\n<p>Arnar and Solveig have received a tip that there is a golden transistor hidden inside one device in their local electronics store. First they pooled their money together and bought all the devices, then placed them in a straight line, numbering the devices 0 to <strong>N</strong>-1. Each device has some number of transistors in it. Then they agreed on a strategy to decide who gets the golden transistor:</p>\n<p>First, Arnar will select a range [a, b] (inclusive) of the devices, where 0 ≤ a ≤ b &lt; N. Next, Solveig will choose which one set of devices she wants to take:</p>\n<ul>\n<li>If a &gt; 0, she may take all the devices in the range [0, a-1].</li>\n<li>If b &lt; <strong>N</strong>-1, she may take all the devices in the range [b+1, N-1].</li>\n<li>She may always choose to take all the devices in the range [a, b].</li>\n</ul>\n<p>Once Solveig has chosen one of the sets of devices, Arnar takes all the devices she did not take.</p>\n<p>For example, if there are 3 devices and Arnar selects the range [1, 1], Solveig may choose to take the range [0, 0], the range [1, 1] or the range [2, 2]. On the other hand, if Arnar selects the range [1, 2], then Solveig may choose to take the range [0, 0] or the range [1, 2].</p>\n<p>Given how many transistors are in each device, and that Arnar and Solveig will each try to maximize their probability of getting the golden transistor (which is maximized by taking electronics with the maximum number of transistors), what is Arnar's probability of getting the golden transistor and thus winning the magical, marvelous tour?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> lines follow. Each line contains five numbers: <strong>N</strong>, <strong>p</strong>, <strong>q</strong>, <strong>r</strong> and <strong>s</strong>. This indicates that there are <strong>N</strong> devices, and the i<sup>th</sup> device contains ((i * <strong>p</strong> + <strong>q</strong>) MOD <strong>r</strong> + <strong>s</strong>) transistors. Remember that the devices are numbered from 0 to <strong>N</strong>-1.</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>1 ≤ <strong>p</strong> ≤ 10<sup>6</sup>.</li>\n<li>1 ≤ <strong>q</strong> ≤ 10<sup>6</sup>.</li>\n<li>1 ≤ <strong>r</strong> ≤ 10<sup>6</sup>.</li>\n<li>1 ≤ <strong>s</strong> ≤ 10<sup>6</sup>.</li>\n<li>1 ≤ <strong>N</strong> ≤ 10<sup>6</sup>.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #x: y\", where x is the test case number (starting from 1) and y is Arnar's probability of winning the magical, marvelous tour.</p>\n<p>y will be considered correct if it is within an absolute or relative error of 10<sup>-9</sup> of the correct answer. </p>",
+  "samples": [
+    {
+      "input": "8\n1 1 1 1 1\n10 17 1 7 1\n2 100 100 200 1\n20 17 3 23 100\n10 999999 999999 1000000 1000000\n2 1 1 1 1\n3 1 99 100 1\n999999 1000000 999999 1000000 1000000\n",
+      "output": "Case #1: 0.0000000000\nCase #2: 0.6111111111\nCase #3: 0.0098039216\nCase #4: 0.6471920290\nCase #5: 0.6000006000\nCase #6: 0.5000000000\nCase #7: 0.0291262136\nCase #8: 0.6666666667\n"
+    }
+  ],
+  "hint": "<p>Note that the last sample case does not meet the limits for the Small dataset. You could have a correct solution for the Small dataset that returns the wrong answer, or runs for a very long time, on the last sample case.</p>\n<p>Explanation of Sample Cases</p>\n<p>In the first sample case, there is one electronic device with one transistor. Arnar must select the range [0, 0], and Solveig must choose to take all the devices in the range [0, 0]. Arnar can't possibly win the magical, marvelous tour.</p>\n<p>In the second sample case, there are ten electronic devices, with the following numbers of transistors: [2, 5, 1, 4, 7, 3, 6, 2, 5, 1]. Arnar will choose the range [4, 5], which contains the devices with 7 and 3 transistors. Solveig will choose the range [6, 9], which contains the devices with 6, 2, 5 and 1 transistors, leaving Arnar with the first six devices, and a probability of 22/36 of winning the tour.</p>\n<p>In the third sample case, the devices have 101 and 1 transistors.</p>\n<p>In the fourth sample case, the devices have the following numbers of transistors: [103, 120, 114, 108, 102, 119, 113, 107, 101, 118, 112, 106, 100, 117, 111, 105, 122, 116, 110, 104].</p>\n<p>In the fifth sample case, the devices have the following numbers of transistors: [1999999, 1999998, 1999997, 1999996, 1999995, 1999994, 1999993, 1999992, 1999991, 1999990].</p>\n<p>In the sixth sample case, the devices both have 1 transistor.</p>\n<p>In the seventh sample case, the devices have the following numbers of transistors: [100, 1, 2].</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2014, Round 3",
+  "level": 12,
+  "tags": [
+    "math",
+    "prefix_sum",
+    "probability",
+    "two_pointer"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.2999999523162842
+}

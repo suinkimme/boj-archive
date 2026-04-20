@@ -1,0 +1,35 @@
+{
+  "id": 20658,
+  "title": "파이썬은 너무 느려",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>재현이는 Python 3으로 큰 수 연산에 관한 간단한 프로그램을 구현했다.</p>\n<pre>\n<code>N = int(input())\nS = input()\nintegerAsString = \"0\"\nanswer = 0</code>\n\n<code>for i in range(0, N):\n    if S[i] != '-':\n        integerAsString += S[i]\n    else:\n        integerAsString = integerAsString[:-1]\n    \n    answer += int(integerAsString)</code>\n\n<code>print(answer)</code>\n</pre>\n<p>이 프로그램은 $N$ 이 적당히 작을 때는 빠르게 작동했으나, $N$이 50만 정도 되니까 1분 안에도 답이 안 나오기 시작했다.</p>\n<p>누가 봐도 $O(N)$ 시간 복잡도를 가지고 있는 이 프로그램이 느린 이유를 곰곰히 생각해 보다가, 재현이는 파이썬이라는 언어가 느리다는 사실을 기억해 냈다. 아마 더 빠른 언어를 쓰면 5초 안에도 답이 나올 수 있지 않을까? 같은 연산을 5초 안에 수행하는 프로그램을 작성하여 재현이의 호기심을 해결해 주자.</p>",
+  "input": "<p>첫 번째 줄에 정수 $N$ 이 주어진다. ($1 \\le N \\le 500\\,000$)</p>\n<p>두 번째 줄에 길이 $N$ 의 문자열 $S$ 가 주어진다. $S$ 의 각 문자는 \"0\", \"1\", ..., \"9\", \"-\" 중 하나이다.</p>\n<p>임의의 $i$ 에 대해서 ($1 \\le i \\le N$), $S$ 의 맨 처음 $i$ 개의 문자 중 \"-\" 라는 문자는 $\\frac{i}{2}$ 개 이하이다. 즉, <code>integerAsString </code>문자열이 빈 문자열이 되는 경우는 존재하지 않는다.</p>",
+  "output": "<p>위 알고리즘이 <code>print(answer)</code>을 실행했을 때 출력하는 문자열을 출력하라. </p>",
+  "samples": [
+    {
+      "input": "2\n0-\n",
+      "output": "0\n"
+    },
+    {
+      "input": "4\n1820\n",
+      "output": "2021\n"
+    },
+    {
+      "input": "8\n0100---5\n",
+      "output": "127\n"
+    }
+  ],
+  "hint": null,
+  "source": "koosaga",
+  "level": 22,
+  "tags": [
+    "arbitrary_precision",
+    "divide_and_conquer",
+    "fft",
+    "math"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 6.25
+}

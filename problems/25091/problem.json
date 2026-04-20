@@ -1,0 +1,27 @@
+{
+  "id": 25091,
+  "title": "Chain Reactions",
+  "time_limit": "서브태스크 참고 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Wile lives alone in the desert, so he entertains himself by building complicated machines that run on chain reactions. Each machine consists of $N$ modules indexed $1,2,\\dots,N$. Each module may point at one other module with a lower index. If not, it points at the abyss.</p>\n<p>Modules that are not pointed at by any others are called <i>initiators</i>. Wile can manually trigger initiators. When a module is triggered, it triggers the module it is pointing at (if any) which in turn may trigger a third module (if it points at one), and so on, until the chain would hit the abyss or an already triggered module. This is called a <i>chain reaction</i>.</p>\n<p>Each of the $N$ modules has a fun factor $F_i$. The fun Wile gets from a chain reaction is the largest fun factor of all modules that triggered in that chain reaction. Wile is going to trigger each initiator module once, in some order. The overall fun Wile gets from the session is the sum of the fun he gets from each chain reaction.</p>\n<p>For example, suppose Wile has $4$ modules with fun factors $F_1=60$, $F_2=20$, $F_3=40$, and $F_4=50$ and module $1$ points at the abyss, modules $2$ and $3$ at module $1$, and module $4$ at module $2$. There are two initiators ($3$ and $4$) that Wile must trigger, in some order.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.gif\" style=\"width: 462px; height: 195px;\"/></p>\n<p>As seen above, if Wile manually triggers module $4$ first, modules $4$, $2$, and $1$ will get triggered in the same chain reaction, for a fun of $\\max{(50,20,60)}=60$. Then, when Wile triggers module $3$, module $3$ will get triggered alone (module $1$ cannot get triggered again), for a fun of $40$, and an overall fun for the session of $60+40=100$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.gif\" style=\"width: 462px; height: 195px;\"/></p>\n<p>However, if Wile manually triggers module $3$ first, modules $3$ and $1$ will get triggered in the same chain reaction, for a fun of $\\max{(40,60)}=60$. Then, when Wile triggers module $4$, modules $4$ and $2$ will get triggered in the same chain reaction, for a fun of $\\max{(50,20)}=50$, and an overall fun for the session of $60+50=110$.</p>\n<p>Given the fun factors and the setup of the modules, compute the maximum fun Wile can get if he triggers the initiators in the best possible order.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $T$. $T$ test cases follow, each described using 3 lines. Each test case starts with a line with a single integer $N$, the number of modules Wile has. The second line contains $N$ integers $F_1,F_2,\\dots,F_N$ where $F_i$ is the fun factor of the $i$-th module. The third line contains $N$ integers $P_1,P_2,\\dots,P_N$. If $P_i=0$, that means module $i$ points at the abyss. Otherwise, module $i$ points at module $P_i$.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is the maximum fun Wile can have by manually triggering the initiators in the best possible order.</p>",
+  "samples": [
+    {
+      "input": "3\n4\n60 20 40 50\n0 1 1 2\n5\n3 2 1 4 5\n0 1 1 1 0\n8\n100 100 100 90 80 100 90 100\n0 1 2 1 2 3 1 3\n",
+      "output": "Case #1: 110\nCase #2: 14\nCase #3: 490\n"
+    }
+  ],
+  "hint": "<p>Sample Case #1 is the one explained in the problem statement.</p>\n<p>In Sample Case #2, there are $4$ initiators (modules $2$ through $5$), so there are $4$ chain reactions. Activating them in order $3$, $5$, $4$, $2$ yields chains of fun $3$, $5$, $4$, $2$ for an overall fun of $14$. Notice that we are summing the four highest fun numbers in the input, so there is no way to get more than that.</p>\n<p>In Sample Case #3, an optimal activation order of the $5$ initiators is $4$, $5$, $7$, $6$, $8$.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2022, Qualification Round",
+  "level": 16,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "greedy",
+    "trees"
+  ],
+  "accepted_user_count": 86,
+  "submission_count": null,
+  "average_tries": 1.476699948310852
+}

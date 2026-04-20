@@ -1,0 +1,22 @@
+{
+  "id": 6402,
+  "title": "Strategy",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A well known psychology experiment involves people playing a game in which they can either trade with each other or attempt to cheat the other player. If both players TRADE then each gains one point. If one TRADEs and the other CHEATs then the TRADEr loses 2 points and the CHEATer wins 2. If both CHEAT then each loses 1 point.</p>\n<p>There are a variety of different strategies for playing this game, although most people are either unable to find a winning strategy, or, having decided on a strategy, do not stick to it. Thus it is fairer to attempt to evaluate these strategies by simulation on a computer. Each strategy is simulated by an automaton. An automaton is characterised by a program incorporating the strategy, a memory for previous encounters and a count reflecting the score of that automaton. The count starts at zero and is altered according to the above rules after each encounter. The memory is able to determine what happened on up to the last two encounters with each other contender.</p>\n<p>Write a program that will read in details of up to 10 different strategies, play each strategy against each other strategy 10 times and then print out the final scores. Strategies will be in the form of simple programs obeying the following grammar:</p>\n<pre>\n&lt;program&gt; ::= &lt;statement&gt;.\n&lt;statement&gt; ::= &lt;command&gt; | &lt;ifstat&gt;\n&lt;ifstat&gt; ::= IF &lt;condition&gt; THEN &lt;statement&gt; ELSE &lt;statement&gt;\n&lt;condition&gt; ::= &lt;cond&gt; | &lt;cond&gt; &lt;op&gt; &lt;condition&gt;\n&lt;op&gt; ::= AND | OR\n&lt;cond&gt; ::= &lt;memory&gt; {= | #} {&lt;command&gt; | NULL}\n&lt;memory&gt; ::= {MY | YOUR} LAST {1 | 2}\n&lt;command&gt; ::= TRADE | CHEAT</pre>\n<p>Note that LAST1 refers to the previous encounter between these two automata, LAST2 to the encounter before that and that 'MY' and 'YOUR' have the obvious meanings. Spaces and line breaks may appear anywhere in the program and are for legibility only. The symbol '#' means 'is not equal to'. NULL indicates that an encounter has not ocurred.  The following are valid programs:</p>\n<pre>\nCHEAT.\nIF MY LAST1 = CHEAT THEN TRADE ELSE CHEAT.\nIFYOURLAST2=NULLTHENTRADEELSEIFYOURLAST1=TRADETHENTRADE\nELSECHEAT.\n</pre>",
+  "input": "<p>Input will consist of a series of programs. Each program will be no longer than 255 characters and may be split over several lines for convenience. There will be no more than 10 programs. The file will be terminated by a line containing only a single '#'.</p>",
+  "output": "<p>Output will consist of one line for each line of input. Each line will consist of the final score of the relevant program right justified in a field of width 3.</p>",
+  "samples": [
+    {
+      "input": "CHEAT.\nIF MY LAST1 = CHEAT THEN TRADE ELSE CHEAT.\nIFYOURLAST2=NULLTHENTRADEELSEIFYOURLAST1=TRADETHENTRADE\nELSECHEAT.\n#\n",
+      "output": "  1\n-12\n-13\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, 1992 ACM South Pacific Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

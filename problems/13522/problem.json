@@ -1,0 +1,32 @@
+{
+  "id": 13522,
+  "title": "Compiler",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>One thing almost all computers have in common, whether it is a simple stack-based calculator, a 6502 powered BBC Micro, or a brand new Android phone, every modern computer requires programs that turn either high-level languages or assembly language into machine code.</p>\n<p>UKIEPC recently designed their own processor. While very easy to load programs onto, it is not as complex as some, since it has only one aim: show a number on an innovative laser display board!</p>\n<p>The available memory consists of three 8-bit registers: A, X, and Y, plus an infinite stack. At program start these registers are initialised to unknown values, and the stack is empty.</p>\n<p>The processor supports six unique instructions:</p>\n<ul>\n<li>PH &lt;reg&gt;: push the contents of the register (i.e. A, X, or Y) onto the stack.</li>\n<li>PL &lt;reg&gt;: pop a value off the stack into the register. The program will terminate if this instruction is called when the stack is empty.</li>\n<li>AD: pop two values off the stack, and push the lowest 8 bits of their sum onto the stack.</li>\n<li>ZE &lt;reg&gt;: set the register equal to zero.</li>\n<li>ST &lt;reg&gt;: set the register equal to one.</li>\n<li>DI &lt;reg&gt;: send the value of the register to the laser display board and exit.</li>\n</ul>\n<p>Due to memory constraints, the maximum number of instructions that can be written to disk is 40. Further instructions will not be executed.</p>\n<p>Given a number, write a program to output the number on the laser display board.</p>",
+  "input": "<ul>\n<li>One line containing an integer N (0 ≤ N ≤ 255), the number to output.</li>\n</ul>",
+  "output": "<ul>\n<li>At most 40 lines, each containing one valid instruction.</li>\n</ul>\n<p>When run in sequence the lines should output the number N. The last instruction should be a DI.</p>",
+  "samples": [
+    {
+      "input": "2\n",
+      "output": "ST A\nST X\nPH A\nPH X\nAD\nPL Y\nDI Y\n"
+    },
+    {
+      "input": "5\n",
+      "output": "ST X\nPH X\nPH X\nPH X\nAD\nPL Y\nPH Y\nPH Y\nAD\nAD\nPL A\nDI A\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, The UK & Ireland Programming Contest, UKIEPC 2016",
+  "level": 14,
+  "tags": [
+    "ad_hoc",
+    "backtracking",
+    "bruteforcing",
+    "dp",
+    "graphs"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 2.894700050354004
+}

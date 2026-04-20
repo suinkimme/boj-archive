@@ -1,0 +1,31 @@
+{
+  "id": 34095,
+  "title": "격자 조각 자르기",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>격자 아티스트 브루는 $N\\times M$ 크기의 격자를 가지고 있다. 격자의 위에서부터 $r$번째 행, 왼쪽에서부터 $c$번째 열의 칸을 $(r,c)$와 같이 표기한다. 브루는 격자를 여러 조각으로 자르려고 한다.</p>\r\n\r\n<p>격자를 자를 때는 $NM$개의 모든 격자칸에 대해 각각 자를 방향을 정해야 한다. 각 칸을 자르는 방향은 두 대각선 방향 중 하나여야 한다.</p>\r\n\r\n<p>아래 그림은 $4\\times 4$ 크기의 격자판을 자르는 한 가지 예시를 나타낸다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 300px; width: 300px;\" /></p>\r\n\r\n<p>위의 그림과 같이 자를 경우, 이 격자판은 총 $9$개의 조각으로 나뉘어진다.</p>\r\n\r\n<p>다음 조건을 만족하는 조각을 <strong>아름다운 조각</strong>이라고 하자.</p>\r\n\r\n<ul>\r\n\t<li>조각을 적당히 회전해, 해당 조각의 경계를 구성하는 모든 선분이 $x$축 또는 $y$축과 평행하도록 할 수 있어야 한다.\r\n\t<ul>\r\n\t\t<li>조각을 자르는 방법에 따라, 조각의 내부에 구멍이나 잘린 흔적이 있을 수 있다. 이러한 경우, 해당 부분을 이루는 선분들 역시 모두 $x$축 또는 $y$축과 평행하도록 조각을 회전할 수 있어야 한다. 아래 그림에서 왼쪽은 내부에 구멍을, 오른쪽은 내부에 잘린 흔적을 포함하는 아름다운 조각의 예시이다. (해당 조각은 초록색으로 표시되어 있다.)</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 671px; height: 300px;\" /></p>\r\n\r\n<p>브루는 격자를 더 아름답게 자르는 방법에 대해 연구하던 중, 격자에 있는 <strong>변</strong>에 관심을 가지기 시작했다. 변의 정의는 아래와 같다.</p>\r\n\r\n<ul>\r\n\t<li>위아래로 인접한 두 격자칸 사이에 존재하는 길이 $1$의 선분을 <strong>가로변</strong>이라고 한다.</li>\r\n\t<li>좌우로 인접한 두 격자칸 사이에 존재하는 길이 $1$의 선분을 <strong>세로변</strong>이라고 한다.</li>\r\n\t<li>가로변과 세로변을 통틀어 <strong>변</strong>이라고 한다.</li>\r\n</ul>\r\n\r\n<p>정의에 따라, $N\\times M$ 크기의 격자에는 총 $(N-1) M$개의 가로변과 $N(M-1)$개의 세로변이 존재함을 알 수 있다.</p>\r\n\r\n<p>브루는 $NM$개의 칸 중 일부 칸은 자를 방향을 이미 정했지만, 나머지 칸들은 아직 자를 방향을 정하지 않았다. 또한, 브루는 특정한 $K$개의 변이 아름다운 조각에 속하기를 원한다. (해당 변들이 같은 조각에 속할 필요는 없다.)</p>\r\n\r\n<p>위의 조건을 만족하도록 격자를 자르는 방법이 존재하는지 알아내고, 만약 존재한다면 그러한 방법을 하나 찾아보자.</p>\r\n",
+  "input": "<p>첫 줄에는 세 정수 $N$, $M$, $K$가 공백으로 구분되어 주어진다. ($2\\le N\\le 50$; $2\\le M\\le 50$; $0\\le K\\le(N-1) M+N(M-1)$)</p>\r\n\r\n<p>이후 $N$개의 줄에 걸쳐, 그중 $r$번째 줄에는 브루가 각 칸을 자를 방향을 나타내는 $M$개의 문자 $C_{r1}$, $C_{r2}$, $\\cdots$, $C_{rc}$가 주어진다. $C_{rc}$는 <code>&#39;<span style=\"color:#e74c3c;\">/</span>&#39;</code>, <code>&#39;<span style=\"color:#e74c3c;\">\\</span>&#39;</code>, <code>&#39;<span style=\"color:#e74c3c;\">.</span>&#39;</code> 중 하나이다.</p>\r\n\r\n<ul>\r\n\t<li>$C_{rc}$가 <code>&#39;<span style=\"color:#e74c3c;\">/</span>&#39;</code> 또는 <code>&#39;<span style=\"color:#e74c3c;\">\\</span>&#39;</code>인 경우 격자칸 $(r,c)$를 자를 방향을 나타낸다.</li>\r\n\t<li>$C_{rc}$가 <code>&#39;<span style=\"color:#e74c3c;\">.</span>&#39;</code>인 경우 격자칸 $(r,c)$를 자를 방향을 아직 정하지 않았다는 것을 의미한다.</li>\r\n</ul>\r\n\r\n<p>이후 $K$개의 줄에 걸쳐, 그중 $i$번째 줄에는 아름다운 조각에 포함되어야 하는 $i$번째 변을 나타내는 세 정수 $d_i$, $a_i$, $b_i$가 주어진다. $K$개의 변은 서로 다르다. ($0\\le d_i\\le 1$; $1\\le a_i\\le N-(1-d_i)$; $1\\le b_i\\le M-d_i$)</p>\r\n\r\n<ul>\r\n\t<li>만약 $i$번째 변이 가로변일 경우, $d_i=0$이고, 해당 가로변의 위쪽에 존재하는 격자칸이 $(a_i,b_i)$이다.</li>\r\n\t<li>만약 $i$번째 변이 세로변일 경우, $d_i=1$이고, 해당 세로변의 왼쪽에 존재하는 격자칸이 $(a_i,b_i)$이다.</li>\r\n</ul>\r\n",
+  "output": "<p>입력으로 주어진 $K$개의 변이 모두 아름다운 조각에 속하도록 격자를 자르는 방법이 존재한다면, 첫 줄에 <code>&quot;<span style=\"color:#e74c3c;\">YES</span>&quot;</code>를 출력한다.</p>\r\n\r\n<p>다음 $N$개의 줄에는 격자를 자르는 방법을 출력한다. 각 줄에는 $M$개의 문자를 출력하며, 각 문자는 <code>&#39;<span style=\"color:#e74c3c;\">/</span>&#39;</code> 또는 <code>&#39;<span style=\"color:#e74c3c;\">\\</span>&#39;</code> 중 하나여야 한다.</p>\r\n\r\n<p>만약 그러한 방법이 존재하지 않는다면 첫 줄에 <code>&quot;<span style=\"color:#e74c3c;\">NO</span>&quot;</code>를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "4 4 2\n..//\n.\\./\n.\\..\n\\./\\\n0 3 3\n1 3 1\n",
+      "output": "YES\n\\\\//\n/\\\\/\n\\\\\\/\n\\\\/\\\n"
+    },
+    {
+      "input": "2 3 2\n.\\.\n...\n1 2 1\n1 2 2\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2025, 79brue, functionx, kipa00, leo020630, queued_q, seonah",
+  "level": 22,
+  "tags": [
+    "graphs",
+    "flow",
+    "scc",
+    "2_sat"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.833299994468689
+}

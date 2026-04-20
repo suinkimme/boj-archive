@@ -1,0 +1,48 @@
+{
+  "id": 27540,
+  "title": "Modern Machine",
+  "time_limit": "2.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Bitaro is given JOI machine as a birthday present. JOI machine consists of one <strong>ball</strong>, $N$ <strong>light tiles</strong>, and $M$ <strong>buttons</strong>. The light tiles are numbered from $1$ to $N$. When Bitaro turns the power on, Light tile $i$ ($1 ≤ i ≤ N$) emit light of color $C_i$ (blue (<code>B</code>) or red (<code>R</code>)). The buttons are numbered from $1$ to $M$. If Bitaro pushes Button $j$ ($1 ≤ j ≤ M$), the following happen.</p>\n<ol>\n<li>The ball is placed on Light tile $A_j$.</li>\n<li>Light tile $A_j$ becomes red (regardless of its original color).</li>\n<li>The following operations are performed until the ball is removed.\n\t<ul>\n<li>Let $p$ be the index of the light tile where the ball is currently placed.</li>\n<li>If Light tile $p$ is blue,\n\t\t<ul>\n<li>Light tile $p$ becomes red. After that, if $p = 1$, the ball is removed. Otherwise, the ball moves to Light tile $p - 1$.</li>\n</ul>\n</li>\n<li>If Light tile $p$ is red,\n\t\t<ul>\n<li>Light tile $p$ becomes blue. After that, if $p = N$, the ball is removed. Otherwise, the ball moves to Light tile $p + 1$.</li>\n</ul>\n</li>\n</ul>\n</li>\n</ol>\n<p>Bitaro is interested in JOI machine. He plans to perform $Q$ experiments. In the $k$-th experiment ($1 ≤ k ≤ Q$), after Bitaro turns the power on, Bitaro pushes Buttons $L_k, L_{k + 1}, \\dots , R_k$ in this order. After Bitaro pushes a button, he will not push the next button and wait until the ball is removed.</p>\n<p>Given information of JOI machine and the experiments, write a program which calculates, for each experiment, the number of light tiles whose colors are red when the experiment finishes.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<blockquote>\n<p>$N$ $M$</p>\n<p>$C_1C_2 \\cdots C_N$</p>\n<p>$A_1$ $A_2$ $\\cdots$ $A_M$</p>\n<p>$Q$</p>\n<p>$L_1$ $R_1$</p>\n<p>$L_2$ $R_2$</p>\n<p>$\\vdots$</p>\n<p>$L_Q$ $R_Q$</p>\n</blockquote>",
+  "output": "<p>Write $Q$ lines to the standard output. In the $k$-th line ($1 ≤ k ≤ Q$), the output should contain the number of light tiles whose colors are red when the $k$-th experiment finishes.</p>",
+  "samples": [
+    {
+      "input": "5 1\nRBRRB\n4\n1\n1 1\n",
+      "output": "1\n"
+    },
+    {
+      "input": "5 3\nRBRBR\n1 3 4\n2\n2 3\n1 3\n",
+      "output": "5\n0\n"
+    },
+    {
+      "input": "10 3\nBBRRBRBRRB\n2 10 5\n1\n1 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "10 10\nRRRRRRRRRR\n3 1 4 1 5 9 2 6 5 3\n5\n1 7\n2 8\n3 9\n4 10\n1 10\n",
+      "output": "4\n8\n10\n0\n9\n"
+    },
+    {
+      "input": "10 10\nRRRBBBBBBB\n3 1 4 1 5 9 2 6 5 3\n5\n1 10\n2 9\n3 8\n4 7\n5 6\n",
+      "output": "2\n6\n0\n10\n7\n"
+    },
+    {
+      "input": "30 10\nRRRBBRBBBRBBBRBRBRRRRRBBBBRBRR\n3 28 2 29 1 30 6 14 7 7\n10\n1 10\n2 3\n2 5\n2 8\n3 3\n3 6\n4 5\n4 7\n5 9\n10 10\n",
+      "output": "21\n15\n15\n4\n17\n16\n14\n20\n12\n23\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Japanese Olympiad in Informatics, JOI 2022/2023",
+  "level": 27,
+  "tags": [
+    "case_work",
+    "data_structures",
+    "dp",
+    "implementation",
+    "segtree"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 10.16670036315918
+}

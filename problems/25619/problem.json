@@ -1,0 +1,41 @@
+{
+  "id": 25619,
+  "title": "자취방 정하기",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>새내기 현서는 이번 학기에도 고민이 많은데, 그중 가장 큰 고민은 아침 수업이 많아서 수업 시간에 맞춰 강의실을 도착하지 못할 것 같다는 것이다! 고민 끝에 현서는 학교 주변의 자취방을 하나 구하기로 결심했다.</p>\n<p>학교 주변은 정점이 <em>N</em>개, 간선이 <em>M</em>개인 그래프로 표현된다. 학교는 1번 정점에 있으며, 그 외의 정점에는 현서가 계약할 수 있는 자취방이 하나씩 있다. 간선은 학교와 자취방, 또는 자취방과 자취방 사이의 도로를 나타낸다. 도로는 양쪽 방향으로 모두 사용할 수 있다.</p>\n<p>각 도로는 교통량이라는 값을 가지며, 교통량이 <em>x</em>인 도로를 통과하는 데에는 양쪽 방향으로 동일하게 <em>x</em>분의 시간이 걸린다. 다양한 사건에 의해서 각 도로의 교통량은 매번 일정하지는 않는데, 구체적으로 <em>i</em>번 도로의 교통량은 절반의 확률로 <em>a</em><sub><em>i</em></sub>이고, 나머지 절반의 확률로 <em>b</em><sub><em>i</em></sub>가 된다. 교통량은 각 도로마다 독립적으로 정해지며, 현서가 길을 지날 때마다 바뀔 수 있다. <em>a</em><sub><em>i</em></sub> 또는 <em>b</em><sub><em>i</em></sub>가 음수일 수도 있는데, 이 경우에는 도로를 통과할 때 시간이 역행한다고 생각하면 된다.</p>\n<p>이 상황에서 현서는, 적당한 <strong>정해진 이동</strong>을 선택했을 때 학교에 도착했을 때 걸리는 시간의 기댓값이 <em>T</em>분 이하가 되도록 할 수 있는 위치의 자취방을 고려하려고 한다. 구체적으로는 아래와 같다.</p>\n<ul>\n<li>1번 정점을 제외한 모든 정점 <em>i</em>에 대해, <em>W</em><sub><em>i</em></sub>를 <em>i</em>번 정점에서 1번 정점으로의 모든 가능한 이동의 집합이라고 정의하자.\n\n\t<ul>\n<li><em>s</em>에서 <em>e</em>로의 <strong>이동</strong>은 <em>s</em>에서 시작해서 연결된 간선들만을 따라 이동해 <em>e</em>에 도착하는 것이다.</li>\n<li>이동은 간선을 <strong>중복해서 사용하는 것도 허용</strong>하며, 도착 정점인 1번 정점에 도착했다고 해서 <strong>멈출 필요 역시 없다</strong>.</li>\n</ul>\n</li>\n<li>모든 2 ≤ <em>i</em> ≤ <em>n</em>에 대해 함수 <em>f</em><sub><em>i</em></sub> : <em>W</em><sub><em>i</em></sub> → ℝ을\n\t<div style=\"text-align:center;\"><em>f</em><sub><em>i</em></sub>(<em>w</em>) = (<em>i</em>번 정점에서 이동 <em>w</em>를 이용하여 1번 정점으로 갈 때 걸리는 분 단위 시간의 기댓값)</div>\n\t으로 정의하자. 이때 ℝ은 실수 전체의 집합이다.</li>\n<li>현서는 <em>f</em><sub><em>i</em></sub>(<em>w</em>) ≤ <em>T</em>인 <em>w</em> ∈ <em>W</em><sub><em>i</em></sub>가 존재하는 정점만을 고려하려고 한다.</li>\n</ul>\n<p>현서를 위해 위 조건을 만족하는 자취방들을 모두 구해주자.</p>",
+  "input": "<p>첫째 줄에 정점의 개수 <em>N</em>과 간선의 개수 <em>M</em>이 주어진다. (1 ≤ <em>N</em>, <em>M</em> ≤ 200 000)</p>\n<p>둘째 줄부터 <em>M</em>개의 줄에 걸쳐 각 간선이 잇는 두 정점의 번호 <em>u</em><sub><em>i</em></sub>와 <em>v</em><sub><em>i</em></sub>, 그리고 정수 <em>a</em><sub><em>i</em></sub>와 <em>b</em><sub><em>i</em></sub>가 공백으로 구분되어 주어진다. (1 ≤ <em>u</em><sub><em>i</em></sub>, <em>v</em><sub><em>i</em></sub> ≤ <em>N</em>; <em>u</em><sub><em>i</em></sub> ≠ <em>v</em><sub><em>i</em></sub>; −10<sup>9</sup> ≤ <em>a</em><sub><em>i</em></sub>, <em>b</em><sub><em>i</em></sub> ≤ 10<sup>9</sup>) 같은 정점 쌍을 두 번 잇는 입력은 주어지지 않는다. 즉, 모든 1 ≤ <em>i</em>, <em>j</em> ≤ <em>M</em>에 대해 {<em>u</em><sub><em>i</em></sub>, <em>v</em><sub><em>i</em></sub>} = {<em>u</em><sub><em>j</em></sub>, <em>v</em><sub><em>j</em></sub>}이면 <em>i</em> = <em>j</em>이다.</p>\n<p>(<em>M</em> + 2)째 줄에 정수 <em>T</em>가 주어진다. (−2 × 10<sup>15</sup> ≤ <em>T</em> ≤ 2 × 10<sup>15</sup>)</p>",
+  "output": "<p>첫째 줄에 조건을 만족하는 자취방의 개수 <em>K</em>를 출력한다. 조건을 만족하는 자취방이 없으면 0을 출력한다.</p>\n<p>첫째 줄에 0이 아닌 값을 출력했다면, 둘째 줄에 조건을 만족하는 자취방들이 위치한 정점의 번호를 공백으로 구분하여 오름차순으로 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 5\n1 2 7 5\n1 3 1 4\n2 3 1 2\n2 4 6 2\n3 4 2 3\n4\n",
+      "output": "2\n2 3\n"
+    },
+    {
+      "input": "4 4\n1 2 2 4\n2 3 3 5\n1 3 -3 1\n3 4 5 7\n-3\n",
+      "output": "3\n2 3 4\n"
+    },
+    {
+      "input": "6 5\n1 2 8 -4\n1 3 2 3\n2 3 0 4\n3 4 -1 1\n5 6 -1 -1\n2\n",
+      "output": "1\n2\n"
+    },
+    {
+      "input": "3 3\n1 2 9 10\n1 3 -3 27\n2 3 -11 11\n5\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p>첫 번째 예제에서, 2번 정점의 경우 2 → 3 → 1 순으로 이동하면 기댓값이 4분이 된다. 3번 정점의 경우 3 → 1 순으로 이동하면 기댓값이 2<em>.</em>5분이 된다.</p>\n<p>세 번째 예제에서 주어지듯이, 학교에서 도달할 수 없는 자취방이 같이 주어지는 것도 가능하다.</p>",
+  "source": "University, 서울대학교, 서울대학교 프로그래밍 경시대회, 2022 서울대학교 프로그래밍 경시대회, Division 1, University, 서울대학교, 서울대학교 프로그래밍 경시대회, 2022 서울대학교 프로그래밍 경시대회, Division 2, University, 서울대학교, 서울대학교 프로그래밍 경시대회, 2022 서울대학교 프로그래밍 경시대회, Division 1 (Open Contest), jhwest2, cdh981009, IHHI, kipa00, sait2000, sjimed",
+  "level": 14,
+  "tags": [
+    "math",
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "probability",
+    "linearity_of_expectation"
+  ],
+  "accepted_user_count": 115,
+  "submission_count": null,
+  "average_tries": 3.008699893951416
+}

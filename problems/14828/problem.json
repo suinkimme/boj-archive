@@ -1,0 +1,27 @@
+{
+  "id": 14828,
+  "title": "Mountain Tour (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are on top of Mount Everest, and you want to enjoy all the nice hiking trails that are up there. However, you know from past experience that climbing around on Mount Everest alone is bad — you might get lost in the dark! So you want to go on hikes at pre-arranged times with tour guides.</p>\n<p>There are <strong>C</strong> camps on the mountain (numbered 1 through <strong>C</strong>), and there are 2 × <strong>C</strong> one-way hiking tours (numbered 1 through 2 × <strong>C</strong>). Each hiking tour starts at one camp and finishes at a different camp, and passes through no other camps in between. Mount Everest is sparsely populated, and business is slow; there are exactly 2 hiking tours departing from each camp, and exactly 2 hiking tours arriving at each camp.</p>\n<p>Each hiking tour runs daily. Tours 1 and 2 start at camp 1, tours 3 and 4 start at camp 2, and so on: in general, tour 2 × i - 1 and tour 2 × i start at camp i. The i-th hiking tour ends at camp number <strong>E<sub>i</sub></strong>, leaves at hour <strong>L<sub>i</sub></strong>, and has a duration of exactly <strong>D<sub>i</sub></strong> hours.</p>\n<p>It is currently hour 0; the hours in a day are numbered 0 through 23. You are at camp number 1, and you want to do each of the hiking tours <em>exactly once</em> and end up back at camp number 1. You cannot travel between camps except via hiking tours. While you are in a camp, you may wait for any number of hours (including zero) before going on a hiking tour, but you can only start a hiking tour at the instant that it departs.</p>\n<p>After looking at the tour schedules, you have determined that it is definitely possible to achieve your goal, but you want to do it as fast as possible. If you plan your route optimally, how many hours will it take you to finish all of the tours?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow. Each begins with one line with an integer <strong>C</strong>: the number of camps. Then, 2 × <strong>C</strong> more lines follow. The i-th of these lines (counting starting from 1) represents one hiking tour starting at camp number floor((i + 1) / 2), and contains three integers <strong>E<sub>i</sub></strong>, <strong>L<sub>i</sub></strong>, and <strong>D<sub>i</sub></strong>, as described above. Note that this format guarantees that exactly two tours start at each camp.</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>1 ≤ <strong>E<sub>i</sub></strong> ≤ <strong>C</strong>.</li>\n<li><strong>E<sub>i</sub></strong> ≠ ceiling(i / 2), for all i. (No hiking tour starts and ends at the same camp.)</li>\n<li>size of {j : <strong>E<sub>j</sub></strong> = i} = 2, for all j. (Exactly two tours end at each camp.)</li>\n<li>0 ≤ <strong>L<sub>i</sub></strong> ≤ 23.</li>\n<li>1 ≤ <strong>D<sub>i</sub></strong> ≤ 1000.</li>\n<li>There is at least one route that starts and ends at camp 1 and includes each hiking tour exactly once.</li>\n<li>2 ≤ <strong>C</strong> ≤ 1000.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the minimum number of hours that it will take you to achieve your goal, as described above.</p>",
+  "samples": [
+    {
+      "input": "2\n2\n2 1 5\n2 0 3\n1 4 4\n1 6 3\n4\n3 0 24\n2 0 24\n4 0 24\n4 0 24\n2 0 24\n1 0 24\n3 0 24\n1 0 24\n",
+      "output": "Case #1: 32\nCase #2: 192\n"
+    }
+  ],
+  "hint": "<p>In sample case #1, the optimal plan is as follows:</p>\n<ul>\n<li>Wait at camp 1 for an hour, until it becomes hour 1.</li>\n<li>Leave camp 1 at hour 1 to take the 5 hour hiking tour; arrive at camp 2 at hour 6.</li>\n<li>Immediately leave camp 2 at hour 6 to take the 3 hour hiking tour; arrive at camp 1 at hour 9.</li>\n<li>Wait at camp 1 for 15 hours, until it becomes hour 0 of the next day.</li>\n<li>Leave camp 1 at hour 0 to take the 3 hour hiking tour; arrive at camp 2 at hour 3.</li>\n<li>Wait at camp 2 for 1 hour, until it becomes hour 4.</li>\n<li>Leave camp 2 at hour 4 to take the 4 hour hiking tour; arrive at camp 1 at hour 8.</li>\n</ul>\n<p>This achieves the goal in 1 day and 8 hours, or 32 hours. Any other plan takes longer.</p>\n<p>In sample case #2, all of the tours leave at the same time and are the same duration. After finishing any tour, you can immediately take another tour. If we number the tours from 1 to 8 in the order in which they appear in the test case, one optimal plan is: 1, 5, 4, 7, 6, 2, 3, 8.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2017, Round 3",
+  "level": 24,
+  "tags": [
+    "eulerian_path",
+    "graphs",
+    "greedy",
+    "mst"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 2.642899990081787
+}

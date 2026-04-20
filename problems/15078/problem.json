@@ -1,0 +1,28 @@
+{
+  "id": 15078,
+  "title": "Yes, Yes, It’s Nonograms",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Nonograms (also known as Paint by Numbers or Hanjie) is a logic puzzle which encodes a blackand-white picture using sequences of numbers. The object of the puzzle is to recreate the picture from the numbers. The puzzle initially consists of a blank n × m grid, with a sequence of numbers associated with each row and each column. These numbers indicate the lengths of runs of black squares in a row (from left to right) or column (from top to bottom). For example, if the numbers for a row are 4 5 1 it indicates that somewhere in the row there is a run of 4 consecutive black squares followed later by a run of 5 consecutive black squares which is in turn followed by a run of a single black square. There must be 1 or more white spaces between each black run, and there can be 0 or more white squares before the first or after the last black run. In our example, if the length of a row is 13, then there are four possible layouts of black and white squares:</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:98px; width:232px\"/></p>\n<p style=\"text-align:center\">Figure J.1</p>\n<p>Note that in all four of the possible layouts certain squares are always black, as shown in Figure J.2, while others can be either white or black (indicated by ‘?’)</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"2.png\" style=\"height:27px; width:231px\"/></p>\n<p style=\"text-align:center\">Figure J.2</p>\n<p>In fact, this is a major technique in solving Nonograms, since they not only help in filling black squares in a particular row (as above), but the black squares then constrain the possible layouts in the intersecting columns. This helps in filling in black squares in the columns, which in turn lead to more constraints on black squares in the rows, and so on. Similarly, we may sometimes deduce that certain tiles must be white, based solely on the sequence of runs for a given row or column and the colors of tiles in that row or column that were determined previously. For many puzzle instances, applying this approach repeatedly suffices to find a solution. In more complicated Nonograms, other methods need to be used as well, but for the purposes of this problem we will not only ignore these methods but insist that you use no technique other than the one described above.</p>",
+  "input": "<p>Input starts with a line containing two integers n m, where n is the number of rows in the grid and m is the number of columns (1 ≤ n, m ≤ 100). Following this are n lines each giving the sequence of numbers for a row, starting with the uppermost row. Each of these lines has the form p v<sub>1</sub> v<sub>2</sub> ... v<sub>p</sub>, where p is the number of values in the sequence, and v<sub>1</sub> ... v<sub>p</sub> is the sequence. After these n lines are m lines which describe the columns in a similar way, starting with the leftmost column. The Nonogram puzzle is guaranteed to have at least one arrangement of black and white squares consistent with all the sequences, which may or may not be fully discoverable with the technique described above.</p>",
+  "output": "<p>Display the most complete picture that can be constructed using only the technique described above. Your output should consist of n lines containing m characters each. Use an ‘X’ for a black square, a ‘.’ for a white square, and a ‘?’ for a square that cannot be determined.</p>",
+  "samples": [
+    {
+      "input": "3 7\n3 2 1 1\n1 3\n2 2 2\n1 1\n2 1 1\n1 1\n1 2\n1 1\n1 2\n2 1 1\n",
+      "output": "XX.X..X\n...XXX.\n.XX..XX\n"
+    },
+    {
+      "input": "5 5\n1 3\n1 3\n1 3\n1 1\n1 1\n1 3\n1 3\n1 3\n1 1\n1 1\n",
+      "output": "??X??\n??X??\nXXX..\n??.??\n??.??\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2016 East Central Regional Contest",
+  "level": 17,
+  "tags": [
+    "backtracking"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

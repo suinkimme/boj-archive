@@ -1,0 +1,29 @@
+{
+  "id": 4773,
+  "title": "Reverse Roman Notation",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Hermes Poseidon (HP) has produced a new calculator, the HP CXX, using the very latest in modern technology. It supports the four basic arithmetic operations on integer values from I to MMMMCMXCIX.</p>\n<p>In this problem, you are simulating The HP CXX. Each line of input will be either a roman numeral representation of a positive integer (between I(1) and MMMMCMXCIX(4999)), which will then be pushed to the top of the virtual stack, or it will be an arithmetic operation (+ − * /) to be performed on the top two values of the stack. In addition, there is the = operation, which is a request to print the value of the top of the stack (in roman numerals, of course).</p>\n<p>For the − operation, subtract the ﬁrst number on the stack from the second. For /, divide the second number on the stack by the ﬁrst. An attempt to divide by 0 should result in the error message “division by zero exception”. When that happens, push the dividend (non-zero number) back onto the stack, but not the divisor (zero).</p>\n<p>If an operation is requested, and there are insufﬁcient numbers on the stack, print the error “stack underﬂow” and leave the stack unchanged. This applies to both the binary operations +−*/ and the print operation =.</p>\n<p>If an attempt is made to print a number whose value is 0 or less, or whose value is greater than MMMMCMXCIX(4999), display the error message “out of range exception” and go on to the next line of input.</p>\n<p>Roman Numerals</p>\n<p>For those who are unfamiliar with Roman Numerals, here is a quick summary:</p>\n<p>Each letter used in Roman numerals stands for a different number:</p>\n<table class=\"table\" style=\"width:30%\">\n<thead>\n<tr>\n<th style=\"width:15%\">Roman Numeral</th>\n<th style=\"width:15%\">Number</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>I</td>\n<td>1</td>\n</tr>\n<tr>\n<td>V</td>\n<td>5</td>\n</tr>\n<tr>\n<td>X</td>\n<td>10</td>\n</tr>\n<tr>\n<td>L</td>\n<td>50</td>\n</tr>\n<tr>\n<td>C</td>\n<td>100</td>\n</tr>\n<tr>\n<td>D</td>\n<td>500</td>\n</tr>\n<tr>\n<td>M</td>\n<td>1000</td>\n</tr>\n</tbody>\n</table>\n<p>A string of letters means that their values should be added together. For example, XXX = 10 + 10 + 10 = 30, and LXI = 50 + 10 + 1 = 61. If a smaller value is placed before a larger one, we subtract instead of adding. For instance, IV = 5 − 1 = 4 and XC = 100 − 10 = 90.</p>\n<ul>\n<li>Except for M, do not add more than three of the same letters together.</li>\n<li>Subtract only powers of ten, such as I, X, or C. Writing VL for 45 is not allowed: write XLV instead.</li>\n<li>Subtract only a single letter from a single numeral. Write VIII for 8, not IIX; 19 is XIX, not IXX.</li>\n<li>Don’t subtract a letter from another letter more than ten times greater. This means that you can only subtract I from V or X, and X from L or C, so MIM is illegal.</li>\n</ul>",
+  "input": "<p>Each input line consists of either:</p>\n<ul>\n<li>A Roman numeral between I and MMMMCMXCIX, or</li>\n<li>An arithmetic operation +, −, /, or *, or the print operator, =</li>\n</ul>\n<p>The input ends at the end-of-ﬁle.</p>",
+  "output": "<p>A line will be output:</p>\n<ul>\n<li>For every print operation, print the value at the top of the stack, or</li>\n<li>One of the error messages, on a line by itself:\n\t<ul>\n<li>division by zero exception</li>\n<li>stack underflow</li>\n<li>out of range exception</li>\n</ul>\n</li>\n</ul>\n<p>No other output should be produced</p>",
+  "samples": [
+    {
+      "input": "I\nI\n+\n=\nII\n*\n=\nVIII\n-\n=\n",
+      "output": "II\nIV\nout of range exception\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 2003 Mid-Atlantic Regional Programming Contest",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "simulation",
+    "parsing",
+    "stack"
+  ],
+  "accepted_user_count": 45,
+  "submission_count": null,
+  "average_tries": 3.1333000659942627
+}

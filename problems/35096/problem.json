@@ -1,0 +1,36 @@
+{
+  "id": 35096,
+  "title": "Mex Hex",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The peace and quiet of your home city is being disturbed by the loud purrs and nightly creeping of a nearby magic bobcat. The mayor is sending you to scare it off -- you are the city's Guardian for Collateral, Personal, and other Catastrophic Damages after all. You take on the challenge and prepare for scaring away the magnificent animal.</p>\n<p>To defend itself against you, the magic bobcat (as the name suggests) tries to hurt you in unconventional ways. When it attacks, it casts a number of magic <em>spells</em>. Each spell is cast with a particular <em>potential</em>, which can be expressed as a natural number.\\footnote{For the purposes of this task, the natural numbers are defined as $\\mathbb N = \\{0, 1, 2, \\dots\\}$.} If you get hit with spells that have the potentials $p_1, p_2, \\dots, p_n$, then the pain that you will feel from them is $\\mathtt{mex}(\\{p_1, p_2, \\dots, p_n\\})$, where $\\mathtt{mex}$ denotes the Minimum Excluded Value.\\footnote{Given a set $S \\subseteq \\mathbb N, S \\ne \\mathbb N$, $\\mathtt{mex}(S)$ is the smallest number $m \\in \\mathbb N$ that is <em>not contained</em> in $S$.} Note that the spells do not hurt you immediately. Only after all spells are cast will you feel the pain based on the $\\mathtt{mex}$ of their potentials.</p>\n<p>To protect yourself, you bring a <em>shield</em> which can, also through magic, deflect the spells. Your shield has an <em>activation duration</em> $d$, which means that when you activate the shield, the next $d$ spells do not hit you. Afterwards, the shield must regenerate its magic and cannot be activated for the following $d$ spells. Apart from that, you can activate the shield as often as you want. To ensure that you give the magic bobcat a good scare, the mayor requested that you sneak up to it. As the bobcat would spot the glow of your activated magic shield, the earliest time you can activate the shield is when you stand before the culprit, right before it casts the first spell.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 450px; height: 96px;\"/></p>\n<p style=\"text-align: center;\">Figure M.1: Illustration of Sample 3. The numbers in the boxes indicate the potentials of the spells. In this example, your shield's activation duration is $d = 2$. By activating the shield right before the 5th, 9th, and 14th spell, you block the spells underlined in green. You cannot activate your shield for the spells that are underlined with a dashed red line, because it is regenerating its magic at these times.</p>\n<p>You must now devise a tactic to sustain as little pain as possible. From studying the previous encounters with magic bobcats, you know the potentials of the spells that will be cast against you. What is the minimum pain you can receive from them if you activate your shield optimally?</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two integers $n$ and $d$ ($1 \\leq n \\leq 10^5$, $1 \\leq d \\leq n$), the number of spells and the activation duration of your shield.</li>\n<li>One line with $n$ integers $p_1, \\dots, p_n$ ($0 \\leq p_i &lt; n$), the potentials of the $n$ spells.</li>\n</ul>",
+  "output": "<p>Output a single integer, the minimum pain you can receive from the spells.</p>",
+  "samples": [
+    {
+      "input": "5 1\n0 1 0 1 0\n",
+      "output": "0\n"
+    },
+    {
+      "input": "5 2\n0 1 0 1 0\n",
+      "output": "2\n"
+    },
+    {
+      "input": "14 2\n8 1 1 0 0 2 0 1 2 1 0 6 4 2\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 2\n0 1 2 0\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2025",
+  "level": 16,
+  "tags": [
+    "greedy"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.1175999641418457
+}

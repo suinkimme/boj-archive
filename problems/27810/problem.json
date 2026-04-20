@@ -1,0 +1,22 @@
+{
+  "id": 27810,
+  "title": "Oversized Pancake Choppers",
+  "time_limit": "60 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You just showed up to your job as the head chef of the Infinite House of Pancakes, and as usual, you found a disaster in progress! The other chefs accidentally created some enormous circular pancakes, all of the same size. These pancakes are too large to serve whole, so they have already started to chop them up into <i>slices</i> (which, in this problem, are <a href=\"https://en.wikipedia.org/wiki/Circular_sector\" target=\"_blank\">circular sectors</a>). You currently have <b>N</b> slices, the i-th of which is a sector with an internal (central) angle of <b>A<sub>i</sub></b> nanodegrees (a nanodegree is 10<sup>-9</sup> degrees).</p>\n<p>You have <b>D</b> diners waiting for their food. Each diner wants a single slice that is the same size as every other diner's slice, although they do not care what that size is. But it may not be possible to do this using the current slices, so you may need to make one or more radial <i>cuts</i>.</p>\n<p>A cut changes an existing slice with internal angle X into two new slices with internal angles Y and X - Y. You can do this for any 0 &lt; Y &lt; X, and these values do not need to be integers. You may apply further cuts to either or both of these new slices, and so on.</p>\n<p>It is OK to have one or more leftover slices (of any size) that are not given to the diners; you can eat those later, since this disaster is making you miss your own breakfast!</p>\n<p>Determine the smallest total number of cuts you need to make to satisfy the diners.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each case begins with one line containing two integers <b>N</b> and <b>D</b>: the number of slices you currently have and the number of diners. Then, there is one more line containing <b>N</b> integers <b>A<sub>1</sub></b>, <b>A<sub>2</sub></b>, ..., <b>A<sub>N</sub></b>; the i-th of these represents the internal angle (in nanodegrees) of the i-th slice.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the smallest number of cuts you need, as described above.</p>",
+  "samples": [
+    {
+      "input": "4\n1 3\n1\n5 2\n10 5 359999999999 123456789 10\n2 3\n8 4\n3 2\n1 2 3\n",
+      "output": "Case #1: 2\nCase #2: 0\nCase #3: 1\nCase #4: 1\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, you only have one tiny slice to start with. The optimal solution is to use one cut to change it into two slices with angles of 1/3 nanodegree and 2/3 nanodegrees, and then further cut the latter slice into two more slices with angles of 1/3 nanodegree.</p>\n<p>In Sample Case #2, you already have two slices of the same size, so you can give those to the two diners, and you do not need to make any cuts.</p>\n<p>In Sample Case #3, the optimal solution is to cut the slice with internal angle 8 nanodegrees in half. After that operation, you have exactly 3 slices of internal angle 4 nanodegrees, with no leftovers.</p>\n<p>In Sample Case #4, remember that every diner must receive a single slice. You cannot give one diner the \"3\" slice and the other diner the \"1\" and \"2\" slices, even though the total areas are the same. You must make at least one cut in this case to satisfy the requirements.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2020, Round 1C",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 5.5
+}

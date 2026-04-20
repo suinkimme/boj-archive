@@ -1,0 +1,29 @@
+{
+  "id": 25808,
+  "title": "Discord Daisy Chain",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"width: 258px; height: 240px; float: right;\"/>You are working on several discord bots in one larger server. Each bot has a channel that it “listens” to (in nontechnical terms, a bot is in a channel and receives all the messages sent to that channel). When the channel the bot listens to gets a message, the bot will send the same message to a number of other channels (dependent on the bot), causing bots in those channels to receive the message and send the same message to other channels.</p>\n<p>Note that all the bots in a channel receive a message sent to the channel and all the bots in the channel will forward the message to their receiving channels.</p>\n<p>You have the list of bots, and now you're curious if there is a channel such that if you post a message inside of it, all the other channels will have at least one copy of the message. For example, in the configuration illustrated in the picture, if we post a message inside the channel containing bot b<sub>1</sub>, all the other channels will have (receive) at least one copy of the message.</p>\n<p>Since there may be several such channels, you wonder how many are there?</p>\n<p>Given the description of the server (number of channels and bot descriptions), determine the number of channels that can allow for a message to be sent to all the other channels.</p>",
+  "input": "<p>The first input line contains two integers: c (1 ≤ c ≤ 100,000), indicating the number of channels in the server, and b (1 ≤ b ≤ 100,000), indicating the number of bots in the server.</p>\n<p>Each of the next b input lines starts with an integer, l<sub>i</sub> (1 ≤ l<sub>i</sub> ≤ c), indicating the channel the i th bot is listening to (i.e., the channel the bot is in), and m<sub>i</sub> (1 ≤ m<sub>i</sub> ≤ c) indicating the number of channels the i th bot will send the message to. The line will contain mi more integers, a<sub>1</sub>, a<sub>2</sub>, … a<sub>l<sub>i</sub></sub> (1 ≤ a<sub>j</sub> ≤ c), indicating the channels to which the i th bot will forward its messages to.</p>\n<p>It is guaranteed that the total number of receiving channels in the input will not exceed 200,000.</p>",
+  "output": "<p>Print the number of channels that can be used to send a message to all the other channels.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 1 2\n2 2 3 4\n3 2 3 4\n2 1 2\n",
+      "output": "1\n"
+    },
+    {
+      "input": "5 4\n1 5 1 2 3 4 5\n2 4 3 1 4 2\n3 3 1 2 3\n4 2 1 2\n",
+      "output": "4\n"
+    }
+  ],
+  "hint": "<p>Explanation of the First Sample Input/Output:</p>\n<p>This data set corresponds to the configuration illustrated in the above picture.</p>\n<p>There are 4 channels and 4 bots.</p>\n<p>Bot 1 is in Channel 1 and forwards messages to Channel 2.</p>\n<p>Bot 2 is in Channel 2 and forwards messages to Channels 3 and 4.</p>\n<p>Bot 3 is in Channel 3 and forwards messages to Channels 3 and 4.</p>\n<p>Bot 4 is in Channel 2 and forwards messages to Channel 2.</p>\n<p>Messages posted in Channel 1 will get to all the other channels. This is the only such channel.</p>",
+  "source": "University, University of Central Florida, 2021 Local Programming Contest (Final Round)",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "scc"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.7691999673843384
+}

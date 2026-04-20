@@ -1,0 +1,25 @@
+{
+  "id": 33790,
+  "title": "Distributive Property",
+  "time_limit": "5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are given a set $S$ of $n$ distinct integers. You will also receive $q$ queries, each of one of the following two types:</p>\n<ol>\n<li><strong>Query Type 1</strong> ($1$ $x$):\n\n\t<ul>\n<li>If $x$ is currently in the set $S$, remove it.</li>\n<li>Otherwise, add $x$ to the set.</li>\n</ul>\n</li>\n<li><strong>Query Type 2</strong> ($2$ $t$):\n\t<ul>\n<li>Print the cumulative <a href=\"https://en.wikipedia.org/wiki/Bitwise_operation#XOR\">bitwise XOR</a> of $(x + t)$ over all $x \\in S$. Formally, print $\\displaystyle\\bigoplus_{x \\in S} (x + t)$.</li>\n</ul>\n</li>\n</ol>",
+  "input": "<p>The first line of the input contains two integers $n$ and $q$ ($1 \\leq n,q \\leq 3 \\cdot 10^5$) --- the initial size of the set and the number of queries, respectively.</p>\n<p>The next line of the input will contain $n$ distinct integers $x_1, x_2 \\cdots x_n$ ($0 \\le x_i &lt; 2^{20}$) --- the initial set.</p>\n<p>The next $q$ lines of the input will describe the queries. Each of them will contain a query of the form $1$ $x$ or $2$ $t$ ($0 \\le x, t &lt; 2^{20}$), representing the query in the format described above.</p>\n<p>It is guaranteed that there is at least one query of type $2$.</p>",
+  "output": "<p>For each query of type $2$, print the cumulative bitwise XOR of $(x+t)$ over all $x \\in S$.</p>",
+  "samples": [
+    {
+      "input": "3 10\n1 6 15\n2 0\n1 5\n1 6\n1 10\n2 3\n2 12\n1 15\n2 7\n1 0\n2 7\n",
+      "output": "8\n19\n17\n21\n18\n"
+    }
+  ],
+  "hint": "<p>In the sample case, at the time of the first type $2$ query, we have $S = \\{1, 6, 15\\}$. Since $t = 0$ for this query, we print the value $$(1 + 0) \\oplus (6 + 0) \\oplus (15 + 0) = 1 \\oplus 6 \\oplus 15 = 8$$ At the time of the second type $2$ query, we have $S = \\{1, 5, 10, 15\\}$. Since $t = 3$ for this query, we print the value $$(1 + 3) \\oplus (5 + 3) \\oplus (10 + 3) \\oplus (15 + 3) = 4 \\oplus 8 \\oplus 13 \\oplus 18 = 19$$</p>",
+  "source": "University, Rutgers University, Rutgers University Programming Contest Spring 2025",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.2222000360488892
+}

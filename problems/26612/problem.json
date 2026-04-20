@@ -1,0 +1,36 @@
+{
+  "id": 26612,
+  "title": "infinite XYZ",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>정점 $N$개와 단방향 간선 $M$개로 이루어져 있는 유향 그래프가 있다. 같은 출발점과 도착점 사이에 여러 개의 간선이 있을 수 있고, 간선의 출발점과 도착점이 같을 수 있다.</p>\n<p>각 간선에는 $x, y, z$ 중 하나의 문자가 쓰여 있다. 이때, 한 정점에서 뻗어나오는 간선의 문자는 서로 겹치지 않는다.</p>\n<p>이후 다음과 같은 쿼리가 주어진다.</p>\n<ul>\n<li>$s$ $e$ $c$ : 주어진 그래프에 출발점이 $s$이고 도착점이 $e$인 $c$가 쓰여진 새로운 단방향 간선을 추가한다. 새로운 간선은 문자가 겹칠 수 있음에 유의하자. 이때, 어떤 점을 골라 그 점에서 시작해서 그래프 상에서 무한히 이동하는 것이 가능하다면 $1$, 그렇지 않으면 $0$을 출력한다.</li>\n</ul>\n<p>그래프에서 이동할 때는 특별한 규칙을 따른다. 구체적으로, $x$ 간선 이후에는 $y$ 간선, $y$ 간선 이후에는 $z$ 간선, $z$ 간선 이후에는 $x$ 간선을 타고 이동해야 한다. 즉, $xyzxyzxyz\\cdots$,$ yzxyzxyzx\\cdots$, $zxyzxyzxy\\cdots$의 방식으로만 이동할 수 있다.</p>\n<p>쿼리 $Q$개가 주어질 때, 이를 해결하는 프로그램을 작성해보자. 단, 각 쿼리는 독립적이며, 이전 쿼리에서 추가된 간선이 다음 쿼리에 적용되지 않는다.</p>",
+  "input": "<p>첫 번째 줄에 $N, M, Q$가 주어진다.($1 \\leq N \\leq 100000$, $1 \\leq M \\leq 3 \\times N$, $1 \\leq Q \\leq 100000$)</p>\n<p>이후 두 번째 줄부터 $M + 1$번째 줄까지 그래프의 간선의 정보 $S_i, E_i, C_i$가 주어진다. 이는 $S_i$에서 $E_i$로 가는 $C_i$가 쓰여진 간선을 의미한다.($1 \\le S_i, E_i \\le N$, $C_i \\in \\{x,y,z\\}$)</p>\n<p>이후 $M + 2$번째 줄부터 $M + Q + 1$번째 줄까지 쿼리의 정보 $s, e, c$가 주어진다.($1 \\le s, e \\le N$, $c \\in \\{x,y,z\\}$)</p>",
+  "output": "<p>$Q$줄에 걸쳐 $i$번째 줄에 $i$번째 쿼리에 대해 각각 무한히 이동 가능하다면 $1$, 그렇지 않으면 $0$을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "2 1 1\n1 2 x\n1 2 x\n",
+      "output": "0\n"
+    },
+    {
+      "input": "3 3 3\n1 2 x\n2 3 y\n3 1 z\n1 2 x\n2 3 x\n3 1 x\n",
+      "output": "1\n1\n1\n"
+    },
+    {
+      "input": "5 2 3\n1 2 x\n2 3 y\n1 2 x\n3 1 z\n3 2 y\n",
+      "output": "0\n1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "School, 경기과학고등학교, 나는코더다 송년대회, 나는코더다 2022 송년대회, mathking1021, donghwa722, ftkbrian, mhy908, sciencepark, whqkrkt04",
+  "level": 18,
+  "tags": [
+    "data_structures",
+    "euler_tour_technique",
+    "graphs",
+    "sparse_table",
+    "trees"
+  ],
+  "accepted_user_count": 44,
+  "submission_count": null,
+  "average_tries": 2.772700071334839
+}

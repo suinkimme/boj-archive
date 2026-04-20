@@ -1,0 +1,41 @@
+{
+  "id": 26193,
+  "title": "Insertions",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>We are given three strings, $s$, $t$ and $p$. We will denote the length of a string by vertical bars, thus $|s|$ is the length of $s$ and so on. If we <em>insert</em> $t$ into $s$ at position $k$, where $0 \\le k \\le |s|$, the result is a new string consisting of the first $k$ characters of $s$, followed by the entirety of $t$, and finally followed by the remaining $|s| - k$ characters of $s$. We would like to select $k$ so that the resulting new string will contain the largest possible number of occurrences of $p$ as a substring.</p>\n<p>Thus, for example, inserting $t = $<code>aba</code> into $s = $<code>ab</code> at position $k = 0$ results in the string <code>abaab</code>; at $k = 1$, in the string <code>aabab</code>; and at $k = 2$, in the string <code>ababa</code>. If we are interested in occurrences of $p = $<code>aba</code>, then the best position to insert $t$ into $s$ is $k = 2$, where we get two occurrences: <em><code>aba</code></em><code>ba</code> and <code>ab<em>aba</em></code> (as this example shows, occurrences of $p$ are allowed to overlap). If, on the other hand, we were interested in occurrences of $p = $<code>aa</code>, then the best choices of $k$ would be $k = 0$ and $k = 1$, which result in one occurrence of $p$, whereas $k = 2$ results in 0 occurrences of $p$.</p>",
+  "input": "<p>The first line contains the string $s$, the second line the string $t$, and the third line the string $p$.</p>",
+  "output": "<p>Output one line containing the following four integers, separated by spaces:</p>\n<ol>\n<li>The maximum number of occurrences of $p$ we can get after inserting $t$ into $s$ at position $k$, if we choose the position $k$ wisely.</li>\n<li>The number of different $k$'s (from the range $0, 1, \\ldots, |s|$) where this maximum number of occurrences of $p$ is attained.</li>\n<li>The minimum value of $k$ where the maximum number of occurrences of $p$ is attained.</li>\n<li>The maximum value of $k$ where the maximum number of occurrences of $p$ is attained.</li>\n</ol>",
+  "samples": [
+    {
+      "input": "ab\naba\naba\n",
+      "output": "2 1 2 2\n"
+    },
+    {
+      "input": "abaab\naba\nababa\n",
+      "output": "1 3 1 5\n"
+    },
+    {
+      "input": "eeoeo\neoe\neeo\n",
+      "output": "2 3 1 4\n"
+    }
+  ],
+  "hint": "<p>The first of these three examples is the one discussed earlier in the problem statement.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2022",
+  "level": 24,
+  "tags": [
+    "bitset",
+    "data_structures",
+    "dp",
+    "dp_tree",
+    "euler_tour_technique",
+    "kmp",
+    "lazyprop",
+    "segtree",
+    "string",
+    "trees"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2
+}

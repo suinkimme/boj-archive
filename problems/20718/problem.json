@@ -1,0 +1,27 @@
+{
+  "id": 20718,
+  "title": "Paris Escape",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>As many of you may know, the Mona Lisa is one of the most famous paintings in the world. One day, Mark decided he wanted to steal it. After he snuck into the Louvre, he snatched the painting and escaped into the catacombs of Paris. Unfortunately, security quickly noticed that the Mona Lisa was missing. The police have swarmed into the catacombs of Paris, but fortunately for Mark, they don't know where he is, or where he wants to go!</p>\n<p>The catacombs of Paris consist of various rooms connected by corridors, which can be particularly tricky to navigate. Fortunately for Mark, he happens to have looked at a map earlier, which labeled all of the $n$ rooms with integers from $0$ to $n-1$. He knows that he is in room $0$ right now, and that the catacombs exit is hidden in room $n-1$. He also knows the rooms in which all of the $p$ police officers currently are, and with this information, he can develop a plan! He must be wary of the police, however: they are trying to track Mark down, and will walk down a passage (chosen uniformly at random) from their current location to a neighboring room every minute. Mark, nervous and unable to sit still, must also pick and travel through a passage every minute. The corridors, while they vary in length, are all traversed by both Mark and the police officers in exactly one minute. </p>\n<p>While Mark can attempt to bribe an officer, he would definitely prefer not to. Given the map of the catacombs and the initial positions of all the police, determine the expected number of police encounters Mark will face during his escape, assuming Mark moves optimally to minimize this number. An encounter happens if he and a police officer end up in the same room at the same time (the corridors are dark enough that he can cross paths with a police officer moving in the opposite direction without getting caught). If Mark ends up in a room at the same time as more than one police officer, each officer in the room counts as a different encounter. Note that these rule also applies to room $n-1$: Mark will get caught, before being able to escape the catacombs, if he reaches room $n-1$ while the room is occupied by a police officer (fortunately, they don't know about the exit and haven't thought to post a permanent guard there). Note also that Mark might bump into the same police officer multiple times, depending on his chosen path and bad luck; each time he does so counts as an additional encounter. Figure out Mark's best plan of escape and print the expected number of police encounters. Unfortunately, Mark has no ability to improvise, so once he has left on a planned path, he will not be able to alter the path based on his encounters with police officers.</p>",
+  "input": "<p>The first line of input is two space-separated integers $n$ and $m$, the number of rooms and passages in the catacombs, respectively ($2 \\le n \\le 5 \\cdot 10^2$ and $1 \\le m \\le 5 \\cdot 10^3$). The next $m$ lines each contain a space-separated pair of integers $u$ and $v$ ($0 \\leq u,v \\leq n-1$) denoting that a bidirectional corridor connects rooms $u$ and $v$. It is guaranteed that $u \\neq v$, that no two corridors connect the same pairs of rooms, and that every room in the catacombs can be reached from every other room by a sequence of corridors.</p>\n<p>The next line is a single integer $p$, the number of police in the catacombs ($0 \\leq p \\leq 10$). The next $p$ lines each contain a single integer $w$, with $1\\leq w \\leq n-1$, denoting the starting room of one police officer. Note that none of the police officers start at Mark's current location.</p>",
+  "output": "<p>Output a single number, the expected number of police encounters Mark will experience on his way to his destination given that he takes the most optimal path. Your answer will be judged as correct if has an absolute or relative error of less than $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "4 4\n0 1\n1 3\n0 2\n2 3\n1\n3\n",
+      "output": "1.000000000\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, UT Invitational Programming Contest, UT Invitational Programming Contest 2020",
+  "level": 16,
+  "tags": [
+    "dp",
+    "linearity_of_expectation",
+    "math",
+    "probability"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2
+}

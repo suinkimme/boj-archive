@@ -1,0 +1,26 @@
+{
+  "id": 32419,
+  "title": "Telephone Plans",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The “Dormi’s Fone Service” is now the only telephone service provider in CCOland. There are $N$ houses in CCOland, numbered from $1$ to $N$. Each telephone line connects two distinct houses such that all the telephone lines that ever exist form a forest.</p>\n<p>There is an issue where the phone lines are faulty, and each phone line only exists for a single interval of time. Two houses can call each other at a certain time if there is a path of phone lines that starts at one of the houses and ends in the other house at that time.</p>\n<p>We would like to process $Q$ queries of the following forms:</p>\n<ul>\n<li>$1$ $x$ $y$: Add a phone line between houses $x$ and $y$. It is guaranteed that a phone line between houses $x$ and $y$ was never added before.</li>\n<li>$2$ $x$ $y$: Remove the phone line between houses $x$ and $y$. It is guaranteed that a phone line currently exists between houses $x$ and $y$.</li>\n<li>$3$ $t$: Compute the number of pairs of different houses that can call each other at some time between the current query and $t$ queries ago. To be more clear, let $G_q$ be the state of CCOland after the $q$-th query, where $G_0$ is the state of CCOland before any queries. If this is the $s$-th query, then count the number of pairs of houses that are connected in at least one of $G_{s-t} , G_{s-t+1}, \\dots , G_s$.</li>\n</ul>\n<p>Also, some test cases may be encrypted. For the test cases that are encrypted, the arguments $x$, $y$, or $t$ are given as the bitwise xor of the true argument and the answer to the last query of type $3$ (if there have been no queries of type $3$, then the arguments are unchanged).</p>",
+  "input": "<p>The first line of input will contain $E$ ($E \\in \\{0, 1\\}$). $E = 0$ denotes that the input is not encrypted, while $E = 1$ denotes that the input is encrypted.</p>\n<p>The second line contains two space-separated integers $N$ and $Q$, representing the number of houses in CCOland and the number of queries, respectively.</p>\n<p>The next $Q$ lines contain queries as specified above (queries are encrypted or not depending on $E$).</p>\n<p>For the $q$-th query ($1 ≤ q ≤ N$), it is guaranteed that (after decrypting if $E = 1$) $1 ≤ x, y ≤ N$ for type $1$ and $2$ queries and $0 ≤ t ≤ q$ for type $3$ queries.</p>",
+  "output": "<p>For each query of type $3$, output the answer to the query on a new line.</p>",
+  "samples": [
+    {
+      "input": "0\n4 12\n3 0\n1 1 2\n3 0\n1 1 3\n3 0\n3 5\n2 2 1\n3 0\n3 8\n1 1 4\n3 0\n3 11\n",
+      "output": "0\n1\n3\n3\n1\n3\n3\n5\n"
+    },
+    {
+      "input": "1\n4 12\n3 0\n1 1 2\n3 0\n1 0 2\n3 1\n3 6\n2 1 2\n3 3\n3 9\n1 2 7\n3 3\n3 8\n",
+      "output": "0\n1\n3\n3\n1\n3\n3\n5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2024, CCO 2024",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

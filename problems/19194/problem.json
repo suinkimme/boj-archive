@@ -1,0 +1,27 @@
+{
+  "id": 19194,
+  "title": "Yet Another Problem About Permutations",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>This is a problem about permutations. If you are not familiar with some of the terms used below, please see the note following the example.</p>\n<p>A permutation $p$ is said to be <em>simple</em> if the length of each of its cycles does not exceed two. For example, permutation $2, 1, 4, 3$ is <em>simple</em>, but permutation $3, 1, 2$ is not.</p>\n<p>You are given a permutation $p$. Your task is to represent it as a product of minimal number of simple permutations.</p>",
+  "input": "<p>The first line of input contains one integer $T$, the number of test cases ($1 \\le T \\le 10^5$). The test cases follow.</p>\n<p>Each of next $T$ lines describes a single test case. Each test case description consists of an integer $n$, the length of the permutation $p$ ($1 \\le n \\le 10^5$), followed by $n$ distinct integers $p_1, p_2, \\ldots, p_n$, the permutation $p$ itself ($1 \\le p_i \\le n$, each number from $1$ to $n$ appears in the permutation exactly once).</p>\n<p>The total length of all permutations in the input is not greater than $10^6$.</p>",
+  "output": "<p>For each test case, start by printing a line containing an integer $k$, the minimal number of simple permutations in the product. The next $k$ lines must describe simple permutations $q^{(1)}$, $q^{(2)}$, $\\ldots$, $q^{(k)}$, one per line. On $i$-th of these lines, print $n$ distinct integers from $1$ to $n$ describing permutation $q^{(i)}$. The product $q^{(1)} \\circ q^{(2)} \\circ \\ldots \\circ q^{(k)}$ must be equal to $p$.</p>\n<p>If there are several optimal answers, print any one of them.</p>",
+  "samples": [
+    {
+      "input": "2\n4 2 1 4 3\n3 3 1 2\n",
+      "output": "1\n2 1 4 3\n2\n3 2 1\n1 3 2\n"
+    }
+  ],
+  "hint": "<p>A <em>permutation</em> of length $n$ is a sequence of $n$ integers where each integer from $1$ to $n$ appears exactly once.</p>\n<p>A <em>cycle</em> in a permutation $p$ is a sequence $i_1, i_2, \\ldots, i_t$ of distinct integers from $1$ to $n$ such that $p_{i_1} = i_2$, $p_{i_2} = i_3$, $\\ldots$, $p_{i_{t - 1}} = i_t$ and $p_{i_t} = i_1$. The number $t \\ge 1$ is called the <em>length</em> of the cycle.</p>\n<p>The <em>product</em> $a \\circ b$ of two permutations $a$ and $b$ is a permutation $c$ such that for each $i$, $c_i = a_{b_i}$. For example, if $a = 3 \\, 2 \\, 1$ and $b = 1 \\, 3 \\, 2$, their product is $a \\circ b = 3 \\, 1 \\, 2$.</p>\n<p>The <em>product</em> of three or more permutations can be evaluated in any order, for example, $a \\circ b \\circ c = (a \\circ b) \\circ c = a \\circ (b \\circ c)$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2015, Day 7: Karelia Cup Day 1, Grand Prix of Karelia, Contest, Open Cup, 2014/2015 Season, Stage 8: Grand Prix of Karelia",
+  "level": 21,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "math",
+    "permutation_cycle_decomposition"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 6.800000190734863
+}

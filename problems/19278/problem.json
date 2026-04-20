@@ -1,0 +1,43 @@
+{
+  "id": 19278,
+  "title": "Simple APSP Problem",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>You are given an $H \\times W$ grid. The square at the top-left corner is indexed $(0, 0)$, and the square at the bottom-right corner is indexed by $(H-1, W-1)$.</p>\n<p>$N$ squares $(x_1, y_1), (x_2, y_2), \\ldots, (x_N, y_N)$ are painted black, and all other squares are painted white.</p>\n<p>Let the shortest distance between white squares $A$ and $B$ be the minimum number of moves required to reach $B$ from $A$ <strong>visiting only white squares</strong>, where one can travel to an adjacent square sharing a side (up, down, left or right) in one move.</p>\n<p>Since there are $H \\times W - N$ white squares in total, there are $C_{H \\times W - N}^2$ ways to choose two of the white squares. For each of these $C_{H \\times W - N}^2$ ways, find the shortest distance between the chosen squares, then find the sum of all those distances, modulo $1\\,000\\,000\\,007=10^9+7$.</p>",
+  "input": "<p>Input is given in the following format:</p>\n<p>$H$ $W$</p>\n<p>$N$</p>\n<p>$x_1$ $y_1$</p>\n<p>$x_2$ $y_2$</p>\n<p>$\\ldots$</p>\n<p>$x_N$ $y_N$</p>",
+  "output": "<p>Print the sum of the shortest distances modulo $10^9+7$.</p>",
+  "samples": [
+    {
+      "input": "2 3\n1\n1 1\n",
+      "output": "20\n"
+    },
+    {
+      "input": "2 3\n1\n1 2\n",
+      "output": "16\n"
+    },
+    {
+      "input": "3 3\n1\n1 1\n",
+      "output": "64\n"
+    },
+    {
+      "input": "4 4\n4\n0 1\n1 1\n2 1\n2 2\n",
+      "output": "268\n"
+    },
+    {
+      "input": "1000000 1000000\n1\n0 0\n",
+      "output": "333211937\n"
+    }
+  ],
+  "hint": "<p>In Sample 1, we have the next grid ('<code>.</code>' denotes white square, '<code>!</code>' --- black square):</p>\n<pre>\n...\n.!.</pre>\n<p>We assign alphabet to white squares, like below.</p>\n<pre>\nABC\nD!E</pre>\n<p>So we get (here $dist(A,B)$ is the shortest distance between $A$ and $B$):</p>\n<p>$dist(A, B) = 1$, $dist(A, C) = 2$, $dist(A, D) = 1$, $dist(A, E) = 3$, $dist(B, C) = 1$, $dist(B, D) = 2$, $dist(B, E) = 2$, $dist(C, D) = 3$, $dist(C, E) = 1$, $dist(D, E) = 4$, and sum of those is $20$.</p>\n<p>In Sample 2, we assign alphabet to white squares, like below.</p>\n<pre>\nABC\nDE!</pre>\n<p>So we get:</p>\n<p>$dist(A, B) = 1$, $dist(A, C) = 2$, $dist(A, D) = 1$, $dist(A, E) = 2$, $dist(B, C) = 1$, $dist(B, D) = 2$, $dist(B, E) = 1$, $dist(C, D) = 3$, $dist(C, E) = 2$, $dist(D, E) = 1$, and sum of those is $16$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2018, Day 3: AtCoder Contest",
+  "level": 23,
+  "tags": [
+    "bfs",
+    "coordinate_compression",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1
+}

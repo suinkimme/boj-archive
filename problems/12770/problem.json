@@ -1,0 +1,34 @@
+{
+  "id": 12770,
+  "title": "Longest Rivers",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The Chao Phraya River System is the main river system of Thailand. Its six longest rivers listed by decreasing length are:</p>\n<p>Tha Chin (765 km)<br/>\nNan (740 km)<br/>\nYom (700 km)<br/>\nPing (658 km)<br/>\nPa Sak (513 km)<br/>\nWang (335 km)</p>\n<p>A simplified model of this river system is shown in Figure F.1, where the smaller red numbers indicate the lengths of various sections of each river. The point where two or more rivers meet as they flow downstream is called a confluence. Confluences are labeled with the larger black numbers. In this model, each river either ends at a confluence or flows into the sea, which is labeled with the special confluence number 0. When two or more rivers meet at a confluence (other than confluence 0), the resulting merged river takes the name of one of those rivers. For example, the Ping and the Wang meet at confluence 1 with the resulting merged river retaining the name Ping. With this naming, the Ping has length 658 km while the Wang is only 335 km. If instead the merged river had been named Wang, then the length of the Wang would be 688 km while the length of the Ping would be only 305 km.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:154px; width:308px\"/></p>\n<p style=\"text-align: center;\">Figure F.1: The river system in Sample Input 1. Same-colored edges indicate a river.</p>\n<p>The raised awareness of this phenomenon causes bitter rivalries among the towns along the rivers. For example, the townspeople along the Wang protest that maybe with a proper naming scheme, their river could actually be the longest, or maybe the second longest (or at least not last!). To end all the guessing, your task is to validate all such claims.</p>\n<p>The rank of a river is its position in a list of all rivers ordered by decreasing length, where the best rank is 1 for the longest river. For each river, determine its best possible rank over all naming schemes. At any confluence, the name of a new, larger river in any naming scheme must be one of the names of the smaller rivers which join at that confluence. If two or more rivers have equal lengths in a naming scheme, all the tied rivers are considered to have the best possible ranking. For example, if one river is the longest and all other rivers are equal, those rivers all have rank 2.</p>",
+  "input": "<p>The first line of input contains two integers n (1 ≤ n ≤ 500 000), which is the number of river sources in the system, and m (0 ≤ m ≤ n − 1), which is the number of confluences with positive labels. These confluences are numbered from 1 to m.</p>\n<p>The next n lines describe the rivers. Each of these lines consists of a string, which is the name of the river at the source, and two integers c (0 ≤ c ≤ m) and d (1 ≤ d ≤ 10<sup>9</sup>), where c is the identifier of the nearest confluence downstream, and d is the distance from the source to that confluence in kilometers. River names use only lowercase and uppercase letters a–z, and consist of between 1 and 10 characters, inclusive.</p>\n<p>The final m lines describe confluences 1 to m in a similar fashion. The kth of these lines describes the confluence with identifier k and contains two integers: the identifier of the nearest confluence downstream and the distance from confluence k to this confluence in kilometers.</p>\n<p>It is guaranteed that each confluence 1 through m appears as “the nearest downstream” at least twice, confluence 0 appears at least once, and all sources are connected to confluence 0.</p>",
+  "output": "<p>Display one river per line in the same order as in the input. On that line, display the name of the river and its best possible rank.</p>",
+  "samples": [
+    {
+      "input": "6 2\nPaSak 0 513\nNan 2 675\nYom 2 700\nWang 1 335\nPing 1 305\nThaChin 0 765\n0 353\n0 65\n",
+      "output": "PaSak 5\nNan 2\nYom 1\nWang 3\nPing 4\nThaChin 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2016",
+  "level": 24,
+  "tags": [
+    "dp",
+    "graphs",
+    "data_structures",
+    "greedy",
+    "graph_traversal",
+    "trees",
+    "dfs",
+    "sweeping",
+    "dp_tree",
+    "priority_queue",
+    "hld"
+  ],
+  "accepted_user_count": 31,
+  "submission_count": null,
+  "average_tries": 2.19350004196167
+}

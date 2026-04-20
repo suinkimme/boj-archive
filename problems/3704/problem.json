@@ -1,0 +1,31 @@
+{
+  "id": 3704,
+  "title": "Ticket to Ride",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p><img alt=\"\" src=\"/upload/images3/ttr.png\" style=\"float:right; height:255px; width:263px\"/>Ticket to Ride is a board game for up to 5 players. The goal of the game is to set up train lines (and to thwart the opponents’ attempts at setting up their train lines). At the beginning of play, each player is assigned four train lines. A player may choose to discard as many of these four assignments as she likes. Each assignment has a score, corresponding to its difficulty (so, typically, a train line between e.g. Stockholm and Tokyo would be worth more than a train line between e.g. Stockholm and Utrecht). At the end of the game, each player gets points for the assignments that they have successfully completed, and penalty points for the assignments that they have failed to complete.</p>\n<p>An assignment consists of a pair of cities that are to be connected by a series of shorter railway routes. A route can be claimed (for a certain cost associated with the route), but things are complicated by the fact that there is only a limited number of routes, and once a player claims a route, none of the other players can claim it. A player has successfully set up a train line between two cities if there is a path between the two cities using only routes that have been claimed by this player. For simplicity, we will ignore all additional aspects of the game (including the actual process of claiming routes and additional ways to score points).</p>\n<p>For instance, if your assignment is to connect Stockholm and Amsterdam in the Figure above, you would probably want to claim the routes between Stockholm and Copenhagen, and between Copenhagen and Amsterdam. But if another player manages to claim the route between Copenhagen and Stockholm before you, your train line would have to use some other routes, e.g. by going to Copenhagen via Oslo.</p>\n<p>In this problem, we will consider the rather bold strategy of trying to complete all four assignments (typically, this will be quite hard). As a preliminary assessment of the difficulty of achieving this, we would like to calculate the minimum cost of setting up all four lines assuming that none of the other players interfere with our plans. Your job is to write a program to determine this minimum cost.</p>",
+  "input": "<p>The input consists of several (at most 20) games to be analyzed. Each game starts with two integers 1 ≤ n ≤ 30, 0 ≤ m ≤ 1 000, giving the number of cities and railway routes in the map, respectively. Then follow n lines, giving the names of the n cities. City names are at most 20 characters long and consist solely of lower case letters (’a’-’z’).</p>\n<p>After this follow m lines, each containing the names of two different cities and an integer 1 ≤ c ≤ 10 000, indicating that there is a railway route with cost c between the two cities. Note that there may be several railway routes between the same pair of cities. You may assume that it is always possible to set up a train line from any city to any other city.</p>\n<p>Finally, there will be four lines, each containing the names of two cities, giving the four train line assignments.</p>\n<p>The input is terminated by a case where n = m = 0. This case should not be processed.</p>",
+  "output": "<p>For each game, output a single line containing a single integer, the minimum possible cost to set up all four train lines.</p>",
+  "samples": [
+    {
+      "input": "10 15\nstockholm\namsterdam\nlondon\nberlin\ncopenhagen\noslo\nhelsinki\ndublin\nreykjavik\nbrussels\noslo stockholm 415\nstockholm helsinki 396\noslo london 1153\noslo copenhagen 485\nstockholm copenhagen 522\ncopenhagen berlin 354\ncopenhagen amsterdam 622\nhelsinki berlin 1107\nlondon amsterdam 356\nberlin amsterdam 575\nlondon dublin 463\nreykjavik dublin 1498\nreykjavik oslo 1748\nlondon brussels 318\nbrussels amsterdam 173\nstockholm amsterdam\noslo london\nreykjavik dublin\nbrussels helsinki\n2 1\nfirst\nsecond\nfirst second 10\nfirst first\nfirst first\nsecond first\nfirst first\n0 0\n",
+      "output": "3907\n10\n"
+    }
+  ],
+  "hint": "<p>Ticket to Ride is copyrighted by Days of Wonder, Inc.</p>",
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2006",
+  "level": 0,
+  "tags": [
+    "data_structures",
+    "dp",
+    "floyd_warshall",
+    "graphs",
+    "mst",
+    "shortest_path",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

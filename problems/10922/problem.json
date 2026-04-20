@@ -1,0 +1,26 @@
+{
+  "id": 10922,
+  "title": "말",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>만수르는 조상들과 마찬가지로 말을 키우는 것을 좋아한다. 그는 카자흐스탄에서 말을 제일 많이&nbsp;갖고 있다. 그렇지만 꼭 항상 그랬던 것은 아닌데, N년 전에만 해도 만수르는 그저 젊은이일 뿐이어서 말이 한마리밖에 없었다. 만수르는 돈을 많이 벌어서 부자가 되고 싶었다.</p>\r\n\r\n<p>시간순으로 매 해를 0번 해부터 N-1번 해로 번호를 매기자. (즉, N-1번 해가 가장 최근이다.) 해마다 날씨는 말이 자라는데 영향을 미친다. 만수르가 기억하기로는, i번 해에 말의 마릿수가 늘어난 비율은 양의 정수 X[i]이다. 만약 i번 해 연초에 말이 h마리가 있었다면, 그 해 연말에는 말이 모두 h&times;X[i]마리가 된다.</p>\r\n\r\n<p>말은 매해 연말에만 팔 수 있다. 만수르가 기억하기로 i번 해의 말값은 양의 정수 Y[i]였다. 즉, 매해 연말에 갖고 있는 말 중 팔 수 있는 말의 수에는 제약이 없고, 말 한마리 값은 Y[i]로 모두 같다.</p>\r\n\r\n<p>만수르는 지난 N년 동안, 말을 파는 시기를 잘 정했다면 얼마나 많은 돈을 벌 수 있었을지가 궁금해졌다. 당신이 만수르를 방문했을 때 이 질문을 받게 되었다.</p>\r\n\r\n<p>저녁동안 만수르의 기억은 점점 정확해져서, 총 M번의 수정을 하게 된다. 수정을 한 번 할 때마다 X[i]의 값 중 하나, 또는 Y[i]의 값 중 하나가 바뀐다. 수정을 한 번 할 때마다 만수르는 말을 팔아 서 벌 수 있는 돈의 최댓값을 물어본다. 만수르가 수정할 때마다, 수정된 내용들은 누적된다. 즉, 만수르에게 대답할 때는 지금까지 만수르가 한 수정들을 모두 반영해야 한다. 한 X[i] 또는 Y[i]가 여러 번 수정되는 경우도 가능하다.</p>\r\n\r\n<p>만수르의 질문에 대한 답은 매우 큰 수일 수 있다. 큰 수를 다룰 때 생기는 문제를 피하기 위해서, 답을 10<sup>9</sup>+7로 나눈 나머지를 알려주면 된다.</p>\r\n\r\n<p>N = 3년에 대해서 다음과 같은 정보가 주어졌다고 하자.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:20%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>&nbsp;</th>\r\n\t\t\t<th>0</th>\r\n\t\t\t<th>1</th>\r\n\t\t\t<th>2</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th>X</th>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>3</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th>Y</th>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>4</td>\r\n\t\t\t<td>1</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>이 초기 정보를 가지고, 만수르는 1번 해 연말에 모든 말을 다 팔았다면 가장 많은 돈을 벌 수 있다. 전체 과정은 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>처음에 만수르는 말이 한 마리 있다.</li>\r\n\t<li>0번 해 연말에 만수르는 1&times;X[0] = 2마리의 말이 있다.</li>\r\n\t<li>1번 해 연말에 만수르는 2&times;X[1] = 2마리의 말이 있다.</li>\r\n\t<li>이제 말 두 마리를 모두 팔 수 있다. 전체 이익은 2&times;Y[1] = 8이다.</li>\r\n</ul>\r\n\r\n<p>이제, M = 1번 수정을 하여 Y[1]이 2로 바뀌었다.</p>\r\n\r\n<p>수정 후의 정보는 다음과 같다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:20%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>&nbsp;</th>\r\n\t\t\t<th>0</th>\r\n\t\t\t<th>1</th>\r\n\t\t\t<th>2</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th>X</th>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>3</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th>Y</th>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>1</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>이 경우, 최적해 중 하나는 한 마리를 0번 해 연말에 팔고 2번 해 연말에 세 마리를 파는 것이다. 전체 과정은 다음과 같다</p>\r\n\r\n<ul>\r\n\t<li>처음에 만수르는 말이 한 마리 있다.</li>\r\n\t<li>0번 해 연말에 만수르는 1&times;X[0] = 2마리의 말이 있다.</li>\r\n\t<li>이제 이 중 한 마리를 Y[0] = 3에 팔 수 있고, 한 마리가 남아 있다.</li>\r\n\t<li>1번 해 연말에 만수르는 1&times;X[1] = 1마리의 말이 있다.</li>\r\n\t<li>2번 해 연말에 만수르는 1&times;X[2] = 3마리의 말이 있다.</li>\r\n\t<li>이제 말 세 마리를 모두 3&times;Y[2] = 3에 팔 수 있다. 전체 이익은 3 + 3 = 6이다.</li>\r\n</ul>\r\n\r\n<p>N, X, Y와 수정된 내용의 리스트가 주어진다. 첫 번째 수정을 하기 전과, 매번 수정을 한 다음에 대해서 만수르가 말을 팔아서 벌 수 있는 돈의 최댓값을 10<sup>9</sup>+7로 나눈 나머지를 구하라. 이를 위해서 함수 init, updateX, updateY를 구현해야 한다.</p>\r\n\r\n<ul>\r\n\t<li>init(N, X, Y) &mdash; 그레이더는 이 함수를 맨 처음 정확히 한 번 호출한다.\r\n\t<ul>\r\n\t\t<li>N: 전체 해 수</li>\r\n\t\t<li>X: 길이 N인 배열. 0 &le; i &le; N-1일 때, X[i]는 i번 해 연말에 말의 마릿수가 늘어난 비율이다.</li>\r\n\t\t<li>Y: 길이 N인 배열. 0 &le; i &le; N-1일 때, Y[i]는 i번 해 연말에 말 한마리의 값이다.</li>\r\n\t\t<li>X와 Y는 만수르가 처음에 준 값을 나타낸다. (수정을 하기 전의 값)</li>\r\n\t\t<li>init 함수가 종료한 후, 배열 X와 Y는 유효한 주소에 있으며, 원한다면 이 배열의 내용을 수정할 수 있다.</li>\r\n\t\t<li>이 함수는 X와 Y의 초기값을 가지고 만수르가 말을 팔아서 벌 수 있는 돈의 최댓값을 10<sup>9</sup>+7로 나눈 나머지를 리턴해야 한다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>updateX(pos, val)\r\n\t<ul>\r\n\t\t<li>pos: 0, ..., N-1 범위 내의 정수.</li>\r\n\t\t<li>val: X[pos]의 새로운 값.</li>\r\n\t\t<li>이 함수는 주어진 정보에 따라 수정을 한 후, 만수르가 말을 팔아서 벌 수 있는 돈의 최댓값을 10<sup>9</sup>+7로 나눈 나머지를 리턴해야 한다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>updateY(pos, val)\r\n\t<ul>\r\n\t\t<li>pos: 0, ..., N-1 범위 내의 정수.</li>\r\n\t\t<li>val: Y[pos]의 새로운 값.</li>\r\n\t\t<li>이 함수는 주어진 정보에 따라 수정을 한 후, 만수르가 말을 팔아서 벌 수 있는 돈의 최댓값을 10<sup>9</sup>+7로 나눈 나머지를 리턴해야 한다.</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>모든 X[i]와 Y[i]의 값은 항상 (즉, 처음에도, 매번 수정을 한 다음에도) 1이상 10<sup>9</sup>이하를 만족한다.</p>\r\n\r\n<p>init을 호출한 후, 그레이더는 updateX와 updateY를 여러 번 호출할 것이다. updateX와 updateY의 전체 호출 회수는 M이다.</p>\r\n",
+  "input": "<ul>\r\n\t<li>1번 줄: N</li>\r\n\t<li>2번 줄: X[0] &hellip; X[N - 1]</li>\r\n\t<li>3번 줄: Y[0] &hellip; Y[N - 1]</li>\r\n\t<li>4번 줄: M</li>\r\n\t<li>5 ~ M + 4번 줄: type pos val에 해당하는 세 숫자 (type=1이면 updateX이고 type=2이면 updateY).</li>\r\n</ul>\r\n",
+  "output": "<p>처음 init의 리턴값을 출력하고, 차례로 updateX와 updateY의 모든 호출에 대한 리턴값을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3\n2 1 3\n3 4 1\n1\n2 1 2\n",
+      "output": "8\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, International Olympiad in Informatics, IOI 2015, Day 2",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "set"
+  ],
+  "accepted_user_count": 70,
+  "submission_count": null,
+  "average_tries": 4.071400165557861
+}

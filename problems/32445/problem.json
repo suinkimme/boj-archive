@@ -1,0 +1,38 @@
+{
+  "id": 32445,
+  "title": "Bike Parking",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Sanne recently conceived a lucrative business idea: renting out premium bike parking at the Eindhoven train station. To maximize her profits, she divided the bike parking slots into $N$ different tiers, numbered from $0$ to $N-1$. Tier 0, the premium tier, is located very close to the train platforms. Higher-numbered tiers consist of parking slots that are worse (the higher the tier, the worse the slot). The number of slots in tier $t$ is $x_t$.</p>\n<p>Users parking their bikes are assigned their parking slot via an app. Each user has a subscription level and expects a parking slot in the corresponding tier. However, the terms of service do not guarantee users a slot in their respective tier.</p>\n<p>If a user with subscription level $s$ is assigned a slot in tier $t$, then one of the following three things happens:</p>\n<ol>\n<li>If $t &lt; s$, the user will be happy and upvote the app.</li>\n<li>If $t = s$, the user will be satisfied and will not do anything.</li>\n<li>If $t &gt; s$, the user will be angry and downvote the app.</li>\n</ol>\n<p>Today, Sanne's app has $y_0+y_1+\\ldots+y_{N-1}$ users, where $y_s$ is the number of users with subscription level $s$. She needs your help to assign the users to the parking slots. Each user should get exactly one slot. No slot can be assigned to more than one user, but it is okay for some parking slots to not be assigned to any users. Furthermore, the total number of users does not exceed the total number of available parking slots.</p>\n<p>Sanne wants to maximize the rating of her app. Let $U$ be the number of upvotes and $D$ be the number of downvotes. Your task is to maximize $U-D$.</p>",
+  "input": "<p>The first line contains one integer $N$, the number of tiers or subscription levels.</p>\n<p>The second line contains $N$ integers $x_0, x_1, \\ldots, x_{N-1}$, the number of slots in the different tiers.</p>\n<p>The third line contains $N$ integers $y_0, y_1, \\ldots, y_{N-1}$, the number of users with each subscription level.</p>",
+  "output": "<p>Output one integer, the maximum possible value of $U-D$ by assigning the users to parking slots optimally.</p>",
+  "samples": [
+    {
+      "input": "2\n3 3\n1 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3\n1 1 1\n1 1 1\n",
+      "output": "1\n"
+    },
+    {
+      "input": "6\n1 0 1 1 0 1\n1 1 0 0 1 0\n",
+      "output": "1\n"
+    },
+    {
+      "input": "4\n2 1 1 8\n0 4 4 0\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "1\n1000000000\n1000000000\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p>Note that some of the samples are not valid input for all test groups. The $i$th sample is at least valid for the $i$th test group.</p>\n<p>In the first sample, you can assign the user with subscription level 0 to a tier 0 slot, assign two users of level 1 to tier 0 slots (leading to 2 upvotes), and assign the remaining level 1 user to a tier 1 slot. This leads to a rating of $2$.</p>\n<p>In the second sample, you can assign the level 1 user to the tier 0 slot, the level 2 user to the tier 1 slot, and the level 0 user to the tier 2 slot. This gives 2 upvotes and 1 downvote, leading to a rating of $1$.</p>\n<p>In the third sample, you can assign the level 1 user to the tier 0 slot, the level 0 user to the tier 2 slot, and the level 4 user to the tier 3 slot. This again gives 2 upvotes and 1 downvote, leading to a rating of $1$.</p>\n<p>The fourth sample is illustrated below. You can assign the users of level 1 to slots of tiers 0, 0, 3 and 3, leading to 2 upvotes and 2 downvotes. Next, assign the users of level 2 to slots of tiers 1, 2, 3 and 3, leading to 1 upvote and 2 downvotes. This amounts to 3 upvotes and 4 downvotes, so the rating is $-1$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 512px; height: 243px;\"/></p>\n<p>In the fifth sample, you can assign everyone to a slot matching their own subscription level, so the rating is $0$.</p>",
+  "source": "Olympiad, European Girls' Olympiad in Informatics, EGOI 2024, Day 2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

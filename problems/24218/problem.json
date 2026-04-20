@@ -1,0 +1,24 @@
+{
+  "id": 24218,
+  "title": "Double Crypt  1",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The Advanced Encryption Standard (AES) involves a new strong encryption algorithm. It works with three <em>blocks</em> of $128$ bits. Given a message block $p$ (plaintext) and a key block $k$, the AES encryption function $E$ returns an encrypted block $c$ (ciphertext):</p>\n<p>$c = E(p, k)$.</p>\n<p>The inverse of the AES encryption function $E$ is the decryption function $D$ such that</p>\n<p>$D ( E(p, k), k ) = p$, $E ( D(c, k), k ) = c$.</p>\n<p>In <em>Double AES</em>, two independent key blocks $k_1$ and $k_2$ are used in succession, first $k_1$, then $k_2$:</p>\n<p>$c_2 = E ( E(p, k_1), k_2 )$.</p>\n<p>In this task, an integer $s$ is also given. Only the leftmost $4 \\times s$ bits of all keys are relevant, while the other bits (the rightmost $128$ minus $4 \\times s$ bits) are all zero.</p>\n<p>You are to recover the encryption key pairs for some messages encrypted by Double AES. You are given both the plaintext $p$ and the corresponding double-encrypted ciphertext $c_2$, and the structure of the encryption keys as expressed by the integer $s$.</p>\n<p>You must submit the recovered keys, and not a recovery program.</p>",
+  "input": "<p>You are given ten problem instances in the text files named <code>double1.in</code> to <code>double10.in</code>. Each input file consists of three lines. The first line contains the integer $s$, the second line the plaintext block $p$, and the third line the ciphertext block $c_2$ obtained from $p$ by Double AES encryption. Both blocks are written as strings of 32 hexadecimal digits ('<code>0</code>'..'<code>9</code>', '<code>A</code>'..'<code>F</code>'). The library provides a routine to convert strings to blocks. All input files are solvable.</p>",
+  "output": "<p>The first line contains the key block $k_1$, and the second line the key block $k_2$, such that </p>\n<p>$c_2 = E ( E(p, k_1), k_2 )$.</p>\n<p>Both blocks must be written as strings of 32 hexadecimal digits ('<code>0</code>'..'<code>9</code>', '<code>A</code>'..'<code>F</code>'). If there are multiple solutions, you need submit only one of them.</p>",
+  "samples": [
+    {
+      "input": "1\n00112233445566778899AABBCCDDEEFF\n6323B4A5BC16C479ED6D94F5B58FF0C2\n",
+      "output": "A0000000000000000000000000000000\n70000000000000000000000000000000\n"
+    }
+  ],
+  "hint": "<p>A good program can recover keys in less than 10 seconds for any allowed input file.</p>",
+  "source": "Olympiad, International Olympiad in Informatics, IOI 2001, Day 2",
+  "level": 0,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 464,
+  "submission_count": null,
+  "average_tries": 1.3944000005722046
+}

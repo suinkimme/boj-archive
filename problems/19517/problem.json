@@ -1,0 +1,31 @@
+{
+  "id": 19517,
+  "title": "Less Time, More Profit",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The city planners have plans to build $N$ plants in the city which has $M$ shops. Each of the plants can be either built or left in the planning stage.</p>\n<p>Each shop requires products from some set of plants to operate. If all plants required by shop $j$ are built, the shop will make an instant one-time profit of $\\mathit{pro}_j$ units. Once a plant is built, it will produce enough product to support all shops which depend on it.</p>\n<p>Building $i$-th plant needs investment of $\\mathit{pay}_i$ units, and it takes $t_i$ days. Two or more plants can be built simultaneously, so that the time for building multiple plants is the maximum of their building times $t_i$.</p>\n<p>The city planners have enough resources to build all plants, but they want to make a net profit. Specifically, they want to select and build a subset of plants such that the total profit of the shops served minus the total cost of the plants built is at least $L$ units, or find out that it is impossible.</p>\n<p>First, find the least possible number of days $t$ such that it is possible to make a profit of at least $L$ units in $t$ days. After that, find the highest possible profit $p$ you can make in $t$ days.</p>",
+  "input": "<p>The first line of input contains three integers $N$, $M$ and $L$: the number of possible plants, the number of shops and the required profit ($1 \\le N, M \\le 200$, $1 \\le L \\le 10^9$).</p>\n<p>Then follow $N$ lines. Each of them describes a plant and contains two integers $\\mathit{pay}_i$ and $t_i$: the investment and building time of $i$-th plant ($1 \\le \\mathit{pay}_i \\le 3 \\cdot 10^4$, $1 \\le t_i \\le 10^9$).</p>\n<p>After that, $M$ lines follow. Each of them describes a shop and starts with an integer profit $\\mathit{pro}_j$ ($1 \\le \\mathit{pro}_j \\le 1.2 \\cdot 10^5$). Then goes an integer $k_j$ which is the number of plants required for shop $j$ to operate ($0 \\le k_j \\le N$). It is followed by $k_j$ pairwise distinct integers $\\mathit{plant}_{j, 1}$, $\\mathit{plant}_{j, 2}$, $\\ldots$, $\\mathit{plant}_{j, k_j}$ which are the indices of plants required for shop $j$ to operate ($1 \\le \\mathit{plant}_{j, r} \\le N$).</p>",
+  "output": "<p>If the required plan exists, print two integers $t$ and $p$: $t$ must be the least number of days in which it is possible to make a profit of at least $L$ units, and $p$ must be the maximum profit that can be made in $t$ days.</p>\n<p>If a plan which makes a profit of at least $L$ units does not exist, print \"<code>impossible</code>\".</p>",
+  "samples": [
+    {
+      "input": "1 1 2\n1 5\n3 1 1\n",
+      "output": "5 2\n"
+    },
+    {
+      "input": "1 1 3\n1 5\n3 1 1\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2016, Day 8: DPRK Contest",
+  "level": 22,
+  "tags": [
+    "binary_search",
+    "flow",
+    "mfmc",
+    "graphs"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

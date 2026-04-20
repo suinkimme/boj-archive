@@ -1,0 +1,31 @@
+{
+  "id": 24987,
+  "title": "Expedition Plans",
+  "time_limit": "10 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The International Company of Pipes and Cables runs an internet cable across the Pacific. However, it has stopped working! But wait, no need to panic, this is not unexpected, being sometimes caused by shark attacks. The cable is composed of a sequence of N + 1 segments, with a repeater between each pair of consecutive segments. Repeaters are identified by distinct integers from 1 to N, from left to right, according to their positions within the cable.</p>\n<p>A signal is transmitted from left to right along the cable. A repeater is said to be <em>offline</em> if no signal reaches the repeater; this indicates that there is a faulty segment <em>before</em> the repeater. On the contrary, a repeater is said to be <em>online</em> if the repeater receives data; this indicates that there is a failing segment <em>after</em> the repeater. The technical staff has determined that there is a single faulty segment. To locate and fix it, an expedition is required.</p>\n<p>An expedition starts at repeater 1 and repeats the following three steps until the faulty segment is located: sail to some repeater, dive to that repeater, and diagnose whether the signal is reaching that repeater or not. The failing segment is located if the signal is reaching its first endpoint but not its second endpoint. Once the faulty segment is recognized, it is repaired.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 326px; height: 157px;\"/></p>\n<p>An expedition plan defines how the trip will happen based on the diagnoses that are made along the way. The picture above shows a possible scenario with N = 3 repeaters (that is, N + 1 = 4 segments). Five possible expedition plans for this case follow:</p>\n<ol>\n<li>Diagnose repeater 2. If it’s offline, then diagnose repeater 1 to decide which of the first two segments is the faulty segment. On the contrary, if repeater 2 is online, then diagnose repeater 3 to decide which of the last two segments is failing.</li>\n<li>Diagnose in order repeaters 1, 2, and 3, stopping early when the failing segment is found.</li>\n<li>Diagnose in order repeaters 1, 3, and 2, stopping early when the failing segment is found.</li>\n<li>Diagnose in order repeaters 3, 1, and 2, stopping early when the failing segment is found.</li>\n<li>Diagnose in order repeaters 3, 2, and 1, stopping early when the failing segment is found.</li>\n</ol>\n<p>The total cost of an expedition is composed of sailing cost, diving cost, and fixing cost. The sailing cost is proportional to the distance sailed. The diving cost for each dive is proportional to the depth of the repeater. The fixing cost for the failing segment depends on the terrain it is laid across. In our example, the costs of the first-mentioned expedition plan would be as follows:</p>\n<ul>\n<li>If the first segment is failing, the expedition sails to repeater 2, dives, sails back to repeater 1, dives, and repairs the segment. So the sailing cost is 1 + 1 = 2, the diving cost is 8 + 3 = 11, and the fixing cost is 7, for a total of 2 + 11 + 7 = 20.</li>\n<li>If the second segment is failing, the total cost is (1 + 1) + (8 + 3) + (1) = 14.</li>\n<li>If the third segment is failing, the total cost is (1 + 1) + (8 + 2) + (2) = 14.</li>\n<li>If the fourth segment is failing, the total cost is (1 + 1) + (8 + 2) + (12) = 24.</li>\n</ul>\n<p>Due to the high affinity between network disruptions and Murphy’s Law, the most accurate cost estimation for an expedition plan is the maximum it can reach. That is, we should consider that the failing segment is always the one that makes the expedition have maximum cost. Thus, the estimated cost of the first expedition plan is 24. Your task is to find the minimum estimated cost among all expedition plans. In our example, the expedition plan that diagnoses in order repeaters 1, 3 and 2 would have total costs of 10, 17, 18, or 19, depending on the failing segment. This means its estimated cost is 19, which is the minimum among all expedition plans.</p>",
+  "input": "<p>The first line contains an integer N (2 ≤ N ≤ 3000) indicating the number of repeaters. The second line contains N −1 integers S<sub>1</sub>, S<sub>2</sub>, . . . , S<sub>N−1</sub> (0 ≤ S<sub>i</sub> ≤ 10<sup>9</sup> for i = 1, 2, . . . , N − 1), where S<sub>i</sub> is the cost of sailing between repeaters i and i + 1. The third line contains N integers D<sub>1</sub>, D<sub>2</sub>, . . . , D<sub>N</sub> (0 ≤ D<sub>i</sub> ≤ 10<sup>9</sup> for i = 1, 2, . . . , N), such that D<sub>i</sub> is the cost of diving to repeater i. The last line contains N + 1 integers F<sub>1</sub>, F<sub>2</sub>, . . . , F<sub>N+1</sub> (0 ≤ F<sub>i</sub> ≤ 10<sup>9</sup> for i = 1, 2, . . . , N + 1), where F<sub>i</sub> is the cost of fixing the i-th segment.</p>",
+  "output": "<p>Output a single line with an integer indicating the minimum estimated cost among all expedition plans.</p>",
+  "samples": [
+    {
+      "input": "3\n1 1\n3 8 2\n7 1 2 12\n",
+      "output": "19\n"
+    },
+    {
+      "input": "2\n2\n5 1\n1 2 6\n",
+      "output": "12\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2021",
+  "level": 22,
+  "tags": [
+    "binary_search",
+    "data_structures",
+    "dp",
+    "segtree"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2
+}

@@ -1,0 +1,35 @@
+{
+  "id": 32312,
+  "title": "Copogonia",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Copogonia is a country with a set of n cities, which currently has n roads. The set of roads forms a convex polygon, hence the name of the country. Unfortunately, some of the citizens have been complaining about traveling times between cities. Due to the limited road system, there are always precisely two ways to travel between any pair of distinct cities (clockwise or counter-clockwise), and for some pairs of cities, even the shorter of the two possible routes seems like it takes too long.</p>\n<p>After many rounds of careful surveys, it's been determined that the citizens would be happy if no individual travel distance between a pair of cities exceeded length m, i.e., the path between any two cities has length m or less.</p>\n<p>The government of Copogonia has done extensive research and decided that they could potentially build up to k new roads where each road directly connects two cities that were not previously connected via a direct road with a distance equal to the straight line distance between the two cities. Each road, however, comes with a cost of development. Naturally, the government of Copogonia would like to minimize the cost of development while keeping all of its citizens happy. They have tasked you with finding the precise subset of roads to develop to achieve their goals.</p>\n<p>Given the locations on the Cartesian plane of the n cities of Copogonia (in the order they are connected with roads, noting that there is also a road from the last city to the first), a list of k potential additional roads that could be added (pair of cities and cost to build the road), and the maximum distance, m, that citizens are willing to travel on a single trip between pairs of cities, determine the minimal cost of developing a subset of roads that will keep the citizens of Copogonia happy.</p>",
+  "input": "<p>The first input line contains three space separated integers: n (4 ≤ n ≤ 50), indicating the number of cities in Copogonia, k (1 ≤ k ≤ 10), indicating the number of potential additional roads to build, and m, indicating the maximal travel distance between any pair of cities that the Copogonians are willing to tolerate.</p>\n<p>Each of the next n input lines contains two space separated integers, x<sub>i</sub> and y<sub>i</sub> (0 ≤ x<sub>i</sub>, y<sub>i</sub> ≤ 10<sup>4</sup>, 1 ≤ i ≤ n), indicating the location of city i on the Cartesian grid (assume that no two cities are at the same location). There is a straight line road connecting city i to city i+1 (1 ≤ i ≤ n – 1) and a road connecting cities n and 1. Roads can be travelled in either direction.</p>\n<p>The potential roads that can be added are provided in the next k input lines. Each of these k input lines contains three space separated integers: u , v (1 ≤ u, v ≤ n, u ≠ v) and c (1 ≤ c ≤ 10<sup>8</sup>), indicating that a road could be added between city u and city v at a cost of c. It's guaranteed that there's currently no road from city u to v and that no two of the potential roads listed will be between the same pair of cities.</p>\n<p>Assume that:</p>\n<ul>\n<li>The input is such that at least one road must be added, i.e., with no extra roads the citizens are not happy (at least one of the shortest paths is greater than length m).</li>\n<li>If all of the potential roads are built, the citizens will be happy, i.e., all of the shortest paths will have length m or less.</li>\n<li>The value of m will be such that adding or subtracting 0.001 to m will not modify the answer.</li>\n</ul>",
+  "output": "<p>Print the minimum cost of a set of roads to build that would keep all the citizens of Copogonia happy.</p>",
+  "samples": [
+    {
+      "input": "4 2 15\n0 0\n0 10\n10 10\n10 0\n1 3 1000\n2 4 500\n",
+      "output": "1500\n"
+    },
+    {
+      "input": "5 3 2003\n0 0\n0 100\n1000 100\n2000 99\n1000 0\n2 4 50\n4 1 123\n3 5 47\n",
+      "output": "170\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, University of Central Florida, 2024 Local Programming Contest (Qualifying Round)",
+  "level": 13,
+  "tags": [
+    "graphs",
+    "bruteforcing",
+    "geometry",
+    "bitmask",
+    "shortest_path",
+    "dijkstra",
+    "floyd_warshall",
+    "pythagoras"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.357100009918213
+}

@@ -1,0 +1,35 @@
+{
+  "id": 19213,
+  "title": "Fibonacci's Nightmare",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Define a <em>random linear recursive sequence (RLRS)</em> as a sequence of random variables $a_0, a_1, \\ldots$ which is generated as follows. First, $a_0 = 1$. Then, for every $n$ starting from $1$, choose integers $i$ and $j$ independently and equiprobably from $[0; n-1]$, and set $a_n = a_i + a_j$ (note that at this moment, the values of $a_0$, $\\ldots$, $a_{n - 1}$ are already determined).</p>\n<p>For example, $a_1 = a_0 + a_0 = 2$, and $a_2$ is equally likely to be $a_0 + a_0$, $a_0 + a_1$, $a_1 + a_0$ and $a_1 + a_1$, thus it has 25% probability to be $2$, 50% to be $3$ and 25% to be $4$. After that, $a_3$ is equiprobably chosen from $a_0 + a_0$, $a_0 + a_1$, $a_0 + a_2$, $a_1 + a_0$, $a_1 + a_1$, $a_1 + a_2$, $a_2 + a_0$, $a_2 + a_1$, $a_2 + a_2$; and so on.</p>\n<p>You are to determine the variance of $n$-th term of RLRS.</p>\n<p>The <em>variance</em> of a random variable $X$ is defined as $\\mathbf{Var}(X) = \\mathbf{E}(X - \\mathbf{E}(X))^2$ (here $\\mathbf{E}(X)$ means <em>expectation</em> or <em>mean value</em> of the random variable $X$).</p>",
+  "input": "<p>The first line of input contains the integer $n$ ($0 \\leq n \\leq 10^6$).</p>",
+  "output": "<p>Let the variance of $a_n$ be a rational number equal to $U/V$ when cancelled to lowest terms (that is, $U$ and $V$ are integers, $V &gt; 0$ and the greatest common divisor of $U$ and $V$ is $1$). Output the number $X = (U \\cdot V^{-1}) \\bmod (10^9 + 7)$. That is, $X$ should satisfy the congruence $VX \\equiv U$ modulo $(10^9 + 7)$. It is guaranteed that such $X$ exists and is the only root of this equation with $0 \\leq X &lt; 10^9 + 7$.</p>",
+  "samples": [
+    {
+      "input": "1\n",
+      "output": "0\n"
+    },
+    {
+      "input": "2\n",
+      "output": "500000004\n"
+    },
+    {
+      "input": "5\n",
+      "output": "305555565\n"
+    }
+  ],
+  "hint": "<p>$a_1$ is always equal to $2$, so $\\mathbf{Var}(a_1) = 0$.</p>\n<p>$\\mathbf{Var}(a_2) = \\frac{1}{2}$.</p>\n<p>$\\mathbf{Var}(a_5) = \\frac{263}{36}$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2015, Day 9: Michael Tikhomirov Contest 1",
+  "level": 21,
+  "tags": [
+    "math",
+    "dp",
+    "probability",
+    "linearity_of_expectation"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.5262999534606934
+}

@@ -1,0 +1,28 @@
+{
+  "id": 18048,
+  "title": "Bookstore",
+  "time_limit": "7 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You own a very peculiar bookstore, which sells old books, but you store all of them on a single shelf, in random order, and you do not care about the books’ content. Nor do your clients – they tend to come into the store and simply ask for “all the books on that shelf, starting from <em>this</em> one and ending <em>here</em>”. To be precise, every client buys some connected (and non-empty) fragment of books from the shelf.</p>\n<p>Sometimes, though, you get more picky clients, who expect more from a book – actually, they expect it to have the right size. A picky client wants a fragment of shelf in which all the books have their height not smaller than <em>l</em> and not greater than <em>h</em>.</p>\n<p>Given a sequence of integers – the heights of all the books on the shelf – determine the number of possible connected fragments which satisfy these requirements.</p>\n<p>Also, we mentioned that the books are in random order. Formally, the input sequence was generated with the following program, for some values of <em>N</em> ∈ {1, 2, . . . , 100 000} and <em>M</em> = 10<em>q</em> with <em>q</em> ∈ {1, 2, . . . , 6}.</p>\n<pre>\nsrand48(N + M);\nfor (int i = 0; i &lt; N; ++i)\n    a[i] = 1 + lrand48() % M;</pre>\n<p>You do not actually need to know how the RAND48 library works. It is enough to assume that the function <code>lrand48</code> returns 31-bit non-negative integers picked uniformly at random.</p>",
+  "input": "<p>The first line of input contains the number of test cases <em>z</em> (1 ≤ <em>z</em> ≤ 5). The test cases follow, each one in the following format:</p>\n<p>The first line of a test case contains the number of books <em>n</em> and the number of picky clients <em>k</em> (1 ≤ <em>n</em> ≤ 200 000, 1 ≤ <em>k</em> ≤ 500 000).</p>\n<p>The second line contains a sequence of <em>n</em> positive integers not exceeding 1 000 000 – the heights of all the books, from the first (leftmost) to the last (rightmost) one.</p>\n<p>The final <em>k</em> lines describe the clients’ requirements. The <em>i</em>-th of these lines contains two integers <em>l<sub>i</sub></em>, <em>h<sub>i</sub></em> (1 ≤ <em>l<sub>i</sub></em> ≤ <em>h<sub>i</sub></em> ≤ 1 000 000), describing a client that wants books to be not smaller than <em>l<sub>i</sub></em> and not greater than <em>h<sub>i</sub></em>.</p>\n<p>The total number of books in all test cases does not exceed 600 000, and the total number of clients in all test cases does not exceed 1 500 000.</p>",
+  "output": "<p>For every client, output the number of non-empty connected fragments of the book sequence which safisty the client’s requirements.</p>",
+  "samples": [
+    {
+      "input": "2\n10 3\n9 9 3 2 1 9 6 9 1 7\n1 13\n6 6\n2 9\n5 1\n66575 45720 67904 18764 35162\n20000 80000\n",
+      "output": "55\n1\n17\n7\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, Poland Collegiate Programming Contest, AMPPZ 2019, Contest, Open Cup, 2019/2020 Season, Stage 8: Grand Prix of Poland",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "divide_and_conquer",
+    "randomization",
+    "segtree",
+    "stack"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.8181999921798706
+}

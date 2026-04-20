@@ -1,0 +1,32 @@
+{
+  "id": 13625,
+  "title": "Boss",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Everyone knows Iks, the last trend in social network, which made so much success that competitors like Facebook and Google+ are strugling to keep their own social networks in business. As several “.com” companies, Iks started in a small garage, but today employs hundreds of thousands.</p>\n<p>Iks has also a non-standard management system. For example, there are no committees or boards, which means less time spent on internal meetings. However, as usual in other companies, there is a chain (or rather several chains) of command, as a person may manage other employees, and may be managed by other employees. The figure below shows the chain of command for some employees, along with their ages.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:181px; width:612px\"/></p>\n<p>A person P<sub>1</sub> may manage another person P<sub>2</sub> directly (when P<sub>1</sub> is the immediate superior of P<sub>1</sub>) or indirectly (when P<sub>1</sub> manages direclty a person P<sub>3</sub> who manages P<sub>2</sub> directly or indirectly). For example, in the figure above, Alice manages David directly and Claire indirectly. A person does not manage himself/herself, either directly or indirectly.</p>\n<p>One folklore that developed in Wall Street is that Iks is so successfull because in its chain of command a manager is always younger than the managed employee. As we can see in figure above, that is not true. But this folklore prompted Iks to develop a tool to study its own management system, and to understand whether age plays a role in its success. You have been hired to work on that tool.</p>\n<p>Given the description of the chain of command at Iks and the ages of its employees, write a program that answers a series of instructions. Instructions are of two types: management change and query. An instruction of management change swaps the positions of two employees A and B. As an example, figure (b) above shows the resulting chain of command when David and George change their respective positions in the chain of command. A query instruction names one employee A and asks the age of the youngest manager of A; that is, the youngest person in the chain of command at Iks that manages A, either directly or indirectly. For example, in figure (a) above the youngest manager of Clara is 18 years old; in figure (b), the youngest manager of Clara is 21 years old.</p>",
+  "input": "<p>Each test case is described using several lines. The first line of a test case contains three integers N, M and I, representing respectively the number of employees, the number of direct manage relations and the number of instructions. Employees are identified by numbers from 1 to N. The second line contains N integers K<sub>i</sub>, where K<sub>i</sub> indicates the age of the employee number i.</p>\n<p>Each of the following M lines contains two integers X and Y, indicating that X manages Y directly. Then it follows I lines, each describing an instruction. An instruction of type management change is described by a line containing the identifier T followed by two integers A and B, indicating the two employers that must swap places in the chain of command. An instruction of type query is described by a line containing the identifier P followed by one integer E, representing the number of an employer. The last instruction is of type query.</p>\n<p>Restrictions</p>\n<ul>\n<li>1 ≤ N ≤ 500</li>\n<li>0 ≤ M ≤ 60 × 10<sup>3</sup></li>\n<li>1 ≤ I ≤ 500</li>\n<li>1 ≤ K<sub>i</sub> ≤ 100, for 1 ≤ i ≤ N</li>\n<li>1 ≤ X, Y ≤ N, X ≠ Y</li>\n<li>1 ≤ A, B ≤ N</li>\n<li>1 ≤ E ≤ N</li>\n</ul>",
+  "output": "<p>For each instruction of type query your program must print a single line containing a single integer, the age of the employee who is the youngest person that manages the employer named in the query (directly or indirectly), if that person exists. If the employee does not have a manager, print an * (asterisc).</p>",
+  "samples": [
+    {
+      "input": "7 8 9\n21 33 33 18 42 22 26\n1 2\n1 3\n2 5\n3 5\n3 6\n4 6\n4 7\n6 7\nP 7\nT 4 2\nP 7\nP 5\nT 1 4\nP 7\nT 4 7\nP 2\nP 6\n",
+      "output": "18\n21\n18\n18\n*\n26\n"
+    },
+    {
+      "input": "6 5 6\n10 20 30 40 50 60\n1 5\n1 4\n3 6\n2 5\n4 5\nP 1\nP 5\nP 6\nT 1 6\nP 1\nP 4\n",
+      "output": "*\n10\n30\n30\n60\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Sub-Regional Brasil do ACM ICPC, A Primeira Fase da Maratona de Programação 2013",
+  "level": 13,
+  "tags": [
+    "dp",
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "dfs"
+  ],
+  "accepted_user_count": 43,
+  "submission_count": null,
+  "average_tries": 2.5116000175476074
+}

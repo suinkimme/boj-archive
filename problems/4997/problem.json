@@ -1,0 +1,22 @@
+{
+  "id": 4997,
+  "title": "Name the Crossing",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The city of Kyoto is well-known for its Chinese plan: streets are either North-South or East-West. Some streets are numbered, but most of them have real names. </p>\n<p>Crossings are named after the two streets crossing there, e.g. Kawaramachi-Sanjo is the crossing of Kawaramachi street and Sanjo street. But there is a problem: which name should come first? At first the order seems quite arbitrary: one says Kawaramachi-Sanjo (North-South first) but Shijo-Kawaramachi (East-West first). With some experience, one realizes that actually there seems to be an \"order\" on the streets, for instance in the above Shijo is \"stronger\" than Kawaramachi, which in turn is \"stronger\" than Sanjo. One can use this order to deduce the names of other crossings.</p>\n<p>You are given as input a list of known crossing names X-Y. Streets are either North-South or East-West, and only orthogonal streets may cross.</p>\n<p>As your list is very incomplete, you start by completing it using the following rule:</p>\n<ul>\n<li>two streets A and B have equal strength if (1) to (3) are all true:\n\t<ol>\n<li>they both cross the same third street C in the input</li>\n<li>there is no street D such that D-A and B-D appear in the input</li>\n<li>there is no street E such that A-E and E-B appear in the input</li>\n</ol>\n</li>\n</ul>\n<p>We use this definition to extend our strength relation:</p>\n<ul>\n<li>A is stronger than B, when there is a sequence A = A1, A2, ..., An = B, with n at least 2,<br/>\n\twhere, for any i in 1 .. n-1, either Ai-Ai+1 is an input crossing or Ai and Ai+1 have equal strength.</li>\n</ul>\n<p>Then you are asked whether some other possible crossing names X-Y are valid. You should answer affirmatively if you can infer the validity of a name, negatively if you cannot. Concretely:</p>\n<ul>\n<li>YES if you can infer that the two streets are orthogonal, and X is stronger than Y</li>\n<li>NO otherwise</li>\n</ul>",
+  "input": "<p>The input is a sequence of data sets, each of the form</p>\n<pre>\nN\nCrossing1\n...\nCrossingN\nM\nQuestion1\n...\nQuestionM</pre>\n<p>Both Crossings and Questions are of the form</p>\n<pre>\nX-Y</pre>\n<p>where X and Y are strings of alphanumerical characters, of lengths no more than 16. There is no white space, and case matters for alphabetical characters. </p>\n<p>N and M are between 1 and 1000 inclusive, and there are no more than 200 streets in a data set.</p>\n<p>The last data set is followed by a line containing a zero.</p>",
+  "output": "<p>The output for each data set should be composed of M+1 lines, the first one containing the number of streets in the Crossing part of the input, followed by the answers to each question, either YES or NO without any spaces.</p>",
+  "samples": [
+    {
+      "input": "7\nShijo-Kawaramachi\nKarasuma-Imadegawa\nKawaramachi-Imadegawa\nNishioji-Shijo\nKarasuma-Gojo\nTorimaru-Rokujo\nRokujo-Karasuma\n6\nShijo-Karasuma\nImadegawa-Nishioji\nNishioji-Gojo\nShijo-Torimaru\nTorimaru-Gojo\nShijo-Kawabata\n4\n1jo-Midosuji\nMidosuji-2jo\n2jo-Omotesando\nOmotesando-1jo\n4\nMidosuji-1jo\n1jo-Midosuji\nMidosuji-Omotesando\n1jo-1jo\n0\n",
+      "output": "8\nYES\nNO\nYES\nNO\nYES\nNO\n4\nYES\nYES\nNO\nNO\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2004 Japan Domestic Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

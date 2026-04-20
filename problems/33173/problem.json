@@ -1,0 +1,32 @@
+{
+  "id": 33173,
+  "title": "マスキングテープ (Masking Tape)",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>JOI 君は，紙とマスキングテープを使い，色塗りをして遊んでいる．</p>\n<p>紙は長方形であり，縦 <var>H</var> 行，横 <var>W</var> 列のマス目が描かれている．上から <var>i</var> 行目 (<var>1 ≦ i ≦ H</var>)，左から <var>j</var> 列目 (<var>1 ≦ j ≦ W</var>) のマスをマス <var>(i, j)</var> と呼ぶ．</p>\n<p>それぞれのマスには色が <var>1</var> つ定められている．色は整数で表され，はじめすべてのマスの色は <var>0</var> である．</p>\n<p>JOI 君は，この紙とマスキングテープを用いて <var>Q</var> 回の操作を行う． <var>k</var> 回目 (<var>1 ≦ k ≦ Q</var>) の操作は，整数 <var>q<sub>k</sub></var> の値に応じて以下のように説明される．</p>\n<ul>\n<li><var>q<sub>k</sub> = 1</var> のとき，この操作は整数 <var>x<sub>k</sub>, y<sub>k</sub>, c<sub>k</sub></var> で表される．マス <var>(x<sub>k</sub>, y<sub>k</sub>)</var>, <var>(x<sub>k</sub> + 1, y<sub>k</sub>)</var>, <var>(x<sub>k</sub>, y<sub>k</sub> + 1)</var>, <var>(x<sub>k</sub> + 1, y<sub>k</sub> + 1)</var> それぞれについて，マスがマスキングテープで覆われていなければ，そのマスの色を <var>c<sub>k</sub></var> に変更する．マスがマスキングテープで覆われているならば，そのマスには何もしない．</li>\n<li><var>q<sub>k</sub> = 2</var> のとき，この操作は整数 <var>x<sub>k</sub>, y<sub>k</sub></var> で表される．マス <var>(x<sub>k</sub>, y<sub>k</sub>)</var>, <var>(x<sub>k</sub> + 1, y<sub>k</sub>)</var>, <var>(x<sub>k</sub>, y<sub>k</sub> + 1)</var>, <var>(x<sub>k</sub> + 1, y<sub>k</sub> + 1)</var> をマスキングテープで覆う．</li>\n</ul>\n<p><var>Q</var> 回の操作が終わった後，すべてのマスキングテープを剥がす．なお，あるマスのマスキングテープを剥がしたとき，そのマスの色はマスキングテープで覆われる直前の色と同じになる．</p>\n<p><var>Q</var> 回の操作の情報が与えられたとき，最終的な紙のすべてのマスの色を求めるプログラムを作成せよ．</p>",
+  "input": "<p>入力は以下の形式で与えられる．</p>\n<pre>\n<var>H</var> <var>W</var> <var>Q</var>\n(<var>Query 1</var>)\n(<var>Query 2</var>)\n<var>:</var>\n(<var>Query Q</var>)</pre>\n<p>各 (<var>Query k</var>) (<var>1 ≦ k ≦ Q</var>) にはいくつかの整数が空白区切りで書かれている．そのうち <var>1</var> 個目の整数が <var>q<sub>k</sub></var> であり，この行の内容は以下のいずれかである．</p>\n<ul>\n<li><var>q<sub>k</sub> = 1</var> のとき，この行には続いて <var>3</var> 個の整数 <var>x<sub>k</sub>, y<sub>k</sub>, c<sub>k</sub></var> が空白区切りで書かれている．</li>\n<li><var>q<sub>k</sub> = 2</var> のとき，この行には続いて <var>2</var> 個の整数 <var>x<sub>k</sub>, y<sub>k</sub></var> が空白区切りで書かれている．</li>\n</ul>",
+  "output": "<p>最終的な紙のすべてのマスの色を <var>H</var> 行で出力せよ．<var>i</var> 行目 (<var>1 ≦ i ≦ H</var>) には，<var>W</var> 個の整数を空白区切りで出力せよ．ここで，<var>j</var> 番目 (<var>1 ≦ j ≦ W</var>) に出力する整数はマス <var>(i, j)</var> の色とする．</p>",
+  "samples": [
+    {
+      "input": "5 5 4\n1 2 2 1\n2 1 2\n2 3 3\n1 1 3 5\n",
+      "output": "0 0 0 5 0\n0 1 1 5 0\n0 1 1 0 0\n0 0 0 0 0\n0 0 0 0 0\n"
+    },
+    {
+      "input": "5 5 3\n1 1 1 2\n1 3 3 3\n1 2 4 2\n",
+      "output": "2 2 0 0 0\n2 2 0 2 2\n0 0 3 2 2\n0 0 3 3 0\n0 0 0 0 0\n"
+    },
+    {
+      "input": "10 10 10\n2 5 7\n2 5 6\n1 5 6 1\n1 9 2 1\n2 1 1\n1 2 4 2\n2 3 2\n1 2 2 3\n1 9 9 2\n1 8 8 1\n",
+      "output": "0 0 0 0 0 0 0 0 0 0\n0 0 3 2 2 0 0 0 0 0\n0 0 0 2 2 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 1 1 0\n0 1 1 0 0 0 0 1 1 2\n0 1 1 0 0 0 0 0 2 2\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Japanese Olympiad in Informatics, Japanese Olympiad in Informatics Qualification Round, JOI 2024/2025 예선 2",
+  "level": 4,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 81,
+  "submission_count": null,
+  "average_tries": 1.3703999519348145
+}

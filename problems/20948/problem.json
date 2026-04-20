@@ -1,0 +1,42 @@
+{
+  "id": 20948,
+  "title": "Go와 함께하는 전화망 서비스",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>국렬이는 NAVER D2의 “Go와 함께하는 전화망 서비스 구축” 글을 보고 Go를 통해서 전화망 서비스를 구축하려고 한다. 국렬이는 양방향으로 소통이 가능하게 만들기 위해서 전화망을 무방향 완전 그래프 $G=(V,E)$로 구성할 것이다. 그래프의 정점은 접속한 사람을 의미하고, 간선은 접속한 사람들을 연결하는 역할을 가지고 있다. 각 간선 $(i,j) \\in E$에 대한 접속 속도는 $x_{i,j}$로 표기하며 각 값은 $0$ 이상 $1$ 이하의 실수 값을 가질 수 있다.</p>\n<p>NAVER는 적절하게 전화망 서비스의 접속 속도를 지정할 것이다. 전화망을 구축할 때 접속 속도의 합에 비례하는 구축 비용이 들기에 전화망에 있는 모든 간선의 속도의 합을 $\\left| V \\right| - 1$로 설정하였다. 또한, 한 사람에 너무 많은 통신이 몰리는 것을 막기 위해 정점 $v$와 인접한 모든 간선의 속도의 합은 $b_v$ 이하로 설정하였다. 통화망의 접속을 끊는 사람이 발생할 수 있으며 끊은 사람에 해당하는 노드와 인접한 모든 간선이 삭제된다. 이때, 어떤 사람들이 접속을 끊더라도 항상 전화망에 남은 모든 간선의 속도의 합이 (남은 사람의 수$\\,-\\,1$) 이하가 되도록 설정하였다. NAVER는 이 조건을 만족하는 전화망을 <strong>안정적인 전화망</strong>이라고 정의하였다.</p>\n<p>국렬이는 안정적인 전화망을 수학적으로 명확히 하기 위해서 몇 가지 집합 연산을 정의했다. $\\delta(v)$는 정점 $v$에 이웃한 간선의 집합이고, 정점의 부분 집합 $S$에 대해 $E(S)$는 양 끝점이 모두 $S$에 포함되는 간선의 집합이다. 이를 수학적으로 정의하면 다음과 같다.</p>\n<ul>\n<li>\n<p>$\\delta(v) = \\left\\{ (u,v) : u \\in V \\right\\}$</p>\n</li>\n<li>\n<p>$E(S) = \\left\\{ (u,v) : u \\in S, v \\in S \\right\\}$</p>\n</li>\n</ul>\n<p>NAVER가 정의한 <strong>안정적인 전화망</strong>은 다음 조건을 만족하는 무방향 완전 그래프 $G=(V,E)$에 대한 접속 속도 $x_{i,j}$를 의미한다.</p>\n<ul>\n<li>\n<p>$\\sum_{e \\in E} x_e = \\left| V \\right| - 1$를 만족해야 한다.</p>\n</li>\n<li>\n<p>크기가 $1$ 이상인 임의의 $S \\subseteq V$에 대해서 $\\sum_{e \\in E(S)} x_e \\le \\left| S \\right| - 1$를 만족해야 한다.</p>\n</li>\n<li>\n<p>임의의 정점 $v \\in V$에 대해서 $\\sum_{e \\in \\delta(v)} x_e \\le b_v$를 만족해야 한다.</p>\n</li>\n</ul>\n<p>국렬이는 전화망 서비스를 임의로 하나 만들었다. 그러나 국렬이는 귀찮아서 전화망 서비스가 안정적인지 확인하는 것을 대회를 치르는 여러분에게 맡기려고 한다. 여러분은 상금을 원한다면 국렬이의 전화망 서비스가 안정적인지 판단해야 한다.</p>",
+  "input": "<p>다음과 같이 입력이 주어진다.</p>\n<div style=\"background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;\">\n<p>$N$</p>\n<p>$b_1$ $b_2$ $\\cdots$ $b_N$</p>\n<p>$\\begin{matrix} x_{1,1} &amp; x_{1,2} &amp; \\cdots &amp; x_{1,N} \\\\ x_{2,1} &amp; x_{2,2} &amp; \\cdots &amp; x_{2,N} \\\\ \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\ x_{N,1} &amp; x_{N,2} &amp; \\cdots &amp; x_{N,N} \\end{matrix}$</p>\n</div>",
+  "output": "<p>전화망 서비스가 안정적이면 <span style=\"color:#e74c3c;\"><code>YES</code></span>를 출력하여라. 그렇지 않다면 <span style=\"color:#e74c3c;\"><code>NO</code></span>를 출력하여라.</p>",
+  "samples": [
+    {
+      "input": "3\n2 1 2\n0.0 0.5 1.0\n0.5 0.0 0.5\n1.0 0.5 0.0\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "3\n2 1 1\n0.0 0.5 1.0\n0.5 0.0 0.5\n1.0 0.5 0.0\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "4\n3 3 3 3\n0.0 1.0 1.0 0.0\n1.0 0.0 1.0 0.0\n1.0 1.0 0.0 0.0\n0.0 0.0 0.0 0.0\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "4\n3 3 3 3\n0.0 1.0 1.0 0.0\n1.0 0.0 1.0 0.0\n1.0 1.0 0.0 1.0\n0.0 0.0 1.0 0.0\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "4\n3 3 3 3\n0.0 1.0 0.0 0.0\n1.0 0.0 1.0 0.0\n0.0 1.0 0.0 1.0\n0.0 0.0 1.0 0.0\n",
+      "output": "YES\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 신촌지역 대학생 프로그래밍 대회 동아리 연합, 2021 신촌지역 대학생 프로그래밍 대회 동아리 연합 겨울 대회 (SUAPC 2021 Winter), lky7674, chogahui05, jh05013, jwvg0425, rdd6584",
+  "level": 23,
+  "tags": [
+    "graphs",
+    "flow",
+    "mfmc"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 2.1875
+}

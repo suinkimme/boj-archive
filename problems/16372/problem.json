@@ -1,0 +1,33 @@
+{
+  "id": 16372,
+  "title": "Chemical table",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Innopolis University scientists continue to investigate the periodic table. There are n · m known elements and they form a periodic table, a rectangle with n rows and m columns. Each element can be described by its coordinates (r, c) (1 ≤ r ≤ n, 1 ≤ c ≤ m) in the table. Recently scientists discovered that for every four different elements in this table that form a rectangle with sides parallel to sides of the table, if they have samples of three of four elements, they can produce a sample of the fourth element using nuclear fusion. So if we have elements in positions (r<sub>1</sub>, c<sub>1</sub>), (r<sub>1</sub>, c<sub>2</sub>), (r<sub>2</sub>, c<sub>1</sub>), where r<sub>1</sub> ≠ r<sub>2</sub> and c<sub>1</sub> ≠ c<sub>2</sub>, then we can produce element (r<sub>2</sub>, c<sub>2</sub>).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 416px; height: 142px;\"/></p>\n<p>Original samples of elements as well as newly crafted elements can be used again in future fusions.</p>\n<p>Innopolis University scientists already have samples of q elements. They want to obtain samples of all n·m elements. To achieve that, they will purchase some samples from other laboratories and then produce all remaining elements using arbitrary number of nuclear fusions in some order. Help them find the minimal number of elements they need to purchase.</p>",
+  "input": "<p>First line contains three integers n, m, q (1 ≤ n, m ≤ 200 000; 0 ≤ q ≤ min(n·m, 200 000))—chemical table dimensions and the number of elements scientists already have. Following q lines contain two integers r<sub>i</sub>, c<sub>i</sub> (1 ≤ r<sub>i</sub> ≤ n, 1 ≤ c<sub>i</sub> ≤ m) each—descriptions of the elements that scientists already have. All elements in the input are different.</p>",
+  "output": "<p>In the only line print k—the minimal number of elements to be purchased.</p>",
+  "samples": [
+    {
+      "input": "2 2 3\n1 2\n2 2\n2 1\n",
+      "output": "0\n"
+    },
+    {
+      "input": "1 5 3\n1 3\n1 1\n1 5\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 3 6\n1 2\n1 3\n2 2\n2 3\n3 1\n3 3\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": "<p>Pictures below explain examples.</p>\n<p>The first picture for each example describes the initial set of element samples available. Black crosses represent elements available in the lab initially.</p>\n<p>The second picture describes how remaining samples can be obtained. Red dashed circles denote elements that should be purchased from another labs (optimal solution should minimize number of red circles). Blue dashed circles are elements which can be produced with nuclear fusion. They are numbered starting in order in which they can be produced.</p>\n<p><strong>Test 1</strong></p>\n<p>We can use nuclear fusion and get the element from other three samples, so we don’t need to purchase anything.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 373px; height: 117px;\"/></p>\n<p><strong>Test 2</strong></p>\n<p>We cannot use any nuclear fusion at all as there is only one row, so we have to purchase all missing elements.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 596px; height: 78px;\"/></p>\n<p><strong>Test 3</strong></p>\n<p>Note that after purchasing one element it’s still not possible to produce the middle element in the top row (marked as 4). So we produce the element in the left-bottom corner first (marked as 1), and then use it in future fusions.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 451px; height: 194px;\"/></p>",
+  "source": "Olympiad, European Junior Olympiad in Informatics, eJOI 2018",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "disjoint_set"
+  ],
+  "accepted_user_count": 48,
+  "submission_count": null,
+  "average_tries": 2.1041998863220215
+}

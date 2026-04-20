@@ -1,0 +1,34 @@
+{
+  "id": 20769,
+  "title": "Morse code",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"width: 114px; height: 385px; float: right;\"/>In Morse code, each letter is represented by a sequence of &lt;&lt;dots&gt;&gt; and &lt;&lt;dashes&gt;&gt;. However, this alone is not enough to transmit text by radio. In addition, Morse code defines the duration of the dot and dash, as well as of the different pauses between them.</p>\n<p>In this problem, we will work with digitized radio signal encoded on the sending side using Morse code. This signal is represented as a string of &lt;&lt;plus&gt;&gt; and &lt;&lt;minus&gt;&gt; characters. Each character defines whether there was sound during the corresponding time tick: plus means there was sound, and minus means there was no sound. For our purposes, assume that Morse code has five types of elements. These elements are written into signal according to the following table:</p>\n<table class=\"table table-bordered table-center-50\">\n<tbody>\n<tr>\n<td><code>+</code></td>\n<td>&lt;&lt;dot&gt;&gt;</td>\n<td>there is sound during one tick</td>\n</tr>\n<tr>\n<td><code>+++</code></td>\n<td>&lt;&lt;dash&gt;&gt;</td>\n<td>there is sound during three ticks</td>\n</tr>\n<tr>\n<td><code>-</code></td>\n<td>pause inside a letter</td>\n<td>no sound during one tick</td>\n</tr>\n<tr>\n<td><code>---</code></td>\n<td>pause between letters</td>\n<td>no sound during three ticks</td>\n</tr>\n<tr>\n<td><code>-----</code></td>\n<td>pause between words</td>\n<td>no sound during <strong>five</strong> ticks</td>\n</tr>\n</tbody>\n</table>\n<p>For instance, with the standard Latin Morse alphabet, the two words <code>HELLO WORLD</code> will be encoded into a signal with 63 elements and 109 ticks:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 400px; height: 49px;\"/></p>\n<p>Note that there is a five-tick pause between the words, and that there are no pauses or special elements at the beginning and at the end of the text.</p>\n<p>The automatic digitization procedure is known to produce errors, making the signal difficult to decode. The procedure can shorten or lengthen any element by one tick, except that a one-tick element cannot become any shorter.</p>\n<p>You are given a dictionary and a digitized signal. Find the minimal number of errors that the digitization procedure could have made, and recover the original text, assuming that:</p>\n<ol>\n<li>the original text contained only words from the dictionary,</li>\n<li>Latin Morse alphabet is used,</li>\n<li>there are no other errors apart from those described above.</li>\n</ol>",
+  "input": "<p>The first line of the input file contains two integers: $M$ --- the number of words in the dictionary, $N$ --- the number of ticks in the signal ($1 \\le M, N \\le 5\\,000$).</p>\n<p>The following $M$ lines contain words from the dictionary, one per line. Each word is non-empty and contains only capital Latin letters. The sum of lengths of all these words does not exceed $5\\,000$.</p>\n<p>The remaining lines contain a digitized signal, being a sequence of &lt;&lt;plus&gt;&gt; and &lt;&lt;minus&gt;&gt; characters with the total length of $N$. The sequence can be split arbitrarily into several non-empty lines. The signal contains at least one &lt;&lt;plus&gt;&gt;.</p>\n<p>The Latin Morse alphabet in text form is available for download near these problem statements.</p>",
+  "output": "<p>If the signal provided in the input data could not have been produced under the given conditions, print a single number <code>-1</code>.</p>\n<p>Otherwise, print a single integer $K \\ge 0$ into the first line, being the minimum possible number of errors; into the second line, print the original text, which could produce the signal with this number of errors. The words of the text must be separated with exactly one space.</p>\n<p>If there are several variants of the original text which could produce the signal with minimal number of errors, print the <strong>lexicographically minimal</strong> one among them. It is assumed that a space is smaller than any letter.</p>",
+  "samples": [
+    {
+      "input": "2 109\nHELLO\nWORLD\n+-+-+-+---+---+-+++-+-+---\n+-+++-+-+---+++-+++-+++-----\n+-+++-+++---+++-+++-+++---\n+-+++-+---+-+++-+-+---+++-+-+\n",
+      "output": "0\nHELLO WORLD\n"
+    },
+    {
+      "input": "3 115\nWORLD\nPROGRAM\nHELLO\n+-+-+-+---++--+-++++-+-+---\n+-++-+-++----+++-+++-+++------\n+-+++-+++---+++-+++-++---\n+-++++-+---++-+++-+-+---+++-+--++\n",
+      "output": "12\nHELLO WORLD\n"
+    },
+    {
+      "input": "1 13\nE\n+-----------+\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "1 13\nHELLO\n+--+--+--+--+\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>The first sample contains exactly the example from the problem statement without any errors. In the second sample the text is the same, but twelve elements are cut/extended by one tick.</p>\n<p>In the third sample there is an 11-tick pause, which is impossible to produce. The longest element is a 5-tick pause between words, which can become 6-tick long as the result of an error.</p>\n<p>In the fourth sample, there are five dots, and they can make up the letters <code>E</code>, <code>I</code>, <code>S</code> and <code>H</code> in various combinations, however, there is only one word <code>HELLO</code> in the dictionary, which cannot be built using these letters alone.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 4: Grand Prix of Siberia, Division 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

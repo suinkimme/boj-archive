@@ -1,0 +1,26 @@
+{
+  "id": 34026,
+  "title": "창하의 수열 뒤집기 이야기",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>길이 $N$$(N=2^k)$인 수열 $A$와 길이 $N-1$인 수열 $B$가 주어진다. $B_1, B_2, \\cdots, B_{N-1}$의 값은 $-1$, $0$, $1$ 중 하나이다. 연산 $X_i$를 다음과 같이 정의하자.</p>\n<ul>\n<li>연산 $X_i$: 수열 $A$의 $(2i+1)2^{k-\\lfloor\\log_2{i}\\rfloor-1}-2^k+1$번째부터 $(i+1)2^{k-\\lfloor\\log_2{i}\\rfloor}-2^k$번째 까지의 모든 원소에 $-1$을 곱한다.</li>\n</ul>\n<p>창하는 $i$에 $1$ 이상 $N$ 이하의 정수를 오름차순으로 차례로 대입하며 아래 절차를 총 $N$번 반복한다.</p>\n<ul>\n<li>$B_i=1$이면, 연산 $X_i$를 시행한다.</li>\n<li>$B_i=0$이면, 아무것도 하지 않는다.</li>\n<li>$B_i=-1$이면, 연산 $X_i$를 시행하거나 아무것도 하지 않는다.</li>\n</ul>\n<p>창하는 시행이 끝났을 때 $A$의 모든 원소들의 합의 최댓값을 알고 싶다. 하지만 $A$와 $B$는 총 $Q$번 수정되며, 초기 상태와 각 수정 이후의 모든 $A$와 $B$에 대해 뒤집기 시행 후 $\\sum_{i=1}^{N}{A_i}$이 가질 수 있는 최댓값을 구해야 한다. 각 수정은 이후의 수정에도 영향을 미치며, 실제로 뒤집기를 시행하지는 않는다. 머리가 아픈 창하를 도와주자!</p>",
+  "input": "<p>첫 번째 줄에 정수 $k$$(1\\le k \\le 18)$가 주어진다.</p>\n<p>두 번째 줄에 $2^k$개의 정수 $A_1, A_2, \\cdots, A_{2^k}$가 공백으로 구분되어 주어진다. $(-10^9\\le A_i \\le 10^9)$</p>\n<p>세 번째 줄에 $2^k-1$개의 정수 $B_1, B_2, \\cdots, B_{2^k-1}$이 공백으로 구분되어 주어진다. $(-1\\le B_i \\le 1)$</p>\n<p>네 번째 줄에 정수 $Q$$(1\\le Q \\le 10^5)$가 주어진다.</p>\n<p>다음 $Q$개의 줄에 쿼리들의 정보가 주어지며, 각 줄에는 문자 $c$, 두 개의 정수 $i$, $v$가 공백으로 구분되어 주어진다. $(c \\in \\{$<code><span style=\"color:#e74c3c;\">A</span></code>$,$<span style=\"color:#e74c3c;\"><code>B</code></span>$\\})$</p>\n<ul>\n<li>$c=$ <span style=\"color:#e74c3c;\"><code>A</code></span>인 경우 $A_i$의 값을 $v$로 변경하는 것을 의미한다. $(1\\le i \\le N;$ $-10^9 \\le v \\le 10^9)$</li>\n<li>$c=$ <span style=\"color:#e74c3c;\"><code>B</code></span>인 경우 $B_i$의 값을 $v$로 변경하는 것을 의미한다. $(1\\le i \\le N-1;$ $-1 \\le v \\le 1)$</li>\n</ul>",
+  "output": "<p>첫 번째 줄에 수정 전 초기 상태의 $A$와 $B$에서 시행이 끝났을 때 가능한 $\\sum_{i=1}^{N}{A_i}$의 최댓값을 출력한다.</p>\n<p>다음 $Q$개의 줄 중 $i$번째 줄에 $i$번째까지 수정을 거친 수열 $A$와 $B$에서 시행이 끝났을 때 가능한 $\\sum_{i=1}^{N}{A_i}$의 최댓값을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "2\n3 -2 -4 5\n1 1 0\n3\nA 2 -4\nB 2 -1\nB 1 -1\n",
+      "output": "4\n6\n6\n8\n"
+    }
+  ],
+  "hint": "<p>$\\lfloor x \\rfloor$는 $x$를 넘지 않는 최대 정수를 의미한다.</p>",
+  "source": "School, 한국과학영재학교, 2025 Spring Automata 창하컵, edward3378, davidkim0, eric00513, flakepowders, mythofys, parkky, raehwan0418, sooahn07",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "ad_hoc",
+    "segtree"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.7273000478744507
+}

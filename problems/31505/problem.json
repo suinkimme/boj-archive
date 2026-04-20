@@ -1,0 +1,37 @@
+{
+  "id": 31505,
+  "title": "N진수 곱셈 (HUGE)",
+  "time_limit": "10 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><strong>이 문제는 <a href=\"/problem/31500\">N진수 곱셈 (tiny)</a>와 $A$와 $B$의 길이 제한만 다른 문제이다.</strong></p>\n<p>$N$진법으로 표현된 두 정수 $A$, $B$를 곱하는 프로그램을 작성하자.</p>\n<p>$A$와 $B$를 표현할 때 각 자리의 수는 ASCII 순서대로 배치하는데, $0$은 $33$번에 해당하는 문자인 <span data-darkreader-inline-color=\"\" style=\"color: rgb(231, 76, 60); --darkreader-inline-color: #e95849;\"><code>!</code></span>로, $1$은 $34$번에 해당하는 문자인 <code><span data-darkreader-inline-color=\"\" style=\"color: rgb(231, 76, 60); --darkreader-inline-color: #e95849;\">\"</span></code>로, ..., $i$는 $33+i$번에 해당하는 문자로 표현한다. 음수를 표현하는 문자는 <span data-darkreader-inline-color=\"\" style=\"color: rgb(231, 76, 60); --darkreader-inline-color: #e95849;\"><code>~</code></span>(ASCII 코드 $126$번)로 $N$이 양수일 때만, 맨 앞 글자에 최대 한 번 나타난다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 407px; width: 720px;\"/></p>\n<p style=\"text-align: center;\">각 자리를 표기하기 위한 ASCII 문자 대응표</p>\n<p> 아래는 앞에서 서술한 대로 수를 표현한 예시이다. 이해를 돕기 위해 각 자리의 숫자를 대괄호를 감싸 표기하였다.</p>\n<p>$[1][2][5]_{(10)}=$<span data-darkreader-inline-color=\"\" style=\"color: rgb(231, 76, 60); --darkreader-inline-color: #e95849;\"><code>\"#&amp;</code></span></p>\n<p>$-[1][2][16]_{(27)}=$<span data-darkreader-inline-color=\"\" style=\"color: rgb(231, 76, 60); --darkreader-inline-color: #e95849;\"><code>~\"#1</code></span></p>\n<p>$[9][0][12]_{(-15)}=$<span data-darkreader-inline-color=\"\" style=\"color: rgb(231, 76, 60); --darkreader-inline-color: #e95849;\"><code>*!-</code></span></p>\n<p>$[43][52][44][40]_{(69)}=$<span data-darkreader-inline-color=\"\" style=\"color: rgb(231, 76, 60); --darkreader-inline-color: #e95849;\"><code>LUMI</code></span></p>\n<p>$N$은 음의 정수일 수 있으며, 음의 정수 진법에 대한 설명은 힌트를 참조한다.</p>",
+  "input": "<p>첫 번째 줄에는 진법의 밑 $N(2 \\le |N| \\le 93)$이 주어진다.</p>\n<p>두 번째 줄과 세 번째 줄에는 $N$진법으로 표현된 $A, B$가 각각 주어진다. $A, B$는 $N$진법으로 표현했을 때 $3\\,000\\,000$자를 넘기지 않는다.</p>\n<p>$A$ 또는 $B$의 앞에 불필요한 <span data-darkreader-inline-color=\"\" style=\"color: rgb(231, 76, 60); --darkreader-inline-color: #e95849;\"><code>!</code></span>가 오지 않는다. 또한, <span data-darkreader-inline-color=\"\" style=\"color: rgb(231, 76, 60); --darkreader-inline-color: #e95849;\"><code>~</code></span>는 $N$이 양의 정수일 때만 맨 앞에 최대 한 번까지 나올 수 있다. $N$이 음의 정수가 될 수 있음에 유의한다.</p>",
+  "output": "<p>$A$와 $B$를 곱한 값을 $N$진법으로 출력한다.</p>",
+  "samples": [
+    {
+      "input": "69\nTOCA\nLUMI\n",
+      "output": "AV<_E$;G\n"
+    },
+    {
+      "input": "-90\nPl3453_5h4k3-C4rr075\n1f-Y0u-F33l-7hr3473n3d\n",
+      "output": "\"tkZAW&?=\"GL37Gz&W4*F[OkOr17Usc`E(.0_0^fJ5q\n"
+    },
+    {
+      "input": "87\n~Diving_Into_Firewall_and_Find_Your_Code\nWaiting_For_Your_Code-Accessing_\"THE_VIOLET\"!\n",
+      "output": "~7Q\"#=VgLj6YR\\g,WRrPg+;n3UauemVK[aDYAGlkGII#0jNs5XMhS@cY)r4Jv`$2\\_UJs\\q\\v;Rte2!55dXe!\n"
+    }
+  ],
+  "hint": "<p>음의 정수 $N$에 대하여 $N$진법은 양의 정수 진법과 똑같이 왼쪽으로 한 자리가 넘어갈 경우, $N$배가 된다. 하지만, 각 자리에 들어가는 숫자의 범위를 $0 \\le x \\lt -N$으로 한정한다.</p>\n<p>예를 들어 $10$진법 $9\\,903$은 $-10$진법으로는 $11\\,903$이 된다.</p>\n<p>$11\\,903_{(-10)} = 1 \\times (-10) ^ 4 + 1 \\times (-10) ^ 3 + 9 \\times (-10) ^ 2 + 0 \\times (-10) ^ 1 + 3 \\times (-10) ^ 0 = 9\\,903 _{(10)}$.</p>",
+  "source": "Contest, BOJ User Contest, 카툰컵, 카툰컵 Zero: ~Prologue~, djeleanor2, ingyu1008, nflight11, ruykun, utilforever",
+  "level": 22,
+  "tags": [
+    "math",
+    "implementation",
+    "string",
+    "number_theory",
+    "parsing",
+    "fft"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 7.64709997177124
+}

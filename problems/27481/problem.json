@@ -1,0 +1,29 @@
+{
+  "id": 27481,
+  "title": "Hotelier",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>Amugae has a hotel consisting of $10$ rooms. The rooms are numbered from $0$ to $9$ from left to right.</p>\n<p>The hotel has two entrances --- one from the left end, and another from the right end. When a customer arrives to the hotel through the left entrance, they are assigned to an empty room closest to the left entrance. Similarly, when a customer arrives at the hotel through the right entrance, they are assigned to an empty room closest to the right entrance.</p>\n<p>One day, Amugae lost the room assignment list. Thankfully Amugae’s memory is perfect, and he remembers all of the customers: when a customer arrived, from which entrance, and when they left the hotel. Initially the hotel was empty. Write a program that recovers the room assignment list from Amugae’s memory.</p>",
+  "input": "<p>The first line consists of an integer $n$ ($1\\le n\\le 10^5$), the number of events in Amugae’s memory.</p>\n<p>The second line consists of a string of length $n$ describing the events in chronological order. Each character represents:</p>\n<ul>\n<li>‘<code>L</code>’: A customer arrives from the left entrance.</li>\n<li>‘<code>R</code>’: A customer arrives from the right entrance.</li>\n<li>‘<code>0</code>’, ‘<code>1</code>’, …, ‘<code>9</code>’: The customer in room $x$ ($0$, $1$, …, $9$ respectively) leaves.</li>\n</ul>\n<p>It is guaranteed that there is at least one empty room when a customer arrives, and there is a customer in the room $x$ when $x$ ($0$, $1$, …, $9$) is given. Also, all the rooms are initially empty.</p>",
+  "output": "<p>In the only line, output the hotel room’s assignment status, from room $0$ to room $9$. Represent an empty room as ‘<code>0</code>’, and an occupied room as ‘<code>1</code>’, without spaces.</p>",
+  "samples": [
+    {
+      "input": "8\nLLRL1RL1\n",
+      "output": "1010000011\n"
+    },
+    {
+      "input": "9\nL0L0LLRR9\n",
+      "output": "1100000010\n"
+    }
+  ],
+  "hint": "<p>In the first example, hotel room’s assignment status after each action is as follows.</p>\n<ul>\n<li>First of all, all rooms are empty. Assignment status is <code>0000000000</code>.</li>\n<li><code>L</code>: a customer arrives to the hotel through the left entrance. Assignment status is <code>1000000000</code>.</li>\n<li><code>L</code>: one more customer from the left entrance. Assignment status is <code>1100000000</code>.</li>\n<li><code>R</code>: one more customer from the right entrance. Assignment status is <code>1100000001</code>.</li>\n<li><code>L</code>: one more customer from the left entrance. Assignment status is <code>1110000001</code>.</li>\n<li><code>1</code>: the customer in room $1$ leaves. Assignment status is <code>1010000001</code>.</li>\n<li><code>R</code>: one more customer from the right entrance. Assignment status is <code>1010000011</code>.</li>\n<li><code>L</code>: one more customer from the left entrance. Assignment status is <code>1110000011</code>.</li>\n<li><code>1</code>: the customer in room $1$ leaves. Assignment status is <code>1010000011</code>.</li>\n</ul>\n<p>So after all, hotel room’s final assignment status is <code>1010000011</code>.</p>\n<p>In the second example, hotel room’s assignment status after each action is as follows.</p>\n<ul>\n<li><code>L</code>: a customer arrives to the hotel through the left entrance. Assignment status is <code>1000000000</code>.</li>\n<li><code>0</code>: the customer in room $0$ leaves. Assignment status is <code>0000000000</code>.</li>\n<li><code>L</code>: a customer arrives to the hotel through the left entrance. Assignment status is <code>1000000000</code> again.</li>\n<li><code>0</code>: the customer in room $0$ leaves. Assignment status is <code>0000000000</code>.</li>\n<li><code>L</code>: a customer arrives to the hotel through the left entrance. Assignment status is <code>1000000000</code>.</li>\n<li><code>L</code>: one more customer from the left entrance. Assignment status is <code>1100000000</code>.</li>\n<li><code>R</code>: one more customer from the right entrance. Assignment status is <code>1100000001</code>.</li>\n<li><code>R</code>: one more customer from the right entrance. Assignment status is <code>1100000011</code>.</li>\n<li><code>9</code>: the customer in room $9$ leaves. Assignment status is <code>1100000010</code>.</li>\n</ul>\n<p>So after all, hotel room’s final assignment status is <code>1100000010</code>.</p>",
+  "source": "Contest, Codeforces, Codeforces Round 578 (Div. 2), jwvg0425",
+  "level": 3,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 246,
+  "submission_count": null,
+  "average_tries": 1.26419997215271
+}

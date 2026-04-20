@@ -1,0 +1,31 @@
+{
+  "id": 4822,
+  "title": "축구",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>잉글랜드 프리머어리그(EPL)의 리그 일정이 끝나면, 최종 순위에 따라 유럽 대회 진출 자격이 주어진다. 1위~3위는 UEFA 챔피언스리그 본선, 4위는 4차 예선 플레이오프, 5위는 UEFA 유로파리그에 진출한다. 6위와 7위는 컵 대회 진출 자격에 따라 유로파리그 진출 여부가 결정된다. FA컵과 리그컵의 우승 팀은 UEFA 유로파리그의 진출권은 획득한다. 단, 우승 팀이 챔피언스리그의 진출권을 획득한 경우에는 유로파리그 진출 자격이 준우승팀으로 넘어간다. 준우승 팀 또한 챔피언스리그의 진출권을 가지고 있다면, 프리미어리그에서 유럽대회 진출권을 얻지 못한 최상위 팀에게 돌아간다. 또, 프리미어리그의 하위 세 팀은 풋볼리그 챔피언십으로 강등된다.</p>\r\n\r\n<p>이제 프리미어리그가 몇 경기 밖에 남지 않았다. 이때, 시즌이 종료되었을 때, 각 팀의 가능한 등수를 구해보려고 한다.</p>\r\n\r\n<p>모든 축구 게임은 많은 골을 넣은 팀이 승리한다. 만약, 두 팀이 넣은 골이 같은 경우에는 비기게 된다. 승리한 경우에는 승점을 3점, 비긴 경우에는 1점, 진 경우에는 0점을 획득한다. 리그의 순위는 이 승점을 이용해서 순위를 매긴다. 승점이 가장 높은 팀이 1위이며, 승점이 같은 경우에는 같은 등수를 매긴다. 예를 들어, 3위가 두 팀이 있다면, 승점이 다음으로 높은 팀의 순위는 4위가 아니고 5위이다. 실제 축구에서는 골득실 차이, 득점을 이용하지만, 이 문제에서는 승점만 이용한다.</p>\r\n\r\n<p>리그에 속해있는 축구팀과 리그의 일정이 주어졌을 때, 각 팀이 리그를 마칠 수 있는 최고 등수와 최저 등수를 구하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>입력은 여러 개의 테스트 케이스로 이루어져 있다. 각 테스트 케이스의 첫째 줄에는 팀의 수 n과 리그 경기의 수 m이 주어진다. (2 &le; n &le; 20, 1 &le; m &le; 1000) 다음 n개 줄에는 팀 이름이 주어진다. 팀 이름은 알파벳으로만 이루어져 있고, 최대 30글자이다. 다음 m개 줄에는 경기 일정과 결과가 주어진다. 경기 일정은 다음과 같이 생겼다.</p>\r\n\r\n<p>team1 vs team2: x y</p>\r\n\r\n<p>team1과 team2는 서로 다른 팀의 이름이고, x와 y는 음이 아닌 정수이다. (또는 둘 다 -1일 수는 있다) team1이 x골, team2가 y골을 득점한 것이다. 만약, x와 y가 둘 다 -1이라면, 그 경기는 아직 치루지 않은 것이다. 아직 치루지 않은 경기의 수는 최대 12이다.</p>\r\n\r\n<p>입력은 n과 m이 모두 0일 때 끝난다.</p>\r\n",
+  "output": "<p>각 테스트 케이스에 대해서, 입력으로 주어진 팀 순서에 따라 각 팀이 리그를 마칠 수 있는 최고 등수와 최저 등수를 다음과 같은 형태로 출력한다.</p>\r\n\r\n<p>Team xxx can finish as high as nth place and as low as mth place.</p>\r\n\r\n<p>이때, 1등일때는 th대신 st, 2등일때는 nd, 3등일때는 rd를 사용해야 한다. &nbsp;각 테스트 케이스 사이에는 빈 줄을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "4 6\nManUnited\nArsenal\nChelsea\nTottenham\nManUnited vs Arsenal: 3 1\nChelsea vs Arsenal: 2 2\nManUnited vs Chelsea: 1 0\nTottenham vs ManUnited: -1 -1\nTottenham vs Chelsea: 0 4\nTottenham vs Arsenal: -1 -1\n0 0\n",
+      "output": "Team ManUnited can finish as high as 1st place and as low as 1st place.\nTeam Arsenal can finish as high as 2nd place and as low as 4th place.\nTeam Chelsea can finish as high as 2nd place and as low as 3rd place.\nTeam Tottenham can finish as high as 1st place and as low as 4th place.\n"
+    }
+  ],
+  "hint": "<p>실제 EPL에서는 총 20개 팀이 홈&amp;어웨이로 2경기씩 치룬다. 하지만, 이 문제에서는 각 팀이 치룬 경기의 수가 다를 수도 있다.</p>\r\n\r\n<p><iframe frameborder=\"0\" height=\"480\" src=\"1.png\" width=\"853\"></iframe></p>\r\n",
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2010 Rocky Mountain Regional Contest, baekjoon, kipa00",
+  "level": 14,
+  "tags": [
+    "backtracking",
+    "bruteforcing",
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "sorting",
+    "string",
+    "set"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 3.2105000019073486
+}

@@ -1,0 +1,26 @@
+{
+  "id": 23420,
+  "title": "bit gisect",
+  "time_limit": "20 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Vasya the programmer is using Bit, a version control system for storing his code. The history of changes in Bit can be viewed as an oriented acyclic graph. The nodes of this graph are called revisions. When Vasya wants to make changes in the code, he can take an arbitrary revision $A$ and change the code, resulting in a new revision $D$. In these case, we call the revision $D$ dependent of the revision $A$. Each of these dependencies in Bit is expressed as an arc from the revision node $A$ to the revision node $D$. Mergers are a special revision type in Bit: Vasya can join any two arbitrary revisions $A$ and $B$ and merge them into a new revision $D$. In this case, the revision $D$ will depend on two revisions: $A$ and $B$. The repository also contains a single \"initial\" revision: it is the only revision which does not depend on any other revision. All other revisions in Bit depend on one or more other revisions. Vasya has finished working on his project: there is strictly one revision which does not have any dependent revisions.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"width: 128px; height: 214px; float: right;\"/>But one day, something went wrong, and the code became bug-ridden. Vasya is still trying to find them. Here is what Vasya's bugs do: if a bug appears in a revision $A$, it affects all revisions accessible from $A$ in the Bit graph: the revision $A$, all revisions dependent on $A$, all revisions dependent on revisions dependent on $A$, etc. To find the bug, Vasya can switch between revisions and check for the bug in the different revisions, thus narrowing down the suspect list. In the end, he will find the initial revision containing the bug.</p>\n<p>Vasya is getting bug reports from the users, one after another, and he must find all these bugs, one by one. Help Vasya fix the code as quickly as possible.</p>\n<p>The figure shows an example with 9 revisions. The revision <code>1</code> is the initial revision. The revisions <code>7</code>, <code>8</code>, and <code>9</code> are mergers, each depending on two other revisions. The revision <code>2</code>, which sprouted a bug, and all dependent revisions suffering from that bug are highlighted in gray.</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "9\n000001 0\n000002 1 000001\n000003 1 000002\n000004 1 000002\n000005 1 000003\n000006 1 000001\n000007 2 000006 000001\n000008 2 000004 000005\n000009 2 000007 000008\nbug 000008\n\nbad\n\ngood\n\nbad\n\nbug 000009\n\nbad\n\ngood\n\nbug 000000\n",
+      "output": "\n\n\n\n\n\n\n\n\n\ncheck 000004\n\ncheck 000001\n\ncheck 000002\n\nfix 000002\n\ncheck 000007\n\ncheck 000006\n\nfix 000007\n\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 4: Grand Prix of Eurasia",
+  "level": 23,
+  "tags": [
+    "bitmask",
+    "graphs",
+    "trees"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 6.5
+}

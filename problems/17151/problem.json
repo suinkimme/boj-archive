@@ -1,0 +1,29 @@
+{
+  "id": 17151,
+  "title": "Beautiful Bridges",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>What connects us all? Well, it is often bridges. Since ancient times, people have been building bridges for roads, for trains, for pedestrians, and as aqueducts to transport water. It is humanity’s way of not taking inconvenient geography for an answer.</p>\n<p>The company Arch Bridges Construction (ABC) specializes in—you guessed it—the construction of arch bridges. This classical style of bridge is supported by pillars that extend from the ground below the bridge. Arches between pillars distribute the bridge’s weight onto the adjacent pillars.</p>\n<p>The bridges built by ABC often have pillars spaced at irregular intervals. For aesthetic reasons, ABC’s bridges always have semicircular arches, as illustrated in Figure B.1. However, while a bridge arch can touch the ground, it cannot extend below the ground. This makes some pillar placements impossible.</p>\n<table class=\"table table-bordered\" style=\"width: 100%;\">\n<tbody>\n<tr>\n<td style=\"width: 33%; text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 154px; height: 190px;\"/></td>\n<td style=\"width: 34%; text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 178px; height: 170px;\"/></td>\n<td style=\"width: 33%; text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 189px; height: 166px;\"/></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">(a) Consecutive pillars at distance d are connected by a semicircular arch with radius r = d/2.</td>\n<td style=\"text-align: center;\">(b) An invalid pillar placement (arches cannot extend below ground).</td>\n<td style=\"text-align: center;\">(c) A bridge corresponding to Sample Input 1.</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure B.1: Bridge examples.</p>\n<p>Given a ground profile and a desired bridge height h, there are usually many ways of building an arch bridge. We model the ground profile as a piecewise-linear function described by n key points (x<sub>1</sub>, y<sub>1</sub>),(x<sub>2</sub>, y<sub>2</sub>), . . . ,(x<sub>n</sub>, y<sub>n</sub>), where the x-coordinate of a point is the position along the bridge, and the y-coordinate is the elevation of the ground above sea level at this position along the bridge. The first and last pillars must be built at the first and last key points, and any intermediate pillars can be built only at these key points. The cost of a bridge is the cost of its pillars (which is proportional to their heights) plus the cost of its arches (which is proportional to the amount of material used). So a bridge with k pillars of heights h<sub>1</sub>, . . . , h<sub>k</sub> that are separated by horizontal distances d<sub>1</sub>, . . . , d<sub>k−1</sub> has a total cost of</p>\n<p>\\[\\alpha \\cdot \\sum_{i=1}^{k}{h_i} + \\beta \\cdot \\sum_{i=1}^{k-1}{d_i^2}\\]</p>\n<p>for some given constants α and β. ABC wants to construct each bridge at the lowest possible cost.</p>",
+  "input": "<p>The first line of input contains four integers n, h, α, and β, where n (2 ≤ n ≤ 10<sup>4</sup>) is the number of points describing the ground profile, h (1 ≤ h ≤ 10<sup>5</sup>) is the desired height of the bridge above sea level, and α, β (1 ≤ α, β ≤ 10<sup>4</sup>) are the cost factors as described earlier. Then follow n lines, the i<sup>th</sup> of which contains two integers x<sub>i</sub>, y<sub>i</sub> (0 ≤ x<sub>1</sub> &lt; x<sub>2</sub> &lt; . . . &lt; x<sub>n</sub> ≤ 10<sup>5</sup> and 0 ≤ y<sub>i</sub> &lt; h), describing the ground profile.</p>",
+  "output": "<p>Output the minimum cost of building a bridge from horizontal position x<sub>1</sub> to x<sub>n</sub> at height h above sea level. If it is impossible to build any such bridge, output impossible.</p>",
+  "samples": [
+    {
+      "input": "5 60 18 2\n0 0\n20 20\n30 10\n50 30\n70 20\n",
+      "output": "6460\n"
+    },
+    {
+      "input": "4 10 1 1\n0 0\n1 9\n9 9\n10 0\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2019",
+  "level": 21,
+  "tags": [
+    "dp",
+    "geometry"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 2.0810999870300293
+}

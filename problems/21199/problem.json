@@ -1,0 +1,37 @@
+{
+  "id": 21199,
+  "title": "Paper Snowflakes",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>To make a paper snowflake, you fold a sheet of paper in various places and then cut some parts out of the folded sheet. When you unfold the sheet, it can make a very nice pattern. That is, if the folds and cuts are chosen well.</p>\n<p>Samantha has recently taken up this hobby but with a \"modern art\" twist. To get started, she explores folding a strip of paper that is $L$ picometres long (Samantha likes to measure her folds and cuts very precisely). She places it on the real line with one end at $0$ and the other at $L$. The left end at point $0$ is affixed to this point, the other endpoint at position $L$ is the <em>loose</em> endpoint.</p>\n<p>She then performs a series of folds. For the first fold, Samantha creases the paper $f_1$ picometres from the loose end and folds the loose end over this fold. The loose end is now pointing towards the left. For the second fold, she then creases the top portion of the paper $f_2$ picometres from the loose end ($f_2 &lt; f_1$) and folds the top portion of the paper over this point back to the right over this crease point. The loose end is now pointing towards the right.</p>\n<p>She alternates folding back-and-forth this way. At each step, she creases the top portion of the paper $f_i$ picometres from the loose end ($f_i &lt; f_{i-1}$) and folds the loose end over the crease.</p>\n<p>She will now cut the paper at $M$ distinct locations, which will split the paper into $M+1$ piles. Each of the piles will have zero or more layers of paper in it. The figure below depicts the folded paper from the first sample input, the cuts (solid lines), and the $x$-locations of where the paper was folded (dashed lines).</p>\n<p>What is the total length of paper in each of the $M+1$ piles?</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 558px; height: 271px;\"/></p>",
+  "input": "<p>The first line of input consists of three integers $N$ ($1 \\leq N \\leq 10^5$), which is the number of folds, $M$ ($1 \\leq M \\leq 10^5$), which is the number of cuts, and $L$ ($2 \\leq L \\leq 10^{18}$), which is the length of the paper in picometres.</p>\n<p>The second line describes the folds. This line contains $N$ integers $f_1, f_2, \\ldots, f_N$, indicating that the $i^\\textrm{th}$ fold occurred $f_i$ picometres from the loose end. These values satisfy $1 \\leq f_N &lt; f_{N-1} &lt; \\cdots &lt; f_1 &lt; L$.</p>\n<p>The third line describes the cuts. This line contains $M$ integers $c_1, c_2, \\ldots, c_M$, indicating that the $i^\\textrm{th}$ cut is $c_i$ picometres from the affixed point. These values satisfy $-10^{18} \\leq c_1 &lt; c_2 &lt; \\cdots &lt; c_M \\leq 10^{18}$.</p>",
+  "output": "<p>Output the total length of paper in each of the $M+1$ piles, in order from left to right.</p>",
+  "samples": [
+    {
+      "input": "4 2 20\n19 17 11 7\n1 6\n",
+      "output": "5 13 2\n"
+    },
+    {
+      "input": "1 1 10\n9\n0\n",
+      "output": "8 2\n"
+    },
+    {
+      "input": "1 2 1000000000000000000\n500000000000000000\n0 500000000000000000\n",
+      "output": "0 1000000000000000000 0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Rocky Mountain Regional, 2020 Rocky Mountain Regional Contest",
+  "level": 13,
+  "tags": [
+    "data_structures",
+    "sorting",
+    "binary_search",
+    "prefix_sum",
+    "sweeping",
+    "priority_queue"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.2143000364303589
+}

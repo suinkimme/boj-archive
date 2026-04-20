@@ -1,0 +1,35 @@
+{
+  "id": 26705,
+  "title": "Autostrada",
+  "time_limit": "7 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Agent Karol jest w swoim czerwonym samochodzie i jedzie trzypasmową autostradą. Przed nim są pewne inne samochody i każdy z nich jedzie do przodu ze stałą prędkością zależną od pasa: v<sub>i</sub> na i-tym pasie (v<sub>1</sub> &gt; v<sub>2</sub> &gt; v<sub>3</sub>). Żaden z nich nie zmienia prędkości ani pasa ruchu. Karol natomiast może natychmiastowo zmienić swój pas ruchu na sąsiedni. Może też natychmiastowo zmienić swoją prędkość do dowolnej liczby rzeczywistej, która nie przekracza v<sub>0</sub> (v<sub>0</sub> &gt; v<sub>1</sub>). Nie może się cofać, więc zawsze jedzie do przodu z prędkością w przedziale [0, v<sub>0</sub>].</p>\n<p>Każdy samochód, łącznie z samochodem Karola, ma długość 1. Samochody mogą się dotykać, ale Karol nie może doprowadzić do zderzenia czyli dodatniego pola przecięcia. Formalnie, zdefiniujmy pozycję samochodu jako odległość między początkiem samochodu, a początkiem autostrady (czyli miejscem, gdzie najpierw znajdował się początek samochodu Karola). Pozycje dwóch samochodów w tym samym pasie nie mogą różnić się o mniej niż 1. Pamiętaj, że prędkości pozostałych samochodów są stałe.</p>\n<p>Na wejściu jest opisany fragment autostrady o długości L, a Karol jest teraz na początku trzeciego pasa. Autostrada ciągnie się w nieskończoność i jest pusta poza opisanym fragmentem.</p>\n<p>Policz jak szybko Karol może wyprzedzić wszystkie inne samochody. Innymi słowy ustal, po jakim minimalnym czasie wszystkie pozostałe samochody mogą znaleźć się całkowicie za tyłem samochodu Karola – ich pozycje muszą być o co najmniej 1 mniejsze od pozycji samochodu Karola.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajduje się pięć liczb całkowitych L, v<sub>0</sub>, v<sub>1</sub>, v<sub>2</sub>, v<sub>3</sub> (2 ≤ L ≤ 200 000; 1 ≤ v<sub>3</sub> &lt; v<sub>2</sub> &lt; v<sub>1</sub> &lt; v<sub>0</sub> ≤ 140).</p>\n<p>W i-tym z następnych trzech wierszy znajduje się słowo s<sub>i</sub> długości L, opisujące i-ty pas autostrady. j-ty znak słowa s<sub>i</sub> to ’<code>#</code>’ jeśli na tej pozycji jest samochód, a ’<code>.</code>’ w przeciwnym przypadku.</p>\n<p>Pierwszy znak słów s<sub>1</sub> i s<sub>2</sub> to ’<code>.</code>’, a pierwszy znak s<sub>3</sub> to ’<code>#</code>’ i oznacza samochód agenta Karola. Na wejściu są łącznie co najmniej dwa znaki ’<code>#</code>’.</p>\n<p>Format wejścia implikuje, że początkowe pozycje wszystkich samochodów są całkowite. Jednakże Karol może zmieniać swój pas i prędkość w niecałkowitych momentach i wtedy pozycje samochodów mogą być niecałkowite.</p>",
+  "output": "<p>Na wyjściu powinna się znaleźć jedna liczba rzeczywista – najmniejszy możliwy czas, po którym agent Karol wyprzedzi wszystkie samochody na autostradzie. Dopuszczalny jest błąd względny lub bezwzględny 10<sup>−9</sup>. Mówiąc formalnie: jeśli dokładny wynik wynosi p, to Twoja odpowiedź x będzie zaakceptowana jeśli zachodzi |p − x| ≤ max(1, p) · 10<sup>−9</sup>.</p>",
+  "samples": [
+    {
+      "input": "5 60 15 10 9\n.#...\n..#.#\n###..\n",
+      "output": "0.644444444444444\n"
+    },
+    {
+      "input": "6 140 120 115 110\n.##...\n......\n#.#.#.\n",
+      "output": "0.166666666666667\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie pierwszego przykładu: Patrz następna strona.</p>\n<p>Samochód Karola jest oczywiście czerwony.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 818px; height: 231px;\"/></p>\n<p>Agent Karol natychmiastowo zmienia pas z trzeciego na drugi i od razu z drugiego na pierwszy.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 818px; height: 231px;\"/></p>\n<p>Jedzie na pierwszym pasie tuż za samochodem o prędkości v1 = 15, aż wyprzedzi pierwszy z dwóch samochodów na drugim pasie.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 818px; height: 231px;\"/></p>\n<p>Zmienia pas z pierwszego na drugi i od razu z drugiego na trzeci.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 818px; height: 231px;\"/></p>\n<p>Jedzie swoją maksymalną prędkością v0 = 60, aż wyprzedzi wszystkie samochody.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 818px; height: 231px;\"/></p>",
+  "source": "Contest, Algorithmic Engagements, PA 2021",
+  "level": 24,
+  "tags": [
+    "ad_hoc",
+    "arbitrary_precision",
+    "data_structures",
+    "dijkstra",
+    "graphs",
+    "greedy",
+    "sparse_table",
+    "shortest_path"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

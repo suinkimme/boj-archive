@@ -1,0 +1,29 @@
+{
+  "id": 7363,
+  "title": "Rational Approximation",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A polynomial p(x) of degree n can be used to approximate a function f(x) by setting the coeficients of p(x) to match the first n coeficients of the power series of f(x) (expanded about x = 0). For example,</p>\n<p>\\( \\frac{1}{(1-x)} \\approx 1 + x + x^2 + ... + x^n \\)</p>\n<p>Unfortunately, polynomials are \"nice\" and they do not work well when they are used to approximate functions that behave poorly (e.g. those with singularities). To overcome this problem, we can instead approximate functions by rational functions of the form p(x)/q(x), where p(x) and q(x) are polynomials. You have been asked by Approximate Calculation Machinery to solve this problem, so they can incorporate your solution into their approximate calculation software.</p>\n<p>Given m, n, and the first m + n coeficients of the power series of f(x), we wish to compute two polynomials p(x) and q(x) of degrees at most m-1 and n-1, respectively, such that the power series expansion of q(x)f(x)-p(x) has 0 as its first m+n-1 coefficients, and 1 as its coefficient corresponding to the x<sup>m+n-1</sup> term. In other words, we want to find p(x) and q(x) such that</p>\n<p>\\( q(x)\\cdot f(x) - p(x) = x^{m+n-1} + ... \\)</p>\n<p>where ... contains terms with powers of x higher than m+n-1. From this, f(x) can be approximated by p(x)/q(x).</p>",
+  "input": "<p>The input will consist of multiple cases. Each case will be specified on one line, in the form</p>\n<p>m n f<sub>0</sub> f<sub>1</sub> ... f<sub>m+n-1</sub></p>\n<p>where f<sub>i</sub> is the coefficient of x<sup>i</sup> in the power series expansion of f. You may assume that 1 ≤ m, 1 ≤ n ≤ 4, 2 ≤ m+n ≤ 10, and f<sub>i</sub> are integers such that |f<sub>i</sub>|≤5. The end of input will be indicated by a line containing m=n=0, and no coefficients for f. You may assume that there is a unique solution for the given input.</p>",
+  "output": "<p>For each test case, print two lines of output. Print the polynomial p(x) on the first line, and then q(x) on the second line. The polynomial p(x) should be printed as a list of pairs (p<sub>i</sub>,i) arranged in ascending order in i, such that p<sub>i</sub> is a non-zero coefficient for the term x<sup>i</sup>. Each non-zero coefficient p<sub>i</sub> should be printed as a/b, where b &gt; 0 and a/b is the coefficient expressed in lowest terms. In addition, if b = 1 then print only a (and omit b). If p(x) = 0, print a line containing only (0,0). Separate the pairs in the list by one space. The polynomial q(x) should be printed in the same manner. Insert a blank line between cases.</p>",
+  "samples": [
+    {
+      "input": "2 2 0 0 1 1\n4 2 1 2 3 4 5 -2\n1 1 2 3\n1 4 -5 0 -2 1-2\n0 0\n",
+      "output": "(0,0)\n(1,1)\n\n(-4/33,0) (-1/11,1) (-2/33,2) (-1/33,3)\n(-4/33,0) (5/33,1)\n\n(2/3,0)\n(1/3,0)\n\n(25/6,0)\n(-5/6,0) (1/3,2) (-1/6,3)\n"
+    }
+  ],
+  "hint": "<p>A polynomial p(x) of degree n can be written as p0 + p<sub>1·</sub>x + p<sub>2</sub><span style=\"font-size:11px\">·</span>x<sup>2</sup> + ... + p<sub>n</sub><span style=\"font-size:11px\">·</span>x<sup>n</sup>, where pi's are integers in this problem.</p>\n<p>A power series expansion of f(x) about 0 can be written as f<sub>0</sub> + f<sub>1</sub><span style=\"font-size:11px\">·</span>x + f<sub>2</sub><span style=\"font-size:11px\">·</span>x<sup>2 </sup>+ ..., where f<sub>i</sub>'s are integers in this problem.</p>",
+  "source": "ICPC, Regionals, North America, East Central North America Regional, 2000 East Central Regional Contest",
+  "level": 18,
+  "tags": [
+    "math",
+    "implementation",
+    "number_theory",
+    "euclidean",
+    "linear_algebra",
+    "gaussian_elimination"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

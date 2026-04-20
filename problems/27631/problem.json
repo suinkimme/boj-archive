@@ -1,0 +1,36 @@
+{
+  "id": 27631,
+  "title": "Sum Mod Pair of A",
+  "time_limit": "1.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Jono likes arrays. Jono is quite interested in one particular type of operation on an array that he calls Sum Mod Pair of A, or SMPA for short.</p>\n<p>Given an array of integers $A$ (indexed from $0$ to $N - 1$) and an integer $M$ of a power of $2$, the operation $\\text{SMPA}(A, M)$ returns an array of size $N^2$ (indexed from $0$ to $N^2-1$) where its $i$th element is $(A_x+A_y) \\bmod M$ with $x = \\lfloor i/N \\rfloor$ and $y = i \\bmod N$.</p>\n<p>For example, let $A_{0..2} = \\{2, 4, 5\\}$ and $M = 8$. Then,</p>\n<p>$$\\begin{align*} \\text{SMPA}(A, M) = \\,&amp; \\{ (A_0 + A_0) \\bmod M,(A_0 + A_1) \\bmod M,(A_0 + A_2) \\bmod M, \\\\ &amp; (A_1 + A_0) \\bmod M,(A_1 + A_1) \\bmod M,(A_1 + A_2) \\bmod M, \\\\ &amp; (A_2 + A_0) \\bmod M,(A_2 + A_1) \\bmod M,(A_2 + A_2) \\bmod M \\} \\\\ = \\,&amp; \\{ (2 + 2) \\bmod 8,(2 + 4) \\bmod 8,(2 + 5) \\bmod 8, \\\\ &amp; (4 + 2) \\bmod 8,(4 + 4) \\bmod 8,(4 + 5) \\bmod 8, \\\\ &amp; (5 + 2) \\bmod 8,(5 + 4) \\bmod 8,(5 + 5) \\bmod 8 \\} \\\\ = \\,&amp; \\{4, 6, 7, 6, 0, 1, 7, 1, 2\\} \\end{align*}$$</p>\n<p>Jono is not satisfied with only one $\\text{SMPA}$ operation. He then introduces the following $\\text{SMPA}^K$ for a positive integer $K$.</p>\n<p>$$\\text{SMPA}^K(A, M) = \\begin{cases}\\text{SMPA}(A, M), &amp; \\text{if }K = 1 \\\\ \\text{SMPA}^{K-1}(\\text{SMPA}(A, M), M), &amp; \\text{otherwise}\\end{cases}$$</p>\n<p>For example, let $A_{0..1} = \\{1, 2\\}$ and $M = 8$.</p>\n<ul>\n<li>$\\text{SMPA}^1 (A, M) = \\{2, 3, 3, 4\\}$</li>\n<li>$\\text{SMPA}^2 (A, M) = \\{4, 5, 5, 6, 5, 6, 6, 7, 5, 6, 6, 7, 6, 7, 7, 0\\}$</li>\n<li>$\\text{SMPA}^3 (A, M) = \\{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, \\dots \\}$ → ($256$ elements)</li>\n<li>$\\text{SMPA}^4 (A, M) = \\{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, \\dots \\}$ → ($65536$ elements)</li>\n</ul>\n<p>Jono would like to experiment with a large $K$ but, as you might already notice, the array size grows exponentially. Therefore, he cannot simply print out the resulting array. Instead, he will be satisfied if he knows the sum of all elements in the resulting array. As this number can be very large as well, he decides to modulo the output by $998\\,244\\,353$.</p>\n<p>Your task in this problem is to compute the sum of all elements in the array produced by $\\text{SMPA}^K(A, M)$. Output the non-negative remainder after being divided by $998\\,244\\,353$.</p>",
+  "input": "<p>Input begins with a line containing three integers $N$ $M$ $K$ ($1 ≤ N ≤ 100\\,000$; $M ∈ \\{2^0 , 2^1 , \\dots , 2^{18}\\}$; $1 ≤ K ≤ 10^9$) representing the size of array $A$, and the parameter $M$ and $K$ for the $\\text{SMPA}^K(A, M)$ operation, respectively. The next line contains $N$ integers $A_i$ ($0 ≤ A_i &lt; M$) representing the array $A$.</p>",
+  "output": "<p>Output contains an integer in a line representing the non-negative remainder of the sum of all elements in $\\text{SMPA}^K(A, M)$ after being divided by $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "3 8 1\n0 1 2\n",
+      "output": "18\n"
+    },
+    {
+      "input": "3 8 2\n0 1 2\n",
+      "output": "316\n"
+    },
+    {
+      "input": "5 8192 3\n1000 2000 3000 4000 5000\n",
+      "output": "577938879\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2021",
+  "level": 22,
+  "tags": [
+    "exponentiation_by_squaring",
+    "fft",
+    "flt",
+    "math",
+    "number_theory"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2.5
+}

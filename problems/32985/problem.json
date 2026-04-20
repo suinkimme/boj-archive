@@ -1,0 +1,32 @@
+{
+  "id": 32985,
+  "title": "트리 부수기",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>$0$번부터 $N-1$번까지 $N$개의 노드를 가진 트리가 주어진다. 두 노드 $u$와 $v$에 대하여 $c(u,v)$를 다음과 같이 정의하자.</p>\n<p style=\"text-align: center;\">$c(u,v)$= $u$번 노드와 연결된 모든 간선을 제거한 뒤에도 $0$번 노드와 $v$번 노드를 잇는 경로가 존재한다면 $1$, 그렇지 않다면 $0$.</p>\n<p>$N-1$자리 이진수로 표현되는 함수 $f(x)$를 다음과 같이 정의하자. 여기서 $x$는 $1 \\leq x \\leq N-1$을 만족하는 정수이다.</p>\n<p style=\"text-align: center;\">\\[ f(x) = \\left( c(x, N-1)c(x, N-2)\\dots c(x, 1) \\right)_{(2)} \\]</p>\n<p>예시로 주어진 아래의 트리에서 $f(3)$의 값을 구해보자.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 283px; width: 250px;\"/></p>\n<p>$3$번 노드와 연결된 모든 간선을 제거했다고 가정해 보자. 이 경우 $0$번 노드에서 $4$번 노드로 가는 경로는 존재하지 않으므로 $c(3,4)=0$이다. 반면, 여전히 $0$번 노드에서 $1$번 노드로 가는 경로는 존재하므로 $c(3,1)=1$이다. 같은 원리로 다른 노드에 대한 값들도 구할 수 있고, 최종적으로 $f(3)={00011}_{2}$이다.</p>\n<p>이제 다음의 값을 구해보자.</p>\n<p style=\"text-align: center;\">$f(1) \\oplus f(2) \\oplus \\cdots \\oplus f(N-2) \\oplus f(N-1)$</p>\n<p>$\\oplus$는 bitwise XOR 연산자이다. 자세한 설명은 <a href=\"https://ko.wikipedia.org/wiki/배타적_논리합#비트간_배타적_논리합\">여기</a>를 참고하라.</p>",
+  "input": "<p>첫 번째 줄에 노드의 개수 $N$이 주어진다. $(3 \\leq N \\leq 200\\,000)$</p>\n<p>두 번째 줄부터 $N-1$개의 줄에 걸쳐 트리의 각 간선이 잇는 두 노드의 번호 $u,\\ v$가 공백으로 구분되어 주어진다. $(0\\leq u,v\\leq N-1;u\\neq v)$</p>",
+  "output": "<p>$f(1) \\oplus f(2) \\oplus \\cdots \\oplus f(N-2) \\oplus f(N-1)$의 값을 $N-1$자리 이진수로 출력한다.</p>\n<p>가장 오른쪽 비트는 $c(1, 1) \\oplus c(2, 1) \\oplus \\dots \\oplus c(N-1, 1)$이다. 출력 순서에 유의하라.</p>",
+  "samples": [
+    {
+      "input": "6\n0 1\n1 2\n0 3\n3 4\n3 5\n",
+      "output": "11010\n"
+    },
+    {
+      "input": "5\n0 1\n0 2\n2 3\n2 4\n",
+      "output": "0011\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 아주대학교, 2024 아주대학교 프로그래밍 경시대회 APC Extra, gyoseon123, akim9905, BothEarRim, dbrua1222, js9028, jwpassion1, jyheo98, mujigae, pani, riroan, sheenjiwon",
+  "level": 13,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "trees",
+    "bfs",
+    "dfs"
+  ],
+  "accepted_user_count": 81,
+  "submission_count": null,
+  "average_tries": 1.4938000440597534
+}

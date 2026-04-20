@@ -1,0 +1,28 @@
+{
+  "id": 4494,
+  "title": "Missile Command",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>As Chief Bureaucrat at Missile Command, it has recently come to your attention that the existing performance guidelines do not sufficiently penalize frivolous use of expensive ammunition. Therefore, you must write a new battle summary analysis tool which takes into account excess ammunition consumption during battle.</p>\n<p>A battle consists of the following elements:</p>\n<ul>\n<li>Shots. A shot is a circularly explosive countermeasure. A shot has a fixed position and is active for 2 seconds, during which its radius varies from 0 to 1km and then back to 0 according to the formula:\n\t<ul>\n<li>r = (1 – (t – 1)<sup>2</sup>)<sup>1/2</sup></li>\n</ul>\n</li>\n<li>The ground, at y = 0.</li>\n<li>Missiles. A missile is a point particle that moves at a constant velocity. If a missile collides with an active shot, the missile is neutralized (the shot persists). If a missile hits the ground before being neutralized, it is considered to have hit its target.</li>\n</ul>\n<p>Performance is evaluated on a simple point scale. The performance criteria are as follows:</p>\n<ul>\n<li>Every neutralized missile adds 1 point.</li>\n<li>Every missile allowed to hit its target subtracts 5 points.</li>\n<li>Every unnecessary shot subtracts 20 points. The number of unnecessary shots in a battle is the difference between the actual number of shots fired and size of the minimum subset of those shots that would have neutralized the same number of missiles.</li>\n</ul>",
+  "input": "<p>Input will be given in the following format (legend follows):</p>\n<pre>\nnb\nnm\nmx my mdx mdy mt ...\nns\nsx sy st\n...\n...</pre>\n<p>In the following legend, indentation denotes repetition of the indented block a number of times equal to the value of the preceding input item:</p>\n<ul>\n<li>nb (0 &lt; nb) – number of battles\n\t<ul>\n<li>nm (0 &lt;= nm &lt;= 20) – number of missiles\n\t\t<ul>\n<li>mx/my (0.0 &lt; my) – initial missile position (in km)</li>\n<li>mdx/mdy – missile velocity (in km/s)</li>\n<li>mt (0.0 &lt;= mt) – time since battle start of the missile's entrance (in seconds)</li>\n</ul>\n</li>\n<li>ns (0 &lt;= ns &lt;= 20) – number of shots\n\t\t<ul>\n<li>sx/sy (1.0 &lt;= sy) – shot position at time of detonation (in km)</li>\n<li>st (0.0 &lt;= st) – time since battle start of the shot's detonation (in seconds)</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>",
+  "output": "<p>For each battle, output a line containing the score for that battle.</p>",
+  "samples": [
+    {
+      "input": "2\n2\n4.0 8.0 0.0 -1.0 0.0\n4.0 8.0 1.0 -1.0 0.0\n1\n4.0 4.0 3.0\n3\n4.0 10.0 0.0 -1.0 0.0\n5.0 10.0 3.0 -6.0 4.0\n13.0 10.0 -3.0 -5.0 4.0\n3\n4.0 5.0 3.0\n7.0 8.0 4.0\n9.0 4.0 4.0\n",
+      "output": "-4\n-17\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2007 Pacific Northwest Region Programming Contest",
+  "level": 19,
+  "tags": [
+    "bitmask",
+    "bruteforcing",
+    "case_work",
+    "math",
+    "physics"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 6
+}

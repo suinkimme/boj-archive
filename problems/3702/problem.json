@@ -1,0 +1,29 @@
+{
+  "id": 3702,
+  "title": "The SetStack Computer",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Background from Wikipedia: “Set theory is a branch of mathematics created principally by the German mathematician Georg Cantor at the end of the 19th century. Initially controversial, set theory has come to play the role of a foundational theory in modern mathematics, in the sense of a theory invoked to justify assumptions made in mathematics concerning the existence of mathematical objects (such as numbers or functions) and their properties. Formal versions of set theory also have a foundational role to play as specifying a theoretical ideal of mathematical rigor in proofs.”</p>\n<p>Given this importance of sets, being the basis of mathematics, a set of eccentric theorist set off to construct a supercomputer operating on sets instead of numbers. The initial SetStack Alpha is under construction, and they need you to simulate it in order to verify the operation of the prototype.</p>\n<p>The computer operates on a single stack of sets, which is initially empty. After each operation, the cardinality of the topmost set on the stack is output. The cardinality of a set S is denoted |S| and is the number of elements in S. The instruction set of the SetStack Alpha is <code>PUSH</code>, <code>DUP</code>, <code>UNION</code>, <code>INTERSECT</code>, and <code>ADD</code>.</p>\n<ul>\n<li><code>PUSH</code> will push the empty set {} on the stack.</li>\n<li><code>DUP</code> will duplicate the topmost set (pop the stack, and then push that set on the stack twice).</li>\n<li><code>UNION</code> will pop the stack twice and then push the union of the two sets on the stack.</li>\n<li><code>INTERSECT</code> will pop the stack twice and then push the intersection of the two sets on the stack.</li>\n<li><code>ADD</code> will pop the stack twice, add the first set to the second one, and then push the resulting set on the stack.</li>\n</ul>\n<p>For illustration purposes, assume that the topmost element of the stack is</p>\n<p style=\"text-align: center;\">A = {{}, {{}}}</p>\n<p>and that the next one is</p>\n<p style=\"text-align: center;\">B = {{}, {{{}}}}.</p>\n<p>For these sets, we have |A| = 2 and |B| = 2. Then:</p>\n<ul>\n<li><code>UNION</code> would result in the set { {}, {{}}, {{{}}} }. The output is 3.</li>\n<li><code>INTERSECT</code> would result in the set { {} }. The output is 1.</li>\n<li><code>ADD</code> would result in the set { {}, {{{}}}, {{},{{}}} }. The output is 3.</li>\n</ul>",
+  "input": "<p>An integer 0 ≤ T ≤ 5 on the first line gives the cardinality of the set of test cases. The first line of each test case contains the number of operations 0 ≤ N ≤ 2 000. Then follow N lines each containing one of the five commands. It is guaranteed that the SetStack computer can execute all the commands in the sequence without ever popping an empty stack.</p>",
+  "output": "<p>For each operation specified in the input, there will be one line of output consisting of a single integer. This integer is the cardinality of the topmost element of the stack after the corresponding command has executed. After each test case there will be a line with *** (three asterisks).</p>",
+  "samples": [
+    {
+      "input": "2\n9\nPUSH\nDUP\nADD\nPUSH\nADD\nDUP\nADD\nDUP\nUNION\n5\nPUSH\nPUSH\nADD\nPUSH\nINTERSECT\n",
+      "output": "0\n0\n1\n0\n1\n1\n2\n2\n2\n***\n0\n0\n1\n0\n0\n***\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2006",
+  "level": 15,
+  "tags": [
+    "bitset",
+    "data_structures",
+    "implementation",
+    "stack",
+    "trees",
+    "tree_isomorphism"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 2
+}

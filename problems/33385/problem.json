@@ -1,0 +1,30 @@
+{
+  "id": 33385,
+  "title": "Fun on Tree",
+  "time_limit": "7 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Beitou, renowned for its breathtaking beauty and abundant hot springs, attracts countless tourists seeking relaxation and rejuvenation. The region boasts an extraordinary concentration of hot springs and spas, making it a global hotspot for such indulgence. Once a quaint locale where locals sought solace in its natural hot springs, the Beitou Valley has blossomed into a sprawling expanse, now housing over thirty luxurious resorts.</p>\n<p>Traditionally, hot springs evoke imagery of volcanic activity and the unmistakable scent of sulfur. However, for some, the latter proves rather unpleasant. You find yourself among those sensitive to the smell of sulfur, which brings us to your current predicament.</p>\n<p>Presently visiting Beitou, you've obtained a map of this enchanting place, revealing a conceptual representation as a rooted tree. It's worth noting that Beitou's mystical aura allows for unconventional measurements, even enabling negative distances between nodes. Additionally, each node on the map comes with an associated sulfur content value.</p>\n<p>An unexpected revelation leaves you questioning the accuracy of the sulfur content assigned to each location. In order to rectify this, your mission is to align the sulfur content with the newly acquired information. Moreover, you've uncovered intel about the location of the largest volcano in the vicinity. Prioritizing your safety and well-being, your ultimate goal is to pinpoint the spot farthest from this prominent volcano while having the lowest sulfur content. Your chosen evaluation metric for each node's viability is given by the formula $d_i - a_i$, wherein $d_i$ represents the distance between node $i$ and the largest volcano, and $a_i$ is the corresponding sulfur content value.</p>\n<p>We can describe each piece of new information you acquire with three integers, $x_i$, $y_i$, and $v_i$. It means that all the subtree of $y_i$ now has $v_i$ more sulfur (if $v_i$ is negative, then the sulfur content value decreases). Besides, you also learn that the largest volcano is actually located at $x_i$.</p>\n<p>Note that the modifications of sulfur value are persistent: when you get another piece of new information, the sulfur modifications from the previous ones still apply.</p>",
+  "input": "<p>The first line contains two integers $n$ and $q$ ($2 \\leq n \\leq 2 \\cdot 10^5$ and $0 \\leq q \\leq 2 \\cdot 10^5$): the size of the tree and the number of queries.</p>\n<p>The second line contains $n$ integers $a_1,a_2,\\ldots,a_n$ ($|a_i| \\leq 10^9$): the sulfur content value of each nodes.</p>\n<p>Next, $n-1$ lines are given. The $i$-th of these lines contains two integers $p_{i+1}$ and $w_{i+1}$ ($1 \\leq p_{i+1} \\leq i$ and $|w_{i+1}| \\leq 10^9$): the parent node of vertex $i+1$ and the distance between $p_{i+1}$ and $i+1$.</p>\n<p>Finally, $q$ lines are given. Each line contains three integers $x_i$, $y_i$, and $v_i$ ($1 \\leq x_i, y_i \\leq n$ and $|v_i| \\leq 10^9$): the new piece of information you acquired.</p>",
+  "output": "<p>For each new piece of information, print a line with two integers $s_i$ and $d_i$: the index of the node having the largest viability and the viability itself.</p>\n<p>If there are multiple answers, please output the one with the minimal node index.</p>",
+  "samples": [
+    {
+      "input": "6 6\n1 1 4 5 1 4\n1 5\n2 0\n3 2\n4 1\n5 6\n3 2 -100000\n1 2 100000\n1 1 0\n2 2 66\n3 1 5\n4 4 -3\n",
+      "output": "6 100005\n6 10\n6 10\n1 4\n1 -1\n1 1\n"
+    },
+    {
+      "input": "5 6\n-10 0 2 -4 8\n1 7\n1 1\n2 2\n2 -2\n1 1 100\n2 1 -100\n1 1 0\n4 3 10\n2 5 3\n5 2 2\n",
+      "output": "4 -87\n1 17\n4 13\n1 19\n1 17\n1 15\n"
+    },
+    {
+      "input": "6 3\n0 0 0 0 0 0\n1 10\n1 10\n1 -100\n4 10\n4 11\n1 1 0\n4 1 0\n1 4 1000\n",
+      "output": "2 10\n6 11\n2 10\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2023, Day 6: olmrgcsi And His Friends’ Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

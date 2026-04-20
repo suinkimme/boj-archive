@@ -1,0 +1,26 @@
+{
+  "id": 25225,
+  "title": "Contact Tracing",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>A novel infectious disease has started spreading through the population. You are tasked with figuring out who might be infected in order to get them to quarantine. The behavior of the disease among members of the population is as follows:</p>\n<ul>\n<li>When a person comes into contact with someone who is infectious, they may (but do not always) catch the disease. If they catch the disease, they are not infectious for the rest of that day, so they will not spread it to other people they come into contact with that day.</li>\n<li>When a person catches the disease, they are infectious starting the day after they caught the disease.</li>\n<li>Starting two days after they caught the disease, they are symptomatic; as a result, they will quarantine themselves and not come into contact with any other people from then on.</li>\n</ul>\n<p>You know that on day $0$, a single Patient Zero (of unknown identity) caught the disease. On day $1$, they were infectious and potentially came into contact with people, potentially infecting those people. On day $2$, Patient Zero became symptomatic and therefore stopped coming into contact with other people, but any people who were infected on day $1$ could potentially spread the disease to the people they come into contact with.</p>\n<p>Today is day $k$, and it is the end of the day. You have access to a list of all pairs of people who came into contact with each other on each day, including today. If you can identify all people who could be infectious but not symptomatic tomorrow (because they caught the disease today) and tell them to quarantine, you can halt the outbreak, because all people who are symptomatic tomorrow will quarantine themselves anyway. What is the minimum number of people you need to tell to quarantine to be sure that you halt the outbreak?</p>",
+  "input": "<p>The first line of input contains three integers $n$ ($1 \\leq n \\leq 1\\,000$), $k$ ($1 \\leq k \\leq 10$), and $c$ ($0 \\leq c \\leq 1\\,000$), where $n$ is the number of people, $k$ is the number of days since Patient Zero became infected, and $c$ is the number of contacts that occurred between people.</p>\n<p>Each of the next $c$ lines contains three space-separated integers $a$, $b$ ($1 \\leq a &lt; b \\leq n$), and $d$ ($1 \\leq d \\leq k$), denoting that people $a$ and $b$ came into contact with each other on day $d$. All of these $c$ lines will be distinct. There will be at least one person with no contacts after day 1.</p>",
+  "output": "<p>Output a line with a single integer $x$ denoting the minimum number of people you must tell to quarantine beginning on day $k+1$. Then, output $x$ lines listing the people who must quarantine, one per line, in ascending order.</p>",
+  "samples": [
+    {
+      "input": "4 2 4\n1 4 1\n2 3 2\n2 4 1\n3 4 1\n",
+      "output": "2\n2\n3\n"
+    }
+  ],
+  "hint": "<p>In Sample Input 1, Patient Zero could be person 1 or person 4. Persons 2 and 3 can be eliminated, because they had contact on day 2, when Patient Zero would be symptomatic and quarantined.</p>\n<p>Suppose person 1 is Patient Zero. Person 1 may have infected person 4 on day 1. Person 1 is symptomatic on day 2, so they begin quarantining. Therefore, there is no chain of contact from person 1 (Patient Zero) to persons 2 or 3, so person 2 and person 3 are safe and do not need to be quarantined. If person 1 infected person 4 on day 1, then person 4 will be symptomatic tomorrow (day 3), so there is no need to contact them because they will isolate on their own. Therefore if Patient Zero is person 1, no one needs to be notified.</p>\n<p>Now suppose person 4 is Patient Zero. Person 4 may have infected person 1 on day 1; using the same logic as above, there is no need to notify person 1 or person 4 to quarantine on day 3. This leaves persons 2 and 3, which requires us to consider multiple infection patterns.</p>\n<p>If person 4 infected both persons 2 and 3 on day 1, then both of them will be symptomatic and self-quarantine starting on day 3, so we do not need to notify them.</p>\n<p>Suppose instead person 4 infected person 2 but NOT person 3 on day 1. (Remember that transmission is not guaranteed.) In this case, person 2 could go on to infect person 3 on day 2, and person 3 would not yet be symptomatic on day 3, so we would need to notify person 3 to quarantine.</p>\n<p>Similarly, if person 4 infected person 3 but NOT person 2 on day 1, we would need to notify person 2 to quarantine.</p>\n<p>Therefore to be sure we can halt the outbreak, we need to notify both person 2 and person 3 to quarantine. This is guaranteed to stop the outbreak, whether person 1 or person 4 is Patient Zero.</p>",
+  "source": ", ICPC, Regionals, North America, North America Championship, North America Championship 2022, Camp, Petrozavodsk Programming Camp, Summer 2022, Day 1: Welcome Contest",
+  "level": 16,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "ad_hoc"
+  ],
+  "accepted_user_count": 44,
+  "submission_count": null,
+  "average_tries": 1.8181999921798706
+}

@@ -1,0 +1,37 @@
+{
+  "id": 34181,
+  "title": "MatKor짱~ 하-이! 나니가스키? 장카설유 요리모 장파서유!",
+  "time_limit": "1.16 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<blockquote>\n<p>MatKor에서는 장카설유보다 장파서유가 인기가 많다. 각각 <strong>장</strong>현우(changhw), <strong>파</strong>니(pani), <strong>서</strong>준이(osjoon), <strong>유</strong>틸(utilforever)이다.</p>\n</blockquote>\n<p>그러나 <strong>장파서유</strong> 중 <strong>서</strong>를 담당하는 서준이는 그룹 여자친구의 팬이다. 이번 학기 MatKor에 가입한 서준이의 목표는 MatKor 부원 모두를 여자친구의 팬으로 만드는 것이다. 서준이는 MatKor 부원이 많이 모이는 세미나를 틈타 목표를 이루려고 한다.</p>\n<p>MatKor에는 총 $N\\times M$명의 부원이 있고, $T$번의 세미나를 진행한다. 세미나를 들을 때 부원들은 $N\\times M$ 모양 격자의 $x$, $y$ 좌표가 정수인 각 격자점에 한 명씩 배치되며, 각 부원의 $z$ 좌표는 $\\left[ -1,1 \\right]$ 범위의 실수에서 정해진 규칙에 따라 정해진다. 이때, $x$, $y$ 좌표가 $\\left( i,j \\right)$에 배치된 부원을 편의상 $\\left( i,j \\right)$번 부원이라고 부른다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width:300px;max-width:100%;\"/></p>\n<p>이제 $\\left( i,j \\right)$번 부원이 $t$번째 세미나에서의 $z$좌표를 결정하기 위해 먼저 아래와 같은 삼각파 꼴의 식을 정의한다. \\[f\\left( x \\right) =\\left\\lvert 4x-2 \\right\\rvert -1\\]</p>\n<p>즉, $x\\in\\left[ 0,1 \\right)$범위에서, $x=\\frac{1}{2}$를 기준으로 $f\\left( x \\right)$가 $1$에서 $-1$로 선형으로 감소하다가 다시 $1$까지 선형으로 증가하는 함수를 정의한다.</p>\n<p>이제 각 부원별로 <strong>각속도</strong> $\\omega$와 <strong>위상</strong> $\\phi$를 정의한다. $\\left( i,j \\right)$번 부원의 각속도를 $\\omega_{i,j}$, 위상을 $\\phi_{i,j}$라 정의할 때, $t$번째 세미나에서의 $z$ 좌표는 $f\\left( \\left\\{ \\frac{\\omega_{i,j}t+\\phi_{i,j}}{T} \\right\\} \\right)$이다. 여기서 $\\left\\{ x \\right\\}$는 소수 부분으로, $\\left\\{ x \\right\\} :=x-\\left\\lfloor x \\right\\rfloor$으로 정의된다. 즉, $\\left( i,j \\right)$번 부원의 $t$번째 세미나에서의 좌표는 $\\left( i,j,f\\left( \\left\\{ \\frac{\\omega_{i,j}t+\\phi_{i,j}}{T} \\right\\} \\right) \\right)$이다.</p>\n<p>이제 서준이는 $T$번의 세미나에서 각각 최소 몇 명의 부원을 여자친구의 팬으로 만들어야 모든 부원이 여자친구의 팬으로 만들어 서준이의 목표를 달성할 수 있을지 궁금하다. 임의의 두 부원에 대해, 한 명이 여자친구의 팬이고 두 부원의 유클리드 거리가 $\\sqrt{2}$ 미만이면 다른 한 명도 여자친구의 팬으로 만들 수 있다. 이 과정은 연쇄적으로 일어난다.</p>\n<p>각 세미나에 대해 서준이의 목표를 달성하기 위해 최소 몇 명의 부원을 직접 여자친구의 팬으로 만들어야 하는지 구해보자. 단, 각 세미나에 대해 서로 영향받지 않으며, 각 세미나가 시작하기 전 모든 부원이 여자친구의 팬이 아니도록 초기화된다. 즉, 각각에 대해 독립적인 상황이라 생각해 답을 구한다.</p>",
+  "input": "<p>첫 번째 줄에 정수 $N,M(1\\leq N,M\\leq 100)$과 세미나의 횟수 $T(1\\leq T\\leq 10^5)$가 공백으로 구분되어 주어진다.</p>\n<p>두 번째 줄부터 $N$줄에 걸쳐 $i$번째 줄에 $\\omega_{i,1},\\omega_{i,2},\\cdots ,\\omega_{i,M}(1\\leq\\omega_{i,j}\\leq 10)$을 의미하는 정수들이 공백으로 구분되어 주어진다.</p>\n<p>$N+2$번째 줄부터 $N$줄에 걸쳐 $i$번째 줄에 $\\phi_{i,1},\\phi_{i,2},\\cdots ,\\phi_{i,M}(0\\leq\\phi_{ij}&lt;T)$을 의미하는 정수들이 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>첫 번째 줄부터 $T$줄에 걸쳐 $i$번째 줄에 $i$번째 세미나에서 서준이가 목표를 달성하기 위해 최소 몇 명의 부원을 여자친구의 팬으로 만들어야 하는지 출력한다.</p>",
+  "samples": [
+    {
+      "input": "2 2 4\n1 1\n1 1\n0 2\n2 0\n",
+      "output": "1\n4\n1\n4\n"
+    },
+    {
+      "input": "2 2 4\n1 1\n1 1\n0 1\n3 2\n",
+      "output": "4\n4\n4\n4\n"
+    }
+  ],
+  "hint": "<p>이 문제의 시간 제한이 $1.16$초인 이유는 여자친구의 데뷔일이 $1$월 $16$일이기 때문이다.</p>",
+  "source": "University, 고려대학교, MatKor Cup, 제7회 고려대학교 MatKor Cup: 2025 Summer, The FinAL, osjoon, devluyten, foxpython, jms020820, kidw0124, leeminjae, lighter, utilforever, yijw0930",
+  "level": 23,
+  "tags": [
+    "math",
+    "graphs",
+    "data_structures",
+    "geometry",
+    "segtree",
+    "disjoint_set",
+    "divide_and_conquer",
+    "offline_queries",
+    "grid_graph",
+    "offline_dynamic_connectivity"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 6.1666998863220215
+}

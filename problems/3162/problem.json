@@ -1,0 +1,33 @@
+{
+  "id": 3162,
+  "title": "turbo",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A new TV set, besides the regular capability to directly select a channel with the remote control, is equipped with the new \"turbo\" mode with an associated key (labeled with the letter T) on the remote control. </p>\n<p>Turbo mode makes it easier to cycle through a number of previously selected channels. For usual operation, the user selects a channel by pressing the appropriate key on the remote control. </p>\n<p>Let the currently displayed channel be channel X. </p>\n<p>After pressing the T key, the TV set enters the turbo mode, and changes to the first channel displayed after the last change to channel X. Additional presses of the T key make the TV set cycle through channels that were displayed between the two appearances of the channel X, channel X included. In one cycle, the TV set displays each channel only once, in order of their first appearance. </p>\n<p>If the first appearance of the channel X is just before entering the turbo mode, the cycle starts with the first selected channel. </p>\n<p>The TV set leaves the turbo mode when the user manually selects a channel. </p>\n<p>For example, if the pressed keys are 1, 2, 3, T, T, T, T, T, 2, 4, 1, T, T, T and T: </p>\n<table class=\"table table-bordered\">\n<thead>\n<tr>\n<th>Step</th>\n<th>Pressed key</th>\n<th>Explanation</th>\n<th>Channel displayed</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1.</td>\n<td>1</td>\n<td>Manual select</td>\n<td>1</td>\n</tr>\n<tr>\n<td>2.</td>\n<td>2</td>\n<td>Manual select</td>\n<td>2</td>\n</tr>\n<tr>\n<td>3.</td>\n<td>3</td>\n<td>Manual select</td>\n<td>3</td>\n</tr>\n<tr>\n<td>4.</td>\n<td>T</td>\n<td>When the TV enters turbo mode, the displayed channel is 3 (first appearance). The turbo cycle starts from the first selected channel (1 in this case)</td>\n<td>1</td>\n</tr>\n<tr>\n<td>5.</td>\n<td>T</td>\n<td>After channel 1, channel 2 was selected</td>\n<td>2</td>\n</tr>\n<tr>\n<td>6.</td>\n<td>T</td>\n<td>After channel 2, channel 3 was selected</td>\n<td>3</td>\n</tr>\n<tr>\n<td>7.</td>\n<td>T</td>\n<td>The cycle started in step 4 is repeated</td>\n<td>1</td>\n</tr>\n<tr>\n<td>8.</td>\n<td>T</td>\n<td>After channel 1, channel 2 was selected</td>\n<td>2</td>\n</tr>\n<tr>\n<td>9.</td>\n<td>2</td>\n<td>Manual select, the TV set leaves turbo mode</td>\n<td>2</td>\n</tr>\n<tr>\n<td>10.</td>\n<td>4</td>\n<td>Manual select</td>\n<td>4</td>\n</tr>\n<tr>\n<td>11.</td>\n<td>1</td>\n<td>Manual select</td>\n<td>1</td>\n</tr>\n<tr>\n<td>12.</td>\n<td>T</td>\n<td>The last occurrence of channel 1 was in step 7, the TV set changes to the next displayed channel</td>\n<td>2</td>\n</tr>\n<tr>\n<td>13.</td>\n<td>T</td>\n<td>If we would display channel 2 from step 9, it will be its second appearance, so we skip it</td>\n<td>4</td>\n</tr>\n<tr>\n<td>14.</td>\n<td>T</td>\n<td>The channel X is also included in the cycle</td>\n<td>1</td>\n</tr>\n<tr>\n<td>15.</td>\n<td>T</td>\n<td>The cycle started in step 12 is repeated</td>\n<td>2</td>\n</tr>\n</tbody>\n</table>\n<p>Write a program that, given the sequence of pressed keys, determines which channel is displayed each time the T key is pressed. </p>\n<p>The TV set has 99 channels labeled with numbers from 1 to 99 and the first pressed key will not be T. </p>",
+  "input": "<p>The first line of input contains an integer N, 1 ≤ N ≤ 10 000. </p>\n<p>Each of the following N lines contains a number or the letter T. </p>",
+  "output": "<p>For each time the T key is pressed, output the channel that is displayed. </p>",
+  "samples": [
+    {
+      "input": "10\n1\n2\n3\n3\n4\nT\nT\nT\nT\nT\n",
+      "output": "1\n2\n3\n4\n1\n"
+    },
+    {
+      "input": "10\n1\n2\n3\n2\n3\n1\nT\nT\nT\nT\n",
+      "output": "2\n3\n1\n2\n"
+    },
+    {
+      "input": "15\n1\n2\n3\nT\nT\nT\nT\nT\n2\n4\n1\nT\nT\nT\nT\n",
+      "output": "1\n2\n3\n1\n2\n2\n4\n1\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2006, National Competition #1 - Juniors",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 2.941200017929077
+}

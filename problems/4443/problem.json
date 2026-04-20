@@ -1,0 +1,25 @@
+{
+  "id": 4443,
+  "title": "Spellcasting",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The casting of a spell is a continuous process. One begins with a certain amount of energy (measured in mana), which can be used to summon elements into the spell. Each element can be summoned in any quantity instantaneously by consuming energy, at which point it immediately becomes a part of the spell, providing power (measured in mana per second) from now on. This power causes energy to accumulate over time, which can in turn be used to summon additional elements. We continue this process until the total power output of our spell reaches a required level.</p>\n<p>There is one complication in this process, which experienced spellcasters will exploit to cast spells more effectively. Each element can have up to one parent element, which supports its summoning, making it cost half as much energy as it usually does if the parent element is already present. For example, if element A supports element B and element C, we could summon 1 unit of element A first at full cost, and then summon 0.5 unit of element B and 0.5 unit of element C at half cost. If we were to then summon 0.5 more unit of element C, that portion would be at full energy cost again, since the 1 unit of element A is already supporting other elements. Note that all 3 elements contribute their full power output to the spell; supporting does not interfere with power output in any way, nor does it consume an element.</p>\n<p>Given an initial amount of energy, a target amount of power, and a description of the spell elements available for summoning, figure out how to cast a spell that reaches the target amount of power in a minimum amount of time.</p>",
+  "input": "<p>Input will consist of multiple test cases. Each test case begins with a line with 3 space-separated integers N, E, and P, denoting the number of elements, the starting energy (in mana), and the target power (in mana per second) respectively. Following this line are N lines, the ith of which describes element i by the three space-separated integers e<sub>i</sub>, p<sub>i</sub>, and parent<sub>i</sub> denoting the energy cost to summon, the power output, and the index of the parent element (1-indexed; parent<sub>i</sub> = 0 if element i has no parent element).</p>\n<p>Constraints include:</p>\n<ul>\n<li>1 ≤ N ≤ 1000, 1 ≤ E ≤ 10<sup>9</sup>, 1 ≤ P ≤ 10<sup>9</sup>.</li>\n<li>1 ≤ e<sub>i</sub> ≤ 10<sup>9</sup> for all i, 0 ≤ p<sub>i</sub> ≤ 10<sup>9</sup> for all i, 0 ≤ parenti ≤ N for all i.</li>\n<li>At least one p<sub>i</sub> will be positive.</li>\n<li>No element is its own ancestor; in other words, no element is capable of supporting itself, whether directly or indirectly.</li>\n</ul>\n<p>Input will be terminated with a case where N = E = P = 0, which should not be processed.</p>",
+  "output": "<p>For each test case, print out a single line with a single integer equal to the minimum number of seconds required to reach the target power (rounded up to the nearest integer).</p>",
+  "samples": [
+    {
+      "input": "1 1 1000000\n200 100 0\n2 1 1000000\n200 100 0\n2 1 1\n2 1 1000000\n200 100 2\n2 1 0\n0 0 0\n",
+      "output": "30\n29\n14\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2012 Pacific Northwest Region Programming Contest",
+  "level": 21,
+  "tags": [
+    "calculus",
+    "math"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.875
+}

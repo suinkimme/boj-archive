@@ -1,0 +1,22 @@
+{
+  "id": 27853,
+  "title": "Crane Operator",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are the operator of a crane. In the reach of the crane there are <b>N</b> locations numbered from <b>0</b> to <b>N-1</b>. Initially the location <b>0</b> is empty and each of the other locations contains a box with the respective number (i.e. the box in the location <b>i</b> has the number <b>i</b>).</p>\n<p>You were assigned a task to rearrange the boxes to form a special top-secret configuration. Because of the secrecy the configuration had to be transferred in a special way that only you can understand.</p>\n<p>The secret configuration is characterized by five numbers <b>q</b>, <b>p</b>, <b>m</b>, <b>d</b> and <b>M</b>. To find out the final box locations you should follow this procedure: Consider the boxes in the order of their numbers. (I.e. the box number <b>1</b> comes first, the block number <b>2</b> second, etc.) The final location for the <b>i</b>-th box will have the number <b>p<sub>i</sub>=(c<sub>i</sub>+d*x+y) mod N</b>, where:</p>\n<ol>\n<li>Numbers <b>c<sub>i</sub></b> are defined by the recurrence equation: <b>c<sub>0</sub>=0</b>, <b>c<sub>i+1</sub>=(c<sub>i</sub>*q+p) mod m</b></li>\n<li>Numbers <b>x</b> and <b>y</b> are nonnegative integers chosen in such a way that <b>p<sub>i</sub>≠M</b> and no previous box was assigned to the location <b>p<sub>i</sub></b></li>\n<li>If there are more choices for <b>x</b> and <b>y</b> satisfying conditions 1 and 2, choose the one that minimizes <b>y</b></li>\n<li>If there are more choices for <b>x</b> and <b>y</b> satisfying conditions 1, 2 and 3, choose the one that minimizes <b>x</b></li>\n</ol>\n<p> </p>\n<p>Once you find the secret configuration, you are supposed to rearrange the boxes accordingly. Unfortunately there is almost no room to manipulate the boxes. The only operation you are able to do is to lift a box with the crane and drop it on the location that is currently empty. (Note that there will always be exactly one empty location.)</p>\n<p>There is one more problem. The whole operation is extremely time-critical and it is imperative that you should achieve the final configuration as soon as possible – i.e. you must reach it using the minimal number of box moves.</p>\n<p>Given the numbers <b>N</b>, <b>M</b>, <b>q</b>, <b>p</b>, <b>m</b> and <b>d</b>, determine how many described operations (lifting a box and dropping it to the free location) are sufficient and necessary to reach the configuration determined using the procedure above.</p>",
+  "input": "<p>On the first line of input file there is one number <b>K</b> – the number of test cases. <b>K</b> lines follow, each of them describing one test case. On each of these lines there are six numbers <b>N</b>, <b>M</b>, <b>q</b>, <b>p</b>, <b>m</b> and <b>d</b> separated by spaces.</p>",
+  "output": "<p>For each test case output one line containing the number of operations sufficient and necessary to reach the final configuration.</p>",
+  "samples": [
+    {
+      "input": "1\n8 3 5 2 7 4\n",
+      "output": "6\n"
+    }
+  ],
+  "hint": "<p>The recurrence gives the values <b>c<sub>1</sub>=2</b>, <b>c<sub>2</sub>=5</b>, <b>c<sub>3</sub>=6</b>, <b>c<sub>4</sub>=4</b>, <b>c<sub>5</sub>=1</b>, <b>c<sub>6</sub>=0</b> and <b>c<sub>7</sub>=2</b>.</p>\n<p>The secret configuration is: Box 6 on the location 0, box 5 on the location 1, box 1 on the location 2, location 3 empty, box 4 on the location 4, box 2 on the location 5, box 3 on the location 6 and box 7 on the location 7.</p>\n<p>We need 6 moves to reach this configuration.</p>",
+  "source": ", Contest, Internet Problem Solving Contest, IPSC 2005",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

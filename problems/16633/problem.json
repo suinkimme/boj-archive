@@ -1,0 +1,34 @@
+{
+  "id": 16633,
+  "title": "Peg Game for Two",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Jacquez and Alia’s parents take them on many road trips. To keep themselves occupied, they play a triangular peg game, meant for one player. In the original game, one player has an equilateral triangle containing 15 holes (five holes per side of the triangle). Initially one hole is empty and the remaining 14 are filled with pegs. The player moves by picking up a peg to “jump” it over another peg, landing on an empty hole. Jumps must be in straight lines (horizontally or diagonally). The peg that is jumped over is removed. The goal of this game is to leave just one peg on the board. Figure J.1 shows the result of a jump in this game.</p>\n<pre style=\"text-align: center;\">\nX                   X\nX X                 X O\nX X X      --&gt;      X O X\nX O X X             X X X X\nX X X X X           X X X X X</pre>\n<p>Figure J.1: One possible move in the original game. On the left is an initial board, where X represents a peg and O represents an empty hole. The jump moves the right peg in the second (from top) row diagonally down and to the left, over the middle peg of the third row, which is removed.</p>\n<p>Ultimately, Jacquez and Alia have gotten bored of playing this game individually. They decide to invent a version that they could play together. In the new version, each peg has a positive point value, and they alternate turns. During a player’s turn, they must make a jump if one is available. The score for a jump is the product of the two pegs involved in the jump.</p>\n<p>The total score of a player is the sum of the scores of their jumps. The game ends when a player has no possible jumps to make. Each player’s goal is to maximize their own total score minus their opponent’s total score (at the end of the game). For example, Jacquez would prefer to win with a score of 100 to Alia’s score of 60 (with a differential of 40), than to win with a score of 1 000 to Alia’s score of 998 (with a smaller differential of only 2). Similarly, Alia wants to win by as much as possible over Jacquez.</p>\n<p>For this version of the game, we can display the game state by replacing each X shown above with a corresponding value for that peg, and using a value of 0 (zero) for each of the open holes. Figure J.2 shows an example move.</p>\n<pre style=\"text-align: center;\">\n3                   3\n1 6                 1 0\n1 7 8      --&gt;      1 0 8\n5 0 3 4             5 6 3 4\n9 3 2 1 9           9 3 2 1 9</pre>\n<p>Figure J.2: One possible move in the new game, jumping the peg with value 6 over the peg with value 7. This move is worth 6 · 7 = 42 for Jacquez (since he moves first). The values are from the first sample input.</p>\n<p>Jacquez has had some trouble winning. Write a program to calculate the best he can do, assuming that he starts and both players play optimally.</p>",
+  "input": "<p>The input consists of five lines, describing the initial state of the board. The i<sup>th</sup> (1 ≤ i ≤ 5) line contains i space separated integers, representing the pegs and holes on the i<sup>th</sup> row. Each of these integers is between 0 and 100, inclusive. A value of 0 represents a hole while the rest of the values represent pegs. It is possible for two different pegs to have the same value. Of the 15 input values it is guaranteed that exactly one is 0, thus all input boards start with exactly one hole.</p>",
+  "output": "<p>Output the value of Jacquez’s score minus Alia’s score at the end of the game, assuming Jacquez starts and both players play optimally.</p>",
+  "samples": [
+    {
+      "input": "3\n1 6\n1 7 8\n5 0 3 4\n9 3 2 1 9\n",
+      "output": "21\n"
+    },
+    {
+      "input": "1\n2 3\n4 5 6\n7 8 9 10\n11 12 0 13 14\n",
+      "output": "19\n"
+    },
+    {
+      "input": "100\n1 17\n99 3 4\n0 76 33 42\n12 13 14 15 16\n",
+      "output": "2148\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Qualification Contest, ACM-ICPC North America Qualifier 2018",
+  "level": 13,
+  "tags": [
+    "dp",
+    "bruteforcing",
+    "game_theory"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.083299994468689
+}

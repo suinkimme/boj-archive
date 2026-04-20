@@ -1,0 +1,33 @@
+{
+  "id": 34476,
+  "title": "A-Skew-ed Reasoning",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The following is based on a true story – the names have been changed because. . . well, because you always change names in stories like this one.</p>\n<p>Professor Taylor Swift is grading a homework assignment on integer skew heaps. A skew heap is a binary tree with an integer stored in each node such that the value in any node is less than or equal to the values in any of its children. Note that the skew heap need not be a perfect binary tree; that is, the left and/or right subtree of any node may be empty.</p>\n<p>Inserting a value $x$ into a skew heap $H$ is done using the following recursive procedure:</p>\n<ul>\n<li>If $H$ is empty, make $H$ a skew heap consisting of a single node containing $x$.</li>\n<li>Otherwise, let $y$ be the value in the root of $H$.\n\t<ul>\n<li>If $y &lt; x$, swap the two children of the root and recursively insert $x$ into the new left subtree.</li>\n<li>If $y ≥ x$, create a new node with value $x$ and make $H$ the left subtree of this node.</li>\n</ul>\n</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 492px; height: 220px;\"/></p>\n<p style=\"text-align: center;\">Figure A.1: Example of inserting the value $7$ into a skew heap. The nodes storing $4$ and $5$ (marked in blue) have their children swapped, while the node storing $11$ becomes the left child of the newly inserted node (marked in red).</p>\n<p>Now, back to Professor Swift. The homework problem she has assigned asks the students to show the heap that results from inserting a given permutation of the numbers from $1$ to $n$, in the given order, into an empty heap. Surprisingly, some of the students have wrong answers! That got Professor Swift wondering: For a given heap, is there an input permutation that would have produced this heap? And if so, what are the lexicographically minimal and maximal such input permutations?</p>",
+  "input": "<p>The first line of input contains an integer $n$ ($1 ≤ n ≤ 2 \\cdot 10^5$), the number of nodes in the tree. These nodes contain the numbers from $1$ to $n$ exactly. This is followed by $n$ lines, the $i$<sup>th</sup> of which contains two integers $ℓ_i$ and $r_i$ ($i &lt; ℓ_i ≤ n$ or $ℓ_i = 0$; $i &lt; r_i ≤ n$ or $r_i = 0$), describing the values of the left and right children of the node storing $i$, where a value of $0$ is used to indicate that the corresponding child does not exist. It is guaranteed that this data describes a binary tree.</p>",
+  "output": "<p>Output the lexicographically minimal input permutation that produces the given tree under the insertion method for skew heaps, followed by the lexicographically maximal such input permutation. These permutations may coincide, in which case you still need to output both. If no input permutation producing the given tree exists, output <code>impossible</code>.</p>",
+  "samples": [
+    {
+      "input": "7\n2 3\n4 5\n6 7\n0 0\n0 0\n0 0\n0 0\n",
+      "output": "1 3 2 7 5 6 4\n7 1 5 3 2 6 4\n"
+    },
+    {
+      "input": "2\n0 2\n0 0\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "3\n2 0\n3 0\n0 0\n",
+      "output": "2 3 1\n3 2 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2025",
+  "level": 23,
+  "tags": [
+    "recursion",
+    "smaller_to_larger"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.4544999599456787
+}

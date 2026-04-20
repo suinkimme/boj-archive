@@ -1,0 +1,26 @@
+{
+  "id": 20805,
+  "title": "Rikka with Storehouse",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>On activities held by Algorithm Association, lemon teas are provided to the participants almost infinitely. To store such a large number of lemon teas, Rikka wants to build some storehouses.</p>\n<p>Rikka plans to build $N=2^n-1$ storehouses, together with $N-1$ bidirectional roads. The $i$-th road connects the $(i+1)$-th storehouse and the $\\lceil \\frac{i}{2} \\rceil$-th storehouse.</p>\n<p>These storehouses will be built on an uneven piece of land. For each $i \\in [\\lceil \\frac{N}{2} \\rceil, N]$, the altitude of the $i$-th storehouse is known to be $a_i$. Rikka can choose the altitudes for other storehouses arbitrarily. (The value of altitude can be any real number).</p>\n<p>Carrying lemon teas on a steep hill is difficult. Rikka wants to make the road system as convenient as possible. Therefore, Rikka wants to minimize the square sum of the altitude difference of each road, i.e. $$ans = \\min_{a_1, \\dots, a_{\\lfloor \\frac{N}{2} \\rfloor} \\in \\mathbb R} \\sum_{i=1}^{N-1} \\left( a_{i+1} - a_{\\lceil \\frac{i}{2} \\rceil}\\right)^2 $$</p>\n<p>Due to the geological movement, the altitude of the last $\\lceil \\frac{N}{2} \\rceil$ storehouses often changes. Lucky, it is free for Rikka to change the altitude of the first $\\lfloor \\frac{N}{2} \\rfloor$ storehouses at any time.</p>\n<p>Your task is to help Rikka to find out the optimal plan after each change.</p>",
+  "input": "<p>The first line contains two integers $n,m\\ (2 \\leq n \\leq 18, 0 \\leq m \\leq 2 \\times 10^5)$.</p>\n<p>The second line contains $\\lceil \\frac{N}{2} \\rceil$ integers $h_i\\ (1 \\leq h_i \\leq 10^8)$, representing $a_{\\lceil \\frac{N}{2} \\rceil}, \\dots, a_{N}$ in order, where $N = 2^n-1$. </p>\n<p>Then $m$ lines follow, each line with two integers $x_i, w_i\\ (\\lceil \\frac{N}{2} \\rceil \\leq x_i \\leq n, 1 \\leq w_i \\leq 10^8)$, representing the altitude of the $x_i$-th storehouse is changed to $w_i$ during the $i$-th movement.</p>",
+  "output": "<p>Output $m+1$ lines, each with a single number: the initial value of $ans$ followed by the value of $ans$ after each movement.</p>\n<p>Writing a special judge is a tiring task. Therefore, you are required to output the answer module $998244353$. Formally, if the simplest fraction representation of $ans$ is $\\frac{x}{y}$, you need to output $x \\times y^{998244351} \\text{ mod } 998244353$.</p>",
+  "samples": [
+    {
+      "input": "2 0\n1 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 3\n1 2 3 4\n6 4\n5 4\n4 4\n",
+      "output": "332748120\n83187032\n748683270\n0\n"
+    }
+  ],
+  "hint": "<p>For the first sample, one optimal solution is $a_1=2$ and the value of $ans$ is $(2-1)^2 + (2-3)^2 = 2$.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 7: Grand Prix of Xiaomi",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

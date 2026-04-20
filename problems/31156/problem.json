@@ -1,0 +1,31 @@
+{
+  "id": 31156,
+  "title": "Amazing Tree",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Consider an undirected tree. The following algorithm constructs a post-order traversal of the tree:</p>\n<pre>\nfun dfs(v):\n    mark v as used\n    for u in neighbours(v):\n        if u is not used:\n            dfs(u)\n    append v to order\n</pre>\n<p>The post-order traversal will be in the list <em>order</em>.</p>\n<p>You are allowed to choose the order of neighbors for each vertex as well as the starting vertex. What is the lexicographically minimal <em>order</em> you can get?</p>",
+  "input": "<p>The first line of input contains one integer $T$ ($1 \\le T \\le 10^{5}$) --- the number of test cases you need to process. Description of the test cases follows.</p>\n<p>The first line of each test case contains a single integer $n$ ($2 \\le n \\le 2 \\cdot 10^{5}$) --- the number of vertices in the tree. </p>\n<p>The $i$-th of the next $n-1$ lines contains two integers $u_i, v_i$ ($1 \\le u_i, v_i \\le n$, $u_i \\ne v_i$), meaning that there is an undirected edge $(u_i, v_i)$ in the tree. It is guaranteed that the given graph is a tree.</p>\n<p>The sum of $n$ over all test cases in one test file does not exceed $2 \\cdot 10^{5}$.</p>",
+  "output": "<p>For each test case print the lexicographically minimal order on a separate line.</p>",
+  "samples": [
+    {
+      "input": "3\n3\n1 3\n3 2\n3\n2 1\n1 3\n7\n1 2\n1 3\n2 4\n2 5\n3 6\n3 7\n",
+      "output": "1 2 3\n2 1 3\n4 5 2 1 6 3 7\n"
+    }
+  ],
+  "hint": "<p>The first test looks as follows:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>By starting in vertex $1$ we can only get order $2\\ 3\\ 1$. By starting in vertex $2$ we can only get order $1\\ 3\\ 2$. By starting in vertex $3$ we can get two orders: $1\\ 2\\ 3$ and $2\\ 1\\ 3$. The lexicographically minimal of the four orders is $1\\ 2\\ 3$.</p>\n<p>The second test looks as follows:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></p>\n<p>By starting in vertex $1$ we can get two orders: $2\\ 3\\ 1$ and $3\\ 2\\ 1$. By starting in vertex $2$ we can only get order $3\\ 1\\ 2$. By starting in vertex $3$ we can only get order $2\\ 1\\ 3$. The lexicographically minimal of the four orders is $2\\ 1\\ 3$.</p>\n<p>The third test looks as follows:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\"/></p>\n<p>The lexicographically minimal order is $4\\ 5\\ 2\\ 1\\ 6\\ 3\\ 7$ it can be obtained by starting in node $7$.</p>",
+  "source": "Contest, Open Cup, 2021/2022 Season, Stage 7: Grand Prix of Southeastern Europe, ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2021",
+  "level": 20,
+  "tags": [
+    "dp",
+    "graphs",
+    "greedy",
+    "graph_traversal",
+    "sorting",
+    "trees",
+    "dfs",
+    "dp_tree"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 2.68179988861084
+}

@@ -1,0 +1,27 @@
+{
+  "id": 19825,
+  "title": "Minimal Product",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given an array of integers $a_1,\\dots,a_n$. Find two indices $i$ and $j$ such that $i&lt;j$, $a_i&lt;a_j$, and the product $a_i \\cdot a_j$ is as small as possible.</p>",
+  "input": "<p>The input consists of several tests. The first line contains a single integer $t$ --- the number of tests ($1 \\leq t \\leq 10^4$). Each of the following $t$ lines describes one test.</p>\n<p>Each test is generated using the following algorithm. The test is described by integers $n$, $l$, $r$, $x$, $y$, $z$, $b_1$, $b_2$ ($2 \\leq n \\leq 10^7$, $-2\\cdot10^9 \\leq l \\leq r \\leq 2\\cdot10^9$, $0 \\leq x,y,z,b_1,b_2 &lt; 2^{32}$), where $n$ is the length of the array.</p>\n<p>First, the sequence $b_i$ of length $n$ is generated. Elements $b_1$ and $b_2$ are given. For $i&gt;2$ let $b_i=(b_{i-2}x+b_{i-1}y+z) \\bmod 2^{32}$. For each $i$ between $1$ and $n$, $a_i=(b_i \\bmod (r - l + 1)) + l$ (thus, $-2\\cdot10^9 \\leq a_i \\leq 2\\cdot10^9$).</p>\n<p>It is recommended to use 64-bit integers to generate the sequence to avoid integer overflow.</p>\n<p>The sum of $n$ in all tests does not exceed $2 \\cdot 10^7$.</p>",
+  "output": "<p>For each test, print the smallest possible product $a_i \\cdot a_j$ in a separate line. If there are no such $i$ and $j$ that $i&lt;j$ and $a_i&lt;a_j$, print \"<code>IMPOSSIBLE</code>\".</p>",
+  "samples": [
+    {
+      "input": "2\n4 -5 5 11 13 17 0 3\n5 0 100 0 1 0 42 42\n",
+      "output": "-15\nIMPOSSIBLE\n"
+    }
+  ],
+  "hint": "<p>Let us consider the generation of the array in the first test.</p>\n<p>First, the sequence $b$ is generated.</p>\n<ul>\n<li>$b_1 = 0$</li>\n<li>$b_2 = 3$</li>\n<li>$b_3 = (11\\cdot 0 + 13\\cdot 3 + 17)\\bmod 2^{32}=56$</li>\n<li>$b_4 = (11\\cdot 3 + 13\\cdot 56 + 17)\\bmod 2^{32}=778$</li>\n</ul>\n<p>Then it is used to generate $a$.</p>\n<ul>\n<li>$a_1 = (0\\bmod (5-(-5) + 1)) + (-5)=(0 \\bmod 11) - 5 = -5$</li>\n<li>$a_2 = (3 \\bmod 11) - 5 = -2$</li>\n<li>$a_3 = (56 \\bmod 11) - 5 = -4$</li>\n<li>$a_4 = (778 \\bmod 11) - 5 = 3$</li>\n</ul>\n<p>Thus, $a = [-5,-2,-4,3]$. The answer is $-5 \\cdot 3=-15$.</p>\n<p>In the second test the array is $[42,42,42,42,42]$.</p>",
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia Team High School Programming Contest, Russia Team High School Programming Contest 2018",
+  "level": 16,
+  "tags": [
+    "math",
+    "greedy",
+    "sorting",
+    "ad_hoc"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 2.1110999584198
+}

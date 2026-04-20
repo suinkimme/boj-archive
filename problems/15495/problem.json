@@ -1,0 +1,30 @@
+{
+  "id": 15495,
+  "title": "Alkemija",
+  "time_limit": "1 초",
+  "memory_limit": "64 MB",
+  "description": "<p>In ancient times, when alchemists were searching for gold, the world was familiar with a total of N distinct substances, denoted with 1 to N. During many years of hard work, searching for the secret formula, alchemists discovered a series of interesting regularities - alchemical reactions. In one reaction, it’s possible to transform substance set {X<sub>1</sub>, X<sub>2</sub>, …, X<sub>L</sub>} to another substance set {Y<sub>1</sub>, Y<sub>2</sub>, …, Y<sub>R</sub>}. For example, the substance set {1, 4, 5} might react once and create the new substance set {2, 6}.</p>\n<p>Joško is a modern alchemist and has M distinct substances denoted with A<sub>1</sub>, A<sub>2</sub>, …, A<sub>M</sub>. He has an unlimited quantity of each substance from that set. Joško wants to know which substances he can create using a list of reactions of ancient alchemists, so he’s asking you to help him solve this problem.</p>",
+  "input": "<p>The first line of input contains two integers N and M (1 ≤ M ≤ N ≤ 100 000), the numbers from the task.</p>\n<p>The second line of input contains M integers Ai (1 ≤ A<sub>i</sub> ≤ N), labels of the substances Joško has in the beginning.</p>\n<p>The third line of input contains the integer K (1 ≤ K ≤ 100 000), the number of known reactions.</p>\n<p>The following 3·K lines contain a list of reactions. Each reaction is described with 3 lines in the following way:</p>\n<ul>\n<li>The first line contains the integers L and R (1 ≤ L, R ≤ N).</li>\n<li>The second line contains L distinct integers X<sub>i</sub> (1 ≤ X<sub>i</sub> ≤ N).</li>\n<li>The third line contains R distinct integers Y<sub>i</sub> (1 ≤ Y<sub>i</sub> ≤ N).</li>\n<li>This describes the reaction with which the substance set {X<sub>1</sub>, X<sub>2</sub>, …, X<sub>L</sub>} transforms into substance set {Y<sub>1</sub>, Y<sub>2</sub>, …, Y<sub>R</sub>}.</li>\n</ul>\n<p>The sum of all L values won’t exceed 100 000.</p>\n<p>The sum of all R values won’t exceed 100 000.</p>",
+  "output": "<p>The first line of output must contain the integer X, the number of obtainable substances. The second line of output must contain X distinct integers B<sub>i</sub>, sorted ascendingly, that represent the labels of the obtainable substances.</p>",
+  "samples": [
+    {
+      "input": "4 2\n1 2\n2\n2 1\n1 2\n3\n2 1\n1 3\n4\n",
+      "output": "4\n1 2 3 4\n"
+    },
+    {
+      "input": "6 3\n1 4 5\n3\n3 2\n2 3 4\n1 6\n1 3\n4\n1 5 6\n1 1\n6\n2\n",
+      "output": "5\n1 2 4 5 6\n"
+    }
+  ],
+  "hint": "<p><strong>Clarification of the first test case:</strong></p>\n<p>There are 2 reactions.</p>\n<p>The first reaction transforms substance set {1, 2} into substance set {3}.</p>\n<p>The second reaction transforms substance set {1, 3} into substance set {4}.</p>\n<p>Joško initially has substances from the set {1, 2}.</p>\n<p>Using the first reaction, Joško can obtain substance 3, after which he has substances from the set {1, 2, 3}.</p>\n<p>After that, using the second reaction, he can also obtain substance 4.</p>\n<p><strong>Clarification of the second test case:</strong></p>\n<p>Joško initially has substances from the set {1, 4, 5}.</p>\n<p>Using the second reaction, it is possible to obtain substance 6, after which it is possible to apply the third reaction, giving substance 2.</p>\n<p>The first reaction is impossible to apply because Joško doesn’t have substance 3.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2017/2018, Contest #6",
+  "level": 15,
+  "tags": [
+    "dag",
+    "graphs",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 1.1538000106811523
+}

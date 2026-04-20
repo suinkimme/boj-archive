@@ -1,0 +1,29 @@
+{
+  "id": 24410,
+  "title": "Stacking Up",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Stacy has recently started work at Stacks“R”Us, a leading manufacturer of stack-related products such as children’s blocks, pancake spatulas, and dining hall tray dispensers. As a brand new employee, she has been tasked with testing the latest product in Stacks“R”Us’s line of automated electronic stack machines, the <em>Stackulator 3000</em>.</p>\n<p>The Stackulator 3000 holds a single stack of positive integers in its memory, and supports three instructions, <code>1</code>, <code>d</code>, and <code>+</code>. The first two instructions are fairly standard:</p>\n<ul>\n<li><code>1</code>: push the number 1 onto the top of the stack.</li>\n<li><code>d</code>: duplicate the number on top of the stack, that is, take the number currently on top of the stack and push another copy of it on top. It is an error to execute the <code>d</code> instruction on an empty stack.</li>\n</ul>\n<p>Unfortunately, due partly to miscommunication between the designer and the hardware team, and partly to confusion about the difference between a stack <em>pointer</em> and a stack <em>entry</em>, the <code>+</code> instruction ended up being a little wonky:</p>\n<ul>\n<li><code>+</code>: pop the top two numbers from the stack, <em>decrement all remaining stack entries by one</em>, then add the two popped elements and push the result onto the stack. It is an error to execute the <code>+</code> instruction on a stack containing fewer than two integers.</li>\n</ul>\n<p>For example, executing the program <code>1d+11+</code> produces the sequence of stack states illustrated in Figure J.1, ultimately resulting in a stack containing two entries, $1$ on the bottom and $2$ on the top.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 545px; height: 53px;\"/></p>\n<p style=\"text-align: center;\">Figure J.1: Execution of <code>1d+11+</code></p>\n<p>If a stack entry of $1$ is decremented during an addition operation, it is simply removed from the stack, since the stack can only hold positive integers.</p>\n<p>Since she is still an apprentice stack tester, Stacy was assigned to work with Stan, a more experienced tester. Stan proposes that they split the work evenly: Stan will come up with stacks, and it will then be Stacy’s job to create Stackulator 3000 programs which should generate the given stacks. They can then run Stacy’s programs to ensure the Stackulator 3000 gives the expected results.</p>\n<p>Stacy could do this, but she is now too busy looking for a different job. That’s where you come in: please help Stacy by creating Stackulator 3000 programs that can generate the stacks given by Stan.</p>",
+  "input": "<p>The first line of input consists of an integer $1 ≤ n ≤ 1\\,000$. The following line contains $n$ spaceseparated positive integers, indicating the desired contents of the stack from bottom to top. Each integer $x$ will be in the range $1 ≤ x ≤ 10^6$.</p>",
+  "output": "<p>Output a single line containing a valid Stackulator 3000 program, which, when executed beginning with an empty stack, results in a stack holding the desired contents. Your program must consist of only the characters <code>1</code>, <code>d</code>, and <code>+</code> and be no more than $100\\,000$ characters in length. If there is more than one valid program which results in the desired stack, you may output any of them.</p>",
+  "samples": [
+    {
+      "input": "3\n1 1 1\n",
+      "output": "1dd\n"
+    },
+    {
+      "input": "3\n1 2 3\n",
+      "output": "11+1+1+1+1+11+1+1+11+1+\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Qualification Contest, ICPC North America Qualifier 2021",
+  "level": 14,
+  "tags": [
+    "math",
+    "constructive"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 2
+}

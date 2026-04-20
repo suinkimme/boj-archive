@@ -1,0 +1,28 @@
+{
+  "id": 6054,
+  "title": "Relay race",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The N (1 &lt;= N &lt;= 1,000) cows conveniently numbered 1..N are competing in a unique relay race during which multiple cows can run simultaneously.</p>\n<p>Before time t=0, each cow is positioned at the starting line, waiting for her turn to run one lap around a circular track whose finish line is the same as the starting line.</p>\n<p>At time t=0, cow 1 starts running around the track and re-crosses the starting line exactly L_1 seconds later. In general, cow i's time to run a lap is L_i (1 &lt;= L_i &lt;= 1,000). As soon as she re-crosses the starting line, she signals M_1 other cows numbered A_1j to start instantly. Generally, cow i signals M_i cows (0 &lt;= M_i &lt;= N) named A_ij (1 &lt;= j &lt;= M_i) to start running. Sooner or later, every cow is signaled at least once. Sometimes M_i might be 0 and no A_ij's exist.</p>\n<p>Each of the signaled cows starts running and performs the signaling procedure when recrossing the starting line. Multiple cows might signal the same cow, but every cow wants to run only one lap, so signals after the first one it receives are ignored.</p>\n<p>Farmer John wants you to determine the total race time (i.e., how long it takes for the final cow to complete her lap).</p>\n<p>Consider a small race with 5 cows. The table below shows the Cow ID (i), her time to run a single lap (L_i), the number of signals cow i will perform when she finishes (M_i), and the (potentially empty) list of cows to be signaled (A_ij):</p>\n<pre>\n            i   L_i  M_i   A_i*\n            1    4    2    2 4\n            2    3    3    1 3 4\n            3    7    1    5\n            4    4    2    3 5\n            5    1    0</pre>\n<p>Starting cow 1 at time 0 leads to this timeline of events:</p>\n<pre>\n   TIME        Event\n     0        Cow 1 starts running\n     4        Cow 1 finishes; signals 2 and 4\n     4        Cow 2 starts running (time to finish: +3 seconds -&gt; 7)\n     4        Cow 4 starts running (time to finish: +4 seconds -&gt; 8)\n     7        Cow 2 finishes; signals 1, 3, and 4\n     7        Cows 1 and 4 ignore the duplicate signal\n     7        Cow 3 starts (time to finish: +7 seconds -&gt; 14)\n     8        Cow 4 finishes; signals 3 and 5\n     8        Cow 3 ignores the duplicate signal\n     8        Cow 5 starts (time to finish: +1 seconds -&gt; 9)\n     9        Cow 5 finishes but has no other cows to signal\n    14        Cow 3 finishes; signals 5\n    14        Cow 5 ignores the duplicate signal\n    14        All cows have finished</pre>\n<p>Thus, the race will last 14 seconds.</p>",
+  "input": "<ul>\n<li>Line 1: A single integer: N</li>\n<li>Lines 2..N+1: Line i+1 contains multiple space-separated integers: L_i, M_i and then M_i integers A_ij</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: A single integer, the time the last cow finishes</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "5\n4 2 2 4\n3 3 1 3 4\n7 1 5\n4 2 3 5\n1 0\n",
+      "output": "14\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2009-2010 Season, USACO US Open 2010 Contest, Bronze",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "graphs",
+    "simulation",
+    "shortest_path",
+    "dijkstra"
+  ],
+  "accepted_user_count": 77,
+  "submission_count": null,
+  "average_tries": 1.3636000156402588
+}

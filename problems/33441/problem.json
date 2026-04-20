@@ -1,0 +1,29 @@
+{
+  "id": 33441,
+  "title": "Collinear Arrangements",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Given a convex polygon of $n$ points $P_1, P_2, \\ldots, P_n$ on a two-dimensional plane, answer $q$ queries, where each query has one of the following types:</p>\n<ol>\n<li>Given one point $(x, y)$, find the number of pairs $(P_i, P_j)$ such that $1 \\le i &lt; j \\le n$ and the three points $(x, y)$, $P_i$, and $P_j$ are collinear.</li>\n<li>Given two points $(x_1, y_1)$ and $(x_2, y_2)$, find the number of points $P_i$ such that $1 \\le i \\le n$ and the three points $(x_1, y_1)$, $(x_2, y_2)$, and $P_i$ are collinear.</li>\n</ol>",
+  "input": "<p>The first line contains two integers $n$ and $q$ ($3 \\le n \\le 10^5$, $1 \\le q \\le 10^5$) denoting the number of vertices in the given polygon and the number of queries, respectively.</p>\n<p>Each of the following $n$ lines contains two integers, $x$ and $y$, denoting a vertex of the polygon.</p>\n<p>Each of the following $q$ lines contains one query, which is in one of the following formats:</p>\n<ol>\n<li>\"<code>1</code> $x$ $y$\", asking to calculate the number of pairs $(P_i, P_j)$ such that $1 \\le i &lt; j \\le n$ and the three points $(x, y)$, $P_i$, and $P_j$ are collinear.</li>\n<li>\"<code>2</code> $x_1$ $y_1$ $x_2$ $y_2$\", asking to calculate the number of points $P_i$ such that $1 \\le i \\le n$ and the three points $(x_1, y_1)$, $(x_2, y_2)$, and $P_i$ are collinear.</li>\n</ol>\n<p>It is guaranteed that:</p>\n<ul>\n<li>$|x|, |y| \\le 10^9$ for all points and queries;</li>\n<li>the polygon vertices are given in counter-clockwise order;</li>\n<li>the polygon is convex (in particular, no three vertices are collinear);</li>\n<li>for each query, the given points and the polygon vertices do not coincide;</li>\n<li>the number of queries in the first format does not exceed $100$.</li>\n</ul>",
+  "output": "<p>For each query, output a line containing a single integer: the answer to the query.</p>",
+  "samples": [
+    {
+      "input": "5 3\n0 0\n2 0\n2 1\n1 2\n0 2\n1 1 1\n2 1 1 2 2\n1 2 2\n",
+      "output": "1\n1\n2\n"
+    }
+  ],
+  "hint": "<ul>\n<li>For the first query, the only pair is $(P_2, P_5)$ since $(1, 1)$, $P_2 = (2, 0)$ and $P_5 = (0, 2)$ are collinear.</li>\n<li>For the second query, the only point is $P_1$ since $(1, 1)$, $(2, 2)$, and $P_1 = (0, 0)$ are collinear.</li>\n<li>For the third query, the two pairs are $(P_2, P_3)$ and $(P_4, P_5)$.</li>\n</ul>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2024, Day 4: Peking U Contest 2",
+  "level": 24,
+  "tags": [
+    "binary_search",
+    "convex_hull",
+    "geometry",
+    "point_in_convex_polygon",
+    "ternary_search",
+    "two_pointer"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

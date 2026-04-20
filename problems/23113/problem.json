@@ -1,0 +1,37 @@
+{
+  "id": 23113,
+  "title": "Kingdoms and Quarantine",
+  "time_limit": "8 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are two kingdoms $A$ (with $N_1$ cities) and $B$ (with $N_2$ cities), and $M$ bidirectional roads, each connecting a city from $A$ and a city from $B$, such that there is no more than one road connecting any pair of cities.</p>\n<p>The cities in the kingdom $A$ are enumerated from $1$ to $N_1$, and the cities in the kingdom $B$ are enumerated from $N_1 + 1$ to $N_1 + N_2$. The roads are enumerated from $1$ to $M$; the road $i$ connects two cities $a_i$ and $b_i$, where $a_i$ and $b_i$ satisfy $1 \\le a_i \\le N_1$ and $N_1 + 1 \\le b_i \\le N_1 + N_2$.</p>\n<p>Once upon a time, a dangerous virus appeared in one kingdom, so the Kings decided to close some roads.</p>\n<p>Let $D_j$ be the initial number of roads connecting the city $j$ with other cities, and $d_j$ be the number of currently active (not closed) roads connecting the city $j$ with other cities.</p>\n<p>The road $x$ can be closed if and only if following conditions are met <strong>before</strong> closing the road:</p>\n<ul>\n<li>It was not closed before.</li>\n<li>The numbers $d_{a_x}$ and $D_{b_x}$ must have the same parity (both even or both odd).</li>\n<li>The numbers $d_{b_x}$ and $D_{a_x}$ must have the same parity (both even or both odd).</li>\n</ul>\n<p>Find the maximum number of roads that can be closed, and then find a sequence of road closing operations such that this maximum is achieved.</p>",
+  "input": "<p>The first line of input contains three integers, $N_1$, $N_2$, and $M$: the number of cities in kingdom $A$, the number of cities in kingdom $B$, and the number of roads, respectively ($1 \\le N_1, N_2, M \\le 3000$, $1 \\le M \\le N_1 \\cdot N_2$).</p>\n<p>The $i$-th of the following $M$ lines describes the road $i$ and contains two integers $a_i$ and $b_i$ ($1 \\le a_i \\le N_1$, $N_1 + 1 \\le b_i \\le N_1 + N_2$): the numbers of cities connected by that road. You may assume that, for different $i$ and $j$, $a_i \\ne a_j$ or $b_i \\ne b_j$.</p>",
+  "output": "<p>On the first line, print the integer $K$: the maximum number of roads that can be closed. On the second line, print $K$ integers $r_i$ ($1 \\le r_i \\le M$): the numbers of roads to be closed, in the order of closing them.</p>\n<p>If there are several optimal answers, print any one of them.</p>",
+  "samples": [
+    {
+      "input": "2 3 5\n1 3\n1 4\n1 5\n2 4\n2 5\n",
+      "output": "3\n1 4 2\n"
+    },
+    {
+      "input": "1 2 2\n1 2\n1 3\n",
+      "output": "0\n"
+    },
+    {
+      "input": "4 3 7\n1 5\n2 5\n2 6\n2 7\n3 6\n4 5\n4 7\n",
+      "output": "5\n1 7 6 2 4\n"
+    }
+  ],
+  "hint": "<p>In the first example, $D_1 = 3$, $D_2 = 2$, $D_3 = 1$, $D_4 = 2$, $D_5 = 2$.</p>\n<p>Initially, $d_1 = 3$, $d_2 = 2$, $d_3 = 1$, $d_4 = 2$, $d_5 = 2$, so we can close the following roads:</p>\n<ul>\n<li>Road 1 connecting city 1 and city 3.</li>\n<li>Road 4 connecting city 2 and city 4.</li>\n<li>Road 5 connecting city 2 and city 5.</li>\n</ul>\n<p>Let us close road 1, then </p>\n<p>$d_1 = 2$, $d_2 = 2$, $d_3 = 0$, $d_4 = 2$, $d_5 = 2$.</p>\n<p>After that, the roads that can be closed are the following:</p>\n<ul>\n<li>Road 4 connecting city 2 and city 4.</li>\n<li>Road 5 connecting city 2 and city 5.</li>\n</ul>\n<p>Let us close road 4, then</p>\n<p>$d_1 = 2$, $d_2 = 1$, $d_3 = 0$, $d_4 = 1$, $d_5 = 2$.</p>\n<p>Now, we can close only road 2, connecting city 1 and city 4.</p>\n<p>After that, $d_1 = 1$, $d_2 = 1$, $d_3 = 0$, $d_4 = 0$, $d_5 = 2$.</p>\n<p>It can be shown that it is impossible to close more than three roads, so the answer is $3$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2021, Day 1: Kyoto U Contest 1",
+  "level": 29,
+  "tags": [
+    "circulation",
+    "constructive",
+    "eulerian_path",
+    "flow",
+    "graphs",
+    "mcmf"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 3.5
+}

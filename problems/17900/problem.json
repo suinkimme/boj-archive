@@ -1,0 +1,29 @@
+{
+  "id": 17900,
+  "title": "Type Charts",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are playing the game Nudgémon, a common element of which is Nudgémon battles. In a battle, you and your opponent each start by sending out a Nudgémon of your choice, and then take turns attacking the opposing Nudgémon.</p>\n<p>Each attack has a type (an integer between 1 and n), and the opposing Nudgémon also has either one or two types. Depending on these types, the attack will do different amounts of damage.</p>\n<p>When an attack of type i hits a Nudgémon with single type j, the attack gets a damage multiplier a(i, j), where a is a type matchup table consisting of entries in {0, 0.5, 1, 2}. If it hits a Nudgémon with double types j and k, it gets a damage multiplier of a(i, j) · a(i, k).</p>\n<p>Depending on the value v of the damage multiplier, the game will emit different messages:</p>\n<table class=\"table table-bordered\" style=\"width: 40%;\">\n<tbody>\n<tr>\n<td>v = 0</td>\n<td>It had no effect.</td>\n<td>x</td>\n</tr>\n<tr>\n<td>0 &lt; v &lt; 1</td>\n<td>It’s not very effective. . .</td>\n<td>-</td>\n</tr>\n<tr>\n<td>v = 1</td>\n<td>&lt;no message&gt;</td>\n<td>=</td>\n</tr>\n<tr>\n<td>v &gt; 1</td>\n<td>It’s super effective!</td>\n<td>+</td>\n</tr>\n</tbody>\n</table>\n<p>You are new to this game and do not know what the table a looks like. Trying to learn its first row, you have gathered some observations about the game’s output when attacking various Nudgémon with attacks of type 1. Now you are trying to reconstruct the first row in a way that is consistent with this data.</p>",
+  "input": "<p>The first line of input contains two integers n and m (1 ≤ n ≤ 10<sup>5</sup>, 1 ≤ m ≤ 10<sup>5</sup>), where n is the number of types and m is the number of observations.</p>\n<p>Then follow m lines, each containing two integers i, j and a character c (1 ≤ i, j ≤ n and c is one of x,-,= or +), where c is the observed effect when attacking a Nudgémon with types i and j, as indicated in the table above. If i = j, the Nudgémon has just a single type.</p>",
+  "output": "<p>Output a single line with n characters, each either x, -, = or +. The ith character should describe the effect of attacking a Nudgémon of type i with an attack of type 1.</p>\n<p>If there are multiple valid solutions, you may output any one of them. It is guaranteed that at least one solution exists.</p>",
+  "samples": [
+    {
+      "input": "5 5\n1 2 -\n2 4 -\n4 5 x\n2 3 =\n3 4 +\n",
+      "output": "=-+=x\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, KTH Challenge, KTH Challenge 2019",
+  "level": 19,
+  "tags": [
+    "2_sat",
+    "bipartite_graph",
+    "graphs",
+    "graph_traversal",
+    "greedy",
+    "scc"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 4.5
+}

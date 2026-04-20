@@ -1,0 +1,35 @@
+{
+  "id": 20412,
+  "title": "추첨상 사수 대작전! (Hard)",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p><u><strong>입력 제한 외 난이도에 따른 문제의 차이는 없다.</strong></u></p>\n<p>APC는 매년 교내 참가자들에게 추첨상을 지급하고 있다. 올해 추첨상은 공정한 추첨을 위해 준표가 직접 작성한 난수생성기를 통해 추첨을 하고자 한다. <a href=\"https://ko.wikipedia.org/wiki/%EB%82%9C%EC%88%98%EB%B0%9C%EC%83%9D%EA%B8%B0\" rel=\"nofollow\">난수생성기</a>란, 이론적으로 예측을 더 할 수 없도록 일련의 숫자나 심볼을 생성하는 장치이다.</p>\n<blockquote>\n<p>주헌 : 형이 짠 난수생성기가 공정하다는 걸 어떻게 알아 ?</p>\n<p>준표 : 걱정 마! c언어에서 ANSI 표준으로 사용하는 '선형합동법(Linear Congruential)' 을 구현할 거니까 ~</p>\n<p>주헌 : 선형합동법이 뭔데 ?</p>\n<p>준표 : 그게 뭐냐면 ..</p>\n</blockquote>\n<p>준표의 설명을 간단히 정리해보면,</p>\n<p><strong>X<sub>1</sub> = (a × Seed + c) % m</strong></p>\n<p><strong>X<sub>2</sub> = (a × X<sub>1</sub> + c) % m</strong></p>\n<p>...</p>\n<p><strong>X<sub>n + 1</sub> = (a × X<sub>n</sub> + c) % m</strong></p>\n<p>이런 식으로 준표가 몰래 정하는 <em>a</em>, <em>c</em>, <em>m</em> 와 참가자들이 정하는 <em>Seed</em> 값을 바탕으로 위 공식에 따라 난수를 생성한다는 것이었다.</p>\n<blockquote>\n<p>주헌 : 음... <em>a</em>, <em>c</em>, <em>m</em>을 아무렇게나 잡으면 안 되지 않을까 ?</p>\n<p>준표 : 응. Hull-Dobell 정리에 따르면 그게 맞아. 그런데 귀찮아서 그냥 <em>m을</em> 대충 내가 좋아하는 소수로 하려구.</p>\n<p>주헌 : (형이 좋아하는 소수..? 씨익..)</p>\n</blockquote>\n<p>사실 주헌이는 올해에는 추첨상을 반드시 받아내겠다는 야망이 있었다! 위 대화는 그를 위한 초석이었던 것이다! 주헌이는 준표를 너무 잘 알기 때문에 준표가 좋아하는 소수를 이미 알고 있었고, 준표가 자신이 직접 작성한 난수생성기에 문제가 없음을 참가자들에게 알려주기 위해 실제 추첨 전 난수생성기가 잘 작동한다는 것을 모두의 앞에서 시연하기로 되어있었다.</p>\n<p>주헌이는 계략을 짰다. 주헌이는 시연 중 참가자들이 정한 <em>Seed</em>와 이를 이용해 만들어진 <em>X<sub>1</sub></em>, <em>X<sub>2</sub></em> 를 이용해 준표가 몰래 정한 <em>a</em>, <em>c</em>를 찾아낼 것이다. 만약 주헌이가 추첨상을 받지 못한다면, 찾아낸 <em>a</em>, <em>c</em>를 폭로해 모든 것이 조작되었다고 주장하며 추첨 자체를 무효로 만들 계략이다! 주헌이는 <em>a</em>, <em>c</em>를 자동으로 찾아주는 프로그램을 만들고자 한다.</p>",
+  "input": "<p>한 줄에 걸쳐 준표가 좋아하는 소수 <em>m</em>, 참가자들이 정한 Seed, 시연으로 공개된 <em>X<sub>1</sub></em>, <em>X<sub>2</sub></em> 이 주어진다. 항상 가능한 상황만 입력으로 주어진다.</p>",
+  "output": "<p>준표가 비밀리에 선정한 정수 <em>a</em>, <em>c</em>를 출력한다. 가능한 답이 여러 개라면, 그중 아무거나 출력한다.</p>",
+  "samples": [
+    {
+      "input": "13 5 2 9\n",
+      "output": "2 5\n"
+    },
+    {
+      "input": "13 6 5 3\n",
+      "output": "2 6\n"
+    },
+    {
+      "input": "11 9 9 9\n",
+      "output": "2 2\n"
+    }
+  ],
+  "hint": "<p>c언어에서의 rand() 함수는 위와 비슷하지만 <em>X<sub>n</sub></em> 의 상위 16개 비트를 반환하도록 구현되어있다.</p>",
+  "source": "University, 아주대학교, 2020 아주대학교 프로그래밍 경시대회 APC, Div.1, University, 아주대학교, 2020 아주대학교 프로그래밍 경시대회 APC, Div.2, hjhj97, spectaclehong, edenooo, jwvg0425, kyo20111, xtalxlr",
+  "level": 14,
+  "tags": [
+    "math",
+    "number_theory",
+    "modular_multiplicative_inverse",
+    "flt"
+  ],
+  "accepted_user_count": 443,
+  "submission_count": null,
+  "average_tries": 2.2934999465942383
+}

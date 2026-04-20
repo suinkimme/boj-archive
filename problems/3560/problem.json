@@ -1,0 +1,27 @@
+{
+  "id": 3560,
+  "title": "Kripke Model",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Testing and quality assurance are very time-consuming stages of software development process. Different techniques are used to reduce cost and time consumed by these stages. One of such techniques is software verification. <em>Model checking</em> is an approach to the software verification based on <em>Kripke models</em>.</p>\n<p>A <em>Kripke model</em> is a 5-tuple $(P, S, S_{0}, R, L)$, where $P$ is a finite set of atomic propositions, $S$ is a finite set of model's states, $S_{0} \\subset S$ is a set of initial states, $R \\subset S \\times S$ is a transition relation, and $L \\subset S \\times P$ is a truth relation. In this problem we will not take initial states into account and relation $R$ will be a reflexive relation, so $R(s, s)$ will be true for all states $s \\in S$.</p>\n<p>A <em>path</em> $\\pi$ beginning in state $s$ in the Kripke model is an infinite sequence of states $s_0 s_1 \\ldots$ such that $s_0=s$, and for each $i \\ge 0$ the $(s_i, s_{i+1}) \\in R$. </p>\n<p><em>Temporal logic</em> and its subset <em>Computational tree logic</em> (CTL) are used to describe propositions qualified in terms of time. Kripke models are often used to check properties, described in CTL. </p>\n<p>There are two types of formulae in CTL: <em>state formulae</em> and <em>path formulae</em>. The values of state and path formulae are evaluated for states and paths correspondingly.</p>\n<p>If $p \\in P$ then $p$ is a state formula that holds in state $s$ iff $(s, p) \\in L$. </p>\n<p>If $f$ is a path formula, then $\\mathrm{\\mathbf{A}} f$ and $\\mathrm{\\mathbf{E}} f$ are state formulae, where $\\mathrm{\\mathbf{A}}$ and $\\mathrm{\\mathbf{E}}$ are <em>path quantifiers</em>:</p>\n<ul>\n<li>$\\mathrm{\\mathbf{A}} f$ holds in a state $s$, iff $f$ holds for each path beginning in the state $s$;</li>\n<li>$\\mathrm{\\mathbf{E}} f$ holds in state $s$, iff there exists a path $\\pi$, beginning in the state $s$, such that $f$ holds for $\\pi$.</li>\n</ul>\n<p>If $f$ and $g$ are state formulae, then $\\mathrm{\\mathbf{G}} f$ and $f \\mathrm{\\mathbf{U}} g$ are path formulae, where $\\mathrm{\\mathbf{G}}$ and $\\mathrm{\\mathbf{U}}$ are <em>temporal operators</em>:</p>\n<ul>\n<li>$\\mathrm{\\mathbf{G}} f$ (Globally) holds for a path $\\pi = s_0 s_1 \\ldots$ iff  for each $i \\ge 0$ the formula $f$ holds in the state $s_i$;</li>\n<li>$f \\mathrm{\\mathbf{U}} g$ (Until) holds for a path $\\pi = s_0 s_1 \\ldots$ if there exists $i \\ge 0$ such that $f$ holds for each state in the range $s_0, s_1, \\ldots, s_{i-1}$, and $g$ holds in state $s_i$;</li>\n</ul>\n<p><em>To verify</em> a property described by a state formula $f$ means to find all states, $f$ holds for. Verification of an arbitrary property is a pretty complex problem. Your problem is much easier --- you are to write a program that verifies a property described by a temporal logic formula $\\mathrm{\\mathbf{E}} (x \\mathrm{\\mathbf{U}} (\\mathrm{\\mathbf{A}} \\mathrm{\\mathbf{G}} y))$, where $x$ and $y$ are some atomic propositions.</p>",
+  "input": "<p>The first line of the input file contains three positive integer numbers $n$, $m$ and $k$ --- number of states, transitions and atomic propositions ($1 \\le n \\le 10\\,000$; $0 \\le m \\le 100\\,000$; $1 \\le k \\le 26$).</p>\n<p>The following $n$ lines describe one state each. The state $i$ ($1 \\le i \\le n$) is described by $c_i$ --- a number of atomic propositions which are true for this state and a space-separated list of these atomic propositions ($0 \\le c_i \\le k$). Atomic propositions are denoted by first $k$ small English letters.</p>\n<p>Next $m$ lines describe transitions. Each of them contains two integer numbers $s$ and $t$ ($1 \\le s, t \\le n$; $s \\ne t$) --- the transition from state $s$ to state $t$. The verified Kripke model contains implicit loop transitions $(s, s)$ for each state $s$ (they are not listed in the input file). No transition is listed in the input file twice.</p>\n<p>The last line of the input file contains the formula of the property to be verified. This formula always has the form <code>E(xU(AGy))</code>, where <code>x</code> and <code>y</code> are some atomic propositions.</p>",
+  "output": "<p>The first line of the output file must contain the number of states for which the verified property holds. The following lines must contain the numbers of these states listed in increasing order.</p>",
+  "samples": [
+    {
+      "input": "7 8 2\n1 a\n1 a\n2 a b\n1 b\n1 b\n1 a\n1 a\n1 2\n2 3\n3 4\n4 5\n5 3\n2 6\n6 7\n7 6\nE(aU(AGb))\n",
+      "output": "5\n1\n2\n3\n4\n5\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2009",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "dfs"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 2
+}

@@ -1,0 +1,26 @@
+{
+  "id": 23698,
+  "title": "Mysterious Triple Sequence",
+  "time_limit": "6 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>Jeffery found an amazing sequence of triples $\\{(a_k, b_k, c_k)\\}_{k = 0}^{\\infty}$:</p>\n<ol>\n<li>$(a_0, b_0, c_0) = (2, 1, 0)$.</li>\n<li>For each non-negative integer $k$, $(a_{k + 1}, b_{k + 1}, c_{k + 1}) = (a_k^2 + b_k^2, a_k b_k + b_k c_k, b_k^2 + c_k^2)$.</li>\n</ol>\n<p>For example, $(a_1, b_1, c_1) = (5, 2, 1)$ and $(a_2, b_2, c_2) = (29, 12, 5)$.</p>\n<p>In modulo some integer $p$, some triples would never appear in this sequence, some triples would appear periodically and other triples would appear only once.</p>\n<p>Jeffery is wondering if you could help him find out the first appearance of some triples starting from given positions. Could you help him, please?</p>",
+  "input": "<p>The first line contains two integers $n$ and $p$ ($1 \\leq n \\leq 5000$, $1 \\leq p \\leq 2^{30}$) where $n$ indicates the number of questions and $p$ indicates all the following questions are in modulo $p$.</p>\n<p>Each of the next $n$ lines contains four integers $x$, $y$, $z$ and $m$ ($0 \\leq x, y, z &lt; p$, $0 \\leq m \\leq 10^{18}$) indicating a question that queries you to find the minimum integer $k$ such that $k \\geq m$ and $(a_k, b_k, c_k) \\equiv (x, y, z) \\pmod{p}$.</p>",
+  "output": "<p>For each question, output in one line a single integer, indicating the answer to the question. If there is no such integer $k$, output $-1$ instead.</p>",
+  "samples": [
+    {
+      "input": "5 11\n6 1 4 10\n4 10 6 3\n7 1 5 0\n2 1 0 1\n2 1 0 0\n",
+      "output": "11\n4\n2\n-1\n0\n"
+    },
+    {
+      "input": "5 10\n5 8 9 5\n0 2 6 0\n9 2 5 6\n5 5 5 7\n5 2 1 2\n",
+      "output": "5\n-1\n6\n-1\n-1\n"
+    }
+  ],
+  "hint": "<p>In the first sample, $(a_0, b_0, c_0) \\equiv (2, 1, 0)$, $(a_1, b_1, c_1) \\equiv (5, 2, 1)$, $(a_2, b_2, c_2) \\equiv (7, 1, 5)$, $(a_{2 T + 3}, b_{2 T + 3}, c_{2 T + 3}) \\equiv (6, 1, 4)$, $(a_{2 T + 4}, b_{2 T + 4}, c_{2 T + 4}) \\equiv (4, 10, 6)$ $\\pmod{11}$ where $T = 0, 1, 2, \\ldots$</p>\n<p>In the second sample, $(a_0, b_0, c_0) \\equiv (2, 1, 0)$, $(a_1, b_1, c_1) \\equiv (5, 2, 1)$, $(a_{2 T + 2}, b_{2 T + 2}, c_{2 T + 2}) \\equiv (9, 2, 5)$, $(a_{2 T + 3}, b_{2 T + 3}, c_{2 T + 3}) \\equiv (5, 8, 9)$ $\\pmod{10}$ where $T = 0, 1, 2, \\ldots$</p>",
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 15: Grand Prix of China",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,22 @@
+{
+  "id": 19927,
+  "title": "Vision Program",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are implementing a vision program for a robot. Each time the robot camera takes a picture, it is stored as a black and white image in the robot's memory. Each image is an $H \\times W$ grid of pixels, with rows numbered $0$ through $H-1$ and columns numbered $0$ through $W-1$. There are <strong>exactly two</strong> black pixels in each image, and all other pixels are white.</p>\n<p>The robot can process each image with a program consisting of simple instructions. You are given the values of $H$, $W$, and a positive integer $K$. Your goal is to write a procedure to produce a program for the robot that, for any image, determines whether the <strong>distance</strong> between the two black pixels is exactly $K$. Here, the distance between a pixel in row $r_1$ and column $c_1$ and a pixel in row $r_2$ and column $c_2$ is $|r_1-r_2|+|c_1-c_2|$. In this formula $|x|$ denotes the absolute value of $x$, which equals $x$ if $x \\geq 0$ and equals $-x$ if $x \\lt 0$.</p>\n<p>We now describe how the robot works.</p>\n<p>The robot's memory is a sufficiently large array of cells, indexed from $0$. Each cell can store either $0$ or $1$ and its value, once set, will not be changed. The image is stored row by row in cells indexed $0$ through $H \\cdot W - 1$. The first row is stored in cells $0$ through $W-1$, and the last row is stored in cells $(H - 1) \\cdot W$ through $H \\cdot W - 1$. In particular, if the pixel in row $i$ and column $j$ is black, the value of cell $i\\cdot W + j$ is $1$, otherwise it is $0$.</p>\n<p>A robot's program is a sequence of <strong>instructions</strong>, which are numbered with consecutive integers starting from $0$. When the program is run, the instructions are executed one by one. Each instruction reads the values of one or more cells (we call these values the instruction's <strong>inputs</strong>) and produces a single value equal to $0$ or $1$ (we call this value the instruction's <strong>output</strong>). The output of instruction $i$ is stored in cell $H\\cdot W + i$. The inputs of instruction $i$ can only be cells that store either pixels or outputs of previous instructions, i.e. cells $0$ to $H \\cdot W + i - 1$.</p>\n<p>There are four types of instructions:</p>\n<ul>\n<li><code>NOT</code>: has exactly one input. Its output is $1$ if the input is $0$, otherwise its output is $0$.</li>\n<li><code>AND</code>: has one or more inputs. Its output is $1$ if and only if <strong>all</strong> of the inputs are $1$.</li>\n<li><code>OR</code>: has one or more inputs. Its output is $1$ if and only if <strong>at least one</strong> of the inputs is $1$.</li>\n<li><code>XOR</code>: has one or more inputs. Its output is $1$ if and only if an <strong>odd number</strong> of the inputs are $1$.</li>\n</ul>\n<p>The output of the last instruction of the program should be $1$ if the distance between the two black pixels is exactly $K$, and $0$ otherwise.</p>",
+  "input": "",
+  "output": "",
+  "samples": [],
+  "hint": null,
+  "source": ", Olympiad, International Olympiad in Informatics, IOI 2019, Day 2",
+  "level": 22,
+  "tags": [
+    "implementation",
+    "ad_hoc",
+    "constructive",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 60,
+  "submission_count": null,
+  "average_tries": 1.7166999578475952
+}

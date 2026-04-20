@@ -1,0 +1,27 @@
+{
+  "id": 33028,
+  "title": "BitBitJump",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>BitBitJump is a one instruction set computer. Thus, it has only one instruction: <code>bbj a, b, c</code>, which copies an $a$-th bit of memory to the $b$-th bit of memory and then jumps to address $c$.</p>\n<p>Let's consider a 16-bit BitBitJump computer. It has $2^{16}$ bits of memory organized in $2^{12}$ 16-bit words. Words are counted from 0, and bits in a word are counted from the least significant (0-th) bit to the most significant (15-th) bit.</p>\n<p>This computer has a single instruction pointer register $(\\mathrm{IP})$, and execution starts with $\\mathrm{IP}=0$. If the current $\\mathrm{IP} \\ge 2^{12}-2$, the computer stops. Otherwise, it uses the $\\mathrm{IP}$-th word as $a$, the $(\\mathrm{IP}+1)$-th word as $b$, the $(\\mathrm{IP}+2)$-th word as $c$, and performs the <code>bbj a, b, c</code> instruction: copies the $(a \\mathbin{\\&amp;} 15)$-th bit of the $(a \\gg 4)$-th word to the $(b \\mathbin{\\&amp;} 15)$-th bit of the $(b \\gg 4)$-th word, and sets $\\mathrm{IP}=c$. Here, '$\\mathbin{\\&amp;}$' represents bitwise AND, and '$\\gg$' represents bitwise shift right operation. Notice that the value of $c$ is read from memory after the bit copy, so if the instruction modified its own $c$, the new value will be used for $\\mathrm{IP}$.</p>\n<p>For example, the <code>bbj 32, 35, 5</code> instruction placed at the memory start will be executed as follows:</p>\n<ol>\n<li>$a=32$ and $b=35$ are read from the memory.</li>\n<li>The 0-th bit of the 2-nd word (its value is $5 \\mathbin{\\&amp;} 1 = 1$) will be copied to the 3-rd bit of the same word, so the 2-nd word will have the value of $5 + 2^3 = 13$.</li>\n<li>Then $c=13$ is read from memory, and $\\mathrm{IP}$ is set to 13.</li>\n</ol>\n<p>Let's call the $(2^{12}-1)$-th word ($2^{16}-16 \\ldots 2^{16}-1$-th bits of memory) an <em>IO-word</em>. An <em>$x$-comparator</em> is a program which checks whether the value of the IO-word is equal to $x$. It should stop after execution of no more than $2^{12}$ instructions, leaving the lowest bit of the IO-word equal to $1$ if the original value of the IO-word was equal to $x$, and $0$ otherwise.</p>\n<p>Write a program that generates an $x$-comparator for the given value of $x$.</p>",
+  "input": "<p>The input contains a single decimal integer $x$ ($0 \\le x &lt; 2^{16}$) --- the value for which to build the $x$\\nobreakdash-comparator.</p>",
+  "output": "<p>The output should contain the $x$-comparator program dump. Dump consists of values for the first $n$ words of the memory ($1 \\le n \\le 2^{12}-1$). All other words, except the IO-word, are filled with zeroes.</p>\n<p>For each of the $n$ words, output its value as a four-character hexadecimal number. Values should be delimited by space or new line characters.</p>",
+  "samples": [
+    {
+      "input": "0\n",
+      "output": "fff0 0026 0003  fff1 0056 0006  fff2 0086 0009  fff3 00b6 000c  fff4 00e6 000f \nfff5 0116 0012  fff6 0146 0015  fff7 0176 0018  fff8 01a6 001b  fff9 01d6 001e \nfffa 0206 0021  fffb 0236 0024  fffc 0266 0027  fffd 0296 002a  fffe 02c6 002d \nffff 02f6 0030                                                  \n0004 fff0 0fff                                                  \n0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000\n0000 fff0 0fff  0000 fff0 0fff  0000 fff0 0fff  0000 fff0 0fff  0000 fff0 0fff \n0000 fff0 0fff  0000 fff0 0fff  0000 fff0 0fff  0000 fff0 0fff  0000 fff0 0fff \n0000 fff0 0fff  0000 fff0 0fff  0000 fff0 0fff  0000 fff0 0fff  0000 fff0 0fff \n0000 fff0 0fff                                                  \n"
+    }
+  ],
+  "hint": "<p>A dump in the sample output contains a 0-comparator. It consists of the following blocks:</p>\n<ul>\n<li>16 instructions: the $i$-th of them, counting from 0, copies the $i$-th bit of the input word to the 6-th bit of its own $c$. If the copied bit is zero, it will proceed to the next instruction; otherwise, the next instruction number will be increased by 64.</li>\n<li>The following instruction copies the 4-th bit of the 0-th word (value 1) to the 0-th bit of the IO-word and jumps to the stop address.</li>\n<li>16 unused words filled with 0.</li>\n<li>16 equal instructions (starting from word 67). Each of them copies the 0-th bit of the 0-th word (value 0) to the 0-th bit of the IO-word and jumps to the stop address.</li>\n</ul>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2024",
+  "level": 18,
+  "tags": [
+    "implementation",
+    "ad_hoc",
+    "constructive",
+    "case_work"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.5556000471115112
+}

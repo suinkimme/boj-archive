@@ -1,0 +1,30 @@
+{
+  "id": 30615,
+  "title": "Variable Assignments",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Unfortunately, this year, you somehow managed to make your math teacher at school really angry with you. He wants to take his revenge but without raising any suspicion. After some thought, he comes up with a plan: he will hand you a list of very boring math exercises that you'll have to solve during the school's Christmas break...</p>\n<p>So he comes up with the following exercise for you:</p>\n<p>Let x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub> be variables.</p>\n<p>You're given an ordered list of constraints (equations) of the form x<sub>i</sub> = x<sub>j</sub> or x<sub>i</sub> = -x<sub>j</sub>. The constraints are transitive, so if you're given x<sub>i</sub> = x<sub>j</sub> and x<sub>j</sub> = x<sub>k</sub>, then x<sub>i</sub> = x<sub>k</sub> holds true even if not explicitly given in the list.</p>\n<p>Then for each constraint between two variables x<sub>i</sub> and x<sub>j</sub>, you must mark it with:</p>\n<ul>\n<li>The letter N if it's a new constraint, meaning that x<sub>i</sub> and x<sub>j</sub> are so far not constrained in any way (neither directly or transitively).</li>\n<li>The letter E if it's an existing constraint, meaning that no new information is added (the constraint existed either directly or transitively).</li>\n<li>The letter C it's a contradicting constraint, meaning that it's impossible to fulfill the constraint given the previous ones. If you come across a contradiction the exercise ends and you don't mark the rest of the constraints.</li>\n</ul>\n<p>In addition, we consider that a constraint x<sub>i</sub> = x<sub>i</sub> is always existing and a constraint x<sub>i</sub> = -x<sub>i</sub> is always contradicting.</p>\n<p>The exercise is difficult, but your teacher is kind enough to give an example with explanations:</p>\n<p>Let's say we have N = 4 variables and the following M = 7 constraints:</p>\n<ol>\n<li>x<sub>1</sub> = x<sub>2</sub></li>\n<li>x<sub>3</sub> = -x<sub>4</sub></li>\n<li>x<sub>1</sub> = -x<sub>4</sub></li>\n<li>x<sub>1</sub> = x<sub>3</sub></li>\n<li>x<sub>2</sub> = -x<sub>4</sub></li>\n<li>x<sub>2</sub> = -x<sub>3</sub></li>\n<li>x<sub>1</sub> = -x<sub>4</sub></li>\n</ol>\n<p>They're marked as follows:</p>\n<ol>\n<li>Is a new constraint, as x<sub>1</sub> and x<sub>2</sub> weren't bound in any way. (N)</li>\n<li>Is a new constraint, as x<sub>3</sub> and x<sub>4</sub> weren't bound in any way. (N)</li>\n<li>Is a new constraint, as x<sub>1</sub> and x<sub>4</sub> weren't bound in any way. (N)</li>\n<li>Is an existing constraint due to the transitive property from constraints 2 and 3: From x<sub>1</sub> =-x<sub>4</sub> and -x<sub>4</sub> = x<sub>3</sub> we can get x<sub>1</sub> = x<sub>3</sub>. (E)</li>\n<li>Is an existing constraint too, by using transitivity on constraints 1 and 2. (E)</li>\n<li>Is a contradiction, because applying the transitive property at constraints 1 and 4 gives us x<sub>2</sub> = x<sub>3</sub> which cannot hold at the same time with x<sub>2</sub> = -x<sub>3</sub>. (C)</li>\n</ol>\n<p>Since we've reached a contradiction, the exercise stops.</p>\n<p>The only thing that your teacher didn't knew is that you're really good at programming. In order to quickly solve all the exercises and get your time back, you've decided to write a program that automatically solves any instance of this exercise.</p>",
+  "input": "<p>The first line of the input contains two integers N and M separated with a single whitespace character (1 ≤ N ≤ 10<sup>6</sup>, 1 ≤ M ≤ 10<sup>6</sup>). N is the number of variables (from x<sub>1</sub> to x<sub>N</sub>). After the first line there are M more lines, each with two integers I and J separated with a whitespace character and with I∈ [1, N] and J∈ [-N, 1]∪ [1, N]. Each (I,J) pair represents a constraint. If J&gt;0 then it represents the constraint x<sub>I</sub> = x<sub>J</sub>. If J&lt;0 then it represents the constraint x<sub>I</sub> = -x<sub>|J|</sub>. Although not necessary for the solution, you can assume that I&lt;|J| holds for all input data if you want.</p>",
+  "output": "<p>The output must be K lines, each with a single character which can be either N, E or C. The character at line i in the output is what you mark the i-th constraint of the input. It holds that 1≤ K ≤ N, depending on if there's a contradiction.</p>",
+  "samples": [
+    {
+      "input": "4 7\n1 2\n3 -4\n1 -4\n1 3\n2 -4\n2 -3\n1 -4\n",
+      "output": "N\nN\nN\nE\nE\nC\n"
+    },
+    {
+      "input": "4 9\n1 1\n2 2\n2 3\n1 3\n1 2\n1 3\n3 4\n1 4\n2 4\n",
+      "output": "E\nE\nN\nN\nE\nE\nN\nE\nE\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southeastern European Regional Contest, Greek Collegiate Programming Contest, GRCPC 2023",
+  "level": 18,
+  "tags": [
+    "2_sat",
+    "graphs",
+    "scc"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2.1666998863220215
+}

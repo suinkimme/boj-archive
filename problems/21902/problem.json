@@ -1,0 +1,31 @@
+{
+  "id": 21902,
+  "title": "Peterson Polyglot",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Peterson loves to learn new languages, but his favorite hobby is making new ones. Language is a set of words, and word is a sequence of lowercase Latin letters.</p>\n<p>Peterson makes new language every morning. It is difficult task to store the whole language, so Peterson have invented new data structure for storing his languages which is called <em>broom</em>. Broom is rooted tree with edges marked with letters. Initially broom is represented by the only vertex --- the root of the broom. When Peterson wants to add new word to the language he stands at the root and processes the letters of new word one by one. Consider that Peterson stands at the vertex $u$. If there is an edge from $u$ marked with current letter, Peterson goes through this edge. Otherwise Peterson adds new edge from $u$ to the new vertex $v$, marks it with the current letter and goes through the new edge. Size of broom is the number of vertices in it.</p>\n<p>In the evening after working day Peterson can't understand the language he made this morning. It is too difficult for bored Peterson and he tries to make it simpler. Simplification of the language is the process of erasing some letters from some words of this language. Formally, Peterson takes some positive integer $p$ and erases $p$-th letter from all the words of this language having length at least $p$. Letters in words are indexed starting by 1. Peterson considers that simplification should change at least one word, i.e. there has to be at least one word of length at least $p$. Peterson tries to make his language as simple as possible, so he wants to choose $p$ such that the size of the broom for his simplified language is as small as possible.</p>\n<p>Peterson is pretty annoyed with this task so he asks you for help. Write a program to find the smallest possible size of the broom and integer $p$.</p>",
+  "input": "<p>The first line of input contains integer $n$ ($2 \\le n\\le 3 \\cdot 10^5$) --- the size of the broom.</p>\n<p>Next $n - 1$ lines describe the broom: $i$-th of them contains integers $u_i$, $v_i$ and letter $x_i$ --- describing the edge from $u_i$ to $v_i$ marked with letter $x_i$.</p>\n<p>Vertices are numbered from 1 to $n$. All $x_i$ are lowercase latin letters. Vertex 1 is the root of the broom.</p>\n<p>Edges describe correct broom which is made from Peterson's language.</p>",
+  "output": "<p>The first line of output should contain the minimum possible size of the broom after its simplification. The second line of output should contain integer $p$ to choose. If there are several suitable $p$ values, print the smallest one.</p>",
+  "samples": [
+    {
+      "input": "5\n1 2 c\n2 3 a\n3 4 t\n2 5 t\n",
+      "output": "3\n2\n"
+    },
+    {
+      "input": "16\n1 2 o\n2 3 f\n1 4 p\n4 5 i\n5 6 e\n6 7 c\n7 8 e\n4 9 r\n9 10 e\n10 11 t\n11 12 t\n12 13 y\n10 14 f\n14 15 i\n15 16 x\n",
+      "output": "12\n2\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 433px; height: 298px;\"/></p>\n<p>Broom for initial language from sample test 2. &amp; &amp; Broom after simplification with $p = 2$.</p>\n<p>Broom from the second sample test can be built using language \"piece\", \"of\", \"pie\", \"pretty\", \"prefix\". Its simplification with $p = 2$ obtains the language of words \"pece\", \"o\", \"pe\", \"petty\", \"pefix\". This language gives us the broom with minimum possible size.</p>",
+  "source": "Contest, Innopolis Open in Informatics, Innopolis University Open, Olympiad in Informatics 2016-2017",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "smaller_to_larger",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.4000000953674316
+}

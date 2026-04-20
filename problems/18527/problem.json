@@ -1,0 +1,29 @@
+{
+  "id": 18527,
+  "title": "All Kill",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>You just finished participating in a programming contest with your friend. Unfortunately, you were unable to All Kill the contest (i.e., solve all of the problems), but you are now wondering if there might be some strategy that would have solved all of the problems.</p>\n<p>Solving a problem has two phases, a thinking phase and a coding phase. Your friend is responsible for all the thinking while you are responsible for all the coding.</p>\n<p>For each problem, you’ve computed exactly how long it would take for you to code. However, before you can code a problem in contest, your friend needs to get the idea to solve it first. You aren’t sure how to estimate the time when your friend gets a solution idea, so you model it like this: For every problem, your friend gets the idea of how to solve this problem at a uniformly random minute during the contest. Each of these is an independent random variable. You can only code one problem at a time, so there may be several problems queued up at any moment of time. You always prioritize coding the lowest numbered problems first. You do this minute-by-minute, so you will switch to coding a lower-numbered problem if your friend gets the idea for it before you’re finished coding a higher-numbered problem, but you would prefer not to do this. Context switching is an expensive operation, even in the human brain!</p>\n<p>The contest strategy can be modeled as follows for each minute:</p>\n<ul>\n<li>For each problem that doesn’t yet have an idea, your friend will get the idea to solve it with probability 1/(number of minutes remaining in contest). Your friend can get the idea to solve multiple problems in the same minute.</li>\n<li>Among the problems that still need code time and your friend has gotten the solution idea, you will take the lowest numbered one and spend the next minute coding it (if no problem satisfies the condition, you do nothing at this step).</li>\n</ul>\n<p>You would like to know the probability of these two events happening together:</p>\n<ul>\n<li>Your team finishes coding all the problems by the end of the contest</li>\n<li>For each problem, the time spent coding that problem is a contiguous interval</li>\n</ul>\n<p>Let p be this probability, n be the number of problems in the contest and t be the number of minutes in the contest. It can be shown that p · t<sup>n</sup> is an integer. Output the value of (p · t<sup>n</sup>) (mod 998,244,353). Note that 998,244,353 is a large prime.</p>",
+  "input": "<p>The first line of input contains two space-separated integers n (1 ≤ n ≤ 10<sup>5</sup>) and t (1 ≤ t ≤ 10<sup>8</sup>), where there were n problems in the contest, and the contest lasted t minutes.</p>\n<p>Each of the next n lines contains a single integer x (1 ≤ x ≤ 10<sup>3</sup>). These are the times to code each problem in minutes, in order. It is guaranteed that the sum of these times is less than or equal to t.</p>",
+  "output": "<p>Output a single integer, which is (p · t<sup>n</sup>) (mod 998,244,353), where p is the probability of the two events mentioned above happening together.</p>",
+  "samples": [
+    {
+      "input": "3 5\n1\n2\n1\n",
+      "output": "60\n"
+    },
+    {
+      "input": "5 5\n1\n1\n1\n1\n1\n",
+      "output": "1296\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Championship, North America Championship 2020, Contest, Open Cup, 2019/2020 Season, Stage 13: Grand Prix of America",
+  "level": 26,
+  "tags": [
+    "math",
+    "combinatorics"
+  ],
+  "accepted_user_count": 182,
+  "submission_count": null,
+  "average_tries": 1.6483999490737915
+}

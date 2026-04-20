@@ -1,0 +1,28 @@
+{
+  "id": 33827,
+  "title": "Zbieranie klocków",
+  "time_limit": "15 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>Mała Algosia ma prostokątną planszę o wymiarach $n \\times m$, podzieloną na $n \\cdot m$ kwadratowych pól. Algosia lubi bawić się, układając na planszy sześcienne klocki. Wymiary klocków są takie same jak rozmiary pól, więc Algosia zawsze kładzie klocki tak, aby zajmowały dokładnie jedno pole.</p>\n<p>Po zakończonej zabawie Algosia zawsze grzecznie sprząta klocki. Ma małe ręce, więc w jednym ruchu jest w stanie przenieść tylko jeden klocek z planszy do pudełka. Aby mogła chwycić klocek, musi być w stanie złapać go palcami za dwie przeciwległe ściany i te ściany nie mogą być przykryte sąsiadującymi klockami. Innymi słowy, taki klocek albo musi nie mieć sąsiadów po lewej i po prawej, albo musi nie mieć sąsiadów od góry i od dołu.</p>\n<p>Algosia zaczęła dzisiejszą zabawę z planszą, na której było ustawionych $k$ klocków. Następnie, z pomocą rodziców, $q$ razy dostawiła lub zdjęła pojedynczy klocek z planszy (dzięki pomocy rodziców możliwe było zdjęcie klocka, nawet jeśli miał on zastawione ściany sąsiadującymi klockami).</p>\n<p>Dziewczynka zastanawia się dla każdej z konfiguracji klocków na planszy (czyli na początku zabawy oraz po każdym z $q$ ruchów), ile maksymalnie klocków mogłaby, jeden po drugim, samodzielnie zdjąć z planszy. Algosia rozpatruje to tylko hipotetycznie – nie zdejmuje faktycznie tych klocków. Napisz program, który wyznaczy te liczby dla każdej z konfiguracji.</p>",
+  "input": "<p>W pierwszym wierszu znajdują się cztery liczby całkowite $n$, $m$, $k$, $q$ ($1 ≤ n, m ≤ 200\\, 000$, $1 ≤ k, q ≤ 75\\, 000$), oznaczające odpowiednio wysokość i szerokość planszy, liczbę klocków ustawionych na planszy na początku zabawy oraz liczbę wykonanych ruchów.</p>\n<p>W kolejnych $k$ wierszach znajdują się po dwie liczby całkowite $x_i$, $y_i$ ($1 ≤ x_i ≤ n$, $1 ≤ y_i ≤ m$), oznaczające współrzędne pola na którym stoi $i$-ty klocek na początku zabawy. Na żadnym polu nie stoi więcej niż jeden klocek.</p>\n<p>W kolejnych $q$ wierszach znajdują się po dwie liczby całkowite $x_j$, $y_j$ ($1 ≤ x_j ≤ n$, $1 ≤ y_j ≤ m$), oznaczające współrzędne pola, na którym został wykonany $j$-ty ruch. Jeśli na tym polu nie było klocka, to ruch polegał na dostawieniu tam klocka. Natomiast jeśli na tym polu stał już klocek, to ruch polegał na zdjęciu go.</p>",
+  "output": "<p>Na wyjście należy wypisać $q + 1$ wierszy zawierających po jednej liczbie całkowitej. Liczba w $i$-tym wierszu powinna być równa liczbie klocków, które Algosia może samodzielnie, jeden po drugim, zebrać z planszy, jeśli rozważamy konfigurację klocków po wykonaniu pierwszych $i - 1$ ruchów.</p>",
+  "samples": [
+    {
+      "input": "5 7 22 3\n1 1\n1 2\n1 3\n2 3\n3 3\n3 2\n2 1\n3 1\n4 1\n5 1\n1 5\n1 6\n1 7\n2 5\n2 7\n3 5\n3 6\n3 7\n4 5\n5 5\n4 7\n5 7\n2 2\n2 6\n5 1\n",
+      "output": "22\n14\n6\n5\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 295px; height: 223px;\"/></p>\n<p style=\"text-align: center;\">Rysunek 1: Tak wygląda plansza na początku zabawy. Jest na niej $k = 22$ klocków. Algosia może od razu zdjąć z planszy $14$ z nich.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 294px; height: 222px;\"/></p>\n<p style=\"text-align: center;\">Rysunek 2: Tak wygląda plansza po zdjęciu tych $14$ klocków. Wszystkie pozostałe klocki Algosia też może bez problemu zdjąć. Zatem w pierwszej konfiguracji Algosia jest w stanie sprzątnąć wszystkie $22$ klocki.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 294px; height: 222px;\"/></p>\n<p style=\"text-align: center;\">Rysunek 3: W pierwszym ruchu Algosia dostawia klocek zaznaczony na czerwono, tworząc kwadrat $3 \\times 3$, którego nie będzie w stanie w żaden sposób zdjąć. Pozostałe klocki (jest ich $14$) są możliwe do sprzątnięcia.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 294px; height: 222px;\"/></p>\n<p style=\"text-align: center;\">Rysunek 4: Tak wygląda plansza po drugim ruchu. Algosia może zdjąć jedynie $6$ klocków.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 294px; height: 222px;\"/></p>\n<p style=\"text-align: center;\">Rysunek 5: Tak wygląda plansza po trzecim ruchu. Odpowiedź to $5$.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2025",
+  "level": 26,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "set",
+    "tree_set",
+    "coordinate_compression"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

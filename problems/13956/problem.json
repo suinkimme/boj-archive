@@ -1,0 +1,32 @@
+{
+  "id": 13956,
+  "title": "Lost Logic",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Gustav is reading about 2-satisfiability, a well known problem of assigning truth values to boolean variables in order to satisfy a list of constraints — simple logical formulas involving two variables each.</p>\n<p>We are using n variables x<sub>1</sub>, x<sub>2</sub>, . . . , x<sub>n</sub> that can take on values 0 (false) and 1 (true). A constraint is a formula of the form a → b where both a and b are possibly negated variables. As usual, → denotes logical implication: a → b is 0 only when a is 1 and b is 0. The negation of variable a is denoted by !a.</p>\n<p>Given an assignment of values to variables, we say that the constraint is satisfied if it evaluates to 1. Gustav has constructed a list of constraints and correctly concluded that there are exactly three different assignments of values to variables that satisfy all the constraints. Gustav has wrote down all three assignments but has, unfortunately, lost the list of constraints.</p>\n<p>Given three assignments of n values to variables, find any list consisting of at most 500 constrains such that the three given assignments are the only assignments that satisfy all the constraints.</p>",
+  "input": "<p>The first line contains an integer n (2 ≤ n ≤ 50) — the number of variables. Three lines follow, each describing one assignment. The k-th line contains n space-separated integers v<sub>1</sub><sup>k</sup> , v<sub>2</sub><sup>k</sup> , . . . , v<sub>n</sub><sup>k </sup>, where each v<sub>i</sub><sup>k</sup> is either 0 or 1 and denotes the value of the variable x<sub>i</sub> in the k-th assignment. All three assignments will be different.</p>",
+  "output": "<p>If there is no solution output a single line containing the integer −1.</p>\n<p>Otherwise, the first line should contain an integer m where 1 ≤ m ≤ 500 — the number of constraints in your solution. The k-th of the following m lines should contain the k-th constraint. Each constraint should be a string constructed according to the following rules:</p>\n<ul>\n<li>A variable is a string of the form “xi” where i is an integer between 1 and n inclusive written without leading zeros.</li>\n<li>A literal is a string consisting of a variable possibly preceded by the “!” character.</li>\n<li>A constraint is a string of the form “a -&gt; b” where both a and b are literals. The implication sign consists of the “minus” character and the “greater-than” character and there is a single space character both before and after the implication sign.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3\n0 0 0\n0 1 0\n1 0 0\n",
+      "output": "3\nx1 -> !x2\nx3 -> x1\nx3 -> x2\n"
+    },
+    {
+      "input": "4\n0 0 1 0\n1 0 0 0\n1 0 1 1\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2016, Contest, Open Cup, 2016/2017 Season, Stage 8: Grand Prix of Europe",
+  "level": 21,
+  "tags": [
+    "2_sat",
+    "ad_hoc",
+    "constructive",
+    "graphs",
+    "scc"
+  ],
+  "accepted_user_count": 39,
+  "submission_count": null,
+  "average_tries": 1.8461999893188477
+}

@@ -1,0 +1,22 @@
+{
+  "id": 31102,
+  "title": "Five-pointed Queries",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Nowadays, the 5G mobile communication standard is being introduced everywhere. But progress does not stand still, and the researchers of the Lucifer Laboratory are working hard to develop a new communication standard. The development turns out to be so innovative that it was decided to call the new standard not 6G, but immediately 666G. Researchers claim that this technology will make it possible to call Satan himself.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 199px; height: 175px;\"/> <img alt=\"\" src=\"2.png\" style=\"width: 241px; height: 241px;\"/></p>\n<p>The new technology can be described as follows. The $k$ comminication towers, which can be considered points on the plane, are located at the vertices of a convex $k$-gon. Any five pairwise different towers are the tops of a five-pointed star and allow serving subscribers inside a pentagon, which is bounded by edges of the five-pointed star.</p>\n<p>You task is to test the load on communication towers using a model example. Let there be $n$ subscribers who can be considered as points on the plane inside the convex $k$-gon formed by the $k$ communication towers. We will assume that subscribers do not change their location. For each subscriber it is known whether he is active or not.</p>\n<p>Further, there are $q$ events of two types, ordered chronologically:</p>\n<ol>\n<li>Subscriber numbered $t$ changes its activity. That is, if the subscriber was active, then he becomes inactive and vice versa.</li>\n<li>For some five pairwise different communication towers, it is necessary to determine the number of <strong>active</strong> subscribers who are served by these five towers.</li>\n</ol>\n<p>You need to simulate all events and respond to all requests of type $2$.</p>",
+  "input": "<p>The first line contains an integer $k$ --- the number of communication towers ($5 \\le k \\le 30$).</p>\n<p>The $i$-th of the following $k$ lines contains two integers $X_i$ and $Y_i$ --- coordinates of the $i$-th communication tower. It is guaranteed that the communication towers are at the vertices of a strictly convex $k$-gon, that is, no three towers are on the same straight line. The towers are listed in clockwise order of traversing this $k$ -gon.</p>\n<p>Further on a separate line is an integer $n$ --- the number of subscribers ($1 \\le n \\le 50\\,000$).</p>\n<p>The $i$-th of the following $n$ lines contains three integers $x_i$, $y_i$ and $z_i$ --- the coordinates of the $i$ -th subscriber and his activity. $z_i=1$ means that the $i$ -th subscriber is active, $z_i=0$ --- that he is not. It is guaranteed that all subscribers are strictly inside the convex $k$-gon formed by communication towers. No subscriber is on the segment that connects any two communication towers.</p>\n<p>Further on a separate line is an integer $q$ --- the number of events ($1 \\le q \\le 50\\,000$).</p>\n<p>The $i$-th of the following $q$ lines describes the $i$-th event. An event of type $1$ is written as \"$1$ $t$\", where $t$ is the number of the subscriber for which the activity is changing ($1 \\le t \\le n$). An event of type $2$ is written as \"$2$ $a_i$ $b_i$ $c_i$ $d_i$ $e_i$\", where $a_i$, $b_i$, $c_i$, $d_i$ and $e_i$ --- tower indexes for which you need to determine the number of active served subscribers ($1 \\le a_i &lt; b_i &lt; c_i &lt; d_i &lt; e_i \\le k$).</p>\n<p>It is guaranteed that there is at least one request of the type $2$.</p>\n<p>The coordinates of all points are integers not exceeding $5 \\times 10^5$ in absolute value. No two points in the input are equal.</p>",
+  "output": "<p>Print $p$ lines, where $p$ is the number of events of type $2$. In the $i$-th line, print one integer - the answer to the $i$-th query of the type $2$.</p>",
+  "samples": [
+    {
+      "input": "6\n0 2\n1 7\n7 7\n8 3\n7 1\n4 0\n6\n1 4 1\n3 3 1\n4 3 0\n4 2 1\n5 4 1\n6 3 1\n8\n2 1 2 3 4 5\n2 1 2 3 4 6\n1 3\n2 1 2 3 4 6\n2 1 2 3 5 6\n2 1 2 4 5 6\n2 1 3 4 5 6\n2 2 3 4 5 6\n",
+      "output": "2\n2\n3\n3\n1\n0\n1\n"
+    }
+  ],
+  "hint": "<p>The point configuration in the example is shown on picture above.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 16: Grand Prix of Urals",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

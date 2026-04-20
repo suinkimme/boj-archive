@@ -1,0 +1,39 @@
+{
+  "id": 35165,
+  "title": "Return Oriented Programming",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>사이버국방학과 23학번인 민재(가명)는 오늘 해킹 기법 중 Return Oriented Programming(ROP)을 배웠다. ROP의 핵심은 공격자가 원하는 코드 내용을 이미 주어져 있는 바이너리 실행 파일의 내용으로 짜깁기해 만드는 것이다. 이 기법이 이해가 되지 않던 민재는 사이버국방학과를 졸업한 선배인 동우(가명)와 종우(가명)에게 ROP에 대해 물어봤다. 이에 동우는 다음과 같은 상황을 제시했다.</p>\r\n\r\n<blockquote>\r\n<p>어떤 문자열 $S$가 주어져 있다고 생각해 봐. 너는 이 문자열 $S$의 부분 문자열들을 통해 또 다른 문자열 $T$를 만들고 싶어. 즉, $T$를 $T_1T_2\\cdots T_N$으로 나누는데, 각각의 $T_i$는 $S$의 부분문자열이어야 해. 이미 주어져 있는 프로그램이 $S$, 너가 원하는 코드 내용이 $T$라고 생각하면 그게 ROP야. 여기서 $S$의 부분문자열이란, $S$의 앞과 뒤에서 $0$개 이상의 문자를 제거해 만들 수 있는 문자열을 의미해.</p>\r\n</blockquote>\r\n\r\n<p>민재는 이를 듣고 다시 물어봤다.</p>\r\n\r\n<blockquote>\r\n<p>그럼 만들 수 있는 방법이 여러 가지가 있다면, 어떤 방식이 좋을까요?</p>\r\n</blockquote>\r\n\r\n<p>동우와 종우는 각각 다음과 같은 답을 내놓았다.</p>\r\n\r\n<blockquote>\r\n<p>동우: $T$를 만드는 데 사용한 부분 문자열의 개수 $N$을 최소화해야 해.</p>\r\n</blockquote>\r\n\r\n<blockquote>\r\n<p>종우: 아니지. $T$를 만들기 위해 사용한 부분 문자열의 길이를 모두 곱한 값인 $\\prod_{i=1}^N\\lvert T_i\\rvert$를 최대화해야 해.</p>\r\n</blockquote>\r\n\r\n<p>이를 본 민재는 선배들이 싸우지 않도록 다음 답을 모두 구하기로 했다.</p>\r\n\r\n<ol>\r\n<li>$N$의 최솟값 $N_{1}$과 이를 만족하는 경우가 여러 가지일 경우 $\\prod_{i=1}^N\\lvert T_i\\rvert$의 최댓값 $P_{1}$</li>\r\n<li>$\\prod_{i=1}^N\\lvert T_i\\rvert$의 최댓값 $P_{2}$와 이를 만족하는 경우가 여러 가지일 경우 $N$의 최솟값 $N_{2}$</li>\r\n</ol>\r\n\r\n<p>단, $P_1$과 $P_2$는 수가 너무 커질 수 있으므로 답에 $\\ln$을 취한 값을 구한다. 즉, 정답이 $P$라면 $e^{x}=P$를 만족하는 $x=\\ln{P}$를 출력한다.</p>\r\n",
+  "input": "<p>첫 번째 줄에 알파벳 소문자로만 이루어진 문자열 $S(26\\le\\lvert S\\rvert\\le 100\\, 000)$가 주어진다. $S$에는 <span style=\"color:#e74c3c;\"><code>a</code></span>부터 <span style=\"color:#e74c3c;\"><code>z</code></span>까지의 모든 알파벳 소문자가 각각 최소 한 개 이상 포함되어 있다.</p>\r\n\r\n<p>두 번째 줄에 알파벳 소문자로만 이루어진 문자열 $T(1\\le\\lvert T\\rvert\\le 100\\, 000)$가 주어진다.</p>\r\n",
+  "output": "<p>첫 번째 줄에 $N_1$, $\\ln{P_1}$을 공백으로 구분하여 출력한다.</p>\r\n\r\n<p>두 번째 줄에 $\\ln{P_2}$, $N_2$를 공백으로 구분하여 출력한다.</p>\r\n\r\n<p>주어진 조건을 만족하는 모든 $S$와 $T$에 대해 가능한 방법이 최소 한 가지 이상 존재한다.</p>\r\n\r\n<p>정답과의 절대/상대 오차는 $10^{-6}$까지 허용한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "abcdefghijklmnopqrstuvwxyz\nabc\n",
+      "output": "1 1.098612\n1.098612 1\n"
+    },
+    {
+      "input": "abcdefghijklmnopqrstuvwxyz\nabcde\n",
+      "output": "1 1.609438\n1.791759 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, 고려대학교 프로그래밍 경시대회, 2025 고려대학교 프로그래밍 경시대회 (KCPC), Div. 1, kidw0124, foxpython, cywohoy, ezh8n, finimage, foxpython, sshs29hanul, tlsdydaud1, utilforever, yijw0930",
+  "level": 23,
+  "tags": [
+    "dp",
+    "data_structures",
+    "greedy",
+    "string",
+    "segtree",
+    "divide_and_conquer",
+    "sqrt_decomposition",
+    "deque",
+    "suffix_array",
+    "cht",
+    "divide_and_conquer_optimization",
+    "li_chao_tree"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 4.599999904632568
+}

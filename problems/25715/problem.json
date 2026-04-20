@@ -1,0 +1,26 @@
+{
+  "id": 25715,
+  "title": "Puzzle: X-Sums Sudoku",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>An $n\\times m$ sudoku puzzle is a grid consisting of $m\\times n$ regions, and each region contains $n\\times m$ cells. Hence an $n\\times m$ sudoku puzzle contains $nm\\times nm$ cells. Every integer from $1$ to $nm$ occurs exactly once in each row, each column, and each region of an $n\\times m$ sudoku puzzle.</p>\n<p>Listing the integers in a row or a column starting from some direction as a sequence of length $nm$, $X$ is the first integer of the sequence, and X-sum is the sum of the first $X$ integers of the sequence.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 300px; height: 291px;\"/></p>\n<p>The above figure is a $4\\times 2$ sudoku puzzle with X-sums. The $7$-th row listed from right to left is $[3,4,1,2,7,8,5,6]$ and the first integer $X$ is $3$, so the X-sum of the $7$-th row from the direction right is $8=3+4+1$.</p>\n<p>Given two positive integers $n$ and $m$, a direction $d$, and an index $x$, you need to find the X-sum of the $x$-th row or $x$-th column from the direction $d$ in <strong>the lexicographically smallest</strong> $2^n\\times 2^m$ sudoku.</p>\n<p>Denoting $a_{i,j}$ as the $i$-th row and the $j$-th column of a sudoku puzzle $a$, a sudoku puzzle $a$ is lexicographically smaller than a sudoku puzzle $b$ of the same size if there exists $i$ and $j$ satisfying that $a_{i,j}&lt;b_{i,j}$, that $a_{x,y}=b_{x,y}$ for all $x&lt;i$, and that $a_{x,y}=b_{x,y}$ for all $x=i$ and $y&lt;j$. You can find that the above is the lexicographically smallest $4\\times 2$ sudoku puzzle.</p>",
+  "input": "<p>There are multiple test cases. The first line of input contains an integer $T$($1\\le T\\le 10^5$), the number of test cases.</p>\n<p>For each test case:</p>\n<p>The only line contains two integers $n$ and $m$ ($1\\le n$, $m\\le 30$), a string $d$, and an integer $x$ ($1\\le x\\le2^{n+m}$). Here, $2^n\\times 2^m$ is the size of the sudoku puzzle; $d$ is the direction of X-sum, and it is one of \"<code>left</code>\", \"<code>right</code>\", \"<code>top</code>\", and \"<code>bottom</code>\"; $x$ is the index of a row or a column.</p>",
+  "output": "<p>For each test case:</p>\n<p>Output an integer: the X-sum of the $x$-th row or $x$-th column from the direction $d$ in <strong>the lexicographically smallest</strong> $2^n\\times 2^m$ sudoku.</p>\n<p>Note that the answer may exceed $2^{64}-1$. Consider using <code>__int128_t</code> in C++, <code>BigInteger</code> in Java or Kotlin, or <code>int</code> in Python.</p>",
+  "samples": [
+    {
+      "input": "4\n2 1 top 1\n2 1 bottom 2\n2 1 left 3\n2 1 right 4\n",
+      "output": "1\n34\n27\n3\n"
+    },
+    {
+      "input": "4\n11 19 top 1053766555\n12 26 top 230781535210\n14 10 right 8344647\n7 30 right 70120568170\n",
+      "output": "565741033271081135\n31719572400444316026492\n112693473538824\n477453505821905419941\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2022, Day 6: Heltion Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

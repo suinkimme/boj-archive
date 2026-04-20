@@ -1,0 +1,37 @@
+{
+  "id": 10380,
+  "title": "Instruction",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Ingrid is a head of a big railway station and, among other duties, is responsible for routing trains to the right platforms. The station has one entrance, and there are many switches that direct trains to other switches and platforms.</p>\n<p>Each switch has one inbound track and two outbound tracks, platforms have one inbound track, and station entrance has one outbound track. Each outbound track is connected to one inbound track and vice versa. Every switch and platform is reachable from station entrance.</p>\n<p>Platforms have a rail dead ends and you may assume that trains disappear from the platform immediately after arriving to it.</p>\n<p><img alt=\"\" src=\"/upload/images2/ingrid.png\"/></p>\n<p>Each morning Ingrid looks at the timetable and writes switch toggling instruction: when and which switch to toggle. She would like to automate this process to save a lot of time.</p>",
+  "input": "<p>The first line of the input file contains a single integer n — the total number of switches and platforms on the station (3 ≤ n ≤ 51).</p>\n<p>The i-th of the following n lines describes a switch or a platform with an index i. Description starts with a character ‘p’ for a platform or ‘s’ for a switch. Next number q<sub>i</sub> indicates the number of the switch the inbound track is connected to or 0 if it is connected to station entrance (0 ≤ q<sub>i</sub> &lt; i). Description of the platform also contains a unique lowercase English letter — the platform identifier.</p>\n<p>Trains spend exactly one minute to move between two connected switches or a switch and a platform. In the morning, each switch is toggled in a way that a train would pass to the one of the two outbound tracks connected to the switch/platform with the lower number.</p>\n<p>Next line of the input file contains a single integer m (1 ≤ m ≤ 1000) — the number of trains in timetable.</p>\n<p>Each of the following m lines contains integer a<sub>i</sub> (0 ≤ a<sub>i</sub> ≤ 10 000; a<sub>i</sub> &gt; a<sub>i−1</sub>) — the time in minutes when a train arrives to the station entrance, and the letter p<sub>i</sub> — identifier of the destination platform for this train.</p>",
+  "output": "<p>In the first line output integer c — the number of commands in the switch toggling instruction. For each command, output two integers s<sub>i</sub> and t<sub>i</sub> (1 ≤ s<sub>i</sub> ≤ n; 0 ≤ t<sub>i</sub> ≤ 10<sup>9</sup>) — the number of the switch and the time to toggle it. Assume that the switch is toggled between minutes t<sub>i</sub> − 1 and t<sub>i</sub>.</p>\n<p>Output commands in order of non-decreasing time. The number of commands should not exceed 100 000.</p>",
+  "samples": [
+    {
+      "input": "7\ns 0\ns 1\ns 1\np 2 a\np 2 b\np 3 c\np 3 d\n5\n0 a\n1 c\n3 b\n4 a\n5 d\n",
+      "output": "6\n1 2\n1 4\n2 4\n2 6\n1 6\n3 7\n"
+    },
+    {
+      "input": "5\ns 0\np 1 y\ns 1\np 3 z\np 3 x\n3\n7 y\n8 y\n15 y\n",
+      "output": "0\n"
+    },
+    {
+      "input": "3\ns 0\np 1 y\np 1 z\n3\n7 y\n8 y\n10 y\n",
+      "output": "5\n1 1\n1 2\n1 2\n1 3\n1 200\n"
+    }
+  ],
+  "hint": "<p>Below is the time trace for the first example.</p>\n<p><img alt=\"\" src=\"/upload/images2/instruchint.png\"/></p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2014",
+  "level": 15,
+  "tags": [
+    "backtracking",
+    "bitset",
+    "graphs",
+    "implementation",
+    "simulation",
+    "trees"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.705899953842163
+}

@@ -1,0 +1,44 @@
+{
+  "id": 25944,
+  "title": "Bar Magnet",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Jaehyun makes and sells bar magnets of various lengths and colors. He makes a lot of cube-shaped \"basic magnets\" of the same size. The basic magnets are colored in one of the 26 colors. See Figure 1. Jaehyun makes various bar magnets according to the customers’ request by connecting basic magnets. But connecting basic magnets one by one takes quite a long time. So Jaehyun tried to save time by using a \"template bar magnet\" consisting of several basic magnets instead of the basic magnets. To simplify the process, Jaehyun decided to use only one type of template bar magnet and make it in bulk in advance. Now he uses the pre- made template bar magnets to produce bar magnets requested by customers. Note that the template bar magnets are polarized and cannot be connected in the opposite direction.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 359px; height: 57px;\"/></p>\n<p style=\"text-align: center;\">Figure 1 Basic Magnets</p>\n<p>There are some rules when Jaehyun uses the template bar magnets to produce requested bar magnets. For convenience, we call the template bar magnet the T-bar.</p>\n<ol>\n<li>He constructs requested bar magnets from the N pole side to the S pole side, that is, from left to right.</li>\n<li>Jaehyun spends at most $m$ time for each T-bar where $m$ is the length of T-bar.</li>\n<li>He checks if the basic magnet of the T-bar matches that of the requested bar magnet one by one from left to right.</li>\n<li>Comparing each basic magnet takes 0 time.</li>\n<li>Jaehyun can remove one basic magnet from the T-bar, or he can insert one basic magnet into the T- bar, or he can replace one basic magnet in the T-bar. Each operation (removal, insertion, replacement) takes 1 time. He can repeatedly perform these operations to make them match.</li>\n<li>If one or more of the last basic magnets of requested bar magnet constructed so far match the front part of the next T-bar, Jaehyun can remove the matched part from the next T-bar. This takes 0 time. So, when Jaehyun tries to use the next T-bar, if he spends some time to remove, or insert, or replace some basic magnets to make the front part of the next T-bar match the last part of requested bar magnet constructed so far, it may reduce the total construction time.</li>\n<li>When the last basic magnet of the current T-bar is compared and used, another T-bar can be used until the requested bar magnet is made because there are sufficiently many basic magnets and T-bars.</li>\n</ol>\n<p>Jaehyun wants to minimize the total time to produce the requested bar magnet using T-bars. Note that it does not matter how many T-bars Jaehyun uses.</p>\n<p>For example, assume that the T-bar consists of 6 basic magnets as Figure 2. Assume a customer requests a bar magnet consisting of 17 basic magnets as Figure 3.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 244px; height: 57px;\"/></p>\n<p style=\"text-align: center;\">Figure 2 A T-bar consisting of 6 basic magnets</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 598px; height: 57px;\"/></p>\n<p style=\"text-align: center;\">Figure 3 A requested bar magnet by a customer</p>\n<p>In this example, the requested bar magnet can be produced using three T-bars. Consider the first T-bar. If the third (blue) basic magnet of the T-bar is replaced with a purple one, since the other basic magnets all match, the length 6 front part of the requested bar magnet can be constructed with 1 time. Next consider the second T-bar. Since the last (red) basic magnet of the bar magnet constructed so far matches the first basic magnet of the T-bar, it can be removed in 0 time. Also, if one blue basic magnet is inserted in the 9<sup>th</sup> position, the length 12 front part of the requested bar magnet can be constructed with additional 1 time. Now consider the third T- bar. Since the last (red) basic magnet of the bar magnet constructed so far matches the first basic magnet of the T-bar again, it also can be removed in 0 time. And if the 3<sup>rd</sup> (blue) and the 6<sup>th</sup> (red) basic magnets of the T- bar are replaced with grey and green one, respectively, the requested bar magnet is constructed with additional 2 time. The total time is 1+1+2 = 4, which is the minimum time to construct the requested bar magnet using the T-bars.</p>\n<p>Given a T-bar of length $m$ and a requested bar magnet of length $n$, write a program to output the minimum time to construct the requested bar magnet using the T-bars. Each of the 26 colors of basic magnets is represented by a different uppercase alphabet. And bar magnets will be given as strings consisting of uppercase alphabets.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing the T-bar represented by a string consisting of $m$ ($5 ≤ m ≤ 20$) uppercase alphabets. In the next line, the requested bar magnet is given as a string consisting of $n$ ($10 ≤ n ≤ 200\\,000$) uppercase alphabets.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line. The line should contain the minimum time to construct the requested bar magnet using the T-bars.</p>",
+  "samples": [
+    {
+      "input": "AACEEA\nAADEEAACCEEAABEEE\n",
+      "output": "4\n"
+    },
+    {
+      "input": "ABABCCC\nABABCCABAB\n",
+      "output": "4\n"
+    },
+    {
+      "input": "ABABA\nABABABABABABABABABA\n",
+      "output": "0\n"
+    },
+    {
+      "input": "BACBB\nDAACADCDBA\n",
+      "output": "8\n"
+    },
+    {
+      "input": "ABCDEABCDE\nABCDEABCDEX\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Nationwide Internet Competition, Seoul Nationalwide Internet Competition 2022",
+  "level": 19,
+  "tags": [
+    "dp",
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "0_1_bfs"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.7856999635696411
+}

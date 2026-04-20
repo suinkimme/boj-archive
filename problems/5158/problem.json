@@ -1,0 +1,26 @@
+{
+  "id": 5158,
+  "title": "Risk Assessment",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>One way in which investors make informed decisions about what companies to put their money in (e.g., by buying stock) is by reading independent assessments. There are several services writing these up, and grading stocks. During the heydays of financial wheeling and dealing, apparently, most companies were judged to be sound investments, even when they had no discernible business model. All that it would take was a sentence like “a high-yield prospect”, and investors would follow like lemmings. In fact, a computer program could probably do the same. And guess what: you get to write that program.</p>\n<p>Your program will get a piece of text about one or more companies. There are certain quality words with positive or negative connotations. For instance “trouble” is negative, and “promising” is positive. For each such word, we will have a basic quality score. However, sentences can also contain the modifiers “not”, “very”, “extremely” and “slightly”. If the word “not” appears in a sentence, it changes the value of all quality words in that sentence to 0. “Very” doubles the value of each quality word in its sentence, “extremely” triples the value of each quality word, and “slightly” halves the value. These multipliers accumulate multiplicatively: for instance, the sentence “AIG very trouble extremely very.” assigns “AIG” a score of -12 (assuming “trouble” has a score of -1). Modifiers apply only within a sentence; a sentence is defined as ending with a ‘.’ (our texts will not contain ‘,’, ‘;’, or ‘:’ or other punctuation).</p>\n<p>A piece of text can be about multiple companies. The way we find out what quality words apply to what company is as follows: from the moment in the text at which a company name appears until the next name of a company (or the end of the text), we assume that all words refer to that company. All words before the first company name talk about no company. Notice that multiple companies can be in the same sentence. For instance “AIG trouble Pixar promising very.” assigns a score of -2 to “AIG” and +2 to “Pixar” (assuming “trouble” counts for -1 and “promising” for +1), because “very” applies to both “trouble” and “promising” (being in the same sentence with both).</p>\n<p>If a company appears in multiple sentences (or multiple blocks), the scores from those sentences are added.</p>",
+  "input": "<p>The first line contains the number K of data sets. This is followed by K data sets, each of the following form:</p>\n<p>The first line contains three integers C,Q,L. 1 ≤ C ≤ 100 is the number of companies, 1 ≤ Q ≤ 100 the number of quality words, and 1 ≤ L ≤ 1000 the number of lines of text. This is followed by C lines, each containing the name of a company (consisting of letters and possibly hyphens). Next come Q lines. Each of these lines contains first a quality word w<sub>i</sub> (also possibly containing hyphens), then a space, and then a floating point number q<sub>i</sub>, the quality score of word i.</p>\n<p>Finally, there are L lines of text. Each line has at most 80 characters. All characters are either upper or lower case characters, hyphens (which are part of words), ‘.’ or space. Company names only match if the case is correct, i.e., “AIG” does not match “aig”. However, quality words or modifiers match irrespective of case, e.g, “trouble” matches “tRoubLE” and “Very” matches “veRY”. Our input will ensure that no two quality words are the same, and no company name is the same as any other company name or quality word.</p>",
+  "output": "<p>For each data set, output “Data Set x:” on a line by itself, where x is its number. Then, output the quality scores for all C companies (rounded to two decimals), one per line. They should be in the same order as the company names were given in the input. Each data set should be followed by an empty line.</p>",
+  "samples": [
+    {
+      "input": "1\n4 5 7\nAIG\nPixar\nWells-Fargo\nMicrosoft\nrisky -0.5\npromising 1\nbad -1.5\nblue-chip 1.5\ntrouble -1\nIn these risky economic times make good\ninvestments. Not bad ones. Microsoft is still very blue-chip stock but\nAIG looks risky. Pixar is not bad up-and-coming. Could even be\nslightly promising. Not very risky. Not blue-chip\nthough. wells-fargo is extremely bad.\nConsidering MICROSOFT more it is promising.\nWells-Fargo is not blue-chip in fact extremely risky. Bad. Very very bad.\n",
+      "output": "Data Set 1:\n-1.00\n-3.00\n-7.50\n3.00\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Spring 2009: Economic Crisis",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.4285999536514282
+}

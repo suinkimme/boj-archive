@@ -1,0 +1,30 @@
+{
+  "id": 34657,
+  "title": "Judgement",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You were preparing for the KAIST RUN ICPC 2025 Contest and completely forgot to submit your calculus homework. Now the professor has declared Judgement Day.  </p>\n<p>He has unleashed the legendary Hubo robot, programmed with only one mission: find you anywhere on campus and gently encourage you to finish the assignment.</p>\n<p>The KAIST campus can be modeled as $n$ buildings connected by $n-1$ roads, forming a tree. Each road $(u, v)$ has a <strong>road congestion</strong> $w(u, v)$.  </p>\n<p>When Hubo is at place $x$, it picks its next move randomly. For each neighbor $y$ of $x$, the probability that Hubo moves from $x$ to $y$ is $$\\Pr[x \\to y] = \\frac{\\tfrac{1}{w(x,y)}}{\\sum\\limits_{z \\sim x} \\tfrac{1}{w(x,z)}} \\, ,$$ where $w(x,y)$ is the congestion of road $(x,y)$ and $z \\sim x$ denotes all neighbors of $x$.</p>\n<p>Unfortunately for you, the professor can alter the campus roads over time, changing their loads.  </p>\n<p>You must process $q$ events:</p>\n<ul>\n<li><code>1 id new_w</code> — the congestion of the road with index <code>id</code> becomes <code>new_w</code>;</li>\n<li><code>2 u v</code> — you are hiding at place $v$, and Hubo is deployed at place $u$. Output the <strong>expected number of steps</strong> until Hubo reaches you. If $u=v$, the answer is $0$.</li>\n</ul>\n<p>Since the expectation can be rational, output it modulo $10^9+7$. Formally, if the expectation equals $s/t$ in lowest terms, print $s \\times t^{-1}\\pmod{10^9+7}$, where $t^{-1}$ is the modular inverse of $t$ modulo $10^9+7$.</p>",
+  "input": "<p>The first line contains two integers $n$ and $q$. Each of the next $n-1$ lines contains three integers $a,b,w$ describing a road between places $a$ and $b$ with congestion $w$ ($1 \\le a,b \\le n$). Roads are indexed $1,\\cdots,n-1$ in the order they appear. Each of the following $q$ lines is one event in the formats above.</p>",
+  "output": "<p>For each query of type $2$, print a single integer — the expected number of steps modulo $10^9+7$.</p>",
+  "samples": [
+    {
+      "input": "4 7\n1 2 1\n2 3 1\n3 4 1\n2 1 4\n2 4 1\n1 2 2\n2 1 4\n1 1 5\n2 4 1\n2 3 3\n",
+      "output": "9\n9\n10\n22\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, KAIST, KAIST ICPC Mock Competition, 2025 KAIST 15th ICPC Mock Competition, University, MIT, The MIT Programming Contest, 2025-26, MIT Team Contest 2, spike1236, imeimi2000, koosaga, qwerasdfzxcl, silverwolf",
+  "level": 22,
+  "tags": [
+    "math",
+    "data_structures",
+    "trees",
+    "segtree",
+    "probability",
+    "lazyprop",
+    "hld"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2.7142999172210693
+}

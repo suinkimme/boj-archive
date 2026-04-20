@@ -1,0 +1,26 @@
+{
+  "id": 28318,
+  "title": "Real Mountains",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Thanks to your help with cropping her picture, Rebecca's scenic photo is now featured on the front cover of the newest issue of her magazine. However, it seems that some of her readers still aren't pleased with the picture. In particular, they seem to believe that the mountain in the picture is fake!</p>\n<p>For simplicity, we can describe the picture as a sequence of $N$ columns of pixels. In the $i$-th column, the first $h_i$ pixels from the bottom are of mountains. Her readers will only believe that the picture contains a real mountain if it contains a single (possibly wide) peak. That is, if there exists some index $p$ with $1 \\le p \\le N$ such that $h_1 \\le h_2 \\le \\ldots \\le h_p \\ge \\ldots \\ge h_{N-1} \\ge h_{N}$.</p>\n<p>Luckily, Rebecca can still pay her editors to modify the picture and reprint the magazine. Unfortunately for her though, the editors have a very peculiar pricing scheme for their work. The only way Rebecca can edit the picture is by sending emails to her editors containing the integers $(i, j, k)$ such that $1 \\le i &lt; j &lt; k \\le N$ and $h_i&gt; h_j&lt; h_k$. The editors will then add an extra pixel of mountains in the $j$-th column (i.e. increment $h_j$ by $1$) for a cost of $h_i+ h_j+ h_k$ cents. Note that the change in $h_j$ may affect the costs of future edits.</p>\n<p>To please her readers, Rebecca would like to edit the picture so that they believe it contains a real mountain. Can you tell her the minimum cost required to do so?</p>",
+  "input": "<p>The first line of input contains an integer $N$.</p>\n<p>The second line of input contains $N$ space-separated integers $h_1, h_2, \\ldots , h_N$.</p>",
+  "output": "<p>Output the remainder of $T$ divided by the prime number $10^6+ 3$ where $T$ is the minimum cost (in cents) that Rebecca would need to incur in order to please her readers.</p>",
+  "samples": [
+    {
+      "input": "8\n3 2 4 5 4 1 2 1\n",
+      "output": "14\n"
+    }
+  ],
+  "hint": "<p>Rebecca can send two emails, the first containing the integers $(2, 6, 7)$ and the second containing the integers $(1, 2, 5)$. The first email costs $5$ cents and increases $h_6$ by $1$, while the second email costs $9$ cents and increases $h_2$ by $1$.</p>\n<p>The $h_i$ values in the final picture will be $[3, 3, 4, 5, 4, 2, 2, 1]$. Her readers will believe this final picture contains a real mountain.</p>",
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2023, CCO 2023",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "sweeping"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.4500000476837158
+}

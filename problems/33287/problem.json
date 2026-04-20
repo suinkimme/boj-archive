@@ -1,0 +1,22 @@
+{
+  "id": 33287,
+  "title": "1 :eye: > 100 :ear:",
+  "time_limit": "6 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Ever wondered how to generate a \"random\" non-convex polygon? One way to do it is ifsmirnov's algorithm. You can read about it here: <a href=\"https://codeforces.com/blog/entry/63058#comment-472683\"><code>https://codeforces.com/blog/entry/63058#comment-472683</code>.</a> It is also explained below:</p>\n<blockquote>\n<p>Let $n$ be the number of vertices in the polygon. We randomly generate $n$ points $p_1, p_2 \\ldots, p_n$ inside the square $[0\\text{--}10^5] \\times [0\\text{--}10^5]$ in this way:</p>\n<ul>\n<li>for each point, we choose $x$ and $y$ from the uniform distribution of integers between $0$ and $10^5$; </li>\n<li>if the current point lies on some line formed by two other points among the previous ones, its coordinates are generated again until it doesn't lie on any such line.</li>\n</ul>\n<p>After that, we build a minimum spanning tree for these points and traverse that tree in a depth-first order; when we visit a vertex for the first time, we write down its number. This sequence of numbers represents some Hamiltonian cycle over the points.</p>\n<p>Next, we draw a segment between each consecutive pair of points in that cycle. While there are at least two intersecting segments, we fix this intersection by swapping the segments' ends: if the intersecting segments are formed by points $p_i, p_{i+1}$ and $p_j, p_{j+1}$, then erase these segments and draw a segment between $p_i$ and $p_j$ and a segment between $p_{i+1}$ and $p_{j+1}$. It's believed this procedure will eventually stop.</p>\n</blockquote>\n<p>You can download the generator source code to generate some samples locally. To do that, download the archive using the \"Download problem statement\" link in the Yandex.Contest system between the statement and the submit  form for this problem.</p>\n<p>There, you will find the files <code>gen.cpp</code> and <code>jngen.h</code>. Run the following commands:</p>\n<ul>\n<li><code>g++ gen.cpp -o gen</code></li>\n<li><code>./gen -n 1000 &lt;seed&gt;</code></li>\n</ul>\n<p>The parameter <code>&lt;seed&gt;</code> may contain digits, letters, spaces, and some punctuation marks.</p>\n<p>The problem itself is as follows. You are given two non-convex polygons; both are generated with ifsmirnov's algorithm. Find the area of their Minkowski sum.</p>\n<p>The Minkowski sum of two polygons is defined as follows: if a point $(x_1, y_1)$ lies inside the first polygon or on its boundary, and a point $(x_2, y_2)$ lies inside the second polygon or on its boundary, then the point $(x_1+x_2, y_1+y_2)$ belongs to their Minkowski sum.</p>",
+  "input": "<p>The first line contains a single integer $n$ ($n = 10^3$): the amount of vertices in the first polygon. The next $n$ lines contain the coordinates $x_i, y_i$ of its points ($0 \\le x_i, y_i \\le 10^5$) in the order of traversal (clockwise or counter-clockwise).</p>\n<p>The next line contains a single integer $m$ ($m = 10^3$): the amount of vertices in the second polygon. The next $m$ lines contain the coordinates $x_i, y_i$ of its points ($0 \\le x_i, y_i \\le 10^5$) in the order of traversal (clockwise or counter-clockwise).</p>\n<p>Each of the polygons is non-convex, doesn't have self-intersections, and doesn't contain any three points lying on the same line.</p>",
+  "output": "<p>Output one number, the area of the two polygons' Minkowski sum. Your answer will be considered correct if its relative error does not exceed $10^{-4}$.</p>",
+  "samples": [
+    {
+      "input": "./gen -n 1000 sample\n",
+      "output": "38851658799.3\n"
+    }
+  ],
+  "hint": "<p>Just to be sure, the sample starts with:</p>\n<pre>\n1000\n28481 58236\n26391 26391\n33364 59290\n...\n</pre>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2024, Day 4: Danil Zashikhin && Atilla Gün Contest, supported by Pinely",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

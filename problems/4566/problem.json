@@ -1,0 +1,25 @@
+{
+  "id": 4566,
+  "title": "Is the Name of This Problem",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The philosopher Willard Van Orman Quine (1908–2000) described a novel method of constructing a sentence in order to illustrate the contradictions that can arise from self-reference. This operation takes as input a single phrase and produces a sentence from that phrase. (The author Douglas R. Hofstadter refers to this process as to Quine a phrase.) We can define the Quine operation like so:</p>\n<pre>\nQuine(A) = \"A\" A\n</pre>\n<p>In other words, if A is a phrase, then Quine(A) is A enclosed in quotes (\"), followed by a space, followed by A. For example:</p>\n<pre>\nQuine(HELLO WORLD) = \"HELLO WORLD\" HELLO WORLD\n</pre>\n<p>Below are some other examples of sentences that can be created by the Quine operation. Note that Quining allows sentences to be indirectly self-referential, such as the last sentence below.</p>\n<pre>\n\"IS A SENTENCE FRAGMENT\" IS A SENTENCE FRAGMENT\n\"IS THE NAME OF THIS PROBLEM\" IS THE NAME OF THIS PROBLEM\n\"YIELDS FALSEHOOD WHEN QUINED\" YIELDS FALSEHOOD WHEN QUINED\n</pre>\n<p>Your goal for this problem is to take a sentence and decide whether the sentence is the result of a Quine operation.</p>",
+  "input": "<p>The input will consist of a sequence of sentences, one sentence per line, ending with a line that has the single word, <strong><code>END</code></strong>. Each sentence will contain only uppercase letters, spaces, and quotation marks. Each sentence will contain between 1 and 80 characters and will not have any leading, trailing, or consecutive spaces.</p>\n<p>You must decide whether each sentence is the result of a Quine operation. To be a Quine, a sentence must match the following pattern <em>exactly</em>:</p>\n<ol>\n<li>A quotation mark</li>\n<li>Any nonempty sequence of letters and spaces (call this phrase <var>A</var>)</li>\n<li>A quotation mark</li>\n<li>A space</li>\n<li>Phrase <var>A</var>—exactly as it appeared in (2)</li>\n</ol>\n<p>If it matches this pattern, the sentence is a Quine of the phrase <var>A</var>. Note that phrase A must contain the exact same sequence of characters both times it appears.</p>",
+  "output": "<p>There will be one line of output for each sentence in the data set. If the sentence is the result of a Quine operation, your output should be of the form, <code>Quine(<var>A</var>)</code>, where <var>A</var> is the phrase to Quine to create the sentence.</p>\n<p>If the sentence is not the result of a Quine operation, your output should be the phrase, <strong><code>not a quine</code></strong>.</p>",
+  "samples": [
+    {
+      "input": "\"HELLO WORLD\" HELLO WORLD\n\"IS A SENTENCE FRAGMENT\" IS A SENTENCE FRAGMENT\n\"IS THE NAME OF THIS PROBLEM\" IS THE NAME OF THIS PROBLEM\n\"YIELDS FALSEHOOD WHEN QUINED\" YIELDS FALSEHOOD WHEN QUINED\n\"HELLO\" I SAID\nWHAT ABOUT \"WHAT ABOUT\"\n\" NO EXTRA SPACES \" NO EXTRA SPACES\n\"NO\"QUOTES\" NO\"QUOTES\n\"\"\nEND\n",
+      "output": "Quine(HELLO WORLD)\nQuine(IS A SENTENCE FRAGMENT)\nQuine(IS THE NAME OF THIS PROBLEM)\nQuine(YIELDS FALSEHOOD WHEN QUINED)\nnot a quine\nnot a quine\nnot a quine\nnot a quine\nnot a quine\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Central Regional, 2012 Mid-Central Regional Programming Contest",
+  "level": 5,
+  "tags": [
+    "string",
+    "parsing"
+  ],
+  "accepted_user_count": 141,
+  "submission_count": null,
+  "average_tries": 2.6098999977111816
+}

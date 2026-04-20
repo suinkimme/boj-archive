@@ -1,0 +1,36 @@
+{
+  "id": 24640,
+  "title": "Clean Up!",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Once Charlie decided to start a new life by deleting all files in his Downloads directory. It's easy to do that using <code>bash</code> shell! It has two useful features: the \"<code>rm</code>\" command, which removes all files given as arguments, and patterns, which are replaced with the list of files matching them before executing the command.</p>\n<p>Charlie ran \"<code>rm *</code>\", but received an \"<code>Argument list too long</code>\" response. Unfortunately, after <code>bash</code> replaced \"<code>*</code>\" with the names of all files in the Downloads directory, it failed to run the command because it had too many arguments.</p>\n<p>After some experiments, Charlie realized he can execute \"<code>rm abc*</code>\" to delete all files with names starting with \"<code>abc</code>\" if there are at most $k$ such files. If more than $k$ files match this pattern, none of them will be deleted. Of course, he can replace \"<code>abc</code>\" with any string.</p>\n<p>Help Charlie to find the smallest number of \"<code>rm</code>\" commands needed to delete all files. Assume that he can only use the \"<code>rm</code>\" command as \"<code>rm &lt;prefix&gt;*</code>\", where <code>&lt;prefix&gt;</code> consists of lowercase English letters (and can be empty). </p>",
+  "input": "<p>The first line contains two integers $n$ and $k$ --- the number of files to delete, and the maximum number of files that can be deleted by one \"<code>rm</code>\" command ($1 \\le n, k \\le 3 \\cdot 10^5$).</p>\n<p>Each of the next $n$ lines contains a single string, denoting a file name. All file names are distinct, non-empty, and consist of lowercase English letters. The total length of all file names doesn't exceed $3 \\cdot 10^5$.</p>",
+  "output": "<p>Print a single integer --- the smallest number of \"<code>rm</code>\" commands needed to delete all files.</p>",
+  "samples": [
+    {
+      "input": "4 2\na\nabc\nabd\nb\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 2\nd\nc\nab\na\n",
+      "output": "2\n"
+    },
+    {
+      "input": "5 3\nplease\nremove\nall\nthese\nfiles\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<p>In the first example test, Charlie can execute \"<code>rm ab*</code>\" to delete files \"<code>abc</code>\" and \"<code>abd</code>\", and then execute \"<code>rm *</code>\" to delete files \"<code>a</code>\" and \"<code>b</code>\". Note that he can't just run \"<code>rm *</code>\" immediately, because initially all four files match an empty prefix.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2021-2022 North-Western Russia Regional Contest",
+  "level": 17,
+  "tags": [
+    "data_structures",
+    "dp",
+    "string",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.850000023841858
+}

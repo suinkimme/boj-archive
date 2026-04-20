@@ -1,0 +1,33 @@
+{
+  "id": 23132,
+  "title": "Nimber Sequence",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Given are Nimbers $a_1, a_2, \\ldots, a_{K-1}$, $b_1, b_2, \\ldots, b_5$, and $c_1, c_2, \\ldots, c_5$.</p>\n<p>Let $\\displaystyle a_n = \\left(\\bigoplus_{i = 1}^{5} a_{n - i} \\otimes b_i \\right) \\oplus \\left(\\bigoplus_{i = 1}^{5} a_{n - K + i} \\otimes c_i \\right)$ for all $n \\ge K$.</p>\n<p>Find the value of $a_m$.</p>",
+  "input": "<p>The first line of input contains two positive integers $K$ and $m$ ($6 \\le K \\le 10^5$, $1 \\le m \\le 10^{18}$).</p>\n<p>The second line contains $K - 1$ non-negative integers $a_1, a_2, \\ldots, a_{K - 1}$ ($0 \\le a_i &lt; 2^{32}$).</p>\n<p>The third line contains five non-negative integers $b_1, b_2, \\ldots, b_5$ ($0 \\le b_i &lt; 2^{32}$).</p>\n<p>The fourth line contains five non-negative integers $c_1, c_2, \\ldots, c_5$ ($0 \\le c_i &lt; 2^{32}$).</p>",
+  "output": "<p>Output a single line with a single integer: the value of $a_m$.</p>",
+  "samples": [
+    {
+      "input": "6 1000000000000000000\n1 2 3 4 5\n1 0 0 0 0\n0 0 0 0 0\n",
+      "output": "5\n"
+    },
+    {
+      "input": "6 10\n1 2 3 4 5\n6 7 8 9 10\n11 12 13 14 15\n",
+      "output": "9\n"
+    },
+    {
+      "input": "11 123\n849 674 223 677 243 657 979 583 643 845\n979 282 313 567 433\n122 443 132 554 132\n",
+      "output": "32098\n"
+    }
+  ],
+  "hint": "<p><em>Nimbers</em> are non-negative integers associated with Nim games. For the purposes of this problem, two operations are necessary:</p>\n<ul>\n<li>\"$\\large\\oplus$\" is the Nim sum: $\\displaystyle a \\oplus b = \\mathrm{mex}\\left( \\{a' \\oplus b \\mid 0 \\le a' &lt; a\\} \\cup \\{a \\oplus b' \\mid 0 \\le b' &lt; b\\} \\right)$,</li>\n<li>\"$\\large\\otimes$\" is the Nim product: $\\displaystyle a \\otimes b = \\mathrm{mex}\\left( \\{(a' \\otimes b) \\oplus (a \\otimes b') \\oplus (a' \\otimes b') \\mid 0 \\le a' &lt; a, \\, 0 \\le b' &lt; b \\} \\right)$.</li>\n</ul>\n<p>Here, $\\mathrm{mex}(S)$ represents the smallest non-negative integer $d \\not\\in S$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2021, Day 4: 2021 Shanghai ICPC Camp Onsite 1 by PKU",
+  "level": 28,
+  "tags": [
+    "math",
+    "generating_function"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 2.357100009918213
+}

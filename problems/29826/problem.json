@@ -1,0 +1,22 @@
+{
+  "id": 29826,
+  "title": "Bititehete avaldis",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Janika õppis hiljuti bititehete <code>AND</code>, <code>OR</code> ja <code>XOR</code> kohta ning tahab nüüd nendega avaldise koostada ja selle väärtust arvutada.</p>\n<p>Avaldise algusesse kirjutab Janika arvu $0$. Selle järele kirjutab ta $N$ tehet, kus iga tehe kasutab ühte õpitud bitioperatsiooni ning mingisugust täisarvu, näiteks \"<code>AND</code> 5\". Seega võib ta $N = 6$ korral saada tulemuseks näiteks avaldise</p>\n<blockquote>\n<p>0 <code>XOR</code> 2 <code>AND</code> 5 <code>OR</code> 9 <code>XOR</code> 0 <code>AND</code> 8 <code>OR</code> 10.</p>\n</blockquote>\n<p>Avaldise väärtust arvutab ta alati vasakult paremale, nagu selles oleks mõttelised sulud järgmiselt</p>\n<blockquote>\n<p>((((((0 <code>XOR</code> 2) <code>AND</code> 5) <code>OR</code> 9) <code>XOR</code> 0) <code>AND</code> 8) <code>OR</code> 10).</p>\n</blockquote>\n<p>Edasi tahab Janika hakata oma avaldises üksikuid tehteid muutma, näiteks võib ta \"<code>OR</code> 9\" asemele kirjutada \"<code>XOR</code> 13\". Ta teeb oma avaldises üksteise järel $Q$ muudatust ja tahab iga muudatuse järel teada sellega saadud uue avaldise väärtust.</p>",
+  "input": "<p>Sisendi esimesel real on kaks täisarvu: avaldise tehete arv $N$ ($1 \\le N \\le 10^5$) ja muudatuste arv $Q$ ($1 \\le Q \\le 10^5$).</p>\n<p>Järgmisel $N$ real on igaühel algse avaldise ühe tehte kirjeldus: tehte nimi <code>AND</code>, <code>OR</code> või <code>XOR</code> ja täisarv $X$ ($0 \\le X \\le 10^9$).</p>\n<p>Järgmisel $Q$ real on igaühel ühe muudatuse kirjeldus: asendatava tehte järjekorranumber $I$ ($1 \\le I \\le N$) ning uue tehte nimi <code>AND</code>, <code>OR</code> või <code>XOR</code> ja uus täisarv $X$ ($0 \\le X \\le 10^9$).</p>",
+  "output": "<p>Iga muudatuse kohta väljasta eraldi reale üks täisarv: avaldise väärtus selle muudatuse järel.</p>",
+  "samples": [
+    {
+      "input": "4 3\nXOR 2\nOR 5\nOR 9\nXOR 0\n2 AND 5\n3 OR 8\n4 XOR 10\n",
+      "output": "9\n8\n2\n"
+    }
+  ],
+  "hint": "<p><code>AND</code> (\"loogiline JA\") on loogiline tehe kahe tõeväärtuse vahel, mille tulemus on \"tõene\", kui mõlema operandi väärtus on \"tõene\", ja \"väär\" igal muul juhul. <code>OR</code> (\"loogiline VÕI\") tulemus on \"väär\", kui mõlema operandi väärtus on \"väär\", ja \"tõene\" igal muul juhul. <code>XOR</code> (\"välistav VÕI\") tulemus on \"tõene\", kui täpselt üks operandidest \"tõene\", ja \"väär\" igal muul juhul.</p>\n<p>Nende tehete rakendamisel arvudele vaadatakse arvude esitust kahendsüsteemis, tõlgendatakse iga bitti tõeväärtusena ($1$ = \"tõene\", $0$ = \"väär\"), rakendatakse tehe operandide kohakuti olevatele bittidele (ühelised omavahel, kahelised omavahel j.n.e) ning koostatakse saadud tulemustest uus kahendarv.</p>\n<p>Näiteks arvu $5$ kahendkuju on $0101_2$ ja arvu $12$ kahendkuju $1100_2$. Avaldise $0101_2$ <code>XOR</code> $1100_2$ väärtuse kahendkuju arvutatakse järgmiselt: ühelised $1$ <code>XOR</code> $0 = 1$; kahelised $0$ <code>XOR</code> $0 = 0$; neljalised $1$ <code>XOR</code> $1 = 0$; kaheksalised $0$ <code>XOR</code> $1 = 1$. Kokku saame seega $0101_2$ <code>XOR</code> $1100_2 = 1001_2$, mis on arvu $9$ kahendkuju. Seega $5$ <code>XOR</code> $12 = 9$.</p>",
+  "source": "Olympiad, Estonian Informatics Olympiad, 2022-23, Open Competition",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

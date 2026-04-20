@@ -1,0 +1,36 @@
+{
+  "id": 21609,
+  "title": "상어 중학교",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>상어 중학교의 코딩 동아리에서 게임을 만들었다. 이 게임은 크기가 N×N인 격자에서 진행되고, 초기에 격자의 모든 칸에는 블록이 하나씩 들어있고, 블록은 검은색 블록, 무지개 블록, 일반 블록이 있다. 일반 블록은 M가지 색상이 있고, 색은 M이하의 자연수로 표현한다. 검은색 블록은 -1, 무지개 블록은 0으로 표현한다. (i, j)는 격자의 i번 행, j번 열을 의미하고, |r<sub>1</sub> - r<sub>2</sub>| + |c<sub>1</sub> - c<sub>2</sub>| = 1을 만족하는 두 칸 (r<sub>1</sub>, c<sub>1</sub>)과 (r<sub>2</sub>, c<sub>2</sub>)를 인접한 칸이라고 한다.</p>\n<p>블록 그룹은 연결된 블록의 집합이다. 그룹에는 일반 블록이 적어도 하나 있어야 하며, 일반 블록의 색은 모두 같아야 한다. 검은색 블록은 포함되면 안 되고, 무지개 블록은 얼마나 들어있든 상관없다. 그룹에 속한 블록의 개수는 2보다 크거나 같아야 하며, 임의의 한 블록에서 그룹에 속한 인접한 칸으로 이동해서 그룹에 속한 다른 모든 칸으로 이동할 수 있어야 한다. 블록 그룹의 기준 블록은 무지개 블록이 아닌 블록 중에서 행의 번호가 가장 작은 블록, 그러한 블록이 여러개면 열의 번호가 가장 작은 블록이다.</p>\n<p>오늘은 이 게임에 오토 플레이 기능을 만드려고 한다. 오토 플레이는 다음과 같은 과정이 블록 그룹이 존재하는 동안 계속해서 반복되어야 한다.</p>\n<ol>\n<li>크기가 가장 큰 블록 그룹을 찾는다. 그러한 블록 그룹이 여러 개라면 포함된 무지개 블록의 수가 가장 많은 블록 그룹, 그러한 블록도 여러개라면 기준 블록의 행이 가장 큰 것을, 그 것도 여러개이면 열이 가장 큰 것을 찾는다.</li>\n<li>1에서 찾은 블록 그룹의 모든 블록을 제거한다. 블록 그룹에 포함된 블록의 수를 B라고 했을 때, B<sup>2</sup>점을 획득한다.</li>\n<li>격자에 중력이 작용한다.</li>\n<li>격자가 90도 반시계 방향으로 회전한다.</li>\n<li>다시 격자에 중력이 작용한다.</li>\n</ol>\n<p>격자에 중력이 작용하면 검은색 블록을 제외한 모든 블록이 행의 번호가 큰 칸으로 이동한다. 이동은 다른 블록이나 격자의 경계를 만나기 전까지 계속 된다.</p>\n<p>다음은 N = 5, M = 3인 경우의 예시이다.</p>\n<table class=\"table table-bordered table-center-30 table-21609\">\n<tbody>\n<tr>\n<td>2</td>\n<td>2</td>\n<td>-1</td>\n<td>3</td>\n<td>1</td>\n</tr>\n<tr>\n<td>3</td>\n<td>3</td>\n<td>2</td>\n<td>0</td>\n<td>-1</td>\n</tr>\n<tr>\n<td>0</td>\n<td>0</td>\n<td>0</td>\n<td>1</td>\n<td>2</td>\n</tr>\n<tr>\n<td>-1</td>\n<td>3</td>\n<td>1</td>\n<td>3</td>\n<td>2</td>\n</tr>\n<tr>\n<td>0</td>\n<td>3</td>\n<td>2</td>\n<td>2</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>\n<p>여기서 찾을 수 있는 크기가 가장 큰 블록 그룹을 다음과 같이 빨간색으로 표시했다.</p>\n<table class=\"table table-bordered table-center-30 table-21609\">\n<tbody>\n<tr>\n<td>2</td>\n<td>2</td>\n<td>-1</td>\n<td>3</td>\n<td>1</td>\n</tr>\n<tr>\n<td class=\"bg-red\">3</td>\n<td class=\"bg-red\">3</td>\n<td>2</td>\n<td>0</td>\n<td>-1</td>\n</tr>\n<tr>\n<td class=\"bg-red\">0</td>\n<td class=\"bg-red\">0</td>\n<td class=\"bg-red\">0</td>\n<td>1</td>\n<td>2</td>\n</tr>\n<tr>\n<td>-1</td>\n<td class=\"bg-red\">3</td>\n<td>1</td>\n<td>3</td>\n<td>2</td>\n</tr>\n<tr>\n<td class=\"bg-red\">0</td>\n<td class=\"bg-red\">3</td>\n<td>2</td>\n<td>2</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>\n<p>블록 그룹이 제거되면 다음과 같이 변하고, 점수 8<sup>2</sup>점을 획득한다.</p>\n<table class=\"table table-bordered table-center-30 table-21609\">\n<tbody>\n<tr>\n<td>2</td>\n<td>2</td>\n<td>-1</td>\n<td>3</td>\n<td>1</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td>2</td>\n<td>0</td>\n<td>-1</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n<td>1</td>\n<td>2</td>\n</tr>\n<tr>\n<td>-1</td>\n<td> </td>\n<td>1</td>\n<td>3</td>\n<td>2</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td>2</td>\n<td>2</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>\n<p>중력이 작용하면 다음과 같이 변한다.</p>\n<table class=\"table table-bordered table-center-30 table-21609\">\n<tbody>\n<tr>\n<td> </td>\n<td> </td>\n<td>-1</td>\n<td>3</td>\n<td>1</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n<td>0</td>\n<td>-1</td>\n</tr>\n<tr>\n<td>2</td>\n<td> </td>\n<td>2</td>\n<td>1</td>\n<td>2</td>\n</tr>\n<tr>\n<td>-1</td>\n<td> </td>\n<td>1</td>\n<td>3</td>\n<td>2</td>\n</tr>\n<tr>\n<td> </td>\n<td>2</td>\n<td>2</td>\n<td>2</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>\n<p>90도 반시계방향으로 회전한 결과는 다음과 같다.</p>\n<table class=\"table table-bordered table-center-30 table-21609\">\n<tbody>\n<tr>\n<td>1</td>\n<td>-1</td>\n<td>2</td>\n<td>2</td>\n<td>1</td>\n</tr>\n<tr>\n<td>3</td>\n<td>0</td>\n<td>1</td>\n<td>3</td>\n<td>2</td>\n</tr>\n<tr>\n<td>-1</td>\n<td> </td>\n<td>2</td>\n<td>1</td>\n<td>2</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n<td> </td>\n<td>2</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td>2</td>\n<td>-1</td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>다시 여기서 중력이 작용하면 다음과 같이 변한다.</p>\n<table class=\"table table-bordered table-center-30 table-21609\">\n<tbody>\n<tr>\n<td>1</td>\n<td>-1</td>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n<tr>\n<td>3</td>\n<td> </td>\n<td>2</td>\n<td>2</td>\n<td>1</td>\n</tr>\n<tr>\n<td>-1</td>\n<td> </td>\n<td>1</td>\n<td>3</td>\n<td>2</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td>2</td>\n<td>1</td>\n<td>2</td>\n</tr>\n<tr>\n<td> </td>\n<td>0</td>\n<td>2</td>\n<td>-1</td>\n<td>2</td>\n</tr>\n</tbody>\n</table>\n<p>오토 플레이가 모두 끝났을 때 획득한 점수의 합을 구해보자.</p>",
+  "input": "<p>첫째 줄에 격자 한 변의 크기 N, 색상의 개수 M이 주어진다.</p>\n<p>둘째 줄부터 N개의 줄에 격자의 칸에 들어있는 블록의 정보가 1번 행부터 N번 행까지 순서대로 주어진다. 각 행에 대한 정보는 1열부터 N열까지 순서대로 주어진다. 입력으로 주어지는 칸의 정보는 -1, 0, M이하의 자연수로만 이루어져 있다.</p>",
+  "output": "<p>첫째 줄에 획득한 점수의 합을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 3\n2 2 -1 3 1\n3 3 2 0 -1\n0 0 0 1 2\n-1 3 1 3 2\n0 3 2 2 1\n",
+      "output": "77\n"
+    },
+    {
+      "input": "6 4\n2 3 1 0 -1 2\n2 -1 4 1 3 3\n3 0 4 2 2 1\n-1 4 -1 2 3 4\n3 -1 4 2 0 3\n1 2 2 2 2 1\n",
+      "output": "125\n"
+    },
+    {
+      "input": "4 3\n1 1 1 3\n3 2 3 3\n1 2 -1 3\n-1 -1 1 1\n",
+      "output": "33\n"
+    }
+  ],
+  "hint": null,
+  "source": "baekjoon, 16silver, Green55",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "simulation",
+    "bfs"
+  ],
+  "accepted_user_count": 4259,
+  "submission_count": null,
+  "average_tries": 2.654099941253662
+}

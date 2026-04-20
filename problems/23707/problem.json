@@ -1,0 +1,30 @@
+{
+  "id": 23707,
+  "title": "Elena Andreeva",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>This is an interactive problem.</p>\n<p>You are given an integer $n$. Your program chooses a number $x$ between $0$ and $n-1$ inclusive. The interactor asks you queries of form: what is the remainder of $x$ modulo $y$, where $y$ is the parameter of the query.</p>\n<p>The interactor isn't stupid and won't ask you a query, such that the answer to it is known beforehand (i.e. it can be deduced from answers to previous queries and the fact that the hidden number is between $0$ and $n-1$). For example, if the interactor asks you the remainder of $x$ modulo $10$ and you answer $6$ the interactor won't query the remainder of $x$ modulo 2 because it can be deduced that it is 0.</p>\n<p>You want the interactor to know the number you've chosen in as few queries as possible. Obviously you can answer adaptively and change the chosen number on the fly, but it must remain consistent with previous answers.</p>\n<p>At the start of interaction you choose an integer $k$ and implicitly make a claim: &lt;&lt;The interactor will know the chosen number in at most $k$ queries&gt;&gt;. You should choose the smallest $k$, such that you can always make that happen. Precisely, let $K$ denote the smallest possible such $k$.</p>\n<p>If you choose $k &gt; K$ the interactor will tell you that. You can either accept this fact or choose to reverse the roles. You should do it only if you believe that your solution can't be wrong (hint: it is) and there is a problem with authors solution or tests. The interactor will choose the number and you will try to guess it as slowly as possible. If you make $k$ valid queries you will receive Check Failed and prove your point.</p>\n<p>If $k \\leq K$ the guessing starts. The interactor will make queries until it knows the number. If the interactor is able to make $k + 1$ queries you didn't fulfill your claim and receive WA. Otherwise you pass the test case. Note that if you choose $k &lt; K$ the interactor will always be able to make at least $k + 1$ queries by asking queries optimally (however there is no guarantee that the interactor will do so, refer to the third sample).</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "3\n\n1\n15\n\n0\n",
+      "output": "\n\n1\n\n\n0\n\n"
+    },
+    {
+      "input": "6\n\n1\n2\n\n5\n\n0\n",
+      "output": "\n\n2\n\n\n1\n\n0\n\n"
+    },
+    {
+      "input": "100\n\n1\n80\n\n0\n",
+      "output": "\n\n1\n\n\n76\n\n"
+    }
+  ],
+  "hint": "<p>In the first sample the process goes as follows.</p>\n<ul>\n<li>The solution reads $n$. It is equal to $3$. </li>\n<li>It prints $k = 1$. </li>\n<li>It can be shown that $K = 1$.</li>\n<li>The interactor prints <code>1</code> and starts guessing.</li>\n<li>It makes a query with $y = 15$. </li>\n<li>The solutions answers $0$.</li>\n<li>Interactor knows that the hidden number is $0$ and prints <code>-1</code>.</li>\n</ul>\n<p>In the second sample a similar process happens, except for $k = K = 2$. Therefore the interactor makes two queries instead of one. The hidden number is $5$.</p>\n<p>In the third example $K &gt; 1$, but the solution prints $k = 1$. However, the interactor makes a query, such that the hidden number ($76$) is known after the solution answers it and the solution still passes the test. If the interactor asked a query with $y=10$ instead the solution would've failed test because there will always remain multiple possibilities for the hidden number after the query is answered.</p>\n<p><u>The actual interactor might ask different queries than ones in the samples. Therefore there is no easy way to pass the samples with some placeholder solution</u></p>",
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 16: Grand Prix of Moscow",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2
+}

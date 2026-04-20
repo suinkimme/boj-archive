@@ -1,0 +1,22 @@
+{
+  "id": 19315,
+  "title": "Conic Section",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Rikka generates an integer sequence $u_1, u_2, \\ldots$ as follows: she generates $x_1, x_2, \\ldots$, where $x_i = (100\\,000\\,005 \\cdot x_{i - 1} + 20\\,150\\,609) \\bmod 998\\,244\\,353$, and then sets $u_i = \\lfloor \\frac{x_i}{100} \\rfloor$.</p>\n<p>Initially, there are $n$ points on the Cartesian plane. The $i$-th point has coordinates $(i, u_{i} \\bmod 100\\,001)$. After that, $m$ operations are performed subsequently. The $i$-th operation has one of the three types: \"<code>C</code>\", \"<code>R</code>\", and \"<code>Q</code>\".</p>\n<p>Let $p_i = \\min\\{u_{n + 2i - 1} \\bmod n, u_{n + 2i} \\bmod n\\} + 1$ and $q_i = \\max\\{u_{n + 2i - 1} \\bmod n, u_{n + 2i} \\bmod n\\} + 1$.</p>\n<ul>\n<li>If the $i$-th operation is of type \"<code>C</code>\", transform the $(u_{n + 2i - 1} \\bmod n + 1)$-th point into $(u_{n + 2i - 1} \\bmod n + 1, u_{n + 2i} \\bmod 100\\,001)$.</li>\n<li>If the $i$-th operation is of type \"<code>R</code>\", for all $x$ such that $p_i \\leq x \\leq q_i$, transform the point $(x, y)$ into $(x, 100\\,000 - y)$.</li>\n<li>If the $i$-th operation is of type \"<code>Q</code>\", consider all currently existing points $(x, y)$ such that $p_i \\leq x \\leq q_i$ and, given $a_i$, $b_i$ and $c_i$, find $\\max\\{ a_{i} \\cdot x + b_{i} \\cdot y + c_{i} \\cdot x \\cdot y \\}$.</li>\n</ul>",
+  "input": "<p>The first line contains three integers: $n$, $m$, and $x_0$ ($1 \\leq n \\leq 10^5$, $1 \\leq m \\leq 10^6$, $0 \\leq x_0 &lt; 998\\,244\\,353$, $x_0 \\neq 340\\,787\\,122$).</p>\n<p>The $i$-th of the following $m$ lines starts with a character $t_i$, the type of the operation, which is either \"<code>C</code>\", \"<code>R</code>\", or \"<code>Q</code>\". If $t_i$ is \"<code>Q</code>\", three integers $a_i, b_i, c_i$ follow ($0 \\leq a_i, b_i &lt; 10^6$, $0 \\leq c_i &lt; 40$).</p>\n<p>It is guaranteed that the number of operations of type <code>Q</code> does not exceed $10^5$.</p>",
+  "output": "<p>For each operation of type \"<code>Q</code>\", output an integer which denotes the maximum.</p>",
+  "samples": [
+    {
+      "input": "3 3 2705443\nC\nR\nQ 872784 195599 7\n",
+      "output": "13035048532\n"
+    }
+  ],
+  "hint": "<p>Initially, the three points lie in $(1, 91263)$, $(2, 33372)$ and $(3, 10601)$ respectively.</p>\n<p>The first operation changes the third point to $(3, 94317)$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2018, Day 7: Ruyi Ji Contest 3",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

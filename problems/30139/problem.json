@@ -1,0 +1,30 @@
+{
+  "id": 30139,
+  "title": "Regular Expression Edit Distance",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A regular expression is used to describe a set of strings. For this problem the alphabet is limited to 'a' and 'b'. R is a regular expression if:</p>\n<ol>\n<li>R is \"a\" or \"b\"</li>\n<li>R is of the form \"(R1R2)\" where R1 and R2 are regular expressions</li>\n<li>R is of the form \"(R1|R2)\" where R1 and R2 are regular expressions</li>\n<li>R is of the form \"(R1*)\" where R1 is a regular expression.</li>\n</ol>\n<p>The set of strings recognised by R are as follows:</p>\n<ol>\n<li>If R is \"a\", then the set of strings recognised = {a}</li>\n<li>If R is \"b\", then the set of strings recognised = {b}</li>\n<li>if R is of the form \"(R1R2)\" then the set of strings recognised = all strings which can be obtained by a concatenation of strings s1 and s2 where s1 is recognised by R1 and s2 by R2.</li>\n<li>if R is of the form \"(R1|R2)\" then the set of strings recognised = union of the set of strings recognised by R1 and R2.</li>\n<li>If R is of the form \"(R1*)\" then the the strings recognised are the empty string and the concatenation of an arbitrary number of copies of any string recognised by R1.</li>\n</ol>\n<p>The edit distance between two strings s1 and s2 is the minimum number of characters to be inserted/deleted or replaced in s1 to make it equal to s2.</p>\n<p>Given two regular expressions R1 and R2, find the minimum edit distance amongst all pairs of strings s1 and s2 such that s1 is recognised by R1 and s2 is recognised by R2.</p>",
+  "input": "<p>The first line contains the number of test cases T. T test cases follow.</p>\n<p>Each test case contains two lines containing two regular expressions R1 and R2. There is a blank line after each test case.</p>",
+  "output": "<p>Output T lines one corresponding to each test case containing the required answer for the corresponding test case.</p>",
+  "samples": [
+    {
+      "input": "2\n((a|b)*)\n(a(b(aa)))\n\n(a((ab)*))\n(a(b(((ab)b)b)))\n",
+      "output": "0\n2\n"
+    }
+  ],
+  "hint": "<p>For the first case R1 recognises all strings over the alphabet a and b. Thus it recognises the string \"abaa\" which is also recognised by R2.</p>\n<p>For the second case the strings \"aababab\" and \"ababbb\" are recognised by R1 and R2 respectively and have edit distance of 2.</p>",
+  "source": "ICPC, Regionals, Asia West Continent, India, The 2010 ACM-ICPC Asia Amritapuri Regional Contest",
+  "level": 24,
+  "tags": [
+    "graphs",
+    "string",
+    "shortest_path",
+    "dijkstra",
+    "parsing",
+    "0_1_bfs",
+    "regex"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

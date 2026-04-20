@@ -1,0 +1,22 @@
+{
+  "id": 7781,
+  "title": "Log Analysis",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Lisa writes a log analysis application for a distributed computer system. Unlike single-node logs, that are append-only the distributed log is highly volatile. When a node becomes online, it may push a batch of events in the past of the log. Conversely, when it goes oﬄine some log entries may disappear.</p>\n<p>To ensure the stability and availability of the application Lisa need to monitor the number of distinct events in the log segments. She is going to handle distributed part, while you have to implement a local one.</p>\n<p>Your program is started from the empty log and must support the following operations:</p>\n<ul>\n<li>insert ⟨index⟩ ⟨number⟩ ⟨type⟩ — inserts ⟨number⟩ of events of type ⟨type⟩ before event with index ⟨index⟩. Events with indices larger or equal to ⟨index⟩ are renumbered.</li>\n<li>remove ⟨index⟩ ⟨number⟩ — removes ⟨number⟩ of events starting from event with index ⟨index⟩.</li>\n<li>query ⟨index<sub>1</sub>⟩ ⟨index<sub>2</sub>⟩ — counts the number of distinct event types for events with indices from ⟨index<sub>1</sub>⟩ to ⟨index<sub>2</sub>⟩ inclusive.</li>\n</ul>\n<p>The events are indexed starting from 1. The event types are represented by single-letter codes.</p>",
+  "input": "<p>The ﬁrst line of the input ﬁle contains single integer number n — the number of operations (1 ≤ n ≤ 30 000). The following n lines contain one operation description each.</p>\n<p>Operation description starts with operation type: ‘+’ for insert, ‘-’ for remove and ‘?’ for query. Operation type is followed by operation arguments.</p>\n<p>All indices are valid, i. e. events with speciﬁed indices exist, and you never have to remove events past the end of the log.</p>\n<p>The ⟨number⟩ for the insert and remove operations does not exceed 10 000.</p>\n<p>Event types are represented by lowercase Latin letter.</p>",
+  "output": "<p>For each query operation output a single number — the number of distinct event types between ⟨index<sub>1</sub>⟩ and ⟨index<sub>2</sub>⟩ inclusive.</p>",
+  "samples": [
+    {
+      "input": "8\n+ 1 4 w\n+ 3 3 o\n? 2 3\n- 2 2\n? 2 3\n+ 2 2 t\n? 1 6\n- 1 6\n",
+      "output": "2\n1\n3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2012",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 6.5
+}

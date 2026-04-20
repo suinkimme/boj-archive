@@ -1,0 +1,26 @@
+{
+  "id": 11594,
+  "title": "Butterfly Effect",
+  "time_limit": "5 초",
+  "memory_limit": "256 MB",
+  "description": "<p>There are several events that are about to happen. Each event has either a positive outcome or a negative outcome, and these outcomes affect the probabilities of the outcomes of subsequent events.</p>\n<p>The events occur in the order given in the input. For every event i, there is an associated integer-valued base value, which we denote by b<sub>i</sub>. To decide the outcome of an event, we roll a fair m-sided die with sides marked 1 through m and add the amount shown on the die to the base value. If the result is strictly positive, then the outcome is positive; otherwise (including if the result is zero), the negative outcome occurs. If the positive outcome occurs, then we modify the base values of all subsequent events according to a list of modifiers associated with the event. That is, if the outcome of event i is positive, the new base value for event j is b<sub>j</sub> + p<sub>ij</sub>, where p<sub>ij</sub> is the modifier to event j in the case of a positive outcome for event i. If the negative outcome occurs, we do the same but with a different list of modifiers; the base value for event j becomes b<sub>j</sub> + q<sub>ij</sub>, where q<sub>ij</sub> is the associated modifier.</p>\n<p>You have the power to intervene in a certain number of events. When you intervene, instead of rolling one die, you roll two dice and then choose the die you prefer. For each event, you decide whether or not to intervene immediately before that event’s die is rolled, i.e., you may use the outcomes of previous events to decide whether or not to intervene. Can you maximize the probability of the final event having a positive outcome?</p>",
+  "input": "<p>The first line contains three space-separated integers n, k, and m (1 ≤ k ≤ n ≤ 20, 4 ≤ m ≤ 1,000), denoting the number of events, the maximum number of interventions, and the die size, respectively. Next are 3n lines describing the base values and modifiers of the events, in the following format:</p>\n<ul>\n<li>Line 3i − 1: One integer b<sub>i</sub> denoting the base value of event i. The base value of each event will have absolute value at most 2,000.</li>\n<li>Line 3i: n−i space-separated integers p<sub>i,i+1</sub>, . . . , p<sub>in</sub> denoting the modifiers to the base values of events i + 1 through n in the case of a positive outcome for event i. Each modifier will have absolute value at most 2,000.</li>\n<li>Line 3i + 1: n − i space-separated integers q<sub>i,i+1</sub>, . . . , q<sub>in</sub> denoting the modifiers to the base values of events i + 1 through n in the case of a negative outcome for event i. Each modifier will have absolute value at most 2,000.</li>\n</ul>\n<p>The final event has no modifiers, and thus the last two lines of the input are empty.</p>",
+  "output": "<p>Print, on a single line, a single number equal to the maximum probability of the final event having a positive outcome, rounded and displayed to exactly 6 decimal places.</p>",
+  "samples": [
+    {
+      "input": "2 2 6\n-3\n-100\n100\n0\n",
+      "output": "0.750000\n"
+    },
+    {
+      "input": "4 1 10\n-5\n-10 9 0\n9 -10 0\n-10\n0 10\n0 0\n-10\n10\n0\n-10\n",
+      "output": "0.990000\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2015 Pacific Northwest Region Programming Contest, Division 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 3.857100009918213
+}

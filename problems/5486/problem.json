@@ -1,0 +1,26 @@
+{
+  "id": 5486,
+  "title": "Mountains",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The Mountain Amusement Park has opened a brand-new simulated roller coaster. The simulated track consists of n rails attached end-to-end with the beginning of the first rail fixed at elevation 0. Byteman, the operator, can reconfigure the track at will by adjusting the elevation change over a number of consecutive rails. The elevation change over other rails is not affected. Each time rails are adjusted, the following track is raised or lowered as necessary to connect the track while maintaining the start at elevation 0. The figure on the next page illustrates two example track reconfigurations.</p>\n<p>Each ride is initiated by launching the car with sufficient energy to reach height h. That is, the car will continue to travel as long as the elevation of the track does not exceed h, and as long as the end of the track is not reached.</p>\n<p>Given the record for all the day’s rides and track configuration changes, compute for each ride the number of rails traversed by the car before it stops.</p>\n<p>Internally, the simulator represents the track as a sequence of n elevation changes, one for each rail. The i-th number d<sub>i</sub> represents the elevation change (in centimetres) over the i-th rail. Suppose that after traversing i−1 rails the car has reached an elevation of h centimetres. After traversing i rails the car will have reached an elevation of h+d<sub>i</sub> centimetres.</p>\n<p>Initially the rails are horizontal; that is, d<sub>i</sub> = 0 for all i. Rides and reconfigurations are interleaved throughout the day. Each reconfiguration is specified by three numbers: a, b and D. The segment to be adjusted consists of rails a through b (inclusive). The elevation change over each rail in the segment is set to D. That is, d<sub>i</sub> = D for all a ≤ i ≤ b.</p>\n<p>Each ride is specified by one number h — the maximum height that the car can reach.</p>\n<p>Write a program that:</p>\n<ul>\n<li>reads from the standard input a sequence of interleaved reconfigurations and rides,</li>\n<li>for each ride computes the number of rails traversed by the car,</li>\n<li>writes the results to the standard output.</li>\n</ul>",
+  "input": "<p>The first line of input contains one positive integer n — the number of rails, 1 ≤ n ≤ 1 000 000 000. The following lines contain reconfigurations interleaved with rides, followed by an end marker. Each line contains one of:</p>\n<ul>\n<li>Reconfiguration — a single letter ‘I’, and integers a, b and D, all separated by single spaces (1 ≤ a ≤ b ≤ n, −1 000 000 000 ≤ D ≤ 1 000 000 000).</li>\n<li>Ride — a single letter ‘Q’, and an integer h (0 ≤ h ≤ 1 000 000 000) separated by a single space;</li>\n<li>A single letter ‘E’ — the end marker, indicating the end of the input data.</li>\n</ul>\n<p>You may assume that at any moment the elevation of any point in the track is in the interval [0, 1 000 000 000] centimetres. The input contains no more than 100 000 lines.</p>\n<p>In 50 % of test cases n satisfies 1 ≤ n ≤ 20 000 and there are no more than 1 000 lines of input.</p>",
+  "output": "<p>The i-th line of output should consist of one integer — the number of rails traversed by the car during the i-th ride.</p>",
+  "samples": [
+    {
+      "input": "4\nQ 1\nI 1 4 2\nQ 3\nQ 1\nI 2 2 -1\nQ 3\nE\n",
+      "output": "4\n1\n0\n3\n"
+    }
+  ],
+  "hint": "<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:381px; width:330px\"/></p>\n<p>Views of the track before and after each reconfiguration. The x axis denotes the rail number. The y axis and the numbers over points denote elevation. The numbers over segments denote elevation changes.</p>",
+  "source": "Olympiad, International Olympiad in Informatics, IOI 2005, Day 1, ksmzzang2003",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "lazyprop",
+    "segtree"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 4.6666998863220215
+}

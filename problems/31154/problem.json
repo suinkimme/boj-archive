@@ -1,0 +1,27 @@
+{
+  "id": 31154,
+  "title": "Colourful Permutation Sorting",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are given a permutation $p_1, p_2, \\ldots, p_n$ of integers from $1$ to $n$. Each position from $1$ to $n$ is colored in one of $k$ colors. We want to sort the permutation, and for that, we can apply any number of operations of the following types:</p>\n<ul>\n<li>Swap any two elements. This operation costs $S$ coins;</li>\n<li>Choose any color $i$, and permute the elements on positions of color $i$ as you wish. This operation costs $C_i$ coins.</li>\n</ul>\n<p>Note that the positions are colored, not the elements, so when you swap two elements, the positions won't change their colors.</p>\n<p>Find the minimum number of coins you need to spend to sort the permutation.</p>",
+  "input": "<p>The first line of the input contains a single integer $T$ ($1 \\le T \\le 10^{3}$) --- the number of independent test cases you need to process. The description of the test cases follows.</p>\n<p>The first line of each test case contains two integers $n$ and $k$ ($1 \\le n \\le 10^{5}$, $1 \\le k \\le 5$) --- the size of the permutation and the number of colors. </p>\n<p>The second line of each test case contains $(k+1)$ integers $S, C_1, C_2, \\ldots, C_k$ ($0 \\le S, C_i \\le 10^9$) --- the costs of the operations. </p>\n<p>The third line of each test case contains $n$ integers $p_1, p_2, \\ldots, p_n$ ($1 \\le p_i \\le n$, all $p_i$ are distinct) --- the permutation. </p>\n<p>The fourth line of each test case contains $n$ integers $col_i$ ($1 \\le col_i \\le k$) --- the colors of the positions.</p>\n<p>The sum of $n$ over all test cases in one file does not exceed $10^{5}$.</p>",
+  "output": "<p>For each test case print a single integer --- the minimum number of coins you need to spend to sort the permutation.</p>",
+  "samples": [
+    {
+      "input": "4\n4 1\n1 10\n2 3 4 1\n1 1 1 1\n4 1\n10 1\n2 3 4 1\n1 1 1 1\n6 2\n10 1 1\n5 2 4 6 1 3\n1 2 1 2 1 2\n4 3\n6 7 8 9\n1 2 3 4\n2 2 3 2\n",
+      "output": "3\n1\n12\n0\n"
+    }
+  ],
+  "hint": "<p>In the first test case, we can sort the permutation by applying the \"Swap\" operation $3$ times: $(2, 3, 4, 1) \\to (4, 3, 2, 1) \\to (4, 2, 3, 1) \\to (1, 2, 3, 4)$. This way you will spend $3$ coins.</p>\n<p>Another way to sort it would be to permute all elements on positions of color $1$, but this would cost $10$ coins, and we can do cheaper.</p>\n<p>In the second test case (which differs from the first one only in the costs of operations), however, it's cheaper to just permute all elements on positions of color $1$, spending $1$ coin on this.</p>\n<p>In the third test case, one of the optimal sequences of operations would be the following:</p>\n<ul>\n<li>Permute the elements on positions of color $2$ to obtain the permutation $(5, 2, 4, 3, 1, 6)$. This operation costs $1$ coin.</li>\n<li>Swap elements $p_3, p_4$. The permutation is now $(5, 2, 3, 4, 1, 6)$. This operation costs $10$ coins.</li>\n<li>Permute the elements on positions of color $1$ to obtain the permutation $(1, 2, 3, 4, 5, 6)$. This operation costs $1$ coin.</li>\n</ul>\n<p>In total, we spent $12$ coins.</p>\n<p>In the fourth test case, the permutation is already sorted, so we don't have to spend anything.</p>",
+  "source": "Contest, Open Cup, 2021/2022 Season, Stage 7: Grand Prix of Southeastern Europe, ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2021",
+  "level": 23,
+  "tags": [
+    "greedy",
+    "bruteforcing",
+    "sorting",
+    "permutation_cycle_decomposition"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.75
+}

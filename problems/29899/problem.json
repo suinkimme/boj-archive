@@ -1,0 +1,30 @@
+{
+  "id": 29899,
+  "title": "Linesweeper",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Juku arvutiekraan on lõpmata lai, aga vaid 2 cm kõrge. On mõistetav, et sellise ekraaniga on paljusid arvutimänge väga ebamugav mängida. Kõiketeadev jõuluvana toob Jukule tema arvutiga sobivaid mänge. Üks selline on <em>Linesweeper</em>.</p>\n<p>Linesweeperi mängulaud koosneb kahe rea ja lõpmatu arvu veergudega tabelist; tabeli veerud on nummerdatud täisarvudega. Alumise rea ruutudes võivad olla miinid; miinide asukohad ei ole teada. Ülemise rea igas ruudus on kirjas täisarv, mis näitab, mitu miini selle ruudu naaberruutudes asub. Kaks ruutu on <em>naaberruudud</em>, kui neil on ühine nurk või serv. Mängija ülesandeks on leida, millistes ruutudes on miinid.</p>\n<p>Lohaka programmeerimise tulemusena on sellel mängul mõned omapärased vead:</p>\n<ul>\n<li>Esimene mäng on alati selline, kus ülemisel real on ainult nullid.</li>\n<li>Igas mängus erineb ülemine rida eelmise ülemisest reast täpselt ühe ruudu võrra.</li>\n<li>On võimalik, et mängijale näidatakse sellist ülemist rida, millele vastavat alumist rida tegelikult üldse olemas olla ei saa.</li>\n</ul>\n<p>Juku on selles mängus üsna osav --- ta suudab enamasti miinide asukohad ise selgeks teha, aga vahel vajab veidi abi vihjete näol. Juku küsib alati vihjet kujul \"kas ruudul $i$ on miin?\". Märgime, et sellele küsimusele on neli erinevat võimalikku vastust:</p>\n<ul>\n<li>sellisele ülemisele reale vastavat alumist rida ei saa olla (tähis <code>!</code>);</li>\n<li>saab näidata, et selles ruudus kindlasti on miin (tähis <code>x</code>);</li>\n<li>saab näidata, et selles ruudus miini kindlasti ei ole (tähis <code>o</code>);</li>\n<li>on võimalik, et selles ruudus on miin ja võimalik, et ei ole (tähis <code>?</code>).</li>\n</ul>\n<p>Jukule vihjete andmine on aga tüütu ja seda tööd võiks teha programm.</p>\n<p>Formaalselt antakse meile $Q$ päringut, mis võivad olla kahest tüübist:</p>\n<ol>\n<li>Antud $i$ ja $c$. Juku alustab uut mängu, mis erineb eelmisest ainult selle poolest, et ülemise rea $i$-ndas ruudus on nüüd arv $c$.</li>\n<li>Antud $i$. Juku küsib, kas alumise rea $i$-ndas ruudus on miin.</li>\n</ol>\n<p>Kirjutada programm, mis nendele päringutele vastab.</p>",
+  "input": "<p>Sisendi esimesel real on täisarv $Q$ ($1 \\le Q \\le 2 \\cdot 10^5$).</p>\n<p>Järgneb $Q$ rida, millest igaüks kirjeldab ühte päringut. Rida on kas kujul <code>1 i c</code> ($1 \\le i \\le 10^5$, $0 \\le c \\le 3$) või <code>2 i</code> ($1 \\le i \\le 10^5$), kirjeldades vastavalt esimest või teist tüüpi päringut.</p>",
+  "output": "<p>Iga sisendis antud teist tüüpi päringule tuleb vastata eraldi reale ühega sümbolitest <code>x</code>, <code>o</code>, <code>!</code>, <code>?</code>.</p>",
+  "samples": [
+    {
+      "input": "12\n1 1 1\n1 2 2\n1 3 2\n1 4 2\n1 5 1\n1 6 1\n2 1\n2 2\n2 3\n2 4\n2 5\n2 6\n",
+      "output": "o\nx\nx\no\nx\no\n"
+    },
+    {
+      "input": "14\n1 1 1\n1 5 1\n1 2 2\n1 4 2\n1 3 3\n2 2\n2 3\n2 4\n1 2 1\n1 4 1\n1 3 2\n2 2\n2 3\n2 4\n",
+      "output": "x\nx\nx\nx\no\nx\n"
+    },
+    {
+      "input": "8\n2 44\n1 3 1\n2 1\n2 77\n1 4 1\n1 2 1\n2 3\n2 91191\n",
+      "output": "o\n!\n!\nx\no\n"
+    }
+  ],
+  "hint": "<p>Esimeses näites jääb Juku esimest korda hätta järgmise mängu korral:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 272px; height: 65px;\"/></p>\n<p>Saab näidata, et alumisel real toodu on ainus võimalik miinide paigutus.</p>\n<p>Kolmandas näites jääb Juku hätta juba esimesel mängul, kus ülemine rida koosneb ainult nullidest. On selge, et sel juhul ei saa ühelgi ruudul olla miini --- seega ei ole miini ka ruudul 44.</p>\n<p>Hätta jääb ta samas näites ka järgmisel mängul. Siin erineb mängulaud eelmisest ainult selle võrra, et ruudul numbriga 3 on nüüd kirjas arv 1:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 272px; height: 46px;\"/></p>\n<p>Sellele ülemisele reale vastavat miinide paigutust ehk alumist rida olla ei saa. Tõepoolest, kui ühes ruudu 3 naaberruutudest oleks miin, siis oleks ka ruudus 2 või 4 nullist erinev arv. Juku küsib selle mängu kohta vihjet kaks korda: vastavalt ülalolevale on mõlema vastus <code>!</code>.</p>\n<p>Kaks mängu hiljem jääb ta uuesti hätta. Nüüd on mängulaud selline:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 272px; height: 65px;\"/></p>\n<p>Jälle saab näidata, et alumisel real toodud paigutus on ainus võimalik. Seega on ruudul 3 kindlasti miin ja ruudul 91191 kindlasti miini pole.</p>\n<p>Kuna teises näites on mõned esimest tüüpi päringud pärast mõnesid teist tüüpi päringuid, siis see test ei saa esineda esimeses testigrupis.</p>\n<p>Kuna kolmandas näites on mõne päringu vastus <code>!</code>, siis see test ei saa esineda esimeses ega teises testigrupis.</p>",
+  "source": "Olympiad, Estonian Informatics Olympiad, 2020-21, Preliminary Round",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 2
+}

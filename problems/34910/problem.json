@@ -1,0 +1,28 @@
+{
+  "id": 34910,
+  "title": "Busy Beaver's Faulty Machine",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Deep in Busy Beaver's robotics lab sits an experimental Busy Beaver machine. Given a positive integer $X$ written in base $B$, it attempts to produce two positive integers $Y$ and $Z$ such that $X + Y = Z$, and the base-$B$ representations of $Y$ and $Z$ contain exactly the same multiset of digits. </p>\n<p>The machine never produces leading zeroes and never outputs numbers with $2 \\cdot 10^5$ or more digits. It has recently stopped functioning, so your task is to determine whether such $Y$ and $Z$ exist, and to output them if they do. You are given the digits of $X$ in base $B$ without leading zeroes.</p>",
+  "input": "<p>The first line contains a single integer $T$ ($1 \\le T \\le 100$), the number of test cases.</p>\n<p>Each test case consists of two lines. The first line of each test case contains two integers $N$ and $B$ ($1 \\le N \\le 10^5$; $2 \\le B \\le 10^5$). </p>\n<p>The second line of each test case contains $N$ integers $a_1, a_2, \\ldots, a_N$ ($0 \\le a_i \\le B-1$; $a_1 \\ne 0$), representing the digits of $X$ in base $B$: $$ X = a_1 B^{N-1} + a_2 B^{N-2} + \\cdots + a_N. $$</p>\n<p>The sum of $N$ over all test cases does not exceed $2 \\cdot 10^5$. </p>",
+  "output": "<p>For each test case, if no valid solution exists, output a single line containing <code>NO</code>.</p>\n<p>Otherwise, output <code>YES</code> on the first line. On the second line output an integer $M$ ($1 \\le M \\le 2 \\cdot 10^5$), the number of digits in both $Y$ and $Z$. </p>\n<p>On the next line output $M$ digits $p_1, p_2, \\ldots, p_M$ ($0 \\le p_i \\le B-1$; $p_1 \\ne 0$), representing $$ Y = p_1 B^{M-1} + p_2 B^{M-2} + \\cdots + p_M. $$ On the following line output $M$ digits $q_1, q_2, \\ldots, q_M$ ($0 \\le q_i \\le B-1$; $q_1 \\ne 0$), representing $$ Z = q_1 B^{M-1} + q_2 B^{M-2} + \\cdots + q_M. $$ The digit sequences $(p_1, \\ldots, p_M)$ and $(q_1, \\ldots, q_M)$ must use exactly the same multiset of digits, and the integers they represent must satisfy $X + Y = Z$. You may print <code>YES</code> and <code>NO</code> in any mixture of uppercase and lowercase letters.</p>",
+  "samples": [
+    {
+      "input": "3\n2 10\n3 6\n4 5\n1 4 3 4\n5 12\n4 8 8 3 1\n",
+      "output": "YES\n2\n1 5\n5 1\nYES\n4\n1 4 3 2\n3 4 2 1\nNO\n"
+    }
+  ],
+  "hint": "<p>In the first test case, with $B = 10$ and $X = 36$, a valid solution is $Y = 15$ and $Z = 51$, since $51 = 36 + 15$ and both numbers use the digits $\\{1,5\\}$.</p>\n<p>In the second test case, with $B = 5$ and $X$ given by digits $(1, 4, 3, 4)_5$, $$ X = 1 \\cdot 5^3 + 4 \\cdot 5^2 + 3 \\cdot 5^1 + 4 = 244. $$ One valid pair is $$ Y = (1, 4, 3, 2)_5 = 242, \\qquad Z = (3, 4, 2, 1)_5 = 486, $$ which share the digit multiset $\\{1,2,3,4\\}$ and satisfy $X + Y = Z$.</p>",
+  "source": "University, MIT, M(IT)^2, M(IT)^2 Winter 2025-26 Tournament, Advanced Team Round, University, MIT, M(IT)^2, M(IT)^2 Winter 2025-26 Tournament, Beginner Round",
+  "level": 16,
+  "tags": [
+    "math",
+    "implementation",
+    "number_theory",
+    "constructive",
+    "arbitrary_precision"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.75
+}

@@ -1,0 +1,29 @@
+{
+  "id": 25532,
+  "title": "Trim It Step by Step",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The intelligence agency of the Kingdom uses a unique encryption method; a nonempty message consisting only of lowercase letters is encrypted into an expression &lt;expr&gt; complying with the grammar described by the following BNF.</p>\n<blockquote>\n<table class=\"table table-bordered\">\n<tbody>\n<tr valign=\"top\">\n<td>&lt;expr&gt;</td>\n<td>::=</td>\n<td>&lt;char&gt; | &lt;expr&gt;&lt;expr&gt; | <big><code>?(</code></big>&lt;expr&gt;<big><code>)</code></big></td>\n</tr>\n<tr valign=\"top\">\n<td>&lt;char&gt;</td>\n<td>::=</td>\n<td><big><code>a</code></big> | <big><code>b</code></big> | <big><code>c</code></big> | <big><code>d</code></big> | <big><code>e</code></big> | <big><code>f</code></big> | <big><code>g</code></big> | <big><code>h</code></big> | <big><code>i</code></big> | <big><code>j</code></big> | <big><code>k</code></big> | <big><code>l</code></big> | <big><code>m</code></big> | <big><code>n</code></big> | <big><code>o</code></big> | <big><code>p</code></big> | <big><code>q</code></big> | <big><code>r</code></big> | <big><code>s</code></big> | <big><code>t</code></big> | <big><code>u</code></big> | <big><code>v</code></big> | <big><code>w</code></big> | <big><code>x</code></big> | <big><code>y</code></big> | <big><code>z</code></big></td>\n</tr>\n</tbody>\n</table>\n</blockquote>\n<p>The original message before encryption is the string appearing first in the lexicographic order among the possible results of applying the procedure described below to the encrypted message.</p>\n<p><b>Procedure:</b> Repeat the following operation while <big><code>?</code></big> remains in the expression.</p>\n<ol>\n<li>Choose any occurrence of a contiguous substring of the form <big><code>?(</code></big><i>s</i><big><code>)</code></big> (possibly the whole expression) such that <i>s</i> does not contain any symbols <big><code>?</code></big>, <big><code>(</code></big>, or <big><code>)</code></big>.</li>\n<li>If <i>s</i> is empty, simply remove the chosen occurrence of <big><code>?()</code></big>.</li>\n<li>Otherwise, replace the chosen occurrence of <big><code>?(</code></big><i>s</i><big><code>)</code></big> with the string obtained from <i>s</i> by deleting either the first or the last character.</li>\n</ol>\n<p>For example, consider the expression <big><code>?(?(icp)c)</code></big>. Then, <big><code>?(icp)</code></big> is the only occurrence that can be chosen, and this part is replaced with either <big><code>cp</code></big> or <big><code>ic</code></big>. Thus, the whole expression becomes either <big><code>?(cpc)</code></big> or <big><code>?(icc)</code></big>. After that, by choosing the whole expressions and replace them, there are four possible results, <big><code>pc</code></big>, <big><code>cp</code></big>, <big><code>cc</code></big>, and <big><code>ic</code></big>. The original message is <big><code>cc</code></big>, which appears first in the lexicographic order among them.</p>\n<p>You, an intelligence agent of the Republic, hostile to the Kingdom, have succeeded in obtaining an encrypted message, that is, an expression described above. Find the original message.</p>",
+  "input": "<p>The input consists of multiple datasets. The first line of the input consists only of the number <i>n</i> of the datasets, where <i>n</i> does not exceed 50. The following <i>n</i> lines give the datasets, one in each line.</p>\n<p>Each dataset is given in a single line consisting only of an expression &lt;expr&gt; complying with the grammar described by the BNF in the problem statement, and the expression consists of at most 1000 characters including symbols.</p>",
+  "output": "<p>For each dataset, output in a line the string appearing first in the lexicographic order among the possible results of applying to it the procedure in the problem statement. It is guaranteed that the correct output is never an empty string.</p>",
+  "samples": [
+    {
+      "input": "6\n?(icpc)\n?(?(icpc))\n?(ic)?(pc)\n?(?(icp)c)\n?(i?(?(c))pc)\n?(bca)?(?(bca))\n",
+      "output": "cpc\ncp\ncc\ncc\nip\nbca\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2022 Japan Domestic Contest",
+  "level": 22,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "greedy",
+    "parsing",
+    "string",
+    "trees"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 4.1666998863220215
+}

@@ -1,0 +1,41 @@
+{
+  "id": 15526,
+  "title": "Revenge of the Endless BFS",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Mr. Endo wanted to write the code that performs breadth-first search (BFS), which is a search algorithm to explore all vertices on a <strong><em>directed</em></strong> graph. An example of pseudo code of BFS is as follows:</p>\n<pre>\n1: <em>current</em> ← {<em>start_vertex</em>}\n2: <em>visited</em> ← <em>current</em>\n3: while <em>visited</em> ≠ the set of all the vertices\n4:   <em>found</em> ← {}\n5:   for <em>u</em> in <em>current</em>\n6:     for each <em>v</em> such that there is an edge from <em>u</em> to <em>v</em>\n7:       <em>found</em> ← <em>found</em> ∪ {<em>v</em>}\n8:   <em>current</em> ← <em>found</em> ∖ <em>visited</em>\n9:   <em>visited</em> ← <em>visited</em> ∪ <em>found</em></pre>\n<p>However, Mr. Endo apparently forgot to manage visited vertices in his code. More precisely, he wrote the following code:</p>\n<pre>\n1: <em>current</em> ← {<em>start_vertex</em>}\n2: while <em>current</em> ≠ the set of all the vertices\n3:   <em>found</em> ← {}\n4:   for <em>u</em> in <em>current</em>\n5:     for each <em>v</em> such that there is an edge from <em>u</em> to <em>v</em>\n6:       <em>found</em> ← <em>found</em> ∪ {<em>v</em>}\n7:   <em>current</em> ← <em>found</em></pre>\n<p>You may notice that for some graphs, Mr. Endo's program will not stop because it keeps running infinitely. Notice that it does not necessarily mean the program cannot explore all the vertices within finite steps. Your task here is to make a program that determines whether Mr. Endo's program will stop within finite steps for a given directed graph in order to point out the bug to him. Also, calculate the minimum number of loop iterations required for the program to stop if it is finite. Since the answer might be huge, thus print the answer modulo 10<sup>9</sup> + 7, which is a prime number.</p>",
+  "input": "<p>The input consists of a single test case formatted as follows.</p>\n<pre>\nN M\nu<sub>1</sub> v<sub>1</sub>\n.\n.\n.\nu<sub>M</sub> v<sub>M</sub></pre>\n<p>The first line consists of two integers <em>N</em> (2 ≤ <em>N</em> ≤ 500) and <em>M</em> (1 ≤ <em>M</em> ≤ 200,000), where <em>N</em> is the number of vertices and <em>M</em> is the number of edges in a given directed graph, respectively. The <em>i</em>-th line of the following <em>M</em> lines consists of two integers <em>u<sub>i</sub></em> and <em>v<sub>i</sub></em> (1 ≤ <em>u<sub>i</sub></em>, <em>v<sub>i</sub></em> ≤ <em>N</em>), which means there is an edge from <em>u<sub>i</sub></em> to <em>v<sub>i</sub></em> in the given graph. The vertex 1 is the start vertex, i.e. <em>start_vertex</em> in the pseudo codes. You can assume that the given graph also meets the following conditions.</p>\n<ul>\n<li>The graph has no self-loop, i.e., <em>u<sub>i</sub></em> ≠ <em>v<sub>i</sub></em> for all 1 ≤ <em>i</em> ≤ <em>M</em>.</li>\n<li>The graph has no multi-edge, i.e., (<em>u<sub>i</sub></em>, <em>v<sub>i</sub></em>) ≠ (<em>u<sub>j</sub></em>, <em>v<sub>j</sub></em>) for all 1 ≤ <em>i</em> &lt; <em>j</em> ≤ <em>M</em>.</li>\n<li>For each vertex <em>v</em>, there is at least one path from the start vertex 1 to <em>v</em>.</li>\n</ul>",
+  "output": "<p>If Mr. Endo's wrong BFS code cannot stop within finite steps for the given input directed graph, print -1 in a line. Otherwise, print the minimum number of loop iterations required to stop modulo 10<sup>9</sup> + 7.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2\n2 3\n3 4\n4 1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "4 5\n1 2\n2 3\n3 4\n4 1\n1 3\n",
+      "output": "7\n"
+    },
+    {
+      "input": "5 13\n4 2\n2 4\n1 2\n5 4\n5 1\n2 1\n5 3\n4 3\n1 5\n4 5\n2 3\n5 2\n1 3\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ACM-ICPC Asia Regional 2017",
+  "level": 20,
+  "tags": [
+    "math",
+    "graphs",
+    "data_structures",
+    "binary_search",
+    "shortest_path",
+    "parametric_search",
+    "exponentiation_by_squaring",
+    "sparse_table",
+    "floyd_warshall",
+    "bitset"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.894700050354004
+}

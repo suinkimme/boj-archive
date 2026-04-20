@@ -1,0 +1,29 @@
+{
+  "id": 15414,
+  "title": "Ingredients",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:158px; width:685px\"/></p>\n<p>The chef of a restaurant aspiring for a Michelin star wants to display a selection of her signature dishes for inspectors. For this, she has allocated a maximum budget B for the cumulated cost, and she wants to maximize the cumulated prestige of the dishes that she is showing to the inspectors.</p>\n<p>To measure the prestige of her dishes, the chef maintains a list of recipes, along with their costs and ingredients. For each recipe, a derived dish is obtained from a base dish by adding an ingredient. The recipe mentions two extra pieces of information: the cost of applying the recipe, on top of the cost of the base dish, and the prestige the recipe adds to the prestige of the base dish. The chef measures the prestige by her own units, called “prestige units.”</p>\n<p>For example, a recipe list for making pizza looks like:</p>\n<ul>\n<li><code>pizza_tomato pizza_base tomato 1 2</code></li>\n<li><code>pizza_classic pizza_tomato cheese 5 5</code></li>\n</ul>\n<p>Here, <code>pizza_base</code> is an elementary dish, a dish with no associated recipe, a dish so simple that its cost is negligible (set to 0) and its prestige also 0. The chef can obtain the derived dish <code>pizza_tomato</code> by adding the ingredient <code>tomato</code> to the base dish <code>pizza_base</code>, for a cost of 1 euro and a gain of 2 prestige units. A <code>pizza_classic</code> is obtained from a <code>pizza_tomato</code> by adding cheese, for an added cost of 5, and a prestige of 5 added to the prestige of the base dish; this means the total cost of <code>pizza_classic</code> is 6 and its total prestige is 7.</p>\n<p>A signature dish selection could for instance include both a <code>pizza_tomato</code> and a <code>pizza_classic</code>. Such a selection would have cumulated total prestige of 9, and cumulated total cost of 7.</p>\n<p>Armed with the list of recipes and a budget B, the chef wants to provide a signature dish selection to Michelin inspectors so that the cumulated total prestige of the dishes is maximized, keeping their cumulated total cost at most B.</p>\n<p>Important Notes</p>\n<ul>\n<li>No dish can appear twice in the signature dish selection.</li>\n<li>Any dish that does not appear as a derived dish in any recipe is considered to be an elementary dish, with cost 0 and prestige 0.</li>\n<li>A dish can appear more than once as a resulting dish in the recipe list; if there is more than one way to obtain a dish, the one yielding the smallest total cost is always chosen; if the total costs are equal, the one yielding the highest total prestige should be chosen.</li>\n<li>The recipes are such that no dish D can be obtained by adding one or more ingredients to D itself.</li>\n</ul>",
+  "input": "<ul>\n<li>The first line consists of the budget B, an integer.</li>\n<li>The second line consists of the number N of recipes, an integer.</li>\n<li>Each of the following N lines describes a recipe, as the following elements separated by single spaces: the derived dish name (a string); the base dish name (a string); the added ingredient (a string); the added price (an integer); the added prestige (an integer).</li>\n</ul>\n<p>Limits</p>\n<ul>\n<li>0 ≤ B ≤ 10 000;</li>\n<li>0 ≤ N ≤ 1 000 000;</li>\n<li>there can be at most 10 000 different dishes (elementary or derived);</li>\n<li>costs and prestiges in recipes are between 1 and 10 000 (inclusive);</li>\n<li>strings contain at most 20 ASCII characters (letters, digits, and ’_’ only).</li>\n</ul>",
+  "output": "<p>The output should consist of two lines, each with a single integer. On the first line: the maximal cumulated prestige within the budget. On the second line: the minimal cumulated cost corresponding to the maximal cumulated prestige, necessarily less than or equal to the budget.</p>",
+  "samples": [
+    {
+      "input": "15\n6\npizza_tomato pizza_base tomato 1 2\npizza_cheese pizza_base cheese 5 10\npizza_classic pizza_tomato cheese 5 5\npizza_classic pizza_cheese tomato 1 2\npizza_salami pizza_classic salami 7 6\npizza_spicy pizza_tomato chili 3 1\n",
+      "output": "25\n15\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2017",
+  "level": 14,
+  "tags": [
+    "dag",
+    "data_structures",
+    "dp",
+    "graphs",
+    "knapsack",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 50,
+  "submission_count": null,
+  "average_tries": 2.180000066757202
+}

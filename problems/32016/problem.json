@@ -1,0 +1,37 @@
+{
+  "id": 32016,
+  "title": "Lost is Close to Lose",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Better Documents Inc. is contemplating the next generation of word processors. Now, nearly every word processor includes a Spell Checker. BDI, however, is looking forward to replacing that with a true Typo Checker. We've all been caught, after relying on a spell checker, by typing mistakes (\"typos\") that just happen to wind up as a correctly spelled word, just not the word we intended. BDI hopes to use AI to determine when a word's context suggests that it is out of place and probably should have been a different, but similarly spelled, word.</p>\n<p>As a first step in this process, they want to see how common such similar words really are in ordinary text. Write a program to read in paragraphs of text and to produce a list of similarly spelled words occurring in that text.</p>\n<p>For the purpose of this program, a <em>word</em> is any maximal string of non-whitespace characters containing at least one alphabetic character. <em>Whitespace</em> can be either blanks or line terminators (\"<code>\\r</code>\" or \"<code>\\n</code>\"). The <em>core</em> of a word is what you have left after removing any non-alphabetic characters and replacing any upper-case alphabetic characters to their lower-case equivalents.</p>\n<p>Two words are considered to be <em>similarly spelled</em> if the core of one word can be converted to the core of the other word by a single application of any one of the following transformations:</p>\n<ul>\n<li>Delete a single character.</li>\n<li>Insert a single alphabetic character.</li>\n<li>Replace a single character by a different alphabetic character.</li>\n<li>Transpose (exchange) any two adjacent characters.</li>\n</ul>",
+  "input": "<p>Input consists of $1$ to $100$ lines of text, followed by an end of input marker in the form of a line containing only the string \"***\".</p>\n<p>Each line of text will contain $0$ to $80$ ASCII characters (not counting line terminators).</p>",
+  "output": "<p>For each word core in the text that has 1 or more similarly spelled words, print a line consisting of</p>\n<ol>\n<li>That word core</li>\n<li>A colon (\":\") followed by a blank</li>\n<li>A list of all similarly spelled word cores (with no duplicates and not containing the core to the left of the colons), in alphabetic order, separated by single spaces.</li>\n</ol>\n<p>The lines printed should be in alphabetic order of the word cores to the left of the colon.</p>\n<p>If there are no similarly spelled words in the input, print a single line containing the string \"***\".</p>",
+  "samples": [
+    {
+      "input": "Lost is Close to Lose\n\n\"Better Documents Inc. wants to add Typo Checking in to the\nnext generation of word processors,\" he said.\n***\n",
+      "output": "close: lose\nhe: the\nin: inc is\ninc: in\nis: in\nlose: close lost\nlost: lose\nthe: he\n"
+    },
+    {
+      "input": "The fox said, \"When?\"\n\"Not till 12 o'clock\", replied the hen.\n\"That clock is stopped, it will never strike.\", he said.\n***\n",
+      "output": "clock: oclock\nhe: hen the\nhen: he when\nis: it\nit: is\noclock: clock\nthe: he\ntill: will\nwhen: hen\nwill: till\n"
+    },
+    {
+      "input": "There are no similar words\nin this input set.\n***\n",
+      "output": "***\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 2018 Mid-Atlantic USA Regional Contest, ICPC, Regionals, North America, Southern California Regional, 2018 Southern California Regional",
+  "level": 11,
+  "tags": [
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "parsing",
+    "string",
+    "set"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.916700005531311
+}

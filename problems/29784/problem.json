@@ -1,0 +1,24 @@
+{
+  "id": 29784,
+  "title": "Collecting Pancakes",
+  "time_limit": "30 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Alice and Bob both have a sweet tooth, and they are going to play a game to collect pancakes. There are $\\mathbf{N}$ pancake stacks lined up on the table labeled from $1$ to $\\mathbf{N}$. The $i$-th stack has exactly $\\mathbf{A_i}$ pancakes. Alice and Bob are going to collect pancakes by alternating turns claiming full stacks. For the first turn, Alice must choose a stack labeled between $\\mathbf{L_a}$ and $\\mathbf{R_a}$, inclusive, and claim it. Then, Bob must choose a stack labeled between $\\mathbf{L_b}$ and $\\mathbf{R_b}$, inclusive, and different from the one chosen by Alice, and claim it.</p>\n<p>In subsequent turns, each of them must choose an unclaimed stack that is adjacent to a stack they claimed themselves before. That is, for Alice to claim stack $i$ on one of her turns other than the first, she must have claimed either stack $i-1$ or stack $i+1$ in one of her previous turns. The same is true for Bob. If at some point there is no valid choice for either player, they skip that turn and claim no stack.</p>\n<p>The game ends when every stack is claimed. At that point, Alice collects all pancakes from all stacks she claimed, and Bob collects all pancakes in all stacks he claimed.</p>\n<p>Alice wants to get as many pancakes as possible for herself, and Bob wants to get as many pancakes as possible for himself. Can you help Alice find out the maximum number of pancakes she can collect if they both play optimally?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $\\mathbf{T}$. $\\mathbf{T}$ test cases follow. Each test case consists of three lines.</p>\n<p>The first line of each test case contains an integer $\\mathbf{N}$, representing the number of pancake stacks.</p>\n<p>The second line contains $\\mathbf{N}$ integers $\\mathbf{A_1}, \\mathbf{A_2}, \\dots, \\mathbf{A_N}$, where $\\mathbf{A_i}$ denotes the number of pancakes in stack $i$.</p>\n<p>The third line contains $4$ integers $\\mathbf{L_a}$, $\\mathbf{R_a}$, $\\mathbf{L_b}$, and $\\mathbf{R_b}$, the inclusive ranges of pancake stack labels Alice and Bob can choose for their first turn, respectively.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is the maximum number of pancakes Alice can collect after playing the game optimally.</p>",
+  "samples": [
+    {
+      "input": "3\n5\n30 50 40 20 10\n1 2 4 5\n5\n20 20 80 10 10\n1 4 2 5\n4\n90 10 10 10\n1 4 1 4\n",
+      "output": "Case #1: 120\nCase #2: 100\nCase #3: 90\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, there are $5$ pancake stacks with $30, 50, 40, 20, 10$ pancakes in them. Alice can choose the first or second stack at the beginning of the game, and Bob can choose the fourth or fifth stack to begin with. One way in which they both play optimally is:</p>\n<ol>\n<li>At the beginning, Alice claims stack $2$, then Bob claims stack $4$.</li>\n<li>Alice claims stack $3$ in her second turn, then Bob claims stack $5$ in his second turn.</li>\n<li>Alice claims stack $1$ in her third turn, then the game ends because all stacks have been claimed.</li>\n</ol>\n<p>At the end of the game, Alice claimed stacks $1, 2$, and $3$ and Bob claimed stacks $4$ and $5$. The number of pancakes Alice collects is $30+50+40=120$.</p>\n<p>In Sample Case #2, one way of optimal play is:</p>\n<ol>\n<li>At the beginning, Alice claims stack $3$, then Bob claims stack $2$.</li>\n<li>Alice claims stack $4$ in her second turn, then Bob claims stack $1$ in his second turn.</li>\n<li>Alice claims stack $5$ in her third turn, then the game ends because all stacks have been claimed.</li>\n</ol>\n<p>The number of pancakes Alice collects is $80+10+10=100$.</p>\n<p>In Sample Case #3, both can claim any stack in their first turn. Since stack $1$ is more valuable than everything else combined, Alice claims it before Bob does. Then, Bob can claim stack $2$, making Alice have to skip all her subsequent turns. Alice still finishes with $90$ pancakes and Bob with just $30$.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam Farewell Round, Round B",
+  "level": 12,
+  "tags": [
+    "prefix_sum"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.6922999620437622
+}

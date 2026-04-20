@@ -1,0 +1,38 @@
+{
+  "id": 35064,
+  "title": "순찰 업무 2",
+  "time_limit": "2.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>경곽마을은 $xy$ 평면으로 이루어져 있으며, 이 위에 총 $N$개의 집이 있다. 이 중 $i$번째 집은 $(x_i, \\, y_i)$에 위치하며, 어떤 세 집도 일직선 위에 놓여 있지 않은 특징을 가지고 있다.</p>\n<p>경곽마을은 최근 주민들이 함께 사용할 수 있도록 공용 우산을 비치했지만, 우산이 계속 사라지는 일이 발생했다. 이에 우산 도난을 막기 위해 각 집을 감시할 수 있는 보안관 경곽이를 고용했다. 보안관 경곽이는 경곽마을 위의 어떤 점 $(x, \\, y)$에 서서, 그 점을 지나는 한 직선을 경계로 하고 그 직선을 포함하는 한쪽 반평면을 감시할 수 있는 능력을 갖고 있다. 그러나 게으른 경곽이는 자신이 바라보는 방향을 적절히 조절하여, 감시하는 집의 수를 가능한 한 최소로 하려 한다. 또한 경곽이가 어떤 집의 위치에 서 있는 경우, 그 집은 반드시 감시되는 것으로 간주한다.</p>\n<p>경곽이는 자신이 최소한 $K$개의 집을 감시하게 되는 영역을 알고 싶어 한다. $\\displaystyle K = 1, 2, \\cdots, \\left\\lfloor \\frac{N}{2} \\right\\rfloor$에 대해 이러한 영역을 각각 구해보자.</p>",
+  "input": "<p>첫 번째 줄에 경곽마을에 위치한 집의 개수 $N$이 주어진다. ($2 \\leq N \\leq 500$)</p>\n<p>두 번째 줄부터 $N$개의 줄에 걸쳐 $i$번째 줄에는 $i$번째 집의 좌표 $(x_i, \\, y_i)$를 나타내는 정수 $x_i, \\, y_i$가 공백으로 구분되어 주어진다. 어떠한 세 집도 일직선 위에 있지 않다. ($|x_i|, |y_i| \\leq 10^4$; $x_i$는 서로 모두 다르고, $y_i$ 또한 서로 모두 다르다.)</p>",
+  "output": "<p>$\\displaystyle K = 1, 2, \\cdots, \\left\\lfloor \\frac{N}{2} \\right\\rfloor$ 각각에 대해, 순서대로 한 줄에 하나씩 경곽이가 $K$개 이상의 집을 감시해야 하는 영역을 아래와 같이 출력하라.</p>\n<ul>\n<li>\n<p>영역이 존재하지 않는다면:</p>\n<div style=\"background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;\"><span style=\"color:#e74c3c;\"><code>N</code></span></div>\n<p>을 출력하라.</p>\n</li>\n<li>\n<p>영역이 점이라면: 해당 점의 좌표를 $(x, \\, y)$라 했을 때,</p>\n<div style=\"background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;\"><span style=\"color:#e74c3c;\"><code>C</code></span> $x$ $y$</div>\n<p>를 출력하라.</p>\n</li>\n<li>\n<p>영역이 선분이라면: 해당 선분의 양 끝점을 $(x_1, \\, y_1)$, $(x_2, \\, y_2)$라 할 때,</p>\n<div style=\"background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;\"><code><span style=\"color:#e74c3c;\">S</span></code> $x_1$ $y_1$ $x_2$ $y_2$</div>\n<p>를 출력하라. 단, $(x_1, \\, y_1) &lt; (x_2, \\, y_2)$을 만족해야 한다.</p>\n</li>\n<li>\n<p>영역이 볼록 $m$각형이라면: 볼록 $m$각형을 이루고 있는 점을 $(x_1, \\, y_1), \\, (x_2, \\, y_2), \\, \\cdots, \\, (x_m, \\, y_m)$이라 할 때,</p>\n<div style=\"background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;\"><span style=\"color:#e74c3c;\"><code>P</code></span> $x_1$ $y_1$ $x_2$ $y_2$ $\\cdots$ $x_m$ $y_m$</div>\n<p>을 출력하라. 단, $(x_1, y_1)$은 사전순으로 가장 작은 점이어야 한다. 즉 $i = 2, 3, \\cdots, m$에 대해 $(x_1, y_1) &lt; (x_i, y_i)$를 만족해야 한다. 또한 $(x_i, y_i)$들 사이에는 같은 점이 없어야 하고, $(x_1, y_1), (x_2, y_2), \\cdots, (x_m, y_m)$을 이 순서대로 연결했을 때 반시계 방향으로 순회하는 볼록 다각형이 되어야 한다.</p>\n</li>\n<li>\n<p>위의 경우가 아니라면:</p>\n<div style=\"background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;\"><span style=\"color:#e74c3c;\"><code>X</code></span></div>\n<p>를 출력하라.</p>\n</li>\n</ul>\n<p>각 좌표는 기약분수 <span style=\"color:#e74c3c;\"><code>p/q</code></span> ($p, q$는 정수; $q &gt; 0$; $\\gcd(p, \\, q) = 1$) 형태로 출력한다. $q = 1$인 경우는 $p$만 출력하고, $p &gt; 0$이면 부호는 생략한다. 모든 좌표는 유리수임을 증명할 수 있다.</p>\n<p>여기서 두 점 $(x_a, y_a)$와 $(x_b, y_b)$에 대해 $(x_a, y_a) &lt; (x_b, y_b)$라 함은 $x_a &lt; x_b$이거나, $x_a = x_b$이고 $y_a &lt; y_b$인 경우를 의미한다.</p>",
+  "samples": [
+    {
+      "input": "2\n0 0\n1 1\n",
+      "output": "S 0 0 1 1\n"
+    },
+    {
+      "input": "4\n6 6\n2 2\n4 0\n8 4\n",
+      "output": "P 2 2 4 0 8 4 6 6\nC 5 3\n"
+    },
+    {
+      "input": "6\n0 0\n8 1\n4 4\n2 7\n1 3\n3 2\n",
+      "output": "P 0 0 8 1 2 7\nP 1 3 3 2 4 4\nN\n"
+    },
+    {
+      "input": "7\n0 0\n10 10\n-5 11\n4 1\n-1 8\n9 21\n-3 16\n",
+      "output": "P -5 11 0 0 4 1 10 10 9 21 -3 16\nP -306/127 1632/127 -49/38 392/57 49/19 49/19 5 5 385/58 335/29 4/107 1562/107\nP -1 8 107/179 1484/179 19/241 2266/241\n"
+    }
+  ],
+  "hint": null,
+  "source": "School, 경기과학고등학교, 나는코더다 송년대회, 나는코더다 2025 송년대회, dkim110807, gs22123, moonrabbit2, utilforever",
+  "level": 25,
+  "tags": [
+    "geometry",
+    "half_plane_intersection",
+    "duality"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 20.600000381469727
+}

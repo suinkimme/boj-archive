@@ -1,0 +1,28 @@
+{
+  "id": 17342,
+  "title": "Counting Spanning Trees",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Recently, Alex has made shocking advances in the technique of counting spanning trees in undirected, connected graphs. He discovered:</p>\n<ul>\n<li>A cycle with <var>n</var> nodes contains <var>n</var> distinct spanning trees.</li>\n<li>A complete graph with <var>n</var> nodes contains <var>n</var><sup><var>n</var>−2</sup> distinct spanning trees.</li>\n</ul>\n<p>These two discoveries have made Alex ecstatic, so he would like to continue on his adventure of counting spanning trees. That is, he would like to be able to count the number of spanning trees in all kinds of different graphs.</p>\n<p>One day, Alex is meeting up with his peers. Everyone sat in a circle around a big round table. After taking a look, Alex immediately recalls his spanning tree problem. If he considers each of his peers as a node and neighboring peers (nodes with a distance of 1 between them) to be connected by an edge, then this becomes a cycle. However, Alex has already mastered calculations on cycles and is not really interested anymore. So, he changed the graph up a bit: Not only does he add an edge between neighboring peers, but he also adds an edge between pairs of peers who are separated by a single seat (nodes with a distance of 2 between them). Now, he considers peers connected by a single edge to be <b>adjacent</b>, as depicted in the following figure.</p>\n<p><img alt=\"\" src=\"1.png\"/></p>\n<p>Alex has never tried counting spanning trees on this kind of graph before, however, he recalls his teacher explaining that there is a general method for counting the number of spanning trees on any type of graph. First, construct an <var>n</var>×<var>n</var> matrix <var>A</var> = { <var>a<sub>i j</sub></var> } such that:</p>\n<p><img alt=\"\" src=\"2.png\"/></p>\n<p>where <var>d<sub>i</sub></var> represents the degree of node <var>i</var>.</p>\n<p>Let's construct the matrix <var>A</var> corresponding to the graph of the round table as depicted above. To count the number of spanning trees, we only have to remove the last row and column of <var>A</var>, obtaining an (<var>n</var>−1)×(<var>n</var>−1) matrix which we shall call <var>B</var>. Computing the determinant of matrix <var>B</var> will yield the number of spanning trees in the graph above.</p>\n<p>Therefore the number of spanning trees in this graph is |<var>B</var>| = 3528. Alex noticed that using the general method, calculations are very complex and tedious. Yet, he cannot find any other formulas that are simpler than this. So, he simplified the graph. At some place he broke apart the circle around the table. This way, his peers form a chain of nodes, where an edge exist between all pairs of nodes with a distance of 1 or a distance of 2 of between them. The case for 8 nodes is depicted below:</p>\n<p><img alt=\"\" src=\"3.png\"/></p>\n<p>This way, the total number of spanning trees is reduced by a great amount. Alex just thinks and thinks, until the entire meeting is over. Finally, he comes up with an efficient method to count the number of spanning trees in this graph. However, if he also decides to join nodes with a distance of 3, then once again he will not know how to find the answer efficiently. Please help Alex count the number of spanning trees in these types of graphs!</p>\n<p> </p>",
+  "input": "<p>The input contains two integers <var>k</var> and <var>n</var>, separated by a space. <var>k</var> means that all nodes with a distance no greater than <var>k</var> are to be linked by an edge in the graph. <var>n</var> indicates that there are <var>n</var> total nodes.</p>",
+  "output": "<p>Output a single integer, the number of spanning trees in the graph. Since the answer can be rather large, you are required to output the answer modulo 65521.</p>",
+  "samples": [
+    {
+      "input": "3 5\n",
+      "output": "75\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2007",
+  "level": 25,
+  "tags": [
+    "berlekamp_massey",
+    "dp",
+    "dp_connection_profile",
+    "exponentiation_by_squaring",
+    "math"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2.4286000728607178
+}

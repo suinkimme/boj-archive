@@ -1,0 +1,22 @@
+{
+  "id": 23456,
+  "title": "Game",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>Alice and Bob are playing <em>Luzhanqi</em>. Each of them has a <em>permutation</em> of the following $24$ pieces:</p>\n<ul>\n<li>one Field Marshal, order 9</li>\n<li>one General, order 8</li>\n<li>two Major Generals, order 7</li>\n<li>two Brigadier Generals, order 6</li>\n<li>two Colonels, order 5</li>\n<li>two Majors, order 4</li>\n<li>three Captains, order 3</li>\n<li>three Lieutenants, order 2</li>\n<li>three Engineers, order 1</li>\n<li>two Bombs</li>\n<li>three Landmines</li>\n</ul>\n<p>To determine the winner, we repeat the following process until someone wins the game or the game ends in a draw:</p>\n<ul>\n<li>If both permutations are empty, the game ends in a draw.</li>\n<li>If Alice's permutation is empty, Bob wins the game.</li>\n<li>If Bob's permutation is empty, Alice wins the game.</li>\n<li>Let the first piece in Alice's permutation be $A$ and the first piece in Bob's permutation be $B$. The following is the outcome of the battle between $A$ and $B$:\n\t<ol>\n<li>If $A$ and $B$ are the same types of pieces, or if one of $A$ and $B$ is Bomb, they are both removed.</li>\n<li>Otherwise, if one of $A$ and $B$ is Landmine and the other is Engineer, the Landmine is removed and the Engineer stays alive.</li>\n<li>Otherwise, if one of $A$ and $B$ is Landmine and the other's order is greater than 1, the Landmine stays alive and the other one is removed.</li>\n<li>Otherwise, we compare the order of $A$ and $B$ and the piece with smaller order is removed.</li>\n</ol>\n</li>\n</ul>\n<p>Bob knows Alice's permutation in advance and can decide his permutation based on that information. After Bob deciding his permutation, Alice can swap two pieces in Bob's permutation. Can Bob construct a permutation that wins against Alice's permutation no matter which pair of pieces she swaps? </p>",
+  "input": "<p>The first line contains one integer $T$ denoting the number of test cases ($1\\le T\\le 100$).</p>\n<p>Each of the next $T$ lines contains $24$ integers denoting Alice's permutation: </p>\n<ul>\n<li>$40$ represents Field Marshal</li>\n<li>$39$ represents General</li>\n<li>$38$ represents Major Generals</li>\n<li>$37$ represents Brigadier Generals</li>\n<li>$36$ represents Colonels</li>\n<li>$35$ represents Majors</li>\n<li>$34$ represents Captains</li>\n<li>$33$ represents Lieutenants</li>\n<li>$32$ represents Engineers</li>\n<li>$31$ represents Landmines</li>\n<li>$30$ represents Bombs</li>\n</ul>\n<p>It is guaranteed that all permutations are chosen uniformly at random and contains exactly the $24$ pieces described in the statement.</p>",
+  "output": "<p>Output one line for each test case.</p>\n<p>If Bob cannot construct the required permutation, print $-1$.</p>\n<p>Otherwise, print $24$ integers representing Bob's permutation in the same format as in the input. If there are multiple solutions, print any. Bob's permutation must contain exactly the $24$ pieces described in the statement.</p>",
+  "samples": [
+    {
+      "input": "4\n40 39 38 38 37 37 36 36 35 35 34 34 34 33 33 33 32 32 32 31 31 31 30 30\n34 31 36 33 31 39 37 38 35 32 32 35 36 31 34 32 38 40 30 33 30 34 33 37\n37 30 40 38 36 38 32 34 36 35 37 32 34 33 31 30 33 31 35 34 33 39 31 32\n30 33 32 39 37 38 35 40 34 30 31 37 31 33 31 33 34 32 36 36 35 34 32 38\n",
+      "output": "34 36 30 39 33 38 37 31 34 30 33 35 38 31 37 33 40 31 35 32 32 36 32 34\n34 32 32 38 40 33 33 30 31 34 31 35 37 32 34 36 33 31 38 30 36 37 35 39\n38 33 32 31 36 34 30 34 33 40 32 37 38 30 37 35 33 35 32 31 34 31 39 36\n37 34 33 36 34 35 31 38 32 38 31 32 37 30 30 31 33 36 32 33 40 39 34 35\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 10: Grand Prix of Xi’An",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

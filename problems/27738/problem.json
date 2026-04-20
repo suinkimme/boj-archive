@@ -1,0 +1,36 @@
+{
+  "id": 27738,
+  "title": "연산자 파티",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>정수를 담는 변수 $X$는 초기값이 $0$이다.</p>\n<p>$i$가 $1$부터 $N$까지 $1$씩 증가할 때마다 아래 조건에 맞게 연산을 진행한다. $N$까지 연산을 모두 마쳤을 때, 최종 $X$값을 출력하시오.</p>\n<ul>\n<li>$i$가 $A$의 배수라면 $X$ = $X$ + $i$를 한다. (+는 더하기 연산자이다.)</li>\n<li>$i$가 $B$의 배수라면 $X$ = $X$ % $i$를 한다. (%는 나머지 연산자이다.)</li>\n<li>$i$가 $C$의 배수라면 $X$ = $X$ &amp; $i$를 한다. (&amp;는 Bitwise AND 연산자이다.)</li>\n<li>$i$가 $D$의 배수라면 $X$ = $X$ ⊕ $i$를 한다. (⊕는 Bitwise XOR 연산자이다.)</li>\n<li>$i$가 $E$의 배수라면 $X$ = $X$ | $i$를 한다. (|는 Bitwise OR 연산자이다.)</li>\n<li>$i$가 $F$의 배수라면 $X$ = $X$ &gt;&gt; $i$를 한다. (&gt;&gt;는 Bitwise Right Shift 연산자이다.)</li>\n<li>한 번에 여러 연산을 시행해야 한다면 +, %, &amp;, ⊕, |, &gt;&gt; 우선순위로 연산을 진행한다.</li>\n</ul>",
+  "input": "<p>첫 번째 줄에 $N$이 주어진다.</p>\n<p>두 번째 줄에 $A$, $B$, $C$, $D$, $E$, $F$가 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>최종 $X$값을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3\n1 1 1 1 2 2\n",
+      "output": "3\n"
+    },
+    {
+      "input": "5\n1 2 3 4 5 6\n",
+      "output": "13\n"
+    },
+    {
+      "input": "2023\n1 2 3 5 7 11\n",
+      "output": "4079\n"
+    },
+    {
+      "input": "1234567895\n1 2 4 8 16 32\n",
+      "output": "2469135770\n"
+    }
+  ],
+  "hint": "<p>Bitwise 연산자들은 비트 단위로 연산을 시행한다.</p>\n<ul>\n<li><strong>Bitwise AND</strong>\n<ul>\n<li>두 수의 각 비트마다 아래와 같은 연산을 진행한다.\n\t\t<ul>\n<li>두 비트가 모두 $1$이면 결과가 $1$이고, 그렇지 않으면 $0$이다.</li>\n</ul>\n</li>\n<li>예시\n\t\t<ul>\n<li>$\\begin{aligned} 0110_{2} &amp;= 6 \\\\ \\text{&amp;} \\ \\ 1100_{2} &amp;= 12 \\\\ \\text{────} \\\\ 0100_{2} &amp;= 4 \\end{aligned}$</li>\n</ul>\n</li>\n</ul>\n</li>\n<li><strong>Bitwise XOR</strong>\n<ul>\n<li>두 수의 각 비트마다 아래와 같은 연산을 진행한다.\n\t\t<ul>\n<li>두 비트가 서로 다르면 결과가 $1$이고, 그렇지 않으면 $0$이다.</li>\n</ul>\n</li>\n<li>예시\n\t\t<ul>\n<li>$\\begin{aligned} 0110_{2} &amp;= 6 \\\\ \\text{⊕} \\ \\ 1100_{2} &amp;= 12 \\\\ \\text{────} \\\\ 1010_{2} &amp;= 10 \\end{aligned}$</li>\n</ul>\n</li>\n</ul>\n</li>\n<li><strong>Bitwise OR</strong>\n<ul>\n<li>두 수의 각 비트마다 아래와 같은 연산을 진행한다.\n\t\t<ul>\n<li>두 비트 중 하나라도 $1$이면 결과가 $1$이고, 그렇지 않으면 $0$이다.</li>\n</ul>\n</li>\n<li>예시\n\t\t<ul>\n<li>$\\begin{aligned} 0110_{2} &amp;= 6 \\\\ \\text{|} \\ \\ 1100_{2} &amp;= 12 \\\\ \\text{────} \\\\ 1110_{2} &amp;= 14 \\end{aligned}$</li>\n</ul>\n</li>\n</ul>\n</li>\n<li><strong>Bitwise Right Shift</strong>\n<ul>\n<li>$a$ &gt;&gt; $b$일 때, $a$의 비트를 $b$번 오른쪽 이동한다.\n\t\t<ul>\n<li>오른쪽으로 이동된 수만큼 비게 되는 왼쪽 비트는 $0$으로 채워진다.</li>\n</ul>\n</li>\n<li>예시\n\t\t<ul>\n<li>$\\begin{aligned} &amp; 0110_{2} \\ \\text{&gt;&gt;} \\ 2 \\\\ &amp; \\downarrow \\\\ &amp; 0001_{2} \\end{aligned}$</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>",
+  "source": "University, 중앙대학교, 2023 중앙대학교 CHAC (ChAOS Hello2023 Algorithm Contest), wapas, heeda0528, njw1204, pjshwa, smmaker118, tlsdydaud1, tony9402",
+  "level": 11,
+  "tags": [
+    "ad_hoc"
+  ],
+  "accepted_user_count": 199,
+  "submission_count": null,
+  "average_tries": 2.3417000770568848
+}

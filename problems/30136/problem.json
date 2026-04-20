@@ -1,0 +1,26 @@
+{
+  "id": 30136,
+  "title": "Advise National Security!",
+  "time_limit": "10 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>It's 2015. Terrorists are still largely on the prowl. Governments however have decided to be smarter. Now, they monitor each highway, airway and seaway. Across each road, they built several cameras which can capture images ahead of them.</p>\n<p>More specifically, there are N uniformly spaced cameras per kilometer along a highway of length M kms, making in total M*N cameras (there is no camera at the end of the M kms). The highway is one-way and goes from North to South. The cameras have a special property: </p>\n<ul>\n<li>They use direct vision to watch the next N (or less if the highway ends) cameras to their South thus covering 1 km.</li>\n<li>They communicate via satellite with all the cameras beyond the next N southern cameras thus knowing their video feed. </li>\n<li>They do not communicate with the next N southern cameras and only depend on their vision.</li>\n</ul>\n<p>A camera being destroyed by a terrorist will be caught by cameras to its north. Corrupt politicians have sold this secret to the terrorists and they know that they can't destroy a camera unless they are sure that this camera is no longer communicating or being watched by a camera to its North. There is one further complication: Corrupt technicians have not properly installed the direct vision equipment. Thus, some of the cameras are substandard and deficient. These cameras have perfectly good communication with far off cameras (i.e. after the first N cameras), but cannot see some of the next N cameras. However, the saving grace was that there were no more than 10 deficient cameras in any 1 km stretch (among any contiguous N cameras).</p>\n<p>As Anti Corruption Task force, you, a non corrupt patriot have to submit a security report. For that, you need to solve the following problem: If exactly two terrorists decide to destroy all the cameras on the highway without being caught, how long would it take them? Each terrorist can destroy one camera in one FULL minute. They can work simultaneously. Of course, they cannot destroy two cameras A and B at the same time if A can watch B or B can watch A.</p>\n<p>The cameras are numbered 1 to M*N North to South.</p>\n<p>Note that C<sub>i</sub> cannot watch or get the video feed of C<sub>j</sub> if i &gt; j where C<sub>i</sub> is the camera numbered i. </p>",
+  "input": "<p>Input will be a sequence of cases. Each case starts with M and N on a single line (1 ≤ M ≤ 15 ,1 ≤ N ≤ 20). M*N - 1 lines follow. The Cth line describes camera number C. It starts with a number k. If k = -1 camera C is not deficient and there are no more numbers on this line. Otherwise, k numbers, a<sub>j</sub> (1 ≤ j ≤ k) (C+1 ≤ a<sub>j</sub> ≤ C+N and a<sub>j</sub> ≤ M*N) follow on the same line meaning that camera C can watch camera aj. Note that camera C can always watch cameras C + N + 1 and later using satellite and will not be mentioned here. </p>\n<p>The last case will be followed by a line containing two zeroes. </p>",
+  "output": "<p>Output one line per case, the minimum number of minutes required by two terrorists working in tandem to destroy all the cameras without being caught. </p>",
+  "samples": [
+    {
+      "input": "2 3\n1 4\n2 4 5\n2 4 5\n1 6\n-1\n0 0\n",
+      "output": "4\n"
+    }
+  ],
+  "hint": "<p>Camera i is referred to as C<sub>i</sub>. </p>\n<p>There are a total of 6 cameras, 3 per km. </p>\n<ul>\n<li>C<sub>1</sub> can watch C<sub>4</sub> and later but not C<sub>2</sub> or C<sub>3</sub></li>\n<li>C<sub>2</sub> can watch C<sub>4</sub> and later, but not C<sub>3</sub> </li>\n<li>C<sub>3</sub> can watch C<sub>4</sub> and C<sub>5</sub> but not C<sub>6</sub></li>\n<li>C<sub>4</sub> can watch C<sub>6</sub> but not C<sub>5</sub></li>\n<li>C<sub>5</sub> can watch C<sub>6</sub></li>\n<li>C<sub>6</sub> cannot watching anything. </li>\n<li>T = 1: Destroy C<sub>1</sub> and C<sub>2</sub></li>\n<li>T = 2: Destroy C<sub>3</sub> </li>\n<li>T = 3: Destroy C<sub>4</sub> and C<sub>5</sub></li>\n<li>T = 4: Destroy C<sub>6</sub></li>\n</ul>",
+  "source": "ICPC, Regionals, Asia West Continent, India, The 2008 Asia Amritapuri Contest",
+  "level": 20,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 5.5
+}

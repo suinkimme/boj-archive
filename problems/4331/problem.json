@@ -1,0 +1,22 @@
+{
+  "id": 4331,
+  "title": "Intellectual Property",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>TDP Inc. has decided to sue JCN Inc. for copyright infringement. To this end, TDP wishes to find infringing segments within JCN's code base, to show to selected media representatives. Since TDP has fired all its technical staff, it is looking to hire a consultant to be paid on a contingency basis should the lawsuit be successful. To demonstrate your qualifications for this position, you are to solve the problem on a number of test cases.</p>",
+  "input": "<p>Each test case begins with a positive integer k, the number of infringing segments to be found. Following this line are two code bases. The first code base is preceded by the line \"BEGIN TDP CODEBASE\" and contains a number of lines followed by the line \"END TDP CODEBASE\". The second code base is preceded by \"BEGIN JCN CODEBASE\" and followed by \"END JCN CODEBASE\". The line \"END TDP CODEBASE\" does not appear in the first code base and the line \"END JCN CODEBASE\" does not appear in the second. A line containing 0 follows the last test case.</p>",
+  "output": "<p>For each test case you should output: (1) a line containing \"CASE n\" where n is the number of the test case; (2) up to k infringing segments. Each segment should be printed exactly as it appears in the JCN code base (including newlines and whitespace) and should be preceded by a line containing \"INFRINGING SEGMENT m LENGTH l POSITION p\" where m is the number of the segment within the test case, l is the length of the segment (in characters) and p is the position of the segment (in characters from the start of the JCN codebase). Output an empty line between test cases.</p>\n<p>A code base is simply a string of characters. An infringing segment is a non-empty contiguous sequence of characters in the JCN code base that is textually identical to some contiguous sequence of characters in the TDP code base, and is not contained in a larger infringing segment. You should consider all characters in the code base, including spaces and the newline character at the end of each line.</p>\n<p>If there are k or fewer common segments, print them all in decreasing order by length; if several segments have the same length, print them in the order they occur in JCN's code base. If there are more than k segments, print the first k according to the given order.</p>\n<p>You may assume that no code base contains more than 50,000 characters.</p>",
+  "samples": [
+    {
+      "input": "6\nBEGIN TDP CODEBASE\nthe quick brown fox\njumps over the lazy dog.\nso there!\nEND TDP CODEBASE\nBEGIN JCN CODEBASE\nnow is the time for all\ngood men to come to the aid\nof the party.\nso there!\nEND JCN CODEBASE\n100\nBEGIN TDP CODEBASE\nxyzzy\nEND TDP CODEBASE\nBEGIN JCN CODEBASE\nxyzzabczzyy\nEND JCN CODEBASE\n0\n",
+      "output": "CASE 1\nINFRINGING SEGMENT 1 LENGTH 12 POSITION 64\n.\nso there!\n\nINFRINGING SEGMENT 2 LENGTH 5 POSITION 6\n the \nINFRINGING SEGMENT 3 LENGTH 5 POSITION 42\no the\nINFRINGING SEGMENT 4 LENGTH 5 POSITION 43\n the \nINFRINGING SEGMENT 5 LENGTH 5 POSITION 54\n the \nINFRINGING SEGMENT 6 LENGTH 3 POSITION 15\n fo\n\nCASE 2\nINFRINGING SEGMENT 1 LENGTH 4 POSITION 0\nxyzz\nINFRINGING SEGMENT 2 LENGTH 3 POSITION 7\nzzy\nINFRINGING SEGMENT 3 LENGTH 2 POSITION 10\ny\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Waterloo's local Programming Contests, 5 July, 2003",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

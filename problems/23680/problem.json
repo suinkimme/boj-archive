@@ -1,0 +1,34 @@
+{
+  "id": 23680,
+  "title": "Hat With An Integer",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>The are $n$ enumerated wise ones. Each of them has a hat with an integer written on it. Each wise one sees numbers on other wise ones' hats, but does not see the number on his own. Let $a_i$ denote the number written on the hat of the $i$-th wise one.</p>\n<p>There are also two arrays of integers of length $n - 1$ each: $b$ and $c$. We call the assignment of integers to hats <strong>valid</strong> if there exists at  least one value of $i$, such that $1 \\leq i \\leq n - 1$ and at least one the following holds:</p>\n<ol>\n<li>$a_{i+1} &lt; a_i + b_i$</li>\n<li>$a_{i+1} &gt; a_i.+ c_i$</li>\n</ol>\n<p>The wise ones know that the actual assignment (i.e. the array $a$) is valid. </p>\n<p>The following process happens: Each day, starting from the first, if at the beginning of the day there exists a wise one with index $i$ who knows an integer $x$, such that $a_i \\neq x$ (i.e. he knows a number which is definitely not written on his hat) he announces this at the end of the day and the process ends. If no such wise one is present the process continues on the next day and so on</p>\n<p>Calculate whether the process will end and if it will, calculate the day on which it will happen.</p>",
+  "input": "<p>The first line contains a single integer $n$ ($2 \\leq n \\leq 10^5$), the number of wise ones.</p>\n<p>The second line contains $n$ integers $a_i$ ($-10^{10} \\leq a_i \\leq 10^{10}$).</p>\n<p>The third line contains $n - 1$ integers $b_i$ ($-10^{10} \\leq b_i \\leq 10^{10}$).</p>\n<p>The fourth line contains $n - 1$ integers $c_i$ ($-10^{10} \\leq c_i \\leq 10^{10}$).</p>\n<p>It is guaranteed, that the array $a$ is valid.</p>",
+  "output": "<p>Output <code>-1</code> if the process will never end. Output the day on which the process will end otherwise.</p>",
+  "samples": [
+    {
+      "input": "3\n1 2 3\n0 0\n0 0\n",
+      "output": "2\n"
+    },
+    {
+      "input": "2\n-1 -1\n1\n-1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "7\n1 4 2 -5 10000000000 6 -7\n-1 2 -3 4 6 5\n2 3 322 5 100 312\n",
+      "output": "5\n"
+    },
+    {
+      "input": "8\n3 2 8 25 16 24 24 24\n-1 0 3 4 -2 7 6\n-1 2 7 5 -1 12 11\n",
+      "output": "4\n"
+    }
+  ],
+  "hint": "<p>Consider the first example. The constraints given by arrays $b$ and $c$ can be rephrased as \"not all integers are equal\".</p>\n<p>On the first day no wise one can deduce a number which is not written on his hat.</p>\n<p>On the second day the third wise one knows, that if the number on his hat was 2, on the first day the first wise one would have seen that both other wise ones have 2 on their hats and would have deduced that he does not wear a hat with 2 written on it. Thus on the second day the third wise one knows that he does not wear a hat with 2 written on it. </p>\n<p><em>Is this readable? Probably not. Could this have been phrased much better to be readable? Probably not.</em></p>",
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 13: Grand Prix of Bytedance",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2
+}

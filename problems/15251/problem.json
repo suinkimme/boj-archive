@@ -1,0 +1,26 @@
+{
+  "id": 15251,
+  "title": "Chase",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Tom the cat is chasing Jerry the mouse again! Jerry is trying to gain some advantage by running into crowds of pigeons, where it is harder for Tom to follow him. Conveniently, Jerry arrived to Central Park in Ljubljana. The park has n statues, numbered 1 . . . n, and n − 1 non-intersecting passages connecting them in such a way that it is possible to reach any statue from any other statue by traversing the passages. Clustered tightly around each statue i there are pi pigeons. Jerry has v breadcrumbs in his pocket. If he drops a breadcrumb by a statue at his current location, pigeons from neighbouring statues will immediately fly to this statue to eat the breadcrumb. As a result the current number of pigeons p around this and neighbouring statues changes.</p>\n<p>It all happens in the following order: First, Jerry arrives to the statue i and meets p<sub>i</sub> pigeons. Then, he drops the breadcrumb. He leaves the statue. The pigeons from neighbouring statues move to statue i before Jerry arrives to the next statue (so they don’t count towards his count of the pigeons met).</p>\n<p>Jerry may enter the park at any statue, run down some passages (but never using the same passage twice), and then leave the park anywhere he wants. After Jerry exits the park, Tom will enter and traverse exactly the same route. By dropping at most v breadcrumbs, Jerry wants to maximize the difference between the number of pigeons Tom will meet on the route and the number of pigeons he meets. Note that only pigeons that are present at some statue right before Jerry arrives there count toward the total number of pigeons he meets. See the comment of the example for further explanation.</p>",
+  "input": "<p>The first line contains the number of statues n and number of breadcrumbs v. The second line contains n integers separated with a space, p<sub>1</sub> . . . p<sub>n</sub>. The following n−1 lines describe the passages with pairs of numbers a<sub>i</sub> and b<sub>i</sub>, which indicate there is a passage between statues a<sub>i</sub> and b<sub>i</sub>.</p>",
+  "output": "<p>Output only one number, maximum difference between the number of pigeons Tom meets and the number of pigeons Jerry meets.</p>",
+  "samples": [
+    {
+      "input": "12 2\n2 3 3 8 1 5 6 7 8 3 5 4\n2 1\n2 7\n3 4\n4 7\n7 6\n5 6\n6 8\n6 9\n7 10\n10 11\n10 12\n",
+      "output": "36\n"
+    }
+  ],
+  "hint": "<p>One possible solution is the following. Jerry enters the park at the statue 6. There he encounters 5 pigeons. He drops a breadcrumb. p<sub>6</sub> is now 27 and p<sub>5</sub> = p<sub>7</sub> = p<sub>8</sub> = p<sub>9</sub> = 0. Next he runs to the statue 7 and encounters 0 pigeons. He drops the second breadcrumb. p<sub>7</sub> is now 41 and p<sub>2</sub> = p<sub>4</sub> = p<sub>6</sub> = p<sub>10</sub> = 0. He exits the park. He encountered 5 + 0 = 5 pigeons. Tom follows him over the same route but encounters p<sub>6</sub> + p<sub>7</sub> = 0 + 41 = 41 pigeons. The difference is 41 − 5 = 36.</p>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2017, Day 2",
+  "level": 21,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "trees"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 2.529400110244751
+}

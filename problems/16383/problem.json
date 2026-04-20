@@ -1,0 +1,38 @@
+{
+  "id": 16383,
+  "title": "Cycle sort",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given an array of n positive integers a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub>. You can perform the following operation any number of times: select several distinct indices i<sub>1</sub>, i<sub>2</sub>, . . . , i<sub>k</sub> (1 ≤ i<sub>j</sub> ≤ n) and move the number standing at the position i<sub>1</sub> to the position i<sub>2</sub>, the number at the position i<sub>2</sub> to the position i<sub>3</sub>, . . . , the number at the position i<sub>k</sub> to the position i<sub>1</sub>. In other words, the operation cyclically shifts elements: i<sub>1</sub> → i<sub>2</sub> → . . . i<sub>k</sub> → i<sub>1</sub>.</p>\n<p>For example, if you have n = 4, an array a<sub>1</sub> = 10, a<sub>2</sub> = 20, a<sub>3</sub> = 30, a<sub>4</sub> = 40, and you choose three indices i<sub>1</sub> = 2, i<sub>2</sub> = 3, i<sub>3</sub> = 4, then the resulting array would become a1 = 10, a<sub>2</sub> = 40, a<sub>3</sub> = 20, a<sub>4</sub> = 30.</p>\n<p>Your goal is to make the array sorted in non-decreasing order with minimum number of operations. The additional constraint is that the sum of cycle lengths over all operations should be less than or equal to a number s. If it’s impossible to sort the array while satisfying that constraint, your solution should report that as well.</p>",
+  "input": "<p>The first line of the input contains two integers n and s (1 ≤ n ≤ 200 000, 0 ≤ s ≤ 200 000)—the number of elements in the array and the upper bound on the sum of cycle lengths.</p>\n<p>The next line contains n integers a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub>—elements of the array (1 ≤ a<sub>i</sub> ≤ 10<sup>9</sup>).</p>",
+  "output": "<p>If it’s impossible to sort the array using cycles of total length not exceeding s, print a single number “-1” (quotes for clarity).</p>\n<p>Otherwise, print a single number q— the minimum number of operations required to sort the array.</p>\n<p>On the next 2q lines print descriptions of operations in the order they are applied to the array. The description of i-th operation begins with a single line containing one integer k (1 ≤ k ≤ n)—the length of the cycle (that is, the number of selected indices). The next line should contain k distinct integers i<sub>1</sub>, i<sub>2</sub>, . . . , i<sub>k</sub> (1 ≤ i<sub>j</sub> ≤ n)—the indices of the cycle.</p>\n<p>The sum of lengths of these cycles should be less than or equal to s, and the array should be sorted after applying these q operations.</p>\n<p>If there are several possible answers with the optimal q, print any of them.</p>",
+  "samples": [
+    {
+      "input": "5 5\n3 2 3 1 1\n",
+      "output": "1\n5\n1 4 2 3 5\n"
+    },
+    {
+      "input": "4 3\n2 1 4 3\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "2 0\n2 2\n",
+      "output": "0\n"
+    },
+    {
+      "input": "6 9\n6 5 4 3 2 1\n",
+      "output": "2\n6\n1 6 2 5 3 4\n3\n3 2 1\n"
+    },
+    {
+      "input": "6 8\n6 5 4 3 2 1\n",
+      "output": "3\n2\n3 4\n4\n1 6 2 5\n2\n2 1\n"
+    }
+  ],
+  "hint": "<p>In the first example, it’s also possible to sort the array with two operations of total length 5: first apply the cycle 1 → 4 → 1 (of length 2), then apply the cycle 2 → 3 → t → 2 (of length 3). However, it would be wrong answer as you’re asked to use the minimal possible number of operations, which is 1 in that case.</p>\n<p>In the second example, it’s possible to the sort the array with two cycles of total length 4 (1 → 2 → 1 and 3 → 4 → 3). However, it’s impossible to achieve the same using shorter cycles, which is required by s = 3.</p>\n<p>In the third example, the array is already sorted, so no operations are needed. Total length of empty set of cycles is considered to be zero.</p>\n<p>Notice that examples 1 and 3 contain duplicate numbers, so they do not satisfy requirements for subtasks 4, 5 and 6. Examples 2, 4, and 5 satisfy requirements for subtasks 5 and 6.</p>",
+  "source": "Olympiad, European Junior Olympiad in Informatics, eJOI 2018",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 7
+}

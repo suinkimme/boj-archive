@@ -1,0 +1,30 @@
+{
+  "id": 24821,
+  "title": "I.O.U.",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are developing a new app intended to simplify expense-sharing among groups of friends.  This app will allow them to keep track of who encountered an expense and how it should be shared with others through the form of I.O.U.s.  For instance, if Alice pays for a meal shared with Bob and Carol, and Bob's and Carol's share were $\\$5$ and $\\$10$, respectively, then Bob would issue an I.O.U. over $\\$5$ to Alice and Carol would issue an I.O.U. over $\\$10$ to Alice.</p>\n<p>Your app will maintain a ledger of who owes whom. Note that cycles can occur: For instance, if Bob initially owes Alice $\\$10$ and later pays a $\\$5$ expense on behalf of Alice, Alice would issue an I.O.U. over $\\$5$ to Bob.  This I.O.U. would then cancel out, or reduce, the I.O.U. Alice holds from Bob from $\\$10$ to $\\$5$. It's also possible for cycles to involve more than $2$ people.</p>\n<p>Your app will be given a list of I.O.U.s issued and settle them as much as possible by considering all cycles and reducing each debt in a cycle by the minimum amount of debt occurring in the cycle. After all cycles are considered and canceled, your app should output who owes whom how much.  If there are multiple ways in which cancelation can occur, you may choose any of them as long as there are no cycles left at the end. However, you may not introduce I.O.U.s between friends that never gave an I.O.U. to each other, e.g., if Alice owes Bob money, and Bob owes the same amount to Carol, you cannot remove Bob from the picture and declare that Alice now owes Carol.</p>",
+  "input": "<p>The input consists of a single test case. The first line contains two integers $n$ and $m$ ($1 \\le n \\le 100, 0 \\le m \\le 10\\,000$), where $n$ denotes the number of friends and $m$ denotes the number of I.O.U.s issued. Friends are numbered $0$ to $n-1$. This is followed by $m$ lines containing three integers $a$, $b$, $c$ ($0 \\le a &lt; n, 0 \\le b &lt; n, a \\ne b, 0 &lt; c \\le 1\\,000$) denoting an I.O.U. given by friend $a$ to friend $b$ over $c$ dollars. Any friend $i$ holds at most one I.O.U. from any friend $j$ ($i \\ne j$), but friend $i$ may hold an I.O.U. from friend $j$ at the same time that friend $j$ holds an I.O.U from $i$.</p>",
+  "output": "<p>First, output a single number $p$, denoting the number of I.O.U.s left after canceling all cycles.  Then, on the following $p$ lines, output the I.O.U.s that are left in the same form in which they appear in the input (e.g. using $3$ integers $a$, $b$, $c$ denoting that friend $a$ owes friend $b$ $c$ dollars).  Do not include any I.O.U.s fully canceled, i.e., all the I.O.U.s you output must have $c &gt; 0$.</p>",
+  "samples": [
+    {
+      "input": "4 5\n0 1 10\n1 2 10\n0 3 10\n3 2 10\n2 0 20\n",
+      "output": "0\n"
+    },
+    {
+      "input": "2 2\n0 1 20\n1 0 5\n",
+      "output": "1\n0 1 15\n"
+    },
+    {
+      "input": "4 5\n0 1 10\n1 2 10\n0 3 10\n3 2 10\n2 0 10\n",
+      "output": "2\n3 2 10\n0 3 10\n"
+    }
+  ],
+  "hint": null,
+  "source": ", School, Virginia Tech High School Programming Contest, 2019 Virginia Tech High School Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

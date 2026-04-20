@@ -1,0 +1,26 @@
+{
+  "id": 34197,
+  "title": "사막에서 선배찾기",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p><strong>이 문제는 인터랙티브 문제입니다.</strong></p>\n<blockquote>\n<p>???: 여기 있었군요. 정말이지, 한참 찾았잖아요. 선배.</p>\n</blockquote>\n<p>연세대학교를 졸업한 국렬이는 고대 이집트의 아비도스 신전을 관광하던 중, 나침반 없이 사막을 횡단하다가 행방불명이 되고 말았다. 소식을 들은 후배 태윤이는 국렬이를 찾기 위해 즉시 이집트로 향했다.</p>\n<p>사막은 한 변의 길이가 $N$인 $N \\times N$ 크기의 격자로 구성되어 있으며, 사막의 좌우와 상하가 서로 연결된 형태이다. 즉, 거주지에서 상하좌우 어느 한 방향으로 $N$칸 움직이면 거주지로 돌아오게 된다. ($5 \\le N \\le 14$)</p>\n<p>태윤이는 현재 사막 어딘가에 위치한 거주지에 머무르고 있다. 거주지는 정확히 한 칸을 차지하고 있다. 국렬이는 거주지가 아닌 다른 칸에 위치하고 있으며, 현재 기절한 상태이기에 태윤이가 찾기 전까지는 움직이지 못한다.</p>\n<p>사막에서는 인터넷 연결이 불가능해 태윤이는 국렬이 및 자신이 위치한 좌표 및 거주지의 좌표, 심지어 사막의 크기 $N$도 알지 못한다.</p>\n<p>다만, 태윤이는 자신 주변의 정보를 탐지하는 장치를 가지고 있다. 이 탐지기는 태윤이의 현재 위치를 중심으로 $3 \\times 3$ 영역에 대해 각 칸에 대한 정보를 제공한다.</p>\n<p>상하좌우로 인접한 칸으로 이동할 때마다 $1$분이 소요되며, 이동할 때마다 탐지기를 사용하여 주변 칸의 정보를 얻는다. 단, 대각선으로는 한 번에 이동할 수 없다.</p>\n<p>태윤이가 국렬이가 위치한 칸에 도착하면 기절한 국렬이를 즉시 깨우고 국렬이는 태윤이와 동행 상태가 된다. 국렬이를 깨우는데 걸리는 시간은 $0$분으로 간주한다. 국렬이를 발견한 뒤에도 이동 시간은 동일하게 $1$분이다.</p>\n<p>태윤이는 총 $240$분 내에 국렬이를 찾아 거주지로 돌아와야 한다. 제한 시간 내에 태윤이가 국렬이를 무사히 구출할 수 있도록 도와주자.</p>",
+  "input": "<p>초기 입력으로 태윤이가 위치한 거주지를 중심으로 한 $3 \\times 3$ 영역의 정보가 세 줄에 걸쳐 주어진다. 각 줄은 길이 $3$의 문자열로 구성되어 있으며, 아래의 문자로 표기된다.</p>\n<ul>\n<li><code><span style=\"color:#e74c3c;\">.</span></code>: 빈칸</li>\n<li><span style=\"color:#e74c3c;\"><code>R</code></span>: 거주지</li>\n<li><span style=\"color:#e74c3c;\"><code>G</code></span>: 국렬이의 위치</li>\n</ul>",
+  "output": "<p>다음 중 하나를 표준 출력 스트림(stdout)으로 한 줄에 출력한다.</p>\n<ul>\n<li><code><span style=\"color:#e74c3c;\">?</span></code> $D$ : 태윤이는 방향 $D$로 한 칸 이동한다. $D$는 <span style=\"color:#e74c3c;\"><code>U</code></span>(위), <span style=\"color:#e74c3c;\"><code>D</code></span>(아래), <span style=\"color:#e74c3c;\"><code>L</code></span>(왼쪽), <span style=\"color:#e74c3c;\"><code>R</code></span>(오른쪽) 중 하나이며, 이동 후 $1$분이 흐른다.</li>\n<li><span style=\"color:#e74c3c;\"><code>!</code></span> : 태윤이는 국렬이를 구출하고 난 뒤 거주지로 복귀했음을 알린다. 이 명령을 출력한 후 시간은 흐르지 않는다.</li>\n</ul>\n<p>태윤이가 인접한 칸으로 이동했다면, 해당 칸을 중심으로 $3 \\times 3$ 영역에 대해 각 칸에 대한 정보를 제공한다. 단, 태윤이가 국렬이를 찾고 동행중일 때는 국렬이의 위치 정보는 제공되지 않는다.</p>\n<p>만약 이동 횟수가 $240$회를 초과하거나, 국렬이를 구출하지 않았거나, 거주지로 돌아오지 않는 상태에서 완료 명령을 출력한 경우 <span style=\"color:#c0392b;\"><strong>틀렸습니다</strong></span>를 받는다.</p>\n<p>각 질문을 출력한 후에는 반드시 표준 출력 버퍼를 flush해 주어야 하고, 표준 입력 스트림(stdin)을 통해 질문에 대한 답을 입력받아야 한다. 질문에 대한 답을 입력받지 않으면 <strong><span style=\"color:#4e5f70;\">런타임 에러</span></strong>를 받게 된다.</p>\n<p>언어별로 표준 출력 버퍼를 flush하는 방법은 다음과 같다. 기타 언어의 경우 각 언어의 문서를 참조하라.</p>\n<ul>\n<li>C: <code>fflush(stdout)</code></li>\n<li>C++: <code>std::cout &lt;&lt; std::flush</code></li>\n<li>Java: <code>System.out.flush()</code></li>\n<li>Python: <code>sys.stdout.flush()</code></li>\n</ul>",
+  "samples": [
+    {
+      "input": "...\n.R.\n...\n\n...\nG.R\n...\n\n...\n...\n...\n\n...\n..R\n...\n\n...\n.R.\n...\n　\n",
+      "output": "\n\n\n\n? L\n\n\n\n? L\n\n\n\n? R\n\n\n\n? R\n\n\n\n!\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 신촌지역 대학생 프로그래밍 대회 동아리 연합, 2025 신촌지역 대학교 프로그래밍 동아리 연합 여름 대회 (SUAPC 2025 Summer) 연습 세션, lky7674, ez_code, kdy40929, ystaeyoon113",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "bruteforcing",
+    "case_work"
+  ],
+  "accepted_user_count": 30,
+  "submission_count": null,
+  "average_tries": 3.6333000659942627
+}

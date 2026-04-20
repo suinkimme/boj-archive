@@ -1,0 +1,25 @@
+{
+  "id": 4838,
+  "title": "When",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>\"When\" is an event driven language for machine control. It only has three statements: Set, Print, and the compound When clause. The (case insensitive) grammar is as follows </p>\n<pre>\nPROGRAM := WHEN | PROGRAM WHEN\nWHEN := 'when ' EXPRESSION EOL STATEMENTS 'end when' EOL\nSTATEMENTS := STATEMENT | STATEMENTS STATEMENT\nSTATEMENT := PRINT | SET\nPRINT := 'print '  EXPRESSION_LIST EOL\nSET := 'set ' ASSIGNMENT_LIST EOL\nEXPRESSION_LIST := EXPRESSION | EXPRESSION_LIST ',' EXPRESSION\nASSIGNMENT_LIST := ASSIGNMENT | ASSIGNMENT_LIST ',' ASSIGNMENT\nASSIGNMENT := VARIABLE '=' EXPRESSION\nEXPRESSION := '(' EXPRESSION OP EXPRESSION ')' | VARIABLE | NUMBER \nOP :=  '&lt;' | '+' | '-' | 'and' | 'or' | 'xor'\nVARIABLE := '$' NOT_DOLLAR_STRING '$'\nNUMBER := DIGIT | NUMBER DIGIT\nDIGIT := '0' | .. | '9'\nNOT_DOLLAR_STRING := any sequence of printing characters (including blanks)\n                     that does not contain a $ symbol.</pre>\n<p>In the above, any string enclosed in single quotes are to be treated literally. EOL is the end of line.</p>\n<p>In words, a program consists of a list of when blocks, which themselves contain set and print statements. Case is ignored for key words and variable names. Spaces are allowed before or after any literal except inside a number. Spaces are allowed in variable names, and each non-empty sequence of spaces is treated as a single underscore, so the following refer to the same variable </p>\n<pre>\n$Remote Switch#1$\n$Remote_Switch#1$\n$Remote   switch#1$</pre>\n<p>All variable and literal values are integers between -1000000000 and 1000000000, inclusively. All variables are global and initially zero. The when programs you will be tested on will never have an EXPRESSION that evaluates to a value outside of this range. The logical operators evaluate to 0 for false and 1 for true, and treat any nonzero value as true.</p>\n<p>Running the When program amounts to executing all the active when clauses until none are active. More specifically, the active list of when clauses is initially empty, then the following steps are repeated: </p>\n<ul>\n<li>In the order they appear in the program, the conditions of all when clauses that are not currently active are evaluated. If true, the clause is added to the end of the active list, with its first statement marked as \"ready\". Each active when clause has one \"ready\" statement.</li>\n<li>If the active list is empty after this step, the program terminates.</li>\n<li>The \"ready\" statement from the \"current\" when clause (initially the first clause in the active list) is executed.</li>\n<li>The statement marked as \"ready\" is advanced, removing the when clause from the active list if this is the last statement in the \"current\" when clause.</li>\n<li>The when clause marked as \"current\" is advanced, cycling to the beginning of the active list if the end is reached. </li>\n</ul>\n<p>In other words, inactive when conditions are evaluated to determine if these clauses are added to the active list. Then one statement (set or print) is executed from the current active when clause. If this is the last statement in that clause, it is removed from the active list. One the next iteration, one statement is executed from the next active when clause, etc.</p>\n<p>A set statement executes all the assignments concurrently, so that </p>\n<pre>\nset $x$=$y$,$y$=$x$</pre>\n<p>swaps the values of $x$ and $y$. The same variable cannot appear twice on the left hand part of the same set statement (so set $x$=1,$x$=2 is illegal).</p>\n<p>A print statement evaluates and prints the given expressions in the output, separated by commas and followed by a new line. So</p>\n<pre>\nprint 1,(2+3)</pre>\n<p>results in the line</p>\n<pre>\n1,5</pre>\n<p>in the output. </p>",
+  "input": "<p>The input consists of a single syntactically correct program. You may assume that the program will not execute more than 100000 set statements and 100000 print statements.</p>",
+  "output": "<p>Print the output produced by executing the given program.</p>",
+  "samples": [
+    {
+      "input": "When ($Mr. Bill$<5)\n   Set $mr._bill$=($mr.  bill$+1),$Y$=($Y$+10)\nEnd When\nWhen ($mr. Bill$<10)\n  Set $MR. BILL$=($mr. bill$+1)\n  Print $mr. bill$,$Y$\nEnd When\n",
+      "output": "3,20\n6,40\n7,40\n8,40\n9,40\n10,40\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2008 Rocky Mountain Regional Contest",
+  "level": 20,
+  "tags": [
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

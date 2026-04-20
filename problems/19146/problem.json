@@ -1,0 +1,25 @@
+{
+  "id": 19146,
+  "title": "Conway",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are $M$ light bulbs in a room and $N$ switches outside of it. For the purpose of this problem, $N$ is guaranteed to be <strong>odd</strong>. Each bulb has its own power $p_i$ and can only be fully on or fully off. If the bulb is on, it adds $p_i$ units to the illumination of the room.</p>\n<p>Some switches and bulbs are connected by cords. Toggling a single switch changes the state of all bulbs it is connected to. There are no restrictions on connections, which means that any switch can be connected to any subset of bulbs, and vice versa.</p>\n<p>John invented a new game and invited his friends Roland and Patrick to play it. Roland likes light and tries to make the illumination as high as possible, and the Patrick's goal is strictly opposite: to reduce the illumination as low as possible. There is a value $K$ chosen by John to determine the winner. At the end of the game, if the total power of all bulbs turned on is greater than or equal to $K$, then Roland is considered the winner, otherwise, the winner is Patrick. The game process looks as follows:</p>\n<ul>\n<li>Switches are numerated from $1$ to $N$.</li>\n<li>Each player makes exactly $\\dfrac{N - 1}{2}$ moves, one after another. Roland makes his move first.</li>\n<li>When making his $i$-th move, Roland can toggle switches numbered $2 \\cdot i - 1$ and $2 \\cdot i$. These are first and second switches on his first move, third and fourth on the second move, and so on. Note that he can choose to toggle any subset of these two switches (one of them, both or none). If any bulb is connected to both switches, it changes its state once for each toggled switch.</li>\n<li>Rules for Patrick are absolutely the same, the only difference is in the indices of switches he can toggle. On his $i$-th move, he can toggle switches $2 \\cdot i$ and $2 \\cdot i + 1$. These are second and third for his first move, fourth and fifth for the second move, and so on.</li>\n</ul>\n<p>John likes to watch his friends playing while he already knows the result. He asks you to write a program that will determine the winner for each of the $T$ games, assuming that both Roland and Patrick play optimally.</p>",
+  "input": "<p>The first line of the input contains single integer $T$ --- number of test cases ($1 \\le T \\le 5$). Each test case describes a separate game.</p>\n<p>The first line of each test case contains three integers $N$, $M$ and $K$ ($3 \\leq N \\leq 33$, $N$ is odd, $1 \\leq M \\leq 32$, $0 \\leq K \\leq 2 \\cdot 10^{9}$) --- the number of switches, the number of bulbs and illumination value to determine the winner.</p>\n<p>The second line of each test case contains $M$ integers $l_{i}$ ($1 \\leq l_{i} \\leq 5 \\cdot 10^{7}$) --- the power of each bulb.</p>\n<p>The next $N$ lines of each test case describe connections between switches and bulbs. Each of them contains $M$ characters. If $i$-th switch is connected to $j$-th bulb, then $j$-th character of $i$-th line equals '<code>1</code>', otherwise it equals '<code>0</code>'.</p>",
+  "output": "<p>For each test case, print a line with the name of the winner, that is, either \"<code>Roland</code>\" or \"<code>Patrick</code>\".</p>",
+  "samples": [
+    {
+      "input": "2\n3 2 10\n10 10\n01\n00\n11\n3 5 1\n1 2 3 4 5\n01011\n11000\n10011\n",
+      "output": "Roland\nPatrick\n"
+    }
+  ],
+  "hint": "<p>In the first game, one of the optimal strategies for Roland is the following one: on his first turn, he toggles the first and the second switches. For any possible Patrick's move, there will be exactly one bulb that is turned on at the end of the game, so Roland wins anyway.</p>\n<p>In the second game, regardless of the Ronald's move, Patrick can turn off all the bulbs.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2015, Day 4: Moscow SU Tapirs Contest 2",
+  "level": 24,
+  "tags": [
+    "backtracking",
+    "randomization"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 9.5
+}

@@ -1,0 +1,42 @@
+{
+  "id": 15537,
+  "title": "Multisect",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>We are developing the world’s coolest AI robot product. After the long struggle, we finally managed to send our product at revision R<sub>RC</sub> to QA team as a release candidate. However, they reported that some tests failed! Because we were too lazy to set up a continuous integration system, we have no idea when our software corrupted. We only know that the software passed all the test at the past revision R<sub>PASS</sub>. To determine the revision R<sub>ENBUG</sub> (RP<sub>ASS</sub> &lt; R<sub>ENBUG</sub> ≤ R<sub>RC</sub>) in which our software started to fail, we must test our product revision-by-revision.</p>\n<p>Here, we can assume the following conditions:</p>\n<ul>\n<li>When we test at the revision R, the test passes if R &lt; R<sub>ENBUG</sub>, or fails otherwise.</li>\n<li>It is equally possible, which revision between R<sub>PASS</sub> + 1 and R<sub>RC</sub> is R<sub>ENBUG</sub>.</li>\n</ul>\n<p>From the first assumption, we don’t need to test all the revisions. All we have to do is to find the revision R such that the test at R − 1 passes and the test at R fails. We have K testing devices. Using them, we can test at most K different revisions simultaneously. We call this “parallel testing”. By the restriction of the testing environment, we cannot start new tests until a current parallel testing finishes, even if we don’t use all the K devices.</p>\n<p>Parallel testings take some cost. The more tests fail, the more costly the parallel testing becomes. If i tests fail in a parallel testing, its cost is T<sub>i</sub> (0 ≤ i ≤ K). And if we run parallel testings multiple times, the total cost is the sum of their costs.</p>\n<p>Of course we want to minimize the total cost to determine R<sub>ENBUG</sub>, by choosing carefully how many and which revisions to test on each parallel testing. What is the minimum expected value of the total cost if we take an optimal strategy?</p>",
+  "input": "<p>The input consists of a single test case with the following format.</p>\n<pre>\nR<sub>PASS</sub> R<sub>RC</sub> K\nT<sub>0</sub> T<sub>1</sub> ... T<sub>K</sub></pre>\n<p>R<sub>PASS</sub> and R<sub>RC</sub> are integers that represent the revision numbers of our software at which the test passed and failed, respectively. 1 ≤ R<sub>PASS</sub> &lt; R<sub>RC</sub> ≤ 1,000 holds. K (1 ≤ K ≤ 30) is the maximum number of revisions we can test in a single parallel testing. T<sub>i</sub> is an integer that represents the cost of a parallel testing in which i tests fail (0 ≤ i ≤ K). You can assume 1 ≤ T<sub>0</sub> ≤ T<sub>1</sub> ≤ · · · ≤ T<sub>K</sub> ≤ 100,000.</p>",
+  "output": "<p>Output the minimum expected value of the total cost. The output should not contain an error greater than 0.0001.</p>",
+  "samples": [
+    {
+      "input": "1 10 2\n1 1 1\n",
+      "output": "2.0\n"
+    },
+    {
+      "input": "1 100 1\n100 100\n",
+      "output": "670.7070707\n"
+    },
+    {
+      "input": "100 200 4\n1 1 2 2 3\n",
+      "output": "4.6400000\n"
+    },
+    {
+      "input": "2 3 4\n1 2 3 4 5\n",
+      "output": "0.0\n"
+    },
+    {
+      "input": "998 1000 4\n10 100 1000 10000 100000\n",
+      "output": "55.0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ACM-ICPC Asia Regional 2016",
+  "level": 20,
+  "tags": [
+    "dp",
+    "math",
+    "probability"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.25
+}

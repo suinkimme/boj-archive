@@ -1,0 +1,28 @@
+{
+  "id": 21608,
+  "title": "상어 초등학교",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>상어 초등학교에는 교실이 하나 있고, 교실은 N×N 크기의 격자로 나타낼 수 있다. 학교에 다니는 학생의 수는 N<sup>2</sup>명이다. 오늘은 모든 학생의 자리를 정하는 날이다. 학생은 1번부터 N<sup>2</sup>번까지 번호가 매겨져 있고, (r, c)는 r행 c열을 의미한다. 교실의 가장 왼쪽 윗 칸은 (1, 1)이고, 가장 오른쪽 아랫 칸은 (N, N)이다.</p>\n<p>선생님은 학생의 순서를 정했고, 각 학생이 좋아하는 학생 4명도 모두 조사했다. 이제 다음과 같은 규칙을 이용해 정해진 순서대로 학생의 자리를 정하려고 한다. 한 칸에는 학생 한 명의 자리만 있을 수 있고, |r<sub>1</sub> - r<sub>2</sub>| + |c<sub>1</sub> - c<sub>2</sub>| = 1을 만족하는 두 칸이 (r<sub>1</sub>, c<sub>1</sub>)과 (r<sub>2</sub>, c<sub>2</sub>)를 인접하다고 한다.</p>\n<ol>\n<li>비어있는 칸 중에서 좋아하는 학생이 인접한 칸에 가장 많은 칸으로 자리를 정한다.</li>\n<li>1을 만족하는 칸이 여러 개이면, 인접한 칸 중에서 비어있는 칸이 가장 많은 칸으로 자리를 정한다.</li>\n<li>2를 만족하는 칸도 여러 개인 경우에는 행의 번호가 가장 작은 칸으로, 그러한 칸도 여러 개이면 열의 번호가 가장 작은 칸으로 자리를 정한다.</li>\n</ol>\n<p>예를 들어, N = 3이고, 학생 N<sup>2</sup>명의 순서와 각 학생이 좋아하는 학생이 다음과 같은 경우를 생각해보자.</p>\n<table class=\"table table-bordered table-center-30\">\n<thead>\n<tr>\n<th>학생의 번호</th>\n<th>좋아하는 학생의 번호</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>4</td>\n<td>2, 5, 1, 7</td>\n</tr>\n<tr>\n<td>3</td>\n<td>1, 9, 4, 5</td>\n</tr>\n<tr>\n<td>9</td>\n<td>8, 1, 2, 3</td>\n</tr>\n<tr>\n<td>8</td>\n<td>1, 9, 3, 4</td>\n</tr>\n<tr>\n<td>7</td>\n<td>2, 3, 4, 8</td>\n</tr>\n<tr>\n<td>1</td>\n<td>9, 2, 5, 7</td>\n</tr>\n<tr>\n<td>6</td>\n<td>5, 2, 3, 4</td>\n</tr>\n<tr>\n<td>5</td>\n<td>1, 9, 2, 8</td>\n</tr>\n<tr>\n<td>2</td>\n<td>9, 3, 1, 4</td>\n</tr>\n</tbody>\n</table>\n<p>가장 먼저, 4번 학생의 자리를 정해야 한다. 현재 교실의 모든 칸은 빈 칸이다. 2번 조건에 의해 인접한 칸 중에서 비어있는 칸이 가장 많은 칸인 (2, 2)이 4번 학생의 자리가 된다.</p>\n<table class=\"table table-bordered table-21608\">\n<tbody>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n<tr>\n<td> </td>\n<td>4</td>\n<td> </td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>다음 학생은 3번이다. 1번 조건을 만족하는 칸은 (1, 2), (2, 1), (2, 3), (3, 2) 이다. 이 칸은 모두 비어있는 인접한 칸이 2개이다. 따라서, 3번 조건에 의해 (1, 2)가 3번 학생의 자리가 된다.</p>\n<table class=\"table table-bordered table-21608\">\n<tbody>\n<tr>\n<td> </td>\n<td>3</td>\n<td> </td>\n</tr>\n<tr>\n<td> </td>\n<td>4</td>\n<td> </td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>다음은 9번 학생이다. 9번 학생이 좋아하는 학생의 번호는 8, 1, 2, 3이고, 이 중에 3은 자리에 앉아있다. 좋아하는 학생이 가장 많이 인접한 칸은 (1, 1), (1, 3)이다. 두 칸 모두 비어있는 인접한 칸이 1개이고, 행의 번호도 1이다. 따라서, 3번 조건에 의해 (1, 1)이 9번 학생의 자리가 된다.</p>\n<table class=\"table table-bordered table-21608\">\n<tbody>\n<tr>\n<td>9</td>\n<td>3</td>\n<td> </td>\n</tr>\n<tr>\n<td> </td>\n<td>4</td>\n<td> </td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>이번에 자리를 정할 학생은 8번 학생이다. (2, 1)이 8번 학생이 좋아하는 학생과 가장 많이 인접한 칸이기 때문에, 여기가 그 학생의 자리이다.</p>\n<table class=\"table table-bordered table-21608\">\n<tbody>\n<tr>\n<td>9</td>\n<td>3</td>\n<td> </td>\n</tr>\n<tr>\n<td>8</td>\n<td>4</td>\n<td> </td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>7번 학생의 자리를 정해보자. 1번 조건을 만족하는 칸은 (1, 3), (2, 3), (3, 1), (3, 2)로 총 4개가 있고, 비어있는 칸과 가장 많이 인접한 칸은 (2, 3), (3, 2)이다. 행의 번호가 작은 (2, 3)이 7번 학생의 자리가 된다.</p>\n<table class=\"table table-bordered table-21608\">\n<tbody>\n<tr>\n<td>9</td>\n<td>3</td>\n<td> </td>\n</tr>\n<tr>\n<td>8</td>\n<td>4</td>\n<td>7</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>이런식으로 학생의 자리를 모두 정하면 다음과 같다.</p>\n<table class=\"table table-bordered table-21608\">\n<tbody>\n<tr>\n<td>9</td>\n<td>3</td>\n<td>2</td>\n</tr>\n<tr>\n<td>8</td>\n<td>4</td>\n<td>7</td>\n</tr>\n<tr>\n<td>5</td>\n<td>6</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>\n<p>이제 학생의 만족도를 구해야 한다. 학생의 만족도는 자리 배치가 모두 끝난 후에 구할 수 있다. 학생의 만족도를 구하려면 그 학생과 인접한 칸에 앉은 좋아하는 학생의 수를 구해야 한다. 그 값이 0이면 학생의 만족도는 0, 1이면 1, 2이면 10, 3이면 100, 4이면 1000이다.</p>\n<p>학생의 만족도의 총 합을 구해보자.</p>",
+  "input": "<p>첫째 줄에 N이 주어진다. 둘째 줄부터 N<sup>2</sup>개의 줄에 학생의 번호와 그 학생이 좋아하는 학생 4명의 번호가 한 줄에 하나씩 선생님이 자리를 정할 순서대로 주어진다.</p>\n<p>학생의 번호는 중복되지 않으며, 어떤 학생이 좋아하는 학생 4명은 모두 다른 학생으로 이루어져 있다. 입력으로 주어지는 학생의 번호, 좋아하는 학생의 번호는 N<sup>2</sup>보다 작거나 같은 자연수이다. 어떤 학생이 자기 자신을 좋아하는 경우는 없다.</p>",
+  "output": "<p>첫째 줄에 학생의 만족도의 총 합을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3\n4 2 5 1 7\n3 1 9 4 5\n9 8 1 2 3\n8 1 9 3 4\n7 2 3 4 8\n1 9 2 5 7\n6 5 2 3 4\n5 1 9 2 8\n2 9 3 1 4\n",
+      "output": "54\n"
+    },
+    {
+      "input": "3\n4 2 5 1 7\n2 1 9 4 5\n5 8 1 4 3\n1 2 9 3 4\n7 2 3 4 8\n9 8 4 5 7\n6 5 2 3 4\n8 4 9 2 1\n3 9 2 1 4\n",
+      "output": "1053\n"
+    }
+  ],
+  "hint": null,
+  "source": "baekjoon, 16silver, Green55",
+  "level": 11,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 9194,
+  "submission_count": null,
+  "average_tries": 2.300600051879883
+}

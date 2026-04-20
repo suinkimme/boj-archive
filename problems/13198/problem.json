@@ -1,0 +1,25 @@
+{
+  "id": 13198,
+  "title": "Router 7",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Henry and Hetty were recently hired by a networking company from Piatra Neamț. Their first project is to create a new type of router, the revolutionary Connect Ethernet Operating Interface 2016, comprised of:</p>\n<ul>\n<li>N input nodes, numbered from 1 to N;</li>\n<li>N output nodes, numbered from N+1 to 2×N;</li>\n<li>K internal nodes, numbered from 2×N+1 to 2×N+K;</li>\n<li>M unidirectional direct connections between pairs of distinct nodes.</li>\n</ul>\n<p>A node X can send data to a node Y (and hence Y can receive data from X) if:</p>\n<ul>\n<li>X = Y, or</li>\n<li>there exists a node Z such that X can send data to Z and there is a direct connection from node Z to node Y.</li>\n</ul>\n<p>If a node X can send data to a node Y, and X ≠ Y, then we define a data path from X to Y as a set of direct connections {(A<sub>1</sub>, A<sub>2</sub>), (A<sub>2</sub>, A<sub>3</sub>), … (A<sub>L-1</sub>, A<sub>L</sub>)} for some L ≥ 2, such that A<sub>1</sub> = X and A<sub>L</sub> = Y.</p>\n<p>A router works properly if:</p>\n<ul>\n<li>Each input node can send data to each output node;</li>\n<li>Each input node can receive data only from itself;</li>\n<li>Each output node can send data only to itself;</li>\n<li>For any two nodes X and Y, if X ≠ Y and X can send data to Y, then Y cannot send data to X;</li>\n<li>For any two nodes X and Y, if X ≠ Y and X can send data to Y, then the data path from X to Y is unique. In particular, any two nodes X and Y should be connected by at most 1 direct connection.</li>\n</ul>\n<p>Like any other electronic device, a router needs electricity to work. Let's define the power needed to operate a node X as P<sub>X</sub> = IN<sub>X</sub> × OUT<sub>X</sub>, where IN<sub>X</sub> is the number of input nodes that can send data to X, and OUT<sub>X</sub> is the number of output nodes that can receive data from X. Let's define the maximum power used by the router as P<sub>max</sub> = max(P<sub>1</sub>, P<sub>2</sub>, … P<sub>2×N+K</sub>).</p>\n<p>The project manager has given Henry and Hetty the technical specifications for building a few test routers, listed in the table below. For each of these specifications, the manager wants a router which:</p>\n<ul>\n<li>has exactly N input nodes and N output nodes;</li>\n<li>uses at most M<sub>lim</sub> direct connections;</li>\n<li>uses a maximum power which is at most Plim;</li>\n<li>uses at most 500 000 nodes overall (Total nodes = N<sub>tot</sub> = 2×N + K ≤ 500 000).</li>\n</ul>",
+  "input": "<p>On the first and only line, three integers: N, the number of input and output nodes; M<sub>lim</sub>, the maximum number of direct connections allowed; and P<sub>lim</sub>, the maximum power the router uses.</p>\n<p>N = 9978, M<sub>lim</sub> = 100 000, P<sub>lim</sub> = 100 000 </p>",
+  "output": "<p>You will output two integer numbers separated by a space: N<sub>tot</sub> = 2×N + K, representing the total number of nodes used to build the router; and M, representing the total number of direct connections used. On each of the following M lines you should output a pair of integers X and Y, meaning a direct connection from node X to node Y was built.</p>",
+  "samples": [
+    {
+      "input": "3 100 200\n",
+      "output": "9 8\n1 7\n2 7\n3 8\n7 8\n8 4\n8 9\n9 5\n9 6\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2016, Day 2",
+  "level": 19,
+  "tags": [
+    "graphs",
+    "constructive"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

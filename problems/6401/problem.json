@@ -1,0 +1,22 @@
+{
+  "id": 6401,
+  "title": "Network Wars",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>It is the year 2126 and comet Swift-Tuttle has struck the earth as predicted. The resultant explosion emits a large cloud of high energy neutrons that eliminates all human life. The accompanying electro-magnetic storm causes two unusual events: many of the links between various parts of the electronic network are severed, and some postgraduate AI projects begin to merge and mutate, in much the same way as animal life did several million years ago. In a very short time two programs emerge, Paskill and Lisper, which move through the network marking each node they visit: Paskill activates a modified Prolog interpreter and Lisper activates the `Hello World' program. However `Hello World' has mutated into an endless loop that so ties up the node that no other program, not even Lisper, can re-enter that node and the Prolog interpreter immediately reverse compiles (and destroys) any program that enters. However, Paskill knows which nodes it has visited and never tries to re-enter them. Thus if Lisper attempts to enter a node already visited by Paskill it will be annihilated; neither can enter a node already visited by Lisper, if either (or both) cannot move both will halt and if they ever arrive at a node simultaneously they annihilate each other. Both programs move through the network at the same speed.</p>\n<p>Write a program to simulate these events. All nodes in the the network are labelled with a single uppercase letter as shown below. When moving to the next node, Paskill searches alphabetically forwards from the current node, whereas Lisper searches alphabetically backwards from the current node, both wrapping round if necessary. Thus, (in the absence of the other) if Paskill enters the network below at A, it would visit the nodes in the order A, B, C, D, G, H, E, F; if Lisper enters the network at H it would visit them in the order H, G, E, F. Simulation stops when one or more of the above events occurs. If more than one event occurs, mention Paskill first.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:183px; width:456px\"/></p>",
+  "input": "<p>Input will consist of a series of lines. Each line will describe a network and indicate the starting nodes for the two programs. A network is described as a series of nodes separated by ';' and terminated by a period ('.'). Each node is described by its identifier, a ':' and one or more of the nodes connected to it. Each link will be mentioned at least once, as will each node, although not all nodes will be 'described'. After the period will appear the labels of the starting nodes---first Paskill and then Lisper. No line will contain more than 255 characters. The file will be terminated by a line consisting of a single #.</p>",
+  "output": "<p>Output will consist of one line for each network. Each line will specify the terminating event and the node where it occurs. The terminating event is one or two of the following:</p>\n<ul>\n<li>Lisper destroyed in node ?</li>\n<li>{Paskill/Lisper} trapped in node ?</li>\n<li>Both annihilated in node ?</li>\n</ul>",
+  "samples": [
+    {
+      "input": "A:BD;C:BD;F:E;G:DEH;H:EG. A H\nE:AB. A B\nB:ACD. B D\nA:B;B:C;D:E. A D\n#\n",
+      "output": "Paskill trapped in node D Lisper trapped in node F\nBoth annihilated in node E\nLisper destroyed in node B\nLisper trapped in node E\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, 1992 ACM South Pacific Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 8
+}

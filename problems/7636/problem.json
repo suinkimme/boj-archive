@@ -1,0 +1,26 @@
+{
+  "id": 7636,
+  "title": "Identity Checker",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You likely have seen that x(sin<sup>2</sup>x + cos<sup>2</sup>x) − x = 0, and you may have seen that sin(2x) − 2 sin x cos x = 0. But did you know that tan (2x)(x − x tan<sup>2</sup>x) − 2x tan x = 0? Would you believe that sin (2x) − 2 cos x = 0? That last one is false, but don’t just take our word for it; you should write a program that determines whether an algebraic expression simplifies to zero (whenever it is defined).</p>",
+  "input": "<p>The input consists of multiple test cases, each on one line. Each test case starts with an integer N, the number of tokens that describes a formula. The next N tokens describe a formula in reverse polish notation. The notation works as follows. There is a stack that begins empty, and the following commands manipulate the contents of the stack:</p>\n<ul>\n<li>“<code>x</code>” pushes the variable x to the stack.</li>\n<li>“<code>sin</code>”, “<code>cos</code>”, and “<code>tan</code>” replace the top element of the stack with its sin, cos, and tan, respectively.</li>\n<li>“<code>+</code>”, “<code>-</code>”, and “<code>*</code>” replace the top two elements of the stack (a on top, followed by b) with their sum (b + a), difference (b − a), and product (b ∗ a), respectively.</li>\n</ul>\n<p>You may assume that the input is valid, and results in a single item on the stack, which is the desired expression. The length of a line will be at most 300 characters. Function arguments can contain functions, so <code>x sin sin</code> is valid, but the recursion will not go any deeper than this. The input terminates with a line with N = 0.</p>",
+  "output": "<p>For each test case, print out a single line that contains “Identity” if the expression is always zero, and “Not an identity” otherwise (quotes added for clarity).</p>",
+  "samples": [
+    {
+      "input": "15 x sin x sin * x cos x cos * + x * x -\n16 x sin x cos * x sin x cos * + x x + sin -\n24 x x + tan x x tan x tan * x * - * x tan x * - x tan x * -\n10 x x + sin x cos - x cos -\n0\n",
+      "output": "Identity\nIdentity\nIdentity\nNot an identity\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, Stanford Local ACM Programming Contest, SLPC 2011",
+  "level": 19,
+  "tags": [
+    "bruteforcing",
+    "data_structures",
+    "stack"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2
+}

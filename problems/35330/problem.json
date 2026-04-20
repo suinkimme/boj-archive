@@ -1,0 +1,22 @@
+{
+  "id": 35330,
+  "title": "Cow Circle",
+  "time_limit": "6 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Farmer John has $N$ ($1 \\leq N \\leq 5000$) cows standing around a circular track divided into $M$ ($1 \\leq M \\leq 10^6$) equally spaced positions, numbered $0$ to $M-1$ clockwise. Cow $i$ is initially at position $x_i$, where $0 = x_1 &lt; x_2 &lt; \\dots &lt; x_N &lt; M$.</p>\n<p>For each $1 \\leq i \\leq N$, cow $i$ will independently and randomly choose either to face clockwise or counterclockwise with some probability specific to that cow. Once a cow has chosen her initial direction, she begins moving continuously in that direction at a constant speed of one position per minute. Whenever two cows meet (i.e., they occupy the same space), they bounce off of each other: immediately reversing their directions and continuing to move at the same speed in that direction.</p>\n<p>Farmer John is wondering where cow $1$ will end up. For each $0 \\leq i &lt; M$, find the probability that cow $1$ is at position $i$ after $K$ ($1 \\leq K \\leq 10^{18}$) minutes.</p>",
+  "input": "<p>The first line contains $T$ ($1 \\leq T \\leq 100$), the number of independent test cases. Each test case is specified as follows:</p>\n<p>The first line of each test case contains $N$ ($1 \\leq N \\leq 5000$), $M$ ($1 \\leq M \\leq 10^6$), and $K$ ($1 \\leq K \\leq 10^{18}$).</p>\n<p>The second line contains $N$ integers $p_1, \\dots, p_N$ ($0 \\leq p_i &lt; 10^9 + 7$) where if $\\frac{a_i}{b_i}$ is the probability cow $i$ goes clockwise, then $p_i \\cdot b_i \\equiv a_i \\pmod{10^9+7}$.</p>\n<p>The third and final line contains $N$ integers $x_1, x_2, \\dots, x_N$.</p>\n<p>It is guaranteed that the sum of $N^2$ over all test cases is $\\leq 5000^2$ and the sum of $M$ over all testcases is $\\leq 10^6$.</p>",
+  "output": "<p>Output a new line for each test case. The line for each test case should be formatted as follows:</p>\n<p>For every $0 \\leq i &lt; M$, let $\\frac{p_i}{q_i}$ be the probability cow $1$ is in position $i$ at the end of $K$ minutes. Output $M$ space-separated integers $p_iq_i^{-1} \\pmod{10^9 + 7}$ (where $p_iq_i^{-1} \\cdot q_i \\equiv p_i \\pmod{10^9+7}$).</p>",
+  "samples": [
+    {
+      "input": "3\n2 2 1\n500000004 500000004 \n0 1\n3 3 1\n500000004 500000004 500000004\n0 1 2\n5 10 13\n500000004 1 500000004 0 500000004\n0 3 4 7 9\n",
+      "output": "500000004 500000004\n500000004 250000002 250000002\n0 0 0 125000001 375000003 0 125000001 375000003 0 0\n"
+    }
+  ],
+  "hint": "<p>For the first test case, both cows have a $\\frac{1}{2}$ chance of going in either direction. If both pick the same direction, they will end up swapping positions (so cow $1$ ends up at $1$). Otherwise, they will bounce off in the middle and return to their original positions. Therefore, there is a $\\frac{1}{2}$ chance for cow $1$ to end up at $0$ and a $\\frac{1}{2}$ chance for cow $1$ to end up at $1$.</p>\n<p>For the second test case, all cows again have a $\\frac{1}{2}$ chance of going in either direction. For each combination of directions, here is where cow $1$ ends up at.</p>\n<ul>\n<li>CW, CW, CW: $1$</li>\n<li>CW, CW, CCW: $1$</li>\n<li>CCW, CCW, CCW: $2$</li>\n<li>CCW, CW, CCW: $2$</li>\n<li>CW, CCW, CW: $0$</li>\n<li>CW, CCW, CCW: $0$</li>\n<li>CCW, CW, CW: $0$</li>\n<li>CCW, CCW, CW: $0$</li>\n</ul>",
+  "source": "Olympiad, USA Computing Olympiad, 2025-2026 Season, USACO 2026 Second Contest, Platinum",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

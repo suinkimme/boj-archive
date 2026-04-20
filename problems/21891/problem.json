@@ -1,0 +1,32 @@
+{
+  "id": 21891,
+  "title": "Neatness",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Boys Dima and Mitya share a room in a dormitory and take turns cleaning it every $k$ days.  New month, consisting of $n$ days, has just begun, so boys have to come up with a new cleaning schedule. To do it, boys simply choose who is going to clean first, and which of the first $k$ days of the month it will happen. The next cleaning will happen exactly $k$ days after the previous one, and the other boy will have to do it. For example, if Dima cleans the room on day $i$, then, on day $i + k$, Mitya will have to do the cleaning, on day $i + 2k$, it will be Dima's turn again, and so on.</p>\n<p>The schedule should be fair: both boys should clean the room equal number of times. The situation is complicated by the fact that both Dima and Mitya are planning go to an olympiad once during this month. If one of the boys is absent during his cleaning day, the other boy is cleaning in his place. The schedule does not shift in this case. It is known that Dima will be absent from the $a$-th day to the $b$-th day inclusive, and Mitya --- from the $c$-th day until the $d$-th day. Days in month are numbered from 1 to $n$. Boys' trips to olympiads do not intersect, so every day at least one of the boys is at home.</p>\n<p>Help boys decide who should clean the room first, and which day (among the first $k$ days of the month) it should happen, or determine that it is impossible.</p>",
+  "input": "<p>First line contains two integers $n$ and $k$ --- the number of days in this month and the number of days between two consecutive cleanings ($2 \\le n \\le 10^{18}$, $1 \\le k \\le n$).</p>\n<p>Second line contains integers $a$, $b$, $c$ and $d$, describing boys' trips to olympiads  ($1 \\le a \\le b \\le n$; $1 \\le c \\le d \\le n$; $b &lt; c$ or $d &lt; a$). </p>",
+  "output": "<p>If it's impossible to create a fair schedule, print $-1$.</p>\n<p>Otherwise, print one integer in the first line --- the day of the first cleaning. On the second line print &lt;&lt;<code>Dima</code>&gt;&gt;, if Dima should clean first, and &lt;&lt;<code>Mitya</code>&gt;&gt; otherwise.</p>\n<p>If there are multiple possible solutions, print any of them.</p>",
+  "samples": [
+    {
+      "input": "12 5\n6 10 11 12\n",
+      "output": "3\nDima\n"
+    },
+    {
+      "input": "18 4\n15 18 1 6\n",
+      "output": "3\nMitya\n"
+    },
+    {
+      "input": "10 3\n1 4 5 6\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>Let's represent sample tests as tables using the following notation:</p>\n<ul>\n<li>&lt;&lt;<code>d</code>&gt;&gt; --- day, when Dima is away,</li>\n<li>&lt;&lt;<code>m</code>&gt;&gt; --- day, when Mitya is away, </li>\n<li>&lt;&lt;<code>D</code>&gt;&gt; --- day, when Dima cleans the room,</li>\n<li>&lt;&lt;<code>M</code>&gt;&gt; --- day, when Mitya cleans the room, </li>\n<li>&lt;&lt;<code>*</code>&gt;&gt; --- possible starting day.</li>\n</ul>\n<p>Then for the first sample we get the following table:</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<th>Days</th>\n<td>1</td>\n<td>2</td>\n<td>3</td>\n<td>4</td>\n<td>5</td>\n<td>6</td>\n<td>7</td>\n<td>8</td>\n<td>9</td>\n<td>10</td>\n<td>11</td>\n<td>12</td>\n</tr>\n<tr>\n<th>Departures</th>\n<td>*</td>\n<td>*</td>\n<td>*</td>\n<td>*</td>\n<td>*</td>\n<td>d</td>\n<td>d</td>\n<td>d</td>\n<td>d</td>\n<td>d</td>\n<td>m</td>\n<td>m</td>\n</tr>\n<tr>\n<th>Schedule</th>\n<td>.</td>\n<td>.</td>\n<td>D</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>M</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n</tr>\n<tr>\n<th>Actual</th>\n<td>.</td>\n<td>.</td>\n<td>D</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>M</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n</tr>\n</tbody>\n</table>\n<p>This way, both bots will clean the room equal number of times, and boys' trips do not affect the schedule.</p>\n<p>Table for the second sample:</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<th>Days</th>\n<td>1</td>\n<td>2</td>\n<td>3</td>\n<td>4</td>\n<td>5</td>\n<td>6</td>\n<td>7</td>\n<td>8</td>\n<td>9</td>\n<td>10</td>\n<td>11</td>\n<td>12</td>\n<td>13</td>\n<td>14</td>\n<td>15</td>\n<td>16</td>\n<td>17</td>\n<td>18</td>\n</tr>\n<tr>\n<th>Departures</th>\n<td>m*</td>\n<td>m*</td>\n<td>m*</td>\n<td>m*</td>\n<td>m</td>\n<td>m</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>d</td>\n<td>d</td>\n<td>d</td>\n<td>d</td>\n</tr>\n<tr>\n<th>Schedule</th>\n<td>.</td>\n<td>.</td>\n<td>M</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>D</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>M</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>D</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n</tr>\n<tr>\n<th>Actual</th>\n<td>.</td>\n<td>.</td>\n<td>D</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>D</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>M</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n<td>M</td>\n<td>.</td>\n<td>.</td>\n<td>.</td>\n</tr>\n</tbody>\n</table>\n<p>Because Mitya is absent on the third day, Dima will clean instead. Mitya will clean the room on the 15-th day because of Dima's trip. This way, each boy cleans the room twice, even if it wasn't scheduled.</p>",
+  "source": "Contest, Innopolis Open in Informatics, Innopolis Open, Elimination round 2, 2017-2018",
+  "level": 11,
+  "tags": [
+    "math"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.5
+}

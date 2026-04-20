@@ -1,0 +1,22 @@
+{
+  "id": 27802,
+  "title": "Pattern Matching",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Many terminals use asterisks (<code>*</code>) to signify \"any string\", including the empty string. For example, when listing files matching <code>BASH*</code>, a terminal may list <code>BASH</code>, <code>BASHER</code> and <code>BASHFUL</code>. For <code>*FUL</code>, it may list <code>BEAUTIFUL</code>, <code>AWFUL</code> and <code>BASHFUL</code>. When listing <code>B*L</code>, <code>BASHFUL</code>, <code>BEAUTIFUL</code> and <code>BULL</code> may be listed.</p>\n<p>In this problem, formally, a <i>pattern</i> is a string consisting of only uppercase English letters and asterisks (<code>*</code>), and a <i>name</i> is a string consisting of only uppercase English letters. A pattern <i>p</i> matches a name <i>m</i> if there is a way of replacing every asterisk in <i>p</i> with a (possibly empty) string to obtain <i>m</i>. Notice that each asterisk may be replaced by a different string.</p>\n<p>Given <b>N</b> patterns, can you find a single name of at most 10<sup>4</sup> letters that matches all those patterns at once, or report that it cannot be done?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case starts with a line with a single integer <b>N</b>: the number of patterns to simultaneously match. Then, <b>N</b> lines follow, each one containing a single string <b>P<sub>i</sub></b> representing the i-th pattern.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is any name containing at most 10<sup>4</sup> letters such that each <b>P<sub>i</sub></b> matches <code>y</code> according to the definition above, or <code>*</code> (i.e., just an asterisk) if there is no such name.</p>",
+  "samples": [
+    {
+      "input": "2\n5\n*CONUTS\n*COCONUTS\n*OCONUTS\n*CONUTS\n*S\n2\n*XZ\n*XYZ\n",
+      "output": "Case #1: COCONUTS\nCase #2: *\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, there are other possible answers, including <code>COCOCONUTS</code> and <code>ILIKECOCONUTS</code>. Neither <code>COCONUTSAREGREAT</code> nor <code>COCOANUTS</code> would be acceptable. Notice that the same pattern may appear more than once within a test case.</p>\n<p>In Sample Case #2, there is no acceptable name, so the answer is <code>*</code>.</p>\n<p>The following cases could not appear in Test Set 1, but could appear in Test Set 2 or Test Set 3:</p>\n<pre>\n  4\n  H*O\n  HELLO*\n  *HELLO\n  HE*\n</pre>\n<p><code>HELLO</code> and <code>HELLOGOODBYEHELLO</code> are examples of acceptable answers. <code>OTHELLO</code> and <code>HELLOO</code> would not be acceptable.</p>\n<pre>\n  2\n  CO*DE\n  J*AM\n</pre>\n<p>There is no name that matches both patterns, so the answer would be <code>*</code>.</p>\n<pre>\n  2\n  CODE*\n  *JAM\n</pre>\n<p><code>CODEJAM</code> is one example of an acceptable answer.</p>\n<p>The following cases could not appear in Test Set 1 or Test Set 2, but could appear in Test Set 3:</p>\n<pre>\n  2\n  A*C*E\n  *B*D*\n</pre>\n<p><code>ABCDE</code> and <code>ABUNDANCE</code> are among the possible acceptable answers, but <code>BOLDFACE</code> is not.</p>\n<pre>\n  2\n  A*C*E\n  *B*D\n</pre>\n<p>There is no name that matches both patterns, so the answer would be <code>*</code>.</p>\n<pre>\n  2\n  **Q**\n  *A*\n</pre>\n<p><code>QUAIL</code> and <code>AQ</code> are among the possible acceptable answers here.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2020, Round 1A",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

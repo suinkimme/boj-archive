@@ -1,0 +1,43 @@
+{
+  "id": 3543,
+  "title": "Exclusive Access 2",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Having studied mutual exclusion protocols in the previous year’s competition you are now facing a more challenging problem. You have a big enterprise system with a number concurrently running processes. The system has several resources — databases, message queues, etc. Each concurrent process works with two resources at a time. For example, one process might copy a job from a particular database into the message queue, the other process might take a job from the message queue, perform the job, and then put the result into some other message queue, etc.</p>\n<p>All resources are protected from concurrent access by mutual exclusion protocols also known as locks. For example, to access a particular database process acquires the lock for this database, then performs its work, then releases the lock. No two processes can hold the same lock at the same time (that is the property of mutual exclusion). Thus, the process that tries to acquire a lock waits if that lock is taken by some other process.</p>\n<p>The main loop of the process that works with resources P and Q looks like this:</p>\n<pre>\nloop forever\n  DoSomeNonCriticalWork()\n  P.lock()\n  Q.lock()\n  WorkWithResourcesPandQ()\n  Q.unlock()\n  P.unlock()\nend loop</pre>\n<p>The order in which locks for resources P and Q are taken is important. Consider a case where process c had acquired lock P with <code>P.lock()</code> and is waiting for lock Q in <code>Q.lock()</code>. It means that lock Q is taken by some other process d. If the process d is working (not waiting), then we say that there is a wait chain of length 1. If d had acquired lock Q and is waiting for another lock R, which is acquired by a working process e, then we say that there is a wait chain of length 2, etc. If any process in this wait chain waits for lock P that is already taken by process c, then we say that the wait chain has infinite length and the system deadlocks.</p>\n<p>For this problem, we are interested only in alternating wait chains where processes hold their first locks and wait for the second ones. Formally:</p>\n<blockquote>\n<p>Alternating wait chain of length n (n ≥ 0) is an alternating sequence of resources R<sub>i</sub> (0 ≤ i ≤ n + 1) and distinct processes c<sub>i</sub> (0 ≤ i ≤ n): R<sub>0</sub> c<sub>0</sub> R<sub>1</sub> c<sub>1</sub> ... R<sub>n</sub> c<sub>n</sub> R<sub>n+1</sub>, where process c<sub>i</sub> acquires locks for resources R<sub>i</sub> and R<sub>i+1</sub> in this order. Alternating wait chain is a deadlock when R<sub>0</sub> = R<sub>n+1</sub>.</p>\n</blockquote>\n<p>You are given a set of resources each process works with. Your task is to decide the order in which each process has to acquire its resource locks, so that the system never deadlocks and the maximum length of any possible alternating wait chain is minimized.</p>",
+  "input": "<p>The first line of the input file contains a single integer n (1 ≤ n ≤ 100) — the number of processes.</p>\n<p>The following n lines describe resources that each process needs. Each resource is designated with an uppercase English letter from L to Z, so there are at most 15 resources. Each line describing process contains two different resources separated by a space.</p>",
+  "output": "<p>On first line of the output file write a singe integer number m — the minimally possible length of the maximal alternating wait chain.</p>\n<p>Then write n lines — one line per process. On each line write two resources in the order they should be taken by the corresponding process to ensure this minimal length of the maximal alternating wait chain. Separate resources on a line by a space. If there are multiple satisfying orderings, then write any of them. The order of the processes in the output should correspond to their order in the input.</p>",
+  "samples": [
+    {
+      "input": "2\nP Q\nR S\n",
+      "output": "0\nP Q\nR S\n"
+    },
+    {
+      "input": "6\nP Q\nQ R\nR S\nS T\nT U\nU P\n",
+      "output": "0\nP Q\nR Q\nR S\nT S\nT U\nP U\n"
+    },
+    {
+      "input": "4\nP Q\nP Q\nP Q\nP Q\n",
+      "output": "0\nP Q\nP Q\nP Q\nP Q\n"
+    },
+    {
+      "input": "3\nP Q\nQ R\nR P\n",
+      "output": "1\nP Q\nQ R\nP R\n"
+    },
+    {
+      "input": "6\nP Q\nQ S\nS R\nR P\nP S\nR Q\n",
+      "output": "2\nP Q\nQ S\nR S\nP R\nP S\nR Q\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2009",
+  "level": 22,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield",
+    "graphs"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.100000023841858
+}

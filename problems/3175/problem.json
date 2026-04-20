@@ -1,0 +1,33 @@
+{
+  "id": 3175,
+  "title": "formule",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Consider mathematical formulas defined as follows:</p>\n<ul>\n<li>a <strong>constant</strong> is a lowercase letter of the English alphabet ('<code>a</code>'-'<code>z</code>')</li>\n<li>a <strong>variable</strong> is the digit '<code>0</code>' or '<code>1</code>'</li>\n<li>a <strong>function</strong> is an uppercase letter of the English alphabet ('<code>A</code>'-'<code>Z</code>')</li>\n<li>a <strong>formula</strong> is a constant <strong>or</strong> a variable <strong>or</strong> a function(formula,formula)</li>\n</ul>\n<p>For example '<code>a</code>', '<code>0</code>', '<code>F(a,F(a,a))</code>' and '<code>G(F(0,1),G(a,1))</code>' are formulas, while '<code>A</code>', '<code>a(9)</code>' and '<code>F(G(),a)</code>' are not.</p>\n<p>Formulas that <strong>don't contain</strong> any variables are called <strong>basic formulas</strong>.</p>\n<p>You are given two formulas. Write a program that will <strong>substitute</strong> every occurrence (in both formulas) of some variable with some <strong>basic formula</strong> so that, after substitution, the two formulas become <strong>identical</strong>.</p>\n<p>If a variable appears more than once in one or both formulas then <strong>each occurrence</strong> has to be substituted with <strong>the same</strong> basic formula. </p>",
+  "input": "<p>Two lines of input contain two formulas. Each will contain at most 100 characters.</p>",
+  "output": "<p>The first line of output should contain the substitution for the variable '<code>0</code>', and the second line should contain the substitution for the variable '<code>1</code>'.</p>\n<p>In both lines the format should be '<code>variable=basic formula</code>'. Even if a variable doesn't appear in formulas at all, you should still output a substitution for it.</p>\n<p>Note: the test data will be such that a solution, although not necessarily unique, always exists. </p>",
+  "samples": [
+    {
+      "input": "0\na\n",
+      "output": "0=a\n1=b\n"
+    },
+    {
+      "input": "F(0,G(a,1))\nF(c,G(a,F(0,0)))\n",
+      "output": "0=c\n1=F(c,c)\n"
+    },
+    {
+      "input": "F(G(1,a),G(1,a))\nF(0,0)\n",
+      "output": "0=G(b,a)\n1=b\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2006, Final Exam #2",
+  "level": 20,
+  "tags": [
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2.75
+}

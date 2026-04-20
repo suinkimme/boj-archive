@@ -1,0 +1,33 @@
+{
+  "id": 11771,
+  "title": "What’s on the Grille?",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The grille cipher is a technique that dates back to 1550 when it was first described by Girolamo Cardano. The version we’ll be dealing with comes from the late 1800’s and works as follows. The message to be encoded is written on an n × n grid row-wise, top to bottom, and is overlaid with a card with a set of holes punched out of it (this is the grille).</p>\n<p>The message is encrypted by writing down the letters that appear in the holes, row by row, then rotating the grille 90 degrees clockwise, writing the new letters that appear, and repeating this process two more times. Of course the holes in the grille must be chosen so that every letter in the message will eventually appear in a hole (this is actually not that hard to arrange).</p>\n<p>An example is shown below, where the message “Send more monkeys” is encrypted as “noeesrksdmnyemoj”, after adding a random letter to fill out the grid (this example corresponds to the first sample input.)</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:118px; width:516px\"/></p>\n<p style=\"text-align: center;\">Figure I.1</p>\n<p>If the message is larger than the n × n grid, then the first n<sup>2</sup> letters are written in the grid and encrypted, then the next n<sup>2</sup> are encrypted, and so on, always filling the last grid with random letters if needed. Here, we will only be dealing with messages of length n<sup>2</sup>.</p>\n<p>Your job, should you choose to accept it, is to take an encrypted message and the corresponding grille and decrypt it. And we’ll add one additional twist: the grille given might be invalid, i.e., the holes used do not allow every location in the grid to be used during the encryption process. If this is the case, then you must indicate that you can’t decrypt the message.</p>",
+  "input": "<p>The input starts with a line containing a positive integer n ≤ 10 indicating the size of the grid and grille. The next n lines will specify the grille, using ‘.’ for a hole and ‘X’ for a non-hole. Following this will be a line containing the encrypted message, consisting solely of lowercase alphabetic characters. The number of characters in this line will always be n<sup>2</sup>.</p>",
+  "output": "<p>Output the decrypted text as a single string with no spaces, or the phrase “invalid grille” if the grille is invalid.</p>",
+  "samples": [
+    {
+      "input": "4\nXX.X\nX.X.\nXXXX\n.XXX\nnoeesrksdmnyemoj\n",
+      "output": "sendmoremonkeysj\n"
+    },
+    {
+      "input": "4\n.XX.\nXXXX\nXXXX\n.XX.\nabcdefghijklmnop\n",
+      "output": "invalid grille\n"
+    },
+    {
+      "input": "2\nX.\nXX\naybb\n",
+      "output": "baby\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2015 East Central Regional Contest, hello70825",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 99,
+  "submission_count": null,
+  "average_tries": 1.9191999435424805
+}

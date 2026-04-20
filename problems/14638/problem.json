@@ -1,0 +1,32 @@
+{
+  "id": 14638,
+  "title": "Posterize",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:211px; width:598px\"/></p>\n<p>Pixels in a digital picture can be represented with three integers in the range 0 to 255 that indicate the intensity of the red, green, and blue colors. To compress an image or to create an artistic effect, many photo-editing tools include a “posterize” operation which works as follows. Each color channel is examined separately; this problem focuses only on the red channel. Rather than allow all integers from 0 to 255 for the red channel, a posterized image allows at most k integers from this range. Each pixel’s original red intensity is replaced with the nearest of the allowed integers. The photo-editing tool selects a set of k integers that minimizes the sum of the squared errors introduced across all pixels in the original image. If there are n pixels that have original red values r<sub>1</sub>, . . . , r<sub>n</sub>, and k allowed integers v<sub>1</sub>, . . . , v<sub>k</sub>, the sum of squared errors is defined as</p>\n<p style=\"text-align: center;\">\\(\\sum_{i=1}^{n}{\\min_{1 \\le j \\le k}{(r_i - v_j)^2}}\\).</p>\n<p>Your task is to compute the minimum achievable sum of squared errors, given parameter k and a description of the red intensities of an image’s pixels.</p>",
+  "input": "<p>The first line of the input contains two integers d (1 ≤ d ≤ 256), the number of distinct red values that occur in the original image, and k (1 ≤ k ≤ d), the number of distinct red values allowed in the posterized image. The remaining d lines indicate the number of pixels of the image having various red values. Each such line contains two integers r (0 ≤ r ≤ 255) and p (1 ≤ p ≤ 2<sup>26</sup>), where r is a red intensity value and p is the number of pixels having red intensity r. Those d lines are given in increasing order of red value.</p>",
+  "output": "<p>Display the sum of the squared errors for an optimally chosen set of k allowed integer values.</p>",
+  "samples": [
+    {
+      "input": "2 1\n50 20000\n150 10000\n",
+      "output": "66670000\n"
+    },
+    {
+      "input": "2 2\n50 20000\n150 10000\n",
+      "output": "0\n"
+    },
+    {
+      "input": "4 2\n0 30000\n25 30000\n50 30000\n255 30000\n",
+      "output": "37500000\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2017",
+  "level": 16,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 59,
+  "submission_count": null,
+  "average_tries": 1.7458000183105469
+}

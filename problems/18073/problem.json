@@ -1,0 +1,29 @@
+{
+  "id": 18073,
+  "title": "Golf Time",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Galina is an aspiring golfer and spends all her free time at a minigolf park. Her favorite golf course in this park is a rectangle, with one of its sides parallel to the north-south direction, and the other one parallel to the east-west direction. The ball is really small and can be considered a point.</p>\n<p>Galina wants to practice a specific shot called “put”. In this shot, a ball is placed somewhere inside the golf course and hit north-east, obtaining the speed of √2 inches per second. This means that the ball starts moving by exactly 1 inch to the north and 1 inch to the east per second.</p>\n<p>The golf park uses an innovative technology that eliminates all friction, and the ball will continue to move at the initial speed regardless of the traveled distance. Collisions with golf course borders will be perfectly elastic. Fancy!</p>\n<p>Inside the course there is a pond that is represented as a simple polygon with edges parallel to the sides of the golf course. If the ball touches the pond, it sinks momentarily.</p>\n<p>You are given a list of starting coordinates for Galina’s next put training session. For each starting position, assuming a put is shot from this place, calculate how long the ball will travel before falling into the pond and find exactly where it happens, or determine that the ball will move indefinitely.</p>",
+  "input": "<p>The first line contains two integers w and h, the width and the height of the golf course in inches (4 ≤ w, h ≤ 5 · 10<sup>8</sup>). A coordinate system is introduced in such a way that the corners of the golf course have coordinates (0, 0), (w, 0), (w, h), (0, h), and the point (1, 1) is to the north-east of the point (0, 0).</p>\n<p>The second line contains a single integer n, denoting the number of vertices in the polygon (4 ≤ n ≤ 1000).</p>\n<p>Each of the following n lines contains two integers x<sub>i</sub> and y<sub>i</sub>, denoting the coordinates of the i-th vertex (1 ≤ x<sub>i</sub> ≤ w − 1; 1 ≤ y<sub>i</sub> ≤ h − 1). The vertices are listed in traversal order.</p>\n<p>All polygon vertices are distinct and none of them lie at the polygon’s edge. All polygon edges are either vertical (x<sub>i</sub> = x<sub>i+1</sub>; x<sub>n</sub> = x<sub>1</sub>) or horizontal (y<sub>i</sub> = y<sub>i+1</sub>; y<sub>n</sub> = y<sub>1</sub>), and none of them intersects another.</p>\n<p>The next line contains a single integer t, denoting the number of starting points for a shot (1 ≤ t ≤ 100).</p>\n<p>Each of the following t lines contains two integers <span style=\"text-decoration-line: overline;\">x</span><sub>i</sub> and <span style=\"text-decoration:overline\">y</span><sub>i</sub>, denoting the coordinates of the i-th starting point (1 ≤ <span style=\"text-decoration:overline\">x</span><sub>i</sub> ≤ w − 1; 1 ≤ <span style=\"text-decoration:overline\">y</span><sub>i</sub> ≤ h − 1). No starting point lies inside or on the border of the pond.</p>\n<p>Note that all starting points are independent of each other. In particular, you can assume that there is exactly one ball inside the golf course at any moment.</p>",
+  "output": "<p>For each starting point in order of input, output either a single integer −1 if the ball will never sink, or three integers τ x<sub>s</sub> y<sub>s</sub>, denoting the time before the ball sinks in seconds, and coordinates of the point where it happens (τ &gt; 0; 1 ≤ x<sub>s</sub> ≤ w − 1; 1 ≤ y<sub>s</sub> ≤ h − 1). Point (x<sub>s</sub>, y<sub>s</sub>) must belong to the border of the pond.</p>",
+  "samples": [
+    {
+      "input": "10 8\n6\n1 4\n1 5\n3 5\n3 6\n4 6\n4 4\n4\n2 2\n1 7\n4 7\n7 5\n",
+      "output": "2 4 4\n3 4 6\n13 3 4\n15 2 4\n"
+    },
+    {
+      "input": "6 6\n4\n2 2\n4 2\n4 4\n2 4\n3\n5 5\n5 2\n5 5\n",
+      "output": "3 4 4\n-1\n3 4 4\n"
+    }
+  ],
+  "hint": "<p>In the first example, the ball trajectories look as shown:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 239px; height: 203px;\"/></p>\n<p>In the second example, starting positions 1 and 3 coincide, and for the position 2 the ball will never stop:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 163px; height: 169px;\"/></p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2019-2020 North-Western Russia Regional Contest",
+  "level": 25,
+  "tags": [
+    "math",
+    "number_theory"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 4.125
+}

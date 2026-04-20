@@ -1,0 +1,35 @@
+{
+  "id": 20573,
+  "title": "Cactus Shoppe",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>After retirement, UT CS professors go to a farm in upstate Texas where they garden and do research to their hearts' content. Oftentimes these two interests overlap, as is the case with the amazing Upstate Texas Cactus Shoppe (UTCS).</p>\n<p>For those of us who are not retired CS professors, a cactus is an undirected graph where each edge belongs to at most one simple cycle. Here are some pictures of cactuses:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 256px; height: 192px;\"/> <img alt=\"\" src=\"2.png\" style=\"width: 256px; height: 192px;\"/></p>\n<p style=\"text-align: center;\">Figure 1: Cactuses! Left photo by <a href=\"https://commons.wikimedia.org/wiki/File:Singapore_Botanic_Gardens_Cactus_Garden_4.jpg\">Calvin Teo</a>. Right photo by <a href=\"https://commons.wikimedia.org/wiki/File:SunGarden-SingaporeBotanicGardens-20070102.jpg\">Genleorus</a>.</p>\n<p>Here is a picture of a cactus graph:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 512px; height: 341px;\"/></p>\n<p style=\"text-align: center;\">Figure 2: Cactus graph! Image created by <a href=\"https://en.wikipedia.org/w/index.php?title=File:Cactus_graph.svg\">David Eppstein</a>.</p>\n<p>The UTCS has a single cactus. Each vertex in the cactus has a flower identifier $f_i$, describing the flowers that reside in that part of the cactus. If $f_i$ and $f_j$ share divisors, then the flowers at those vertices are similar.</p>\n<p>To conduct a purchase at the UTCS, a professor comes in with a flower identifier $q_i$. They then make a copy of the master cactus and remove all the vertices where $q_i$ does <em>not</em> divide $f_i$. They also remove all edges which were attached to at least one deleted vertex. Afterwards, the cactus may become disconnected. Each professor wonders how many connected components they are left with after this process. An empty graph has $0$ connected components. Two vertices are in the same connected component if there is some simple path using the remaining edges from one vertex to the other.</p>\n<p>All this cutting and pruning is hard work, especially for the retired. Can you help answer their queries?</p>",
+  "input": "<p>The first line has three space-separated integers $n$ ($2 \\leq n \\leq 100\\,000$), $m$ ($1 \\leq m \\leq 200\\,000$) and $q$ ($1 \\leq q \\leq 100\\,000$): the number of vertices in the cactus, the number of edges in the cactus and the number of queries. The next line has $n$ space separated integers $f_i$ ($1 \\leq f_i \\leq 1\\,000\\,000$): the flower identifier for each vertex. The next $m$ lines each contain two integers $a$ and $b$ ($1 \\leq a, b \\leq n$), meaning there is an edge connecting $a$ and $b$. It is guaranteed these edges form a connected valid cactus. No edge appears more than once and no edge connects a vertex with itself.</p>\n<p>The next $q$ lines each contain a professor's query $q_i$ ($1 \\leq q_i \\leq 1\\,000\\,000$).</p>",
+  "output": "<p>For each query made by a professor, output the number of connected components that remain when removing all the vertices that are not divisible by $q_i$.</p>",
+  "samples": [
+    {
+      "input": "3 2 5\n15 10 6\n1 2\n2 3\n5\n14\n10\n3\n2\n",
+      "output": "1\n0\n1\n2\n1\n"
+    },
+    {
+      "input": "5 6 4\n6 15 9 20 12\n1 2\n2 3\n3 1\n2 4\n4 5\n5 2\n5\n3\n7\n2\n",
+      "output": "1\n1\n0\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": ", University, UT Invitational Programming Contest, UT Invitational Programming Contest 2019",
+  "level": 22,
+  "tags": [
+    "cactus",
+    "euler_characteristic",
+    "geometry",
+    "graphs",
+    "math",
+    "number_theory",
+    "primality_test",
+    "sieve"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.1110999584197998
+}

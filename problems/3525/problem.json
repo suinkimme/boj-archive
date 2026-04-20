@@ -1,0 +1,30 @@
+{
+  "id": 3525,
+  "title": "Hands of Poker",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The standard 52-card deck consists of 52 cards divided into 4 suits: clubs, diamonds, hearts and spades. For each suit there are 13 ranks: 2, 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king and ace, listed from the lowest to the highest.</p>\n<p>A card is denoted by its rank (‘2’. . . ‘9’ for 2. . . 9, ‘T’ for 10, ‘J’ for jack, ‘Q’ for queen, ‘K’ for king, and ‘A’ for ace) followed by its suit (‘C’ for clubs, ‘D’ for diamonds, ‘H’ for hearts, and ‘S’ for spades). Cards are partially ordered by their ranks. The suit does not play a role in the cards ordering.</p>\n<p>A Poker hand is a set of five distinct cards. Each hand is said to have a certain ranking. A hand with a higher ranking beats a hand with a lower one. Two hands of the same ranking are compared using a tie-breaking rule specific for their ranking — either one of them beats the other or they are tied.</p>\n<p>The list of poker rankings is given below, from the worst ranking to the best ranking. If a hand satisfies several rankings, only the best one is considered.</p>\n<ul>\n<li>High Card — Does not fit into any ranking below. When comparing with another High Card hand, the ranks of the highest cards in the two hands are first compared. If there is a tie, the second highest cards in each hand are compared, and so on. (Example: QS, JH, 9C, 7H, 3D)</li>\n<li>One Pair — Two cards of the same rank. Pair with higher rank beats the lower pair. In case of a tie, the remaining three cards are used as tie-breakers, compared in the descending order of their ranks (as in High Card). (Example: 6D, 6H, QD, 9H, 4S)</li>\n<li>Two Pairs — Two pairs of cards of the same rank. When comparing with another Two Pairs hand, the higher pair is first compared, then the lower pair, and finally the rank of the fifth remaining card. (Example: JH, JS, TS, TD, 8S)</li>\n<li>Three of a Kind — Three cards of the same rank. Three-of-a-kind with the higher rank beats the lower one. In case of a tie, the remaining two cards are used as tie-breakers, compared in the descending order. (Example: 5S, 5H, 5D, JH, 6D)</li>\n<li>Straight — Five cards in consecutive rank. An ace can either be accounted above a king or below a two, but not both, so wrapping is not allowed. Two straights are compared using the rank of the highest card (in the case of A, 2, 3, 4, 5, the highest card is considered to be 5). (Example: QH, JC, TH, 9D, 8D)</li>\n<li>Flush — Five cards of the same suit. When comparing two Flushes, the rank of the highest card is first considered, then the second highest and so on (as in High Card). (Example: AS, JS, 8S, 6S, 5S)</li>\n<li>Full House — Three cards of the same rank, and two cards of same rank. When comparing with another Full House, the rank of the three cards is first compared, then the rank of the two cards. (Example: 7S, 7H, 7C, JC, JH)</li>\n<li>Four of a Kind — Four cards of the same rank. Two four-of-a-kinds are first compared by the ranks of the four cards. In case of a tie, the rank of the fifth card is used as a tie-breaker. (Example: 4C, 4D, 4H, 4S, TD)</li>\n<li>Straight Flush — A hand that is both a Straight and a Flush. Same tie-breaker as for a Straight. (Example: TH, 9H, 8H, 7H, 6H)</li>\n</ul>\n<p>Consider the set H of all Poker hands. Let us introduce an evaluation function v : H → {1, . . . , 7462}, such that for any two Poker hands a and b, a beats b if and only if v(a) &gt; v(b). There exists exactly one such evaluation function v.</p>\n<p>Given a Poker hand a, find the value of v(a).</p>",
+  "input": "<p>The input file contains space-separated list of five distinct card descriptions. Each card is described with two characters denoting its rank and suit, respectively. The ranks are denoted by ‘2’. . . ‘9’, ‘T’, ‘J’, ‘Q’, ‘K’, and ‘A’ (listed here in the ascending order). The suits are denoted by ‘C’, ‘D’, ‘H’, and ‘S’.</p>",
+  "output": "<p>Output the value of the evaluation function v(a) for the given hand a.</p>",
+  "samples": [
+    {
+      "input": "JH AH TH KH QH\n",
+      "output": "7462\n"
+    },
+    {
+      "input": "3S 7S 2C 4S 5H\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2010",
+  "level": 19,
+  "tags": [
+    "math",
+    "implementation",
+    "combinatorics"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 2.200000047683716
+}

@@ -1,0 +1,31 @@
+{
+  "id": 25260,
+  "title": "Event Hopping",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"width: 159px; height: 181px; float: right;\"/>What a strange coincidence! After having determined the most valuable contemporary art collection, you noticed that it is apparently located somewhere near Lübeck. Since you don’t know its exact location, you want to gather more information. Luckily, on the day you arrive for this year’s BOI, the local art community hosts $N$ events about contemporary art. This seems to be just the opportunity you were waiting for.</p>\n<p>To plan your visit of these events, you numbered them from $1$ to $N$ with the $i$-th event starting at time $S_i$ and ending at time $E_i$. You want to start your visit by attending some event $s$ and finish your visit at some event $e$. As long as you are not attending event $e$, you will always attend your current event until the end* and then immediately switch to a different event that is currently running. This means that you can switch from event $i$ to event $j$ if and only if $S_j ≤ E_i ≤ E_j$.</p>\n<p>Obviously, switching events too frequently would make you look suspicious. Thus, you want to determine the minimum number of event switches necessary if you start at event $s$ and finish at $e$. Moreover, since you do not yet know when you will arrive in Lübeck and when you will have to leave for the BOI registration in the evening, you want to determine this for $Q$ different pairs of starting and ending events $s$ and $e$.</p>\n<hr/>\n<p>* It would be rude to leave earlier—though nobody will complain about you being late as you are obviously an important and busy art critic.</p>",
+  "input": "<p>The first line of input contains two integers, the number of events $N$ and the number of pairs of events $Q$ for which you want to determine the minimum number of event switches.</p>\n<p>Then, $N$ lines follow describing the events. The $i$-th of these lines contains two integers $S_i$ and $E_i$, the starting and ending time of event $i$.</p>\n<p>Then, $Q$ lines follow describing the queries. The $i$-th of these lines contains two integers $s_i$ and $e_i$, meaning that you want to determine the minimum number of event switches necessary if you want to start at event $s_i$ and end your visit at event $e_i$.</p>",
+  "output": "<p>Your program should output $Q$ lines. The $i$-th of these lines should consist of an integer, the minimum number of event switches necessary if you start at event $s_i$ and end your visit at event $e_i$, or the string impossible if there is no way to achieve this.</p>",
+  "samples": [
+    {
+      "input": "5 2\n1 3\n2 4\n4 7\n7 9\n3 7\n1 4\n3 2\n",
+      "output": "2\nimpossible\n"
+    },
+    {
+      "input": "8 5\n1 2\n3 4\n1 5\n6 7\n5 10\n10 20\n15 20\n999999999 1000000000\n1 6\n1 7\n2 4\n3 3\n5 8\n",
+      "output": "3\n4\nimpossible\n0\nimpossible\n"
+    }
+  ],
+  "hint": "<p>In the first example, it is possible to start at event $1$ and end at event $4$ by switching from event $1$ to event $5$ and then to event $4$, resulting in two event switches. However, there is no way to start at event $3$ and end at event $2$ because event $2$ ends before event $3$.</p>",
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2022",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "segtree",
+    "sparse_table"
+  ],
+  "accepted_user_count": 49,
+  "submission_count": null,
+  "average_tries": 4.285699844360352
+}

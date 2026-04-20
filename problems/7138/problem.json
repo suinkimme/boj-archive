@@ -1,0 +1,28 @@
+{
+  "id": 7138,
+  "title": "Robots",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The engineers at VRI (Voltron Robotics Institute) have built a swarm of n robots. Any two compatible robots that stands on the same grid can merge to form another composite robot.</p>\n<p>We label the robots with number 1 to n (n ≤ 9). Two robots are compatible if they have labels that are consecutive. Originally, each of the n robot has one unique label. A composite robot that is formed after merging two or more robots is assigned two labels, consisting of the minimum and maximum label of the robots that merge into the composite robot.</p>\n<p>For example, robot 2 can only merge with robot 3 or robot 1. If robot 2 merges with robot 3, a composite robot 2-3 is formed. If robot 2-3 merges with robot 4-6, a composite robot 2-6 is formed. The robot 1-n is formed when all robots have merged.</p>\n<p>The engineers place n robots in a room consisting of w×h grids, surrounded by walls. Some grids are occluded and cannot be accessed by the robots. Each grid can hold one or more robots, and a robot always occupies exactly one grid. Initially, each robot is placed on a different grid.</p>\n<p>The robots are rather primitives. They can move only in a straight line along either the xaxis or y-axis after being pushed by an engineer. After it is pushed in one of the four directions parallel to the x- and y-axis, the robot continues moving, in the direction it is pushed in, until it is blocked either by an occlusion or a wall. After the robot stops moving, it scans for other compatible robots occupying the same grid, and merge with any compatible robot it finds into a larger robot. The merging process continues until no further merging is possible.</p>\n<p>To help the robots change direction, the engineers have placed rotating plates in some of the grids. The rotating plates can either rotate in a clockwise or anti-clockwise direction. A robot that moves into a grid with the rotating plate always changes its moving direction by 90 degree in the same direction as the rotating plate. If a robot is being pushed while resting on top of a rotating plate, it rotates by 90 degree before moving off in a straight line, in a direction perpendicular to the direction it is pushed in.</p>\n<p>Only one robot can move at one time.</p>\n<p>You task is to find the minimum number of pushes such that all n robots are merged together (if possible).</p>",
+  "input": "<p>Your program must read from the standard input. The first line of the input file contains three integers, n, w, and h, separated by a space.</p>\n<p>The next h lines of the input file describe the room, each line contains w characters. Each of these w × h characters represents a grid in the room.</p>\n<p>A numeric character (’1’ to ’9’) indicates that there is a robot labeled with the corresponding number in the grid. A character ‘x’ indicates that there is an occlusion in the grid. A character ‘A’ or ‘C’ indicates that there is a rotating plate in the grid. ‘A’ indicates that the plate is rotating anti-clockwise. ‘C’ indicates that the plate is rotating clockwise. The ‘.’ characters fill all other grid locations.</p>\n<p>n ≤ 9, w ≤ 500, h ≤ 500</p>",
+  "output": "<p>Your program must write to the standard output, either a single number indicating the minimum number of pushes needed to merge all n robots, or -1 if merging is not possible.</p>",
+  "samples": [
+    {
+      "input": "4 10 5\n1.........\nAA...x4...\n..A..x....\n2....x....\n..C.3.A...\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": "<p>The following 5 steps optimally merge the robot.</p>\n<ol>\n<li>Push robot 3 rightward. The robot moves right, meets a rotating plate, turns anti-clockwise, and continues its movement up. The robot eventually stops in front of the wall.</li>\n<li>Push robot 4 upward. The robot moves up, stops in front of the wall, and merges with robot 3 to form robot 3-4.</li>\n<li>Push robot 2 upward. The robot moves up, meets a rotating plate, turns anti-clockwise, hits a wall and stops.</li>\n<li>Push robot 2 rightward. The robot rotates anti-clockwise, moves up, stops at the corner, and merges with robot 1 to form robot 1-2.</li>\n<li>Push robot 3-4 leftward. The robot moves left, stops at the corner, and merges with robot 1-2.</li>\n</ol>",
+  "source": "Olympiad, Asia-Pacific Informatics Olympiad, APIO 2013",
+  "level": 22,
+  "tags": [
+    "dijkstra",
+    "dp",
+    "graphs",
+    "implementation",
+    "shortest_path"
+  ],
+  "accepted_user_count": 31,
+  "submission_count": null,
+  "average_tries": 3.19350004196167
+}

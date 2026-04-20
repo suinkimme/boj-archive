@@ -1,0 +1,37 @@
+{
+  "id": 21926,
+  "title": "Three-Axis Views",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A friend of yours is an artist designing Image-Containing Projection Cubes (ICPCs). An ICPC is a crystal cube with its side of integer length. Some of its regions are made opaque through an elaborate laser machining process. Each of the opaque regions is a cube of unit size aligned with integer coordinates.</p>\n<p>Figure A.1 depicts an ICPC as given in the Sample Input 1. Here, the green wires correspond to the edges of the crystal cube. The blue small cubes correspond to the cubic opaque regions inside the crystal.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 101px; height: 114px;\"/></p>\n<p style=\"text-align: center;\">Figure A.1. ICPC of Sample Input 1</p>\n<p>ICPCs are meant to enjoy the silhouettes of its opaque regions projected by three parallel lights perpendicular to its faces. Figure A.2 depicts the ICPC and its three silhouettes.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 225px; height: 247px;\"/></p>\n<p style=\"text-align: center;\">Figure A.2. ICPC of Sample Input 1 and its silhouettes (dashed-dotted lines are the edges of the parallel light perpendicular to the left face)</p>\n<p>Your job is to write a program that decides whether there exists an ICPC that makes the given silhouettes.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\nn\ns<sub>1</sub>\n.\n.\n.\ns<sub>n</sub>\nt<sub>1</sub>\n.\n.\n.\nt<sub>n</sub>\nu<sub>1</sub>\n.\n.\n.\nu<sub>n</sub></pre>\n<p>Here, n is the size of the ICPC, an integer between 1 and 100, inclusive.</p>\n<p>The ICPC of size n makes three silhouettes of n × n squares of dark and bright cells. Cells are dark if they are covered by the shadows of opaque unit cubes, and are bright, otherwise. The 3n lines, each with n digits, starting from the second line of the input denote the three silhouettes of the ICPC, where ‘0’ represents a bright cell and ‘1’ represents a dark cell. At least one of the digits in the 3n lines is ‘1’.</p>\n<p>First comes the data for the silhouette on the yz-plane, where the first line s<sub>1</sub> gives the cells of the silhouettes with the largest z-coordinate value. They are in the order of their y-coordinates. The following lines, s<sub>2</sub>, . . . , s<sub>n</sub>, give the cells with the decreasing values of their z-coordinates.</p>\n<p>Then comes the data for the silhouette on the zx-plane, where the first line, t<sub>1</sub>, gives the cells with the largest x-coordinate value, in the order of their z-coordinates. The following lines, t<sub>2</sub>, . . . , t<sub>n</sub>, give the cells with the decreasing values of their x-coordinates.</p>\n<p>Finally comes the data for the silhouette on the xy-plane, where the first line, u<sub>1</sub>, gives the cells with the largest y-coordinate value, in the order of their x-coordinates. The following lines, u<sub>2</sub>, . . . , u<sub>n</sub>, give the cells with the decreasing values of their y-coordinates.</p>\n<p>The following figure depicts the three silhouettes of the ICPC given in the Sample Input 1.</p>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"3.png\" style=\"width: 108px; height: 110px;\"/></td>\n<td><img alt=\"\" src=\"4.png\" style=\"width: 107px; height: 110px;\"/></td>\n<td><img alt=\"\" src=\"5.png\" style=\"width: 106px; height: 110px;\"/></td>\n</tr>\n<tr>\n<td>⇓</td>\n<td>⇓</td>\n<td>⇓</td>\n</tr>\n<tr>\n<td>\n<pre>\n0 <strong>1</strong> 0\n0 <strong>1</strong> 0\n<strong>1</strong> <strong>1</strong> <strong>1</strong>\n</pre>\n<p>(yz-plane)</p>\n</td>\n<td>\n<pre>\n<strong>1</strong> 0 0\n<strong>1</strong> <strong>1</strong> <strong>1</strong>\n<strong>1</strong> 0 <strong>1</strong></pre>\n<p>(zx-plane)</p>\n</td>\n<td>\n<pre>\n0 <strong>1</strong> <strong>1</strong>\n<strong>1</strong> <strong>1</strong> <strong>1</strong>\n0 <strong>1</strong> 0</pre>\n<p>(xy-plane)</p>\n</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure A.3. 0-1 representations of silhouettes (Sample Input 1)</p>",
+  "output": "<p>Print “Yes” if it is possible to make an ICPC with the given silhouettes. Print “No”, otherwise.</p>",
+  "samples": [
+    {
+      "input": "3\n010\n010\n111\n100\n111\n101\n011\n111\n010\n",
+      "output": "Yes\n"
+    },
+    {
+      "input": "2\n00\n01\n00\n10\n10\n00\n",
+      "output": "Yes\n"
+    },
+    {
+      "input": "2\n00\n00\n00\n10\n10\n00\n",
+      "output": "No\n"
+    },
+    {
+      "input": "2\n01\n00\n00\n10\n10\n00\n",
+      "output": "No\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2020 Asia Yokohama Regional",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "greedy"
+  ],
+  "accepted_user_count": 84,
+  "submission_count": null,
+  "average_tries": 1.2976000308990479
+}

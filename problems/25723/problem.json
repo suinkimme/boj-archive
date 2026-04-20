@@ -1,0 +1,32 @@
+{
+  "id": 25723,
+  "title": "Equivalence in Connectivity",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Two undirected graphs of size $n$ are equivalent in connectivity when there is a path from $u$ to $v$ in one graph if and only if there is a path from $u$ to $v$ in the other graph for all $1\\le u&lt;v\\le n$.</p>\n<p>Given is a sequence of $k$ graphs $G_1, G_2, \\ldots, G_k$. Each graph is of size $n$. In this sequence, for each $i = 2, 3, \\ldots, k$, there exists $p_i&lt;i$ such that $G_i$ can be obtained from $G_{p_i}$ by adding or removing an edge. Divide the given graphs into groups: two graphs must be in the same group if and only if they are equivalent in connectivity.</p>",
+  "input": "<p>There are multiple test cases. The first line of input contains an integer $T$ ($1\\le T\\le 10^5$), the number of test cases. For each test case:</p>\n<p>The first line contains three integers $k$, $n$, and $m$ ($1 \\le k, n \\le 10^5$, $0 \\le m \\le \\min \\left( 10^5, \\frac{n(n - 1)}{2} \\right)$): the number of graphs, the number of vertices in each graph, and the number of edges in $G_1$.</p>\n<p>Each of the following $m$ lines contains two integers $u$ and $v$ ($1\\le u &lt; v\\le n$), denoting an edge of $G_1$ connecting $u$ and $v$. It is guaranteed that there are no multiple edges in $G_1$.</p>\n<p>The $i$-th of the following $k-1$ lines contains an integer $p_{i+1}$, a string $t_{i+1}$, and two integers $x_{i+1}$ and $y_{i+1}$ ($1\\le p_{i+1}\\le i$, $1\\le x_{i+1}&lt;y_{i+1}\\le n$). Each string $t_{i+1}$ is either \"<code>add</code>\" or \"<code>remove</code>\".</p>\n<p>If $t_{i+1}$ is \"<code>add</code>\", then $G_{i+1}$ is obtained from $G_{p_{i+1}}$ by adding an edge connecting $x_{i+1}$ and $y_{i+1}$. It is guaranteed that this edge does not exist in $G_{p_{i+1}}$.</p>\n<p>If $t_{i+1}$ is \"<code>remove</code>\", then $G_{i+1}$ is obtained from $G_{p_{i+1}}$ by removing an edge connecting $x_{i+1}$ and $y_{i+1}$. It is guaranteed that this edge exists in $G_{p_{i+1}}$.</p>\n<p>It is guaranteed that the sum of $n$, the sum of $m$, and the sum of $k$ in all test cases do not exceed $10^5$.</p>",
+  "output": "<p>For each test case:</p>\n<p>On the first line, output an integer $r$: the number of groups.</p>\n<p>For each group, output a single line which contains an integer $k$ followed by $k$ integers: the size of the group and the numbers of graphs in the group.</p>\n<p>You can output the groups and the graphs in any order.</p>",
+  "samples": [
+    {
+      "input": "2\n15 11 8\n6 11\n1 6\n6 9\n6 8\n1 2\n1 5\n9 10\n2 5\n1 add 3 11\n1 add 2 3\n3 add 5 8\n4 add 5 11\n3 add 7 10\n1 add 6 10\n3 add 3 10\n1 remove 6 8\n5 add 4 9\n1 add 2 9\n8 add 7 8\n3 add 2 4\n1 remove 6 9\n10 remove 6 9\n14 5 2\n1 5\n1 4\n1 add 2 4\n1 add 3 4\n1 add 2 4\n4 add 3 4\n4 add 1 3\n5 add 1 3\n2 add 2 3\n1 add 1 2\n4 add 3 4\n3 add 4 5\n9 add 2 3\n3 remove 1 5\n3 remove 3 4\n",
+      "output": "7\n2 10 13\n5 2 3 4 5 8\n3 1 7 11\n1 14\n2 6 12\n1 9\n1 15\n5\n3 2 4 9\n6 5 6 7 8 10 12\n2 1 14\n2 3 11\n1 13\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2022, Day 6: Heltion Contest",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "divide_and_conquer",
+    "euler_tour_technique",
+    "graphs",
+    "hashing",
+    "offline_dynamic_connectivity",
+    "offline_queries",
+    "trees"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

@@ -1,0 +1,29 @@
+{
+  "id": 13764,
+  "title": "Earl’s Extremely Efficient Encryption",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Earl has just finished writing an extremely efficient encryption algorithm for decreasing the size of video files. The algorithm has the capability to decrease the file size of a long video by many orders of magnitude. You can think of a video as a series of images.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:86px; width:630px\"/></p>\n<p>One simple algorithm is to store each of these images individually. The secret of Earl’s algorithm is to only use the differences between successive images in the series. He stores each transition in a 32-bit integer (these values are called the transition integers). Using an unencrypted version of the first image and all of the transition integers, you can fully recreate the video.</p>\n<p>The issue is that calculating the transition integers is lossy (i.e. the 32-bit integer representation of the transition is only an approximation of the actual differences of the images). This makes it possible for errors to occur and the image to display incorrectly. Each transition on its own has a very high probability of working correctly, but the probability of being able to play the whole video without an error occurring is quite low. Moreover, the errors compound onto one another since the differences between the images in the actual video may not make sense for any images that Earl’s algorithm has generated incorrectly.</p>\n<p>To account for this issue, the algorithm will not only store the first image of the video, but a subset of the images. At each transition, the algorithm will check if the true (unencrypted) image is stored. If it is, then that image is displayed on the screen. If it is not stored, then the algorithm will use the transition integer to generate the next image.</p>\n<p>The badness of a video is defined as the largest number of consecutive transition integers used. Earl’s algorithm works for all videos consisting of at most L images. Given the number of images in the video collection and the subset of images Earl will include unencrypted, what is the badness value for each video?</p>",
+  "input": "<p>The input will contain a single test case.</p>\n<p>The input will begin with six integers: k (1 ≤ k ≤ 100), n (1 ≤ n ≤ 10<sup>5</sup> ), L (1 ≤ L ≤ 10<sup>9</sup> ), a (0 ≤ a ≤ L), b (0 ≤ b ≤ L) and g<sub>1</sub> (0 ≤ g<sub>1</sub> ≤ L). We then define g<sub>0</sub> = 0 and</p>\n<p>g<sub>i</sub> = (a · g<sub>i−1</sub> + b) (mod L + 1) for all i ∈ {2, . . . , n}.</p>\n<p>This is followed by k lines. The jth of these lines contains a single integer, w<sub>j </sub>(1 ≤ w<sub>j</sub> ≤ L), which represent the number of images in the jth video when it is stored uncompressed. The subset of images Earl includes unencrypted is</p>\n<p>{g<sub>i </sub>: 0 ≤ i ≤ n} ∩ {0, 1, . . . , w<sub>j </sub>− 1}.</p>\n<p>The videos will be given in increasing order with respect to w<sub>j</sub> .</p>",
+  "output": "<p>Output the badness for each video.</p>",
+  "samples": [
+    {
+      "input": "4 5 20 1 2 2\n1\n3\n7\n14\n",
+      "output": "0\n1\n1\n3\n"
+    },
+    {
+      "input": "1 4 10 2 0 1\n9\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<p>In the first sample input, the unencrypted images included are 0, 2, 4, 6, 8 and 10. For the video of length 1, you do not need any transition integers, so the badness is 0. For the video of length 3, you only need a transition integer to get from image 0 to image 1. For the video of length 7, you need to use a single transition integer on 4 separate occasions (0 → 1, 2 → 3, 4 → 5, 6 → 7). For a video of length 14, you need to use a transition integer to generate image 11, 12 and 13 (which corresponds to a badness of 3).</p>",
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, 2015 ACM South Pacific Programming Contest",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "sorting"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.631600022315979
+}

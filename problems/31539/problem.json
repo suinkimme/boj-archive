@@ -1,0 +1,36 @@
+{
+  "id": 31539,
+  "title": "선형 회귀는 너무 쉬워 4",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<blockquote>\r\n<p>이 문제는 <a href=\"/problem/31532\">선형 회귀는 너무 쉬워 3</a>과 문제에서 사용하는 식의 차수만 다릅니다.</p>\r\n</blockquote>\r\n\r\n<p>유림이는 선형 회귀에 자신이 있다. 그래서 MatKor 동아리에서 선형 회귀에 관한 수업을 할 때 집중하지 않았다. 당시 강사였던 동우는 이를 못마땅하게 여겨 유림이에게 과제로 <a href=\"/problem/27295\">선형 회귀는 너무 쉬워 1</a>과 <a href=\"/problem/28692\">선형 회귀는 너무 쉬워 2</a>, <a href=\"/problem/31532\">선형 회귀는 너무 쉬워 3</a>을 내주었고, 유림이는 세 문제를 쉽게 풀었다.</p>\r\n\r\n<p>기존의 일반적인 선형 회귀 문제는 다음과 같다. 데이터 $(x_1,y_1) ,(x_2,y_2) ,\\cdots ,(x_n,y_n)$이 주어졌을 때, 이를 가장 잘 설명하는 일차함수 $y=ax+b$를 찾는 문제이다. 여기서 주어진 점들 $(x_i,y_i)$에 대해 $x_i$를 통해 얻는 추정치 $\\hat{y_i} =ax_i+b$로 정의하고, 실제 $y_i$에서 예측치인 $\\hat{y_i}$를 뺀 값 $y_i-\\hat{y_i}$를 잔차 $\\epsilon_i$로 정의한다.</p>\r\n\r\n<p>선형 회귀 문제는 이 잔차 제곱의 합이 $0$에 가장 가깝게, 즉 $f_2(a,b) =\\displaystyle\\sum_{i=1}^n\\epsilon_i^2=\\displaystyle\\sum_{i=1}^n(y_i-ax_i-b)^2$이 최소가 되도록 하는 실수 $a$와 $b$를 찾는 문제이다.</p>\r\n\r\n<p>동우는 여기에서 더 발전시켜 잔차 $k$제곱의 합 즉, $f_k(a,b) =\\displaystyle\\sum_{i=1}^n\\epsilon_i^k=\\displaystyle\\sum_{i=1}^n(y_i-ax_i-b)^k$이 $0$에 가장 가깝게 하는 실수 $a$와 $b$을 구하는 문제를 냈다.</p>\r\n\r\n<p>이 문제를 풀던 유림이는 너무 어려워서 동우에게 조금만 쉽게 바꿔 달라고 하자 동우는 조금 고민하다 다음과 같은 조건을 추가한다. &rdquo;$k=4$일 때만 구해. 그리고 $y$절편이 정해져 있을 때 기울기만 정해. 또, 모든 점의 $x$좌표는 양의 정수, $y$좌표도 정수라고 가정하자.&rdquo;</p>\r\n\r\n<p>이제 유림이가 풀 문제는 다음과 같다. 주어진 $b$에 대해 $f_4(a) =\\displaystyle\\sum_{i=1}^n\\epsilon_i^4=\\displaystyle\\sum_{i=1}^n(y_i-ax_i-b)^4$이 $0$에 가장 가깝게 하는 실수 $a$를 $a_4$라고 할 때, $a_4$를 구하면 된다.</p>\r\n",
+  "input": "<p>첫 번째 줄에 데이터의 개수를 의미하는 정수 $n$과 $y$ 절편을 의미하는 정수 $b$가 공백으로 구분되어 주어진다. $(1\\le n\\le 10^5;$ $-10^6\\le b\\le 10^6)$</p>\r\n\r\n<p>두 번째 줄부터 $n$개의 줄에 걸쳐 한 줄에 하나씩 점의 좌표를 나타내는 정수 $x_i$와 $y_i$의 값이 공백으로 구분되어 주어진다. $(1\\le x_i\\le 10^6;$ $-10^6\\le y_i\\le 10^6)$</p>\r\n\r\n<p>이때, 서로 같은 점이 여러 번 주어질 수 있음에 유의하라.</p>\r\n",
+  "output": "<p>첫 번째 줄에 $f_4(a)$의 값이 $0$에 가장 가깝게 하는 $a$, 즉, $a_4$을 출력한다.</p>\r\n\r\n<p>답이 여러 가지라면 그중 아무거나 하나 출력한다.</p>\r\n\r\n<p>가능한 정답 중 최소 하나 이상과의 절대오차 또는 상대오차가 $10^{-7}$ 이하이면 정답으로 인정된다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2 -2\n3 10\n1 2\n",
+      "output": "4\n"
+    },
+    {
+      "input": "2 0\n2 1\n3 -8\n",
+      "output": "-1.501196113\n"
+    },
+    {
+      "input": "5 0\n1 1\n1 2\n1 4\n2 5\n2 6\n",
+      "output": "2.5757694454\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제4회 고려대학교 MatKor Cup: 2024 Winter/Spring, kidw0124, tikiliki0417, yijw0930, devluyten, finimage, lighter, sshs29hanul, tlsdydaud1, utilforever, w8385",
+  "level": 14,
+  "tags": [
+    "math",
+    "binary_search",
+    "calculus",
+    "ternary_search",
+    "numerical_analysis"
+  ],
+  "accepted_user_count": 53,
+  "submission_count": null,
+  "average_tries": 3.5283000469207764
+}

@@ -1,0 +1,24 @@
+{
+  "id": 23496,
+  "title": "Program Optimization",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>Consider the following C++ code:</p>\n<pre>\n#include &lt;algorithm&gt;\n#include &lt;random&gt;\n\nint query_mex(const int *a, int l, int r);\n\nint simulate(int n, int *a, int q, int k, int s) {\n  std::mt19937 gen;\n  gen.seed(s);\n  int last = 0;\n  while (q--) {\n    int op = gen() % k;\n    int i = (gen() + last) % n;\n    if (!op &amp;&amp; i) {\n      std::swap(a[i - 1], a[i]);\n    } else {\n      int j = gen() % n;\n      last ^= query_mex(a, std::min(i, j), std::max(i, j));\n    }\n  }\n  return last;\n}</pre>\n<p>In the program, <code>query_mex(a, l, r)</code> returns the minimum non-negative integers which does not occur in $a_l, a_{l + 1}, \\dots, a_{r}$.</p>\n<p>Given the value of $n$, $a$, $q$, $k$ and $s$, find the returned value of the function.</p>",
+  "input": "<p>The first line contains four integers $n$, $q$, $k$ and $s$ ($1 \\leq n \\leq 2\\times 10^5$, $1 \\leq q \\leq 10^7$, $1 \\leq k \\leq 10^9$, $0 \\leq s \\leq 10^9$). The second line contains $n$ distinct integers $a_0, a_1, \\dots, a_{n - 1}$ ($0 \\leq a_i &lt; n$).</p>",
+  "output": "<p>Output an integer denoting the returned value.</p>",
+  "samples": [
+    {
+      "input": "3 5 1 0\n0 1 2\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 18: Grand Prix of Bytedance",
+  "level": 19,
+  "tags": [
+    "prefix_sum"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2.142899990081787
+}

@@ -1,0 +1,34 @@
+{
+  "id": 24563,
+  "title": "Pinned Files",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You recently discovered a new feature in Visual Studio --- pinned files! You have no idea what pinned files are good for --- uou could hear a pin drop when you asked your friends about it --- but that doesn't stop you from pinning and unpinning files all day and night.</p>\n<p>Visual Studio maintains a list of the files you currently have open. The list starts with the pinned files and is followed by the unpinned files. Changing the order of the list is done not by click-and-drag operations but by toggling whether a file is pinned or not. If a pinned file is unpinned it is removed from the list and then added before the first unpinned file. If an unpinned file is pinned it is removed and then added after the last pinned file.</p>\n<p>Consider the following example with four files labeled $1$ through $4$. The starting configuration is $2, 1, 4, 3$ and files $1$ and $2$ are pinned. If the desired ending configuration is $4, 2, 3, 1$ with only file $4$ pinned, it can be accomplished with the following five toggle operations:</p>\n<pre>\n2<sup>∗</sup> 1<sup>∗</sup> 4<sup> </sup> 3<sup> </sup> Initial State (<sup>∗</sup> represents a pinned file)\n2<sup>∗</sup> 1<sup>∗</sup> 3<sup>∗</sup> 4<sup> </sup> Pin file 3\n2<sup>∗</sup> 1<sup>∗</sup> 3<sup>∗</sup> 4<sup>∗</sup> Pin file 4\n2<sup>∗</sup> 3<sup>∗</sup> 4<sup>∗</sup> 1<sup> </sup> Unpin file 1\n2<sup>∗</sup> 4<sup>∗</sup> 3<sup> </sup> 1<sup> </sup> Unpin file 3\n4<sup>∗</sup> 2<sup> </sup> 3<sup> </sup> 1<sup> </sup> Unpin file 2</pre>\n<p>These five operations are the minimum number to get from the starting configuration to the ending configuration.</p>\n<p>Given the initial list of files, determine the minimum number of moves to reach a different ordering of the list. The files are conveniently numbered $1$ to $n$.</p>",
+  "input": "<p>Input consists of four lines. The first line contains two non-negative integers, $p$, the number of pinned files, and $u$, the number of unpinned files. The total number of files $n=p+u$ satisfies $1\\le n\\le 100$. The next line consists of $n$ numbers representing the list. The first $p$ numbers will be pinned files and the next $u$ numbers will be unpinned files. The next two lines will be the ending configuration in the same format as the first two lines. The number of files will be the same for the starting and ending configurations. The numbers $1$ through $n$ will appear once in each file list.</p>",
+  "output": "<p>Output the minimum number of moves to get from the starting configuration to the ending configuration.</p>",
+  "samples": [
+    {
+      "input": "1 1\n1 2\n1 1\n2 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "1 1\n1 2\n1 1\n1 2\n",
+      "output": "0\n"
+    },
+    {
+      "input": "2 2\n2 1 4 3\n1 3\n4 2 3 1\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2021 East Central Regional Contest",
+  "level": 14,
+  "tags": [
+    "ad_hoc",
+    "greedy",
+    "two_pointer"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.4544999599456787
+}

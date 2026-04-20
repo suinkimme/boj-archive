@@ -1,0 +1,30 @@
+{
+  "id": 18974,
+  "title": "Interpolate",
+  "time_limit": "4 초",
+  "memory_limit": "256 MB",
+  "description": "<p>A <em>Zhegalkin polynomial</em> is a boolean function $f(x_1,\\dots,x_n)$ which is represented as follows:</p>\n<p>\\[f(x_{1},\\dots,x_{n}) = \\bigoplus_{S \\subseteq \\{1, 2, \\ldots, n\\}} a_S \\cdot \\bigwedge_{i \\in S} x_i,\\]</p>\n<p>where $\\oplus$ and $\\wedge$ stand for XOR and AND boolean operations respectively, XOR is taken over all subsets of variables, and $a_S \\in \\{0, 1\\}$ for each subset $S$ of $\\{1, 2, \\ldots, n\\}$.</p>\n<p>In this task you are given $m$ sets of variable values $({v_i}_{1},\\dots,{v_i}_{n})$ and $m$ boolean values $y_i \\in \\{0, 1\\}$. You have to construct a Zhegalkin polynomial with at most $9000$ non-zero terms satisfying $f({v_i}_{1},\\dots,{v_i}_{n}) = y_i$ for each $i = 1, 2, \\ldots, m$.</p>",
+  "input": "<p>The first line contains two integers $n$ and $m$ --- the number of variables and the number of given variable values ($1 \\leq n, m \\leq 2000$).</p>\n<p>Each of the following $m$ lines contains a string of $n$ characters $0$ or $1$ representing the $i$-th set of variable values, followed by the integer $y_i$.</p>\n<p>It is guaranteed that all sets of variable values are distinct and $y_i=1$ for at least one set.</p>",
+  "output": "<p>Your polynomial has to contain at most $9000$ terms having $a_S = 1$. For each such term print its corresponding subset $S$ of variables as a string of $n$ characters $0$ or $1$ such that $i$-th character equals $1$ if $i \\in S$ and $0$ otherwise. You can output the terms in any order but there should be no repeating subsets. </p>\n<p>If there are multiple possible answers, output any of them. If the solution does not exist, output $-1$. </p>\n<p>It is guaranteed that if the solution exists, then the solution with at most $9000$ terms $S$ having $a_S = 1$ exists as well.</p>",
+  "samples": [
+    {
+      "input": "2 3\n01 1\n10 1\n11 1\n",
+      "output": "00\n"
+    },
+    {
+      "input": "3 2\n000 0\n111 1\n",
+      "output": "100\n010\n001\n"
+    }
+  ],
+  "hint": "<p>One of the possible answers to the first sample is $f(x_1,x_2)=1$.</p>\n<p>In the second sample $f(x_1,x_2,x_3)=x_1\\oplus x_2\\oplus x_3$ is one of the possible answers.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2018, Day 3: MIPT Contest",
+  "level": 19,
+  "tags": [
+    "bitset",
+    "constructive",
+    "math"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.5
+}

@@ -1,0 +1,33 @@
+{
+  "id": 32743,
+  "title": "Ambiguous Permutations",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You want to find two permutations $p$ and $q$ of size $n$ that satisfy $m$ restrictions of the form $(p_i-p_j)\\cdot (q_i-q_j)&gt;0$.</p>\n<p>A permutation of length $n$ is an array consisting of $n$ distinct integers from $1$ to $n$ in arbitrary order. For example, $[2, 3, 1, 5, 4]$ is a permutation, but $[1, 2, 2]$ is not a permutation ($2$ appears twice in the array), and $[1, 3, 4]$ is also not a permutation ($l=3$ but there is $4$ in the array).</p>\n<p>Find two distinct permutations $p$ and $q$ of size $n$ such that all restrictions are satisfied, or state that it is impossible to do so. $p$ and $q$ are considered distinct if there is at least one index $i$ where $p_i \\neq q_i$.</p>",
+  "input": "<p>The first line of the input contains a single integer $t$ ($1\\le t\\le 10^4$) --- the number of test cases.</p>\n<p>The first line of each test case contains two integers $n$ and $m$ ($1\\leq n\\leq 2\\cdot 10^5$, $0 \\le m \\le min(2\\cdot 10^5, \\frac{n(n-1)}{2})$) --- the size of the permutations and the number of restrictions, respectively.</p>\n<p>Each of the next $m$ lines of the test case contains two integers $i$ and $j$ ($1 \\le i &lt; j \\le n$) --- representing the restriction $(p_i-p_j)\\cdot (q_i-q_j)&gt;0$. It is guaranteed that all restrictions in the input are distinct.</p>\n<p>It is guaranteed that the sum of $n$ over all test cases does not exceed $2\\cdot 10^5$.</p>\n<p>Similarly, the sum of $m$ over all test cases does not exceed $2\\cdot 10^5$.</p>",
+  "output": "<p>The first line of output for each test case should contain \"<code>YES</code>\" if a valid $p$ and $q$ exist, and \"<code>NO</code>\" otherwise.</p>\n<p>You can output the answer in any case (upper or lower). For example, the strings \"<code>yEs</code>\", \"<code>yes</code>\", \"<code>Yes</code>\", and \"<code>YES</code>\" will be recognized as positive responses.</p>\n<p>If you printed \"<code>YES</code>\", print two additional lines of output.</p>\n<p>The first of these should contain $n$ distinct integers $p_1,\\, p_2, \\cdots\\, p_n$ ($1 \\le p_i \\le n$) --- the permutation $p$.</p>\n<p>The second of these should contain $n$ distinct integers $q_1,\\, q_2,\\, \\cdots\\, q_n$ ($1 \\le q_i \\le n$) --- the permutation $q$.</p>",
+  "samples": [
+    {
+      "input": "3\n1 0\n2 0\n2 1\n1 2\n",
+      "output": "No\nYes\n1 2 \n2 1 \nNo\n"
+    },
+    {
+      "input": "2\n5 8\n1 4\n1 5\n2 3\n2 4\n2 5\n3 4\n3 5\n4 5\n4 3\n1 2\n1 3\n1 4\n",
+      "output": "Yes\n5 3 4 1 2\n4 3 5 1 2\nYes\n1 3 4 2\n1 2 3 4\n"
+    },
+    {
+      "input": "1\n5 10\n1 2\n1 3\n1 4\n1 5\n2 3\n2 4\n2 5\n3 4\n3 5\n4 5\n",
+      "output": "No\n"
+    }
+  ],
+  "hint": "<p>In the first test case of the first test, $n=1$. Since there is only one distinct permutation of size $1$, there is no solution.</p>\n<p>In the second test case of the first test, $n=2$ and there are no restrictions that need to be satisfied. So $p = [1,\\, 2]$ and $q = [2,\\,1]$ is a valid solution.</p>",
+  "source": "University, Rutgers University, Rutgers Programming Contest Fall 2024",
+  "level": 15,
+  "tags": [
+    "graphs",
+    "ad_hoc"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 2.7778000831604004
+}

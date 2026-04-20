@@ -1,0 +1,22 @@
+{
+  "id": 25721,
+  "title": "Lexicographic Comparison",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Consider $a$ and $p$, two permutations of length $n$. Initially, $a_i=p_i=i$ for all $1\\le i\\le n$. Let $A$ be a sequence of permutations such that $A_1=a$ and $A_{i,j}=A_{i-1,p_j}$ for all $i\\ge 1$ and $1\\le j\\le n$.</p>\n<p>There are three types of operations, where $x$ and $y$ are positive integers:</p>\n<ol>\n<li><code>swap_a</code> $x$ $y$: swap $a_x$ and $a_y$, where $1\\le x, y\\le n$;</li>\n<li><code>swap_p</code> $x$ $y$: swap $p_x$ and $p_y$, where $1\\le x, y\\le n$;</li>\n<li><code>cmp</code> $x$ $y$: compare $A_x$ with $A_y$ lexicographically.</li>\n</ol>\n<p>For each operation of type 3, output the relationship between $A_x$ and $A_y$. A permutation $s$ is lexicographically smaller than a permutation $t$ if and only if there exists an index $i$ such that $s_i&lt;t_i$ and $s_j=t_j$ for all $1\\le j&lt;i$.</p>",
+  "input": "<p>There are multiple test cases. The first line of input contains an integer $T$ ($1\\le T\\le 10^5$), the number of test cases. For each test case:</p>\n<p>The first line contains an integer $n$ and $q$ ($1\\le n, q\\le 10^5$), the length of the permutations and the number of operations.</p>\n<p>Each of the following $q$ lines contains one string $f$ and two integers $x$ and $y$ representing an operation. The string $f$ is one of \"<code>swap_a</code>\", \"<code>swap_p</code>\", and \"<code>cmp</code>\". If $f$ is \"<code>swap_a</code>\" or \"<code>swap_p</code>\" then $1 \\le x, y \\le n$. If $f$ is \"<code>cmp</code>\" then $1 \\le x, y \\le 10^{18}$.</p>\n<p>It is guaranteed that both the sum of $n$ and the sum of $q$ over all tests do not exceed $10^5$.</p>",
+  "output": "<p>For each test case:</p>\n<p>For each query, output \"<code>&lt;</code>\" if $A_x$ is lexicographically smaller than $A_y$; output \"<code>&gt;</code>\" if $A_x$ is lexicographically greater than $A_y$ (in other words, $A_y$ is lexicographically smaller than $A_x$); output \"<code>=</code>\" if $A_x = A_y$.</p>",
+  "samples": [
+    {
+      "input": "2\n5 5\ncmp 1 2\nswap_p 1 2\ncmp 1 2\nswap_a 1 2\ncmp 1 2\n1 1\nswap_a 1 1\n",
+      "output": "=\n<\n>\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2022, Day 6: Heltion Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,26 @@
+{
+  "id": 26471,
+  "title": "Sort Compressed Strings",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There are $N$ strings $s_1, s_2, \\dots, s_N$ which are compressed by rules below. Decompress these strings, and sort them in lexicographical order. Since the length of the decompressed string is very long, you have to answer the permutation $P = (p_1, p_2, \\dots, p_N)$, which is the permutation of $(1, 2, \\dots, N)$ and satisfies $s_{p_1} ≤ s_{p_2} ≤ \\cdots ≤ s_{p_N}$. If two decompressed strings $s_i$, $s_j$ ($i &lt; j$) are the same, $i$ must appear before $j$ in $P$.</p>\n<p>We compress $m$-times repetitions of a non-empty sequence '<code>seq</code>' into '<code>m(seq)</code>', where $m$ is a natural number greater than or equal to two and the length of '<code>seq</code>' is at least one. When '<code>seq</code>' consists of just one letter '<code>c</code>', we may omit parentheses and write '<code>mc</code>'. Formally, a compressed string is defined by following BNF.</p>\n<pre>\n&lt;String&gt; ::= &lt;Letter&gt; | &lt;Number&gt; &lt;Letter&gt; | &lt;Number&gt; '(' &lt;String&gt; ')' | &lt;String&gt; &lt;String&gt;\n&lt;Letter&gt; ::= 'A' | 'B' | … | 'Z'\n&lt;Number&gt; ::= &lt;Digit&gt; | &lt;Number&gt; '0' | &lt;Number&gt; &lt;Digit&gt;\n&lt;Digit&gt; ::= '1' | '2' | … | '9'</pre>\n<p>For example,</p>\n<p>'<code>JAGJAGJAGICPCICPCJAGJAGJAGICPCICPCXXXXXXXXXX</code>'</p>\n<p>can be compressed into:</p>\n<p>'<code>3(JAG)ICPCICPCJAGJAGJAGICPCICPCXXXXXXXXXX</code>'</p>\n<p>by replacing the first occurrence of '<code>JAGJAGJAG</code>' with its compressed form. Similarly, by replacing the following repetitions of '<code>ICPC</code>', '<code>JAG</code>', and '<code>X</code>', we get:</p>\n<p>'<code>3(JAG)2(ICPC)3(JAG)2(ICPC)10X</code>'</p>\n<p>Since '<code>X</code>' is a single letter, parentheses are omitted in this compressed representation. Finally, we have:</p>\n<p>'<code>2(3(JAG)2(ICPC))10X</code>'</p>\n<p>by compressing the repetitions of '<code>3(JAG)2(ICPC)</code>'. As you may notice from this example, parentheses can be nested.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<blockquote>\n<p>$N$</p>\n<p>$s_1$</p>\n<p>$s_2$</p>\n<p>$\\vdots$</p>\n<p>$s_N$</p>\n</blockquote>\n<p>The first line consists of an integer $N$ between $1$ and $50$, inclusive. This represents the number of compressed strings.</p>\n<p>The $i$-th of the following $N$ lines consists of a compressed string $s_i$. The length of $s_i$ is at least $1$, and less than or equal to $2\\,000$. For each $s_i$, the length of the decompressed string is less than or equal to $10^{10}$.</p>",
+  "output": "<p>Output $N$ lines. If the decompressed $s_x$ is the $i$-th lexicographically smallest string, print $x$ in the $i$-th line.</p>",
+  "samples": [
+    {
+      "input": "4\n3(AB)C\nA3(BA)\nABABABC\n2(5A)\n",
+      "output": "4\n2\n1\n3\n"
+    },
+    {
+      "input": "5\n2(2(2(2A)))\n4(4A)\n16A\n8A8A\n8AA\n",
+      "output": "5\n1\n2\n3\n4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ICPC 2022 Asia Yokohama Regional, Camp, Petrozavodsk Programming Camp, Winter 2024, Day 1: Welcome Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,38 @@
+{
+  "id": 18907,
+  "title": "Alice and Bob",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Alice and Bob will play a game by alternating turns with Alice going first. </p>\n<p>They have a directed acyclic graph, such that each edge $u \\to v$ satisfies $u &lt; v$.</p>\n<p>All vertices in this DAG are colored one of two colors, and vertices have tokens on them (a vertex may contain more than one token).</p>\n<p>During her move, Alice will choose a white vertex $u$ which contains at least one token. Then, she will choose some outgoing edge, $u \\to v$, and move one token from vertex $u$ to the vertex $v$.</p>\n<p>During his move, Bob will choose a black vertex $u$ which contains at least one token. Then, he will choose some outgoing edge $u \\to v$ and move one token from vertex $u$ to the vertex $v$.</p>\n<p>The person who can't move loses.</p>\n<p>Alice and Bob haven't decided on the configuration of tokens yet, but they have decided that each vertex at the beginning of the game will contain at most one token. Among all $2^n$ placement of tokens, calculate how many of them Alice will win under the optimal play of both players? As this value may be large, find it modulo $998\\,244\\,353$.</p>",
+  "input": "<p>The first line contains two integers $n,m$ ($1 \\leq n \\leq 300, 0 \\leq m \\leq \\frac{n(n-1)}{2}$): the number of vertices and edges in the graph.</p>\n<p>The second line contains a string of length $n$. If the $i$-th character is `W', then the vertex is white. Otherwise, it will be equal to `B' and be black.</p>\n<p>Each of the next $m$ lines contains two vertices $u$, $v$ ($1 \\leq u &lt; v \\leq n)$, denoting an edge $u \\to v$.</p>\n<p>It is guaranteed that the DAG will have no multiple edges.</p>",
+  "output": "<p>Print one integer: the number of ways to place at most one token on each vertex such that Alice wins, modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "5 4\nWWWWW\n1 2\n2 3\n3 4\n4 5\n",
+      "output": "30\n"
+    },
+    {
+      "input": "5 4\nBWBWB\n1 2\n2 3\n3 4\n4 5\n",
+      "output": "24\n"
+    },
+    {
+      "input": "9 14\nBWWBBBWWW\n1 2\n1 9\n2 3\n2 4\n2 6\n2 8\n3 4\n3 7\n4 7\n4 8\n5 7\n5 9\n6 9\n7 8\n",
+      "output": "300\n"
+    },
+    {
+      "input": "10 15\nBWBWBBWWBW\n1 2\n1 5\n1 10\n2 6\n2 8\n3 6\n3 7\n4 10\n5 6\n5 7\n5 8\n6 8\n6 9\n7 10\n8 9\n",
+      "output": "228\n"
+    }
+  ],
+  "hint": "<p>In the first example, Alice will win in all the cases, where she can make at least one move (because Bob will never be able to move), so the answer is $2^5 - 2$.</p>",
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 16: Grand Prix of Moscow",
+  "level": 20,
+  "tags": [
+    "dp",
+    "game_theory",
+    "knapsack"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1
+}

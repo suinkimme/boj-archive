@@ -1,0 +1,41 @@
+{
+  "id": 33020,
+  "title": "Fugitive Frenzy",
+  "time_limit": "5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The city of F. can be represented as a tree. A famous fugitive is hiding in it, and today a faithful police officer decided to catch him at all costs. The police officer is stronger than the fugitive, but the fugitive is much faster than the former. That is why the pursuit proceeds as follows. At the moment $t = 0$ the police officer appears at the vertex with number $s$, and the fugitive spawns at any other vertex of his choice. After that, they take turns, starting with the police officer.</p>\n<ul>\n<li>During the police officer's move, she selects any vertex adjacent to the one where she is currently located and moves there. The police officer spends one minute moving. Also, the police officer may decide to stand still instead, in which case she waits one minute at the vertex at which she started her move. If at the end of the turn the police officer ends up at the same vertex as the fugitive, she instantly catches him and the chase ends.</li>\n<li>The fugitive's move is as follows. Let him be at vertex $b$, and the police officer at vertex $p$. Then the fugitive chooses any vertex $b' \\ne p$ such that the path between the vertices $b$ and $b'$ does not contain vertex $p$ and instantly moves there. In particular, he can always choose $b' = b$ to stay where he is. The fugitive's move takes no time.</li>\n</ul>\n<p>Note that the fugitive managed to attach a radio bug to the police officer's badge a week ago, so the fugitive knows the location of the police officer at every moment (in particular, he knows the number $s$). On the contrary, the police officer knows nothing about the fugitive's movements and will only be able to detect him at the very moment she catches him.</p>\n<p>The police officer aims to catch the fugitive as fast as possible, and the fugitive aims to be caught as late as possible. Since the chase can be thought of as a game with incomplete information, participants can use mixed (probabilistic) strategies --- thus, the police officer acts to minimize the expected duration of the chase, and the fugitive --- to maximize it.</p>\n<p>Find the mathematical expectation of the duration of the chase with optimal actions of the police officer and the fugitive. It can be proven that it is always finite. In particular, with optimal strategies, the probability that the chase continues indefinitely is equal to zero.</p>",
+  "input": "<p>The first line contains an integer $n$ --- the number of vertices in the tree ($2 \\le n \\le 100$). The next $n - 1$ lines describe the city of F.: each of them contains a pair of integers $u_i$, $v_i$ --- the numbers of the ends of an edge ($1 \\le u_i, v_i \\le n$). These edges are guaranteed to form a tree.</p>\n<p>The last line contains an integer $s$ --- the number of the vertex where the police officer initially appears ($1 \\le s \\le n$).</p>",
+  "output": "<p>Print one real number --- the mathematical expectation of the duration of the chase with the optimal strategies of the police officer and the fugitive. Your answer will be accepted if its absolute or relative error does not exceed $10^{-6}$; formally, if $p$ is your answer, and $j$ is the jury's answer, this should hold: $\\frac{|p - j|}{\\max\\{1, |j|\\}} \\le 10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "2\n1 2\n2\n",
+      "output": "1\n"
+    },
+    {
+      "input": "3\n1 2\n1 3\n1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4\n4 3\n4 1\n4 2\n4\n",
+      "output": "3.66667\n"
+    },
+    {
+      "input": "7\n1 4\n4 5\n5 2\n4 6\n6 7\n7 3\n3\n",
+      "output": "8.3525\n"
+    }
+  ],
+  "hint": "<p>The trees from the examples are depicted below.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 684px; height: 500px;\"/></p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2023",
+  "level": 25,
+  "tags": [
+    "math",
+    "dp",
+    "arithmetic",
+    "game_theory",
+    "probability",
+    "numerical_analysis"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

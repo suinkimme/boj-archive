@@ -1,0 +1,22 @@
+{
+  "id": 18595,
+  "title": "Road Manager",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are n × m cells on a grid, the top left cell is at (1, 1) while the bottom right cell is at (n, m).</p>\n<p>Two cells are considered adjacent if they share a common side. Note that the grid is circular: (i, m) is also adjacent to (i, 1). However, there is no such rule for connecting the first row and the last row.</p>\n<p>There is exactly one bidirectional road between two adjacent cells:</p>\n<ul>\n<li>For every cell (i, j) such that 1 ≤ i ≤ n and 1 ≤ j ≤ m, there is a road between it and (i, j mod m + 1). Note that the grid is circular, so when j = m, there is a road between (i, m) and (i, 1).</li>\n<li>For every cell (i, j) such that 1 ≤ i &lt; n and 1 ≤ j ≤ m, there is a road between it and (i + 1, j).</li>\n</ul>\n<p>The roads form a weighted graph, every road has its weight. You will be given q queries. In the i-th query, you will be given two integers, l<sub>i</sub> and r<sub>i</sub>. Consider the graph that remains if we remove all cells (x, y) such that 1 ≤ x ≤ n and l<sub>i</sub> ≤ y ≤ r<sub>i</sub>, together with the roads linked to them. You need to find the total weight of the minimum spanning tree (MST) of the resulting graph.</p>\n<p>Note that different queries are independent. In other words, the removed cells and roads come back after you answer a query.</p>",
+  "input": "<p>There is only one test case in each test.</p>\n<p>The first line of this test case contains six integers n, m, SA, SB, SC , and lim (1 ≤ n ≤ 100, 4 ≤ m ≤ 10 000, and 1 ≤ SA, SB, SC, lim ≤ 10<sup>9</sup>).</p>\n<p>Since the grid might be rather large, you have to generate the input using the following C/C++ code, where <code>addedge(a, b, c, d, w)</code> means that we add a road between (a, b) and (c, d) with weight w:</p>\n<pre class=\"brush:c++; toolbar:false;\">\nunsigned int SA, SB, SC; int lim;\nint getweight() {\n    SA ^= SA &lt;&lt; 16;\n    SA ^= SA &gt;&gt; 5;\n    SA ^= SA &lt;&lt; 1;\n    unsigned int t = SA;\n    SA = SB;\n    SB = SC;\n    SC ^= t ^ SA;\n    return SC % lim + 1;\n}\nvoid gen() {\n    scanf(\"%d%d%u%u%u%d\", &amp;n, &amp;m, &amp;SA, &amp;SB, &amp;SC, &amp;lim);\n    int i, j, w;\n    for (i = 1; i &lt;= n; i++)\n        for (j = 1; j &lt;= m; j++) {\n            w = getweight();\n            if (j &lt; m) {\n                addedge(i, j, i, j + 1, w);\n            } else {\n                addedge(i, j, i, 1, w);\n            }\n        }\n    for (i = 1; i &lt; n; i++)\n        for (j = 1; j &lt;= m; j++) {\n            w = getweight();\n            addedge(i, j, i + 1, j, w);\n        }\n}\n</pre>\n<p>A note for coders in other languages: int is a 32-bit signed integer type, whereas unsigned int is a 32-bit unsigned integer type. The result of every operation with unsigned int is truncated to the last 32 bits. This effectively means each result is taken modulo 2<sup>32</sup>.</p>\n<p>On the second line, there is one integer q (1 ≤ q ≤ 10 000), denoting the number of queries.</p>\n<p>Each of the next q lines contains two integers l<sub>i</sub> and r<sub>i</sub> (1 &lt; l<sub>i</sub> ≤ r<sub>i</sub> &lt; m) describing a query.</p>",
+  "output": "<p>For each query, print a single line containing an integer: the total weight of the MST of the respective graph.</p>",
+  "samples": [
+    {
+      "input": "2 4 1 2 3 5\n3\n2 2\n2 3\n3 3\n",
+      "output": "9\n5\n13\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 334px; height: 230px;\"/></p>\n<p style=\"text-align: center;\">The generated graph in the example.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 1: Songyang Chen Contest 2",
+  "level": 26,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

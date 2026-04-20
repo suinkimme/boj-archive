@@ -1,0 +1,33 @@
+{
+  "id": 23984,
+  "title": "Combining Classes",
+  "time_limit": "180 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Supervin is teaching <b>N</b> classes, which are numbered from 1 to <b>N</b>. After giving his most recent exam, he noticed that in each of his classes, the test scores of his students form a sequence of consecutive integers. Therefore, Supervin can summarize the scores for the i-th class as two integers <b>L</b><sub>i</sub> and <b>R</b><sub>i</sub>. This means that the i-th class has <b>R</b><sub>i</sub> - <b>L</b><sub>i</sub> + 1 students, and for each x (<b>L</b><sub>i</sub> ≤ x ≤ <b>R</b><sub>i</sub>), there is exactly one student with score x.</p>\n<p>Supervin would like to combine the scores from the students from all of his classes and sort the scores in non-increasing order. He has <b>Q</b> questions (numbered from 1 to <b>Q</b>) about this list; for the i-th question, he wants to know what the <b>K</b><sub>i</sub>-th highest score is. (If <b>K</b><sub>i</sub> is greater than the number of students, then the answer for the i-th question is 0.)</p>\n<p>Can you help Supervin answer all of his questions? Since there may be many answers, instead of outputting all of them, output proof that you have answered them: the sum of (S<sub>i</sub> × i) for all 1 ≤ i ≤ <b>Q</b>, where S<sub>i</sub> is the answer to the i-th question.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case contains four lines. The first line contains two integers <b>N</b> and <b>Q</b> as described above. The next three lines each contain six integers in the following format, respectively:</p>\n<ul>\n<li><b>X</b><sub>1</sub> <b>X</b><sub>2</sub> <b>A</b><sub>1</sub> <b>B</b><sub>1</sub> <b>C</b><sub>1</sub> <b>M</b><sub>1</sub></li>\n<li><b>Y</b><sub>1</sub> <b>Y</b><sub>2</sub> <b>A</b><sub>2</sub> <b>B</b><sub>2</sub> <b>C</b><sub>2</sub> <b>M</b><sub>2</sub></li>\n<li><b>Z</b><sub>1</sub> <b>Z</b><sub>2</sub> <b>A</b><sub>3</sub> <b>B</b><sub>3</sub> <b>C</b><sub>3</sub> <b>M</b><sub>3</sub></li>\n</ul>\n<p>These values are used to generate <b>L</b><sub>i</sub>, <b>R</b><sub>i</sub>, and <b>K</b><sub>i</sub> as follows:</p>\n<p>We define:</p>\n<ul>\n<li><b>X</b><sub>i</sub> = (<b>A</b><sub>1</sub> × <b>X</b><sub>i - 1</sub> + <b>B</b><sub>1</sub> × <b>X</b><sub>i - 2</sub> + <b>C</b><sub>1</sub>) modulo <b>M</b><sub>1</sub>, for i = 3 to <b>N</b>.</li>\n<li><b>Y</b><sub>i</sub> = (<b>A</b><sub>2</sub> × <b>Y</b><sub>i - 1</sub> + <b>B</b><sub>2</sub> × <b>Y</b><sub>i - 2</sub> + <b>C</b><sub>2</sub>) modulo <b>M</b><sub>2</sub>, for i = 3 to <b>N</b>.</li>\n<li><b>Z</b><sub>i</sub> = (<b>A</b><sub>3</sub> × <b>Z</b><sub>i - 1</sub> + <b>B</b><sub>3</sub> × <b>Z</b><sub>i - 2</sub> + <b>C</b><sub>3</sub>) modulo <b>M</b><sub>3</sub>, for i = 3 to <b>Q</b>.</li>\n</ul>\n<p>We also define:</p>\n<ul>\n<li><b>L</b><sub>i</sub> = min(<b>X</b><sub>i</sub>, <b>Y</b><sub>i</sub>) + 1, for i = 1 to <b>N</b>.</li>\n<li><b>R</b><sub>i</sub> = max(<b>X</b><sub>i</sub>, <b>Y</b><sub>i</sub>) + 1, for i = 1 to <b>N</b>.</li>\n<li><b>K</b><sub>i</sub> = <b>Z</b><sub>i</sub> + 1, for i = 1 to <b>Q</b>.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the sum of (S<sub>i</sub> × i) for all 1 ≤ i ≤ <b>Q</b>, where S<sub>i</sub> is the answer to the i-th question.</p>",
+  "samples": [
+    {
+      "input": "2\n5 1\n3 1 4 1 5 9\n2 7 1 8 2 9\n4 8 15 16 23 42\n7 1\n2 3 4 5 6 31\n1 3 4 5 5 17\n2 2 1 3 2 100\n",
+      "output": "Case #1: 7\nCase #2: 28\n"
+    },
+    {
+      "input": "2\n5 5\n3 1 4 1 5 9\n2 7 1 8 2 9\n4 8 15 16 23 42\n1 2\n0 0 0 0 0 1\n0 0 0 0 0 1\n0 1 0 0 0 2\n",
+      "output": "Case #1: 39\nCase #2: 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Kick Start, Google Kick Start 2018, Round G",
+  "level": 17,
+  "tags": [
+    "binary_search",
+    "offline_queries",
+    "prefix_sum",
+    "sorting",
+    "sweeping",
+    "two_pointer"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.7999999523162842
+}

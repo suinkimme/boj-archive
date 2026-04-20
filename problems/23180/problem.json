@@ -1,0 +1,29 @@
+{
+  "id": 23180,
+  "title": "Three Competitions",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Last month, $n$ people participated in three competitions. The people are labeled with distinct integers from $1$ to $n$. In each competition, the people were sorted by performance and got ranked from $1$ to $n$. The lower the rank, the better the player. There were no ties in any of the rankings.</p>\n<p>Today, instead of $n$ people participating at once, two people compete head-to-head. The winner of the match is the person who wins at least two out of three competitions. The winner then proceeds to compete with another person. This turned out to be quite interesting: even if a person $a$ cannot directly win against another person $b$, it's possible that another person $c$ wins against $b$ and then $a$ wins against $c$. That way, we can say that $a$ \"indirectly\" wins against $b$. It's also possible that two people can indirectly win against each other!</p>\n<p>Formally, a person $a$ is said to <strong>directly win against</strong> another person $b$ if $a$ has a lower rank than $b$ in at least two competitions. Also, $a$ is said to <strong>indirectly win against</strong> $b$ if there exists a sequence of people $p_1, p_2, \\cdots, p_k$ ($k \\geq 2$) such that $p_i$ directly wins against $p_{i+1}$ for all $i = 1, \\cdots, k-1$, $p_1 = a$ and $p_k = b$.</p>\n<p>Given the ranks of the people in each competition, answer $q$ questions asking whether person $a$ indirectly wins against another person $b$.</p>",
+  "input": "<p>The first line contains a single integer $n\\ (2 \\leq n \\leq 2 \\cdot 10^5)$, the number of people.</p>\n<p>Each of the next $n$ lines contains three integers, which represent the ranks of each person in each of the three competitions, in order from person $1$ to person $n$. For each competition, each integer rank from $1$ to $n$ appears exactly once.</p>\n<p>The next line contains a single integer $q\\ (1 \\leq q \\leq 2 \\cdot 10^5)$, the number of questions.</p>\n<p>Each of the next $q$ lines contains two integers $a$ and $b\\ (1 \\le a, b \\le n$, $a \\neq b)$, asking whether person $a$ indirectly wins against person $b$.</p>",
+  "output": "<p>Output $q$ lines. The $i$-th line should be either \\verb YES \\ or \\verb NO . If person $a$ indirectly wins against person $b$, output \\verb YES , otherwise output \\verb NO .</p>",
+  "samples": [
+    {
+      "input": "4\n2 4 3\n3 1 4\n4 3 2\n1 2 1\n3\n1 2\n2 1\n3 4\n",
+      "output": "YES\nYES\nNO\n"
+    }
+  ],
+  "hint": "<p>Person 1 directly (and indirectly) wins against 2. Person 2 doesn't directly win against 1, but 2 directly wins against 3 and 3 directly wins against 1, so 2 indirectly wins against 1.</p>",
+  "source": "University, KAIST, KAIST ICPC Mock Competition, 2021 KAIST 11th ICPC Mock Competition, Contest, Open Cup, 2021/2022 Season, Stage 4: Grand Prix of Korea, jh05013, koosaga, ainta",
+  "level": 23,
+  "tags": [
+    "dag",
+    "data_structures",
+    "graphs",
+    "scc",
+    "segtree",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 2.0952000617980957
+}

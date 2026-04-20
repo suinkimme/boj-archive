@@ -1,0 +1,25 @@
+{
+  "id": 6469,
+  "title": "Uniform Generator",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Computer simulations often require random numbers. One way to generate pseudo-random numbers is via a function of the form </p>\n<pre>\n     seed(x+1) = [ seed(x) + STEP ] % MOD\n     where \"%\" is the modulus operator.</pre>\n<p>Such a function will generate pseudo-random numbers (seed) between 0 and MOD-1. One problem with functions of this form is that they will always generate the same pattern over and over. In order to minimize this effect, selecting the STEP and MOD values carefully can result in a uniform distribution of all values between (and including) 0 and MOD-1. </p>\n<p>For example, if STEP=3 and MOD=5, the function will generate the series of pseudo-random numbers 0, 3, 1, 4, 2 in a repeating cycle. In this example, all of the numbers between and including 0 and MOD-1 will be generated every MOD iterations of the function. Note that by the nature of the function to generate the same seed(x+1) every time seed(x) occurs means that if a function will generate all the numbers between 0 and MOD-1, it will generate pseudo-random numbers uniformly with every MOD iterations. </p>\n<p>If STEP = 15 and MOD = 20, the function generates the series 0, 15, 10, 5 (or any other repeating series if the initial seed is other than 0). This is a poor selection of STEP and MOD because no initial seed will generate all of the numbers from 0 and MOD-1. </p>\n<p>Your program will determine if choices of STEP and MOD will generate a uniform distribution of pseudo-random numbers. </p>",
+  "input": "<p>Each line of input will contain a pair of integers for STEP and MOD in that order (1&lt;=STEP,MOD&lt;=100000).</p>",
+  "output": "<p>For each line of input, your program should print the STEP value right-justified in columns 1 through 10, the MOD value right-justified in columns 11 through 20 and either \"Good Choice\" or \"Bad Choice\" left-justified starting in column 22. The \"Good Choice\" message should be printed when the selection of STEP and MOD will generate all the numbers between and including 0 and MOD-1 when MOD numbers are generated. Otherwise, your program should print the message \"Bad Choice\". After each output test set, your program should print exactly one blank line.</p>",
+  "samples": [
+    {
+      "input": "3 5\n15 20\n63923 99999\n",
+      "output": "         3         5 Good Choice\n\n        15        20 Bad Choice\n\n     63923     99999 Good Choice\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 1996 South Central USA Regional Programming Contest, rmj",
+  "level": 5,
+  "tags": [
+    "math",
+    "implementation"
+  ],
+  "accepted_user_count": 111,
+  "submission_count": null,
+  "average_tries": 2.4774999618530273
+}

@@ -1,0 +1,30 @@
+{
+  "id": 29777,
+  "title": "Brought Down the Grading Server?",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A hectic first competition day has passed… While the Scientific Committee narrowly fought off the hacking attack on the grading server, they fear that it affected the scoring of the submissions. There is only one option: all submissions have to be rejudged!</p>\n<p>The grading server has $N$ processor cores. The committee has already assigned a list of $S$ submissions to each core, where each submission is to one of the $T$ tasks of the competition (numbered $1, \\dots , T$). The committee made sure that $S$ is a power of two.<sup>*</sup> Now, in the next $S$ minutes, each core will evaluate exactly one submission from its list per minute.</p>\n<p>Unfortunately, the database containing the task data is quite fragile and could crash if the number of simultaneous requests for a single task’s data varies widely. Therefore, the committee wants to order the submissions of each core in such a way that, during the rejudging, the maximum and minimum number of simultaneously evaluated submissions for any single task differ by at most one.</p>\n<p>Write a program which computes such an ordered assignment of the submissions to the cores.</p>\n<hr/>\n<p><sup>*</sup> Due to a bug,<sup>†</sup> the judging system would crash otherwise, taking down all firewalls and potentially exposing sensitive information!</p>\n<p><sup>†</sup> You had one job, Wolfgang!</p>",
+  "input": "<p>The first line of input contains the three integers $N$, $S$, and $T$ described above.</p>\n<p>Then, $N$ lines follow describing the submissions assigned to the cores. The $i$-th of these lines contains $S$ integers $t_1 , \\dots , t_S$ ($1 ≤ t_j ≤ T$), meaning that the $i$-th core is assigned submissions to the tasks $t_1 , \\dots , t_S$ respectively.</p>",
+  "output": "<p>Your program should output $N$ lines that describe an ordered assignment of the submissions to the cores such that the maximum and minimum number of simultaneously evaluated submissions for any single task differ by at most one: The $i$-th of these lines should contain $S$ integers $r_1 , \\dots , r_S$, meaning that the $i$-th core evaluates a submission to task $r_j$ during the $j$-th minute. It is guaranteed that such an assignment exists for each testcase.</p>",
+  "samples": [
+    {
+      "input": "3 2 3\n1 2\n2 3\n2 3\n",
+      "output": "2 1\n3 2\n2 3\n"
+    },
+    {
+      "input": "3 4 3\n2 3 2 2\n2 3 3 2\n2 2 3 2\n",
+      "output": "2 2 2 3\n3 2 3 2\n2 3 2 2\n"
+    }
+  ],
+  "hint": "<p>In the output of the first example, the difference between the maximum and the minimum number of simultaneously evaluated submissions is one for tasks $1$ and $2$ and zero for task $3$. On the other hand, ordering the submissions as in the input would not have constituted a valid output because the difference between the maximum and the minimum number of simultaneously evaluations submissions for task $3$ is two.</p>\n<p>In the output of the second example, the difference between the maximum and the minimum number of simultaneously evaluated submissions is zero for all three tasks.</p>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2023, Day 1",
+  "level": 23,
+  "tags": [
+    "divide_and_conquer",
+    "eulerian_path",
+    "graphs"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 5.388899803161621
+}

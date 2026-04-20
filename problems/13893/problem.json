@@ -1,0 +1,30 @@
+{
+  "id": 13893,
+  "title": "Dictionary Game",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>We all know the famous game scrabble, where we want to make words using tiles. We will play a game with words. But it is reverse of scrabble. Here instead of making words we want to destroy them. It is a two player game.</p>\n<p>The game starts with a dictionary of words. At each move, the current player chooses a word of his choice (not necessarily from the dictionary). The constraints for choosing the word is, it must match the prefix of any (one or more) of the current dictionary words.</p>\n<p>When a player chooses a word as its move, all the dictionary words that has a prefix equal to the chosen word, are split into two parts:</p>\n<ol>\n<li>The matched part without the last character of the chosen word.</li>\n<li>The unmatched part starting from the last character of the chosen word.</li>\n</ol>\n<p>We remove all the unmatched part from the dictionary and keep only the matched part in the dictionary. The words that don't have matched prefix with the chosen word are kept intact in the dictionary. In this situation the next player makes its move in the same fashion. If the chosen word is of length 1, then all the dictionary words starting with that character will be removed.</p>\n<p>For example, if we have a dictionary consisting the following words:</p>\n<p>bangladesh<br/>\nbangalore<br/>\nband<br/>\nbandana</p>\n<p>Now if the first player chooses the word “bang” then after the move the dictionary will become:<br/>\nban<br/>\nban<br/>\nband<br/>\nbandana</p>\n<p>A player loses, when it cannot make a valid move. Given the dictionary of words, who will win if both players played optimally? To make it more interesting, can you find out who will win if you update the dictionary by adding new words?</p>\n<p>Formally, you will be given few operations where you need to add a new word to the dictionary. After adding you need to calculate the winner between player 1 and 2 for the current dictionary. These added words are permanent. Means each of these added words will remain in the dictionary for that particular test case.</p>",
+  "input": "<p>First line consists of an integer T, which is the number of test cases (T ≤ 10).</p>\n<p>Each case will start with an integer N (0 &lt; N ≤ 50 000), the number of words in the dictionary.</p>\n<p>Next N lines will contain dictionary words DW. Length of each DW will be less than or equal to 40.</p>\n<p>Next line will contain an integer number Q, the number of operations (0 &lt; Q ≤ 50 000).</p>\n<p>Next Q lines will contain query words QW. Each QW is the word that you now want to add to the current dictionary. Let’s call these “Query words”. Length of each QW will be less than or equal to 40. All the dictionary words and query words will only consist of lower case letters.</p>",
+  "output": "<p>For each query word QW, you have to find out who will win, if you add QW to the current dictionary. First print the case number, then for each query print “1” or “2” based on whether player 1 or 2 will win.</p>",
+  "samples": [
+    {
+      "input": "2\n4\nbangladesh\nbangalore\nband\nbandana\n2\negg\napple\n1\norange\n2\ncat\ntiger\n",
+      "output": "Case 1:\n2\n1\nCase 2:\n1\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Thailand, 2016 ACM-ICPC Asia-Bangkok Regional Contest",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "string",
+    "trees",
+    "game_theory",
+    "trie",
+    "sprague_grundy",
+    "hackenbush"
+  ],
+  "accepted_user_count": 44,
+  "submission_count": null,
+  "average_tries": 2.9544999599456787
+}

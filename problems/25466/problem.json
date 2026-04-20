@@ -1,0 +1,30 @@
+{
+  "id": 25466,
+  "title": "Loptica",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Nikola je za svoj rođendan unatoč želji za dobrom večerom dobio lopticu. Pomalo razočaran, odlučio je taj poklon spojiti s onim prošlogodišnjim, dugačkom daskom. Shvativši da baš i ne dobiva najbolje poklone, pokušao je poboljšati ove postojeće kako bi se malo zabavio.</p>\n<p>Svoju je dasku crtama podijelio na $L$ jednakih dijelova, a na $N$ od tih dijelova postavio je prepreke od kojih svaka na početku može, ali i ne mora biti aktivirana. Sada želi postaviti svoju lopticu na jedan dio daske na kojem se ne nalazi prepreka te ju gurnuti u jednom od dva smjera po dasci na način da ona prijeđe točno jedan dio daske po sekundi. Kad loptica dođe na dio daske na kojem se nalazi prepreka dogodit će se jedna od dvije mogućnosti ovisno o aktiviranosti prepreke:</p>\n<ol>\n<li>Ako prepreka nije aktivirana, loptica će se nastaviti kretati kao da na tom polju nema prepreke, ali će se prepreka u sljedećoj sekundi aktivirati.</li>\n<li>Inače će se loptica odbiti i nastaviti kretati istom brzinom, ali u suprotnom smjeru, a prepreka će se deaktivirati. Tako će se u sljedećoj sekundi naći na onom polju iz kojeg je došla prije nego što se odbila od prepreke.</li>\n</ol>\n<p>Ako je loptica u nekoj sekundi na prvom ili zadnjem dijelu daske te je usmjerena prema rubu, ona će u sljedećoj sekundi pasti s kraja daske.</p>\n<p>Primjer kretanja loptice:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 482px; height: 172px;\"/></p>\n<p><em>Na početku (u 0. sekundi) loptica se nalazi na prvom dijelu daske te je usmjerena prema desno. Na drugom dijelu daske nalazi se prepreka koja nije aktivirana, a na trećem dijelu nalazi se aktivirana prepreka. Nakon jedne sekunde loptica dolazi na drugi dio. Budući da tamo prepreka nije aktivirana, loptica nastavlja dalje, a prepreka se aktivira. Nakon dvije sekunde loptica dolazi do aktivirane prepreke te se odbija od nje pa se nakon treće sekunde opet nalazi na drugom dijelu daske, a prepreka na trećem dijelu se deaktivira. Loptica se još jednom odbija te dolazi do četvrtog dijela daske nakon pet sekundi. U sljedećoj sekundi loptica će pasti s desnog ruba daske, ali to nije prikazano na slici.</em></p>\n<p>Nikola se sada zapitao $Q$ pitanja, a $i$-to od njih glasi: “Ako lopticu na početku postavim na polje $A_i$ te ju usmjerim prema $B_i$, nakon koje će sekunde ona prvi puta doći na $C_i$-ti dio daske?”. Pomozi Nikoli i odgovori na njegova pitanja. Primijeti da Nikola neće zapravo gurnuti lopticu po dasci pa će prepreke za svako pitanje izgledati kao na početku, dakle pitanja su nezavisna.</p>",
+  "input": "<p>U prvom su retku tri prirodna broja $L$, $N$ i $Q$ ($3 ≤ L ≤ 5 \\cdot 10^8$, $1 ≤ N ≤ 2 \\cdot 10^5$, $1 ≤ Q ≤ 2 \\cdot 10^5$), brojevi iz teksta zadatka.</p>\n<p>U $i$-tom od sljedećih $N$ redaka su po dva cijela broja $X_i$ i $Y_i$ ($1 ≤ X_i ≤ L$, $0 ≤ Y_i ≤ 1$). $X_i$ označava redni broj dijela daske na kojoj se nalazi $i$-ta prepreka, a $Y_i$ označava početnu aktiviranost prepreke. Ako je $Y_i$ jednak $1$, onda je $i$-ta prepreka na početku aktivirana, a inače nije. Svi $X_i$ bit će međusobno različiti.</p>\n<p>U $i$-tom od sljedećih $Q$ redaka su po tri cijela broja $A_i$, $B_i$ i $C_i$, ($1 ≤ A_i, C_i ≤ L$, $A_i ≠ C_i$, $0 ≤ B_i ≤ 1$), brojevi iz teksta zadatka. Ako je $B_i$ jednak $0$, onda je u $i$-tom pitanju loptica usmjerena prema lijevo (prema manjim rednim brojevima dijelova daske), a inače prema desno. Na $A_i$-tom i $C_i$-tom dijelu daske neće se nalaziti prepreka.</p>",
+  "output": "<p>Ispiši $Q$ redaka, odgovore na pitanja onim redom kojim su dana na ulazu. Ako u nekom pitanju loptica nikad neće doći do zadanog dijela daske, za to pitanje ispiši $-1$.</p>",
+  "samples": [
+    {
+      "input": "4 2 2\n2 0\n3 1\n1 1 4\n4 0 1\n",
+      "output": "5\n-1\n"
+    },
+    {
+      "input": "3 1 2\n2 0\n1 1 3\n3 0 1\n",
+      "output": "2\n2\n"
+    },
+    {
+      "input": "10 4 3\n1 1\n10 1\n3 1\n7 0\n2 0 9\n2 1 9\n8 1 2\n",
+      "output": "-1\n11\n18\n"
+    }
+  ],
+  "hint": "<p>Opis prvog probnog primjera: Prepreke su postavljene kao na slici gore. Početna stanje loptice u prvom pitanju također odgovara onom na slici pa će loptica na četvrti dio daske doći nakon pet sekundi. U drugom pitanju nas zanima kada će loptica s četvrtog dijela doći na prvi ako je usmjerena prema lijevo. To se nikada neće dogoditi jer će se odbiti od prepreke na trećem dijelu te pasti s desnog ruba daske.</p>\n<p>Opis drugog probnog primjera: U prvom pitanju će loptica doći do trećeg dijela u dvije sekunde, a prepreka će se aktivirati. U drugom pitanju prepreka opet neće biti aktivirana pa će ju i sada loptica prijeći.</p>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2022, Junior Final Exam #2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

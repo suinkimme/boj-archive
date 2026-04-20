@@ -1,0 +1,48 @@
+{
+  "id": 18421,
+  "title": "じゃんけん式 (Rock-Scissors-Paper Expression)",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>この問題では，じゃんけんの手「グー」「チョキ」「パー」をそれぞれ R, S, P で表す．R は S に勝ち，S は P に勝ち，P は R に勝つ．</p>\n<p>x, y をじゃんけんの手とするとき，x + y,   x - y,   x * y を以下のように定める (これらは通常の意味での足し算・引き算・掛け算ではない)：</p>\n<ul>\n<li>x + y は，x ≠ y のとき x と y のうち勝つ方とし，x = y のとき x とする．</li>\n<li>x - y は，x ≠ y のとき x と y のうち負ける方とし，x = y のとき x とする．</li>\n<li>x * y は，x ≠ y のとき R, S, P のうち x でも y でもないものとし，x = y のとき x とする．</li>\n</ul>\n<p>じゃんけんの手と +, -, * と括弧からなる式は，以下のように計算する：</p>\n<ul>\n<li>括弧の中は先に計算する．例えば，R * (P + S) = R * S = P である．</li>\n<li>括弧の深さが同じ部分については，\n\t<ul>\n<li>+, - より * の方を優先して計算する．例えば，R - P * S = R - (P * S) = R - R = R である．</li>\n<li>同じ優先順位のもの (+ どうし，- どうし，+ と -，* どうし) については，左から順番に計算する．例えば，R - P + S = (R - P) + S = R + S = R である．</li>\n</ul>\n</li>\n</ul>\n<p>JOI さんはあるじゃんけんの式を持っていたが，その式の中の R, S, P の一部が見えなくなってしまった．見えなくなってしまった部分が `?' で表された長さ N の文字列 E が与えられる．JOI さんは，見えなくなってしまった部分のそれぞれに R, S, P のいずれかを割り当てる方法であって，式の計算結果が A になるものが何通りあるかを知りたい．その数は非常に大きくなる可能性があるので，1 000 000 007 で割った余りを求めたい．</p>\n<p>本問で用いられる文法は，BNF (バッカス・ナウア記法) を用いて以下のように表される．じゃんけんの式の一部が見えなくなってしまったものは &lt;expression&gt; である．</p>\n<p>&lt;expression&gt; ::= &lt;term&gt; | &lt;expression&gt; \"+\" &lt;term&gt; | &lt;expression&gt; \"-\" &lt;term&gt; &lt;term&gt; ::= &lt;factor&gt; | &lt;term&gt; \"*\" &lt;factor&gt; &lt;factor&gt; ::= \"R\" | \"S\" | \"P\" | \"?\" | \"(\" &lt;expression&gt; \")\"</p>\n<p>これは例えば，ある文字列が &lt;expression&gt; であるとは，「&lt;term&gt; である」または「&lt;expression&gt; である文字列，`+'，&lt;term&gt; である文字列，をこの順に連結させたもの」または「&lt;expression&gt; である文字列，`-'，&lt;term&gt; である文字列，をこの順に連結させたもの」であることである，というように再帰的に定義されることを意味する．</p>\n<p>&lt;expression&gt; である文字列 E と計算結果 A が与えられるので，`?' に R, S, P のいずれかを割り当てる方法であって式の計算結果が A になるものの個数を 1 000 000 007 で割った余りを求めるプログラムを作成せよ．</p>",
+  "input": "<p>入力は以下の形式で標準入力から与えられる．</p>\n<pre>\n<var>N</var>\n<var>E</var>\n<var>A</var></pre>",
+  "output": "<p>標準出力に，`?' に R, S, P のいずれかを割り当てる方法であって式の計算結果が A になるものの個数を 1 000 000 007 で割った余りを 1 行で出力せよ．</p>",
+  "samples": [
+    {
+      "input": "11\nS+?-(R+?)*P\nS\n",
+      "output": "6\n"
+    },
+    {
+      "input": "15\n?+?-?*?+?-?*?+?\nR\n",
+      "output": "2187\n"
+    },
+    {
+      "input": "13\n(((((R)))))+?\nP\n",
+      "output": "1\n"
+    },
+    {
+      "input": "1\nP\nS\n",
+      "output": "0\n"
+    },
+    {
+      "input": "27\nR+((?+S-?*P+?)-P*?+S-?)*R+?\nP\n",
+      "output": "381\n"
+    },
+    {
+      "input": "83\n((R+?)*(?+?))*((?+?)*(?+?))*((?+?)*(?+?))-((S+?)*(?+?))*((?+?)*(?+?))*((?+?)*(?+?))\nP\n",
+      "output": "460353133\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Japanese Olympiad in Informatics, Japanese Olympiad in Informatics Qualification Round, JOI 2019/2020 예선 2",
+  "level": 17,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "parsing",
+    "string",
+    "trees"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.9500000476837158
+}

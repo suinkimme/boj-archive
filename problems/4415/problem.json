@@ -1,0 +1,22 @@
+{
+  "id": 4415,
+  "title": "Spaghetti",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Early languages like Fortran IV use conditional and unconditional goto statements instead of structured statements like if and while. In Fortran IV, each statement occupies a line of input. The first five positions in each line are reserved for an optional label, which is an integer. The next position is reserved for a continuation marker, which we shall not consider further. Therefore, statements occupy positions 7 and beyond in each input line. The goto statement looks like this</p>\n<pre>\ngoto label</pre>\n<p>and the conditional goto statement looks like this</p>\n<pre>\nif(expression)goto label</pre>\n<p>The language contains many other statements, but only the conditional goto begins with \"if(\" and ends with \")goto label\" where label is an integer. All spaces are ignored within a Fortran IV statement. For this problem, the \"stop\" statement, which halts execution, appears only as the last line of the program.</p>\n<p>Your job is to determine whether or not two Fortran programs are equivalent. They are equivalent if, for all possible inputs, they execute exactly the same sequence of statements, ignoring unconditional gotos and labels. By \"the same sequence of statements\" we mean statements that are textually identical, after spaces and labels are removed. You must assume that each conditional goto will be taken for some inputs and not taken for others. Unconditional gotos are, of course, always taken. The two programs in the sample input are equivalent.</p>",
+  "input": "<p>Your input consists of two programs separated by a blank line. No input line exceeds 80 characters and no program contains more than 1000 lines. Each label used in a goto statement appears to the left of exactly one statment; no label is repeated.</p>",
+  "output": "<p>Output consists if a single line, stating either \"The programs are equivalent.\" or \"The programs are not equivalent.\"</p>",
+  "samples": [
+    {
+      "input": "      read 6, i,k,j\n   99 if(i .lt. j)goto 33\n      goto 55\n   33 i=j\n      goto 99\n   55 k=j+1\n      stop\n\n      read6,i,k,j\n      if(i.lt.j)goto12345\n77    k=j+1\n      goto5555\n12345 i=j\n      if(i.lt.j)goto12345\n      goto77\n88    goto88\n5555  stop\n",
+      "output": "The programs are equivalent.\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Waterloo's local Programming Contests, 31 January, 1999",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

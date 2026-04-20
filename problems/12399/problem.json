@@ -1,0 +1,27 @@
+{
+  "id": 12399,
+  "title": "Cruise Control (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p><em>Cruise control</em> is a system that allows a car to go at a constant speed, while the driver controls only the steering wheel. The driver can, of course, turn off the cruise control to avoid collisions. </p>\n<p>In this problem, we will consider a one-way road with two lanes, and <strong>N</strong> cars using cruise control on the road. Each car is 5 meters long and goes at some constant speed. A car can change lanes at any time if it would not cause the car to collide with some other car (touching does not count as collision). Assume that changing lanes is instantaneous and simply causes the car to switch to the other lane. We are interested in whether any driver will have to turn off cruise control eventually to avoid a collision, or is it possible for all of them to drive (possibly switching lanes, but at constant speed) without collisions indefinitely. Note that even though changing lanes is instantaneous, two cars driving side by side <em>cannot</em> exchange places by changing lanes at the same time.</p>",
+  "input": "<p>The first line of the input file gives the number of test cases, <strong>T</strong>.  <strong>T</strong> test cases follow. Each test case begins with the number <strong>N</strong>. <strong>N</strong> lines follow, each describing a single car. Each line contains a character <strong>C<sub>i</sub></strong> (denoting whether the car is initially in the left or the right lane), two integers describing the speed <strong>S<sub>i</sub></strong> of the car (in meters per second), and the initial position <strong>P<sub>i</sub></strong> of the car (in meters), denoting the distance between the rear end of the car and some fixed line across the road. All the cars are moving away from this line, and no car is behind the line.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 30. </li>\n<li>1 ≤ <strong>S<sub>i</sub></strong> ≤ 1000. </li>\n<li>0 ≤ <strong>P<sub>i</sub></strong> ≤ 10000. </li>\n<li>Each of the <strong>C<sub>i</sub></strong> characters will be either <em>L</em>, denoting the left lane, or <em>R</em>, denoting the right lane.</li>\n<li>Initially the cars' positions are such that they do not collide, that is, if two cars <em>i</em> and <em>j</em> have the same initial starting lane (that is, <em>C<sub>i</sub> = C<sub>j</sub></em>), then <em>|P<sub>i</sub> - P<sub>j</sub>| ≥ 5</em>.</li>\n<li>1 ≤ <strong>N</strong> ≤ 50.</li>\n</ul>",
+  "output": "<p>For each test case output one line containing \"Case #x: y\", where x is the case number (starting from 1) and y is either the word \"Possible\" (quotes for clarity only), if the cars can drive at the given constant speeds indefinitely, or the maximum number of seconds they can drive before somebody has to change speed to avoid a collision. Answers accurate to within 10<sup>-5</sup> absolute or relative error will be accepted.</p>",
+  "samples": [
+    {
+      "input": "4\n2\nL 5 10\nL 100 0\n3\nL 100 0\nR 100 0\nL 50 505\n6\nL 30 0\nR 30 2\nL 10 39\nR 10 42\nL 25 13\nL 15 29\n4\nL 4 0\nL 2 29\nL 1 35\nL 1 44\n",
+      "output": "Case #1: Possible\nCase #2: 10\nCase #3: 1.4\nCase #4: 12\n"
+    }
+  ],
+  "hint": "<p>In the first case, the faster car can shift over to the right lane and easily overtake the slower one. In the second case, the two cars driving side-by-side at 100 m/s will reach the car going 50 m/s in 10 seconds, and somebody will have to change speed, as both lanes will be blocked.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2012, Round 1A",
+  "level": 22,
+  "tags": [
+    "graphs",
+    "sorting",
+    "sweeping",
+    "bipartite_graph"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

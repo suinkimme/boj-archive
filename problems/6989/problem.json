@@ -1,0 +1,26 @@
+{
+  "id": 6989,
+  "title": "채점",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>N개의 문항이 있는 답안지를 채점하고자 한다. 1번부터 N번까지 각 문항에 대한 배점이 각각 S<sub>1</sub>, S<sub>2</sub>, ..., S<sub>N</sub>일 경우, 문항별 점수와 답안지의 총점은 다음과 같이 결정된다.</p>\n<ol>\n<li>틀린 문항에 대한 점수는 0이다. </li>\n<li>1번 문항이 맞으면 이 문항의 점수는 S<sub>1</sub>이다. i(2 ≤ i ≤ N)번 문항의 답이 맞을 경우에는 (i-1)번 문항의 정답 여부에 따라 이 문항의 점수가 다르게 정해진다.\n\t<ol style=\"list-style-type:lower-alpha\">\n<li>(i-1)번 문항의 답도 맞으면 i번 문항의 점수는 S<sub>i</sub>에 (i-1)번 문항의 점수를 더한 값이 된다.</li>\n<li>(i-1)번 문항의 답이 틀리면 i번 문항의 점수는 S<sub>i</sub>이다.</li>\n</ol>\n</li>\n<li>답안지의 총점은 위와 같이 계산된 문항별 점수의 합이다.</li>\n</ol>\n<p>예를 들어 9개 문항이 있는 시험에서 문항별 배점이 &lt;표 1&gt;과 같다고 하자.</p>\n<table class=\"table table-bordered table-center-40 td-center th-center\">\n<tbody>\n<tr>\n<th style=\"width:13%\">문항 번호</th>\n<td style=\"width:3%\">1</td>\n<td style=\"width:3%\">2</td>\n<td style=\"width:3%\">3</td>\n<td style=\"width:3%\">4</td>\n<td style=\"width:3%\">5</td>\n<td style=\"width:3%\">6</td>\n<td style=\"width:3%\">7</td>\n<td style=\"width:3%\">8</td>\n<td style=\"width:3%\">9</td>\n</tr>\n<tr>\n<th>문항 배점</th>\n<td>3</td>\n<td>2</td>\n<td>7</td>\n<td>2</td>\n<td>6</td>\n<td>8</td>\n<td>2</td>\n<td>5</td>\n<td>2</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">&lt;표 1&gt;</p>\n<p>어떤 답안지에서 문항 1번부터 9번까지에 대하여 제출한 답이 맞는지(○) 혹은 틀린지(×)가 아래 &lt;표 2&gt;와 같다고 하자.</p>\n<table class=\"table table-bordered table-center-40 td-center th-center\">\n<tbody>\n<tr>\n<th style=\"width:13%\">문항 번호</th>\n<td style=\"width:3%\">1</td>\n<td style=\"width:3%\">2</td>\n<td style=\"width:3%\">3</td>\n<td style=\"width:3%\">4</td>\n<td style=\"width:3%\">5</td>\n<td style=\"width:3%\">6</td>\n<td style=\"width:3%\">7</td>\n<td style=\"width:3%\">8</td>\n<td style=\"width:3%\">9</td>\n</tr>\n<tr>\n<th>문항 배점</th>\n<td>○</td>\n<td>×</td>\n<td>○</td>\n<td>○</td>\n<td>○</td>\n<td>×</td>\n<td>×</td>\n<td>○</td>\n<td>×</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">&lt;표 2&gt;</p>\n<p>그러면 문항별 점수는 다음 &lt;표 3&gt;과 같으므로 답안지의 총점은 39점이 된다.</p>\n<table class=\"table table-bordered table-center-40 td-center th-center\">\n<tbody>\n<tr>\n<th style=\"width:13%\">문항 번호</th>\n<td style=\"width:3%\">1</td>\n<td style=\"width:3%\">2</td>\n<td style=\"width:3%\">3</td>\n<td style=\"width:3%\">4</td>\n<td style=\"width:3%\">5</td>\n<td style=\"width:3%\">6</td>\n<td style=\"width:3%\">7</td>\n<td style=\"width:3%\">8</td>\n<td style=\"width:3%\">9</td>\n</tr>\n<tr>\n<th>문항 배점</th>\n<td>3</td>\n<td>0</td>\n<td>7</td>\n<td>9</td>\n<td>15</td>\n<td>0</td>\n<td>0</td>\n<td>5</td>\n<td>0</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">&lt;표 3&gt;</p>\n<p>그러나 어떤 수는 결코 답안지의 총점으로 나올 수 없다. 예를 들어, 문항별 배점이 &lt;표 1&gt;과 같을 때, 각 문항에 대하여 어떤 답을 하더라도 73점의 총점을 받을 수는 없다.</p>\n<p>문항별 배점과 어떤 자연수 K가 입력으로 주어진다. K보다 크거나 같은 정수로서 총점으로 나올 수 없는 가장 작은 값 M을 구하는 프로그램을 작성하시오.</p>",
+  "input": "<p>첫째 줄에 전체 문항 수 N(1 ≤ N ≤ 150)이 주어진다. 다음 줄에는 N개 문항들의 배점이 빈칸을 사이에 두고 차례대로 주어진다. 문항별 배점은 1 이상 100 이하의 정수이다. 마지막 줄에 자연수 K(1 ≤ K ≤ 2,000,000,000)가 주어진다.</p>",
+  "output": "<p>답안지의 총점으로 나올 수 없는 가장 작은 정수 M(M ≥ K)을 첫째 줄에 출력한다.</p>",
+  "samples": [
+    {
+      "input": "9\n3 2 7 2 6 8 2 5 2\n72\n",
+      "output": "73\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, 한국정보올림피아드, KOI 2008, 중등부, Olympiad, 한국정보올림피아드, KOI 2008, 고등부",
+  "level": 19,
+  "tags": [
+    "dp",
+    "bitmask",
+    "bitset"
+  ],
+  "accepted_user_count": 301,
+  "submission_count": null,
+  "average_tries": 3.6245999336242676
+}

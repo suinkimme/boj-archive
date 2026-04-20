@@ -1,0 +1,38 @@
+{
+  "id": 10631,
+  "title": "Tokyo Olympics Center",
+  "time_limit": "5 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are participating in the Summer Training Camp for Programming Contests. The camp is held in an accommodation facility called <em>Tokyo Olympics Center</em>. Today is the last day of the camp. Unfortunately, you are ordered to check if all the participants have properly cleaned their rooms.</p>\n<p>The accommodation facility is a rectangular field whose height is \\(H\\) and width is \\(W\\). The field is divided into square cells. The rows are numbered \\(1\\) through \\(H\\) from top to bottom and the columns are numbered \\(1\\) through \\(W\\) from left to right. The cell in row \\(i\\), column \\(j\\) is denoted by \\((i, j)\\). Two cells are adjacent if they share an edge.</p>\n<p>Each cell is called either a <em>wall cell</em> or a <em>floor cell</em>. A wall cell represents a wall which no one can enter. A floor cell is a part of the inside of the accommodation facility. Everybody can move between two adjacent floor cells. The floor cells are divided into several units. Each unit is assigned an uppercase English letter (<code>A</code>, <code>B</code>, <code>C</code>, ...). A floor cell adjacent to exactly one floor cell is called a <em>room</em>. Otherwise the floor cell is called an <em>aisle</em>. For example, the accommodation facility can be shown as the following figure. We denote a wall cell by <code>.</code> (single period).</p>\n<pre>\n...................\n.....AAABBBBBBB....\n...A.AA.A...B.B..B.\n..AAAAAAAABBBBBBBB.\n...A..A.A.....B....\n......A.......BBBB.\n....A.AA..C.C...B..\n...AAAAACCCCCCBBBB.\n...A..A...C.C...B..\n...................</pre>\n<p>In the above figure, there are \\(7\\) rooms in unit A, \\(4\\) rooms in unit B, and \\(4\\) rooms in unit C.</p>\n<p>Because the accommodation facility is too large to explore alone, you asked the other participants of the camp to check the rooms. For simplicity's sake, we call them <em>staffs</em>. Now, there are \\(K\\) staffs at the cell \\((s, t)\\). You decided to check the rooms according to the following procedure.</p>\n<ol>\n<li>\n<p>First, you assign each staff to some of units. Every unit must be assigned to exactly one staff. Note that it is allowed to assign all the units to one staff or to assign no units to some staffs.</p>\n</li>\n<li>\n<p>Then, each staff starts to check the rooms in the assigned units at the same time. The staffs can move between two adjacent floor cells in \\(T_{\\mathit{move}}\\) time. To check the room at \\((i, j)\\), the staffs must move to the cell \\((i, j)\\) and spend \\(T_{\\mathit{check}}\\) time there. Each staff first determines the order of the units to check and he or she must check the rooms according to the order. For example, suppose that there is a staff who is assigned units A, C, and E. He may decide that the order is E-&gt;A-&gt;C. After that, he must check all the rooms in unit E at first. Then, he must check all the rooms in unit A, and so on. The staffs can pass any floor cells. However, the staffs cannot check rooms that are not assigned to them. Further, the staffs cannot check rooms against the order of units that they have decided.</p>\n</li>\n<li>\n<p>After checking all the assigned rooms, the staffs must return to the cell \\((s, t)\\).</p>\n</li>\n<li>\n<p>When every staff returns to the cell \\((s, t)\\), the task is done.</p>\n</li>\n</ol>\n<p>Because you do not have enough time before the next contest, you want to minimize the total time to check all the rooms.</p>",
+  "input": "<p>The first line of the input contains three integers \\(H\\), \\(W\\), and \\(K\\) (\\(1 \\le H \\le 50\\), \\(1 \\le W \\le 50\\), \\(1 \\le K \\le 12\\)). The second line contains four integers \\(s\\), \\(t\\), \\(T_{\\mathit{move}}\\), and \\(T_{\\mathit{check}}\\) (\\(1 \\le s \\le H\\), \\(1 \\le t \\le W\\), \\(1 \\le T_{\\mathit{move}},T_{\\mathit{check}} \\le 10{,}000\\)). Each of the following \\(H\\) lines contains exactly \\(W\\) characters. Each character represents a cell in the accommodation facility. The \\(j\\)-th character in the \\(i\\)-th line of these lines is <code>.</code> if the cell \\((i, j)\\) is a wall cell. Otherwise, the character is an uppercase English letter (<code>A</code>-<code>L</code>) representing the unit to which the cell \\((i, j)\\) belongs.</p>\n<p>You can assume that the following conditions are satisfied.</p>\n<ul>\n<li>\n<p>The number of rooms in each unit is between \\(1\\) and \\(12\\), inclusive.</p>\n</li>\n<li>\n<p>The cell \\((s, t)\\) is guaranteed to be an aisle.</p>\n</li>\n<li>\n<p>Floor cells in each unit are connected.</p>\n</li>\n<li>\n<p>Floor cells in the field are connected.</p>\n</li>\n<li>\n<p>Every unit contains at least two cells.</p>\n</li>\n</ul>",
+  "output": "<p>Output the minimum required time to check all the rooms in one line.</p>",
+  "samples": [
+    {
+      "input": "3 3 1\n1 1 10 10\nAAA\nA..\nA..\n",
+      "output": "100\n"
+    },
+    {
+      "input": "3 3 2\n1 1 10 10\nABB\nA..\nA..\n",
+      "output": "50\n"
+    },
+    {
+      "input": "5 10 3\n3 6 1 100\n...G.H.A..\n.AAGAHAABB\nFFAAAAAAA.\n.EEAAADACC\n..E...D...\n",
+      "output": "316\n"
+    },
+    {
+      "input": "10 19 2\n6 15 3 10\n...................\n.....AAABBBBBBB....\n...A.AA.A...B.B..B.\n..AAAAAAAABBBBBBBB.\n...A..A.A.....B....\n......A.......BBBB.\n....A.AA..C.C...B..\n...AAAAACCCCCCBBBB.\n...A..A...C.C...B..\n...................\n",
+      "output": "232\n"
+    },
+    {
+      "input": "27 36 6\n24 19 616 1933\n....................................\n..........B...............B.........\n..........BBB..........BBBB.........\n..........BBBBB.......BBBB..........\n...........BBBBBBBBBBBBBBB..........\n...........BBBBBBBBBBBBBBB..........\n...........BBBBBBBBBBBBBB...........\n............BBBBBBBBBBBBB...........\n...........BBBBBBBBBBBBBBB..........\n..........BBBBBBBBBBBBBBBBB.........\n......B...BBBBBBBBBBBBBBBBB...B.....\n......BB.BBBBBBBBBBBBBBBBBB..BB.....\n.......BBBBBBBBBBBBBBBBBBBB.BB......\n.........BBBBBBBBBBBBBBBBBBBB.......\n........BBBBB..BBBBBBBB..BBBBB......\n......BBBBBB....BBBBB....BBBBBB.....\n.....BBBBBBBB...BBBBB..BBBBBBBB.B...\n...BBBBBBB..B...BBBBB..B..BBBBBBBB..\n.BBBBBBBBB.....BBBBBBB......BBBBBBB.\n..BBBBBBB......BBBBBBB........BBB...\n.BBBB.........BBBBBBBBB........BBB..\n..............BBBBBBBBB.............\n.............BBBBBBBBBB.............\n.............BBBBBBBBBB.............\n..............BBBBBBBB..............\n..............BBBBBBBB..............\n....................................\n",
+      "output": "137071\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Spring Contest, JAG Spring Contest 2014",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.5
+}

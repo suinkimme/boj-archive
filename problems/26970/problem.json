@@ -1,0 +1,26 @@
+{
+  "id": 26970,
+  "title": "Mountains",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "There are $N$ ($1 \\leq N \\leq 2000$) evenly spaced mountains in a row on the edge of \nFarmer  John's farm.  These can be expressed as an array of heights\n$h_1,h_2,\\dots,h_N$. For a mountain $i$, you can see another mountain $j$ if\nthere are no mountains strictly higher than the line of sight connecting the\ntops of mountain $j$ and $i$. Formally, for two mountains $i &lt; j$, they can see\neach other if there is no $k$ such that $i &lt; k &lt; j$ and $(k, h_k)$ is above the\nline segment connecting $(i, h_i)$ and $(j, h_j)$. There are $Q$\n($1 \\leq Q \\leq 2000$) updates where the height of one mountain increases. Find\nthe total number of unordered pairs of mountains that see each other after each\nupdate.",
+  "input": "<p>Line $1$ contains $N$.</p>\n<p>Line $2$ contains $N$ heights $h_1,h_2,\\dots,h_N$ (for each $i$, $0 \\leq h_i \\leq 10^9$).</p>\n<p>Line $3$ contains $Q$.</p>\n<p>Lines $4$ to $3+Q$ contain $x$, $y$ ($1 \\leq x \\leq N$, $1 \\leq y$) where $x$ is the index of the mountain and $y$ is the amount the height increases by. It is guaranteed that the new height of the mountain is at most $10^9$.</p>",
+  "output": "$Q$ lines, with the total number of unordered pairs of mountains that see each\nother after each update.",
+  "samples": [
+    {
+      "input": "5\n2 4 3 1 5\n3\n4 3\n1 3\n3 2\n",
+      "output": "7\n10\n7\n"
+    }
+  ],
+  "hint": "<p>Initially, the following pairs of mountains can see each other: $(1, 2)$, $(2, 3)$, $(2, 5)$, $(3, 4)$, $(3, 5)$, $(4, 5)$, a total of $6$.</p>\n<p>After the first update, mountain $4$ has a height of $4$, which doesn't block any visibility but does make it so that $4$ can now see $2$, making the new answer $7$.</p>\n<p>After the second update, mountain $1$ has a height of $5$, which doesn't block any visibility but does make it so that $1$ can now see $3$, $4$, and $5$, making the new answer $10$.</p>\n<p>After the third update, mountain $3$ has a height of $5$, which blocks mountain $1$ from seeing mountain $4$, blocks mountain $2$ from seeing mountains $4$ and $5$, and doesn't allow itself to see any more mountains since it can already see all of them, making the new answer $7$.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2022-2023 Season, USACO 2022 December Contest, Gold",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "set",
+    "tree_set"
+  ],
+  "accepted_user_count": 70,
+  "submission_count": null,
+  "average_tries": 1.742900013923645
+}

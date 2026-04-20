@@ -1,0 +1,30 @@
+{
+  "id": 25263,
+  "title": "Stranded Far From Home",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You just couldn’t leave it alone… You actually carried out the break-in, and initially everything worked out as planned. However, the communication with your assistant went terribly wrong.* Instead of returning safely to Lübeck, you are now stranded on a small island, and your submarine is out of fuel.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"width: 149px; height: 207px; float: right;\"/>To return in time for the BOI award ceremony, you now have to get to the ferry on the other side of the island. However, the local population has strange traditions. Ties are very important to them, and every village has its own preferred tie color which might change over time.</p>\n<p>A report from the internet tells you that different villages initially preferred different tie colors. Unfortunately, the report is quite outdated. Since then, every week exactly one village convinced a neighboring village to prefer the same tie color as them. (Two villages are neighbors if they are directly connected by a road.) However, this can only happen if there were at least as many people on the entire island who preferred the tie color of the first village as there were people who preferred the tie color of the second village. Enough time has passed so that all islanders now prefer the same tie color.</p>\n<p>You are almost sure that the islanders won’t let you pass if you don’t wear a tie matching their preference. To get to the ferry, you therefore plan to wear a tie of every color that the islanders could prefer. However, wearing too many ties will make you look suspicious. Write a program that uses a description of the island to calculate which ties you have to wear.</p>\n<hr/>\n<p>* That was to be expected, right?</p>",
+  "input": "<p>The first line of the input contains two integers $N$ and $M$ where $N$ is the number of villages and $M$ is the number of roads on the island. The villages are numbered from $1$ to $N$.</p>\n<p>The next line contains $N$ integers $s_1, \\dots , s_N$ where $s_i$ describes the number of inhabitants of village $i$.</p>\n<p>Each of the following $M$ lines contains two integers $a$ and $b$ ($1 ≤ a, b ≤ N$, $a \\ne b$), meaning that there is a road between villages $a$ and $b$. All villages are connected to each other at least indirectly.</p>",
+  "output": "<p>Your program should output a string of length $N$ consisting of <code>0</code>s and <code>1</code>s. The $i$-th digit should be <code>1</code> if and only if it is possible that all islanders now prefer the tie color that village $i$ preferred initially.</p>",
+  "samples": [
+    {
+      "input": "4 4\n2 2 4 3\n1 2\n1 3\n2 3\n3 4\n",
+      "output": "1110\n"
+    },
+    {
+      "input": "4 3\n4 2 2 1\n1 2\n3 2\n4 1\n",
+      "output": "1110\n"
+    }
+  ],
+  "hint": "<p>The following picture shows the first example:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 162px; height: 89px;\"/></p>\n<p>The first digit of the output is $1$ since it is possible that all islanders now prefer the tie color that village $1$ preferred initially. This could happen as follows: In the first week, village $1$ convinces village $2$ that their tie color is better. After that, there are four people who prefer the tie color of village $1$. Therefore, village $1$ can now convince village $3$ of their tie color, and if afterwards village $3$ convinces village $4$, everybody prefers the tie color that village $1$ preferred initially.</p>\n<p>The last digit of the output is $0$ since it is impossible that village $4$ convinces anyone of their tie color. This is because village $4$ is only connected to village $3$, but village $3$ has more inhabitants.</p>\n<p>Note that the second example is a valid test case for the second subtask.</p>",
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2022",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "smaller_to_larger"
+  ],
+  "accepted_user_count": 29,
+  "submission_count": null,
+  "average_tries": 2.1723999977111816
+}

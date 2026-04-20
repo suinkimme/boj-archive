@@ -1,0 +1,34 @@
+{
+  "id": 31152,
+  "title": "Replace Sort",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Consider an array $A$ and a set $B$ of integers such that <strong>all numbers in $A$ and $B$ are distinct</strong>. Your task is to turn $A$ into a sorted array. To do this you can take any number from $B$ and replace any element of $A$ with it. You can perform this operation any number of times, but each element of $B$ can be used at most once.</p>\n<p>Determine the minimum number of operations needed to turn $A$ into a sorted array, or determine that it is impossible.</p>",
+  "input": "<p>The first line of input contains two integers $N$ and $M$ ($1 \\le N, M \\le 5 \\cdot 10^5$) --- the sizes of $A$ and $B$ respectively.</p>\n<p>The second line contains $N$ integers $A_1, A_2, \\ldots, A_N$.</p>\n<p>The third line contains $M$ integers $B_1, B_2, \\ldots, B_M$.</p>\n<p>All the $(N + M)$ elements are distinct, positive and do not exceed $10^9$.</p>",
+  "output": "<p>If it is impossible to turn $A$ into a sorted array, print $-1$. Otherwise, print the minimum number of operations needed.</p>",
+  "samples": [
+    {
+      "input": "4 1\n2 6 13 10\n5\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "4 2\n2 6 13 10\n5 4\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 3\n2 6 13 10\n5 4 19\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": "<p>In all three examples, the issue is that $13 &gt; 10$, so we have to change at least one of them.</p>\n<p>In the first one, we can decrease $13$ by replacing it with $5$, but it breaks the other side, so there is no solution.</p>\n<p>In the second one, we also have $4$, which we can use to fix the broken side. It is impossible to do with less than $2$ operations.</p>\n<p>In the third example we can finally increase the last element, thus fixing $A$ in 1 operation.</p>",
+  "source": "Contest, Open Cup, 2021/2022 Season, Stage 7: Grand Prix of Southeastern Europe, ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2021",
+  "level": 22,
+  "tags": [
+    "dp",
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.833299994468689
+}

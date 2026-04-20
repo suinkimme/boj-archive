@@ -1,0 +1,28 @@
+{
+  "id": 14773,
+  "title": "Tracking Fake News",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>When fake news spreads, it often uses social networks as its conduit. A friend posts a story that agrees with your pre-conceived ideas and prejudices (e.g., the presidential candidate of the other party participated in some nefarious activity that you can easily ascribe to them), and you will believe it much more uncritically than if it disagrees with your preferences. As a result, you will post the story, and your friends will see it, etc. A sufficiently juicy and pandering piece of “news” can spread like wildfire. In this problem, you will simulate the spread of a piece of fake news, when you know the social network and the proclivities of the individuals, as well as where in the network the piece of fake news originated.</p>\n<p>To keep our model simple (if a bit unrealistic), we will assume that there are a number of different categories i that matter to you, like which political side the story reflects positively on, how much sex it contains, how much violence it contains, etc. For each of those categories, each individual has an integer (positive or negative) number w<sub>j,i</sub> describing his/her weight for it. Each individual also has a target tj for total content. Each story also has an integer content c<sub>i</sub> for each category. Individual j likes a story exactly iff Σ<sub>i</sub>w<sub>j,i</sub>c<sub>i</sub> = t<sub>j</sub>. (This is a very stringent requirement, but easy to compute.) If they like it, they will repost, otherwise not. We assume that each person sees all stories posted by their friends, and no stories posted by their non-friends (unless friends repost them).</p>",
+  "input": "<p>The first line contains a number K ≥ 1, which is the number of input data sets in the file. This is followed by K data sets of the following form:</p>\n<p>The first line of a data set contains two integers n, r; 1 ≤ n ≤ 1000 is the number of individuals in the social network, and 1 ≤ r ≤ 100 is the number of categories that matter for stories.</p>\n<p>The next line is a single line containing exactly r integers, between -100 and 100, inclusive; these are the c<sub>i</sub>.</p>\n<p>Next come n lines, each describing one individual j in the network. The first r numbers on the line are the w<sub>j,i</sub>; they are integers between -10 and 10, inclusive. Next comes the integer t<sub>j</sub>, between -1000000 and 1000000, inclusive. After that comes one integer d<sub>j</sub> with 0 ≤ d<sub>j</sub> ≤ n − 1, which gives you the number of friends of j. This is followed by d<sub>j</sub> distinct integers, all between 1 and n, inclusive, and not equal to j. This is the list of j’s friends. We will always ensure that if j′ is a friend of j, then j will also be a friend of j′.</p>\n<p>The fake news story will always start at person 1, though he/she may not even post it if it doesn’t appeal to them.</p>",
+  "output": "<p>For each data set, first output “Data Set x:” on a line by itself, where x is its number. Then, output the total number of people who have posted the fake news story by the time no one new posts.</p>\n<p>Each data set should be followed by a blank line.</p>",
+  "samples": [
+    {
+      "input": "1\n5 3\n1 -3 7\n3 2 1 4 2 2 3\n0 0 0 0 3 4 1 3\n4 0 0 3 3 2 1 5\n-2 1 1 1 2 2 5\n10 -1 2 27 2 3 4\n",
+      "output": "Data Set 1:\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Spring 2017: Fake News",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "simulation",
+    "bfs"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.5
+}

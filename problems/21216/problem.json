@@ -1,0 +1,31 @@
+{
+  "id": 21216,
+  "title": "Emails",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Ariadna's blog is filled with delicious recipes and sensible advice for a healthy and balanced lifestyle. Unsurprisingly, it has thus gathered an impressive number of readers. This reader base is now stable, and Ariadna feels that it would be useful for them to interact more and form a tighter community, one that is not solely anchored to the blog.</p>\n<p>Ariadna knows that some of the readers are already friends or acquaintances, and therefore have each other's email addresses. She thinks that a good start for developing the community would be for everyone to have everyone else's email address, so that everyone would be able to reach out to the entire group. Since she knows her blog's readers also greatly enjoy doing things in a \"decentralized\" fashion, she therefore devises the following protocol, to be started on day $D$:</p>\n<ul>\n<li>Every day at 8am, everyone sends the current list of contacts in their address book to all of the contacts in their address book.</li>\n<li>Every day at 8pm, everyone updates their address book, adding any new received email addresses.</li>\n</ul>\n<p>If a person does not need to do any update at 8pm, then the process is said to have <em>converged</em> for this person, and she will no longer need to continue sending emails over the next days.</p>\n<p>You are a skillful hacker and you have managed to get access to all of the blog readers' address books. You would like to surprise and impress Ariadna  by notifying her of whether or not the process she proposes will lead to everyone getting everyone else's address. Moreover, if the process is meant to succeed, you want to give her a good estimate of how many days it would take. More precisely, if the process succeeds, you can either give her:</p>\n<ul>\n<li>the number $E$ of days (including the first day) elapsed until the last update takes place, or</li>\n<li>the number of days (including the first day) elapsed until the process has <em>converged</em> on everyone's side. Note that, according to Ariadna's definition, this is equal to $E$+1.</li>\n</ul>",
+  "input": "<p>The first line of the input contains two integers $N$ and $M$, corresponding to the number of readers and respectively to the number of pairs of readers that initially have each other's email address. Readers are numbered from $1$ to $N$.</p>\n<p>The $M$ following lines each contain two integers, $i$ and $j$, meaning that readers $i$ and $j$ initially have each other's email address. Note that this means that both reader $i$ has reader $j$'s address and reader $j$ has reader $i$'s address.  </p>",
+  "output": "<p>The output should contain a single integer equal to either:</p>\n<ul>\n<li>$-1$ if the process does not lead to everyone eventually having everyone else's email address, or</li>\n<li>the estimated necessary number of days, otherwise. Note that this number may be equal to 0.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "4 3\n1 2\n2 3\n3 4\n",
+      "output": "2\n"
+    },
+    {
+      "input": "6 3\n1 2\n3 4\n5 6\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<ul>\n<li>We assume the reader base is stable, i.e. no reader leaves and no additional reader joins throughout the process.</li>\n<li>We assume that everyone knows their own email address; receiving one's own address is simply ignored. </li>\n<li>You do no have to be \"consistent\" in your answers across several tests cases, meaning that you can output the value $E$ for one test case and $E$+1 for another.</li>\n</ul>",
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2020-2021",
+  "level": 19,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "ad_hoc",
+    "bfs"
+  ],
+  "accepted_user_count": 58,
+  "submission_count": null,
+  "average_tries": 2.5344998836517334
+}

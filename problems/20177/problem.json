@@ -1,0 +1,31 @@
+{
+  "id": 20177,
+  "title": "Stock Analysis",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>SY Company wants to analyze a stock. The fluctuation value, which is the difference in stock prices for two consecutive days, is the most frequently used data for the time-series analysis of the stock. It is important to utilize the largest sum of the contiguous fluctuation values. However, using the largest contiguous sum as a key indicator could be risky. As an alternative, the company utilizes the largest contiguous sum that is not greater than a predetermined value <em>U</em> in a specified period [<em>S</em>, <em>E</em>] from <em>S</em> to <em>E</em>. The company wants to process such queries as fast as possible, where a query is defined as a predetermined value <em>U</em> and a period [<em>S</em>, <em>E</em>].</p>\n<p>Given a collection of <em>n</em> recent fluctuation values for some stock and <em>m</em> queries {(<em>S</em><sub>1</sub>, <em>E</em><sub>1</sub>, <em>U</em><sub>1</sub> ),… , (<em>S<sub>m</sub></em>, <em>E<sub>m</sub></em>, <em>U<sub>m</sub></em>)}, write a program to find the largest sum of contiguous fluctuation values that is less than or equal to <em>U<sub>i</sub></em> in the period [<em>S<sub>i</sub></em>, <em>E<sub>i</sub></em>]for each query (<em>S<sub>i</sub></em>, <em>E<sub>i</sub></em>, <em>U<sub>i</sub></em>).</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing two integers, <em>n</em> and <em>m</em>, representing the number of fluctuation values and the number of queries respectively, where 1 ≤ <em>n</em> ≤ 2,000 and 1 ≤ <em>m</em> ≤ 200,000. The next line contains <em>n</em> integers representing <em>n</em> fluctuation values, which are numbered in chronological order from 1 to <em>n</em>. Each of the following <em>m</em> lines represents a query that consists of three integers, <em>S<sub>i</sub></em>, <em>E<sub>i</sub></em>, and <em>U<sub>i</sub></em>, where [<em>S<sub>i</sub></em>, <em>E<sub>i</sub></em>] is the period from <em>S<sub>i</sub></em> to <em>E<sub>i</sub></em> over which the fluctuation values should be considered and <em>U<sub>i</sub></em> is the value that the contiguous sum should not exceed. Note that all fluctuation values are between −10<sup>9</sup> and 10<sup>9</sup> , 1 ≤ <em>S<sub>i</sub></em> ≤ <em>E<sub>i</sub></em> ≤ <em>n</em> and −10<sup>14</sup> ≤ <em>U<sub>i</sub></em> ≤ 10<sup>14</sup> for <em>i</em> = 1, … , <em>m</em>.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly <em>m</em> lines. The <em>i</em>-th line should contain the largest sum of contiguous fluctuation values that does not exceed <em>U<sub>i</sub></em> and in the period [<em>S<sub>i</sub></em>, <em>E<sub>i</sub></em>] for the <em>i</em>-th query. Note that every contiguous sum is the sum of one or more consecutive fluctuation values. When it is impossible to find such the sum, the program should print <code>NONE</code>.</p>",
+  "samples": [
+    {
+      "input": "5 3\n1 -2 -3 5 4\n1 3 -2\n1 5 8\n1 5 3\n",
+      "output": "-2\n6\n2\n"
+    },
+    {
+      "input": "6 4\n3 8 -3 2 5 2\n1 6 17\n1 6 16\n2 5 4\n2 5 -4\n",
+      "output": "17\n15\n4\nNONE\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2020",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "offline_queries",
+    "multi_segtree"
+  ],
+  "accepted_user_count": 80,
+  "submission_count": null,
+  "average_tries": 4.587500095367432
+}

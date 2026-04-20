@@ -1,0 +1,22 @@
+{
+  "id": 9561,
+  "title": "Error",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Your boss is very upset. He just discovered that his coming flight to the US was booked wrong. Your boss wanted to do his trip using the least number of transit stops. The secretary have booked flight segments that do not meet this condition. Given that the segments are already booked, your boss decided that the resolution of this issue needs you, the programmer.</p>\n<p>You are given the possible flight connections between pairs of cities where each connection can be used in both directions. You are also given the set of faulty segments that were booked by the secretary. Your goal is to book the least number of additional segments, which, when combined with the already booked segments, can enable your boss the flexibility to reach his destination in the least number of stops.</p>\n<p>The segments booked by the secretary are all flexible in timing and can be used in any order. Note that you can use some, all or none of the segments already booked, in addition to the segments you will add. However, an already booked segment from A to B can only be used from A to B and not from B to A. See examples for further clarification.</p>",
+  "input": "<p>Your program will be tested on one or more test cases. The first line of the input will be a single integer T, the number of test cases (1 ≤ T ≤ 100). After that follow the specifications of T test cases.</p>\n<p>Each case is specified in N + 2 lines. Each case starts with a line containing an integer N (1 ≤ N ≤ 100, 000), the number of available direct flight connections. Each of the following N lines contain the names of two different airports between which a direct flight connection exists and can be used in both directions. Every airport name is composed of exactly three capital letters. In each case, there will be at most one available direct flight connection between any pair of airports. The last line in each case contains the faulty ticket booked by the secretary.</p>\n<p>The ticket is in the form \"M A<sub>1</sub> A<sub>2</sub> ... A<sub>M+1</sub>\", where M is the number of flight segments already booked, and A<sub>i</sub> is an airport name (composed of three capital letters). Any two consecutive airport names in this line mean there is a flight segment booked from the earlier airport to the latter airport. The segments booked were so faulty, that there can be cycles and even multiple bookings of the same flight segment. However, the segments are from the available flight connections (which are described in the N lines above).</p>",
+  "output": "<p>For each test case, output, on a single line, a single number representing the minimum number of flight segments that have to be booked, such that, when combined with the already booked segments, the final ticket can be used to go from airport A<sub>1</sub> to airport A<sub>M+1</sub> in the least number of segments.</p>",
+  "samples": [
+    {
+      "input": "3\n5\nLHR JFK\nCAI LHR\nFRA CAI\nFRA JFK\nFRA LHR\n3 CAI FRA LHR JFK\n5\nCAI FRA\nFRA LHR\nLHR CDG\nCDG FRA\nLHR JFK\n7 CAI FRA CDG LHR FRA CDG LHR JFK\n3\nCAI FRA\nFRA JFK\nCAI JFK\n1 CAI JFK\n",
+      "output": "1\n1\n0\n"
+    }
+  ],
+  "hint": "<p>In the first case, adding the segment FRA-JFK or CAI-LHR will enable the boss to go from CAI to JFK in one stop, which is the least number of stops to go from CAI to JFK.</p>\n<p>In the second case, the least number of stops can be achieved only using the path CAI-FRA-LHR-JFK. However, the secretary had the segment LHR-FRA booked and not the other way around, so you have to add FRA-LHR to achieve the least number of stops.</p>\n<p>In the third case, the secretary booked an optimal ticket so you do not need to add any segments.</p>",
+  "source": "ICPC, Regionals, Africa and Arab, Arab Collegiate Programming Contest, 2011 Arab Collegiate Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 7.1666998863220215
+}

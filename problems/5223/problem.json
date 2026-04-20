@@ -1,0 +1,24 @@
+{
+  "id": 5223,
+  "title": "Shut The Box I",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Their pursuit of the Collector has taken the Avengers on a long voyage through the galaxies, and they are looking for ways to pass time on their ship. They discover an old game, called shut the box, that used to be popular with sailors. Each player starts with 9 cards, numbered 1 to 9, laid face-up (i.e., the number showing) on the table, and continues playing till he or she cannot make any moves.</p>\n<p>The game is played with a pair of dice (with a small twist that, only one die is used if the total of the open cards is ≤ 6). Initially, all the cards are open (i.e., face-up). The player then roles the dice. Let the total dice value be m. The player selects any set of open cards whose face values sum to m, and closes (shuts) them by turning them face-down. For instance, say the player rolls a 6 and 2 the first time, with a total of 8. The player can shut either the card 8, or the cards 1 and 7, or the cards 2 and 6, or the three cards 1 and 2 and 5, and so on. As another example, if the current cards face up are: 1, 2, 6, and the player rolls a 4, then there are no cards that he can shut, and his turn is over.</p>\n<p>The final score for the player is the sum of the numbers of the cards still face-up, and the aim is to get as low score as possible (and ideally to shut the box, i.e., have no cards left facing up). In the above case where the game ends with face up cards 1, 2, and 6, the final score is: 1 + 2 + 6 = 9.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 512px; height: 261px;\"/></p>\n<p style=\"text-align: center;\">Figure 1: Illustration of Shut the Box game in two cases (in the right example, only the last few moves are shown). Note that, we only use 1 die when the total of open cards is less than or equal to 6 (in the right example)</p>\n<p>Dr. Banner (The Hulk) has heard of the following strategy. Consider all the valid alternatives for shutting cards, given the current roll of the dice. If there is only one, do it. If there are more than one, take the one that maximizes the smallest face value. (For example, given the options {1,7} and {2,6}, you would take {2,6}.) If there are many that maximize the smallest face value, take the one that maximizes the second smallest face value. (For example, given the options {2,4,6} and {2,3,7}, you would take {2,4,6}.) In general, among the valid options, select the one that maximizes the lexicographically ordered sequence of face values.</p>\n<p>Your goal is to write a program to help Dr. Banner make this choice and, hopefully, win (you know the consequences of angering the Hulk).</p>",
+  "input": "<p>The first line in the test data file contains the number of test cases (&lt; 100). After that, each line contains one test case: the first entry on each line is the rolled total (called target), and the next entry is the number of open cards n. The following n entries denote the open cards in the ascending order.</p>",
+  "output": "<p>For each test case, you are to output the best move according to the above strategy, or output that there is no legal move. The exact form is shown below.</p>",
+  "samples": [
+    {
+      "input": "5\n10 9 1 2 3 4 5 6 7 8 9\n12 9 1 2 3 4 5 6 7 8 9\n7 6 1 2 3 4 8 9\n8 7 1 2 3 4 5 6 7 \n8 4 1 2 3 9\n",
+      "output": "The best move is: 4 6\nThe best move is: 5 7\nThe best move is: 3 4\nThe best move is: 3 5\nNo move found.\n"
+    }
+  ],
+  "hint": null,
+  "source": "School, University of Maryland High School Programming Contest, HSPC 2012",
+  "level": 8,
+  "tags": [
+    "bruteforcing"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.1875
+}

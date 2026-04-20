@@ -1,0 +1,31 @@
+{
+  "id": 24664,
+  "title": "Lion and Zebra",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Given is a tree with $N$ vertices.</p>\n<p>There is a tag game played on this tree. The game consists of several rounds.</p>\n<p>In each round, there are two players: the <em>lion</em>, which is the catching side, and the <em>zebra</em>, the escaping side.</p>\n<p>At the beginning of each round, the zebra and the lion start in two distinct vertices. The lion always knows where the zebra is, and chases it at a speed of one edge per second. The zebra does not know the position of the lion, but always knows the distance to the lion. Based on that information, the zebra makes one of the following two choices each second:</p>\n<ul>\n<li>Take 1 second to move to any adjacent vertex.</li>\n<li>Stay at the current vertex for 1 second.</li>\n</ul>\n<p>When the zebra meets the lion on an edge or in a vertex, the round is over. If the players move by the same edge towards each other, the meeting happens $0.5$ seconds after they start moving. Zebra acts in a way that the minimum (of all possible initial vertices for the lion) time to meet the lion is maximized. </p>\n<p>You are given $Q$ rounds. In the $i$-th round, zebra starts from the vertex $v_i$, and the distance to the lion is equal to $d_i$. For each round, find the minimum time when this round will be over if both sides will follow their strategies.</p>",
+  "input": "<p>The first line of input contains two integers $N$ and $Q$: the number of vertices in the tree and the number of rounds played ($2 \\le N \\le 10^5$, $1 \\le Q \\le 10^5$).</p>\n<p>Each of the following $N-1$ lines contains two integers $a_i$ and $b_i$: the vertices that are connected by an edge. You may assume that the given graph is a tree.</p>\n<p>Each of the following $Q$ lines describes one round and contains two integers $v_j$ and $d_j$ ($1 \\le v_j \\le N$, $1 \\le d_j \\le N-1$): the starting vertex for the zebra and the distance from the zebra to the lion at the beginning of this round. You may assume that there exists at least one vertex $w_j$ such that the distance between $v_j$ and $w_j$ is equal to $d_j$.</p>",
+  "output": "<p>For each query, print one integer: the minimum time of round when both sides follow their strategies.</p>",
+  "samples": [
+    {
+      "input": "5 2\n1 2\n2 3\n3 4\n4 5\n1 4\n3 1\n",
+      "output": "4\n1\n"
+    },
+    {
+      "input": "11 2\n1 2\n2 3\n1 4\n4 5\n1 6\n6 7\n7 8\n1 9\n9 10\n10 11\n3 2\n10 4\n",
+      "output": "2\n5\n"
+    }
+  ],
+  "hint": "<p>At the beginning of the first round in Example 1, the zebra is at vertex 1, and the distance to the lion is $4$, so we can conclude that the lion is at vertex 5. In this case, the optimal strategy is to stay at vertex 1 as long as possible, and the answer is equal to $4$.</p>\n<p>At the beginning of the second round, the zebra is at vertex 3, and the distance to the lion is $1$, so we can conclude that the lion is either at vertex 2 or at vertex 4.</p>\n<p>If the zebra moves in the direction of vertex 2, the lion will meet the zebra on the edge after $0.5$ seconds if it started at vertex 2, or at vertex 1 after $3$ seconds if it started at vertex 4. Therefore, the minimum possible time until the zebra meets the lion with this strategy is $0.5$.</p>\n<p>Similarly, if the zebra moves in the direction of vertex 4, the minimum possible time until encountering the lion is also $0.5$.</p>\n<p>If the zebra stays at vertex 3, they would meet after $1$ second if the lion started at vertex 2, or after $1$ second if the lion started at vertex 4. Therefore, the answer is equal to $1$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2022, Day 1: Kyoto U Contest 2, Contest, Open Cup, 2021/2022 Season, Stage 10: Grand Prix of Kyoto",
+  "level": 26,
+  "tags": [
+    "data_structures",
+    "dp",
+    "game_theory",
+    "sparse_table"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2.75
+}

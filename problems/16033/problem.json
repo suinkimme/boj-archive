@@ -1,0 +1,26 @@
+{
+  "id": 16033,
+  "title": "Origami, or the art of folding paper",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Master Grus is a famous <i>origami</i> (paper folding) artist, who is enthusiastic about exploring the possibility of origami art. For future creation, he is now planning fundamental experiments to establish the general theory of origami.</p>\n<p>One rectangular piece of paper is used in each of his experiments. He folds it horizontally and/or vertically several times and then punches through holes in the folded paper.</p>\n<p>The following figure illustrates the folding process of a simple experiment, which corresponds to the third dataset of the Sample Input below. Folding the 10 × 8 rectangular piece of paper shown at top left three times results in the 6 × 6 square shape shown at bottom left. In the figure, dashed lines indicate the locations to fold the paper and round arrows indicate the directions of folding. Grid lines are shown as solid lines to tell the sizes of rectangular shapes and the exact locations of folding. Color densities represent the numbers of overlapping layers. Punching through holes at A and B in the folded paper makes nine holes in the paper, eight at A and another at B.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 600px; height: 440px;\"/></p>\n<p>Your mission in this problem is to write a computer program to count the number of holes in the paper, given the information on a rectangular piece of paper and folding and punching instructions.</p>",
+  "input": "<p>The input consists of at most 1000 datasets, each in the following format.</p>\n<pre>\n<i>n</i> <i>m</i> <i>t</i> <i>p</i>\n<i>d</i><sub>1</sub> <i>c</i><sub>1</sub>\n...\n<i>d<sub>t</sub></i> <i>c<sub>t</sub></i>\n<i>x</i><sub>1</sub> <i>y</i><sub>1</sub>\n...\n<i>x<sub>p</sub></i> <i>y<sub>p</sub></i></pre>\n<p><i>n</i> and <i>m</i> are the width and the height, respectively, of a rectangular piece of paper. They are positive integers at most 32. <i>t</i> and <i>p</i> are the numbers of folding and punching instructions, respectively. They are positive integers at most 20. The pair of <i>d<sub>i</sub></i> and <i>c<sub>i</sub></i> gives the <i>i</i>-th folding instruction as follows:</p>\n<ul>\n<li><i>d<sub>i</sub></i> is either 1 or 2.</li>\n<li><i>c<sub>i</sub></i> is a positive integer.</li>\n<li>If <i>d<sub>i</sub></i> is 1, the left-hand side of the vertical folding line that passes at <i>c<sub>i</sub></i> right to the left boundary is folded onto the right-hand side.</li>\n<li>If <i>d<sub>i</sub></i> is 2, the lower side of the horizontal folding line that passes at <i>c<sub>i</sub></i> above the lower boundary is folded onto the upper side.</li>\n</ul>\n<p>After performing the first <i>i</i>−1 folding instructions, if <i>d<sub>i</sub></i> is 1, the width of the shape is greater than <i>c<sub>i</sub></i>. Otherwise the height is greater than <i>c<sub>i</sub></i>. (<i>x<sub>i</sub></i> + 1/2, <i>y<sub>i</sub></i> + 1/2) gives the coordinates of the point where the <i>i</i>-th punching instruction is performed. The origin (0, 0) is at the bottom left of the finally obtained shape. <i>x<sub>i</sub></i> and <i>y<sub>i</sub></i> are both non-negative integers and they are less than the width and the height, respectively, of the shape. You can assume that no two punching instructions punch holes at the same location.</p>\n<p>The end of the input is indicated by a line containing four zeros.</p>",
+  "output": "<p>For each dataset, output <i>p</i> lines, the <i>i</i>-th of which contains the number of holes punched in the paper by the <i>i</i>-th punching instruction.</p>",
+  "samples": [
+    {
+      "input": "2 1 1 1\n1 1\n0 0\n1 3 2 1\n2 1\n2 1\n0 0\n10 8 3 2\n2 2\n1 3\n1 1\n0 1\n3 4\n3 3 3 2\n1 2\n2 1\n1 1\n0 1\n0 0\n0 0 0 0\n",
+      "output": "2\n3\n8\n1\n3\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2018 Japan Domestic Contest",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "bruteforcing",
+    "simulation"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 1.631600022315979
+}

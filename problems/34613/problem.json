@@ -1,0 +1,28 @@
+{
+  "id": 34613,
+  "title": "Boarding Queue",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are on your way to compete in The 2025 ICPC Asia Pacific Championship. Unfortunately, you are in the process of the worst part of flying: waiting in the boarding queue.</p>\n<p>You are in a queue with $n$ travelers, numbered from $1$ to $n$ ordered from the front of the queue to the back of the queue.</p>\n<p>The boarding area is represented by a grid of $r$ rows and $c$ columns, where the rows are numbered from $1$ to $r$ (top to bottom) and the columns are numbered from $1$ to $c$ (left to right). Each traveler occupies exactly one distinct cell in the grid. Two travelers are <em>adjacent</em> if the cells they are in share an edge. Traveler $t$ and traveler $t − 1$ are guaranteed to be adjacent, for any $2 ≤ t ≤ n$.</p>\n<p>For example, Figure L.1 illustrates a possible location of the travelers. In this example, traveler $1$ is adjacent to travelers $2$ and $10$ but not adjacent to traveler $11$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 178px; height: 145px;\"/></p>\n<p style=\"text-align: center;\">Figure L.1: Example location of the travelers.</p>\n<p>At each boarding step, all of the following happen simultaneously:</p>\n<ul>\n<li>The frontmost traveler in the queue, say traveler $t$, boards the aircraft and leaves the boarding area.</li>\n<li>For each $t'$ ($t + 1 ≤ t' ≤ n$), traveler $t'$ takes the cell that traveler $t' − 1$ was occupying immediately before the step.</li>\n</ul>\n<p>For example, Figure L.2 illustrates the locations of the travelers after the first three boarding steps from the initial location above.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 560px; height: 145px;\"/></p>\n<p style=\"text-align: center;\">Figure L.2: Location of the travelers after $1$, $2$, and $3$ boarding steps respectively.</p>\n<p>You are traveler $p$ (that is, there are $p − 1$ travelers in front of you). You know that your team coach is somewhere in the queue, but you do not know where. Assuming your team coach is equally likely to be any of travelers $1$ to $n$ (except $p$), you want to calculate the probability that you will be adjacent to your team coach at some point before you board the aircraft. Formally, you will be adjacent to traveler $q$ at some point before you board the aircraft if there exists an integer $s$ ($0 ≤ s &lt; p$) such that traveler $p$ and traveler $q$ are adjacent after s boarding steps.</p>",
+  "input": "<p>The first line of input contains four integers $r$, $c$, $n$, and $p$ ($1 ≤ r, c ≤ 1000$; $2 ≤ n ≤ r \\times c$; $1 ≤ p ≤ n$). Each of the next $r$ lines contains $c$ integers. The $j$-th integer in the $i$-th line denotes $G_{i,j}$ ($0 ≤ G_{i,j} ≤ n$), where a non-zero value of $G_{i,j}$ means that traveler $G_{i,j}$ initially occupies the cell at row $i$ and column $j$ of the boarding area, while a zero value of $G_{i,j}$ means that no traveler occupies the cell. Across all pairs $(i, j)$, each of the integers $1$ to $n$ appears exactly once in $G_{i,j}$. The input guarantees that traveler $t$ and traveler $t − 1$ are adjacent, for all $2 ≤ t ≤ n$.</p>",
+  "output": "<p>Output a fraction in the $x/y$ format indicating the probability that you will be adjacent to your team coach at some point before you board the aircraft. The value of $y$ must be equal to $n − 1$. Note that there must not be spaces between the integers and the <code>/</code> delimiter.</p>",
+  "samples": [
+    {
+      "input": "4 5 11 2\n11 0 0 0 0\n10 1 2 0 0\n9 0 3 4 0\n8 7 6 5 0\n",
+      "output": "3/10\n"
+    },
+    {
+      "input": "1 7 7 6\n1 2 3 4 5 6 7\n",
+      "output": "2/6\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Asia Pacific Championship, The 2025 ICPC Asia Pacific Championship",
+  "level": 12,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 1.3077000379562378
+}

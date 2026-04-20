@@ -1,0 +1,27 @@
+{
+  "id": 33819,
+  "title": "Teleport",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>Bajtocja to kraj składający się z $n$ miast (numerowanych liczbami od $1$ do $n$) i łączących je dwukierunkowych autostrad. Przejechanie autostradą pomiędzy dwoma miastami wymaga spalenia jednego bajtolitra paliwa. Bajtazar – prezes firmy BajtTrans, jest bardzo niezadowolony zużyciem paliwa, planuje więc umieścić dwukierunkowy teleport między pewnymi dwoma miastami Bajtocji. Podróż teleportem jest natychmiastowa i nie zużywa paliwa! Ciężarówki firmy BajtTrans muszą mieć na tyle duży bak paliwowy, żeby być w stanie przejechać między dowolną parą miast Bajtocji na jednym tankowaniu w mieście początkowym (paliwa zużytego wewnątrz każdego z miast nie uwzględniamy, jest go pomijalnie mało).</p>\n<p>Bajtazar chciałby zminimalizować rozmiar baku w ciężarówkach. Mając dany opis bajtockich autostrad, wyznacz minimalny potrzebny rozmiar baku, przy założeniu, że para miast łączonych teleportem zostanie wybrana optymalnie. Możesz założyć, że korzystając z autostrad da się przejechać między każdą parą miast.</p>\n<p>Musisz rozwiązać ten problem dla t niezależnych przypadków testowych.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajduje się liczba $t$ ($1 ≤ t ≤ 21$), oznaczających liczbę przypadków testowych.</p>\n<p>W pierwszym wierszu opisu każdego przypadku testowego znajduje się liczba $n$ ($3 ≤ n ≤ 400$), oznaczająca liczbę miast w Bajtocji. Kolejnych $n$ wierszy przypadku testowego zawiera opis autostrad znajdujących się w Bajtocji. W każdym z nich znajduje się ciąg binarny długości $n$. Element $i$-ty w ciągu $j$-tym jest równy $1$ wtedy i tylko wtedy, gdy istnieje autostrada łącząca miasta o numerach $i$ oraz $j$.</p>\n<p>Każda autostrada łączy dwa różne miasta – element $i$-ty w ciągu $i$-tym to zawsze $0$. Każda autostrada jest dwukierunkowa – element $i$-ty w ciągu $j$-tym jest równy elementowi $j$-temu w ciągu $i$-tym. Korzystając z opisanych autostrad, da się przejechać między każdą parą miast w Bajtocji.</p>\n<p>Suma $n$ po wszystkich przypadkach testowych nie przekroczy $400$.</p>",
+  "output": "<p>Na wyjściu powinno znaleźć się $t$ wierszy, w $i$-tym z nich powinna znaleźć się jedna liczba całkowita, oznaczająca minimalny rozmiar baku ciężarówki (w bajtolitrach) przy optymalnym ustawieniu teleportu dla $i$-tego przypadku testowego.</p>",
+  "samples": [
+    {
+      "input": "2\n4\n0111\n1011\n1101\n1110\n5\n01000\n10100\n01010\n00101\n00010\n",
+      "output": "1\n2\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: W pierwszym przypadku testowym między każdą parą miast da się przejechać bezpośrednio autostradą i niezależnie od tego, które miasta połączymy teleportem nadal będziemy potrzebować baku o pojemności co najmniej $1$ bajtolitr.</p>\n<p>W drugim przypadku testowym, przed ustawieniem teleportu z bakiem pojemności dwóch bajtolitrów nie da się przejechać między miastami o numerach $(1, 4)$; $(1, 5)$ oraz $(2, 5)$. Jednak po ustawieniu teleportu (na przykład pomiędzy miastami o numerach $1$ i $5$) już jest to możliwe.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2025",
+  "level": 21,
+  "tags": [
+    "graphs",
+    "bruteforcing",
+    "shortest_path",
+    "floyd_warshall"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.25
+}

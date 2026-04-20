@@ -1,0 +1,26 @@
+{
+  "id": 34634,
+  "title": "Victorious Coloring (Hard Version)",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p><strong>This is the hard version of the problem. The difference between the versions is that in this version, $q \\le 250\\,000$. You can hack only if you solved all versions of this problem.</strong></p>\n<p>You are given a tree with $n$ vertices, where each vertex is numbered from $1$ to $n$. Each edge is assigned a positive integer weight $w_1, w_2, \\ldots, w_{n-1}$ as well. </p>\n<p>A <strong>victorious coloring</strong> is a coloring of each vertex into two colors: <em>red</em> and <em>yellow</em>, where there should be at least one vertex colored in red (corresponding to the symbol of team T1). </p>\n<p>Suppose that there is a <strong>nonnegative</strong> integer weight $x_1, x_2, \\ldots, x_n$ assigned to each vertex. The cost of the victorious coloring is defined as the sum of the weights of all red vertices, plus the sum of the weights of all edges that connect vertices of different colors (between red and yellow). We define $f([x_1, x_2, \\ldots, x_n])$ as the minimum possible cost for all victorious colorings.</p>\n<p>Gumayusi considered the problem of computing $f([x_1, x_2, \\ldots, x_n])$, given the sequence $x_1, x_2, \\ldots, x_n$. However, this problem was too easy for him, so he devised a variation: Given an integer $l$, find a sequence of nonnegative integer vertex weights $[x_1, x_2, \\ldots, x_n]$ such that $f([x_1, x_2, \\ldots, x_n]) \\ge l$ and the total sum $\\sum_{i=1}^n x_i$ is minimized.</p>\n<p>Gumayusi was satisfied, but there was a serious issue --- this problem doesn't have any queries, which is a necessary component for any problem that isn't bad. So, he added queries to this problem. For each $l$ given as a query, you must find the corresponding minimum possible sum of vertex weights.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains the number of test cases $t$ ($1 \\le t \\le 10^4$). The description of the test cases follows.</p>\n<p>The first line contains an integer $n$ ($2 \\le n \\le 250\\,000$) --- the number of vertices.</p>\n<p>The following $n-1$ lines contain three integers $u_i$, $v_i$, $w_i$ ($1 \\le u_i, v_i \\leq n, 1 \\le w_i \\le 10^9, u_i \\neq v_i$) --- indicating an edge connecting the vertices $u_i$ and $v_i$ with weight $w_i$.</p>\n<p>It is guaranteed that the edges form a tree.</p>\n<p>The next line contains an integer $q$ ($1 \\le q \\le 250\\,000$) --- the number of queries. </p>\n<p>The following $q$ lines contain a single integer $l_i$ ($1 \\leq l_i \\leq 10^9$) --- the parameters of the $i$-th query.</p>\n<p>It is guaranteed that the sum of $n$ over all test cases does not exceed $250\\,000$.</p>\n<p>It is guaranteed that the sum of $q$ over all test cases does not exceed $250\\,000$.</p>",
+  "output": "<p>For each of the $q$ queries, output the answer separated by lines.</p>",
+  "samples": [
+    {
+      "input": "2\n5\n3 5 10\n2 3 4\n3 1 10\n3 4 2\n5\n28\n32\n11\n17\n23\n2\n1 2 3\n1\n1\n",
+      "output": "88\n108\n21\n42\n66\n1\n"
+    }
+  ],
+  "hint": "<p>The following list shows the possible optimal assignments for each query for the first test case:</p>\n<ul>\n<li>$[18,24,2,26,18]$</li>\n<li>$[22,28,6,30,22]$</li>\n<li>$[4,7,0,9,1]$</li>\n<li>$[7,13,0,15,7]$</li>\n<li>$[13,19,0,21,13]$</li>\n</ul>",
+  "source": "Contest, Codeforces, Squarepoint Challenge (Codeforces Round 1055, Div. 1 + Div. 2), koosaga, qwerasdfzxcl",
+  "level": 26,
+  "tags": [
+    "dp",
+    "greedy",
+    "slope_trick"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,26 @@
+{
+  "id": 19435,
+  "title": "Differencia",
+  "time_limit": "14 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Professor Zhang has two sequences $a_1, a_2, \\ldots, a_n$ and $b_1, b_2, \\ldots, b_n$. He wants to perform two kinds of operations on the sequences:</p>\n<ul>\n<li>\"+ $l$ $r$ $x$\": set $a_i$ to $x$ for all $l \\le i \\le r$.</li>\n<li>\"? $l$ $r$\": find the number of $i$ such that $a_i \\ge b_i$ and $l \\le i \\le r$.</li>\n</ul>",
+  "input": "<p>There are multiple test cases. The first line of input contains an integer $T$ indicating the number of test cases. For each test case:</p>\n<p>The first line contains four integers $n$, $m$, $A$ and $B$ ($1 \\le n \\le 10^{5}$, $1 \\le m \\le 3\\,000\\,000$, $1 \\le A, B \\le 2^{16}$): the length of the sequence, the number of operations and two parameters. The second line contains $n$ integers $a_1, a_2, \\ldots, a_n$ ($1 \\le a_i \\le 10^9$). The third line contains $n$ integers $b_1, b_2, \\ldots, b_n$ ($1 \\le b_i \\le 10^9$).</p>\n<p>As the number of operations can be rather large, the $m$ operations are specified by parameters $A$ and $B$ given to the following generator routine.</p>\n<pre>\nint a = A, b = B, C =  (1&lt;&lt;31), M = (1&lt;&lt;16)-1;\nint rnd(int last) {\n  a = (36969 + (last &gt;&gt; 3)) * (a &amp; M) + (a &gt;&gt; 16);\n  b = (18000 + (last &gt;&gt; 3)) * (b &amp; M) + (b &gt;&gt; 16);\n  return (C &amp; ((a &lt;&lt; 16) + b)) % 1000000000;\n}\n</pre>\n<p>For the $i$-th operation, first call <code>rnd</code>$(\\mathit{last})$ three times to get $l$, $r$ and $x$ (that is, $l = $<code>rnd</code>$(\\mathit{last}) \\bmod n + 1$, $r = $<code>rnd</code>$(\\mathit{last}) \\bmod n + 1$, $x = $<code>rnd</code>$(\\mathit{last}) + 1$). Then, if $l &gt; r$, you should swap their values. And at last, the $i$-th operation has type '<code>?</code>' if $(l + r + x)$ is an even number, or type '<code>+</code>' otherwise. </p>\n<p>Note: $\\mathit{last}$ is the answer of the latest type '<code>?</code>' operation. Assume $\\mathit{last} = 0$ at the beginning of each test case.</p>\n<p>There are at most $300$ test cases, and the total size of the input is at most $8$ mebibytes.</p>",
+  "output": "<p>For each test case, output the integer $S = (\\sum\\limits_{i = 1}^{m}{i \\cdot z_i}) \\bmod (10^9 + 7)$, where $z_i$ is the answer for $i$-th query. If the $i$-th query is of type '<code>+</code>', assume $z_i = 0$.</p>",
+  "samples": [
+    {
+      "input": "3\n5 10 1 2\n5 4 3 2 1\n1 2 3 4 5\n5 10 3 4\n5 4 4 2 1\n1 2 3 4 5\n5 10 5 6\n5 4 5 2 1\n1 2 2 4 5\n",
+      "output": "81\n88\n87\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2016, Day 1: Zheijang U Contest 2",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "lazyprop",
+    "segtree"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 2.200000047683716
+}

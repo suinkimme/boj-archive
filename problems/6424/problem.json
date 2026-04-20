@@ -1,0 +1,22 @@
+{
+  "id": 6424,
+  "title": "Optimal Array Multiplication Sequence",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Given two arrays A and B, we can determine the array C = A B using the standard definition of matrix multiplication:</p>\n<p>\\[C_{i,j} = \\sum_{k}{A_{i,k} \\times B_{k,j}}\\]</p>\n<p>The number of columns in the A array must be the same as the number of rows in the B array. Notationally, let's say that rows(A) and columns(A) are the number of rows and columns, respectively, in the A array. The number of individual multiplications required to compute the entire C array (which will have the same number of rows as A and the same number of columns as B) is then rows(A) columns(B) columns(A). For example, if A is a 10 × 20 array, and B is a 20 × 15 array, it will take 10 × 15 × 20, or 3000 multiplications to compute the C array.</p>\n<p>To perform multiplication of more than two arrays we have a choice of how to proceed. For example, if X, Y, and Z are arrays, then to compute X Y Z we could either compute (X Y) Z or X (Y Z). Suppose X is a 5 × 10 array, Y is a 10 × 20 array, and Z is a 20 × 35 array. Let's look at the number of multiplications required to compute the product using the two different sequences:</p>\n<table class=\"table table-bordered\" style=\"width:100%\">\n<thead>\n<tr>\n<th style=\"width: 50%;\">(X × Y) × Z</th>\n<th style=\"width: 50%;\">X × (Y × Z)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>\n<ul>\n<li>5 × 20 × 10 = 1000 multiplications to determine the product (X × Y), a 5 × 20 array.</li>\n<li>Then 5 × 35 × 20 = 3500 multiplications to determine the final result.</li>\n<li>Total multiplications: 4500.</li>\n</ul>\n</td>\n<td>\n<ul>\n<li>10 × 35 × 20 = 7000 multiplications to determine the product (Y × Z), a 10 × 35 array.</li>\n<li>Then 5 × 35 × 10 = 1750 multiplications to determine the final result.</li>\n<li>Total multiplications: 8750.</li>\n</ul>\n</td>\n</tr>\n</tbody>\n</table>\n<p>Clearly we'll be able to compute (X × Y) × Z using fewer individual multiplications.</p>\n<p>Given the size of each array in a sequence of arrays to be multiplied, you are to determine an optimal computational sequence. Optimality, for this problem, is relative to the number of individual multiplcations required.</p>",
+  "input": "<p>For each array in the multiple sequences of arrays to be multiplied you will be given only the dimensions of the array. Each sequence will consist of an integer N which indicates the number of arrays to be multiplied, and then N pairs of integers, each pair giving the number of rows and columns in an array; the order in which the dimensions are given is the same as the order in which the arrays are to be multiplied. A value of zero for N indicates the end of the input. N will be no larger than 10.</p>",
+  "output": "<p>Assume the arrays are named A1, A2, ... AN. Your output for each input case is to be a line containing a parenthesized expression clearly indicating the order in which the arrays are to be multiplied. Prefix the output for each case with the case number (they are sequentially numbered, starting with 1). Your output should strongly resemble that shown in the samples shown below. If, by chance, there are multiple correct sequences, any of these will be accepted as a valid answer.</p>",
+  "samples": [
+    {
+      "input": "3\n    1 5\n    5 20\n    20 1\n\n3\n    5 10\n    10 20\n    20 35\n\n6\n    30 35\n    35 15\n    15 5\n    5 10\n    10 20\n    20 25\n\n0\n",
+      "output": "Case 1: (A1 x (A2 x A3))\nCase 2: ((A1 x A2) x A3)\nCase 3: ((A1 x (A2 x A3)) x ((A4 x A5) x A6))\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, North Central North America Regional, NCNA 1996",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 6.5
+}

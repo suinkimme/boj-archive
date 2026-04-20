@@ -1,0 +1,29 @@
+{
+  "id": 30956,
+  "title": "Labelled Paths",
+  "time_limit": "15 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>We are given a directed acyclic graph with $n$ vertices and $m$ edges. Each edge has a <em>label</em> (a string of lowercase letters; possibly even an empty string). We can now extend the concept of labels from edges to paths by defining the <em>label of a path</em> as the concatenation of the labels of the edges that constitute this path (in the same order in which they appear in the path). The <em>smallest path</em> from a start vertex $s$ to a destination vertex $t$ is the path (from $s$ to $t$) whose label is lexicographically smallest (i.e. the earliest in lexicographical order) amongst all the paths from $s$ to $t$. Write a program that, for a given $s$, outputs the smallest paths from $s$ to $t$ for all vertices $t$ of the graph.</p>",
+  "input": "<p>The first line contains four space-separated integers: $n$ (the number of vertices), $m$ (the number of edges), $d$ (the length of the string $A$, on which see below) and $s$ (the number of the start vertex). The vertices are numbered by integers from 1 to $n$.</p>\n<p>The second line contains a string $A$, which is exactly $d$ characters long; all these characters are lowercase letters of the English alphabet. All the edge labels in our graph are substrings of the string $A$.</p>\n<p>The remaining $m$ lines describe the edges of the graph. The $i$-th of these lines describes the $i$-th edge and contains four space-separated integers: $u_i$ (the start vertex of this edge), $v_i$ (the end vertex of this edge), $p_i$ and $\\ell_i$. The last two of these integers indicate that the label of this edge is the substring of $A$ that begins with the $p_i$-th character of $A$ and is $\\ell_i$ characters long. For this purpose we consider the characters of $A$ to be indexed by integers from 1 to $d$.</p>",
+  "output": "<p>Output $n$ lines, where the $t$-th line (for $t = 1, \\ldots, n$) describes the smallest path from $s$ to $t$. If there is no path from $s$ to $t$, the line should contain only the integer <code>0</code> and nothing else. Otherwise the line should start with the number of vertices on the path (including vertices $s$ and $t$), followed by the list of those vertices, separated by spaces. If there are several possible solutions, you may output any of them.</p>",
+  "samples": [
+    {
+      "input": "5 7 6 3\nabcbca\n3 2 1 1\n2 1 5 1\n2 5 4 2\n3 1 1 2\n3 4 3 2\n1 4 6 1\n5 4 5 2\n",
+      "output": "2 3 1\n2 3 2\n1 3\n3 3 1 4\n3 3 2 5\n"
+    }
+  ],
+  "hint": "<p>In this example, the edge $3 \\to 1$ has the label <code>ab</code>; the edge $1 \\to 4$ has the label <code>a</code>; the smallest path from $3$ to $4$ is $3 \\to 1 \\to 4$, whose label is <code>aba</code>.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2023",
+  "level": 22,
+  "tags": [
+    "graphs",
+    "string",
+    "dag",
+    "topological_sorting",
+    "hashing",
+    "suffix_array"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 3.75
+}

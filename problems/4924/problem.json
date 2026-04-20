@@ -1,0 +1,29 @@
+{
+  "id": 4924,
+  "title": "정수론 싫어",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>정수론 중간고사를 마치고 집으로 돌아온 상근이는 패닉에 빠졌다. 유일하게 공부를 하지 않은 것이 오일러 피 함수(Euler&#39;s totient function, \\(\\varphi \\))였는데, 그 함수에 관한 문제만 나왔기 때문이다. 상근이는 너무 억울했고, 직접 Totient 함수를 만들기로 했다.</p>\r\n\r\n<p>정수론에서 양의 정수의 소인수는 그 정수를 나머지 없이 나눌 수 있는 소수이다. 상근이는 $n \\ge 2$에서 함수 $F(n)$을 곱이 $n$이 되는 감소하지 않는 소수의 리스트로 정의했다. 예를 들어, $F(8) = \\ll 2,2,2 \\gg$, $F(60) = \\ll 2,2,3,5 \\gg$, $F(71) = \\ll 71 \\gg$ 이다. $O(n)$은 $F(n)$의 길이이다. 예를 들어, $O(8) = 3$, $O(60) = 4$, $O(71) = 1$ 이 된다. 마지막으로, 양의 정수에 대해서 \\(p(n)\\)을 다음과 같이 정의했다.</p>\r\n\r\n<p>\\(p(n) = \\begin{cases} 0 &amp; \\text{if } n = 1 \\\\ -1 &amp; \\text{if } n \\text{ is a prime number} \\\\ O(n) &amp; \\text {otherwise} \\end{cases}\\)</p>\r\n\r\n<p>아래 표에는 \\(p(n)\\)의 첫 20개 값이 나와있다.</p>\r\n\r\n<table class=\"table table-bordered td-center th-center\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>$n$</th>\r\n\t\t\t<th>$1$</th>\r\n\t\t\t<th>$2$</th>\r\n\t\t\t<th>$3$</th>\r\n\t\t\t<th>$4$</th>\r\n\t\t\t<th>$5$</th>\r\n\t\t\t<th>$6$</th>\r\n\t\t\t<th>$7$</th>\r\n\t\t\t<th>$8$</th>\r\n\t\t\t<th>$9$</th>\r\n\t\t\t<th>$10$</th>\r\n\t\t\t<th>$11$</th>\r\n\t\t\t<th>$12$</th>\r\n\t\t\t<th>$13$</th>\r\n\t\t\t<th>$14$</th>\r\n\t\t\t<th>$15$</th>\r\n\t\t\t<th>$16$</th>\r\n\t\t\t<th>$17$</th>\r\n\t\t\t<th>$18$</th>\r\n\t\t\t<th>$19$</th>\r\n\t\t\t<th>$20$</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th>$p(n)$</th>\r\n\t\t\t<td>$0$</td>\r\n\t\t\t<td>$-1$</td>\r\n\t\t\t<td>$-1$</td>\r\n\t\t\t<td>$2$</td>\r\n\t\t\t<td>$-1$</td>\r\n\t\t\t<td>$2$</td>\r\n\t\t\t<td>$-1$</td>\r\n\t\t\t<td>$3$</td>\r\n\t\t\t<td>$2$</td>\r\n\t\t\t<td>$2$</td>\r\n\t\t\t<td>$-1$</td>\r\n\t\t\t<td>$3$</td>\r\n\t\t\t<td>$-1$</td>\r\n\t\t\t<td>$2$</td>\r\n\t\t\t<td>$2$</td>\r\n\t\t\t<td>$4$</td>\r\n\t\t\t<td>$-1$</td>\r\n\t\t\t<td>$3$</td>\r\n\t\t\t<td>$-1$</td>\r\n\t\t\t<td>$3$</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>$a \\le b$를 만족하는 두 양의 정수 $a$와 $b$에 대해서, 상근이는 자신의 Totient 함수인 \\(\\varphi(a,b)\\)를 다음과 같이 정의했다.</p>\r\n\r\n<p>\\(\\varphi (a,b)= ( \\sum _{ k=a }^{ b }{ p(k) }  )  - (b-a+1)\\)</p>\r\n\r\n<p>예를 들어, \\(\\varphi(1,4) = -4\\), \\(\\varphi(16,16) = 3\\), \\(\\varphi(8,12) = 4\\) 이다.</p>\r\n\r\n<p>구간 $[L, U]$가 주어졌을 때, 가장 큰 값을 갖는 \\(\\varphi\\)를 찾는 프로그램을 작성하시오.</p>\r\n\r\n<p>즉, $L \\le U$를 만족하는 두 양의 정수 $L$과 $U$가 주어졌을 때, 가장 큰 \\(\\varphi(a,b)\\) ($L \\le a \\le b \\le U$) 를 찾는 프로그램을 작성하시오. 예를 들어, 구간 $[1,20]$에서 가장 큰 \\(\\varphi\\)는 7이다. (\\(\\varphi(8,16)\\))</p>\r\n",
+  "input": "<p>입력은 7,000개 이하의 테스트 케이스로 이루어져 있다. 각 테스트 케이스는 한 줄로 이루어져 있고, $L$과 $U$가 주어진다. ($1 \\le L \\le U &lt; 1,000,000$)</p>\r\n\r\n<p>입력의 마지막 줄에는 $-1$이 두 개 주어진다.</p>\r\n",
+  "output": "<p>각 테스트 케이스마다 주어진 구간 $[L, U]$에서 찾을 수 있는 가장 큰 \\(\\varphi\\) 값을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "1 5\n1 20\n10 20\n900000 901000\n-1 -1\n",
+      "output": "1. 1\n2. 7\n3. 5\n4. 2551\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Africa and Arab, Arab Collegiate Programming Contest, 2006 Arab Collegiate Programming Contest, baekjoon, corea",
+  "level": 16,
+  "tags": [
+    "math",
+    "dp",
+    "number_theory",
+    "prefix_sum",
+    "primality_test",
+    "sieve"
+  ],
+  "accepted_user_count": 94,
+  "submission_count": null,
+  "average_tries": 2.5106000900268555
+}

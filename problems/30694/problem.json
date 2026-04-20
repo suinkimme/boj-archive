@@ -1,0 +1,26 @@
+{
+  "id": 30694,
+  "title": "Assigning Fares",
+  "time_limit": "6 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Mayor of city M. decided to launch several new metro lines during 2020. Since the city has a very limited budget, it was decided not to dig new tunnels but to use the existing underground network.</p>\n<p>The tunnel system of the city M. consists of $n$ metro stations. The stations are connected with $n - 1$ bidirectional tunnels. Between every two stations $v$ and $u$ there is exactly one simple path. Each metro line the mayor wants to create is a simple path between stations $a_i$ and $b_i$. Metro lines can intersects freely, that is, they can share common stations or even common tunnels. However, it’s not yet decided which of two directions each line will go. More precisely, between the stations $a_i$ and $b_i$ the trains will go either from $a_i$ to $b_i$, or from $b_i$ to $a_i$, but not simultaneously.</p>\n<p>The city M uses complicated faring rules. Each station is assigned with a positive integer $c_i$ — the fare zone of the station. The cost of travel from $v$ to $u$ is defined as $c_u − c_v$ roubles. Of course, such travel only allowed in case there is a metro line, the trains on which go from $v$ to $u$. Mayor doesn’t want to have any travels with a negative cost, so it was decided to assign directions of metro lines and station fare zones in such a way, that fare zones are strictly increasing during any travel on any metro line.</p>\n<p>Mayor wants firstly assign each station a fare zone and then choose a lines direction, such that all fare zones are increasing along any line. In connection with the approaching celebration of the day of the city, the mayor wants to assign fare zones so that the maximum $c_i$ will be as low as possible. Please help mayor to design a new assignment or determine if it’s impossible to do. Please note that you only need to assign the fare zones optimally, you don’t need to print lines’ directions. This way, you solution will be considered correct if there will be a way to assign directions of every metro line, so that the fare zones will be strictly increasing along any movement of the trains.</p>\n<p>Please note, that in some groups it’s not required to minimize the answer, you only need to determine whether it’s possible to assign fare zones in a valid way.</p>",
+  "input": "<p>The first line contains an integers $n$, $m$, $t$ ($2 ≤ n ≤ 500\\, 000$, $1 ≤ m ≤ 500\\, 000$, $0 ≤ t ≤ 1$) — the number of stations in the city, the number of metro lines, and the parameter $t$. In case $t = 0$ you don’t have to minimize the answer. In case $t = 1$ you should find an answer with the largest fare zone being the smallest possible.</p>\n<p>Each of the following $n - 1$ lines describes another metro tunnel. Each tunnel is described with integers $v_i$, $u_i$ ($1 ≤ v_i , u_i ≤ n$, $v_i \\ne u_i$). It’s guaranteed, that there is exactly one simple path between any two stations.</p>\n<p>Each of the following $m$ lines describes another metro line. Each line is described with integers $a_i$, $b_i$ ($1 ≤ a_i , b_i ≤ n$, $a_i \\ne b_i$).</p>",
+  "output": "<p>In the first line print integer $k$ — the maximum fare zone used. In case parameter t is $0$, you don’t have to minimize $k$. In case $t = 1$, the $k$ should be the smallest possible.</p>\n<p>In the next line print integers $c_1$, $c_2$, $\\dots$, $c_n$ ($1 ≤ c_i ≤ k$) — stations’ fare zones.</p>\n<p>In case there are several possible answers, print any of them. In case it’s impossible to assign fare zones, print “<code>-1</code>”.</p>",
+  "samples": [
+    {
+      "input": "3 1 1\n1 2\n2 3\n1 3\n",
+      "output": "3\n1 2 3\n"
+    },
+    {
+      "input": "4 3 0\n1 2\n1 3\n1 4\n2 3\n2 4\n3 4\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>In the first example, line $1 \\rightarrow 3$ goes through the stations $1$, $2$, $3$ in this order. In this order the fare zones of the stations are increasing. Since this line has $3$ stations, at least three fare zones are needed. So the answer $1$, $2$, $3$ is optimal.</p>\n<p>In the second example, it’s impossible to assign fare zones to be consistent with a metro lines.</p>",
+  "source": "Olympiad, Moscow Open Olympiad in Informatics, Moscow Open Olympiad in Informatics 2019-20, Day 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

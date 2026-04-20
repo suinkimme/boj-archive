@@ -1,0 +1,28 @@
+{
+  "id": 5952,
+  "title": "Roads and Planes",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Farmer John is conducting research for a new milk contract in a new territory. He intends to distribute milk to T (1 &lt;= T &lt;= 25,000) towns conveniently numbered 1..T which are connected by up to R (1 &lt;= R &lt;= 50,000) roads conveniently numbered 1..R and/or P (1 &lt;= P &lt;= 50,000) airplane flights conveniently numbered 1..P.</p>\n<p>Either road i or plane i connects town A_i (1 &lt;= A_i &lt;= T) to town B_i (1 &lt;= B_i &lt;= T) with traversal cost C_i. For roads, 0 &lt;= C_i &lt;= 10,000; however, due to the strange finances of the airlines, the cost for planes can be quite negative (-10,000 &lt;= C_i &lt;= 10,000).</p>\n<p>Roads are bidirectional and can be traversed from A_i to B_i or B_i to A_i for the same cost; the cost of a road must be non-negative.</p>\n<p>Planes, however, can only be used in the direction from A_i to B_i specified in the input. In fact, if there is a plane from A_i to B_i it is guaranteed that there is no way to return from B_i to A_i with any sequence of roads and planes due to recent antiterror<br/>\nregulation.</p>\n<p>Farmer John is known around the world as the source of the world's finest dairy cows. He has in fact received orders for his cows from every single town. He therefore wants to find the cheapest price for delivery to each town from his distribution center in town S (1 &lt;= S &lt;= T) or to know that it is not possible if this is the case.</p>",
+  "input": "<ul>\n<li>Line 1: Four space separated integers: T, R, P, and S</li>\n<li>Lines 2..R+1: Three space separated integers describing a road: A_i, B_i and C_i</li>\n<li>Lines R+2..R+P+1: Three space separated integers describing a plane: A_i, B_i and C_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Lines 1..T: The minimum cost to get from town S to town i, or 'NO PATH' if this is not possible</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "6 3 3 4\n1 2 5\n3 4 5\n5 6 10\n3 5 -100\n4 6 -100\n1 3 -10\n",
+      "output": "NO PATH\nNO PATH\n5\n0\n-95\n-100\n"
+    }
+  ],
+  "hint": "<p>6 towns.  There are roads between town 1 and town 2, town 3 and town 4, and town 5 and town 6 with costs 5, 5 and 10; there are planes from town 3 to town 5, from town 4 to town 6, and from town 1 to town 3 with costs -100, -100 and -10.  FJ is based in town 4.</p>\n<p>FJ's cows begin at town 4, and can get to town 3 on the road.  They can get to towns 5 and 6 using planes from towns 3 and 4.  However, there is no way to get to towns 1 and 2, since they cannot go backwards on the plane from 1 to 3.</p>\n<p> </p>\n<p> </p>",
+  "source": "Olympiad, USA Computing Olympiad, 2010-2011 Season, USACO January 2011 Contest, Gold",
+  "level": 19,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 3.736799955368042
+}

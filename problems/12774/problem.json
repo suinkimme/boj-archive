@@ -1,0 +1,36 @@
+{
+  "id": 12774,
+  "title": "Spin Doctor",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>As an employee of the world’s most respected political polling corporation, you must take complex, realworld issues and simplify them down to a few numbers. It isn’t always easy. A big election is coming up and, at the request of Candidate X, you have just finished polling n people. You have gathered three pieces of information from each person, with the values for the ith person recorded as:</p>\n<ul>\n<li>a<sub>i</sub> – the number of digits of π they have memorized</li>\n<li>b<sub>i</sub> – the number of hairs on their head</li>\n<li>c<sub>i</sub> – whether they will vote for Candidate X</li>\n</ul>\n<p>Unfortunately, you are beginning to wonder if these are really the most relevant questions to ask. In fact, you cannot see any correlation between a, b, and c in the data. Of course, you cannot just contradict your customer – that is a good way to lose your job!</p>\n<p>Perhaps the answer is to find some weighting formula to make the results look meaningful. You will pick two real values S and T, and sort the poll results (a<sub>i</sub>, b<sub>i</sub>, c<sub>i</sub>) by the measure a<sub>i</sub> · S + b<sub>i</sub> · T. The sort will look best if the results having c<sub>i</sub> true are clustered as close to each other as possible. More precisely, if j and k are the indices of the first and last results with ci true, you want to minimize the cluster size which is k − j + 1. Note that some choices of S and T will result in ties among the (a<sub>i</sub>, b<sub>i</sub>, c<sub>i</sub>) triples. When this happens, you should assume the worst possible ordering occurs (that which maximizes the cluster size for this (S, T) pair).</p>",
+  "input": "<p>The input starts with a line containing n (1 ≤ n ≤ 250 000), which is the number of people polled. This is followed by one line for each person polled. Each of those lines contains integers a<sub>i</sub> (0 ≤ a<sub>i</sub> ≤ 2 000 000), b<sub>i</sub> (0 ≤ b<sub>i</sub> ≤ 2 000 000), and c<sub>i</sub>, where c<sub>i</sub> is 1 if the person will vote for Candidate X and 0 otherwise. The input is guaranteed to contain at least one person who will vote for Candidate X.</p>",
+  "output": "<p>Display the smallest possible cluster size over all possible (S, T) pairs.</p>",
+  "samples": [
+    {
+      "input": "6\n0 10 0\n10 0 1\n12 8 1\n5 5 0\n11 2 1\n11 3 0\n",
+      "output": "4\n"
+    },
+    {
+      "input": "10\n6 1 1\n0 2 0\n2 1 1\n6 1 1\n8 2 0\n4 4 0\n4 0 0\n2 3 1\n6 1 0\n6 3 1\n",
+      "output": "8\n"
+    },
+    {
+      "input": "5\n5 7 0\n3 4 0\n5 7 0\n5 7 1\n9 4 0\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2016",
+  "level": 25,
+  "tags": [
+    "geometry",
+    "binary_search",
+    "convex_hull",
+    "ternary_search",
+    "cht"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 3.235300064086914
+}

@@ -1,0 +1,26 @@
+{
+  "id": 21220,
+  "title": "Fantasmagorie",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Émile's dreams often feature people or animals who become distorted into others. Émile would like to show the enchanting world of his dreams to everybody by creating the very first animated cartoon, in black and white of course. After waking up, Émile only remembers the initial and final forms appearing in his dream, not the transformation itself, so he's asking you to reproduce these \"morphings\" by detailing the steps taken for transforming the first image into the second.</p>\n<p>The images in Émile's dreams are not just any black and white image, they respect the following three constraints. First, all pixels on the border of the image -- the leftmost and righmost columns, and the top and the bottom rows -- have the same color. Second, the image does not contain any $2 \\times 2$ square of the form <img alt=\"\" src=\"1.png\" style=\"width: 16px; height: 16px;\"/> or <img alt=\"\" src=\"2.png\" style=\"width: 16px; height: 16px;\"/>.</p>\n<p>The third constraint is more complex, and can be described as follows. Let us subdivide the image into <em>regions</em>, which are defined as the connected monochromatic areas of the image, i.e., they form the finest partition of the pixels such that any two adjacent pixels of the same color are in the same region. Two regions are considered adjacent if they contain adjacent pixels. In Émile's images, every region is adjacent to at most two other regions, and the region containing border pixels is adjacent to at most one other region.</p>\n<p>You are given two black and white images of the same size $W \\times H$, and your goal is to find a \"morphing\" transforming the first image into the second one. A morphing from image $A$ to image $B$ is a sequence of images starting with $A$ and ending with $B$ such that:</p>\n<ul>\n<li>each image (except the first) can be obtained from the previous one by flipping one bit;</li>\n<li>each image respects the three above constraints;</li>\n<li>the number of regions of each color does not change during the morphing.</li>\n</ul>",
+  "input": "<p>The first line of the input contains two space-separated integers: $W$ and $H$. Then come $H$ lines that describe the first image row by row, from top to bottom. Each of these lines is composed of $W$ characters describing the row's $W$ pixels, from left to right: the $k$-th character of the line is <code>'.'</code> if the $k$-th pixel of the row is white, and it is <code>'#'</code> if that pixel is black. Finally come $H$ lines that describe the second image row by row, following the same format as above.</p>",
+  "output": "<p>If no morphing exists, the output should contain the word <code>\"IMPOSSIBLE\"</code> on a single line.  Otherwise, the output should describe one possible morphing as follows: if the $(k+1)$-th image is obtained from the $k$-th image by flipping the pixel in column $c$ and row $r$ (with $0 \\le c &lt; W$ and $0 \\le r &lt; H$, where $c = 0$ represents the leftmost column and $r = 0$ represents the topmost row), the $k$-th output line contains the pair $(c,r)$.</p>",
+  "samples": [
+    {
+      "input": "4 3\n....\n.#..\n....\n....\n..#.\n....\n",
+      "output": "2 1\n1 1\n"
+    },
+    {
+      "input": "9 12\n.........\n...###...\n...#.#...\n.#######.\n...###...\n...###...\n.#..#....\n.#######.\n...###.#.\n...###...\n..##.##..\n.........\n.........\n..#####..\n..##.##..\n..#...#..\n..#.#.#..\n..#...#..\n..#####..\n...#.#...\n...#.#...\n...#.#...\n.###.###.\n.........\n",
+      "output": "IMPOSSIBLE\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2020-2021",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 4.25
+}

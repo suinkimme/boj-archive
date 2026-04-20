@@ -1,0 +1,38 @@
+{
+  "id": 27742,
+  "title": "월드컵 조별리그",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>FIFA의 주관 하에서 4년마다 월드컵이 개최된다. 2022년 카타르 월드컵을 기준으로, 참가팀들은 $4$팀씩 조에 편성되어 서로 한 번씩 경기해 오로지 $1$, $2$등만 토너먼트 진출 자격을 획득할 수 있다. 조별리그 순위 결정에 있어서 우선순위는 다음과 같다.</p>\n<ol>\n<li><strong>승점</strong> : 승점이 큰 팀. 승점은 경기 결과에 따라 결정된다. 승리 시 $3$점, 무승부 시 $1$점, 패배 시 $0$점이다.</li>\n<li><strong>골득실</strong> : (득점 - 실점)이 큰 팀</li>\n<li><strong>다득점</strong> : 가장 많은 득점을 한 팀</li>\n<li><strong>상대 전적 </strong>: 편성된 조에서 상대 전적 순위가 더 높은 팀</li>\n</ol>\n<p>조별리그 순위는 먼저 승점으로 결정하며, 승점이 동률인 경우 골득실을, 골득실이 동률인 경우 다득점을, 다득점이 동률인 경우 상대 전적을 따진다.</p>\n<p>A, B, C, D 팀이 월드컵 한 조로 편성되었다. 상대 전적 순위는 항상 A팀이 $1$위, B팀이 $2$위, C팀이 $3$위, D팀이 $4$위이다. 모든 경기를 치른 후, 팀이 각 경기에서 얼마나 득점했는지 알려주는 득점표가 주어진다.</p>\n<table class=\"table table-bordered table-center-50 th-center td-center\" summary=\"행은 득점한 팀, 열은 실점한 팀\">\n<thead>\n<tr>\n<th scope=\"row\">득점표</th>\n<th scope=\"col\">(A팀)</th>\n<th scope=\"col\">(B팀)</th>\n<th scope=\"col\">(C팀)</th>\n<th scope=\"col\">(D팀)</th>\n</tr>\n<tr>\n<th scope=\"row\">A팀</th>\n<td>-</td>\n<td>$W_{AB}$</td>\n<td>$W_{AC}$</td>\n<td>$W_{AD}$</td>\n</tr>\n<tr>\n<th scope=\"row\">B팀</th>\n<td>$W_{BA}$</td>\n<td>-</td>\n<td>$W_{BC}$</td>\n<td>$W_{BD}$</td>\n</tr>\n<tr>\n<th scope=\"row\">C팀</th>\n<td>$W_{CA}$</td>\n<td>$W_{CB}$</td>\n<td>-</td>\n<td>$W_{CD}$</td>\n</tr>\n<tr>\n<th scope=\"row\">D팀</th>\n<td>$W_{DA}$</td>\n<td>$W_{DB}$</td>\n<td>$W_{DC}$</td>\n<td>-</td>\n</tr>\n</thead>\n</table>\n<p style=\"text-align: center;\">&lt;득점표&gt;</p>\n<p>득점표에서 $W_{ij}$는 $i$팀이 $j$팀 상대로 득점한 값을 의미한다. 반대로 말해서 $W_{ij}$는 $j$팀이 $i$팀 상대로 실점한 값을 의미한다.</p>\n<table class=\"table table-bordered table-center-50 th-center td-center\" summary=\"행은 득점한 팀, 열은 실점한 팀\">\n<thead>\n<tr>\n<th scope=\"row\">득점표</th>\n<th scope=\"col\">(A팀)</th>\n<th scope=\"col\">(B팀)</th>\n<th scope=\"col\">(C팀)</th>\n<th scope=\"col\">(D팀)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th scope=\"row\">A팀</th>\n<td>0</td>\n<td>2</td>\n<td>3</td>\n<td>1</td>\n</tr>\n<tr>\n<th scope=\"row\">B팀</th>\n<td>0</td>\n<td>0</td>\n<td>2</td>\n<td>0</td>\n</tr>\n<tr>\n<th scope=\"row\">C팀</th>\n<td>2</td>\n<td>0</td>\n<td>0</td>\n<td>3</td>\n</tr>\n<tr>\n<th scope=\"row\">D팀</th>\n<td><span style=\"color:#e74c3c;\">$?$</span></td>\n<td>0</td>\n<td>2</td>\n<td>0</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">&lt;표 1&gt;</p>\n<p>&lt;표 1&gt;의 득점표를 통해 경기 결과를 알 수 있다. 만약에 A팀과 B팀의 경기 결과를 알고 싶다면, \"A팀\" 행에서 \"(B팀)\" 열을 찾고 \"B팀\" 행에서 \"(A팀)\" 열을 찾으면 된다. 경기 결과는 $2:0$으로 A팀이 이긴 것을 알 수 있다.</p>\n<p>A팀과 D팀의 경기 중 D팀의 득점이 누락되어서 <span style=\"color:#e74c3c;\">$?$</span>로 처리되었다. D팀은 A팀 상대로 최소 $2$점을 득점해야 토너먼트 진출 자격을 획득할 수 있다.</p>\n<p>이처럼 팀 $T$의 득점이 하나 누락된 득점표를 입력받아 팀 $T$가 진출 자격을 획득할 수 있는 득점 <span style=\"color:#e74c3c;\">$?$</span>의 최솟값을 구하시오. 단, $T$가 득점 <span style=\"color:#e74c3c;\">$?$</span>값과 상관없이 진출 자격을 획득할 수 없으면 <code><span style=\"color:#e74c3c;\">-1</span></code>을 출력한다.</p>",
+  "input": "<p>첫 번째 줄에 팀 $T$의 상대 전적 순위와 양의 정수 $K$가 공백으로 구분되어 주어진다.</p>\n<p>두 번째 줄부터 $4$개의 줄에 걸쳐 득점표가 주어진다. 각 줄에는 득점 $W_{ij}$가 공백으로 구분되어 주어진다.</p>\n<ul>\n<li>$i=j$ 인 경우 <span style=\"color:#e74c3c;\"><code>0</code></span>으로 주어진다.</li>\n<li>$i \\neq j$ 인 경우\n\t<ul>\n<li>$W_{ij}$가 누락되지 않은 득점일 경우 음이 아닌 정수로 주어진다.</li>\n<li>$W_{ij}$가 누락된 득점 <span style=\"color:#e74c3c;\">$?$</span>일 경우 <span style=\"color:#e74c3c;\"><code>-1</code></span>로 주어진다.</li>\n</ul>\n</li>\n</ul>\n<p>두 번째 줄은 A팀의 득점, 세 번째 줄은 B팀의 득점, 네 번째 줄은 C팀의 득점, 다섯 번째 줄은 D팀의 득점이다.</p>\n<p>주어지는 득점표는 누락된 득점이 항상 $1$개이며, 팀 $T$은 항상 한 경기에 대해 득점이 누락되어 있다.</p>",
+  "output": "<p>팀 $T$가 진출 자격을 획득할 수 있는 득점 <span style=\"color:#e74c3c;\">$?$</span>의 최솟값을 출력한다.</p>\n<p>단, <strong>최솟값이 $K$보다 크거나</strong> 득점 <span style=\"color:#e74c3c;\">$?$</span>값과 상관없이 진출 자격을 획득할 수 없으면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 1000\n0 2 3 1\n0 0 2 0\n2 0 0 3\n-1 0 2 0\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 1000\n0 2 1 2\n0 0 2 3\n1 1 0 2\n-1 1 0 0\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "2 1000\n0 2 1 0\n1 0 1 -1\n1 0 0 1\n1 0 0 0\n",
+      "output": "0\n"
+    },
+    {
+      "input": "1 1000\n0 -1 1 1\n0 0 5 3\n0 0 0 2\n0 1 1 0\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 중앙대학교, 2023 중앙대학교 CHAC (ChAOS Hello2023 Algorithm Contest), wapas, heeda0528, njw1204, pjshwa, smmaker118, tlsdydaud1, tony9402",
+  "level": 12,
+  "tags": [
+    "binary_search",
+    "implementation",
+    "parametric_search"
+  ],
+  "accepted_user_count": 66,
+  "submission_count": null,
+  "average_tries": 2.984800100326538
+}

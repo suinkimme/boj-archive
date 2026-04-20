@@ -1,0 +1,31 @@
+{
+  "id": 14121,
+  "title": "Haker",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Mirko se nedavno zaposlio kao haker. Prvi zadatak koji je dobio od šefa je napisati alat koji će automatizirati otkrivanje učestalih pogrešaka na web stranici svojeg ureda.</p>\n<p>Naziv web stranice (URL) sadrži dva dijela: adresu i upit. </p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:600px\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\"><code> http://www.hsin.hr/stud/index.php</code></td>\n<td style=\"text-align: center;\"><code>tim=1&amp;kategorija=pero laka&amp;f=14 </code></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><code>Adresa</code></td>\n<td style=\"text-align: center;\"><code>Upit </code></td>\n</tr>\n</tbody>\n</table>\n<p>Adresa je niz znakova koji započinje s \"http://\", a ostatak se sastoji od malih i velikih slova engleske abecede, točke '.' i kose crte '/'. Adresa i upit odvojeni su upitnikom '?'. Upitnik se u nazivu web stranice pojavljuje točno jednom. Upit se sastoji od jednog ili više parametra. Svaki parametar je uređeni par imena i vrijednosti odijeljen znakom jednakosti '='. Ime parametra je uvijek niz malih slova engleske abecede. Vrijednost parametra je niz malih i velikih slova engleske abecede, znamenki i razmaka ' ' (ASCII 32). U jednom upitu može se pojaviti više parametara odvojenih znakom '&amp;'. U jednom upitu ne smiju se pojaviti dva parametra istog imena.</p>\n<p>Hakeri često pokušavaju promjenom vrijednosti parametara steći nedopušten pristup web stranici. Mirkov zadatak je iz zadanog niza URL-ova i učestalih zloćudnih vrijednosti parametara stvoriti novi niz URL-ova takav da je svaki poznati parametar barem jednom pozvan sa svakom zloćudnom vrijednosti. Kako bi olakšao otkrivanje greške, Mirko u jednom upitu smije koristiti najviše P parametara. Budući da svako dohvaćanje URL-a traje više sekundi, vrlo je važno da ukupan broj URL-ova bude što je moguće manji. </p>",
+  "input": "<p>U prvom retku nalaze se tri prirodna broja:</p>\n<ul>\n<li>N (1 ≤ N ≤ 100), broj zadanih URL-ova,</li>\n<li>P (1 ≤ P ≤ 10), najveći broj parametara koje Mirko smije iskoristiti u jednom URL-u,</li>\n<li>Z (1 ≤ Z ≤ 30), broj učestalih zloćudnih vrijednosti.</li>\n</ul>\n<p>U sljedećih N redaka nalazi se N URL-ova. Svi URL-ovi imat će istu adresu. Svi URL-ovi će biti sintaksno ispravni prema tekstu zadatka. Svaki URL imat će najviše 250 znakova i barem jedan parametar.</p>\n<p>U sljedećih Z redaka nalaze se učestale zloćudne vrijednosti, jedna po retku. Svaka zloćudna vrijednost će imati najviše 25 znakova. Zloćudne vrijednosti će biti ispravne vrijednosti parametara. Mogu počinjati i završavati razmakom. </p>",
+  "output": "<p>Potrebno je ispisati niz URL-ova takav da svaki poznati parametar budem barem jednom pozvan sa svakom zloćudnom vrijednosti. U svakom retku potrebno je ispisati jedan URL. URL smije sadržavati samo poznate parametre i zloćudne vrijednosti.</p>\n<p>Napomena: Ukoliko postoji više rješenja koja zadovoljavaju sve uvjete, ispišite bilo koje. </p>",
+  "samples": [
+    {
+      "input": "1 2 2\nhttp://www.com/a.php?a=1&b=2&c=0\nX\nY\n",
+      "output": "http://www.com/a.php?a=X&b=X\nhttp://www.com/a.php?c=X&a=Y\nhttp://www.com/a.php?b=Y&c=Y\n"
+    },
+    {
+      "input": "3 1 2\nhttp://a.com/b.xtm?a=1&b=2\nhttp://a.com/b.xtm?a=2&c=5\nhttp://a.com/b.xtm?b=5&c=13\nOR 1 IS 1\nFALSE\n",
+      "output": "http://a.com/b.xtm?a=OR 1 IS 1\nhttp://a.com/b.xtm?a=FALSE\nhttp://a.com/b.xtm?b=OR 1 IS 1\nhttp://a.com/b.xtm?b=FALSE\nhttp://a.com/b.xtm?c=OR 1 IS 1\nhttp://a.com/b.xtm?c=FALSE\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2011",
+  "level": 11,
+  "tags": [
+    "constructive",
+    "greedy",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 3.875
+}

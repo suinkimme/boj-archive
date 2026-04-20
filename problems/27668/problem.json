@@ -1,0 +1,26 @@
+{
+  "id": 27668,
+  "title": "Kill switch (Easy)",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A kill switch is a mechanism used to shut off a device in an emergency situation.</p>\n<p>Jeremy was hired as a contractor by a shady software company. After he finished his work the company pointed to a loophole in the contract and refused to pay him anything for his work. Little do they know that Jeremy suspected foul play and thus he hid a kill switch in his code.</p>\n<p>You are given the implementation of a function that <em>pretends</em> to sort an array of 32-bit unsigned integers into a non-decreasing order. Find the shortest input the function <em>fails</em> to sort.</p>",
+  "input": "<p>In each subproblem there are two input files: one is a <a href=\"https://upload.acmicpc.net/2f6ce261-6adf-44eb-82f8-4e2dfd3b6b5d/\">C++ implementation</a> and the other a <a href=\"https://upload.acmicpc.net/08cffc0f-eb46-497f-877b-86d1642499e3/\">Python implementation</a> of the same function.</p>\n<p>(You may assume that if the answer is <em>n</em>, the two programs behave the same way at least on all valid inputs of size up to <em>n</em> + 47. Note that huge inputs may cause integer overflows in the C++ implementation. Such inputs are not a part of this problem and they can be safely ignored.)</p>",
+  "output": "<p>Your output file should contain two lines. The first line should contain a nonnegative integer <em>n</em>: the smallest possible length of an array that is not sorted correctly. The second line should contain one possible initial content of the array: the sequence <em>A</em>[0],…,<em>A</em>[<em>n</em> − 1]. These values must satisfy 0 ≤ <em>A</em>[<em>i</em>]&lt;2<sup>32</sup>.</p>",
+  "samples": [
+    {
+      "input": "void example_sort(vector<unsigned> &A) {\n    int N = A.size();\n    if (N >= 2 && A[0] > A[1])\n        swap( A[0], A[1] );\n    if (N >= 3 && A[0] > A[2])\n        swap( A[0], A[2] );\n    if (N >= 3 && A[0] > A[1])\n        swap( A[0], A[1] );\n}\n-----------------------------------------\ndef example_sort(A):\n    N = len(A)\n    if N >= 2 and A[0] > A[1]:\n        A[0], A[1] = A[1], A[0]\n    if N >= 3 and A[0] > A[2]:\n        A[0], A[2] = A[2], A[0]\n    if N >= 3 and A[0] > A[1]:\n        A[0], A[1] = A[1], A[0]\n",
+      "output": "3\n42 47 1\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Internet Problem Solving Contest, IPSC 2016",
+  "level": 14,
+  "tags": [
+    "sorting",
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.875
+}

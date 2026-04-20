@@ -1,0 +1,22 @@
+{
+  "id": 27642,
+  "title": "Flipping and cutting (Easy)",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>On the table we have a perfect circle cut out of paper. The circle is all black from the top and all white from the bottom. The circumference of the circle is a positive integer <em>c</em>.</p>\n<p>We also have a pair of scissors. We will use the scissors to cut the circle. At the beginning we will choose an arbitrary point on the boundary of the circle (we’ll call it the <em>active point</em>) and we’ll make a straight cut from that point to the center of the circle.</p>\n<p>Next, we will choose a positive integer <em>s</em> (with <em>s</em> &lt; <em>c</em><sup>2</sup>): the square of our step length. Finally, we are going to perform an infinite sequence of rounds. Each round consists of a few simple steps:</p>\n<ol>\n<li>Find a <em>new point</em> by starting at the current active point and measuring the distance √s along the boundary of the circle, going counter-clockwise.</li>\n<li>Make a straight cut from the new point to the center of the circle.</li>\n<li>We now have a wedge (a sector of the circle) that starts with the cut from the active point to the center and continues counter-clockwise all the way to the cut from the new point to the center. Note that the inside of the wedge may also contain other cuts.</li>\n<li>We carefully lift the entire wedge from the table, flip it upside down and return it back to its place. Note that if the wedge already consisted of multiple pieces, their order is reversed by this operation.</li>\n<li>The new point becomes the active point for the next round.</li>\n</ol>\n<p>The figure below illustrates the first four rounds for <em>c</em> = 360 and √s=100. Pay close attention to what happens in the fourth round.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>For some pairs (<em>c</em>, <em>s</em>) it may happen that after finitely many rounds we will have a completely black circle again.</p>\n<p>Find out which pairs (<em>c</em>, <em>s</em>) have this property, and for each such pair determine the smallest number of rounds after which it happens.</p>\n<p>(A technical note: A circle is completely black if each point of the top side of the circle is black or lies on one of the cuts. In other words, you don’t have to worry about the color of the points that lie directly on the cuts.)</p>",
+  "input": "<p>The first line of the input file contains an integer <em>t</em> specifying the number of test cases. Each test case is preceded by a blank line.</p>\n<p>Each test case consists of a single line containing the positive integers <em>c</em> and <em>s</em>. As stated above, you may assume that <em>s</em> &lt; <em>c</em><sup>2</sup>.</p>\n<p>You may also assume that <em>c</em> ≤ 1 000 and that √s is an integer.</p>",
+  "output": "<p>If the process never returns to a completely black circle, output a single line with the text “<code>never</code>”. Otherwise, output a single line with a single integer: the smallest positive number of rounds after which the circle will again be completely black.</p>",
+  "samples": [
+    {
+      "input": "3\n\n360 3600\n\n360 10000\n\n360 90000\n",
+      "output": "12\n24\n4\n"
+    }
+  ],
+  "hint": "<p>In the first example case we have a circle with circumference 360 units and we are cutting wedges that each contain 60 units of the circle’s circumference. Clearly, after six rounds we will have flipped each part of the circle exactly once, and after another six rounds everything will be back to where we started.</p>\n<p>The second example input corresponds to the situation shown in the figure above. It takes 24 rounds to get us back to an all-black circle.</p>\n<p>In the third example we flip 5/6 of the circle in each round. Maybe surprisingly, already after four rounds the circle will be completely black again.</p>",
+  "source": ", Contest, Internet Problem Solving Contest, IPSC 2017",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

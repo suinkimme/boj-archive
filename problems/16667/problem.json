@@ -1,0 +1,26 @@
+{
+  "id": 16667,
+  "title": "Harder Satisfiability",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A fully quantified boolean 2-CNF formula is a formula in the following form: Q<sub>1</sub>x<sub>1</sub> . . . Q<sub>n</sub>x<sub>n</sub> F(x<sub>1</sub>, . . . , x<sub>n</sub>). Each Q<sub>i</sub> is one of two quantifiers: a universal quantifier ∀ (“for all”), or an existential quantifier ∃ (“exists”); and F is a conjunction (boolean AND) of m clauses s ∨ t (boolean OR), where s and t are some variables (not necessarily different) with or without negation. This formula has no free variables, so it evaluates to either true or false. We can evaluate a given fully quantified formula with a simple recursive algorithm:</p>\n<ol>\n<li>If there are no quantifiers, return the remaining expression’s value of true or false.</li>\n<li>Otherwise, recursively evaluate formulas: F<sub>z</sub> = Q<sub>2</sub>x<sub>2</sub> . . . Q<sub>n</sub>x<sub>n</sub> F(z, x<sub>2</sub>, . . . , x<sub>n</sub>) for z = 0, 1.</li>\n<li>If Q<sub>1</sub> = ∃ return F<sub>0</sub> ∨ F<sub>1</sub>; otherwise if Q<sub>1</sub> = ∀ return F<sub>0</sub> ∧ F<sub>1</sub>.</li>\n</ol>\n<p>You are given some fully quantified boolean 2-CNF formulas. Find out if they are true or not.</p>",
+  "input": "<p>The first line of the input contains a single integer t (1 ≤ t ≤ 10<sup>5</sup>) — the number of test cases. The first line of a test case contains two integers n and m (1 ≤ n, m ≤ 10<sup>5</sup>) — the number of variables and the number of clauses in F. The next line contains a string s with n characters describing the quantifiers. If s<sub>i</sub> = ‘A’ then Q<sub>i</sub> is a universal quantifier ∀, otherwise if s<sub>i</sub> = ‘E’ then si is an existential quantifier ∃.</p>\n<p>Next m lines describe clauses in F. Each line contains two integers u<sub>i</sub> and v<sub>i</sub> (−n ≤ u<sub>i</sub>, v<sub>i</sub> ≤ n; u<sub>i</sub>, v<sub>i</sub> ≠ 0). If u<sub>i</sub> ≥ 1 then the first variable in the i-th clause is x<sub>u<sub>i</sub></sub>. Otherwise, if u<sub>i</sub> ≤ −1 then the first variable is <span style=\"border-top: 1px solid black;\">x<sub>−u<sub>i</sub></sub></span> (negation of x<sub>−u<sub>i</sub></sub>). The second variable in the i-th clause is similarly described by v<sub>i</sub>.</p>\n<p>The sum of values of n for all test cases does not exceed 10<sup>5</sup>; the sum of values of m does not exceed 10<sup>5</sup>.</p>",
+  "output": "<p>For each test case output “TRUE” if the given formula is true or “FALSE” otherwise.</p>",
+  "samples": [
+    {
+      "input": "3\n2 2\nAE\n1 -2\n-1 2\n2 2\nEA\n1 -2\n-1 2\n3 2\nAEA\n1 -2\n-1 -3\n",
+      "output": "TRUE\nFALSE\nFALSE\n"
+    }
+  ],
+  "hint": "<p>The first sample corresponds to a formula ∀x<sub>1</sub> ∃x<sub>2</sub> (x<sub>1</sub> ∨ <span style=\"border-top: 1px solid black;\">x<sub>2</sub></span>) ∧ (<span style=\"border-top: 1px solid black;\">x<sub>1</sub></span> ∨ x<sub>2</sub>) = ∀x<sub>1</sub> ∃x<sub>2</sub> x<sub>1</sub> ⊕ x<sub>2</sub>. For any x<sub>1</sub> we can choose x<sub>2</sub> = <span style=\"border-top: 1px solid black;\">x<sub>1</sub></span> making it true, hence the formula is true. The second sample changes the order of quantifiers. Now the answer is “FALSE”, because for any value of x<sub>1</sub> we can choose x<sub>2</sub> = x<sub>1</sub> and the formula becomes false. The third formula is ∀x<sub>1</sub> ∃x<sub>2</sub> ∀x<sub>3</sub> (x<sub>1</sub> ∨ <span style=\"border-top: 1px solid black;\">x<sub>2</sub></span>) ∧ (<span style=\"border-top: 1px solid black;\">x<sub>1</sub></span> ∨ <span style=\"border-top: 1px solid black;\">x<sub>3</sub></span>). If we substitute x<sub>1</sub> = 1, x<sub>3</sub> = 1 then no assignment of x<sub>2</sub> can make the second clause true, so the formula is false.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NERC 2018",
+  "level": 26,
+  "tags": [
+    "graphs",
+    "scc",
+    "2_sat"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 2.4737000465393066
+}

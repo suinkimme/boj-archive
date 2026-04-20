@@ -1,0 +1,34 @@
+{
+  "id": 32019,
+  "title": "Find Poly",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Consider a set of line segments in a 2D plane.</p>\n<p>For any set of line segments $L$, define $P(L)$ as the set of all endpoints of the line segments in $L$.</p>\n<p>Two line segments are said to be <em>connected</em> if they share an endpoint.</p>\n<p>Given a set of line segments $U$, we say that a <em>geometric figure</em> (\"figure\" for short) is a set $S$ of one or more line segments, $S \\subseteq U$, for which</p>\n<ol>\n<li>for any two points $p_1$ and $p_2$ in $P(S)$, we can reach $p_2$ from $p_1$ by tracing along one or more connected line segments, and</li>\n<li>for every line segment $e$ in $S$, all line segments of $U$ that are connected to $e$ are also in $S$.</li>\n</ol>\n<p>A <em>polygon</em> is a geometric figure $S$ for which it is possible to trace a path starting from some endpoint $p$ and ending at $p$ using every line segment in $S$ exactly once and visiting each point in $P(S)$ other than $p$, exactly once, visiting $p$ only at the beginning and end of the path.</p>\n<p>See figure 1 which has 10 figures of which $a$, $b$, $e$, and $f$ are polygons. The dots are the end points of the line segments.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 512px; height: 500px;\"/></p>\n<p style=\"text-align: center;\">Figure 1: 10 figures, 4 polygons</p>\n<p>Note that $b$ is self-intersecting but that the intersection is not at the end points of the intersecting line segments. Similarly $c$ and $d$ as well as $e$ and $f$ intersect but are not connected.</p>\n<p>Your task is to count the total number of figures and identify how many are polygons.</p>",
+  "input": "<p>The input is a series of lines terminated by end-of-file. Each line will have one or more line segments of the form:</p>\n<pre>\n(x1,y1),(x2,y2);</pre>\n<p>where <code>(x1,y1)</code> is one end point and <code>(x2,y2)</code> is the other end point.  $0 \\leq x1, y1, x2, y2 \\leq 99$.  All coordinates are integers.</p>\n<p>The separator characters, \"(),;\", may be preceded or followed by white space.  A line may be at most $100$ characters long.</p>\n<p>There will be at most $200$ line segments.  A given line segment will only appear once in the input and none will be of length $0$.</p>\n<p>Line segments are not directed so the order of the end points in the line segment is not significant. The order of the line segments in the input is also not significant.</p>",
+  "output": "<p>Print a single line containing two integers separated by a single space. The first number should be the total number of figures and the second should be the number of polygons found.</p>\n<p>In the first example below, the points correspond to the picture in Figure 1.</p>",
+  "samples": [
+    {
+      "input": "(84,84),(78,84);(68,60),(64,64);(20,85),(15,88);(0,0),(2,8);\n(30,60),(30,66);(13,40),(18,38);(15,88),(15,95);(18,38),(8,38);\n(31,7),(25,10);(30,66),(26,70);(40,14),(30,19);(5,85),(15,88);\n(48,20),(56,26);(84,84),(84,82);(66,82),(70,86);(15,95),(25,90);\n(70,86),(66,88);(59,23),(50,27);(15,88),(5,80);(78,84),(74,82);\n(60,80),(66,82);(5,85),(5,80);(25,10),(40,14);(20,85),(25,90);\n(20,60),(30,66);(13,36),(14,30);(30,60),(20,60);(64,64),(60,60);\n(31,7),(30,19);(15,88),(25,90);(68,60),(76,64);(8,38),(13,40);\n(5,85),(15,95);(0,0),(10,4);(10,30),(14,30);(74,82),(70,86);\n(10,30),(12,43);(6,10),(10,4);(5,80),(20,85);(6,10),(2,8);\n(60,80),(66,88);(84,82),(74,82);(12,43),(13,36);\n",
+      "output": "10 4\n"
+    },
+    {
+      "input": "(45,26),(88,34);(39,6),(67,8);(73,52),(92,38);(63,35),(18,61);\n(34,23),(46,10);(2,75),(86,47);(26,18),(95,36);(59,78),(49,95);\n(63,95),(67,80);(23,12),(33,46);(33,1),(46,10);(63,78),(2,75);\n(2,33),(11,31);(99,98),(18,5);(88,34),(49,95);(25,43),(46,10);\n(66,1),(2,75);(17,59),(2,33);(85,7),(85,59);(51,56),(63,95);\n(1,48),(46,7);(66,49),(57,84);(59,78),(63,35);(0,49),(69,83);\n(75,82),(51,56);(67,8),(92,38);(25,43),(86,47);(54,33),(12,42);\n(87,12),(57,84);(37,92),(84,90);(18,61),(12,42);(66,49),(95,36);\n(85,7),(73,52);(1,48),(99,98);(53,26),(11,31);(34,23),(86,47);\n(22,91),(55,59);(23,12),(75,6);(66,1),(33,1);(33,46),(97,41);\n(87,12),(66,49);(92,38),(8,19);(54,33),(97,41);(45,26),(7,53);\n(39,6),(85,59);(63,78),(34,23);(76,9),(18,5);(67,80),(17,59);\n(25,43),(66,1);(75,82),(53,26);(0,49),(18,61);(12,42),(19,3);\n(33,1),(63,78);(76,9),(46,7);(8,19),(84,90);(8,19),(37,92);\n",
+      "output": "7 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 2018 Mid-Atlantic USA Regional Contest, ICPC, Regionals, North America, Southern California Regional, 2018 Southern California Regional",
+  "level": 13,
+  "tags": [
+    "data_structures",
+    "dfs",
+    "disjoint_set",
+    "graphs",
+    "graph_traversal",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

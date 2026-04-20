@@ -1,0 +1,29 @@
+{
+  "id": 15257,
+  "title": "Basketball",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Basketball is the other sport we’re supposed to be excited about at USC (besides women’s soccer, of course). Somehow, it never seems to quite catch on. So in case you aren’t sure how basketball works: each team has 5 players, who pass the ball around and try to get it in the opposing team’s basket, which is suspended about 50ft high in the air. There are some rules about how long you are allowed to be in various places, what are the exact ways in which you are allowed to punch the other players, why you can or cannot hold on to the ball in various situations, and various other arbitrary things.</p>\n<p>A very important part of basketball is rebounds. No, not that kind! When your team throws the ball in the general direction of the other team’s basket, it doesn’t always go in. Instead, it will often bounce off the rim, and in a pretty random direction. You’d then rather your team catch the ball and get to take another shot, than the other team catch the ball and break away towards your basket and take a shot. It’s thus a very important decision where to place your players to catch those rebounds. On the one hand, you want to place your players so they are close to the places where the ball will likely land. But you also want them to be in places where they are likely to score when they get the ball. And you want them to be in places where they can prevent the other team from scoring if they catch the ball first. Optimizing this is quite difficult, and indeed, professional sports teams do use sophisticated algorithms to determine rebound strategies<sup>4</sup>.</p>\n<p>The basketball field is a rectangle with corners (0.0, 0.0) and (94.0, 50.0) (measured in feet). Your team’s basket is at location (0.0, 25.0), and the other team’s basket at (94.0, 25.0). You will be given the locations of the other team’s 5 players, and the candidate locations where you can in principle place your own 5 players. You will also be given a list of locations where the ball may bounce, and for each location, the probability that the ball goes there. For each location, the player closest to that location will get the rebound. The player will run in a beeline to that location to pick up the ball, then run in a beeline to the other team’s basket. Simultaneously, all of the other team’s players will run in a beeline to their own basket to defend it. All players run at the same speed of 20 feet per second. Let t be the number of seconds by which the person with the ball outruns the fastest defender, i.e., how much earlier he/she gets to the basket. (If the fastest defender outruns the person with the ball, t can be negative.) If t ≥ 0, then the probability of scoring is 1−2<sup>−(t+1)</sup>. If t &lt; 0, then the probability of scoring is 2<sup>t−1</sup>. In keeping with basic basketball rules, we will treat each scored basket as 2 points.</p>\n<p>Your goal is to find the locations for your 5 players that maximize the expected number of points that your team will get from the rebound. (Points for the other team count as negative points.)</p>\n<p><sup>4</sup>One of the leading sports analytics teams doing this kind of computation grew out of USC’s own ISI.</p>",
+  "input": "<p>The first line contains a number K ≥ 1, which is the number of input data sets in the file. This is followed by K data sets of the following form:</p>\n<p>The first line of a data set contains two integers n, m. 5 ≤ n ≤ 15 is the number of candidate locations where you can place your players, and 1 ≤ m ≤ 100 is the number of locations where the ball could rebound.</p>\n<p>This is followed by a line with ten doubles x<sub>1</sub><sup>−</sup>, y<sub>1</sub><sup>−</sup>, x<sub>2</sub><sup>−</sup>, y<sub>2</sub><sup>−</sup>, . . . , x<sub>5</sub><sup>−</sup>, y<sub>5</sub><sup>−</sup>; these are the locations of the opposing players. Next is a line with 2n doubles x<sub>j</sub><sup>+</sup>, y<sub>j</sub><sup>+</sup>, which give you the candidate locations for your players. Finally, there is line with 3m doubles, consisting of m triples x<sub>k</sub><sup>◦</sup>, y<sub>k</sub><sup>◦</sup>, p<sub>k</sub>. The first two doubles of a triple are the coordinates of the k th location where the ball may bounce, while p<sub>k</sub> ∈ [0, 1] is the probability that the ball bounces to location k. All x coorcinates (players/candidates/rebound) are between 0 and 90, and all y locations between 0 and 50. We will guarantee that Σ<sub>k</sub>p<sub>k</sub> = 1. Also, we will ensure that for each (x<sub>k</sub><sup>◦</sup>, y<sub>k</sub><sup>◦</sup>), there are never two player/candidate locations whose distance to it are the same (or within less than 0.001). So you don’t have to worry about how to break ties about who gets to the rebound first.</p>",
+  "output": "<p>For each data set, first output “Data Set x:” on a line by itself, where x is its number. Then, on a line by itself, output the maximum expected number of points your team can get by placing its five players perfectly, rounded to two decimals.</p>\n<p>Each data set should be followed by a blank line.</p>",
+  "samples": [
+    {
+      "input": "1\n8 7\n52 25 77 35 85 10 88.5 30 80 49.9\n70 30 93 25 90 40 90 10 85 12 75 45 66 1 80 25\n55 30 0.1 61 28 0.3 89 19 0.3 86 13 0.01 94 26 0.01 10 2 0.18 82 17 0.1\n",
+      "output": "Data Set 1:\n0.11\n\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Fall 2017: Olympics",
+  "level": 14,
+  "tags": [
+    "math",
+    "implementation",
+    "bruteforcing",
+    "geometry",
+    "probability",
+    "physics"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

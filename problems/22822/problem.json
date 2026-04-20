@@ -1,0 +1,25 @@
+{
+  "id": 22822,
+  "title": "Jigsaw Puzzles for Computers",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Ordinary Jigsaw puzzles are solved with visual hints; players solve a puzzle with the picture which the puzzle shows on finish, and the diverse patterns of pieces. Such Jigsaw puzzles may be suitable for human players, because they require abilities of pattern recognition and imagination.</p>\n<p>On the other hand, \"Jigsaw puzzles\" described below may be just the things for simple-minded computers.</p>\n<p>As shown in <b>Figure 1</b>, a puzzle is composed of nine square pieces, and each of the four edges of a piece is labeled with one of the following eight symbols:</p>\n<p><b>\"R\", \"G\", \"B\", \"W\", \"r\", \"g\", \"b\"</b>, and <b>\"w\".</b></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p style=\"text-align: center;\"><b>Figure 1</b>: The nine pieces of a puzzle</p>\n<p>In a completed puzzle, the nine pieces are arranged in a 3 x 3 grid, and each of the 12 pairs of edges facing each other must be labeled with one of the following four combinations of symbols:</p>\n<p><b>\"R\"</b> with <b>\"r\"</b>, <b>\"G\"</b> with <b>\"g\"</b>, <b>\"B\"</b> with <b>\"b\"</b>, and <b>\"W\"</b> with <b>\"w\"</b>.</p>\n<p>For example, an edge labeled <b>\"R\"</b> can only face an edge with <b>\"r\"</b>. <b>Figure 2</b> is an example of a completed state of a puzzle. In the figure, edges under this restriction are indicated by shadowing their labels. The player can freely move and rotate the pieces, but cannot turn them over. There are no symbols on the reverse side of a piece !</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></p>\n<p style=\"text-align: center;\"><b>Figure 2</b>: A completed puzzle example</p>\n<p>Each piece is represented by a sequence of the four symbols on the piece, starting with the symbol of the top edge, followed by the symbols of the right edge, the bottom edge, and the left edge. For example, <b>gwgW</b> represents the leftmost piece in <b>Figure 1</b>. Note that the same piece can be represented as <b>wgWg</b>, <b>gWgw</b> or <b>Wgwg</b> since you can rotate it in 90, 180 or 270 degrees.</p>\n<p><b>The mission for you</b> is to create a program which counts the number of solutions. It is needless to say that these numbers must be multiples of four, because, as shown in <b>Figure 3</b>, a configuration created by rotating a solution in 90, 180 or 270 degrees is also a solution.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\"/></p>\n<p style=\"text-align: center;\"><b>Figure 3</b>: Four obvious variations for a completed puzzle</p>\n<p>A term <u>\"rotationally equal\"</u> is defined; if two different pieces are identical when one piece is rotated (in 90, 180 or 270 degrees), they are rotationally equal. For example, <b>WgWr</b> and <b>WrWg</b> are rotationally equal.</p>\n<p>Another term <u>\"rotationally symmetric\"</u> is defined; if a piece is rotationally equal to itself, it is rotationally symmetric. For example, a piece <b>gWgW</b> is rotationally symmetric.</p>\n<p>Given puzzles satisfy the following three conditions:</p>\n<ol>\n<li>There is no identical pair of pieces in a puzzle.</li>\n<li>There is no <u>rotationally equal</u> pair of pieces in a puzzle.</li>\n<li>There is no <u>rotationally symmetric</u> piece in a puzzle.</li>\n</ol>",
+  "input": "<p>The input consists of multiple puzzles.</p>\n<pre>\n<i>N</i>\n<i>Puzzle</i><sub>1</sub>\n<i>Puzzle</i><sub>2</sub>\n<i>. . .</i>\n<i>Puzzle<sub>N</sub></i>\n</pre>\n<p><i>N</i> is the number of puzzles. Each <i>Puzzle<sub>i</sub></i> gives a puzzle with a single line of 44 characters, consisting of four-character representations of the nine pieces of the puzzle, separated by a space character. For example, the following line represents the puzzle in <b>Figure 1</b>.</p>\n<pre>\n<code>gwgW RBbW GWrb GRRb BWGr Rbgw rGbR gBrg GRwb</code>\n</pre>",
+  "output": "<p>For each <i>Puzzle<sub>i</sub></i> , the number of its solutions should be the output, each in a separate line.</p>",
+  "samples": [
+    {
+      "input": "6\nWwRR wwrg RRGb rGBG RGrb RrRg RGrg rgBB Wrgr\nRrGb WWGR rGgb Wbrg wgBb GgBg WbBG Wwwg WWGG\nRBbr Wrbr wGGG wggR WgGR WBWb WRgB wBgG WBgG\nwBrg rGgb WRrB WWbw wRRB RbbB WRrb wrbb WgrG\nWrwB WWww wRRB WGGb Wbbg WBgG WrbG Wrww RBgg\nWWgg RBrr Rggr RGBg Wbgr WGbg WBbr WGWB GGGg\n",
+      "output": "40\n8\n32\n4\n12\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2001 Japan Domestic Contest",
+  "level": 12,
+  "tags": [
+    "backtracking",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,28 @@
+{
+  "id": 7288,
+  "title": "Changing Phone Numbers",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are working for OTC, the Olandican Telecommunication Company. Unfortunately, OTC does not decide wisely in assigning telephone numbers to the clients. For example, it did not make a good estimate on demand increase. As a result, it had to increase the number of digits in the local telephone numbers of Oland (the capital) from six to seven, and then again from seven to eight digits.</p>\n<p>As usual, a telephone number consists of two parts: an area code, and the local number within that area code. For example, if 021 is the area code of the Oland city, a telephone number in that city may be 0211234567. Note that no area code is the prefix of another area code.</p>\n<p>The process of changing telephone numbers is not easy though. It requires updates to several databases of millions of records. Fortunately, these changes follow a limited number of rules as follows:</p>\n<ol>\n<li>For all local numbers in a given area code, repeat the ith digit. For example, for the area code 021, repeating the second digit causes the number 0211234567 change to 02112234567.</li>\n<li>For all numbers in a given area code, swap the i th and the (i + 1) th digit. For example, for the area code 021, swapping the second and the third digits causes the number 0211234567 change to 0211324567.</li>\n<li>Change a given area code. For example, changing 021 to 0211 causes the number 0211234567 change to 02111234567.</li>\n</ol>\n<p>Note that changing area codes in the third rule preserves the property that no area code is the prefix of another. You are to write a program that given the area code information, and the set of all telephone numbers, plus a given set of rules, determine the resulting telephone numbers after the changes.</p>",
+  "input": "<p>The first part of the input describes the set of area codes. It starts with a line containing a single integer A (1 ≤ A ≤ 1000) , which is the number of area codes in Olandica, followed by A lines of the following form:</p>\n<p>area - code   area - name</p>\n<p>where area - code is a string of at least one, and at most 6 digits, and area - name is a string of at least one, and at most 20 letters (both uppercase and lowercase). There are no two lines with the same area-code or area-name.</p>\n<p>The second part of the input describes the rules applied by OTC. The first line of this part contains a single integer R (0 ≤ R ≤ 10000) , the number of rules applied, followed by R lines of the following form:</p>\n<p>year   rule - info</p>\n<p>where year is the year in which the rule is applied. You may assume the rule is applied on the first day of the year, and at most one rule is applied each year. The rule - info part depends on the specific rule applied. The following list shows the rule-info formats corresponding to the rules described in the problem statement:</p>\n<ul>\n<li>1 area - name  i</li>\n<li>2 area - name  i</li>\n<li>3 area - name  new - area - code</li>\n</ul>\n<p>You can assume that input data is consistent; i.e. in the rules section, indices are not out of range, and an area code will never be prefix of another, at any fixed time. The third part of the input consists of several lines of the following form:</p>\n<p>year<sub>1 </sub> year<sub>2</sub>  number</p>\n<p>The query says that in year1 , there was a telephone number number , and asks for that number in year<sub>2</sub> ( year<sub>1 </sub>≤<sub> </sub>year<sub>2</sub> ). You must change the number according to the rules applied in the years between year<sub>1</sub> + 1 and year<sub>2</sub> in that order. The queries end with a line containing three zeros. The years are positive integers less than 10<sup>9</sup> .</p>\n<p>In every line in the input containing more than one data item (number or name), the data items are separated by one or more spaces. There may be arbitrary number of leading or trailing spaces too. Each data item is at least one character. Each line of the input is at most 50 characters.</p>",
+  "output": "<p>The output contains one line corresponding to each query containing the changed number.</p>",
+  "samples": [
+    {
+      "input": "4\n021 Oland\n0511 Moland\n0311 Boland\n03121 Kamand\n7\n2002 1 Moland 2\n2001 3 Moland 0515\n2003 2 Boland 3\n2005 1 Kamand 1\n2000 1 Kamand 1\n1999 1 Kamand 1\n1998 3 Oland 012345\n2000 2005 0311243426\n2000 2005 05113837462\n2000 2005 03121437478\n0 0 0\n",
+      "output": "0311244326\n051538837462\n031214437478\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia West Continent, Iran, Tehran Site 2005",
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "offline_queries",
+    "set"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.5
+}

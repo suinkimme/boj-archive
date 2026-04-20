@@ -1,0 +1,39 @@
+{
+  "id": 32574,
+  "title": "Reptile Eggs",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The farm generates additional income by producing decorated turkey eggs. The farmers, being excessively creative, design various patterns and apply them to the surface of the eggs. The customer orders are handled with the help of specially trained reptile specimen, often it is a Komodo dragon or a member of another suitable reptile species. The reptile had been trained to understand and execute commands in a specific formal language. A customer order is translated into a command for the reptile which then selects a corresponding group of eggs from the production line. The selected eggs are then packed and prepared for shipment.</p>\n<p>The command is a regular expression, and the reptile selects such sequence of eggs on the line that exactly matches the given regular expression. The selected sequence does not have to be contiguous, and it does not have to be specified uniquely by the expression. However, the selected sequence always has to be as long as possible, to keep customers satisfied. The reptile recognizes the beginning and the end of the production line, thus the first egg in the selected sequence is not further from the end of the production line than the last egg in the sequence.</p>\n<p>Sometimes, the customer’s order, and consequently the regular expression, is so demanding that no unempty sequence of eggs can match the expression. In such situation, the reptile is still able to distinguish between two possible scenarios. In the first scenario, an empty sequence containing no eggs can still match the expression. In the second scenario, even an empty sequence of eggs cannot match the expression. In the first scenario, the reptile remains calm, in the second scenario, the reptile gets dangerously annoyed and has to be calmed down.</p>\n<p>Check the reptile’s operation and, for each given regular expression, determine the maximum possible number of selected eggs in the shipment.</p>\n<p>Below is the specification of the regular expressions that control the reptile’s activity:</p>\n<ul>\n<li>Each expression is a finite sequence of lowercase letters of the English alphabet, extended with the characters <code>?</code>, <code>*</code>, <code>[</code>, <code>]</code>, <code>(</code>, <code>)</code>.</li>\n<li>Each letter of the English alphabet represents an egg with a specific pattern corresponding to that letter.</li>\n<li>The question mark <code>(?)</code> represents one egg with any pattern.</li>\n<li>The brackets <code>[</code> and <code>]</code> are always correctly paired, and inside them, there may be only lowercase letters of the English alphabet, at least one. This pair of brackets and the letters within them always represent a single egg on the line, one whose pattern matches any letter inside the brackets.</li>\n<li>The asterisk <code>(*)</code> replaces any number of repetitions of the sequence immediately preceding the asterisk. This sequence is either a single letter or a question mark or a portion of the expression enclosed in parentheses <code>()</code> or square brackets <code>[]</code>. The number of repetitions may also be zero.</li>\n<li>Parentheses <code>(</code> and <code>)</code> are always correctly paired and are always immediately followed by an asterisk. Inside these parentheses, there is always a regular expression adhering to the rules described above, but it does not contain any parentheses.</li>\n</ul>",
+  "input": "<p>The first input line contains integer $N$ ($1 ≤ N ≤ 1000$). The second input line contains a string of $N$ lowercase English letters representing the types of patterns on the eggs on the production line. Each letter corresponds to one egg. The beginning of the production line corresponds to the beginning of the string. The third input line contains integer $M$ ($1 ≤ M ≤ 1000$). The fourth input line contains a string of $M$ characters representing the regular expression given to the reptile.</p>",
+  "output": "<p>Output single integer $E$, the maximum possible number of eggs in the shipment selected from the given production line, according to the given regular expression. If the regular expression cannot be matched output $-1$.</p>",
+  "samples": [
+    {
+      "input": "3\naba\n2\na*\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3\nctu\n4\nopen\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "4\nfood\n13\n([ba]g??t*e)*\n",
+      "output": "0\n"
+    },
+    {
+      "input": "20\nalotofeggcellenteggs\n14\n[only]*(egg)*?\n",
+      "output": "10\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2024",
+  "level": 22,
+  "tags": [
+    "dp",
+    "regex",
+    "string",
+    "sweeping"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

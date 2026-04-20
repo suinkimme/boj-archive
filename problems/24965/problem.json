@@ -1,0 +1,32 @@
+{
+  "id": 24965,
+  "title": "“Even” Division",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>If you talk about an even division in the usual sense of the words, it means dividing a thing equally. Today, you need to think about something different. A graph is to be divided into subgraphs with their numbers of nodes being even, that is, multiples of two.</p>\n<p>You are given an undirected connected graph with even number of nodes. The given graph is to be divided into its subgraphs so that all the subgraphs are connected and with even number of nodes, until no further such division is possible. Figure I.1 illustrates an example. The original graph of $8$ nodes is divided into subgraphs with $4$, $2$, and $2$ nodes. All of them have <em>even</em> numbers of nodes.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 458px; height: 95px;\"/></p>\n<p style=\"text-align: center;\">Figure I.1. Example of a division (Sample Input/Output 1)</p>\n<p>To put it mathematically, an <em>even</em> division of a graph is the set of subsets $V_1$, $\\dots$, $V_k$ of the graph nodes satisfying the following conditions.</p>\n<ol>\n<li>$V_1 ∪ \\cdots ∪ V_k$ is the set of all the nodes of the input graph, and $V_i ∩ V_j = ∅$ if $i \\ne j$.</li>\n<li>Each $V_i$ is non-empty, and has an even number of elements.</li>\n<li>Each $V_i$ induces a connected subgraph. In other words, any nodes in $V_i$ are reachable from each other by using only the edges of the input graph connecting two nodes in $V_i$.</li>\n<li>There is no further division. For any $U_1 ∪ U_2 = V_i$, the division obtained by replacing $V_i$ with the two sets, $U_1$ and $U_2$, does not satisfy either of the conditions 1, 2, or 3.</li>\n</ol>\n<p>Your task is to find an <em>even</em> division of the given graph.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<p>$\\begin{align*}&amp; n \\, m \\\\ &amp; x_1 \\, y_1 \\\\ &amp; \\vdots \\\\ &amp; x_m \\, y_m \\end{align*}$</p>\n<p>The first line consists of two integers $n$ and $m$. The first integer $n$ ($2 ≤ n ≤ 10^5$) is an even number representing the number of the nodes of the graph to be divided. The second integer $m$ ($n - 1 ≤ m ≤ 10^5$) is the number of the edges of the graph.</p>\n<p>The nodes of the graph are numbered from $0$ to $n - 1$.</p>\n<p>The subsequent $m$ lines represent the edges of the graph. A line $x_i$ $y_i$ ($0 ≤ x_i &lt; y_i &lt; n$) means that there is an edge connecting the two nodes $x_i$ and $y_i$. There are no duplicated edges. The input graph is guaranteed to be connected.</p>",
+  "output": "<p>If there exists an even division of the node set of the given graph into subsets $V_1$, $\\dots$, $V_k$, print $k$ in the first line of the output. The next $k$ lines should describe the subsets $V_1$, $\\dots$, $V_k$. The order of the subsets does not matter. The $i$-th of them should begin with the size of $V_i$, followed by the node numbers of the elements of $V_i$, separated by a space. The order of the node numbers does not matter either.</p>\n<p>If there are multiple even divisions, any of them are acceptable.</p>",
+  "samples": [
+    {
+      "input": "8 9\n0 1\n1 2\n2 3\n0 4\n1 6\n3 7\n4 5\n5 6\n6 7\n",
+      "output": "3\n2 3 7\n2 4 5\n4 0 1 2 6\n"
+    },
+    {
+      "input": "2 1\n0 1\n",
+      "output": "1\n2 0 1\n"
+    }
+  ],
+  "hint": "<p>In the Sample 2, the singleton set of the set of the nodes of the original graph is already an even division.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2021 Asia Yokohama Regional",
+  "level": 23,
+  "tags": [
+    "constructive",
+    "dfs",
+    "graphs",
+    "graph_traversal",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 3.2857000827789307
+}

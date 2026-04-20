@@ -1,0 +1,25 @@
+{
+  "id": 20225,
+  "title": "Contact Tracer",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Novel virus infections are spreading. The virus is known to transmit on close contact with carriers, whether or not with any symptoms. Therefore, it is effective for epidemic prevention to identify and test those who had close contact with persons confirmed or were judged highly probable to be infected. To realize this, a system is desired that perpetually records all the close contact events by an application on mobile phones and, when infection is confirmed, identifies all persons with direct or indirect infection risks based on the record.</p>\n<p>You were asked to develop such a system, and have already finished the mobile phone part. When the installed application detects a close contact event with another person carrying a phone with the same application installed, it sends IDs of both to the surveillance center.</p>\n<p>Your next task is to develop a program that, when infection of a user is confirmed, identifies users with risks of direct or indirect transmission from the infected user.</p>\n<p>When a user of the system is confirmed to be infected, those users who made close contacts with the infected user within a certain time period (period of communicability) are suspected of infection. If a suspected user had close contact with still another user after that possible infection event, that user also is suspected of infection. The suspects are propagated repetitively in this manner.</p>\n<p>When a user is confirmed infected, the ID of the user and the list of all the close contact events of all users with all users happened after the time when the confirmed user possibly becomes a carrier are given. All the events in the given list should be assumed to be within the period of communicability of the confirmed user. The output should be the number of users to whom the virus was possibly transmitted directly or indirectly from the infected user.</p>",
+  "input": "<p>The input consists of multiple datasets, each in the following format.</p>\n<blockquote><i>m</i> <i>n</i> <i>p</i> <i>a</i><sub>1</sub> <i>b</i><sub>1</sub> … <i>a<sub>n</sub></i> <i>b<sub>n</sub></i></blockquote>\n<p>Each of the datasets starts with a line containing three integers: <i>m</i> (1 ≤ <i>m</i> ≤ 100) is the number of users, <i>n</i> (0 ≤ <i>n</i> ≤ 1000) is the number of events in the list, and <i>p</i> (1 ≤ <i>p</i> ≤ <i>m</i>) is the ID of the user confirmed to be infected.</p>\n<p>The following <i>n</i> lines contain the close contact events between users, one event per line, in time order. Each line indicates that the users whose IDs are <i>a<sub>i</sub></i> and <i>b<sub>i</sub></i> had close contact. Here, <i>a<sub>i</sub></i> and <i>b<sub>i</sub></i> satisfy 1 ≤ <i>a<sub>i</sub></i> ≤ <i>m,</i> 1 ≤ <i>b<sub>i</sub></i> ≤ <i>m,</i> and <i>a<sub>i</sub></i> ≠ <i>b<sub>i</sub></i>.</p>\n<p>The end of the input is indicated by a line containing three zeros. The number of datasets does not exceed 50.</p>",
+  "output": "<p>For each dataset, output a single line containing the total number of users including the user confirmed to be infected and users to whom the virus was possibly transmitted directly or indirectly from the confirmed user.</p>",
+  "samples": [
+    {
+      "input": "3 2 1\n1 2\n2 3\n4 5 2\n1 3\n3 4\n2 1\n3 1\n1 2\n100 0 100\n0 0 0\n",
+      "output": "3\n3\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2020 Japan Domestic Contest",
+  "level": 5,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 86,
+  "submission_count": null,
+  "average_tries": 1.104699969291687
+}

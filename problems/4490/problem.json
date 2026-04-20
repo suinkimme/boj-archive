@@ -1,0 +1,25 @@
+{
+  "id": 4490,
+  "title": "Crazy Circuits",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You’ve just built a circuit board for your new robot, and now you need to power it. Your robot circuit consists of a number of electrical components that each require a certain amount of current to operate. Every component has a + and a − lead, which are connected on the circuit board at junctions. Current flows through the component from + to − (but note that a component does not “use up” the current: everything that comes in through the + end goes out the − end).</p>\n<p>The junctions on the board are labeled 1, ..., N, except for two special junctions labeled + and − where the power supply terminals are connected. The + terminal only connects + leads, and the − terminal only connects − leads. All current that enters a junction from the − leads of connected components exits through connected + leads, but you are able to control how much current flows to each connected + lead at every junction (though methods for doing so are beyond the scope of this problem). Moreover, you know you have assembled the circuit in such a way that there are no feedback loops (components chained in a manner that allows current to flow in a loop).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:237px; width:594px\"/></p>\n<p>Figure 1: Examples of two valid circuit diagrams. In (a), all components can be powered along directed paths from the positive terminal to the negative terminal. In (b), components 4 and 6 cannot be powered, since there is no directed path from junction 4 to the negative terminal.</p>\n<p>In the interest of saving power, and also to ensure that your circuit does not overheat, you would like to use as little current as possible to get your robot to work. What is the smallest amount of current that you need to put through the + terminal (which you can imagine all necessarily leaving through the − terminal) so that every component on your robot receives its required supply of current to function?</p>",
+  "input": "<p>The input file will contain multiple test cases. Each test case begins with a single line containing two integers: N (0 ≤ N ≤ 50), the number of junctions not including the positive and negative terminals, and M (1 ≤ M ≤ 200), the number of components in the circuit diagram. The next M lines each contain a description of some component in the diagram. The i th component description contains three fields: p<sub>i</sub>, the positive junction to which the component is connected, n<sub>i</sub>, the negative junction to which the component is connected, and an integer I<sub>i</sub> (1 ≤ I<sub>i</sub> ≤ 100), the minimum amount of current required for component i to function. The junctions pi and ni are specified as either the character ‘+’ indicating the positive terminal, the character ‘-’ indicating the negative terminal, or an integer (between 1 and N) indicating one of the numbered junctions. No two components have the same positive junction and the same negative junction. The end-of-file is denoted by an invalid test case with N = M = 0 and should not be processed.</p>",
+  "output": "<p>For each input test case, your program should print out either a single integer indicating the minimum amount of current that must be supplied at the positive terminal in order to ensure that every component is powered, or the message “impossible” if there is no way to direct a sufficient amount of current to each component simultaneously.</p>",
+  "samples": [
+    {
+      "input": "6 10\n+ 1 1\n1 2 1\n1 3 2\n2 4 5\n+ - 1\n4 3 2\n3 5 5\n4 6 2\n5 - 1\n6 5 3\n4 6\n+ 1 8\n1 2 4\n1 3 5\n2 4 6\n3 - 1\n3 4 3\n0 0\n",
+      "output": "9\nimpossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2008 Pacific Northwest Region Programming Contest",
+  "level": 19,
+  "tags": [
+    "flow",
+    "graphs"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

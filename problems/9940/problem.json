@@ -1,0 +1,27 @@
+{
+  "id": 9940,
+  "title": "Spectrum",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Swamp County Consulting has just been awarded a contract from a mysterious government agency to build a database to investigate connections between what they call “targets.” Your team has been sub-contracted to implement a system that stores target information and processes the commands listed below.</p>\n<p>A target is represented by a string of up to 32 printing characters with no embedded spaces. A connection is a bi-directional relationship between two targets.</p>\n<p>The hop count between a given target (called “target1”) and other targets is determined by the following rules:</p>\n<ol>\n<li>Targets directly connected to target1 are 0 hops away.</li>\n<li>Targets directly connected to the 0 hop targets, and not already counted as a 0 hop target or the original target, are 1 hop targets. </li>\n<li>Similarly, targets directly connected to n hop targets, and not already counted in 0..n hop targets are n+1 hop targets.</li>\n</ol>\n<p>There will be no more than 100,000 targets and no more than 500,000 connections.</p>\n<p><strong>Commands</strong></p>\n<p>The data base system has only three commands: add, associated, and connections. Targets and connections are never deleted because the Agency never forgets or makes mistakes. Commands start in the first column of a line. Commands and their parameters are separated by whitespace. No input line will exceed 80 columns. No leading or trailing whitespace is to appear on an output line.</p>\n<p>add takes one or two parameters:</p>\n<p><strong>add target1</strong> //single parameter<br/>\nFunction: Adds the target to the database, with no connections. <br/>\nNote: If target is already in the database, do nothing (not an error)</p>\n<p><strong>add target1 target2</strong> //two parameters<br/>\nFunction: Creates a bidirectional connection between the targets. </p>\n<ul>\n<li>If either target is not yet in the database, add it/them, and create the connection.</li>\n<li>If there is already a connection between the targets, do nothing (not an error) </li>\n<li>If target1 and target2 are the same, treat this as if the command were “add target1” (not an error) There can be at most one direct connection between targets.</li>\n</ul>\n<p><strong>connections target1</strong><br/>\nFunction: Returns the number of hops to direct and indirect connections from a target.</p>\n<ul>\n<li>Print the hop count, a colon, a single space, and the number of targets with that hop count with no leading zeroes on a separate line for each hop count. Start with hop count 0 and end with the hop count for the last nonzero number of targets. Do not print trailing spaces.</li>\n<li>If the target has no connections, print a line containing only the string “no connections”.</li>\n<li>If the target is not in the database, print a line containing only the string “target does not exist” (no period).</li>\n</ul>\n<p><strong>associated target1 target2</strong><br/>\nFunction: Returns information about the existence of a connection between the two targets</p>\n<ul>\n<li>If there is a path between the targets, print “yes: n” on a separate line, where n is the hop count of target2 with respect to target1. There is one space after the colon and no leading zeroes and no trailing spaces.</li>\n<li>If there is no connection between the targets, print “no” on a separate line. </li>\n<li>If either target1 or target2 is not in the database, print a line containing only the string “target does not exist”.</li>\n</ul>",
+  "input": "<p>To allow for multiple test cases on the input file, we add a command “reset” that is not a database command and occurs between the database commands for the different cases on the input file. Be sure to reset all of your data structures when you read this command. Process until end of file; there is no end-of-data flag and no “reset” command at the end of the file.</p>",
+  "output": "<p>Start each case with a line consisting of “Case”, one space, the case number, and a colon. End each case with a line of ten minus signs.</p>",
+  "samples": [
+    {
+      "input": "add a b\nadd a c\nadd b d\nadd e b\nadd c f\nadd c g\nadd f h\nadd h i\nadd j k\nassociated a i\nassociated i a\nassociated f k\nassociated a h\nconnections a\nconnections i\nadd k g\nassociated a j\nconnections a\nadd h a\nconnections a\nassociated a h\nadd m\nadd n n\nconnections n\nadd a n\nconnections n\n",
+      "output": "Case 1:\nyes: 3\nyes: 3\nno\nyes: 2\n0: 2\n1: 4\n2: 1\n3: 1\n0: 1\n1: 1\n2: 1\n3: 2\n4: 1\n5: 2\nyes: 3\n0: 2\n1: 4\n2: 2\n3: 2\n0: 3\n1: 5\n2: 1\n3: 1\nyes: 0\nno connections\n0: 1\n1: 3\n2: 5\n3: 1\n4: 1\n----------\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, North Central North America Regional, NCNA 2013",
+  "level": 14,
+  "tags": [
+    "bfs",
+    "graphs",
+    "graph_traversal",
+    "implementation"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 3.3333001136779785
+}

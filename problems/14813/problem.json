@@ -1,0 +1,25 @@
+{
+  "id": 14813,
+  "title": "Core Training (Small1)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Writing Code Jam problems is hard, so we have built an AI to come up with new ideas. To make the AI as creative as possible, we have given it <strong>N</strong> different \"cores\", each of which has its own \"personality\". However, just like people, these cores may become distracted or corrupt or may refuse to work; the i-th core has a <em>success probability</em> <strong>P<sub>i</sub></strong> of functioning properly. As long as at least <strong>K</strong> of the cores function properly, the AI will function properly. Otherwise, it will probably become evil and trap us in a maze of fiendish puzzles of its own design. And who knows what it might do to Code Jam — it might just write a bunch of tough probability problems!</p>\n<p>To prevent this from happening, we plan to train one or more of the cores to become more reliable. We have a total of <strong>U</strong> \"training units\" that we can use to improve the cores. Spending X units on the i-th core will add X to its success probability. We can divide up the units among the cores however we like, and it is possible that one or more cores may not receive any units. Of course, a core's success probability cannot be increased above 1.</p>\n<p>If we assign the training units to maximize the probability that the AI will function properly, what is that probability?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow; each consists of three lines. The first line contains two integers <strong>N</strong> and <strong>K</strong>: the total number of cores, and the minimum number of cores that must succeed for the AI to function properly. The second line contains one rational <strong>U</strong>: the number of training units. The third line contains <strong>N</strong> rational numbers <strong>P<sub>i</sub></strong>; the i-th of these gives the probability that the i-th core will function properly. All of these probabilities are specified to exactly four decimal places of precision.</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>1 ≤ <strong>N</strong> ≤ 50.</li>\n<li>For all i, 0.0000 ≤ <strong>P<sub>i</sub></strong> ≤ 1.0000.</li>\n<li>0.0000 ≤ <strong>U</strong> ≤ <strong>N</strong> - the sum of all <strong>P<sub>i</sub></strong>. (There will not be more training units than can be used.)</li>\n<li><strong>K</strong> = <strong>N</strong>. (All of the cores must function properly for the AI to function properly.)</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the probability that the AI will function properly if the training units are assigned optimally. <code>y</code> will be considered correct if it is within an absolute or relative error of 10<sup>-6</sup> of the correct answer.</p>",
+  "samples": [
+    {
+      "input": "4\n4 4\n1.4000\n0.5000 0.7000 0.8000 0.6000\n2 2\n1.0000\n0.0000 0.0000\n2 1\n0.0000\n0.9000 0.8000\n2 1\n0.1000\n0.4000 0.5000\n",
+      "output": "Case #1: 1.000000\nCase #2: 0.250000\nCase #3: 0.980000\nCase #4: 0.760000\n"
+    }
+  ],
+  "hint": "<p>Note that the last two sample cases would not appear in Small dataset 1.</p>\n<p>In Sample Case #1, we have enough training units to spend to give all cores a success probability of 1, so the AI will certainly function properly.</p>\n<p>In Sample Case #2, both of the cores must function properly for the AI to function properly, so we must give each core at least some training units. The best option turns out to be to train each one up to 0.5. Then the probability that the AI functions properly is 0.5 × 0.5 = 0.25. Any other assignment is inferior; for instance, if we train one core to 0.9 and the other core to 0.1, the probability of success is only 0.9 × 0.1 = 0.09.</p>\n<p>In Sample Case #3, we have no training units to spend, and at least one of the two cores must function properly for the AI to function properly. We can approach this by first calculating the probability that the AI does <em>not</em> function properly, which happens only if both cores fail to function properly. The probability that both cores fail is (1 - 0.9) × (1 - 0.8) = 0.02. So the probability that at least one core functions properly, and thus that the AI functions properly, is 1 - 0.02 = 0.98.</p>\n<p>In Sample Case #4, the optimal strategy is to give all the training units to the second core. That makes the probability of at least one core functioning properly 1 - (0.6 × 0.4) = 0.76. All other options are inferior; for example, giving all the training units to the first core only yields 0.75, and dividing them equally among the cores gives 0.7525.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2017, Round 1C",
+  "level": 12,
+  "tags": [
+    "binary_search",
+    "greedy"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.1739000082015991
+}

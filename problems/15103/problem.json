@@ -1,0 +1,29 @@
+{
+  "id": 15103,
+  "title": "The Uncertainty of Politics",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You have an upcoming trip to Washington D.C. and you are fascinated with the intricacies of Congressional committee hearings. You wish to attend as many hearings as possible during your trip, and your local representative has provided you with a pass that will get you into the audience of any hearing. But there are some challenges in planning your schedule. Specifically:</p>\n<ol>\n<li>There are many committees, and thus many hearings, some of which take place at overlapping times.</li>\n<li>While the committees are extremely punctual in terms of when to start a hearing, they are notoriously unpredictable in terms of how long the hearing lasts. Fortunately, rules do not actually allow for a filibuster of a committee hearing, so they cannot last forever.</li>\n<li>It is considered rude to enter a hearing that is already underway, or to leave a hearing before it is complete. Given that you do not wish to embarrass the representative who provided your tickets, if you attend you must attend the entire hearing. Fortunately, hearings are very near to each other; as soon as one hearing is done, you can immediately join another hearing that is about to start.</li>\n</ol>\n<p>Well in advance of your trip, Congress publishes a schedule of hearings, indicating for each one the time s at which the hearing will start, and then values a and b which represent, respectively, the shortest and longest possible length of that particular hearing. You are to assume that the actual length of the hearing will be a uniformly random integer over the inclusive interval [a, b].</p>\n<p>Your goal is to develop a strategy that maximizes the expected number of hearings that you can attend during your trip. As an example, consider a situation in which there are four hearings with parameters as follows:</p>\n<table class=\"table table-bordered\" style=\"width:40%\">\n<thead>\n<tr>\n<th>hearing</th>\n<th>s</th>\n<th>a</th>\n<th>b</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>Social media and elections</th>\n<td>1</td>\n<td>1</td>\n<td>7</td>\n</tr>\n<tr>\n<th>NASA missions</th>\n<td>3</td>\n<td>2</td>\n<td>3</td>\n</tr>\n<tr>\n<th>Oil and gas exploration</th>\n<td>5</td>\n<td>1</td>\n<td>4</td>\n</tr>\n<tr>\n<th>Hurricane recovery efforts</th>\n<td>6</td>\n<td>10</td>\n<td>10</td>\n</tr>\n</tbody>\n</table>\n<p>For this schedule, the optimal strategy will allow you to achieve an expected value of 2.125 hearings. To achieve this, you begin by attending the NASA hearing, which starts at time 3 and ends with equal probability at either time 5 or time 6 (given the hearing length that is uniformly distributed over {2, 3}). If the NASA hearing does end at time 5 you will immediately head to the oil and gas exploration hearing, and there is a 1/4 chance that hearing will end at time 6, allowing you to make yet a third hearing (about hurricane recovery efforts). If the NASA hearing instead ends at time 6, you will go straight to the hurricane hearing.</p>\n<p>By this strategy you will attend 3 hearings 12.5% of the time and 2 hearings the other 87.5% of the time, and thus expected value of 2.125. Note that if you were to start by attending the social media and elections hearing, you might optimistically make four hearings. However, a careful analysis will demonstrate that if you attend the first hearing, your optimal expected value is only 2.10714.</p>",
+  "input": "<p>The input begins with an integer n that designates the total number of scheduled hearings (1 ≤ n ≤ 10<sup>4</sup>). Following that are n lines, each containing three integers s, a, and b, respectively representing the start time, minimum length, and maximum length of a hearing, such that 1 ≤ s ≤ 10<sup>6</sup> and 1 ≤ a ≤ b ≤ 10<sup>6</sup>. The hearings will be listed in nondecreasing order of their start times.</p>",
+  "output": "<p>Display the expected number of hearings of an optimal strategy. Your answer should have an absolute or relative error of at most 10<sup>−3</sup>.</p>",
+  "samples": [
+    {
+      "input": "4\n1 1 7\n3 2 3\n5 1 4\n6 10 10\n",
+      "output": "2.125\n"
+    },
+    {
+      "input": "5\n1 1 7\n1 1 6\n3 2 3\n5 1 4\n6 10 10\n",
+      "output": "2.29166667\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Mid-Central Regional, 2017 Mid-Central Regional Programming Contest, ICPC, Regionals, North America, South Central USA Regional, 2017 South Central USA Regional Programming Contest",
+  "level": 18,
+  "tags": [
+    "dp",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.142899990081787
+}

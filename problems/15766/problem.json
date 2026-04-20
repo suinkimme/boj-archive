@@ -1,0 +1,35 @@
+{
+  "id": 15766,
+  "title": "New Home",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Wu-Fu Street is an incredibly straight street that can be described as a one-dimensional number line, and each building’s location on the street can be represented with just one number. Xiao-Ming the Time Traveler knows that there are <em>n</em> stores of <em>k</em> store-types that had opened, has opened, or will open on the street. The <em>i</em>-th store can be described with four integers: <em>x<sub>i</sub></em>, <em>t<sub>i</sub></em>, <em>a<sub>i</sub></em>, <em>b<sub>i</sub></em>, representing the store’s location, the store’s type, the year when it starts its business, and the year when it is closed.</p>\n<p>Xiao-Ming the Time Traveler wants to choose a certain year and a certain location on Wu-Fu Street to live in. He has narrowed down his preference list to <em>q</em> location-year pairs. The i-th pair can be described with two integers: <em>l<sub>i</sub></em>, <em>y<sub>i</sub></em>, representing the location and the year of the pair. Now he wants to evaluate the life quality of these pairs. He defines the inconvenience index of a location-year pair to be the inaccessibility of the most inaccessible store-type of that pair. The inaccessibility of a location-year pair to store-type <em>t</em> is defined as the distance from the location to the nearest type-<em>t</em> store that is open in the year. We say the <em>i</em>-th store is open in the year <em>y</em> if <em>a<sub>i</sub></em> ≤ <em>y</em> ≤ <em>b<sub>i</sub></em>. Note that in some years, Wu-Fu Street may not have all the <em>k</em> store-types on it. In that case, the inconvenience index is defined as −1.</p>\n<p>Your task is to help Xiao-Ming find out the inconvenience index of each location-year pair.</p>",
+  "input": "<p>The first line of input contains integer numbers <em>n</em>, <em>k</em>, and <em>q</em>: number of stores, number of types and number of queries (1 ≤ <em>n</em>, <em>q</em> ≤ 3 · 10<sup>5</sup>, 1 ≤ <em>k</em> ≤ <em>n</em>).</p>\n<p>Next <em>n</em> lines contain descriptions of stores. Each description is four integers: <em>x<sub>i</sub></em>, <em>t<sub>i</sub></em>, <em>a<sub>i</sub></em>, and <em>b<sub>i</sub></em> (1 ≤ <em>x<sub>i</sub></em>, <em>a<sub>i</sub></em>, <em>b<sub>i</sub></em> ≤ 10<sup>8</sup>, 1 ≤ <em>t<sub>i</sub></em> ≤ <em>k</em>, <em>a<sub>i</sub></em> ≤ <em>b<sub>i</sub></em>).</p>\n<p>Next <em>q</em> lines contain the queries. Each query is two integers: <em>l<sub>i</sub></em>, and <em>y<sub>i</sub></em> (1 ≤ <em>l<sub>i</sub></em>, <em>y<sub>i</sub></em> ≤ 10<sup>8</sup>).</p>",
+  "output": "<p>Output <em>q</em> integers: for each query output its the inconvenience index.</p>",
+  "samples": [
+    {
+      "input": "4 2 4\n3 1 1 10\n9 2 2 4\n7 2 5 7\n4 1 8 10\n5 3\n5 6\n5 9\n1 10\n",
+      "output": "4\n2\n-1\n-1\n"
+    },
+    {
+      "input": "2 1 3\n1 1 1 4\n1 1 2 6\n1 3\n1 5\n1 7\n",
+      "output": "0\n0\n-1\n"
+    },
+    {
+      "input": "1 1 1\n100000000 1 1 1\n1 1\n",
+      "output": "99999999\n"
+    }
+  ],
+  "hint": "<p>In the first example there are four stores, two types, and four queries.</p>\n<ul>\n<li>First query: Xiao-Ming lives in location 5 in year 3. In this year, stores 1 and 2 are open, distance to store 1 is 2, distance to store 2 is 4. Maximum is 4.</li>\n<li>Second query: Xiao-Ming lives in location 5 in year 6. In this year, stores 1 and 3 are open, distance to store 1 is 2, distance to store 3 is 2. Maximum is 2.</li>\n<li>Third query: Xiao-Ming lives in location 5 in year 9. In this year, stores 1 and 4 are open, they both have type 1, so there is no store of type 2, inconvenience index is −1.</li>\n<li>Same situation in fourth query.</li>\n</ul>\n<p>In the second example there are two stores, one type, and three queries. Both stores have location 1, and in all queries Xiao-Ming lives at location 1. In first two queries at least one of stores is open, so answer is 0, in third query both stores are closed, so answer is −1.</p>\n<p>In the third example there is one store and one query. Distance between locations is 99999999.</p>",
+  "source": "Olympiad, Asia-Pacific Informatics Olympiad, APIO 2018",
+  "level": 25,
+  "tags": [
+    "data_structures",
+    "offline_queries",
+    "priority_queue",
+    "segtree"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 4.857100009918213
+}

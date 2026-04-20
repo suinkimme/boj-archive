@@ -1,0 +1,29 @@
+{
+  "id": 11042,
+  "title": "Deadlock Detection",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In concurrent processing environments, a deadlock is an undesirable situation where two or more threads are mutually waiting for others to finish using some resources and cannot proceed further. Your task is to detect whether there is any possibility of deadlocks when multiple threads try to execute a given instruction sequence concurrently.</p>\n<p>The instruction sequence consists of characters 'u' or digits from '0' to '9', and each of them represents one instruction. 10 threads are trying to execute the same single instruction sequence. Each thread starts its execution from the beginning of the sequence and continues in the given order, until all the instructions are executed.</p>\n<p>There are 10 shared resources called locks from L0 to L9. A digit k is the instruction for acquiring the lock Lk. After one of the threads acquires a lock Lk, it is kept by the thread until it is released by the instruction 'u'. While a lock is kept, none of the threads, including one already acquired it, cannot newly acquire the same lock Lk.</p>\n<p>Precisely speaking, the following steps are repeated until all threads finish.</p>\n<ol>\n<li>One thread that has not finished yet is chosen arbitrarily.</li>\n<li>The chosen thread tries to execute the next instruction that is not executed yet.\n\t<ul>\n<li>If the next instruction is a digit k and the lock Lk is not kept by any thread, the thread executes the instruction k and acquires Lk.</li>\n<li>If the next instruction is a digit k and the lock Lk is already kept by some thread, the instruction k is not executed.</li>\n<li>If the next instruction is 'u', the instruction is executed and all the locks currently kept by the thread are released.</li>\n</ul>\n</li>\n</ol>\n<p>After executing several steps, sometimes, it falls into the situation that the next instructions of all unfinished threads are for acquiring already kept locks. Once such a situation happens, no instruction will ever be executed no matter which thread is chosen. This situation is called a deadlock.</p>\n<p>There are instruction sequences for which threads can never reach a deadlock regardless of the execution order. Such instruction sequences are called safe. Otherwise, in other words, if there exists one or more execution orders that lead to a deadlock, the execution sequence is called unsafe. Your task is to write a program that tells whether the given instruction sequence is safe or unsafe.</p>",
+  "input": "<p>The input consists of at most 50 datasets, each in the following format.</p>\n<pre>\nn\ns</pre>\n<p>n is the length of the instruction sequence and s is a string representing the sequence. n is a positive integer not exceeding 10,000. Each character of s is either a digit ('0' to '9') or 'u', and s always ends with 'u'.</p>\n<p>The end of the input is indicated by a line with a zero.</p>",
+  "output": "<p>For each dataset, if the given instruction sequence is safe, then print \"SAFE\" in a line. If it is unsafe, then print \"UNSAFE\" in a line.</p>",
+  "samples": [
+    {
+      "input": "11\n01u12u0123u\n6\n01u10u\n8\n201u210u\n9\n01u12u20u\n3\n77u\n12\n9u8u845u954u\n0\n",
+      "output": "SAFE\nUNSAFE\nSAFE\nUNSAFE\nUNSAFE\nUNSAFE\n"
+    }
+  ],
+  "hint": "<p>The second input \"01u10u\" may possibly cause a deadlock. After one thread has executed the initial four instructions \"01u1\", the thread keeps only one lock L1. If another thread executes the first instruction '0' at this time, this thread acquires L0. Then, the first thread tries to acquire L0, already kept by the second thread, while the second thread tries to acquire L1, kept by the first thread; This leads to a deadlock.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:129px; width:341px\"/> → <img alt=\"\" src=\"2.png\" style=\"height:128px; width:340px\"/> →  <img alt=\"\" src=\"3.png\" style=\"height:128px; width:341px\"/></p>\n<p>Figure 1: Why the Sample Input 2 \"01u10u\" is unsafe.</p>\n<p>Contrarily, the third input \"201u210u\" is safe. If one thread had executed up to \"201u21\" and another to \"20\", then one may think it would lead to a deadlock, but this can never happen because no two threads can simultaneously keep L<sub>2</sub>.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2015 Japan Domestic Contest",
+  "level": 20,
+  "tags": [
+    "dp",
+    "graphs",
+    "graph_traversal",
+    "bitmask",
+    "dfs",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.5714000463485718
+}

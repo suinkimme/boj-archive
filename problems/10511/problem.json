@@ -1,0 +1,29 @@
+{
+  "id": 10511,
+  "title": "Pork barrel",
+  "time_limit": "30 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Winning the election was simpler than you expected: it was enough to promise to finally build a good quality, country-wide road infrastructure, of course without crippling the budget... Your happiness did not last long, however: it seems, that the citizens have found a way to actually hold you accountable for your promise!</p>\n<p>There are n major cities in your country. The Ministry of Transport has prepared a detailed map, outlining  <span style=\"line-height:1.6em\">m possible highway connections, together with their costs. The Quality Assurance Committee will not let you build a highway cheaper than l, and the National Spendings Regulatory Committee will not let you build a highway more expensive than h. To claim a “country-wide” network, you have to connect (possibly indirectly) as many pairs of cities, as it is possible within these two constraints. You have to find the cheapest way to do it, and you have to find it quickly! Of all networks that meet the constraints and connect the most pairs of cities, compute the cost of the cheapest one.</span></p>\n<p>To make things worse, both committees are heavily influenced by your angry competitors: each time you publish your hard-prepared plan, they immediately change their rulings l and h, and you are forced to start from scratch.</p>",
+  "input": "<p>The first line of input contains the number of test cases T. The descriptions of the test cases follow: </p>\n<p>The first line of each test case contains integers n and m (1 ≤ n ≤ 1000; 0 ≤ m ≤ 100 000) – the number of cities in the country, and of possible direct connections, respectively.</p>\n<p>Each of the following m lines contains three integers x, y, w (1 ≤ x ≠ y ≤ n; 1 ≤ w ≤ 1 000 000), denoting that the cities x and y can be connected by a bidirectional highway at cost w. There might be many ways to connect a single pair of cities.</p>\n<p>The following line contains an integer q (1 ≤ q ≤ 1 000 000) – the number of rulings of the committees. Each of the following q lines contains two integers. The first of the lines contains the initial rulings l<sub>1</sub>, h<sub>1</sub>, given directly. The rest of the rulings are encoded. The numbers in the j-th of the lines for j &gt; 1 are l<sub>j</sub> + c<sub>j−1</sub> and h<sub>j</sub> + c<sub>j−1</sub>, where l<sub>j</sub> and h<sub>j</sub> are the actual rulings and c<sub>j−1</sub> is the correct answer for the preceding rulings l<sub>j−1</sub> and h<sub>j−1</sub>. </p>\n<p>All rulings satisfy 1 ≤ l<sub>j</sub> ≤ h<sub>j</sub> ≤ 1 000 000.</p>",
+  "output": "<p>For each test case, output q lines, one for each ruling. In the j-th of them, output the minimal cost c<sub>j</sub> of building a highway network which adheres to the committees’ constraints, and creates the maximum number of connected pairs of cities.</p>",
+  "samples": [
+    {
+      "input": "1\n5 7\n1 2 2\n2 3 4\n3 4 3\n4 5 1\n5 1 3\n2 5 4\n1 4 5\n5\n1 2\n4 7\n11 12\n11 13\n18 19\n",
+      "output": "3\n9\n8\n14\n13\n"
+    }
+  ],
+  "hint": "<p>The actual rulings of the committees are (1, 2), (1, 4), (2, 3), (3, 5) and (4, 5). The cheapest highway networks adhering to these rulings consist of connections {(1, 2),(4, 5)}, {(2, 1),(1, 5),(5, 4),(4, 3)}, {(1, 2),(1, 5),(3, 4)}, {(1, 5),(5, 2),(2, 3),(3, 4)} and {(3, 2),(2, 5),(1, 4)}, respectively.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2014, Contest, Open Cup, 2014/2015 Season, Stage 4: Grand Prix of Europe",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "graphs",
+    "mst",
+    "pst",
+    "segtree"
+  ],
+  "accepted_user_count": 36,
+  "submission_count": null,
+  "average_tries": 3.4721999168395996
+}

@@ -1,0 +1,30 @@
+{
+  "id": 21632,
+  "title": "Magnets",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You have a $10^9 \\times 10^9$ square magnetic board with the origin of the coordinate system in the lower-left corner. There are $n$ magnets on the board, numbered from $1$ to $n$. Each magnet is an $1 \\times 1$ square. Initially, the magnets are positioned in such way that the lower right corner of the $i$-th magnet has the coordinates $(i, 0)$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 107px; height: 109px;\"/></p>\n<p style=\"text-align: center;\">Example of the initial state for $n=5$</p>\n<p>You are receiving $q$ queries of two types:</p>\n<ul>\n<li>a query of type $1$ is characterized by two integers $l$ and $r$ ($1 \\leq l \\leq r \\leq n$): take magnets with numbers from $l$ to $r$ inclusive, and rotate them by $90^{\\circ}$. If the selected magnets formed a horizontal segment, then the rotation should be performed counterclockwise by $90^{\\circ}$, so they will turn into a vertical segment. If the selected magnets formed a vertical segment, then the rotation should be performed clockwise $90^{\\circ}$, so they will turn into a horizontal segment. All turns are relative to magnet with the smallest number. In this query, it is guaranteed that magnets with numbers from $l$ to $r$ form a continuous horizontal or vertical segment at the time of query processing.</li>\n<li>a query of type $2$ is characterized by one integer $j$ ($1 \\leq j \\leq n$): output the coordinates $(x, y)$ of the lower right corner of the magnet with the number $j$.</li>\n</ul>\n<p>Below are the board states for $n=6$ and the series of first type queries $(l_1=2,r_1=5)$, $(l_2=3,r_2=4)$, $(l_3=2,r_3=3)$, $(l_4=6,r_4=6)$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 107px; height: 109px;\"/></p>\n<p style=\"text-align: center;\">Initial state for $n=6$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 107px; height: 109px;\"/></p>\n<p style=\"text-align: center;\">After processing a query of the first type $(l_1=2,r_1=5)$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 107px; height: 109px;\"/></p>\n<p style=\"text-align: center;\">After processing a query of the first type $(l_2=3,r_2=4)$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 107px; height: 109px;\"/></p>\n<p style=\"text-align: center;\">After processing a query of the first type $(l_3=2,r_3=3)$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 107px; height: 109px;\"/></p>\n<p style=\"text-align: center;\">After processing a query of the first type $(l_4=6,r_4=6)$.</p>\n<p>For each query of type $2$ you should output the coordinates of the lower right corner of the magnet with the corresponding number.</p>",
+  "input": "<p>The first line contains two integers $n$ and $q$ ($1 \\le n, q \\le 2 \\cdot 10^5$) --- the number of magnets on the board and the number of queries, respectively.</p>\n<p>Each of the following $q$ lines contains one query of either type $1$ or type $2$. A type $1$ query consists of $3$ integers $1$ $l$ $r$ $(1 \\le l \\le r \\le n)$, a type $2$ query consists of $2$ integers $2$ $j$ $(1 \\le j \\le n)$.</p>",
+  "output": "<p>For each query of the type $2$ output $x$ and $y$ --- coordinates of the lower right corner of the magnet with the number $j$ at the moment of processing the corresponding query.</p>",
+  "samples": [
+    {
+      "input": "6 8\n1 2 5\n2 5\n1 3 4\n2 4\n1 2 3\n2 6\n1 6 6\n2 1\n",
+      "output": "2 3\n3 1\n6 0\n1 0\n"
+    },
+    {
+      "input": "7 7\n1 3 6\n1 3 4\n1 5 6\n2 3\n2 4\n2 5\n2 6\n",
+      "output": "3 0\n4 0\n3 2\n4 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia High School Programming Contest, Russia High School Programming Contest 2020",
+  "level": 18,
+  "tags": [
+    "data_structures",
+    "lazyprop",
+    "segtree"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 2.0833001136779785
+}

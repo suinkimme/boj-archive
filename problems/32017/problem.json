@@ -1,0 +1,22 @@
+{
+  "id": 32017,
+  "title": "Orphan Backups",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>GigantoCorp has a problem. They have removed all tape drives from their data center and are doing all of their backups to disk storage. However, they seem to have used more disk space than their backup software indicates should be in use. They think that there are files on the backup storage that are not in the backup software index. They would like your team to write a program to determine if there are\"orphan\" files on the backup storage that are not in the index or \"orphan\" index entries that have no corresponding files on the backup storage.</p>\n<p>Your program will be provided with two lists -- an index of valid backup image names, followed by a list of backup file names.</p>\n<p>Your program is to compare the two lists and determine if there are either backup images in the index that have with no files or files that are not associated with any backup image in the index.</p>",
+  "input": "<p>Input is structured in two blocks.</p>\n<p>The first is a list of backup images, one per line. Each backup image name consists of $1$ to $32$ printable ASCII characters (no spaces).  There may be up to $100\\,000$ images. Each image name is unique, and they may occur in any order.  </p>\n<p>The end of this block is signaled by an empty line.</p>\n<p>The second block contains a list of backup file names, one per line, left justified. A backup file name has the format</p>\n<p><em>imageName</em>_<em>integer</em>_<em>type</em></p>\n<p>where <em>imageName</em> is a backup image name in the format described above, <em>integer</em> is an integer in the range $0\\ldots 2\\,000\\,000\\,000$ denoting the time in seconds since January 1, 1970 at 00:00 GMT (the \"UNIX epoch\"), and <em>type</em> is an uppercase alphabetic character string of $1$ to $6$ characters.  There may be up to $300\\,000$ backup file names. File names are unique, and they may occur in any order.</p>\n<p>The end of the second block is signaled by the end of file.</p>",
+  "output": "<p>First, print the list of files with no index entries, one per line, by printing the character \"F\", a single space, and then the file name.</p>\n<p>After all the orphan files are printed, print the orphan index entries one per line by printing the character \"I\", a single space, and then the backup image name.</p>\n<p>Entries in each list are to be printed in ASCII lexicographic order.</p>\n<p>If every file has an index entry and every index entry has one or more files, print only a line containing the string \"No mismatches.\".</p>",
+  "samples": [
+    {
+      "input": "payroll.xls\nprojects.doc\nemployees.dat\nproducts.txt\n\npayroll.xls_1539199053_INCR\nemployees.dat_1539199053_INCR\npayroll.xls_1539112653_INCR\nemployees.dat_1539112653_INCR\npayroll.xls_1539026253_FULL\nemployees.dat_1539026253_FULL\ncustomers.dat_1539026253_FULL\n",
+      "output": "F customers.dat_1539026253_FULL\nI products.txt\nI projects.doc\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 2018 Mid-Atlantic USA Regional Contest, ICPC, Regionals, North America, Southern California Regional, 2018 Southern California Regional",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.600000023841858
+}

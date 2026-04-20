@@ -1,0 +1,29 @@
+{
+  "id": 6890,
+  "title": "Simple Encryption",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>One of the simplest ways of coding a message is to do a letter shift.</p>\n<p>For example, if you shift the letters in the original message by $5$ then <code>A</code> in your original message becomes <code>F</code> in the coded message. (<code>B</code> $\\to$ <code>G</code>, <code>C</code> $\\to$ <code>H</code>, …, <code>T</code> $\\to$ <code>Y</code>, <code>U</code> $\\to$ <code>Z</code>, <code>V</code> $\\to$ <code>A</code>, …, <code>Z</code> $\\to$ <code>E</code>). To decode the message, you simply need to shift back by the same number.</p>\n<p>A slightly trickier encryption uses a keyword to determine the amount of the shift. Suppose you were using the keyword <code>ACT</code>. To encode the message, you take the original message, remove everything but the alphabetic characters, and form the message into a block that has the same width as the keyword. Here is a sample message to encrypt:</p>\n<p><code>BANANA &amp; PEEL</code></p>\n<p>The blocked version of the message is shown below with the keyword <code>ACT</code> as a header.</p>\n<table class=\"table table-bordered td-center table-center-30\">\n<tbody>\n<tr>\n<td>A</td>\n<td>C</td>\n<td>T</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n<tr>\n<td>B</td>\n<td>A</td>\n<td>N</td>\n</tr>\n<tr>\n<td>A</td>\n<td>N</td>\n<td>A</td>\n</tr>\n<tr>\n<td>P</td>\n<td>E</td>\n<td>E</td>\n</tr>\n<tr>\n<td>L</td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>Now, the message is encoded using a letter shift. However, this time it is not a uniform shift, it will depend upon the keyword letter at the top of the column. If the letter at the top of the column is an <code>A</code>, then the letters in that column are not shifted. If the letter is a <code>B</code>, then the letters in that column shift by $1$, and so on. In the example, the letters in the third column will shift by $19$ since the <code>T</code> is the $20$th letter of the alphabet.</p>\n<p>The encoded message is:</p>\n<table class=\"table table-bordered td-center table-center-30\">\n<tbody>\n<tr>\n<td>A</td>\n<td>C</td>\n<td>T</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n<tr>\n<td>B</td>\n<td>C</td>\n<td>G</td>\n</tr>\n<tr>\n<td>A</td>\n<td>P</td>\n<td>T</td>\n</tr>\n<tr>\n<td>P</td>\n<td>G</td>\n<td>X</td>\n</tr>\n<tr>\n<td>L</td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>You will write a program that will accept a keyword and a string to be encoded. The keyword will never have more than $6$ characters. The message will always be given in all uppercase characters.</p>",
+  "input": "<p>The first line of input consists of the keyword. The second line of the input is the message to be encoded. The keyword length will never exceed $6$ characters. The total message length also will never exceed $60$ characters.</p>",
+  "output": "<p>Output the encoded message on a single line.</p>",
+  "samples": [
+    {
+      "input": "ACT\nBANANA & PEEL\n",
+      "output": "BCGAPTPGXL\n"
+    },
+    {
+      "input": "TRICKY\nI LOVE PROGRAMMING!\n",
+      "output": "BCWXONKFOTKKFZVI\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2004, CCC 2004 Junior Division",
+  "level": 4,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 100,
+  "submission_count": null,
+  "average_tries": 1.149999976158142
+}

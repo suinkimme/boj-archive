@@ -1,0 +1,30 @@
+{
+  "id": 27199,
+  "title": "Bob's Average",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In a course in mathematical statistics, Bob came up with a new way to calculate the average for arrays containing an odd number of elements. </p>\n<p>As long as the length of the array is greater than one, the following operation is performed: an arbitrary segment of the array of length 3 with boundaries $l$ and $r = l + 2$ is selected, the median of these three elements is calculated and then these elements are replaced by one element equal to the median.</p>\n<p>The median of an array of three elements is the second-highest element of this array. For example, the median of the array $[1, 5, 4]$ is $4$, and the median the array $[2, 2, 2]$ is $2$.</p>\n<p>Let's consider one of the ways to calculate the Bob's average on an array $[4, 1, 3, 2, 5]$. In the first step, we select a sub-section with boundaries $l = 2$, $r = 4$. Since $2$ is the median of the subarray $[1, 3, 2]$, then the array is converted as follows: $[4, <strong>1, 3, 2</strong>, 5] \\rightarrow [4, <strong>2</strong>, 5]$. In the second step, the only possible segment of length $3$ has boundaries $l = 1$, $r = 3$. Since $4$ is the median of the subarray $[4, 2, 5]$, then $[<strong>4, 2, 5</strong>] \\rightarrow [4]$. </p>\n<p>Bob noticed that his method of calculating the average is not quite correctly defined: depending on the choice of segments, the result of the calculation may be different. To fix this situation, Bob decided to choose segments to replace with the median in such a way that the only number remaining at the end was the maximum possible. It is this number that Bob calls <em>Bob's average</em> for this array.</p>\n<p>For an array $a$ of $n$ elements, you need to answer $q$ queries, The $j$-th of those queries is characterized by the boundaries of $L_j$ and $R_j$.</p>\n<p>The answer to the $i$-th query is the Bob's average of the segment of the original array $[a_{L_j}, a_{L_j + 1}, \\ldots a_{R_j}]$. For all queries, it is guaranteed that the length of the query segment is odd.</p>",
+  "input": "<p>The first line contains an integer $n$ ($3 \\leq n \\leq 5 \\cdot 10^4$) --- array size.</p>\n<p>The second line contains $n$ integers $a_i$ ($0 \\leq a_i \\leq 10^9$) --- array elements. </p>\n<p>The third line contains an integer $q$ ($1 \\leq q \\leq 10^5$) --- number of requests.</p>\n<p>The following $q$ lines contain integers $L_j$, $R_j$ ($1 \\leq L_j \\leq R_j \\leq n$) --- the boundaries of the sub-section of the $j$-th query, it is guaranteed that $R_j - L_j + 1$ is not divisible by $2$.</p>",
+  "output": "<p>In the $j$-th line of the output, output a single integer  --- the answer to the $j$-th request.</p>",
+  "samples": [
+    {
+      "input": "7\n4 1 3 2 5 1 7\n5\n2 6\n1 1\n1 5\n3 7\n1 7\n",
+      "output": "2\n4\n4\n3\n4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia Team High School Programming Contest, Russia Team High School Programming Contest 2022",
+  "level": 25,
+  "tags": [
+    "ad_hoc",
+    "binary_search",
+    "data_structures",
+    "pbs",
+    "segtree",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 2.5
+}

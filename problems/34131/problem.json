@@ -1,0 +1,47 @@
+{
+  "id": 34131,
+  "title": "[N] N-King/Queen/Rook/Bishop/Knight/Pawn",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>N-Queen 문제는 $N\\times N$ 체스판 위에 어떠한 퀸이 다른 퀸을 공격하지 않도록 최대한 많은 개수의 퀸을 놓는 문제이다.</p>\r\n\r\n<p>hi12와 bye17은 언제나처럼 N-Queen 문제에 대해 토론하고 있었다. 그러다가, 체스에는 퀸 외에도 $5$종류의 기물이 더 있다는 사실을 떠올리게 되었다. 추가적인 토론 끝에 hi12와 bye17은 $N\\times N$ 체스판 위에 특정 기물을 최대 $M$개까지 올릴 수 있을 것이라는 결론에 다다랐지만, 아직 그 결론을 증명하지는 못했다.</p>\r\n\r\n<p>이를 증명하기 위해, hi12는 $N\\times N$ 체스판 위에 어떠한 기물이 다른 기물을 공격하지 않도록 $M$개의 기물을 놓는 배치를 알아내면 된다고 생각했다. 반면 bye17은 각 구역에 어떠한 기물이 다른 기물을 공격하지 않게 $2$개 이상의 기물을 놓을 수 없도록 $N \\times N$ 체스판을 $M$개의 구역으로 나누는 방법을 찾으면 된다고 생각했다.</p>\r\n\r\n<p>hi12와 bye17을 도와 기물의 배치와 구역의 배치를 만들어서 위 결론을 증명해 보자!</p>\r\n\r\n<p>문제에서 나오는 체스 기물과 이의 공격 방식은 하단의 노트를 참고하자.</p>\r\n",
+  "input": "<p>첫째 줄에는 체스판의 크기 $N$이 주어진다. $(1\\le N\\le 1217)$</p>\r\n\r\n<p>둘째 줄에는 체스판 위에 올릴 기물을 나타내는 문자열 $P$가 주어진다. ($P$는 <span style=\"color:#e74c3c;\"><code>King</code></span>, <span style=\"color:#e74c3c;\"><code>Queen</code></span>, <span style=\"color:#e74c3c;\"><code>Rook</code></span>, <span style=\"color:#e74c3c;\"><code>Bishop</code></span>, <span style=\"color:#e74c3c;\"><code>Knight</code></span>, <span style=\"color:#e74c3c;\"><code>Pawn</code></span> 중 하나)</p>\r\n",
+  "output": "<p>첫째 줄에는 $N\\times N$ 체스판 위에 입력받은 기물을 올릴 수 있는 최대 개수 $M$을 출력한다.</p>\r\n\r\n<p>둘째 줄부터 $N$개의 줄에 걸쳐 hi12가 궁금해하는 기물의 배치를 다음과 같이 출력한다.</p>\r\n\r\n<ul>\r\n\t<li>$p$를 $P$의 첫 글자라고 하자. 단, $P$가 <span style=\"color:#e74c3c;\"><code>Knight</code></span>라면 $p$는 예외적으로 <span style=\"color:#e74c3c;\"><code>N</code></span>이다.</li>\r\n\t<li>각 줄에는 $N$개의 글자를 공백 없이 출력하며, 각 글자는 <span style=\"color:#e74c3c;\"><code>.</code></span> 또는 $p$여야 한다.</li>\r\n\t<li>$p$는 정확히 $M$번 출력해야 하며, $p$가 출력된 칸들에 기물을 놓을 때 어떠한 기물이 다른 기물을 공격하면 안 된다.</li>\r\n</ul>\r\n\r\n<p>$N+1$번째 줄부터 $N$개의 줄에 걸쳐 bye17이 궁금해하는 구역의 배치를 다음과 같이 출력한다.</p>\r\n\r\n<ul>\r\n\t<li>각 줄에는 $N$개의 정수를 공백으로 구분하여 출력하며, 각 정수는 $1$ 이상 $M$ 이하여야 한다.</li>\r\n\t<li>같은 구역에 속한 두 칸은 같은 수를 가져야 하며, 다른 구역에 속한 두 칸은 다른 수를 가져야 한다.</li>\r\n\t<li>구역이 연결되어 있을 필요는 없지만, 각 구역에 어떠한 기물이 다른 기물을 공격하지 않게 $2$개 이상의 기물을 놓을 수 없어야 한다.</li>\r\n</ul>\r\n\r\n<p>만약 가능한 답이 여러 가지라면, 그중 아무거나 하나를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3\nKing\n",
+      "output": "4\nK.K\n...\nK.K\n1 1 2\n1 2 2\n3 3 4\n"
+    },
+    {
+      "input": "4\nQueen\n",
+      "output": "4\n..Q.\nQ...\n...Q\n.Q..\n1 1 1 1\n2 2 2 2\n3 3 3 3\n4 4 4 4\n"
+    },
+    {
+      "input": "4\nRook\n",
+      "output": "4\n.R..\n...R\nR...\n..R.\n1 1 1 1\n2 2 2 2\n3 3 3 3\n4 4 4 4\n"
+    },
+    {
+      "input": "2\nBishop\n",
+      "output": "2\nB.\nB.\n1 2\n2 1\n"
+    },
+    {
+      "input": "3\nKnight\n",
+      "output": "5\n.N.\nNNN\n.N.\n1 2 3\n3 4 5\n5 1 2\n"
+    },
+    {
+      "input": "2\nPawn\n",
+      "output": "2\nPP\n..\n1 2\n2 1\n"
+    }
+  ],
+  "hint": "<p>문제에서 나오는 각 체스 기물의 공격 방식은 아래와 같다.</p>\r\n\r\n<p>킹 (King, K)은 상하좌우 또는 대각선으로 정확히 1칸 거리에 있는 기물을 공격한다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 250px; max-width: 100%\" /></p>\r\n\r\n<p>퀸 (Queen, Q)은 상하좌우 또는 대각선에 있는 기물을 거리에 상관없이 공격한다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"6.png\" style=\"width: 250px; max-width: 100%\" /></p>\r\n\r\n<p>룩 (Rook, R)은 상하좌우에 있는 기물을 거리에 상관없이 공격한다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"7.png\" style=\"width: 250px; max-width: 100%\" /></p>\r\n\r\n<p>비숍 (Bishop, B)은 대각선에 있는 기물을 거리에 상관없이 공격한다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"8.png\" style=\"width: 250px; max-width: 100%\" /></p>\r\n\r\n<p>나이트 (Knight, N)는 가로로 2칸, 세로로 1칸 거리에 있는 기물과 가로로 1칸, 세로로 2칸 거리에 있는 기물을 공격한다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"9.png\" style=\"width: 250px; max-width: 100%\" /></p>\r\n\r\n<p>폰 (Pawn, P)은 왼쪽 위 1칸과 오른쪽 위 1칸에 있는 기물을 공격한다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"10.png\" style=\"width: 250px; max-width: 100%\" /></p>\r\n\r\n<p>실제 체스에서의 공격은 이와 조금 다를 수 있지만, 이 문제에서는 노트에 적힌 방식을 기준으로 한다.</p>\r\n",
+  "source": "hibye1217, cdg0228, mujigae, pyb1031, utilforever",
+  "level": 22,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "case_work",
+    "bipartite_matching"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 2.299999952316284
+}

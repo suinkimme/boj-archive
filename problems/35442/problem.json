@@ -1,0 +1,33 @@
+{
+  "id": 35442,
+  "title": "Cable Pruning",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are helping to remodel a data center to make room for more GPUs. Over the years, the data center has become cluttered with superfluous network cable, and you have been asked to clean up the mess and reclaim as much unused cable as possible.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 323px; height: 265px;\"/></p>\n<p style=\"text-align: center;\">An illustration of Sample Input 1. Servers in the same coupled pair are the same color. Cables to remove are indicated with a dashed line.</p>\n<p>The data center has $N$ servers and $N$ network cables that link one server to another. Each cable has a length in feet. Traffic flows through network cables in both directions and the data center is initially connected: for every pair of servers $(u,v)$ there exists a path of network cables from $u$ to $v$ (possibly passing through intermediate servers). You've audited the data center network traffic to discover that only $K$ <em>coupled pairs</em> of servers need to communicate with each other. (Note that some servers might not be part of any coupled pair, or might be part of two or more coupled pairs.)</p>\n<p>You now need to remove as much total length of cable as possible from the data center while keeping all coupled pairs connected to each other: for each such pair of servers $(a,b)$ there must exist a path from $a$ to $b$ passing through original network cables that you've kept in place.</p>\n<p>Find the minimum total length of cable that must be kept in place to satisfy this constraint.</p>",
+  "input": "<p>The first line of input contains two space-separated integers $N$ $(3 \\le N \\le 10^5)$ and $K$ $(1 \\le K \\le 10^5)$, the number of servers in the data center and number of coupled pairs of servers that you've discovered.</p>\n<p>The next $N$ lines describe the network cables originally in the data center. Each line contains three space-separated integers $u_i$, $v_i$ $(1 \\le u_i, v_i \\le N, u_i \\ne v_i)$, and $w_i$ $(1 \\le w_i \\le 10^9)$, specifying that a cable connects server $u_i$ to server $v_i$ and has length $w_i$ feet. There is at most one network cable connecting a pair of servers and the graph of servers and cables is connected.</p>\n<p>Each of the next $K$ lines contains two space-separated integers $a_j$ and $b_j$ ($1 \\le a_j, b_j \\le N$, $a_j \\ne b_j$) and describe a coupled pair of servers. Each coupled pair must remain connected by a path after you are done removing cable. All coupled pairs are distinct; $(a,b)$ and $(b,a)$ are considered the same and won't both be listed as coupled pairs.</p>",
+  "output": "<p>Print a single integer: the minimum total length of network cable (in feet) that must remain in place in order for all $K$ coupled server pairs to stay connected to each other.</p>",
+  "samples": [
+    {
+      "input": "8 3\n5 3 5\n1 7 20\n3 8 8\n7 5 15\n5 2 12\n1 6 9\n5 1 10\n7 4 7\n3 4\n8 2\n1 7\n",
+      "output": "57\n"
+    },
+    {
+      "input": "5 1\n1 3 3\n4 2 4\n3 4 2\n5 2 2\n4 1 6\n2 1\n",
+      "output": "9\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, North America Championship, North America Championship 2026",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "sweeping",
+    "lazyprop",
+    "hashing"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 3
+}

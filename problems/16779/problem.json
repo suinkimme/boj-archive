@@ -1,0 +1,32 @@
+{
+  "id": 16779,
+  "title": "JOIRIS",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Mr. JOI loves a game called “JOIRIS.” But he is not good at playing it. JOIRIS is played on a rectangular board, which is a grid of square cells. The width of the board is N, and the height of it is sufficiently large. The cell in the i-th column from left and the j-th row from below is denoted by (i, j). During the game, the state of each cell is one of the following: there is a block on it, or there is no block on it.</p>\n<p>JOIRIS is played as follows.</p>\n<ul>\n<li>A sequence of integers A<sub>1</sub>, A<sub>2</sub>, . . . , A<sub>N</sub> is given, which represents the initial state of the game.</li>\n<li>In the beginning, in the i-th column (1 ≤ i ≤ N), there is a block on each of A<sub>i</sub> cells from below, and there is no block on other cells. In other words, there is a block on each cell (i, j) with 1 ≤ j ≤ A<sub>j</sub> only.</li>\n<li>The player has 10 000 rectangular pieces. Each piece is a rectangle of 1 × K blocks. The player performs the following operations repeatedly.\n\t<ul>\n<li>First, the player chooses the direction of a rectangular piece. The direction is either vertical or horizontal.</li>\n<li>If the player chooses the vertical direction, the player chooses an integer x (1 ≤ x ≤ N) as the place to put a piece on the board. Then, the player puts a piece vertically above the upmost block in the x-th column In other words, take the largest integer y such that there is a block on the cell (x, y) (if there is no such y, take y = 0), and put a block on each of K cells (x, y + j) (1 ≤ j ≤ K).</li>\n<li>If the player chooses the horizontal direction, the player chooses an integer x (1 ≤ x ≤ N − K + 1) as the place to put a piece on the board. Then, the player puts a piece horizontally above the upmost block from the x-th column to the (x + K − 1)-th column. In other words, take the largest integer y such that there is a block on the cell (x + i − 1, y) for some 1 ≤ i ≤ K (if there is no such y, take y = 0), and put a block on each of K cells (x + i − 1, y + 1) (1 ≤ i ≤ K).</li>\n<li>After the above operation is performed, if all the N-cells in a row are filled with blocks, all blocks in that row will disappear. Then each block above that row will move downward 1 cell. In other words, if all the cells in the y-th row are filled with blocks, the state of the cell (i, j) (1 ≤ i ≤ N, y ≤ j) is updated to the state of the cell (i, j + 1) simultaneously. If more than one row is filled with blocks at the same time, this operation is performed from below in order.</li>\n</ul>\n</li>\n</ul>\n<p>The purpose of JOIRIS is to remove all blocks from the board by putting pieces no more than 10 000 times.</p>\n<p>But, Mr. JOI does not know how to accomplish it because he is not good at playing this game. Your task is to determine whether it is possible to remove all blocks from the board by putting pieces no more than 10 000 times, and to find a way to accomplish it if it is possible.</p>\n<p>Given the information on the initial state of the board of JOIRIS and the size of pieces, write a program which determines whether it is possible to remove all blocks from the board by putting pieces no more than 10 000 times, and to find a way to accomplish it if it is possible.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<ul>\n<li>The first line of input contains two space separated integers N, K. This means the board of JOIRIS has width N, and the size of a rectangular piece is 1 × K.</li>\n<li>The i-th line (1 ≤ i ≤ N) of the following N lines contains an integer A<sub>i</sub>. This means, in the initial state of the game, in the i-th column, there is a block on each of Ai cells from below, and there is no block on other cells.</li>\n</ul>",
+  "output": "<p>If it is impossible to remove all blocks from the board by putting pieces no more than 10 000 times, output the integer −1 in one line.</p>\n<p>Otherwise, the output consists of X + 1 lines, where X is the number of operations to put pieces on the board.</p>\n<ul>\n<li>The first line of output contains the integer X.</li>\n<li>The i-th line (1 ≤ i ≤ X) of the following X lines contains the information of the i-th piece to put on the board in the following format.\n\t<ul>\n<li>If the player puts a piece vertically, output two space separated integers: the first integer is 1, and the second integer is x which is chosen when the player puts a piece on the board.</li>\n<li>If the player puts a piece horizontally, output two space separated integers: the first integer is 2, and the second integer is x which is chosen when the player puts a piece on the board.</li>\n</ul>\n</li>\n</ul>",
+  "samples": [
+    {
+      "input": "4 2\n1\n0\n1\n2\n",
+      "output": "4\n2 2\n1 1\n2 3\n1 2\n"
+    },
+    {
+      "input": "3 2\n2\n0\n1\n",
+      "output": "3\n1 2\n1 3\n2 1\n"
+    },
+    {
+      "input": "2 2\n0\n1\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, JOI Open Contest, JOI Open Contest 2016",
+  "level": 24,
+  "tags": [
+    "constructive"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 2.1666998863220215
+}

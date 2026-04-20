@@ -1,0 +1,27 @@
+{
+  "id": 32569,
+  "title": "Jabber Network",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Dave, an old Computer Science professor, still maintains a local community computer network even after retirement. Each community member has a computer with three networking cards, and some of these cards may be connected by a cable. They form a connected network, and, following a long resource-saving tradition, the number of cables is kept to the minimum possible.</p>\n<p>The habits of all the community members are quite stable: for every two computers the number of packets per second between them is known exactlyc. However, the network was first assembled a long time ago, so the connections are not necessarily be optimal any more. For two computers numbered $i$ and $j$ we define $d_{ij}$ the shortest path between them, measured in the number of cables, and $c_{ij}$ the number of packets per second that should be transferred from $i$ to $j$. The <em>commutation stress</em> is defined to be the sum of $c_{ij} \\cdot d_{ij}$ for all $i &lt; j$, and one would like to minimise it.</p>\n<p>Dave realised that it is finally the time to upgrade the cables --- after all, they do degrade with time. He wants to take this opportunity to also optimise the network, such that the <em>commutation stress</em> becomes smaller. However, he is no longer as quick as in his youth, and his friends may get dissatisfied if too much disruption happens at once. So he decided that he will perform the upgrade using the following scenario. For each of the old cables, he will do the following:</p>\n<ol>\n<li>Remove the old cable.</li>\n<li>Connect the network back using a new cable, choosing the computers to connect in such a way that the resulting <em>commutation stress</em> is minimum possible.</li>\n<li>If there are many ways to do this, break ties by choosing the computers with the smallest numbers: if $(u_1, u_2)$ and $(v_1, v_2)$ result in the same <em>commutation stress</em>, but $u_1 &lt; v_1$ (or $u_1 = v_1$ and $u_2 &lt; v_2$), then $(u_1, u_2)$ should be chosen.</li>\n</ol>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"1.png\" style=\"width: 113px; height: 114px;\"/></td>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 115px; height: 114px;\"/></td>\n<td><img alt=\"\" src=\"3.png\" style=\"width: 115px; height: 114px;\"/></td>\n</tr>\n<tr>\n<td>Before</td>\n<td>One <span style=\"color:#d92f8a;\">old</span> link removed</td>\n<td>A <span style=\"color:#0000f5;\">new</span> link added</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure J.1: A single reconnection operation (the first one in the sample input)</p>\n<p>Note that, since each computer only has three network cards, Dave cannot connect two arbitrary computers on the second step: if one of them is already connected to three other computers, it is impossible to connect it to yet another computer. Fortunately, it is not hard to show that it is always possible to find two computers to connect: for instance, Dave can choose the two just-disconnected computers.</p>\n<p>Unfortunately, the task appeared to be more difficult than it seemed initially. Could you help Dave?</p>",
+  "input": "<p>The first line of the input file contains an integer $n$ $(2 \\le n \\le 2 \\cdot 10^3)$, the number of computers in the network.</p>\n<p>The following $n-1$ lines contain two integers each: $a_i$, $b_i$, where $(1 \\le a_i &lt; b_i \\le n)$ are the numbers of the computers initially connected by an old cable number $i$. The cables are to be removed and replaced in the order they are given in the input file. It is guaranteed that it is possible to reach any computer from any other computer using old cables (that is, the network is initially connected), and that no computer is connected with more than three other computers.</p>\n<p>The next line contains an integer $d$ $(2 \\le d \\le 10^4)$, the number of computer pairs that are known to transmit data to each other.</p>\n<p>The following $d$ lines contain three integers each: $s_i$, $t_i$ and $d_i$, where $s_i$ and $t_i$ are the numbers of the computers which transmit data to each other $(1 \\le s_i &lt; t_i \\le n)$, and $d_i$ $(1 \\le d_i \\le 10^9)$ is the number of packets per second to be transmitted.</p>",
+  "output": "<p>Output $n-1$ lines containing two integers each: $x_i$, $y_i$, where $(1 \\le x_i &lt; y_i \\le n)$, should be the numbers of the computers connected by a new cable at step $i$.</p>\n<p>Note that, due to the tie-breaking rule detailed above, the correct output is unique.</p>",
+  "samples": [
+    {
+      "input": "4\n1 2\n2 3\n3 4\n6\n1 2 1\n1 3 10\n1 4 1\n2 3 10\n2 4 1\n3 4 10\n",
+      "output": "1 3\n2 3\n3 4\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, The UK & Ireland Programming Contest, UKIEPC 2024",
+  "level": 18,
+  "tags": [
+    "dp",
+    "trees",
+    "dp_tree",
+    "rerooting"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,30 @@
+{
+  "id": 8860,
+  "title": "Hossa",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Na giełdy światowe na dobre powróciły wzrosty i od dawna mówi się o kolejnej hossie. Czym dokładnie jest jednak hossa? Na to pytanie postanowił odpowiedzieć znany matematyk i ekonomista - pan Wacław. Pan Wacław przez wiele miesięcy starał się określić ścisłe granice hoss i bess na wykresie Warszawskiego Indeksu Giełdowego (WIG). Wreszcie, po wielu nieudanych próbach, Pan Wacław podał formalną definicję, która jego zdaniem w pełni opisuje moment wystąpienia hossy na giełdzie. Oto ona:</p>\n<p>Niech a<sub>1</sub>, a<sub>2</sub>, ...., a<sub>n</sub>  - wartość WIG w kolejnych dniach notowań. Możemy założyć, że jest to <strong>n</strong>-elementowy ciąg różnych liczb naturalnych. Mówimy, że ciąg a jest hossą wtedy, gdy dla każdych trzech pozycji w ciągu i, j, k (i&lt;j&lt;k) jeżeli a<sub>i</sub>&lt;a<sub>j</sub> to a<sub>k</sub>&gt;a<sub>i</sub>. Intuicyjnie, jeżeli między dwoma dniami i oraz j kurs wzrósł z a<sub>i </sub>do a<sub>j</sub> to mamy pewność, że kurs nigdy nie spadnie w kolejnych dniach do lub poniżej wartości a<sub>i</sub>.</p>\n<p>Przykładowo, wszystkie hossy składające się z 4 elementów 1,2,3,4 to:</p>\n<blockquote>\n<p>(1,2,3,4), (2,1,3,4), (1,3,2,4), (3,1,2,4), (3,2,1,4), (1,2,4,3), (2,1,4,3), (1,4,2,3), (1,4,3,2), (4,1,2,3), (4,2,1,3), (4,1,3,2), (4,3,1,2), (4,3,2,1)</p>\n</blockquote>\n<p>Hossą nie jest na przykład ciąg (3,2,4,1), bo kurs wzrósł z 3 do 4, a później spadł do 1.</p>\n<p>Każdą hossę możemy zapisać jako LmR - gdzie: m - najwyższa wartość w ciągu, L - elementy ciągu po lewej stronie m, P - elementy ciągu po prawej stronie m. Przykładowo, dla hossy (1,2,4,3): m = 4, L = (1,2), P = (3). Łatwo zauważyć, że elementy L (lub P) tworzą hossę składającą się z mniejszej liczby elementów.</p>\n<p>Definicja hossy Pana Wacława odniosła ogromny sukces - został on nawet zaproszony na Wall Street, aby publicznie wygłosić referat. Jednym z jego elementów jest przedstawienie kilku przykładów ciągów, które są hossami. Aby o żadnej nie zapomnieć, Pan Wacław postanowił wprowadzić porządek, który pozwoliłby na porównanie ze sobą dwóch hoss. Oto jego definicja:</p>\n<p>Mówimy, że dla dwóch różnych hoss H<sub>1</sub> = L<sub>1</sub>mP<sub>1</sub> i H<sub>2</sub> = L<sub>2</sub>mP<sub>2</sub> zachodzi H<sub>1</sub>&lt;H<sub>2</sub> (hossa H<sub>1</sub> jest mniejsza od hossy H<sub>2</sub>) wtedy gdy, H<sub>1</sub> i H<sub>2</sub> składają się z tych samych liczb (H<sub>2 </sub>jest permutacją elementów ciągów H<sub>1</sub>) oraz:</p>\n<ol style=\"list-style-type: lower-alpha;\">\n<li>liczba elementów w P<sub>1</sub> jest mniejsza od liczby elementów w P<sub>2</sub></li>\n<li>jeżeli liczba elementów P<sub>1</sub> i P<sub>2</sub> jest taka sama to sprawdzamy czy P<sub>1</sub> &lt; P<sub>2</sub> (czyli czy hossa P<sub>1 </sub>jest mniejsza od hossy P<sub>2</sub>)</li>\n<li>jeżeli P<sub>1</sub> jest tym samym ciągiem co P<sub>2</sub>, to sprawdzamy czy L<sub>1</sub> &lt; L<sub>2</sub></li>\n</ol>\n<p>Przykładowo, możemy posortować wszystkie hossy składające się z 4 elementów i otrzymać ciąg hoss przedstawiony w pierwszej definicji. Niektóre z możliwych porównań:</p>\n<ul>\n<li>(1,2,3,4) &lt; (2,1,3,4) - zachodzi przypadek c, tj. (1,2,3) &lt; (2,1,3). Możemy stwierdzić, że (1,2,3) &lt; (2,1,3), ponieważ znowu zachodzi przypadek c, tj. (1,2)&lt;(2,1). Możemy stwierdzić, że (1,2)&lt;(2,1), ponieważ zachodzi przypadek a.</li>\n<li>(1,4,2,3) &lt; (1,4,3,2) - zachodzi przypadek b, tj. (2,3) &lt; (3,2).</li>\n</ul>\n<p>Tuż przed wyjazdem, Pan Wacław zalał kawą jeden z przykładów przygotowanych do pokazania maklerom na Wall Street. Szczęśliwie wie on, że zalana hossa jest bezpośrednim następnikiem pewnej innej hossy H. Pan Wacław poprosił Ciebie, żebyś napisał program, który pomoże mu odtworzyć ten przykład. Innymi słowy, Twoim zadaniem jest mając dany opis hossy H, wypisać elementy hossy X, takiej że:</p>\n<ul>\n<li>H &lt; X</li>\n<li>dla każdej innej od X hossy H', takiej że H&lt;H', zachodzi X&lt;H'</li>\n</ul>\n<p>Możesz założyć, że dla danych testowych taka hossa zawsze istnieje.</p>\n<p>Przykładowo, bezpośrednim następnikiem hossy (1,2,3,4) jest (2,1,3,4), (2,1,3,4) jest (1,3,2,4), (1,3,2,4) jest (3,1,2,4), itd.</p>",
+  "input": "<p>W pierwszej linii wejścia znajduje się jedna liczba całkowita <strong>n</strong> (2&lt;=<strong>n</strong>&lt;=1000000). W następnej linii znajduje się <strong>n</strong> różnych liczb naturalnych, nie większych od 1000000, oddzielonych pojedynczym odstępem. Są to kolejne elementy pewnej hossy H.</p>",
+  "output": "<p>Twój program powinien wypisać ciąg <strong>n</strong> liczb naturalnych oddzielonych pojedynczym odstępem. Są to kolejne elementy hossy będącej bezpośrednim następnikiem hossy H.</p>",
+  "samples": [
+    {
+      "input": "4\n20 10 30 40\n",
+      "output": "10 30 20 40\n"
+    },
+    {
+      "input": "10\n3 2 1 10 9 8 7 6 5 4\n",
+      "output": "1 2 10 3 4 5 6 7 8 9\n"
+    },
+    {
+      "input": "10\n3 2 1 10 4 5 7 6 9 8\n",
+      "output": "1 2 3 10 5 4 7 6 9 8\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Spontaniczny Konkurs Informatyczny, SKI 2010",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

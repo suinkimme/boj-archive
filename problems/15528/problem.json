@@ -1,0 +1,39 @@
+{
+  "id": 15528,
+  "title": "Conveyor Belt",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p><em>Awesome Conveyor Machine</em> (ACM) is the most important equipment of a factory of <em>Industrial Conveyor Product Corporation</em> (ICPC). ACM has a long conveyor belt to deliver their products from some points to other points. You are a programmer hired to make efficient schedule plan for product delivery.</p>\n<p>ACM's conveyor belt goes through <em>N</em> points at equal intervals. The conveyor has plates on each of which at most one product can be put. Initially, there are no plates at any points. The conveyor belt moves by exactly one plate length per unit time; after one second, a plate is at position 1 while there are no plates at the other positions. After further 1 seconds, the plate at position 1 is moved to position 2 and a new plate comes at position 1, and so on. Note that the conveyor has the unlimited number of plates: after <em>N</em> seconds or later, each of the <em>N</em> positions has exactly one plate.</p>\n<p>A delivery task is represented by positions <em>a</em> and <em>b</em>; delivery is accomplished by putting a product on a plate on the belt at <em>a</em>, and retrieving it at <em>b</em> after <em>b</em>−<em>a</em> seconds (<em>a</em> &lt; <em>b</em>). (Of course, it is necessary that an empty plate exists at the position at the putting time.) In addition, putting and retrieving products must be done in the following manner:</p>\n<ul>\n<li>When putting and retrieving a product, a plate must be located just at the position. That is, products must be put and retrieved at integer seconds.</li>\n<li>Putting and retrieving at the same position <em>cannot</em> be done at the same time. On the other hand, putting and retrieving at the different positions can be done at the same time.</li>\n</ul>\n<p>If there are several tasks, the time to finish all the tasks may be reduced by changing schedule when each product is put on the belt. Your job is to write a program minimizing the time to complete all the tasks... wait, wait. When have you started misunderstanding that you can know all the tasks initially? New delivery requests are coming moment by moment, like plates on the conveyor! So you should update your optimal schedule per every new request.</p>\n<p>A request consists of a start point aa, a goal point bb, and the number pp of products to deliver from <em>a</em> to <em>b</em>. Delivery requests will be added <em>Q</em> times. Your (true) job is to write a program such that for each 1 ≤ <em>i</em> ≤ <em>Q</em>, minimizing the entire time to complete delivery tasks in requests 1 to <em>i</em>.</p>",
+  "input": "<p>The input consists of a single test case formatted as follows.</p>\n<pre>\nN Q\na<sub>1</sub> b<sub>1</sub> p<sub>1</sub>\n⋮\na<sub>Q</sub> b<sub>Q</sub> pQ</pre>\n<p>A first line includes two integers <em>N</em> and <em>Q</em> (2 ≤ <em>N</em> ≤ 10<sup>5</sup>, 1 ≤ <em>Q</em> ≤ 10<sup>5</sup>): <em>N</em> is the number of positions the conveyor belt goes through and <em>Q</em> is the number of requests will come. The <em>i</em>-th line of the following <em>Q</em> lines consists of three integers <em>a<sub>i</sub></em>, <em>b<sub>i</sub></em>, and <em>p<sub>i</sub></em> (1 ≤ <em>a<sub>i</sub></em> &lt; <em>b<sub>i</sub></em> ≤ <em>N</em>, 1 ≤ <em>p<sub>i</sub></em> ≤ 10<sup>9</sup>), which mean that the <em>i</em>-th request requires <em>p<sub>i</sub></em> products to be delivered from position <em>a<sub>i</sub></em> to position <em>b<sub>i</sub></em>.</p>",
+  "output": "<p>In the <em>i</em>-th line, print the minimum time to complete all the tasks required by requests 1 to <em>i</em>.</p>",
+  "samples": [
+    {
+      "input": "5 2\n1 4 1\n2 3 1\n",
+      "output": "4\n4\n"
+    },
+    {
+      "input": "5 2\n1 4 1\n2 3 5\n",
+      "output": "4\n8\n"
+    },
+    {
+      "input": "5 2\n1 3 3\n3 5 1\n",
+      "output": "5\n6\n"
+    },
+    {
+      "input": "10 4\n3 5 2\n5 7 5\n8 9 2\n1 7 5\n",
+      "output": "6\n11\n11\n16\n"
+    }
+  ],
+  "hint": "<p>Regarding the first example, the minimum time to complete only the first request is 4 seconds. All the two requests can be completed within 4 seconds too. See the below figure.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:245px; width:400px\"/></p>",
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ACM-ICPC Asia Regional 2017",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "lazyprop",
+    "segtree"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.375
+}

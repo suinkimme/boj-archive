@@ -1,0 +1,34 @@
+{
+  "id": 32243,
+  "title": "동우의 화학교실",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p><code>MatKor Cup</code>에 모듈로 곱셈 역원이 자주 등장하는 이유를 아는가? <code>MatKor</code>는 사실 모든 물리량이$\\bmod M$으로 표현되는 세계에 살고 있기 때문이다.</p>\n<p>화학을 좋아하는 동우는 MatKor에서 화학 평형에 대한 강의를 하기로 했다. 동우는 강의를 하던 중 <strong>반응 지수</strong>가 무엇인지 설명했다. 반응 지수는 화학 평형에서 평형 상수와의 비교를 통해 반응의 진행 방향을 알아내는 데 사용된다.</p>\n<p>$N$개의 기체 반응물 $A_1$, $A_2$, $\\cdots$, $A_N$이 반응하여 $K$개의 기체 생성물 $B_1$, $B_2$, $\\cdots$, $B_K$을 만드는 반응식 $a_1A_1+a_2A_2+\\cdots +a_NA_N\\rightleftharpoons b_1B_1+b_2B_2+\\cdots +b_KB_K$에 대하여 반응 지수 $Q$는 다음과 같이 정의된다.</p>\n<p>\\[Q=\\frac{\\prod_{i=1}^K\\left[ B_i \\right]^{b_i}}{\\prod_{i=1}^N\\left[ A_i \\right]^{a_i}} =\\frac{\\left[ B_1 \\right]^{b_1}\\left[ B_2 \\right]^{b_2}\\cdots\\left[ B_K \\right]^{b_K}}{\\left[ A_1 \\right]^{a_1}\\left[ A_2 \\right]^{a_2}\\cdots\\left[ A_N \\right]^{a_N}}\\]</p>\n<p>여기서 $\\left[ X \\right]$은 물질 $X$의 농도를 의미한다.</p>\n<p>예를 들어 중학교 과정에서 배우는 암모니아 합성 식 $N_2+3H_2\\rightleftharpoons 2NH_3$의 경우 모두 기체일 때 반응 지수 $Q=\\dfrac{\\left[ NH_3 \\right]^{2}}{\\left[ N_2 \\right]\\left[ H_2 \\right]^{3}}$이다.</p>\n<p>이제 동우는 강의를 들은 재우가 잘 이해했는지 다음과 같이 테스트를 진행한다.</p>\n<ul>\n<li>동우는 머릿속에 $N$개의 기체 반응물 $A_1$, $A_2$, $\\cdots$, $A_N$과 $K$개의 기체 생성물 $B_1$, $B_2$, $\\cdots$, $B_K$로 이루어진 반응식을 하나 생각할 것이다. 이 반응식의 모든 계수는 $1$이상의 정수이다.</li>\n<li>수업을 들은 재우는 동우에게 총 $N+K$개의 질문을 한 번에 할 것이다. 재우는 질문마다 반응물 $N$개의 농도와 생성물 $K$개의 농도를 정해 해당 상태에서 반응 지수의 값이 얼마인지 물어본다. 이때 물어보는 모든 농도는 $M$과 서로소인 $1$이상 $M$이하의 정수를 만족해야 한다.</li>\n<li>동우는 질문을 한 번에 듣고 각각의 상태에 대해 반응 지수의 값을 단위를 제외하고 한 번에 대답해 준다. 단, 이때 동우는 <code>MatKor</code>에서 수업했기 때문에 $i$번째 질문에 대한 대답을 $Q_i\\pmod M$으로 해준다.</li>\n<li>재우는 각 반응물과 생성물에 대해 반응식에서의 계수 $a_1$, $a_2$, $\\cdots$, $a_N$과 $b_1$, $b_2$, $\\cdots$, $b_K$를 맞춰야 한다.</li>\n</ul>\n<p>재우는 이 테스트를 듣더니 만약 계수가 $Z$ 이상인 값이 존재한다면 반응식의 계수를 유일하게 결정하지 못할 수 있다고 하였다. 동우는 웃으며 모든 계수는 $Z$ 미만임이 보장된다고 말하였다. 즉, $Z$ 미만의 계수에서는 반응식의 계수가 무엇이든지 반응식을 유일하게 결정할 수 있는 반응식이 존재함이 보장되며, 계수가 $Z$ 이상인 값이 존재하면 유일하게 결정하지 못하는 경우가 생긴다.</p>\n<p>재우를 도와 동우의 테스트를 통과해 보자.</p>\n<p>유리수의 나머지는 다음과 같이 정의된다. 기약 분수 $\\frac{p}{q}(p\\ge 0,q&gt;0,\\gcd(p,q) =1)$를 $M$으로 나눈 나머지는 $q^{-1}$가 $q\\cdot q^{-1}\\equiv 1\\pmod M$을 만족하는 정수, 즉 $q$의 $M$에 대한 모듈로 곱셈 역원일 때, $p\\cdot q^{-1}\\pmod M$로 정의한다. 만약 정수일 경우 $q=q^{-1}=1$이므로 $p\\pmod M$를 의미한다.</p>\n<p>농도가 $M$과 서로소라면, 분모의 $M$에 대한 모듈로 곱셈 역원이 존재하므로 반응 지수에 대한 $Q\\pmod M$을 구할 수 있다.</p>",
+  "input": "<p>컴퓨터는 동우, 유저는 재우로 생각하고 인터랙티브가 진행된다. 인터랙티브는 다음과 같이 컴퓨터와 유저가 $3$번씩 상호작용한다.</p>\n<p>먼저 컴퓨터가 모듈로를 나타내는 정수 $M(2\\le M\\le 10^9)$을 입력으로 준다.</p>\n<p>입력을 받은 후 조건을 만족하는 최소의 정수 $Z$를 출력한다. 만약 $Z$가 잘못되었다면 컴퓨터는 <span class=\"result-text result-wa\" data-color=\"wa\"><strong>틀렸습니다</strong></span>를 띄우고 프로그램을 종료한다.</p>\n<p>다음으로 컴퓨터가 반응물의 개수를 나타내는 정수 $N=200$과 생성물의 개수를 나타내는 정수 $K=200$를 입력으로 준다.</p>\n<p>유저는 $N+K$개의 줄에 걸쳐 각 줄에 반응물과 생성물의 농도를 나타내는 질문을 출력한다. 각 줄은 $N+K$개의 정수를 출력해야 하며, 앞의 $N$개의 정수는 순서대로 $\\left[ A_1 \\right]$, $\\left[ A_2 \\right]$, $\\cdots$, $\\left[ A_N \\right]$을, 다음 $K$개의 정수는 순서대로 $\\left[ B_1 \\right]$, $\\left[ B_2 \\right]$, $\\cdots$, $\\left[ B_K \\right]$을 출력한다. 모든 농도는 $M$과 서로소인 $1$이상 $M$ 이하의 정수여야 한다. 조건을 만족하지 않는다면, 컴퓨터는 <span class=\"result-text result-wa\" data-color=\"wa\"><strong>틀렸습니다</strong></span>를 띄우고 프로그램을 종료한다.</p>\n<p>다음으로 컴퓨터가 한 줄에 $N+K$개의 정수를 준다. $i$번째 정수는 $i$번째 질문에 대한 반응 지수 $Q_i\\pmod M$를 의미한다.</p>\n<p>유저는 반응식의 계수를 의미하는 $N+K$개의 정수를 한 줄에 출력한다. 앞의 $N$개의 정수는 $a_1$, $a_2$, $\\cdots$, $a_N$을, 다음 $K$개의 정수는 $b_1$, $b_2$, $\\cdots$, $b_K$를 의미한다. 모든 계수는 $1$ 이상 $Z$미만이여야 한다. 조건을 만족하지 않거나 잘못된 답을 출력하는 경우, 컴퓨터는 <span class=\"result-text result-wa\" data-color=\"wa\"><strong>틀렸습니다</strong></span>를 띄우고 프로그램을 종료한다.</p>\n<p>유저는 출력 후 다른 출력 없이 프로그램을 종료해야 한다.</p>\n<p>인터랙션 도중 컴퓨터에게 정상적인 출력이 전달되지 않았거나 덜 전달된 경우, <code>flush</code>를 하지 않은 경우, 혹은 정답 출력 후 프로그램이 종료되지 않는 경우 등의 상황에는 <span class=\"result-text result-tle\" data-color=\"tle\"><strong>시간 초과</strong></span>를 받을 수 있다.</p>\n<p>반응식의 모든 계수는 $1$이상 $Z$미만의 정수임이 보장된다.</p>",
+  "output": "",
+  "samples": [
+    {
+      "input": "3\n\n2 2\n\n\n\n\n1 1 1 2\n\n",
+      "output": "\n\n3\n\n1 2 1 2\n2 2 2 2\n1 2 1 1\n2 1 1 2\n\n1 2 1 2\n"
+    },
+    {
+      "input": "21\n\n5 5\n\n\n\n\n\n\n\n\n\n\n19 13 4 16 8 13 4 11 4 1\n",
+      "output": "\n\n7\n\n1 2 4 5 8 10 11 13 16 17\n19 20 20 19 17 16 13 11 10 10\n5 4 2 1 8 20 20 16 13 16\n4 8 19 17 10 11 13 17 17 4\n10 5 16 13 10 8 20 16 4 1\n11 13 16 8 20 16 17 8 2 1\n20 16 17 20 1 1 1 2 4 1\n2 2 2 2 2 2 2 2 2 2\n4 4 4 4 4 5 5 5 5 5\n20 19 17 16 13 11 17 10 8 5\n\n1 3 5 2 4 6 4 2 5 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제5회 고려대학교 MatKor Cup: 2024 Summer/Fall, kidw0124, yijw0930, devluyten, eoaud0108, finimage, sshs29hanul, utilforever",
+  "level": 26,
+  "tags": [
+    "math",
+    "number_theory",
+    "primality_test",
+    "randomization",
+    "modular_multiplicative_inverse",
+    "euler_phi",
+    "discrete_log"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 6.27269983291626
+}

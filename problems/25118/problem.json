@@ -1,0 +1,32 @@
+{
+  "id": 25118,
+  "title": "Comparing Fractions",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<blockquote>\n<p><em>This problem is interactive. Refer to the Interaction section below for a better understanding.</em></p>\n</blockquote>\n<p>Today was the first class of CS999.</p>\n<p>First, you have learned non-negative integer less than or equal to $4 \\times 10^{18}$.<br/>\nYou have also learned the addition, subtraction, and comparison of two integers.</p>\n<p>The homework is to compare two fractions $\\frac{A}{B}$ and $\\frac{C}{D}$. Professor told you that you can solve homework only using classroom materials.</p>\n<p>You are only allowed to use the following operations:</p>\n<ul>\n<li><strong>Addition</strong>: For two integers $a$ and $b$, you can calculate $a+b$. The result should be less than or equal to $4 \\times 10^{18}$.</li>\n<li><strong>Subtraction</strong>: For two integers $a$ and $b$, you can calculate $a-b$. The result should be non-negative.</li>\n<li><strong>Comparison</strong>: For two integers $a$ and $b$, you can know whether two elements are equal or which one is greater.</li>\n</ul>\n<p>By using these operations, you have to compare two fractions.</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "-1\n",
+      "output": "+ 5 3 1\n- 1 2 1\n< 1 5\n! 0\n"
+    },
+    {
+      "input": "1\n-1\n0\n",
+      "output": "< 1 2\n< 4 3\n< 2 2\n! -1\n"
+    }
+  ],
+  "hint": "<h1>Interaction Protocol</h1>\n<p>You cannot get $A$, $B$, $C$, nor $D$ directly in this problem.<br/>\nInstead, you can use some operations to a hidden array of length $10^6$; $X_1, X_2, \\cdots, X_{10^6}$.</p>\n<p>Initially, $X$ satisfies $X_1=A$, $X_2=B$, $X_3=C$, $X_4=D$, and $X_i=0$ for $i$ greater than $4$.</p>\n<p>You can use the following commands to do operations:</p>\n<ul>\n<li>To add two elements of $X$, print a string \"<code>+ i j k</code>\" ($1 \\le i, j, k \\le 10^6$). $X_i$ will be replaced with a value of $X_j+X_k$.<br/>\n\tTo perform this operation, $X_j + X_k$ must be less than or equal to $4 \\times 10^{18}$. If not, you will receive a verdict of \"<code>Wrong Answer</code>\". Nothing will be given to the input.</li>\n<li>To subtract two elements of $X$, print a string \"<code>- i j k</code>\" ($1 \\le i, j, k \\le 10^6$). $X_i$ will be replaced with a value of $X_j-X_k$.<br/>\n\tTo perform this operation, $X_j \\ge X_k$ must be satisfied. If not, you will receive a verdict of \"<code>Wrong Answer</code>\". Nothing will be given to the input.</li>\n<li>To compare two elements of $X$, print a string \"<code>&lt; i j</code>\" ($1 \\le i, j \\le 10^6$). A line containing one integer will be given to the input. \n\t<ul>\n<li>\"<code>-1</code>\" will be given when $X_i&lt;X_j$.</li>\n<li>\"<code>0</code>\" will be given when $X_i=X_j$.</li>\n<li>\"<code>1</code>\" will be given when $X_i&gt;X_j$.</li>\n</ul>\n</li>\n</ul>\n<p>After successfully comparing $\\frac{A}{B}$ and $\\frac{C}{D}$,</p>\n<ul>\n<li>If $\\frac{A}{B} &lt; \\frac{C}{D}$, print \"<code>! -1</code>\".</li>\n<li>If $\\frac{A}{B} = \\frac{C}{D}$, print \"<code>! 0</code>\".</li>\n<li>If $\\frac{A}{B} &gt; \\frac{C}{D}$, print \"<code>! 1</code>\".</li>\n</ul>\n<p>If you ask more than $200\\,001$ commands or make an invalid query, the interactor will terminate immediately and your program will receive the verdict \"<code>Wrong Answer</code>\".</p>\n<h1>Scoring</h1>\n<p>If your comparison is incorrect, your score will be $0$.</p>\n<p>Otherwise, the score of the program will be graded with three factors:</p>\n<ul>\n<li>$i_{max}$, the maximum index of the array $X$ you have used in operations.</li>\n<li>$n_{op}$, the number of operations you have done. Answer command will not be counted.</li>\n<li>$X_{max}$, the maximum number in the array $X$ during operations.</li>\n</ul>",
+  "source": "University, KAIST, KAIST RUN Spring Contest, 2022 KAIST RUN Spring Contest, gs18115, cs71107, ho94949, retro3014, sebinkim, sjimed",
+  "level": 20,
+  "tags": [
+    "math",
+    "implementation",
+    "ad_hoc",
+    "number_theory",
+    "euclidean"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 4.5
+}

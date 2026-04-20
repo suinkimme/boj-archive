@@ -1,0 +1,35 @@
+{
+  "id": 33685,
+  "title": "불의 군주 라그나로스 1",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"display:flex;flex-direction:column;align-items:center;\"><img alt=\"\" src=\"1.png\" style=\"width: 200px; max-width: 100%;\"/> <strong>불의 세례를 받아라!</strong></p>\n<p>하스스톤에 등장하는 <span style=\"color:#c0392b;\"><strong>불의 군주 라그나로스</strong></span>는 직접 공격은 할 수 없지만 내 턴이 끝날 때 무작위 적에게 피해를 $8$ 주는 전설 카드다.</p>\n<p>평소 하스스톤을 즐겨하는 '아시나요'와 '누구냐요'는 오랜만에 만나서 친선전으로 한 판 붙기로 했다. 유틸은 두 사람의 친선전이 재밌어 보여 관전하기 시작했다. 두 사람은 공방전을 치열하게 벌였고 어느덧 게임은 후반부에 접어들게 되었다. 현재 아시나요의 필드에는 불의 군주 라그나로스가 2마리 있고, 누구냐요의 필드에는 하수인이 5마리 있는 상황이다. 이번 턴이 끝날 때 불의 군주 라그나로스 중 $1$마리가 누구냐요의 영웅에게 피해를 입히면 승리할 수 있지만, 2마리 모두 누구냐요의 영웅에게 피해를 입히지 못하면 다음 턴에 아시나요가 무조건 패배하는 상황이다. '턴 종료'를 누르며 \"확률은 이기거나 지거나 1/2이야!\"라고 기도하는 아시나요를 보며 한심하게 느낀 유틸은 승리할 <span style=\"color:#3498db;\"><strong>확률</strong></span>을 정확하게 계산하는 프로그램을 만들어 주기로 했다. 다만 하스스톤에 한정하지 않고 좀 더 일반화해서 만들기로 했다.</p>\n<p>이해를 돕기 위해 몇 가지 용어를 간단히 정의한다.</p>\n<ul>\n<li><strong>영웅</strong>이란 게임 내에서 전투를 벌이는 주체를 의미한다.</li>\n<li><strong>하수인</strong>이란 전투를 벌이는 영웅의 대행자를 부르는 카드를 의미한다.</li>\n<li><strong>필드</strong>란 하수인들이 소환되어 전투를 벌일 수 있는 장소를 의미한다.</li>\n<li><strong>직접 공격</strong>이란 하수인이나 영웅이 전투를 통해 별도의 특수 효과 없이 상대 하수인이나 영웅에게 바로 피해를 주는 기본 공격 행위를 의미한다.</li>\n</ul>\n<p>이제 다음과 같은 상황을 가정하자.</p>\n<ul>\n<li>현재 자신의 필드에는 <span style=\"color:#c0392b;\"><strong>불의 군주 라그나로스</strong></span>가 $N$마리 있으며, 상대방의 필드에는 하수인이 $M$마리 있다.</li>\n<li>상대방의 필드에 있는 하수인의 각 체력은 $H_1, H_2, \\cdots, H_M$이며, 상대방 영웅의 체력은 $Y$이다.</li>\n<li><span style=\"color:#c0392b;\"><strong>불의 군주 라그나로스</strong></span>는 이번 턴이 끝날 때 무작위 적에게 피해를 $X$ 주는 효과를 가지고 있다. 이 효과는 다음과 같은 방법으로 처리한다.\n\t<ul>\n<li><span style=\"color:#c0392b;\"><strong>불의 군주 라그나로스</strong></span> $N$마리의 효과를 한 마리씩 차례차례로 처리한다.</li>\n<li><span style=\"color:#c0392b;\"><strong>불의 군주 라그나로스</strong></span>는 상대방의 하수인들과 영웅 중 하나를 동일한 확률로 선택해서 해당 하수인 혹은 영웅의 체력을 $X$ 줄인다.</li>\n<li>이 과정에서 체력이 $0$ 이하가 되는 하수인 혹은 영웅은 파괴되어, 더 이상 불의 군주 라그나로스의 선택 대상이 되지 않는다.</li>\n<li>상대방 영웅의 체력이 $0$ 이하가 되어 파괴된 경우 그 즉시 게임에서 승리한다.</li>\n</ul>\n</li>\n<li>이번 턴에 <span style=\"color:#c0392b;\"><strong>불의 군주 라그나로스</strong></span>의 효과 이외에 상대방의 하수인 혹은 영웅에게 피해를 주는 방법은 없다.</li>\n<li>이번 턴에 상대방 영웅을 파괴하지 못한 경우 게임에서 패배한다.</li>\n</ul>\n<p>이번 턴이 끝날 때 상대방 영웅의 체력이 $0$ 이하가 되어 게임에서 승리할 <span style=\"color:#3498db;\"><strong>확률</strong></span>은 얼마일까?</p>",
+  "input": "<p>첫째 줄에 자신의 필드에 있는 <span style=\"color:#c0392b;\"><strong>불의 군주 라그나로스</strong></span>의 마릿수 $N$, 상대방의 필드에 있는 하수인의 마릿수 $M$, 내 턴이 끝날 때 불의 군주 라그나로스가 무작위 적에게 주는 피해 $X$와 상대방 영웅의 체력 $Y$가 공백으로 구분되어 주어진다. $(1 \\leq N \\leq 20; 1 \\leq M \\leq 120; 1 \\leq X \\leq 100; 1 \\leq Y \\leq 500)$</p>\n<p>둘째 줄에 상대방의 필드에 있는 각 하수인의 체력 $H_1, H_2, \\cdots, H_M$이 공백으로 구분되어 주어진다. $(1 \\leq H_i \\leq 1000)$</p>\n<p>입력으로 주어지는 수는 모두 정수이다.</p>",
+  "output": "<p>첫째 줄에 게임에서 승리할 <span style=\"color:#3498db;\"><strong>확률</strong></span>을 $998\\,244\\,353$로 나눈 나머지를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "1 1 8 8\n8\n",
+      "output": "499122177\n"
+    },
+    {
+      "input": "3 2 8 6\n9 7\n",
+      "output": "970515344\n"
+    }
+  ],
+  "hint": "<p>유리수를 기약분수로 나타냈을 때 $\\frac{y}{x}$인 경우, 이 수를 소수인 $p$로 나눈 나머지는 $xz \\equiv y \\pmod{p}$을 만족하는 $0$ 이상 $p$ 미만의 정수 $z$이며, $x$가 $p$의 배수가 아닌 경우 이 값은 유일하다.</p>\n<p>이 문제에서 게임에서 승리할 확률은 유리수이며, 분모가 $998\\,244\\,353$의 배수가 아님을 증명할 수 있다. 또한, $998\\,244\\,353$은 소수이다.</p>",
+  "source": "Contest, BOJ User Contest, 월간 향유회, 월간 향유회 2025. 03., cologne, utilforever, heeda0528, jthis, tony9402",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "dp",
+    "hash_set",
+    "math",
+    "modular_multiplicative_inverse",
+    "number_theory",
+    "probability",
+    "set"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 6.076900005340576
+}

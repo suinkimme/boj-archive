@@ -1,0 +1,33 @@
+{
+  "id": 15580,
+  "title": "Clickbait",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>While surfing online, Slavko came across an ad displaying a system of containers and pipes (an example of such system is illustrated in the image below) with the message: “If container <strong>1</strong> starts filling up with water, determine the order in which the containers get filled up.”</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:110px; width:227px\"/></p>\n<p>The system consists of K containers denoted with numbers from 1 to K, and we can describe it using a matrix of characters with N rows and M columns. The containers are <strong>in the shape of a rectangle</strong>​, and the outlines of the containers and pipes are shown with the following characters:</p>\n<ul>\n<li>‘-’ if it’s a horizontal part of the outline,</li>\n<li>‘|’ if it’s a vertical part of the outline, and</li>\n<li>‘+’ if it’s a spot where the horizontal and vertical parts of the outline connect. An exception is where the containers and pipes connect. In that case, the container outline dominates (see sample tests).</li>\n</ul>\n<p>In an arbitrary place within each container, there is a string of digits that represent the label of the container, and all the other fields in the matrix are equal to ‘.’ (dot).</p>\n<p>All containers except the one labeled with 1 have <strong>exactly one</strong> supply pipe that enters the container in its <strong>upper side</strong>​. The container labeled with 1 does not have a supply pipe.</p>\n<p>The containers can have multiple (also possible, zero) discharge pipes that leave the container out of its <strong>lateral side</strong>​. The places where discharge pipes leave a container will be in mutually <strong>distinct rows</strong>​ in the matrix.</p>\n<p>The pipes directly connect two containers, which means that <strong>it is not possible</strong> to split the pipes or connect multiple pipes into one, and no two pipes will intersect. On their way, looking from the source to the destination container, the pipes always descend to the following row or stay in the same row. In other words, they never go back to the previous row, so the water can flow freely from one container to another.</p>\n<p>The water enters a container until it is full. If the water level reaches the level of the discharge pipe, the water will flow through that pipe until the container the pipe leads into is filled up.</p>\n<p>Help Slavko and determine the order in which the containers will fill up.</p>\n<p><strong>Please note​:</strong></p>\n<ul>\n<li>The test data is such that each character ‘+’ is surrounded with <strong>exactly one character</strong> ‘-’ to the left or the right side and <strong>exactly one</strong> character ‘|’ to the upper or lower side, and <strong>all other</strong> adjacent characters in directions up, down, left and right will be equal to ‘.’ (dot).</li>\n<li>The only places where the pipe in the matrix is in a field adjacent to the container outline are the places where the pipe enters or exits the container. In other words, a pipe will never run right next to a container (except where it connects with the container). The entry for the supply pipe is labeled with the character ‘|’ above a container, whereas the exit of the discharge pipe is labeled with the character ‘-’ on the lateral side of a container.</li>\n</ul>",
+  "input": "<p>The first line contains two integers N and M (1 ≤ N, M ≤ 1000), matrix dimensions. The following N lines contain M characters describing the container system.</p>",
+  "output": "<p>You must output K lines. The i<sup>th</sup> line contains the label of the container that fills up i<sup>th</sup>. A solution will always exist and will be unique.</p>",
+  "samples": [
+    {
+      "input": "12 13\n..+--+.......\n+-|..|.......\n|.|.1|--+....\n|.+--+..|....\n|......+----+\n+---+..|..2.|\n....|..+----+\n.+--+........\n.|...........\n+---+........\n|.3.|........\n+---+........\n",
+      "output": "2\n3\n1\n"
+    },
+    {
+      "input": "8 10\n..........\n.......+-+\n...+---|1|\n...|...+-+\n...|......\n..+-+.....\n..|2|.....\n..+-+.....\n",
+      "output": "2\n1\n"
+    }
+  ],
+  "hint": "<p><strong>Clarification of the first test case:</strong></p>\n<p>Container 1 starts filling up with water.</p>\n<p>The water level in container 1 grows, and in one moment reaches the level of the discharge pipe leading to container 2. The water flows through the pipe until container 2 fills up.</p>\n<p>After that, the water level in container 1 keeps growing until it reaches the level of the discharge pipe leading to container 3, which fills up next.</p>\n<p>Finally, the water level in container 1 keeps growing and the container fills up.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2017/2018, Contest #7",
+  "level": 17,
+  "tags": [
+    "implementation",
+    "graphs",
+    "string",
+    "graph_traversal",
+    "parsing",
+    "recursion"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.9333000183105469
+}

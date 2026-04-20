@@ -1,0 +1,22 @@
+{
+  "id": 10032,
+  "title": "Code Breaking",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The cows keep getting in trouble by taking rides on Farmer John's tractor, so he has hidden the keys to the tractor in a fancy new safe in his office. Undeterred, the cows have vowed to try and break into this safe.</p>\n<p>The safe is protected by a rather complicated passcode system. The passcode entry system is arranged as a rooted tree of N (1 &lt;= N &lt;= 20,000) nodes, each of which requires a digit between 0 and 9. The nodes are indexed 0..N-1.</p>\n<p>The only information that the cows have is that certain sequences of length 5 do not occur along particular paths upwards through the tree.</p>\n<p>For instance, suppose the tree is the following (rooted at A):</p>\n<pre>\nA &lt;- B &lt;- C &lt;- D &lt;- E\n               ^\n               |\n               F\n</pre>\n<p>The cows might know that the sequence 01234 does not occur starting at F, and that the sequence 91234 does not occur starting at E. This information rules out 19 possible passcodes: all those of the form</p>\n<pre>\n4 &lt;- 3 &lt;- 2 &lt;- 1 &lt;- *\n               ^\n               |\n               0\n</pre>\n<p>or</p>\n<pre>\n4 &lt;- 3 &lt;- 2 &lt;- 1 &lt;- 9\n               ^\n               |\n               *\n</pre>\n<p>which gives 19 once we account for the fact that</p>\n<pre>\n4 &lt;- 3 &lt;- 2 &lt;- 1 &lt;- 9\n               ^\n               |\n               0\n</pre>\n<p>appears twice.</p>\n<p>Given M (1 &lt;= M &lt;= 50,000) length-5 sequences, together with their starting nodes in the tree, help the cows figure out how many passcodes have been ruled out. You should compute your answer modulo 1234567.</p>",
+  "input": "<ul>\n<li>Line 1: Two space-separated integers, N and M.</li>\n<li>Lines 2..N: Line i+1 contains a single integer p(i), denoting the parent of node i in the tree (0 &lt;= p(i) &lt; i).</li>\n<li>Lines N+1..N+M: Line N+i describes the ith sequence known not to occur in the code. The line will contain v(i) and s(i) separated by a space, where v(i) is the starting node of the sequence, and s(i) is a 5-digit string known not to occur starting at v(i) and proceeding upward in the tree. It is guaranteed that the root is at least 4 steps upward from v(i).</li>\n</ul>",
+  "output": "<ul>\n<li>Line 1: A single integer giving the number of ruled-out configurations, modulo 1234567.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "6 2\n0\n1\n2\n3\n3\n4 01234\n5 91234\n",
+      "output": "19\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2013-2014 Season, USACO US Open 2014 Contest, Gold",
+  "level": 26,
+  "tags": [],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.5999999046325684
+}

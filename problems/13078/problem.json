@@ -1,0 +1,25 @@
+{
+  "id": 13078,
+  "title": "History-Cleanable DFA",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"height:117px; width:250px\"/></p>\n<p>You have possibly heard of DFAs. In theory of computation, a deterministic finite automaton (DFA) is a finite state machine that accepts/rejects finite input strings. The figure on the right illustrates a DFA using a state diagram. In the automaton, there are three states: S<sub>0</sub>, S<sub>1</sub>, and S<sub>2</sub> (denoted graphically by circles). The automaton takes a finite sequence of 0s and 1s as input. For each state, there is a transition arrow leading out to a next state for both 0 and 1. Upon reading a symbol, a DFA jumps from a state to another by following the transition arrow. For example, if the automaton is currently in state S<sub>0</sub> and current input symbol is 1 then it jumps to state S<sub>1</sub>. This is formally written as δ(S<sub>0</sub>, 1) = S<sub>1</sub>. Inductively, we can generalize this notation to have propositions like δ(S<sub>0</sub>, 10) = S<sub>2</sub> and δ(S<sub>1,</sub> 011010) = S<sub>0</sub>. A DFA has a start state (denoted graphically by an arrow coming in from nowhere) where computations begin with, and a set of accept states (denoted graphically by a double circle) which help define when a computation is successful. So, an input string w is accepted by a DFA with starting state q<sub>0</sub> if and only if δ(q<sub>0</sub>, w) is an accepting state of that DFA. The state S<sub>0</sub> in the DFA depicted above is both the start state and an accept state. In fact, this DFA accepts only binary numbers that are multiples of 3 (including the empty string).</p>\n<p>Given A DFA D with states S<sub>0</sub>, S<sub>1</sub>, … , S<sub>n-1</sub>, a string w is called history-cleaner for D if for all i,j ∈ {0, … , n-1}: δ(S<sub>i</sub>, w) = δ(S<sub>j</sub>, w). In other words, no matter which state the starting state is, the string w brings the DFA to a common final state. A DFA D is called history-cleanable if a history-cleaner string exists for D. Given a DFA whose input is a sequence of 0s and 1s, your job is to find out whether it is history-cleanable or not.</p>",
+  "input": "<p>The first line of the input contains the single integer t, the number of test cases (1 ≤ t ≤ 500). Each test case starts with a line containing a single integer n, the number of states in a DFA with states S<sub>0</sub>, S<sub>1</sub>, …, S<sub>n-1</sub>(2 ≤ n ≤ 500). The second line of each test case consists of n space-separated integers a<sub>0</sub>, a<sub>1</sub>, …, a<sub>n-1</sub> and finally, the third line of each test case has n space-separated integers b<sub>0</sub>, b<sub>1</sub>, …, b<sub>n-1</sub> (0 ≤ a<sub>i</sub>, b<sub>i</sub> &lt; n) which means δ(S<sub>i</sub>, 0) = S<sub>ai</sub> and δ(S<sub>i</sub>, 1) = S<sub>bi</sub> (for 0 ≤ i &lt; n).</p>",
+  "output": "<p>For each test case, print one line containing the answer for the given DFA. If it is history-cleanable, print “YES”, otherwise print “NO” (omit the quotes).</p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "2\n4\n1 2 3 0\n3 0 1 0\n4\n1 2 3 0\n2 2 1 2\n",
+      "output": "NO\nYES\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia West Continent, Iran, Iran Internet Programming Contest, IIPC 2015",
+  "level": 15,
+  "tags": [
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

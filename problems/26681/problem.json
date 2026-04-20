@@ -1,0 +1,22 @@
+{
+  "id": 26681,
+  "title": "Ogromne drzewo",
+  "time_limit": "9 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Bajtazar kupił swojej dziewczynie Algolinie na święta ogromne drzewo. Nietypowy prezent, ale Bajtazar jest algorytmikiem i Algolina zdążyła już przywyknąć do takich niespodzianek.</p>\n<p>Jak można się domyślić, sprezentowane drzewo nie jest rośliną, ale spójnym grafem bez cykli. Jest ono bardzo duże, ale można je opisać w zorganizowany sposób. Jego wierzchołki ułożone są w n warstw. Pierwsza warstwa zawiera jedynie jeden wierzchołek – korzeń drzewa. Każdy wierzchołek ma dzieci tylko w następnej warstwie, wyjątkiem są wierzchołki w ostatniej warstwie, które są liśćmi. Dla każdego i z przedziału [1, n − 1] każdy wierzchołek z i-tej warstwy ma a<sub>i</sub> dzieci.</p>\n<p>Algolina, chcąc pokazać Bajtazarowi, jak bardzo cieszy się z jego prezentu, postanowiła zagrać z nim w grę. Wybrała sobie pewien wierzchołek A w drzewie, a Bajtazar wybrał wierzchołek B (być może ten sam co Algolina). Teraz oboje na zmianę, zaczynając od Algoliny, będą przemalowywać wierzchołki drzewa – Algolina na czerwono, a Bajtazar na niebiesko. Na początku gry wszystkie wierzchołki są białe. Każdy wierzchołek zostanie pomalowany dokładnie raz – przez Algolinę lub przez Bajtazara. W każdej chwili gracz, który wykonuje ruch, może pomalować swoim kolorem dowolny biały wierzchołek, wliczając w to wierzchołki A oraz B.</p>\n<p>Gdy wszystkie wierzchołki zostaną już przemalowane para podliczy swoje wyniki. Wynikiem Algoliny (oznaczmy go S<sub>A</sub>) będzie suma odległości wszystkich czerwonych wierzchołków do wierzchołka A, zaś wynikiem Bajtazara (oznaczmy go S<sub>B</sub>) suma odległości wszystkich niebieskich wierzchołków od wierzchołka B. Przez odległość między dwoma wierzchołkami rozumiemy liczbę krawędzi na najkrótszej ścieżce między nimi. Celem Algoliny jest uzyskanie maksymalnej możliwej przewagi nad Bajtazarem, tzn. zmaksymalizowanie wartości S<sub>A</sub> − S<sub>B</sub>, zaś celem Bajtazara jest jej zminimalizowanie.</p>\n<p>Bajtazar szybko zauważył, że jest to skończona gra o pełnej informacji i przy założeniu, że oboje będą grać optymalnie, można obliczyć ile finalnie będzie wynosiła ta różnica. Chciałby abyś mu pomógł i obliczył jaka ona będzie. Jako, że może być bardzo duża, to wystarczy, że podasz jej resztę z dzielenia przez 10<sup>9</sup> + 7.</p>\n<p>Dodatkowo, jako że niemiło byłoby zapomnieć o prezencie po jednej rozgrywce, to musisz obliczyć finalną różnicę między wynikami dla wielu możliwych wariantów wyboru wierzchołków A i B.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajdują się dwie liczby całkowite n i q (2 ≤ n ≤ 300 000, 1 ≤ q ≤ 300 000) oznaczające odpowiednio liczbę warstw w drzewie oraz liczbę wariantów wyboru wierzchołków A oraz B.</p>\n<p>W drugim wierszu znajduje się ciąg n − 1 liczb całkowitych a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n−1</sub> (2 ≤ a<sub>i</sub> ≤ 300 000) opisanych w treści zadania.</p>\n<p>W kolejnych q wierszach znajdują się opisy wierzchołków A oraz B wybieranych w kolejnych wariantach gry. Można udowodnić, że finalny wynik zależy jedynie od tego w której warstwie leży wierzchołek A, w której warstwie leży wierzchołek B oraz w której warstwie leży najniższy wspólny przodek wierzchołków A i B. W związku z tym w opisie podane są jedynie numery tych warstw, oznaczone kolejno W<sub>A</sub>, W<sub>B</sub> oraz W<sub>LCA(A,B)</sub> (1 ≤ W<sub>LCA(A,B)</sub> ≤ W<sub>A</sub>, W<sub>B</sub> ≤ n).</p>",
+  "output": "<p>Na wyjściu powinno znaleźć się q wierszy, gdzie i-ty z nich powinien zawierać finalną różnicę wyników w i-tym wariancie gry, podaną modulo 10<sup>9</sup> + 7.</p>",
+  "samples": [
+    {
+      "input": "3 3\n3 2\n3 2 1\n1 1 1\n2 3 2\n",
+      "output": "4\n1\n1000000003\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: Drzewo z testu przykładowego składa się z trzech warstw i zawiera jeden wierzchołek w pierwszej warstwie, trzy w drugiej oraz sześć w trzeciej.</p>\n<p>W drugim wariancie gry Algolina i Bajtazar oboje wybrali korzeń. W optymalnej rozgrywce powinni wybierać wierzchołki w kolejności nierosnących numerów warstw, co zakończy się wynikiem (2 + 2 + 2 + 1 + 1) − (2 + 2 + 2 + 1 + 0) = 1.</p>\n<p>Trzeci wariant rozgrywki zakończy się wynikiem −4, zwróć jednak uwagę, że w takim wypadku należy wypisać −4 mod (10<sup>9</sup> + 7) = 10<sup>9</sup> + 3.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2020",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

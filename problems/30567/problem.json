@@ -1,0 +1,36 @@
+{
+  "id": 30567,
+  "title": "Journey of Recovery",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are making an international trip with several stops to blow off steam and celebrate your progression onto the NWERC. Since your flights are often booked with low-cost airlines, you always run the risk of your flights being cancelled last minute leaving you stuck in the airport. Normally this is no problem---take the next flight---but you have to arrive at the NWERC on time.</p>\n<p>If any one of your flights is cancelled at the same moment you are about to depart, and all others operate as planned, you will book a new itinerary from there to your final destination. Assuming you always plot the fastest route, by how much will you be delayed in the worst case?</p>",
+  "input": "<ul>\n<li>One line containing the number of flight connections overall, $n$ ($1 \\le n \\le 10^6$).</li>\n<li>$n$ further lines, the $i$th of which contains four space-separated fields:\n\t<ul>\n<li>The code of the departure airport, $s_i$ ($1 \\le |s| \\le 20$)</li>\n<li>The time of departure in days, minutes, and hours, in the format <code><strong>d</strong>d<strong>hh</strong>:<strong>mm</strong></code> ($1 \\le d \\le 365$, $0 \\le hh \\le 23$, $0 \\le mm \\le 59$).</li>\n<li>The code of the arrival airport, $t_i$ ($1 \\le |s| \\le 20$)</li>\n<li>The time of arrival in days, minutes, and hours, in the format <code><strong>d</strong>d<strong>hh</strong>:<strong>mm</strong></code> ($1 \\le d \\le 365$, $0 \\le hh \\le 23$, $0 \\le mm \\le 59$).</li>\n</ul>\n</li>\n<li>One line containing the number of flight connections in your itinerary, $m$ ($1 \\le m \\le n$).</li>\n<li>One line containing the $m$ indices $f_{1}\\ldots f_{m}$ of flight connections, in the order you plan to take them.</li>\n</ul>\n<p>Flights always go between different airports and always strictly forward in time. For every consecutive pair $u, v$ in your itinerary, the arrival time of flight $u$ is guaranteed to be less than or equal to the departure time of flight $v$.</p>\n<p>Transfers are instantaneous---that is to say, arriving at an airport and departing from it in the same minute is possible. Likewise, if one planned flight is cancelled, you may board another departing at exactly the same time.</p>",
+  "output": "<p>Output the maximum amount by which you could be delayed if any one of the given flights is cancelled at its moment of boarding. If you would not be delayed at all in any case (or can even arrive early) simply output $0$.</p>\n<p>If you cannot always make it to the destination at all, output <code>stranded</code> instead.</p>",
+  "samples": [
+    {
+      "input": "8\negnx 0d00:10 delft 0d01:00\ndelft 0d01:00 zad 0d09:00\nzad 0d09:01 prg 0d15:30\nprg 0d20:00 delft 1d02:15\nprg 0d22:00 delft 1d04:15\nzad 2d00:00 delft 3d00:00\negnx 2d00:00 delft 2d02:00\negnx 2d00:00 delft 2d02:00\n4\n1 2 3 4\n",
+      "output": "2745\n"
+    },
+    {
+      "input": "3\nork 101d00:00 noc 101d00:01\nork 100d23:59 noc 101d00:02\ndub 100d00:00 ork 101d00:00\n2\n3 1\n",
+      "output": "stranded\n"
+    },
+    {
+      "input": "2\nlax 0d00:30 hnl 0d06:20\nlax 0d00:30 hnl 0d06:20\n1\n2\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, The UK & Ireland Programming Contest, UKIEPC 2023",
+  "level": 17,
+  "tags": [
+    "dijkstra",
+    "graphs",
+    "parsing",
+    "shortest_path",
+    "string"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2.6666998863220215
+}

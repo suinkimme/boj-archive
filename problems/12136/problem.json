@@ -1,0 +1,27 @@
+{
+  "id": 12136,
+  "title": "Log Set (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The <em>power set</em> of a set S is the set of all subsets of S (including the empty set and S itself). It's easy to go from a set to a power set, but in this problem, we'll go in the other direction!<br/>\n<br/>\nWe've started with a set of (not necessarily unique) integers S, found its power set, and then replaced every element in the power set with the sum of elements of that element, forming a new set S'. For example, if S = {-1, 1}, then the power set of S is {{}, {-1}, {1}, {-1, 1}}, and so S' = {0, -1, 1, 0}. S' is allowed to contain duplicates, so if S has N elements, then S' always has exactly 2<sup>N</sup> elements.<br/>\n<br/>\nGiven a description of the elements in S' and their frequencies, can you determine our original S? It is guaranteed that S exists. If there are multiple possible sets S that could have produced S', we guarantee that our original set S was the <em>earliest</em> one of those possibilities. To determine whether a set S<sub>1</sub> is earlier than a different set S<sub>2</sub> of the same length, sort each set into nondecreasing order and then examine the leftmost position at which the sets differ. S<sub>1</sub> is earlier iff the element at that position in S<sub>1</sub> is smaller than the element at that position in S<sub>2</sub>.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow. Each consists of one line with an integer <strong>P</strong>, followed by two more lines, each of which has <strong>P</strong> space-separated integers. The first of those lines will have all of the different elements E<sub>1</sub>, E<sub>2</sub>, ..., E<sub><strong>P</strong></sub> that appear in S', sorted in ascending order. The second of those lines will have the number of times F<sub>1</sub>, F<sub>2</sub>, ..., F<sub><strong>P</strong></sub> that each of those values appears in S'. That is, for any i, the element E<sub>i</sub> appears F<sub>i</sub> times in S'.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>1 ≤ <strong>P</strong> ≤ 10000.</li>\n<li><strong>F<sub>i</sub></strong> ≥ 1.</li>\n<li>S will contain between 1 and 60 elements.</li>\n<li>-10<sup>10</sup> ≤ each E<sub>i</sub> ≤ 10<sup>10</sup>.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #x: \", where x is the test case number (starting from 1), followed by the elements of our original set S, separated by spaces, in nondecreasing order. (You will be listing the elements of S directly, and not providing two lists of elements and frequencies as we do for S'.)</p>",
+  "samples": [
+    {
+      "input": "5\n8\n0 1 2 3 4 5 6 7\n1 1 1 1 1 1 1 1\n4\n0 1 2 3\n1 3 3 1\n4\n0 1 3 4\n4 4 4 4\n3\n-1 0 1\n1 2 1\n5\n-2 -1 0 1 2\n1 2 2 2 1\n",
+      "output": "Case #1: 1 2 4\nCase #2: 1 1 1\nCase #3: 0 0 1 3\nCase #4: -1 1\nCase #5: -2 1 1\n"
+    }
+  ],
+  "hint": "<p>In Case #1, you can run to the left and catch all three quail at the same time, 12 meters to the left of the starting position, which takes 3 seconds.<br/>\n<br/>\nIn Case #2, one optimal strategy is to run to the left until the second quail is caught at -2 m, which takes one second, and then run to the right in pursuit of the first quail, which you will catch at 6 m, taking four more seconds.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2015, Round 3",
+  "level": 19,
+  "tags": [
+    "ad_hoc",
+    "dp",
+    "knapsack",
+    "math"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.9230999946594238
+}

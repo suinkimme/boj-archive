@@ -1,0 +1,35 @@
+{
+  "id": 34139,
+  "title": "의식의 광장",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>도시가 완성된 뒤, 사람들은 그 빛을 기념하기 위한 의식을 열었다. 마을의 광장에는 작은 빛의 점들이 놓였고, 각각은 고유한 빛을 머금은 채 조용히 빛났다.</p>\r\n\r\n<p>이제, 의식의 다음 단계가 시작된다. 각 빛은 정해진 방향으로 흘러가며, 새로운 자리를 비추기 시작한다. 빛은 그 이동 경로를 따라 퍼지며, 그 길이와 흐름은 서로 겹치지 않도록 조율되어야 한다.</p>\r\n\r\n<p>그들이 정리한 빛의 방향과 흐름을 되짚고, 빛이 퍼져나가는 장면을 다시 완성해 보아라.</p>\r\n\r\n<hr />\r\n<p>광장의 바닥은 격자로 이루어져 있으며, 위아래로는 총 $H$행이며 좌우로는 충분히 넓다. 위에서부터 $r$번째 행, 왼쪽에서부터 $c$번째 열의 칸을 $(r,c)$로 표기한다.</p>\r\n\r\n<p>사람들은 이곳에 $N$개의 빛을 배치했다. 의식의 흐름에 따라, 각 빛은 오른쪽 방향(열 번호가 증가하는 방향)으로 일정 거리만큼 이동해야 한다.</p>\r\n\r\n<p>빛의 움직임을 구현하는 것은 어려운 일이기 때문에, 몇 가지 제약 조건이 있다.</p>\r\n\r\n<ul>\r\n\t<li>각 빛은 $1\\times 1$ 크기의 정사각형 판의 중심에 고정되어 있다.</li>\r\n\t<li>$N$개의 빛이 놓인 판은 각각 $1$ 이상 $N$ 이하의 서로 다른 정수 거리만큼 이동해야 한다.</li>\r\n\t<li>$N$개의 판은 동시에 이동을 시작하고, 동시에 도착하며, 이동 중에는 일정한 속도를 유지해야 한다.</li>\r\n\t<li>이동 중 두 판이 겹쳐서는 안 된다. 단, 경계가 닿는 것은 괜찮다.</li>\r\n\t<li>이동이 끝난 후, 모든 빛은 서로 다른 열에 위치해야 한다.</li>\r\n</ul>\r\n\r\n<p>예를 들어, $H=2$, $N=4$이고, 빛의 시작 위치가 각각 $(1,1) ,(1,3) ,(2,2) ,(2,3)$인 경우를 생각해 보자. 아래 그림에서 각 빛 판의 위치는 서로 다른 색의 정사각형으로 표시되어 있다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 374px; height: 100px;\" /></p>\r\n\r\n<p>이때 다음과 같은 방식으로 이동 거리를 배정하면 모든 조건을 만족하게 된다.</p>\r\n\r\n\r\n<table class=\"table table-bordered\" style=\"border-collapse: collapse; text-align: center;\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th style=\"text-align: center;\">번호</th>\r\n\t\t\t<th style=\"text-align: center;\">시작 위치</th>\r\n\t\t\t<th style=\"text-align: center;\">이동 거리</th>\r\n\t\t\t<th style=\"text-align: center;\">최종 위치</th>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>$1$</td>\r\n\t\t\t<td>$(1, 1)$</td>\r\n\t\t\t<td>$2$</td>\r\n\t\t\t<td>$(1, 3)$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>$2$</td>\r\n\t\t\t<td>$(1, 3)$</td>\r\n\t\t\t<td>$1$</td>\r\n\t\t\t<td>$(1, 4)$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>$3$</td>\r\n\t\t\t<td>$(2, 2)$</td>\r\n\t\t\t<td>$3$</td>\r\n\t\t\t<td>$(2, 5)$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>$4$</td>\r\n\t\t\t<td>$(2, 3)$</td>\r\n\t\t\t<td>$4$</td>\r\n\t\t\t<td>$(2, 7)$</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n</center>\r\n\r\n<p>아래는 빛의 이동 과정을 시간 순서대로 나타낸 그림이다. 각 그림은 이동이 시작된 시점, 이동 중간의 시점, 이동이 끝난 시점의 빛의 위치를 나타낸다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 386px; height: 350px;\" /></p>\r\n\r\n<p>빛의 흐름이 겹치지 않도록 이동 거리를 배정할 수 있는지 판단하고, 가능하다면 그 방법을 구하라.</p>\r\n",
+  "input": "<p>첫 줄에 두 정수 $H$와 $N$이 공백으로 구분되어 주어진다.</p>\r\n\r\n<p>이후 $N$개의 줄에 걸쳐, 각 빛의 시작 위치를 나타내는 두 정수 $r_i$, $c_i$가 공백으로 구분되어 주어진다. 이는 $i$번째 빛의 시작 위치가 $(r_i,c_i)$라는 뜻이다.</p>\r\n",
+  "output": "<p>만약 조건을 만족하도록 빛의 이동 거리를 배정할 수 있다면, 첫째 줄에 <code>YES</code>를 출력한다.</p>\r\n\r\n<p>둘째 줄에는 $N$개의 정수 $B_1,B_2,\\cdots ,B_N$을 공백으로 구분해 출력한다. 이는 $i$번째 빛이 오른쪽으로 $B_i$만큼 움직여야 한다는 의미이다. 가능한 방법이 여러 가지라면 그중 아무것이나 출력해도 좋다.</p>\r\n\r\n<p>만약 조건을 만족하도록 빛의 이동 거리를 배정할 수 없다면, 첫째 줄에 <code>NO</code>를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2 4\n1 1\n1 3\n2 2\n2 3\n",
+      "output": "YES\n2 1 3 4\n"
+    },
+    {
+      "input": "10 3\n7 1000000000\n9 1000000000\n3 1000000000\n",
+      "output": "YES\n2 1 3\n"
+    },
+    {
+      "input": "1 5\n1 1\n1 3\n1 5\n1 7\n1 9\n",
+      "output": "YES\n5 4 3 2 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, BCF, BCF 2025, 79brue, aeren, leinad2, mjhmjh1104, qwerasdfzxcl, silverwolf",
+  "level": 9,
+  "tags": [
+    "greedy",
+    "sorting",
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 190,
+  "submission_count": null,
+  "average_tries": 1.8789000511169434
+}

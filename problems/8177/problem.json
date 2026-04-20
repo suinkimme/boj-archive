@@ -1,0 +1,27 @@
+{
+  "id": 8177,
+  "title": "Ice Skates",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Byteasar runs a skate club. Its members meet on a regular basis and train together, and they always use the club's ice-skates. The skate sizes are (by convention) numbered from 1 to n. Naturally, each club member has some foot size, but that is not all to it! Skaters have skate size tolerance factor d: a skater with foot size r can wear skates with sizes from r up to r+d. It should be noted, though, that no skater ever wears two skates of different size simultaneously.</p>\n<p>To supply the club, Byteasar bought k pairs of ice-skates of each size, i.e. from 1 to n. As time passes, some people join the club, just as some established members leave it. Byteasar worries if he will have enough skates of appropriate size for every member at each training.</p>\n<p>We assume that initially the club has no members at all. Byteasar will give you a sequence of m events of the following form: x (new) members with foot size r have joined/left the club. Right after each such event Byteasar wants to know whether he has enough skates of appropriate size for every club member. He asks you to write a programme that will check it for him.</p>",
+  "input": "<p>The first line of the standard input contains four integers n, m, k  and d (1 ≤ n ≤ 200,000, 1 ≤ m ≤ 500,000, 1 ≤ k ≤ 10<sup>9</sup>, 0 ≤ d &lt; n), separated by single spaces, that denote, respectively: maximum skate size, number of events, number of skate pairs of each size Byteasar initially bought, and the skate size tolerance factor. The following m lines contain the sequence of m events, one per line. The (i+1)-th line (for 1 ≤ i ≤ m) holds two integers: r<sub>i</sub> and x<sub>i</sub> (1 ≤ r<sub>i</sub> ≤ n-d, -10<sup>9</sup> ≤ x<sub>i</sub> ≤ 10<sup>9</sup>), separated by a single space. If x<sub>i</sub> ≥ 0, it means that x<sub>i</sub> new members with foot size r<sub>i</sub> each have just joined the club. And if x<sub>i</sub> &lt; 0, it means that x<sub>i</sub> members with foot size r<sub>i</sub> each have just left the club. You may assume the sequence is sensible, i.e. someone who never joined the club cannot leave it.</p>",
+  "output": "<p>Your programme should print out  lines to the standard output. The i-th line (for 1 ≤ i ≤ m) should either contain the word TAK (Polish for yes), or the word NIE (Polish for no), depending on whether Byteasar has the skates of appropriate size for every club member right after the i-th event.</p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "4 4 2 1\n1 3\n2 3\n3 3\n2 -1\n",
+      "output": "TAK\nTAK\nNIE\nTAK\n"
+    }
+  ],
+  "hint": "<p>After all events from the input sequence took place, there are three club members who can wear skates of size 1 or 2, two members who can wear sizes 2 or 3, and three members who can wear sizes 3 or 4. With such list of members two pairs of ice-skates of sizes 1, 2, 3, and 4 each suffice:</p>\n<ul>\n<li>two members get skates of size 1;</li>\n<li>the skates of size 2 are given to the member who can wear size 1 or 2, and another one who can wear size 2 or 3;</li>\n<li>the skates of size 3 are given to the member who can wear size 2 or 3, and another one who can wear size 3 or 4;</li>\n<li>the remaining two members receive skates of size 4.</li>\n</ul>",
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2008/2009, Stage 2, cheetose, chpark1111, jh05013",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "maximum_subarray",
+    "hall"
+  ],
+  "accepted_user_count": 165,
+  "submission_count": null,
+  "average_tries": 1.6970000267028809
+}

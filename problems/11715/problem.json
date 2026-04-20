@@ -1,0 +1,41 @@
+{
+  "id": 11715,
+  "title": "New Game AI",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Aoba is a beginner programmer who works for a game company. She was appointed to develop a battle strategy for the enemy AI (Artificial Intelligence) in a new game. In this game, each character has two parameters, hit point (hp) and defence point (dp). No two characters have the same hp and dp at the same time. The player forms a party by selecting one or more characters to battle with the enemy. Aoba decided to develop a strategy in which the AI attacks the weakest character in the party: that is, the AI attacks the character with the minimum hit point in the party (or, if there are several such characters, the character with the minimum defense point among them). She wrote a function selectTarget(v) that takes an array of characters representing a party and returns a character that her AI will attack.</p>\n<p>However, the project manager Ms. Yagami was not satisfied with the behavior of her AI. Ms. Yagami said this AI was not interesting.</p>\n<p>Aoba struggled a lot, and eventually she found that it is interesting if she substitutes one of the constant zeros in her program with a constant C. The rewritten program is as follows. Note that Character is a type representing a character and has fields hp and dp which represent the hit point and the defense point of the character respectively.</p>\n<pre class=\"brush:c++; toolbar:false;\">\nint C = &lt;constant integer&gt;;\n\nCharacter selectTarget(Character v[]) {\n    int n = length(v);\n    int r = 0;\n    for (int i = 1; i &lt; n; i++) {\n        if (abs(v[r].hp - v[i].hp) &gt; C) {\n            if (v[r].hp &gt; v[i].hp) r = i;\n        } else {\n            if (v[r].dp &gt; v[i].dp) r = i;\n        }\n    }\n    return v[r];\n}</pre>\n<p>By the way, this function may return different characters according to the order of the characters in v, even if v contains the same set of characters. Ms. Yagami wants to know how many characters in a party may become the target of the new AI. Aoba’s next task is to write a program that takes a given party v and a constant C, and then counts the number of characters that may become the return value of selectTarget(v) if v is re-ordered.</p>",
+  "input": "<p>The input consists of a single test case. The first line contains two integers N (1 ≤ N ≤ 50,000) and C (0 ≤ C ≤ 10<sup>9</sup>). The first integer N represents the size of v. The second integer C represents the constant C in Aoba’s program. The i-th line of the following N lines contains two integers hp<sub>i</sub> and dp<sub>i</sub> (0 ≤ hp<sub>i</sub>, dp<sub>i</sub> ≤ 10<sup>9</sup>). hp<sub>i</sub> represents the hit point of the i-th character in v, and dp<sub>i</sub> represents the defense point of the i-th character in v. You can assume that hp<sub>i</sub> ≠ hp<sub>j</sub> or dp<sub>i</sub> ≠ dp<sub>j</sub> if i ≠ j for any 1 ≤ i, j ≤ N.</p>",
+  "output": "<p>Display the number of characters that may become the return value of selectT arget(v), if v is shuffled in an arbitrary order.</p>",
+  "samples": [
+    {
+      "input": "5 3\n1 5\n3 4\n5 3\n7 2\n9 1\n",
+      "output": "5\n"
+    },
+    {
+      "input": "3 2\n1 2\n3 1\n5 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 1\n2 0\n0 4\n1 1\n5 9\n",
+      "output": "3\n"
+    },
+    {
+      "input": "5 9\n4 10\n12 4\n2 14\n9 19\n7 15\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Spring Contest, JAG Spring Contest 2015",
+  "level": 28,
+  "tags": [
+    "ad_hoc",
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "implementation",
+    "segtree"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.4000000953674316
+}

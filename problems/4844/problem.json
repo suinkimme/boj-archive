@@ -1,0 +1,27 @@
+{
+  "id": 4844,
+  "title": "Vacation Rentals",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The Fifth Season Resort consists of a number of condominiums which are frequently occupied by their owners. At other times, however, they are available as vacation rentals. Since the resort has no more than 26 condominiums, they are identified by upper case letters.</p>\n<p>One day the resort manager's telephone rings. She receives a reservation request for a vacation rental with an arrival date of December 2 and a departure date of December 9. She looks at the table of reservations, but doesn't find a condominium that would be available for the entire period. Most of the existing reservations were made by the owners of the respective condominiums (who want to stay in their own units), so it is not desirable to move an existing reservation from one unit to another. As she continues to scrutinize the table of reservations, however, she has an idea and says: \"I can put you up in unit B for the first three nights, and transfer you to unit F for the rest of your stay. Will that work?\" The person agrees and the reservation is made. Notice that reservations are done by \"nights\", so that a one night reservation implies that the guest departs one day after the arrival.</p>\n<p>The goal of this problem is to satisfy such reservation requests (without changing existing reservations), with a minimum number of transfers (from one unit to another) during the requested period.</p>",
+  "input": "<p>The input consists of a number of cases. The first line of each case contains two positive integers M and N. M is the number of consecutive days for which the resort's manager has a reservation table, and N is the number of units (condominiums) in the resort. The units are labeled by upper case letters starting at 'A'. There are at most 100 days and at least 3 rooms in the reservation table. The days are numbered 1, 2, ..., M for simplicity.</p>\n<p>The reservation table is given in the next M lines. Each line (row) of the table refers to a particular day (in the order 1, 2, 3, etc.), and each column of the table to a particular unit of the resort (in the order 'A', 'B', 'C', etc.). An entry of 'X' means that the corresponding unit is reserved for that day, while an 'O' means that the unit is available.</p>\n<p>The reservation table is followed by one line of input, the reservation request, consisting of two integers: the arrival date and the departure date. The arrival date is in the range 1..M. The departure date is greater than the arrival date and less than or equal to M+1.</p>\n<p>The end of input is indicated by M = N = 0.</p>",
+  "output": "<p>For each test case, first print the case number followed by a colon and a blank line. If the reservation request can be met, the output will show a reservation schedule with a minimum number of transfers (from one unit to another) during the stay at the resort. Each line of the schedule corresponds to a consecutive stay in the same unit, and should be printed in the following way:</p>\n<p>&lt;unit&gt;: &lt;start date&gt;−&lt;end date&gt;</p>\n<p>where &lt;unit&gt; is the unit, &lt;start date&gt; is the date on which the guests moves into the unit, and &lt;end date&gt; is the date on which the guests moves out of the unit. The lines in the schedule should be ordered in ascending order by the start date.</p>\n<p>Tie breaking rule. There may be several schedules with a minimum number of transfers. In these cases, choose the schedule which uses the lowest \"unit label\" in the first day (so unit A is given preference to unit B). If there is still a tie, choose the schedule with the lowest unit number in the second day, and so on.</p>\n<p>If the reservation request cannot be met, print the line:</p>\n<p>Not available</p>\n<p>instead of the schedule.</p>\n<p>Separate the output of consecutive cases by a blank line.</p>",
+  "samples": [
+    {
+      "input": "10 7\nXXXXXXX\nXOXXXXO\nXOXXXXO\nXOXXXOX\nOXXOXOX\nXOXOXOX\nOXXOXOX\nOXXXXOX\nXXXXXXX\nXXXXXXX\n2 9\n0 0\n",
+      "output": "Case 1:\n\nB: 2-5\nF: 5-9\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2007 Rocky Mountain Regional Contest",
+  "level": 15,
+  "tags": [
+    "0_1_bfs",
+    "dijkstra",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 5.3333001136779785
+}

@@ -1,0 +1,25 @@
+{
+  "id": 23992,
+  "title": "Math Encoder",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Professor Math is working on a secret project and is facing a challenge where a list of numbers need to be encoded into a single number in the most efficient manner. After much research, Professor Math finds a 3 step process that can best encode the numbers:</p>\n<ol>\n<li>The first step is to find all possible non-empty subsets of the list of numbers and then, for each subset, find the difference between the largest and smallest numbers (that is, the largest minus the smallest) in that subset. Note that if there is only one number in a subset, it is both the largest and the smallest number in that subset. The complete set itself is also considered a subset.</li>\n<li>Then add up all the differences to get the final encoded number.</li>\n<li>As the number may be large, output the number modulo 10<sup>9</sup> + 7 (1000000007).</li>\n</ol>\n<p>The professor has shared an example and its explanation below. Given a list of numbers, can you help the professor build an efficient function to compute the final encoded number?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. This is followed by T test cases where each test case is defined by 2 lines:</p>\n<ol>\n<li>The first line gives a positive number <b>N</b>: the number of numbers in the list and</li>\n<li>The second line contains a list of <b>N</b> positive integers <b>K<sub>i</sub></b>, sorted in non-decreasing order.</li>\n</ol>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the final encoded number.</p>\n<p>Since the output can be a really big number, we only ask you to output the remainder of dividing the result by the prime 10<sup>9</sup> + 7 (1000000007).</p>",
+  "samples": [
+    {
+      "input": "1\n4\n3 6 7 9\n",
+      "output": "Case #1: 44\n"
+    }
+  ],
+  "hint": "<ol>\n<li>Find all subsets and get the difference between largest &amp; smallest numbers:\n\t<ul>\n<li>[3], largest-smallest = 3 - 3 = 0.</li>\n<li>[6], largest-smallest = 6 - 6 = 0.</li>\n<li>[7], largest-smallest = 7 - 7 = 0.</li>\n<li>[9], largest-smallest = 9 - 9 = 0.</li>\n<li>[3, 6], largest-smallest = 6 - 3 = 3.</li>\n<li>[3, 7], largest-smallest = 7 - 3 = 4.</li>\n<li>[3, 9], largest-smallest = 9 - 3 = 6.</li>\n<li>[6, 7], largest-smallest = 7 - 6 = 1.</li>\n<li>[6, 9], largest-smallest = 9 - 6 = 3.</li>\n<li>[7, 9], largest-smallest = 9 - 7 = 2.</li>\n<li>[3, 6, 7], largest-smallest = 7 - 3 = 4.</li>\n<li>[3, 6, 9], largest-smallest = 9 - 3 = 6.</li>\n<li>[3, 7, 9], largest-smallest = 9 - 3 = 6.</li>\n<li>[6, 7, 9], largest-smallest = 9 - 6 = 3.</li>\n<li>[3, 6, 7, 9], largest-smallest = 9 - 3 = 6.</li>\n</ul>\n</li>\n<li>Find the sum of the differences calculated in the previous step: 3+4+6+1+3+2+4+6+6+3+6 = 44.</li>\n<li>Find the answer modulo 10<sup>9</sup> + 7 (1000000007): 44 % 1000000007 = 44</li>\n</ol>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2017, Round B",
+  "level": 11,
+  "tags": [
+    "math",
+    "combinatorics"
+  ],
+  "accepted_user_count": 155,
+  "submission_count": null,
+  "average_tries": 1.7999999523162842
+}

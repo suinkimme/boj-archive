@@ -1,0 +1,26 @@
+{
+  "id": 27552,
+  "title": "Tractor Paths",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Farmer John has $N$ ($2\\le N\\le 2\\cdot 10^5$) tractors, where the $i$th tractor can only be used within the inclusive interval $[\\ell_i,r_i]$. The tractor intervals have left endpoints $\\ell_1&lt;\\ell_2&lt;\\dots&lt;\\ell_N$ and right endpoints $r_1&lt;r_2&lt;\\dots&lt;r_N$. Some of the tractors are special.</p>\n<p>Two tractors $i$ and $j$ are said to be <em>adjacent</em> if $[\\ell_i,r_i]$ and $[\\ell_j,r_j]$ intersect. Farmer John can transfer from one tractor to any adjacent tractor. A <em>path</em> between two tractors $a$ and $b$ consists of a sequence of transfers such that the first tractor in the sequence is $a$, the last tractor in the sequence is $b$, and every two consecutive tractors in the sequence are adjacent. It is guaranteed that there is a path between tractor $1$ and tractor $N$. The length of a path is the number of transfers (or equivalently, the number of tractors within it minus one).</p>\n<p>You are given $Q$ ($1\\le Q\\le 2\\cdot 10^5$) queries, each specifying a pair of tractors $a$ and $b$ ($1\\le a&lt;b\\le N$). For each query, output two integers:</p>\n<ul>\n<li>The length of any shortest path between tractor $a$ to tractor $b$.</li>\n<li>The number of special tractors such that there exists at least one shortest path from tractor $a$ to tractor $b$ containing it.</li>\n</ul>",
+  "input": "<p>The first line contains $N$ and $Q$.</p>\n<p>The next line contains a string of length $2N$ consisting of Ls and Rs, representing the left and right endpoints in sorted order. It is guaranteed that for each proper prefix of this string, the number of Ls exceeds the number of Rs.</p>\n<p>The next line contains a bit string of length $N$, representing for each tractor whether it is special or not.</p>\n<p>The next $Q$ lines each contain two integers $a$ and $b$, specifying a query.</p>",
+  "output": "<p>For each query, the two quantities separated by spaces.</p>",
+  "samples": [
+    {
+      "input": "8 10\nLLLLRLLLLRRRRRRR\n11011010\n1 2\n1 3\n1 4\n1 5\n1 6\n1 7\n1 8\n2 3\n2 4\n2 5\n",
+      "output": "1 2\n1 1\n1 2\n2 4\n2 3\n2 4\n2 3\n1 1\n1 2\n1 2\n"
+    }
+  ],
+  "hint": "<p>The $8$ tractor intervals, in order, are $[1, 5], [2, 10], [3, 11], [4, 12], [6, 13], [7, 14], [8, 15], [9, 16]$.</p>\n<p>For the $4$th query, there are three shortest paths between the $1$st and $5$th tractor: $1$ to $2$ to $5$, $1$ to $3$ to $5$, and $1$ to $4$ to $5$. These shortest paths all have length $2$.</p>\n<p>Additionally, every tractor $1,2,3,4,5$ is part of one of the three shortest paths mentioned earlier, and since $1,2,4,5$ are special, there are $4$ special tractors such that there exists at least one shortest path from tractor $1$ to $5$ containing it.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2022-2023 Season, USACO 2023 January Contest, Platinum",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "prefix_sum",
+    "sparse_table"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 1.2400000095367432
+}

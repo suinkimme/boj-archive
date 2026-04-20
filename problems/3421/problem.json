@@ -1,0 +1,28 @@
+{
+  "id": 3421,
+  "title": "이상한 규정",
+  "time_limit": "5 초",
+  "memory_limit": "128 MB",
+  "description": "<p>암호기법 덕분에 우리는 의도된 수신자 이외에 누구도 메세지를 읽을 수 없도록 암호화 할 수 있다. 하지만, 암호화된 메세지들은 실제로 수신자에게 도달하지 않을 경우 쓸모가 없다. 오늘날, 컴퓨터 네트워크는 이러한 메세지들을 전송하는 가장 일반적인 방법이다. 이 문제에서는 네트워크 공급자들이 해결해야 하는 문제에 대해 공부한다. 메세지는 암호화되어있기 때문에, 네트워크 보안에 대해 더이상 신경쓰지 않아도 됨을 기억해라.</p>\r\n\r\n<p>컴퓨터(서버)를 연결하는 네트워크 케이블들은 다른 회사에 속해 있다. 새로 만들어진 독점 금지법은 모든 회사가 각 서버에서 케이블을 2개보다 많이 소유하지 못하게 한다. 또한, 자원 낭비를 피하기 위해 각 회사가 불필요한 케이블을 소유하면 안 된다는 내용도 있다. (즉, 어떠한 케이블을 제거하면 이전에 연결되어있던 두 개의 서버는 연결이 끊어진다.) &nbsp;회사들은 케이블을 계속 사고 팔기 때문에, 이러한 규정을 시행하는 것은 매우 어렵다. 당신의 임무는 이러한 규정의 시행을 도와주는 프로그램을 작성하는 것이다!</p>\r\n",
+  "input": "<p>입력은 몇 가지 예시를 포함한다. 각 예시의 첫 번째 줄에는 공백으로 구분된 네 개의 정수 N, M, C, T가 주어진다. N은 서버의 개수(1&lt;=N&lt;=8000), M은 케이블의 개수(0&lt;=M&lt;=100 000), C는 회사의 개수(1&lt;=C&lt;=100), T는 케이블 판매 거래수(0&lt;=T&lt;=100 000)를 나타낸다.</p>\r\n\r\n<p>다음의 M행은 케이블에 대한 내용이다. 각 줄에는 공백으로 구분된 세개의 정수 S<sub>j1</sub>, S<sub>j2</sub>, K<sub>j</sub>가 주어진다. S<sub>j1</sub>과 S<sub>j2</sub>는 해당 케이블로 연결된 서버의 번호이고(1&lt;=S<sub>j1</sub>&lt;S<sub>j2</sub>&lt;=n), K<sub>j</sub>는 처음 케이블을 소유하고 있는 회사의 번호이다. 각 서버 쌍에는 최대 하나의 케이블만 연결된다. 초기 상태는 규정을 만족한다. 즉, 각 회사는 각 서버에 최대 2개의 케이블을 소유하고 있으며, 한 회사가 소유한 케이블 시스템에는 사이클이 없다.</p>\r\n\r\n<p>마지막으로 다음의 T행에는 정수 S<sub>i1</sub>, S<sub>i2</sub>, K<sub>i</sub>가 주어진다. 하나의 거래에 대해 K<sub>i</sub> (1&lt;=K<sub>i</sub>&lt;=C) 회사가 서버 S<sub>i1</sub>와 S<sub>i2</sub> 사이의 케이블을 구매하려는 것을 나타낸다.</p>\r\n\r\n<p>마지막 예시의 다음에는 4개의 0이 주어진다.</p>\r\n",
+  "output": "<p>각각의 예시에 대해, 거래의 결과를 나타내는 T개의 행을 출력하라. 가능한 출력결과는 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>&quot;No such cable.&quot; : 서버 쌍이 케이블로 연결되지 않을 때</li>\r\n\t<li>&quot;Already owned.&quot; : 이미 회사 K<sub>i</sub>가 케이블을 가지고 있을 때</li>\r\n\t<li>&quot;Forbidden: monopoly.&quot; : 회사 K<sub>i</sub>가 이미 서버 S<sub>i1</sub>이나 S<sub>i2</sub>에서 2개의 케이블을 가지고 있을 때</li>\r\n\t<li>&quot;Forbidden: redundant.&quot; : 회사 K<sub>i</sub>가 서버 S<sub>i1</sub>과 S<sub>i2</sub>에 대해 각각 최대 1개의 케이블을 가지고 있으나 소유권을 부여할 경우 K<sub>i</sub>가 가진 케이블이 사이클을 형성할 때</li>\r\n\t<li>&quot;Sold.&quot; : 위의 제한 사항 중 하나도 적용되지 않을 때. 이 경우 서버 S<sub>i1</sub>과 S<sub>i2</sub>에 대한 케이블의 소유권은 이후 거래를 위해 K<sub>i</sub>에게 옮겨간다.</li>\r\n</ul>\r\n\r\n<div>각 인스턴스 뒤에는 한 개의 빈 줄을 출력해라.</div>\r\n",
+  "samples": [
+    {
+      "input": "4 5 3 5\n1 2 1\n2 3 1\n3 4 2\n1 4 2\n1 3 3\n1 2 3\n1 2 3\n1 4 3\n2 3 3\n2 4 3\n2 1 1 1\n1 2 1\n1 2 1\n0 0 0 0\n",
+      "output": "Sold.\nAlready owned.\nForbidden: monopoly.\nForbidden: redundant.\nNo such cable.\n\nAlready owned.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2011, jellypudding86, topology, jh05013",
+  "level": 24,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "trees",
+    "set",
+    "splay_tree"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 6.159999847412109
+}

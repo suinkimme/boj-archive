@@ -1,0 +1,28 @@
+{
+  "id": 10346,
+  "title": "The Maze Makers",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The Maze Makers is a publisher of puzzle books.  One of their most popular series is maze books.  They have a program that generates rectangular two-dimensional mazes like the one shown in <strong>Figure 1</strong>.  The rules for these mazes are: (1) A maze has exactly two exterior cell walls missing, opening to two distinct terminal cells, (2) starting from any one cell, all other cells are reachable, (3) between any two cells in the maze there is exactly one simple path. Formally, a path is a sequence of cells where each cell and its successor on the path share an edge without a wall. A <em>simple </em>path is a path that never repeats a cell. </p>\n<p>The Maze Maker program uses hexadecimal digits to encode the walls and passages of a maze.  For each cell in the maze there is a corresponding hex digit.  As shown in <strong>Figure 2</strong>, the 1's and 0's in the 4 digit binary representation of a hex digit correspond to the walls (1's) and passages (0's) for each cell in the maze.  For example, the binary encoding for the hex digit B is 1011.  Starting at the top of the cell and moving clockwise around it, this digit represents a cell with a wall at the top, a passage to the right and walls at the bottom and to the left.  A path between two maze cells successively moves one cell up, down, left or right, going through passages only.</p>\n<table align=\"center\" class=\"table table-bordered\">\n<tbody>\n<tr>\n<td><img alt=\"2D-Maze\" src=\"/upload/images2/fig_01.png\" style=\"width:200px\"/><br/>\n\t\t\t \n\t\t\t<p><strong>Figure 1:</strong> Sample Maze</p>\n</td>\n<td><img alt=\"Hex Code for Walls and Passageways\" src=\"/upload/images2/fig_02.png\" style=\"width:200px\"/><br/>\n\t\t\t \n\t\t\t<p><strong>Figure 2:</strong> Hex Code for Walls<br/>\n\t\t\tand Passageways</p>\n</td>\n<td><img alt=\"Maze with Cell\t  Labels\" src=\"/upload/images2/fig_03.png\" style=\"width:200px\"/><br/>\n\t\t\t \n\t\t\t<p><strong>Figure 3:</strong> Maze with Cell Labels</p>\n</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Figure 3</strong> shows the sample maze with the hexadecimal labels in each cell.  For example, the hexadecimal digit E in the top-right cell indicates that it has a wall above it, to its right, below it, yet a passageway to its left. The hexadecimal digit 8 to its left indicates that its cell has only a wall above it. The inputs will always be self-consistent, in that the hexadecimal digits in neighboring cells will agree on whether they share a wall or passageway, and each input will always have precisely two terminal cells, each with one missing exterior wall.</p>\n<p>Our sample maze is a legitimate maze in that all cells are reachable and there is a unique simple path between any pairs of cells in the maze. Your goal is to write a program that reads the hexadecimal descriptions of a potential maze and tests to determine if it is legitimate. If there is a problem, your program must report only the <em>first</em> problem, as detailed below in the section titled \"Output\".</p>",
+  "input": "<p>The input consists of the descriptions of one or more candidate mazes.  Each maze description will start with two integers, H and W, indicating the height and width of the maze, respectively, such that 1 ≤ H ≤ 50 and 2 ≤ W ≤ 50. Following this first line will be H rows of hexadecimal digits, with each row consisting of W digits.  The input is terminated with a line displaying a pair of zeros.</p>",
+  "output": "<p> For each candidate maze, the program should output the first one of the following statements that applies:</p>\n<blockquote>NO SOLUTION<br/>\nUNREACHABLE CELL<br/>\nMULTIPLE PATHS<br/>\nMAZE OK</blockquote>\n<p>The classification statements are defined formally as follows:</p>\n<blockquote>NO SOLUTION - There is no path through the interior of the maze between the two exterior openings.<br/>\n<br/>\nUNREACHABLE CELL - There is at least one cell in the maze that is not reachable by following passageways from either of the openings in the exterior walls of the maze.<br/>\n<br/>\nMULTIPLE PATHS - There exists a pair of cells in the maze that have more than one simple path between them. Two simple paths are considered to be distinct if any part of the paths differ.<br/>\n<br/>\nMAZE OK - None of the above problems exist.</blockquote>\n<p>Note well that for the second case given in the following examples, there is no path between the start and finish and there is an unreachable cell; the correct output should simply be NO SOLUTION, because that error message is listed first in the above list. Similarly, in the fourth example given, UNREACHABLE CELL is reported because that error has priority over the multiple paths.</p>",
+  "samples": [
+    {
+      "input": "6 7\n9A8C98E\n2E5753C\n980A496\n553C53C\n53C75D5\n3E3E363\n3 3\nF9A\nD3E\n3AC\n1 8\n3AAA8AAE\n6 3\n9AC\n3C5\nA24\n9A6\n5BC\n3C7\n5 4\n8A8E\n592C\n5186\n161C\n3A63\n5 4\n8AAE\n59AC\n5386\n1E1C\n3A63\n0 0\n",
+      "output": "MAZE OK\nNO SOLUTION\nMAZE OK\nUNREACHABLE CELL\nMULTIPLE PATHS\nMULTIPLE PATHS\n"
+    }
+  ],
+  "hint": "<p><img alt=\"\" src=\"/upload/images2/mazes.png\" style=\"height:959px; width:674px\"/></p>",
+  "source": ", ICPC, Regionals, North America, Mid-Central Regional, 2014 Mid-Central Regional Programming Contest",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "bitmask",
+    "dfs"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.1764999628067017
+}

@@ -1,0 +1,30 @@
+{
+  "id": 24721,
+  "title": "Radio",
+  "time_limit": "1.5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>In Croatia there are $n$ radio stations. Each station has a concession on one of $n$ frequencies denoted by positive integers from $1$ to $n$. The frequencies were not chosen ideally so sometimes noise appears when multiple stations are broadcasting at the same time. To be more precise, if two radio stations, with frequencies $a$ and $b$ respectively, are broadcasting at the same time, noise will appear if $a$ and $b$ are not relatively prime. The listeners, of course, do not like the noise, so when they hear it they switch to another station.</p>\n<p>To solve this noise problem, the radio station owners are asking you to write a program which simulates the actions of the radio stations. Your program needs to support two types of queries:</p>\n<ol>\n<li>$S$ $x$: If not currently broadcasting, the station with frequency $x$ starts broadcasting, and if it is already broadcasting, it stops.</li>\n<li>$C$ $l$ $r$: Check if there exists a pair of broadcasting stations whose frequencies $a$ and $b$ are from the interval $[l, r]$ and such that $\\gcd{(a, b)} \\ne 1$. If such a pair exists, print <code>DA</code>, otherwise print <code>NE</code>.</li>\n</ol>\n<p>Initially, no station is broadcasting.</p>",
+  "input": "<p>The first line contains positive integers $n$ and $q$ ($1 ≤ n ≤ 1\\,000\\,000$, $1 ≤ q ≤ 200\\,000$), the number of radio stations (and frequencies), and the number of queries, respectively.</p>\n<p>The $i$-th of the next $q$ lines contains a description of the $i$-th query. For queries of the first type it will hold that $1 ≤ x ≤ n$, and for queries of the second type it will hold that $1 ≤ l ≤ r ≤ n$.</p>",
+  "output": "<p>Print the answers to the queries of the second type in order, in separate lines.</p>",
+  "samples": [
+    {
+      "input": "6 8\nS 1\nS 2\nS 3\nC 1 6\nS 6\nC 1 6\nS 2\nC 1 6\n",
+      "output": "NE\nDA\nDA\n"
+    },
+    {
+      "input": "11 6\nS 4\nS 10\nC 3 11\nC 2 7\nS 6\nC 2 7\n",
+      "output": "DA\nNE\nDA\n"
+    },
+    {
+      "input": "20 7\nS 10\nS 15\nS 3\nC 10 15\nS 10\nC 3 15\nC 3 10\n",
+      "output": "DA\nDA\nNE\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example:</p>\n<p>The stations broadcasting during the first <code>C</code> type query are 1, 2 and 3. These numbers are all relatively prime to each other so they create no noise. Once station 6 begins to broadcast, it creates noise with stations 2 and 3. After station 2 stops broadcasting the noise with station 3 persists.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2021/2022, Contest #5",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,29 @@
+{
+  "id": 24652,
+  "title": "수열 선물하기",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>하이비의 생일이 점점 다가오고 있다. PS를 하는 사람은 다들 알겠지만, 생일인 사람에게는 그 사람이 좋아하는 수열을 선물해줘야 한다.</p>\n<p>하이비가 올해 받고 싶어하는 선물은 다음 조건을 만족하는 수열 <em>A</em>이다.</p>\n<ul>\n<li><em>A</em>는 1부터 <em>N</em>까지의 정수가 정확히 한 번씩 등장하는 길이 <em>N</em>의 수열이어야 한다.</li>\n<li><em>A</em>에 있는 모든 수로 이진 탐색을 수행했을 때, 정확히 <em>K</em>개의 수를 찾을 수 있어야 한다.\n\t<ul>\n<li>즉, 아래 정의되어있는 함수 <code>f</code>에 대하여 <code>f(A[1])</code>, <code>f(A[2])</code>, ..., <code>f(A[N])</code>을 모두 시행했을 때, true가 반환되는 횟수가 정확히 <em>K</em>번이어야 한다.\n\t\t<pre>\n<code>// C++ 이진 탐색\nbool f(int x){\n    int l = 1, r = N;\n    while (l &lt;= r){\n        int mid = (l+r) / 2;\n        if (A[mid] == x){ return true; } // 값이 중앙값과 같으면 '찾았음'으로 판정\n        if (x &lt; A[mid]){ r = mid-1; }    // 값이 중앙값보다 작으면 [l, mid) 구간을 탐색\n        if (A[mid] &lt; x){ l = mid+1; }    // 값이 중앙값보다 크면 (mid, r] 구간을 탐색\n    }\n    return false;                        // [l, r] 구간에 남은 수가 없다면 '찾지 못함'으로 판정\n}</code></pre>\n</li>\n</ul>\n</li>\n</ul>\n<p>하이비의 친구 바이히는 위 조건을 만족하는 수열 <em>A</em>를 선물하기로 했으나, 이를 손으로 직접 만들기는 귀찮아서 프로그램을 사용해 수열을 만들기로 했다. 하지만 PS 초보인 바이히는 결국 그러한 프로그램을 만드는 데 실패했고, 당신에게 도움을 청해왔다.</p>\n<p>바이히를 위해 <em>N</em>과 <em>K</em>가 주어질 때, 하이비에게 선물로 줄 수 있는 수열 <em>A</em>를 아무거나 하나 만들어주자.</p>",
+  "input": "<p>첫째 줄에 양의 정수 <em>N</em>과 <em>K</em>가 주어진다. (1 ≤ <em>K</em> ≤ <em>N</em> ≤ 1,000,000)</p>",
+  "output": "<p>만약 조건을 만족하는 수열이 존재한다면 첫째 줄에 \"<code>YES</code>\"를 출력하고, 둘째 줄에 그러한 수열 중 아무거나 하나를 출력한다. 만약 조건을 만족하는 수열이 존재하지 않는다면 첫째 줄에 \"<code>NO</code>\"를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 3\n",
+      "output": "YES\n1 5 2 4 3\n"
+    },
+    {
+      "input": "2 1\n",
+      "output": "YES\n2 1\n"
+    }
+  ],
+  "hint": "<p>이 문제에서 이진 탐색이 위와 같이 정의된 이유는 하이비가 저 방식으로 이진 탐색을 구현하기 때문이다.</p>",
+  "source": "hibye1217, chansol, jhnah917, jthis, mjhmjh1104, pjshwa, shjohw12",
+  "level": 15,
+  "tags": [
+    "binary_search",
+    "constructive"
+  ],
+  "accepted_user_count": 43,
+  "submission_count": null,
+  "average_tries": 1.6512000560760498
+}

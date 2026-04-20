@@ -1,0 +1,24 @@
+{
+  "id": 18999,
+  "title": "Rikka with Linker",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>If you have ever compiled C++ projects using the command line, you are familiar with the linker. If you want to use two static libraries <code>liba.a</code> and <code>libb.a</code> while <code>liba.a</code> relies on <code>libb.a</code>, you need to put <code>liba.a</code> before <code>libb.a</code> in your command, for example, \"<code>g++ -o my my.cpp liba.a libb.a</code>\".</p>\n<p>What if both <code>liba.a</code> and <code>libb.a</code> rely on each other? You need to add their names to the command several times, as in \"<code>g++ -o my my.cpp liba.a libb.a liba.a</code>\". Formally, if you want to use two libraries <code>liba.a</code> and <code>libb.a</code> while <code>liba.a</code> relies on <code>libb.a</code>, there must be at least one <code>liba.a</code> in your command which occurs before one of the occurrences of <code>libb.a</code>.</p>\n<p>Now, Rikka is working on her C++ project, and there are $n$ static libraries she will use. There are $m$ pairs of dependency relationships. A pair $(i, j)$ means that the $i$-th library relies on the $j$-th library.</p>\n<p>You know, a complicated command will never bring happiness. So Rikka wants to simplify the compile command. Specifically, Rikka wants to make the number of the names of static libraries in her compile command as small as possible. Help her find this number.</p>",
+  "input": "<p>The first line contains a single integer $t$ ($1 \\leq t \\leq 10^3$), the number of test cases.</p>\n<p>The first line of each test case contains two integers $n$ and $m$ ($1 \\leq n \\leq 18$, $0 \\leq m \\leq n \\cdot (n-1)$).</p>\n<p>Then $m$ lines follow, each line contains two integers $a$ and $b$ ($1 \\leq a, b \\leq n$, $a \\neq b$) and describes a dependency relationship: library $a$ relies on library $b$.</p>\n<p>It is guaranteed that each dependency relationship will occur at most once, and there are at most $20$ test cases with $n &gt; 12$.</p>",
+  "output": "<p>For each test case, output a single line with a single integer: the minimum possible number of library names in Rikka's compile command.</p>",
+  "samples": [
+    {
+      "input": "3\n3 2\n1 2\n2 3\n3 3\n1 2\n2 3\n3 1\n5 7\n1 2\n2 3\n3 5\n5 4\n4 2\n2 5\n3 1\n",
+      "output": "3\n4\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2018, Day 6: Ruyi Ji Contest 4",
+  "level": 17,
+  "tags": [
+    "bruteforcing"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.600000023841858
+}

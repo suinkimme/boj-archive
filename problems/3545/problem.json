@@ -1,0 +1,30 @@
+{
+  "id": 3545,
+  "title": "Garbling Game",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Pavel had invented a new game with a matrix of integer numbers. He takes r × c matrix with r rows and c columns that is filled with numbers from 1 to rc left to right and top to bottom (1 is written in the upper-left corner, rc is written in the lower-right corner). Then he starts to rearrange the numbers is the matrix by following the rules that are explained below and writes down a sequence of numbers on a separate piece of paper. He calls it garbling of the matrix.</p>\n<p>The rules of rearrangement are defined by garbling map that is (r − 1) × (c − 1) matrix of letters L, R, and N. Initial 4 × 5 matrix and the sample 3 × 4 garbling map for it are shown below.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images3/grabling.png\" style=\"height:102px; width:338px\"/></p>\n<p>Pavel garbles the matrix in a series of turns. On his first turn Pavel takes the number in the first row and the first column (it is put in parenthesis on the above picture for clarity) and writes it down.</p>\n<p>Having written down the number he performs one garbling turn:</p>\n<p>Pavel looks at the letter in the garbling map that corresponds to the position of the number he had just written down (one the first turn it is the letter in the upper-left corner). Depending on the letter in the garbling map the 2 × 2 block of the matrix whose upper-left corner contains the number he had just written (highlighted in the above picture) is rearranged in the following way:</p>\n<ul>\n<li>R — the block is rotated clockwise.</li>\n<li>L — the block is rotated counterclockwise.</li>\n<li>N — Pavel does not change the matrix on this turn.</li>\n</ul>\n<p>On the second turn Pavel takes the number in the first row and second column, writes it down, and performs the garbling turn, and so on. In c − 1 turns he finishes the first row and moves to the second row and so on he proceeds left to right and top to bottom. In (r − 1)(c − 1) turns he had written down (r−1)(c−1) numbers and garbled the whole matrix, so he starts again in the upper-left corner continuing garbling the matrix from left to right and top to bottom.</p>\n<p>The matrices below show the effect of the first four turns with the sample garbling map.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images3/garbling2.png\" style=\"height:83px; width:681px\"/></p>\n<p>The following sequence of numbers is written down in the first 4 turns: 1 7 7 9. On 5th turn the number from the second row and the first column is written, but the matrix remains unchanged, since the second row and the first column of the garbling map contains N. In six turns Pavel gets 1 7 7 9 1 8.</p>\n<p>Given the garbling map and the number of moves Pavel makes in this game, find out how many times each number gets written down by Pavel. You need to provide the answer modulo 10<sup>5</sup>.</p>",
+  "input": "<p>The first line of the input file contains three integer numbers — r, c, and n, where r, c (2 ≤ r, c ≤ 300) are the dimensions of the initial matrix, n (0 ≤ n &lt; 10100) is the number of turns Pavel makes.</p>\n<p>The following r − 1 lines contain garbling map with c − 1 characters R, L, or N on a line.</p>",
+  "output": "<p>Write to the output file rc lines with one integer number per line. On i-th line write the number of times number i gets written down by Pavel modulo 10<sup>5</sup> while he makes his n turns.</p>",
+  "samples": [
+    {
+      "input": "4 5 6\nLRLR\nNLLR\nLNNL\n",
+      "output": "2\n0\n0\n0\n0\n0\n2\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n"
+    },
+    {
+      "input": "4 5 666666\nLRLR\nNLLR\nLNNL\n",
+      "output": "37038\n37038\n0\n0\n30864\n37036\n11112\n30864\n30864\n30864\n30864\n30864\n11110\n30865\n18519\n30864\n30864\n0\n18518\n18518\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2009",
+  "level": 19,
+  "tags": [
+    "arbitrary_precision",
+    "data_structures",
+    "sparse_table"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

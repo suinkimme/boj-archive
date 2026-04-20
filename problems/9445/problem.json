@@ -1,0 +1,30 @@
+{
+  "id": 9445,
+  "title": "Correcting Curiosity",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Curiosity is the rover that explores the Gale Crater on Mars. Recently it found an evidence of water in Martian soil, which will make it easier to plan the future manned missions. </p>\n<p>Curiosity can communicate with Earth directly at speeds up to 32 Kbit/s, but on average 14 minutes and 6 seconds will be required for signals to travel between Earth and Mars.</p>\n<p>“You have just seen a stone and applied brakes, but you know that the rover is already passing that stone” — Matt Heverly, the rover’s driver, explains. “So we just plan the route, then write down a list of simple textual commands: move one meter ahead, turn left, make a photo and so on”.</p>\n<p>Sometimes it is necessary to react very fast to some unexpected events. For example, if the cameras have seen something interesting, then you might want to change the route of the rover to make an additional photo. To do that, you send a substitution command of the form s/⟨string⟩/⟨replacement⟩/g. This replaces all occurrences of ⟨string⟩, starting with the leftmost one, to ⟨replacement⟩.</p>\n<p>More formally, if A is a non-empty string and B is a string, then to apply the substitution command s/A/B/g to a string S, you should do the following:</p>\n<ol>\n<li>Find the leftmost occurrence of A in S, such that S = SL + A + SR.</li>\n<li>If there is no such occurrence, stop. Then, S is the answer.</li>\n<li>Let R be the result of applying s/A/B/g to SR.</li>\n<li>The answer is SL + B + R.</li>\n</ol>\n<p>This means that:</p>\n<ol>\n<li>If there are two overlapping occurrences of A in S, only the leftmost one is replaced. For example, applying “s/aba/c/g” to “abababa” yields “cbc”: after replacing the first occurrence of “aba” the string turns to “cbaba”, and only the last occurrence of “aba” can be replaced after that.</li>\n<li>No substitution uses the results of previous substitutions. For example, applying “s/a/ab/g” to “a” yields “ab”, applying “s/a/ba/g” to “a” yields “ba”.</li>\n</ol>\n<p>You know that the longer is the command, the bigger is the time necessary to transmit it. So, you have to write a program that finds shortest command that transforms the initial string to the final string.</p>",
+  "input": "<p>The first line contains the initial and the final strings. Both strings are non-empty and their lengths do not exceed 2000 characters. The strings contain only English letters, spaces and punctuation signs (commas, colons, semicolons and hyphens: ‘,’, ‘:’, ‘;’, ‘-’). The given strings are not equal.</p>",
+  "output": "<p>Output the substitution command that transforms initial string to final string and has the minimum length. If there are several shortest substitution commands, output any of them.</p>",
+  "samples": [
+    {
+      "input": "move left, move right; move up\nmove left, move down, move up\n",
+      "output": "s/right;/down,/g\n"
+    },
+    {
+      "input": "If not found: move x; else move -x\nIf found: move x; else move -x\n",
+      "output": "s/ not//g\n"
+    },
+    {
+      "input": "abababa\ncbc\n",
+      "output": "s/aba/c/g\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2013",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,30 @@
+{
+  "id": 30565,
+  "title": "History in Numbers",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Algorithms and data structures find their place in various arts, crafts, and sciences. In this problem, we are discussing one potential application in history.</p>\n<p>Historians are studying the urban development of a city over a period of $n$ years. The urban development is quantified using an aggregate measure they call an urban development index (UDI), which could take integer values, including negative. There is an initial estimation $e_i$ of this index for each of the years. However, during the research process, due to the new documents and evidence discovered, these estimates are revised and updated. More formally, throughout the historians' work process, they could want to update the UDI estimates for all years between $s_j$ and $f_j$ (inclusive) by adding $d_j$ to each of them.</p>\n<p>The main question historians are interested in is if the UDI has been increasing over a certain period of time. However, due to the noisy nature of estimates, we will not be using the standard definition. Instead, the following procedure is used:</p>\n<ul>\n<li>we collapse all consequent equal numbers into one. For instance, <code>1 1 2 2 2 3 3 3</code> becomes <code>1 2 3</code>;</li>\n<li>the UDI is considered <em>increasing</em> from year $i$ to year $j$ if the sequence of local minima in the UDI sequence after the above transformation is strictly increasing. An element $p_i$ is considered to be a local minimum if it is less than both of its neighbors (one neighbor for the first or last element).</li>\n</ul>\n<p>You are to implement the system able to store the UDI estimates and process the requests to update them and to check if the UDI has been increasing over a certain period.</p>",
+  "input": "<ul>\n<li>One line containining an integer $n$ ($1 \\le n \\le 3 \\cdot 10^5$) denoting the length of the time period being considered.</li>\n<li>One line containing $n$ space separated integers $e_i$ ($-10^8 \\le e_i \\le 10^8$).</li>\n<li>One line containing an integer number $m$ ($1 \\le m \\le 3 \\cdot 10^5$).</li>\n<li>$m$ further lines each describing one request in one of the following two formats:\n\t<ul>\n<li><code>update</code> followed by three integers $s_j$, $f_j$, and $d_j$ ($1 \\le s_j \\le f_j \\le n$, $|d_j| \\le 10^8$).</li>\n<li><code>check</code> followed by two integers $s$ and $f$ ($1 \\le s \\le f \\le n$).</li>\n</ul>\n</li>\n</ul>",
+  "output": "<p>For each <code>check</code> request output <code>YES</code> if the UDI has been increasing during the corresponding period and <code>NO</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "5\n10 4 10 6 10\n5\ncheck 1 5\nupdate 2 3 1\ncheck 1 5\nupdate 2 3 1\ncheck 1 5\n",
+      "output": "YES\nYES\nNO\n"
+    },
+    {
+      "input": "8\n10 -5 -5 -5 11 6 6 12\n1\ncheck 1 8\n",
+      "output": "YES\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, The UK & Ireland Programming Contest, UKIEPC 2023",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "lazyprop"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 7.428599834442139
+}

@@ -1,0 +1,25 @@
+{
+  "id": 9143,
+  "title": "Zpětné inženýrství",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Policistům se nedávno podařilo zachytit fragment zdrojového kódu, který si mezi sebou předávaly anarchistické skupiny <em>MCA</em> a <em>MBI</em>. Tento fragment můžete vidět níže, pro přehlednost je kromě původního jazyka (anarchisté používají zásadně <em>C</em>) uveden také přepis do jazyka <em>Pascal</em>.</p>\n<pre class=\"brush:c++;\">\nint main()\n{ int u,v,k,t ;\n  scanf(\"%d %d\",&amp;u,&amp;v) ;\n  for (k=0;!(u%2)&amp;&amp;!(v%2);k++)\n    { u/=2 ; v/=2 ; }\n  if (u%2) t=-v ; \n  else t=u/2 ;\n  while(t) {\n    while(!(t%2)) t/=2 ;\n    if (t&gt;0) u=t ; else v=-t ;\n    t=u-v ; \n  }\n  while(k--&gt;0) u*=2 ; \n  printf(\"%d\\n\",u) ;\n  return 0 ;\n}\n</pre>\n<pre class=\"brush:pascal;\">\nprogram zahada;\nvar u,v,k,t:integer;\nbegin\n  readln(u,v); k:=0;\n  while(u mod 2=0)and(v mod 2=0) do\n    begin u:=u div 2; v:=v div 2; k:=k+1; end;\n  if(u mod 2&lt;&gt;0) then t:=-v\n  else t:=u div 2;\n  while(t&lt;&gt;0) do begin\n    while(t mod 2=0) do t:=t div 2;\n    if(t&gt;0) then u:=t else v:=-t;\n    t:=u-v;\n  end;\n  while(k&gt;0) do begin u:=u*2; k:=k-1; end;\n  writeln(u:1);\nend.\n</pre>\n<p>Na první pohled je zřejmé, že program čte ze vstupu dvě čísla, pro která spočítá nějaký výsledek. Bohužel se však dosud nepodařilo proniknout do tajů výpočetního procesu, a tak nevíme přesně, jaká je souvislost mezi vstupem a výstupem. Pro přehlednost si však realizovanou funkci označíme jako <var>f</var>. Definičním oborem této funkce bude množina celých kladných čísel. Nechť <var>f</var>(<var>a</var>,<var>b</var>) je hodnota, kterou program vypíše, pokud na jeho vstup zadáme celá čísla <var>a</var> a <var>b</var>. Jestliže program neskončí nebo skončí s chybou, není hodnota <var>f</var>(<var>a</var>,<var>b</var>) pro příslušný vstup definována. Abychom mohli chování funkce lépe sledovat, je třeba vytvořit funkci inverzní, tedy nalézt taková čísla <var>a</var> a <var>b</var>, pro která je <var>f</var>(<var>a</var>,<var>b</var>) rovno předem dané hodnotě.</p>",
+  "input": "<p>První řádek vstupního souboru obsahuje celé kladné číslo <var>Z</var>, za kterým následuje postupně <var>Z</var>zadání. Každé zadání je tvořeno jediným řádkem obsahujícím dvě celá čísla <var>N</var> a <var>M</var>, 0 &lt; <var>N</var>,<var>M</var>&lt;= 1000000. Čísla jsou oddělena mezerou.</p>",
+  "output": "<p>Pro každé zadání vypíše program na výstup jediný řádek se dvěma čísly <var>U</var> a <var>V</var> oddělenými mezerou. Tato čísla musí splňovat podmínku 1 &lt;= <var>V</var> &lt; <var>U</var> &lt; <var>N</var>. Jestliže existuje více dvojic vyhovujících zadání, vypište ten případ, kdy je <var>U</var> maximální. Pokud existuje více řešení se stejným maximálním <var>U</var>, vypište to, kdy je maximální <var>V</var>. Jestliže neexistuje žádná dvojice čísel, která by zadání vyhověla, vypište na řádek větu \"<code>Reseni neexistuje.</code>\".</p>",
+  "samples": [
+    {
+      "input": "2\n11 2\n2 10\n",
+      "output": "10 8\nReseni neexistuje.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2000",
+  "level": 9,
+  "tags": [
+    "math",
+    "number_theory"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.4118000268936157
+}

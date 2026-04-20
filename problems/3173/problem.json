@@ -1,0 +1,31 @@
+{
+  "id": 3173,
+  "title": "karla",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The map of some area can be presented as a rectangular grid of squares arranged in M rows and N columns.</p>\n<pre>\n....vvvvv#..........\n....vvvvv#....####..\n...vvvvv#........#..\n...vvvv#.........#..\n...vvvv#...##sss.#..\n...vvvvvvvv.#ssss#..\n...vvvvvvvv###ss#...\n...vvvvvvvv..#ss#sss\n....vvvvvvv#.#..#sss\n########...#.#ss#sss\n...........#.#sss#ss\n...........#.#...#ss\n..##########.#...#ss\n..#........#.#...#ss\n....#......#.#......\n....#........#......</pre>\n<ul>\n<li><code>.</code> empty square</li>\n<li><code>#</code> rock</li>\n<li><code>v</code> water</li>\n<li><code>s</code> forest</li>\n</ul>\n<p>Karla is located in the top-left square and she must get to the bottom-right square using a sequence of moves. Each move is a step onto a neighboring square in any of the four directions (up, down, left, right). However, she doesn't want to swim through the water or walk through the forest (she can't go over rock at all).</p>\n<p>We can build at most K bridges or burn down at most L forests to help her.</p>\n<p>Each bridge must be built in the horizontal or vertical direction only above water and can be of any length. If two bridges intersect, they are built one above another so it is not possible to move from one bridge to another.</p>\n<p>Burning one forest means erasing exactly one forest area. A forest area is a maximal set of forest squares such that there is a path that consists of only horizontal or vertical moves between every two squares.</p>\n<p>Write a program that will find the bridges that have to be built and the forests that have to be burned in order to allow Karla to get from the start to the final position. </p>",
+  "input": "<p>The first line of input contains two integers M and N, 1 ≤ M, N ≤ 50.</p>\n<p>The second line contains two integers K and L, 1 ≤ K, L ≤ 10.</p>\n<p>Each of the following M lines contains a sequence of N characters – the map of the area. The top-left and bottom-right squares will be empty.</p>",
+  "output": "<p>Output the final layout of the map after building and burning.</p>\n<p>Each horizontal segment of a built bridge should be represented by a '–' (minus), each vertical segment by '|' (vertical line), and squares where two bridges intersects by '+' (plus). Squares with burned forest should be represented by a '.' (dot), like empty square. Each bridge has to be fully built, and each forest has to be fully burned.</p>\n<p>Note: the test data will be such that a solution, although not necessarily unique, always exists.</p>",
+  "samples": [
+    {
+      "input": "5 8\n2 2\n.#ssssss\n.##ss.ss\n.vsv#s.s\n.vss###s\n.vsvs.s.\n",
+      "output": ".#......\n.##.....\n.-.|#s..\n.v..###.\n.v.vs.s.\n"
+    },
+    {
+      "input": "16 20\n2 1\n....vvvvv#..........\n....vvvvv#....####..\n...vvvvv#........#..\n...vvvv#.........#..\n...vvvv#...##sss.#..\n...vvvvvvvv.#ssss#..\n...vvvvvvvv###ss#...\n...vvvvvvvv..#ss#sss\n....vvvvvvv#.#..#sss\n########...#.#ss#sss\n...........#.#sss#ss\n...........#.#...#ss\n..##########.#...#ss\n..#........#.#...#ss\n....#......#.#......\n....#........#......\n",
+      "output": "....vvvvv#..........\n....vvvvv#....####..\n...vvvvv#........#..\n...vvvv#.........#..\n...vvvv#...##sss.#..\n...vvvvvv|v.#ssss#..\n...vvvvvv|v###ss#...\n...------+-..#ss#...\n....vvvvv|v#.#..#...\n########...#.#ss#...\n...........#.#sss#..\n...........#.#...#..\n..##########.#...#..\n..#........#.#...#..\n....#......#.#......\n....#........#......\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2006, Final Exam #1",
+  "level": 17,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "bfs"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 8
+}

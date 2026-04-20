@@ -1,0 +1,31 @@
+{
+  "id": 14154,
+  "title": "Zmija",
+  "time_limit": "4 초",
+  "memory_limit": "64 MB",
+  "description": "<p>Po ploči sastavljenoj od N x N jediničnih kvadratića gmižu zmije. Svaka zmija zauzima niz od barem dva kvadratića, takav da svaka dva uzastopna kvadratića imaju zajedničku stranicu. Prvi kvadratić u nizu nazivamo glava. Na svakom kvadratiću ploče se može nalaziti maksimalno jedna zmija. Kvadratići koje na početku ne zauzimaju zmije mogu biti ili prazni ili se u njima može nalaziti prepreka.</p>\n<p>Zmija gmiže tako da, u svakom koraku, najprije pomakne glavu na neko prazno susjedno polje, a zatim povuče rep ispraznivši tako jedno polje. Smjer kretanja je na početku odreñen položajem glave u odnosu na drugi po redu kvadratić koji čini zmiju. U svakom koraku zmija se ponaša prema sljedećim pravilima:</p>\n<ul>\n<li>Ukoliko se može pomaknuti naprijed (bez da se pritom sudari sa preprekom, drugom zmijom, samom sobom ili da izañe izvan granica ploče), onda se pomakne naprijed;</li>\n<li>ako je to nemoguće onda pokuša skrenuti prema desno;</li>\n<li>ako je to nemoguće onda pokuša skrenuti prema lijevo;</li>\n<li>ako je to nemoguće onda ostane stajati na mjestu, te se u sljedećem koraku opet pokušava pomaknuti naprijed.</li>\n</ul>\n<p>Na ploči se nalazi nekoliko zmija označenih slovima engleske abecede. U svakom koraku sve se pokušavaju se pomaknuti prema gore opisanim pravilima i to abecednim redoslijedom. Svaki korak traje točno jednu sekundu. Napišite program koji će, za zadani početni položaj zmija na ploči, utvrditi njihov položaj nakon što protekne T sekundi. </p>",
+  "input": "<p>U prvom redu ulaza nalaze se cijeli brojevi N i T, 2 ≤ N ≤ 1 000, 1 ≤ T ≤ 1 000 000. Broj N opisuje dimenziju ploče, a T je broj sekundi nakon kojih treba utvrditi položaj zmija.</p>\n<p>U svakom od idućih N redova nalazi se po N znakova; ti redovi opisuju početni položaj zmija, praznih kvadratića i prepreka na ploči.</p>\n<p>Preciznije, svaki znak može biti:</p>\n<ul>\n<li>'.' (točka) – pripadni kvadratić je prazan</li>\n<li>'#' – na pripadnom kvadratiću je prepreka</li>\n<li>veliko slovo engl. abecede – na pripadnom kvadratiću je glava zmije</li>\n<li>malo slovo engl. abecede – na pripadnom kvadratiću je dio zmije koji nije glava</li>\n</ul>\n<p>Svi kvadratići u kojima se nalazi isto slovo abecede (bilo veliko ili malo) čine jednu zmiju. Pri tome će ulazni podaci biti takvi da će svaki kvadratić koji čini neku zmiju biti susjedan točno sa dva druga njena kvadratića, osim glave i vrha repa koji će biti susjedni točno jednom njezinom kvadratiću. Naravno, neće postojati dvije različite zmije označene istim slovom. </p>",
+  "output": "<p>Potrebno je ispisati N redova, svaki sa po N znakova. Ti redovi trebaju opisivati položaj zmija po isteku T sekundi, u istom formatu kako je položaj bio opisan u ulaznim podacima. </p>",
+  "samples": [
+    {
+      "input": "4 8\n.bB.\n....\na.#.\naaA.\n",
+      "output": ".baa\n.BAa\n..#.\n....\n"
+    },
+    {
+      "input": "7 100000\naA.....\na#####D\naa....d\n......d\n......d\n......d\n.......\n",
+      "output": "aaaaADd\n.#####d\n......d\n......d\n.......\n.......\n.......\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2008",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "simulation",
+    "deque"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.2726999521255493
+}

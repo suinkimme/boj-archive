@@ -1,0 +1,26 @@
+{
+  "id": 25717,
+  "title": "Puzzle: Hearthstone",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p><em>Hearthstone</em> is one of the popular video games. <strong>Please read the following rules carefully. They are different from the usual rules.</strong></p>\n<p>There are $n$ kinds of secret cards numbered $1$, $2$, $\\ldots$, $n$. There are two types of events about secrets:</p>\n<ul>\n<li><code>add</code>: Add a secret with an unknown number into the hero zone. No two secrets with the same number can be in the hero zone simultaneously.</li>\n<li><code>test</code> $x$ $y$: Test whether secret $x$ exists. If secret $x$ exists, then $y=1$ and secret $x$ is removed from the hero zone; otherwise, $y=0$. Note that whatever $y$ is, secret $x$ does not exist in the hero zone after <code>test</code>ing $x$.</li>\n</ul>\n<p>An event sequence $E = [e_1, \\ldots, e_m]$ is valid if and only if it is possible to assign a number from $1$ to $n$ for each <code>add</code> event and perform the events $e_1, e_2, \\ldots, e_m$ in order such that:</p>\n<ul>\n<li>no secrets are in the hero zone at the beginning;</li>\n<li>secret $x$ does not exist right before an event which <code>add</code>s a secret $x$;</li>\n<li>secret $x$ exists right before an event <code>test</code> $x$ $1$;</li>\n<li>secret $x$ does not exist right before an event <code>test</code> $x$ $0$.</li>\n</ul>\n<p>Given $q$ events $e_1, e_2, \\ldots, e_q$, you need to maintain an event sequence $E$. Initially, $E$ is empty. For each $i = 1, 2, \\ldots, q$ in order, try to append $e_i$ to the end of $E$. If $E$ is invalid, remove $e_i$ and report a bug. Otherwise, find the number of secrets that must exist in the hero zone and the number of secrets that must not exist in the hero zone after performing the events of $E$ in order.</p>\n<p>Note that the number of <em>secrets that must (not) exist</em> is not just the <em>number of</em> (non-)existing secrets. For example, if $n = 2$, initially, secret 1 is missing and secret 2 is missing, so the answers would be $0$ and $2$. After a single <code>add</code>, secret 1 is unknown (can be or not be in hero zone) and secret 2 is unknown, so the answers are $0$ and $0$. After <code>test</code> $2$ $0$, secret 2 is missing, so we know the added one was certainly secret 1, so secret 1 is present, and the answers are $1$ and $1$. See examples for better understanding.</p>",
+  "input": "<p>There are multiple test cases. The first line of input contains an integer $T$ ($1\\le T\\le 10^5$), the number of test cases. For each test case:</p>\n<p>The first line contains two integers $n$ and $q$ ($1 \\le n, q \\le 10^5$), the number of kinds of secrets and the number of events.</p>\n<p>The $i$-th line of the following $q$ lines represents $e_i$ and contains:</p>\n<ul>\n<li>either a string \"<code>add</code>\";</li>\n<li>or a string \"<code>test</code>\" followed by two integers $x$ and $y$ ($1 \\le x \\le n$, $0 \\le y \\le 1$).</li>\n</ul>\n<p>It is guaranteed that both the sum of $n$ and the sum of $q$ over all test cases do not exceed $10^5$.</p>",
+  "output": "<p>For each test case:</p>\n<p>For each event, if it can be appended, output two integers: the number of secrets that must exist in the hero zone and the number of secrets that must not exist in the hero zone; otherwise, output the string \"<code>bug</code>\".</p>",
+  "samples": [
+    {
+      "input": "2\n1 8\ntest 1 0\ntest 1 1\nadd\ntest 1 0\ntest 1 1\nadd\ntest 1 1\ntest 1 0\n2 10\nadd\nadd\nadd\ntest 1 1\ntest 1 1\nadd\nadd\nadd\ntest 2 1\ntest 2 1\n",
+      "output": "0 1\nbug\n1 0\nbug\n0 1\n1 0\n0 1\n0 1\n0 0\n2 0\nbug\n1 1\nbug\n2 0\nbug\nbug\n1 1\nbug\n"
+    },
+    {
+      "input": "1\n4 7\nadd\nadd\ntest 3 0\ntest 4 0\nadd\ntest 1 1\ntest 3 1\n",
+      "output": "0 0\n0 0\n0 1\n2 2\n2 0\n1 1\n1 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2022, Day 6: Heltion Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,27 @@
+{
+  "id": 11984,
+  "title": "Lights Out (Gold)",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Farmer John has installed a fancy new milking machine in his barn, but it draws so much power that it occasionally causes the power to go out! This happens so often that Bessie has memorized a map of the barn, making it easier for her to find the exit of the barn in the dark. She is curious though about the impact of power loss on her ability to exit the barn quickly. For example, she wonders how much farther she might need to walk find the exit in the dark.</p>\n<p>The barn is described by a simple (non self-intersecting) polygon with integer vertices \\((x_1, y_1) \\ldots (x_n, y_n)\\) listed in clockwise order. Its edges alternate between horizontal (parallel to the x-axis) and vertical (parallel to the y-axis); the first edge can be of either type. The exit is located at \\((x_1, y_1)\\). Bessie starts inside the barn located at some vertex \\((x_i, y_i)\\) for \\(i &gt; 1\\). She can walk only around the perimeter of the barn, either clockwise or counterclockwise, Her goal is to travel a minimum distance to reach the exit. This is relatively easy to do with the lights on, of course, since she will travel either clockwise or counterclockwise from her current location to the exit -- whichever direction is shorter.</p>\n<p>One day, the lights go out, causing Bessie to panic and forget which vertex she is standing at. Fortunately, she still remembers the exact map of the barn, so she can possibly figure out her position by walking around and using her sense of touch. Whenever she is standing at a vertex (including at her initial vertex), she can feel the exact interior angle at that vertex, and she can tell if that vertex is the exit. When she walks along an edge of the barn, she can determine the exact length of the edge after walking along the entire edge. Bessie decides on the following strategy: she will move clockwise around the perimeter of the barn until she has felt enough angles and edges to deduce the vertex at which she is currently located. At that point, she can easily figure out how to get to the exit by traveling a minimum amount of remaining distance, either by continuing to move clockwise or by switching direction and moving counter-clockwise.</p>\n<p>Please help Bessie determine the largest amount by which her travel distance will increase in the worst case (over all possibilities for her starting vertex) for travel in the dark versus in a lit barn.</p>",
+  "input": "<p>The first line of the input contains \\(N\\) (\\(4 \\leq N \\leq 200\\)). Each of the next \\(N\\) lines contains two integers, describing the points \\((x_i, y_i)\\) in clockwise order around the barn. These integers are in the range \\(-100,000 \\ldots 100,000\\).</p>",
+  "output": "<p>Output the largest amount that Bessie's travel distance will increase in the worst case starting position using the strategy in the problem statement.</p>",
+  "samples": [
+    {
+      "input": "4\n0 0\n0 10\n1 10\n1 0\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p>In this example, Bessie can feel that she is initially standing at a 90-degree angle, but she cannot tell if she is initially standing at vertex 2, 3, or 4. After taking a step along one edge in the clockwise direction, Bessie either reaches the exit or can uniquely determine her location based on the length of this edge. The distances she obtains are:</p>\n<p>If starting at vertex 2: she travels 12 units in the dark (1 unit to reach vertex 3, then 11 units to continue to the exit). She only needs to travel 10 units in a lit barn. This is an extra distance of 2 for this vertex.</p>\n<p>If starting at vertex 3: she travels 11 units in both cases.</p>\n<p>If starting at vertex 4: she travels 1 unit in both cases.</p>\n<p>The worst-case difference over all starting points is therefore 12 - 10 = 2. That is, Bessie can guarantee that using her strategy, no matter where she starts, she will travel at most 2 extra units of distance farther in the dark than in the light.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2015-2016 Season, USACO January 2016 Contest, Gold",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "geometry",
+    "set",
+    "simulation"
+  ],
+  "accepted_user_count": 39,
+  "submission_count": null,
+  "average_tries": 3.10260009765625
+}

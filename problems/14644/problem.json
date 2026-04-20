@@ -1,0 +1,37 @@
+{
+  "id": 14644,
+  "title": "Visual Python++",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>In the recently proposed Visual Python++ programming language, a block of statements is represented as a rectangle of characters with top-left corner in row r<sub>1</sub> and column c<sub>1</sub>, and bottom-right corner in row r<sub>2</sub> and column c<sub>2</sub>. All characters at locations (r, c) with r<sub>1</sub> ≤ r ≤ r<sub>2</sub> and c<sub>1</sub> ≤ c ≤ c<sub>2</sub> are then considered to belong to that block. Among these locations, the ones with r = r<sub>1</sub> or r = r<sub>2</sub> or c = c<sub>1</sub> or c = c<sub>2</sub> are called a border.</p>\n<p>Statement blocks can be nested (rectangles contained in other rectangles) to an arbitrary level. In a syntactically correct program, every two statement blocks are either nested (one contained in the other) or disjoint (not overlapping). In both cases, their borders may not overlap.</p>\n<p>Programmers are not expected to draw the many rectangles contained in a typical program – this takes too long, and Visual Python++ would not have a chance to become the next ICPC programming language. So a programmer only has to put one character ‘p’ in the top-left corner of the rectangle and one character ‘y’ in the bottom-right corner. The parser will automatically match up the appropriate corners to obtain the nesting structure of the program.</p>\n<p>Your team has just been awarded a five-hour contract to develop this part of the parser.</p>",
+  "input": "<p>The first line of the input contains an integer n (1 ≤ n ≤ 10<sup>5</sup>), the number of corner pairs. Each of the next n lines contains two integers r and c (1 ≤ r, c ≤ 10<sup>9</sup>), specifying that there is a top-left corner in row r and column c of the program you are parsing. Following that are n lines specifying the bottom-right corners in the same way. All corner locations are distinct.</p>",
+  "output": "<p>Display n lines, each containing one integer. A number j in line i means that the i<sup>th</sup> top-left corner and the j<sup>th</sup> bottom-right corner form one rectangle. Top-left and bottom-right corners are each numbered from 1 to n in the order they appear in the input. The output must be a permutation of the numbers from 1 to n such that the matching results in properly nested rectangles. If there is more than one valid matching, any one will be accepted. If no such matching exists, display syntax error.</p>",
+  "samples": [
+    {
+      "input": "2\n4 7\n9 8\n14 17\n19 18\n",
+      "output": "2\n1\n"
+    },
+    {
+      "input": "2\n4 7\n14 17\n9 8\n19 18\n",
+      "output": "1\n2\n"
+    },
+    {
+      "input": "2\n4 8\n9 7\n14 18\n19 17\n",
+      "output": "syntax error\n"
+    },
+    {
+      "input": "3\n1 1\n4 8\n8 4\n10 6\n6 10\n10 10\n",
+      "output": "syntax error\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2017",
+  "level": 22,
+  "tags": [
+    "greedy",
+    "sweeping"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 1.9696999788284302
+}

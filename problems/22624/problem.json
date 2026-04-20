@@ -1,0 +1,34 @@
+{
+  "id": 22624,
+  "title": "Strange String Manipulation",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>A linear congruential generator produces a series $R(·)$ of pseudo-random numbers by the following formulas:</p>\n<p style=\"text-align: center;\">$R(0) = S$, $R(i) = (A · R(i - 1) + C) \\bmod M$ (for $i = 1, 2, \\dots$),</p>\n<p>where $S$, $A$, $C$, and $M$ are all parameters. In this problem, $0 \\le S, A, C \\le 15$ and $M = 256$.</p>\n<p>Now suppose we have some input string $I(·)$, where each character in the string is an integer between $0$ and $(M - 1)$. Then, using the pseudo-random number series $R(·)$, we obtain another string $O(·)$ as the output by the following formula:</p>\n<p style=\"text-align: center;\">$O(i) = (I(i) + R(i)) \\bmod M$ (for $i = 1, 2, \\dots$),</p>\n<p>Your task is to write a program that shows the parameters $S$, $A$, and $C$ such that the information entropy of the output string $O(·)$ is minimized. Here, the information entropy $H$ is given by the following formula:</p>\n<p>$$H = -\\sum_{x}{\\frac{\\text{#}(x)}{N}\\log{\\frac{\\text{#}(x)}{N}} }$$</p>\n<p>where $N$ is the length of the string and $\\text{#}(x)$ is the number of occurences of the alphabet $x$.</p>",
+  "input": "<p>The input has the following format:</p>\n<blockquote>\n<p>$N$</p>\n<p>$I(1) I(2) \\dots I(N)$</p>\n</blockquote>\n<p>$N$ does not exceed 256.</p>",
+  "output": "<p>Print in a line the values of the three parameters $S$, $A$, and $C$ separated by a single space. If more than one solution gives the same minimum entropy, choose the solution with the smallest $S$, $A$, and then $C$.</p>",
+  "samples": [
+    {
+      "input": "5\n5 4 3 2 1\n",
+      "output": "0 1 1\n"
+    },
+    {
+      "input": "5\n7 7 7 7 7\n",
+      "output": "0 0 0\n"
+    },
+    {
+      "input": "10\n186 8 42 24 154 40 10 56 122 72\n",
+      "output": "8 7 14\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2009 Day 3",
+  "level": 9,
+  "tags": [
+    "arithmetic",
+    "bruteforcing",
+    "math"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 2.25
+}

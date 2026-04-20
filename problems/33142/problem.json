@@ -1,0 +1,31 @@
+{
+  "id": 33142,
+  "title": "Heraclosures",
+  "time_limit": "5.5 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>Prometheus is a programmer. He wrote a large program in Heraclosures, a programming language invented by his friend Heracles. The program contains $N$ functions, each identified uniquely by an integer from $1$ to $N$. Each function is made up of many instructions, some of which are call instructions that invoke other functions.</p>\n<p>When a call instruction in function $i$ calls a target function $j$, the full code of function $j$ is executed before continuing with the execution of function $i$. Each function may contain multiple call instructions, and it is possible for a function to call another function several times. Some functions, however, may have no call instructions at all. Following advice from his friend Sisyphus, Prometheus ensured that there are no cycles among the function calls, avoiding endless call loops.</p>\n<p>Each function $i$ has a base execution time $B_i$, which is its execution time excluding any functions it calls. Execution times are measured in processor cycles, so $B_i$ is always a non-negative integer. The total execution time of function $i$, denoted as $T(i)$, includes both its base execution time and the total execution time of all functions it directly calls. Formally,</p>\n<p>$$T(i) = B_i + \\sum_{j \\in C(i)}{T(j)}\\text{,}$$</p>\n<p>where $B_i$ is the base execution time we already defined, and $C(i)$ is the multiset of functions that function $i$ directly calls. If function $i$ calls function $j$ multiple times, then $T(j)$ appears multiple times in this sum. If function $i$ has no call instructions, then $C(i)$ is empty, and so $T(i) = B_i$.</p>\n<p>Prometheus wants to assess the impact of several code adjustments on the performance of his program. Tired of programming, he has hired you to implement a tool that accepts a list of events, where each event is either an update or a query.</p>\n<ul>\n<li>An update sets $B_i$ to a given value $V$. Notice that while this event may modify the base execution time of function $i$, the multiset $C(i)$ of its called functions remains the same.</li>\n<li>A query calculates the current total execution time $T(i)$ of function $i$, taking into account all updates that have occurred up to that point in the event list.</li>\n</ul>\n<p>As a first approach, Prometheus does not want the result of each query but a single summary result. Suppose there are $q$ queries, numbered sequentially from $1$ to $q$ in the list of events. Then, the summary result is calculated as:</p>\n<p>$$\\left( \\sum_{k=1}^{q}{k \\cdot T(i_k)} \\right) \\pmod {10^9+7} \\text{,}$$</p>\n<p>where $T(i_k)$ is the total execution time of the function specified in the $k$-th query, taking into account all updates up to that query.</p>",
+  "input": "<p>The first line contains an integer $N$ ($1 ≤ N ≤ 8000$) indicating the number of functions. Each function is identified by a distinct integer from $1$ to $N$.</p>\n<p>The next line contains $N$ integers $B_1, B_2, \\dots , B_N$ ($0 ≤ B_i ≤ 10^9 $), representing that the base execution time of function $i$ is $B_i$.</p>\n<p>The next line contains an integer $M$ ($1 ≤ M ≤ 8000$) denoting the number of call instructions among all the functions.</p>\n<p>Each of the next $M$ lines describes a call instruction with two integers $F$ and $G$ ($1 ≤ F, G ≤ N$ and $F \\ne G$), indicating that function $F$ contains a call instruction to function $G$.</p>\n<p>The next line contains an integer $E$ ($1 ≤ E ≤ 10^6$) representing the number of events in the list that your tool must accept.</p>\n<p>Each of the next $E$ lines describes an event, in the order they appear in the list.</p>\n<p>If the event is an update, the line contains the uppercase letter “<code>U</code>” followed by two integers $I$ ($1 ≤ I ≤ N$) and $V$ ($0 ≤ V ≤ 10^9$), denoting that the base execution time of function $I$ must be set to $V$.</p>\n<p>If the event is a query, the line contains the uppercase letter “<code>Q</code>” followed by an integer $J$ ($1 ≤ J ≤ N$), indicating that the total execution time of function $J$ must be determined, taking into account all previous updates that appear in the list.</p>\n<p>It is guaranteed that there are no cycles among the function calls, and there is at least one query in the list of events.</p>",
+  "output": "<p>Output a single line with an integer indicating the summary result of all the queries.</p>",
+  "samples": [
+    {
+      "input": "3\n10 20 100\n3\n1 2\n2 3\n1 3\n3\nQ 1\nQ 2\nQ 3\n",
+      "output": "770\n"
+    },
+    {
+      "input": "2\n42 10\n2\n2 1\n2 1\n5\nQ 2\nQ 1\nU 2 0\nQ 1\nQ 2\n",
+      "output": "640\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2024",
+  "level": 22,
+  "tags": [
+    "dp",
+    "graphs",
+    "dag",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 2.230799913406372
+}

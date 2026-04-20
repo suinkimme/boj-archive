@@ -1,0 +1,35 @@
+{
+  "id": 25839,
+  "title": "Village Transportation",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>This set started with a problem on presidential election and will end with another problem on the election!</p>\n<p>Our good friend, Democracy-Forever (DF), wants to make sure everyone will have a chance to vote. DF has found out that there are a few villages, the first village has a Voting Station, the remaining villages do not have voting stations and do not currently have connection (roads) to get to the first village (the only Voting Station). He has received government funding to build roads for all the villagers to get to the station (first village) and vote. Hopefully, the funding is enough!</p>\n<p>Democracy-Forever has determined the cost of constructing a one-way road between certain pairs of villages. DF needs to decide which roads to build to be sure everyone will be able to get to the Voting Station (directly or indirectly). It is, of course, desirable to have as much money left in DF’s pocket as possible at the end!</p>\n<p>What complicates the decision process (which roads to build) is that if a road originates from a village, the Leader of the village wants some Royalty; the Leader won’t allow the road construction otherwise. The Royalty is not, unfortunately, a fixed amount; it is based on a future forecast. More specifically, it is a factor of how much DF will have in his pocket at the end. For example, the solutions (needed roads) for the first two Sample Input are shown on the last page (Node 1 is the Voting Station and the remaining nodes represent the remaining villages). For the first example:</p>\n<ul>\n<li>The original budget is \\$100.</li>\n<li>It costs \\$15 to build the road from 2 to 1 and the Leader wants 4 times what is in DF’s pocket at the end (\\$10). So, the total cost for that road is \\$15 + (4 × \\$10) = \\$55.</li>\n<li>It costs \\$5 to build the road from 3 to 1 and the Leader wants 3 times what is in DF’s pocket at the end, so the total is \\$5 + (3 × \\$10) = \\$35.</li>\n<li>The two roads will get all the villagers to the Voting Station. The total expenditure is \\$55 + \\$35 = \\$90.</li>\n<li>The money left for DF at the end is \\$100 – \\$90 = \\$10.</li>\n</ul>\n<p>Democracy-Forever would like to know, given the budget (government funding) for the roads and the various cost associated with the road construction, the maximum amount he can pocket at the end. DF’s primary concern is, of course, for all the villagers to be able to get to the Voting Station.</p>",
+  "input": "<p>The first input line contains an integer, M (1 ≤ M ≤ 1,000,000,000,000), representing the funding for the project, i.e., the budget (dollar amount).</p>\n<p>The second input line contains two integers: V (2 ≤ V ≤ 1,000), representing the number of villages (Node 1 is the Voting Station and Nodes 2–V are the remaining villages), and R (1 ≤ R ≤ 1,000; R ≥ (V – 1)), representing the number of roads that can be constructed.</p>\n<p>Each of the following R input lines contains a road description. Each line contains four integers: b (1 ≤ b ≤ V), representing the origin for a road, e (1 ≤ e ≤ V; e ≠ b), representing the destination for a road, p (0 ≤ p ≤ 1,000), representing the cost for the road construction, and f (0 ≤ f ≤ 1,000), representing the Royalty factor for the road.</p>\n<p>Assume that, if all the roads are constructed, all the villagers will be able to get to the Voting Station (directly or indirectly).</p>",
+  "output": "<p>Print the maximum amount Democracy-Forever can have in his pocket at the end. If the funded budget is not enough to build all the needed roads, print the value 0 (zero).</p>\n<p>Print the answer as a floating point. Answers within 10<sup>-7</sup> absolute or relative of the judge output will be considered correct.</p>",
+  "samples": [
+    {
+      "input": "100\n3 5\n1 2 0 7\n2 1 15 4\n2 3 12 5\n3 1 5 3\n3 2 20 2\n",
+      "output": "10.0\n"
+    },
+    {
+      "input": "13\n4 4\n1 4 9 10\n2 3 2 1\n3 1 5 0\n4 2 3 4\n",
+      "output": "0.5\n"
+    },
+    {
+      "input": "5\n3 2\n2 1 100 50\n3 1 200 30\n",
+      "output": "0.0\n"
+    }
+  ],
+  "hint": "<p>Solution to the first Sample Input:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 470px; height: 86px;\"/></p>\n<p>Solution to the second Sample Input:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 636px; height: 88px;\"/></p>",
+  "source": "University, University of Central Florida, 2020 Local Programming Contest (Final Round)",
+  "level": 24,
+  "tags": [
+    "binary_search",
+    "directed_mst",
+    "graphs",
+    "parametric_search"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.727299928665161
+}

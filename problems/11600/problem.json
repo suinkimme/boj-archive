@@ -1,0 +1,25 @@
+{
+  "id": 11600,
+  "title": "Hilbert Sort",
+  "time_limit": "5 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In database storage, arranging data items according to a numeric key not only makes it easier to search for a particular item, but also makes better use of a CPU’s cache: any segment of data that’s contiguous in memory will describe items with similar keys. This is useful if, for instance, we want to access all items whose keys are in some range. Things get more complicated if the keys represent points on a 2D grid, as might happen in a GPS guidance system. If the points (x, y) are sorted primarily by x, breaking ties by y, then points that are adjacent in memory will have similar x coordinates but not necessarily similar y, potentially placing them far apart on the grid. To better preserve distances, we may sort the data along a continuous space-filling curve.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:305px; width:444px\"/></p>\n<p>We consider one such space-filling curve called the Hilbert curve. The Hilbert curve starts at the origin (0, 0) and finishes at (S, 0), in the process traversing the entire axis-aligned square with corners at (0, 0) and (S, S). It has the following recursive construction: split the square into four quadrants meeting at (S/2, S/2), and recursively fill each of them with a suitably rotated and scaled copy of the full Hilbert curve. First, the lower-left quadrant is filled with a curve going from (0, 0) to (0, S/2). Second, the upper-left quadrant is filled from (0, S/2) to (S/2, S/2). Third, the upperright quadrant is filled from (S/2, S/2) to (S, S/2). And finally, the lower-right quadrant is filled from (S, S/2) to (S, 0). The Hilbert curve can alternatively be constructed as the mathematical limit of a sequence of curves, the first six of which are shown in the figure.</p>\n<p>Given some locations of interest, you are asked to sort them according to when the Hilbert curve visits them. Note that while the curve intersects itself at infinitely many places, e.g., at (S/2, S/2); making S odd guarantees that all integer points are visited just once.</p>",
+  "input": "<p>The first line of input contains two space-separated integers n and S (1 ≤ n ≤ 200,000, 1 ≤ S &lt; 10<sup>9</sup> , S is odd). This is followed by n lines. Line i + 1 describes the ith location of interest by spaceseparated integers x<sub>i</sub> and y<sub>i</sub> (0 ≤ x<sub>i</sub>, y<sub>i</sub> ≤ S) and an identifier string consisting of at most 46 alphanumeric characters (‘A’–‘Z’, ‘a’–‘z’, ‘0’–‘9’). No two locations will share the same position or the same identifier.</p>",
+  "output": "<p>Print the n identifier strings, one on each line, Hilbert-sorted according to their positions.</p>",
+  "samples": [
+    {
+      "input": "14 25\n5 5 Honolulu\n5 10 PugetSound\n5 20 Victoria\n10 5 Berkeley\n10 10 Portland\n10 15 Seattle\n10 20 Vancouver\n15 5 LasVegas\n15 10 Sacramento\n15 15 Kelowna\n15 20 PrinceGeorge\n20 5 Phoenix\n20 10 SaltLakeCity\n20 20 Calgary\n",
+      "output": "Honolulu\nBerkeley\nPortland\nPugetSound\nVictoria\nVancouver\nSeattle\nKelowna\nPrinceGeorge\nCalgary\nSaltLakeCity\nSacramento\nLasVegas\nPhoenix\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Pacific Northwest Regional, 2015 Pacific Northwest Region Programming Contest, Division 1, ICPC, Regionals, North America, Southeast USA Regional, 2015 Southeast USA Regional Programming Contest, Division 1, ICPC, Regionals, North America, Southeast USA Regional, 2015 Southeast USA Regional Programming Contest, Division 2",
+  "level": 14,
+  "tags": [
+    "divide_and_conquer",
+    "implementation"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 2.1600000858306885
+}

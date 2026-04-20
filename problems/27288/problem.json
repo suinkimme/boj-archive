@@ -1,0 +1,36 @@
+{
+  "id": 27288,
+  "title": "Voting Cities",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The great Emperor, <em>Lord Pooty</em>, decided to retire and would like to hand over the crown to one of his many sons. In the spirit of democracy, he decided to do this with a vote! His kingdom consists of $N$ cities labelled from $0$ to $N - 1$. Of these $N$ cities, $K$ of them are voting cities where voting can be done. The $i$th voting city is $T_i$.</p>\n<p>As a reponsible member of society, you decided that it is only right for you to do your civic duty. You are to travel to one of the designated voting cities to vote! There are $E$ roads that can be used. Road $j$ connects city $U_j$ to city $V_j$ <strong>in one direction</strong> and has a toll of $C_j$. Luckily, due to this event, local cities have opened a ticket system to reduce the cost of traveling.</p>\n<p>There are $5$ different types of tickets to choose from, numbered from type $1$ to type $5$. A ticket of type $x$ will reduce the cost of the toll on a road by $(10x)\\%$. In other words, the cost of the road will be multiplied by $\\left(1 - \\frac{x}{10}\\right)$ if a ticket of type $x$ is used.</p>\n<p>However, there are a few rules regarding the tickets. You cannot use more than one ticket on one road to stack the effects. You are only allowed to buy at most one of each ticket at the start of your journey. For example, you can choose to buy one type $1$ ticket and one type $2$ ticket but are not allowed to buy two type $2$ tickets. This is to prevent people from hoarding the tickets. You are only allowed to buy the tickets at the start of your journey.</p>\n<p>You are a busy man and unfortunately, you do not know which city you may start your journey from, nor do you know the ticket prices. You have made a list of $Q$ possible situations, comprised of a starting city $S$ and ticket prices $P_1$, $P_2$, $P_3$, $P_4$ and $P_5$ for the $5$ tickets. <strong>It is possible that a certain ticket may not even be available, and in that case the ticket price will be $-1$.</strong></p>\n<p>For each of these situations, find the minimum cost to one of the voting city if it is reachable by road. Do note that not every city is reachable from every other and you may have to walk..</p>",
+  "input": "<p>Your program must read from standard input.</p>\n<p>The first line of input contains $3$ integers $N$, $E$ and $K$ representing the number of cities, number of roads and number of voting cities respectively. The second line contains $K$ integers, the $i$th one representing $T_i$, the $i$th voting city.</p>\n<p>The next $E$ contain $3$ integers each. The $j$th of these lines consists of $U_j$, $V_j$ and $C_j$ respectively, representing a unidirectional road from $U_j$ to $V_j$ with cost $C_j$. <strong>It is guaranteed that $C_j$ is divisible by $10$.</strong></p>\n<p>The next line contains a single integer $Q$, representing the number of situations to be considered.</p>\n<p>The next $Q$ lines contain $6$ integers $S$, $P_1$, $P_2$, $P_3$, $P_4$ and $P_5$ representing the starting city and the prices of the tickets of type $1$ to type $5$ respectively. Note that the starting city and ticket prices can differ across the different situations provided.</p>",
+  "output": "<p>Your program must print to standard output.</p>\n<p>Output $Q$ lines with $1$ integer on each line, representing the lowest cost to a voting city for each situation in the order provided in the input. If a path does not exist for a situation, print $-1$ instead.</p>",
+  "samples": [
+    {
+      "input": "3 2 1\n2\n0 1 100\n1 2 200\n1\n0 10 20 1000 2000 -1\n",
+      "output": "280\n"
+    },
+    {
+      "input": "2 0 1\n1\n1\n0 -1 -1 -1 -1 -1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "6 3 2\n4 5\n0 4 100\n1 4 200\n2 5 300\n4\n0 -1 -1 -1 -1 -1\n1 20 40 10 100 4\n2 1 2 3 4 0\n3 0 -1 0 0 0\n",
+      "output": "100\n104\n150\n-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2022",
+  "level": 17,
+  "tags": [
+    "bitmask",
+    "dijkstra",
+    "dp",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 3.6875
+}

@@ -1,0 +1,31 @@
+{
+  "id": 13936,
+  "title": "Iron and Coal",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are many excellent strategy board games, and your favourite among them is called “Steel Age”. It offers many different paths to victory but you prefer the blood-and-fire-strategy: build as many soldiers as possible and club your opposition into submission. To be able to build soldiers you need two resources: iron ore and coal.</p>\n<p>The board consists of different cells numbered from 1 to n which can contain resources. The rules for moving from one cell to another are rather complicated: if you can move from cell A to cell B, it does not always mean that you can also move from B to A. For example, if two cells are connected by a river, then you may be able to move downstream, but not upstream, so long as you didn’t invent a steam engine; however, it still could be possible to reach the upstream cell by using roads and taking a detour over other cells.</p>\n<p>At the beginning of the game you own only one such cell, where all your settlers are located. At every move you are allowed to move an arbitrary number of settlers from a cell to one of its accessible neighbours. By moving your settlers into a cell for the first time, you “claim” it. Every claimed cell will bind one settler, which has to stay in this cell until the end of the game. However, there is no need to leave a settler in your initial cell because it is where your palace is located and thus the cell stays claimed for all time.</p>\n<p>Your goal is to claim at least one cell containing the resource “iron ore” and at least one cell with resource “coal” in order to be able to build soldiers. What is the minimal number of settlers you need to reach this goal?</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with three integers n (2 ≤ n ≤ 10<sup>5</sup>), the number of cells on the playing field, m (1 ≤ m &lt; n), the number of cells containing iron ore, and k (1 ≤ k &lt; n), the number of cells containing coal.</li>\n<li>One line with m distinct integers o<sub>1</sub>, . . . , o<sub>m</sub> (1 ≤ o<sub>i</sub> ≤ n for all 1 ≤ i ≤ m), where o<sub>1</sub>, . . . , o<sub>m</sub> are the IDs of cells with iron ore.</li>\n<li>One line with k distinct integers c<sub>1</sub>, . . . , c<sub>k</sub> (1 ≤ c<sub>i </sub>≤ n for all 1 ≤ i ≤ k), where c<sub>1</sub>, . . . , c<sub>k</sub> are the IDs of cells with coal.</li>\n<li>n lines describing the topology of the board. The j-th line of this block specifies the accessible neighbours of the j-th cell and consists of the following integers:\n\t<ul>\n<li>One integer 0 ≤ a ≤ 10, the number of cells accessible from cell j.</li>\n<li>a distinct integers b<sub>1</sub>, . . . , b<sub>a</sub> (1 ≤ b<sub>i</sub> ≤ n, b<sub>i</sub> ≠ j for all 1 ≤ i ≤ a), the IDs of the cells accessible from cell j.</li>\n</ul>\n</li>\n</ul>\n<p>It is guaranteed, that no cell contains both resources, iron ore and coal. At the beginning of the game you own only the cell with ID 1.</p>",
+  "output": "<p>Output the minimum number of settlers needed to claim at least one cell with coal and at least one cell with iron ore. Output “impossible” if it is impossible to own both, coal and iron ore.</p>",
+  "samples": [
+    {
+      "input": "3 1 1\n2\n3\n1 2\n2 3 1\n1 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 1 1\n2\n3\n1 2\n1 1\n2 1 2\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2016",
+  "level": 14,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 67,
+  "submission_count": null,
+  "average_tries": 2.2090001106262207
+}

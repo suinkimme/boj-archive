@@ -1,0 +1,43 @@
+{
+  "id": 16743,
+  "title": "Eulerian Flight Tour",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You have an airline route map of a certain region. All the airports in the region and all the <em>non-stop routes</em> between them are on the map. Here, a non-stop route is a flight route that provides non-stop flights in both ways.</p>\n<p>Named after the great mathematician Leonhard Euler, an <em>Eulerian tour</em> is an itinerary visiting all the airports in the region taking a single flight of every non-stop route available in the region. To be precise, it is a list of airports, satisfying all of the following.</p>\n<ul>\n<li>The list begins and ends with the same airport.</li>\n<li>There are non-stop routes between pairs of airports adjacent in the list.</li>\n<li>All the airports in the region appear <em>at least once</em> in the list. Note that it is allowed to have some airports appearing multiple times.</li>\n<li>For all the airport pairs with non-stop routes in between, there should be <em>one and only one adjacent appearance</em> of two airports of the pair in the list in either order.</li>\n</ul>\n<p>It may not always be possible to find an Eulerian tour only with the non-stop routes listed in the map. Adding more routes, however, may enable Eulerian tours. Your task is to find a set of additional routes that enables Eulerian tours.</p>",
+  "input": "<p>The input consists of a single test case.</p>\n<pre>\nn m\na<sub>1</sub> b<sub>1</sub>\n.\n.\n.\na<sub>m</sub> b<sub>m</sub></pre>\n<p>n (3 ≤ n ≤ 100) is the number of airports. The airports are numbered from 1 to n. m (0 ≤ m ≤ n(n−1)/2) is the number of pairs of airports that have non-stop routes. Among the m lines following it, integers a<sub>i</sub> and b<sub>i</sub> on the i-th line of them (1 ≤ i ≤ m) are airport numbers between which a non-stop route is operated. You can assume 1 ≤ a<sub>i</sub> &lt; b<sub>i</sub> ≤ n, and for any i ≠ j, either a<sub>i</sub> ≠ a<sub>j</sub> or b<sub>i</sub> ≠ b<sub>j</sub> holds.</p>",
+  "output": "<p>Output a set of additional non-stop routes that enables Eulerian tours. If two or more different sets will do, any one of them is acceptable. The output should be in the following format.</p>\n<pre>\nk\nc<sub>1</sub> d<sub>1</sub>\n.\n.\n.\nc<sub>k</sub> d<sub>k</sub></pre>\n<p>k is the number of non-stop routes to add, possibly zero. Each of the following k lines should have a pair of integers, separated by a space. Integers c<sub>i</sub> and d<sub>i</sub> in the i-th line (c<sub>i</sub> &lt; d<sub>i</sub>) are airport numbers specifying that a non-stop route is to be added between them. These pairs, (c<sub>i</sub>, d<sub>i</sub>) for 1 ≤ i ≤ k, should be distinct and should not appear in the input.</p>\n<p>If adding new non-stop routes can never enable Eulerian tours, output -1 in a line.</p>",
+  "samples": [
+    {
+      "input": "4 2\n1 2\n3 4\n",
+      "output": "2\n1 4\n2 3\n"
+    },
+    {
+      "input": "6 9\n1 4\n1 5\n1 6\n2 4\n2 5\n2 6\n3 4\n3 5\n3 6\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "6 7\n1 2\n1 3\n1 4\n2 3\n4 5\n4 6\n5 6\n",
+      "output": "3\n1 5\n2 4\n2 5\n"
+    },
+    {
+      "input": "4 3\n2 3\n2 4\n3 4\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "5 5\n1 3\n1 4\n2 4\n2 5\n3 5\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Yokohama Regional Contest 2018, Camp, Petrozavodsk Programming Camp, Winter 2019, Day 3: Japanese Contest, deuslovelt",
+  "level": 22,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "case_work",
+    "dfs"
+  ],
+  "accepted_user_count": 42,
+  "submission_count": null,
+  "average_tries": 4.309500217437744
+}

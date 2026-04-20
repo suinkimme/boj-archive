@@ -1,0 +1,32 @@
+{
+  "id": 22028,
+  "title": "렉",
+  "time_limit": "8 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>오래된 컴퓨터에서 그림판을 사용하고 있다. 그림판의 화면은 픽셀이라 부르는 칸을 가진 격자 모양이다. 가장 왼쪽 아래 픽셀의 좌표를 $(1, 1)$로 하고, 오른쪽으로 $a$번째 위쪽으로 $b$번째 픽셀의 좌표를 $(a, b)$로 한다. 초기 화면에는 수직, 수평 변을 가진 &nbsp;$N$개의 직사각형들이 그려져 있다. 직사각형은 이 구역안에 포함된 픽셀들로 표현된다.&nbsp;</p>\r\n\r\n<p>$N$개의 직사각형에 $M$개의 이동 명령이 수행될 것이다. 직사각형의 이동은 동, 서, 남, 북의 4방향과 북동, 북서, 남동, 남서(수평축과 45도 방향) 4방향으로 이루어진다. 또한 이동 거리 $d$가 주어진다. 다시 말해서, 이동 명령은 방향과 거리로 주어진다. 구체적으로, 직사각형의 가장 왼쪽, 아래 모서리 픽셀의 좌표가 $(a, b)$라 하면, 동, 북, 서, 남 방향으로 거리 $d$만큼의 이동은 모서리가 각각 $(a+d, b)$, $(a, b+d)$, $(a-d, b)$, $(a, b-d)$가 된다. 또한 북동, 북서, 남서, 남동 방향으로 거리 $d$만큼의 이동은 각각 $(a+d, b+d)$, $(a-d, b+d)$, $(a-d, b-d)$, $(a+d, b-d)$가 된다 (<strong>그림 1</strong>).</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 275px; height: 291px;\" />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img alt=\"\" src=\"2.png\" style=\"width: 270px; height: 290px;\" /></p>\r\n\r\n<p style=\"text-align: center;\"><strong>그림 1</strong></p>\r\n\r\n<p>화면에서 직사각형 $R$의 거리 $d$만큼 이동은 초기 위치를 포함해서 $R$이 거리 1 만큼 이동할 때마다 $R$의 모습을 순서대로 빠르게 나타냄으로서 구현된다. 하지만 우리의 컴퓨터는 아주 오래 되어서 $R$의 이동 시 렉이 심하게 걸린다. 결과적으로 $R$의 이동에서 그리게 되는 모든 $R$의 모습이 화면에 그대로 남아있게 된다. 따라서 $R$이 거리 $d$만큼 이동하면, $d$개의 직사각형들이 새롭게 화면에 만들어진다. 예를 들어, 아래 <strong>그림 2</strong>에서 직사각형이 북동방향으로 거리 3만큼 이동하면, 3개의 직사각형들이 만들어져서 총 4개의 직사각형이 화면 위에 남게 된다. 물론, 이동 후에는 북동 방향 끝에 있는 직사각형이 $R$ 이 된다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 140px; height: 158px;\" /></p>\r\n\r\n<p style=\"text-align: center;\"><strong>그림 2</strong></p>\r\n\r\n<p>$M$개의 이동 명령을 수행한 후 $Q$개의 질의가 주어질 것이다. 각 질의는 평면 상의 픽셀 $p$로 주어진다. 질의에 대한 대답으로 픽셀 $p$를 포함하는 직사각형들의 개수를 출력한다. &nbsp;</p>\r\n",
+  "input": "<p>첫째 줄에 공백으로 구분된 세 정수 $N$, $M$, $Q$가 주어진다.</p>\r\n\r\n<p>다음 $N$개의 줄에는 공백으로 구분된 네 개의 정수&nbsp;$x_1$, $y_1$, $x_2$, $y_2$가 주어지며, 직사각형의 가장 왼쪽 아래 픽셀의 좌표가&nbsp;$(x_1, y_1)$, 가장 오른쪽 위 픽셀의 좌표가&nbsp;$(x_2, y_2)$임을 의미한다. 직사각형은 $1$부터 $N$의 정수로 나타내며, $1$번 직사각형부터 순서대로 주어진다.</p>\r\n\r\n<p>다음 $M$개의 줄에는 공백으로 구분된 세 개의 정수&nbsp;$v_i$, $x_i$, $d_i$가 주어진다. \b$x_i$번째 직사각형이 $v_i$ 방향으로 $d_i$만큼 이동함을 나타낸다. $v_i$의 값은 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>0: $(+1, 0)$</li>\r\n\t<li>1: $(+1, +1)$&nbsp;</li>\r\n\t<li>2: $(0, +1)$</li>\r\n\t<li>3: $(-1, +1)$&nbsp;</li>\r\n\t<li>4: $(-1, 0)$</li>\r\n\t<li>5: $(-1, -1)$&nbsp;</li>\r\n\t<li>6: $(0, -1)$</li>\r\n\t<li>7: $(+1, -1)$&nbsp;</li>\r\n</ul>\r\n\r\n<p>다음 $Q$개의 줄에는 공백으로 구분된 두 정수 $x$, $y$가 주어지며, 질의에 해당하는 평면 상의 픽셀 $p$의 좌표 $(x, y)$를 나타낸다.</p>\r\n",
+  "output": "<p>각각의 질의마다 질의의 픽셀 $p$를 포함하는 직사각형들의 개수를 출력한다. $i$번째 줄에는 $i$번 질의의 결과를 출력해야 한다. ($0 &le; i &le; Q-1$)</p>\r\n",
+  "samples": [
+    {
+      "input": "1 8 3\n2 1 2 1\n0 1 1\n1 1 1\n2 1 1\n3 1 1\n4 1 1\n5 1 1\n6 1 1\n7 1 1\n1 1\n2 1\n4 2\n",
+      "output": "0\n2\n1\n"
+    },
+    {
+      "input": "2 0 3\n3 3 7 7\n4 4 6 6\n5 5\n3 7\n8 8\n",
+      "output": "2\n1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Camp, Petrozavodsk Programming Camp, Winter 2022, Day 2: Grand Prix of Daejeon, Olympiad, 국제정보올림피아드 대표학생 선발고사, 2021, 1차 선발고사, Contest, Open Cup, 2021/2022 Season, Stage 11: Grand Prix of Daejeon, koosaga",
+  "level": 24,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "segtree",
+    "sweeping",
+    "lazyprop"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 4.59089994430542
+}

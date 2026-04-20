@@ -1,0 +1,26 @@
+{
+  "id": 31182,
+  "title": "Crystalfly",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Paimon is catching crystalflies on a tree, which are a special kind of butterflies in Teyvat. A tree is a connected graph consisting of $n$ vertices and $(n - 1)$ undirected edges. </p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 400px; height: 266px;\"/></p>\n<p style=\"text-align: center;\">Pixiv ID: 93964680</p>\n<p>There are initially $a_i$ crystalflies on the $i$-th vertex. When Paimon reaches a vertex, she can catch all the remaining crystalflies on the vertex immediately. However, the crystalflies are timid. When Paimon reaches a vertex, all the crystalflies on the adjacent vertices will be disturbed. For the $i$-th vertex, if the crystalflies on the vertex are disturbed for the first time at the beginning of the $t'$-th second, they will disappear at the end of the $(t' + t_{i})$-th second.</p>\n<p>At the beginning of the $0$-th second, Paimon reaches vertex $1$ and stays there before the beginning of the $1$-st second. Then at the beginning of each following second, she can choose one of the two operations:</p>\n<ul>\n<li>Move to one of the adjacent vertices of her current vertex and stay there before the beginning of the next second (if the crystalflies in the destination will disappear at the end of that second she can still catch them).</li>\n<li>Stay still in her current vertex before the beginning of the next second.</li>\n</ul>\n<p>Calculate the maximum number of crystalflies Paimon can catch in $10^{10^{10^{10^{10}}}}$ seconds.</p>",
+  "input": "<p>There are multiple test cases. The first line of the input contains an integer $T$ indicating the number of test cases. For each test case:</p>\n<p>The first line contains an integer $n$ ($1 \\le n \\le 10^5$) indicating the number of vertices.</p>\n<p>The second line contains $n$ integers $a_1, a_2, \\cdots, a_n$ ($1 \\le a_i \\le 10^9$) where $a_i$ is the number of crystalflies on the $i$-th vertex.</p>\n<p>The third line contains $n$ integers $t_1, t_2, \\cdots, t_n$ ($1 \\le t_i \\le 3$) where $t_i$ is the time before the crystalflies on the $i$-th vertex disappear after disturbed.</p>\n<p>For the next $(n - 1)$ lines, the $i$-th line contains two integers $u_i$ and $v_i$ ($1 \\le u_i, v_i \\le n$) indicating an edge connecting vertices $u_i$ and $v_i$ in the tree.</p>\n<p>It's guaranteed that the sum of $n$ of all the test cases will not exceed $10^6$.</p>",
+  "output": "<p>For each test case output one line containing one integer indicating the maximum number of crystalflies Paimon can catch.</p>",
+  "samples": [
+    {
+      "input": "2\n5\n1 10 100 1000 10000\n1 2 1 1 1\n1 2\n1 3\n2 4\n2 5\n5\n1 10 100 1000 10000\n1 3 1 1 1\n1 2\n1 3\n2 4\n2 5\n",
+      "output": "10101\n10111\n"
+    }
+  ],
+  "hint": "<p>For the first sample test case, follow the strategy below.</p>\n<ul>\n<li>During the $0$-th second\n\t<ul>\n<li>Paimon arrives at vertex $1$;</li>\n<li>Paimon catches $1$ crystalfly;</li>\n<li>Crystalflies in vertices $2$ and $3$ are disturbed.</li>\n</ul>\n</li>\n<li>During the $1$-st second\n\t<ul>\n<li>Paimon arrives at vertex $3$;</li>\n<li>Paimon catches $100$ crystalflies.</li>\n</ul>\n</li>\n<li>During the $2$-nd second\n\t<ul>\n<li>Paimon arrives at vertex $1$;</li>\n<li>Crystalflies in vertex $2$ disappears.</li>\n</ul>\n</li>\n<li>During the $3$-rd second\n\t<ul>\n<li>Paimon arrives at vertex $2$;</li>\n<li>Crystalflies in vertices $4$ and $5$ are disturbed.</li>\n</ul>\n</li>\n<li>During the $4$-th second\n\t<ul>\n<li>Paimon arrives at vertex $5$;</li>\n<li>Paimon catches $10000$ crystalflies;</li>\n<li>Crystalflies in vertex $4$ disappears.</li>\n</ul>\n</li>\n</ul>\n<p>For the second sample test case, the optimal strategy is the same with the first sample test case. Crystalflies in vertex $2$ are scheduled to disappear at the end of the $3$-rd (instead of the $2$-nd) second, allowing Paimon to catch them.</p>",
+  "source": "Contest, Open Cup, 2021/2022 Season, Stage 9: Grand Prix of Nanjing",
+  "level": 19,
+  "tags": [
+    "dp",
+    "trees",
+    "dp_tree"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.18179988861084
+}

@@ -1,0 +1,26 @@
+{
+  "id": 23954,
+  "title": "Lucky Dip",
+  "time_limit": "서브태스크 참고 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are participating in the Grand Kickstart Lucky Dip with many fantastic and amazing prizes (and some not so good ones)!</p>\n<p>In this Lucky Dip, there is a bag with <b>N</b> items. The i-th item in the bag has value <b>V<sub>i</sub></b>. You will put your hand into the bag and draw one item at random; all items in the bag have an equal probability of being chosen. The organizers want contestants to feel that they have some element of choice, so after you draw an item, you can either keep it, or \"redip\" by returning it to the bag and drawing again. (Note that the returned item is now just as likely to be chosen as any of the other items in the bag.) You may only redip a maximum of <b>K</b> times. If you use <b>K</b> redips, you must keep the item that you draw on your (<b>K</b> + 1)-th draw.</p>\n<p>If you play optimally to maximize the value of the item you will end the game with, what is the <a href=\"https://en.wikipedia.org/wiki/Expected_value\">expected value</a> of that item?</p>",
+  "input": "<p>The input starts with one line containing one integer <b>T</b>: the number of test cases. <b>T</b> test cases follow.</p>\n<p>Each test case consists of two lines. The first line consists of two integers <b>N</b> and <b>K</b>: the number of items in the bag, and the maximum number of times you may redip. The second line consists of <b>N</b> integers <b>V<sub>i</sub></b>, each representing the value of the i-th item.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the expected value described above. Your answer will be considered correct if it is within an absolute or relative error of 10<sup>-6</sup> of the correct answer.</p>",
+  "samples": [
+    {
+      "input": "5\n4 0\n1 2 3 4\n3 1\n1 10 1\n3 15\n80000 80000 80000\n1 1\n10\n5 3\n16 11 7 4 1\n",
+      "output": "Case #1: 2.500000\nCase #2: 6.000000\nCase #3: 80000.000000\nCase #4: 10.000000\nCase #5: 12.358400\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, you cannot redip, so the expected value is just the mean of the items in the bag which is (1 + 2 + 3 + 4) / 4 = 2.5.</p>\n<p>In Sample Case #2, the best strategy is to keep the item of value 10 if you get it, and redip otherwise. The chance of getting that item (on either the first or second draw) is 1 - (2/3)<sup>2</sup> = 5/9, hence the expected value is (5/9 * 10) + (4/9 * 1) = 6.</p>\n<p>In Sample Case #3, since all the items have the same value, it does not matter how many times you redip and hence the expected value is 80000.</p>\n<p>Note that cases #3 and #5 would not appear in the Small dataset.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2018, Round A",
+  "level": 14,
+  "tags": [
+    "math",
+    "binary_search",
+    "probability"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1
+}

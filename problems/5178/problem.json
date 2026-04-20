@@ -1,0 +1,29 @@
+{
+  "id": 5178,
+  "title": "시간 초과",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>지금껏 문제를 풀면서 시간 초과 메시지를 본 적이 있을 것이다.</p>\r\n\r\n<p>시간 초과의 이유엔 여러 가지가 있지만, 주로 제출한 코드의 시간복잡도가 문제에서 요구하는 최대 한도의 시간복잡도를 상회했을 때 발생한다.</p>\r\n\r\n<p>이번 문제를 풀면서 시간복잡도에 대한 이해도를 높이고 시간 초과 메시지를 덜 받도록 해보자.</p>\r\n\r\n<p>어떤 소스 코드가 주어지면 이 소스 코드의 시간복잡도를 계산하면 된다.</p>\r\n\r\n<p>물론 그냥 계산하기엔 너무 어려우므로, 다음과 같은 간소화된 방식으로 계산해보도록 하자.</p>\r\n\r\n<p>프로그램은 단 네 개의 명령어만을 가진다고 가정한다. 목록은 아래와 같다.</p>\r\n\r\n<ul>\r\n\t<li>basic : 사칙연산 혹은 값 할당 등의 기초적인 코드</li>\r\n\t<li>loop : 반복문의 시작</li>\r\n\t<li>endloop : 반복문의 끝</li>\r\n\t<li>endprogram : 프로그램의 종료</li>\r\n</ul>\r\n\r\n<p>프로그램 분석은 아래의 규칙에 따라 시행한다.</p>\r\n\r\n<ul>\r\n\t<li>위에 주어진 네가지 명령어만이 프로그램에 존재한다.</li>\r\n\t<li>loop문은 항상 하나의 전달 인자를 가지며, 대응되는 하나의 endloop문(loop의 시작 이후로 만나는 첫 endloop문)과 묶여 하나의 반복문이 된다.</li>\r\n\t<li>loop의 전달 인자는 x, y, 또는 양의 정수가 될 수 있으며, x, y는 상수이다. 프로그램 실행 도중 재할당되지 않는다. 이 전달인자만큼 루프를 반복하게 된다.</li>\r\n\t<li>만일 어떤 loop문 내에 basic 코드가 하나도 존재하지 않는다면 의미없는 루프이므로 전달인자의 값에 관계없이 그 loop를 즉시 종료하게 된다.</li>\r\n\t<li>만일 어떤 loop문 내에 basic 코드가 여러 개 존재하더라도 한 개의 basic 코드가 있는 것과 같이 생각해도 된다.</li>\r\n\t<li>basic 코드는 실행에 상수 시간이 걸린다.</li>\r\n</ul>\r\n\r\n<p>시간복잡도는 basic 구문의 실행 횟수를 함수로 나타낸 뒤 빅오 표기법을 사용하여 분석한다.</p>\r\n\r\n<p>빅오 표기법의 정의는 다음과 같다.</p>\r\n\r\n<p>어떤 임의의 양의 상수 c와 d를 잘 골라, 1 이상인 모든 x에 대하여 c*g(x) &le; f(x) &le; d*g(x)를 만족하게 할 수 있다면 f(x)의 빅오 표기는 O(g)이다.</p>\r\n\r\n<p>좀 더 쉽게 설명하면, 모든 상수부는 떼어내버릴 수 있다는 의미이다.</p>\r\n\r\n<p>예를 들면 4x <sup>3</sup>의 빅오 표기는 x<sup>3</sup>가 된다.</p>\r\n\r\n<p>또한, 어떤 항보다 낮은 차수를 가지는 항들은 통째로 제거하는 것이 가능하다.</p>\r\n\r\n<p>예를 들어, x <sup>3</sup> + x<sup>2</sup>의 빅오 표기는 x<sup>3</sup>이 되며, x<sup>2</sup> + 7의 빅오 표기는 x<sup>2</sup>가 된다.</p>\r\n\r\n<p>하지만 여러 서로 다른 변수가 섞여있다면 다른 항보다 작다고 확신할 수 없는 항들은 모두 표기해야 한다.</p>\r\n\r\n<p>예를 들어, x <sup>2</sup>y + y<sup>2</sup>x + xy + x<sup>2</sup> 의 빅오 표기는 x<sup>2</sup>y + y<sup>2</sup>x가 되며, x<sup>2</sup> + 17xy + y<sup>2</sup> 의 빅오 표기는 x<sup>2</sup> + y<sup>2</sup>이 된다.</p>\r\n",
+  "input": "<p>첫 줄에 테스트 케이스의 수 K가 주어진다.</p>\r\n\r\n<p>각 테스트 케이스는 빈 줄로 구분한다.</p>\r\n\r\n<p>프로그램은 문제에서 설명한 네 가지의 명령어로만 구성되어 있으며, endprogram은 항상 가장 바깥의 loop문보다 더 아래에 단 하나 존재한다.</p>\r\n\r\n<p>loop와 전달인자 x 사이에는 단 한개의 공백이 있으며, 이 경우를 제외하고는 프로그램 내에 어떤 공백이나 이상한 문자가 주어지는 경우는 없다.</p>\r\n\r\n<p>loop문의 최대 중첩 횟수는 50회이다.</p>\r\n",
+  "output": "<p>각 테스트 케이스마다 Data Set K: 를 출력한 뒤, 입력으로 주어진 프로그램의 시간복잡도를 출력한다.</p>\r\n\r\n<p>각 항은 x의 차수가 높은 것부터, x의 차수가 같다면 y의 차수가 높은 것부터 차례대로 출력한다.</p>\r\n\r\n<p>각 항을 출력할 땐 최대한 축약해야 한다. 예를 들어, x^1y^1을 출력하는 대신에 xy를 출력해야 하며, x^1y^0을 출력하는 대신에 x를 출력해야 한다.</p>\r\n\r\n<p>그 외의 출력 형식에 대한 내용은 예제 출력을 보면 된다.</p>\r\n\r\n<p>각 테스트 케이스의 사이엔 빈 줄을 하나 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3\nloop x\nendloop\nendprogram\n\nbasic\nbasic\nendprogram\n\nloop y\nbasic\nloop y\nbasic\nbasic\nendloop\nendloop\nloop x\nloop y\nbasic\nendloop\nloop x\nbasic\nendloop\nendloop\nendprogram\n",
+      "output": "Data Set 1:\n0\n\nData Set 2:\n1\n\nData Set 3:\nx^2 + y^2\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Fall 2007: Programming Contest Programming Contest, portableangel, WeissBlume",
+  "level": 18,
+  "tags": [
+    "math",
+    "implementation",
+    "string",
+    "geometry",
+    "parsing",
+    "convex_hull"
+  ],
+  "accepted_user_count": 36,
+  "submission_count": null,
+  "average_tries": 5.861100196838379
+}

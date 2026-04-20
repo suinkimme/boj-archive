@@ -1,0 +1,27 @@
+{
+  "id": 28195,
+  "title": "Is This FFT?",
+  "time_limit": "15 초",
+  "memory_limit": "952 MB",
+  "description": "<p>Consider the following method of generating a random tree of size $n$:</p>\n<p>Take all $n(n-1)/2$ possible edges, and choose a uniformly random permutation on them. Start with an empty graph, iterate over the edges in the chosen order, and if the edge connects two different connected components, add it to the graph. In the end, you will get a tree.</p>\n<p>For all n from $2$ to given $N$, calculate the probability that this algorithm generates a bamboo modulo given $P$. It is guaranteed that $P$ is prime and $P \\bmod 2^{16} = 1$.</p>\n<p>Recall that bamboo is a tree in which degrees of all vertices are at most 2.</p>\n<p>Since we give you the modulus, you might want to use Barrett reduction <a href=\"https://en.wikipedia.org/wiki/Barrett_reduction\">https://en.wikipedia.org/wiki/Barrett_reduction</a>. It allows you to compute $x \\bmod P$ several times faster than usual, where $P$ is constant but is not known at compile time. Link to KACTL implementation with additional info: <a href=\"https://github.com/kth-competitive-programming/kactl/blob/main/content/various/FastMod.h\">https://github.com/kth-competitive-programming/kactl/blob/main/content/various/FastMod.h</a>.</p>\n<p>Code:</p>\n<pre>\nusing u32 = unsigned int;\nusing u64 = unsigned long long;\nusing u128 = __uint128_t;\nstruct Barrett {\n    u64 b, m;\n\n    Barrett() : b(), m() {}\n    Barrett(u64 _b) : b(_b), m(-1ULL / _b) {}\n\n    u32 reduce(u64 x) {\n        u64 q = (u64)((u128(m) * x) &gt;&gt; 64), r = x - q * b;\n        return r - b * (r &gt;= b);\n    }\n} BA;</pre>\n<p>Usage example:</p>\n<pre>\nu32 mult(u32 x, u32 y) {\n    return BA.reduce((u64)x * y);\n}\n\nint main() {\n    int n, P;\n    cin &gt;&gt; n &gt;&gt; P;\n    BA = Barrett(P);\n    cout &lt;&lt; mult(123456, 7890123) &lt;&lt; endl;\n    return 0;\n}\n</pre>\n<p>Don't forget to construct an instance of Barrett before using it.</p>\n<p>We do not guarantee that this problem is solvable without Barrett reduction or other fast multiplication methods.</p>",
+  "input": "<p>The only line contains two integers $N$ and $P$ ($2 \\le N \\le 250$, $2 &lt; P &lt; 10^{9}$). It is guaranteed that $P$ is prime and $P \\bmod 2^{16} = 1$.</p>",
+  "output": "<p>Print $N-1$ integers --- answers to the problem for all $n$ from 2 to $N$.</p>\n<p>Recall that, if probability can be expressed as an irreducible fraction $u / v$, and $v$ is coprime with $P$, the probability modulo $P$ is $(u \\cdot v^{-1}) \\bmod P$, where $v^{-1}$ is the multiplicative inverse of $v$ modulo $P$.</p>",
+  "samples": [
+    {
+      "input": "10 998244353\n",
+      "output": "1\n1\n532396989\n328786831\n443364983\n567813846\n34567523\n466373946\n474334062\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2023, Day 6: Um_nik mod 998 244 353 Contest",
+  "level": 27,
+  "tags": [
+    "math",
+    "graphs",
+    "combinatorics",
+    "fft"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

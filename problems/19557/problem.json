@@ -1,0 +1,28 @@
+{
+  "id": 19557,
+  "title": "Mixture",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>Serge, the chef of the famous restaurant “Salt, Pepper &amp; Garlic” is trying to obtain his first Michelin star. He has been informed that a secret expert plans to visit his restaurant this evening.</p>\n<p>Even though the expert’s name hasn’t been disclosed, Serge is certain he knows which dish from the menu will be ordered as well as what the taste preferences of the expert are. Namely, the expert requires an extremely precise proportion of salt, pepper and garlic powder in his dish.</p>\n<p>Serge keeps a set of bottles with mixtures of salt, pepper and garlic powder on a special shelf in the kitchen. For each bottle, he knows the exact amount of each of the ingredients in kilograms. Serge can combine any number of bottled mixtures (or just use one of them directly) to get a mixture of particular proportions needed for a certain dish.</p>\n<p>Luckily, the absolute amount of a mixture that needs to be added to a dish is so small that you can assume that the amounts in the bottles will always be sufficient. However, the numeric values describing the proportions may be quite large.</p>\n<p>Serge would like to know whether it is possible to obtain the expert’s favourite mixture from the available bottles, and if so—what is the smallest possible number of bottles needed to achieve that.</p>\n<p>Furthermore, the set of bottles on the shelf may change over time as Serge receives new ones or lends his to other chefs. So he would like to answer this question after each such change.</p>\n<p>For example, assume that expert’s favorite mixture is 1 : 1 : 1 and there are three bottles of mixtures on the shelf (Table 1):<span style=\"display: none;\"> </span></p>\n<table class=\"table table-bordered\" style=\"width: 100%;\">\n<thead>\n<tr>\n<th rowspan=\"2\" style=\"text-align: center;\">Mixture</th>\n<th colspan=\"3\" style=\"text-align: center;\">The amount of an ingredient in a bottle, kg</th>\n</tr>\n<tr>\n<th style=\"text-align: center;\">Salt</th>\n<th style=\"text-align: center;\">Pepper</th>\n<th style=\"text-align: center;\">Garlic powder</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">10</td>\n<td style=\"text-align: center;\">20</td>\n<td style=\"text-align: center;\">30</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">300</td>\n<td style=\"text-align: center;\">200</td>\n<td style=\"text-align: center;\">100</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">12</td>\n<td style=\"text-align: center;\">15</td>\n<td style=\"text-align: center;\">27</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Table 1: Bottles on the shelf</p>\n<p>To obtain the desired mixture it is enough to use an equivalent amount of mixtures from bottles 1 and 2. If bottle 2 is removed, then it is no longer possible to obtain it.</p>\n<p>Write a program that helps Serge to solve this task!</p>",
+  "input": "<p>The first row contains three non-negative integers S<sub>f</sub>, P<sub>f</sub> and G<sub>f</sub> (0 ≤ S<sub>f</sub>, P<sub>f</sub>, G<sub>f</sub>; 0 &lt; S<sub>f</sub> + P<sub>f</sub> + G<sub>f</sub> ≤ 10<sup>6</sup>) describing the amount of salt, pepper and garlic powder in the expert’s favourite mixture. For any real α &gt; 0, (αS<sub>f</sub>, αP<sub>f</sub>, αG<sub>f</sub>) also is an expert’s favourite mixture. In the second row, there is a positive integer N (number of changes on the shelf, N ≤ 100 000). You should assume that initially the shelf is empty. Each of the next N rows describes a single change on the shelf:</p>\n<ul>\n<li>If a new bottle is added, the row contains capital letter A followed by three non-negative integers S<sub>i</sub>, P<sub>i</sub> and G<sub>i</sub> (0 ≤ S<sub>i</sub>, P<sub>i</sub>, G<sub>i</sub>; 0 &lt; S<sub>i</sub>+P<sub>i</sub>+G<sub>i</sub> ≤ 10<sup>6</sup>) describing the amount of salt, pepper and garlic powder in the added bottle. Added bottles are numbered consecutively by unique integers starting from 1, that is, the i-th bottle corresponds to the i-th added bottle in the input data.</li>\n<li>If a particular bottle is removed from the shelf, the row contains capital letter R followed by the integer — the bottle number r<sub>i</sub>. All values r<sub>i</sub> in the removals are unique, r<sub>i</sub> never exceeds total number of bottles added thus far.</li>\n</ul>",
+  "output": "<p>Output N rows. The j-th row (1 ≤ j ≤ N) should contain the number x<sub>j</sub>, the smallest number of bottles needed to prepare a mixture with the expert’s favourite proportions of salt, pepper and garlic powder using the bottles available after the first j changes on the shelf, or 0 if it is not possible.</p>",
+  "samples": [
+    {
+      "input": "1 2 3\n6\nA 5 6 7\nA 3 10 17\nR 1\nA 15 18 21\nA 5 10 15\nR 3\n",
+      "output": "0\n2\n0\n2\n1\n1\n"
+    }
+  ],
+  "hint": "<p>Pay attention that bottles 1 and 3 contain the same proportions of salt, pepper and garlic powder.</p>",
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2020",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "geometry",
+    "math",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2.4286000728607178
+}

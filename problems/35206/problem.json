@@ -1,0 +1,40 @@
+{
+  "id": 35206,
+  "title": "Coherency",
+  "time_limit": "8 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>It is the 25th of March, 40025 CE in the world of <em>Battle Axe Player Clash 40,000</em> (BAPC40K). This futuristic table-top miniatures wargame is played with endearing figurines called <em>models</em>, each of which is placed on a circular <em>base</em>. The models are placed on a $100\\,\\text{km} \\times 100\\,\\text{km}$ gaming board. A collection of such models forms a <em>coherent unit</em> if between any pair of models there is an unbroken chain of models that have a Euclidean distance of at most two inches<sup>1</sup> between the edges of their bases. Moreover, if the unit contains seven models or more, each model must be within two inches of at least <em>two</em> other models. Given the positions of a collection of models with varying base diameters, determine whether they form a single coherent unit.</p>\n<p>One can prove that for any valid input for this problem, if the diameters of the circular bases differ from the given diameter by at most $10^{-5}\\,\\text{mm}$, the coherency of a unit of models does not change.</p>\n<hr/>\n<p><sup>1</sup>Recall that an inch equals $25.4\\,\\text{mm}$.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with an integer $n$ ($2\\leq n \\leq 2\\cdot 10^5$), the number of models.</li>\n<li>$n$ lines, each with three integers $x$, $y$, and $d$ ($0 \\leq x, y \\leq 10^8$, $d\\in\\{25, 28, 32, 40, 50, 65, 80, 90, 100, 130, 160\\}$), describing a model that has its center coordinates at $(x,y)$ and a base diameter of $d$, all given in millimeters.</li>\n</ul>\n<p>Each model (including the base) fits on the gaming board.</p>\n<p>It is guaranteed that no two models are overlapping, but the models can touch.</p>",
+  "output": "<p>If the $n$ models form a single coherent unit, output \"<code>yes</code>\". Otherwise, output \"<code>no</code>\".</p>",
+  "samples": [
+    {
+      "input": "2\n13 13 25\n88 13 25\n",
+      "output": "yes\n"
+    },
+    {
+      "input": "2\n13 13 25\n89 13 25\n",
+      "output": "no\n"
+    },
+    {
+      "input": "7\n1255 1120 65\n1204 1226 160\n1090 1252 65\n998 1179 160\n998 1061 65\n1090 988 160\n1204 1014 65\n",
+      "output": "no\n"
+    },
+    {
+      "input": "7\n1066 910 130\n1007 1032 130\n875 1062 130\n770 978 130\n770 843 130\n875 758 130\n1007 788 130\n",
+      "output": "yes\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 768px; height: 582px;\"/></p>\n<p style=\"text-align: center;\">Figure C.1: Illustration of the samples. Samples 1 and 4 are coherent. Sample 2 is not coherent, because the two models are too far away. Sample 3 is not coherent, because not all models are within two inches of two other models.</p>",
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2025",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "sorting",
+    "ad_hoc",
+    "geometry",
+    "set"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.5
+}

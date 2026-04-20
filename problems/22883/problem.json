@@ -1,0 +1,28 @@
+{
+  "id": 22883,
+  "title": "은퇴한 자들의 게임",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>PS계를 성공적으로 은퇴한 제연이와 덕인이는 허전한 마음을 달래기 위해 새로운 보드게임을 개발했다. 이 게임은 $K$개의 판과 $K$개의 말로 구성된다. $i (i=1,\\cdots,K)$번째 판은 세로 길이 $N_i$, 가로 길이 $M_i$ 크기의 격자판인데, 게임을 시작하기 전 울타리를 사용해 경계를 만든다.</p>\r\n\r\n<p>울타리는 격자의 <strong>변</strong>을 따라 짓는다. 격자판의 왼쪽 위 꼭짓점에서부터 오른쪽(<code>R</code>) 또는 아래(<code>D</code>)로만 길이 1씩 움직여서 오른쪽 아래 꼭짓점에 도달하는 길이 $N_i + M_i$의 경로들을 고려하자. 이 중 시작점과 끝점을 제외하고는 만나지 않는 <strong>두 경로</strong>를 골라 이들을 따라 울타리를 지었을 때 이를 <strong>좋은 울타리 배치</strong>라고 한다.</p>\r\n\r\n<table class=\"table table-bordered td-center\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td><img alt=\"\" src=\"1.png\" style=\"width: 189px; height: 218px;\" /></td>\r\n\t\t\t<td><img alt=\"\" src=\"2.png\" style=\"width: 189px; height: 218px;\" /></td>\r\n\t\t\t<td><img alt=\"\" src=\"3.png\" style=\"width: 189px; height: 218px;\" /></td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>(a)</td>\r\n\t\t\t<td>(b)</td>\r\n\t\t\t<td>(c)</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p style=\"text-align: center;\">그림 K.1: 좋은 울타리 배치와 나쁜 울타리 배치</p>\r\n\r\n<p>예를 들어 $N_i = 5, M_i = 4$인 경우를 살펴보자. (a)의 경우 두 경로 <code>RRDRDDDRD</code>, <code>DDRRDDDRR</code>이 시작점과 끝점을 제외하고는 만나지 않으므로 좋은 울타리 배치이다. 한편 (b)의 경우 선택된 두 경로 <code>RDRDRDRDD</code>, <code>DDRRDDDRR</code>이 시작점도 끝점도 아닌 곳에서 만나므로 좋은 울타리 배치가 아니다. (c)의 경우 두 경로 중 하나가 오른쪽 또는 아래로만 움직이는 경로가 아니므로 마찬가지로 좋은 울타리 배치가 아니다.</p>\r\n\r\n<p>게임은 $K$개의 격자판에 각각 좋은 울타리 배치로 경계를 만든 뒤, 각 격자판의 가장 왼쪽 위 <strong>칸</strong>에 말을 하나씩 놓은 상태로 시작된다. 게임은 제연이가 먼저 시작해 한 턴씩 번갈아 가며 진행된다. 제연이는 자신의 차례에 $K$개의 말 중 하나를 골라 <strong>오른쪽으로 한 칸</strong> 이동시켜야 하고, 덕인이는 자신의 차례에 $K$개의 말 중 하나를 골라 <strong>아래로 한 칸</strong> 이동시켜야 한다. 울타리를 넘어서 말을 이동시킬 수는 없으며, 자신의 차례에 움직일 수 있는 말이 없는 사람이 게임에서 지게 된다.</p>\r\n\r\n<p>안타깝게도 이 게임은 행운 요소가 하나도 없는 실력겜이라 두 사람이 최선을 다한다면 게임을 하기 전에도 이길 사람을 알 수 있다. 둘은 더 이상 PS 문제를 풀 의지가 남아있지 않기 때문에 여러분이 이길 사람을 알려줘야 한다.</p>\r\n",
+  "input": "<p>첫째 줄에 정수 $K (1 \\leq K)$가 주어진다.</p>\r\n\r\n<p>두번째 줄부터 $i=1,\\cdots,K$ 번째 격자판의 정보가 각각 세 줄씩 주어진다. 첫째 줄에 정수 $N_i, M_i$가 주어지고, 이후 두 개의 줄에는 울타리를 짓는 두 경로가 각각 길이 $N_i + M_i$의 문자열로 주어진다. 각 문자열은 <code>R</code> 또는 <code>D</code>로만 이루어져 있으며, 좋은 울타리 배치를 표현한다. ($1 \\leq N_i,\\, 1 \\leq M_i,\\, \\sum_{i=1}^{K} \\left(N_i+M_i\\right) \\leq 500\\ 000$)</p>\r\n",
+  "output": "<p>두 사람이 최선을 다해서 게임을 진행할 때, 제연이가 이기면 <code>First</code>, 덕인이가 이기면 <code>Second</code>를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2\n3 2\nRRDDD\nDRDDR\n1 2\nDRR\nRRD\n",
+      "output": "First\n"
+    },
+    {
+      "input": "2\n2 2\nDRDR\nRRDD\n4 5\nRDRDDRRRD\nDDDRDRRRR\n",
+      "output": "Second\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 222px; height: 134px;\" /></p>\r\n\r\n<p style=\"text-align: center;\">그림 K.2: 예제 1 참고</p>\r\n\r\n<p>예제 1의 초기 게임판은 위와 같다. 제연이가 첫 번째 턴에 두 번째 판의 말을 오른쪽으로 움직이면 덕인이는 더 이상 말을 움직일 수 없으므로 제연이가 이긴다.</p>\r\n",
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2021, Contest, Open Cup, 2021/2022 Season, Stage 17: Grand Prix of Seoul, tlwpdus, cki86201, functionx, jh05013, koosaga, pichulia",
+  "level": 25,
+  "tags": [
+    "game_theory"
+  ],
+  "accepted_user_count": 47,
+  "submission_count": null,
+  "average_tries": 2.914900064468384
+}

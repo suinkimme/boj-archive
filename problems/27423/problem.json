@@ -1,0 +1,37 @@
+{
+  "id": 27423,
+  "title": "Cake Decoration",
+  "time_limit": "10 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are ordering a cake to celebrate the New Year. You have to decide the numbers of decoration items to be topped on the cake. Available items are dog figures, cat figures, red candies, and blue candies.</p>\n<p>You want all four items to decorate the cake, and all the numbers of the four items to be different from each other. You also want the number of figures (the sum of dogs and cats) to be within a certain range.</p>\n<p>An extra charge for the decoration items is added to the price of the cake. The extra is, although quite queer, the product of the numbers of the four decoration items. You want the cake to look gorgeous as far as the budget allows. Thus, you are not satisfied with a decoration if you can add any of the four items without violating the budget constraint.</p>\n<p>The conditions stated above are summarized as follows. Let $d$, $c$, $r$, and $b$ be the numbers of dog figures, cat figures, red candies, and blue candies, respectively. All these numbers should be different positive integers satisfying the following conditions for given $X$, $L$, and $R$:</p>\n<ul>\n<li>$L ≤ d + c &lt; R$,</li>\n<li>$d \\times c \\times r \\times b ≤ X$,</li>\n<li>$(d + 1) \\times c \\times r \\times b &gt; X$,</li>\n<li>$d \\times (c + 1) \\times r \\times b &gt; X$,</li>\n<li>$d \\times c \\times (r + 1) \\times b &gt; X$, and</li>\n<li>$d \\times c \\times r \\times (b + 1) &gt; X$.</li>\n</ul>\n<p>More than one combination of four numbers of decoration items may satisfy the conditions. Your task is to find how many such combinations exist.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<blockquote>\n<p>$X$ $L$ $R$</p>\n</blockquote>\n<p>Here, $X$, $L$, and $R$ are integers appearing in the conditions stated above. They satisfy $1 ≤ X ≤ 10^{14}$ and $1 ≤ L &lt; R ≤ 10^{14}$.</p>",
+  "output": "<p>Output the number of combinations of four numbers of decoration items that satisfy the conditions stated above modulo a prime number $998\\,244\\,353 = 2^{23} \\times 7 \\times 17 + 1$.</p>",
+  "samples": [
+    {
+      "input": "24 4 6\n",
+      "output": "12\n"
+    },
+    {
+      "input": "30 5 6\n",
+      "output": "4\n"
+    },
+    {
+      "input": "30 9 20\n",
+      "output": "0\n"
+    },
+    {
+      "input": "100000000000000 1 100000000000000\n",
+      "output": "288287412\n"
+    }
+  ],
+  "hint": "<p>For Sample Input 2, four combinations of $(d, c, r, b) = (2, 3, 1, 5), (2, 3, 5, 1), (3, 2, 1, 5)$, and $(3, 2, 5, 1)$ satisfy all the conditions. $(d, c, r, b) = (1, 4, 2, 3)$ is not eligible because its extra cost for the decoration items does not exceed $X = 30$ even after adding one more cat figure. $(d, c, r, b) = (1, 5, 2, 3)$ is also ineligible because $d + c &lt; R = 6$ does not hold.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2022 Asia Yokohama Regional, Camp, Petrozavodsk Programming Camp, Summer 2023, Day 1: Starting Contest",
+  "level": 23,
+  "tags": [
+    "binary_search",
+    "math"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 2.0799999237060547
+}

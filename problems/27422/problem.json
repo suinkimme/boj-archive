@@ -1,0 +1,36 @@
+{
+  "id": 27422,
+  "title": "Remodeling the Dungeon",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The Queen of Icpca resides in a castle peacefully. One day, she heard that many secret agents had been active in other nations, and got worried about the security of the castle.</p>\n<p>The castle has a rectangular dungeon consisting of $h$ rows of $w$ square rooms. Adjacent rooms are separated by a wall. Some walls have doorways making the separated rooms intercommunicate. The entrance and the exit of the dungeon are in the rooms located at two diagonal extreme corners. The dungeon rooms form a <em>tree</em>, that is, the exit room is reachable from every room in the dungeon through a unique route that passes all the rooms on the route only once.</p>\n<p>In order to enhance the security of the castle, the Queen wants to remodel the dungeon so that the number of rooms on the route from the entrance room to the exit room is maximized. She likes the tree property of the current dungeon, so it must be preserved. Due to the cost limitation, what can be done in the remodeling is to block one doorway to make it unavailable and to construct one new doorway instead on a wall (possibly on the same wall).</p>\n<p>Your mission is to find a way to remodel the dungeon as the Queen wants.</p>",
+  "input": "<p>The input consists of a single test case in the following format.</p>\n<blockquote>\n<p>$h$ $w$</p>\n<p>$c_{1,1}c_{1,2}\\cdots c_{1,2w+1}$</p>\n<p>$c_{2,1}c_{2,2}\\cdots c_{2,2w+1}$</p>\n<p>$\\vdots$</p>\n<p>$c_{2h+1,1}c_{2h+1,2}\\cdots c_{2h+1,2w+1}$</p>\n</blockquote>\n<p>$h$ and $w$ represent the size of the dungeon, each of which is an integer between $2$ and $500$, inclusive. The characters $c_{i,j}$ ($1 ≤ i ≤ 2h + 1$, $1 ≤ j ≤ 2w + 1$) represent the configuration of the dungeon as follows:</p>\n<ul>\n<li>$c_{2i,2j} =$ <code>‘.’</code> for $1 ≤ i ≤ h$ and $1 ≤ j ≤ w$, which corresponds to the room $i$-th from the north end and $j$-th from the west end of the dungeon; such a room is called the room $(i, j)$.</li>\n<li>$c_{2i+1,2j} =$ <code>‘.’</code> or <code>‘-’</code> for $1 ≤ i ≤ h - 1$ and $1 ≤ j ≤ w$, which represents the wall between the rooms $(i, j)$ and $(i + 1, j)$; the character <code>‘.’</code> means that the wall has a doorway and <code>‘-’</code> means it has no doorway</li>\n<li>$c_{2i,2j+1} =$ <code>‘.’</code> or <code>‘|’</code> for $1 ≤ i ≤ h$ and $1 ≤ j ≤ w - 1$, which represents the wall between the rooms $(i, j)$ and $(i, j + 1)$; the character <code>‘.’</code> means that the wall has a doorway and <code>‘|’</code> means it has no doorway.</li>\n<li>$c_{1,2j} = c_{2h+1,2j} =$ <code>‘-’</code> ($1 ≤ j ≤ w$) and $c_{2i,1} = c_{2i,2w+1} =$ <code>‘|’</code> ($1 ≤ i ≤ h$), which correspond to the outer walls of the dungeon.</li>\n<li>$c_{2i+1,2j+1} =$ <code>‘+’</code> for $0 ≤ i ≤ h$ and $0 ≤ j ≤ w$, which corresponds to an intersection of walls or outer walls.</li>\n</ul>\n<p>The entrance and the exit of the dungeon are in the rooms $(1, 1)$ and $(h, w)$, respectively. The configuration satisfies the tree property stated above.</p>",
+  "output": "<p>Output the maximum length of the route from the entrance room to the exit room achievable by the remodeling, where the length of a route is the number of rooms passed including both the entrance and exit rooms.</p>",
+  "samples": [
+    {
+      "input": "2 3\n+-+-+-+\n|.....|\n+.+.+.+\n|.|.|.|\n+-+-+-+\n",
+      "output": "6\n"
+    },
+    {
+      "input": "2 3\n+-+-+-+\n|...|.|\n+.+.+.+\n|.|...|\n+-+-+-+\n",
+      "output": "4\n"
+    },
+    {
+      "input": "5 5\n+-+-+-+-+-+\n|...|...|.|\n+-+.+.+.+.+\n|...|.|.|.|\n+.+.+.+-+.+\n|.|...|.|.|\n+.+.+-+.+.+\n|.|.....|.|\n+-+.+.+-+.+\n|...|.....|\n+-+-+-+-+-+\n",
+      "output": "15\n"
+    }
+  ],
+  "hint": "<p>In the first sample, if you block the doorway between the rooms $(1, 1)$ and $(1, 2)$ and construct a new doorway between the rooms $(2, 1)$ and $(2, 2)$, then the unique route from $(1, 1)$ to $(2, 3)$ passes all of the $6$ rooms, which is obviously the maximum.</p>\n<p>In the second sample, any remodeling keeps the length of the unique route from $(1, 1)$ to $(2, 3)$ to be exactly $4$.</p>\n<p>In the third sample, one of the optimal ways is blocking the doorway between the rooms $(4, 2)$ and $(4, 3)$ and constructing a new doorway between the rooms $(2, 4)$ and $(3, 4)$.</p>\n<p>The configurations after the remodeling described above are as follows.</p>\n<pre>\n+-+-+-+    +-+-+-+    +-+-+-+-+-+\n|.|...|    |...|.|    |...|...|.|\n+.+.+.+    +.+.+.+    +-+.+.+.+.+\n|...|.|    |.|...|    |...|.|.|.|\n+-+-+-+    +-+-+-+    +.+.+.+.+.+\n                      |.|...|.|.|\n                      +.+.+-+.+.+\n                      |.|.|...|.|\n                      +-+.+.+-+.+\n                      |...|.....|\n                      +-+-+-+-+-+</pre>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2022 Asia Yokohama Regional, Camp, Petrozavodsk Programming Camp, Summer 2023, Day 1: Starting Contest",
+  "level": 19,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "trees",
+    "dfs"
+  ],
+  "accepted_user_count": 56,
+  "submission_count": null,
+  "average_tries": 2.482100009918213
+}

@@ -1,0 +1,34 @@
+{
+  "id": 33204,
+  "title": "Old Orhei",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Old Orhei (Orheiul Vechi) is a natural and historical complex located on a narrow bend of the Răut River. It consists of $N$ archaeological vestiges and $M$ <strong>one-way</strong> roads between some pairs of vestiges. Every road has a unique index between $1$ and $M$, defined by the input order in which it is given. Please refer to the <em>Examples</em> section for visualizing such a configuration.</p>\n<p>Recently an array left by the Cucuteni–Trypillia civilization was discovered by the local scientists. The array consists of $T$ integers with values between $1$ and $M$. In order to figure out the mystical meaning of this array, the new intern will be instructed to follow this procedure:</p>\n<p>At the beginning, the intern starts at some initial archaeological vestige. The other scientists start broadcasting to him a contiguous sub-array of the main array (first broadcasting the first element of the subarray, then the second one, and so on). The intern then changes his location depending on the following rules:</p>\n<ul>\n<li>If the intern can use the road indexed with the current broadcast number (in other words, the intern's current location is equal to the starting point of the corresponding road), the intern traverses it (goes to the end-point of the corresponding road).</li>\n<li>Otherwise the intern does nothing, and remains in his current location.</li>\n</ul>\n<p>With the occasion of the $8$-th European Junior Olympiad in Informatics, the local scientists have asked you to help them perform the following $Q$ queries:</p>\n<ul>\n<li>$1$ $L$ $R$ $S$ - the scientists want to know what will be the final location of the intern if initially he is located in the $S$-th vestige, and only the contiguous sub-array of the initial array which starts at index $L$ and ends at index $R$ is broadcasted.</li>\n<li>$2$ $i$ $K$ - the scientists override the $i$-th element of the array with the value $K$. The change is permanent. (In other words, the array changes so that $A_i = K$ after performing the query).</li>\n</ul>\n<p>Your task is to answer correctly to all the queries of type $1$.</p>",
+  "input": "<p>The first line contains two space-separated integers $N$ and $M$, the number of archaeological vestiges and one-way roads.</p>\n<p>The next $M$ lines contain the description of the roads. In particular, line i will contain two space-separated numbers indicating that the $i$-th road starts in $X_i$ and ends in $Y_i$. There can exist roads for which $X_i = Y_i$ as well as pairs of roads for which $X_i = X_j$ , $Y_i = Y_j$ but $i \\ne j$.</p>\n<p>The next line contains an integer $T$, the length of the found array.</p>\n<p>The next line contains $T$ space-separated integers $A_1 ,A_2, \\dots ,A_T$, representing the array elements.</p>\n<p>The next line contains an integer $Q$, the number of queries.</p>\n<p>The next $Q$ lines contain the query description:</p>\n<ul>\n<li>$1$ $L$ $R$ $S$ for a query of type $1$.</li>\n<li>$2$ $i$ $K$ for a query of type $2$.</li>\n</ul>",
+  "output": "<p>For each query of type $1$ output the answer on a separate line.</p>",
+  "samples": [
+    {
+      "input": "5 6\n1 2\n3 2\n4 2\n2 5\n5 1\n4 5\n6\n2 1 4 2 5 3\n3\n1 3 5 2\n1 3 5 2\n1 1 2 3\n",
+      "output": "1\n1\n2\n"
+    },
+    {
+      "input": "3 3\n1 2\n2 3\n3 1\n4\n3 1 1 2\n4\n1 1 2 3\n2 2 2\n1 1 2 3\n1 1 4 2\n",
+      "output": "2\n1\n3\n"
+    },
+    {
+      "input": "2 3\n1 1\n1 2\n1 2\n4\n1 1 2 3\n3\n1 1 2 1\n2 1 2\n1 1 2 1\n",
+      "output": "1\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, European Junior Olympiad in Informatics, eJOI 2024",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "segtree"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2
+}

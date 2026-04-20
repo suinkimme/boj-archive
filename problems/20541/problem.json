@@ -1,0 +1,38 @@
+{
+  "id": 20541,
+  "title": "앨범정리",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p dir=\"ltr\">지혜는 컴퓨터에 있는 사진들을 정리하기 위해 앨범정리 프로그램을 만들었다. 지혜가 만든  앨범정리 프로그램은 기본적으로 \"album\" 앨범이 존재하며 \"album\" 앨범은 절대로 삭제할 수 없다. 프로그램을 실행시키면 \"album\" 앨범부터 시작하여 명령어들을 통해 앨범 삭제/추가, 사진 삭제/추가, 현재앨범 이동 등을 할 수 있다. 앨범정리 프로그램은 다음과 같은 명령어 들로 구성 되어 있다. 수행할 명령어의 개수 $N$이 주어질 때 각 명령어 수행 후 문자열 출력이 필요한 명령어에 대해서 문자열을 출력한다.</p>\n<ol>\n<li>mkalb\n\t<ul>\n<li><strong>명령어 수행후</strong>: 현재 앨범에 속해있는 앨범 중 동일한 이름을 가진 앨범이 존재하여 앨범이 생성되지 않았으면 \"duplicated album name\"을 출력합니다. 그렇지 않다면 아무것도 출력하지 않습니다.</li>\n<li>mkalb $S$\n\t\t<ul>\n<li>현재 앨범에 $S$ 의 이름을 가진 앨범을 생성합니다.</li>\n<li>현재 앨범에 속해있는 앨범 중 동일한 이름을 가진 앨범이 존재하면 앨범을 생성하지 않습니다.</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>rmalb\n\t<ul>\n<li><strong>명령어 수행후</strong>: 삭제된 앨범의 개수와 사진의 개수를 공백으로 구분하여 출력합니다.</li>\n<li>rmalb $S$\n\t\t<ul>\n<li>현재 앨범에 속해있는 앨범 중 $S$ 의 이름을 가진 앨범이 존재한다면, 해당 앨범을 삭제합니다.</li>\n<li>삭제된 앨범에 속한 모든 앨범과 사진들 또한 삭제됩니다.</li>\n</ul>\n</li>\n<li>rmalb -1\n\t\t<ul>\n<li>현재 앨범에 속해있는 앨범이 존재한다면, 이름이 사전순으로 가장 빠른 앨범을 삭제 합니다.</li>\n<li>삭제된 앨범에 속한 모든 앨범과 사진들 또한 삭제됩니다.</li>\n</ul>\n</li>\n<li>rmalb 0\n\t\t<ul>\n<li>현재 앨범에 속해있는 모든 앨범을 삭제 합니다.</li>\n<li>삭제된 앨범에 속한 모든 앨범과 사진들 또한 삭제됩니다.</li>\n</ul>\n</li>\n<li>rmalb 1\n\t\t<ul>\n<li>현재 앨범에 속해있는 앨범이 존재한다면, 이름이 사전순으로 가장 늦은 앨범을 삭제 합니다. </li>\n<li>삭제된 앨범에 속한 모든 앨범과 사진들 또한 삭제됩니다.</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>insert\n\t<ul>\n<li><strong>명령어 수행후</strong>: 현재 앨범에 속해있는 사진 중에 동일한 이름을 가진 사진이 존재하여 사진이 삽입되지 않았으면 \"duplicated photo name\"을 출력합니다. 그렇지 않다면 아무것도 출력하지 않습니다.</li>\n<li>insert $S$\n\t\t<ul>\n<li>현재 앨범에 $S$ 의 이름을 가진 사진을 삽입합니다.</li>\n<li>현재 앨범에 속해있는 사진 중 동일한 이름을 가진 사진이 존재하면 사진을 삽입하지 않습니다.</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>delete\n\t<ul>\n<li><strong>명령어 수행후</strong>: 삭제된 사진의 개수를 출력합니다.</li>\n<li>delete $S$\n\t\t<ul>\n<li>현재 앨범에 속해있는 사진 중 $S$ 의 이름을 가진 사진이 존재한다면, 해당 사진을 삭제합니다.</li>\n</ul>\n</li>\n<li>delete -1\n\t\t<ul>\n<li>현재 앨범에 속해있는 사진이 존재한다면, 이름이 사전순으로 가장 빠른 사진을 삭제 합니다.</li>\n</ul>\n</li>\n<li>delete 0\n\t\t<ul>\n<li>현재 앨범에 속해있는 모든 사진을 삭제합니다.</li>\n</ul>\n</li>\n<li>delete 1\n\t\t<ul>\n<li>현재 앨범에 속해있는 사진이 존재한다면, 이름이 사전순으로 가장 늦은 사진을 삭제 합니다. </li>\n</ul>\n</li>\n</ul>\n</li>\n<li>ca\n\t<ul>\n<li><strong>명령어 수행후</strong>: 현재 앨범 이름을 출력합니다.</li>\n<li>ca $S$\n\t\t<ul>\n<li>현재 앨범에 속해있는 앨범 중 $S$ 의 이름을 가진 앨범으로 이동합니다.</li>\n<li>현재 앨범에 속해있는 앨범 중 $S$ 의 이름을 가진 앨범이 없다면 현재 앨범에 머무릅니다.</li>\n</ul>\n</li>\n<li>ca ..\n\t\t<ul>\n<li>현재 앨범의 상위 앨범으로 이동합니다.</li>\n<li>현재 앨범이 최상위 앨범인 \"album\" 앨범이라면 현재 앨범에 머무릅니다.</li>\n</ul>\n</li>\n<li>ca /\n\t\t<ul>\n<li>최상위 앨범인 \"album\" 앨범으로 이동합니다.</li>\n</ul>\n</li>\n</ul>\n</li>\n</ol>\n<p>\"A가 B에 속해있다\"라는 것은 A의 <strong>바로 하위</strong>에 B가 있다는 것을 의미합니다. 만약 A가 B에 속해있고, B가 C에 속해있는 경우, A는 C에 속해 있는 것이 아닙니다. </p>",
+  "input": "<p>첫째 줄에 수행할 명령어의 개수 $N$이 주어진다.</p>\n<p>다음줄 부터 $N$줄에 걸쳐 앨범정리 프로그램의 명령어가 주어진다.</p>",
+  "output": "<p>문제 본문에 나와있는 앨범정리 프로그램 명령어의 설명에 따라 적절한 문자열을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "24\nmkalb animal\nmkalb insect\nca animal\nmkalb sky\nmkalb land\nmkalb ocean\nca land\ninsert elephant\ninsert tiger\ninsert banana\ndelete banana\nca elephant\nca ..\nca ocean\ninsert whale\nca /\nca insect\nmkalb land\nmkalb sky\nca ocean\nca ..\nca ..\nrmalb -1\nrmalb -1\n",
+      "output": "animal\nland\n1\nland\nanimal\nocean\nalbum\ninsect\ninsect\nalbum\nalbum\n4 3\n3 0\n"
+    },
+    {
+      "input": "29\nmkalb domestic\nmkalb ovarseas\nca domestic\nca incheon\nmkalb incheon\nca incheon\nmkalb chinatown\nmkalb wolmido\nca chinatown\ninsert jajangmyeon\ninsert champon\ninsert friedrice\ninsert jajangmyeon\nca /\nca domestic\nrmalb incheon\nca /\nrmalb ovarseas\nmkalb overseas\nca overseas\nmkalb japanese\nmkalb europe\nrmalb japanese\nca europe\nrmalb 0\nca ..\ndelete europe\nca ..\nrmalb 1\n",
+      "output": "domestic\ndomestic\nincheon\nchinatown\nduplicated photo name\nalbum\ndomestic\n3 3\nalbum\n1 0\noverseas\n1 0\neurope\n0 0\noverseas\n0\nalbum\n2 0\n"
+    },
+    {
+      "input": "30\nmkalb univ\nmkalb middle\nmkalb elementary\ninsert middle\nca middle\ninsert middleschool\nca ..\nrmalb middle\nca univ\nmkalb inha\ninsert kaist\ninsert harvard\ndelete harvard\nca inha\nmkalb inkyungho\nmkalb hightech\nmkalb jungseok\ndelete 0\nrmalb 1\nca jungseok\nca hightech\nmkalb computer\nmkalb elect\nmkalb machine\nrmalb 1\nrmalb 1\ninsert computer\ninsert elect\nca /\nrmalb 0\n",
+      "output": "middle\nalbum\n1 1\nuniv\n1\ninha\n0\n1 0\ninha\nhightech\n1 0\n1 0\nalbum\n6 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 인하대학교, 2020 인하대학교 프로그래밍 경진대회 (IUPC), polohee81, august14, bsgreentea, dlstj0923, dongwoo338, rhs0266, tony9402, tyoungs",
+  "level": 16,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "trees",
+    "set",
+    "hash_set",
+    "tree_set"
+  ],
+  "accepted_user_count": 206,
+  "submission_count": null,
+  "average_tries": 3.9853999614715576
+}

@@ -1,0 +1,30 @@
+{
+  "id": 18643,
+  "title": "Game of Hex",
+  "time_limit": "10 초",
+  "memory_limit": "48 MB (추가 메모리 없음) (하단 참고)",
+  "description": "<p><em>Note the unusually low memory limit and please read the note about Java below if you are using it.</em></p>\n<p>The game of Hex is played on a rhombic hexagonal grid consisting of n × n hexagons. An example grid for n = 5 is pictured below:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 258px; height: 170px;\"/></p>\n<p>Two players have their own colors, let’s say red and blue. The players alternate turns, and in each turn a player colors a yet-uncolored hexagon with their own color. The red player starts, and the game ends when all hexagons have been colored.</p>\n<p>The red player wins if the left and the right side of the board are connected by a path consisting only of red hexagons. The blue player wins if the top side and the bottom side of the board are connected by a path consisting only of blue hexagons. The beauty of the game lies in the fact that these conditions are mutually exclusive, and moreover there are no draws: in the end exactly one player always wins.</p>\n<p>A path is a sequence of hexagons where each hexagon is adjacent (shares one of the six sides) to the previous one. Each of the four corner hexagons is considered connected to two sides of the board, in other words can be a starting/ending point of a winning path of either color.</p>\n<p>You are given the current state of an ongoing game of Hex. Consider all fully colored boards that this game could end up with. In how many of them does the red player win?</p>",
+  "input": "<p>The first line of the input contains a single integer n, 2 ≤ n ≤ 12.</p>\n<p>The next n lines describe the board row-by-row, according to the picture above. Each line contains n characters. Each character is one of:</p>\n<ol>\n<li>. (dot) denotes a yet-uncolored hexagon</li>\n<li>R (capital letter R) denotes a hexagon colored red</li>\n<li>B (capital letter B) denotes a hexagon colored blue</li>\n</ol>\n<p>It is guaranteed that the given board is a valid intermediate state in the game of Hex, in other words that the number of red hexagons is either the same or one more than the number of blue hexagons.</p>",
+  "output": "<p>Print one integer: the number of final boards in which the red player wins. Note that we only count distinct final boards, the order of moves used to get there does not matter.</p>",
+  "samples": [
+    {
+      "input": "2\nR.\n..\n",
+      "output": "1\n"
+    },
+    {
+      "input": "12\n............\n............\n............\n............\n............\n............\n............\n............\n............\n............\n............\n............\n",
+      "output": "740106499224393094996908447741294397438050\n"
+    }
+  ],
+  "hint": "<p>In the first sample, the only final board where the red player wins looks like this:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 103px; height: 83px;\"/></p>\n<p>In the second sample, since everything is symmetric the red player wins in exactly half of all \\(\\binom{144}{72}\\) \u0001possible final boards, and \\(\\frac{1}{2} \\cdot \\binom{144}{72}\\) \u0001= 740106499224393094996908447741294397438050.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 7: Petr Mitrichev Contest 15",
+  "level": 28,
+  "tags": [
+    "arbitrary_precision",
+    "dp",
+    "dp_connection_profile"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 3.5
+}

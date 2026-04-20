@@ -1,0 +1,27 @@
+{
+  "id": 24711,
+  "title": "Number Guessing",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Alice has a secret integer $y$, which is selected from $[1,10^{18}]$. Bob wants to get the number, so he asks Alice some questions. In each question, Bob gives an integer $x$ in $[1,10^{18}]$ to Alice, and Alice returns $0$ if $y &lt; x$, $1$ if $y = x$, and $2$ otherwise.</p>\n<p>Everything sounds great, but the communication between Alice and Bob has been tampered with by Eve! Eve wrote a random number generator $\\mathcal{H}$ that generates pseudorandom numbers between $0$ and $n-1$. Every time Bob gives the number, Eve will call $\\mathcal{H}$ to generate a pseudorandom number $x$, and gives Bob the bitwise exclusive-or sum of $x$ and the result that Alice returns.</p>\n<p>Bob found that the result returned by Alice has been tampered with by someone because he is getting conflicting results. By some means, Bob obtained $\\mathcal{H}$'s source code, which is shown below.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 512px; height: 125px;\"/></p>\n<p style=\"text-align: center;\">Fig. 1: How $\\mathcal{H}$ works.</p>\n<p>The constants $P$ and $n$ are specified in the code, so Bob also knows their values. But he knows nothing about the $\\mathit{seed}$, except that he knows the tamperer, Eve, will not modify the value during the interaction. Could you help Bob get the value of Alice's secret number in $100$ queries?</p>",
+  "input": "<p>The first line contains a single integer $t$, the number of test cases ($1 \\le t \\le 100$). Descriptions of the test cases follow.</p>\n<p>Each test case starts by a line containing two integers $n$ and $P$: the two constants in $\\mathcal{H}$. It is guaranteed that $3 \\le n \\le 4$, $10 \\le P \\le 10^{18}$, and $P$ is a prime number.</p>",
+  "output": "",
+  "samples": [
+    {
+      "input": "1\n3 998244353\n\n0\n\n0\n\n1\n\n1\n",
+      "output": "\n\n\n? 4\n\n? 2\n\n? 1\n\n! 1\n\n"
+    }
+  ],
+  "hint": "<p>In the example, we have $\\mathit{seed} = 0$, so Bob always receives the correct answer from Alice. It is reasonable for Bob to directly use binary search in this test case, but it does not apply to other possible situations.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2022, Day 6: ICPC Camp Day 1: PKU Contest",
+  "level": 23,
+  "tags": [
+    "ad_hoc",
+    "binary_search",
+    "math",
+    "number_theory"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 5
+}

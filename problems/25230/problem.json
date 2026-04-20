@@ -1,0 +1,36 @@
+{
+  "id": 25230,
+  "title": "Leaderboard Effect",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are in charge of a programming contest with a number of distinct problems and an overall time limit. The judges provide for each problem a reading time, a coding time, and a solution probability.</p>\n<p>During the contest, teams can view a leaderboard that shows the accepted submissions for each team. Seeing the leaderboard can have an effect on teams' strategies! All teams will follow the following strategy when solving problems in the contest:</p>\n<ol>\n<li>Choose to read a problem. To choose which problem to read, they first gather all the problems they haven't yet read (if they have read all problems, they will spend the rest of the contest doing nothing). If none of these problems have any solutions, they will choose to read one uniformly at random. Otherwise, they will choose a problem to read, randomly weighted by the number of solutions that it has. For example, if there are three problems <strong>A</strong>, <strong>B</strong>, <strong>C</strong> with $3$, $1$, and $0$ solutions respectively, they will choose to read problem <strong>A</strong> with probability $\\frac{3}{4}$, problem <strong>B</strong> with probability $\\frac{1}{4}$, and problem <strong>C</strong> with probability $\\frac{0}{4}$.</li>\n<li>After choosing any given problem, they first read it. This always takes the given reading time for that problem. After they finish reading the problem, they will know if they can solve it or not. The team will be able to solve the problem with the given probability (and this takes no time to decide). If they can't solve the problem, the team goes back to step $1$ and chooses another problem to read. Otherwise, they spend the given time coding the problem (even if there is not enough time left in the contest to finish) before going back to step $1$ to choose another problem to read. Once a team finishes coding the chosen problem, the problem is solved (receiving judgement takes no time); each problem solution affects the leaderboard, and therefore the problems other teams will attempt.</li>\n</ol>\n<p>At all moments of time, the leaderboard will first update with all the solutions that happened at that time, then teams will see the updated leaderboard.</p>\n<p>Let $f(m,i)$ be the expected number of teams that will solve problem $i$ if there are $m$ teams participating in the contest. Let $g(i) = lim_{m \\rightarrow \\infty}[\\frac{f(m,i)}{m}]$, which is the expected proportion of teams that will solve problem $i$ for a large enough number of teams. Output $g(i)$ for all problems $i$ in the set.</p>",
+  "input": "<p>The first line of input contains two integers $n$ ($1 \\le n \\le 17$) and $t$ ($1 \\le t \\le 100$), where $n$ is the number of problems in the contest, and $t$ is the time limit in minutes.</p>\n<p>Each of the next $n$ lines contains two integers $r$ and $c$ ($1 \\le r,c \\le t$) and one real number $p$ ($0.0 \\le p \\le 1.0$). Each line describes a problem, where $r$ is reading time in minutes, $c$ is coding time in minutes, and $p$ is the probability of solving the problem. </p>",
+  "output": "<p>Output $n$ lines. Each line contains a single real number, which is the expected proportion of teams that will solve that particular problem, given a large number of teams. Output these proportions for the problems in the same order as the input. The answers are accepted with absolute or relative error at most $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "4 42\n10 10 0.75\n10 10 0.75\n10 12 1\n10 12 1\n",
+      "output": "0.45625\n0.45625\n0.296875\n0.296875\n"
+    },
+    {
+      "input": "4 42\n10 12 0.75\n10 12 0.75\n10 10 1\n10 10 1\n",
+      "output": "0.203125\n0.203125\n0.683238636363636\n0.683238636363636\n"
+    },
+    {
+      "input": "5 100\n40 60 0.6\n40 61 1\n10 40 0.3\n10 40 0.4\n10 40 0.5\n",
+      "output": "0.12\n0\n0.112628571428571\n0.159739682539683\n0.206444444444444\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Championship, North America Championship 2022, Camp, Petrozavodsk Programming Camp, Summer 2022, Day 1: Welcome Contest",
+  "level": 20,
+  "tags": [
+    "math",
+    "dp",
+    "bitmask",
+    "probability",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 1.7856999635696411
+}

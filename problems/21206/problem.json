@@ -1,0 +1,34 @@
+{
+  "id": 21206,
+  "title": "Pegs and Legs",
+  "time_limit": "6 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Pegs and Legs is a game where a disk slides down a nearly-vertical board. At the bottom of the board are places for the disk to land, called <em>legs</em>. Each leg is worth a certain amount of points if your disk lands in it.</p>\n<p>You start with a disk at the top and drop it onto some <em>drop point</em> peg or directly into some <em>drop point</em> leg. When your disk hits a peg, one of three things happen: (1) the disk falls to the left with probability $\\ell$, (2) the disk falls to the right with probability $r$, or (3) it gets stuck with probability $1 - \\ell - r$. The probabilities may be different for each peg. If the disk falls to the left or to the right, then it will either fall onto another peg or into a leg. If the disk gets stuck, then you must drop it again from some drop point on the top. The figure below illustrates the 3rd sample input, the two dark pegs are the drop points.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 300px; height: 225px;\"/></p>\n<p>Because of gravity it is not possible for a disk to hit the same peg more than once unless the disk is dropped again. The game continues until your disk lands in a leg, at which point you earn the value of that leg. What is the maximum possible expected score the player can earn?</p>",
+  "input": "<p>The first line of input contains two integers $L$ ($1 \\leq L \\leq 100\\,000$), which is the number of legs, and $P$ ($1 \\leq P \\leq 100\\,000$), which is the number of pegs. Legs are numbered from $1$ to $L$ and pegs are labeled from $L+1$ to $L+P$.</p>\n<p>The next $L$ lines describe the legs, in order. Each of these lines contains a single integer $v$ ($1 \\leq v \\leq 1\\,000\\,000$), which is the value of this leg.</p>\n<p>The next $P$ lines describe the pegs, in order. Each of these lines starts with two real numbers $\\ell$ ($0 &lt; \\ell &lt; 1$), which is the probability that the disk falls to the left after hitting this peg, and $r$ ($0 &lt; r &lt; 1$), which is the probability that the disk falls to the right after hitting this peg ($\\ell + r \\leq 1$), followed by two integers $x$ ($1 \\leq x \\leq L+P$), which is the label of the peg/leg the disk falls onto if it falls to the left, and $y$ ($1 \\leq y \\leq L+P$), which is the label of the peg/leg the disk falls onto if it falls to the right. It is guaranteed that $x$ and $y$ are smaller labels than the label of this peg.</p>\n<p>All real numbers are specified to exactly 3 decimal places. A peg or leg is a drop point if there are no pegs that drop into this peg or leg.</p>\n<p>It is guaranteed that from any peg (whether a drop point or not), the probability the disk eventually gets stuck after reaching this peg is at most $0.9999$.</p>",
+  "output": "<p>Display the maximum possible expected score the player can earn. Answers with an absolute error or relative error of at most $10^{-6}$ will be accepted.</p>",
+  "samples": [
+    {
+      "input": "2 4\n344969\n539194\n0.508 0.318 1 1\n0.990 0.009 1 3\n0.807 0.041 3 1\n0.225 0.617 4 4\n",
+      "output": "539194.0000000000\n"
+    },
+    {
+      "input": "2 8\n684841\n506003\n0.277 0.692 1 1\n0.007 0.864 2 1\n0.783 0.067 2 1\n0.962 0.026 3 1\n0.580 0.171 4 4\n0.997 0.003 1 6\n0.548 0.207 8 7\n0.537 0.238 5 7\n",
+      "output": "684556.2033270609\n"
+    },
+    {
+      "input": "3 3\n11\n12\n10\n0.500 0.500 1 2\n0.800 0.100 1 4\n0.600 0.400 4 3\n",
+      "output": "11.0555555556\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Rocky Mountain Regional, 2020 Rocky Mountain Regional Contest",
+  "level": 13,
+  "tags": [
+    "math",
+    "dp",
+    "probability"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

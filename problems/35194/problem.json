@@ -1,0 +1,46 @@
+{
+  "id": 35194,
+  "title": "Calculation Obfuscation",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Marijn wrote an expression to calculate the answer to the ultimate question. Unfortunately, his friend Jeroen decided to pull a prank and shuffled all the characters in his expression!</p>\n<p>The syntax of the expression is similar to that of most programming languages (in fact, the expression is valid Python):</p>\n<ul>\n<li>Expressions consist of numbers, variables, and parenthesized expressions (enclosed between '<code>(</code>' and '<code>)</code>'), which are joined together by the operators '<code>+</code>' and '<code>*</code>'.</li>\n<li>Numbers consist of digits (<code>0-9</code>) and do not start with a leading '<code>0</code>', except for the number '<code>0</code>' itself.</li>\n<li>Variables start with a letter, followed by zero or more letters and/or digits.</li>\n<li>The '<code>*</code>' operator takes precedence over '<code>+</code>'.</li>\n</ul>\n<p>An example of a valid expression is \"<code>(abc+var0)*(12+0)</code>\", where the addition of two variables \"<code>abc</code>\" and \"<code>var0</code>\" is multiplied by the addition of \"<code>12</code>\" and \"<code>0</code>\".</p>\n<p>Luckily, Marijn remembers that he did not use any unnecessary parentheses in his code. This means that for example \"<code>a+(b+c)</code>\" does not appear because the '<code>+</code>' operator is associative, nor does \"<code>(a*b)+c</code>\" since the '<code>*</code>' operator takes precedence over '<code>+</code>'. <strong>Note:</strong> it is not required that removing any of the parentheses actually changes the outcome of the expression.</p>\n<p>Given a shuffled expression, help Marijn find any expression that could have been his original expression, if such an expression exists.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with an integer $n$ ($1\\leq n\\leq 3\\cdot 10^5$), the length of the shuffled expression.</li>\n<li>One line with a string of length $n$, the shuffled expression, consisting of the characters in \"<code>()+*</code>\", digits (<code>0-9</code>), and English lowercase letters (<code>a-z</code>).</li>\n</ul>",
+  "output": "<p>If an expression exists that satisfies all the requirements, output \"<code>possible</code>\" followed by such a permutation of the input string. Otherwise, output \"<code>impossible</code>\".</p>\n<p>If there are multiple valid solutions, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "7\n123test\n",
+      "output": "possible\ntest321\n"
+    },
+    {
+      "input": "10\n012var+*()\n",
+      "output": "possible\n(var2+0)*1\n"
+    },
+    {
+      "input": "7\n(1+2)+3\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "7\n(000+*)\n",
+      "output": "possible\n(0+0)*0\n"
+    },
+    {
+      "input": "2\n00\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "9\n((1+2))*3\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "10\nbilmseiops\n",
+      "output": "possible\nimpossible\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2025 Preliminaries",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 7
+}

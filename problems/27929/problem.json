@@ -1,0 +1,26 @@
+{
+  "id": 27929,
+  "title": "수를 더하고 또 더하는 놀이",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Albert는 정수 덧셈을 연습하고 있다. 이를 지켜보던 Bobby는 연습을 좀 더 재미있게 해주려고 아래와 같은 게임을 제안했다.</p>\r\n\r\n<ul>\r\n\t<li>우선 Bobby는 $N$장의 종이 각각에 정수를 하나씩 적어 Albert에게 전해준다. 편의상 이 수들을 $V_1, V_2, \\dots, V_N$ 이라하자.</li>\r\n\t<li>다음 총 $M$번에 걸쳐 Bobby는 Albert에게 아래 4가지 중 한 가지 요청을 한다. 편의상 $j$ 번째 요청의 종류를 $Q_{j} \\in \\{1, 2, 3, 4\\}$이라 하고 그에 동반되는 (후술될) 정수 값을 $W_j$로 나타내자 ($j = 1, 2, \\dots, M$).\r\n\t<ul>\r\n\t\t<li>$Q_{j} = 1$인 요청: 새 종이 한 장에 정수 $W_j$를 적어 Albert에게 전해준다.</li>\r\n\t\t<li>$Q_{j} = 2$인 요청: Albert는 현재 자신이 갖고 있는 각각의 종이에 적힌 값에 $W_j$를 더해 새로운 값을 적는다.</li>\r\n\t\t<li>$Q_{j} = 3$인 요청: Albert가 현재 갖고 있는 종이에 적힌 수 중 가장 큰 $W_j$개의 수를 더해 그 값을 Bobby에게 알려준다. 이 값을 $A_j$라 하자.</li>\r\n\t\t<li>$Q_{j} = 4$인 요청: Albert가 현재 갖고 있는 종이에 적힌 수 중 가장 작은 $W_j$개의 수를 더해 그 값을 Bobby에게 알려준다. 이 값을 $A_j$라 하자.</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>예를 들어 $N = 5$, $V = [2, 4, 6, 8, 10]$, $M = 12$, $Q = [4, 3, 1, 1, 4, 3, 2, 4, 3, 1, 3, 4]$ 그리고 $W = [3, 3, 3, 7, 3, 3, 5, 3, 3, 1, 4, 4]$ 라 하자. 이 경우 아래 표에서 각 요청 이후 Albert가 어떤 수들을 갖고 있는지 확인할 수 있다.</p>\r\n\r\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 800px;\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>시점</td>\r\n\t\t\t<td>Albert의 종이에 적힌 수들</td>\r\n\t\t\t<td>설명</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>게임 시작 직후</td>\r\n\t\t\t<td>2, 4, 6, 8, 10</td>\r\n\t\t\t<td> </td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>1번째 요청 직후</td>\r\n\t\t\t<td>2, 4, 6, 8, 10</td>\r\n\t\t\t<td>$A_1 = 2 + 4 + 6 = 12$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>2번째 요청 직후</td>\r\n\t\t\t<td>2, 4, 6, 8, 10</td>\r\n\t\t\t<td>$A_2 = 10 + 8 + 6 = 24$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>3번째 요청 직후</td>\r\n\t\t\t<td>2, 3, 4, 6, 8, 10</td>\r\n\t\t\t<td>3을 추가했다.</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>4번째 요청 직후</td>\r\n\t\t\t<td>2, 3, 4, 6, 7, 8, 10</td>\r\n\t\t\t<td>7을 추가했다.</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>5번째 요청 직후</td>\r\n\t\t\t<td>2, 3, 4, 6, 7, 8, 10</td>\r\n\t\t\t<td>$A_5 = 2 + 3 + 4 = 9$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>6번째 요청 직후</td>\r\n\t\t\t<td>2, 3, 4, 6, 7, 8, 10</td>\r\n\t\t\t<td>$A_6 = 10 + 8 + 7 = 25$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>7번째 요청 직후</td>\r\n\t\t\t<td>7, 8, 9, 11, 12, 13, 15</td>\r\n\t\t\t<td>모든 수에 5를 더했다.</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>8번째 요청 직후</td>\r\n\t\t\t<td>7, 8, 9, 11, 12, 13, 15</td>\r\n\t\t\t<td>$A_8 = 7 + 8 + 9 = 24$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>9번째 요청 직후</td>\r\n\t\t\t<td>7, 8, 9, 11, 12, 13, 15</td>\r\n\t\t\t<td>$A_9 = 15 + 13 + 12 = 40$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>10번째 요청 직후</td>\r\n\t\t\t<td>1, 7, 8, 9, 11, 12, 13, 15</td>\r\n\t\t\t<td>1을 추가했다.</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>11번째 요청 직후</td>\r\n\t\t\t<td>1, 7, 8, 9, 11, 12, 13, 15</td>\r\n\t\t\t<td>$A_{11} = 15 + 13 + 12 + 11 = 51$</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>12번째 요청 직후</td>\r\n\t\t\t<td>1, 7, 8, 9, 11, 12, 13, 15</td>\r\n\t\t\t<td>$A_{12} = 1 + 7 + 8 + 9 = 25$</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>Albert는 신나서 이 게임을 하기로 했는데, 막상 Bobby는 게임을 제안했지만 준비가 되지 않았다. Bobby는 당신의 도움을 받아 Albert가 더해낸 값들이 맞는지(위 예제에서 $A_1, A_2, \\dots, A_{11}, A_{12}$ 등의 값) 확인해 달라고 부탁했다. 즉, $Q_{j} \\in \\{3, 4\\}$인 경우에 대해 올바른 $A_j$ 값을 구해서 Bobby에게 알려주자.</p>\r\n",
+  "input": "<p>입력 첫 줄에 테스트 케이스의 수 $T$가 주어진다.</p>\r\n\r\n<p>각 테스트 케이스의 첫 줄에는 두 정수 $N, M$이 공백으로 구분되어 주어진다. 둘째 줄에는 $V_1, V_2, \\dots, V_N$을 나타내는 $N$개의 정수가 공백으로 구분되어 주어진다. 다음 $M$줄에 걸쳐 각 줄에 $Q_j, W_j$ 두 개의 정수가 공백으로 구분되어 주어진다.</p>\r\n",
+  "output": "<p>각 테스트 케이스의 정답이 되는 $A_j$ 값을 각 줄에 공백으로 구분하여 출력한다. 단, 입력으로 주어진 $Q_j$ 값이 3 혹은 4인 경우에만 $A_j$값을 구하면 된다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2\n5 12\n2 4 6 8 10\n4 3\n3 3\n1 3\n1 7\n4 3\n3 3\n2 5\n4 3\n3 3\n1 1\n3 4\n4 4\n5 8\n1 1 1 1 500000\n4 5\n3 5\n2 100000\n4 3\n3 3\n2 400000\n4 3\n3 3\n",
+      "output": "12 24 9 25 24 40 51 25\n500004 500004 300003 800002 1500003 2000002\n"
+    }
+  ],
+  "hint": null,
+  "source": null,
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "binary_search"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.3478000164031982
+}

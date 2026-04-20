@@ -1,0 +1,32 @@
+{
+  "id": 25222,
+  "title": "Bi-ing Lottery Treekets",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In a parallel universe, everyone scored perfect on the CCO. As a result, Troy needs to pick the winner based on a lottery. Each contestant will choose numbers to create a ticket. A ticket is an array of size $N$ indexed from $1$ to $N$ where each entry is a number from $0$ to $K$.</p>\n<p>The winning ticket is determined by dropping $K$ balls (numbered from $1$ to $K$) in a random sequence into a rooted binary tree. The tree has $N$ nodes (numbered from $1$ to $N$) and is rooted at node $1$.</p>\n<p>Each ball has a designated drop node that it will drop at. When a ball is dropped at an unoccupied node or enters an unoccupied node, one of three things happens:</p>\n<ol>\n<li>If all of the current node's children are occupied by balls (or if a node has no children), the current ball rests at the current node. That is, it remains there and does not move again.</li>\n<li>If the current node only has one unoccupied child, the current ball will move to this child.</li>\n<li>If the current node has two unoccupied children, and if the current ball was just dropped, it could go either left or right. Otherwise, it will continue in the direction of its previous movement.</li>\n</ol>\n<p>If all $K$ balls cannot be dropped, a winning ticket is not determined. This happens when a ball is dropped and its drop node is occupied by another ball.</p>\n<p>If all $K$ balls have been dropped, the balls' resting positions determine the winning lottery ticket. The $i^\\text{th}$ entry of the winning lottery ticket is the number of the ball that rests at node $i$ or $0$ if no ball rests at node $i$.</p>\n<p>Troy would like to know the number of possible winning tickets (which could be zero).</p>",
+  "input": "<p>The first line contains two space-separated integers $N$ and $K$, denoting the number of nodes in the binary tree and the number of balls, respectively.</p>\n<p>The next line contains $K$ space-separated integers, where the $i^\\text{th}$ integer denotes the designated drop node of the ball numbered $i$.</p>\n<p>The last $N$ lines each contain two space-separated integers. The $i^\\text{th}$ line contains $L_i$ and $R_i$ denoting the $i^\\text{th}$ node's left and right child, respectively, where $0$ means no such child exists.</p>",
+  "output": "<p>Output the remainder of the number of winning lottery tickets divided by $10^9 + 7$.</p>",
+  "samples": [
+    {
+      "input": "5 2\n1 3\n2 3\n0 0\n4 5\n0 0\n0 0\n",
+      "output": "4\n"
+    },
+    {
+      "input": "4 3\n1 2 4\n0 2\n0 3\n0 4\n0 0\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p>A binary tree is a set of nodes that are either empty or a root node with a left subtree and a right subtree, both of which are binary trees. Given a node $x$, if its left subtree is not empty, then the root of that subtree is called the left child of $x$. Similarly, given a node $x$, if its right subtree is not empty, then the root of that subtree is called the right child of $x$.</p>",
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2022, CCO 2022",
+  "level": 22,
+  "tags": [
+    "math",
+    "dp",
+    "trees",
+    "combinatorics",
+    "dp_tree"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 6.63640022277832
+}

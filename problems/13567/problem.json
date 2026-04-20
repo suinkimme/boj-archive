@@ -1,0 +1,33 @@
+{
+  "id": 13567,
+  "title": "로봇",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>로봇은 명령어를 읽어들여&nbsp;정사각형 영역 S를 x축 또는 y축과 평행한 방향으로 움직인다. S의 왼쪽 아래 꼭짓점은 (0, 0)이고, 오른쪽 위의 꼭짓점은 (M, M)이다. 처음에 로봇은 (0, 0)에 위치해 있고, 동쪽 방향을 향하고 있다.</p>\r\n\r\n<p>명령어는 로봇이 현재 위치에서 행할 동작과 그 동작과 관련된 값으로 주어진다. 동작은 두 가지가 있는데,&nbsp;<code>TURN</code>과 <code>MOVE</code>이다. <code>TURN 0</code> 명령은 현재 위치에서 왼쪽으로 90도 회전, <code>TURN 1</code> 명령은 현재 위치에서 오른쪽으로 90도 회전을 의미한다. <code>MOVE d</code> 명령은 로봇이 향하고 있는 방향으로 d만큼 움직이는 것을 의미한다. 여기서 d는 양수이다.</p>\r\n\r\n<p>명령의 수행 후 로봇이 S의 경계 또는 내부에 있으면 이 명령어는 유효하다. 만일 명령어 수행 후&nbsp;로봇이 S의 바깥으로 완전히 나가게 된다면 명령어는 유효하지 않다. 일련의 명령어 열을 이루는 각 명령어가 모두 유효하다면, 이 명령어 열을 유효하다고 한다.</p>\r\n\r\n<p>예를 들어 로봇이 왼쪽 그림과 같이 (<code>MOVE 6, TURN 0, MOVE 5, TURN 0, MOVE 2, TURN 0, MOVE 2, TURN 0, MOVE 4, TURN 0, MOVE 3, MOVE 2</code>) 명령어를 읽어들인다면, 최종적으로 로봇은 (8, 8) 위치에 있게 된다. 가운데 그림과 같이&nbsp;(<code>MOVE 10, TURN 0, MOVE 2, TURN 0, MOVE 5, TURN 1, MOVE 5, TURN 1, MOVE 2, TURN 1, MOVE 3, TURN 0, TURN 0, MOVE 6</code>) 명령어를 읽어들인다면, 로봇은 (7, 10)에 위치하게 된다. 오른쪽 그림과 같이 로봇이 S 바깥으로 나간다면, 명령어 열은&nbsp;유효하지 않다.</p>\r\n\r\n<p style=\"text-align: center;\"><img src=\"1.png\" style=\"height:228px; width:638px\" /></p>\r\n\r\n<p style=\"text-align: center;\">그림 1. M = 11일 때 세 가지 명령어 열을 받은 로봇의 경로</p>\r\n\r\n<p>한 변의 길이가 M인 정사각형과 n개의 명령어, 그리고 로봇이 (0, 0) 위치에서 시작해 동쪽을 바라보고 있을 때, n개의 명령어를 따라 움직였을 때 최종 위치를 출력하는 프로그램을 작성하라.</p>\r\n",
+  "input": "<p>입력은 표준 입력으로부터 받는다. 첫 줄에는&nbsp;두 정수 M과&nbsp;n (1 &le; M &le; 1,000, 1 &le; n &le; 1,000)이 주어진다. M은 정사각형 S의 한 변의 길이, 즉 오른쪽 맨 위의 좌표는 (M, M)이 된다. n은 로봇이 수행할 n개의 명령어이다. 그 다음 n개의 줄에는 명령어가 하나씩 주어진다. 각 명령어는 <code>TURN</code>과 <code>dir</code> 또는 <code>MOVE</code>와 <code>d</code>의 쌍으로 주어진다. 여기서 <code>dir</code>은 0 또는 1이며 <code>d</code>는 1,000 이하의 양의 정수이다. 로봇의 처음 위치는 (0, 0)이며 동쪽을 바라보고 있음에 유의하라.</p>\r\n",
+  "output": "<p>표준 출력으로 정확히 한 줄을 출력한다. 명령어 열이 유효하다면 두 음 아닌 정수를 출력하며, 이는 각각 명령어 수행 후 로봇의 위치의 x좌표와 y좌표이고 빈 칸으로 구분되어 있다. 명령어 열이 유효하지 않다면 -1을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "11 14\nMOVE 10\nTURN 0\nMOVE 2\nTURN 0\nMOVE 5\nTURN 1\nMOVE 5\nTURN 1\nMOVE 2\nTURN 1\nMOVE 3\nTURN 0\nTURN 0\nMOVE 6\n",
+      "output": "7 10\n"
+    },
+    {
+      "input": "11 7\nMOVE 5\nTURN 0\nMOVE 4\nTURN 1\nMOVE 2\nTURN 1\nMOVE 5\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "2 7\nMOVE 2\nTURN 0\nMOVE 3\nTURN 0\nMOVE 2\nTURN 0\nMOVE 2\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Daejeon 2016, topology",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 1547,
+  "submission_count": null,
+  "average_tries": 1.631500005722046
+}

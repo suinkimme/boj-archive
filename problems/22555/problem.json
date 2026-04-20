@@ -1,0 +1,30 @@
+{
+  "id": 22555,
+  "title": "ねこ鍋改造計画（仮）",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>あなたは、自宅にたくさんのねこを飼っている。そんなあなたの日課は、飼っているねこが土鍋の中 に入って昼寝している様子（通称：ねこ鍋）を撮影することだ。何匹かのねこが、鍋の中でいっしょ に丸くなって眠る姿は、実に愛くるしい。</p>\n<p>それぞれのねこには、「重さ」<i>m<sub>i</sub></i> と「Cute」<i>c<sub>i</sub></i> が定義されている。Cute とは、そのねこ1 匹だけを見たときの、愛らしさ・あどけなさ・しなやかさ・やわらかさ・ういういしさ、などを総合的に評価した数値であり、大きければ大きいほどそのねこは魅力的である。</p>\n<p>また、ねこ鍋に対しては「UnCute」という数値が定義される。これは、ねこ鍋全体としてのアンバラ ンスさをあらわす値であり、Cute とは逆に、小さければ小さいほど、そのねこ鍋はよいねこ鍋であ る。ねこ鍋のUnCute は、中にいるねこのCute の最大値<i>C<sub>max</sub></i> と最小値<i>C<sub>min</sub></i> を用いて、<i>C<sub>max</sub></i> - <i>C<sub>min</sub></i>とあらわされる。つまり、中にいるねこがみな同じくらいのCute を持っているねこ鍋が、よいねこ鍋である。</p>\n<p>ねこ鍋を持ち運ぶときのことを考えると、ねこ鍋の重さ（＝中にいるねこの重さの総和）は、限界値 <i>W</i> 以下でなければならない。この条件をみたすようにねこ鍋に入ってもらうねこを選んで、ねこ鍋のUnCute を小さくしたいのだが、いったいどこまで小さくできるのだろうか。</p>\n<p>……という問題を解いてすっかり満足した気になっていたのは、過去の話だ。</p>\n<p>この前、あなたが家の倉庫を整理していたら、倉庫の中から古ぼけた土鍋が見つかった。これであな たの家にある土鍋は２つ。そう、これからは、デュアルねこ鍋の時代なのだ！　ただのねこ鍋なども う古い！</p>\n<p>デュアルねこ鍋では、土鍋<i>A</i> はオスのねこ専用、もう片方の土鍋B はメスのねこ専用である。また、 デュアルねこ鍋のUnCute を定義するにあたっては、Cute のアンバランスさだけではなく、２つの ねこ鍋の重さのアンバランスさも考慮に入れる必要がある。具体的には、重いほうのねこ鍋の重さを <i>M<sub>max</sub></i>、軽いほうのねこ鍋の重さを<i>M<sub>min</sub></i> とおくと（２つのねこ鍋の重さが同じときは<i>M<sub>max</sub></i> = <i>M<sub>min</sub></i>）、デュアルねこ鍋のUnCute は、</p>\n<p style=\"text-align: center;\">max{<i>M<sub>max</sub></i> - <i>M<sub>min</sub></i>, <i>C<sub>max</sub></i> - <i>C<sub>min</sub></i>}</p>\n<p>とあらわされる。なお、ここでの<i>C<sub>max</sub></i> と<i>C<sub>min</sub></i> は、ねこ鍋<i>A</i> の中またはねこ鍋<i>B</i> の中にいるねこのCute の最大値,最小値である。</p>\n<p>ねこ鍋を持ち運ぶときのことを考えると、<i>M<sub>max</sub></i>は、限界値<i>W</i> 以下でなければならない。この条件をみたすようにデュアルねこ鍋に入ってもらうねこを選んで、デュアルねこ鍋のUnCute を小さくしたいのだが、いったいどこまで小さくできるのだろうか。</p>",
+  "input": "<pre>\n<i>N<sub>A</sub> N<sub>B</sub> W</i>\n<i>m</i><sub><i>A</i>,1</sub> <i>c</i><sub><i>A</i>,1</sub>\n<i>m</i><sub><i>A</i>,2</sub> <i>c</i><sub><i>A</i>,2</sub>\n.\n.\n.\n<i>m</i><sub><i>A</i>,<i>N<sub>A</sub></i></sub> <i>c</i><sub><i>A</i>,<i>N<sub>A</sub></i></sub>\n<i>m</i><sub><i>B</i>,1</sub> <i>c</i><sub><i>B</i>,1</sub>\n<i>m</i><sub><i>B</i>,2</sub> <i>c</i><sub><i>B</i>,2</sub>\n.\n.\n.\n<i>m</i><sub><i>B</i>,<i>N<sub>B</sub></i></sub> <i>c</i><sub><i>B</i>,<i>N<sub>B</sub></i></sub></pre>\n<p>入力の１行目には、整数<i>N<sub>A</sub></i>（1 ≤ <i>N<sub>A</sub></i> ≤ 500）と整数<i>N<sub>B</sub></i>（1 ≤ <i>N<sub>B</sub></i> ≤ 500）と整数<i>W</i>（1 ≤ <i>W</i> ≤ 10,000）が、空白区切りで書かれている。これは、あなたが飼っているオスのねこが全部で<i>N<sub>A</sub></i> 匹、メスのねこが全部で<i>N<sub>B</sub></i> 匹いることをあらわす。<i>W</i> はねこ鍋の重さの限界値である。</p>\n<p>続く<i>N<sub>A</sub></i> 行には、整数<i>m</i><sub><i>A</i>,<i>i</i></sub>（1 ≤ <i>m</i><sub><i>A</i>,<i>i</i></sub> ≤ 10,000）と整数<i>c</i><sub><i>A</i>,<i>i</i></sub>（1 ≤ <i>c</i><sub><i>A</i>,<i>i</i></sub> ≤ 1,000,000,000）が、空白区切りで書かれている。１＋ i 行目に書かれた整数<i>m</i><sub><i>A</i>,<i>i</i></sub> と<i>c</i><sub><i>A</i>,<i>i</i></sub> は、i 番目のオスのねこの重さが<i>m</i><sub><i>A</i>,<i>i</i></sub>、Cute が<i>c</i><sub><i>A</i>,<i>i</i></sub> であることをあらわす。</p>\n<p>続く<i>N<sub>B</sub></i> 行には、整数<i>m</i><sub><i>B</i>,<i>i</i></sub>（1 ≤ <i>m</i><sub><i>B</i>,<i>i</i></sub> ≤ 10,000）と整数<i>c</i><sub><i>B</i>,<i>i</i></sub>（1 ≤ <i>c</i><sub><i>B</i>,<i>i</i></sub> ≤ 1,000,000,000）が、空白区切りで書かれている。１＋ <i>N<sub>A</sub></i> ＋ i 行目に書かれた整数<i>m</i><sub><i>B</i>,<i>i</i></sub> と<i>c</i><sub><i>B</i>,<i>i</i></sub> は、i 番目のメスのねこの重さが<i>m</i><sub><i>B</i>,<i>i</i></sub>、Cute が<i>c</i><sub><i>B</i>,<i>i</i></sub> であることをあらわす。</p>\n<p>オスのねこにもメスのねこにも、重さが<i>W</i> 以下であるようなねこが、それぞれ１匹以上は存在すると仮定してよい。</p>",
+  "output": "<p><i>M<sub>max</sub></i> が<i>W</i> を超えないという条件のもとで、デュアルねこ鍋のUnCute の最小値を出力せよ。ただし、どちらのねこ鍋にも１匹以上のねこが入っていなければならない。</p>",
+  "samples": [
+    {
+      "input": "4 3 12\n3 6\n2 4\n7 9\n10 1\n6 5\n8 4\n15 19\n",
+      "output": "2\n"
+    },
+    {
+      "input": "1 3 10\n1 15\n6 8\n5 9\n8 7\n",
+      "output": "6\n"
+    },
+    {
+      "input": "8 6 65\n30 98\n27 51\n4 74\n65 87\n49 19\n27 48\n43 7\n35 28\n43 69\n8 47\n64 75\n18 23\n54 29\n40 43\n",
+      "output": "8\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2010 Day 2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

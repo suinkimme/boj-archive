@@ -1,0 +1,26 @@
+{
+  "id": 7905,
+  "title": "Input",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In a recent programming contest, one of the problems was about tiling floors with rectangular tiles. The input specification reads like this:</p>\n<blockquote>\n<p>The input contains several floors. The first line of the input gives the number of floors.</p>\n<p>Each floor is described in several lines. The first line contains two positive integers: the length and width of the floor, in millimeters. A floor is at most 40 000 mm long or wide. The next line contains a single number: the number t of tiles (1 t 100). The following t lines each contain the description of a tile. A tile is given as four integers:</p>\n<p>xl yl xh yh</p>\n<p>where (xl, yl) are the coordinates of the lower left corner of the tile, and (xh, yh) are the coordinates of the upper rightmost corner of the tile. A tile always has a positive area. The order of the coordinates of the floor and those of the tile coincide, of course.</p>\n<p>You may assume that the tiles are mutually disjoint, and cover the floor, the whole floor, and nothing but the floor.</p>\n</blockquote>\n<p>The last line of this specification raised some problems. Not for the contestants, but for the judges. Some of the test cases consist of many tiles. How can we be sure that our input file meets this condition? What we need is a checking program that verifies this condition.</p>\n<p>Given an input file in the above format, find out for each floor whether the tiles</p>\n<ol>\n<li>are disjoint,</li>\n<li>do not lie outside the floor,</li>\n<li>do cover the floor.</li>\n</ol>",
+  "input": "<p>The input contains several floors. The first line of the input gives the number of floors. Each floor is described in several lines. The first line contains two positive integers: the length and width of the floor, in millimeters. A floor is at most 40 000 mm long or wide. The next line contains a single number: the number t of tiles (1 ≤ t ≤ 100). The following t lines each contain the description of a tile. A tile is given as four integers:</p>\n<p>xl yl xh yh</p>\n<p>where (xl, yl) are the coordinates of the lower left corner of the tile, and (xh, yh) are the coordinates of the upper rightmost corner of the tile. A tile always has a positive area. The order of the coordinates of the floor and those of the tile coincide, of course.</p>",
+  "output": "<p>For each floor the output contains a single line, containing one of the following words:</p>\n<ul>\n<li><code>NONDISJOINT</code> if overlapping tiles occur;</li>\n<li><code>NONCONTAINED</code> if no overlapping tiles occur, but some tiles go outside the floor;</li>\n<li><code>NONCOVERING</code> if no overlapping tiles occur, and no tiles go outside the floor, but some parts of the floor are not covered;</li>\n<li><code>OK</code> if none of these is true.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "4\n4 3\n2\n0 0 2 2\n1 1 5 5\n4 3\n2\n0 0 2 2\n-2 2 5 5\n4 3\n2\n0 0 2 2\n2 0 4 2\n4 3\n3\n0 0 2 2\n2 0 4 2\n0 2 4 3\n",
+      "output": "NONDISJOINT\nNONCONTAINED\nNONCOVERING\nOK\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2002",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "geometry",
+    "case_work"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 3.578900098800659
+}

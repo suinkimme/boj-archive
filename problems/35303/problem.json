@@ -1,0 +1,29 @@
+{
+  "id": 35303,
+  "title": "트럭과 쿼리",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A 나라와 B 나라 사이에는 $N$개의 섬이 일렬로 배치되어 있으며, 섬들에는 차례로 $1$번부터 $N$번까지 번호가 붙어 있다. 각 $i(1 \\le i &lt; N)$에 대해, $i$번 섬과 $i+1$번 섬은 $i$번 다리로 연결되어 있다. 또한 $0$번 다리는 A 나라와 $1$번 섬을 연결하고 $N$번 다리는 $N$번 섬과 B 나라를 연결한다.</p>\r\n\r\n<p>트럭 한 대가 $0, 1, \\cdots, N$번 다리를 차례로 건너 A 나라에서 B 나라로 화물을 나르려고 한다. 트럭이 $i$번 섬에 도달하면 $A_i$개의 화물을 싣는다. 단, $A_i$가 음수면 $|A_i|$개의 화물을 내린다. 또한 $i$번 다리는 $B_i$의 강도를 가지고 있어 트럭은 $B_i$개를 초과하는 화물을 실은 채로 $i$번 다리를 건널 수 없다. 단, $B_0=B_N=10^{2026}$이다.</p>\r\n\r\n<p>구체적으로 트럭 한 대가 화물을 싣고 섬들을 이동할 때, 화물 개수는 다음 규칙에 따라 변한다.</p>\r\n\r\n<ul>\r\n<li><strong>섬을 방문했을 때</strong>:\r\n\r\n<ul>\r\n<li>트럭이 $i$번 섬에 도달했을 때 싣고 있는 화물이 $k$개라면 화물의 개수는 $k + A_i$개가 된다.</li>\r\n<li>이 과정에서 싣고 있는 화물의 개수보다 더 많은 화물을 내리려고 시도하여 화물의 개수가 음수가 된다면 트럭은 그 즉시 멈춘다.</li>\r\n</ul>\r\n</li>\r\n<li><strong>다리를 건너기 직전</strong>:\r\n<ul>\r\n<li>$i$번 다리를 건너기 직전에 화물이 $B_i$개를 초과한다면 초과분은 버려진다.</li>\r\n<li>즉, 다리를 건너기 직전에 싣고 있는 화물이 $k$개라면 화물의 개수는 $\\min(k, B_i)$개가 된다.</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n\r\n<p>여러분은 성공적인 화물 운송을 위해 아래의 작업을 $0$번 이상 수행하여 다리를 보강할 수 있다. 한 번의 작업에는 $1$의 비용이 사용된다.</p>\r\n\r\n<ul>\r\n<li>$1 \\le i &lt; N$을 고르고, $i$번 다리의 강도를 $1$ 증가시킨다.</li>\r\n</ul>\r\n\r\n<p>다음 두 종류의 쿼리 $Q$개를 처리하시오.</p>\r\n\r\n<ul>\r\n<li><span style=\"color:#e74c3c;\"><code>1 </code>$x$<code> </code>$y$</span> : $A_x$의 값을 $A_x + y$로 갱신한다. $(y \\ge 1)$</li>\r\n<li><span style=\"color:#e74c3c;\"><code>2 </code>$k$</span> : 초기에 화물 $k$개를 실은 트럭이 A 나라에서 출발하여 $0, 1, \\cdots, N$번 다리를 차례로 건너 B 나라까지 멈추지 않고 도착하게 하기 위한 최소 보강 비용을 출력한다. 만약 트럭이 중간에 멈추어 B 나라에 도착하는 것이 불가능하다면 대신 $-1$을 출력한다. <strong>각 $2$번 쿼리는 독립적이며, 여기서 수행한 다리 보강은 이후의 쿼리에 영향을 주지 않는다.</strong></li>\r\n</ul>\r\n",
+  "input": "<p>첫 번째 줄에 두 개의 정수 $N$, $Q$가 공백으로 구분되어 주어진다.</p>\r\n\r\n<p>두 번째 줄에 $N$개의 정수 $A_1, A_2, \\cdots, A_N$이 공백으로 구분되어 주어진다.</p>\r\n\r\n<p>세 번째 줄에 $N-1$개의 정수 $B_1, B_2, \\cdots, B_{N-1}$이 공백으로 구분되어 주어진다.</p>\r\n\r\n<p>다음 $Q$개의 줄에는 한 줄에 하나씩 쿼리가 주어진다.</p>\r\n",
+  "output": "<p>2번 쿼리에 대한 답을 한 줄에 하나씩 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "5 4\n3 -4 2 -1 5\n2 1 3 2\n2 0\n2 2\n1 2 2\n2 1\n",
+      "output": "-1\n2\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "School, 한국과학영재학교, 2026 KSA Automata Winter Contest, mickeyjung, bennyk0406, edward3378, eric00513, flakepowders, mythofys, number0316, parkky, raehwan0418, utilforever, wizardrabbit",
+  "level": 23,
+  "tags": [
+    "math",
+    "dp",
+    "data_structures",
+    "segtree",
+    "prefix_sum",
+    "lazyprop"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 5.444399833679199
+}

@@ -1,0 +1,30 @@
+{
+  "id": 28046,
+  "title": "Gravitational Wave Detector",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Byteland is a very inhospitable planet, so its inhabitants study the galaxy in search of a better planet to move to. In this world, astronomy is a matter of survival. The President of Byteland has just approved a proposal from the Science Minister to build a new Gravitational Wave Detector (GWD). Its design consists of three scientific stations to be built somewhere on the planet’s capital city (which you can treat as a two-dimensional plane). Their locations must be distinct and collinear, and one of the stations must be exactly in the middle of the other two.</p>\n<p>This GWD will consume massive amounts of energy, so the Science Minister must choose the stations’ locations with this in mind. She studied the capital city’s electric grid, and learned the following:</p>\n<ul>\n<li>The city has two major power plants. Each one has its own area of influence that can be seen as a non-empty convex polygon with no three consecutive vertices aligned. Within its area of influence, each major power plant can deliver as much power as the GWD requires.</li>\n<li>Throughout the city, there are $N$ minor power plants, and each can deliver the required power only to their immediate vicinity.</li>\n<li>The areas of influence of the two major power plants do not intersect anywhere, not even on the borders. No two minor power plants have the same location, but a minor power plant can be within the area of influence of a major power plant.</li>\n</ul>\n<p>With this knowledge in mind, the Science Minister decided to adopt the following additional constraints on the locations of the GWD stations:</p>\n<ul>\n<li>The first station will be built within the area of influence of the first major power plant.</li>\n<li>The second station will be built within the area of influence of the second major power plant.</li>\n<li>The third station will be built at the location of a minor power plant.</li>\n</ul>\n<p>Any of the three GWD stations can be the middle one in the line. You can treat each GWD station and each minor power plant as a point with negligible size. The area of influence of each major power plant includes its border.</p>\n<p>The next step for the Science Minister is to choose which minor power plant will house the third GWD station. Given the areas of influence of the two major power plants, and the locations of all minor power plants, you must find which ones are suitable candidates.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 394px; height: 246px;\"/></p>\n<p>The figure above shows an example of an electric grid layout, as well as a few possible configurations for the GWD. It also shows two minor power plants that can’t possibly be used for the GWD.</p>",
+  "input": "<p>The first line contains an integer $M_1$ ($3 ≤ M_1 ≤ 10^5$) indicating the number of vertices of the area of influence of the first major power plant. Each of the next $M_1$ lines contains two integers $X_1$ and $Y_1$ ($-10^8 ≤ X_1, Y_1 ≤ 10^8$), representing the coordinates of one of those vertices. Vertices are given in counterclockwise order.</p>\n<p>The next line contains an integer $M_2$ ($3 ≤ M_2 ≤ 10^5$) indicating the number of vertices of the area of influence of the second major power plant. Each of the next $M_2$ lines contains two integers $X_2$ and $Y_2$ ($-10^8 ≤ X_2, Y_2 ≤ 10^8$), representing the coordinates of one of those vertices. Vertices are given in counterclockwise order.</p>\n<p>The next line contains an integer $N$ ($1 ≤ N ≤ 5 \\times 10^5$) indicating the number of minor power plants. Each of the next $N$ lines contains two integers $X$ and $Y$ ($-10^8 ≤ X, Y ≤ 10^8$), representing the coordinates of one of the minor power plants. Minor power plants are identified by distinct integers from $1$ to $N$, according to the order they appear in the input.</p>",
+  "output": "<p>Output a single line with a string of length $N$ such that its $i$-th character is the uppercase letter “<code>Y</code>” if the minor power plant $i$ is a suitable candidate, and the uppercase letter “<code>N</code>” otherwise.</p>",
+  "samples": [
+    {
+      "input": "3\n2 5\n4 5\n2 7\n3\n8 8\n10 6\n10 8\n10\n5 7\n5 8\n6 6\n7 7\n9 4\n13 9\n15 8\n15 10\n15 12\n18 9\n",
+      "output": "YNYNNNYYNY\n"
+    },
+    {
+      "input": "4\n1 3\n2 4\n1 5\n0 4\n4\n3 1\n2 1\n2 0\n3 0\n7\n1 2\n6 -5\n2 2\n-3 9\n2 -3\n-1 7\n1 3\n",
+      "output": "YNYNYYN\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2022",
+  "level": 23,
+  "tags": [
+    "geometry",
+    "convex_hull",
+    "point_in_convex_polygon"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.7390999794006348
+}

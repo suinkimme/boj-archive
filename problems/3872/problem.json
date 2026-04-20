@@ -1,0 +1,22 @@
+{
+  "id": 3872,
+  "title": "Where’s Wally",
+  "time_limit": "4 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Do you know the famous series of children’s books named “Where’s Wally”? Each of the books contains a variety of pictures of hundreds of people. Readers are challenged to find a person called Wally in the crowd.</p>\n<p>We can consider “Where’s Wally” as a kind of pattern matching of two-dimensional graphical images. Wally’s figure is to be looked for in the picture. It would be interesting to write a computer program to solve “Where’s Wally”, but this is not an easy task since Wally in the pictures may be slightly different in his appearances. We give up the idea, and make the problem much easier to solve. You are requested to solve an easier version of the graphical pattern matching problem.</p>\n<p>An image and a pattern are given. Both are rectangular matrices of bits (in fact, the pattern is always square-shaped). 0 means white, and 1 black. The problem here is to count the number of occurrences of the pattern in the image, i.e. the number of squares in the image exactly matching the pattern. Patterns appearing rotated by any multiples of 90 degrees and/or turned over forming a mirror image should also be taken into account.</p>",
+  "input": "<p>The input is a sequence of datasets each in the following format.</p>\n<pre>\nw h p\nimage data\npattern data</pre>\n<p>The first line of a dataset consists of three positive integers w, h and p. w is the width of the image and h is the height of the image. Both are counted in numbers of bits. p is the width and height of the pattern. The pattern is always square-shaped. You may assume 1 ≤ w ≤ 1000, 1 ≤ h ≤ 1000, and 1 ≤ p ≤ 100.</p>\n<p>The following h lines give the image. Each line consists of \\(\\lceil\\)w/6\\(\\rceil\\) (which is equal to \\(\\lfloor\\)(w + 5)/6\\(\\rfloor\\)) characters, and corresponds to a horizontal line of the image. Each of these characters represents six bits on the image line, from left to right, in a variant of the BASE64 encoding format. The encoding rule is given in the following table. The most significant bit of the value in the table corresponds to the leftmost bit in the image. The last character may also represent a few bits beyond the width of the image; these bits should be ignored.</p>\n<table class=\"table table-bordered\" style=\"width:20%\">\n<thead>\n<tr>\n<th>character</th>\n<th>value (six bits)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>A–Z</code></td>\n<td>0–25</td>\n</tr>\n<tr>\n<td><code>a–z</code></td>\n<td>26–51</td>\n</tr>\n<tr>\n<td><code>0–9</code></td>\n<td>52–61</td>\n</tr>\n<tr>\n<td><code>+</code></td>\n<td>62</td>\n</tr>\n<tr>\n<td><code>/</code></td>\n<td>63</td>\n</tr>\n</tbody>\n</table>\n<p>The last p lines give the pattern. Each line consists of \\(\\lceil\\)p/6\\(\\rceil\\) characters, and is encoded in the same way as the image.</p>\n<p>A line containing three zeros indicates the end of the input. The total size of the input does not exceed two megabytes.</p>",
+  "output": "<p>For each dataset in the input, one line containing the number of matched squares in the image should be output. An output line should not contain extra characters.</p>\n<p>Two or more matching squares may be mutually overlapping. In such a case, they are counted separately. On the other hand, a single square is never counted twice or more, even if it matches both the original pattern and its rotation, for example.</p>",
+  "samples": [
+    {
+      "input": "48 3 3\ngAY4I4wA\ngIIgIIgg\nw4IAYAg4\ng\ng\nw\n153 3 3\nkkkkkkkkkkkkkkkkkkkkkkkkkg\nSSSSSSSSSSSSSSSSSSSSSSSSSQ\nJJJJJJJJJJJJJJJJJJJJJJJJJI\ng\nQ\nI\n1 1 2\nA\nA\nA\n384 3 2\nABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\nBCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/A\nCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/AB\nA\nA\n0 0 0\n",
+      "output": "8\n51\n0\n98\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2010 in Tokyo",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

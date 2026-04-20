@@ -1,0 +1,29 @@
+{
+  "id": 27052,
+  "title": "Bale Figures",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Cows like to build shapes out of hay bales. Each new shape is constructed from N (1 ≤ N ≤ 25,000) 1 x 1 x 1 cubic bales.</p>\n<p>Bale 1 lies on the floor. After placing it, each successive bale from 2 through N is attached to the shape by placing the new bale in the proper relative position to one of the bales already placed. For instance, imagine the following figure:</p>\n<ul>\n<li>Bale 1 - on the floor</li>\n<li>Bale 2 - RIGHT Bale 1 (to Bale 1's right)</li>\n<li>Bale 3 - FRONT Bale 2 (in front of Bale 2)</li>\n<li>Bale 4 - FRONT Bale 3</li>\n</ul>\n<p>This results in an (inverted) L-shape:</p>\n<pre>\n                     +--+--+                      \n                1-&gt; /  /  /| &lt;-2                      \n                   +--+--+ +\n                   | /  /|/                         \n                   ++--+ +                       \n                   /  /|/ &lt;-3                     \n                  +--+ +                          \n                  |  |/ &lt;-4                       \n                  +--+                            </pre>\n<p>Adding another bale:</p>\n<ul>\n<li>Bale 5 - OVER Bale 1</li>\n</ul>\n<p>adds height to the shape:</p>\n<pre>\n                     +--+                            \n                    /  /|                           \n                   +--+ +--+                      \n               5-&gt; |  |/  /| &lt;-2                      \n                   +--+--+ +\n               1-&gt; | /  /|/                         \n                   ++--+ +                       \n                   /  /|/ &lt;-3                     \n                  +--+ +                          \n                  |  |/ &lt;-4                       \n                  +--+                            </pre>\n<p>But adding another directive:</p>\n<ul>\n<li>Bale 6 - BACK Bale 4</li>\n</ul>\n<p>results in an invalid shape, since bales 3 and 6 would overlap.</p>\n<p>Given N bales and placements described as above, output the exposed surface area of the solid figure if the shape is valid. A face is considered exposed if it is not touched by any face of any other bale and does not touch the floor (i.e., is not the bottom of a cube on the floor). Output -1 if the shape is invalid. No bale will be placed farther than 25 bale-widths from the first bale. No bale will be placed below the floor level.</p>",
+  "input": "<ul>\n<li>Line 1: A single integer, N</li>\n<li>Lines 2..N: These lines describe the placement of bales 2..N in the form \"j X\". Line 2 describes bale 2; line 3 describes bale 3; and so on. The letter \"X\" is one of: \"L\" (left), \"R\" (right), \"F\" (front), \"B\" (back), \"O\" (over), or \"U\" (under). The bales can be glued and require no underlying support if extended over an empty space.</li>\n</ul>",
+  "output": "<ul>\n<li>Line 1: The exposed surface area of the resulting solid. If the solid is invalid, output \"-1\".</li>\n</ul>",
+  "samples": [
+    {
+      "input": "5\n1 R\n2 F\n3 F\n1 O\n",
+      "output": "18\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2002-2003 Season, USACO US Open 2003 Contest, Orange",
+  "level": 11,
+  "tags": [
+    "ad_hoc",
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "simulation",
+    "set"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.1818000078201294
+}

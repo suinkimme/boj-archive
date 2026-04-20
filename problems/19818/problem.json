@@ -1,0 +1,32 @@
+{
+  "id": 19818,
+  "title": "LaTeX Expert",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Regina is finishing her graduation work. She asks Grigory who is LaTeX expert to help her with layout.</p>\n<p>Making layout is easy for Grigory, but he has some problems with bibliography rendering. Due to graduation work design requirements, references in bibliography must be placed in the same order as they are placed in the text of the work. Each reference has exactly one occurrence in Regina's work.</p>\n<p>For placing reference on some source Grigory uses <code>\\cite{&lt;reference&gt;}</code> construction, where <code>&lt;reference&gt;</code> is the name of the reference. An example of a text that contains three references is shown below.</p>\n<pre>\nThe most famous characters of Pushkin's works are Onegin \\cite{onegin},\nDubrovsky \\cite{dubrovsky} and Tsar Saltan \\cite{saltan}.</pre>\n<p>To make the bibliography, Grigory needs to place the following construction after the text of the work:</p>\n<pre>\n\\begin{thebibliography}{99}\n\\bibitem{onegin} A.S.Pushkin. Eugene Onegin. 1831.\n\\bibitem{dubrovsky} A.S.Pushkin. Dubrovsky. 1841.\n\\bibitem{saltan} A.S.Pushkin. The Tale of Tsar Saltan. 1832.\n\\end{thebibliography}\n</pre>\n<p>Here <code>99</code> is the maximal number of references and reference description is written after <code>\\bibitem{&lt;reference&gt;}</code> construction.</p>\n<p>Text is quite large and Grigory is quite lazy, so he doesn't want to check the order of references. Therefore he asks you to write a program that can analyze the text and the bibliography. If the bibliography is incorrect, your program must print the correct new one.</p>",
+  "input": "<p>Input contains the text of the work that consists of lowercase and uppercase English letters, ends of lines, spaces, &lt;&lt;<code>.</code>&gt;&gt;, &lt;&lt;<code>,</code>&gt;&gt;, &lt;&lt;<code>'</code>&gt;&gt; (ASCII code 39) characters and <code>\\cite{&lt;reference&gt;}</code> constructions. Here <code>&lt;reference&gt;</code> is a nonempty string of lowercase English letters that has the length at most $100$. ASCII code of &lt;&lt;<code>\\textbackslash</code>&gt;&gt; character is 92.</p>\n<p>Each <code>\\cite{&lt;reference&gt;}</code> construction starts at a new line or after a space character. The text of the work can contain empty lines.</p>\n<p>The following line after the text is equal to <code>\\begin{thebibliography}{99}</code>. Each of the following lines contains a description of a source in the described format. Description consists of the same characters as the text of work. Length of each description isn't greater than $100$ characters. The following line after the bibliography is <code>\\end{thebibliography}{99}</code>.</p>\n<p>It's guaranteed that:</p>\n<ul>\n<li>The total number of references is not greater than 99.</li>\n<li>There is at least one reference in the text.</li>\n<li>If the text contains some reference, the bibliography contains that reference too.</li>\n<li>The number of <code>\\cite{&lt;reference&gt;}</code> constructions in the text is the same as the number of <code>\\bibitem{&lt;reference&gt;}</code> constructions in the bibliography.</li>\n<li>The references in the text are different.</li>\n<li>The total number of lines in the input isn't greater than $10^5$.</li>\n<li>The sum of lengths of the lines in the text isn't greater than $10^5$.</li>\n<li>Input doesn't contain two consecutive space characters. The first and the last characters of each line aren't spaces.</li>\n</ul>",
+  "output": "<p>Print <code>Correct</code> if the bibliography from the input is correct and <code>Incorrect</code> otherwise.</p>\n<p>In the second case print the correct bibliography in the required format then. The source descriptions must be the same as defined in input.</p>",
+  "samples": [
+    {
+      "input": "The most famous characters of Pushkin's works are Onegin \\cite{onegin},\nDubrovsky \\cite{dubrovsky} and Tsar Saltan \\cite{saltan}.\n\n\\begin{thebibliography}{99}\n\\bibitem{saltan} A.S.Pushkin. The Tale of Tsar Saltan. 1832.\n\\bibitem{onegin} A.S.Pushkin. Eugene Onegin. 1831.\n\\bibitem{dubrovsky} A.S.Pushkin. Dubrovsky. 1841.\n\\end{thebibliography}\n",
+      "output": "Incorrect\n\\begin{thebibliography}{99}\n\\bibitem{onegin} A.S.Pushkin. Eugene Onegin. 1831.\n\\bibitem{dubrovsky} A.S.Pushkin. Dubrovsky. 1841.\n\\bibitem{saltan} A.S.Pushkin. The Tale of Tsar Saltan. 1832.\n\\end{thebibliography}\n"
+    },
+    {
+      "input": "The most famous characters of Pushkin's works are Onegin \\cite{onegin},\nDubrovsky \\cite{dubrovsky} and Tsar Saltan \\cite{saltan}.\n\\begin{thebibliography}{99}\n\\bibitem{onegin} A.S.Pushkin. Eugene Onegin. 1831.\n\\bibitem{dubrovsky} A.S.Pushkin. Dubrovsky. 1841.\n\\bibitem{saltan} A.S.Pushkin. The Tale of Tsar Saltan. 1832.\n\\end{thebibliography}\n",
+      "output": "Correct\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia Team High School Programming Contest, Russia Team High School Programming Contest 2018",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "string",
+    "set",
+    "parsing",
+    "regex"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 2.7428998947143555
+}

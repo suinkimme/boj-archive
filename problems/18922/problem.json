@@ -1,0 +1,29 @@
+{
+  "id": 18922,
+  "title": "Disk Troubles",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The Special String Storage (SSS) has a large bank of strings.  For each string, its cyclic redundancy check code (CRC) is also stored. The hard disks at SSS are so reliable that each string has at most one corrupted bit.</p>\n<p>Byteazar has to write a program that will repair such errors. To do that, he must solve the following problem.</p>\n<p>Consider polynomials in one variable over the field $GF (2)$ (it means that the coefficients can be just $0$ and $1$, and all calculations for them are performed modulo $2$). Let $P(x) = x^{32} + x^{26} + x^{15} + x^7 + 1$. The polynomial $P (x)$ has an amazing property: for any two distinct integers $i$ and $j$ such that $0 \\le i, j &lt; 2^{32}$, the polynomials $x^i \\bmod P (x)$ and $x^j \\bmod P (x)$ are also distinct.</p>\n<p>Here, $A (x) \\bmod B (x)$ is the remainder of polynomial division of $A (x)$ by $B (x)$. Formally, we have $A (x) \\bmod B (x) = R (x)$ where the highest degree of $x$ in $R (x)$ is strictly lower than the highest degree of $x$ in $B (x)$ and there exists a polynomial $Q (x)$ such that $A (x) = Q (x) \\times B (x) + R (x)$. As with integer division, there exists exactly one such $Q (x)$ and exactly one $R (x)$ for any polynomial $A (x)$ and any non-zero polynomial $B (x)$. For example, $x^{32} \\bmod P (x) = x^{26} + x^{15} + x^7 + 1$; here, $Q (x) = 1$.</p>\n<p>For each given polynomial $Q (x)$, Byteazar should find the minimal nonnegative $k$ such that $x^{k} \\bmod P (x)$ is equal to $Q (x)$. Help him do it.</p>",
+  "input": "<p>The input consists of one or more test cases.</p>\n<p>Each test case consists of single line containing a polynomial $Q (x)$. Each polynomial consists of one or more terms; consecutive terms are separated by character '<code>+</code>'. Each term is written as <code>x^k</code> where the power $k$ is an integer such that $0 \\le k &lt; 32$. All terms are distinct and given in the order of decreasing $k$. There are no spaces in the input.</p>\n<p>There are at most $200$ test cases. The input will be terminated by a line containing a single zero which should not be considered as a test case.</p>",
+  "output": "<p>For each test case, write a single line with the answer to the problem.</p>",
+  "samples": [
+    {
+      "input": "x^0\nx^1\nx^26+x^15+x^7+x^0\nx^26+x^21+x^15+x^13+x^7+x^6+x^0\nx^31+x^25+x^14+x^6\n0\n",
+      "output": "0\n1\n32\n38\n4294967294\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Bytedance-Moscow Workshops Camp, Bytedance-Moscow Workshops Camp 2020, Contest 1",
+  "level": 21,
+  "tags": [
+    "bitset",
+    "discrete_log",
+    "math",
+    "mitm",
+    "number_theory",
+    "precomputation"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 4.199999809265137
+}

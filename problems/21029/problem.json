@@ -1,0 +1,28 @@
+{
+  "id": 21029,
+  "title": "Collecting Apples",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Santi is playing a game with a grid of $R$ rows (from top to bottom) and $C$ columns (from left to right). The cell at the $i$<sup>th</sup> row and the $j$<sup>th</sup> column is denoted by cell $(i, j)$. There are $A_{i,j}$ apples on the $(i, j)$ cell.</p>\n<p>Santi’s character, Nano, is initially on the $(1, 1)$ cell and would like to move to the $(R, C)$ cell. On each turn, Nano can only move one cell to the bottom or one cell to the right so that it is closer to the goal. Nano’s path to the goal can be represented as a string containing $R + C - 2$ characters, where $R - 1$ of those characters are ‘<code>D</code>’ and $C - 1$ of those characters are ‘<code>R</code>’. This means that Nano moves one cell to the bottom on the $i$<sup>th</sup> turn if the $i$<sup>th</sup> character is ‘<code>D</code>’ and Nano moves one cell to the right on the $i$<sup>th</sup> turn if the $i$<sup>th</sup> character is ‘<code>R</code>’.</p>\n<p>Two paths are different if the string representation is different. We know that there are $R+C-2 \\choose R-1$ different paths. A path $X$ is better than path $Y$ if either the following is true:</p>\n<ul>\n<li>Path $X$ collects more apples than $Y$. The number of apples that Nano collect in his path is the total number of apples in the cells passed by the path, including the $(1, 1)$ cell and the $(R, C)$ cell.</li>\n<li>Path $X$ collects the same number of apples than $Y$, and the string representation of $X$ is lexicographically smaller than the string representation of $Y$.</li>\n</ul>\n<p>Finding the best path is too boring for Santi, so she would like to find the $K$<sup>th</sup> best path instead. In other words, she would like to find a path $X$ such that there are $K - 1$ paths that are better than $X$, and there are ${R+C-2 \\choose R-1} - K$ paths that are worse than $X$.</p>\n<p>For example, let $R = 2$, $C = 3$, $K = 3$, $A_{1,1..3} = \\{1, 2, 3\\}$, and $A_{2,1..3} = \\{2, 2, 3\\}$. Therefore, there are three different paths to the goal, sorted in the decreasing wellness order.</p>\n<ol>\n<li>Path represented by string <code>RRD</code>. This path collects $1 + 2 + 3 + 3 = 9$ apples.</li>\n<li>Path represented by string <code>DRR</code>. This path collects $1 + 2 + 2 + 3 = 8$ apples.</li>\n<li>Path represented by string <code>RDR</code>. This path collects $1 + 2 + 2 + 3 = 8$ apples.</li>\n</ol>\n<p>Therefore, the $3$<sup>rd</sup> best path is the path represented by string <code>RDR</code>.</p>",
+  "input": "<p>Input begins with a line containing three integers: $R$ $C$ $K$ ($2 \\le R, C \\le 30; 1 \\le K \\le {R+C-2 \\choose R-1}$) representing the number of rows, the number of columns, and the index of the path that Santi would like to find, respectively. The next $R$ lines, each contains $C$ integers representing the number of apples on each cell. The $j$<sup>th</sup> integer on the $i$<sup>th</sup> line is $A_{i,j}$ ($0 \\le A_{i,j} \\le 200$).</p>",
+  "output": "<p>Output in a line a string representing the $K$<sup>th</sup> best path to the goal.</p>",
+  "samples": [
+    {
+      "input": "2 3 3\n1 2 3\n2 2 3\n",
+      "output": "RDR\n"
+    },
+    {
+      "input": "3 3 5\n1 1 1\n1 1 1\n1 1 1\n",
+      "output": "RDRD\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2019",
+  "level": 18,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 2.3529000282287598
+}

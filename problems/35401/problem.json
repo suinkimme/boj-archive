@@ -1,0 +1,31 @@
+{
+  "id": 35401,
+  "title": "Emergency Rations",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>A village stores emergency ration boxes. Each box contains a certain number of rations, and the village leader keeps track of how many rations are in each box. Initially, there are no boxes in the supply. Sometimes a new box is added to the supply, or an existing box is removed.</p>\n<p>In an emergency, the villagers must choose exactly one of the following actions each day that the emergency lasts:</p>\n<ol>\n<li>pick one non-empty box and use up all rations in that box, or</li>\n<li>use one ration from every non-empty box.</li>\n</ol>\n<p>The leader is worried about the possibility of rapid consumption. Therefore, after each change to the supply, the leader wants to know how many days it would take before all boxes become empty, assuming that an emergency occurs and the villagers choose actions that empty all boxes in the fewest possible days.</p>\n<p>Note that the rations are not actually used; the leader only wants to know the minimum number of days needed to empty all boxes. As running these simulations is not something the leader can do alone, you have been asked to help.</p>",
+  "input": "<p>The first line contains an integer $Q$ ($1 ≤ Q ≤ 3 \\cdot 10^5$) indicating the number of changes to the supply.</p>\n<p>The next line contains $Q$ signed integers $X_1, X_2, \\dots , X_Q$ ($1 ≤ |X_i | ≤ 10^9$ for$ i = 1, 2, \\dots , Q$) indicating, in chronological order, the addition and removal of boxes in the supply. A positive value $X_i = +c$ means that a box containing $c$ rations is added, while a negative value $X_i = −c$ means that a box containing exactly $c$ rations is removed.</p>\n<p>It is guaranteed that every removal is valid, that is, whenever a removal $X_i = −c$ occurs, there is at least one box in the supply that contains exactly $c$ rations.</p>",
+  "output": "<p>Output a single line with $Q$ integers, such that the $i$-th integer indicates the minimum number of days needed to use up all rations right after the $i$-th change in the supply.</p>",
+  "samples": [
+    {
+      "input": "8\n+1 +2 +2 +7 -2 +10 -1 -2\n",
+      "output": "1 2 2 3 3 4 3 2\n"
+    },
+    {
+      "input": "2\n+42 -42\n",
+      "output": "1 0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2025",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "lazyprop",
+    "coordinate_compression"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.4285999536514282
+}

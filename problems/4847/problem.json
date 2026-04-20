@@ -1,0 +1,27 @@
+{
+  "id": 4847,
+  "title": "Wavelet Compression",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The discrete wavelet transform is a popular tool for signal compression. In this problem, your job is to write a program to decompress a one−dimensional signal (a list of integers) that has been compressed by a simple wavelet transform.</p>\n<p>To understand how this simple wavelet transform works, suppose that we have a list of an even number of integers. We compute the sum and difference of each pair of consecutive samples, resulting in two lists of sums and differences each having half the original length. Formally, if the original samples are</p>\n<pre>\na(1),..., a(n)</pre>\n<p>the i−th sum s(i) and difference d(i) are computed as:</p>\n<pre>\nfor i = 1,...,n/2:\n  s(i) = a(2*i−1) + a(2*i)\n  d(i) = a(2*i−1) − a(2*i)</pre>\n<p>This is then rearranged to give the transformed signal by first listing the sums and then the differences. For example, if the input signal is:</p>\n<pre>\n5, 2, 3, 2, 5, 7, 9, 6</pre>\n<p>Then the sum and difference signals are:</p>\n<pre>\ns(i) = 7, 5, 12, 15\nd(i) = 3, 1, −2, 3</pre>\n<p>Thus, the transformed signal is:</p>\n<pre>\n7, 5, 12, 15, 3, 1, −2, 3</pre>\n<p>The same process is applied recursively to the first half of the transformed signal, treating s(i) as the input signal, until the length of the input signal is 1. In the example above, the final transformed signal is:</p>\n<pre>\n39, −15, 2, −3, 3, 1, −2, 3</pre>\n<p>It is assumed that the length of the original input is a power of 2, and the input signal consists of integers between 0 and 255 (inclusive) only.</p>",
+  "input": "<p>The input consists of a number of cases. Each case is specified on a line, starting with an integer N (1 &lt;= N &lt;= 256) indicating the number of samples. The next N integers are the transformed samples. The end of input is indicated by a case in which N = 0.</p>",
+  "output": "<p>For each test case, output the original samples on a single line, separated by a single space.</p>",
+  "samples": [
+    {
+      "input": "8 39 -15 2 -3 3 1 -2 3\n4 10 -4 -1 -1\n0\n",
+      "output": "5 2 3 2 5 7 9 6\n1 2 3 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2007 Rocky Mountain Regional Contest",
+  "level": 8,
+  "tags": [
+    "arithmetic",
+    "implementation",
+    "math",
+    "recursion"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.3912999629974365
+}

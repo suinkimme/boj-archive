@@ -1,0 +1,25 @@
+{
+  "id": 10088,
+  "title": "XOR",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The operation “bitwise exclusive or” (we denote it with \\(\\oplus \\)) is standardly defined on each couple of non-negative integers (\\(a\\), \\(b\\)) as follows:</p>\n<p>Let \\(a = \\overline  { a_{n-1}a_{n-2}a_{n-3}\\cdots a_0}\\) and \\(b = \\overline  { b_{n-1}b_{n-2}b_{n-3}\\cdots b_0}\\) be the \\(n\\)-digit binary notations of the number \\(a\\) and \\(b\\), i.e., \\(a_i\\) and \\(b_i\\) are zeroes or ones (if the binary digits of the smaller one are less than n, its notation is filled up with “leading zeroes”). Then the number \\(c = a \\oplus b\\) is defined in this way: its ith binary digit \\(c_i\\) (\\(c = \\overline  {c_{n-1}c_{n-2}c_{n-3}\\cdots c_0}\\)) is obtained by applying the operation “exclusive or” on the ith binary digits of \\(a\\) and \\(b\\) respectively, i. e., \\(c_i = a_i \\text{ xor } b_i \\) for each \\(i\\) from \\(0\\) to \\(n-1\\). The xor operation is defined on binary digits as follows: \\(0 \\text{ xor } 0 = 0\\); \\(0 \\text{ xor } 1 = 1\\); \\(1 \\text{ xor } 0 = 1\\); \\(1 \\text{ xor } 1 = 0\\).</p>\n<p>The operation is easily extended for more operands. More specifically, for the consecutive positive integers in the interval [\\(a\\),\\(b\\)] we can denote \\(\\oplus_{i=a}^{b} i = a \\oplus (a+1) \\oplus (a+2) \\oplus \\dots \\oplus b\\), assuming operation execution from left to right. Consider the positive integers \\(a\\) and \\(b\\) (\\(a\\) &lt; \\(b\\)), defining the closed interval of integers [\\(a\\),\\(b\\)], as well as the positive integer \\(n\\) (\\(1\\) ≤ \\(n\\) ≤ \\(b-a+1\\)). Consider the operation “bitwise exclusive or” on every possible \\(n\\)-tuple of consecutive integers in the interval [\\(a\\),\\(b\\)].</p>\n<p>Write a program xor to find out the largest value M which this process can produce.</p>\n<p>Let’s, for clarity, take a closer look at the case \\(a=10\\), \\(b=20\\), \\(n=6\\). I. e., we consider the interval [\\(10\\), \\(20\\)] of integers, more precisely – all sextuples of consecutive integers in it. For each of them we apply the generalized operation “bitwise exclusive or”:</p>\n<ul>\n<li>\\(10 \\oplus 11 \\oplus 12 \\oplus 13 \\oplus 14 \\oplus 15 = 1010_2 \\oplus 1011_2 \\oplus 1100_2 \\oplus 1101_2 \\oplus 1110_2 \\oplus 1111_2 = 0001_2 = 1\\)</li>\n<li>\\(11 \\oplus 12 \\oplus 13 \\oplus 14 \\oplus 15 \\oplus 16 = 1011_2 \\oplus 1100_2 \\oplus 1101_2 \\oplus 1110_2 \\oplus 1111_2 \\oplus 10000_2 = 11011_2 = 27\\)</li>\n<li>\\(12 \\oplus 13 \\oplus 14 \\oplus 15 \\oplus 16 \\oplus 17 = 1100_2 \\oplus 1101_2 \\oplus 1110_2 \\oplus 1111_2 \\oplus 10000_2 \\oplus 10001_2 = 00001_2 = 1\\)</li>\n<li>\\(13 \\oplus 14 \\oplus 15 \\oplus 16 \\oplus 17 \\oplus 18 = 1101_2 \\oplus 1110_2 \\oplus 1111_2 \\oplus 10000_2 \\oplus 10001_2 \\oplus 10010_2 = 11111_2 = 31\\)</li>\n<li>\\(14 \\oplus 15 \\oplus 16 \\oplus 17 \\oplus 18 \\oplus 19 = 1110_2 \\oplus 1111_2 \\oplus 10000_2 \\oplus 10001_2 \\oplus 10010_2 \\oplus 10011_2 = 00001_2 = 1\\)</li>\n<li>\\(15 \\oplus 16 \\oplus 17 \\oplus 18 \\oplus 19 \\oplus 20 = 1111_2 \\oplus 10000_2 \\oplus 10001_2 \\oplus 10010_2 \\oplus 10011_2 \\oplus 10100_2 = 11011_2 = 27\\)</li>\n</ul>\n<p>Obviously, in this case the solution is 31, resulting in the sextuple which starts with 13.</p>",
+  "input": "<p>One line is read from the standard input, containing the space separated positive integers \\(a\\), \\(b\\) and \\(n\\). </p>\n<p>\\(a\\), \\(b\\) and \\(n\\) are positive integers with no more than 18 decimal digits; \\(a\\) &lt; \\(b\\); \\(1\\) &lt; \\(n\\) ≤ \\(b – a + 1\\), \\(n\\) &lt; \\(10^8\\).</p>",
+  "output": "<p>The program should write to the standard output one line, containing only one non-negative integer \\(M\\) which is the biggest possible number, obtained by applying the operation “bitwise exclusive or” on at least one of the n-tuples of consecutive integers in the interval [\\(a\\), \\(b\\)]. </p>",
+  "samples": [
+    {
+      "input": "10 20 6\n",
+      "output": "31\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, International Autumn Tournament in Informatics, 2013, Group A (Seniors)",
+  "level": 20,
+  "tags": [
+    "math",
+    "bitmask"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 4.6666998863220215
+}

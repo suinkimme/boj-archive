@@ -1,0 +1,34 @@
+{
+  "id": 33280,
+  "title": "배틀쉽",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>보드게임 배틀쉽은 $N\\times M$ 격자판 위에서 진행된다. $NM$개의 칸 중 $K$개의 칸은 벽이다. 벽이 아닌 모든 칸들은 상하좌우로 서로 연결되어 있다. $(0\\le K&lt;NM)$</p>\n<p>벽이 아닌 어떤 칸에 말이 $NM-K$개 올려져 있을 때, 하늘이는 다음 행위를 반복하여 벽이 아닌 모든 칸에 말을 정확히 한 개씩 배치하려고 한다.</p>\n<ol>\n<li>말이 $2$개 이상 놓여져 있는 칸을 선택해 말을 $1$개 이상 가져간다. 단, 말을 적어도 하나 남겨두어야 한다.</li>\n<li>왼쪽, 오른쪽, 위쪽, 아래쪽 중 한 방향을 선택한 뒤 벽이 등장하거나, 말이 놓여있거나, 격자판을 벗어나기 직전까지 이동한다. 이 때 최소 한 칸 이동하여야 한다.</li>\n<li>도착한 칸에 가져갔던 말을 전부 놓는다.</li>\n</ol>\n<p>하늘이가 목표를 달성할 수 있는지 판별하고 가능하다면 방법을 하나 출력해보자. 만약 방법이 여러 가지라면 아무거나 출력해도 된다.</p>",
+  "input": "<p>첫째 줄에 $N$, $M$이 공백을 사이에 두고 주어진다. $(1 \\leq N,M \\leq 500)$</p>\n<p>둘째 줄부터 $N$개의 줄에 걸쳐 격자판을 나타내는 길이 $M$의 문자열이 주어진다. 문자열은 <span style=\"color:#e74c3c;\"><code>#</code></span>과 <span style=\"color:#e74c3c;\"><code>.</code></span>로만 이루어져 있으며 <span style=\"color:#e74c3c;\"><code>#</code></span>은 벽을, <span style=\"color:#e74c3c;\"><code>.</code></span>은 벽이 아닌 칸을 의미한다. 모든 <span style=\"color:#e74c3c;\"><code>.</code></span>은 상하좌우로 서로 연결되어 있다.</p>\n<p>$N+2$번째 줄에 말이 놓여있는 칸을 나타내는 정수 $R$, $C$가 공백을 사이에 두고 주어진다. 이는 위에서 $R$번째 행, 왼쪽에서 $C$번째 열임을 의미한다. 해당 칸은 벽이 아니다. $(1 \\leq R \\leq N;$ $1 \\leq C \\leq M)$</p>",
+  "output": "<p>첫째 줄에 하늘이가 목표를 달성할 수 있다면 <span style=\"color:#e74c3c;\"><code>YES</code></span>를, 그렇지 않다면 <span style=\"color:#e74c3c;\"><code>NO</code></span>를 출력한다.</p>\n<p>달성할 수 있다면 가능하다면 둘째 줄에 행위를 반복하는 횟수 $V$를 출력하고, 셋째 줄 부터 $V$개의 줄에 걸쳐 다음과 같은 형식으로 방법을 출력한다.</p>\n<ul>\n<li>$r\\, c\\, n\\, d$: $(r,c)$ 칸에서 $n$개의 말을 가져가 $d$ 방향으로 최대한 이동한 후 말을 놓는다.</li>\n</ul>\n<p>$(r,c)$ 칸은 위에서 $r$번째 행, 왼쪽에서 $c$번째 열에 해당하는 칸으로, 말이 $n$개보다 많이 놓여있고 벽이 아니어야 한다. $d$는 왼쪽, 오른쪽, 위쪽, 아래쪽 각각 <span style=\"color:#e74c3c;\"><code>L</code></span>, <span style=\"color:#e74c3c;\"><code>R</code></span>, <span style=\"color:#e74c3c;\"><code>U</code></span>, <span style=\"color:#e74c3c;\"><code>D</code></span>의 값을 가지며, 한 칸 이상 이동이 가능한 방향이어야 한다.</p>\n<p>위의 조건을 지키지 않으면 <span style=\"color:#dd4124;\">틀렸습니다</span>를 받음에 유의하시오.</p>",
+  "samples": [
+    {
+      "input": "3 3\n...\n.#.\n...\n1 1\n",
+      "output": "YES\n7\n1 1 7 R\n1 3 5 D\n3 3 1 U\n3 3 3 L\n3 1 1 U\n3 1 1 R\n1 3 1 L\n"
+    },
+    {
+      "input": "3 3\n...\n#.#\n...\n1 2\n",
+      "output": "YES\n6\n1 2 4 D\n3 2 1 U\n3 2 1 L\n3 2 1 R\n1 2 1 L\n1 2 1 R\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, 보라매컵, 제4회 보라매컵, kaorin, amel, chattermin, moonrabbit2, prarie, serin",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "constructive",
+    "bfs",
+    "dfs",
+    "grid_graph"
+  ],
+  "accepted_user_count": 29,
+  "submission_count": null,
+  "average_tries": 3.1379001140594482
+}

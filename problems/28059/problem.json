@@ -1,0 +1,26 @@
+{
+  "id": 28059,
+  "title": "Remix",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are given a multiset $s$ consisting of $n$ integers. You should perform the following three-step operation some number of times until a single integer remains in $s$.</p>\n<ul>\n<li>Choose a multiset $t$ such that $t \\subseteq s$ and $|t| \\ge 2$.</li>\n<li>Erase the elements of $t$ from $s$.</li>\n<li>Insert $\\max(t) - \\min(t)$ to $s$.</li>\n</ul>\n<p>Find a sequence of operations that maximizes the integer left in $s$.</p>",
+  "input": "<p>The first line contains a single integer $n$ $(2 \\le n \\le 10^5)$.</p>\n<p>The second line contains $n$ integers $s_1, s_2, \\ldots, s_n$ $(0 \\le s_i \\le 10^5)$.</p>",
+  "output": "<p>On the first line, print a single integer $k$ $(1 \\le k \\le n-1)$, the number of operations.</p>\n<p>On each of the next $k$ lines, print an integer $m$ $(2 \\le m \\le n)$, the size of the chosen multiset $t$, followed by $m$ integers, $t_1, t_2, \\ldots, t_m$.</p>\n<p>Note that the operations are executed in the same order they are listed. So, for each operation, $t$ must be a subset of $s$ when all the preceding operations are performed.</p>",
+  "samples": [
+    {
+      "input": "7\n33 24 63 48 97 90 93\n",
+      "output": "4\n3 33 93 90\n2 63 60\n2 48 24\n3 97 24 3\n"
+    }
+  ],
+  "hint": "<p>The sample does the following operations:</p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 500px;\">\n<tbody>\n<tr>\n<td> </td>\n<td>Chosen $t$</td>\n<td>New $s$</td>\n</tr>\n<tr>\n<td>$0$</td>\n<td> </td>\n<td>$\\{24, 33, 48, 63, 90, 93, 97\\}$</td>\n</tr>\n<tr>\n<td>$1$</td>\n<td>$\\{33, 90, 93\\}$</td>\n<td>$\\{24, 48, \\underline{60}, 63, 97\\}$</td>\n</tr>\n<tr>\n<td>$2$</td>\n<td>$\\{60, 63\\}$</td>\n<td>$\\{\\underline{3}, 24, 48, 97\\}$</td>\n</tr>\n<tr>\n<td>$3$</td>\n<td>$\\{24, 48\\}$</td>\n<td>$\\{3, \\underline{24}, 97\\}$</td>\n</tr>\n<tr>\n<td>$4$</td>\n<td>$\\{3, 24, 97\\}$</td>\n<td>$\\{\\underline{94}\\}$</td>\n</tr>\n</tbody>\n</table>\n<p>The values underlined in $s$ denote the integer inserted. After the fourth operation, $s$ is reduced to a single integer value of $94$. It can be shown that no other sequence of operations results in a larger value.</p>",
+  "source": "University, KAIST, KAIST RUN Spring Contest, 2023 KAIST RUN Spring Contest, zoooma13, kdh9949, sjimed, songc",
+  "level": 22,
+  "tags": [
+    "bruteforcing",
+    "constructive",
+    "pigeonhole_principle"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 3.0799999237060547
+}

@@ -1,0 +1,37 @@
+{
+  "id": 15685,
+  "title": "드래곤 커브",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>드래곤 커브는 다음과 같은 세 가지 속성으로 이루어져 있으며, 이차원 좌표 평면 위에서 정의된다. 좌표 평면의 x축은 → 방향, y축은 ↓ 방향이다.</p>\n<ol>\n<li>시작 점</li>\n<li>시작 방향</li>\n<li>세대</li>\n</ol>\n<p>0세대 드래곤 커브는 아래 그림과 같은 길이가 1인 선분이다. 아래 그림은 (0, 0)에서 시작하고, 시작 방향은 오른쪽인 0세대 드래곤 커브이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 191px; height: 50px;\"/></p>\n<p>1세대 드래곤 커브는 0세대 드래곤 커브를 끝 점을 기준으로 시계 방향으로 90도 회전시킨 다음 0세대 드래곤 커브의 끝 점에 붙인 것이다. 끝 점이란 시작 점에서 선분을 타고 이동했을 때, 가장 먼 거리에 있는 점을 의미한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 210px; height: 170px;\"/></p>\n<p>2세대 드래곤 커브도 1세대를 만든 방법을 이용해서 만들 수 있다. (파란색 선분은 새로 추가된 선분을 나타낸다)</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 220px; height: 285px;\"/></p>\n<p>3세대 드래곤 커브도 2세대 드래곤 커브를 이용해 만들 수 있다. 아래 그림은 3세대 드래곤 커브이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 390px; height: 285px;\"/></p>\n<p>즉, K(K &gt; 1)세대 드래곤 커브는 K-1세대 드래곤 커브를 끝 점을 기준으로 90도 시계 방향 회전 시킨 다음, 그것을 끝 점에 붙인 것이다.</p>\n<p>크기가 100×100인 격자 위에 드래곤 커브가 N개 있다. 이때, 크기가 1×1인 정사각형의 네 꼭짓점이 모두 드래곤 커브의 일부인 정사각형의 개수를 구하는 프로그램을 작성하시오. 격자의 좌표는 (x, y)로 나타내며, 0 ≤ x ≤ 100, 0 ≤ y ≤ 100만 유효한 좌표이다.</p>",
+  "input": "<p>첫째 줄에 드래곤 커브의 개수 N(1 ≤ N ≤ 20)이 주어진다. 둘째 줄부터 N개의 줄에는 드래곤 커브의 정보가 주어진다. 드래곤 커브의 정보는 네 정수 x, y, d, g로 이루어져 있다. x와 y는 드래곤 커브의 시작 점, d는 시작 방향, g는 세대이다. (0 ≤ x, y ≤ 100, 0 ≤ d ≤ 3, 0 ≤ g ≤ 10)</p>\n<p>입력으로 주어지는 드래곤 커브는 격자 밖으로 벗어나지 않는다. 드래곤 커브는 서로 겹칠 수 있다.</p>\n<p>방향은 0, 1, 2, 3 중 하나이고, 다음을 의미한다.</p>\n<ul>\n<li>0: x좌표가 증가하는 방향 (→)</li>\n<li>1: y좌표가 감소하는 방향 (↑)</li>\n<li>2: x좌표가 감소하는 방향 (←)</li>\n<li>3: y좌표가 증가하는 방향 (↓)</li>\n</ul>",
+  "output": "<p>첫째 줄에 크기가 1×1인 정사각형의 네 꼭짓점이 모두 드래곤 커브의 일부인 것의 개수를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3\n3 3 0 1\n4 2 1 3\n4 2 2 1\n",
+      "output": "4\n"
+    },
+    {
+      "input": "4\n3 3 0 1\n4 2 1 3\n4 2 2 1\n2 7 3 4\n",
+      "output": "11\n"
+    },
+    {
+      "input": "10\n5 5 0 0\n5 6 0 0\n5 7 0 0\n5 8 0 0\n5 9 0 0\n6 5 0 0\n6 6 0 0\n6 7 0 0\n6 8 0 0\n6 9 0 0\n",
+      "output": "8\n"
+    },
+    {
+      "input": "4\n50 50 0 10\n50 50 1 10\n50 50 2 10\n50 50 3 10\n",
+      "output": "1992\n"
+    }
+  ],
+  "hint": "<table class=\"table table table-bordered\" style=\"width:100%;\">\n<tbody>\n<tr>\n<td style=\"width: 50%; vertical-align: middle; text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 322px; height: 300px;\"/></td>\n<td style=\"width: 50%; vertical-align: middle; text-align: center;\"><br/>\n<img alt=\"\" src=\"6.png\" style=\"width: 411px; height: 400px;\"/></td>\n</tr>\n<tr>\n<td style=\"width: 50%; vertical-align: middle; text-align: center;\">예제 1</td>\n<td style=\"width: 50%; vertical-align: middle; text-align: center;\">예제 2</td>\n</tr>\n</tbody>\n</table>",
+  "source": "baekjoon, jh05013",
+  "level": 13,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 13189,
+  "submission_count": null,
+  "average_tries": 1.753499984741211
+}

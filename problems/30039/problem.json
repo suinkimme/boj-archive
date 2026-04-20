@@ -1,0 +1,36 @@
+{
+  "id": 30039,
+  "title": "Queueueue",
+  "time_limit": "2.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>지금까지 세상에 존재하지 않았던 새로운 자료구조 <strong>Queueueue</strong>를 소개한다. 자료구조 <strong>Queueueue</strong>는 가로 Queue와 세로 Queue로 구성되어 있으며, 두 Queue가 십자가로 겹친 형태이다. 즉, 원소 1개에 대해서 중간 지점을 공유하고 있다. <strong>Queueueue</strong>의 정확한 정의는 다음과 같다.</p>\n<ul>\n<li>가로 Queue의 원소 개수를 $n_h$, 세로 Queue의 원소 개수를 $n_v$로 정의한다.</li>\n<li>가로 Queue의 $\\left\\lceil \\frac{n_h}{2} \\right\\rceil$번째 원소와 세로 Queue의 $\\left\\lceil \\frac{n_v}{2} \\right\\rceil$번째 원소는 서로 공유하는 같은 원소이다. 이 원소를 <strong>공유 원소</strong>라고 정의한다.</li>\n<li><strong>Queueueue</strong>는 명령을 수행하고 나서 매번 <strong>공유 원소</strong>를 새로 갱신한다.</li>\n<li>비어있는 <strong>Queueueue</strong>에는 <strong>공유 원소</strong>가 없다. 비어있는 <strong>Queueueue</strong>에 원소를 넣으면 그 원소가 <strong>공유 원소</strong>가 되며 $n_h = 1$, $n_v = 1$이다.\n\t<ul>\n<li>$n_h = 0$, $n_v = 0$인 경우를 제외하고 $n_h \\times n_v = 0$인 경우는 없다. 따라서 <strong>Queueueue</strong>가 비어있지 않다면 항상 $n_h \\ge 1$, $n_v \\ge 1$이다.</li>\n</ul>\n</li>\n</ul>\n<p>처음에 <strong>Queueueue</strong>는 비어있으며 <strong>Queueueue</strong>는 다음 13가지 명령을 할 수 있다.</p>\n<ul>\n<li><span style=\"color:#e74c3c;\"><code>hpush x</code></span> : 가로 Queue의 맨 뒤에 정수 $x$를 넣는다. $(1 \\le x \\le 100\\,000)$</li>\n<li><span style=\"color:#e74c3c;\"><code>hpop</code></span> : 가로 Queue에 정수가 있다면 맨 앞에 있는 정수를 빼고 출력한다. 없다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 대신 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>hfront</code></span> : 가로 Queue에 정수가 있다면 맨 앞에 있는 정수를 출력한다. 없다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 대신 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>hback</code> </span>: 가로 Queue에 정수가 있다면 맨 뒤에 있는 정수를 출력한다. 없다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 대신 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>hsize</code> </span>: 가로 Queue에 들어있는 정수의 개수를 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>vpush x</code> </span>: 세로 Queue의 맨 뒤에 정수 $x$를 넣는다. $(1 \\le x \\le 100\\,000)$</li>\n<li><span style=\"color:#e74c3c;\"><code>vpop</code> </span>: 세로 Queue에 정수가 있다면 맨 앞에 있는 정수를 빼고 출력한다. 없다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 대신 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>vfront</code> </span>: 세로 Queue에 정수가 있다면 맨 앞에 있는 정수를 출력한다. 없다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 대신 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>vback</code> </span>: 세로 Queue에 정수가 있다면 맨 뒤에 있는 정수를 출력한다. 없다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 대신 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>vsize</code> </span>: 세로 Queue에 들어있는 정수의 개수를 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>size</code> </span>: <strong>Queueueue</strong>에 들어있는 정수의 개수를 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>empty</code> </span>: <strong>Queueueue</strong>가 비어있으면 <span style=\"color:#e74c3c;\"><code>1</code></span>, 아니면 <span style=\"color:#e74c3c;\"><code>0</code></span>을 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>middle</code> </span>: <strong>Queueueue</strong>에 정수가 있다면 <strong>Queueueue</strong>의 <strong>공유 원소</strong>에 해당하는 정수를 출력한다. 없다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 대신 출력한다.</li>\n</ul>",
+  "input": "<p>첫 번째 줄에 명령의 수 $N$이 주어진다. $(1 \\le N \\le 2\\,000\\,000)$</p>\n<p>두 번째 줄부터 $N$개의 줄에 걸쳐 명령이 하나씩 주어진다.</p>",
+  "output": "<p>출력을 요구하는 명령이 주어질 때마다, 명령의 결과를 한 줄에 하나씩 출력한다.</p>",
+  "samples": [
+    {
+      "input": "33\nempty\nhpush 2\nvpush 3\nvfront\nempty\nhpush 4\nhfront\nvpush 1\nhpush 5\nmiddle\nvback\nhback\nvpush 6\nmiddle\nhsize\nvpop\nvfront\nhpop\nvsize\nhpop\nsize\nhpop\nhpop\nvpop\nvpop\nsize\nvfront\nhfront\nvback\nhback\nhpop\nsize\nempty\n",
+      "output": "1\n2\n0\n2\n4\n1\n5\n4\n3\n2\n4\n3\n3\n1\n3\n5\n4\n6\n-1\n0\n-1\n-1\n-1\n-1\n-1\n0\n1\n"
+    },
+    {
+      "input": "33\nhpush 1\nvpush 2\nvpush 3\nvpop\nvpop\nvpop\nvpush 1\nvpush 2\nhpush 3\nvpop\nvpop\nhpush 4\nhpush 5\nvpush 6\nvpush 7\nhpop\nvpop\nhpop\nvpop\nhpop\nvpush 1\nvpush 2\nvpush 3\nvpush 4\nvpop\nhpush 5\nhpush 6\nhpop\nvpop\nhpop\nvpop\nhpop\nhpop\n",
+      "output": "1\n2\n3\n1\n2\n3\n4\n6\n5\n7\n1\n3\n2\n5\n6\n4\n-1\n"
+    },
+    {
+      "input": "33\nmiddle\nhpush 1\nmiddle\nvpush 2\nmiddle\nhpush 3\nmiddle\nvpush 4\nmiddle\nhpush 5\nmiddle\nvpush 6\nmiddle\nhpush 7\nmiddle\nvpush 8\nmiddle\nhpush 9\nmiddle\nvpush 10\nmiddle\nhpop\nmiddle\nhpop\nmiddle\nhpop\nmiddle\nhpop\nmiddle\nhpop\nmiddle\nhpop\nmiddle\n",
+      "output": "-1\n1\n1\n1\n2\n3\n3\n3\n4\n5\n5\n2\n5\n4\n7\n5\n7\n7\n9\n9\n6\n6\n3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 유틸컵, 제1회 유틸컵 - Chapter 2, wapas, artichoke42, index, snrnsidy, starbow, utilforever",
+  "level": 16,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "case_work",
+    "deque",
+    "linked_list"
+  ],
+  "accepted_user_count": 92,
+  "submission_count": null,
+  "average_tries": 3.684799909591675
+}

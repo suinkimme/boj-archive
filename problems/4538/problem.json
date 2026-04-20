@@ -1,0 +1,25 @@
+{
+  "id": 4538,
+  "title": "The Final Countdown",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>When Doctor Doom modeled LAI-BACH (the Latverian Aerospace Institute, Bolograd Active Control Headquarters) on Mission Command with NASA, he perhaps cribbed from the source a bit too closely.</p>\n<p>NASA (and therefore LAI-BACH) have a peculiar way of handling countdowns to missions. While the clock may state that it is, say, thirty minutes until liftoff for a rocket or shuttle, there are built-in holds where the clock is stopped for a set amount of time. For example, there may be a 15-minute hold when the countdown reaches the 8-minute mark. The end result is that more time passes from the beginning of the countdown to the end than the numbers on the clock would imply.</p>\n<p>LAI-BACH uses a simple \"command file\" format to manage holds for their countdowns on their computer systems. All commands start with a positive integer no greater than 1440 (countdowns longer than a day make Doctor Doom angry), followed by a directive. The format of the commands is as follows:</p>\n<table class=\"table table-bordered\" style=\"width:60%\">\n<tbody>\n<tr>\n<td><code>t START</code></td>\n<td>t is the start time on the countdown clock, in minutes.</td>\n</tr>\n<tr>\n<td><code>t HOLD n</code></td>\n<td>A mandatory hold for n minutes at countdown clock time t.</td>\n</tr>\n<tr>\n<td><code>t HOLD n IF condition</code></td>\n<td>A hold at countdown clock time t for n minutes if condition is true.</td>\n</tr>\n<tr>\n<td><code>t HOLD n IF NOT condition</code></td>\n<td>A hold at countdown clock time t for n minutes if condition is not true.</td>\n</tr>\n</tbody>\n</table>\n<p>All conditions are represented by short strings of lowercase letters, no more than 20 characters long; their actual values are not provided in the command structure, as they are determined by actual conditions during the launch (whether the fuel tanks have been topped off, whether the Fantastic Four is currently fighting Doctor Doom, and so on), but they are always either true or false and do not change during the course of a single countdown. A hold time n is a positive integer no more than 60 (minutes), as long delays also irritate Victor.</p>\n<p>Given a particular command file, you are to determine both the shortest possible time and the longest possible time that the countdown can run. The commands may be present in any order, but there will always be one and only one START directive; there will be precisely as much whitespace on each line as dictated by the format given above. No two commands in a command file will reference the same minute t.</p>",
+  "input": "<p>Input to this problem will begin with a line containing a single integer N (1 ≤ N ≤ 100) indicating the number of data sets. Each data set consists of the following components:</p>\n<ul>\n<li>A line containing a single integer L (1 ≤ L ≤ 100) indicating the number of lines in the particular \"command file\"; and</li>\n<li>A series of L lines representing the command file, in the format described above.</li>\n</ul>",
+  "output": "<p>For each data set, print \"min TO max\", where min is the shortest possible time the countdown can last in minutes, and max is the longest possible time the countdown can last in minutes.</p>",
+  "samples": [
+    {
+      "input": "2\n3\n30 START\n15 HOLD 5\n10 HOLD 5 IF fantasticfour\n3\n75 HOLD 20 IF yellowlightblinks\n150 HOLD 30 IF NOT fueled\n300 START\n",
+      "output": "35 TO 40\n300 TO 350\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 2007 South Central USA  Regional Programming Contest",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 2.8333001136779785
+}

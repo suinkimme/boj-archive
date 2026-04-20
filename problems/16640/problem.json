@@ -1,0 +1,29 @@
+{
+  "id": 16640,
+  "title": "Awesome Numbers",
+  "time_limit": "0.5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>여러분도 잘 알다시피, 키파가 가장 좋아하는 정수는 120입니다. 이 수는 많은 성질이 있는데,</p>\n<ul>\n<li>(ζ(-3))<sup>-1</sup>입니다.</li>\n<li>첫 번째 <b>triperfect number</b>입니다.</li>\n<li>정수 5의 <b>factorial</b>입니다.</li>\n<li>10번째 <b>highly composite number</b>입니다.</li>\n<li>15번째 <b>삼각수</b>입니다.</li>\n</ul>\n<p>순서는 당연히 키파가 좋아하는 성질 순서입니다.</p>\n<p>그러나 키파는 정수족, 즉 어떤 성질을 만족하는 정수의 부분집합도 좋아하는데, 특별히 위 성질에 속하지 않은 두 개의 정수족을 좋아합니다. 그들은 바로 <b>소수</b>와 <b>제곱수</b>입니다. 그래서, 이런 연산을 생각하기로 했습니다:</p>\n<ul>\n<li><em>P</em>(<em>n</em>): <em>n</em>번째 소수입니다.</li>\n<li><em>S</em>(<em>n</em>): <em>n</em>번째 제곱수입니다.</li>\n</ul>\n<p>예를 들어, 5 = <em>P</em>(<em>P</em>(<em>P</em>(1)))는 1번째 소수번째 소수번째 소수이고, 7 = <em>P</em>(<em>S</em>(<em>P</em>(1)))은 1번째 소수번째 제곱수번째 소수입니다. 키파는 1에서 시작해서 <em>P</em>나 <em>S</em>를 반복 적용하여 만들 수 있는 정수 <em>n</em>을 모아, 그 정수족을 <b>멋진 수</b>라고 부르기로 했습니다. 양의 정수가 주어지면, 멋진 수인지 아닌지 판단해서 키파를 멋지게 만들어 줍시다.</p>",
+  "input": "<p>첫째 줄에 테스트 케이스의 수 <em>T</em>가 주어집니다. <em>T</em>는 10<sup>5</sup> 이하의 양의 정수입니다.</p>\n<p>둘째 줄부터 <em>T</em>개의 줄마다 10<sup>15</sup> 이하의 양의 정수 <em>n</em>이 주어집니다.</p>",
+  "output": "<p><em>T</em>개의 줄에 예제 출력과 비슷하게 출력합니다. <s>\"비슷하게\"라는 말에 대해 불평을 가지고 계신 분들을 위해</s> 하단에 조건을 정규식으로 달아 두었습니다:</p>\n<ul>\n<li><em>n</em>이 <b>멋진 수</b>가 아니라면, <code>-1</code>을 출력합니다.</li>\n<li><em>n</em>이 <b>멋진 수</b>라면, 다음 조건들이 만족되는 가장 짧은 문자열 <em>S</em>를 출력합니다.\n\t<ul>\n<li>정규식 <code>^1( [PS] [1-9][0-9]*)*$</code>이 <em>S</em>를 받아들입니다.</li>\n<li>정규식 <code>^.*</code><em>n</em><code>$</code>이 <em>S</em>를 받아들입니다.</li>\n<li><em>S</em>의 바로 앞 글자와 뒤 글자가 숫자가 아닌 임의의 부분문자열 <em>s</em>에 대하여,\n\t\t<ul>\n<li>정규식 <code>^([0-9]+) P ([0-9]+)$</code>이 <em>s</em>를 받아들인다면, <em>P</em>(<code>{1}</code>) = <code>{2}</code>를 만족합니다.</li>\n<li>정규식 <code>^([0-9]+) S ([0-9]+)$</code>이 <em>s</em>를 받아들인다면, <em>S</em>(<code>{1}</code>) = <code>{2}</code>를 만족합니다.</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n<p><em>n</em>이 <strong>멋진 수</strong>라면, 조건을 만족하는 문자열이 하나 이상 존재함이 보장됩니다. 그러한 가장 짧은 <em>S</em>가 여러 개라면, 아무 거나 하나 출력해도 됩니다.</p>",
+  "samples": [
+    {
+      "input": "10\n6\n7\n3\n5\n9\n1\n2\n8\n4\n3001\n",
+      "output": "-1\n1 P 2 S 4 P 7\n1 P 2 P 3\n1 P 2 P 3 P 5\n1 P 2 P 3 S 9\n1\n1 P 2\n-1\n1 P 2 S 4\n1 P 2 P 3 S 9 P 23 P 83 P 431 P 3001\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 키파컵, 제1회 키파컵, kipa00",
+  "level": 21,
+  "tags": [
+    "bfs",
+    "graphs",
+    "graph_traversal",
+    "math",
+    "number_theory",
+    "precomputation"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.625
+}

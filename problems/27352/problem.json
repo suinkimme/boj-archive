@@ -1,0 +1,37 @@
+{
+  "id": 27352,
+  "title": "Present",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Laika has decided to make a gift for her good friend Azusa, the witch of the highlands. For reasons we do not know, this gift will be a finite set of positive integers. If that were all, it would be a simple matter to choose a gift, but several factors complicate this.</p>\n<p>First of all, Laika’s rival, Flatorte, has mysterious magical powers: given two integers $x$ and $y$ she can create the greatest common divisor of $x$ and $y$ (i.e. $\\gcd(x, y)$). If Laika gave a gift that Flatorte could immediately add to (i.e. if she gifted a set A for which $x, y ∈ A$, yet $\\gcd(x, y) \\not∈ A$), then Flatorte would immediately tease her rival. Therefore, Laika’s gift must not be improvable using Flatorte’s powers: if she gifts $A$ then for all $x, y ∈ A$ it must be the case that $\\gcd(x, y) ∈ A$.</p>\n<p>Secondly, Laika wants the gift to have a certain special significance. It has been $K$ days since she met Azusa, and she wants the gift to show this fact. Therefore, she has arranged all of the sets that satisfy the condition explained above in <em>Laikan</em> order (explained below), getting an infinite sequence of finite sets $S_0, S_1, \\dots$. She wants to select and gift set $S_K$. Can you help her do so?</p>\n<p><strong>Laikan order.</strong> Take two sets $A$ and $B$. Then, $A$ comes before $B$ in Laikan order if and only if $\\max A &lt; \\max B$, or $\\max A = \\max B$ and $A \\setminus \\{\\max A\\}$ comes before $B \\setminus \\{\\max B\\}$ in Laikan order. For the purposes of this definition, take $\\max ∅ = −∞$. Note that this is always well defined for finite sets of positive integers.</p>",
+  "input": "<p>The first line of the input contains a single integer $T$, the number of test cases in this file. The next $T$ lines each contain a value of $K$ for which we want to know $S_K$.</p>",
+  "output": "<p>For each of the $T$ values of $K$, output the set $S_K$. To output a set, output a line that begins with the number of elements it has, and the continues with its elements, in increasing order.</p>",
+  "samples": [
+    {
+      "input": "5\n0\n1\n2\n3\n4\n",
+      "output": "0\n1 1\n1 2\n2 1 2\n1 3\n"
+    },
+    {
+      "input": "4\n5\n6\n100\n1000\n",
+      "output": "2 1 3\n3 1 2 3\n5 1 2 3 7 8\n7 1 2 3 5 10 11 12\n"
+    }
+  ],
+  "hint": "<p>Note that $S_0 = ∅$, $S_1 = \\{1\\}$, $S_2 = \\{2\\}$, $S_3 = \\{1, 2\\}$, $S_4 = \\{3\\}$, $S_5 = \\{1, 3\\}$, $S_6 = \\{1, 2, 3\\}$, $S_{100} = \\{1, 2, 3, 7, 8\\}$, $S_{1000} = \\{1, 2, 3, 5, 10, 11, 12\\}$. These are precisely the sets outputted in the examples (together with their sizes). Observe that $S_6 \\ne \\{2, 3\\}$ — this is because $2, 3 ∈ \\{2, 3\\}$, yet $\\gcd(2, 3) = 1 \\not∈ \\{2, 3\\}$.</p>",
+  "source": "Olympiad, Romanian Master of Informatics, Romanian Master of Informatics 2021",
+  "level": 24,
+  "tags": [
+    "ad_hoc",
+    "bitmask",
+    "bruteforcing",
+    "dp",
+    "dp_bitfield",
+    "dp_sum_over_subsets",
+    "math",
+    "mitm",
+    "number_theory",
+    "precomputation"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.5
+}

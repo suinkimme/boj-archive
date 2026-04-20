@@ -1,0 +1,25 @@
+{
+  "id": 33444,
+  "title": "Lines on a Phone Screen",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Suppose that there is a sequence of $k$ sentences in a mobile phone. To describe the length of each sentence, we use an integer sequence $S = (s_1, s_2, \\ldots, s_k)$, where $s_i$ is the length of the $i$-th sentence. It is guaranteed that $1 \\le s_i \\le 24$.</p>\n<p>To show users the sentences, the mobile phone will print them in order. However, because of the width limitation of the screen, the total length of the sentences in one line should not exceed $24$. Moreover, to make sentences reader-friendly, every sentence should be put in exactly one line (in other words, a sentence cannot be split into multiple lines).</p>\n<p>The rule to satisfy the requirements is as follows. The first sentence is printed on the first line. For $i \\ge 2$, the mobile phone prints the $i$-th sentence in the last line if the line length does not exceed $24$ after that. Otherwise, it starts a new line and prints the $i$-th sentence in it.</p>\n<p>For example, if $S = (8, 8, 9, 12, 13)$, the sentences will be printed like this:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>Now, here is the problem.</p>\n<p>There are $n$ sentences, and their lengths are $a_1, a_2, \\ldots, a_n$ ($1 \\le a_i \\le 24$).</p>\n<p>And there are $m$ operations to do. Each operation belongs to one of the two types below:</p>\n<ul>\n<li>$\\mathit{op1}(x, c)$: Change the length of the $x$-th sentence from $a_x$ to $c$.</li>\n<li>$\\mathit{op2}(\\ell, r)$: Determine the number of lines on the screen when printing the sentences with lengths $S = (a_{\\ell}, a_{\\ell + 1}, a_{\\ell + 2}, \\ldots, a_{r})$ on the mobile phone.</li>\n</ul>\n<p>Your task is to answer all questions given by the operations of the second type.</p>",
+  "input": "<p>The first line contains two integers $n$ and $m$ ($1 \\le n, m \\le 10^5$) denoting the number of sentences and the number of operations, respectively.</p>\n<p>The second line contains $n$ integers $a_1, a_2, \\ldots, a_n$ ($1 \\le a_i \\le 24$) denoting the lengths of the sentences.</p>\n<p>Then $m$ lines follow. Each of them contains three integers and represents one of the two types of operations:</p>\n<ul>\n<li>\"<code>1</code> $x$ $c$\": Change the length of the $x$-th sentence from $a_x$ to $c$ ($1 \\le x \\le n$, $1 \\le c \\le 24$).</li>\n<li>\"<code>2</code> $\\ell$ $r$\": Print the number of lines when printing sentences from $\\ell$-th to $r$-th on the screen ($1 \\le \\ell \\le r \\le n$).</li>\n</ul>",
+  "output": "<p>For each operation of the second type, print a single line with the answer.</p>",
+  "samples": [
+    {
+      "input": "5 5\n8 8 9 12 13\n2 1 5\n2 2 4\n1 5 3\n2 1 5\n2 2 5\n",
+      "output": "3\n2\n2\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2024, Day 4: Peking U Contest 2",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

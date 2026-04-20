@@ -1,0 +1,28 @@
+{
+  "id": 31220,
+  "title": "연결된 지배 집합",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>무향 그래프 $G=(V,E)$에서 다음의 조건을 만족하는 정점 집합 $S$를 그래프 $G$의 <strong>지배 집합</strong>이라고 부릅니다.</p>\r\n\r\n<ul>\r\n\t<li>$S$에 속하지 않는 모든 정점 $v$에 대해 간선 $(u,v)$가 $E$에 속하도록 하는 정점 $u \\in S$가 하나 이상 존재합니다.</li>\r\n</ul>\r\n\r\n<p>또한, 다음의 조건을 만족하는 정점 집합 $S&#39;$를 그래프 $G$의 <strong>연결된 지배 집합</strong>이라고 부릅니다.</p>\r\n\r\n<ul>\r\n\t<li>$S&#39;$는 그래프 $G$의 <strong>지배 집합</strong>입니다.</li>\r\n\t<li>그래프 $G$에서 $S&#39;$에 의해 유도된 부분 그래프는 연결 그래프입니다.</li>\r\n</ul>\r\n\r\n<p>요약하자면, 어떤 정점 집합 $S&#39;$가 그래프의 <b>연결된 지배 집합</b>이 되기 위해서는, $G$의 모든 정점이 $S&#39;$에 속하거나 $S&#39;$의 어떤 정점과 인접한 상태여야 하며, $S&#39;$에 속하는 임의의 두 정점 $u$, $v$를 선택할 때 $S&#39;$에 속하는 정점만을 포함하는 경로로 연결되어 있어야 합니다.</p>\r\n\r\n<p>$n$개의 행과 $m$개의 열이 있으며, 상하좌우로 인접한 모든 두 칸 사이에 간선이 존재하는 격자 그래프를 생각합시다. 이 그래프에는 $nm$개의 정점과 $2nm-n-m$개의 간선이 존재합니다. 이 그래프에 대해 흐즈로는 다음과 같은 가설을 세웠습니다.</p>\r\n\r\n<ul>\r\n\t<li>$2$ 이상의 임의의 $n$과 $m$에 따라 정의된 격자 그래프에서, 크기가 $\\frac{nm}{2}$ 이하인 <strong>연결된 지배 집합</strong> $D$가 존재합니다.</li>\r\n</ul>\r\n\r\n<p>흐즈로는 매우 많은 경우에 이 사실이 성립함을 직접 증명했습니다. 그러나 아직 모든 경우에 대해서 이 사실을 증명한 것이 아니기 때문에, 이 가설이 틀린 경우가 있을지도 모릅니다. $n$과 $m$이 주어질 때, $n$과 $m$에 대해 정의된 격자 그래프에서 크기가 $\\frac{nm}{2}$ 이하인 <strong>연결된 지배 집합</strong> $D$가 존재하는지 판단하고, 존재한다면 그러한 집합 $D$를 출력하세요.</p>\r\n",
+  "input": "<p>한 줄에 행의 개수 $n$과 열의 개수 $m$이 공백으로 분리되어 주어집니다. ($2 \\le n,m \\le 1000$)</p>\r\n",
+  "output": "<p>조건을 만족하는 집합 $D$가 존재한다면, <code><span style=\"color:#e74c3c;\"><strong>YES</strong></span></code>를 출력하고, 그다음 줄부터 $n$개의 행에 걸쳐 이하의 설명에 따라 집합 $D$를 출력하세요.</p>\r\n\r\n<p>$D$를 표현하기 위해, $n$개의 행에 걸쳐 각 줄에 길이가 $m$인 문자열을 출력해야 합니다. 문자열의 각 문자는 다음의 조건을 만족해야 합니다.</p>\r\n\r\n<ul>\r\n\t<li>$i$번째 행과 $j$번째 열에 해당하는 정점이 $D$에 포함되어 있다면, $i$번째 줄의 $j$번째 문자는 <code><span style=\"color:#e74c3c;\"><strong>1</strong></span></code>이어야 합니다.</li>\r\n\t<li>그렇지 않다면, $i$번째 줄의 $j$번째 문자는 <code><span style=\"color:#e74c3c;\"><strong>0</strong></span></code>이어야 합니다.</li>\r\n</ul>\r\n\r\n<p>조건을 만족하는 집합 $D$가 여러 개 존재한다면 그 중 어느 것을 출력해도 정답으로 인정됩니다.</p>\r\n\r\n<p>조건을 만족하는 집합 $D$가 존재하지 않는다면, 한 줄에 <code><span style=\"color:#e74c3c;\"><strong>NO</strong></span></code>를 출력하세요.</p>\r\n",
+  "samples": [
+    {
+      "input": "3 3\n",
+      "output": "YES\n010\n111\n000\n"
+    },
+    {
+      "input": "4 4\n",
+      "output": "YES\n0100\n0111\n1110\n0010\n"
+    }
+  ],
+  "hint": "<p>어떤 그래프 $G=(V,E)$와 어떤 정점 집합 $A \\subseteq V$에 대해, <strong>$A$에 의해 유도된 부분 그래프</strong>는 $A$에 포함된 정점과 양쪽 끝점이 모두 $A$에 해당하는 간선 전부로 이루어진 부분 그래프로 정의됩니다.</p>\r\n\r\n<p><strong>연결된 지배 집합</strong>에 대한 정의를 이해하기 어려운 경우 <a href=\"https://en.wikipedia.org/wiki/Connected_dominating_set\">영어 위키백과의 &quot;Connected dominating set&quot; 문서</a>를 참고할 수 있습니다.</p>\r\n",
+  "source": "Contest, BOJ User Contest, 흐즈로컵, 제3회 흐즈로컵 (The 3rd Chromate Cup) Algorithm Division, hjroh0315, dhyang24, eggx50000, naeby, utilforever",
+  "level": 13,
+  "tags": [
+    "constructive"
+  ],
+  "accepted_user_count": 65,
+  "submission_count": null,
+  "average_tries": 2.1231000423431396
+}

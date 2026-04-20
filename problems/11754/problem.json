@@ -1,0 +1,34 @@
+{
+  "id": 11754,
+  "title": "Rotating Cutter Bits",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The machine tool technology never stops its development. One of the recent proposals is more flexible lathes in which not only the workpiece but also the cutter bit rotate around parallel axles in synchronization. When the lathe is switched on, the workpiece and the cutter bit start rotating at the same angular velocity, that is, to the same direction and at the same rotational speed. On collision with the cutter bit, parts of the workpiece that intersect with the cutter bit are cut out.</p>\n<p>To show the usefulness of the mechanism, you are asked to simulate the cutting process by such a lathe.</p>\n<p>Although the workpiece and the cutter bit may have complex shapes, focusing on cross sections of them on a plane perpendicular to the spinning axles would suffice. We introduce an xycoordinate system on a plane perpendicular to the two axles, in which the center of rotation of the workpiece is at the origin (0, 0), while that of the cutter bit is at (L, 0). You can assume both the workpiece and the cutter bit have polygonal cross sections, not necessarily convex.</p>\n<p>Note that, even when this cross section of the workpiece is divided into two or more parts, the workpiece remain undivided on other cross sections.</p>\n<p>We refer to the lattice points (points with both x and y coordinates being integers) strictly inside, that is, inside and not on an edge, of the workpiece before the rotation as points of interest, or POI in short.</p>\n<p>Our interest is in how many POI will remain after one full rotation of 360 degrees of both the workpiece and the cutter bit. POI are said to remain if they are strictly inside the resultant workpiece. Write a program that counts them for the given workpiece and cutter bit configuration.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:200px; width:568px\"/></p>\n<p style=\"text-align: center;\">Figure H.1. The workpiece and the cutter bit in Sample 1</p>\n<p>Figure H.1(a) illustrates the workpiece (in black line) and the cutter bit (in blue line) given in Sample Input 1. Two circles indicate positions of the rotation centers of the workpiece and the cutter bit. The red cross-shaped marks indicate the POI.</p>\n<p>Figure H.1(b) illustrates the workpiece and the cutter bit in progress in case that the rotation direction is clockwise. The light blue area indicates the area cut-off.</p>\n<p>Figure H.1(c) illustrates the result of this sample. Note that one of POI is on the edge of the resulting shape. You should not count this point. There are eight POI remained.</p>",
+  "input": "<p>The input consists of a single test case with the following format.</p>\n<pre>\nM N L\nx<sub>w1</sub> y<sub>w1</sub>\n.\n.\n.\nx<sub>wM</sub> y<sub>wM</sub>\nx<sub>c1</sub> y<sub>c1</sub>\n.\n.\n.\nx<sub>cN</sub> y<sub>cN</sub></pre>\n<p>The first line contains three integers. M is the number of vertices of the workpiece (4 ≤ M ≤ 20) and N is the number of vertices of the cutter bit (4 ≤ N ≤ 20). L specifies the position of the rotation center of the cutter bit (1 ≤ L ≤ 10000).</p>\n<p>Each of the following M lines contains two integers. The i-th line has x<sub>wi</sub> and y<sub>wi</sub>, telling that the position of the i-th vertex of the workpiece has the coordinates (x<sub>wi</sub>, y<sub>wi</sub>). The vertices are given in the counter-clockwise order.</p>\n<p>N more following lines are positions of the vertices of the cutter bit, in the same manner, but the coordinates are given as offsets from its center of rotation, (L, 0). That is, the position of the j-th vertex of the cutter bit has the coordinates (L + x<sub>cj</sub>, y<sub>cj</sub>).</p>\n<p>You may assume −10000 ≤ x<sub>wi</sub>, y<sub>wi</sub>, x<sub>cj</sub> , y<sub>cj</sub> ≤ 10000 for 1 ≤ i ≤ M and 1 ≤ j ≤ N.</p>\n<p>All the edges of the workpiece and the cutter bit at initial rotation positions are parallel to the x-axis or the y-axis. In other words, for each i (1 ≤ i ≤ M), x<sub>wi</sub> = x<sub>wi'</sub> or y<sub>wi</sub> = y<sub>wi'</sub> holds, where i' = (i mod M) + 1. Edges are parallel to the x- and the y-axes alternately. These can also be said about the cutter bit.</p>\n<p>You may assume that the cross section of the workpiece forms a simple polygon, that is, no two edges have common points except for adjacent edges. The same can be said about the cutter bit. The workpiece and the cutter bit do not touch or overlap before starting the rotation.</p>\n<p>Note that (0, 0) is not always inside the workpiece and (L, 0) is not always inside the cutter bit.</p>",
+  "output": "<p>Output the number of POI remaining strictly inside the workpiece.</p>",
+  "samples": [
+    {
+      "input": "4 6 5\n-2 5\n-2 -1\n2 -1\n2 5\n-2 1\n-2 0\n0 0\n0 -2\n2 -2\n2 1\n",
+      "output": "8\n"
+    },
+    {
+      "input": "14 14 6000\n-3000 3000\n-3000 -3000\n3000 -3000\n3000 -2000\n2000 -2000\n2000 -1000\n1000 -1000\n1000 0\n0 0\n0 1000\n-1000 1000\n-1000 2000\n-2000 2000\n-2000 3000\n3000 3000\n-3000 3000\n-3000 2000\n-2000 2000\n-2000 1000\n-1000 1000\n-1000 0\n0 0\n0 -1000\n1000 -1000\n1000 -2000\n2000 -2000\n2000 -3000\n3000 -3000\n",
+      "output": "6785772\n"
+    },
+    {
+      "input": "12 12 11\n-50 45\n-50 -45\n40 -45\n40 25\n-10 25\n-10 -5\n0 -5\n0 15\n30 15\n30 -35\n-40 -35\n-40 45\n50 -45\n50 45\n-40 45\n-40 -25\n10 -25\n10 5\n0 5\n0 -15\n-30 -15\n-30 35\n40 35\n40 -45\n",
+      "output": "966\n"
+    },
+    {
+      "input": "20 4 11\n-5 5\n-5 -10\n-4 -10\n-4 -1\n-3 -1\n-3 -10\n1 -10\n1 -4\n0 -4\n0 -1\n1 -1\n1 0\n4 0\n4 -1\n10 -1\n10 3\n1 3\n1 4\n10 4\n10 5\n0 0\n3 0\n3 3\n0 3\n",
+      "output": "64\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2015 in Tsukuba",
+  "level": 24,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

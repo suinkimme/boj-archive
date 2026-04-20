@@ -1,0 +1,35 @@
+{
+  "id": 25232,
+  "title": "Ranked Choice Spoiling",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ranked choice voting, a way of determining the winner of an election, proceeds as follows:</p>\n<ol>\n<li>Each candidate (identified in this problem as <code><strong>A</strong></code>, <code><strong>B</strong></code>, <code><strong>C</strong></code>, etc.) is placed on the ballot.</li>\n<li>Each voter ranks the candidates from most to least favorite (e.g., <code><strong>B</strong></code> first, then <code><strong>A</strong></code>, then <code><strong>C</strong></code> last)  and submits that ranking as their vote.</li>\n<li>Once all votes have been received, the first place votes for each candidate remaining on the ballot are tallied. If there is a candidate with more than half of the first place votes, that candidate is declared the winner.</li>\n<li>If no candidate has more than half of the first place votes, the candidate with the fewest first place votes is eliminated from the ballot, and the process returns to step 3 with the remaining candidates. (If there are multiple such candidates, the loser is the lexicographically last candidate, e.g., <code><strong>C</strong></code> is eliminated before <code><strong>B</strong></code>.)</li>\n</ol>\n<p><em>Spoiling</em> refers to an additional candidate <code><strong>Z</strong></code> entering a race, thereby causing the winner to switch from one existing candidate to another candidate (who is not <code><strong>Z</strong></code>). Proponents of ranked choice voting claim that this type of election is less vulnerable to spoiling than the more common plurality voting (the candidate with the most votes wins). </p>\n<p>You are candidate <code><strong>A</strong></code> in an election against one or two other candidates, and you wish to prove them wrong by engineering a candidate <code><strong>Z</strong></code> to enter the election and spoil it in your favor. Suppose you knew every voter's rankings for the existing candidates, and you were capable of engineering a candidate <code><strong>Z</strong></code> such that you had full control over where each voter inserts <code><strong>Z</strong></code> into their rankings.  For a given set of such rankings, is it possible to engineer a candidate <code><strong>Z</strong></code> to spoil the election in your favor?</p>",
+  "input": "<p>The first line contains two integers $n$ ($1 \\leq n \\leq 1\\,000$) and $k$ ($2 \\leq k \\leq 3$), where $n$  is the number of voters and $k$  is the number of existing candidates.</p>\n<p>Each of the next $n$ lines contains $k$ space-separated capital letters (<code><strong>A</strong></code>, <code><strong>B</strong></code>, or <code><strong>C</strong></code>) indicating the rankings of each voter from first to last place. Each line will list each candidate exactly once (when $k = 2$, <code><strong>C</strong></code> is not present).</p>",
+  "output": "<p>Output a single integer, $1$ if it is possible to create a candidate <code><strong>Z</strong></code> who spoils the election in favor of candidate <code><strong>A</strong></code> (or if <code><strong>A</strong></code> would already win the election), 0 otherwise.</p>",
+  "samples": [
+    {
+      "input": "5 2\nB A\nA B\nA B\nB A\nB A\n",
+      "output": "1\n"
+    },
+    {
+      "input": "1 3\nA B C\n",
+      "output": "1\n"
+    },
+    {
+      "input": "8 3\nA B C\nB C A\nB C A\nB C A\nC B A\nC B A\nC B A\nC B A\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Championship, North America Championship 2022, Camp, Petrozavodsk Programming Camp, Summer 2022, Day 1: Welcome Contest",
+  "level": 22,
+  "tags": [
+    "implementation",
+    "greedy",
+    "ad_hoc",
+    "case_work"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.583299994468689
+}

@@ -1,0 +1,33 @@
+{
+  "id": 31683,
+  "title": "Zlagalica",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Little Maja has always loved puzzles. And since everyone knew that for a long time now, it is no wonder that one sunny day, Maja received an odd puzzle as a gift..</p>\n<p>This puzzle has $n$ pieces. Each piece has rectangular shape and is of a certain color. Also, each piece has $2$ numbers written on its back: $u$ and $d$. After a period of skillfully combining pieces and trying to fit them together, Maja figured out the meaning of those numbers.</p>\n<p>She found out that number $u$ represents \"direction\", in other words, does the next piece of the puzzle connect with the current one from the upper or from the right side of the current piece. Number $d$ specifies the starting column/row where we connect the next piece of the puzzle with current one. In more detail:</p>\n<ul>\n<li>If $u$ is equal to $0$, we add next piece <strong>above</strong> the current one by connecting its <strong>bottom left</strong> corner with current piece’s <strong>top</strong> edge at <strong>column d</strong>.</li>\n<li>If $u$ is equal to $1$, we add next piece to the <strong>right</strong> by connecting its <strong>bottom left</strong> corner with current piece’s <strong>right</strong> edge at <strong>row d</strong>.</li>\n</ul>\n<p>Let’s demonstrate this for pieces colored in colors \"a\" and \"b\". <em>Picture 1</em> shows the case where $u = 0$, and $d = 3$. <em>Picture 2</em> shows case when $u = 1$ and $d = 3$. (In both cases, numbers $u$ and $d$ represent numbers written on the back of piece colored \"a\").</p>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<td>\n<pre>\n. . b b b b b\n. . b b b b b\na a a a . . .\na a a a . . .\na a a a . . .\n</pre>\n</td>\n<td>\n<pre>\na a a a . . . . .\na a a a b b b b b\na a a a b b b b b\n</pre>\n</td>\n</tr>\n<tr>\n<td>Picture 1</td>\n<td>Picture 2</td>\n</tr>\n</tbody>\n</table>\n<p>Maja has grown tired of this puzzling puzzle, but her curiosity knows no bounds! That’s why she’s asking for your help. She’s interested in knowing, for a given description of every piece of the puzzle and the sequence of their placement, what will the completed puzzle look like? Write a program that prints the dimensions (height and width) of the completed puzzle, as well as its final appearance within a rectangle of the same height and width, where \".\" represents places where there is no part of the puzzle.</p>",
+  "input": "<p>In first row, there is $n$ ($1 ≤ n ≤ 20$), number of puzzle pieces.</p>\n<p>In the $i$-th of next $n$ rows there are per $1$ character and $4$ integers, in order: $b_i$, $r_i$, $s_i$, $u_i$, $d_i$ - description of $i$-th piece:</p>\n<ul>\n<li>$b_i$ will always be $1$ lowercase letter of english alphabet, and it represents the color of the $i$-th puzzle piece</li>\n<li>$r_i$ and $s_i$ ($1 ≤ r_i , s_i ≤ 10$) represent in order, number of rows and columns of $i$-th puzzle piece</li>\n<li>$u_i$ and $d_i$ ($0 ≤ u_i ≤ 1$, $1 ≤ d_i ≤ r_i , s_i$ (depends on $u_i$)) are numbers on the back of $i$-th puzzle piece, same as in the task statement.</li>\n</ul>\n<p>In the last row of input there are $n$ integers, order in which pieces are connected, where number $i$ ($1 ≤ i ≤ n$) represents $i$-th puzzle piece in input. Each puzzle piece will appear in the sequence exactly once.</p>",
+  "output": "<p>Print the height and width of the completed puzzle. After that, print the appearance of the puzzle within a rectangle of the same height and width. In the places within the rectangle where there is no part of the puzzle, print \".\".</p>",
+  "samples": [
+    {
+      "input": "2\na 3 4 0 3\nb 2 5 1 1\n1 2\n",
+      "output": "5 7\n..bbbbb\n..bbbbb\naaaa...\naaaa...\naaaa...\n"
+    },
+    {
+      "input": "2\na 3 4 0 3\nb 2 5 1 1\n2 1\n",
+      "output": "4 9\n.....aaaa\n.....aaaa\nbbbbbaaaa\nbbbbb....\n"
+    },
+    {
+      "input": "4\ng 9 5 0 2\na 3 2 1 1\nc 5 10 0 2\np 8 7 1 6\n4 3 2 1\n",
+      "output": "18 17\n..........ggggg..\n..........ggggg..\n..........ggggg..\n..........ggggg..\n..........ggggg..\n..........ggggg..\n..........ggggg..\n..........ggggg..\n........aaggggg..\n........aa.......\nppppppp.aa.......\npppppppcccccccccc\npppppppcccccccccc\npppppppcccccccccc\npppppppcccccccccc\npppppppcccccccccc\nppppppp..........\nppppppp..........\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2023/2024, Contest #5",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 1.5
+}

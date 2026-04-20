@@ -1,0 +1,26 @@
+{
+  "id": 11640,
+  "title": "Scaling Recipes",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>A recipe is a list of ingredients and a set of instructions to prepare a dish. It is often written for a particular number of portions. If you have a recipe for 4 portions and you want to make 6 portions, it turns out that simply multiplying the amounts for each ingredient by 1.5 is often wrong! The reason is that the original recipe may have been rounded to the nearest teaspoon, gram, etc., and the rounding errors magnify when a recipe is scaled.</p>\n<p>Some recipes are specifically written to ease the task of scaling. These recipes are developed using “Baker’s percentages.” Each ingredient is listed not only by weight (in grams), but also as a percentage relative to the “main ingredient.” The main ingredient will always have a 100% Baker’s percentage. Note that the sum of the Baker’s percentages from all ingredients is greater than 100%, and that the Baker’s percentages of some ingredients may exceed 100%.</p>\n<p>Table 1: Example Recipe</p>\n<table class=\"table table-bordered\" style=\"width:40%\">\n<thead>\n<tr>\n<th>Ingredient</th>\n<th>Weight (g)</th>\n<th>Percentage (%)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Olive Oil</td>\n<td>50.9</td>\n<td>11.2</td>\n</tr>\n<tr>\n<td>Garlic</td>\n<td>12.0</td>\n<td>2.7</td>\n</tr>\n<tr>\n<td>Beef</td>\n<td>453.6</td>\n<td>100.0</td>\n</tr>\n<tr>\n<td>Onions</td>\n<td>1134.0</td>\n<td>250.0</td>\n</tr>\n<tr>\n<td>Raisins</td>\n<td>82.5</td>\n<td>18.2</td>\n</tr>\n<tr>\n<td>Bouillon</td>\n<td>10.0</td>\n<td>2.2</td>\n</tr>\n</tbody>\n</table>\n<p>To scale a recipe:</p>\n<ol>\n<li>determine the scaling factor by dividing the number of desired portions by the number of portions for which the recipe is written;</li>\n<li>multiply the weight of the main ingredient with a 100% Baker’s percentage by the scaling factor. This is the scaled weight of the main ingredient;</li>\n<li>calculate the scaled weight of every other ingredient by multiplying its Baker’s percentage by the scaled weight of the main ingredient.</li>\n</ol>",
+  "input": "<p>The first line of input specifies a positive integer T ≤ 1000, consisting of the cases to follow. Each case starts with a line with three integers R, P, and D: 1 ≤ R ≤ 20 is the number of ingredients, 1 ≤ P ≤ 12 is the number of portions for which the recipe is written, and 1 ≤ D ≤ 1000 is the number of desired portions. Each of the next R lines is of the form</p>\n<pre>\n&lt;name&gt; &lt;weight&gt; &lt;percentage&gt;</pre>\n<p>where &lt;name&gt; is the name of the ingredient (an alphabetic string of up to 20 characters with no embedded spaces), &lt;weight&gt; is the weight in grams for that ingredient, and &lt;percentage&gt; is its Baker’s percentage. Both &lt;weight&gt; and &lt;percentage&gt; are floating-point numbers with exactly one digit after the decimal point. Each recipe will only have one ingredient with a Baker’s percentage of 100%.</p>",
+  "output": "<p>For each case, print Recipe # followed by a space and the appropriate case number (see sample output below). This is followed by the list of ingredients and their scaled weights in grams. The name of the ingredient and its weight should be separated by a single space. Each ingredient is listed on its own line, in the same order as in the input. After each case, print a line of 40 dashes (’-’). Answers within 0.1g of the correct result are acceptable.</p>",
+  "samples": [
+    {
+      "input": "2\n6 4 20\noliveoil 50.9 11.2\ngarlic 12.0 2.7\nbeef 453.6 100.0\nonions 1134.0 250.0\nraisins 82.5 18.2\nbouillon 10.0 2.2\n4 5 8\nMilk 265.0 93.0\nSodiumCitrate 11.0 4.0\nWhiteCheddar 285.0 100.0\nDryMacaroni 240.0 84.0\n",
+      "output": "Recipe # 1\noliveoil 254.0\ngarlic 61.2\nbeef 2268.0\nonions 5670.0\nraisins 412.8\nbouillon 49.9\n----------------------------------------\nRecipe # 2\nMilk 424.1\nSodiumCitrate 18.2\nWhiteCheddar 456.0\nDryMacaroni 383.0\n----------------------------------------\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Rocky Mountain Regional, 2015 Rocky Mountain Regional Contest",
+  "level": 4,
+  "tags": [
+    "math",
+    "implementation",
+    "arithmetic"
+  ],
+  "accepted_user_count": 96,
+  "submission_count": null,
+  "average_tries": 1.229200005531311
+}

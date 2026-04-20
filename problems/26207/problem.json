@@ -1,0 +1,30 @@
+{
+  "id": 26207,
+  "title": "Geometry of Triangles",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Every polygon can be constructed by joining triangles. In particular, we can do this iteratively: we start with a triangle, we add a second triangle identifying one of its sides to one of the sides of the initial triangle, we add a third triangle identifying one of its sides to one of the free sides of one of the original triangles, and so on. We will only consider polygons that can be constructed in this way, where each added triangle touches (and is identified with) exactly one side of a previously positioned triangle.</p>\n<p>Given a polygon $P$, let $T$ be the set of triangles used to form it. The sides of each triangle are line segments. Let $L$ be the set of segments that are sides of some triangle in $T$. Note that each element of $L$ is one side of one or two elements of $T$.</p>\n<p>Once we have a polygon positioned in the plane, in some cases we can remove some of the triangles that compose it, without changing the set $L$. We want to remove triangles so that the set $L$ is maintained and the total area of the remaining triangles is minimal. Equivalently, we want to select a subset $S$ of triangles from $T$ such that:</p>\n<ol>\n<li>Every element of $L$ is the side of at least one triangle in $S$; and</li>\n<li>2. The sum of the areas of the elements of $S$ is as small as possible.</li>\n</ol>",
+  "input": "<p>The first line of the input contains an integer $N$, $1 ≤ N ≤ 10^5$ corresponding to the number of triangles in the triangulation of $P$. Each of the following $N$ lines contains $6$ numbers, $x_1$, $y_1$, $x_2$, $y_2$, $x_3$ and $y_3$, indicating the existence of a triangle with coordinates $(x_1, y_1)$, $(x_2, y_2)$ and $(x_3, y_3)$. The triangles are given in arbitrary order. All coordinates will be integers with absolute value at most $10^6$.</p>",
+  "output": "<p>Print the minimum area possible, respecting the conditions of the problem, with exactly one decimal place.</p>",
+  "samples": [
+    {
+      "input": "4\n0 0 0 10 10 0\n10 10 0 10 10 0\n10 10 0 10 0 20\n10 10 20 0 10 0\n",
+      "output": "150.0\n"
+    },
+    {
+      "input": "3\n0 0 0 10 10 0\n10 10 0 10 10 0\n10 10 20 0 10 0\n",
+      "output": "150.0\n"
+    },
+    {
+      "input": "1\n0 0 1 0 0 1\n",
+      "output": "0.5\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 237px; height: 235px;\"/></p>\n<p>In the figure above , the triangulations $T_1 = \\{a, b, c, d\\}$ and $T_2 = \\{a, b, c\\}$ represent, respectively, the first and second examples. Note how $S_1 = \\{a, c, d\\}$ is a valid subset for the first case. Triangle $b$ is left out, but all of its sides are present in the selected triangles.</p>",
+  "source": "ICPC, Regionals, Latin America, Sub-Regional Brasil do ACM ICPC, Maratona de Programação da SBC 2022",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1
+}

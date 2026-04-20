@@ -1,0 +1,27 @@
+{
+  "id": 7550,
+  "title": "Magic Trick",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Warning! This problem statement contains a serious spoiler. It shows the trick behind a magic trick. So if you still want to be amazed in case somebody shows this trick to you then do NOT read the rest of this problem statement. Stop reading... NOW!</p>\n<p>Well, you’re still reading, so obviously you have no respect for magic tricks. Be ashamed, please. Ok, here’s what happens. The magician shows you a text with three paragraphs like this one:</p>\n<pre>\nIt was a horribly dark night.\nThe moon was shining, but not much.\n\nA suspicious stranger entered the\nbar and went straight to John Doe.\n\n\"I’m searching for aliens, can I\nborrow your computer?\", he said.</pre>\n<p>He then asks you to secretly pick a word in the first paragraph. Then you shall do this:</p>\n<ol>\n<li>Count the number of characters in your word (call that number X).</li>\n<li>From your word move on X words.</li>\n</ol>\n<p>Repeat these two steps until you reach the third paragraph. Then tell the magician that you’re done. After some hocus pocus he tells you the word you ended up with.</p>\n<p>For our purposes, a “word” is defined as consecutive letters (A-Z,a-z). For example, “I’m” is regarded as two separate words.</p>\n<p>For example, let’s say you choose “night” in the above example. It has 5 characters, so you move on five words: “The”, “moon”, “was”, “shining”, “but”. Our new word is “but”. You move on 3 words to “A”, then 1 to “suspicious”, then 10 to “Doe” and then 3 to “searching”. Now you tell the magician that you’re ready. He says that you’ve reached “searching”.</p>\n<p>How can he know? Well, it doesn’t matter where you start in the first paragraph, you’ll always end up at “searching”. The magician needs new texts and asks you to help him to find all possible outcomes (in the above example, “searching” is the only one). Apart from words, a possible outcome is “-outside-”, which means it’s possible to jump behind the third paragraph. Also, he’s not interested if more than three outcomes are possible.</p>",
+  "input": "<p>The first line contains the number of scenarios. For each scenario, three lines are given, representing the three paragraphs. No line is longer than 100000 characters. Every paragraph will contain at least one word.</p>",
+  "output": "<p>The output for every scenario begins with a line containing “Scenario #i:”, where i is the number of the scenario starting at 1. Then print the possible outcomes (possibly including “-outside-”) in alphabetical/lexicographical order, one word per line. Write words in lower case. Don’t list outcomes more than once. If however there are more than three possible outcomes, then print “-too many-” and do *not* print any of them. Terminate the output for the scenario with a blank line.</p>",
+  "samples": [
+    {
+      "input": "4\nIt was a horribly dark night. The moon was shining, but not much.\nA suspicious stranger entered the bar and went straight to John Doe.\n\"I’m searching for aliens, can I borrow your computer?\", he said.\n!pablo espanol!\n!pablo espanol!\n!pablo espanol!\nc’mon howLongOrShortCanASingleWordBe?\na b c d e f g f e d c b a\n54254#@%$ˆ%ˆ@4626ˆ#ˆ%ˆ$hahaha#$@%#$@63456326\nHello buddy dance tango!\nPleaseOhPleaseJumpOverMe\nThis is too much for me...\n",
+      "output": "Scenario #1:\nsearching\n\nScenario #2:\n-outside-\nespanol\n\nScenario #3:\n-outside-\nhahaha\n\nScenario #4:\n-too many-\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, Tu-Darmstadt Programming Contest, TUD Contest 2004",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "string",
+    "simulation",
+    "parsing"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 3.6110999584198
+}

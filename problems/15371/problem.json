@@ -1,0 +1,36 @@
+{
+  "id": 15371,
+  "title": "Planinarenje",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Mirko and Slavko like to hike together. Mirko likes mountain peaks, and Slavko likes valleys. Because of this, every time they climb to a peak, Slavko decides which valley they are going to descend to, given that a trail exists to it. Similarly, in each valley, Mirko decides which peak they are going to climb up to. It will never be possible to directly climb from one peak to another, or to get from one valley to another valley. In order to make the hiking as fun as possible, they never visit the same spot twice (whether it’s a peak or a valley). Once they reach a spot that only leads to spots they’ve visited before, they call the mountain rangers to pick them up. If the final spot is a peak, Mirko wins, and if it is a valley, Slavko wins.</p>\n<p>Naturally, you must already know what your task is: If we assume that both of them play optimally, who wins? Answer this question for all initial peaks.</p>",
+  "input": "<p>The first line contains two positive integers, N and M (1 ≤ N ≤ 5000, 1 ≤ M ≤ min(5000, N·N)). Here N denotes the number of peaks and valleys (therefore, there are N peaks and N valleys), and M denotes the number of hiking trails.</p>\n<p>Each of the following M lines contains two positive integers: v<sub>i</sub> and d<sub>i</sub> (1 ≤ v<sub>i</sub>, d<sub>i</sub> ≤ N) that denote there is a trail between peak v<sub>i</sub> and valley d<sub>i</sub>.</p>\n<p>Between each peak and valley, there will exist at most one trail.</p>",
+  "output": "<p>You must output N lines. The i th line denotes the winner if the starting point is peak i.</p>",
+  "samples": [
+    {
+      "input": "2 3\n1 2\n2 2\n2 1\n",
+      "output": "Slavko\nSlavko\n"
+    },
+    {
+      "input": "4 5\n2 2\n1 2\n1 1\n1 3\n4 2\n",
+      "output": "Slavko\nMirko\nMirko\nMirko\n"
+    },
+    {
+      "input": "4 5\n1 2\n1 3\n2 2\n2 3\n4 1\n",
+      "output": "Slavko\nSlavko\nMirko\nSlavko\n"
+    }
+  ],
+  "hint": "<p>Clarification of the second test case:</p>\n<p>Starting from the first peak, Slavko can choose to go to the first valley, so Slavko wins.</p>\n<p>Starting from the second peak, Slavko can choose to go to the second valley, after which Mirko wins by choosing to go to the fourth peak.</p>\n<p>Starting from the third peak, there are no trails, so Mirko wins.</p>\n<p>Starting from the fourth peak, Slavko must choose to go to the second valley, after which Mirko wins by choosing the second peak.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2017/2018, Contest #5",
+  "level": 23,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "dfs",
+    "game_theory",
+    "bipartite_matching"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

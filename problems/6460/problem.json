@@ -1,0 +1,25 @@
+{
+  "id": 6460,
+  "title": "Pizza Anyone?",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are responsible for ordering a large pizza for you and your friends. Each of them has told you what he wants on a pizza and what he does not; of course they all understand that since there is only going to be one pizza, no one is likely to have all their requirements satisfied. Can you order a pizza that will satisfy at least one request from all your friends?</p>\r\n\r\n<p>The pizza parlor you are calling offers the following pizza toppings; you can include or omit any of them in a pizza:</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:353px\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Input Code</th>\r\n\t\t\t<th>Topping</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>A</td>\r\n\t\t\t<td>Anchovies</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>B</td>\r\n\t\t\t<td>Black Olives</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>C</td>\r\n\t\t\t<td>Canadian Bacon</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>D</td>\r\n\t\t\t<td>Diced Garlic</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>E</td>\r\n\t\t\t<td>Extra Cheese</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>F</td>\r\n\t\t\t<td>Fresh Broccoli</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>G</td>\r\n\t\t\t<td>Green Peppers</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>H</td>\r\n\t\t\t<td>Ham</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>I</td>\r\n\t\t\t<td>Italian Sausage</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>J</td>\r\n\t\t\t<td>Jalapeno Peppers</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>K</td>\r\n\t\t\t<td>Kielbasa</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>L</td>\r\n\t\t\t<td>Lean Ground Beef</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>M</td>\r\n\t\t\t<td>Mushrooms</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>N</td>\r\n\t\t\t<td>Nonfat Feta Cheese</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>O</td>\r\n\t\t\t<td>Onions</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>P</td>\r\n\t\t\t<td>Pepperoni</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>Your friends provide you with a line of text that describes their pizza preferences. For example, the line</p>\r\n\r\n<p>+O-H+P;</p>\r\n\r\n<p>reveals that someone will accept a pizza with onion, or without ham, or with pepperoni, and the line</p>\r\n\r\n<p>-E-I-D+A+J;</p>\r\n\r\n<p>indicates that someone else will accept a pizza that omits extra cheese, or Italian sausage, or diced garlic, or that includes anchovies or jalapenos.</p>\r\n",
+  "input": "<p>The input consists of a series of pizza constraints.</p>\r\n\r\n<p>A pizza constraint is a list of 1 to 12 topping constraint lists each on a line by itself followed by a period on a line by itself.</p>\r\n\r\n<p>A topping constraint list is a series of topping requests terminated by a single semicolon.</p>\r\n\r\n<p>An topping request is a sign character (+/-) and then an uppercase letter from A to P.</p>\r\n",
+  "output": "<p>For each pizza constraint, provide a description of a pizza that satisfies it. A description is the string &quot;Toppings: &quot; in columns 1 through 10 and then a series of letters, in alphabetical order, listing the toppings on the pizza. So, a pizza with onion, anchovies, fresh broccoli and Canadian bacon would be described by:</p>\r\n\r\n<p>Toppings: ACFO</p>\r\n\r\n<p>If no combination toppings can be found which satisfies at least one request of every person, your program should print the string</p>\r\n\r\n<p>&quot;No pizza can satisfy these requests.&quot; on a line by itself starting in column 1.&nbsp;</p>\r\n",
+  "samples": [
+    {
+      "input": "+A+B+C+D-E-F-G-H;\n-A-B+C+D-E-F+G+H;\n-A+B-C+D-E+F-G+H;\n.\n+A+B+C+D;\n+E+F+F+H;\n+A+B-G;\n+O+J-F;\n+H+I+C;\n+P;\n+O+M+L;\n+M-L+P;\n.\n+A+B+C+D;\n+E+F+F+H;\n+A+B-G;\n+P-O;\n+O+J-F;\n+H+I+C;\n+P;\n+O;\n+O+M+L;\n-O-P;\n+M-L+P;\n.\n",
+      "output": "Toppings:\nToppings: CELP\nNo pizza can satisfy these requests.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 1997 South Central USA Regional Programming Contest",
+  "level": 10,
+  "tags": [
+    "bruteforcing",
+    "bitmask"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 2.176500082015991
+}

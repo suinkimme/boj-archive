@@ -1,0 +1,22 @@
+{
+  "id": 4087,
+  "title": "Burnout",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Whenever you buy a light bulb, the package will state an amount of time that the bulb should last. But, that's assuming the bulb is on continuously. Most people turn their light bulbs on and off. How does this affect their lifetime?</p>\n<p>A friend of yours has built a rig to test this. Given a simple pattern, his rig will turn the bulb on and off, and a light sensor will tell when the bulb burns out. The pattern has a very simple syntax. It consists of a list of elements, separated by spaces. Each element is either a number M (1 ≤ M ≤ 1,000,000), indicating a number of milliseconds, or a repeating list. A repeating list consists of one or more elements, surrounded by parentheses, and followed by a ‘*’ and then an integer K (1 ≤ K ≤ 100). This integer K indicates how many times the list should be repeated. Your friend’s machine always starts with the bulb on, and then goes through the pattern. For every integer, it waits that number of milliseconds, and then switches the bulb. If the bulb is on, it's turned off, and if it's off, it gets turned back on. If the machine reaches the end of the pattern, it will start again from the beginning.</p>\n<p>For example, with this pattern:</p>\n<pre>\n1 3 5</pre>\n<p>The machine will start by turning the bulb on.</p>\n<ul>\n<li>It will wait 1 millisecond and turn the bulb off.</li>\n<li>It will then wait 3 milliseconds and turn the bulb on.</li>\n<li>It will then wait 5 milliseconds and turn the bulb off.</li>\n<li>It will then wait 1 millisecond and turn the bulb on.</li>\n<li>It will then wait 3 milliseconds and turn the bulb off.</li>\n</ul>\n<p>It will continue like this until the bulb burns out.</p>\n<p>Here's an example of a pattern with a repeating section:</p>\n<pre>\n1 (3 5)*2 7</pre>\n<p>The machine will start by turning the bulb on, and will change the bulb’s state after 1 millisecond, then 3, then 5, then 3, then 5, then 7, then 1.....</p>\n<p>Note that repeating sections can be nested inside of repeating sections.</p>\n<p>Your friend is not good with programming, though, so he's asked you to help. He can easily measure how long it takes for the bulb to actually burn out - but, how long SHOULD it have taken? Assume that turning the bulb on and off does NOT affect its life. Also assume that changing the bulb’s state takes no time.</p>\n<p>Given a life N in milliseconds, and a pattern of turning the bulb on and off, how many actual milliseconds would elapse before the bulb is on for exactly N milliseconds?</p>",
+  "input": "<p>There will be several test cases in the input. Each test case will consist of two lines. The first line will contain an integer N (1 ≤ N ≤ 1,000,000,000) which is the expected life of the bulb in milliseconds.</p>\n<p>The second line will contain a string, which is the pattern. The pattern will not be longer than 500 characters. The pattern consists of a list of elements, separated by single spaces. Each element is either a number M (1 ≤ M ≤ 1,000,000), indicating a number of milliseconds, or a repeating list. A repeating list consists of one or more elements, surrounded by parentheses, and followed by a ‘*’ and then an integer K (1 ≤ K ≤ 100). There will be single spaces separating elements of a list, but nowhere else. In particular, note that there will not be any spaces surrounding the ‘*’ at the end of a repeating list, nor immediately following an opening parenthesis, nor immediately before a closing parenthesis. The total amount of time represented by a pattern, including all repetition, will be no greater than 1,000,000,000.</p>\n<p>The input will terminate with a line with a single 0.</p>",
+  "output": "<p>For each test case, output a single integer on its own line, indicating the number of milliseconds of total elapsed time until the bulb has been lit for N milliseconds. Output no extra spaces, and do not separate answers with blank lines.</p>",
+  "samples": [
+    {
+      "input": "100\n20 30 40\n1000\n1 3 5\n1000\n1 (3 (5)*3 2)*2 7\n0\n",
+      "output": "190\n1999\n2279\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Southeast USA Regional, 2011 Southeast USA Regional Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

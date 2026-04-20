@@ -1,0 +1,36 @@
+{
+  "id": 30169,
+  "title": "Primes and Multiplication",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Let's introduce some definitions that will be needed later.</p>\n<p>Let $prime(x)$ be the set of prime divisors of $x$. For example, $prime(140) = \\{ 2, 5, 7 \\}$, $prime(169) = \\{ 13 \\}$.</p>\n<p>Let $g(x, p)$ be the maximum possible integer $p^k$ where $k$ is an integer such that $x$ is divisible by $p^k$. For example:</p>\n<ul>\n<li>$g(45, 3) = 9$ ($45$ is divisible by $3^2=9$ but not divisible by $3^3=27$),</li>\n<li>$g(63, 7) = 7$ ($63$ is divisible by $7^1=7$ but not divisible by $7^2=49$).</li>\n</ul>\n<p>Let $f(x, y)$ be the product of $g(y, p)$ for all $p$ in $prime(x)$. For example:</p>\n<ul>\n<li>$f(30, 70) = g(70, 2) \\cdot g(70, 3) \\cdot g(70, 5) = 2^1 \\cdot 3^0 \\cdot 5^1 = 10$,</li>\n<li>$f(525, 63) = g(63, 3) \\cdot g(63, 5) \\cdot g(63, 7) = 3^2 \\cdot 5^0 \\cdot 7^1 = 63$.</li>\n</ul>\n<p>You have integers $x$ and $n$. Calculate $f(x, 1) \\cdot f(x, 2) \\cdot \\ldots \\cdot f(x, n) \\bmod{(10^{9} + 7)}$.</p>",
+  "input": "<p>The only line contains integers $x$ and $n$ ($2 \\le x \\le 10^{9}$, $1 \\le n \\le 10^{18}$) --- the numbers used in formula.</p>",
+  "output": "<p>Print the answer.</p>",
+  "samples": [
+    {
+      "input": "10 2\n",
+      "output": "2\n"
+    },
+    {
+      "input": "20190929 1605\n",
+      "output": "363165664\n"
+    },
+    {
+      "input": "947 987654321987654321\n",
+      "output": "593574252\n"
+    }
+  ],
+  "hint": "<p>In the first example, $f(10, 1) = g(1, 2) \\cdot g(1, 5) = 1$, $f(10, 2) = g(2, 2) \\cdot g(2, 5) = 2$.</p>\n<p>In the second example, actual value of formula is approximately $1.597 \\cdot 10^{171}$. Make sure you print the answer modulo $(10^{9} + 7)$.</p>\n<p>In the third example, be careful about overflow issue.</p>",
+  "source": "Contest, Codeforces, Codeforces Round 589 (Div. 2), spongbob9876",
+  "level": 15,
+  "tags": [
+    "math",
+    "number_theory",
+    "primality_test",
+    "exponentiation_by_squaring",
+    "prime_factorization"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 1.3514000177383423
+}

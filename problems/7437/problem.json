@@ -1,0 +1,27 @@
+{
+  "id": 7437,
+  "title": "Lock Manager",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are invited to be a part of the team that is developing yet another DBMS (Data Base Management System). You will be responsible for the Lock Manager.</p>\n<p>Locks control concurrent access to data items by multiple transactions. Your DBMS is simple and uses only Shared (S) and Exclusive (X) mode locks. Each lock request contains a lock mode (S or X), a transaction identifier and a data item identifier. Multiple locks can be granted to the same data item as long as none of them <b>conflict</b>.</p>\n<p>Two locks for the same data item conflict if:</p>\n<ul>\n<li>they belong to different transactions, and</li>\n<li>at least one of them is exclusive (X) mode lock.</li>\n</ul>\n<p>At the earliest stages of development you are asked to write very simple lock manager that processes lock requests. The lock is granted if it does not conflict with previously granted locks for this data item. Your task is simple: locks, once granted, are never released or changed in any way. If lock request is denied due to conflict with some previously granted lock, then transaction making this request is blocked and all further requests from this transaction are ignored.</p>",
+  "input": "<p>The input file consists of a number of lock requests, each request on a different line. Requests have the following format:</p>\n<p><code>MODE TRID ITEM</code></p>\n<p>Where MODE is a single capital letter S or X denoting requested lock mode. TRID and ITEM are transaction identifier and data item identifier correspondingly. Both TRID and ITEM are integers, both are greater than zero, and both consist of at most 9 decimal digits.</p>\n<p>There are at least one and at most 10000 requests in the input file.</p>\n<p>The last request is followed by a line consisting of a single character '#'.</p>",
+  "output": "<p>Your program shall sequentially process all requests from the input file. For each request you should write one line that contains the response to the request. The following responses are allowed:</p>\n<ul>\n<li>GRANTED - the lock request does not conflict with any previously granted locks and is granted.</li>\n<li>DENIED - the lock request conflicts with some previously granted lock and is denied, thus blocking the requesting transaction.</li>\n<li>IGNORED - the transaction was blocked on some request before this one.</li>\n</ul>\n<p>Responses shall appear in all capital letters exactly as shown above. An arbitrary number of blank lines can follow last response in the output file.</p>",
+  "samples": [
+    {
+      "input": "S 1 1\nS 2 2\nX 10 1\nS 6 123456789\nS 3 3\nX 2 2\nS 5 6\nS 3 1\nS 3 2\nX 987654321 123456789\nX 1 4\nS 6 6\nS 3 5\nS 2 4\nX 4 5\nS 2 51\n#\n",
+      "output": "GRANTED\nGRANTED\nDENIED\nGRANTED\nGRANTED\nGRANTED\nGRANTED\nGRANTED\nDENIED\nDENIED\nGRANTED\nGRANTED\nIGNORED\nDENIED\nGRANTED\nIGNORED\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 1999",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "set",
+    "hash_set"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 2.769200086593628
+}

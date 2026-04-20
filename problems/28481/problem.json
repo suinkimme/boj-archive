@@ -1,0 +1,22 @@
+{
+  "id": 28481,
+  "title": "Fork",
+  "time_limit": "0.15 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Luca opened a Python shell and typed <code>os.fork()</code>, which spawned a second shell. After that, each time Luca pressed any key, it would randomly go to one of the two shells. Each shell has an input string (shown in the terminal), which is edited by the key presses going to that shell. Additionally, Luca sees the terminal and thus he knows which shell's input string was affected when he presses a key.</p>\n<p>His keyboard has $N$ keys with distinct characters on them and Backspace. When a character key press goes to a shell, the character is simply appended to the end of its input string. When a Backspace key press goes to a shell, the last character of its input string is erased. If the shell's input string is empty, nothing happens to it (though Luca still sees the Backspace went there). Each key press has probability $P$ of going to the left shell and probability $1 - P$ of going to the right one.</p>\n<p>Luca wants to type some fixed string $a_1a_2 \\cdots a_N$ consisting of $N$ distinct characters in both shells. He has already managed to type $L$ correct characters to the left shell and $R$ to the right one (i.e. the strings in the two shells are $a_1a_2 \\cdots a_L$ and $a_1a_2 \\cdots a_R$). For example, consider $P = 0.3$, $N = 2$ (the string could be <code>ab</code>), $L = 0$ and $R = 1$. A possible sequence of events is:</p>\n<table class=\"table table-bordered table-center-50\">\n<tbody>\n<tr>\n<th>Step</th>\n<th>Key</th>\n<th>Side</th>\n<th>Left shell</th>\n<th>Right shell</th>\n</tr>\n<tr>\n<td>0</td>\n<td> </td>\n<td> </td>\n<td> </td>\n<td><code>a</code></td>\n</tr>\n<tr>\n<td>1</td>\n<td><code>b</code></td>\n<td>Right</td>\n<td> </td>\n<td><code>ab</code></td>\n</tr>\n<tr>\n<td>2</td>\n<td><code>a</code></td>\n<td>Right</td>\n<td> </td>\n<td><code>aba</code></td>\n</tr>\n<tr>\n<td>3</td>\n<td><code>a</code></td>\n<td>Left</td>\n<td><code>a</code></td>\n<td><code>aba</code></td>\n</tr>\n<tr>\n<td>4</td>\n<td><code>b</code></td>\n<td>Right</td>\n<td><code>a</code></td>\n<td><code>abab</code></td>\n</tr>\n<tr>\n<td>5</td>\n<td>Backspace</td>\n<td>Right</td>\n<td><code>a</code></td>\n<td><code>aba</code></td>\n</tr>\n<tr>\n<td>6</td>\n<td>Backspace</td>\n<td>Left</td>\n<td> </td>\n<td><code>aba</code></td>\n</tr>\n<tr>\n<td>7</td>\n<td>Backspace</td>\n<td>Left</td>\n<td> </td>\n<td><code>aba</code></td>\n</tr>\n<tr>\n<td>8</td>\n<td>Backspace</td>\n<td>Right</td>\n<td> </td>\n<td><code>ab</code></td>\n</tr>\n<tr>\n<td>9</td>\n<td><code>a</code></td>\n<td>Left</td>\n<td><code>a</code></td>\n<td><code>ab</code></td>\n</tr>\n<tr>\n<td>10</td>\n<td><code>b</code></td>\n<td>Right</td>\n<td><code>a</code></td>\n<td><code>abb</code></td>\n</tr>\n<tr>\n<td>11</td>\n<td><code>b</code></td>\n<td>Left</td>\n<td><code>ab</code></td>\n<td><code>abb</code></td>\n</tr>\n<tr>\n<td>12</td>\n<td>Backspace</td>\n<td>Right</td>\n<td><code>ab</code></td>\n<td><code>ab</code></td>\n</tr>\n</tbody>\n</table>\n<p>In total, typing <code>ab</code> to both shells took $12$ key presses.</p>\n<p>Let us define an incorrect character like so: a character in one of the two shells, which needs to be deleted at some point before typing the full string (and only that) to both shells. Luca has decided that he will never press Backspace, if there is no incorrect character in at least one of the shells. He has also decided that he will never press a key which will always result in an incorrect character. Luca is wondering what his optimal strategy would be under these constraints. In particular, he wants to know what is the minimum expected (average) number of key presses. Help Luca by writing a program fork.cpp which solves this problem.</p>",
+  "input": "<p>From the first and only line of the standard input, your program should read $P$, $N$, $L$ and $R$.</p>",
+  "output": "<p>On the first and only line of the standard output, your program should print the computed answer to (preferably) $12$ digits of precision or more. You can use:</p>\n<pre>\nstd::cout &lt;&lt; std::setprecision(12) &lt;&lt; ans &lt;&lt; std::endl;</pre>",
+  "samples": [
+    {
+      "input": "0.3 2 0 1\n",
+      "output": "16.7142857142857\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, International Autumn Tournament in Informatics, 2022, Group A (Seniors)",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

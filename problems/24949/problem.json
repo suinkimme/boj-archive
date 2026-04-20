@@ -1,0 +1,33 @@
+{
+  "id": 24949,
+  "title": "Sprinkler",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>JOI-kun has years of experience of growing vegetables in his home vegetable garden. Now he is planning to manage IOI Farm.</p>\n<p>IOI Farm consists of $N$ lands, numbered from $1$ to $N$. There are $N - 1$ roads connecting with lands, numbered from $1$ to $N - 1$. The road $i$ ($1 ≤ i ≤ N - 1$) connects the land $A_i$ and the land $B_i$ bidirectionally. It is possible to move from any land to any other land by passing through roads. There is a sprinkler in every land of IOI Farm. Using a sprinkler, we can spray water on surrounding lands.</p>\n<p>JOI-kun is planning to grow JOI millets in IOI Farm. JOI millet is a curious plant. If we give water, the height of a JOI millet changes immediately. But, JOI millet is a weak plant. If the height of a JOI millet becomes larger than or equal to $L$, the top part of length $L$ of the JOI millet is broken immediately. JOI-kun will harvest the broken parts of JOI millets.</p>\n<p>In the beginning, JOI-kun plants a JOI millet of height $H_j$ in the land $j$ ($1 ≤ j ≤ N$). After that, for $Q$ days, JOI-kun will take care of the JOI millets everyday. On the $k$-th day ($1 ≤ k ≤ Q$), JOI-kun takes one of the following actions.</p>\n<ul>\n<li>Type 1 : JOI-kun uses the sprinkler of the land $X_k$ to give water to every land whose <strong>distance</strong> from the land $X_k$ is less than or equal to $D_k$. If water is given on a land, the JOI millet in that land grows, and its height is multiplied by $W_k$. But, the top part of length $L$ of the JOI millet is broken immediately, when the height becomes larger than or equal to $L$. Therefore, if JOI-kun gives water to a JOI millet of height $h$, the height of the JOI millet finally becomes “the remainder of $h × W_k$ when divided by $L$.”</li>\n<li>Type 2 : JOI-kun measures the height of a JOI millet in the land $X_k$.</li>\n</ul>\n<p>Here, the distance from the land $x$ ($1 ≤ x ≤ N$) to the land $y$ ($1 ≤ y ≤ N$) is the minimum number of roads we have to pass through when we move from the land $x$ to the land $y$.</p>\n<p>JOI-kun wants to see that the JOI millets are grown up as planned. For this purpose, he wants to calculate the height of a JOI millet measured by each action of Type 2 in advance.</p>\n<p>Write a program which, given information of IOI Farm and JOI-kun’s plan, calculates the height of a JOI millet measured by each action of Type 2 taken by JOI-kun.</p>",
+  "input": "<p>Read the following data from the standard input. Given values are all integers.</p>\n<p>$\\begin{align*}&amp; N\\,L \\\\ &amp; A_1 \\, B_1 \\\\ &amp; A_2 \\, B_2 \\\\ &amp; \\vdots \\\\ &amp; A_{N-1} \\, B_{N-1} \\\\ &amp; H_1 \\\\ &amp; H_2 \\\\ &amp; \\vdots \\\\ &amp; H_N \\\\ &amp; Q \\\\ &amp; \\text{(Query }1\\text{)} \\\\ &amp; \\text{(Query }2\\text{)} \\\\ &amp; \\vdots \\\\ &amp; \\text{(Query }Q\\text{)}  \\end{align*}$</p>\n<p>Each $\\text{(Query }k\\text{)}$ ($1 ≤ k ≤ Q$) consists of space separated integers. Let $T_k$ be the first integer of $\\text{(Query }k\\text{)}$. The content of this line is one of the following.</p>\n<ul>\n<li>If $T_k = 1$, this line also contains three more space separated integers $X_k$, $D_k$, $W_k$, in this order. This means JOI-kun takes an action of Type 1 on the $k$-th day, JOI-kun gives water to every land whose distance from the land $X_k$ is less than or equal to $D_k$, and the height of a JOI millet is multiplied by $W_k$ after water is given.</li>\n<li>If $T_k = 2$, this line also contains one more integer $X_k$. This means JOI-kun takes an action of Type 2 on the k-th day, and JOI-kun measures the height of a JOI millet in the land $X_k$.</li>\n</ul>",
+  "output": "<p>For each action of Type 2 (i.e., for each $k$ ($1 ≤ k ≤ Q$) with $T_k = 2$), write the height of a JOI millet in the land $X_k$ measured by the action of Type 2 on the $k$-th day to the standard output, in this order. The outputs should be separated by line breaks.</p>",
+  "samples": [
+    {
+      "input": "4 7\n1 2\n2 3\n3 4\n1\n1\n1\n1\n11\n1 2 1 2\n1 1 0 2\n2 1\n2 2\n2 3\n2 4\n1 4 10 2\n2 1\n2 2\n2 3\n2 4\n",
+      "output": "4\n2\n2\n1\n1\n4\n4\n2\n"
+    },
+    {
+      "input": "6 10\n5 6\n1 2\n1 4\n2 6\n3 6\n9\n2\n3\n4\n9\n1\n10\n1 5 1 7\n2 4\n1 4 1 9\n1 5 0 7\n2 1\n1 1 1 3\n1 6 1 4\n2 5\n2 4\n2 3\n",
+      "output": "4\n1\n4\n8\n2\n"
+    },
+    {
+      "input": "8 10\n1 3\n3 5\n4 7\n6 7\n4 5\n7 8\n2 4\n5\n8\n6\n4\n6\n2\n9\n3\n11\n1 2 2 0\n2 1\n1 6 1 0\n2 4\n2 6\n1 5 2 0\n2 8\n1 7 2 0\n2 6\n2 7\n2 4\n",
+      "output": "5\n0\n0\n3\n0\n0\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Camp, JOI Spring Training Camp, JOI 2021/2022 Spring Training Camp",
+  "level": 22,
+  "tags": [
+    "dp",
+    "trees"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 2.636399984359741
+}

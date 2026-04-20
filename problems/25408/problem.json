@@ -1,0 +1,37 @@
+{
+  "id": 25408,
+  "title": "Abracadabra",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Tin Golubić, also known as <em>Mr. Magic Man</em>, is one of Varaždin’s most talented young magicians. His specialty is card magic, and this task is an homage to some of the truly impressive feats of magic we have witnessed over the years.</p>\n<p>Tin’s trick featured in this task involves a deck of $N$ cards, where each card has a unique integer from $1$ to $N$ written on its face, and the total number of cards is even. Tin is going to perform what seems to be a series of <em>riffle shuffles</em>, and at any time an audience member may shout out a question: <em>“What was the number written on the face of the i-th card from the bottom after you performed t shuffles?”</em>. Naturally, Tin will immediately respond with the correct answer.</p>\n<p>The secret behind the trick involves a mix of Tin’s incredible mental abilities and his card-handling dexterity. First, he is going to perfectly remember the starting state of the deck, meaning he knows exactly which card is in which position initially.</p>\n<p>Then, he will use a slightly nuanced version of a standard riffle shuffle that goes unnoticed by the audience. Similar to your typical riffle, Tin will take the bottom half of the cards in his left hand, and the top half of the cards in his right hand, having them face down at all times, and proceed to drop them one by one to form the new deck on the table. Instead of arbitrarily dropping a bottom card from one of his hands, he will always drop the bottom card with the smaller number written on its face. Additionally, once he has dropped all cards from one of his hands, he drops all the remaining cards from his other hand as well. The dropped cards are then collected, and the shuffle is complete.</p>\n<p>Starting from the initial deck, Tin will repeatedly perform his shuffle on the current deck, obtaining a new ordering of the cards on which the next shuffle will be executed.</p>\n<p>Your task is to write a program that simulates Tin’s trick, i.e. given an initial state of the deck, you’ll need to answer $Q$ queries from the audience.</p>",
+  "input": "<p>The first line contains two space-separated integers $N$ and $Q$ from the task description. It is guaranteed that $N$ is even.</p>\n<p>The second line contains $N$ space-separated positive integers, a permutation of the set ${1,2,\\dots ,N}$ representing the initial state of the deck from the bottom to the top.</p>\n<p>The $j$-th of the next $Q$ lines contains two space-separated integers $t$ and $i$ ($1 ≤ i ≤ N$), describing the $j$-th query from the audience. More precisely, the query asks about the number written on the $i$-th card from the bottom of the deck after completing $t$ shuffles.</p>",
+  "output": "<p>Output $Q$ lines, the $j$-th of which contains a single positive integer between $1$ and $N$, the answer to the $j$-th query.</p>",
+  "samples": [
+    {
+      "input": "6 3\n1 5 6 2 3 4\n1 2\n0 4\n1 5\n",
+      "output": "2\n2\n5\n"
+    },
+    {
+      "input": "6 6\n2 1 5 4 6 3\n0 1\n1 1\n0 3\n1 3\n0 6\n10 6\n",
+      "output": "2\n2\n5\n4\n3\n3\n"
+    },
+    {
+      "input": "10 10\n7 5 2 9 10 8 4 3 6 1\n3 1\n3 2\n3 3\n3 4\n3 5\n3 6\n3 7\n3 8\n3 9\n3 10\n",
+      "output": "2\n3\n6\n1\n7\n5\n8\n4\n9\n10\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2022, Day 1",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "ad_hoc",
+    "segtree",
+    "binary_search",
+    "stack",
+    "offline_queries"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 2.0455000400543213
+}

@@ -1,0 +1,22 @@
+{
+  "id": 7303,
+  "title": "House Numbers",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>NarmakSung has a hardware shop that makes new digit plates for house numbers. If a house number is 195, for example, he has to create one plate for digit 1, one for digit 9, and one for digit 5. But, the orders are not always that simple. He may get orders to make digit plates, for example, for all houses in one side of a street.</p>\n<p>Since making several plates of the same digit costs much less than making all digits for each house one by one, he wants to know, for a big order he receives, how many of each digit plate he has to make.</p>\n<p> </p>",
+  "input": "<p>The first number in the input line, t ( 1 ≤ t ≤ 10) is the number of orders. Following this, t orders are written in the input file. Each order starts with a line containing a street name, an arbitrary string of length at most 50 characters. The second line contains a single integer N ( 1 ≤ N ≤ 10), the number of sub-orders, followed by N lines of sub-orders. Sub-orders are of three kinds:</p>\n<ul>\n<li>A single house number: in this case, the sub-order line contains only a single integer n ( 1 ≤ n ≤ 9999)</li>\n<li>A series of house numbers: in this case, the sub-order line starts with a `+', followed by three integer numbers a, b, c ( 1 ≤ a, b, c ≤ 9999). This means that NarmakSung has to make plates for house numbers from a up to b with distance of c. That is, digit plates have to be made for house numbers a, a + c, a + 2c, ..., b. We assume that a &lt; b, b - a is a multiple of c, and c ≤ b - a.</li>\n<li>A series of house numbers to be excluded: this kind of sub-orders specifies that a series of house numbers should not be made. In this case, the sub-order line starts with a `-', followed by three integer numbers with exactly the same conditions as in the previous case.</li>\n</ul>\n<p>Note that if a house number is ordered more than once in two separate sub-orders, it is counted only once if it is not excluded at all (like number 100 in the second test case in the sample input). Also, if a house number is excluded somewhere in the test case, it cancels any order for that number, even if it appears later in the test case (like number 500 in the second sample). Note that it is possible to exclude some numbers that do not appear in other orders at all. In this case, these numbers are ignored (like 900 in the second sample).</p>",
+  "output": "<p>One set of output data is written for each input order consisting of 13 lines. Each set starts with one line containing the street name exactly as appeared in the input order. The next line must be of the form `C addresses' where C is the total number of house numbers to be made. In the special case of C = 1, the output line should be `1 address'. The next 10 lines should be of the following form: Line i should contain the number of digit plates needed to be made for digit i. These 10 lines are on the format `Make X digit Y' where X is how many copies of digit Y they need to make. The last line states the total number Z of digits needed, on the format `In total Z digits'. If there is only one digit to produce, it should say, `In total 1 digit', in order to be grammatically correct. The output should be case-sensitive.</p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "2\nAzadi Street\n2\n+ 101 103 2\n275\nSharif Highway\n3\n100\n- 500 900 100\n+  100 800 100\n",
+      "output": "Azadi Street\n3 addresses\nMake 2 digit 0\nMake 3 digit 1\nMake 1 digit 2\nMake 1 digit 3\nMake 0 digit 4\nMake 1 digit 5\nMake 0 digit 6\nMake 1 digit 7\nMake 0 digit 8\nMake 0 digit 9\nIn total 9 digits\nSharif Highway\n4 addresses\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia West Continent, Iran, Tehran Site 2003",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

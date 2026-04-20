@@ -1,0 +1,36 @@
+{
+  "id": 24808,
+  "title": "Pharmacy",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Many pharmacies in the United States fill prescriptions strictly on a first-come, first-served basis, even preferring prescriptions submitted electronically from a remote site to prescriptions dropped off by waiting customers in the store.  This frequently leads to situations where customers have to wait for prescriptions because pharmacy technicians are busy filling prescriptions that may not be picked up until much later anyway.</p>\n<p>This problem asks you to investigate the effect of an \"in-store customers first\" policy. Under this policy, technicians fill prescriptions in the order in which they are dropped off, but they will not start filling remote prescriptions as long as there are in-store prescriptions to be filled.</p>\n<p>Write a program that computes the average completion time for in-store and remote customers under this policy!</p>",
+  "input": "<p>The input consists of a single test case. The first line contains two integers $n$ ($0 &lt; n \\le 100\\,000$) and $t$ ($0 &lt; T \\le 10$), where $n$ denotes the number of prescriptions and $T$ the number of technicians working at the pharmacy.  This is followed by $n$ lines, one line per prescription.</p>\n<p>Each line consists of one integer $d$ ($0 &lt; d \\le 10^9$), which is the time (in seconds) when the prescription was dropped off, followed by a single character '<code>R</code>' or '<code>S</code>' for a remote or in-store prescription, followed by a single integer $k$ ($0 &lt; k \\le 500$) describing the number of seconds it takes a technician to fill this prescription. Prescriptions are listed in increasing order of drop-off time, but multiple prescriptions may be dropped off at the same time, in which case preference should be given to any in-store prescriptions, regardless of the order in which they appear in the input. If two prescriptions of the same type are dropped off at the same time, the prescription needing the shorter fill time must be filled first, again regardless of the order in which they appear in the input.</p>\n<p>Once a technician starts working on a prescription, they will finish filling it, even if an in-store prescription is dropped off while they are working.  Each prescription requires one pharmacy technician to fill it, and each technician can work on only one prescription at a time.  The technicians work until all prescriptions are filled. You should ignore the time it would take for technicians to decide which prescription to fill next, so a technician that finishes a prescription can start working immediately on the next prescription.</p>",
+  "output": "<p>Output two numbers $o$ and $r$, denoting the average completion time for in-store and remote prescriptions, respectively.  A prescription's completion time is defined as the time difference between when a prescription was dropped off and when it was filled. If there were no in-store or remote prescriptions in the input, output $0$ for $o$ or $r$ instead. Your answer is considered correct if it is within a relative or absolute error of $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "5 3\n1 R 4\n2 R 2\n3 R 2\n4 S 2\n5 S 1\n",
+      "output": "1.500000 2.666667\n"
+    },
+    {
+      "input": "5 2\n1 R 4\n2 R 2\n3 R 2\n4 S 2\n5 S 1\n",
+      "output": "1.500000 3.666667\n"
+    },
+    {
+      "input": "5 1\n1 R 4\n2 R 2\n3 R 2\n4 S 2\n5 S 1\n",
+      "output": "3.000000 7.000000\n"
+    }
+  ],
+  "hint": null,
+  "source": ", School, Virginia Tech High School Programming Contest, 2018 Virginia Tech High School Programming Contest",
+  "level": 12,
+  "tags": [
+    "data_structures",
+    "implementation",
+    "priority_queue",
+    "simulation",
+    "sorting"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.125
+}

@@ -1,0 +1,34 @@
+{
+  "id": 33188,
+  "title": "Monster Warehouse",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"width: 340px; height: 195px; float: right;\"/>Mike and Sally work in the warehouse of Monster Inc. as storekeepers. Their daily tasks are to process incoming requests and update the inventory of the Warehouse. Requests only include buying, selling, unpacking, and packing containers. The warehouse includes goods and containers and has unlimited space. A container may contain goods or other containers as sub-containers.</p>\n<p>The exact format of the requests is given below.</p>\n<ul>\n<li><code>BUY &lt;CONTAINER_DESCRIPTION&gt;</code></li>\n<li><code>SELL &lt;CONTAINER_ID&gt;</code></li>\n<li><code>UNPACK &lt;CONTAINER_ID&gt;</code></li>\n<li><code>PACK &lt;CONTAINER_DESCRIPTION&gt;</code></li>\n</ul>\n<p>Each container which is not inside any other container is uniquely identified by a positive integer ID. Assigning IDs to containers is done sequentially and started from $1$. An ID is valid if and only if its container exists in the warehouse, otherwise it is invalid.</p>\n<p>A container description is enclosed in parentheses and lists the contents, which can be either goods or sub-containers. A good is identified exclusively by its name, which consists of non-case-sensitive English letters. Multiple units of a good may be available. To denote quantities, place a positive integer ‘<code>N</code>’ before or after the good name (separated by one whitespace), where <code>N</code>$ &lt; 100$ is the number of the good. For example, <code>((tomato, potato), 4 celery, (wood, (silk 3, banana 2)))</code> describes a container with four units of celery and two sub-containers.</p>\n<p>The description of each request is as follows:</p>\n<ul>\n<li><code>BUY</code>: A new container is transferred into the warehouse and an ID is assigned to it.</li>\n<li><code>SELL</code>: An existing container with the given ID is ship out and its ID becomes invalid.</li>\n<li><code>UNPACK</code>: All goods and sub-containers are extracted from the container and added to the warehouse. Moreover, the sub-containers become new containers and get their own ID. The assignment of IDs to the new containers is based on the order of their appearance in the container description (from left to right). For instance, considering the following two lines as the first requests, results in adding one unit of celery and adding three containers with IDs $2$, $3$, and $4$ to the warehouse and ID $1$ becomes invalid.</li>\n</ul>\n<pre>\nBUY (celery , (Banana), (Celery), (celery))\nUNPACK 1</pre>\n<ul>\n<li><code>PACK</code>: Goods specified in a <code>PACK</code> request are grouped into a new container, which is then assigned the next available ID.</li>\n</ul>\n<p>Mike and Sulley process the requests in the order they are received. Any request with an invalid container ID must be discarded. Moreover, for <code>PACK</code> request they need to check if there exists enough units of each good in the warehouse.</p>\n<p>Roz, the agent of Monster Inc. has told Mike once ”I’m watching you, Wazowski. Always watching. Always.”, She rolled her desk into their office and asked for requests and reports. She is looking for every detail. She is reviewing each request and might ask a few questions. Her questions might be each of the following types:</p>\n<ul>\n<li><code>? COUNT &lt;good&gt;</code>: How many units of the given good exist outside of containers?</li>\n<li><code>? CONTAINS &lt;good&gt;</code>: How many containers with ID have the given good, i.e. the good is in the container or there is a recursive sub-container which contains that good. \t<code>? MIN &lt;good&gt;</code>: At least how many containers should be unpacked to reach one unit of the good. If it is impossible, the answer should be $-1$.</li>\n</ul>\n<p>Mike and Sully are expected to answer these queries using just one integer.</p>\n<p>Before helping Mike and Sully, read samples carefully.</p>",
+  "input": "<p>The input consists of $n$ requests or queries from Roz while she is reviewing ($1 \\le n \\le 5000$); each appears in a separated line. The name of each good is limited to $100$ characters. Each container description might have at most $5000$ characters and the input size is less than $10^6$ characters.</p>",
+  "output": "<p>Each line of the report is associated with a request or Roz’s questions. After each <code>BUY</code>, <code>SELL</code>, <code>PACK</code>, <code>UNPACK</code> request, you should print <code>OK</code>, if the request is not discarded. Otherwise, print <code>DISCARD</code>. If the request is <code>UNPACK</code>, after printing <code>OK</code>, you should print the number of containers added to the warehouse (read samples for more details). For each Roz’s query, print just one integer in a line.</p>",
+  "samples": [
+    {
+      "input": "BUY (10 apple, 10 carrot, 10 banana, ())\nUNPACK 1\nUNPACK 2\nPACK (3 apple, (5 cArrot, 2 banana))\nPACK (3 apple, (5 carrOt, 1 banana))\nPACK (5 apple, (3 banana))\n? MIN apple\n? MIN CaRRoT\n? CONTAINS apple\n",
+      "output": "OK\nOK, 1 container added.\nOK, No containers added.\nOK\nOK\nDISCARD\n0\n2\n2\n"
+    },
+    {
+      "input": "BUY (apple, (banana, 3 carrot))\nBUY ((banana, apple), (banana, carrot))\n? MIN apple\nUNPACK 1\n? COUNT apple\n? COUNT carrot\n? CONTAINS banana\n",
+      "output": "OK\nOK\n1\nOK, 1 container added.\n1\n0\n2\n"
+    },
+    {
+      "input": "BUY ((duck 2, carrot), 1 celery)\n? MIN duck\n? MIN carrot\n? MIN celery\n? MIN test\nSELL 10\nPACK (celery)\nUNPACK 1\nUNPACK 1\nPACK (celery)\n? COUNT celery\n? COUNT carrot\n? CONTAINS celery\n? CONTAINS carrot\nBUY ((duck 8, carrot), ((7 duck), celery))\nUNPACK 4\nUNPACK 5\nUNPACK 6\n? COUNT DUCK\n? MIN duck\n",
+      "output": "OK\n2\n2\n1\n-1\nDISCARD\nDISCARD\nOK, 1 container added.\nDISCARD\nOK\n0\n0\n1\n1\nOK\nOK, 2 containers added.\nOK, No containers added.\nOK, 1 container added.\n8\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia West Continent, Iran, 2023 ICPC Asia Tehran Regional Contest",
+  "level": 18,
+  "tags": [
+    "implementation",
+    "string",
+    "parsing"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 4.599999904632568
+}

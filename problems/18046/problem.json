@@ -1,0 +1,31 @@
+{
+  "id": 18046,
+  "title": "The Great Drone Show",
+  "time_limit": "30 초",
+  "memory_limit": "512 MB",
+  "description": "<p>This year’s Great Drone Show is going to be a stunning success! Well, if nothing goes horribly wrong. And if everybody sticks to the plan.</p>\n<p>The plan is worked out in every detail. At the beginning, <em>n</em> drones are parked on the ground. To describe their movement, we introduce standard Euclidean coordinates in three dimensions, in which the ground is the <em>z</em> = 0 plane. The starting position of the <em>i</em>-th drone is then described as (<em>x<sub>i</sub></em>, <em>y<sub>i</sub></em>, 0).</p>\n<p>To allow communication during the show, there are <em>m</em> cables between pairs of drones. The cables initially also lie on the ground, in the form of straight segments connecting some pairs of drones. It is known that from every drone there is a sequence of cables to every other drone (the cable network is connected). Moreover, to avoid tangling the cables, <strong>no two segments cross each other</strong> (they can only have common endpoints).</p>\n<p>During the show a sequence of <em>k</em> moves will be performed. Every move consists of changing the height (i.e. the <em>z</em>-coordinate) of one of the drones. Each move will be performed smoothly and will start only after the previous one ends. During a move, the distance between some drones may change – fortunately, the cables can stretch to some degree. For every cable we know the maximal length it can have – if its endpoint drones go further than this value, the cable breaks.</p>\n<p>The show organizers are prepared for some cables to break. However, some pairs of drones must remain able to communicate, directly or indirectly. Given <em>q</em> specific, <em>critical</em> pairs of drones, determine if communication between these pairs becomes impossible at some point during the show, and if so, determine the move which will cause the connection loss.</p>",
+  "input": "<p>The first line of input contains the number of test cases <em>z</em> (1 ≤ <em>z</em> ≤ 400). The test cases follow, each one in the following format:</p>\n<p>The first line contains the number of drones <em>n</em> (2 ≤ <em>n</em> ≤ 500 000). Each of the following <em>n</em> lines contains two integers <em>x<sub>i</sub></em>, <em>y<sub>i</sub></em> (|<em>x<sub>i</sub></em>|, |<em>y<sub>i</sub></em>| ¬ 10<sup>8</sup>) – the <em>x</em> and <em>y</em> coordinates of the <em>i</em>-th drone. No two drones occupy the same starting location.</p>\n<p>The next line contains an integer <em>m</em> (1 ≤ <em>m</em> ≤ 3 · <em>n</em>) – the number of cables. Each of the following <em>m</em> lines describes a single cable, and contains three integers <em>u</em>, <em>v</em>, <em>l</em> (1 ≤ <em>u</em> ≠ <em>v</em> ≤ <em>n</em>; 1 ≤ <em>l</em> ≤ 10<sup>9</sup>) – the numbers of connected drones and its maximal length, respectively. A pair of drones can be connected by at most one cable. Every cable’s length at its starting position fits within the given length limit.</p>\n<p>The next line contains the number of moves <em>k</em> (1 ≤ <em>k</em> ≤ 500 000). Each of the following <em>k</em> lines contain two integers <em>v</em>, <em>h</em> (1 ≤ <em>v</em> ≤ <em>n</em>; |<em>h</em>| ≤ 10<sup>9</sup>) – number of the moving drone and its change of height (positive it the drone raises, negative if it falls). You may assume that no drone ever falls below the ground (the <em>z</em> coordinates remain non-negative).</p>\n<p>Finally, the following line contains an integer <em>q</em> (1 ≤ <em>q</em> ≤ 500 000) – the number of critical pairs to be checked. In the next <em>q</em> lines, these pairs are described – each one contains two drone numbers <em>u</em>, <em>v</em> (1 ≤ <em>u</em> ≠ <em>v</em> ≤ <em>n</em>).</p>\n<p>The sum of <em>n</em> values over all test cases does not exceed 1 000 000. Similarly, both the sum of <em>k</em> values and the sum of <em>q</em> values also do not exceed 1 000 000.</p>",
+  "output": "<p>For every test case, output in separate lines <em>q</em> integers – the answers for each critical pair. For every such pair of drones, output the number of the first move after which the drones lost the ability to communicate. The moves are numbered starting from 1. If a critical pair remains connected during the whole show, output −1 instead.</p>",
+  "samples": [
+    {
+      "input": "1\n4\n0 0\n0 12\n0 24\n0 25\n3\n1 2 13\n2 3 13\n3 4 1\n4\n3 1\n2 6\n3 1\n2 -6\n4\n1 2\n2 3\n3 4\n1 4\n",
+      "output": "2\n-1\n1\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, Poland Collegiate Programming Contest, AMPPZ 2019, Contest, Open Cup, 2019/2020 Season, Stage 8: Grand Prix of Poland",
+  "level": 26,
+  "tags": [
+    "binary_search",
+    "data_structures",
+    "disjoint_set",
+    "graphs",
+    "offline_queries",
+    "planar_graph",
+    "smaller_to_larger",
+    "sparse_table"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 3.4444000720977783
+}

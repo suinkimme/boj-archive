@@ -1,0 +1,32 @@
+{
+  "id": 31900,
+  "title": "Archaeological Recovery",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Renowned professor of Egyptology Z Mummer is exploring a newly discovered tomb in Luxor where she finds a mysterious construction. On a wall, there is a row of $k$ pyramid-shaped stone slabs. Each stone features three hieroglyphs: an ankh (top), an eye of Horus (bottom left), and an ibis (bottom right).</p>\n<p>Next to the wall there are $n$ levers. Cautiously experimenting with these, wary of potential traps, the professor realizes that each lever rotates some of the pyramids clockwise or counter-clockwise so that another hieroglyph is pointing upwards on them. Flipping back a lever rotates the same pyramids in the opposite direction back to their original position. The levers operate completely independently of each other, so flipping or unflipping a lever has the same effect regardless of what states the other levers are in. See Figure 1 for an illustration.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 782px; height: 250px;\"/></p>\n<p style=\"text-align: center;\"><b>Figure 1</b>: Illustration of a wall with $k=3$ pyramids and $n=2$ levers. The first lever rotates the first pyramid clockwise, the second pyramid counterclockwise, and leaves the third pyramid unchanged. The second lever rotates all three pyramids clockwise. This corresponds to Sample Input 1.</p>\n<p>Intrigued, Professor Mummer records the individual effect of each lever. Back at her university after the expedition, she assigns one of her students the laborious task of figuring out all $2^n$ possible pyramid configurations (some of which may be identical) that can be achieved by flipping some subset of the levers, so that these can be studied further.</p>\n<p>After many nights of careful calculations, the student is finally done and starts gathering his papers. But then disaster strikes: he accidentally spills some ink and completely destroys the professor’s original notes, which contained the only record of the individual effects of each lever.</p>\n<p>The only chance to escape Professor Mummer’s wrath is to reconstruct the original notes from the list of possible pyramid configurations. This cannot be done completely unambiguously (for example, there is no way of distinguishing between different orderings of the same set of levers). But as long as the levers still result in the calculated list of pyramid configurations, this error is unlikely to be noticed (at least not until after the student has graduated).</p>",
+  "input": "<p>The first line of input contains three integers $n$, $k$ and $t$, where $n$ ($1≤n≤40$) and $k$ ($1≤k≤5$) are the number of levers and pyramids, respectively, and $t$ ($1≤t≤3^k$) is the number of different pyramid configurations. Then follow $t$ lines describing the distinct possible pyramid configurations. Each such line consists of a string of length $k$ describing the configuration and an integer $f$ ($1≤f≤2^n$) indicating the number of different lever settings which result in this configuration. The configuration is described using the letters ‘<code>A</code>’, ‘<code>E</code>’, and ‘<code>I</code>’. The $j$th character indicates the hieroglyph facing upwards on the $j$th pyramid: ‘<code>A</code>’ for ankh, ‘<code>E</code>’ for eye of Horus, and ‘<code>I</code>’ for ibis.</p>\n<p>The $t$ configurations given are pairwise distinct, the sum of $f$-values over all $t$ lines equals $2^n$, and the input is such that at least one list of levers results in the given multiset of configurations.</p>",
+  "output": "<p>Output $n$ lines describing a possible set of levers that gives rise to the given multiset of pyramid configurations. Each line describes one lever using a string of length $k$ consisting of the symbols ‘<code>+</code>’, ‘<code>-</code>’, or ‘<code>0</code>’. In each such string, the $j$th symbol describes the action of this lever on the $j$th pyramid: ‘<code>+</code>’ if the lever moves the pyramid clockwise, ‘<code>-</code>’ if the lever moves it counterclockwise, and ‘<code>0</code>’ if the lever does not move this pyramid.</p>\n<p>If there is more than one possible solution, any one will be accepted.</p>",
+  "samples": [
+    {
+      "input": "2 3 4\nEEE 1\nEIA 1\nIAE 1\nAAA 1\n",
+      "output": "+-0\n+++\n"
+    },
+    {
+      "input": "3 2 2\nIA 4\nAA 4\n",
+      "output": "-0\n00\n00\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2022",
+  "level": 29,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "bitmask",
+    "linear_algebra",
+    "mitm"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.875
+}

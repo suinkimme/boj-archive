@@ -1,0 +1,40 @@
+{
+  "id": 34178,
+  "title": "AP 위의 수업은?",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<blockquote>\n<p><span style=\"color:#27ae60;\">A</span><span style=\"color:#2980b9;\">P</span> <span style=\"color:#8e44ad;\">위</span>의 수업은? <strong><span style=\"color:#8e44ad;\">온</span><span style=\"color:#27ae60;\">라</span><span style=\"color:#2980b9;\">인</span></strong> 수업</p>\n</blockquote>\n<p>MatKor의 규모가 점점 커지면서, MatKor 세미나도 온라인으로 진행하고자 한다. 민재는 세미나를 위해 네트워크를 설계했다. 네트워크는 $N$명의 부원이 각자 한 개의 정점에 위치하고, 정점들 사이의 무방향 간선으로 통신할 수 있는 트리(사이클이 없는 연결 그래프) 형태이다. 편의상 모든 정점들의 집합을 $V$, 모든 간선들의 집합을 $E$라고 하자. 간선들은 해당 간선을 사용하기 위한 비용이 있는데, 간선 $e$의 비용을 $w_e$로 정의한다.</p>\n<p>$N$명의 부원과 $N$개의 노드는 각각 $1$번부터 $N$번까지 번호가 매겨져 있으며, $i$번 부원은 $i$번 노드에 위치한다. 초기에 $M$명이 세미나를 신청했으며, 이 부원들이 위치한 정점들의 집합을 $S\\left( \\subseteq V \\right)$라고 하자.</p>\n<p>두 정점 $u,v$에 대해 $E_{u,v}$는 $u$와 $v$ 사이 경로의 간선들의 집합을 의미하며, $d_{u,v}$는 $u$와 $v$ 사이 경로의 비용의 합 즉, $\\sum_{e\\in E_{u,v}}w_e$을 의미한다. 이때 $u=v$라면 $E_{u,v}=\\varnothing$이며, $d_{u,v}=0$이다.</p>\n<p>이제 민재는 $N$개의 정점 중 한 곳에서 세미나를 송출할 것인데, 세미나를 듣는 모든 부원까지 도달하기까지 총 비용이 얼마나 되는지를 알고 싶다. 이때 중복되는 간선에 대해 중복되는 횟수만큼 비용을 더하는 경우와 한 번만 더하는 경우 모두 알고 싶다. 중복되는 횟수만큼 비용을 더하는 경우를 <strong>트래픽합</strong>, 한 번만 더하는 경우를 <strong>하드웨어합</strong>이라 정의힌다. 세미나를 진행하는 도중 신청하지 않았던 인원이 새로 신청할 수도, 신청했던 인원이 신청을 취소할 수도 있으므로 이를 실시간으로 반영하여 계산해야 한다.</p>\n<p>민재는 이를 해결하기 위해 다음 세 종류의 쿼리를 수행하는 프로그램을 작성하면 된다는 사실을 알았다.</p>\n<ul>\n<li><span style=\"color:#e74c3c;\"><code>1 </code></span>$v$ : $v$번 부원이 세미나 신청 여부를 반전시킨다. 즉, $v\\in S$라면 $S\\leftarrow S\\setminus\\left\\{ v \\right\\}$를, $v\\notin S$라면 $S\\leftarrow S\\cup\\left\\{ v \\right\\}$를 $S$에 반영한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>2 </code></span>$v$ : $v$번 부원이 위치한 정점에서 세미나를 송출했을 때 <strong>트래픽합</strong>을 출력한다. 즉, $\\sum_{s\\in S}d_{s,v}$를 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>3 </code></span>$v$ : $v$번 부원이 위치한 정점에서 세미나를 송출했을 때 <strong>하드웨어합</strong>을 출력한다. 즉, $E_v\\left( S \\right) =\\bigcup_{s\\in S}E_{s,v}$이라 할 때, $\\sum_{e\\in E_v\\left( S \\right)}w_e$를 출력한다.</li>\n</ul>\n<p>위의 세 종류의 쿼리를 수행하는 프로그램을 작성해 보자.</p>",
+  "input": "<p>첫 번째 줄에 부원의 수 $N(1\\le N\\le 10^5)$과 초기에 세미나를 신청한 부원의 수 $M(0\\le M\\le N)$과 쿼리의 개수 $Q(1\\le Q\\le 10^5)$이 공백으로 구분되어 주어진다.</p>\n<p>두 번째 줄에 초기에 세미나를 신청한 $M$명의 서로 다른 번호 $s_i(1\\le s_i\\le N)$가 오름차순으로 공백으로 구분되어 주어진다. 이때, $M=0$이라면 빈 줄이 주어진다.</p>\n<p>세 번째 줄부터 $N-1$ 줄에 걸쳐 트리의 간선 $e_i$를 구성하는 두 정점 $u_i,v_i(1\\le u_i&lt;v_i\\le N)$와 간선의 비용 $w_{e_i}(1\\le w_{e_i}\\le 10^9)$가 공백으로 구분되어 주어진다.</p>\n<p>다음 줄에 각 쿼리의 타입을 의미하는 $Q$개의 정수 $t_i(1\\le t_i\\le 3)$가 공백으로 구분되어 주어진다.</p>\n<p>각 $Q$개의 쿼리에 대해 다음과 같이 $v_i$가 결정된다.</p>\n<ul>\n<li>첫 번째 쿼리($i=1$)의 경우 $v_1=1$이다.</li>\n<li>두 번째 쿼리부터는 $i$번째 쿼리의 정점 $v_i$는 다음과 같이 직전 쿼리($i-1$번째 쿼리)에 의해 결정된다.\n\t<ul>\n<li>$i-1$번째 쿼리가 $1$번 쿼리 였다면, $i-1$번째 쿼리 실행 후 $S$의 원소의 개수를 $t$라 할 때, $v_i=\\left( \\left( v_{i-1}+t \\right)\\bmod N \\right) +1$</li>\n<li>$i-1$번째 쿼리가 $2$번 혹은 $3$번 쿼리 였다면, $i-1$번째 쿼리의 답이 $t$라 할 때, $v_i=\\left( \\left( v_{i-1}+t \\right)\\bmod N \\right) +1$</li>\n</ul>\n</li>\n</ul>",
+  "output": "<p>$2$번 혹은 $3$번 쿼리가 주어질 때마다 정답을 한 줄에 한 개씩 출력한다. $2$번 혹은 $3$번 쿼리가 하나 이상 주어짐이 보장된다.</p>",
+  "samples": [
+    {
+      "input": "10 0 6\n\n1 3 59\n1 5 87\n1 10 52\n2 9 95\n3 4 85\n6 10 51\n7 9 45\n8 10 15\n9 10 86\n1 1 1 2 2 3\n",
+      "output": "214\n423\n248\n"
+    },
+    {
+      "input": "10 5 6\n1 4 5 6 10\n1 3 59\n1 5 87\n1 10 52\n2 9 95\n3 4 85\n6 10 51\n7 9 45\n8 10 15\n9 10 86\n2 1 3 1 2 3\n",
+      "output": "386\n349\n366\n262\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제7회 고려대학교 MatKor Cup: 2025 Summer, The FinAL, alex04, eoaud0108, kidw0124, leeminjae, austin0817, ezh8n, lighter, midoria, oh040411, utilforever, yijw0930",
+  "level": 23,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "graph_traversal",
+    "trees",
+    "segtree",
+    "set",
+    "dfs",
+    "divide_and_conquer",
+    "lazyprop",
+    "sparse_table",
+    "centroid",
+    "hld",
+    "centroid_decomposition"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.4000000953674316
+}

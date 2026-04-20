@@ -1,0 +1,22 @@
+{
+  "id": 5199,
+  "title": "Volleyball Scores",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Beach Volleyball is a very popular game to play at the beach.<sup>1</sup> You form teams of two or more players on each side, and try to hit a ball back and forth. In reality, you usually just hope that whatever random person is hit by the ball is shorter than you, or won’t get too angry.</p>\n<p>When you play Volleyball somewhat more seriously, you try to keep track of a score. You get points if the ball bounces in your opponents’ court, or they hit it out of bounds, or touch it too often. Scorekeeping is a tedious chore — there is really no reason to do it by hand. So we will write a program which will figure out the score given the sequence of what happened.</p>\n<p>Here’s a refresher of volleyball rules. Only the team that is serving can score points, and they do so if they win the volley. If they lose the volley, then the other team doesn’t get a point yet, but they do get to serve next. (If the serving team wins the volley, they continue to serve.) There are several ways to lose a volley:<sup>2</sup></p>\n<ol>\n<li>One of your team’s players touches the ball twice in a row.</li>\n<li>The ball is touched at least four times in a row by players of your team.</li>\n<li>The ball touches the ground in your court.</li>\n<li>The ball touches the ground out of bounds, and one of your team’s players was the last to touch the ball.</li>\n<li>One of your team’s players touches the ball right after one of your players has served it.</li>\n</ol>\n<p>So given a sequence of who touched the ball, our goal is to find out the current score (notice that “touching” the ball may include serving it). We also should output an error message if at any point in time, the wrong team served.</p>\n<p><sup>1</sup>Hence the name.</p>\n<p><sup>2</sup>We will ignore effects of the net here, as well as a few other details, including the fact that the person serving the ball must normally rotate.</p>",
+  "input": "<p>The first line contains a number K ≥ 1, which is the number of input data sets in the file. This is followed by K data sets of the following form:</p>\n<p>The first line of a data set contains three numbers n1, n2,t with 2 ≤ n1, n2 ≤ 10. n1 and n2 are the numbers of players on Team A and Team B (notice that these need not be equal, or even close), and 1 ≤ t ≤ 1000 is the length of the sequence of “ball touches”.</p>\n<p>The second line is a sequence of t “ball touches”, separated by one empty space, as follows:</p>\n<ul>\n<li>A number i with 1 ≤ i ≤ n1 + n2 means that player i touched the ball (this may have been a serve). Assume that players 1 . . . , n1 are on Team A, and n1 + 1, . . . , n2 on team B.</li>\n<li>The characters ‘A’ or ‘B’ mean that the ball touched the ground in the court of Team A resp. Team B.</li>\n<li>The character ‘X’ means that the ball touched the ground out of bounds.</li>\n</ul>\n<p>The first “ball touch” is always a number, representing the person who served first.</p>\n<p>We also promise you that the input will never contain impossible sequences (except wrong serves). For instance, you won’t have the sequence “1 X X”, where the ball bounced twice outside when really, some team should have been serving it for the third touch.</p>",
+  "output": "<p>For each data set, first output “Data Set x:” on a line by itself, where x is its number. Then, output the score of the two teams, separated by a single white space. If at any point during the sequence, a player from the wrong team served, output “Wrong Serve” instead of the score.</p>",
+  "samples": [
+    {
+      "input": "3\n3 3 6\n1 2 5 A 4 X\n2 2 20\n1 3 4 3 1 2 1 2 3 1 2 4 A 4 2 4 1 2 X 3\n6 6 5\n10 1 2 B 7\n",
+      "output": "Data Set 1:\n0 1\nData Set 2:\n0 2\nData Set 3:\nWrong Serve\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Fall 2005: Summer on the Beach",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

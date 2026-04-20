@@ -1,0 +1,24 @@
+{
+  "id": 1262,
+  "title": "알파벳 다이아몬드",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>알파벳 다이아몬드는 정수 길이의 마름모가 여러 개 누적되는 모양이다. 각각의 마름모는 하나의 알파벳 소문자로 그리며, a로 시작해서 z로 끝난다. (가운데에서부터) 그리고, z 이후에는 다시 a로 시작한다.</p>\r\n\r\n<p>알파벳 다이아몬드는 다음과 같이 생겼다.</p>\r\n\r\n<table class=\"table table-bordered td-center td-middle\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\na</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\n.b.\r\nbab\r\n.b.</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\n..c..\r\n.cbc.\r\ncbabc\r\n.cbc.\r\n..c..</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\n...d...\r\n..dcd..\r\n.dcbcd.\r\ndcbabcd\r\n.dcbcd.\r\n..dcd..\r\n...d...</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\n....e....\r\n...ede...\r\n..edcde..\r\n.edcbcde.\r\nedcbabcde\r\n.edcbcde.\r\n..edcde..\r\n...ede...\r\n....e....</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\n.....f.....\r\n....fef....\r\n...fedef...\r\n..fedcdef..\r\n.fedcbcdef.\r\nfedcbabcdef\r\n.fedcbcdef.\r\n..fedcdef..\r\n...fedef...\r\n....fef....\r\n.....f.....</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\n......g......\r\n.....gfg.....\r\n....gfefg....\r\n...gfedefg...\r\n..gfedcdefg..\r\n.gfedcbcdefg.\r\ngfedcbabcdefg\r\n.gfedcbcdefg.\r\n..gfedcdefg..\r\n...gfedefg...\r\n....gfefg....\r\n.....gfg.....\r\n......g......</pre>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>N = 1</td>\r\n\t\t\t<td>N = 2</td>\r\n\t\t\t<td>N = 3</td>\r\n\t\t\t<td>N = 4</td>\r\n\t\t\t<td>N = 5</td>\r\n\t\t\t<td>N = 6</td>\r\n\t\t\t<td>N = 7</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p style=\"text-align: left\">동호는 이런 알파벳 다이아몬드를 타일로 만들어서, 방 바닥을 타일로 모두 채웠다. 예를 들어, N = 5인 아스키 다이아몬드를 세로 크기가 17, 가로 크기가 46인 방에 채운다면 다음과 같은 모양이 된다.</p>\r\n\r\n<pre style=\"text-align: center;\">\r\n....e........e........e........e........e.....\r\n...ede......ede......ede......ede......ede....\r\n..edcde....edcde....edcde....edcde....edcde...\r\n.edcbcde..edcbcde..edcbcde..edcbcde..edcbcde..\r\nedcbabcdeedcbabcdeedcbabcdeedcbabcdeedcbabcdee\r\n.edcbcde..edcbcde..edcbcde..edcbcde..edcbcde..\r\n..edcde....edcde....edcde....edcde....edcde...\r\n...ede......ede......ede......ede......ede....\r\n....e........e........e........e........e.....\r\n....e........e........e........e........e.....\r\n...ede......ede......ede......ede......ede....\r\n..edcde....edcde....edcde....edcde....edcde...\r\n.edcbcde..edcbcde..edcbcde..edcbcde..edcbcde..\r\nedcbabcdeedcbabcdeedcbabcdeedcbabcdeedcbabcdee\r\n.edcbcde..edcbcde..edcbcde..edcbcde..edcbcde..\r\n..edcde....edcde....edcde....edcde....edcde...\r\n...ede......ede......ede......ede......ede....</pre>\r\n\r\n<p style=\"text-align: left\">타일 하나위&nbsp;위치는 행과 열을 이용해 표현한다. 행은 위에서부터 0행, 1행 이고, 열은 왼쪽부터 0열, 1열이다.</p>\r\n\r\n<p style=\"text-align: left\">동호는 자신의 방의 어떤 부분 직사각형에 쓰여 있는 알파벳이 궁금해졌다. N이 주어지고, 동호가 알고 싶어하는 직사각형의 왼쪽 위 좌표 (R<sub>1</sub>, C<sub>1</sub>)와 오른쪽 아래 좌표 (R<sub>2</sub>, C<sub>2</sub>)가 주어질 때, 그 직사각형에 쓰여 있는 알파벳을 출력하는 프로그램을 작성하시오. 동호의 방의 크기는&nbsp;무한하다. (x, y)는 x행 y열을 의미한다.</p>\r\n",
+  "input": "<p>첫째 줄에 5개의 정수 N, R<sub>1</sub>, C<sub>1</sub>, R<sub>2</sub>, C<sub>2</sub>가 주어진다.</p>\r\n",
+  "output": "<p>(R<sub>2</sub> - R<sub>1</sub> + 1)줄에 (C<sub>2</sub> - C<sub>1</sub> + 1)개의 문자를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "5 3 18 10 46\n",
+      "output": ".edcbcde..edcbcde..edcbcde..e\nedcbabcdeedcbabcdeedcbabcdeed\n.edcbcde..edcbcde..edcbcde..e\n..edcde....edcde....edcde....\n...ede......ede......ede.....\n....e........e........e......\n....e........e........e......\n...ede......ede......ede.....\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Malaysia, Asia Regional 2008 - Kuala Lumpur, baekjoon",
+  "level": 10,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 505,
+  "submission_count": null,
+  "average_tries": 2.661400079727173
+}

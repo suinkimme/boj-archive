@@ -1,0 +1,24 @@
+{
+  "id": 26114,
+  "title": "SubsetMex",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A multiset is a collection of elements similar to a set, where elements can repeat multiple times. For example, the following is a multiset:</p>\n<p>{0, 0, 1, 2, 2, 5, 5, 5, 8}</p>\n<p>Given a multiset S defined on non-negative integers, and a target non-negative integer value n such that n does not belong to S, your goal is to insert n into S by using the following 3-step operation, repeatedly:</p>\n<ol>\n<li>Choose a (possibly empty) subset T of S. Here, T is a set of distinct numbers that appear in S.</li>\n<li>Erase elements of T from S. (Remove only one copy of each element.)</li>\n<li>Insert mex(T) into S, where mex(T) is the smallest non-negative integer that does not belong to T. The name mex stands for “minimum excluded” value.</li>\n</ol>\n<p>Your goal is to find the minimum number of operations to perform so that n becomes part of S.</p>\n<p>Since the size of S may be large, it will be given in the form of a list (f<sub>0</sub>, …, f<sub>n−1</sub>) of size n, where fi represents the number of times that the number i appears in S. (Recall that n is the integer we are trying to insert into S.)</p>",
+  "input": "<p>The first line contains a single integer t (1 ≤ t ≤ 200) — the number of test cases. Each two of the following lines describe a test case:</p>\n<ul>\n<li>The first line of each test case contains a single integer n (1 ≤ n ≤ 50), representing the integer to be inserted into S.</li>\n<li>The second line of each test case contains n integers f<sub>0</sub>, f<sub>1</sub>, …, f<sub>n−1</sub> (0 ≤ f<sub>i</sub> ≤ 10<sup>16</sup>), representing the multiset S as mentioned above.</li>\n</ul>",
+  "output": "<p>For each test case, print a single line containing the minimum number of operations needed to satisfy the condition.</p>",
+  "samples": [
+    {
+      "input": "2\n4\n0 3 0 3\n5\n4 1 0 2 0\n",
+      "output": "4\n10\n"
+    }
+  ],
+  "hint": "<p>In the first example, initially, S = {1, 1, 1, 3, 3, 3} and our goal is to have 4 in S. We can do the following:</p>\n<ol>\n<li>choose T = {} then S becomes {0, 1, 1, 1, 3, 3, 3}</li>\n<li>choose T = {0, 1, 3} then S becomes {1, 1, 2, 3, 3}</li>\n<li>choose T = {1} then S becomes {0, 1, 2, 3, 3}</li>\n<li>choose T = {0, 1, 2, 3} then S becomes {3, 4}</li>\n</ol>",
+  "source": "Olympiad, European Girls' Olympiad in Informatics, EGOI 2022, Day 1",
+  "level": 12,
+  "tags": [
+    "greedy"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 1.1470999717712402
+}

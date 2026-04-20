@@ -1,0 +1,26 @@
+{
+  "id": 25722,
+  "title": "Expression Evaluation",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Expression evaluation is a classic problem. In this problem, you only need to evaluate an expression of length less than $10^5$. It may only contain non-negative integers (possibly with leading zeros), and also operations '<code>+</code>', '<code>-</code>', and '<code>*</code>'. Formally, it satisfies the following grammar:</p>\n<pre>\n&lt;expression&gt;:= &lt;term&gt;|&lt;expression&gt;+&lt;term&gt;|&lt;expression&gt;-&lt;term&gt;\n&lt;term&gt;:= &lt;number&gt;|&lt;term&gt;*&lt;number&gt;\n&lt;number&gt;:= &lt;digit&gt;|&lt;number&gt;&lt;digit&gt;\n&lt;digit&gt;:= 0|1|2|3|4|5|6|7|8|9\n</pre>\n<p>For example, <code>013</code>, <code>0213-2132*0213</code> are valid, but <code>-2132</code> and <code>32113+-3213</code> are invalid.</p>\n<p>The result of the evaluation may be too large or negative. Output the result modulo $2^{32}$ to avoid overflow since you will use a custom $32$-bit machine to evaluate the expression.</p>\n<p>The $32$-bit machine contains $2^{10}$ units of memory, denoted as $r[0], r[1], \\ldots, r[2^{10}-1]$. Each unit is a $32$-bit unsigned integer, also working as an instruction. The machine's input is an expression described above, and the machine's output is the value of that expression modulo $2^{32}$.</p>\n<p>In each cycle, let $pc=r[0]\\bmod 2^{10}$. The machine executes the instruction $r[pc]$. Consider the expansion $r[pc]=a2^{30}+b2^{20}+c2^{10}+d$ at the beginning of cycle, where $a$, $b$, $c$, $d$ are non-negative integers less than $2^{10}$:</p>\n<ul>\n<li>If $a=0$, the machine outputs the value of $r[b]$ and stops.</li>\n<li>If $a=1$, and then:\n\t<ul>\n<li>If there are no characters in input left, set $r[0]$ to $r[d]$;</li>\n<li>Otherwise, set $r[b]$ to the ASCII code of the next character of input, and then set $r[0]$ to $r[c]$.</li>\n</ul>\n</li>\n<li>If $a=2$, set $r[b]$ to $(r[b]+r[c])\\bmod 2^{32}$, and then set $r[0]$ to $r[d]$.</li>\n<li>If $a=3$, and then:\n\t<ul>\n<li>If $r[b]=0$, set $r[0]$ to the value of $r[c]$;</li>\n<li>Otherwise, set $r[0]$ to the value of $r[d]$.</li>\n</ul>\n</li>\n</ul>\n<p>Note that if $b=0$ in some instructions, $r[0]$ may be set more than once. Its value is the value set last after the cycle.</p>\n<p>You need to set the initial value for each unit of memory so that, for any expression possible within the constraints, the machine can stop after a finite amount of cycles and output the result of the expression modulo $2^{32}$.</p>\n<p>Since there is a time limit for testing, in this problem, the machine can execute at most $10^8$ cycles.</p>",
+  "input": "<p>The only line contains a $32$-bit unsigned integer: the seed for the expression generator.</p>\n<p>You do not need to use it. It is just for the checker to generate the expressions.</p>",
+  "output": "<p>Output $2^{10}$ $32$-bit unsigned integers in the only line: the initial values of the memory units.</p>",
+  "samples": [
+    {
+      "input": "0\n",
+      "output": "0 0 ... 0 (1024 zeros)\n"
+    }
+  ],
+  "hint": "<p>The output in the example is wrong. It is given just to explain the output format.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2022, Day 6: Heltion Contest",
+  "level": 23,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "implementation"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2.5
+}

@@ -1,0 +1,22 @@
+{
+  "id": 24854,
+  "title": "Permutation Transformation",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Fedor works in the department of permutation transforming. Today Fedor should solve the following problem: he needs to transform the permutation $[p_1, p_2, \\ldots, p_n]$ of integers $1, 2, \\ldots, n$ to the permutation $[q_1, q_2, \\ldots, q_n]$ using at most $n^3$ $k$-transfer operations.</p>\n<p>Consider an array of length $n$. The $k$-transfer operation with the parameters $(a, b)$ is defined as follows: a segment of $k$ consecutive elements starting with an element at index $a$ is cut away from the array and inserted back starting with the index $b$. </p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 507px; height: 667px;\"/></p>\n<p>More formally: consider an array $[t_1, t_2, \\ldots, t_n]$ and two integers $a$ and $b$ ($1 \\le a, b \\le n - k + 1$). Let's create the temporary array $[r_1, r_2, \\ldots, r_{n - k}]$, consisting of the numbers $[t_1, t_2, \\ldots, t_{a - 1}, t_{a + k}, t_{a + k + 1}, \\ldots, t_n]$. Then the result of the $k$-transfer with parameters $(a, b)$ for an array $t$ is an array, consisting of the numbers $[r_1, r_2, \\ldots, r_{b - 1}, t_a, t_{a + 1}, \\ldots, t_{a + k - 1}, r_b, r_{b + 1}, \\ldots, r_{n - k}]$.</p>\n<p>Fedor doesn't know how to solve the task, so he asks you to help him!</p>\n<p>You are to solve the problem for $t$ test cases.</p>",
+  "input": "<p>The first line contains a single integer $t$ ($1 \\le t \\le 100$) --- the number of test cases. </p>\n<p>Each test case consists of three lines. The first line contains two integers $n$ and $k$ ($1 \\le k \\le n \\le 100$).</p>\n<p>The second line contains $n$ different integers $p_1, p_2, \\ldots, p_n$ ($1 \\le p_i \\le n$) --- the permutation $p$.</p>\n<p>The third line contains $n$ different integers $q_1, q_2, \\ldots, q_n$ ($1 \\le q_i \\le n$) --- the permutation $q$.</p>\n<p>It's guaranteed that the sum of $n$ over all test cases doesn't exceed $100$.</p>",
+  "output": "<p>Print the answer for each test case. Output your answer for a single test case in the following format.</p>\n<p>If it's impossible to obtain a permutation $q_1, q_2, \\ldots, q_n$ from a permutation $p_1, p_2, \\ldots, p_n$ using $k$-transfers, print a single line consisting of the word \"NO\". </p>\n<p>Otherwise, print \"YES\" at the first line. </p>\n<p>The second line must contain a single integer $m$ --- the number of $k$-transfers performed to obtain the permutation $q$ from the permutation $p$ ($0 \\le m \\le n^3$). Note that you don't need to minimize $m$. It's guaranteed that if the permutation $q$ can be obtained from the permutation $p$ using $k$-transfers, then there is a solution that requires at most $n^3$ operations. </p>\n<p>Each of the following $m$ lines should contain two integers --- parameters $a$ and $b$ for the corresponding $k$-transfer.</p>",
+  "samples": [
+    {
+      "input": "3\n2 1\n2 1\n2 1\n4 2\n1 2 3 4\n1 2 4 3\n3 2\n2 1 3\n1 3 2\n",
+      "output": "YES\n0\nNO\nYES\n2\n1 2\n1 2\n"
+    }
+  ],
+  "hint": "<p>In the third test case there is another way to obtain a permutation $q$ from a permutation $p$ --- a single $k$-transfer with the parameters $a = 2$, $b = 1$.</p>",
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia High School Programming Contest, Russia High School Programming Contest 2021",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

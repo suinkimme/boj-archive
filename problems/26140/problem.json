@@ -1,0 +1,33 @@
+{
+  "id": 26140,
+  "title": "Take On Meme",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The Internet can be so fickle. You work for a small ad agency, Mimi’s Mammoth Memes. Your ad campaigns are very cheap, and rely on the hope of producing the next hit viral meme. Unfortunately, the last four hundred or so memes have failed to take off, despite having been precisely engineered to appeal to every single person on Earth. You’re not sure what exactly went wrong, but you’ve decided to try a new approach: crowd sourcing!</p>\n<p>According to your scientific meme theory, all memes can be rated from $-∞$ to $∞$ on two scales: xanthochromism, and yellowishness, also known as $(x, y)$ values. Obviously (you think), the best memes are memorable for being particularly xanthochromic, yellowish, unxanthochromic, or unyellowish. You feel that the “quality” of any meme is directly measurable as its squared Euclidean distance $(x^2 + y^2)$ from the Base Meme $(0, 0)$, otherwise known as All Your Base.</p>\n<p>To produce the ultimate viral meme, you’ll be taking your company’s last few failed memes and throwing them into a tournament, decided by online voting. The tournament can be represented as a rooted tree. Input memes come in at the leaves, and at each internal node, a vote will be held among its $k$ child memes $(x_1, y_1), \\dots ,(x_k, y_k)$. After the vote, all the memes will be horrifically mangled and merged into a brand new meme, specifically calculated to emphasize the winner and de-emphasize all the losers: the resultant $x$ value will be $$\\sum_{i=1}^{k}{w_i \\cdot x_i}\\text{,}$$ where $w_i$ is $1$ if the $i$<sup>th</sup> child won, and $-1$ otherwise. The $y$ value is computed similarly. This new meme will move on to the next vote in the tournament – or, if there is no parent, it will be declared the champion and the ultimate meme!</p>\n<p>You already have the structure of the tournament planned out, including all the input memes and the internal voting nodes. What is the largest possible quality for any meme that the tournament could produce?</p>",
+  "input": "<p>The first line of input contains an integer $n$ ($1 ≤ n ≤ 10^4$), giving the total number of nodes in the tournament tree. The next $n$ lines each describe a single tree node indexed from $1$ to $n$. The line for node $i$ starts with an integer $k_i$ ($0 ≤ k_i ≤ 100$), the number of children of that node. If $k_i$ is $0$, then node $i$ is an input meme and there will be two more integers $x_i$ and $y_i$ ($-10^3 ≤ x_i , y_i ≤ 10^3$) describing it. If $k_i &gt; 0$, then $k_i$ different integers $j$ (i &lt; j ≤ n) will follow, giving the indices of the $k_i$ nodes entering this voting step.</p>\n<p>All input memes will eventually be merged into the final output meme at node $1$. The complete tree will have a height of no more than $10$.</p>",
+  "output": "<p>Output the largest possible quality for the champion meme at node $1$.</p>",
+  "samples": [
+    {
+      "input": "4\n3 2 3 4\n0 10 1\n0 3 6\n0 2 7\n",
+      "output": "169\n"
+    },
+    {
+      "input": "8\n3 4 2 5\n2 3 8\n0 -3 9\n0 -5 -7\n2 6 7\n0 1 4\n0 -3 -1\n0 1 4\n",
+      "output": "314\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2021",
+  "level": 26,
+  "tags": [
+    "dp",
+    "geometry",
+    "trees",
+    "dp_tree",
+    "divide_and_conquer",
+    "convex_hull"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 1.583299994468689
+}

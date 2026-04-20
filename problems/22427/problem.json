@@ -1,0 +1,31 @@
+{
+  "id": 22427,
+  "title": "Kuru Kuru Door",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>ACM (Automatic Cleaning Machine) 社が2011年に開発した全自動円形掃除機 ICPC (Intelligent Circular Perfect Cleaner) は， 日中に自動で動き出し，自分が通り過ぎた場所のゴミを掃除する機能を備えている． 加えて，この ICPC は，バッテリー残量が低下した場合に自動的に電源の位置まで戻る機能も備えている．</p>\n<p>この度，JAG (Japan Alumni Group) と名乗る謎の組織から， ACM 社に対し大量の ICPC の発注があった． しかし，その発注には条件が付いていた． それは，彼らが本拠地としているビルの内部にある「くるくるドア」に ICPC を対応させることである． くるくるドアは，以下に述べるように平面上の物体としてモデル化されている．</p>\n<p>くるくるドアは，原点で接続された長さ <var>R</var> の 2<var>n</var> (≥ 4) 枚のドアの組として表される． これらのドアは，角度 π/<var>n</var> おきに並んでいる． くるくるドアは手動であり，ドアのどこに触れても触れた方向( ICPC との重なりが解消される方向)へ原点中心に一斉に回転させることができるが， 平行移動させることはできない． 初期状態では，ドアのちょうど2枚が <var>y</var> 軸に平行である．</p>\n<p>また，原点を中心とする半径 <var>R</var> の円のうち，<var>y</var> 座標の絶対値が <var>R</var>sin(π/(2<var>n</var>)) 以上である部分および， <var>y</var> 軸上で <var>y</var> 座標の絶対値が <var>R</var> 以上の部分は壁になっている． これらの壁は押すことができない．</p>\n<p>平面上で ICPC は半径 <var>r</var> の円として表される． ICPC の電源は点 <var>T</var> = (<var>x<sub>t</sub></var>, <var>y<sub>t</sub></var>) にあり， ICPC はその中心座標が電源の位置に重なっている時バッテリーを充電することができる． はじめに ICPC の中心座標が点 <var>S</var> = (<var>x<sub>s</sub></var>, <var>y<sub>s</sub></var>) となる位置にあるとき， 電源の位置まで ICPC が最短経路を通って戻れるようにすることが， JAG から出された ICPC 発注の条件である． なお， ICPC がくるくるドアに対して正確な挙動を行うことを確かめるために， ICPC の初期位置と電源の位置は，くるくるドアを挟んで反対側となるように与えられる． ACM 社は，凄腕プログラマーのあなたに，くるくるドアの寸法， ICPC の中心座標 <var>S</var> と半径，電源の位置 <var>T</var> が与えられたとき，ICPCが電源の位置へ到達できるかを判定し，到達可能な場合は ICPC の中心座標が移動する最短経路の長さを求めるプログラムの作成を依頼した．</p>",
+  "input": "<p>入力は，複数のデータセットから構成され，1つの入力に含まれるデータセットの数は60個以下である． 各データセットの形式は次の通りである．</p>\n<pre>\n<var>n</var>\n<var>r</var> <var>R</var>\n<var>x<sub>s</sub></var> <var>y<sub>s</sub></var>\n<var>x<sub>t</sub></var> <var>y<sub>t</sub></var>\n</pre>\n<p><var>n</var> はくるくるドアを構成するドアの枚数の半分を表す整数であり，2 ≤ <var>n</var> ≤ 10 と仮定して良い． <var>r</var>， <var>R</var> はそれぞれ ICPC の半径，くるくるドアの一枚あたりの長さを表す整数であり，1以上10以下と仮定して良い．</p>\n<p>(<var>x<sub>s</sub></var>, <var>y<sub>s</sub></var>) は ICPC の初期位置の中心座標，(<var>x<sub>t</sub></var>, <var>y<sub>t</sub></var>) は電源の位置を表す． <var>x<sub>s</sub></var> ， <var>y<sub>s</sub></var> ， <var>x<sub>t</sub></var> ， <var>y<sub>t</sub></var> はそれぞれ整数であり，-1,000 ≤ <var>x<sub>s</sub></var> ≤ - <var>r</var> - 1， -1,000 ≤ <var>y<sub>s</sub></var> ≤ 1,000， <var>r</var> + 1 ≤ <var>x<sub>t</sub></var> ≤ 1,000， -1,000 ≤ <var>y<sub>t</sub></var> ≤ 1,000 を満たすと仮定して良い． 加えて，点 (<var>x<sub>s</sub></var>, <var>y<sub>s</sub></var>)， (<var>x<sub>t</sub></var>, <var>y<sub>t</sub></var>) はそれぞれ原点から距離 <var>R</var> + <var>r</var> + 10<sup>-6</sup> 以上離れていると仮定して良い． すなわち， ICPC と電源は初期状態でいずれもくるくるドアの外側にあり，互いにくるくるドアを挟んで反対側に位置している．</p>\n<p>また，<var>r</var> および <var>R</var> が 10<sup>-6</sup> だけ変化しても， ICPC の電源位置への到達可能性は変わらないと仮定して良い．</p>\n<p>入力の終わりは1つのゼロだけからなる行で示される．</p>\n<p>下図は後に示す Sample Input 中の最初のデータセットにおける， ICPC の初期位置 <var>S</var> ，電源位置 <var>T</var> ，くるくるドアおよび壁の配置を表している．</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 359px; height: 330px;\"/></p>",
+  "output": "<p>各データセットについて， ICPC が電源の位置に到達できる場合は，電源の位置までの移動距離の最小値を1行に出力せよ． この場合，出力の絶対誤差は 10<sup>-6</sup> 以内でなくてはならない． 到達できない場合は，-1 を1行に出力せよ．</p>",
+  "samples": [
+    {
+      "input": "3\n1 4\n-5 5\n5 -5\n10\n1 10\n-10 5\n5 -10\n5\n3 5\n-20 0\n20 0\n8\n1 9\n-14 58\n6 24\n2\n2 8\n-57 -113\n42 -31\n4\n1 4\n-4 -5\n4 5\n0\n",
+      "output": "17.5032106371\n41.3850388846\n-1\n102.0656847372\n178.1399151364\n19.5548716821\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2015",
+  "level": 26,
+  "tags": [
+    "case_work",
+    "dijkstra",
+    "floyd_warshall",
+    "geometry",
+    "graphs",
+    "implementation",
+    "line_intersection",
+    "shortest_path"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

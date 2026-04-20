@@ -1,0 +1,33 @@
+{
+  "id": 30931,
+  "title": "Nested Repetition Compression",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You have a number of strings of lowercase letters to be sent in e-mails, but some of them are so long that typing as they are would be tiresome. As you found repeated parts in them, you have decided to try out a simple compression method in which repeated sequences are enclosed in parentheses, prefixed with digits meaning the numbers of repetitions. For example, the string “<code>abababaaaaa</code>” can be represented as “<code>3(ab)5(a)</code>” or “<code>a3(ba)4(a)</code>”. The syntax of compressed representations is given below in Backus-Naur form with the start symbol $S$.</p>\n<blockquote>\n<p>&lt;$S$&gt; ::= &lt;$R$&gt; | &lt;$R$&gt; &lt;$S$&gt;</p>\n<p>&lt;$R$&gt; ::= &lt;$L$&gt; | &lt;$D$&gt; <code>(</code>&lt;$S$&gt;<code>)</code></p>\n<p>&lt;$D$&gt; ::= <code>2</code> | <code>3</code> | <code>4</code> | <code>5</code> | <code>6</code> | <code>7</code> | <code>8</code> | <code>9</code></p>\n<p>&lt;$L$&gt; ::= <code>a</code> | <code>b</code> | <code>c</code> | <code>d</code> | <code>e</code> | <code>f</code> | <code>g</code> | <code>h</code> | <code>i</code> | <code>j</code> | <code>k</code> | <code>l</code> | <code>m</code> | <code>n</code> | <code>o</code> | <code>p</code> | <code>q</code> | <code>r</code> | <code>s</code> | <code>t</code> | <code>u</code> | <code>v</code> | <code>w</code> | <code>x</code> | <code>y</code> | <code>z</code></p>\n</blockquote>\n<p>Note that numbers of repetitions are specified by a single digit, and thus at most nine, but more repetitions can be specified by nesting them. A string of thirty <code>a</code>’s can be represented as “<code>6(5(a))</code>” or “<code>3(5(2(a)))</code>”, for example.</p>\n<p>Find the shortest possible representation of the given string in this compression scheme.</p>",
+  "input": "<p>The input is a line containing a string of lowercase letters. The number of letters in the string is at least one and at most $200$.</p>",
+  "output": "<p>Output a single line containing the shortest possible representation of the input string. If there exist two or more shortest representations, any of them is acceptable.</p>",
+  "samples": [
+    {
+      "input": "abababaaaaa\n",
+      "output": "3(ab)5(a)\n"
+    },
+    {
+      "input": "abababcaaaaaabababcaaaaa\n",
+      "output": "2(3(ab)c5(a))\n"
+    },
+    {
+      "input": "abcdefg\n",
+      "output": "abcdefg\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2023 Asia Yokohama Regional",
+  "level": 17,
+  "tags": [
+    "dp",
+    "string"
+  ],
+  "accepted_user_count": 57,
+  "submission_count": null,
+  "average_tries": 1.5088000297546387
+}

@@ -1,0 +1,34 @@
+{
+  "id": 3570,
+  "title": "KINA Is Not Abbreviation",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>When introducing new terms consisting of several words, it is useful to use abbreviations. An <em>abbreviation</em> is a word that consists of the first letters of several consecutive words.</p>\n<p>An abbreviation is called <em>unambiguous</em> if the following two conditions are satisfied:</p>\n<ul>\n<li>It corresponds to exactly one sequence of words in a given text (although this sequence can appear in the text more than once);</li>\n<li>It does not appear in the text by itself.</li>\n</ul>\n<p>For example, in the text “<code>A recursive acronym KINA means \"KINA is not abbreviation\"</code>”, strings “<code>ARA</code>” and “<code>K</code>” are unambiguous abbreviations, strings “<code>A</code>” and “<code>KINA</code>” are ambiguous abbreviations, and strings “<code>RAA</code>” and “<code>KNA</code>” are not abbreviations.</p>\n<p>To introduce an abbreviation in a text, it is placed in parentheses right after the sequence of words it corresponds to. Future occurrences of this sequence of words can be replaced by the abbreviation. In the example text above, introduction of the abbreviation “<code>K</code>” produces the following text: “<code>A recursive acronym KINA (K) means \"K is not abbreviation\"</code>”.</p>\n<p>If two occurrences of a sequence of words overlap, only one of them can be replaced by the abbreviation. Words in a sequence are separated by one or more non-alphabetic characters. Comparison of words is case-insensitive. For example, “<code>i18n</code>” is an occurrence of the word sequence “<code>I n</code>”.</p>\n<p>The <em>effectiveness</em> of an abbreviation is the decrease in the number of letters after introduction of this abbreviation. Only letters are taken into account; spaces, parentheses and all other non-alphabetical characters do not count.</p>\n<p>Given a text, find an unambiguous abbreviation with the maximum effectiveness.</p>",
+  "input": "<p>The input file contains a text with at most 4 000 characters. The text contains only characters with ASCII codes 32 (space) to 126 (“<code>~</code>”), 13 (carriage return), and 10 (line feed).</p>",
+  "output": "<p>If there is no unambiguous abbreviation with positive effectiveness, then the output file should contain the single number 0.</p>\n<p>Otherwise, the first line of the output file should contain the effectiveness of the optimal abbreviation. The second line should contain the unambiguous abbreviation itself. If there are multiple unambiguous abbreviations with the maximum effectiveness, output any one of them.</p>",
+  "samples": [
+    {
+      "input": "This problem name is \"KINA is not abbreviation\".\nOnce again: KINA is not abbreviation.\n",
+      "output": "11\nNA\n"
+    },
+    {
+      "input": "To be or not to be: that is the question.\n",
+      "output": "0\n"
+    },
+    {
+      "input": "Here is the chorus of the song \"Jingle Bells\":\nJingle bells, jingle bells,\nJingle all the way;\nOh what fun it is to ride\nIn a one-horse open sleigh.\n",
+      "output": "16\nJB\n"
+    }
+  ],
+  "hint": "<p>In the first example, the optimal abbreviations are “<code>NA</code>” and “<code>INA</code>”.</p>\n<p>In the third example, the optimal abbreviations are “<code>JB</code>” and “<code>BJ</code>”.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2008",
+  "level": 20,
+  "tags": [
+    "dp",
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2
+}

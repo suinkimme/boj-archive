@@ -1,0 +1,37 @@
+{
+  "id": 16544,
+  "title": "Colorgraph",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Lora is playing an online puzzle game. She receives an undirected graph with N vertices, numbered from 1 to N. The graph is such that between every two distinct vertices there is an edge, colored either in blue, or in red. We will call the graph redconnected, if from any vertex we can reach any other vertex, using only red edges. Similarly, a graph is blue-connected if from any vertex we can reach any other vertex, using only blue edges. We now define the state of the graph as a pair of numbers (A, B), such that:</p>\n<ul>\n<li>A=1 if the graph is red-connected, and A=0 if it is not</li>\n<li>B=1 if the graph is blue-connected, and B=0 if it is not</li>\n</ul>\n<p>So for example, state (1, 0) describes a graph that is red-connected, but not blueconnected.</p>\n<p>With a single click on a given edge, Lora can change its color (from blue to red or from red to blue). The goal of the game is, given an initial graph and a desired final state, to change the initial graph to one that is in the final state, using minimum amount of clicks (see the sample test cases for more information). Your task is to help Lora by writing a program colorgraph that finds the minimum amount of clicks needed to solve the problem. </p>",
+  "input": "<p>On the first line of the standard input is the positive integer N – the amount of vertices in the graph. After that, N lines follow, each with N space-separated numbers, describing the colors of the edges. Let us denote the j-th number on the i-th of those lines by G<sub>ij</sub>. If G<sub>ij</sub>=0, then the edge between i and j is red, and if G<sub>ij</sub>=1, then the edge between i and j is blue. It is guaranteed that G<sub>ij</sub>=G<sub>ji</sub>. For i=j, the value of G<sub>ij</sub> is irrelevant, since the graph contains no loops. On the last line are two space-separated numbers – A and B, describing the desired final state of the graph.</p>",
+  "output": "<p>If it is impossible to transform the graph into one with the desired state, you must print -1 on a single line of the standard output. In all other cases, on the first line of the standard output you must print a single integer K – the minimum amount of clicks Lora needs to make in order to transform the graph into the desired state. On each of the next K lines you must print a pair of numbers – the two endpoints of the edge that Lora should click on. If there is more than one solution, print any of them. The order, in which the edges are printed, as well as the order of the two endpoints, is irrelevant.</p>",
+  "samples": [
+    {
+      "input": "4\n1 0 0 0\n0 0 1 0\n0 1 1 0\n0 0 0 0\n0 1\n",
+      "output": "2\n1 3\n4 3\n"
+    },
+    {
+      "input": "3\n0 1 1\n1 0 0\n1 0 0\n1 1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "3\n0 1 1\n1 0 0\n1 0 0\n0 1\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p>The red edges are given with solid lines, while the blue ones are given with dotted lines.</p>\n<p>In the first sample, we have the following initial graph in state (1, 0):</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 162px; height: 136px;\"/></p>\n<p>After the change of edges 1-3 and 4-3, the graph is in the desired final state (0, 1) and looks as follows:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 162px; height: 133px;\"/></p>\n<p>In the second sample case, a graph with 3 vertices and state (1, 1) does not exist.</p>\n<p>In the third sample case, the graph is already in the desired final state initially.</p>",
+  "source": "Olympiad, International Autumn Tournament in Informatics, 2017, Group A (Seniors)",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "case_work",
+    "disjoint_set",
+    "traceback",
+    "stoer_wagner"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2.1666998863220215
+}

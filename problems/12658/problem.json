@@ -1,0 +1,27 @@
+{
+  "id": 12658,
+  "title": "Watersheds (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Geologists sometimes divide an area of land into different regions based on where rainfall flows down to. These regions are called <em>drainage basins</em>.</p>\n<p>Given an elevation map (a 2-dimensional array of altitudes), label the map such that locations in the same drainage basin have the same label, subject to the following rules.</p>\n<ul>\n<li>From each cell, water flows down to at most one of its 4 neighboring cells.</li>\n<li>For each cell, if none of its 4 neighboring cells has a lower altitude than the current cell's, then the water does not flow, and the current cell is called a <em>sink</em>.</li>\n<li>Otherwise, water flows from the current cell to the neighbor with the lowest altitude.</li>\n<li>In case of a tie, water will choose the first direction with the lowest altitude from this list: North, West, East, South.</li>\n</ul>\n<p>Every cell that drains directly or indirectly to the same sink is part of the same drainage basin. Each basin is labeled by a unique lower-case letter, in such a way that, when the rows of the map are concatenated from top to bottom, the resulting string is lexicographically smallest. (In particular, the basin of the most North-Western cell is always labeled 'a'.)</p>",
+  "input": "<p>The first line of the input file will contain the number of maps, <strong>T</strong>. <strong>T</strong> maps will follow, each starting with two integers on a line -- <strong>H</strong> and <strong>W</strong> -- the height and width of the map, in cells. The next <strong>H</strong> lines will each contain a row of the map, from north to south, each containing <strong>W</strong> integers, from west to east, specifying the altitudes of the cells.</p>\n<p>Limits</p>\n<ul>\n<li><strong>T</strong> ≤ 100;</li>\n<li>1 ≤ <strong>H</strong>, <strong>W</strong> ≤ 100;</li>\n<li>0 ≤ altitudes &lt; 10,000.</li>\n<li>There will be at most 26 basins.</li>\n</ul>",
+  "output": "<p>For each test case, output 1+<strong>H</strong> lines. The first line must be of the form</p>\n<pre>\nCase #<strong>X</strong>:</pre>\n<p>where <strong>X</strong> is the test case number, starting from 1. The next <strong>H</strong> lines must list the basin labels for each of the cells, in the same order as they appear in the input.</p>",
+  "samples": [
+    {
+      "input": "5\n3 3\n9 6 3\n5 9 6\n3 5 9\n1 10\n0 1 2 3 4 5 6 7 8 7\n2 3\n7 6 7\n7 6 7\n5 5\n1 2 3 4 5\n2 9 3 9 6\n3 3 0 8 7\n4 9 8 9 8\n5 6 7 8 9\n2 13\n8 8 8 8 8 8 8 8 8 8 8 8 8\n8 8 8 8 8 8 8 8 8 8 8 8 8\n",
+      "output": "Case #1:\na b b\na a b\na a a\nCase #2:\na a a a a a a a a b\nCase #3:\na a a\nb b b\nCase #4:\na a a a a\na a b b a\na b b b a\na b b b a\na a a a a\nCase #5:\na b c d e f g h i j k l m\nn o p q r s t u v w x y z\n"
+    }
+  ],
+  "hint": "<p>In Case #1, the upper-right and lower-left corners are sinks. Water from the diagonal flows towards the lower-left because of the lower altitude (5 versus 6).</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2009, Qualification Round",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "dfs"
+  ],
+  "accepted_user_count": 66,
+  "submission_count": null,
+  "average_tries": 1.3788000345230103
+}

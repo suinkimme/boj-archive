@@ -1,0 +1,24 @@
+{
+  "id": 22424,
+  "title": "Alternate Escape",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>AliceとBobはボードゲームで遊んでいる． このボードゲームは， <var>H</var> 行 <var>W</var> 列のマス目が書かれた盤面と1つのコマを使って遊ぶ． このゲームでは，盤面の左上のマスを1行1列目として，下方向に行を，右方向に列を数える．</p>\n<p>マス同士が隣接する辺と，マスが盤面の外側と接する辺には壁を置けるようになっていて，ゲームの開始時にはそれぞれの辺について壁の有無が指定されている．また，ゲームの開始時には，コマが盤面のマスのいずれか1箇所に置かれている．</p>\n<p>AliceとBobは交互に手番をこなすことでゲームを進める． ゲームはAliceの手番から始まる． Aliceの目的は，コマを盤面の外まで動かして，迷路から脱出させることである． Aliceが1手でできる行動は，コマを今ある位置のマスから，上下左右に隣接するマスのうち，間の辺に壁がない方向のいずれかに移動させることである． コマの今あるマスが盤面の外側に接していて，間の辺に壁がない場合，そこからコマを脱出させることができる．</p>\n<p>一方，Bobの目的は，コマの脱出を妨害することである． Bobの手番では，壁の有無を反転させるか，何もせずに手番を終えるかを選ぶことができる． 壁の有無を反転させることを選んだ場合，盤面のすべてのマスの辺について，壁の有無が反転する．</p>\n<p>盤面の初期状態と，コマの初期位置が与えられるので，AliceとBobの両者が最適な行動をとったときに，Aliceがコマを盤面から脱出させられるか判定せよ． ただし，Aliceの手番においてコマが4方向とも壁で囲まれてしまった場合は脱出できないとみなす．</p>",
+  "input": "<p>入力は40個以下のデータセットからなる． それぞれのデータセットは次の形式で与えられる．</p>\n<pre>\n<var>H</var> <var>W</var> <var>R</var> <var>C</var>\n<var> Horz</var><sub>1,1</sub> <var>Horz</var><sub>1,2</sub> ... <var>Horz</var><sub>1,<var>W</var></sub>\n<var>Vert</var><sub>1,1</sub> <var>Vert</var><sub>1,2</sub> ... <var>Vert</var><sub>1,<var>W</var>+1</sub>\n...\n<var>Vert</var><sub><var>H</var>,1</sub> <var>Vert</var><sub><var>H</var>,2</sub> ... <var>Vert</var><sub><var>H</var>,<var>W</var>+1</sub>\n<var><span style=\"font-style: normal;\"> </span>Horz</var><sub><var>H</var>+1,1</sub> <var>Horz</var><sub><var>H</var>+1,2</sub> ... <var>Horz</var><sub><var>H</var>+1,<var>W</var></sub>\n</pre>\n<p>1行目には4つの整数 <var>H</var>, <var>W</var> (1 ≤ <var>H</var>, <var>W</var> ≤ 500), <var>R</var>, <var>C</var> (1 ≤ <var>R</var> ≤ <var>H</var>, 1 ≤ <var>C</var> ≤ <var>W</var>) が与えられる． これらは盤面が <var>H</var> 行 <var>W</var> 列のマス目からなり，コマの初期位置が <var>R</var> 行 <var>C</var> 列目であることを表す．</p>\n<p>続く 2<var>H</var> + 1 行には盤面の初期状態が与えられる．</p>\n<p>2<var>i</var> 行目 (1 ≤ <var>i</var> ≤ <var>H</var> + 1) は，<var>W</var>個の整数 <var>Horz</var><sub><var>i</var>,1</sub>, <var>Horz</var><sub><var>i</var>,2</sub>, ..., <var>Horz</var><sub><var>i</var>,<var>W</var></sub>を含む． <var>Horz</var><sub><var>i</var>,<var>j</var></sub>は，<var>i</var> 行 <var>j</var> 列目のマスの上側の辺に壁が有るとき1で，無いとき0である． ただし，<var>Horz</var><sub><var>H</var>+1,<var>j</var></sub>は， <var>H</var> 行 <var>j</var> 列目のマスの下側の辺における壁の有無を表す．</p>\n<p>2<var>i</var> + 1 行目 (1 ≤ <var>i</var> ≤ <var>H</var>) は，<var>W</var> + 1 個の整数 <var>Vert</var><sub><var>i</var>,1</sub>, <var>Vert</var><sub><var>i</var>,2</sub>, ..., <var>Vert</var><sub><var>i</var>,<var>W</var>+1</sub>を含む． <var>Vert</var><sub><var>i</var>,<var>j</var></sub>は， <var>i</var> 行 <var>j</var> 列目のマスの左側の辺に壁が有るとき1で，無いとき0である． ただし，<var>Vert</var><sub><var>i</var>,<var>W</var>+1</sub>は， <var>i</var> 行 <var>W</var> 列目のマスの右側の辺における壁の有無を表す．</p>\n<p>入力の終わりは，4つのゼロからなる1行で示される．</p>",
+  "output": "<p>それぞれのデータセットについて，Aliceがコマを盤面から脱出させられる場合は\"<samp>Yes</samp>\"，できない場合は\"<samp>No</samp>\"と1行に出力せよ．</p>",
+  "samples": [
+    {
+      "input": "3 3 2 2\n 1 1 1\n0 0 0 0\n 1 1 1\n0 0 0 0\n 1 1 1\n0 0 0 0\n 1 1 1\n3 3 2 2\n 1 0 1\n1 0 1 1\n 1 0 0\n0 0 0 0\n 0 0 1\n1 1 0 1\n 1 0 1\n1 3 1 1\n 1 1 1\n1 0 0 1\n 1 0 1\n2 2 1 1\n 1 0\n1 0 0\n 0 0\n0 0 0\n 0 0\n0 0 0 0\n",
+      "output": "Yes\nNo\nYes\nNo\n"
+    }
+  ],
+  "hint": "<p>1つ目のデータセットではAliceは次のように動くことでコマを脱出させられる。</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 236px; height: 246px;\"/></p>\n<ol>\n<li>初期状態</li>\n<li>Aliceがコマを左に動かす</li>\n<li>Bobは脱出を阻止するために壁を反転させる</li>\n<li>Aliceがコマを上に動かす</li>\n</ol>\n<p>Bobが次の手番で壁の有無を反転させてもさせなくても、 Aliceは次の手番でコマを脱出させられる。</p>",
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2015",
+  "level": 0,
+  "tags": [
+    "game_theory"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

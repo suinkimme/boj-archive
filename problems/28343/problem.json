@@ -1,0 +1,28 @@
+{
+  "id": 28343,
+  "title": "Measuring Volume of Land",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Recently, Frograms Inc. acquired a calm and beautiful uninhabited island in the Pacific Ocean to set up their new headquarter office. Before embarking on the construction, we want to come up with a good disaster plan. Luckily, the new office is architected to resist catastrophes such as hurricane, earthquake, and nuclear plant meltdowns. But there is one thing we haven’t considered yet; the global warming.</p>\n<p>Experts agree that in the future, as the average temperature of Earth rises, the ice sheets in Antartica and Greenland will melt and the global sea level will rise up to $6$ meters. We want to avoid the situation in which our office gets underwater.</p>\n<p>Therefore, you are given with the following task: given a <strong>heightmap</strong> of the island, calculate the volume of the land mass above sea level after the sea level rises by $L$ meters, approximated from using <strong>triangulated terrains</strong> from a <strong>heightmap</strong>. If you don’t know what <strong>heightmap</strong>s or <strong>triangulated terrains</strong> are, don’t worry and read on.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 344px; height: 365px;\"/></p>\n<p>To measure the terrain landscape, a commercial satellite will scan a rectangular area of $R - $1 meters by $C - 1$ meters. (You can be sure that this area will completely enclose the island.) The area is then divided into an uniform grid with $R \\times C$ grid points, and the satellite will measure the elevation above sea level (in centimeters) at every grid point. The above figure gives such an example; the elevation will be measured for every red point in the grid. The resulting 2D array is called a <strong>heightmap</strong>, and this will be given as your input.</p>\n<p>Given a heightmap, there are multiple ways to approximate the actual shape of the terrain. One obvious way is to assume that each point in a heightmap correspond to a $1 \\times 1$ meter square with the given elevation (if you know what it is, think Minecraft) — but those approximations are too crude.</p>\n<p>Another way that is still simple, but gives a better precision is approximating the surface as a set of triangles in the 3D space. We can do it as follows: let’s take all the squares in the grid, and cut them diagonally to make two congruent triangles. For any square with four corners at $(r, c)$, $(r + 1, c)$, $(r, c+ 1)$ and $(r + 1, c + 1)$, we cut them through the line passing $(r + 1, c)$ and $(r, c + 1)$. See below for an example.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 344px; height: 365px;\"/></p>\n<p>After that, we can shift each grid point in the 3D space vertically to match its measured height. Now, each triangle connects three points in the 3D space. This is how we approximate the shape of the terrain.</p>",
+  "input": "<p>The input consists of $T$ test cases. The number of test cases $T$ is given in the first line of the input.</p>\n<p>The first line of each test case will contain three integers $R$, $C$ ($3 ≤ R, C ≤ 100$) and $L$ ($0 ≤ L ≤ 2^{16} - 1$). The following $R$ lines will contain the heightmap. Each of those lines will contain $C$ nonnegative integers $H_{r,c}$ ($0 ≤ H_{r,c} ≤ 2^{16} - 1$), representing the elevation of the point above sea level, in centimeters.</p>\n<p>Since the island is on the sea, the measurements at the border of the heightmap are always zero.</p>",
+  "output": "<p>Print exactly one line for each test case. The line should contain the volume of the land in unit of cubic meters(m<sup>3</sup>), assuming the sea level has risen by $L$ meters. Your result should be accurate to within a relative or absolute error of $10^{-8}$.</p>",
+  "samples": [
+    {
+      "input": "2\n3 3 0\n0 0 0\n0 100 0\n0 0 0\n4 5 50\n0 0 0 0 0\n0 100 50 50 0\n0 50 100 50 0\n0 0 0 0 0\n",
+      "output": "1.00000000000\n0.58333333333\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2012, beingryu",
+  "level": 21,
+  "tags": [
+    "math",
+    "implementation",
+    "geometry",
+    "calculus",
+    "geometry_3d"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3.272700071334839
+}

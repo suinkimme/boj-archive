@@ -1,0 +1,35 @@
+{
+  "id": 15334,
+  "title": "Pizza Delivery",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Alyssa is a college student, living in New Tsukuba City. All the streets in the city are oneway. A new social experiment starting tomorrow is on alternative traffic regulation reversing the one-way directions of street sections. Reversals will be on one single street section between two adjacent intersections for each day; the directions of all the other sections will not change, and the reversal will be canceled on the next day.</p>\n<p>Alyssa orders a piece of pizza everyday from the same pizzeria. The pizza is delivered along the shortest route from the intersection with the pizzeria to the intersection with Alyssa’s house.</p>\n<p>Altering the traffic regulation may change the shortest route. Please tell Alyssa how the social experiment will affect the pizza delivery route.</p>",
+  "input": "<p>The input consists of a single test case in the following format.</p>\n<pre>\nn m\na<sub>1</sub> b<sub>1</sub> c<sub>1</sub>\n.\n.\n.\na<sub>m</sub> b<sub>m</sub> c<sub>m</sub></pre>\n<p>The first line contains two integers, n, the number of intersections, and m, the number of street sections in New Tsukuba City (2 ≤ n ≤ 100 000, 1 ≤ m ≤ 100 000). The intersections are numbered 1 through n and the street sections are numbered 1 through m.</p>\n<p>he following m lines contain the information about the street sections, each with three integers a<sub>i</sub>, b<sub>i</sub>, and c<sub>i</sub> (1 ≤ a<sub>i</sub> ≤ n, 1 ≤ b<sub>i</sub> ≤ n, a<sub>i</sub> ≠ b<sub>i</sub>, 1 ≤ c<sub>i</sub> ≤ 100 000). They mean that the street section numbered i connects two intersections with the one-way direction from a<sub>i</sub> to b<sub>i</sub>, which will be reversed on the i-th day. The street section has the length of c<sub>i</sub>. Note that there may be more than one street section connecting the same pair of intersections.</p>\n<p>The pizzeria is on the intersection 1 and Alyssa’s house is on the intersection 2. It is guaranteed that at least one route exists from the pizzeria to Alyssa’s before the social experiment starts.</p>",
+  "output": "<p>The output should contain m lines. The i-th line should be</p>\n<ul>\n<li><code>HAPPY</code> if the shortest route on the i-th day will become shorter,</li>\n<li><code>SOSO</code> if the length of the shortest route on the i-th day will not change, and</li>\n<li><code>SAD</code> if the shortest route on the i-th day will be longer or if there will be no route from the pizzeria to Alyssa’s house.</li>\n</ul>\n<p>Alyssa doesn’t mind whether the delivery bike can go back to the pizzeria or not.</p>",
+  "samples": [
+    {
+      "input": "4 5\n1 3 5\n3 4 6\n4 2 7\n2 1 18\n2 3 12\n",
+      "output": "SAD\nSAD\nSAD\nSOSO\nHAPPY\n"
+    },
+    {
+      "input": "7 5\n1 3 2\n1 6 3\n4 2 4\n6 2 5\n7 5 6\n",
+      "output": "SOSO\nSAD\nSOSO\nSAD\nSOSO\n"
+    },
+    {
+      "input": "10 14\n1 7 9\n1 8 3\n2 8 4\n2 6 11\n3 7 8\n3 4 4\n3 2 1\n3 2 7\n4 8 4\n5 6 11\n5 8 12\n6 10 6\n7 10 8\n8 3 6\n",
+      "output": "SOSO\nSAD\nHAPPY\nSOSO\nSOSO\nSOSO\nSAD\nSOSO\nSOSO\nSOSO\nSOSO\nSOSO\nSOSO\nSAD\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ACM-ICPC Asia Tsukuba Regional Contest 2017",
+  "level": 21,
+  "tags": [
+    "articulation",
+    "dijkstra",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 40,
+  "submission_count": null,
+  "average_tries": 1.899999976158142
+}

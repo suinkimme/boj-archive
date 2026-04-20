@@ -1,0 +1,35 @@
+{
+  "id": 30474,
+  "title": "호반우가 학교에 지각한 이유 7",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>마왕의 정체는 <a href=\"/problem/25973\">작년에 호반우가 키우던 애완용 트리</a>였다. 트리는 여전히 어지러움을 느끼며 루트를 계속 바꾸고 있다. 이를 본 호반우는 트리의 루트를 통해서 신성한 물인 성수를 흘려보내 트리를 정화하려고 한다.</p>\n<p>트리는 $N$개의 노드와 $N-1$개의 간선으로 이루어져 있으며 각 노드는 $1$번부터 $N$번까지의 번호가 정해져 있다. $1 ≤ i ≤ N$인 $i$에 대해 $i$번 노드는 양의 정수 $a_i$만큼 내부에 성수를 저장할 수 있는 공간을 가진다.</p>\n<p>어떤 노드 $V$에 성수가 흘러 들어올 때 아래의 규칙을 따른다.</p>\n<ol>\n<li>$V$와 연결된 자식 노드로만 성수를 흘려보낼 수 있다.</li>\n<li>자식 노드가 없거나 모든 자식 노드의 내부가 성수로 가득 찼다면 $V$ 내부의 공간이 성수로 차기 시작한다.</li>\n<li>$V$ 내부 공간의 크기가 $t$라면 공간을 가득 채우는데 성수가 $t$만큼 필요하다.</li>\n<li>항상 $V$와 연결된 성수로 가득 차지 않은 자식 노드 중 <strong>번호가 가장 큰 노드와 가장 작은 노드에 동일한 양의 성수를 동시에 흘려보낸다</strong>.</li>\n<li>규칙 4에서 번호가 가장 큰 노드와 가장 작은 노드가 같을 경우 해당 노드에만 성수를 흘려보낸다.</li>\n<li>흘려보내야할 노드의 번호는 규칙 4를 기반으로 계속 유동적으로 변한다.</li>\n<li>성수는 정말 빠르게 흘러가기 때문에 물이 흘러가는 시간은 무시해도 된다. 다시 말해 성수는 루트로 흘려보내자마자 바로 성수가 채워져야 할 공간들에 도착한다.</li>\n</ol>\n<p>트리는 $M$번 노드의 공간이 성수로 가득 차면 정화되며 정화된 이후로는 더 이상 성수를 흘려보낼 수 없다고 한다.</p>\n<p>트리의 루트가 계속 변해 어지러워하는 호반우에게 각 노드가 루트일 때 트리를 정화하기 위해 필요한 성수의 양을 알려주자!</p>",
+  "input": "<p>첫 번째 줄에 트리의 노드 개수 $N$과 성수로 가득 차야 할 노드 번호 $M$이 공백을 두고 주어진다. $(1 ≤ M ≤ N ≤ 300\\,000)$</p>\n<p>두 번째 줄에 $N$개의 양의 정수 $a_{1},\\,\\,a_{2},\\,\\,a_{3},\\,\\cdots,\\,a_{N}$이 공백을 두고 주어진다. $(1 ≤ a_{i} ≤ 10^{9})$</p>\n<p>$a_{i}$는 $i$번 노드가 내부에 성수를 저장할 수 있는 공간의 크기이다.</p>\n<p>세 번째 줄부터 $N-1$개의 줄에 걸쳐 트리의 각 간선이 연결하는 두 정점의 번호가 공백을 두고 주어진다.</p>",
+  "output": "<p>$N$개의 줄에 걸쳐 답을 출력한다. $i$번째 줄에는 $i$번 노드가 루트일 때 트리가 정화되기 위해 루트로 흘려보낼 성수의 양을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 2\n5 8 3 9 12\n1 2\n2 3\n4 2\n1 5\n",
+      "output": "32\n37\n34\n28\n20\n"
+    },
+    {
+      "input": "6 3\n2 7 4 3 10 12\n1 2\n3 2\n4 2\n2 5\n6 5\n",
+      "output": "8\n12\n38\n12\n18\n9\n"
+    },
+    {
+      "input": "9 3\n12 71 54 83 59 62 10 67 5\n3 1\n2 1\n1 4\n5 4\n3 6\n6 7\n8 6\n6 9\n",
+      "output": "411\n340\n423\n328\n269\n361\n351\n294\n356\n"
+    }
+  ],
+  "hint": "<p>입출력의 양이 많으므로, 빠른 입출력을 사용하는 것을 권장합니다. 대표적인 언어에 따른 빠른 입출력은 아래를 참고해 주세요.</p>\n<ul>\n<li>C++: <span style=\"color:#e74c3c;\"><code>cin</code></span>, <span style=\"color:#e74c3c;\"><code>cout</code></span>을 사용하는 경우 입출력 전에 <span style=\"color:#e74c3c;\"><code>cin.tie(nullptr); ios::sync_with_stdio(false);</code></span>를 한 번 적용해야 합니다. 줄 바꿈할 때는 <span style=\"color:#e74c3c;\"><code>endl</code></span> 대신 <span style=\"color:#e74c3c;\"><code>‘\\n’</code></span>을 사용해야 합니다.</li>\n<li>Java: <span style=\"color:#e74c3c;\"><code>BufferedReader</code></span>와 <span style=\"color:#e74c3c;\"><code>BufferedWriter</code></span>를 사용해야 합니다.</li>\n<li>Python3, PyPy3: <span style=\"color:#e74c3c;\"><code>input()</code></span> 대신 <span style=\"color:#e74c3c;\"><code>sys.stdin.readline().rstrip()</code></span>을 사용해야 합니다.</li>\n</ul>",
+  "source": "University, 경북대학교, 2023 Goricon, hamuim, exqt, hyperbolic, leo020630, utilforever",
+  "level": 19,
+  "tags": [
+    "dp",
+    "trees",
+    "dp_tree",
+    "rerooting"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.5499999523162842
+}

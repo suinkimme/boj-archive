@@ -1,0 +1,22 @@
+{
+  "id": 4290,
+  "title": "Structural Equivalence",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In programming language design circles, there has been much debate about the merits of \"structural equivalence\" vs. \"name equivalence\" for type matching. Pascal purports to have \"name equivalence\", but it doesn't; C purports to have structural equivalence, but it doesn't. Algol 68, the <em>Latin</em> of programming languages, has pure structural equivalence.</p>\n<p>A simplified syntax for an Algol 68 type definition is as follows:</p>\n<pre>\n   <em>type_def</em> -&gt; type <em>T</em> = <em>type_expr</em>\n   <em>type_expr</em> -&gt; <em>T</em> | int | real | char | struct ( <em>field_defs</em> )\n   <em>field_defs</em> -&gt; T | <em>field_defs</em> T\n</pre>\n<p>In this syntax, <em>T</em> is a programmer-defined type name (in this problem, for simplicity, a single upper case letter). Plain text symbols appear literally in the input, and zero or more spaces may appear where there are spaces in the syntax.</p>\n<p>Algol 68 type equivalence say that two types are equivalent if they are the same primitive type or they are both structures containing equivalent types in the same order.</p>",
+  "input": "<p>Input consists of several test cases. Each test case is a sequence of Algol 68 definitions, as described above, one per line. A line containing \"-\" separates test cases. A line containing \"--\" follows the last test case. </p>",
+  "output": "<p>The output for each case will consist of several lines; each line should contain a list of type names, all of which represent equivalent types. Each type name should appear on exactly one line of output, and the number of output lines should be minimized. The names in each list should be in alphabetical order; the lines of output should also be in alphabetical order. Output an empty line between test cases.</p>",
+  "samples": [
+    {
+      "input": "type A = int\ntype B = A\ntype C = int\ntype X = struct(A B)\ntype Y = struct(B A)\ntype Z = struct(A Z)\ntype S = struct(A S)\ntype W = struct(B R)\ntype R = struct(C W)\n--\n",
+      "output": "A B C\nR S W Z\nX Y\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Waterloo's local Programming Contests, 17 September, 2005",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2.5
+}

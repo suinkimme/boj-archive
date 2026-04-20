@@ -1,0 +1,30 @@
+{
+  "id": 31333,
+  "title": "Composition of Polynomials",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are given polynomials $f(x)$, $g(x)$, $h(x)$ over field $\\mathbb{Z}/2\\mathbb{Z}$.</p>\n<p>Find the polynomial $f(g(x)) \\bmod h(x)$.</p>",
+  "input": "<p>The first three lines of input contain polynomials $f$, $g$ and $h$, one per line. Each polynomial $p$ is descibed as $n$ $p_0$ $p_1$ $p_2$ $\\dots$ $p_n$ ($1 \\le n \\le 4000$, $p_i \\in \\{0, 1\\}$ for all $i$, and $p_n = 1$). The polynomial $p(x)$ is then equal to $p_0 + p_1 x + p_2 x^2 + \\dots + p_n x^n$.</p>",
+  "output": "<p>Print the resulting polynomial in the same format.</p>\n<p>If the answer is the null polynomial, print it as \"<code>0 0</code>\".</p>",
+  "samples": [
+    {
+      "input": "5 0 1 0 1 0 1\n2 1 1 1\n4 0 1 1 0 1\n",
+      "output": "1 1 1\n"
+    },
+    {
+      "input": "2 1 1 1\n3 0 0 1 1\n4 1 0 1 0 1\n",
+      "output": "3 1 0 0 1\n"
+    }
+  ],
+  "hint": "<p>Let us recall some definitions.</p>\n<p>The field $\\mathbb{Z}/2\\mathbb{Z}$ is a set of two elements $0$ and $1$ where results of addition, subtraction, multiplication and division are remainders modulo $2$ of the corresponding results for ordinary integers.</p>\n<p>A polynomial $f(x)$ over this field is an expression of the form $f_n \\cdot x^n + f_{n - 1} \\cdot x^{n - 1} + \\ldots + f_1 x + f_0$, where coefficients $f_n$, $\\ldots$, $f_0$ are integers from $\\mathbb{Z}/2\\mathbb{Z}$, and the variable $x$ can hold values from $\\mathbb{Z}/2\\mathbb{Z}$ too. The maximum integer $n$ such that $f_n \\ne 0$ is called the degree of the polynomial $p(x)$.</p>\n<p>Polynomials $a(x) = \\sum \\limits _k a_k x^k$ and $b(x) = \\sum \\limits _k b_k x^k$ are equal if $a_k$ и $b_k$ are equal for all $k$.</p>\n<p>Addition and subtraction of polynomials are performed component-wise: $a(x) \\pm b(x) = \\sum \\limits _k (a_k \\pm b_k) \\cdot x^k$.</p>\n<p>The product of polynomials $a(x)$ and $b(x)$ is $c(x) = \\sum \\limits _k c_k x^k$ where $c_s = \\sum \\limits _{t = 0} ^{s} (a_t \\cdot b_{s - t})$.</p>\n<p>Polynomials can be divided by each other. For a non-null polynomial $b(x)$, we say that $a(x) / b(x) = q(x)$ and $a(x) \\bmod b(x) = r(x)$ if $q(x) \\cdot b(x) + r(x) = a(x)$ and the degree of $r(x)$ is strictly less than the degree of $b(x)$. It can be shown that $q(x)$ and $r(x)$ are uniquely defined.</p>\n<p>Composition $a(b(x))$ is the polynomial $\\sum \\limits _k a_k (b(x))^k$ where the power of a polynomial is defined via multiplication: $(b(x))^0 = 1$, $(b(x))^1 = b(x)$, $(b(x))^p = b(x) \\cdot (b(x))^{p - 1}$ for $p &gt; 1$. To find the coefficients, expand the expression and sum the coefficients for the same powers of $x$.</p>",
+  "source": "Contest, Open Cup, 2014/2015 Season, Stage 5: Grand Prix of Peterhof",
+  "level": 23,
+  "tags": [
+    "fft",
+    "math",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 7
+}

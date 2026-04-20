@@ -1,0 +1,33 @@
+{
+  "id": 15693,
+  "title": "Getting a Jump on Crime",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Your friend Robin is a superhero. When you first found out about this, you figured “everybody needs a hobby, and this seems more exciting than stamp collecting,” but now you are really thankful that somebody is doing something about the crime in your hometown.</p>\n<p>Every night, Robin patrols the city by jumping from roof to roof and watching what goes on below. Naturally, superheroes need to respond to crises immediately, so Robin asked you for help in figuring out how to get around your hometown quickly.</p>\n<p>Your hometown is built on a square grid, where each block is w × w meters. Each block is filled by a single building. The buildings may have different heights (see Figure E.1). To get from one building to another (not necessarily adjacent) building, Robin makes a single jump from the center of the roof of the first building to the center of the roof of the second building. Robin cannot change direction while in the air, but can choose the angle at which to lift off.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 575px; height: 237px;\"/></p>\n<p style=\"text-align: center;\">Figure E.1: Cross-section of buildings corresponding to the first sample input. Buildings are shown in black, and the jump from the roof at (1, 1) to the roof at (4, 1) is shown with a green line.</p>\n<p>Of course, Robin only wants to perform jumps without colliding with any buildings. Such collisions do little damage to a superhero, but building owners tend to get irritated when someone crashes through their windows. You explain the physics to Robin: “All your jumps are done with the same initial velocity v, which has a horizontal component v<sub>d</sub> towards the destination and vertical component v<sub>h</sub> upwards, so v<sub>d</sub><sup>2</sup> + v<sub>h</sub><sup>2</sup> = v<sup>2</sup> . As you travel, your horizontal velocity stays constant (v<sub>d</sub>(t) = v<sub>d</sub>), but your vertical velocity is affected by gravity (v<sub>h</sub>(t) = v<sub>h</sub> − t · g), where g = 9.80665 m/s<sup>2</sup> in your hometown. Naturally, your cape allows you to ignore the effects of air resistance. This allows you to determine your flight path and ...” at which point you notice that Robin has nodded off – less math, more super-heroing!</p>\n<p>So it falls to you: given a layout of the city and the location of Robin’s secret hideout, you need to determine which building roofs Robin can reach, and the minimum number of jumps it takes to get to each roof.</p>\n<p>Note that if Robin’s jump passes over the corner of a building (where four buildings meet), then the jump needs to be higher than all four adjacent buildings.</p>\n<p> </p>",
+  "input": "<p>The input starts with a line containing six integers d<sub>x</sub>, d<sub>y</sub>, w, v, ℓ<sub>x</sub>, ℓ<sub>y</sub>. These represent the size d<sub>x</sub> × d<sub>y</sub> of the city grid (1 ≤ d<sub>x</sub>, d<sub>y</sub> ≤ 20) in blocks, the width of each building (1 ≤ w ≤ 10<sup>3</sup>) in meters, Robin’s takeoff velocity (1 ≤ v ≤ 10<sup>3</sup>) in meters per second, and the coordinates (ℓ<sub>x</sub>, ℓ<sub>y</sub>) of Robin’s secret hideout (1 ≤ ℓ<sub>x</sub> ≤ d<sub>x</sub>, 1 ≤ ℓ<sub>y</sub> ≤ d<sub>y</sub>).</p>\n<p>The first line is followed by a description of the heights of the buildings in the city grid. The description consists of d<sub>y</sub> lines, each containing d<sub>x</sub> non-negative integers. The j<sup>th</sup> line contains the heights for buildings (1, j),(2, j), . . . ,(d<sub>x</sub>, j). All heights are given in meters and are at most 10<sup>3</sup>.</p>",
+  "output": "<p>Display the minimum number of jumps Robin needs to get from the secret hideout to the roof of each building. If there is no way to reach a building’s roof, display X instead of the number of jumps. Display the buildings in the same order as given in the input file, split into d<sub>y</sub> lines, each containing d<sub>x</sub> values.</p>\n<p>You may assume that changing the height of any building by up to 10<sup>−6</sup> would not change the answers.</p>",
+  "samples": [
+    {
+      "input": "4 1 100 55 1 1\n10 40 60 10\n",
+      "output": "0 1 1 1\n"
+    },
+    {
+      "input": "4 4 100 55 1 1\n0 10 20 30\n10 20 30 40\n20 30 200 50\n30 40 50 60\n",
+      "output": "0 1 1 2\n1 1 1 2\n1 1 X 2\n2 2 2 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2018",
+  "level": 23,
+  "tags": [
+    "graphs",
+    "bruteforcing",
+    "graph_traversal",
+    "geometry",
+    "bfs",
+    "physics"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 2.294100046157837
+}

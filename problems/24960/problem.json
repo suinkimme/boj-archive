@@ -1,0 +1,34 @@
+{
+  "id": 24960,
+  "title": "Wireless Communication Network",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>We are setting up a wireless communication network in a mountain range. Communication stations are to be located on the summits. The summits are on a straight line and have different altitudes.</p>\n<p>To minimize the cost, our communication network should have a tree structure, which is a connected graph with the least number of edges. The structure of the network, that is, which stations to communicate with which other stations, should be decided in advance.</p>\n<p>We construct the communication network as follows.</p>\n<ol>\n<li>Initially, each station forms a tree consisting of only that station.</li>\n<li>In each step, we merge two trees that are adjacent by making a link between two stations in different trees. Two trees are called <em>adjacent</em> when all the summits in between a summit in one tree and a summit in the other belong to one of these two trees. Stations to link are those on the highest summits of the two trees; they are uniquely determined because the altitudes of the summits are distinct.</li>\n<li>Repeat the step 2 until all the stations are connected, directly or indirectly.</li>\n</ol>\n<p>Figure D.1 depicts an example of the tree formation for Sample 1.</p>\n<p>When a station detects an emergency event, an alert message should be broadcast to all the stations. On receiving a message, each station relays the message to all the stations with direct links, except for one from which it has come. The diameter of the network, that is, how many hops are sufficient to distribute messages initiated at any stations, depends on the choice of the two trees in the step 2 above.</p>\n<p>To estimate the worst case delay of broadcast, we want to find the largest diameter of the network possibly constructed by the above procedure.</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"1.png\" style=\"width: 311px; height: 100px;\"/></td>\n<td>Obtained after some repetitions of step 2 with a certain series of choices. There are three trees, $T_1$, $T_2$, and $T_3$. Here, the station h forms the tree $T_3$ consisting of only the station $h$.</td>\n</tr>\n<tr>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 311px; height: 101px;\"/></td>\n<td>Obtained by linking stations $g$ and $h$ in step 2. Trees $T_2$ and $T_3$, with top summits $g$ and $h$ respectively, are adjacent.</td>\n</tr>\n<tr>\n<td><img alt=\"\" src=\"3.png\" style=\"width: 311px; height: 100px;\"/></td>\n<td>Obtained by linking stations $b$ and $h$ in the next step 2, merging two adjacent trees. Now all the stations form a single tree.</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure D.1. The tree formation for Sample 1</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<p>$\\begin{align*}&amp; n \\\\ &amp; h_1 \\\\ &amp; \\vdots \\\\ &amp; h_n \\end{align*}$</p>\n<p>Here, $n$ is the number of communication stations ($3 ≤ n ≤ 10^6$), and $h_i$ is an integer representing the altitude of the $i$-th station ($1 ≤ h_i ≤ n$). The altitudes of the stations are distinct, that is, $h_i \\ne h_j$ if $i \\ne j$.</p>",
+  "output": "<p>Output in a line a single integer representing the largest possible diameter of the tree.</p>",
+  "samples": [
+    {
+      "input": "8\n1\n8\n2\n3\n5\n4\n6\n7\n",
+      "output": "6\n"
+    },
+    {
+      "input": "4\n1\n2\n3\n4\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2021 Asia Yokohama Regional",
+  "level": 20,
+  "tags": [
+    "dp",
+    "data_structures",
+    "greedy",
+    "trees",
+    "dp_tree",
+    "stack",
+    "cartesian_tree"
+  ],
+  "accepted_user_count": 50,
+  "submission_count": null,
+  "average_tries": 2.1600000858306885
+}

@@ -1,0 +1,30 @@
+{
+  "id": 24720,
+  "title": "Fliper",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Mirko and Slavko stumbled upon an old pinball machine. The game consists of a small metal ball that moves inside the machine, hitting and bouncing off some obstacles.</p>\n<p>The game takes place on a board which is represented by a plane and $n$ obstacles are given in this plane. An obstacle is represented by a line segment of unit length tilted at a 45<sup>◦</sup> angle with respect to the coordinate axes. An obstacle is uniquely described by the position of its midpoint ($x_i$, $y_i$) and a character which is either '<code>/</code>' or '<code>\\</code>' that denotes the orientation of the obstacle. In the plane there is also a ball which is moving in one of the four directions parallel to the axes at all times. If the ball hits an obstacle, the direction of its movement changes by 90<sup>◦</sup> and the ball continues moving. Note that the obstacles are two-sided, meaning that the ball is able to bounce off both sides of the obstacle</p>\n<p>Mirko and Slavko decided to restore the pinball machine with a new layer of paint. At their disposal are four buckets of paint containing <strong>four different colors</strong>. They want to paint each obstacle in one of these four colors.</p>\n<p><strong>Mirko:</strong> “You know, I’ve been thinking. There are only two possibilities for the path the ball could take.”</p>\n<p><strong>Slavko:</strong> “What do you mean?”</p>\n<p><strong>Mirko:</strong> “Well, either the ball will get stuck in a cycle, periodically repeating the same sequence of bounces, or at some point it will fly off to infintiy.”</p>\n<p><strong>Slavko:</strong> “Hm, you’re right. Then maybe we could try to color the obstacles so that <strong>for each</strong> cycle each of the colors appears an equal number of times in the cycle and so that this number is even. For example, if some cycle consists of 24 bounces, we should make it so that there are 6 bounces for each color, and 6 is an even number.”</p>\n<p><strong>Mirko:</strong> “And what if there is no such coloring?”</p>\n<p><strong>Slavko:</strong> “You know the drill, just say <code>-1</code>.”</p>\n<p>Help Mirko and Slavko determine a coloring of the obstacles which satisfies the required condition, if there is one.</p>",
+  "input": "<p>The first line contains a positive integer $n$ ($1 ≤ n ≤ 500\\,000$), the number of obstacles.</p>\n<p>The $i$-th of the next $n$ lines contains integers $x_i$ and $y_i$ ($0 ≤ |x_i|, |y_i| ≤ 10^9$) and a character $c_i$ ('<code>/</code>' or '<code>\\</code>') which describe the $i$-th obstacle. No two obstacles have the same position.</p>",
+  "output": "<p>If there is no coloring which satisfies the required condition, in the only line print <code>-1</code></p>\n<p>Otherwise, in the only line print a sequence of $n$ numbers <code>1</code>,<code>2</code>,<code>3</code> or <code>4</code> separated by spaces, representing a valid coloring, the colors of the obstacles in order. If there is more than one solution, print any..</p>",
+  "samples": [
+    {
+      "input": "4\n1 1 \\\n3 1 /\n3 2 \\\n1 2 /\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "9\n1 2 \\\n1 3 /\n2 1 \\\n2 2 \\\n2 3 \\\n3 1 /\n3 2 \\\n4 2 /\n4 3 \\\n",
+      "output": "1 3 2 4 1 3 2 4 1\n"
+    },
+    {
+      "input": "12\n1 2 \\\n1 3 /\n2 1 \\\n2 2 \\\n2 3 \\\n2 4 /\n3 1 /\n3 2 \\\n3 3 \\\n3 4 \\\n4 2 /\n4 3 \\\n",
+      "output": "1 3 2 4 2 4 1 3 1 3 2 4\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example:</p>\n<p>The ball can be stuck in a cycle of 4 bounces, bouncing between the 4 given obstacles. To appear an equal number of times, each color should appear once, but one is not an even number.</p>\n<p>Clarification of the second example:</p>\n<p>There is only one cycle in which the ball can get stuck. The image bellow shows a valid coloring. Starting from the obstacle 1, moving in the clockwise direction the colors repeat <code>1 3 1 4 2 3 2 4</code>.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 523px; height: 424px;\"/></p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2021/2022, Contest #5",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2
+}

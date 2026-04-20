@@ -1,0 +1,22 @@
+{
+  "id": 3380,
+  "title": "Linker",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Computer programs are usually composed of multiple modules. Compilation of such programs is often performed in two steps.</p>\n<p>First, each source module is compiled separately into an object module. The object module consists of three parts:</p>\n<ul>\n<li>compiled program code,</li>\n<li>export table,</li>\n<li>import table.</li>\n</ul>\n<p>The export table contains a list of symbols (e.g. variable or function names) that are defined in this module and may be accessed from other modules. The import table contains a list of external symbols this module depends on.</p>\n<p>After all the modules are compiled, a special program called linker assembles them into an executable program.</p>\n<p>Each program has an entry point --- the place at which the execution of the program starts. The linker may perform an optimization by including into the executable only these modules on which the module containing the entry point depends. We will call the rest of the modules redundant.</p>\n<p>Your task is to write a program that is given a description of the modules and finds:</p>\n<ul>\n<li>all non-redundant modules,</li>\n<li>all duplicate exports --- export symbols that are exported from multiple modules and are imported into at least one non-redundant module,</li>\n<li>all unresolved imports --- import symbols that are imported into at least one non-redundant module and are not exported from any module.</li>\n</ul>\n<p>If the entry point is not exported from any module, we will call it an unresolved import as well.</p>",
+  "input": "<p>On the first line of the input is the name of the entry point. On the next line is the number of modules, N (1 ≤ N ≤ 100). The rest of the file contains N blocks describing the modules. The first line of a block contains the name of the module. The next line contains the number of exports, E (0 ≤ E ≤ 100). It is followed by E lines, each containing a distinct export symbol. The next line contains the number of imports, I (0 ≤ I ≤ 100). It is followed by I lines, each containing a distinct import symbol. All the names in this task are non-empty strings of length at most 30 and consist of latin lettes and digits.</p>",
+  "output": "<p>The first line of the output must contain the number of non-redundant modules M<sub>R</sub>, followed by M<sub>R</sub> lines, each containing the name of a non-redundant module. The next line must contain the number of duplicate export symbols M<sub>E</sub>, followed by M<sub>E</sub> lines, each containing one duplicate export symbol. The next line must contain the number of unresolved import symbols M<sub>I</sub>, followed by M<sub>I</sub> lines, each containing one unresolved import.</p>",
+  "samples": [
+    {
+      "input": "entry\n4\nmain\n1\nentry\n1\nwork\nfirst\n1\nwork\n1\ninput\nsecond\n1\nwork\n1\noutput\nredundant\n1\nfoo\n1\nbar\n",
+      "output": "3\nmain\nfirst\nsecond\n1\nwork\n2\ninput\noutput\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2003",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

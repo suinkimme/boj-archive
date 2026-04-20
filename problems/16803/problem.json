@@ -1,0 +1,35 @@
+{
+  "id": 16803,
+  "title": "Multi Path Story",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are a programmer who loves pretty girl games (a sub-genre of dating simulation games). A game, which is titled \"Floatable Heart\" and was released last Friday, has arrived at your home just now. This game has multiple stories. When you complete all of those stories, you can get a special figure of the main heroine, Megumi. So, you want to hurry to play the game! But, let's calm down a bit and think how to complete all of the stories in the shortest time first.</p>\n<p>In fact, you have the special skill that allows you to know the structure of branching points of games. By using the skill, you have found out that there are <var>n</var> branching points in this game and <var>i</var>-th branching point has <var>k<sub>i</sub></var> choices. This game is so complicated that multiple routes get to <var>i</var>-th branching point probably. You also noticed that it takes <var>c<sub>ij</sub></var> minutes to proceed from <var>i</var>-th branching point to another branching point (or an ending), if you select <var>j</var>-th choice of <var>i</var>-th branching point. Of course you need to select all the choices on all the branching points and read stories between a branching point and another branching point (or an ending) to complete all of those stories. In addition, you can assume it only takes negligible time to return to the beginning of the game (\"reset\") and to play from the beginning to the first branching point.</p>\n<p>The game’s manual says that this game has an additional feature called \"Quick Save”, and the feature allows you to record the point where you are currently playing and return there at any time later. However, this feature is not working for some bug. Thus you have to restart from the first branching point every time, if you reach an ending or quit the game on the way. Any patch to fix this bug has not been yet published. This is an imposed tribulation for the fastest players.</p>\n<p>Well, let's estimate how long it will take for completing all of the stories in the shortest time.</p>",
+  "input": "<p>A data set is given in the following format.</p>\n<pre>\n<var>n</var>\n<var>k<sub>1</sub>}</var> <var>t<sub>11</sub></var> <var>c<sub>12</sub></var> ... <var>t<sub>1k<sub>1</sub></sub></var> <var>c<sub>1k<sub>1</sub></sub></var>\n:\n:\n<var>k<sub>n</sub></var> <var>t<sub>n1</sub></var> <var>c<sub>n2</sub></var> ... <var>t<sub>nk<sub>n</sub></sub></var> <var>c<sub>nk<sub>n</sub></sub></var>\n</pre>\n<p>The first line of the data set contains one integer <var>n</var> (<var>2 ≤ n ≤ 1,000</var>), which denotes the number of the branching points in this game. The following <var>n</var> lines describe the branching points. The <var>i</var>-th line describes the branching point of ID number <var>i</var>. The first integer <var>k<sub>i</sub></var> (<var>0 ≤ k<sub>i</sub> ≤ 50</var>) is the number of choices at the <var>i</var>-th branching point. <var>k<sub>i</sub> ≥0</var> means that the <var>i</var>-th branching point is an ending. Next <var>2k<sub>i</sub></var> integers <var>t<sub>ij</sub></var> (<var>1 ≤ t<sub>ij</sub> ≤ n</var>) and <var>c<sub>ij</sub></var> (<var>0 ≤ c<sub>ij</sub> ≤ 300</var>) are the information of choices. <var>t<sub>ij</sub></var> denotes the ID numbers of the next branching points when you select the <var>j</var>-th choice. <var>c<sub>ij</sub></var> denotes the time to read the story between the <var>i</var>-th branching point and the <var>t<sub>ij</sub></var>-th branching point. The branching point with ID 1 is the first branching point. You may assume all the branching point and endings are reachable from the first branching point. You may also assume that there is no loop in the game, that is, no branching point can be reached more than once without a reset.</p>",
+  "output": "<p>Print the shortest time in a line.</p>",
+  "samples": [
+    {
+      "input": "2\n1 2 2\n0\n",
+      "output": "2\n"
+    },
+    {
+      "input": "6\n2 2 1 3 2\n2 4 3 5 4\n2 5 5 6 6\n0\n0\n0\n",
+      "output": "24\n"
+    },
+    {
+      "input": "6\n3 2 100 3 10 3 10\n1 4 100\n1 4 10\n3 5 1 5 1 6 1\n0\n0\n",
+      "output": "243\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2013 Day 4",
+  "level": 22,
+  "tags": [
+    "graphs",
+    "flow",
+    "mcmf",
+    "circulation"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2.4286000728607178
+}

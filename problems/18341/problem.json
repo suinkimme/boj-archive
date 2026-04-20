@@ -1,0 +1,32 @@
+{
+  "id": 18341,
+  "title": "The Assembly Code",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Jamshid is working with a special computing machine. The machine only supports operations on 32-bit unsigned integers and its memory is an array M of length 2<sup>32</sup> (for 0 ⩽ i &lt; 2<sup>32</sup>, M<sub>i</sub> is a 32-bit unsigned integer).</p>\n<p>The assembly code for the machine supports the following addressing modes:</p>\n<ul>\n<li>Immediate addressing: <code>#⟨number⟩</code> This type of addressing is used to refer constant values. So, <code>#3</code> means the constant value 3.</li>\n<li>Direct addressing: <code>$⟨index⟩</code> This mode is used to directly address a memory cell. For example, <code>$7</code> refers to cell M<sub>7</sub>.</li>\n<li>Indirect addressing: <code>@⟨index⟩</code> This addressing mode is used for supporting pointers. It first looks up the value of the memory cell specified by <code>⟨index⟩</code>, and then refers to the cell specified by that value. For example, if M<sub>5</sub> = 9, then <code>@5</code> refers to M<sub>9</sub>.</li>\n</ul>\n<p>All the memory cells are initialized with 0 when a program starts running.</p>\n<p>An assembly code for the machine is a sequence of commands. Each command consists of an operation followed by a number of addresses. The current assembly language for the machine supports a limited number of operations:</p>\n<ul>\n<li><code>MOVE ⟨dest⟩ ⟨source⟩</code>: It copies the value of <code>⟨source⟩</code> to the memory cell referred by <code>⟨dest⟩</code>. For example, <code>MOVE $9 #13</code> sets M<sub>9</sub> to 13, and <code>MOVE @4 $6</code> sets M<sub>M<sub>4</sub></sub> to the value of M<sub>6</sub>.</li>\n<li><code>INPUT ⟨address⟩</code>: It reads a number from the input and stores it in the memory cell referred by <code>⟨address⟩</code>. For example, <code>INPUT $2</code> stores the input value in M<sub>2</sub>, and <code>INPUT @1</code> stores the input value in M<sub>M<sub>1</sub></sub>.</li>\n<li><code>OUTPUT ⟨address⟩</code>: It prints the value of <code>⟨address⟩</code> to the output.</li>\n<li><code>ADD ⟨dest⟩ ⟨arg1⟩ ⟨arg2⟩</code>: It puts the sum of the values referred by <code>⟨arg1⟩</code> and <code>⟨arg2⟩</code> to the memory cell specified by <code>⟨dest⟩</code>. In case of arithmetic overflow, the remainder of the result modulo 2<sup>32</sup> is stored in the destination. For example, <code>ADD @10 #4294967290 #10</code> sets M<sub>M<sub>10</sub></sub> to 4, and <code>ADD $20 @8 $9</code> sets M<sub>20</sub> to M<sub>M<sub>8</sub></sub> + M<sub>9</sub>.</li>\n<li><code>MULT ⟨dest⟩ ⟨arg1⟩ ⟨arg2⟩</code>: It performs the multiplication similar to the <code>ADD</code> operation. It has the same behavior in case of arithmetic overflow.</li>\n<li><code>AND ⟨dest⟩ ⟨arg1⟩ ⟨arg2⟩</code>: It puts the bit-wise AND of the values referred by <code>⟨arg1⟩</code> and <code>⟨arg2⟩</code> to the memory cell specified by <code>⟨dest⟩</code>. For example, <code>AND $15 $33 #7</code> puts the remainder of M<sub>33</sub> modulo 8 in M<sub>15</sub>.</li>\n<li><code>OR ⟨dest⟩ ⟨arg1⟩ ⟨arg2⟩</code>: It applies the bit-wise OR similar to the AND operation. For example, <code>OR $121 $121 #1</code> increments M<sub>121</sub> if it is even.</li>\n<li><code>XOR ⟨dest⟩ ⟨arg1⟩ ⟨arg2⟩</code>: It applies the bit-wise XOR similar to the AND operation. For example, <code>XOR @11 #52 #37</code> sets M<sub>M<sub>11</sub></sub> to 17.</li>\n</ul>\n<p>Except the <code>OUTPUT</code> operation, the first address given to all the operations must be direct or indirect addresses. Using the above operations, Jamshid wrote an assembly code for the machine. The code reads some numbers from the input and writes a single integer to the output (there is exactly one <code>OUTPUT</code> command in the program). Jamshid has executed the program with k different sets of inputs and saved the results. Later, he ran a formatting script on his code, but due to a bug in the script, some parts of the assembly program became corrupt. More specifically, the 5 arithmetic/bit-wise operations (<code>ADD</code>, <code>MULT</code>, <code>AND</code>, <code>OR</code>, and <code>XOR</code>) were replaced by 5 distinct ASCII characters <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>, <code>E</code>. The problem is that it’s not clear which operation is represented by each ASCII character. Given the corrupted program together with the k input sets and their results, your job is to help Jamshid find the correspondence of the 5 assembly operations to the 5 ASCII characters.</p>",
+  "input": "<p>The input starts with the corrupted assembly program. Each line of the program contains a single command as specified before. The program contains at most 100 commands. It is guaranteed that the last command is the only output operation of the program. The next line contains the single integer k (1 ⩽ k ⩽ 100). Each of the next k lines is a space-separated sequence of integers specifying an execution log of the program. It is the sequence of input numbers given to the program appended by the program output. All numbers in the input are non-negative integers less than 2<sup>32</sup>.</p>",
+  "output": "<p>You should print a single integer in the first line of output denoting the different number of ways to assign the 5 assembly operations to the 5 ASCII characters. The result may be any number between 1 and 120. If the result is unique, you have to print the correspondence in the second line. It should be printed as a space-separated permutation of the operators <code>ADD</code>, <code>MULT</code>, <code>AND</code>, <code>OR</code>, and <code>XOR</code>, in the order which they are respectively replaced by the ASCII characters <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>, <code>E</code>.</p>",
+  "samples": [
+    {
+      "input": "INPUT $2\nA $5 $2 #3\nINPUT $1\nMOVE $3 #20\nINPUT @3\nB $4 #1 $5\nE $7 $1 $3\nB $8 #20 #9\nD $8 $4 $8\nE $10 $7 $8\nOUTPUT $10\n3\n3 8 9 29\n1 0 0 21\n4 2 3 30\n",
+      "output": "1\nXOR ADD MULT AND OR\n"
+    },
+    {
+      "input": "INPUT $0\nOUTPUT $0\n2\n0 0\n1 1\n",
+      "output": "120\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia West Continent, Iran, Tehran Site 2019",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "bruteforcing",
+    "set",
+    "tree_set"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 2.5555999279022217
+}

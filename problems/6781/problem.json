@@ -1,0 +1,29 @@
+{
+  "id": 6781,
+  "title": "Boring Business",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Boring is a type of drilling, specifically, the drilling of a tunnel, well, or hole in the earth. With some recent events, such as the Deepwater Horizon oil spill and the rescue of Chilean miners, the public became aware of the sophistication of the current boring technology. Using the technique known as geosteering, drill operators can drill wells vertically, horizontally, or even on a slant angle.</p>\n<p>A well plan is prepared before drilling, which specifies a sequence of lines, representing a geometrical shape of the future well. However, as new information becomes available during drilling, the model can be updated and the well plan modified.</p>\n<p>Your task is to write a program that verifies validity of a well plan by verifying that the borehole will not intersect itself. A two-dimensional well plan is used to represent a vertical cross-section of the borehole, and this well plan includes some drilling that has occurred starting at (0, −1) and moving to (−1, −5). You will encode in your program the current well plan shown in the figure below:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:235px; width:396px\"/></p>",
+  "input": "<p>The input consists of a sequence of drilling command pairs. A drilling command pair begins with one of four direction indicators (<code>d</code> for down, <code>u</code> for up, <code>l</code> for left, and <code>r</code> for right) followed by a positive length. There is an additional drilling command indicated by <code>q</code> (quit) followed by any integer, which indicates the program should stop execution. You can assume that the input is such that the drill point will not:</p>\n<ul>\n<li>rise above the ground, nor</li>\n<li>be more than 200 units below ground, nor</li>\n<li>be more than 200 units to the left of the original starting point, nor</li>\n<li>be more than 200 units to the right of the original starting point</li>\n</ul>",
+  "output": "<p>The program should continue to monitor drilling assuming that the well shown in the figure has already been made. As we can see (−1, −5) is the starting position for your program. After each command, the program must output one line with the coordinates of the new position of the drill, and one of the two comments <code>safe</code>, if there has been no intersection with a previous position or <code>DANGER</code> if there has been an intersection with a previous borehole location. After detecting and reporting a self-intersection, your program must stop.</p>",
+  "samples": [
+    {
+      "input": "l 2\nd 2\nr 1\nq 0\n",
+      "output": "-3 -5 safe\n-3 -7 safe\n-2 -7 safe\n"
+    },
+    {
+      "input": "r 2\nd 10\nr 4\n",
+      "output": "1 -5 safe\n1 -15 DANGER\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2011, CCC 2011 Junior Division",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.9129999876022339
+}

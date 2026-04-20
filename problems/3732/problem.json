@@ -1,0 +1,27 @@
+{
+  "id": 3732,
+  "title": "Proof Generator",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A logical formula has the syntax shown in figure 1(a), where a variable stands for a truth value, the formula (<code>+ F<sub>1</sub>...F<sub>n</sub></code>) stands for the logical disjunction of the formulae <code>F<sub>i</sub></code>, (<code>* F<sub>1</sub>...Fn</code>) denotes the logical conjunction of the formulae <code>F<sub>i</sub></code>, and <code>~F</code> is the negation of <code>F</code>. If a formula has the particular syntax given in figure 1(b) we say that the formula is in the ACM Normal Form (ACMNF).</p>\n<pre>\n&lt;formula&gt;::= &lt;variable&gt; | ~&lt;formula&gt; | (+&lt;formulae&gt;) | (*&lt;formulae&gt;)\n&lt;variable&gt;::= a lower case letter from the English alphabet\n&lt;formulae&gt;::= &lt;formula&gt; | &lt;formula&gt;&lt;formulae&gt;</pre>\n<p>figure 1(a). The general syntax of a formula</p>\n<pre>\n&lt;ACMNF_formula&gt;::= &lt;term&gt; | (+&lt;terms&gt;)\n&lt;term&gt;::= &lt;literal&gt; | (*&lt;literals&gt;)\n&lt;terms&gt;::= &lt;term&gt;&lt;term&gt; | &lt;term&gt;&lt;terms&gt;\n&lt;literal&gt;::= &lt;variable&gt; | ~&lt;variable&gt;\n&lt;literals&gt;::= &lt;literal&gt;&lt;literal&gt; | &lt;literal&gt;&lt;literals&gt;\n&lt;variable&gt;::= a lower case letter from the English alphabet</pre>\n<p>Figure 1(b). The ACMNF syntax of a formula</p>\n<p>A formula is converted to ACMNF using the rewriting rules given below, where <code>F</code> represents a formula, <code>S</code> stands for a non empty sequence of formulae, and <code>s</code> and <code>s'</code> denote possibly empty sequences of formulae. Applying a rewriting rule <code>q→r</code> on a formula <code>F</code> means to substitute by <code>r</code> a part of <code>F</code> that matches the pattern <code>q</code>, as in shown figure 2. The conversion terminates when no rewriting rule can be applied. The conversion terminates for any formula, and the result is unique regardless which rules are applied on which parts of the formula and in which order.</p>\n<ol>\n<li><code>~~F→F</code></li>\n<li><code>~(*FS)→(+~F~(*S))</code></li>\n<li><code>~(+FS)→(*~F~(+S))</code></li>\n<li><code>(+F)→F</code></li>\n<li><code>(+s(+S)s')→(+sSs')</code></li>\n<li><code>(*F)→F</code></li>\n<li><code>(*s(*S)s')→(*sSs')</code></li>\n<li><code>(*s(+FS)s')→(+(*sFs')(*s(+S)s'))</code></li>\n</ol>\n<pre>\n(+(*(+~(*ab)) <u>(+~a)</u> )c)    -4→\n(+(*(+ <u>~(*ab)</u> )~a)c)       -2→\n(+(* (+(+~a~ <u>(*b)</u> ))~a)c)  -6→\n(+(* <u>(+(+~a~b))</u> ~a)c)      -4 or 5→\n(+ (*(+~a~b)~a) c)         -8→\n(+(+(*~a~a)(* <u>(+~b)</u> ~a))c) -4→\n<u>(+(+(*~a~a)(*~b~a))c)</u>      -5→\n(+(*~a~a)(*~b~a)c)</pre>\n<p>Figure 2. Converting a formula to ACMNF</p>\n<p>A set of axioms is represented as a list (<code>V<sub>1</sub> V<sub>2</sub> ... V<sub>n</sub></code>) of variables that are true. A variable that is not in the list is false. A proof of a formula <sub>F</sub> according to a set of axioms <code>A</code> is a term from the ACMNF of <code>F</code> such that the term is true according to <code>A</code>. For instance, the terms <code>(*~a~a)</code> and <code>c</code> are the proofs of the formula <code>(+(*(+~(*ab))(+~a))c)</code> according to the axioms <code>(bc)</code>.</p>\n<p>The problem is to code a proof generator that for a given formula <code>F</code>, a set of axioms <code>A</code>, and a number <code>k</code> outputs the next <code>k</code> proofs of <code>F</code> in the order in which they appear in the ACMNF of <code>F</code>. If the proofs are exhausted, the generator continues from the first proof of <code>F</code>. For example, generating the first proof of the formula <code>(+(*(+~(*ab))(+~a))c)</code> according to the axioms <code>(bc)</code> yields <code>(*~a~a)</code>. Generating three more proofs produces <code>c</code>, <code>(*~a~a)</code>, and <code>c</code>. If the ACMNF of a formula contains similar terms, as in the last example in figure 3, these terms are considered distinct.</p>\n<p>Write a proof generator that reads sets of data from the standard input. The content of a data set is <code>F A k<sub>1</sub> ... k<sub>n</sub> 0</code>, <code>n&gt;0</code>, where <code>F</code> is a formula, <code>A</code> is a set of axioms, and <code>k<sub>1</sub> ... k<sub>n</sub></code> are long integers different than 0. For each <code>k<sub>i</sub></code>, <code>i=1,n</code>, the program generates the next |k<sub><code>i</code></sub>| proofs of <sub>F</sub> and, if <code>k<sub>i</sub>&gt;0</code>, prints these proofs on the standard output. Each printed proof starts from the beginning of a line and there are no white spaces between the characters of the proof. The generated proofs are not printed if <code>k<sub>i</sub>&lt;0</code>. White spaces are used freely in the input. A formula has at most 500 characters and a ACMNF term is at most 80 characters long, not counting white spaces. The input data terminate with an end of file, and are correct.</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "(+(*(+~(*ab))(+~a))c)\n(bc)  -3 1 1 0\n(+~x~y~y) () -2 1 0\n",
+      "output": "c\n(*~a~a)\n~y\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2010",
+  "level": 21,
+  "tags": [
+    "implementation",
+    "parsing",
+    "recursion",
+    "string"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 5
+}

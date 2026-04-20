@@ -1,0 +1,29 @@
+{
+  "id": 15255,
+  "title": "Single Elimination",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Single Elimination is a popular tournament format used, for example, for all major tennis tournaments, March Madness in Basketball, the College Football Playoff, and of course many Olympic events. It works most easily when the number of players is a power of 2. In each round, the remaining players are paired up and play matches. All losers are out, and the winners go on to the next round. After log2 (n) rounds, the one remaining player is the winner.</p>\n<p>When the best player can beat every other player, he/she will always emerge as the winner. Things get interesting if every player has one or more other players they have trouble with. If a player is “unlucky” and runs into such a player early, they may be eliminated, which could benefit another “lucky” player who would have lost to them later. Thus, being able to “seed” the tournament (which means determining who plays whom in each round) can be quite a useful tool in getting your favorite player to win the tournament. In this problem, you will figure out which players (out of a field of 16) have a chance to win the tournament if the seeding is designed perfectly for them.</p>\n<p>You will be given, for every pair of players, who will win if those two player play each other. (We assume that this will always be the result.) The question is then how to design the matches for the first round, then for the winners in the second round, etc., so that a particular player wins. Your final output will be the list of all players who could possibly win.</p>",
+  "input": "<p>The first line is the number K of input data sets, followed by K data sets, each of the following form:</p>\n<p>There are 16 lines, each containing 16 numbers a<sub>i,j</sub> ∈ {0, 1}. If a<sub>i,j</sub> = 1, then i beats j when they play, whereas a<sub>i,j</sub> = 0 means that j beats i. We guarantee that exactly one of a<sub>i,j</sub> and a<sub>j,i</sub> is equal to 1, and the other is 0. Obviously, the value of ai,i doesn’t matter, as i will not play himself/herself; we include it to make the input easier to parse.</p>",
+  "output": "<p>For each data set, output “Data Set x:” on a line by itself, where x is its number. Then, list, one per line, all players who can win the tournament if the seeding is designed perfectly for them. The players should be listed in increasing order.</p>\n<p>Each data set should be followed by a blank line.</p>",
+  "samples": [
+    {
+      "input": "1\n1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n1 1 0 0 1 1 1 1 1 1 1 1 1 1 1 1\n0 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1\n0 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1\n0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1\n0 0 0 0 0 1 0 1 1 1 1 1 1 1 1 1\n0 0 1 0 0 1 1 1 1 1 1 1 1 1 1 1\n0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1\n0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1\n0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1\n0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1\n0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1\n0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1\n0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\n",
+      "output": "Data Set 1:\n1 2 3 4 5 7\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Fall 2017: Olympics",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "dp",
+    "bruteforcing",
+    "simulation",
+    "bitmask",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.4544999599456787
+}

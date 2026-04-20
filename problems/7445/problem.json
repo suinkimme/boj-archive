@@ -1,0 +1,22 @@
+{
+  "id": 7445,
+  "title": "Defragment",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are taking part in the development of a “New Generation” operating system and the NG file system. In this file system all disk space is divided into N clusters of the equal sizes, numbered by integers from 1 to N. Each file occupies one or more clusters in arbitrary areas of the disk. All clusters that are not occupied by files are considered to be free. A file can be read from the disk in the fastest way, if all its clusters are situated in the successive disk clusters in the natural order. </p>\n<p>Rotation of the disk with constant speed implies that various amounts of time are needed for accessing its clusters. Therefore, reading of clusters located near the beginning of the disk performs faster than reading of the ones located near its ending. Thus, all files are numbered beforehand by integers from 1 to K in the order of descending frequency of access. Under the optimal placing of the files on the disk the file number 1 will occupy clusters 1, 2, ..., S<sub>1</sub>, the file number 2 will occupy clusters S<sub>1</sub>+1, S<sub>1</sub>+2, ..., S<sub>1</sub>+S<sub>2</sub> and so on (here S<sub>i</sub> is the number of clusters which the i-th file occupies). </p>\n<p>In order to place the files on the disk in the optimal way cluster-moving operations are executed. One cluster-moving operation includes reading of one occupied cluster from the disk to the memory and writing its contents to some free cluster. After that the first of them is declared free, and the second one is declared occupied. </p>\n<p>Your goal is to place the files on the disk in the optimal way by executing the minimal possible number of cluster-moving operations. </p>",
+  "input": "<p>The first line of the input file contains two integers N and K separated by a space (1 ≤ K &lt; N ≤ 10000). Then K lines follow, each of them describes one file. The description of the i-th file starts with the integer S<sub>i</sub> that represents the number of clusters in the i-th file (1 ≤ S<sub>i</sub> &lt; N). Then S<sub>i</sub> integers follow separated by spaces, which indicate the cluster numbers of this file on the disk in the natural order. </p>\n<p>All cluster numbers in the input file are different and there is always at least one free cluster on the disk. </p>",
+  "output": "<p>Your program should write to the output file any sequence of cluster-moving operations that are needed in order to place the files on the disk in the optimal way. Two integers P<sub>j</sub> and Q<sub>j</sub> separated by a single space should represent each cluster-moving operation. P<sub>j</sub> gives the cluster number that the data should be moved FROM and Q<sub>j</sub> gives the cluster number that this data should be moved TO. </p>\n<p>The number of cluster-moving operations executed should be as small as possible. If the files on the disk are already placed in the optimal way the output should contain only the string “No optimization needed”. </p>",
+  "samples": [
+    {
+      "input": "20 3\n4 2 3 11 12\n1 7\n3 18 5 10\n",
+      "output": "2 1\n3 2\n11 3\n12 4\n18 6\n10 8\n5 20\n7 5\n20 7\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 1998",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 3
+}

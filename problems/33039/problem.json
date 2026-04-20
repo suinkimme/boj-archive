@@ -1,0 +1,29 @@
+{
+  "id": 33039,
+  "title": "Managing Cluster",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You want to write a cluster manager extension that will improve your product performance. Your product has $n$ services (numbered from $1$ to $n$) and is hosted on a cluster with $2n$ machines (numbered from $1$ to $2n$). Each service is running in exactly two replicas. Each replica is run on some machine. Each machine runs exactly one replica of some service.</p>\n<p>One of the key factors of this cluster's performance is the network. Some pairs of machines are connected directly and can transfer data between them very efficiently. There are exactly $2n-1$ direct connections, and it is possible to transfer data between any two machines using direct connections. In other words, direct connections form a tree.</p>\n<p>During the deployment, all $2n$ replicas were assigned to machines. Your extension gets the direct connections list and the sequence $a_1, a_2, \\ldots, a_{2n}$, where $a_i$ is the number of the service that will be running on machine $i$. Your extension can swap some replicas between machines. The swap operation takes two machines $i$, $j$ and swaps values $a_i$ and $a_j$. Each machine is allowed to participate in at most one swap operation. Your extension should make some swap operations that maximize the cluster performance.</p>\n<p>Due to the fact that most data will be transferred between two replicas of the same service, the cluster performance is measured as the number of services that have two replicas running on machines connected directly. Help to write the extension that will maximize the cluster performance.</p>",
+  "input": "<p>The first line contains a single integer $T$ ($1 \\leq T \\leq 10^5$) --- the number of test cases. Descriptions of test cases follow.</p>\n<p>The first line of each test case contains a single integer $n$ ($1 \\leq n \\leq 10^5$).</p>\n<p>The second line contains $2n$ integers $a_1, a_2, \\ldots, a_{2n}$ ($1 \\leq a_i \\leq n$). It is guaranteed that each value from $1$ to $n$ appears exactly twice in this sequence.</p>\n<p>Each of the next $2n-1$ lines contains two integers $u$ and $v$ ($1 \\leq u, v \\leq 2n$, $u \\neq v$), meaning that machines $u$ and $v$ are connected directly. Direct connections are guaranteed to form a tree.</p>\n<p>It is guaranteed that the sum of $n$ for all test cases does not exceed $10^5$.</p>",
+  "output": "<p>For each test case on the first line print a single integer $k$ ($0 \\leq k \\leq n$) --- the number of swap operations the extension wants to make.</p>\n<p>Each of the next $k$ lines should contain two integers $i$, $j$ ($1 \\leq i, j \\leq 2n$, $i \\neq j$) --- swap operations. Each number from $1$ to $2n$ should appear at most once.</p>\n<p>Note that the order of operations is not important. After applying swap operations, the cluster performance should be the maximum possible. You can print any answer that satisfies the requirements.</p>",
+  "samples": [
+    {
+      "input": "3\n2\n1 2 2 1\n1 2\n2 3\n3 4\n4\n4 3 1 3 2 4 1 2\n1 2\n3 1\n3 4\n5 1\n5 6\n2 7\n2 8\n3\n1 1 2 2 3 3\n1 2\n1 3\n1 4\n1 5\n1 6\n",
+      "output": "1\n1 3\n3\n1 5\n8 3\n4 7\n0\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 139px; height: 38px;\"/></p>\n<p>In the first test case only replicas of service 2 run on directly connected machines, so the performance is 1. The performance can be increased to 2 by swapping replicas between machines 1 and 3.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 102px; height: 153px;\"/></p>\n<p>In the second test case no two replicas run on directly connected machines, so the performance is zero. The performance can be increased to 3 by performing swaps $1-5$, $8-3$, and $4-7$ so that replicas of services 2, 3, and 4 run on directly connected machines. It can be shown that it is impossible to get performance 4 here.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 102px; height: 116px;\"/></p>\n<p>In the third test case only replicas of service 1 run on directly connected machines, so the performance is 1. It is obvious that here the performance cannot be made any bigger.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2024",
+  "level": 20,
+  "tags": [
+    "implementation",
+    "dp",
+    "greedy",
+    "ad_hoc",
+    "trees",
+    "dp_tree"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.25
+}

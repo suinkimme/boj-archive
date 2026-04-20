@@ -1,0 +1,29 @@
+{
+  "id": 30476,
+  "title": "Analyzing Contracts",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Doctor Kruskal is starting a tiberium trading business. They have N possible suppliers of tiberium, and many clients interested in receiving tiberium to run their own industries.</p>\n<p>Calendar days are numbered chronologically using positive integers, and each supplier is identified by a distinct integer from 1 to N. Supplier i can supply tiberium on any day from day S<sub>i</sub> onwards, but not on the days strictly before S<sub>i</sub>. They charge a price of P<sub>i</sub> dollars per day for such a service. Since Kruskal is very smart, the list of suppliers contains only the best suppliers in the city. Besides, it is the case that S<sub>i</sub> &lt; S<sub>i+1</sub> and P<sub>i</sub> &gt; P<sub>i+1</sub> for i = 1, 2, . . . , N − 1.</p>\n<p>Kruskal’s system keeps a database of available clients. Initially, this database is empty and contains no clients. Clients will be arriving one by one, and each of them is immediately added to the database upon arrival. The j-th client is interested in receiving tiberium on any day up to day E<sub>j</sub> inclusive. For each day that they receive tiberium, their industry will generate R<sub>j</sub> dollars of gross revenue. Thus, if Kruskal matches supplier i to client j, the final profit of this whole operation after deducting the tiberium cost will be (R<sub>j</sub> − P<sub>i</sub>) × (E<sub>j</sub> − S<sub>i</sub> + 1), where S<sub>i</sub> ≤ E<sub>j</sub>, as otherwise no tiberium could be provided.</p>\n<p>At any moment, Kruskal’s system can quickly compute, for any particular supplier i, the optimal client among those in the database, so that the profit of the operation when matching the supplier and the client is maximized, and it can report such maximum profit. It might be the case that a positive profit for a supplier cannot be achieved with any of the available clients; in that case, the system reports a profit of zero.</p>\n<p>Notice that when Kruskal’s system is requested to compute the maximum profit for a given supplier, that supplier is matched with at most one of the available clients, and in that case, such a match has no effect at all on future operations. This means that both the supplier and the client can be considered again for future matchings.</p>\n<p>Your task is to implement Kruskal’s system.</p>",
+  "input": "<p>The first line contains an integer N (1 ≤ N ≤ 2 × 10<sup>5</sup>) indicating the number of suppliers.</p>\n<p>The i-th of the next N lines describes supplier i with two integers S<sub>i</sub> and P<sub>i</sub> (1 ≤ S<sub>i</sub>, P<sub>i</sub> ≤ 10<sup>9</sup>), denoting respectively the start day and the price per day for the supplier. It is guaranteed that S<sub>i</sub> &lt; S<sub>i+1</sub> and P<sub>i</sub> &gt; P<sub>i+1</sub> for i = 1, 2, . . . , N − 1.</p>\n<p>The next line contains an integer Q (1 ≤ Q ≤ 2 × 10<sup>5</sup>) representing the number of operations that must be processed. Operations are described in the next Q lines, in the order they are executed in the system, one operation per line. There are two types of operations.</p>\n<p>If the operation adds a client to the database, the line contains the lowercase letter “<code>c</code>”, followed by two integers E and R (1 ≤ E, R ≤ 10<sup>9</sup>), indicating respectively the end day and the gross revenue per day for the client.</p>\n<p>If the operation requests to compute the maximum profit for a supplier, the line contains the lowercase letter “<code>s</code>”, followed by an integer I (1 ≤ I ≤ N) that identifies the supplier. It is guaranteed that the input contains at least one operation of this type.</p>",
+  "output": "<p>Output a line for each operation of type “<code>s</code>”. The line must contain an integer indicating the maximum possible profit when matching an available client with the given supplier. Write the results of the operations in the order they appear in the input.</p>",
+  "samples": [
+    {
+      "input": "4\n2 8\n4 5\n7 3\n9 2\n11\ns 1\nc 10 10\ns 1\ns 2\ns 3\ns 4\nc 7 26\ns 2\ns 4\ns 3\ns 1\n",
+      "output": "0\n18\n35\n28\n16\n84\n16\n28\n108\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2023",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "divide_and_conquer",
+    "divide_and_conquer_optimization",
+    "dp",
+    "segtree",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

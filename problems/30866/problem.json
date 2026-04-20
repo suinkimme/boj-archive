@@ -1,0 +1,29 @@
+{
+  "id": 30866,
+  "title": "NOT a SAT problem",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>SAT 문제는 아래와 같이 정의된다.</p>\r\n\r\n<ul>\r\n\t<li>CNF가 주어졌을 때, 이 CNF가 참이 되도록 논리 변수들에 참과 거짓을 적절히 배정할 수 있는지 판별하는 문제를 <strong>SAT 문제</strong>라고 한다.</li>\r\n</ul>\r\n\r\n<p>이때, CNF는 아래와 같이 정의된다.</p>\r\n\r\n<ul>\r\n\t<li>하나 이상의 절이 $\\wedge$ (Logical AND)로 연결된 논리식을 <strong>CNF</strong>라고 한다.</li>\r\n</ul>\r\n\r\n<p>이때, 절은 아래와 같이 정의된다.</p>\r\n\r\n<ul>\r\n\t<li>하나 이상의, 논리 변수 또는 논리 변수의 $\\neg$ (Logical NOT)이 $\\vee$ (Logical OR)로 연결된 논리식을 <strong>절</strong>이라고 한다.</li>\r\n</ul>\r\n\r\n<p>예를 들면, $(x_1\\vee x_2\\vee\\neg x_3)$와 $(x_2\\vee\\neg x_4\\vee\\neg x_2\\vee\\neg x_4)$은 절이다.</p>\r\n\r\n<p>그리고, 위 두 절을 이은 $(x_1\\vee x_2\\vee\\neg x_3)\\wedge(x_2\\vee\\neg x_4\\vee\\neg x_2\\vee\\neg x_4)$는 CNF이다.</p>\r\n\r\n<p>마지막으로, 이 CNF에 사용된 논리 변수 $x_1,x_2,x_3,x_4$에 참과 거짓을 적절히 배정해서 CNF의 결과를 참으로 만드는 문제는 SAT 문제가 된다.</p>\r\n\r\n<p>하지만 이 문제는 SAT 문제가 아니다. 그러니, 이 문제에서는 CNF의 결과를 참으로 만드는 대신, CNF의 결과를 거짓으로 만들어야 한다!</p>\r\n",
+  "input": "<p>첫째 줄에는 사용되는 논리 변수의 개수 $N$과 CNF에 있는 절의 개수 $M$이 주어진다. $(1\\le N\\le 500\\, 000;$ $1\\le M\\le 200\\, 000)$</p>\r\n\r\n<p>둘째 줄부터 $M$개의 줄에 걸쳐서, 절의 정보가 다음과 같이 공백으로 구분되어 주어진다.</p>\r\n\r\n<p>각 줄의 첫 번째 정수는 절에 있는 논리 변수의 개수 $k$를 의미하며, 이후 $k$개의 정수가 공백으로 구분되어 주어진다. 여기서 주어지는 정수 $a$는 양수일 경우 $x_a$가 절에 들어있음을, 음수일 경우 $\\neg x_{\\lvert a\\rvert}$가 절에 들어있음을 의미한다. $(1\\le k\\le 200\\, 000;$ $1\\le\\lvert a\\rvert\\le N)$</p>\r\n\r\n<p>입력으로 주어지는 $k$의 합은 $500\\, 000$ 이하이다.</p>\r\n",
+  "output": "<p>첫째 줄에 CNF의 결과를 거짓으로 만들 수 있다면 <span style=\"color:#e74c3c;\"><code>YES</code></span>를, 아니면 <span style=\"color:#e74c3c;\"><code>NO</code></span>를 출력한다.</p>\r\n\r\n<p>만약 CNF의 결과를 거짓으로 만들 수 있다면, 둘째 줄에 CNF의 값을 거짓으로 만드는 $x_1,x_2,\\ldots ,x_N$의 값을 공백으로 구분하여 출력한다. $x_i$가 참이라면 $1$을, $x_i$가 거짓이라면 $0$을 출력한다.</p>\r\n\r\n<p>만약 CNF의 결과를 거짓으로 만들 수 있는 경우가 여러 가지인 경우, 그중 아무거나 하나를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "4 2\n3 1 2 -3\n4 2 -4 -2 -4\n",
+      "output": "YES\n0 0 1 0\n"
+    },
+    {
+      "input": "1 1\n2 1 -1\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 한양대학교, 제10회 한양대학교 프로그래밍 경시대회(HCPC), 예비소집, hibye1217, cologne, hjroh0315, junseo, mjhmjh1104, naeby, seonah, solvedac, yijw0930",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "constructive"
+  ],
+  "accepted_user_count": 56,
+  "submission_count": null,
+  "average_tries": 2.125
+}

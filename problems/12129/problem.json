@@ -1,0 +1,28 @@
+{
+  "id": 12129,
+  "title": "Fairland (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The country of Fairland has very strict laws governing how companies organize and pay their employees:</p>\n<ol>\n<li>Each company must have exactly one CEO, who has no manager.</li>\n<li>Every employee except for the CEO must have exactly one manager. (This means that the org chart showing all of the employees in a company is a tree, without cycles.)</li>\n<li>As long as an employee is working for the company, their manager must never change. This means that if a manager leaves, then all of the employees reporting to that manager must also leave.</li>\n<li>The CEO must never leave the company.</li>\n<li>Every employee receives a salary -- some amount of Fairland dollars per year. An employee's salary must never change.</li>\n<li>Different employees may have different salaries, and an employee's salary is not necessarily correlated with where in the org chart that employee is.</li>\n</ol>\n<p>The government of Fairland has just passed one additional law:</p>\n<ol start=\"7\">\n<li>The difference between the largest salary and the smallest salary in the whole company must be at most <strong>D</strong> Fairland dollars.</li>\n</ol>\n<p> </p>\n<p>Marie is the CEO of the Fairland General Stuff Corporation, and she has to ensure that her company complies with the new law. This may require laying off some employees. She has the list of the company's employees, their managers, and their salaries. What is the largest number of employees she can keep, including herself?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow. Each case begins with one line containing two space-separated integers <strong>N</strong> (the number of employees) and <strong>D</strong> (the maximum allowed salary difference). This is followed by one line with four space-separated integers (<strong>S<sub>0</sub></strong>, <strong>A<sub>s</sub></strong>, <strong>C<sub>s</sub></strong>, <strong>R<sub>s</sub></strong>) and then another line with four more space-separated integers (<strong>M<sub>0</sub></strong>, <strong>A<sub>m</sub></strong>, <strong>C<sub>m</sub></strong> and <strong>R<sub>m</sub></strong>). These last eight integers define the following sequences:</p>\n<ul>\n<li><strong>S<sub>i+1</sub></strong> = (<strong>S<sub>i</sub></strong> * <strong>A<sub>s</sub></strong> + <strong>C<sub>s</sub></strong>) <em>mod</em> <strong>R<sub>s</sub></strong></li>\n<li><strong>M<sub>i+1</sub></strong> = (<strong>M<sub>i</sub></strong> * <strong>A<sub>m</sub></strong> + <strong>C<sub>m</sub></strong>) <em>mod</em> <strong>R<sub>m</sub></strong></li>\n</ul>\n<p> </p>\n<p>Marie's employee ID is 0, and all other employees have IDs from 1 to <strong>N</strong> - 1, inclusive. The salary of employee <strong>i</strong> is <strong>S<sub>i</sub></strong>. For every employee <strong>i</strong> other than Marie, the manager is <strong>M<sub>i</sub></strong> <em>mod</em> <strong>i</strong>. (Note that this means that <strong>M<sub>0</sub></strong> does not affect Marie's manager -- she has none!)</p>\n<div>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>0 ≤ <strong>S<sub>0</sub></strong> &lt; <strong>R<sub>s</sub></strong>.</li>\n<li>0 ≤ <strong>M<sub>0</sub></strong> &lt; <strong>R<sub>m</sub></strong>.</li>\n<li>0 ≤ <strong>A<sub>s</sub></strong>, <strong>A<sub>m</sub></strong> ≤ 1000.</li>\n<li>0 ≤ <strong>C<sub>s</sub></strong>, <strong>C<sub>m</sub></strong> ≤ 10<sup>9</sup>.</li>\n<li>1 ≤ <strong>N</strong> ≤ 1000.</li>\n<li>1 ≤ <strong>D</strong> ≤ 1000.</li>\n<li>1 ≤ <strong>R<sub>s</sub></strong>, <strong>R<sub>m</sub></strong> ≤ 1000.</li>\n</ul>\n<div> </div>\n</div>",
+  "output": "<p>For each test case, output one line containing \"Case #x: y\", where x is the test case number (starting from 1) and y is the largest number of employees Marie can keep at the company, including herself, such that all of laws 1-7 are obeyed.</p>",
+  "samples": [
+    {
+      "input": "3\n1 395\n18 246 615815 60\n73 228 14618 195\n6 5\n10 1 3 17\n5 2 7 19\n10 13\n28 931 601463 36\n231 539 556432 258\n",
+      "output": "Case #1: 1\nCase #2: 3\nCase #3: 5\n"
+    }
+  ],
+  "hint": "<p>In Case #1, the company has only a CEO and no other employees, but it does not violate any of the laws, so no changes need to be made.<br/>\n<br/>\nHere is the org chart for Case #2:<br/>\n<br/>\n<img src=\"https://code.google.com/codejam/contest/images/?image=fairland_sample_2.png&amp;p=5709131113562112&amp;c=4254486\"/> <br/>\nThe optimal strategy is to save employees 0, 1, and 5 (who have salaries of 10, 13, and 8, respectively). It is not possible to save employee 2, for example, because her salary is more than 5 away from employee 0's salary of 10; since employee 0 cannot be laid off, employee 2 must be laid off (along with all employees who report to her).<br/>\n<br/>\nIf you want to check your sequences for employees 1 through 5, they are:<br/>\n<br/>\n<strong>S</strong>: 13, 16, 2, 5, 8<br/>\n<strong>M</strong>: 17, 3, 13, 14, 16<br/>\nManager numbers: 17 % 1 = 0, 3 % 2 = 1, 13 % 3 = 1, 14 % 4 = 2, 16 % 5 = 1</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2015, Round 3",
+  "level": 13,
+  "tags": [
+    "graphs",
+    "greedy",
+    "bruteforcing",
+    "graph_traversal",
+    "trees"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.100000023841858
+}

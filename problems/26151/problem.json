@@ -1,0 +1,32 @@
+{
+  "id": 26151,
+  "title": "NATO 음성 기호와 쿼리",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>NATO 음성 문자는 통신의 혼란 등을 방지하기 위해 만들어졌으며, 아래 규칙에 따라 알파벳을 단어로 변환한다.</p>\n<p>아래 문자열을 일일이 따라칠 필요는 없다. 하단의 '노트' 탭에 각 언어별로 작성되어있다.</p>\n<table class=\"table table-bordered table-center-50\">\n<tbody>\n<tr>\n<td><strong>알파벳</strong></td>\n<td><strong>NATO</strong></td>\n<td><strong>알파벳</strong></td>\n<td><strong>NATO</strong></td>\n</tr>\n<tr>\n<td><strong>A</strong></td>\n<td>ALFA</td>\n<td><strong>N</strong></td>\n<td>NOVEMBER</td>\n</tr>\n<tr>\n<td><strong>B</strong></td>\n<td>BRAVO</td>\n<td><strong>O</strong></td>\n<td>OSCAR</td>\n</tr>\n<tr>\n<td><strong>C</strong></td>\n<td>CHARLIE</td>\n<td><strong>P</strong></td>\n<td>PAPA</td>\n</tr>\n<tr>\n<td><strong>D</strong></td>\n<td>DELTA</td>\n<td><strong>Q</strong></td>\n<td>QUEBEC</td>\n</tr>\n<tr>\n<td><strong>E</strong></td>\n<td>ECHO</td>\n<td><strong>R</strong></td>\n<td>ROMEO</td>\n</tr>\n<tr>\n<td><strong>F</strong></td>\n<td>FOXTROT</td>\n<td><strong>S</strong></td>\n<td>SIERRA</td>\n</tr>\n<tr>\n<td><strong>G</strong></td>\n<td>GOLF</td>\n<td><strong>T</strong></td>\n<td>TANGO</td>\n</tr>\n<tr>\n<td><strong>H</strong></td>\n<td>HOTEL</td>\n<td><strong>U</strong></td>\n<td>UNIFORM</td>\n</tr>\n<tr>\n<td><strong>I</strong></td>\n<td>INDIA</td>\n<td><strong>V</strong></td>\n<td>VICTOR</td>\n</tr>\n<tr>\n<td><strong>J</strong></td>\n<td>JULIETT</td>\n<td><strong>W</strong></td>\n<td>WHISKEY</td>\n</tr>\n<tr>\n<td><strong>K</strong></td>\n<td>KILO</td>\n<td><strong>X</strong></td>\n<td>XRAY</td>\n</tr>\n<tr>\n<td><strong>L</strong></td>\n<td>LIMA</td>\n<td><strong>Y</strong></td>\n<td>YANKEE</td>\n</tr>\n<tr>\n<td><strong>M</strong></td>\n<td>MIKE</td>\n<td><strong>Z</strong></td>\n<td>ZULU</td>\n</tr>\n</tbody>\n</table>\n<p>예를 들면, \"HCPC\"라는 문자열은 \"<strong>H</strong>OTEL<strong>C</strong>HARLIE<strong>P</strong>APA<strong>C</strong>HARLIE\"가 된다.</p>\n<p>원래는 각 단어 사이에 공백을 넣지만, 이 문제에서는 편의상 붙여쓰기로 하자.</p>\n<p>하이비는 이런 방식의 변환이 너무 재밌어서, 문자열 $ S $를 들고 와서 아래 쿼리를 적용시키기로 했다.</p>\n<ul>\n<li>1 $ x $: $ S $에 NATO 음성 문자 변환을 $ x $번 적용한다. $( 1 \\le x \\le 10^{18} )$</li>\n<li>2 $ p $: $ S $의 $ p $번째 글자를 출력한다. $( 1 \\le p \\le \\min(|S|, 10^{18}))$</li>\n</ul>\n<p>하이비는 쿼리가 끝난 뒤에 출력된 글자들을 알고 싶었지만, 문자열의 길이가 너무 길어져서 지친 관계로 여러분들에게 이 작업을 넘기기로 했다.</p>\n<p>지친 하이비에게 쿼리의 출력값을 대신 알려주자.</p>",
+  "input": "<p>첫째 줄에 알파벳 대문자로만 이루어진 문자열 $ S $와 쿼리의 횟수 $ Q $가 주어진다. $( 1 \\le |S| \\le 200\\,000; $ $ 1 \\le Q \\le 200\\,000 )$</p>\n<p>이어 $ Q $개의 줄에 걸쳐 쿼리가 주어진다.</p>",
+  "output": "<p>2번 쿼리가 들어올 때마다 출력되는 글자를 <strong>공백 없이</strong> 출력한다.</p>",
+  "samples": [
+    {
+      "input": "HCPC 5\n2 2\n1 1\n2 23\n1 1\n2 100\n",
+      "output": "CEN\n"
+    },
+    {
+      "input": "HIBYE 5\n1 217\n2 256\n2 1000000009\n2 987654\n2 123456789987654321\n",
+      "output": "NATO\n"
+    }
+  ],
+  "hint": "<p>친절한 하이비가 NATO 문자열을 모아놓은 배열을 밑에 만들어두었다.</p>\n<p>C:</p>\n<pre>\nconst char* NATO[26] = { \"ALFA\", \"BRAVO\", \"CHARLIE\", \"DELTA\", \"ECHO\", \"FOXTROT\", \"GOLF\", \"HOTEL\", \"INDIA\", \"JULIETT\", \"KILO\", \"LIMA\", \"MIKE\", \"NOVEMBER\", \"OSCAR\", \"PAPA\", \"QUEBEC\", \"ROMEO\", \"SIERRA\", \"TANGO\", \"UNIFORM\", \"VICTOR\", \"WHISKEY\", \"XRAY\", \"YANKEE\", \"ZULU\" };\n</pre>\n<p>C++:</p>\n<pre>\nconst string NATO[26] = { \"ALFA\", \"BRAVO\", \"CHARLIE\", \"DELTA\", \"ECHO\", \"FOXTROT\", \"GOLF\", \"HOTEL\", \"INDIA\", \"JULIETT\", \"KILO\", \"LIMA\", \"MIKE\", \"NOVEMBER\", \"OSCAR\", \"PAPA\", \"QUEBEC\", \"ROMEO\", \"SIERRA\", \"TANGO\", \"UNIFORM\", \"VICTOR\", \"WHISKEY\", \"XRAY\", \"YANKEE\", \"ZULU\" };\n</pre>\n<p>Python:</p>\n<pre>\nNATO = ( \"ALFA\", \"BRAVO\", \"CHARLIE\", \"DELTA\", \"ECHO\", \"FOXTROT\", \"GOLF\", \"HOTEL\", \"INDIA\", \"JULIETT\", \"KILO\", \"LIMA\", \"MIKE\", \"NOVEMBER\", \"OSCAR\", \"PAPA\", \"QUEBEC\", \"ROMEO\", \"SIERRA\", \"TANGO\", \"UNIFORM\", \"VICTOR\", \"WHISKEY\", \"XRAY\", \"YANKEE\", \"ZULU\" )\n</pre>\n<p>Java:</p>\n<pre>\nconst String NATO[26] = { \"ALFA\", \"BRAVO\", \"CHARLIE\", \"DELTA\", \"ECHO\", \"FOXTROT\", \"GOLF\", \"HOTEL\", \"INDIA\", \"JULIETT\", \"KILO\", \"LIMA\", \"MIKE\", \"NOVEMBER\", \"OSCAR\", \"PAPA\", \"QUEBEC\", \"ROMEO\", \"SIERRA\", \"TANGO\", \"UNIFORM\", \"VICTOR\", \"WHISKEY\", \"XRAY\", \"YANKEE\", \"ZULU\" };</pre>",
+  "source": "University, 한양대학교, 제9회 한양대학교 프로그래밍 경시대회, Beginner Division, University, 한양대학교, 제9회 한양대학교 프로그래밍 경시대회, Advanced Division, hibye1217, jthis, junseo, jyheo98, nick832, powergee, tlsdydaud1",
+  "level": 18,
+  "tags": [
+    "dp",
+    "string",
+    "binary_search",
+    "prefix_sum",
+    "recursion"
+  ],
+  "accepted_user_count": 44,
+  "submission_count": null,
+  "average_tries": 3.81820011138916
+}

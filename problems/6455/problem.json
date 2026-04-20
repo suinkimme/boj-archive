@@ -1,0 +1,28 @@
+{
+  "id": 6455,
+  "title": "Transaction Processing",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You have been called upon to write a program which performs one of the initial steps in posting transactions to a general ledger. The central principle of double-entry bookkeeping is that the sum of all debits must equal the sum of all credits. This is true for each transaction. For the purposes of your program, positive numbers represent debits and negative numbers represent credits. That is, 2.00 is a two dollar debit, and -2.00 is a two dollar credit. The purpose of your program is to check that each transaction balances, and to report it if it doesn't.</p>",
+  "input": "<p>You have been called upon to write a program which performs one of the initial steps in posting transactions to a general ledger. The central principle of double-entry bookkeeping is that the sum of all debits must equal the sum of all credits. This is true for each transaction. For the purposes of your program, positive numbers represent debits and negative numbers represent credits. That is, 2.00 is a two dollar debit, and -2.00 is a two dollar credit. The purpose of your program is to check that each transaction balances, and to report it if it doesn't.</p>\n<p>Input data to your program will come in two sections. The first <br/>\nsection is a list of up to 100 accounts in the general ledger. It consists <br/>\nof lines in the format:</p>\n<pre>\nnnnxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>\n<p>where nnn is a three-digit account number and xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx is a 1--30 character account name string. This section is terminated by a record starting with 000, which is not used as an account number.</p>\n<p>The second section of the input data consists of 15-character records, one per line in the format</p>\n<pre>\nsssnnnxxxxxxxxx</pre>\n<p>where sss is a three-digit sequence number, nnn is a three-digit account number, and xxxxxxxxx is a nine-digit amount in dollars and cents (without the decimal point). Each of these records is one entry of a transaction. A transaction consists of between two and ten entries with identical sequence numbers. Each transaction will be contiguous within the input data. This section of input data is terminated by a record which has a sequence number of 000.</p>",
+  "output": "<p>Nothing is to be printed for transactions which balance. For transactions which do not balance, an exception report is to be printed in the form:</p>\n<pre>\n*** Transaction sss is out of balance ***\nnnn xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx vvvvvvv.vv\nnnn xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx vvvvvvv.vv\n.\n.\n.\n999 Out of Balance                 vvvvvvv.vv</pre>\n<p>where nnn is an account number, xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx is the corresponding account name, and vvvvvvv.vv is the amount. Print a space between the above fields. The entries should be listed in the order that they were received in the input. The last entry in the report is one you will create to make the transaction balance, using the special account number 999 (the suspense account). Print a blank line after each exception report.</p>",
+  "samples": [
+    {
+      "input": "111Cash \n121Accounts Receivable\n211Accounts Payable\n241Sales Tax Payable \n401Sales\n555Office Supplies\n000No such account\n100111    11795\n100121   -11795\n101121      105\n101241       -7 \n101401     -100\n102211   -70000\n102555    40000\n103111   -40000 \n103555    40000\n000000        0\n",
+      "output": "*** Transaction 101 is out of balance ***\n121 Accounts Receivable                  1.05\n241 Sales Tax Payable                   -0.07\n401 Sales                               -1.00\n999 Out of Balance                       0.02\n\n*** Transaction 102 is out of balance ***\n211 Accounts Payable                  -700.00\n555 Office Supplies                    400.00\n999 Out of Balance                     300.00\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Southern California Regional, 1989 Southern California Regional",
+  "level": 9,
+  "tags": [
+    "arithmetic",
+    "implementation",
+    "math",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.25
+}

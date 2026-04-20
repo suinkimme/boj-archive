@@ -1,0 +1,30 @@
+{
+  "id": 34425,
+  "title": "brokenclock",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>For your birthday you asked for a new digital clock which shows the time as the <em>UNIX Timestamp</em> which is defined as the number of seconds from the UNIX epoch (00:00:00 on January 1, 1970). Unfortunately, instead of the cool clock that you wanted, you were given a normal digital clock which shows the time in <code>HH:MM:SS</code> format. You were so disappointed after receiving your new clock that you threw it in the air and it landed on the floor with a crash! After apologizing to the people that gave you the gift, you realize that the clock is not totally broken. Some of the bars (segments) on the display are broken and are permanently off and won't turn on. While others work properly and turn on and off as expected.</p>\n<p>Because you still want to be able to tell the time, you decide to write a program to figure out what times the clock could be displaying.</p>\n<p>The clock is laid out as follows. There are 6 digits on your clock. Every two digits is separated by a colon creating three digit groups representing the hours, minutes, and seconds of the time, respectively. The time is displayed in <code>HH:MM:SS</code> format where</p>\n<ul>\n<li><code>HH</code> is the hours in 24 hour format (meaning that the hours range from <code>00</code> to <code>23</code>), with a leading zero if the hours part of the time is only a single digit.</li>\n<li><code>MM</code> is the minutes, with a leading zero if the minutes part of the time is only a single digit.</li>\n<li><code>SS</code> is the seconds, with a leading zero if the seconds part of the time is only a single digit.</li>\n</ul>\n<p>Each digit has seven <em>segments</em> which can either be on, off, or broken. The segment layout for a single digit and the corresponding segment numbers are shown in Figure 1.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 116px; height: 150px;\"/></p>\n<p style=\"text-align: center;\"><strong>Figure 1</strong>: Segment numbers for a single digit of a seven-segment display.</p>\n<p>If all of the segments of a digit are not broken, then the numbers 0 through 9 are displayed by illuminating the segments as shown in Figure 2.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 500px; height: 100px;\"/></p>\n<p style=\"text-align: center;\"><strong>Figure 2</strong>: All of the possible numbers for a given digit. $\\text{Red}=\\text{on}$, $\\text{Grey}=\\text{off}$.</p>",
+  "input": "<p>There are six lines of input. The ${n}^{th}$ line of the input represents the states of the segments of the ${n}^{th}$ digit from the left of the clock. Each line will consist of seven space-separated values representing the states of the seven segments of the corresponding digit. A <code>1</code> indicates that the given segment is \"lit\". A <code>0</code> indicates that the segment is \"off\", but not broken. A <code>-</code> indicates that the segment is broken.</p>\n<p>You are guaranteed that each of the digits in the display has at least one possible number and that the clock can represent at least one valid 24-hour time.</p>",
+  "output": "<p>Output the possible times that the clock could be displaying in sorted order (least to greatest) with leading zeros in <code>HH:MM:SS</code> format (the same format as described above).</p>",
+  "samples": [
+    {
+      "input": "0 0 1 0 0 1 0\n1 0 1 1 1 0 1\n1 1 1 0 1 1 1\n1 0 1 1 0 1 1\n1 1 1 0 1 1 1\n1 - - 1 - - 1\n",
+      "output": "12:03:02\n12:03:03\n12:03:05\n12:03:06\n12:03:08\n"
+    },
+    {
+      "input": "1 1 1 0 1 1 1\n1 1 - 1 - 1 1\n- - - - - - -\n0 0 1 - 0 1 0\n0 0 1 0 0 1 0\n0 1 1 1 0 1 0\n",
+      "output": "05:01:14\n05:11:14\n05:21:14\n05:31:14\n05:41:14\n05:51:14\n06:01:14\n06:11:14\n06:21:14\n06:31:14\n06:41:14\n06:51:14\n08:01:14\n08:11:14\n08:21:14\n08:31:14\n08:41:14\n08:51:14\n"
+    }
+  ],
+  "hint": null,
+  "source": ", School, CS@Mines, CS@Mines HSPC 2020",
+  "level": 5,
+  "tags": [
+    "implementation",
+    "bruteforcing",
+    "case_work"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 1.892899990081787
+}

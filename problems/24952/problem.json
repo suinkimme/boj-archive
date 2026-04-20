@@ -1,0 +1,41 @@
+{
+  "id": 24952,
+  "title": "Fish 2",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>JOI-kun has $N$ fishes, numbered from $1$ to $N$. The size of the fish $i$ ($1 ≤ i ≤ N$) is $A_i$.</p>\n<p>When we grow fish, we have to pay attention to the following fact: if we have two nearby fishes, one fish eats the other fish as time passes. Here, two fishes are nearby if there is no fish between them. More precisely, if the size of the fish $x$ is larger than or equal to the size of the fish $y$, and the fish $x$ and the fish $y$ are nearby, then the fish $x$ eats the fish $y$, and the size of $x$ becomes the sum of the original size of $x$ and the size of $y$. If the fish $x$ and the fish $y$ have the same size, any one of them may eat the other.</p>\n<p>JOI-kun will grow fishes for $Q$ days. To kill time, he does the following thought experiment. On the $j$-th day ($1 ≤ j ≤ Q$), JOI-kun takes one of the following actions.</p>\n<ul>\n<li>Type 1 : JOI-kun gives a special feed to the fish $X_j$. After that, the size of the fish $X_j$ becomes $Y_j$.</li>\n<li>Type 2 : JOI-kun takes only the fishes whose indices are between $L_j$ and $R_j$, inclusive. Then JOI-kun performs the following thought experiment: JOI-kun puts the fishes $L_j$, $L_j + 1$, $\\dots$, $R_j$ into an aquarium from left to right. By the above properties of the fishes, only one fish will survive in the aquarium. The index of the surviving fish depends on the choice of eaten fishes and the time when a fish eats another fish. JOI-kun wants to know the number of possible indices of surviving fishes. During the thought experiment, the order of the fishes does not change, and no two fishes eat the same fish simultaneously.</li>\n</ul>\n<p>Write a program which, given information of JOI-kun’s fishes and JOI-kun’s plan, calculates the number of possible indices of surviving fishes for each action of Type 2 in order to determine whether JOI-kun’s thought is correct or not. Note that this is just a thought experiment. Please be assured that no fishes are eaten actually.</p>",
+  "input": "<p>Read the following data from the standard input. Given values are all integers.</p>\n<p>$\\begin{align*}&amp; N \\\\ &amp; A_1 \\, A_2 \\, \\cdots \\, A_N \\\\ &amp; Q \\\\ &amp; \\text{(Query }1\\text{)} \\\\ &amp; \\text{(Query }2\\text{)} \\\\ &amp; \\vdots \\\\ &amp; \\text{(Query }Q\\text{)}  \\end{align*}$</p>\n<p>Each $\\text{(Query }j\\text{)}$ ($1 ≤ j ≤ Q$) consists of space separated integers. Let $T_j$ be the first integer of $\\text{(Query }j\\text{)}$. The content of this line is one of the following.</p>\n<ul>\n<li>If $T_j = 1$, this line contains two more space separated integers $X_j$, $Y_j$, in this order. This means JOI-kun takes an action of Type 1 on $j$-th day. The size of the fish $X_j$ becomes $Y_j$.</li>\n<li>If $T_j = 2$, this line contains two more space separated integers $L_j$, $R_j$, in this order. This means JOI-kun takes an action of Type 2 on $j$-th day. JOI-kun performs a thought experiment for fishes whose indices are between $L_j$ and $R_j$, inclusive.</li>\n</ul>",
+  "output": "<p>For each action of Type 2 (i.e., for each $j$ ($1 ≤ j ≤ Q$) with $T_j = 2$), in order, write the number of possible indices of surviving fishes to the standard output. The outputs should be separated by line breaks.</p>",
+  "samples": [
+    {
+      "input": "5\n6 4 2 2 6\n6\n2 1 5\n2 1 3\n1 3 1\n2 2 5\n2 1 5\n2 2 4\n",
+      "output": "5\n2\n2\n3\n1\n"
+    },
+    {
+      "input": "13\n10 4 2 5 20 5 4 8 20 10 3 3 7\n1\n2 1 13\n",
+      "output": "7\n"
+    },
+    {
+      "input": "12\n32 32 4 1 1 1 1 4 4 16 32 128\n7\n2 1 12\n2 2 6\n2 8 10\n2 1 9\n2 3 8\n2 5 9\n2 2 12\n",
+      "output": "12\n1\n1\n2\n6\n2\n1\n"
+    },
+    {
+      "input": "10\n2 3 5 10 1 3 4 9 5 2\n8\n2 1 10\n1 10 5\n2 1 10\n1 4 1000000000\n2 1 10\n1 8 20\n1 4 8\n2 1 10\n",
+      "output": "4\n6\n1\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Camp, JOI Spring Training Camp, JOI 2021/2022 Spring Training Camp",
+  "level": 27,
+  "tags": [
+    "binary_search",
+    "data_structures",
+    "lazyprop",
+    "math",
+    "segtree",
+    "stack"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 3.3333001136779785
+}

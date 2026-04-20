@@ -1,0 +1,33 @@
+{
+  "id": 20642,
+  "title": "Spaceship",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Bessie the cow has been abducted by aliens and is now trapped inside an alien spaceship! The spaceship has $N$ $(1\\le N\\le 60)$ rooms labeled $1\\ldots N$, with one-way doors connecting between some pairs of rooms (due to the strange alien technology at play, it is even possible for a door to lead from a room back to itself!). However, no two doors share the same starting and end room. Additionally, Bessie has a remote with buttons numbered $1\\ldots K$ $(1 \\le K \\le 60)$.</p>\n<p>The aliens will release Bessie if she can complete a strange task. First, they will choose two rooms, $s$ and $t$ $(1 \\le s, t \\le N)$, and two numbers, $b_s$ and $b_t$ $(1 \\le b_s, b_t \\le K)$. They will start Bessie in room $s$ and immediately have her press button $b_s$. Bessie will then proceed to navigate the ship while pressing buttons. There are a few rules for what Bessie can do:</p>\n<ul>\n<li>In each room, after pressing exactly one button, she must choose to either exit through a door to another (possibly the same) room or stop.</li>\n<li>Once Bessie presses a button, it is invalid for her to press the same button again unless, in the time between uses, she has pressed a button with a higher number. In other words, pressing button number $x$ will make it unavailable for use, while all buttons with numbers $&lt;x$ will be reset and again available for use.</li>\n<li>If Bessie presses an invalid button, she automatically fails and the aliens will keep her.</li>\n</ul>\n<p>Bessie is released only if she stops in room $t$, the last button she pressed was $b_t$, and no invalid buttons were ever pressed.</p>\n<p>Bessie is worried that she may not be able to complete the task. For $Q$ $(1\\le Q\\le 60)$ queries, each consisting of what Bessie considers a likely choice of $s, t, b_s$, and $b_t$, Bessie wants to know the number of sequences of rooms and button presses that would lead to her release. Report your answers modulo $10^9 + 7$ as they may be very large.</p>",
+  "input": "<p>The first line contains $N,K,Q$.</p>\n<p>The next $N$ lines each contain $N$ bits (each 0 or 1). The $j$-th entry of the $i$-th line is 1 if there exists a door from room $i$ to room $j$, and 0 if no such door exists.</p>\n<p>This is followed by $Q$ lines, each containing four integers $b_s$, $s$, $b_t$, $t$, denoting the starting button, starting room, final button, and final room respectively.</p>",
+  "output": "<p>The number of sequences for each of the $Q$ queries modulo $10^9+7$ on separate lines.</p>",
+  "samples": [
+    {
+      "input": "6 3 8\n010000\n001000\n000100\n000010\n000000\n000001\n1 1 1 1\n3 3 1 1\n1 1 3 3\n1 1 1 5\n2 1 1 5\n1 1 2 5\n3 1 3 5\n2 6 2 6\n",
+      "output": "1\n0\n1\n3\n2\n2\n0\n5\n"
+    },
+    {
+      "input": "6 4 6\n001100\n001110\n101101\n010111\n110111\n000111\n3 2 4 3\n3 1 4 4\n3 4 4 1\n3 3 4 3\n3 6 4 3\n3 1 4 2\n",
+      "output": "26\n49\n29\n27\n18\n22\n"
+    },
+    {
+      "input": "6 10 5\n110101\n011001\n001111\n101111\n111010\n000001\n2 5 2 5\n6 1 5 2\n3 4 8 3\n9 3 3 5\n5 1 3 4\n",
+      "output": "713313311\n716721076\n782223918\n335511486\n539247783\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2020-2021 Season, USACO 2020 December Contest, Platinum",
+  "level": 22,
+  "tags": [
+    "dp",
+    "math"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.2000000476837158
+}

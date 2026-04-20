@@ -1,0 +1,30 @@
+{
+  "id": 17921,
+  "title": "Pokémon Ice Maze",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are hired as a level designer for the next Pokémon series, with games called <em>Ice</em> and <em>Fire</em>. For the first of these two games, players have to get through a maze in an icy cave. The cave is represented as a grid, with each square of the grid being either ice, gravel or an obstacle.</p>\n<p>The player will start at a square, and then make a number of moves, each move represented by one of the four cardinal directions. The maze behaves in the following way. Assume that the square the player is trying to move into is an obstacle. In this case, the player does not move. If the square the player is moving into is gravel, the player successfully moves to the square and will stand still on the square. If the square is ice however, the player will first be transferred into that square, and then repeat the procedure again in the same direction. This means the player will glide on the ice until either colliding with an obstacle or reaching a square filled with gravel. Gliding on ice counts only as one move.</p>\n<p>You have almost finished your level design. In the maze, there is a goal square that you wish to reach. You still have to choose a square to be the starting point of the player. Since you do not want the level to be too easy, you want to make sure the number of moves needed to get from the starting point to the goal is sufficiently high.</p>\n<p>Can you compute the minimum number of <em>moves</em> needed to get from each point in the maze to the goal? Note that move may result in the player traveling multiple squares if gliding on the ice.</p>",
+  "input": "<p>The first line of the input contains the two integers $3 \\le C \\le 1\\,000$ and $3 \\le R \\le 1\\,000$, the number of columns and rows that the maze consists of.</p>\n<p>The next $R$ lines contains $C$ characters each, describing the maze. Each square in the maze is represented by one of the following characters:</p>\n<ul>\n<li>a period (<code>.</code>) represents a gravel square</li>\n<li>a pound sign (<code>#</code>) represents an obstacl</li>\n<li>an underscore (<code>_</code>) represents an ice square</li>\n<li>an M (<code>M</code>) represents the goal in the maze, which is also covered in gravel</li>\n</ul>\n<p>The edges of the maze are always surrounded by obstacle squares.</p>",
+  "output": "<p>Output $R$ lines with $C$ integers each, one for each square, containing the number of moves needed to reach the goal.</p>\n<p>If it is not possible to reach the target from a square, output $-1$ instead for that square.</p>",
+  "samples": [
+    {
+      "input": "5 6\n#####\n#...#\n#_###\n#_M.#\n#__.#\n#####\n",
+      "output": "-1 -1 -1 -1 -1\n-1 4 5 6 -1\n-1 4 -1 -1 -1\n-1 1 0 1 -1\n-1 3 1 2 -1\n-1 -1 -1 -1 -1\n"
+    },
+    {
+      "input": "5 6\n#####\n##__#\n##__#\n##M_#\n##_##\n#####\n",
+      "output": "-1 -1 -1 -1 -1\n-1 -1 1 2 -1\n-1 -1 1 2 -1\n-1 -1 0 1 -1\n-1 -1 1 -1 -1\n-1 -1 -1 -1 -1\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Swedish Coding Cup, LiU Coding Challenge 2018",
+  "level": 15,
+  "tags": [
+    "bfs",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.7143000364303589
+}

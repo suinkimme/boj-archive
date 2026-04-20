@@ -1,0 +1,24 @@
+{
+  "id": 17333,
+  "title": "Pipe Marbles",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Pipe Marbles is one of little X's favorite games. In this question, we shall consider a simple version of it. A screen of the game is depicted below in figure 1.</p>\n<p><img alt=\"\" src=\"1.png\"/><br/>\n(<i>Figure 1.</i>)</p>\n<p>At the start of the game, the upper and lower pipes on the left side each contain a fixed amount of marbles (some are dark colored and some are light colored), and the output pipe on the right side is empty. In each move, one can select a pipe from the left side and move the <b>rightmost marble</b> from that pipe to the right output pipe.</p>\n<p>For instance, we can move a marble from the lower left pipe into the output pipe, as depicted below in figure 2.<br/>\n<img alt=\"\" src=\"2.png\"/><br/>\n(<i>Figure 2.</i>)</p>\n<p>Assuming there are <var>n</var> marbles in the upper and <var>m</var> marbles in the lower pipe, then completing the game will require <var>n</var> + <var>m</var> moves to move all of the marbles from the left pipe to the output pipe. At the end, the <var>n</var> + <var>m</var> marbles in the output pipe <b>from left to right</b> will form an <b>output sequence</b>.</p>\n<p>As a math fanatic, little X knows that he has a total of <var>C</var>(<var>n</var> + <var>m</var>, <var>n</var>) different ways to complete the game, where different ways can produce the same output sequence. For example, consider the game scenario depicted below in figure 3:</p>\n<p><img alt=\"\" src=\"3.png\"/><br/>\n(<i>Figure 3.</i>)</p>\n<p>We let the letter <code>A</code> represent light colored balls and the letter <code>B</code> represent dark colored balls. Denote the action of moving a ball from the upper pipe to the right pipe as <code>U</code>, and the action of moving a ball from the lower pipe to the right pipe as <code>D</code>, then there are a total of <var>C</var>(2+1, 1) = 3 different ways to complete the game. Respectively, they are <code>UUD</code>, <code>UDU</code>, and <code>DUU</code>. Finally, the corresponding output sequences produced are (from left to right) respectively <code>BAB</code>, <code>BBA</code>, and <code>BBA</code>. The latter two ways therefore produce the same output sequence.</p>\n<p>Assuming that it's possible to create <var>K</var> different types of final output sequences, and that there are <var>a<sub>i</sub></var> ways (i.e. the number of different sequence of moves) to create the <var>i</var>-th type of these output sequences. Little X has known for a long time that:</p>\n<p>$\\sum_{i = 1}^{k}{a_i} = C(n + m, m)$</p>\n<p>Thus, little X wishes to compute the value of:</p>\n<p>$\\sum_{i = 1}^{k}{a_i^2}$</p>\n<p>Can you help him determine this value? Since it may be very large, you are only required to output it modulo 1024523 (the remainder when divided by 1024523).</p>\n<p><b>Note:</b> The aforementioned <var>C</var>(<var>n</var> + <var>m</var>, <var>n</var>) represents a combination. <var>C</var>(<var>a</var>, <var>b</var>) equals the number of ways to choose <var>b</var> items from a collection of <var>a</var> different items.</p>",
+  "input": "<p>The first line contains two integers <var>n</var> and <var>m</var>, respectively representing the number of marbles in the upper and lower pipes on the left side.</p>\n<p>The second line contains a string of <code>A</code>'s and <code>B</code>'s of length <var>n</var>, describing the marbles in the upper left side pipe from left to right. <code>A</code> represents a light colored marble and <code>B</code> represents a dark colored marble.</p>\n<p>The third line contains a string of <code>A</code>'s and <code>B</code>'s of length <var>m</var>, describing the marbles in the lower left side pipe.</p>",
+  "output": "<p>The output should consist of a single line with the sought value modulo 1024523.</p>",
+  "samples": [
+    {
+      "input": "2 1\nAB\nB\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2009",
+  "level": 23,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3.18179988861084
+}

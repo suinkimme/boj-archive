@@ -1,0 +1,26 @@
+{
+  "id": 33383,
+  "title": "Digit DP",
+  "time_limit": "5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>There are $2^n$ machines in a factory, numbered from $0$ to $2^n-1$. The $i$-th machine consumes $p_i$ units of power. The factory uses a system called Digit Dynamic Powering (Digit DP) to control the power the machines consume.</p>\n<p>Initially, an array $a_0, \\ldots, a_{n-1}$ is given. Then the system would set the initial $p_i$ to $\\sum\\limits_{j \\in S_i}{a_j}$, where $S_i$ is the set of $1$ bits in the binary representation of $i$.</p>\n<p>After that, there may be some modifications, each modification would be adding a certain value to the power of some machines that form an interval. Formally speaking, you would be given three integers $\\ell$, $r$, $x$, meaning that the power consumed by each of the machines numbered between $\\ell$ and $r$ (inclusively) should increase by $x$. The endpoints of the intervals would be given as $n$-digit binary strings.</p>\n<p>When some three distinct machines are used to produce a <strong>product</strong>, the <strong>product</strong>'s price should always be the product of the $p_i$'s of those machines.</p>\n<p>During these modifications, the manager may ask some questions about some intervals. What is the sum of the prices if we try every possible combination of three distinct machines in the interval to produce a <strong>product</strong>? </p>\n<p>Formally speaking, you would be given two integers $\\ell$, $r$, meaning that you should report the sum of the products $p_i \\cdot p_j \\cdot p_k$ of all triples $(i,j,k)$ satisfying $\\ell \\leq i &lt; j &lt; k \\leq r$. As the answer may be rather large, find it modulo $998\\,244\\,353$. The endpoints of the intervals would also be given as $n$-digit binary strings.</p>",
+  "input": "<p>The first line contains two integers $n$ and $q$ ($1 \\leq n \\leq 100$; $1 \\leq q \\leq 5 \\cdot 10^4$).</p>\n<p>The second line contains the integer array $a_0, a_1, \\ldots, a_{n-1}$ ($0 \\leq a_i \\leq 10^9$).</p>\n<p>The next $q$ lines contain queries. On each line, the first integer $t$ indicates the type of the query.</p>\n<p>If $t = 1$, three integers $\\ell$, $r$, $x$ follow ($0 \\leq \\ell \\leq r &lt; 2^n$, $0 \\leq x \\leq 10^9$).</p>\n<p>If $t = 2$, two integers $\\ell$, $r$ follow ($0 \\leq \\ell \\leq r &lt; 2^n$).</p>\n<p>Note that $\\ell$ and $r$ are given in $n$-bit binary string format, and the leftmost bit is the highest bit.</p>",
+  "output": "<p>For each query of type $2$, print a line with a single integer: the answer modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2 4\n2 000 111\n1 010 101 1\n2 000 111\n",
+      "output": "1960\n3040\n"
+    },
+    {
+      "input": "2 2\n1 1\n2 00 10\n2 00 11\n",
+      "output": "0\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2023, Day 6: olmrgcsi And His Friends’ Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,25 @@
+{
+  "id": 24443,
+  "title": "알고리즘 수업 - 선택 알고리즘 4",
+  "time_limit": "3.5 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>오늘도 서준이는 선택 알고리즘 수업 조교를 하고 있다. 아빠가 수업한 내용을 학생들이 잘 이해했는지 문제를 통해서 확인해보자.</p>\n<p><i>N</i>개의 서로 다른 양의 정수가 규칙 없이 저장된 배열 A가 있다. 최악의 경우 선형 시간 선택 알고리즘으로 배열 A에서 <em>K</em><i> </i>번째 작은 원소를 찾아서 우리 서준이를 도와주자. 총 <em>Q</em> 개의 쿼리가 주어지고 다음 두 종류의 쿼리를 수행해보자.</p>\n<ul>\n<li><code><em>1</em> <em>i j k</em></code> : <em>A<sub>i</sub></em>, <em>A<sub>i+1</sub></em>, ... , <em>A<sub>j</sub></em>에서 <em>k</em>번째 작은 원소를 출력한다.</li>\n<li><code><em>2</em> <em>i j</em></code> : <em>A<sub>i</sub></em>와 <em>A<sub>j</sub></em>를 교환한다.</li>\n</ul>\n<p>크기가 <em>N</em>인 배열에 대한 최악의 경우 선형 시간 선택 알고리즘 의사 코드는 다음과 같다.</p>\n<pre>\nlinear_select(A[], p, r, k) { # A[p..r]에서 k번째 작은 원소를 찾는다.\n    1) 원소의 총수가 5개 이하이면 k번째 원소를 찾고 알고리즘을 끝낸다.\n    2) 전체 원소를 5개씩의 원소를 가진 ⌈n / 5⌉ 개의 그룹으로 나눈다.\n       (원소의 총수가 5의 배수가 이니면 이 중 한 그룹은 5개 미만이 된다.)\n    3) 각 그룹에서 중앙값(원소가 5개이면 3번째 원소)을 찾는다.\n       원소의 총수가 홀수이면 중앙값이 하나이므로 문제가 없고,\n       원소의 총수가 짝수이면 두 중앙값 중 임의로 선택한다.\n       이렇게 찾은 중앙값들을 m<sub>1</sub>, m<sub>2</sub>, ..., m<sub>⌈n / 5⌉</sub>이라 하자.\n    4) m<sub>1</sub>, m<sub>2</sub>, ..., m<sub>⌈n / 5⌉</sub>들의 중앙값 M을 재귀적으로 구한다.\n       마찬가지로 원소의 총수가 짝수이면 두 중앙값 중 임의로 선택한다.\n    5) M을 기준원소로 삼아 전체 원소를 분할한다. (M보다 작거나 같은 것은 M의 왼쪽에, M보다 큰 것은 M의 오른쪽에 오도록 한다.)\n    6) 분할된 두 그룹 중 적합한 쪽을 선택해 단계 1) ~ 6)을 재귀적으로 반복한다.\n}\n</pre>",
+  "input": "<p>첫째 줄에 배열 A의 크기 <em>N</em>(5 ≤ <em>N</em> ≤ 10,000), 쿼리 개수 <em>Q</em>(1 ≤ <em>Q</em> ≤ 10,000)가 주어진다.</p>\n<p>다음 줄에 서로 다른 배열 A의 원소 <em>A<sub>1</sub></em>, <em>A<sub>2</sub></em>, ..., <em>A<sub>N</sub></em>이 주어진다. (1 ≤ <em>A<sub>i</sub></em> ≤ 10<sup>9</sup>)</p>\n<p>다음 <em>Q</em>개의 줄에 쿼리가 한 줄에 하나씩 주어진다. (1 ≤ <em>i</em> ≤ <em>j</em> ≤ <em>N</em>, 1 ≤ <em>k</em> ≤ <em>j</em> - <em>i</em> + 1) 1번 쿼리가 1개 이상 주어진다.</p>",
+  "output": "<p>1번 쿼리의 결과를 모두 출력한다.</p>",
+  "samples": [
+    {
+      "input": "7 4\n5 4 7 1 2 3 6\n1 2 5 3\n2 1 2\n1 2 5 3\n1 1 7 7\n",
+      "output": "4\n5\n7\n"
+    }
+  ],
+  "hint": null,
+  "source": "MenOfPassion, chansol, eric00513, jhnah917, jthis, palilo, parkky, sait2000, tlsdydaud1, tony9402",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "recursion"
+  ],
+  "accepted_user_count": 46,
+  "submission_count": null,
+  "average_tries": 7.065199851989746
+}

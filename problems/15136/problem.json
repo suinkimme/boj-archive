@@ -1,0 +1,30 @@
+{
+  "id": 15136,
+  "title": "Fygon 2.0",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The new version of beloved programming language Fygon has been released! The brand new Fygon 2.0 still has only two statements. The first statement is <code>lag</code>. It substitutes almost any other statement. Second statement is a <code>for</code> loop:</p>\n<pre>\nfor &lt;variable&gt; in range (&lt;from&gt;, &lt;to&gt;):\n    &lt;body&gt;</pre>\n<ul>\n<li>The for <code>loop</code> makes <code>&lt;variable&gt;</code> iterate from <code>&lt;from&gt;</code> to <code>&lt;to&gt;</code>, <strong>both inclusive</strong>.</li>\n<li>If <code>&lt;from&gt;</code> is greater than <code>&lt;to&gt;</code>, <code>&lt;body&gt;</code> is not executed at all.</li>\n<li><code>&lt;variable&gt;</code> is a lowercase letter from <code>a</code> to <code>z</code>, except for <code>n</code>, which is a variable that is defined prior to the given code snippet.</li>\n<li><code>&lt;from&gt;</code> and <code>&lt;to&gt;</code> can be equal to any variable defined in outer loop. In addition to that, <code>&lt;from&gt;</code> can be <code>1</code> and <code>&lt;to&gt;</code> can be <code>n</code>.</li>\n<li>The <code>&lt;body&gt;</code> of the loop is indented by four spaces and contains at least one statement.</li>\n</ul>\n<p>If you are familiar with Fygon 1.0, you can notice that, in the spirit of the best programming practices, Fygon 2.0 is not backwards compatible, since the <code>range</code> function now requires two parameters.</p>\n<p>The performance of the new version is significantly improved, so you can write more nested <code>for</code> loops. That is why we are no longer interested in the exact number of operations, but in the <em>asymptotic complexity</em> of the program instead. For simplicity, all <code>for</code> loops are nested in a single chain and there is exactly one <code>lag</code> statement that is inside all <code>for</code> loops. All loop variables are different and are not equal to <code>n</code>.</p>\n<p>Let’s define <em>f</em>(<em>n</em>) as the number of <code>lag</code> operations exectuted by a given Fygon program as the function of <code>n</code>. For non-negative integer <code>k</code> and positive rational number <em>C</em> we say that <em>C</em> · <em>n<sup>k</sup></em> is the <em>asymptotic complexity</em> of the program if</p>\n<p>\\[\\lim_{n \\to \\infty}{\\frac{f(n)}{C \\cdot n^k}} = 1\\]</p>\n<p>Given a Fygon 2.0 program, find its asymptotic complexity.</p>",
+  "input": "<p>The first line of the input contains single integer <em>m</em> — the number of lines in Fygon 2.0 program. Next <em>m</em> lines contain the program itself. The program has at least 1 and at most 20 <code>for</code> statements. Each <code>for</code> statement contains either single nested <code>for</code> statement or <code>lag</code> statement.</p>",
+  "output": "<p>Output numbers <em>k</em> and <em>C</em>. <em>C</em> should be output in the form of irreducible fraction <em>p</em>/<em>q</em>, where <em>p</em> and <em>q</em> are coprime.</p>",
+  "samples": [
+    {
+      "input": "4\nfor i in range(1, n):\n    for j in range(1, i):\n        for k in range(j, n):\n            lag",
+      "output": "3 1/3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2017",
+  "level": 23,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield",
+    "floyd_warshall",
+    "graphs",
+    "scc",
+    "shortest_path"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 2.5713999271392822
+}

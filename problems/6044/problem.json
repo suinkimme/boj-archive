@@ -1,0 +1,25 @@
+{
+  "id": 6044,
+  "title": "Rocks and Trees",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<pre>\nMy country's bigger than most\nAnd if asked I boast\n'Cause I'm really proud\nSo I shout it loud\nThough our numbers are few\nWe will welcome you\n\nAlthough we don't have history\nGold medal winning teams\nHeroes or prisoners\nWorld famous volcanoes\nStill what we've got's glorious\n\n'Cause we've got\nRocks and trees\nAnd trees and rocks\nAnd rocks and trees\nAnd trees and rocks\nAnd rocks and trees\nAnd trees and rocks\nAnd rocks and trees\nAnd trees and rocks\nAnd water \n             -The Arrogant Worms, on Canada</pre>\n<p><a href=\"http://www.youtube.com/watch?v=P2Ca-vTapfU\">http://www.youtube.com/watch?v=P2Ca-vTapfU</a></p>\n<p>After moving across the 49th parallel to Canada, the land of rocks and trees, Farmer John's cows invented a game to spend their leisure time on the pasture; naturally, it involved the rocks and trees! Cowboy Ted likes this game very much, but so poor is his luck that he always loses to other cows. This time, he is going to seek your help.</p>\n<p>The game's rules are simple. It is played with a tree that has both N (2 &lt;= N &lt;= 10,000) nodes conveniently numbered 1..N and also N-1 branches. Node 1 is the root of this tree; except for node 1, node i has parent P_i (1 &lt;= P_i &lt; i). Initially, Each node contains some rocks (except the root node, which has no rocks). In particular, non-root node i has exactly R_i (1 &lt;= R_i &lt;= 1,000) rocks at the beginning of the game.</p>\n<p>Two players alternate turns to play this game in turn, with Ted going first. In each turn, the current player can choose a non-root node i and move at most L (1 &lt;= L &lt;= 1,000) rocks from this node one branch closer to the root (i.e., move these rocks to the parent node). He must move at least one rock, and, of course, he cannot exceed the current number of rocks on this node. The game ends when a player can't make a legal move (i.e., when all the rocks are on node 1); that player loses.</p>\n<p>Ted needs your help. He has given you the initial configuration of the game, and he will then make T (1 &lt;= T &lt;= 10,000) changes to the configuration one by one. Please help him determine, after each step, if he can win the game beginning from this configuration, assuming both he and his opponent use the best possible strategy.</p>\n<p>Ted's changes are specified as two integers A_j (1 &lt; A_j &lt;= N) and B_j (1 &lt;= B_j &lt;= 1,000), meaning that Ted will change the number of rocks on node A_j to B_j (this is a 'set' not a 'subtract' or 'add'), and will then ask you whether he can win. Changes accumulate; node A_j's rocks stay at B_j until another change for A_j appears.</p>\n<p>Consider this example with three nodes numbered as shown and the shape shown in Board 0.</p>\n<p>Initially, there are 5 rocks on node 2 and 3 rocks on node 3; see Board 1.</p>\n<p>For the first change, Ted removes 2 rocks from node 2 (thus leaving 3); see Board 2.  For the second change, Ted removes 2 rocks from node 3 (thus leaving 1).  Note that node 2 still has 3 rocks; see Board 3.</p>\n<pre>\n     1            -         -         -\n    / \\          / \\       / \\       / \\\n   2   3        5   3     3   3     3   1\n\n  Board 0      Board 1   Board 2   Board 3</pre>\n<p>Your program should determine in each case who wins.</p>\n<p>For about 30% of the test cases, N &lt;= 10, and T &lt;= 100, and no tree node will have more than 5 rocks on it after any of Ted's changes.</p>\n<p>Partial feedback will be provided for your first 50 submissions.</p>",
+  "input": "<ul>\n<li>Line 1: Three space-separated integers: N, T, and L</li>\n<li>Lines 2..N: Line i contains two space-separted integers: P_i and R_i</li>\n<li>Lines N+1..N+T: Line j+N describes Ted's next change using two space-separated integers: A_j and B_j</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Lines 1..T: Line i contains \"Yes\" if Ted can win the game after change i; and \"No\" otherwise.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "3 2 10\n1 5\n1 3\n2 3\n3 1\n",
+      "output": "No\nYes\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2009-2010 Season, USACO Holiday Bonus 2010 Contest, Gold",
+  "level": 22,
+  "tags": [
+    "game_theory",
+    "sprague_grundy"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2
+}

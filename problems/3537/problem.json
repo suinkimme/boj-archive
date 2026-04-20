@@ -1,0 +1,26 @@
+{
+  "id": 3537,
+  "title": "Ideal Contest",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>It’s a pity that there is no higher-order contest for ACM ICPC regionals and subregionals; probably this is because it’s very hard to rank them. But now we have an idea how to do this! The idea is based on a notion of negidealness — a number showing non-conformity of the contest results with “ideal” contest criteria. It is a weighted sum of the following specific negidealnesses (penalties).</p>\n<p>Vainness penalty V . Each team should solve at least one problem. If a team solves no problems, a penalty of 1/T (where T is the number of teams that participated in the contest) for each such team is added.</p>\n<p>Oversimplification penalty O. There should be no team with all the problems solved. If some teams solve all the problems, a penalty of 1/T is added for each such team.</p>\n<p>Evenness penalty E. The number of problems solved by different teams should increase evenly. If the difference in problems solved between two adjacent (in the standings) teams is greater than 1, then the penalty of 1/P (where P is the total number of problems) is added for each skipped number of problems solved. E.g., if a team solves 5 problems, and the next team solves 1 problem, then the penalty of 3/P should be added, since no team solved 2, 3 or 4 problems.</p>\n<p>Unsolvability penalty U. Every problem should be solved by at least one team. If a problem is not solved, a penalty of 1/P for each such problem is added.</p>\n<p>Instability penalties I<sub>1</sub>, I<sub>2</sub>, . . . , I<sub>P</sub>. If a problem p was solved by a team, then this problem should be solved by all the teams ranked above. For each team which did not solve problem p ranked above the lowest-ranked team that did solve problem p a penalty of 1/T is added to I<sub>p</sub>.</p>\n<p>The total negidealness N equals 1.03V + 3.141O + 2.171E + 1.414U + (I<sub>1</sub> + I<sub>2</sub> + · · · + I<sub>P</sub>)/P.</p>\n<p>Write a program that finds the negidealness of the given results table.</p>",
+  "input": "<p>The input file contains a contest results table in plain ASCII. The only whitespace symbol in the table is a space. There is always at least one space separating columns. The problems are named with capital English letters in the alphabetical order. There are at most 26 problems and at most 300 teams.</p>",
+  "output": "<p>The output data should contain the penalties for each criterion (values V , O, E, U, I<sub>1</sub>, . . . , I<sub>P</sub>) and the total negidealness. All the real numbers should be precise up to 3 digits after the decimal point. </p>",
+  "samples": [
+    {
+      "input": "   The contest header may contain\n      arbitrary number of lines\nTeam          A  B C  D  E   = Time R\n-------------------------------------\nRevda STU     + +  +2 +1 -9  4 9274 1\nGirvas NU #1  +  + -1 .  -11 2 321  2\nKargopol SU   + -3 +  .  -4  2 321  2\nUtorgosh SU   . .  .  +  -5  1 122  4\nDubrovno SU   . +  -1 .   -4 1 123  5\nGirvas NU - 2 . .  .  -5 -99 0 0    6\n",
+      "output": "Vainness = 0.167\nOversimplification = 0.000\nEvenness = 0.200\nUnsolvability = 0.200\nInstability 1 = 0.000\nInstability 2 = 0.333\nInstability 3 = 0.000\nInstability 4 = 0.333\nInstability 5 = 0.000\nNegidealness = 1.022\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2010",
+  "level": 0,
+  "tags": [
+    "implementation",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 3.5
+}

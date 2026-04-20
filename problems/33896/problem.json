@@ -1,0 +1,30 @@
+{
+  "id": 33896,
+  "title": "아깝게 놓친 COSS 장학금",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>COSS 사업단은 데이터 및 보안과 연관된 프로젝트를 진행한 학생들 중에서 가장 우수하게 프로젝트를 진행한 학생에게 장학금을 지급하고자 한다.</p>\n<p>COSS 사업단에서 장학금 지급을 담당하는 재민이는 $n$명의 학생이 제출한 프로젝트를 평가한 후, 이들의 이름 $\\text{name}$과 심사한 프로젝트 점수 $\\text{score}$, 보안 위험도 $\\text{risk}$, 프로젝트를 진행하는 데 사용된 비용 $\\text{cost}$를 엑셀에 정리하였다.</p>\n<p>COSS 사업단은 이렇게 정리한 데이터를 이용하여 가장 우수한 학생을 결정하는 <strong>장학 점수</strong>를 계산하고, 이 <strong>장학 점수</strong>가 가장 높은 학생에게 장학금을 지급하기로 했다.</p>\n<p>이때, 각 학생의 <strong>장학 점수</strong>는 다음과 같이 계산된다.</p>\n<p>$$\\left\\lfloor\\frac{\\text{score}^3}{\\text{cost} × (\\text{risk} + 1)}\\right\\rfloor$$</p>\n<p>그러나, 재민이는 <strong>장학 점수</strong>가 두 번째로 높은 학생도 열심히 노력했지만 장학금을 받지 못한 것이 아쉽다고 생각해 별도의 선물을 주려고 한다.</p>\n<p>다시 엑셀을 열어서 선물을 줄 학생을 찾기에는 이미 지친 재민이를 도와서 <strong>장학 점수</strong>가 두 번째로 높은 학생의 이름을 찾아주자!</p>",
+  "input": "<p>첫 번째 줄에 학생의 수를 나타내는 정수 $n$이 주어진다. $(2 ≤ n ≤ 30)$</p>\n<p>이후 $n$개의 줄에는 각 학생의 $\\text{name}, \\text{score}, \\text{risk}, \\text{cost}$ 정보가 공백으로 구분되어 주어진다.</p>\n<p>여기서 $\\text{name}$은 대문자 알파벳으로 이루어진 문자열이며, $\\text{name}$의 길이는 $2$ 이상 $10$ 이하이다.</p>\n<p>서로 다른 두 학생의 이름이 같은 경우는 주어지지 않는다.</p>\n<p>$\\text{score}$는 $10$ 이상 $100$ 이하의 정수, $\\text{risk}$는 $0$ 이상 $9$ 이하의 정수, $\\text{cost}$는 $10$ 이상 $200$ 이하의 정수이다.</p>",
+  "output": "<p>학생들을 다음과 같은 순서대로 나열할 때, 앞에서 두 번째로 오는 학생의 이름을 출력한다.</p>\n<ol>\n<li>장학 점수가 높은 학생이 먼저 오도록 내림차순으로 정렬한다.</li>\n<li>장학 점수가 동일한 학생들이 있는 경우, 프로젝트 진행 비용이 적은 학생이 먼저 오도록 오름차순으로 정렬한다.</li>\n<li>장학 점수와 프로젝트 진행 비용이 모두 동일한 학생들이 있는 경우, 이름이 사전 순으로 빠른 학생이 먼저 오도록 정렬한다.</li>\n</ol>",
+  "samples": [
+    {
+      "input": "5\nKIM 50 1 100\nPARK 70 2 130\nLEE 60 0 120\nCHOI 50 1 90\nJUNG 80 3 160\n",
+      "output": "PARK\n"
+    },
+    {
+      "input": "4\nAA 30 2 20\nBB 20 1 80\nCC 10 1 10\nDD 10 1 10\n",
+      "output": "CC\n"
+    }
+  ],
+  "hint": "<p>① $\\lfloor x \\rfloor$는 $x$보다 작거나 같은 정수 중 가장 큰 값을 의미한다.</p>\n<p>② \"사전 순\" 정렬 기준: 문자열을 사전 순으로 정렬할 때는 다음 기준에 따라 순서를 결정한다.</p>\n<ol>\n<li>문자열을 정렬할 때, 앞 글자부터 차례대로 비교하며 알파벳 순서 상 앞선 글자가 먼저 오는 순서가 우선이다. </li>\n<li>비교 중인 글자가 같을 경우, 그다음 글자를 계속 비교하여 순서를 결정한다.</li>\n<li>문자열의 길이가 다를 경우, 앞부분이 모두 같다면 짧은 문자열이 먼저 온다. (예: \"ab\" → \"abc\")</li>\n</ol>",
+  "source": "University, 한양대학교 ERICA 캠퍼스, 2025 한양대학교 ERICA 프로그래밍 경시대회 HEPC, MOSS Division, University, 한양대학교 ERICA 캠퍼스, 2025 한양대학교 ERICA 프로그래밍 경시대회 HEPC, COSS Division, University, 한양대학교 ERICA 캠퍼스, 2025 한양대학교 ERICA 프로그래밍 경시대회 HEPC, Open Contest, jaemkim01, bsyun0571, bumsoo0515, gi1dong2, hellogaon, khj20006, kjmin622, putdata, qsccsq22, rasauq1122, rhdqor213, sjhi00, skeep194, tony9402",
+  "level": 6,
+  "tags": [
+    "math",
+    "implementation",
+    "sorting"
+  ],
+  "accepted_user_count": 236,
+  "submission_count": null,
+  "average_tries": 2.021199941635132
+}

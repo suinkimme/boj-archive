@@ -1,0 +1,22 @@
+{
+  "id": 13039,
+  "title": "Barbarians",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Life on an island could be dangerous! Recently the country, which territory consists of n islands, was attacked by barbarians. The islands of the country were connected by the bridges in such way that for any two islands there was exactly one way to get from one island to another without visiting any island twice.</p>\n<p>The barbarians understood that the bridges were the weak point of the country. So they decided to destroy them one after another. The people of the country got really angry. For the i-th island the initial anger of its people was a<sub>i</sub>.</p>\n<p>Let us describe how the anger changes when the bridge is destroyed. Consider an island x, let the number of islands that the people from x could reach before some bridge was destroyed be a, and the number of such islands after it was destroyed be b. Then the anger of people at x would be multiplied by a - b + 1.</p>\n<p>You must develop the system to calculate the current anger of people. You will get several requests, each request contains two integers u and v. Request with integers u and v means that the bridge between u + res and v + res was destroyed, where res is the result of the previous query. For the first query consider res = 0.</p>\n<p>Let the anger of people at island i after the bridge from the query was destroyed be b<sub>i</sub>. Set res to be equal to the sum of all b<sub>i</sub> for i from 1 to n, taken modulo 10<sup>9</sup> + 7, and print this value.</p>\n<p>To better understand the queries format, consider the example below.</p>\n<p>Initially, the anger of people is</p>\n<p>1 2 3 4 5</p>\n<p>After removing the bridge between 1 and 3, the anger of people at islands 1 and 2 was multiplied by 4, and anger of people at other islands — by 3. So the new angriness values are</p>\n<p>4 8 9 12 15</p>\n<p>The sum of anger values if 48, we assign it to res, print it, and use it to find out that the bridge in the second query was between islands ( - 47) + 48 = 1 and ( - 46) + 48 = 2. The new values of angriness after this destruction are</p>\n<p>8 16 9 12 15</p>\n<p>The sum of anger values is 60. The next bridge to destroy was between islands 3 and 5. The new values of anger are</p>\n<p>8 16 18 24 45</p>\n<p>The sum of anger values is 111. After destroying the last bridge the anger values are</p>\n<p>8 16 36 48 45</p>\n<p>The sum is 153.</p>",
+  "input": "<p>The first line contains integer n (2 ≤ n ≤ 2·10<sup>5</sup>) — the number of islands.</p>\n<p>The second line contains n integers a<sub>i</sub> (1 ≤ a<sub>i</sub> ≤ 10<sup>9</sup> + 6) — the initial angriness of people.</p>\n<p>The following n - 1 lines contain two integers u<sub>i</sub>, v<sub>i</sub> each (1 ≤ u<sub>i</sub>, v<sub>i</sub> ≤ n) and describe bridges. It is guaranteed that there is exactly one way to get from any island to any other.</p>\n<p>The following n - 1 lines describe queries. See description in the problem statement to better understand the format of queries. It is guaranteed that queries specify bridges that exist and were not yet destroyed.</p>",
+  "output": "<p>For each query print res value, one per line in the order of queries.</p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "5\n1 2 3 4 5\n1 2\n1 3\n3 4\n3 5\n3 1\n-47 -46\n-57 -55\n-108 -107\n",
+      "output": "48\n60\n111\n153\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Russian Code Cup, 2016, RCC 2016 3rd Qualification Round",
+  "level": 24,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

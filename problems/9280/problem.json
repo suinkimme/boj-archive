@@ -1,0 +1,25 @@
+{
+  "id": 9280,
+  "title": "False Sense of Security",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Freddy discovered a new procedure to grow much bigger cauliﬂowers. He wants to share this ﬁnding with his fellow gardener Tommy but he does not want anyone to steal the procedure. So the two gardeners agreed upon using a simple encryption technique proposed by M. E. Ohaver.</p>\n<p>The encryption is based on the Morse code, which represents characters as variable-length sequences of dots and dashes. The following table shows the Morse code sequences for all letters:</p>\n<p><img alt=\"\" src=\"/upload/images/fs1.png\" style=\"height:156px; width:340px\"/></p>\n<p>Note that four possible dot-dash combinations are unassigned. For the purposes of this problem we will assign them as follows (note these are not the assignments for actual Morse code):</p>\n<p><img alt=\"\" src=\"/upload/images/fs2.png\" style=\"height:62px; width:386px\"/></p>\n<p>In practice, characters in a message are delimited by short pauses, typically displayed as spaces.<br/>\nThus, the message ACM GREATER NY REGION is encoded as:</p>\n<p>.- -.-. -- ..-- --. .-. . .- - . .-. ..-- -. -.-- ..-- .-. . --. .. --- -.</p>\n<p>The Ohaver’s encryption scheme is based on mutilating Morse code, namely by removing the pauses between letters. Since the pauses are necessary (because Morse is a variable-length encoding that is not preﬁx-free), a string is added that identiﬁes the number of dots and dashes in each character. For example, consider the message “.--.-.--”. Without knowing where the pauses should be, this could be “ACM”, “ANK”, or several other possibilities. If we add length information, such as “.--.-.-- 242”, then the code is unambiguous.</p>\n<p>Ohaver’s scheme has three steps, the same for encryption and decryption:</p>\n<ol>\n<li>Convert the text to Morse code without pauses but with a string of numbers to indicate code lengths.</li>\n<li>Reverse the string of numbers.</li>\n<li>Convert the dots and dashes back into the text using the reversed string of numbers as code lengths.</li>\n</ol>\n<p>As an example, consider the encrypted message “AKADTOF IBOETATUK IJN”. Converting to Morse code with a length string yields:</p>\n<p>.--.-.--..----..-...--..-...---.-.--..--.-..--...----. 232313442431121334242</p>\n<p>By reversing the numbers and decoding, we get the original message “ACM GREATER NY REGION”.</p>\n<p>The security of this encoding scheme is not too high but Freddy believes it is suﬃcient for his purposes. Will you help Freddy to implement this encoding algorithm and to protect his sensitive information?</p>",
+  "input": "<p>The input will consist of several messages encoded with Ohaver’s algorithm, each of them on one line. Each message will use only the twenty-six capital letters, underscores, commas, periods, and question marks. Messages will not exceed 1000 characters in length.</p>",
+  "output": "<p>For each message in the input, output the decoded message on one line.</p>",
+  "samples": [
+    {
+      "input": "FENDSVTSLHW.EDATS,EULAY\nTRDNWPLOEF\nNTTTGAZEJUIIGDUZEHKUE\nQEWOISE.EIVCAEFNRXTBELYTGD.\n?EJHUT.TSMYGW?EJHOT\nDSU.XFNCJEVE.OE_UJDXNO_YHU?VIDWDHPDJIKXZT?E\nADAWEKHZN,OTEATWRZMZN_IDWCZGTEPION\n",
+      "output": "FALSE_SENSE_OF_SECURITY\nCTU_PRAGUE\nTWO_THOUSAND_THIRTEEN\nQUOTH_THE_RAVEN,_NEVERMORE.\nTO_BE_OR_NOT_TO_BE?\nTHE_QUICK_BROWN_FOX_JUMPS_OVER_THE_LAZY_DOG\nADAPTED_FROM_ACM_GREATER_NY_REGION\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2013",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 58,
+  "submission_count": null,
+  "average_tries": 1.534500002861023
+}

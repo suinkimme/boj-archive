@@ -1,0 +1,30 @@
+{
+  "id": 10374,
+  "title": "Combinator Expression",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Combinatory logic may be thought as one of computational models allowing to express any computable function as a composition of functions from a small finite basis. In this problem we consider a restricted variant of BCKW basis, BCKI.</p>\n<p>Combinator expression in BCKI basis is a string, corresponding to the following grammar:</p>\n<pre>\n⟨Expression⟩ ::= ⟨Expression⟩ ⟨Term⟩ | ⟨Term⟩\n⟨Term⟩ ::= ‘(’⟨Expression⟩‘)’ | ‘B’ | ‘C’ | ‘K’ | ‘I’</pre>\n<p>As we can see from the grammar, the expression is a tree of applications where leafs are combinators \\(B\\), \\(C\\), \\(K\\) and \\(I\\). The application is left-associative. For example \\(BIC\\) is equivalent to \\((BI)C\\), but not to \\(B(IC)\\).</p>\n<p>For the sake of the explanation we will use lowercase English letters (a ... z) to represent sub-expressions. These lowercase letters will not appear in real data. For example, \\(BIC\\) can be represented by \\(BxC\\) (that is, \\(B\\underbrace { I }_{ x }C\\)), \\(x\\) (\\(\\underbrace { BIC }_{ x }\\)), \\(xy\\) (\\(\\underbrace { BI }_{ x } \\underbrace { C }_{ y }\\)), \\(Bxy\\) (\\(B\\underbrace { I }_{ x }\\underbrace { C }_{ y }\\)), but not by \\(Bx\\).</p>\n<p>We say that in expression \\(pq\\) we apply \\(p\\) to \\(q\\). We can employ our intuition by saying that \\(p\\) is a function and \\(q\\) is its parameter. However, the evaluation process is quite different from traditional computation — instead of passing values over fixed expression tree, we evaluate by altering that tree so that the result is also some combinator expression.</p>\n<p>To evaluate an expression, we need to select some sub-expression, corresponding to one of the patterns specified in the table below — that is, there should exist such \\(x\\) (and maybe \\(y\\) and \\(z\\)) that the pattern from the table becomes equal to the sub-expression. Then we need to replace the sub-expression with the reduction result from the table.</p>\n<table class=\"table\" style=\"width:50%\">\n<thead>\n<tr>\n<th>Pattern</th>\n<th>Reduction result</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>\\(Bxyz\\)</td>\n<td>\\(x(yz)\\)</td>\n<td>Composition function (Zusammensetzungsfunktion)</td>\n</tr>\n<tr>\n<td>\\(Cxyz\\)</td>\n<td>\\((xz)y\\)</td>\n<td>Exchange function (Vertauschungsfunktion)</td>\n</tr>\n<tr>\n<td>\\(Kxy\\)</td>\n<td>\\(x\\)</td>\n<td>Constant function (Konstanzfunktion)</td>\n</tr>\n<tr>\n<td>\\(Ix\\)</td>\n<td>\\(x\\)</td>\n<td>Identity function (Identitätsfunktion)</td>\n</tr>\n</tbody>\n</table>\n<p>After the replacement took place we must repeat the process, until there remains no suitable subexpressions. This final expression is normal form of the original one. For example, in expression \\(CIC(CB)I\\) we can make the following letter assignment</p>\n<p>\\[\\underbrace { C }_{ C }\\underbrace { I }_{ x }\\underbrace { C }_{ y }\\underbrace { (CB) }_{ z }I\\]</p>\n<p>and see that \\(CIC(CB)I\\) ≡ \\((((CI)C)(CB))I\\) ≡ \\((((Cx)y)z)I\\) contains \\(C\\) combinator pattern and thus reduces to \\(((xz)y)I\\) ≡ \\(I(CB)CI\\):</p>\n<p>\\[(\\underbrace { C }_{ C }\\underbrace { I }_{ x }\\underbrace { C }_{ y }\\underbrace { (CB) }_{ Z })I \\rightarrow (\\underbrace { I }_{ x } \\underbrace { (CB) }_{ z }\\underbrace { C }_{ y })I\\]</p>\n<p>One more example: \\(B((CK)I)IC\\) expression. Let us first reduce combinator \\(B\\):</p>\n<p>\\[(\\underbrace { B }_{ B }\\underbrace { ((CK)I) }_{ x }\\underbrace { I }_{ y }\\underbrace { C }_{ z } \\rightarrow \\underbrace { ((CK)I) }_{ x } (\\underbrace { I }_{ y }\\underbrace { C }_{ z })\\]</p>\n<p>Now, let’s reduce the last \\(I\\):</p>\n<p>\\[((CK)I)(\\underbrace { I }_{ I } \\underbrace { C }_{ x }) \\rightarrow ((CK)I)C\\]</p>\n<p>And now we finish evaluation with two more reductions:</p>\n<p>\\[((\\underbrace { C }_{ C }\\underbrace { K }_{ x }) \\underbrace { I }_{ y }) \\underbrace { C }_{ z } \\rightarrow (\\underbrace { K }_{ K }\\underbrace { C }_{ x }) \\underbrace { I }_{ y } \\rightarrow C\\]</p>\n<p>It is possible to show that the normal form remains the same irrespectable to the order of evaluation. For example, the following evaluation order:</p>\n<p>\\[C(K(II)(\\underbrace { I }_{ I }\\underbrace { C }_{ x })) \\rightarrow C(K(\\underbrace { I }_{ I }\\underbrace {  I}_{ x })(C)) \\rightarrow C((\\underbrace { K }_{ K }\\underbrace { I }_{ x }) \\underbrace { C }_{ y }) \\rightarrow CI\\]</p>\n<p>leads to the same result as </p>\n<p>\\[ C(K(\\underbrace {I  }_{ I }\\underbrace { I }_{ x })(IC)) \\rightarrow C((\\underbrace { K }_{ K }\\underbrace { I }_{ x })\\underbrace { (IC) }_{ y }) \\rightarrow CI\\]</p>\n<p>However, as you see, the number of reductions is different: 3 in the first case and 2 in the second. This poses an interesting problem — to find an evaluation order with the minimal number of reductions for a given formula.</p>\n<p>Your task is to write a program which finds the minimal number of reductions required for a given combinator expression to be evaluated to its normal form.</p>",
+  "input": "<p>The only line of the input file contains a combinator expression corresponding to the grammar above. The length of the expression does not exceed 30 000. The expression contains no whitespaces or symbols not specified in the grammar.</p>",
+  "output": "<p>Output a single integer — the minimal number of reductions required for the given formula to evaluate it to normal form.</p>",
+  "samples": [
+    {
+      "input": "C(K(II)(IC))\n",
+      "output": "2\n"
+    },
+    {
+      "input": "CIBI\n",
+      "output": "3\n"
+    },
+    {
+      "input": "BBBBBCCCCCKKKKKIIIII\n",
+      "output": "15\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2014",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

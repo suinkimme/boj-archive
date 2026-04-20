@@ -1,0 +1,28 @@
+{
+  "id": 14794,
+  "title": "Bathroom Stalls (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A certain bathroom has <strong>N</strong> + 2 stalls in a single row; the stalls on the left and right ends are permanently occupied by the bathroom guards. The other <strong>N</strong> stalls are for users.</p>\n<p>Whenever someone enters the bathroom, they try to choose a stall that is as far from other people as possible. To avoid confusion, they follow deterministic rules: For each empty stall S, they compute two values L<sub>S</sub> and R<sub>S</sub>, each of which is the number of empty stalls between S and the closest occupied stall to the left or right, respectively. Then they consider the set of stalls with the farthest closest neighbor, that is, those S for which min(L<sub>S</sub>, R<sub>S</sub>) is maximal. If there is only one such stall, they choose it; otherwise, they choose the one among those where max(L<sub>S</sub>, R<sub>S</sub>) is maximal. If there are still multiple tied stalls, they choose the leftmost stall among those.</p>\n<p><strong>K</strong> people are about to enter the bathroom; each one will choose their stall before the next arrives. Nobody will ever leave.</p>\n<p>When the last person chooses their stall S, what will the values of max(L<sub>S</sub>, R<sub>S</sub>) and min(L<sub>S</sub>, R<sub>S</sub>) be?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> lines follow. Each line describes a test case with two integers <strong>N</strong> and <strong>K</strong>, as described above.</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>1 ≤ <strong>K</strong> ≤ <strong>N</strong>.</li>\n<li>1 ≤ <strong>N</strong> ≤ 10<sup>18</sup>.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y z</code>, where <code>x</code> is the test case number (starting from 1), <code>y</code> is max(L<sub>S</sub>, R<sub>S</sub>), and <code>z</code> is min(L<sub>S</sub>, R<sub>S</sub>) as calculated by the last person to enter the bathroom for their chosen stall S.</p>",
+  "samples": [
+    {
+      "input": "5\n4 2\n5 2\n6 2\n1000 1000\n1000 1\n",
+      "output": "Case #1: 1 0\nCase #2: 1 0\nCase #3: 1 1\nCase #4: 0 0\nCase #5: 500 499\n"
+    }
+  ],
+  "hint": "<p>In Case #1, the first person occupies the leftmost of the middle two stalls, leaving the following configuration (<code>O</code> stands for an occupied stall and <code>.</code> for an empty one): <code>O.O..O</code>. Then, the second and last person occupies the stall immediately to the right, leaving 1 empty stall on one side and none on the other.</p>\n<p>In Case #2, the first person occupies the middle stall, getting to <code>O..O..O</code>. Then, the second and last person occupies the leftmost stall.</p>\n<p>In Case #3, the first person occupies the leftmost of the two middle stalls, leaving <code>O..O...O</code>. The second person then occupies the middle of the three consecutive empty stalls.</p>\n<p>In Case #4, every stall is occupied at the end, no matter what the stall choices are.</p>\n<p>In Case #5, the first and only person chooses the leftmost middle stall.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2017, Qualification Round",
+  "level": 15,
+  "tags": [
+    "math",
+    "dp",
+    "data_structures",
+    "set",
+    "tree_set"
+  ],
+  "accepted_user_count": 101,
+  "submission_count": null,
+  "average_tries": 1.841599941253662
+}

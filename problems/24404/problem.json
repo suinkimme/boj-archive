@@ -1,0 +1,30 @@
+{
+  "id": 24404,
+  "title": "Dimensional Analysis",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are deriving some equations for physics homework and are worried you’ve made some mistakes. To debug them, you will apply dimensional analysis. In dimensional analysis, you remove all magnitudes and units from a set of equations until you are left only with strings representing <em>physical quantities</em> and the special dimensionless constant $1$. The following is an example set of such equations:</p>\n<pre>\nvelocity * time = length\nfrequency = 1 / time\nacceleration = velocity / time\nforce = mass * acceleration\nforce = mass * length / time / time</pre>\n<p>Your equations, like the ones above, involve only multiplication and division (no addition, exponentiation, etc.) As you can see, some quantities (like velocity) are defined in terms of other, more basic quantities (length, time). But you’re not sure what the correct relationships are between the quantities. You do know that none of the quantities in your equations are unitless: it should not be possible, through any set of algebraic manipulations, to prove that any quantity is equal to the dimensionless constant $1$. (You may assume that all physical quantities in your equations have positive real magnitudes. In particular, you may freely divide any equation by any quantity without worrying about division by zero; and you may take square or higher roots of any quantity.)</p>\n<p>A set of equations violating this condition is <em>invalid</em> (and a set of equations is valid otherwise). The above example is a valid system. Here is an invalid one:</p>\n<pre>\nfoo * bar = xyzzy\nfoo = xyzzy * bar</pre>\n<p>By substituting the second equation into the first, and dividing both sides by <code>xyzzy</code>, you get <code>bar * bar = 1</code>. Taking a square root of both sides, you get <code>bar = 1</code> and so <code>bar</code> is dimensionless.</p>\n<p>Given the set of equations in your dimensional analysis, compute whether the equations are valid.</p>",
+  "input": "<p>The first line of the input is a single integer $N$, the number of equations ($1 ≤ N ≤ 100$). Each of the $N$ subsequent lines of input contains one equation. An equation consists of two expressions, separated by an equal sign surrounded by spaces “<code> = </code>”. Each expression contains one or more atoms, separated by either “<code> * </code>” or “<code> / </code>”; each atom is either the character ‘<code>1</code>’ or a physical quantity, represented by a lowercase string (containing one or more ASCII characters between ‘<code>a</code>’ and ‘<code>z</code>’). At most $100$ unique physical quantities appear in total across all equations, each equation contains at most $100$ atoms, and the total number of characters in all atoms across all equations will not exceed $100\\,000$.</p>\n<p>There will be exactly one space before and after each ‘<code>=</code>’, ‘<code>*</code>’, and ‘<code>/</code>’ and the equations will contain no other whitespace or other extraneous punctuation. See the sample input for examples of how equations are formatted.</p>\n<p>The operator <code>*</code> represents multiplication and <code>/</code> represents division. Expressions follow the usual associativity rules: <code>a / b * c</code> is the same as <code>a * c / b</code> but different from <code>a / b / c</code>.</p>",
+  "output": "<p>Print <code>invalid</code> if it is possible to prove that at least one of the physical quantities in an equation in the input must be dimensionless. Print <code>valid</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "5\nvelocity * time = length\nfrequency = 1 / time\nacceleration = velocity / time\nforce = mass * acceleration\nforce = mass * length / time / time\n",
+      "output": "valid\n"
+    },
+    {
+      "input": "2\nfoo * bar = xyzzy\nfoo = xyzzy * bar\n",
+      "output": "invalid\n"
+    },
+    {
+      "input": "5\ntime * power = energy\nenergy = work\nwork = force * distance\ndistance = distance\n1 / 1 = 1 * 1 / 1\n",
+      "output": "valid\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Qualification Contest, ICPC North America Qualifier 2021",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.2856999635696411
+}

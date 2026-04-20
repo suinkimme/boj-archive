@@ -1,0 +1,26 @@
+{
+  "id": 7399,
+  "title": "Code Formatting",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Programmers are known to wage religious wars when issues of proper code formatting are discussed. When new team of programmers starts working on a project, it often brings slightly different code formatting style and wants to reformat old source code according to their own style. Moreover, inexperienced programmers often neglect the importance of good and consistent code style, thus complicating the work of their teammates and themselves. This situation creates thriving market for code formatting tools. </p>\n<p>You are taking part in a proof-of-concept project for a new code formatting tool code named Salvation. This is only a pilot project aimed not for a practical usefulness, but to demonstrate your ability to parse and format code of a high-level language. Your task is to write code formatter for a language called TRIVIAL (The Rival Implementation-Agnostic Language). This language has trivial lexical and grammatical structures. It does not have any keywords and control structures, because all constructs of the language are represented as function calls and closures.</p>\n<p>The lexical structure consists of identifiers, opening and closing parenthesis and curly braces, commas, and semi-colons. Identifiers consist only of digits '0'--'9' and Latin letters 'a'--'z', 'A'--'Z'. Lexical terms may be separated by whitespaces, leading and trailing whitespaces in the file are also allowed. Whitespace may consist of spaces, tab characters (ASCII code 9), and line separators (a pair of ASCII 13, 10). </p>\n<p>The structure of the valid trivial program is derived from the following productions:</p>\n<ul>\n<li>Program ::= Block</li>\n<li>Block ::= '{' Statements '}'</li>\n<li>Statements ::= Statement $|$ Statement Statements</li>\n<li>Statement ::= Expression ';'</li>\n<li>Expression ::= <em>identifier</em> ['(' Arguments ')'] [Block]</li>\n<li>Arguments ::= Expression $|$ Expression ',' Arguments</li>\n</ul>\n<p>Properly formatted trivial program additionally conforms to the following rules:</p>\n<ul>\n<li>There are no empty lines.</li>\n<li>Tab characters are not used.</li>\n<li>The first character of the file is opening curly brace '{' (no preceding whitespaces), and the last character of the file is closing curly brace '}' (no trailing whitespaces).</li>\n<li>Each line is preceded by $4N$ space characters, where $N$ is called <em>indentation level</em>.</li>\n<li>The first and the last lines of the program have zero indentation level.</li>\n<li>Lines that constitute block body and are enclosed in curly braces '{'...'}' have one more indentation level.</li>\n<li>No whitespace is allowed inside the line with the exception of the following two cases where a single space character is mandatory: before opening curly brace character '{' and after comma ','.</li>\n<li>Lines (with the only exception of the last line) end with semicolon ';' or opening curly brace '{' characters. These characters cannot appear in the middle or at the beginning of any line (including the last one).</li>\n<li>Closing curly brace '}' characters appear only at the beginning of lines after indentation spaces.</li>\n</ul>\n<p>See sample output section for an example of properly formatted trivial program.</p>",
+  "input": "<p>The input file contains valid trivial program. Size of the input file does not exceed 2000 bytes.</p>",
+  "output": "<p>Write to the output file properly formatted trivial code for the program given in the input file.</p>",
+  "samples": [
+    {
+      "input": "{class(Point) \n{\n member ( int ( x ) ) ; member ( int ( y ) ) ;\n member ( fun ( Length )  \n {\n   return ( sqrt ( sum ( sqr ( x ),sqr ( y ) ) ) );\n } ) ;\n};\nMain \n{\n repeat \n {\n   set ( n,input ( int ) ) ;\n   for ( int ( i,0 ) , lt ( i,n ) , inc ( i ) ) \n   {\n     print ( mult ( n,n ) ) ;\n   };\n };\n}; }\n",
+      "output": "{\n    class(Point) {\n        member(int(x));\n        member(int(y));\n        member(fun(Length) {\n            return(sqrt(sum(sqr(x), sqr(y))));\n        });\n    };\n    Main {\n        repeat {\n            set(n, input(int));\n            for(int(i, 0), lt(i, n), inc(i)) {\n                print(mult(n, n));\n            };\n        };\n    };\n}\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2003",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "string",
+    "parsing"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 2
+}

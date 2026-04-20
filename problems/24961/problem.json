@@ -1,0 +1,35 @@
+{
+  "id": 24961,
+  "title": "Planning Railroad Discontinuation",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The ICPC Kingdom has a large round lake in its center, and all of its cities are developed around the lake, forming a circle of cities. Because all of them are developed under the same urban plan, the cities are made quite similar. They have exactly the same subway networks. Some of their stations are also stations of inter-city bullet trains connecting two corresponding stations of adjacent cities. All of the train routes provide two-way traffic between two terminal stations without any intermediate stations.</p>\n<p>The cities have the same number of subway stations and subway routes. In each city, the stations are numbered sequentially as $0$, $1$, $2$, $\\dots$. Whether two stations in a city are connected by a subway route depends only on their station numbers and not on the city. If a station $v$ is connected to a station $u$ in one city, so is in all the other cities. The travel distance between two stations $v$ and $u$ are the same for all the cities.</p>\n<p>All the cities have exactly the same list of station numbers of bullet train stations. If a station $s$ is a bullet train station in one city, so is in all the other cities. All the pairs of two bullet train stations of the same station number in two adjacent cities are connected by a bullet train route. If a station $s$ is one end of a bullet train route, the station $s$ in an adjacent city is the other end. There exist no other bullet train routes. One can travel between any two stations in the Kingdom via one or more subway and/or bullet train services.</p>\n<p>Due to financial difficulties in recent years, the Kingdom plans to discontinue some of the subway and bullet train services to reduce the maintenance cost of the railroad system. The maintenance cost is the sum of maintenance costs of the subway routes and the bullet train routes. The maintenance cost of a subway route is the sum of base cost depending on the city and cost proportional to the travel distance of the route. The maintenance cost of a bullet train route depends only on the two cities connected by the route.</p>\n<p>You are asked to make a plan to discontinue some of the routes that minimizes the total maintenance cost. Of course, all the pairs of the stations in the Kingdom should still be connected through one or more subway and/or bullet train services after the discontinuation.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<p>$\\begin{align*}&amp; n \\, m \\\\ &amp; v_1 \\, u_1 \\, d_1 \\\\ &amp; \\vdots \\\\ &amp; v_m \\, u_m \\, d_m \\\\ &amp; l \\\\ &amp; a_0 \\, b_0 \\\\ &amp; \\vdots \\\\ &amp; a_{l-1} \\, b_{l-1} \\\\ &amp; r \\\\ &amp; s_1 \\\\ &amp; \\vdots \\\\ &amp; s_r \\end{align*}$</p>\n<p>Here, $n$ is an integer satisfying $2 ≤ n ≤ 10^4$, which is the number of the subway stations in a city. The stations in each city are numbered from $0$ to $n - 1$. $m$ is an integer satisfying $1 ≤ m ≤ 10^5$, which is the number of the subway routes in a city. The following $m$ lines are information on the subway system in a city. The $i$-th of the $m$ lines has three integers $v_i$, $u_i$, and $d_i$, satisfying $0 ≤ v_i &lt; n$, $0 ≤ u_i &lt; n$, $v_i \\ne u_i$, and $1 ≤ d_i ≤ 10^9$. They mean that a subway route connects stations numbered $v_i$ and $u_i$, and its maintenance cost proportional to the travel distance is $d_i$. There is at most one subway route between two stations. All the subway stations in a city are connected directly or indirectly via one or more subway routes.</p>\n<p>$l$ in the next line is an integer satisfying $3 ≤ l ≤ 10^5$, which is the number of cities in the Kingdom. The cities are numbered from $0$ to $l - 1$, and the city $0$ is also called the city $l$. For each $0 ≤ j ≤ l - 1$, the cities $j$ and $j + 1$ are adjacent. $a_j$ and $b_j$ in the following $l$ lines are integers satisfying $1 ≤ a_j ≤ 10^9$ and $1 ≤ b_j ≤ 10^9$. $a_j$ is the maintenance cost of a bullet train route connecting the cities $j$ and $j + 1$. $b_j$ is the base cost of the subway routes in the city $j$.</p>\n<p>$r$ is an integer satisfying $1 ≤ r ≤ n$, which is the number of the bullet train stations in each city. $s_1$, $s_2$, $\\dots$, $s_r$ are the station numbers of the bullet train stations in each city.</p>",
+  "output": "<p>Output in a single line the integer representing the minimum maintenance cost of the railroad system after the discontinuation that minimizes the cost while keeping all the stations connected, directly or indirectly.</p>",
+  "samples": [
+    {
+      "input": "2 1\n0 1 3\n3\n6 1\n4 2\n5 3\n1\n1\n",
+      "output": "24\n"
+    },
+    {
+      "input": "3 3\n0 1 7\n1 2 8\n2 0 5\n4\n8 1\n5 1\n9 3\n7 3\n2\n1\n2\n",
+      "output": "76\n"
+    },
+    {
+      "input": "5 8\n0 1 1\n2 1 2\n4 0 5\n3 4 7\n3 2 8\n0 2 4\n4 1 3\n2 4 6\n6\n3 2\n9 3\n7 1\n5 3\n3 2\n5 2\n4\n0\n2\n3\n4\n",
+      "output": "120\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2021 Asia Yokohama Regional",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "graphs",
+    "mst"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 3.3333001136779785
+}

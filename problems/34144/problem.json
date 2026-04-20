@@ -1,0 +1,34 @@
+{
+  "id": 34144,
+  "title": "크로스링크",
+  "time_limit": "1.5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>빛의 흐름은 점점 어긋나기 시작했고, 사람들은 멀어진 흐름을 잇기 위해 다리를 세웠다. 섬의 여러 끝을 다시 하나로 묶기 위해, 그들은 중심과 가장자리를 연결하는 구조물을 만들었다.</p>\r\n\r\n<p>섬의 중심과 끝을 다시 잇기 위한 마지막 구조물, 그들은 그것을 <strong>크로스링크</strong>라 불렀다. 하지만 그 다리는 끝내 완성되지 못했다.</p>\r\n\r\n<p>그들이 마지막으로 이어가고자 했던 흐름의 흔적을 따라가고, 그 다리를 복원하여라.</p>\r\n\r\n<hr />\r\n<p>섬 위에는 $N\\times M$ 크기의 격자가 있으며, 위에서부터 $r$번째 행, 왼쪽에서부터 $c$번째 열의 칸을 $(r,c)$로 표기한다.</p>\r\n\r\n<p>$NM$개의 칸 중 일부에는 이미 땅이 존재한다. 사람들은 섬을 다시 잇기 위해 땅을 추가로 배치하여 위, 아래, 왼쪽, 오른쪽 네 방향의 가장자리를 모두 연결할 수 있는 크로스링크를 만들고자 한다.</p>\r\n\r\n<p>구체적으로, 다음 조건을 만족하는 격자칸의 집합 $S$를 크로스링크라고 정의한다.</p>\r\n\r\n<ul>\r\n\t<li>$(r,c)\\in S$인 모든 격자칸에는 땅이 존재한다.</li>\r\n\t<li>서로 다른 두 격자칸 $a,b\\in S$에 대해, 어떤 경로 $a=p_1\\rightarrow p_2\\rightarrow\\cdots\\rightarrow p_k=b$가 존재해, $\\{p_1,p_2,\\cdots ,p_k\\}\\subset S$이며, $p_i$와 $p_{i+1}$은 상하좌우로 인접하다. $(1\\le i\\le k-1)$</li>\r\n\t<li>$(1,c)\\in S$인 정수 $c$ $(1\\le c\\le M)$이 존재한다.</li>\r\n\t<li>$(N,c)\\in S$인 정수 $c$ $(1\\le c\\le M)$이 존재한다.</li>\r\n\t<li>$(r,1)\\in S$인 정수 $r$ $(1\\le r\\le N)$이 존재한다.</li>\r\n\t<li>$(r,M)\\in S$인 정수 $r$ $(1\\le r\\le N)$이 존재한다.</li>\r\n</ul>\r\n\r\n<p>다음은 크로스링크를 포함한 격자의 예시이다. 색칠된 칸은 땅이 존재하는 칸을, 색칠되지 않은 칸은 땅이 없는 칸을 나타낸다. 세 번째 예시와 같이, 현재 존재하는 모든 땅이 크로스링크에 포함될 필요는 없다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 773px; height: 200px;\" /></p>\r\n\r\n<p>아래의 세 격자는 크로스링크를 포함하지 않는다. 예를 들어, 세 번째 예시의 경우 어떤 땅에서 시작하더라도 왼쪽 모서리와 오른쪽 모서리 모두에 도달할 수 없으므로 크로스링크를 포함하지 않는다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 773px; height: 200px;\" /></p>\r\n\r\n<p>땅을 새로 배치하는 비용은 위치마다 다를 수 있다. 다음과 같은 예시를 보자.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 973px; height: 200px;\" /></p>\r\n\r\n<p>맨 왼쪽 그림은 초기 상태에서 땅이 있는 칸은 검은색으로 색칠되어 있고, 땅이 없는 칸은 그 칸에 땅을 배치하는 가격이 표시되어 있다.</p>\r\n\r\n<p>붉은색과 같이 땅을 추가할 경우 총 비용 $4+4=8$로 크로스링크를 만들 수 있다. 그러나 노란색과 같이 땅을 추가할 경우 총 비용 $1+2+1+2+1=7$로 크로스링크를 만들 수 있고, 이것이 최소 가격이다. 연두색과 같이 땅을 추가할 경우 $4+2=6$의 비용만이 들지만, 크로스링크가 존재하지 않으므로 올바른 복원 방법이 아니다.</p>\r\n\r\n<p>섬의 사람들은 땅을 배치하여 크로스링크를 짓는 최소 비용을 알아내려고 한다.</p>\r\n",
+  "input": "<p>첫 줄에 격자의 크기를 나타내는 두 정수 $N,M$이 주어진다.</p>\r\n\r\n<p>이후 $N$개의 줄에 걸쳐, 격자의 상태를 나타내는 문자 $C_{i1},C_{i2},\\cdots ,C_{iM}$이 차례대로 주어진다. 문자의 의미는 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>$C_{ij}$가 <code>0</code>인 경우, 칸 $(i,j)$에 이미 땅이 있음을 의미한다.</li>\r\n\t<li>$C_{ij}$가 <code>1</code>부터 <code>9</code>까지의 숫자인 경우, 칸 $(i,j)$에 땅이 없고, 땅을 배치하는 비용이 $C_{ij}$임을 의미한다.</li>\r\n\t<li>$C_{ij}$가 <code>A</code>부터 <code>Z</code> 중 하나의 알파벳 대문자인 경우, 칸 $(i,j)$에 땅이 없고, 땅을 배치하는 비용이 각각 $10,11,\\cdots ,35$임을 의미한다</li>\r\n</ul>\r\n",
+  "output": "<p>크로스링크를 만들기 위해 땅을 배치하는 데 필요한 최소 비용을 출력하여라.</p>\r\n\r\n",
+  "samples": [
+    {
+      "input": "5 5\n00280\n20358\n10901\n24400\n12105\n",
+      "output": "7\n"
+    },
+    {
+      "input": "5 7\nQTVPU0Z\n02X010Y\nY0R2T0X\nZ301Y40\nW0PUXVZ\n",
+      "output": "13\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, BCF, BCF 2025, 79brue, aeren, mjhmjh1104, qwerasdfzxcl, silverwolf",
+  "level": 21,
+  "tags": [
+    "dp",
+    "graphs",
+    "shortest_path",
+    "bitmask",
+    "dijkstra",
+    "grid_graph",
+    "dial"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 5.63640022277832
+}

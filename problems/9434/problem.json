@@ -1,0 +1,25 @@
+{
+  "id": 9434,
+  "title": "Zombdar",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are reading data from a zombie sensor. The sensor scans the area to obtain the number of zombies in the immediate area. The zombie sensor normally writes log entries in the form of \"Zombies: &lt;integer&gt;;\" or \"No Zombies;\" to its buffer as it performs scans, but it may also write \"RUN;\" when the sensor is overloaded. These are the only values that will be written to the buffer.</p>\n<p>The zombie sensor's serial port emits a line containing whatever data is in its buffer every second, regardless of whether the buffer contains a complete log entry, or even multiple entries.</p>\n<p>A valid sequence of log entries may be:</p>\n<pre>\nZombies: 5;\nZombies: 1;\nNo Zombies;\nZombies: 70;\nRUN;\nRUN;\nRUN;</pre>\n<p>But the sensor's serial port may emit:</p>\n<pre>\nZom\nbies:\n 5;Zombies: 1\n;\nNo Zombies;\nZombies 70;\nRUN;\nRUN;RUN;Zo</pre>\n<p>It is imperative to process the serial port data correctly if you are to survive.</p>",
+  "input": "<p>The first line of input contains the number of data sets, N (1 &lt;= N &lt;= 50). For each data set, the input contains the raw data emitted by the zombie sensor's serial port (see above for details) followed by a line containing only the string \"END OF CASE\". Since data is emitted by the zombie sensor's serial port once per second, the first line of input is read after 1 second, the 2nd line after 2 seconds, and so on.</p>",
+  "output": "<p>For each complete log entry, you should output a line containing \"timestamp: log_entry\", where timestamp is the number of seconds elapsed between the start of the data set and the time at which the entry was completely parsed.</p>",
+  "samples": [
+    {
+      "input": "2\nZom\nbies:\n 5;Zombies: 1\n;\nNo Zombies;\nZombies: 70;\nRUN;\nRUN;RUN;RU\nEND OF CASE\nNo\n Zombies;\nNo\n Zombies;\nZombies: 4;Z\nombies\n: 14;\nZombies\n: 60;\nZombies:\n 100;\n\nZom\nbies: 15;\nRUN;\nRUN;RUN;\nR\nEND OF CASE\n",
+      "output": "3: Zombies: 5;\n4: Zombies: 1;\n5: No Zombies;\n6: Zombies: 70;\n7: RUN;\n8: RUN;\n8: RUN;\n2: No Zombies;\n4: No Zombies;\n5: Zombies: 4;\n7: Zombies: 14;\n9: Zombies: 60;\n11: Zombies: 100;\n14: Zombies: 15;\n15: RUN;\n16: RUN;\n16: RUN;\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 2013 South Central USA Regional Programming Contest",
+  "level": 8,
+  "tags": [
+    "string",
+    "parsing"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 1.2273000478744507
+}

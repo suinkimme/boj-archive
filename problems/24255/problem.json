@@ -1,0 +1,22 @@
+{
+  "id": 24255,
+  "title": "Rabbit",
+  "time_limit": "0.05 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The Mad Hatter just lost his favorite rabbit (The White Rabbit, of course) somewhere in a sequence of $N$ cells and is trying to find it. The cells are numbered with the integers $1$ to $N$. In the beginning the rabbit is in a single unknown cell in the sequence and every second of The Hatter’s search proceeds as follows:</p>\n<ol>\n<li>First, he chooses a single cell from the sequence and checks it. We’ll call this cell <strong>the checked cell</strong>. If the rabbit is there, the search ends.</li>\n<li>Afterwards, the rabbit chooses to either stay in the same cell, or to hop to a neighbouring cell (i.e. one cell leftwards or one cell rightwards). <strong>Note that it is possible for the rabbit to hop in the checked cell, if it’s a neighbouring one; that does not end the search!</strong></li>\n</ol>\n<p>The decisions of the rabbit are deterministic given its mood. In particular, the rabbit has the following two moods:</p>\n<ol>\n<li><em><strong>Scared</strong></em> mood – when the rabbit is in this mood, it moves <strong>further away from the checked cell</strong>. If it cannot move further away (i.e. it is in cell $1$ or $N$), it stays in the same cell.</li>\n<li><em><strong>Curious</strong></em> mood – when the rabbit is in this mood, it moves <strong>closer to the checked cell</strong>. Note that it is always possible for the rabbit to move closer.</li>\n</ol>\n<p>Note that the rabbit only acts according to the last checked cell and does not care about previous checked cells.</p>\n<p>Since this is The Hatter’s favorite rabbit, he knows its mood very well. In particular, he knows that the rabbit alternates between exactly $S$ seconds of <em>scared mood</em> and $C$ seconds of <em>curious mood</em>. For example, if $S = 2$ and $C = 1$, the mood of the rabbit would be the sequence [<em>scared</em>, <em>scared</em>, <em>curious</em>, <em>scared</em>, <em>scared</em>, <em>curious</em> … ].</p>\n<p>The Hatter is very worried about his rabbit and asks you to write a program that computes a sequence of cells to check, such that the rabbit, regardless of its initial position, is guaranteed to be found.</p>",
+  "input": "<p>From the first line of the standard input, your program should read three integers: $N$, $S$ and $C$, describing the number of cells and the behavior of the rabbit.</p>",
+  "output": "<p>On the first line of the standard output your program should print $K$, the number of seconds your search sequence takes. On the second line your program should print $K$ integers in the range [$1$, $N$], listing the cells checked in each second. Note that this sequence is allowed to have repeats.</p>",
+  "samples": [
+    {
+      "input": "12 2 1\n",
+      "output": "14\n2 5 3 2 6 1 2 11 12 12 8 10 12 6\n"
+    }
+  ],
+  "hint": "<p>One can test that regardless of the starting position, this sequence always finds the rabbit. For example, consider the case where the rabbit starts in cell $8$. The search would proceed as follows:</p>\n<table class=\"table table-bordered\">\n<thead>\n<tr>\n<th>Second</th>\n<th>Checked Cell</th>\n<th>Rabbit Mood (Before Moving)</th>\n<th>Rabbit Move</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td>2</td>\n<td>Scared</td>\n<td>8 → 9</td>\n</tr>\n<tr>\n<td>2 </td>\n<td>5</td>\n<td>Scared</td>\n<td>9 → 10</td>\n</tr>\n<tr>\n<td>3</td>\n<td>3</td>\n<td>Curious</td>\n<td>10 → 9</td>\n</tr>\n<tr>\n<td>4</td>\n<td>2</td>\n<td>Scared</td>\n<td>10 → 11</td>\n</tr>\n<tr>\n<td>5</td>\n<td>6</td>\n<td>Scared</td>\n<td>11 → 12</td>\n</tr>\n<tr>\n<td>6</td>\n<td>1</td>\n<td>Curious</td>\n<td>12 → 11</td>\n</tr>\n<tr>\n<td>7</td>\n<td>2</td>\n<td>Scared</td>\n<td>11 → 12</td>\n</tr>\n<tr>\n<td>8</td>\n<td>11</td>\n<td>Scared</td>\n<td>12 → 12</td>\n</tr>\n<tr>\n<td>9</td>\n<td>12</td>\n<td>Curious</td>\n<td>Found</td>\n</tr>\n</tbody>\n</table>\n<p>For this solution we have $K &gt; T$, since $K = 14$ and $T = 12$. Thus, the part of the points received for this test is $p ≈ 0.22$.</p>",
+  "source": "Olympiad, International Autumn Tournament in Informatics, 2021, Group A (Seniors)",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 9.83329963684082
+}

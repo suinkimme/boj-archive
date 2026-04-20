@@ -1,0 +1,34 @@
+{
+  "id": 7415,
+  "title": "Heroes Of Might And Magic",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In the new version of the famous game \"Heroes of Might and Magic\" heroes themselves take active part in battles. More of that, hero can defeat some monsters alone, without any supporting army. In this problem you are asked to develop the program which would find the strategy for a mage hero fighting face to face with a pack of monsters.</p>\n<p>Each hero initially has HP<sub>H</sub> hit points and MP<sub>H</sub> mana points. Heroes can use different spells. Your hero knows three spells: Lighting Bolt, Teleport and Heal. Each spell costs one mana point.</p>\n<p>Each monster has HP<sub>M</sub> hit points. Pack of monsters is a single group of several monsters who act as one. Therefore if initially the pack consists of N<sub>M</sub> monsters, they have N<sub>M</sub> × HP<sub>M</sub> hit points. As the battle proceeds, monsters' number of hit points decreases. If monsters have H hit points, that means that the group consists of ceiling(H / HP<sub>M</sub>) monsters (ceiling is a function that returns the smallest integer number not less its argument).</p>\n<p>The battle runs on a one-dimensional battlefield consisting of N + 1 squares, numbered starting from 0. Your hero resides on the square number 0 and does not move. Monsters initially reside on N<sup>th</sup> square and can move. Monsters can move at most V squares a turn.</p>\n<p>The battle consists of turns. First your hero makes a turn, then the monsters, and so on. Monsters' strategy is very easy - they move in the direction of your hero min(V, P - 1) squares where P is the square number where they were in the beginning of their turn. If the monsters are on the square number 1 in the end of the movement, then they strike your hero. If there are K monsters left in a pack, their strike decreases hit points of the hero by K. If your hero has non-positive hit points, then the hero is defeated.</p>\n<p>Your hero's turn is always the casting of some spell. Lighting Bolt spell removes L<sub>P</sub> hit points from a pack of monsters, where P is the square number on which the monsters reside. Teleport spell moves monsters to any desired square (except 0 where your hero resides). Heal spell adds dH hit points to hero. However, his hit points never exceed HP<sub>H</sub>, so if after using Heal spell his hit points are greater then HP<sub>H</sub>, they are decreased to HP<sub>H</sub>. If your hero has zero mana points and there is at least one monster left in the pack, then the hero is defeated.</p>\n<p>Find the strategy which would allow your hero to defeat monsters. Monsters are defeated if their hit points are non-positive.</p>",
+  "input": "<p>The first line of the input file contains positive integer numbers separated by spaces in the following order: N, HP<sub>H</sub>, MP<sub>H</sub>, HP<sub>M</sub>, N<sub>M</sub>, V, dH. (1 ≤ N ≤ 10, 2 ≤ HP<sub>H</sub> ≤ 100, 1 ≤ MP<sub>H</sub> ≤ 50, 1 ≤ HP<sub>M</sub> ≤ 10, 1 ≤ N<sub>M</sub> ≤ 10, 1 ≤ V ≤ N, 1 ≤ dH &lt; HP<sub>H</sub>). The second line of the input file contains N integer numbers L<sub>1</sub>, L<sub>2</sub>, ..., L<sub>N</sub> (1 ≤ L<sub>P</sub> ≤ 10), separated by spaces.</p>",
+  "output": "<p>If the hero cannot win the battle, write the word <code>DEFEATED</code> on the first line of the output file. In the other case write the word <code>VICTORIOUS</code> on the first line of the output file and then write any sequence of hero's actions that leads to victory, where each line of the output file starting from the second one must correspond to one hero's turn. The first character of the line must be one of the following:</p>\n<ul>\n<li><code>L</code> - Cast Lighting Bolt spell.</li>\n<li><code>T</code> - Cast Teleport spell.</li>\n<li><code>H</code> - Cast Heal spell.</li>\n</ul>\n<p>If the hero casts Teleport spell then <code>T</code> character must be followed by a space and an integer number from 1 to N - the square number where the monsters should be teleported to.</p>",
+  "samples": [
+    {
+      "input": "2 3 2 1 2 1 1\n1 1\n",
+      "output": "VICTORIOUS\nL\nL\n"
+    },
+    {
+      "input": "2 3 2 3 1 1 1\n1 1\n",
+      "output": "DEFEATED\n"
+    },
+    {
+      "input": "4 4 3 1 4 1 1\n3 1 1 1\n",
+      "output": "VICTORIOUS\nL\nT 2\nL\n"
+    },
+    {
+      "input": "1 6 5 1 4 1 3\n1\n",
+      "output": "VICTORIOUS\nL\nL\nH\nL\nL\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2002",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,27 @@
+{
+  "id": 26190,
+  "title": "Denormalization",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Dr. Brodnik prepared a list $A = [a_1, a_2, \\ldots, a_N]$ that contained $N$ integers. No one knows what exactly these numbers represented, but it is well known that:</p>\n<ul>\n<li>$1 \\leq a_i \\leq 10\\,000$ for all $1 \\leq i \\leq N$ and</li>\n<li>their greatest common divisor was $1$.</li>\n</ul>\n<p>Dr. Hočevar decided to do his colleague a favor and normalized the list, as he thought that it represents a vector in the $n$-dimensional real vector space. Namely, he calculated the number $$d = \\sqrt{\\sum_{i=1}^{N}a_i^2} = \\sqrt{a_1^2 + a_2^2 + \\cdots + a_N^2}$$ and replaced Dr. Brodnik's list by $[a_1 / d, a_2 / d, \\ldots, a_N / d]$. The numbers in this normalized list were also rounded to 12 decimal places for storage. We will refer to the elements of the stored normalized list as $X = [x_1, x_2, \\ldots, x_N]$. After some time, he realized that it was a mistake and he now wishes to recover the original list $A$. Of course, no backup of the original has been made. Since Dr. Hočevar is too busy at the moment doing more important tasks, your help will be much appreciated.</p>\n<p>As some data was lost due to rounding, he will be happy with any reconstructed list $R = [r_1, r_2, \\ldots, r_N]$, such that after normalization it would differ from $X$ by at most $10^{-6}$ in each corresponding element.</p>",
+  "input": "<p>The first line of the input contains an integer $N$, i.e. the length of the list $X$. The $i$-th of the following $N$ lines contains a floating-point number $x_i$ with exactly 12 decimal places. It is guaranteed that the input is valid, i.e. it was really obtained in the described manner from a list of integers with the properties described above.</p>",
+  "output": "<p>The output should contain $N$ lines containing the reconstructed integers $r_1, r_2, \\ldots, r_N$ in this order. You can output any acceptable solution as described above.</p>\n<ul>\n<li>$1 \\leq r_i \\leq 10\\,000$ for all $1 \\leq i \\leq N$</li>\n<li>$\\gcd(r_1, \\ldots, r_N) = 1$</li>\n</ul>",
+  "samples": [
+    {
+      "input": "6\n0.137516331034\n0.165019597241\n0.275032662068\n0.412548993102\n0.825097986204\n0.165019597241\n",
+      "output": "5\n6\n10\n15\n30\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2022",
+  "level": 12,
+  "tags": [
+    "math",
+    "bruteforcing",
+    "number_theory",
+    "euclidean"
+  ],
+  "accepted_user_count": 60,
+  "submission_count": null,
+  "average_tries": 7.433300018310547
+}

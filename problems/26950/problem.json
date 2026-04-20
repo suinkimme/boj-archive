@@ -1,0 +1,26 @@
+{
+  "id": 26950,
+  "title": "Rymdpatrullen",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Aj aj -- solsystemet har invaderats utifrån av ett hot från rymden som tagit över $N$ av människornas rymdbaser! Det har gått så långt att rymdstyrelsen bestämt sig för att använda sig av sitt starkaste kort: rymdpatrullens mest kända rymdskepp Orion, under befäl av kommendör Cliff Allister McLane.</p>\n<p>Orion måste nu ta tillbaka kontrollen över samtliga rymdbaser från rymdkaparna. Mellan vissa par av rymdbaserna finns det farleder som Orion kan färdas längs, totalt $M$ stycken. Dessa farleder är dock vaktade av utomjordingarna, som Orion måste bekämpa med sin dödsstråle. Varje farled har dessutom en viss längd.</p>\n<p>Bränsleåtgången för Orion fungerar på följande vis. Antag att skeppet <strong>totalt</strong> sett över alla farleder Orion färdas längs måste spendera $D$ energi för att använda sin dödsstråle och $L$ energi för att färdas längs farlederna. Då är den totala bränsleförbrukningen $D \\cdot L$ (ty den ökade energianvändningen orsakar överhettning hos motorn, som minskar dess effektivitet). Så fort Orion lyckas färdas till en rymdbas tar de dock över den med lätthet utan någon energianvändning. Varje rymdbas har dessutom en teleportör som kan transportera Orion till vilken annan rymdbas som helst <strong>som Orion redan tagit över</strong>. Detta innebär att Orion kommer färdas längs exakt $N - 1$ farleder.</p>\n<p>Hjälp Orion att avgöra vilka farleder de ska färdas längs för att minimera den totala bränsleförbrukningen som krävs för att ta över alla rymdbaser. Orion befinner sig just nu på rymdbas $0$, som de redan tagit över.</p>",
+  "input": "<p>Den första raden innehåller heltalen $N$ och $M$ ($1 \\le N \\le 200$, $1 \\le M \\le 10\\,000$) -- antalet rymdbaser och antalet farleder. Rymdbaserna är numrerade mellan $0$ och $N - 1$.</p>\n<p>De följande $M$ raderna innehåller fyra heltal $X$, $Y$, $D$ och $L$ ($0 \\le X, Y &lt; N$, $X \\neq Y$, $1 \\le D, L \\le 255$) -- detta betyder att det finns en farled mellan rymdbaserna $X$ och $Y$, som kräver $D$ energianvändning av dödsstrålen och $L$ energianvändning för att färdas utmed. Det går högst en farled mellan två givna rymdbaser.</p>",
+  "output": "<p>Först ska du skriva ut den <em>totala</em> energianvändningen av dödsstrålen respektive färdandet på en rad, i en strategi som minimerar den totala bränsleförbrukningen.</p>\n<p>Skriv sedan ut $N - 1$ rader, en för varje farled Orion ska åka längs. Varje farled ska skrivas ut med två tal $0 \\le X, Y &lt; N$, farleden Orion ska åka längs (ordningen ska vara samma som i indatan). Farlederna kan ges i vilken ordning som helst.</p>\n<p>Om flera lösningar finns kan du skriva ut vilken som helst.</p>",
+  "samples": [
+    {
+      "input": "3 3\n0 1 3 1\n1 2 1 3\n2 0 2 2\n",
+      "output": "5 3\n2 0\n0 1\n"
+    },
+    {
+      "input": "5 7\n0 1 81 39\n0 2 81 8\n0 3 7 77\n1 4 71 92\n2 4 118 40\n3 4 20 121\n2 1 33 46\n",
+      "output": "141 252\n0 2\n2 1\n3 4\n0 3\n"
+    }
+  ],
+  "hint": "<p>Vi har tre olika uppsättningar farleder vi kan välja: antingen lederna $(0, 1)$ och $(1, 2)$, eller $(0, 1)$ och $(2, 0)$, eller $(1, 2)$ och $(2, 0)$.</p>\n<p>Den första av dessa har kostnad $(1 + 3) \\cdot (3 + 1) = 16$, medan de två andra har en lägre kostnad på $(1 + 2) \\cdot (3 + 2) = (3 + 2) \\cdot (1 + 2) = 15$. Vi kan därmed skriva ut vilken som helst av dessa två lösningar.</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2018, KATT 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

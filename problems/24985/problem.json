@@ -1,0 +1,49 @@
+{
+  "id": 24985,
+  "title": "Cyclists versus Clouds",
+  "time_limit": "3.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In Nlogonia, several campaigns aim to transform the bicycle into the main mean of transportation in the country. One of the actions to promote bikes is a Hackathon focused on the development of applications to facilitate cyclists’ day-to-day.</p>\n<p>Your university’s team has a promising idea. As Nlogonia is a very rainy country, sometimes those who go out in the rain do not intend to get wet but do so purely for lack of option. The idea then is to develop an application capable of generating a route between two points that guarantees that it is possible to make the journey without getting wet, such that there isn’t another route with the same guarantee that would take less time.</p>\n<p>For the prototype to be presented at the Hackathon, consider that all points of interest are arranged in the Cartesian plane and have integer coordinates. Rain clouds are modeled as simple polygons (non-contiguous edges do not intersect) with each edge parallel to one of the axes. Each cloud moves one unit of distance per unit of time in one of the cardinal directions (North, South, East, or West). A cyclist also moves one unit of distance per unit of time in cardinal directions. The cyclist can change direction at any of the points of interest; changing directions happens instantly. In addition, during the journey the cyclist can stand still at any of the points of interest, protecting themselves from the rain for any integer amount of units of time desired. The cyclist gets wet if they are not stopped at a point of interest (protecting themselves from the rain) and there’s at least one cloud above them. A cloud is not considered to be above the cyclist when the cyclist is at its border.</p>\n<p>While other team members are concerned with generating the data and creating the graphical interface for the Hackathon, your task is to develop the part of the software responsible for generating the best route for a cyclist who wants to travel between two points of interest without getting wet.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 232px; height: 237px;\"/></p>\n<p>The picture above corresponds to the first two samples. In the first sample, as the cloud moves east, the cyclist can go directly to the destination, first moving west and then north, for a total of seven units of time. In the second sample, the cloud moves south, so the cyclist can only move one unit of distance west without getting wet. If the cyclist tried to move west a second time, the cloud would be above them. The fastest way then is to wait one unit of time after moving west, then move north following the border of the cloud, and finally west towards the destination, for a total of eight units of time.</p>",
+  "input": "<p>The first line contains four integers X<sub>o</sub>, Y<sub>o</sub>, X<sub>d</sub>, and Y<sub>d</sub> (0 ≤ X<sub>o</sub>, Y<sub>o</sub>, X<sub>d</sub>, Y<sub>d</sub> ≤ 100), indicating that the cyclist starts at point (X<sub>o</sub>, Y<sub>o</sub>) and wants to arrive to point (X<sub>d</sub>, Y<sub>d</sub>). The second line contains an integer N (0 ≤ N ≤ 100) representing the number of rain clouds. After these lines, there are N groups of lines, each group describing a cloud.</p>\n<p>Within each group describing a cloud, the first line contains a character C and an integer V (4 ≤ V ≤ 100). The character C is one of the uppercase letters “<code>N</code>”, “<code>S</code>”, “<code>E</code>” or “<code>W</code>”, indicating respectively that the cloud moves in the direction North (y ascending), South (y descending), East (x ascending) or West (x descending). The value V represents the number of vertices of the polygon that models the cloud. Each of the next V lines contains two integers X and Y (0 ≤ X, Y ≤ 100), denoting that the point (X, Y ) is a vertex of the polygon. Vertices appear in clockwise order. All the given vertices are actual corners of the polygon.</p>",
+  "output": "<p>Output a single line with an integer indicating the minimum amount of units of time needed to travel from (X<sub>o</sub>, Y<sub>o</sub>) to (X<sub>d</sub>, Y<sub>d</sub>) without getting wet.</p>",
+  "samples": [
+    {
+      "input": "4 0 1 4\n1\nE 8\n0 5\n3 5\n3 2\n5 2\n5 1\n2 1\n2 2\n0 2\n",
+      "output": "7\n"
+    },
+    {
+      "input": "4 0 1 4\n1\nS 8\n0 5\n3 5\n3 2\n5 2\n5 1\n2 1\n2 2\n0 2\n",
+      "output": "8\n"
+    },
+    {
+      "input": "1 2 1 3\n1\nN 4\n1 4\n2 4\n2 1\n1 1\n",
+      "output": "1\n"
+    },
+    {
+      "input": "0 0 0 1\n1\nW 4\n1 1\n1 0\n0 0\n0 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "20 1 1 10\n2\nE 4\n1 30\n15 30\n15 0\n1 0\nS 4\n0 29\n100 29\n100 22\n0 22\n",
+      "output": "32\n"
+    },
+    {
+      "input": "42 42 42 42\n0\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2021",
+  "level": 21,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "geometry",
+    "bfs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

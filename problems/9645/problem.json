@@ -1,0 +1,26 @@
+{
+  "id": 9645,
+  "title": "Card Trick",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>I am learning magic tricks to impress my girlfriend Alice. My latest trick is a probabilistic one, i.e. it does work in most cases, but not in every case. To perform the trick, I first shuffle a set of many playing cards and put them all in one line with faces up on the table. Then Alice secretly selects one of the first ten cards (i.e. she chooses x<sub>0</sub>, a secret number between 1 and 10 inclusive) and skips cards repeatedly as follows: after having selected a card at position x<sub>i</sub> with a number c(x<sub>i</sub>) on its face, she will select the card at position x<sub>i+1</sub> = x<sub>i</sub> + c(x<sub>i</sub>). Jack (J), Queen (Q), and King (K) count as 10, Ace (A) counts as 11. You may assume that there are at least ten cards on the table.</p>\n<p>Alice stops this procedure as soon as there is no card at position x<sub>i</sub> + c(x<sub>i</sub>). I then perform the same procedure from a randomly selected starting position that may be different from the position selected by Alice. It turns out that often, I end up at the same position. Alice is very impressed by this trick.</p>\n<p>However, I am more interested in the underlying math. Given my randomly selected starting position and the card faces of every selected card (including my final one), can you compute the probability that Alice chose a starting position ending up on the same final card? You may assume that her starting position is randomly chosen with uniform probability (between 1 and 10 inclusive). I forgot to note the cards that I skipped, so these cards are unknown. You may assume that the card face of every single of the unknown cards is independent of the other card faces and random with uniform probability out of the possible card faces (i.e. 2-10, J, Q, K, and A).</p>\n<p><img alt=\"\" src=\"/upload/images2/cardtrick.png\" style=\"height:76px; width:612px\"/></p>\n<p>Figure 1 – Illustration of first sample input: my starting position is 2, so I start selecting that card. Then I keep skipping cards depending on the card’s face. This process iterates until there are not enough cards to skip (in this sample: Q). The final Q card is followed by 0 to 9 unknown cards, since Q counts as 10.</p>",
+  "input": "<p>For each test case:</p>\n<ul>\n<li>A line containing two integers n (1 ≤ n ≤ 100) and m (1 ≤ m ≤ 10) where n is the number of selected cards and m is the 1-based position of my first selected card.</li>\n<li>A line with n tokens that specify the n selected card faces (in order, including the final card). Each card face is given either as an integer x (2 ≤ x ≤ 10) or as a single character (J, Q, K, or A as specified above).</li>\n</ul>",
+  "output": "<p>For each test case, print one line containing the probability that Alice chooses a starting position that leads to the same final card. Your output should have an absolute error of at most 10<sup>-7</sup>.</p>",
+  "samples": [
+    {
+      "input": "5 2\n2 3 5 3 Q\n1 1\nA\n1 2\nA\n1 10\nA\n6 1\n2 2 2 2 2 2\n7 1\n2 2 2 2 2 2 2\n3 10\n10 J K\n",
+      "output": "0.4871377757023325348071573\n0.1000000000000000000000000\n0.1000000000000000000000000\n0.1748923357025314239697490\n0.5830713210321767445117468\n0.6279229611115749556280350\n0.3346565827603272001891974\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2013",
+  "level": 15,
+  "tags": [
+    "math",
+    "dp",
+    "probability"
+  ],
+  "accepted_user_count": 30,
+  "submission_count": null,
+  "average_tries": 1.5
+}

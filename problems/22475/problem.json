@@ -1,0 +1,42 @@
+{
+  "id": 22475,
+  "title": "YAML",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>YAML (YAML Ain't Markup Language)とは、オブジェクトを文字列で表現する形式の一つです。</p>\n<p>YAMLのサブセットで表されたオブジェクトと、プロパティを指定するクエリが与えられるので、指定されたプロパティの値を答えてください。</p>\n<h3>YAMLのサブセット</h3>\n<p>YAML のサブセットは、次のような拡張 BNF 記法で表される構文規則に従います。</p>\n<pre>\nyaml: mapping(0)\nmapping(n): mapping-item(n) | mapping-item(n) mapping(n)\nmapping-item(n): indent(n) key ':' ' ' string '\\n'\n                 | indent(n) key ':' '\\n' mapping(m) (ただしm&gt;n)\nkey: [a-z0-9]+ (※英字小文字または数字からなる1文字以上の文字列)\nstring: [a-z0-9 ]+ (※英字小文字または数字またはスペースからなる1文字以上の文字列)\nindent(0): \"\" (※空文字列)\nindent(n+1): ' ' indent(n) (※スペースをn+1個並べた文字列)\n</pre>\n<p>'\\n'は改行文字を表します。</p>\n<p><var>mapping(n)</var> はオブジェクトを表し、<var>mapping(n)</var> に含まれる <var>mapping-item(n)</var> は、オブジェクトに含まれるプロパティを表します。</p>\n<p><code>mapping-item(n): indent(n) key ':' ' ' string '\\n'</code> は、 <var>key</var> で表されるプロパティの値がstringで表される文字列であることを示します。</p>\n<p><code>mapping-item(n): indent(n) key ':' '\\n' mapping(m)</code> は、<var>key</var> で表されるプロパティの値がmapping(m)で表されるオブジェクトであることを示します。</p>\n<p>1つのオブジェクトに、2つ以上、同じ key を持つプロパティが含まれることはありません。</p>\n<h3>プロパティを指定するクエリの形式</h3>\n<p>プロパティを指定するクエリは、</p>\n<pre>\n.key_1.key_2(..省略..).key_n\n</pre>\n<p>のように、'<code>.</code>'と <var>key</var> が交互に現れる形で与えられ、これは「 yaml で与えられたオブジェクトの、<var>key<sub>1</sub></var> という <var>key</var> を持つプロパティの値であるオブジェクトの、 <var>key<sub>2</sub></var> という <var>key</var> を持つプロパティの値であるオブジェクトの、(..省略..) <var>key<sub>n</sub></var> という <var>key</var> を持つプロパティ」を表します。</p>\n<p>なお、あるi(<var>1 ≤ i ≤ n - 1</var>)について、.key_1.key_2.(..省略..).key_iまでで表されるプロパティの値がオブジェクトでない、またはオブジェクトであるがkey_i+1というプロパティを含んでいない場合、.key_1.key_2(..省略..).key_n で表されるようなプロパティは存在しないとみなします。</p>",
+  "input": "<pre>\n.key_1.key_2(...).key_n\nyaml\n</pre>\n<ul>\n<li><var>1 ≤ n ≤ 20</var></li>\n<li>入力全体に含まれる文字数 <var>≤ 50,000</var></li>\n</ul>",
+  "output": "<p>プロパティの値を 1 行で出力してください。</p>\n<p>指定されたプロパティが存在しない場合は <code>no such property</code>, プロパティの値がオブジェクトの場合は <code>object</code>, プロパティの値が文字列の場合は <code>string \"&lt;文字列の内容&gt;\"</code> と出力してください。</p>",
+  "samples": [
+    {
+      "input": ".tweets.1\nname: shimeji\nid: shimejitan\ntweets:\n  1: shimejilove\n  2: azupero\n",
+      "output": "string \"shimejilove\"\n"
+    },
+    {
+      "input": ".a\na: sample case\n",
+      "output": "string \"sample case\"\n"
+    },
+    {
+      "input": ".my.obj\nmy:\n str: string value\n obj:\n    a: a\n    b: b\n    c: c\n",
+      "output": "object\n"
+    },
+    {
+      "input": ".str.inner\nstr: inner\n",
+      "output": "no such property\n"
+    },
+    {
+      "input": ".no.such.property\nobject:\n    prop1: str\n    prop2: str\n",
+      "output": "no such property\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2012 Day 3A",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 3.4444000720977783
+}

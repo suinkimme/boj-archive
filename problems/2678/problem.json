@@ -1,0 +1,25 @@
+{
+  "id": 2678,
+  "title": "에드삭 데이터 디코딩하기",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>EDSAC (ElectronicDelay Storage Automatic Calculator)은 프로그램을 주기억장치에 두고 실행할 수 있는 최초의 디지털 컴퓨터이다. EDSAC에는 가산기를 사용하는 명령어가 내장되어 있으며, 17비트 word 타입과 35비트 double word 타입을 기반으로 계산한다. 또한 입출력을 위해 5비트 텔레타이프 코드를 사용한다.</p>\r\n\r\n<p>EDSAC 프로그램은 매우 간단한 어셈블리어로 만들 수 있다. 이 어셈블리어의 각 명령어는 문자 하나와 음이 아닌 십진수 주소값, 그리고 F나 D로 이뤄져 있다. F는 full word타입, D는 double word타입을 의미한다. 예를 들어 명령어 &quot;A 128 F&quot;는 가산기에 메모리 상에서 128 주소에 있는 full word 타입 변수값을 더하라는 의미이다. 이 연산은 이진수로 11100000100000000으로 표현된다. 앞의 11100은 &quot;add&quot;를 의미하는 5비트의 opcode이고, 다음 11비트 00010000000(=128)은 피연산자를 나타내며, 마지막의 0은 full word타입을 연산한다는 것을 의미한다. (double word 타입이라면 마지막 자리는 1이 된다.)</p>\r\n\r\n<p>EDSAC 연산은 고정소수점 2의 보수 연산이지만, 단순한 정수 사칙연산이 아닌 현대 컴퓨터와 비슷한 방법으로 수를 연산한다. EDSAC의 연산 장치는 소수점이 가장 높은 자릿수(가장 왼쪽에 있는 자릿수)와 그 다음 자릿수(바로 오른쪽에 있는 자릿수) 사이에 있다고 가정한다. 따라서 17비트 word 타입 x의 표현 범위는 -1.0 &le; x &lt; 1.0이다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:30%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>값</th>\r\n\t\t\t<th>이진수 표현</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>-1.0</td>\r\n\t\t\t<td>10000000000000000</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>1/2</td>\r\n\t\t\t<td>01000000000000000</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>3/4</td>\r\n\t\t\t<td>01100000000000000</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>-1/2</td>\r\n\t\t\t<td>11000000000000000</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>따라서 가능한 가장 큰 양의 실수는 01111111111111111 = 0.9999847412109375이고, 가장 작은 양의 실수는 00000000000000001 = 2^(-16) = 0.0000152587890625이다.</p>\r\n\r\n<p>우연의 일치인지 의도적인 설계인지, opcode add 연산과 텔레타이프 코드 &#39;A&#39;는 11100으로 일치하며, subtract 연산과 &#39;S&#39; 역시 01100으로 일치한다. 또한 텔레타이프 코드로 표현할 수 있는 알파벳은 &quot;PQWERTYUIOJ#SZK*?F@D!HNM&amp;LXGABCV&quot;로 모두 32자인데, 5비트 opcode로 표현할 수 있는 수의 개수도 32개이다. (텔레타이프 코드로 P는 00000, Q는 00001로 위 순서대로 증가하여 V는 11111으로 표현된다.) 이 특성 덕분에 EDSAC 어셈블러를 만들기가 쉬워졌다.</p>\r\n\r\n<p>그러나 EDSAC 어셈블러에는 특별히 데이터 값을 표현하는 특별한 코드가 없다. 그래서 한 EDSAC 프로그래머는 일반 명령어를 데이터 값 표현에 쓰기로 했다. 예를 들어 상수 3/4(01100000000000000)는 &ldquo;S 0 F로 표현되며, 1/3(약 00101010101010101)은 &ldquo;T 682 D&rdquo;로 표현된다. (T=00101, 682=010101010101)</p>\r\n\r\n<p>EDSAC 명령어가 주어졌을 때 이를 해당하는 십진수로 출력하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>입력의 첫 줄에 테스트 케이스의 수 P(1 &le; P &le; 1000)가 주어진다. 각 테스트 케이스는 &quot;c d s&quot; 형태의 EDSAC 명령어가 한 줄에 주어진다.&nbsp;c는&nbsp;EDSAC 알파벳&nbsp;문자 한 개이며, d는 부호 없는 십진수(0 &lt;= d &lt; 2^11), s는 &#39;D&#39; 또는 &#39;F&#39;이다.</p>\r\n",
+  "output": "<p>각 테스트 케이스마다 입력으로 주어진 EDSAC 명령어에 해당하는&nbsp;하나의 십진수를 sb.ddd...의 형태로 출력한다. s는 마이너스 부호이며 음수일 경우에만 쓴다. b는 1 또는 0이며, d는 십진수 자리(0-9)이다. 소수점 아래 자리는 최소 1자리 이상, 최대 16자리 이하이다. 끝의 필요없는 0(Trailing zeros)은 출력하지 않는다.</p>\r\n",
+  "samples": [
+    {
+      "input": "13\nP 0 F\nI 0 F\n& 0 F\n? 0 F\nQ 1228 D\nP 0 D\nV 2047 D\n* 2047 D\n? 0 D\nP 256 F\nV 1536 F\nT 682 D\nT 54 F\n",
+      "output": "0.0\n0.5\n-0.5\n-1.0\n0.0999908447265625\n0.0000152587890625\n-0.0000152587890625\n0.9999847412109375\n-0.9999847412109375\n0.0078125\n-0.015625\n0.3333282470703125\n0.31414794921875\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Greater New York Region, 2011 Greater New York Programming Contest, arine, bupjae",
+  "level": 7,
+  "tags": [
+    "math",
+    "implementation"
+  ],
+  "accepted_user_count": 57,
+  "submission_count": null,
+  "average_tries": 1.8772000074386597
+}

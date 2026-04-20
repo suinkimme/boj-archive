@@ -1,0 +1,30 @@
+{
+  "id": 24069,
+  "title": "BinSearch",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<pre>\nbool binary_search ( int n , int p [] , int target ){\n    int left = 1 , right = n ;\n    while ( left &lt; right ){\n        int mid = ( left + right ) / 2;\n        if( p [ mid ] == target )\n            return true ;\n        else if( p[ mid ] &lt; target )\n            left = mid + 1;\n        else\n            right = mid - 1;\n    }\n    if( p [ left ] == target ) return true ;\n    else return false ;\n}</pre>\n<p>It is well known that if <code>p</code> happens to be sorted, then this code returns <code>true</code> if and only if <code>target</code> appears within <code>p</code>. On the other hand, this may not be the case if <code>p</code> is not sorted.</p>\n<p>You are given a positive integer $n$ and a sequence $b_1, \\dots , b_n ∈ \\{$<code>true</code>, <code>false</code>$\\}$. It is guaranteed that $n = 2^{k} - 1$ for some positive integer $k$. You must generate a permutation $p$ of $\\{1, \\dots , n\\}$ that follows certain conditions. Let $S(p)$ be the number of indices $i \\in \\{1, \\dots , n\\}$ for which <code>binary_search(n, p, i)</code> does <strong>not</strong> return $b_i$. You must set $p$ so that $S(p)$ is small (as detailed in the “Restrictions” section).</p>\n<p>Note: a permutation of $\\{1, \\dots , n\\}$ is a sequence of $n$ integers that contains each integer from $1$ to $n$ <em>exactly</em> once.</p>",
+  "input": "<p>The input contains multiple test cases. The first line of input contains $T$, the number of test cases. The test cases follow.</p>\n<p>The first line of a test case contains the integer $n$. The second line of a test case contains a string of length n containing only characters '<code>0</code>' and '<code>1</code>'. These characters are not separated by spaces. If the $i$<sup>th</sup> character is '<code>1</code>', then $b_i = $<code>true</code>, and if it is '<code>0</code>', then $b_i = $<code>false</code>.</p>",
+  "output": "<p>The output data consists of the answers for each of the $T$ test cases. The answer for a particular test case consists of the permutation $p$ generated for that test case.</p>",
+  "samples": [
+    {
+      "input": "4\n3\n111\n7\n1111111\n3\n000\n7\n0000000\n",
+      "output": "1 2 3\n1 2 3 4 5 6 7\n3 2 1\n7 6 5 4 3 2 1\n"
+    },
+    {
+      "input": "2\n3\n010\n7\n0010110\n",
+      "output": "3 2 1\n7 3 1 5 2 4 6\n"
+    }
+  ],
+  "hint": "<p>Example 1. In the first two test cases of the first example, we have $S(p) = 0$.</p>\n<p>In the third test case, we have $S(p) = 1$. This is because <code>binary_search(n, p, 2)</code> returns <code>true</code>, although $b_2 = $<code>false</code>.</p>\n<p>In the forth test case, we have $S(p) = 1$. This is because <code>binary_search(n, p, 4)</code> returns <code>true</code>, although $b_4 = $<code>false</code>.</p>\n<p>Example 2. We have $S(p) = 0$ for both test cases.</p>",
+  "source": "Olympiad, European Junior Olympiad in Informatics, eJOI 2021",
+  "level": 20,
+  "tags": [
+    "constructive",
+    "divide_and_conquer",
+    "recursion"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3.09089994430542
+}

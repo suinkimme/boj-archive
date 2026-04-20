@@ -1,0 +1,27 @@
+{
+  "id": 19410,
+  "title": "Jogging in the Park",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The Outer Park is very well suited for jogging. Inside the park, there are $n$ glades, conveniently numbered from 1 to $n$. The glades are connected by $m$ trails, the $i$-th trail connects glades $a_i$ and $b_i$ and has length $c_i$ meters. All trails can be walked in both directions. The main entrance is situated at glade 1.</p>\n<p>Your friends decided to have a nice run together over the park. Each of them prepared her own route starting from the entrance and moving to subsequent glades by trails.</p>\n<p>At the end of jogging, all your friends want to reach glade $n$ with a beautiful cafe at the same time. Not everyone planned her route accordingly, though: some of the routes do not end at glade $n$, and the routes might have different length as well. Luckily, all your friends run at the same speed.</p>\n<p>You decided to help your friends and write a program to provide each of them with an <em>extended</em> route --- that is, a route which starts with the same sequence of glades as her original one, but ends at glade $n$ and has exactly the same length, in meters, as all the other extended routes. Note that both the original and the extended routes may contain the same trail multiple times.</p>",
+  "input": "<p>The first line of the input contains two integers $n$ and $m$ ($2 \\le n \\le 50$; $1 \\le m \\le \\frac{n(n-1)}{2}$) --- the number of glades and trails in the park. Each of the next $m$ lines contains three integers $a_i$, $b_i$ and $c_i$ ($1 \\le a_i, b_i \\le n$; $a_i \\ne b_i$; $1 \\le c_i \\le 10^6$) --- the indices of glades connected by the $i$-th trail and its length, respectively.</p>\n<p>The next line of the input contains a single integer $k$ ($2 \\le k \\le 50$) --- the number of your jogging friends. Each of the next $k$ lines contains an integer $l_i$ ($2 \\le l_i \\le 50$) --- the number of glades in the route of your $i$-th friend, followed by $l_i$ integers $g_{i,1}, g_{i,2}, \\ldots, g_{i,l_i}$ ($1 \\le g_{i,j} \\le n$) --- the indices of glades in the route.</p>\n<p>All unordered pairs $(a_i, b_i)$ are distinct. For every $i$, $g_{i,1} = 1$. For every $j$ between $1$ and $l_i - 1$, there exists a trail between glades $g_{i,j}$ and $g_{i,j+1}$.</p>",
+  "output": "<p>If it is impossible to extend all the routes according to the problem statement, output a single integer $-1$. Otherwise, print $k$ lines. The $i$-th of these lines must contain an integer $p_i$ ($p_i \\ge l_i$) followed by $p_i$ integers $h_{i,1}, h_{i,2}, \\ldots, h_{i,p_i}$ ($1 \\le h_{i,j} \\le n$) --- the indices of glades in the $i$-th extended route.</p>\n<p>For every $i$, $h_{i,p_i}$ must be equal to $n$. For every $j$ between $1$ and $p_i - 1$, there must exist a trail between glades $h_{i,j}$ and $h_{i,j+1}$. For every $j$ between $1$ and $l_i$, $h_{i,j}$ must be equal to $g_{i,j}$. The total length of all the extended routes, in meters, must be the same.</p>\n<p>The sum of all $p_i$ must not exceed $2 \\cdot 10^6$. It is guaranteed that if a valid route extension exists, there also exists one with the sum of all $p_i$ not exceeding $2 \\cdot 10^6$.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2 10\n2 3 30\n2 4 30\n1 4 100\n3\n2 1 2\n3 1 2 3\n2 1 4\n",
+      "output": "5 1 2 4 2 4\n5 1 2 3 2 4\n2 1 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2017, Day 6: Gennady Korotkevich Contest 2, Head of Republic of Karelia Cup, Round II, Contest, Open Cup, 2016/2017 Season, Stage 10: Grand Prix of Gomel",
+  "level": 15,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "constructive",
+    "shortest_path"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.615399956703186
+}

@@ -1,0 +1,33 @@
+{
+  "id": 35011,
+  "title": "Competition Results",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>There are $n$ runners participating in a race. Each runner is assigned a unique number from $1$ to $n$. They have arrived at the finish line in some specific order, with no ties. Let us say that runner $i$ has performed an <em>upset</em> of runner $j$ if $i$ finished before $j$ and $i &lt; j$.</p>\n<p>For each $i$ from $1$ to $n$, it is known that runner $i$ has performed exactly $a_i$ upsets of other runners. Your task is to restore the competition results: the number of the runner that took first place, the number of the runner that took second place, \\ldots, the number of the runner that took the $n$-th place. It can be shown that the answer is always unique, assuming that it exists.</p>",
+  "input": "<p>The first line of the input contains an integer $n$ from $1$ to $1000$: the number of runners.</p>\n<p>The second line contains $n$ space-delimited integers $a_1, a_2, \\ldots, a_n$, where $a_i$ is the number of upsets performed by runner $i$.</p>\n<p>The given data is consistent with some possible results of the competition: for every $i$, it is true that $a_i \\le n - i$. In particular, $a_n = 0$.</p>",
+  "output": "<p>Print $n$ space-separated integers: the numbers of runners who took first, second, \\ldots, $n$-th place.</p>",
+  "samples": [
+    {
+      "input": "5\n3 0 2 1 0\n",
+      "output": "3 1 4 5 2\n"
+    },
+    {
+      "input": "1\n0\n",
+      "output": "1\n"
+    },
+    {
+      "input": "2\n0 0\n",
+      "output": "2 1\n"
+    }
+  ],
+  "hint": "<p>Let us check that the answer to the first example is consistent with the given numbers $a_i$.</p>\n<ol>\n<li>Runner $1$ has upset runners $2$, $4$, and $5$.</li>\n<li>Runner $2$ took the last place and, therefore, has not outperformed anyone. Hence, runner $2$ has performed no upsets.</li>\n<li>The runner with the number $3$ took the first place and, therefore, has upset both runners with larger numbers.</li>\n<li>The runner with the number $4$ has upset a single other runner: runner $5$.</li>\n<li>There are no runners with numbers larger than $5$. Therefore, runner $5$ has performed no upsets.</li>\n</ol>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2025-2026 Northwestern Russia Qualification",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "greedy"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1
+}

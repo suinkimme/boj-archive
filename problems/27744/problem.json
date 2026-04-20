@@ -1,0 +1,22 @@
+{
+  "id": 27744,
+  "title": "Saving The Universe Again",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>An alien robot is threatening the universe, using a beam that will destroy all algorithms knowledge. We have to stop it!</p>\n<p>Fortunately, we understand how the robot works. It starts off with a beam with a strength of 1, and it will run a program that is a series of instructions, which will be executed one at a time, in left to right order. Each instruction is of one of the following two types:</p>\n<ul>\n<li><code>C</code> (for \"charge\"): Double the beam's strength.</li>\n<li><code>S</code> (for \"shoot\"): Shoot the beam, doing damage equal to the beam's current strength.</li>\n</ul>\n<p>For example, if the robot's program is <code>SCCSSC</code>, the robot will do the following when the program runs:</p>\n<ul>\n<li>Shoot the beam, doing 1 damage.</li>\n<li>Charge the beam, doubling the beam's strength to 2.</li>\n<li>Charge the beam, doubling the beam's strength to 4.</li>\n<li>Shoot the beam, doing 4 damage.</li>\n<li>Shoot the beam, doing 4 damage.</li>\n<li>Charge the beam, increasing the beam's strength to 8.</li>\n</ul>\n<p>In that case, the program would do a total of 9 damage.</p>\n<p>The universe's top algorithmists have developed a shield that can withstand a maximum total of <b>D</b> damage. But the robot's current program might do more damage than that when it runs.</p>\n<p>The President of the Universe has volunteered to fly into space to hack the robot's program before the robot runs it. The only way the President can hack (without the robot noticing) is by swapping two adjacent instructions. For example, the President could hack the above program once by swapping the third and fourth instructions to make it <code>SCSCSC</code>. This would reduce the total damage to 7. Then, for example, the president could hack the program again to make it <code>SCSSCC</code>, reducing the damage to 5, and so on.</p>\n<p>To prevent the robot from getting too suspicious, the President does not want to hack too many times. What is this smallest possible number of hacks which will ensure that the program does no more than <b>D</b> total damage, if it is possible to do so?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each consists of one line containing an integer <b>D</b> and a string <b>P</b>: the maximum total damage our shield can withstand, and the robot's program.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is either the minimum number of hacks needed to accomplish the goal, or <code>IMPOSSIBLE</code> if it is not possible.</p>",
+  "samples": [
+    {
+      "input": "6\n1 CS\n2 CS\n1 SS\n6 SCCSSC\n2 CC\n3 CSCSS\n",
+      "output": "Case #1: 1\nCase #2: 0\nCase #3: IMPOSSIBLE\nCase #4: 2\nCase #5: 0\nCase #6: 5\n"
+    }
+  ],
+  "hint": "<p>Note that the last three sample cases would not appear in test set 1.</p>\n<p>In Sample Case #1, the President can swap the two instructions to reduce the total damage to 1, which the shield can withstand.</p>\n<p>In Sample Case #2, the President does not need to hack the program at all, since the shield can already withstand the 2 total damage it will cause.</p>\n<p>In Sample Case #3, the program will do more damage than the shield can withstand, and hacking will do nothing to change this. The universe is doomed.</p>\n<p>Sample Case #4 uses the program described in the problem statement. The statement demonstrates one way to reduce the total damage to 5 using two hacks. It is not possible to reduce the damage to 6 or less by using only one hack; remember that the President can only swap adjacent instructions.</p>\n<p>In Sample Case #5, the robot will never shoot, and so it will never do any damage. No hacking is required.</p>\n<p>In Sample Case #6, five hacks are required. Notice that even if two hacks swap the instructions at the same two positions, they still count as separate hacks.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2018, Qualification Round",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1
+}

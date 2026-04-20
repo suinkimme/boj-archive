@@ -1,0 +1,31 @@
+{
+  "id": 28009,
+  "title": "LaLa and Monster Hunting (Part 2)",
+  "time_limit": "6 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A dreadful monster has been witnessed in a forest near the city of $\\color{red}{\\text{m}} \\color{brown}{\\text{a}} \\color{orange}{\\text{g}} \\color{blue}{\\text{i}} \\color{magenta} {\\text{c}}$ Sharia, and a group of valorous adventurers will hunt it down in few days before it hurt anyone. However, $\\color{blue}{\\text{LaLa}}$ knows that the real reason those adventurers are willing to take the risk is to obtain the rare $\\color{red}{\\text{m}} \\color{brown}{\\text{a}} \\color{orange}{\\text{g}} \\color{blue}{\\text{i}} \\color{magenta} {\\text{c}}$ stone that the monster is known to produce in its intestines. $\\color{blue}{\\text{LaLa}}$ would like to obtain the $\\color{red}{\\text{m}} \\color{brown}{\\text{a}} \\color{orange}{\\text{g}} \\color{blue}{\\text{i}} \\color{magenta} {\\text{c}}$ stone before they do, as it is known to be quite beautiful.</p>\n<p>Currently, $\\color{blue}{\\text{LaLa}}$ knows a rough estimate of the location of the monster. However, the monster excels at camouflage, so it's really hard to hunt it down when it's hiding in the network of branches.</p>\n<p>For the sake of simplicity, we'll model the monster as a graph $G$ with $6$ vertices described below:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 503px; height: 255px;\"/></p>\n<p>The network of branches can be modeled as a simple graph $H$. A <strong>candidate</strong> is a subgraph of $H$ that is isomorphic to $G$. In other words, it is a graph obtained by deleting some edges from $H$, and then deleting some vertices that none of the remaining edges are incident to, whose vertices can be renumbered so that it coincides with $G$. $\\color{blue}{\\text{LaLa}}$ will now have to examine all possible candidates to search and hunt the monster down.</p>\n<p>Write a program that computes the number of candidates $\\color{blue}{\\text{LaLa}}$ will have to examine, modulo $998\\,244\\,353$.</p>",
+  "input": "<p>The input describes the branch network $H$ and is given in the following format:</p>\n<blockquote>\n<p>$N$ $M$</p>\n<p>$u_0$ $v_0$</p>\n<p>$u_1$ $v_1$</p>\n<p>$\\vdots$</p>\n<p>$u_{M-1}$ $v_{M-1}$</p>\n</blockquote>\n<p>where $N$ is the number of joints, numbered from $0$ to ${N-1}$ and $M$ is the number of branches, $i$-th of which connects the joints $u_i$ and $v_i$.</p>\n<p>The input satisfies the following constraints:</p>\n<ul>\n<li>All the numbers in the input are integers.</li>\n<li>$2 \\le N \\le 100\\,000$</li>\n<li>$0 \\le M \\le 100\\,000$</li>\n<li>$0 \\le u_i &lt; v_i &lt; N$ for all integers $0 \\le i &lt; M$</li>\n<li>$u_i \\ne u_j$ or $v_i \\ne v_j$ for all integers $0 \\le i &lt; j &lt; M$</li>\n</ul>\n<p>Note that the network is not necessarily connected.</p>",
+  "output": "<p>The output should be a single integer equal to the number of candidates, modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "6 7\n0 1\n1 2\n0 2\n2 3\n3 4\n4 5\n3 5\n",
+      "output": "4\n"
+    },
+    {
+      "input": "6 15\n0 1\n0 2\n0 3\n0 4\n0 5\n1 2\n1 3\n1 4\n1 5\n2 3\n2 4\n2 5\n3 4\n3 5\n4 5\n",
+      "output": "360\n"
+    }
+  ],
+  "hint": "<p>The followings illustrate the $4$ candidates (the regular edges) of the branch network in the first sample test.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 329px; height: 184px;\"/><img alt=\"\" src=\"3.png\" style=\"width: 327px; height: 196px;\"/></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 331px; height: 178px;\"/><img alt=\"\" src=\"5.png\" style=\"width: 327px; height: 192px;\"/></p>",
+  "source": "Camp, Osijek Competitive Programming Camp, Winter 2023, Day 9: Magical Story of LaLa, aeren",
+  "level": 24,
+  "tags": [
+    "case_work",
+    "dp",
+    "graphs",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

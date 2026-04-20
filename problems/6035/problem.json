@@ -1,0 +1,26 @@
+{
+  "id": 6035,
+  "title": "StarCowraft",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The beta version of StarCowraft II is ready! Farmer John and Bessie are testing it, trying different strategies in one-on-one battles against each other's armies. The goal in StarCowraft II is to defeat your opponent's army in a battle.</p>\n<p>Each player's army fights in a battle. An army comprises as many as three different types of 'units' with respective strengths denoted by constant positive real numbers unknown to the players: cattlebruisers with strength S1, cow templars with strength S2, and ultracows with strength S3. The only given bounding information is that no unit is more than 100 times as strong as any another unit.</p>\n<p>An army's total strength is the sum of the individual strengths of each of its units. An army that has, among others units, 23 cattlebruisers would gain 23*S1 strength just from the cattlebruisers.</p>\n<p>When two opposing armies fight in a battle, the army with a higher total strength value wins.  If the armies have exactly equal strength values, one of the players randomly wins.</p>\n<p>Farmer John and Bessie played N (0 &lt;= N &lt;= 300) \"test battles\". In the i-th test battle, FJ's army had J1_i cattlebruisers, J2_i cow templars, and J3_i ultracows (0 &lt;= J1_i + J2_i + J3_i &lt;= 1,000). Similarly, Bessie's army had B1_i cattlebruisers, B2_i cow templars, and B3_i ultracows (0 &lt;= B1_i + B2_i + B3_i &lt;= 1,000). After their armies fought against each other, FJ and Bessie recorded the winner as a single 'victory letter' V_i: \"J\" if Farm John won the battle; \"B\" if Bessie won.</p>\n<p>Although these victory results are the only information that they have, they hope to predict some of the results of additional battles if they are given the unit compositions of two opposing armies. For some battles, though, they know it might not be possible to determine the winner with certainty.</p>\n<p>Given the results of the N test battles that Farmer John and Bessie already played, write a program that decides the winner (if possible) for M (1 &lt;= M &lt;= 2,000) new battles.</p>\n<p>The results reported for the test battles are correct; there exists at least one set of strength values which are consistent with the results.</p>\n<p>For purposes of demonstrating the army strength evaluation functions, consider these test battles fought in a game where we (but neither FJ nor Bessie) know that S1=9.0, S2=7.0, and S3=4.0:</p>\n<pre>\n   ---- Farmer John ----    ------- Bessie ------    Battle\n   J1  J2  J3 J_Strength    B1  B2  B3 B_Strength   Outcome\n    6   5   4    105         5   4   7    101          J\n    5   4   2     81         3   5   5     82          B\n    9   0  10    121         8   2   7    114          J</pre>\n<p>These results connote the following deduced results for the reasons shown:</p>\n<pre>\n   ---- Farmer John ----    ------- Bessie ------    Battle\n   J1  J2  J3 J_Strength    B1  B2  B3 B_Strength   Outcome\n    6   6   4    112         5   4   7    101          J\n              FJ's army is even stronger than in test battle 1\n    9   0  10    121         8   2   6    110          J\n              Bessie's army is even weaker than in test battle 3</pre>",
+  "input": "<ul>\n<li>Line 1: Two space-separated integers: N and M </li>\n<li>Lines 2..N+1: Line i+1 describes a test battle with seven space-separated items -- a victory letter and six space-separated integer unit counts: V_i, J1_i, J2_i, J3_i, B1_i, B2_i, and B3_i</li>\n<li>Lines N+2..N+M+1: Line i+N+1 describes a \"new battle\" using six space-separated integers: J1_i, J2_i, J3_i, B1_i, B2_i, and B3_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Lines 1..M: Line i contains the outcome of the i-th new battle: \"J\" if Farmer John definitely wins, \"B\" if Bessie definitely wins, and \"U\" (undecidable) if it is impossible to decide the winner with the given information.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "3 3\nJ 6 5 4 5 4 7\nB 5 4 2 3 5 5\nJ 9 0 10 8 2 7\n6 6 4 5 4 7\n9 0 10 8 2 6\n3 4 8 4 4 6\n",
+      "output": "J\nJ\nU\n"
+    }
+  ],
+  "hint": "<p>First two games correspond to the examples in the description. The result of the last game cannot be determined with only the information that Farmer John and Bessie currently have. Specifically, both S_1=9.0, S_2=7.0, S_3=4.0 and S_1=12.0, S_2=20.0, S_3=10.0 are consistent with the \"test battles,\" but they give different results when plugged in the third \"new battle.\"</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2009-2010 Season, USACO March 2010 Contest, Gold",
+  "level": 22,
+  "tags": [
+    "geometry",
+    "line_intersection",
+    "half_plane_intersection"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 4.25
+}

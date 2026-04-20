@@ -1,0 +1,27 @@
+{
+  "id": 7011,
+  "title": "Weather Forecasting",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Due to the gargantuan number of internet news sources, it’s time-consuming to figure out who you can trust when it comes to forecasting the weather. So in order to weed out the worst offenders, you’d like to build a simple model to automate this task. In particular, the model will take as input an agency’s forecasts of today’s weather from the previous four days. The output will be whether those forecasts correctly discerned if travelers would be impacted by the weather. For simplicity, let’s assume you’re only interested in days where the weather in fact caused problems.</p>\n<p>For our purposes, a forecast will be one or more sentences from a prior day which are referring to today’s weather. Each sentence will contain one phenomenon and zero or one qualifiers. In and of themselves, phenomena are either good, ambiguous, or bad, as follows:</p>\n<table class=\"table\" style=\"width:40%\">\n<thead>\n<tr>\n<th>good</th>\n<th>ambiguous</th>\n<th>bad</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>sun</td>\n<td>high</td>\n<td>snow</td>\n</tr>\n<tr>\n<td>sunny</td>\n<td>highs</td>\n<td>snow showers</td>\n</tr>\n<tr>\n<td>clouds</td>\n<td>low</td>\n<td>flurries</td>\n</tr>\n<tr>\n<td>cloudy</td>\n<td>lows</td>\n<td>hail</td>\n</tr>\n<tr>\n<td> </td>\n<td>wind</td>\n<td>rain</td>\n</tr>\n<tr>\n<td> </td>\n<td>winds</td>\n<td>precipitation</td>\n</tr>\n</tbody>\n</table>\n<p>We assume that the sentence is, by default, indicating a 100% chance of the phenomenon. However, if a qualifier is present, it modifies this chance. For good and bad phenomena, the set of qualifiers and the chances they imply are as follows:</p>\n<table class=\"table\" style=\"width:40%\">\n<tbody>\n<tr>\n<td>mostly</td>\n<td>80%</td>\n</tr>\n<tr>\n<td>some</td>\n<td>70%</td>\n</tr>\n<tr>\n<td>possible</td>\n<td>50%</td>\n</tr>\n</tbody>\n</table>\n<p>For ambiguous phenomena, exactly one qualifier will always be present. In particular, this qualifier will be numeric, and depending on its value, will determine whether an otherwise ambiguous phenomenon is in fact good or bad. The qualifier for high(s) and low(s) will take two forms: an integer between 0 and 80, or a range followed by an integer rounded to the nearest 10 degrees, where the range is one of ‘upper’, ‘lower’, and ‘mid’, e.g. “upper 40s”. A high is a good thing if the temperature is at least 60. A low is a good thing if the temperature is at least 50.</p>\n<p>For wind(s), there is only one format, consisting of two integers and the words “to” and “mph”, e.g. “5 to 10 mph”. If the second integer is at least 25, the phenomenon is bad, otherwise it is good.</p>\n<p>The score of a sentence is simply the chance of the phenomenon, but positive if it’s good and negative if bad. The score of a forecast will be the average score of the forecast’s sentences.</p>\n<p>Let’s also assume the forecasts get more accurate as the day they’re referring to approaches. So in computing a total score for an agency’s four forecasts, we’ll weight each forecast by 1/(d+1) where d is the number of days the forecast was made in advance. So a forecast made yesterday for today’s weather will have weight 1/2. Then we simply sum these weighted scores.</p>",
+  "input": "<p>The first line is the number K of input data sets, followed by the K data sets, each exactly four lines. Line i of a data set contains the weather forecast i days before the day in question.</p>",
+  "output": "<p>For each data set, output “Data Set x:” on a line by itself, where x is its number. On the next line, output “YES” if the total score is less than 0.25, meaning the news agency correctly forecast bad weather, otherwise output “NO”. Each data set should be followed by a blank line.</p>",
+  "samples": [
+    {
+      "input": "2\nMostly cloudy. Lows in the mid 50s.\nMostly cloudy. Highs in the upper 50s.\nPossible rain. Wind 5 to 10 mph.\nMostly clouds. Highs in the upper 50s.\nRain.\nRain.\nSun.\nSun.\n",
+      "output": "Data Set 1:\nNO\n\nData Set 2:\nYES\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Spring 2013: Snowstorm Spring 2013",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "string",
+    "case_work",
+    "parsing"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.5
+}

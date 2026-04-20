@@ -1,0 +1,22 @@
+{
+  "id": 2382,
+  "title": "키워드 매칭",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>인터넷을 사용해 본 사람이라면 사용자가 원하는 조건에 맞춰 페이지를 찾아주는 검색 엔진에 익숙하다. 많은 수의  이런 엔진들은 좀 더 빠르고 정확한 응답을 위해 개량된 알고리즘과 병렬 검색 기법 등 복잡한 알고리즘을 이용한다.</p>\n<p>이번 문제는 다소 간단하다. 한 그룹의 웹 페이지들은 각각의 페이지마다 몇 개의 키워드로 분류되었다. 한 웹 페이지에서의 키워드들은 연관성 순서에 따라 내림차순으로 정렬되어 있다. 예를 들어 Smalltalk에서의 programming를 다룬 페이지는 Smalltalk, programming, computer의 세 개의 키워드를 순서대로 가지고 있다. 이때 가장 연관있는 단어는 Smalltalk이다.</p>\n<p>질의 역시 연관성의 내림차순 순서로 정렬된 몇 개의 키워드로 구성되어 있다. 만약 질의에서 Smalltalk가 먼저 나오고 computer가 뒤따라 나왔다면 Smalltalk는 computer보다 더 중요한 키워드이다.</p>\n<p>이 문제에서 당신은 각각의 질의에 대해 질의와 일치하는 상위 5개(또는 그 이하)의 페이지를 결정해야 한다. 질의와 페이지의 연관 지수를 계산하기 위해 각각의 페이지와 질의의 각 키워드에 대해 정수의 가중치가 부여되었다고 가정하자. 가장 처음에 나온 키워드의 가중치는 N이고(또한 N은 페이지와 질의에 쓰일 수 있는 최대 키워드 개수이기도 하다), 다음 단어부터는 가중치가 1씩 줄어든다. 연관 지수는 각 키워드의 가중치의 곱(페이지의 키워드 가중치×질의의 키워드 가중치)들의 합이다. 예를 들어 다음과 같은 페이지와 키워드가 있다고 하자.</p>\n<ul>\n<li>Page 1: Smalltalk, programming, computers</li>\n<li>Page 2: computers, programming</li>\n<li>Page 3: computers, Smalltalk</li>\n</ul>\n<p>N은 8이라고 할 때 Smalltalk와 programming으로 되어 있는 질의에 대해 각 페이지의 연관 지수는 페이지 1 → 113(=8×8+7×7), 페이지 2 → 49(=7×7), 페이지 3 → 56(=8×7)이다. 한편, Smalltalk와 computers로 되어있는 질의에 대해서는 페이지 1 → 106(=8×8+7×6), 페이지 2 → 56(=7×8), 페이지 3 → 112(=8×7+7×8)의 연관 지수를 가진다.</p>",
+  "input": "<p>입력 데이터는 각각의 웹 페이지와 질의에 대해 한 줄씩으로 구성되어 있다. 각 줄은 식별문자와 키워드 목록으로 되어있다. 식별문자 P, Q, E는 각각 페이지, 질의, 파일 끝을 나타낸다. 식별문자와 키워드 사이에는 하나 이상의 공백문자가 있다. P와 Q는 임의의 순서대로 나타날 수 있다. 페이지는 입력 파일의 순서대로 번호가 부여된다. 각각의 페이지는 최소 하나 이상의 키워드가 있되 8개를 넘어가지 않는다. 각각의 키워드는 20문자를 넘어가지 않는다. 대소문자 구분은 중요하지 않다. 입력에는 최대 25개의 페이지가 올 수 있다.</p>\n<p>각각의 질의 또한 1개부터 8개 사이의 키워드로 되어 있다. 역시 각각의 키워드는 20문자를 넘어가지 않고, 대소문자 구별은 하지 않는다. 질의는 입력 파일의 순서대로 번호가 부여된다.</p>",
+  "output": "<p>각각의 질의에 대해 연관성이 큰 5개(또는 그 이하)의 페이지를 연관성의 내림차순 순으로 출력한다. 각 줄에는 질의 식별자, 콜론(:), 연관성이 큰 페이지 식별자 5개의 순서대로 출력한다. 페이지 식별자는 “P#”(단, #은 페이지 번호), 질의 식별자는 “Q#”(단, #은 질의 번호)의 형태로 출력한다. 만약 여러 페이지가 같은 연관 지수를 가지고 있다면 페이지 번호 순서대로 출력한다. 관계없는 페이지(즉, 연관 지수가 0인 페이지)는 절대로 출력하지 않는다.</p>",
+  "samples": [
+    {
+      "input": "P Smalltalk programming computers\nP computers programming\nP computers Smalltalk\nP FORTRAN programming\nP COBOL programming\nP programming\nQ Smalltalk\nQ programming\nQ computers\nQ Smalltalk computers\nQ Smalltalk programming\nQ cooking French\nE\n",
+      "output": "Q1: P1 P3\nQ2: P6 P1 P2 P4 P5\nQ3: P2 P3 P1\nQ4: P3 P1 P2\nQ5: P1 P3 P6 P2 P4\nQ6:\n"
+    }
+  ],
+  "hint": null,
+  "source": null,
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 8.875
+}

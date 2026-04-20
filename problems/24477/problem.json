@@ -1,0 +1,39 @@
+{
+  "id": 24477,
+  "title": "Railway Trip 2",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>IOI Railway Company is operating lines on a railway track. There are $N$ stations in a straight line, numbered from $1$ to $N$. For each $i$ ($1 ≤ i ≤ N - 1$), Station $i$ and Station $i + 1$ are connected directly by a railway track.</p>\n<p>IOI Railway Company is operating $M$ lines, numbered from $1$ to $M$. In Line $j$ ($1 ≤ j ≤ M$), the starting station is Station $A_j$, and the terminal station is Station $B_j$. A train stops at every station. Namely, if $A_j &lt; B_j$ a train of Line $j$ stops at Station $A_j$, Station $A_j + 1$, $\\dots$, Station $B_j$, in this order. If $A_j &gt; B_j$, a train of Line $j$ stops at Station $A_j$, Station $A_j - 1$, $\\dots$, Station $B_j$, in this order.</p>\n<p>JOI-kun is a traveler. He has $Q$ travel plans. In the $k$-th plan ($1 ≤ k ≤ Q$), he travels from Station $S_k$ to Station $T_k$ by taking lines.</p>\n<p>However, JOI-kun is tired from a long journey. He wants to take a vacant train and get a seat. Thus, JOI-kun decided that he takes a train of a line at a station only if it is the $K$-th or earlier stop from the starting station of the line. In other words, if $A_j &lt; B_j$, he can take a train of Line $j$ only at Station $A_j$, Station $A_j + 1$, $\\dots$, Station $\\min{\\{A_j + K - 1, B_j - 1\\}}$. If $A_j &gt; B_j$, he can take a train of Line $j$ only at Station $A_j$, Station $A_j - 1$, $\\dots$, Station $\\max{\\{A_j - K + 1, B_j + 1\\}}$. JOI-kun will get out of the train at a station between the station next to where he takes the train and the terminal station, inclusive.</p>\n<p>Under these conditions, JOI-kun wants to minimize the number of times of taking trains.</p>\n<p>Given the information of the lines of IOI Railway Company and JOI-kun’s plans, write a program which calculates, for each of JOI-kun’s plans, the minimum number of times of taking trains needed for JOI-kun to achieve it.</p>",
+  "input": "<p>Read the following data from the standard input. Given values are all integers.</p>\n<p>$\\begin{align*}&amp;N\\,K \\\\ &amp; M \\\\ &amp; A_1\\,B_1 \\\\ &amp; A_2\\,B_2 \\\\ &amp; \\vdots \\\\ &amp; A_M\\,B_M \\\\ &amp; Q \\\\ &amp; S_1\\,T_1 \\\\ &amp; S_2\\,T_2 \\\\ &amp; \\vdots \\\\ &amp; S_Q\\,T_Q\\end{align*}$</p>",
+  "output": "<p>Write $Q$ lines to the standard output. The $k$-th line ($1 ≤ k ≤ Q$) should contain the minimum number of times of taking trains needed for JOI-kun to achieve the $k$-th plan. If it is not possible to achieve the $k$-th plan, output <code>-1</code>.</p>",
+  "samples": [
+    {
+      "input": "5 2\n2\n5 1\n3 5\n3\n5 3\n3 2\n2 1\n",
+      "output": "1\n2\n-1\n"
+    },
+    {
+      "input": "6 3\n2\n1 6\n5 1\n4\n5 1\n6 3\n3 6\n2 1\n",
+      "output": "1\n-1\n1\n2\n"
+    },
+    {
+      "input": "6 5\n4\n3 1\n2 4\n5 3\n4 6\n5\n1 5\n3 2\n2 6\n6 3\n5 4\n",
+      "output": "-1\n1\n2\n-1\n1\n"
+    },
+    {
+      "input": "12 1\n5\n1 7\n10 12\n3 5\n8 10\n5 9\n7\n2 11\n5 8\n3 12\n4 6\n1 9\n9 10\n1 4\n",
+      "output": "-1\n1\n4\n-1\n2\n-1\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Japanese Olympiad in Informatics, JOI 2021/2022",
+  "level": 22,
+  "tags": [
+    "dp",
+    "data_structures",
+    "segtree",
+    "sparse_table"
+  ],
+  "accepted_user_count": 62,
+  "submission_count": null,
+  "average_tries": 2.64520001411438
+}

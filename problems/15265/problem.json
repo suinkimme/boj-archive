@@ -1,0 +1,36 @@
+{
+  "id": 15265,
+  "title": "Hidden Hierarchy",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are working on the user interface for a simple text-based file explorer. One of your tasks is to build a navigation pane displaying the directory hierarchy. As usual, the filesystem consists of directories which may contain files and other directories, which may, in turn, again contain files and other directories etc. Hence, the directories form a hierarchical tree structure. The top-most directory in the hierarchy is called the root directory. If directory d directly contains directory e we will say that d is the parent directory of e while e is a subdirectory of d. Each file has a size expressed in bytes. The directory size is simply the total size of all files directly or indirectly contained inside that directory</p>\n<p>All files and all directories except the root directory have a name — a string that always starts with a letter and consists of only lowercase letters and “.” (dot) characters. All items (files and directories) directly inside the same parent directory must have unique names. Each item (file and directory) can be uniquely described by its path — a string built according to the following rules:</p>\n<ul>\n<li>Path of the root directory is simply “/” (forward slash).</li>\n<li>For a directory d, its path is obtained by concatenating the directory names top to bottom along the hierarchy from the root directory to d, preceding each name with the “/” character and placing another “/” character at the end of the path.</li>\n<li>For a file f , its path is the concatenation of the parent directory path and the name of file f .</li>\n</ul>\n<p>We display the directory hierarchy by printing the root directory. We print a directory d by outputting a line of the form “m<sub>d</sub> p<sub>d</sub> s<sub>d</sub>” where p<sub>d</sub> and s<sub>d</sub> are the path and size of directory d respectively, while m<sub>d</sub> is its expansion marker explained shortly. If d contains other directories we must choose either to collapse it or to expand it. If we choose to expand d we print (using the same rules) all of its subdirectories in lexicographical order by name. If we choose to collapse directory d, we simply ignore its contents.</p>\n<p>The expansion marker m<sub>d</sub> is a single blank character when d does not have any subdirectories, “+” (plus) character when we choose to collapse d or a “-” (minus) character when we choose expand d.</p>\n<p>Given a list of files in the filesystem and a threshold integer t, display the directory hierarchy ensuring that each directory of size at least t is printed. Additionally, the total number of directories printed should be minimal. Assume there are no empty directories in the filesystem — the entire hierarchy can be deduced from the provided file paths. Note that the root directory has to be printed regardless of its size. Also note that a directory of size at least t only has to be printed, but not necessarily expanded.</p>",
+  "input": "<p>The first line contains an integer n (1 ≤ n ≤ 1 000) — the number of files. Each of the following n lines contains a string f and an integer s (1 ≤ s ≤ 10<sup>6</sup>) — the path and the size of a single file. Each path is at most 100 characters long and is a valid file path according to the rules above. All paths will be different.</p>\n<p>The following line contains an integer t (1 ≤ t ≤ 10<sup>9</sup>) — the threshold directory size.</p>",
+  "output": "<p>Output the minimal display of the filesystem hierarchy for the given threshold as described above.</p>",
+  "samples": [
+    {
+      "input": "9\n/sys/kernel/notes 100\n/cerc/problems/a/testdata/in 1000000\n/cerc/problems/a/testdata/out 8\n/cerc/problems/a/luka.cc 500\n/cerc/problems/a/zuza.cc 5000\n/cerc/problems/b/testdata/in 15\n/cerc/problems/b/testdata/out 4\n/cerc/problems/b/kale.cc 100\n/cerc/documents/rules.pdf 4000\n10000\n",
+      "output": "- / 1009727\n- /cerc/ 1009627\n  /cerc/documents/ 4000\n- /cerc/problems/ 1005627\n- /cerc/problems/a/ 1005508\n  /cerc/problems/a/testdata/ 1000008\n+ /cerc/problems/b/ 119\n+ /sys/ 100\n"
+    },
+    {
+      "input": "8\n/b/test/in.a 100\n/b/test/in.b 1\n/c/test/in.a 100\n/c/test/in.b 1\n/c/test/pic/in.a.svg 10\n/c/test/pic/in.b.svg 10\n/a/test/in.a 99\n/a/test/in.b 1\n101\n",
+      "output": "- / 322\n+ /a/ 100\n- /b/ 101\n  /b/test/ 101\n- /c/ 121\n+ /c/test/ 121\n"
+    },
+    {
+      "input": "2\n/a/a/a 100\n/b.txt 99\n200\n",
+      "output": "+ / 199\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2017, Contest, Open Cup, 2017/2018 Season, Stage 8: Grand Prix of Europe, yclock",
+  "level": 14,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "implementation",
+    "string",
+    "trees"
+  ],
+  "accepted_user_count": 39,
+  "submission_count": null,
+  "average_tries": 1.3077000379562378
+}

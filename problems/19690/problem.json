@@ -1,0 +1,36 @@
+{
+  "id": 19690,
+  "title": "Journey",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Kuno Kunibertson is moving house from Amman to Brasília. His new employer pays the trip and allows him to make as many stop-overs as he wants; the only two conditions are: (1) the i-th stop-over city of the trip should be nearer to Brasília than the (i − 1)-th stop-over city and (2) the trip should not take more than m nights. Furthermore, as Brasília is a transport hub, there is a direct flight from each city to Brasília. Kuno Kunibertson has to supply the following information to the trip evaluation:</p>\n<ol>\n<li>Three integers n, m, h where n is the number of cities which might be visited on the trip, m is an upper bound on the number of nights the trip can take and h is the number of follow-on flights per stop-over city (for the ease of notation, the cities are numbers 0, 1, . . . , n − 1 where 0 is Amman and n − 1 is Brasília)</li>\n<li>For each stop-over city, a list of exactly h possible follow-on flights and each such flight together is specified by the next city together with a minimum number of nights for a hotel stay at the next city Only those flights which go nearer to Brasília are relevant, the others should be ignored by the program.</li>\n</ol>\n<p>The trip evaluation agency will then plan out a suitable trip for him with some artificial intelligence program, which optimises the trips according to a data base of tourist attractions. However, in order not to overload its computers, the trip evaluation agency has the following requirement:</p>\n<ul>\n<li>(∗) The number of itineraries which use up k nights (k &lt; m) should not be more than 500000000 (that is, 5 × 10<sup>8</sup>).</li>\n</ul>\n<p>Note that for counting, two itineraries are considered to be different, if one of the following conditions applies:</p>\n<ul>\n<li>one itinerary contains the stopover in city i and the other one does not;</li>\n<li>the departure day from city i is different in both itineraries;</li>\n<li>both itineraries go from city i to city j, but using different flights (this can be the case if Kuno Kunibertson lists two or more flights from city i to city j in his data).</li>\n</ul>\n<p>For example, if the itinerary is Amman - Cairo - Dakar - Brasília, then an itinerary which departs from Cairo on day 2 differs from another itinerary which departs from Cairo on day 3. Furthermore, if there are two flights from Dakar to Brasília (even if they depart and arrive on the same days), the itineraries are different since they use these different flights.</p>\n<p>As there is a penalty when the condition (∗) is violated, Kuno Kunibertson asks his friend Herbert Hercules to write for him a computer program which computes the number of itineraries which use up to k days.</p>",
+  "input": "<p>Your program must read from standard input.</p>\n<p>The first row of the input consists of three integers n, m and h, where n is the number of cities, m is the strict upper bound of the number of nights used and h is the number of follow-on flights per city. We assume city 0 is Amman and city n − 1 is Brasília. We also assume city i is closer to Brasília than city j if i &gt; j.</p>\n<p>Then, the input contains n − 1 rows, where the ith row, i = 0, 1, . . . , n − 2, consists of h pairs of integers (j, k), which means that Kuno Kunibertson can fly from city i to city j and stays at least k nights. If there are several flights to the same city, they are considered different. All 2h integers are listed in one row separated by spaces.</p>",
+  "output": "<p>Your program must output to standard output only. The output is a list of m integers between 0 and 500000001 which are, respectively, the number of itineraries from Amman to Brasília taking 0, 1, . . ., m − 1 nights, respectively. If the number of itineraries is 500000001 or more, the output should be 500000001.</p>",
+  "samples": [
+    {
+      "input": "4 4 3\n1 2 2 2 3 0\n2 2 2 3 3 0\n3 1 3 3 3 0\n",
+      "output": "1 1 3 6\n"
+    },
+    {
+      "input": "4 8 3\n1 0 2 1 3 0\n3 1 3 2 3 0\n3 1 3 1 3 0\n",
+      "output": "2 5 11 17 23 29 35 41\n"
+    },
+    {
+      "input": "4 11 3\n1 0 2 0 3 0\n0 0 2 0 3 0\n0 0 0 0 3 0\n",
+      "output": "4 8 13 19 26 34 43 53 64 76 89\n"
+    },
+    {
+      "input": "8 8 8\n1 0 1 0 1 0 1 0 1 0 1 0 1 0 7 0\n2 0 2 0 2 0 2 0 2 0 2 0 2 0 7 0\n3 0 3 0 3 0 3 0 3 0 3 0 3 0 7 0\n4 0 4 0 4 0 4 0 4 0 4 0 4 0 7 0\n5 0 5 0 5 0 5 0 5 0 5 0 5 0 7 0\n6 0 6 0 6 0 6 0 6 0 6 0 6 0 7 0\n7 0 7 0 7 0 7 0 7 0 7 0 7 0 7 0\n",
+      "output": "960800 6702725 26746084 80092734 199948848 439388874 500000001 500000001\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2018",
+  "level": 12,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1
+}

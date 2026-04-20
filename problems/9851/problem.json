@@ -1,0 +1,22 @@
+{
+  "id": 9851,
+  "title": "Hole",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A group of scientists want to monitor a huge forest. They plan to airdrop small sensors to the forest. Due to many unpredictable conditions during airdropping, each sensor will land in a random location in the forest. After all sensors have landed, there will be square regions in the forest that do not contain any sensor. Let us call such a region a <em>hole</em>. It is desirable that all holes are small. This can be achieved by airdropping very large number of sensors. On the other hand, those sensors are expensive. Hence, the scientists want to conduct a computer simulation to determine how many sensors should be airdropped, so that the chances of having a large hole are small. To conduct this simulation, a subroutine is required that, given the locations of the sensors, outputs the size of the largest hole. This subroutine has to be very efficient (i.e. fast) since the simulation will be repeated many times with different parameters. You are tasked to write this efficient subroutine.</p>\n<p>Consider an n by n array A of 0 and 1’s. We say that there is a hole in A at (x, y) with width d if the value of A[i, j] is 0, where</p>\n<p style=\"text-align: center;\">i = x,(x + 1),(x + 2), . . . ,(x + d − 1)<br/>\nj = y,(y + 1),(y + 2), . . . ,(y + d − 1),</p>\n<p>and (x + d − 1) &lt; n,(y + d − 1) &lt; n. That is, all values within the “square” at (x, y) with width d are 0’s. Note that the indices of the array start from 0.</p>\n<p>Given the array A, we want to find the width of the largest hole.</p>",
+  "input": "<p>The input represents the input array A. The following is the input file for the array shown above.</p>\n<p>The first line contains a positive integer n ≤ 1,024 which is the width of the array. The second line contains an integer k, which is the number of 1’s in the array. Next, it is followed by k more lines which specify the entries with value 1. Each line contains two integers x and y, which indicates that A[x, y] = 1.</p>\n<p>Since the value of n may be as large as 1,024, your program has to run fast enough to handle arrays of that size.</p>",
+  "output": "<p>The output consists of an integer, which is the width of the largest hole. If there is no hole in the array, the output is 0. The following is the output of our example.</p>",
+  "samples": [
+    {
+      "input": "8\n5\n3 1\n7 0\n6 4\n0 5\n5 7\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": "<p>The following figure shows an array where the entry A[i, j] is at the i-th row and j-th column. The arrow points to the location of A[3, 7].</p>\n<p>In this array, there is a hole of width 3 at (0,0), and it is not possible to have a hole of width 4 at (0,0). The largest hole has width 5 and it is at (1,2), which is highlighted in the figure.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 255px; height: 159px;\"/></p>\n<p>There are different fast methods that find the largest hole. Below are hints to two different methods.</p>\n<p>Hint 1: Consider these 2 values:</p>\n<ul>\n<li>d<sub>1</sub>: the width of the largest possible hole at (1,1), and</li>\n<li>d<sub>2</sub>: the width of the largest possible hole at (2,2).</li>\n</ul>\n<p>What is the relationship between d<sub>1</sub> and d<sub>2</sub>? Suppose we know the value of d<sub>2</sub>, is there a fast method to compute d<sub>1</sub>?</p>\n<p>Hint 2: Consider these 2 values:</p>\n<ul>\n<li>s<sub>1</sub>: the number of 1’s within the square at (0,0) with width 7, and</li>\n<li>s<sub>2</sub>: the number of 1’s within the square at (0,1) with width 7.</li>\n</ul>\n<p>What is the relationship between s<sub>1</sub> and s<sub>2</sub>? Suppose we know the value of s<sub>1</sub>, is there a fast method to compute s<sub>2</sub>?</p>",
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2007",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 4.5
+}

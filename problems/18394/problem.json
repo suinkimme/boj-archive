@@ -1,0 +1,22 @@
+{
+  "id": 18394,
+  "title": "DUP",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A software company started working on a utility software for detecting duplicate image files. Of course, one simple solution could be the comparison of the file name, extension, creation and modification date-time. But the result is not going to be accurate. To check if two images are duplicate their content should be compared (pixel to pixel comparison).</p>\n<p>As a starting point, they want to add the functionality of comparing images with the same size and possibility of 90, 180 or 270 degrees rotation. Write a program that gets the image file name and its content as pixels matrix for input and lists the duplicate image names as output.</p>",
+  "input": "<p>First line contains I W H</p>\n<ul>\n<li>I is the number of input images, I &lt; 1000</li>\n<li>W is the image width, 0 &lt; W &lt; 100</li>\n<li>H is the image height, 0 &lt; H &lt; 100</li>\n</ul>\n<p>Next, each image starts with:</p>\n<ul>\n<li>FN is a line which contains the file name, len(FN) &lt; 100</li>\n<li>Next W or H lines each containing W or H number of characters (pixels)\n\t<ul>\n<li>Each pixel is represented by a single character (0-9, A-Z, a-z, or +)</li>\n<li>The bottom-left pixel of the original image is marked with the plus [+] sign.</li>\n</ul>\n</li>\n</ul>\n<p>Images are separated with a line containing 5 dashes (-).</p>",
+  "output": "<p>Print the name of duplicate images sorted alphabetically in ascending order each in one line.</p>",
+  "samples": [
+    {
+      "input": "3 4 3\nuntitled.png\n345+\n2344\n3455\n-----\ntrip2019.png\n323\n434\n545\n54+\n-----\ngame.png\n+10\n210\n351\n445\n",
+      "output": "trip2019.png\nuntitled.png\n"
+    }
+  ],
+  "hint": "<p>Based on the input, there are 3 images, each has a 4x3 or 3x4 dimension. In the table below each image is rotated back to 0 degrees and then compared.</p>\n<table class=\"table table-bordered\" style=\"width: 100%;\">\n<tbody>\n<tr>\n<td>File Name</td>\n<td>untitled.png</td>\n<td>trip2019.png</td>\n<td>game.png</td>\n</tr>\n<tr>\n<td>Input</td>\n<td>\n<pre>\n345+\n2344\n3455</pre>\n</td>\n<td>\n<pre>\n323\n434\n545\n54+</pre>\n</td>\n<td>\n<pre>\n+10\n210\n351\n445</pre>\n</td>\n</tr>\n<tr>\n<td>Note</td>\n<td>Originally the + sign should be in bottom-left, but because it is rotated +/-180 degrees it is now in top-right.</td>\n<td>The image was rotated 90 degrees (or - 270).</td>\n<td>The image is rotated 270 (or -90) degrees.</td>\n</tr>\n<tr>\n<td>After Rotation</td>\n<td>\n<pre>\n5543\n4432\n+543</pre>\n</td>\n<td>\n<pre>\n5543\n4432\n+543</pre>\n</td>\n<td>\n<pre>\n0015\n1154\n+234</pre>\n</td>\n</tr>\n</tbody>\n</table>\n<p>So [untitled.png, and trip2019.png] are duplicate because they have the same content (pixels).</p>",
+  "source": "ICPC, Regionals, Asia West Continent, Afghanistan, ICPC Asia Kabul Regional Contest 2019",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2.5
+}

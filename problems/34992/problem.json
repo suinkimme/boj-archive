@@ -1,0 +1,26 @@
+{
+  "id": 34992,
+  "title": "트리 선물하기",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>토카의 생일이 점점 다가온다. solved.ac의 유저라면 다들 알겠지만, 생일인 사람에게는 그 사람이 좋아하는 자료 구조를 선물해주는 <a href=\"/problem/24652\">전통</a>이 있다.</p>\n<p>토카의 $\\mathbf{2}$호 팬인 한별이는 다가오는 토카의 생일에는 토카가 좋아하는 트리를 선물하기로 했다. 이를 위해 한별이는 토카가 좋아하는 것을 조사했다.</p>\n<p>한별이의 조사에 따르면 토카는 $\\mathbf{2}$를 좋아한다. 특히 $\\mathbf{2}$의 배수로만 이루어진 집합 $S$를 좋아한다.</p>\n<p>또한 토카는 다음 성질을 가지는 트리를 좋아한다. 트리의 정점을 $\\mathbf{2} N+1$개라고 하자.</p>\n<ul>\n<li>각 정점에 $0$부터 $\\mathbf{2} N$까지의 서로 다른 정수가 적힌 이진 트리이다.</li>\n<li>$\\mathbf{2}$의 배수가 적힌 정점은 자식을 가지지 않는다.</li>\n<li>$\\mathbf{2}$의 배수가 적히지 않은 정점은 자식을 $\\mathbf{2}$개 가진다.</li>\n<li>모든 정점에 대해 왼쪽 서브트리에 속한 정점에 적힌 $\\mathbf{2}$의 배수는 오른쪽 서브트리에 속한 정점에 적힌 $\\mathbf{2}$의 배수보다 작다.</li>\n<li>트리를 이진 탐색 트리처럼 사용하였을 때 $\\mathbf{2}$의 배수인 수 중에서 $S$에 있는 수만 찾을 수 있어야 한다. 즉, 다음과 같이 정의된 함수 $f(x)$는 $\\mathbf{2}$의 배수인 $x$가 $S$에 있다면 <span style=\"color:#e74c3c;\"><code>true</code></span>, 그렇지 않다면 <span style=\"color:#e74c3c;\"><code>false</code></span>를 반환해야 한다.</li>\n</ul>\n<pre>\n<code>function f(x):\n    return find(x, root)\n\nfunction find(x, vertex):\n    if vertex is null:\n        return false\n    else:\n        if x == vertex.number:\n            return true\n        else if x &lt; vertex.number:\n            return find(x, vertex.left_child)\n        else:\n            return find(x, vertex.right_child)</code></pre>\n<p>한별이는 토카가 좋아하는 트리를 만들어서 선물하기로 했으나 결국 트리를 만들지 못했다. 한별이를 위해 토카가 좋아하는 트리를 아무거나 하나 만들어주자.</p>",
+  "input": "<p>첫째 줄에 토카가 좋아하는 집합 $S$의 크기 $K$ $(\\mathbf{2} \\le K \\le \\mathbf{222\\,222})$가 주어진다.</p>\n<p>둘째 줄에 토카가 좋아하는 집합 $S$의 원소 $S_1, S_2, \\ldots, S_K$ $(0 \\le S_i \\le \\mathbf{2} \\times \\mathbf{222\\,222})$가 공백으로 구분되어 오름차순으로 주어진다. 모든 $S_i$는 $\\mathbf{2}$의 배수이며 $S_1, S_2, \\ldots, S_K$는 모두 다르다.</p>",
+  "output": "<p>만약 토카가 좋아하는 트리를 만들 수 없다면 첫째 줄에 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력한다.</p>\n<p>만약 토카가 좋아하는 트리를 만들 수 있다면 트리의 정점 개수를 $\\mathbf{2}N+1$이라고 할 때 첫째 줄에 $N$을 출력하고 둘째 줄부터 $N$개의 줄에 걸쳐 $k+1$번째 줄에 $2k-1$가 적힌 정점의 왼쪽 자식 정점과 오른쪽 자식 정점에 적힌 정수를 공백으로 구분하여 순서대로 출력한다.</p>\n<p>토카가 좋아하는 트리가 여러가지라면 그중 아무거나 하나를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4\n0 8 10 12\n",
+      "output": "6\n4 5\n7 9\n6 8\n0 2\n1 11\n10 12\n"
+    }
+  ],
+  "hint": "<p>$0$은 $\\mathbf{2}$의 배수이다.</p>",
+  "source": "Contest, BOJ User Contest, 카툰컵, Cartoon Cup: ONE, hibye1217, iktk, kaorin, ohwphil, qvixnh22, utilforever",
+  "level": 17,
+  "tags": [
+    "ad_hoc",
+    "trees",
+    "constructive"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.4211000204086304
+}

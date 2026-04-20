@@ -1,0 +1,33 @@
+{
+  "id": 25078,
+  "title": "Software Package Manager",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You'd like to design a package manager on your own, and thus you'd like to resolve the dependency problem among packages. If package $A$ depends on package $B$, then we must install package $B$ before package $A$. Likewise, if we'd like to remove package $B$, we also need to remove package $A$. You know the dependency relations among the packages, and you may assume all packages other than package $0$ will rely on exactly one package (package $0$ does not rely on any other packages). There are no cycles in the dependency relation (like $A_1$ depends on $A_2$, $A_2$ depends on $A_3$, …, $A_{m_1}$ depends on $A_m$ but $A_m$ depends on $A_1$), and of course no package depends on itself.</p>\n<p>Now you'd like to know how many packages have their status changed upon installing or uninstalling a given package. Notice installing an installed package or uninstalling an uninstalled package will not change the status of any package.</p>",
+  "input": "<p>The first line of the input is an integer $n$ representing the number of packages. The packages are numbered beginning with $0$.</p>\n<p>The next line has $n-1$ integers separated by a single space, representing the package that package $1, 2, \\dots, n-2, n-1$ depends on.</p>\n<p>The next line contains an integer $q$ representing the number of queries. In the following $q$ lines, each line contains a query of form <code>install x</code> or <code>uninstall x</code> representing installing or uninstalling package $x$. You need to maintain the status of each package. Initially, all packages are uninstalled. You need to output how many packages will change the status after the step, and then apply the (un)installation.</p>",
+  "output": "<p>The output consists of $q$ lines. The $i$-th line is an integer representing the number of packages whose status change at step $i$.</p>",
+  "samples": [
+    {
+      "input": "7\n0 0 0 1 1 5\n5\ninstall 5\ninstall 6\nuninstall 1\ninstall 4\nuninstall 0\n",
+      "output": "3\n1\n3\n2\n3\n"
+    },
+    {
+      "input": "10\n0 1 2 1 3 0 0 3 2\n10\ninstall 0\ninstall 3\nuninstall 2\ninstall 7\ninstall 5\ninstall 9\nuninstall 9\ninstall 4\ninstall 1\ninstall 9\n",
+      "output": "1\n3\n2\n1\n3\n1\n1\n1\n0\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2015",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "lazyprop",
+    "euler_tour_technique",
+    "hld"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 1.6756999492645264
+}

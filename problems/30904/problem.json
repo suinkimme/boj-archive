@@ -1,0 +1,32 @@
+{
+  "id": 30904,
+  "title": "Galaxy Quest",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are travelling through the galaxy in your spaceship. There are $n$ planets in the galaxy, numbered from $1$ to $n$ and modelled as points in $3$-dimensional space.</p>\n<p>You can travel between these planets along $m$ space highways, where each highway connects two planets along the straight line between them. Your engine can accelerate (or decelerate) at $1\\text{m/s}^2$, while using fuel at a rate of $1$ litre per second. There is no limit to how fast you can go, but you must always come to a complete standstill whenever you arrive at the planet at the end of a highway.</p>\n<p>It is possible for a highway to pass through planets other than the ones it connects. However, as your spaceship is equipped with special hyperspace technology, it simply phases through these obstacles without any need of stopping. Another consequence of using this technology is that it is impossible to jump from one highway to another midway through: highways must always be travelled in full.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 442px; height: 100px;\"/></p>\n<p style=\"text-align: center;\">Figure G.1: Illustration of Sample Input 1, showing highways in blue, and a route from planet $1$ to planet $3$. The green start of a highway indicates acceleration, and the red end indicates deceleration.</p>\n<p>You need to fly several missions, in which you start at your home planet (with number $1$) and need to reach a given target planet within a given time limit. For each mission, determine whether it can be completed, and if so, find the least amount of fuel required to do so. As an example, Figure G.1 shows the optimal route for the second mission of the first sample.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with three integers $n$, $m$, and $q$ ($1 \\le n,m,q \\le 10^5$, $n \\ge 2$), where $n$ is the number of planets, $m$ is the number of space highways, and $q$ is the number of missions.</li>\n<li>$n$ lines, each with three integers $x_i$, $y_i$, and $z_i$ ($\\left|x_i\\right|,\\left|y_i\\right|,\\left|z_i\\right| \\le 10^3$, $1 \\le i \\le n$), the coordinates of planet $i$.</li>\n<li>$m$ lines, each with two integers $a$ and $b$ ($1 \\le a,b \\le n$, $a \\neq b$), describing a space highway that connects planets $a$ and $b$. It can be traversed in either direction.</li>\n<li>$q$ lines, each with two integers $c$ and $t$ ($2 \\le c \\le n$, $1 \\le t \\le 10^3$), the target planet and time limit for each mission.</li>\n</ul>\n<p>The $n$ planets are in distinct locations. Their coordinates are given in metres, and the time limits of the missions are given in seconds. No two highways connect the same pair of planets. For each mission, both the absolute and relative differences between the given time limit and the shortest possible completion time are at least $10^{-6}$.</p>",
+  "output": "<p>For each mission, output the least amount of fuel in litres required to reach the target location within the time limit. If the target location cannot be reached within the time limit, output \"<code>impossible</code>\".</p>\n<p>Your answers should have an absolute or relative error of at most $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "4 4 3\n-30 0 0\n0 0 0\n50 0 0\n-30 10 0\n1 2\n2 3\n3 4\n4 1\n2 10\n3 25\n4 7\n",
+      "output": "impossible\n19.0538441903\n4.0000000000\n"
+    },
+    {
+      "input": "4 2 5\n-3 0 2\n7 -9 -3\n4 4 -6\n8 -1 8\n1 2\n2 3\n2 1000\n2 100\n3 1000\n3 100\n4 1000\n",
+      "output": "0.0287058122\n0.2874671888\n0.1120998619\n1.1272896971\nimpossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2023",
+  "level": 22,
+  "tags": [
+    "math",
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "calculus"
+  ],
+  "accepted_user_count": 47,
+  "submission_count": null,
+  "average_tries": 1.5744999647140503
+}

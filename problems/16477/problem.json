@@ -1,0 +1,21 @@
+{
+  "id": 16477,
+  "title": "cmp",
+  "time_limit": "10 초",
+  "memory_limit": "256 MB",
+  "description": "<p>You must design an algorithm for an ancient computer whose memory is just an array of 10240 bits. The memory is initialized to zero, after which you may write and read a single bit at a time.</p>\n<p>You must implement two operations on this computer:</p>\n<ul>\n<li><code>remember(a)</code>: <code>a</code> is an integer between 0 and 4095\n\n\t<ul>\n<li>The implementation of this operation may call:\n\t\t<ul>\n<li><code>bit_set(address)</code>: <code>address</code> is an integer between 1 and 10240\n\n\t\t\t<ul>\n<li>The memory bit at position <code>address</code> will be set to 1</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n</li>\n<li><code>compare(b)</code>: <code>b</code> is an integer between 0 and 4095\n\t<ul>\n<li>if <code>b</code> &lt; <code>a</code>, it should return -1</li>\n<li>if <code>b</code> = <code>a</code>, it should return 0 if <code>b</code> &gt; <code>a</code>, it should return 1</li>\n<li>The implementation of this operation may call:\n\t\t<ul>\n<li><code>bit_get(address)</code>\n<ul>\n<li>Returns the memory bit at position <code>address</code>: 1 if it was set through <code>bit_set()</code> during the <code>remember(a)</code> operation, and 0 otherwise.</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n<p>Implement <code>remember()</code> and <code>compare()</code> to minimize the total number of memory accesses (<code>bit_set()</code> and <code>bit_get()</code>) in the worst-case for all possible values of <code>a</code> and <code>b</code>.</p>\n<p>Your solution will be evaluated exhaustively:</p>\n<pre>\ndefine AllMemory = array [0..4095][1..10240] of bits\nset AllMemory to zeros\nfor a = 0..4095:\n        define bit_set(address): AllMemory[a][address] = 1 \n        remember(a)\nlet maxA= the maximum number of bit_set() calls executed for any a\nfor (a,b) ∈ {0..4095}×{0..4095} in random order (i.e. all valid pairs (a,b) are considered, in some random order)\n        define bit_get(address): return AllMemory[a][address]\n        answer =compare(b)\n        if answer for comparing a and b is incorrect : your score = 0; exit\nlet maxB = the maximum number of bit_get() calls executed for any (a,b) pair\nT=maxA + maxB\nIf (T&gt;20): your score = 0; exit\nelse your score = 1 + 9 * (21– T); exit</pre>",
+  "input": "",
+  "output": "",
+  "samples": [],
+  "hint": null,
+  "source": "Olympiad, Balkan Olympiad in Informatics, BOI 2011",
+  "level": 24,
+  "tags": [
+    "ad_hoc",
+    "bitmask",
+    "trees"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.875
+}

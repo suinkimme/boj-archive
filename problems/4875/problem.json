@@ -1,0 +1,27 @@
+{
+  "id": 4875,
+  "title": "COMPRESS",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Reduce the number of digits.</p>\n<p>An experimental physicist generates a great deal of data from experiments that he performs. The data generated from these experiments has a special property, and he wants to take advantage of this property to reduce the amount of space needed to store the results.</p>\n<p>The data is generated in pairs of numbers, where the first number is always less than the second number. The way that the physicist wants to store these numbers is similar to the how some people abbreviate a range of numbers in a book. For example, when they refer to pages 11 through 18 in a book, they will sometimes denote it as 11-8.</p>\n<p>Some notation definitions:</p>\n<table class=\"table table-bordered\" width=\"100%\">\n<tbody>\n<tr>\n<td><b>Definitions</b></td>\n<td><b>For example</b></td>\n</tr>\n<tr>\n<td>The first of a pair of numbers is denoted by F.</td>\n<td>in \"18482-02\", F = 18482</td>\n</tr>\n<tr>\n<td>The second of a pair of numbers (in compressed form) is denoted by C.</td>\n<td>in \"18482-02\", C = 02</td>\n</tr>\n<tr>\n<td>The second of a pair of numbers (in decoded form) is denoted by R.</td>\n<td>in \"18482-02\", R = 18502</td>\n</tr>\n<tr>\n<td>MSD(x,y) refers to the 'x' most significant digits of 'y' when 'y' is denoted in base ten, which is the null string for x &lt;= 0</td>\n<td>MSD(3,19283) = 192, MSD(0,12)=''</td>\n</tr>\n<tr>\n<td>LSD(x,y) refers to the 'x' least significant digits of 'y' when 'y' is denoted in base ten (possibly padded with zeros).</td>\n<td>LSD(2, 48290) = 90, LSD(2,3)= 03</td>\n</tr>\n</tbody>\n</table>\n<p>The rules for decoding the \"compressed\" second number are as follows:</p>\n<table border=\"1\" cellpadding=\"2\" cellspacing=\"2\" class=\"table table-bordered\" width=\"100%\">\n<tbody>\n<tr>\n<td><b>Rule</b></td>\n<td><b>An example</b></td>\n</tr>\n<tr>\n<td>The number C is always written with the fewest possible digits.</td>\n<td> </td>\n</tr>\n<tr>\n<td>If the number C is larger than F, then R is the same as C.</td>\n<td>given \"123-283\", then F=123, C=283, and R would be 283</td>\n</tr>\n<tr>\n<td>If C is less than or equal to F, then the following rules apply:</td>\n<td> </td>\n</tr>\n<tr>\n<td>LSD(length(C), R) will always be the same as C.</td>\n<td> </td>\n</tr>\n<tr>\n<td>If LSD(length(C), F) is less than C, then R is equal to MSD(length(F) - length(C), F), prepended to the digits of C.</td>\n<td>given: \"4137-223\", then:<br/>\n\t\t\tF=4137, C=223:<br/>\n\t\t\tLSD(length(C),R) = 223<br/>\n\t\t\tMSD(4 - 3, 4137) = 4<br/>\n\t\t\tR would be 4223</td>\n</tr>\n<tr>\n<td>If LSD(length(C), F) is greater than or equal to C, then R is equal to 10^(length(C)) added to the following value: MSD(length(F) - length(C), F), prepended to the digits of C.</td>\n<td>given: \"8543-13\", then<br/>\n\t\t\tF=8543, C=13:<br/>\n\t\t\tLSD(length(C),R) = 13<br/>\n\t\t\tMSD(4 - 2, 8543) = 85<br/>\n\t\t\t10^(2) = 100<br/>\n\t\t\tR would be 8513 + 100 = 8613</td>\n</tr>\n</tbody>\n</table>\n<p>Please note that leading zeros on the number C are significant. '7' is not the same as '07', and neither of them are the same as '007'.  For example:</p>\n<blockquote>\n<p>given: \"2839-06\", then F=2839, C=06 so R would be 2906<br/>\ngiven: \"2839-006\", then F=2839, C=006 so R would be 3006</p>\n</blockquote>\n<p>Your task is to compute the \"compressed\" second number format from it's uncompressed version.</p>",
+  "input": "<p>In the input file, each line of input will consist of a pair of non-negative integers separated by a hyphen, where the second number is always larger than the first number. The second number will always be less than 2<sup>31</sup>-1. </p>",
+  "output": "<p>Other than the standard header and trailer messages, each line of input will produce one line of output. Each line of output will consist of the first number, followed by a hyphen, followed by the \"compressed\" version of the second number.</p>",
+  "samples": [
+    {
+      "input": "10-18\n83294-84137\n100-200\n",
+      "output": "10-8\n83294-137\n100-00\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2003 Rocky Mountain Regional Contest",
+  "level": 8,
+  "tags": [
+    "math",
+    "number_theory",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 2.8666999340057373
+}

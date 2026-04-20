@@ -1,0 +1,26 @@
+{
+  "id": 31943,
+  "title": "삼진논리 OR과 쿼리",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>음이 아닌 두 정수 $X$, $Y$에 대하여 다음 조건을 모두 만족하는 정수 $m$, $x_0$, $x_1$, $\\cdots$, $x_m$, $y_0$, $y_1$, $\\cdots$, $y_m$이 존재한다.</p>\n<ul>\n<li>$m \\ge 0$</li>\n<li>$0 \\le i \\le m$을 만족하는 모든 정수 $i$에 대하여 $0\\le x_i, y_i \\lt 3$이다.</li>\n<li>$\\displaystyle X = \\sum_{i=0}^{m} x_i \\cdot 3^i$</li>\n<li>$\\displaystyle Y = \\sum_{i=0}^{m} y_i \\cdot 3^i$</li>\n</ul>\n<p>이때 $\\displaystyle {OR}_3 (X,Y) := \\displaystyle \\sum_{i=0}^{m} \\max \\left( x_i , y_i \\right) \\cdot 3^i$의 값은 유일하게 결정된다.</p>\n<p>집합 $S = \\left\\{ 0 \\right\\}$에 아래와 같은 $M$개의 쿼리를 수행하는 프로그램을 작성해 보자.</p>\n<ul>\n<li>$1$ $x$: 집합 $S$를 $S \\cup \\left\\{ x \\right\\}$로 갱신한다.</li>\n<li>$2$ $x$: $\\displaystyle \\max_{a\\in S} { \\left( {OR}_3 (a,x) \\right) }$의 값을 출력한다. 즉, 집합 $S$의 원소 $a$에 대하여 ${OR}_3 (a,x)$의 최댓값을 출력한다.</li>\n</ul>\n<p>쿼리가 누적해서 수행됨에 유의하여라.</p>",
+  "input": "<p>첫째 줄에 쿼리의 개수 $M$이 주어진다. $(1 \\le M \\le 500  000)$</p>\n<p>둘째 줄부터 $M$개의 줄에 걸쳐 쿼리가 $q$ $x$ 형태로 주어진다. $(1 \\le q \\le 2;$ $0 \\le x \\lt 3^{15})$</p>\n<p>$2$번 쿼리는 하나 이상 주어진다. 입력으로 주어지는 모든 수는 정수이다.</p>",
+  "output": "<p>$2$번 쿼리가 주어질 때마다 쿼리의 답을 한 줄에 하나씩 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5\n2 8\n1 5\n2 21\n1 7\n2 15\n",
+      "output": "8\n23\n17\n"
+    }
+  ],
+  "hint": "<p>임의의 실수 $x,y$에 대하여 $\\max (x,y) = \\begin{cases} x &amp; (x \\ge y) \\\\ y &amp; (x&lt;y) \\end{cases}$로 정의한다.</p>\n<p>$3^{15} = 14  348  907$이다.</p>",
+  "source": "University, 서울대학교, 서울대학교 SCSC 프로그래밍 경시대회, 2024 서울대학교 SCSC 프로그래밍 경시대회, Division 1, University, 서울대학교, 서울대학교 SCSC 프로그래밍 경시대회, 2024 서울대학교 SCSC 프로그래밍 경시대회, Division 2, University, 서울대학교, 서울대학교 SCSC 프로그래밍 경시대회, 2024 서울대학교 SCSC 프로그래밍 경시대회, Open Contest, sjhi00, blackking26, kaorin, ksi4495, lky7674, lycoris1600, mujigae, qvixnh22, sjh1224, sungjae0506",
+  "level": 21,
+  "tags": [
+    "dp",
+    "bitmask",
+    "dp_sum_over_subsets"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 2.421099901199341
+}

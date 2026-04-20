@@ -1,0 +1,31 @@
+{
+  "id": 5050,
+  "title": "Introspective Caching",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In a distributed system, data is never where you need it, and fetching data over a network takes time and consumes bandwidth. The problem can be mitigated by adding a cache, where a node stores some resources locally and if those resources need to be used again, it can simply take them from its cache rather than asking someone else for them.</p>\n<p>However, caches have a nasty tendency to fill up, so at some point, objects must be evicted from the cache to make room for new objects. Choosing what object to remove from the cache is not easy and there are several different algorithms to choose from.</p>\n<p>The marvelous Apes in Computing Machinery have come up with a fantastic new algorithm, the Introspective Caching Algorithm, named after a city of Peru. It consists of some extra hardware (a very small, precognitive monkey) which helps making decisions. Since the monkey can see into the future, she knows exactly what objects will be accessed and in what order, and using this information she will make optimal decisions on what objects to remove from the cache. Optimality here means that she will minimize the number of times an object is read into the cache.</p>\n<p>All object accesses go through the cache, so every time an object is accessed, it must be inserted into the cache if it was not already there. All objects are of equal size, and no writes occur in the system, so a cached object is always valid. When the system starts, the cache is empty.</p>\n<p>You have been tasked with evaluating the monkey’s performance, and feeding her the occasional banana.</p>",
+  "input": "<p>The first line of input contains three integers, separated by single spaces, telling you how many objects fit in the cache, 0 &lt; c ≤ 10000, how many different objects are in the system, c ≤ n ≤ 100000, and how many accesses, 0 ≤ a ≤ 100000, will occur. The following a lines contain a single integer between 0 and n − 1 (inclusive) indicating what object is accessed. The first line corresponds to the first object accessed access and the last line to the last.</p>",
+  "output": "<p>Output the least number of times an object must be read into the cache to handle the accesses listed in the input.</p>",
+  "samples": [
+    {
+      "input": "1 2 3\n0\n0\n1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 4 8\n0\n1\n2\n3\n3\n2\n1\n0\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2008",
+  "level": 17,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "set",
+    "tree_set"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.9230999946594238
+}

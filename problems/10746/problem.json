@@ -1,0 +1,28 @@
+{
+  "id": 10746,
+  "title": "Fencing the Herd",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Farmer John needs your help deciding where to build a fence in the shape of a straight line to help restrict the movement of his cows. He has considered several possible fence locations and needs your help to determine which of these are usable, where a fence is considered usable if all of the cows are on the same side of the fence. A fence is not usable if there is a cow that lies directly on it. FJ will be asking you a number of queries regarding possible fence locations; a query should be answered \"YES\" if it corresponds to a usable fence location, \"NO\" otherwise.</p>\n<p>Additionally, FJ may occasionally bring new cows into the herd. When a new cow joins the herd, all fence queries from that point onward will require her to be on the same side of a fence as the rest of the herd for the fence to be usable.</p>",
+  "input": "<p>The first line of input contains N (1 &lt;= N &lt;= 100,000) and Q (1 &lt;= Q &lt;= 100,000) separated by a space. These give the number of cows initially in the herd and the number of queries, respectively.</p>\n<p>The following N lines describe the initial state of the herd. Each line will contain two space separated integers x and y giving the position of a cow.</p>\n<p>The remaining Q lines contain queries either adding a new cow to the herd or testing a fence for usability. A line of the form \"1 x y\" means that a new cow has been added to the herd at position (x, y). A line of the form \"2 A B C\" indicates that FJ would like to test a fence described by the line Ax + By = C.</p>\n<p>All cow positions will be unique over the whole data set and will satisfy (-10^9 &lt;= x, y &lt;= 10^9). Additionally the fence queries will satisfy -10^9 &lt;= A, B &lt;= 10^9 and -10^18 &lt;= C &lt;= 10^18. No fence query will have A = B = 0.</p>",
+  "output": "<p>For each fence query, output \"YES\" if the fence is usable. Otherwise output \"NO\".</p>",
+  "samples": [
+    {
+      "input": "3 4\n0 0\n0 1\n1 0\n2 2 2 3\n1 1 1\n2 2 2 3\n2 0 1 1\n",
+      "output": "YES\nNO\nNO\n"
+    }
+  ],
+  "hint": "<p>The line 2x + 2y = 3 leaves the initial 3 cows on the same side. However the cow (1, 1) is on the other side of this fence making it no longer usable after she joins the herd. The line Y = 1 cannot be used because the cows (0, 1) and (1, 1) lie directly on it.</p>\n<p>Warning: The I/O for this problem is fairly large. C++ users may consider using scanf or the line \"ios_base::sync_with_stdio(false)\" to read input faster. Java users should avoid using java.util.Scanner. Do not flush output (e.g. using std::endl) after each query.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2014-2015 Season, USACO February 2015 Contest, Gold",
+  "level": 23,
+  "tags": [
+    "geometry",
+    "binary_search",
+    "set",
+    "convex_hull",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 63,
+  "submission_count": null,
+  "average_tries": 4
+}

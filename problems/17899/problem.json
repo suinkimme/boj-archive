@@ -1,0 +1,38 @@
+{
+  "id": 17899,
+  "title": "Symmetric Polynomials",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A symmetric polynomial is a polynomial in n variables that remains the same polynomial under any permutation of the variables. For example, f(x<sub>1</sub>, . . . , x<sub>n</sub>) = x<sub>1</sub> + . . . + x<sub>n</sub> is a symmetric polynomial (it is in fact called the first elementary symmetric polynomial). Symmetric polynomials have many important applications. They can, for instance, be used to prove that there is no formula for the roots of a general five-degree polynomial.</p>\n<p>In this problem however, we will concern ourselves with another kind of symmetry. Consider an infinite curve P in the plane where both x and y coordinates are given by polynomials, i.e.,</p>\n<p style=\"text-align: center;\">x(t) = a<sub>n</sub>t<sup>n</sup> + a<sub>n−1</sub>t<sup>n−1</sup> + . . . + a<sub>1</sub>t + a<sub>0</sub>,</p>\n<p style=\"text-align: center;\">y(t) = b<sub>m</sub>t<sup>m</sup> + b<sub>m−1</sub>t<sup>m−1</sup> + . . . + b<sub>1</sub>t + b<sub>0</sub>.</p>\n<p>We say that such a curve is symmetric around a straight line L (given as an equation Ax + By + C = 0) if there exists a real number t<sub>0</sub> such that for all t ∈ R the point (x(t<sub>0</sub> + t), y(t<sub>0</sub> + t)) is the reflection of (x(t<sub>0</sub> − t), y(t<sub>0</sub> − t)) around the line L, and we call the line L a symmetry line for the curve P. For example, consider the curve P given by</p>\n<p style=\"text-align: center;\">x(t) = −5t<sup>5</sup> − 26t<sup>4</sup> − 19t<sup>3</sup> + 59t<sup>2</sup> + 111t + 26,</p>\n<p style=\"text-align: center;\">y(t) = −t<sup>5</sup> + 17t<sup>3</sup> − 9t<sup>2</sup> − 61t + 12.</p>\n<p>This curve is symmetric around the line 5x + y + 92 = 0 with t<sub>0</sub> = −1 (see Figure G.1).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 413px; height: 218px;\"/></p>\n<p style=\"text-align: center;\">Figure G.1: Illustration of Sample Input 1, drawn from t = −3.9 to t = 1.9.</p>\n<p>Now, your task is to write a program that, given the two polynomials x(t) and y(t), finds a symmetry line of the curve (if one exists).</p>",
+  "input": "<p>The first line of input contains an integer n (0 ≤ n ≤ 10), the degree of x. Then follows a line with n + 1 integers a<sub>n</sub>, . . . , a<sub>1</sub>, a<sub>0</sub>, where a<sub>i</sub> is the degree i coefficient of x. Then follow two lines describing the polynomial y in the same format.</p>\n<p>If either of x(t) or y(t) is the zero polynomial, its degree is given as 0. The coefficients have absolute values bounded by 1 000. You may assume that the leading coefficient a<sub>n</sub> of each polynomial is non-zero, except in the case when the polynomial is the zero polynomial.</p>",
+  "output": "<p>Output three real numbers A, B and C, indicating that Ax + By + C = 0 is a symmetry line for the given curve. If there is no symmetry line, let A = B = C = 0. If the curve has more than one symmetry line, any one will be accepted.</p>\n<p>In the case when a symmetry line exists, the provided line must satisfy the following conditions:</p>\n<ul>\n<li>0.5 ≤ max(|A|, |B|) ≤ 10100 .</li>\n<li>The direction of the provided line is within 10<sup>−6</sup> radians of some symmetry line.</li>\n<li>The value of C max(|A|,|B|) is correct within an absolute or relative error of 10<sup>−6</sup>.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "5\n-5 -26 -19 59 111 26\n5\n-1 0 17 -9 -61 12\n",
+      "output": "5 1 92\n"
+    },
+    {
+      "input": "1\n1 0\n3\n1 0 0 0\n",
+      "output": "0 0 0\n"
+    },
+    {
+      "input": "1\n1 0\n0\n0\n",
+      "output": "2.718281828 0 0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, KTH Challenge, KTH Challenge 2019",
+  "level": 22,
+  "tags": [
+    "math",
+    "geometry",
+    "binary_search",
+    "case_work",
+    "arbitrary_precision",
+    "calculus",
+    "numerical_analysis"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

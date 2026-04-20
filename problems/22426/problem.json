@@ -1,0 +1,27 @@
+{
+  "id": 22426,
+  "title": "Stamp Rally",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>日本アミューズメントグループ (Japan Amusement Group, JAG) では，島国を模したテーマパークでのイベントを企画している． このイベントでは，参加者は橋を渡るたびに橋ごとに決められたスタンプをスタンプ帳に順番に押していく． 用意されたスタンプは以下の7種類のどれかである．</p>\n<pre>\na ( ) [ ] + *</pre>\n<p>スタートからゴールまで橋を渡り歩いて，押されたスタンプの列が正しい数式になればクリアである． ただし橋を渡る向きは決まっていて，逆向きに渡ることはできない． 同じ橋を何度も渡ってよく，最終的にゴール地点に到着するのであれば一度ゴール地点に着いた後に引き続きスタンプを集めてもよい． 正しい数式とは以下の BNF で定義される &lt;expression&gt; である．</p>\n<pre>\n&lt;expression&gt; ::= &lt;term&gt; | &lt;expression&gt; \"+\" &lt;term&gt;\n&lt;term&gt;       ::= &lt;factor&gt; | &lt;term&gt; \"*\" &lt;factor&gt;\n&lt;factor&gt;     ::= \"a\" | \"(\" &lt;expression&gt; \")\" | \"[\" &lt;expression&gt; \"]\"</pre>\n<p>スタート・ゴールと橋ごとのスタンプを決めたので，関係者で試しにやってみたがなかなかクリアする人が現れない． もしかしたら，この設定ではクリアすることができないのかもしれない．</p>\n<p>スタート・ゴールと橋の情報が与えられるので，クリア可能かどうかを判定するプログラムを書きなさい．</p>",
+  "input": "<p>入力は50個以下のデータセットからなる．各データセットは以下の形式で表される．</p>\n<pre>\n<var>n</var> <var>m</var> <var>s</var> <var>t</var>\n<var>a</var><sub>1</sub> <var>b</var><sub>1</sub> <var>c</var><sub>1</sub>\n...\n<var>a<sub>m</sub></var> <var>b<sub>m</sub></var> <var>c<sub>m</sub></var>\n</pre>\n<p>データセットの最初の行は，空白文字1個で区切られた4個の整数 <var>n</var>, <var>m</var>, <var>s</var>, <var>t</var> からなる． <var>n</var> は島の数であり， 1 ≤ <var>n</var> ≤ 200 と仮定してよい． それぞれの島には 1 から <var>n</var> までの番号が付けられている． <var>m</var> は橋の数であり， 1 ≤ <var>m</var> ≤ 100,000 と仮定してよい． <var>s</var> はスタートの島の番号， <var>t</var> はゴールの島の番号である．スタートとゴールが同じ島であることもある． 続く <var>m</var> 行のそれぞれは，空白文字1個で区切られた2個の整数と1個の文字からなる． <var>a<sub>i</sub></var>， <var>b<sub>i</sub></var> は <var>i</var> 番目の橋によって島 <var>a<sub>i</sub></var> から島 <var>b<sub>i</sub></var> へ渡れることを表し， <var>c<sub>i</sub></var> は <var>i</var> 番目の橋で押すスタンプを表す．ある2つの島の間に複数の橋がかかっていたり，1つの島の中で橋がかかっていたりすることもある．</p>\n<p>入力の終わりは，4つのゼロからなる1行で示される．</p>",
+  "output": "<p>各データセットに対して，クリアできるならば\"<samp>Yes</samp>\"を，できないならば\"<samp>No</samp>\"を1行に出力せよ．</p>",
+  "samples": [
+    {
+      "input": "4 5 1 4\n1 2 (\n1 3 a\n2 4 a\n3 4 )\n3 2 +\n4 4 1 2\n1 3 (\n3 4 a\n4 1 +\n3 2 a\n3 4 1 1\n1 2 a\n2 2 +\n2 3 a\n3 1 a\n5 8 1 5\n1 1 [\n1 2 (\n2 1 *\n2 2 a\n2 3 a\n3 3 )\n3 4 ]\n4 5 )\n2 14 1 1\n1 2 a\n1 2 (\n1 2 )\n1 2 [\n1 2 ]\n1 2 +\n1 2 *\n2 1 a\n2 1 (\n2 1 )\n2 1 [\n2 1 ]\n2 1 +\n2 1 *\n0 0 0 0\n",
+      "output": "Yes\nNo\nNo\nYes\nNo\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2015",
+  "level": 0,
+  "tags": [
+    "bfs",
+    "dp",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

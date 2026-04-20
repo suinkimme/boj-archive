@@ -1,0 +1,31 @@
+{
+  "id": 20781,
+  "title": "Fewest Moves Count",
+  "time_limit": "40 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Sean is one of the best cubers in China. Today, he is participating in the Fewest Moves Count event of the Chinese Competition of Pocket Cube (CCPC).</p>\n<p>A pocket cube is the $2 \\times 2 \\times 2$ equivalent of the Rubik's cube. Each face of the cube can be rotated, either clockwise or counterclockwise. A standard solved pocket cube has the following color scheme (as shown in Figure 4): the top face is yellow, the bottom face is white, the left face is orange, the right face is red, the front face is blue, the back face is green. </p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 414px; height: 300px;\"/></p>\n<p style=\"text-align: center;\">Figure 4: The solved state of a standard pocket cube</p>\n<p>The Fewest Moves Count event requires a player to find a sequence of moves to transform one configuration of the pocket cube into another, and the player who finds the shortest such sequence among all participants wins the event. In this event, the player can twist any of the six faces in either direction; also, rotating the entire pocket cube is allowed. Note that a quarter twist counts as one move, and a half twist counts as two moves; however, rotating the entire cube doesn't count into the total number of moves.</p>\n<p>Since there are millions of essentially different configurations, the task is too hard for Sean and he can't solve it independently. He wants you to write a program to find the minimum number of moves, given the initial and final configurations. Can you help him?</p>",
+  "input": "<p>The first line of input contains a single integer $T$ $(1 \\leq T \\leq 250\\,000)$, denoting the number of the test cases.</p>\n<p>Each test case begins with an empty line followed by six lines, representing the initial and final configurations. A configuration is represented as a net of the pocket cube in the following format:</p>\n<pre>\n  XX    \n  XX    \nXXXXXXXX\nXXXXXXXX\n  XX    \n  XX    \n</pre>\n<p>where <code>X</code> is one of the uppercase letters in {<code>G</code>, <code>O</code>, <code>Y</code>, <code>R</code>, <code>W</code>, <code>B</code>}, denoting green, orange, yellow, red, white, and blue, respectively, and all other characters are whitespaces. The initial and final configurations are horizontally stacked together, with each line split by a vertical bar <code>|</code>. In other words, the 1st to the 8th columns represent the initial configuration, the 9th column is vertical bars, and the 10th to the 17th columns represent the final configuration. It is guaranteed that both configurations are legal, that is, they can be recovered to the solved state by a finite sequence of moves.</p>",
+  "output": "<p>For each test case, output a single integer in a line, denoting the minimum number of moves required to transform the initial configuration into the final one.</p>",
+  "samples": [
+    {
+      "input": "2\n\n  GO    |  WG    \n  GO    |  WY    \nOOYBYWBW|ROGBRYRG\nRRYRBWRB|BOGBWYBW\n  GY    |  YO    \n  WG    |  RO    \n\n  WR    |  YR    \n  OR    |  OW    \nOYGBWGYB|OWBRBYBG\nBWGWRBYY|YOWRYGWO\n  OG    |  GG    \n  OR    |  BR    \n",
+      "output": "2\n11\n"
+    }
+  ],
+  "hint": "<p>In the first case of the sample data, an optimal move sequence is shown in Figure \\ref{sequence}. The total number of moves is 2 (note that the first step does not count into the number of moves), and it can be shown that it can't be done in fewer than 2 moves.</p>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<th>Step 1</th>\n<th>Step 2</th>\n</tr>\n<tr>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 267px; height: 138px;\"/></td>\n<td><img alt=\"\" src=\"3.png\" style=\"width: 190px; height: 138px;\"/></td>\n</tr>\n<tr>\n<th>Step 3</th>\n<th>Final configuration</th>\n</tr>\n<tr>\n<td><img alt=\"\" src=\"4.png\" style=\"width: 190px; height: 138px;\"/></td>\n<td><img alt=\"\" src=\"5.png\" style=\"width: 190px; height: 138px;\"/></td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure 5: Optimal move sequence for the first case</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 5: Grand Prix of Weihai, Division 1",
+  "level": 24,
+  "tags": [
+    "math",
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "set",
+    "bfs",
+    "precomputation",
+    "mitm"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 3.5713999271392822
+}

@@ -1,0 +1,39 @@
+{
+  "id": 29753,
+  "title": "최소 성적",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>이번 학기에 받아야 하는 최소 평균 평점 기준과 수강한 과목 중 한 과목을 제외한 모든 과목의 성적이 주어졌을 때, 최소 평균 평점 기준을 충족하기 위해 받아야 하는 나머지 한 과목의 최소 성적을 출력하시오. 성적에 따른 평점 환산표는 다음과 같다.</p>\r\n\r\n<div style=\"overflow:auto;max-width:calc(100vw - 30px)\">\r\n<table align=\"center\" border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"table-layout: fixed; text-align: center; width: 600px; height: 60px;\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th scope=\"row\" style=\"text-align: center; width: 75px;\">성적</th>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">A+</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">A0</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">B+</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">B0</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">C+</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">C0</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">D+</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">D0</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">F</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th scope=\"row\" style=\"text-align: center; width: 75px;\">평점</th>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">4.50</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">4.00</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">3.50</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">3.00</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">2.50</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">2.00</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">1.50</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">1.00</td>\r\n\t\t\t<td style=\"text-align: center; width: 50px;\">0.00</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n</div>\r\n\r\n<p>이번 학기의 평균 평점은 $($과목별 $($학점 $\\times$ 평점$)$의 합 $\\div$ 이번 학기에 수강한 과목의 학점 총합$)$을 소수점 이하 세 번째 자리에서 버림한 값이며, 이번 학기의 평균 평점이 최소 평균 평점 기준을 <strong>초과</strong>하는 경우 최소 평균 평점 기준을 충족한 것으로 인정된다. <strong>단, 실수 자료형을 사용할 경우 부동 소수점 오차가 발생할 수 있으므로 주의하라.</strong></p>\r\n",
+  "input": "<p>첫 번째 줄에 이번 학기에 수강한 과목 수 $N$과 이번 학기에 받아야 하는 최소 평균 평점 기준 $X$가 공백으로 구분되어 주어진다. $(2 \\le N \\le 24;$ $0.00 \\le X \\le 4.50;$ $X$는 소수점 이하 두 자리까지 주어지는 실수$)$</p>\r\n\r\n<p>두 번째 줄부터 $N - 1$개의 줄에 걸쳐 각 과목의 학점 $c_i$와 성적 $g_i$가 공백으로 구분되어 주어진다. $(1 \\le c_i \\le 6;$ $g_i$는 <span style=\"color:#e74c3c;\"><code>A+</code></span>, <span style=\"color:#e74c3c;\"><code>A0</code></span>, <span style=\"color:#e74c3c;\"><code>B+</code></span>, <span style=\"color:#e74c3c;\"><code>B0</code></span>, <span style=\"color:#e74c3c;\"><code>C+</code></span>, <span style=\"color:#e74c3c;\"><code>C0</code></span>, <span style=\"color:#e74c3c;\"><code>D+</code></span>, <span style=\"color:#e74c3c;\"><code>D0</code></span>, <span style=\"color:#e74c3c;\"><code>F</code></span>중 하나$)$</p>\r\n\r\n<p>그다음 줄에는 나머지 한 과목의 학점 $L$이 주어진다. $(1 \\le L\\le 6)$</p>\r\n",
+  "output": "<p>최소 평균 평점 기준을 충족하기 위해 받아야 하는 나머지 한 과목의 최소 성적을 출력한다. 만약 어떤 성적을 받아도 최소 평균 평점 기준을 충족할 수 없다면 &quot;<span style=\"color:#e74c3c;\"><code>impossible</code></span>&quot;을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "5 3.59\n4 A+\n3 B+\n3 C+\n1 D0\n3\n",
+      "output": "A+\n"
+    },
+    {
+      "input": "3 4.44\n5 A+\n4 A+\n1\n",
+      "output": "A0\n"
+    },
+    {
+      "input": "5 2.54\n3 B+\n2 B0\n2 C+\n2 C0\n1\n",
+      "output": "F\n"
+    },
+    {
+      "input": "5 3.60\n4 A+\n3 B+\n3 C+\n1 D0\n3\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 국민대학교, 2023 국민대학교 알고리즘 콘테스트, 2023 국민대학교 알고리즘 콘테스트, University, 중앙대학교, 중앙대학교 프로그래밍 경진대회 (CPC), 2023 중앙대학교 프로그래밍 경진대회 (CPC), Division 1, University, 중앙대학교, 중앙대학교 프로그래밍 경진대회 (CPC), 2023 중앙대학교 프로그래밍 경진대회 (CPC), Division 2, University, 중앙대학교, 중앙대학교 프로그래밍 경진대회 (CPC), 2023 중앙대학교 프로그래밍 경진대회 (CPC), Open Contest, University, 국민대학교, 2023 국민대학교 알고리즘 콘테스트, Open Contest, usb9245, saywoo, wider93, wapas, uyk0329, utilforever, tony9402, smmaker118, shiftpsh, chansol, puppy, pjshwa, menborong, koder0205, kiwiyou, hibye1217, haru_101, halin",
+  "level": 7,
+  "tags": [
+    "math",
+    "implementation",
+    "arithmetic",
+    "arbitrary_precision"
+  ],
+  "accepted_user_count": 417,
+  "submission_count": null,
+  "average_tries": 3.9328999519348145
+}

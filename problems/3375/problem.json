@@ -1,0 +1,26 @@
+{
+  "id": 3375,
+  "title": "Magic Parenthesis",
+  "time_limit": "5 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In the LISP programming language <strong><em>everything</em></strong> is written inside balanced parentheses <code>(LIKE THIS)</code>. This means that LISP code sometimes contains long stretches \"<code>)))...)</code>\" of closing parentheses. It is very tedious for the LISP programmer to get the number of these closing parentheses '<code>)</code>' to correspond exactly to the number of opening parentheses '<code>(</code>'.</p>\n<p>To prevent such syntax errors, some LISP dialects introduce a <em><strong>magic closing parenthesis</strong></em> '<code>]</code>' which substitutes <em>one or more closing parentheses '</em><code>)</code><em>' as needed to properly balance the opening parentheses '</em><code>(</code><em>'</em>. But then the LISP compiler must calculate how many closing parentheses '<code>)</code>' each magic parenthesis '<code>]</code>' really substitutes. How?</p>\n<p>Write a program which is given a string of opening, closing, and magic parentheses, and which calculates for each occurrence of the magic parenthesis the number of opening parentheses it corresponds to. In case of multiple solutions, the program should find any one of them.</p>",
+  "input": "<p>The first line consists of two integers 0 ≤ N ≤ 10 000 000 and 0 ≤ M ≤ 5 000 000 separated by a space. The first number N is the length of the input string. The second number M is the number of magic closing parentheses in the string. The rest of the input file starts on the second line and is a string of length N consisting of characters '<code>(</code>', '<code>)</code>' and '<code>]</code>'. The character '<code>]</code>' occurs exactly M ≤ N times in this string. This string is divided into lines of at most 72 characters each for readability.</p>",
+  "output": "<p>The first line consists of an integer '<code>0</code>' or '<code>1</code>'.</p>\n<p>The number '<code>0</code>' means that the input cannot be balanced. (For example, the string which consists of just a single magic parenthesis \"<code>]</code>\" obviously cannot be balanced.) In this case there is no more output.</p>\n<p>The number '<code>1</code>' means that the input can be balanced. In this the output continues with the following M extra lines.</p>\n<p>The 1st of these extra lines consists of the number C<sub>1</sub> ≥ 1 of closing parentheses '<code>)</code>' the 1st magic parenthesis '<code>]</code>' in the input substitutes to. The 2nd extra line consists of the corresponding number C<sub>2</sub> ≥ 1 for the 2nd '<code>]</code>' in the input, and so on.</p>\n<p>If there are many ways in which the given string can be balanced, then your program may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "8 2\n(((((])]\n",
+      "output": "1\n3\n1\n"
+    }
+  ],
+  "hint": "<p>The input on the left describes a string with 8 characters, of which 2 are magic. The output on the right shows one way of balancing this input: the first magic parenthesis corresponds to 3 opening parentheses, and the second magic parenthesis corresponds to 1 opening parenthesis. And indeed, the magic-free string <code>(((((<u>)))</u>)<u>)</u></code> is properly balanced, where the closing parentheses corresponding to the magic parentheses are <u>underlined</u>.</p>",
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2005",
+  "level": 14,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "stack"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.8181999921798706
+}

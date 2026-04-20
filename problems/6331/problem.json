@@ -1,0 +1,22 @@
+{
+  "id": 6331,
+  "title": "Fold-up Patterns",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Fold-up patterns for solids like cubes or octahedrons can be found in many books on geometry, but without actually folding them it is hard to tell whether the constructions really work. In this problem, we will consider a special class of such patterns.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:215px; width:468px\"/></p>\n<p>Given a fold-up pattern built from unit squares in the plane, together with a description along what edges it should be folded in what direction, decide whether it will result in a closed surface of a solid in three dimensions. If it does, find the volume of the solid.</p>\n<p>More precisely, the pattern consists of a connected set of unit squares in the plane. For any edge between connected sides you are told whether to fold forward, backward (always at a right angle), or not at all along that edge. If an edge between two adjacent squares in the pattern is not mentioned in the input, you may assume that the squares are not connected and can be ripped apart when folding. However, connected edges must always be folded according to the description.</p>\n<p>For our purposes a closed surface is one where every square in the pattern separates the inside from the outside. When folded, the squares of the pattern lie on a rectangular, 3-dimensional grid, and each separates a cell (cubes of side length one unit) on the inside from one on the outside. For every cell it must be clear whether it is inside or outside. The following sketch illustrates this rule in two dimensions.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height:95px; width:339px\"/></p>\n<p>Note that even the second pattern above satisfies our definition of a closed surface, but the interior is not connected.</p>\n<p>Two different squares may not occupy exactly the same position in space, though they may (and will for a closed surface) touch at edges and vertices. Make sure that the pattern does not interpenetrate itself through connected edges. Apart from that, do not worry about the process of folding, e.g. what edges are folded first or whether part of the structure is in the way for the rest.</p>",
+  "input": "<p>The input file consists of several test cases.</p>\n<p>For each test case, the first line contains two integers n and e. These are the number n (1 ≤ n ≤ 200) of squares in the pattern and the number e (0 ≤ e ≤ 300) of edges. Squares are labelled by the integers 0 to n-1. The following e lines describe one edge each using the four numbers s1 ; s2 ; p; f :</p>\n<ul>\n<li>The two numbers s1 and s2 (with 0 ≤ s1 &lt; s2 &lt; n) of the squares that are joined by the edge.</li>\n<li>The position p of the square s2 with respect to the square s1 in the pattern. Here p = 0; 1; 2; 3 mean above, to the left, below, or to the right of s1, respectively (see sketch below).</li>\n<li>The number f = 0; 1; 2 tells you to fold along the edge either not at all, forward, or back, respectively (see sketch).</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"height:129px; width:398px\"/></p>\n<p>You can also assume that the pattern is connected and can be drawn in the plane without overlapping.</p>\n<p>At the end of the input file, there will be a line containing two zeros (instead of n and e). Do not process that line.</p>",
+  "output": "<p>For each scenario print “Test case #k:”, where k is the number of the test case (starting from 1). Then, on the same line, print either “not a closed surface” if the pattern does not form a closed surface or “closed surface, volume=” and the volume as an integer if it does.</p>",
+  "samples": [
+    {
+      "input": "6 5\n0 2 2 1\n1 2 3 1\n2 3 3 1\n2 4 2 1\n4 5 2 1\n5 4\n0 2 2 1\n1 2 3 1\n2 3 3 1\n2 4 2 1\n0 0\n",
+      "output": "Test case #1: closed surface, volume=1\nTest case #2: not a closed surface\n"
+    }
+  ],
+  "hint": "<p><img alt=\"\" src=\"4.png\" style=\"height:362px; width:176px\"/></p>",
+  "source": "ICPC, Regionals, Europe, Mid-Central European Regional Contest, MCERC 2000",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

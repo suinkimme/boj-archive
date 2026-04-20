@@ -1,0 +1,28 @@
+{
+  "id": 19940,
+  "title": "피자 오븐",
+  "time_limit": "0.25 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>피자를 굽는 전자식 오븐이 있다. 이 오븐에 재료는 넣고 정확히 $N$분 동안 동작을 시키고자 한다. 그런데 이 오븐에 준비된 버튼은 아래와 같은 동작을 하는 5가지이다. 즉, 각각의 버튼은 동작 시간을 추가시키거나 감소시킨다. 처음에 피자 오븐의 첫 시간은 0분으로 정해져 있다. 시간을 감소시키는 버튼을 눌러서 시간이 0분보다 작아지는 경우에는 0분으로 설정된다. $t$가 현재 오븐에 세팅된 시간, $t'$은 버튼을 누른 뒤의 시간을 의미할 때, 각 버튼은 다음과 같은 기능을 가지고 있다.</p>\n<ul>\n<li><code>ADDH</code>: $t' = t + 60$</li>\n<li><code>ADDT</code>: $t' = t + 10$</li>\n<li><code>MINT</code>: $t' = t - 10$</li>\n<li><code>ADDO</code>: $t' = t + 1$</li>\n<li><code>MINO</code>: $t' = t - 1$</li>\n</ul>\n<p>예를 들어, 58분을 설정하고 싶으면, <code>ADDO</code> (+1분) 버튼을 58번 눌러도 된다. 하지만, <code>ADDH</code> (+60분) 버튼을 한 번 누른 뒤에 <code>MINO</code> (-1분) 버튼을 2번 누르면 3번의 작업으로 58분을 만들 수 있다. 42분을 설정하고 싶은 경우에는 버튼을 <code>ADDH</code>, <code>MINT</code>, <code>MINT</code>, <code>ADDO</code>, <code>ADDO</code> 순서로 5번 눌러서 만들 수 있다. <code>ADDT</code>, <code>ADDT</code>, <code>ADDT</code>, <code>ADDT</code>, <code>ADDO</code>, <code>ADDO</code> 순서로 6번 눌러서 만들 수 있지만, 버튼은 최소 횟수로 누르려고 한다.</p>\n<p>설정해야 할 시간이 주어졌을 때, 그 시간을 만들기 위해 눌러야 하는 버튼의 최소 횟수와 그 방법을 구하는 프로그램을 작성하시오.</p>",
+  "input": "<p>입력을 $T$개의 테스트 케이스로 이루어져 있다. 각 테스트 케이스는 한 줄로 이루어져 있고, 설정해야 하는 시간 $N$이 분 단위의 정수로 주어진다.</p>",
+  "output": "<p>각각의 테스트 케이스마다 5개의 정수를 한 줄에 공백으로 구분해서 출력한다. 이 정수는 입력으로 주어진 시간을 만들기 위해서 <code>ADDH</code>, <code>ADDT</code>, <code>MINT</code>, <code>ADDO</code>, <code>MINO</code> 버튼을 누르는 횟수를 출력한 것이다. 최소 횟수로 누르는 방법이 여러가지인 경우에는 사전 순으로 가장 앞서는 방법을 출력한다.</p>\n<p>작업 횟수가 동일한 방법이 여러가지가 있을 때, ADDH를 누르는 횟수가 적은것이 사전 순으로 앞서는 것이고, <code>ADDH</code>를 누르는 횟수가 동일하면, <code>ADDT</code>를 누르는 횟수가 적은것이 먼저이다. <code>ADDT</code>를 누르는 횟수가 동일하면 <code>MINT</code>를 누르는 횟수가 적은것이, <code>MINT</code>를 누르는 횟수가 동일하면 <code>ADDO</code>를 누르는 횟수가 적은것이, <code>ADDO</code>를 누르는 횟수가 동일하면 <code>MINO</code>를 누르는 횟수가 적은것이 사전 순으로 앞서는 것이다.</p>",
+  "samples": [
+    {
+      "input": "3\n5\n12\n27\n",
+      "output": "0 0 0 5 0\n0 1 0 2 0\n0 3 0 0 3\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, 한국정보올림피아드, KOI 2020 1차대회, 초등부",
+  "level": 11,
+  "tags": [
+    "math",
+    "graphs",
+    "greedy",
+    "graph_traversal",
+    "bfs"
+  ],
+  "accepted_user_count": 1582,
+  "submission_count": null,
+  "average_tries": 3.732599973678589
+}

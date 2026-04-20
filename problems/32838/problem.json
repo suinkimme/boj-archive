@@ -1,0 +1,36 @@
+{
+  "id": 32838,
+  "title": "Street Development",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>ICPC street is currently an undeveloped area, with a large-scale development plan scheduled soon. Before starting the development, information about $n$ important points along the street will be collected using $n$ remote-controlled robots, with each robot collecting information from one of these important points. Now, the goal is to combine all the collected information into a single robot to find the most efficient development approach. To combine the information, the robots can move towards left or right and combine the information that they have from other robots. Also, each robot is powered by its own battery, and all the robots are equipped with identical batteries. Specifically, let $p_1, p_2, \\dots , p_n$ represent the positions of the important points where the robots collect information, arranged from left to right. Then the requirements are as follows:</p>\n<ol>\n<li>The ICPC street is considered as a one-dimensional interval $[0, L]$ with a positive integer $L$. The important points $p_1, p_2, \\dots , p_n$ are always represented as integers on the interval, including two endpoints of the interval. That is, $p_1 = 0$ and $p_n = L$. Initially, each robot is positioned at one of the important points, so it has the information of the important point before beginning to move. Note that there is exactly one robot at each of these points initially, which means $n$ is also the number of robots, and always at least $2$ and at most $L + 1$.</li>\n<li>For combining the information from other robots, robots can move freely to the left or right, consuming $1$ unit of battery for $1$ unit of distance traveled, regardless of direction. All robots are equipped with the same battery capacity with integer $P$, and move only in integer units of distance.</li>\n<li>When two or more robots meet at the integer position on the street, they can combine each other's information. For example, if a robot with information about $p_1$ and $p_2$ encounters with a robot with information about $p_3$ and $p_4$, both robots will then have information about the positions $p_1$, $p_2$, $p_3$, and $p_4$.</li>\n<li>Robots consume the battery only for movement. Therefore, they do not use the battery when changing direction or when combining the information from other robots.</li>\n<li>After all movements, at least one robot must have information about all the positions $p_1, p_2, \\dots , p_n$.</li>\n</ol>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 434px; height: 250px;\"/></p>\n<p>For example, the figure above shows an example with $L = 10$, $n = 4$, and Robots $1$, $2$, $3$, and $4$ (R1, R2, R3, R4 in the figure) collect information (and are initially positioned) at $p_1 = 0$, $p_2 = 3$, $p_3 = 7$, and $p_4 = 10$, respectively. Then the following sequence of steps can be performed with a battery capacity of $P = 3$:</p>\n<ol>\n<li>Robot $1$ moves to $p_2$, and Robots $1$ and $2$ combine each other’s information.</li>\n<li>Robot $4$ moves to $p_3$, and Robots $3$ and $4$ combine each other’s information.</li>\n<li>Robot $2$ moves $2$ units to the right, Robot $3$ moves $2$ units to the left, and they combine each other’s information at the position $5$ on the street.</li>\n</ol>\n<p>Then after completing the process, Robots $2$ and $3$ will have information about all the positions $p_1$, $p_2$, $p_3$, and $p_4$.</p>\n<p>Since the battery is much more expensive than the other parts of robot, it is important to determine the minimum battery capacity required for each robot for efficient data collection. Given $L$, $n$, and the positions of the important points $p_1, p_2, \\dots , p_n$, write a program to calculate the minimum battery capacity $P$ required for at least one robot to have information about all the points.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing two positive integers, $L$ and $n$ ($1 ≤ L ≤ 10^6$ , $2 ≤ n ≤ L + 1$), where $n$ is the number of robots and important points on the street and $L$ is the position of the right endpoint of the street. In the following line, $n$ distinct integers between $0$ and $L$ that represent the positions of important points of the street (the initial positions of the robots) are given in increasing order, where the first integer is $0$ and the last one is $L$.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line. The line should contain a single integer that represents the minimum battery capacity $P$ required for at least one robot to have information about all the important points.</p>",
+  "samples": [
+    {
+      "input": "10 4\n0 3 7 10\n",
+      "output": "3\n"
+    },
+    {
+      "input": "100 5\n0 97 98 99 100\n",
+      "output": "49\n"
+    },
+    {
+      "input": "1 2\n0 1\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, 2024 ICPC Asia Seoul Regional",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "greedy",
+    "binary_search",
+    "simulation",
+    "parametric_search"
+  ],
+  "accepted_user_count": 88,
+  "submission_count": null,
+  "average_tries": 3.636399984359741
+}

@@ -1,0 +1,24 @@
+{
+  "id": 21398,
+  "title": "동생에게 져주기",
+  "time_limit": "1 초  (하단 참고)",
+  "memory_limit": "512 MB",
+  "description": "<p>Alice 와 Albert 는 종종 카드 게임을 하는데, 동생인 Albert는 게임에서 지면 너무 슬퍼하기 때문에 Alice는 일부러 져주려고 한다.</p>\r\n\r\n<p>두 사람이 하는 게임은 n장의 카드를 이용하는데 각 카드에는 영문 대문자 (A-Z) 하나가 적혀있다. 아래와 같은 규칙으로 게임을 하는데, 동생인 Albert는 아직 어리기 때문에 항상 Alice가 예측한대로 플레이 한다.</p>\r\n\r\n<ul>\r\n\t<li>먼저, 두 사람이 알파벳이 적힌 카드 n장을 좌측부터 우측으로 임의의 순서로 나열한다.</li>\r\n\t<li>두 사람이 번갈아가며 카드를 한 장씩 가져오는데, 가장 좌측 혹은 가장 우측에 놓인 카드만 가져올 수 있다.</li>\r\n\t<li>Albert가 먼저 시작하고, 그 후 번갈아가면서 카드를 가져온다.\r\n\t<ul>\r\n\t\t<li>Albert의 차례에는 &quot;ALBERT&quot; 를 구성하는 6개의 알파벳 중 하나가 적힌 카드를 가져오면 Albert가 2점을 얻는다.</li>\r\n\t\t<li>Alice의 차례에는 &quot;ALICE&quot;를 구성하는 5개의 알파벳 중 하나가 적힌 카드를 가져오면 Alice가 1점을 얻는다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>Albert는 항상 아래 규칙에 따라 카드를 가져온다:\r\n\t<ul>\r\n\t\t<li>만약 가장 좌측과 가장 우측에 놓인 카드가 모두 2점을 주는 카드라면 왼쪽에 놓인 카드를 가져온다.</li>\r\n\t\t<li>만약 가장 좌측과 가장 우측에 놓인 카드가 점수를 주는 카드가 아니라면 우측에 놓인 카드를 가져온다.</li>\r\n\t\t<li>만약 두 카드 중 한 장만 2점을 주는 카드라면, 해당 카드를 가져온다.</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Alice는 Albert에게 일부러 져주되 게임이 끝났을 때 (Albert의 점수 - Alice 의 점수)가 최소가 되도록 하고 싶다.</p>\r\n\r\n<p>예를 들어, n = 4이고 바닥에 놓인 카드가 &quot;BCCB&quot; 라 하자.</p>\r\n\r\n<ul>\r\n\t<li>1턴: Albert는 위 규칙에 따라 가장 좌측에 놓인 카드 &quot;B&quot;를 가져와 2점을 얻는다. 남은 카드는 &quot;CCB&quot; 이다.</li>\r\n\t<li>2턴: Alice는 가장 좌측의 &quot;C&quot;를 가져오거나 가장 우측의 &quot;B&quot;를 가져올 수 있다.\r\n\t<ul>\r\n\t\t<li>가장 좌측의 C를 가져온 경우: 1점을 얻고, &quot;CB&quot;가 남는다. Albert는 가장 우측의 B를 가져오고, Alice가 마지막 남은 C를 가져와 두 사람의 점수는 4점 (Albert) 2점 (Alice)가 되어 점수의 차이가 2가 된다.</li>\r\n\t\t<li>가장 우측의 B를 가져온 경우: 0점을 얻고, &quot;CC&quot;가 남는다. Albert는 가장 우측의 C를 가져오고, Alice가 마지막 남은 C를 가져와 두 사람의 점수는 2점 (Albert) 1점 (Alice)가 되어 점수의 차이가 1이 된다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>이 예제의 경우, Alice가 최선을 다해 Albert가 이기되 점수 차이를 최소화 한다면 1점 차로 아슬아슬하게 질 수 있다.</li>\r\n</ul>\r\n\r\n<p>다른 예로, n = 4이고 바닥에 놓인 카드가 &quot;CLCD&quot;라 하자.</p>\r\n\r\n<ul>\r\n\t<li>1턴: Albert는 위 규칙에 따라 가장 우측에 놓인 카드 &quot;D&quot;를 가져와 0점을 얻는다. 남은 카드는 &quot;CLC&quot; 이다.</li>\r\n\t<li>2턴: Alice는 좌측 혹은 우측의 C를 가져올 수 있다.\r\n\t<ul>\r\n\t\t<li>가장 좌측의 C를 가져온 경우: 1점을 얻고 &quot;LC&quot;가 남는다. Albert는 규칙대로 좌측의 L을&nbsp;가져오고 (2점), Alice가 마지막 남은 C를&nbsp;가져와 동점으로 게임이 끝난다.</li>\r\n\t\t<li>가장 우측의 C를 가져온 경우: 1점을 얻고 &quot;CL&quot;이&nbsp;남는다. Albert는 규칙대로 우측의 L을&nbsp;가져오고 (2점), Alice가 마지막 남은 C를 가져와 동점으로 게임이 끝난다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>이 예제의 경우, 만약 Albert가 처음에 가장 좌측에 놓인 C를 가져온다면, Alice가 그 다음 턴에 우측에 놓인 D를 가져오고, Albert가 L을 가져와 2점을 얻고 Alice가 마지막 남은 C를 가져와서 1점차로 아슬아슬하게 져줄 수 있지만, Albert는 점수를 얻지 못하는 상황에서는 항상 우측의 카드를 가져오기 때문에 Alice가 져줄 방법이 없다.</li>\r\n</ul>\r\n\r\n<p>입력으로 좌측에서 우측으로 나열된 n장의 카드에 적힌 알파벳이 주어졌을 때, Alice가 최소한의 점수차로 져줄 수 있는 방법을 찾아보자.</p>\r\n",
+  "input": "<p>첫 줄에 테스트 케이스의 수 T가 주어진다.</p>\r\n\r\n<p>각 테스트 케이스는 한 줄에 걸쳐 영문 대문자로만 구성된 문자열이 공백없이 주어진다.</p>\r\n",
+  "output": "<p>각 테스트 케이스에 대해 Alice가 최소의&nbsp;점수차로 Albert에게 져줄 때 이 점수 차이가 무엇인지 출력한다.</p>\r\n\r\n<p>만약 져줄 수 있는 방법이 없을 경우 -1을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "5\nABA\nBBB\nBCCB\nCLCD\nALBERT\n",
+      "output": "3\n4\n1\n-1\n4\n"
+    }
+  ],
+  "hint": null,
+  "source": null,
+  "level": 16,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.736799955368042
+}

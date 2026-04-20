@@ -1,0 +1,38 @@
+{
+  "id": 32015,
+  "title": "Haiku Formatting",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A haiku is a three-line poem in which the first and third lines contain $5$ syllables each, and the second line contains $7$ syllables.</p>\n<p>An example of a haiku is:</p>\n<pre>\nBlue Ridge mountain road.\nLeaves, glowing in autumn sun,\nfall in Virginia.</pre>\n<p>Write a program to examine a line of English text and and attempt to render it as a haiku. This will require counting the syllables in the words of the text, which should be done according to the following rules:</p>\n<ul>\n<li>\n<p>A word consists of a non-empty, maximal string of zero or more alphabetic characters (upper and/or lower-case) followed by zero or more non-blank, non-alphabetic characters.</p>\n<ul>\n<li>\n<p>Upper/lower case distinctions are ignored for the purpose of counting syllables, but must be retained in the final output.</p>\n</li>\n<li>\n<p>Non-alphabetic characters are ignored for the purpose of counting syllables, but must be retained in the final output.</p>\n</li>\n</ul>\n</li>\n<li>\n<p>The characters 'A', 'E', 'I', 'O', 'U', and 'Y' are vowels. All other alphabetic characters are consonants.</p>\n<p>Exceptions to this rule:</p>\n<ul>\n<li>\n<p>The character sequence \"QU\" is considered to be a single consonant.</p>\n</li>\n<li>\n<p>The letter 'Y' is considered to be a consonant if it is immediately followed by one of the other vowels.</p>\n</li>\n</ul>\n</li>\n<li>\n<p>Every word has at least one syllable.</p>\n<p>For example, \"Fly\",\"I\", \"!?\", and \"Ssshhh!\" are words of one syllable.</p>\n</li>\n<li>\n<p>Each (maximal) string of one or more consonants with at least one vowel to either side indicates a division into separate syllables.</p>\n<p>For example, \"strong\" has one syllable, \"stronger\" has $2$, and \"bookkeeper\" has $3$. \"player\" has two syllables (because the 'y', being followed by an 'e', is considered a consonant).</p>\n<p>Exceptions to this rule are:</p>\n<ul>\n<li>\n<p>An 'E' appearing as the last alphabetic character in a word is silent and should be ignored unless the next-to-last alphabetic character is an 'L' and the character immediately before that is another consonant.</p>\n<p>For example, \"cake\", \"ale\" and \"pale\" have one syllable. \"able\" has two.</p>\n</li>\n<li>\n<p>An 'ES' sequence at the end of the alphabetic sequence in a word does not add a syllable unless immediately preceded by two or more consonants.</p>\n<p>For example, \"ales\" and \"pales\" have one syllable. \"witches\" and \"verses\" have two.</p>\n</li>\n</ul>\n</li>\n</ul>",
+  "input": "<p>Input will consist of a single line of text consisting of a sequence of one or more words (as defined above) separated by single blanks.</p>\n<p>The total line length will not exceed $200$ characters.</p>",
+  "output": "<p>If the words in the input line can be divided into a haiku, then print the haiku as three lines of output.</p>\n<ul>\n<li>Each line should be left-justified.</li>\n<li>A single space should separate each pair of words within a line.</li>\n<li>Upper/lower casing from the input should be preserved.</li>\n<li>Non-alphabetic characters terminating each word should be preserved.</li>\n<li>A word cannot be split across multiple lines.</li>\n</ul>\n<p>If the words in the input cannot be divided into a haiku, print the line of input with no changes.</p>",
+  "samples": [
+    {
+      "input": "Blue Ridge mountain road. Leaves, glowing in autumn sun, fall in Virginia.\n",
+      "output": "Blue Ridge mountain road.\nLeaves, glowing in autumn sun,\nfall in Virginia.\n"
+    },
+    {
+      "input": "Who would know if we had too few syllables?\n",
+      "output": "Who would know if we had too few syllables?\n"
+    },
+    {
+      "input": "International contest- motivation high Programmers have fun!.\n",
+      "output": "International\ncontest- motivation high\nProgrammers have fun!.\n"
+    },
+    {
+      "input": "Programming contest is stressing us all out. International pain.\n",
+      "output": "Programming contest is stressing us all out. International pain.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 2017 Mid-Atlantic USA Regional Contest",
+  "level": 13,
+  "tags": [
+    "case_work",
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1
+}

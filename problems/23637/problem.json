@@ -1,0 +1,31 @@
+{
+  "id": 23637,
+  "title": "뤼 신",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>뤼 신은 모든 것을 간파하여 보기 위해 눈에 안대를 감았다.</p>\n<p>하지만, 아직 정확하게 앞을 볼 수 없어서 항상 좌표 평면의 $(0,0)$의 위치에서 주변을 바라보며 자신을 수련하고 있다. 뤼 신은 수련 중에 두 가지 행동을 할 수 있다.</p>\n<ol>\n<li>물체를 $(y, x)$ 위치에 추가하는 일</li>\n<li>안대를 쓰고 본인의 시야에 있는 물체의 개수를 파악하는 일. 단, 시야의 가장자리에 있는 물체도 포함한다.</li>\n</ol>\n<p>뤼 신은 2번 행동을 할 때 자신이 파악한 물체의 개수가 정확한지 알 수 없다. 뤼 신이 파악한 물체의 개수가 옳은지 알려주는 프로그램을 작성해서 수련을 도와주자.</p>",
+  "input": "<p>첫 번째 줄에 초기에 주어지는 물체의 개수를 나타내는 정수 $N$과 뤼 신이 행동한 횟수를 나타내는 정수 $Q$가 주어진다.</p>\n<p>다음 $N$개의 줄에는 물체의 위치를 나타내는 정수 쌍 $y~x$가 주어진다. 이후 $Q$개의 줄에는 뤼 신의 행동이 다음 중 하나의 형태로 주어진다.</p>\n<ul>\n<li><code>1 y x</code> : $(y, x)$ 위치에 물체를 추가한다.</li>\n<li><code>2 L a b r c</code> : 뤼 신이 $a^\\circ$ 방향에서부터 <strong>반시계 방향</strong>으로 $b^\\circ$ 만큼 보고 있으며 가시 거리가 $r$일 때, 파악한 물체의 개수가 $c$ 이다.</li>\n<li><code>2 R a b r c</code> : 뤼 신이 $a^\\circ$ 방향에서부터 <strong>시계 방향</strong>으로 $b^\\circ$ 만큼 보고 있으며 가시 거리가 $r$일 때, 파악한 물체의 개수가 $c$ 이다.\n\t<ul>\n<li>$a^\\circ$ 방향이란, 원점에서부터 $x$축의 양의 방향으로 뻗은 반직선을 기준으로 반시계 방향으로 $a^\\circ$ 꺾은 방향을 말한다.</li>\n</ul>\n</li>\n</ul>\n<p>$N, Q, y, x, a, b, r, c$는 모두 정수이며, 값의 범위는 다음과 같다.</p>\n<ul>\n<li>$1 \\leq N, Q \\leq 100,000$</li>\n<li>$-1,000 \\leq y, x \\leq 1,000 \\ (x \\neq 0 \\lor y \\neq 0)$</li>\n<li>$0 \\leq a, b \\leq 360$</li>\n<li>$1 \\leq r \\leq 1,000$</li>\n<li>$0 \\leq c \\leq 200,000$</li>\n</ul>",
+  "output": "<p>뤼 신의 2번 행동에 대해 각각 한 줄에 하나씩 정답을 다음 중 하나의 형태로 출력한다.</p>\n<ul>\n<li><code>YES</code> - 뤼 신이 파악한 물체의 개수가 시야에 존재하는 물체의 개수와 같다면 <code>YES</code>를 출력한다.</li>\n<li><code>NO X</code> - 그렇지 않다면, <code>NO</code>와 함께 시야에 존재하는 물체의 개수 <code>X</code>를 출력한다.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "4 6\n1 1\n1 -1\n-1 -1\n-1 1\n2 L 30 180 30 2\n1 5 2\n1 -6 0\n2 L 30 180 30 2\n2 R 330 300 8 6\n2 R 330 300 8 7\n",
+      "output": "YES\nNO 3\nYES\nNO 6\n"
+    },
+    {
+      "input": "1 1\n0 1\n2 L 0 0 1 0\n",
+      "output": "NO 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 경북대학교, 2021 Goricon, kadrick, djs100201, jh05013, wbcho0504, WeissBlume",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "geometry",
+    "multi_segtree",
+    "segtree"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 2.700000047683716
+}

@@ -1,0 +1,31 @@
+{
+  "id": 10287,
+  "title": "Spy Network",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>NSA가 아주 짱짱 큰 정수를 소인수분해하는 알고리즘을 발견했다! 그들은 조직 내의 spy network에서 암호화된 메시지를 주고받는 데 이 알고리즘을 적극 활용하기로 하였다. 그들의 spy network는 방향&nbsp;그래프 G = (V, E)의 형태로 표현될 수 있으며, 각 정점은 NSA의 직원을 의미하고 각&nbsp;간선 (u, v)는 u가 v에게 비밀스럽게&nbsp;정보를 보낼 수 있음을 의미하며, 이는 v가 u의 연락망에 속해 있다고도 표현할 수 있다. u가 v에게 정보를 보낼 수 있다고 해서 v가 u에게 정보를 보낼 수 있지는 않다는 것에 주의하라.</p>\r\n\r\n<p>NSA의 직원들은 항상 알려진 테러 조직들의 테러 조짐을 관찰하고 있으며 몇 달의 기한마다&nbsp;동료들에게&nbsp;어떤 테러 조직이 테러를 일으킬 조짐이 보이는지를 보고한다.</p>\r\n\r\n<p>정보 전달 방식은 이렇다.</p>\r\n\r\n<blockquote>\r\n<ol>\r\n\t<li>모든 직원들은 자신이 모은 정보를 자신의 연락망에 속한 다른 직원들에게 보낸다.</li>\r\n\t<li>만약 어떤 직원이 정보 i<sub>received</sub>를 받았다면, 자신이 지금까지&nbsp;가지고 있던 정보 i<sub>old</sub>와 결합하여 새로운 정보 i<sub>new</sub>를 생성하고, 그것을 자신의 최신&nbsp;정보로 대체한다.</li>\r\n\t<li>이때, i<sub>new</sub>는 i<sub>received</sub>와 i<sub>old</sub>에 모두 포함되어 있던 정보만으로 생성된다.&nbsp;이는&nbsp;워낙에 NSA에&nbsp;거짓 정보가 많이 흘러들어오기에,&nbsp;여러 직원이 발견하지 못했다면 진실이라는 당위성이 떨어진다고 판단하기로 했기 때문이다.</li>\r\n\t<li>그 다음부터 해당 직원이 다른 직원에게 보낼 정보는 i<sub>new</sub>이다.</li>\r\n</ol>\r\n</blockquote>\r\n\r\n<p>모든 직원들은 정보를 전달할 때 이런 과정을 따른다.</p>\r\n\r\n<p>만약 직원들이 정보를 계속해서 주고받으면, 어느 순간부터 아무리 정보를 보내도 그 어떤 정보도 갱신되지 않는 일이 발생한다. 이때 모든 직원들은 정보 송신을 그만둔다. Spy network&nbsp;전체가 연결되어 있지 않을 수도 있고, 싸이클이 존재할 수도 있음에 유의하라.</p>\r\n\r\n<p>NSA는 이러한 정보의 형태를 큰 소수의 곱으로 나타내기로 했다. 모든 테러 조직마다 대응하는&nbsp;큰 소수값을 부여한 후(다른 조직은 다른 값을 부여받는다), 여러 조직을 표현하는 정보는 그 소수들의 곱으로 나타낸다. 만약 어떤 사원이 i<sub>received</sub>를 받았다면, i<sub>new</sub>는 i<sub>received</sub>와 i<sub>old</sub>의 최대공약수(greatest common divisor)가 될 것이다. 왜냐하면 두 정보의 최대공약수가 두 정보에 모두 포함되어 있는 소수들만의 곱이기 때문이다. 이렇게 정보를 전달하다가 정보 송신이 중단된 경우, 어떤 직원은 중요한 상황에 소인수분해 알고리즘을 사용하여 조직의 정보를 파악할 수 있다.</p>\r\n\r\n<p>NSA는 최근에 자신들의 정보가 외부로 유출되었음을 확인했다! 모든 정보는 암호화되어 있고 잃어버린 정보 또한 없지만, NSA는 정보 유출자를 찾아내기로 결정했다. 이에 당신의 도움이 필요하다. 정확히 누가 정보를 유출했는지는 알 수 없지만, NSA는 유출된 정보의 값을 알고 있었다. 만약 spy network가&nbsp;더 이상의 어떠한 정보 갱신도 이루어지지 않는 상태가 되었을 때, 유출된 정보의 값을 가지고 있던 직원들이 누구인지를 아는 것부터 시작하기로 했다. 그렇게 한다면 수색망을 좁힐 수 있기 때문이다.</p>\r\n\r\n<p>최종 상태에서 누출된 정보값을 가지고 있는 직원의 수를 구하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>입력은 여러 개의 테스트 케이스로 이루어져 있으며, 첫 번째 줄에 테스트 케이스의 개수가 주어진다. 테스트 케이스의 개수는 100개를 넘지 않는다.</p>\r\n\r\n<p>각 테스트 케이스의 첫 번째 줄에는 세&nbsp;정수 N, M, L이 주어진다.&nbsp;(1 &le; n&nbsp;&le; 10 000,&nbsp;0 &le; m &le; 10 000,&nbsp;1 &le; l &lt; 2<sup>63</sup>) N은 직원의 수, M은 간선의 수, L은 누출된 정보값을 의미한다.</p>\r\n\r\n<p>이어지는 M개의 줄에 간선의 정보가 하나씩 주어진다. 한 줄에 두 정수 a, b가 주어지는데, 이는 b가 a의 연락망에 속해 있음을 의미한다.&nbsp;(1 &le; a, b &le; n,&nbsp;a &ne; b)</p>\r\n\r\n<p>이어지는 N개의 줄에 각 직원이 처음에 가지고 있던 정보값 i가 주어진다.&nbsp;(1 &le; i &lt; 2<sup>63</sup>)</p>\r\n",
+  "output": "<p>각 테스트 케이스마다 한 줄에 걸쳐서 최종 상태에서 누출된 정보값을 가지고 있던 직원의 수를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3\n4 3 7\n1 3\n2 3\n3 4\n35\n77\n385\n385\n4 4 159\n1 2\n2 3\n3 1\n4 1\n159\n159\n159\n2014\n5 5 9\n2 1\n2 3\n3 2\n3 4\n5 4\n27\n54\n90\n315\n135\n",
+      "output": "2\n0\n2\n"
+    }
+  ],
+  "hint": "<p><img src=\"1.png\" /></p>\r\n\r\n<p>첫 번째 테스트 케이스의 spy network이다.</p>\r\n",
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2014 Preliminaries, kks227",
+  "level": 19,
+  "tags": [
+    "dag",
+    "dp",
+    "euclidean",
+    "graphs",
+    "math",
+    "number_theory",
+    "scc",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 1.9285999536514282
+}

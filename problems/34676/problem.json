@@ -1,0 +1,41 @@
+{
+  "id": 34676,
+  "title": "가희와 신칸센 2",
+  "time_limit": "1.9 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>도쿄에서 니가타를 잇는 조에츠 신칸센은 긴 터널이 많습니다. 간토평야를 지난 후 험준한 산악 지대를 통과하기 때문입니다. 이 노선은 터널, 지상 구간, 역으로 구분할 수 있습니다. 터널의 시점과 종점의 정의는 다음과 같습니다.</p>\n<ul>\n<li>터널 $T$가 $s$에서 시작하여 $e$에서 끝난다면, 즉 구간 $[s, e)$가 터널 $T$의 구간이라면, 터널 $T$의 시점과 종점은 각각 $s$, $e$가 됩니다.</li>\n</ul>\n<p>호기심이 많은 가희는 조에츠 신칸센 노선이 변할 때마다 해당 노선에서 가장 긴 터널과 가장 짧은 터널, 그리고 터널의 개수가 궁금해졌습니다. 가희를 도와주세요. 가장 긴 터널과 가장 짧은 터널의 정의는 다음과 같습니다.</p>\n<ul>\n<li>가장 긴 터널은 노선 내에서 길이가 제일 긴 터널입니다. 그러한 터널이 여러 개라면, 그중 시점이 가장 작은 터널입니다.</li>\n<li>가장 짧은 터널은 노선 내에서 길이가 제일 짧은 터널입니다. 그러한 터널이 여러 개라면, 그중 시점이 가장 작은 터널입니다.</li>\n</ul>",
+  "input": "<p>첫 번째 줄에 노선의 길이 $L$이 주어집니다.</p>\n<p>두 번째 줄에 길이가 $L$인 문자열이 주어집니다. $x$번째에 있는 문자는 다음을 의미합니다.</p>\n<ul>\n<li>구간 $[x, x+1)$에 대해 문자가 <span style=\"color:#e74c3c;\"><code>0</code></span>이면 지상 구간, <span style=\"color:#e74c3c;\"><code>1</code></span>이면 터널, <span style=\"color:#e74c3c;\"><code>2</code></span>이면 역입니다.</li>\n</ul>\n<p>세 번째 줄에 쿼리의 개수 $Q$가 주어집니다.</p>\n<p>네 번쨰 줄부터 $Q$개의 줄에 걸쳐 다음 두 개의 쿼리 중 하나가 한 줄에 하나씩 주어집니다.</p>\n<ul>\n<li>$1$ <font face=\"monospace\">$s$ $e$</font> : 구간 $[s, e)$에 속한 모든 지상 구간에 터널을 즉시 건설합니다. 또한 새로 생긴 터널이 기존 터널과 연결되는 경우, 새로 생긴 터널은 기존 터널과 합쳐집니다. $(1 \\leq s \\lt e \\leq L)$</li>\n<li>$2$ : 문제에 대한 답을 출력합니다.</li>\n</ul>",
+  "output": "<p>$2$번 쿼리가 나올 때마다 다음과 같이 출력해 주세요.</p>\n<p>터널이 노선 내에 없는 경우 <span style=\"color:#e74c3c;\"><code>-1</code></span>만 출력해 주세요. 그렇지 않은 경우 다음 형식으로 출력해 주세요. $5$개의 값은 <strong>공백으로 구분해서 출력</strong>해 주세요.</p>\n<p style=\"text-align: center;\">{<span style=\"color:#e74c3c;\"><code>tunnel_num</code></span>} {<span style=\"color:#e74c3c;\"><code>longest_tunnel_s</code></span>} {<span style=\"color:#e74c3c;\"><code>longest_tunnel_e</code></span>} {<span style=\"color:#e74c3c;\"><code>shortest_tunnel_s</code></span>} {<span style=\"color:#e74c3c;\"><code>shortest_tunnel_e</code></span>}</p>\n<p>각 요소에 대한 설명은 다음과 같습니다.</p>\n<ul>\n<li><span style=\"color:#e74c3c;\"><code>tunnel_num</code></span> : 조에츠 신칸센 노선에 있는 터널 개수입니다.</li>\n<li><span style=\"color:#e74c3c;\"><code>longest_tunnel_s</code></span> : 조에츠 신칸센 노선에 있는 터널 중 가장 긴 터널의 시점</li>\n<li><code><span style=\"color:#e74c3c;\">longest_tunnel_e</span></code> : 조에츠 신칸센 노선에 있는 터널 중 가장 긴 터널의 종점</li>\n<li><span style=\"color:#e74c3c;\"><code>shortest_tunnel_s</code></span> : 조에츠 신칸센 노선에 있는 터널 중 가장 짧은 터널의 시점</li>\n<li><span style=\"color:#e74c3c;\"><code>shortest_tunnel_e</code></span> : 조에츠 신칸센 노선이 있는 터널 중 가장 짧은 터널의 종점</li>\n</ul>",
+  "samples": [
+    {
+      "input": "10\n2000000002\n7\n1 4 5\n1 2 3\n2\n1 6 8\n2\n1 3 4\n2\n",
+      "output": "2 2 3 2 3\n3 6 8 2 3\n2 2 5 6 8\n"
+    },
+    {
+      "input": "10\n2010011002\n3\n2\n1 2 5\n2\n",
+      "output": "2 6 8 3 4\n2 2 5 6 8\n"
+    },
+    {
+      "input": "10\n2010011002\n7\n2\n1 2 5\n2\n1 6 10\n2\n1 1 10\n2\n",
+      "output": "2 6 8 3 4\n2 2 5 6 8\n2 6 10 2 5\n1 2 10 2 10\n"
+    },
+    {
+      "input": "10\n2000000002\n1\n2\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>조에츠 신칸센이 왜 이 타이밍에 뜬금없이 등장했을까?</p>",
+  "source": "Contest, BOJ User Contest, 가희와 함께 하는 코딩 테스트, 가희와 함께 하는 8회 코딩 테스트, chogahui05, mujigae, utilforever",
+  "level": 17,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "segtree",
+    "sweeping",
+    "disjoint_set",
+    "priority_queue"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 6.125
+}

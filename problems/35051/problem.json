@@ -1,0 +1,24 @@
+{
+  "id": 35051,
+  "title": "Medical Parity",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Nurse Mira works in an allergy clinic. For each patient Mira tests $n$ allergens in a fixed order. The outcome of the tests is written down as a binary string $x$ of length $n$: for each allergen, 1 means a positive reaction and 0 means no reaction.</p>\n<p>To analyze how the reactions are distributed, Mira also writes a <em>parity control string</em> for $x$. For a binary string $x$ of length $n$, the parity control string $y$ is defined as follows. For every position $i$ ($1 \\le i \\le n$), let $c_i$ be the number of characters equal to 1 among the first $i$ characters of $x$ (including position $i$). The parity control string $y$ is the binary string of length $n$ such that $y_i = c_i \\mod 2$ for all $i$ ($1 \\le i \\le n$). In other words, $y_i$ is 1 if $c_i$ is odd and 0 if $c_i$ is even. For example, if $x = 11101$, then $y = 10110$.</p>\n<p>Unfortunately, when recording the data, some bits in the test result string and the parity control string may have been written incorrectly. For a given patient, Mira later finds in the system two binary strings $x'$ and $y'$ of the same length $n$. They were intended to be some true test result string $x$ and its parity control string $y$, but some bits in $x$ and $y$ might have been flipped during recording. For instance, in the previous example only the 3rd bit in $y$ could have been flipped, resulting in $x' = 11101$ and $y' = 10010$.</p>\n<p>In one <em>bit flip</em>, a position in one of the two strings is chosen and the bit at this position is flipped (changing 0 to 1 or 1 to 0). Mira wants to know the minimal number of bit flips that could have happened when recording the data.</p>\n<p>Formally, you are given two binary strings $x'$ and $y'$ of length $n$. You want to obtain two strings $x$ and $y$ of length $n$ from $x'$ and $y'$ by flipping some bits in $x'$ and $y'$, so that $y$ is a parity control string of $x$. Find the minimal possible total number of bit flips needed.</p>",
+  "input": "<p>The first line of the input contains the number of test cases $t$. The $2t$ lines follow --- two lines for each test case. The first line of each test case contains a non-empty binary string $x'$ consisting of characters 0 and 1. The second line contains a binary string $y'$ consisting of characters 0 and 1 with the same length as $x'$.</p>\n<p>The total length of all $x'$ strings in the input does not exceed $10^6$.</p>",
+  "output": "<p>Print $t$ lines --- one line for each test case. For each test case, print a single integer --- the minimal possible number of bit flips that could have happened when recording the data.</p>",
+  "samples": [
+    {
+      "input": "3\n11101\n10110\n11101\n10010\n01100\n10110\n",
+      "output": "0\n1\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2025",
+  "level": 11,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.3889000415802002
+}

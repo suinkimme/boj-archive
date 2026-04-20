@@ -1,0 +1,29 @@
+{
+  "id": 29848,
+  "title": "Broken Piano",
+  "time_limit": "0.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>MIDI (Musical Instrument Digital Interface) is a technical standard for describing musical pieces, where each note is represented by an integer from the range $0 \\ldots 1\\,023$. You have a piano with $1\\,024$ keys and you want to play a piece given in the MIDI format. The leftmost key on the piano corresponds to MIDI code $0$, the second key from the left to MIDI code $1$, etc.</p>\n<p>Unfortunately, the piano is very old and some keys are broken. You are familiar with the piano, and know, which keys work and which don't. You can assume that no working key will break during the palying of this one piece, and also no broken key will suddenly start working.</p>\n<p>Write a program to find</p>\n<ul>\n<li>the number of notes in the piece that cannot be played on the piano; and</li>\n<li>the minimal transposition needed to play the piece on the piano.</li>\n</ul>\n<p>Transposition means shifting all the notes in a piece up or down by the same amount. When transposing the piece up by a half-tone, instead of any key designated by the original piece, its right-hand neighbor will be played on the piano. Similarly, when transposing down by a half-tone, the left-hand neighbor of the original key will be played. When transposing by two half-tones, the next but one key will be played, etc. Note that when a piece is transposed up by a half-tone, the note with the MIDI code $1\\,023$ cannot be played, because there is no corresponding key on the piano.</p>",
+  "input": "<p>The first line contains $N$, the number of broken keys on the piano ($1 \\le N \\le 1\\,024$). The second line contains $N$ distinct integers $A_i$ ($0 \\le A_i \\le 1\\,023$): the MIDI codes of the broken keys. The third line contains $M$, the number of notes in the piece ($1 \\le M \\le 10^6$). The fourth line contains $M$ integers $B_i$ ($0 \\le B_i \\le 1\\,023$): the MIDI codes of the notes in the piece.</p>",
+  "output": "<p>Output two lines. The first line should contain a single integer, the number of notes in the piece that cannot be played on the piano. The second line should contain the number of half-tones by which the piece must be transposed so that it can be played on the piano. If the piece could be transposed in several ways, output the transposition with the minimal absolute value. If the piece cannot be played with any transposition, the second line should contain '<code>X</code>'. If your solution does not find the transpostion amount, output '<code>E</code>' on the second line.</p>",
+  "samples": [
+    {
+      "input": "2\n7 8\n6\n4 5 6 7 8 7\n",
+      "output": "3\n-2\n"
+    },
+    {
+      "input": "2\n0 1023\n4\n0 1023 1023 1023\n",
+      "output": "4\nX\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Estonian Informatics Olympiad, 2021-22, Open Competition",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.166700005531311
+}

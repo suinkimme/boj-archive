@@ -1,0 +1,35 @@
+{
+  "id": 26871,
+  "title": "IQ Game",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A popular TV show \"Kak? Zachem? Pochemu?\" highlights a team of six players working together to solve challenging questions. Players sit around a circular table divided into $n$ sectors numbered clockwise from $1$ to $n$. At the start of the game, each sector contains an envelope with a question to be answered.</p>\n<p>Each round, the spinning top at the center of the table chooses a sector of the table uniformly at random. If the chosen sector contains an envelope, the host opens it and reads the question inside. If there is no envelope in the chosen sector, the host opens the next envelope in the clockwise direction from the chosen sector instead. After the round, the opened envelope is removed from the table.</p>\n<p>Tonight, the audience's favorite team is playing. They have already played $n - k$ rounds out of $n$, so there are $k$ envelopes remaining on the table. Things are not looking good for the team --- one more incorrect answer will send them home. One of the questions is a special, notoriously hard question called \"Hyperblitz\". The team is confident they can answer each of the remaining questions except \"Hyperblitz\". Find the expected number of rounds they will play, modulo $998\\,244\\,353$ (see the Output section for details).</p>",
+  "input": "<p>The first line contains three integers $n$, $k$, and $s$ --- the total number of sectors, the number of remaining questions, and the sector containing the \"Hyperblitz\" question ($1 \\le n \\le 10^9$; $1 \\le k \\le \\min(n, 200)$; $1 \\le s \\le n$). It is guaranteed that $n$ is not equal to $998\\,244\\,353$.</p>\n<p>The second line contains $k$ distinct integers $q_1, q_2, \\ldots , q_k$ --- the numbers of sectors that still have envelopes, in clockwise order ($1 \\le q_1 &lt; q_2 &lt; \\ldots &lt; q_k \\le n$).</p>\n<p>There is exactly one index $i$ with $q_i = s$.</p>",
+  "output": "<p>Print a single integer --- the expected number of rounds the team will play (including the inevitable \"Hyperblitz\"), modulo $998\\,244\\,353$.</p>\n<p>Formally, let $M = 998\\,244\\,353$. It can be shown that the expected number of rounds can be expressed as an irreducible fraction $\\frac{p}{q}$, where $p$ and $q$ are integers and $q \\not \\equiv 0 \\pmod{M}$. Print the integer equal to $p \\cdot q^{-1} \\bmod M$. In other words, print such an integer $x$ that $0 \\le x &lt; M$ and $x \\cdot q \\equiv p \\pmod{M}$.</p>",
+  "samples": [
+    {
+      "input": "3 2 3\n2 3\n",
+      "output": "665496237\n"
+    },
+    {
+      "input": "6 3 4\n1 2 4\n",
+      "output": "582309208\n"
+    },
+    {
+      "input": "8 8 5\n1 2 3 4 5 6 7 8\n",
+      "output": "499122181\n"
+    }
+  ],
+  "hint": "<p>In the first example test, in the first round, the team plays the \"Hyperblitz\" with probability $\\frac 13$, so with probability $\\frac 13$ they play 1 round, and with probability $\\frac 23$ they play 2 rounds. The expected number of rounds is $1 \\cdot \\frac 13 + 2 \\cdot \\frac 23 = \\frac 53$.</p>\n<p>As $3^{-1} \\bmod {998\\,244\\,353} = 332\\,748\\,118$, the correct output is $5 \\cdot 332\\,748\\,118 \\bmod {998\\,244\\,353} = 665\\,496\\,237$.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2022-2023 North-Western Russia Regional Contest",
+  "level": 20,
+  "tags": [
+    "combinatorics",
+    "dp",
+    "math",
+    "probability"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.1332999467849731
+}

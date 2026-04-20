@@ -1,0 +1,30 @@
+{
+  "id": 30388,
+  "title": "Quadratic Integer Program",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In this problem, you need to solve a well-known NP problem - the quadratic integer programming problem.</p>\n<p>Quadratic integer programming problems have variables: you need to give a length $n$ sequence of integers $(x[1], x[2], \\ldots, x[n])$ that satisfies all the conditions below.</p>\n<p>Quadratic integer programming problems have constraints: the sequence of integers you give needs to satisfy the following two types of constraints:</p>\n<ol>\n<li>Given a positive integer $k$ $(3 \\le k \\le 5)$ and $n$ intervals $[l[i], r[i]]$ $(1 \\le i \\le n)$, where $1 \\le l[i] \\le r[i] \\le k$ , the sequence you give needs to satisfy $l[i] \\le x[i] \\le r[i]$ for all $1 \\le i \\le n$.</li>\n<li>Given $m$ triples $(p[j], q[j], b[j])$, the sequence you give needs to satisfy $|x[p[j]] - x[q[j]]| \\le b[j]$ for all $1 \\le j \\le m$.</li>\n</ol>\n<p>The quadratic integer programming problem has an objective function: you are given given $k-2$ weight parameters $v[2], v[3], \\ldots , v[k-1]$. Let $c[i]$ be the number of elements in the sequence whose value is $i$, and $G$ be the number of pairs $1 \\le i, j \\le n$ such that $|p[i] - p[j]| \\le 1$ (note that when $i \\neq j$, $(i, j)$ and $(j, i)$ are not the same). The weight of a sequence $x[1], x[2], \\ldots, x[n]$ is:</p>\n<p>$$\\displaystyle W(x[1], x[2], \\ldots, x[n]) = 10^{6}G + \\sum_{i = 2}^{k - 1} c[i] v[i]$$</p>\n<p>Your sequence needs to maximize its weight while satisfying the above two constraints.</p>\n<p>Quadratic integer programming problems do not necessarily require multiple queries, but we will give $q$ queries, each query giving different weight parameters $v[2], v[3], \\ldots, v[k-1]$. For each query, you need find a sequence of maximum weight that satisfies the constraints. To reduce the output, you only need to output the weight of this sequence. The data guarantees that at least one sequence that satisfies the above conditions exists.</p>",
+  "input": "<p>There are multiple sets of test data for this question. The first line contains a non-negative integer $C$ and a positive integer $T$, which represent the test case number and the number of data sets, respectively. $C = 0$ indicates that this set of data is a sample.</p>\n<p>For each test case:</p>\n<ul>\n<li>The first row contains four integers $k, n, m, q$, describing the sequence range, sequence length, the number of constraints between variables, and the number of queries.</li>\n<li>The next $n$ lines each contain two integers $l[i]$, $r[i]$, describing the value range corresponding to each element in the sequence.</li>\n<li>The next $m$ lines contain three integers $p[j]$, $q[j]$, $b[j]$ each, describing the constraints between a pair of variable.</li>\n<li>Each of the next $q$ lines contains $k - 2$ non-negative integers $v[2], v[3], \\ldots , v[k-1]$ describing a set of query weight parameters.</li>\n</ul>",
+  "output": "<p>For each set of queries for each set of data, output a row of integers representing the maximum weight of the sequence.</p>",
+  "samples": [
+    {
+      "input": "0 5\n3 5 2 2\n1 1\n1 2\n2 3\n1 3\n3 3\n1 4 0\n2 3 1\n0\n1000000\n3 1 0 1\n1 1\n0\n3 1 0 1\n1 1\n0\n3 1 0 1\n1 1\n0\n3 1 0 1\n1 1\n0\n",
+      "output": "21000000\n23000000\n1000000\n1000000\n1000000\n1000000\n"
+    },
+    {
+      "input": "0 4\n4 4 3 2\n4 4\n1 4\n2 3\n2 3\n1 2 1\n1 1 0\n3 4 0\n0 0\n100000000 0\n4 1 0 1\n1 1\n0 0\n4 1 0 1\n1 1\n0 0\n4 1 0 1\n1 1\n0 0\n",
+      "output": "16000000\n212000000\n1000000\n1000000\n1000000\n"
+    },
+    {
+      "input": "0 5\n5 5 4 3\n1 5\n1 3\n3 5\n3 4\n2 3\n1 2 1\n1 3 1\n1 4 1\n1 5 1\n2000000 2000000 2000000\n20000000 2000000 2000000\n20000000 2000000 20000000\n5 1 0 1\n1 1\n0 0 0\n5 1 0 1\n1 1\n0 0 0\n5 1 0 1\n1 1\n0 0 0\n5 1 0 1\n1 1\n0 0 0\n",
+      "output": "35000000\n89000000\n99000000\n1000000\n1000000\n1000000\n1000000\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2022",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

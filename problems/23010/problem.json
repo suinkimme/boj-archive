@@ -1,0 +1,30 @@
+{
+  "id": 23010,
+  "title": "Binary Operator",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>You are given a list of valid arithmetic expressions using non-negative integers, parentheses <code>()</code>, plus <code>+</code>, multiply <code>*</code>, and an extra operator <code>#</code>. The expressions are fully parenthesized and in <a href=\"https://en.wikipedia.org/wiki/Infix_notation\" target=\"_blank\">infix</a> notation.</p>\n<p>A fully parenthesized expression is an expression where every operator and its operands are wrapped in a single parenthesis. For example, the expression $x+y$ becomes $(x+y)$ when fully parenthesized, and $x+y+z$ becomes $((x+y)+z)$. However, $0$ is still $0$ when fully parenthesized, because it consists of a single number and no operators. $((x+y))$ is not considered fully parenthesized because it has redundant parentheses.</p>\n<p>The operators <code>+</code> and <code>*</code> denote addition and multiplication, and <code>#</code> can be any <a href=\"https://mathworld.wolfram.com/TotalFunction.html\" target=\"_blank\">total function</a>.</p>\n<p>You want to group the expressions into <a href=\"https://en.wikipedia.org/wiki/Equivalence_class\" target=\"_blank\">equivalence classes</a>, where expressions are in the same equivalence class if and only if they are guaranteed to result in the same numeric value, regardless of which function <code>#</code> represents.</p>\n<p>You can assume that <code>#</code> represents the same function across all expressions in a given test case. That might mean that <code>#</code> represents some known function like addition <em>or</em> subtraction, but not both in different parts of the same test case.</p>\n<p>For example, consider the following expressions:</p>\n<ul>\n<li><code>F<sub>1</sub>=((1#(1+1))+((2#3)*2))</code></li>\n<li><code>F<sub>2</sub>=(((2#3)+(1#2))+(2#3))</code></li>\n<li><code>F<sub>3</sub>=((2*(2#3))+(1#2))</code>.</li>\n</ul>\n<p>Let <code>A = 1#2</code>, and let <code>B = 2#3</code>. Then we can say <code>F<sub>1</sub>=F<sub>2</sub>=F<sub>3</sub></code>, regardless of the function <code>#</code> represents because the expressions can be rewritten as:</p>\n<ul>\n<li><code>F1=((1#2)+((2#3)*2))=(A+(B*2))=(A+2B)</code></li>\n<li><code>F2=(((2#3)+(2#3))+(1#2))=((B+B)+A)=(A+2B)</code></li>\n<li><code>F<sub>3</sub>=((2*(2#3))+(1#2))=((2*B)+A)=(A+2B)</code>.</li>\n</ul>\n<p>However, consider the expressions <code>F<sub>4</sub>=((0#0)+(0#0))</code> and <code>F<sub>5</sub>=(0#0)</code>. If <code>#</code> represents addition, then <code>F<sub>4</sub>=F<sub>5</sub></code>. However, if <code>#</code> is <code>f(x,y)=C</code>, such that $C$ is a non-zero integer, then <code>F<sub>4</sub>≠F<sub>5</sub></code> since <code>2C≠C</code>. Therefore <code>F<sub>4</sub></code> and <code>F<sub>5</sub></code> are not in the same equivalence class.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $T$. $T$ test cases follow. Each test case begins with a line containing the integer $N$. $N$ lines follow. $i$-th line contains one expression, <code>E<sub>i</sub></code>.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: Y<sub>1</sub>,Y<sub>2</sub>,…,Y<sub>N</sub></code>, where $x$ is the test case number (starting from 1) and $Y_i$ is the <a href=\"https://en.wikipedia.org/wiki/Lexicographic_order\" target=\"_blank\">lexicographically smallest</a> sequence satisfying the conditions below:</p>\n<ol>\n<li>$1 \\le Y_i \\le Z$, where $Z$ denotes the total number of equivalence classes in a given test case.</li>\n<li>$Y_i=Y_j$ if and only if $E_i$ and $E_j$ are in the same equivalence class.</li>\n</ol>",
+  "samples": [
+    {
+      "input": "3\n7\n(1*(1#2))\n(0*(1#2))\n(1#2)\n0\n(3*0)\n((1#2)*1)\n(((1+(1#2))+3)*0)\n5\n(1*((1+(2#2))+3))\n((0+(2#2))+4)\n(100#2)\n(((1+(2#2))+3)*1)\n((50*2)#2)\n2\n(9999999999999999999999999999999999999999+1)\n(100000000000000000000*100000000000000000000)\n",
+      "output": "Case #1: 1 2 1 2 2 1 2\nCase #2: 1 1 2 1 2\nCase #3: 1 1\n"
+    },
+    {
+      "input": "1\n9\n((2*(2#3))+(1#2))\n(0*(1#2))\n0\n((1#(1+1))+((2#3)*2))\n(3*0)\n(1#(2#3))\n(((2#3)+(1#2))+(2#3))\n(4#7)\n(7#4)\n",
+      "output": "Case #1: 1 2 2 1 2 3 1 4 5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Kick Start, Google Kick Start 2021, Round C",
+  "level": 19,
+  "tags": [
+    "parsing",
+    "randomization",
+    "string"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.5
+}

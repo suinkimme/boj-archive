@@ -1,0 +1,25 @@
+{
+  "id": 33420,
+  "title": "Easily Broadcastable Tensors",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Little I is learning to use PyTorch. It is a very popular Python library for machine learning training.</p>\n<p>Little I noticed that PyTorch has a mechanism for tensor operations called \"broadcasting\". You can think of tensors as multidimensional arrays. For a $k$-dimensional tensor $A$, we use a sequence of length $k$ denoted as $(a_1, a_2, \\ldots, a_k)$ to represent the lengths of its dimensions, meaning $A$ is a tensor of size $a_1 \\times a_2 \\times \\ldots \\times a_k$.</p>\n<p>For two tensors $A$ and $B$, with dimensions $(a_1, a_2, \\ldots, a_m)$ and $(b_1, b_2, \\ldots, b_n)$, respectively, $A$ and $B$ are <em>easily broadcastable</em> if and only if the following property holds:</p>\n<p style=\"text-align: center;\">For any integer $0 \\le i \\le \\min(n, m) - 1$, either $a_{m - i} = b_{n - i}$ or at least one of $a_{m - i}$ and $b_{n - i}$ is $1$.</p>\n<p>Now, Little I has two tensors with dimensions $(p_1, p_2, \\ldots, p_m)$ and $(q_1, q_2, \\ldots, q_n)$, and they may not be easily broadcastable.</p>\n<p>To make them easily broadcastable, Little I can use several operations (or none), where each operation modifies the sequence $p$ or $q$ as follows:</p>\n<p>Choose $p$ or $q$, and insert a $1$ at any position in the chosen sequence.</p>\n<p>Little I wants to know the minimum number of operations required to make the two tensors easily broadcastable.</p>",
+  "input": "<p>The first line contains two integers $m$ and $n$ ($1 \\le m, n \\le 2000$) representing the dimensions of the two tensors.</p>\n<p>The second line contains $m$ integers $p_1, p_2, \\ldots, p_m$ ($1 \\le p_i \\le 2000)$ describing the length of each dimension for the first tensor.</p>\n<p>The third line contains $n$ integers $q_1, q_2, \\ldots, q_n$ ($1 \\le q_i \\le 2000)$ describing the length of each dimension for the second tensor.</p>",
+  "output": "<p>Print a line with a single integer: the minimum number of insertions of $1$ required to make the two tensors easily broadcastable.</p>",
+  "samples": [
+    {
+      "input": "4 2\n2 1 3 2\n4 2\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": "<p>In the example, inserting a $1$ before the second position in sequence $q$ (resulting in <code>4 1 2</code>) makes the two tensors easily broadcastable.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2024, Day 2: CCPC Contest 1",
+  "level": 0,
+  "tags": [
+    "math",
+    "dp"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

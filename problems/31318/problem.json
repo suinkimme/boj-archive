@@ -1,0 +1,22 @@
+{
+  "id": 31318,
+  "title": "Antichamber",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In the Antichamber video game the player has a special tool called the Brick Tool. You must model its work in a simple two-dimensional variant.</p>\n<p>The game takes place in an infinite grid. Each cell is either white or black. Two cells are considered <em>adjacent</em> if they share a side. A maximum connected set of black cells is called a <em>component</em>. The size of a component is the number of cells in it.</p>\n<p>The tool allows the player to repaint any cell to the opposite color. Straight afterwards checks are performed which can change the state of the grid.</p>\n<p>If a cell has been repainted to white and the number of components has increased, then some component has split into several <em>subcomponents</em>. In this case the newly formed subcomponents are removed except for, possibly, the largest of them. The largest subcomponent is not removed only in the case when its size is strictly greater than the sum of the sizes of all the other subcomponents. Removing a component means repainting all its cells to white.</p>\n<p>Next regardless of the color of the repainted cell, &lt;&lt;holes&gt;&gt; in components are removed: If any white cell is located inside any cycle of black cells, it is repainted to black. Every two neighboring cells in a cycle must be adjacent in the sense defined above.</p>\n<p>Initially all cells are white. A sequence of operations is given. Each operation is either repainting of a cell or a query. All the operations must be executed in the given order.</p>\n<p>There can be two types of queries. A query of type <code>Comp</code>: is it true that the given two cells are black and belong to the same component? A query of type <code>Size</code>: find the size of the component that contains the given cell. If this cell is white, the answer must be zero.</p>",
+  "input": "<p>The first line contains a single integer $N$ --- the number of repaintings and queries ($1 \\le N \\le 10^5$). Each of the following $N$ lines contains a description of a single operation.</p>\n<p>The operation formats are presented below:</p>\n<ul>\n<li>\"<code>Draw</code> $x$ $y$\" --- repaint a cell with the coordinates $(x; y)$ to the opposite color;</li>\n<li>\"<code>Size</code> $x$ $y$\" --- find the size of the component containing the cell with the coordinates $(x; y)$;</li>\n<li>\"<code>Comp</code> $x_1$ $y_1$ $x_2$ $y_2$\" --- determine whether the cells with the coordinates $(x_1; y_1)$ and $(x_2; y_2)$ belong to the same component.</li>\n</ul>\n<p>All coordinates are positive integers not exceeding $10^6$.</p>",
+  "output": "<p>Print answers to the queries in order of their appearance in the input file, one answer per line. An answer to a query of the type <code>Size</code> must be an integer. An answer to a query of the type <code>Comp</code> must be either <code>YES</code> or <code>NO</code>.</p>",
+  "samples": [
+    {
+      "input": "38\nDraw 2 2\nDraw 2 3\nDraw 2 4\nDraw 2 5\nDraw 2 6\nDraw 3 6\nDraw 4 6\nDraw 5 5\nDraw 5 4\nDraw 4 4\nDraw 4 2\nSize 4 2\nSize 2 4\nSize 4 4\nSize 3 3\nComp 2 2 2 4\nComp 2 2 4 4\nComp 3 3 4 4\nDraw 3 2\nDraw 4 3\nSize 2 2\nDraw 5 6\nSize 2 2\nDraw 3 3\nSize 3 3\nComp 3 3 4 4\nDraw 2 4\nDraw 3 4\nDraw 4 4\nSize 3 2\nSize 3 6\nDraw 4 7\nDraw 3 5\nSize 2 5\nDraw 4 6\nSize 2 5\nSize 4 5\nSize 4 7\n",
+      "output": "1\n7\n3\n0\nYES\nNO\nNO\n13\n18\n18\nYES\n0\n9\n9\n0\n0\n0\n"
+    }
+  ],
+  "hint": "<p>Numbers on the pictures below denote number of Brick tool usage for the corresponding number.</p>\n<table class=\"table table-bordered td-middle\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"1.png\"/></td>\n<td>Playfield after 14'th usage of the Brick tool</td>\n</tr>\n<tr>\n<td><img alt=\"\" src=\"2.png\"/></td>\n<td>15'th usage of the Brick tool does not cause changes in the playfield.</td>\n</tr>\n<tr>\n<td><img alt=\"\" src=\"3.png\"/></td>\n<td>Playfield after 18'th usage of Brick tool.</td>\n</tr>\n<tr>\n<td><img alt=\"\" src=\"4.png\"/></td>\n<td>After 21'th usage of Brick tool all the cells in the playfield will become white again.</td>\n</tr>\n</tbody>\n</table>",
+  "source": "Contest, Open Cup, 2014/2015 Season, Stage 2: Grand Prix of Siberia",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,31 @@
+{
+  "id": 3378,
+  "title": "Bus Trip",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>There are N towns, and M one-way direct bus routes (no intermediate stops) between them. The towns are numbered from 1 to N. A traveler who is located in the town 1 at time 0 needs to arrive in the town P. He will be picked from the bus station at town P exactly at time T. If he arrives earlier he will have to wait.</p>\n<p>For each bus route i, we know the source and destination towns s<sub>i</sub> and t<sub>i</sub>, of course. We also know the departure and arrival times, but only approximately: we know that the bus departs from s<sub>i</sub> within the range [a<sub>i</sub>, b<sub>i</sub>] and arrives at t<sub>i</sub> within the range [c<sub>i</sub>, d<sub>i</sub>] (endpoints included in both cases).</p>\n<p>The traveler does not like waiting, and therefore is looking for a travel plan which minimizes the maximal possible waiting time while still guaranteeing that he'll not miss connecting buses (that is, every time he changes buses, the latest possible arrival of the incoming bus must not be later than the earliest possible departure time of the outgoing bus).</p>\n<p>When counting waiting time we have to assume the earliest possible arrival time and the latest possible departure time.</p>\n<p>Write a program to help the traveler to find a suitable plan.</p>",
+  "input": "<p>The first line contains the integer numbers N (1 ≤ N ≤ 50,000), M (1 ≤ M ≤ 100,000), P (1 ≤ P ≤ N), and T (0 ≤ T ≤ 1,000,000,000).</p>\n<p>The following M lines describe the bus routes. Each line contains the integer numbers s<sub>i</sub>, t<sub>i</sub>, a<sub>i</sub>, b<sub>i</sub>, c<sub>i</sub>, d<sub>i</sub>, where s<sub>i</sub> and t<sub>i</sub> are the source and destination towns of the bus route i, and a<sub>i</sub>, b<sub>i</sub>, c<sub>i</sub>, d<sub>i</sub> describe the departure and arrival times as explained above (1 ≤ s<sub>i</sub> ≤ N, 1 ≤ t<sub>i</sub> ≤ N, 0 ≤ a<sub>i</sub> ≤ b<sub>i</sub> &lt; c<sub>i</sub> ≤ d<sub>i</sub> ≤ 1,000,000,000).</p>",
+  "output": "<p>The only line of the output should contain the maximal possible total waiting time for the most suitable possible travel plan. If it is not possible to guarantee arrival in town P by time T, the line should contain –1.</p>",
+  "samples": [
+    {
+      "input": "3 6 2 100\n1 3 10 20 30 40\n3 2 32 35 95 95\n1 1 1 1 7 8\n1 3 8 8 9 9\n2 2 98 98 99 99\n1 2 0 0 99 101\n",
+      "output": "32\n"
+    },
+    {
+      "input": "3 2 2 100\n1 3 0 0 49 51\n3 2 50 51 100 100\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2005",
+  "level": 19,
+  "tags": [
+    "dp",
+    "graphs",
+    "sorting",
+    "sweeping"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

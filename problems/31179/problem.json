@@ -1,0 +1,30 @@
+{
+  "id": 31179,
+  "title": "Paimon Segment Tree",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Paimon just learns the persistent segment tree and decides to practice immediately. Therefore, Lumine gives her an easy problem to start:</p>\n<p>Given a sequence $a_1, a_2, \\cdots, a_n$ of length $n$, Lumine will apply $m$ modifications to the sequence. In the $i$-th modification, indicated by three integers $l_i$, $r_i$ ($1 \\le l_i \\le r_i \\le n$) and $x_i$, Lumine will change $a_k$ to $(a_k + x_i)$ for all $l_i \\le k \\le r_i$.</p>\n<p>Let $a_{i, t}$ be the value of $a_i$ just after the $t$-th operation. This way we can keep track of all historial versions of $a_i$. Note that $a_{i,t}$ might be the same as $a_{i,t-1}$ if it hasn't been modified in the $t$-th modification. For completeness we also define $a_{i, 0}$ as the initial value of $a_i$.</p>\n<p>After all modifications have been applied, Lumine will give Paimon $q$ queries about the sum of squares among the historical values. The $k$-th query is indicated by four integers $l_k$, $r_k$, $x_k$ and $y_k$ and requires Paimon to calculate</p>\n<p>$$\\sum\\limits_{i=l_k}^{r_k}\\sum\\limits_{j=x_k}^{y_k} a_{i, j}^2$$</p>\n<p>Please help Paimon compute the result for all queries. As the answer might be very large, please output the answer modulo $10^9 + 7$.</p>",
+  "input": "<p>There is only one test case in each test file.</p>\n<p>The first line of the input contains three integers $n$, $m$ and $q$ ($1 \\le n, m, q \\le 5 \\times 10^4$) indicating the length of the sequence, the number of modifications and the number of queries.</p>\n<p>The second line contains $n$ integers $a_1, a_2, \\cdots, a_n$ ($|a_i| &lt; 10^9 + 7$) indicating the initial sequence.</p>\n<p>For the following $m$ lines, the $i$-th line contains three integers $l_i$, $r_i$ and $x_i$ ($1 \\le l_i \\le r_i \\le n$, $|x_i| &lt; 10^9 + 7$) indicating the $i$-th modification.</p>\n<p>For the following $q$ lines, the $i$-th line contains four integers $l_i$, $r_i$, $x_i$ and $y_i$ ($1 \\le l_i \\le r_i \\le n$, $0 \\le x_i \\le y_i \\le m$) indicating the $i$-th query.</p>",
+  "output": "<p>For each query output one line containing one integer indicating the answer modulo $10^9 + 7$.</p>",
+  "samples": [
+    {
+      "input": "3 1 1\n8 1 6\n2 3 2\n2 2 0 0\n",
+      "output": "1\n"
+    },
+    {
+      "input": "4 3 3\n2 3 2 2\n1 1 6\n1 3 3\n1 3 6\n2 2 2 3\n1 4 1 3\n4 4 2 3\n",
+      "output": "180\n825\n8\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2021/2022 Season, Stage 9: Grand Prix of Nanjing",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "lazyprop",
+    "segtree"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

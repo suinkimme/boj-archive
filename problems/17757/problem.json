@@ -1,0 +1,28 @@
+{
+  "id": 17757,
+  "title": "Siano",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Rolnik Bajtazar zakupił pole o powierzchni n arów, na którym zamierza posiać trawę. Skoszona i wysuszona trawa posłuży za paszę dla zwierząt hodowanych w gospodarstwie Bajtazara.</p>\n<p>Na polu zostanie posiana mieszanka n gatunków traw – każdy z gatunków zajmie w sumie 1 ar gruntu. O i-tym gatunku wiadomo, że przez jeden dzień źdźbło trawy tego gatunku rośnie o ai centymetrów, niezależnie od warunków pogodowych i żyzności gleby. Wiadomo także, że ze skoszenia jednego centymetra trawy na obszarze jednego ara uzyskuje się dokładnie 1 kilogram siana.</p>\n<p>Bajtazar dysponuje kosiarką, którą można tak ustawić, aby przycięła trawę do dowolnej wysokości b – przy takim ustawieniu każde źdźbło trawy wyższe niż b centymetrów zostanie przycięte do wysokości dokładnie b centymetrów.</p>\n<p>Bajtockie prawo wymaga, aby po każdym skoszeniu trawy udokumentować, ile siana uzyskano ze skoszonej trawy. Bajtazar stanął przed wyborem: musi albo kupić wagę, albo napisać program, który na podstawie dat koszeń i ustawień kosiarki, oszacuje wagę siana uzyskanego po każdym skoszeniu. Druga z tych opcji wydała mu się wygodniejsza i tańsza.</p>\n<p>Przyjmujemy, że trawa zostanie posiana w dniu 0 o północy i zawsze będzie koszona o północy. Zakładamy także, że czas potrzebny do skoszenia pola do dowolnej wysokości b jest zaniedbywalnie mały.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajdują się dwie liczby całkowite n i m (1 ≤ n, m ≤ 500 000), oznaczające odpowiednio powierzchnię pola Bajtazara w arach (i jednocześnie liczbę zasianych gatunków traw) oraz liczbę skoszeń trawy. W drugim wierszu znajduje się ciąg n liczb całkowitych a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub> (1 ≤ a<sub>i</sub> ≤ 10<sup>6</sup>) oznaczających szybkości wzrostu kolejnych gatunków trawy.</p>\n<p>W kolejnych m wierszach znajdują się opisy koszeń wykonanych przez Bajtazara: i-te koszenie jest opisane przez znajdujące się w i-tym z tych wierszy dwie liczby całkowite d<sub>i</sub> i b<sub>i</sub> (1 ≤ d<sub>i</sub> ≤ 10<sup>12</sup>, 0 ≤ b<sub>i</sub> ≤ 10<sup>12</sup>) oznaczające, że w dniu di Bajtazar przyciął trawę do długości bi centymetrów. Możesz założyć, że opisy koszeń są podane w kolejności chronologicznej, tzn. d<sub>1</sub> &lt; d<sub>2</sub> &lt; . . . &lt; d<sub>m</sub>.</p>\n<p>Ponadto możesz założyć, że Bajtazar nigdy nie dopuści do sytuacji, w której trawa w pewnym miejscu pola będzie miała wysokość przekraczającą 10<sup>12</sup> centymetrów.</p>",
+  "output": "<p>Na wyjście należy wypisać dokładnie m wierszy. W i-tym z tych wierszy powinna znaleźć się sumaryczna waga siana (w kilogramach) uzyskanego po i-tym skoszeniu trawy.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2 4 3\n1 1\n2 2\n3 0\n4 4\n",
+      "output": "6\n6\n18\n0\n"
+    }
+  ],
+  "hint": "<p>Wysokości źdźbeł trawy gatunków 1, 2, 3, 4 przed i po kolejnych skoszeniach trawy pokazuje poniższa tabelka.</p>\n<table class=\"table table-bordered\" style=\"width: 50%;\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">Dzień</th>\n<th style=\"text-align: center;\">Przed skoszeniem</th>\n<th style=\"text-align: center;\">Po skoszeniu</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">1, 2, 4, 3</td>\n<td style=\"text-align: center;\">1, 1, 1, 1</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">2, 3, 5, 4</td>\n<td style=\"text-align: center;\">2, 2, 2, 2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">3, 4, 6, 5</td>\n<td style=\"text-align: center;\">0, 0, 0, 0</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">1, 2, 4, 3</td>\n<td style=\"text-align: center;\">1, 2, 4, 3</td>\n</tr>\n</tbody>\n</table>",
+  "source": "Contest, Algorithmic Engagements, PA 2015",
+  "level": 20,
+  "tags": [
+    "binary_search",
+    "data_structures",
+    "lazyprop",
+    "segtree",
+    "stack"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 2.6666998863220215
+}

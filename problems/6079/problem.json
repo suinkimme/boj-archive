@@ -1,0 +1,26 @@
+{
+  "id": 6079,
+  "title": "Checkers",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The cows have taken up the game of checkers with a vengeance. Unfortunately, despite their infinite enjoyment of playing, they are terrible at the endgame. They want your help.</p>\n<p>Given an NxN (4 &lt;= N &lt;= 30) checkboard, determine the optimal set of moves to end the game on the next move. Checkers move only on the '+' squares and capture by jumping 'over' an opponent's piece. The piece is removed as soon as it is jumped. See the example below where N=8:</p>\n<pre>\n- + - + - + - +  The K's mark Bessie's kings; the o's represent the\n+ - + - + - + -  opponent's checkers. Bessie always moves next. The\n- + - K - + - +  Kings jump opponent's checkers successively in any\n+ - + - + - + -  diagonal direction (and removes pieces when jumped).\n- o - o - + - +\n+ - K - + - + -  For this board, the solution requires the lower left\n- o - + - + - +  King to jump successively across all three of the\n+ - K - + - K -  opponents' checkers, thus ending the game (moving K\n                 marked as &gt;K&lt;):</pre>\n<pre>\n   Original          After move 1       After move 2        After move 3\n- + - + - + - +     - + - + - + - +    - + - + - + - +     - + - + - + - +\n+ - + - + - + -     + - + - + - + -    + - + - + - + -     + - + - + - + -\n- + - K - + - +     - + - K - + - +    - + - K - + - +     - + - K - + - +\n+ - + - + - + -     + - + - + - + -    + -&gt;K&lt;- + - + -     + - + - + - + -\n- o - o - + - +     - o - o - + - +    - + - o - + - +     - + - + - + - +\n+ - K - + - + -    &gt;K&lt;- K - + - + -    + - K - + - + -     + - K -&gt;K&lt;- + -\n- o - + - + - +     - + - + - + - +    - + - + - + - +     - + - + - + - +\n+ -&gt;K&lt;- + - K -     + - + - + - K -    + - K - + - K -     + - K - + - K -</pre>\n<p>The moves traversed these squares:</p>\n<pre>\n  1 2 3 4 5 6 7 8           R C\n1 - + - + - + - +    start: 8 3\n2 + - + - + - + -    move:  6 1\n3 - + - K - + - +    move:  4 3\n4 + - * - + - + -    move:  6 5\n5 - o - o - + - +\n6 * - K - * - + - \n7 - o - + - + - + \n8 + - K - + - K - </pre>\n<p>Write a program to determine the (unique, as it turns out) game-ending sequence for an NxN input board if it exists. There is at least a king and at least one opponent piece on the board.</p>",
+  "input": "<ul>\n<li>Line 1: A single integer: N</li>\n<li>Lines 2..N+1: Line i+1 contains N characters (each one of: '-', '+', 'K', or 'o') that represent row i of a proper checkboard.</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Lines 1..?: If this sequence of moves is impossible, output \"impossible\" on a line by itself. If such a sequence exist, each line contains two space-separated integers that represent successive locations of a king whose moves will win the game.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "8\n-+-+-+-+\n+-+-+-+-\n-+-K-+-+\n+-+-+-+-\n-o-o-+-+\n+-K-+-+-\n-o-+-+-+\n+-K-+-K-\n",
+      "output": "8 3\n6 1\n4 3\n6 5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2008-2009 Season, USACO December 2008 Contest, Bronze",
+  "level": 13,
+  "tags": [
+    "implementation",
+    "bruteforcing",
+    "backtracking"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 1.392899990081787
+}

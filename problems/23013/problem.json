@@ -1,0 +1,26 @@
+{
+  "id": 23013,
+  "title": "Final Exam",
+  "time_limit": "서브태스크 참고 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>It's time for the final exam in algorithms and data structures!</p>\n<p>Edsger prepared N sets of problems. Each set consists of problems in an increasing difficulty sequence; the i-th set can be described by two integers A<sub>i</sub> and B<sub>i</sub> (A<sub>i</sub> ≤ B<sub>i</sub>), which denotes that this set contains problems with difficulties A<sub>i</sub>, A<sub>i+1</sub>, …, B<sub>i</sub>. Among all problems from all sets, it is guaranteed that no two problems have the same difficulty.</p>\n<p>This semester Edsger has to test M students. He wants to test each student with exactly one problem from one of his sets. No two students can get the exact same problem, so when Edsger tests a student with some problem, he cannot use this problem anymore. Through countless lectures, exercises, and projects, Edsger has gauged student number j to have skill level S<sub>j</sub>, and wants to give that student a problem with difficulty S<sub>j</sub>. Unfortunately, this is not always possible, as Edsger may have not prepared a problem of this difficulty, or he may have already asked this problem to some other student earlier. Therefore, Edsger will choose for the j-th student a problem of difficulty P<sub>j</sub>, in a way that |P<sub>j</sub>−S<sub>j</sub>| is minimal and a question of difficulty P<sub>j</sub> was not already given to any of the students before the j-th student. In case of ties, Edsger will always choose the easier problem. Note that the problem chosen for the j-th student may affect problems chosen for all the students tested later, so you have to process students in the same order as they appear in the input.</p>\n<p>As keeping track of all the problems can be fairly complicated, can you help Edsger and determine which problems he should give to all of his students?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T test cases follow.</p>\n<p>Each test case begins with a line which contains two integers N and M: the number of problem sets, and the number of students, respectively. N lines follow, describing the problem sets. Each of these N lines consists of two integers A<sub>i</sub> and B<sub>i</sub> denoting the easiest and the hardest problem in the i-th problem set. Finally, the test case ends with a single line with M integers S<sub>1</sub>, S<sub>2</sub>, …, S<sub>M</sub> denoting students' skill levels in the order they will be tested.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: P<sub>1</sub>P<sub>2</sub>…P<sub>M</sub></code>, where x is the test case number (starting from 1) and P<sub>j</sub> is a difficulty of a problem that will be given to the j-th student.</p>",
+  "samples": [
+    {
+      "input": "2\n5 4\n1 2\n6 7\n9 12\n24 24\n41 50\n14 24 24 4\n1 1\n42 42\n24\n",
+      "output": "Case #1: 12 24 11 2\nCase #2: 42\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, we have N = 5 problem sets and M = 4 students.</p>\n<ul>\n<li>For the first student, we are looking for a problem with the difficulty closest to their skill level S<sub>1</sub> = 14. The problem with the minimum difference is problem with difficulty 12, which we can find in the third problem set, so P<sub>1</sub> = 12.</li>\n<li>For the second student, we are looking for a problem with the difficulty closest to their skill level S<sub>2</sub> = 24. Fortunately, we can find a problem of this exact difficulty in the fourth problem set, so P<sub>2</sub> = 24.</li>\n<li>For the third student, we are once again looking for a problem with the difficulty closest to the skill level S<sub>3</sub> = 24. As we already used the problem with difficulty 24, we cannot use this problem. The problem closest in difficulty is 11, as 12 was already used as well. Therefore P<sub>3</sub> = 11.</li>\n<li>Finally, for the fourth student, we are looking for the problem closest to his skill level S<sub>4</sub> = 4. We have two problems with the same difference: 2 and 6. We choose the easier problem, so P<sub>4</sub> = 2.</li>\n</ul>\n<p>In Sample Case #2, we have N = 1 problem set and M=1 student. In the only problem set, there is only one problem, so we have to use this problem to examine the first and only student, so P<sub>1</sub> = 42.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2021, Round D",
+  "level": 16,
+  "tags": [
+    "binary_search",
+    "data_structures",
+    "implementation"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 2.842099905014038
+}

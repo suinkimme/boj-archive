@@ -1,0 +1,22 @@
+{
+  "id": 6533,
+  "title": "Help the problem setter",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Preparing a problem for a programming contest takes a lot of time. Not only do you have to write the problem description and write a solution, but you also have to create difficult input files. In this problem, you get the chance to help the problem setter to create some input for a certain problem.</p>\n<p>For this purpose, let us select the problem which was not solved during last year's local contest. The problem was about finding the optimal binary search tree, given the probabilities that certain nodes are accessed. Your job will be: given the desired optimal binary search tree, find some access probabilities for which this binary search tree is the unique optimal binary search tree. Don't worry if you have not read last year's problem, all required definitions are provided in the following.</p>\n<p>Let us define a <strong>binary search tree</strong> inductively as follows:</p>\n<ul>\n<li>The empty tree which has no node at all is a binary search tree</li>\n<li>Each non-empty binary search tree has a root, which is a node labelled with an integer, and two binary search trees as left and right subtree of the root</li>\n<li>A left subtree contains no node with a label ≥ than the label of the root</li>\n<li>A right subtree contains no node with a label ≤ than the label of the root</li>\n</ul>\n<p>Given such a binary search tree, the following <strong>search procedure</strong> can be used to locate a node in the tree:</p>\n<p>Start with the root node. Compare the label of the current node with the desired label. If it is the same, you have found the right node. Otherwise, if the desired label is smaller, search in the left subtree, otherwise search in the right subtree.</p>\n<p>The <strong>access cost</strong> to locate a node is the number of nodes you have to visit until you find the right node. An <strong>optimal binary search tree</strong> is a binary search tree with the minimum expected access cost.</p>",
+  "input": "<p>The input file contains several test cases. Each test case starts with an integer <em>n</em> (<em>1 ≤ n ≤ 50</em>), the number of nodes in the optimal binary search tree. For simplicity, the labels of the nodes will be integers from <em>1</em> to <em>n</em>. The following <em>n</em> lines describe the structure of the tree. The <em>i</em>-th line contains the labels of the roots of the left and right subtree of the node with label <em>i</em> (or -1 for an empty subtree). You can assume that the input always defines a valid binary search tree.</p>\n<p>The last test case is followed by a zero.</p>",
+  "output": "<p>For each test case, write one line containing the access frequency for each node in increasing order of the labels of the nodes. To avoid problems with floating point precision, the frequencies should be written as integers, meaning the access probability for a node will be the frequency divided by the sum of all frequencies. Make sure that you do not write any integer bigger than 2<sup>63</sup> - 1 (the maximum value fitting in the C/C++ data type <em>long long</em> or the Java data type <em>long</em>). Otherwise, you may produce any solution ensuring that there is exactly one optimal binary search tree: the binary search tree given in the input.</p>",
+  "samples": [
+    {
+      "input": "3\n-1 -1\n1 3\n-1 -1\n10\n-1 2\n-1 3\n-1 4\n-1 5\n-1 6\n-1 7\n-1 8\n-1 9\n-1 10\n-1 -1\n0\n",
+      "output": "1 1 1\n512 256 128 64 32 16 8 4 2 1\n"
+    }
+  ],
+  "hint": "<p><em>Note that the first test case in the sample input describes a tree looking like </em></p>\n<pre>\n  2  \n / \\ \n1   3\n</pre>",
+  "source": "Contest, University of Ulm Local Contest, University of Ulm Local Contest 2005",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

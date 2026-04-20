@@ -1,0 +1,22 @@
+{
+  "id": 9062,
+  "title": "랜덤게임",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>새 학기를 맞이하여 TCLAB 에선 경기도 물 맑은 양평으로 엠티를 갔다. 서먹한 분위기를 잠재우기 위해 둘러앉아 게임을 하게 되었다. 각자 재미있어하는 게임이 다를 것이므로 다양한 게임들을 섞어서 하면 평균적으로 좋아하는 게임에 도달할 것이라는 분석 하에 다양한 게임들을 섞어서 하는 랜덤게임을 제안하게 되었다. 랜덤게임이란 다양한 게임이 일정한 확률로 시행되는 게임이다.</p>\n<p>정군과 하군이 엠티를 갔다고 하고 준비된 게임으로는 2 인용 보드게임인 발룬컵, 루미큐브, 로스트시티, 아발론이 있다고 하자. 이때, 정군과 하군은 각각의 게임에 대한 만족도를 다음과 같이 갖고 있다. </p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:300px\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">게임 참가자</td>\n<td style=\"text-align: center;\">발룬컵</td>\n<td style=\"text-align: center;\">루미큐브</td>\n<td style=\"text-align: center;\">로스트시티</td>\n<td style=\"text-align: center;\">아발론</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">정군</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">10</td>\n<td style=\"text-align: center;\">5</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">하군</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">10</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">5</td>\n</tr>\n</tbody>\n</table>\n<p>위와 같은 상황에서 아래와 같은 확률분포로 게임을 시행한다면, </p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:150px\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">게임</td>\n<td style=\"text-align: center;\">시행될<br/>\n\t\t\t확률분포</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">발룬컵</td>\n<td style=\"text-align: center;\">0</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">루미큐브</td>\n<td style=\"text-align: center;\">1/2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">로스트시티</td>\n<td style=\"text-align: center;\">1/2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">아발론</td>\n<td style=\"text-align: center;\">0</td>\n</tr>\n</tbody>\n</table>\n<p>가장 낮은 평균만족도가 최대가 되도록 함으로써 게임 참가자들 각자가 어느 정도 이상의 만족도를 갖는 게임을 구성할 수 있다. 참가자들의 만족도가 주어졌을 때 가장 낮은 평균만족도를 최대화하는 게임들의 확률분포를 찾아서 참가자의 평균만족도 중 가장 낮은 것의 최댓값을 구하시오.</p>\n<p>게임의 정의를 위해 만족도 행렬 V 를 다음과 같이 정의한다. 참가자의 집합 D = {1,2}, 게임의 집합 G = {1,2, ..., n}이라 정의했을 때, V<sub>ij </sub>는 참가자 j 의 게임 i 에 대한 만족도를 나타낸다. p<sub>i</sub> 는 게임 i 가 시행될 확률이다. 이때 참가자 j 의 평균만족도 \\( V_j = \\sum_{i=1}^{n} V_{ij} \\cdot p_i \\) 이다. 이 문제는 \\( min_{1 \\le j \\le 2} {V_j} \\) 의 최댓값을 찾는 것이다.  \\( min_{1 \\le j \\le 2} {V_j} \\) 을 최대화하는 확률분포를 찾지 않고서도  \\( min_{1 \\le j \\le 2} {V_j} \\) 의 최댓값을 구할 수 있다면 확률분포를 찾지 않아도 상관없다. 확률의 정의상 \\( \\sum_{i=1}^{n} p_i = 1 \\)이다.</p>\n<p>편의상 본 문제는 게임 참가자의 수가 두 명인 경우만 다룬다. </p>",
+  "input": "<p>입력은 표준입력(standard input)을 통해 받아들인다. 입력의 첫 줄에는 테스트 케이스의 개수 T (1 ≤ T ≤ 20)가 주어진다. 각 테스트 케이스의 첫 줄에는 게임의 개수 N (1 ≤ N ≤ 1,000,000)이 주어진다. 각 테스트 케이스의 둘째 줄에는 게임참가자 1 의 각 게임에 대한 만족도가 게임 1 부터 N 까지 순서대로 0 이상 10000 이하의 정수로 공백을 사이에 두고 주어진다. 각 테스트 케이스의 셋째 줄에는 게임참가자 2 의 각 게임에 대한 만족도가 게임 1 부터 N 까지 순서대로 0 이상 10000 이하의 정수로 공백을 사이에 두고 주어진다. </p>",
+  "output": "<p> 출력은 표준출력(standard output)을 통하여 출력한다. 각 테스트 케이스에 대해서 한 줄에 하나씩 최소평균만족도( \\( min_{1 \\le j \\le 2} {V_j} \\) )의 최댓값을 소수점 아래 셋째 자리에서 반올림해서 소수점 아래 둘째 자리까지 출력하시오. </p>",
+  "samples": [
+    {
+      "input": "2\n2\n2 3\n3 0\n3\n1 2 3\n4 5 6\n",
+      "output": "2.25\n3.00\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Nationwide Internet Competition, Seoul Nationalwide Internet Competition 2007",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

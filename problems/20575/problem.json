@@ -1,0 +1,29 @@
+{
+  "id": 20575,
+  "title": "Buffon's Needle",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>For millenia, people have been interested in approximating $\\pi$. One famous method is known as Buffon's Needle: drop a bunch of needles of length $1$ on a coordiate plane with a vertical line drawn at each integer $x$ coordinate (so there are lines $x = 0$, $x = 1$, $x = -1$, and so on). Each needle either intersects a vertical line, or lies entirely between two vertical lines. It turns out that, if the needles are dropped randomly, the fraction of needles that intersect a vertical line can be used to approximate $\\pi$! (The specific assumptions about exactly how the needles are dropped in the experiment are not important for this problem.)</p>\n<p>In particular, let $x$ be the fraction of needles that intersect a vertical line. Then</p>\n<p>$$\\pi \\approx \\frac{2}{x}.$$</p>\n<p>You are given the positions of $N$ needles (not necessarily random), and it is guaranteed that at least one of them intersects a vertical line. What is the corresponding approximation of $\\pi$, using the above formula?</p>",
+  "input": "<p>The first line of input contains a single integer $N$ ($1 \\leq N \\leq 10^4$), the number of needles. $N$ lines follow.</p>\n<p>The $i$-th such line describes the $i$-th needle. It contains four real numbers: $x_{i1}, y_{i1}, x_{i2}, y_{i2}$. This means that the $i$-th needle has one endpoint at $(x_{i1}, y_{i1})$ in the plane and the other endpoint at $(x_{i2}, y_{i2})$.</p>\n<p>All real numbers in the input are given with exactly $6$ digits after the decimal point and have absolute value at most $10$. Furthermore, it is guaranteed that no $x$ coordinates in the input are within $10^{-6}$ of an integer.</p>\n<p>Since all the needles are of length $1$, for each $i$ it is guaranteed that</p>\n<p>$$|(x_{i1} - x_{i2})^2 + (y_{i1} - y_{i2})^2 - 1| &lt; 10^{-3}.$$</p>",
+  "output": "<p>Output a single real number, the approximation of $\\pi$ described above. Your answer is considered correct if its absolute or relative error is at most $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "2\n0.500000 0.500000 1.500000 0.500000\n0.400000 -0.200000 0.600000 0.779796\n",
+      "output": "4.000000000000\n"
+    },
+    {
+      "input": "2\n0.500000 0.500000 1.500000 0.500000\n2.250000 0.000000 1.542893 0.707107\n",
+      "output": "2.000000000000\n"
+    }
+  ],
+  "hint": "<p>In the first sample, the first needle intersects a vertical line ($x = 1$), but the second doesn't. So the fraction of needles that intersect vertical lines is $1/2$ and the corresponding approximation of $\\pi$ is $4$.</p>\n<p>In the second sample, both the needles intersect vertical lines ($x = 1$ and $x = 0$), so the fraction of needles that intersect vertical lines is $1$ and the corresponding approximation of $\\pi$ is $2$.</p>",
+  "source": ", University, UT Invitational Programming Contest, UT Invitational Programming Contest 2019",
+  "level": 5,
+  "tags": [
+    "math",
+    "arithmetic"
+  ],
+  "accepted_user_count": 98,
+  "submission_count": null,
+  "average_tries": 2.0510001182556152
+}

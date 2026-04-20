@@ -1,0 +1,25 @@
+{
+  "id": 27618,
+  "title": "Simple Solitaire",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There are many different varieties of solitaire (card games for one), but most require an area where you can lay out cards. Here's one you can do by simply holding the deck in your hand.</p>\n<p>The game uses a standard $52$ card deck where each card has one of $4$ suits -- spades (S), hearts (H), diamonds (D) or clubs (C) -- and one of $13$ ranks -- Ace (A), $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$, $10$ (T), Jack (J), Queen (Q), King (K). To play the game you hold the deck face down in your hand and starting turning over cards from the bottom of the deck to the top, face up. Each time you turn over a card you check if it matches the rank or suit of the card three positions before it in the previously turned-over cards. If they match in rank, you remove those two cards and the two cards between them; if they match in suit you remove just those two cards. These actions might cause a cascade effect as now one or more of the remaining turned-over cards might match the ranks or suits of the cards three positions before them. (More detailed rules for processing cascades are described below.) Once all actions in a cascade have been performed (some of which may have forced the processing of even more cascades), you turn over the next card. If all the cards are removed in a single pass through the deck, you win the game!</p>\n<p>The start of a sample game is shown below: suppose the first seven cards turned over are the TH, $4$C, KS, AD, $2$S and $8$H. The table below show the next few actions taken in the game -- suits and ranks are underlined when they match. Note that turning over the $8$S results in a cascade of two actions.</p>\n<table class=\"table table-bordered table-center-50\">\n<tbody>\n<tr>\n<th>Card Dealt</th>\n<th>Hand</th>\n<th>Action</th>\n</tr>\n<tr>\n<td>---</td>\n<td>TH $4$C KS AD $2$S $8$H</td>\n<td>none</td>\n</tr>\n<tr>\n<td>$5$D</td>\n<td>TH $4$C KS A<u>D</u> $2$S $8$H $5$<u>D</u></td>\n<td>remove AD, $5$D</td>\n</tr>\n<tr>\n<td>$6$D</td>\n<td>TH $4$C KS $2$S $8$H $6$D</td>\n<td>none</td>\n</tr>\n<tr>\n<td>$8$S</td>\n<td>TH $4$C KS $2$<u>S</u> $8$H $6$D $8$<u>S</u></td>\n<td>remove $2$S, $8$S</td>\n</tr>\n<tr>\n<td>---</td>\n<td>T<u>H</u> $4$C KS $8$<u>H</u> $6$D</td>\n<td>remove TH, $8$H</td>\n</tr>\n<tr>\n<td>$9$H</td>\n<td>$4$C KS $6$D $9$H</td>\n<td>none</td>\n</tr>\n<tr>\n<td>KC</td>\n<td>$4$C <u>K</u>S $6$D $9$H <u>K</u>C</td>\n<td>remove KS, $6$D, $9$H, KC</td>\n</tr>\n<tr>\n<td>$2$C</td>\n<td>$4$C $2$C</td>\n<td>none</td>\n</tr>\n</tbody>\n</table>\n<p>If there is ever a choice of actions (which can happen during a cascade), you should pick an action which removes four adjacent cards over an action that removes two non-adjacent cards. If several possible actions might result in removing the same number of cards, use the one that removes the most recently turned-over card. For example, if the $6$D had been $6$C in the example above, then in the fifth row of the table the $4$C and $6$C would have been removed instead of the TH and $8$H.</p>\n<p>You have one solitary task: given the order in which cards are turned over, determine the cards remaining at the end of the game.</p>",
+  "input": "<p>Input consists of four lines, each containing $13$ cards. Cards appear in the order in which they are turned over in the game. Each card is represented by two consecutive characters, the first indicating the rank of the card (from <code>A</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>T</code>, <code>J</code>, <code>Q</code>, <code>K</code>) and the second indicating the suit of the card (from <code>S</code>, <code>H</code>, <code>D</code>, <code>C</code>). A single space will separate adjacent cards.</p>",
+  "output": "<p>Output the number of cards remaining at the end of the game followed by the remaining cards, using the format described in the Input section.</p>",
+  "samples": [
+    {
+      "input": "TC 2C 6C TS KC QS QC 3C KD 8D JH JS KH\n5D JD 2S 8S AS 9S 3D 5H 9C AH 4D 4C KS\nJC 4S 7S 6D 2H 7C 8C 7D AD 7H TH 2D QH\n8H 9H 5C TD 3S 6H 3H QD 5S 9D 4H 6S AC\n",
+      "output": "2 3S 9D\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2022-2023 East Central Regional Contest",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 1.708299994468689
+}

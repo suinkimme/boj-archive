@@ -1,0 +1,38 @@
+{
+  "id": 33008,
+  "title": "Mixing Solutions",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Let’s prepare for an experiment with the chemical <em>Yokohama Yellow</em>, or YY in short. You have several containers of aqueous solution of YY. While YY is evenly dissolved in each solution, the concentration may differ among containers. You will take arbitrary amounts of solution from some of the containers and mix them to prepare a new solution with the predetermined total amount.</p>\n<p>Ideally, the mixed solution should contain the <em>target amount</em> of YY, but there is a problem. While the exact amount of solution in each container is known, the amount of YY in each solution is guaranteed only to fall within a certain range. Due to this uncertainty, it is difficult to match the amount of YY in the mixed solution exactly to the target amount. Still, you can ensure that the error, the difference from the target amount, will never exceed a certain limit.</p>\n<p>To be more precise, let the target and actual amounts of YY in the mixed solution be $y_t$ mg (milligrams) and $y_a$ mg, respectively. Given the amounts of solution taken from the containers, $y_a$ is guaranteed to fall within a certain range. The <em>maximum error</em> is defined as the maximum of $|y_a - y_t|$ when $y_a$ varies within this range.</p>\n<p>Find the minimum achievable value of the maximum error, given that you can take any portion of the solution in each container as long as their total is equal to the predetermined amount.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<blockquote>\n<p>$n$ $s$ $c$</p>\n<p>$a_1$ $l_1$ $r_1$</p>\n<p>$\\vdots$</p>\n<p>$a_n$ $l_n$ $r_n$</p>\n</blockquote>\n<p>The first line contains three integers, $n$, $s$, and $c$, satisfying $1 ≤ n ≤ 1000$, $1 ≤ s ≤ 10^5$, and $0 ≤ c ≤ M$, where $M = 10^4$ here and in what follows. Here, $n$ denotes the number of containers of YY solution. The predetermined total amount of the mixed solution is $s$ mg, and the target amount of YY is $\\frac{c}{M}s$ mg. The $i$-th of the following $n$ lines contains three integers, $a_i$, $l_i$, and $r_i$, satisfying $1 ≤ a_i ≤ 10^5$ and $0 ≤ l_i ≤ r_i ≤ M$. These integers indicate that the $i$-th container has ai mg of solution and that the amount of YY in it is guaranteed to be between $\\frac{l_i}{M}a_i$ mg and $\\frac{r_i}{M} a_i$ mg, inclusive. They satisfy $\\sum^{n}_{i=1} {a_i} ≥ s$.</p>",
+  "output": "<p>The minimum achievable value of the maximum error can be proven to be a rational number. Express the value as an irreducible fraction $p/q$ with $q &gt; 0$, and output $p$ and $q$ separated by a space on a single line.</p>",
+  "samples": [
+    {
+      "input": "3 10 5000\n10 2000 3000\n10 4000 6000\n10 7000 8000\n",
+      "output": "1 2\n"
+    },
+    {
+      "input": "2 10 5000\n7 4500 5500\n12 3500 6000\n",
+      "output": "4 5\n"
+    },
+    {
+      "input": "3 1 4159\n1 1 1\n1 100 100\n1 10000 10000\n",
+      "output": "0 1\n"
+    },
+    {
+      "input": "6 12345 6789\n2718 2818 2845\n9045 2353 6028\n7471 3526 6249\n7757 2470 9369\n9959 5749 6696\n7627 7240 7663\n",
+      "output": "23901191037 67820000\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, 2024 ICPC Asia Yokohama Regional Contest",
+  "level": 25,
+  "tags": [
+    "geometry",
+    "linear_programming",
+    "duality"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2.75
+}

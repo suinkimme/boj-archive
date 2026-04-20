@@ -1,0 +1,33 @@
+{
+  "id": 18167,
+  "title": "Functional Analysis",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>오늘도 프로그램을 분석하는 키파는, PS-Lang에 메모이제이션 기능을 지원하기 위해 프로그램을 분석한 뒤 다음과 같은 구조를 만들었습니다. (newline은 강제 개행 문자(line feed)을 의미합니다.)</p>\n<blockquote>α-list = ε | α α-list<br/>\nα-space = α space-list<br/>\nprogram = func-space-list<br/>\n<br/>\ncommand = func | define | refer | block<br/>\nfunc = \"<code>FUNCTION</code>\" space-list name space-list block<br/>\ndefine = \"<code>DEFINE</code>\" space-list name<br/>\nrefer = \"<code>REFER</code>\" space-list name<br/>\nblock = \"<code>{</code>\" space-list command-space-list space-list \"<code>}</code>\"<br/>\n<br/>\nname = alphabet alphabet-list<br/>\nalphabet = \"<code>a</code>\" | \"<code>b</code>\" | \"<code>c</code>\" | ... | \"<code>z</code>\"<br/>\nspace = \"<code> </code>\" | newline</blockquote>\n<p>모든 define 및 func의 변수 <em>v</em>에 대해 <em>v</em>의 scope S(<em>v</em>)는 프로그램의 parse tree 상에서 <em>v</em>의 조상 중 가장 아래에 있는 block을 의미합니다. function은 scope 전에 오는 이름이 define된 것과 같은 효과를 가집니다(따라서 재귀 호출을 할 수 있습니다). C/C++에서와 마찬가지로, 다음과 같은 두 가지 프로그램은 허용하지 않습니다:</p>\n<ul>\n<li>재정의 오류. define 혹은 func의 변수 <em>v</em>에 대해 <em>v</em>의 이름을 N(<em>v</em>)라 하면, define 혹은 func의 변수 <em>v</em>, <em>w</em>에 대해 N(<em>v</em>) = N(<em>w</em>)이면서 S(<em>v</em>) = S(<em>w</em>)인 경우입니다.</li>\n<li>자유로운 변수 오류. refer의 변수 <em>v</em>에 대해 parse tree를 전위 순회할 때 define(N(<em>v</em>))가 현재 노드보다 앞에 한 번도 나타나지 않는 경우입니다.</li>\n</ul>\n<p>어떤 함수에 메모이제이션을 적용할지 알기 위해서 키파는 그냥 다음과 같이 생각하기로 했습니다: 함수가 함수 밖에 있는 (자기 자신이 아닌) 변수를 참조하지 않으면 순수 함수로 정의합니다. 순수 함수이면 함수의 인자에만 결괏값이 영향을 받기 때문에, 호출 시 메모이제이션을 적용할 수 있습니다.</p>\n<p>키파를 위해 프로그램이 주어지면 함수들이 순수 함수인지를 판단하는 프로그램을 만들어 줍시다.</p>",
+  "input": "<p>여러 줄에 걸쳐서 program이 주어집니다. 주어진 프로그램의 parse tree에서 command 노드는 최대 10<sup>4</sup>개 등장합니다. 주어진 프로그램의 오류(재정의 혹은 자유로운 변수)는 최대 하나입니다.</p>\n<p>주어진 프로그램에서 space는 연속으로 10번보다 많이 나타나지 않습니다. 또 주어진 프로그램을 각 줄 단위로 보았을 때, 맨 마지막 줄을 제외하고 공백(\"<code> </code>\")만 포함된 줄이 없음이 보장됩니다. 맨 마지막 줄이 공백으로만 이루어져 있다면, 그 줄은 빈 줄입니다.</p>\n<p>연속된 소문자는 8자보다 많이 주어지지 않음이 보장됩니다.</p>\n<p>출력하는 줄 수는 10<sup>3</sup>을 넘지 않도록 주어집니다.</p>",
+  "output": "<p>프로그램을 분석한 결과를 다음과 같이 출력합니다.</p>\n<ul>\n<li>만일 프로그램이 재정의 오류를 일으킨다면 <code>Redefined</code>를 출력합니다.</li>\n<li>만일 프로그램이 자유로운 변수 오류를 일으킨다면 <code>Unbound</code>를 출력합니다.</li>\n<li>만일 프로그램이 아무 오류도 일으키지 않는다면, 어떤 func도 조상으로 가지지 않는 모든 func <em>v</em>가 program <strong>text 상에 등장한 순서대로</strong>, <em>v</em>가 순수 함수라면 N(<em>v</em>)와 \"<code>pure</code>\"를, 순수 함수가 아니라면 N(<em>v</em>)와 \"<code>not pure</code>\"를 공백을 사이에 두고 출력합니다. (따옴표 제외)</li>\n</ul>\n<p>프로그램이 오류를 일으키지 않을 경우 <strong>함수 안의 함수에 대해서는 순수 함수의 여부를 출력하지 않아야 한다</strong>는 것에 주의하세요.</p>",
+  "samples": [
+    {
+      "input": "FUNCTION kipa { FUNCTION minty { REFER minty } { REFER kipa } }\nFUNCTION silver { FUNCTION kipa { REFER kipa } REFER kipa }\nFUNCTION minty { DEFINE silver REFER kipa REFER silver }\n",
+      "output": "kipa pure\nsilver pure\nminty not pure\n"
+    },
+    {
+      "input": "FUNCTION kipa { FUNCTION minty { REFER minty } { REFER kipa } }\nFUNCTION silver { FUNCTION kipa { REFER kipa } DEFINE kipa }\nFUNCTION minty { DEFINE silver REFER kipa REFER silver }\n",
+      "output": "Redefined\n"
+    },
+    {
+      "input": "FUNCTION kipa { FUNCTION minty { REFER minty } { REFER kipa } }\nFUNCTION silver { FUNCTION kipa { REFER mountguy } REFER silver }\nFUNCTION minty { DEFINE silver REFER kipa REFER silver }\n",
+      "output": "Unbound\n"
+    }
+  ],
+  "hint": "<p>함수가 순수 함수인지를 튜링 완전한 언어에 완벽(sound and complete)하게 구현하는 문제는 계산 불가 문제입니다.</p>",
+  "source": "Contest, BOJ User Contest, 키파컵, 제2회 키파컵, kipa00",
+  "level": 23,
+  "tags": [
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 5.199999809265137
+}

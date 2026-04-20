@@ -1,0 +1,33 @@
+{
+  "id": 18946,
+  "title": "Ciphertext",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Stierlitz wants to deliver a very important message $s$ to the headquarters. He uses a prefix code defined in the National Standard. Unfortunately, the enemy knows the code, and the communication channel is tapped. In order to avoid suspicion, Stierlitz wants to split the ciphertext into several parts in such a way that none of the parts is a valid encoding of some string using the code. In order to maximize security, Stierlitz wants to maximize the number of parts that he will split the ciphertext into. Find this maximum number of parts, or determine that it is impossible to split the ciphertext satisfying the requirements.</p>",
+  "input": "<p>The first line of input contains one integer $k$ ($1 \\le k \\le 52$): the size of the alphabet. The possible characters are enumerated from $1$ to $52$ in <code>A-Za-z</code> order, and the text of the message will only contain characters with numbers from $1$ to $k$.</p>\n<p>The second line of input contains a non-empty string $s$ of size up to $10^{6}$ which consists of characters with indices from $1$ to $k$ (see enumeration rules described above).</p>\n<p>The next $k$ lines contain binary codes of alphabet characters according to the enumeration order. Each character is encoded by a non-empty sequence of $0$s and $1$s of length at most $k$. It is guaranteed that no character has a code that is equal to the prefix of the code for a different character.</p>",
+  "output": "<p>Print a single integer: the maximum number of parts, or <code>-1</code> in case it is impossible to split the ciphertext into parts satisfying the requirements.</p>",
+  "samples": [
+    {
+      "input": "3\nCACB\n011\n1\n001\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3\nACBABCAACABCAACC\n0\n10\n110\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>In the first example, the encoded text looks like <code>0010110011</code>. The only way to split it into parts which are not valid encodings of any strings is <code>0 010110011</code>. Therefore, the answer is $2$.</p>\n<p>In the second example, it is possible to prove by induction that any string ending with $0$ and not having three $1$s in a row is a valid encoding of some string. Every suffix of the encoded text matches this criterion, therefore the answer is <code>-1</code>.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2018, Day 1: t.me / umnik_team Contest",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "ad_hoc",
+    "trees",
+    "trie",
+    "aho_corasick"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.90910005569458
+}

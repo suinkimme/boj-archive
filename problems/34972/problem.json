@@ -1,0 +1,30 @@
+{
+  "id": 34972,
+  "title": "A-머신",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>로봇 천재 구름이는 연구의 일환으로 A-머신을 제작했다! A-머신은 긴 테이프에 적힌 기호들을 일정한 규칙에 따라 바꾸며 동작하는 기계로, 다음 네 부분으로 이루어져 있다.</p>\n<ol>\n<li>\n<p><strong>테이프</strong></p>\n<p>$L$개의 칸이 일렬로 연결된 형태로, 각 칸에는 <span style=\"color:#e74c3c;\"><code>0</code></span> 또는 <span style=\"color:#e74c3c;\"><code>1</code></span>이 쓰여있다. 입력이 주어질 때 테이프는 공백 없이 연속된 문자열로 주어진다.</p>\n</li>\n<li>\n<p><strong>헤더</strong></p>\n<p>테이프 위의 칸 하나를 가리키고 있다. 초기 상태에는 테이프의 맨 앞 칸을 가리킨다.</p>\n</li>\n<li>\n<p><strong>현재 상태</strong></p>\n<p>머신의 상태를 나타낸다. 상태는 <span style=\"color:#e74c3c;\"><code>A</code></span>부터 <span style=\"color:#e74c3c;\"><code>P</code></span>까지 16개의 알파벳 대문자 중 하나이다.</p>\n</li>\n<li>\n<p><strong>행동표</strong></p>\n<p>$N$개의 규칙으로 이루어져 있다. 각 규칙은 (현재 상태, 읽은 문자, 덮어쓸 문자, 다음 상태, 이동할 방향) 5가지 변수로 이루어져 있다. <strong>(현재 상태, 읽은 문자)가 같은 서로 다른 규칙이 주어지지 않는다.</strong></p>\n</li>\n</ol>\n<p>A-머신은 동작 방식은 다음과 같다.</p>\n<ol>\n<li>헤더가 가리키고 있는 칸의 문자를 읽는다.</li>\n<li>만약 (현재 상태, 읽은 문자)가 행동표에 정의되어 있다면, 해당 규칙에 따라 다음 작업을 순서대로 수행한다. 그렇지 않다면 A-머신을 정지한다.\n<ol>\n<li>헤더가 가리키고 있는 칸의 문자를 규칙의 덮어쓸 문자로 덮어쓴다.</li>\n<li>머신의 상태를 규칙의 다음 상태로 바꾼다.</li>\n<li>헤더를 규칙의 이동할 방향으로 움직인다. 이동할 방향이 <span style=\"color:#e74c3c;\"><code>1</code></span>이라면 오른쪽으로, <span style=\"color:#e74c3c;\"><code>-1</code></span>이라면 왼쪽으로 한 칸 움직이면 된다.</li>\n</ol>\n</li>\n<li>만약 헤더가 테이프의 왼쪽 끝 또는 오른쪽 끝을 벗어났다면 머신을 정지한다. 그렇지 않다면 1.으로 돌아간다.</li>\n</ol>\n<p>구름이는 A-머신의 초기 상태, 테이프에 적힌 문자들의 초기 배열, 머신의 행동표가 주어졌을 때 A-머신이 정지하는지, 정지하지 않고 무한히 동작하는지를 판단하고자 한다. 구름이를 도와 A-머신의 정지 여부를 판단해 주자.</p>",
+  "input": "<p>첫 번째 줄에 A-머신의 초기 상태가 주어진다.</p>\n<p>두 번째 줄에 행동표의 규칙 개수 $N$과 테이프 길이 $L$이 공백으로 구분되어 주어진다. ($1 \\leq N \\leq 32$; $1 \\leq L \\leq 15$)</p>\n<p>세 번째 줄부터 $N$개의 줄에 걸쳐 A-머신의 현재 상태, 읽은 문자, 덮어쓸 문자, 다음 상태, 이동할 방향이 공백으로 구분되어 주어진다.</p>\n<p>$N+3$ 번째 줄에 길이 $L$의 초기 테이프 문자열이 주어진다.</p>",
+  "output": "<p>첫 번째 줄에 A-머신이 정지하면 <code><span style=\"color:#e74c3c;\">STOP</span></code>을, 정지하지 않으면 <span style=\"color:#e74c3c;\"><code>CONTINUE</code></span>를 출력하라.</p>",
+  "samples": [
+    {
+      "input": "A\n5 4\nA 1 0 A 1\nA 0 1 B 1\nB 0 1 C -1\nC 0 1 C 1\nC 1 0 B 1\n1001\n",
+      "output": "STOP\n"
+    },
+    {
+      "input": "A\n2 2\nA 1 1 B 1\nB 1 1 A -1\n11\n",
+      "output": "CONTINUE\n"
+    }
+  ],
+  "hint": null,
+  "source": "School, GSHS x SASA, 제1회 GSHS x SASA 프로그래밍 경시대회, yc252525, yjkim997, dinojaemin, dkim110807, jms020820, lighton, sorohue, utilforever",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "simulation",
+    "bitmask"
+  ],
+  "accepted_user_count": 58,
+  "submission_count": null,
+  "average_tries": 1.8792999982833862
+}

@@ -1,0 +1,22 @@
+{
+  "id": 6522,
+  "title": "Economic phone calls",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The phone you bought a long time ago has a built-in memory that keeps track of all the calls you receive. It logs the date (month and day) and the time (hour and minute) of each call along with the caller's number. Only a limited number of calls can be logged (memory was still expensive then).</p>\n<p>You discover that the limit is almost reached and therefore plan to delete some entries from the log. In choosing the entries to delete you have to consider two restrictions:</p>\n<ol>\n<li>There are some (important) entries you want to keep.</li>\n<li>You want to be able to recover the year (which the phone does <em>not</em> log) of each call you keep. The recovery procedure is described below.</li>\n</ol>\n<p>Calculate the minimal number of entries that must be kept to satisfy these requirements.</p>\n<h4>Recovery of years</h4>\n<p>Given a list of timestamps (consisting of month, day, hour, and minute) of calls, you find out the year of each call by the following procedure:</p>\n<ol>\n<li>The last call in the list occurred in the current year.</li>\n<li>You compare its timestamp <em>t</em> to the timestamp <em>t'</em> of the previous call. If <em>t'&lt;t</em>, you assume that both calls occurred in the same year. If <em>t'≥t</em>, you assume that the previous call occured the year before.</li>\n<li>You iterate backwards through the list and reason as in 2. at each step.</li>\n</ol>\n<p>Note that this procedure is not correct in general, but you may assume that it is for the input you get, and you have to ensure that it gives the same result for the shortened log.</p>",
+  "input": "<p>The input consists of several test cases. Every test case starts with the number of entries <em>n</em> in the log, where <em>1≤n≤1000</em>. Each of the next <em>n</em> lines contains an entry.</p>\n<p>Every entry has the format <code>mm:dd:HH:MM number ±</code>, describing the month <code>mm</code>, day <code>dd</code>, hour <code>HH</code>, minute <code>MM</code>, and number (having 1-16 digits) of each call, followed by <code>+</code> marking a call you definitively want to keep and by <code>-</code> marking the other calls. The entries come directly from the log of the phone, that is, they are sorted by time of reception of the corresponding call (the last entry is the most recent).</p>\n<p>You may assume that the recovery procedure described above yields the correct year of each call.</p>\n<p>The last test case is followed by a <code>0</code>.</p>",
+  "output": "<p>For each test case, output the minimal number of entries that must be kept to satisfy the requirements stated above. In particular, the recovery procedure described above must yield for each remaining entry the same year as derived from the corresponding input.</p>",
+  "samples": [
+    {
+      "input": "7\n12:31:23:59 0123456789012345 +\n07:21:19:00 1337 -\n01:01:00:00 0987654321 -\n07:21:14:00 1337 -\n11:11:11:11 11111111111 +\n01:01:00:00 0123456789 +\n01:01:00:00 0987654321 -\n0\n",
+      "output": "6\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, University of Ulm Local Contest, University of Ulm Local Contest 2006",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

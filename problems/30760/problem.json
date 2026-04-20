@@ -1,0 +1,35 @@
+{
+  "id": 30760,
+  "title": "Robot on the Field",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Andrysha is fond of computer games. He recently he found another exciting game:</p>\n<p>Game world is an infinity plane, divided into cells. Each cell has its own game coordinates. Player controls a robot, initially located in the cell with coordinates $(0, 0)$. Player is able to move robot left, up, right and down by pressing keyboard buttons. In fact:</p>\n<ul>\n<li>every time button '<code>L</code>' is pressed, the first coordinate of the robot position decreases by $1$.</li>\n<li>every time button '<code>U</code>' is pressed, the second coordinate of the robot position increases by $1$.</li>\n<li>every time button '<code>R</code>' is pressed, the first coordinate of the robot position increases by $1$.</li>\n<li>every time button '<code>D</code>' is pressed, the second coordinate of the robot position decreases by $1$.</li>\n</ul>\n<p>The goal is to move robot to some given cell $(x, y)$. Though the game sounds easy, Andrysha was unable to finish it and asked his friend Zhenya for help. Zhenya told him a sequence of pressings of the buttons that he used, but this hint didn't help (maybe Zhenya had a different target cell)! Andrysha went mad and slammed keyboard so hard that broke some buttons. Broken buttons no longer react on pressings and this might be really helpful!</p>\n<p>Andrysha wants to find out, if he can finish the game using Zhenya's instructions and breaking some buttons at some moments of time. Pressing broken button doesn't affect the robot. Andrysha can break any button before any pressure of any button or after any pressure of any button. Moreover, he can break several buttons (even all of them) at the same time. He also can break buttons before the very first pressure. He always breaks all the remaining buttons at the end of the game.</p>",
+  "input": "<p>The first line of the input contains one integer $n$ ($1 \\le n \\le 1\\,000\\,000$) --- the length of the Zhenya's list of instructions. </p>\n<p>The following line contains $n$ characters '<code>L</code>', '<code>U</code>', '<code>R</code>', '<code>D</code>' --- list of the instructions. </p>\n<p>The third line of the input contains two integers $x$ and $y$ ($-1\\,000\\,000 \\le x, y \\le 1\\,000\\,000$), denoting coordinates of the target cell, where the robot should be located after performing all the instructions.</p>",
+  "output": "<p>If there is no way Andrysha can succeed, print one integer $-1$.</p>\n<p>Otherwise output four integers from $0$ to $n$, denoting the moment of time when Andrysha should break buttons \"<code>L</code>\", \"<code>U</code>\", \"<code>R</code>\", \"<code>D</code>\", respectively. If a button should be broken before all pressings, print $0$ for it. As Andrysha breaks all working buttons after game, <strong>every printed number</strong> should be between $0$ and $n$.</p>\n<p>If there is more than one solution, print any of them.</p>",
+  "samples": [
+    {
+      "input": "4\nLRUD\n3 2\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "4\nDURL\n0 0\n",
+      "output": "0 0 0 0\n"
+    },
+    {
+      "input": "8\nLLURDRRD\n1 -1\n",
+      "output": "1 7 6 8\n"
+    }
+  ],
+  "hint": "<p>In the first sample, the destination cell is too far from the starting cell, so the robot can't reach it in four or less pressings.</p>\n<p>In the second sample, all buttons can be broken before the beginning of the game, so robot will stay at the starting-destination point.</p>\n<p>In the third sample, if all buttons are broken according to the answer, the resulting sequence of robot's actions will be the <code>LURDRD</code> and robot will reach the destination.</p>",
+  "source": "Olympiad, Moscow Open Olympiad in Informatics, Moscow Open Olympiad in Informatics 2016-17, Day 2",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "greedy",
+    "string",
+    "simulation"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.7999999523162842
+}

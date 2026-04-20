@@ -1,0 +1,34 @@
+{
+  "id": 18006,
+  "title": "Glow, Pixel, Glow!",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>An LCD panel is composed of a grid of pixels, spaced 1 ALU (Arbitrary Length Unit) apart both horizontally and vertically. Wires run along each row and each column, intersecting at the pixels. Wires are numbered beginning with 1 and proceeding up to a panel-dependent maximum. The vertical wire numbered 1 lies along the left edge of the panel, and the horizontal wire numbered 1 lies along the bottom edge of the panel.</p>\n<p>For a period of time, pulses of current will be sent down selected wires. The current flows down the wires at a speed of one ALU per ATU (Arbitrary Time Unit). The pulses themselves have a length measured in ATUs. A pixel will activate, and glow, when current is passing through both intersecting wires at the same time. It will deactivate when either current is no longer present. If the leading edge of a pulse on one wire reaches the intersection at the exact same time that the trailing edge of a pulse on the other wire leaves that intersection, the pixel is not activated.</p>\n<p>All pulses in vertical wires start from the bottom of the grid. All pulses in horizontal wires start from the left of the grid. At most one pulse will travel along any one wire.</p>\n<p>Given the schedule of pulses to be sent through the wires, determine how many pixels will have been activated by the time all pulses have exited the top and right of the grid.</p>",
+  "input": "<p>The first line of input contains a single integer <em>n</em> (1 ≤ <em>n</em> ≤ 2 ∙ 10<sup>5</sup>), which is the number of current pulses.</p>\n<p>Each of the next <em>n</em> lines consists of four space-separated parameters, describing a pulse:</p>\n<ul>\n<li><em>d</em> character (<em>d</em> = ’h’, or <em>d</em> = ’v’)</li>\n<li><em>t</em> integer (1 ≤ <em>t</em> ≤ 2 ∙ 10<sup>5</sup>)</li>\n<li><em>m</em> integer (1 ≤ <em>m</em> ≤ 10<sup>5</sup>)</li>\n<li><em>a</em> integer (1 ≤ <em>a</em> ≤ 2 ∙ 10<sup>5</sup>)</li>\n</ul>\n<p>where <em>d</em> indicates whether the pulse is horizontal (‘h’) or vertical (‘v’), <em>t</em> is the time at which it starts (i.e., when a horizontal [vertical] pulse crosses vertical [horizontal] wire #1), <em>m</em> is its length, and <em>a</em> is the wire (horizontal or vertical) along which the pulse will travel.</p>",
+  "output": "<p>Output a single integer, which is the number of pixels that will have activated by the time the last pulse of current has left the grid.</p>",
+  "samples": [
+    {
+      "input": "4\nh 1 4 1\nv 2 4 2\nh 10 2 2\nv 11 2 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4\nh 1 10 1\nh 5 10 2\nv 1 10 1\nv 5 10 3\n",
+      "output": "4\n"
+    },
+    {
+      "input": "7\nv 1 3 1\nv 1 15 2\nh 4 5 1\nh 5 5 2\nh 6 5 3\nh 7 5 4\nh 8 5 5\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Southeast USA Regional, 2019 Southeast USA Regional Programming Contest, Division 2, ICPC, Regionals, North America, Pacific Northwest Regional, 2019 ICPC Pacific Northwest Region, Division 1, ICPC, Regionals, North America, Pacific Northwest Regional, 2019 ICPC Pacific Northwest Region, Division 2",
+  "level": 19,
+  "tags": [
+    "binary_search",
+    "sorting",
+    "sweeping"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 1.1818000078201294
+}

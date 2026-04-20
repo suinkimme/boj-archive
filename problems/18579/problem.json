@@ -1,0 +1,29 @@
+{
+  "id": 18579,
+  "title": "K-Triangles",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given an \\(n \\times m\\) matrix \\(A\\) with integer elements and a positive integer \\(k\\).</p>\n<p>For a given cell \\((x_0, y_0)\\) of matrix \\(A\\), we define the following sets of cells as \\(k\\)-triangles with center \\((x_0, y_0)\\):</p>\n<ul>\n<li>\\(T_0 = {(x, y) : x \\ge x_0, y \\ge y_0, |x − x_0| + |y − y_0| &lt; k}\\) if \\(1 \\le x_0 \\le n − k + 1, 1 \\le y_0 \\le m − k + 1\\);</li>\n<li>\\(T_1 = {(x, y) : x \\le x_0, y \\ge y_0, |x − x_0| + |y − y_0| &lt; k}\\) if \\(k \\le x_0 \\le n, 1 \\le y_0 \\le m − k + 1\\);</li>\n<li>\\(T_2 = {(x, y) : x \\le x_0, y \\le y_0, |x − x_0| + |y − y_0| &lt; k}\\) if \\(k \\le x_0 \\le n, k \\le y_0 \\le m\\);</li>\n<li>\\(T_3 = {(x, y) : x \\ge x_0, y \\le y_0, |x − x_0| + |y − y_0| &lt; k}\\) if \\(1 \\le x_0 \\le n − k + 1, k \\le y_0 \\le m\\).</li>\n</ul>\n<p>For a given \\(k\\)-triangle \\(T\\), we define its cost \\(f(T) = \\sum_{(x,y) \\in T}{A_{x,y}}\\).</p>\n<p>Your task is to find the maximum possible total cost of any two non-intersecting \\(k\\)-triangles. Formally, you have to find \\(\\max_{P \\cup Q = \\emptyset}{f(P) + f(Q)}\\) where \\(P\\) and \\(Q\\) are some \\(k\\)-triangles.</p>",
+  "input": "<p>The first line contains three space-separated integers \\(n\\), \\(m\\), \\(k\\) (\\(1 \\le n, m, k \\le 1500\\)).</p>\n<p>Each of the next \\(n\\) lines contains \\(m\\) space-separated integers; the \\(i\\)-th line contains integers \\(A_{i,1}, A_{i,2}, \\dots , A_{i,m}\\) (\\(−10^9 \\le A_{i,j} \\le 10^9\\)).</p>\n<p>It is guaranteed that there is at least one way to choose two non-intersecting \\(k\\)-triangles in the matrix.</p>",
+  "output": "<p>Print a single integer: the maximum possible sum of costs of two non-intersecting \\(k\\)-triangles.</p>",
+  "samples": [
+    {
+      "input": "3 4 2\n0 1 0 0\n0 1 1 1\n0 0 1 1\n",
+      "output": "6\n"
+    },
+    {
+      "input": "4 5 3\n-5 -7 4 5 -3\n-7 -5 8 0 -7\n4 6 2 6 5\n7 3 1 -7 7\n",
+      "output": "39\n"
+    }
+  ],
+  "hint": "<p>In the second example, the answer is made up of two k-triangles of type \\(T_1\\) with centers at \\((4, 1)\\) and \\((3, 3)\\).</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2019, Day 6: Belarusian SU Contest, Contest, Open Cup, 2018/2019 Season, Stage 12: Grand Prix of Belarus",
+  "level": 23,
+  "tags": [
+    "prefix_sum",
+    "sweeping"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

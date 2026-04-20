@@ -1,0 +1,34 @@
+{
+  "id": 25874,
+  "title": "Rounding Many Ways",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Timothy and Alex’s hopes and dreams of running for UCF’s Student Government Association have been crushed by the realization that their campaign ticket would not be alliterative. So, they have decided to analyze statistics from many different polls given to students to determine what pair of programming team members would be best situated to win the election. However, there is a problem. All of the statistics have been rounded off. This would not be an issue apart from the fact that the pollsters forgot to mention how the number was rounded! (Math Terminology Note: if we round, say, 198 to 200, then 198 is called the “true value” and 200 is called the “rounded value”.)</p>\n<p>For example, the rounded value 750 could have come from a true value rounded to the nearest 10 or maybe even the nearest 250. It may also have come from a true value rounded to the nearest 1 (thus not rounding it at all). Thus, the true value could have been something like 625 or maybe much closer like 748.</p>\n<p>Luckily for Timothy and Alex, after some reconnaissance work, they have discovered the general rounding methods used:</p>\n<ul>\n<li>The original statistic was a positive integer S</li>\n<li>Then a positive integer X was chosen such that X is a divisor of some power of 10, i.e., there exist non-negative integers Y and Z such that X * Y = 10<sup>Z</sup></li>\n<li>Finally the statistic S was rounded to the nearest positive multiple of X to get the rounded value N, i.e., there exists a positive integer W such that X * W = N and |S – N| is minimized.</li>\n</ul>\n<p>Given the rounded value, find all the different ways it could have been rounded (derived). In other words, given N and using the above constraints, you are to find all values of X that satisfy both of the following two equations:</p>\n<ul>\n<li>X * Y = 10<sup>Z</sup></li>\n<li>X * W = N</li>\n</ul>",
+  "input": "<p>The first and only line of input contains an integer, N (1 ≤ N ≤ 10<sup>18</sup>), representing the rounded value.</p>",
+  "output": "<p>First print out a single line containing an integer representing the number of different X values that the rounded value N could have been derived from. Then print out all of these values of X, in increasing order, on separate lines.</p>",
+  "samples": [
+    {
+      "input": "30\n",
+      "output": "4\n1\n2\n5\n10\n"
+    },
+    {
+      "input": "120\n",
+      "output": "8\n1\n2\n4\n5\n8\n10\n20\n40\n"
+    },
+    {
+      "input": "8\n",
+      "output": "4\n1\n2\n4\n8\n"
+    }
+  ],
+  "hint": "<p>Explanation for the first Sample Input/Output:</p>\n<pre>\nOutput: 1\n    X = 1, Y = 10, Z = 1, W = 30\n    Rounded to nearest multiple of 1: 1*10=10, 1*30=30\nOutput: 2\n    X = 2, Y = 5, Z = 1, W = 15\n    Rounded to nearest multiple of 2: 2*5=10, 2*15=30\nOutput: 5\n    X = 5, Y = 2, Z = 1, W = 6\n    Rounded to nearest multiple of 5: 5*2=10, 5*6=30\nOutput: 10\n    X = 10, Y = 1, Z = 1, W = 3\n    Rounded to nearest multiple of 10: 10*1=10, 10*3=30</pre>",
+  "source": "University, University of Central Florida, 2018 Local Programming Contest",
+  "level": 8,
+  "tags": [
+    "math",
+    "bruteforcing",
+    "number_theory"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.350000023841858
+}

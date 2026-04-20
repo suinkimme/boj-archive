@@ -1,0 +1,27 @@
+{
+  "id": 18574,
+  "title": "Fractional XOR Maximization",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Define the <em>bitwise XOR operation</em> \\(\\oplus\\) for any two real numbers \\(x\\) and \\(y\\) as follows:</p>\n<p>\\[x \\oplus y = \\lim_{n \\to \\infty}{\\frac{\\lfloor2^nx\\rfloor \\oplus \\lfloor 2^ny \\rfloor}{2^n}}\\]</p>\n<p>where \\(\\oplus\\) in the right-hand side of the equation is the integer bitwise XOR operation.</p>\n<p>For example, \\(\\frac{5}{8} \\oplus \\frac{3}{8} = \\frac{3}{4}\\), \\(\\frac{1}{3} \\oplus \\frac{1}{7} = \\frac{4}{9}\\), and \\(\\frac{1}{5} \\oplus \\frac{1}{7} = \\frac{6}{65}\\).</p>\n<p>Recall that the supremum of a set \\(X \\subseteq \\mathbb{R}\\) (denoted by sup \\(X\\)) is the least real number that is greater than or equal to all elements of \\(X\\).</p>\n<p>Given four non-negative rational numbers, \\(a\\), \\(b\\), \\(c\\), and \\(d\\), find sup {\\(x \\oplus y : x \\in [a, b] , y \\in [c, d]\\)}. In other words, find the least value that is greater than or equal to all XOR values of an element from \\([a, b]\\) and an element from \\([c, d]\\).</p>",
+  "input": "<p>The first line contains a single integer \\(T\\) (\\(1 \\le T \\le 100\\)), the number of test cases.</p>\n<p>Then \\(T\\) test cases follow. The first line of each test case contains four integers \\(a_{num}\\), \\(a_{denom}\\), \\(b_{num}\\), \\(b_{denom}\\) (\\(0 \\le a_{num}, b_{num} \\le 10^{17}, 1 \\le a_{denom}, b_{denom} \\le 30\\)), describing fractions \\(a = \\frac{a_{num}}{a_{denom}}\\) and \\(b = \\frac{b_{num}}{b_{denom}}\\). The second line of each test case describes fractions \\(c\\) and \\(d\\) in the same format.</p>\n<p>It is guaranteed that \\(a \\le b\\) and \\(c \\le d\\), and all fractions from input are irreducible (in other words, the greatest common divisor of the numerator and denominator is equal to 1).</p>",
+  "output": "<p>Print \\(T\\) lines. The \\(i\\)-th line should contain two integers \\(x_{num}\\) and \\(x_{denom}\\) separated by a single space: the numerator and denominator of the answer \\(x = \\frac{x_{num}}{x_{denom}}\\) for the \\(i\\)-th test case, expressed as an irreducible fraction. It can be shown that the answer is always a rational number.</p>",
+  "samples": [
+    {
+      "input": "2\n0 1 1 1\n0 1 1 1\n5 7 5 7\n3 16 3 16\n",
+      "output": "2 1\n59 112\n"
+    }
+  ],
+  "hint": "<p>In the first sample test case, the answer is \\(2\\) because we can make XOR value arbitrarily close to \\(2\\) choosing \\(1\\) from the first interval and \\(1 − 2^p\\) from the second interval, where \\(p\\) is a large enough integer, but we can obtain neither exactly \\(2\\) nor any greater number.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2019, Day 6: Belarusian SU Contest, Contest, Open Cup, 2018/2019 Season, Stage 12: Grand Prix of Belarus",
+  "level": 26,
+  "tags": [
+    "math",
+    "greedy",
+    "number_theory",
+    "arbitrary_precision"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 4.81820011138916
+}

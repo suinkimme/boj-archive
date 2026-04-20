@@ -1,0 +1,26 @@
+{
+  "id": 13103,
+  "title": "Idempotent Filter",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Let's consider operations on monochrome images that consist of hexagonal pixels, each of which is colored in either black or white. Because of the shape of pixels, each of them has exactly six neighbors (e.g. pixels that share an edge with it.)</p>\n<p>\"Filtering\" is an operation to determine the color of a pixel from the colors of itself and its six neighbors. Examples of filterings are shown below.</p>\n<p>Example 1: Color a pixel in white when all of its neighboring pixels are white. Otherwise the color will not change.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:235px; width:488px\"/></p>\n<p>Performing this operation on all the pixels simultaneously results in \"noise canceling,\" which removes isolated black pixels.</p>\n<p>Example 2: Color a pixel in white when its all neighboring pixels are black. Otherwise the color will not change.</p>\n<p><img alt=\"\" src=\"2.png\" style=\"height:235px; width:488px\"/></p>\n<p>Performing this operation on all the pixels simultaneously results in \"edge detection,\" which leaves only the edges of filled areas.</p>\n<p>Example 3: Color a pixel with the color of the pixel just below it, ignoring any other neighbors.</p>\n<p><img alt=\"\" src=\"3.png\"/></p>\n<p>Performing this operation on all the pixels simultaneously results in \"shifting up\" the whole image by one pixel.</p>\n<p>Applying some filter, such as \"noise canceling\" and \"edge detection,\" twice to any image yields the exactly same result as if they were applied only once. We call such filters idempotent. The \"shifting up\" filter is not idempotent since every repeated application shifts the image up by one pixel.</p>\n<p>Your task is to determine whether the given filter is idempotent or not.</p>",
+  "input": "<p>The input consists of multiple datasets. The number of dataset is less than 100. Each dataset is a string representing a filter and has the following format (without spaces between digits).</p>\n<pre>\n c<sub>0</sub>c<sub>1</sub>⋯c<sub>127</sub></pre>\n<p>c<sub>i</sub> is either '0' (represents black) or '1' (represents white), which indicates the output of the filter for a pixel when the binary representation of the pixel and its neighboring six pixels is i. The mapping from the pixels to the bits is as following:</p>\n<p><img alt=\"\" src=\"4.png\" style=\"height:235px; width:226px\"/></p>\n<p>and the binary representation i is defined as i=∑<sup>6</sup><sub>j=0</sub>bit<sub>j</sub>×2<sup>j</sup>, where bit<sub>j</sub> is 0 or 1 if the corresponding pixel is in black or white, respectively. Note that the filter is applied on the center pixel, denoted as bit 3.</p>\n<p>The input ends with a line that contains only a single \"#\".</p>",
+  "output": "<p>For each dataset, print \"yes\" in a line if the given filter is idempotent, or \"no\" otherwise (quotes are for clarity).</p>",
+  "samples": [
+    {
+      "input": "00000000111111110000000011111111000000001111111100000000111111110000000011111111000000001111111100000000111111110000000111111111\n10000000111111110000000011111111000000001111111100000000111111110000000011111111000000001111111100000000111111110000000011111111\n01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101\n#\n",
+      "output": "yes\nyes\nno\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ACM-ICPC Asia Regional 2014",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "bruteforcing",
+    "bitmask"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.350000023841858
+}

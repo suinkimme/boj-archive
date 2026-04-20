@@ -1,0 +1,27 @@
+{
+  "id": 4989,
+  "title": "Traveling by Stagecoach",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Once upon a time, there was a traveler.</p>\n<p>He plans to travel using stagecoaches (horse wagons). His starting point and destination are fixed, but he cannot determine his route. Your job in this problem is to write a program which determines the route for him.</p>\n<p>There are several cities in the country, and a road network connecting them. If there is a road between two cities, one can travel by a stagecoach from one of them to the other. A coach ticket is needed for a coach ride. The number of horses is specified in each of the tickets. Of course, with more horses, the coach runs faster.</p>\n<p>At the starting point, the traveler has a number of coach tickets. By considering these tickets and the information on the road network, you should find the best possible route that takes him to the destination in the shortest time. The usage of coach tickets should be taken into account.</p>\n<p>The following conditions are assumed.</p>\n<ul>\n<li>A coach ride takes the traveler from one city to another directly connected by a road. In other words, on each arrival to a city, he must change the coach.</li>\n<li>Only one ticket can be used for a coach ride between two cities directly connected by a road.</li>\n<li>Each ticket can be used only once.</li>\n<li>The time needed for a coach ride is the distance between two cities divided by the number of horses.</li>\n<li>The time needed for the coach change should be ignored.</li>\n</ul>",
+  "input": "<p>The input consists of multiple datasets, each in the following format. The last dataset is followed by a line containing five zeros (separated by a space).</p>\n<pre>\nn m p a b\nt1 t2 ... tn\nx1 y1 z1\nx2 y2 z2\n...\nxp yp zp</pre>\n<p>Every input item in a dataset is a non-negative integer. If a line contains two or more input items, they are separated by a space.</p>\n<p>n is the number of coach tickets. You can assume that the number of tickets is between 1 and 8. m is the number of cities in the network. You can assume that the number of cities is between 2 and 30. p is the number of roads between cities, which may be zero.</p>\n<p>a is the city index of the starting city. b is the city index of the destination city. a is not equal to b. You can assume that all city indices in a dataset (including the above two) are between 1 and m.</p>\n<p>The second line of a dataset gives the details of coach tickets. ti is the number of horses specified in the i-th coach ticket (1&lt;=i&lt;=n). You can assume that the number of horses is between 1 and 10.</p>\n<p>The following p lines give the details of roads between cities. The i-th road connects two cities with city indices xi and yi, and has a distance zi (1&lt;=i&lt;=p). You can assume that the distance is between 1 and 100.</p>\n<p>No two roads connect the same pair of cities. A road never connects a city with itself. Each road can be traveled in both directions.</p>",
+  "output": "<p>For each dataset in the input, one line should be output as specified below. An output line should not contain extra characters such as spaces.</p>\n<p>If the traveler can reach the destination, the time needed for the best route (a route with the shortest time) should be printed. The answer should not have an error greater than 0.001. You may output any number of digits after the decimal point, provided that the above accuracy condition is satisfied.</p>\n<p>If the traveler cannot reach the destination, the string \"Impossible\" should be printed. One cannot reach the destination either when there are no routes leading to the destination, or when the number of tickets is not sufficient. Note that the first letter of \"Impossible\" is in uppercase, while the other letters are in lowercase.</p>",
+  "samples": [
+    {
+      "input": "3 4 3 1 4\n3 1 2\n1 2 10\n2 3 30\n3 4 20\n2 4 4 2 1\n3 1\n2 3 3\n1 3 3\n4 1 2\n4 2 5\n2 4 3 4 1\n5 5\n1 2 10\n2 3 10\n3 4 10\n1 2 0 1 2\n1\n8 5 10 1 5\n2 7 1 8 4 5 6 3\n1 2 5\n2 3 4\n3 4 7\n4 5 3\n1 3 25\n2 4 23\n3 5 22\n1 4 45\n2 5 51\n1 5 99\n0 0 0 0 0\n",
+      "output": "30.000\n3.667\nImpossible\nImpossible\n2.856\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2005 Japan Domestic Contest",
+  "level": 15,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "bitmask",
+    "dijkstra"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 2.1786000728607178
+}

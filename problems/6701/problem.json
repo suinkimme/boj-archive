@@ -1,0 +1,26 @@
+{
+  "id": 6701,
+  "title": "Who owns the Amiga?",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In a corridor in a student dormitory, there are five rooms numbered <strong>1, 2, 3, 4</strong> and <strong>5</strong>; room number <strong>1</strong> is the left-most room. The rooms have doors in different colours: <strong>blue, green, red, white</strong> and <strong>yellow</strong>, but not necessarily in that order.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:128px; width:409px\"/></p>\n<p>In these rooms live five students <strong>Anna, Bernhard, Chris, David</strong> and <strong>Ellen</strong> of five different nationalities <strong>Danish, Finnish, Icelandic, Norwegian</strong> and <strong>Swedish</strong>. (Both the names and the nationalities are given in alphabetical order, so it does not follow automatically that Anna is Danish.)</p>\n<p>These students have one computer each, and these computers are of different kinds: <strong>Amiga, Atari, Linux, Mac</strong> and <strong>Windows</strong> (given here in alphabetical order). They each have their own favourite programming language: <strong>C, C++, Java, Pascal</strong> and <strong>Perl</strong> (also listed in alphabetical order).</p>\n<p>You want to find out who owns the Amiga computer based on some facts about the students.</p>",
+  "input": "<p>The input consists of several scenarios. The first input line contains a number 1–1000 indicating how many scenarios there are.</p>\n<p>Each scenario starts with a line with a number 1–2000 telling how many fact lines there are for that scenario. Then follow the fact lines which each contains three words separated by one or more spaces:</p>\n<ul>\n<li>The first and third word is one of these names:</li>\n</ul>\n<p style=\"margin-left:80px\"><strong>12345<br/>\nblue green red white yellow anna bernhard chris david ellen<br/>\ndanish finnish icelandic norwegian swedish <br/>\namiga atari linux mac windows<br/>\nc c++ java pascal perl</strong></p>\n<p style=\"margin-left:40px\">(Note that no uppercase letters are used.)</p>\n<ul>\n<li>The second word specifies a relationship; it is one of</li>\n</ul>\n<p style=\"margin-left:80px\"><strong>same-as left-of right-of next-to</strong></p>\n<p style=\"margin-left:40px\"><strong>same-as</strong> tells that the first and third fact words apply to the same<br/>\nroom; for instance</p>\n<p style=\"margin-left:120px\">blue same-as bernhard</p>\n<p style=\"margin-left:80px\">tells that Bernhard lives in the room with a blue door.</p>\n<p style=\"margin-left:40px\"><strong>left-of</strong> tells that the first fact word applies to the room immediately to the left of the one to which the third fact word applies. For example,</p>\n<p style=\"margin-left:120px\">chris left-of perl</p>\n<p style=\"margin-left:80px\">means that Chris lives in the room immediately to the left of the Perl programmer.</p>\n<p style=\"margin-left:40px\"><strong>right-of</strong> tells that the first fact word applies to the room immediately to the right of the one to which the third fact word applies.</p>\n<p style=\"margin-left:40px\"><strong>next-to</strong> tells that the two fact words apply to rooms next to each other. For example,</p>\n<p style=\"margin-left:120px\">swedish next-to linux</p>\n<p style=\"margin-left:80px\">means that the Swedish student lives in the next room (either to the left or the right) of the owner of the Linux computer.</p>\n<p>You may assume that there are no inconsistencies in the input data. In other words, there will in every scenario be at least one person who may own the Amiga without violating the constraints.</p>",
+  "output": "<p>For each scenario, you should print a line starting with</p>\n<p style=\"margin-left:40px\">scenario #n:</p>\n<p>where n is the scenario number. If you can determine who (i.e., Anna, Bernhard, Chris, David or Ellen) owns the Amiga, you continue the line with</p>\n<p style=\"margin-left:40px\">xxxx owns the amiga.</p>\n<p>or, if you cannot name the Amiga owner, you print</p>\n<p style=\"margin-left:40px\">cannot identify the amiga owner.</p>",
+  "samples": [
+    {
+      "input": "2\n8\nred same-as 1\ndanish same-as 1\nperl same-as 5\natari same-as 2\nlinux same-as 3\nmac same-as 4\nwindows same-as 5\nanna same-as 1\n8\nchris left-of amiga\nchris left-of 4\nc same-as 1\ndanish same-as 1\nred same-as 1\nlinux same-as red\nwindows next-to linux\nmac left-of swedish\n",
+      "output": "scenario #1: anna owns the amiga.\nscenario #2: cannot identify the amiga owner.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2004",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "bruteforcing",
+    "backtracking"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.25
+}

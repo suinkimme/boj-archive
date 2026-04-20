@@ -1,0 +1,26 @@
+{
+  "id": 7356,
+  "title": "Roads Scholar",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The Hines Sign company has been contracted to supply roadside signs for the state highway system. The head of the company has put his son Myles Hines in charge of one particular class of signs, those which indicate the number of miles to various towns. Myles is given a layout of the highway system and a set of locations where the signs should go; he is in charge of determining the mileage to nearby cities. To select which cities should be listed on any sign, he uses the following strategy: City X is put on the sign if the sign is on a road such that the shortest path from the intersection immediately preceeding the sign to X uses the road. You may assume that there is only one shortest path between each pair of intersections.</p>",
+  "input": "<p><strong>The input begins with a single positive integer on a line by itself indicating the number of the cases following, each of them as described below. This line is followed by a blank line, and there is also a blank line between two consecutive inputs.</strong></p>\n<p>Input consists of a single problem instance consisting of a description of the highway system, followed by a set of sign locations. The highway system is defined as a set of intersections (some of which are also city locations) and a set of roads connecting the intersections. The first line of a problem instance contains three positive integers n m k: n specifies the number of intersections (numbered 0, 1, 2,..., n - 1), m indicates the number of roads between connections, and k indicates the number of intersections which are also cities. Following this are m lines of the form i<sub>1</sub> i<sub>2</sub> d, which specifies a two-way road between intersections i<sub>1</sub> and i<sub>2</sub> of distance d. The next k lines are of the form i name, which specifies that intersection i is a city called name. After this is a line with a single positive integer s indicating the number of signs to place on the highway. The remaining s lines are of the form i<sub>1</sub> i<sub>2</sub> d, indicating that a sign is to be placed on the road going from i<sub>1</sub> to i<sub>2</sub> a distance d from i<sub>1</sub> (d will always be non-zero and less than the distance from i<sub>1</sub> to i<sub>2</sub>). For all problem instances, the length of name will be ≤ 18 characters, and 5 ≤ n ≤ 30. All distances will be non-zero and to the nearest hundredth mile.</p>",
+  "output": "<p><strong>For each test case, the output must follow the description below. The outputs of two consecutive cases will be separated by a blank line.</strong></p>\n<p>Each sign should be output as follows:</p>\n<p><br/>\nname<sub>1</sub> d<sub>1</sub></p>\n<p>name<sub>2</sub> d<sub>2</sub></p>\n<p>...</p>\n<p><br/>\nwhere each name<sub>i</sub> should be left justified in a field of width 20, and each distance d<sub>i</sub> is rounded to the nearest mile. (Round .50 up. For example, 7.50 should be rounded to 8.) Each name-distance pair should be sorted by the rounded distance; pairs with the same rounded distance should be printed in alphabetical order. Signs should be output in the order in which they were listed in the input, and you should separate each sign output with a blank line. You may assume that every sign will have at least one city listed on it.</p>",
+  "samples": [
+    {
+      "input": "1\n\n8 17 4\n0 1 7.12\n0 2 8.34\n0 3 5.33\n0 4 5.36\n1 2 4.21\n1 6 6.99\n1 7 10.26\n2 3 2.74\n2 6 5.04\n3 4 4.12\n3 5 7.72\n3 6 5.71\n4 5 8.94\n4 6 10.29\n5 6 5.47\n5 7 8.55\n6 7 6.01\n0 Allentown\n1 Bobtown\n6 Charlestown\n7 Downville\n3\n0 3 2.17\n3 2 0.45\n4 3 3.14\n",
+      "output": "Charlestown 9\nDownville 15\n\nBobtown 7\n\nCharlestown 7\nBobtown 8\nDownville 13\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, East Central North America Regional, 2001 East Central Regional Contest",
+  "level": 13,
+  "tags": [
+    "floyd_warshall",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 9
+}

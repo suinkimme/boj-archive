@@ -1,0 +1,28 @@
+{
+  "id": 32565,
+  "title": "Finding Suspicious Proteins",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Little Claire studies proteins, which are sequences of amino acids. There are 20 amino acids from which proteins are built. While amino acids all have proper names, such as <em>alanine</em> or <em>glycine</em>, they are often denoted by single letters, so that proteins can be seen as sequences of different lengths, such as <code>DTASDAAAAAALTAABAAAAAKLTABBAAAAAAATAA</code>, <code>TIFLQQQQQQQQQQQ</code> or even maybe <code>RICKRQLL</code>.</p>\n<p>Comparing two proteins can be difficult, because they may contain active sites, which determine their function in a cell, and less important parts of the sequence. Recent advances in artificial neural networks made it possible to train a network that, given a protein, outputs a sequence of $l$ numbers, where each number roughly corresponds to a feature of a protein that correlates with its possible functions in a cell. Such a sequence is called an <em>embedding</em>.</p>\n<p>Claire is particularly interested in <em>suspicious</em> proteins, those which are really different from others. For this purpose, she considers the so-called <em>Manhattan distance</em> between embeddings of proteins. For two protein embeddings $p$ and $q$ of length $l$, the distance $\\mathcal{D}(p, q)$ is computed as follows: \\begin{equation*} \\mathcal{D}(p, q) = \\sum_{i=1}^l |p_i - q_i|, \\end{equation*} where $p_i$ is the $i$-th element of the embedding $p$.</p>\n<p>Claire wants to find $k$ suspicious proteins in the given list of $n$ proteins. As a baseline for her studies, Claire wants to use the following greedy algorithm:</p>\n<ul>\n<li>Find a protein $p^{(1)}$ which is the most distant from the first protein in the list.</li>\n<li>The second protein, $p^{(2)}$, is chosen as the most distant protein from $p^{(1)}$.</li>\n<li>The third one, $p^{(3)}$, is chosen so that $\\min\\{\\mathcal{D}(p^{(1)}, p^{(3)}), \\mathcal{D}(p^{(2)}, p^{(3)})\\}$ is maximum possible. That is, it must be far away from <em>both</em> previously chosen proteins.</li>\n<li>All subsequent proteins $p^{(i)}$, $4 \\le i \\le k$, are chosen in a similar way: the minimum of the distances to all the previously chosen proteins should be maximum possible.</li>\n</ul>\n<p>Note that, in the case of ties, the first matching protein in the list must be chosen.</p>\n<p>Claire's implementation works nicely for small numbers $n$ and $k$, but becomes too slow as they increase. You must find a way to optimise this.</p>",
+  "input": "<p>The first line contains three numbers $n$ $(3 \\le n \\le 10^4)$, $l$ $(1 \\le l \\le 100)$ and $k$ $(2 \\le k \\le \\min\\{n, 256\\})$: the overall number of proteins, the length of each protein embedding, and the number of proteins to choose.</p>\n<p>Each of the following $n$ lines starts with a protein identifier, which is a sequence of at least one and most ten capital letters and/or numbers. Then, separated by whitespace, come $l$ single-digit integer numbers $v_{1 \\ldots l}$ ($0 \\le v \\le 9$), which define the embedding of the protein. All protein identifiers will be different.</p>",
+  "output": "<p>Output the identifiers of $k$ chosen proteins, one per line, in their respective order ($p^{(1)}$ to $p^{(k)}$).</p>",
+  "samples": [
+    {
+      "input": "4 2 2\nFIRST 3 4\nSECOND 1 2\nTHIRD 8 7\nFOURTH 5 6\n",
+      "output": "THIRD\nSECOND\n"
+    },
+    {
+      "input": "6 5 3\n1OGLOBIN 1 1 1 1 1\nGLU10 9 9 9 9 9\n8EIN 8 9 8 9 9\nCOLLA6EN 6 5 4 3 2\n7ILK 3 4 5 6 7\n0LBUMIN 1 2 0 2 1\n",
+      "output": "GLU10\n1OGLOBIN\n7ILK\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, The UK & Ireland Programming Contest, UKIEPC 2024",
+  "level": 17,
+  "tags": [
+    "bruteforcing"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.2999999523162842
+}

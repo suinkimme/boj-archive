@@ -1,0 +1,25 @@
+{
+  "id": 13878,
+  "title": "FBI Universal Control Numbers",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The FBI has recently changed its Universal Control Numbers (UCN) for identifying individuals who are in the FBI’s fingerprint database to an eight digit base 27 value with a ninth check digit. The digits used are:</p>\n<p style=\"text-align: center;\"><code>0123456789ACDEFHJKLMNPRTVWX</code></p>\n<p>Some letters are not used because of possible confusion with other digits:</p>\n<p style=\"text-align: center;\"><code>B-&gt;8, G-&gt;C, I-&gt;1, O-&gt;0, Q-&gt;0, S-&gt;5, U-&gt;V, Y-&gt;V, Z-&gt;2</code></p>\n<p>The check digit is computed as:</p>\n<p style=\"text-align: center;\"><code>(2*D1 + 4*D2 + 5*D3 + 7*D4 + 8*D5 + 10*D6 + 11*D7 + 13*D8) mod 27 </code></p>\n<p>Where Dn is the nth digit from the left.</p>\n<p>This choice of check digit detects any single digit error and any error transposing an adjacent pair of the original eight digits.</p>\n<p>For this problem, you will write a program to parse a UCN input by a user. Your program should accept decimal digits and any capital letter as digits. If any of the confusing letters appear in the input, you should replace them with the corresponding valid digit as listed above. Your program should compute the correct check digit and compare it to the entered check digit. The input is rejected if they do not match otherwise the decimal (base 10) value corresponding to the first eight digits is returned.</p>",
+  "input": "<p>The first line of input contains a single decimal integer P, (1 ≤ P ≤ 10000), which is the number of data sets that follow. Each data set should be processed identically and independently.</p>\n<p>Each data set consists of a single line of input. It contains the data set number, K, followed by a single space, followed by 9 decimal digits or capital (alphabetic) characters.</p>",
+  "output": "<p>For each data set there is one line of output. The single output line consists of the data set number, K, followed by a single space followed by the string “Invalid” (without the quotes) or the decimal value corresponding to the first eight digits.</p>",
+  "samples": [
+    {
+      "input": "3\n1 12345678A\n2 12435678A\n3 12355678A\n",
+      "output": "1 11280469652\n2 Invalid\n3 Invalid\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Greater New York Region, 2016 Greater New York Programming Contest",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 63,
+  "submission_count": null,
+  "average_tries": 1.4921000003814697
+}

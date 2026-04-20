@@ -1,0 +1,40 @@
+{
+  "id": 16627,
+  "title": "Froggie",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are recreating the classic ‘Frogger’ video game. You do not need to worry about sprites, music, or animation (that is left to the game’s art team).</p>\n<p>Each level consists of a road with multiple lanes, with cars traveling in both directions. Cars within each lane are evenly-spaced and move at the same speed and in the same direction. Lane directions alternate, with the top lane moving left to right.</p>\n<p>‘Froggie’ starts below the bottom lane and she travels across the road from the bottom to the top. At each time step, Froggie hops one space in one of four directions: up, down, left, or right. The goal of the game is to get Froggie across the road and above the top lane without her getting hit by a car.</p>\n<p><strong>Example</strong></p>\n<p>Consider the first sample input, where Froggie hops upward four times. The road has three lanes and a width of 7. Froggie starts below the road in the third cell. Cars in the top and bottom lanes are spaced at an interval of 3, and the middle lane has an interval of 2. The cars in the top two lanes move at a speed of 1, while those in the bottom lane move at a speed of 2. See Figure D.1.</p>\n<p>At time 1 Froggie hops upward and the cars move. The cars in the top and middle lanes each move one space, and the cars in the bottom lane each move two spaces. See Figure D.2. After this first hop, Froggie is still safe. She now sits where a car was, and has avoided the path of the car as it travels. Notice that cars exit the simulated area as they travel off the grid, and also new cars also enter (at times that preserve each lane’s interval).</p>\n<p>At time 2, Froggie hops upward again as the cars continue to move. After hopping into the middle lane, Froggie could move left with this lane’s traffic (traffic in this lane moves left at a speed of 1). See Figure D.3.</p>\n<p>At time 3, Froggie hops upward a third time, reaching the top lane. See Figure D.4. Finally, at time 4, with a final upward hop, Froggie exits the road to safety. See Figure D.5.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 449px; height: 92px;\"/></p>\n<p style=\"text-align: center;\">Figure D.1: Time 0. Cars and Froggie in their initial positions.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 448px; height: 81px;\"/></p>\n<p style=\"text-align: center;\">Figure D.2: Time 1. Froggie hopped up, the cars all moved. Some cars left, and some new cars appeared.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 447px; height: 76px;\"/></p>\n<p style=\"text-align: center;\">Figure D.3: Time 2. Froggie hopped up to the middle lane.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 447px; height: 73px;\"/></p>\n<p style=\"text-align: center;\">Figure D.4: Time 3. Froggie hopped up to the top lane.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 439px; height: 94px;\"/></p>\n<p style=\"text-align: center;\">Figure D.5: Time 4. Froggie hops to safety!</p>\n<p><strong>Avoiding Cars</strong></p>\n<p>If Froggie enters the path of a moving car she is squished. Consider Figure D.6, which is a bit different than earlier figures in that it shows one car over two successive times. Let’s say that at time t the car is in the leftmost cell and Froggie is not in this lane. At time t + 1, the car moves with a speed of 3 to the rightmost cell, and Froggie attempts to hop into the lane shown. Since the width of the lane is four, the only safe place to hop is the leftmost cell (where the car had just been). The other three cells would cause her to be squished by the car shown, ending the simulation.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"6.png\" style=\"width: 259px; height: 32px;\"/></p>\n<p style=\"text-align: center;\">Figure D.6: A single car across two consecutive time steps, starting at the left and moving right.</p>\n<p><strong>Goal</strong></p>\n<p>Given a description of the road, car positions and speeds, and Froggie’s starting positions and moves, determine her outcome after the simulation. There are two possible outcomes: safely exiting the top lane or getting squished.</p>\n<p>In order to better plan her travel, Froggie may move left or right before entering the road. Once Froggie has entered the road she may only exit through the top of the road. That is, Froggie’s path never exits the left, right, or bottom lane boundaries.</p>",
+  "input": "<p>Each input describes one simulation. The first line of input contains two integers separated by a space: L and W. The number of lanes is given by L (1 ≤ L ≤ 10), while W (3 ≤ W ≤ 20) defines the width (in number of cells) of the grid.</p>\n<p>This is followed by L lines each describing the car configuration for a lane (from top to bottom). Each line contains three integers: O, the starting offset of the first car; I, the interval between cars; and S, the speed of the cars. The bounds are 0 ≤ O &lt; I ≤ W and 0 ≤ S ≤ W. All offsets should be computed based on the direction of lane movement.</p>\n<p>The final line of input starts with a single integer, P (0 ≤ P ≤ W − 1) followed by a space and then a string of M characters (1 ≤ M ≤ L · W) from the set {U, D, L, R}. P defines the starting position of Froggie, starting from the left. The string of characters defines the sequence of moves (up, down, left, right) that Froggie makes during the simulation.</p>",
+  "output": "<p>If Froggie successfully crosses the road (exiting the road from the top lane), output “safe”. If Froggie is hit by a car, or does not end above the road, output “squish”.</p>",
+  "samples": [
+    {
+      "input": "3 7\n0 3 1\n1 2 1\n2 3 2\n2 UUUU\n",
+      "output": "safe\n"
+    },
+    {
+      "input": "3 6\n0 3 1\n1 2 1\n2 3 2\n2 U\n",
+      "output": "squish\n"
+    },
+    {
+      "input": "3 6\n0 3 1\n1 2 1\n2 3 2\n2 UR\n",
+      "output": "squish\n"
+    },
+    {
+      "input": "3 6\n0 3 0\n1 2 0\n2 3 0\n1 UUUU\n",
+      "output": "safe\n"
+    },
+    {
+      "input": "3 6\n0 3 0\n1 2 0\n2 3 0\n1 LRRLUUUU\n",
+      "output": "safe\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Qualification Contest, ACM-ICPC North America Qualifier 2018",
+  "level": 12,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 5.18179988861084
+}

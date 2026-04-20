@@ -1,0 +1,34 @@
+{
+  "id": 15538,
+  "title": "Compressed Formula",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given a simple, but long formula in a compressed format. A compressed formula is a sequence of N pairs of an integer r<sub>i</sub> and a string s<sub>i</sub>, which consists only of digits (‘0’-‘9’), ‘+’, ‘-’, and ‘*’. To restore the original formula from a compressed formula, first we generate strings obtained by repeating s<sub>i</sub> r<sub>i</sub> times for all i, then we concatenate them in order of the sequence.</p>\n<p>You can assume that a restored original formula is well-formed. More precisely, a restored formula satisfies the following BNF:</p>\n<pre>\n&lt;expression&gt; := &lt;term&gt; | &lt;expression&gt; ’+’ &lt;term&gt; | &lt;expression&gt; ’-’ &lt;term&gt;\n&lt;term&gt; := &lt;number&gt; | &lt;term&gt; * &lt;number&gt;\n&lt;number&gt; := &lt;digit&gt; | &lt;non-zero-digit&gt; &lt;number&gt;\n&lt;digit&gt; := ’0’ | &lt;non-zero-digit&gt;\n&lt;non-zero-digit&gt; := ’1’ | ’2’ | ’3’ | ’4’ | ’5’ | ’6’ | ’7’ | ’8’ | ’9’</pre>\n<p>Here, ‘+’ means addition, ‘-’ means subtraction, and ‘*’ means multiplication of integers.</p>\n<p>Your task is to write a program computing the answer of a given formula modulo 1,000,000,007, where x modulo m is a non-negative integer r such that there exists an integer k satisfying x = km + r and 0 ≤ r &lt; m; it is guaranteed that such r is uniquely determined for integers x and m.</p>",
+  "input": "<p>The input consists of a single test case.</p>\n<pre>\nN\nr<sub>1</sub> s<sub>1</sub>\n...\nr<sub>N</sub> s<sub>N</sub></pre>\n<p>The first line contains a single integer N (1 ≤ N ≤ 10<sup>4</sup>), which is the length of a sequence of a compressed formula. The following N lines represents pieces of a compressed formula. The i-th line consists of an integer r<sub>i</sub> (1 ≤ r<sub>i</sub> ≤ 10<sup>9</sup>) and a string s<sub>i</sub> (1 ≤ |s<sub>i</sub>| ≤ 10), where ti is the number of repetition of s<sub>i</sub>, and s<sub>i</sub> is a piece of an original formula. You can assume that an original formula, restored from a given compressed formula by concatenation of repetition of pieces, satisfies the BNF in the problem statement.</p>",
+  "output": "<p>Print the answer of a given compressed formula modulo 1,000,000,007.</p>",
+  "samples": [
+    {
+      "input": "1\n5 1\n",
+      "output": "11111\n"
+    },
+    {
+      "input": "2\n19 2*\n1 2\n",
+      "output": "1048576\n"
+    },
+    {
+      "input": "2\n1 1-10\n10 01*2+1\n",
+      "output": "999999825\n"
+    },
+    {
+      "input": "4\n3 12+45-12\n4 12-3*2*1\n5 12345678\n3 11*23*45\n",
+      "output": "20008570\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ACM-ICPC Asia Regional 2016",
+  "level": 22,
+  "tags": [],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.2999999523162842
+}

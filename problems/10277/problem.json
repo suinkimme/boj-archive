@@ -1,0 +1,30 @@
+{
+  "id": 10277,
+  "title": "JuQueen",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>JuQueen is the super computer with the best performance allover Germany. It is on rank 8 in the famous top500 list with its 458 752 cores. It draws a lot of energy (up to 2 301 kW), so we want to reduce that by underclocking the unused cores. The cluster scheduling algorithm which is in charge of distributing jobs over the nodes and cores of a cluster will issue the following speedstepping commands:</p>\n<ul>\n<li><code>change X S</code> changes the frequency of core X by S steps</li>\n<li><code>groupchange A B S</code> changes the frequency of every core in range [A,B] by S steps</li>\n<li><code>state X</code> returns the current state of core X</li>\n</ul>\n<p>To be safe for the future, your program should be able to handle 4 587 520 cores. The initial frequency for each core is 0.</p>",
+  "input": "<p>The input contains a single test case. It starts with a line containing three integers C, N, and O, where C is the number of cores (1 ≤ C ≤ 4 587 520) to manage, N is the number of frequency steps for each core (1 ≤ N ≤ 10 000) and O is the number of operations in the test program (1 ≤ O ≤ 50 000). Then follow O lines, each containing one command as described above. X, A and B are 0-based IDs of the cores (0 ≤ A, B, X &lt; C; A ≤ B). S is an integer number of steps, possibly negative (−N ≤ S ≤ +N).</p>\n<p>Both, the change and the groupchange command will increase (or decrease) in single steps and stop as soon as one core in the group reaches the minimal (0) or maximal frequency (N).</p>",
+  "output": "<p>Output one line for every operation in the input. For <code>change</code> and <code>groupchange</code> print the changed number of steps, for state print the current state.</p>",
+  "samples": [
+    {
+      "input": "10 10 5\nstate 0\ngroupchange 2 9 7\nstate 9\ngroupchange 0 2 10\nchange 0 -5\n",
+      "output": "0\n7\n7\n3\n-3\n"
+    },
+    {
+      "input": "4587520 10000 5\ngroupchange 0 4587010 9950\ngroupchange 23 4587000 42\ngroupchange 4710 4587001 -1000\nstate 1234560\ngroupchange 6666 3060660 10000\n",
+      "output": "9950\n42\n-1000\n8992\n1008\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2014",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "lazyprop"
+  ],
+  "accepted_user_count": 262,
+  "submission_count": null,
+  "average_tries": 2.767199993133545
+}

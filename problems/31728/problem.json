@@ -1,0 +1,33 @@
+{
+  "id": 31728,
+  "title": "Ski 2",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Mr. JOI, who manages a famous ski resort on the IOI Plateau, has decided to commemorate the 15th anniversary of the ski resort’s opening by constructing a new ski resort on the adjacent KOI Plateau.</p>\n<p>The KOI Plateau has $N$ points numbered from $1$ to $N$. Currently, the altitude of point $i$ ($1 ≤ i ≤ N$) is $H_i$m, and there exist no courses connecting each point on the plateau. Additionally, each point is equipped with one unused <strong>connection facility</strong> available.</p>\n<p>The goal of Mr. JOI is to construct KOI Hotel at one of the $N$ points and then construct some courses connecting each point on the plateau so that one can ski down to the hotel from any point. Specifically, Mr. JOI will construct the ski resort according to the following steps:</p>\n<ol>\n<li>Perform the following <strong>embankment work</strong> any number of times (possibly zero):\n\n\t<ul>\n<li>Choose a point $i$, and increase the altitude of point $i$ by $1$m. The cost of this work is $K$ per operation.</li>\n</ul>\n</li>\n<li>Choose a point from the $N$ points and construct KOI Hotel there.</li>\n<li>Perform the following <strong>extension work</strong> any number of times (possibly zero):\n\t<ul>\n<li>Choose a point $i$, and build one connection facility at point $i$. The cost of this work is $C_i$ per operation.</li>\n</ul>\n</li>\n<li>For each of the remaining $N - 1$ points <strong>excluding</strong> the point with KOI Hotel, perform the following construction:\n\t<ul>\n<li>Let $i$ be the number of the point. Select another point $j$ with a strictly lower altitude than point $i$, and use one unused connection facility at point $j$ to construct a one-way course from point $i$ to point $j$. Note that if there is no point with an unused connection facility and a strictly lower altitude than point $i$, the goal cannot be achieved.</li>\n</ul>\n</li>\n</ol>\n<p>The cost of constructing the ski resort is the sum of the costs of embankment works and extension works performed.</p>\n<p>Write a program which, given information about each point on the KOI Plateau and the cost $K$ per operation of embankment work, finds the minimum cost of constructing the ski resort.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<blockquote>\n<p>$N$ $K$</p>\n<p>$H_1$ $C_1$</p>\n<p>$H_2$ $C_2$</p>\n<p>$\\vdots$</p>\n<p>$H_N$ $C_N$</p>\n</blockquote>",
+  "output": "<p>Write one line to the standard output. The output should contain the minimum cost of constructing the ski resort.</p>",
+  "samples": [
+    {
+      "input": "5 2\n0 6\n1 1\n0 5\n2 1\n1 2\n",
+      "output": "8\n"
+    },
+    {
+      "input": "5 100000\n0 6\n1 1\n0 5\n2 1\n1 2\n",
+      "output": "100010\n"
+    },
+    {
+      "input": "8 8\n0 36\n1 47\n2 95\n0 59\n1 54\n0 95\n1 87\n2 92\n",
+      "output": "108\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, JOI Spring Training Camp, JOI 2023/2024 Spring Training Camp",
+  "level": 23,
+  "tags": [
+    "dp",
+    "greedy"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 2.2142999172210693
+}

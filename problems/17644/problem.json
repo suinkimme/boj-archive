@@ -1,0 +1,31 @@
+{
+  "id": 17644,
+  "title": "Magic Tree",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>We have a magic tree: a rooted tree on n vertices. The vertices are numbered 1 through n. Vertex 1 is the root.</p>\n<p>The magic tree gives us magic fruit. The fruit only grows in vertices of the tree other than the root. Each vertex contains at most one piece of fruit.</p>\n<p>It is now day 0 and no fruit is ripe yet. Each fruit will only be ripe for a single day. For each fruit, we are given the vertex v<sub>j</sub> where it grows, the day d<sub>j</sub> on which it will be ripe, and the amount w<sub>j</sub> of magic juice we can extract from it if we harvest it when it is ripe.</p>\n<p>The fruits have to be harvested by cutting some branches of the tree. On each day, you may cut as many branches of the tree as you like. The parts of the tree you cut off will fall to the ground and you can collect all the ripe fruits they contain. All fruits that fall to the ground when they are not ripe are discarded and no magic juice is collected from them.</p>\n<p>Formally, on each day, you may erase some edges of the tree. Whenever you do so, the tree will split into multiple connected components. You then erase all components that do not contain the root and you harvest all ripe fruits those components contained.</p>\n<p>Given is a description of the tree together with the locations, ripening days and juiciness of all m fruits. Calculate the maximum total amount of magic juice we can harvest from the tree.</p>",
+  "input": "<p>The first line contains three space-separated integers n (2 ≤ n ≤ 100, 000), m (1 ≤ m ≤ n − 1) and k (1 ≤ k ≤ 100, 000) – the number of vertices, the number of fruits, and the maximum day on which a fruit may become ripe.</p>\n<p>The following n − 1 lines contain the integers p<sub>2</sub>, . . . , p<sub>n</sub>, one per line. For each i (from 2 to n, inclusive), vertex p<sub>i</sub> (1 ≤ p<sub>i</sub> ≤ i − 1) is the parent of vertex i.</p>\n<p>Each of the last m lines describes one fruit. The j-th of these lines has the form “v<sub>j</sub> d<sub>j</sub> w<sub>j</sub>” (2 ≤ v<sub>j</sub> ≤ n, 1 ≤ d<sub>j</sub> ≤ k, 1 ≤ w<sub>j</sub> ≤ 10<sup>9</sup>).</p>\n<p>It is guaranteed that no vertex contains more than one fruit (i.e., the values v<sub>j</sub> are distinct).</p>",
+  "output": "<p>Output a single line with a single integer, the maximum amount of magic juice we can harvest from the tree.</p>",
+  "samples": [
+    {
+      "input": "6 4 10\n1\n2\n1\n4\n4\n3 4 5\n4 7 2\n5 4 1\n6 9 3\n",
+      "output": "9\n"
+    }
+  ],
+  "hint": "<p>In the example input, one optimal solution looks as follows:</p>\n<ul>\n<li>On day 4, cut the edge between vertices 4 and 5 and harvest a ripe fruit with 1 unit of magic juice. On the same day, cut the edge between vertices 1 and 2 and harvest 5 units of magic juice from the ripe fruit in vertex 3.</li>\n<li>On day 7, do nothing. (We could harvest the fruit in vertex 4 that just became ripe, but doing so is not optimal.)</li>\n<li>On day 9, cut the edge between vertices 1 and 4. Discard the fruit in vertex 4 that is no longer ripe, and harvest 3 units of magic juice from the ripe fruit in vertex 6. (Alternately, we could achieve the same effect by cutting the edge between vertices 4 and 6.)</li>\n</ul>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2019, Day 2",
+  "level": 22,
+  "tags": [
+    "dp",
+    "data_structures",
+    "trees",
+    "set",
+    "dp_tree",
+    "tree_set",
+    "smaller_to_larger",
+    "slope_trick"
+  ],
+  "accepted_user_count": 42,
+  "submission_count": null,
+  "average_tries": 2.0713999271392822
+}

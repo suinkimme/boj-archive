@@ -1,0 +1,27 @@
+{
+  "id": 35315,
+  "title": "LRU와 쿼리",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>LRU<sup>Least Recently Used</sup> 알고리즘은 페이지 교체 알고리즘으로, 처리할 페이지의 번호 목록 $p_1, p_2, \\cdots, p_T$와 캐시의 크기 $k$가 주어졌을 때, 다음과 같이 동작한다.</p>\n<ul>\n<li>처음에 비어 있는 칸이 $k$개 있는 캐시를 준비한다.</li>\n<li>시각 $t=1, \\cdots, T$에 대해 시각 $t$가 되면 다음과 같은 동작을 한다.\n<ol>\n<li>캐시에 $p_t$번 페이지가 있는지 확인한다. 캐시에 $p_t$번 페이지가 없는 경우를 <strong>페이지 부재</strong>라고 하고, 다음과 같은 처리를 한다.\n<ul>\n<li>캐시에 빈 칸이 있다면 그중 하나를 골라 $p_t$번 페이지를 넣는다.</li>\n<li>캐시에 빈 칸이 없다면 가장 오래 전에 참조된 페이지를 $p_t$번 페이지로 변경한다.</li>\n</ul>\n</li>\n<li>최종적으로 $p_t$번 페이지가 마지막으로 참조된 시각을 $t$로 갱신한다.</li>\n</ol>\n</li>\n</ul>\n<hr/>\n<p>길이가 $N$인 수열 $a$가 주어진다. 다음의 쿼리를 $Q$개 처리해 보자.</p>\n<ul>\n<li>$1\\ i\\ x$: $a_i$의 값을 $x$로 변경한다.</li>\n<li>$2\\ l\\ r\\ k$: 처리할 페이지의 번호 목록이 $a_l, a_{l+1}, \\cdots, a_r$이고 캐시의 크기가 $k$일 때 LRU 알고리즘을 사용할 경우 페이지 부재가 발생하는 횟수를 출력한다.</li>\n</ul>",
+  "input": "<p>첫째 줄에 두 정수 $N$, $Q$가 공백으로 구분되어 주어진다. $(1 \\leq N,Q \\leq 200\\,000)$</p>\n<p>둘째 줄에 $N$개의 정수 $a_1, a_2, \\cdots, a_N$이 공백으로 구분되어 주어진다. $(1\\leq a_i \\leq 20)$</p>\n<p>다음 $Q$줄에 걸쳐 쿼리가 $1\\ i\\ x$ 또는 $2\\ l\\ r\\ k$꼴로 주어진다. $(1\\leq i \\leq N$; $1 \\leq l \\leq r \\leq N$; $1\\leq x,k \\leq 20)$</p>",
+  "output": "<p>각 2번 쿼리마다 한 줄에 하나씩 답을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 4\n1 2 3 2 3\n2 1 5 3\n1 5 4\n2 3 5 2\n2 1 5 1\n",
+      "output": "3\n3\n5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 월간 향유회, 월간 향유회 2026. 01-02., pyb1031, cologne, utilforever",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "bitmask",
+    "difference_array"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.5
+}

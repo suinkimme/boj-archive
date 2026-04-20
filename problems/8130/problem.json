@@ -1,0 +1,27 @@
+{
+  "id": 8130,
+  "title": "The Postman",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Each morning Byteasar the Postman has to visit every street of his district and deliver the mail. All of the roads are one-way and are connected by the (pairwise distinct) crossroads. A pair of crossroads may be connected by two roads at the most: one for each of the opposing directions. The crossroads are numbered from 1 to n.</p>\n<p>Byteasar starts and ends each route in Byteotian Post headquarters, by the first crossroads. For as long as it can be remembered Byteasar had been choosing his route by himself, but recently the board of directors has issued a new regulation, limiting the freedom of choice of the routes. Each postman has been assigned a collection of route fragments - a set of sequences of crossroads. Byteasar has to choose such a route which:</p>\n<ul>\n<li>leads down each street once only,</li>\n<li>comprises each of the assigned sequences (as a consistent subsequence),</li>\n<li>starts and ends by the first crossroads.</li>\n</ul>\n<p>Unfortunately, it is possible that the board of directors issued a regulation, for which a route satisfying the requirements does not in fact exist (it requires in one of its sequences that a road be taken, which does not exist, for instance). Help Byteasar and write a programme which verifies if a correct route exists and finds it if it does.</p>\n<p>\nWrite a programme which:</p>\n<ul>\n<li>reads from the input file a description of the streets and assigned sequences,</li>\n<li>verifies if it is possible for Byteasar to get around his district in such a way as to allow him to visit each street exactly once and to fulfill the directors' assigment,</li>\n<li>writes the route found to the output file or concludes that such a route does not exist.</li>\n</ul>",
+  "input": "<p>The first line of the input file contains two integers n and m separated by a single space, 2 ≤ n ≤ 50,000, 1 ≤ m ≤ 200,000, denoting the number of crossroads and roads, respectively. The following m lines contain the descriptions of the roads: two integers a, b, separated by a single space, 1 ≤ a,b ≤ n, a≠b, denote a one-way road from the crossroads a to b. Each (ordered) pair a,b appears in the data once at the most. In the following line there is an integer t, 0 ≤ t ≤ 10,000, denoting the number of assigned sequences. The successive t lines contain the descriptions of these sequences. A description consists of an integer k, 2 ≤ k ≤ 200,000, and a sequence k of crossroads' numbers. The numbers in a line are separated by single spaces. The total length of all of the sequences does not exceed 1,000,000.</p>\n<p> </p>",
+  "output": "<p>Your programme should write in the first line of the output file:</p>\n<ul>\n<li>TAK (i.e. yes in Polish) - if a route satisfying the requirements of the task exists,</li>\n<li>NIE (i.e. no in Polish) - if such a route does not exist.</li>\n</ul>\n<p>Should the answer be TAK, the following lines should contain a description of the route found. Should more such routes exists, write out any of them. The description consists of the sequence of crossroads the postman visits while on his route - m+1 numbers: v<sub>1</sub>,…,v<sub>m+1</sub>, each written out in a separate line, such that:</p>\n<ul>\n<li>v<sub>1</sub>=v<sub>m+1</sub>=1,</li>\n<li>v<sub>i</sub> and v<sub>i+1</sub> (for 1 ≤ i ≤ m) are connected by a street,</li>\n<li>each street appears on the list once only,</li>\n<li>the route comprises, as a consistent subsequence all of the sequences imposed by the board of directors.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "6 10\n1 5\n1 3\n4 1\n6 4\n3 6\n3 4\n4 3\n5 6\n6 2\n2 1\n4\n3 1 5 6\n3 3 4 3\n4 4 3 6 4\n3 5 6 2\n",
+      "output": "TAK\n1\n3\n4\n3\n6\n4\n1\n5\n6\n2\n1\n"
+    }
+  ],
+  "hint": "<p><img alt=\"\" src=\"1.gif\" style=\"height:218px; width:376px\"/></p>",
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2005/2006, Stage 2",
+  "level": 21,
+  "tags": [
+    "constructive",
+    "eulerian_path",
+    "graphs",
+    "math"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 11.5
+}

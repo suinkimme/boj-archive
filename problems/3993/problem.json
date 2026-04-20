@@ -1,0 +1,37 @@
+{
+  "id": 3993,
+  "title": "Disjoint Regular Expressions",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Mark is developing new social network Facepalm for inhabitants of Phobos and Deimos. His recent task is to add information about home asteroid of the owner to each account. Of course, each account owner could enter such information, but Mark decided that it would be more convenient if some default value was suggested to the user at logon. He investigated the situation and found out that home asteroid of a user can be found by analyzing his last name.</p>\n<p>Last name of each user of Facepalm is a non-empty word consisting of lowercase letters of the English alphabet. Users from Phobos have their last names matching regular expression P while users from Deimos have their last names matching regular expression D.</p>\n<p>However, the problem is that some last names can match both expressions. Two expressions are called disjoint if there is no such non-empty string s that matches both expressions. Mark believes that expressions P and D are disjoint. However he needs your help to check it.</p>\n<p>You are given two regular expressions P and D. Check whether they are disjoint, and if they are not, ﬁnd the shortest non-empty string s that matches both of them. If there are several shortest common strings, you can ﬁnd any one.</p>",
+  "input": "<p>The input ﬁle contains two lines. The ﬁrst line contains regular expression P. The second line contains regular expression D. Each expression contains from 1 to 100 characters.</p>",
+  "output": "<p>If Mark’s guess is correct and the two expressions are indeed disjoint, print “Correct” at the ﬁrst line of the output ﬁle. If they are not, print “Wrong” at the ﬁrst line of the output ﬁle. In this case the second line must contain any shortest non-empty string that matches both expressions.</p>",
+  "samples": [
+    {
+      "input": "a(ab)*b\na(a|b)*ab\n",
+      "output": "Correct\n"
+    },
+    {
+      "input": "a(ab)*a\na(a|b)*ba\n",
+      "output": "Wrong\naaba\n"
+    }
+  ],
+  "hint": "<p>Let us deﬁne regular expressions and matching strings to them formally.</p>\n<ul>\n<li>A single lowercase letter c is a regular expression, it matches only a string consisting of a single letter c.</li>\n<li>Alternation: if P and Q are regular expressions then (P|Q) is a regular expression, a string α matches it if α matches P or α matches Q.</li>\n<li>Concatenation: if P and Q are regular expressions then (PQ) is a regular expression, a string α matches it if α = βγ, β matches P and γ matches Q.</li>\n<li>Kleene star: if P is regular expression then (P*) is a regular expression, a string α matches it if α can be represented as a concatenation of zero or more strings α<sub>1</sub>α<sub>2</sub>...α<sub>k</sub> where all α<sub>i</sub> match P. An empty string always matches Kleene star.</li>\n</ul>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2012",
+  "level": 24,
+  "tags": [
+    "0_1_bfs",
+    "bfs",
+    "dijkstra",
+    "graphs",
+    "graph_traversal",
+    "implementation",
+    "parsing",
+    "regex",
+    "shortest_path",
+    "string"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 4.071400165557861
+}

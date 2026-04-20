@@ -1,0 +1,42 @@
+{
+  "id": 25244,
+  "title": "가희와 영상 추천 시스템",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>가희는 YOTUBE에서 영상을 보고 있습니다. 가희가 <code>R를</code> 입력했을 때, 고유 번호가 <em>id</em>인 영상의 연관 지수는 아래와 같이 정의됩니다.</p>\n<ul>\n<li>가희가 <code>R를</code> 입력하기 전 72시간 전부터 <code>R를</code> 입력할 때 까지\n\n\t<ul>\n<li>고유 번호가 <em>id</em>인 영상을 본 횟수 <em>v</em></li>\n<li>고유 번호가 <em>id</em>인 영상이 속한 카테고리를 C라 했을 때, 카테고리 C에 속하는 영상을 본 횟수 <em>c</em></li>\n</ul>\n</li>\n<li>라고 했을 때, <em>v</em>와 <em>c</em>를 더한 값</li>\n</ul>\n<p>YOTUBE에 있는 추천 영상은 아래 기준에 따라 순위가 결정됩니다.</p>\n<ol>\n<li>연관 지수가 높은 것</li>\n<li>연관 지수가 같다면, 영상 <em>id</em>가 작은 것부터</li>\n</ol>\n<p>가희가 <em>R</em>를 입력할 때마다, 추천 영상 1위의 영상에 대한 정보를 출력해 주세요.</p>",
+  "input": "<p>1번째 줄에 YOTUBE에 있는 영상 개수 <em>N</em>과 이벤트의 개수 <em>E</em>가 주어집니다.</p>\n<p>그 다음 줄부터 <em>N</em>개의 줄에 <code>VIDEO_NAME</code>과 <code>VIDEO_CATEGORY</code>와 <code>VIDEO_ID</code>가 공백으로 구분되어 주어집니다. 이때</p>\n<ul>\n<li>문자열 <code>VIDEO_NAME</code>은 공백, 숫자, 소문자로만 이루어져 있으며, 공백으로 시작하거나 끝나지 않습니다.</li>\n<li>문자열 <code>VIDEO_CATEGORY</code>는 숫자, 소문자로만 이루어져 있습니다.</li>\n<li><code>VIDEO_ID</code>는 1이상 10<sup>9</sup> 이하의 정수입니다.</li>\n</ul>\n<p>그 다음 줄부터 <em>E</em>개의 줄에 아래 형식 중 하나가 주어집니다.</p>\n<ul>\n<li><code>EVENT_TIME</code> <code>VIDEO_ID</code>\n<ul>\n<li><code>EVENT_TIME</code>에 가희는 고유 번호가 <code>VIDEO_ID</code>인 영상을 봅니다.</li>\n</ul>\n</li>\n<li><code>EVENT_TIME</code> <code>R</code>\n<ul>\n<li><code>EVENT_TIME</code>에 가희는 추천 영상 1위의 영상 정보를 알고 싶어합니다.</li>\n</ul>\n</li>\n</ul>\n<p>이때, <code>VIDEO_ID</code>는 YOTUBE에 있는 영상 <em>id</em>만 주어집니다.</p>",
+  "output": "<p><code>R</code> 연산이 들어올 때마다, 추천 영상 1위의 동영상 <em>id</em>를 출력해 주세요.</p>",
+  "samples": [
+    {
+      "input": "4 6\nfeel my rhythm 1 hour music 2\nfairy wink music 5\nyoasobi maybe music 3\nsuper rapid train kyoto to osaka train 1\n2022-01-01 22:23:34 1\n2022-01-02 22:20:00 2\n2022-01-03 11:11:11 R\n2022-01-03 12:12:33 5\n2022-01-05 22:20:00 R\n2022-01-05 22:22:01 R\n",
+      "output": "1\n2\n5\n"
+    },
+    {
+      "input": "5 3\nproduce 48 boombayah audition 2\nproduce 48 mamma mia audition 5\nyoasobi racing into the night music 3\nhkt castle moves now music 1\ngag concert ep 283 entertainment 4\n2022-01-01 22:23:34 2\n2022-01-02 22:20:00 5\n2022-01-03 11:11:11 R\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 7\nmaplestory swoo normal mode game 2\nmaplestory swoo hard mode game 1\nhkt 48 outing ep 49 entertainment 5\n2022-01-01 22:23:34 2\n2022-01-01 22:23:36 2\n2022-01-02 22:20:00 1\n2022-01-04 22:23:37 R\n2022-01-05 22:19:57 5\n2022-01-05 22:19:58 R\n2022-01-05 22:20:01 R\n",
+      "output": "1\n1\n5\n"
+    },
+    {
+      "input": "7 6\nyoasobi love letter music 1\nmoringgu musume get you music 2\ngahui hate jusagi daliy 3\nproduce 48 get you audition 4\ngahui meet friend daliy 5\nmay 2022 top 100 music music 6\nakb fairy wink music 7\n2021-12-12 00:00:00 2\n2021-12-12 00:11:00 4\n2021-12-12 00:22:00 1\n2021-12-15 00:00:00 R\n2021-12-15 00:11:00 6\n2021-12-15 00:11:10 R\n",
+      "output": "1\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 가희와 함께 하는 코딩 테스트, 가희와 함께 하는 코딩테스트 4회, chogahui05, bnb2011, chansol, mjhmjh1104, parkky, pjshwa, quickn, tony9402",
+  "level": 19,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "tree_set",
+    "parsing",
+    "priority_queue",
+    "two_pointer"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 8.769200325012207
+}

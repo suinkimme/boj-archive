@@ -1,0 +1,30 @@
+{
+  "id": 10133,
+  "title": "Ant colony",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The ants are scavenging an abandoned ant hill in search of food. The ant hill has n chambers and n-1 corridors connecting them. We know that each chamber can be reached via a unique path from every other chamber. In other words, the chambers and the corridors form a tree.</p>\n<p>There is an entrance to the ant hill in every chamber with only one corridor leading into (or out of) it. At each entry, there are g groups of m<sub>1</sub>,m<sub>2</sub>,…,m<sub>g</sub> ants respectively. These groups will enter the ant hill one after another, each successive group entering once there are no ants inside. Inside the hill, the ants explore it in the following way:</p>\n<ul>\n<li>Upon entering a chamber with d outgoing corridors yet unexplored by the group, the group divides into d groups of equal size. Each newly created group follows one of the d corridors. If d=0, then the group exits the ant hill.</li>\n<li>If the ants cannot divide into equal groups, then the stronger ants eat the weaker until a perfect division is possible. Note that such a division is always possible since eventually the number of ants drops down to zero. Nothing can stop the ants from allowing divisibility - in particular, an ant can eat itself, and the last one remaining will do so if the group is smaller than d.</li>\n</ul>\n<p>The following figure depicts m ants upon entering a chamber with three outgoing unexplored corridors, dividing themselves into three (equal) groups of [m/3] ants each.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:228px; width:305px\"/></p>\n<p>A hungry anteater dug into one of the corridors and can now eat all the ants passing through it. However, just like the ants, the anteater is very picky when it comes to numbers. It will devour a passing group if and only if it consists of exactly k ants. We want to know how many ants the anteater will eat.</p>",
+  "input": "<p>The first line of the standard input contains three integers n, g, k(2 ≤ n,g ≤ 1,000,000, 1 ≤ k ≤ 10<sup>9</sup>), separated by single spaces. These specify the number of chambers, the number of ant groups and the number of ants the anteater devours at once. The chambers are numbered from 1 to n.</p>\n<p>The second line contains g integers m<sub>1</sub>,m<sub>2</sub>,…,m<sub>g</sub>(1 ≤ m<sub>i</sub> ≤ 10<sup>9</sup>), separated by single spaces, where m<sub>i</sub> gives the number of ants in the i-th group at every entrance to the ant hill. The  n-1 lines that follow describe the corridors within the ant hill; the i-th such line contains two integers a<sub>i</sub>, b<sub>i</sub>(1 ≤ a<sub>i</sub>,b<sub>i</sub> ≤ n), separated by a single space, that indicate that the chambers no.  and  are linked by a corridor. The anteater has dug into the corridor that appears first on input.</p>\n<p>In tests worth 50% of the total score, the total number of groups of ants entering the ant hill does not exceed 1,000,000. Moreover, in their subset worth 20% of the total score, it additionally holds that n,g ≤ 100.</p>",
+  "output": "<p>Your program should print to the standard output a single line containing a single integer: the number of ants eaten by the anteater.<br/>\n<img alt=\"\" src=\"2.png\" style=\"height:234px; width:443px\"/></p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "7 5 3\n3 4 1 9 11\n1 2\n1 4\n4 3\n4 5\n4 6\n6 7\n",
+      "output": "21\n"
+    }
+  ],
+  "hint": "<p>Next to each of the chambers no. 2, 3, 5, and 7, there are 5 groups of ants. The anteater will eat 3 ants from the first group that starts its exploration at chamber no. 2 and 3 ants from both the fourth and the fifth group that start their exploration at the chamber no. 3, 5, or 7.</p>",
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2013/2014, Stage 3, h0ngjun7, jh05013",
+  "level": 17,
+  "tags": [
+    "math",
+    "graphs",
+    "graph_traversal",
+    "trees",
+    "binary_search",
+    "set",
+    "dfs"
+  ],
+  "accepted_user_count": 56,
+  "submission_count": null,
+  "average_tries": 2.857100009918213
+}

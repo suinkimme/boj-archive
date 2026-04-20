@@ -1,0 +1,25 @@
+{
+  "id": 18386,
+  "title": "BNKQ",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Nili bank provides banking services to its customers throughout the country. In each of their branches they have multiple tellers (cashier) that provide deposit or withdraw services to customers. Each teller has a queue of customers that are waiting for depositing or withdrawing money from their account through the teller. The bank records customer, the time they stand in queue (or processed), and teller information.</p>\n<p>With the information in their hand, bank want to know which tellers were the busiest and what is their peak time frame during the day.</p>\n<p>Write a program that receive the records for a single day as input and print the top three busiest tellers and their peak time frame.</p>",
+  "input": "<p>First N lines (N &lt; 10000) contains the records for a single day.</p>\n<ul>\n<li>Record format: TELLERCUSTOMER[TIME]</li>\n<li>TELLER, is the teller id</li>\n<li>CUSTOMER, is the customer id</li>\n<li>TIME, is the time (between 08:00:00AM - 04:00:00PM) customer stands in queue, or was processed by the teller</li>\n<li>First occurrence of record is for customer standing in queue, Second occurrence of the same record is for the time customer being processed</li>\n<li>[TIME], it is absent in the record if customer leave the queue without processing. Input ends with the line ENDOFINPUT. It is not part of input.</li>\n</ul>",
+  "output": "<p>Print top 3 busiest tellers, total number of customer they have processed in a day and his/her peak time frames (in hours); each teller in one line.</p>\n<ul>\n<li>Format: TELLERPROCESSED-COUNTPEAK-TIMEFRAME</li>\n<li>Being a busy teller means processing more customers, not having more customers in queue.</li>\n<li>Print the first PEAK-TIMEFRAME (the one nearest to 08:00:00AM) for each teller, if there are multiple time frames with same peak weight.</li>\n<li>Sort tellers by name in ascending order if two or more teller have processed same number of customers.\n\t<ul>\n<li>TIMEFRAME, each time frame is 1 hour in length. Eg: These are 8 timeframes between 08:00AM - 04:00PM: 08AM, 09AM, 10AM, ... 02PM, and 03PM</li>\n<li>A time frame is, eg:\n\t\t<ul>\n<li>08:00:00AM &lt;= 08AM time frame &lt; 09:00:00AM</li>\n<li>03:00:00PM &lt;= 03PM time frame &lt; 04:00:00PM</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>",
+  "samples": [
+    {
+      "input": "T01 CUST01 08:18:55AM\nT01 CUST03 08:20:00AM\nT01 CUST01 08:22:00AM\nT01 CUST02 08:20:23AM\nT01 CUST02 08:25:17AM\nT01 CUST03 08:27:50AM\nT01 CUST04 10:07:46AM\nT01 CUST04 10:19:21AM\nT02 CUST05 10:40:11AM\nT02 CUST06 10:40:18AM\nT02 CUST05 10:44:30AM\nT02 CUST06 10:46:44AM\nT03 CUST07 02:18:55PM\nT03 CUST08 02:19:00PM\nT03 CUST07 03:19:10PM\nT03 CUST08 03:21:27PM\nT03 CUST09 03:26:19PM\nT03 CUST09 03:29:59PM\nT04 CUST10 11:13:34AM\nT04 CUST10\nENDOFINPUT\n",
+      "output": "T01 4 08AM\nT03 3 03PM\nT02 2 10AM\n"
+    }
+  ],
+  "hint": "<p>There are four tellers, and ten customers in this case.</p>\n<ul>\n<li>Teller 01, processed 4 customers. Three of them were processed in 08AM timeframe, one of them processed in 10AM timeframe.</li>\n<li>Teller 02, processed 2 customers. Both of them were processed in 10AM timeframe.</li>\n<li>Teller 03, processed 3 customers. One of them processed in 02PM timeframe, and the two others were processed in 03PM timeframe.</li>\n<li>Teller 04, had one customer in queue but left the queue.</li>\n</ul>\n<p>So, the teller with most processed customer is T01 with four customers, T03 is the second most busiest teller with three customers, and then T02 that processed two.</p>\n<p>Customer 01 (CUST01) stands in the teller 01 (T01) queue at [T01 CUST01 08:18:55AM], and was processed at [T01 CUST01 08:22:00AM]</p>",
+  "source": "ICPC, Regionals, Asia West Continent, Afghanistan, Asia-Kabul ICPC Regional Contest 2018",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "sorting"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.5455000400543213
+}

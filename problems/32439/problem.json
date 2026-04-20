@@ -1,0 +1,29 @@
+{
+  "id": 32439,
+  "title": "Harmonics with Interference",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The transmission of messages by electromagnetic means presents several challenges, such as interference from other natural or artificial signals that can corrupt a transmission.</p>\n<p>A common strategy is to send additional information that allows a received message to be validated. Some more robust protocols even allow for the correction of some errors in the sent message.</p>\n<p>Arthur and Bruna are testing a new transmission protocol on a device they have developed. A message $M$, which is a sequence of bits, is sent from Arthur to Bruna, along with a control sequence $N$, also represented as a sequence of bits. By composing the message $M$ and choosing the bits from $N$, Arthur ensures that the integer encoded by $M$ is divisible by the integer represented by $N$.</p>\n<p>For each bit received by Bruna, if the bit was transmitted without problems, the value <code>0</code> or <code>1</code> will be stored in the receiving device. If there was any interference, the symbol <code>*</code> is stored in place of the bit. The result of the transmission will be stored in the pair $(M' , N' )$.</p>\n<p>After the communication, if the message was sent successfully, Bruna can decode the original message $M$ (since $M = M'$). If there was a problem, due to the way the protocol works, it may still be possible to decode the message. If many bits were lost, Bruna simply discards the message. But for transmissions where at most $16$ bits of the original pair $(M, N)$ were lost, Bruna would like to try to recover the message, avoiding retransmissions. She needs your help to recover one of the possible messages encoded by the received pair $(M' , N' )$.</p>\n<p>For example, suppose Bruna received $M'=$<code>111*</code> and $N'=$<code>1*</code>. Two transmissions could have been made:</p>\n<ol>\n<li>$M=$<code>1111</code> with $N=$<code>11</code>. In this case, the numbers $15$ and $3$ are represented by $M$ and $N$, respectively.</li>\n<li>$M=$<code>1110</code> with $N=$<code>10</code>. In this case, the numbers $14$ and $2$ are represented by $M$ and $N$, respectively.</li>\n</ol>\n<p>Your task is: given the representations of the information received, find a message $M$ that could have been sent by Arthur. If more than one message exists, you can print any message that could have been transmitted by Arthur.</p>",
+  "input": "<p>The first line of input will contain a sequence of characters representing $M'$, with $1 ≤ |M' | ≤ 500$. The second line of input will contain a sequence of characters representing $N'$, with $1 ≤ |N' | ≤ 16$. All characters in $N'$ and $M'$ will be either <code>0</code>, <code>1</code>, or <code>*</code>. In total, there will never be more than $16$ <code>*</code> characters in the input. It is guaranteed that $N'$ always contains at least one bit $1$.</p>",
+  "output": "<p>A single line should be printed, containing a message $M$, compatible with the information received by Bruna.</p>",
+  "samples": [
+    {
+      "input": "111*\n1*\n",
+      "output": "1111\n"
+    },
+    {
+      "input": "101**\n11\n",
+      "output": "10101\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Sub-Regional Brasil do ACM ICPC, Maratona de Programação da SBC 2024, jhnah917",
+  "level": 10,
+  "tags": [
+    "bruteforcing",
+    "backtracking"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.8696000576019287
+}

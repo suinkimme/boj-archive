@@ -1,0 +1,28 @@
+{
+  "id": 13922,
+  "title": "Suspicious Samples",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Fatima is a researcher. She currently studies water circulation in her country river basins. She collects data samples from various meteorological stations that measure diverse climate-related values. Fatima then searches for interesting patterns in those samples. She uses a program which reads incoming samples’ data in real time and outputs those samples which are interesting or suspicious in some way. The decision whether a sample is “interesting” or “suspicious” is based on a fixed set of conditions, such as “the value is greater than the average of the last two hours” or “the value is lower than anything else in the last five minutes” which are easy to program into a computer.</p>\n<p>Today, Fatima is in doubt about her yesterday’s results and she came to see you, an experienced programmer. She thinks that her program did not evaluate the data correctly and she asks you to help her verify its results. In particular, she brings the complete sequence of samples and describes the set of conditions to you. Your program has to read the samples and produce the output according to the conditions. Fatima will then compare the output of your program to the output of her program and decide what has to be done next.</p>",
+  "input": "<p>There are more test cases. The first line of each test case contains one integer N (1 ≤ N ≤ 10<sup>5</sup> ), giving the number of samples. Then there are N lines, each describing one sample. The line contains two integers T<sub>i</sub> and V<sub>i</sub> (1 ≤ T<sub>i</sub> ≤ 10<sup>9</sup> , 1 ≤ V<sub>i</sub> ≤ 10<sup>4</sup> ), meaning that the sample value V<sub>i</sub> was acquired in time T<sub>i</sub> . The times are given in seconds elapsed since some fixed moment in the past and they form a strictly increasing sequence (∀i, k 1 ≤ i &lt; k ≤ N : T<sub>i</sub> &lt; T<sub>k</sub>).</p>\n<p>The next line of the input contains one integer C (1 ≤ C ≤ 10), the number of conditions to evaluate. Each of the following C lines specifies one condition C<sub>j</sub> . The line contains three tokens separated with a space:</p>\n<ul>\n<li>A relation operator R<sub>j</sub> , which is either “gt” (greater than) or “lt” (less than).</li>\n<li>An aggregate function F<sub>j</sub> , one of the “min” (minimum), “max” (maximum), or “avg” (average).</li>\n<li>An integer number L<sub>j</sub> specifying the length of the time interval to be concerned, in seconds.</li>\n</ul>\n<p>In general, a condition applied to a sample value V<sub>i</sub> checks how V<sub>i</sub> is related to some aggregate feature of the samples which were acquired before V<sub>i</sub> . The function F<sub>j</sub> specifies exactly that feature.</p>\n<p>To be more specific, let S<sub>ij </sub>be the set of all samples which were acquired before V<sub>i</sub> but no more than L<sub>j </sub>seconds earlier. The sample value V<sub>i</sub> satisfies the condition C<sub>j </sub>if and only if the relation V<sub>i</sub>R<sub>j</sub>F<sub>j</sub> (S<sub>ij</sub> ) holds. For example, the sample value 800 in conjunction with “lt min 300” can be read as “is 800 less than the minimum sample value acquired in the previous 5 minutes before this 800 was obtained?”. Note that sample V<sub>i</sub> is not an element of S<sub>ij</sub></p>",
+  "output": "<p>For each condition, print one integer: the number of samples whose values satisfy that particular condition. If there are no samples in the time interval specified by the condition, the condition is never considered satisfied.</p>",
+  "samples": [
+    {
+      "input": "10\n60 30\n120 28\n180 35\n240 34\n300 40\n360 31\n420 28\n480 2\n540 42\n600 30\n2\ngt avg 7200\nlt min 300\n",
+      "output": "4\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2016, Contest, Open Cup, 2016/2017 Season, Stage 6: Czech Grand Prix",
+  "level": 13,
+  "tags": [
+    "data_structures",
+    "set",
+    "tree_set",
+    "priority_queue",
+    "sliding_window"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 3
+}

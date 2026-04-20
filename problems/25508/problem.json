@@ -1,0 +1,39 @@
+{
+  "id": 25508,
+  "title": "Totoro",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><em>“Tonari no To to ro Totoro, To to ro Totoro”</em></p>\n<p>Totoro ima $K$ permutacija $p_1, \\dots , p_K$ duljine $N$.</p>\n<p>Neka je $S$ skup svih permutacija koje je moguće dobiti komponiranjem konačnog broja permutacija $p_i$. Kompozicija dvije permutacije $π$ i $τ$ na mjestu $i$ ima element $π(τ (i))$. Na primjer, kompozicija permutacija $π = (1, 3, 2)$ i $τ = (2, 3, 1)$ jednaka je $π ◦ τ = (3, 2, 1)$. Dozvoljeno je komponirati iste permutacije više puta.</p>\n<p>Jasno je da je $S$ konačan skup, jer je sadržan u skupu svih permutacija duljine $N$.</p>\n<p>Zanima nas <strong>prosječan broj inverzija permutacija u skupu</strong> $S$. Broj inverzija $I(π)$ permutacije $π$ jednak je broju uređenih parova brojeva $1 ≤ i &lt; j ≤ N$ za koje je $π(i) &gt; π(j)$.</p>\n<p>Formalno, zanima nas $\\frac{1}{|S|}\\sum_{π∈S}{I(π)}$. Može se dokazati da je odgovor moguće napisati kao skraćeni razlomak $\\frac{A}{B}$, gdje $B$ nije djeljiv s $10^9 + 7$. Ispišite $AB^{-1}$ modulo $10^9 + 7$, odnosno broj $X$ takav da je $0 ≤ X &lt; 10^9 + 7$ i $X · B ≡ A \\pmod {10^9 + 7}$.</p>",
+  "input": "<p>U prvom su retku prirodni brojevi $K$ i $N$ iz teksta zadatka.</p>\n<p>U $i$-tom od sljedećih $K$ redaka nalazi se permutacija $p_i$, prikazana kao niz od $N$ različitih brojeva od $1$ do $N$, odvojenih razmakom.</p>",
+  "output": "<p>U jedinom retku ispišite odgovor modulo $10^9 + 7$.</p>",
+  "samples": [
+    {
+      "input": "1 3\n2 3 1\n",
+      "output": "333333337\n"
+    },
+    {
+      "input": "2 5\n4 2 1 3 5\n2 5 4 3 1\n",
+      "output": "5\n"
+    },
+    {
+      "input": "1 9\n3 4 5 6 7 8 1 9 2\n",
+      "output": "300000017\n"
+    }
+  ],
+  "hint": "<p>Pojašnjenje prvog probnog primjera: Primijetimo da je $S = \\{(2, 3, 1),(3, 1, 2),(1, 2, 3)\\}$. Prva permutacija ima dvije inverzije, druga isto dvije inverzije, a zadnja je identiteta i nema inverzija. Zato je prosječan broj inverzija $\\frac{4}{3}$, što odgovara ispisanom broju modulo $10^9 + 7$.</p>\n<p>Pojašnjenje drugog probnog primjera: Može se provjeriti da je $S$ jednak skupu svih permutacija skupa $\\{1, 2, 3, 4, 5\\}$, tj. komponiranjem danih permutacija je moguće dobiti sve ostale permutacije.</p>\n<p>Pojašnjenje trećeg probnog primjera: U ovom primjeru vrijedi $|S| = 20$, te je odgovor jednak razlomku $\\frac{149}{10}$ modulo $10^9 + 7$.</p>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2020, Final Exam #2",
+  "level": 20,
+  "tags": [
+    "math",
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "disjoint_set",
+    "probability",
+    "linearity_of_expectation"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2
+}

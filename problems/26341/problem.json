@@ -1,0 +1,22 @@
+{
+  "id": 26341,
+  "title": "Happy Hiking Grounds",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Arup likes hiking and, since he just taught trees in CS I, he has found a trail that is in the form of a tree. For simplicity, Arup always uses A to refer to the tree root. So, a sample trail might be:</p>\n<pre style=\"text-align: center;\">\nA\n/ | \\\n/  |  \\\n/   |   \\\nB    J    C\n/ | \\  |    / \\\nD  E  F I   H  G</pre>\n<p>Arup has decided to follow a Breadth First Search (BFS) to hike the trail and, for simplicity, Arup visits the children of a node in alphabetical order. The BFS traversal of the above sample tree is:</p>\n<pre>\nA B C J D E F G H I</pre>\n<p>But Arup quickly realizes that to go from one child to a sibling, he has to go back to the parent again (since there is no direct path between a child and its sibling). So, for the above tree, Arup will actually walk as follows:</p>\n<pre>\nA-B-A-C-A-J-A-B-D-B-E-B-F-B-A-C-G-C-H-C-A-J-I-J-A</pre>\n<p>Note that Arup returns to the root at the end of his hike. Well, this is a lot more walking than Arup had expected from BFS but Arup doesn’t mind since his wife (a medical doctor) has convinced him of the benefits of exercise and good eating habits!</p>\n<p>Given a trail description (a tree), determine the total distance (cost) of the described Breadth First Search hike of the trail including the distance (cost) of backtracking at each step.</p>",
+  "input": "<p>The first input line contains a positive integer, t, indicating the number of trails (trees) to check. Each trail is defined by a series of paths that connect junctions and points of interest (each of which is represented by a single uppercase letter). On the following input line there will be an integer, n (1 ≤ n≤ 26), providing the number of tree nodes (junctions and points of interest); assume the nodes will be the first n uppercase letters. On each of the next n−1 input lines, there will be two uppercase letters, indicating that there is an edge between those two locations (first node being the parent of the second node), and a positive integer representing the length of that edge (the distance between the two nodes); the three values on these input lines are separated from each other by a single space.</p>\n<p>Arup will always start at the entrance, which is labeled as “A” (which also is guaranteed to appear in the input).</p>",
+  "output": "<p>At the beginning of each trail, output the message “Trail #i:” on a line by itself where i is the number of trail in the input (starting with 1). On the next output line, output the message “BFS hike will cost b” where b is the total distance of Arup’s hike in his breadth first fashion (this must include the backtracking cost). Assume the total distance will fit in an integer.</p>\n<p>Note that, at each location, Arup will always visit each of the next possible locations in alphabetical order. Leave a blank line after the output for each trail. Follow the format illustrated in Sample Output.</p>",
+  "samples": [
+    {
+      "input": "2\n3\nA B 5\nA C 3\n8\nA B 1\nA C 7\nB D 5\nB E 3\nB F 2\nC G 4\nC H 2\n",
+      "output": "Trail #1:\nBFS hike will cost 16\n\nTrail #2:\nBFS hike will cost 64\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, University of Central Florida, 2012 Local Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

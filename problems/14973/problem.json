@@ -1,0 +1,28 @@
+{
+  "id": 14973,
+  "title": "Boolean Expression Compressor",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are asked to build a compressor for Boolean expressions that transforms expressions to the shortest form keeping their meaning.</p>\n<p>The grammar of the Boolean expressions has terminals <code>0</code> <code>1</code> <code>a</code> <code>b</code> <code>c</code> <code>d</code> <code>-</code> <code>^</code> <code>*</code> <code>(</code> <code>)</code>, start symbol &lt;E&gt; and the following production rule:</p>\n<blockquote>&lt;E&gt;  ::=  <code>0</code>  |  <code>1</code>  |  <code>a</code>  |  <code>b</code>  |  <code>c</code>  |  <code>d</code>  |  <code>-</code>&lt;E&gt;  |  <code>(</code>&lt;E&gt;<code>^</code>&lt;E&gt;<code>)</code>  |  <code>(</code>&lt;E&gt;<code>*</code>&lt;E&gt;<code>)</code></blockquote>\n<p>Letters <code>a</code>, <code>b</code>, <code>c</code> and <code>d</code> represent Boolean variables that have values of either <code>0</code> or <code>1</code>. Operators are evaluated as shown in the Table below. In other words, <code>-</code> means negation (NOT), <code>^</code> means exclusive disjunction (XOR), and <code>*</code> means logical conjunction (AND).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:81px; width:233px\"/></p>\n<p style=\"text-align: center;\">Table: Evaluations of operators</p>\n<p>Write a program that calculates the length of the shortest expression that evaluates equal to the given expression with whatever values of the four variables.</p>\n<p>For example, <code>0</code>, that is the first expression in the sample input, cannot be shortened further. Therefore the shortest length for this expression is 1.</p>\n<p>For another example, <code>(a*(1*b))</code>, the second in the sample input, always evaluates equal to <code>(a*b)</code> and <code>(b*a)</code>, which are the shortest. The output for this expression, thus, should be <code>5</code>.</p>",
+  "input": "<p>The input consists of multiple datasets. A dataset consists of one line, containing an expression conforming to the grammar described above. The length of the expression is less than or equal to 16 characters.</p>\n<p>The end of the input is indicated by a line containing one ‘<code>.</code>’ (period). The number of datasets in the input is at most 200.</p>",
+  "output": "<p>For each dataset, output a single line containing an integer which is the length of the shortest expression that has the same value as the given expression for all combinations of values in the variables.</p>",
+  "samples": [
+    {
+      "input": "0\n(a*(1*b))\n(1^a)\n(-(-a*-b)*a)\n(a^(b^(c^d)))\n.\n",
+      "output": "1\n5\n2\n1\n13\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2017 Japan Domestic Contest",
+  "level": 17,
+  "tags": [
+    "dp",
+    "implementation",
+    "parsing",
+    "precomputation",
+    "string"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 3.3333001136779785
+}

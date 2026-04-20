@@ -1,0 +1,24 @@
+{
+  "id": 12252,
+  "title": "The Bored Traveling Salesman (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Your boss is sending you out on an international sales trip. What joy!</p>\n<p>You have <strong>N</strong> cities (numbered from 1 to <strong>N</strong>) to visit and can get to them using a set of bidirectional flights that go between the cities.</p>\n<p>All of the cities must be visited at least once. To do this you can book any number of tickets, subject to the following conditions:</p>\n<ul>\n<li>Each ticket consists of 2 flights, one from a specific city <strong>X</strong> to another specific city <strong>Y</strong> (this is called the <strong>outbound</strong> flight), and the other one from city <strong>Y</strong> to city <strong>X</strong> (this is called the <strong>return</strong> flight).</li>\n<li>You must use the outbound flight before the corresponding return flight (you can use other flights in between).</li>\n<li>At most 1 outbound flight going to each city, although there is no limit on the return flights (multiple return flights can go to the same city).</li>\n<li>You must use all flights which belong to the tickets you booked.</li>\n<li>You can otherwise visit the cities in any order you like.</li>\n<li>You can start your trip from any city you choose. You may not take an outbound flight to your starting city.</li>\n</ul>\n<p><span style=\"line-height:1.6em\">Now you could try to minimize the total distance travelled, but you did that last time, so that would be boring. Instead you noticed that each city has a distinct 5 digit ZIP (postal) code. When you visit a city for the first time (this includes the city which you start from) you write down the zip code and concatenate these into one large number (concatenate them in the order which you visited each city for the first time). What is the smallest number you can achieve?</span></p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow.</p>\n<p>Each test case starts with a single line containing two integers: the number of cities <strong>N</strong> and the number of possible bidirectional flights <strong>M</strong>.</p>\n<p><strong>N</strong> lines then follow, with the i-th line containing the 5-digit zip code of the i-th city. No ZIP code will have leading zeros and all ZIP codes in each test case will be distinct.</p>\n<p><strong>M</strong> lines then follow, each containing two integers <strong>i</strong> and <strong>j</strong> (1 ≤ <strong>i</strong> &lt; <strong>j</strong> ≤ <strong>N</strong>) indicating that a bidirectional flight exists between the <strong>i</strong>-th city and the <strong>j</strong>-th city. All flights will be distinct within each test case.</p>\n<p>It is guaranteed that you can visit every city following the rules above.</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>0 ≤ <strong>M</strong> ≤ <strong>N</strong> * (<strong>N</strong> - 1) / 2.</li>\n<li><span style=\"line-height:1.6em\">1 ≤ </span><strong style=\"line-height:1.6em\">N</strong><span style=\"line-height:1.6em\"> ≤ 8.</span></li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #x: y\", where x is the test case number (starting from 1) and y is the smallest number you can achieve by concatenating the ZIP codes along your trip.</p>",
+  "samples": [
+    {
+      "input": "4\n3 2\n10001\n20000\n10000\n1 2\n2 3\n5 4\n36642\n28444\n50012\n29651\n10953\n1 4\n2 3\n2 5\n4 5\n5 5\n36642\n28444\n50012\n29651\n10953\n1 2\n1 4\n2 3\n2 5\n4 5\n6 6\n10001\n10002\n10003\n10004\n10005\n10006\n1 2\n1 6\n2 3\n2 4\n3 5\n4 5\n",
+      "output": "Case #1: 100002000010001\nCase #2: 1095328444500122965136642\nCase #3: 1095328444366422965150012\nCase #4: 100011000210003100041000510006\n"
+    }
+  ],
+  "hint": "<p>Explanation</p>\n<p>In the last sample test case, the following is the sequence of what you should do to achieve the smallest number:</p>\n<ol>\n<li>Start from city 1, write 10001.</li>\n<li>Outbound flight from 1 to 2, write 10002.</li>\n<li>Outbound flight from 2 to 3, write 10003.</li>\n<li>Return flight from 3 to 2.</li>\n<li>Outbound flight from 2 to 4, write 10004.</li>\n<li>Outbound flight from 4 to 5, write 10005.</li>\n<li>Return flight from 5 to 4.</li>\n<li>Return flight from 4 to 2.</li>\n<li>Return flight from 2 to 1.</li>\n<li>Outbound flight from 1 to 6, write 10006.</li>\n<li>Return flight from 6 to 1.</li>\n</ol>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2014, Round 1B",
+  "level": 10,
+  "tags": [
+    "bruteforcing"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.600000023841858
+}

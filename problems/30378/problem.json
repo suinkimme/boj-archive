@@ -1,0 +1,26 @@
+{
+  "id": 30378,
+  "title": "Queue",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>There are $n$ worms numbered from $1$ to $n$. The length of a worm can be represented by a positive integer between $1$ and $6$. You want to arrange the worms into several queues. Initially, each worm is in its own queue with only one worm (itself). Each worm is both at the front and at the end of its queue.</p>\n<p>There are $m$ operations. Each operation is one of the following three types:</p>\n<ul>\n<li><code>1 i j</code> where $1 \\leq i,j \\leq n$: Merge the queue worm $i$ is in with the queue worm $j$ is in. In the new queue, worm $j$ will be immediately after worm $i$ (and for the rest of the worms, the worm before/after them remains unchanged). It is guaranteed that worm $i$ is at the tail of some queue , worm $j$ is at the front of some queue, and $i,j$ are not in the same queue.</li>\n<li><code>2 i</code> where $1 \\leq i \\leq n$: Split the queue between worm $i$ and the worm immediately after $i$. It is guaranteed that worm $i$ is not at the tail of some queue.</li>\n<li><code>3 s k</code> where $k$ is a positive integer and $s$ is a numeric string with length at least $k$: Find the product of $f(t)$ modulo $998\\,244\\,353$ where $t$ is over all substrings of length $k$ in $s$. There are $|s| - k + 1$ such substrings $t$ given $s$ and $k$.</li>\n</ul>\n<p>The definition of $f(t)$ is given below.</p>\n<p>For a given queue, the $k$-string after worm $i$ is obtained by starting from worm $i$, walking towards the tail of the queue, and finding the $k$ nearest worms to $i$, including $i$, and concatenating the lengths of these worms. If there are fewer than $k$ worms before reaching the tail, then worm $i$ won't have a $k$-string. For example, if the numbers of worms in a queue are $10,22,3$ and they have lengths $4,5,6$; then the 3-string after worm $10$ is $456$, worm $22$ does not have a 3-string, but its 2-string is $56$ and its 1-string is $5$.</p>\n<p>$f(t)$ denotes the number of worms whose $k$-string is exactly $t$.</p>",
+  "input": "<p>The first line consists of two positive integers $n,m$ denoting the number of worms and the number of operations.</p>\n<p>In the second line, there are $n$ positive integers not exceeding $6$ denoting the length of worm $1,\\ldots,n$.</p>\n<p>In the following $m$ lines, each line specifies an operation.</p>\n<p>The input file might be large.</p>",
+  "output": "<p>For each operation <code>3 s k</code>, output a line with an integer denoting the output.</p>",
+  "samples": [
+    {
+      "input": "5 9\n3 1 3 5 3\n3 333135 2\n3 333135 1\n1 1 3\n1 2 5\n1 3 2\n1 5 4\n3 333135 2\n3 333135 1\n3 333135 3\n",
+      "output": "0\n81\n1\n81\n0\n"
+    },
+    {
+      "input": "2 10\n6 6\n3 666666 1\n1 1 2\n3 666666 2\n3 666666 4\n3 666666666666666666666666666666 1\n2 1\n1 2 1\n3 666666 2\n3 666666 4\n3 666666666666666666666666666666 1\n",
+      "output": "64\n1\n0\n75497471\n1\n0\n75497471\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2017",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

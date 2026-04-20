@@ -1,0 +1,27 @@
+{
+  "id": 12697,
+  "title": "Portal (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Portal<sup>TM</sup> is a first-person puzzle/platform game developed and published by Valve Software. The idea of the game was to create two portals on walls and then jump through one portal and come out the other. This problem has a similar idea but it does not assume you have played Portal.</p>\n<p>For this problem you find yourself in a <strong>R</strong> by <strong>C</strong> grid. Additionally there is a delicious cake somewhere else in the grid. You're very hungry and wish to arrive at the cake with as few moves as possible. You can move north, south, east or west to an empty cell. Additionally, you have the ability to create portals on walls.</p>\n<p>To help you get to the cake you have a portal gun which can shoot two types of portals, a yellow portal and a blue portal. A portal is created by shooting your portal gun either north, south, east or west. This emits a ball of energy that creates a portal on the first wall it hits. Note that for this problem shooting the portal gun does not count as a move. If you fire your portal gun at the cake, the energy ball will go right through it.</p>\n<p>After creating a yellow portal and a blue portal, you can move through the yellow portal to arrive at the blue portal or vice versa. Using these portals you may be able to reach the cake even faster! You can only use portals after you create both a yellow and a blue portal.</p>\n<p>Consider the following grid:</p>\n<p><img alt=\"\" src=\"1.png\"/></p>\n<p>Gray cells represent walls, white cells represent empty cells, and the red circle indicates your position.</p>\n<p>Suppose you shoot a blue portal east. The portal is created on the first wall it hits, resulting in:</p>\n<p><img alt=\"\" src=\"2.png\"/></p>\n<p>Now suppose you shoot a yellow portal south:<br/>\n<img alt=\"\" src=\"3.png\"/></p>\n<p>Next you move south once:</p>\n<p><img alt=\"\" src=\"4.png\" style=\"height:78px; width:154px\"/></p>\n<p>Now comes the interesting part. If you move south one more time you go through the yellow portal to the blue portal:</p>\n<p><img alt=\"\" src=\"5.png\"/></p>\n<p>There can only be one yellow portal and one blue portal at any time. For example if you attempt to create a blue portal to the west the other blue portal will disappear:</p>\n<p><img alt=\"\" src=\"6.png\"/></p>\n<p>A portal disappears only when another portal of the same color is fired.</p>\n<p>Note that the portals are created on one side of the wall. If a wall has a portal on its east side you must move into the wall from the east to go through the portal. Otherwise you'll be moving into a wall, which is improbable.</p>\n<p>Finally, you may not put two portals on top of each other. If you try to fire a portal at a side of a wall that already has a portal, the second portal will fail to form.</p>\n<p>Given the maze, your initial position, and the cake's position, you want to find the minimum number of moves needed to reach the cake if it is possible. Remember that shooting the portal gun does not count as a move.</p>",
+  "input": "<p>The first line of input gives the number of cases, <strong>N</strong>. <strong>N</strong> test cases follow.</p>\n<p>The first line of each test case will contain the integers <strong>R</strong> and <strong>C</strong> separated by a space.  <strong>R</strong>lines follow containing <strong>C</strong> characters each, representing the map:</p>\n<ul>\n<li><code>.</code> indicates an empty cell;</li>\n<li><code>#</code> indicates a wall;</li>\n<li><code>O</code> indicates your starting position; and</li>\n<li><code>X</code> indicates the cake's position.</li>\n</ul>\n<p>There will be exactly one <code>O</code> and one <code>X</code> character per case.</p>\n<p>Cells outside of the grid are all walls and you may use them to create portals.</p>\n<p>Limits</p>\n<ul>\n<li><strong>N</strong> = 200</li>\n<li>1 &lt;= <strong>R</strong>, <strong>C</strong> &lt;= 8</li>\n</ul>",
+  "output": "<p>For each test case you should output one line containing \"Case #<strong>X</strong>: <strong>Y</strong>\" (quotes for clarity) where <strong>X</strong> is the number of the test case and <strong>Y</strong> is the minimum number of moves needed to reach the cake or \"THE CAKE IS A LIE\" (quotes for clarity) if the cake cannot be reached.</p>",
+  "samples": [
+    {
+      "input": "3\n4 7\n.O..##.\n.#.....\n.#.####\n.#...X.\n5 5\nO....\n.....\n.....\n.....\n....X\n1 3\nO#X\n",
+      "output": "Case #1: 4\nCase #2: 2\nCase #3: THE CAKE IS A LIE\n"
+    }
+  ],
+  "hint": "<p>Here is the sequence of moves for the first case (note that shooting the portal gun does not count as a move):</p>\n<ol>\n<li>Move one step east.</li>\n<li>Shoot a blue portal north.</li>\n<li>Shoot a yellow portal south.</li>\n<li>Move one step north through the blue portal.</li>\n<li>Shoot a blue portal east.</li>\n<li>Move one step south through the yellow portal.</li>\n<li>Move one step west.</li>\n<li>Eat your delicious and moist cake.</li>\n</ol>\n<p>Portal<sup>TM</sup> is a trademark of Valve Inc. Valve Inc. does not endorse and has no involvement with Google Code Jam.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2008, Round 3",
+  "level": 14,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "0_1_bfs"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 2.8824000358581543
+}

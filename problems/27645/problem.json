@@ -1,0 +1,27 @@
+{
+  "id": 27645,
+  "title": "Internet problem (Hard)",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Lisa and Sarah have exposed a massive conspiracy and now they’re on the run from the corrupt government. Being together makes it too risky that they could both be captured, so they have to communicate through the Internet. But the normal Internet isn’t safe enough, so they send each other secret messages through the dark web.</p>\n<p>On the dark web, every message can take a long and convoluted path through many servers until it reaches its destination, and it might even go through one server multiple times. This makes messages much harder to trace.</p>\n<p>But Lisa is still worried. What if the government has already hacked one of the servers of the dark web? If the hacked server is in a good central location, it could intercept all of her messages to Sarah, regardless of what path they take.</p>\n<p>Help Lisa solve her Internet problem!</p>\n<p>The dark web consists of <em>n</em> servers, numbered from 1 to <em>n</em>. The servers are connected by <em>m</em> network links. Links are directed – if one server can transmit a message to another, the opposite doesn’t have to be true. Lisa is connected to server 1 and Sarah is connected to server <em>n</em>. Whenever Lisa wants to send a message to Sarah, she chooses a route for the message: a sequence of consecutive network links that goes from server 1 to server <em>n</em>. The route may go through each server multiple times.</p>\n<p>The government wants to intercept Lisa’s messages to Sarah. They can hack one server so it records all messages that go through it. They want to see every message from Lisa to Sarah <strong>exactly once</strong>. (“At least once” is needed so they learn all about their plans, and “at most once” is needed so their hard drives don’t fill up with duplicates.)</p>\n<p>Find all the servers which satisfy that condition.</p>",
+  "input": "<p>The first line of the input file contains an integer <em>t</em> specifying the number of test cases. Each test case is preceded by a blank line.</p>\n<p>The first line of each test case contains the integers <em>n</em> and <em>m</em>. Each of the next <em>m</em> lines contains two integers <em>a</em>, <em>b</em> (1 ≤ <em>a</em>, <em>b</em> ≤ <em>n</em>) meaning that server <em>a</em> can transmit messages directly to server <em>b</em>. (It may be the case that <em>a</em> = <em>b</em>.) Each distinct ordered pair <em>a</em>, <em>b</em> will be given at most once.</p>",
+  "output": "<p>For each test case, output two lines. On the first line, print the number of servers that could be hacked by the government. On the second line, print a space-separated list of numbers of those servers, in the order in which messages from Lisa to Sarah go through them.</p>\n<p>Note that for some test cases there may be no path from Lisa to Sarah. If that is the case, output an empty set of servers.</p>",
+  "samples": [
+    {
+      "input": "4\n\n4 3\n2 4\n1 3\n3 2\n\n2 2\n1 2\n2 1\n\n3 1\n2 3\n\n4 4\n1 2\n2 4\n3 4\n1 3\n",
+      "output": "4\n1 3 2 4\n0\n\n0\n\n2\n1 4\n"
+    }
+  ],
+  "hint": "<p>First test case: All messages must take the same path, so the government could hack any server on the path.</p>\n<p>Second test case: The government doesn’t want to get any duplicates, so they can’t hack either server. Lisa and Sarah are safe.</p>\n<p>Third test case: Lisa can’t send any messages anyway, so there is nothing to hack.</p>\n<p>Fourth test case: The government can’t hack both 2 and 3 at once. If they hack only 2, or only 3, they won’t see all messages.</p>",
+  "source": ", Contest, Internet Problem Solving Contest, IPSC 2017",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "dag",
+    "topological_sorting",
+    "scc"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2.5
+}

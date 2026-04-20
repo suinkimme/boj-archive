@@ -1,0 +1,36 @@
+{
+  "id": 18362,
+  "title": "Desert",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The route from Bythad do Bytara leads among the sands of the Great Byteotian Desert. Making the trip is trying, especially since there are only s wells along the route. Knowing that his country’s prosperity depends on communications routes, the ruler of Byteotia has decided to have new wells dug along this particular route. The distance from Bythad to Bytara is n+1 bytemiles, and at each integer multiple of a bytemile from Bythad, there already is a well or a new one can be dug. However, the lower the water level is, the harder and costlier it is to dig a well.</p>\n<p>Thus, the rules has commissioned the royal geologist Byteasar with surveying the options. Byteasar has m measurements obtained through the satellite network. Unfortunately, the information gathered by the satellites does not provide direct information about the water levels. Each measurement is for a contiguous fragment of the route and tells only that in certain points of this fragment, the water level is lower than in the remaining points. Moreover, it is known that the water level in every point is between 1 and 10<sup>9</sup> bytemeters below surface. Help Byteasar by determining what the water level might be in every point along the route. It could turn out that the satellite data are contradictory.</p>",
+  "input": "<p>The first line of the standard input contains three integers, n, s, and m (1 ≤ s ≤ n ≤ 100 000, 1 ≤ m ≤ 200 000), separated by single spaces, which specify the number of wells along the route and the number of satellite measurements.</p>\n<p>The s lines that follow describe the wells: the i-th one contains two integers, p<sub>i</sub> and d<sub>i</sub> (1 ≤ p<sub>i</sub> ≤ n, 1 ≤ d<sub>i</sub> ≤ 1 000 000 000), which indicate that the i-th well is located p<sub>i</sub> bytemiles from Bythad and is d<sub>i</sub> bytometers deep (i.e., that the water level in the well is di bytometers below ground surface). The wells are given in an increasing order of p<sub>i</sub>.</p>\n<p>The next m lines describe the satellite measurements: the i-th one contains three integers l<sub>i</sub>, r<sub>i</sub>, and k<sub>i</sub> (1 ≤ l<sub>i</sub> &lt; r<sub>i</sub> ≤ n, 1 ≤ k<sub>i</sub> ≤ r<sub>i</sub> − l<sub>i</sub>), followed by a sequence of k<sub>i</sub> integers, x<sub>1</sub>, x<sub>2</sub>, . . . , x<sub>k<sub>i</sub></sub> (l<sub>i</sub> ≤ x<sub>1</sub> &lt; x<sub>2</sub> &lt; . . . &lt; x<sub>k<sub>i</sub></sub> ≤ r<sub>i</sub>). These specify that a measurement was taken on the segment from l<sub>i</sub> to r<sub>i</sub> (including these endpoints), and it indicated that the water level in each of the points x1, . . . , x<sub>k<sub>i</sub></sub> is strictly lower than the water level in each of the remaining (integer) points of the interval, i.e. {l<sub>i</sub>, . . . , r<sub>i</sub>} \\ {x<sub>1</sub>, . . . , x<sub>k<sub>i</sub></sub>}. The sum of all the k<sub>i</sub>’s does not exceed 200 000.</p>\n<p>In tests worth 60% of the total score, the additional conditions n, m ≤ 1000 hold. In tests worth 30% of the total score, the sum of all k<sub>i</sub> ’s does not exceed 1000.</p>",
+  "output": "<p>If the measurements are contradictory, the first line of the standard output should contain a single word NIE (Polish for no). Otherwise, the first line of the output should contain the word TAK (Polish for yes), whereas the second line should contain a sequence of n integers, each in the range from 1 to 1 000 000 000, specifying the depths below the surface of the water levels at successive points along the route from Bythad. If there are multiple solutions, your program should pick one arbitrarily.</p>",
+  "samples": [
+    {
+      "input": "5 2 2\n2 7\n5 3\n1 4 2 2 3\n4 5 1 4\n",
+      "output": "TAK\n6 7 1000000000 6 3\n"
+    },
+    {
+      "input": "3 2 1\n2 3\n3 5\n1 3 1 2\n",
+      "output": "NIE\n"
+    },
+    {
+      "input": "2 1 1\n1 1000000000\n1 2 1 2\n",
+      "output": "NIE\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2014/2015, Stage 2",
+  "level": 23,
+  "tags": [
+    "dag",
+    "data_structures",
+    "graphs",
+    "segtree",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 1.9258999824523926
+}

@@ -1,0 +1,25 @@
+{
+  "id": 32011,
+  "title": "Of the Children",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<blockquote>\n<p>This problem was withdrawn from the contest by a minute-1 clarification message sent to all teams.</p>\n<p>The reason for the withdrawal was that, as of 24 hours before the contest, the authoring team had only a single sample solution, and we strongly prefer to move forward with a problem only after independent confirmation by two or more authors.</p>\n</blockquote>\n<p>A nation-wide charity, <em>Won't Someone Think of the Children</em>, is sending one of its celebrity spokespeople out on a coast-to-coast publicity tour. Like many charities, they are bit strapped for funding and need to plan carefully to make sure they can pay the celebrity's travel expenses to get from their office on the west coast to the final press event on the east coast.</p>\n<p>Local offices of the charity have been taking pledges and collecting donations to pay for this celebrity to visit their cities as part of the tour. The national office has made no promises that the celebrity will visit any of these intermediate locations, but hopes that these locally collected funds can actually help fund the coast-to-coast trip. In fact, without the help of the local offices, they aren't sure they can afford to get their spokesperson to the final destination.</p>\n<p>The trip will be paid for on an incremental basis. The celebrity can only travel from one city to another if he or she has enough money to pay for the transportation to that next city. Upon arrival at the city, he or she can collect any money held there and use it to help pay for the later legs of the journey. The celebrity can only visit a given city once, lest multiple visits be considered an abuse of their hospitality.</p>\n<p>Given a list of cities that have invited the celebrity, the amount of money raised by each city, and the travel costs between various pairs of cities, what is the smallest amount of money that the home office needs to provide the celebrity at the beginning of the journey to make sure that he or she can make it all the way to the end without being unable to pay for any leg of the trip?</p>",
+  "input": "<p>Input will consist of one or more datasets. Each dataset begins with a line containing a single integer, $N$, $2 \\leq N &lt; 24$, indicating the number of cities involved. A value of zero for $N$ signals the end of input.</p>\n<p>Cities are identified by integers in the range $0\\ldots N-1$, with city $0$ being the home office and starting point of the journey, and city $N-1$ being the final destination city for the journey.</p>\n<p>The first line of the dataset is followed by $N-2$ lines, each containing an integer in the range $0\\ldots 10\\,000$ indicating the amount of money collected by the cities numbered $1 \\ldots N-2$. (The amount of money at city $N-1$ is irrelevant and the amount of money to be provided at city $0$ is what you need to compute).</p>\n<p>This is followed by at least $1$ and up to $N(N-1)/2$ lines, each containing three integers $i$, $j$, &amp; $c$. $i$ and $j$ are distinct integers in the range $0\\ldots N-1$ identifying two cities and $c$ is the cost to travel from one of those cities to the other, $0 &lt; c &lt; 10\\,000$. The cost is the same when traveling from $i$ to $j$ as it is when traveling from $j$ to $i$. The end of this list of potential travel expenses is indicated by a line containing negative values for $i$, $j$, and $c$.</p>",
+  "output": "<p>For each dataset print a single line of output.</p>\n<p>If it is possible to reach city $N-1$ from city $0$, print the smallest amount of money that the celebrity needs to be given at city $0$ in order to guarantee reaching city $N-1$.</p>\n<p>If it is not possible to reach city $N-1$ when starting from city $0$, print $-1$.</p>",
+  "samples": [
+    {
+      "input": "4\n4\n12\n0 1 5\n0 2 10\n2 3 8\n2 1 6\n-1 -1 -1\n4\n4\n12\n0 1 5\n0 2 10\n2 3 8\n2 1 6\n0 3 6\n-1 -1 -1\n0\n",
+      "output": "7\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 2015 Mid-Atlantic Regional Programming Contest",
+  "level": 15,
+  "tags": [
+    "dp",
+    "binary_search"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 3.5
+}

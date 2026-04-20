@@ -1,0 +1,37 @@
+{
+  "id": 25163,
+  "title": "Požar",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Zbog globalnog zatopljenja sve češće ljeti viđamo velike požare. Zaštićena šuma „Matričin lug” smatra se osobito rizičnom pa vatrogasci mole da napišeš program koji će predvidjeti širenje nekoliko požara u toj šumi.</p>\n<p>Matričin lug poznat je po tome što se može vizualizirati kao tablica s N redaka i M stupaca. Ono što je manje poznato je da požari u toj šumi uvijek počinju u obliku kvadrata ili romba. Označimo polje u x-tom retku i y-tom stupcu Matričinog luga oznakom (x, y).</p>\n<p>Požar koji počinje u obliku kvadrata sa središtem u (X<sub>i</sub>, Y<sub>i</sub>) raširenosti A<sub>i</sub> nalazi se na svim poljima (x, y) za koja vrijedi max(|X<sub>i</sub> - x|, |Y<sub>i</sub> - y|) &lt; A<sub>i</sub>.</p>\n<p>Požar koji počinje u obliku romba sa središtem u (X<sub>i</sub>, Y<sub>i</sub>) raširenosti A<sub>i</sub> obuhvaća sva polja (x, y) za koja vrijedi |X<sub>i</sub> - x| + |Y<sub>i</sub> - y| &lt; A<sub>i</sub>.</p>\n<p>Bez obzira na oblik, obje vrste požara šire se na isti način. Ako u jednoj minuti šuma na nekom polju gori, onda će u sljedećoj minuti goriti i šuma na svim poljima direktno susjednima tom polju. Moguće je da će se početni požari preklapati u nekim poljima šume.</p>\n<p>U nultoj minuti gorit će samo područja u kojima počinju požari. Šuma gori jako sporo pa se niti jedno opožareno polje nikada neće ugasiti. Vatrogasce za Q trenutaka zanima koliko će polja šume goriti u minuti T<sub>i</sub>.</p>",
+  "input": "<p>U prvom su retku dva prirodna broja N i M (1 ≤ N, M ≤ 2000), brojevi iz teksta zadatka.</p>\n<p>U sljedećem retku su tri cijela broja: K, R i Q (0 ≤ K, R ≤ 2000, 1 ≤ Q ≤ 2000), redom broj kvadratastih požara, broj rombastih požara i broj upita iz teksta zadatka.</p>\n<p>U sljedećih K redaka su po tri prirodna broja X<sub>i</sub>, Y<sub>i</sub> i A<sub>i</sub> (1 ≤ X<sub>i</sub> ≤ N, 1 ≤ Y<sub>i</sub> ≤ M, 1 ≤ A<sub>i</sub> ≤ 2000), redak i stupac središta te raširenost i-tog požara koji započinje u obliku kvadrata.</p>\n<p>U sljedećih R redaka su po tri prirodna broja X<sub>i</sub>, Y<sub>i</sub> i A<sub>i</sub> (1 ≤ X<sub>i</sub> ≤ N, 1 ≤ Y<sub>i</sub> ≤ M, 1 ≤ A<sub>i</sub> ≤ 2000), redak i stupac središta te raširenost i-tog požara koji započinje u obliku romba.</p>\n<p>U sljedećih Q redaka je po jedan cijeli broj T<sub>i</sub> (0 ≤ T<sub>i</sub> ≤ 2000) koji odgovara i-tom upitu vatrogasaca.</p>",
+  "output": "<p>Potrebno je ispisati Q redaka. U i-tom retku treba ispisati koliko polja šume će gorjeti u minuti T<sub>i</sub>.</p>",
+  "samples": [
+    {
+      "input": "8 10\n1 1 3\n2 3 2\n5 5 2\n0\n1\n2\n",
+      "output": "14\n29\n41\n"
+    },
+    {
+      "input": "5 5\n1 1 4\n4 4 2\n3 3 2\n0\n1\n2\n3\n",
+      "output": "11\n18\n24\n25\n"
+    },
+    {
+      "input": "6 6\n1 1 3\n1 1 3\n6 6 3\n0\n1\n2\n",
+      "output": "15\n25\n34\n"
+    }
+  ],
+  "hint": "<p>Opis prvog probnog primjera: U nultoj minuti požar će se nalaziti samo na crvenim poljima, kojih je 9+5=14. U sljedećoj minuti gorjet će i narančasta polja pa će ukupno gorjeti 14+15=29 polja, a u minuti nakon i žuta polja će gorjeti što je ukupno 29+12=41 polje.</p>\n<pre style=\"text-align: center;\">\n<span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ea3323;\">ΔΔ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ffff55;\">Δ</span>....\n<span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ffff55;\">Δ</span>....\n<span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ffff55;\">Δ</span>....\n<span style=\"color:#ffff55;\">Δ</span><span style=\"color:#f19e39;\">ΔΔ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ffff55;\">Δ</span>...\n.<span style=\"color:#ffff55;\">Δ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#ea3323;\">ΔΔ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ffff55;\">Δ</span>..\n..<span style=\"color:#ffff55;\">Δ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ea3323;\">Δ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ffff55;\">Δ</span>...\n...<span style=\"color:#ffff55;\">Δ</span><span style=\"color:#f19e39;\">Δ</span><span style=\"color:#ffff55;\">Δ</span>....\n....<span style=\"color:#ffff55;\">Δ</span>.....</pre>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2021, Junior Croatian Olympiad in Informatics 2021",
+  "level": 16,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "prefix_sum",
+    "bfs",
+    "sweeping",
+    "offline_queries"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.375
+}

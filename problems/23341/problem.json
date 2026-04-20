@@ -1,0 +1,33 @@
+{
+  "id": 23341,
+  "title": "A Hard Problem",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are given a simple undirected graph consisting of n nodes and m edges. The nodes are numbered from 1 to n, and the edges are numbered from 1 to m. Node i has a non-negative integer value V<sub>i</sub> and the weight W<sub>u,v</sub> of edge {u, v} is defined as ∥V<sub>u</sub> ⊕ V<sub>v</sub>∥ where ⊕ is the exclusive-or operator (equivalent to <code>^</code> in C) and ∥x∥ is the number of set bits in the binary representation non-negative integer x.</p>\n<p>The node values V<sub>1</sub>, V<sub>2</sub>, ..., V<sub>n</sub> must satisfy q constraints. Each of the constraints can be represented as a 5-tuple (t, u, i, v, j).</p>\n<ul>\n<li>if t = 0, then <em>getBit</em>(V<sub>u</sub>, i) = <em>getBit</em>(V<sub>v</sub>, j)</li>\n<li>if t = 1, then <em>getBit</em>(V<sub>u</sub>, i) ≠ <em>getBit</em>(V<sub>v</sub>, j)</li>\n</ul>\n<p>where the function <em>getBit</em>(x, i) returns the (i + 1)-th least significant bit of x. For examples, <em>getBit</em>(11, 0) is 1 and <em>getBit</em>(11, 2) = 0. In the C programming language, <em>getBit</em>(x, i) can be computed by <code>((x &gt;&gt; i) &amp; 1U)</code> if x is a 32-bit unsigned integer and i is a non-negative integer at most 31.</p>\n<p>Unfortunately, some node values are missing now. Your task is to assign new values to them to minimize ∑<sub>{u,v}∈E</sub>W<sub>u,v</sub> without violating any given constraint. Please write a program to help yourself to complete this task.</p>",
+  "input": "<p>The input consists of five parts. The first part contains one line, and that line contains two positive integers n and m. n is the number of nodes, and m is the number of edges. The second part contains m lines. Each of them contains two integers u and v, indicating an edge {u, v} of the given graph. The third part contains one line. That line consists of n space-separated integers x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>. For any k ∈ {1, 2, ..., n}, if the node value V<sub>k</sub> is missing, x<sub>k</sub> will be -1; otherwise, V<sub>k</sub> is x<sub>k</sub>. The fourth part contains one integer q, indicating the number of constraints. The fifth part contains q lines, and each of them contains five space-separated integers t, u, i, v, j indicating that (t, u, i, v, j) is a constraint.</p>",
+  "output": "<p>Output an integer which is the minimum value under the q constraints. If it is not possible to satisfy all the constraints, output -1.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 3\n1 2\n3 2\n0 3\n-1 -1 60091 51514\n2\n1 2 0 1 5\n0 2 6 0 15\n",
+      "output": "13\n"
+    },
+    {
+      "input": "3 2\n0 1\n1 2\n-1 -1 -1\n2\n1 2 0 1 5\n0 1 5 2 0\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Taiwan, Taiwan Online Programming Contest, TOPC 2021",
+  "level": 22,
+  "tags": [
+    "graphs",
+    "bruteforcing",
+    "set",
+    "bitmask",
+    "flow",
+    "mfmc"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 2.842099905014038
+}

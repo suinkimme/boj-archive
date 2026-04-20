@@ -1,0 +1,30 @@
+{
+  "id": 30864,
+  "title": "행렬 연산 (아름다운 행렬 만들기)",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>$N \\times N$ 행렬 $U_N = (u_{ij})$을 다음과 같이 정의합니다. $u_{ij}$는 $i$행 $j$열의 값입니다.</p>\n<p>$$ u_{ij} = \\begin{cases} 1 &amp; \\text{if } i \\le j\\\\ 0 &amp; \\text{if } i &gt; j \\end{cases} $$</p>\n<p>즉, $U_N$은 주대각선과 그 위쪽의 값들이 모두 $1$이고, 나머지 값들이 모두 $0$인 행렬입니다. 예를 들어</p>\n<p>$$ U_1 = \\begin{pmatrix} 1 \\end{pmatrix},\\, U_2 = \\begin{pmatrix} 1 &amp; 1\\\\ 0 &amp; 1 \\end{pmatrix},\\, U_3 = \\begin{pmatrix} 1 &amp; 1 &amp; 1\\\\ 0 &amp; 1 &amp; 1\\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix},\\, U_4 = \\begin{pmatrix} 1 &amp; 1 &amp; 1 &amp; 1\\\\ 0 &amp; 1 &amp; 1 &amp; 1\\\\ 0 &amp; 0 &amp; 1 &amp; 1\\\\ 0 &amp; 0 &amp; 0 &amp; 1 \\end{pmatrix} $$</p>\n<p>입니다.</p>\n<p>이 행렬에 다음과 같은 연산을 할 수 있습니다.</p>\n<ul>\n<li>$1$ $r$ $p$ $q$: 정수 $r$, $p$, $q$를 정합니다. $r$번째 행의 모든 원소에 $\\frac{p}{q}$를 더합니다. ($1 \\le r \\le N$, $-10^{12} \\le p \\le 10^{12}$, $1 \\le q \\le 10^6$)</li>\n<li>$2$ $c$ $p$ $q$: 정수 $c$, $p$, $q$를 정합니다. $c$번째 열의 모든 원소에 $\\frac{p}{q}$를 더합니다. ($1 \\le c \\le N$, $-10^{12} \\le p \\le 10^{12}$, $1 \\le q \\le 10^6$)</li>\n</ul>\n<p>또한, 각 행과 각 열의 원소의 절댓값의 합이 모두 $\\frac{N}{4}$ 이하인 행렬을 <strong>아름다운 행렬</strong>이라고 합니다. 즉, $N$행 $N$열로 이루어진 $2$차원 행렬 $A = (a_{ij})$가 $1 \\le r \\le N$, $1 \\le c \\le N$인 모든 $r$, $c$에 대해 $$ \\sum_{j=1}^{N} \\left|a_{rj}\\right| \\le \\frac{N}{4},\\quad \\sum_{i=1}^{N} \\left|a_{ic}\\right| \\le \\frac{N}{4} $$ 를 만족하면 행렬 $A$를 <strong>아름다운 행렬</strong>이라고 합니다.</p>\n<p>당신은 $U_N$으로 초기화되어 있는 행렬에 연산을 최대 $2N$번 진행하여 아름다운 행렬로 만들려고 합니다. 그 방법을 하나 찾아서 출력하세요.</p>",
+  "input": "<p>첫 번째 줄에 행렬의 크기를 나타내는 정수 $N$이 주어집니다. ($1 \\le N \\le 400$)</p>",
+  "output": "<p>첫 번째 줄에 연산 횟수 $Q$를 출력하세요. $0 \\le Q \\le 2N$이어야 합니다.</p>\n<p>다음 $Q$개의 줄의 각 줄에 필요한 연산을 의미하는 네 정수를 공백으로 구분하여 출력하세요. 각 연산은 다음 중 하나여야 합니다.</p>\n<ul>\n<li>$1$ $r$ $p$ $q$ ($1 \\le r \\le N$, $-10^{12} \\le p \\le 10^{12}$, $1 \\le q \\le 10^6$)</li>\n<li>$2$ $c$ $p$ $q$ ($1 \\le c \\le N$, $-10^{12} \\le p \\le 10^{12}$, $1 \\le q \\le 10^6$)</li>\n</ul>\n<p>$U_N$으로 초기화된 행렬에 모든 연산을 순서대로 실행한 후의 행렬은 아름다운 행렬이 되어야 합니다.</p>",
+  "samples": [
+    {
+      "input": "1\n",
+      "output": "2\n1 1 -7 6\n2 1 1 6\n"
+    },
+    {
+      "input": "2\n",
+      "output": "2\n1 1 -1 2\n2 2 -1 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "cozyyg",
+  "level": 16,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 2.5
+}

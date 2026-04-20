@@ -1,0 +1,34 @@
+{
+  "id": 17514,
+  "title": "Lexicographically Minimum Walk",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>There is a directed graph $G$ with $N$ nodes and $M$ edges. Each node is numbered $1$ through $N$, and each edge is numbered $1$ through $M$. For each $i$ ($1 \\le i \\le M$),  edge $i$ goes from vertex $u_i$ to vertex $v_i$ and has a unique color $c_i$.</p>\n<p>A <b>walk</b> is defined as a sequence of edges $e_1$, $e_2$, $\\cdots$, $e_{l}$ where for each $1 \\le k &lt; l$, $v_{e_k}$ (the tail of edge $e_k$) is the same as $u_{e_{k+1}}$ (the head of edge $e_{k+1}$). We can say a walk $e_1,\\ e_2,\\ \\cdots,\\ e_l$ starts at vertex $u_{e_1}$ and ends at vertex $v_{e_l}$. Note that the same edge can appear multiple times in a walk.</p>\n<p>The <strong>color sequence</strong> of a walk $e_1,\\ e_2,\\ \\cdots,\\ e_l$ is defined as $c_{e_1},\\ c_{e_2},\\ \\cdots,\\ c_{e_l}$.</p>\n<p>Consider all color sequences of walks of length at most $10^{100}$ from vertex $S$ to vertex $T$ in $G$. Write a program that finds the lexicographically minimum sequence among them.</p>",
+  "input": "<p>The first line of the input contains four space-separated integers $N$, $M$, $S$, and $T$ ($1 \\le N \\le 100\\,000$, $0 \\le M \\le 300\\,000$, $1 \\le S \\le N$, $1 \\le T \\le N$, $S \\neq T$).</p>\n<p>Then $M$ lines follow: the $i$ ($1 \\le i \\le M$)-th of them contains three space-separated integers $u_i$, $v_i$ and $c_i$ ($1 \\le u_i, v_i \\le N$, $u_i \\neq v_i$, $1 \\le c_i \\le 10^{9}$); it describes a directional edge from vertex $u_i$ to vertex $v_i$ with color $c_i$.</p>\n<p>The graph doesn't have multiple edges or loops, and each edge has a unique color. Formally, for any $1 \\le i &lt; j \\le M$, $c_i \\neq c_j$ and $(u_i,\\ v_i) \\neq (u_j,\\ v_j)$ holds. </p>",
+  "output": "<p>If there is no walk from vertex $S$ to vertex $T$, print \"<tt>IMPOSSIBLE</tt>\".  (without quotes)</p>\n<p>Otherwise, let's say $a_1,\\ a_2,\\ \\cdots,\\ a_l$ is the lexicographically minimum sequence among all color sequences of length at most $10^{100}$ from vertex $S$ to vertex $T$.</p>\n<ul>\n<li>If $l \\le 10^{6}$, print $a_1,\\ a_2,\\ \\cdots,\\ a_l$ in the first line. There should be a space between each printed integer.</li>\n<li>If $l &gt; 10^{6}$, print \"<tt>TOO LONG</tt>\". (without quotes)</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3 3 1 3\n1 2 1\n2 3 7\n1 3 5\n",
+      "output": "1 7\n"
+    },
+    {
+      "input": "3 4 1 3\n1 2 1\n2 1 2\n2 3 7\n1 3 5\n",
+      "output": "TOO LONG\n"
+    },
+    {
+      "input": "2 0 2 1\n",
+      "output": "IMPOSSIBLE\n"
+    }
+  ],
+  "hint": "<p>Sequence $p_1, p_2, \\cdots, p_{n}$ is lexicographically smaller than another sequence $q_1, q_2, \\cdots, q_{m}$ if and only if one of the following holds:</p>\n<ul>\n<li>There exists a unique $j$ ($0 \\le j &lt; \\min(n, m)$) where $p_1 = q_1$, $p_2 = q_2$, $\\cdots$, $p_{j} = q_{j}$ and $p_{j+1} &lt; q_{j+1}$.</li>\n<li>$n &lt; m$ and $p_1 = q_1$, $p_2 = q_2$, $\\cdots$, $p_n = q_n$. In other words, $p$ is a strict prefix of $q$.</li>\n</ul>",
+  "source": "University, KAIST, KAIST ICPC Mock Competition, 2019 KAIST 9th ICPC Mock Competition, Contest, Open Cup, 2019/2020 Season, Stage 5: Grand Prix of Korea, koosaga",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "greedy",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 84,
+  "submission_count": null,
+  "average_tries": 2.309499979019165
+}

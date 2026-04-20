@@ -1,0 +1,28 @@
+{
+  "id": 32944,
+  "title": "잘못된 LIS 알고리즘",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>정현이와 서준이는 정보과학 시간에 수열의 LIS(Longest Increasing Subsequence, 가장 긴 증가하는 부분 수열)의 길이를 구하는 알고리즘을 배웠다. 그런데 정현이는 이 알고리즘을 구현하는 게 너무 귀찮았던 나머지, 자신만의 (틀린) 알고리즘을 만들어 문제를 풀기 시작했다! 하지만, 당연히 이 알고리즘으로는 문제를 풀 수 없었고, 숙제로 나온 Baekjoon Online Judge 문제들에서 번번이 <span class=\"result-wa\">틀렸습니다</span>를 받았다.</p>\n<p>길이가 $N$이고 $i$번째 원소의 값이 $A_i$인 수열 $A$가 주어졌을 때, 정현이의 알고리즘은 수열 $B$를 다음과 같은 과정을 거쳐 생성한 후 반환한다:</p>\n<pre class=\"mathjax\">\n $B$=비어 있는 수열\n $\\text{for}$ $i$ = $1$부터 $n$까지:\n     $B$가 비어 있거나, $B$의 마지막 원소가 $A_i$보다 작은 경우:\n         $B$의 맨 뒤에 $A_i$를 추가</pre>\n<p>정현이의 알고리즘을 실제로 구현한 예시 코드는 노트를 참고하자.</p>\n<p>정현이의 알고리즘이 반환하는 수열 $B$는 수열 $A$의 증가하는 부분 수열이지만, 가장 긴 증가하는 부분 수열은 아닐 수도 있기 때문에 잘못된 알고리즘이다. 서준이는 정현이의 알고리즘이 잘못되었다는 것을 눈치채고 그 사실을 알려 주려고 했으나, 정현이는 반례를 내놓으라면서 그 사실을 납득하지 않으려 하고 있다.</p>\n<p>그래서 서준이는 정현이의 알고리즘이 잘못되었음을 보여 줄 수 있는 반례를 찾고자 한다. 구체적으로는, $1$부터 $N$까지의 양의 정수들이 정확히 한 번씩 포함된 길이 $N$인 수열 중에서 가장 긴 증가하는 부분 수열의 길이가 $M$인데, 정현이의 알고리즘이 반환하는 증가하는 부분 수열의 길이는 $K$가 되는 수열을 하나 찾고자 한다. 서준이를 도와 이런 수열을 하나 찾아보자.</p>",
+  "input": "<p>정수 $N$, $M$, $K$가 공백으로 구분되어 주어진다. $(2 \\leq N \\leq 300 \\, 000;$ $1 \\leq K \\lt M \\leq N)$</p>",
+  "output": "<p>문제의 조건을 만족하는 수열이 존재한다면, 그러한 수열 중 하나를 골라 수열을 이루는 $N$개의 원소를 순서대로 공백으로 구분하여 출력한다. 만약 존재하지 않는다면 그 대신 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 4 3\n",
+      "output": "1 2 5 3 4\n"
+    },
+    {
+      "input": "3 3 2\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<ul>\n<li>수열 $A_i$의 가장 긴 증가하는 부분 수열은 모든 $A_i$의 부분 수열 중 가장 긴 증가하는 수열을 의미한다.</li>\n<li>부분 수열이란 주어진 수열에서 1개 이상의 원소를 골라 원래 순서대로 나열하여 얻은 수열을 말한다.</li>\n<li>증가하는 수열이란 맨 처음 원소를 제외한 모든 원소가 바로 전 원소보다 큰 수열을 말한다. 다시 말해 길이가 $N$인 수열 $C$가 있을 때, $C_{i-1} &lt; C_i (2 \\le i \\le N)$ 를 만족하면 $C$는 증가하는 수열이다. 정의에 의해 길이가 $1$인 수열은 모두 증가하는 수열이다.</li>\n<li>다음은 정현이의 알고리즘을 C++, Python, Java로 구현한 예시 코드이다.</li>\n</ul>\n<p><strong>C++</strong></p>\n<pre>\nvector&lt;int&gt; b;\nfor(int x : a){\n    if(b.empty() || b.back() &lt; x){\n        b.push_back(x);\n    }\n}</pre>\n<p><strong>Python 3</strong></p>\n<pre>\nb = []\nfor x in a:\n    if not b or b[-1] &lt; x:\n        b.append(x)</pre>\n<p><strong>Java</strong></p>\n<pre>\nArrayList&lt;Integer&gt; b = new ArrayList&lt;Integer&gt;();\nfor(int x : a){\n    if(b.isEmpty() || b.get(b.size() - 1) &lt; x){\n        b.add(x);\n    }\n}</pre>",
+  "source": "School, 대전과학고등학교, 제1회 대전과학고등학교 프로그래밍 경진대회 DSHStack, ohwphil, hyperbolic, iktk, sjhi00, woohyun_jng",
+  "level": 10,
+  "tags": [
+    "constructive"
+  ],
+  "accepted_user_count": 148,
+  "submission_count": null,
+  "average_tries": 1.5743000507354736
+}

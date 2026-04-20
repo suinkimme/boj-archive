@@ -1,0 +1,22 @@
+{
+  "id": 31104,
+  "title": "Hash Function",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A hash function $h_n$ is given, which encrypts the number $A$, consisting of $2n$ bits, as follows:</p>\n<p>Let $A = (a_{2n-1}a_{2n-2} \\cdots a_1a_0)_2$, that is, $a_i$ is the $i$-th bit of the number $A$.</p>\n<p>The number $B = (b_{2n-1}b_{2n-2} \\cdots b_1b_0)_2$, also consisting of $2n$ bits, is calculated as follows: $$b_i = a_i \\oplus a_{2i+1},\\text{ for } 0 \\le i &lt; n,$$ $$b_i = a_i \\oplus a_{4n-2i-2},\\text{ for } n \\le i &lt; 2n,$$ where $\\oplus$ is bitwise exclusive OR (XOR). In other words, $$B = A \\oplus (a_0a_2 \\cdots a_{2n-4}a_{2n-2}a_{2n-1}a_{2n-3} \\cdots a_3a_1)_2.$$</p>\n<p>Next, the number $C = B \\oplus \\text{RSH}( B )$ is calculated, also consisting of $2n$ bits, where $\\text{RSH}(B)$ is a cyclic right shift by $1$ bit. In other words, $$C = B \\oplus (b_0b_{2n-1}b_{2n-2} \\cdots b_2b_1)_2.$$</p>\n<p>Finally, the hash value is calculated as $h_n(A) = 239 A + 153 C \\bmod (2^{2n-1}-1)$.</p>\n<p>For example, let $n=4$ and $A = 00001101_2 = 13$.</p>\n<p>Then, $B = 00001101_2 \\oplus 11000010_2 = 11001111_2 = 207$.</p>\n<p>Further, $C = 11001111_2 \\oplus 11100111_2 = 00101000_2 = 40$.</p>\n<p>Finally, $h_4(A) = 239 \\times 13 + 153 \\times 40 \\bmod (2^7-1) = 9\\,227 \\bmod 127 = 83$.</p>\n<p>Your goal is to invert this hash function, that is, for given $n$ and $H$, find $A$ such that $h_n(A)=H$.</p>",
+  "input": "<p>You are given two integers $n$ and $H$ ($2 \\le n \\le 16$, $0 \\le H &lt; 2^{2n-1}-1$).</p>\n<p>It is guaranteed that for the input there exists $A$ ($0 \\le A &lt; 2^{2n}$) such that $h_n(A)=H$.</p>",
+  "output": "<p>Print one integer $A$ ($0 \\le A &lt; 2^{2n}$) such that $h_n(A)=H$.</p>\n<p>If there are several such $A$ --- output any.</p>",
+  "samples": [
+    {
+      "input": "4 83\n",
+      "output": "13\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 16: Grand Prix of Urals",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

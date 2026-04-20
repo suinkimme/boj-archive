@@ -1,0 +1,26 @@
+{
+  "id": 26228,
+  "title": "Group tournament",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In our capitalist-run, dog-eat-dog world money is everything, and big sports are no exception. All participating teams have already bought enough points for the next season, and all the local hockey federation has to do now is distribute the results of the upcoming games. However, some teams felt generous and apart from buying points also bought the results of some matches. Initially the federation officials thought it would only make their life easier: the more games are fixed, the less work. It was only later that they understood their wrong and asked us to be a part of their scheme and help them distribute the results of the games in the upcoming season.</p>\n<p>The local hockey tournament follows a round scheme: $N$ teams participate, each team plays a game against each and every other team strictly once. Teams score points for games according to the following rules:</p>\n<ul>\n<li>If the winning team is defined at the end of the regulation time of the match, it scores 3 points, and the other team gets none.</li>\n<li>If a game is tied after regulation time, overtime ensues. In this case the winner gets 2 points and the loser gets 1. The overtime is unlimited and lasts until someone scores a goal.</li>\n</ul>\n<p>Based on the tournament results, a team's score is calculated as the sum of its points earned in all games played.</p>",
+  "input": "<p>The first line of the input file contains an integer $N$ --- the number of tournament participants (2 $\\leq$ $N$ $\\leq$ 100). Teams are numbered from 1 to $N$.</p>\n<p>The following $N$ lines of the file each contain $N$ symbols and are in essence a tournament table for the given moment of time.</p>\n<p>The symbol $a_{ij}$ in the line $i$ and position $j$ denotes the result of a game scheduled to be played by team number $i$ against team number $j$ (1 $\\leq$ $i$, $j$ $\\leq$ $N$). It can be one of the following:</p>\n<ul>\n<li><code>'W'</code> --- means that the team $i$ will win a match against $j$ in the regulation time</li>\n<li><code>'w'</code> --- the team $i$ will win in a match against $j$ in the overtime</li>\n<li><code>'l'</code> --- the team $i$ will lose to the team $j$ in the overtime</li>\n<li><code>'L'</code> --- the team $i$ will lose to the team $j$ in the regulation time</li>\n<li><code>'.'</code> --- if the result of the game between $i$ and $j$ is not yet determined</li>\n<li><code>'#'</code> --- if $i$ equals $j$, it means that there is no such game, i.e. a team cannot play against itself.</li>\n</ul>\n<p>It is guaranteed that the table is correct. More formally:</p>\n<ul>\n<li>$a_{ij}$ = <code>'#'</code> for all $i$ = $j$</li>\n<li>if $a_{ij}$ = <code>'.'</code>, then $a_{ji}$ = <code>'.'</code></li>\n<li>$a_{ij}$ = <code>'W'</code> when and only when $a_{ji}$ = <code>'L'</code></li>\n<li>$a_{ij}$ = <code>'w'</code> when and only when $a_{ji}$ = <code>'l'</code></li>\n</ul>\n<p>The last line of the input file contains $N$ integers $p_i$ --- the number of points the $i$-th team must score (1 $\\leq$ $i$ $\\leq$ $N$).</p>",
+  "output": "<p>The output file must contain a completely filled tournament table in the same format as that in the input file.</p>\n<p>It is guaranteed that a solution exists. If there are several solutions, print any of them.</p>",
+  "samples": [
+    {
+      "input": "4\n#..W\n.#w.\n.l#.\nL..#\n8 6 3 1\n",
+      "output": "#wWW\nl#wW\nLl#w\nLLl#\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2016/2017 Season, Stage 2: Grand Prix of Eurasia",
+  "level": 20,
+  "tags": [
+    "graphs",
+    "flow",
+    "traceback"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

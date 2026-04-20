@@ -1,0 +1,25 @@
+{
+  "id": 14823,
+  "title": "Googlements (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Chemists work with periodic table elements, but here at Code Jam, we have been using our advanced number smasher to study <em>googlements</em>. A googlement is a substance that can be represented by a string of at most nine digits. A googlement of length L must contain only decimal digits in the range 0 through L, inclusive, and it must contain at least one digit greater than 0. Leading zeroes are allowed. For example, <code>103</code> and <code>001</code> are valid googlements of length 3. <code>400</code> (which contains a digit, 4, greater than the length of the googlement, 3) and <code>000</code> (which contains no digit greater than 0) are not.</p>\n<p>Any valid googlement can appear in the world at any time, but it will eventually decay into another googlement in a deterministic way, as follows. For a googlement of length L, count the number of <code>1</code>s in the googlement (which could be 0) and write down that value, then count the number of <code>2</code>s in the googlement (which could be 0) and write down that value to the right of the previous value, and so on, until you finally count and write down the number of Ls. The new string generated in this way represents the new googlement, and it will also have length L. It is even possible for a googlement to decay into itself!</p>\n<p>For example, suppose that the googlement <code>0414</code> has just appeared. This has one <code>1</code>, zero <code>2</code>s, zero <code>3</code>s, and two <code>4</code>s, so it will decay into the googlement <code>1002</code>. This has one <code>1</code>, one <code>2</code>, zero <code>3</code>s, and zero <code>4</code>s, so it will decay into <code>1100</code>, which will decay into <code>2000</code>, which will decay into <code>0100</code>, which will decay into <code>1000</code>, which will continuously decay into itself.</p>\n<p>You have just observed a googlement <strong>G</strong>. This googlement might have just appeared in the world, or it might be the result of one or more decay steps. What is the total number of possible googlements it could have been when it originally appeared in the world?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow. Each consists of one line with a string <strong>G</strong>, representing a googlement.</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>Each digit in <strong>G</strong> is a decimal digit between 0 and the length of <strong>G</strong>, inclusive.</li>\n<li><strong>G</strong> contains at least one non-zero digit.</li>\n<li>1 ≤ the length of <strong>G</strong> ≤ 5.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the number of different googlements that the observed googlement could have been when it first appeared in the world.</p>",
+  "samples": [
+    {
+      "input": "3\n20\n1\n123\n",
+      "output": "Case #1: 4\nCase #2: 1\nCase #3: 1\n"
+    }
+  ],
+  "hint": "<p>In sample case #1, the googlement could have originally been <code>20</code>, or it could have decayed from <code>11</code>, which could have itself decayed from <code>12</code> or <code>21</code>. Neither of the latter two could have been a product of decay. So there are four possibilities in total.</p>\n<p>In sample case #2, the googlement must have originally been <code>1</code>, which is the only possible googlement of length 1.</p>\n<p>In sample case #3, the googlement must have been <code>123</code>; no other googlement could have decayed into it.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2017, Round 3",
+  "level": 11,
+  "tags": [
+    "bruteforcing",
+    "backtracking"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 2.2105000019073486
+}

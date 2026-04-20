@@ -1,0 +1,30 @@
+{
+  "id": 26406,
+  "title": "Expected Cycle Size",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>TL;DR Permutation pattern is a permutation with 0 as a wildcard. You are given a permutation pattern. For each index, find its expected cycle size if a random permutation conforming to the pattern is chosen and output it modulo $998\\,244\\,353$.</p>\n<p><em>And now five times as long, three times as formal</em></p>\n<p>A <strong>permutation</strong> is an array $p$ of length $n$, such that $\\forall_{i \\neq j}: p_i \\neq p_j, \\forall_i: 1 \\leq p_i \\leq n$</p>\n<p>The <strong>product of permutations</strong> $p$ and $q$ which have the same length, denoted as $p \\cdot q$ is the permutation r of the same length as both $p$ and $q$, such that $\\forall_i: r_i = p_{q_i}$ </p>\n<p>The <strong>power $p^k$</strong> where $p$ is a permutation and $k$ is a positive integer is </p>\n<ol>\n<li>$p$ if $k$ = 1</li>\n<li>$p^{k-1} \\cdot p$ otherwise</li>\n</ol>\n<p><strong>Cycle size of index i</strong> is the minimal positive integer k, such that $(p^k)_i = i$. It can be shown that such number always exists. </p>\n<p><strong>Permutation pattern</strong> is an array of length $n$ such that $\\forall_{i \\neq j}: a_i = 0  or  a_i \\neq a_j, \\forall_i: 0 \\leq a_i \\leq n$. </p>\n<p>We say permutation $p$ conforms to the pattern $t$ if $\\forall_i: p_i = t_i   or  t_i = 0$. </p>\n<p>Let $ans_i$ be the expected cycle size of index i in a random permutation conforming to the pattern given in input. You are to find $ans_i$ modulo $998\\,244\\,353$.</p>\n<p>Taking a potentially non-integer number $X$ modulo $M$ is the following procedure:</p>\n<p>Jury guarantees that $X$ is equal to some irreducible fraction $\\frac{P}{Q}$ where Q has an inverse modulo $M$. In that case $X$ modulo $M = A$, where $A$ is an integer between 0 and $M - 1$ inclusive and $P - QA$ is divisible by $M$. It can be shown that $A$ is unique. </p>",
+  "input": "<p>The first line contains one integer $n$ ($1 \\leq n \\leq 10^6$), the length of the permutation pattern. </p>\n<p>The second line contains $n$ space separated integers $t_i$ ($0 \\leq t_i \\leq n$). </p>\n<p>It is guaranteed that $t$ is a permutation pattern.</p>",
+  "output": "<p>Output $n$ integers. $i$-th of them must be equal to $ans_i$ modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "5\n2 3 4 5 0\n",
+      "output": "5 5 5 5 5\n"
+    },
+    {
+      "input": "2\n0 0\n",
+      "output": "499122178 499122178\n"
+    },
+    {
+      "input": "6\n3 0 1 6 5 2\n",
+      "output": "2 3 2 3 1 3\n"
+    }
+  ],
+  "hint": "<p>In the second example both $ans_i$ are equal to $\\frac{3}{2}$ which equals 499122178 modulo 998244353.</p>",
+  "source": "Camp, Moscow Pre-Finals ACM ICPC Workshop, Moscow Pre-Finals ACM ICPC Workshop 2018",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

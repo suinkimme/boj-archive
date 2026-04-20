@@ -1,0 +1,40 @@
+{
+  "id": 21343,
+  "title": "Great Expectations",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A <em>speedrun</em> is a playthrough of a game with the intention to complete it as quickly as possible. When speedrunning, you usually follow a pre-planned path through the game. Along this path, there may be some places where you have to pull off a difficult technique, or <em>trick</em>, which may cause a delay if you fail to pull it off successfully. Luckily you can <em>reset</em> the game at any time: if you have made a few mistakes, you can start a new run, losing your progress but instantaneously starting over with a clean slate. You can do this as often as you like.</p>\n<p>The game you are currently speedrunning has a record of $r$ seconds, which you intend to beat. You have discovered a path through the game that, in the best case, takes $n &lt; r$ seconds. There are some tricks along the way, though: you know exactly where along the run they occur, what the probability is that you will pull them off successfully, and how many seconds you have to spend to recover if they fail.</p>\n<p>Given this data, you want to find the optimal strategy for when to reset the game to minimise the expected time to set a new record. Write a program to determine what this smallest possible expected time is.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with three integers $n$, $r$ and $m$ ($2 \\leq n &lt; r \\leq 5\\,000$, $1 \\le m \\le 50$), where $n$ and $r$ are as described above and $m$ is the number of tricks.</li>\n<li>$m$ lines, each containing three numbers describing a trick:\n\t<ul>\n<li>An integer $t$ ($1 \\le t &lt; n$), the time in the route (assuming no failed tricks before) at which the trick occurs,</li>\n<li>a real number $p$ ($0 &lt; p &lt; 1$ and $p$ has at most $6$ digits after the decimal point), the probability that the trick succeeds, and</li>\n<li>an integer $d$ ($1 \\le d \\le 1\\,000$), the number of seconds required to recover in case the trick fails.</li>\n</ul>\n</li>\n</ul>\n<p>The tricks are given in sorted order by $t$, and no two tricks occur at the same time $t$ in the route.</p>\n<p>You may assume that, without resetting, a single playthrough has a probability of at least $1$ in $50\\,000$ to succeed at improving the record.</p>",
+  "output": "<p>Output the expected time you will have to play the game to set a new record, assuming an optimal strategy is used. Your answer should have an absolute or relative error of at most $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "100 111 5\n20 0.5 10\n80 0.5 2\n85 0.5 2\n90 0.5 2\n95 0.5 2\n",
+      "output": "124\n"
+    },
+    {
+      "input": "2 4 1\n1 0.5 5\n",
+      "output": "3\n"
+    },
+    {
+      "input": "10 20 3\n5 0.3 8\n6 0.8 3\n8 0.9 3\n",
+      "output": "18.9029850746\n"
+    },
+    {
+      "input": "10 50 1\n5 0.5 30\n",
+      "output": "15\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2020",
+  "level": 22,
+  "tags": [
+    "binary_search",
+    "dp",
+    "math",
+    "parametric_search",
+    "probability"
+  ],
+  "accepted_user_count": 41,
+  "submission_count": null,
+  "average_tries": 3.1951000690460205
+}

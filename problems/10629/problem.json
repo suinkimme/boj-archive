@@ -1,0 +1,38 @@
+{
+  "id": 10629,
+  "title": "Proportional Representation",
+  "time_limit": "5 초",
+  "memory_limit": "128 MB",
+  "description": "<p>An election selecting the members of the parliament in JAG Kingdom was held. The only system adopted in this country is the party-list proportional representation. In this system, each citizen votes for a political party, and the number of seats a party wins will be proportional to the number of votes it receives. Since the total number of seats in the parliament is an integer, of course, it is often impossible to allocate seats exactly proportionaly. In JAG Kingdom, the following method, known as the D'Hondt method, is used to determine the number of seats for each party.</p>\n<p>Assume that every party has an unlimited supply of candidates and the candidates of each party are ordered in some way. To the \\(y\\)-th candidate of a party which received \\(x\\) votes, assign the value \\(\\dfrac{x}{y}\\). Then all the candidates are sorted in the decreasing order of their assigned values. The first \\(T\\) candidates are considered to win, where \\(T\\) is the total number of seats, and the number of seats a party win is the number of its winning candidates.</p>\n<p>The table below shows an example with three parties. The first party received \\(40\\) votes, the second \\(60\\) votes, and the third \\(30\\) votes. If the total number of seats is \\(T = 9\\), the first party will win \\(3\\) seats, the second \\(4\\) seats, and the third \\(2\\) seats.</p>\n<p><img src=\"/upload/images2/Proportional_Representation.png\" style=\"height:103px; width:549px\"/></p>\n<p><span style=\"line-height:1.6em\">When selecting winning candidates, ties are broken by lottery; any tied candidates will have a chance to win. For instance, in the example above, if \\(T = 5\\) then two candidates tie for the value \\(20\\) and there are two possible outcomes:</span></p>\n<ul>\n<li>\n<p>The first party wins \\(2\\) seats, the second \\(2\\) seats, and the third \\(1\\) seat.</p>\n</li>\n<li>\n<p>The first party wins \\(1\\) seat, the second \\(3\\) seats, and the third \\(1\\) seat.</p>\n</li>\n</ul>\n<p>You have just heard the results of the election on TV. Knowing the total number of valid votes and the number of seats each party won, you wonder how many votes each party received.</p>\n<p>Given \\(N\\), \\(M\\), and \\(S_i\\) (\\(1 \\le i \\le M\\)), denoting the total number of valid votes, the number of parties, and the number of seats the \\(i\\)-th party won, respectively, your task is to determine for each party the minimum and the maximum possible number of votes it received. Note that for some cases there might be no such situation with the given \\(N\\), \\(M\\), and \\(S_i\\).</p>",
+  "input": "<p>The first line of the input contains two integers \\(N\\) (\\(1 \\le N \\le 10^9\\)) and \\(M\\) (\\(1 \\le M \\le 30{,}000\\)), where \\(N\\) is the total number of valid votes and \\(M\\) is the number of parties. \\(M\\) lines follow, the \\(i\\)-th of which contains a single integer \\(S_i\\) (\\(0 \\le S_i \\le 30{,}000\\)), representing the number of seats the \\(i\\)-th party won. You can assume that there exists \\(i\\) with \\(S_i \\ne 0\\).</p>",
+  "output": "<p>If there is no situation with the given \\(N\\), (M\\), and \\(S_i\\), display the word \"impossible\". Otherwise, output \\(M\\) lines, each containing two integers. The first integer and the second integer in the \\(i\\)-th line should be the minimum and the maximum possible number of votes the \\(i\\)-th party received, respectively.</p>",
+  "samples": [
+    {
+      "input": "10 2\n2\n1\n",
+      "output": "5 7\n3 5\n"
+    },
+    {
+      "input": "5 6\n0\n2\n0\n2\n6\n0\n",
+      "output": "0 0\n1 1\n0 0\n1 1\n3 3\n0 0\n"
+    },
+    {
+      "input": "2000 5\n200\n201\n202\n203\n204\n",
+      "output": "396 397\n397 399\n399 401\n401 403\n403 404\n"
+    },
+    {
+      "input": "15 10\n1\n1\n1\n1\n1\n1\n1\n1\n1\n13\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "1000000000 9\n12507\n16653\n26746\n21516\n29090\n10215\n28375\n21379\n18494\n",
+      "output": "67611619 67619582\n90024490 90033301\n144586260 144597136\n116313392 116323198\n157257695 157269050\n55221291 55228786\n153392475 153403684\n115572783 115582561\n99976756 99985943\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Spring Contest, JAG Spring Contest 2014",
+  "level": 26,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

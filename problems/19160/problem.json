@@ -1,0 +1,30 @@
+{
+  "id": 19160,
+  "title": "Regular Forestation",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A forestation is an act of planting a bunch of trees to grow a forest, usually to replace a forest that had been cut down. Strangely enough, graph theorists have another idea on how to make a forest, i.e. by cutting down a tree!</p>\n<p>A tree is a graph of N nodes connected by N − 1 edges. Let u be a node in a tree U which degree is at least 2 (i.e. directly connected to at least 2 other nodes in U). If we remove u from U, then we will get two or more disconnected (smaller) trees, or also known as forest by graph theorists. In this problem, we are going to investigate a special forestation of a tree done by graph theorists.</p>\n<p>Let V (S) be the set of nodes in a tree S and V (T) be the set of nodes in a tree T. Tree S and tree T are <strong>identical</strong> if there exists a bijection f : V (S) → V (T) such that for all pairs of nodes (s<sub>i</sub>, s<sub>j</sub>) in V(S), s<sub>i</sub> and s<sub>j</sub> is connected by an edge in S if and only if node f(s<sub>i</sub>) and f(s<sub>j</sub>) is connected by an edge in T. Note that f(s) = t implies node s in S corresponds to node t in T.</p>\n<p>We call a node u in a tree U as a good cutting point if and only if the removal of u from U causes two or more disconnected trees, and all those disconnected trees are pairwise identical.</p>\n<p>Given a tree U, your task is to determine whether there exists a good cutting point in U. If there is such a node, then you should output the maximum number of disconnected trees that can be obtained by removing exactly one good cutting point.</p>\n<p>For example, consider the following tree of 13 nodes.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 603px; height: 185px;\"/></p>\n<p>There is exactly one good cutting point in this tree, i.e. node 4. Observe that by removing node 4, we will get three identical trees (in this case, line graphs), i.e. {5, 1, 7, 13}, {8, 2, 11, 6}, and {3, 12, 9, 10}, which are denoted by A, B, and C respectively in the figure.</p>\n<ul>\n<li>The bijection function between A and B: f(5) = 8, f(1) = 2, f(7) = 11, and f(13) = 6.</li>\n<li>The bijection function between A and C: f(5) = 3, f(1) = 12, f(7) = 9, and f(13) = 10.</li>\n<li>The bijection function between B and C: f(8) = 3, f(2) = 12, f(11) = 9, and f(6) = 10.</li>\n</ul>\n<p>Of course, there exists other bijection functions for those trees.</p>",
+  "input": "<p>Input begins with a line containting an integer: N (3 ≤ N ≤ 4000) representing the number of nodes in the given tree. The next N − 1 lines each contains two integers: a<sub>i</sub> b<sub>i</sub> (1 ≤ a<sub>i</sub> &lt; b<sub>i</sub> ≤ N) representing an edge (a<sub>i</sub>, b<sub>i</sub>) in the given tree. It is guaranteed that any two nodes in the given tree are connected to each other by a sequence of edges.</p>",
+  "output": "<p>Output in a line an integer representing the maximum number of disconnected trees that can be obtained by removing exactly one good cutting point, or output -1 if there is no such good cutting point.</p>",
+  "samples": [
+    {
+      "input": "13\n1 5\n1 7\n2 4\n2 8\n2 11\n3 12\n4 7\n4 12\n6 11\n7 13\n9 10\n9 12\n",
+      "output": "3\n"
+    },
+    {
+      "input": "6\n1 2\n1 3\n2 4\n3 5\n3 6\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, The 2019 ICPC Asia Jakarta Regional Contest",
+  "level": 22,
+  "tags": [
+    "trees",
+    "hashing",
+    "tree_isomorphism"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 2.4063000679016113
+}

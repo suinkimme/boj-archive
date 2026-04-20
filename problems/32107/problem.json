@@ -1,0 +1,44 @@
+{
+  "id": 32107,
+  "title": "Infinite Race",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Every year, there is a marathon in Eindhoven. This year, the organizers have come up with something special, and instead of being over after 42 kilometres, the race goes on forever! To keep the organization simple, the race takes place on a running track at Eindhoven university, and the participants run an infinite number of laps on the track.</p>\n<p>Anika is excited to be one of the $N$ participants, numbered from $0$ to $N-1$. She was quick to sign up which means she is participant $0$. She starts right after the finish line with all other participants positioned ahead of her on the track. Anika cannot keep track of how many laps she has run, but she remembers when she overtakes someone or when someone overtakes her. What is the minimum number of times she must have crossed the finish line? Nobody moves backwards, and no overtaking happens exactly at the finish line. Furthermore, note that the participants do not necessarily run at a constant speed.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 512px; height: 266px;\"/></p>",
+  "input": "<p>The first line of input contains an integer $N$, the number of participants.</p>\n<p>The second line contains an integer $Q$, the number of events.</p>\n<p>The following $Q$ lines describe the events in the order they occurred during the race. The $i$th line contains an integer $x_i$.</p>\n<ul>\n<li>If $x_i &gt; 0$, it means that Anika overtook participant $x_i$.</li>\n<li>If $x_i &lt; 0$, it means that participant $-x_i$ overtook Anika.</li>\n</ul>",
+  "output": "<p>Output a single integer, the minimum number of times Anika must have crossed the finish line.</p>",
+  "samples": [
+    {
+      "input": "4\n5\n-2\n2\n1\n-3\n2\n",
+      "output": "1\n"
+    },
+    {
+      "input": "2\n4\n1\n1\n1\n1\n",
+      "output": "3\n"
+    },
+    {
+      "input": "2\n5\n1\n-1\n1\n-1\n-1\n",
+      "output": "0\n"
+    },
+    {
+      "input": "200000\n7\n199999\n199999\n1\n199999\n55\n199999\n55\n",
+      "output": "3\n"
+    },
+    {
+      "input": "3\n6\n1\n2\n2\n2\n1\n1\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<p>Note that some of the samples are not valid input for all test groups.</p>\n<p>In the first sample, there are $N = 4$ participants and $Q = 5$ events. Anika first gets overtaken by $2$, who is now a full lap ahead of her. Then she overtakes $2$ back, followed by overtaking $1$ and then being overtaken by $3$. At this point, Anika can still be on her first lap. Finally, she overtakes $2$ again, and to do so means that she must have crossed the finish line at least once.</p>\n<p>In the second sample, there is just one participant other than Anika. Anika overtakes the other participant four times, meaning that Anika must have crossed the finish line at least three times.</p>",
+  "source": "Olympiad, European Girls' Olympiad in Informatics, EGOI 2024, Day 1",
+  "level": 14,
+  "tags": [
+    "ad_hoc",
+    "data_structures",
+    "greedy",
+    "hash_set",
+    "set"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.4285999536514282
+}

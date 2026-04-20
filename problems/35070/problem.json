@@ -1,0 +1,28 @@
+{
+  "id": 35070,
+  "title": "Build Dependencies",
+  "time_limit": "5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>A Makefile is a file that specifies dependencies between different source code files. When one source code file changes, this file needs to be recompiled, and when one or more dependencies of another file are recompiled, that file needs to be recompiled as well. Given the Makefile and a changed file, output the set of files that need to be recompiled, in an order that satisfies the dependencies (i.e., when a file $X$ and its dependency $Y$ both need to be recompiled, $Y$ should come before $X$ in the list).</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with an integer $n$ ($1\\leq n \\leq 10^5$), the number of Makefile rules.</li>\n<li>$n$ lines, each with a Makefile rule. Such a rule starts with \"$f$<code>:</code>\" where $f$ is a filename, and is then followed by a list of the filenames of the dependencies of $f$. Each file has at most $5$ dependencies.</li>\n<li>One line with one string $c$, the filename of the changed file.</li>\n</ul>\n<p>Filenames are strings consisting of between $1$ and $10$ English lowercase letters (<code>a-z</code>). Exactly $n$ different filenames appear in the input file, each appearing exactly once as $f$ in a Makefile rule. The rules are such that no two files depend (directly or indirectly) on each other.</p>",
+  "output": "<p>Output the list of files that need to be recompiled, in an order such that all dependencies are satisfied.</p>\n<p>If there are multiple valid solutions, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "6\ngmp:\nsolution: set map queue\nbase:\nset: base gmp\nmap: base gmp\nqueue: base\ngmp\n",
+      "output": "gmp\nmap\nset\nsolution\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2025 연습 세션",
+  "level": 14,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "set",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.75
+}

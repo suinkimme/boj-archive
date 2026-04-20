@@ -1,0 +1,25 @@
+{
+  "id": 9900,
+  "title": "Small",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>An <i>n</i>-bit shift register is a memory for holding <i>n</i> bits; its contents can be modified in only two possible ways: the contents are left shifted by one position and the rightmost bit is given a 0 or a 1. We call such a modification a \"move\". For example, when the contents of a 4-bit shift register are 0001, after one move the contents can become either 0010 (if the rightmost bit is given a 0) or 0011 (if the rightmost bit is given a 1). Consider an <i>n</i>-bit shift register whose contents are initially all zeroes. We need to construct a sequence of moves such that after each move the contents of the shift register are unique, that is, different from all its past contents. Since an <i>n</i>-bit shift register has 2<sup><i>n</i></sup> possible contents, the longest such sequence can be of length 2<sup><i>n</i></sup>. It is known that for an <i>n</i>-bit shift register, there are always one or more such sequences of length 2<sup><i>n</i></sup>. For example, when <i>n</i>=3, there are two such sequences of length 2<sup>3</sup>=8:</p>\n<p style=\"text-align: center;\"><i>A</i> = 000 001 010 101 011 111 110 100</p>\n<p style=\"text-align: center;\"><i>B</i> = 000 001 011 111 110 101 010 100</p>\n<p><b>LNR (Longest Non-Repeating) Sequences</b></p>\n<p> </p>\n<p>Given a positive integer <i>n</i>, consider any sequence which satisfies the following properties:</p>\n<ol type=\"a\">\n<li>each element of the sequence is a bit-string of length <i>n</i>,</li>\n<li>there are 2<sup><i>n</i></sup> elements in the sequence,</li>\n<li>there is no repetition in the sequence,</li>\n<li>all the <i>n</i> bits of the first element are zero,</li>\n<li>any element in the sequence (apart from the first element) is derived from its previous element via a move described above.</li>\n</ol>\n<p>We call any such sequence a Longest-Non-Repeating or LNR sequence. Given a positive integer <i>n</i>, the set of all LNR sequences (each of which satisfies the above five properties) is denoted as S(<i>n</i>).</p>\n<p><b>The Smallest LNR Sequence</b></p>\n<p> </p>\n<p>Any LNR Sequence s e S (<i>n</i>) can be associated with a value denoted as <i>value</i>(s) in the following way: we concatenate the 2<sup><i>n</i></sup> bit-strings in s to form a single bit-string. The value of this bit-string, considered as a binary number, is <i>value</i>(s). Thus, for the LNR sequence</p>\n<p style=\"text-align: center;\"><i>A</i> = 000 001 010 101 011 111 110 100</p>\n<p>in our example above, we have</p>\n<p style=\"text-align: center;\"><i>value</i>(<i>A</i>) = 000001010101011111110100</p>\n<p>We can now define the smallest LNR sequence s<sub><i>small</i></sub>(<i>n</i>) as the LNR sequence s in S(<i>n</i>) which yields the smallest <i>value</i>(s).</p>\n<p>For <i>n</i>=3, the set of all LNR sequences is given by</p>\n<p style=\"text-align: center;\">S(3) = {<i>A</i>, <i>B</i>}</p>\n<p>where <i>A</i> and <i>B</i> are the sequences discussed earlier. Note that</p>\n<p style=\"text-align: center;\"><i>value</i>(<i>A</i>) &lt; <i>value</i>(<i>B</i>),</p>\n<p>so</p>\n<p style=\"text-align: center;\">s<sub><i>small</i></sub>(3) = <i>A</i>.</p>\n<p>The positions of the bit-strings</p>\n<p>000, 001, 010, 101, 011, 111, 110, 100</p>\n<p>in <i>A</i> are respectively</p>\n<p style=\"text-align: center;\">1, 2, 3, 4, 5, 6, 7, 8.</p>\n<p><b>What you need to do</b></p>\n<p>Given a positive integer <i>n</i> ≤ 10 and bit-string <i>s</i> of length <i>n</i>, your program should compute s<sub><i>small</i></sub>(<i>n</i>) and output the position of <i>s</i> in s<sub><i>small</i></sub>(<i>n</i>). That is, your program should output 1 if <i>s</i> is the first element of s<sub><i>small</i></sub>(<i>n</i>), output 2 if <i>s</i> is the second element of s<sub><i>small</i></sub>(<i>n</i>), etc.</p>\n<ol type=\"a\">\n</ol>",
+  "input": "<p>The input consists of two lines. The first line contains a positive integer <i>n</i> ≤ 10. The second line contains a bit-string <i>s</i> of length <i>n</i>.</p>",
+  "output": "<p>The output contains a single positive integer giving the position of <i>s</i> in s<sub><i>small</i></sub>(<i>n</i>).</p>",
+  "samples": [
+    {
+      "input": "3\n111\n",
+      "output": "6\n"
+    }
+  ],
+  "hint": "<p>In the above example, s<sub><i>small</i></sub>(3) is the sequence <i>A</i> and bit-string 111 is the 6-th element of <i>A</i>. Consequently, we have the following sample input and output.</p>\n<p>Do not try to construct all LNR sequences and then find the smallest LNR sequence. You can find the smallest LNR sequence by preferring left-shift moves where a \"0\" is shifted in (over those moves where a \"1\" is shifted in).</p>",
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2004",
+  "level": 21,
+  "tags": [
+    "graphs",
+    "eulerian_path"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

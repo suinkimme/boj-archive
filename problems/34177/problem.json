@@ -1,0 +1,42 @@
+{
+  "id": 34177,
+  "title": "드래곤볼: MatKor Cup 없애기",
+  "time_limit": "0.7 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>이번 <a href=\"/category/1083\"><code>MatKor Cup</code></a>이 왜 FinAL인지 아는가? 이번 대회를 개최하기 전 동우는 이미 $0$회 대회부터 $6$회 대회까지 <code>MatKor Cup</code>을 총 $7$회 진행하며 $1$성구부터 $7$성구까지 모아, <code>MatKor Cup</code>을 없애달라는 소원을 빌었기 때문이다.</p>\n<p><code>MatKor Cup</code>이 없어지기 위해서는 $1$성구부터 $7$성구까지 공이 하나씩 필요하다. 지금 MatKor에는 $1$번부터 $7$번까지 총 $7$개의 공이 있고, 초기에는 모두 $1$성구이다. MatKor에는 부원은 $N$명이 있고, 각각의 부원은 만질 수 있는 공이 정해져 있다.</p>\n<p>이제 하루에 한 번씩 다음 행위를 할 것이다. $N$명 중 $1$명의 부원을 동일한 확률로 골라 해당 부원이 만질 수 있는 공을 모두 한 번씩 만진다. $i$번 공을 만지면, $i$번 공의 별이 하나 추가되거나 없어진다. 단, $1$성구에서 별이 하나 없어지면 $7$성구가 되며, $7$성구에서 별이 하나 추가되면 $1$성구가 된다. 각 부원이 공을 만질 때 각각의 공의 별은 독립적으로 $\\frac{1}{2}$의 확률로 추가되거나 없어진다.</p>\n<p>오늘로부터 $P$일이 지나면 <code>MatKor Cup</code> 예비소집, $M$일이 지나면 <code>MatKor Cup</code> 본대회이다. 즉, 위의 행위를 $P$번 혹은 $M$번 하면 각각 예비소집과 본대회를 치르게 된다. 만약 이 시점에 공을 확인했을 때, $7$개의 공이 $1$성구부터 $7$성구까지 하나씩 존재하면 <code>MatKor Cup</code>은 없어진다. 단, 예비소집 때 이미 없어졌다면 본대회 때 다시 없어지지는 않는다.</p>\n<p>그런데 그동안 <code>MatKor Cup</code>에 고통받은 사람들에게서 원기옥을 받은 동우는 한 가지 가능성을 더 만들었다. 공을 확인하는 시점에 $7$개의 공이 $1$성구부터 $7$성구까지 하나씩 존재하지 않더라도, $1,2,\\cdots ,7$번 공이 각각 $x_1,x_2,\\cdots ,x_7$성구일 경우에도 <code>MatKor Cup</code>이 없어진다.</p>\n<p><code>MatKor Cup</code>이 예비소집 날에 없어질 확률과 본대회 날에 없어질 확률을 구해보자.</p>",
+  "input": "<p>첫 번째 줄에 부원의 수를 나타내는 정수 $N(1\\le N\\le 10^5)$, 예비소집과 본대회까지 남은 날의 수를 나타내는 정수 $P,M(1\\le P&lt;M\\le 10^9)$이 공백으로 구분되어 주어진다.</p>\n<p>두 번째 줄부터 $N$줄에 걸쳐 $i$번째 줄에 $i$번째 부원이 만질 수 있는 공의 개수 $c_i(1\\le c_i\\le 7)$와 조작할 수 있는 공의 번호 $a_{i,1},a_{i,2},\\cdots ,a_{i,c_i}(1\\le a_1&lt;a_2&lt;\\cdots &lt;a_{c_i}\\le 7)$가 한 줄에 공백으로 구분되어 주어진다.</p>\n<p>$N+2$번째 줄에 동우가 추가로 만든 가능성을 의미하는 정수 $x_1,x_2,\\cdots ,x_7(1\\le x_i\\le 7)$이 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>첫 번째 줄에 <code>MatKor Cup</code>이 예비소집 날에 없어질 확률을 $10^9+7$로 나눈 나머지를 출력한다.</p>\n<p>두 번째 줄에 <code>MatKor Cup</code>이 예비소집 날에 없어지지 않고 본대회 날에 없어질 확률을 $10^9+7$로 나눈 나머지를 출력한다.</p>\n<p>기약 분수 $\\frac{p}{q}(p\\ge 0,q&gt;0,\\gcd(p,q) =1)$를 $M$으로 나눈 나머지는 $q^{-1}$가 $q\\cdot q^{-1}\\equiv 1\\pmod M$을 만족하는 정수, 즉 $q$의 $M$에 대한 모듈로 곱셈 역원일 때, $p\\cdot q^{-1}\\pmod M$로 정의한다. 만약 정수일 경우 $q=q^{-1}=1$이므로 $p\\pmod M$를 의미한다.</p>\n<p>주어진 조건 내에서 기댓값이 정수 혹은 유리수임을 증명할 수 있으며, 유리수의 경우 기약분수에서 분모가 $10^9+7$의 배수가 아닌 경우만 주어짐이 보장된다.</p>",
+  "samples": [
+    {
+      "input": "2 1 3\n4 1 2 3 4\n6 1 2 3 4 5 6\n1 2 3 4 5 6 7\n",
+      "output": "0\n649200444\n"
+    },
+    {
+      "input": "1 1 111\n7 1 2 3 4 5 6 7\n1 2 3 4 5 6 7\n",
+      "output": "0\n502899806\n"
+    },
+    {
+      "input": "2 3 4\n4 1 2 3 4\n6 1 2 3 4 5 6\n2 3 1 5 6 7 4\n",
+      "output": "649200444\n187844993\n"
+    },
+    {
+      "input": "1 11 111\n7 1 2 3 4 5 6 7\n1 1 1 1 1 1 1\n",
+      "output": "595288894\n293968025\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제7회 고려대학교 MatKor Cup: 2025 Summer, The FinAL, yijw0930, devluyten, ezh8n, kidw0124, lighter, midoria, osjoon, utilforever",
+  "level": 27,
+  "tags": [
+    "math",
+    "dp",
+    "number_theory",
+    "probability",
+    "linear_algebra",
+    "fft",
+    "generating_function"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2.5
+}

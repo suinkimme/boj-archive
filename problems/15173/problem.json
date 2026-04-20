@@ -1,0 +1,34 @@
+{
+  "id": 15173,
+  "title": "Graphics Design",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are in a graphics design course. You and the rest of your class need to finish your final projects. The instructor has several items (cameras, camcorders and super computers) that the students will use to finish their projects. Each project consists of several subprojects that must be completed in order. These subprojects may or may not be different for each student. Each subproject may need a camera, a camcorder and/or a super computer (8 possibilities). The instructor has given each subproject a number, its priority.</p>\n<p>A subproject is eligible to be started if all items that are needed for that subproject are available and the student has fully completed all of their subprojects before this one. Out of all eligible subprojects, the one with the highest priority will be started first. This student will borrow the items needed to complete the subproject and then return them after the subproject is finished.</p>\n<p>If, after a subproject has started and the items have been borrowed, there still remain eligible subprojects, the eligible subproject with the highest priority is started. This means that it is possible that several subprojects are started at the same time (see Sample Input 1). It is also possible that several students are waiting for an item to be returned, and so there are no eligible subprojects at a specific moment in time (see Sample Input 2). Note that the order of each student’s subprojects is fixed. That is, they must complete their first subproject first, then their second subproject, and so on, even if the priorities of their subprojects are not in decreasing order (see Sample Input 3).</p>\n<p>If a student starts a subproject at time x and it takes t time units to complete, then the subproject is considered finished at time x + t and the student must return the borrowed items. This means that the items borrowed for that subproject are available to be borrowed again at time x + t and that the student is able to start their next subproject at time x + t (subject to availability of the items and the subproject’s priority, as specified above). Each camera, camcorder and super computer can only be used by one student at a time. Students must do the subprojects in order, even if they have the items needed for a later subproject but not the current one.</p>\n<p>For each student, you are to compute the time that they finish their last subproject.</p>",
+  "input": "<p>The first line of input contains a single integer n (1 ≤ n ≤ 1 000), which is the number of students in the class. The second line contains 3 integers a (1 ≤ a ≤ 1 000), which is the number of cameras available, b (1 ≤ b ≤ 1 000), which is the number of camcorders available, and c (1 ≤ c ≤ 1 000), which is the number of super computers available. The third line contains n integers d<sub>1</sub>, . . . , d<sub>n</sub> (1 ≤ d<sub>i</sub> ≤ 250), which are the number of subprojects that each student needs to complete for their project.</p>\n<p>This is followed by di lines for each student i in the class, one line for each subproject in the order they must be completed by that student. Each line for a subproject consists of an integer t (1 ≤ t ≤ 1 000 000), which is the amount of time it takes to complete the subproject, an integer p (1 ≤ p ≤ 1 000 000), which is the priority of the subproject, and between zero and three distinct strings. Each of these strings will be one of Camera, Camcorder or Computer.</p>\n<p>All priorities will be distinct.</p>",
+  "output": "<p>For each student, display the time that they finish their last subproject, in the same order that the students are given in the input.</p>",
+  "samples": [
+    {
+      "input": "3\n1 1 1\n1 1 1\n4 1 Camera\n4 2 Camcorder\n4 3 Computer\n",
+      "output": "4 4 4\n"
+    },
+    {
+      "input": "3\n1 1 1\n1 1 1\n3 3 Computer\n4 2 Computer\n5 1 Camera Computer\n",
+      "output": "3 7 12\n"
+    },
+    {
+      "input": "2\n1 1 1\n2 1\n1 1 Computer\n1 3 Computer\n1 2 Computer\n",
+      "output": "3 1\n"
+    },
+    {
+      "input": "3\n2 2 2\n2 1 3\n2 3 Camera\n5 1 Camera Camcorder\n3 2 Camcorder Computer\n1 6 Camera Camcorder Computer\n1 5 Camera Camcorder Computer\n1 4 Camera Camcorder Computer\n",
+      "output": "8 3 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, 2016 ACM South Pacific Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 3
+}

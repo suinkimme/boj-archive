@@ -1,0 +1,30 @@
+{
+  "id": 13721,
+  "title": "Zamjene",
+  "time_limit": "6 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Dominik has envisioned an array of positive integers p<sub>1</sub>, …, p<sub>n</sub>. Let’s denote the sorted version of that array as q<sub>1</sub>, …, q<sub>n</sub>.</p>\n<p>Also, he envisioned a set of allowed substitutions. If a pair (X, Y) is a member of the set of allowed substitutions, Dominik can swap the numbers at positions X and Y in array p.</p>\n<p>Marin is giving Dominik Q queries, and each of them is of one of the following types:</p>\n<ol>\n<li>Swap numbers at positions A and B.</li>\n<li>Add pair (A, B) to the set of allowed substitutions. <br/>\n\tMarin can give pair (A, B) that is already in the set of allowed substitutions.</li>\n<li>See if it’s possible to sort the array using only the allowed substitutions? <br/>\n\tThe substitutions can be used in an arbitrary order, and each substitution can be made an arbitrary number of times.</li>\n<li>Let’s call a pair of positions (A, B) linked​ if the number from position A is possible to transfer to position B using only allowed subtitutions.<br/>\n\tLet’s call the set of all positions linked to position A the cloud​ of A.<br/>\n\tA cloud is good​ if it’s possible for each position j from the cloud to achieve p<sub>j</sub> = q<sub>j </sub>using a series of allowed substitutions.</li>\n</ol>\n<p>You must answer how many pairs of different positions (A, B) exist such that it holds: </p>\n<ul>\n<li>a. Positions A and B are not linked</li>\n<li>b. Cloud of A is not good and cloud of B is not good</li>\n<li>c. If we add pair (A, B) to the set of allowed substitutions, the cloud of A (created by linking the cloud of A and cloud of B) becomes good.</li>\n</ul>\n<p>Please note: Pairs (A, B) and (B, A) are considered an identical pair. </p>",
+  "input": "<p>The first line of input contains integers N and Q (1 ≤ N, Q ≤ 1 000 000).<br/>\nThe second line of input contains N integers p<sub>1</sub>, …, p<sub>n</sub> (1 ≤ p<sub>1</sub>, …, p<sub>n</sub> ≤ 1 000 000).<br/>\nEach of the following Q lines contains a query in the following format:</p>\n<ul>\n<li>The first number in the line is the type of query T from the set {1, 2, 3, 4}.</li>\n<li>If the type of query T is 1 or 2, two different integers A and B follow (1 ≤ A, B ≤ N) that represent the substitution (A, B). </li>\n</ul>",
+  "output": "<p>For each query of type 3 or 4, output the answer in its separate line.<br/>\nThe answer to query of type 3 is “DA” (Croatian for yes) or “NE” (Croatian for no), without the quotation marks, and the answer to query of type 4 is a non-negative integer from the task. </p>",
+  "samples": [
+    {
+      "input": "3 5\n1 3 2\n4\n3\n2 2 3\n4\n3\n",
+      "output": "1\nNE\n0\nDA\n"
+    },
+    {
+      "input": "5 5\n4 2 1 4 4\n3\n4\n1 1 3\n3\n4\n",
+      "output": "NE\n1\nDA\n0\n"
+    },
+    {
+      "input": "4 10\n2 1 4 3\n3\n4\n1 1 2\n3\n4\n2 2 3\n2 1 2\n4\n2 3 4\n3\n",
+      "output": "NE\n2\nNE\n1\n3\nDA\n"
+    }
+  ],
+  "hint": "<p>The answer to the first query is 1 because the pair of positions (2, 3) meets all given requirements.<br/>\nThe answer to the second query is NE (no) because it is impossible to transfer numbers 2 and 3 to the corresponding positions, because the set of allowed substitutions is empty.<br/>\nAfter the third query, we add pair (2, 3) to the set of allowed substitutions.<br/>\nThe answer to the fourth query is now 0 because 2 and 3 are already linked, and the answer to the fifth query is DA (yes), because it is possible to sort the array by applying the allowed substitution (2, 3). </p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2016/2017, Contest #2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.75
+}

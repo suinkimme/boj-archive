@@ -1,0 +1,35 @@
+{
+  "id": 27611,
+  "title": "Cribbage On Steroids",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Cribbage is a two-person card game where players score points for various combinations of cards. A standard $52$-card deck is used where cards have one of $4$ suits (not important in this problem) and one of $13$ ranks. The card ranks, from lowest to highest, are Ace (A), $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$, $10$ (T), Jack (J), Queen (Q), King (K). In normal cribbage, players make combinations from a hand consisting of five cards (four in their hand and one common card). The possible combinations and their point values are the following:</p>\n<ul>\n<li><strong>15's</strong>: any combination of card ranks that total exactly $15$ scores $2$ points. The values of Kings, Queens and Jacks are $10$, the value of Aces is $1$ and all other card values are the same as their rank.</li>\n<li><strong>pairs</strong>: any two cards with the same rank scores $2$ points. Note that three cards with the same rank will score $6$ points since it contains three separate pairs; four cards with the same rank scores $12$ points; five cards with the same rank$\\ldots$ but we're getting ahead of ourselves.</li>\n<li><strong>runs</strong>: for each disjoint run of length three or more, each set of cards that generates the longest run scores $1$ point per card. So for example, the cards $2,2,3,4,5,8,9$, T, J, Q will score $8$ points for two four-card sequences (there are $2$ ways to make $2,3,4,5$) and $5$ points for a five-card sequence (there is one way to make $8,9$, T, J, Q).</li>\n</ul>\n<p>The total score across each of these three categories is the hand's score.</p>\n<p>For example, a five-card hand consisting of $4,5,5,5,6$ will score $23$ points: $8$ points for $15$'s (three $4$-$5$-$6$ combinations and one $5$-$5$-$5$), $6$ points for pairs (three pairs of $5$'s) and $9$ points for runs (three $4$-$5$-$6$ runs). The five-card hand T,T,J,Q,Q scores $16$: $4$ points for pairs (T's and Q's) and $12$ points for runs (four different runs of T-J-Q). There are other ways to score as well but the three rules above will suffice for this problem.</p>\n<p>Now as we said, in normal cribbage you look for combinations in five-card hands. But we're far from normal. Your task is to determine the value of an $n$-card hand when $n$ can be significantly larger than $5$.</p>",
+  "input": "<p>Input starts with a integer $n$ ($5 \\leq n \\leq 100$) indicating the number of cards in the hand. Following this are $n$ characters taken from the set <code>{A,2,3,4,5,6,7,8,9,T,J,Q,K</code>} indicating the ranks of the $n$ cards. These characters will be on one or more lines with one space between any two characters on the same line. The card ranks will not necessarily be in sorted order. Note that unlike a standard deck of cards, there may be more than four cards of any rank.</p>",
+  "output": "<p>Output the total score achieved by the $n$-card hand.</p>",
+  "samples": [
+    {
+      "input": "5\n4 5 6 5 5\n",
+      "output": "23\n"
+    },
+    {
+      "input": "13\nA 2 3 4 5\n6 7 8 9 T\nJ Q K\n",
+      "output": "71\n"
+    },
+    {
+      "input": "10\n2 2 3 4 5 8 9 T J Q\n",
+      "output": "45\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2022-2023 East Central Regional Contest",
+  "level": 14,
+  "tags": [
+    "math",
+    "implementation",
+    "combinatorics",
+    "knapsack"
+  ],
+  "accepted_user_count": 30,
+  "submission_count": null,
+  "average_tries": 1.600000023841858
+}

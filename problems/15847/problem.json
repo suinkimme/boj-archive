@@ -1,0 +1,40 @@
+{
+  "id": 15847,
+  "title": "Non-Interactive Guessing Number",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<blockquote>\n<p><em>Romanos: \"Can I submit an interactive problem to ACM-ICPC 2017 Jakarta?\"</em></p>\n<p><em>Theodora: \"No.\"</em></p>\n<p><em>Romanos: \"Aww, man.. That's not fun.\"</em></p>\n</blockquote>\n<p>Then Romanos decided to submit a non-interactive version of his problem to the contest; and here it is, based on his playing with Theodora. </p>\n<p>Romanos and Theodora are playing a game. Initially, Theodora picks a number between 1 to N inclusive. Romanos' goal is to determine that number. He can make up to K guesses. For each guess, he will say a number out loud as his guess. Theodora will then say one of the following answers based on the exact condition:</p>\n<ul>\n<li>\"My number is smaller than your guess (&lt;)”,</li>\n<li>\"My number is greater than your guess (&gt;)\", or</li>\n<li>\"Your guess is correct (=)\".</li>\n</ul>\n<p>The game will end right after one of the following:</p>\n<ul>\n<li>Romanos guesses the correct number (he wins), or</li>\n<li>All K guesses are wrong (he loses).</li>\n</ul>\n<p>Sadly, Romanos is not playing the game seriously. He knows the best strategy to win this game, but he does not always use it. Nevertheless, he pretends that he plays seriously, hence his guess will never be a dumb one. In other words, his guess will always be a number between 1 to N inclusive and will always be consistent with all of Theodora's previous answers.</p>\n<p>For example, suppose N is 10 and Romanos' first guess is 4. If Theodora answers \"My number is smaller than your guess (&lt;)\" then the next Romanos's guess will always be between 1 to 3, inclusive.</p>\n<p>Contrast to Romanos, Theodora is playing the game too seriously. She wants to win (by making Romanos lose) and \"cheats\" as follows.</p>\n<p>Adaptively, Theodora might change her number as far as it is consistent with all of her previous answers. To do that, whenever possible, Theodora will always answer either \"My number is smaller than your guess (&lt;)\" or \"My number is greater than your guess (&gt;)\" that maximizes the possible answer range. In the case of tie, she will always answer the first one (&lt;).</p>\n<p>For example, suppose N is 10 and Romanos' first guess is 4. Theodora will always answer \"My number is greater than your guess (&gt;)\" because the possible answer range will be between 5 to 10 inclusive; it is larger than 1 to 3 inclusive.</p>\n<p>Now, this is the actual problem proposed by Romanos. You are given N, K, and Theodora's answer for each guess. Can you show one of the possible scenario for Romanos' guesses or state that it is impossible?</p>",
+  "input": "<p>The first line contains two integers: N K (1 ≤ N ≤ 10<sup>18</sup>; 1 ≤ K ≤ 50,000) in a line denoting the number range and the number of guesses. The second line contains a string in a line denoting Theodora's answers. Each character of the string is either '&lt;', '&gt;', or '=', and either:</p>\n<ul>\n<li>The last character of the string is '=' and each character of the string other than the last character is either '&lt;' or '&gt;', and the length of the string is not more than K, or</li>\n<li>The length of the string is exactly K and each character of the string is either '&lt;' or '&gt;'. </li>\n</ul>",
+  "output": "<ul>\n<li>If there is a possible scenario for Romanos' guesses, the output contains M integers: A<sub>1</sub> A<sub>2</sub> ... A<sub>M</sub> in a line denoting Romanos' guesses where M is the length of the string and A<sub>i</sub> is Romanos' i-th guess. If there are more than one possible scenario for Romanos' guesses, you may output any of them.</li>\n<li>If there is no possible scenario for Romanos' guesses, just output -1 in a line.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "10 5\n><>=\n",
+      "output": "5 8 6 7\n"
+    },
+    {
+      "input": "10 5\n><<><\n",
+      "output": "4 10 8 5 7\n"
+    },
+    {
+      "input": "10 5\n<>=\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "10 9\n>>>>>>>>>\n",
+      "output": "1 2 3 4 5 6 7 8 9\n"
+    },
+    {
+      "input": "10 10\n>>>>>>>>>>\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, ACM-ICPC Regional Contest, Jakarta 2017",
+  "level": 17,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 2.9444000720977783
+}

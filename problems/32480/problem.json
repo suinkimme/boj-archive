@@ -1,0 +1,32 @@
+{
+  "id": 32480,
+  "title": "Dark Alley",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>One cold and foggy night, you walk down a shady alley. There should be a lamp every few metres but none of them seem to work, and in this night, not even the moon enlightens your path. Alone and in the dark, you wonder: \"Even if there was a working lamp somewhere, how much would it lighten my way?\". Now, back at home, you want to calculate this.</p>\n<p>The alley can be modelled as a line with a length of $n$ metres. The fog has a uniform density and reduces the light of a lamp by a factor of $1-p$ every metre. The brightness at one point is the sum of the light that reaches this point from every lamp. You want to calculate this brightness at some points after placing some lamps.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two integers $n$ and $q$ and one real number $p$ ($1\\leq n, q\\leq 2\\cdot10^5, 0 &lt; p &lt; 1$), the length of the alley, the number of queries and the density of the fog. The density $p$ of the fog will be given with at most $6$ digits behind the decimal point.</li>\n<li>$q$ lines containing one of three query types:\n\t<ol>\n<li>\"<strong><code>+ b x</code></strong>\" given two integers $b$ and $x$ ($1\\leq b \\leq 10^9$ and $1\\leq x \\leq n$), place a lamp with brightness $b$ at position $x$.</li>\n<li>\"<strong><code>- b x</code></strong>\" given integers $b$ and $x$ ($1\\leq b \\leq 10^9$ and $1\\leq x \\leq n$), remove a lamp with brightness $b$ at position $x$. It is guaranteed that a lamp with that brightness was placed there earlier.</li>\n<li>\"<strong><code>? x</code></strong>\" given one integer $x$ ($1\\leq x \\leq n$), calculate the brightness at position $x$.</li>\n</ol>\n</li>\n</ul>",
+  "output": "<p>It can be shown that the brightness can be calculated as a fraction $\\frac{P}{Q}$ where $Q$ is not divisible by $10^9+7$. For each query of type \"<code>?</code>\", print the brightness as $P\\cdot Q^{-1} \\bmod 10^9+7$ in a single line.</p>",
+  "samples": [
+    {
+      "input": "5 6 0.25\n+ 4 2\n? 1\n? 2\n? 3\n? 4\n? 5\n",
+      "output": "3\n4\n3\n250000004\n187500003\n"
+    },
+    {
+      "input": "5 7 0.33\n+ 9 1\n? 5\n+ 4 3\n? 2\n? 5\n- 9 1\n? 2\n",
+      "output": "312342734\n470000012\n341542736\n760000008\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2024",
+  "level": 18,
+  "tags": [
+    "math",
+    "data_structures",
+    "number_theory",
+    "segtree",
+    "modular_multiplicative_inverse"
+  ],
+  "accepted_user_count": 51,
+  "submission_count": null,
+  "average_tries": 2.058799982070923
+}

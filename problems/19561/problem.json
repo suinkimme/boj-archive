@@ -1,0 +1,29 @@
+{
+  "id": 19561,
+  "title": "Viruses",
+  "time_limit": "0.7 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The Committee for Research on Binary Viruses discovered a method of replication for a large family of viruses whose genetic codes are sequences of zeros and ones. Each virus originates from a single gene; for simplicity genes are denoted by integers from 0 to G − 1. At each moment in time a virus is a sequence of genes. When mutation occurs, one of the genes from the sequence is replaced by a certain sequence of genes, according to the mutation table. The virus stops mutating when it consists only of genes 0 and 1.</p>\n<p>For instance, for the following mutation table:</p>\n<p style=\"text-align: center;\">2 → ⟨0 1⟩ 3 → ⟨2 0 0⟩ 3 → ⟨1 3⟩ 4 → ⟨0 3 1 2⟩ 5 → ⟨2 1⟩ 5 → ⟨5⟩</p>\n<p>a virus that initially consisted of a single gene 4, could have mutated as follows:</p>\n<p style=\"text-align: center;\">⟨4⟩ → ⟨<u>0 3 1 2</u>⟩ → ⟨0 <u>2 0 0</u> 1 2⟩ → ⟨0 <u>0 1</u> 0 0 1 2⟩ → ⟨0 0 1 0 0 1 <u>0 1</u>⟩</p>\n<p>or in another way:</p>\n<p style=\"text-align: center;\">⟨4⟩ → ⟨<u>0 3 1 2</u>⟩ → ⟨0 <u>1 3</u> 1 2⟩ → ⟨0 1 3 1 <u>0 1</u>⟩ → ⟨0 1 <u>2 0 0</u> 1 0 1⟩ → ⟨0 1 <u>0 1</u> 0 0 1 0 1⟩</p>\n<p>Viruses are detected by antibodies that identify the presence of specific continuous fragments of zeros and ones in the viruses’ codes. For example, an antibody reacting to a fragment ⟨0 0 1 0 0⟩ will detect a virus ⟨0 0 1 0 0 1 0 1⟩, but it will not detect a virus ⟨0 1 0 1 0 0 1 0 1⟩.</p>\n<p>For each gene from 2 to G−1, the scientists are wondering whether a given set of antibodies is enough to detect all viruses that can emerge through mutations from this gene. If not, they want to know the length of the shortest virus that cannot be detected.</p>\n<p>It may happen that sometimes scientists don’t have any antibodies. Then of course no virus can be detected, so the scientists are only interested in the length of the shortest possible virus that can emerge from the gene mutations.</p>",
+  "input": "<p>The first line of the input will contain three integers G, N and M (G &gt; 2, N ≥ G − 2, M ≥ 0) specifying the number of genes, the number of rows in the mutation table, and the number of antibodies.</p>\n<p>The following N lines contain descriptions of rows of the mutation table; each line begins with two integers a and k (2 ≤ a &lt; G, k ≥ 1), followed by a sequence of k integers b<sub>1</sub>, b<sub>2</sub>, . . . , b<sub>k</sub> (0 ≤ b<sub>i</sub> &lt; G), that encode the row</p>\n<p style=\"text-align: center;\">a → ⟨b<sub>1</sub> b<sub>2</sub> . . . b<sub>k</sub>⟩</p>\n<p>The sum of all values k does not exceed 100. <strong>Every integer from 2 to G − 1 appears in the table as a at least once</strong>.</p>\n<p>The next M lines contain descriptions of the antibodies; each such line begins with an integer ℓ (ℓ ≥ 1), followed by a sequence of ℓ integers c<sub>1</sub>, c<sub>2</sub>, . . . , c<sub>ℓ</sub> (0 ≤ c<sub>i</sub> ≤ 1), describing the antibody. The sum of all values ℓ does not exceed 50.</p>",
+  "output": "<p>Your program needs to output exactly G−2 lines, containing the answers for the subsequent genes from 2 to G − 1.</p>\n<p>If all viruses that can mutate from this single gene can be detected by the given set of antibodies, you need to print the word “YES”. You also need to print this if there are no viruses that could originate from this gene (it can happen when the sequences never stop mutating).</p>\n<p>Otherwise you need to print the word “NO”, followed by an integer denoting the minimal length of the undetectable virus. You can assume that for all the prepared input data this value will be smaller than 2<sup>63</sup>.</p>",
+  "samples": [
+    {
+      "input": "6 6 2\n2 2 0 1\n3 3 2 0 0\n3 2 1 3\n4 4 0 3 1 2\n5 2 2 1\n5 1 5\n2 1 1\n5 0 0 1 0 0\n",
+      "output": "NO 2\nNO 4\nNO 9\nYES\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2020",
+  "level": 23,
+  "tags": [
+    "aho_corasick",
+    "data_structures",
+    "dp",
+    "implementation",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.25
+}

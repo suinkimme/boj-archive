@@ -1,0 +1,26 @@
+{
+  "id": 4830,
+  "title": "Balance",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>An investor invests a certain percentage of his assets into NINSTRUMENTS financial instruments. After each term, these instruments deduct a certain fixed administrative cost, followed by a fee that is a percentage of the amount that was invested at the beginning of the term, and then add a return, which is a (positive or negative) percentage of the amount invested at the beginning of the term. If any account drops to zero or below after such a transaction, it is considered closed (no fees are charged against it, and is treated as simply zero) until a rebalancing occurs.</p>\n<p>Rebalancing occurs after every NREBALANCE terms, where the total assets of the investor are redistributed according to the original ratios for the instruments. Without rebalancing, the investor's assets would become dominated by the higher return instruments, which would expose them to more risk compared to a balanced investment plan. Note that it is possible that all instruments drop to zero, in which case they all remain closed for the remaining terms.</p>\n<p>You are to model the value of such an investment strategy and report the ending value in each instrument (before rebalancing, if it happens to land on a term when a rebalance is due). Compute your results using double precision (do not round intermediate values to pennies), but round your final answers to pennies.</p>",
+  "input": "<p>The first line of the input contains the three positive integers:</p>\n<pre>\nNINSTRUMENTS NTERMS NREBALANCE</pre>\n<p>There are no more than 10 instruments, and the number of terms is at most 20. This is followed by 3 lines of floating-point numbers separated by spaces, in the following format:</p>\n<pre>\nFIXED_FEE(1) .. FIXED_FEE(NINSTRUMENTS)\nPERCENTAGE_FEE(1) .. PERCENTAGE_FEE(NINSTRUMENTS)\nPRINCIPAL_START(1) .. PRINCIPAL_START(NINSTRUMENTS)</pre>\n<p>Finally, there are NTERMS lines each containing NINSTRUMENTS floating-point numbers indicating the percentage return of each instrument in each term:</p>\n<pre>\nRETURN(1,1) .. RETURN(1,NINSTRUMENTS)\nRETURN(2,1) .. RETURN(2,NINSTRUMENTS)\n.\n.\nRETURN(NTERMS,1) .. RETURN(NTERMS,NINSTRUMENTS)</pre>\n<p>All percentages (PERCENTAGE_FEE and RETURN) are given as ratios, up to 4 decimal places. For example, a fee of 0.0002 means 0.02% of the investment in this instrument is deducted as a fee each term. FIXED_FEE and PRINCIPAL_START are non-negative floating-point numbers that are specified to 2 decimal places. At least one of the PRINCIPAL_START values is positive.</p>",
+  "output": "<p>Write on a single line the principal of each investment (separated by a space) at the end of NTERMS terms. Round each principal to the nearest penny.</p>\n<pre>\nPRINCIPAL_END(1) .. PRINCIPAL_END(NINSTRUMENTS)</pre>",
+  "samples": [
+    {
+      "input": "4 10 5\n5.00 10.00 20.00 50.00\n0.002 0.001 0.0008 0.0005\n150000.00 100000.00 75000.00 50000.00\n0.10 0.05 -0.05 -0.85\n0.10 0.05 -0.10 -0.85\n0.10 0.05 -0.20 -0.85\n0.10 0.05 -0.40 -0.85\n0.10 0.05 -0.80 -0.85\n0.10 0.05 -0.05 -0.90\n0.10 0.05 -0.05 -0.90\n0.10 0.05 -0.05 -0.90\n0.10 0.05 -0.05 -0.85\n0.10 0.05 -0.05 -0.85\n",
+      "output": "237698.69 126086.01 57298.74 0.00\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2009 Rocky Mountain Regional Contest",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "math",
+    "simulation"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.5
+}

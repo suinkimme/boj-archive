@@ -1,0 +1,28 @@
+{
+  "id": 35505,
+  "title": "Determinant and Queries",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>행렬식은 선형대수학에서 다루는 중요한 대상 중 하나이다.</p>\n<ul>\n<li>양의 정수 $N$에 대하여, $S_N$은 $\\{1,2,\\cdots,N\\}$에서 $\\{1,2,\\cdots,N\\}$으로 가는 모든 전단사함수의 집합이다.</li>\n<li>$\\sigma\\in S_N$에 대하여, $\\operatorname{inv}(\\sigma)$는 $1\\le i&lt;j\\le N$과 $\\sigma(i)&gt;\\sigma(j)$를 모두 만족하는 $(i,j)$의 개수이다.</li>\n<li>이때 $N\\times N$ 행렬 $A$의 $i$행 $j$열 원소를 $a_{i,j}$라 하면, $A$의 행렬식은 $\\det(A)=\\sum_{\\sigma\\in S_N}(-1)^{\\operatorname{inv}(\\sigma)}\\prod_{i=1}^Na_{i,\\sigma(i)}$이다.</li>\n</ul>\n<p>행렬식이 소수 $p=10^9+7$의 배수가 아니고, 각 원소가 정수인 $N\\times N$ 행렬 $A$가 있을 때, 다음 쿼리를 $Q$개 처리해보자.</p>\n<ul>\n<li><span style=\"color:#e74c3c;\"><code>row</code> $i$ $x_1$ $x_2$ $\\cdots$ $x_N$</span>: $A$의 $i$번째 행의 각 원소에 순서대로 $x_1,x_2,\\cdots,x_N$을 더한 행렬 $A'$의 행렬식 $\\det(A')$을 출력한다.</li>\n<li><span style=\"color:#e74c3c;\"><code>col</code></span> <span style=\"color:#e74c3c;\">$i$ $x_1$ $x_2$ $\\cdots$ $x_N$</span>: $A$의 $i$번째 열의 각 원소에 순서대로 $x_1,x_2,\\cdots,x_N$을 더한 행렬 $A'$의 행렬식 $\\det(A')$을 출력한다.</li>\n</ul>\n<p>단, 답이 매우 커질 수 있으므로 소수인 $p$로 나눈 나머지를 출력하도록 한다. 즉, $\\det(A')\\equiv r\\pmod{p}$인 $0$ 이상 $p$ 미만의 정수 $r$을 출력한다.</p>",
+  "input": "<p>첫 번째 줄에 행렬의 크기 $N$과 쿼리의 개수 $Q$가 공백으로 구분되어 주어진다. $(1\\le N\\le 500;$ $1\\le Q\\le 10\\,000)$</p>\n<p>두 번째 줄부터 $N$개의 줄에 걸쳐, 그중 $i$번째 줄에 행렬 $A$의 $i$번째 행의 원소들 $a_{i,1}, a_{i,2}, \\cdots, a_{i,N}$이 공백으로 구분되어 주어진다. $(0\\le a_{i,j}&lt;10^9+7)$</p>\n<p>$N+2$번째 줄부터 $Q$개의 줄에 걸쳐 쿼리가 차례대로 주어진다. $(1\\le i\\le N;$ $0\\le x_j&lt;10^9+7)$</p>\n<p>입력으로 주어지는 모든 수는 정수이다.</p>",
+  "output": "<p>$Q$개의 줄에 걸쳐 각 쿼리의 답을 순서대로 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2 3\n2 1 4\n3 4 1\nrow 1 0 0 0\ncol 2 1 2 8\nrow 3 10 10 10\n",
+      "output": "20\n30\n60\n"
+    }
+  ],
+  "hint": "<p>쿼리를 처리하는 중 행렬 $A$가 갱신되지 않음에 유의하라.</p>",
+  "source": "nflight11, dkim110807, kolorvxl, rootenter, sjhi00, sorohue, utilforever, yijw0930",
+  "level": 18,
+  "tags": [
+    "math",
+    "number_theory",
+    "linear_algebra",
+    "modular_multiplicative_inverse",
+    "gaussian_elimination"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.18179988861084
+}

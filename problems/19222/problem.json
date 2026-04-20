@@ -1,0 +1,34 @@
+{
+  "id": 19222,
+  "title": "Elections",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Byteburg Senate elections are coming. Usually \"United Byteland\", the ruling Byteland party, takes all the seats in the Senate to ensure stability and sustainable development. But this year there is one opposition candidate in one of the constituencies. Even one opposition member can disturb the stability in the Senate, so the head of the Party asks you to ensure that the opposition candidate will not be elected.</p>\n<p>There are $n$ candidates, numbered from 1 to $n$. Candidate $n$ is the opposition candidate. There are $m$ polling stations in the constituency, numbered from 1 to $m$. You know the number of votes cast for each candidate at each polling station. The only thing you can do to prevent the election of the opposition candidate is to cancel the election results at some polling stations. The opposition candidate will be elected if the sum of the votes cast in their favor at all non-canceled stations will be <strong>strictly greater</strong> than the analogous sum for every other candidate. </p>\n<p>Your task is to prevent the election of the opposition candidate by canceling the election results at the minimal possible number of polling stations. Notice that solution always exists, because if you cancel the elections at all polling stations, the number of votes for each candidate will be 0, and the opposition candidate will not be elected.</p>",
+  "input": "<p>The first line of the input contains two integers $n$ and $m$ ($2\\le n\\le 100$; $1\\le m \\le 100$) --- the number of candidates and the number of polling stations. The next $m$ lines contain the election results at each polling station with $n$ numbers on each line. In the $i$-th line the $j$-th number is $a_{i,j}$ --- the number of votes cast for the candidate $j$ at the station $i$ ($0\\le a_{i,j} \\le 1\\,000$).</p>",
+  "output": "<p>In the first line output integer $k$ --- the minimal number of the polling stations in which you need to cancel the election results. In the second line output $k$ integers --- the indices of canceled polling stations, in any order. If there are multiple ways to cancel results at $k$ stations, output any one of them.</p>",
+  "samples": [
+    {
+      "input": "5 3\n6 3 4 2 8\n3 7 5 6 7\n5 2 4 7 9\n",
+      "output": "2\n3 1\n"
+    },
+    {
+      "input": "2 1\n1 1\n",
+      "output": "0\n"
+    },
+    {
+      "input": "3 3\n2 3 8\n4 2 9\n3 1 7\n",
+      "output": "3\n1 2 3\n"
+    }
+  ],
+  "hint": "<p>In the first example, the candidates from 1 to 5 received 14, 12, 13, 15, and 24 votes correspondingly. The opposition candidate has the most votes. However, if you cancel the election results at the first and the third polling stations, then only the result from the second polling station remains and the vote sums become 3, 7, 5, 6, and 7, without the opposition candidate being in the lead anymore. </p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2019",
+  "level": 12,
+  "tags": [
+    "greedy",
+    "bruteforcing",
+    "sorting"
+  ],
+  "accepted_user_count": 42,
+  "submission_count": null,
+  "average_tries": 1.357100009918213
+}

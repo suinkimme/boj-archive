@@ -1,0 +1,30 @@
+{
+  "id": 20753,
+  "title": "Bombs",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Gennadiy is playing his favorite game.</p>\n<p>The game level is a field of square cells. Each cell is either empty or filled with ground. An empty cell can contain the level entrance or exit. The player can walk on empty cells, moving to a cell adjacent by side with each move. The player cannot move outside the field.</p>\n<p>Some levels cannot be passed by regular means, and in such cases, bombs are used. A bomb can be stuck to the ground, and it will explode, clearing the nearby cells from ground. For the purpose of this problem, assume that the player can place a bomb in the cell where he is currently located if it is adjacent to a ground cell. After the bomb explodes, all cells in the explosion zone become empty and thus traversable. The player, level entrance, and level exit can safely be in the explosion zone, they are not affected by the explosion.</p>\n<p>The explosion zone is an octahedron with the center in the cell where the bomb was placed. The explosion zone has two parameters $P$ and $R$, and its precise shape is defined in the following manner. To traverse its border cells along the perimeter, you must move up $P$ times then move up and right $R$ times, then move right $P$ times, move right and down $R$ times, then move down $P$ times, etc. until you return to the starting cell. The shape of the explosion zone with some values of the parameters is shown in the figure:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 434px; height: 140px;\"/></p>\n<p>Bombs are a limited and valuable resource and thus should be used sparingly. Help Gennadiy pass a level with a minimum number of bombs.</p>",
+  "input": "<p>The first line of the input file contains two integers $N$ and $M$ --- the vertical and horizontal size of the field, respectively ($1 \\le N, M \\le 1\\,500$). The second line contains two integers $P$ and $R$ --- the parameters of the explosion zone ($0 \\le P, R \\le 1\\,000$). It is guaranteed that the number $P$ is even, and that $P + R &gt; 0$.</p>\n<p>Next, the level map is provided, as $N$ lines with $M$ symbols in each. Each symbol describes the contents of the corresponding cell:</p>\n<ul>\n<li><code>@</code> --- cell with ground.</li>\n<li><code>.</code> --- empty cell.</li>\n<li><code>S</code> --- empty cell with the level entrance.</li>\n<li><code>E</code> --- empty cell with the level exit.</li>\n</ul>\n<p>It is guaranteed that the map only contains one entrance cell and one exit cell.</p>",
+  "output": "<p>In the first line of the output file, print an integer $B$ --- the minimum sufficient number of bombs ($B \\ge 0$). In the remaining $B$ lines, print the cells where bombs must be placed, in the order of their detonation. In each line, print two integers $u$ and $v$ --- the indices of row and column, respectively ($1 \\le u \\le N$, $1 \\le v \\le M$).</p>",
+  "samples": [
+    {
+      "input": "9 10\n0 1\n@@......@@\n@@S@@@@...\n@@@@@...@.\n@@@@@@@@@@\n@@@@@@@@@@\n.........@\n@@@.@@@@..\n@...@@@E@.\n@@@@@@@@@@\n",
+      "output": "3\n3 7\n4 7\n8 10\n"
+    },
+    {
+      "input": "4 5\n2 1\nS@@@@\n..@@@\n@@@@E\n@@@@@\n",
+      "output": "1\n2 2\n"
+    },
+    {
+      "input": "7 5\n4 0\n@E@@@\n@@.@@\n@@@@@\n@@@@@\n@@...\n@@...\n@@..S\n",
+      "output": "2\n5 5\n2 3\n"
+    }
+  ],
+  "hint": "<p>In the first example, the explosion is cross-shaped and affects the cells sharing a side with the bomb cell. Two bombs are needed to break the wall in the lines 4 and 5, and another bomb to reveal the exit. In the second example, the explosion is powerful enough to create a passage with just one bomb. In the third example, two bombs are required. Note that it is forbidden to place the first bomb in cell (6, 4), because this cell does not contact ground.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 1: XXI All-Siberian Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 8
+}

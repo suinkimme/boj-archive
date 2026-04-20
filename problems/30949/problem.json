@@ -1,0 +1,36 @@
+{
+  "id": 30949,
+  "title": "Equal Schedules",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are one of the people on-call for a high-availability service that offers users to solve programming tasks. As an organized team, you have an on-call schedule specifying who is responsible for the service at which time. A colleague sends you a new schedule, and you want to make sure that everyone has the same amount of on-call time as before, or print any differences.</p>\n<p>The on-call schedule is specified with lines of form $s_ie_it_i$, where $s_i$ and $e_i$ represent the start and end offsets of the on-call shift for a teammate $t_i$ from some start hour.</p>\n<p>Given a sample schedule</p>\n<pre>\n<code>0 7 jan\n7 14 tomaz\n14 20 jure\n20 24 jan\n24 25 tomaz\n25 26 jure\n</code></pre>\n<p>we can see that <code>jan</code> is on-call for the first 7 hours (hour 0, 1, 2, 3, 4, 5, and 6), <code>tomaz</code> for next 7, ... In total, <code>jan</code> is on-call for 11 hours, <code>tomaz</code> for 8 and <code>jure</code> for 7.</p>",
+  "input": "<p>The input contains two schedules separated by a horizontal line <code>------</code>. Each schedule contains one or more lines of form $s_ie_i t_i$, where integers $s_i$ and $e_i$ specify that teammate $t_i$ is on-call for hours from $s_i$ up to and excluding $e_i$. A final line <code>======</code> is printed after the second schedule.</p>",
+  "output": "<p>Output the differences between two schedules, in form $t_i \\pm\\! d_i$, where $d_i$ is the difference between the second and the first schedule for the teammate $t_i$. The output should be sorted alphabetically by teammates' names and teammates with no differences should be omitted, otherwise the difference should be printed with a <code>+</code> or a <code>-</code> sign. If no differences are found, print \"<code>No differences found.</code>\" (without the quotes).</p>",
+  "samples": [
+    {
+      "input": "0 7 jan\n7 14 tomaz\n14 20 jure\n20 24 jan\n24 25 tomaz\n25 26 jure\n------\n0 9 tomaz\n9 20 jan\n20 26 jure\n======\n",
+      "output": "jure -1\ntomaz +1\n"
+    },
+    {
+      "input": "0 7 nino\n7 14 bgs\n14 21 ines\n------\n0 7 ines\n7 14 nino\n14 21 bgs\n======\n",
+      "output": "No differences found.\n"
+    },
+    {
+      "input": "0 3 vid\n3 6 maks\n6 9 janez\n------\n0 1 vid\n1 2 vid\n2 3 vid\n3 4 maks\n4 5 maks\n5 6 maks\n6 7 janez\n7 8 janez\n======\n",
+      "output": "janez -1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2023",
+  "level": 7,
+  "tags": [
+    "data_structures",
+    "string",
+    "set",
+    "hash_set",
+    "tree_set"
+  ],
+  "accepted_user_count": 76,
+  "submission_count": null,
+  "average_tries": 1.868399977684021
+}

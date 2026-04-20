@@ -1,0 +1,30 @@
+{
+  "id": 26883,
+  "title": "Spotify Connect",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Spotify har precis lanserat den nya funktionen Spotify Connect, som möjliggör för en användare att fjärrstyra sin uppspelning från mobiltelefonen. Det medför en mängd nya tekniska utmaningar, och en av dem är hur loggningen av uppspelningsdata görs. För att kunna rapportera till skivbolagen så måste man nämligen veta exakt hur länge en användare har lyssnat på musik.</p>\n<p>Du kommer att få loggdata för <code>play</code> och <code>paus</code>-tryckningarna för en användare. Användaren använder både sin laptop för att styra musiken, men fjärrstyr också ibland med mobiltelefonen via Spotify Connect. Loggarna innehåller både datorns och mobilens <code>play</code> och <code>paus</code>-tryckningar. När användaren trycker på mobilen så är det exakt $100$ millisekunder delay tills laptopen (där musiken spelas upp ifrån) reagerar. Ditt uppdrag är att avgöra exakt hur många millisekunder totalt som laptopen spelade upp musik. Innan första kommandot utförs så är spelaren i pausat läge.</p>",
+  "input": "<p>Den första raden innehåller heltalet $1 \\le N &lt; 1000$, antalet loggrader.</p>\n<p>De efterföljande $N$ raderna innehåller en lista med loggar. Loggarna kommer i den ordning knapptryckningar sker med en tidsstämpel i millisekunder, enhet (<code>laptop</code> eller <code>mobile</code>) och kommando (<code>play</code> eller <code>paus</code>). Den sista loggen kommer alltid vara ett <code>paus</code>-kommnado. Dessutom kommer två loggar aldrig ha samma tidsstämpel eller ligga exakt 100 millisekunder ifrån varandra.</p>\n<p>För att göra indatat extra lättläst så är loggradernas fält alignerade. Tidsstämpeln fylls ut med nollor vänsterifrån så att talet alltid blir 7 tecken långt, och mobil stavas istället mobile, alltså med lika många tecken som i laptop. Se indataexemplet.</p>",
+  "output": "<p>Ditt program ska skriva ut ett heltal - antalet millisekunder användaren lyssnat på musik.</p>",
+  "samples": [
+    {
+      "input": "4\n0000500 laptop play\n0001000 laptop paus\n0001500 mobile play\n0002000 laptop paus\n",
+      "output": "900\n"
+    },
+    {
+      "input": "4\n0000001 laptop play\n0000004 mobile play\n0000100 mobile paus\n0000103 laptop paus\n",
+      "output": "198\n"
+    }
+  ],
+  "hint": "<p>I det första indataexemplet så spelar användaren 500 millisekunder. Sedan använder hen mobilen för att starta musiken och avslutar den från laptopen $500$ millisekunder senare, men på grund av delayen så spelar musiken bara i 400 millisekunder. Totalt spelas alltså musiken i $900$ millisekunder.</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2015, Online Qualification",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "sorting",
+    "simulation"
+  ],
+  "accepted_user_count": 31,
+  "submission_count": null,
+  "average_tries": 1.5484000444412231
+}

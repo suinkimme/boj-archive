@@ -1,0 +1,26 @@
+{
+  "id": 6368,
+  "title": "P,MTHBGWB",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Morse code represents characters as variable length sequences of dots and dashes. In practice, characters in a message are delimited by short pauses. The following table shows the Morse code sequences:</p>\n<table class=\"table table-bordered\" style=\"width:50%\">\n<tbody>\n<tr>\n<th>A</th>\n<td>.-</td>\n<th>H</th>\n<td>....</td>\n<th>O</th>\n<td>---</td>\n<th>V</th>\n<td>...-</td>\n</tr>\n<tr>\n<th>B</th>\n<td>-...</td>\n<th>I</th>\n<td>..</td>\n<th>P</th>\n<td>.--.</td>\n<th>W</th>\n<td>.--</td>\n</tr>\n<tr>\n<th>C</th>\n<td>-.-.</td>\n<th>J</th>\n<td>.---</td>\n<th>Q</th>\n<td>--.-</td>\n<th>X</th>\n<td>-..-</td>\n</tr>\n<tr>\n<th>D</th>\n<td>-..</td>\n<th>K</th>\n<td>-.-</td>\n<th>R</th>\n<td>.-.</td>\n<th>Y</th>\n<td>-.--</td>\n</tr>\n<tr>\n<th>E</th>\n<td>.</td>\n<th>L</th>\n<td>.-..</td>\n<th>S</th>\n<td>...</td>\n<th>Z</th>\n<td>--..</td>\n</tr>\n<tr>\n<th>F</th>\n<td>..-.</td>\n<th>M</th>\n<td>--</td>\n<th>T</th>\n<td>-</td>\n<th> </th>\n<td> </td>\n</tr>\n<tr>\n<th>G</th>\n<td>--.</td>\n<th>N</th>\n<td>-.</td>\n<th>U</th>\n<td>..-</td>\n<th> </th>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>Note that four dot-dash combinations are unassigned. For the purposes of this problem we will assign them as follows (these are not the assignments for actual Morse code):</p>\n<table class=\"table table-bordered\" style=\"width:50%\">\n<tbody>\n<tr>\n<th>underscore</th>\n<td>..--</td>\n<th>period</th>\n<td>---.</td>\n</tr>\n<tr>\n<th>comma</th>\n<td>.-.-</td>\n<th>question mark</th>\n<td>----</td>\n</tr>\n</tbody>\n</table>\n<p>Thus, the message “ACM_GREATER_NY_REGION” is encoded as:</p>\n<p>.- -.-. -- ..-- --. .-. . .- - . .-. ..-- -. -.-- ..-- .-. . --. .. --- -.</p>\n<p>M.E. Ohaver proposed an encryption scheme based on mutilating Morse code. Her scheme replaces the pauses between letters, necessary because Morse is a variable-length encoding that is not prefix-free, with a string that identifies the number of dots and dashes in each. For example, consider the message “.--.-.--”. Without knowing where the pauses should be, this could be “ACM”, “ANK”, or several other possibilities. If we add length information, however, “.--.-.--242”, then the code is unabiguous.</p>\n<p>Ohaver’s scheme has three steps, the same for encryption and decryption:</p>\n<ol>\n<li>Convert the text to Morse code without pauses but with a string of numbers to indicate code lengths</li>\n<li>Reverse the string of numbers</li>\n<li>Convert the dots and dashes back into to text using the reversed string of numbers as code lengths</li>\n</ol>\n<p>As an example, consider the encrypted message “AKADTOF_IBOETATUK_IJN”. Converting to Morse code with a length string yields “.--.-.--..----..-...--..-...---.-.--..--.-..--...----.232313442431121334242”. Reversing the numbers and decoding yields the original message “ACM_GREATER_NY_REGION”</p>",
+  "input": "<p>This problem requires that you implement Ohaver’s encoding algorithm. The input will consist of several messages encoded with Ohaver’s algorithm. The first line of the input is an integer n that specifies the number of test cases. The following n lines contain one message per line. Each message will use only the twenty-six capital letters, underscores, commas, periods, and question marks. Messages will not exceed 100 characters in length.</p>",
+  "output": "<p>For each message in the input, output the line number starting in column one, a colon, a space, and then the decoded message. The output format must be adhered to precisely.</p>",
+  "samples": [
+    {
+      "input": "5\nAKADTOF_IBOETATUK_IJN\nPUEL\nQEWOISE.EIVCAEFNRXTBELYTGD.\n?EJHUT.TSMYGW?EJHOT\nDSU.XFNCJEVE.OE_UJDXNO_YHU?VIDWDHPDJIKXZT?E\n",
+      "output": "1: ACM_GREATER_NY_REGION\n2: PERL\n3: QUOTH_THE_RAVEN,_NEVERMORE.\n4: TO_BE_OR_NOT_TO_BE?\n5: THE_QUICK_BROWN_FOX_JUMPS_OVER_THE_LAZY_DOG\n"
+    }
+  ],
+  "hint": "<p>As presented, this encryption scheme is only trivially secure. In fact it offers no security at all if the algorithm is known to the attacker. The key is the string of numbers needed to decide where the pauses should be inserted to recover the message, but with the method shown here, this information is encoded in and easily recovered from the encrypted data. Even should some other method be chosen to scramble the length information in the encoding, secrecy of the algorithm is the real key in this technique. Modifications of Ohaver’s technique do exist in which the security is not based on the secrecy of the algorithm.</p>",
+  "source": "ICPC, Regionals, North America, Greater New York Region, 2001 Greater New York Programming Contest, portableangel",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "string",
+    "simulation"
+  ],
+  "accepted_user_count": 93,
+  "submission_count": null,
+  "average_tries": 1.3011000156402588
+}

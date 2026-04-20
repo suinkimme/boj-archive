@@ -1,0 +1,26 @@
+{
+  "id": 32363,
+  "title": "피라미드 게임",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>제1회 PIMM 보드게임 공모전에 출품하기로 한 정환은 「피라미드」라는 게임판을 만들었다. 크기가 $N$인 피라미드는 $N$층으로 이루어져 있으며 $i$층은 $N-i+1$칸으로 나뉘어 있는 정삼각형 모양의 게임판이다. 피라미드 $i$층의 $j$번째 칸을 $A_{i,j}$라 하고, <strong>가장 높은 층에 있는 칸 $A_{N,1}$을 피라미드의 꼭대기, 피라미드 안에서 찾을 수 있는 $N$층 이하의 피라미드를 부분피라미드라고 정의했다.</strong> 정확히 크기가 $K$인 부분피라미드는 $K$층 이상의 칸 $A_{x,y}$를 부분피라미드의 꼭대기로 정했을 때 $x-K+1\\le i \\le x$와 $y \\le j \\le y+x-i$를 만족하는 $A_{i,j}$들로 구성되어 있다.</p>\n<p>아래 그림은 게임판을 만들 당시에 그렸던 그림이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"max-height:541px;max-width:100%\"/></p>\n<p>정환은 크기가 $N$인 피라미드의 각 칸에 음이 아닌 정수를 적어두거나 비워두고 다음과 같은 2인용 게임을 기획했다.</p>\n<ul>\n<li>먼저 양의 정수 $K$를 정하고 게임을 시작한다. 두 플레이어는 서로 턴을 번갈아 가면서 게임을 진행하고, 자신의 턴에 행동할 수 없는 플레이어가 패배한다.</li>\n<li>각 턴에는 정확히 한 번, 피라미드에서 크기가 $K$인 부분피라미드와 임의의 양의 정수 $P$를 고르고 그 부분피라미드에 적힌 모든 수에 $P$를 <a href=\"https://en.wikipedia.org/wiki/Bitwise_operation#XOR\">XOR</a>하고 턴을 넘긴다. <strong>단, 고른 부분피라미드의 꼭대기는 빈칸이 아니어야 하며 $P$를 XOR한 뒤에 부분피라미드의 꼭대기에 적힌 수가 작아지는 행동만 할 수 있다.</strong></li>\n</ul>\n<p>$T$개의 테스트케이스에 대해 크기가 $N$인 피라미드와 $K$가 주어졌을 때 선공과 후공 중 누가 필승법을 가졌는지 구해보자.</p>",
+  "input": "<p>첫 번째 줄에 테스트케이스의 수 $T$가 주어진다.</p>\n<p>각 테스트케이스의 첫 번째 줄에 피라미드의 크기 $N$과 양의 정수 $K$가 공백으로 구분되어 주어진다.</p>\n<p>그다음 $N$줄에 거쳐서 피라미드의 칸에 적힌 수가 공백으로 구분되어 주어진다. $N$줄 중 $m$번째 줄에 $N-m+1$층에 속하는 칸에 적힌 수가 왼쪽부터 순서대로 주어진다. 즉, 각 줄에는 $A_{N-m+1,1},A_{N-m+1,2}, \\dots ,A_{N-m+1,m}$ 이 주어진다. <strong>빈칸은 $-1$로 주어진다.</strong></p>",
+  "output": "<p>테스트케이스마다 게임에서 선공이 필승법을 가지고 있다면 <span style=\"color:#e74c3c;\"><code>First</code></span>, 후공이 필승법을 가지고 있다면 <span style=\"color:#e74c3c;\"><code>Second</code></span>를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3\n5 2\n10\n8 2\n1 -1 9\n-1 7 2 4\n1 2 3 4 5\n3 1\n1\n2 3\n4 5 6\n3 2\n-1\n-1 -1\n-1 1 -1\n",
+      "output": "Second\nFirst\nSecond\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 전남대학교, 2024 하반기 전남대학교 PIMM 알고리즘 파티, jh01533, jwpassion1, kiwiyou, ksoosung77, lycoris1600, measurezero, tony9402, utilforever",
+  "level": 21,
+  "tags": [
+    "game_theory",
+    "prefix_sum",
+    "sprague_grundy"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 3.2142999172210693
+}

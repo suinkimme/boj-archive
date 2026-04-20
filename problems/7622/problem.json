@@ -1,0 +1,22 @@
+{
+  "id": 7622,
+  "title": "The (Bayesian) Hound and the Hare",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Researchers have discovered that hounds are extremely intelligent—so intelligent, in fact, that they use Bayesian statistics to hunt down their prey.</p>\n<p>As an experiement, researchers studying these hounds blindfold one and put it in a maze laid out on a square grid. They put a hare somewhere else in the maze. Once every second, the hare takes a step one unit in a random direction (no diagonals), chosen uniformly at random among the directions that aren’t blocked by walls. Sometimes, when the hare takes a step, it makes a little bit of noise at its new position. The hound hears the noise with a certain amount of uncertainty σ—that is, if the hare is at position (x, y), then the hound thinks that it heard the hare at position (x', y') with probability N exp (((x − x')<sup>2</sup> + (y − y')<sup>2</sup>)/(2σ<sup>2</sup>)), where N is an appropriate normalization factor.</p>\n<p>After every step the hare takes, the hound moves one unit in the direction (North, East, South, or West, or not moving at all) that mininizes the expected shortest-path distance to the hare. In case of a tie, the hound favors not moving, then North, then East, then South, then West. (That is, the hound first considers whether to stay go West; then, if the expected distance if it goes South is better or within 10<sup>−5</sup>, the hound considers going West; then South; then North; then staying still.)</p>\n<p>Neither the hound nor the hare can walk into a wall or on a diagonal, and the hound knows this. The hound has a perfect memory and knows the exact layout of the maze. The hound assumes that the hare starts at a uniform random location within the maze. The hound assumes that it could occupy the same space as the hare without realizing it.</p>\n<p>Write a program that determines what path the hound takes given a sequence of observations.</p>",
+  "input": "<p>The maze has dimension X units West to East by Y units North to South. The first line of input is two numbers, X and Y . You may assume that 3 ≤ X, Y ≤ 100. This is followed by a map of the maze. The first line corresponds to the northernmost strip of the maze, and the first column is the western side. A “#” indicates a wall, a “.” indicates open space, and a “h” marks the starting position of the hound. The sides of the maze are always walls, and the interior of the maze is connected.</p>\n<p>The map of the maze is followed by σ, an integer, on one line. You may assume that σ ≥ 1.</p>\n<p>The remainder of the input is a series of observations, one line per second. A line that contains “silence” indicates that the hound hears nothing, and a line that contains two integers gives the coordinates—column, row where northwest corner of the maze is (0,0) in which the hound thinks it heard the hare. Note that the coordinates may be outside the maze.</p>",
+  "output": "<p>For each observation, output “N”, “S”, “E”, “W”, or “.” if the hound goes North, South, East, West, or stays still, respectively, after each observation.</p>",
+  "samples": [
+    {
+      "input": "20 20\n####################\n####################\n####.....h.....#####\n####.#########.#####\n####.#########.#####\n####.#########.#####\n####.#########.#####\n####.#########.#####\n####...........#####\n####.#########.#####\n####.#########.#####\n####.#########.#####\n####...........#####\n#########.##########\n#########.##########\n#########.##########\n#########.##########\n####################\n####################\n####################\n5\nsilence\nsilence\nsilence\n10 8\n9 8\n8 9\n",
+      "output": "E\nE\nE\nE\nE\nS\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, MIT, The MIT Programming Contest, 2008-09, MIT Programming Contest Team Contest 1 2008",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

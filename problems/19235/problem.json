@@ -1,0 +1,49 @@
+{
+  "id": 19235,
+  "title": "모노미노도미노",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>모노미노도미노는 아래와 같이 생긴 보드에서 진행되는 게임이다. 보드는 빨간색 보드, 파란색 보드, 초록색 보드가 그림과 같이 붙어있는 형태이다. 게임에서 사용하는 좌표 (x, y)에서 x는 행, y는 열을 의미한다. 빨간색, 파란색, 초록색 보드가 사용하는 좌표는 그 색으로 그림에 적혀있다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 611px; height: 624px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 1&gt; 모노미노도미노 게임 보드</p>\n<p>이 게임에서 사용하는 블록은 타일 하나 또는 두 개가 가로 또는 세로로 붙어있는 형태이다. 아래와 같이 세 종류가 있으며, 왼쪽부터 순서대로 크기가 1×1, 1×2, 2×1 이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 335px; height: 129px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 2&gt; 모노미노도미노 게임에서 사용하는 블록</p>\n<p>블록을 놓을 위치를 빨간색 보드에서 선택하면, 그 위치부터 초록색 보드로 블록이 이동하고, 파란색 보드로 블록이 이동한다. 블록의 이동은 다른 블록을 만나거나 보드의 경계를 만나기 전까지 계속해서 이동한다. 예를 들어, 크기가 1×1인 블록을 (1, 1)에 놓으면, 보드의 상태는 &lt;그림 3&gt;과 같이 변한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 623px; height: 627px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 3&gt;</p>\n<p>여기서 크기가 1×2인 블록을 (3, 0)과 (3, 1)에 놓으면 &lt;그림 4&gt;와 같이 보드의 상태가 변한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 608px; height: 617px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 4&gt;</p>\n<p>다시 이 상태에서 크기가 2×1인 블록을 (2, 2), (3, 2)와 (2, 3), (3, 3)에 놓으면 &lt;그림 5&gt;와 같이 변한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 609px; height: 615px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 5&gt;</p>\n<p>초록색 보드의 4번 행은 모든 칸이 타일로 가득 차있다. 이렇게 초록색 보드에서 어떤 행이 타일로 가득 차 있다면, 그 행의 타일은 모두 사라진다. 사라진 이후에는 초록색 보드에서 각 블록이 다른 블록을 만나거나 경계를 만나기 전까지 아래로 이동한다. 파란색의 경우는 열이 타일로 가득 차 있으면, 그 열의 타일이 모두 사라지며, 사라진 이후에는 파란색 보드에서 각 블록이 다른 블록을 만나거나 경계를 만나기 전까지 오른쪽으로 이동한다. 이렇게 한 행이나 열이 타일로 가득 차서 사라지면 1점을 획득한다. 점수는 사라진 행 또는 열의 수와 같다. 만약, 두 개의 행이 사라지면 2점을 획득하게 되고, 한 행과 한 열이 사라져도 2점을 획득하게 된다. 위의 보드는 아래와 같이 변하고, 1점을 얻는다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"6.png\" style=\"width: 606px; height: 615px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 6&gt;</p>\n<p>여기서 크기가 2×1인 블록을 (1, 3), (2, 3)에 놓으면 보드는 &lt;그림 7&gt;과 같이 변한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"7.png\" style=\"width: 614px; height: 614px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 7&gt;</p>\n<p>초록색 보드의 0, 1번 행과 파란색 보드의 0, 1번 열은 그림에는 연한색으로 표현되어 있는 특별한 칸이다. 초록색 보드의 0, 1번 행에 블록이 있으면, 블록이 있는 행의 수만큼 아래 행에 있는 타일이 사라지고, 초록색 보드의 모든 블록이 아래로 경계를 만나기 전까지 이동하고, 파란색 보드의 0, 1번 열에 블록이 있으면, 블록이 있는 열의 수만큼 오른쪽 열에 있는 타일이 사라지고, 파란색 보드의 모든 블록이 오른쪽으로 경계를 만나기 전까지 이동하게 된다. 위의 그림은 파란색 보드의 1번 열에 블록이 있기 때문에, 5번 열에 있는 블록이 모두 사라지고, 파란색 보드의 모든 블록이 오른쪽으로 한 칸 이동하게 된다. 따라서, 보드는 &lt;그림 8&gt;과 같이 변하게 된다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"8.png\" style=\"width: 615px; height: 615px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 8&gt;</p>\n<p>위의 보드에서 1×2인 블록을 (0, 0), (0, 1)에 놓으면 &lt;그림 9&gt;와 같다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"9.png\" style=\"width: 608px; height: 614px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 9&gt;</p>\n<p>여기서 크기가 2×1인 블록을 (2, 0), (3, 0)에 놓으면 &lt;그림 10&gt;과 같이 변한다. 파란색 보드는 1번 열에 블록이 생겨서 오른쪽으로 한 칸씩 이동한 상태이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"10.png\" style=\"width: 611px; height: 618px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 10&gt;</p>\n<p>크기가 2×1인 블록을 (1, 2), (2, 2)에 놓으면, &lt;그림 11&gt;과 같이 변한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"11.png\" style=\"width: 601px; height: 612px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 11&gt;</p>\n<p>파란색 보드는 1번 열에 블록이 있기 때문에, 5번 열의 타일이 사라지고 모든 블록이 오른쪽으로 한 칸씩 이동하게 된다. 초록색 보드는 4번 행의 모든 칸에 타일이 있기 때문에, 1점을 얻으면서, 4번 행의 모든 타일이 사라진다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"12.png\" style=\"width: 609px; height: 616px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 12&gt;</p>\n<p>&lt;그림 12&gt;는 &lt;그림 11&gt;의 상태에서 파란색 보드는 모든 블록이 오른쪽으로 한 칸 이동했고, 초록색 보드의 4번 행이 모두 사라진 상태이다. 이제, 초록색 보드에서 나머지 블록이 아래로 경계나 다른 블록을 만나기 전까지 내려와야 한다. 여기서 다시 &lt;그림 13&gt;과 같이 5번 행의 모든 칸에 타일이 가득차게 된다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"13.png\" style=\"width: 618px; height: 624px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 13&gt;</p>\n<p>블록의 이동 때문에, 다시 행이나 열이 타일로 가득차는 경우가 또 발생할 수도 있다. 이 경우에도 1점을 얻고, 그 행이나 열의 모든 타일을 제거하고 다시 나머지 블록을 이동하면 된다. 따라서, &lt;그림 11&gt;의 최종 결과는 &lt;그림 14&gt;가 된다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"14.png\" style=\"width: 612px; height: 614px;\"/></p>\n<p style=\"text-align: center;\">&lt;그림 14&gt;</p>\n<p>행이나 열이 타일로 가득찬 경우와 연한 칸에 블록이 있는 경우가 동시에 발생할 수 있다. 이 경우에는 행이나 열이 타일로 가득 찬 경우가 없을 때까지 점수를 획득하는 과정이 모두 진행된 후, 연한 칸에 블록이 있는 경우를 처리해야 한다.</p>\n<p>블록은 보드에 놓인 이후에 다른 블록과 합쳐지지 않는다. 나누어지는 경우는 행이나 열이 타일로 가득찬 경우에 발생할 수 있다. 초록색 보드에서는 2×1 블록에서 일부가 사라져서 1×1 블록이 될 수 있고, 파란색 보드에서는 1×2 블록에서 일부가 사라져서 1×1 블록이 될 수 있다.</p>\n<p>블록을 놓은 위치가 순서대로 주어졌을 때, 얻은 점수와 초록색 보드와 파란색 보드에 타일이 있는 칸의 개수를 모두 구해보자.</p>",
+  "input": "<p>첫째 줄에 블록을 놓은 횟수 N(1 ≤ N ≤ 10,000)이 주어진다.</p>\n<p>둘째 줄부터 N개의 줄에 블록을 놓은 정보가 한 줄에 하나씩 순서대로 주어지며, <code>t x y</code>와 같은 형태이다.</p>\n<ul>\n<li>t = 1: 크기가 1×1인 블록을 (x, y)에 놓은 경우</li>\n<li>t = 2: 크기가 1×2인 블록을 (x, y), (x, y+1)에 놓은 경우</li>\n<li>t = 3: 크기가 2×1인 블록을 (x, y), (x+1, y)에 놓은 경우</li>\n</ul>\n<p>블록이 차지하는 칸이 빨간색 칸의 경계를 넘어가는 경우는 입력으로 주어지지 않는다.</p>",
+  "output": "<p>첫째 줄에 블록을 모두 놓았을 때 얻은 점수를 출력한다.</p>\n<p>둘째 줄에는 파란색 보드와 초록색 보드에서 타일이 들어있는 칸의 개수를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "1\n1 1 1\n",
+      "output": "0\n2\n"
+    },
+    {
+      "input": "2\n1 1 1\n2 3 0\n",
+      "output": "0\n6\n"
+    },
+    {
+      "input": "4\n1 1 1\n2 3 0\n3 2 2\n3 2 3\n",
+      "output": "1\n10\n"
+    },
+    {
+      "input": "5\n1 1 1\n2 3 0\n3 2 2\n3 2 3\n3 1 3\n",
+      "output": "1\n12\n"
+    },
+    {
+      "input": "6\n1 1 1\n2 3 0\n3 2 2\n3 2 3\n3 1 3\n2 0 0\n",
+      "output": "1\n16\n"
+    },
+    {
+      "input": "7\n1 1 1\n2 3 0\n3 2 2\n3 2 3\n3 1 3\n2 0 0\n3 2 0\n",
+      "output": "1\n18\n"
+    },
+    {
+      "input": "8\n1 1 1\n2 3 0\n3 2 2\n3 2 3\n3 1 3\n2 0 0\n3 2 0\n3 1 2\n",
+      "output": "3\n11\n"
+    }
+  ],
+  "hint": null,
+  "source": "baekjoon, jh05013",
+  "level": 16,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 815,
+  "submission_count": null,
+  "average_tries": 4.802499771118164
+}

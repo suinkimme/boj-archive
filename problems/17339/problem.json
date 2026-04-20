@@ -1,0 +1,30 @@
+{
+  "id": 17339,
+  "title": "Social Network",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In the study of social networks, we commonly use graph theory to explain certain social phenomena.</p>\n<p>Let's look at a problem regarding this. There are <var>n</var> people in a social group. Between people, there are different levels of relationships. We represent this relationship network using an undirected graph with <var>n</var> nodes. If two different people are familiar with each other, then there will exist an undirected edge between their corresponding nodes on the graph. Additionally, the edge will have a positive weight <var>c</var> – the smaller the value of <var>c</var>, the closer the relationship between the two people.</p>\n<p>We can use the shortest path between the corresponding nodes of two people <var>s</var> and <var>t</var> to measure the closeness of their relationship. Note that other nodes on the shortest path provides some level of benefit to the relationship between <var>s</var> and <var>t</var>, and that these nodes have a certain level of importance with respect to <var>s</var> and <var>t</var>'s relationship. Through analysis of the shortest paths passing through node <var>v</var>, we can measure <var>v</var>'s importance level to the entire social network.</p>\n<p>Observing that there may be multiple shortest paths between nodes <var>A</var> and <var>B</var>, we revise our definition of the importance level as follows:</p>\n<p>Let <var>C</var><sub><var>s</var>,<var>t</var></sub> represent the number of shortest paths between nodes <var>s</var> and <var>t</var>, and <var>C</var><sub><var>s</var>,<var>t</var> </sub>(<var>v</var>) represent the number of shortest paths between nodes <var>s</var> and <var>t</var> which passes through <var>v</var>. The <b>importance level</b> of node <var>v</var> to the social network is defined as:</p>\n<p>$I(v) = \\sum_{s \\neq v, t \\neq v}{\\frac{C_{s, t}(v)}{C_{s, t}}}$</p>\n<p>To ensure that <var>I</var>(<var>v</var>) and <var>C</var><sub><var>s</var>,<var>t</var> </sub>(<var>v</var>) are always defined, we will only deal with social networks that can be represented by connected, undirected graphs. Furthermore, there will always exist a shortest path of finite length between any pair of nodes.</p>\n<p>Given such a weighted, undirected graph representing the social network, please calculate the importance level of each node.</p>",
+  "input": "<p>The first line of input contains two integers <var>n</var> and <var>m</var>, representing the number of nodes and the number of undirected edges in the social network. The nodes in the graph are numbered consecutively from 1 to <var>n</var>.</p>\n<p>For the next <var>m</var> lines, each line contains three integers <var>a</var>, <var>b</var>, and <var>c</var> describing an undirected edge connecting nodes <var>a</var> and <var>b</var> with weight <var>c</var>. Note that there will be at most one undirected edge between any pair of nodes, and no loops will occur within the graph (where the two ends of an edge rest on the same node).</p>",
+  "output": "<p>Output <var>n</var> lines, each line containing a single real number, accurate to 3 digits after the decimal point. Line <var>i</var> represents the importance of node <var>i</var> to the social network. Your outputted numbers will be considered correct if the absolute differences between them and the correct values do not exceed 0.001.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2 1\n2 3 1\n3 4 1\n4 1 1\n",
+      "output": "1.000\n1.000\n1.000\n1.000\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2007",
+  "level": 16,
+  "tags": [
+    "math",
+    "dp",
+    "graphs",
+    "combinatorics",
+    "shortest_path",
+    "dijkstra",
+    "floyd_warshall"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 3.8333001136779785
+}

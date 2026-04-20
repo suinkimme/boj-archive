@@ -1,0 +1,26 @@
+{
+  "id": 19080,
+  "title": "Don't Stay",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are infinitely many lamps on a line, numbered with integers. Each lamp can be either turned on or turned off. There is a lamplighter, initially located at lamp number $0$. He can walk one lamp left or right (that is, decrease or increase his coordinate by $1$) and toggle the lamp at his position. We denote these actions with letters \"<code>L</code>\", \"<code>R</code>\" and \"<code>X</code>\", respectively.</p>\n<p>A string of letters \"<code>L</code>\", \"<code>R</code>\" and \"<code>X</code>\" is called a program for the lamplighter. For example, if he is currently at position $0$ and receives the string \"<code>RRXL</code>\", he goes right twice, toggles a lamp which is at position $2$, and then goes left and ends up at position $1$.</p>\n<p>Initially, all lamps are turned off. In the end, you want to achieve a state where the lamps with coordinates $a_1$, $\\ldots$, $a_n$ are turned on, and all other lamps are turned off. The lamplighter has some program $s$ which he is going to execute, and he does not want to change his plans a lot. However, he agreed to help you a bit. If you give him some program $t$, he will start by executing all instructions from $t$. Then he will execute his own program $s$, as he planned before. However, after that, he will try to <em>cancel</em> his help by performing all instructions from $t$ in reverse order, changing \"<code>L</code>\" to \"<code>R</code>\" and vice versa. See Notes section for an explanation by example.</p>\n<p>Given the coordinates $a_i$ and the lamplighter's program $s$, find such program $t$ that in the end, lamps $a_1$, $\\ldots$, $a_n$ are on and all other lamps are off, or determine that it is not possible.</p>",
+  "input": "<p>The first line of input contains a string $s$ ($1 \\leq |s| \\leq 2 \\cdot 10^5$) consisting of characters \"<code>L</code>\", \"<code>R</code>\" and \"<code>X</code>\": the initial program of the lamplighter.</p>\n<p>The second line contains an integer $n$ ($0 \\leq n \\leq 2 \\cdot 10^5$), the number of lamps which should be turned on in the end. The third line contains $n$ space-separated integers: the coordinates of the lamps. All given coordinates are distinct and do not exceed $2 \\cdot 10^5$ by absolute value.</p>",
+  "output": "<p>Output the string $t$ which you can give to the lamplighter to achieve your goal. If there are several possible answers, output any one of them. The answer may be empty. The length of the answer must not exceed $2 \\cdot 10^6$ characters.</p>\n<p>If achieving the goal is not possible, print a single word \"<code>NO</code>\" (without quotes).</p>",
+  "samples": [
+    {
+      "input": "RXR\n3\n-2 0 2\n",
+      "output": "XLLXR\n"
+    }
+  ],
+  "hint": "<p>In the example, the lamplighter has the string \"<code>RXR</code>\", and the desired lamp positions are $-2$, $0$ and $2$. You can give the lamplighter the string \"<code>XLLXR</code>\". His combined program then becomes \"<code>XLLXR-RXR-LXRRX</code>\" (dashes for clarity).</p>\n<p>The lamplighter will light the lamp number $0$, then go to $-2$ and light it, go to $0$ and turn it off, turn it on again, and finally go to $2$ and turn it on. In the end, the state of all lamps is the one you wanted.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2017, Day 5: Moscow IPT Contest",
+  "level": 18,
+  "tags": [
+    "implementation",
+    "string",
+    "kmp"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

@@ -1,0 +1,28 @@
+{
+  "id": 20883,
+  "title": "IOI-uttagning",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Programmeringsolympiadens arrangörsgrupp vill ut och leka i snön. Tyvärr har man som arrangör otaliga plikter, som kommer före lekandet. Man måste göra uppgifter, övervaka tävlingar, åka som ledare, och beräkna vilka deltagare som är uttagna till landslaget utifrån årets resultat.</p>\n<p>Det slog dock arrangörerna att den sista biten kan ju någon annan ordna. T.ex. du.</p>\n<p>Reglerna för uttagning till landslaget går till som följer. Totalt finns det fyra tävlingar som ligger till grund för uttagning; finaltävlingen samt tre s.k. KATT-tävlingar (KATT1, KATT2 och KATT3).</p>\n<p>Efter alla tävlingar räknas resultaten samman, och de fyra tävlanden med bäst poäng blir uttagna till International Olympiad in Informatics, IOI. Utöver IOI ska även ett lag väljas till Baltic Olympiad in Informatics, BOI. Detta lag består dels av IOI-laget, samt de två bästa tävlanden <em>som inte går i trean</em> och inte kvalificerade sig till IOI.</p>\n<p>När resultaten räknas samman väljs de två bästa resultaten från de tre KATT-tävlingarna ut, samt resultatet från finalen, och summeras.</p>\n<p>Inom en tävling räknas resultatet ut genom att <em>normalisera</em> poängen en tävlande fick. Först beräknar man den bästa poängen bland alla deltagare $MAX$, samt medianpoängen bland alla deltagare $MED$. Om en deltagare fick $x \\le MED$ poäng blir deltagarens resultat $50 \\cdot \\frac{x}{MED}$. Om en deltagare fick $MED \\le x \\le MAX$ poäng blir deltagarnas resultat $50 + 50 \\cdot \\frac{x - MED}{MAX - MED}$. Detta innebär att resultatet ökar linjärt från 0 till 50 när poängen ökar från 0 till $MED$, och från 50 till 100 när poängen ökar från $MED$ till $MAX$.</p>\n<p>För varje deltagare i tävlingen kommer du får deltagarens resultat i de fyra tävlingarna, samt deltagarens årskurs. Avgör vilka som blir uttagna till IOI och BOI.</p>",
+  "input": "<p>Den första raden innehåller ett heltal $6 \\le N \\le 40$, antalet deltagare.</p>\n<p>De $N$ nästa raderna beskriver en deltagare och dess resultat. En rad börjar med deltagarens namn, som består av upp till 20 små bokstäver från $a$ till $z$, utan mellanslag. Därefter följer ett tal som är antingen $7, 8, 9, 1, 2, 3$ och beskriver deltagarens årskurs. Årskurserna $7, 8, 9$ representerar här högstadieelever. Slutligen kommer fyra heltal $0 \\le F, K1, K2, K3 \\le 700$ - poängen från finalen, KATT1, KATT2 och KATT3 respektive.</p>\n<p>I en tävling kommer medianen och maxpoängen alltid vara skiljda från varandra. Det kommer alltid finnas precis ett möjligt lag enligt reglerna ovan.</p>",
+  "output": "<p>På den första raden ska du skriva ut namnen på de fyra deltagare som blev uttagna till IOI.</p>\n<p>Nästa rad ska innehålla två namn - de ytterligare deltagare som kvalificerade sig till BOI.</p>\n<p>På varje rad ska namnen du skriver ut vara sorterade i bokstavsordning.</p>",
+  "samples": [
+    {
+      "input": "33\nlisavallfors 3 505 362 145 0\nadamhasselwander 3 200 0 0 0\nmartinjakobsson 3 247 101 69 272\narvidlunnemark 1 461 40 160 343\nnicolehedblom 2 450 328 0 139\nfredrikekholm 8 216 168 229 265\ndavidwarn 2 653 400 400 387\nfredrikhernqvist 3 608 400 400 100\nbjornmagnusson 1 320 181 175 227\nkarllundstig 3 657 306 360 265\njohanbostrom 3 0 40 0 178\nivarmatstoms 1 216 0 0 0\nsimonhalvdansson 3 100 0 0 0\nmattiasgrenfeldt 1 445 159 215 35\njoakimblikstad 3 644 400 400 331\ngustavlindqvist 3 149 0 0 0\nerikprantare 2 361 101 0 0\njohannesagestam 3 207 61 0 142\ncarlagrell 2 500 0 130 35\njonatannilsson 2 415 100 75 100\nhannesbredberg 3 229 85 0 35\ncarlenlund 2 116 40 0 0\nkristofferahgren 3 450 281 105 235\nmarkoproloscic 2 337 0 0 0\neriksundqvist 3 200 0 0 0\nlucasunnerfelt 2 528 0 200 0\njohanvikstrom 3 339 128 76 79\nvictorsellstedt 3 283 0 0 0\nbjornthoren 3 345 0 100 0\nhermankarlsson 2 557 362 360 303\njacoberiksson 2 236 106 30 135\nhugoeberhard 9 386 115 105 276\nerikrimskog 3 200 0 0 0\n",
+      "output": "davidwarn fredrikhernqvist joakimblikstad karllundstig \narvidlunnemark hermankarlsson \n"
+    },
+    {
+      "input": "7\nannbrittcaroline 3 100 100 100 100\ngandalf 1 0 75 75 75\nbyteasar 3 75 0 75 75\njultomten 2 50 50 50 50\npelle 3 25 25 25 0\nalice 8 25 0 25 25\nbob 9 0 0 0 0\n",
+      "output": "annbrittcaroline byteasar gandalf jultomten \nalice bob \n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2017, Online Qualification",
+  "level": 11,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2
+}

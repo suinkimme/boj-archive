@@ -1,0 +1,28 @@
+{
+  "id": 15544,
+  "title": "Map of Ninja House",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>An old document says that a Ninja House in Kanazawa City was in fact a defensive fortress, which was designed like a maze. Its rooms were connected by hidden doors in a complicated manner, so that any invader would become lost. Each room has at least two doors.</p>\n<p>The Ninja House can be modeled by a graph, as shown in Figure 1. A circle represents a room. Each line connecting two circles represents a door between two rooms.</p>\n<table class=\"table\" style=\"width:100%\">\n<tbody>\n<tr>\n<td style=\"text-align:center; width:50%\"><img alt=\"\" src=\"1.png\" style=\"height:216px; width:222px\"/></td>\n<td style=\"text-align:center; width:50%\"><img alt=\"\" src=\"2.png\" style=\"height:220px; width:234px\"/></td>\n</tr>\n<tr>\n<td style=\"text-align:center; width:50%\">Figure 1</td>\n<td style=\"text-align:center; width:50%\">Figure 2</td>\n</tr>\n</tbody>\n</table>\n<p>I decided to draw a map, since no map was available. Your mission is to help me draw a map from the record of my exploration.</p>\n<p>I started exploring by entering a single entrance that was open to the outside. The path I walked is schematically shown in Figure 2, by a line with arrows. The rules for moving between rooms are described below.</p>\n<p>After entering a room, I first open the rightmost door and move to the next room. However, if the next room has already been visited, I close the door without entering, and open the next rightmost door, and so on. When I have inspected all the doors of a room, I go back through the door I used to enter the room.</p>\n<p>I have a counter with me to memorize the distance from the first room. The counter is incremented when I enter a new room, and decremented when I go back from a room. In Figure 2, each number in parentheses is the value of the counter when I have entered the room, i.e., the distance from the first room. In contrast, the numbers not in parentheses represent the order of my visit.</p>\n<p>I take a record of my exploration. Every time I open a door, I record a single number, acording to the following rules.</p>\n<ol>\n<li>If the opposite side of the door is a new room, I record the number of doors in that room, which is a positive number.</li>\n<li>If it is an already visited room, say R, I record \"<em>the distance of R from the first room</em>\" minus \"<em>the distance of the current room from the first room</em>\", which is a negative number.</li>\n</ol>\n<p>In the example shown in Figure 2, as the first room has three doors connecting other rooms, I initialy record \"3\". Then when I move to the second, third, and fourth rooms, which all have three doors, I append \"3 3 3\" to the record. When I skip the entry from the fourth room to the first room, the distance difference \"-3\" (minus three) will be appended, and so on. So, when I finish this exploration, its record is a sequence of numbers \"3 3 3 3 -3 3 2 -5 3 2 -5 -3\".</p>\n<p>There are several dozens of Ninja Houses in the city. Given a sequence of numbers for each of these houses, you should produce a graph for each house.</p>",
+  "input": "<p>The first line of the input is a single integer <em>n</em>, indicating the number of records of Ninja Houses I have visited. You can assume that <em>n</em> is less than 100. Each of the foIowing <em>n</em> records consists of numbers recorded on one exploration and a zero as a terminator. Each record consists of one or more lines whose lengths are less than 1000 characters. Each number is delimited by a space or a newline. You can assume that the number of rooms for each Ninja House is less than 100, and the number of doors in each room is less than 40.</p>",
+  "output": "<p>For each Ninja House of <em>m</em> rooms, the output should consist of <em>m</em> lines. The <em>j</em>-th line of each such <em>m</em> lines should look as follows:</p>\n<pre>\n<em>i</em> <em>r</em><sub>1</sub> <em>r</em><sub>2</sub>  ... <em>r</em><sub><em>k</em><sub><em>i</em></sub></sub>\n</pre>\n<p>where <em>r</em><sub>1</sub>, ... , <em>r<sub>k<sub>i</sub></sub></em> should be rooms adjoining room <em>i</em>, and <em>k<sub>i</sub></em> should be the number of doors in room <em>i</em>. Numbers should be separated by exactly one space character. The rooms should be numbered from 1 in visited order. <em>r</em><sub>1</sub>, <em>r</em><sub>2</sub>, ... , <em>r<sub>k<sub>i</sub></sub></em> should be in ascending order. Note that the room <em>i</em> may be connected to another room through more than one door. In this case, that room number should appear in <em>r</em><sub>1</sub>, ... , <em>r<sub>k<sub>i</sub></sub></em> as many times as it is connected by different doors.</p>",
+  "samples": [
+    {
+      "input": "2\n3 3 3 3 -3 3 2 -5 3 2 -5 -3 0\n3 5 4 -2 4 -3 -2 -2 -1 0\n",
+      "output": "1 2 4 6\n2 1 3 8\n3 2 4 7\n4 1 3 5\n5 4 6 7\n6 1 5\n7 3 5 8\n8 2 7\n1 2 3 4\n2 1 3 3 4 4\n3 1 2 2 4\n4 1 2 2 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2002 in Kanazawa",
+  "level": 14,
+  "tags": [
+    "dfs",
+    "graphs",
+    "graph_traversal",
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.25
+}

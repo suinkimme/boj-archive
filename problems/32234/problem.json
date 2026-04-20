@@ -1,0 +1,53 @@
+{
+  "id": 32234,
+  "title": "나무에서 나뭇가지가 다 사라지면?",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<blockquote>\n<p>나무에서 나뭇가지가 다 사라지면? <strong>가지런하다</strong></p>\n</blockquote>\n<p>동우와 재우가 $1$번부터 $N$번 정점까지 총 $N$개의 정점으로 이루어진 트리 $T$에서 게임을 한다. 이 트리의 루트는 $1$번 정점이고, $i$번 정점에 $C_i$개의 돌이 있다. 게임은 동우부터 시작해 두 사람이 턴을 번갈아 가며 진행하며, 규칙은 다음과 같다.</p>\n<p>현재 <code>A</code>의 턴이라고 가정하자. <code>A</code>는 다음 규칙에 맞는 행동을 한다. 아래의 과정을 한 턴으로 정의한다. 편의상 <code>A</code>가 아닌 다른 사람을 <code>B</code>라 하고, 현재 상태의 포레스트를 $F$라고 하자. 초기에는 포레스트에 $T$ 하나만 있다. 즉, $F=\\left\\{ T \\right\\}$이다.</p>\n<ol>\n<li><code>A</code>가 현재 상태의 포레스트에 포함된 트리를 하나 고른다. 만약 트리가 남아 있지 않다면 <code>A</code>가 패배한다.</li>\n<li><code>A</code>가 고른 트리를 $T_0$라 하고, $T_0$의 루트 정점을 $r$이라 하자.</li>\n<li><code>A</code>가 $T_0$에서 정점 $v$를 하나 골라 $r$과 $v$ 사이의 양 끝점을 포함해 경로 상의 모든 정점을 가져온다. $r=v$인 경우 $r$만 가져온다.</li>\n<li>이렇게 가져온 정점들에 대하여 <code>B</code>부터 시작해 님 게임을 한다. 즉, 아래와 같이 게임을 한다.\n\t<ol>\n<li><code>B</code>부터 시작해 아래 행동을 번갈아한다.</li>\n<li>돌이 $1$개 이상 있는 정점을 하나 골라, 원하는 만큼 돌을 갖고 온다.</li>\n<li>더 이상 행동하지 못하는 사람이 진다.</li>\n</ol>\n</li>\n<li>만약 위와 같이 진행된 님 게임에서 <code>B</code>가 이긴다면, 그 즉시 원래 게임도 <code>B</code>가 이긴다.</li>\n<li>만약 <code>A</code>가 이겼다면 $T_0$를 다음 규칙에 따라 재배치한다.\n\t<ul>\n<li>$T_0$에서 $r$과 직접 연결된 정점들에 대하여, 각 정점을 루트로 하는 서브트리를 $F$에 추가한다. 단, $v$를 포함하는 서브트리는 추가하지 않는다.</li>\n<li>$T_0$를 포레스트에서 제거한다.</li>\n</ul>\n</li>\n</ol>\n<p><strong>처음에는 포레스트에 하나의 트리만 존재하지만, 게임을 진행하며 서로 연결되지 않은 여러 개의 트리 집합이 될 수 있다는 점을 유의하자.</strong></p>\n<p>자신의 턴에 행동할 수 없는 플레이어가 패배하게 된다. 두 사람이 최적의 방법으로 게임을 진행했을 때, 누가 이기는지 판단해 보자.</p>",
+  "input": "<p>첫 번째 줄에 트리의 정점의 개수 $N(1\\le N\\le 200\\, 000)$이 주어진다.</p>\n<p>두 번째 줄에 각 정점에 놓여 있는 돌의 개수 $C_1, C_2, \\cdots, C_{N}(0\\le C_i\\le 10^9)$이 공백으로 구분되어 주어진다. 이는 $i$번 정점에 놓여 있는 돌의 개수가 $C_i$개임을 의미한다.</p>\n<p>세 번째 줄부터 $N-1$개의 줄에 걸쳐 각 줄마다 트리에서 직접 연결된 두 정점의 번호 $P_i,Q_i(1\\le P_i,Q_i\\le N$; $P_i\\ne Q_i)$가 공백으로 구분되어 주어진다.</p>\n<p>주어지는 입력이 트리임이 보장된다.</p>",
+  "output": "<p>첫 번째 줄에 동우가 이기면 <span style=\"color:#e74c3c;\"><code>kidw0124</code></span>, 재우가 이기면 <span style=\"color:#e74c3c;\"><code>eoaud0108</code></span>을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "1\n0\n",
+      "output": "kidw0124\n"
+    },
+    {
+      "input": "1\n1\n",
+      "output": "eoaud0108\n"
+    },
+    {
+      "input": "2\n124 124\n1 2\n",
+      "output": "kidw0124\n"
+    },
+    {
+      "input": "2\n124 108\n1 2\n",
+      "output": "eoaud0108\n"
+    },
+    {
+      "input": "4\n1 1 2 2\n1 2\n1 3\n3 4\n",
+      "output": "eoaud0108\n"
+    }
+  ],
+  "hint": "<p>이 문제의 제목과 제목에 대한 답은 <a href=\"/user/kidw0124\">kidw0124</a>의 아이디어이다.</p>",
+  "source": "University, 고려대학교, MatKor Cup, 제5회 고려대학교 MatKor Cup: 2024 Summer/Fall, alex04, jinhan814, kidw0124, eoaud0108, finimage, sshs29hanul, tlsdydaud1, utilforever, yijw0930",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "dfs",
+    "dp",
+    "dp_tree",
+    "euler_tour_technique",
+    "game_theory",
+    "graphs",
+    "graph_traversal",
+    "merge_sort_tree",
+    "segtree",
+    "smaller_to_larger",
+    "sorting",
+    "sprague_grundy",
+    "trees"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 3.294100046157837
+}

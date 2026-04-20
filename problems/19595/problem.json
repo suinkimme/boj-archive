@@ -1,0 +1,30 @@
+{
+  "id": 19595,
+  "title": "소수 게임",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>Alice와 Bob은 &quot;소수 게임&quot;을 즐겨한다.</p>\r\n\r\n<p>소수 게임에서는 두 사람이 먼저&nbsp;일정한 양의 정수 구간 (interval)을 먼저 고르고, 해당 구간에 속한 모든 정수 각각에 대해 미니 게임을 한 번씩 플레이 한다.</p>\r\n\r\n<p>정확한 규칙은 아래와 같다.</p>\r\n\r\n<ul>\r\n\t<li>먼저, Alice가 두 개의 정수 A, k를 고른다 (이 때&nbsp;2 &le; k &le; A-1&nbsp;을 만족해야 한다).<br />\r\n\tk는 미니 게임을 몇 번 할지를 결정하고, A는 정수 구간의 상한값을 결정한다.</li>\r\n\t<li>다음으로 Bob이 2 &le; x &le; A + 1 - k를 만족하는 정수 x를 고른다.<br />\r\n\tx는 정수 구간의 하한값을 결정한다. 즉, x &le; 정수구간 &le; A가 된다.&nbsp;</li>\r\n\t<li>두 사람은 이제 미니 게임을 k번 플레이 하는데, x이상 x+k-1 이하의 정수 각각에 대하여 아래 미니 게임을 플레이한다 (각각의 미니 게임에서 고른 정수를 N이라 하자).\r\n\t<ul>\r\n\t\t<li>먼저, N을 종이에 적는다 (x &le; N &le; x+k-1).&nbsp;그리고 Alice와 Bob이 번갈아 플레이 한다.</li>\r\n\t\t<li>Alice가 먼저 시작하여&nbsp;종이에 적힌 숫자보다 크지 않은 수 중 소수 (prime) P를 고른다.</li>\r\n\t\t<li>종이에 적힌 수가 X라면, 이를 지우고 X-P를 종이에 새로 적는다.&nbsp;</li>\r\n\t\t<li>Bob의 차례가 되어 이를 반복한다.</li>\r\n\t\t<li>만약 자신의 차례가 되었을 때 종이에 적힌 수가 0이나 1이라면 진다. (다시 말해, X-P를 종이에 적을 때 이 값이 0이나 1이면 이긴다.)</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>예를 들어 N = 8 이라면, Alice가 자신의 처음 차례에 7을 고르면 이긴다.</p>\r\n\r\n<p>N = 10이라면 Alice가 자신의 차례에 고를 수 있는 소수는 2, 3, 5, 7 중 하나이다.</p>\r\n\r\n<ul>\r\n\t<li>2를 고른 경우, Bob이 자신의 차례에 받는 수는 8이고 이 때 7을 고르면 Bob이 이긴다.</li>\r\n\t<li>3을 고른 경우, Bob이 자신의 차례에 받는 수는 7이고, 이 때 7을 고르면 Bob이 이긴다.</li>\r\n\t<li>5를 고른 경우, Bob이 자신의 차례에 받는 수는 5이고, 이 때 5를 고르면 Bob이 이긴다.</li>\r\n\t<li>7을 고른 경우, Bob이 자신의 차례에 받는 수는 3이고, 이 때 3을 고르면 Bob이 이긴다.</li>\r\n</ul>\r\n\r\n<p>따라서 N = 10인 경우, Bob이 최선을 다한다면 Alice가 이길 방법은 없다. (두 사람은 언제나 최선을 다해서 플레이 한다고 가정하자.)</p>\r\n\r\n<p>Bob은 A, k가 주어졌을 때 x를 잘 골라서 자신의 승률을 최대화 하기로 했다. 만약 승률을 최대화 하는 x값이 여럿이라면 그 중 가장 작은 x를 찾기로 했다. Bob을 도와주자.</p>\r\n",
+  "input": "<p>첫 줄에 테스트 케이스의 수 T가 주어진다.</p>\r\n\r\n<p>각 줄에 A와 k가 공백으로 구분되어 주어진다.</p>\r\n",
+  "output": "<p>각 테스트 케이스에 대해 두 개의 정수를 공백으로 구분하여 출력한다.</p>\r\n\r\n<p>첫 수는 k번의 게임 중 Bob이 최대 몇 번을 이길 수 있는지 나타내고, 두 번째 수는 이를 위해 Bob이 선택해야하는 x값 중 최소 값을&nbsp;나타낸다.</p>\r\n",
+  "samples": [
+    {
+      "input": "5\n12 2\n12 3\n12 4\n100 11\n1000 15\n",
+      "output": "2 9\n2 8\n2 7\n3 25\n4 885\n"
+    }
+  ],
+  "hint": null,
+  "source": null,
+  "level": 14,
+  "tags": [
+    "math",
+    "dp",
+    "number_theory",
+    "prefix_sum",
+    "game_theory",
+    "primality_test",
+    "sieve"
+  ],
+  "accepted_user_count": 57,
+  "submission_count": null,
+  "average_tries": 1.929800033569336
+}

@@ -1,0 +1,26 @@
+{
+  "id": 15746,
+  "title": "Directory Traversal",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Bessie the cow is surprisingly computer savvy. On her computer in the barn, she stores all of her precious files in a collection of directories; for example:</p>\n<pre>\nbessie/\n  folder1/\n    file1\n    folder2/\n      file2\n  folder3/\n    file3\n  file4\n</pre>\n<p>There is a single \"top level\" directory, called bessie.</p>\n<p>Bessie can navigate to be inside any directory she wants. From a given directory, any file can be referenced by a \"relative path\". In a relative path, the symbol \"..\" refers to the parent directory. If Bessie were in folder2, she could refer to the four files as follows:</p>\n<pre>\n../file1\nfile2\n../../folder3/file3\n../../file4\n</pre>\n<p>Bessie would like to choose a directory from which the sum of the lengths of the relative paths to all the files is minimized.</p>",
+  "input": "<p>The first line contains an integer N ($2 \\leq N \\leq 100,000$), giving the total number of files and directories. For the purposes of input, each object (file or directory) is assigned a unique integer ID between 1 and $N$, where ID 1 refers to the top level directory.</p>\n<p>Next, there will be $N$ lines. Each line starts with the name of a file or directory. The name will have only lower case characters a-z and digits 0-9, and will be at most 16 characters long. Following the name is an integer, $m$. If $m$ is 0, then this entity is a file. If $m &gt; 0$, then this entity is a directory, and it has a total of $m$ files or directories inside it. Following $m$ there will be $m$ integers giving the IDs of the entities in this directory.</p>",
+  "output": "<p>Output the minimal possible total length of all relative paths to files. Note that this value may be too large to fit into a 32-bit integer.</p>",
+  "samples": [
+    {
+      "input": "8\nbessie 3 2 6 8\nfolder1 2 3 4\nfile1 0\nfolder2 1 5\nfile2 0\nfolder3 1 7\nfile3 0\nfile4 0\n",
+      "output": "42\n"
+    }
+  ],
+  "hint": "<p>This input describes the example directory structure given above.</p>\n<p>The best solution is to be in folder1. From this directory, the relative paths are:</p>\n<pre>\nfile1\nfolder2/file2\n../folder3/file3\n../file4\n</pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2017-2018 Season, USACO 2018 February Contest, Gold",
+  "level": 17,
+  "tags": [
+    "dp",
+    "trees",
+    "dp_tree"
+  ],
+  "accepted_user_count": 107,
+  "submission_count": null,
+  "average_tries": 1.9625999927520752
+}

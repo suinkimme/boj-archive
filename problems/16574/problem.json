@@ -1,0 +1,28 @@
+{
+  "id": 16574,
+  "title": "Rotating Gears",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Andi has N gears (numbered from 1 to N) on a board. Each gear has an arrow initially pointing upward. Some pair of gears may touch each other. If we construct a graph where each gear is a node, and we connect each pair of touching gears with an edge, then the structure of this graph is a tree. For example, the following is a possible gear configuration example with N = 4 gears and gear 2 touches all other gears.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 182px; height: 190px;\"/></p>\n<p>Standard gear rotation rule applies: Suppose a gear u touches another gear v, and gear u is rotated α degrees clockwise, then gear v will be rotated α degrees counter-clockwise, and vice-versa.</p>\n<p>Andi wants to perform three kinds of operations:</p>\n<ol>\n<li>Take out a gear from its position on the board.</li>\n<li>Place a gear back to its original position on the board. When doing this, Andi places a gear back in a way such that the arrow points to the same degree as when it was removed. Assume that it is always possible to do that, i.e. you do not need to concern with the mechanical aspect of the gear.</li>\n<li>Rotate a gear α degrees clockwise.</li>\n</ol>\n<p>Let δ<sub>u</sub> be the arrow’s degree (clockwise, modulo 360) of gear u after Q operations are done. Andi wants to know the sum of δ<sub>u</sub> for all u. Furthermore, since rotating gears requires a lot of work, Andi also wants to know how much energy he needs for every Type 3 operation (rotating a gear). The amount of energy Andi needs to perform the Type 3 operation is defined as &lt;number of rotating gears&gt; × &lt;rotation done in degrees&gt;.</p>",
+  "input": "<p>Input begins with a line containing an integer N (1 ≤ N ≤ 100000) representing the number of gears. The next N − 1 lines, each contains two integers: u v (1 ≤ u, v ≤ N; u ≠ v) representing that gear u and gear v touches each other. It is guaranteed that the structure of the connected gears forms a tree. The next line contains an integer Q (1 ≤ Q ≤ 100000) representing the number of operations. The next Q lines, each representing an operation to be done sequentially. Each operation is given in one of the following formats:</p>\n<ul>\n<li>Two integers: 1 x (1 ≤ x ≤ N). This means that this operation takes out gear x from its position on the board. It is guaranteed that gear x is currently on the board.</li>\n<li>Two integers: 2 x (1 ≤ x ≤ N). This means that this operation places gear x back to its original position on the board. It is guaranteed that gear x is currently not on the board.</li>\n<li>Three integers: 3 x α (1 ≤ x ≤ N; 0 ≤ α ≤ 359). This means that this operation rotates gear x α degrees clockwise. It is guaranteed that gear x is currently on the board.</li>\n</ul>",
+  "output": "<p>For each Type 3 operation in the same order as input, output in a line the amount of energy needed to rotate the gears. Finally, output in a line the sum of δ<sub>u</sub> for all u.</p>",
+  "samples": [
+    {
+      "input": "4\n1 2\n2 3\n2 4\n8\n3 2 160\n1 2\n3 1 10\n3 3 10\n3 4 10\n2 2\n1 1\n3 3 15\n",
+      "output": "640\n10\n10\n10\n45\n805\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, The 2018 ICPC Asia Jakarta Regional Contest, easrui",
+  "level": 25,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "hld",
+    "link_cut_tree"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 5.714300155639648
+}

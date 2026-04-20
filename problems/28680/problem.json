@@ -1,0 +1,34 @@
+{
+  "id": 28680,
+  "title": "Sopsug",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Grushög is an unfinished residential area in the outskirts of Lund. Right now, all necessary infrastructure is being constructed, including the most important thing of all: garbage disposal. Like in many areas of Sweden, a <em>sopsug</em> (automated vacuum collection system) will be used to collect garbage. The idea is to transport garbage underground through tubes using air pressure.</p>\n<p>There are $N$ buildings in Grushög, numbered from $0$ to $N-1$. Your task is to connect some pairs of buildings with tubes. If you build a tube from building $u$ to some other building $v$, $u$ will send all of its garbage to $v$ (but not in the other direction). Your goal is to create a network of $N-1$ tubes such that all garbage ends up in one building. In other words, you want the network to form a rooted tree, where the edges are directed toward the root.</p>\n<p>However, $M$ tubes have already been constructed between buildings. These <em>must</em> be used in your network. These tubes are directed, so they can only be used in one direction.</p>\n<p>Furthermore, there are $K$ pairs of buildings between which it is impossible to build a tube. These pairs are ordered, so if it is impossible to build a tube from $u$ to $v$, it may still be possible to build one from $v$ to $u$.</p>",
+  "input": "<p>The first line of input contains the three integers, $N$, $M$, and $K$.</p>\n<p>The following $M$ lines each contain two distinct integers $a_i, b_i$, meaning that there is already a tube from $a_i$ to $b_i$.</p>\n<p>The following $K$ lines each contain two distinct integers $c_i, d_i$, meaning that it is impossible to build a tube from $c_i$ to $d_i$.</p>\n<p>All of the $M+K$ ordered pairs in the input will be distinct. Note that $(u,v)$ and $(v,u)$ are regarded as different pairs.</p>",
+  "output": "<p>If there is no solution, print <code>NO</code>.</p>\n<p>Otherwise, print $N-1$ lines, each containing two integers $u_i$, $v_i$, meaning that there should be a tube directed from $u_i$ to $v_i$. You may print the tubes in any order. If there are multiple solutions, you may print any of them. Remember that all the $M$ already existing tubes must be included in your solution.</p>",
+  "samples": [
+    {
+      "input": "5 1 8\n4 1\n3 1\n3 4\n3 2\n0 2\n0 4\n2 4\n1 0\n2 0\n",
+      "output": "4 1\n3 0\n1 3\n2 3\n"
+    },
+    {
+      "input": "5 4 0\n1 0\n2 3\n3 4\n4 2\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "3 0 1\n0 1\n",
+      "output": "1 0\n2 0\n"
+    },
+    {
+      "input": "4 0 2\n0 1\n1 0\n",
+      "output": "2 0\n3 0\n1 3\n"
+    }
+  ],
+  "hint": "<p>The following figures show the first and second sample test cases. The blue edges mark tubes which are already constructed, and the dashed red edges mark tubes which are impossible to build.</p>\n<p>The figure to the left shows the first sample with the solution from the sample output, showing tubes with black edges (in addition to the already constructed tube from $4$ to $1$ which is blue). In this network, all garbage will be collected in building $0$. This is not the only solution; for example, the tube from $1$ to $3$ can be replaced by a tube from $0$ to $1$ and it is still a valid solution.</p>\n<p>For the second sample input, we can see in the right figure that it is impossible to construct a solution because of the cycle $(2, 3, 4)$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 768px; height: 284px;\"/></p>",
+  "source": ", Olympiad, European Girls' Olympiad in Informatics, EGOI 2023, Day 2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

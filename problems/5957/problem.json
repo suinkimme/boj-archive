@@ -1,0 +1,27 @@
+{
+  "id": 5957,
+  "title": "Cleaning the Dishes",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Bessie and Canmuu are teaming up to wash the massive pile of N (1 &lt;= N &lt;= 10,000) dirty dishes left over after the CowMoose Festival. Bessie is washing the dishes; Canmuu will dry them.</p>\n<p>Each dish has a unique serial number in the range 1..N. At the beginning, the dishes are stacked in order with #1 on the top and #N on the bottom.</p>\n<p>Bessie first washes some number of dishes D_i by taking one from the top of the incoming pile, washing it, and then stacking it on the other side of the sink (this reverses the order of those dishes).</p>\n<p>Once she has finished washing those dishes, either she washes another set of dishes or Canmuu comes back to dry D_i dishes while Bessie goes off to eat her well-earned snack. He takes those dishes, one by one, off the stack that Bessie left him, dries the dish, and stacks it (again in reverse order) in the 'cleaned' stack.</p>\n<p>Canmuu then either takes another set of dishes to dry or goes off to get a snack while Bessie comes back to wash. They repeat these operations until all of the dishes are washed and dried.</p>\n<p>What is the final order (top to bottom) in which the clean, dry dishes are stacked?</p>\n<p>To illustrate, suppose that Bessie has a stack of 5 dishes to wash:</p>\n<pre>\n1 &lt;-- top\n2\n3\n4\n5 &lt;-- bottom</pre>\n<p>D_1 is 3, so Bessie takes three dishes from the top of the stack, one by one, washes them, and stacks on the other side of the sink for Canmuu to dry:</p>\n<pre>\n       Unwashed\n       | Washed but not dried\n       | | Washed &amp; Dried\n       | | |\nTOP    1             \n       2          2   \n       3      -&gt;  3      -&gt;  3      -&gt;    3   \n       4          4          4 2        4 2 \nBOTTOM 5 - -      5 1 -      5 1 -      5 1 -\n    Initial      Dish 1     Dish 2     Dish 3</pre>\n<p>Canmuu dries two of these, one by one, and places them onto the clean stack:</p>\n<pre>\nTOP         3                   \n          4 2    -&gt;  4 2   -&gt;  4   2\nBOTTOM    5 1 -      5 1 3     5 1 3</pre>\n<p>Bessie washes the final two dishes:</p>\n<pre>\nTOP                              5\n          4   2  -&gt;    4 2 -&gt;    4 2\nBOTTOM    5 1 3      5 1 3     - 1 3</pre>\n<p>Finally, Canmuu dries the last three dishes, stacking them in the resulting order below:</p>\n<pre>\nTOP                                          1\n                                  4          4\n          5    -&gt;      5  -&gt;      5  -&gt;      5\n          4 2        4 2          2          2\nBOTTOM  - 1 3      - 1 3      - 1 3      - - 3</pre>\n<p>So the final order is: 1, 4, 5, 2, 3.</p>\n<p>Each of the main input lines contains both a command, C_i (1 &lt;= C_i &lt;= 2) where 1 indicates Bessie washing while 2 indicates Canmuu drying, and the number of dishes D_i (1 &lt;= D_i &lt;= N) to be washed or dried.</p>",
+  "input": "<ul>\n<li>Line 1: A single integer indicating the number of dishes to wash and dry: N</li>\n<li>Lines 2..??: Each line contains a command and a count of dishes to process: C_i and D_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Lines 1..N: Line i contains the i-th cleaned dish, starting from the top</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "5\n1 3\n2 2\n1 2\n2 3\n",
+      "output": "1\n4\n5\n2\n3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2010-2011 Season, USACO January 2011 Contest, Bronze",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "simulation",
+    "stack"
+  ],
+  "accepted_user_count": 438,
+  "submission_count": null,
+  "average_tries": 1.4611999988555908
+}

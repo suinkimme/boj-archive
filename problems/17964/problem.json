@@ -1,0 +1,36 @@
+{
+  "id": 17964,
+  "title": "Tree Permutations",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Once upon a time, Mr. Cool created a tree (an undirected graph without cycles) of n vertices, by assigning to each vertex i &gt; 1 two numbers: p<sub>i</sub> &lt; i — the direct ancestor of vertex i and w<sub>i</sub> — the weight of the edge between vertex i and p<sub>i</sub>. Vertex 1 is the root, so it does not have any ancestors.</p>\n<p>You wanted to know what tree did Mr. Cool build, but Mr. Cool refused to tell this, but he gave you a tip:</p>\n<p>He wrote all these numbers in one line. That’s how he got array b of length 2 · n − 2.</p>\n<p style=\"text-align: center;\">b = [p<sub>2</sub>, w<sub>2</sub>, p<sub>3</sub>, w<sub>3</sub>, . . . , p<sub>n−1</sub>, w<sub>n−1</sub>, p<sub>n</sub>, w<sub>n</sub>]</p>\n<p>Then he randomly shuffled it. That’s how he got array a, and Mr. Cool presented you with it.</p>\n<p>Since it is impossible to restore the tree knowing only values of array a, you decided to solve a different problem.</p>\n<p>Let’s call a tree k-long, if there are exactly k edges on the path between vertex 1 and n.</p>\n<p>Let’s call a tree k-perfect, if it is k-long and the sum of the weights of the edges on the path between vertex 1 and vertex n is maximal among all possible k-long trees that Mr. Cool could build.</p>\n<p>Your task is to print the sum of the weights of the edges on the path between vertex 1 and vertex n for all possible k-perfect trees or print −1 if a certain k-long tree could not be built by Mr. Cool.</p>",
+  "input": "<p>The first line contains one integer n (2 ≤ n ≤ 10<sup>5</sup>) — the number of the vertices in the tree.</p>\n<p>The second line contains 2 · n − 2 integers a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>2n−2</sub> (1 ≤ a<sub>i</sub> ≤ n − 1) — the elements of array a.</p>",
+  "output": "<p>In one line, print n − 1 space-separated integers w<sub>1</sub>, w<sub>2</sub>, w<sub>3</sub>, . . . , w<sub>n−1</sub>, where w<sub>k</sub> — the sum of the weights of the edges on the path between vertex 1 and vertex n in a k-perfect tree. If there is no i-long tree, then wi should be equal to −1.</p>",
+  "samples": [
+    {
+      "input": "3\n1 1 2 2\n",
+      "output": "2 3\n"
+    },
+    {
+      "input": "3\n2 2 2 2\n",
+      "output": "-1 -1\n"
+    },
+    {
+      "input": "6\n1 4 5 4 4 4 3 4 4 2\n",
+      "output": "-1 -1 -1 17 20\n"
+    }
+  ],
+  "hint": "<p>In the first example, the 1-perfect tree is defined by array [1, 2, 1, 2] (i.e. p<sub>2</sub> = 1, w<sub>2</sub> = 2, p<sub>3</sub> = 1, w<sub>3</sub> = 2). The 2-perfect tree is defined by array [1, 2, 2, 1] (i.e p<sub>2</sub> = 1, w<sub>2</sub> = 2, p<sub>3</sub> = 2, w<sub>3</sub> = 1). Here are illustrations of the 1-perfect tree and the 2-perfect tree respectively (path from vertex 1 to vertex n is drawn with bold lines):</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 315px; height: 161px;\"/></p>\n<p>In the second example, there are no k-perfect trees, that can be obtained by permuting array a.</p>\n<p>In the third example, only 4-perfect tree and 5-perfect tree can be obtained. These are defined by arrays [1, 4, 2, 4, 3, 4, 4, 4, 4, 5] and [1, 4, 2, 4, 3, 4, 4, 4, 5, 4] respectively. Here are illustrations of them:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 261px; height: 198px;\"/></p>",
+  "source": "ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2019, Contest, Open Cup, 2019/2020 Season, Stage 6: Grand Prix of Southeastern Europe",
+  "level": 25,
+  "tags": [
+    "ad_hoc",
+    "data_structures",
+    "hash_set",
+    "sorting",
+    "set"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.7000000476837158
+}

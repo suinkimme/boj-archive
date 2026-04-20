@@ -1,0 +1,26 @@
+{
+  "id": 11825,
+  "title": "T9",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:338px; width:343px\"/></p>\n<p>Many mobile phone users use T9 mode while typing SMS. For example, they type the messages in English in the following way. To type a word by letters, the button corresponding to that letter is pressed only once, no matter how many letters correspond to this button, and no matter which is the position of the letter on this button (see ﬁgure), and the software in the phone chooses a word corresponding to the button sequence from the dictionary. If there are several suitable words, then the most frequently occuring word will be offerred ﬁrst (initially the words with equal frequency are ordered alphabetically). </p>\n<p>If the word is wrong, the user presses button ‘*’ and the software offers the next word by frequency also suitable for the pressed buttons combination, starting from the next word with the same frequency, if any. If it is also wrong, the button ‘*’ will be pressed again etc. For the simplicity we will assume that modern phones contain the full dictionary of the needed words, and the neccessary word will always be found. When the offered word is correct, the user may press “space”, may press the button ‘1’ which corresponds to the punctuation mark or may ﬁnish the typing. When the punctuation mark is wrong, the button ‘*’ is pressed also, until the correct character appears. After typing a space or a punctuation mark, the user is allowed to type another space/punctuation mark, is allowed to ﬁnish the typing or to start typing the next word. We will assume that three punctuation marks are enough and they are offered in the following order: point (‘.’), comma (‘,’), question mark (‘?’). </p>\n<p>After the user accepts the word (by pressing space or ‘1’), its frequency in the dictionary is increased by 1 and the new frequency value will be taken into account during typing further words of the message. Also, this word will be the ﬁrst offered word among all the words of the same frequency, but the order of other words will not be changed. When another word with the same frequency appears, then it will be offered ﬁrst among the words of this frequency, not changing the order of other words, etc. </p>\n<p>You need to write a program which, given a dictionary with initial frequencies of the words and given a sequence of button presses, will write the message that appears on the screen. </p>",
+  "input": "<p>The ﬁrst line of the input ﬁle contains an integer N (3 ≤ N ≤ 50000) — the number of words in the dictionary. Each of the next N lines contains one dictionary word and an integer F (1 ≤ F ≤ 1000) — the initial value of this word frequency (larger value corresponds to larger frequency). The value of the frequency is separated by exactly one space character from the word itself. Dictionary words contain only small english letters. The words in the input ﬁle are ordered alphabetically. The word length does not exceed 20 characters, all words are non-empty and different. </p>\n<p>Last line of the input ﬁle contains string, denoting the sequence of pressed buttons when message is typed, which consists of digits from 1 to 9, and characters “space” and ‘*’. Length of this line does not exceed 100000 characters. </p>",
+  "output": "<p>Output the text of SMS. </p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "5\nad 2\nbe 1\nnot 10\nor 5\nto 50\n86 23* 67 668 86 231**\n",
+      "output": "to be or not to be?\n"
+    },
+    {
+      "input": "3\nact 1\nbat 1\ncat 1\n228* 228** 228** 228**1\n",
+      "output": "bat cat act bat.\n"
+    }
+  ],
+  "hint": "<p>In the second example, at ﬁrst the software will propose the word “act”, then “bat”, which will be accepted by the user. Then the frequency of the word “bat” becomes 2. Thus, when the same combination of digits is entered again, the ﬁrst proposed word is “bat”, then “act” and then “cat”. Third time the words will be proposed in the following order: “cat” (as the new word with frequency 2), “bat” (frequency 2), “act” (and its frequency becomes equal to the frequency of other words), and in the last case the words will be proposed in order “act”, “cat”, “bat”. </p>",
+  "source": "Olympiad, International Zhautykov Olympiad, IZhO 2010",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 3
+}

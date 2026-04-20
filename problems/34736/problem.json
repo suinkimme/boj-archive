@@ -1,0 +1,30 @@
+{
+  "id": 34736,
+  "title": "Exciting Business Opportunities",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The Treeland subway system consists of $N$ stations connected by $N − 1$ bidirectional tunnels. The tunnels are arranged in such a way that it is always possible to travel between any two stations. The system is already considered to be the most efficient in the country: there are trains between every pair of stations in the system.</p>\n<p>Alejandro, from the subway improvement department, has been tasked with making the system even better and more attractive for passengers and businesses. To that end, the department collected $P$ proposals from companies. Each proposal is either to sponsor some station (basically, add a sign with the name of the company on the station), or to open a business at some station (a restaurant, a store, or anything like this). Notice that there is no restriction on the number of proposals that can be accepted for each station.</p>\n<p>Companies willing to open businesses in the system, though, informed that they will withdraw their proposals unless the station $X$ where their business is located, is either a sponsored station or there is a train between two sponsored stations that goes through $X$. Of course, Alejandro does not want to select proposals that will later be withdrawn. Thus, he will make sure to select a set of proposals such that no proposal in the set will be withdrawn. He calls such a set a <em>valid</em> set of proposals.</p>\n<p>The figure below shows sponsored stations in red/dashed circles and businesses in blue/dotted circles. The set of proposals in (a) is valid because the business proposal for station $3$ is located exactly on the path between the two sponsored stations $2$ and $4$. The set of proposals in (b) is also valid, because the business proposal for station $1$ is located exactly on a sponsored station. On the contrary, the set of proposals in (c) is not valid: even though the business proposal for station $3$ is located on a path between two sponsored stations, the business proposal for station $5$ is not.</p>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"1.png\" style=\"width: 145px; height: 146px;\"/></td>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 103px; height: 90px;\"/></td>\n<td><img alt=\"\" src=\"3.png\" style=\"width: 144px; height: 146px;\"/></td>\n</tr>\n<tr>\n<td>(a) Valid</td>\n<td>(b) Valid</td>\n<td>(c) Not valid</td>\n</tr>\n</tbody>\n</table>\n<p>To choose a valid set, Alejandro took the $P$ proposals (each one described on a piece of paper), and numbered them from $1$ to $P$. Now he wants to select a contiguous range of proposals that form a valid set. More precisely, he wants to pick two integers $i$ and $j$, with $1 ≤ i ≤ j ≤ P$, such that proposals $i, i + 1, \\dots , j$ form a valid set; besides, he wants the set to be as large as possible. Alejandro is not sure about which should be the initial proposal $i$ in the range he will select. Help him compute for each $i$ from $1$ to $P$, the size of the largest contiguous range of proposals that form a valid set, starting at proposal $i$.</p>",
+  "input": "<p>The first line contains an integer $N$ ($2 ≤ N ≤ 10^5$) indicating the number of stations in the subway system. Each station is identified by a distinct integer from $1$ to $N$.</p>\n<p>Each of the next $N − 1$ lines contains two integers $U$ and $V$ ($1 ≤ U, V ≤ N$ and $U \\ne V$), representing that there is a bidirectional tunnel between stations $U$ and $V$. It is guaranteed that it is possible to go from any station to any other station using the tunnels.</p>\n<p>The next line contains an integer $P$ ($1 ≤ P ≤ 10^5 $) denoting the number of proposals submitted by companies. Each proposal is identified by a distinct integer from $1$ to $P$.</p>\n<p>The $i$-th of the next $P$ lines describes proposal $i$ with a character $C$ and an integer $X$ ($1 ≤ X ≤ N$). For a sponsoring proposal $C$ is the lowercase letter “<code>s</code>”, while for a business proposal it is the lowercase letter “<code>b</code>”; in both cases $X$ is the corresponding station. Notice that each station can have an arbitrary number of proposals of any type.</p>",
+  "output": "<p>Output $P$ lines. The $i$-th line must contain an integer indicating the size of the largest valid set of contiguous proposals whose initial proposal is $i$.</p>",
+  "samples": [
+    {
+      "input": "6\n2 1\n1 3\n3 5\n5 6\n4 3\n8\nb 1\ns 2\nb 6\ns 3\nb 4\ns 5\nb 3\ns 4\n",
+      "output": "0\n1\n0\n5\n4\n3\n0\n1\n"
+    },
+    {
+      "input": "7\n4 2\n2 1\n1 3\n3 6\n5 2\n3 7\n6\ns 4\nb 5\nb 6\ns 7\nb 2\ns 3\n",
+      "output": "1\n0\n0\n1\n0\n1\n"
+    },
+    {
+      "input": "2\n1 2\n5\ns 1\nb 1\ns 1\nb 1\ns 1\n",
+      "output": "5\n4\n3\n2\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Championship, The 2025 ICPC Latin America Championship",
+  "level": 22,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

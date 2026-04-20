@@ -1,0 +1,28 @@
+{
+  "id": 26840,
+  "title": "Podzielność",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ostatnio na lekcji informatyki Bajtuś uczył się o pozycyjnych systemach liczbowych. Dowiedział się m.in., że ludzie najczęściej korzystają z naturalnego dla nich dziesiątkowego systemu liczbowego, a komputery zapisują liczby w systemie dwójkowym. Jednak dowolna liczba naturalna B większa od 1 może stać się podstawą systemu liczbowego. W takim systemie dysponujemy cyframi 0, 1, 2, . . . , B−2, B−1, a k-cyfrowy zapis złożony z kolejnych cyfr c<sub>k−1</sub>c<sub>k−2</sub> . . . c<sub>2</sub>c<sub>1</sub>c<sub>0</sub> oznacza liczbę</p>\n<p style=\"text-align: center;\">c<sub>k−1</sub> · B<sup>k−1</sup> + c<sub>k−2</sub> · B<sup>k−2</sup> + . . . + c<sub>2</sub> · B<sup>2</sup> + c<sub>1</sub> · B + c<sub>0</sub>.</p>\n<p>Przykładowo, w trójkowym systemie pozycyjnym zapis 201 oznacza liczbę 2 · 3<sup>2</sup> + 0 · 3 + 1, czyli 19 w systemie dziesiętnym (w skrócie możemy to zapisać jako 201<sub>3</sub> = 19<sub>10</sub>).</p>\n<p>Bajtuś wybrał pewną liczbę B jako podstawę systemu liczbowego i napisał na karteczkach wszystkie możliwe cyfry w tym systemie, niektóre być może wielokrotnie: dla i = 0, 1, . . . , B −1 ma on ai karteczek z cyfrą i. Chciałby ułożyć z nich jak największą liczbę podzielną przez B − 1. Napisz program, który mu w tym pomoże. Szukana liczba może być bardzo duża, jednak Bajtusiowi wystarczy, że podasz tylko niektóre jej cyfry. Przyjmujemy, że zapis liczby dodatniej nie może zaczynać się od zer wiodących, a jedyny zapis zera to 0.</p>\n<p>Uwaga: Zakładamy, że w przypadku systemów pozycyjnych o podstawie większej niż 10, cyfry w zapisie liczby są rozdzielone np. odstępami, dzięki czemu nie ma problemu z podziałem liczby na poszczególne cyfry.</p>",
+  "input": "<p>W pierwszym wierszu standardowego wejścia znajdują się dwie liczby całkowite B oraz q (B ≥ 2, q ≥ 1) oddzielone pojedynczym odstępem, oznaczające podstawę systemu liczbowego i liczbę pytań o cyfry szukanej przez Bajtusia liczby.</p>\n<p>Drugi wiersz zawiera ciąg B liczb całkowitych a<sub>0</sub>, a<sub>1</sub>, . . . , a<sub>B−1</sub> (a<sub>i</sub> ≥ 1) pooddzielanych pojedynczymi odstępami, oznaczających liczby karteczek z kolejnymi cyframi, które są w posiadaniu Bajtusia.</p>\n<p>Następne q wierszy zawiera pytania: i-ty z tych wierszy zawiera jedną liczbę całkowitą k<sub>i</sub> (0 ≤ k<sub>i</sub> ≤ 10<sup>18</sup>).</p>",
+  "output": "<p>Na standardowe wyjście należy wypisać dokładnie q wierszy; i-ty z nich musi zawierać k<sub>i</sub>-tą cyfrę największej liczby w systemie o podstawie B podzielnej przez B − 1, którą może ułożyć Bajtuś, wykorzystując posiadane karteczki. Cyfry numerujemy według wzoru podanego powyżej: od prawej strony (czyli od najmniej znaczących cyfr) i począwszy od 0. Jeśli szukana liczba ma mniej niż k<sub>i</sub> cyfr, w i-tym wierszu należy wypisać −1.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 1 1\n0\n1\n2\n",
+      "output": "0\n2\n-1\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie do przykładu: Mając po jednej cyfrze 0, 1 i 2 w trójkowym systemie liczbowym, Bajtuś może ułożyć liczby 0<sub>3</sub> = 0<sub>10</sub>, 1<sub>3</sub> = 1<sub>10</sub>, 2<sub>3</sub> = 2<sub>10</sub>, 10<sub>3</sub> = 3<sub>10</sub>, 12<sub>3</sub> = 5<sub>10</sub>, 20<sub>3</sub> = 6<sub>10</sub>, 21<sub>3</sub> = 7<sub>10</sub>, 102<sub>3</sub> = 11<sub>10</sub>, 120<sub>3</sub> = 15<sub>10</sub>, 201<sub>3</sub> = 19<sub>10</sub> oraz 210<sub>3</sub> = 21<sub>10</sub>. Przez 2 podzielne są jedynie 0<sub>3</sub>, 2<sub>3</sub> oraz 20<sub>3</sub>, zatem szukana liczba to 20<sub>3</sub>.</p>",
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2016/2017, Stage 1",
+  "level": 16,
+  "tags": [
+    "math",
+    "greedy",
+    "number_theory",
+    "binary_search",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2
+}

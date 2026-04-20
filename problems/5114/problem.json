@@ -1,0 +1,22 @@
+{
+  "id": 5114,
+  "title": "Ascii Art",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Modern computers provide high quality graphics systems for games and other (less important) uses. But some computer users choose to forgo this image goodness and work with old fashioned monochrome text-only interfaces. For them Ascii art is the only option. As part of a project to implement Doom in Ascii, you have been asked to build an Ascii renderer.</p>\n<p>The input will be a list of triangles and viewing information (as shown in the input section below). For each triangle you will be given the X, Y and Z coordinates of each vertex (in no particular order), and a ‘colour’. As the term ‘colour’ has little meaning in Ascii, we will interpret colour as meaning ‘character’. Ie: A triangle provided with the ‘colour’ ‘E’ will be rendered as an area of letter E’s on the screen.</p>\n<p>The viewing information will include a ‘screen size’ – S – the number of rows and columns of characters that form an image (assume uniform letter spacing). For simplicity you will assume that an S by S block of characters is square - ie: that the ‘pixels’ are square. In practice the ‘images’ produced will probably look stretched vertically.</p>\n<p>The coordinate system is right handed. Standing on the positive Z axis, looking towards the origin, positive Y is upward and positive X is to your right. You will be given a camera position, from which the scene is viewed; a ‘look at’ point – the point in the exact centre of the field of view, and an ‘up’ vector – indicating which way is up (ie: how you are rotating your camera about the line of view). All images will be produced with up being generally in the positive Y direction. You will never be required to produce an image viewing straight up or down.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"float:left; height:180px; width:207px\"/><img alt=\"\" src=\"2.png\" style=\"float:right; height:96px; width:53px\"/>If S is 4 meaning that the screen is a 4 by 4 grid of characters, for example, vertex locations should be calculated as standard precision float values between 0 and 4. Using that measure, pixel centres occur at 0.125, 0.375, etc. A pixel should be ‘coloured’, if its centre falls inside or on the border of a triangle. See diagram. The final Ascii output for that image (with background as &lt;space&gt; and colour ‘E’). is as shown.</p>",
+  "input": "<p><img alt=\"\" src=\"3.png\" style=\"float:right; height:211px; width:234px\"/>You will be asked to render a number of scenes. Each scene starts with a line holding two integers: S and T. S is the screen size (0 &lt;= S &lt;= 40) and T is the number of triangles to be rendered. (0 &lt; T &lt;= 20). S and T values of 0 terminate input. Next are T lines of input, each holding a triangle definition as: a single character (colour – which will not be a white space character); and 9 floats being coordinates of the three vertices of the triangle in order X1 Y1 Z1 X2 Y2 Z2 X3 Y3 Z3. All input items on a line are separated by single spaces. Following is a line with three floats. The X Y Z coordinates of the camera position. Then a line with X Y Z coordinates of the ‘look at’ point. Finally a last line with perspective data – the angle of view (degrees) and the distance to the near and far viewing limits (see diagram).</p>",
+  "output": "<p>For each problem output a blank line; a line of S asterisks; the rendered image; and another line of S asterisks.</p>\n<p>Notes: You can assume that all triangles lie fully inside the viewing volume defined by the angle of view and the near and far viewing limits. Triangle display should respect the fact that near triangles obscure far triangles. Test data has been chosen to avoid exact alignment with pixel centres, so calculation to standard precision float levels should produce consistent results.</p>",
+  "samples": [
+    {
+      "input": "4 1\nE 0.625 0.85 1.001 0.26 0.29 1.001 0.825 0.075 1.001\n0.5 0.5 0\n0.5 0.5 1\n45 1 2\n0 0\n",
+      "output": "****\n  E \n  E \n EE \n    \n****\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"height:449px; width:708px\"/></p>",
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, New Zealand Programming Contest, NZPC 2010",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

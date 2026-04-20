@@ -1,0 +1,30 @@
+{
+  "id": 26698,
+  "title": "Zakłócenia",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>W komunikacji sieciowej bardzo istotne jest, by korzystać z protokołów sieciowych, które zapewnią, że dane wysłane przez nadawcę wiadomości będą zgodne z danymi uzyskanymi przez odbiorcę wiadomości. Niedopilnowanie tego może skutkować trudnościami w poprawnym odczytaniu wiadomości przez odbiorcę. Taka sytuacja spotkała Bajtka i Bitka. . .</p>\n<p>Bajtek chciał wysłać przez internet do Bitka ciąg n małych liter alfabetu angielskiego. W tym celu komputer Bajtka skonwertował każdą kolejną literę tego ciągu na jej ośmiobitową reprezentację w kodowaniu ASCII:<sup>∗</sup></p>\n<table class=\"table table-bordered\">\n<thead>\n<tr>\n<th>Litera</th>\n<th>Kod ASCII</th>\n<th>Litera</th>\n<th>Kod ASCII</th>\n<th>Litera</th>\n<th>Kod ASCII</th>\n<th>Litera</th>\n<th>Kod ASCII</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>a</code></td>\n<td><code>01100001</code></td>\n<td><code>h</code></td>\n<td><code>01101000</code></td>\n<td><code>o</code></td>\n<td><code>01101111</code></td>\n<td><code>u</code></td>\n<td><code>01110101</code></td>\n</tr>\n<tr>\n<td><code>b</code></td>\n<td><code>01100010</code></td>\n<td><code>i</code></td>\n<td><code>01101001</code></td>\n<td><code>p</code></td>\n<td><code>01110000</code></td>\n<td><code>v</code></td>\n<td><code>01110110</code></td>\n</tr>\n<tr>\n<td><code>c</code></td>\n<td><code>01100011</code></td>\n<td><code>j</code></td>\n<td><code>01101010</code></td>\n<td><code>q</code></td>\n<td><code>01110001</code></td>\n<td><code>w</code></td>\n<td><code>01110111</code></td>\n</tr>\n<tr>\n<td><code>d</code></td>\n<td><code>01100100</code></td>\n<td><code>k</code></td>\n<td><code>01101011</code></td>\n<td><code>r</code></td>\n<td><code>01110010</code></td>\n<td><code>x</code></td>\n<td><code>01111000</code></td>\n</tr>\n<tr>\n<td><code>e</code></td>\n<td><code>01100101</code></td>\n<td><code>l</code></td>\n<td><code>01101100</code></td>\n<td><code>s</code></td>\n<td><code>01110011</code></td>\n<td><code>y</code></td>\n<td><code>01111001</code></td>\n</tr>\n<tr>\n<td><code>f</code></td>\n<td><code>01100110</code></td>\n<td><code>m</code></td>\n<td><code>01101101</code></td>\n<td><code>t</code></td>\n<td><code>01110100</code></td>\n<td><code>z</code></td>\n<td><code>01111010</code></td>\n</tr>\n<tr>\n<td><code>g</code></td>\n<td><code>01100111</code></td>\n<td><code>n</code></td>\n<td><code>01101110</code></td>\n<td> </td>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>Nietrudno zauważyć, że i-ta mała litera alfabetu angielskiego (1 ≤ i ≤ 26) otrzymuje kod ASCII, który jest zapisem binarnym liczby 96 + i.</p>\n<p>Następnie komputer Bajtka skleił n ośmiobitowych ciągów w jeden długi ciąg bitów długości 8n – reprezentację n-znakowego ciągu Bajtka. W końcu komputer Bajtka wysłał tę reprezentację przez internet do komputera Bitka. Niestety, każdy bit został wysłany w oddzielnym pakiecie sieciowym, przez co bity mogły dojść do Bitka w zupełnie innej kolejności niż oryginalna!</p>\n<p>Przemieszany ciąg bitów dotarł wreszcie do Bitka. Oczywiście taki ciąg bitów nie musi obecnie reprezentować żadnego n-znakowego ciągu małych liter alfabetu angielskiego. Pomimo tego, że ciąg bitów nie zawiera żadnej dodatkowej informacji na temat ich poprawnej kolejności, Bitek postanowił się jednak nie poddawać. Uznał więc, że spróbuje odzyskać jakikolwiek ciąg n małych liter alfabetu angielskiego, którego reprezentacja w postaci ciągu 8n bitów mogła dojść do Bitka w takiej postaci. Pomóż mu i znajdź taki przykładowy ciąg – lub stwierdź, że taki nie istnieje!</p>\n<hr/>\n<p><sup>∗</sup>Więcej na temat kodowania ASCII możesz dowiedzieć się z Wikipedii: <a href=\"https://pl.wikipedia.org/wiki/ASCII\">https://pl.wikipedia.org/wiki/ASCII</a>. Jednakże podany tu opis w zupełności wystarczy do rozwiązania zadania.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajduje się jedna liczba całkowita n (1 ≤ n ≤ 10<sup>5</sup>).</p>\n<p>W drugim wierszu wejścia znajduje się słowo binarne długości 8n, które oznacza ciąg bitów otrzymany przez Bitka.</p>",
+  "output": "<p>Jeśli ciąg otrzymany przez Bitka nie odpowiada żadnemu słowu długości n złożonemu wyłącznie z małych liter alfabetu angielskiego, to na wyjściu powinno znaleźć się pojedyncze słowo <code>NIE</code>.</p>\n<p>W przeciwnym wypadku na wyjściu powinien znaleźć się dowolny ciąg znaków długości n złożony z małych liter alfabetu angielskiego, który po zakodowaniu przez komputer Bajtka i przesłaniu przez sieć do Bitka mógł dotrzeć jako ciąg bitów podany na wejściu. Jeśli istnieje wiele poprawnych ciągów znaków, możesz wypisać dowolny z nich.</p>",
+  "samples": [
+    {
+      "input": "2\n1100000011110111\n",
+      "output": "ao\n"
+    },
+    {
+      "input": "8\n1011111010101100011011011010001010100011111111110001001001011010\n",
+      "output": "potyczki\n"
+    },
+    {
+      "input": "1\n00011000\n",
+      "output": "NIE\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: Litera a w ASCII reprezentowana jest przez ciąg bitów <code>01100001</code>, zaś litera o reprezentowana jest przez <code>01101111</code>. Ciąg ao wysłany do Bitka został zatem przekonwertowany na ciąg <code>0110000101101111</code>. Bity wiadomości mogły więc przyjść do komputera Bitka w kolejności <code>1100000011110111</code>.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2021",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

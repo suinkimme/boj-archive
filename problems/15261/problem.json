@@ -1,0 +1,30 @@
+{
+  "id": 15261,
+  "title": "Donut Drone",
+  "time_limit": "8 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are building a simulation in which a drone explores a volatile torus-shaped planet. Technically, the drone is moving across a toroidal grid — a rectangular grid that wraps around circularly in both dimensions. The grid consists of cells organized into r rows numbered 1 through r top to bottom and c columns numbered 1 through c left to right. Each grid cell has a certain elevation — a positive integer.</p>\n<table class=\"table\" style=\"width:100%\">\n<tbody>\n<tr>\n<td style=\"text-align:center; width:50%\"><img alt=\"\" src=\"1.png\" style=\"height:105px; width:154px\"/></td>\n<td style=\"text-align:center; width:50%\"><img alt=\"\" src=\"2.png\" style=\"height:105px; width:267px\"/></td>\n</tr>\n<tr>\n<td style=\"text-align:center; width:50%\">A toroidal grid.</td>\n<td style=\"text-align:center; width:50%\">The paths in two <code>move</code> events in the second example input.</td>\n</tr>\n</tbody>\n</table>\n<p>The drone is initially located in the cell in the first row and first column. In each step the drone considers three cells: the cell directly to the right, the cell diagonally right-down and the cell diagonally right-up (wrapping around if necessary). The drone flies to the cell with the largest elevation of the three.</p>\n<p>Two types of events may happen during the simulation:</p>\n<ul>\n<li>“<code>move k</code>” — The drone makes k steps.</li>\n<li>“<code>change a b e</code>” — The elevation of the cell in row a column b changes to e.</li>\n</ul>\n<p>Find the drone’s position immediately after each <code>move</code> event. You may assume that at each point in time, no sequence of three circularly consecutive cells in the same column will have the same elevation. Hence, each drone step is well defined.</p>",
+  "input": "<p>The first line contains two integers r and c (3 ≤ r, c ≤ 2 000) — the number of rows and the number of columns of the toroidal grid. The i-th of the following r lines contains a sequence of c integers e<sub>i,1</sub>, e<sub>i,2</sub>, . . . , e<sub>i,c</sub> (1 ≤ e<sub>i,j</sub> ≤ 10<sup>9</sup>) — the initial elevations of cells in row i.</p>\n<p>The following line contains an integer m (1 ≤ m ≤ 5 000) — the number of events. The j-th of the following m lines contains the j-th event and is either of the form “<code>move k</code>” where k is an integer such that 1 ≤ k ≤ 10<sup>9</sup> or “<code>change a b e</code>” where a, b and e are integers such that 1 ≤ a ≤ r, 1 ≤ b ≤ c and 1 ≤ e ≤ 10<sup>9</sup>.</p>",
+  "output": "<p>Output w lines where w is the number of <code>move</code> events in the input — the j-th line should contain the drone’s position (row and column numbers) after the j-th moveevent in the input.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2 9 3\n3 5 4 8\n4 3 2 7\n5 8 1 6\n4\nmove 1\nmove 1\nchange 1 4 100\nmove 1\n",
+      "output": "4 2\n1 3\n1 4\n"
+    },
+    {
+      "input": "3 4\n10 20 30 40\n50 60 70 80\n90 93 95 99\n3\nmove 4\nchange 2 1 100\nmove 4\n",
+      "output": "3 1\n2 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2017, Contest, Open Cup, 2017/2018 Season, Stage 8: Grand Prix of Europe",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "sparse_table"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 4.217400074005127
+}

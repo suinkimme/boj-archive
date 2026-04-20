@@ -1,0 +1,32 @@
+{
+  "id": 35034,
+  "title": "생성 문자열",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>알파벳 소문자와 대문자로 구성된 $N(\\leq 26)$개의 문자열 $S_1,S_2,\\dots ,S_N$이 주어진다. 각 문자열 $S_i$는 $1$번부터 $N$번까지의 번호가 매겨져 있으며, 알파벳 대문자 ’A’는 $S_1$, ’B’는 $S_2$, $\\dots$, $k$번째 알파벳 대문자는 $S_k$에 대응된다.</p>\n<p>각 문자열 $S_i$를 바탕으로 문자열 $T_i$는 다음 규칙을 $S_i$의 첫 번째 문자부터 마지막 문자까지 순서대로 적용하여 생성된다.</p>\n<ul>\n<li>소문자인 경우: 해당 문자를 그대로 $T_i$에 추가한다.</li>\n<li>대문자인 경우: 해당 대문자가 $k$번째 알파벳 대문자라면, $T_i$에 문자열 $T_k$를 추가한다.</li>\n</ul>\n<p>이 때 생성된 문자열 내부에 다시 대문자가 포함되어 있다면 동일한 규칙을 적용하여 문자열을 다시 생성한다. 이 과정에서 $T_i$의 길이는 <strong>무한히 증가</strong>할 수 있다.</p>\n<p>예를 들어 $N=2$이고 $S_1=$ ”goodB”이고 $S_2=$ ”byeAbyeB”인 경우를 고려하자.</p>\n<ul>\n<li>$S_1$의 ’B’는 $T_2$로 대체되므로 $T_1$ = ”good” + $T_2$이다.</li>\n<li>$S_2$의 ’A’는 $T_1$으로, ’B’는 $T_2$로 대체되므로 $T_2$ = ”bye” + $T_1$ + ”bye” + $T_2$이다.</li>\n<li>이를 결합하면 $T_1$은 goodbyegoodbyeg..., $T_2$는 byegoodbyegoodb...와 같이 무한히 긴 문자열이 생성된다.</li>\n</ul>\n<p>$Q$개의 순서쌍 $(x_j,L_j,R_j)$이 주어진다. 각 순서쌍에 대하여 $T_{x_j}$의 $L_j$번째 문자부터 $R_j$번째 문자까지의 부분 문자열을 구하는 프로그램을 작성하라.</p>",
+  "input": "<p>첫 번째 줄에 문자열의 개수 $N$와 쿼리의 개수 $Q$가 주어진다.</p>\n<p>이어지는 $N$개의 줄 중 $i$번째 줄에는 문자열 $S_i$가 주어진다.</p>\n<p>이어지는 $Q$개의 줄 중 $j$번째 줄에는 각 쿼리를 나타내는 세 정수 $x_j$, $L_j$, $R_j$이 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>$Q$개의 줄에 걸쳐 답을 출력한다. 이 중 $j$번째 줄에는 $T_{x_j}$의 $L_j$번째 문자부터 $R_j$번째 문자까지, 총 $R_j-L_j+1$개의 문자를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 4\ngoodB\nbyeAbyeB\nhelloandA\nloadingDdone\n1 1 15\n2 1 15\n3 1 25\n4 15 38\n",
+      "output": "goodbyegoodbyeg\nbyegoodbyegoodb\nhelloandgoodbyegoodbyegoo\nloadingloadingloadingloa\n"
+    },
+    {
+      "input": "3 5\ncat\nmango\nitsaAnotaB\n3 1 16\n3 5 7\n3 1 1\n3 3 3\n2 1 5\n",
+      "output": "itsacatnotamango\ncat\ni\ns\nmango\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, Good Bye, BOJ, Good Bye, BOJ 2025!, kyo20111, cki86201, silverwolf",
+  "level": 21,
+  "tags": [
+    "implementation",
+    "graphs",
+    "binary_search",
+    "prefix_sum",
+    "functional_graph"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 2
+}

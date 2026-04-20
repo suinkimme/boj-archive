@@ -1,0 +1,30 @@
+{
+  "id": 21163,
+  "title": "LogDB",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A LogDB database is filled with facts. A fact is a name with a body consisting of a parenthesized list of names. This is  similar to a function call: </p>\n<p>\\[ fact1(arg1, arg2 ,arg\\_3,4,4) thing(p1,arg2,p3). \\]</p>\n<p>$fact1$ is the name of the fact and the list of names in the body are the arguments of the fact. $thing$ is another fact.</p>\n<p>The names in the list are separated by commas and optional whitespace. There will be at least one name in the list.</p>\n<p>Names consist of alphanumeric characters (a-z,A-Z,0-9) plus '$\\_$'. However, the name of a fact and the names in the body cannot start with an '$\\_$'.</p>\n<p>Names, parentheses, and commas may be preceded and followed by whitespace. However a fact or query cannot be split across lines.</p>\n<p>Facts with different numbers of arguments are different facts.</p>\n<p>A fact may appear multiple times in the database.</p>\n<p>Queries are like facts except the argument list can contain variables. Variables are names that start with '$\\_$'.  </p>\n<p>A query searches the database for facts with the same name as the query that have the same number of arguments as the query and where the names in the fact body match the names in the query body in their respective positions.</p>\n<p>A variable consisting of only '$\\_$' is special and will match any name.</p>\n<p>A variable other than '$\\_$' will also match any name but if that variable appears more than once in a query, the names in the fact must be the same.</p>\n<p>A query: \\[ fact1(arg1,\\_,\\_,\\_check,\\_check) \\]</p>\n<p>will match $fact1(arg1, arg2 ,arg\\_3,4,4)$.</p>\n<p>Variables are only defined in the query they appear in. They are not necessarily related if they are in different queries.</p>",
+  "input": "<p>The input consists of two sections: facts and queries. Judged data has no syntax errors.</p>\n<p>The fact section consists of a series of lines of at most $200$ characters. That section is terminated by a blank line. Each line consists of facts which may (or may not) be separated by whitespace. The fact section will consist of no more than $200$ lines.</p>\n<p>The query section consists of a series of lines of at most $200$ characters. That section is terminated by end-of-file.  Each line is a query. The query section will consist of no more than $200$ lines.</p>",
+  "output": "<p>For each query print the number of facts returned by the query as an integer with no leading or trailing whitespace and no unnecessary leading zeros. If a matching fact appears multiple times in the database, count each occurrence.</p>",
+  "samples": [
+    {
+      "input": "test(arg1, arg2,arg3) test(1,2,3,not4)5(five) five_seven(john_smith,10_17_57)\nfoo(1,2,3,4) foo(5,6,7,8) foo(1,2,7,8)arc(80) foo(abc,xyz)\nbar(1,2) bar (7,8) zoom(8,7)\narc(80) nofoo(alpha,d1,d2,d1,d4,d1)\nfoo(bar,spam) foo(more,less)\n\ntest(_,_,_,_)\narc(80)\n  foo(bar,_)\n  foo(_,spam)\n  foo(_,less)\n  nofoo(_,_p1,_,_p1,_,_p1)\n  foo(bar,less)\nfoo(_,_,_,_)\nfoo(_,_,_30,_40) \nfoo(_,_,_30,_40)\nfoo(_,_,_30,_40)\nfoo(_x,_,_30,_40)\nfoo(_,_,_30,_40)\n",
+      "output": "1\n2\n1\n1\n1\n1\n0\n3\n3\n3\n3\n3\n3\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North Central North America Regional, NCNA 2020, ICPC, Regionals, North America, Southern California Regional, 2020 Southern California Regional",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "bruteforcing",
+    "set",
+    "hash_set",
+    "parsing"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.2856999635696411
+}

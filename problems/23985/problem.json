@@ -1,0 +1,29 @@
+{
+  "id": 23985,
+  "title": "Cave Escape",
+  "time_limit": "120 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Mr. Raven is stuck in a cave represented by a matrix of <b>N</b> rows and <b>M</b> columns, where rows are numbered from 1 to <b>N</b> from top to bottom, and columns are numbered from 1 to <b>M</b> from left to right. The cell at the i-th row and the j-th column is denoted by (i, j). Mr. Raven is currently at the cell (<b>S<sub>R</sub></b>, <b>S<sub>C</sub></b>), and the exit of the cave is located at the cell (<b>T<sub>R</sub></b>, <b>T<sub>C</sub></b>).</p>\n<p>Some cells of the cave may contain obstacles. Mr. Raven cannot step into a cell that has an obstacle. Other cells may contain traps. The first time that Mr. Raven enters a cell with a trap, he must spend a number of energy points equal to the strength of the trap. If he has fewer energy points than needed, he cannot enter the cell. Moreover, some other cells may contain potions. The first time that Mr. Raven enters a cell with a potion, he gains energy points equal to the strength of the potion.</p>\n<p>Mr. Raven initially has <b>E</b> energy points. He can move between cells that share an edge (not just a corner). On the exit cell, Mr. Raven can choose not to exit the cave and continue to explore the cave if he wants to. Can you help him find the maximum number of energy points he can have when he exits the cave, if it is possible to do so?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case consists of one line with seven integers <b>N</b>, <b>M</b>, <b>E</b>, <b>S<sub>R</sub></b>, <b>S<sub>C</sub></b>, <b>T<sub>R</sub></b> and <b>T<sub>C</sub></b> as described above. The i-th of the next <b>N</b> lines describes the i-th row of the cave. Each line consists of <b>M</b> integers <b>V<sub>ij</sub></b>; the j-th of these represents the cell in the j-th column of the i-th row. Each <b>V<sub>ij</sub></b> can be one of the following</p>\n<ul>\n<li>0: represents an empty cell.</li>\n<li>-100000: represents a cell with an obstacle.</li>\n<li>an integer between -99999 and -1 (both inclusive): represents a trap with strength -<b>V<sub>ij</sub></b>.</li>\n<li>an integer between 1 and 99999 (both inclusive): represents a potion with strength <b>V<sub>ij</sub></b>.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the maximum energy points that Mr. Raven can have when he reaches the exit of the cave. If it is not possible for Mr. Raven to reach the exit, output <code>-1</code>.</p>",
+  "samples": [
+    {
+      "input": "2\n4 4 100 1 1 4 4\n0 0 0 0\n0 0 0 0\n0 0 0 -100000\n0 0 -100000 0\n8 8 250 7 1 1 7\n-100000 -100000 -100000 -100000 -100000 -100000 0 -100000\n-100000 0 -100000 0 -400 0 0 -100000\n-100000 100 -300 0 -100000 -300 -100000 -100000\n-100000 0 -100000 500 -100000 250 0 -100000\n-100000 -200 -100000 -100000 -100000 -100000 -100 -100000\n-100000 0 -100000 0 0 50 50 -100000\n0 0 -100 0 -100000 50 -100000 -100000\n-100000 -100000 -100000 -100000 -100000 -100000 -100000 -100000\n",
+      "output": "Case #1: -1\nCase #2: 250\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, it is not possible for Mr. Raven to reach the exit.</p>\n<p>In Sample Case #2, the cave is as depicted in the following image where</p>\n<ul>\n<li>A cell with a positive integer x represents a potion with strength x.</li>\n<li>A cell with a negative integer y represents a trap with strength -y.</li>\n<li>Mr. Raven's initial position is in the cell with \"You are here\" text.</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 283px; height: 280px;\"/></p>\n<p>In this case, one of the optimal ways to reach the exit with maximum energy points is to</p>\n<ul>\n<li>Start with 250 energy points.</li>\n<li>Go to and destroy the trap at the cell (7, 3). 150 energy points remaining.</li>\n<li>Collect all three potions located at positions (6, 6), (6, 7) and (7, 6). 300 energy points remaining.</li>\n<li>Go to an destroy the trap at the cell (5, 7). 200 energy points remaining.</li>\n<li>Collect the potion at the cell (4, 6). 450 energy points remaining.</li>\n<li>Go to and destroy the trap at the cell (5, 2). 250 energy points remaining.</li>\n<li>Collect the potion at the cell (3, 2). 350 energy points remaining.</li>\n<li>Go to and destroy the trap at the cell (3, 3). 50 energy points remaining.</li>\n<li>Collect the potion at the cell (4, 4). 550 energy points remaining.</li>\n<li>Go to and destroy the trap at the cell (3, 6) and exit with 250 energy points remaining.</li>\n</ul>\n<p>Note that this case will not appear in the Small dataset.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2018, Round G",
+  "level": 17,
+  "tags": [
+    "bitmask",
+    "bruteforcing",
+    "dp",
+    "dp_bitfield",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.5999999046325684
+}

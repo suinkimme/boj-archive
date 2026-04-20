@@ -1,0 +1,34 @@
+{
+  "id": 17642,
+  "title": "Dynamic Diameter",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given a weighted undirected tree on n vertices and a list of q updates. Each update changes the weight of one edge. The task is to output the diameter of the tree after each update.</p>\n<p>(The distance between two vertices is the sum of the weights on the unique simple path that connects them. The diameter is the largest of all those distances.)</p>",
+  "input": "<p>The first line contains three space-separated integers n, q and w (2 ≤ n ≤ 100, 000, 1 ≤ q ≤ 100, 000, 1 ≤ w ≤ 20, 000, 000, 000, 000) – the number of vertices in the tree, the number of updates and the limit on the weights of edges. The vertices are numbered 1 through n.</p>\n<p>Next, n − 1 lines describing the initial tree follow. The i-th of these lines contains three space-separated integers a<sub>i</sub>, b<sub>i</sub>, c<sub>i</sub> (1 ≤ a<sub>i</sub>, b<sub>i</sub> ≤ n, 0 ≤ c<sub>i</sub> &lt; w) meaning that initially, there is an edge between vertices a<sub>i</sub> and b<sub>i</sub> with weight c<sub>i</sub>. It is guaranteed that these n − 1 lines describe a tree.</p>\n<p>Finally, q lines describing queries follow. The j-th of these lines contains two space-separated integers d<sub>j</sub>, e<sub>j</sub> (0 ≤ d<sub>j</sub> &lt; n − 1, 0 ≤ e<sub>j</sub> &lt; w). These two integers are then transformed according to the following scheme:</p>\n<ul>\n<li>d'<sub>j</sub> = (d<sub>j</sub> + <em>last</em>) mod (n − 1)</li>\n<li>e'<sub>j</sub> = (e<sub>j</sub> + <em>last</em>) mod w</li>\n</ul>\n<p>where <em>last</em> is the result of the last query (initially <em>last</em> = 0). Tuple (d'<sub>j</sub> , e'<sub>j</sub>) represents a query which takes the d'<sub>j</sub> + 1-th edge from the input and sets its weight to e'<sub>j</sub>.</p>",
+  "output": "<p>Output q lines. For each i, line i should contain the diameter of the tree after the i-th update.</p>",
+  "samples": [
+    {
+      "input": "4 3 2000\n1 2 100\n2 3 1000\n2 4 1000\n2 1030\n1 1020\n1 890\n",
+      "output": "2030\n2080\n2050\n"
+    },
+    {
+      "input": "10 10 10000\n1 9 1241\n5 6 1630\n10 5 1630\n2 6 853\n10 1 511\n5 3 760\n8 3 1076\n4 10 1483\n7 10 40\n8 2051\n5 6294\n5 4168\n7 1861\n0 5244\n6 5156\n3 3001\n8 5267\n5 3102\n8 3623\n",
+      "output": "6164\n7812\n8385\n6737\n6738\n7205\n6641\n7062\n6581\n5155\n"
+    }
+  ],
+  "hint": "<p>The first sample is depicted in the figure below. The left-most picture shows the initial state of the graph. Each following picture depicts the situation after an update. The weight of the updated edge is painted green, and the diameter is red.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 564px; height: 193px;\"/></p>\n<p>The first query changes the weight of the 3rd edge, i.e. {2, 4}, to 1030. The largest distance between any pair of vertices is 2030 – the distance between 3 and 4.</p>\n<p>As the answer is 2030, the second query is</p>\n<p style=\"text-align: center;\">d'<sub>2</sub> = (1 + 2030) mod 3 = 0</p>\n<p style=\"text-align: center;\">e'<sub>2</sub> = (1020 + 2030) mod 2000 = 1050</p>\n<p>Hence the weight of the edge {1, 2} is changed to 1050. This causes the pair {1, 4} to be the pair with the greatest distance, namely 2080.</p>\n<p>The third query is decoded as</p>\n<p style=\"text-align: center;\">d'<sub>3</sub> = (1 + 2080) mod 3 = 2</p>\n<p style=\"text-align: center;\">e'<sub>3</sub> = (890 + 2080) mod 2000 = 970</p>\n<p>As the weight of the edge {2, 4} decreases to 970, the most distant pair is suddenly {1, 3} with 2050.</p>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2019, Day 1",
+  "level": 25,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "divide_and_conquer",
+    "lazyprop",
+    "euler_tour_technique",
+    "centroid_decomposition"
+  ],
+  "accepted_user_count": 116,
+  "submission_count": null,
+  "average_tries": 3.0344998836517334
+}

@@ -1,0 +1,33 @@
+{
+  "id": 21812,
+  "title": "Routing Schemes",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Consider a network of $N$ ($2\\le N\\le 100$) nodes labeled $1\\ldots N$. Each node is designated as a sender, a receiver, or neither. The number of senders, $S$, is equal to the number of receivers ($S\\ge 1$).</p>\n<p>The connections between the nodes in this network can be described by a list of directed edges each of the form $i\\to j$, meaning that node $i$ may route to node $j$. Interestingly, all of these edges satisfy the property that $i&lt;j$, aside from $K$ that satisfy $i&gt;j$ ($0\\le K\\le 2$). There are no self-loops (edges of the form $i\\to i$).</p>\n<p>The description of a \"routing scheme\" consists of a set of $S$ directed paths from senders to receivers such that no two of these paths share an endpoint. That is, the paths connect distinct senders to distinct receivers. A path from a sender $s$ to a receiver $r$ can be described as a sequence of nodes</p>\n<div class=\"math\">$$s=v_0\\to v_1 \\to v_2\\to \\cdots \\to v_e=r$$</div>\n<p>such that the directed edges $v_i\\to v_{i+1}$ exist for all $0\\le i&lt;e$. A node may appear more than once within the same path.</p>\n<p>Count the number of distinct routing schemes such that every directed edge is traversed exactly once. Since the answer may be very large, report it modulo $10^9+7$. It is guaranteed that there is at least one routing scheme satisfying these constraints.</p>\n<p>Each input contains $T$ ($1\\le T\\le 20$) test cases that should be solved independently. It is guaranteed that the sum of $N^2$ over all test cases does not exceed $2\\cdot 10^4$.</p>",
+  "input": "<p>The first line of the input contains $T$, the number of test cases.</p>\n<p>The first line of each test case contains the integers $N$ and $K$. Note that $S$ is not explicitly given within the input.</p>\n<p>The second line of each test case contains a string of length $N$. The $i$-th character of the string is equal to S if the $i$-th node is a sender, R if the $i$-th node is a receiver, or . if the $i$-th node is neither. The number of Rs in this string is equal to the number of Ss, and there is at least one S.</p>\n<p>The next $N$ lines of each test case each contain a bit string of $N$ zeros and ones. The $j$-th bit of the $i$-th line is equal to $1$ if there exists a directed edge from node $i$ to node $j$, and $0$ otherwise. As there are no self-loops, the main diagonal of the matrix consists solely of zeros. Furthermore, there are exactly $K$ ones below the main diagonal.</p>\n<p>Consecutive test cases are separated by newlines for readability.</p>",
+  "output": "<p>For each test case, the number of routing schemes such that every edge is traversed exactly once, modulo $10^9+7$. It is guaranteed that there is at least one valid routing scheme for each test case.</p>",
+  "samples": [
+    {
+      "input": "2\n\n8 0\nSS....RR\n00100000\n00100000\n00011000\n00000100\n00000100\n00000011\n00000000\n00000000\n\n13 0\nSSS.RRRSS.RR.\n0001000000000\n0001000000000\n0001000000000\n0000111000000\n0000000000000\n0000000000000\n0000000000000\n0000000001000\n0000000001000\n0000000000110\n0000000000000\n0000000000000\n0000000000000\n",
+      "output": "4\n12\n"
+    },
+    {
+      "input": "2\n\n5 1\nSS.RR\n00101\n00100\n10010\n00000\n00000\n\n6 2\nS....R\n001000\n000100\n010001\n000010\n001000\n000000\n",
+      "output": "3\n1\n"
+    },
+    {
+      "input": "5\n\n3 2\nRS.\n010\n101\n100\n\n4 2\n.R.S\n0100\n0010\n1000\n0100\n\n4 2\n.SR.\n0000\n0011\n0100\n0010\n\n5 2\n.SSRR\n01000\n10101\n01010\n00000\n00000\n\n6 2\nSS..RR\n001010\n000010\n000010\n000010\n100101\n000000\n",
+      "output": "2\n1\n2\n6\n24\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2020-2021 Season, USACO 2021 US Open Contest, Platinum",
+  "level": 23,
+  "tags": [
+    "case_work",
+    "dp"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.166700005531311
+}

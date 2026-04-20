@@ -1,0 +1,22 @@
+{
+  "id": 6886,
+  "title": "Move that Mouse AGAIN",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You probably remember from Stage $1$ that computers have a mouse and sometimes, if you really have to, you have a bunch of windows that you can click on.</p>\n<p>In particular, you will have a screen which has $R$ $(1 \\le R \\le 10\\,000)$ rows and $C$ $(1 \\le C \\le 10\\,000)$ columns. You have $n$ $(1 \\le n \\le 50\\,000)$ rectangular windows, defined by the \"top-left\" coordinates $(x_l, y_t)$ and \"bottom-right\" coordinates $(x_r, y_b)$. Note that you can assume that $1 \\le x_l &lt; x_r \\le C$ and $1 \\le y_b &lt; y_t \\le R$ (thus, you don't have empty windows).</p>\n<p>It is worth noting that a window includes all points on its borders: that is, the window defined by $(x_l, y_t)$ and $(x_r, y_b)$ includes exactly the points $(x, y)$ such that $x_l \\le x \\le x_r$ and $y_b \\le y \\le y_t$.</p>\n<p>If two windows overlap, the one which is on top of the other window will be listed later in the sequence (not necessarily immediately after, however). Here comes the mouse part.</p>\n<p>You also have a mouse that can click on windows. Initially, the mouse is at position $(1, 1)$ (the bottom-left corner of the screen). The mouse will then be told to move to a particular position (say $(x, y)$, where $1 \\le x \\le C$ and $1 \\le y \\le R$) and click. When the mouse clicks, the window which is visible at that position moves to the top (that is, the entire window becomes visible, possibly hiding some other windows). There will be $m$ $(1 \\le m \\le 50\\,000)$ such mouse clicks.</p>\n<p>Your job is to indicate which of the $n$ windows is \"in focus\" (i.e., most recently clicked on) after each mouse move.</p>",
+  "input": "<p>The first line of input consists of an integer $C$, the number of columns. The second line of input consists of an integer $R$, the number of rows. The third line of input consists of the number $n$, the number of windows. On each of the next $n$ lines, there are four integers $x_l$ followed by $y_t$ followed by $x_r$ followed by $y_b$, indicating the \"top-left\" and \"bottom-right\" coordinates of this window. (These windows are numbered from $1$ to $n$). On the next line is the integer $m$. On each of the next $m$ lines will be two integers, $x$ followed by $y$, indicating the new position of the mouse.</p>",
+  "output": "<p>The output is $m$ lines long, each line containing an integer $v_i$ such that $0 \\le v_i \\le n$. If line $i$ contains the integer $v_i$ $(v_i &gt; 0)$, that indicates that after the $i$th mouse move, the window $v_i$ was just clicked on (and has moved to the top). If, instead, $v_i = 0$, then there was no window at that position.</p>",
+  "samples": [
+    {
+      "input": "200\n100\n3\n50 50 80 20\n70 60 180 10\n10 90 100 40\n3\n60 20\n150 90\n150 30\n",
+      "output": "1\n0\n2\n"
+    }
+  ],
+  "hint": "<p>The screen has width $200$ and height $100$. There are three windows on the screen, and initially, we have the following configuration:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>After the mouse clicks at $(60, 20)$, we have:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></p>\n<p>Since there is no window at position $(150, 90)$, $0$ is outputted. Once we click at position $(150, 30)$, that moves window $2$ into focus, to get the following picture.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\"/></p>",
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2005, CCO 2005",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 4
+}

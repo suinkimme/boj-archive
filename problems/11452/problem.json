@@ -1,0 +1,26 @@
+{
+  "id": 11452,
+  "title": "Risk",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Good old friends Vladimir and Barack like to play games together. One of their favourites is the strategy board game Risk, where players occupy certain regions of the world, and are to conquer all regions of specific continents. Once in a while, Vladimir challenges the little boys in the neighbourhood for a game. This time, he asked Mark, who immediately said yes, excited that he was invited to play with one of the big boys.</p>\n<p>Only later, Mark realized that Risk is a serious game and that Vladimir is a much more experienced player than he is. In order to have at least a little chance, Mark ask you for your advice on a specific aspect of the game. In particular, can you tell him what the probability is that Mark, occupying a certain region with M armies, wins the battle if he decides to attack an adjacent region occupied by Vladimir with N armies?</p>\n<p>Rules for a battle</p>\n<p>We consider the standard rules of Risk, with one exception: the dice used do not necessarily have six sides. The dice may have any number of sides D ≥ 1, all sides having different values and equal probability.</p>\n<p>During a battle, the two players take turns in rolling the dice, until one of them has won. Suppose that the attacking player has A armies left in the region from which he is attacking, and that the defender has B armies in his region. Then first, the attacker rolls min{3, A − 1} dice. That is, in principle, he uses three dice. However, if A &lt; 4, he uses A − 1 dice, one die for each army he has minus 1, because one army must remain in the region and is not involved in the attack. Now, if B = 1, the defender rolls one die. If B ≥ 2, the defender chooses to roll one or two dice, so as to optimize his probability to win the battle.</p>\n<p>Each player’s highest die is compared, as is their second-highest die (if both players roll more than one). In each comparison, the highest number wins. The defender wins in the event of a tie. With each dice comparison, the loser removes one army from his region from the game board. Any extra dice are disregarded and do not affect the results.</p>\n<p>For example, suppose that the attackers rolls three dice, yielding 4, 2 and 1, and that the defender rolls two dice, yielding 3 and 2. Then the first comparison (between 4 and 3) is won by the attacker, the second comparison (between 2 and 2) is won by the defender. As a result, both players lose one army. If, as another example, the attacker has two dice showing value 6, then it may be wise for the defender to roll only one die, so he loses at most one army.</p>\n<p>The battle is over, when either the attacker has only one army left (the defender has won) or the defender has no more army left (the attacker has won).</p>",
+  "input": "<p>The input starts with a line containing an integer T, the number of test cases. Then for each test case:</p>\n<ul>\n<li>One line containing an integer D satisfying 1 ≤ D ≤ 20: the number of sides of the dice in the game.</li>\n<li>One line containing two space-separated integers M and N satisfying 2 ≤ M ≤ 100 and 1 ≤ N ≤ 100: the number of armies at Mark’s region, and the number of armies at Vladimir’s region, respectively.</li>\n</ul>",
+  "output": "<p>For each test case, output one line with a single real value: the probability that Mark wins the battle. An absolute precision error of 0.0001 is allowed. Scientific notation is also allowed.</p>",
+  "samples": [
+    {
+      "input": "3\n6\n10 10\n2\n7 3\n15\n85 98\n",
+      "output": "0.363205\n0.322393\n0.734746\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2015 Preliminaries",
+  "level": 18,
+  "tags": [
+    "math",
+    "dp",
+    "probability"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.5556000471115112
+}

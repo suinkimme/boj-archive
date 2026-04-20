@@ -1,0 +1,31 @@
+{
+  "id": 15716,
+  "title": "딸기당근수박참외메론게임",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<blockquote>\n<p>디디가 좋아하는 랜덤게임 ~! 무슨 게임~! 게임 스타트 !!</p>\n<p>딸기당근수박참외메론게임♪</p>\n</blockquote>\n<p>디디대학에서의 딸기당근수박참외메론게임의 룰은 다음과 같은 규칙으로 진행된다.</p>\n<ol>\n<li>게임에 쓰일 단어의 수 n과 박자 수 b를 정한다. 단, 박자수는 단어의 수보다 크거나 같아야 하며, 같은 단어가 여러 번 들어갈 수 있다.</li>\n<li>앞서 정한 n만큼, 사용할 단어(S<sub>1</sub>, S<sub>2</sub>, ..., S<sub>n</sub>)를 정한다.</li>\n<li>각 i(1, 2, ...) 차례마다 단어들을 아래 코드와 같은 결과로 말해야 한다.</li>\n</ol>\n<pre class=\"brush:c++; toolbar:false;\">\nif(b == 1) printf(\"%s\", S[1]);\nelse {\n    if ((i - 1) % (2 * (b - 1)) + 1 &lt; b) {\n        for (int j = 1; j &lt;= (i - 1) % (b - 1) + 1; j++) printf(\"%s \", S[(j - 1) % n + 1]);\n    }\n    else {\n        for (int j = 1; j &lt;= b - ((i - 1) % (b - 1)); j++)\n            printf(\"%s \", S[(j - 1) % n + 1]);\n    }\n}\n</pre>\n<p>단어 집합 S는 번호가 1부터 시작됨에 유의하라.</p>\n<p>예를 들어, n은 3, b는 5, 집합 S = {king, god, gd}일 때,</p>\n<ul>\n<li>king</li>\n<li>king god</li>\n<li>king god gd</li>\n<li>king god gd king</li>\n<li>king god gd king god</li>\n<li>king god gd king</li>\n<li>king god gd</li>\n<li>king god</li>\n<li>king</li>\n<li>king god</li>\n<li>...</li>\n</ul>\n<p>각 차례마다 위와 같은 순서대로 말해야한다.</p>\n<p>디디는 문득 게임내에서 임의의 단어 k가 외쳐진 횟수가 X번째가 될 때, 그 차례가 몇번 째 인지 궁금해지기 시작했다. 그런 디디의 궁금증을 해결해 줄 프로그램을 작성하라.</p>",
+  "input": "<p>첫째 줄에 n(1 ≤ n ≤ 2 × 10<sup>5</sup>)과 b(n ≤ b ≤ 10<sup>12</sup>)가 주어진다.</p>\n<p>둘째 줄에는 임의의 단어 k와 X(1 ≤ X ≤ 10<sup>12</sup>)가 주어진다.</p>\n<p>셋째 줄에는 게임에 쓰일 단어 n개가 공백으로 구분되어 주어진다. 모든 단어는 알파벳 소문자로 구성되어 있으며, 각 단어의 길이는 10을 넘지 않는다.</p>",
+  "output": "<p>문제의 정답을 출력하라. 정답이 항상 존재하는 경우만 입력으로 주어지는 것이 보장된다.</p>",
+  "samples": [
+    {
+      "input": "3 5\nking 8\nking god gd\n",
+      "output": "6\n"
+    },
+    {
+      "input": "3 5\nking 8\nking god king\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 네블컵, 제1회 네블컵, rdd6584",
+  "level": 20,
+  "tags": [
+    "math",
+    "implementation",
+    "binary_search",
+    "parametric_search"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 7.31820011138916
+}

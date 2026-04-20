@@ -1,0 +1,22 @@
+{
+  "id": 9381,
+  "title": "deltree",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You have just run out of disk space and decided to delete some of your directories. Rationally, you will first have an exploration of what you have in your file system. And more rationally, you will do this exploration through a command line interface. The interface used in this problem is called “MSDOS--”, since it is something like MSDOS with fewer features. The commands of MSDOS-- are as follows:</p>\n<ul>\n<li>cd &lt;directory&gt;<br/>\n\tAssuming &lt;directory&gt; to be the name of a relative descendant of current directory, this command changes the current directory to &lt;directory&gt;. For example, when the current directory is “\\A\\B\\” and one of its descendants is “C\\D”, the execution of “cd C\\D” will change the current directory to “\\A\\B\\C\\D\\”.</li>\n<li>cd \\<br/>\n\tThis command changes the current directory to “\\” (the root of the file system). For example, when the current directory is “\\A\\B\\”, the execution of “cd \\” will change the current directory to “\\”.</li>\n<li>cd ..<br/>\n\tAssuming the current directory to be anything except “\\”, this command changes the current directory to its parent directory. For example, when the current directory is “\\A\\B\\”, the execution of “cd ..” will change the current directory to “\\A\\”.</li>\n<li>cd \\&lt;directory&gt;<br/>\n\tThis command is equivalent to the execution of the following two commands:<br/>\n\tcd \\<br/>\n\tcd &lt;directory&gt;</li>\n<li>dir<br/>\n\tThis command lists the name of files and directories directly in the current directory, each on a separate line. These file/directory names are made up of (lowercase and uppercase) letters, digits, and dots (“.”). Directory names precede the file names in the list, and each one, comes alone in a single line. On the contrary, each file name is accompanied by its size separated by a space. A sample output of “dir” is as follows:<br/>\n\tHW1<br/>\n\tHW1.old<br/>\n\tSyllab.pdf 10000<br/>\n\tnotes.txt 3241</li>\n<li>deltree &lt;directory&gt;<br/>\n\tAssuming &lt;directory&gt; to be the name of a relative descendant of current directory, this command tries to delete &lt;directory&gt; and all its descendant files and subdirectories (and thus, freeing that much of space). For example, when the current directory is “\\A\\B\\” and one of its descendants is “C\\D”, the execution of “deltree C\\D” will try to delete directory “\\A\\B\\C\\D\\” and all of its descendant files and directories.</li>\n<li>deltree \\&lt;directory&gt;<br/>\n\tThis command is equivalent to the execution of the following two commands:<br/>\n\tcd \\<br/>\n\tdeltree &lt;directory&gt;</li>\n<li>exit<br/>\n\tThis command terminates the command line interface. </li>\n</ul>\n<p>A “scenario” is an exploration (a consistent series of “cd” and “dir” commands and their results, starting from root) followed by exactly one “deltree” command. Given a scenario, you are to find the maximum space guaranteed to be freed by executing its “deltree” command. </p>",
+  "input": "<p>Input contains multiple independent scenarios. There is an empty line after each scenario. The input ends with an “exit” command. There is a “&gt;” sign before each command in the input (with no spaces in between). The length of each file name does not exceed 50. You may assume that the input is correct.</p>",
+  "output": "<p>Write the result of the i<sup>th</sup> scenario as a single integer on the i<sup>th</sup> line of output.</p>",
+  "samples": [
+    {
+      "input": ">cd A\n>dir\nB\nC\nd 12\ne 62\n>cd B\n>cd ..\n>cd ..\n>deltree A\n\n>dir\nG\ns 2\n>cd G\n>dir\n>cd \\\n>deltree G\n\n>dir\nA\nB\nx 3\n>cd A\n>dir\nAA\nAB\nax 10\nay 12\n>cd AA\n>dir\nd 32\na 28\n>cd ..\n>cd AB\n>dir\nF\nx 100\n>cd F\n>dir\nG\n>cd \\\n>deltree A\n\n>cd D1\\D2\n>dir\nD3\na 32\n>cd D3\n>dir\nb 31\n>cd \\D1\\D3\n>dir\nd 7\n>deltree \\D1\n\n>exit\n",
+      "output": "74\n0\n182\n70\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia West Continent, Iran, Tehran Site 2008",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

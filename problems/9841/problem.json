@@ -1,0 +1,22 @@
+{
+  "id": 9841,
+  "title": "Cipher",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A symmetric key cipher consists of two algorithms, the encryption and decryption algorithm. The encryption algorithm <em>E</em> maps a message <em>m</em> and a secret key <em>k</em> to the encrypted message <em>c</em>, that is,</p>\n<p style=\"text-align: center;\"><em>c</em> = <em>E</em>(<em>m</em>, <em>k</em>).</p>\n<p>The length of the key is fixed at <em>N</em> bits (for e.g. <em>N</em> = 24). The message <em>m</em> can be of arbitrary length, and both <em>m</em> and <em>c</em> are of the same length. The decryption algorithm <em>D</em>, under the same key, maps <em>c</em> back to m, i.e.</p>\n<p style=\"text-align: center;\"><em>m</em> = <em>D</em>(<em>c</em>, <em>k</em>).</p>\n<p>Note that for any <em>m</em>, <em>k</em>, we have</p>\n<p style=\"text-align: center;\"><em>m</em> = <em>D</em>(<em>E</em>(<em>m</em>, <em>k</em>), <em>k</em>).</p>\n<p>Let us consider a type of attack where the attackers have a pair of <em>m</em> and the corresponding <em>c</em> but do not know the secret key. Their goal is to find <em>k</em>. If <em>N</em> is small, this attack can be successfully carried out using exhaustive search over all possible keys. To prevent such an attack, a company suggests using two levels of encryption. Given m and two keys <em>k</em><sub>1</sub>, <em>k</em><sub>2</sub>, the encrypted message is</p>\n<p style=\"text-align: center;\"><em>c</em> = <em>E</em>(<em>E</em>(<em>m</em>, <em>k</em><sub>1</sub>), <em>k</em><sub>2</sub>). <span class=\"pull-right\">(1)</span></p>\n<p>Hence, the number of secret bits doubled and exhaustive search seems to be much more difficult.</p>\n<p>In this question, you take the role of an attacker. Given <em>m</em> and <em>c</em>, your goal is to find the pair of <em>k</em><sub>1</sub> and <em>k</em><sub>2</sub> that satisfies (1). The source code of both routines <em>D</em> and <em>E</em> is available. (see programming instructions give to you)</p>",
+  "input": "<p>The first line contains two numbers, separated by a space. The first number is <em>N</em>. In our test files, the value of <em>N</em> ranges from 5 to 17. The second number is the length of the message <em>m</em>, in term of number of bits. In our test files, its value ranges from 30 to 10,000. The second line is the bit sequence of <em>m</em> and the third line is the bit sequence of <em>c</em>. In our representation, the left most bit is the first  bit of the message.</p>",
+  "output": "<p>Your program must write two lines to the standard output. The first line is the bit representation of the key <em>k</em><sub>1</sub> and the second line is for <em>k</em><sub>2</sub>. The leftmost bit is the first bit of the key. Each line is terminated by a newline character. If there are more than one pair of keys that encrypt <em>m</em> to <em>c</em>, your program just need to output one pair.</p>",
+  "samples": [
+    {
+      "input": "10 30\n000000000000000000000000000000\n100101000101011101001111010110\n",
+      "output": "1000000000\n0100000000\n"
+    }
+  ],
+  "hint": "<ol>\n<li>The cipher used in this question is a \"stream cipher\" and it has this property: Suppose the message m is the concatenation of two strings <em>m</em><sub>1</sub> and <em>m</em><sub>2</sub>, that is m = <em>m</em><sub>1</sub> || <em>m</em><sub>2</sub> where the symbol || means concatenation, then encrypted <em>m</em><sub>1</sub> is the prefix of the encrypted <em>m</em>. That is, for any <em>k</em>, <em>E</em>(<em>m</em>, <em>k</em>) = <em>E</em>(<em>m</em><sub>1</sub>, <em>k</em>) || <em>c</em><sub>2</sub> where <em>c</em><sub>2</sub> is some bit sequence.</li>\n<li>The time taken to encrypt an <em>M</em>-bit message is roughly proportional to <em>M</em>, for large <em>M</em>.</li>\n<li>When <em>N</em> is large, say around 15, it is infeasible to conduct exhaustive search over 2<sup>30</sup> possible keys within the time-limit given to you. Hence, a \"smarter\" searching method is required.</li>\n</ol>",
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2009",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 4
+}

@@ -1,0 +1,28 @@
+{
+  "id": 6371,
+  "title": "Follow My Logic",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>For this problem you will determine the output of a logic circuit composed of one or more inputs, zero or more dual-input AND/OR gates, and one output. The input circuits are drawn with standard ASCII characters. Circuit paths are represented using horizontal and vertical lines, and junctions. Horizontal lines are represented with dash characters (ASCII code 45 decimal), vertical lines with vertical bar characters (ASCII code 124 decimal), and junctions with plus characters (ASCII code 43 decimal). Inputs are represented using the capital letters A through Z, and the output is represented by a question mark. AND and OR gates are represented as shown in the leftmost entries in the figure below, and their orientation will always be exactly as shown. The location of the gate inputs and output is shown by the middle figure below. Finally, gate inputs or its output can be inverted, represented by a lowercase “oh” character (ASCII code 111 decimal) at the input or output location. The figure on the right below shows a simple but complete logic circuit.</p>\n<pre>\n:\\ \n: ) \n:/</pre>\n<p>AND gate</p>\n<pre>\n:\\ \n: &gt; \n:/</pre>\n<p>OR gate</p>\n<pre>\n-:\\\n : )-\n-:/</pre>\n<p>Gate with inputs</p>\n<pre>\n-o:\\\n  : )o-\n--:/\n</pre>\n<p>An inverted top input and an inverted output</p>\n<pre>\nA-o:\\\n   : )o-?\nB--:/</pre>\n<p>Two logic inputs and the output</p>\n<p>Circuits in the input will obey the following guidelines:</p>\n<ol>\n<li>The maximum size of the circuit picture is 100 by 100 characters.</li>\n<li>A path always travels in a straight line unless altered by a junction. At a junction, the path can and will make a ninety degree turn. Two junctions will not be horizontally or vertically adjacent.</li>\n<li>No paths will be “broken”. That is, every path character is guaranteed to be adjacent on both sides to either another path character of the same type, a junction, a gate input, a gate output, a logic input, or the logic output.</li>\n<li>Circuit paths do not cross or intersect other paths.</li>\n<li>Gate inputs always approach horizontally from the left as shown above. Gate outputs always leave horizontally to the right as shown above.</li>\n<li>Inversions may only appear immediately adjacent to a gate input or output, and will always be preceded (in the case of an input) or followed (in the case of an output) by at least one dash as shown above.</li>\n</ol>\n<p>The end of a logic diagram in the input is indicated by line containing only a single asterisk in the first column. Following this are several lines which indicate the state of the inputs in the logic diagram. Each of these lines is a string of twenty-six “0” (zero) or “1” characters, with the first position representing the state of input A, the second position representing the state of input B, etc. Note that input values which are not actually used in the circuit may simply be ignored. The list of input states is terminated by a line containing only a single asterisk character in the first column.</p>",
+  "input": "<p>Following the asterisk which terminates the list of input states is another circuit diagram followed by a list of input states, which is then followed by another circuit diagram and list of input states, and so on until the end of the file. The file will always contain at least one circuit and one set of inputs for that circuit.</p>",
+  "output": "<p>The program is to report the value of the output (0 or 1) of each logic circuit, one value per line, for each set of input values in the list which follows the circuit. The list of outputs for each circuit should be separated by a single blank line.</p>",
+  "samples": [
+    {
+      "input": "A---:\\\n    : )---?\nB---:/\n*\n00000000000000000000000000\n10000000000000000000000000\n01000000000000000000000000\n11000000000000000000000000\n*\nA---+\n    |\n    +---:\\\n        : >o---:\\\n    +---:/     : )---?\n    |      C--o:/\nB---+\n*\n00000000000000000000000000\n11100000000000000000000000\n*\n",
+      "output": "0\n0\n0\n1\n\n1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Greater New York Region, 2001 Greater New York Programming Contest, adh0463",
+  "level": 17,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "simulation",
+    "dag"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3.90910005569458
+}

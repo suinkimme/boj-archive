@@ -1,0 +1,26 @@
+{
+  "id": 3371,
+  "title": "RLE Compression",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>RLE is a simple compression algorithm used to compress sequences containing subsequent repetitions of the same character. By compressing a particular sequence, we obtain its code. The idea is to replace repetitions of a given character (like <code>aaaaa</code>) with a counter saying how many repetitions there are. Namely, we represent it by a triple containing a repetition mark, the repeating character and an integer representing the number of repetitions. For example, <code>aaaaa</code> can be encoded as <code>#a5</code> (where <code>#</code> represents the repetition mark).</p>\n<p>We need to somehow represent the alphabet, the repetition mark, and the counter. Let the alphabet consist of n characters represented by integers from the set ∑ = {0, 1, ... , n −1}. The code of a sequence of characters from ∑ is also a sequence of characters from ∑. At any moment, the repetition mark is represented by a character from ∑ , denoted by e. Initially e is 0, but it may change during the coding.</p>\n<p>The code is interpreted as follows:</p>\n<ul>\n<li>any character a in the code, except the repetition mark, represents itself,</li>\n<li>if the repetition mark e occurs in the code, then the two following characters have special meaning:\n\t<ul>\n<li>if e is followed by ek, then it represents k + 1 repetitions of e,</li>\n<li>otherwise, if e is followed by b0 (where b ≠ e), then b will be the repetition mark from that point on,</li>\n<li>otherwise, if e is followed by bk (where b ≠ e and k &gt; 0), then it represents k + 3 repetitions of b.</li>\n</ul>\n</li>\n</ul>\n<p>Using the above scheme, we can encode any sequence of characters from ∑. For instance, for n = 4, the sequence 1002222223333303020000 can be encoded as 10010230320100302101. First character of the code 1 means simply 1. Next 001 encodes 00. Then, 023 represents 222222, 032 represents 33333, and 010 switches the repetition mark to 1. Then 0302 represents itself and finally 101 encodes 0000.</p>\n<p>A sequence may be encoded in many ways and code length may vary. Given an already encoded sequence, your task is to find a code with the least number of characters.</p>\n<p>Write a program that:</p>\n<ul>\n<li>Reads the size of the alphabet and the code of a sequence.</li>\n<li>Finds the shortest code for that sequence.</li>\n<li>Writes the result.</li>\n</ul>",
+  "input": "<p>The first line contains one integer n (2 ≤ n ≤ 100 000): the size of the alphabet. The second line contains one integer m (1 ≤ m ≤ 2 000 000): the length of the code. The last line contains m integers from the set {0, 1, ... , n −1} separated by single spaces, representing the code of a sequence.</p>",
+  "output": "<p>The first line should contain one integer m': the least number of characters in a code representing the given sequence. The last line of the output should contain m' integers from the set {0, 1,... , n −1} separated by single spaces: the code of the sequence. If there exist several shortest sequences, your program should output any one of them.</p>",
+  "samples": [
+    {
+      "input": "4\n20\n1 0 0 1 0 2 3 0 3 2 0 1 0 0 3 0 2 1 0 1\n",
+      "output": "19\n1 0 1 0 0 0 1 2 3 1 3 2 0 3 0 2 1 0 1\n"
+    },
+    {
+      "input": "14\n15\n10 10 10 0 10 0 10 10 13 10 10 13 10 10 13\n",
+      "output": "9\n0 10 13 0 10 13 0 10 10\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2006",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

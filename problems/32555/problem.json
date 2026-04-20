@@ -1,0 +1,29 @@
+{
+  "id": 32555,
+  "title": "Guessing Passwords",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ingfríður is testing her new pet project website, Passwordle. The rules should be rather familiar for those who have played plenty of wordle, but let us review them here. The website picks a secret password that the user then has to guess. The password will be $N$ characters in length and the user will guess until they get it right, getting a higher score for fewer guesses. Each guess must be a string of $N$ characters. For each character in the guess, it will be coloured one of three colours. If that character matches the password character in the same position, the colour is green. If the character does not match, but that character is in the password somewhere else, the colour is yellow. Otherwise it is gray.</p>\n<p>Ingfríður is of course very good at her own game, so she will always guess a password that could be the hidden password. That is to say her guess will always match the previous clues. Furthermore she knows her program never generates passwords with repeated characters, since that's insecure, and will incorporate this knowledge into her guesses.</p>\n<p>You now receive some screenshots from her testing progress, but they got so terribly compressed you can only make out the colours and not the text itself. Furthermore it seems that she didn't manage to make any progress at all. She didn't get a single green square in the entire game and never found any more characters than she did in her very first guess, and quit out of frustration. So the number of yellow squares is the same on each row. Given this info, can you reconstruct a sequence of guesses she could have made? Or is it impossible and her program must be wrong? You may assume that Ingfríður never makes any mistake when playing, only when programming.</p>",
+  "input": "<p>The first line of the input contains two positive integers $N$ and $M$ ($1 \\leq N, M \\leq 100$). $N$ is the number of characters in the password and $M$ is the number of guesses in the screenshot. Next there are $N$ lines, each with $M$ characters, the $i$-th of which gives the colours of the $i$-th guess. <code>G</code> denotes gray and <code>Y</code> denotes yellow. The number of <code>Y</code>s is constant across all lines. The characters are given without spaces between them. Finally there is a single line with a single positive integer $\\Sigma$ ($1 \\leq \\Sigma \\leq 10^6$), giving the number of valid characters for the passwords.</p>",
+  "output": "<p>If there is no way to achieve the given colours print <code>Bugged!</code>. Otherwise print $N + 1$ lines with $M$ numbers each, separated by spaces. The first $N$ lines should give the colouring in the input if the number $i$ denotes the $i$-th character in the alphabet. The final and $(N+1)$-st line should give a secret word that could have resulted in this sequence of guesses being valid. If there are multiple possible solutions any one of them will be accepted.</p>",
+  "samples": [
+    {
+      "input": "3 4\nGGYY\nYGGY\nGYYG\n26\n",
+      "output": "3 4 2 1\n1 5 6 2\n7 2 1 8\n2 1 9 10\n"
+    },
+    {
+      "input": "4 5\nGYGGY\nYGYGG\nGGYYG\nGYGGY\n16\n",
+      "output": "Bugged!\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2024",
+  "level": 21,
+  "tags": [
+    "bipartite_matching",
+    "hall"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

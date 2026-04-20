@@ -1,0 +1,41 @@
+{
+  "id": 27602,
+  "title": "Italian Data Centers",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>An <em>Italian data center</em> consists of a set of servers, each colored green, white, or red, and a set of wires connecting them. Each wire connects two distinct servers and two servers are connected by at most one wire. Additionally, the data center is connected, i.e. there is a way to transmit information between any two servers through a sequence of wires.</p>\n<p>To judge all of the contestant submissions, SWERC has an Italian data center. Since every year the number of contestants doubles, the data center needs to grow to adapt to the extra load. To address this, SWERC builds a new data center based on the previous year’s one by following these steps:</p>\n<ul>\n<li>For each server $s$ in the old data center, the new data center contains two servers $s_1$ and $s_2$ of the same color as $s$. A wire is placed connecting the two servers $s_1$ and $s_2$.</li>\n<li>For each wire connecting servers $s$ and $t$ in the old data center: if $s$ and $t$ have the same color, then a wire is placed in the new data center connecting $s_1$ and $t_1$ and another wire connecting $s_2$ and $t_2$; otherwise, a wire is placed in the new data center connecting $s_1$ and $t_2$ and another one connecting $s_2$ and $t_1$.</li>\n</ul>\n<p>One can show that if the old data center is connected than the new data center is also connected.</p>\n<p>You are given the Italian data center that SWERC currently has, which contains $n$ servers (indexed by $1, 2, \\dots , n$) and $m$ wires connecting them. The organization wants to know how good their data center will be after $k$ years, so you should determine the <em>diameter</em> of the data center SWERC will have in $k$ years. The diameter of the data center is the largest distance between any two servers, i.e. the shortest number of wires that have to be used to transmit something between the two servers.</p>",
+  "input": "<p>The first line contains three integers $n$, $m$ and $k$ ($2 ≤ n ≤ 100$, $n-1 ≤ m ≤ n(n-1)/2$, $0 ≤ k ≤ 100$) — the number of servers, the number of wires, and the number of years to consider.</p>\n<p>The second line contains $n$ integers $c_1, c_2, \\dots , c_n$ ($1 ≤ c_i ≤ 3$) — $c_i$ is the color of server $i$ (where $1$ stands for <em>green</em>, $2$ for <em>white</em> and $3$ for <em>red</em>).</p>\n<p>Each of the next $m$ lines contains two integers $s_i$ and $t_i$ ($1 ≤ s_i , t_i ≤ n$) — the two servers the $i$-th wire connects.</p>\n<p>It is guaranteed that the data center is connected, the endpoints of each wire are distinct, and that there are no repeated wires.</p>",
+  "output": "<p>Print the diameter of SWERC’s data center after $k$ years.</p>",
+  "samples": [
+    {
+      "input": "3 3 0\n1 2 3\n1 2\n2 3\n3 1\n",
+      "output": "1\n"
+    },
+    {
+      "input": "3 3 1\n1 2 3\n1 2\n2 3\n3 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 3 2\n1 2 1\n1 2\n2 3\n3 1\n",
+      "output": "3\n"
+    },
+    {
+      "input": "8 14 100\n3 3 2 2 1 2 2 1\n2 7\n1 5\n7 8\n4 6\n2 8\n1 8\n2 6\n6 7\n1 6\n1 4\n3 5\n1 3\n4 5\n5 7\n",
+      "output": "53\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2022-2023",
+  "level": 20,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "shortest_path",
+    "bitmask",
+    "floyd_warshall"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 1.3824000358581543
+}

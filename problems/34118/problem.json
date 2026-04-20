@@ -1,0 +1,29 @@
+{
+  "id": 34118,
+  "title": "부산 관광",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>부산광역시는 관광객의 교통 이용 편의를 위하여 다음 네 종류의 <strong>교통 티켓</strong>을 판매한다.</p>\n<table class=\"table table-bordered th-center\">\n<thead>\n<tr>\n<th>구분</th>\n<th>사용 인원</th>\n<th>유효 기간</th>\n<th>가격</th>\n<th>비고</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1일권</td>\n<td>$1$ 명</td>\n<td>구매한 날 <strong>당일 1일</strong></td>\n<td>$p_1$</td>\n<td>유효 기간 내에 구매한 사람 본인만 교통 이용 가능</td>\n</tr>\n<tr>\n<td>3일권</td>\n<td>$1$ 명</td>\n<td>구매한 날을 포함한 <strong>연속 3일</strong></td>\n<td>$p_3$</td>\n<td>유효 기간 내에 구매한 사람 본인만 교통 이용 가능</td>\n</tr>\n<tr>\n<td>5일권</td>\n<td>$1$ 명</td>\n<td>구매한 날을 포함한 <strong>연속 5일</strong></td>\n<td>$p_5$</td>\n<td>유효 기간 내에 구매한 사람 본인만 교통 이용 가능</td>\n</tr>\n<tr>\n<td>묶음권</td>\n<td>$2$ 명</td>\n<td>구매한 날을 포함한 <strong>연속 4일</strong></td>\n<td>$p_{\\text{pair}}$</td>\n<td>유효 기간 내에 두 사람 모두 교통 이용 가능</td>\n</tr>\n</tbody>\n</table>\n<p>모든 티켓은 <strong>구매 즉시 효력이 발생</strong>하며, 표에 명시된 기간 동안 매일 교통을 이용할 수 있다. 물론, 티켓을 보유하고 있는 채로 교통을 이용하지 않아도 되고, 유효한 티켓을 동시에 여러 장 보유해도 되고, 티켓의 유효 기간이 $N$일간의 관광 일정 이후에 끝나도 무방하다. 그리고 $p_1 ≤ p_3 ≤ p_5$가 <strong>항상 성립하는 것은 아님</strong>에 유의하라.</p>\n<p>한국이와 정올이는 부산에서 $N$일간 같이 머무른다. 하지만, 둘은 각각 자신만의 관광 일정을 세워두어 각 날마다 자신이 관광을 진행할지의 여부를 결정해 두었다. 관광 일정을 소화하기 위해서는 두 사람 모두 <strong>관광을 진행하는 날마다</strong> 적어도 한 장의 유효한 티켓(묶음권 포함)을 보유해야 한다.</p>\n<hr/>\n<p>예를 들어, $N = 9$이고, $p_1 = 3$, $p_3 = 7$, $p_5 = 12$, $p_{\\text{pair}} = 15$이고, 한국이와 정올이 각각의 일정이 아래와 같은 경우를 고려해 보자.</p>\n<table class=\"table table-bordered th-center td-center table-center-50\">\n<thead>\n<tr>\n<th>날짜</th>\n<th>$1$</th>\n<th>$2$</th>\n<th>$3$</th>\n<th>$4$</th>\n<th>$5$</th>\n<th>$6$</th>\n<th>$7$</th>\n<th>$8$</th>\n<th>$9$</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>한국</td>\n<td>X</td>\n<td>O</td>\n<td>O</td>\n<td>X</td>\n<td>O</td>\n<td>O</td>\n<td>O</td>\n<td>X</td>\n<td>O</td>\n</tr>\n<tr>\n<td>정올</td>\n<td>O</td>\n<td>O</td>\n<td>X</td>\n<td>X</td>\n<td>X</td>\n<td>O</td>\n<td>O</td>\n<td>O</td>\n<td>X</td>\n</tr>\n</tbody>\n</table>\n<p>1일권만 사용하면 총 $11$(관광 일수) $\\times$ $3$ (1일권 가격) $= 33$의 비용이 든다.</p>\n<p>하지만, 만약 두 사람이 <strong>5일차-8일차</strong> 동안 묶음권 $1$장을 공유하면 총 $30$의 비용만 소모된다.</p>\n<p>심지어 한국이가 <strong>5일차-7일차</strong>, 정올이는 <strong>6일차-8일차</strong>를 각각 3일권으로 구입하면 총 비용이 $29$로 더 절약된다.</p>\n<p>한국이의 일정을 나타내는 문자열 $A = A_1 A_2 \\cdots A_N$와 정올이의 일정을 나타내는 문자열 $B = B_1 B_2 \\cdots B_N$가 날짜 $i$ ($1 ≤ i ≤ N$)에 대해</p>\n<ul>\n<li>한국이가 관광을 진행하면 $A_i = 1$, 아니면 $A_i = 0$</li>\n<li>정올이가 관광을 진행하면 $B_i = 1$, 아니면 $B_i = 0$</li>\n</ul>\n<p>의 형태로 주어질 때, 두 사람 모두 관광을 진행하는 날마다 적어도 한 장의 유효한 교통 티켓(묶음권 포함)을 보유하도록 하기 위해 필요한 최소 비용을 계산하는 프로그램을 작성하라.</p>",
+  "input": "<p>첫 번째 줄에 부산에 머무르는 기간을 나타내는 정수 $N$이 주어진다.</p>\n<p>두 번째 줄에 한국이의 관광 일정을 나타내는 문자열 $A$가 주어진다.</p>\n<p>세 번째 줄에 정올이의 관광 일정을 나타내는 문자열 $B$가 주어진다.</p>\n<p>네 번째 줄에 $p_1 , p_3 , p_5 , p_{\\text{pair}}$가 공백을 사이에 두고 주어진다.</p>",
+  "output": "<p>첫 번째 줄에 최소 비용을 나타내는 정수를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "9\n011011101\n110001110\n3 7 12 15\n",
+      "output": "29\n"
+    },
+    {
+      "input": "9\n011011101\n110001110\n1 10000 10000 10000\n",
+      "output": "11\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, 한국정보올림피아드, KOI 2025 1차대회, 중등부, Olympiad, 한국정보올림피아드, KOI 2025 1차대회, 고등부",
+  "level": 14,
+  "tags": [
+    "dp",
+    "case_work"
+  ],
+  "accepted_user_count": 232,
+  "submission_count": null,
+  "average_tries": 3.194000005722046
+}

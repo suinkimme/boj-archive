@@ -1,0 +1,22 @@
+{
+  "id": 4199,
+  "title": "Classified",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Classification levels like Secret and Top Secret are well-known features of military documents. Less well known are integrity levels, which correspond to how reliable information is.</p>\n<p>In the Dynamic Biba integrity model, every user and every document is assigned an integrity level. If a user writes to a document that has a higher integrity level than the user does, the document’s integrity level goes down. Similarly, if a user reads a document that has a lower integrity level than the user does, the user’s integrity level goes down.</p>\n<p>Your job is to keep track of the integrity levels of a number of users and documents. Complicating the matter is the fact that integrity levels aren’t simply numbers; a document might contain very trusworthy information about operations in Afganistan, while at the same time containing less trustworthy information about operations in Iraq.</p>\n<p>Integrity levels are speficied by arbitrary labels, along with rules of the form A → B, indicating that integrity level A is at most as trustworthy as integrity level B. The rules satisfy a number of conditions:</p>\n<ul>\n<li>For any label A, A → A is always true, and need not be specified.</li>\n<li>If A and B are two different labels, then it can never be the case that both A → B and B → A are true. However, it can be the case that neither A → B nor B → A are true.</li>\n<li>For any labels A, B, and C, if it is the case that A → B and B → C are both true, you can conclude (without it being explicitly specified) that A → C is true.</li>\n<li>For any two labels A and B, there is a label G = glb(A,B) called the greatest lower bound of A and B such that G → A and G → B are both true. Further, for any label L such that L → A and L → B are both true, it is also the case that L → G is true.</li>\n</ul>\n<p>You will be given as input the labels and rules defining the integrity levels, as well as the initial integrity level of a number of users and a number of documents. The format will be as follows:</p>\n<ul>\n<li>The first line of the input will contain five integers separated by spaces. These integers are the number of integrity levels ℓ, the number of rules r, the number of users u, the number of documents d, and the number of actions a, in that order. None of these five integers will be greater than 10000. The integrity levels are numbered from 1 to ℓ; the users from 1 to u, and the documents from 1 to d.</li>\n<li>The next r lines specify the rules. Each line will consist of two integers between 1 and ℓ, separated by a space. The line “x y” indicates that integrity level x is at most as trustworthy as integrity level y (i.e. x → y)</li>\n<li>The next u lines specify the initial integrity levels for user number 1, 2, …, u. Each line will be an integrity level number, from 1 to ℓ.</li>\n<li>The next d lines specify the initial integrity levels for document number 1, 2, …, d. Each line will be an integrity level number, from 1 to ℓ.</li>\n<li>The next a lines specify the actions; each action will be of one of the following two forms (here, user is an integer between 1 and u, and document is an integer between 1 and d):\n\t<ul>\n<li>user reads document: The given user is reading the given document. The integrity level for the user should be changed to the glb of the old integrity level for the user and the integrity level of the document. Output the new integrity level for the user on a line by itself.</li>\n<li>user writes document: The given user is writing to the given document. The integrity level for the document should be changed to the glb of the integrity level for the user and the old integrity level of the document. Output the new integrity level for the document on a line by itself.</li>\n</ul>\n</li>\n</ul>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "9 11 2 3 5\n6 9\n2 6\n9 4\n7 5\n3 8\n7 2\n5 3\n8 4\n5 1\n6 1\n1 8\n4\n2\n5\n9\n8\n1 reads 3\n1 writes 2\n2 reads 2\n1 reads 1\n2 writes 1\n",
+      "output": "8\n6\n2\n5\n7\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Waterloo's local Programming Contests, 15 June, 2008",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

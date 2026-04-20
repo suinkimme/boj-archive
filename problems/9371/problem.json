@@ -1,0 +1,28 @@
+{
+  "id": 9371,
+  "title": "인코딩 좌표",
+  "time_limit": "5 초",
+  "memory_limit": "128 MB",
+  "description": "<p>상근이는 테러리스트의 전화를 도청하던 중에 큰 공격이 예고되다는 사실을 알게되었다. 테러리스트는 인코딩된 좌표를 서로에게 보내고 있다. 상근이는 이 좌표 중 한 군데에서 공격이 일어날 것이라고 예상하고 있다. 상근이는 좌표를 가로채는데 성공했다.</p>\r\n\r\n<p>모든 좌표는 x와 y 좌표로 나누어져 있으며, 두 좌표는 모두 소수 P보다 작은 음이 아닌 정수이다. x좌표와 y좌표는 각각 인코딩되며, 인코딩 되는 과정은 동일하다.&nbsp;</p>\r\n\r\n<p>좌표 하나를 인코딩하려면 A, B, C, K, N이 필요하고, 다음과 같은 과정이 필요하다.</p>\r\n\r\n<p>인코딩 과정은 세 함수로 나타낼 수 있고, 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>F(n+1) = G(n) + H(n)</li>\r\n\t<li>G(n+1) = K*F(n) + H(n-1)</li>\r\n\t<li>H(n+1) = F(n) + K*G(n)</li>\r\n</ul>\r\n\r\n<p>A, B, C는 함수의 초기값이다.</p>\r\n\r\n<ul>\r\n\t<li>F(1) = A</li>\r\n\t<li>G(1) = B</li>\r\n\t<li>H(1) = C</li>\r\n</ul>\r\n\r\n<p>좌표는 F(N) mod P가 된다.</p>\r\n\r\n<p>사실 위의 과정에는 매우 중요한 정보가 하나 빠져있다. G(2)를 계산하려면, H(0)이 필요하다. 하지만, H(0)을 알아낼 수 있는 방법은 없다. H(0)에 대한 유일한 정보는 x와 y를 계산할 때, 동일한 H(0)을 사용한다는 점이다.</p>\r\n\r\n<p>상근이는 우연히 x좌표를 디코딩하지 않고 얻게 되었다. 이제, x를 이용해 H(0)을 구한 다음, y를 구하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>첫째 줄에 테스트 케이스의 개수가 주어진다. 테스트 케이스의 개수는 100개보다 작거나 같다. 각 테스트 케이스의 첫째 줄에는 소수 P (2 &le; P &le; 19997)가 주어진다. 둘째 줄에는 x좌표를 인코딩하는데 사용하는&nbsp;A<sub>x</sub>, B<sub>x</sub>, C<sub>x</sub>, K<sub>x</sub>,&nbsp;N<sub>x</sub>가&nbsp;주어진다.&nbsp;(0 &le; A<sub>x</sub>, B<sub>x</sub>, C<sub>x</sub>, K<sub>x</sub>&nbsp;&lt; P,&nbsp;1 &le; N<sub>x</sub>&nbsp;&le; 10<sup>9</sup>) 셋째 줄에는 y좌표를 인코딩하는데 사용한&nbsp;A<sub>y</sub>, B<sub>y</sub>, C<sub>y</sub>, K<sub>y</sub>, N<sub>y</sub>가 주어진다. (0 &le; A<sub>y</sub>, B<sub>y</sub>, C<sub>y</sub>, K<sub>y</sub>&nbsp;&lt; P, 1 &le; N<sub>y</sub>&nbsp;&le; 10<sup>9</sup>) 넷째 줄에는 x좌표 (0 &le; x &lt; P)가 주어진다.&nbsp;</p>\r\n",
+  "output": "<p>각 테스트 케이스마다 y좌표를 출력한다. 만약, 가능한 y좌표가 여러 개인 경우에는&nbsp;&ldquo;UNKNOWN&rdquo;를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2\n11\n2 3 5 7 4\n4 6 8 9 7\n5\n7\n1 6 2 5 1\n3 4 2 5 3\n1\n",
+      "output": "7\nUNKNOWN\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2013",
+  "level": 17,
+  "tags": [
+    "math",
+    "implementation",
+    "number_theory",
+    "exponentiation_by_squaring",
+    "modular_multiplicative_inverse"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 2.3513998985290527
+}

@@ -1,0 +1,33 @@
+{
+  "id": 32875,
+  "title": "Paradoks",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>One full moon evening, when the clock struck midnight, five friends found themselves ready to play a game as mysterious as that night.</p>\n<p>They sat in a <strong>circle</strong>, in clockwise order: Igor, Lea, Marino, Sonja, and Viktor. The game consists of $N$ rounds. The first round is started by Sonja, and each subsequent round is started by the winner of the previous round.</p>\n<p>Each player holds $N$ cards in their hand. All cards are colorless and have a natural number between $1$ and $9$ on them. When a player plays a card, they choose the color for that card. They may choose one of four colors (red, blue, yellow, green) provided that such a card (combination of that number and color) has not already been played in the game. In the rest of the text, the term \"playing a blue card,\" for example, refers to the procedure of playing the card and declaring it to be blue.</p>\n<p>In each round, the players, in clockwise order, play one card each until the turn reaches the player who started the round, i.e., until each player has played one card. The first card played in a round determines the so-called <em>round color</em>, and all subsequent players are required to play cards of that color. If any player fails to play a card of the current round color, it is assumed that the player has no such color card in their hand – and they are prohibited from playing that color card <strong>for the rest of the game</strong>.</p>\n<p>The winner of each round is:</p>\n<ul>\n<li>The person who played the red card with the highest number.</li>\n<li>If no red cards were played, the person who played the highest number of the round color.</li>\n</ul>\n<p>Sometimes, players make a move that they should not have: either they play a card that has already been played or play a card of a color they previously declared they no longer have. This play is called a <em>paradox</em> (in Croatian: \"paradoks\"). When a paradox occurs, the play is completely ignored in calculating the round’s winner and the rest of the game. For example, if a card is played for the first time as a paradox, for the rest of the game, it is treated as though it has not yet been played. It is guaranteed that the first player in a round will never play a paradox in that round.</p>\n<p>Our heroes haven’t seen each other for a long time and haven’t been paying close attention to the game, so they ask for your help. Write a program that, for the sequentially listed played cards by round, prints how many paradoxes occurred and lists them in the order they happened. For each paradox, print the round in which it occurred and the player who caused it.</p>",
+  "input": "<p>The first line of input contains a natural number $N$ ($1 ≤ N ≤ 10$), the number of rounds.</p>\n<p>In the next $N$ lines of input, there are $5$ words, each $2$ characters long, representing the cards played in that round, in the order they were played. (Caution: the first player in each round is not necessarily the same.)</p>\n<p>The first character of each word represents the color of the card the player played and will be one of the following letters: ’<code>C</code>’ –red, ’<code>P</code>’ – blue, ’<code>Y</code>’ – yellow, ’<code>Z</code>’ – green. The second character of each word will be a natural number between $1$ and $9$ (inclusive), representing the number on the card.</p>\n<p>For example, the word ’<code>Y5</code>’ would represent a yellow card with the number 5.</p>",
+  "output": "<p>Print a single number $a$, the number of paradoxes that occurred.</p>\n<p>In next $a$ lines, for each of the $a$ paradoxes, print the round number and the name of the player who caused it, in uppercase letters.</p>\n<p>Paradoxes should be printed in the order they occurred.</p>",
+  "samples": [
+    {
+      "input": "4\nY5 Z3 Y6 C2 Y1\nZ4 Z7 Z2 Y2 P3\nZ6 Z7 Z1 Y2 C2\nP6 P8 P8 Z7 Y9\n",
+      "output": "6\n2 VIKTOR\n3 SONJA\n3 LEA\n4 VIKTOR\n4 IGOR\n4 LEA\n"
+    },
+    {
+      "input": "3\nP1 Y9 Z5 Y1 Z5\nP5 Y7 Z3 Y8 P1\nC6 Y8 P5 Z1 Z8\n",
+      "output": "4\n1 MARINO\n2 MARINO\n3 VIKTOR\n3 IGOR\n"
+    },
+    {
+      "input": "1\nY4 P9 Y8 Z5 Z3\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2024/2025, Contest #2",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.5714000463485718
+}

@@ -1,0 +1,29 @@
+{
+  "id": 27904,
+  "title": "키파-틱택토",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>틱택토는 두 명이 번갈아가며 O와 X를 3×3 판에 써서 같은 글자를 가로, 세로, 혹은 대각선 상에 놓이도록 하는 놀이입니다.<sup><a href=\"https://ko.wikipedia.org/wiki/%ED%8B%B1%ED%83%9D%ED%86%A0\" target=\"_blank\">[1]</a></sup> 틱택토는 상대적으로 단순한 전략 놀이로, 몇 번 해 보면 양쪽이 최선을 다하는 경우 비긴다는 사실을 알 수 있습니다.</p>\n<p>키파는 틱택토가 너무 단순한 놀이라고 생각해서, 틱택토를 더욱 확장한 키파-틱택토를 만들었습니다. 키파-틱택토는 유비트의 판 모양과 비슷한 4×4 판에서 진행하며, X부터 시작하여 번갈아 가며 판을 한 칸씩 채웁니다. 각 칸을 아래와 같이 부르겠습니다.</p>\n<table class=\"table table-bordered\" style=\"width: 400px; border: 0; border-collapse: collapse; margin: 0 auto;\">\n<tbody>\n<tr>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-top: 0; border-left: 0;\">1행 1열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-top: 0;\">1행 2열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-top: 0;\">1행 3열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-top: 0; border-right: 0;\">1행 4열</td>\n</tr>\n<tr>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-left: 0;\">2행 1열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle;\">2행 2열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle;\">2행 3열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-right: 0;\">2행 4열</td>\n</tr>\n<tr>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-left: 0;\">3행 1열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle;\">3행 2열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle;\">3행 3열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-right: 0;\">3행 4열</td>\n</tr>\n<tr>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-left: 0; border-bottom: 0;\">4행 1열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-bottom: 0;\">4행 2열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-bottom: 0;\">4행 3열</td>\n<td style=\"border: 3px solid #666; width: 100px; height: 100px; font-size: 24px; text-align: center; vertical-align: middle; border-bottom: 0; border-right: 0;\">4행 4열</td>\n</tr>\n</tbody>\n</table>\n<p>키파는 틱택토의 승리 조건도 너무 단순하다고 생각했고, 비기는 경우가 있는 것도 마음에 안 들어서, 승리 조건 역시 바꾸었습니다. 일단 판을 모두 채워 X가 여덟 개, O가 여덟 개 있는 상황에서, 아래와 같은 승리 조건에 따라 승자를 결정합니다.</p>\n<p style=\"text-align: center;\"><iframe allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen=\"\" frameborder=\"0\" height=\"405\" src=\"1.png\" title=\"YouTube video player\" width=\"720\"></iframe></p>\n<p>플레이어는 <strong>놀이 중 차례에 상관없이</strong> 승리를 선언할 수 있습니다. 현재 열여섯 칸이 모두 채워지지 않았지만, 이 상태에서 게임이 규칙에 따라 어떻게 진행되더라도 최종적으로 승리 조건에 따라 이기는 사람이 한 사람으로 정해져 있을 수 있습니다. 이 경우 그 사람은 <strong>승리 선언 조건</strong>을 만족합니다. 플레이어가 승리 선언 조건을 만족한 상태에서 승리를 선언하면 놀이에서 곧바로 이깁니다. <strong>열여섯 칸이 모두 채워진 경우 승리를 선언할 수 없음에 유의하세요.</strong></p>\n<p>이 놀이를 완벽하게 익힌 키파와 아바나가 키파-틱택토를 합니다. 키파는 아바나에게 선을 양보했습니다. 놀이가 이미 어느 정도 진행되었고, 여기서부터 양쪽이 최선을 다하는 경우 키파-틱택토가 어떻게 진행되는지를 계산하는 프로그램을 작성하세요.</p>",
+  "input": "<p>첫째 줄에 테스트 케이스의 수 <em>T</em>가 주어집니다. <em>T</em>는 1 이상 300 000 이하입니다.</p>\n<p>각 테스트 케이스는 총 네 줄로 이루어져 있습니다. 각 줄에는 정확히 네 개의 문자로 이루어진 문자열이 주어집니다. 각 문자는 <code>O</code>, <code>X</code> 또는 <code>.</code> 중 하나이며, 테스트 케이스의 <em>i</em>행에 주어진 문자열의 <em>j</em>번째 문자가 <code>O</code>나 <code>X</code>인 경우 <em>i</em>행 <em>j</em>열에 그 문자가 그려져 있음을, <code>.</code>인 경우 아무 것도 그려져 있지 않음을 의미합니다.</p>\n<p>모든 테스트 케이스는 빈 판에서 올바르게 놀이를 진행한 상태입니다. 즉, 열여섯 개의 문자 중 <code>X</code>의 개수에서 <code>O</code>의 개수를 뺀 값을 <em>D</em>라 하면, <em>D</em>가 0인 경우는 현재 X의 차례, <em>D</em>가 1인 경우는 현재 O의 차례이며, 이외의 경우는 입력으로 주어지지 않습니다.</p>",
+  "output": "<p>각각의 테스트 케이스에 대해, <code>KIPA WINS</code>, <code>HAVANA WINS</code>, <code>KIPA DECLARES A WIN</code>, <code>HAVANA DECLARES A WIN</code> 중 하나를 한 줄에 출력합니다.</p>",
+  "samples": [
+    {
+      "input": "4\nX...\n..X.\n.O..\nXO..\nXOXO\nOXOX\nXOXO\nOXOX\nXO..\n....\n....\n....\nXOXO\nOX.X\nXOXO\nOXOX\n",
+      "output": "KIPA DECLARES A WIN\nHAVANA WINS\nKIPA WINS\nHAVANA DECLARES A WIN\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 구데기컵, , kipa00, cozyyg, jh05013, wapas",
+  "level": 24,
+  "tags": [
+    "math",
+    "dp",
+    "game_theory",
+    "linear_algebra",
+    "precomputation",
+    "heuristics"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 7.555600166320801
+}

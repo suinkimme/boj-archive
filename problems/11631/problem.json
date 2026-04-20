@@ -1,0 +1,25 @@
+{
+  "id": 11631,
+  "title": "Mario",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In a final attempt to complete an impossible Super Mario level, you decided to write an AI and let it play the game for you.</p>\n<p>As a first step, we forget about badguys and only implement navigation. In this problem, you will implement navigation over a river. The river has width W and occupies x = [0, W]. Transportation over water happens using boats. Each boat moves in a range [L, R]; all boats remain at height y = 0. At t = 0, Mario is at x = 0 and each boat is at its left endpoint (we assume boats are infinitely thin). Each boat moves periodically between its endpoints at the speed of one unit per second. So if a boat’s parameters are [L, R], then it is at x = L at t = 0, at x = R at t = R − L, at x = L again at t = 2(R − L), at x = R again at t = 3(R − L), etc. Mario cannot jump yet, so he can move between two boats if and only if their x-coordinates are equal. Furthermore, although there could be many boats sharing the same x-coordinate at some point in time, we assume that it is possible to move to any of the boats sharing the same x-coordinate.</p>\n<p>Find the minimal time it takes to go from x = 0 to x = W, or determine that it is impossible to reach x = W.</p>",
+  "input": "<p>The input starts with a line containing an integer T, the number of test cases. Then for each test case:</p>\n<ul>\n<li>One line with two space-separated integers N and W (0 ≤ N ≤ 100, 1 ≤ W ≤ 500), the number of boats and the width of the river, respectively.</li>\n<li>N lines, each containing two space-separated integers L<sub>i</sub> and R<sub>i</sub> (0 ≤ L<sub>i</sub> &lt; R<sub>i</sub> ≤ W), representing the range [L<sub>i</sub> , R<sub>i</sub>] covered by boat i.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing an integer, the earliest possible time to reach x = W, or IMPOSSIBLE if it is impossible to reach x = W.</p>",
+  "samples": [
+    {
+      "input": "2\n2 2\n0 1\n1 2\n3 10\n0 8\n2 10\n2 3\n",
+      "output": "IMPOSSIBLE\n24\n"
+    }
+  ],
+  "hint": "<p>In the first test case, the two boats move synchronously so it is not possible to reach one from the other.</p>\n<p>In the second test case, we can transfer to boat 3 at time 2, then to boat 2 at time 16, so that we finish at time 24.</p>",
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2015",
+  "level": 19,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 3.5713999271392822
+}

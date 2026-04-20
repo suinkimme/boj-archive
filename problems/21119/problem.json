@@ -1,0 +1,30 @@
+{
+  "id": 21119,
+  "title": "Belarusian State University",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Being a student of Belarusian State University (BSU) is an earnest reason for pride. While studying the Theory of Algorithms course, you are obliged to solve many challenging problems before you are admitted to the final exam. Here is one of these problems.</p>\n<p>You are given a positive integer $n$ and $4n$ integers $c(i, j, k)$ which can be equal to $0$ or $1$ ($0 \\le i &lt; n$, $j \\in \\left\\{0, 1\\right\\}$, $k \\in \\left\\{0, 1\\right\\}$).</p>\n<p>Consider two integers $x$ and $y$ between $0$ and $2^n - 1$, inclusively. Let $x = \\sum\\limits_{i = 0}^{n - 1}{x_i\\cdot 2^i}$ and $y = \\sum\\limits_{i = 0}^{n - 1}{y_i \\cdot 2^i}$ be their binary representations ($x_i, y_j \\in \\left\\{0, 1\\right\\}$). Define $f(x, y) = \\sum\\limits_{i = 0}^{n - 1}{c(i, x_i, y_i)\\cdot 2^i}$. Clearly, $f(x, y)$ is also an integer between $0$ and $2^n - 1$.</p>\n<p>Given two multisets $A$ and $B$, find the multiset of values $f(a, b)$ over all pairs $(a, b)$, where $a \\in A$, $b \\in B$.</p>",
+  "input": "<p>The first line contains an integer $n$ ($1 \\leq n \\leq 18$).</p>\n<p>The second line contains $n$ binary strings of $4$ digits. The $i$-th string consists of the values of $c(i - 1, 0, 0)$, $c(i - 1, 0, 1)$, $c(i - 1, 1, 0)$, $c(i - 1, 1, 1)$ in this particular order.</p>\n<p>The next two lines describe multisets $A$ and $B$, respectively. The description of a multiset consists of $2^n$ integers $q_0, q_1, \\ldots, q_{2^n - 1}$ denoting the quantities of the numbers $0, 1, \\ldots, 2^n - 1$ in the multiset ($q_i \\ge 0$, $\\sum q_i \\leq 10^9$). There are no other numbers in the multisets.</p>",
+  "output": "<p>Print $2^n$ integers in a single line, the quantities of the numbers $0, 1, \\ldots, 2^n - 1$ in the resulting multiset.</p>",
+  "samples": [
+    {
+      "input": "3\n0111 0110 0001\n0 0 0 0 0 1 0 0\n0 0 0 0 0 0 1 0\n",
+      "output": "0 0 0 0 0 0 0 1\n"
+    },
+    {
+      "input": "2\n1100 1101\n2 0 2 1\n2 0 2 1\n",
+      "output": "2 4 3 16\n"
+    },
+    {
+      "input": "1\n0000\n142857142 857142857\n998244353 1755646\n",
+      "output": "999999998000000001 0\n"
+    }
+  ],
+  "hint": "<p>In the first example, you are given $5$ and $6$. For $x_i, y_i \\in \\left\\{0, 1\\right\\}$, we have $$f(x_0 + 2x_1 + 4x_2, y_0 + 2y_1 + 4y_2) = (x_0 \\text{ OR } y_0) + 2 \\cdot (x_1 \\text{ XOR } y_1) + 4 \\cdot (x_2 \\text{ AND } y_2).$$ Thus, the only number in the resulting multiset is $7$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 8: Belarusian SU Contest, Yandex Cup, Grand Prix of Belarud, Contest, Open Cup, 2020/2021 Season, Stage 12: Grand Prix of Belarus",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.25
+}

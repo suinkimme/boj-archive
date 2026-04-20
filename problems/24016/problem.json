@@ -1,0 +1,22 @@
+{
+  "id": 24016,
+  "title": "Burger Optimization",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>In 2017, Google learned about a serious Android bug: in the burger emoji, the cheese was directly on top of the lower bun, rather than on the patty itself. Really, who makes a burger that way? Sundar, our CEO, vowed to drop everything and address this issue immediately.</p>\n<p>To prevent this sort of situation in the future, the Code Jam team has constructed a mathematical model for understanding burgers. A burger consists of a stack of <b>K</b> ingredients between two buns, with each ingredient appearing exactly once. We are interested in the <i>distance-to-bun</i> value of each ingredient. The distance-to-bun value of an ingredient is the minimum number of other ingredients between the that ingredient and a bun:</p>\n<ul>\n<li>If <b>K</b> is even, then the distance-to-bun values for the ingredients (starting with the ingredient at the top of the stack) are: 0, 1, ..., <b>K</b>/2 - 1, <b>K</b>/2 - 1, ..., 1, 0.</li>\n<li>If <b>K</b> is odd, then they are: 0, 1, ..., ((<b>K</b> - 1) / 2) - 1, (<b>K</b> - 1) / 2, ((<b>K</b> - 1) / 2) - 1, ..., 1, 0.</li>\n</ul>\n<p>After carrying out a lot of focus group testing (and eating a lot of burgers), we have determined that the i-th of each of our <b>K</b> ingredients has an optimal distance-to-bun value of <b>D<sub>i</sub></b>. We think our burger emoji users will be happiest if we choose an ordering for our ingredients that minimizes the <i>error</i> value, which we define as the sum of the squared differences between each ingredient's optimal and actual distance-to-bun values.</p>\n<p>For example, if we have five ingredients A, B, C, D, and E with optimal distance-to-bun values of 0, 2, 1, 1, and 2, and we place them between the buns in that order, then the error is (0-0)<sup>2</sup> + (2-1)<sup>2</sup> + (1-2)<sup>2</sup> + (1-1)<sup>2</sup> + (2-0)<sup>2</sup> = 6. If we instead place them in the order C, E, B, D, A, then the error is (1-0)<sup>2</sup> + (2-1)<sup>2</sup> + (2-2)<sup>2</sup> + (1-1)<sup>2</sup> + (0-0)<sup>2</sup> = 2, which turns out to be the minimum possible error for these ingredients.</p>\n<p>Given the list of optimal distance-to-bun values for our ingredients, can you help us determine the smallest possible error?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>; <b>T</b> test cases follow. Each begins with one line containing an integer <b>K</b>: the number of ingredients in our burger. Then, there is one more line containing <b>K</b> integers <b>D<sub>i</sub></b>, the optimal distance-to-bun values of our ingredients.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the smallest possible error, as described above.</p>",
+  "samples": [
+    {
+      "input": "3\n5\n0 2 1 1 2\n1\n0\n6\n2 2 2 2 2 2\n",
+      "output": "Case #1: 2\nCase #2: 0\nCase #3: 10\n"
+    }
+  ],
+  "hint": "<p>Sample Case #1 is the one illustrated in the problem statement.</p>\n<p>In Sample Case #2, there is only one ingredient in the burger; that is not much of a burger, but our model has to be able to handle this base case! There is no confusion over how to place the one ingredient, and the error is 0.</p>\n<p>In Sample Case #3, there are six ingredients, but all of them have an optimal distance-to-bun of 2. Any way of placing them is equivalent, and the error is 2<sup>2</sup> + 1<sup>2</sup> + 0<sup>2</sup> + 0<sup>2</sup> + 1<sup>2</sup> + 2<sup>2</sup> = 10.</p>",
+  "source": "Contest, Google, Code Jam to I/O for Women, Code Jam to I/O for Women 2018, Code Jam to I/O for Women 2018",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,39 @@
+{
+  "id": 25243,
+  "title": "가희와 중부내륙선",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>중부 내륙선은 2021년 12월 31일에 개통된 단선 철도입니다. 하행 열차는 부발역을 출발하여 가남, 감곡장호원, 앙성온천, 충주 순으로 멈추고, 상행 열차는 충주를 출발하여 앙성온천, 감곡장호원, 가남, 부발역 순으로 멈춥니다. 각 구간의 소요 시간은 [표 1]과 같습니다.</p>\n<table align=\"center\" border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 400px;\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">구간</td>\n<td style=\"text-align: center;\">소요 시간</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">부발 ~ 가남</td>\n<td style=\"text-align: right;\">7</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">가남 ~ 감곡장호원</td>\n<td style=\"text-align: right;\">7</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">감곡장호원 ~ 앙성온천</td>\n<td style=\"text-align: right;\">8</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">앙성온천 ~ 충주</td>\n<td style=\"text-align: right;\">10</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\"><strong>[표 1] 각 구간의 소요 시간</strong></p>\n<p>중부내륙선은 단선이어서, 구간에는 한 열차만 운행할 수 있습니다. 하지만, 역에는 상행 열차 여러 대와 하행 열차 여러 대가 동시에 정차할 수 있습니다. 하행 열차와 상행 열차는 아래 알고리즘으로 운행됩니다.</p>\n<table align=\"center\" border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 800px;\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">순번</td>\n<td style=\"text-align: center;\">하행</td>\n<td style=\"text-align: center;\">상행</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">부발역에서 HH시 mm분에 문을 닫는다.</td>\n<td style=\"text-align: center;\">충주역에서 HH시 mm분에 문을 닫는다.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">구간 부발 ~ 가남을 운행한다.</td>\n<td style=\"text-align: center;\">구간 앙성온천 ~ 충주를 운행한다.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">1분간 가남역에 머무르고 문을 닫는다.</td>\n<td style=\"text-align: center;\">1분간 앙성온천역에 머무르고 문을 닫는다.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">구간 가남 ~ 감곡장호원을 운행한다.</td>\n<td style=\"text-align: center;\">구간 감곡장호원 ~ 앙성온천을 운행한다.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">1분간 감곡장호원역에 머무르고 문을 닫는다.</td>\n<td style=\"text-align: center;\">1분간 감곡장호원역에 머무르고 문을 닫는다.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">구간 감곡장호원 ~ 앙성온천을 운행한다.</td>\n<td style=\"text-align: center;\">구간 가남 ~ 감곡장호원을 운행한다.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">7</td>\n<td style=\"text-align: center;\">1분간 앙성온천역에 머무르고 문을 닫는다.</td>\n<td style=\"text-align: center;\">1분간 가남역에 머무르고 문을 닫는다.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">8</td>\n<td style=\"text-align: center;\">구간 앙성온천 ~ 충주를 운행한다.</td>\n<td style=\"text-align: center;\">구간 부발 ~ 가남을 운행한다.</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">9</td>\n<td style=\"text-align: center;\">충주역에 도착하면 운행을 종료한다.</td>\n<td style=\"text-align: center;\">부발역에 도착하면 운행을 종료한다.</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\"><strong>[표 2] 하행, 상행 열차의 운행 알고리즘</strong></p>\n<p>표 2는 하행 열차와 상행 열차가 시발역에서 종착역까지 가기 위해서 수행하는 일들을 나타냅니다. <strong>이 중 순번 2, 4, 6, 8은 구간을 운행하는 것이므로</strong> 관제의 허가를 받아야 합니다. 허가를 받지 못하면 받을 때까지 대기했다가 수행합니다. 하행에서의 <code>A</code>역 다음 역이 <code>B</code>역이라고 했을 때, 관제는 구간 <code>A ~ B</code>에 대해서</p>\n<ol>\n<li>구간 <code>A ~ B</code>를 운행하는 열차가 있는 경우, 다른 열차가 구간 <code>A ~ B</code>에 접근하는 것을 허용하지 않습니다.</li>\n<li>그렇지 않은 경우\n\t<ol>\n<li><code>A</code>역에서 구간 <code>A ~ B</code>를 운행하려고 하는 하행 열차 <code>h</code>만 있다면, <code>h</code>가 구간 <code>A ~ B</code>를 운행하는 것을 허용합니다.</li>\n<li><code>B</code>역에서 구간 <code>A ~ B</code>를 운행하려고 하는 상행 열차 <code>s</code>만 있다면, <code>s</code>가 구간 <code>A ~ B</code>를 운행하는 것을 허용합니다.</li>\n<li>그렇지 않은 경우\n\t\t<ol>\n<li><strong>시발역에서 먼저 운행을 시작한 열차</strong>가 구간<code>A ~ B</code>를 운행하는 것을 허용합니다.</li>\n<li>2 - 3 - 1로도 결정할 수 없다면, <strong>편성 번호가 더 낮은 열차</strong>가 구간 <code>A ~ B</code>를 운행하는 것을 허용합니다.</li>\n</ol>\n</li>\n</ol>\n</li>\n</ol>\n<p>충주로 향하는 하행 열차 <em>C</em>편성, 부발로 향하는 상행 열차 <em>H</em>편성이 있을 때, 각 편성이 종착역에 도착하는 시각을 구해 주세요. </p>",
+  "input": "<p>첫 번째 줄에 <em>C</em>와 <em>H</em>가 공백을 구분으로 해서 주어집니다.</p>\n<p>다음 <em>C</em>개의 줄에는 충주로 향하는 하행 열차의 번호와, 해당 열차가 시발역에서 운행을 시작한 시각이 <code>HH:mm</code>형식으로 주어집니다.</p>\n<p>다음 <em>H</em>개의 줄에는 부발로 향하는 상행 열차의 번호와, 해당 열차가 시발역에서 운행을 시작한 시각이 <code>HH:mm</code>형식으로 주어집니다.</p>",
+  "output": "<p>각 열차가 종착 (상행선의 경우 부발, 하행선의 경우 충주)역에 도착하는 시각을 열차 번호 오름차순으로 출력해 주세요. 시각은 <code>HH:mm</code>형식으로 출력해 주세요.</p>\n<p>자정이 넘어 도착하는 경우, 다음날 <code>HH:mm</code> 에 도착했다고 출력해 주세요.</p>",
+  "samples": [
+    {
+      "input": "1 1\n731 07:10\n732 07:20\n",
+      "output": "07:45\n07:58\n"
+    },
+    {
+      "input": "2 1\n731 07:10\n733 07:18\n732 23:50\n",
+      "output": "07:45\n00:25\n07:55\n"
+    },
+    {
+      "input": "1 1\n731 07:32\n732 07:20\n",
+      "output": "08:14\n07:55\n"
+    },
+    {
+      "input": "1 1\n731 07:10\n732 23:50\n",
+      "output": "07:45\n00:25\n"
+    }
+  ],
+  "hint": "<ul>\n<li>시발역은 열차가 운행을 시작하는 역이고, 종착역은 열차가 운행을 마치는 역입니다.</li>\n<li>문제의 단순화를 위해 아래의 요소들은 무시하셔도 좋습니다.\n\t<ul>\n<li>앙성온천 ~ 충주 구간에 있는 <strong>금가 신호장</strong></li>\n<li>부발역 근처에서 <strong>경강선 전철과의 경합</strong></li>\n<li>부발 기지에 속해 있는 이음 편성의 수</li>\n</ul>\n</li>\n</ul>",
+  "source": "Contest, BOJ User Contest, 가희와 함께 하는 코딩 테스트, 가희와 함께 하는 코딩테스트 4회, chogahui05, bnb2011, chansol, mjhmjh1104, parkky, pjshwa, quickn, tony9402",
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "implementation",
+    "priority_queue",
+    "simulation"
+  ],
+  "accepted_user_count": 36,
+  "submission_count": null,
+  "average_tries": 2.4444000720977783
+}

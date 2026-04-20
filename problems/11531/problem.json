@@ -1,0 +1,28 @@
+{
+  "id": 11531,
+  "title": "ACM 대회 채점",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>이 대회의 채점 프로그램은 각 팀별로 시간 순서대로 쌓인&nbsp;제출 로그를 분석하여 결과를 낸다. 각각의 로그는 제출 시각, 문제 이름, 제출 결과(통과, 실패)를 포함하고 있다. 예를 들어, 어떤 팀의 가상 제출 로그가 아래와 같다고 하자.</p>\r\n\r\n<pre>\r\n3 E right\r\n10 A wrong\r\n30 C wrong\r\n50 B wrong\r\n100 A wrong\r\n200 A right\r\n250 C wrong\r\n300 D right</pre>\r\n\r\n<p>팀의 순위를 산정하기 위한 점수는 푼 문제 수를 우선으로, 푼 문제 수가 같다면 페널티를 기준으로 매겨진다. 페널티는 푼 문제에 대해서만 매겨지며, 문제를 맞힌 시각 + 틀린 횟수*20으로 정해진다. 만일 아무 문제도 풀지 못했다면 페널티는 0이다.</p>\r\n\r\n<p>위의 예제에서, 우리는 이 팀이 세 개의 문제를 해결했음을 알 수가 있다. 대회 시각 3분째에 첫 제출로&nbsp;문제 E를 해결했으며, 문제 A에 대해서는 세 번을 제출하여 200분째에&nbsp;정답을 받았고, 문제 D는 300분째에 한 번의 제출로 해결하였다. 위 로그를 기반으로 산정한 페널티는 543이 되는데, 이는 E를 해결한 시각 3과 A를 해결한 시각 200, A를 두 번 틀린 페널티 40, D를 해결한 시각 300을 더한 값이다. 문제 B와 C에 대해서도 제출 기록은 있지만, 해결하지 못했으므로 페널티에는 영향을 주지 않았다.</p>\r\n\r\n<p>대회 룰에 따르면, 만일 팀이 어떤 문제를 해결했다면 그 문제에 대한 추가적인 제출은 모두 무시된다(따라서 로그에도 남지 않는다). 제출 시각이 연속적으로 기록되지 않고 이산화되어있기 때문에, 같은 시각에 여러 제출이&nbsp;있을 수도 있다. 하지만 제출 자체는 시간 순으로 이루어졌으므로, 같은 시각에 같은 문제를 제출한 로그가 남아 있다면 마지막 제출을 제외한 모든 제출은 오답이었을 것이다.</p>\r\n\r\n<p>두 번째 예시로, 아래의 제출 로그를 보자.</p>\r\n\r\n<pre>\r\n7 H right\r\n15 B wrong\r\n30 E wrong\r\n35 E right\r\n80 B wrong\r\n80 B right\r\n100 D wrong\r\n100 C wrong\r\n300 C right\r\n300 D wrong</pre>\r\n\r\n<p>위 팀은 4개의 문제를 해결했으며, 총 페널티는 502가 된다. 이는 H번에 대해 7, E번에 대해 35+20, B번에 대해 80+40, C번에 대해 300+20을 합산한 값이다.</p>\r\n",
+  "input": "<p>로그가 n줄에 걸쳐 주어진다. (0 &le; n &le; 100)</p>\r\n\r\n<p>각 로그는 공백으로 구분된 세 파트로 이루어지며,&nbsp;정수 m, 문제 이름, 결과를 의미한다. (0 &le; m&nbsp;&le; 300, 문제 이름은 알파벳 대문자, 결과는 &quot;right&quot;&nbsp;또는 &quot;wrong&quot;)</p>\r\n\r\n<p>로그는 제출 시각이 감소하지 않는 순서로 주어지며, 동일한 시각에 제출된 로그가 여러 개일 수도 있다.</p>\r\n\r\n<p>모든 로그가&nbsp;주어진&nbsp;뒤&nbsp;마지막 줄엔&nbsp;정수 -1 하나가 주어진다.</p>\r\n",
+  "output": "<p>푼 문제 수와 총 걸린 시간(페널티 포함)을&nbsp;출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3 E right\n10 A wrong\n30 C wrong\n50 B wrong\n100 A wrong\n200 A right\n250 C wrong\n300 D right\n-1\n",
+      "output": "3 543\n"
+    },
+    {
+      "input": "7 H right\n15 B wrong\n30 E wrong\n35 E right\n80 B wrong\n80 B right\n100 D wrong\n100 C wrong\n300 C right\n300 D wrong\n-1\n",
+      "output": "4 502\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Mid-Central Regional, 2015 Mid-Central Regional Programming Contest, portableangel, dreammusic23",
+  "level": 4,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 717,
+  "submission_count": null,
+  "average_tries": 1.2705999612808228
+}

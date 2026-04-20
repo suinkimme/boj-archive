@@ -1,0 +1,22 @@
+{
+  "id": 21171,
+  "title": "Staggering to the Finish",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>An oval track and field racing track consists of two parallel straightaway sections connected by two semicircles, depicted in Figure 1.  Footraces run in the counterclockwise direction, ending at a common finish line located along the lower straightaway.  For races that exceed the length of a single straightaway, starting lines must be staggered backwards, in the clockwise direction, from the finish line.  The staggered starting lines must account for the curve of the semicircles and the widths of each running lane.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 512px; height: 259px;\"/></p>\n<p style=\"text-align: center;\">Figure 1: Oval track with $200$m starting lines.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 512px; height: 337px;\"/></p>\n<p style=\"text-align: center;\">Figure 2: Inset showing staggered starting line locations.</p>\n<p>There are international standards for oval track dimensions. Unfortunately, the available area for a track doesn't always hold a standard track.  Given the dimensions of the track and the length of the race, your team is to write a program to ensure equal race lengths by computing the staggered starting line positions.</p>\n<p>The total distance of a race for any given lane is computed from the <em>line of running</em>.  The line of running is an unmarked line to the right of the lane's inside marker (as seen from the counterclockwise direction).  See Figure 2.  For the innermost lane (lane 1) the line of running is usually farther from the lane marker than for the remaining lanes.</p>\n<p>The track is mapped to an $(x, y)$ coordinate system with $(0, 0)$ at the center of the track.  See Figure 1.</p>",
+  "input": "<p>The first line of input to your program contains seven values, $N$ $R$ $S$ $W$ $F$ $L_1$ $L_2$, separated by whitespace, describing the geometry of a track, where:</p>\n<ul>\n<li>$N$ is the integer number of lanes. ($1 \\le N \\le 9$)</li>\n<li>$R$ is the inner radius of lane 1, a real number in meters.  See Figure 1.  ($1.0 \\le R \\le 100.0$)</li>\n<li>$S$ is the length of the straightaway, a real number in meters. See Figure 1.  ($1.0 \\le S \\le 200.0$)</li>\n<li>$W$ is the width of each lane, a real number in meters. See Figure 2.  ($0.5 \\le W \\le 3.0$)</li>\n<li>$F$ is the $x$-coordinate of the finish line, measured from the centerline in Figure 1, a real value in meters.  The finish line will always be in the lower (negative $y$) half of the track.  ($\\vert F\\vert \\le S / 2$)</li>\n<li>$L_1$ is the offset from the inner radius of lane 1 to the line of running for lane 1, a real number in meters. See Figure 2.  ($0 \\le L_1 &lt; W$)</li>\n<li>$L_2$ is the offset from the inner radius to the lines of running for lanes 2 and higher.  See Figure 2.  ($0 \\le L_2 &lt; W$)</li>\n</ul>\n<p>The remaining lines until end-of-file specify $D$, the distance of a race, one race per line, a real number in meters. ($1.0 \\le D &lt; 410.0$.) There will be at most $100$ distances $D$ in input.</p>",
+  "output": "<p>Your program is to print a series of values for each race distance, separated from each other by spaces and/or newlines. Print the race distance first, followed by the $(x, y)$ coordinates of the staggered starting line locations in lane number order. Express all values in meters.  The $(x, y)$ coordinate is the innermost point of a lane, NOT the line of running. Treat each lane <em>marker</em> (straightaway or radius) as a zero-width line. International standards require that the values be within $0.001$ meters of the exact answer.</p>",
+  "samples": [
+    {
+      "input": "4 36.5 84.39 1.22 40.0 0.30 0.20\n200.0\n400\n",
+      "output": "200.000 -40.0006 36.5000 -43.5119 37.6970 -47.3108 38.6025 -51.0664 39.1679\n400.000 40.0012 -36.5000 46.9998 -37.4127 54.4292 -36.9682 61.4438 -35.2464\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North Central North America Regional, NCNA 2020, ICPC, Regionals, North America, Southern California Regional, 2020 Southern California Regional",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.166700005531311
+}

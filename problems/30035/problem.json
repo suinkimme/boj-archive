@@ -1,0 +1,33 @@
+{
+  "id": 30035,
+  "title": "Tier and Rank",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>대학에 입학한 성은이는 게임을 하진 않았지만, 주변 친구들이 유행하는 게임 \"Legend Legend\"의 티어를 자랑하는 것에 관심이 생겼다. 티어란 게임 내 유저의 실력을 나타내기 위해 유저 등수를 기반으로 매겨지는 등급 시스템이다. 게임의 총 유저 수가 $N$명일 때, 게임 내 유저의 등수는 $1$ 이상 $N$ 이하의 정수로 서로 다르다. </p>\n<p>\"Legend Legend\" 게임의 티어를 정하는 프로세스는 아직 티어가 정해지지 않은 유저 중에서 등수가 높은 유저부터 차례대로 상위 티어를 배정하고, 남은 사람들을 하위 티어에 배정하는 재귀적인 프로세스이다. 이때, 티어가 정해지지 않은 유저 중 상위 몇 명을 고르는 기준에 따라 <strong>고정 티어</strong>와 <strong>상대 티어</strong>로 나뉜다. 아직 티어가 정해지지 않고 남은 유저가 $M$명이라고 할 때, <strong>고정 티어</strong>와 <strong>상대 티어</strong>가 수용하는 인원수는 아래와 같이 정해진다.</p>\n<ul>\n<li>$K$명 수용할 수 있는 <strong>고정 티어</strong>: $\\min(M, K)$</li>\n<li>$K$% 수용할 수 있는 <strong>상대 티어</strong>: $\\lfloor \\frac{M \\times K}{100} \\rfloor$ ($\\lfloor x \\rfloor $)는 $x$ 이하의 가장 큰 정수를 의미한다)</li>\n</ul>\n<p>상위 티어부터 하위 티어 순으로, 티어가 수용하는 인원수만큼 해당 티어를 배정하고 다음 티어 차례로 넘어가는 것을 반복한다. 이 과정에서 모든 유저의 티어가 정해지지 않으면 <strong>올바르지 않은 등급 시스템</strong>이다.</p>\n<p>\"Legend Legend\"는 같은 티어 안에서도 유저의 실력을 가르기 위해, 각각의 티어를 $4$개로 나눈 뒤 숫자 $1$, $2$, $3$, $4$를 붙여서 세분화하고, 이름 뒤에 숫자를 붙여 함께 부른다. 붙은 숫자가 작을수록 더 높은 세분화된 티어이다. 어떤 티어에 속하는 유저의 수가 $L$명이라면, $4$개로 세분화된 티어에는 각각 최대 $\\lceil \\frac{L}{4} \\rceil$명의 유저를 수용할 수 있다. ($\\lceil x \\rceil $는 $x$이상의 가장 작은 정수를 의미한다). 유저는 순위가 높은 순서대로 가장 높은 세분화된 티어부터 최대 수용 인원을 채울 때까지 차례대로 배정된다.</p>\n<p>유저는 자신의 티어를 자랑할 때, \"Grandmaster3\"이라고 세분화된 티어로 말하는 경우도 있지만, \"Grandmaster\"라고 티어만 말하는 경우도 있다. 문득 성은이는 자신이 들은 친구의 티어(또는 세분화된 티어)로부터, 이 친구의 게임 내 등수의 가능한 범위를 알고 싶어졌다. 성은이를 대신해서 이 문제를 해결하자.</p>",
+  "input": "<p>첫째 줄에 \"Legend Legend\" 게임의 유저 수 $N$와 티어의 수 $T$가 공백으로 구분되어 주어진다. ($1 \\leq N \\leq 10^{9}$, $1 \\leq T \\leq 10^{3}$)</p>\n<p>두 번째 줄부터 $T+1$ 번째 줄까지 티어에 대한 정보가 상위 티어부터 주어진다. 티어의 이름은 영문자 대문자와 소문자로 구성된 길이 $1000$ 이하의 문자열이며 티어의 이름은 모두 다르다.</p>\n<ul>\n<li><strong>고정 티어</strong>의 경우 티어 이름과 해당 티어가 수용할 수 있는 최대 인원수 $K$가 공백으로 구분되어 주어진다. (K는 $0 \\leq K \\leq N$ 을 만족하는 정수)</li>\n<li><strong>상대 티어</strong>의 경우 티어 이름 뒤에 공백을 두고 백분율이 \"$K$%\"의 형식으로 주어진다. $K$는 티어 배정 프로세스 중, 아직 티어가 정해지지 않은 인원 중에서 해당 티어가 수용하는 사람들의 백분율 의미한다. (K는 $0 \\leq K \\leq 100$ 을 만족하는 정수)</li>\n</ul>\n<p>마지막 줄에는 친구가 자랑한 티어(또는 세분화된 티어)가 주어진다. 즉 티어 이름이 주어지거나, 티어 이름 뒤에 $1$ 이상 $4$ 이하 숫자가 이어진 형식으로 주어진다.</p>",
+  "output": "<p>만약 주어진 티어들로 \"Legend Legend\"의 모든 유저의 티어를 정할 수 없다면 올바르지 않은 등급 시스템이므로 첫째 줄에 <code><span style=\"color:#e74c3c;\"><strong>Invalid System</strong></span></code>이라고 출력한다. 그 외의 경우에, 친구가 자랑한 티어가 게임의 티어 시스템 내에서 실제 유저의 티어로 가능하지 않다면 <span style=\"color:#e74c3c;\"><strong><code>Liar</code></strong></span>를 출력한다. 만약 티어 시스템에도 문제가 없고, 친구의 티어가 실제 유저의 티어로 가능한 티어라면 해당 친구의 게임 내 등수로 가능한 <strong>최소 등수, 최대 등수를 공백으로 구분하여</strong> 순서대로 출력한다.</p>",
+  "samples": [
+    {
+      "input": "100 3\nChallenger 10\nMaster 50%\nDiamond 45\nMaster4\n",
+      "output": "47 55\n"
+    },
+    {
+      "input": "100 3\nChallenger 10\nMaster 45\nDiamond 99%\nDiamond\n",
+      "output": "Invalid System\n"
+    },
+    {
+      "input": "1000 4\nInternationalGrandmaster 3\nGrandmaster 7\nMaster 10%\nExpert 100%\nInternationalGrandmaster4\n",
+      "output": "Liar\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 유틸컵, 제1회 유틸컵 - Chapter 2, red1108, chogahui05, heeda0528, index, kidw0124, kiwiyou, snrnsidy, utilforever",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 167,
+  "submission_count": null,
+  "average_tries": 5.173699855804443
+}

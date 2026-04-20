@@ -1,0 +1,28 @@
+{
+  "id": 22877,
+  "title": "가위바위보 버블 정렬",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>이환이는 4차 산업혁명 시대에 살고 있는 천재 5살 아기이다. 가위바위보를 즐기는 이환이는 집에서도 혼자 가위바위보를 하고 싶어서 창의력을 발휘해 카드를 이용한 게임을 만들었다. 게임을 하려면 먼저 &#39;가위&#39;, &#39;바위&#39; 또는 &#39;보&#39;가 그려진 카드 $N$장을 일렬로 나열해 놓아야 한다. 그러고 나서, 가장 왼쪽에 있는 카드부터 차례대로 보면서 만약 그 카드가 바로 오른쪽에 있는 카드를 이긴다면 두 카드의 위치를 바꾸고, 그렇지 않다면 그대로 두는 것을 반복한다. 이렇게 마지막에서 두 번째 카드까지 한 번씩 훑어보면 놀이 한 번이 끝난다.</p>\r\n\r\n<p>이환이는 이 놀이의 과정이 버블 정렬과 비슷하기 때문에 &#39;가위바위보 버블 정렬&#39;이라고 부르기로 했다. 카드의 승패 관계는 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>&#39;가위&#39;가 그려진 카드는 &#39;보&#39;가 그려진 카드를 이긴다.</li>\r\n\t<li>&#39;바위&#39;가 그려진 카드는 &#39;가위&#39;가 그려진 카드를 이긴다.</li>\r\n\t<li>&#39;보&#39;가 그려진 카드는 &#39;바위&#39;가 그려진 카드를 이긴다.</li>\r\n</ul>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 450px; height: 258px;\" /></p>\r\n\r\n<p>계산이 아주 빠른 이환이는 이 놀이를 무려 $T$번이나 했다! 피곤해진 이환이는 내일 이 놀이를 계속하기로 하고 잠을 자러 가려고 했으나, 카드 위를 지나가다 그만 카드들이 뒤섞여 버렸다. 이환이는 뛰어난 기억력을 가진 천재이기 때문에 맨 처음 카드들의 배열을 기억해 냈지만, 마지막 카드 배열은 기억하지 못했다. 놀이를 $T$번 한 후의 배열을 복원해서 이환이를 도와 주자.</p>\r\n",
+  "input": "<p>첫 번째 줄에는 카드의 개수 $N$($ 2 \\leq N \\leq 500\\ 000 $)과 놀이를 한 횟수 $T$($1 \\leq T \\leq 1\\ 000\\ 000\\ 000$)가 주어진다.</p>\r\n\r\n<p>두 번째 줄에는 맨 처음 카드들의 배열을 나타내는 길이 $N$의 문자열이 주어진다. $i$번째 문자는 $i$번째 위치에 놓인 카드의 종류를 나타낸다. &#39;가위&#39;가 그려진 카드는 <code>S</code>, &#39;바위&#39;가 그려진 카드는 <code>R</code>, &#39;보&#39;가 그려진 카드는 <code>P</code>이다.</p>\r\n",
+  "output": "<p>$T$번 놀이를 한 후 카드들의 배열을 길이 $N$의 문자열로 출력한다. 마찬가지로 &#39;가위&#39;는 <code>S</code>, &#39;바위&#39;는 <code>R</code>, &#39;보&#39;는 <code>P</code>이다.</p>\r\n",
+  "samples": [
+    {
+      "input": "5 1\nRSPSP\n",
+      "output": "SRPPS\n"
+    },
+    {
+      "input": "10 3\nRSRRRRRRSR\n",
+      "output": "SRRRRSRRRR\n"
+    }
+  ],
+  "hint": "<p>첫 번째 예제에서, 이환이는 한 번의 놀이를 한다.</p>\r\n\r\n<ol>\r\n\t<li>첫 번째 카드 <code>R</code>(바위)은 두 번째 카드 <code>S</code>(가위)를 이기므로 두 카드를 서로 바꾼다. 이때 배열은 <code>SRPSP</code>가 된다.</li>\r\n\t<li>두 번째 카드 <code>R</code>(바위)은 세 번째 카드 <code>P</code>(보)에게 지므로 위치를 바꾸지 않는다.</li>\r\n\t<li>세 번째 카드 <code>P</code>(보)는 네 번째 카드 <code>S</code>(가위)에게 지므로 위치를 바꾸지 않는다.</li>\r\n\t<li>네 번째 카드 <code>S</code>(가위)는 마지막 카드 <code>P</code>(보)를 이기므로 두 카드를 서로 바꾼다. 이때 배열은 <code>SRPPS</code>가 된다.</li>\r\n</ol>\r\n\r\n<p>따라서 놀이가 끝난 후 카드들의 배열은 <code>SRPPS</code>이다.</p>\r\n\r\n<p>두 번째 예제에서, 이환이는 세 번의 놀이를 한다. 각 놀이가 끝난 후 카드들의 배열은 다음과 같이 변한다.</p>\r\n\r\n<p><code>RSRRRRRRSR</code> $\\rightarrow$ <code>SRRRRRRSRR</code> $\\rightarrow$ <code>SRRRRRSRRR</code> $\\rightarrow$ <code>SRRRRSRRRR</code></p>\r\n\r\n<p>따라서 놀이가 끝난 후 카드들의 배열은 <code>SRRRRSRRRR</code>이다.&nbsp;</p>\r\n",
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2021, Contest, Open Cup, 2021/2022 Season, Stage 17: Grand Prix of Seoul, benedict0724, ainta, cki86201, doju, evenharder, functionx, jh05013, koosaga, pichulia, taeyeon_ss, xiaowuc1",
+  "level": 19,
+  "tags": [
+    "ad_hoc"
+  ],
+  "accepted_user_count": 154,
+  "submission_count": null,
+  "average_tries": 1.8312000036239624
+}

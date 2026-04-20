@@ -1,0 +1,22 @@
+{
+  "id": 3768,
+  "title": "Stargates",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>\"A Long Time Ago, in a Galaxy Far, Far Away...\" one advanced civilization discovered a manner of instant traveling between solar systems. Since that moment, they have devoted all their efforts to constructing pairs of stargates that connect distant planets. Soon enough communication network became so complex that they require help to maintain information about the connected worlds.</p>\n<p>Write a program that will help them maintain information about the connected systems and we will make sure that the best of your solutions will be forwarded to their space-time continuum. Planets A and B are connected if there is a direct stargate connection between them, or there is a planet sequence P<sub>1</sub>, P<sub>2</sub>, ..., P<sub>n</sub> where P<sub>1</sub>=A, P<sub>n</sub>=B and there is a direct stargate connection between P<sub>k</sub> and P<sub>k-1</sub>, k ∈ {2..n} . Connections are bidirectional. There can be multiple connection paths between two planets.</p>",
+  "input": "<p>Input file consist of multiple data sets. Each data set occupies one or more lines. There are no empty lines in the input file. Each line starts with a single letter ‘D’, ‘C’ or ‘Q’ (upper or lower case) followed by 1 to 5 integers with following meaning:</p>\n<ul>\n<li>‘D’ (define) has only one argument which defines number of planets N considered in following data set (N&lt;=6000000, planets are numerated from 1..N).</li>\n<li>‘C’ (connect) creates a connection between a given pair(s) of planets.</li>\n<li>‘Q’ (query) examines if a given pair(s) of planets are connected.</li>\n</ul>\n<p>Both ‘C’ and ‘Q’ command (‘X’ in following text) share the same syntax:</p>\n<ul>\n<li>X src dst – Creates a connection (or query) between given pair of planets (src, dst).</li>\n<li>X src dst nnn – Creates a connection (or query) between src planet and nnn consecutive planets numerated from dst.</li>\n</ul>\n<p>Example: X 1 100 3 creates following links (1,100), (1,101), (1,102).</p>\n<ul>\n<li>X src dst nnn step – Creates a connection (or query) between src planet and nnn planets numerated from dst with given step.</li>\n</ul>\n<p>Example: X 1 100 3 5 creates following links (1,100), (1,105), (1,110).</p>\n<ul>\n<li>X src dst nnn dststep srcstep – Creates a connection (or query) between nnn pairs of planets numerated from src with srcstep and dst with dststep respectively.</li>\n</ul>\n<p>Example: X 1 100 3 5 15 creates following links (1,100), (16,105), (31,110).</p>",
+  "output": "<p>Output file contains one line pre each query (‘Q’) line in the input file. Each line contains two numbers separated by space dash space sequence. First value represents number of connected planet pairs from appropriate query while second represents number of disconnected planet pairs.</p>",
+  "samples": [
+    {
+      "input": "d 5\nC 1 3\nD 20\nq 1 3\nc 1 10 10\nQ 1 2 18 1 1\n",
+      "output": "0 - 1 \n9 - 9\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2006",
+  "level": null,
+  "tags": [],
+  "accepted_user_count": null,
+  "submission_count": null,
+  "average_tries": null
+}

@@ -1,0 +1,32 @@
+{
+  "id": 13289,
+  "title": "Arcade!",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"height:205px; width:314px\"/></p>\n<p>Have you recently visited an arcade? Arcade games seem to have become more boring over the years, requiring less and less skill. In fact, most arcade games these days seem to depend entirely on luck. Consider the arcade game shown in the picture, which consists of different holes arranged in a triangular shape. A ball is dropped near the hole at the top. The ball either falls into the hole, in which case the game ends, or it bounces to one of its (up to) 4 neighbors, denoted by the red arrows. Different holes have different payouts — some may even be negative! If the ball reaches another hole, the process repeats: the ball either falls into the hole, ending the game — or it bounces to one of its neighbors, possibly ad infinitum!</p>\n<p>Write a program that computes the expected payout when dropping a ball into the machine!</p>",
+  "input": "<p>The input consists of a single test case. The first line contains an integer N (1 ≤ N ≤ 32) describing the number of rows of the arcade machine. The second line contains H = N(N + 1)/2 integers v<sub>i</sub> (−100 ≤ v<sub>i</sub> ≤ 100) describing the payout (positive or negative) if the ball drops into hole i. Holes are numbered such that hole 1 is in the first row, holes 2 and 3 are in the second row, etc. The k<sup>th</sup> row starts with hole number k(k − 1)/2 + 1 and contains exactly k holes.</p>\n<p>These two lines are followed by H lines, each of which contains 5 real numbers p<sub>0</sub> p<sub>1</sub> p<sub>2 </sub>p<sub>3</sub> p<sub>4</sub>, denoting the probability that the ball bounces to its top-left (p<sub>0</sub>), top-right (p<sub>1</sub>), bottom-left (p<sub>2</sub>), or bottom-right (p<sub>3</sub>) neighbors or that the ball enters the hole (p<sub>4</sub>). Each probability is given with at most 3 decimal digits after the period. It is guaranteed that 0.0 ≤ p<sub>i</sub> ≤ 1.0 and Σp<sub>i</sub> = 1.0. If a hole does not have certain neighbors because it is located near the boundary of the arcade machine, the probability of bouncing to these non-existent neighbors is always zero. For instance, for hole number 1, the probabilities to jump to the top-left and top-right neighbors are both given as 0.0.</p>\n<p>You can assume that after the ball has bounced b times, the probability that it has not fallen into a hole is at most (1 − 10<sup>−3</sup>)<sup>[b/H]</sup>.</p>",
+  "output": "<p>Output a single number, the expected value from playing one game. Your answer is considered correct if its absolute or relative error is less than 10<sup>−4</sup>.</p>\n<p>Hint: Using Monte Carlo-style simulation (throwing many balls in the machine and simulating which hole they fall into using randomly generated choices) does not yield the required accuracy!</p>",
+  "samples": [
+    {
+      "input": "4\n40 30 30 40 20 40 50 30 30 50\n0.0 0.0 0.45 0.45 0.1\n0.0 0.3 0.3 0.3 0.1\n0.3 0.0 0.3 0.3 0.1\n0.0 0.3 0.3 0.3 0.1\n0.2 0.2 0.2 0.2 0.2\n0.3 0.0 0.3 0.3 0.1\n0.0 0.8 0.0 0.0 0.2\n0.4 0.4 0.0 0.0 0.2\n0.4 0.4 0.0 0.0 0.2\n0.8 0.0 0.0 0.0 0.2\n",
+      "output": "32.6405451448\n"
+    },
+    {
+      "input": "2\n100 50 50\n0.0 0.0 0.45 0.45 0.1\n0.0 0.90 0.0 0.0 0.10\n0.90 0.0 0.0 0.0 0.10\n",
+      "output": "76.31578947368\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Qualification Contest, ACM-ICPC North America Qualifier 2016",
+  "level": 19,
+  "tags": [
+    "dp",
+    "gaussian_elimination",
+    "graphs",
+    "linear_algebra",
+    "math"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 2.25
+}

@@ -1,0 +1,24 @@
+{
+  "id": 15071,
+  "title": "The Key to Cryptography",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Suppose you need to encrypt a top secret message like “SEND MORE MONKEYS\". You could use a simple substitution cipher, where each letter in the alphabet is replaced with a different letter. However, these ciphers are easily broken by using the fact that certain letters of the alphabet (like ‘E’, ‘S’, and ‘A’) appear more frequently than others (like ‘Q’, ‘Z’, and ‘X’). A better encryption scheme would vary the substitutions used for each letter. One such system is the autokey cipher.</p>\n<p>To encrypt a message, you first select a secret word – say “ACM\" – and prepend it to the front of the message. This longer string is truncated to the length of the message and called the key, and the n th letter of the key is used to encrypt the n th letter of the original message. This encryption is done by treating each letter in the key as a cyclic shift value for the corresponding letter in the message, where ‘A’ indicates a shift of 0, ‘B’ a shift of 1, and so on. Using “ACM\" as the secret word, we would encrypt our message as follows:</p>\n<pre>\n SENDMOREMONKEYS (message)\n ACMSENDMOREMONK (key)\n------------------------------\n SGZVQBUQAFRWSLC (ciphertext)</pre>\n<p>Note that the letter ‘E’ in the message was encrypted as ‘G’ the first time it was encountered (since the corresponding letter in the key was ‘C’ indicating a shift of 2), but then as ‘Q’ and ‘S’ the next two times.</p>\n<p>Your task is simple: given a ciphertext and the secret word, you must determine the original message.</p>",
+  "input": "<p>Input consists of two lines. The first contains the ciphertext and the second contains the secret word. Both lines contain only uppercase alphabetic letters.</p>",
+  "output": "<p>Display the original message that generated the given ciphertext using the given secret word.</p>",
+  "samples": [
+    {
+      "input": "SGZVQBUQAFRWSLC\nACM\n",
+      "output": "SENDMOREMONKEYS\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2016 East Central Regional Contest",
+  "level": 8,
+  "tags": [
+    "string"
+  ],
+  "accepted_user_count": 81,
+  "submission_count": null,
+  "average_tries": 1.3950999975204468
+}

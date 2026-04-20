@@ -1,0 +1,22 @@
+{
+  "id": 7324,
+  "title": "Parallel Expectations",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>We are to predict some facts about the behavior of a single processor designed for running two programs in parallel. Programs are sequences of commands according to the following grammar:</p>\n<pre>\n&lt;Program&gt;    -&gt;  &lt;Command&gt;*\n&lt;Command&gt;    -&gt;  &lt;Variable&gt; := &lt;Operand&gt; &lt;Operator&gt; &lt;Operand&gt;\n&lt;Operator&gt;   -&gt;  + | -\n&lt;Operand&gt;    -&gt;  &lt;Variable&gt; | &lt;Constant&gt;</pre>\n<p>A &lt;Variable&gt; is a sequence of (at most 20) alphanumeric characters (A...Z, a...z, and 0...9) starting with a letter (not case sensitive). A &lt;constant&gt; is an unsigned integer number (less than 100). There may be arbitrary number of blank or tab characters between tokens.</p>\n<p>Before execution, programs are translated into machine language. A statement of the form X := Y + Z is translated to the following set of machine instructions:</p>\n<pre>\nMov R1, Y\nMov R2, Z\nAdd R1, R2\nMov X, R1</pre>\n<p>A MOV instruction copies the content of its second operand into its first operand. An `Add (Sub)' instruction, adds (subtracts) its second operand from its first operand and the result is stored in the first operand. Note that Y and Z denote either a variable or an integer constant. Instructions generated for the command X := Y - Z is similar to the above instructions, except that `Sub' command is used instead of `Add'.</p>\n<p>The processor is given two machine language programs and starts executing them from the first instruction. In each step, it randomly selects one of the two programs and runs the next instruction from the selected program. This continues until one program reaches its end. In this situation, the remaining instructions from the other one are executed sequentially to the end and the processor stops. It is assumed that all variables are shared between two programs, but each program has a separate register set. The goal of this program is to compute the expected final value of all variables among all possible executions of the programs. More precisely, we want to consider every possible execution of the two programs and for each variable, calculate the average of its final value in different executions. It is assumed that the initial value of all variables is zero.</p>",
+  "input": "<p>The first line of the input file contains a single integer t ( 1 ≤ t ≤ 10), the number of test cases, followed by the input data for each test case. The data for each test case consists of a pair of programs. Each program is written as a sequence of consecutive lines, each line containing exactly one command. Programs end with a line containing only the word `END'. You may assume that no variable in any program is named `END'. There is no blank line between programs of one test case. There are at least one and at most 25 lines in each program. Total number of variables in two programs is no more than 10.</p>\n<p> </p>",
+  "output": "<p>For each test case, the output file should contain the expected final value of all variables in alphabetical order of variable names (digits precede letters in this order). Output for different test cases should be separated by exactly one blank line. Round the numbers in the output to 4 digits after decimal point. Do not omit trailing zeros after decimal point (e.g. write 1.2000 instead of 1.2).</p>",
+  "samples": [
+    {
+      "input": "1 S := 1 + 3\nEND\nS := S+S\nEND\n",
+      "output": "3.0000\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia West Continent, Iran, Tehran Site 2001",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 9
+}

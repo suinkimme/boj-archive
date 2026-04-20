@@ -1,0 +1,30 @@
+{
+  "id": 5950,
+  "title": "Bottleneck",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Farmer John is gathering the cows. His farm contains a network of N (1 &lt;= N &lt;= 100,000) fields conveniently numbered 1..N and connected by N-1 unidirectional paths that eventually lead to field 1. The fields and paths form a tree.</p>\n<p>Each field i &gt; 1 has a single one-way, exiting path to field P_i, and currently contains C_i cows (1 &lt;= C_i &lt;= 1,000,000,000). In each time unit, no more than M_i (0 &lt;= M_i &lt;= 1,000,000,000) cows can travel from field i to field P_i (1 &lt;= P_i &lt;= N) (i.e., only M_i cows can traverse the path).</p>\n<p>Farmer John wants all the cows to congregate in field 1 (which has no limit on the number of cows it may have). Rules are as follows:</p>\n<ul>\n<li>Time is considered in discrete units.</li>\n<li>Any given cow might traverse multiple paths in the same time unit. However, no more than M_i total cows can leave field i(i.e., traverse its exit path) in the same time unit.</li>\n<li>Cows never move *away* from field #1.</li>\n</ul>\n<p>In other words, every time step, each cow has the choice either to</p>\n<ol>\n<li>stay in its current field</li>\n<li>move through one or more fields toward field #1, as long as the bottleneck constraints for each path are not violated</li>\n</ol>\n<p>Farmer John wants to know how many cows can arrive in field 1 by certain times. In particular, he has a list of K (1 &lt;= K &lt;= 10,000) times T_i (1 &lt;= T_i &lt;= 1,000,000,000), and he wants to know, for each T_i in the list, the maximum number of cows that can arrive at field 1 by T_i if scheduled to optimize this quantity.</p>\n<p>Consider an example where the tree is a straight line, and the T_i list contains only T_1=5, and cows are distibuted as shown:</p>\n<pre>\nLocn:      1---2---3---4      &lt;-- Pasture ID numbers\nC_i:       0   1   12  12     &lt;-- Current number of cows\nM_i:           5   8   3      &lt;-- Limits on path traversal; field\n                                  1 has no limit since it has no exit</pre>\n<p>The solution is as follows; the goal is to move cows to field 1:</p>\n<pre>\nTree:      1---2---3---4\nt=0        0   1   12  12     &lt;-- Initial state\nt=1        5   4   7   9      &lt;-- field 1 has cows from field 2 and 3\nt=2        10  7   2   6\nt=3        15  7   0   3\nt=4        20  5   0   0\nt=5        25  0   0   0</pre>\n<p>Thus, the answer is 25: all 25 cows can arrive at field 1 by time t=5.</p>",
+  "input": "<ul>\n<li>Line 1: Two space-separated integers: N and K</li>\n<li>Lines 2..N: Line i (not i+1) describes field i with three space-separated integers: P_i, C_i, and M_i</li>\n<li>Lines N+1..N+K: Line N+i contains a single integer: T_i</li>\n</ul>",
+  "output": "<ul>\n<li>Lines 1..K: Line i contains a single integer that is the maximum number of cows that can arrive at field 1 by time T_i.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "4 1\n1 1 5\n2 12 7\n3 12 3\n5\n",
+      "output": "25\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2010-2011 Season, USACO January 2011 Contest, Gold",
+  "level": 24,
+  "tags": [
+    "dp",
+    "data_structures",
+    "trees",
+    "dp_tree",
+    "priority_queue",
+    "smaller_to_larger",
+    "slope_trick"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 5.75
+}

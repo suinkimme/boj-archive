@@ -1,0 +1,30 @@
+{
+  "id": 20729,
+  "title": "Friendly Fire",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You have been captured by an evil organization which seeks to exploit your algorithm skills to improve their weapons. The first task they forced you to work on was to program guided torpedoes. Naturally, your goal is to instead make the torpedoes miss every ship whenever possible.</p>\n<p>A typical scenario where the torpedoes will be used is a 2D plane, where the torpedo is fired from $(0,0)$ towards $m$ ships in the positive $y$-direction. Every ship has the form of a line segment <em>parallel to the $x$-axis</em>, with integer coordinate endpoints. The torpedo is shaped like a single point, and every second it will travel from $(x,y)$ to either $(x-1,y+1)$, $(x,y+1)$, or $(x+1,y+1)$. In other words, it will always go one unit forward, but your program decides how much sideways it should go. If the torpedo hits one of the ships (including one of the endpoints of a ship) it will explode, destroying the ship. On the other hand, if the torpedo stays in one piece for $n$ seconds, its fuel will run out and it will harmlessly sink to the ocean floor.</p>\n<p>Write a program which, given the position of the $m$ ships, finds out whether it is possible to avoid them all, and if so, outputs instructions to do it.</p>",
+  "input": "<p>The first line of input contains two integers $n$ and $m$ ($2 \\leq n \\leq 500\\,000$ and $0 \\leq m \\leq 200\\,000$), the number of seconds until the torpedo runs out of fuel, and the number of ships.</p>\n<p>Then follow $m$ lines, each containing three integers $x_1, x_2, y$ ($-n \\leq x_1 \\leq x_2 \\leq n$ and $1 \\leq y &lt; n$), indicating a ship with endpoints $(x_1, y)$ and $(x_2, y)$.</p>\n<p>You may assume that no pair of ships touch each other.</p>",
+  "output": "<p>If it is possible to dodge all the ships, output a string of length $n$ containing the characters $-$, $0$, and $+$. This string represents how the torpedo should turn in each of the $n$ time steps. For example, if the first character is $+$, then the torpedo will start by going from $(0,0)$ to $(1,1)$. If there are multiple solutions, output any one of them. If it is impossible to avoid all the ships, output \"<code>impossible</code>\".</p>",
+  "samples": [
+    {
+      "input": "5 6\n-3 -2 3\n-2 -2 4\n2 3 3\n-1 1 2\n0 1 4\n2 5 1\n",
+      "output": "--+0-\n"
+    },
+    {
+      "input": "3 2\n1 2 1\n-2 0 2\n",
+      "output": "0+-\n"
+    },
+    {
+      "input": "3 2\n1 2 1\n-2 1 2\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, KTH Challenge, KTH Challenge 2020",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,27 @@
+{
+  "id": 8087,
+  "title": "XOR Gates",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A XOR gate has two inputs and one output. Its operation can be described by the following table</p>\n<pre>\ninput 1   input 2    output\n   0         0          0\n   0         1          1\n   1         0          1\n   1         1          0\n</pre>\n<p>A system of XOR gates is called a XOR net if it has n inputs and one output and meets the following conditions:</p>\n<ol>\n<li>Each input of the net is connected to at least one input of a gate.</li>\n<li>Each input of a gate in the net is connected to one input of the net or one output of another gate.</li>\n<li>The output of exactly one gate is connected to output of the net.</li>\n<li>Each output of a gate in the net is connected to at least one input of another gate, or to the output of the net.</li>\n<li>There exists a numbering of gates such that for every gate each of its inputs is connected to the input of the net or to the output of a gate with a smaller number.</li>\n</ol>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.gif\" style=\"height:207px; width:400px\"/></p>\n<p>The net of 6 gates is shown in the figure. It has 5 inputs and 1 output and meets conditions 1–5 so it is a XOR net. Observe that the numbers given in the figure do not agree with the fifth condition but there exists an appropriate numbering.</p>\n<p>Inputs of a net are numbered from 1 to n. An input state of a XOR net can be described by an input word of the length n. Each letter of such a word is a binary digit 0 or 1. We assume that i-th digit of the word is a state of the i-th input of the net. For every input state the net returns 0 or 1 on its output. Each input word is a binary code of a natural number so we can order input words with respect to their values. We will test XOR nets by sending words from a fixed range to its input and counting the number of digits 1 returned on the output of the net.</p>\n<p>Write a program that:</p>\n<ul>\n<li>reads the description of a XOR net from the standard input; the descriptions consists of: the number of inputs n, the number of gates m, the number of the gate connected to the output of the net and descriptions of connections;</li>\n<li>reads from the same file two binary words of length n — lower and upper limit of the range in which we will test the net;</li>\n<li>computes for how many inputs from the given range the net returns 1 on its output;</li>\n<li>writes the result to the standard output.</li>\n</ul>\n<p>We assume that: 3 ≤ n ≤ 100, 3 ≤ m ≤ 3,000 and that the gates of the given net are numbered from 1 to m in an arbitrary order.</p>",
+  "input": "<p>In the first line of the standard input there are three integers separated by single spaces. They are respectively: the number of inputs n of the given net, the number of gates m and the number of the gate connected to the output of the net.</p>\n<p>In the following m lines there are descriptions of the connections between gates of the net. In the i-th line, for 1 ≤ i ≤ m, there is a description of the connections of two inputs of the i-th gate. Such a description consists of two integers from the range [-n,m] separated by a single space. If an input of the gate is connected to the k-th input of the net then the description of this connection is the negative integer -k, if this input is connected to the output of the j-th gate then it is described by the positive number j.</p>\n<p>In the following two lines there are two n-bit words a and b. They represent lower and upper limits of the range in which we test the net. We assume that in the given range there is at most 100,000 words.</p>",
+  "output": "<p>In the standard output there should be written a single non-negative integer — the number of words from the range a ≤ s ≤ b (where &lt; is the relation consistent with the values of binary words), for which the XOR net returns 1 on its output.</p>",
+  "samples": [
+    {
+      "input": "5 6 5\n-1 -2\n1 3\n1 -2\n2 -3\n4 6\n-4 -5\n00111\n01110\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 1996/1997, Stage 1",
+  "level": 12,
+  "tags": [
+    "dp",
+    "graphs",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.294100046157837
+}

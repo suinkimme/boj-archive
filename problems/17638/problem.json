@@ -1,0 +1,29 @@
+{
+  "id": 17638,
+  "title": "Separator",
+  "time_limit": "1.2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Let A = (a<sub>1</sub>, a<sub>2</sub>, . . .) be a sequence of distinct integers. An index j is called a separator if the following two conditions hold:</p>\n<ul>\n<li>for all k &lt; j: a<sub>k</sub> &lt; a<sub>j</sub>,</li>\n<li>for all k &gt; j: a<sub>k</sub> &gt; a<sub>j</sub>.</li>\n</ul>\n<p>In other words, the array A consists of three parts: all elements smaller then a<sub>j</sub>, then a<sub>j</sub> itself, and finally all elements greater than a<sub>j</sub>.</p>\n<p>For instance, let A = (30, 10, 20, 50, 80, 60, 90). The separators are the indices 4 and 7, corresponding to the values 50 and 90.</p>\n<p>The sequence A is initially empty. You are given a sequence a<sub>1</sub>, . . . , a<sub>n</sub> of elements to append to A, one after another. After appending each a<sub>i</sub>, output the current number s<sub>i</sub> of separators in the sequence you have.</p>\n<p>The input format is selected so that you have to compute the answers online. Instead of the elements a<sub>i</sub> you should append to A, you are given a sequence b<sub>i</sub>.</p>\n<p>Process the input as follows:</p>\n<p>The empty sequence A contains s0 = 0 separators.</p>\n<p>For each i from 1 to n, inclusive:</p>\n<ol>\n<li>Calculate the value a<sub>i</sub> = (b<sub>i</sub> + s<sub>i−1</sub>) mod 10<sup>9</sup>.</li>\n<li>Append a<sub>i</sub> to the sequence A.</li>\n<li>Calculate s<sub>i</sub> : the number of separators in the current sequence A.</li>\n<li>. Output a line containing the value s<sub>i</sub>.</li>\n</ol>",
+  "input": "<p>The first line contains a single integer n (1 ≤ n ≤ 10<sup>6</sup>): the number of queries to process.</p>\n<p>Then, n lines follow. The i-th of these lines contains the integer b<sub>i</sub> (0 ≤ b<sub>i</sub> ≤ 10<sup>9</sup> − 1). The values b<sub>i</sub> are chosen in such a way that the values a<sub>i</sub> you’ll compute will all be distinct.</p>",
+  "output": "<p>As described above, output n lines with the values s<sub>1</sub> through s<sub>n</sub>.</p>",
+  "samples": [
+    {
+      "input": "7\n30\n9\n20\n50\n79\n58\n89\n",
+      "output": "1\n0\n0\n1\n2\n1\n2\n"
+    },
+    {
+      "input": "10\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n",
+      "output": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n"
+    }
+  ],
+  "hint": "<p>The first example equals is described in the problem statement.</p>\n<p>The second example is decoded as A = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9).</p>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2019, Practice",
+  "level": 12,
+  "tags": [
+    "data_structures",
+    "stack"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1
+}

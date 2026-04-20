@@ -1,0 +1,42 @@
+{
+  "id": 20893,
+  "title": "Snöbollskrig 1",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>I en <a href=\"https://sv.wikipedia.org/wiki/Graf_(grafteori)\">oriktad</a>, viktad graf med $N$ noder leker $L$ länder snöbollskrig under IOI. I början har varje land ett fort i någon nod.</p>\n<p>Vid tid $0$ börjar varje land ge sig ut på snöbollskrig. Snöbollskrig fungerar såhär:</p>\n<ul>\n<li>Om ett land äger ett fort beger sig tävlanden från landet ut längs alla kanter från fortet, alla med samma hastigheter.</li>\n<li>Om två länder möts längs en kant stannar länderna och krigar (för alltid).</li>\n<li>Om två länder möts i en nod stannar länderna och krigar (för alltid).</li>\n<li>Om ett land når en nod där länder redan krigar, går det med i kriget.</li>\n<li>Om ett land når en nod före något annat land bygger det landet ett fort i noden, och beger sig därefter ut längs kanterna från noden enligt regel 1.</li>\n</ul>\n<p>Notera att reglerna medför att högst ett land kan ha ett fort i en viss nod. Om två länder kommer till en nod samtidigt kommer de deltagare som kom till noden stanna där och kriga oändligt länge, utan att bege sig vidare.</p>\n<p>Avgör vilka par av länder som kommer kriga mot varandra.</p>",
+  "input": "<p>Den första raden innehåller tre heltal $N,L,M$ ($2 \\le N \\le 100\\,000, 2 \\le L \\le 50, 1 \\le M \\le 100\\,000$): antal noder, antal länder och antal kanter i grafen, respektive. Därefter följer $L$ rader med heltal, som säger vilken nod varje lands startbas är på. Sist följer $M$ rader med vardera tre heltal $a, b, w$ ($0 \\le a,b &lt; N, a \\neq b, 1 \\le w \\le 2\\,000$). Detta betyder att det finns en (oriktad) kant mellan noder $a$ och $b$ (noll-indexerade), av längd $w$.</p>\n<p>Det kommer högst finnas en kant mellan varje par av noder, och inga två länder kommer att starta på samma nod.</p>",
+  "output": "<p>För varje par av länder $a, b$ som krigar ska du skriva ut en rad <code>a b</code>, där $a &lt; b$ och länderna indexeras från 0. Dessa ska skrivas ut i sorterad ordning, sorterat efter det första indexet först. Om exempelvis $L = 3$ och alla tre länder krigar ska du skriva ut:</p>\n<pre>\n0 1\n0 2\n1 2</pre>",
+  "samples": [
+    {
+      "input": "8 4 8\n0\n2\n4\n6\n0 1 100\n1 2 100\n2 3 100\n3 4 100\n4 5 100\n5 6 100\n6 7 100\n7 0 1000\n",
+      "output": "0 1\n0 3\n1 2\n2 3\n"
+    },
+    {
+      "input": "4 3 3\n0\n1\n2\n0 3 100\n1 3 100\n2 3 100\n",
+      "output": "0 1\n0 2\n1 2\n"
+    },
+    {
+      "input": "4 3 3\n0\n1\n2\n0 3 100\n1 3 100\n2 3 1000\n",
+      "output": "0 1\n0 2\n1 2\n"
+    },
+    {
+      "input": "4 3 3\n0\n1\n2\n0 3 100\n1 3 1000\n2 3 1000\n",
+      "output": "0 1\n0 2\n"
+    },
+    {
+      "input": "6 4 5\n0\n1\n4\n5\n0 2 10\n1 2 10\n2 3 100\n4 3 700\n5 3 1000\n",
+      "output": "0 1\n0 2\n1 2\n2 3\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2017, Final",
+  "level": 16,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "dijkstra"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

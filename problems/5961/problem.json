@@ -1,0 +1,22 @@
+{
+  "id": 5961,
+  "title": "The Lost Cows",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>One sunny day farmer John was kidnapped by evil farmer Marcus's cows. FJ wasn't too concerned about his forced holiday but wanted to make sure that his cows got home safely together.</p>\n<p>The cows are spread out in every one of FJ's N (3 &lt;= N &lt;= 200) pastures conveniently numbered 1..N. The barn is located at pasture 1. The farm has an interesting navigation system: at every pasture i there are M (1 &lt;= M &lt;= 200) signs S_ij (1 &lt;= S_ij &lt;= N) which one could reference as S_i1..S_iM; each sign points the way to a pasture. Sometimes a sign points to a path that leads back to the same pasture.</p>\n<p>Farmer Marcus's cows allow FJ to write a single message to all of his cows. FJ's plan is to write a list of sign numbers such that any cow who follows those instructions will all arrive at the barn when each cow has completed all the instructions.</p>\n<p>When a cow starts at a given pasture then she will first follow the path indicated by the first sign number on FJ's list. When she arrives at the second pasture, she looks at the second sign of FJ's list and follows the path marked by that sign. She continues until she exhausts the instruction list, at which point she should be at the barn.</p>\n<p>Find a list of instructions containing no more than 5,000,000 sign numbers that will guide every cow, from every pasture, to the barn after all instructions are followed.  It is guaranteed that such a list exists.</p>\n<p>Consider a set of three signs in four pastures that direct the cows like these do:</p>\n<pre>\n                               ** Pasture# **\n                              1    2    3    4\n                     Sign 1   4    4    1    3\n                     Sign 2   1    3    2    4\n                     Sign 3   4    2    3    1</pre>\n<p>The set of instructions below will direct cows to the barn from any of the four pastures:</p>\n<pre>\n       Instruction#   Sign#            Instruction#   Sign#\n            1           1                   5           3\n            2           2                   6           1\n            3           1                   7           3\n            4           2</pre>\n<p>The cow in pasture 1 will read sign #1 at time 1 and be directed to pasture 4.  At time 2, she is in pasture 4 and (per FJ's instructions) read sign #2 and then be directed to pasture 4. Below is a table that shows the cow's travels:</p>\n<pre>\n                  * * * *  Cow in pasture  1  * * * *\n\n        Time    CurrentPasture#    WhichSign     Sign-&gt;Nextpasture\n          1            1               1                4\n          2            4               2                4 (same pasture!)\n          3            4               1                3\n          4            3               2                2\n          5            2               3                2 (same pasture)\n          6            2               1                4\n          7            4               3                1 Barn!\n\nSimilarly: Pasture 2's cow visits pastures [2]-4-4-3-2-2-4-1. \n           Pasture 3's cow visits pastures [3]-1-1-4-4-1-4-1.\n           Pasture 4's cow visits pastures [4]-3-2-4-4-1-4-1.</pre>\n<p>Given a set of signs, create a set of instructions.</p>",
+  "input": "<ul>\n<li>Line 1: Two space separated integers: N and M</li>\n<li>Lines 2..M+1: Line i+1 describes the contents of each pasture's N signs with N integers: S_1i..S_Ni</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Lines 1..?: The sign numbers the cows should follow, one per line.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "4 3\n4 4 1 3\n1 3 2 4\n4 2 3 1\n",
+      "output": "1\n2\n1\n2\n3\n1\n3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2010-2011 Season, USACO February 2011 Contest, Gold",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.625
+}

@@ -1,0 +1,31 @@
+{
+  "id": 24462,
+  "title": "일어나... 코딩해야지...",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>건모는 매일 새벽까지 코딩하고 아침 일찍 출근한다. 빠르게 알람을 맞추고 자기 위해 알람을 두 개만 키려고 한다. 하지만, 알람을 듣지 못할 걸 대비해 일어나야 하는 시간까지 가장 많이 울릴 수 있는 알람 두 개를 키려고 한다. 졸린 건모를 위해 켜야 할 알람을 골라 보도록 하자.</p>\n<p>건모가 사용하는 알람엔 스누즈 버튼이 있다. 스누즈 버튼이란, 울리고 있는 알람을 끄고 잠시 후 알람을 다시 울리게 하는 버튼이다.</p>\n<p>건모는 일어나야 하는 시간까지 모든 알람이 울리자마자 스누즈 버튼을 누른다. 계속 스누즈 버튼을 누르다 보면 동일한 시간에 두 개 알람이 울리는 경우가 생긴다. 이때 두 알람이 하나로 울리며, 둘 중 하나라도 스누즈 버튼을 누르게 되면 두 알람에 대해 각각 스누즈 버튼을 누른 것처럼 동작한다.</p>\n<p>예를 들어, 켤 수 있는 알람 리스트가 다음과 같이 주어졌다고 가정해보자. 스누즈 시간 $K$는 스누즈 버튼을 눌렀을 때 알람이 다시 울리기까지 걸리는 시간이다.</p>\n<table align=\"center\" class=\"table table-bordered\" style=\"width: 1000px;\">\n<thead>\n<tr>\n<th scope=\"col\">알람 번호</th>\n<th scope=\"col\">알람이 사작되는 시각 $T$</th>\n<th scope=\"col\">스누즈 시간 $K$</th>\n<th scope=\"col\">설명</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td>0</td>\n<td>2</td>\n<td>시각이 0, 2, 4, 6, $\\ldots$일 때 알람이 울린다.</td>\n</tr>\n<tr>\n<td>2</td>\n<td>5</td>\n<td>5</td>\n<td>시각이 5, 10, 15, 20, $\\ldots$일 때 알람이 울린다.</td>\n</tr>\n<tr>\n<td>3</td>\n<td>6</td>\n<td>3</td>\n<td>시각이 6, 9, 12, 15, $\\ldots$일 때 알람이 울린다.</td>\n</tr>\n<tr>\n<td>4</td>\n<td>0</td>\n<td>10000</td>\n<td>시각이 0, 10000, 20000, $\\ldots$일 때 알람이 울린다.</td>\n</tr>\n</tbody>\n</table>\n<p>건모가 일어나야 하는 시각이 $30$이라면, 다음과 같이 알람을 들을 수 있다.</p>\n<table align=\"center\" class=\"table table-bordered\" style=\"width: 800px;\">\n<thead>\n<tr>\n<th scope=\"col\">알람 번호</th>\n<th scope=\"col\">알람이 울리는 시각</th>\n<th scope=\"col\">총 울린 횟수</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td>0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30</td>\n<td>16</td>\n</tr>\n<tr>\n<td>2</td>\n<td>5, 10, 15, 20, 25</td>\n<td>5</td>\n</tr>\n<tr>\n<td>3</td>\n<td>6, 9, 12 ,15, 18, 21, 24, 27, 30</td>\n<td>9</td>\n</tr>\n<tr>\n<td>4</td>\n<td>0</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>\n<p>1번과 3번 알람을 켜게 된다면, 다음과 같이 알람이 스무 번 울린다. <strong>시각 (6, 12, 18, 24, 30)에 울리는 알람은 한 번만 울린 것으로 계산한다.</strong></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 664px; height: 62px;\"/></p>\n<p style=\"text-align: center;\"><strong>빨간 점이 있는 위치는 알람이 울리는 시각이다.</strong></p>\n<p>다른 알람을 고를 수도 있지만, 같거나 더 많이 울리는 알람을 고를 수 없다. </p>",
+  "input": "<p>첫 번째 줄에 두 정수 알람의 개수 $N$, 건모가 일어나야 하는 시각 $D$가 공백으로 구분되어 주어진다. $(2 \\le N \\le 1\\,000$, $1 \\le D \\le 10^9)$</p>\n<p>둘째 줄부터 $N$개 줄의 $i$번째 줄에는 알람이 시작되는 시각 $T_i$와 알람의 스누즈 시간 $K_i$가 공백으로 구분되어 주어진다. $(0 \\le T_i \\le D$, $1 \\le K_i \\le 10^9)$</p>\n<p><strong>단, 입력으로 주어지는 값은 모두 정수이며 모든 $i$에 대해 $T_i$가 $K_i$의 배수임이 보장된다.</strong></p>",
+  "output": "<p>첫 번째 줄에 건모가 켜야 할 알람 번호 두 개를 공백으로 구분하여 오름차순으로 출력한다.</p>\n<p><strong>단, 정답이 여러 가지일 경우 사전 순으로 가장 빠른 결과를 출력한다.</strong></p>\n<p>두 번째 줄에 알람이 울리는 횟수를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 30\n0 2\n5 5\n6 3\n0 10000\n",
+      "output": "1 3\n20\n"
+    },
+    {
+      "input": "5 80\n0 171\n33 33\n0 37\n78 39\n14 2\n",
+      "output": "3 5\n36\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 한양대학교, 제8회 한양대학교 프로그래밍 경시대회, Beginner Division, thak00, chansol, hyunsoo, jhnah917, juchan1220, tony9402",
+  "level": 12,
+  "tags": [
+    "math",
+    "bruteforcing",
+    "number_theory",
+    "euclidean"
+  ],
+  "accepted_user_count": 111,
+  "submission_count": null,
+  "average_tries": 3.594599962234497
+}

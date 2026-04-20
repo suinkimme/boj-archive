@@ -1,0 +1,34 @@
+{
+  "id": 34905,
+  "title": "Quantum Beaver",
+  "time_limit": "4 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Busy Beaver lived on an unpainted sidewalk consisting of $N$ individual tiles numbered $1,2,\\dots,N$ from left to right. The tiles all start with the factory-standard color $0$, but Busy Beaver is looking to change that! Over several days of painting, Busy Beaver aims to repaint the entire sidewalk.</p>\n<p>Specifically, Busy Beaver wrote down a list of $Q$ plans, the $i$-th of which states that on day $d_i$ ($0 \\le d_i \\le 2^K-1$), Busy Beaver will repaint all tiles in the range $[x_i, y_i]$ with color $c_i$, overwriting their previous colors. Busy Beaver has at most one painting plan scheduled for each day, and he is interested in the sum of the final colors of all tiles after all the repaintings.</p>\n<p>Unbeknownst to Busy Beaver, he is, in fact, the first Beaver to live in a Quantum Computer! This unfortunately means that the universe does not operate as he thinks it does. During the night, while no one is watching, the qubits undergo a random transformation: an integer $z$ between $0$ and $2^K - 1$ is selected, and every plan originally scheduled for day $i$ is instead moved to day $i \\oplus z$, where $\\oplus$ denotes \\href{https://en.wikipedia.org/wiki/Bitwise_operation#XOR}{bitwise XOR}.</p>\n<p>For a given $z$, the plans are then executed in increasing order of their (shifted) day, and each repaint operation overwrites the colors of the tiles between $x_i$ and $y_i$. Let $F(z)$ be the sum of the final colors of all tiles after applying the plans with shift $z$.</p>\n<p>Compute ${\\large \\sum_{z=0}^{2^K - 1}} F(z)$. Since the answer may be enormous, output it modulo $10^9+7$.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains the number of test cases $T$ ($1\\leq T\\leq 150$). The description of the test cases follows.</p>\n<p>The first line of each test case contains three integers $N$, $K$, and $Q$ ($1\\leq N\\leq 2\\cdot10^5$, $0\\leq K\\leq60$, $1\\leq Q\\leq \\min(2^K,2\\cdot 10^5)$).</p>\n<p>The $i$-th of the next $Q$ lines contains four integers $d_i$, $x_i$, $y_i$, and $c_i$ ($0\\leq d_i&lt;2^K$, $1\\leq x_i\\leq y_i\\leq N$, $0\\leq c_i\\leq10^9$).</p>\n<p>It is guaranteed that the sum of $N$ across all test cases is at most $4\\cdot10^5$, the sum of $Q$ across all test cases is at most $4\\cdot10^5$, and all $d_i$'s within a test case are distinct.</p>",
+  "output": "<p>For each test case, output one integer on its own line: the sum of the answers to Busy Beaver's original question over all $2^K$ possible shifts, modulo $10^9+7$.</p>",
+  "samples": [
+    {
+      "input": "3\n6 4 6\n6 3 5 4\n12 2 2 3\n4 1 4 2\n5 3 3 4\n14 1 1 3\n13 1 6 4\n6 4 4\n4 1 2 0\n3 2 6 4\n2 2 2 2\n5 3 5 0\n4 4 6\n8 2 4 2\n11 1 3 2\n9 3 4 4\n10 3 3 2\n2 3 4 3\n3 1 4 5\n",
+      "output": "332\n184\n220\n"
+    },
+    {
+      "input": "3\n5 4 4\n9 1 2 2\n12 1 3 1\n10 4 5 3\n14 1 5 4\n6 4 4\n5 2 4 3\n14 5 6 2\n10 3 6 3\n1 4 6 5\n6 4 5\n11 2 4 5\n13 1 2 4\n14 4 6 5\n10 1 6 3\n15 2 6 0\n",
+      "output": "224\n272\n276\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, MIT, M(IT)^2, M(IT)^2 Winter 2025-26 Tournament, Advanced Individual Round",
+  "level": 22,
+  "tags": [
+    "math",
+    "data_structures",
+    "trees",
+    "segtree",
+    "probability",
+    "trie",
+    "linearity_of_expectation"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.8889000415802002
+}

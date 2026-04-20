@@ -1,0 +1,39 @@
+{
+  "id": 33648,
+  "title": "Ray Chasing",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Ray tracing is becoming very popular in modern video games. You decide to brush up on the topic. After reading a bit of the math behind how it works, you feel the need to get a bit of hands-on experience. So you consider the following simple problem that does not involve any reflections of the ray.</p>\n<p>Given a box with sides parallel to the $x$- and $y$-axes of the Euclidean plane, you emit a ray starting from some point in the interior of the box. Calculate which side of the box is first hit by the ray. If the ray perfectly hits a corner, you should indicate both sides of the box that meet at that corner.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 378px; height: 289px;\"/></p>\n<p style=\"text-align: center;\"><b>Figure 1</b>: Illustration of the second test case. The ray starting at $(0,0)$ and passing through $(-3,3)$ will pass through the <code>top-left</code> corner of the box.</p>",
+  "input": "<p>The first line of input consists of four integers $X_1$, $X_2$, $Y_1$, $Y_2$. These give the coordinates of the sides of the box. The second line contains four integers $X_s$, $Y_s$, $X_r$, $Y_r$ describing two points $X_1&lt;X_s&lt;X_2$, $Y_1&lt;Y_s&lt;Y_2$ and $(X_s,Y_s) \\ne (X_r,Y_r)$ (i.e. the points are distinct). This indicates the ray starts at point $(X_s,Y_s)$ and travels in the direction that passes through $(X_r,Y_r)$. All integers in the input will lie between $-10^4$ and $10^4$ (inclusive). Note, the point $(X_r,Y_r)$ may lie inside the box, on the boundary of the box, or even outside the box; it merely indicates the direction the ray is travelling.</p>",
+  "output": "<p>If the ray does not hit a corner of the box, print the appropriate string <code>left</code>, <code>right</code>, <code>bottom</code>, or <code>top</code> indicating which side was hit by the ray. These correspond to the following ranges of coordinates.</p>\n<ul>\n<li>The <code>left</code> side is $\\{(X_1,y):Y_1≤y≤Y_2\\}$.</li>\n<li>The <code>right</code> side is $\\{(X_2,y):Y_1≤y≤Y_2\\}$.</li>\n<li>The <code>bottom</code> side is $\\{(x,Y_1):X_1≤y≤X_2\\}$.</li>\n<li>The <code>top</code> side is $\\{(x,Y_2):X_1≤y≤X_2\\}$.</li>\n</ul>\n<p>If the ray hits a corner of the box, output the corresponding hyphenated string indicating which corner was hit: <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code>, or <code>bottom-right</code>.</p>",
+  "samples": [
+    {
+      "input": "-2 2 -2 2\n0 0 2 2\n",
+      "output": "top-right\n"
+    },
+    {
+      "input": "-2 2 -2 2\n0 0 -3 3\n",
+      "output": "top-left\n"
+    },
+    {
+      "input": "-2 2 -2 2\n0 0 -1 -2\n",
+      "output": "bottom\n"
+    },
+    {
+      "input": "-10 12 17 24\n-9 23 -7 12\n",
+      "output": "bottom\n"
+    }
+  ],
+  "hint": null,
+  "source": ", University, University of Alberta Programming Contest, UAPC 2024, Division 1, University, University of Alberta Programming Contest, UAPC 2024, Division 2",
+  "level": 13,
+  "tags": [
+    "case_work",
+    "geometry",
+    "line_intersection",
+    "math"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.4544999599456787
+}

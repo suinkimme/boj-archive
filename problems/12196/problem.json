@@ -1,0 +1,25 @@
+{
+  "id": 12196,
+  "title": "Tetris (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Tetris is a famous video game that almost everyone has played it. In this problem, you need to simulate a simplified version of it.</p>\n<p>In our version, the game is played in a <b>W</b> by <b>H</b> field with gravity. At the beginning, the field is empty. Then the tetrominos start to fall from above top of the field to bottom of the field, one by one. Each tetromino will stop as soon as it touches some other tetrominos or bottom of the field.</p>\n<p>One interesting feature of the game is called \"line clearing\". A line will be cleared as soon as it is filled by tetrominos. More than one line may be cleared at a time. For example:</p>\n<pre>\n<code>  |..............|      |..............|      |..............|\n  |.............o|      |..............|      |..............|\n  |.............o|      |..............|      |..............|\n  |.............o|      |..............|      |..............|\n  |.............o|      |..............|      |..............|\n  |..xx..........| --&gt;  |..xx..........| --&gt;  |..............|\n  |xxxxxxxxxxxxx.|      |xxxxxxxxxxxxxo|      |..............|\n  |xxxxxxxxxxxxx.|      |xxxxxxxxxxxxxo|      |..xx..........|\n  |xx..xxxxxxxxx.|      |xx..xxxxxxxxxo|      |xx..xxxxxxxxxo|\n  |xxxxxxxxxxx...|      |xxxxxxxxxxx..o|      |xxxxxxxxxxx..o|\n  ----------------      ----------------      ----------------\n\n  Falling               Stopped               Cleared 2 lines\n</code></pre>\n<p>Note that in this simplified version, the \"floating\" tetromino blocks won't continue to fall after lines are cleared. This is why the top-most two squares will keep in such position. Consequently, cascade clearing won't happen, even though it would happen in the original version of Tetris.</p>\n<p>The game ends when all the given tetrominos are placed, or the current tetromino cannot be placed due to the height limit of the field is reached.</p>\n<p>In this problem, each tetromino will has its type, rotation and falling position told by the input. They will start to fall from the <b>above</b> of the field. Your goal is to simulate and get the final result of each play.</p>",
+  "input": "<p>We have 7 types of tetromino:</p>\n<pre>\n<code>1   2   3   4   5   6   7\n\nx    x  x    x  xx  x    x\nxx  xx  x    x  xx  x   xxx\n x  x   xx  xx      x\n                    x\n</code></pre>\n<p>Rotation of a tetromino is represented by a number <b>r</b>. <b>r</b> can be 0, 1, 2 or 3. Rotation is counterclockwise. For example:</p>\n<pre>\n<code>r=0   r=1  r=2   r=3\n\n  x     x   xxx   x\n xxx   xx    x    xx\n        x         x\n\n x     xx   x     xx\n xx   xx    xx   xx\n  x          x\n</code></pre>\n<p>The horizontal falling position is represented by a number <b>x</b>. It is the coordinate of the lower left square of a tetromino's bounding box. Here <b>x</b> starts from 0.</p>\n<p>The first line of the input gives the number of test cases, <b>T</b>. For each test case, the first line of input has 3 integers, <b>W, H, N</b>. <b>W</b> is the width, <b>H</b> is the height and <b>N</b> is the number of blocks that are going to fall.</p>\n<p>Then <b>N</b> lines below, each line has 3 integers, <b>t<sub>i</sub>, r<sub>i</sub>, x<sub>i</sub></b>. <b>t<sub>i</sub></b> tells the tetromino type. <b>r<sub>i</sub></b> is the rotation of this tetromino. <b>x<sub>i</sub></b> is the horizontal falling position of this tetromino. It is guaranteed that <b>x<sub>i</sub></b> will make the tetromino inside the field, horizontally.</p>",
+  "output": "<p>For each test case, first output one line containing \"Case #i:\", where <b>i</b> is the test case number (starting from 1). And then, if the game ends before the <b>N</b> blocks, output \"Game Over!\"(without quotes). Otherwise, output the game field's final state, which should have <b>H</b> lines, each has <b>W</b> characters. Each character can be '.' or 'x'.</p>",
+  "samples": [
+    {
+      "input": "5\n8 6 1\n1 0 0\n5 4 1\n1 1 1\n5 6 3\n5 0 0\n5 0 2\n3 2 3\n6 4 3\n6 2 0\n6 2 0\n6 2 0\n6 4 2\n6 0 0\n6 0 1\n",
+      "output": "Case #1:\n........\n........\n........\nx.......\nxx......\n.x......\nCase #2:\n.....\n.....\n..xx.\n.xx..\nCase #3:\n.....\n.....\n.....\n.....\n.....\n...xx\nCase #4:\nGame Over!\nCase #5:\nxx....\nxx....\nxx....\nxx....\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Google's Coding Competitions, Google APAC 2015 University Graduates Test, Round C APAC Test, Contest, Google, Kick Start, Google Kick Start 2014, Round C",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 2.375
+}

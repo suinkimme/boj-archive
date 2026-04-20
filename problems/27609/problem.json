@@ -1,0 +1,31 @@
+{
+  "id": 27609,
+  "title": "A-Mazing Puzzle",
+  "time_limit": "8 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The Severely Challenging Archaeological Exploration Division (SCArED) specializes in the investigation of archaeological sites that are too difficult, dangerous or downright terrifying for humans to examine firsthand. Instead they send in one or more mobile robots to investigate, each robot outfitted with a complex set of sensors, recorders and manipulators. Each robot is radio-controlled and has a small nuclear reactor to power what sometimes ends up being an extended stay at the sites.</p>\n<p>Recently a complex underground maze of the Desreverezam Civilization has been discovered. SCArED sent in two robots to investigate and over the course of several months they have mapped out the entire maze. But then disaster struck --- due to some unforeseen anomaly they no longer have radio contact with the two robots (the researchers are torn between the cause of this: either some magnetoferritin crystals in the walls or angry poltergeists). After several weeks of trying to regain contact with the two robots they finally have managed to open up a shared channel with them. There's not much bandwidth in the connection, so they can only send three basic commands to the robots: (Move) Forward, (Turn) Left and (Turn) Right. Since this is a shared channel they cannot send differentiated commands to each robot, so if they send the Forward command each robot will try to move forward simultaneously. If there is an opening in front of them that's fine but if there's a wall in front of one of the robots it will bump into the wall and remain where it is. Any Turn command will likewise cause the robots to turn in lockstep.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 203px; height: 107px;\"/></p>\n<p style=\"text-align: center;\">Figure A.1: Sample Input $1$.</p>\n<p>The researchers would like to find the minimum number of Forward commands to get both robots out of the maze (the Turn commands take so little time and power that they can be ignored). As soon as either is out of the maze they can return to the surface and ignore any future commands. Consider the situation in Figure A.1 where both robots are currently facing South. One approach to get the robots out of the maze is to first get robot B out as quickly as possible by moving it to locations $(6,2)$, $(6,1)$, $(5,1)$, $(4,1)$ and then out of the maze. This takes $5$ Forward moves and in the process robot A moves to $(3,1)$ and stays there, bumping against walls $4$ times. After robot B is out robot A can exit the maze in $6$ more Forward moves, for a total of $11$ moves. However, if robot A is moved out as quickly as possible first and then robot B is moved out, only $8$ Forward moves are needed. For other mazes, the minimum number of Forward moves may not involve getting either robot out as quickly as possible (see Sample Input 2).</p>\n<p>Given a maze and the initial positions and orientations of the robots, help the researchers out by determining the minimum number of Forward commands to get both robots out of the maze. If there are several sets of minimum Forward commands then the one that leads to the least number of wall bumps is preferred. Oh, and one more thing: the robots should never be on top of each other inside the maze --- this may lead to a chain reaction of their nuclear power generators leading to an explosion that could destroy the planet. This should be avoided.</p>",
+  "input": "<p>Input starts with a line containing $3$ positive integers $c$ $r$ $e$ $(c,r \\leq 50, e \\leq c)$ indicating the maze has $c$ columns and $r$ rows (all numbered starting at $1$) and that the exit to the maze is on the southern side of square $(e,1)$. Following this is a line of the form $c_1$ $r_1$ $d_1$ $c_2$ $r_2$ $d_2$ ($1 \\leq c_i \\leq c, 1 \\leq r_i \\leq r, d_i \\in \\{$<code>N,E,S,W</code>$\\})$ indicating that the two robots are at locations $(c_1,r_1)$ and $(c_2,r_2)$ with orientations $d_1$ and $d_2$, respectively. Locations $(c_1, r_1)$ and $(c_2, r_2)$ will never be the same, and $d_1$ and $d_2$ may be different.</p>\n<p>After this come two lines which describe the maze. The first line has the form $n$ $c_1$ $r_1$ $c_2$ $r_2 \\ldots c_n$ $r_n$ ($n \\leq r*c, 1 \\leq c_i \\leq c, 1 \\leq r_i &lt; r$) where each $c_i$ $r_i$ pair indicates that there is a horizontal wall between grid squares $(c_i,r_i)$ and $(c_i,r_i+1)$. The next line is similar, where each $c_i$ $r_i$ pair ($n \\leq r*c, 1 \\leq c_i &lt; c, 1 \\leq r_i \\leq r$) indicates that there is a vertical wall between grid squares $(c_i,r_i)$ and $(c_i+1,r_i)$. All exterior walls except the exit are assumed to exist and are not listed in these two lines.</p>",
+  "output": "<p>Output two values: the minimum number of Forward commands to get the two robots out of the maze and the number of bumps that occur using these commands. If there are several ways to get the robots out with the same minimum number of Forward command, use the one that minimizes the number of bumps. It will be possible for both robots to escape the maze in each input instance.</p>",
+  "samples": [
+    {
+      "input": "7 4 4\n3 2 S 6 3 S\n6 1 1 1 2 1 3 2 3 5 1 5 3\n11 2 1 3 1 3 2 5 2 6 2 2 3 4 3 5 3 6 3 3 4 6 4\n",
+      "output": "8 1\n"
+    },
+    {
+      "input": "3 4 2\n1 3 S 3 2 S\n1 3 3\n5 1 1 2 1 1 2 1 3 2 3\n",
+      "output": "7 2\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2022-2023 East Central Regional Contest",
+  "level": 18,
+  "tags": [
+    "bfs",
+    "graphs",
+    "graph_traversal",
+    "implementation"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 3.5713999271392822
+}

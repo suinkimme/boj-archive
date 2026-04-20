@@ -1,0 +1,20 @@
+{
+  "id": 31584,
+  "title": "Bulb Game",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>친한 친구 민형이와 선율이가 재미있는 게임을 한다. 게임은 아래와 같이 $N$개의 버튼과 $N-1$개의 전구가 있는 게임판에서 이루어진다. 여기서 $N$은 항상 짝수이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 132px; width: 800px;\"/></p>\n<p>게임은 민형이와 선율이가 번갈아 버튼을 누르는 방식으로 진행된다. 매 순간마다, 민형이와 선율이는 이때까지 눌리지 않은 버튼 중에서 하나를 골라 누른다. 선율이가 버튼을 누르면 민형이가 방금 전에 눌렀던 버튼과 선율이가 누른 버튼 사이에 있는 모든 전구의 상태가 바뀐다. (꺼져있는 전구는 켜지고, 켜있는 전구는 꺼진다.)</p>\n<p>처음에는 모든 전구가 꺼져있다. 이 상태에서 민형이가 2번째 버튼을 누르고 선율이가 4번째 버튼을 누르면 게임판의 상태가 아래와 같이 바뀐다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height: 132px; width: 800px;\"/></p>\n<p>여기에서 민형이가 3번째 버튼을 누르고 선율이가 5번째 버튼을 누르면 게임판의 상태가 아래와 같이 바뀐다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"height: 132px; width: 800px;\"/></p>\n<p>민형이와 선율이가 $N$개의 버튼을 모두 누르면 게임이 끝난다. 게임이 끝난 후, 켜진 전구가 꺼진 전구보다 더 많으면 선율이가 이기고, 그 이외에는 민형이가 이긴다.</p>\n<p>선율이는 게임의 긴장감을 조성하기 위해 진 사람이 민형, 선율 둘을 포함한 16명의 친구들에게 치킨을 쏘겠다는 제안을 했다. 알다시피 16명분의 치킨은 매우 비싸기 때문에 선율이가 게임에서 진다면 기껏 파격적인 제안을 했다가 거액을 내야 하는 대참사가 일어날 수 있다. 선율이가 이길 수 있도록 전략을 짜는 프로그램을 작성하여라. 물론 선율이가 이길 수 있는 전략은 항상 존재한다.</p>",
+  "input": "<p>당신은 게임을 하는 함수 <code>Init(N)</code> 과 <code>MakeTurn(M)</code> 을 작성해야 한다. (<code>Init(N)</code>, <code>MakeTurn(M)</code> 함수는 bulb.c / bulb.cpp에 있다.)</p>\n<p><code>void Init(int N)</code> 함수는 맨 처음에 한 번 호출되며, 여기서 전처리 등을 할 수 있다.</p>\n<ul>\n<li>$N$: 전구의 수 ($2 \\le N \\le 1\\,000$, $N$은 짝수)</li>\n</ul>\n<p><code>int MakeTurn(int M)</code> 함수는 <code>Init</code> 함수가 호출된 후 $N/2$번 호출되며, 당신은 선율이가 눌러야 하는 버튼의 번호를 반환해야 한다.</p>\n<ul>\n<li>$M$: 민형이가 자신의 턴에 누른 버튼의 번호 ($1 \\le M \\le N$)</li>\n<li>반환값: 선율이가 자신의 턴에 눌러야 하는 버튼의 번호 ($1 \\le$ 반환값 $\\le N$)</li>\n</ul>\n<p>만약 게임이 정상적으로 끝나고 선율이가 졌다면 <code>Wrong[1]</code>을 출력한다. <code>MakeTurn(M)</code> 함수의 반환값이 범위를 벗어나거나 이미 눌렀던 버튼의 번호라면 <code>Wrong[2]</code>를 출력하고 프로그램이 즉시 끝난다.</p>\n<p>예시 프로그램은 다음과 같다.</p>\n<pre style=\"margin: 0; line-height: 125%\">\n<span style=\"color: #BC7A00\">#include \"bulb.h\"</span>\n\n<span style=\"color: #B00040\">void</span> <span style=\"color: #0000FF\">Init</span>(<span style=\"color: #B00040\">int</span> N) {\n\t<span style=\"color: #408080; font-style: italic\">// do nothing</span>\n}\n\n<span style=\"color: #B00040\">int</span> <span style=\"color: #0000FF\">MakeTurn</span>(<span style=\"color: #B00040\">int</span> M) {\n\t<span style=\"color: #008000; font-weight: bold\">return</span> (M<span style=\"color: #666666\">+2</span>)<span style=\"color: #666666\">%7</span>;\n}</pre>\n<p>메모리 접근, 시스템 호출 등의 비정상적인 방법을 사용하면 오답 처리될 수 있음에 유의하여라.</p>",
+  "output": "",
+  "samples": [],
+  "hint": "<p>문제 페이지에서 샘플 코드를 다운로드받을 수 있다. 만약 Visual Studio나 Eclipse, Code::Blocks와 같은 IDE 툴을 사용한다면 bulb.cpp, bulb.h, grader.cpp (또는 bulb.c bulb.h, grader.c)를 한 프로젝트에 넣어서 컴파일하면 된다. 터미널에서 코드를 컴파일한다면 아래 컴파일 명령어를 이용하면 된다.</p>\n<ul>\n<li>C / gcc: <code class=\"compilation_command\">gcc -Wall -lm -static -o bulb -O2 bulb.c grader.c</code></li>\n<li>C++ / G++: <code class=\"compilation_command\">g++ -Wall -lm -static -o bulb -O2 bulb.cpp grader.cpp</code></li>\n</ul>\n<p>프로그램을 실행한 후 표준입력(stdin)으로 $N$을 입력받은 후 민형이가 누른 버튼의 번호를 추가로 입력받는다. 그러면 채점기는 선율이가 누른 버튼의 번호(<code>MakeTurn</code> 함수의 반환값)를 출력해준다. 게임이 끝난 후 샘플 채점기는 정답/오답 여부를 출력한다.</p>\n<p>답안을 제출할 때에는 bulb.c 또는 bulb.cpp에 해당하는 코드만 제출하면 된다.</p>",
+  "source": "Contest, BOJ User Contest, FunctionCup, FunctionCup 2017, functionx",
+  "level": 11,
+  "tags": [
+    "ad_hoc",
+    "game_theory"
+  ],
+  "accepted_user_count": 56,
+  "submission_count": null,
+  "average_tries": 1.767899990081787
+}

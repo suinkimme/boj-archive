@@ -1,0 +1,26 @@
+{
+  "id": 14079,
+  "title": "R9K",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Mirko je nedavno otkrio IRC (engl. Internet Relay Chat) i vrlo se brzo probio do moderatorske pozicije na nekim popularnim kanalima. Međutim, velik problem stvaraju mu spammeri koji šalju veliku količinu istih poruka u kanal i tako onemogućavaju smislenu komunikaciju među ostalim korisnicima. Mirko je čuo za automatsku metodu moderiranja, znanu kao \"R9K mod\", pa vas je zamolio da mu je pomognete implementirati. Ideja R9K moda jest da se poruke koje se ponavljaju automatski zabrane, uz dodatan uvjet da treba zanemariti sve nadimke koji se pojavljuju u porukama.</p>\n<p>Preciznije, metoda funkcionira na sljedeći način:</p>\n<ul>\n<li>Nadimak je ime pod kojim je poznat korisnik u kanalu.\n\t<ul>\n<li>Nadimak čini neprazan niz uzastopnih znamenaka, malih ili velikih slova engleske abecede.</li>\n<li>Razlikuju se velika i mala slova.</li>\n<li>Lista mogućih nadimaka poznata je unaprijed.</li>\n<li>Primjeri valjanih nadimaka su \"Mirko\", \"Slavko\", \"0cool\", \"AcidBurn\"...</li>\n</ul>\n</li>\n<li>U kanal redom dolaze poruke.\n\t<ul>\n<li>Poruku čine razmaci, znamenke, mala i velika slova engleske abecede te neki znakovi interpunkcije (točka, crtica, zarez, točka zarez, upitnik i uskličnik).</li>\n<li>Poruka ne može počinjati ili završavati razmakom.</li>\n<li>Poruka može biti prazna.</li>\n<li>Primjeri valjanih poruka su \"Mirko i Slavko ce biti na CERC-u.\", \"Puno srece na natjecanju zele vam organizatori!\".</li>\n</ul>\n</li>\n<li>Iz svake se poruke prvo izbriše svako pojavljivanje svakog nadimka.\n\t<ul>\n<li>Nadimak može biti odvojen razmakom, znakom interpunkcije te početkom ili krajem poruke.</li>\n<li>Na primjer, ako su nadimci \"Mirko\" i \"Slavko\", poruka \"Mirko i Slavko ce biti na CERCu.\" postaje \"_i__ce_biti_na_CERC-u.\" (donja crta je prikazana umjesto razmaka), dok će poruka \"!Mirko.Slavko?\" postati \"!.?\", ali iz poruke \"MirkoSlavko\" neće biti obrisano ništa.</li>\n</ul>\n</li>\n<li>Više od jednog uzastopnog razmaka zamijeni se jednim.\n\t<ul>\n<li>Na primjer, \"_i__ce_biti_na_CERC-u.\" postaje \"_i_ce_biti_na_CERC-u.\" (donja crta je prikazana umjesto razmaka).</li>\n</ul>\n</li>\n<li>Razmaci na početku ili na kraju poruke se brišu.\n\t<ul>\n<li>Na primjer, \"_i_ce_biti_na_CERC-u.\" postaje \"i_ce_biti_na_CERC-u.\" (donja crta je prikazana umjesto razmaka).</li>\n</ul>\n</li>\n<li>Za svaku poruku u redu kojem se pojavljuju, potrebno je ispisati\n\t<ul>\n<li>\"BRISI\" ako se prije pojavila</li>\n<li>\"OSTAVI\" ako se nije prije pojavila </li>\n</ul>\n</li>\n</ul>",
+  "input": "<p>U prvome retku nalaze se dva prirodna broja N i M, broj nadimaka i broj poruka.</p>\n<p>U idućem retku nalazi se N nadimaka odvojenih razmakom.</p>\n<p>U idućih M redaka nalazi se po jedna poruka, redom kojim su stizale u kanal.</p>\n<p>Ulazni podaci bit će takvi da će na ulazu biti ukupno manje od 2 milijuna znakova, a nadimci i poruke pridržavat će se ograničenja iz teksta zadatka. </p>",
+  "output": "<p>Potrebno je ispisati M redaka, po jedan za svaku poruku. U svakom retku, potrebno je ispisati \"BRISI\" ili \"OSTAVI\", ovisno o tome treba li zadržati poruku. </p>",
+  "samples": [
+    {
+      "input": "2 5\nMirko Slavko\nmirko, Ovo je poruka bez nadimaka\nmirko, ovo je poruka bez nadimaka\nSlavko, ovo je poruka s nadimcima\nMirko, ovo je poruka s nadimcima\nmirko slavko ovo je poruka bez nadimaka\n",
+      "output": "OSTAVI\nOSTAVI\nOSTAVI\nBRISI\nOSTAVI\n"
+    },
+    {
+      "input": "3 10\nMirko Slavko Darko\nMirko i Slavko se dopisuju.\ni se dopisuju.\nMirko Slavko Darko\n\nPrethodne su dvije poruke bile prazne.\nMirko!Slavko\nMirkoSlavko\n!\nMirko!Slavko!\n!! \n",
+      "output": "OSTAVI\nBRISI\nOSTAVI\nBRISI\nOSTAVI\nOSTAVI\nOSTAVI\nBRISI\nOSTAVI\nBRISI\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2015",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

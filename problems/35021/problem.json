@@ -1,0 +1,33 @@
+{
+  "id": 35021,
+  "title": "Defense Distance",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The NWRRC security server has a final access check for teams that try to submit their solutions to the secret hidden problem.</p>\n<p>To pass the check, the team must enter three passwords $s$, $t$, and $u$ that the system will accept. Each password must be a non-empty string consisting of at most $5000$ lowercase English letters.</p>\n<p>The rules of the server are public:</p>\n<ul>\n<li>The distance between $s$ and $t$ should be equal to $a$.</li>\n<li>The distance between $s$ and $u$ should be equal to $b$.</li>\n<li>The distance between $t$ and $u$ should be equal to $c$.</li>\n</ul>\n<p>The <em>distance</em> between two strings $s_1$ and $s_2$ is the minimum number of single-character operations (insert one character, remove one character, or replace one character) needed to convert string $s_1$ into string $s_2$. This metric is also known as the Levenshtein distance.</p>\n<p>The server gives access to the hidden problem if and only if all described conditions are satisfied. Your goal is to construct a triple of passwords to unlock the hidden problem or determine that it is impossible.</p>",
+  "input": "<p>The only line contains three integers $a$, $b$, and $c$, denoting the required distances between each pair of passwords ($0 \\le a, b, c \\le 1000$).</p>",
+  "output": "<p>If there are no three passwords with the required properties, print \"<code>No</code>\" in the only line.</p>\n<p>Otherwise, print \"<code>Yes</code>\" in the first line. Then print passwords $s$, $t$, and $u$ in the following three lines. Each password should consist of at least $1$ and at most $5000$ lowercase English letters.</p>\n<p>If there are multiple triples of passwords that meet the requirements, print any of them.</p>",
+  "samples": [
+    {
+      "input": "4 3 5\n",
+      "output": "Yes\nicpc\nnwrrc\nitmo\n"
+    },
+    {
+      "input": "2 2 2\n",
+      "output": "Yes\naa\nbb\ncc\n"
+    },
+    {
+      "input": "0 0 1\n",
+      "output": "No\n"
+    }
+  ],
+  "hint": "<p>In the first test case:</p>\n<ul>\n<li>The distance between \"<code>icpc</code>\" and \"<code>nwrrc</code>\" is $4$: \"<code>icpc</code>\" $\\to$ \"<code>irpc</code>\" $\\to$ \"<code>irrc</code>\" $\\to$ \"<code>nrrc</code>\" $\\to$ \"<code>nwrrc</code>\".</li>\n<li>The distance between \"<code>icpc</code>\" and \"<code>itmo</code>\" is $3$: \"<code>icpc</code>\" $\\to$ \"<code>itpc</code>\" $\\to$ \"<code>itpo</code>\" $\\to$ \"<code>itmo</code>\".</li>\n<li>The distance between \"<code>nwrrc</code>\" and \"<code>itmo</code>\" is $5$: \"<code>nwrrc</code>\" $\\to$ \"<code>wrrc</code>\" $\\to$ \"<code>wrro</code>\" $\\to$ \"<code>irro</code>\" $\\to$ \"<code>itro</code>\" $\\to$ \"<code>itmo</code>\".</li>\n</ul>\n<p>In the second test case, the distance between each pair of passwords is $2$.</p>\n<p>In the third test case, it can be shown that there are no three passwords with the required properties.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2025-2026 Northwestern Russia Regional Contest",
+  "level": 17,
+  "tags": [
+    "math",
+    "constructive"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.142899990081787
+}

@@ -1,0 +1,28 @@
+{
+  "id": 26475,
+  "title": "i18n",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>文字数が多い英単語はしばしば，前後の1文字ずつだけを残し，それ以外の中間部分をその文字数で置き換える形で省略されることがある． たとえば，\"internationalization\" は \"i18n\"，\"localization\" は \"l10n\"，\"accessibility\" は \"a11y\" などと略記される． ここではこの略記を一般化し，前後の文字を <i>1</i> 文字以上であれば好きなだけ残してよいものとし，この表記を「字数略記」と呼ぶこととする． 例えば，\"i18n\"，\"int13tion\"，\"i1ternationalization\" はいずれも \"internationalization\" の字数略記であるが，\"i123n\"，\"i4national3tion\"，\"19n\" はいずれも \"internationalization\" の字数略記ではない．ただし，どの区間も字数に置き換えないそのままの \"internationalization\" も，\"internationalization\" の字数略記として有効であるものとする．</p>\n<p>あなたは，英小文字のみからなる単語が <i>N</i> 個含まれた辞書を持っており，この辞書内の単語をそれぞれ字数略記に変換した辞書を作ろうと思っている． ここで，もしもある字数略記が変換前の辞書に含まれる複数の単語の字数略記として有効であると，その字数略記だけを見て元の単語を一意に復元することができなくなってしまう．よって，そのような字数略記を変換後の辞書に含めることはできない． 例えば，\"love\" と \"live\" がともに辞書に含まれる場合，いずれかでも \"l2e\" という字数略記に変換してしまうと，\"l2e\" を見たときに元が \"love\" だったのか \"live\" だったのかわからず，復元できなくなってしまう．この場合，例えば \"love\" を \"lo1e\"，\"live\" を \"li1e\" と字数略記すれば，いずれも元の単語を一意に特定することができる．</p>\n<p>与えられた辞書に対し，字数略記変換後の辞書として考えられるもののうち，変換に使用した整数の和として考えられるものの最大値を求めよ． ただし，単語そのままを字数略記とする場合に使用した整数は，0 であるとみなす．</p>",
+  "input": "<p>入力は 50 個以下のデータセットからなる．各データセットは次の形式で表される．</p>\n<blockquote>\n<p><i>N</i></p>\n<p><i>s<sub>1</sub></i></p>\n<p><i>s<sub>2</sub></i></p>\n<p><i>...</i></p>\n<p><i>s<sub>N</sub></i></p>\n</blockquote>\n<p>最初の行は辞書に含まれる単語の個数 <i>N</i> からなる (<i>1 ≤ N ≤1,000</i>)．続く <i>N</i> 行には，変換前の辞書に含まれる単語が，各行ごとに <i>1</i> つ与えられる．各単語の長さは <i>3</i> 以上 <i>30</i> 以下であり，英小文字アルファベットのみからなる．辞書に含まれる単語はすべて相異なることが保証される．</p>\n<p>入力の終わりは，<i>1</i> つのゼロからなる行で表される．</p>",
+  "output": "<p>各データセットについて，各単語を一意に復元できるよう字数略記に変換するとき，使用した整数の和の最大値を <i>1</i> 行に出力せよ．</p>",
+  "samples": [
+    {
+      "input": "5\nabcxxfg\nabcyyfg\nabcdefx\nazcdefg\nwww\n3\ninternationalization\nlocalization\naccessibility\n4\nlove\nlive\ncat\ncut\n3\nclass\ncomes\ncross\n2\naaa\naaaaaaaaaa\n0\n",
+      "output": "16\n39\n2\n6\n9\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2022",
+  "level": 11,
+  "tags": [
+    "bruteforcing",
+    "data_structures",
+    "hash_set",
+    "string",
+    "set"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.3636000156402588
+}

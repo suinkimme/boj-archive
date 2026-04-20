@@ -1,0 +1,35 @@
+{
+  "id": 3217,
+  "title": "malloc",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>메모리 할당 명령을 시뮬레이팅하는 프로그램을 작성하시오.</p>\r\n\r\n<p>메모리는 100,000개의 연속된 공간이고, 1번부터 100,000번까지 번호가 매겨져 있다. 초기에 모든 공간은 할당되지 않은 상태이다.</p>\r\n\r\n<p>명령어의 종류는 다음 중 하나이다.</p>\r\n\r\n<ol>\r\n\t<li><code>var=malloc(size);</code>\r\n\r\n\t<ul>\r\n\t\t<li>이 함수은 처음 등장하는 <code>size</code>개의 연속된 공간을 찾아, 할당해주는 함수이다. 이 함수의 리턴값은 할당된 공간의 제일 처음 주소이다. 만약, 할당해줄 수 있는 공간이 없다면 <code>0</code>을 리턴한다. (100 &le; <code>size</code> &le; 100,000)</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li><code>free(var);</code>\r\n\t<ul>\r\n\t\t<li>이 함수는 이전에 <code>malloc</code>을 통해 <code>var</code>에 할당된 공간을 할당 해제시켜주고, <code>var</code>에 <code>0</code>을 저장하는 함수이다. 만약, <code>var</code>가 이미 <code>0</code>이라면, 아무 일도 일어나지 않는다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li><code>print(var);</code>\r\n\t<ul>\r\n\t\t<li><code>var</code>에 저장된 값을 출력하는 함수이다.</li>\r\n\t</ul>\r\n\t</li>\r\n</ol>\r\n\r\n<p>모든 명령은 세미콜론(&#39;<code>;</code>&#39;)으로 끝난다. 변수는 알파벳 소문자로 이루어져 있으며, 항상 네글자이다. 서로 다른 변수의 개수는 1,000개보다 작거나 같다. 모든 변수는 0으로 초기화되어있다.</p>\r\n",
+  "input": "<p>첫째 줄에 명령의 개수 N이 주어진다. (1 &le; N &le; 100,000)</p>\r\n\r\n<p>다음 N개의 줄에는 명령이 수행된 순서대로 하나씩 주어진다.</p>\r\n\r\n<p><code>print</code>는 한 번 이상 주어진다.</p>\r\n",
+  "output": "<p><code>print</code>가 나올 때 마다 결과를 한 줄에 하나씩 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3\nmama=malloc(140);\ntata=malloc(120);\nprint(tata);\n",
+      "output": "141\n"
+    },
+    {
+      "input": "5\naabb=malloc(50001);\nbbaa=malloc(50000);\nprint(aabb);\nfree(aabb);\nprint(bbaa);\n",
+      "output": "1\n0\n"
+    },
+    {
+      "input": "5\nbaka=malloc(214);\nbaka=malloc(123);\nfree(baka);\ndeda=malloc(100);\nprint(deda);\n",
+      "output": "215\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2004, National Competition #2 - Juniors, baekjoon, adh0463",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "set",
+    "linked_list"
+  ],
+  "accepted_user_count": 154,
+  "submission_count": null,
+  "average_tries": 4.473999977111816
+}

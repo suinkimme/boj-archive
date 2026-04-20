@@ -1,0 +1,32 @@
+{
+  "id": 18051,
+  "title": "Antennas",
+  "time_limit": "8 초",
+  "memory_limit": "512 MB",
+  "description": "<p>In a secret military base, a new communication technology is being tested. For the experiment, <em>m</em> antennas were constructed inside.</p>\n<p>The terrain around the base is perfectly flat, and the base, seen from above, is a convex polygon. The boundary of the polygon is a wall that protects the base from intruders, as well as blocks the radio waves from leaving the base to be possibly intercepted by foreign agents.</p>\n<p>Unfortunately, some construction works are required in the facility, and two of the polygon’s walls must be torn down. This creates a security risk: if two spies are placed outside the base in such a way that two of the antennas lie on the line between them, and there is no wall blocking this line, then the spies may listen to the communication between those two antennas.</p>\n<p>Your goal is, for some possible scenarios of removal of two walls, to determine the number of pairs of antennas which are compromised in the way described above.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 466px; height: 334px;\"/></p>\n<p>The picture above corresponds to the first case of the example input from the “Example” section. In this case, the base is a pentagon with four antennas, denoted by little crosses. All the lines between pairs of antennas are also shown.</p>",
+  "input": "<p>The first line of input contains the number of test cases <em>z</em> (1 ≤ <em>z</em> ≤ 200 000). The test cases follow, each one in the following format:</p>\n<p>The first line of a test case contains an integer <em>n</em> (3 ≤ <em>n</em> ≤ 10) – the number of vertices of the polygon. The next <em>n</em> lines contain two integers – the coordinates of the vertices, presented clockwise. The vertices are numbered 0, 1, . . . , <em>n</em> − 1 in order in which they appear.</p>\n<p>The next line contains an integer <em>m</em> (2 ≤ <em>m</em> ≤ 50 000) – the number of antennas inside the base – and the <em>m</em> following lines contain the coordinates of the antennas.</p>\n<p>The next line contains another integer <em>q</em> (1 ≤ <em>q</em> ≤ 10) – the number of scenarios to consider. The last <em>q</em> lines describe scenarios – the <em>i</em>-th line contains two integers <em>a<sub>i</sub></em>, <em>b<sub>i</sub></em> (0 ≤ <em>a<sub>i</sub></em> &lt; <em>b<sub>i</sub></em> ≤ <em>n</em>−1). Such a pair denotes removing the walls <em>a<sub>i</sub></em> and <em>b<sub>i</sub></em> and requires to compute the number of distinct lines that go through some two antennas and do not cross neither the segment between the vertices <em>a<sub>i</sub></em> and <em>a<sub>i</sub></em> + 1 nor the segment between <em>b<sub>i</sub></em> and (<em>b<sub>i</sub></em> + 1) mod <em>n</em>.</p>\n<p>All coordinates are integers whose absolute values do not exceed 10<sup>9</sup>. In any single testcase, all points of the input are distinct and no three of them are collinear.</p>\n<p>Every test case, including the first, is preceded by a single empty line.</p>\n<p>The sum of all <em>m</em> values in all test cases does not exceed 300 000.</p>",
+  "output": "<p>For every testcase output, in separate lines, the answers to all given scenarios.</p>",
+  "samples": [
+    {
+      "input": "2\n\n5\n0 0\n0 5\n3 7\n6 5\n6 0\n4\n1 2\n1 3\n5 2\n5 3\n3\n0 3\n1 4\n1 2\n\n4\n-1 -1\n-1 1\n2 1\n2 -1\n2\n0 0\n1 0\n6\n0 1\n0 2\n0 3\n1 2\n1 3\n2 3\n",
+      "output": "4 1 0\n0 1 0 0 0 0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, Poland Collegiate Programming Contest, AMPPZ 2019, Contest, Open Cup, 2019/2020 Season, Stage 8: Grand Prix of Poland",
+  "level": 26,
+  "tags": [
+    "combinatorics",
+    "data_structures",
+    "geometry",
+    "line_intersection",
+    "math",
+    "point_in_convex_polygon",
+    "segtree",
+    "sorting",
+    "sweeping"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2
+}

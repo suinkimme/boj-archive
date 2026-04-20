@@ -1,0 +1,30 @@
+{
+  "id": 17449,
+  "title": "순위 계산",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>SNUPC(Seoul National University Painting Contest)는 서울대학교 최고의 그림 대회이다. 참가자는 순서대로 한 명씩 심사위원 앞에서 제한된 시간 동안 제시된 단어에 맞는 그림을 그리고, 심사위원이 이를 채점하는 방식으로 대회가 진행된다.</p>\n<p>단순히 그림을 잘 그리는지를 평가하는 것이 아니라 그리는 과정에서의 퍼포먼스, 주제어를 창의적으로 해석하는 능력 등 여러 가지 기준으로 채점하기 때문에 결과로 나오는 점수도 매우 복잡하여 그대로 외우기 힘들다. 참가자였던 탐레프는 자신의 정확한 점수를 기억하는 대신 자신이 받은 중간 순위만 기억하기로 했다.</p>\n<p>한 명의 평가가 끝나면 지금까지 점수가 매겨진 참가자 중 자신보다 점수가 높은 사람의 수 + 1이 중간 순위가 된다. 즉, 자신보다 점수가 높은 사람이 세 명이라면 4위가 되고, 점수가 더 높은 사람이 없다면 1위가 되는 식이다. 이후 다음 참가자의 점수에 따라 순위가 밀릴 수도 있다.</p>\n<p>탐레프는 자신이 받았던 중간 순위와 이후 참가자들이 받았던 순위를 기억하고 있다. 이 정보를 바탕으로 탐레프의 최종 순위가 어떻게 될 수 있는지를 계산하는 프로그램을 작성해보자.</p>",
+  "input": "<p>첫 줄에 정수 <span style=\"font-style: italic;\">R</span>이 입력되며, 이는 탐레프가 평가 직후 받은 중간 순위를 의미한다. (1 ≤ <span style=\"font-style: italic;\">R</span> ≤ 200,000)</p>\n<p>다음 줄에 정수 <span style=\"font-style: italic;\">N</span>이 입력되며, 이는 탐레프 이후 참가한 사람의 수를 의미한다. (1 ≤ <span style=\"font-style: italic;\">N</span> ≤ 200,000)</p>\n<p>이후 공백으로 구분된 <span style=\"font-style: italic;\">N</span>개의 정수가 입력되며, <span style=\"font-style: italic;\">i</span>번째 정수 <span style=\"font-style: italic;\">R</span><sub><span style=\"font-style: italic;\">i</span></sub>는 <span style=\"font-style: italic;\">i</span>번째 참가자의 해당 시점 순위를 의미한다. (1 ≤ <span style=\"font-style: italic;\">R</span><sub><span style=\"font-style: italic;\">i</span></sub> ≤ 200,000)</p>",
+  "output": "<p>탐레프의 가능한 가장 높은(1등에 가까운) 순위와 가장 낮은 순위를 공백을 사이에 두고 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3\n3\n2 5 4\n",
+      "output": "4 5\n"
+    },
+    {
+      "input": "3\n4\n2 5 4 5\n",
+      "output": "5 6\n"
+    }
+  ],
+  "hint": "<p>첫 번째 예제의 경우, 탐레프의 심사 직후 순위는 3위이지만 이후 2위를 기록한 참가자에게 밀려 4위가 되고, 이후 5위를 기록한 참가자는 탐레프의 순위에 영향을 주지 않는다. 마지막으로 4위를 기록한 참가자가 탐레프와 동점이라면 탐레프의 순위는 그대로 4위가 되고, 탐레프보다 점수가 높다면 탐레프의 순위가 밀려서 5위가 된다.</p>\n<p>두 번째 예제의 경우 첫 세 참가자의 순위는 첫 번째 예제와 같다. 이 시점에 가능한 탐레프의 순위는 4위 혹은 5위이다. 그런데 이때 탐레프의 순위가 4위라면 다음 순위는 5위가 될 수 없으므로(공동 4위가 두 명이므로 다음 순위는 최소 6위이다.) 세 번째 참가자의 평가 이후 탐레프의 순위는 5위여야 한다. 최종 순위는 마지막 참가자와 탐레프가 동점이라면 5위, 그렇지 않다면 6위가 된다.</p>",
+  "source": "University, 서울대학교, 서울대학교 프로그래밍 경시대회, 2019 서울대학교 프로그래밍 경시대회, Division 1, University, 서울대학교, 서울대학교 프로그래밍 경시대회, 2019 서울대학교 프로그래밍 경시대회, Division 2, bryanj",
+  "level": 14,
+  "tags": [
+    "math",
+    "greedy",
+    "ad_hoc"
+  ],
+  "accepted_user_count": 163,
+  "submission_count": null,
+  "average_tries": 2.6319000720977783
+}

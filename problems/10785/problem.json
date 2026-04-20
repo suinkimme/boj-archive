@@ -1,0 +1,35 @@
+{
+  "id": 10785,
+  "title": "Asteroids",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The year is 2115. The asteroid communication relay system was set up a decade ago by the Asteroid Communication Ministry. It is running fine except for one small problem – there are too many asteroids! The smaller ones not only keep interfering with the signals from the relay stations but they are also a danger to all the maintenance aircrafts that fly between the stations. These small asteroids must be destroyed! The Interplanetary Coalition to Prevent Catastrophes (ICPC) has been charged with removing these dangerous asteroids and has hired an elite team of hot-shot pilots for the job. Han Duo is the captain of this team of asteroid destroyers. Armed with his missiles, Han flies through the asteroid belt blowing up any asteroid that the ICPC deems a nuisance.</p>\n<p>The ICPC is having some unfortunate budgetary problems. One result of this is that Han and his team do not have as many missiles as they would like, so they cannot blow up all the troublesome asteroids. But the asteroids are small and the missiles are powerful. So if two asteroids are near each other and line up properly, it is possible to take out both with a single missile.</p>\n<p>Han’s screen displays asteroids as non-rotating two-dimensional simple convex polygons, each of which moves at a fixed velocity. He has decided that the best time to hit two asteroids is when the overlap of the two polygons is at a maximum. For example, Figure B.1, which illustrates Sample Input 1, shows two asteroids and snapshots of their subsequent positions at 1-second intervals. The two asteroids start touching after 3 seconds and the maximum overlap area occurs between 4 and 5 seconds.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:334px; width:473px\"/></p>\n<p style=\"text-align: center;\">Figure B.1: Sample Input 1. Two asteroids with crossing paths.</p>\n<p>Calculating when the maximum overlap occurs for two asteroids requires a bit of programming, but unfortunately Han slept through most of his coding classes at the flight academy. This is where you come in.</p>",
+  "input": "<p>The input consists of two asteroid specifications. Each has the form n x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> . . . x<sub>n</sub> y<sub>n</sub> v<sub>x</sub> v<sub>y</sub> where n (3 ≤ n ≤ 10) is the number of vertices, each x<sub>i</sub>, y<sub>i</sub> (−10 000 ≤ x<sub>i</sub>, y<sub>i</sub> ≤ 10 000) are the coordinates of a vertex of the asteroid on Han’s screen given in clockwise order, and v<sub>x</sub>, v<sub>y</sub> (−100 ≤ v<sub>x</sub>, v<sub>y</sub> ≤ 100) are the x and y velocities (in units/second) of the asteroid. The x<sub>i</sub>, y<sub>i</sub> values specify the location of each asteroid at time t = 0, and the polygons do not intersect or touch at this time. The maximum length of any side of an asteroid is 500. All numbers in the input are integers.</p>",
+  "output": "<p>Display the time in seconds when the two polygons have maximum intersection, using the earliest such time if there is more than one. If the two polygons never overlap but touch each other, treat it as an intersection where the common area is zero and display the earliest such time. If the polygons never overlap or touch, display never instead. You should consider positive times only. Your output should have an absolute or relative error of at most 10<sup>−3</sup>.</p>",
+  "samples": [
+    {
+      "input": "6 3 2 2 4 3 6 6 6 7 4 6 2 2 2\n4 18 5 22 9 26 5 22 1 -2 1\n",
+      "output": "4.193518\n"
+    },
+    {
+      "input": "4 0 0 0 2 2 2 2 0 -1 1\n4 10 0 10 2 12 2 12 0 1 1\n",
+      "output": "never\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2015",
+  "level": 25,
+  "tags": [
+    "implementation",
+    "geometry",
+    "parametric_search",
+    "convex_hull",
+    "line_intersection",
+    "ternary_search",
+    "point_in_convex_polygon",
+    "half_plane_intersection"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 5.406300067901611
+}

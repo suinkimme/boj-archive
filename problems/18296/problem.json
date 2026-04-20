@@ -1,0 +1,44 @@
+{
+  "id": 18296,
+  "title": "Gnalcats",
+  "time_limit": "0.3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Researchers have discovered a new form of life they have named Gnalcats. Gnalcats have a very strange form of DNA and proteins but the researchers have understood how they work. They are now trying to classify species of Gnalcats by comparing their DNA.</p>\n<p>A gene of their DNA is a sequence of bases. These genes operate on proteins, which are extremely long chains of amino-acids (a − b − c − . . .). Amino-acids are either simple or complex (composed of two other amino-acids). Proteins always contain several billions of amino-acids.</p>\n<p>Genes operate on proteins in the following way: the seven different bases (C, D, L, P, R, S, U) correspond to different transformations on the protein. The result of the operation of a gene on a protein is obtained as the combination of the individual transformations by each base of the gene: the first base of the gene transforms the input protein, the resulting protein is then transformed according to the second base of the gene, and so on. Life is not perfect and thus one of these transformations may fail, in which case the overall transformation fails. If, at any point in the transformation, the protein is reduced to a chain of three or fewer amino-acids (simple or complex) then the transformation fails.</p>\n<p>The effect of each base is described in the following table where X denotes the tail of the protein, while a, b, and c are amino-acids (either simple or complex):</p>\n<table class=\"table table-bordered\" style=\"width:100%;\">\n<thead>\n<tr>\n<th style=\"text-align: center;\">base</th>\n<th style=\"text-align: center;\">input protein</th>\n<th style=\"text-align: center;\">output protein</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th style=\"text-align: center;\">C</th>\n<td style=\"text-align: right;\">a − X</td>\n<td>a − a − X</td>\n</tr>\n<tr>\n<th style=\"text-align: center;\">D</th>\n<td style=\"text-align: right;\">a − X</td>\n<td>X</td>\n</tr>\n<tr>\n<th style=\"text-align: center;\">L</th>\n<td style=\"text-align: right;\">a − X</td>\n<td>b − X (if a is the complex amino-acid &lt;b, c&gt;)<br/>\n\t\t\tfail (if a is a simple amino-acid)</td>\n</tr>\n<tr>\n<th style=\"text-align: center;\">P</th>\n<td style=\"text-align: right;\">a − b − X</td>\n<td>c − X where c is the complex amino-acid &lt;a, b&gt;</td>\n</tr>\n<tr>\n<th style=\"text-align: center;\">R</th>\n<td style=\"text-align: right;\">a − X</td>\n<td>c − X (if a is the complex amino-acid &lt;b, c&gt;)<br/>\n\t\t\tfail (if a is a simple amino-acid)</td>\n</tr>\n<tr>\n<th style=\"text-align: center;\">S</th>\n<td style=\"text-align: right;\">a − b − X</td>\n<td>b − a − X</td>\n</tr>\n<tr>\n<th style=\"text-align: center;\">U</th>\n<td style=\"text-align: right;\">a − X</td>\n<td>b − c − X (if a is the complex amino-acid &lt;b, c&gt;)<br/>\n\t\t\tfail (if a is a simple amino-acid)</td>\n</tr>\n</tbody>\n</table>\n<p>For example, the gene PSDSPCRPSDUL transforms a protein like this:</p>\n<ul>\n<li>the input protein is a − b − c − d − e − f − . . .</li>\n<li>then applying the rule for the first P produces: &lt;a, b&gt; − c − d − e − f − . . .</li>\n<li>then applying the rule for S produces: c − &lt;a, b&gt; − d − e − f − . . .</li>\n<li>then D gives: &lt;a, b&gt; − d − e − f − . . .</li>\n<li>then S gives: d − &lt;a, b&gt; − e − f − . . .</li>\n<li>then P gives: &lt;d,&lt;a, b&gt;&gt; − e − f − . . .</li>\n<li>then C gives: &lt;d,&lt;a, b&gt;&gt; − &lt;d,&lt;a, b&gt;&gt; − e − f − . . .</li>\n<li>then R gives: &lt;a, b&gt; − &lt;d,&lt;a, b&gt;&gt; − e − f − . . .</li>\n<li>then P gives: &lt;&lt;a, b&gt;,&lt;d,&lt;a, b&gt;&gt;&gt; − e − f − . . .</li>\n<li>then S gives: e − &lt;&lt;a, b&gt;,&lt;d,&lt;a, b&gt;&gt;&gt; − f − . . .</li>\n<li>then D gives: &lt;&lt;a, b&gt;,&lt;d,&lt;a, b&gt;&gt;&gt; − f − . . .</li>\n<li>then U gives: &lt;a, b&gt; − &lt;d,&lt;a, b&gt;&gt; − f − . . .</li>\n<li>and finally L gives: a − &lt;d,&lt;a, b&gt;&gt; − f − . . .</li>\n</ul>\n<p>You are given two genes, and you must decide whether they are equivalent. Two genes are equivalent if for every input protein composed of at least one billion of simple amino-acids, either the application of both genes produces the same output protein, or both applications fail.</p>",
+  "input": "<p>The input consists of two lines, each representing a Gnalcats gene.</p>",
+  "output": "<p>The output consists of a single word: “True” if the genes are equivalent, “False” otherwise.</p>",
+  "samples": [
+    {
+      "input": "PU\nSS\n",
+      "output": "True\n"
+    },
+    {
+      "input": "L\nR\n",
+      "output": "True\n"
+    },
+    {
+      "input": "PSPCRSL\nPS\n",
+      "output": "True\n"
+    },
+    {
+      "input": "U\nC\n",
+      "output": "False\n"
+    },
+    {
+      "input": "PL\nPR\n",
+      "output": "False\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2019",
+  "level": 18,
+  "tags": [
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 2.0369999408721924
+}

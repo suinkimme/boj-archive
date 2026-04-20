@@ -1,0 +1,25 @@
+{
+  "id": 12131,
+  "title": "Smoothing Window (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Adamma is a climate scientist interested in temperature. Every minute, she records the current temperature as an integer, creating a long list of integers: x<sub>1</sub>, x<sub>2</sub>, ..., x<sub><strong>N</strong></sub>. (Adamma uses her own special temperature scale rather than a familiar one like Celsius or Kelvin, so it's possible for the values to be large and negative!) She often plots these temperatures on her computer screen.</p>\n<p>This morning, she decided to compute a sliding average of this list in order to get a smoother plot. She used a smoothing window of size <strong>K</strong>, which means that she converted the sequence of <strong>N</strong> temperatures into a sequence of (<strong>N</strong> - <strong>K</strong> + 1) average temperatures: s<sub>1</sub>, s<sub>2</sub>, ..., s<sub><strong>N</strong>-<strong>K</strong>+1</sub>. Each s<sub>i</sub> is the average of the values x<sub>i</sub>, x<sub>i+1</sub>, ..., x<sub>i+<strong>K</strong>-1</sub>. The original x<sub>i</sub>values were all integers, but some of the s<sub>i</sub> may be fractional.</p>\n<p>Unfortunately, Adamma forgot to save the original sequence of temperatures! And now she wants to answer a different question -- what was the difference between the largest temperature and the smallest temperature? In other words, she needs to compute max{x<sub>1</sub>, ..., x<sub><strong>N</strong></sub>} - min{x<sub>1</sub>, ..., x<sub><strong>N</strong></sub>}. But she only has <strong>N</strong>, <strong>K</strong>, and the smoothed sequence.</p>\n<p>After some thinking, Adamma has realized that this might be impossible because there may be several valid answers. In that case, she wants to know the smallest possible answer among all of the possible original sequences that could have produced her smoothed sequence with the given values of <strong>N</strong> and <strong>K</strong>.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>.  <strong>T</strong> test cases follow; each test case consists of two lines. The first line contains integers <strong>N</strong> and <strong>K</strong> separated by a space character. The second line contains integer values sum<sub>1</sub>, sum<sub>2</sub>, ..., sum<sub><strong>N</strong>-<strong>K</strong>+1</sub>, separated by space characters. s<sub>i</sub> is given by sum<sub>i</sub> / <strong>K</strong>.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>2 ≤ <strong>K</strong> ≤ <strong>N</strong>.</li>\n<li>The sum<sub>i</sub> will be integers between -10000 and 10000, inclusive.</li>\n<li>2 ≤ <strong>N</strong> ≤ 100.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #x: y\", where x is the test case number (starting from 1) and y is the smallest possible difference between the largest and smallest temperature.</p>",
+  "samples": [
+    {
+      "input": "3\n10 2\n1 2 3 4 5 6 7 8 9\n100 100\n-100\n7 3\n0 12 0 12 0\n",
+      "output": "Case #1: 5\nCase #2: 0\nCase #3: 12\n"
+    }
+  ],
+  "hint": "<p>In Case #1, the smoothed sequence is:<br/>\n<br/>\n0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5<br/>\n<br/>\nThe integer sequence that gives the smallest difference is:<br/>\n<br/>\n0, 1, 1, 2, 2, 3, 3, 4, 4, 5<br/>\n<br/>\nNote that the sequence:<br/>\n<br/>\n0.5, 0.5, 1.5, 1.5, 2.5, 2.5, 3.5, 3.5, 4.5, 4.5<br/>\n<br/>\nWould give the same smoothed sequence with a maximum difference of 4, but this is not a valid answer because the original temperatures are known to have been integers.<br/>\n<br/>\nIn Case #2, all we know is that the sum of the 100 original values was -100. It's possible that all of the original values were exactly -1, in which case the difference between the largest and smallest temperatures would be 0, which is as small as differences get!<br/>\n<br/>\nIn Case #3, the original sequence could have been:<br/>\n<br/>\n-4, 8, -4, 8, -4, 8, -4</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2015, Round 3",
+  "level": 16,
+  "tags": [
+    "greedy",
+    "sliding_window"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 2.0999999046325684
+}

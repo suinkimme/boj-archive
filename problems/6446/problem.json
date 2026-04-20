@@ -1,0 +1,22 @@
+{
+  "id": 6446,
+  "title": "Peter's Calculator",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Unfortunately, Peter's Calculator broke down last week. Now Peter is left with his computer, which has no calculator application, and paper and pencil, which is too tiresome for an engineer. As one of Peter's friends, you are asked to write him a calculator application. After talking to him, you figure out the following:</p>\n<ul>\n<li>Peter does only integer arithmetic. The operations he needs are addition, subtraction and multiplication.</li>\n<li>He would like to use an arbitrary number of variables whose names are not longer than 50 characters.</li>\n<li>His main way of doing calculations are to type in a few formulas and to assign them to variables. Some formulas are complicated expressions, which can refer to yet undefined variables, while other formulas consist of a single number. Then Peter asks for the value of some variables, i.e. he evaluates the formulas.</li>\n<li>Peters wants to redefine some variables and then to reevaluate formulas that depend on these variables.</li>\n</ul>\n<p>The input strictly adheres to the following syntax (given in EBNF):</p>\n<pre>\nfile = line { line } .\nline = [ assignment | print | reset ] .\nassignment = var \":=\" expression.\nprint = \"PRINT\" var.\nreset = \"RESET\".\nexpression = term { addop term }.\nterm = factor { mulop factor }.\nfactor = \"(\" expression \")\" | var | number.\naddop = \"+\" | \"-\".\nmulop = \"*\". \n</pre>\n<p>In the Extended Backus-Naur Formalism (EBNF), <code>A = B C</code> declares that the grammatical construct <code>A</code> consists of a <code>B</code> followed by a <code>C</code>. <code>A = B | C</code> means that <code>A</code> consists of a <code>B</code> or, alternatively, of a <code>C</code>. <code>A = [ B ]</code> defines construct <code>A</code> to be either a <code>B</code> or nothing and <code>A = { B }</code> tells you that <code>A</code> consists of the concatenation of any number of <code>B</code>s (including none).</p>\n<p>The production <code>var</code> stands for the name of a variable, which starts with a letter followed by up to 49 letters or digits. Letters may be uppercase or lowercase. The production number stands for a integer number. The precise syntax for these productions are given below. The case of letters is important for both variables and statements.</p>\n<pre>\nvar = letter { letter | digit }.\nnumber = [ \"-\" ] digit { digit }.\nletter = \"A\" | \"B\" | ... | \"Z\" | \"a\" | \"b\" | ... | \"z\".\ndigit = \"0\" | \"1\" | ... | \"8\" | \"9\".\n</pre>\n<p>Between the parts of a grammatical construct but not within the names of variables or integer numbers, any number of spaces may appear. &lt;EOF&gt; stands for the end of the input file and &lt;CR&gt; stands for the new-line character. All lines in the input file are shorter than 200 characters.</p>\n<p>The value of a variable is said to be undefined:</p>\n<ul>\n<li>if it has not yet been defined or it refers to a variable, which has not yet been defined;</li>\n<li>if the definition of the variable contains a cycle.</li>\n</ul>\n<p>Your are to write a program that implements Peter's calculator. It should store all variable definitions and for each \"PRINT\" statement evaluate the specified variable based on the latest variable definitions. If your program encounters a \"RESET\" statement, it should delete all stored variables so that all variables become undefined.</p>",
+  "input": "<p>The input file contains calculations adhering to the syntax given above. Each line contains either an assignment to a variable, a \"PRINT\" statement, a \"RESET\" statement or nothing.</p>",
+  "output": "<p>For each \"PRINT\" statement found in the input file, your program should output a line containing the numerical value of the specified variable or the word \"UNDEF\" if the variable is undefined.</p>",
+  "samples": [
+    {
+      "input": "a := b + c\nb := 3\nc := 5\nPRINT d\nPRINT a\nb := 8\nPRINT a\nRESET\nPRINT a\n",
+      "output": "UNDEF\n8\n13\nUNDEF\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 1995",
+  "level": 20,
+  "tags": [],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 11
+}

@@ -1,0 +1,36 @@
+{
+  "id": 28167,
+  "title": "Big Picture",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Grammy has a big picture with $n+1$ rows and $m+1$ columns. Rows are numbered from $1$ to $n+1$ and columns are numbered from $1$ to $m+1$. </p>\n<p>Grammy decides to color this picture in a special way. For the $i$-th row, Grammy will color the leftmost $j$ ($1\\leq j\\leq m$) cells black with probability $p_{i,j}$. For the $j$-th column, Grammy will color the topmost $i$ ($1\\leq i\\leq n$) cells black with probability $q_{i,j}$. Operations are independent, and a cell could be colored more than once.</p>\n<p>Let us define the beauty value as the number of maximal orthogonally connected regions of the same color. Before Grammy finishes her coloring, she wants to know the expected number of regions on the picture. Please calculate the expected beauty value of the picture for her. </p>\n<p>Two cells $x$ and $y$ are in the same orthogonally connected region if and only if they satisfy the following constraints: </p>\n<ul>\n<li>They have the same color. </li>\n<li>$x$ shares an edge with $y$ or $x$ shares an edge with some cell $z$ while $y$ and $z$ are in the same orthogonally connected region.  </li>\n</ul>",
+  "input": "<p>The first line contains two integers $n$ and $m$ ($1 \\leq n,m \\leq 1000$), denoting the size of the picture. </p>\n<p>Each of the next $n$ lines contains $m$ integers $p_{i,j}$, denoting the probability of painting the leftmost $j$ cells of the $i$-th row black, modulo $998\\,244\\,353$. It is guaranteed that the sum of the probabilities in each row is $1$. </p>\n<p>Each of the next $n$ lines contains $m$ integers $q_{i,j}$, denoting the probability of painting the topmost $i$ cells of the $j$-th column black, modulo $998\\,244\\,353$. It is guaranteed that the sum of the probabilities in each column is $1$.</p>",
+  "output": "<p>Output a single integer, denoting the expected beauty value of the picture, modulo $998\\,244\\,353$. </p>\n<p>It can be shown that the answer can be expressed as an irreducible fraction $\\frac{x}{y}$, where $x$ and $y$ are integers and $y \\not \\equiv 0 \\pmod {998\\,244\\,353}$. Output the integer equal to $x\\cdot y^{-1}\\pmod {998\\,244\\,353}$. In other words, output such an integer $a$ that $0\\leq a &lt; 998\\,244\\,353$ and $a\\cdot y\\equiv x\\pmod {998\\,244\\,353}$. </p>",
+  "samples": [
+    {
+      "input": "3 3\n0 0 1\n1 0 0\n0 0 1\n0 1 0\n0 0 0\n1 0 1\n",
+      "output": "3\n"
+    },
+    {
+      "input": "2 2\n499122177 499122177\n499122177 499122177\n499122177 499122177\n499122177 499122177\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 3\n332748118 332748118 332748118\n332748118 332748118 332748118\n332748118 332748118 332748118\n332748118 332748118 332748118\n332748118 332748118 332748118\n332748118 332748118 332748118\n",
+      "output": "308100111\n"
+    }
+  ],
+  "hint": "<p>There is only one possible picture in the first example, which is shown as follows. There are $3$ maximal orthogonally connected regions in the picture, so the beauty value of the picture is $3$. </p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 200px; height: 185px;\"/></p>",
+  "source": "ICPC, Regionals, Asia East Continent, Hong Kong, 2023 ICPC Hong Kong Regional, Camp, Petrozavodsk Programming Camp, Winter 2023, Day 3: 2023 ICPC Asia Hong Kong Regional",
+  "level": 18,
+  "tags": [
+    "combinatorics",
+    "linearity_of_expectation",
+    "math",
+    "prefix_sum",
+    "probability"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 1.476199984550476
+}

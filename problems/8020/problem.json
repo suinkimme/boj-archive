@@ -1,0 +1,25 @@
+{
+  "id": 8020,
+  "title": "Protocols",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Mr Halfnet works in a telecommunication company Bytetel as a designer of network protocols. At present he works on a protocol to send data from one computer to another by means of a new generation cable. One can send signals of k different voltage levels on such a cable, but the voltage may vary only every 1/n of a second (1/n) of a second during which the voltage must be constant is called an impulse). Data are sent in packets comprising m consecutive impulses (i.e. sending one packet takes m/n seconds).</p>\n<p>For technical reasons, the voltage must not be constant within each packet, but has to change from time to time. Strictly speaking, one cannot send packets of data containing / consecutive impulses of the same voltage level.</p>\n<p>If a protocol enables to send x different packets, we say that we can code log_2 x  bits of information in one packet. Mr Halfnet ponders on how many bits of information maximally one is able to send in one second.</p>\n<p>Assume the cable enables us to send signals of 2 different voltage levels (k=2), which we denote 0 and 1. If the voltage can vary 20 times per second (n=20), the packets comprise 4 impulses (m=4), and within each packet no 3 consecutive impulses may have the same voltage (l=3), then one cannot send packets: 0000, 0001, 1000, 1111, 1110, 0111. However, one can send packets: 0010, 0011, 0100, 0110, 0101, 1101, 1100, 1011, 1001 and 1010. As one can send 10 different kinds of packets, one can code log_2 10 bits of information in each packet. During a second one can send 20/4=5 packets, that is 5⋅log_2 10 ~ 16.6096 bits of information.</p>\n<p>Write a program which:</p>\n<ul>\n<li>reads from the standard input the numbers k, n, m and l describing the protocol,</li>\n<li>computes the maximal number of bits of information that may be sent during one second,</li>\n<li>writes to the standard output the computed number rounded down to the nearest integer.</li>\n</ul>",
+  "input": "<p>In the first line of the standard input there are four integers, separated by single spaces:</p>\n<ul>\n<li>the number of voltage levels k (2 ≤ k ≤ 10),</li>\n<li>the frequency of impulses n (1 ≤ n ≤ 1,000),</li>\n<li>the size of packet of data m (1 ≤ m ≤ 100),</li>\n<li>the number l of consecutive impulses in a packet, that there must be a change in voltage within (2 ≤ l ≤ m).</li>\n</ul>\n<p>Additionally, we assume that n/m is an integer less than or equal to 10.</p>",
+  "output": "<p>Your program should write, in the first and only line of the standard output, one integer: the maximal number of bits that may be sent during one second, rounded down to the nearest integer.</p>",
+  "samples": [
+    {
+      "input": "2 20 4 3\n",
+      "output": "16\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2001/2002, Stage 2",
+  "level": 14,
+  "tags": [
+    "arbitrary_precision",
+    "dp"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.25
+}

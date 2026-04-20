@@ -1,0 +1,30 @@
+{
+  "id": 18140,
+  "title": "The Power Monitor System",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>An electric power system contains electrical nodes and transmission lines. An electrical node is a substation bus where transmission lines, loads, and generators are connected, and a transmission line joins two electrical nodes. To ensure electric power systems working normally, electric power companies need to continually monitor their system’s state by a set of state variables such as the voltage magnitude at loads and the machine phase angle at generators. Therefore, they place PMUs at selected electric nodes in the system for monitoring these variables (voltage and phase angle).</p>\n<p>A phase measurement units (PMU) measures the state variables for the electric node at which it is placed and its incident transmission lines and their end-electric-nodes. These nodes and lines are said to be monitored. Other nodes and lines are monitored recursively by the following rules:</p>\n<ol>\n<li>Any node that is incident to a monitored line is monitored.</li>\n<li>Any line joining two monitored nodes is monitored.</li>\n<li>If a node is incident to a total k lines, where k &gt; 1, and k−1 of these lines are monitored, then all these k lines are monitored.</li>\n</ol>\n<p>Because of the high cost of a PMU, it is desirable to minimize their number while maintaining the ability to monitor the entire system. For example, the placement of PMUs (black points) satisfies the requirement that the entire system is monitored in Figure 3(a) but not in Figure 3(b). In Figure 3(a), nodes 1, 2, 3, 4 and lines a, b, c are monitored by PMU1, nodes 6, 8, 9, 10 and lines g, h, i are monitored by PMU2. According to Rule 2, line e is monitored since nodes 4 and 6 are monitored. According to Rule 3, lines d and f are monitored because they are the last monitored lines incident to node 4 and node 6, respectively. Nodes 5 and 7 are monitored according to Rule 1.</p>\n<p>In Rich City, the electric power system forms a tree structure (a structure without loops). Please write a program to compute the minimum number of PMUs to monitor the entire system.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 584px; height: 145px;\"/></p>\n<p style=\"text-align: center;\">Figure 3: (a) Satisfied placement. (b) Unsatisfied placement.</p>",
+  "input": "<p>The first line of the input is an integer n, 2 ≤ n ≤ 100000, which indicates the number of electrical nodes. Each of the next n − 1 lines consists of two integers separated by a space, which indicates the indices of two adjacent electrical nodes of a transmission line.</p>",
+  "output": "<p>Output the minimum number of PMUs, which satisfies the requirements of the problem.</p>",
+  "samples": [
+    {
+      "input": "10\n1 2\n2 3\n2 4\n4 5\n4 6\n6 7\n6 8\n8 9\n8 10\n",
+      "output": "2\n"
+    },
+    {
+      "input": "5\n1 2\n1 3\n1 4\n1 5\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Taiwan, 2019 ICPC Asia Taipei-Hsinchu Regional",
+  "level": 22,
+  "tags": [
+    "dp",
+    "trees",
+    "dp_tree"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.125
+}

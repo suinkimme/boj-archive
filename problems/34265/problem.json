@@ -1,0 +1,31 @@
+{
+  "id": 34265,
+  "title": "A Totient Quotient",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>For a positive integer $k$, Euler's totient function $\\phi(k)$ is defined as the number of positive integers less than or equal to $k$ and relatively prime to $k$. For example, $\\phi(9) = 6$, $\\phi(24) = 8,$ and $\\phi(1) = 1$. (As a reminder, the greatest common divisor (gcd) of two positive integers $a$ and $b$ is the greatest positive integer that divides both $a$ and $b$. Two positive integers are relatively prime if their gcd is $1$.)</p>\n<p>Euler's product formula gives the value of $\\phi(k)$ in terms of the prime factorization of $k$. For a prime $p$, let $\\nu_p(k)$ be the highest power of $p$ which divides $k$ (so for example, $\\nu_2(48) = 4$, $\\nu_3(48)=1$, and $\\nu_5(48)=0$). If $k$ is a product of powers of prime factors, $k = \\prod_{i=1}^j p_i^{\\nu_{p_i}(k)}$ (where the product only includes primes $p_i$ with $\\nu_{p_i}(k) &gt; 0$), then $$ \\phi(k) = \\prod_{i=1}^j \\left[(p_i - 1)\\left(p_i^{\\nu_{p_i}(k)-1}\\right)\\right].$$</p>\n<p>A recent edition of The American Mathematical Monthly (Li et al., <em>Positive Rational Numbers of the Form $\\phi(m^2)/\\phi(n^2)$</em>, 128(2), 2021) proved the following fact about totient quotients: for any pair of positive integers $a$, $b$ there is a unique pair of positive integers $m$, $n$ for which:</p>\n<ol>\n<li>$\\frac{a}{b} = \\frac{\\phi(m^2)}{\\phi(n^2)};$</li>\n<li>if a prime $p$ divides the product $mn$, then $\\nu_p(m) \\neq \\nu_{p}(n)$;</li>\n<li>$\\gcd(m,n)$ is square-free: that is, for every prime $p$, $\\gcd(m,n)$ is not divisible by $p^2$.</li>\n</ol>\n<p>Conditions 2 and 3 guarantee that $m$ and $n$ are the unique smallest pair of positive integers satisfying condition 1.</p>\n<p>You'd like to verify this claim numerically. Write a program which takes as input two integers $a$ and $b$ and outputs the corresponding pair $m, n$.</p>",
+  "input": "<p>The only line of input contains two space-separated integers $a$ and $b$ ($ 1 \\leq a, b \\leq 10\\,000$). These two integers are guaranteed to be relatively prime. Additionally, $a$ and $b$ will be chosen so that output values $m$ and $n$ are less than $2^{63}$.</p>",
+  "output": "<p>Print the two positive integers $m$ and $n$ satisfying all three of the conditions of The American Mathematical Monthly's theorem, separated by a space. It is guaranteed that $ m, n &lt; 2^{63}$.</p>",
+  "samples": [
+    {
+      "input": "9 13\n",
+      "output": "18 13\n"
+    },
+    {
+      "input": "19 47\n",
+      "output": "13110 18612\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Championship, North America Championship 2025",
+  "level": 18,
+  "tags": [
+    "math",
+    "number_theory",
+    "prime_factorization",
+    "euler_phi"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.1175999641418457
+}

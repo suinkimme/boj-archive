@@ -1,0 +1,22 @@
+{
+  "id": 25438,
+  "title": "메기 농장",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>부 뎅클렉은 메기 양어장을 가지고 있다. 양어장은 $N \\times N$ 격자칸 모양이다. 격자의 칸들은 같은 크기의 정사각형이다. 격자의 열들은 서쪽에서 동쪽으로 $0$부터 $N - 1$까지 번호가 붙어 있고, 행들은 남쪽에서 북쪽으로 $0$부터 $N - 1$까지 번호가 붙어있다. 열 $c$, 행 $r$에 ($0 \\le c \\le N - 1$, $0 \\le r \\le N - 1$) 있는 칸을 칸 $(c, r)$로 부른다.</p>\r\n\r\n<p>양어장에는 $M$ 마리의 메기가 있다. 메기들은 $0$부터 $M - 1$까지 번호가 붙어 있고, 모두 <strong>다른</strong> 칸에 있다. 각각의 $i$에 대해 ($0 \\le i \\le M - 1$) 메기 $i$는 칸 $(X[i], Y[i])$에 있고, 그 무게는 $W[i]$그램이다.</p>\r\n\r\n<p>부 뎅클렉은 메기를 잡기 위해 낚시터를 지으려고 한다. 열 $c$에 있는 길이 $k$인 낚시터는 ($0 \\le c \\le N - 1$, $1 \\le k \\le N$), 열 $c$의 행 $0$부터 행$k - 1$까지를 덮는 직사각형이다. 즉, 낚시터는 칸들 $(c, 0), (c, 1), \\ldots, (c, k - 1)$를 덮는다. 각 열에 대해서 부 뎅클렉은 특정한 길이의 낚시터를 짓거나, 낚시터를 전혀 짓지 않는 것 중 선택을 할 수 있다.</p>\r\n\r\n<p>메기 $i$를 ($0 \\le i \\le M - 1$) 잡기 위해서는 메기 $i$의 위치의 서쪽이나 동쪽에 인접한 칸을 낚시터가 덮어야 하며, 메기 $i$의 위치는 낚시터가 덮지 않아야 한다. 다시 말하면,</p>\r\n\r\n<ul>\r\n\t<li>칸들 $(X[i] - 1, Y[i])$와 $(X[i] + 1, Y[i])$ 중 <strong>적어도 하나</strong>가 낚시터에 덮이고,</li>\r\n\t<li>칸 $(X[i], Y[i])$는 낚시터에 덮이지 않아야 한다.</li>\r\n</ul>\r\n\r\n<p>예를 들어, $N = 5$인 양어장에 $M = 4$마리의 메기가 있다고 하자.</p>\r\n\r\n<ul>\r\n\t<li>메기 $0$의 위치는 칸 $(0, 2)$이고 그 무게는 $5$그램이다.</li>\r\n\t<li>메기 $1$의 위치는 칸 $(1, 1)$이고 그 무게는 $2$그램이다.</li>\r\n\t<li>메기 $2$의 위치는 칸 $(4, 4)$이고 그 무게는 $1$그램이다.</li>\r\n\t<li>메기 $3$의 위치는 칸 $(3, 3)$이고 그 무게는 $3$그램이다.</li>\r\n</ul>\r\n\r\n<p>부 뎅클렉이 낚시터를 지을 수 있는 방법 중 하나는 아래와 같다.</p>\r\n\r\n<table class=\"table table-bordered td-center th-center\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>낚시터 짓기 전</th>\r\n\t\t\t<th>낚시터 지은 후</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td><img alt=\"\" src=\"1.png\" style=\"width: 280px; height: 287px;\" /></td>\r\n\t\t\t<td><img alt=\"\" src=\"2.png\" style=\"width: 280px; height: 287px;\" /></td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>칸에 표시된 자연수는 그 칸에 있는 메기의 무게이다. 색칠된 칸들이 낚시터에 덮인 곳이다. 이 경우 잡을 수 있는 메기는 메기 $0$(칸 $(0, 2)$에 위치)과 메기 $3$(칸 $(3, 3)$에 위치)이다. 메기 $1$(칸 $(1, 1)$에 위치)는 그 칸이 낚시터에 덮여 있어 잡을 수 없다. 메기 $2$(칸 $(4, 4)$에 위치)는 서쪽이나 동쪽에 인접한 칸이 낚시터로 덮인 것이 없어 잡을 수 없다.</p>\r\n\r\n<p>부 뎅클렉은 잡을 수 있는 메기의 무게의 합이 가장 크도록 낚시터를 짓고 싶다. 잡을 수 있는 메기의 최대 무게 합을 계산하는 프로그램을 작성하라.</p>\r\n",
+  "input": "",
+  "output": "",
+  "samples": [],
+  "hint": null,
+  "source": ", Olympiad, International Olympiad in Informatics, IOI 2022, Day 1",
+  "level": 23,
+  "tags": [
+    "dp",
+    "binary_search",
+    "prefix_sum",
+    "two_pointer"
+  ],
+  "accepted_user_count": 52,
+  "submission_count": null,
+  "average_tries": 3.2114999294281006
+}

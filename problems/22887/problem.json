@@ -1,0 +1,26 @@
+{
+  "id": 22887,
+  "title": "Reversort Engineering",
+  "time_limit": "10 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>Note: The main parts of the statements of the problems \"Reversort\" and \"Reversort Engineering\" are identical, except for the last paragraph. The problems can otherwise be solved independently.</p>\n<p>Reversort is an algorithm to sort a list of distinct integers in increasing order. The algorithm is based on the \"Reverse\" operation. Each application of this operation reverses the order of some contiguous part of the list.</p>\n<p>The pseudocode of the algorithm is the following:</p>\n<pre>\nReversort(L):\n  for i := 1 to length(L) - 1\n    j := position with the minimum value in L between i and length(L), inclusive\n    Reverse(L[i..j])\n</pre>\n<p>After i−1 iterations, the positions 1,2,…,i−1 of the list contain the i−1 smallest elements of L, in increasing order. During the i-th iteration, the process reverses the sublist going from the i-th position to the current position of the i-th minimum element. That makes the i-th minimum element end up in the i-th position.</p>\n<p>For example, for a list with 4 elements, the algorithm would perform 3 iterations. Here is how it would process L=[4,2,1,3]:</p>\n<ol>\n<li>i=1, j=3 ⟶ L=[1,2,4,3]</li>\n<li>i=2, j=2 ⟶ L=[1,2,4,3]</li>\n<li>i=3, j=4 ⟶ L=[1,2,3,4]</li>\n</ol>\n<p>The most expensive part of executing the algorithm on our architecture is the Reverse operation. Therefore, our measure for the cost of each iteration is simply the length of the sublist passed to Reverse, that is, the value j−i+1. The cost of the whole algorithm is the sum of the costs of each iteration.</p>\n<p>In the example above, the iterations cost 3, 1, and 2, in that order, for a total of 6.</p>\n<p>You are given a size N and a cost C. Find a list of N distinct integers between 1 and N such that the cost of applying Reversort to it is exactly C, or say that there is no such list.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T lines follow. Each line describes a test case with two integers N and C, the size of the wanted list and the desired cost, respectively.</p>",
+  "output": "<p>For each test case, if there is no list of size N such that applying Reversort to it costs exactly C, output one line containing <code>Case #x: IMPOSSIBLE</code>, where x is the test case number (starting from 1). Otherwise, output one line containing <code>Case #x: y<sub>1</sub> y<sub>2</sub> ... y<sub>N</sub></code>, where x is the test case number (starting from 1) and each y<sub>i</sub> is a distinct integer between 1 and N, representing the i-th element of one such possible list.</p>",
+  "samples": [
+    {
+      "input": "5\n4 6\n2 1\n7 12\n7 2\n2 1000\n",
+      "output": "Case #1: 4 2 1 3\nCase #2: 1 2\nCase #3: 7 6 5 4 3 2 1\nCase #4: IMPOSSIBLE\nCase #5: IMPOSSIBLE\n"
+    }
+  ],
+  "hint": "<p>Sample Case #1 is described in the statement above.</p>\n<p>In Sample Case #2, the algorithm runs for only one iteration on the proposed output. In that iteration, reverse is applied to a sublist of size 1, therefore, its cost is 1.</p>\n<p>In Sample Case #3, the first iteration reverses the full list, for a cost of 7. After that, the list is already sorted, but there are 5 more iterations, each of which contributes a cost of 1. Another valid output would be <code>7 5 4 3 2 1 6</code>. For that output, the first iteration has a cost of 6, the last one has a cost of 2, and all others have a cost of 1.</p>\n<p>In Sample Case #4, Reversort will necessarily perform 6 iterations, each of which will have a cost of at least 1, so there is no way the total cost can be as low as required.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2021, Qualification Round",
+  "level": 11,
+  "tags": [
+    "sorting",
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 76,
+  "submission_count": null,
+  "average_tries": 1.618399977684021
+}

@@ -1,0 +1,32 @@
+{
+  "id": 31757,
+  "title": "Greek Casino",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Since the early civilizations, humankind has enjoyed games of chance. Even the ingenious Greeks, known for their groundbreaking concept of the least common multiple (LCM), couldn’t resist a good gamble.</p>\n<p>Inspired by this mathematical marvel, folks in Athens devised a unique betting system: after purchasing a ticket, a participant would receive a random number of coins. To determine this number, there are $N ≥ 3$ ordered slots numbered from $1$ to $N$. A token is initially placed at slot $1$, and the following steps are repeated:</p>\n<ul>\n<li>Let $xv be the number of the slot where the token is currently located.</li>\n<li>Generate a random integer $y$ between $1$ and $N$, and compute $z$ the LCM of $x$ and $y$.</li>\n<li>If $z &gt; N$, the procedure ends.</li>\n<li>Otherwise, the token is moved to slot $z$, and the participant receives one coin.</li>\n</ul>\n<p>As it is well known, the house always wins: the casino employs a particular probability distribution for generating random integers, so as to ensure a profitable outcome.</p>\n<p>The casino owner is constantly seeking to optimize the betting system’s profitability. You, an AI designed to aid in such tasks, are given $N$ and the probability distribution. Determine the expected total number of coins awarded to a participant.</p>",
+  "input": "<p>The first line contains an integer $N$ ($3 ≤ N ≤ 10^5$) indicating the number of slots.</p>\n<p>The second line contains $N$ integers $W_1, W_2, \\dots , W_N$ ($1 ≤ W_i ≤ 1000$ for $i = 1, 2, \\dots , N$), representing that the probability of generating $i$ is $W_i/ \\left( \\sum_j{W_j} \\right)$, that is, the probability of generating $i$ is the relative weight of $W_i$ with respect to the sum of the whole list $W_1, W_2, \\dots , W_N$.</p>",
+  "output": "<p>Output a single line with the expected total number of coins awarded to a participant. The output must have an absolute or relative error of at most $10^{-9}$. It can be proven that the procedure described in the statement ends within a finite number of iterations with probability $1$, and that the expected total number of coins is indeed finite.</p>",
+  "samples": [
+    {
+      "input": "3\n1 1 1\n",
+      "output": "3.5\n"
+    },
+    {
+      "input": "3\n1 1 2\n",
+      "output": "3.6666666667\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Championship, The 2024 ICPC Latin America Championship",
+  "level": 20,
+  "tags": [
+    "math",
+    "dp",
+    "number_theory",
+    "probability",
+    "harmonic_number"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

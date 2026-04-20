@@ -1,0 +1,34 @@
+{
+  "id": 18027,
+  "title": "Jealous Youngsters",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>It is chaos playtime at kindergarten again, and teacher Tom is having some difficulties. You see, kids often have disagreements about who should play with which toy. Whenever a kid perceives any form of injustice in the allocation of toys to kids, they start crying uncontrollably. The kids are clearly poor decision makers, so today Tom has a new plan: rather than letting the kids choose toys by themselves, he will assign toys to them in a way that prevents any crying.</p>\n<p>Tom has been studying the behavior of the kids and now understands exactly under what circumstances they start crying. First, a child will cry if they have no toy to play with. Second, even having a toy, a child A will cry if there is some other child B playing with some toy T such that A envies B for playing with T, and A would rather play with T than with A’s current toy. Additionally, Tom has observed the following four behavioural properties of children:</p>\n<ol style=\"list-style-type: lower-alpha;\">\n<li><strong>Envious</strong>: children envy those who have played more than them with any given toy. If child A played strictly more with toy T yesterday than child B did, then B will be envious of A for playing with T today.</li>\n<li><strong>Inflexible</strong>: a child would rather play with some toy it played with yesterday, and the earlier they first played with it yesterday, the more they want to play with it today. All toys that a child did not play with at all yesterday are equally (un)desirable to the child.</li>\n<li><strong>Cannot multitask</strong>: a child never plays with more than one toy at a time.</li>\n<li><strong>Uncooperative</strong>: children are bad at sharing, and two children never play with the same toy at the same time.</li>\n</ol>\n<p>Tom has recorded which toys were played with by which kid yesterday, taking note of when each kid started playing with a toy. Using this information, Tom aims to make one fixed assignment of toys for all of today that, if possible, prevents any crying.</p>",
+  "input": "<p>The first line of input contains two integers n and m (1 ≤ n, m ≤ 1 000), the number of kids and the number of toys. The kids are numbered from 1 to n and the toys from 1 to m. Then follows a line containing two integers d and e (1 ≤ d ≤ 10<sup>9</sup> and 0 ≤ e ≤ 10<sup>6</sup>), the total duration of yesterday’s playtime in microseconds and the number of events Tom recorded yesterday.</p>\n<p>Then follow e lines giving the events Tom recorded yesterday. Each event is described by a line containing three integers s, k and t (0 ≤ s &lt; d, 1 ≤ k ≤ n, and 0 ≤ t ≤ m), indicating that kid k started playing with toy t at time s (in microseconds since the start of yesterday’s playtime). If t = 0 then kid k stopped playing with any toy at time s.</p>\n<p>The events are given in non-decreasing order of time (i.e., the values of s are non-decreasing). All toy changes for all kids prior to playtime ending have been recorded by Tom (in particular if one kid k<sub>1</sub> steals a toy from some other kid k<sub>2</sub>, there is also an event indicating k<sub>2</sub>’s change of toy at the same microsecond, even if k<sub>2</sub> stops playing with any toy). At the start of the playtime, no kid is playing with any toy (but they can start playing with a toy at time 0). At time d all kids still playing with toys stopped playing with them but Tom did not record these events. Kids do not switch toys more than once per microsecond.</p>",
+  "output": "<p>If there is an assignment of toys to kids such that no kid will start crying today, output n distinct integers, the i<sup>th</sup> of which is the toy that kid i should play with. If there are multiple possible solutions, output any one of them. Otherwise, if there is no such assignment, output “impossible”.</p>",
+  "samples": [
+    {
+      "input": "2 3\n6 7\n0 1 1\n0 2 2\n1 1 3\n2 1 2\n2 2 1\n3 2 3\n4 2 1\n",
+      "output": "1 2\n"
+    },
+    {
+      "input": "2 1\n20 3\n0 1 1\n10 1 0\n10 2 1\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "1 3\n3 3\n0 1 1\n1 1 2\n2 1 3\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2019",
+  "level": 23,
+  "tags": [
+    "bipartite_matching",
+    "implementation",
+    "stable_marriage"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 4.36359977722168
+}

@@ -1,0 +1,22 @@
+{
+  "id": 30660,
+  "title": "Caminho de Bêbado",
+  "time_limit": "0.5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Desde que saiu da cadeia, Marcos não consegue parar de beber. Ele, um ex-maratonista, havia sido preso injustamente sob acusação de roubar questões de competições de programação e vendê-las para competidores russos e chineses. Depois de 5 longos anos na cadeia, ele foi considerado inocente por falta de provas. Porém, passar tanto tempo atrás das grades de forma injusta o fez entrar em depressão e, desde então, passa todas as suas noites andando de bar em bar, de esquina em esquina. Você, como melhor amigo de Marcos, já está cansado de sempre ter que procurá-lo pela cidade depois de suas noites de bebedeira e resolveu facilitar sua própria vida criando um programa que tenta prever onde encontrar Marcos ao final de suas noites.</p>\n<p>Toda noite, antes de sair para beber, Marcos avisa a você a qual bar da cidade ele vai, assim você sempre sabe onde sua noite de bebedeira começa. Depois disso, depois de cada dose bebida, há uma certa chance de Marcos ir a outro bar. Você sabe uma maneira simples de estimar essa chance: a probabilidade de Marcos ir a outro bar é proporcional 'a divisão da qualidade do bar pela distância entre o bar onde ele está agora e o bar de destino. Também há uma chance de Marcos continuar no mesmo bar, que é proporcional 'a raíz da qualidade daquele bar.</p>\n<p>A qualidade do bar $i$ é dada por $Q_i$ e a distância entre os bares $i$ e $j$ é dada por $D_{i,j} = D_{j,i}$. Assim, de maneira geral, a probabilidade $P_{i,j}$ de Marcos ir do bar $i$ ao bar $j$ é dada por:</p>\n<p>$$\\begin{equation} P_{i,j} = \\displaystyle\\frac{\\displaystyle\\frac{Q_j}{D_{i,j}}}{\\displaystyle\\sum_{k \\ne i}{\\displaystyle\\frac{Q_k}{D_{i,k}} + \\sqrt{Q_i}}} \\end{equation}$$</p>\n<p>Já a probabilidade de Marcos permanecer no mesmo bar é dada por:</p>\n<p>$$\\begin{equation} P_{i,i} = \\displaystyle\\frac{\\sqrt{Q_i}}{\\displaystyle\\sum_{k \\ne i}{\\displaystyle\\frac{Q_k}{D_{i,k}} + \\sqrt{Q_i}}} \\end{equation}$$</p>\n<p>Note que as fórmulas garantem a seguinte propriedade:</p>\n<p>$$ \\begin{equation} \\sum_{j=1}^{n}{P_{i,j}} = 1\\text{, }\\forall 1 \\le i \\le n \\end{equation} $$</p>\n<p>Como Marcos bebe muito mais que a média, uma das histórias que ele mais gosta de contar quando está bêbado é a de como ele ganhou um campeonato russo de virada de vodka, você sabe que ele pode tomar uma quantidade arbitrariamente grande de doses. Para fins práticos, assuma que Marcos bebe uma quantidade infinita de doses numa noite.</p>\n<p>Assim, dados como entrada os bares, suas qualidade e suas distâncias, faça um programa que descubra em qual bar Marcos estará com maior probabilidade depois de sua noite de bebedeira.</p>\n<p>Dica: Não se esqueça que a probabilidade de Marcos estar em um bar é sempre igual a 1.</p>",
+  "input": "<p>A entrada possui vários casos de teste. Cada caso de teste começa com uma linha que contém dois inteiros $n$ e $b$, $1 ≤ b ≤ n ≤ 100$, que representam a quantidade de bares na cidade e o bar no qual Marcos começa sua noite.</p>\n<p>Em seguida, a entrada contém $n$ linhas com um inteiro cada, onde o inteiro da $i$-ésima representa a qualidade do bar $i$. Por fim, seguem $n$ linhas com $n$ inteiros cada, representando a distância entre o bar da $i$-ésima linha ao bar do $j$-ésimo inteiro da linha. Você pode assumir $0 ≤ Q_i , D_{i,j} ≤ 1000$ para todo $i$ e $j$.</p>\n<p>A entrada termina com uma linha “0 0” que não deve ser processada.</p>",
+  "output": "<p>Seu programa deve produzir uma linha de saída para cada caso de teste. Esta linha deve conter apenas um inteiro relativo ao índice do bar onde há a maior probabilidade de Marcos estar. Em caso de empate, imprima o valor relativo ao bar de menor índice.</p>",
+  "samples": [
+    {
+      "input": "3 1\n1\n2\n3\n0 1 2\n1 0 2\n2 2 0\n4 1\n3\n8\n5\n7\n0 1 2 3\n1 0 5 3\n2 5 0 4\n3 3 4 0\n0 0\n",
+      "output": "3\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Sub-Regional Brasil do ACM ICPC, Maratona de Programação da SBC 2022 - Extra Vitória Site",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 24
+}

@@ -1,0 +1,40 @@
+{
+  "id": 23069,
+  "title": "Aa",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The letter Å is a relatively new invention in the Danish alphabet, being introduced only in 1948. Before that, the digraph Aa was used instead -- this survives in town names like Aabenraa and Aarhus.</p>\n<p>When sorting Danish words, Å is treated as the last letter of the alphabet. Interestingly, this partially extends to the digraph: Aa is sorted like Å, <em>but only when it represents a single sound</em>. Thus, while <code>Aarhus</code> (pronunced \"Århus\") would sort after <code>Zurich</code>, and <code>afrikaans</code> after <code>afrikan</code>, <code>kontraalt</code> (\"kontra-alt\") would come before <code>kontrabas</code>.</p>\n<p>Given a list of made-up words that could be pronounced in any way, is it possible that it is sorted?</p>",
+  "input": "<p>The first line of the input contains an integer $N$, the number of words. The next $N$ lines each contain a non-empty string with characters from <code>a-z</code>, the list of words.</p>\n<p>All words are guaranteed to be unique.</p>",
+  "output": "<p>If it is possible to pick out a set of non-overlapping occurrences of <code>aa</code>'s in the input words that should be sorted as Å in such a way that the whole list becomes sorted, output <code>yes</code>.</p>\n<p>Otherwise, output <code>no</code>.</p>",
+  "samples": [
+    {
+      "input": "2\naarhus\naahus\n",
+      "output": "yes\n"
+    },
+    {
+      "input": "2\nraaaa\nra\n",
+      "output": "no\n"
+    },
+    {
+      "input": "3\nb\naa\nc\n",
+      "output": "no\n"
+    },
+    {
+      "input": "6\naaaay\naaaarecord\naaaarghhhh\naaaargh\naaaahhh\naaaabattery\n",
+      "output": "yes\n"
+    },
+    {
+      "input": "6\naaaay\naaaarghhhh\naaaargh\naaaarecord\naaaahhh\naaaabattery\n",
+      "output": "no\n"
+    }
+  ],
+  "hint": "<p>In the first sample, we compare the words <code>aarhus</code> and <code>aahus</code>. If we interpret the a's in <code>aarhus</code> as pronounced separately, but the ones in <code>aahus</code> as making up a single sound, the word list becomes sorted.</p>\n<p>In the second sample, regardless of how we interpret a's, the word list is unsorted.</p>\n<p>In the third sample, the word list is again unsorted regardless of how we interpret a's: if the aa is pronounced as two separate sounds, the first two words are misordered, while if it is pronounced as a single sound, the last two words are misordered.</p>\n<p>In the fourth sample, the word list can be seen as sorted if we interpret it as aaaay, aaårecord, aaårghhhh, aåargh, åaahhh, ååbattery, where å's denote aa's that make up a single sound.</p>\n<p>In the fifth sample, there is again no interpretation that results in a sorted list.</p>",
+  "source": ", Contest, Swedish Coding Cup, Swedish Coding Cup Finals 2021",
+  "level": 10,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

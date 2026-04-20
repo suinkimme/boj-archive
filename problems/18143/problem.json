@@ -1,0 +1,25 @@
+{
+  "id": 18143,
+  "title": "The League of Sequence Designers",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Consider the following sequence problem: given n integers a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub>, where |a<sub>i</sub>| ≤ 10<sup>6</sup> for all 1 ≤ i ≤ n and 1 ≤ n &lt; 2000, compute</p>\n<p>\\[\\max_{1 \\le \\ell \\le r \\le n}{(r - \\ell + 1)} \\cdot \\sum_{\\ell \\le i \\le r}{a_i}\\text{.}\\]</p>\n<p>As an attempt to solve the above problem, Natasha came up with a textbook greedy algorithm using the idea of computing heaviest segment via prefix sums as follows:</p>\n<pre>\nFunction FindAnswer(a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub>)\n  result = 0\n  curMax = 0\n  left = 0\n  for i = 1 to n do\n    curMax = curMax + a<sub>i</sub>\n    if curMax &lt; 0 then\n      curMax = 0\n      left = i\n    end\n    result = max(result, (i - left) × curMax)\n  end\n  return result\n</pre>\n<p>As you can see, Natasha’s idea is not entirely correct. For example, when the input sequence is 6, −8, 7, −42, the function <code>FindAnswer</code> will return 7, but the correct answer is 3·(6−8+7) = 15.</p>\n<p>Bruce tries to tell Natasha that her solution is not correct, but she does not believe.</p>\n<p>Given an integer k and a lower bound of sequence length L, your task in this problem is to help Bruce design a sequence of n integers with n ≥ L such that the correct answer and the answer produced by Natasha’s algorithm differ by exactly k.</p>\n<p>Note that, the sequence you produce must follow the specification to the original problem. That is, 1 ≤ n &lt; 2000 and |a<sub>i</sub>| ≤ 10<sup>6</sup> for all 1 ≤ i ≤ n. Print -1 if it is impossible to form such a sequence.</p>",
+  "input": "<p>The input file starts with an integer T, the number of testcases, in the first line.</p>\n<p>Then there are T lines, one for each testcase, each containing two integers k and L, separated by a space.</p>",
+  "output": "<p>The output for each testcase consists of either one or two lines, depending on the result. The format is as follows.</p>\n<p>If there exists no such sequences, print the integer -1 in a line. Otherwise, print in the first line the integer n denoting the length of the sequence. In the second line, print the n integers a<sub>1</sub>, . . . , a<sub>n</sub> separated with a space.</p>",
+  "samples": [
+    {
+      "input": "3\n8 3\n612 7\n4 2019\n",
+      "output": "4\n6 -8 7 -42\n7\n30 -12 -99 123 -2 245 -300\n-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Taiwan, 2019 ICPC Asia Taipei-Hsinchu Regional",
+  "level": 18,
+  "tags": [
+    "constructive",
+    "math"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 2.047600030899048
+}

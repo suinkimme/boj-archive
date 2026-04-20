@@ -1,0 +1,33 @@
+{
+  "id": 17963,
+  "title": "Projection",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 231px; height: 192px;\"/></p>\n<p>Everybody knows that you are a TensorFlow fan. Therefore, you’ve been challenged to recreate the TensorFlow logo from two projections.</p>\n<p>Consider that you have a 3D volume, n×m×h, and two projections (two matrices with dimensions n×m and n × h with elements 0 and 1). You are asked to compute a possible sets of cubes that must be placed inside the 3D volume such that the 3D object created with the cubes throws the shadows specified by the projection-matrices, when the light comes from left and front. If it is not possible, just print −1. If it is possible you must find exactly two sets, one with the <strong>maximum</strong> amount of cubes and one with the <strong>minimum</strong> amount. You can assume there is no gravitation (the cubes are located inside the 3D volume exactly where they are placed, without requiring any support). We assume that 1 represents shadow and 0 represents light.</p>\n<p>If there are multiple such solutions, you must output the minimum lexicographic one. One solution A is lexicographically smaller than another solution b if the first number that differs between the two solutions is smaller in a than in b.</p>\n<p>For example, solution [(0, 0, 0),(1, 1, 1)] is smaller than [(1, 1, 1),(0, 0, 0)].</p>",
+  "input": "<p>The first line contains three integers separated by a single space n, m, h (1 ≤ n, m, h ≤ 100) — the volume dimensions.</p>\n<p>Each of the next n lines contains m characters, each being either 1 or 0 representing either a shadow area (1) or a light area (0), describing the projection from the light in the front.</p>\n<p>Each of the next n lines contains h characters, with the same format as above, describing the projection from the light on the left.</p>",
+  "output": "<p>The output should contain on the first line one number, either −1 if there is no solution or k<sub>max</sub> representing the maximum number of cubes we can assign in the volume that will generate the two projections given in the input.</p>\n<p>The next k<sub>max</sub> lines should contain triplets of numbers x, y, z (0 ≤ x &lt; n, 0 ≤ y &lt; m, 0 ≤ z &lt; h) representing the cubes chosen in the lexicographically smallest solution with maximum number of cubes.</p>\n<p>Then, only if there is a solution, one more line follows containing k<sub>min</sub>, the minimum number of cubes we can assign in the volume that will generate the two projections given in the input.</p>\n<p>After that, the next k<sub>min</sub> lines should contain triplets of numbers x, y, z (0 ≤ x &lt; n, 0 ≤ y &lt; m, 0 ≤ z &lt; h) representing the cubes in the lexicographically smallest solution with minimum number of cubes.</p>",
+  "samples": [
+    {
+      "input": "5 3 3\n111\n010\n010\n010\n010\n111\n100\n110\n100\n100\n",
+      "output": "14\n0 0 0\n0 0 1\n0 0 2\n0 1 0\n0 1 1\n0 1 2\n0 2 0\n0 2 1\n0 2 2\n1 1 0\n2 1 0\n2 1 1\n3 1 0\n4 1 0\n8\n0 0 0\n0 1 1\n0 2 2\n1 1 0\n2 1 0\n2 1 1\n3 1 0\n4 1 0\n"
+    },
+    {
+      "input": "2 2 2\n00\n00\n11\n11\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "2 3 2\n101\n011\n10\n11\n",
+      "output": "6\n0 0 0\n0 2 0\n1 1 0\n1 1 1\n1 2 0\n1 2 1\n4\n0 0 0\n0 2 0\n1 1 0\n1 2 1\n"
+    }
+  ],
+  "hint": "<p>A cube at coordinates (x, y, z) will generate a shadow at line x and column y in the n × m projection and line x and column z in the n × h projection (indexed from 0).</p>",
+  "source": "ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2019, Contest, Open Cup, 2019/2020 Season, Stage 6: Grand Prix of Southeastern Europe",
+  "level": 15,
+  "tags": [
+    "constructive",
+    "implementation"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 1.5757999420166016
+}

@@ -1,0 +1,40 @@
+{
+  "id": 16799,
+  "title": "Optimal alpha beta pruning",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Fox Ciel is developing an artificial intelligence (AI) for a game. This game is described as a game tree T with n vertices. Each node in the game has an evaluation value which shows how good a situation is. This value is the same as maximum value of child nodes’ values multiplied by -1. Values on leaf nodes are evaluated with Ciel’s special function -- which is a bit heavy. So, she will use alpha-beta pruning for getting root node’s evaluation value to decrease the number of leaf nodes to be calculated.</p>\n<p>By the way, changing evaluation order of child nodes affects the number of calculation on the leaf nodes. Therefore, Ciel wants to know the minimum and maximum number of times to calculate in leaf nodes when she could evaluate child node in arbitrary order. She asked you to calculate minimum evaluation number of times and maximum evaluation number of times in leaf nodes.</p>\n<p>Ciel uses following algotithm:</p>\n<pre>\nfunction negamax(node, α, β)\n    if node is a terminal node\n        return value of leaf node\n    else\n        foreach child of node\n            val := -negamax(child, -β, -α)\n            if val &gt;= β\n                return val\n            if val &gt; α\n                α := val\n        return α\n</pre>\n<p>[NOTE] <a href=\"http://en.wikipedia.org/wiki/Negamax\">negamax algorithm</a></p>",
+  "input": "<p>Input follows following format:</p>\n<pre>\n<var>n</var>\n<var>p<sub>1</sub></var> <var>p<sub>2</sub></var> ... <var>p<sub>n</sub></var>\n<var>k<sub>1</sub></var> <var>t<sub>11</sub></var> <var>t<sub>12</sub></var> ... <var>t<sub>1k</sub></var>\n:\n:\n<var>k<sub>n</sub></var> <var>t<sub>n1</sub></var> <var>t<sub>n2</sub></var> ... <var>t<sub>nk</sub></var>\n</pre>\n<p>The first line contains an integer <var>n</var>, which means the number of vertices in game tree T. The second line contains <var>n</var> integers <var>p<sub>i</sub></var>, which means the evaluation value of vertex <var>i</var>. Then, next <var>n</var> lines which contain the information of game tree T. <var>k<sub>i</sub></var> is the number of child nodes of vertex <var>i</var>, and <var>t<sub>ij</sub></var> is the indices of the child node of vertex <var>i</var>.</p>\n<p>Input follows following constraints:</p>\n<ul>\n<li><var>2 ≤ n ≤ 100</var></li>\n<li><var>-10,000 ≤ p<sub>i</sub> ≤ 10,000</var></li>\n<li><var>0 ≤ k<sub>i</sub> ≤ 5</var></li>\n<li><var>2 ≤ t<sub>ij</sub> ≤ n</var></li>\n<li>Index of root node is <var>1</var>.</li>\n<li>Evaluation value except leaf node is always <var>0</var>. This does not mean the evaluation values of non-leaf nodes are <var>0</var>. You have to calculate them if necessary.</li>\n<li>Leaf node sometimes have evaluation value of <var>0</var>.</li>\n<li>Game tree T is tree structure.</li>\n</ul>",
+  "output": "<p>Print the minimum evaluation number of times and the maximum evaluation number of times in leaf node. Please separated by whitespace between minimum and maximum.</p>\n<pre>\nminimum maximum</pre>",
+  "samples": [
+    {
+      "input": "3\n0 1 1\n2 2 3\n0\n0\n",
+      "output": "2 2\n"
+    },
+    {
+      "input": "8\n0 0 100 100 0 -100 -100 -100\n2 2 5\n2 3 4\n0\n0\n3 6 7 8\n0\n0\n0\n",
+      "output": "3 5\n"
+    },
+    {
+      "input": "8\n0 0 100 100 0 100 100 100\n2 2 5\n2 3 4\n0\n0\n3 6 7 8\n0\n0\n0\n",
+      "output": "3 4\n"
+    },
+    {
+      "input": "19\n0 100 0 100 0 0 0 0 0 1 2 3 4 5 6 7 8 9 10\n2 2 3\n0\n2 4 5\n0\n3 6 7 8\n3 9 10 11\n3 12 13 14\n3 15 16 17\n2 18 19\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n",
+      "output": "7 12\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2013 Day 4",
+  "level": 20,
+  "tags": [
+    "dp",
+    "bruteforcing",
+    "trees",
+    "dp_tree",
+    "game_theory"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

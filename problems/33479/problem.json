@@ -1,0 +1,38 @@
+{
+  "id": 33479,
+  "title": "받아안올림",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<blockquote>\n<p>2023년이 지나가고 <a href=\"/category/detail/4169\">&lt;제4회 고려대학교 MatKor Cup: 2024 Winter/Spring&gt;</a>을 준비하던 때에, MatKor에 큰 위기가 찾아왔다. 바로 MatKor에서 상당히 큰 지분을 맡던 <a href=\"/problem/31548\">하늘이가 군대에 입대하게 된 것</a>이다. 하늘이는 군대에서도 MatKor 활동을 계속하겠다고 하며 훈련소로 입소하였다.</p>\n</blockquote>\n<p>하늘이가 MatKor에 진심인 모습에 감격한 세준이는 하늘이를 위해 <strong>받아안올림</strong>이라는 개념을 다음과 같이 정의하고, 하늘이를 포함해 종우, 동우와 함께 이를 연구하는 모임인 바다안올림(Sea No Up) 원정대를 결성했다.</p>\n<p><strong>자릿수 함수</strong> $D_d(n,i)$를 아래와 같이 정의하자. 양의 정수의 집합 $\\mathbb{Z}^+$와 $\\mathbb{Z}_{\\geq 0} := \\mathbb{Z}^+ \\cup \\{0\\}$에 대하여,</p>\n<p>\\[\\forall d\\in\\mathbb{Z}^+, \\forall n,i \\in \\mathbb{Z}_{\\geq 0}:D_d(n,i) =\\left\\lfloor \\frac{n}{d^i} \\right\\rfloor\\!\\!\\!\\!\\mod d\\]</p>\n<p>$p$-<strong>받아안올림 덧셈</strong>($\\oplus_p$), $p$-<strong>받아안올림 곱셈</strong>($\\otimes_p$)은 음이 아닌 임의의 두 정수 $a,b$와 소수 $p$에 대해 아래와 같이 정의된다.</p>\n<p>$$\\begin{align*} \\forall a, b \\in \\mathbb{Z}_{\\geq 0}&amp;:\\\\ a\\oplus_p b &amp;:= \\sum_{i=0}^\\infty p^i\\cdot \\left(\\left[D_p(a, i) + D_p(b,i)\\right] \\!\\!\\!\\!\\mod p\\right)\\\\ a\\otimes_p b &amp;:= \\sum_{i=0}^\\infty p^i\\cdot\\left(\\sum_{j=0}^i D_p(a,j) \\cdot D_p(b,i-j)\\!\\!\\!\\!\\mod p\\right) \\end{align*}$$</p>\n<p>자연스럽게 $p$-<strong>받아안올림 거듭제곱</strong>은 아래와 같이 정의된다.</p>\n<p>\\[\\forall a \\in \\mathbb{Z}_{\\geq 0}, \\forall k \\in \\mathbb{Z}^+:a^{\\otimes_p k}=a\\underbrace{\\otimes_p\\cdots\\otimes_p}_{k\\text{ times}}a\\]</p>\n<p>$\\forall n \\in \\mathbb{Z}_{\\geq 0}$에 대하여, 함수 $\\omega(n;p,N)$는 $n^{\\otimes_p k}$이 집합 $\\{1\\oplus_p(i\\otimes_p N)\\mid i\\in\\mathbb{Z}^+\\}$에 속하게 되는 최소의 $k\\in\\mathbb{Z}^+$로 정의되고, 그러한 $k$가 존재하지 않으면 $\\omega(n;p,N)$는 $0$의 값을 가진다.</p>\n<p>받아안올림 연산의 성질에 대해 깊게 탐구하려는 하늘이는 주어지는 소수 $p$와 양의 정수 $N$에 대하여</p>\n<p>$$L:=\\lim_{s\\to\\infty}\\frac{1}{s}\\sum_{k=1}^{s}\\omega(k;p,N)$$</p>\n<p>으로 정의된 $L$의 값을 구하고자 한다. 하늘이를 도와 이 값을 구해보자.</p>",
+  "input": "<p>첫 번째 줄에 소수 $p(2\\leq p\\leq 10^{9})$, 양의 정수 $N(1\\leq N\\leq 10^{18})$이 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>만약 $L$이 유리수라면 첫 번째 줄에 $L$을 $10^9+7$로 나눈 나머지를 출력한다.</p>\n<p>기약 분수 $\\frac{p}{q}(p\\ge 0,q&gt;0,\\gcd(p,q) =1)$를 $M$으로 나눈 나머지는 $q^{-1}$가 $q\\cdot q^{-1}\\equiv 1\\pmod M$을 만족하는 정수, 즉 $q$의 $M$에 대한 모듈로 곱셈 역원일 때, $p\\cdot q^{-1}\\pmod M$로 정의한다. 만약 정수일 경우 $q=q^{-1}=1$이므로 $p\\pmod M$를 의미한다.</p>\n<p>기약 분수의 분모가 $10^9+7$의 배수인 경우 대신 <code><span style=\"color:#e74c3c;\">-1</span></code>을 출력한다.</p>\n<p>만약 $L$이 무리수라면 첫 번째 줄에 <code><span style=\"color:#e74c3c;\">Irrational</span></code>을<span style=\"display: none;\"> </span> 출력하고, 그다음 줄에 $L$의 값을 출력한다. 이 경우 정답과의 절대/상대 오차는 $10^{-6}$까지 허용한다.</p>",
+  "samples": [
+    {
+      "input": "2 1\n",
+      "output": "1\n"
+    },
+    {
+      "input": "5 5\n",
+      "output": "400000005\n"
+    }
+  ],
+  "hint": "<p>실제로 하늘이는 군대에서도 MatKor, 특히 MatKor Cup을 위한 활동을 계속했고, 지금도 하고 있다.</p>\n<p>또한 받아안올림의 개념을 통해 문제를 만들고, 풀고, 검수하기 위해 하늘이, 세준이, 종우, 동우로 구성된 <code>바다안올림(Sea No Up) 원정대</code>라는 이름의 채팅방이 있다.</p>",
+  "source": "University, 고려대학교, MatKor Cup, 제6회 고려대학교 MatKor Cup: 2025 Winter, devluyten, kidw0124, sshs29hanul, utilforever, yijw0930",
+  "level": 29,
+  "tags": [
+    "math",
+    "number_theory",
+    "combinatorics",
+    "exponentiation_by_squaring",
+    "euclidean",
+    "linear_algebra",
+    "modular_multiplicative_inverse",
+    "prime_factorization",
+    "crt",
+    "pollard_rho",
+    "mobius_inversion"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 10.071399688720703
+}

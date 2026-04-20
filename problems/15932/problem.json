@@ -1,0 +1,40 @@
+{
+  "id": 15932,
+  "title": "배열과 연산",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>크기가 n인 정수 배열 X가 있고, 0으로 초기화되어있다. 이 배열에&nbsp;연산을 q번 적용하려고 한다.</p>\r\n\r\n<p>배열에 적용할 수 있는 연산은 아래와 같이 두 종류가 있다.</p>\r\n\r\n<ul>\r\n\t<li>덧셈: 모든 X[i]에 i를 더한다. (0 &le; i &lt; n)</li>\r\n\t<li>뒤집기: 뒤집기 연산을 사용하려면 i &le; j를 만족하는&nbsp;i와 j가 필요하다. X[i]부터 X[j]까지 원소의 순서를 모두 뒤집는다. 즉, X[i], X[i+1], ..., X[j-1], X[j]의 순서가 뒤집힌다.</li>\r\n</ul>\r\n\r\n<p>예를 들어, n = 6이고, 아래와 같이 연산을 다섯 번 적용한 경우를 살펴보자.</p>\r\n\r\n<ol>\r\n\t<li>덧셈</li>\r\n\t<li>덧셈</li>\r\n\t<li>뒤집기 i = 0, j = 4</li>\r\n\t<li>덧셈</li>\r\n\t<li>뒤집기 i = 2, j = 5</li>\r\n</ol>\r\n\r\n<p>가장 처음에 X는 [0, 0, 0, 0, 0, 0]이다. 각 연산을 사용한 결과는 아래와 같다.</p>\r\n\r\n<ol>\r\n\t<li>[0, 1, 2, 3, 4, 5]</li>\r\n\t<li>[0, 2, 4, 6, 8, 10]</li>\r\n\t<li>[8, 6, 4, 2, 0, 10]</li>\r\n\t<li>[8, 7, 6, 5, 4, 15]</li>\r\n\t<li>[8, 7, 15, 4, 5, 6]</li>\r\n</ol>\r\n\r\n<p>배열의 크기 n과 적용한 연산의 수 q, 그리고 적용한 연산이 주어졌을 때, 배열 X에 담겨있는 수를 구해보려고 한다.</p>\r\n\r\n<p>크기가 m인 배열 Y가 주어졌을 때, 모든 연산을 적용한 후의 X[Y[i]] 값을 구해보자.</p>\r\n",
+  "input": "<p>첫째 줄에 세 정수 n, q, m이 주어진다. (1 &le; n &le; 1,000,000, 0 &le; q &le; 10,000, 1 &le; m &le; 5,000).</p>\r\n\r\n<p>다음 q개의 줄에 결처 연산이 한 줄에 하나씩 주어진다. 각 줄은 &#39;a&#39;나 &#39;r&#39;로 시작한다. 이 대, &#39;a&#39;는 덧셈 연산을 나타내고, &#39;r&#39;은 뒤집기 연산을 나타낸다. &#39;r&#39;이 주어진 경우, 그 뒤에 공백으로 구분된 두 정수 i, j가 주어진다. (0 &le; i &le; j &lt; n)</p>\r\n\r\n<p>마지막 줄에는 배열 Y를 나타내는 m개의 정수가 순서대로 주어진다. (0 &le; Y[i] &lt; n)</p>\r\n",
+  "output": "<p>총 m개의 줄에 X[Y[i]]값을 순서대로 한 줄에 하나씩 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "6 5 6\na\na\nr 0 4\na\nr 2 5\n0 1 2 3 4 5\n",
+      "output": "8 \n7 \n15 \n4 \n5 \n6\n"
+    },
+    {
+      "input": "3 0 3\n2 1 0\n",
+      "output": "0\n0\n0\n"
+    },
+    {
+      "input": "7 6 7\na\na\nr 0 3\na\na\nr 3 5\n0 1 2 3 4 5 6\n",
+      "output": "6\n6\n6\n20\n16\n6\n24\n"
+    },
+    {
+      "input": "2 7 2\na\nr 0 1\na\na\nr 0 1\na\nr 0 1\n0 1\n",
+      "output": "2\n2\n"
+    },
+    {
+      "input": "2 10 2\na\nr 0 1\na\na\nr 0 1\na\nr 0 1\nr 0 0\nr 1 1\nr 0 1\n0 1\n",
+      "output": "2\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "haden, jh05013",
+  "level": 13,
+  "tags": [
+    "offline_queries"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 2.319999933242798
+}

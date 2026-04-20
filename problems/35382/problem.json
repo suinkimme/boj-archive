@@ -1,0 +1,34 @@
+{
+  "id": 35382,
+  "title": "Polyomino Tiling",
+  "time_limit": "5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>A polyomino is a nonempty connected union of unit squares without holes, where the corners of each unit square are at integer coordinates in the two-dimensional plane. A polyomino can be described by a string representation of its boundary. Starting at some integer coordinates on the polyomino's boundary we can follow the boundary by taking unit steps up, right, down, or left. We represent each of these steps with the letters <code>u</code>, <code>r</code>, <code>d</code>, <code>l</code>, respectively. If we concatenate these letters while following the boundary of the polyomino until we reach the starting coordinates, then the concatenation is called the boundary string for the polyomino. Note that while following the boundary, only the starting coordinates may be visited twice, all other coordinates in the path must be visited exactly once.</p>\n<p>The cyclic rotations of the boundary string are obtained by starting at different coordinates on the boundary and proceeding in the same order as in the boundary string (either clockwise or counter-clockwise, but not both). For example, the cyclic rotations of <code>urdl</code> are <code>urdl</code>, <code>rdlu</code>, <code>dlur</code>, and <code>lurd</code>.</p>\n<p>For a string $S$, consisting of letters <code>u</code>, <code>r</code>, <code>d</code>, and <code>l</code>, define $\\overline{S}$ as the string obtained by reversing the letters of $S$ and changing each <code>u</code> to <code>d</code>, each <code>d</code> to <code>u</code>, each <code>r</code> to <code>l</code>, and each <code>l</code> to <code>r</code>. For example, for $S=$<code>uruurrdl</code>, we have $\\overline{S}=$<code>rullddld</code>.</p>\n<p>It can be proven that a polyomino will tile the plane by translations (i.e., without rotations nor reflections) if and only if a cyclic rotation of the boundary string $B$ can be written as $B=X\\cdot Y\\cdot Z \\cdot \\overline{X} \\cdot \\overline{Y} \\cdot \\overline{Z}$ or $B=X\\cdot Y \\cdot \\overline{X}\\cdot \\overline{Y}$, where $X,Y,Z$ are nonempty strings. Quite often, there may be many ways to rotate the boundary string and write it in one or both of these two forms.</p>\n<p>Given a boundary string for a polyomino, count the number of ways that each cyclic rotation $B$ of the boundary string can be written as either $B=X\\cdot Y \\cdot \\overline{X} \\cdot \\overline{Y}$ or $B=X\\cdot Y \\cdot Z\\cdot \\overline{X} \\cdot \\overline{Y} \\cdot \\overline{Z}$ where $X$, $Y$, and $Z$ are nonempty strings. This count will be $0$ if the polyomino cannot tile the plane by translations.</p>",
+  "input": "<p>Input consists of a single line containing two values $k$ $s$, where $k$ ($4\\leq k\\leq 10\\,000$) is the length of the boundary string and $s$ is the boundary string. The boundary string will consist of the letters <code>u</code>, <code>r</code>, <code>d</code>, and <code>l</code>.</p>",
+  "output": "<p>Print a single integer, the number of ways that each cyclic rotation of the boundary string can be written in the form $X \\cdot Y \\cdot \\overline{X} \\cdot \\overline{Y}$ or $X \\cdot Y \\cdot Z \\cdot \\overline{X} \\cdot \\overline{Y} \\cdot \\overline{Z}$.</p>",
+  "samples": [
+    {
+      "input": "20 uurrrrdrdrdlldlullul\n",
+      "output": "6\n"
+    },
+    {
+      "input": "14 ururdrrdldllul\n",
+      "output": "4\n"
+    },
+    {
+      "input": "12 uurdrurddlll\n",
+      "output": "0\n"
+    },
+    {
+      "input": "8 urrrdlll\n",
+      "output": "16\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 295px; height: 200px;\"/></p>\n<p style=\"text-align: center;\">Part of a tiling for the first polyomino in the sample input.</p>",
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2025 East Central NA Regional Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

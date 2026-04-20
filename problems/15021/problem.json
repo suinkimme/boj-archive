@@ -1,0 +1,27 @@
+{
+  "id": 15021,
+  "title": "Fractal Tree",
+  "time_limit": "7 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A fractal tree F<sub>i</sub> is defined in the following way. First, a rooted tree F<sub>0</sub> is given, which contains at least 2 vertices. F<sub>i</sub> is then defined recursively in the following manner. Consider the set of vertices S which are leaves in F<sub>i−1</sub>. For each vertex v in S, we replace it with a copy of F<sub>0</sub>, such that v corresponds to the root of F<sub>0</sub>.</p>\n<p>Now, consider the tree F<sub>k</sub>, for a given k. In this tree, we perform a depth-first search, where we visit all vertices of the tree recursively. At a certain vertex, we first recurse into the subtree of the leftmost child of the vertex, then the second leftmost child, and so on, until we have visited all the vertices in the subtree of the vertex. Assign integer labels to the vertices in the order they were visited, starting at 1. See Figure F.1 for an example.</p>\n<table class=\"table\" style=\"width:100%\">\n<tbody>\n<tr>\n<td style=\"text-align:center; vertical-align:top; width:33%\"><img alt=\"\" src=\"1.png\" style=\"height:101px; width:96px\"/></td>\n<td style=\"text-align:center; vertical-align:top; width:33%\"><img alt=\"\" src=\"2.png\" style=\"height:169px; width:158px\"/></td>\n<td style=\"text-align:center; vertical-align:top; width:34%\"><img alt=\"\" src=\"3.png\" style=\"height:167px; width:154px\"/></td>\n</tr>\n<tr>\n<td style=\"text-align:center; width:33%\">(a) The tree F<sub>0</sub>.</td>\n<td style=\"text-align:center; width:33%\">(b) The tree F<sub>1</sub>.</td>\n<td style=\"text-align:center; width:34%\">(c) The depth first search labelling of F<sub>1</sub>.</td>\n</tr>\n</tbody>\n</table>\n<p>Given a set of queries consisting of pairs of vertices, your task is to find the distance between the two vertices. The distance is defined as the number of edges on the (unique) simple path between the two vertices.</p>",
+  "input": "<p>First, the tree F<sub>0</sub> is given. The first line of input contains the number of vertices 2 ≤ n ≤ 100 000 in F<sub>0</sub>. The vertices are numbered 0 to n − 1, with 0 being the root vertex. Then follows a line containing n − 1 integers p<sub>1</sub>, . . . , p<sub>n−1</sub>. For each 1 ≤ i ≤ n − 1, the parent of node i in F<sub>0</sub> is p<sub>i</sub>. It holds that p<sub>i</sub> &lt; i. Within the tree, the left-to-right ordering of the vertices correspond to their numbering, in ascending order (i.e. the lowest-numbered child is the leftmost child).</p>\n<p>The third line of input contains an integer 0 ≤ k &lt; 2<sup>30</sup>. Then follows a line containing an integer q, 1 ≤ q ≤ 100 000, the number of queries. Finally, there are q lines containing the queries. Each query is given by two distinct integers a and b, the labels of two vertices of F<sub>k</sub>. You may assume that a and b are valid labels (i.e., they are between 1 and the number of vertices of F<sub>k</sub>), and that they are at most 2<sup>30</sup>.</p>",
+  "output": "<p>For each query (a, b), in the same order as given in the input, output the distance in F<sub>k</sub> between the vertices labelled a and b.</p>",
+  "samples": [
+    {
+      "input": "4\n0 1 0\n1\n10\n1 2\n1 4\n1 6\n1 8\n1 10\n5 10\n6 8\n9 3\n7 10\n8 9\n",
+      "output": "1\n3\n3\n2\n2\n6\n5\n5\n1\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2017",
+  "level": 22,
+  "tags": [
+    "case_work",
+    "lca",
+    "recursion",
+    "trees"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.5
+}

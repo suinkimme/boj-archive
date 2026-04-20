@@ -1,0 +1,29 @@
+{
+  "id": 15433,
+  "title": "Umbral Decoding",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are planning a clever attack against a new encryption algorithm. To succeed, you need to find the key, which is a pair of integers (p, q). We can think of the key as a point on a two-dimensional integer lattice whose location is unknown. However, you know that (p, q) lies in the square spanned by the lattice points (0, 0) and (n, n) for a given n, i.e. 0 ≤ p, q ≤ n.</p>\n<p>Your attack has three stages:</p>\n<p>Identify safe points and their bounds.<br/>\nEliminate as key candidates those points that lie in the “umbra” of any safe point.<br/>\nTest the remaining points to see which one is the key.</p>\n<p>Stage 1 has already been performed and you are given several safe points of the form (x, y, b) as input.</p>\n<p>In Stage 2 you eliminate a point (p, q) if it lies in the umbra of any safe point. Point (p, q) is in the umbra of safe point (x, y, b) if and only if</p>\n<p style=\"text-align:center\">|x − p|<sup>3</sup> + |y − q|<sup>3</sup> ≤ b.</p>\n<p>Your task in this problem is to count how many points will be left for testing in Stage 3 so that we have an estimate of the amount of work left to complete the attack.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:185px; width:368px\"/></p>\n<p style=\"text-align:center\">Figure M.1: Sample input safe points and umbra (red) and remaining points (blue).</p>",
+  "input": "<p>Input begins with two integers n, k on a single line, separated by a space, with 2 ≤ n ≤ 100 000 000, and 0 ≤ k ≤ 100. Following that are k lines each containing three integers x, y, b separated by spaces, representing the safe points. The values of x and y are both in the range [0, n]. The bound b lies in the range [0, n].</p>",
+  "output": "<p>Output the number of points (p, q), with 0 ≤ p, q ≤ n, that do not lie in the umbra of any safe point.</p>",
+  "samples": [
+    {
+      "input": "4 1\n2 2 2\n",
+      "output": "16\n"
+    },
+    {
+      "input": "30 2\n20 20 30\n25 22 30\n",
+      "output": "891\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Qualification Contest, ACM-ICPC North America Qualifier 2017",
+  "level": 14,
+  "tags": [
+    "sorting",
+    "sweeping"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 5
+}

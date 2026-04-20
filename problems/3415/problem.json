@@ -1,0 +1,27 @@
+{
+  "id": 3415,
+  "title": "Graphic Madness",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In Byteland, there are two leading video card manufacturers: Bitotronics and 3D-Bytes. Their top-of-the-line cards are quite similar. Each of them consists of many nodes, connected with wires transferring the signal that is being processed. The products contain two kinds of nodes: sockets and processors. The wire network fulfills the following conditions:</p>\n<ul>\n<li>Each socket is connected to exactly one processor and no other sockets.</li>\n<li>Each processor is connected to at least two other nodes.</li>\n<li>For any two nodes in the network, there is exactly one path of wires connecting them. In other words, the graph of connections between nodes is a tree.</li>\n</ul>\n<p>Bitthew loves to tinker with computer hardware. He has bought two video cards, one from each manufacturer. Since accidentally the cards have the same number of sockets, he has decided to connect each socket of the Bitotronics card to a distinct socket of the 3D-Bytes card with cables. The device he obtained looks like this:</p>\n<p><img alt=\"\" src=\"/upload/images2/graphic.png\" style=\"height:230px; width:239px\"/></p>\n<p>Bitthew would like to squeeze out maximum processing power from the device. In order to do that, he wants to find a path through wires and cables that the processed signal can take. The path should visit each node of both cards exactly once, and it should start and end at the same node on the same card. Help Bitthew find out whether this can be done.</p>",
+  "input": "<p>The first line of the input contains the number of test cases T. The descriptions of the test cases follow:</p>\n<p>Each test case starts with three integers k, n, m (2 ≤ k ≤ 1 000, 1 ≤ n, m ≤ 1 000) denoting respectively the number of sockets on each card, the number of processors on the Bitotronics card, and the number of processors on the 3D-Bytes card. The nodes on the cards are named as follows:</p>\n<ul>\n<li>the sockets on the Bitotronics card: AS1, AS2, . . . , ASk</li>\n<li>the processors on the Bitotronics card: AP1, AP2, . . . , APn</li>\n<li>the sockets on the 3D-Bytes card: BS1, BS2, . . . , BSk</li>\n<li>the processors on the 3D-Bytes card: BP1, BP2, . . . , BPm</li>\n</ul>\n<p>The next n + k − 1 lines contain the description of the wire network on the Bitotronics card. Each of these lines contains the names of two different nodes on that card that are connected directly by a wire. The description is followed by a blank line. The next m + k − 1 lines contain the description of the wire network on the 3D-Bytes card in the same format. The description is followed by another blank line. The last k lines of the test case describe the cables added by Bitthew. Each of these lines contains the names of two sockets on different cards that are directly connected by a cable. Every socket will be present on exactly one of these k lines. There is a blank line after each test case except the last one.</p>",
+  "output": "<p>Print the answers to the test cases in the order in which they appear in the input. For each test case print a single line containing the answer. If there exists no path with the desired properties, output NO. Otherwise, output YES followed by a description of the path: n+m+2k distinct nodes in the order in which the signal will pass through them. Every two consecutive nodes should be connected by a wire or a cable. Additionally, the first and the last node must be connected.</p>",
+  "samples": [
+    {
+      "input": "1\n2 1 11\nAS1 AP1\nAS2 AP1\nBS1 BP1\nBS2 BP11\nBP1 BP2\nBP2 BP3\nBP3 BP4\nBP4 BP5\nBP5 BP6\nBP6 BP7\nBP7 BP8\nBP8 BP9\nBP9 BP10\nBP10 BP11\nAS1 BS2\nBS1 AS2\n",
+      "output": "YES BP11 BP10 BP9 BP8 BP7 BP6 BP5 BP4 BP3 BP2 BP1 BS1 AS2 AP1 AS1 BS2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2012",
+  "level": 22,
+  "tags": [
+    "constructive",
+    "dp",
+    "dp_tree",
+    "trees"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.9230999946594238
+}

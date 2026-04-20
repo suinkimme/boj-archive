@@ -1,0 +1,29 @@
+{
+  "id": 28700,
+  "title": "준혁이의 자취방 꾸미기",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>준혁이는 지난 학기부터 자취를 시작했다. 한 학기 동안 자취를 한 준혁이는 여름이 되자 자취방에 있는 $N$개의 창문으로 들어오는 햇살이 너무 강하고 더워 창문을 꾸며 여름을 견디기로 했다.</p>\n<p>준혁이는 자취 마스터인 동우에게 도움을 요청했고, 동우는 후배의 부탁인 만큼 본인이 연구한 창문에 대한 정보를 알려주기로 했다. 동우는 대학교에서 선형대수를 배우는 과목을 무려 5개나 수강하였을 정도로 선형대수를 좋아하기 때문에 창문 역시 행렬로 분석하였다. 동우는 창문을 알기 위해 먼저 행렬 곱과 텐서 곱에 대한 이해가 필요하다고 했다.</p>\n<ul>\n<li>행렬 $X$의 $i$행 $j$열을 $x_{i,j}$로 표기한다. 즉, 같은 알파벳 소문자에 아래첨자를 붙인다.</li>\n<li>행렬 곱\n\t<ul>\n<li>$n\\times m$차원 행렬$A$와 $k\\times l$차원 행렬 $B$에 대해 행렬 곱은 $m=k$일 때만 가능하며, $n\\times l$차원 행렬 $C=AB$이 된다.</li>\n<li>$C$의 $i$행 $j$열은 $A$의 $i$행 행벡터와 $B$의 $j$행 열벡터를 내적, 즉 대응되는 위치끼리 곱해 더한 값이다.</li>\n<li>구체적으로 $c_{i,j}=\\displaystyle\\sum_{t=1}^{m}a_{i,t}b_{t,j}$가 된다.</li>\n<li>행렬 곱은 교환법칙은 성립하지 않고 결합법칙은 성립한다.</li>\n<li>예를 들어 $\\left[ \\begin{matrix}1&amp; 2\\\\ 3&amp; 4\\end{matrix} \\right]\\left[ \\begin{matrix}5&amp; 6\\\\ 7&amp; 8\\end{matrix} \\right] =\\left[ \\begin{matrix}1\\cdot 5+2\\cdot 7&amp; 1\\cdot 6+2\\cdot 8\\\\ 3\\cdot 5+4\\cdot 7&amp; 3\\cdot 6+4\\cdot 8\\end{matrix} \\right] =\\left[ \\begin{matrix}19&amp; 22\\\\ 43&amp; 50\\end{matrix} \\right]$이 된다.</li>\n</ul>\n</li>\n<li>텐서 곱($\\otimes$)\n\t<ul>\n<li>$n\\times m$차원 행렬$A$와 $k\\times l$차원 행렬 $B$에 대해 행렬 곱은 $nk\\times ml$차원 행렬 $C=A\\otimes B$이 된다.</li>\n<li>텐서 곱은 원래 행렬 $A$의 $a_{i,j}$자리에 $a_{i,j}B$의 행렬을 적은 모양이다.</li>\n<li>즉, $C$의 $i$행 $j$열은 $A$의 ($i$를 $k$로 나눈 몫 + $1$)행 ($j$를 $l$로 나눈 몫 + $1$)열의 원소와 $B$의 ($i$를 $k$로 나눈 나머지 + $1$)행 ($j$를 $l$로 나눈 나머지 + $1$)열의 원소의 곱이다.</li>\n<li>구체적으로 $c_{i,j}=a_{\\lfloor i/k\\rfloor ,\\lfloor j/l\\rfloor}b_{\\left( i\\bmod k \\right) ,\\left( j\\bmod l \\right)}$가 된다.</li>\n<li>텐서 곱은 교환법칙은 성립하지 않고 결합법칙은 성립한다.</li>\n<li>예를 들어 $\\left[ \\begin{matrix}1&amp; 2\\\\ 3&amp; 4\\end{matrix} \\right]\\otimes\\left[ \\begin{matrix}1&amp; 2&amp; 3\\\\ 4&amp; 5&amp; 6\\\\ 7&amp; 8&amp; 9\\end{matrix} \\right] =\\left[ \\begin{matrix}1&amp; 2&amp; 3&amp; 2&amp; 4&amp; 6\\\\ 4&amp; 5&amp; 6&amp; 8&amp; 10&amp; 12\\\\ 7&amp; 8&amp; 9&amp; 14&amp; 16&amp; 18\\\\ 3&amp; 6&amp; 9&amp; 4&amp; 8&amp; 12\\\\ 12&amp; 15&amp; 18&amp; 16&amp; 20&amp; 24\\\\ 21&amp; 24&amp; 27&amp; 28&amp; 32&amp; 36\\end{matrix} \\right]$가 된다.</li>\n</ul>\n</li>\n<li>벡터에서의 텐서 곱\n\t<ul>\n<li>$n$차원 벡터의 경우 열벡터는 $n\\times 1$, 행벡터는 $1\\times n$행렬로 생각하여 연산할 수 있다.</li>\n<li>‘열’ 혹은 ‘행’이 붙지 않은 벡터는 일반적으로 열벡터를 의미한다.</li>\n<li>전치($\\top$)를 붙이면 열벡터는 행벡터가, 행벡터는 열벡터가 된다.</li>\n<li>예를 들어 $\\left[ \\begin{matrix}1\\\\ 2\\\\ 3\\\\ 4\\end{matrix} \\right]\\otimes\\left[ \\begin{matrix}5\\\\ 6\\end{matrix} \\right] =\\left[ \\begin{matrix}5&amp; 6&amp; 10&amp; 12&amp; 15&amp; 18&amp; 20&amp; 24\\end{matrix} \\right]^\\top$가 된다.</li>\n</ul>\n</li>\n</ul>\n<p>각 창문은 순서가 정해진 $M$개의 $2$차원 벡터로 표현할 수 있다. 준혁이의 방을 둘러보던 동우는 방에 존재하는 $N$개의 창문이 현재는 각각 $M$개의 $\\left[ \\begin{matrix}1\\\\ 2\\end{matrix} \\right]$으로 이루어져 있음을 알아냈다. 또한 창문은 해당 벡터들에 의해 결정되는 “채광도”가 존재해 이 값에 따라 창문을 통해 들어오는 햇빛의 양을 조절할 수 있다는 것을 알려주었다. 채광도는 $2^M$차원의 벡터로서 결정되는데, 창문을 구성하는 $M$개의 $2$차원 벡터들을 순서대로 텐서 곱한 것으로 정의된다. 즉, 각 창문을 구성하는 $M$개의 벡터가 $V_1$, $V_2$, $\\cdots$, $V_m$이고, $V_i=\\left[ \\begin{matrix}V_{1i}\\\\ V_{2i}\\end{matrix} \\right]$라고 하면(위에서 서술한 일반적인 행렬 표기법과 다르다는 점에 유의하자), 창문의 채광도 $L=V_1\\otimes V_2\\otimes V_3\\otimes\\cdots\\otimes V_M$으로 정의된다.</p>\n<p>또한, 채광도를 조정하기 위해 인부를 부를 수 있는데, 각 인부는 순서가 정해진 $M$개의 $2\\times 2$차원 행렬로 표현할 수 있다. 이때의 행렬은 다음 네 개 $\\left[ \\begin{matrix}1&amp; 0\\\\ 0&amp; 1\\end{matrix} \\right]$, $\\left[ \\begin{matrix}0&amp; 1\\\\ 1&amp; 0\\end{matrix} \\right]$, $\\left[ \\begin{matrix}0&amp; 1\\\\ -1&amp; 0\\end{matrix} \\right]$, $\\left[ \\begin{matrix}1&amp; 0\\\\ 0&amp; -1\\end{matrix} \\right]$ 중 하나다. 인부는 각각 인부의 “특성”을 가지고 있는데, 인부의 특성은 $M$개의 인부를 표현하는 행렬들을 순서대로 텐서 곱한 $2^M\\times 2^M$차원의 행렬로 정의된다.</p>\n<p>총 $K$일 동안, 날짜마다 꾸밀 수 있는 창문들이 존재한다. 준혁이는 날마다 한 명의 인부를 불러 꾸밀 수 있는 창문 전부를 꾸밀 것이다. 인부는 해당 날짜에 꾸밀 수 있는 창문은 반드시 모두 꾸며야 하고, 그렇지 않은 창문은 꾸미지 못한다.</p>\n<p>인부가 작업을 한 창문에 대해, 해당 창문의 채광도는 인부의 특성을 나타내는 $2^M\\times 2^M$차원 행렬과 창문의 기존 채광도를 나타내는 $2^M$차원 벡터의 행렬 곱으로 바뀌게 된다.</p>\n<p>또한 마지막 인부까지 작업을 마친 후 준혁이는 $N$개의 창문 채광도 각각에 대해 $-1$을 곱하거나 곱하지 않을 수 있다.</p>\n<p>준혁이가 원하는 $N$개 창문의 채광도가 주어질 때, 최종적으로 모든 창문의 채광도를 원하는 대로 같게 하도록 날짜별 인부를 결정하는 방법의 수를 구하라. 인부는 인부를 구성하는 행렬의 종류 혹은 순서가 하나라도 다르면 다른 것으로 생각하고, 모든 행렬의 종류와 순서가 같으면 같은 인부이다. 또한, $K$일 동안 부른 인부 혹은 순서가 다르면 방법이 다른 것으로 생각해 각각 한 번씩 센다.</p>\n<p>인부는 가능한 모든 행렬의 조합에 대해 존재하고, 같은 인부가 중복되어도 상관없다.</p>",
+  "input": "<p>첫째 줄에 $N$, $M$, $K$가 공백으로 구분되어 주어진다. ($1\\le N\\le 1\\, 000$, $1\\le M\\le 1\\, 000$, $1\\le K\\le 1\\, 000$)</p>\n<p>다음 $N$개의 줄에 $1$번째부터 $N$번째 창문에 대해 한 줄에 하나씩 준혁이가 최종적으로 원하는 창문의 채광도 $V_{11}$, $V_{12}$, ..., $V_{M1}$, $V_{M2}$$(-1\\, 000\\le V_{ij}\\le 1\\, 000)$가 공백으로 구분되어 주어진다.</p>\n<p>다음 $K$줄에 한 줄에 하나씩 $1$일부터 $K$일까지 꾸밀 수 있는 창문의 종류가 다음과 같은 형식으로 공백으로 구분되어 주어진다.</p>\n<ul>\n<li>먼저 해당 일에 꾸밀 수 있는 창문의 개수 $P$가 주어진다.</li>\n<li>이어 꾸밀 수 있는 창문의 종류가 몇 번째인지 나타내는 $W_1$, $W_2$, $\\cdots$, $W_P(1\\le W_1&lt;W_2&lt;\\cdots &lt;W_P\\le N)$가 주어진다.</li>\n</ul>",
+  "output": "<p>준혁이가 원하는 창문의 상태를 달성하도록 날짜별 인부를 결정하는 방법의 수를 $10^9+7$로 나눈 나머지를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "1 1 1\n2 -1\n1 1\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제3회 고려대학교 MatKor Cup: 2023 Summer, Div. 1, University, 고려대학교, MatKor Cup, 제3회 고려대학교 MatKor Cup: 2023 Summer, Open Contest - Phase 2, kidw0124, sshs29hanul, yijw0930, eoaud0108, utilforever",
+  "level": 25,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "bitmask",
+    "linear_algebra",
+    "bitset",
+    "gaussian_elimination"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.2856999635696411
+}

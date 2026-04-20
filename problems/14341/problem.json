@@ -1,0 +1,28 @@
+{
+  "id": 14341,
+  "title": "Family Hotel (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You run a hotel with N rooms arranged along one long corridor, numbered from 1 to Nalong that corridor. Your guests are big families, and every family asks for exactly two adjacent rooms when they arrive. Two rooms are adjacent if their numbers differ by exactly 1.</p>\n<p>At the start of the day today, your hotel was empty. You have been using the following simple strategy to assign rooms to your guests. As each family arrives, you consider all possible pairs of adjacent rooms that are both free, pick one of those pairs uniformly at random, and assign the two rooms in that pair to the family. New families constantly arrive, one family at a time, but once there are no more pairs of adjacent rooms that are both free, you turn on the NO VACANCY sign and you do not give out any more rooms.</p>\n<p>Given a specific room number, what is the probability that it will be occupied at the time that you turn on the NO VACANCY sign?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T lines follow. Each line contains two numbers: the number of rooms N and the room number K that we are interested in.</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ T ≤ 100.</li>\n<li>1 ≤ K ≤ N.</li>\n<li>2 ≤ N ≤ 10<sup>7</sup>.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the sought probability computed modulo 10<sup>9</sup>+7, which is defined precisely as follows. Represent the probability that room K is occupied as an irreducible fraction <code>p/q</code>. The number <code>y</code> then must satisfy the modular equation <code>y × q ≡ p (mod 10<sup>9</sup>+7)</code>, and be between 0 and 10<sup>9</sup>+6, inclusive. It can be shown that under the constraints of this problem such a number <code>y</code> always exists and is uniquely determined.</p>",
+  "samples": [
+    {
+      "input": "4\n3 1\n3 2\n4 1\n4 2\n",
+      "output": "Case #1: 500000004\nCase #2: 1\nCase #3: 666666672\nCase #4: 1\n"
+    }
+  ],
+  "hint": "<p>In sample case #3, there are four rooms and we are looking for probability that the first room is occupied. When the first family arrives, there are 3 possible situations, each with probability 1/3: occupy rooms 1+2, 2+3 or 3+4. In the first situation, the first room is already occupied and will stay occupied. In the second situation, the first room is free and no more families can be accommodated, so it will stay free. Finally, in the third situation, the next arriving family will definitely get rooms 1+2, and thus the first room will be occupied. The probability that the first room is occupied is thus 2/3, and the answer is 666666672, since <code>(666666672 * 3) mod 1000000007 = 2 mod 1000000007</code>.</p>\n<p>The probability for sample case #1 is 1/2, and for sample cases #2 and #4 it is 1.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2016, World Finals",
+  "level": 22,
+  "tags": [
+    "combinatorics",
+    "math",
+    "modular_multiplicative_inverse",
+    "number_theory",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.5788999795913696
+}

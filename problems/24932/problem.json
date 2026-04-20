@@ -1,0 +1,35 @@
+{
+  "id": 24932,
+  "title": "Problematic Polygons",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are an employee at the Polygon Packing Plant, where your job is to pack objects with simple polygon shapes into containers with simple polygon shapes. However, the object and containers are often misaligned, so the object may need to be rotated before it can fit inside.</p>\n<p>You want to automate the packing process by utilizing the Polygon-Rotating Robot, which has an arm capable of rotating objects with simple polygon shapes before placing them into the container. Unfortunately, the robot lacks some crucial programming: it cannot determine the angle needed to rotate the object by to fit into the container. Write a program to determine the minimum integer angle $θ∈[0,359]$ such that the robot can rotate the object counter-clockwise $θ$ degrees around the origin so that it will fit inside the box.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 600px; height: 250px;\"/></p>\n<center>\n<p><b>Figure 1</b>: The left image depicts Sample Input $2$ where the goal is to rotate the blue object to fit within the orange container. The right image depicts the minimum integer rotation of $θ=113$ degrees counter-clockwise around the origin $(0,0)$.</p>\n</center>",
+  "input": "<p>The first line of input contains two integers $N,M$ ($3≤N,M≤100$), the number of points for the polygon representing the object and the number of points for the polygon representing the container, respectively.</p>\n<p>The next $N$ lines describe the points for the polygon representing the object. Each line contains a pair of real-valued coordinates $x,y$ ($-10^3≤x,y≤10^3$), a point on the cartesian plane. Similarly the next $M$ lines describe the points for the polygon representing the container following the same format.</p>\n<p>It is guaranteed that the points of these polygons will be given in counter-clockwise order. It is also guarantee that for any rotation in integer increments, between $[0,359]$ degrees, that the distance between any point of a polygon and any edge of the other polygon is at least $10^{-6}$.</p>",
+  "output": "<p>Display the smallest integer rotation $θ∈[0,359]$ such that rotating the object $θ$ degrees around the origin causes it to fit inside the container. If no such $θ$ exists, display <code>impossible</code> instead.</p>",
+  "samples": [
+    {
+      "input": "3 4\n-3.0 -1.0\n3.0 -1.0\n0.0 1.0\n-2.0 -4.0\n2.0 -4.0\n2.0 4.0\n-2.0 4.0\n",
+      "output": "70\n"
+    },
+    {
+      "input": "4 6\n6.0 -1.5\n6.0 1.5\n-6.0 1.5\n-6.0 -1.5\n-4.5 7.0\n-7.5 4.0\n-4.5 -5.0\n7.5 -8.0\n4.5 -2.0\n7.5 4.0\n",
+      "output": "113\n"
+    },
+    {
+      "input": "3 4\n-1.5 -0.5\n1.5 -0.5\n0.0 1.5\n-1.0 -1.0\n1.0 -1.0\n1.0 1.0\n-1.0 1.0\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": ", University, University of Alberta Programming Contest, UAPC 2022, Division 1",
+  "level": 17,
+  "tags": [
+    "bruteforcing",
+    "geometry",
+    "line_intersection",
+    "point_in_non_convex_polygon"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.7000000476837158
+}

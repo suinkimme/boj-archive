@@ -1,0 +1,42 @@
+{
+  "id": 29822,
+  "title": "Segment Union",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There are $N$ positive integers $x_{1}, x_{2}, \\ldots, x_{N}$ and another $N$ positive integers $a_{1}, a_{2}, \\ldots, a_{N}$.</p>\n<p>Let $P = (p_{1}, p_{2}, \\ldots, p_{N})$ be a permutation of $\\{1, 2, \\ldots, N\\}$. Initially, the entire number line is white. For each $1 \\le i \\le N$, the segment $[x_{i} - a_{p_{i}}, x_{i} + a_{p_{i}}]$ is colored black. $f(P)$ is then defined as the total length of black segments on the number line. For example, if $[1, 3], [2, 4], [6, 7]$ is colored black, then the total length of black segments is $4 - 1 + 7 - 6 = 4$.</p>\n<p>Find the sum of $f(P)$ over all permutations $P$ of $\\{1, 2, \\ldots, N\\}$, modulo $10^{9} + 7$.</p>",
+  "input": "<p>The first line of input contains a single integer $N$ ($1 \\le N \\le 1500$).</p>\n<p>The second line of input contains $N$ space-separated integers $x_{1}, x_{2}, \\ldots, x_{N}$ ($-10^9 \\le x_{i} \\le 10^{9}$).</p>\n<p>The third line of input contains $N$ space-separated integers $a_{1}, a_{2}, \\ldots, a_{N}$ ($1 \\le a_{i} \\le 10^{9}$).</p>",
+  "output": "<p>Output a single integer, the sum of $f(P)$ over all permutations $P$ of $\\{1, 2, \\ldots, N\\}$, modulo $10^{9} + 7$.</p>",
+  "samples": [
+    {
+      "input": "3\n2 6 15\n1 2 4\n",
+      "output": "78\n"
+    },
+    {
+      "input": "1\n1\n7\n",
+      "output": "14\n"
+    },
+    {
+      "input": "4\n7 2 7 2\n3 2 1 2\n",
+      "output": "240\n"
+    },
+    {
+      "input": "7\n1 1 2 9 17 26 30\n4 4 4 4 4 4 4\n",
+      "output": "181440\n"
+    },
+    {
+      "input": "11\n257869734 -413759255 671386528 312442221 -479133479 837936940 -775252592 -785229024 -306462979 685409332 62181930\n987323333 202379759 242380132 464003610 240120482 288801746 7692451 552912477 795257073 629515685 667287542\n",
+      "output": "862900292\n"
+    },
+    {
+      "input": "9\n0 0 -2000 396 727 999 999 1300 2000\n26 268 268 396 561 604 883 998 999\n",
+      "output": "616426169\n"
+    }
+  ],
+  "hint": "<p>Sample 1: There are $3! = 6$ permutations of length 3. Let $p$ be the permutation.</p>\n<ul>\n<li>$p = (1, 2, 3)$: the segments are $[1,3]$, $[4,8]$, $[11,19]$, total length = $14$.</li>\n<li>$p = (1, 3, 2)$: the segments are $[1,3]$, $[2,10]$, $[13,17]$, total length = $13$.</li>\n<li>$p = (2, 1, 3)$: the segments are $[0,4]$, $[5,7]$, $[11,19]$, total length = $14$.</li>\n<li>$p = (2, 3, 1)$: the segments are $[0,4]$, $[2,10]$, $[14,16]$, total length = $12$.</li>\n<li>$p = (3, 1, 2)$: the segments are $[-2,6]$, $[5,7]$, $[13,17]$, total length = $13$.</li>\n<li>$p = (3, 2, 1)$: the segments are $[-2,6]$, $[4,8]$, $[14,16]$, total length = $12$.</li>\n</ul>\n<p>The answer is $14 + 13 + 14 + 12 + 13 + 12 = 78$.</p>\n<p>Sample 2: There is only one permutation, and the only segment is $[-6, 8]$. The answer is $8 - (-6) = 14$.</p>\n<p>Sample 3: Note that there may be duplicate values. Different permutations may create the same $a$ sequence, and you should still count them multiple times (as though as they are different).</p>\n<p>Sample 4: This fits the constraints of Subtask 1.</p>\n<p>Sample 5: Remember to output the answer modulo $10^9 + 7$.</p>",
+  "source": "Olympiad, Malaysian Computing Olympiad, MCO 2023",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,22 @@
+{
+  "id": 22385,
+  "title": "全宇宙生命ゲノムデータベース リターンズ",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>西暦2301年，宇宙連邦共和国の生命科学局では，宇宙生物のゲノム配列の研究を行っていた．近年の研究の結果，ゲノム配列に特定のパターンが何回現れるかが生物の性質に大きく影響することが分かってきた．</p>\n<p>宇宙生物のゲノム配列は英大文字からなる文字列で表される．研究員たちはゲノム配列の中に，ある特定のパターンが何回現れるかを数え上げることにした．しかしながら，宇宙生物のゲノム配列は非常に長いため，後述する方法で繰り返しがある部分文字列を圧縮してデータベースに保存している．</p>\n<p>あなたの仕事は圧縮されたゲノム配列 <i>S</i> から文字列 <i>Q</i> の出現回数を数え上げるプログラムを作成することである．ただし，<i>Q</i> の出現は，開始位置さえ異なっていれば，重なっている部分があっても別の出現として数える．例えば， MISSISSIPPI に ISSI は 2 回出現する．</p>\n<p>ゲノム配列の圧縮方法は以下のBNFで定義される．</p>\n<blockquote>\n<p>&lt;Genome&gt; ::= &lt;Letter&gt; | &lt;Number&gt; &lt;Letter&gt; | &lt;Number&gt; ( &lt;Genome&gt; ) | &lt;Genome&gt; &lt;Genome&gt;</p>\n<p>&lt;Letter&gt; ::= 'A' | 'B' | … | 'Z'</p>\n<p>&lt;Number&gt; ::= &lt;Digit&gt; | &lt;Number&gt; '0' | &lt;Number&gt; &lt;Digit&gt;</p>\n<p>&lt;Digit&gt; ::= '1' | '2' | … | '9'</p>\n</blockquote>\n<p>ここで，文字列の前に付けられる整数はその文字列がその回数だけ繰り返されることを表す．例えば，5A は AAAAA を表し，2(AB) は ABAB を表す．整数の直後に括弧がない場合は，その直後の1文字のみが繰り返される．例えば，2AB は AAB を表す．繰り返しは多重にネストすることが可能で，2(2(AB)C) は 2(ABABC) と同じであり，ABABCABABC を表す．</p>",
+  "input": "<p>入力は最大で 50 個のデータセットから構成される．各データセットは次の形式で表される．</p>\n<pre>\n<i>S</i>\n<i>Q</i></pre>\n<p>各データセットの1行目は，圧縮されたゲノム配列を表す文字列 <i>S</i> である．<i>S</i> は上記のBNFに従い，その長さは <i>1</i> 以上 <i>3 000</i> 文字以下である．また，<i>S</i> を展開した元のゲノム配列の長さは <i>10<sup>18</sup></i> 以下である．各データセットの2行目は数え上げる対象となる文字列 <i>Q</i> である．<i>Q</i> は英大文字からなり，長さは <i>1</i> 以上 <i>3 000</i> 文字以下である．</p>\n<p>入力の終了は '#' の1文字だけを含む行で表される．</p>",
+  "output": "<p>各データセットについて，<i>S</i> を展開した文字列に <i>Q</i> が何回現れるかを出力せよ．</p>",
+  "samples": [
+    {
+      "input": "MI2(2SI)2PI\nISSI\n100(100(JAG))\nJAG\n1000000000000000000A\nAAAAA\n#\n",
+      "output": "2\n10000\n999999999999999996\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2019",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

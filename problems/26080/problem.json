@@ -1,0 +1,36 @@
+{
+  "id": 26080,
+  "title": "곰곰이와 하카타",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>곰곰이가 컴퓨터를 하고있는데, 무엇을 보고 있는걸까요? 뭘 보고있는지는 모르겠지만, 총총이 몰래 비밀스럽게 보는 걸 보니 떳떳하진 않은가봐요.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></p>\n<p>참다못한 총총이가 소리를 내네요.</p>\n<p>총총이가 단단히 화가 났나봐요. 사실 곰곰이는 저번에 노란색 장난감 칼을 들고 싸우는 영상을 몰래 보다가 들킨 적이 있었거든요.</p>\n<p>총총이는 이런 곰곰이가 못마땅하지만, 즐거운 하카타 여행을 위해 곰곰이를 용서해주기로 했어요. 단, 하카타까지 전용기를 조종해 주면요.</p>\n<p>곰곰이와 총총이는 전용기를 타고 하카타로 여행을 가요. 이 비행기는 아래 조건을 만족하면서 비행을 해요.</p>\n<ul>\n<li>비행기는 인천 공항에서 이륙해서, 후쿠오카 공항에 착륙할 때까지 <strong>중간의 어떠한 지점에도 착륙하지 않아요.</strong> 비행기의 고도가 0이 되면 착륙했다고 가정해요.</li>\n<li>비행기는 수평으로 <em>d</em>만큼 이동하고, <em>d</em>만큼 떨어진 지점인 후쿠오카 공항에 착륙해요.</li>\n<li>비행기는 인천 공항에서 후쿠오카 공항까지 일직선으로 날아가요.</li>\n<li>각 공항의 고도는 0이며, <strong>중간에 장애물이 없어요.</strong></li>\n</ul>\n<p>곰곰이는 비행기를 조종하기 싫어서 자동 조종장치가 없나 찾아보았더니, 있었습니다. 이 비행기는 자동 조종 장치에 <code>A</code>와 <code>D</code> 둘 중 하나를 입력할 수 있어요.</p>\n<ul>\n<li>자동 조종장치에 <code>A</code>를 입력하면 수평 거리 1만큼 이동할 때 고도가 1만큼 증가해요.</li>\n<li>자동 조종장치에 <code>D</code>를 입력하면 수평 거리 1만큼 이동할 때 고도가 1만큼 감소해요.</li>\n</ul>\n<p>자동 조종장치에 입력한 순서대로 비행기의 자동 조종장치가 비행기를 안전하게 조종할 거예요. 예를 들어, 자동 조종장치에 <code>AD</code>를 입력했다면, 고도가 1만큼 올라간 다음에, 고도가 1만큼 내려가게 됩니다. 즉, 수평거리 2만큼 이동해서 착륙하게 됩니다.</p>\n<p>하카타까지의 비행을 위해, 곰곰이는 관제사에게 허가를 요청하였습니다. 그랬더니 관제사는 비행할 수 있는 가짓수 중 <strong>사전순 k번째만 허가</strong>하였습니다. 곰곰이는 자동 조종장치에 어떻게 입력을 해야 할까요? 하카타에 가서 즐거운 여행을 하고 싶은 곰곰이는 여러분에게 도움을 요청하였습니다. 곰곰이를 도와주세요.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\"/></p>",
+  "input": "<p>첫 줄에 정수 <em>d</em>와 <em>k</em>가 공백으로 구분되어 주어집니다.</p>",
+  "output": "<p>문제에 대한 답을 출력해 주세요. 그러한 것이 없는 경우 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력해 주세요.</p>",
+  "samples": [
+    {
+      "input": "2 1\n",
+      "output": "AD\n"
+    },
+    {
+      "input": "4 1\n",
+      "output": "AADD\n"
+    },
+    {
+      "input": "6 2\n",
+      "output": "AADADD\n"
+    },
+    {
+      "input": "12 22\n",
+      "output": "AAADADDAADDD\n"
+    }
+  ],
+  "hint": "<p>문제에 따르면, 출력해야 하는 문자열은 <code>A</code>, 혹은 <code>D</code>로만 이루어진 길이 <em>d</em>의 문자열을 출력하는 것입니다.</p>\n<p>길이 <em>d</em>의 문자열 A가 길이 <em>d</em>의 문자열 B보다 사전순으로 앞선다는 것은 다음 두 조건 중 하나를 만족함을 의미합니다.</p>\n<ul>\n<li><em>a<sub>1</sub> </em>&lt; <em>b<sub>1 </sub></em>입니다.</li>\n<li><em>a<sub>1</sub> </em>= <em>b<sub>1</sub></em>, ... , <em>a<sub>i-1</sub></em> = <em>b<sub>i-1</sub></em>이고 <em>a<sub>i</sub> </em>&lt; <em>b<sub>i</sub></em>인 <em>i</em>가 존재합니다. (<em>i</em>는 <strong>2이상 <i>d</i>이하 정수</strong>입니다.)</li>\n</ul>\n<p>또한 문자 <code>A</code>는 문자 <code>D</code>보다 사전순으로 앞섭니다. 즉 문자 <code>A</code> &lt; 문자 <code>D</code>를 만족합니다.</p>",
+  "source": "Contest, BOJ User Contest, 곰곰컵, 제2회 곰곰컵, chogahui05, jthis, pichulia, pjshwa, tony9402",
+  "level": 18,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 3.6923000812530518
+}

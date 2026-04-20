@@ -1,0 +1,33 @@
+{
+  "id": 34377,
+  "title": "Wikipedia Black Hole",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You have found yourself on Wikipedia reading the article about black holes. You don't understand everything on the page, but there are links to other articles to explain the unfamiliar concepts. There are so many links to choose from, but you decide to click on the link to the article about \"general relativity\" (such light reading). You read a little bit about it, but realize that you'll need to learn about \"partial differential equations\" before you can understand any of the mathematics behind general relativity, so you click on that article.</p>\n<p>As you keep clicking, you wonder if it's possible for you to eventually end up back on the original article about black holes. It would be bad if that was the case because it would mean you could keep clicking through the same articles forever. To avoid this fate, you decide to write a program that will tell you if it's possible to end up back on the article you started on, and if so, the fewest number of clicks it would take. Note that there could be loops of links that do not lead back to the original article, but you can ignore those loops.</p>\n<p>In the first sample input, the fewest clicks to get back to the original article (listed on the second line) is $3$. The path is \"black_holes\" $\\rightarrow$ \"general_relativity\" $\\rightarrow$ \"albert_einstein\" $\\rightarrow$ \"black_holes\". Note that there is another way to get back to black holes that is $4$ clicks (\"black_holes\" $\\rightarrow$ \"escape_velocity\" $\\rightarrow$ \"speed_of_light\" $\\rightarrow$ \"gravitational_wave\" $\\rightarrow$ \"black_holes\"), but you only want to know the path with the fewest number of clicks.</p>",
+  "input": "<p>The first line of input will be $1 \\leq N \\leq 10\\,000$, the number of links to follow.</p>\n<p>The second line of input contains the name of the article you started on. <strong>Article names</strong> are strings whose length is between $1$ and $30$, consisting of only lower-case letters (a-z) and underscores (_).</p>\n<p>The next $N$ lines will each contain the information about a single link. Each of these lines will have two space-separated article names (as defined in the previous paragraph). The first word represents the <em>source</em> article of the link, and the second word represents the <em>destination</em> article. For example, if there is a link on the article about \"black_holes\" to the article on \"general_relativity\", then the source would be \"black_holes\" and the destination would be \"general_relativity\".</p>\n<p>Input Restrictions</p>\n<ul>\n<li>You are guaranteed the source and destination of each link will be a different article.</li>\n<li>You are guaranteed that each link is unique. That is, a source article will not contain more than one link to the same destination article.</li>\n<li>It <strong>is</strong> possible for an article to not contain any links, and thus not be the source article for any link.</li>\n<li>Conversely, it <strong>is</strong> possible for one source article to have links to several destination articles.</li>\n</ul>",
+  "output": "<p>If you can get back to the original article by following the links, output the smallest number of links that must be clicked to get back to the original article. If you cannot get back to the original article, output \"NO BLACK HOLE\".</p>",
+  "samples": [
+    {
+      "input": "10\nblack_holes\nblack_holes general_relativity\nblack_holes escape_velocity\nescape_velocity velocity\nescape_velocity speed_of_light\nspeed_of_light gravitational_wave\ngravitational_wave black_holes\ngeneral_relativity partial_differential_equations\ngeneral_relativity albert_einstein\nalbert_einstein black_holes\nalbert_einstein quantum_mechanics\n",
+      "output": "3\n"
+    },
+    {
+      "input": "3\napples\napples banana\nbanana clementine\nclementine date\n",
+      "output": "NO BLACK HOLE\n"
+    }
+  ],
+  "hint": null,
+  "source": ", School, CS@Mines, CS@Mines HSPC 2023, Advanced",
+  "level": 9,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "set",
+    "bfs",
+    "hash_set"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 2.0385000705718994
+}

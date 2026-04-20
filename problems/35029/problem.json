@@ -1,0 +1,27 @@
+{
+  "id": 35029,
+  "title": "Lucky Number Theory",
+  "time_limit": "4 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Lucy is a frequent arcade visitor. All machines at the arcade give out tickets to exchange for prizes! Lucy's favorite machine works as follows.</p>\n<p>The machine only has two buttons: \"Roll\" and \"Withdraw\". Whenever Lucy presses \"Roll\", the machine increases the counter on the screen by a randomly generated <strong>real</strong> number between $0$ and $d$. At any moment, she can press \"Withdraw\" to get the number of tickets equal to the counter, which gets reset. In case it's not an integer, the machine generously rounds the counter up before handing out the tickets.</p>\n<p>More formally, the machine stores a real number $S$, initially equal to 0. On each \"Roll\" press, the machine generates $\\Delta$ --- a random <strong>real</strong> number picked uniformly from the interval $(0, d)$. Then, $S$ increases by the value of $\\Delta$. When the \"Withdraw\" button is pressed, the machine rounds $S$ up, giving the player $\\lceil S \\rceil$ tickets, and then resets $S$ back to zero. Lucy can see the value of $S$ on the screen at any moment with as much precision as she wants, and she can use it to decide whether to roll or withdraw.</p>\n<p>Lucy has enough arcade tokens to press \"Roll\" $n$ times, and \"Withdraw\" $k$ times. Find a strategy that maximizes the expected number of tickets Lucy can get, and print this maximum expected number.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains the number of test cases $t$ ($1 \\le t \\le 2000$). The description of the test cases follows.</p>\n<p>The only line of each test case contains three integers $n$, $k$, and $d$, denoting the number of rolls, the number of withdrawals, and the upper bound on roll values ($1 \\le k \\le n \\le 2000$; $1 \\le d \\le 2000$).</p>",
+  "output": "<p>For each test case, print the maximum expected number of tickets Lucy can get, as a floating point number. Your answer will be considered correct if its absolute or relative error doesn't exceed $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "3\n3 2 1\n5 5 3\n7 1 10\n",
+      "output": "2.6250000000\n10.0000000000\n35.5000000000\n"
+    }
+  ],
+  "hint": "<p>In the first test case, with $n = 3$ rolls, $k = 2$ withdrawals, and $d = 1$, the optimal strategy is as follows:</p>\n<p>Lucy starts with a roll. Depending on the number $S$, there are two possibilities:</p>\n<ul>\n<li>The number is less than $\\frac 12$. In this case, Lucy should withdraw, then roll two more times, and withdraw at the end. The expected number of tickets in this case is $1 + \\frac 32 = 2.5$ ($1$ ticket for the first withdrawal, and $\\frac 32$ tickets on average after two rolls).</li>\n<li>The number is at least $\\frac 12$. In this case, it's optimal to roll again, withdraw, then roll for the last time, and withdraw at the end. For the first withdrawal, she will get only one ticket with probability $\\frac 14$ (the probability that the sum of the first two rolls is at most 1, given that the first roll was over $\\frac 12$), and two tickets with probability $\\frac 34$. The expected number of tickets is $1 + 2 \\cdot \\frac 34 + 1 \\cdot \\frac 14 = 2.75$. </li>\n</ul>\n<p>Each case happens with probability $\\frac 12$, so the total expected value for this strategy is $\\frac 12 (2.5 + 2.75) = 2.625$.</p>\n<p>In the second test case, Lucy can withdraw after every roll, each time getting $2$ tickets on average.</p>\n<p>In the third test case, Lucy can only withdraw once, and she should do it after all $7$ rolls.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2025-2026 Northwestern Russia Regional Contest",
+  "level": 20,
+  "tags": [
+    "math",
+    "dp",
+    "probability",
+    "linearity_of_expectation"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1
+}

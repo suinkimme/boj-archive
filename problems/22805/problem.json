@@ -1,0 +1,22 @@
+{
+  "id": 22805,
+  "title": "Insecure in Prague",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Prague is a dangerous city for developers of cryptographic schemes. In 2001, a pair of researchers in Prague announced a security flaw in the famous PGP encryption protocol. In Prague in 2003, a flaw was discovered in the SSL/TLS (Secure Sockets Layer and Transport Layer Security) protocols. However, Prague’s reputation for being tough on cryptographic protocols hasn’t stopped the part-time amateur cryptographer and full-time nutcase, Immanuel Kant-DeWitt (known to his friends as “I. Kant-DeWitt”), from bringing his latest encryption scheme to Prague. Here’s how it works:</p>\n<p>A plain text message p of length n is to be transmitted. The sender chooses an integer m ≥ 2n, and integers s, t, i, and j, where 0 ≤ s, t, i, j &lt; m and i &lt; j. The scheme works as follows: m is the length of the transmitted ciphertext string, c. Initially, c contains m empty slots. The first letter of p is placed in position s of c. The k-th letter, k ≥ 2, is placed by skipping over i empty slots in c after the (k − 1)-st letter, wrapping around to the beginning of c if necessary. Slots already containing letters are not counted as empty. For instance, if the message is PRAGUE, if s = 1, i = 6, and m = 15, then the letters are placed in c as follows:</p>\n<pre>\n<u>A</u>   <u>P</u>   <u> </u>   <u>U</u>   <u> </u>   <u> </u>   <u> </u>   <u> </u>   <u>R</u>   <u>G</u>   <u> </u>   <u> </u>   <u>E</u>   <u> </u>   <u> </u> \n0   1   2   3   4   5   6   7   8   9   10  11  12  13  14</pre>\n<p>Starting with the first empty slot in or after position t in string c, the plain text message is entered again, but this time skipping j empty slots between letters. For instance, if t = 0 and j = 8, the second copy of p is entered as follows (beginning in position 2, the first empty slot starting from t = 0):</p>\n<pre>\n<u>A</u>   <u>P</u>   <strong><u>P</u></strong>   <u>U</u>   <u>R</u>   <u> </u>   <strong><u>A</u></strong>   <strong><u>U</u></strong>   <u>R</u>   <u>G</u>   <strong><u>E</u></strong>   <strong><u>G</u></strong>   <u>E</u>   <u> </u>   <u> </u> \n0   1   2   3   4   5   6   7   8   9   10  11  12  13  14</pre>\n<p>Finally, any remaining unfilled slots in c are filled in with randomly chosen letters:</p>\n<pre>\n<u>A</u>   <u>P</u>   <u>P</u>   <u>U</u>   <u>R</u>   <strong><u>A</u></strong>   <u>A</u>   <u>U</u>   <u>R</u>   <u>G</u>   <u>E</u>   <u>G</u>   <u>E</u>   <strong><u>W</u></strong>   <strong><u>E</u></strong> \n0   1   2   3   4   5   6   7   8   9   10  11  12  13  14</pre>\n<p>Kant-DeWitt believes that the duplication of the message, combined with the use of random letters, will confuse decryption schemes based upon letter frequencies and that, without knowledge of s and i, no one can figure out what the original message is. Your job is to try to prove him wrong. Given a number of ciphertext strings (and no additional information), you will determine the longest possible message that could have been encoded using the Kant-DeWitt method.</p>",
+  "input": "<p>A number of ciphertext strings, one per line. Each string will consist only of upper case alphabetic letters, with no leading or trailing blanks; each will have length between 2 and 40.</p>\n<p>Input for the last test case is followed by a line consisting of the letter X.</p>",
+  "output": "<p>For each input ciphertext string, print the longest string that could be encrypted in the ciphertext. If more than one string has the longest length, then print “Codeword not unique”. Follow the format of the sample output given below.</p>",
+  "samples": [
+    {
+      "input": "APPURAAURGEGEWE\nABABABAB\nTHEACMPROGRAMMINGCONTEST\nX\n",
+      "output": "PRAGUE\nCodeword not unique\nCodeword not unique\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2004",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 6.5
+}

@@ -1,0 +1,34 @@
+{
+  "id": 32238,
+  "title": "고장난 키보드",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>예영이는 <code>Matkor</code> 사이트에 회원가입을 하기 위해 이메일 인증을 받으려 한다. 예영이가 이메일을 통해 받은 인증 번호는 숫자로만 이루어져 있으며, 이를 <code>Matkor</code> 사이트 회원가입 페이지에 입력해야 한다.</p>\n<p>하지만 예영이가 사용하는 <span style=\"color:#e74c3c;\"><code>0</code></span>부터 <span style=\"color:#e74c3c;\"><code>9</code></span>까지의 숫자 자판과 <span style=\"color:#e74c3c;\"><code>Backspace</code></span> 자판으로 구성된 키보드는 일부 자판들이 고장 난 상태이다. 구체적으로 다음과 같다.</p>\n<ul>\n<li><span style=\"color:#e74c3c;\"><code>0</code></span>이 각인된 자판은 고장나지 않아 정상적으로 입력된다. 즉, 한 번 누르면 <span style=\"color:#e74c3c;\"><code>0</code></span>이 한 번 입력된다.</li>\n<li>정수 $i(1\\le i\\le 9)$에 대하여 $i$번 자판을 한 번 누르면 $i$가 $\\dfrac{P_i}{P_i+Q_i}$의 확률로 한 번 입력되고, $\\dfrac{Q_i}{P_i+Q_i}$의 확률로 두 번 입력된다.</li>\n<li><span style=\"color:#e74c3c;\"><code>Backspace</code></span>가 각인된 자판을 한 번 누르면 입력한 문자열에서 $\\dfrac{P_\\leftarrow}{P_\\leftarrow+Q_\\leftarrow}$의 확률로 마지막 문자 한 개가 지워지고, $\\dfrac{Q_\\leftarrow}{P_\\leftarrow+Q_\\leftarrow}$의 확률로 마지막 문자 두 개가 지워진다.\n\t<ul>\n<li>만약 입력한 문자열의 길이가 $1$이라면 확률에 관계 없이 문자 한 개가 지워지며, 입력한 문자열이 없는 상황에서는 이 버튼을 누르지 않는다.</li>\n</ul>\n</li>\n</ul>\n<p>예영이의 키보드에 대한 정보와 예영이가 받은 인증 번호가 주어질 때 똑같이 입력하기 위해 예영이가 키보드 자판을 눌러야 하는 횟수의 기댓값을 구해보자.</p>\n<p>예영이는 매 순간 그 상태에서 주어진 인증 번호를 입력 횟수의 기댓값이 최소가 되도록 최적의 선택을 한다.</p>",
+  "input": "<p>첫 번째 줄부터 아홉 줄에 걸쳐 $i$번째 줄에 두 정수 $P_i$와 $Q_i(0\\le P_i,Q_i\\le 10\\, 000$; $1\\le P_i+Q_i)$가 공백으로 구분되어 주어진다.</p>\n<p>열 번째 줄에는 두 정수 $P_\\leftarrow$와 $Q_\\leftarrow(0\\le P_\\leftarrow,Q_\\leftarrow\\le 10\\, 000$; $1\\le P_\\leftarrow+Q_\\leftarrow)$가 공백으로 구분되어 주어진다.</p>\n<p>열한 번째 줄에는 예영이가 입력해야 하는 인증번호의 길이 $N(1\\le N\\le 100\\, 000)$이 주어진다.</p>\n<p>열두 번째 줄에는 예영이가 입력해야 하는 인증번호가 주어진다. 인증번호는 <span style=\"color:#e74c3c;\"><code>0</code></span>부터 <span style=\"color:#e74c3c;\"><code>9</code></span>까지의 숫자로만 이루어진 길이 $N$의 문자열이다.</p>",
+  "output": "<p>첫 번째 줄에 예영이가 인증번호를 똑같이 입력하기 위해 키보드 자판을 눌러야 하는 횟수의 기댓값을 출력한다.</p>\n<p>정답과의 절대오차 또는 상대오차가 $10^{-6}$ 이하이면 정답으로 인정한다. 만약 기댓값이 무한히 큰 경우에는 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "1 0\n1 0\n1 0\n1 0\n1 0\n1 0\n1 0\n1 0\n1 0\n4 7\n8\n11442238\n",
+      "output": "8\n"
+    },
+    {
+      "input": "1 1\n1 0\n1 0\n1 0\n1 0\n1 0\n1 0\n1 0\n1 0\n1 0\n3\n111\n",
+      "output": "2.625\n"
+    },
+    {
+      "input": "8 4\n2 7\n9 3\n2 4\n1 6\n5 4\n2 8\n4 9\n3 8\n9 4\n12\n144238875962\n",
+      "output": "19.683253\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제5회 고려대학교 MatKor Cup: 2024 Summer/Fall, eoaud0108, devluyten, finimage, kidw0124, lighter, sshs29hanul, utilforever, yijw0930",
+  "level": 19,
+  "tags": [
+    "math",
+    "dp",
+    "probability"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.7691999673843384
+}

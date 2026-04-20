@@ -1,0 +1,22 @@
+{
+  "id": 19461,
+  "title": "Hash Table",
+  "time_limit": "5 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In this problem we will deal with a <em>hash table with open addressing strategy</em> --- an implementation of \"set\" data structure based on hashing. Naturally, hash table is concerned with <em>hash values</em> of elements, which are non-negative integers computed in a certain way based on the contents of the elements.</p>\n<p>The hash table data structure operates on an infinite array with 0-based indexation. Each cell of the array can either be empty or contain an element. We will only consider one type of instruction: <em>add</em> an element with hash $h$. While performing this instruction, we try to put current element in cells $h$, $h + 1$, $h + 2$, $\\ldots$ in this order. The first empty cell among these is then filled with the element.</p>\n<p>We consider the <em>cost</em> of the instruction to be the number of occupied cells we skipped while trying to put the element. For example, if an element with hash 5 was immediately put into cell 5, the cost is zero, but if it ended up in cell 10, we must have performed five unsuccessful tries and thus the cost is 5.</p>\n<p>Consider a sequence of \"add an element with hash $h_i$\" instructions. We are interested in changing the sequence (inserting or omitting instructions) while maintaining the total cost of all instructions performed in this order. The hash table is cleared before every sequence is processed.</p>\n<p>Initially the instruction sequence is empty. You have to process two types of queries changing the sequence:</p>\n<ul>\n<li>\"<code>+</code> $h$ $p$\": insert the instruction \"add an element with hash $h$\" so that it results on $p$-th place in the sequence;</li>\n<li>\"<code>-</code> $q$\": delete the instruction that was inserted on $q$-th query.</li>\n</ul>\n<p>After performing each query you should print the total cost of all instructions currently in the sequence performed in this order.</p>\n<p>Instructions and queries are numbered starting from 1. It is guaranteed that all queries are valid.</p>",
+  "input": "<p>First line of input contains a single integer $n$ --- the number of queries to the sequence ($1 \\leq n \\leq 150\\,000)$.</p>\n<p>Next $n$ lines describe the queries. Each of these lines is either formatted as \"<code>+</code> $h$ $p$\" or \"<code>-</code> $q$\", describing an insertion or deletion query according to the rules above.</p>\n<p>Each insertion query \"<code>+</code> $h$ $p$\" satisfies $0 \\leq h \\leq 10^5$ and $1 \\leq p \\leq k + 1$, where $k$ is the size of the sequence before the query.</p>\n<p>For each deletion query \"<code>-</code> $q$\", it is guaranteed that $q$-th query was an insertion query and it wasn't deleted as a result of an earlier deletion query.</p>",
+  "output": "<p>Print $n$ numbers, each on a separate line: $q$-th line should contain the total cost of performing the instruction sequence after $q$-th query.</p>",
+  "samples": [
+    {
+      "input": "5\n+ 1 1\n+ 1 2\n+ 2 3\n- 2\n- 1\n",
+      "output": "0\n1\n2\n0\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2016, Day 3: Moscow IPT Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2
+}

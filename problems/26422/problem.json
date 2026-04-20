@@ -1,0 +1,29 @@
+{
+  "id": 26422,
+  "title": "Touchbar Typing",
+  "time_limit": "서브태스크 참고 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Glide Typing task in <a href=\"https://goo.gle/cs-kick-start-2022\" target=\"_blank\">Crowdsource app </a>uses a new Google keyboard to type a word by sliding a finger across keys without lifting the finger, as shown in the animation below.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>To make the Glide Typing task more challenging, instead of a normal keyboard, we have a special linear keyboard $\\mathbf{K}$ that has all the keys in one row.</p>\n<p>Imagine that you want to type a word $\\mathbf{S}$ that is $\\mathbf{N}$ characters long. The linear keyboard $\\mathbf{K}$ has $\\mathbf{M}$ keys. It is guaranteed that the keys cover all characters in $\\mathbf{S}$. However, some of the keys may be duplicates. In other words, for each character in $\\mathbf{S}$, there is one or more keys in $\\mathbf{K}$ mapped to the character. Note that, all characters and keys are represented as integers.</p>\n<p>You may start with your finger on any key. It takes $1$ second to move your finger from a key to an adjacent key. Due to Glide Typing, there is no <i>pressing</i> a key. If the finger is currently at the key $i$ which has character $\\mathbf{K_i}$, and we want to type the character $\\mathbf{K_j}$ at index $j$, we will glide the finger from the key $i$ to the key $j$, which takes $\\lvert j-i \\rvert$ seconds. If your finger is at key $x$, you can type character $\\mathbf{K_x}$ any number of times instantly. You need to type string $\\mathbf{S}$ character by character. Formally, you need to type $\\mathbf{S_i}$ before $\\mathbf{S_{i+1}}$ for each $ 1 \\le i \\le \\mathbf{N}-1 $.</p>\n<p>For example, suppose the word $\\mathbf{S}$ has characters: <code>1</code>, <code>2</code>, <code>2</code>, <code>3</code>, <code>4</code>. You can start by keeping your finger on key with character <code>1</code> on the keyboard which is at index $i$. Then you glide your finger to key which has character <code>2</code> which is at index $j$. It would take $\\lvert j-i \\rvert$ seconds. In order to type character <code>2</code> two times in string $\\mathbf{S}$, you can do that in no additional time as $\\lvert j-j \\rvert = 0$ seconds. Then you can continue to glide your finger to type the other characters in the word $\\mathbf{S}$ sequentially.</p>\n<p>Can you calculate the minimal time needed to type the word?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $\\mathbf{T}$. $\\mathbf{T}$ test cases follow.</p>\n<p>The first line of each test case contains one integer $\\mathbf{N}$: the length of the word $\\mathbf{S}$.</p>\n<p>The second line of each test case contains $\\mathbf{N}$ integers: each $\\mathbf{S_i}$ is the character at the $i$-th index.</p>\n<p>The third line of each test case contains one integer $\\mathbf{M}$: the length of the keyboard $\\mathbf{K}$.</p>\n<p>The fourth line of each test case contains $\\mathbf{M}$ integers: each $\\mathbf{K_i}$ is the character at the $i$-th key.</p>",
+  "output": "<p>For each test case, output one line containing the minimal time needed to type the word. <code>Case #$x$: $y$</code>, where $x$ is the test case number (starting from 1) and $y$ is the minimal time needed to type $\\mathbf{S}$ on the keyboard $\\mathbf{K}$.</p>",
+  "samples": [
+    {
+      "input": "2\n5\n1 2 3 2 1\n3\n1 2 3\n3\n1 1 1\n2\n2 1\n",
+      "output": "Case #1: 4\nCase #2: 0\n"
+    },
+    {
+      "input": "2\n4\n2 1 4 1\n8\n4 1 5 2 1 3 5 4\n3\n1 2 3\n8\n2 3 5 1 4 6 7 2\n",
+      "output": "Case #1: 4\nCase #2: 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Kick Start, Google Kick Start 2022, Round D",
+  "level": 16,
+  "tags": [
+    "dp",
+    "sweeping"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.4285999536514282
+}

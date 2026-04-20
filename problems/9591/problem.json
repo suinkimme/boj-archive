@@ -1,0 +1,28 @@
+{
+  "id": 9591,
+  "title": "Shopping Malls",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>We want to create a smartphone application to help visitors of a shopping mall and you have to calculate the shortest path between pairs of locations in the mall. Given the current location of the visitor and his destination, the application will show the shortest walking path (in meters) to arrive to the destination.</p>\n<p>The mall has N places in several floors connected by walking paths, lifts, stairs and escalators (automated stairs). Note that the shortest path in meters may involve using an escalator in the opposite direction. We only want to count the distance that the visitor has walked so each type of movement between places has a different cost in meters:</p>\n<ul>\n<li>If walking or taking the stairs the distance is the euclidean distance between the points.</li>\n<li>Using the lift has a cost of 1 meter because once we enter the lift we do not walk at all. One lift can only connect 2 points. An actual lift connects the same point of different floors, in the map all the points connected by a lift have the corresponding edge. So you do not need to worry about that. For instance, if there are three floors and one lift at position (1,2) of each floor, the input contains the edges (0, 1, 2) → (1, 1, 2), (1, 1, 2) → (2, 1, 2) and (0, 1, 2) → (2, 1, 2). In some maps it can be possible that a lift does not connect all the floors, then some of the edges will not be in the input.</li>\n<li>The escalator has two uses:\n\t<ul>\n<li>Moving from A to B (proper direction) the cost is 1 meter because we only walk a few steps and then the escalator moves us.</li>\n<li>Moving from B to A (opposite direction) has a cost of the euclidean distance between B and A multiplied by a factor of 3.</li>\n</ul>\n</li>\n</ul>\n<p>The shortest walking path must use only these connections. All the places are connected to each other by at least one path.</p>",
+  "input": "<p>Each input file contains the map of a unique shopping mall and a list of queries.</p>\n<p>The first line contains two integers N (N ≤ 200) and M (N −1 ≤ M ≤ 1000), the number of places and connections respectively. The places are numbered from 0 to N-1. The next N lines contain floor and the coordinates x, y of the places, one place per line. The distance between floors is 5 meters. The other two coordinates x and y are expressed in meters.</p>\n<p>The next M lines contain the direct connections between places. Each connection is defined by the identifier of both places and the type of movement (one of the following: walking, stairs, lift, or escalator). Check the cost of each type in the description above. The type for places in the same floor is walking.</p>\n<p>The next line contains an integer Q (1 ≤ Q ≤ 1000) that represents the number of queries that follow. The next Q lines contain two places each a and b. We want the shortest walking path distance to go from a to b.</p>",
+  "output": "<p>For each query write a line with the shortest path in walked meters from the origin to the destination, with each place separated by a space.</p>",
+  "samples": [
+    {
+      "input": "6 7\n3 2 3\n3 5 3\n2 2 3\n2 6 4\n1 1 3\n1 4 2\n0 1 walking\n0 2 lift\n1 2 stairs\n2 3 walking\n3 4 escalator\n5 3 escalator\n4 5 walking\n5\n0 1\n1 2\n3 5\n5 3\n5 1\n",
+      "output": "0 1\n1 0 2\n3 4 5\n5 3\n5 3 2 0 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2013",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "traceback"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 1.7143000364303589
+}

@@ -1,0 +1,38 @@
+{
+  "id": 21865,
+  "title": "Railroad",
+  "time_limit": "1.5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>평소 \"더 지니어스\"라는 프로그램을 좋아하던 태수는 데스매치에서 나왔던 모노레일 게임에 관심을 갖기 시작했고 더 다양한 종류의 타일을 이용한 게임을 하나 만들어왔다.</p>\n<p>기존 모노레일 게임은 다음과 같은 2개의 타일만을 이용해서 플레이가 진행됐다. (각각 1번 타일(좌), 2번 타일(우)이라 칭한다.)</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"zoom:80%;\"/></p>\n<p>하지만 태수는 여기에 다음과 같은 2종류의 타일을 추가하려고 한다. (각각 3번 타일(좌), 4번 타일(우)이라 칭한다.)</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"zoom:75%;\"/></p>\n<p>우리는 이 타일들이 무한히 많이 있는 상태로 게임을 진행한다. 원래의 모노레일 게임은 두 명의 플레이어가 서로 번갈아가며 타일을 놓지만, 친구가 없는 태수는 이러한 게임을 할 수 없기 때문에 살짝 다른 스타일로 게임을 진행하려고 한다.</p>\n<blockquote>\n<p>$N \\times M$ 크기의 격자가 있다. 각 타일을 놓을 수 있는 곳은 정해져있다. 격자에서 <code>L</code>이 써있는 곳은 1번 타일을 놓아야만 하고, <code>O</code>가 써있는 곳은 3번 또는 4번 타일을 놓아야만 한다. <code>X</code>가 써있는 곳은 어느 타일도 놓을 수 없고, <code>.</code>이 써있는 곳은 2번 타일을 놓거나 아예 놓지 않아야한다. 타일을 회전시켜 격자에 놓아도 된다고 할 때, 중간에 초록색 길이 끊겨있는 부분 없이 전부 이어지도록 타일을 놓으려고 한다. 과연 어떻게 놓아야하겠는가?</p>\n</blockquote>\n<p>태수가 이 게임을 성공할 수 있을지 판단하고, 가능하다면 그러한 배치를 찾아주는 프로그램을 작성하자.</p>",
+  "input": "<p>첫째 줄에 $N$, $M$이 공백을 사이에 두고 주어진다. $(1 \\leq N,M \\leq 300)$ 그 다음 $N$줄에 걸쳐 <code>L</code>, <code>O</code>, <code>X</code>, <code>.</code>으로만 이루어진 길이 $M$의 문자열이 주어진다.</p>",
+  "output": "<p>조건에 맞는 배치를 만들 수 없다면 첫째 줄에 <code>NO</code>를 출력한다. 그렇지 않다면 첫째 줄에 <code>YES</code>를 출력하고, 두 번째 줄부터 $N$줄에 걸쳐 해당 배치를 출력한다.</p>\n<p>입력에서 <code>X</code>로 주어진 부분은 출력에서도 <code>X</code>로 출력해야하고, 빈공간은 <code>.</code>, 나머지는 아래 그림에 맞춰 출력하면 된다. (괄호 안은 아스키 코드 값을 의미한다. 예제에서 모든 타일에 대한 정보가 주어지니 정확히 무엇인지 모르겠으면 복사 붙여넣기를 활용하도록 하자.)</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"zoom:50%;\"/><br/>\n<img alt=\"\" src=\"4.png\" style=\"zoom:50%;\"/></p>",
+  "samples": [
+    {
+      "input": "4 4\nL..L\n.LL.\n.LL.\nL..L\n",
+      "output": "YES\nr--7\n|r7|\n|LJ|\nL--J\n"
+    },
+    {
+      "input": "3 3\nLOL\nOOO\nLOL\n",
+      "output": "YES\nrv7\n>+<\nL^J\n"
+    },
+    {
+      "input": "4 4\n..XX\n..XX\nXXLL\nXXLL\n",
+      "output": "YES\n..XX\n..XX\nXXr7\nXXLJ\n"
+    },
+    {
+      "input": "2 2\n.L\nLL\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "cheetose, Lawali",
+  "level": 22,
+  "tags": [
+    "graphs",
+    "scc",
+    "2_sat"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 2.6110999584198
+}

@@ -1,0 +1,25 @@
+{
+  "id": 9977,
+  "title": "Byte Me!",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are a dealer at The One, the first all-binary casino in Las Vegas. What makes The One special is that its blackjack tables don’t use cards; they use bytes (an 8-bit sequence representing a number from 0 to 255) and nibbles (a 4-bit sequence representing a number from 0 to 15).</p>\n<p>All day long, you play the house’s hand against individual opponents. Of course, the casino owners know their statistics, and they have devised a strategy for you that gives gamblers just less than even odds.</p>\n<p>Here are the rules of binary blackjack:</p>\n<ol>\n<li>The goal of the game is to be the player closest to 510 points without going over.</li>\n<li>Each player is dealt two bytes, one face up and one face down.</li>\n<li>The players then have the opportunity to take more bytes (by saying, “Byte Me!”) or more nibbles (by saying, “Nibble Me!”) until he reaches his limit of 4 hits or has more than 510 points showing.</li>\n<li>All hits are played face up.</li>\n<li>If a player goes over 510, he immediately ‘busts’ and loses the hand.</li>\n<li>The dealer hits last.</li>\n<li>The dealer wins any ties (this includes a ‘tie’ where everyone busts).</li>\n</ol>\n<p>The rules for the dealer are (in order of precedence, where lower numbered rules override higher numbered ones):</p>\n<ol>\n<li>Never hit when it is certain that you’ve won by simply looking at your hand and what is showing of other people’s hands.</li>\n<li>If your total is strictly less than 382 take a byte hit.</li>\n<li>If your total is less than or equal to 500 take a nibble hit.</li>\n<li>Take no hits.</li>\n</ol>",
+  "input": "<p>Input to this problem will consist of a (non-empty) series of up to 100 data sets. Each data set will be formatted according to the following description, and there will be no blank lines separating data sets.</p>\n<p>A single data set has 6 components:</p>\n<ol>\n<li>Start line – A single line, “START N”, where N is the number of players playing this hand (not including the dealer). There will never be more than 10 non-dealer players, and the dealer never plays by himself.</li>\n<li>Dealer Line – A single line containing 2 binary strings of exactly eight digits separated by exactly one space. These two strings represent the two cards in the dealer’s hand.</li>\n<li>Player Line – A single line containing N 8-digit binary strings, each separated from the others by a single space. These represent the face-up cards of all of the non-dealer players.</li>\n<li>Byte Line – A single line containing 4 8-digit binary strings, each separated from the others by a single space. These represent the next 4 bytes in the byte deck, in the order they will be drawn.</li>\n<li>Nibble Line – A single line containing 4 4-digit binary strings, each separated from the others by a single space. These represent the next 4 nibbles in the nibble deck, in the order they will be drawn.</li>\n<li>End line – A single line, “END”.</li>\n</ol>\n<p>Following the final data set will be a single line, “ENDOFINPUT”.</p>\n<p>Here are some other useful facts:</p>\n<ul>\n<li>Oddly enough, each non-dealer player is always dealt a face-down card 11111111, value 255, but the dealer has no knowledge of this.</li>\n<li>Players other than the dealer never hit (they aren’t too bright).</li>\n</ul>",
+  "output": "<p>Calculate the actions taken by the dealer and how the dealer fares with the resulting hand.</p>\n<p>For each data set, there will be exactly one output set, consisting of the following components:</p>\n<ol>\n<li>Hand Line – A single line, “HAND N”, where N is the number of players playing this hand (not including the dealer).</li>\n<li>Dealer Hit List – A single line will be printed for each hit the dealer takes on his turn. For a byte hit, print a line “Byte me!”, and for a nibble hit print, “Nibble me!”</li>\n<li>Outcome Line – A single line containing “Win!” if the dealer wins, “Bust!” if the dealer loses by busting, and “Lose!” if the dealer loses without busting</li>\n</ol>",
+  "samples": [
+    {
+      "input": "START 1\n11111111 11111111\n00000001\n10101010 01010101 11110000 00001111\n1010 0101 1100 0011\nEND\nSTART 1\n10111110 10111111\n11111110\n00010010 10101010 01010101 11110000\n0001 1010 1100 0011\nEND\nSTART 8\n11111111 00001000\n00000000 00000001 00000010 00000011 00000100 00000101 00000110 00000111\n00010010 10101010 01010101 11110000\n0001 1010 1100 0011\nEND\nENDOFINPUT\n",
+      "output": "HAND 1\nWin!\nHAND 1\nByte me!\nNibble me!\nNibble me!\nNibble me!\nLose!\nHAND 8\nWin!\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 2002 South Central USA Regional Programming Contest",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.384600043296814
+}

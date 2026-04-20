@@ -1,0 +1,22 @@
+{
+  "id": 31339,
+  "title": "Puzzle",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"width: 150px; height: 167px; float: right;\"/>Once a puzzle has been gifted to Taja, and she still has no idea how to solve it.</p>\n<p>The puzzle is a grid $n \\times n$, with each row and each column containing <strong>exactly one</strong> separator, which is diagonal segment which starts in upper left corner and ends at lower right corner. Puzzle has a launch button, which launches the balls at integer time moments from the tubes, which are positioned at the <strong>boundary of the grid</strong>. Per one moment a ball moves to an adjacent cell. When a ball collides a separator it changes direction by $90^\\circ$. A ball disappears if it crosses border line.</p>\n<p>To solve a puzzle, one needs to rotate some separators $90^\\circ$ around their centers, in such a way that no two balls will ever collide inside the grid.</p>\n<p>Two balls collide if:</p>\n<ol>\n<li>They are at the same cell at the same moment (if the cell contains separator, then both balls should be at the same side).</li>\n</ol>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></p>\n<ol start=\"2\">\n<li>They collided at the cells' boundary (boundary of the whole grid counts as well).</li>\n</ol>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\"/></p>\n<p>In this problem you are to find <strong>any</strong> solution of this puzzle.</p>",
+  "input": "<p>First line of input contains single integer $n$ ($1 \\leq n \\leq 500$) --- grid size.</p>\n<p>Second line contains $n$ integers ($1 \\leq c_i \\leq n$) --- column number of $i$th separator, which has $i$ as a row number. All column numbers are different.</p>\n<p>Third line conatins single integer $m$ ($1 \\leq m \\leq 10^4$) --- number of balls.</p>\n<p>Each of the following $m$ lines contains $3$ integers $x_i$, $y_i$, $t_i$ ($0 \\leq t_i \\leq 10^8$), describing moments of balls' launches --- at the moment $t_i$ a ball will appear at $(x_i, y_i)$ cell, which shares common side with the boundary of the grid. Moments are given in non-decreasing order of $t_i$. Coordinates ($x_i, y_i$) can be at one of the four following areas:</p>\n<ol>\n<li>$x_i = 0$, $1 \\leq y_i \\leq n$;</li>\n<li>$1 \\leq x_i \\leq n$, $y_i = 0$;</li>\n<li>$x_i = n + 1$, $1 \\leq y_i \\leq n$;</li>\n<li>$1 \\leq x_i \\leq n$, $y_i = n + 1$.</li>\n</ol>\n<p>It is guaranteed that solution always exists.</p>",
+  "output": "<p>Output should contain single line of $0$ and $1$. $i$th symbol is $0$, if $i$th separator doesn't require rotation, $1$ --- otherwise.</p>",
+  "samples": [
+    {
+      "input": "3\n2 1 3\n6\n2 0 0\n3 0 1\n1 0 2\n0 2 2\n4 3 3\n0 1 3\n",
+      "output": "011\n"
+    }
+  ],
+  "hint": "<p>Below are shown sample positions of the balls along the time.</p>\n<table class=\"table table-bordered td-center td-middle\">\n<tbody>\n<tr>\n<td><strong>0</strong></td>\n<td><img alt=\"\" src=\"4.png\"/></td>\n<td><strong>1</strong></td>\n<td><img alt=\"\" src=\"5.png\"/></td>\n<td><strong>2</strong></td>\n<td><img alt=\"\" src=\"6.png\"/></td>\n<td><strong>3</strong></td>\n<td><img alt=\"\" src=\"7.png\"/></td>\n</tr>\n<tr>\n<td><strong>4</strong></td>\n<td><img alt=\"\" src=\"8.png\"/></td>\n<td><strong>5</strong></td>\n<td><img alt=\"\" src=\"9.png\"/></td>\n<td><strong>6</strong></td>\n<td><img alt=\"\" src=\"10.png\"/></td>\n<td><strong>7</strong></td>\n<td><img alt=\"\" src=\"11.png\"/></td>\n</tr>\n</tbody>\n</table>",
+  "source": "Contest, Open Cup, 2014/2015 Season, Stage 9: Grand Prix of Udmurtia",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

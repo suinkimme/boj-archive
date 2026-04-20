@@ -1,0 +1,26 @@
+{
+  "id": 5487,
+  "title": "Birthday",
+  "time_limit": "2 초",
+  "memory_limit": "64 MB",
+  "description": "<p>It is Byteman’s birthday today. There are n children at his birthday party (including Byteman). The children are numbered from 1 to n. Byteman’s parents have prepared a big round table and they have placed n chairs around the table. When the children arrive, they take seats. The child number 1 takes one of the seats. Then the child number 2 takes the seat on the left. Then the child number 3 takes the next seat on the left, and so on. Finally the child number n takes the last free seat, between the children number 1 and n−1 .</p>\n<p>Byteman’s parents know the children very well and they know that some of the children will be noisy, if they sit too close to each other. Therefore the parents are going to reseat the children in a specific order. Such an order can be described by a permutation p<sub>1</sub>, p<sub>2</sub>,..., p<sub>n</sub> (p<sub>1</sub>, p<sub>2</sub>,..., p<sub>n</sub> are distinct integers from 1 to n) — child p<sub>1</sub> should sit between p<sub>n</sub> and p<sub>2</sub>, child p<sub>i</sub> (for i = 2 ,3 ,...,n−1 ) should sit between p<sub>i−1</sub> and p<sub>i+1</sub>, and child pn should sit between p<sub>n−1</sub> and p<sub>1</sub>. Please note, that child p1 can sit on the left or on the right from child pn.</p>\n<p>To seat all the children in the given order, the parents must move each child around the table to the left or to the right some number of seats. For each child, they must decide how the child will move — that is, they must choose a direction of movement (left or right) and distance (number of seats). On the given signal, all the children stand up at once, move to the proper places and sit down.</p>\n<p>The reseating procedure throws the birthday party into a mess. The mess is equal to the largest distance any child moves. The children can be reseated in many ways. The parents choose one with minimum mess. Help them to find such a way to reseat the children.</p>\n<p>Your task is to write a program that:</p>\n<ul>\n<li>reads from the standard input the number of the children and the permutation describing the desired order of the children,</li>\n<li>determines the minimum possible mess,</li>\n<li>writes the result to the standard output.</li>\n</ul>",
+  "input": "<p>The first line of standard input contains one integer n (1 ≤ n ≤ 1 000 000 ). The second line contains n integers p<sub>1</sub>, p<sub>2</sub>,..., p<sub>n</sub>, separated by single spaces. Numbers p<sub>1</sub>, p<sub>2</sub>,..., p<sub>n</sub> form a permutation of the set {1 ,2 ,...,n} describing the desired order of the children. Additionally, in 50% of the test cases, n will not exceed 1 000.</p>",
+  "output": "<p>The first and the only line of standard output should contain one integer: the minimum possible mess.</p>",
+  "samples": [
+    {
+      "input": "6\n3 4 5 1 2 6\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p><img alt=\"\" src=\"1.png\" style=\"height:102px; width:401px\"/></p>\n<p>The left figure shows the initial arrangement of the children. The middle figure shows the result of the following reseating: children number 1 and 2 move one place, children number 3 and 5 move two places, and children number 4 and 6 do not change places. The conditions of arrangement are fulfilled, since 3 sits between 6 and 4, 4 sits between 3 and 5, 5 sits between 4 and 1, 1 sits between 5 and 2, 2 sits between 1 and 6, and 6 sits between 2 and 3. There exists another possible final arrangement of children, depicted in the right figure. In both cases no child moves more than two seats.</p>",
+  "source": "Olympiad, International Olympiad in Informatics, IOI 2005, Day 2",
+  "level": 19,
+  "tags": [
+    "prefix_sum",
+    "parametric_search",
+    "difference_array"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.6363999843597412
+}

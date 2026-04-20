@@ -1,0 +1,26 @@
+{
+  "id": 1896,
+  "title": "파급효과",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p><img src=\"1.png\" style=\"float:right; height:346px; line-height:20.8px; opacity:0.9; width:347px\" />파급효과가 가능한 퍼즐인지 판별하여라.</p>\r\n\r\n<p>파급효과는 여러개의 폴리오미노로 구성된&nbsp;직사각형의 그리드에서 발생한다. 폴리오미노는 하나 이상의 같은 크기의 정사각형을 이어붙여 만든 도형이다.</p>\r\n\r\n<p>우리는 그리드 안의 모든 칸에 자연수를 배치해야한다. 이때 다음과 같은 규칙을 따르며, 일부 자연수는 미리 주어질 수 있다.</p>\r\n\r\n<ul>\r\n\t<li>1 ~ (폴리노미오 안의 칸 수) 의 자연수들은 해당 폴리노미오 안에 반드시 한번씩만 배치되어야 한다.</li>\r\n\t<li>하나의 줄이나 행에 동일한 숫자가 배치되기 위해선 두 숫자 사이에 해당 숫자만큼의 다른 칸이 존재해야 한다.<br />\r\n\t예를 들어, &#39;1&#39;이 배치된 칸은 서로 인접할 수 없으며, 다른 숫자가 쓰여진 칸이 두 &#39;1&#39; 사이에 하나 이상 존재해야 한다.<br />\r\n\t같은 줄이나 행에 &#39;3&#39;이 배치되기 위해선 다른 숫자가 쓰여진 칸이 사이에 세개 이상 존재해야 한다.</li>\r\n</ul>\r\n\r\n<p>이 문제에서 폴리노미오의 크기는 최대 8이다.</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+  "input": "<p>입력의 첫째 줄에는 테스트 케이스 T가 주어진다. (T&lt;=100)</p>\r\n\r\n<p>각각의 테스트 케이스의 첫째 줄에는 두 정수 R, C 가 주어진다. (4&lt;=R, C&lt;=15)</p>\r\n\r\n<p>이후 R개 줄에는 그리드에 쓰여진 숫자들을 나태는&nbsp;C개의 숫자 d_i로 구성된 문자열이 입력된다. (1&lt;=d_i&lt;=8)</p>\r\n\r\n<p>이후 R개 줄에는 퍼즐의 각 칸이 폴리노미오로 연결된 방향을 나타내는 C개의 숫자가 입력된다.&nbsp;(이는 RxC 의 테이블이며, 이를 &quot;descr&quot; 라고 하자. 0&lt;=descr(r,c)&lt;=15)</p>\r\n\r\n<p>descr(r,c)의 값은 이웃된 칸과의 연결 여부에 따라 다음과 같이 결정된다.</p>\r\n\r\n<pre>\r\ndescr(r,c)=0\r\nif(connected((r,c),(r-1,c)) descr(r,c)+=1; (UP)\r\nif(connected((r,c),(r,c+1)) descr(r,c)+=2; (RIGHT)\r\nif(connected((r,c),(r+1,c)) descr(r,c)+=4; (DOWN)\r\nif(connected((r,c),(r,c-1)) descr(r,c)+=8; (LEFT)</pre>\r\n\r\n<p>예를 들어, 크기가 1인 폴리노미오의 칸은 주변의 어떠한 칸과도 이어져있지 않으므로 0의 값을 가지며, 위쪽의 칸과 아래의 칸에 이어져있는 칸들은 5의 값을 가지게 된다.</p>\r\n",
+  "output": "<p>각각의 테스트 케이스에 대해 한 &quot;valid&quot; 또는 &quot;invalid&quot; 를 출력하여라.</p>\r\n",
+  "samples": [
+    {
+      "input": "2\n6 6\n241321\n312432\n131243\n423121\n214312\n141231\n2 12 4 4 6 8\n4 5 1 5 5 4\n5 1 0 5 1 5\n3 8 4 1 4 1\n2 10 9 2 9 4\n0 2 10 10 8 1\n6 6\n421321\n312432\n131243\n423121\n214312\n141231\n2 12 4 4 6 8\n4 5 1 5 5 4\n5 1 0 5 1 5\n3 8 4 1 4 1\n2 10 9 2 9 4\n0 2 10 10 8 1\n",
+      "output": "valid\ninvalid\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, Alberta Collegiate Programming Contest, ACPC 2012, jb_cubedr",
+  "level": 12,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "implementation"
+  ],
+  "accepted_user_count": 43,
+  "submission_count": null,
+  "average_tries": 1.7674000263214111
+}

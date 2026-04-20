@@ -1,0 +1,34 @@
+{
+  "id": 19216,
+  "title": "Infinite Binary Embedding",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Vasya has got himself an <em>infinite binary tree</em> $T$, which can be formally described as follows: $T$ has infinitely many vertices, which are numbered starting from $1$. Each vertex of $T$ has two <em>children</em> --- <em>left son</em> and <em>right son</em>. The left son of the vertex $i$ is the vertex $2 i$, and the right son of the vertex $i$ is the vertex $2 i + 1$.</p>\n<p>Also, Vasya has another binary tree $G$ (quite fortunately, a finite one). Every vertex of $G$ is either an <em>internal vertex</em> or a <em>leaf</em>. An internal vertex has a left son and a right son (and is called the <em>parent</em> of its children), and a leaf vertex has no children. Each vertex has exactly one parent, except for one vertex which has no parent; this vertex is called the <em>root</em> of the tree $G$.</p>\n<p>Vasya would like to <em>embed</em> the tree $G$ in the infinite tree $T$. Formally, an <em>embedding</em> is defined as a function $f: V(G) \\rightarrow V(T)$ (here $V(X)$ is the set of vertices of the tree $X$) with the following property: if the vertex $v$ is a left (alternatively: right) son of the vertex $u$ in $G$, then the vertex $f(v)$ must lie in the subtree of the left (alternatively: right) son of the vertex $f(u)$ in $T$.</p>\n<p>Informally, an embedding is a way to put the vertices of $G$ somewhere on $T$ so that if we draw paths between all the embedded vertices and their children, the drawing looks like $G$ with some of the edges possibly extended downwards (looking at the pictures for the sample cases might help to understand the notion better).</p>\n<p>Additionally, for each leaf vertex $v$ Vasya has chosen a number $h_v$ --- the <em>height</em> of the vertex of $T$ that $v$ should be embedded to (the <em>height</em> of a vertex is the number of edges between the vertex and the root of the tree). That is, $\\text{height}(f(v)) = h_v$ must hold for every leaf $v$ of the tree $G$.</p>\n<p>Now, Vasya wants to know the number of different embeddings of $G$ in $T$ such that each leaf $v$ is embedded to a vertex with height $h_v$. As the number may be quite large, find it modulo $10^9 + 7$.</p>",
+  "input": "<p>The first line contains one integer $n$ --- the number of vertices of $G$ ($1 \\leq n \\leq 2000$).</p>\n<p>The next $n$ lines describe the tree $G$ and the numbers $h_v$.</p>\n<p>If the $i$-th vertex is an internal vertex, then the first number in the $i$-th line will be $0$, followed by the numbers of its left and right sons respectively.</p>\n<p>If the $i$-th vertex is a leaf, then the first number in the $i$-th line will be $1$, followed by the number $h_i$ for this leaf. All $h_i$ satisfy $0 \\leq h_i \\leq 10^9$.</p>\n<p>It is guaranteed that the root of $G$ is the vertex $1$.</p>",
+  "output": "<p>Print one integer --- the number of appropriate embeddings modulo $10^9 + 7$.</p>",
+  "samples": [
+    {
+      "input": "3\n0 2 3\n1 2\n1 2\n",
+      "output": "6\n"
+    },
+    {
+      "input": "5\n0 2 3\n0 4 5\n1 2\n1 3\n1 3\n",
+      "output": "14\n"
+    },
+    {
+      "input": "3\n0 2 3\n1 0\n1 0\n",
+      "output": "0\n"
+    },
+    {
+      "input": "1\n1 0\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": "<p>All six possible embeddings for the first sample (note that the root of $G$ does not have to coincide with the root of $T$):</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 609px; height: 203px;\"/></p>\n<p>All fourteen possible embeddings for the second sample:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 642px; height: 231px;\"/></p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2015, Day 9: Michael Tikhomirov Contest 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

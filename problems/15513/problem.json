@@ -1,0 +1,35 @@
+{
+  "id": 15513,
+  "title": "Lottery for Vitcoins at Moloco (Hard)",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>At the end of each month, Moloco employees participate in a simple lottery for extra employee perks.</p>\n<p>As a valuable employee of Moloco, you receive <em>n</em> lottery tickets where each ticket <em>i</em> has a prize worth <em>w<sub>i</sub></em> &gt; 0 Vitcoins.</p>\n<p>In addition, each ticket <em>i</em> is paired with a coin that flips heads with probability <em>p<sub>i</sub></em> (assume 0 &lt; <em>p<sub>i</sub></em> &lt; 1) and tails with probability 1-<em>p<sub>i</sub></em>. </p>\n<p>Each coin flip is independent.</p>\n<p>At each step, you choose a ticket among those that you have not chosen yet, and claim the prize immediately. Then, you flip the coin that is paired with the ticket; if it is heads, the lottery continues and you can pick another ticket, and so on until you run out of tickets. If it is tails, then the lottery ends immediately, and you get to keep all the Vitcoins you have collected so far.</p>\n<p>You know all the values <em>w<sub>i</sub></em> and <em>p<sub>i</sub></em> for all <em>i</em>, and want to know a permutation of the tickets such that picking them in this order maximizes the expected number of Vitcoins you win. </p>",
+  "input": "<p>The first line contains a single integer <em>n</em> between 1 and 1,000,000, inclusive.</p>\n<p>The following <em>n</em> lines contain two integers, <em>w<sub>i</sub></em> and <em>q<sub>i</sub></em> where 1 ≤ <em>w<sub>i</sub></em> ≤ 10,000 and 0 &lt; <em>q<sub>i</sub></em> &lt; 10,000. We define <em>p<sub>i</sub></em> = <em>q<sub>i</sub></em> / 10000.</p>",
+  "output": "<p>You should output a permutation of length <em>n</em> containing integers between 1 and <em>n</em> in a single line, which describes the order in which you pick lottery tickets. If there exists multiple permutations that maximize the expected number of Vitcoins you can win, then output the one that comes first lexicographically (the smaller index must come first).</p>",
+  "samples": [
+    {
+      "input": "3\n2 3000\n5 5000\n7 2000\n",
+      "output": "2 3 1\n"
+    },
+    {
+      "input": "3\n3 5000\n5 1500\n7 2000\n",
+      "output": "3 1 2\n"
+    },
+    {
+      "input": "3\n1 4000\n1 5000\n1 5000\n",
+      "output": "2 3 1\n"
+    }
+  ],
+  "hint": "<p>Sample 1: The ordering (1, 2, 3) would yield 2 * 0.7 + (2 + 5) * 0.3 * 0.5 + (2 + 5 + 7) * 0.3 * 0.5 = 4.55 Victoins in expectation. The ordering (2, 3, 1) maximizes the expected winnings which is 8.7 Vitcoins.</p>\n<p>Sample 3: Both orderings (2, 3, 1) and (3, 2, 1) yield the same expected number of Vitcoins you can win, but (2, 3, 1) comes first lexicographically. </p>",
+  "source": "Contest, Startlink Online Contest, Startlink Online Contest #1, haden, doju",
+  "level": 15,
+  "tags": [
+    "math",
+    "greedy",
+    "sorting",
+    "probability"
+  ],
+  "accepted_user_count": 118,
+  "submission_count": null,
+  "average_tries": 2.0931999683380127
+}

@@ -1,0 +1,37 @@
+{
+  "id": 14414,
+  "title": "Strelice",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Hansel and Gretel are playing a well-known game of “Arrows” that takes place on a board with R rows and S columns. On each field there is exactly one​ arrow that points to one of the four main directions.</p>\n<p>Hansel plays first, and his move is to colour exactly K fields on the board that are not located​ in the final column. Gretel then places a robot on an arbitrary field in the first column. Now the robot can move on his own, by moving from the current field to the field that the arrow points to. If at some point the robot is located in the last column, he stops and the game ends.</p>\n<p>The winner of the game is determined in the following way:</p>\n<ul>\n<li>If the robot stopped and the game ended, Hansel is the winner if the robot passed through exactly one coloured field, and Gretel is the winner if the robot passed through zero or more than one coloured fields.</li>\n<li>If the robot did not stop after a finite amount of time (in other words, if the robot is stuck in an infinite loop), Hansel is the winner.</li>\n</ul>\n<p>We consider that the robot passed through the starting field, through the fields it moved on throughout the game, and the field it was when the game ended. Also, the arrows will be drawn so that the robot never exists outside the board’s boundaries.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:140px; width:164px\"/></p>\n<p>Determine whether Hansel can ensure his victory no matter where Gretel initially places the robot. If the answer is positive, output K fields he can colour in order to win.</p>",
+  "input": "<p>The first line of input contains the integers R, S, K (1 ≤ R * S ≤ 1 000 000, 1 ≤ K ≤ 50).</p>\n<p>Each of the following R lines contains S characters ‘L’, ‘R’, ‘U’ or ‘D’ that denote the direction of the arrow in the corresponding field of the board (L - left, R - right, U - up, D - down).</p>",
+  "output": "<p>If Hansel cannot ensure his victory, output -1.</p>\n<p>If Hansel can ensure his victory, output K lines. In each line, output space-separated numbers A and B (1 ≤ A ≤ R, 1 ≤ B ≤ S) that denote the row and column of the field that Hansel has to colour. All coloured fields must be different.</p>\n<p> If multiple solutions exist, output any.</p>",
+  "samples": [
+    {
+      "input": "4 3 1\nDRD\nDUD\nDUD\nRUL\n",
+      "output": "4 2\n"
+    },
+    {
+      "input": "3 3 2\nRRR\nRRR\nRRR\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "4 4 2\nRRDL\nRRDL\nDLRD\nRRRL\n",
+      "output": "2 3\n4 1\n"
+    }
+  ],
+  "hint": "<p>If Hansel colours the field (4, 2), the robot will pass through it no matter where Gretel initially places it, so Hansel will be the winner.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2016/2017, Contest #5, koosaga",
+  "level": 22,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "graphs",
+    "graph_traversal",
+    "implementation",
+    "trees"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2
+}

@@ -1,0 +1,22 @@
+{
+  "id": 6084,
+  "title": "Safe Travel",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Gremlins have infested the farm. These nasty, ugly fairy-like creatures thwart the cows as each one walks from the barn (conveniently located at pasture_1) to the other fields, with cow_i traveling to from pasture_1 to pasture_i. Each gremlin is personalized and knows the quickest path that cow_i normally takes to pasture_i. Gremlin_i waits for cow_i in the middle of the final cowpath of the quickest route to pasture_i, hoping to harass cow_i.</p>\n<p>Each of the cows, of course, wishes not to be harassed and thus chooses an at least slightly  different route from pasture_1 (the barn) to pasture_i.</p>\n<p>Compute the best time to traverse each of these new not-quite-quickest routes that enable each cow_i that avoid gremlin_i who is located on the final cowpath of the quickest route from pasture_1 to pasture_i.</p>\n<p>As usual, the M (2 &lt;= M &lt;= 200,000) cowpaths conveniently numbered 1..M are bidirectional and enable travel to all N (3 &lt;= N &lt;= 100,000) pastures conveniently numbered 1..N. Cowpath i connects pastures a_i (1 &lt;= a_i &lt;= N) and b_i (1 &lt;= b_i &lt;= N) and requires t_i (1 &lt;= t_i &lt;= 1,000) time to traverse. No two cowpaths connect the same two pastures, and no path connects a pasture to itself (a_i != b_i). Best of all, the shortest path regularly taken by cow_i from pasture_1 to pasture_i is unique in all the test data supplied to your program.</p>\n<p>By way of example, consider these pastures, cowpaths, and [times]:</p>\n<pre>\n      1--[2]--2-------+\n      |       |       |\n     [2]     [1]     [3]\n      |       |       |\n      +-------3--[4]--4\n\n   TRAVEL     BEST ROUTE   BEST TIME   LAST PATH\np_1 to p_2       1-&gt;2          2         1-&gt;2\np_1 to p_3       1-&gt;3          2         1-&gt;3\np_1 to p_4      1-&gt;2-&gt;4        5         2-&gt;4</pre>\n<p>When gremlins are present:</p>\n<pre>\n   TRAVEL     BEST ROUTE   BEST TIME    AVOID\np_1 to p_2     1-&gt;3-&gt;2         3         1-&gt;2\np_1 to p_3     1-&gt;2-&gt;3         3         1-&gt;3\np_1 to p_4     1-&gt;3-&gt;4         6         2-&gt;4</pre>",
+  "input": "<ul>\n<li>Line 1: Two space-separated integers: N and M</li>\n<li>Lines 2..M+1: Three space-separated integers: a_i, b_i, and t_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Lines 1..N-1: Line i contains the smallest time required to travel from pasture_1 to pasture_i+1 while avoiding the final cowpath of the shortest path from pasture_1 to pasture_i+1. If no such path exists from pasture_1 to pasture_i+1, output -1 alone on the line.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "4 5\n1 2 2\n1 3 2\n3 4 4\n3 2 1\n2 4 3\n",
+      "output": "3\n3\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2008-2009 Season, USACO January 2009 Contest, Gold",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2
+}

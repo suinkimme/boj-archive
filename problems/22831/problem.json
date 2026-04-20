@@ -1,0 +1,30 @@
+{
+  "id": 22831,
+  "title": "Family Tree",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A professor of anthropology was interested in people living in isolated islands and their history. He collected their family trees to conduct some anthropological experiment. For the experiment, he needed to process the family trees with a computer. For that purpose he translated them into text files. The following is an example of a text file representing a family tree.</p>\n<pre>\nJohn\n Robert\n  Frank\n  Andrew\n Nancy\n  David</pre>\n<p>Each line contains the given name of a person. The name in the first line is the oldest ancestor in this family tree. The family tree contains only the descendants of the oldest ancestor. Their husbands and wives are not shown in the family tree. The children of a person are indented with one more space than the parent. For example, Robert and Nancy are the children of John, and Frank and Andrew are the children of Robert. David is indented with one more space than Robert, but he is not a child of Robert, but of Nancy. To represent a family tree in this way, the professor excluded some people from the family trees so that no one had both parents in a family tree.</p>\n<p>For the experiment, the professor also collected documents of the families and extracted the set of statements about relations of two persons in each family tree. The following are some examples of statements about the family above.</p>\n<pre>\nJohn is the parent of Robert.\nRobert is a sibling of Nancy.\nDavid is a descendant of Robert.</pre>\n<p>For the experiment, he needs to check whether each statement is true or not. For example, the first two statements above are true and the last statement is false. Since this task is tedious, he would like to check it by a computer program.</p>",
+  "input": "<p>The input contains several data sets. Each data set consists of a family tree and a set of statements. The first line of each data set contains two integers n (0 &lt; n &lt; 1000) and m (0 &lt; m &lt; 1000) which represent the number of names in the family tree and the number of statements, respectively. Each line of the input has less than 70 characters.</p>\n<p>As a name, we consider any character string consisting of only alphabetic characters. The names in a family tree have less than 20 characters. The name in the first line of the family tree has no leading spaces. The other names in the family tree are indented with at least one space, i.e., they are descendants of the person in the first line. You can assume that if a name in the family tree is indented with k spaces, the name in the next line is indented with at most k + 1 spaces. This guarantees that each person except the oldest ancestor has his or her parent in the family tree. No name appears twice in the same family tree. Each line of the family tree contains no redundant spaces at the end.</p>\n<p>Each statement occupies one line and is written in one of the following formats, where X and Y are different names in the family tree.</p>\n<pre>\nX is a child of Y.\nX is the parent of Y.\nX is a sibling of Y.\nX is a descendant of Y.\nX is an ancestor of Y.</pre>\n<p>Names not appearing in the family tree are never used in the statements. Consecutive words in a statement are separated by a single space. Each statement contains no redundant spaces at the beginning and at the end of the line.</p>\n<p>The end of the input is indicated by two zeros.</p>",
+  "output": "<p>For each statement in a data set, your program should output one line containing <code>True</code> or <code>False</code>. The first letter of <code>True</code> or <code>False</code> in the output must be a capital. The output for each data set should be followed by an empty line.</p>",
+  "samples": [
+    {
+      "input": "6 5\nJohn\n Robert\n  Frank\n  Andrew\n Nancy\n  David\nRobert is a child of John.\nRobert is an ancestor of Andrew.\nRobert is a sibling of Nancy.\nNancy is the parent of Frank.\nJohn is a descendant of Andrew.\n2 1\nabc\n xyz\nxyz is a child of abc.\n0 0\n",
+      "output": "True\nTrue\nTrue\nFalse\nFalse\n\nTrue\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2000 in Tsukuba",
+  "level": 11,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "string",
+    "trees",
+    "set",
+    "hash_set",
+    "parsing"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 2
+}

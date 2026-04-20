@@ -1,0 +1,34 @@
+{
+  "id": 25446,
+  "title": "Povjerenstvo",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Do you know how hard it is to choose a set of people for the problem selection committee? No? Well do you know who does? Mr. Malnar, of course. By observing human interactions, the all-knowing Mr. Malnar has decided what the ideal choice should look like.</p>\n<p>A total of $N$ people are being considered for the committee and $M$ relations between them have been recorded. A relation is described by an ordered pair $(a, b)$ representing the fact that person $a$ dislikes person $b$. Mr. Malnar defines a <em>dislike circle</em> to be a sequence of distinct people $x_1, x_2, \\dots , x_k$ such that person $x_i$ dislikes person $x_{i+1}$, for each $1 ≤ i ≤ k$ (it is assumed that $x_{k+1} = x_1$). Mr. Malnar noticed a peculiar property regarding the set of people in question: <strong>there is no dislike circle consisting of an odd number of people</strong>.</p>\n<p>To minimize dissatisfaction with the choice of committee, Mr. Malnar is looking for a committee such that everyone within the committee agrees with each other and everyone outside of the committee is glad not to be in it. More precisely:</p>\n<ul>\n<li>There must not be two people within the committee such that one person dislikes the other.</li>\n<li>For each person outside the committee there should be someone in the committee who they dislike.</li>\n</ul>\n<p>Can you find such a set of people?</p>",
+  "input": "<p>The first line contains positive integers $N$ and $M$, the number of people and number of relations between them, respectively.</p>\n<p>The $i$-th of the following $M$ lines contains an ordered pair of positive integers $a_i$ and $b_i$ ($1 ≤ a_i , b_i ≤ N$), representing the fact that person $a_i$ dislikes the person $b_i$. It holds that $a_i ≠ b_i$ for all $i = 1, 2, \\dots , M$ and no ordered pair is listed twice.</p>\n<p>The given relations will be such that there is no dislike circle consisting of an odd number of people.</p>",
+  "output": "<p>If it is not possible to choose a set of people satisfying the given conditions, in the only line print <code>-1</code>.</p>\n<p>Otherwise, in the first line print a positive integer $K$ ($1 ≤ K ≤ N$), the number of people in the committee. In the next line print $K$ distinct positive integers $p_1, p_2, \\dots , p_K$ ($1 ≤ p_i ≤ N$), the indices of the people which make up the committee.</p>\n<p>If there is more than one solution, output any one of them.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2\n1 3\n2 4\n3 4\n",
+      "output": "2\n4 1\n"
+    },
+    {
+      "input": "4 4\n1 2\n2 3\n3 4\n4 1\n",
+      "output": "2\n1 3\n"
+    },
+    {
+      "input": "8 11\n1 2\n2 1\n3 4\n4 5\n5 6\n6 3\n7 8\n8 7\n3 2\n7 3\n8 1\n",
+      "output": "3\n1 3 5\n"
+    }
+  ],
+  "hint": "<p>The set of chosen people is shown in the output of each test case.</p>\n<p>The first example is a valid test case for the first subtask and for the second subtask.</p>\n<p>The second example is not a valid test case for the first subtask, but it is valid for the second subtask.</p>\n<p>The third example is not a valid test case for the first subtask nor for the second subtask.</p>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2022, Croatian Olympiad in Informatics 2022",
+  "level": 23,
+  "tags": [
+    "bipartite_graph",
+    "graphs",
+    "scc"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 3.6666998863220215
+}

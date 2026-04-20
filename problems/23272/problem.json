@@ -1,0 +1,33 @@
+{
+  "id": 23272,
+  "title": "Hiring Help",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>A certain large unnamed software development company has $n$ developers.  The productivity of each coder working for the company has been rigorously measured in terms of two key performance indicators: the number of lines of code they write per hour, and the number of bugs they fix per hour.</p>\n<p>When a project needs to be done, the manager in charge of the project is allocated some budget of $t$ man-hours of programmer time.  The manager can then staff different coders on the project, up to a total of $t$ hours.  For instance if there are three programmers, the manager can allocate any non-negative real numbers $t_1$, $t_2$, and $t_3$ hours of their respective work hours, as long as $t_1 + t_2 + t_3 \\le t$.  If the three programmers write $l_1$, $l_2$, and $l_3$ lines of code per hour, a total amount of $t_1 \\cdot l_1 + t_2 \\cdot l_2 + t_3 \\cdot l_3$ lines of code will then be written for the project. Similarly if they fix $b_1$, $b_2$, and $b_3$ bugs per hour, a total of $t_1 \\cdot b_1 + t_2 \\cdot b_2 + t_3 \\cdot b_3$ bugs will be fixed.</p>\n<p>Due to the uncertain economy, the company has a hiring freeze, meaning that no new coders are hired to the company.  However, under certain conditions, a manager is allowed to bring in outside help by outsourcing a project to an external consultant rather than doing it in-house.  But this is only allowed if it is not possible to do the project equally efficiently in-house.  In particular, if the consultant writes $\\ell$ lines of code and fixes $b$ bugs in $t$ hours, and there exists some allocation of our existing coders which would write at least $\\ell$ lines of code <em>and</em> fix at least $b$ bugs in at most $t$ hours, then a manager is <em>not</em> allowed to hire this consultant (regardless of whether those existing coders would actually have time to work on the project or whether they are already too busy with other projects).</p>\n<p>While no new coders are hired, employees do sometimes decide to leave the company.  Given a chronological list of events -- requests to use a consultant, and employees quitting -- find out which of the requests will be approved.</p>",
+  "input": "<p>The first line of input consists of a single integer $n$ ($0 \\leq n \\leq 2 \\cdot 10^5$), the number of coders (initially) at the company.  The employees are numbered from $1$ to $n$ (names are too personal). Then follow $n$ lines, the $i$th of which contains two integers $\\ell_i$ and $f_i$ ($1 \\leq \\ell_i, f_i \\leq 10^8$), the number of lines of code and the number of bugs fixed per hour by coder $i$.</p>\n<p>Next follows a line with a single integer $e$ ($1 \\le e \\le 10^5$), the number of events. This is followed by $e$ lines, describing the events in chronological order.  An event is a line in one of the following two forms:</p>\n<ul>\n<li>\"<code>c</code> $t$ $\\ell$ $f$\", for three integers $t$, $\\ell$ and $f$ ($1 \\le t \\le 100$, $1 \\le \\ell, f \\le 10^8$): a request to take in a consultant for a project of $t$ hours, where the consultant would write $\\ell$ lines of code and fix $f$ bugs in those $t$ hours.</li>\n<li>\"<code>q</code> $i$\", for an integer $i$ ($1 \\le i \\le n$): coder $i$ quit the company.</li>\n</ul>\n<p>You may assume that no coder quits more than once.</p>",
+  "output": "<p>For each request to take in a consultant, output \"<code>yes</code>\" if the request is approved, and \"<code>no</code>\" if it is not approved.</p>",
+  "samples": [
+    {
+      "input": "4\n200 100\n100 200\n100 100\n200 200\n5\nc 10 2000 2000\nc 5 750 750\nq 4\nc 3 600 600\nc 10 1500 1500\n",
+      "output": "no\nno\nyes\nno\n"
+    },
+    {
+      "input": "8\n400 300\n300 200\n300 400\n200 300\n500 500\n100 500\n100 100\n500 100\n12\nc 4 1611 1601\nc 3 602 601\nc 2 399 795\nc 1 395 206\nq 7\nq 6\nq 5\nq 4\nc 4 1611 1601\nc 3 602 601\nc 2 399 795\nc 1 395 206\n",
+      "output": "no\nno\nno\nno\nyes\nno\nno\nno\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2021, Camp, Petrozavodsk Programming Camp, Winter 2022, Day 4: NCPC+BAPC+CTU 2021 Selection",
+  "level": 21,
+  "tags": [
+    "convex_hull",
+    "data_structures",
+    "geometry",
+    "offline_queries",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 3.235300064086914
+}

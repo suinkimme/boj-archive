@@ -1,0 +1,29 @@
+{
+  "id": 15853,
+  "title": "XEN 3166",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are N countries in this world, numbered from 1 to N. Each country has a country name and a country code. Both of them can be represented as a string. No two countries share the same country name. For simplicity, in this problem we assume that a string consists only uppercase English alphabets (A-Z).</p>\n<p>One of the widely recognised country code standard is published by ISO (ISO 3166). However, Xenia has noticed something strange about ISO 3166. The resulting code is no longer alphabetical! For example, \"INDIA\" has “IN” as its country code while \"INDONESIA\" is “ID”. \"INDONESIA\" comes after \"INDIA\" in alphabetical order, but “IN\" comes after “ID”.</p>\n<p>Unhappy about this indecent property of the ISO 3166 country codes, Xenia seeks for a more consistent coding. She develops her own standard, called XEN 3166. The rules of XEN 3166 are:</p>\n<ul>\n<li>For each country, its country code must be a subsequence of its country name.</li>\n<li>For each country, its first letter of the country code must be the same as its first letter of the country name.</li>\n<li>For each country, the length of its country code must be exactly K.</li>\n<li>If a country with a country name S has a country code S' and a country with a country name T has a country code T', then S is lexicographically smaller than T if and only if S' is lexicographically smaller than T'.</li>\n</ul>\n<p>A string T = T<sub>1</sub>T<sub>2</sub>...T<sub>|T|</sub> is a subsequence of a string S = S<sub>1</sub>S<sub>2</sub>...S<sub>|S|</sub> if there exists a sequence of integers u<sub>1</sub>, u<sub>2</sub>, ..., u<sub>|T|</sub> where 1 ≤ u<sub>1</sub> &lt; u<sub>2</sub> &lt; ... &lt; u|T| ≤ |S| and for S<sub>u<sub>i</sub></sub> = T<sub>i</sub> all 1 ≤ i ≤ |T|. For example, \"ID\", \"IN\", and \"IND\" are subsequences of \"INDIA\", but \"IDN\", \"INN\", \"Z\" are not subsequences of \"INDIA\".</p>\n<p>String S = S<sub>1</sub>S<sub>2</sub>...S<sub>|S|</sub> is lexicographically smaller than string T = T<sub>1</sub>T<sub>2</sub>...T<sub>|T|</sub> if at least one of the following is true:</p>\n<ul>\n<li>|S| &lt; |T| and S<sub>i</sub> = T<sub>i</sub> for all 1 ≤ i ≤ |S|, or</li>\n<li>There exists an index i where S<sub>i</sub> &lt; T<sub>i</sub> and S<sub>j</sub> = T<sub>j</sub> for all 1 ≤ j &lt; i.</li>\n</ul>\n<p>For example, suppose there are only two countries and K = 2. The name of the first country is \"INDIA\" and the name of the second country is \"INDONESIA\". Therefore, several possible country codes assignment are:</p>\n<ul>\n<li>\"ID\" for \"INDIA\" and \"IN\" for “INDONESIA\"</li>\n<li>\"IA\" for \"INDIA\" and \"ID\" for “INDONESIA\"</li>\n<li>\"II\" for \"INDIA\" and \"IO\" for \"INDONESIA\"</li>\n</ul>\n<p>Given N, K, and the list of country names. Help Xenia to assign the country codes for each country that follows the XEN 3166 rule, or state that it is impossible to do so.</p>",
+  "input": "<p>The first line contains two integers: N K (1 ≤ N ≤ 1000; 1 ≤ K ≤ 200) in a line denoting the number of countries and the length of country codes. The next N following lines, each contains a string which length between 1 and 200,000 consisting of uppercase English alphabets (A-Z). The string on the i-th line denotes the country name of the i-th country. The sum of the length of all country names are guaranteed to be not more than 200,000. It is also guaranteed that no two countries share the same country name. </p>",
+  "output": "<ul>\n<li>If it is possible for Xenia to assign the country codes for each country that follows the XEN 3166 rule, output \"YES\" (quotes only for clarity) on the first line. The next N following lines, each contains a string. The string on the i-th line denotes the country code of the i-th country. If there are more than one possible country codes assignment, you may output any of them.</li>\n<li>If it is not possible for Xenia to assign the country codes for each country that follows the XEN 3166 rule, just output \"NO\" (quotes only for clarity) in a single line.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "2 2\nINDIA\nINDONESIA\n",
+      "output": "YES\nID\nIN\n"
+    },
+    {
+      "input": "3 2\nIBAA\nIAAA\nIAAC\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": "<p>Explanation for the 1st sample case</p>\n<p>The scenario in the first sample is the same as the scenario given in the problem description.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, ACM-ICPC Regional Contest, Jakarta 2017",
+  "level": 19,
+  "tags": [
+    "greedy",
+    "string"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 4.6666998863220215
+}

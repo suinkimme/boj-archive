@@ -1,0 +1,40 @@
+{
+  "id": 34452,
+  "title": "Sequence",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The board and card game <em>Sequence</em> is played with two standard decks of cards (not including Jokers or any special cards: only two of each suit, hearts, clubs, diamonds, and spades, consisting of cards $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$, $10$, Jack, Queen, King and Ace) and a board with each of the cards on it, <em>except</em> for the Jacks. Tokens are placed on the board by each player to claim a spot as theirs.</p>\n<p>Each card may only be played on one of its two corresponding spots on the board, and a token is placed on that spot. Each spot may only contain one token: so a card cannot be played on a particular spot on the board if there is already a token on that spot. The exception is the Jacks, since the Jacks are not represented on the board. The Jack of diamonds and clubs can be played anywhere where there is not already a token, and the Jack of hearts and spades can remove any token on the board.</p>\n<p>Assume you have an empty starting board and are given an ordered list of moves made by the players. Each move contains information on which card was played, whether that card was used to place or remove a token, and which token on the board was placed or removed. Using this information, determine if there was an invalid move, or if the list of moves was valid.</p>",
+  "input": "<p>Input starts with a single integer on it's own line, $N$ ($1 \\le N \\le 104$), which indicates the number of moves. The next $N$ lines contain four values, separated by spaces:</p>\n<ul>\n<li>An integer $1 \\le n \\le N$ indicating the turn number. You are guaranteed that the turns will be given in input in order, and that each turn number is unique.</li>\n<li>The card played, represented as two characters: a number or letter and a suit. The card number or letter is <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>X</code> (representing $10$), <code>J</code> (representing Jack), <code>Q</code> (representing Queen), <code>K</code> (representing King), or <code>A</code> (representing Ace). The suit is a lowercase <code>h</code> (for hearts), <code>c</code> (for clubs), <code>d</code> (for diamonds), or</li>\n<li><code>s</code> (for spades). You are guaranteed that each card will be seen at most twice, as there are only two decks in play.</li>\n<li>A character <code>P</code> or <code>R</code> indicating whether a token was placed or removed.</li>\n<li>A card, in the same format as the card played, indicating where the token was placed or removed on the board. You are guaranteed that this card will not be a Jack, since Jacks are not on the board.</li>\n</ul>",
+  "output": "<p>If the list of moves is valid, output <code>VALID GAME</code>.</p>\n<p>If the list of moves is invalid, output <code>INVALID</code>, followed by the first move number that makes it invalid.</p>",
+  "samples": [
+    {
+      "input": "5\n1 5s P 5s\n2 7h P 7h\n3 5s P 5s\n4 Jh R 5s\n5 Jd P 5s\n",
+      "output": "VALID GAME\n"
+    },
+    {
+      "input": "6\n1 2h P 2h\n2 Js R 3h\n3 2h P 2h\n4 3h P 2h\n5 4h R Qd\n6 Qd P Kd\n",
+      "output": "INVALID 2\n"
+    },
+    {
+      "input": "4\n1 2s P 2s\n2 Jd P 2s\n3 2s P 2s\n4 Jc P 3s\n",
+      "output": "INVALID 3\n"
+    },
+    {
+      "input": "4\n1 6c P 6c\n2 Jc R 6c\n3 7h P 7h\n4 9d P 9d\n",
+      "output": "INVALID 2\n"
+    }
+  ],
+  "hint": "<ul>\n<li><strong>Input 1:</strong> This game is valid. On move $4$, the Jack of hearts was used to remove the $5$ of spades, so a card can be played on this token again using either a Jack of diamonds or a Jack of clubs.</li>\n<li><strong>Input 2:</strong> A Jack of spades is allowed to remove tokens, but there was never a token played on the $3$ of hearts.</li>\n<li><strong>Input 3:</strong> Both $2$ of spades on the board already have a token on them, so another $2$ of spades cannot be played.</li>\n<li><strong>Input 4:</strong> The Jack of clubs is not allowed to remove tokens.</li>\n</ul>",
+  "source": ", School, CS@Mines, CS@Mines HSPC 2018",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "set",
+    "simulation",
+    "hash_set"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.1538000106811523
+}

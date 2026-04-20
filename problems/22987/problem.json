@@ -1,0 +1,32 @@
+{
+  "id": 22987,
+  "title": "기지국 업그레이드",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"width:100%\"/><br/>\n<img alt=\"\" src=\"2.png\" style=\"width:100%\"/></p>\n<p>천재 과학자 토끼가 사는 도시에는 동서로 길게 뻗어있는 도로가 있고, 이 도로를 따라서 $N$ 개의 기지국이 세워져 있다. 이 기지국은 도로에서의 원활한 통신을 도와준다. 편의상 도로 위에 있는 시청에서 동쪽으로 $X$만큼 떨어진 곳을 위치 $X$라고 하자($X &lt; 0$인 경우에는, 서쪽으로 $-X$ 만큼 떨어져 있다.) $i$ 번 기지국은 위치 $X_i$ 에 있으며, 크기가 $H_i$이다. 기존 1세대 통신 방법을 사용하면 $i$ 번 기지국으로부터 거리가 $H_i$ 이하인 모든 위치에 1세대 통신 방법으로 통신을 할 수 있다. 즉 $p$가 폐구간 $\\left[X_i-H_i, X_i+H_i\\right]$ 안에 속해있으면 위치 $p$에서 $i$ 번 기지국과 1세대 통신 방법으로 통신을 할 수 있다.</p>\n<p>토끼는 새로운 2세대 통신 방법을 개발했다. 이 통신 방법을 사용하면 대용량 통신을 할 수 있고, 통신 거리가 $3$배씩 늘어서 $i$ 번 기지국과 거리가 $3H_i$ 이하인 모든 위치에 2세대 통신 방법으로 통신을 할 수 있다. 즉 $p$가 폐구간 $\\left[X_i-3H_i, X_i+3H_i\\right]$ 안에 속해있으면 위치 $p$에서 $i$ 번째 기지국과 2세대 통신 방법으로 통신을 할 수 있다. 2세대 통신 방법에는 치명적인 문제가 있는데, 기지국이 너무 촘촘하게 있으면 서로 간섭을 일으킬 수 있다. 어떤 위치가 2개 이상의 기지국과 1세대 통신 방법으로 통신을 할 수 있을 정도로 가까이 있으면, 해당 위치에서 전파 간섭이 일어난다. 다시 말하면, $\\left\\lvert X_j-X_k \\right\\rvert \\le H_j + H_k$인 경우에 $j$ 번 기지국과 $k$ 번 기지국이 담당하는 범위가 겹쳐서 전파 간섭이 일어난다.</p>\n<p>이 도시의 시장 로얄은, 기존에 있는 기지국 중 일부를 2세대 통신으로 업그레이드하고, 나머지 기지국을 철거하는 방식으로 2세대 통신을 지원하려고 한다. 이때, 업그레이드한 기지국끼리는 서로 전파 간섭이 일어나서는 안 되고, 하위 호환성을 위해 기존의 1세대 통신 방법을 사용하여 통신을 할 수 있었던 위치에서 2세대 통신 방법을 사용하여 통신할 수 있어야 한다. 다시 말해서, 위치 $x$에 대해 $x \\in \\left[X_i-H_i, X_i+H_i\\right]$인 $i$가 존재하면, 2세대 통신으로 업그레이드 한 $j$ 번 기지국이 존재해서 $x \\in \\left[X_j-3H_j, X_j+3H_j\\right]$를 만족해야 한다. 로얄을 도와서 어떤 기지국을 2세대 통신으로 업그레이드해야 하는지 계산해주자. <strong>업그레이드할 기지국의 개수를 최소화할 필요가 없음에 유의하자.</strong></p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 100%;\">\n<tbody>\n<tr>\n<td style=\"width: 35%; text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width:100%\"/></td>\n<td style=\"width: 64%; text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width:100%\"/></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">(a) 전파 간섭으로 인해 업그레이드 불가</td>\n<td style=\"text-align: center;\">(b) 하위 호환성을 만족하지 않는 상황</td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"text-align: center;\">조건을 만족하지 않는 2세대 업그레이드 예시</td>\n</tr>\n</tbody>\n</table>",
+  "input": "<p>다음과 같이 입력이 주어진다.</p>\n<div style=\"background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;\">\n<p>$N$  </p>\n<p>$X_1$ $H_1$</p>\n<p>$\\dots$</p>\n<p>$X_N$ $H_N$</p>\n</div>\n<ul>\n<li>$N$은 기지국의 개수이다. ($1 \\le N \\le 500\\,000$)</li>\n<li>$X_i$는 $i$ 번 기지국의 위치이다. ($-10^{18} \\le X_i \\le 10^{18}$)</li>\n<li>$H_i$는 $i$ 번 기지국의 높이이다. ($1 \\le H_i \\le 10^{18}$)</li>\n<li>입력으로 주어지는 모든 수는 정수다.</li>\n</ul>",
+  "output": "<p>첫째 줄에 2세대 통신으로 업그레이드할 기지국의 수 $M$을 출력한다. 그다음 줄에, 2세대 통신으로 업그레이드할 기지국의 번호 $M$ 개를 공백으로 구분하여 출력한다. 답이 여러 가지면 그 중 아무거나 하나를 출력한다.</p>\n<p>만약 문제의 조건을 만족하면서 업그레이드할 기지국을 고르는 것이 불가능하다면, 대신에 첫 번째 줄에 <code><span style=\"color:#e74c3c;\">-1</span></code>을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "2\n0 5\n3 3\n",
+      "output": "1\n2\n"
+    },
+    {
+      "input": "5\n0 3\n3 2\n4 1\n9 3\n16 2\n",
+      "output": "3\n2 4 5\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 신촌지역 대학생 프로그래밍 대회 동아리 연합, 2021 신촌지역 대학생 프로그래밍 대회 동아리 연합 여름 대회 (SUAPC 2021 Summer), ho94949, amsminn, pichulia, shiftpsh, tae826, wjdclgns12",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "segtree",
+    "tree_set",
+    "coordinate_compression"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 2.5429000854492188
+}

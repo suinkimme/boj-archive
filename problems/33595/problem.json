@@ -1,0 +1,29 @@
+{
+  "id": 33595,
+  "title": "Amanda the Amoeba",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<div style=\"display: none;\">\n<p><strong>This problem has an attachment. You can use it to simulate and visualize the movements of the amoeba.</strong></p>\n</div>\n<p>Amoeba Amanda lives inside a rectangular grid of square pixels. Her body occupies some of these pixels. Other pixels may be either free or blocked. Amanda moves across the grid using the so-called amoeboid movement. In each step of such a movement, her body first shrinks by one pixel (one pixel of the body is removed and becomes free), and then grows at a different place (one previously-free pixel is added to the body).</p>\n<p>To prevent structural damage, Amanda’s body always occupies a connected region of pixels, which means that any pair of pixels forming the body can be connected by a sequence of adjacent pixels without ever leaving the body. Two pixels are considered adjacent if they share a common side (each pixel has at most 4 neighbours). The body remains connected even during the movement, including the moment after removing a pixel and before adding another one.</p>\n<p>Your task is to help Amanda find her way around. Given her initial position and desired final position, suggest a sequence of valid moves leading from the former to the latter.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 313px; height: 200px;\"/></p>\n<p style=\"text-align: center;\">Illustration of sample 1: The filled shape is the initial position, the dotted region is the final position.</p>",
+  "input": "<p>The first line contains two integers $r$ and $c$ ($1 ≤ r, c ≤ 50$) — the size of the rectangular grid in pixels.</p>\n<p>The next $r$ lines contain $c$ characters each, describing the initial position of Amanda. Each of those characters is either a dot <code>.</code> denoting a free pixel, an asterisk <code>*</code> denoting Amanda’s body, or an <code>X</code> denoting a blocked pixel which may never be occupied.</p>\n<p>The next line is empty.</p>\n<p>The next $r$ lines describe the desired final position in the same format as the initial position.</p>\n<p>It is guaranteed that:</p>\n<ul>\n<li>The number of pixels forming Amanda’s body is the same in both positions, and it is at least $2$.</li>\n<li>The body of Amanda is connected in the initial position.</li>\n<li>The body of Amanda is connected in the final position.</li>\n<li>The blocked pixels do not change between the descriptions of the initial and final position, their placement is exactly the same in both positions.</li>\n</ul>",
+  "output": "<p>Print <code>YES</code> if it is possible for Amanda to go from the initial position to the final one. Otherwise, print <code>NO</code>.</p>\n<p>If it is possible, on the next line print one integer $m$ ($0 ≤ m ≤ 10\\, 000$) — the number of moves to execute.</p>\n<p>The following $m$ lines must contain four integer coordinates each: $i_1$, $j_1$, $i_2$, $j_2$ ($1 ≤ i_1, i_2 ≤ r$, $1 ≤ j_1, j_2 ≤ c$). These four coordinates specify one move, meaning that the pixel at $i_1$-th row and $j_1$-th column is first removed from the body. Then, $(i_2, j_2)$ must designate a <strong>different</strong> location where one pixel is added.</p>\n<p>The sequence should consist only of valid moves and after the last move, Amanda’s body should occupy the desired final position.</p>\n<p>If there are multiple solutions, print any of them.</p>\n<p>Under the assumptions of this problem, it can be proven that if it is possible for Amanda to go from the initial position to the desired final one, then it is possible to do it with at most $10\\, 000$ moves.</p>",
+  "samples": [
+    {
+      "input": "5 8\n.******.\n**.X**..\n*******.\n**.X**..\n.******.\n\n.******.\n...X****\n.*******\n...X****\n.******.\n",
+      "output": "YES\n5\n3 1 3 8\n2 1 2 8\n4 1 4 8\n2 2 4 7\n4 2 2 7\n"
+    },
+    {
+      "input": "2 5\n*.X..\n**X..\n\n..X**\n..X*.\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, European Championship, The 2024 ICPC European Championship",
+  "level": 22,
+  "tags": [
+    "trees",
+    "constructive"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.4285999536514282
+}

@@ -1,0 +1,26 @@
+{
+  "id": 25106,
+  "title": "Fishing",
+  "time_limit": "10 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>There is a small village situated on the coast of the Adriatic Sea. The fishermen map the sea as a grid of $N × M$ cells such that the first row is adjacent to the coast and the last row is the furthest away. They track the movement of fish and other items floating in the sea. The sea is mostly empty, but there are $K$ grid cells of interest. The location of each such point is denoted by row $R_i$ and column $C_i$. The fishermen estimate that their catch from fishing in the $i$-th cell is going to be worth $V_i$. Note that $V_i$ can be zero or negative if the corresponding area is predominantly occupied by undesired items. All other cells are considered to have a value of $0$.</p>\n<p>Every day, the local council approves a rectangular fishing area that includes columns from $X$ to $Y$ and extends $H$ rows from the shore into the sea. To fish in the selected area, the fishermen will prepare a fishing net that is exactly $H$ units long. Although the net has a fixed length, it can be rolled out to an arbitrary width $W$ that doesn’t exceed $Y - X + 1$. Based on their information about the sea, they will drop the net somewhere within the approved fishing area to maximize the catch defined as the sum of cell values covered by the net.</p>\n<p>The fishermen aim to choose the optimal fishing location every day. Write a program that will find the best value of their catch for the approved fishing areas for the next $Q$ days. You may assume that the cell values are constant; they are not depleted from fishing on previous days.</p>",
+  "input": "<p>The first line contains the number of rows $N$, the number of columns $M$ and the number of non-empty cells $K$. These cells are described in the following $K$ lines with their row $R_i$, column $C_i$ and value $V_i$, separated by a space. Rows are numbered from $1$ to $N$ and columns from $1$ to $M$. All values $V_i$ are integers.</p>\n<p>The next line contains the number of queries $Q$. The $j$-th query is described by three integers $A'_j$, $X'_j$ and $Y'_j$. To ensure that your solution answers queries in the given order, the queries are given in an encoded form. The actual query can be computed as $$H_j = H'_j ⊕ A_{j−3}\\text{,}$$ $$X_j = X'_j ⊕ A_{j−2}\\text{,}$$ $$Y_j = Y'_j ⊕ A_{j−1}\\text{,}$$ where $A_j$ denotes the answer to the $j$-th query (or $0$ if $j ≤ 0$) and $⊕$ denotes a bitwise xor operation. Your program should find the region with the maximum catch value that spans the first $H_j$ rows and some subrange of columns from $X_j$ to $Y_j$.</p>",
+  "output": "<p>For each query, output a single line with the maximum value of the catch. Note that the fishermen can always choose to keep an empty net with the value of $0$.</p>",
+  "samples": [
+    {
+      "input": "10 7\n12\n2 6 -5\n3 3 3\n4 2 -2\n4 6 2\n5 3 -1\n5 5 5\n7 1 8\n7 7 4\n8 4 -3\n8 5 1\n9 6 -4\n10 3 2\n6\n5 1 5\n10 1 0\n7 1 11\n15 15 6\n9 1 0\n3 7 1\n",
+      "output": "7\n13\n0\n6\n3\n0\n"
+    }
+  ],
+  "hint": "<p>The decoded list of queries:</p>\n<pre>\n5 1 5\n10 1 7\n7 6 6\n8 2 6\n4 1 6\n3 1 2</pre>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2021",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "pst"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 1.5587999820709229
+}

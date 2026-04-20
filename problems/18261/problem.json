@@ -1,0 +1,30 @@
+{
+  "id": 18261,
+  "title": "Tree Depth",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>For the new year, Farmer John decided to give his cows a festive binary search tree (BST)!</p>\n<p>To generate the BST, FJ starts with a permutation $a=\\{a_1,a_2,\\ldots,a_N\\}$ of the integers $1\\ldots N$, where $N\\le 300$. He then runs the following pseudocode with arguments $1$ and $N.$</p>\n<pre>\ngenerate(l,r):\n  if l &gt; r, return empty subtree;\n  x = argmin_{l &lt;= i &lt;= r} a_i; // index of min a_i in {a_l,...,a_r}\n  return a BST with x as the root, \n    generate(l,x-1) as the left subtree,\n    generate(x+1,r) as the right subtree;\n</pre>\n<p>For example, the permutation $\\{3,2,5,1,4\\}$ generates the following BST:</p>\n<pre>\n    4\n   / \\\n  2   5\n / \\ \n1   3\n</pre>\n<p>Let $d_i(a)$ denote the depth of node $i$ in the tree corresponding to $a,$ meaning the number of nodes on the path from $a_i$ to the root. In the above example, $d_4(a)=1, d_2(a)=d_5(a)=2,$ and $d_1(a)=d_3(a)=3.$</p>\n<p>The number of inversions of $a$ is equal to the number of pairs of integers $(i,j)$ such that $1\\le i&lt;j\\le N$ and $a_i&gt;a_j.$ The cows know that the $a$ that FJ will use to generate the BST has exactly $K$ inversions $(0\\le K\\le \\frac{N(N-1)}{2})$. Over all $a$ satisfying this condition, compute the remainder when $\\sum_ad_i(a)$ is divided by $M$ for each $1\\le i\\le N.$</p>",
+  "input": "<p>The only line of input consists of three space-separated integers $N, K,$ and $M$, followed by a new line. $M$ will be a prime number in the range $[10^8,10^9+9].$</p>",
+  "output": "<p>Print $N$ space-separated integers denoting $\\sum_ad_i(a)\\pmod{M}$ for each $1\\le i\\le N.$</p>",
+  "samples": [
+    {
+      "input": "3 0 192603497\n",
+      "output": "1 2 3\n"
+    },
+    {
+      "input": "3 1 144408983\n",
+      "output": "3 4 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2019-2020 Season, USACO 2019 December Contest, Platinum",
+  "level": 26,
+  "tags": [
+    "combinatorics",
+    "dp",
+    "math"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

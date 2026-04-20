@@ -1,0 +1,28 @@
+{
+  "id": 3329,
+  "title": "Ministry",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Once upon a time in a country far, far away, the government established the Ministry of paperwork reduction. As you might have guessed, it was the largest ministry ever. The number of officials working there was truly enormous. However, the overall structure was very simple: The minister had at most three subordinate officials, each of them again had at most three subordinate officials and so on.</p>\n<p>The recent elections have brought a new minister into this office. He is young, smart and full of unspoilt ideals. He decided to fulfill the name of his institution and start at his door-step. He observed that many parts of the hierarchical structure of the ministry are the same and therefore they must be doing the same job. And whenever two such units do the same, one of them is superfluous and it can be dissolved and all its officials laid off. Your job is to find how many non-equivalent departments there are and to fill in the necessary paperwork (i.e., write the result to the output in the correct format).</p>\n<p>You are given the organizational structure of the ministry. Each official has exactly one superior official and at most three subordinate officials (including, possibly, zero). The only exception is that the minister doesn’t have any superior (but he is still limited to three subordinates). There is no specific order of subordinates of any individual official.</p>\n<p>A <em>department</em> consists of an official, all his subordinates, all their subordinates and so on. There are two special cases of departments: the full ministry (starting with the minister) and one-man departments consisting of a single official who has no subordinates.</p>\n<p>The <em>depth of a department</em> is the length of the longest chain x<sub>1</sub>,...,x<sub>d</sub> of the officials in the department such that x<sub>i</sub> is the superior of x<sub>i+1</sub> for every 1 ≤ i</p>\n<p>Two departments A and B have the same structure if each official x from department A corresponds to a unique official x' from department B and vice versa each official x' of B corresponds to an official x of A. In particular, the following must hold for all officials x and y: x is the superior of y if and only if x' (the official corresponding to x) is the superior of y' (the official corresponding to y). Observe that if the departments A and B have the same structure, then the head of the department A corresponds to the head of B and both the departments have the same depth and the same number of officials.</p>\n<p>In the following picture, the departments A and B have the same structure, while the structure of the department C is different from both A and B:</p>\n<table class=\"table table-bordered td-center th-center\" style=\"width:100%;\">\n<tbody>\n<tr>\n<td style=\"width:33%;\"><img alt=\"\" src=\"1.png\" style=\"width: 109px; height: 213px;\"/></td>\n<td style=\"width:34%;\"><img alt=\"\" src=\"2.png\" style=\"width: 148px; height: 214px;\"/></td>\n<td style=\"width:33%;\"><img alt=\"\" src=\"3.png\" style=\"width: 113px; height: 214px;\"/></td>\n</tr>\n</tbody>\n<tfoot>\n<tr>\n<th>Department A</th>\n<th>Department B</th>\n<th>Department C</th>\n</tr>\n</tfoot>\n</table>\n<p>Your task is to determine the number of departments with different structure for all depths. In other words, you have to produce a sequence n<sub>1</sub>,...,n<sub>d</sub> such that d is the depth of the whole ministry and for each i the ministry contains exactly n<sub>i</sub> departments of depth i with pairwise different structures.</p>",
+  "input": "<p>The input consists of a single line which describes the organizational structure of the ministry using the following notation. Each department is encoded as (x<sub>1</sub>...x<sub>k</sub>) where 0 ≤ k ≤ 3 is the number of the head’s subordinates and the x<sub>i</sub>’s are the codes of their departments. A one-man department is therefore encoded as <code>()</code>. The whole structure of the ministry is described as the code of the full ministry.</p>\n<p>The ministry contains at most 1 000 000 officials (including the minister).</p>",
+  "output": "<p>The output should consist of d lines, where d is the depth of the ministry, i.e., the depth of the department led by the minister. The i-th line contains the number of departments of depth i with different structure.</p>",
+  "samples": [
+    {
+      "input": "(((())())((()())(()()()))(()(())))\n",
+      "output": "1\n3\n2\n1\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 410px; height: 210px;\"/></p>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2007, Day 1",
+  "level": 21,
+  "tags": [
+    "hashing",
+    "parsing",
+    "string",
+    "trees",
+    "tree_isomorphism"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 2.588200092315674
+}

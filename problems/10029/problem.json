@@ -1,0 +1,31 @@
+{
+  "id": 10029,
+  "title": "MOSTOVI",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>There are 2N towns in a certain country and a long river that runs from west to east. There are N towns on each side of the river. On the north side, they are labeled with numbers from 1 to N and on the south with numbers from N + 1 to 2N. The towns on each river bank are labeled in a way that the town further east on the bank always has the greater label.</p>\n<p>On the north bank, there is a one-way road from each town (except town N) to its nearest town to the east. On the south bank, there is a one-way road from each town (except town N + 1) to its nearest town to the west.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:193px; width:422px\"/></p>\n<p>Figure 1: Figure accompanying the first test case after all the blockings and constructions are done.</p>\n<p>Given the fact there is a lot of heavy traffic, the roads can sometimes get run down so they are permanently blocked because of safety reasons. In order to enable connectivity of cities that are not necessarily on the same side of the bank, the people in charge build bridges that directly connect some two cities located on opposite sides of the river. Bridge construction is a financially challenging task so they are built with special attention and they can never be run down. Because of the same reason, the bridges are two-way, unlike cheap roads on the banks of the river. Additionally, the constructed bridges will never intersect, not even in their starting or ending towns – thus, each town will be directly connected by a bridge with at most one town on the other side of the river.</p>\n<p>Mirko works at the information office in a leading bus company. Every day hundreds of people come to him and ask whether it is possible to get from one town to another. Mirko then glances on roads that are currently passable and bridges built so far and checks if there is a way to get from one town to another. He likes this job very much, but it overlaps with his daily coffee break from 11 a.m. to 2 p.m. so he asked you to write a program that will do this job for him!</p>\n<p>Write a program that will simulate M events given in chronological order. Each event is either an information about a newly blocked road or an information about a newly built bridge or an enquiry from a traveler regarding the existence of a way between two towns. The events are given in the following form:</p>\n<ul>\n<li>‘A G1 G2’ - a bridge is built between towns G1 and G2.</li>\n<li>‘B G1 G2’ - a one-way road between towns G1 and G2 is blocked.</li>\n<li>‘Q G1 G2’ - a traveler wants to know whether there is a way from town G1 to town G2, given the current passable roads and built bridges.</li>\n</ul>\n<p>In the beginning, all roads are available and no bridges are built.</p>",
+  "input": "<p>The first line of input contains integers N (1 ≤ N ≤ 10<sup>9</sup>) and M (1 ≤ M ≤ 200 000), the number of towns on one bank of the river and the number of events.</p>\n<p>Each of the following M lines contains the description of a single event in the form described in the task. For town labels in the events, it will hold 1 ≤ G1, G2 ≤ 2N. The towns G1 and G2 will always be different.</p>\n<p>You can assume that the road which is being blocked was free up until that moment, and the bridge that is being built didn’t exist up until then.</p>",
+  "output": "<p>For each traveler enquiry, you must print (in the order they were given) on the standard output ‘DA’ (Croatian word for yes) if there is a way from town G1 to town G2 or print ‘NE’ (Croatian word for no) otherwise.</p>",
+  "samples": [
+    {
+      "input": "5 6\nA 4 9\nQ 1 7\nB 3 2\nQ 1 7\nA 1 8\nQ 1 7\n",
+      "output": "DA\nNE\nDA\n"
+    },
+    {
+      "input": "6 10\nA 3 7\nA 4 10\nQ 1 11\nA 12 5\nQ 2 11\nB 10 11\nQ 2 10\nQ 9 6\nB 1 2\nQ 1 2\n",
+      "output": "NE\nDA\nDA\nDA\nNE\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2014, Croatian Olympiad in Informatics 2014",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.81820011138916
+}

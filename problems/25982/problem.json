@@ -1,0 +1,38 @@
+{
+  "id": 25982,
+  "title": "Cookbook Composition",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>The world-famous chef Gordon Oliver is composing a new cookbook called \"Becoming A Perfect Chef\". He has a list of recipes that he wants to publish in the cookbook. Each recipe is in the form of a list of steps, where every step might depend on some previous steps (meaning a step cannot be started until all its dependencies have finished), and expected time per step.</p>\n<p>Gordon knows that, as an expert chef, he can multitask and do as many tasks simultaneously as needed. Meanwhile, a beginner can do one task at a time, so they need to execute them sequentially. He would like to order the recipes for the cookbook by accessibility, where the lowest $\\frac{\\text{beginner time}}{\\text{expert time}}$ ratio recipes come first.</p>\n<p>As an example, consider the first sample case. For the oven dish, an expert chef like Gordon Oliver can prepare the tomatoes, eggplants, and sauce all at the same time (with the sauce taking the longest: $5$ time), and followed by arranging ($1$) and baking ($30$) the dish, this takes $5+1+30=36$ time. On the other hand, a beginner needs $2+2+5+1+30=40$ time to make the oven dish. This makes the accessibility ratio of the oven dish $40/36\\approx 1.11$. The accessibility ratio of the ice cream is $1$ (because beginner and expert chefs both require $5+5+5+240=255$ time to prepare it), so it comes before the oven dish in the cookbook.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with an integer $n$ ($2\\leq n\\leq 500$), the number of recipes.</li>\n<li>Then, for every recipe:\n\t<ul>\n<li>One line with the name of the recipe and an integer $s$ ($1\\leq s\\leq 50$), the number of steps in the recipe.</li>\n<li>$s$ lines, one for every step in the recipe, with the step name, an integer $t$ ($1\\leq t\\leq 10^6$), the step duration, an integer $d$ ($0\\leq d\\leq 49$), the number of dependencies, followed by a list of step names that this step depends on. A step only appears once all the steps that it depends on have been listed.</li>\n</ul>\n</li>\n</ul>\n<p>The recipe and step names consist of at most $10$ English lowercase letters (<code>a-z</code>).</p>\n<p>The recipe names are unique and the step names are unique per recipe.</p>",
+  "output": "<p>Output the names of the recipes in the cookbook, ordered by accessibility.</p>\n<p>If there are multiple valid solutions, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "2\novendish 5\ntomatoes 2 0\neggplants 2 0\nsauce 5 0\narrange 1 3 tomatoes eggplants sauce\nbake 30 1 arrange\nicecream 4\nmix 5 0\nheat 5 1 mix\nchurn 5 1 heat\nfreeze 240 1 churn\n",
+      "output": "icecream\novendish\n"
+    },
+    {
+      "input": "2\nrecipea 4\nstepa 5 0\nstepb 5 1 stepa\nstepc 2 0\nstepd 2 1 stepc\nrecipeb 4\nstepa 1 0\nstepb 2 1 stepa\nstepc 2 1 stepa\nstepd 1 2 stepb stepc\n",
+      "output": "recipea\nrecipeb\n"
+    },
+    {
+      "input": "2\nrecipea 2\nstepa 2 0\nstepb 2 1 stepa\nrecipeb 2\nstepa 5 0\nstepb 5 1 stepa\n",
+      "output": "recipeb\nrecipea\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2022 Preliminaries",
+  "level": 12,
+  "tags": [
+    "dp",
+    "data_structures",
+    "graphs",
+    "set",
+    "hash_set",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 2.264699935913086
+}

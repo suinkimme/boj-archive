@@ -1,0 +1,25 @@
+{
+  "id": 12773,
+  "title": "Road Times",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Ubol Narongdid is the founder of a brash new startup company called Special D-Liver-E. She wants to corner the market on overnight deliveries of organs between hospitals in the Phuket area. For scheduling purposes it is important to have accurate estimates for the times to perform such deliveries. Several trips between various hospitals have already been performed, so delivery times between those pairs of hospitals are known. The company currently has software to estimate times for other (as yet untraveled) trips, but so far all the estimates have been woefully inaccurate.</p>\n<p>You have been asked to come up with a method to improve these estimates. You have at your disposal the following information: 1) the length (in kilometers) of the roads connecting each pair of cities in the Phuket area, and 2) a set of times (in minutes) for various previously executed deliveries.</p>\n<p>You know that roads are one-way, and each road has a fixed speed limit that lies between 30 and 60 kilometers per hour. Speed limits are real-valued and need not be integers. You also know that delivery trucks always take the route that minimizes distance traveled, and on each road will always travel at a constant speed equal to that road’s speed limit. Thus you know, for example, that if a given trip is 50 kilometers, the time it will take is between 50 and 100 minutes inclusive, in the absence of any other information. Ah, but you do have other information, namely the times of previous deliveries. It is up to you to use it to produce the best possible estimates.</p>",
+  "input": "<p>The input starts with a line containing an integer n (1 ≤ n ≤ 30) indicating the number of cities, numbered 0 to n − 1. After that are n lines each containing n integers specifying the distance in kilometers between cities: the jth value on the ith line indicates the distance when traveling directly from city i to city j. A value of −1 indicates there is no road directly connecting the two cities, and the distance from any city to itself is always 0; all other distances are positive and at most 1 000. There are at most 100 roads.</p>\n<p>Following this is a line with a single integer r (1 ≤ r ≤ 100) indicating the number of previously executed routes. The next r lines each contain three integers s, d, and t, where s and d are the source and destination cities and t is how long the delivery from s to d took, in minutes.</p>\n<p>Finally there is a line containing a single integer q (1 ≤ q ≤ 100) indicating the number of future delivery queries. The next q lines each contain two integers s and d giving the source and destination cities for the query.</p>\n<p>You may assume that for each of the r+q source/destination pairs in the input there is a unique minimumdistance route.</p>",
+  "output": "<p>Display a single line for each query containing the source and destination cities for that query, followed by the best low and high bounds on the estimate for the travel time, accurate to within an absolute or relative error of 10<sup>−6</sup>.</p>",
+  "samples": [
+    {
+      "input": "3\n0 50 -1\n55 0 40\n-1 40 0\n1\n0 2 120\n3\n0 1\n1 2\n1 0\n",
+      "output": "0 1 50.0 80.0\n1 2 40.0 70.0\n1 0 55.0 110.0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2016",
+  "level": 25,
+  "tags": [
+    "shortest_path",
+    "linear_programming"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 2.392899990081787
+}

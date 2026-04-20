@@ -1,0 +1,34 @@
+{
+  "id": 20853,
+  "title": "Efterlyst",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Poliskonstapel Acsel behöver din hjälp med ett brådskande ärende, nämligen att fånga den farliga brottsligen Waxel. Waxel gömmer sig någonstans i en stad som består av $N$ olika platser, numrerade mellan $1$ och $N$, med $M$ dubbelriktade vägar som var och en ansluter två olika platser. Han befann sig länge på en viss plats $X$ (det är okänt vilken), men sedan så flyttade han sig till en annan plats $Y$ (som vi inte heller känner till) genom att färdas längs en sekvens av vägar.</p>\n<p>Polisen har samlat in $K$ stycken vittnesmål från personer som såg Waxel. Därför vet de att Waxel besökte platserna $a_1, a_2, \\dots, a_K$ på vägen från $X$ till $Y$ (det är även möjligt att $a_i = X$ eller $a_i = Y$ för något $i$). Däremot vet de inte i vilken ordning platserna besöktes. Waxel kan dessutom ha besökt fler än dessa $K$ platser på vägen från $X$ till $Y$.</p>\n<p>Din uppgift är nu att hjälpa polisen att hitta de platser som möjligtvis kan vara $Y$, under förutsättning att Waxel tog en <strong>kortaste sekvens av vägar</strong> (Detta innebär att summan av längderna av de vägar som Waxel färdades längs är så liten som möjligt.) från $X$ till $Y$. Det är möjligt att det inte finns några sådana platser alls, om vittnesmålen inte stämmer överens med någon kortaste väg.</p>",
+  "input": "<p>Den första raden innehåller tre heltal:</p>\n<ul>\n<li>antalet platser i staden, $N$ ($2 \\leq N \\leq 2\\cdot 10^5$),</li>\n<li>antalet vägar i staden, $M$ ($1 \\leq M \\leq 2 \\cdot 10^5$), och</li>\n<li>antalet vittnesmål, $K$ ($1 \\leq K \\leq N$).</li>\n</ul>\n<p>Den andra raden innehåller de $K$ <em>olika</em> heltalen $a_1, \\dots, a_K$ ($1 \\leq a_i \\leq N$), de platser som Waxel besökte.</p>\n<p>De $M$ följande raderna beskriver de olika vägarna i staden. Den $i$:te raden innehåller de tre heltalen $u_i$, $v_i$ ($1 \\leq u_i \\not= v_i \\le N$) och $w_i$ ($1 \\leq w_i \\leq 10^9$), vilket innebär att den $i$:te vägen förbinder platserna $u_i$ och $v_i$ och har längd $w_i$ meter. Det är garanterat att det går att ta sig mellan vilka två platser som helst genom att färdas längs en sekvens av vägar och att det mellan varje par av platser finns högst en väg som förbinder platserna.</p>",
+  "output": "<p>På den första raden ska du skriva ut antalet noder som kan vara $Y$. Notera att detta tal kan vara $0$.</p>\n<p>På den andra raden ska du skriva ut samtliga noder som kan vara $Y$. Dessa ska skrivas ut separerade av blanksteg i <strong>ökande</strong> ordning.</p>",
+  "samples": [
+    {
+      "input": "6 6 2\n1 5\n1 2 1\n2 3 1\n3 4 1\n4 5 1\n5 6 1\n6 1 1\n",
+      "output": "4\n1 2 4 5\n"
+    },
+    {
+      "input": "4 3 3\n2 3 4\n1 2 3\n1 3 5\n1 4 4\n",
+      "output": "0\n\n"
+    },
+    {
+      "input": "7 9 2\n5 1\n2 3 3\n2 1 1\n3 1 2\n3 5 2\n1 4 1\n5 4 3\n5 6 5\n5 7 2\n6 7 1\n",
+      "output": "5\n1 2 5 6 7\n"
+    },
+    {
+      "input": "5 4 2\n2 4\n2 5 1\n2 1 1\n1 4 1\n4 3 1\n",
+      "output": "4\n2 3 4 5\n"
+    }
+  ],
+  "hint": "<p>I exempel $1$ är platserna $1,2,4,5$ möjliga mål för Waxel. För att komma till $2$ hade han kunnat ta vägen $5-6-1-2$.</p>\n<p>I exempel $2$ finns det ingen kortaste väg som passerar de givna noderna. Svaret är alltså $0$.</p>\n<p>I exempel $3$ finns det ganska många möjligheter. För att komma till $2$ hade Waxel t.ex. kunnat ta vägen $6-7-5-3-1-2$.</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2019, Programming Camp",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.75
+}

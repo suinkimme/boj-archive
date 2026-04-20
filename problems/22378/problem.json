@@ -1,0 +1,33 @@
+{
+  "id": 22378,
+  "title": "X-percent Blooming",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Spring is coming. Cherry blossom forecast is one of the things we feel spring is just around the corner. International Cherry-blossom Prediction Committee (ICPC) is an organization that announces the state of cherry blossoms every spring. Your task as a staff of the organization is to observe a specific cherry tree and evaluate the level of the blossom of the cherry tree.</p>\n<p>The tree that you observe can be considered as a graph tree. There is a root node with no parent node, and the other nodes have only one parent node. Let $d(v)$ be the minimum distance from node $v$ to the leaf nodes of the subtree of $v$. Here, a leaf node is a node that has no child nodes. Then a node $v$ blooms if $d(v) \\le O$ at the time you observe. On the other hand, at full blossom, a node $v$ blooms if $d(v) \\le F$. The level of cherry blossom is evaluated as the ratio of the numbers of blooming nodes at the time you observe and full blossom. More formally, let $b(x)$ be the number of nodes $v$ satisfying $d(v) \\le x$. The level of cherry blossom is defined as $b(O)/b(F)$.</p>\n<p>Note that the tree is also growing. When the tree grows, a new node is added to a node as a child node. So the number of nodes might be increased between your observations.</p>\n<p>Initially, the tree had only one node, which is the root node. You recorded the growth and observation time but forgot to record the level of cherry blossom on each observation. Now, your new task is to restore the data of the levels of cherry blossom from the given records.</p>\n<p>For Sample 1, the tree at the first observation looks like the figure below, where green border means a node is a leaf and pink circle means a node that blooms. The left tree represents a tree without blossom. The center tree represents blossom at the time you observe and the right tree represents full blossom.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 300px; height: 120px;\"/></p>\n<p style=\"text-align: center;\">Figure J-1. First observation of Sample 1</p>\n<p>Similarly, the following figure illustrates the second observation of Sample 1.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 340px; height: 196px;\"/></p>\n<p style=\"text-align: center;\">Figure J-2. Second observation of Sample 1</p>",
+  "input": "<p>The input consists of a single test case in the format below.</p>\n<blockquote>\n<p>$Q$ $O$ $F$</p>\n<p>$query_1$</p>\n<p>$\\vdots$</p>\n<p>$query_Q$</p>\n</blockquote>\n<p>The first line contains three integers $Q$ ($1 \\le Q \\le 10^5$), $O$ ($0 \\le O \\le 10^5$), $F$ ($O \\le F \\le 10^5$). $Q$ is the number of records you stored. $O$ is the threshold of distances to determine blooming nodes at the time you observe. $F$ is the threshold of distances to determine blooming nodes at full blossom. The $i$-th of the following $Q$ lines represents the $i$-th recorded event. An event is either of two types of events:</p>\n<ul>\n<li>Growth event: a new node is added as a child node of the $k_i$-th added node, where the root node is the $0$-th added node. For this type of event, $query_i$ is '$1$ $k_i$'.</li>\n<li>Observation event: evaluate the level of cherry blossom on the state of the tree at that time. For this type of event, $query_i$ is '$2$'. Note that whether each node bloomed in the past does not matter to the current observation. The node $v$ does not bloom even if $v$ bloomed in the past when the current $d(v) &gt; x$.</li>\n</ul>",
+  "output": "<p>For each observation event, output the level of cherry blossom per line in the order of the events. Absolute or relative errors less than $10^{-7}$ are permissible for each level.</p>",
+  "samples": [
+    {
+      "input": "11 1 2\n1 0\n1 0\n1 2\n1 3\n1 1\n2\n1 3\n1 0\n1 4\n1 8\n2\n",
+      "output": "0.6666666667\n0.8\n"
+    },
+    {
+      "input": "10 2 3\n1 0\n1 1\n2\n1 2\n1 3\n2\n1 4\n1 5\n1 0\n2\n",
+      "output": "1\n0.75\n0.83333333333333\n"
+    },
+    {
+      "input": "12 2 2\n1 0\n2\n1 1\n1 2\n2\n2\n1 0\n1 0\n1 0\n1 5\n1 6\n2\n",
+      "output": "1\n1\n1\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ICPC 2020 Asia Yokohama Regional 2020",
+  "level": 21,
+  "tags": [
+    "trees",
+    "hld"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2
+}

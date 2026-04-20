@@ -1,0 +1,37 @@
+{
+  "id": 32750,
+  "title": "익명M과 콜 사인",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>KPSC 부원인 캡틴은 2024/08/30, 도쿄에서 열리는 익명M의 콘서트에 참여하였다. 이 콘서트는 띄어쓰기로 구분된 특정 단어인 <strong>콜 사인</strong>으로 이루어진 <strong>세트</strong>를 외쳐 익명M을 응원하는 방식으로 이루어졌다. 이번 콘서트에서 사용된 세트는 다음과 같다.</p>\n<ul>\n<li>A 세트 : <strong>[se]</strong> no hai- hai- hai hai hai hai (u- hai) * n</li>\n<li>B 세트 : <strong>[mik-jjang]</strong> kawaii!</li>\n<li>C 세트 : <strong>[Are]</strong> you ready antena senku high!</li>\n<li>D 세트 : u- hai</li>\n<li>E 세트 : hai</li>\n</ul>\n<p>세트가 진행되면 위 세트 목록에 의하여 단어를 순서대로 부른다. 이때 단어들을 콜 사인이라고 부른다. A, B, C 세트에서 대괄호 안에 있는 콜 사인은 <strong>리드</strong>로 단순히 크게 부르는 콜 사인을 의미한다. 또한, 이 응원법은 다음과 같은 규칙을 가지고 있다.</p>\n<ul>\n<li>콘서트 처음에는 세트가 진행 중이지 않은 상태로 시작한다.</li>\n<li>세트가 진행 중이라면\n\t<ul>\n<li>진행 중인 세트가 종료되기 전에 세트의 일부가 생략되거나 세트가 끊기는 경우는 없다.</li>\n<li>진행 중에 잡음(다른 단어)이 들어갈 수 있으며, 이는 현재 진행 중인 세트의 일부로 보지 않고 생략한다.\n\t\t<ul>\n<li>잡음에는 각 세트의 첫 콜 사인을 제외한 아무 단어가 올 수 있다.</li>\n</ul>\n</li>\n<li>진행 중인 세트가 A 세트가 아니라면\n\t\t<ul>\n<li>진행 중인 세트의 마지막 콜 사인 단어를 부른다면 현재 진행 중인 세트는 종료된다.</li>\n</ul>\n</li>\n<li>진행 중인 세트가 A 세트라면\n\t\t<ul>\n<li>A 세트에서 \"(u- hai) * n\" 콜 사인은 u- hai 콜 사인을 1회 이상 반복하는 것이다. 가능한 최대 횟수만큼 반복한다.\n\t\t\t<ul>\n<li>D, E 세트로 진행하지 않음에 유의한다.</li>\n</ul>\n</li>\n<li>A 세트 진행 중에 \"(u- hai) * n\"의 hai 이후로 D 세트를 제외한 다른 세트의 첫 콜 사인 단어를 부른다면 현재 진행 중인 A 세트는 종료된다.\n\t\t\t<ul>\n<li>A 세트가 종료됨과 동시에 다른 세트가 시작됨을 유의한다.</li>\n</ul>\n</li>\n<li>A 세트 진행 중에 \"(u- hai) * n\"의 hai 이후로 콘서트가 끝난다면 A 세트는 종료된다.</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>세트가 진행 중이 아니라면\n\t<ul>\n<li>어떤 세트의 첫 콜 사인을 부른다면, 그 세트를 진행한다.</li>\n<li>그 이외의 단어인 경우 잡음으로 보며 생략한다.</li>\n</ul>\n</li>\n</ul>\n<p>콘서트가 끝나고 리드를 부른 횟수와 세트가 종료된 횟수가 궁금해진 캡틴은, 녹음해 둔 녹음본을 이용해서 횟수를 세어보고자 했지만 잡음으로 쉽지 않았다. 캡틴을 도와 잡음이 섞인 녹음본이 문자열로 주어졌을 때, 리드를 부른 횟수와 세트가 종료된 횟수를 출력하라.</p>",
+  "input": "<p>첫 번째 줄에 문자열 $S$가 주어진다. 문자열 $S$는 알파벳 대소문자와 공백(\"<span style=\"color:#e74c3c;\"><code> </code></span>\"), 특수 문자 \"<span style=\"color:#e74c3c;\"><code>!</code></span>\", \"<span style=\"color:#e74c3c;\"><code>-</code></span>\"로 구성되어 있다. 공백은 연속으로 두 번 이상 주어지지 않는다.</p>",
+  "output": "<p>첫 번째 줄에 리드를 부른 횟수와 세트가 종료된 횟수를 공백으로 구분하여 출력한다.</p>",
+  "samples": [
+    {
+      "input": "Monsters u- hai might u- hai be a scary foe to fight\n",
+      "output": "0 2\n"
+    },
+    {
+      "input": "Are you ready antena senku high! Wanna shinshou kou nekkyou e meimei Friday Night!\n",
+      "output": "1 1\n"
+    },
+    {
+      "input": "kobamu you ni se saketa no kimi hai- wa hai- naze hai naiteru hai no hai hai u- obienagara hai u- motometeita hai\n",
+      "output": "1 1\n"
+    },
+    {
+      "input": "hai- hai- hai hai hai hai u- hai u hai\n",
+      "output": "0 6\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, Centroid 연합, 2024 국민대학교 & 중앙대학교 연합 프로그래밍 경진대회 연습 세션, captain6700, halin, nflight11, oh040411, playsworld16, saywoo, sjhi00, tlsdydaud1, utilforever, wapas, yyyy7089",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 39,
+  "submission_count": null,
+  "average_tries": 2.5641000270843506
+}

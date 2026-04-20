@@ -1,0 +1,30 @@
+{
+  "id": 27614,
+  "title": "It's About Time",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Greg Orian works for the Temporal Innovations for Multiple Earths (TIME) program.  One of his main jobs is determining yearly calendars for the numerous human colonies on various planets (did we mention this problem takes place in $2123$?).  One issue when creating calendars is the schedule for leap days.  On GoE (Good ol' Earth) the rules for leap years are the following:</p>\n<ol>\n<li>Any year divisible by $4$ is a leap year, unless</li>\n<li>the year is divisible by $100$ in which case the year is not a leap year, unless</li>\n<li>the year is divisible by $400$ in which case the year is a leap year.</li>\n</ol>\n<p>Leap days are needed since the $365$ days in the calendar year is not exactly equal to the time for GoE to orbit the sun, which is more like $365.24219$ days (known as the <em>tropical\\/</em> year).  This system does a good job in closely approximating the tropical year while also being fairly simple to remember.</p>\n<p>While this works fine for GoE, it obviously won't work for planets with different tropical years.  The colonists have enough to adjust to already (lower oxygen levels, colonial in-fighting, people-eating plants, etc.) so Greg wants to come up with rules that are similar to the ones for GoE.  He's hit on the following scheme for finding three values $n_1$, $n_2$ and $n_3$ for determining when a year is a leap year:</p>\n<ol>\n<li>The number of days $d$ in a non-leap year is the number of days in a tropical year, rounded to the nearest integer. If the fractional number of days is exactly $0.5$, round the number of days up.</li>\n<li>If you rounded the tropical year down then\n\t<ol style=\"list-style-type: lower-alpha;\">\n<li>every year divisible by $n_1 &gt; 1$ is a leap year (i.e., you add $1$ day that year), unless</li>\n<li>the year is divisible by $n_2$ (where $n_1 &lt; n_2$ and $n_2$ is a multiple of $n_1$) in which case the year is not a leap year, unless</li>\n<li>the year is divisible by $n_3$ (where $n_2 &lt; n_3 \\leq 1\\,000$ and $n_3$ is a multiple of $n_2$) in which case the year is a leap year.</li>\n</ol>\n</li>\n<li>If you rounded the tropical year up then the same rules apply except that you subtract $1$ day from leap years instead of adding $1$ (would these be leak years?).</li>\n</ol>\n<p>For GoE these numbers would be $d = 365, n_1=4, n_2=100$ and $n_3=400$. Given the distance a planet is from its sun (we'll assume a circular orbit), the speed the planet travels around its sun and the number of hours in the planet's day determine the $n_i$ values above to best approximate that planet's year. Note that the best approximation may overestimate or underestimate the actual tropical year length, regardless of the direction of rounding.</p>",
+  "input": "<p>Input contains a single line with three positive integers $r$ $s$ $h$ where $r \\leq 1\\,000\\,000\\,000$ is the distance in miles of the planet from the sun, $s \\leq 1\\,000\\,000$ is the speed the planet travels in miles/hour, and $h \\leq 1\\,000$ is the number of hours in the planet's day. The length of a tropical year is guaranteed to be at least one day ($h$ hours) in length.</p>",
+  "output": "<p>Output the values $n_1$ $n_2$ $n_3$ as described above. It there are multiple values that give the same best approximation, then output any of them.</p>",
+  "samples": [
+    {
+      "input": "92998938 66660 24\n",
+      "output": "4 100 400\n"
+    },
+    {
+      "input": "92998938 66660 25\n",
+      "output": "2 6 30\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2022-2023 East Central Regional Contest",
+  "level": 11,
+  "tags": [
+    "math",
+    "bruteforcing",
+    "arbitrary_precision"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 2.9375
+}

@@ -1,0 +1,26 @@
+{
+  "id": 9976,
+  "title": "Blue Gene, Jr.",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Inspired by IBM's Blue Gene project, the CEO of Universal Biological Machinery (UBM), has called on you, UBM's top software engineer, to develop a program that will calculate the mutation of the Areopagusvirus, a virus discovered on Mars by your company's privately-subsidized (top-secret) space program.</p>",
+  "input": "<p>Input to this problem will consist of a (non-empty) series of up to 100 data sets. Each data set will be formatted according to the following description, and there will be no blank lines separating data sets.</p>\n<p>A single data set has 3 components:</p>\n<ol>\n<li>Start line - A single line, “START N”, where 1 &lt;= N &lt;= 20.</li>\n<li>Viral code - A sequence of N alphanumeric characters. Alphanumeric characters will consist of an uppercase letter (A-Z) or a digit (0-9).</li>\n<li>End line - A single line, “END”</li>\n</ol>\n<p>Following the final data set will be a single line, “ENDOFINPUT”.</p>",
+  "output": "<p>For each data set, there will be exactly one output set, and there will be no blank lines separating output sets.</p>\n<p>A single output set consists of a single line of the viral code after it has stabilized (through mutating). The viral code will mutate according to the following rules:</p>\n<ol>\n<li>Initially the first viral segment to mutate begins with the first alphanumeric character of the viral code and ends with the rightmost alphanumeric character of the code.</li>\n<li>If the first alphanumeric character of a viral segment is a letter (A-Z), that alphanumeric character is considered \"unstable\", and will mutate into n, where n is the number of mutations that occur to the viral segment immediately to the unstable alphanumeric character's right (see #5), unless n is greater than 9, in which case the unstable alphanumeric character will mutate into n % 10. Also, if there is no viral segment immediately to the right of the unstable alphanumeric character, the unstable alphanumeric character will mutate into 0.</li>\n<li>If the first alphanumeric character of a viral segment, n, is a positive number (1-9), that alphanumeric character is also considered \"unstable\", and will mutate into n-1. It also causes the viral segment beginning with the alphanumeric character n alphanumeric characters to its right and ending with the rightmost alphanumeric character of the viral code to mutate. If there is no alphanumeric character n alphanumeric characters to its right, then the viral segment immediately to its right (see #5), if one exists, will mutate.</li>\n<li>If the first alphanumeric character of a viral segment is 0, that alphanumeric character is considered \"stable\", and will not mutate (the alphanumeric character will remain a 0 and a mutation will not be considered to have occurred).</li>\n<li>A viral segment immediately to the right of an alphanumeric character begins with the alphanumeric character one position to its right and ending with the rightmost alphanumeric character of the viral code.</li>\n</ol>",
+  "samples": [
+    {
+      "input": "START 1\nA\nEND\nSTART 4\nA1B2\nEND\nSTART 15\nA3B2CCC4AD1232R\nEND\nSTART 15\n0ABCDEFGHIJKLMN\nEND\nSTART 11\nABCDEFGHIJK\nEND\nSTART 10\n9AAAAAAAAA\nEND\nENDOFINPUT\n",
+      "output": "0\n3011\n82B26543AD11310\n0ABCDEFGHIJKLMN\n09876543210\n8AAAAAAAA0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 2002 South Central USA Regional Programming Contest",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "recursion",
+    "string"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

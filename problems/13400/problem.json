@@ -1,0 +1,37 @@
+{
+  "id": 13400,
+  "title": "Quality of Check Digits",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The small city where you live plans to introduce a new social security number (SSN) system. Each citizen will be identified by a five-digit SSN. Its first four digits indicate the basic ID number (0000–9999) and the last one digit is a check digit for detecting errors.</p>\n<p>For computing check digits, the city has decided to use an operation table. An operation table is a 10 × 10 table of decimal digits whose diagonal elements are all 0. Below are two example operation tables.</p>\n<p>Operation Table 1</p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:203px; width:265px\"/></p>\n<p>Operation Table 2</p>\n<p><img alt=\"\" src=\"2.png\" style=\"height:206px; width:265px\"/></p>\n<p>Using an operation table, the check digit e for a four-digit basic ID number abcd is computed by using the following formula. Here, i ⊗ j denotes the table element at row i and column j.</p>\n<p style=\"text-align:center\">e = (((0 ⊗ a) ⊗ b) ⊗ c) ⊗ d</p>\n<p>For example, by using Operation Table 1 the check digit e for a basic ID number abcd = 2016 is computed in the following way.</p>\n<p style=\"text-align:center\">e = (((0 ⊗ 2) ⊗ 0) ⊗ 1) ⊗ 6 = (( 1 ⊗ 0) ⊗ 1) ⊗ 6 = ( 7 ⊗ 1) ⊗ 6 = 9 ⊗ 6 = 6                                 </p>\n<p>Thus, the SSN is 20166.</p>\n<p>Note that the check digit depends on the operation table used. With Operation Table 2, we have e = 3 for the same basic ID number 2016, and the whole SSN will be 20163.</p>\n<p><img alt=\"\" src=\"3.png\" style=\"height:225px; width:600px\"/></p>\n<p>Figure B.1. Two kinds of common human errors</p>\n<p>The purpose of adding the check digit is to detect human errors in writing/typing SSNs. The following check function can detect certain human errors. For a five-digit number abcde, the check function is defined as follows.</p>\n<p style=\"text-align:center\">check(abcde) = ((((0 ⊗ a) ⊗ b) ⊗ c) ⊗ d) ⊗ e</p>\n<p>This function returns 0 for a correct SSN. This is because every diagonal element in an operation table is 0 and for a correct SSN we have e = (((0 ⊗ a) ⊗ b) ⊗ c) ⊗ d:</p>\n<p style=\"text-align:center\">check(abcde) = ((((0 ⊗ a) ⊗ b) ⊗ c) ⊗ d) ⊗ e = e ⊗ e = 0.</p>\n<p>On the other hand, a non-zero value returned by check indicates that the given number cannot be a correct SSN. Note that, depending on the operation table used, check function may return 0 for an incorrect SSN. Kinds of errors detected depends on the operation table used; the table decides the quality of error detection.</p>\n<p>The city authority wants to detect two kinds of common human errors on digit sequences: altering one single digit and transposing two adjacent digits, as shown in Figure B.1.</p>\n<p>An operation table is good if it can detect all the common errors of the two kinds on all SSNs made from four-digit basic ID numbers 0000–9999. Note that errors with the check digit, as well as with four basic ID digits, should be detected. For example, Operation Table 1 is good. Operation Table 2 is not good because, for 20613, which is a number obtained by transposing the 3rd and the 4th digits of a correct SSN 20163, check(20613) is 0. Actually, among 10000 basic ID numbers, Operation Table 2 cannot detect one or more common errors for as many as 3439 basic ID numbers.</p>\n<p>Given an operation table, decide how good it is by counting the number of basic ID numbers for which the given table cannot detect one or more common errors.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\nx<sub>00</sub> x<sub>01</sub> · · · x<sub>09</sub>\n.\n.\n.\nx<sub>90</sub> x<sub>91</sub> · · · x<sub>99</sub></pre>\n<p>The input describes an operation table with x<sub>ij</sub> being the decimal digit at row i and column j. Each line corresponds to a row of the table, in which elements are separated by a single space. The diagonal elements x<sub>ii</sub> (i = 0, . . . , 9) are always 0.</p>",
+  "output": "<p>Output the number of basic ID numbers for which the given table cannot detect one or more common human errors.</p>",
+  "samples": [
+    {
+      "input": "0 3 1 7 5 9 8 6 4 2\n7 0 9 2 1 5 4 8 6 3\n4 2 0 6 8 7 1 3 5 9\n1 7 5 0 9 8 3 4 2 6\n6 1 2 3 0 4 5 9 7 8\n3 6 7 4 2 0 9 5 8 1\n5 8 6 9 7 2 0 1 3 4\n8 9 4 5 3 6 2 0 1 7\n9 4 3 8 6 1 7 2 0 5\n2 5 8 1 4 3 6 7 9 0\n",
+      "output": "0\n"
+    },
+    {
+      "input": "0 1 2 3 4 5 6 7 8 9\n9 0 1 2 3 4 5 6 7 8\n8 9 0 1 2 3 4 5 6 7\n7 8 9 0 1 2 3 4 5 6\n6 7 8 9 0 1 2 3 4 5\n5 6 7 8 9 0 1 2 3 4\n4 5 6 7 8 9 0 1 2 3\n3 4 5 6 7 8 9 0 1 2\n2 3 4 5 6 7 8 9 0 1\n1 2 3 4 5 6 7 8 9 0\n",
+      "output": "3439\n"
+    },
+    {
+      "input": "0 9 8 7 6 5 4 3 2 1\n1 0 9 8 7 6 5 4 3 2\n2 1 0 9 8 7 6 5 4 3\n3 2 1 0 9 8 7 6 5 4\n4 3 2 1 0 9 8 7 6 5\n5 4 3 2 1 0 9 8 7 6\n6 5 4 3 2 1 0 9 8 7\n7 6 5 4 3 2 1 0 9 8\n8 7 6 5 4 3 2 1 0 9\n9 8 7 6 5 4 3 2 1 0\n",
+      "output": "9995\n"
+    },
+    {
+      "input": "0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0\n",
+      "output": "10000\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2016 in Tsukuba, Camp, Petrozavodsk Programming Camp, Winter 2017, Day 8: Japanese Contest",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 73,
+  "submission_count": null,
+  "average_tries": 1.4110000133514404
+}

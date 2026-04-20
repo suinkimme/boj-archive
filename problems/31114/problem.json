@@ -1,0 +1,28 @@
+{
+  "id": 31114,
+  "title": "Game Theory",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>For a string $s_1\\dots s_n$ of $n$ bits (i.e., zeros and ones), Bobo computes the $f$-value of $s_1\\dots s_n$ by playing the following game.</p>\n<ul>\n<li>If all the bits are zero, the game ends.</li>\n<li>If there are $k$ ones in the bit string, Bobo flips the $k$-th bit, i.e., $s_k$.</li>\n<li>The $f$-value of the bit string is the number of flips Bobo has performed before the game ends.</li>\n</ul>\n<p>Formally,</p>\n<ul>\n<li>If $s_1 = \\dots = s_n = 0$, $f(s_1 \\dots s_n) = 0$.</li>\n<li>Otherwise, assuming that $k = s_1 + \\dots + s_n$, $f(s_1 \\dots s_n) = f(s_1 \\dots s_{k - 1} \\overline{s_k} s_{k + 1} \\dots s_n) + 1$ where $\\overline{c}$ denotes the flip of the bit $c$ such as $\\overline{0} = 1$ and $\\overline{1} = 0$.</li>\n</ul>\n<p>Now, Bobo has a bit string $s_1 \\dots s_n$ subjecting to $q$ changes, where the $i$-th change is to flip all the bits among $s_{l_i} \\dots s_{r_i}$ for given $l_i$, $r_i$. Find the $f$-value modulo $998244353$ of the bit string after each change.</p>",
+  "input": "<p>The input consists of several test cases terminated by end-of-file. For each test case,</p>\n<p>The first line contains two integers $n$ and $q$.</p>\n<p>The second line contains $n$ bits $s_1 \\dots s_n$.</p>\n<p>For the following $q$ lines, the $i$-th line contains two integers $l_i$ and  $r_i$.</p>",
+  "output": "<p>For each change, output an integer which denotes the $f$-value modulo $998244353$.</p>",
+  "samples": [
+    {
+      "input": "3 2\n010\n1 2\n2 3\n5 1\n00000\n1 5\n",
+      "output": "1\n3\n5\n"
+    }
+  ],
+  "hint": "<p>For the first test case, the string becomes \"<code>100</code>\" after the first change. $f($<code>100</code>$) = f($<code>000</code>$) + 1 = 1$. And it becomes \"<code>111</code>\" after the second change. $f($<code>111</code>$) = f($<code>110</code>$) + 1 = f($<code>100</code>$) + 2 = f($<code>000</code>$) + 3 = 3$.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 18: Grand Prix of Beijing",
+  "level": 23,
+  "tags": [
+    "ad_hoc",
+    "data_structures",
+    "lazyprop",
+    "math",
+    "segtree"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 5.199999809265137
+}

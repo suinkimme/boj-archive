@@ -1,0 +1,33 @@
+{
+  "id": 24891,
+  "title": "단어 마방진",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>$L \\times L$행렬에 $L^2$개의 알파벳을 적어 가로로 읽었을 때와 세로로 읽었을 때 얻는 단어들과 그 순서가 서로 같은 경우 우리는 이러한 행렬을 단어 마방진이라고 부른다.</p>\n<p>예를 들어, 다음 행렬은 $5 \\times 5$ 단어 마방진이다.</p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 100px;\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">H</td>\n<td style=\"text-align: center;\">E</td>\n<td style=\"text-align: center;\">A</td>\n<td style=\"text-align: center;\">R</td>\n<td style=\"text-align: center;\">T</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">E</td>\n<td style=\"text-align: center;\">M</td>\n<td style=\"text-align: center;\">B</td>\n<td style=\"text-align: center;\">E</td>\n<td style=\"text-align: center;\">R</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">A</td>\n<td style=\"text-align: center;\">B</td>\n<td style=\"text-align: center;\">U</td>\n<td style=\"text-align: center;\">S</td>\n<td style=\"text-align: center;\">E</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">R</td>\n<td style=\"text-align: center;\">E</td>\n<td style=\"text-align: center;\">S</td>\n<td style=\"text-align: center;\">I</td>\n<td style=\"text-align: center;\">N</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">T</td>\n<td style=\"text-align: center;\">R</td>\n<td style=\"text-align: center;\">E</td>\n<td style=\"text-align: center;\">N</td>\n<td style=\"text-align: center;\">D</td>\n</tr>\n</tbody>\n</table>\n<p>인규는 길이가 $L$인 단어 $N$개가 주어졌을 때, 여기서 $L$개를 골라 크기가 $L \\times L$인 단어 마방진을 만들려고 한다. 하지만 인규는 곧 입대를 해야 해서 이 문제를 해결할 수 없었다. 인규를 위해 단어 마방진을 만드는 프로그램을 작성하시오.</p>",
+  "input": "<p>첫째 줄에 단어의 길이 $L(2 \\le L \\le 5)$, 단어의 개수 $N(L \\le N \\le 20)$이 주어진다.</p>\n<p>둘째 줄부터 $N$개의 줄에는 길이가 $L$인 단어가 한 줄에 하나씩 주어진다. 모든 단어는 알파벳 대문자로 이루어져 있으며, 같은 단어가 여러 번 주어질 수 있다.</p>",
+  "output": "<p>단어 마방진을 출력한다. 만들 수 있는 단어 마방진이 여러 개인 경우, 사전 순으로 가장 빠른 단어 마방진을 출력한다.</p>\n<p>어떤 경우에도 단어 마방진을 만들 수 없는 경우 \"NONE\"을 따옴표를 제외하고 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 5\nHEART\nEMBER\nABUSE\nRESIN\nTREND\n",
+      "output": "HEART\nEMBER\nABUSE\nRESIN\nTREND\n"
+    },
+    {
+      "input": "5 8\nAAAAA\nAAAAA\nBBBBB\nCCCCC\nDDDDD\nEEEEE\nFFFFF\nGGGGG\n",
+      "output": "NONE\n"
+    },
+    {
+      "input": "5 10\nAAAAA\nAAAAA\nAAAAA\nAAAAA\nAAAAA\nBBBBB\nBBBBB\nBBBBB\nBBBBB\nBBBBB\n",
+      "output": "AAAAA\nAAAAA\nAAAAA\nAAAAA\nAAAAA\n"
+    }
+  ],
+  "hint": "<p>단어 마방진의 정렬 순서는 마방진에 적힌 모든 문자를 순서대로 이어 만든 하나의 문자열의 정렬 순서와 같다.</p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 100px;\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">A</td>\n<td style=\"text-align: center;\">C</td>\n<td style=\"text-align: center;\"> </td>\n<td style=\"text-align: center;\">A</td>\n<td style=\"text-align: center;\">B</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">C</td>\n<td style=\"text-align: center;\">A</td>\n<td style=\"text-align: center;\"> </td>\n<td style=\"text-align: center;\">B</td>\n<td style=\"text-align: center;\">A</td>\n</tr>\n</tbody>\n</table>\n<p>위 두 마방진의 경우, 각각 ACCA, ABBA의 정렬 순서와 같으므로 아래와 같이 정렬된다.</p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 100px;\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\">A</td>\n<td style=\"text-align: center;\">B</td>\n<td style=\"text-align: center;\"> </td>\n<td style=\"text-align: center;\">A</td>\n<td style=\"text-align: center;\">C</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">B</td>\n<td style=\"text-align: center;\">A</td>\n<td style=\"text-align: center;\"> </td>\n<td style=\"text-align: center;\">C</td>\n<td style=\"text-align: center;\">A</td>\n</tr>\n</tbody>\n</table>",
+  "source": "Camp, 숭고한 연합 Algorithm Camp, 2022 숭고한 연합 알고리즘 콘테스트, Division 1, Camp, 숭고한 연합 Algorithm Camp, 2022 숭고한 연합 알고리즘 콘테스트, Division 3, ingyu1008, ahgus89, cgiosy, chunghan, jhnah917, knon0501",
+  "level": 11,
+  "tags": [
+    "bruteforcing",
+    "backtracking"
+  ],
+  "accepted_user_count": 268,
+  "submission_count": null,
+  "average_tries": 2.753700017929077
+}

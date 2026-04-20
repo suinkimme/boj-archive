@@ -1,0 +1,24 @@
+{
+  "id": 11342,
+  "title": "Frame by Frame",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In this problem you will have to decide the final score of a game of bowling. A game of bowling has 10 frames. The tenth frame works in a slightly different way than the first 9.</p>\n<p>For the first 9 frames, each will consist of 1 or 2 rolls. You will be presented with 10 pins. If you hit all 10 pins in the first roll you make a “strike”, and the frame is over. Otherwise you have a second roll to hit the remaining pins. If you hit all remaining pins you score a “spare”; otherwise you have an “open frame”. The number of points an open frame gives is simply the total number of pins you hit. A spare gives 10 points plus the number of pins hit on your next roll (in the next frame). A strike gives 10 points plus the number of pins hit on the next two rolls (in the next frame, or possibly the next two frames if you hit a strike in the next roll).</p>\n<p>The last frame consists of 2 or 3 rolls. The way it works can be explained as:</p>\n<ul>\n<li>10 pins are presented</li>\n<li>If you hit all 10 pins, you score a strike (10 points), and 10 pins are presented again:\n\t<ul>\n<li>If you hit all 10 pins again, you score a new strike, and 10 pins are presented again, for the last time.\n\t\t<ul>\n<li>If you hit 10 pins again, you score one more strike. (1)</li>\n<li>If you hit fewer than 10 pins, you score that number of pins. (2)</li>\n</ul>\n</li>\n<li>If you hit fewer than 10 pins, you score that number of points and the remaining pins are presented.\n\t\t<ul>\n<li>If you hit all remaining pins, you score a spare (10 points). (3)</li>\n<li>If you hit fewer than that, you score that many pins. (4)</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>If you hit fewer than 10 pins on the first roll, the remaining pins are presented.\n\t<ul>\n<li>If you hit all remaining pins, you score a spare and 10 pins are presented again.\n\t\t<ul>\n<li>If you hit all 10 pins on the third roll, you score a strike. (5)</li>\n<li>If you hit fewer than 10 pins, you score as many points as pins hit. (6)</li>\n</ul>\n</li>\n<li>If you hit fewer than the remaining pins, you score the number of pins hit in both rolls. (7)</li>\n</ul>\n</li>\n</ul>\n<p>Note that the number of points in the last frame is the total number of pins hit in all rolls.</p>\n<p>Your job is to compute the total score for a game of bowling given the scores for each of ten frames. A strike is represented by an “X”, a spare is represented by the number of pins hit in the first roll followed by a slash (“/”) and an open frame is represented by 2 numbers: the number of pins hit in each roll. Similarly, the tenth frame is represented either as: (1) “X X X”, or (2) “X X a”, or (3) “X a /” or (4) “X a b” or (5) “a / X” or (6) “a / b” or (7) “a b”, where a and b are numbers.</p>",
+  "input": "<p>Your program must read the notated scores for each of a set of games (preceded by the number of games) and compute the total scores. Note that the frames are not delimited in any way---it’s your job to figure out if a frame has one, two, or three rolls.</p>",
+  "output": "<p>Print the total scores.</p>",
+  "samples": [
+    {
+      "input": "3\n2 6 5 0 4 4 0 9 3 4 8 1 1 4 3 2 5 4 6 1\n3 / 4 4 X 5 3 9 0 1 / X 8 / 7 2 X 4 3\n8 1 X X 3 / 4 5 1 / X X 3 / 4 / 8\n",
+      "output": "72\n140\n170\n"
+    }
+  ],
+  "hint": "<p>For the third input the game went like this:</p>\n<table class=\"table table-bordered\" style=\"width:40%\">\n<thead>\n<tr>\n<th>Frame</th>\n<th>Notation</th>\n<th>Points</th>\n<th>Total</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td><code>8 1</code></td>\n<td>8 + 1 = 9</td>\n<td>9</td>\n</tr>\n<tr>\n<td>2</td>\n<td><code>X</code></td>\n<td>10 + 10 + 3 = 23</td>\n<td>32</td>\n</tr>\n<tr>\n<td>3</td>\n<td><code>X</code></td>\n<td>10 + 3 + 7 = 20</td>\n<td>52</td>\n</tr>\n<tr>\n<td>4</td>\n<td><code>3 /</code></td>\n<td>10 + 4 = 14</td>\n<td>66</td>\n</tr>\n<tr>\n<td>5</td>\n<td><code>4 5</code></td>\n<td>4 + 5 = 9</td>\n<td>75</td>\n</tr>\n<tr>\n<td>6</td>\n<td><code>1 /</code></td>\n<td>10 + 10 = 20</td>\n<td>95</td>\n</tr>\n<tr>\n<td>7</td>\n<td><code>X</code></td>\n<td>10 + 10 + 3 = 23</td>\n<td>118</td>\n</tr>\n<tr>\n<td>8</td>\n<td><code>X</code></td>\n<td>10 + 3 + 7 = 20</td>\n<td>138</td>\n</tr>\n<tr>\n<td>9</td>\n<td><code>3 /</code></td>\n<td>10 + 4 = 14</td>\n<td>152</td>\n</tr>\n<tr>\n<td>10</td>\n<td><code>4 / 8</code></td>\n<td>4 + 6 + 8 = 18</td>\n<td>170</td>\n</tr>\n</tbody>\n</table>",
+  "source": "School, Cornell University High School Programming Contest, 2nd Annual Cornell University High School Programming Contest",
+  "level": 11,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 1.3824000358581543
+}

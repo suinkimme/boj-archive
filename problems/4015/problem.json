@@ -1,0 +1,29 @@
+{
+  "id": 4015,
+  "title": "DNA",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>컴퓨터를 이용하여 해결하는 흥미로운 작업 중 하나는 DNA 서열과 같은 생물학적인 자료를 분석하는 것이다. 하나의 DNA 가닥은 뉴클레오티드인 아데닌, 사이토신, 구아닌, 티민으로 이루어진 체인이다. 이들 네 개의 뉴클레오티드는 각각 <code>A</code>, <code>C</code>, <code>G</code>, <code>T</code> 로 나타낸다. 따라서 DNA 가닥은 이들 네 문자의 문자열로 표현될 수 있다. 이 문자열을 DNA 서열이라 부른다.</p>\n<p>DNA 가닥의 어떤 위치에 있는 뉴클레오티드가 정확하게 무엇인지 결정할 수 없는 경우가 있다. 이러한 경우, 이 가닥의 DNA 서열의 미확인 뉴클레오티드를 나타내는데 문자 <code>N</code> 을 사용한다. 달리 말하면, <code>N</code> 은 <code>A</code>, <code>C</code>, <code>G</code>, <code>T</code> 중 임의의 문자 하나를 위한 와일드카드 문자이다. 한 개 이상의 <code>N</code> 이 있는 DNA 서열을 불완전서열이라 부르고, 그렇지 않은 문자열을 완전서열이라 부른다. 불완전서열에 있는 <code>N</code> 각각에 대하여 이를 네 개의 뉴클레오티드 중 하나로 대체하여 완전서열을 얻을 수 있으면, 이 완전서열을 주어진 불완전서열과 일치한다고 말한다. 예를 들어, <code>ACCCT</code> 는 <code>ACNNT</code> 과 일치하지만 <code>AGGAT</code> 는 일치하지 않는다.</p>\n<p>연구자들은 네 개의 뉴클레오티드를 다음과 같이 영문자 순서대로 순서를 정한다: <code>A</code> 는 <code>C</code> 보다 앞에 나오고, <code>C</code> 는 <code>G</code> 보다 앞에 나오고, <code>G</code> 는 <code>T</code> 보다 앞에 나온다. DNA 서열에서 각 뉴클레오티드가 오른쪽 옆에 있는 뉴클레오티드와 같든지 혹은 오른쪽 옆에 있는 뉴클레오티드보다 이전 순서의 문자이면, 이 서열은 형태-1 로 분류된다. 예를 들어, <code>AACCGT</code> 는 형태-1 이지만 <code>AACGTC</code> 는 아니다.</p>\n<p>일반적으로 형태-j 서열은 다음과 같이 정의된다: 이 서열이 형태-(j-1)이든지 혹은 어떤 형태-(j-1) 서열 하나와 어떤 형태-1 서열 하나를 연결한 것이면 이를 형태-j 서열이라 한다. 예를 들어, <code>AACCC</code>, <code>ACACC</code> 와 <code>ACACA</code> 는 형태-3 서열이지만, <code>GCACAC</code> 와 <code>ACACACA</code> 는 형태-3 서열이 아니다. </p>\n<p>연구자들은 사전에 단어들을 나열하는 순서인 사전식 순서대로 DNA 서열들의 순서를 정한다. 따라서 길이 5 인 형태-3 서열들 중 첫 번째 순서의 서열은 <code>AAAAA</code> 이고 마지막 순서의 서열은 <code>TTTTT</code> 이다. 다른 예로 불완전 서열 <code>ACANNCNNG</code> 를 고려해보자. 이 불완전서열과 일치하는 형태-3 서열들 중 첫 번째부터 순서대로 7 개를 나열하면 다음과 같다:</p>\n<p style=\"text-align: center;\"><code>ACA<u>AA</u>C<u>AA</u>G ACA<u>AA</u>C<u>AC</u>G ACA<u>AA</u>C<u>AG</u>G ACA<u>AA</u>C<u>CA</u>G ACA<u>AA</u>C<u>CC</u>G ACA<u>AA</u>C<u>CG</u>G ACA<u>AA</u>C<u>CT</u>G</code></p>\n<p>길이 M 인 불완전 서열과 일치하는 문자들 중 R 번째 순서의 형태-K 서열을 찾는 프로그램을 작성하시오.</p>",
+  "input": "<p>첫 번째 줄에 세 개의 정수가 빈칸 하나를 사이에 두고 주어진다: M(1≤M≤50,000), K(1≤K≤10)과 R(1≤R≤2x10<sup>12</sup>). 두 번째 줄에 불완전서열인 길이 M 의 문자열이 주어진다. 불완전서열과 일치하는 형태-K 서열의 개수는 4x10<sup>18</sup> 이하이다. 그러므로 이것은 C 나 C++에서 long long 으로 나타낼 수 있고 Pascal 에서는 Int64 로 나타낼 수 있다. 또한 R 은 주어진 불완전서열과 일치하는 형태-K 서열의 개수보다 같거나 작다.</p>",
+  "output": "<p>입력으로 주어진 불완전서열과 일치하는 형태-K 서열들 중 R 번째 것을 첫 번째 줄에 출력하시오.</p>",
+  "samples": [
+    {
+      "input": "9 3 5\nACANNCNNG\n",
+      "output": "ACAAACCCG\n"
+    },
+    {
+      "input": "5 4 10\nACANN\n",
+      "output": "ACAGC\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Asia-Pacific Informatics Olympiad, APIO 2008, chpark1111, grace0068",
+  "level": 16,
+  "tags": [
+    "dp",
+    "string"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 1.5925999879837036
+}

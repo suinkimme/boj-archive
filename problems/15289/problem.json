@@ -1,0 +1,28 @@
+{
+  "id": 15289,
+  "title": "The Great Wall",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Recently you had become an emperor of a small country of Sinai. You had decided to build a big wall at the border to save your country from barbarian raids. You had contacted “W Corp”, the only company in the world that builds non-penetrable walls.</p>\n<p>“W Corp” builds each wall using the same pattern. The length of the wall is n meters. Each one-meter piece of the wall is numbered by an integer from 1 to n along its length and may have a different height. The height pattern is based on three fixed arrays a, b, and c of n elements each, such that a<sub>i</sub> &lt; b<sub>i</sub> &lt; c<sub>i</sub> for all 1 ≤ i ≤ n, and an integer r (1 ≤ r &lt; n). These arrays and r are the same for any wall that is built by “W Corp”.</p>\n<p>The choice of the specific wall design is determined by two distinct integers x and y (1 ≤ x &lt; y ≤ n−r+1) in the following way. Take two ranges of integers: [x, x+r−1] and [y, y+r−1] (these ranges are inclusive of their ends). Then the height of the wall at one meter piece i for all 1 ≤ i ≤ n is equal to:</p>\n<ul>\n<li>a<sub>i</sub> if i does not belong to any of the chosen ranges;</li>\n<li>b<sub>i</sub> if i belongs to exactly one chosen range;</li>\n<li>c<sub>i</sub> if i belongs to both chosen ranges.</li>\n</ul>\n<p>A strength of a wall is defined as the sum of all heights of its n one meter pieces.</p>\n<p>The arrays a, b, c, and an integer r are the same for any wall built by “W Corp”, so the company provides a price list with all the possible wall designs, sorted in non-decreasing order of their strength. You choose the k-th wall design from the list. The task is to find the strength of the chosen wall.</p>",
+  "input": "<p>The first line of the input contains three integers n, r and k (2 ≤ n ≤ 30 000, 1 ≤ r &lt; n, 1 ≤ k ≤ (n−r)(n−r+1)/2) — the length of the wall, the length of the segments to choose, and the position of the wall in the price list.</p>\n<p>The second line of the input contains the elements of the array a (1 ≤ a<sub>i</sub> ≤ 10<sup>6</sup>).</p>\n<p>The third line of the input contains the elements of the array b (a<sub>i</sub> &lt; b<sub>i</sub> ≤ 10<sup>6</sup>).</p>\n<p>The fourth line of the input contains the elements of the array c (b<sub>i</sub> &lt; c<sub>i</sub> ≤ 10<sup>6</sup>).</p>",
+  "output": "<p>Print one integer — the strength of the k-th wall from “W Corp” price list.</p>",
+  "samples": [
+    {
+      "input": "4 2 1\n1 2 3 4\n3 3 5 5\n7 7 7 7\n",
+      "output": "16\n"
+    }
+  ],
+  "hint": "<p>In the sample test we could build three different walls:</p>\n<ul>\n<li>The choice of x = 1 and y = 2 yields heights “3 7 5 4” with the strength of 19;</li>\n<li>The choice of x = 1 and y = 3 yields heights “3 3 5 5” with the strength of 16;</li>\n<li>The choice of x = 2 and y = 3 yields heights “1 3 7 5” with the strength of 16.</li>\n</ul>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2017",
+  "level": 21,
+  "tags": [
+    "binary_search",
+    "data_structures",
+    "prefix_sum",
+    "segtree",
+    "sweeping"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 3
+}

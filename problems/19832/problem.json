@@ -1,0 +1,31 @@
+{
+  "id": 19832,
+  "title": "Configuration file",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Vadim develops a parser for configuration files of his project. A configuration file consists of blocks delimited with braces: \"<code>{</code>\" marks the beginning of the block, and \"}\" marks the end of the block. Blocks can be nested. One block can contains several other blocks.</p>\n<p>There are variables in the configuration file. Each variable has a name that consists of at most ten lowercase English letters. Each variable has an integer value, initially all variables are set to $0$. </p>\n<p>New values can be assigned to variables. Assigning a constant value to a variable is specified as \"<code>&lt;variable&gt;=&lt;number&gt;</code>\", here <code>&lt;variable&gt;</code> is the variable's name, and <code>&lt;number&gt;</code> is an integer, its absolute value doesn't exceed $10^9$. The parser reads the file line after line. As it reads the assignment operation, it assigns the new value to the variable. This value is used until the end of the current block, after that the previous value is restored. If the current block has some nested blocks following the assignment, the new value of the variable is used inside those blocks.</p>\n<p>A variable can also be assigned the value of another variable. Such operation is specified as \"<code>&lt;variable1&gt;=&lt;variable2&gt;</code>\". When the parser reads such line, it assigns the current value of <code>variable2</code> to <code>variable1</code>. Similarly to the case of a constant value assignment, the new value is used until the end of the current block. After the end of the current block, the value that the variable had at the beginning of the block is restored.</p>\n<p>For debugging purpose Vadim wants to print all values that are assigned when processing lines of the form \"<code>&lt;variable1&gt;=&lt;variable2&gt;</code>\". Help him to debug the parser.</p>",
+  "input": "<p>Input data contains at least $1$ and at most $10^5$ lines. Each line has one of four types:</p>\n<ul>\n<li><code>{</code> --- beginning of the block;</li>\n<li>} --- end of block;</li>\n<li><code>&lt;variable&gt;=&lt;number&gt;</code> --- assigning a constant value to a variable;</li>\n<li><code>&lt;variable1&gt;=&lt;variable2&gt;</code> --- assigning one variable to another, here <code>&lt;variable1&gt;</code> and <code>&lt;variable2&gt;</code> can be the same.</li>\n</ul>\n<p>It is guaranteed that the input is correct and corresponds to the statement. Input doesn't contain spaces.</p>",
+  "output": "<p>For each line that has the form \"<code>&lt;variable1&gt;=&lt;variable2&gt;</code>\" print the value that is assigned.</p>",
+  "samples": [
+    {
+      "input": "a=b\nb=123\nvar=b\nb=-34\n{\nc=b\nb=1000000000\nd=b\n{\na=b\ne=var\n}\n}\nb=b\n",
+      "output": "0\n123\n-34\n1000000000\n1000000000\n123\n-34\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia Team High School Programming Contest, Russia Team High School Programming Contest 2017",
+  "level": 12,
+  "tags": [
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "parsing",
+    "simulation",
+    "stack",
+    "string",
+    "set"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 3.9047999382019043
+}

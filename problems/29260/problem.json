@@ -1,0 +1,26 @@
+{
+  "id": 29260,
+  "title": "THE iDEM@STER (M@STER VERSION)",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>한별이는 문자 <code>P</code>와 <code>@</code>만을 사용하는 프로그래밍 언어를 만들었다.</p>\n<p>한별이의 언어에서 올바른 프로그램을 이루는 문자열의 규칙은 다음과 같다.</p>\n<ul>\n<li>모든 문자는 <code>P</code>와 <code>@</code> 중 하나여야 하며, 같은 문자가 $4$번 이상 연속해서 등장하면 안 된다.</li>\n<li>문자열에서 모든 <code>PPP</code>를 <code>(</code>로 바꾸고, <code>@@@</code>을 <code>)</code>로 바꾼 다음, 남아있는 <code>P</code>와 <code>@</code>을 지우면 올바른 괄호열이 되어야 한다.</li>\n</ul>\n<p>이때 올바른 괄호열이란 다음과 같이 정의된다.</p>\n<ul>\n<li>빈 문자열은 올바른 괄호열이다.</li>\n<li>$X$가 올바른 괄호열이면, $X$를 괄호로 감싼 <code>(</code>$X$<code>)</code>도 올바른 괄호열이다.</li>\n<li>$X$와 $Y$가 올바른 괄호열이면, $X$와 $Y$를 이어 붙인 $XY$도 올바른 괄호열이다.</li>\n<li>모든 올바른 괄호열은 위 세 가지 규칙을 통해서만 만들어진다.</li>\n</ul>\n<p>한별이의 언어는 프로그램을 실행하기 전에, 카운터 변수 $C$의 값을 $0$으로 초기화하고, 프로그램에 대해 전처리로 다음과 같은 과정을 순서대로 거친다.</p>\n<ul>\n<li>프로그램의 모든 <code>PPP</code>를 <code>(</code>로 바꾼다.</li>\n<li>프로그램의 모든 <code>@@@</code>을 <code>)</code>로 바꾼다.</li>\n<li>프로그램에 남아있는 모든 <code>P</code>를 <code>+</code>로 바꾼다.</li>\n<li>프로그램에 남아있는 모든 <code>@</code>을 <code>-</code>로 바꾼다.</li>\n</ul>\n<p>예를 들어, 프로그램이 <code>PPP@PP@PP@@@</code>라고 하면, 전처리를 거친 후에는 <code>(-++-++)</code>이 된다.</p>\n<p>전처리한 프로그램을 실행할 때, <code>+</code>는 $C$를 $1$ 증가시키고, <code>-</code>는 $1$ 감소시킨다. 한편, <code>(</code>와 <code>)</code>는 반복문으로, <code>(</code>와 <code>)</code> 사이의 코드를 $3$ 번 반복해서 실행한다.</p>\n<p>이를 의사코드로 표현하면 다음과 같다. 이때 문자열 $S$에 대해 $S[i]$ 는 $i$ 번째 문자를, $S[i..j]$는 문자열 $S$에서 $i$ 번째 문자부터 $j$ 번째 문자까지(경계 포함)의 부분 문자열을 의미한다.</p>\n<p>Algorithm <code>run</code>(전처리한 프로그램 $S$)</p>\n<ul>\n<li>$i$를 $1$로 설정한다.</li>\n<li><code>while</code> $i$ $\\leq$ $S$의 길이\n\t<ul>\n<li><code>if</code> $S[i]$가 <code>+</code>면\n\t\t<ul>\n<li>$C$를 $1$ 증가시킨다.</li>\n<li>$i$를 $1$ 증가시킨다.</li>\n</ul>\n</li>\n<li><code>else if</code> $S[i]$가 <code>-</code>면\n\t\t<ul>\n<li>$C$를 $1$ 감소시킨다.</li>\n<li>$i$를 $1$ 증가시킨다.</li>\n</ul>\n</li>\n<li><code>else if</code> $S[i]$가 <code>(</code>면\n\t\t<ul>\n<li>$j$를 $S[i]$와 짝이 맞는 <code>)</code>의 인덱스로 설정한다.</li>\n<li><code>run</code>($A[i+1..j-1]$)을 $3$ 회 실행한다.</li>\n<li>$i$를 $j+1$로 설정한다.</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n<p>정수 $N$에 대해서, 프로그램 실행 후 $C$의 값이 $N$인 길이가 가장 짧은 올바른 프로그램의 길이를 $f(N)$으로 정의하자. 두 정수 $L$과 $R$이 주어지면 다음과 같은 합을 구하여라.</p>\n<p>$$\\sum_{i=L}^{R}f(i)$$</p>",
+  "input": "<p>첫째 줄에 테스트케이스의 개수 $T$가 주어진다. ($1 \\leq T \\leq 10\\,000$)</p>\n<p>각 테스트케이스마다 한 줄에 두 정수 $L$과 $R$이 주어진다. ($-10^{15} \\leq L \\leq R \\leq 10^{15}$)</p>",
+  "output": "<p>각 줄마다 각 테스트케이스에 대해 구하는 합을 출력하라. 가능한 모든 입력에 대해서 각 테스트케이스의 답은 $10^{18}$ 이하임을 증명할 수 있다.</p>",
+  "samples": [
+    {
+      "input": "4\n-2 2\n17 5009\n25252 39392\n-11235813213455 23571113171923\n",
+      "output": "6\n290823\n1147326\n8068650721918736\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 아니메컵, 아니메컵 OVA ~한여름의 수학여행 편~, sait2000, hyperbolic",
+  "level": 24,
+  "tags": [
+    "case_work",
+    "dp",
+    "recursion"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

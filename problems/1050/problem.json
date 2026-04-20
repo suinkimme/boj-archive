@@ -1,0 +1,56 @@
+{
+  "id": 1050,
+  "title": "물약",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>과학자 임문빈은 마법의 물약을 만든다. 임문빈은 많은 재료를 가지고 있고, 다음과 같은 식을 이용해서 만든다.</p>\n<p>S=N<sub>1</sub>×S<sub>1</sub>+...+N<sub>k</sub>×S<sub>k</sub></p>\n<p>여기서 N<sub>1</sub>, ..., N<sub>k</sub>는 1보다 크거나 같고, 9보다 작거나 같은 한 자리 숫자이고, S<sub>1</sub>, ..., S<sub>k</sub>는 재료의 이름이다. 그리고, k는 1보다 크거나 같은 자연수이다. 마지막으로 S는 마법의 물약의 이름이다. 위의 식은 N<sub>1</sub>만큼 S<sub>1</sub>을 넣고, ..., N<sub>k</sub>만큼 S<sub>k</sub>를 넣으면 S가 1만큼 만들어 진다는 얘기와 같다.</p>\n<p>같은 물약을 만드는데 여러 가지 재료법이 있을 수도 있다. 이때는, 아무거나 사용하면 된다. 마법의 물약은 또 다른 물약을 만드는데 재료가 될 수도 있고, 이 중 어떤 재료는 시장에서 살 수 있다.</p>\n<p>임문빈은 이름이 LOVE인 마법의 물약을 만들려고 한다. (이 물약을 먹으면 임문빈을 사랑하게 된다) 시장에서 파는 재료와 그 가격이 주어지고, 임문빈이 만들 수 있는 모든 물약의 식이 주어진다. 이때, LOVE를 1만큼 만드는데 드는 비용의 최솟값을 출력한다.</p>",
+  "input": "<p>첫째 줄에 시장에서 파는 재료의 개수 N과 임문빈이 만들 수 있는 물약의 식의 개수 M이 주어진다. 둘째 줄 부터 N개의 줄에는 시장에서 파는 재료의 이름과 그 가격이 공백으로 구분해서 주어진다. 재료의 이름은 오직 알파벳 대문자로만 이루어져 있고, 파는 재료는 중복되지 않는다. 그 다음 줄 부터 M개의 줄에는 물약의 식이 문제 상단과 같은 형식으로 주어진다. N은 50보다 작거나 같은 자연수이고, 재료의 이름의 길이는 최대 50이다. 가격은 100보다 작거나 같은 자연수이다. M은 50보다 작거나 같은 자연수 또는 0이다. 각 식의 길이도 최대 50이다.</p>",
+  "output": "<p>첫째 줄에 LOVE를 1만큼 만드는데 드는 비용의 최솟값을 출력한다. 만약 그 값이 1,000,000,000보다 크다면 1000000001을 출력한다. 만약 LOVE를 만드는 것이 불가능 하다면 -1을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3 2\nWATER 2\nHONEY 6\nHOP 9\nLOVE=2WATER+4HONEY+2BEER\nBEER=1HOP+3WATER+1HOP\n",
+      "output": "76\n"
+    },
+    {
+      "input": "3 1\nLOVE 100\nWATER 1\nHONEY 30\nLOVE=5WATER+3HONEY\n",
+      "output": "95\n"
+    },
+    {
+      "input": "2 1\nORANGEJUICE 6\nAPPLEJUICE 4\nJUICEMIX=1ORANGEJUICE+1APPLEJUICE\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "3 2\nWATER 1\nHONEY 22\nHOP 17\nLOVE=7WATER+3HONEY\nLOVE=2HONEY+2HOP\n",
+      "output": "73\n"
+    },
+    {
+      "input": "2 3\nOIL 60\nWATER 70\nFIRSTPOTION=1OIL+1SECONDPOTION\nSECONDPOTION=4WATER+1FIRSTPOTION\nLOVE=1FIRSTPOTION+1SECONDPOTION\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "1 10\nHONEYBIT 100\nLOVE=6HONEYMEGABYTE\nHONEYMEGABYTE=2HONEYFIFTYTWELVEKBYTES\nHONEYFIFTYTWELVEKBYTES=8HONEYSIXTYFOURKBYTES\nHONEYSIXTYFOURKBYTES=8HONEYEIGHTKBYTES\nHONEYEIGHTKBYTES=8HONEYKBYTE\nHONEYKBYTE=2EIGHTBYEIGHTWORDS\nEIGHTBYEIGHTWORDS=8EIGHTWORDS\nEIGHTWORDS=8HONEYWORD\nHONEYWORD=8HONEYBYTE\nHONEYBYTE=8HONEYBIT\n",
+      "output": "1000000001\n"
+    },
+    {
+      "input": "1 1\nWATER 1\nLOVE=1LOVE\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "3 8\nMILK 6\nWATER 1\nHOP 14\nNECTAR=4HOP+2MILK\nLOVE=5MILK+3BEER\nLOVE=2WATER+1LOVE\nLOVE=2MIX+1NECTAR\nMIX=1MILK+1WATER+1HOP\nBEER=5WATER+2HOP\nLOVE=1NECTAR+3WATER+3HOP\nNECTAR=3BEER+1MILK+2MILK\n",
+      "output": "110\n"
+    }
+  ],
+  "hint": null,
+  "source": "baekjoon",
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "string",
+    "set",
+    "parsing"
+  ],
+  "accepted_user_count": 411,
+  "submission_count": null,
+  "average_tries": 5.973199844360352
+}

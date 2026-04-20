@@ -1,0 +1,48 @@
+{
+  "id": 28002,
+  "title": "Security Guard",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In JOI Kingdom, there are $N$ islands, numbered from $1$ to $N$. Each island has the <strong>insecurity level</strong>. The insecurity level of the island $i$ ($1 ≤ i ≤ N$) is $S_i$.</p>\n<p>In JOI Kingdom, ships between pairs of islands are mostly used as the methods of transportations. There are $M$ ships, numbered from $1$ to $M$. The ship $j$ ($1 ≤ j ≤ M$) connects the island $A_j$ and the island $B_j$. We can run ships when necessary. It is possible to travel from any island to any other island by taking a number of ships.</p>\n<p>In JOI Kingdom, there is a plan to introduce new ships. We can choose any pairs of islands where newly introduced ships connect.</p>\n<p>One day, an incident occurred. A ship at anchor was attacked. Prime minister K of JOI Kingdom decided to introduce new ships. He also demands that ships in JOI Kingdom should satisfy the following <strong>Security Condition</strong>.</p>\n<ul>\n<li>When a ship is anchored at the island $i$ ($1 ≤ i ≤ N$), the number of security guards on the ship is greater than or equal to $S_i$.</li>\n</ul>\n<p>However, since it is expensive to hire security guards, we want to minimize the number of hired security guards. As long as the condition “it is possible to travel from any island to any other island by taking a number of ships” is satisfied, it is possible to abolish ships which are currently running.</p>\n<p>Therefore, we will run ships as follows. Here, $k$ is the number of newly introduced ships.</p>\n<ol>\n<li>For each of the $k$ newly introduced ships, we choose two islands where it connects.</li>\n<li>We choose a number of (more than or equal to $0$) ships, and we abolish them. It is allowed to abolish newly introduced ships.</li>\n<li>For each of the ships, we anchor it at one of the two islands where it connects. We make a number of security guards get on it. Moreover, the following conditions should be satisfied.</li>\n</ol>\n<p>Condition: For every pair $u$, $v$ ($1 ≤ u ≤ N$, $1 ≤ v ≤ N$) of islands, it is possible to transport a passenger from the island $u$ to the island $v$ by repeating the following operations a number of times. In the process, Security Condition should be satisfied all the time.</p>\n<ul>\n<li>We make a passenger or security guards get on a ship which is anchored at the island where the passenger or security guards are staying.</li>\n<li>We make a passenger or security guards get off a ship at the island where the ship is currently anchored.</li>\n<li>We move a ship from the island where the ship is currently anchored to the other island where the ship connects.</li>\n</ul>\n<p>Since the budget is limited, we can introduce at most $Q$ new ships. For each $k$ ($0 ≤ k ≤ Q$), Prime minister $K$ wants to know the minimum possible number of hired security guards if the number of newly introduced ships is $k$.</p>\n<p>Write a program which, given the information of islands and the routes of the ships and the number of new ships we can introduce, calculates the minimum possible number of hired security guards for each $k$.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<blockquote>\n<p>$N$ $M$ $Q$</p>\n<p>$S_1$ $S_2$ $\\cdots$ $S_N$</p>\n<p>$A_1$ $B_1$</p>\n<p>$A_2$ $B_2$</p>\n<p>$\\vdots$</p>\n<p>$A_M$ $B_M$</p>\n</blockquote>",
+  "output": "<p>Write $Q+1$ lines to the standard output. The $(k+1)$-th line ($0 ≤ k ≤ Q$) of output should contain the minimum possible number of hired security guards if the number of newly introduced ships is $k$.</p>",
+  "samples": [
+    {
+      "input": "4 3 0\n2 1 3 2\n1 2\n2 3\n3 4\n",
+      "output": "7\n"
+    },
+    {
+      "input": "4 3 1\n2 1 3 2\n1 2\n2 3\n3 4\n",
+      "output": "7\n5\n"
+    },
+    {
+      "input": "3 3 0\n1 1 1\n1 2\n1 3\n2 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "8 7 0\n2 2 2 2 2 2 2 2\n1 2\n2 3\n3 4\n4 5\n5 6\n6 7\n7 8\n",
+      "output": "14\n"
+    },
+    {
+      "input": "8 7 0\n16 39 36 23 15 48 23 56\n1 2\n1 3\n2 4\n2 5\n3 6\n3 7\n7 8\n",
+      "output": "245\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, JOI Spring Training Camp, JOI 2022/2023 Spring Training Camp",
+  "level": 28,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "greedy",
+    "trees",
+    "disjoint_set",
+    "priority_queue",
+    "mst",
+    "smaller_to_larger",
+    "cartesian_tree"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 3
+}

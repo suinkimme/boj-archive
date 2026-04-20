@@ -1,0 +1,24 @@
+{
+  "id": 31579,
+  "title": "LR Springboard",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>형찬이는 놀이공원의 ‘스프링 야드’ 어트랙션을 관리하는 관리자이다. ‘스프링 야드’ 어트랙션은 스프링 $N$개가 일렬로 늘어진 모양이다. 이 어트랙션에서는 한 스프링을 밟으면 높이 떠올랐다가 바로 옆에 있는 스프링으로 떨어지는데, 이런 과정이 반복되면 보는 사람은 짜릿함을, 즐기는 사람은 스릴을 느낄 수 있다. 만약 사람이 가장 왼쪽 스프링에서 왼쪽으로 떠오르거나 가장 오른쪽 스프링에서 오른쪽으로 떠오르면 매트에 떨어지며 한 번의 차례가 끝난다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>여기에 있는 스프링은 매우 특이하게 설계되어 있다. 모든 스프링은 왼쪽 또는 오른쪽으로 살짝 기울어져 있는데, 스프링을 밟으면 그 스프링이 보고 있는 방향으로 높이 떠오른다. 또, 사람이 어떤 스프링을 밟아서 떠오르면 그 스프링은 알아서 방향을 바꾼다. 왼쪽을 보고 있던 스프링은 오른쪽으로, 오른쪽을 보고 있던 스프링은 왼쪽으로 방향이 바뀐다.</p>\n<p>벌써 날이 어둑어둑해져서 형찬이는 어트랙션을 정리하려고 한다. 형찬이는 놀이공원의 방침에 따라 모든 스프링이 왼쪽을 향하게 해야 한다. 형찬이가 자기 손으로 직접 스프링의 방향을 바꾸면 안전사고의 위험이 있으므로 그는 파란색 공을 이용해서 스프링의 방향을 바꾸려고 한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></p>\n<p>형찬이가 높은 곳에서 공을 떨어뜨리면 공은 이리저리 튀다가 왼쪽 끝 매트나 오른쪽 끝 매트에 떨어진다. 아래 그림과 같이 형찬이가 3번째 스프링에 공을 떨어뜨린 후 첫 번째 스프링에 공을 떨어뜨리면 모든 스프링이 왼쪽을 보게 할 수 있다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\"/><img alt=\"\" src=\"4.png\"/></p>\n<p>허나, 형찬이가 높은 곳에서 스프링을 보면 $N$개의 스프링이 어떤 방향을 향하고 있는지 제대로 보이지 않는다. 즉, 형찬이는 처음부터 끝까지 스프링의 상태를 알 수 없다. 그렇지만 형찬이가 파란색 공을 떨어뜨렸을 때 그 공이 왼쪽 끝에서 멈추는지 오른쪽 끝에서 멈추는지는 쉽게 분간이 가능하다. 형찬이를 도와 공을 적절히 떨어뜨려서 모든 스프링이 왼쪽을 보게 만드는 프로그램을 작성하여라.</p>",
+  "input": "<p>당신은 스프링을 가지런히 정리하는 함수 <code>Reorder(N)</code> 을 작성해야 한다. (<code>Reorder(N)</code> 함수는 springboard.c / springboard.cpp에 있다.)</p>\n<p><code>void Reorder(int N)</code> 함수의 인수는 다음과 같다.</p>\n<ul>\n<li>$N$: 스프링의 수 ($1 \\le N \\le 12\\,345$)</li>\n</ul>\n<p>당신은 <code>Reorder</code> 함수 안에서 <code>PutBall(K)</code>을 여러 번 호출할 수 있다.</p>\n<p><code>int PutBall(int K)</code> 는 왼쪽에서 K번째 스프링에 공을 떨어뜨리는 함수이다.</p>\n<ul>\n<li>$K$: 공을 놓는 위치 ($1 \\le K \\le N$)</li>\n<li>반환값: 공이 왼쪽으로 나가면 <code>-1</code>을, 오른쪽으로 나가면 <code><code>1</code></code>을 반환한다.</li>\n</ul>\n<p><code>Reorder(N)</code> 함수가 끝나면 모든 스프링이 왼쪽을 보아야 한다. 만약 그렇지 않다면 채점 프로그램은 <code>Wrong[1]</code>을 출력한다. 함수를 호출할 때 인자의 범위를 벗어난다면 <code>Wrong[2]</code>를 출력하고 프로그램이 즉시 끝난다. 만약 <code>PutBall(K)</code>을 특정 횟수를 초과하여 호출하면 <code>Wrong[3]</code>을 출력하고 프로그램이 즉시 끝난다.</p>\n<p><code>PutBall(K)</code> 함수는 최대 $16$번 호출할 수 있다.</p>\n<p>예시 프로그램은 다음과 같다. 주석은 문제와 같은 상황에서 함수의 반환값을 의미한다.</p>\n<pre style=\"margin: 0; line-height: 125%\">\n<span style=\"color: #BC7A00\">#include \"springboard.h\"</span>\n\n<span style=\"color: #B00040\">void</span> <span style=\"color: #0000FF\">Reorder</span>(<span style=\"color: #B00040\">int</span> N) {\n\tPutBall(<span style=\"color: #666666\">3</span>); <span style=\"color: #408080; font-style: italic\">// 반환값 = -1</span>\n\tPutBall(<span style=\"color: #666666\">1</span>); <span style=\"color: #408080; font-style: italic\">// 반환값 = 1</span>\n}</pre>\n<p>채점 프로그램은 <code>Reorder</code> 함수 호출 전에 정답(초기 스프링 배치)을 고정하며 당신의 호출에 따라 정답을 바꾸지 않는다(Non-Adaptive). 메모리 접근, 시스템 호출 등의 비정상적인 방법을 사용하면 오답 처리될 수 있음에 유의하여라.</p>",
+  "output": "",
+  "samples": [
+    {
+      "input": "5\nLLRRL\n",
+      "output": "Correct\n"
+    }
+  ],
+  "hint": "<p>문제 페이지에서 샘플 코드를 다운로드받을 수 있다. 만약 Visual Studio나 Eclipse, Code::Blocks와 같은 IDE 툴을 사용한다면 springboard.cpp, springboard.h, grader.cpp (또는 springboard.c springboard.h, grader.c)를 한 프로젝트에 넣어서 컴파일하면 된다. 터미널에서 코드를 컴파일한다면 아래 컴파일 명령어를 이용하면 된다.</p>\n<ul>\n<li>C / gcc: <code class=\"compilation_command\">gcc -Wall -lm -static -o springboard -O2 springboard.c grader.c</code></li>\n<li>C++ / G++: <code class=\"compilation_command\">g++ -Wall -lm -static -o springboard -O2 springboard.cpp grader.cpp</code></li>\n</ul>\n<p>프로그램을 실행한 후 표준입력(stdin)으로 $N$과 $N$개 스프링의 방향을 입력받는다. 스프링의 방향으로 들어오는 문자열은 ‘L’ 또는 ‘R’로 이루어진 길이 $N$인 문자열이며, ‘L’은 왼쪽을 보고 있는 스프링을 , ‘R’은 오른쪽을 보는 스프링을 의미한다. 모든 정보를 입력받으면 샘플 채점기는 정답/오답 여부를 출력한다.</p>\n<p>답안을 제출할 때에는 springboard.c 또는 springboard.cpp에 해당하는 코드만 제출하면 된다.</p>",
+  "source": "Contest, BOJ User Contest, FunctionCup, FunctionCup 2017",
+  "level": 16,
+  "tags": [
+    "constructive"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2.6666998863220215
+}

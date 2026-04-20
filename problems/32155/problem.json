@@ -1,0 +1,26 @@
+{
+  "id": 32155,
+  "title": "지언이와 가위바위보",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p><strong>이 문제는 인터랙티브 문제다.</strong></p>\n<p>신촌 연합의 지언이는 가위바위보를 $N$번을 하고, 가위바위보에서 이긴 횟수에 따라 상품을 주는 이벤트를 열었다. 해당 이벤트에서 얻을 수 있는 상품 중 가장 좋은 상품은 연세대학교 소유권으로, 가위바위보 $N$번 전부 다 이겨야 얻을 수 있다. 즉, 연세대학교 소유권을 얻기 위해서는 단 한 번이라도 지거나 비기면 안 된다.</p>\n<p>지언이는 $N$번의 가위바위보 각각에서 무엇을 낼지 미리 정해두었고, 이는 이벤트 내내 변하지 않는다.</p>\n<p>국렬이는 연세대 소유권을 얻기 위해 먼저 친구들을 이벤트에 보내 지언이가 무엇을 내는지 알아보려고 한다. 국렬이가 어떤 친구에게 $N$번의 가위바위보에서 무엇을 각각 내야 할지 정해서 알려주면 친구는 그것을 그대로 내고 온다. 친구는 이벤트에 참여하고 나서 <strong>자기가 이긴 횟수</strong> / <strong>처음으로 비긴 게 몇 번째인지</strong> / <strong>처음으로 진 게 몇 번째인지</strong>의 세 가지 정보만 기억해서 국렬이에게 알려준다. 국렬이의 친구들은 의리가 넘치기 때문에 가위바위보 $N$번 전부 이겨도, 연세대학교 소유권을 이벤트 측에 반환하고 그대로 국렬이한테 돌아간다.</p>\n<p>국렬이는 친구들을 잘 보내서 지언이가 무엇을 내는지에 대한 정보를 얻어 이를 바탕으로 지언이를 이기러 갈 것이다.</p>\n<p>국렬이에게는 $420$명의 친구가 있고, 친구 한 명당 최대 한 번씩만 보낼 수 있다. 주어진 기회를 적절히 사용하여 국렬이가 지언이를 이길 수 있도록 도와주자.</p>",
+  "input": "<p>첫 번째 줄에 가위바위보 횟수를 나타내는 양의 정수 $N$이 주어진다. ($1 \\le N \\le 600$)</p>",
+  "output": "<p>다음 중 하나를 표준 출력 스트림(stdout)으로 한 줄에 출력하여 국렬이 또는 친구가 이벤트에 참여할 수 있다.</p>\n<ul>\n<li><code><span style=\"color:#e74c3c;\">?</span></code> $S$ : 친구가 이벤트 참여. $S$는 문자 <span style=\"color:#e74c3c;\"><code>R</code></span>, <span style=\"color:#e74c3c;\"><code>S</code></span>, <span style=\"color:#e74c3c;\"><code>P</code></span>로 이루어진 길이가 $N$인 문자열.</li>\n<li><code><span style=\"color:#e74c3c;\">!</span></code> $S$ : 국렬이가 이벤트 참여. $S$는 문자 <span style=\"color:#e74c3c;\"><code>R</code></span>, <span style=\"color:#e74c3c;\"><code>S</code></span>, <span style=\"color:#e74c3c;\"><code>P</code></span>로 이루어진 길이가 $N$인 문자열.</li>\n</ul>\n<p>길이가 $N$인 문자열 $S$는 이벤트 참여자가 $N$번의 가위바위보에서 낼 것을 문자열로 표현한 것이다. 더 자세하게 설명하면 문자열 $S$의 $i$번째 문자 $S_i$가 <span style=\"color:#e74c3c;\"><code>R</code></span>이면 $i$번째 가위바위보에서 바위를, $S_i$가 <span style=\"color:#e74c3c;\"><code>S</code></span>이면, $i$번째 가위바위보에서 가위를, $S_i$가 <span style=\"color:#e74c3c;\"><code>P</code></span>이면 $i$번째 가위바위보에서 바위를 낼 것이다.</p>\n<p>친구가 이벤트에 참여했다면, 이에 대한 답으로 <strong>자기가 이긴 횟수</strong> / <strong>처음으로 비긴 게 몇 번째인지</strong> / <strong>처음으로 진 게 몇 번째인지</strong>가 공백으로 구분되어 입력으로 주어진다. 만약에 친구가 $N$번의 가위바위보에서 비긴 적이 없는 경우, <strong>처음으로 비긴 게 몇 번째인지</strong>는 $-1$이 되며, $N$번의 가위바위보에서 진 적이 없는 경우, <strong>처음으로 진 게 몇 번째인지</strong>는 $-1$이 된다.</p>\n<p>국렬이에게는 $420$명의 친구가 있고, 친구 한 명당 최대 한 번씩만 보낼 수 있다. 이에 따라 친구들의 이벤트 참여 횟수가 $420$번을 넘긴다면 <span style=\"color:#c0392b;\"><strong>틀렸습니다!</strong></span>를 받는다. 그리고 국렬이가 이벤트에 참여했을 때, $N$번의 가위바위보에서 모두 이기지 못한 경우도 <span style=\"color:#c0392b;\"><strong>틀렸습니다!</strong></span>를 받는다.</p>\n<p>각 질문을 출력한 후에는 반드시 표준 출력 버퍼를 flush해 주어야 하고, 표준 입력 스트림(stdin)을 통해 질문에 대한 답을 입력받아야 한다. 질문에 대한 답을 입력받지 않으면 <strong><span style=\"color:#4e5f70;\">런타임 에러</span></strong>를 받게 된다. 출력 형식이 맞지 않는 경우도 <span style=\"color:#c0392b;\"><strong>틀렸습니다!</strong></span>를 받는다.</p>\n<p>언어별로 표준 출력 버퍼를 flush하는 방법은 다음과 같다.</p>\n<ul>\n<li>C: fflush(stdout)</li>\n<li>C++: std::cout &lt;&lt; std::flush</li>\n<li>Java: System.out.flush()</li>\n<li>Python: sys.stdout.flush()</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3\n\n1 1 3\n\n1 2 -1\n\n2 -1 3\n\n",
+      "output": "\n\n? RRR\n\n? PSP\n\n? PRR\n\n! PRS\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 신촌지역 대학생 프로그래밍 대회 동아리 연합, 2024 신촌지역 대학생 프로그래밍 동아리 연합 여름 대회 (SUAPC 2024 Summer) 연습 세션, lky7674, hjroh0315, hyperbolic, jk410, kdh9949, kiwiyou, leo020630, sk091204091204, wjdclgns12",
+  "level": 12,
+  "tags": [
+    "ad_hoc",
+    "randomization",
+    "differential_cryptanalysis"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 3.108099937438965
+}

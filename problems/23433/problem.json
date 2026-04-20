@@ -1,0 +1,26 @@
+{
+  "id": 23433,
+  "title": "Tote",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>The first thing Ostap did upon his arrival to Rio was buying white slacks. The second thing was wasting all the money he had smuggled in the local football tote. </p>\n<p>There are $n$ matches played in the state championship, each can have one of the three possible outcomes: win, tie or loss.</p>\n<p>The list of all matches is given in the tote ticket. Immediately after buying a ticket, the buyer must mark for every match which outcomes he bets on. For each match, he may either mark one outcome (so-called \"single\"), or mark two outcomes (\"double\"), or even mark all three outcomes (\"triple\").</p>\n<p>The tickets of various types are sold. The type of the ticket defines its cost, and two numbers $i$ and $j$. The buyer must put exactly $i$ doubles, exactly $j$ triples, and exactly $n-i-j$ singles in the ticket. How to distribute singles, doubles, and triples across matches, and which outcomes to bet on --- that's what the buyer can choose.</p>\n<p>If the buyer guessed the results of all $n$ matches correctly, then he gets $P$ coins for the winning ticket. If he was not lucky enough, then he gets nothing for it. The buyer guesses the result of the match if and only if his ticket has a mark on the actually happened outcome for the match.</p>\n<p>Thanks to his acquaintance with Velial, the demon of gambling, Ostap knows that the outcome of every match is determined randomly. Ostap even managed to learn the probabilities of all outcomes! Moreover, he knows that the outcomes of the $n$ matches are determined independently of each other.</p>\n<p>Ostap has only $S$ coins left, which he can spend on tickets. Being a regular customer, Ostap can buy as many tickets of each available type as he likes, as long as he has enough coins to cover the cost. All that is left is to distribute the money wisely in such a manner that the expectation of prize money is maximum possible. Note that Ostap maximizes prize money he will get back, and it does not matter how much the tickets will cost him.</p>",
+  "input": "<p>The first line of the input file contains four integers: $n$ --- the number of matches, $k$ --- the number of ticket types, $S$ --- how much coins Ostap has, and $P$ --- how nuch coins are given for a winning ticket ($1 \\le n,k \\le 100$, $1 \\le S \\le 10^6$, $1 \\le P \\le 10^{18}$).</p>\n<p>It is followed by $n$ lines with probabilities of match outcomes. $i$th of these lines contains three real numbers $x_i$, $y_i$ and $z_i$ with at most 8 digits after decimal dot --- the probability of win, tie, and loss respectively in the $i$th match ($0 \\le x_i, y_i, z_i \\le 1$, $x_i + y_i + z_i = 1$).</p>\n<p>Next come $k$ lines, describing which types of tickets are available for sell. Each line has three integers: $i$ and $j$ --- how much doubles and triples respectively must be marked in a ticket of this type, and $c_{ij}$ --- the cost of one ticket of this type ($0 \\le i, j \\le n$, $i+j \\le n$, $1 \\le c_{ij} \\le 10^6$).</p>",
+  "output": "<p>Print a single real number, being the maximum expected value of the prize money.</p>\n<p>Absolute or relative error of your answer must not exceed $10^{-9}$.</p>",
+  "samples": [
+    {
+      "input": "2 2 10 10\n0.5 0.3 0.2\n0.8 0.2 0\n0 0 4\n1 0 6\n",
+      "output": "10.4\n"
+    },
+    {
+      "input": "3 4 1000 10000\n1.0 0 0\n0.5 0.5 0\n0.3 0.4 0.3\n0 0 100\n1 0 200\n1 1 300\n1 2 400\n",
+      "output": "32000\n"
+    }
+  ],
+  "hint": "<p>In the first sample, tickets of the first type allow only singles. If we mark win in both matches, then the ticket wins with 40% probability. Hence, the expectation of prize money won for every ticket of this type is 4.</p>\n<p>In the tickets of second type, there must be one double. The optimal usage of such ticket is to mark double in the first match, betting on win and tie, and mark single in the second match, betting on win only. Then the ticket wins with 64% probability, which gives 6.4 coins of prize money on average.</p>\n<p>Ostap has only 10 coins left. Winning one ticket of each type is the best he can do.</p>",
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 7: Grand Prix of Siberia",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

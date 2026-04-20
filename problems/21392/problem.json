@@ -1,0 +1,28 @@
+{
+  "id": 21392,
+  "title": "Ranking",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Hosting a programming contest is fun, but it’s also a lot of work. For instance, at the end of the day the jury will have to create a ranking of the teams based on their results during the contest. This can be tedious to do by hand, so we would like you to write a program for this task.</p>\n<p>For the BAPC, the rules for the ranking are as follows:</p>\n<ul>\n<li>Teams are ranked according to the most problems solved; teams tied are ordered by increasing total time used.</li>\n<li>The time used for a problem is the number of minutes between the start of the contest and the first accepted run, plus a 20 minute penalty for each rejected run until the first accepted run.</li>\n<li>The total time used is the sum of the times used for each problem solved (as described above). Note that penalty time for problems for which no run was accepted does not count toward the total time used.</li>\n<li>If ties remain at the end of the contest, the point of comparison between tied teams will be the last point in time where their scores differed (e.g. if two teams are tied at the end of the contest, the team which solved their last problem earlier than the other team solved their last problem wins).</li>\n</ul>\n<p>During the contest, teams submit solutions for problems, which are processed by the jury as runs. Each run has four properties:</p>\n<ul>\n<li>the submission time in minutes since the beginning of the contest (an integer between 1 and 300, inclusive);</li>\n<li>the name of the team that submitted the solution (a non-empty string of at most 20 lower-case letters);</li>\n<li>the identifier of the corresponding problem (an upper-case letter A through J, inclusive);</li>\n<li>the result as determined by the judging software (either accepted or rejected).</li>\n</ul>\n<p>At the end of the contest, we have a list of runs available (ordered by non-decreasing submission times) and we want you to determine the final ranking of the teams.</p>\n<p>Teams that are tied will share a position; those teams should be ordered alphabetically in the results.</p>",
+  "input": "<p>On the first line an integer t (1 ≤ t ≤ 100): the number of test cases. Then for each test case:</p>\n<ul>\n<li>one line with the number of teams t (1 ≤ t ≤ 50) and the number of runs r (0 ≤ r ≤ 5 000), seperated by a single space;</li>\n<li>then t lines, each with the name of a team;</li>\n<li>then r lines, each with the description of a run: time, team, problem and result, formatted as described above, and seperated by a single space.</li>\n</ul>",
+  "output": "<p>For each test case:</p>\n<ul>\n<li>Print the ordered results: t lines, each with a rank (starting from 1), the team name, the number of correctly solved problems and the total penalty time, separated by single spaces.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "1\n8 28\ntwente\nutrecht\ngroningen\namsterdam\neindhoven\nleiden\ndelft\nnijmegen\n5 utrecht B rejected\n8 eindhoven F accepted\n10 utrecht F accepted\n17 utrecht B rejected\n18 leiden C rejected\n23 twente F rejected\n25 utrecht B accepted\n26 amsterdam D rejected\n27 amsterdam D accepted\n27 leiden C accepted\n27 groningen F accepted\n28 twente F rejected\n30 nijmegen C rejected\n30 nijmegen C accepted\n30 delft B accepted\n30 delft B rejected\n33 twente F accepted\n47 groningen D rejected\n51 leiden D accepted\n51 amsterdam C accepted\n51 groningen D accepted\n60 utrecht D accepted\n65 utrecht J accepted\n67 twente F rejected\n70 twente F accepted\n90 eindhoven D accepted\n100 utrecht A rejected\n101 utrecht C rejected\n",
+      "output": "1 utrecht 4 200\n2 groningen 2 98\n3 amsterdam 2 98\n3 leiden 2 98\n5 eindhoven 2 98\n6 delft 1 30\n7 nijmegen 1 50\n8 twente 1 73\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2007",
+  "level": 0,
+  "tags": [
+    "data_structures",
+    "implementation",
+    "sorting",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

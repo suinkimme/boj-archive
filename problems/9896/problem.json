@@ -1,0 +1,27 @@
+{
+  "id": 9896,
+  "title": "Gray",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A binary number is a number in base 2, where the individual digits, or bits, have weights in powers of two. For example, the decimal number 23 is written as 10111 in binary because:</p>\n<p>(1 × 2<sup>4</sup>) + (0 × 2<sup>3</sup>) + (1 × 2<sup>2</sup>) + (1 × 2<sup>1</sup>) + (1 × 2<sup>0</sup>) = (1 × 16) + (1 × 4) + (1 × 2) + (1 × 1) = 23.</p>\n<p>A Gray code sequence consists of a sequence of binary values, in which each value differs from its immediate predecessor by only a single bit. The following example shows a standard Gray code sequence of 3-bit binary numbers.</p>\n<table class=\"table table-bordered table-center-70\">\n<tbody>\n<tr>\n<td>Binary sequence</td>\n<td>000</td>\n<td>001</td>\n<td>010</td>\n<td>011</td>\n<td>100</td>\n<td>101</td>\n<td>110</td>\n<td>111</td>\n</tr>\n<tr>\n<td>Standard Gray code sequence</td>\n<td>000</td>\n<td>001</td>\n<td>011</td>\n<td>010</td>\n<td>110</td>\n<td>111</td>\n<td>101</td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n<p>A very simple algorithm is available to convert a binary number into its equicalent standard Gray code value. For example, to convert binary value 011, we start by copying the first bit:</p>\n<pre style=\"text-align: center;\">\n0 1 1\nv    \n0    \n</pre>\n<p>To obtain the second bit, we add the first and second bits of the given binary number, to get the sum 0 + 1 = 1:</p>\n<pre style=\"text-align: center;\">\n<strong>0</strong> + <strong>1</strong> 1\n    v  \n0   1  \n</pre>\n<p>To obtain the third bit, we add teh second and third bits of the given binary number, to get the sum 1 + 1 = 10 (in binary), but we discard the carry bit so we just take the rightmost bit 0 of the sum:</p>\n<pre style=\"text-align: center;\">\n0 <strong>1</strong> + <strong>1</strong>\n      v\n0 1   0\n</pre>\n<p>Hence our answer is 010.</p>\n<p>In general, except the first bit, the <i>k</i>-th bit of the standard Gray code is obtained by adding the (<i>k</i>-1)-th bit and the <i>k</i>-th bit of the given binary number and discarding the carry. The discard-carry addition operation can be described completely as:</p>\n<pre style=\"text-align: center;\">\n  0    0    1    1\n+ 0  + 1  + 0  + 1\n---  ---  ---  ---\n   0   1    1    0\n---  ---  ---  ---\n</pre>\n<p>As another example, the 5-bit binary number 10101 is converted to its equivalent standard Gray code value 11111 by applying the above algorithm. The table below shows a few more examples.</p>\n<table class=\"table table-bordered table-center-50\">\n<tbody>\n<tr>\n<td>Binary value</td>\n<td>Equivalent standard Gray code value</td>\n</tr>\n<tr>\n<td align=\"center\">01110</td>\n<td align=\"center\">01001</td>\n</tr>\n<tr>\n<td align=\"center\">111111</td>\n<td align=\"center\">100000</td>\n</tr>\n<tr>\n<td align=\"center\">1001001</td>\n<td align=\"center\">1101101</td>\n</tr>\n<tr>\n<td align=\"center\">000111000</td>\n<td align=\"center\">000100100</td>\n</tr>\n</tbody>\n</table>\n<p>You are to write a program to convert an <i>n</i>-bit binary value into its equivalent <i>n</i>-bit standard Gray code value, where 1 ≤ <i>n</i> ≤ 20</p>",
+  "input": "<p> </p>\n<p>The input consists of two lines, each line containing one integer.</p>\n<ol>\n<li>The first line contains the integer <i>n</i>, the number of bits, where 1 ≤ <i>n</i> ≤ 20.</li>\n<li>The second line contains a bit-string of length <i>n</i> representing the <i>n</i>-bit binary number.</li>\n</ol>",
+  "output": "<p>The output contains a bit-string of length <i>n</i> representing the standard Gray code equivalent of the given <i>n</i>-bit binary number.</p>",
+  "samples": [
+    {
+      "input": "3\n011\n",
+      "output": "010\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2004",
+  "level": 4,
+  "tags": [
+    "math",
+    "implementation",
+    "string",
+    "arithmetic"
+  ],
+  "accepted_user_count": 124,
+  "submission_count": null,
+  "average_tries": 1.2984000444412231
+}

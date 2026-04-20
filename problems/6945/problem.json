@@ -1,0 +1,32 @@
+{
+  "id": 6945,
+  "title": "Surfing",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Every web page is identified by a string of characters known as a URL (Uniform Resource Locator). Web pages are formatted using HTML (Hypertext Markup Language). HTML has many codes, collectively known as markup, that allow the author to specify the format of the pages as well as to specify links to other pages. For this problem, we are concerned only with the markup that identifies links to other pages within a given page.</p>\n<p>A link within the page is denoted <code>&lt;A HREF=\"URL\"&gt;</code> where <code>URL</code> is the URL of some other page. A user viewing a page containing a link may click on the link to view the other page.</p>\n<p>You are to write a program that reads a number of web pages and their associated URLs. For each link on each page, you must print the URL of the page containing the link, and the URL of the page referred to by the link. Following the last page, you are then given several pairs of URLs. For each pair, you are to assume that you are viewing the page identified by the first URL, and determine whether it is possible to click a sequence of links so as to view the page identified by the second URL. If so, you should print <code>Can surf from here to there.</code> where <code>here</code> and <code>there</code> are the two URLs. If not you should print <code>Can't surf from here to there.</code></p>",
+  "input": "<p>The first line of input will contain an integer $n \\le 100$, the number of web pages. For each web page, there will be a line containing its URL, followed by several lines containing the page. The URL will consist of up to 80 non-blank printable characters and will not contain any quotation marks. The first line of the page will be <code>&lt;HTML&gt;</code> and the last line will be <code>&lt;/HTML&gt;</code>. Each page will contain up to 100 links in the format described above. Each link will be contained within a single line of input. URLs in the link will be those of pages given in the input. The markup keywords <code>A</code>, <code>HREF</code>, and <code>HTML</code> will appear only in uppercase.</p>\n<p>Following the $n$ pages will be several pairs of lines giving URLs required by the problem as specified above. The last line of input will be <code>The End</code>.</p>",
+  "output": "<p>For each pair, print the appropriate message given above.</p>",
+  "samples": [
+    {
+      "input": "3\nhttp://ccc.uwaterloo.ca\n<HTML> <TITLE>This is the CCC page</TITLE>\nHello there boys\nand girls.  <B>Let's</B> try <A HREF=\"http://abc.def/ghi\"> a\nlittle\nproblem </A>\n</HTML>\nhttp://abc.def/ghi\n<HTML> Now is the <TITLE>time</TITLE> for all good people to program.\n<A HREF=\"http://www.www.www.com\">hello</A><A HREF=\"http://xxx\">bye</A>\n</HTML>\nhttp://www.www.www.com\n<HTML>\n<TITLE>Weird and Wonderful World</TITLE>\n</HTML>\nhttp://ccc.uwaterloo.ca\nhttp://www.www.www.com\nhttp://www.www.www.com\nhttp://ccc.uwaterloo.ca\nThe End\n",
+      "output": "Link from http://ccc.uwaterloo.ca to http://abc.def/ghi\nLink from http://abc.def/ghi to http://www.www.www.com\nLink from http://abc.def/ghi to http://xxx\nCan surf from http://ccc.uwaterloo.ca to http://www.www.www.com.\nCan't surf from http://www.www.www.com to http://ccc.uwaterloo.ca.\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2000, CCC 2000 Junior Division, Olympiad, Canadian Computing Competition & Olympiad, 2000, CCC 2000 Senior Division",
+  "level": 13,
+  "tags": [
+    "bfs",
+    "data_structures",
+    "dfs",
+    "graphs",
+    "graph_traversal",
+    "hash_set",
+    "parsing",
+    "string",
+    "set"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 11.5
+}

@@ -1,0 +1,33 @@
+{
+  "id": 16918,
+  "title": "봄버맨",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p><a href=\"https://en.wikipedia.org/wiki/Bomberman\">봄버맨</a>은 크기가 R×C인 직사각형 격자판 위에서 살고 있다. 격자의 각 칸은 비어있거나 폭탄이 들어있다.</p>\n<p>폭탄이 있는 칸은 3초가 지난 후에 폭발하고, 폭탄이 폭발한 이후에는 폭탄이 있던 칸이 파괴되어 빈 칸이 되며, 인접한 네 칸도 함께 파괴된다. 즉, 폭탄이 있던 칸이 (i, j)인 경우에 (i+1, j), (i-1, j), (i, j+1), (i, j-1)도 함께 파괴된다. 만약, 폭탄이 폭발했을 때, 인접한 칸에 폭탄이 있는 경우에는 인접한 폭탄은 폭발 없이 파괴된다. 따라서, 연쇄 반응은 없다.</p>\n<p>봄버맨은 폭탄에 면역력을 가지고 있어서, 격자판의 모든 칸을 자유롭게 이동할 수 있다. 봄버맨은 다음과 같이 행동한다.</p>\n<ul>\n<li>가장 처음에 봄버맨은 일부 칸에 폭탄을 설치해 놓는다. 모든 폭탄이 설치된 시간은 같다.</li>\n<li>다음 1초 동안 봄버맨은 아무것도 하지 않는다.</li>\n<li>다음 1초 동안 폭탄이 설치되어 있지 않은 모든 칸에 폭탄을 설치한다. 즉, 모든 칸은 폭탄을 가지고 있게 된다. 폭탄은 모두 동시에 설치했다고 가정한다.</li>\n<li>1초가 지난 후에 3초 전에 설치된 폭탄이 모두 폭발한다.</li>\n<li>3과 4를 반복한다.</li>\n</ul>\n<p>폭탄을 설치해놓은 초기 상태가 주어졌을 때, N초가 흐른 후의 격자판 상태를 구하려고 한다.</p>\n<p>예를 들어, 초기 상태가 아래와 같은 경우를 보자.</p>\n<pre>\n...\n.O.\n...</pre>\n<p>1초가 지난 후에는 아무 일도 벌어지지 않기 때문에, 위와 같다고 볼 수 있다. 1초가 더 흐른 후에 격자판의 상태는 아래와 같아진다.</p>\n<pre>\nOOO\nOOO\nOOO</pre>\n<p>1초가 지난 후엔 가운데에 있는 폭탄이 폭발해 가운데 칸과 인접한 네 칸이 빈 칸이 된다.</p>\n<pre>\nO.O\n...\nO.O\n</pre>",
+  "input": "<p>첫째 줄에 R, C, N (1 ≤ R, C, N ≤ 200)이 주어진다. 둘째 줄부터 R개의 줄에 격자판의 초기 상태가 주어진다. 빈 칸은 '<code>.</code>'로, 폭탄은 '<code>O</code>'로 주어진다.</p>",
+  "output": "<p>총 R개의 줄에 N초가 지난 후의 격자판 상태를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "6 7 3\n.......\n...O...\n....O..\n.......\nOO.....\nOO.....\n",
+      "output": "OOO.OOO\nOO...OO\nOOO...O\n..OO.OO\n...OOOO\n...OOOO\n"
+    },
+    {
+      "input": "6 7 4\n.......\n...O...\n....O..\n.......\nOO.....\nOO.....\n",
+      "output": "OOOOOOO\nOOOOOOO\nOOOOOOO\nOOOOOOO\nOOOOOOO\nOOOOOOO\n"
+    },
+    {
+      "input": "6 7 5\n.......\n...O...\n....O..\n.......\nOO.....\nOO.....\n",
+      "output": ".......\n...O...\n....O..\n.......\nOO.....\nOO.....\n"
+    }
+  ],
+  "hint": "<p>아래는 시간이 지난 후 예제 격자판의 상태이다.</p>\n<pre>\n.......\n...O...\n....O..\n.......\nOO.....\nOO.....\n\n&lt;초기 상태, 1초 후&gt;\n\nOOOOOOO\nOOOOOOO\nOOOOOOO\nOOOOOOO\nOOOOOOO\nOOOOOOO\n\n&lt;2초 후&gt;\n\nOOO.OOO\nOO...OO\nOOO...O\n..OO.OO\n...OOOO\n...OOOO\n\n&lt;3초 후&gt;\n\nOOOOOOO\nOOOOOOO\nOOOOOOO\nOOOOOOO\nOOOOOOO\nOOOOOOO\n\n&lt;4초 후&gt;\n\n.......\n...O...\n....O..\n.......\nOO.....\nOO.....\n\n&lt;5초 후&gt;\n</pre>",
+  "source": "baekjoon",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 5563,
+  "submission_count": null,
+  "average_tries": 2.4974000453948975
+}

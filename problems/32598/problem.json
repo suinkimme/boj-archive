@@ -1,0 +1,32 @@
+{
+  "id": 32598,
+  "title": "Disgruntled Diner",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Diana is head chef at the Batavian Authentic Prestigious Cuisine. All orders are logged to a central computer, but to organize the kitchen, each ordered item is also printed on a separate <em>ticket</em>. On the back of each ticket, Diana writes the corresponding table number, so servers can easily check where they need to deliver the food. When a ticket is completed, Diana pins it to a board. Of course, there could be duplicate tickets, since a table may order the same item multiple times.</p>\n<p>Halfway through service, a disgruntled diner complains: \"We have been waiting for hours, but so far we were <em>only</em> served tomato soup! Could you please hurry up?\" Diana must address this immediately, since the reputation of the restaurant is at stake! However, in the past, some customers have been dishonest in order to demand expedited service. So, before Diana instructs the kitchen staff, the complaint must be verified.</p>\n<p>Since the board is always up-to-date, verification is a matter of checking the relevant tickets. Let $t$ and $m$ be the table number and menu item that describe the complaint, respectively. Diana seeks to verify the following claim: \"All pinned-up tickets for table $t$ correspond to menu item $m$.\" In particular, if there are no completed tickets for table $t$, Diana considers the claim to be true -- the customer may have misspoken, but they surely deserve extra attention!</p>\n<p>Unfortunately, on the board, only one side of each ticket is visible (either the menu item or table number) and Diana does not have time to flip hundreds of tickets. However, by cross-referencing with the central computer, it may be possible to safely ignore certain tickets. Help Diana determine the minimum set of pinned-up tickets that need to be flipped. Or can you (dis)prove the claim without flipping any tickets? You must decide which tickets should be flipped before Diana starts doing so -- she is too strained to make deductions on the fly.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two integers $n$ and $k$ ($1 \\le k \\le n \\le 500$), the number of orders in the computer and the number of pinned-up tickets.</li>\n<li>One line with $n$ strings representing the orders in the computer, each string consisting of one English uppercase letter (the menu item, <code>A-Z</code>) and one digit (the table number, <code>0-9</code>).</li>\n<li>One line with $k$ characters representing the pinned-up tickets, each character being either an English uppercase letter or a digit.</li>\n<li>One line with a digit $t$ (<code>0-9</code>) and an English uppercase letter $m$ (<code>A-Z</code>), specifying the claim: \"All pinned-up tickets for table $t$ correspond to menu item $m$.\"</li>\n</ul>\n<p>The pinned-up tickets are guaranteed to correspond to (a subset of) the orders in the computer.</p>",
+  "output": "<p>If, without flipping any tickets, the claim is provably true or false, output \"<code>true</code>\" or \"<code>false</code>\", respectively. Otherwise, output the minimum number of pinned-up tickets that need to be flipped, followed by their $1$-based indices, in any order.</p>",
+  "samples": [
+    {
+      "input": "6 4\nA1 A2 B1 B2 C1 C2\nA B 1 2\n1 A\n",
+      "output": "2\n3 2\n"
+    },
+    {
+      "input": "5 4\nA1 B1 C2 C1 A2\n2 A B 1\n1 A\n",
+      "output": "false\n"
+    },
+    {
+      "input": "4 4\nZ0 Z0 F9 F9\nZ 0 9 9\n4 F\n",
+      "output": "true\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2024",
+  "level": 21,
+  "tags": [
+    "bipartite_matching"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

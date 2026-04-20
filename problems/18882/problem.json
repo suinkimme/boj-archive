@@ -1,0 +1,26 @@
+{
+  "id": 18882,
+  "title": "Cowntact Tracing",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Farmer John is worried for the health of his cows (conveniently numbered $1 \\ldots N$ as always) after an outbreak of the highly contagious bovine disease COWVID-19.</p>\n<p>Recently, Farmer John tested all of his cows and found some of them to be positive for the disease. Using video footage from inside his barn, he is able to review recent interactions between pairs of cows --- it turns out that when cows greet each-other, they shake hooves, a gesture that can unfortunately spread the infection from one cow to another. Farmer John assembles a time-stamped list of interacting pairs of cows, with entries of the form $(t, x, y)$, meaning that at time $t$, cow $x$ shook hooves with cow $y$. Farmer John also knows the following:</p>\n<p>(i) Exactly one cow on his farm could have started out carrying the disease (we'll call this cow \"patient zero\").</p>\n<p>(ii) Once a cow is infected, she passes the infection along with her next $K$ hoof shakes (possibly including the same partner cow several times). After shaking hooves $K$ times, she no longer passes the infection along with subsequent hoof shakes (since at this point she realizes she is spreading the infection and washes her hooves carefully).</p>\n<p>(iii) Once a cow is infected, she stays infected.</p>\n<p>Unfortunately, Farmer John doesn't know which of his $N$ cows is patient zero, nor does he know the value of $K$! Please help him narrow down the possibilities for these unknowns based on his data. It is guaranteed that at least one possibility is valid.</p>",
+  "input": "<p>The first line of the input file contains $N$ ($2 \\leq N \\leq 100$) and $T$ ($1 \\leq T \\leq 250$). The next line contains a string of length $N$ whose entries are 0s and 1s, describing the current state of Farmer John's $N$ cows --- 0 represents a healthy cow and 1 represents a cow presently with the disease. Each of the next $T$ lines describes a record in Farmer John's list of interactions and consists of three integers $t$, $x$, and $y$, where $t$ is a positive integer time of the interaction ($t \\leq 250$) and $x$ and $y$ are distinct integers in the range $1 \\ldots N$, indicating which cows shook hands at time $t$. At most one interaction happens at each point in time.</p>",
+  "output": "<p>Print a single line with three integers $x$, $y$, and $z$, where $x$ is the number of possible cows who could have been patient zero, $y$ is the smallest possible value of $K$ consistent with the data, and $z$ is the largest possible value of $K$ consistent with the data (if there is no upper bound on $K$ that can be deduced from the data, print \"Infinity\" for $z$). Note that it might be possible to have $K=0$.</p>",
+  "samples": [
+    {
+      "input": "4 3\n1100\n7 1 2\n5 2 3\n6 2 4\n",
+      "output": "1 1 Infinity\n"
+    }
+  ],
+  "hint": "<p>The only candidate for patient zero is cow 1. For all $K&gt;0$, cow 1 infects cow 2 at time 7, while cows 3 and 4 remain uninfected.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2019-2020 Season, USACO 2020 US Open Contest, Bronze",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "bruteforcing",
+    "simulation"
+  ],
+  "accepted_user_count": 151,
+  "submission_count": null,
+  "average_tries": 3.463599920272827
+}

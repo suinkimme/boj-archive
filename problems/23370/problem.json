@@ -1,0 +1,30 @@
+{
+  "id": 23370,
+  "title": "git mv",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>During development, you recently moved a file from one location to another. To keep your development team up to date with the change you made, you want to send them a short description of the change, without making use of any versioning software.</p>\n<p>Both the source location and destination are valid Unix path names, that is, a nonempty string consisting of lowercase letters and \"<code>/</code>\" such that no \"<code>/</code>\" occurs at the begin or the end, nor does it contain two consecutive forward slashes.</p>\n<p>You need to find the shortest string of the form \"<code>A{B =&gt; C}D</code>\" such that:</p>\n<ul>\n<li>The source location is \"<code>ABD</code>\" and the destination is \"<code>ACD</code>\", where double forward slashes should be read as one forward slash. For example, if a file is moved from \"<code>a/c</code>\" to \"<code>a/b/c</code>\", we can describe this movement by \"<code>a/{ =&gt; b}/c</code>\", meaning the source location was \"<code>a/c</code>\" and not \"<code>a//c</code>\".</li>\n<li>The string $A$ is empty or ends with a forward slash, and similarly $D$ is empty or starts with a forward slash.</li>\n<li>Both $B$ and $C$ do not start or end with a forward slash.</li>\n</ul>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line containing the source location.</li>\n<li>One line containing the destination location.</li>\n</ul>\n<p>Both lines will contain at most $10^6$ characters, will not begin or end with a forward slash and will not contain any directory name twice. The two strings are guaranteed to be different.</p>",
+  "output": "<p>Output the shortest replacement string that transforms the source location to the destination, satisfying the above constraints.</p>",
+  "samples": [
+    {
+      "input": "www/public/passwords\nprivate/passwords\n",
+      "output": "{www/public => private}/passwords\n"
+    },
+    {
+      "input": "home/linus/downloads/image\nhome/linus/pictures/recent/image\n",
+      "output": "home/linus/{downloads => pictures/recent}/image\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2021 Preliminaries",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "string",
+    "parsing"
+  ],
+  "accepted_user_count": 41,
+  "submission_count": null,
+  "average_tries": 2.8048999309539795
+}

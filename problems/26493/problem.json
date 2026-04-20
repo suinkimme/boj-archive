@@ -1,0 +1,64 @@
+{
+  "id": 26493,
+  "title": "Tennis",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Little MP loves watching tennis tournaments with his family and friends. He has recently watched the <em>Australian Open 2022</em> Finals on TV and noticed that each tennis ball used by the players must have an integer weight from $0$ to $w - 1$, inclusive. Moreover, there may be several different models of balls with each weight. For weight $i$, there exist $v_i$ different models with this weight.<sup>1</sup> <em>We consider that any two balls with the same weight and model are identical.</em></p>\n<p>Little MP goes to InfO(1)Sports, one of his favorite sports shops from his hometown, and enthusiastically finds out that there is an infinite supply for every single tennis ball model he saw on TV the last month. In other words, for each weight $i$, there are infinitely many balls for each of the $v_i$ models with that weight.</p>\n<p>Little MP wants to buy $n$ tennis balls, but he has a constraint on this purchase. Suppose he buys the balls with weights $w_1, \\dots , w_n$ and models $m_1, \\dots , m_n$, respectively. He then requires that: $$(w_1 + \\dots + w_n) \\mod w ≤ x\\text{.}$$</p>\n<p>Furthermore, the sports shop has a very strange way of determining the prices of the balls. The price of the sequence of the $n$ balls mentioned above is given by $count^k$, where $count$ is the number of balls from the sequence with weight <em>at most $y$</em>.</p>\n<p>Little MP is now curious about something: if we consider all the possible sequences of $n$ balls that satisfy Little MP’s requirements, what is the sum of their costs? (A sequence may contain multiple identical balls; the order <em><strong>matters</strong></em> within such a sequence. For example, if $(w, m)$ denotes a ball with weight $w$ and model $m$, then the sequence $(1, 2)$, $(2, 1)$ is different from the sequence $(2, 1)$, $(1, 2)$. Thus, two sequences are considered identical if and only if they contain identical balls on all positions.)</p>\n<hr/>\n<p><sup>1</sup>We use the convention that if $v_i = 0$, then no ball with weight $i$ was used at the tennis tournament.</p>",
+  "input": "<p>The first line of the input contains the integers $n$, $w$, $k$, $x$, and $y$. The second line of the input contains the integers $v_0, v_1, \\dots , v_{w-1}$, representing the number of different models of tennis balls with each weight, as described above.</p>",
+  "output": "<p>The only line of the output contains just one number: the sum of the costs of all the possible sequences of $n$ balls that satisfy Little MP’s requirements modulo $10^9 + 7$.</p>",
+  "samples": [
+    {
+      "input": "7 3 2 1 1\n0 0 0\n",
+      "output": "0\n"
+    },
+    {
+      "input": "1000000 4 1 2 1\n0 0 0 0\n",
+      "output": "0\n"
+    },
+    {
+      "input": "1 2 1 1 1\n2 2\n",
+      "output": "4\n"
+    },
+    {
+      "input": "1 2 2 1 1\n2 2\n",
+      "output": "4\n"
+    },
+    {
+      "input": "2 2 1 1 1\n2 2\n",
+      "output": "32\n"
+    },
+    {
+      "input": "1 3 1 1 1\n1 1 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 2 1 1 1\n25 37\n",
+      "output": "714984\n"
+    },
+    {
+      "input": "6 5 2 3 2\n1 2 6 70 1\n",
+      "output": "227678571\n"
+    },
+    {
+      "input": "6 5 1 2 3\n1 6 70 1 4\n",
+      "output": "398503624\n"
+    },
+    {
+      "input": "500 4 1 2 3\n10 20 30 40\n",
+      "output": "651382141\n"
+    }
+  ],
+  "hint": "<p>We denote a ball with weight $w$ and model $m$ with $(w, m)$.</p>\n<p>In the first two examples, there are no balls at all. Thus, there are no sequences of balls that can be bought, and the sum of their costs is $0$.</p>\n<p>In the third and fourth examples, the balls are $(0, 1)$, $(0, 2)$, $(1, 1)$, $(1, 2)$. Little MP could buy $(0, 1)$, or $(0, 2)$, or $(1, 1)$, or $(1, 2)$. Each of these sequences has cost a cost equal to $1$ in both examples (since $1^1 = 1^2 = 1$). Thus, the total cost is $4$.</p>\n<p>In the fifth example, we have the same possible balls, and Little MP can buy any pair of balls. Thus, Little MP can buy $4 × 4 = 16$ sequences of balls. The cost of a pair of balls is the number of balls whose weight is at most $1$ (i.e. all $n = 2$ of them) to the power of $k = 1$, so the cost is $2$. Therefore, the sum of costs is $32$.</p>\n<p>In the next example, there are three possible balls, $(0, 1)$, $(1, 1)$, $(2, 1)$. Little MP can buy one ball whose weight is at most $1$ modulo $3$, so he can buy either $(0, 1)$ or $(1, 1)$. Both of these sequences have cost $1$, so the total cost is $2$.</p>",
+  "source": "Contest, infO(1) Cup, infO(1) Cup 2022",
+  "level": 20,
+  "tags": [
+    "math",
+    "dp",
+    "number_theory",
+    "combinatorics",
+    "exponentiation_by_squaring"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

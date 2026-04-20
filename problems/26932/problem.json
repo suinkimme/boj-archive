@@ -1,0 +1,34 @@
+{
+  "id": 26932,
+  "title": "Gridvolleyboll",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Gridvolleyboll spelas med två spelare i varje lag (som beachvolley) men spelarna kan bara slå på bollen när de står på någon av de förutbestämda gridpunkterna. Ett slag går till så att en spelare som står på en \"tillräckligt närliggande\" gridpunkt flyttar sig till den gridpunkt där bollen befinner sig. Endast den spelare som just ska slå bollen får röra sig. Spelaren bestämmer en gridpunkt dit hen vill slå bollen, antingen på den egna planhalvan (en \"passning\") eller på motståndarlagets planhalva (ett \"överslag\"). Bollen hamnar alltid på just den tilltänkta gridpunkten och kan inte snappas upp på vägen. Om det inte finns någon spelare som kan ta sig till gridpunkten där bollen är, så förlorar det lag där bollen befinner sig denna poäng. Liksom i beachvolley får bollen slås högst tre gånger på en planhalva (två passningar och ett överslag), och samma person får inte slå bollen två gånger i rad. Det första slaget (serven) ska alltid ske från ett av planens hörn och måste alltid vara ett direkt överslag. Det är dessutom förutbestämt att den första spelaren ($A1$) i lag $A$ ska serva.</p>\n<p>Skriv ett program som, givet planens storlek och de fyra spelarnas egenskaper, beräknar vilket lag som vinner poängen om båda lagen spelar optimalt. Om inget av lagen kan tvinga sig till en vinst kommer bollen att pågå oändligt länge och vi räknar resultatet som oavgjort. </p>\n<p>Nätet är genomskinligt, så spelarna kan se motståndarlagets placering (men kom ihåg att man inte får röra sig förrän man ska slå bollen). Spelet börjar på följande sätt: Först intar lag $A$ sina platser: spelare $A1$ i ett hörn och spelare $A2$ på valfri plats. Därefter intar spelarna $B1$ och $B2$ sina (helt valfria) platser, medan lag $A$ inte får flytta sig. Slutligen servar spelare $A1$ och spelet är igång. Du kan anta att spelarna rör sig oberoende av varandra, de kan t.o.m. befinna sig på samma gridpunkt. Däremot får de inte gå utanför planen eller in på motståndarnas planhalva.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 822px; height: 200px;\"/></p>\n<p style=\"text-align: center;\">En möjlig spelsekvens i exempel $4$, där båda lagen spelar optimalt, d.v.s. lag $A$ spelar på ett sådant sätt att de garanterat vinner på högst $5$ överslag medan lag $B$ spelar på ett sådant sätt att lag $A$ inte kan vinna på mindre än $5$ överslag. Däremot finns det för båda lagen massor av likvärdiga spelsätt. Till vänster visas planens utformning med gridpunkterna markerade som kryss och de två möjliga servepunkterna markerade med kvadrater runt kryssen. Dessutom visas en utgångsställning för de fyra spelarna som är vinnande för lag $A$ och optimal för lag $B$. Vidare visas bollens väg med böjda röda pilar, medan spelarnas rörelser visas med blåa raka pilar. För tydlighets skull har spelsekvensen delats upp så att den vänstra figuren visar sekvensen till och med det tredje överslaget, och den högra figuren visar resten av sekvensen, som slutar med att lag $A$ slår över en boll som lag $B$ omöjligt kan ta.</p>",
+  "input": "<p>Den första raden innehåller talen $x$ ($2 \\le X \\le 4$) och $y$ ($2 \\le Y \\le 3$), antalet gridpunkter i $x$-led och $y$-led på varje planhalva (se figuren ovan).</p>\n<p>Därefter följer fyra rader som vardera beskriver en spelare, i ordningen $A1$, $A2$, $B1$ och $B2$. Varje rad består av två heltal $F$ ($0 \\le F \\le 25$)  och $S$ ($0 \\le S \\le 5$), där $\\sqrt{F}$ är det maximala avståndet spelaren kan slå bollen och $\\sqrt{S}$ är det maximala avståndet spelaren kan röra sig under ett slag, d.v.s. det maximala avståndet spelaren kan befinna sig från den gridpunkt dit bollen är på väg för att kunna nå den i tid.</p>",
+  "output": "<p>Skriv först ut resultatet för lag $A$: <code>win</code>, <code>loss</code> eller <code>tie</code> för vinst, förlust eller oavgjort. Om lag $A$ vinner ska programmet därefter skriva ut det minsta antalet överslag (båda lagens räknade) som krävs för att lag $A$ garanterat ska vinna (alltid udda antal). Om lag $A$ förlorar ska programmet istället skriva ut det minsta antalet överslag (båda lagens räknade) som krävs för att lag $B$ garanterat ska vinna (alltid jämnt antal). Om det blir oavgjort behöver inget tal skrivas ut.</p>",
+  "samples": [
+    {
+      "input": "2 2\n8 0\n3 0\n1 0\n2 0\n",
+      "output": "loss\n2\n"
+    },
+    {
+      "input": "3 2\n10 1\n6 2\n7 1\n5 1\n",
+      "output": "tie\n"
+    },
+    {
+      "input": "3 2\n8 5\n10 2\n7 1\n5 1\n",
+      "output": "loss\n0\n"
+    },
+    {
+      "input": "4 3\n20 1\n15 2\n15 1\n15 1\n",
+      "output": "win\n5\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2012, Final",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

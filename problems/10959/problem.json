@@ -1,0 +1,26 @@
+{
+  "id": 10959,
+  "title": "Nuclearia",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Long ago, the people of Nuclearia decided to build several nuclear plants. They prospered for many years, but then a terrible misfortune befell them. The land was hit by an extremely strong earthquake, which caused all the nuclear plants to explode, and radiation began to spread throughout the country. When the people had made necessary steps so that no more radiation would emanate, the Ministry of Environment started to find out how much individual regions were polluted by the radiation. Your task is to write a program that will answer the queries of the Ministry.</p>\n<p><strong>How radiation spreads</strong></p>\n<p>Nuclearia can be viewed as a rectangle consisting of W × H cells. Each nuclear plant occupies one cell and is parametrized by two positive integers: a, which is the amount of radiation caused to the cell where the plant was, and b, which describes how rapidly the caused radiation decreases as we go farther from the plant.</p>\n<p>More precisely, the amount of radiation caused to cell C = [x<sub>C</sub>, y<sub>C</sub>] by explosion of a plant in cell P = [x<sub>P</sub>, y<sub>P</sub>] is max(0, a − b · d(P, C)), where d(P, C) is the distance of the two cells, defined by d(P, C) = max(|x<sub>P</sub> − x<sub>C</sub>| , |y<sub>P</sub> − y<sub>C</sub>|) (i.e., the minimum number of moves a chess king would travel between them).</p>\n<p>The total radiation in a cell is simply the sum of the amounts that individual explosions caused to it.</p>\n<p>As an example, consider a plant with a = 7 and b = 3. Its explosion causes 7 units of radiation to the cell it occupies, 4 units of radiation to the 8 adjacent cells, and 1 unit of radiation to the 16 cells whose distance is 2. Note that if this plant is situated on the edge of Nuclearia or one cell away from the edge, then the explosion also affects some cells outside Nuclearia. An explosion that affects cells outside Nuclearia is called boundary. (Actually, we are never interested in what happens outside Nuclearia. We just need this definition in the Grading section below.)</p>\n<p><strong>Queries</strong></p>\n<p>The Ministry of Environment makes several queries about the average-per-cell radiation in a given rectangular region. As great chaos rules in the Ministry, you may make no further assumptions about the queried regions — they may overlap or even repeat.</p>",
+  "input": "<p>The description of Nuclearia is read from the standard input. The first line contains two space-separated positive integers W and H (where W ·H ≤ 2 500 000) which stand for the width and height of Nuclearia, respectively. The second line contains a positive integer N, which is the number of exploded plants (1 ≤ N ≤ 200 000). Each of the following N lines contains four positive integers x<sub>i</sub>, y<sub>i</sub>, a<sub>i</sub>, b<sub>i</sub> (1 ≤ x<sub>i</sub> ≤ W, 1 ≤ y<sub>i</sub> ≤ H, 1 ≤ a<sub>i</sub>, b<sub>i</sub> ≤ 10<sup>9</sup>), which describe a plant in cell [x<sub>i</sub>, y<sub>i</sub>] with parameters a<sub>i</sub>, b<sub>i</sub>. Each cell contains at most one plant.</p>\n<p>The following line contains a positive integer Q, which is the number of queries (1 ≤ Q ≤ 200 000). Each of the following Q lines contains four positive integers x<sub>1j</sub> , y<sub>1j</sub> , x<sub>2j</sub> , y<sub>2j</sub> (1 ≤ x<sub>1j</sub> ≤ x<sub>2j</sub> ≤ W and 1 ≤ y<sub>1j</sub> ≤ y<sub>2j</sub> ≤ H), which describe a query about the rectangle whose upper-left corner is the cell [x<sub>1j</sub>, y<sub>1j</sub>] and lower-right corner is the cell [x<sub>2j</sub>, y<sub>2j</sub>].</p>\n<p>You can assume that the total radiation in Nuclearia is less than 2<sup>63</sup>.</p>",
+  "output": "<p>For each query, output a line which contains the average-per-cell radiation in the queried region, rounded to the nearest integer (half-integral values are rounded up).</p>",
+  "samples": [
+    {
+      "input": "4 3\n2\n1 1 7 3\n3 2 4 2\n4\n1 2 2 3\n1 1 4 3\n4 2 4 2\n1 3 4 3\n",
+      "output": "4\n4\n2\n2\n"
+    }
+  ],
+  "hint": "<p>The radiation in Nuclearia after the two explosions is as follows.</p>\n<pre>\n7 6 3 2\n4 6 5 2\n1 3 3 2</pre>\n<p>Note that the first explosion is boundary, while the second one is not. As for the queries:</p>\n<ul>\n<li>The total radiation in the 2-by-2 square is 14, so the average is 14/4 = 3.5, rounded to 4.</li>\n<li>The total radiation in Nuclearia is 44, so the average is 44/12 ≈ 3.67, rounded to 4.</li>\n<li>The average in a single cell is simply the amount of radiation therein.</li>\n<li>The average radiation in the last row is 9/4 = 2.25, rounded to 2.</li>\n</ul>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2015, Day 2",
+  "level": 22,
+  "tags": [
+    "case_work",
+    "dp",
+    "implementation"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 9.5
+}

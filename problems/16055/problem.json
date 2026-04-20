@@ -1,0 +1,31 @@
+{
+  "id": 16055,
+  "title": "Perpetuum Mobile",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The year is 1902. Albert Einstein is working in the patent office in Bern. Many patent proposals contain egregious errors; some even violate the law of conservation of energy. To make matters worse, the majority of proposals make use of non-standard physical units that are not part of the metric system (or not even documented). All proposals are of the following form:</p>\n<ul>\n<li>Every patent proposal contains n energy converters.</li>\n<li>Every converter has an unknown input energy unit associated with it.</li>\n<li>Some energy converters can be connected: If converter a can be connected to converter b such that one energy unit associated with a is turned into c input units for b, then this is indicated by an arc a → b (c) in the proposal. The output of a can be used as input for b if and only if such an arc from a to b exists.</li>\n</ul>\n<p>Einstein would like to dismiss all those proposals out of hand where the energy converters can be chained up in a cycle such that more energy is fed back to a converter than is given to it as input, thereby violating the law of conservation of energy.</p>\n<p>Einstein’s assistants know that he is born for higher things than weeding out faulty patent proposals. Hence, they take care of the most difficult cases, while the proposals given to Einstein are of a rather restricted form: Every admissible patent proposal given to Einstein does not allow for a cycle where the total product of arc weights exceeds 0.9. By contrast, every inadmissible patent proposal given to Einstein contains a cycle where the the number of arcs constituting the cycle does not exceed the number of converters defined in the proposal, and the total product of arc weights is greater or equal to 1.1.</p>\n<p>Could you help Einstein identify the inadmissible proposals?</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>one line with two integers n and m, where\n\t<ul>\n<li>n (2 ≤ n ≤ 800) is the number of energy converters;</li>\n<li>m (0 ≤ m ≤ 4000) is the number of arcs.</li>\n</ul>\n</li>\n<li>m lines each containing three numbers a<sub>i</sub>, b<sub>i</sub>, and c<sub>i</sub>, where\n\t<ul>\n<li>a<sub>i</sub> and b<sub>i</sub> (1 ≤ a<sub>i</sub>, b<sub>i</sub> ≤ n) are integers identifying energy converters;</li>\n<li>c<sub>i</sub> (0 &lt; c<sub>i</sub> ≤ 5.0) is a decimal number</li>\n</ul>\n\tindicating that the converter ai can be connected to the converter bi such that one input unit associated with a<sub>i</sub> is converted to c<sub>i</sub> units associated with b<sub>i</sub>. The number c<sub>i</sub> may have up to 4 decimal places.</li>\n</ul>",
+  "output": "<p>Output a single line containing inadmissible if the proposal given to Einstein is inadmissible, admissible otherwise.</p>",
+  "samples": [
+    {
+      "input": "2 2\n1 2 0.5\n2 1 2.3\n",
+      "output": "inadmissible\n"
+    },
+    {
+      "input": "2 2\n1 2 0.5\n2 1 0.7\n",
+      "output": "admissible\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2017",
+  "level": 14,
+  "tags": [
+    "floyd_warshall",
+    "graphs",
+    "math",
+    "shortest_path"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 2.8333001136779785
+}

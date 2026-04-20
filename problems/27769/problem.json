@@ -1,0 +1,29 @@
+{
+  "id": 27769,
+  "title": "The Cartesian Job",
+  "time_limit": "40 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You may have heard of the platinum-iridium cylinder that serves as the standard for the kilogram, but did you know that there is a special line segment used as the standard for the kilometer? It runs from (0, 0) to (0, 1000) in a 2D plane in a confidential and very flat location.</p>\n<p>Naturally, this segment is extremely valuable, so it is protected by <b>N</b> rotating surveillance lasers, which are rays in the 2D plane. Each laser has a fixed endpoint, and it rotates around that endpoint at a constant speed of 1 revolution per second. Whether each laser rotates clockwise or counterclockwise is chosen uniformly and independently at random by the security system.</p>\n<p>Lasers are not blocked by other lasers or their endpoints, or the segment itself. No laser has an endpoint on the segment.</p>\n<p>You have been hired to audit the security system, but all you have to work with is a single snapshot from an instant in time, which shows the endpoint and orientation (at that instant) of each laser. Since the image is just a snapshot, you have no way of inferring the rotation directions of the lasers.</p>\n<p>You have determined that the segment could be stolen in a heist if there is ever a non-empty open interval of time during which no laser is touching the segment. What is the probability of this happening?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each case begins with one line containing one integer <b>N</b>: the number of lasers. Then, <b>N</b> more lines follow. The i-th of these lines represents the ray that is the i-th laser, and contains four integers <b>X<sub>i</sub></b>, <b>Y<sub>i</sub></b>, <b>X<sub>i</sub>'</b>, and <b>Y<sub>i</sub>'</b>, representing the 2D coordinates of the endpoint of the ray, followed by the 2D coordinates of some other point on the ray.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the probability described above. <code>y</code> will be considered correct if it is within an absolute or relative error of 10<sup>-6</sup> of the correct answer.</p>",
+  "samples": [
+    {
+      "input": "3\n5\n0 1001 -1 1001\n0 1001 -1 1001\n0 1001 -2 1001\n0 1001 0 500\n0 1002 1234 5678\n4\n500 500 1000 1000\n500 500 0 1000\n500 500 0 0\n500 500 1000 0\n4\n500 500 1000 1001\n500 500 0 1000\n500 500 0 0\n500 500 1000 0\n",
+      "output": "Case #1: 1.000000\nCase #2: 0.750000\nCase #3: 1.000000\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, note that multiple lasers might share the same endpoint and initial orientation, but this does not necessarily imply that they rotate in the same direction. (Also note that the second and third lasers have the same initial orientation even though it is specified differently.) Regardless of their rotation directions, though, each of these lasers only touches the segment at the instant that it is pointing in the negative y direction, so there is clearly some other open interval during which no laser is touching the segment, and the answer is 1.</p>\n<p>In Sample Case #2, each of the lasers touches the segment during exactly 1/4 of its rotation, and the segment will be touched by a laser at all times if and only if lasers 1 and 4 rotate in the same direction, and lasers 2 and 3 rotate in the same direction. The probability of that is 1/4, so the answer is 3/4.</p>\n<p>Sample Case #3 is like Sample Case #2, but with a slight difference that guarantees that there will be an instant at which no laser is touching the segment, even if the lasers are all rotating the same way. So the answer is 1.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2018, World Finals",
+  "level": 28,
+  "tags": [
+    "math",
+    "graphs",
+    "geometry",
+    "prefix_sum",
+    "probability",
+    "coordinate_compression"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

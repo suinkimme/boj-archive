@@ -1,0 +1,28 @@
+{
+  "id": 20588,
+  "title": "Floyd-Warshall",
+  "time_limit": "5 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Radewoosh has $n$-vertex directed weighted graph. He needs to determine distances between all pairs of vertices. He decided to use Floyd-Warshall's algorithm for that.</p>\n<p>Correct implementation of Floyd-Warshall's algorithm.</p>\n<ol>\n<li>$M$ -- $n \\times n$ matrix. Initially: $$M_{i,j} = \\begin{cases}  0, &amp; \\text{if } i = j \\\\  w_{i,j}, &amp; \\text{if there exists an edge from $i$ to $j$ with weight $w_{i,j}$} \\\\  \\infty &amp; \\text{otherwise}  \\end{cases}$$</li>\n<li><strong>for</strong> $x$ = $1, 2, 3, \\dots, n$ <strong>do</strong></li>\n<li><strong>    for</strong> $y$ = $1, 2, 3, \\dots, n$ <strong>do</strong></li>\n<li><strong>        for</strong> $z$ = $1, 2, 3, \\dots, n$ <strong>do</strong></li>\n<li><strong>            </strong>$M_{y,z} \\leftarrow\\min(M_{y,z}, M_{y,x} + M_{x,z})$</li>\n</ol>\n<p>Unfortunately Radewoosh messed up loops order and his algorithm became incorrect!</p>\n<p>Incorrect implementation of Floyd-Warshall's algorithm.</p>\n<ol>\n<li>$M$ -- $n \\times n$ matrix defined as above.</li>\n<li><strong>for</strong> $y$ = $1, 2, 3, \\dots, n$ <strong>do</strong></li>\n<li><strong>    for</strong> $z$ = $1, 2, 3, \\dots, n$ <strong>do</strong></li>\n<li><strong>        for</strong> $x$ = $1, 2, 3, \\dots, n$ <strong>do</strong></li>\n<li><strong>            </strong>$M_{y,z} \\leftarrow\\min(M_{y,z}, M_{y,x} + M_{x,z})$</li>\n</ol>\n<p>How many distances determined by Radewoosh's algorithm will be incorrect?</p>",
+  "input": "<p>The first line of input contains two integers $n$ and $m$ ($2 \\le n \\le 2\\,000$, $1 \\le m \\le 3\\,000$) denoting number of vertices and number of edges in our graph, respectively.</p>\n<p>Each of the following $m$ lines contains three integers $u_i, v_i, w_i$ ($1 \\le u_i, v_i \\le n$, $u_i \\neq v_i$, $1 \\le w_i \\le 100\\,000$) denoting that $i$-th edge goes from vertex $u_i$ to vertex $v_i$ and has weight $w_i$.</p>\n<p>No ordered pair $(u_i, v_i)$ will be given more than once.</p>",
+  "output": "<p>Output should contain one number --- number of ordered pairs of vertices which have its distance computed incorrectly by Radewoosh's algorithm.</p>",
+  "samples": [
+    {
+      "input": "4 5\n2 3 4\n3 4 3\n4 2 2\n1 3 1\n1 2 9\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2020, Day 1: Warsaw U Contest",
+  "level": 24,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "floyd_warshall",
+    "bitset"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 2.357100009918213
+}

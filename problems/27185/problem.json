@@ -1,0 +1,26 @@
+{
+  "id": 27185,
+  "title": "The Tree",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are given an infinite binary tree. The tree has the root and infinitely many vertices, each vertex has left son and right son, each vertex except the root has a parent.</p>\n<p>Every vertex can be painted in one of $c$ colors or be colorless. Initially, all vertices are colorless.</p>\n<p>You need to process two types of requests:</p>\n<ol>\n<li><code>color</code>($u$, $x$) You are given a vertex $u$, paint vertex $u$ with color $x$, and then call <code>color</code>($L$, $(x + 1) \\bmod c$) for its left son $L$ and <code>color</code>($R$, $(x - 1 + c) \\bmod c$) for its right son $R$. Note that this operation repaints the entire (infinite) set of vertices in the subtree of the vertex $u$. Here $\\bmod$ is the operation of taking a division remainder. If the vertex has already been painted, then its color changes to the new one.</li>\n<li>Given a vertex, output its current color.</li>\n</ol>",
+  "input": "<p>The first line contains two integers $q$, $c$ --- the number of queries and colors, respectively ($1 \\leq q \\leq 5 \\cdot 10^5$, $1 \\leq c \\leq 10^9$). This is followed by $q$ queries, each starts with an integer $t_i$ --- the type of the $i$-th query.</p>\n<p>If $t_i$ = 1, then an integer $x$ ($0 \\leq x \\leq c - 1$) is given in the line, the color that the vertex of the query $u$ should be colored. The next line describes the path to the vertex $u$ in the form of a non-empty string $s_i$ consisting of the characters '<code>L</code>' and '<code>R</code>'. This string specifies the path from the root of the tree to the vertex $u$, where '<code>L</code>' denotes going to the left son, and '<code>R</code>'  --- going to the right son.</p>\n<p>If $t_i$ = 2, then the next line specifies the path to the vertex whose color should be output, described similarly to the previous query.</p>\n<p>It is guaranteed that the sum of the lengths of the paths to all the vertices of the queries does not exceed $5\\cdot 10^5$.</p>",
+  "output": "<p>For each request of the second type print the color of the corresponding vertex on a separate line. If the vertex is colorless, print $-1$.</p>",
+  "samples": [
+    {
+      "input": "6 3\n1 2\nL\n2\nLL\n1 0\nLL\n2\nLLR\n2\nLR\n2\nR\n",
+      "output": "0\n2\n1\n-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia High School Programming Contest, Russia High School Programming Contest 2022",
+  "level": 15,
+  "tags": [
+    "data_structures",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 3.5
+}

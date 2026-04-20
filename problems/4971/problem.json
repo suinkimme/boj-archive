@@ -1,0 +1,26 @@
+{
+  "id": 4971,
+  "title": "Twirling Robot",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Let's play a game using a robot on a rectangular board covered with a square mesh (Figure D-1). The robot is initially set at the start square in the northwest corner facing the east direction. The goal of this game is to lead the robot to the goal square in the southeast corner.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images3/D1.png\" style=\"height:306px; width:704px\"/></p>\n<p style=\"text-align: center;\">Figure D-1: Example of a board</p>\n<p>The robot can execute the following five types of commands.</p>\n<ul>\n<li>\"Straight\": Keep the current direction of the robot, and move forward to the next square.</li>\n<li>\"Right\": Turn right with 90 degrees from the current direction, and move forward to the next square.</li>\n<li>\"Back\": Turn to the reverse direction, and move forward to the next square.</li>\n<li>\"Left\": Turn left with 90 degrees from the current direction, and move forward to the next square.</li>\n<li>\"Halt\": Stop at the current square to finish the game.</li>\n</ul>\n<p>Each square has one of these commands assigned as shown in Figure D-2. The robot executes the command assigned to the square where it resides, unless the player gives another command to be executed instead. Each time the player gives an explicit command, the player has to pay the cost that depends on the command type.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images3/D2.png\" style=\"height:275px; width:677px\"/></p>\n<p style=\"text-align: center;\">Figure D-2: Example of commands assigned to squares</p>\n<p><br/>\nThe robot can visit the same square several times during a game. The player loses the game when the robot goes out of the board or it executes a \"Halt\" command before arriving at the goal square.</p>\n<p>Your task is to write a program that calculates the minimum cost to lead the robot from the start square to the goal one.</p>",
+  "input": "<p>The input is a sequence of datasets. The end of the input is indicated by a line containing two zeros separated by a space. Each dataset is formatted as follows.</p>\n<pre>\nw h\ns(1,1) ... s(1,w)\ns(2,1) ... s(2,w)\n...\ns(h,1) ... s(h,w)\nc<sub>0</sub> c<sub>1</sub> c<sub>2</sub> c<sub>3</sub></pre>\n<p>The integers h and w are the numbers of rows and columns of the board, respectively. You may assume 2 ≤ h ≤ 30 and 2 ≤ w ≤ 30. Each of the following h lines consists of w numbers delimited by a space. The number s(i, j) represents the command assigned to the square in the i-th row and the j-th column as follows.</p>\n<ul>\n<li>0: \"Straight\"</li>\n<li>1: \"Right\"</li>\n<li>2: \"Back\"</li>\n<li>3: \"Left\"</li>\n<li>4: \"Halt\"</li>\n</ul>\n<p>You can assume that a \"Halt\" command is assigned to the goal square. Note that \"Halt\" commands may be assigned to other squares, too.</p>\n<p>The last line of a dataset contains four integers c<sub>0</sub>, c<sub>1</sub>, c<sub>2</sub>, and c<sub>3</sub>, delimited by a space, indicating the costs that the player has to pay when the player gives \"Straight\", \"Right\", \"Back\", and \"Left\" commands respectively. The player cannot give \"Halt\" commands. You can assume that all the values of c<sub>0</sub>, c<sub>1</sub>, c<sub>2</sub>, and c<sub>3</sub> are between 1 and 9, inclusive.</p>",
+  "output": "<p>For each dataset, print a line only having a decimal integer indicating the minimum cost required to lead the robot to the goal. No other characters should be on the output line.</p>",
+  "samples": [
+    {
+      "input": "8 3\n0 0 0 0 0 0 0 1\n2 3 0 1 4 0 0 1\n3 3 0 0 0 0 0 4\n9 9 1 9\n4 4\n3 3 4 0\n1 2 4 4\n1 1 1 0\n0 2 4 4\n8 7 2 1\n2 8\n2 2\n4 1\n0 4\n1 3\n1 0\n2 1\n0 3\n1 4\n1 9 3 1\n0 0\n",
+      "output": "1\n11\n6\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2008 Japan Domestic Contest",
+  "level": 15,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "dijkstra"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 1.166700005531311
+}

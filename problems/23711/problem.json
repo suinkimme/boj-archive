@@ -1,0 +1,40 @@
+{
+  "id": 23711,
+  "title": "Ivan Smirnov",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p><em><a href=\"https://stackoverflow.com/questions/45658828/number-of-ways-to-merge-2-parenthesis-sequences\">https://stackoverflow.com/questions/45658828/number-of-ways-to-merge-2-parenthesis-sequences</a>. Now you can solve a strictly harder problem in about $10^{18}$ years. This almost fits in the time limit. All you have to do is some minor optimizations.</em></p>\n<p>Two sequences of parentheses $s$ and $t$ <strong>mergeable</strong> if they can be interleaved to form a balanced parentheses sequence. Formally, if $s$ has length $n$ and $t$ has length $m$ they are mergeable if and only if there exists a balanced parentheses sequence $p$ of length $n + m$, and two disjoint sequences of indices $a$ and $b$ of length $n$ and $m$ respectively, such that:</p>\n<ol>\n<li>$0 \\leq a_1 &lt; a_2 &lt; \\ldots &lt; a_n &lt; n + m$</li>\n<li>$0 \\leq b_1 &lt; b_2 &lt; \\ldots &lt; b_m &lt; n + m$</li>\n<li>For all $i$ $p_{a_i} = s_i$</li>\n<li>For all $i$ $p_{b_i} = t_i$</li>\n</ol>\n<p>The <strong>RLE</strong> (Run Length Encoding) of some string is a list of pairs $(c_i, a_i)$ where $c_i$ is a character and $a_i$ is a positive integer and $\\forall_i c_i \\neq c_{i+1}$, the length of the encoding (i.e. number of pairs in the list) is called the <strong>run length</strong> of the string. The original string of RLE $[(c_1, a_1), (c_2, a_2), \\ldots, (c_n, a_n)]$ consists of $a_1$ repetitions of character $c_1$, followed by $a_2$ repetitions of character $c_2$, and so on, and ends with $a_n$ repetitions of character $c_n$. It can be shown that RLE is unique.</p>\n<p>You are given an RLE of a parentheses sequence $s$ and RLEs of $m$ other parentheses sequences candidates $t_i$.</p>\n<p>For each $i$ find out if $t_i$ and $s$ are mergeable.</p>",
+  "input": "<p>The input starts with a description of the sequence $s$. The first line contains a single integer $n$ ($1 \\leq n \\leq 3 \\cdot 10^5$), the run length of $s$.</p>\n<p>$n$ lines follow. $i$-th of them describes a single pair in the RLE of $s$ and contains a character $c_i$ and an integer $a_i$ separated by a single space ($c_i \\in \\{ (, ) \\}, c_i \\neq c_{i+1}, 1 \\leq a_i \\leq 10^{12}$).</p>\n<p>The next line contains a single integer $m$ ($1 \\leq n \\leq 3 \\cdot 10^5$), the number of sequences $t$ to check.</p>\n<p>The remaining lines describe those sequences one by one, using the same format as the description of $s$. If this isn't clear you should take a look at the samples.</p>\n<p>It is guaranteed that the sum of run lengths of those $m$ sequences doesn't exceed $3 \\cdot 10^5$. </p>",
+  "output": "<p>Print $m$ lines.</p>\n<p>The $i$-th of those lines should contain <code>1</code> if $t_i$ and $s$ are mergeable and <code>0</code> if they are not.</p>",
+  "samples": [
+    {
+      "input": "4\n( 1\n) 3\n( 3\n) 1\n1\n2\n( 1\n) 1\n",
+      "output": "0\n"
+    },
+    {
+      "input": "2\n( 2\n) 1\n4\n1\n( 1\n1\n) 1\n2\n) 2\n( 1\n2\n) 4\n( 3\n",
+      "output": "0\n1\n1\n0\n"
+    },
+    {
+      "input": "4\n) 2\n( 3\n) 5\n( 100\n3\n1\n) 96\n2\n( 132\n) 228\n4\n( 2\n) 3\n( 5\n) 100\n",
+      "output": "0\n1\n1\n"
+    },
+    {
+      "input": "1\n) 1000000000000\n2\n1\n) 1000000000000\n1\n( 1000000000000\n",
+      "output": "0\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 16: Grand Prix of Moscow",
+  "level": 26,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "priority_queue",
+    "segtree",
+    "trees"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.7273000478744507
+}

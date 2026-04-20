@@ -1,0 +1,47 @@
+{
+  "id": 17641,
+  "title": "Cubeword",
+  "time_limit": "1.1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A cubeword is a special type of a crossword. When building a cubeword, you start by choosing a positive integer a: the side length of the cube. Then, you build a big cube consisting of a × a × a unit cubes. This big cube has 12 edges. Then, you discard all unit cubes that do not touch the edges of the big cube. The figure below shows the object you will get for a = 6.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 129px; height: 117px;\"/></p>\n<p>Finally, you assign a letter to each of the unit cubes in the object. You must get a meaningful word along each edge of the big cube. Each edge can be read in either direction, and it is sufficient if one of the two directions of reading gives a meaningful word.</p>\n<p>The figure below shows the object for a = 6 in which some unit cubes already have assigned letters. You can already read the words ‘<code>SUBMIT</code>’, ‘<code>ACCEPT</code>’ and ‘<code>TURING</code>’ along three edges of the big cube.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 282px; height: 252px;\"/></p>\n<p>You are given a list of valid words. Each word from the wordlist may appear on arbitrarily many edges of a valid cubeword. Find and report the number of different cubewords that can be constructed, modulo 998, 244, 353.</p>\n<p>If one cubeword can be obtained from another by rotation or mirroring, they are considered distinct.</p>",
+  "input": "<p>The first line contains a single integer n (1 ≤ n ≤ 100, 000) – the number of words.</p>\n<p>Then, n lines follow. Each of these lines contains one word that can appear on the edges of the big cube. The length of each word is between 3 and 10, inclusive.</p>\n<p>It is guaranteed that all words are different.</p>",
+  "output": "<p>Output a single integer, the number of distinct cubewords for the given list of valid words modulo 998, 244, 353.</p>",
+  "samples": [
+    {
+      "input": "1\nradar\n",
+      "output": "1\n"
+    },
+    {
+      "input": "1\nrobot\n",
+      "output": "2\n"
+    },
+    {
+      "input": "2\nFLOW\nWOLF\n",
+      "output": "2\n"
+    },
+    {
+      "input": "2\nbaobab\nbob\n",
+      "output": "4097\n"
+    },
+    {
+      "input": "3\nTURING\nSUBMIT\nACCEPT\n",
+      "output": "162\n"
+    },
+    {
+      "input": "3\nMAN1LA\nMAN6OS\nAN4NAS\n",
+      "output": "114\n"
+    }
+  ],
+  "hint": "<p>In the first sample, the only possibility is for the word “<code>radar</code>” to be on each edge of the cube.</p>\n<p>In the second sample, there are two cubes, which are just rotations of each other – the word “<code>robot</code>” is on every edge, and the difference between the two cubes is whether the lower left front corner contains ‘<code>r</code>’ or ‘<code>t</code>’.</p>\n<p>The third sample is similar to the second one. The fact that we can read the word on each edge in both directions does not affect the answer.</p>\n<p>In the fourth sample, there is one cube with the word “<code>bob</code>” on each edge. There are also 212 = 4096 cubes with the word “<code>baobab</code>” on each edge. (For each of the 12 edges, we have two possible directions in which the word “<code>baobab</code>” can appear.)</p>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2019, Day 1",
+  "level": 19,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "combinatorics",
+    "bipartite_graph"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 2
+}

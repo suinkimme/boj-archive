@@ -1,0 +1,29 @@
+{
+  "id": 21017,
+  "title": "Forming Compounds",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Cheryl is an ambitious chemist who likes to conduct an experiment. In her lab, she has N different types of atom numbered from 1 to N. We can assume that for all i, Cheryl has infinitely many atoms of type i. All atoms of the i<sup>th</sup> type have a weight of a positive integer W<sub>i</sub>.</p>\n<p>Cheryl would like to combine atoms of two different types to create a compound. A compound of type (x, y) (1 ≤ x &lt; y ≤ N) can be created by combining at least one atom of type x and at least one atom of type y. The weight of a compound is the sum of the weight of all the atoms used to create it. To avoid destroying her lab, Cheryl would not create a compound with a weight of more than 10<sup>12</sup>. Note that there are N(N−1)/2 distinct compound types.</p>\n<p>The variety of a compound type is the number of distinct weight of that compound that can be created by Cheryl. In other words, the variety of a compound type (x, y) is the number of distinct weight w not more than 10<sup>12</sup> such that there exists positive integers α and β satisfying w = W<sub>x</sub> · α + W<sub>y</sub> · β.</p>\n<p>For example, let N = 5 and W<sub>1...5</sub> = {2, 3, 4, 3, 3}.</p>\n<ul>\n<li>Atoms of the 1<sup>st</sup> type and atoms of the 2<sup>nd</sup> type can be combined to create a compound with a weight of 5 or any weight between 7 and 10<sup>12</sup>, inclusive. Therefore, the variety of compound type (1, 2) is 999 999 999 995.</li>\n<li>Atoms of the 1<sup>st</sup> type and atoms of the 3<sup>rd</sup> type can be combined to create a compound with any even weight between 6 and 10<sup>12</sup>, inclusive. Therefore, the variety of compound type (1, 3) is 499 999 999 998.</li>\n<li>The variety of compound type (1, 4) and (1, 5) is 999 999 999 995.</li>\n<li>Atoms of the 2<sup>nd</sup> type and atoms of the 3<sup>rd</sup> type can be combined to create a compound with a weight of 7, 10, 11, or any weight between 13 and 10<sup>12</sup>, inclusive. Therefore, the variety of compound type (2, 3) is 999 999 999 991.</li>\n<li>Atoms of the 2<sup>nd</sup> type and atoms of the 4<sup>th</sup> type can be combined to create a compound with any weight between 6 and 10<sup>12</sup> that is divisible by 3, inclusive. Therefore, the variety of compound type (2, 4) is 333 333 333 332.</li>\n<li>The variety of compound type (2, 5) and (4, 5) is 333 333 333 332.</li>\n<li>The variety of compound type (3, 4) and (3, 5) is 999 999 999 991.</li>\n</ul>\n<p>For each compound type, Cheryl can choose to create exactly one compound of that type or to not create any compound of that type. We say that a compound type (x, y) is created if Cheryl chooses to create a compound of type (x, y).</p>\n<p>If a compound type (x, y) is created, then any other compound type of the same variety as (x, y) must also be created. There are Q questions that Cheryl would like to answer. For the j<sup>th</sup> question, Cheryl is wondering whether she can create exactly K<sub>j</sub> compounds.</p>",
+  "input": "<p>Input begins with a line containing two integers: N Q (2 ≤ N ≤ 500; 1 ≤ Q ≤ 100 000) representing the number of atom types and the number of questions, respectively. The next line contains N integers: W<sub>i</sub> (1 ≤ W<sub>i</sub> ≤ 100 000) representing the weight of the atoms. The next Q lines each contains an integer: K<sub>j</sub> (1 ≤ K<sub>j</sub> ≤ N(N−1)/2) representing the number of compounds to be created.</p>",
+  "output": "<p>For each query in the same order as input, output in a line a string “<code>YES</code>” (without quotes) or “<code>NO</code>” (without quotes) whether it is possible to create exactly K<sub>j</sub> compounds.</p>",
+  "samples": [
+    {
+      "input": "5 4\n2 3 4 3 3\n1\n2\n3\n10\n",
+      "output": "YES\nNO\nYES\nYES\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2020",
+  "level": 21,
+  "tags": [
+    "bitset",
+    "dp",
+    "euclidean",
+    "knapsack",
+    "math",
+    "number_theory"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.799999952316284
+}

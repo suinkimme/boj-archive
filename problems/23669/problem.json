@@ -1,0 +1,32 @@
+{
+  "id": 23669,
+  "title": "Philosophical Balance",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>Some power influenced Rikka to stand LCR up. Is it a coincidence that LCR brought her to the middle school attached to the EC Final host?</p>\n<p>Rikka is trying to enter the NWPU, but the guard who has been possessed by the devil doesn't let her in. Now she has an idea of forging a pass.</p>\n<p>The key is the pass ID, a special string for access-handshaking. The guard has a string $s$ of length $n$ as the secret key; when he checks a pass, he chooses a suffix of it (that is, a substring containing the last character), and calculates the length $l$ of the longest common prefix of the pass ID and the suffix. $l$ is proportion to the probability to let her pass.</p>\n<p>Now Rikka has got the secret key in some secret way. She wants to choose a suffix as the pass ID, too. Since the suffix which the guard will choose is unknown, Rikka would choose her pass ID randomly. That is, Rikka would design a probability distribution for the suffixes (i.e. a series of real numbers $\\{p_i\\}, i = 1, 2, \\dots , n$, such that $p_i \\ge 0, \\sum_{i=1}^n p_i = 1$, which means she would choose the suffix of length $i$, denoted by $s_i$, with a probability of $p_i$), and maximize the minimum mathematical expectation of $l$ for any suffix the guard chooses.</p>\n<p>Could you please calculate the maximum value of the minimum mathematical expectation of $l$? Precisely speaking, what you should calculate is $$\\max_{\\{p_i\\}} \\left(\\min_{j=1}^n\\left(\\sum_{k=1}^n p_k \\mathrm{lcp}(s_k,s_j)\\right)\\right),$$ where $\\mathrm{lcp}(s_k,s_j)$ means the length of longest common prefix of $s_k$ and $s_j$.</p>",
+  "input": "<p>The first line contains one integer $T (1 \\leq T \\leq 10^5)$, the number of test cases. Then $T$ test cases follow.</p>\n<p>Each test case contains a string $s$ of length $n (1 \\leq n \\leq 2 \\times 10^5)$, consisting of only lowercase letters, the secret key.</p>\n<p>It is guaranteed that the sum of $n$ in all test cases is at most $5 \\times 10^5$.</p>",
+  "output": "<p>Output $T$ lines; each line contains a decimal number, the answer to that test case.</p>\n<p>Your answer is considered correct if the absolute or relative error doesn't exceed $10^{-9}$.</p>",
+  "samples": [
+    {
+      "input": "3\naba\naaaaaaaaaaa\nabcd\n",
+      "output": "0.66666666667\n1\n0.48\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 10: Grand Prix of Xi'An",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "divide_and_conquer",
+    "dp",
+    "game_theory",
+    "math",
+    "probability",
+    "segtree",
+    "string",
+    "suffix_array"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

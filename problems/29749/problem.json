@@ -1,0 +1,21 @@
+{
+  "id": 29749,
+  "title": "Overtaking",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There is a one-lane, one-way road from Budapest Airport to Hotel Forrás. The road is $L$ kilometres long.</p>\n<p>Over the IOI 2023 event, $N+1$ transfer buses traverse this road. Buses are numbered from $0$ to $N$. Bus $i$ ($0 \\le i \\lt N$) is scheduled to leave the airport at the $T[i]$-th second of the event, and can travel $1$ kilometre in $W[i]$ seconds. Bus $N$ is a reserve bus that can travel $1$ kilometre in $X$ seconds. The time $Y$ when it will leave the airport has not yet been decided.</p>\n<p>Overtaking is not allowed on the road in general, but the buses are allowed to overtake each other at <strong>sorting stations</strong>. There are $M$ ($M \\gt 1$) sorting stations, numbered from $0$ to $M - 1$, on different positions on the road. Sorting station $j$ ($0 \\le j \\lt M$) is located $S[j]$ kilometres from the airport along the road. The sorting stations are sorted in increasing distance from the airport, that is, $S[j] \\lt S[j+1]$ for each $0 \\le j \\le M - 2$. The first sorting station is the airport and the last one is the hotel, that is, $S[0] = 0$ and $S[M-1] = L$.</p>\n<p>Each bus travels at maximum speed unless it catches up to a slower bus travelling ahead of it on the road, in which case they get bunched and forced to travel at the speed of the slower bus, until they reach the next sorting station. There, the faster buses will overtake the slower buses.</p>\n<p>Formally, for each $i$ and $j$ such that $0 \\le i \\le N$ and $0 \\le j \\lt M$, the time $t_{i,j}$ (in seconds) when bus $i$ <strong>arrives at</strong> sorting station $j$ is defined as follows. Let $t_{i,0} = T[i]$ for each $0 \\le i \\lt N$, and let $t_{N,0} = Y$. For each $j$ such that $0 \\lt j \\lt M$:</p>\n<ul>\n<li>Define the <strong>expected time of arrival</strong> (in seconds) of bus $i$ at sorting station $j$, denoted by $e_{i,j}$, as the time when bus $i$ would arrive at sorting station $j$ if it was travelling at full speed from the time it arrived at sorting station $j-1$. That is, le\n\n\t<ul>\n<li>$e_{i,j} = t_{i,j-1} + W[i] \\cdot (S[j]-S[j-1])$ for each $0 \\le i \\lt N$, and</li>\n<li>$e_{N,j} = t_{N,j-1} + X \\cdot (S[j]-S[j-1])$.</li>\n</ul>\n</li>\n<li>Bus $i$ arrives at sorting station $j$ at the *maximum* of the expected times of arrivals of bus $i$ and of every other bus that arrived at station $j-1$ earlier than bus $i$. Formally, let $t_{i,j}$ be the maximum of $e_{i,j}$ and every $e_{k,j}$ for which $0 \\le k \\le N$ and $t_{k,j-1} \\lt t_{i,j-1}$.</li>\n</ul>\n<p>The IOI organizers want to schedule the reserve bus (bus $N$). Your task is to answer $Q$ questions of the organizers, which are of the following form: given the time $Y$ (in seconds) when the reserve bus is supposed to leave the airport, at what time would it arrive at the hotel?</p>",
+  "input": "",
+  "output": "",
+  "samples": [],
+  "hint": null,
+  "source": "Olympiad, International Olympiad in Informatics, IOI 2023, Day 2",
+  "level": 23,
+  "tags": [
+    "dp",
+    "data_structures",
+    "tree_set"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 4.173900127410889
+}

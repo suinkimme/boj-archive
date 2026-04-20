@@ -1,0 +1,26 @@
+{
+  "id": 6007,
+  "title": "Cow Toll Paths",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Like everyone else, FJ is always thinking up ways to increase his revenue. To this end, he has set up a series of tolls that the cows will pay when they traverse the cowpaths throughout the farm.</p>\n<p>The cows move from any of the N (1 &lt;= N &lt;= 250) pastures conveniently numbered 1..N to any other pasture over a set of M (1 &lt;= M &lt;= 10,000) bidirectional cowpaths that connect pairs of different pastures A_j and B_j (1 &lt;= A_j &lt;= N; 1 &lt;= B_j &lt;= N). FJ has assigned a toll L_j (1 &lt;= L_j &lt;= 100,000) to the path connecting pastures A_j and B_j.</p>\n<p>While there may be multiple cowpaths connecting the same pair of pastures, a cowpath will never connect a pasture to itself.  Best of all, a cow can always move from any one pasture to any other pasture by following some sequence of cowpaths.</p>\n<p>In an act that can only be described as greedy, FJ has also assigned a toll C_i (1 &lt;= C_i &lt;= 100,000) to every pasture. The cost of moving from one pasture to some different pasture is the sum of the tolls for each of the cowpaths that were traversed plus a *single additional toll* that is the maximum of all the pasture tolls encountered along the way, including the initial and destination pastures.</p>\n<p>The patient cows wish to investigate their options. They want you to write a program that accepts K (1 &lt;= K &lt;= 10,000) queries and outputs the minimum cost of trip specified by each query. Query i is a pair of numbers s_i and t_i (1 &lt;= s_i &lt;= N; 1 &lt;= t_i &lt;= N; s_i != t_i) specifying a starting and ending pasture.</p>\n<p>Consider this example diagram with five pastures:</p>\n<p>The 'edge toll' for the path from pasture 1 to pasture 2 is 3. Pasture 2's 'node toll' is 5.</p>\n<p>To travel from pasture 1 to pasture 4, traverse pastures 1 to 3 to 5 to 4. This incurs an edge toll of 2+1+1=4 and a node toll of 4 (since pasture 5's toll is greatest), for a total cost of 4+4=8.</p>\n<p>The best way to travel from pasture 2 to pasture 3 is to traverse pastures 2 to 5 to 3. This incurs an edge toll of 3+1=4 and a node toll of 5, for a total cost of 4+5=9.</p>",
+  "input": "<ul>\n<li>Line 1: Three space separated integers: N, M, and K</li>\n<li>Lines 2..N+1: Line i+1 contains a single integer: C_i</li>\n<li>Lines N+2..N+M+1: Line j+N+1 contains three space separated integers: A_j, B_j, and L_j</li>\n<li>Lines N+M+2..N+M+K+1: Line i+N+M+1 specifies query i using two space-separated integers: s_i and  t_i</li>\n</ul>",
+  "output": "<ul>\n<li>Lines 1..K: Line i contains a single integer which is the lowest cost of any route from s_i to t_i</li>\n</ul>",
+  "samples": [
+    {
+      "input": "5 7 2\n2\n5\n3\n3\n4\n1 2 3\n1 3 2\n2 5 3\n5 3 1\n5 4 1\n2 4 3\n3 4 4\n1 4\n2 3\n",
+      "output": "8\n9\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2009-2010 Season, USACO December 2009 Contest, Gold",
+  "level": 20,
+  "tags": [
+    "floyd_warshall",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 2.1538000106811523
+}

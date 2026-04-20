@@ -1,0 +1,26 @@
+{
+  "id": 5234,
+  "title": "Find Fame in Disc Arena",
+  "time_limit": "5 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In Grid World, the Disc Arena is a location where programs play gladiator disc games against other programs. There are k games in the disc arena. By winning each game, you gain fame and become popular in the Grid World. Of course, if you lose a game, you are deleted. The amount of fame you gain by winning the i<sup>th</sup> game is f<sub>i</sub> (which may not necessary be positive). Furthermore, to be able to play in the i<sup>th</sup> game, you are required to have first played and won a specified subset S<sub>i</sub> of the games (known in advance) – the games in set S<sub>i</sub> are also called prerequisites. There are no cycles in the prerequisites structure, e.g., it can not happen that a game a is required for game b, b is required for game c, and c is required for playing game a. Note that, the only reason you would play a game with negative fame is because it is a prerequisite to a game with higher positive fame.</p>\n<p>A set C of games is called feasible if for any game i ∈ C, all the prerequisites S<sub>i</sub> are also included in C, i.e., if i ∈ C, then S<sub>i</sub> ⊂ C. The fame associated with C is simply the sum of the fames of all games in C.</p>\n<p>The goal is of course to become as famous as possible !! Given the fames and the prerequisites for a set of games, your goal is to find a feasible set of games with maximum fame.</p>\n<p>For instance, consider the following sets of disc arena games. The prerequisites for each game are indicated using arrows between games. For the first set of games, game 1 has games 2 and 3 as prerequisites, and game 3 has game 2 as a prerequisite. The maximum possible fame is 2, achieved by selecting the set of games {1,2,3}. Game 3 must be selected even though it has a negative fame value, because it is a prerequisite for game 1. For the second set of games, the maximum fame is 3, achieved by selecting the set of games {1,2,4,6}. For the third set of games, the maximum fame is 0, achieved by selecting no games.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 499px; height: 373px;\"/></p>",
+  "input": "<p>The first line of the input is the number of test cases (≤ 100).</p>\n<p>The first line in each test case lists k, the number of games (k ≤ 1000). The games are labeled 1 to k. The next k lines contain the information about the games. The (i + 1)<sup>th</sup> line is in the form “f<sub>i</sub>d<sub>i</sub>u<sub>1</sub>u<sub>2</sub>···u<sub>d<sub>i</sub></sub>”. The first number is the fame you gain by playing game i, the second number is S<sub>i</sub> – the number of prerequisites, and the remaining numbers are members of S<sub>i</sub>.</p>\n<p>Assume that in each scenario, the total number of prerequisites of all games, i.e., Σ<sub>i</sub>|S<sub>i</sub>|, is ≤ 6000.</p>",
+  "output": "<p>For each scenario, print the maximum fame you can gain by playing a feasible set of games as shown below in the example.</p>",
+  "samples": [
+    {
+      "input": "3\n3\n3 2 2 3\n1 0\n-2 1 2\n6\n-1 0\n3 1 1\n2 2 5 2\n2 1 6\n-4 1 6\n-1 0\n10\n-44 5 7 2 4 9 6\n-2 1 5\n10 3 4 9 6\n-129 1 8\n-71 0\n34 1 5\n-27 3 8 5 2\n-121 2 6 2\n169 3 6 7 8\n-117 3 7 1 4\n",
+      "output": "Case 1: Maximum attainable fame = 2\nCase 2: Maximum attainable fame = 3\nCase 3: Maximum attainable fame = 0\n"
+    }
+  ],
+  "hint": null,
+  "source": "School, University of Maryland High School Programming Contest, HSPC 2011",
+  "level": 19,
+  "tags": [
+    "graphs",
+    "flow",
+    "mfmc"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.5
+}

@@ -1,0 +1,30 @@
+{
+  "id": 26195,
+  "title": "Mortgage",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Andrej is a typical modern student, dreaming to buy a house one day. Since buying real property is no piece of cake, he is planning out his life and trying to figure out exactly how and when he will be able to afford one.\nTo buy a house, he aims to take a mortgage loan that will then need to be paid back in multiple payments over the course of several months.\nFor each of the next $n$ months of his life, he will earn the income $a_i$ that can be spent on the mortgage (other costs have already been accounted for, hence $a_i$ can be negative).\nHe is now looking at a list of various properties and mortgage loans and is trying to figure out which of them he can afford.</p>\n<p>Suppose that he takes a mortgage that involves paying $x$ units of money over the course of $k$ months, starting in month $i$, and ending in month $i+k-1$. Each of these months, he needs to be able to pay $x$ units of money. If he has any leftover income in month $i$, i.e. $a_i &gt; x$, he can save the rest and use it towards some of the future payments (same for any leftover money in months $i+1$ to $i+k-1$).\nHowever, he cannot count on saving any money prior to month $i$, regardless of the income in those months. He will spend it all on his current rent and avocado toast.</p>\n<p>You are given the list of Andrej's income for the next $n$ months and a list of $m$ different time intervals.\nThe $i$-th time interval is defined by two numbers, $s_i$, and $k_i$. The mortgage loan starts on the month $s_i$ and lasts for $k_i$ months, i.e. the last payment is done on the month $s_i+k_i-1$. For each of the time intervals, determine what the largest monthly payment that Andrej can afford is.</p>",
+  "input": "<p>The first line contains two integers, $n$ and $m$, the number of months, and the number of different time intervals, respectively.\nThe second line contains $n$ space-separated integers, $a_1, \\ldots, a_n$, Andrej's income over the next $n$ months.\nThis is followed by $m$ lines describing different time intervals, each line containing two space-separated integers $s_i$ and $k_i$.</p>",
+  "output": "<p>Print out $m$ lines, one for each time interval. Print out the largest integer amount of monthly payment that Andrej can afford to pay for the $i$-th mortgage. If the number is strictly smaller than 0, print <code>\"stay with parents\"</code> (without quotation marks).</p>",
+  "samples": [
+    {
+      "input": "9 5\n6 1 10 9 5 -2 3 1 -1\n3 6\n1 4\n3 3\n6 1\n8 2\n",
+      "output": "4\n3\n8\nstay with parents\n0\n"
+    }
+  ],
+  "hint": "<p>For the first interval, a monthly payment of $4$ units is the largest Andrej can afford. For a monthly payment of $5$, he would run out of money for his final payment.\nNegative income on month 6 means that Andrej cannot afford any mortgage for interval 4, regardless of its size.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2022",
+  "level": 22,
+  "tags": [
+    "binary_search",
+    "cht",
+    "convex_hull",
+    "data_structures",
+    "geometry",
+    "prefix_sum",
+    "segtree"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 3.6470999717712402
+}

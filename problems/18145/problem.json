@@ -1,0 +1,26 @@
+{
+  "id": 18145,
+  "title": "Optimal Selection",
+  "time_limit": "8 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Given n distinct numbers, one can output the k-th smallest number without sorting. This problem is known as selection problem, and can be solved in linear time. Some people argue that the existing algorithms for selection is too slow to put into practice. So the conjecture is, every time you encounter an algorithm that uses selection as a building block, you can feel free to replace selection with a fast sorting procedure. However, this conjecture seems not to be true.</p>\n<p>Bob is trying to answer whether the above conjecture is valid, but it turns out to be a complicated problem that requires many trial and error experiments. After some failed trials, he decides to first focus on finding the best algorithm to implement selection. That is to find an algorithm that implements selection with the least number of comparisons. We assume that the n input numbers will be all distinct. For n = 3 and k = 1, an optimal algorithm to solve the selection problem is shown as follows:</p>\n<pre>\ndouble selection(double a[3], int k = 1){\n    if(a[0] &lt; a[1]){\n        if(a[0] &lt; a[2]){\n            return a[0];\n        } else{\n            return a[2];\n        }\n    } else{\n        if(a[1] &lt; a[2]){\n            return a[1];\n        } else{\n            return a[2];\n        }\n    }\n}</pre>\n<p>For every possible (a[0], a[1], a[2]), the above selection function uses at most 2 comparisons. Indeed, 2 comparisons is the best possible if the relative order between two input numbers can be inferred only by comparisons, aka comparison-based algorithms. So the complexity of the selection function for (n, k) = (3, 1) is 2. Now, Bob is considering a more general problem that, the comparison results between some pairs from the input are known before invoking the selection function. The complexity of the selection function is defined as the worst case number of comparisons required, by an optimal comparison-based algorithm, on any possible consistent input array. That is, Bob is wondering what is the complexity of the selection function, given n, k, and some relative order among the n input numbers.</p>",
+  "input": "<p>Three integers n, k, and ℓ are given in the first line. Then ℓ lines follow. Each of the subsequent ℓ lines contains two integers x and y in [0, n − 1] specifying that the relative order between a[x] and a[y] is known to be a[x] &lt; a[y] before invoking the selection function.</p>",
+  "output": "<p>Given n, k, and the relative order between the given ℓ pairs, output the complexity of the selection function.</p>",
+  "samples": [
+    {
+      "input": "3 2 0\n",
+      "output": "3\n"
+    },
+    {
+      "input": "7 2 5\n0 6\n3 6\n4 6\n2 0\n0 5\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Taiwan, 2019 ICPC Asia Taipei-Hsinchu Regional",
+  "level": 24,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

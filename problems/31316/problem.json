@@ -1,0 +1,29 @@
+{
+  "id": 31316,
+  "title": "Books",
+  "time_limit": "6 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The Noname State University (NSU) is preparing for a new type of programming contest. Each university in this contest can be represented only by a single team of two students. There is also the official list of $N$ books which the contestants must read to perform successfully. There's little time left before the contest, and not every student is able to read all books in time.</p>\n<p>Every student knows for each set of books whether she will be able to read it in time. There are $M$ students willing to participate in the contest in the NSU. The coach prepared a list of $K$ candidate teams. To choose a single team for the contest, she wants to know each team's reading capability.</p>\n<p>Assume a team has read a book if at least one member of the team has read it. Your task is to find for each candidate team and for each set of books whether the team members can plan their training in such a way that the team will have read all the books of this set in time.</p>",
+  "input": "<p>The first line of the input file contains three integers: $N$ --- number of books, $M$ --- number of students, and $K$ --- number of candidate teams ($1 \\le N \\le 21$, $2 \\le M \\le 6$, $1 \\le K \\le 6$). Zero-based numbering is used everywhere in this problem.</p>\n<p>The $i$-th of the next $M$ lines defines the capabilities of the $i$-th student. The student's capabilities are described with the string $S_i$ of the length $2^N$ containing 0's and 1's. The $k$-th position of the string contains information on whether the student is able to read the set of books with a bitmask of $k$ in time. This rule is described in detail below.</p>\n<p>Let's number all books from $0$ to $N-1$. Let $X$ be a set of books. Define an array $a_0, a_1, a_2, \\ldots, a_{N-1}$ such that $a_j = 1$, if $j$-th book belongs to $X$, and $a_j = 0$ otherwise. Let's call the number $$k = \\displaystyle\\sum\\limits_{j=0}^{N-1} a_j 2^j$$ the bitmask of the set $X$. Then the $i$-th student is able to read the set of books $X$ in time if and only if the $k$-th symbol of the string $S_i$ equals one.</p>\n<p>$t$-th of the next $K$ lines describes $t$-th candidate team. The team is defined by two integers $a_t$ and $b_t$ --- the numbers of the students in the team. ($0 \\le a_t, b_t &lt; M$, $a_t \\neq b_t$, $t = 0 \\ldots K-1$).</p>\n<p>Regarding the capabilities of each student the following is guaranteed. First, if a student can read a subset of books, she can read any of its subsets. Second, a student can always read an empty set of books, i.e. the starting symbol of her capability string always equals one.</p>",
+  "output": "<p>The output file must contain $K$ lines consisting of 0's and 1's, each containing $2^N$ symbols. The $t$-th line must contain the capabilities of the $t$-th team in the same format in which the students' capabilities are given in the input. I. e. the $k$-th symbol of the $t$-th line must equal $1$ if and only if the $t$-th team is able to read the set $X$ of books with a bitmask $k$ in time.</p>",
+  "samples": [
+    {
+      "input": "3 5 3\n11111010\n11000000\n11001000\n11101000\n11101000\n0 1\n1 2\n3 4\n",
+      "output": "11111111\n11001100\n11111110\n"
+    }
+  ],
+  "hint": "<p>The $0$-th student can read one of the following sets: $\\emptyset$, $\\{0\\}$, $\\{1\\}$, $\\{2\\}$, $\\{0, 1\\}$, $\\{1, 2\\}$. The first student can only read the $0$-th book (or nothing). The second student can read either the $0$-th book or the book numbered $2$ (or nothing). The third and the fourth students can read any single book (or nothing).</p>\n<p>The $0$-th team together is able to read all the books if the $0$-th student reads the books $\\{1, 2\\}$, and the first student reads the book $0$. It's easy to check that the team can also read any other set of books.</p>\n<p>The first team can read the books $0$ and $2$, if its members read different books. The team can also ready any subsets of the set $\\{0, 2\\}$.</p>\n<p>In the second team any member can read not more than one book. Hence, the team together can read any set of two or less books.</p>",
+  "source": "Contest, Open Cup, 2014/2015 Season, Stage 2: Grand Prix of Siberia",
+  "level": 22,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield",
+    "dp_sum_over_subsets",
+    "fft",
+    "math"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.416700005531311
+}

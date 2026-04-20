@@ -1,0 +1,34 @@
+{
+  "id": 24857,
+  "title": "How Many Strings Are Less",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given a set $D$ of $n$ strings and a string $s$. You need to find the number of strings in the set $D$ that are lexicographically less than $s$.</p>\n<p>The given string $s$ is modified $q$ times. Each modification is defined by a pair of an integer $k_i$ and a character $c_i$. Modification $(k_i, c_i)$ means that all characters of the string $s$, starting from $k_i$ and up to the end of the string, are replaced by the character $c_i$.</p>\n<p>For example, let the initial string $s$ be \"<code>anatoly</code>\", then the queries $(5, \\mathtt{o})$, $(3,  \\mathtt{b})$, $(7, \\mathtt{x})$  change the string as follows:</p>\n<p style=\"text-align: center;\">\"<code>anatoly</code>\" $\\to$ \"<code>anatooo</code>\" $\\to$ \"<code>anbbbbb</code>\" $\\to$ \"<code>anbbbbx</code>\"</p>\n<p>After each modification of the string $s$, you need to output the number of strings of the set $D$ that are lexicographically less than $s$.</p>",
+  "input": "<p>The first line contains two integers $n$ and $q$ --- the number of strings of the set $D$ and the number of modifications ($1 \\le n, q \\le 10^6$). </p>\n<p>The second line contains a string $s$ consisting of no more than $10^6$ lowercase Latin letters.</p>\n<p>The following $n$ lines contain the strings of the set $D$. Each string consists of lowercase Latin letters. The total length of the strings in $D$ does not exceed $10^6$.</p>\n<p>The following $q$ lines contain descriptions of modifications. The description consists of the integer $k_i$ and the lowercase letter of the English alphabet $c_i$, separated by a space ($1 \\le k_i \\le |s|$). </p>",
+  "output": "<p>The first line of output must contain the number of strings of the set $D$ that are lexicographically less than the initial string $s$.</p>\n<p>Then output $q$ lines. In the $i$-th line, print the answer after the $i$-th modification.</p>",
+  "samples": [
+    {
+      "input": "4 3\nanatoly\nboris\nanatooo\nanbbbbu\nanba\n5 o\n3 b\n7 x\n",
+      "output": "0\n0\n2\n3\n"
+    },
+    {
+      "input": "5 5\nabcde\nbuz\nababa\nbuild\na\naba\n1 b\n3 z\n2 u\n4 z\n1 a\n",
+      "output": "3\n3\n3\n4\n4\n1\n"
+    }
+  ],
+  "hint": "<p>In the first sample test, the string changes as follows:</p>\n<p style=\"text-align: center;\">\"<code>anatoly</code>\" $\\to$ \"<code>anatooo</code>\" $\\to$ \"<code>anbbbbb</code>\" $\\to$ \"<code>anbbbbx</code>\".</p>\n<ul>\n<li>Initial string \"<code>anatoly</code>\" is lexicographically less than all the strings of the set, so the answer to the problem is $0$.</li>\n<li>After the first modification, the string becomes \"<code>anatooo</code>\" and there is an equal string in the set, but the answer to the problem is still $0$, since it is not less than the current one.</li>\n<li>Then the string becomes  \"<code>anbbbbb</code>\", which is lexicographically greater than \"<code>anatooo</code>\" and \"<code>anba</code>\", but less than  \"<code>anbbbbu</code>\" and \"<code>boris</code>\", so the answer is $2$.</li>\n<li>After the last modification, the line will become \"<code>anbbbbx</code>\", which is lexicographically greater than \"<code>anatooo</code>\", \"<code>anba</code>\" and \"<code>anbbbbu</code>\", the answer is $3$.</li>\n</ul>",
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia Team High School Programming Contest, Russia Team High School Programming Contest 2021",
+  "level": 21,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "trees",
+    "sparse_table",
+    "trie",
+    "tree_compression"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.7691999673843384
+}

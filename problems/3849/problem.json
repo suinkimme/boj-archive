@@ -1,0 +1,22 @@
+{
+  "id": 3849,
+  "title": "Palindromic DNA",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A DNA sequence is composed of a series of four possible nucleobases, namely Adenine, Guanine, Thymine and Cytosine; we will refer to each of these bases by their initial. For our purposes, nucleobases have an associated cyclic “order”: A is followed by G, which in turn is followed by T, which is followed by C, which is followed by A again. State-of-the-art research in genomics has revealed the startling fact that many diseases are caused by certain subsequences of bases not forming a palindromic sequence! Your mission as a leading researcher at ICPC laboratories is to take a DNA string S and a series of subsets P<sub>1</sub>, ... , P<sub>t</sub> of indices to characters (nucleobases) in S, and transform S so that each of the restrictions of the resulting string to P<sub>1</sub>, ... , P<sub>t</sub> are palindromic. (The restriction of S to a subset P = {i<sub>1</sub>, i<sub>2</sub>, ... , i<sub>k</sub>} of indices, where 0 ≤ i<sub>1</sub> &lt; i<sub>2</sub> &lt; . . . &lt; i<sub>k</sub> &lt; |S|, is the string S<sub>i<sub>1</sub></sub> S<sub>i<sub>2</sub></sub> ... S<sub>i<sub>k</sub></sub>). It is possible to inspect any base of S at will, but only three transformations can be applied to a base:</p>\n<ol>\n<li>Leave it unaltered.</li>\n<li>Increase it by 1 in the cyclic order of nucleobases (e.g. turn C into A).</li>\n<li>Decrease it by 1 (e.g. turn T into G).</li>\n</ol>\n<p>Moreover, owing to limitations of current technology, it is impossible to modify two bases in consecutive positions of the sequence. Is our goal achievable?</p>\n<p>By way of example, consider DNA sequence AGTAT. Number positions starting from 0, and suppose we have the three subsets P<sub>1</sub> = {1, 4}, P<sub>2</sub> = {0, 1} and P<sub>3</sub> = {0, 2, 4}. One solution is to increase the first character and decrease the last, yielding S' = GGTAG. The restrictions of S' to P<sub>1</sub>, P<sub>2</sub> and P<sub>3</sub> are GG, GG and GTG, respectively; all of them are palindromic.</p>\n<p>One case where no solution is possible is when the string is CATGC, and we require the subsequences determined by positions {0, 3} and {3, 4} be palindromic. Here, characters 3, 0 and 4 would all need to become a T. But this entails modifying consecutive characters 3 and 4, which is not allowed.</p>",
+  "input": "<p>The first line of each test case has two integers N and T (1 ≤ N ≤ 10 000, 1 ≤ T ≤ 6 000), the sequence length and number of subsets to consider. The next line contains the DNA sequence of length N, all of whose characters are in ACGT. The subsets are described by the following T lines. Each line starts by “L:”, where L (0 ≤ L ≤ N) is the number of positions in the subset, and is followed by T distinct integers between 0 and N − 1 in increasing order. Subsets may overlap partially or totally.</p>\n<p>A blank line separates different test cases. The input file is terminated by a line containing 0 0.</p>",
+  "output": "<p>In a single line per test case, print YES if the task is solvable and NO otherwise.</p>",
+  "samples": [
+    {
+      "input": "5 3\nAGTAT\n2: 1 4\n2: 0 1\n3: 0 2 4\n\n5 3\nCATGC\n0:\n2: 0 3\n2: 3 4\n\n0 0\n",
+      "output": "YES\nNO\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2010",
+  "level": null,
+  "tags": [],
+  "accepted_user_count": null,
+  "submission_count": null,
+  "average_tries": null
+}

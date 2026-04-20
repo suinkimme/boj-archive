@@ -1,0 +1,32 @@
+{
+  "id": 19445,
+  "title": "Alone in the Cactus",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p><em>Cactus</em> is a connected undirected graph in which every edge belongs to at most one simple cycle.</p>\n<p>You are given a <em>cactus</em> having $n$ vertices and $m$ edges. Each vertex of this <em>cactus</em> is either red, green or blue. All the vertices are numbered with sequential positive integers from $1$ to $n$. The examples of such graphs are shown in the figure:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>Initially, you are standing at the vertex $s$. Then you start to move to some adjacent vertex, which hasn't been visited before, until no such vertex exists. The choice of each eligible vertex is equiprobable. When there is no such vertex, you are stopped at some vertex $t$. If $t$ is colored red or green --- the process is stopped. If $t$ is colored blue --- the process should be restarted from the vertex $s$ again.</p>\n<p>You are to write the program that for given <em>cactus</em> computes the probability $\\frac{p}{q}$ that the process will be stopped when you are standing at a red vertex and outputs integer $p \\cdot q^{-1} \\mod 1000000007$ ($10^{9}+7$). Here $q^{-1}$ is a modular multiplicative inverse of an integer $q$ modulo $1000000007$.</p>",
+  "input": "<p>The first line of input contains three space-separated integers $n$, $m$ and $s$ ($2 \\leq n \\leq 10^{5}$, $m \\geq n - 1$, $1 \\leq s \\leq n$). The second line of input contains $n$ characters, $i$-th of them denotes the color of vertex $i$: '<code>R</code>' denotes red, '<code>G</code>' --- green and '<code>B</code>' --- blue. Each of the following $m$ lines contains two integers $u_{i}$, $v_{i}$ --- the numbers of vertices connected by the edge ($1 \\leq u_{i}, v_{i} \\leq n$).</p>\n<p>It is guaranteed that the given graph is a cactus and it contains no multiple edges.</p>",
+  "output": "<p>The only line of output must contain one integer $p \\cdot q^{-1} \\bmod 10^9+7$. If the process is infinite, output \"<code>NaN</code>\" instead (quotes for clarity).</p>",
+  "samples": [
+    {
+      "input": "6 6 1\nGRGRGB\n1 2\n1 3\n2 4\n3 4\n4 5\n4 6\n",
+      "output": "250000002\n"
+    },
+    {
+      "input": "14 15 2\nRGRGRBGGBRBRGG\n1 2\n2 3\n2 4\n5 2\n7 4\n4 6\n10 6\n11 7\n10 13\n11 13\n8 5\n8 12\n8 9\n14 9\n12 14\n",
+      "output": "833333340\n"
+    }
+  ],
+  "hint": "<p>Both samples correspond to the image in the statement. The first sample corresponds to the left cactus and the second sample --- corresponds to the right one.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2016, Day 2: Pavel Khaustov Contest 2",
+  "level": 24,
+  "tags": [
+    "cactus",
+    "graphs",
+    "linearity_of_expectation",
+    "math",
+    "probability"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

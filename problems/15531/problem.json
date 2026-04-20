@@ -1,0 +1,45 @@
+{
+  "id": 15531,
+  "title": "We don’t wanna work!",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>ACM is an organization of programming contests. The purpose of ACM does not matter to you. The only important thing is that workstyles of ACM members are polarized: each member is either a workhorse or an idle fellow.</p>\n<p>Each member of ACM has a motivation level. The members are ranked by their motivation levels: a member who has a higher motivation level is ranked higher. When several members have the same value of motivation levels, the member who joined ACM later have a higher rank. The top 20% highest ranked members work hard, and the other (80%) members never (!) work. Note that if 20% of the number of ACM members is not an integer, its fraction part is rounded down.</p>\n<p>You, a manager of ACM, tried to know whether each member is a workhorse or an idle fellow to manage ACM. Finally, you completed to evaluate motivation levels of all the current members. However, your task is not accomplished yet because the members of ACM are dynamically changed from day to day due to incoming and outgoing of members. So, you want to record transitions of members from workhorses to idle fellows, and vice versa.</p>\n<p>You are given a list of the current members of ACM and their motivation levels in chronological order of their incoming date to ACM. You are also given a list of incoming/outgoing of members in chronological order.</p>\n<p>Your task is to write a program that computes changes of workstyles of ACM members.</p>",
+  "input": "<p>The first line of the input contains a single integer N (1 ≤ N ≤ 50,000) that means the number of initial members of ACM. The (i + 1)-th line of the input contains a string s<sub>i</sub> and an integer a<sub>i</sub> (0 ≤ a<sub>i</sub> ≤ 10<sup>5</sup>), separated by a single space. s<sub>i</sub> means the name of the i-th initial member and a<sub>i</sub> means the motivation level of the i-th initial member. Each character of s<sub>i</sub> is an English letter, and 1 ≤ |s<sub>i</sub>| ≤ 20. Note that those N lines are ordered in chronological order of incoming dates to ACM of each member.</p>\n<p>The (N + 2)-th line of the input contains a single integer M (1 ≤ M ≤ 20,000) that means the number of changes of ACM members. The (N + 2 + j)-th line of the input contains information of the j-th incoming/outgoing member. When the j-th information represents an incoming of a member, the information is formatted as “+ t<sub>j</sub> b<sub>j</sub>”, where t<sub>j</sub> is the name of the incoming member and b<sub>j</sub> (0 ≤ b<sub>j</sub> ≤ 10<sup>5</sup>) is his motivation level. On the other hand, when the j-th information represents an outgoing of a member, the information is formatted as “- t<sub>j</sub>”, where t<sub>j</sub> means the name of the outgoing member. Each character of t<sub>j</sub> is an English letter, and 1 ≤ |t<sub>j</sub>| ≤ 20. Note that uppercase letters and lowercase letters are distinguished. Note that those M lines are ordered in chronological order of dates when each event happens.</p>\n<p>No two incoming/outgoing events never happen at the same time. No two members have the same name, but members who left ACM once may join ACM again.</p>",
+  "output": "<p>Print the log, a sequence of changes in chronological order. When each of the following four changes happens, you should print a message corresponding to the type of the change as follows:</p>\n<ul>\n<li>Member name begins to work hard : “name is working hard now.”</li>\n<li>Member name begins to not work : “name is not working now.”</li>\n</ul>\n<p>For each incoming/outgoing, changes happen in the following order:</p>\n<ol>\n<li>Some member joins/leaves.</li>\n<li>When a member joins, the member is added to either workhorses or idle fellows.</li>\n<li>Some member may change from a workhorse to an idle fellow and vice versa. Note that there are no cases such that two or more members change their workstyles at the same time.</li>\n</ol>",
+  "samples": [
+    {
+      "input": "4\nDurett 7\nGayles 3\nFacenda 6\nDaughtery 0\n1\n+ Mccourtney 2\n",
+      "output": "Mccourtney is not working now.\nDurett is working hard now.\n"
+    },
+    {
+      "input": "3\nBurdon 2\nOrlin 8\nTrumper 5\n1\n+ Lukaszewicz 7\n",
+      "output": "Lukaszewicz is not working now.\n"
+    },
+    {
+      "input": "5\nAndy 3\nBob 4\nCindy 10\nDavid 1\nEmile 1\n3\n+ Fred 10\n- David\n+ Gustav 3\n",
+      "output": "Fred is working hard now.\nCindy is not working now.\nGustav is not working now.\n"
+    },
+    {
+      "input": "7\nLaplant 5\nVarnes 2\nWarchal 7\nDegregorio 3\nChalender 9\nRascon 5\nBurdon 0\n7\n+ Mccarroll 1\n- Chalender\n+ Orlin 2\n+ Chalender 1\n+ Marnett 10\n- Chalender\n+ Chalender 0\n",
+      "output": "Mccarroll is not working now.\nWarchal is working hard now.\nOrlin is not working now.\nChalender is not working now.\nMarnett is working hard now.\nWarchal is not working now.\nChalender is not working now.\nWarchal is working hard now.\n"
+    },
+    {
+      "input": "4\nAoba 100\nYun 70\nHifumi 120\nHajime 50\n2\n- Yun\n- Aoba\n",
+      "output": "\n"
+    }
+  ],
+  "hint": "<p>Sample 1: Initially, no member works because 4 ×20% &lt; 1. When one member joins ACM, Durrett begins to work hard.</p>\n<p>Sample 2: No member works.</p>\n<p>Sample 4: Some member may repeat incoming and outgoing.</p>",
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ACM-ICPC Asia Regional 2016",
+  "level": 17,
+  "tags": [
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "priority_queue",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 29,
+  "submission_count": null,
+  "average_tries": 2.4482998847961426
+}

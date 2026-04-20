@@ -1,0 +1,35 @@
+{
+  "id": 20263,
+  "title": "Optimization for UltraNet",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The UltraNet company provides network connectivity for all cities in a country. For a pair of cities, they are either directly connected or indirectly connected. A city i and another city j are directly connected if a cable with a symmetrical bandwidth of b<sub>i,j</sub> = b<sub>j,i</sub> is wired between them. For two cities that are not directly connected, at least one path between the two cities exists. In the current UltraNet, more than one path is possibly available for a city pair.</p>\n<p>The current UltraNet is perfectly working, while the maintenance fee of each cable is costly. Energy conservation is another concern. The energy consumption of a cable is proportional to its bandwidth. Therefore, the company has an optimization plan to reorganize the network with the policies in the following order:</p>\n<ol>\n<li>The number of cables should be minimized without sacrificing the connectivity of the whole UltraNet. In other words, exactly one path between every city pair should be satisfied.</li>\n<li>If there is more than one way to minimize the number of cables, the bottleneck of the whole network should be maximized. The bottleneck of a network is determined by the city pair with the narrowest bandwidth, and the bandwidth of a city pair (i, j), b'<sub>i,j</sub>, is determined by the cable with the narrowest bandwidth on the only path from i to j.</li>\n<li>If there is still more than one way to meet the above two points, the total energy consumption of the network should be minimized. In other words, the sum of bandwidths of the remaining cables should be minimized.</li>\n</ol>\n<p>Your task is to help UltraNet optimize the network and then output the sum of the bandwidths among all city pairs in the optimized network. For optimizing the following example, the three cables in dotted will be discarded. In the resulting network, the bottleneck is 3, the sum of bandwidths of the remaining four cables is 6 + 3 + 8 + 4 = 21, and the sum of the bandwidths among all city pairs is \\(\\sum_{i=1}{^n-1}\\sum_{j=i+1}^{n}\\)b'<sub>i,j</sub> = 6 + 4 + 6 + 3 + 4 + 8 + 3 + 4 + 3 + 3 = 44.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 212px; height: 183px;\"/></p>",
+  "input": "<p>Each test case begins with two integers n and m, denoting numbers of cities and cables, respectively. Then, m lines will follow for specifying the m cables. Each of the m lines contains three positive integers, i, j, and b<sub>i,j</sub>, denoting that a cable with a bandwidth of b<sub>i,j</sub> directly connects the city pair (i, j), where the cities are numbered from 1 to n, and i &lt; j since b<sub>i,j</sub> = b<sub>j,i</sub>. No more than one cable will be available between every city pair in the current network. In addition, the bandwidths of all cables are distinct; no two cables have the same bandwidth rating.</p>",
+  "output": "<p>The output is a single integer that is the sum of the bandwidths of all city pairs in the optimized network.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2 5\n1 3 6\n2 3 8\n",
+      "output": "20\n"
+    },
+    {
+      "input": "5 7\n1 2 6\n1 3 10\n1 4 12\n2 4 8\n2 5 3\n3 4 4\n4 5 2\n",
+      "output": "44\n"
+    },
+    {
+      "input": "5 5\n2 5 1\n1 2 2\n2 3 4\n1 3 5\n2 4 6\n",
+      "output": "24\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Taiwan, 2020 ICPC Asia Taipei-Hsinchu Regional",
+  "level": 17,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "disjoint_set",
+    "mst"
+  ],
+  "accepted_user_count": 30,
+  "submission_count": null,
+  "average_tries": 1.4666999578475952
+}

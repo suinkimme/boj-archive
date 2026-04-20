@@ -1,0 +1,22 @@
+{
+  "id": 3563,
+  "title": "Finding Liars",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>There are n ≥ 2 people labeled as 1, 2, … , n such that each of them is either a truth-teller or a liar, and the number of liars is less than or equal to t for some t (≤ n).</p>\n<p>Each person i can test another person j in order to identify person j as truth-teller or liar by giving some question to person j. The outcome a<sub>i,j</sub> of the test applied by person i to person j is 1 (0) if person i identifies person j as a liar (truth-teller). The test outcome a<sub>i,j</sub> is reliable if and only if the testing person i is a truth-teller. That is, the test outcome a<sub>i,j</sub> is unreliable if and only if the testing person i is a liar. The following table shows the value of the test outcome a<sub>i,j</sub> when person i tests person j.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images3/lie1.png\" style=\"height:113px; width:504px\"/></p>\n<p>Testing is performed circularly as follows: person 1 tests person 2, person 2 tests person 3, …, person n-1 tests person n, and person n tests person 1. From the test outcomes, some persons are definitely liars, but some others may or may not be liars. From n, t, and the test outcomes, determine the persons who are definitely liars.</p>\n<p>For example, let n = 5, t = 2, and the test outcomes (a<sub>1,2</sub>, a<sub>2,3</sub>, a<sub>3,4</sub>, a<sub>4,5</sub>, a<sub>5,1</sub>) be (0, 1, 1, 0, 0). In the following figure, each circle represents a person, and the label on the edge (i, j) represents the test outcome ai,j.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images3/lie2.png\" style=\"height:183px; width:216px\"/></p>\n<p>In this example, person 3 should be a liar because if not, person 4 is liar and persons 2 is liar, thus persons 1, 5, and 4 become liars, which contradicts the condition that the number of liars does not exceed t = 2. Therefore person 3 is determined as a definite liar. However, because both {person 3, person 4} and {person 3} can be sets of liars, we can't determine that person 4 is a liar.</p>\n<p>Given n (the number of persons), t (the maximum number of liars), and the set of test outcomes, write a program to find all the persons who are definitely liars. It is assumed that the given set of outcomes is one that results from some liars who are less than or equal to t.</p>",
+  "input": "<p>The input consists of T test cases. The number of test cases (T ) is given in the first line of the input file. Each test case consists of two lines. The first line has two integers. The first integer is n (1≤n ≤1000), the number of persons, and the second integer is t (0 ≤ t ≤ n ), the maximum number of liars. The second line contains n 0 or 1’s that represent a<sub>1,2</sub>, a<sub>2,3</sub>, a<sub>3,4</sub>, …, a<sub>(n-1),n</sub>, a<sub>n,1</sub>.</p>",
+  "output": "<p>Print exactly one line for each test case. The line should contain two integers. The first integer is the number of all the definite liars. The second integer is the smallest label of definite liars. In case that the number of definite liars is equal to 0, then the second integer should be 0.</p>",
+  "samples": [
+    {
+      "input": "3\n5 2\n0 1 1 0 0\n7 2\n0 0 1 0 0 1 1\n9 8\n1 0 0 0 0 1 0 0 0\n",
+      "output": "1 3\n2 4\n0 0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Taejon 2002",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

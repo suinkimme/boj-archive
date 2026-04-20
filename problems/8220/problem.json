@@ -1,0 +1,27 @@
+{
+  "id": 8220,
+  "title": "Festival",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A charity festival is taking place in Byteburg, and you are one of the fundraisers. Unfortunately you have missed some fun activities, including a steeplechase. Byteasar, an amateur of puzzles, has promised a big donation if you manage to solve his riddle.</p>\n<p>You do not know the results of the steeplechase but Byteasar has provided you with partial information. Now he is asking you what is the maximum possible (consistent with what he has told you) number of different times attained by the runners (some of them may have tied, i.e., reached the finish at the same time). Byteasar has told you that every runner's time is an integer multiple of one second. He has also provided you with relations between some of the runners' times. Specifically, he has given you some of the pairs of runners (A,B) for which A’s time was exactly one second smaller than B’s time, and some of the pairs of runners (C,D) for which C’s time was no larger than D’s time. Write a program that will solve the riddle for you!</p>",
+  "input": "<p>The first line of the standard input contains three non-negative integers, n, m<sub>1</sub>, m<sub>2</sub> (2 ≤ n ≤ 600, 1 ≤ m<sub>1</sub>+m<sub>2</sub> ≤ 100,000), separated by single spaces, that denote respectively: the number of runners, the number of revealed pairs of the first type (A,B), and the number of revealed pairs of the second type (C,D). The runners are numbered from 1 to n.</p>\n<p>In the following m<sub>1</sub> lines the pairs of runners of the first kind are given, one per line - the i-th such line holds two integers a<sub>i</sub> and b<sub>i</sub>, a<sub>i</sub>≠b<sub>i</sub>, separated by a single space, that denote that runner a<sub>i</sub>’s time was exactly one second smaller than b<sub>i</sub>’s.</p>\n<p>In the next m<sub>2</sub> lines the pairs of runners of the second kind are given, one per line - the i-th such line holds two integers c<sub>i </sub>and d<sub>i</sub>, c<sub>i</sub>≠d<sub>i</sub>, separated by a single space, that denote that runner c<sub>i</sub>’s time was no larger than d<sub>i</sub>’s.</p>",
+  "output": "<p>In the first and only line of the standard output your program should print a single integer equal to the maximum possible number of different times attained by the runners consistent with the criteria.</p>\n<p>If there is no order of runners satisfying Byteasar's constraints, the program should output a single line holding the word \"NIE\" (Polish for no), without the quotation marks.</p>\n<p>In tests worth at least 15% of points it additionally holds that n ≤ 10.</p>",
+  "samples": [
+    {
+      "input": "4 2 2\n1 2\n3 4\n1 4\n3 1\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<p>There were two possible outcomes of the chase:</p>\n<ol>\n<li>runner no. 3 came first, the runners no. 1 and 4 shared the second place ex aequo, and the runner no. 2 came last;</li>\n<li>runners no. 1 and 3 share the first place ex aequo, runners no. 2 and 4 share the second place ex aequo.</li>\n</ol>\n<p>The first outcome gives three different times, more than the other.</p>",
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2011/2012, Stage 1",
+  "level": 22,
+  "tags": [
+    "floyd_warshall",
+    "graphs",
+    "scc",
+    "shortest_path"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 3.4762001037597656
+}

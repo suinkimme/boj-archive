@@ -1,0 +1,35 @@
+{
+  "id": 21328,
+  "title": "Vvvvvv",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Platform games is an old video game genre, where you move across platforms hanging in the air. Vvvvvv is a platform game where you cannot jump, but instead are able to switch between regular gravity, which causes you to fall downwards, and anti-gravity, which causes you to fall upwards. There are only three buttons in the game: the gravitational switch (G), the go-left-button (V) and the go-right-button (H).</p>\n<p>Your task is to find a sequence of button presses which takes you through a maze-like level with platforms and walls, from a given start position to a given final position. In order to receive full points, the sequence needs to be as short as possible.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 512px; height: 469px;\"/></p>\n<p style=\"text-align: center;\">Figure 1: The path given by the button presses given in the second sample.</p>",
+  "input": "<p>The first line of the input consists of three integers $W$, $H$, and $N$: the width of the level, the height of the level, and the number of line segments. Thereafter follows $N$ lines, each with four integers $x_1$, $y_1$, $x_2$, $y_2$, where $0 \\le x_1, x_2 \\le W$ and $0 \\le y_1, y_2 \\le H$. Each of these lines describe a line segments with end points $(x_1, y_1)$ and $(x_2, y_2)$. Every line segment is either horizontal or vertical, i.e. either $y_1=y_2$ or $x_1=x_2$ holds. The integer coordinate system can be said to divide the rectangular level into a grid, where the button V takes you one square to the left and H takes you one square to the right. If you are not standing on a platform after the movement you will fall (upwards or downwards) until you reach another platform. It is not possible to move to the left or right while falling. If you fall or walk out of the level, you lose the game. This also happens if you try to walk through a wall.</p>\n<p>The start position is the lower left square, closest to the point (0, 0), with downwards gravity. The final position is the square in the upper right corner, closest to the point (W, H). There will always be a line segment under the start position and above the final position.</p>",
+  "output": "<p>If there is a solution, the program should print a string containing a letter for each button press (chosen from G, V and H). The sequence should take you from the start position to the final position, and has to be shorter than $10000$ characters. You can arrive to the ending position with gravity in either direction, but you need to have stopped falling (see the third example below).</p>\n<p>If there is no solution, the program should print the string <code>\"Inte\"</code> (without the quotation marks).</p>",
+  "samples": [
+    {
+      "input": "4 5 9\n2 5 4 5\n4 5 4 1\n4 4 3 4\n3 0 4 0\n0 0 2 0\n0 3 2 3\n2 2 2 3\n1 1 1 2\n1 1 3 1\n",
+      "output": "HGHHVH\n"
+    },
+    {
+      "input": "10 9 22\n0 0 2 0\n2 0 2 2\n1 1 1 4\n0 3 1 3\n1 5 4 5\n3 2 3 3\n3 4 3 5\n4 5 4 6\n4 4 4 3\n4 3 6 3\n6 1 8 1\n5 4 7 4\n7 4 7 3\n7 3 8 3\n8 3 8 5\n8 5 7 5\n6 5 6 7\n6 7 4 7\n0 8 5 8\n8 8 8 6\n8 6 10 6\n7 9 10 9\n",
+      "output": "HGVHHHHGHHVVHHHGHVHH\n"
+    },
+    {
+      "input": "2 1 2\n0 0 1 0\n1 1 2 1\n",
+      "output": "Inte\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2016, Final",
+  "level": 14,
+  "tags": [
+    "bfs",
+    "graphs",
+    "graph_traversal",
+    "implementation"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.4285999536514282
+}

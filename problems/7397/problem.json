@@ -1,0 +1,30 @@
+{
+  "id": 7397,
+  "title": "Alternative Scale of Notation",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>One may define a map of strings over an alphabet \\(\\Sigma_B = \\{C_1, C_2, \\dots, C_B\\}\\) of size $B$ to non-negative integer numbers, using characters as digits $C_1 = 0, C_2 = 1, \\dots , C_B = B − 1$ and interpreting the string as the representation of some number in a scale of notation with base $B$. Let us denote this map by $U_B$, for a string $\\alpha[1..n]$ of length $n$ we put \\[U_B(\\alpha) = \\sum_{i=0}^{n-1}{\\alpha[n-i]\\cdot B^i}\\text{.}\\]</p>\n<p>For example, $U_3(1001) = 1 \\cdot 27 + 0 \\cdot 9 + 0 \\cdot 3 + 1 \\cdot 1 = 28$.</p>\n<p>However, this correspondence has one major drawback: it is not one-to-one. For example, $$28 = U_3(1001) = U_3(01001) = U_3(001001) = \\dots \\text{,}$$ infinitely many strings map to the number $28$.</p>\n<p>In mathematical logic and computer science this may be unacceptable. To overcome this problem, the alternative interpretation is used. Let us interpret characters as digits, but in a slightly different way: $C_1 = 1, C_2 = 2, \\dots , C_B = B$. Note that now we do not have $0$ digit, but rather we have a rudiment $B$ digit. Now we define the map $V_B$ in a similar way, for each string $\\alpha[1..n]$ of length $n$ we put \\[V_B(\\alpha) = \\sum_{i=0}^{n-1}{\\alpha[n-i]\\cdot B^i}\\text{.}\\]</p>\n<p>For an empty string $\\epsilon$ we put $V_B(\\epsilon) = 0$.</p>\n<p>This map looks very much like UB, however, the set of digits is now different. So, for example, we have $V_3(1313) = 1 \\cdot 27 + 3 \\cdot 9 + 1 \\cdot 3 + 3 \\cdot 1 = 60$.</p>\n<p>It can be easily proved that the correspondence defined by this map is one-to-one and onto. Such a map is called <em>bijective</em>, and it is well known that every bijective map has an inverse. Your task in this problem is to compute the inverse for the map $V_B$. That is, for a given integer number $x$ you have to find the string $\\alpha$, such that $V_B(\\alpha) = x$.</p>",
+  "input": "<p>The first line of the input file contains $B$ ($2 \\le B \\le 9$). The second line contains an integer number $x$ given in a usual decimal scale of notation, $0 \\le x \\le 10^{100}$.</p>",
+  "output": "<p>Output such string $\\alpha$, consisting only of digits from the set $\\{1, 2, \\dots , B\\}$, that $V_B(\\alpha) = x$.</p>",
+  "samples": [
+    {
+      "input": "3\n60\n",
+      "output": "1313\n"
+    },
+    {
+      "input": "3\n0\n",
+      "output": ""
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2003",
+  "level": 7,
+  "tags": [
+    "math",
+    "number_theory",
+    "arbitrary_precision"
+  ],
+  "accepted_user_count": 31,
+  "submission_count": null,
+  "average_tries": 1.4838999509811401
+}

@@ -1,0 +1,43 @@
+{
+  "id": 28369,
+  "title": "Adolescent Architecture 2",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Three years ago, you helped little Peter stack his toy blocks into a tower. Since then, he has extended his collection of toy blocks, which now features the following base shapes:</p>\n<ul>\n<li><code>circle</code> $a$ -- a circle of radius $a$;</li>\n<li><code>square</code> $a$ -- a square with side length $a$;</li>\n<li><code>triangle</code> $a$ -- an equilateral triangle with side length $a$.</li>\n</ul>\n<p>Here, $a$ may be any positive integer. The top shapes of each block are the same as their bottom shapes, so the blocks are cuboids, cylinders, and triangular prisms, respectively. Peter has an infinite supply of blocks of each shape and size.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 503px; height: 100px;\"/></p>\n<p style=\"text-align: center;\">Figure A.1: A game in progress.</p>\n<p>Peter and his friend Amy are playing a two-player game, where the blocks need to be stacked on top of each other. Initially, some blocks are already placed on the floor. In each move, the current player must take a toy block from the infinite supply and put it on top of one of the existing stacks of blocks. The block may be rotated around its vertical axis before placing it. The outline of the new block must be strictly within the outline of the old block; the outlines are not allowed to touch. The first player who is unable to make a move loses the game.</p>\n<p>Given the initial configuration, determine the number of winning moves for the first player.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with an integer $n$ ($1 \\le n \\le 1000$), the number of initial stacks.</li>\n<li>$n$ lines, each with a string $s$ ($s$ is one of \"<code>circle</code>\", \"<code>square</code>\" or \"<code>triangle</code>\") and an integer $a$ ($1 \\le a \\le 10^9$), giving the topmost blocks of the initial stacks as described above.</li>\n</ul>",
+  "output": "<p>Output the number of winning moves for the first player.</p>",
+  "samples": [
+    {
+      "input": "2\ncircle 2\ntriangle 2\n",
+      "output": "2\n"
+    },
+    {
+      "input": "2\ncircle 1\ncircle 2\n",
+      "output": "3\n"
+    },
+    {
+      "input": "5\ncircle 123\ntriangle 456\nsquare 789\nsquare 789\ntriangle 555\n",
+      "output": "7\n"
+    },
+    {
+      "input": "3\ncircle 299303201\nsquare 79724391\ntriangle 437068198\n",
+      "output": "3\n"
+    },
+    {
+      "input": "3\nsquare 539715887\ncircle 518408351\ntriangle 348712924\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 768px; height: 345px;\"/></p>\n<p style=\"text-align: center;\">Figure A.2: Illustration of Sample Input 2, showing all possible end configurations of the game when Peter went first and played optimally to win. The blue blocks are the initial configuration. Peter needs to put one of <code>circle 1</code>, <code>square 2</code> or <code>triangle 3</code> on top of <code>circle 2</code> in order to win. Each of these options corresponds to one row of the figure. Blocks placed by Peter are coloured in red, and blocks placed by Amy are coloured in yellow. As the last two blocks are always of type <code>triangle 1</code>, they are shown in grey. If, for instance, Peter first puts <code>circle 1</code> (as depicted in the first row), then Peter can win by mirroring the following moves by Amy.</p>",
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2023",
+  "level": 23,
+  "tags": [
+    "geometry",
+    "parametric_search",
+    "game_theory",
+    "sprague_grundy"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 6.230800151824951
+}

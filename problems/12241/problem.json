@@ -1,0 +1,30 @@
+{
+  "id": 12241,
+  "title": "Trie Sharding (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A set of strings <strong>S</strong> can be stored efficiently in a <em>trie</em>. A trie is a rooted tree that has one node for every prefix of every string in <strong>S</strong>, without duplicates.</p>\n<p>For example, if <strong>S</strong> were \"AAA\", \"AAB\", \"AB\", \"B\", the corresponding trie would contain 7 nodes corresponding to the prefixes \"\", \"A\", \"AA\", AAA\", \"AAB\", \"AB\", and \"B\".</p>\n<p>I have a server that contains <strong>S</strong> in one big trie. Unfortunately, <strong>S</strong> has become very large, and I am having trouble fitting everything in memory on one server. To solve this problem, I want to switch to storing <strong>S</strong> across <strong>N</strong> separate servers. Specifically, <strong>S</strong> will be divided up into disjoint, non-empty subsets <strong>T</strong><strong><sub>1</sub></strong>, <strong>T</strong><strong><sub>2</sub></strong>, ..., <strong>T</strong><strong><sub>N</sub></strong>, and on each server i, I will build a trie containing just the strings in <strong>T</strong><strong><sub>i</sub></strong>. The downside of this approach is the total number of nodes across all <strong>N</strong> tries may go up. To make things worse, I can't control how the set of strings is divided up!</p>\n<p>For example, suppose \"AAA\", \"AAB\", \"AB\", \"B\" are split into two servers, one containing \"AAA\" and \"B\", and the other containing \"AAB\", \"AB\". Then the trie on the first server would need 5 nodes (\"\", \"A\", \"AA\", \"AAA\", \"B\"), and the trie on the second server would also need 5 nodes (\"\", \"A\", \"AA\", \"AAB\", \"AB\"). In this case, I will need 10 nodes altogether across the two servers, as opposed to the 7 nodes I would need if I could put everything on just one server.</p>\n<p>Given an assignment of strings to <strong>N</strong> servers, I want to compute the worst-case total number of nodes across all servers, and how likely it is to happen. I can then decide if my plan is good or too risky.</p>\n<p>Given <strong>S</strong> and <strong>N</strong>, what is the largest number of nodes that I might end up with? Additionally, how many ways are there of choosing <strong>T</strong><strong><sub>1</sub></strong>, <strong>T</strong><strong><sub>2</sub></strong>, ..., <strong>T</strong><strong><sub>N</sub></strong> for which the number of nodes is maximum? Note that the <strong>N</strong> servers are different -- if a string appears in <strong>T</strong><strong><sub>i</sub></strong> in one arrangement and in <strong>T</strong><strong><sub>j</sub></strong> (<strong>i</strong> != <strong>j</strong>) in another arrangement, then the two arrangements are considered different. Print the remainder of the number of possible arrangements after division by 1,000,000,007.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow. Each test case starts with a line containing two space-separated integers: <strong>M</strong> and <strong>N</strong>. <strong>M</strong> lines follow, each containing one string in <strong>S</strong>.</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>Strings in <strong>S</strong> will contain only upper case English letters.</li>\n<li>The strings in <strong>S</strong> will all be distinct.</li>\n<li><strong>N</strong> ≤ <strong>M</strong></li>\n<li><span style=\"line-height:1.6em\">1 ≤ </span><strong style=\"line-height:1.6em\">M</strong><span style=\"line-height:1.6em\"> ≤ 1000 </span></li>\n<li>1 ≤ <strong>N</strong> ≤ 100 </li>\n<li>Each string in <strong>S</strong> will have between 1 and 100 characters, inclusive.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #<strong>i</strong>: <strong>X</strong> <strong>Y</strong>\", where <strong>i</strong> is the case number (starting from 1), <strong>X</strong> is the worst-case number of nodes in all the tries combined, and <strong>Y</strong> is the number of ways (modulo 1,000,000,007) to assign strings to servers such that the number of nodes in all <strong>N</strong> servers are <strong>X</strong>.</p>",
+  "samples": [
+    {
+      "input": "2\n4 2\nAAA\nAAB\nAB\nB\n5 2\nA\nB\nC\nD\nE\n",
+      "output": "Case #1: 10 8\nCase #2: 7 30\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Code Jam, Google Code Jam 2014, Round 2",
+  "level": 22,
+  "tags": [
+    "math",
+    "dp",
+    "data_structures",
+    "trees",
+    "combinatorics",
+    "inclusion_and_exclusion",
+    "trie"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.7143000364303589
+}

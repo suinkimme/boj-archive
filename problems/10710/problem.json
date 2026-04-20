@@ -1,0 +1,28 @@
+{
+  "id": 10710,
+  "title": "실크로드",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>과거 카자흐스탄에는&nbsp;&quot;실크로드&quot;라는 교역로가 있었다.</p>\r\n\r\n<p>실크로드는 N + 1 개의 도시가 있고, 서쪽부터 도시 0, 도시 1, ..., 도시 N이다.&nbsp;도시 i - 1과 도시 i&nbsp;(1 ≦ i ≦ N) 사이의 거리는 D<sub>i</sub>이다.</p>\r\n\r\n<p>무역상인&nbsp;JOI 군은 도시 0에서 출발하여 도시를 차례로 경유하여 도시 N까지 실크로드를 수행하게 되었다. 도시 0에서 도시 N까지 M 이내에 이동해야한다. JOI 군은 각각의 날에&nbsp;다음 두 가지 중&nbsp;하나를 선택한다.</p>\r\n\r\n<ul>\r\n\t<li><strong>이동</strong> : 현재의 도시에서 동쪽의 도시로 1 일 걸쳐 이동한다. 현재 도시 i - 1 (1 ≦ i ≦ N)에 있다면, 도시 i로 이동한다.</li>\r\n\t<li><strong>대기</strong> : 이동하지 않고 현재 도시에서 1 일 대기한다.</li>\r\n</ul>\r\n\r\n<p>그러나,&nbsp;<strong>이동&nbsp;</strong>할 때마다 피로도가 쌓여 간다. 실크로드에서는&nbsp;매일&nbsp;날씨변화가&nbsp;나쁜 정도에 따라 이동에 어려움이 측정된다.</p>\r\n\r\n<p>JOI 군은&nbsp;M 일 중 j 일째 (1 ≦ j ≦ M)의 날씨가&nbsp;C<sub>j</sub>임을 알고있다. 도시 i - 1에서 도시 i (1 ≦ i ≦ N)에 j 일째 (1 ≦ j ≦ M)로 이동하는 경우, 피로도가 Di &times; Cj 만 쌓여 버린다. 이동하지 않고 기다리는 날은 피로도가 쌓이지 않는다.</p>\r\n\r\n<p>JOI 군은 각각의 날에 행동을 잘 선택하여 가능한 피로도를 적게해서&nbsp;이동하고 싶다. JOI 군이 M 이내에 도시 N으로 이동할 때의 피로도 총합의 최소를 구해라.</p>\r\n",
+  "input": "<p>입력은 1 + N + M 행으로 구성된다.</p>\r\n\r\n<p>첫 번째 줄에는 두 개의 정수 N, M (1 ≦ N ≦ M ≦ 1000)가 공백을 구분으로 쓰여져있다. &nbsp;이것은 실크로드가 N + 1 개의 도시로 구성되며, JOI 군이 실크를 도시 0에서 도시 N까지 M 이내에 실시해야한다는 것을 나타낸다.</p>\r\n\r\n<p>다음 N 라인 중 i 번째 줄 (1 ≦ i ≦ N)에는 정수 D<sub>i</sub> (1 ≦ D<sub>i</sub> ≦ 1000)가 적혀있다. 이것은 도시 i - 1과 도시 i 사이의 거리가 D<sub>i</sub>임을 나타낸다.</p>\r\n\r\n<p>다음 M 라인 중 j 번째 줄 (1 ≦ j ≦ M)에는 정수 C<sub>j</sub> (1 ≦ C<sub>j</sub> ≦ 1000)가 적혀있다. 이것은 j 일째 날씨 나쁨정도가&nbsp;C<sub>j</sub>임을 나타낸다.</p>\r\n",
+  "output": "<p>JOI 군이 M 이내에 도시 N으로 이동할 때의 피로도 총합의 최소를&nbsp;한 줄로 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3 5\n10\n25\n15\n50\n30\n15\n40\n30\n",
+      "output": "1125\n"
+    },
+    {
+      "input": "2 6\n99\n20\n490\n612\n515\n131\n931\n1000\n",
+      "output": "31589\n"
+    }
+  ],
+  "hint": "<p>입출력 예 1에서 쌓이는 피로도의 합계를 최소화하도록 JOI 군이 이동하려면 다음과 같이한다.</p>\r\n\r\n<ul>\r\n\t<li>1 일째는 대기한다.</li>\r\n\t<li>2 일째에 도시 0 -&gt;&nbsp;도시 1로 이동한다. 이때 쌓이는 피로도는 10 &times; 30 = 300이다.</li>\r\n\t<li>3 일째에 도시 1 -&gt;&nbsp;도시 2로 이동한다. 이때 쌓이는 피로도는 25 &times; 15 = 375이다.</li>\r\n\t<li>4 일째는 대기한다.</li>\r\n\t<li>5 일째에 도시 2 -&gt;&nbsp;도시 3로 이동합니다. 이때 쌓이는 피로도는 15 &times; 30 = 450이다.</li>\r\n</ul>\r\n\r\n<p>JOI 군이&nbsp;이렇게 이동 한 경우에 쌓이는 피로도의 합계는 300 + 375 + 450 = 1125이다. 이것이 최소이다.</p>\r\n",
+  "source": ", Olympiad, Japanese Olympiad in Informatics, Japanese Olympiad in Informatics Qualification Round, JOI 2014/2015 예선, algospot, eric00513",
+  "level": 11,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 300,
+  "submission_count": null,
+  "average_tries": 1.483299970626831
+}

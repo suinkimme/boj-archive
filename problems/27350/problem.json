@@ -1,0 +1,30 @@
+{
+  "id": 27350,
+  "title": "Tax Evasion",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><em>Just, Inc.</em> is a huge international company that owns $N$ bank accounts in various countries. The accounts are linked by $N - 1$ direct channels such that it is possible to transfer money from any account to any other account either directly or through intermediate accounts.</p>\n<p>If two accounts are linked by a direct channel, a transfer takes an evening to complete. If there is no direct channel, the transfer will involve intermediate accounts and thus it will take multiple days for funds to reach their destination.</p>\n<p><em>External Revenue Service (ERS)</em> suspects that <em>Just</em> is evading taxes, therefore it plans to investigate all the accounts that belong to the company. The investigation will be performed as follows:</p>\n<ol>\n<li>On the morning of the first day, <em>ERS</em> will investigate the account No. 1:\n\n\t<ul>\n<li>If there is 1 gigadollar in the account, <em>Just</em> will immediately have to pay taxes.</li>\n<li>If there are 2 or more gigadollars, the CEO will be charged with forgery and imprisoned. There is no way <em>Just</em> would allow for this to happen</li>\n<li>If the account is empty, <em>Just</em> will not yet have to pay taxes after the investigation of this account.</li>\n</ul>\n</li>\n<li>On the evening of the first day, <em>Just</em> will send a non-negative integer amount of gigadollars through each of the channels in either direction. However, <em>Just</em> cannot transfer money to or from the account which was investigated earlier on the same day (i.e. No. 1).</li>\n<li>On the morning of the second day, <em>ERS</em> will investigate one of the accounts that is linked via a direct channel with the previously investigated account – No. 1. The account is processed in the same way as described above. <em>Just</em> has no idea as to which account <em>ERS</em> will choose.</li>\n<li>On the evening of the second day, <em>Just</em> will make new transfers. As before, the account which was just investigated cannot be used.</li>\n<li>The investigations of accounts will continue on the third and further days until <em>ERS</em> decides that it has performed enough investigations.</li>\n</ol>\n<p><em>Just</em> is well aware of the investigation procedure. It plans on transferring money between accounts every day in such a way that the money would not be detected for as long as possible and that the company would never be charged with forgery. However, <em>Just</em> does not know which accounts <em>ERS</em> will be choosing and how many investigations will take place, so it must prepare for the <strong>worst possible scenario</strong>. In other words, Just will transfer money in such a way that no matter what <em>ERS</em> does, the company will not be charged with forgery and will postpone paying taxes the first time as far as possible.</p>\n<p>On the morning of the first day there is 1 gigadollar in $M$ different accounts. The rest of the accounts are empty.</p>\n<p>Write a program that finds the earliest day on which <em>Just</em> will have to pay taxes for the first time, assuming it transfer money between accounts in an optimal way.</p>",
+  "input": "<p>The first line contains two integers $N$ (number of accounts) and $M$ (number of accounts that contain 1 gigadollar at the beginning).</p>\n<p>The next $N - 1$ lines contain integers $s_1, s_2, \\dots, s_{N-1}$ (one integer per line). $s_i$ ($1 ≤ s_i ≤ i$) denotes that there is a direct channel between accounts $(i + 1)$ and $s_i$.</p>\n<p>The last line contains $M$ distinct integers – the list of account numbers that have one gigadollar at the beggining.</p>",
+  "output": "<p>Output one integer – the number of day when <em>Just</em> will have to pay the taxes for the first time.</p>",
+  "samples": [
+    {
+      "input": "7 2\n1\n2\n3\n3\n5\n6\n3 4\n",
+      "output": "5\n"
+    },
+    {
+      "input": "11 3\n1\n2\n3\n4\n3\n6\n7\n8\n9\n10\n3 4 5\n",
+      "output": "5\n"
+    },
+    {
+      "input": "4 3\n1\n2\n3\n2 3 4\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Lithuanian Olympiad in Informatics, Lithuanian Olympiad in Informatics 2018/2019, Final Round",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

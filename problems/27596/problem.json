@@ -1,0 +1,38 @@
+{
+  "id": 27596,
+  "title": "Crossing the Railways",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Isona is in a train station. This station has two platforms, and between them there are $m$ parallel railways that can be viewed as infinite straight lines. Each railway is identified with an integer from $1$ to $m$, railway $1$ being the closest to the first platform and railway $m$ being the farthest. There is a $1$ meter distance between consecutive railways, as well as between each platform and its closest railway.</p>\n<p>Isona is standing on the inner border of the first platform, when she realizes that she forgot to validate her ticket! There is a validating machine on the second platform, exactly opposite her current position (thus, the distance between Isona and the validating machine is $m + 1$ meters). There are only $s$ seconds left to validate the ticket and the bridge designated to cross the railways is too far from the validating machine. Therefore, Isona (who is very brave and a little bit careless) will cross the railways running in a straight line perpendicular to the railways themselves. Isona can only run forward (not backward) and <strong>she can stay still</strong>. When she runs at maximum speed, she needs $v$ seconds to traverse $1$ meter. She can run at any speed less than or equal to her maximum speed.</p>\n<p>There is only one problem: $n$ trains are programmed to transit through the railways. The $i$-th train will use the railway $r_i$. It will start crossing the straight line between Isona and the validating machine $a_i$ seconds from now and it will end $b_i$ seconds from now. Of course, Isona cannot cross a railway when a train is passing. Formally, for every $i = 1, 2, \\dots , n$, Isona is not allowed to be on railway $r_i$ at any time $t$ with $a_i &lt; t &lt; b_i$ (but she is allowed to cross at times $a_i$ or $b_i$).</p>\n<p>The following picture summarizes the situation. In the picture there are $m = 4$ railways and two trains are visible; the train going through railway $3$ is currently crossing the line between Isona and the validating machine.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 406px; height: 162px;\"/></p>\n<p>Isona is a really good runner, but she gets tired every time she has to change her running speed. What is the minimum number of speed changes she has to perform to get to the validating machine on the other platform within $s$ seconds from now? Note that at the beginning Isona is not running. She can start to run anytime. The instant she starts to run (i.e. her speed becomes positive) is <strong>not</strong> counted as a speed change.</p>",
+  "input": "<p>The first line of the input contains four integers $n$, $m$, $s$, $v$ ($1 ≤ n ≤ 500$, $1 ≤ m ≤ 10$, $1 ≤ s, v ≤ 10^9$) — the number of trains, the number of railways, the maximum time in seconds Isona can spend crossing the railways, and the number of seconds she needs to traverse $1$ meter at maximum speed.</p>\n<p>Each of the next $n$ lines contains three integers $a_i$, $b_i$, $r_i$ ($1 ≤ a_i &lt; b_i ≤ 10^9$, $1 ≤ r_i ≤ m$) — the start and end times of the $i$-th train crossing the straight line between Isona and the validating machine, and the railway it will be using.</p>\n<p>It is guaranteed that, for any two trains $i$ and $j$ that go through the same railway (i.e. $r_i = r_j$), there is at least $1$ second between them (that is, either $a_j ≥ b_i + 1$ or $a_i ≥ b_j + 1$).</p>",
+  "output": "<p>Print the minimum number of speed changes Isona has to perform to get to the validating machine in time. If this is impossible, print $-1$.</p>",
+  "samples": [
+    {
+      "input": "4 3 5 1\n1 2 1\n3 4 1\n2 3 2\n3 4 3\n",
+      "output": "0\n"
+    },
+    {
+      "input": "3 3 12 2\n2 10 1\n1 6 2\n8 12 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "8 4 13 2\n1 4 1\n5 13 1\n1 5 2\n6 13 2\n1 9 3\n10 13 3\n1 10 4\n11 13 4\n",
+      "output": "2\n"
+    },
+    {
+      "input": "1 1 2 2\n1 2 1\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2022-2023",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "dp",
+    "segtree"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 4
+}

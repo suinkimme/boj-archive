@@ -1,0 +1,34 @@
+{
+  "id": 14966,
+  "title": "Hokej",
+  "time_limit": "1 초",
+  "memory_limit": "64 MB",
+  "description": "<p>The date of a major marathon ice hockey tournament is approaching. As it is often the case in marathon ice hockey, the game is M minutes long. On the field (ice) are, as in regular ice hockey, at each given moment, six players from each team. However, a game of marathon ice hockey can last a very long time, so the coaches brought a bunch of players in buses and planes so they can perform substitutions when the players get tired.</p>\n<p>One of the coaches is the hero of our story, and his name is Ante. Ante brought N players to the tournament. For each player, he knows two things: the player quality - K, and the player endurance - I. The player endurance is the total time in minutes that a player can spend playing in the game without getting tired. If the player played for X minutes, then rested on the bench, then played again for Y minutes, his total playing time is X + Y. When a player plays a total number of minutes equal to their endurance, he gets tired and can’t continue playing, so in that moment someone needs to substitute for him, or he will faint on the ice and end up in the hospital (marathon ice hockey is a dangerous game).</p>\n<p>The quality of the team in a given minute of the game is the sum of the quality of that team’s players that are currently playing. Ante is not a great coach, so he asked you to come up with the initial six players and the substitute schedule so he can achieve the maximum possible ​sum of the quality of the team for all the minutes in the game - Z. It is guaranteed that it will always be possible to come up with a schedule such that there are six players in the game in each minute.</p>\n<p>For example, if the game lasted for 3 minutes, and if in the first minute the quailty of the team was 15, in the second 12, and in the third 14, Z will be equal to 15 + 12 + 14 = 41.</p>\n<p>Please note: in marathon ice hockey, there is no goalie, because the game must be interesting!</p>",
+  "input": "<p>The first line of input contains the positive integers M and N (1 ≤ M ≤ 500 000, 6 ≤ N ≤ 500 000), the duration of the game in minutes, and the number of players Ante brought.</p>\n<p>Each of the following N lines contains two positive integers per player, K ​(1 ≤ K ≤ 100 000) and I​ ​(1 ≤ I ≤ M), the quality and the endurance.</p>\n<p>The players are numbered from 1 to N, in the order given in the input (the first player’s number is 1, the second is 2, etc.)</p>",
+  "output": "<p>The first line of output must contain the maximum possible Z from the task.</p>\n<p>The second line of output must contain exactly six numbers - the numbers of the six players that start the game.</p>\n<p>The third line of output must contain the number of substitutions B, that must not exceed 3 * N​.</p>\n<p>Each of the following B lines must contain, in order from the earliest to the latest substitute, the information about the substitutes, three numbers per substitute, X (1 ≤ X &lt; M), A and B, where X is the number of minutes from the start of the game when the substitute is being done, A is the number of the player exiting the game and going to the bench, and B is the number of the player that is entering​ ​the game as their substitute.</p>\n<p>Multiple substitutions in the same minute are permitted, but a player cannot enter the game,​ ​and​ ​then​ ​exit​ ​in​ ​the​ ​same​ ​moment,​ ​or​ ​vice​ ​versa.​</p>\n<p>If multiple solutions exist, output any.</p>",
+  "samples": [
+    {
+      "input": "200 6\n3 200\n4 200\n5 200\n6 200\n7 200\n8 200\n",
+      "output": "6600\n1 2 3 4 5 6\n0\n"
+    },
+    {
+      "input": "9 9\n10 3\n9 3\n13 9\n5 3\n15 9\n100 9\n3 6\n2 6\n1 6\n",
+      "output": "1260\n1 2 3 4 5 6\n3\n3 1 7\n3 2 8\n3 4 9\n"
+    },
+    {
+      "input": "3 9\n100 3\n100 3\n100 3\n100 3\n100 2\n100 1\n50 1\n30 2\n1 1\n",
+      "output": "1610\n1 2 3 4 5 6\n2\n1 6 8\n2 5 7\n"
+    }
+  ],
+  "hint": "<p>Clarification​ ​of​ ​the​ ​first​ ​test​ ​case:</p>\n<p>No substitutes were needed, the entire team will play the game from start to end.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2017/2018, Contest #1, jh05013",
+  "level": 18,
+  "tags": [
+    "greedy",
+    "sorting",
+    "constructive"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 3.529400110244751
+}

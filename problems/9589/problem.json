@@ -1,0 +1,24 @@
+{
+  "id": 9589,
+  "title": "Mixing Colours",
+  "time_limit": "5 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Frank lives in London and he really likes games and maths. Lately, he has been playing a game on his mobile phone. It is simple, a sequence of coloured tokens is provided and each turn the player has to combine a pair of adjacent tokens to obtain a new token of certain colour. This process is repeated until the whole sequence results in only one final token. The problem is that not every pair of colours can be merged. There is a set of rules describing the allowed combinations. For example, given the following rules</p>\n<ul>\n<li>blue + yellow → green</li>\n<li>yellow + red → orange</li>\n<li>blue + orange → brown</li>\n</ul>\n<p>and the sequence (blue, yellow, red), the game could be finished obtaining a brown token after two steps: (blue, yellow, red) → (blue, orange) → (brown).</p>\n<p>Frank is now in Valencia attending a famous programming contest and he is waiting for the tram to go to the university. Meanwhile, he is playing this game to fill time but the sun is shining so bright that he can not properly see the screen of his phone. He has some certainty about the possible colour of each token and he is wondering what will be the resulting colour following the most likely play of the game according to his estimation of the input sequence. Given Frank’s estimation of two colours A and B, and the combination A + B → C, the certainty of the obtained colour C is computed as cer(C) = cer(A) · cer(B).</p>",
+  "input": "<p>The first line contains R (0 &lt; R ≤ 100) the number of rules describing the allowed combinations of colours. Each of the following R lines contains three strings s1, s2, s3 representing the combination s1 + s2 → s3. Next line shows the number of test cases T. For each test case an integer C indicates the length of the input sequence of tokens (0 &lt; C ≤ 500). Each of the next C lines describes a token, it contains a list of pairs (k, cer(k)) providing a colour k and its corresponding certainty (0 &lt; cer(k) ≤ 1.0). The list ends with the word END. The sum of the certainties for a certain token always is 1.0. Every colour in a test case has appeared first in the rules describing the game.</p>",
+  "output": "<p>For each test case, print the resulting colour of the most likely play of the game. If there is no possible combination to finish the game then print GAMEOVER.</p>",
+  "samples": [
+    {
+      "input": "7\nBlue Yellow Green\nYellow Red Orange\nGreen Red Yellow\nWhite Red Pink\nPink Black Red\nOrange Red Red\nYellow Orange Yellow\n3\n2\nRed 0.7 Orange 0.3 END\nYellow 1.0 END\n4\nBlue 0.6 Green 0.4 END\nRed 0.2 Orange 0.6 Yellow 0.2 END\nWhite 0.9 Yellow 0.1 END\nRed 0.5 Black 0.5 END\n2\nBlue 1.0 END\nOrange 1.0 END\n",
+      "output": "Orange\nYellow\nGAMEOVER\n"
+    }
+  ],
+  "hint": "<p><strong>First case</strong></p>\n<p>In the first case there are only two tokens. Frank is sure that the second token is Yellow, but the first token could be either Red or Orange. There are two possible solutions to the game:</p>\n<ul>\n<li>(Red, Yellow) → (Orange) :<br/>\n\tcer(Orange) = 0.7</li>\n<li>(Orange, Yellow) → (Yellow) :<br/>\n\tcer(Yellow) = 0.3</li>\n</ul>\n<p>Hence, according to Frank’s estimation the most likely play is the number 1 such that the final colour is Orange.</p>\n<p><strong>Second case</strong></p>\n<p>In the second case there are several tokens and estimations. Two possible solutions are:</p>\n<ul>\n<li>(Blue,Yellow,Yellow,Red) → (Blue,Yellow,Orange) → (Blue,Yellow) → (Green)<br/>\n\tcer(Green) = 0.006</li>\n<li>(Green,Red,White,Black) → (Green,Pink,Black) → (Green,Red) → (Yellow)<br/>\n\tcer(Yellow) = 0.036</li>\n</ul>\n<p>Hence, according to Frank’s estimation the most likely play is the number 2 such that the final colour is Yellow.</p>\n<p><strong>Third case</strong></p>\n<p>In this final case Frank is sure that there are two tokens Blue and Orange. There is no rule in the defined game that allows the combination of those colours, hence, there is no solution for this sequence of tokens.</p>",
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2013",
+  "level": 23,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 5.199999809265137
+}

@@ -1,0 +1,22 @@
+{
+  "id": 25067,
+  "title": "Celebration",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><a href=\"https://dmoj.ca/user/rpeng\"><span class=\"user-legendary\"><span class=\"user-legendary-first-letter\">r</span>peng</span></a>: I raised the TL to 2 seconds to avoid fast I/O nonsense. I was able to get AC (very close though) using cin/cout.</p>\n<p>There are $n$ cities and $m$ one-directional roads in a country. The cities are numbered $1, 2, \\dots, n$. If it is possible to reach city $y$ via roads from city $x$, we say city $y$ is reachable from city $x$, which is denoted by $x \\Rightarrow y$. The roads in the country satisfy the following property: for three cities $x,y,z$, if $x \\Rightarrow z$ and $y \\Rightarrow z$, then $x \\Rightarrow y$ or $y \\Rightarrow x$.</p>\n<p>Now there will be $q$ parades throughout the celebration. The $i$-th parade starts in city $s_i$ and ends in city $t_i$ after visiting some other cities. A city may be visited multiple times during a parade. To make the parades more interesting, for each parade we will build $k$ $(0 \\le k \\le 2)$ one-way roads for the exclusive use of that parade, and other parades may not go through the roads built for the specific parade.</p>\n<p>Now we want to know the number of cities that COULD BE visited during a parade. Notice that roads built for the exclusive use of a parade do <em>not</em> have to satisfy the property satisfied by the roads originally in the country.</p>",
+  "input": "<p>The first line contains four integers $n,m,q,k$ denoting the number of cities, the number of roads, the number of parades, and the number of roads that will be built for each parade.</p>\n<p>In the following $m$ lines, each line contains two integers $u,v$ denoting there is a one-way road $u \\rightarrow v$.</p>\n<p>In the next $q$ lines, each line contains two integers $s_i,t_i$ denoting the origin and the destination of the parade. Then on the same line, there will be $k$ pairs of integers $a,b$ denoting there exists a temporary one-way road $a \\rightarrow b$ for the exclusive use of the parade.</p>\n<p>It is guaranteed if we treat the one-way roads originally in the country as bidirectional, the cities are mutually reachable.</p>",
+  "output": "<p>For each query, output an integer in a line denoting the answer. If it is not possible to reach the destination from the origin, output 0.</p>",
+  "samples": [
+    {
+      "input": "5 6 4 1\n1 2\n1 3\n1 4\n2 5\n4 5\n5 4\n1 4 5 1\n2 3 5 3\n1 2 5 2\n3 4 5 1\n",
+      "output": "4\n4\n4\n0\n"
+    }
+  ],
+  "hint": "<p>In parade 1, the origin is city 1 and the destination is city 4. The temporary road is $5 \\rightarrow 1$. The cities that may be visited are cities 1,2,4,5.</p>\n<p>In parade 2, the origin is city 2 and the destination is city 3. The temporary road is $5 \\rightarrow 3$. The cities that may be visited are cities 2,3,4,5.</p>\n<p>In parade 3, the origin is city 1 and the destination is city 2. The temporary road is $5 \\rightarrow 2$. The cities that may be visited are cities 1,2,4,5.</p>\n<p>In parade 4, the origin is city 3 and the destination is city 4. The temporary road is $5 \\rightarrow 1$. We cannot reach city 4 from city 3.</p>",
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2021",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

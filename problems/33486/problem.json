@@ -1,0 +1,40 @@
+{
+  "id": 33486,
+  "title": "$\\mathtt{MatKor} \\oplus  \\mathtt{AlKor} = \\mathtt{MatAl}$",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<blockquote>\n<p>이번 대회인 제6회 MatKor Cup은 고려대학교의 정보보호학부 동아리 MatKor와 사이버국방학과 동아리 AlKor가 함께 주최한다. 7회 대회부터는 대회 명칭도 살짝 수정해 &lt;제7회 MatKor&amp;AlKor(MatAl) Cup&gt;으로 열릴 예정이다.</p>\n</blockquote>\n<p>이번 대회부터 MatKor와 AlKor가 공동 주최를 하며, 다음 대회 이름이 MatAl Cup인 만큼, 두 동아리는 금속 현판(Metal Plate)을 만들려고 한다. 이 현판은 길이가 $1$인 금속 조각 $N$개를 일렬로 붙여 직선형으로 만들었다. 차례로 $1$, $2$, $\\cdots$, $N$번 금속 조각을 일렬로 붙여 현판을 만들었다고 할 때, $i$번 금속 조각은 초기에 $A_i$의 온도를 가진다. 그런데 만약 금속 조각의 온도가 크게 차이 나는 두 조각이 이웃해 있으면 현판이 쪼개질 수 있다는 사실을 알게 된 민재는 금속 조각을 가열해 이웃한 두 금속 조각의 온도 차이를 $M$이하로 만들고자 한다. 민재는 금속 조각을 한 번 가열할 때 아래 행동을 순서대로 한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 600px; max-width: 100%;\"/></p>\n<ul>\n<li>가열할 금속 조각의 번호 $i$를 고른다.</li>\n<li>$i$번째 금속 조각의 온도를 $N$만큼 올리기 위해 가열한다. 이때, 현판은 다음과 같이 가열된다.\n\t<ul>\n<li>모든 조각들의 온도가 증가하는데, 가열하는 위치로부터 떨어진 조각의 개수만큼 증가하는 온도가 감소한다. 즉, 아래 수식과 같다.</li>\n<li>모든 정수 $1\\le j\\le N$에 대해, $j$번째 금속 조각의 온도는 $N-\\left| i-j \\right|$만큼 증가한다.</li>\n</ul>\n</li>\n</ul>\n<p>민재는 위의 행동을 최소한으로 하여 이웃한 두 금속 조각의 온도 차이를 $M$이하로 만들고자 한다. 즉, 모든 정수 $1\\le i&lt;N$에 대하여 $\\left| A_i-A_{i+1} \\right|\\le M$을 만족하도록 해야 한다.</p>\n<p>민재의 최소 행동 횟수와 실제 행동을 찾아보자.</p>",
+  "input": "<p>첫 번째 줄에 금속 현판의 길이 $N(1\\le N\\le 10^6)$, 인접한 두 조각의 최대 온도 차이 목표 $M(0\\le M\\le 10^9)$이 공백으로 구분되어 주어진다.</p>\n<p>두 번째 줄에 현판을 이루는 각 금속 조각의 초기 온도 $A_1, A_2, \\cdots, A_N(1\\le A_i\\le 10^9)$이 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>첫 번째 줄에 목표를 달성하기 위한 최소 행동 횟수 $L$을 출력한다. 만약 불가능한 경우 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 대신 출력한다.</p>\n<p>만약 목표를 달성할 수 있다면, 두 번째 줄에 최소 횟수로 가열할 때 $i$번째 금속 조각을 가열하는 횟수를 순서대로 공백으로 구분하여 출력한다. 가능한 방법이 여러 가지일 경우, 아무거나 출력해도 된다.</p>",
+  "samples": [
+    {
+      "input": "3 0\n1 2 3\n",
+      "output": "1\n1 0 0\n"
+    },
+    {
+      "input": "3 1\n1 3 6\n",
+      "output": "2\n2 0 0\n"
+    },
+    {
+      "input": "5 0\n1 3 5 7 9\n",
+      "output": "2\n2 0 0 0 0\n"
+    },
+    {
+      "input": "5 1\n5 3 2 3 3\n",
+      "output": "1\n0 0 1 0 0\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제6회 고려대학교 MatKor Cup: 2025 Winter, alex04, leeminjae, eoaud0108, kidw0124, sshs29hanul, utilforever, yijw0930",
+  "level": 21,
+  "tags": [
+    "math",
+    "greedy",
+    "parametric_search",
+    "linear_algebra",
+    "gaussian_elimination"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 3.3845999240875244
+}

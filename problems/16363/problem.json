@@ -1,0 +1,30 @@
+{
+  "id": 16363,
+  "title": "Secret Code",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Three secret agents <em>A</em>, <em>B</em> and <em>C</em> want to confirm if their secret codes are identical. To keep this secret, they did not set the meeting time. Instead, they decided to appear randomly at a café during the time interval [0, <em>S</em>] of a day. Let <em>t<sub>A</sub></em>, <em>t<sub>B</sub></em>, <em>t<sub>C</sub></em> denote the arrival time of <em>A</em>, <em>B</em>, and <em>C</em> to the café, respectively. So, <em>t<sub>A</sub></em>, <em>t<sub>B</sub></em>, <em>t<sub>C</sub></em> are random numbers chosen uniformly from time interval [0, <em>S</em>].</p>\n<p>The code confirmation proceeds as follows. The agent who arrives earlier waits for the next agents to appear for a predetermined waiting time. If two agents encounter in the café, both check if their codes are identical. Then the agent who arrived earlier leaves the café immediately after the code confirmation. The second agent then waits till the third agent appears at the café. The agent leaves the café if the agent encounters the last agent in the agent’s own waiting time.</p>\n<p>The waiting times of three agents <em>A</em>, <em>B</em>, <em>C</em> have already been determined as <em>w<sub>A</sub></em>, <em>w<sub>B</sub></em>, <em>w<sub>C</sub></em>. It is crucial that each of the arrival times <em>t<sub>A</sub></em>, <em>t<sub>B</sub></em>, <em>t<sub>C</sub></em> is a real number between 0 and <em>S</em>, not necessarily an integer, whereas each of the waiting times <em>w<sub>A</sub></em>, <em>w<sub>B</sub></em>, <em>w<sub>C</sub></em> is a positive integer satisfying 0 &lt; <em>w<sub>A</sub></em> + <em>w<sub>B</sub></em>, <em>w<sub>B</sub></em> + <em>w<sub>C</sub></em>, <em>w<sub>A</sub></em> + <em>w<sub>C</sub></em> &lt; <em>S</em>. We assume it takes no time in code confirmation task. The agent immediately leaves the café if the agent confirms the code with the agent arrived later. Let us explain this procedure using Figure G.1.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 557px; height: 299px;\"/></p>\n<p style=\"text-align: center;\">Figure G.1 Four cases for successful and unsuccessful confirmations.</p>\n<p>Successful code confirmation needs at least two encounters among three agents. When the arrival order is <em>A</em>, <em>B</em>, <em>C</em>, both of Case-1 and Case-4 are examples for successful confirmation, but Case-2 and Case-3 are not. In Case-1, the agent <em>A</em> leaves the café at time <em>x</em> = <em>t<sub>B</sub></em> immediately not waiting by time <em>t<sub>A</sub></em> + <em>w<sub>A</sub></em>. It is easy to see that Case-2 is an unsuccessful case. In Case-2, though the waiting time of <em>A</em> overlaps those of <em>B</em> and <em>C</em>, <em>B</em> cannot confirm the code with <em>C</em> since the agent <em>A</em> (who already confirmed the code with B) leaves the café at time <em>x</em>. So, there is no way to confirm the code between <em>B</em> and <em>C</em>. Note that <em>A</em> also leaves the café at time <em>x</em> in Case-3 and Case-4.</p>\n<p>We know the probability of the successful code confirmation depends on four integers (<em>S</em>, <em>w<sub>A</sub></em>, <em>w<sub>B</sub></em>, <em>w<sub>C</sub></em>). We are given <em>n</em> different scenarios determined by four integers (<em>S</em>, <em>w<sub>A</sub></em>, <em>w<sub>B</sub></em>, <em>w<sub>C</sub></em>). We want to sort these <em>n</em> scenarios in terms of this confirmation probability.</p>\n<p>Given <em>n</em> scenarios, write a program to print the scenario indices in the non-decreasing order of the probability.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing an integer <em>n</em> (3 ≤ <em>n</em> ≤ 20), where <em>n</em> is the number of scenarios. In the following <em>n</em> lines, each line contains four positive integers <em>S</em>, <em>w<sub>A</sub></em>, <em>w<sub>B</sub></em>, <em>w<sub>C</sub></em> in this order, describing a scenario (<em>S</em>, <em>w<sub>A</sub></em>, <em>w<sub>B</sub></em>, <em>w<sub>C</sub></em>) where 0 &lt; <em>w<sub>A</sub></em> + <em>w<sub>B</sub></em>, <em>w<sub>B</sub></em> + <em>w<sub>C</sub></em>, <em>w<sub>A</sub></em> + <em>w<sub>C</sub></em> ≤ 1,000.</p>",
+  "output": "<p>Your program is to write to standard output. Print the indices of <em>n</em> scenarios in the non-decreasing order of the probability in one line. If scenarios <em>i</em> and <em>j</em> for 1 ≤ <em>i</em> &lt; <em>j</em> ≤ <em>n</em> have the same probability, then print <em>i</em> before <em>j</em>.</p>",
+  "samples": [
+    {
+      "input": "3\n100 12 13 14\n110  8  9 15\n200 23 30 40\n",
+      "output": "2 1 3\n"
+    },
+    {
+      "input": "6\n201 15 16 16\n375 30 32 27\n900 75 73 67\n203 16 17 16\n373 31 32 27\n895 73 75 66\n",
+      "output": "1 2 3 6 5 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2018",
+  "level": 19,
+  "tags": [
+    "calculus",
+    "inclusion_and_exclusion",
+    "math"
+  ],
+  "accepted_user_count": 53,
+  "submission_count": null,
+  "average_tries": 1.830199956893921
+}

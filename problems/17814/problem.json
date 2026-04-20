@@ -1,0 +1,45 @@
+{
+  "id": 17814,
+  "title": "Screamers in the Storm",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>As you might remember from your first years in school, the human race invented beer brewing at least about 7000 years ago. The total amount of beer consumed from those times must be monumental and surely the rate of consumption is not going to shrink in the coming millennia.</p>\n<p>To celebrate these facts, we invite you to implement a game, seemingly unrelated to beer brewing. It is quite possible, however, that after a successful implementation you might feel a little dizzy, just as if you have had a little bit more than your daily dose of beer...</p>\n<p>The game is played on a rectangular M × N grid consisting of square tiles of different types.</p>\n<p><strong>Animals and food</strong></p>\n<p>There is some number of animals on the grid, each animal occupies exactly one tile.</p>\n<p>Grass grows, sheep eat grass, wolves eat sheep, and both wolves and sheep can die of starvation.</p>\n<p><strong>Turns and animal actions</strong></p>\n<p>Each turn consists of actions in the following order:</p>\n<ol>\n<li>All animals on the grid move. Each wolf moves to a neighbouring tile in the east (to the right). If the wolf’s move is not possible, the wolf moves to the westernmost tile in its row. Each sheep moves to a neighbouring tile in the south (down). If the sheep’s move is not possible, the sheep moves to the northernmost tile in its column.</li>\n<li>If a wolf and a sheep occupy the same tile, the wolf eats the sheep and the tile is changed to a Soil with carcass tile.</li>\n<li>If a sheep is located on a Soil with grass tile, the sheep eats the grass and the tile is changed to a Soil tile.</li>\n<li>If a wolf hasn’t eaten in any of the last 10 turns including the current turn, it dies and the tile is changed to a Soil with carcass tile.</li>\n<li>If a sheep didn’t eat in any of the last 5 turns including the current turn, it dies and the tile is changed to a Soil with carcass tile.</li>\n</ol>\n<p><strong>Types of tiles and their changes</strong></p>\n<p>There are three types of tiles. The type of a tile may be changed in the course of the game.</p>\n<ol>\n<li>Soil tile: After 3 turns after the beginning of the game or after 3 turns after the tile became a Soil tile, the tile becomes a Soil with grass tile.</li>\n<li>Soil with grass tile: If the grass is eaten by a sheep, the tile immediately becomes a Soil tile. The grass will grow again at the tile after 3 turns.</li>\n<li>Soil with carcass tile: Whenever an animal dies on a tile of any type, the tile immediately becomes a Soil with carcass tile. Animals can still move to this tile, but the grass will never grow on this tile again. As the game progresses, more carcasses may accumulate on the tile.</li>\n</ol>",
+  "input": "<p>First line of the input contains three integers T, N and M (1 ≤ T ≤ 100, 1 ≤ M, N ≤ 20), where T is the number of turns, M is the number of rows and N is the number of columns of the grid. The following M lines contain N characters each. Characters denote the types of tiles:</p>\n<ul>\n<li><code>.</code> (dot character) denotes a Soil tile</li>\n<li><code>S</code> denotes a Soil tile with a sheep on it</li>\n<li><code>W</code> denotes a Soil tile with a wolf on it</li>\n</ul>",
+  "output": "<p>Output M lines each containing N characters describing the state of the grid after the end of the T-th turn. If there is an animal on a tile, output:</p>\n<ul>\n<li><code>W</code> for a tile with a wolf on it</li>\n<li><code>S</code> for a tile with a sheep on it</li>\n</ul>\n<p>Otherwise, output:</p>\n<ul>\n<li><code>*</code> for a Soil with carcass tile</li>\n<li><code>#</code> for a Soil with grass tile</li>\n<li><code>.</code> (dot character) for a Soil tile</li>\n</ul>",
+  "samples": [
+    {
+      "input": "6 6 5\n..S..\n.....\n.S...\n.....\n....W\n.S...\n",
+      "output": "##S##\n#####\n#####\n#.###\nW*.##\n#S.##\n"
+    },
+    {
+      "input": "14 3 3\nS..\nW..\n...\n",
+      "output": ".##\n#*#\nS##\n"
+    },
+    {
+      "input": "2 3 1\nS\n.\n.\n",
+      "output": ".\n.\nS\n"
+    },
+    {
+      "input": "3 3 1\nS\n.\n.\n",
+      "output": "S\n#\n#\n"
+    },
+    {
+      "input": "4 3 1\nS\n.\n.\n",
+      "output": "#\nS\n#\n"
+    },
+    {
+      "input": "5 3 1\nS\n.\n.\n",
+      "output": "#\n.\nS\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2019",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.2000000476837158
+}

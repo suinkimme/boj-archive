@@ -1,0 +1,32 @@
+{
+  "id": 26282,
+  "title": "BinCoin",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>There are $n$ employees in the BinCoin company numbered from $1$ to $n$. The subordination structure in this company is a rooted tree. In other words:</p>\n<ul>\n<li>There is one CEO in the company --- the main boss.</li>\n<li>Each other employee has exactly one direct superior.</li>\n<li>There are no cycles in the subordination structure.</li>\n</ul>\n<p>Moreover, due to the inexplicable love of the CEO of BinCoin for all the binary stuff, the subordination structure in the company is a <strong>binary</strong> rooted tree. That means each employee is directly superior to exactly zero or two other employees.</p>\n<p>In the CEO's opinion, working in this company is almost as dangerous as in mines. So, employees should sign the waiver of claims sometimes. This process happens in the following way. Initially, CEO takes the journal, then recursively the following procedure is performed:</p>\n<ul>\n<li>If an employee that holds the journal does not have any subordinates, they sign the waiver in the journal and give it back to their superior. The procedure stops if that was the CEO, who has no superior.</li>\n<li>Otherwise\n\t<ul>\n<li>they choose one of two of their direct subordinates uniformly at random and give the journal to one of them;</li>\n<li>when they get the journal back, they sign it;</li>\n<li>and then they give it to another direct subordinate;</li>\n<li>when they get it back again, they give it back to their superior. The procedure stops if that was the CEO, who has no superior.</li>\n</ul>\n</li>\n</ul>\n<p>All random choices are independent.</p>\n<p>One day, the CEO realized that they could not remember the subordination tree. Fortunately, they have the journal with $k$ records. Each record is a sequence of employees in the order they've signed in a journal.</p>\n<p>Help CEO restore the subordination tree.</p>",
+  "input": "<p>The first line contains two integers $n$ and $k$ --- the number of employees and the number of records in the journal ($1 \\le n \\le 999$; $50 \\le k \\le 100$).</p>\n<p>Each of the next $k$ lines contains a permutation of integers from $1$ to $n$ --- the order of employees in the corresponding record.</p>\n<p>It is guaranteed that the input was obtained as described in the statement with a real random choice.</p>",
+  "output": "<p>Output $n$ integers $p_i$. If $i$ is a CEO, then $p_i$ should be $-1$. Otherwise, $p_i$ should be the index of the direct superior of $i$-th employee.</p>\n<p>Your output should correspond to a binary rooted tree. If there are several trees satisfying the input, you can output any one of them.</p>",
+  "samples": [
+    {
+      "input": "3 50\n1 2 3\n3 2 1\n1 2 3\n1 2 3\n1 2 3\n3 2 1\n1 2 3\n1 2 3\n3 2 1\n1 2 3\n1 2 3\n3 2 1\n3 2 1\n1 2 3\n1 2 3\n3 2 1\n3 2 1\n1 2 3\n1 2 3\n3 2 1\n1 2 3\n3 2 1\n3 2 1\n3 2 1\n3 2 1\n3 2 1\n3 2 1\n1 2 3\n1 2 3\n1 2 3\n3 2 1\n3 2 1\n1 2 3\n3 2 1\n1 2 3\n3 2 1\n1 2 3\n1 2 3\n1 2 3\n1 2 3\n3 2 1\n3 2 1\n1 2 3\n1 2 3\n1 2 3\n1 2 3\n3 2 1\n1 2 3\n3 2 1\n1 2 3\n",
+      "output": "2 -1 2\n"
+    },
+    {
+      "input": "5 60\n2 4 3 5 1\n1 5 2 4 3\n1 5 3 4 2\n3 4 2 5 1\n3 4 2 5 1\n1 5 2 4 3\n1 5 2 4 3\n1 5 3 4 2\n1 5 2 4 3\n2 4 3 5 1\n2 4 3 5 1\n1 5 3 4 2\n1 5 3 4 2\n1 5 2 4 3\n1 5 3 4 2\n1 5 2 4 3\n1 5 2 4 3\n3 4 2 5 1\n1 5 3 4 2\n3 4 2 5 1\n1 5 2 4 3\n1 5 3 4 2\n1 5 3 4 2\n2 4 3 5 1\n2 4 3 5 1\n3 4 2 5 1\n2 4 3 5 1\n3 4 2 5 1\n1 5 3 4 2\n2 4 3 5 1\n2 4 3 5 1\n1 5 2 4 3\n3 4 2 5 1\n2 4 3 5 1\n2 4 3 5 1\n1 5 2 4 3\n1 5 2 4 3\n3 4 2 5 1\n1 5 3 4 2\n1 5 2 4 3\n1 5 2 4 3\n1 5 3 4 2\n1 5 3 4 2\n1 5 2 4 3\n2 4 3 5 1\n3 4 2 5 1\n1 5 2 4 3\n1 5 3 4 2\n1 5 2 4 3\n2 4 3 5 1\n1 5 2 4 3\n3 4 2 5 1\n3 4 2 5 1\n1 5 2 4 3\n2 4 3 5 1\n1 5 2 4 3\n3 4 2 5 1\n1 5 2 4 3\n2 4 3 5 1\n3 4 2 5 1\n",
+      "output": "5 4 4 5 -1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2022",
+  "level": 18,
+  "tags": [
+    "math",
+    "trees",
+    "probability",
+    "hashing",
+    "randomization"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.166700005531311
+}

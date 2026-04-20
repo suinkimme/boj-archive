@@ -1,0 +1,31 @@
+{
+  "id": 10110,
+  "title": "King Gruff",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>King Gruff the Wolf rules over a happy, prosperous land inhabited by adorable Foxes. Unfortunately for them, he is not a nice king at all, and wants to make their lives miserable!</p>\n<p>His country has N (1 ≤ N ≤ 10<sup>5</sup>) cities, with M (0 ≤ M ≤ 10<sup>5</sup>) roads running amongst them. The ith road allows one to travel from city X<sub>i</sub> to a different city Y<sub>i</sub> (1 ≤ X<sub>i</sub>, Y<sub>i</sub> ≤ N), in that direction only, and has a length of L<sub>i</sub> (1 ≤ L<sub>i</sub> ≤ 10<sup>4</sup>) and a shutdown cost of C<sub>i</sub> (1 ≤ C<sub>i</sub> ≤ 10<sup>4</sup>). There may be multiple roads running between a pair of cities, even in the same direction.</p>\n<p>King Gruff particularly dislikes the Foxes living in two different cities A and B (1 ≤ A, B ≤ N), and would like to make it more inconvenient (or even impossible) to travel from city A to city B. In particular, he’ll select a distance value D (1 ≤ D ≤ 10<sup>9</sup>), and then simultaneously shut down every single road in his kingdom which is part of at least one path from city A to city B with total length no more than D. For each such road, however, he’ll have to dig into his royal treasury and pay its shutdown cost. A path consists of a sequence of roads such that each road (except the first) starts at the city that the previous road ended at, and may visit a city or road multiple times.</p>\n<p>Gruff is having trouble making up his mind about what value of D to choose, however - a larger value would make things more inconvenient for his Foxy subjects, but might cost him more money as well! As such, he’ll consider Q (1 ≤ Q ≤ 10<sup>5</sup>) different values, D<sub>1</sub>, D<sub>2</sub>, . . ., D<sub>Q</sub>. For each one, he’d like to know how many tax dollars would need to be spent to shut down all roads which lie on at least one sufficiently short path from city A to city B. Since you don’t like Foxes either, you’ve agreed to help the Wolf write a program to calculate this!</p>",
+  "input": "<p>The first line contains 4 integers, each separated by a space:</p>\n<ul>\n<li>N (1 ≤ N ≤ 10<sup>5</sup>), the number of cities, followed by</li>\n<li>M (0 ≤ M ≤ 10<sup>5</sup>), the number of roads, followed by</li>\n<li>A (1 ≤ A ≤ N), the starting city, followed by</li>\n<li>B (1 ≤ B ≤ N), the ending city.</li>\n</ul>\n<p>Each of the next M lines contain four space-separated integers X<sub>i</sub>, Y<sub>i</sub>, L<sub>i</sub>, and C<sub>i</sub>, describing the road from X<sub>i</sub> to Y<sub>i</sub> with length L<sub>i</sub> and shutdown cost C<sub>i</sub> (where 1 ≤ X<sub>i</sub>, Y<sub>i</sub> ≤ N, 1 ≤ L<sub>i</sub>, C<sub>i</sub> ≤ 10<sup>4</sup>). The next line contains Q (1 ≤ Q ≤ 10<sup>5</sup>), the number of different distance values to consider.</p>\n<p>The next Q lines each contain one integer D<sub>i</sub> (1 ≤ D<sub>i</sub> ≤ 10<sup>9</sup>), which is the distance value to consider in shutting down roads.</p>",
+  "output": "<p>The output consists of Q lines, each with one integer, representing the total cost required to shut down all necessary roads given a distance value of Di , for i = 1..Q</p>",
+  "samples": [
+    {
+      "input": "4 5 1 3\n1 2 5 1\n1 2 8 50\n2 3 2 15\n3 1 80 1000\n3 4 1 1\n4\n8\n6\n90\n94\n",
+      "output": "16\n0\n66\n1066\n"
+    },
+    {
+      "input": "4 3 1 2\n2 1 1 1\n3 4 10000 10000\n4 3 10000 10000\n1\n1000000000\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2014, CCO 2014",
+  "level": 17,
+  "tags": [
+    "dijkstra",
+    "graphs",
+    "prefix_sum",
+    "shortest_path"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.0714000463485718
+}

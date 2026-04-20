@@ -1,0 +1,22 @@
+{
+  "id": 20706,
+  "title": "Hit the Hay",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Some consider putting a baby to sleep to be an art, but this problem will show it is all just maths.</p>\n<p>Consider a night during which a parent is trying to put a baby to sleep. An alarm clock will sound at the end of the night, and the parent is not allowed to change the alarm time, so the length of the night is fixed at $k$ hours from now.</p>\n<p>The baby can be in one of the three states: state 0 means the baby is awake, state 1 means the baby is in light sleep, and state 2 means the baby is in deep sleep. The baby starts in state 0, and the change in a state happens continuously rather than discretely. You are given three numbers $p_0$, $p_1$, and $p_2$. Whenever the baby is in state $i$, the probability that no state change will happen in the next $x$ hours is $p_i^x$, where $x$ is a positive real number. In other words, the time before the next state change is picked from the <em>exponential distribution</em> with the cumulative distribution function of $1-p_i^x$.</p>\n<p>Whenever a state change does happen, if the baby was in state 0, it will always switch to state 1; if the baby was in state 2, it will also always switch to state 1; if the baby was in state 1, it will switch to state 0 with the probability $q_0$ and to state 2 with the probability $1-q_0$.</p>\n<p>The parent decides when to go to sleep themselves. However, if the baby is in state 0, it will cry and wake the parent up, so the parent can only be asleep if the baby is in state 1 or 2. The parent can choose to still stay awake even if the baby is in one of those states. If they do stay awake, they can:</p>\n<ul>\n<li>see which of the three states the baby is in;</li>\n<li>prevent the baby from waking up: if the baby decides to switch from state 1 to state 0 according to the above rules, and the parent is not asleep, then the baby will be comforted and will stay in state 1 instead.</li>\n</ul>\n<p>The parent can decide to go to sleep arbitrarily, for example using the current state of the baby or the current time to make this decision. However, if they do go to sleep, then they will be asleep until either the baby wakes up (goes to state 0), or the alarm clock sounds at the end of the $k$ hours. If they get woken up by the baby waking up, then they can later decide to go to sleep again arbitrarily.</p>\n<p>What is the maximum expected number of hours of sleep the parent can get if they decide to go to sleep in the optimal fashion?</p>",
+  "input": "<p>The first line of the input contains an integer $t$ ($1 \\le t \\le 1000$) --- the number of test cases.</p>\n<p>The next $t$ lines describe test cases, each contains five floating-point numbers with exactly <em>one</em> digit after the decimal point, in the following order: $k$, $p_0$, $p_1$, $p_2$, $q_0$ ($0.1 \\le k \\le 10$; $0.1 \\le p_0, p_1, p_2, q_0 \\le 0.9$).</p>",
+  "output": "<p>Output $t$ lines with a floating-point number on each line --- the maximum expected amount of sleep for each test case. Your outputs will be considered correct if they are within $10^{-9}$ absolute difference from the answers.</p>",
+  "samples": [
+    {
+      "input": "2\n10.0 0.5 0.5 0.5 0.5\n8.0 0.1 0.9 0.9 0.1\n",
+      "output": "6.5990202123649855\n7.540407031059442\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2020 (Online)",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

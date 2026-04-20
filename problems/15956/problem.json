@@ -1,0 +1,46 @@
+{
+  "id": 15956,
+  "title": "숏코딩",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>코드 페스티벌 온라인 예선에 참가하고 있던 라이언은 이제 남은 시간이 <span id=\"remaining-time\">00:00:00</span>밖에 없다는 것을 깨닫게 되었다. 라이언은 이미 머릿속에서 풀이를 구상하고 코딩도 완료했기 때문에, 이를 그대로 타이핑하기만 하면 된다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>지금 라이언은 변수들과 정수들끼리 같은지 다른지 비교하는 간단한 조건문 (conditional expression) <em>S</em>를 작성하고자 한다. 자세히 설명하자면,</p>\n<ul>\n<li>라이언이 작성하는 <strong>변수</strong>의 이름은 영문 알파벳으로만 구성된 문자열이다. 예를 들어, <code>kakao</code>, <code>COde</code>, <code>festival</code>은 변수의 이름이 될 수 있지만, <code>C0de</code>, <code>2018</code>, <code>hello_world</code>는 변수의 이름이 될 수 없다. 변수는 정수 값을 저장하고 있으며, 변수의 <strong>값</strong>은 해당 변수가 저장하고 있는 정수 값을 의미한다.</li>\n<li>라이언이 작성하는 <strong>정수</strong>는 무조건 -10<sup>9</sup> 이상 10<sup>9</sup> 이하이다. 0을 제외한 정수는 숫자 <code>0</code>으로 시작하지 않으며, 0을 표기하는 유일한 방법은 <code>0</code>이다. 예를 들어, 라이언은 <code>0</code>, <code>123456</code>, <code>-987654321</code> 과 같은 정수는 작성할 수 있지만, <code>-0</code>, <code>0123</code>, <code>00000</code>, <code>-009876</code>, <code>999999999999999</code>와 같은 정수는 작성할 수 없다.</li>\n<li><strong>단항식</strong>은 <strong>변수</strong> 또는 <strong>정수</strong>이다.</li>\n<li>라이언은 아래 두 개의 <strong>비교 연산자</strong>를 사용하여 <strong>논리식</strong>을 만든다.\n\t<ul>\n<li><strong>같음 연산자</strong> <code>==</code>: <code>&lt;a&gt;==&lt;b&gt;</code>와 같이 사용하며, 두 단항식 <code>&lt;a&gt;</code>와 <code>&lt;b&gt;</code>의 값을 계산하여, 같으면 <code>true</code>를, 다르면 <code>false</code>를 반환한다.</li>\n<li><strong>다름 연산자</strong> <code>!=</code>: <code>&lt;a&gt;!=&lt;b&gt;</code>와 같이 사용하며, 두 단항식 <code>&lt;a&gt;</code>와 <code>&lt;b&gt;</code>의 값을 계산하여, 다르면 <code>true</code>를, 같으면 <code>false</code>를 반환한다.</li>\n<li>위의 두 연산자 모두, 연산자의 좌변과 우변에는 <strong>오직</strong> 단항식만이 올 수 있다. 예를 들어, <code>(a==b)!=(b==c)</code>는 <code>!=</code>의 좌변과 우변에 단항식이 아닌 논리식이 들어 있으므로 라이언이 사용하는 논리식이 아니다.</li>\n</ul>\n</li>\n<li>라이언은 논리곱 연산자 <code>&amp;&amp;</code>로 <strong>한 개 이상의</strong> 논리식들을 연결하여 <strong>조건문</strong>을 만든다. 연결한 논리식들이 <strong>모두</strong> <code>true</code>를 반환할 때에만 <code>true</code>, 그렇지 않다면 <code>false</code>를 반환하도록 할 것이다. 연결할 때에 공백 등을 삽입하지 않는다. 예를 들어, 라이언이 세 논리식 <code>a==b</code>, <code>b!=c</code>, <code>1!=a</code>를 연결하고자 한다면, <code>a==b&amp;&amp;b!=c&amp;&amp;1!=a</code>와 같이 연결한다.</li>\n</ul>\n<p>라이언이 작성하고자 하는 조건문 <em>S</em>는 위 문단에서 언급한 방법으로만 만들 수 있음이 보장된다.</p>\n<p>하지만, 라이언은 남은 시간에 비해 <em>S</em>의 길이가 너무 길다고 생각하여, <em>S</em>와 동치이면서 위에서 제시된 방법으로 만들 수 있는 길이가 가장 짧은 조건문 <em>S'</em>을 대신 입력할 생각이다. 두 조건문 <em>T<sub>1</sub></em>과 <em>T<sub>2</sub></em>가 동치라는 것은, 어떤 변수 (조건문에 등장하지 않는 모든 가능한 변수도 포함) 에 어떤 값 (라이언이 작성하지 않는 정수도 가능)을 넣더라도 <em>T<sub>1</sub></em>의 참/거짓 여부와 <em>T<sub>2</sub></em>의 참/거짓 여부가 같다는 것이다.</p>\n<p>라이언을 위해, <em>S'</em>을 대신 구해주는 프로그램을 작성하자. <em>S'</em>이 여러 가지 있다면, 그 중 하나를 아무거나 구해주면 된다.</p>\n<script>\nvar endTime = new Date(\"9999-08-04 19:00:00+0900\").getTime();\nsetInterval(function() {\n  var currentTime = new Date().getTime();\n  var diff = endTime - currentTime;\n  if (diff < 0) diff = 0;\n  var hours = Math.floor(diff / 1000 / 60 / 60) % 24;\n  var minutes = Math.floor(diff / 1000 / 60 % 60);\n  var seconds = Math.floor(diff / 1000 % 60);\n  $(\"#remaining-time\").text((\"0\" + hours).slice(-2) + \":\" + (\"0\" + minutes).slice(-2) + \":\" + (\"0\" + seconds).slice(-2)); \n}, 1000);\n</script>",
+  "input": "<p>첫 번째 줄에 라이언이 입력하고자 하는 조건문 <em>S</em>(1 ≤ |<em>S</em>| ≤ 10<sup>6</sup>)가 주어진다.</p>",
+  "output": "<p>첫 번째 줄에 <em>S</em>와 동치이면서, 문제 본문에 제시된 방법으로 만들 수 있는 길이가 가장 짧은 조건문 <em>S'</em>을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "festival==kakao&&festival==2018&&haha==123456&&hoho!=123456",
+      "output": "festival==2018&&kakao==2018&&haha==123456&&hoho!=haha"
+    },
+    {
+      "input": "kakaocodefestival==-20180804&&hello!=-20180804",
+      "output": "kakaocodefestival==-20180804&&hello!=-20180804"
+    },
+    {
+      "input": "a==b&&b==c&&c==a",
+      "output": "a==b&&a==c"
+    },
+    {
+      "input": "int==float",
+      "output": "int==float"
+    },
+    {
+      "input": "a==A&&B==b",
+      "output": "A==a&&b==B"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, 카카오 코드 페스티벌, 카카오 코드 페스티벌 2018 예선",
+  "level": 20,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "set",
+    "case_work",
+    "disjoint_set",
+    "parsing"
+  ],
+  "accepted_user_count": 151,
+  "submission_count": null,
+  "average_tries": 7.470200061798096
+}

@@ -1,0 +1,31 @@
+{
+  "id": 31752,
+  "title": "Beating the Record",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Speedy Greedy is a professional speedrunner: they play a videogame repeatedly, with the aim of finishing it as quickly as possible.</p>\n<p>The game that Speedy Greedy is currently tackling consists of $N$ levels, numbered sequentially from $1$ to $N$. Although these levels must be completed in order, each of them is independent of the others in terms of gameplay. That is, no event from one level can have a relevant effect on the next levels (unlike other games where items, spells, points, lives, etc. are carried over from one level to the next).</p>\n<p>The current world record for the fastest completion time of the game is $T$ seconds. Speedy Greedy is determined to beat this world record, with no concern for the margin. Whether the game is finished $1$ second or $1000$ seconds faster than the current record is irrelevant: what matters to Speedy Greedy is improving the world record.</p>\n<p>Speedrunners often choose and adjust their actions dynamically during a run, depending on various factors such as the situation of their character in the game. It is also common to restart the game, as for example once $T$ seconds have passed there is no more hope to beat the world record. Any run of the game can be restarted at any point. When a restart command is issued by the speedrunner, the game instantly restarts from the beginning. Thus, to beat the world record, Speedy Greedy must complete the $N$ levels sequentially, in a single run that takes less than $T$ seconds.</p>\n<p>How can Speedy Greedy achieve that? Well, most sections of the game are completely safe and easy to play for a speedrunner of such skill. Those sections take fixed amounts of time and have no risk of failing. However, there is a very hard section in each of the $N$ levels, where the result of playing that section is not completely under Speedy Greedy’s control, and also depends on the chosen strategy.</p>\n<p>In each level, there are two possible strategies, and when reaching the hard section, Speedy Greedy can choose exactly one of them to attempt. Each strategy has its own probability of success, and the actual time that the level takes to complete depends on the chosen strategy and whether the attempt is successful or not.</p>\n<p>For the purposes of this problem, we assume that Speedy Greedy can instantly detect whether the chosen strategy for a level succeeded or failed, right at the moment that the hard section of the level is reached. That is, reaching the hard section of a level, choosing a strategy, and knowing whether the attempted strategy succeeded or failed are all simultaneous events, occurring at exactly the same time.</p>\n<p>Grinding the game by playing again and again and again becomes tiring and physically exhausting at such a high level of speedrunning competition. Speedy Greedy then decided to play the game so as to minimize the expected total play time until beating the world record. Your task is to compute this minimum.</p>\n<p>Note that the total play time not only includes the time of the final successful run that takes less than $T$ seconds (beating the world record), but also includes the time spent during all previous failed runs.</p>",
+  "input": "<p>The first line contains three integers $N$ ($1 ≤ N ≤ 4$), $T$ ($1 ≤ T ≤ 5000$) and $S$ ($1 ≤ S ≤ 1000$), indicating respectively the number of levels, the time of the current world record, and the time from the start of level $1$ until the instant that the hard section in level $1$ is reached.</p>\n<p>The $i$-th of the next $N$ lines describes the two strategies for level $i$ by means of six integers $P_1$, $G_1$, $B_1$, $P_2$, $G_2$ and $B_2$ ($1 ≤ P_j ≤ 99$ and $0 ≤ G_j ≤ B_j ≤ 1000$, for $j = 1, 2$).</p>\n<p>$P_j$ indicates the probability (as a percentage) that strategy $j$ succeeds when used.</p>\n<p>$G_j$ represents the “good time” for strategy $j$, that is, the time from the moment the strategy succeeds, until the moment that the hard section of the next level is reached. For the last level, $G_j$ represents the time from the moment the strategy succeeds, until the completion of the game.</p>\n<p>Finally, $B_j$ denotes the “bad time” for strategy $j$. It is analogous to $G_j$, but indicates the time corresponding to the case when the strategy fails.</p>\n<p>All input times are given in seconds. It is guaranteed that the input is such that beating the world record is possible.</p>",
+  "output": "<p>Output a single line with the minimum expected total play time until Speedy Greedy beats the world record. The output must have an absolute or relative error of at most $10^{-9}$.</p>",
+  "samples": [
+    {
+      "input": "1 100 50\n50 48 49 1 1 50\n",
+      "output": "98.5\n"
+    },
+    {
+      "input": "1 100 50\n50 48 49 52 1 50\n",
+      "output": "97.15384615384615\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Championship, The 2024 ICPC Latin America Championship",
+  "level": 22,
+  "tags": [
+    "math",
+    "dp",
+    "binary_search",
+    "probability"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 3.8125
+}

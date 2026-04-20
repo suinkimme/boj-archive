@@ -1,0 +1,22 @@
+{
+  "id": 4930,
+  "title": "Alpha of Degree k",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Given two strings s and t, we’ll say that the relation “alpha of degree k” holds between s and t, αk<br/>\nwritten as \\( (s \\xrightarrow {α^k} t) \\), iff there exists a suffix of s with a minimum length of k characters which is also a prefix of t. Note that the alpha relation is not defined for k = 0.</p>\n<p>For example, the word \"telnet\" is α<sup>3</sup> to \"network\" while \"block\" is α<sup>4</sup> (and α<sup>3</sup>, and α<sup>2</sup>, and α<sup>1</sup>) related to \"locker\".</p>\n<p>An α<sup>k</sup> chain of length L (where L &gt; 0) from word s to word t is a list of L+1 words where s is the first word, t is the last word, and an α<sup>k</sup> relation holds between each two consecutive words. For example, here’s an α<sup>2</sup> chain of length 4 between \"cartoon\" and \"manual\".</p>\n<p>\\( cartoon \\xrightarrow {α^2} one \\xrightarrow {α^2} new \\xrightarrow {α^2} newsman \\xrightarrow {α^2} manual \\)</p>\n<p>Given a dictionary of words C, two words s and t (taken from the dictionary), and two integers k and L, write a program that determines if there is an α<sup>k</sup> chain between s and t where the chain’s length doesn’t exceed L and all words in the chain are from C</p>",
+  "input": "<p>Your program will be tested on one or more test cases. The first line of the input specifies a single integer D which represents the number of test cases.</p>\n<p>Each test case specifies a dictionary of words and a number of queries on that dictionary. The first line of each test case specifies two integers W and Q where W is the number of words in this test case’s dictionary and Q is the number queries to be performed on that dictionary. Note that 0 &lt; W &lt;50,000 and 0 &lt; Q &lt; 100.</p>\n<p>The dictionary is listed starting at line 2 of each test case, one word on each line, all words are composed of lower case letters, there are no duplicates, no spaces, and no word is longer than 64 characters.</p>\n<p>Following the dictionary, Q queries are specified. Each query is specified on a separate line by specifying two strings s and t and two integers k and L.</p>\n<p>For each query, determine if, using words found in the dictionary, there is an α<sup>k</sup> chain from s to t whose length doesn’t exceed L.</p>",
+  "output": "<p>For each query, write the result on a separate line. If there is no chain that satisfies the given constrains, your program should print:</p>\n<p>a.b␣none</p>\n<p>where a is the test case number (starting at 1,) and b is the query number within this test case (again starting at 1.)</p>\n<p>If, however, there is a chain, your program should print the following:</p>\n<p>a.b␣c␣word-1␣word-2␣...␣word-n</p>\n<p>Where a, b are as described previously, c is the length of the chain. word-1, word-2, . . . word-n is the chain, where each two consecutive words are separated by a single space.</p>\n<p>If there are more than one solution for a query, just print anyone of them.</p>",
+  "samples": [
+    {
+      "input": "2\n8 3\nnews\nperusal\nsymbolic\nnewspaper\nsalon\nlongstreet\ncartoon\nstreetcar\nnews cartoon 3 8\nnews cartoon 3 4\nnews cartoon 1 4\n2 2\nlink\nblink\nblink link 3 10\nlink blink 2 100\n",
+      "output": "1.1 6 news newspaper perusal salon longstreet streetcar cartoon\n1.2 none\n1.3 4 news salon longstreet streetcar cartoon\n2.1 1 blink link\n2.2 none\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Africa and Arab, Arab Collegiate Programming Contest, 2005 Arab Collegiate Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

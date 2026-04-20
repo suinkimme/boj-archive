@@ -1,0 +1,32 @@
+{
+  "id": 32320,
+  "title": "Speed Ups",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>In a video game called Speed Ups, you are a single player running a race. The goal is to finish the race as fast as possible. Your regular speed is 1 meter/second. But at different meter markers, you may get the choice of a speed up. Each speed up can be described by an ordered triplet of integers &lt;x, m, d&gt; indicating that the speed up can be used “exactly” x meters after the start of the race, giving you a temporary speed of m meters per second for a duration of d seconds. If you are currently using a speed up, you cannot use another speed up. Thus, it's possible that if you choose to use one speed up, you'll run past the location of another speed up which might have been better to take.</p>\n<p>For example, imagine that for a 100 meter race, there are two possible speed ups: &lt;10, 2, 5&gt; and &lt;15, 3, 20&gt;. You take 10 seconds to run the first 10 meters. Then, if you take the first speed up at the 10 meter mark, you will then run the next 5 seconds at 2 meters/second, arriving at the 20 (10 + 5 × 2) meter mark 15 (10 + 5) seconds after the start of the race. Since this (20 meter mark) is further along than the second speed up (15 meter mark), you can no longer take the second speed up and will complete the race in 10 + 5 + 80 = 95 seconds. If however, you choose to skip the first speed up at the 10 meter mark, but take the second one at the 15 meter mark, you'll then travel at a speed of 3 meters/second for 20 seconds, arriving at the 75 meter mark 35 seconds into the race, finishing the race in 60 seconds (15 + 20 + 25 = 60), which is the fastest time in which you could complete the race for this example.</p>\n<p>Given the length of the race and a list of all the potential speed ups (location, new speed, duration), determine the fastest possible time (in seconds) that you could finish the race.</p>",
+  "input": "<p>The first input line contains two integers: n (1 ≤ n ≤ 1000), indicating the number of possible speed ups available and L (1 ≤ L ≤ 10<sup>9</sup>), indicating the length of the race in meters.</p>\n<p>Information about the speed ups is provided in the following n input lines, one speed up per line. Each of these input lines contains three integers: x (1 ≤ x ≤ L – 1), m (2 ≤ m ≤ 100) and d (1 ≤ d ≤ 10<sup>6</sup>), denoting that there is a speed up located x meters from the start of the race that will change your speed to m meters a second for a duration of d seconds. Note that:</p>\n<ul>\n<li>There could be multiple speed ups located at the same exact location but you can take only one of them.</li>\n<li>If you take a speed up, you must use it until its completion, or the end of the race, whichever comes first.</li>\n<li>Once you choose to use a speed up, you can't use another one until the previous one is fully completed.</li>\n<li>If one speed up puts you at a distance y from the start and there's a new speed up at exactly y from the start, you can take that new speed up.</li>\n</ul>",
+  "output": "<p>Print, on a line by itself, the fastest time in seconds you could possibly finish the race. Any answer within an absolute or relative tolerance of 10<sup>-6</sup> will be accepted.</p>",
+  "samples": [
+    {
+      "input": "2 100\n10 2 5\n15 3 20\n",
+      "output": "60.0\n"
+    },
+    {
+      "input": "3 1000\n25 3 25\n100 2 400\n25 5 20\n",
+      "output": "550.0\n"
+    },
+    {
+      "input": "1 50\n7 4 200\n",
+      "output": "17.75\n"
+    }
+  ],
+  "hint": "<p>The first sample is explained in the problem description above.</p>\n<p>In the second sample, it's better to take the first speed up instead of the third one listed because taking the third speed up prevents you from taking the second speed up. Thus, after 25 seconds, if you take the first speed up, you'll travel at 3 meters per second for 25 seconds, arriving at the 100 meter mark 50 seconds into the race. Then, you can take the second speed up (had it been located at x = 99 you would not have been able to take it) and travel at 2 meters/second for 400 seconds, ending up at the 900 meter mark 450 seconds into the race. You have to then finish the race running 1 meter/second for the last 100 seconds.</p>\n<p>In the last sample, when you take the first speed up after 7 seconds, you travel at 4 meters per second for the rest of the race (43 meters) which will take 10.75 more seconds. This sample illustrates the situation where the race ends before the entire duration of the speed up taken.</p>",
+  "source": "University, University of Central Florida, 2024 Local Programming Contest (Final Round)",
+  "level": 13,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

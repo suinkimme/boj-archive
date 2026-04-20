@@ -1,0 +1,30 @@
+{
+  "id": 21054,
+  "title": "Hiring and Firing",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Amazin' Inc, an up-and-coming company in e-commerce, has recently optimized its operations to make the most out of its workers.  Thanks to state-of-the-art prediction methods, Amazin' now knows in advance how many workers will be needed each day for the foreseeable future. Using this information they can adjust the size of their workforce on a day-to-day basis by firing and/or hiring workers so that they always have exactly as many as are needed each day. In order to prevent the workers from getting too comfortable and organizing themselves, they will also regularly fire workers and replace them with new ones.  For instance, if on some day four more workers are needed than yesterday, Amazin' might fire $10$ people and then hire $14$ new ones on that day.</p>\n<p>Unfortunately, due to labor laws, the firing of workers must follow a last-in-first-out order: the people who have been employed the shortest time must be fired first. Furthermore, a fired person cannot be re-hired within the foreseeable future so it is not possible to circumvent the law by firing some people and then immediately re-hiring some of them.</p>\n<p>But this story is actually about HR, not workers!  Every day, one employee from the HR department is assigned to be responsible for giving the fired workers the bad news that they are fired, and for then giving the newly hired workers the good news that they are hired. In order to minimize work environment problems in the form of social awkwardness for the HR staff, a policy has been established requiring that the HR person firing an employee must always be a different HR person than the one welcoming them when they were hired.</p>\n<p>Now the time has come for the HR department to also optimize itself, by making itself as small as possible. Unlike workers, new HR staff cannot be hired with short notice, so the HR personnel must be permanent employees.  What is the smallest number of HR people needed in order to manage all the planned hirings and firings?</p>",
+  "input": "<p>The first line of input contains an integer $n$ ($1 \\le n \\le 10^5$), the length in days of the foreseeable future.  Then follow $n$ lines, the $i$th of which contains two integers $f_i$ and $h_i$ ($0 \\le f_i, h_i \\le 10^6$) where $f_i$ is the number of workers fired on day $i$ and $h_i$ the number of people hired.</p>\n<p>The number of workers fired on a day is never larger than the number of currently employed workers (in other words, $f_i \\le \\sum_{j=0}^{i-1} h_j-f_j$ for all $1 \\le i \\le n$).</p>",
+  "output": "<p>Output a line with an integer $k$, the smallest number of HR people needed. The HR people are arbitrarily given IDs from $1$ to $k$.  Then output a line with $n$ integers, the $i$th of which contains the ID of the HR person in charge of the firing and hiring on day $i$.  If there is more than one solution, any one will be accepted.</p>",
+  "samples": [
+    {
+      "input": "4\n0 3\n1 1\n2 1\n2 0\n",
+      "output": "3\n1 2 3 2\n"
+    },
+    {
+      "input": "6\n0 10\n0 5\n2 0\n0 0\n0 100\n50 100\n",
+      "output": "2\n1 2 1 2 1 2\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2020, Camp, Petrozavodsk Programming Camp, Winter 2021, Day 3: Nordic+ Contest 2020",
+  "level": 22,
+  "tags": [
+    "bipartite_graph",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 3.2221999168395996
+}

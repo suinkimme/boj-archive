@@ -1,0 +1,36 @@
+{
+  "id": 15974,
+  "title": "공룡 발자국",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>고대 공룡들이 남쪽에서 북쪽 방향으로 걸어간 발자국들이 발견되었다. 아래 그림은 발견된 공룡 발자국들의 다양한 예이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 252px; height: 118px;\"/></p>\n<p>발자국을 분석한 결과 모든 발자국은 하나의 발뒤꿈치와 <em>k</em>개의 발가락 (<em>k</em> ≥ 2)을 가지며, 두 발가락 사이마다 골이 존재한다. 이를 바탕으로 위 그림의 발자국을 단순화시켜보면 아래와 같이 2<em>k</em>각형으로 표현이 된다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 290px; height: 131px;\"/></p>\n<p>발자국의 다각형에서 발뒤꿈치를 시작으로 반시계 방향으로 돌면 항상 첫 번째 발가락에서 좌회전, 첫 번째 골에서 우회전, 두 번째 발가락에서 좌회전, 두 번째 골에서 우회전, ……, <em>k</em>-1번째 골에서 우회전, <em>k</em>번째 발가락에서 좌회전해서 발뒤꿈치로 돌아오게 된다. 또한 발뒤꿈치와 발가락을 선분으로 잇는 경우 다음 조건을 항상 만족한다.</p>\n<ol>\n<li>해당 선분은 발자국의 다각형을 벗어나지 않는다.</li>\n<li>해당 선분은 골을 지나지 않는다.</li>\n</ol>\n<p>다음 그림은 발자국이 될 수 없는 다각형들의 예이다.</p>\n<table class=\"table table-bordered\" style=\"width: 100%;\">\n<tbody>\n<tr>\n<td style=\"width: 50%; text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 130px; height: 94px;\"/></td>\n<td style=\"width: 50%; text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 122px; height: 93px;\"/></td>\n</tr>\n</tbody>\n<tfoot>\n<tr>\n<th style=\"width: 50%; text-align: center;\">조건 1 위배</th>\n<th style=\"width: 50%; text-align: center;\">조건 2 위배</th>\n</tr>\n</tfoot>\n</table>\n<p>발자국이 발견된 일부 지역에서는 불행히도 정확한 발자국이 남아있지 않고 발자국 다각형의 꼭짓점이 될 수 있는 점들만 남아있다. 심지어 여기에는 발자국과 관련 없는 점들도 같이 남아있을 수 있다. 각 점의 위치는 좌표 (<em>x</em>, <em>y</em>)로 표현되며, <em>x</em>값은 서쪽에서 동쪽으로 증가하고 <em>y</em>값은 남쪽에서 북쪽으로 증가한다. 다행히도 점들 중 가장 남쪽에 있는 점은 유일하며 발뒤꿈치가 된다. 다음 그림의 예에서 보면 (20, 5) 점(붉은 점)이 가장 남쪽에 위치하므로 발뒤꿈치이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"width: 264px; height: 194px;\"/></p>\n<p>주어진 점들로 만들 수 있는 가장 많은 발가락을 가진 발자국을 찾고 싶다. 아래는 위 그림에서 찾은 가장 많은 발가락을 가진 발자국의 한 예이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"6.png\" style=\"width: 191px; height: 169px;\"/></p>\n<p>점들의 좌표를 입력으로 받아서, 가장 많은 발가락을 가진 발자국을 하나 찾은 뒤 찾은 다각형의 꼭짓점의 개수와 각 꼭짓점의 좌표를 출력하는 프로그램을 작성하라.</p>",
+  "input": "<p>표준 입력으로 다음 정보가 주어진다. 첫 번째 줄에는 점의 수를 나타내는 정수 <em>N</em>이 주어진다. 다음 <em>N</em>개의 각 줄에는 한 점의 <em>x</em>좌표와 <em>y</em>좌표를 나타내는 두 정수가 주어진다. 입력으로 주어진 점들은 모두 서로 다르다는 것이 보장되고, <em>y</em>좌표가 가장 작은 점이 유일하다는 것도 보장된다.</p>",
+  "output": "<p>표준 출력으로, 첫 번째 줄에는 가장 많은 발가락을 가진 발자국 다각형의 꼭짓점의 개수 <em>T</em>를 출력한다. 다음 <em>T</em>개의 각 줄에는 발뒤꿈치부터 시작하여 반시계 방향으로 돌면서 각 꼭짓점의 <em>x</em>좌표와 <em>y</em>좌표를 출력한다. 그러한 발자국이 여러 개가 있다면 그 중 하나의 발자국만 출력한다. 발자국이 존재할 수 없는 경우 0을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "6\n3 0\n5 10\n4 9\n3 10\n2 9\n1 10\n",
+      "output": "6\n3 0\n5 10\n4 9\n3 10\n2 9\n1 10\n"
+    },
+    {
+      "input": "6\n1 20\n2 18\n4 17\n3 10\n5 5\n0 0\n",
+      "output": "6\n0 0\n5 5\n3 10\n4 17\n2 18\n1 20\n"
+    },
+    {
+      "input": "13\n20 12\n27 20\n10 18\n16 24\n8 10\n24 25\n20 5\n18 20\n16 19\n30 10\n11 6\n31 21\n16 13\n",
+      "output": "8\n20 5\n31 21\n27 20\n24 25\n18 20\n16 24\n16 13\n10 18\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, 한국정보올림피아드, KOI 2018, 중등부, jh05013, jung2381187",
+  "level": 23,
+  "tags": [
+    "dp",
+    "sorting",
+    "geometry",
+    "two_pointer",
+    "angle_sorting"
+  ],
+  "accepted_user_count": 99,
+  "submission_count": null,
+  "average_tries": 5.070700168609619
+}

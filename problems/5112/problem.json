@@ -1,0 +1,27 @@
+{
+  "id": 5112,
+  "title": "Functional Programming Counts",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The formal methods team at your place of work has decided to experiment with very small functional language. They have, of course, specified it. The bad news is that you have to implement it. The good news is that you can do so in a programming language of your choice and a formal proof of the correctness of your implementation is not required. In the grand tradition of Lisp your implementation will take the form of an interpreter which accepts expressions, assignments and function definitions from the console. Function definitions are remembered and the functions may be used in subsequent expressions. Expressions are immediately evaluated, and the result is displayed at the console.</p>",
+  "input": "<p>The input consists of a series of input lines, each holding an input action. No line has more than 100 characters. Actions can be of the following kinds:</p>\n<ol>\n<li>&lt;expression&gt;\n\t<ul>\n<li>The expression should be evaluated (to give an integer result) and the result should be displayed.</li>\n</ul>\n</li>\n<li>set &lt;identifier&gt; = &lt;expression&gt;\n\t<ul>\n<li>An assignment statement: The identifier represents a variable. If it has not been seen before, create a new variable and give it the value of the expression, otherwise just update an existing variable.</li>\n</ul>\n</li>\n<li>def &lt;identifier&gt; ( &lt;parameter&gt; ) = &lt;expression&gt;\n\t<ul>\n<li>A function definition line, that wholly or partially defines a function with name &lt;identifier&gt; and one integer parameter. &lt;parameter&gt; can be a &lt;number&gt; or an &lt;identifier&gt;. If it is a &lt;number&gt; then it defines the function when the parameter takes that value. The order of definition lines is important. All definitions for a function are kept, and function calls check them in order of input for the first parameter match. (This makes it impossible to change the definition of a function.)</li>\n</ul>\n</li>\n<li>profile\n\t<ul>\n<li>The software should report the number of function calls made on each definition line for each defined function, since the last profile request (or the start of the program). See sample output.</li>\n</ul>\n</li>\n<li>exit\n\t<ul>\n<li>The end of input.</li>\n</ul>\n</li>\n</ol>\n<p>Input should be processed, one line at a time, performing the requested action immediately, until the line with ‘exit’ is reached. The only data type processed by the language is integer. Values lie in the range -1,000,000 to 1,000,000 at all times. (The range is inclusive). The syntax for expressions is as follows. Operator precedence applies in the normal manner – evaluate factors, then terms and finally expressions.</p>\n<ul>\n<li>&lt;expression&gt; is a sum(+) or difference(-) of &lt;term&gt;s to be evaluated from left to right (eg: a + b – 3 + 4 – c)</li>\n<li>&lt;term&gt; is a product ‘*’, quotient ‘/’ or remainder ‘%’ of &lt;factor&gt;s, to be evaluated left to right. Remainder should never be used with negative numbers. Division is integer division. (eg: 3 * 4 / 5 % x).</li>\n<li>&lt;factor&gt; can be a &lt;number&gt;; an &lt;identifier&gt; being a variable, or the parameter of the current function; a function call of the form &lt;identifier&gt;(&lt;expression&gt;); or an expression in parenthesis (&lt;expression&gt;).</li>\n<li>&lt;number&gt; is a string of digits, being a decimal value in the range 0 to 1,000,000 (inclusive)</li>\n<li>&lt;identifier&gt; is a string of upper and lower case letters – case is significant, eg: ‘A’ and ‘a’ are different variables. The following are reserved words and should not be used as identifiers: ‘def’, ‘set’, ‘profile’, ‘exit’.</li>\n</ul>\n<p>White space should be ignored on all input lines, except in so far as it separates words. You can assume that all input is syntactically correct, that all function calls return (terminate), and that all expressions produce results in the permitted range. The total number of calls profiled on any one function line will never exceed 1,000,000. </p>",
+  "output": "<p>Expression results should be reported on a line of their own, prefixed by ‘&gt;&gt; ‘ (two greater than signs and a single space).</p>\n<p>Profile results should be reported with one line per function of the form ‘&lt;identifier&gt; calls: n1 n2 n3 … =&gt; nt ’ where ni is the number of calls for definition line i in order input, and nt is the total number of calls to the function (single spaced).</p>",
+  "samples": [
+    {
+      "input": "2\n2 + 5 / 2 * 2\n2 - 5 % 2\ndef fib(1) = 1\ndef fib(2) = 1\ndef fib(p) = fib(p-1) + fib(p-2)\nfib(1)\nprofile\nfib(2)\nprofile\nfib(3)\nprofile\nfib(5)\nprofile\nset x = 6\nx * 4 + fib(x)\ndef test(1) = 1\ndef test(2) = 1\ndef test(p) = (test(p-1) + test(p-2) + 23) % 1000\ndef test(2) = 10\ntest(3)\nprofile\nexit\n",
+      "output": ">> 2\n>> 6\n>> 1\n>> 1\nfib calls: 1 0 0 => 1\n>> 1\nfib calls: 0 1 0 => 1\n>> 2\nfib calls: 1 1 1 => 3\n>> 5\nfib calls: 2 3 4 => 9\n>> 32\n>> 25\nfib calls: 3 5 7 => 15\ntest calls: 1 1 1 0 => 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, New Zealand Programming Contest, NZPC 2010",
+  "level": 21,
+  "tags": [
+    "implementation",
+    "string",
+    "sorting",
+    "parsing"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 69.75
+}

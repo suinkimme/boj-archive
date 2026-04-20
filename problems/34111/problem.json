@@ -1,0 +1,24 @@
+{
+  "id": 34111,
+  "title": "Multi Communication",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Chairman K has prepared a game for the participants of the spring training camp.</p>\n<p>There are $N$ participants in the training camp, each assigned a unique number from $1$ to $N$. Each participant has a board. The game follows these steps:</p>\n<ol>\n<li>Chairman K selects one participant to be the <strong>parent</strong>, while all other participants become <strong>children</strong>. However, the identity of the parent is not revealed to the participants.</li>\n<li>Chairman K writes the letter ‘<code>T</code>’ on the parent’s board and the letter ‘<code>F</code>’ on all the children’s boards.</li>\n<li>Each participant reads the letter on their own board. Then, following a predefined <strong>strategy</strong>, they perform the following turn-based process for $L$ turns:\n\t<ol>\n<li>Each participant erases the letter on their board and writes either ‘<code>T</code>’ or ‘<code>F</code>’. Then, they submit their board to Chairman K.</li>\n<li>For each participant $i$ ($i = 1, 2, \\dots , N$):\n\t\t<ul>\n<li>Participant $i$ selects a participant $p$ ($1 ≤ p ≤ N$) and informs Chairman K of the number $p$. Chairman K shows the board of participant $p$ to participant $i$, who then reads the letter on it. A participant is allowed to choose themselves as $p$.</li>\n</ul>\n</li>\n</ol>\n</li>\n<li>After $L$ turns, each participant must guess who the parent is.</li>\n</ol>\n<p>The goal of the game is to establish a strategy beforehand so that, regardless of who is chosen as the parent, all participants can correctly identify the parent by the end of the process.</p>\n<p>A smaller value of $L$ results in a higher score. Your goal is to devise a strategy that minimizes $L$ while ensuring that all participants correctly identify the parent by the end of the process.</p>\n<p>A <strong>strategy</strong> consists of a non-negative integer $L$, representing the number of turns, and a set of rules that determine the actions of each participant. The rules are as follows:</p>\n<ul>\n<li>For participant $i$ ($1 ≤ i ≤ N$), at the beginning of turn $t$ ($1 ≤ t ≤ L$), if the sequence of letters they have read up to that point is $a_0, a_1, \\dots , a_{t-1}$, then based only on this information $(i, t, a_0, a_1, \\dots , a_{t-1})$, they must determine:\n\t<ul>\n<li>The letter they will write on their board for turn $t$.</li>\n<li>The participant number they will choose to observe for turn $t$.</li>\n</ul>\n</li>\n<li>For participant $i$ ($1 ≤ i ≤ N$), after the $L$-th turn, if the sequence of letters they have read up to that point is $a_0, a_1, \\dots , a_L$, then based only on this information $(i, L, a_0, a_1, \\dots , a_L)$, they must determine the participant number of the parent.</li>\n</ul>\n<p>Devise a strategy that allows all participants to correctly identify the parent, regardless of who is chosen as the parent. Then, for each possible parent selection $(1, 2, \\dots , N)$, output the values that each participant writes on their board and the participant they choose to observe in each turn, following the established strategy.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<blockquote>\n<p>$N$</p>\n</blockquote>",
+  "output": "<p>Print the output in the following format:</p>\n<blockquote>\n<p>$L$</p>\n<p>$acts_1$</p>\n<p>$acts_2$</p>\n<p>$\\vdots$</p>\n<p>$acts_N$</p>\n</blockquote>\n<p>Here, $acts_s$ represents the sequence of actions taken by each participant when participant $s$ is the parent. The format of $acts_s$ is as follows:</p>\n<p>First, print the integer $s$. For each participant $i$ ($1 ≤ i ≤ N$), print a single line containing the sequence of actions they take during the $L$ turns. Each line should have the following values:</p>\n<ul>\n<li>The character $c_{i,t}$ (‘<code>T</code>’ or ‘<code>F</code>’), which the participant writes on their board in turn $t$.</li>\n<li>The participant number $p_{i,t}$, which they choose to observe in turn $t$.</li>\n</ul>\n<p>These values should be printed for each turn $t$ ($1 ≤ t ≤ L$) in sequence. Thus, the output format for $acts_s$ is:</p>\n<blockquote>\n<p>$s$</p>\n<p>$c_{1,1}$ $p_{1,1}$ $c_{1,2}$ $p_{1,2}$ $\\cdots$ $c_{1,L}$ $p_{1,L}$</p>\n<p>$c_{2,1}$ $p_{2,1}$ $c_{2,2}$ $p_{2,2}$ $\\cdots$ $c_{2,L}$ $p_{2,L}$</p>\n<p>$\\vdots$</p>\n<p>$c_{N,1}$ $p_{N,1}$ $c_{N,2}$ $p_{N,2}$ $\\cdots$ $c_{N,L}$ $p_{N,L}$</p>\n</blockquote>",
+  "samples": [
+    {
+      "input": "3\n",
+      "output": "3\n1\nT 1 T 2 T 3\nF 1 F 2 F 3\nF 1 F 2 F 3\n2\nF 1 F 2 F 3\nT 1 T 2 T 3\nF 1 F 2 F 3\n3\nF 1 F 2 F 3\nF 1 F 2 F 3\nT 1 T 2 T 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, JOI Spring Training Camp, JOI 2024/2025 Spring Training Camp, qwerasdfzxcl",
+  "level": 19,
+  "tags": [
+    "constructive"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.75
+}

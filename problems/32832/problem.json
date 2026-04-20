@@ -1,0 +1,32 @@
+{
+  "id": 32832,
+  "title": "Ladder Update",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Ladder game is a popular game in Korea, as well as China and Japan. Wikipedia says that “It is known in Korean as Sadaritagi (사다리타기, literally \"ladder climbing\"), in Japanese as Amidakuji (阿弥陀籤, \"Amida lottery\"), and in Chinese as Guijiaotu (鬼腳圖, literally \"ghost leg diagram\").”</p>\n<p>The diagram where the game is played consists of $n$ vertical lines with horizontal line segments connecting two adjacent vertical lines. The horizontal line segments are called <em>legs</em>. Each vertical line has a starting (upper) point and an end (lower) point. The basic rule of this game is simple as follows:</p>\n<ul>\n<li>Start from the starting point of each vertical line and move downward along the vertical line. When encountering a leg, move along the leg to the adjacent vertical line, and continue downwards until reaching the end of a vertical line.</li>\n</ul>\n<p>The vertical lines are numbered from $1$ to $n$ from left to right. It is well known that the game result is a permutation of $[1, 2, \\dots , n]$. For example, given a diagram with $4$ vertical lines and $5$ legs shown below, the game result is $[2, 3, 4, 1]$ from left to right.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 288px; height: 200px;\"/></p>\n<p>However, some legs are redundant, meaning that the same result $[2, 3, 4, 1]$ can be achieved with fewer legs; as in the figure below, one can obtain the same result only with three legs excluding topmost and bottommost ones. We want to determine the minimum number of horizontal line segments (legs) needed to achieve the same result. Note that it is possible to draw new legs than the given ones if necessary.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 288px; height: 200px;\"/></p>\n<p>You are given $q$ queries, where each query either adds a new leg or deletes an existing one. Write a program to output the minimum number of legs required to achieve the same game result of the ladder structure obtained after the query is processed. Note that each query is cumulative, meaning each subsequent query is applied to the ladder structure resulting from previous queries.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing three integers $n$, the number of vertical lines, $m$, the initial number of legs, and $q$, the number of queries, separated by a space where $2 ≤ n ≤ 100\\,000$, $1 ≤ m ≤ 100\\,000$, and $1 ≤ q ≤ 100\\,000$.</p>\n<p>In the following $m$ lines, each line contains two positive integers $h$ and $a$, representing a leg at height $h$ connecting the $a$-th and $(a + 1)$-th vertical lines ($1 ≤ a ≤ n - 1$). The vertical lines are ordered from left to right, and the height is numbered from top to bottom starting with $1$. The height is no more than $10^9$.</p>\n<p>The next $q$ lines contain the query information. Each query is either in the form of <code>A</code> $h$ $a$ or <code>D</code> $h$ $a$, where $1 ≤ h ≤ 10^9$, $1 ≤ a ≤ n - 1$.</p>\n<ul>\n<li><code>A</code> $h$ $a$: add a leg at height $h$ between the $a$-th and $(a + 1)$-th vertical lines.</li>\n<li><code>D</code> $h$ $a$: delete the leg at height $h$ between the $a$-th and $(a + 1)$-th vertical lines.</li>\n</ul>\n<p>You can assume that there are no contradictory operations, that is, existing legs will not be added, and non-existing legs will not be deleted. Also, you can assume that no two legs are positioned such that they share the endpoint of the same height and the same vertical line.</p>",
+  "output": "<p>Your program is to write to standard output. The output consists of $q$ lines and each line contains the minimum number of legs required to achieve the same result for a query in the input order.</p>",
+  "samples": [
+    {
+      "input": "4 4 3\n3 1\n2 2\n5 2\n6 3\nA 7 1\nA 4 3\nD 3 1\n",
+      "output": "3\n6\n3\n"
+    },
+    {
+      "input": "4 5 5\n3 1\n2 2\n5 2\n6 3\n7 1\nD 6 3\nD 7 1\nD 5 2\nD 3 1\nD 2 2\n",
+      "output": "2\n3\n2\n1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, 2024 ICPC Asia Seoul Regional",
+  "level": 25,
+  "tags": [
+    "data_structures",
+    "offline_queries",
+    "segtree",
+    "splay_tree",
+    "trees"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.75
+}

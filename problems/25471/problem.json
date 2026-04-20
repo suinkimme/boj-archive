@@ -1,0 +1,30 @@
+{
+  "id": 25471,
+  "title": "Cijepise",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Portal <code>cijepise.zdravlje.hr</code> složeni je tehnički projekt koji omogućava stanovnicima Republike Hrvatske da se prijave za cijepljenje protiv bolesti <em>COVID-19</em>. Izrada portala koštala je nešto više od četiri milijuna kuna, a glavni razlog tomu jest činjenica da je na njemu radio vrhunski tim algoritamskih stručnjaka.</p>\n<p>Mali Ante voli programiranje, sladoled od kokosa i poštivanje epidemioloških mjera. Naravno, odmah je putem portala na cijepljenje prijavio svojih $Q$ bliskih prijatelja. Sjeća se točnog datuma, bio je prvi dan ožujka, pripremao se za nadolazeće županijsko natjecanje iz informatike. U međuvremenu je prošlo i državno natjecanje, održala se Hrvatska Logo Olimpijada te je <strong>Chelsea došao do finala Lige Prvaka.</strong> Međutim, niti jedan od Antinih prijatelja nije dobio poziv na cijepljenje.</p>\n<p>Ante je odlučio uzeti stvar u svoje ruke. Slao je poruke, zvao <em>čovika</em>, presretao mrežni promet, kompajlirao i dekompajlirao. Nakon par sati, zaključio je kako radi portal i dobio pristup podacima svih korisnika. Sada mu treba pomoć pravih algoritamskih stručnjaka.</p>\n<p>Naime, korisnici portala interno su pohranjeni u stablastu strukturu. Odnosno, svaki od $N$ korisnika predstavljen je jednim od $N$ čvorova jednostavnog, povezanog grafa s $(N - 1)$ bridova. Čvorovi stabla označeni su prirodnim brojevima od $1$ do $N$, a čvor s oznakom $1$ predstavlja korijen stabla. Algoritam kojim se korisnici pozivaju na cijepljenje započinje slanjem pozivnice za cijepljenje korisniku koji se nalazi u korijenu stabla. Taj se korisnik briše iz sustava te je sada korijen stabla prazan. Nakon toga slijedi složeni postupak pomicanja čvorova koji traje točno $24$ sata, nakon kojeg će se u korijenu pojaviti sljedeći korisnik koji će biti pozvan.</p>\n<p>Složeni postupak pomicanja čvorova najprije mijenja (engl. <em>swap</em>) korijen stabla s djetetom korijena najveće starosti. Sada se u korijenu stabla nalazi neki korisnik, a jedno od njegove djece je <em>prazno</em>. Potom postupak mijenja prazno dijete s njegovim najstarijim djetetom, i tako dalje sve dok jedan od listova stabla ne postane <em>prazan</em>. Tada se iz stabla briše taj list. Dodatno, ako u bilo kojem koraku postupka neki čvor ima više djece jednake najveće starosti, algoritam će odabrati nasumično najstarije dijete.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 495px; height: 307px;\"/></p>\n<p style=\"text-align: center;\">Primjer postupka pomicanja čvorova (vrijednosti odgovaraju starostima korisnika).</p>\n<p>Za svakog od $Q$ prijatelja, Antu zanima najmanji broj korisnika kojima treba promijeniti starost da bi taj prijatelj sa stopostotnom sigurnošću došao na red za cijepljenje u najmanjem broju dana. Ante može starost nekog korisnika pretvoriti u bilo koji nenegativan cijeli broj manji ili jednak $2 \\cdot 10^9$.</p>",
+  "input": "<p>U prvom je retku prirodan broj $N$ iz teksta zadatka.</p>\n<p>U sljedećem je retku $N$ brojeva $x_i$ ($1 ≤ x_i ≤ 10^9$) koji redom predstavljaju starosti korisnika. Odnosno, $x_i$ odgovara starosti korisnika koji se nalazi u čvoru s oznakom $i$.</p>\n<p>U $i$-tom od sljedećih $N - 1$ redaka nalaze se prirodni brojevi $a_i$ i $b_i$ ($1 ≤ a_i , b_i ≤ N$) koji označavaju da postoji veza između čvorova s oznakama $a_i$ i $b_i$.</p>\n<p>U sljedećem je retku prirodan broj $Q$ iz teksta zadatka.</p>\n<p>U $i$-tom od sljedećih $Q$ redaka nalazi se prirodan broj $q_i$ ($1 ≤ q_i ≤ N$) koji predstavlja oznaku čvora u kojem se nalazi $i$-ti Antin prijatelj.</p>",
+  "output": "<p>U $i$-ti od $Q$ redaka ispišite najmanji broj korisnika kojima Ante treba promijeniti starost tako da bi $i$-ti Antin prijatelj u najmanjem broju dana bio pozvan na cijepljenje.</p>",
+  "samples": [
+    {
+      "input": "3\n1 2 3\n1 2\n1 3\n3\n1\n2\n3\n",
+      "output": "0\n1\n0\n"
+    },
+    {
+      "input": "7\n45 13 19 3 81 27 77\n1 2\n1 3\n1 4\n3 5\n3 6\n4 7\n3\n5\n6\n7\n",
+      "output": "0\n1\n1\n"
+    },
+    {
+      "input": "8\n23 4 9 7 11 4 1 18\n2 1\n3 2\n4 2\n5 2\n6 3\n7 4\n8 1\n3\n2\n3\n7\n",
+      "output": "1\n2\n3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2021, Final Exam #2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 29
+}

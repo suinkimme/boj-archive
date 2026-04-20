@@ -1,0 +1,25 @@
+{
+  "id": 33153,
+  "title": "원소 합치기",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>음이 아닌 정수 $N$개로 이루어진 배열 $A=[A_{1}, \\dots, A_{N}]$이 주어진다. 배열 $A$에 다음 연산을 $K$번 진행한다.</p>\n<ul>\n<li>배열에 남아 있는 원소 중에서 인접한 두 원소를 선택해, 해당 원소들에 대해 bitwise $\\textrm{OR}$ 연산을 적용하고 그 결괏값으로 두 원소를 대체한다. 다시 말해 현재 배열의 길이를 $L$이라 하면, 정수 $i(1 \\leq i &lt; L)$를 선택해 $[A_1, A_2, \\dots, A_i, A_{i+1}, \\dots, A_{L}]$을 $[A_1, A_2, \\dots, A_i | A_{i+1}, \\dots, A_{L}]$로 변경한다. 이 연산을 진행한 뒤 배열의 길이는 $1$만큼 줄어든다. </li>\n</ul>\n<p>$K$번의 연산을 진행한 이후 배열에 남은 $N-K$개의 원소를 모두 bitwise $\\textrm{AND}$ 연산한 값의 최댓값을 구해보자. </p>\n<p>bitwise $\\textrm{AND}$와 bitwise $\\textrm{OR}$ 연산에 대한 설명은 노트를 참고하라.</p>",
+  "input": "<p>첫 번째 줄에 $N$과 $K$가 공백으로 구분되어 주어진다. $(2 \\leq N \\leq 500\\, 000;1 \\leq K \\leq N-1)$</p>\n<p>두 번째 줄에 배열 $A$의 원소 $A_1, A_2, \\dots, A_{N}$이 공백으로 구분되어 주어진다. $\\left( 0 \\leq A_{i} \\leq 10^{9}\\right)$</p>",
+  "output": "<p>총 $K$번의 연산을 진행한 후 배열에 남은 $N-K$개의 원소를 모두 bitwise $\\textrm{AND}$ 연산한 값의 최댓값을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 3\n1 4 2 5 1\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": "<p>bitwise 연산자들은 비트 단위로 연산을 시행한다.</p>\n<ul>\n<li>bitwise $\\textrm{AND}$ 연산($\\&amp;$)은 두 수의 각 비트마다 다음과 같은 연산을 진행한다.\n\t<ul>\n<li>같은 자릿수의 비트를 비교해 두 비트 다 $1$일 때만 $1$, 나머지의 경우는 $0$이다.</li>\n<li>다음은 예시이다. $\\ \\begin{array}{rcl} 0101_2 &amp; = &amp; 5 \\\\ \\&amp; \\ 0011_2 &amp; = &amp; 3 \\\\ \\hline 0001_2 &amp; = &amp; 1 \\end{array} $</li>\n</ul>\n</li>\n<li>bitwise $\\textrm{OR}$ 연산($|$)은 두 수의 각 비트마다 다음과 같은 연산을 진행한다.\n\t<ul>\n<li>같은 자릿수의 비트를 비교해 두 비트 다 $0$일 때만 $0$, 나머지의 경우는 $1$이다.</li>\n<li>다음은 예시이다. $\\ \\begin{array}{rcl} 0110_2 &amp; = &amp; 6 \\\\ \\ | \\ 1100_2 &amp; = &amp; 12 \\\\ \\hline 1110_2 &amp; = &amp; 14 \\end{array} $</li>\n</ul>\n</li>\n</ul>",
+  "source": "University, 경인지역 대학 연합, shake! 2024, Contest, University, 경인지역 대학 연합, shake! 2024, Open Contest, rustiebeats, akim9905, bnb2011, Coxie, hamuim, ibm2006, jk410, lky7674, overnap, pani, shjohw12, swoon, tlsdydaud1, utilforever",
+  "level": 16,
+  "tags": [
+    "greedy",
+    "bitmask"
+  ],
+  "accepted_user_count": 62,
+  "submission_count": null,
+  "average_tries": 2.274199962615967
+}

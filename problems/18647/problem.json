@@ -1,0 +1,32 @@
+{
+  "id": 18647,
+  "title": "Spaceship",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are piloting a spaceship in the three-dimensional space.</p>\n<p>Your spaceship is currently located in the point (x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>), flying in the direction (vx<sub>1</sub>, vy<sub>1</sub>, vz<sub>1</sub>). Your goal is to get to the point (x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>), flying in the direction (vx<sub>2</sub>, vy<sub>2</sub>, vz<sub>2</sub>). Your spaceship can only fly in straight lines or in circular arcs with radius at least r0. When changing between two segments of the flight (a line and an arc, an arc and a line, two different arcs, or two different lines, however pointless that last option is), the direction in the inflection point must be the same (all direction vectors are given up to a positive multiplier, so directions (1, 1, 1) and (2, 2, 2) are the same, but (1, 1, 1) and (−1, −1, −1) are not the same).</p>\n<p>You need to find any trajectory to do so. Note that the trajectory does not need to be the shortest, it only needs to fit the relatively loose bounds described in the output format section.</p>",
+  "input": "<p>The first line of the input contains three integers x<sub>1</sub>, y<sub>1</sub> and z<sub>1</sub> (−10 ≤ x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub> ≤ 10). The second line of the input contains three integers vx<sub>1</sub>, vy<sub>1</sub> and vz<sub>1</sub> (−10 ≤ vx<sub>1</sub>, vy<sub>1</sub>, vz<sub>1</sub> ≤ 10, at least one of them is not zero). The third line of the input contains three floating-point numbers x<sub>2</sub>, y<sub>2</sub> and z<sub>2</sub> (−10 ≤ x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub> ≤ 10). The fourth line of the input contains three floating-point numbers vx<sub>2</sub>, vy<sub>2</sub> and vz<sub>2</sub> (−10 ≤ vx<sub>2</sub>, vy<sub>2</sub>, vz<sub>2</sub> ≤ 10, at least one of them is not zero). The fifth line of the input contains an integer r<sub>0</sub> (1 ≤ r<sub>0</sub> ≤ 10).</p>",
+  "output": "<p>In the first line of output, print the number n of segments in your trajectory (0 ≤ n ≤ 100). In the next n lines, print the descriptions of the segments.</p>\n<p>For each segment, first print 1 if it’s a line segment, or 2 if it’s a circle segment, followed by the floating-point coordinates of the ending point of the segment (the starting point will be taken from the ending point of the previous segment, or from the overall starting point for the first segment). For a circle segment, additionally print the floating-point coordinates of the center of the circle.</p>\n<p>All coordinates you print must not exceed 1000 by absolute value. The judging program will use at least ‘double’ floating-point precision for all calculations. For each inflection point, the judging program will check that the angle between the directions of the two segments does not exceed 10<sup>−6</sup>. The judging program will also check that the ending point is not farther than 10<sup>−6</sup> from the required ending point, that the angle between the starting direction and the required starting direction does not exceed 10<sup>−6</sup>, and that the angle between the ending direction and the required ending direction does not exceed 10<sup>−6</sup>. For each circular segment, the judging program will check that the distances from the center of the circle to each endpoint do not differ by more than 10<sup>−6</sup>, and that those distances are not less than r<sub>0</sub> − 10<sup>−6</sup>.</p>\n<p>Note that it is dangerous to output very short line segments, as rounding errors can contribute a lot to determining their direction, and thus make them fail the test above. In particular, a zero-length line segment will always result in a wrong answer.</p>",
+  "samples": [
+    {
+      "input": "1 2 3\n0 1 0\n3 7 3\n1 0 0\n2\n",
+      "output": "2\n1 1.0 5.0 3.0\n2 3.0 7.0 3.0 3.0 5.0 3.0\n"
+    },
+    {
+      "input": "1 2 3\n4 5 6\n1 2 3\n4 5 6\n1\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 7: Petr Mitrichev Contest 15",
+  "level": 22,
+  "tags": [
+    "math",
+    "implementation",
+    "geometry",
+    "constructive",
+    "geometry_3d"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 7.25
+}

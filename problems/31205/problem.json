@@ -1,0 +1,26 @@
+{
+  "id": 31205,
+  "title": "Team Building",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You aim to assemble a team of $N$ programmers. You've already scouted them and assessed that the skill level of the $i$-th individual ($1 ≤ i ≤ N$) is represented by the nonnegative integer $s[i]$. You've realized that what truly matters is the order in which you hire them.</p>\n<p>Each programmer is characterized by two additional integer values: workrate and motivation, both of which are $0$ upon their arrival but can increase after hiring new team members. When a new programmer is hired, the following events occur in the given order:</p>\n<ul>\n<li>The new programmer joins the team with workrate and motivation initialized to $0$.</li>\n<li>The workrate of each other previously hired programmer is increased by their own motivation value.</li>\n<li>The motivation of each other previously hired programmer is increased by the skill level of the new hire.</li>\n</ul>\n<p>The strength of the team is determined afterwards by the sum of the workrates of all the team members. Your objective is to calculate the maximum attainable team strength by optimizing the order of hiring.</p>\n<p>For example, if you hire programmers with skill levels $(0, 2, 2, 3)$ in this order, the hiring process will affect their values as follows:</p>\n<table class=\"table table-bordered table-center-40\">\n<tbody>\n<tr>\n<th>Event</th>\n<th>Workrates</th>\n<th>Motivations</th>\n</tr>\n<tr>\n<td>Hiring with skill $0$</td>\n<td>$0$</td>\n<td>$0$</td>\n</tr>\n<tr>\n<td>Hiring with skill $2$</td>\n<td>$0$ $0$</td>\n<td>$0$ $0$</td>\n</tr>\n<tr>\n<td>Workrates update</td>\n<td>$0$ $0$</td>\n<td>$0$ $0$</td>\n</tr>\n<tr>\n<td>Motivations update</td>\n<td>$0$ $0$</td>\n<td>$2$ $0$</td>\n</tr>\n<tr>\n<td>Hiring with skill $2$</td>\n<td>$0$ $0$ $0$</td>\n<td>$2$ $0$ $0$</td>\n</tr>\n<tr>\n<td>Workrates update</td>\n<td>$2$ $0$ $0$</td>\n<td>$2$ $0$ $0$</td>\n</tr>\n<tr>\n<td>Motivations update</td>\n<td>$2$ $0$ $0$</td>\n<td>$4$ $2$ $0$</td>\n</tr>\n<tr>\n<td>Hiring with skill $3$</td>\n<td>$2$ $0$ $0$ $0$</td>\n<td>$4$ $2$ $0$ $0$</td>\n</tr>\n<tr>\n<td>Workrates update</td>\n<td>$6$ $2$ $0$ $0$</td>\n<td>$4$ $2$ $0$ $0$</td>\n</tr>\n<tr>\n<td>Motivations update</td>\n<td>$6$ $2$ $0$ $0$</td>\n<td>$7$ $5$ $3$ $0$</td>\n</tr>\n</tbody>\n</table>\n<p>The team strength will be calculated as $6 + 2 + 0 + 0 = 8$. However, if you hire programmers in better order $(2, 2, 3, 0)$, you will achieve a team strength of $7 + 3 + 0 + 0 = 10$.</p>\n<table class=\"table table-bordered table-center-40\">\n<tbody>\n<tr>\n<th>New hire skill</th>\n<th>Workrates</th>\n<th>Motivations</th>\n</tr>\n<tr>\n<td>$2$</td>\n<td>$0$</td>\n<td>$0$</td>\n</tr>\n<tr>\n<td>$2$</td>\n<td>$0$ $0$</td>\n<td>$2$ $0$</td>\n</tr>\n<tr>\n<td>$3$</td>\n<td>$2$ $0$ $0$</td>\n<td>$5$ $3$ $0$</td>\n</tr>\n<tr>\n<td>$0$</td>\n<td>$7$ $3$ $0$ $0$</td>\n<td>$5$ $3$ $0$ $0$</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td> </td>\n</tr>\n</tbody>\n</table>\n<p>Furthermore, over the course of the upcoming $Q$ days, you will receive notifications about changes in the skill level assessments of certain programmers. After day $i$, the skill level of programmer $x[i]$ will be updated to $y[i]$ (which may match the previous value). This updated skill value will be used in the following days, until it potentially gets updated again.</p>\n<p>After each day, starting from today, your goal is to determine the maximum achievable team strength by hiring all $N$ programmers, taking into account the assessed skill levels at that particular moment.</p>",
+  "input": "<p>The first line contains two integers: $N$ and $Q$.</p>\n<p>The second line contains integers: $s[1]$, $s[2]$, $\\dots$, $s[N]$.</p>\n<p>Subsequently, there are $Q$ lines, the $i$-th of which contains two integers: $x[i]$ and $y[i]$.</p>",
+  "output": "<p>Print $Q + 1$ lines, each containing a single integer. These integers represent the maximum potential team strength after each day, in chronological order.</p>",
+  "samples": [
+    {
+      "input": "4 2\n2 0 2 3\n2 4\n4 0\n",
+      "output": "10\n14\n12\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, European Junior Olympiad in Informatics, eJOI 2023",
+  "level": 21,
+  "tags": [
+    "math",
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

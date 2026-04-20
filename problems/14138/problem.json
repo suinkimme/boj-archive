@@ -1,0 +1,32 @@
+{
+  "id": 14138,
+  "title": "Filtar",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Digitalni signal možemo zamisliti kao funkciju koja svakom cijelum broju k pridružuje cijeli broj u[k]. Kako bi (beskonačne) signale predstavili uz pomoć konačno mnogo brojeva, koristimo se interpolacijom. Naime, neke vrijednosti ćemo eksplicitno zadati, dok ćemo ostale vrijednosti izračunati linearnom interpolacijom. </p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:154px; width:212px\"/></p>\n<p>Na primjer, signal na gornjoj slici možemo predstaviti točkama (−2, 3), (0, 1), (3, 7) i (5, 7), odnosno poznato nam je samo u[−2] = 3, u[0] = 1, u[3] = 7 i u[5] = 7. Ostale vrijednosti dobivamo provlačenjem pravaca kroz susjedne točke. Tako na primjer:</p>\n<ul>\n<li>Vrijednosti na intervalu &lt;−∞, 0] izračunavamo pomoću pravca koji prolazi točkama (−2, 3) i (0, 1).</li>\n<li>Vrijednosti na intervalu [0, 3] izračunavamo pomoću pravca koji prolazi točkama (0, 1) i (3, 7).</li>\n<li>Vrijednosti na intervalu [3, ∞&gt; izračunavamo pomoću pravca koji prolazi točkama (3, 7) i (5, 7).</li>\n</ul>\n<p>Primijetimo da isti signal možemo opisati sa proizvoljno mnogo točaka, sve dok pravci koji prolaze susjednim točkama točno interpoliraju signal.</p>\n<p>Za uklanjanje šuma u signalima često se koriste median filtri. Median filtar širine 2·d+1 sustav je koji na ulaz prima signal u[k], a na izlaz daje signal y[k] = median{ u[k-i]; –d ≤ i ≤ d }.</p>\n<p>Drugim riječima, y[k] dobivamo tako da sortiramo vrijednosti u[k-d], u[k-d+1], ..., u[k+d] te u sortiranom nizu odaberemo vrijednost u sredini niza.</p>\n<p>Slike na lijevoj strani prikazuju ulazni signal, dok slike na desnoj strani odgovarajući izlazni signal za širinu filtra jednaku 5. </p>\n<p><img alt=\"\" src=\"2.png\" style=\"height:138px; width:283px\"/><img alt=\"\" src=\"3.png\" style=\"height:137px; width:283px\"/><br/>\n<img alt=\"\" src=\"4.png\" style=\"height:136px; width:283px\"/><img alt=\"\" src=\"5.png\" style=\"height:137px; width:283px\"/></p>\n<p>Napišite program koji će izračunati izlazni signal iz median filtra širine 2·d+1 ako je ulazni signal zadan točkama. Na izlaz je dozvoljeno ispisati proizvoljan broj točaka, sve dok je on manji od 100 000 i dok točke ispravno interpoliraju izlazni signal. </p>",
+  "input": "<p>U prvom retku nalazi se prirodan broj N (2 ≤ N ≤ 50), broj točaka koje opisuju ulazni digitalni signal.</p>\n<p>U sljedećih N redaka nalaze se po dva cijela broja po apsolutnoj vrijednosti manja ili jednaka od 10<sup>9</sup> , koordinate točaka. Točke će biti zadane strogo uzlazno prema prvoj koordinati. Sve interpolirane vrijednosti bit će cjelobrojne.</p>\n<p>U zadnjem retku nalazi se prirodni broj d (0 ≤ d ≤ 50), gdje je 2·d+1 širina median filtra. </p>",
+  "output": "<p>U prvi redak potrebno je ispisati prirodan broj M (2 ≤ M ≤ 100 000), broj točaka koje opisuju izlazni signal.</p>\n<p>U sljedećih M redaka treba ispisati po dva cijela broja, koordinate točaka. Ispisani brojevi moraju stati u 64-bitni cjelobrojni tip podataka s predznakom. Točke moraju biti poredane strogo uzlazno prema prvoj koordinati.</p>\n<p>Rješenje nije jedinstveno. </p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "4\n-2 3\n0 1\n3 7\n5 7\n2\n",
+      "output": "5\n-9 10\n-2 3\n1 3\n3 7\n9 7\n"
+    },
+    {
+      "input": "11\n-8 -2\n-7 -2\n-6 7\n-5 -2\n-3 -2\n-2 5\n-1 0\n2 3\n3 -3\n4 5\n5 6\n2\n",
+      "output": "8\n-8 -2\n-3 -2\n-2 0\n0 2\n1 1\n3 3\n4 5\n8 9\n"
+    },
+    {
+      "input": "3\n-1 10000\n0 0\n1 -10000\n50\n",
+      "output": "4\n-1000000 10000000000\n-2 20000\n0 0\n30000000 -300000000000\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2009, alex9801",
+  "level": 10,
+  "tags": [
+    "constructive"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1
+}

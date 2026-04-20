@@ -1,0 +1,30 @@
+{
+  "id": 22299,
+  "title": "Cipher",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You've been tasked with analyzing messages to look for various threats; however, the messages have been encrypted. Luckily, they're only encrypted using a Caesar cipher, which means that each letter in the plaintext is shifted a fixed number of positions later in the alphabet. The alphabet wraps around, so after <code>z</code> is <code>a</code>, and after <code>Z</code> is <code>A</code>. For instance, the message \"How are you?\" with a shift of 5 would become \"Mtb fwj dtz?\". To decrypt a message, you simply shift the letters in the opposite direction.</p>\n<p>For each message, you will need to determine the key (shift value) and the plaintext corresponding to the given ciphertext. To assist you, you will be given lists of known threat words and known non-threat words. Matching against words in these lists is not case sensitive, e.g. \"word\" matches \"Word\". You can assume you guessed the correct key if it results in more known words (threat and non-threat) than any other key. For the purpose of this task, a word is an uninterrupted sequence of <code>1 ≤ x ≤ 20</code> characters <code>A-Z</code> and/or <code>a-z</code>. All other characters are are not effected by the shift and are the same in the plaintext and the ciphertext. All messages (both plaintext and ciphertext) consist only of printable characters, including space.</p>",
+  "input": "<p>The first line of input will contain the number of test cases, <code>C</code> (<code>1 ≤ C ≤ 50</code>). Each test case will begin with a line containing the number of known non-threat words, <code>G</code> (<code>1 ≤ G ≤ 50</code>). The following <code>G</code> lines will each contain a lower-case non-threat word. The next line will contain the number of known threat words, <code>B</code> (<code>1 ≤ B ≤ 50</code>). The following <code>B</code> lines will each contain a lower-case threat word. The next line will contain a message of <code>1 ≤ y ≤ 1000</code> characters of ciphertext. No line will contain any leading or trailing whitespace.</p>",
+  "output": "<p>Each test case will produce one or two lines of output.</p>\n<p>If the key and plaintext can be determined, the first line of output should contain the plaintext message, preserving the case and punctuation of the original ciphertext, and the second line should contain \"<code>Shift: S, Match: M%, Threat: T%</code>\", where <code>S</code> (<code>0 ≤ S &lt; 26</code>) is the number of characters the plaintext was shifted to encrypt the message, <code>M</code> is an integer indicating what percentage of the words in the plaintext are known words (threat and non-threat), and <code>T</code> is an integer indicating what percentage of the words in the plaintext are threat words. All percentages should be rounded to the nearest 1%.</p>\n<p>If the key and plaintext cannot be determined, there should be a single line of output containing \"<code>Unable to decipher</code>\".</p>",
+  "samples": [
+    {
+      "input": "2\n11\na\nalso\nfrom\nif\nit\nkeep\nmust\nto\nwant\nyou\nyourself\n2\nhide\nsecret\nVs lbh jnag gb xrrc n frperg, lbh zhfg nyfb uvqr vg sebz lbhefrys.\n12\na\nbrother\ndarkness\ndestruction\nis\nit\nlanguage\nmind\nof\nthe\nthing\nwords\n3\nbeautiful\nfreedom\ntruth\nHs'r z adztshetk sghmf, sgd cdrsqtbshnm ne vnqcr.\n",
+      "output": "If you want to keep a secret, you must also hide it from yourself.\nShift: 13, Match: 100%, Threat: 14%\nIt's a beautiful thing, the destruction of words.\nShift: 25, Match: 89%, Threat: 11%\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 2014 South Central USA Regional Programming Contest",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "bruteforcing",
+    "set",
+    "hash_set",
+    "parsing"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 2.200000047683716
+}

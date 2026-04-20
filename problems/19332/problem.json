@@ -1,0 +1,32 @@
+{
+  "id": 19332,
+  "title": "Prefix-free Queries",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Let $C (s_1, s_2, \\ldots, s_k)$ be the number of ways to construct a prefix-free set from the multiset of strings ${s_1, s_2, \\ldots, s_k}$. A prefix-free set is a set of distinct strings in which there are no two strings such that one of these strings is a prefix of another one. In particular, an empty set is a valid prefix-free set. For example, if for any $i \\neq j$, $s_i$ is not a prefix of $s_j$, then $C (s_1, \\ldots, s_k) = 2^{k}$.</p>\n<p>Note that we count not the sets themselves, but the ways to construct such sets: the number of ways to choose a subset of indices out of $\\{1, 2, \\ldots, k\\}$ such that the strings with these indices form a prefix-free set. For example, $C($\"<code>aa</code>\", \"<code>aa</code>\", \"<code>a</code>\", \"<code>a</code>\"$) = 5$: the five ways are to construct an empty set, a set containing the first string, a set containing the second string, a set containing the third string, and a set containing the fourth string.</p>\n<p>You are given a string $s$ consisting of $n$ lowercase English letters, and $q$ queries. Let $s[l, r]$ be the substring $s_{l} s_{l + 1} \\ldots s_{r - 1} s_r$. For each query denoted as \"$k$ $m$ $l_1$ $r_1$ $l_2$ $r_2$ $\\ldots$ $l_k$ $r_k$\", print one integer: the value $C (s[l_1, r_1], s[l_2, r_2], \\ldots, s[l_k, r_k])$, taken modulo $m$.</p>",
+  "input": "<p>The first line contains two integers: $n$, the length of $s$, and $q$, the number of queries to answer ($1 \\le n \\le 4 \\cdot 10^{5}$, $1 \\le q \\le 4 \\cdot 10^5$).</p>\n<p>The second line contains a string $s$ of length $n$ consisting of lowercase English letters.</p>\n<p>Next $q$ lines contain queries, one query per line. Each query has the form \"$k$ $m$ $l_1$ $r_1$ $l_2$ $r_2$ $\\ldots$ $l_k$ $r_k$\" ($1 \\le k \\le 4 \\cdot 10^{5}$, $2 \\le m \\le 10^{9}$, $1 \\le l_j \\le r_j \\le n$).</p>\n<p>The total sum of all $k$ over all queries does not exceed $4 \\cdot 10^5$.</p>",
+  "output": "<p>For each query, print a line containing a single integer: the value $C (s[l_1, r_1], s[l_2, r_2], \\ldots, s[l_k, r_k])$, taken modulo $m$.</p>",
+  "samples": [
+    {
+      "input": "10 6\naabbaacaba\n4 30 1 2 5 6 10 10 10 10\n5 20 1 2 3 4 5 6 7 8 9 10\n1 2 1 10\n3 20 9 9 7 7 8 8\n5 20 6 6 7 7 8 8 9 9 10 10\n4 20 1 1 2 2 3 3 4 4\n",
+      "output": "5\n4\n0\n8\n16\n9\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2018, Day 8: Saratov SU Contest, Contest, Open Cup, 2017/2018 Season, Stage 13: Grand Prix of Saratov",
+  "level": 23,
+  "tags": [
+    "dp",
+    "data_structures",
+    "string",
+    "trees",
+    "dp_tree",
+    "trie",
+    "suffix_array",
+    "tree_compression",
+    "suffix_tree"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 13.142900466918945
+}

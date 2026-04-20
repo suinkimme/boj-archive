@@ -1,0 +1,29 @@
+{
+  "id": 15338,
+  "title": "String Puzzle",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Amazing Coding Magazine is popular among young programmers for its puzzle solving contests offering catchy digital gadgets as the prizes. The magazine for programmers naturally encourages the readers to solve the puzzles by writing programs. Let’s give it a try!</p>\n<p>The puzzle in the latest issue is on deciding some of the letters in a string (the secret string, in what follows) based on a variety of hints. The figure below depicts an example of the given hints.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:138px; width:419px\"/></p>\n<p>The first hint is the number of letters in the secret string. In the example of the figure above, it is nine, and the nine boxes correspond to nine letters. The letter positions (boxes) are numbered starting from 1, from the left to the right.</p>\n<p>The hints of the next kind simply tell the letters in the secret string at some specific positions. In the example, the hints tell that the letters in the 3rd, 4th, 7th, and 9th boxes are <code>C</code>, <code>I</code>, <code>C</code>, and <code>P</code>, respectively.</p>\n<p>The hints of the final kind are on duplicated substrings in the secret string. The bar immediately below the boxes in the figure is partitioned into some sections corresponding to substrings of the secret string. Each of the sections may be connected by a line running to the left with another bar also showing an extent of a substring. Each of the connected pairs indicates that substrings of the two extents are identical. One of this kind of hints in the example tells that the letters in boxes 8 and 9 are identical to those in boxes 4 and 5, respectively. From this, you can easily deduce that the substring is <code>IP</code>.</p>\n<p>Note that, not necessarily all of the identical substring pairs in the secret string are given in the hints; some identical substring pairs may not be mentioned.</p>\n<p>Note also that two extents of a pair may overlap each other. In the example, the two-letter substring in boxes 2 and 3 is told to be identical to one in boxes 1 and 2, and these two extents share the box 2.</p>\n<p>In this example, you can decide letters at all the positions of the secret string, which are “<code>CCCIPCCIP</code>”. In general, the hints may not be enough to decide all the letters in the secret string.</p>\n<p>The answer of the puzzle should be letters at the specified positions of the secret string. When the letter at the position specified cannot be decided with the given hints, the symbol ? should be answered.</p>",
+  "input": "<p>The input consists of a single test case in the following format.</p>\n<pre>\nn a b q\nx<sub>1</sub> c<sub>1</sub>\n.\n.\n.\nx<sub>a</sub> c<sub>a</sub>\ny<sub>1</sub> h<sub>1</sub>\n.\n.\n.\ny<sub>b</sub> h<sub>b</sub>\nz<sub>1</sub>\n.\n.\n.\nz<sub>q</sub></pre>\n<p>The first line contains four integers n, a, b, and q. n (1 ≤ n ≤ 10<sup>9</sup>) is the length of the secret string, a (0 ≤ a ≤ 1000) is the number of the hints on letters in specified positions, b (0 ≤ b ≤ 1000) is the number of the hints on duplicated substrings, and q (1 ≤ q ≤ 1000) is the number of positions asked.</p>\n<p>The i-th line of the following a lines contains an integer x<sub>i</sub> and an uppercase letter c<sub>i</sub> meaning that the letter at the position x<sub>i</sub> of the secret string is c<sub>i</sub>. These hints are ordered in their positions, i.e., 1 ≤ x<sub>1</sub> &lt; · · · &lt; x<sub>a</sub> ≤ n.</p>\n<p>The i-th line of the following b lines contains two integers, y<sub>i</sub> and h<sub>i</sub>. It is guaranteed that they satisfy 2 ≤ y<sub>1</sub> &lt; · · · &lt; y<sub>b</sub> ≤ n and 0 ≤ h<sub>i</sub> &lt; y<sub>i</sub>. When h<sub>i</sub> is not 0, the substring of the secret string starting from the position y<sub>i</sub> with the length y<sub>i+1</sub>−y<sub>i</sub> (or n+1−y<sub>i</sub> when i = b) is identical to the substring with the same length starting from the position h<sub>i</sub>. Lines with h<sub>i</sub> = 0 does not tell any hints except that y<sub>i</sub> in the line indicates the end of the substring specified in the line immediately above.</p>\n<p>Each of the following q lines has an integer z<sub>i</sub> (1 ≤ z<sub>i</sub> ≤ n), specifying the position of the letter in the secret string to output.</p>\n<p>It is ensured that there exists at least one secret string that matches all the given information. In other words, the given hints have no contradiction.</p>",
+  "output": "<p>The output should be a single line consisting only of q characters. The character at position i of the output should be the letter at position z<sub>i</sub> of the the secret string if it is uniquely determined from the hints, or ? otherwise.</p>",
+  "samples": [
+    {
+      "input": "9 4 5 4\n3 C\n4 I\n7 C\n9 P\n2 1\n4 0\n6 2\n7 0\n8 4\n8\n1\n9\n6\n",
+      "output": "ICPC\n"
+    },
+    {
+      "input": "1000000000 1 1 2\n20171217 A\n3 1\n42\n987654321\n",
+      "output": "?A\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ACM-ICPC Asia Tsukuba Regional Contest 2017",
+  "level": 23,
+  "tags": [
+    "trees",
+    "set"
+  ],
+  "accepted_user_count": 71,
+  "submission_count": null,
+  "average_tries": 1.5774999856948853
+}

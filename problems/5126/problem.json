@@ -1,0 +1,27 @@
+{
+  "id": 5126,
+  "title": "Numerology",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In many cultures, certain numbers are associated with particular beliefs. For instance, 666 is often associated with the Devil, and 777 is often associated with good luck. These numbers tend to follow patterns, and if one is a numerologist trying to predict the end of the world, one might be interested in finding further numbers with such patterns.</p>\n<p>One issue is that a particular number might only exhibit an interesting pattern if it’s represented in the appropriate base. For example, the number 666, when represented in hexadecimal, becomes 29a, which is much less interesting than its base 10 representation. In order to account for all the different bases that past (and possibly alien!) cultures may have used, you’d like to check whether a number matches a pattern of interest when represented in a different base.</p>\n<p>For our purposes, we’ll represent a number converted to a base b as a sequence of symbols S = &lt;s<sub>1</sub>, s<sub>2</sub>, ..., s<sub>L</sub>&gt;, where each symbol is simply an integer. For instance, the decimal number 6, when converted to base 2, would have S = &lt;1, 0, 1, 0&gt;, giving L = 4. The pattern we’d like to match against will be represented as a string, for example “ab”. A sequence of symbols S matches a pattern p if and only if both of the following conditions hold:</p>\n<ol>\n<li>The length of S is at least as long as the length of p.</li>\n<li>There exists a one-to-one mapping between the set of characters in p and the set of symbols in S, such that when p is repeatedly concatenated with itself and then truncated so that the length of the resulting string r matches the length of S, the sequence S can be obtained from r by substituting each character in r with its corresponding mapped symbol.</li>\n</ol>\n<p>Hence, in our example, the result of 6 converted to base 2 ends up matching the pattern “ab”.</p>",
+  "input": "<p>The first line is the number K of input data sets, followed by the K data sets. Each data set consists of a single line which contains a positive integer n and a string p, the number you’re concerned with and the pattern you’d like to match against, respectively. The number n is guaranteed to fit in a 64-bit integer, and p is at most 10 characters. Further, the only possible characters the pattern can contain are lower case ‘a’ through ‘j’.</p>",
+  "output": "<p>For each data set, output “Data Set x:” on a line by itself, where x is its number. Then output the smallest base b where 2 ≤ b ≤ 1000000, such that n converted to base b matches the pattern specified by p. On the next line output the integer symbols of the matching sequence, each separated by a single space, with no trailing whitespace. If no such base results in a pattern match, instead output “No such base.” Each data set should be followed by a blank line.</p>",
+  "samples": [
+    {
+      "input": "4\n5 ab\n777 a\n3735928559 deadbeef\n349485 abcdefghij\n",
+      "output": "Data Set 1:\n2\n1 0 1\n\nData Set 2:\n6\n3 3 3 3\n\nData Set 3:\n16\n13 14 10 13 11 14 14 15\n\nData Set 4:\nNo such base.\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Spring 2012: End of the World",
+  "level": 10,
+  "tags": [
+    "math",
+    "implementation",
+    "string",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.2000000476837158
+}

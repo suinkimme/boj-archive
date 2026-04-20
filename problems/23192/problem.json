@@ -1,0 +1,28 @@
+{
+  "id": 23192,
+  "title": "Cardiology",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>The Great Cardoni, Master Prestidigitator, has a deck of 21 numbered cards which he uses in a trick as follows:</p>\n<blockquote>\n<p>A spectator secretly selects a number between 1 and 21, inclusive, after which Cardoni deals the 21 cards, face-up, row by row in order from 1 to 21, into a 3-column grid. The spectator then indicates which of the three columns contains the selected card, at which point the magician picks up the cards by columns, picking up the specified column second (the order of collecting the other two columns is unimportant). Cards are collected face up, beginning with the top card in each column and placing each succeeding card immediately beneath the previously collected card. The cards are then redealt by rows into a 3-column grid, starting from the top of the face-up deck. The process is repeated two more times; each time, the column indicated by the spectator is the second column picked up by the magician. After three such iterations, Cardoni announces, “I have penetrated to the heart of your mind; your card lies at the heart of this display.” And it’s true—the selected card is located at the “heart” of the array (row four, column two). Moreover, the selected card will always remain in this stable location for any further iterations of the column indication and card redealing process.</p>\n</blockquote>\n<p>The process always works, no matter the number selected, provided that the column containing the secret number is the second column to be picked up and redealt.</p>\n<p>Cardoni would like to expand his trick to use different numbers of cards, rows, and columns, and to experiment with different orderings of picking up the columns after the spectator indicates a column. However, it is not a trivial problem. For instance, when using 24 cards in 8 rows and 3 columns, and always picking up the indicated column as the second one to redeal, the number 5 eventually ends up in stable location row 4, column 3, while the number 20 ends up in stable location row 5, column 1. Also, neither location is one of the two “heart” positions in column 2 of rows 4 or 5. Moreover, Cardoni is uncertain of how many iterations of the “indicate column and redeal” process are needed before a selected card reaches a stable location.</p>\n<p>Given the number of rows and columns of cards, help Cardoni set up his trick in such a way that there is a unique stable location that is as close to the center as possible.</p>",
+  "input": "<p>The input consists of a single line with two integers r and c (2 ≤ r, c ≤ 10<sup>6</sup>), the number of rows and columns used in the trick. The cards are numbered from 1 to r · c and are initially dealt row by row in increasing order.</p>",
+  "output": "<p>Output a line containing four integers p, i, j, and s, where:</p>\n<ul>\n<li>the column indicated by the spectator should be picked up as the p<sup>th</sup> column,</li>\n<li>using this value of p causes all cards to eventually end up in the stable location at row i column j, and</li>\n<li>s is the maximum number of iterations required for any card to reach the stable location.</li>\n</ul>\n<p>The value of p should be chosen so that the stable location (i, j) is as close as possible to any of the one, two or four central positions in the grid, where the distance between locations (i, j) and (i' , j') is |i − i'| + |j − j'|. If more than one value of p results in the same minimum distance, choose the smallest such p.</p>",
+  "samples": [
+    {
+      "input": "7 3\n",
+      "output": "2 4 2 3\n"
+    },
+    {
+      "input": "8 3\n",
+      "output": "1 1 1 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2020",
+  "level": 17,
+  "tags": [
+    "math"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 1.6970000267028809
+}

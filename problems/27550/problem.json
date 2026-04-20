@@ -1,0 +1,33 @@
+{
+  "id": 27550,
+  "title": "Mreža",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The city mayor Mirko lives in a city with $n$ neighborhoods connected with $n - 1$ bidirectional roads such that from any neighborhood it is possible to reach every other neighborhood.</p>\n<p>Mirko wants to upgrade some roads to reduce traffic. For every road, we know the current speed $v_i$ vehicles drive on it, the price of upgrading $c_i$ and the speed of driving after upgrading $s_i$.</p>\n<p>There are $q$ unsatisfied citizens that come to visit Mirko. Each one has their suggestion for an upgrade. The suggestion of the $i$-th citizen is: “We should invest $e_i$ euros in upgrading roads between neighborhoods $a_i$ and $b_i$”</p>\n<p>For each suggestion, Mirko is interested in what is the minimum driving speed between neighborhoods $a_i$ and $b_i$ if he spends at most $e_i$ euros on upgrading the roads, given thathis goal is to maximize the minimum driving speed between the neighborhoods $a_i$ and $b_i$.</p>\n<p>Mirko soon realized that calculating this is not an easy task and hired you to help him!</p>",
+  "input": "<p>The first line contains the integer $n$ ($2 ≤ n ≤ 100\\,000$), the number of neighborhoods.</p>\n<p>In each of the next $n - 1$ lines there are five integers $x_i$, $y_i$, $v_i$, $c_i$, $s_i$ ($1 ≤ x_i , y_i ≤ n$, $1 ≤ v_i &lt; s_i ≤ 10^9$, $1 ≤ c_i ≤ 10^9$), denoting that neighborhood $x_i$ and $y_i$ are connected, current driving speed is $v_i$, cost of upgrading the road is $c_i$, and the speed on the road would be $s_i$.</p>\n<p>The next line contains the integer $q$ ($1 ≤ q ≤ 100\\,000$), the number of unsatisfied citizens.</p>\n<p>In each of the next $q$ lines there are three integers $a_i$, $b_i$, $e_i$ ($1 ≤ a_i , b_i ≤ n$, $a_i \\ne b_i$, $1 ≤ e_i ≤ 10^{18}$), which describe the suggestion of the $i$-th citizen.</p>",
+  "output": "<p>In the $i$-th of the $q$ lines print the answer to the request of the $i$-th citizen.</p>",
+  "samples": [
+    {
+      "input": "6\n1 2 5 7 10\n1 3 4 8 9\n3 4 7 1 15\n3 5 6 3 11\n3 6 5 6 8\n3\n2 4 15\n6 4 5\n3 5 10\n",
+      "output": "7\n5\n11\n"
+    },
+    {
+      "input": "4\n1 2 5 5 8\n2 3 4 6 9\n3 4 6 10 7\n4\n1 4 16\n2 4 16\n1 4 10\n3 4 10\n",
+      "output": "6\n7\n5\n7\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example:</p>\n<p>The illustration represents the city and its neighborhoods. On the edges are written the current driving speed, the cost of upgrading, and the speed after upgrading, respectively.</p>\n<p>If we upgrade the roads between $1$ and $2$, and between $1$ and $3$, the driving speeds from $2$ to $4$ will be $10$, $9$, and $7$ m/s. The minimum is $7$ m/s.</p>\n<p>If we upgrade the roads between $4$ and $3$, the driving speeds from $6$ to $4$ will be $5$ an $15$ m/s. The minimum is $5$ m/s.</p>\n<p>If we upgrade the road between $3$ and $5$, the driving speed from $5$ to $3$ will be $11$ m/s.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 321px; height: 313px;\"/></p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2022/2023, Contest #4",
+  "level": 21,
+  "tags": [
+    "binary_search",
+    "data_structures",
+    "hld",
+    "pbs",
+    "segtree",
+    "trees"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.375
+}

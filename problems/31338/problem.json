@@ -1,0 +1,26 @@
+{
+  "id": 31338,
+  "title": "Casino",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"width: 100px; height: 54px; float: right;\"/>When Taja runs out of money, she goes to the casino. Recently a new game appeared at the casino, and Taja wants to master it. Help her.</p>\n<p>Two parties of the game are croupier and visitor of the casino. Croupier has a single regular $k$-faced dice, which has all integers from $1$ to $k$ written on its faces. Croupier starts the game with rolling the dice once. Shown number determines amount of points gained by croupier.</p>\n<p>To win, visitor has to gain more points, than croupier did. For this there's suggested a choice out of $n$ options. Each option is a pair: the dice and number of its allowed rolls. Each face of each dice has some number written on it. This dice is rolled required number of times, all shown numbers are summed up and this sum is exactly the points gained by a visitor.</p>\n<p>But some faces, in addition to numbers, have bonus marks. If shown face has bonus mark, then corresponding amount of points is added to the total, and visitor get additional dice roll. All faces of the same dice are pairwise distinct, which means there's no two identical bonus faces and no two identical ordinary faces. Each dice has at least one face without bonus mark. For every dice, the probability of each of its face being shown is the same.</p>\n<p>In this problem it is required that for each possible amount of croupier's points from $1$ to $k$ you determine visitor's rolling option number, which leads to the maximal probability to gain stricly greater points than croupier did.</p>",
+  "input": "<p>First line of the input contains single integer $n$ ($2 \\leq n \\leq 10$) --- number of dice rolling options.</p>\n<p>Next $n$ lines contain descriptions of options in the following format.</p>\n<p>First number $c_i$ ($1 \\leq c_i \\leq 10$) --- number of allowed rolls. Second number $f_i$ ($2 \\leq f_i \\leq 12$) --- number of dice faces. Next $f_i$ numbers $v_{ij}$ --- numbers written on the faces. $v_{ij}$ is either simply a number from $1$ to $f_i$, meaning amount of points, or it can have additional plus sign &lt;&lt;<code>+</code>&gt;&gt; (ASCII $43$) in front of the number, which is the bonus mark. For every dice, its numbers without plus sign are unique, all numbers with plus sign are unique, and there's at least one face without bonus mark.</p>\n<p>Last line contains single integer $k$, which always equals $\\max\\limits_{1 \\leq i \\leq n}$ ($c_i \\times f_i$).</p>",
+  "output": "<p>Output should contain $k$ lines, each of which contains single integer $b_i$ --- number of the best option, which will allow to win with maximal probability by gaining more than $i$ points (this probability shouldn't deviate from the right answer more than $10^{-9}$).</p>\n<p>Dice are numbered from $1$ in the order thay are given in the input.</p>",
+  "samples": [
+    {
+      "input": "3\n3 4 1 2 3 4\n2 6 1 2 3 4 5 6\n1 12 1 2 3 4 5 6 7 8 9 10 11 12\n12\n",
+      "output": "2\n1\n1\n1\n1\n1\n1\n3\n3\n3\n3\n2\n"
+    },
+    {
+      "input": "2\n1 4 1 2 +1 +2\n1 6 1 +1 2 3 4 5\n6\n",
+      "output": "2\n2\n2\n2\n1\n1\n"
+    }
+  ],
+  "hint": "<p>Answer for the first sample could conain $1$ on the first line, and the last could be any from $1$ to $3$.</p>",
+  "source": "Contest, Open Cup, 2014/2015 Season, Stage 9: Grand Prix of Udmurtia",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

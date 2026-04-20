@@ -1,0 +1,22 @@
+{
+  "id": 22920,
+  "title": "Divisible Divisions",
+  "time_limit": "60 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>We have a string S consisting of decimal digits. A <i>division</i> of S is created by dividing S into contiguous substrings. For example, if S is <code>0145217</code>, two possible divisions are <code>014 5 21 7</code> and <code>0 14 52 17</code>. Each digit must be used in exactly one substring, and each substring must be non-empty. If S has L digits, then there are exactly 2<sup>L−1</sup> possible divisions of it.</p>\n<p>Given a positive integer D, a division of SS is called <i>divisible</i> by D if for every pair of consecutive substrings, at least one of the integers they represent in base 10 is divisible by D. If D=7, the first example division above is divisible because <code>014</code>, <code>21</code>, and <code>7</code> represent integers divisible by 7. The second example division is not divisible because <code>52</code> and <code>17</code> are consecutive substrings and neither represents an integer divisible by 7. Dividing <code>0145217</code> as <code>0145217</code> is divisible by any D because there are no pairs of consecutive substrings.</p>\n<p>Given S and D, count how many divisions of S exist that are divisible by D. Since the output can be a really big number, we only ask you to output the remainder of dividing the result by the prime 10<sup>9</sup> + 7 (1000000007).</p>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T lines follow. Each line represents a test case with a string of digits S and a positive integer D, as mentioned above.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where x is the test case number (starting from 1) and y is the number of different divisions of S that are divisible by D, modulo the prime 10<sup>9</sup> + 7 (1000000007).</p>",
+  "samples": [
+    {
+      "input": "3\n0145217 7\n100100 10\n5555 12\n",
+      "output": "Case #1: 16\nCase #2: 30\nCase #3: 1\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, all 16 divisible divisions of S are:</p>\n<ul>\n<li><code>0145217</code>,</li>\n<li><code>0 145217</code>,</li>\n<li><code>0 14 5217</code>,</li>\n<li><code>0 14 5 217</code>,</li>\n<li><code>0 14 5 21 7</code>,</li>\n<li><code>0 14 521 7</code>,</li>\n<li><code>0 145 217</code>,</li>\n<li><code>0 145 21 7</code>,</li>\n<li><code>0 14521 7</code>,</li>\n<li><code>014 5217</code>,</li>\n<li><code>014 5 217</code>,</li>\n<li><code>014 5 21 7</code>,</li>\n<li><code>014 521 7</code>,</li>\n<li><code>0145 217</code>,</li>\n<li><code>0145 21 7</code>, and</li>\n<li><code>014521 7</code>.</li>\n</ul>\n<p>In Sample Case #2, there are 2<sup>5</sup> = 32 ways to divide in total. To get two consecutive substrings to not be divisible by 10, we need both of them to not end in 0. The only 2 ways of doing that are <code>1 001 00</code> and <code>1 001 0 0</code>, which means the other 30 divisions of S are divisible by 10.</p>\n<p>In Sample Case #3, no possible substring represents an even integer, which in turn means it is not divisible by 12. Therefore, the only way to not have two consecutive substrings that are not divisible by 12 is to not have two consecutive substrings at all, which can be done in only 1 way: <code>5555</code>.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2021, World Finals",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2.75
+}

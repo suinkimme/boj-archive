@@ -1,0 +1,36 @@
+{
+  "id": 26109,
+  "title": "Longest Substring",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>For a string $S$ of length $n ≥ 1$ and a positive integer $k$ ($1 ≤ k ≤ n$), a non-empty substring of $S$ is called a $k$-substring if the substring appears exactly $k$ times. Such $k$ occurrences are not necessarily disjoint, i.e., are possibly overlapping. For example, if $S =$ <code>\"ababa\"</code>, the $k$-substrings of $S$ for every $k = 1, \\dots , 5$ are as follows:</p>\n<ul>\n<li>There are four $1$-substrings in $S$, <code>\"abab\"</code>, <code>\"ababa\"</code>, <code>\"bab\"</code>, and <code>\"baba\"</code> because these substrings appear exactly once in $S$. Note that <code>\"aba\"</code> is not a $1$-substring because it appears twice.</li>\n<li>There are four $2$-substrings in $S$, <code>\"ab\"</code>, <code>\"aba\"</code>, <code>\"b\"</code>, and <code>\"ba\"</code>. The substring <code>\"ab\"</code> appears exactly twice without overlapping. Two occurrences of the substring <code>\"aba\"</code> are overlapped at a common character <code>\"a\"</code>, but it does not appear three times or more.</li>\n<li>There is only one $3$-substring in $S$, <code>\"a\"</code>.</li>\n<li>Neither $4$-substrings nor $5$-substrings exist in $S$.</li>\n</ul>\n<p>For a $k$-substring $T$ of $S$, let $d(T)$ be the maximum number of the disjoint occurrences of $T$ in $S$. For example, a $2$-substring $T =$ <code>\"ab\"</code> can be selected twice without overlapping, that is, the maximum number of the disjoint occurrences is two, so $d(T) = 2$. For a $2$-substring $T =$ <code>\"aba\"</code>, it cannot be selected twice without overlapping, so $d(T) = 1$. For a $3$-substring $T =$ <code>\"a\"</code>, it can be selected three times without overlapping, which is the maximum, so $d(T) = 3$.</p>\n<p>Let $f(k)$ be the length of the longest one among all $k$-substring $T$ with the largest $d(T)$ for $1 ≤ k ≤ n$. For example, $f(k)$ for $S =$ <code>\"ababa\"</code> and $k = 1, \\dots , 5$ is as follows:</p>\n<ul>\n<li>For $k = 1$, all $1$-substrings $T$ can be selected only once without overlapping, so $d(T) = 1$. Thus, the longest one among all $1$-substrings with $d(T) = 1$ is <code>\"ababa\"</code>, so $f(1) = 5$.</li>\n<li>For $k = 2$, $d(T) = 1$ for $T =$ <code>\"aba\"</code>, but $d(T) = 2$ for the other $2$-substrings $T =$ <code>\"ab\"</code>, <code>\"b\"</code>, <code>\"ba\"</code>. Among $2$-substrings with $d(T) = 2$, <code>\"ab\"</code> and <code>\"ba\"</code> are the longest ones, so $f(2) = 2$.</li>\n<li>For $k = 3$, $f(3) = 1$ because there is only one $3$-substring <code>\"a\"</code>.</li>\n<li>For $k = 4, 5$, there are no $k$-substrings, so $f(4) = 0$ and $f(5) = 0$.</li>\n</ul>\n<p>Given a string $S$ of length $n$, write a program to output $n$ values of $f(k)$ from $k = 1$ to $k = n$. For the above example, the output should be $5$ $2$ $1$ $0$ $0$.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing the string $S$ consisting of $n$ ($1 ≤ n ≤ 50\\,000$) lowercase alphabets.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line. The line should contain exactly $n$ nonnegative integers, separated by a space, that represent $f(k)$ from $k = 1$ to $k = n$ in order, that is, $f(1)$ $f(2)$ $\\dots$ $f(n)$. Note that $f(k)$ should be zero if there is no $k$-substring for some $k$.</p>",
+  "samples": [
+    {
+      "input": "ababa\n",
+      "output": "5 2 1 0 0\n"
+    },
+    {
+      "input": "aaaaaaaa\n",
+      "output": "8 7 6 5 4 3 2 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2022",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "string",
+    "trees",
+    "binary_search",
+    "set",
+    "smaller_to_larger",
+    "trie",
+    "suffix_tree"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 3
+}

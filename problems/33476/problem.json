@@ -1,0 +1,36 @@
+{
+  "id": 33476,
+  "title": "영 타블로가 싫은 재우",
+  "time_limit": "2.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<blockquote>\n<p>2023년이 되고, 전년도의 활동을 통해 MatKor는 학부동아리로 승격되었다. 특히 <a href=\"/category/detail/3466\">&lt;제2회 MatKor Cup:2023 Winter&gt;</a>가 끝나고 대회 검수자였던 종우, 대회에서 뛰어난 성적으로 입상한 세준이, 대회가 끝난 후 <a href=\"/problem/27305\">한 문제</a>를 빼고 모두 업솔빙한 하늘이가 MatKor에 합류했다. 인원이 많아진 MatKor는 이때부터 세미나 분반을 실력별로 초, 중, 고급으로 나누어 세미나를 진행하게 되었다.</p>\n</blockquote>\n<p>MatKor에서는 동아리가 설립된 2022년부터 지금까지 한 번도 빠짐없이 세미나 주제 중에 <a href=\"https://en.wikipedia.org/wiki/Young_tableau\"><strong>영 타블로</strong></a>가 있다. 매년 동우의 영 타블로 수업을 듣던 재우는 화가 나 이제 영 타블로를 없애버리고자 한다.</p>\n<p>영 타블로는 정수로 이루어진 $\\lambda =\\left( \\lambda_1,\\lambda_2,\\cdots ,\\lambda_H \\right)$로 나타낼 수 있다. 이는 높이가 $H$이고, $1$행 부터 순서대로 $H$행까지 각 행의 길이가 $\\lambda_i$인 모양을 의미하는데, $\\lambda_1\\ge\\lambda_2\\ge\\cdots\\ge\\lambda_H\\ge 1$을 만족해야 한다. 예를 들어 영 타블로 $\\lambda =\\left( 5,4,1 \\right)$은 다음을 의미한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 240px; max-width:100%\"/></p>\n<p>동우는 재우에게 처음에 높이가 $H$로 동일한 영 타블로 $N$개를 주었다. 또한, $N$개의 영 타블로 중 합칠 수 있는 $M$개의 쌍을 주었다. 이제 재우는 아래 행동을 반복하여 모든 영 타블로를 직사각형으로 만들고자 한다. 재우는 한 번 행동할 때, 아래 중 하나를 할 수 있다. 편의상 존재하지 않는 행인 $H+1$ 이상의 $i$에 대해 $\\lambda_i=0$이라 하자.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 600px; max-width:100%\"/></p>\n<ul>\n<li>행동 1\n\t<ul>\n<li>영 타블로 하나와 해당 영 타블로의 행 하나를 고른다.</li>\n<li>이때, 고른 행을 $r$행 이라 하면, $\\lambda_r\\gt\\lambda_{r+1}$과 $\\lambda_r\\ge 2$를 만족해야 한다.</li>\n<li>$c$의 비용을 들여 해당 행의 마지막 열의 칸을 지운다.</li>\n</ul>\n</li>\n<li>행동 2\n\t<ul>\n<li>영 타블로 하나와 해당 영 타블로의 행 하나를 고른다.</li>\n<li>이때, 고른 행을 $r$행 이라 하면, $r=1$ 혹은 $\\lambda_r\\lt\\lambda_{r-1}$을 만족해야 한다.</li>\n<li>$d$의 비용을 들여 해당 행의 마지막 열 뒤에 칸을 하나 추가한다.</li>\n</ul>\n</li>\n<li>행동 3\n\t<ul>\n<li>합칠 수 있는 영 타블로 쌍인 $i$, $j(i\\ne j)$번 영 타블로를 골라 둘 중 하나를 $180^{\\circ}$ 돌려서 다른 하나와 맞춘다.</li>\n<li>이때, 칸이 남거나 겹치면 안 되며, 비용은 발생하지 않는다.\n\t\t<ul>\n<li>구체적으로, 두 영 타블로의 높이는 동일해야 하며, 이 높이를 $h$라고 할 때 다음을 만족해야 한다.</li>\n<li>$a$번 영타블로가 $\\left( \\lambda_{1}^a,\\lambda_2^a,\\cdots ,\\lambda_h^a \\right)$, $b$번 영타블로가 $\\left( \\lambda_{1}^b,\\lambda_2^b,\\cdots ,\\lambda_h^b \\right)$라고 하면, $1\\le k\\le h$인 모든 정수 $k$에 대해 $\\lambda_k^a+\\lambda_{h-k+1}^b$가 동일하다.</li>\n</ul>\n</li>\n<li>이 행동 이후 두 영 타블로는 하나의 직사각형이 되며, 두 영 타블로는 더 이상 행동에서 선택될 수 없다.</li>\n</ul>\n</li>\n</ul>\n<p>재우는 위의 행동을 원하는 만큼 반복하여 모든 영 타블로를 직사각형으로 만들고 싶다. 이를 위해 필요한 최소 비용과 그 과정을 구해보자. 최종적인 비용은 모든 행동에서 소모된 비용의 합이며, 행동 3을 통해 두 영 타블로를 합치지 않더라도 행동 1이나 행동 2만 사용하여 영 타블로 하나를 하나의 직사각형으로 만들 수 있다는 점에 유의하자.</p>",
+  "input": "<p>첫 번째 줄에 영 타블로의 개수 $N(1\\le N\\le 5\\, 000)$, 합칠 수 있는 영 타블로의 쌍의 개수 $M(0\\le M\\le\\min\\left( 10^4,\\frac{n(n-1)}{2} \\right))$, 영 타블로의 높이 $H(1\\le H\\le 500)$가 공백으로 구분되어 주어진다.</p>\n<p>두 번째 줄에 비용을 의미하는 정수 $c$, $d(1\\le c,d\\le 3\\, 000)$가 공백으로 구분되어 주어진다.</p>\n<p>세 번째 줄부터 $N$개의 줄에 걸쳐 $1$번 부터 $N$번 영 타블로의 초기 상태를 의미하는 $H$개의 정수 $\\lambda_{1}^i,\\lambda_2^i,\\cdots ,\\lambda_H^i(10^6\\ge\\lambda_1^i\\ge\\lambda_2^i\\ge\\cdots\\ge\\lambda_H^i\\ge 1)$가 공백으로 구분되어 한 줄에 영 타블로가 한 개씩 주어진다.</p>\n<p>$N+3$ 번째 줄부터 $M$개의 줄에 걸쳐 합칠 수 있는 영 타블로 쌍 $a_i,b_i(1\\le a_i, b_i\\le N$; $a_i \\ne b_i)$가 한 줄에 하나씩 공백으로 구분되어 주어진다. 같은 쌍은 여러 번 주어지지 않는다.</p>",
+  "output": "<p>첫 번째 줄에 재우가 모든 영 타블로를 없애거나 남아있는 모든 영 타블로를 직사각형으로 만들기 위해 필요한 최소 비용을 출력한다.</p>\n<p>두 번째 줄부터 $N$개의 줄에 걸쳐 $1$번부터 $N$번 영 타블로에 대해 $i$번 영 타블로의 최종 상태를 의미하는 두 개의 정수 $c_i,m_i$를 공백으로 구분하여 출력한다. 이는 다음과 같다.</p>\n<ul>\n<li>만약 해당 영 타블로가 행동 3에 영향을 받지 않고, 자기 자신이 직사각형이 되었다면, 가로를 $c_i$로 하고, $m_i=i$으로 한다.</li>\n<li>만약 해당 영 타블로가 행동 3으로 합쳐졌다면, 최종 상태에서 합쳐진 직사각형의 가로를 $c_i$로 하고, $m_i$는 행동 3에서 합쳐진 다른 영 타블로의 번호로 한다.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "6 0 6\n1 2\n1 1 1 1 1 1\n4 1 1 1 1 1\n4 4 4 4 4 1\n4 4 4 4 4 1\n6 5 4 3 2 1\n9 9 8 8 4 4\n",
+      "output": "45\n1 1\n1 2\n4 3\n4 4\n3 5\n5 6\n"
+    },
+    {
+      "input": "6 5 6\n1 2\n1 1 1 1 1 1\n4 1 1 1 1 1\n4 4 4 4 4 1\n4 4 4 4 4 1\n6 5 4 3 2 1\n9 9 8 8 4 4\n1 2\n2 3\n3 4\n4 5\n5 6\n",
+      "output": "12\n1 1\n5 3\n5 2\n4 4\n10 6\n10 5\n"
+    },
+    {
+      "input": "6 15 6\n1 2\n1 1 1 1 1 1\n4 1 1 1 1 1\n4 4 4 4 4 1\n4 4 4 4 4 1\n6 5 4 3 2 1\n9 9 8 8 4 4\n1 2\n1 3\n1 4\n1 5\n1 6\n2 3\n2 4\n2 5\n2 6\n3 4\n3 5\n3 6\n4 5\n4 6\n5 6\n",
+      "output": "12\n5 4\n5 3\n5 2\n5 1\n10 6\n10 5\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제6회 고려대학교 MatKor Cup: 2025 Winter, alex04, kidw0124, eoaud0108, midoria, sshs29hanul, utilforever",
+  "level": 29,
+  "tags": [
+    "math",
+    "graphs",
+    "calculus",
+    "ternary_search",
+    "general_matching"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 2.4444000720977783
+}

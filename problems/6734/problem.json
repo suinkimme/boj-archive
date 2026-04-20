@@ -1,0 +1,25 @@
+{
+  "id": 6734,
+  "title": "Radio direction finder",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A boat with a directional antenna can determine its present position with the help of readings from local beacons (radio transmitters). Each beacon is located at a known position and emits a unique signal. When a boat detects a signal, it rotates its antenna until the signal is at maximal strength. This gives a relative bearing to the position of the beacon. Given a previous beacon reading (the time, the relative bearing, and the position of the beacon), a new beacon reading is usually sufficient to determine the boat’s present position. You are to write a program to determine, when possible, boat positions from pairs of beacon readings.</p>\n<p>For this problem, the positions of beacons and boats are relative to a rectangular coordinate system. The positive x-axis points east; the positive y-axis points north. The course is the direction of travel of the boat and is measured in degrees clockwise from north. That is, north is 0°, east is 90°, south is 180°, and west is 270°. The relative bearing of a beacon is given in degrees clockwise relative to the course of the boat. A boat’s antenna cannot indicate on which side the beacon is located. A relative bearing of 90° means that the beacon is toward 90° or 270°.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:277px; width:359px\"/></p>",
+  "input": "<p>The first line of input is an integer specifying the number of beacons (at most 30). Following that is a line for each beacon. Each of those lines begins with the beacon’s name (a string of 20 or fewer alphabetical characters), the x-coordinate of its position, and the y-coordinate of its position. These fields are single-space separated.</p>\n<p>Coming after the lines of beacon information is an integer specifying a number of boat scenarios to follow. A boat scenario consists of three lines, one for velocity and two for beacon readings.                           </p>\n<table class=\"table table-bordered\" style=\"width: 50%;\">\n<tbody>\n<tr>\n<td style=\"text-align:center\">Data</td>\n<td style=\"text-align:center\">Meaning</td>\n</tr>\n<tr>\n<td>course speed</td>\n<td>the boat’s course and the speed at which it is traveling</td>\n</tr>\n<tr>\n<td>time<sub>1</sub> name<sub>1</sub> angle<sub>1</sub></td>\n<td>time of first reading, name of first beacon, relative bearing of first beacon</td>\n</tr>\n<tr>\n<td>time<sub>2</sub> name<sub>2</sub> angle<sub>2</sub></td>\n<td>time of second reading, name of second beacon, relative bearing of second beacon</td>\n</tr>\n</tbody>\n</table>\n<p>All times are given in minutes since midnight measured over a single 24-hour clock. The speed is the distance (in units matching those of the rectangular coordinate system) per minute. The second line of the scenario gives the first beacon reading as the time of the reading (an integer), the name of the beacon, and the angle of the reading as measured from the boat’s course. These 3 fields have single space separators. The third line gives the second beacon reading. The time for that reading will always be at least as large as the time for the first reading.</p>",
+  "output": "<p>For each scenario, your program should print the scenario number (Scenario 1, Scenario 2, etc.) and a message indicating the position (rounded to 2 decimal places) of the boat as of the time of the second reading. If it is impossible to determine the position of the boat, the message should say</p>\n<p>    Position cannot be determined    </p>",
+  "samples": [
+    {
+      "input": "4\nFirst 2.0 4.0\nSecond 6.0 2.0\nThird 6.0 7.0\nFourth 10.0 5.0\n2\n0.0 1.0\n1 First 270.0\n2 Fourth 90.0\n116.5651 2.2361\n4 Third 126.8699\n5 First 319.3987\n",
+      "output": "Scenario 1: Position cannot be determined\nScenario 2: Position is (6.00,5.00)\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2000",
+  "level": 16,
+  "tags": [
+    "geometry",
+    "math"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.625
+}

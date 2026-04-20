@@ -1,0 +1,33 @@
+{
+  "id": 14688,
+  "title": "Minimum Cost Flow",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The city of Watermoo has buildings numbered 1, 2, . . . , N. The city has M pipes that connect pairs of buildings. Due to urban planning oversights, building 1 is the only sewage treatment plant in the city. Each pipe can be either active or inactive. The set of active pipes forms a valid plan if building 1 is directly or indirectly connected to each other building using active pipes. (Pipes directly connect pairs of buildings. Buildings X and Z are indirectly connected if X is directly or indirectly connected to Y , and Y is directly or indirectly connected to Z.)</p>\n<p>The municipal government of Watermoo is currently operating a valid plan of N − 1 pipes today, but they think it is too expensive! Each pipe has a monthly maintenance fee that the city must pay when it is active, and the total cost of a valid plan is the sum of the maintenance fees of its active pipes. (Inactive pipes cost nothing.)</p>\n<p>Additionally, researchers at the University of Watermoo have developed an experimental pipe enhancer which you can use on one pipe of your choice. It will reduce that pipe’s cost from C down to max(0, C − D), where D is the enhancer’s strength.</p>\n<p>The city wants you to minimize the cost of the plan, and they want you to do it quickly. Every day, the city will allow you to activate one pipe, and deactivate another pipe. How many days do you need to make the set of active pipes form a valid plan, whose cost is minimum among all valid plans and all choices of enhanced pipe?</p>\n<p>Note that it is possible that the plan becomes invalid while you are working, but by the end it should be a valid plan.</p>",
+  "input": "<p>The first line will contain the integers N, M, and D (1 ≤ N ≤ 100 000, N − 1 ≤ M ≤ 200 000, 0 ≤ D ≤ 10<sup>9</sup>). Each of the next M lines contain three integers A<sub>i</sub>, B<sub>i</sub>, and C<sub>i</sub>, which means that there is a pipe from building A<sub>i</sub> to building B<sub>i</sub> that costs C<sub>i</sub> per month when activated (1 ≤ A<sub>i</sub> , B<sub>i</sub> ≤ N, 1 ≤ C<sub>i</sub> ≤ 10<sup>9</sup>). The first N − 1 of these lines represent the valid plan the city is currently using.</p>\n<p>It is guaranteed that there is at most one pipe connecting any two buildings and no pipe connects a building to itself.</p>\n<p>For 3 of the 15 available marks, N ≤ 8, M ≤ 28 and D = 0.</p>\n<p>For an additional 5 of the 15 available marks, N ≤ 1 000 and M ≤ 5 000 and D = 0.</p>\n<p>For an additional 3 of the 15 available marks, D = 0.</p>\n<p>For an additional 2 of the 15 available marks, N ≤ 1 000 and M ≤ 5 000.</p>",
+  "output": "<p>Output one integer on a single line, the minimum number of days to complete this task. If the initial valid plan is already an optimal plan, then output 0.</p>",
+  "samples": [
+    {
+      "input": "4 4 0\n1 2 1\n2 3 2\n3 4 1\n4 1 1\n",
+      "output": "1\n"
+    },
+    {
+      "input": "5 6 2\n1 2 5\n2 3 5\n1 4 5\n4 5 5\n1 3 1\n1 5 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 4 0\n1 2 715827882\n2 3 715827882\n3 4 715827882\n4 1 715827884\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p>Explanation for Output for Sample Input 1</p>\n<p>Note that it does not matter which pipe you use the pipe enhancer on because D = 0, so it will not affect the maintenance fee of any pipe.</p>\n<p>On the first day, you should deactivate the pipe from building 2 to 3 and activate the pipe from building 4 to 1.</p>\n<p>Explanation for Output for Sample Input 2</p>\n<p>One solution using the minimum number of days is to first use the pipe enhancer on the pipe from building 1 to 2 to decrease its cost to 3. Then on the first day, replace the pipe from building 2 to 3 with the pipe from building 1 to 3, and on the second day replace the pipe from 1 to 4 with the pipe from building 1 to 5. Note that the cost of the optimal plan is 10.</p>\n<p>Additionally, there are no solutions where you use the pipe enhancer on the pipe from building 1 to 3 or the pipe from building 1 to 5. Doing so would make that pipe have a maintenance fee of 0, and then any optimal plan would have cost 11 (and we have already seen that we can achieve a cost of 10).</p>\n<p>Explanation for Output for Sample Input 3</p>\n<p>The initial valid plan is already an optimal plan. Be careful of integer overflow when implementing your solution.</p>",
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2017, CCC 2017 Senior Division",
+  "level": 18,
+  "tags": [
+    "graphs",
+    "mst"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 3.047600030899048
+}

@@ -1,0 +1,26 @@
+{
+  "id": 6047,
+  "title": "Cow Hopscotch",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The cows have reverted to their childhood and are playing a game similar to human hopscotch. Their hopscotch game features a line of N (3 &lt;= N &lt;= 250,000) squares conveniently labeled 1..N that are chalked onto the grass.</p>\n<p>Like any good game, this version of hopscotch has prizes!  Square i is labeled with some <span style=\"line-height:1.6em\">integer monetary value V_i (-2,000,000,000 &lt;= V_i &lt;= 2,000,000,000). The cows play the game to see who can earn the most money.</span></p>\n<p>The rules are fairly simple:</p>\n<p>A cow starts at square \"0\" (located just before square 1; it has no monetary value).</p>\n<p>She then executes a potentially empty sequence of jumps toward square N. Each square she lands on can be a maximum of K (2 &lt;= K &lt;= N) squares from its predecessor square (i.e., from square 1, she can jump outbound to squares 2 or 3 if K==2).</p>\n<p>Whenever she wishes, the cow turns around and jumps back towards square 0, stopping when she arrives there. In addition to the restrictions above (including the K limit), two additional restrictions apply:</p>\n<p>She is not allowed to land on any square she touched on her outbound trip (except square 0, of course).</p>\n<p>Except for square 0, the squares she lands on during the return trip must directly precede squares she landed on during the outbound trip (though she might make some larger leaps that skip potential return squares altogether).</p>\n<p>She earns an amount of money equal to the sum of the monetary values of all the squares she jumped on. Find the largest amount of cash a cow can earn.</p>\n<p>By way of example, consider this six-box cow-hopscotch course where K has the value 3:</p>\n<pre>\nSquare Num:    0      1      2      3      4      5      6\n             +---+  +---+  +---+  +---+  +---+  +---+  +---+\n             |///|--|   |--|   |--|   |--|   |--|   |--|   |\n             +---+  +---+  +---+  +---+  +---+  +---+  +---+\n     Value:    -      0      1      2     -3      4      5</pre>\n<p>One (optimal) sequence Bessie could jump (shown with respective bracketed monetary values) is: 1[0], 3[2], 6[5], 5[4], 2[1], 0[0] would yield a monetary total of 0+2+5+4+1+0=12.</p>\n<p>If Bessie jumped a sequence beginning with 0, 1, 2, 3, 4, ... then she would be unable to return since she could not legally jump back to an untouched square.</p>",
+  "input": "<ul>\n<li>Line 1: Two space separated integers: N and K</li>\n<li>Lines 2..N+1: Line i+1 contains a single integer: V_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: A single line with a single integer that is the maximum amount of money a cow can earn</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "6 3\n0\n1\n2\n-3\n4\n5\n",
+      "output": "12\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2009-2010 Season, USACO US Open 2010 Contest, Gold",
+  "level": 20,
+  "tags": [
+    "dp",
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 5.9166998863220215
+}

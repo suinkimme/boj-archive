@@ -1,0 +1,29 @@
+{
+  "id": 15758,
+  "title": "Milking Order",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Farmer John's $N$ cows ($1 \\leq N \\leq 10^5$), numbered $1 \\ldots N$ as always, happen to have too much time on their hooves. As a result, they have worked out a complex social hierarchy related to the order in which Farmer John milks them every morning.</p>\n<p>After weeks of study, Farmer John has made $M$ observations about his cows' social structure ($1 \\leq M \\leq 50,000$). Each observation is an ordered list of some of his cows, indicating that these cows should be milked in the same order in which they appear in this list. For example, if one of Farmer John's observations is the list 2, 5, 1, Farmer John should milk cow 2 sometime before he milks cow 5, who should be milked sometime before he milks cow 1.</p>\n<p>Farmer John's observations are prioritized, so his goal is to maximize the value of $X$ for which his milking order meets the conditions outlined in the first $X$ observations. If multiple milking orders satisfy these first $X$ conditions, Farmer John believes that it is a longstanding tradition that cows with lower numbers outrank those with higher numbers, so he would like to milk the lowest-numbered cows first. More formally, if multiple milking orders satisfy these conditions, Farmer John would like to use the lexicographically smallest one. An ordering $x$ is lexicographically smaller than an ordering $y$ if for some $j$, $x_i = y_i$ for all $i &lt; j$ and $x_j &lt; y_j$ (in other words, the two orderings are identical up to a certain point, at which $x$ is smaller than $y$).</p>\n<p>Please help Farmer John determine the best order in which to milk his cows.</p>",
+  "input": "<p>The first line contains $N$ and $M$. The next $M$ lines each describe an observation. Line $i+1$ describes observation $i$, and starts with the number of cows $m_i$ listed in the observation followed by the list of $m_i$ integers giving the ordering of cows in the observation. The sum of the $m_i$'s is at most $200,000$.</p>",
+  "output": "<p>Output $N$ space-separated integers, giving a permutation of $1 \\ldots N$ containing the order in which Farmer John should milk his cows.</p>",
+  "samples": [
+    {
+      "input": "4 3\n3 1 2 3\n2 4 2\n3 3 4 1\n",
+      "output": "1 4 2 3\n"
+    }
+  ],
+  "hint": "<p>Here, Farmer John has four cows and should milk cow 1 before cow 2 and cow 2 before cow 3 (the first observation), cow 4 before cow 2 (the second observation), and cow 3 before cow 4 and cow 4 before cow 1 (the third observation). The first two observations can be satisfied simultaneously, but Farmer John cannot meet all of these criteria at once, as to do so would require that cow 1 come before cow 3 and cow 3 before cow 1.</p>\n<p>This means there are two possible orderings: 1 4 2 3 and 4 1 2 3, the first being lexicographically smaller.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2017-2018 Season, USACO 2018 US Open Contest, Gold",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "binary_search",
+    "priority_queue",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 166,
+  "submission_count": null,
+  "average_tries": 2.0782999992370605
+}

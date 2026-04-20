@@ -1,0 +1,28 @@
+{
+  "id": 25122,
+  "title": "부분배열 점수 구하기",
+  "time_limit": "1.5 초  (하단 참고)",
+  "memory_limit": "512 MB",
+  "description": "<p>Alice는 정수 배열을 이용한 놀이를 즐겨한다.</p>\r\n\r\n<p>길이 $n$인 정수 배열 $A$가 있을 때 $i$번째 원소를 $A[i]$라 하자 ($i = 1, 2, \\dots, n$). 이때 $A$의 부분배열 $A[i, j]$는 $i$번째 원소부터 $j$번째 원소까지를 포함한 길이 $(j - i + 1)$인 배열로 정의한다 ($1 &le; i &le; j &le; n$). 예를 들어 $A = [1, 3, 5, 7]$이라면 $A[1, 2]$은 $[1, 3]$이고 $A[2, 4]$은 $[3, 5, 7]$이 된다. 참고로 $A$의 부분 배열은 총 $n \\times (n+1) / 2$개 존재한다.</p>\r\n\r\n<p>각각의 부분배열 $A[i, j]$에 대하여 Alice는 아래와 같은 방법으로 점수를 매기기로 했다. 편의상 $A[i, j]$의 점수를 $Score(i, j)$라 하자. ($1 &le; i &le; j &le; n$)</p>\r\n\r\n<ul>\r\n\t<li>[규칙 1] 만약 $i = j$ 라면 $Score(i, j) := 0$이다.</li>\r\n\t<li>[규칙 2] 만약 $i &lt; j$ 이고 $A[i, j]$의 원소 중 중복된 값이 있다면 $Score(i, j) := 0$ 이다.</li>\r\n\t<li>[규칙 3] 만약 $i &lt; j$ 이고 $A[i, j]$의 원소 중 중복된 값이 없다면 $Score(i, j) := i^{(j - i + 1)} + j^{(j - i + 1)}$ 이다.</li>\r\n</ul>\r\n\r\n<p>예를 들어 $A = [1, 1, 2]$ 인 경우를 살펴보자.</p>\r\n\r\n<ul>\r\n\t<li>규칙 1에 따라 $Score(1, 1) = Score(2, 2) = Score(3, 3) = 0$ 이다.</li>\r\n\t<li>규칙 2에 따라 $Score(1, 2) = Score(1, 3) = 0$ 이다. 두 경우 모두 부분 배열에 $1$이 한 번 이상 포함되기 때문이다.</li>\r\n\t<li>규칙 3에 따라 $Score(2, 3) = 2^2 + 3^2 = 13$이다.</li>\r\n</ul>\r\n\r\n<p>다른 예로, $A = [1, 3, 5, 7]$ 인 경우를 살펴보자.</p>\r\n\r\n<ul>\r\n\t<li>규칙 1에 따라 $Score(1, 1) = Score(2, 2) = Score(3, 3) = Score(4, 4) = 0$이다.</li>\r\n\t<li>규칙 2에 해당하는 부분 배열은 없다.</li>\r\n\t<li>규칙 3에 따라 길이 $2$ 이상의 모든 부분 배열의 점수를 구하면 아래와 같다:\r\n\t<ul>\r\n\t\t<li>$Score(1, 2) = 1^2 + 2^2 = 5$</li>\r\n\t\t<li>$Score(2, 3) = 2^2 + 3^2 = 13$</li>\r\n\t\t<li>$Score(3, 4) = 3^2 + 4^2 = 25$</li>\r\n\t\t<li>$Score(1, 3) = 1^3 + 3^3 = 28$</li>\r\n\t\t<li>$Score(2, 4) = 2^3 + 4^3 = 72$</li>\r\n\t\t<li>$Score(1, 4) = 1^4 + 4^4 = 257$</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>정수 배열 $A$가 주어졌을 때, Alice를 도와 $A$의 부분배열 점수 총합을 구해보자.</p>\r\n",
+  "input": "<p>첫 줄에 테스트 케이스의 수 $T$가 주어진다.</p>\r\n\r\n<p>각 테스트 케이스의 첫 줄에는 배열의 길이 $n$이 주어지고 둘째 줄에는 $A$의 원소인 $n$개의 정수가 공백으로 구분되어 주어진다.</p>\r\n",
+  "output": "<p>각 테스트 케이스의 정답을 각 줄에 출력한다. 단, 답이 매우 커질 수 있으므로 정답을 $10^9+7$로 나눈 나머지를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "4\n3\n1 1 2\n4\n1 3 5 7\n6\n1 2 3 1 3 2\n6\n1 2 3 2 3 1\n",
+      "output": "13\n400\n525\n453\n"
+    }
+  ],
+  "hint": null,
+  "source": null,
+  "level": 16,
+  "tags": [
+    "flt",
+    "math",
+    "modular_multiplicative_inverse",
+    "number_theory",
+    "two_pointer"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 1.4643000364303589
+}

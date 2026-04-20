@@ -1,0 +1,22 @@
+{
+  "id": 26703,
+  "title": "Ranking sklepów internetowych",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Bajtek prowadzi sklep internetowy. Jego klienci zazwyczaj są bardzo zadowoleni i wystawiają mu w internecie bardzo pozytywne opinie. Bywa też niestety tak, że ktoś, z sobie tylko znanych powodów, wystawi mu opinię kłamliwą i negatywną. Może ten ktoś miał zły humor, może pomylił sklep Bajtka z innym podobnym, a może był zły na Bajtka, bo nie zgodził się na sprzedaż produktu po zaniżonej cenie?</p>\n<p>W rankingu internetowym, który interesuje Bajtka, każdy użytkownik może wystawić sklepowi ocenę w postaci jednej liczby całkowitej. Sklep Bajtka otrzymał już n ocen: a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub>. Oceny są uporządkowane w kolejności ich wystawienia, od najwcześniejszej do najpóźniejszej. Co ciekawe, okazało się, że każda z ocen od 1 do n pojawiła się w historii dokładnie raz!</p>\n<p>Oprócz surowych danych strona wyświetla też podsumowanie wszystkich ocen – liczbę n wszystkich ocen oraz ich medianę. Mediana jest wyznaczana w rankingu internetowym standardową metodą. Ciąg ocen jest wpierw porządkowany niemalejąco: a′<sub>1</sub> ≤ a′<sub>2</sub> ≤ · · · ≤ a′<sub>n</sub>. Następnie:</p>\n<ul>\n<li>Jeśli liczba ocen jest nieparzysta, to medianą jest środkowa wartość w uporządkowanym ciągu, czyli a′<sub>(n+1)/2</sub>.</li>\n<li>Jeśli liczba ocen jest parzysta, to medianą jest średnia arytmetyczna dwóch środkowych wartości w uporządkowanym ciągu, czyli (a′<sub>n/2</sub> + a′<sub>n/2+1</sub>)/2</li>\n</ul>\n<p>Ponieważ Bajtek otrzymał każdą ocenę od 1 do n włącznie dokładnie raz, nietrudno obliczyć, że mediana wszystkich ocen sklepu Bajtka wynosi obecnie dokładnie (n + 1)/2.</p>\n<p>Hakerowi z firmy Bajtka udało się włamać do systemu rankingowego, dzięki czemu ma on możliwość wpłynięcia na niektóre z jego parametrów. W szczególności jest on w stanie usunąć niektóre najstarsze oceny i niektóre najnowsze oceny sklepu Bajtka. Dokładniej, haker może wybrać dwa całkowite parametry ℓ oraz r (1 ≤ ℓ ≤ r ≤ n) i pozostawić w systemie rankingowym jedynie oceny a<sub>ℓ</sub>, a<sub>ℓ+1</sub>, . . . , a<sub>r</sub>. Wtedy system rankingowy zaktualizuje liczbę oraz medianę wszystkich pozostałych ocen.</p>\n<p>Ponadto, haker dowiedział się z kodu źródłowego systemu, że na stronie głównej rankingu wyżej eksponowane są sklepy, które maksymalizują funkcję celu, równą sumie liczby ocen i dwukrotności mediany ocen (to znaczy X + 2 · Y , gdzie X to liczba ocen, a Y to mediana ocen). Nietrudno zauważyć, że funkcja celu jest zawsze całkowita, niezależnie od liczby oraz mediany ocen</p>\n<p>Pomóż Bajtkowi spozycjonować jego sklep w systemie rankingowym! Wyznacz maksymalną możliwą wartość funkcji celu po interwencji hakera. Powiedz też, na ile różnych sposobów haker może uzyskać tę funkcję celu. Dwa sposoby uznajemy za różne, jeśli choć jeden z parametrów ℓ, r w obu sposobach jest inny.</p>",
+  "input": "<p>Pierwszy wiersz wejścia zawiera jedną liczbę całkowitą n (1 ≤ n ≤ 10<sup>6</sup>). W drugim wierszu znajduje się n liczb całkowitych a<sub>1</sub>, . . . , a<sub>n</sub> (1 ≤ a<sub>i</sub> ≤ n) oznaczających poszczególne oceny sklepu. Każda z ocen od 1 do n występuje w ciągu dokładnie raz</p>",
+  "output": "<p>Na wyjściu powinny znaleźć się dwie liczby całkowite – maksymalna wartość funkcji celu po ataku hakera oraz liczba różnych sposobów, na które można osiągnąć tę wartość</p>",
+  "samples": [
+    {
+      "input": "5\n1 4 3 5 2\n",
+      "output": "11 5\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: Aby uzyskać wartość funkcji celu równą 11, haker może wybrać następujące pary parametrów (ℓ, r)</p>\n<ul>\n<li>(1, 4) – pozostaną wtedy oceny 1, 4, 3, 5, więc liczba ocen jest równa X = 4, a mediana jest równa Y = 7/2.</li>\n<li>(1, 5) – pozostaną wtedy oceny 1, 4, 3, 5, 2. Mamy wtedy X = 5 oraz Y = 3.</li>\n<li>(2, 4) – pozostaną wtedy oceny 4, 3, 5. Mamy wtedy X = 3 oraz Y = 4.</li>\n<li>(2, 5) – pozostaną wtedy oceny 4, 3, 5, 2. Mamy wtedy X = 4 oraz Y = 7/2.</li>\n<li>(4, 4) – pozostanie wtedy jedynie ocena 5. Mamy wtedy X = 1 oraz Y = 5.</li>\n</ul>\n<p>W każdym z powyższych przypadków funkcja celu ma wartość X + 2 · Y = 11.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2021",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

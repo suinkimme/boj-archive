@@ -1,0 +1,38 @@
+{
+  "id": 34268,
+  "title": "Geometry Rush",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are playing the summer's hottest rhythm-based action platformer---Geometry Rush! The game is played on a 2D plane. Your character begins at $(0,0)$ and every second must move at a $45$-degree angle either up-right or down-right, which takes your character from position $(x,y)$ to $(x+1,y+1)$ or $(x+1, y-1)$ respectively. You can change which direction you move every second, but not in between moves. There are obstacles protruding from the floor and ceiling that you must dodge. You win the game if, after $w$ seconds, you reach the line $x=w$ without having touched any obstacles on the way.</p>\n<p>The play area extends vertically from $y=-h$ to $y=h$. Obstacles are two polygonal curves: one curve starts at $(0,h)$ and ends at $(w,h)$ and represents a ceiling of varying height. The $x$ values of the vertices of this curve are non-decreasing, and the $y$ values lie between $-h$ and $h$ inclusive. A second polygonal curve starts at $(0,-h)$ and ends at $(w,-h)$ and represents the floor. Its vertices satisfy similar constraints.</p>\n<p>Your character is a point of negligible extent: you can move from position $(x,y)$ to $(x+1,y\\pm 1)$ so long as the line segment between your start and end position does not intersect either obstacle. (Exactly touching either polygonal curve counts as intersecting an obstacle, and loses the game.)</p>\n<p>You have played <em>a lot</em> of games of Geometry Rush. To keep the game interesting, you have started to set challenges for yourself. For example: you win the game no matter where you cross the $x=w$ goal line. But for what maximum value of $y$ can you win the game by crossing at $(w,y)$ without touching any obstacles on the way? For what minimum value? Compute these numbers.</p>",
+  "input": "<p>The first line of the input contains four space-separated integers $n$, $m$, $w$, and $h$. The first two integers ($3 \\leq n, m \\leq 10^{5}$) are the number of vertices in the ceiling and floor polygonal curves, respectively. The second two integers ($3 \\leq w, h \\leq 10^{5}$) are the width and height of the play area, as described above.</p>\n<p>The next $n$ lines each contain two space-separated integers $x$ and $y$ ($0 \\leq x \\leq w$; $-h \\leq y \\leq h$): the coordinates of the vertices of the ceiling polygonal curve, in order from left to right. It is guaranteed that the first vertex is at $(0,h)$ and the last vertex is at $(w,h)$.</p>\n<p>The next $m$ lines each contain two space-separated integers $x$ and $y$ ($0 \\leq x \\leq w$; $-h \\leq y \\leq h$): the coordinates of the vertices of the floor polygonal curve, in order from left to right. It is guaranteed that the first vertex is at $(0,-h)$ and the last vertex is at $(w,-h)$.</p>\n<p>For both polygonal curves: the $x$ coordinates are non-decreasing, all vertices are distinct, and the curve does not self-intersect. Neither curve intersects $(0,0)$. (The floor and ceiling curves might intersect each other, in which case the game is unwinnable.)</p>",
+  "output": "<p>If it is impossible to win the game, print <code>impossible</code>. Otherwise, print two space-separated integers: the minimum and maximum $y$ values that the player could reach at $x=w$ without losing the game by touching an obstacle along the way.</p>",
+  "samples": [
+    {
+      "input": "4 4 5 5\n0 5\n0 2\n5 2\n5 5\n0 -5\n0 -2\n5 -2\n5 -5\n",
+      "output": "-1 1\n"
+    },
+    {
+      "input": "4 4 6 5\n0 5\n0 2\n6 2\n6 5\n0 -5\n0 -2\n6 -2\n6 -5\n",
+      "output": "0 0\n"
+    },
+    {
+      "input": "3 3 7 5\n0 5\n5 -1\n7 5\n0 -5\n2 1\n7 -5\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "4 3 5 5\n0 5\n0 2\n5 2\n5 5\n0 -5\n3 -1\n5 -5\n",
+      "output": "-1 1\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Championship, North America Championship 2025",
+  "level": 16,
+  "tags": [
+    "math",
+    "geometry",
+    "parity"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.0769000053405762
+}

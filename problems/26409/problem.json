@@ -1,0 +1,30 @@
+{
+  "id": 26409,
+  "title": "Hidden Pool",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Let's choose a time moment as the beginning of time, which we will refer to as simply The Beginning.</p>\n<p>The matchmaking of a well-known game Rubbish Bin 7 during a time interval of $10^{100}$ seconds starting from the beginning (the time interval will be referred to as The Interval) has the following model: </p>\n<p>Every match contains exactly $p$ players. Let's assume that the number of players searching for a match during The Interval is divisible by $p$. Sort the players by the time they started searching for a match, with ties broken arbitrarily. The $i$-th match contains players from $(i - 1)p+1$-th to $ip$-th in this order.</p>\n<p>Arthas is about to stream himself playing Rubbish Bin 7 and is going to start searching for a match $kT$ seconds after the beginning where $T$ is a fixed given integer, and $k$ is a non-negative integer Arthas is free to choose.</p>\n<p>There are also $n$ other normal players. $i$-th of them will start searching for a match $t_i$ seconds after The Beginning. $t_i$ is not divisible by $T$.</p>\n<p>There are also $m$ streamsnipers whose goal is to get in the same match as Arthas <em>(and turn some quality content into Arthas being tilted and whining all game long)</em>. All of them must search for a match exactly once during The Interval and they have to do it $l + 0.5$ seconds after the beginning ($l$ is some integer a streamsniper can choose for himself, but different streamsniper can start searching at the same moment). Streamsnipers know when the normal players will start searching (i.e. the values of $t_i$). Arthas's stream has a delay of $d$ seconds, so $d$ seconds after he starts searching for a match the streamsnipers will know it. Arthas is going to start searching for a match during The Interval <em>(You may assume he's not going to get DDoSed)</em>. </p>\n<p>Note that under the limitations described above the way ties between players that started searching at the same time are broken doesn't matter (since normal players are indistinguishable, as well as streamsnipers).</p>\n<p>Help streamsnipers design a strategy than will maximize the minimum amount of streamsnipers in a match with Arthas among all possible times when Arthas might start searching for a match. Find that amount of streamsnipers.</p>",
+  "input": "<p>The first line of input contains 5 integers $n$, $m$, $T$, $d$, $p$ ($1 \\leq n \\leq 5 \\cdot 10^5$, $1 \\leq m, T, d, p \\leq 10^{12}$, $n + m + 1$ is divisible by $p$)  --- the number of normal players, the number of streamsnipers, the multiple for Arthas's searching time, the delay on the stream, and the number of players in a single match.</p>\n<p>The second line contains $n$ integers $t_i$ ($1 \\leq t_i \\leq 10^{18}$, $t_i$ is not divisible by T). $i$-th of them is the time when $i$-th normal player starts searching.</p>",
+  "output": "<p>Output a single integer --- the amount of streamsnipers you've been asked to find.</p>",
+  "samples": [
+    {
+      "input": "8 3 6 3 3\n13 5 21 23 25 22 7 11\n",
+      "output": "1\n"
+    },
+    {
+      "input": "6 5 7 7 4\n1 2 3 4 5 6\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p>In the first example one possible strategy is as follows: one streamsniper starts searching at 5.5, another at 11.5, and the last one starts searching 3.5 seconds after Arthas does (he will know because the delay is 3, which is less than 3.5).</p>",
+  "source": "Camp, Moscow Pre-Finals ACM ICPC Workshop, Moscow Pre-Finals ACM ICPC Workshop 2018",
+  "level": 24,
+  "tags": [
+    "implementation",
+    "greedy",
+    "parametric_search"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 7.75
+}

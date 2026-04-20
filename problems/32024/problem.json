@@ -1,0 +1,35 @@
+{
+  "id": 32024,
+  "title": "복사 붙여넣기",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>할 일이 없어진 밍구는 복사 붙여넣기 놀이를 하고 있다! 복사 붙여넣기 놀이는 파일을 복사 붙여넣기하면서 생기는 이름을 살펴보는 놀이이다.</p>\n<p>파일의 이름은 0 이상 2<sup><em>w</em></sup> 미만의 정수로 이루어진 길이 1 이상의 수열이다. 한 번의 복사 붙여넣기는 다음 절차로 이루어진다.</p>\n<ul>\n<li>복사 과정: 폴더에 있는 모든 파일을 선택한다.</li>\n<li>붙여넣기 과정: 각 선택된 파일 <em>S</em>에 대해서 다음을 반복한다. 이때 새로 생성한 파일은 선택되지 않는다.\n\t<ul>\n<li><em>S</em>의 뒤에 0을 추가한 이름을 가진 파일을 생성한다. 단, 이미 같은 이름을 가진 파일이 있다면 생성하지 않는다.</li>\n<li>0 ≤ <em>i</em> &lt; <em>w</em>인 모든 <em>i</em>에 대해, <em>S</em>의 마지막 원소에 2<sup><em>i</em></sup>를 XOR한 이름을 가진 파일을 생성한다. 단, 이미 같은 이름을 가진 파일이 있다면 생성하지 않는다.</li>\n</ul>\n</li>\n<li>붙여넣기 과정이 끝난 후, 모든 선택된 파일을 선택 해제한다.</li>\n</ul>\n<p>예를 들어, <em>w</em> = 2이고, 폴더에 파일이 [0] 하나만 있을 때 복사 붙여넣기를 반복하면 폴더의 내용물은 다음과 같이 변한다.</p>\n<ul>\n<li>초기 상황: [0]</li>\n<li>1회: [0], [0, 0], [1], [2]</li>\n<li>2회: [0], [0, 0], [0, 0, 0], [0, 1], [0, 2], [1], [1, 0], [2], [2, 0], [3]</li>\n</ul>\n<p>복사 붙여넣기 고수 밍구는 여러분에게 다음과 같은 문제를 주었다. 폴더에 파일이 [0] 하나만 있는 상황에서 <em>K</em>번 복사 붙여넣기를 했을 때, 밍구가 주는 파일의 이름 <em>A</em>가 사전 순으로 몇 번째에 위치하는지 구하는 것이다!</p>\n<p>밍구를 위해 <em>A</em>가 사전 순으로 위치하는 순서를 998 244 353으로 나눈 나머지를 구해주자!</p>",
+  "input": "<p>첫째 줄에 정수 <em>w</em>, <em>K</em>가 공백으로 구분되어 주어진다. (1 ≤ <em>w</em> ≤ 60; 1 ≤ <em>K</em> ≤ 100 000)</p>\n<p>둘째 줄에 찾고자 하는 파일의 이름 <em>A</em>의 길이 <em>N</em>이 주어진다. (1 ≤ <em>N</em> ≤ 100 000)</p>\n<p>셋째 줄에 <em>A</em>의 <em>i</em>번째 원소 <em>A</em><sub><em>i</em></sub>들이 공백으로 구분되어 주어진다. (1 ≤ <em>i</em> ≤ <em>N</em>; 0 ≤ <em>A</em><sub><em>i </em></sub>&lt; 2<sup><em>w</em></sup>)</p>\n<p>복사 붙여넣기를 <em>K</em>번 했을 때 <em>A</em>의 이름을 가지는 파일이 존재하는 경우만 입력으로 주어진다.</p>",
+  "output": "<p>사전순으로 가장 앞서는 파일의 순서를 1이라고 할 때, <em>A</em>가 사전순으로 위치하는 순서를 998 244 353으로 나눈 나머지를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "2 2\n3\n0 0 0\n",
+      "output": "3\n"
+    },
+    {
+      "input": "2 2\n1\n3\n",
+      "output": "10\n"
+    },
+    {
+      "input": "60 2024\n4\n998244353 1000000007 3141592653 2718281828\n",
+      "output": "62474228\n"
+    }
+  ],
+  "hint": "<p>수열 <em>a</em> = [<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, ⋯, <em>a</em><sub><em>n</em></sub>]이 수열 <em>b</em> = [<em>b</em><sub>1</sub>, <em>b</em><sub>2</sub>, ⋯, <em>b</em><sub><em>m</em></sub>]보다 사전순으로 앞선다는 것은 다음을 모두 만족시키는 양의 정수 <em>i</em>가 존재한다는 뜻이다.</p>\n<ul>\n<li><em>i</em>보다 작은 모든 양의 정수 <em>j</em>에 대해, <em>a</em><sub><em>j</em></sub>와 <em>b</em><sub><em>j</em></sub> 모두 존재하면서 <em>a</em><sub><em>j</em></sub> = <em>b</em><sub><em>j</em></sub></li>\n<li><em>b</em><sub><em>i</em></sub>가 존재함</li>\n<li><em>a</em><sub><em>i</em></sub>가 존재하지 않거나 <em>a</em><sub><em>i</em></sub> &lt; <em>b</em><sub><em>i</em></sub></li>\n</ul>",
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2024 예선 연습 세션, mingyu331, cki86201, cozyyg, evenharder, golazcc83, jh05013, qwerasdfzxcl, whqkrkt04",
+  "level": 20,
+  "tags": [
+    "math",
+    "dp",
+    "prefix_sum",
+    "combinatorics"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 1.142899990081787
+}

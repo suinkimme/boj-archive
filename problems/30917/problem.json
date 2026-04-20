@@ -1,0 +1,27 @@
+{
+  "id": 30917,
+  "title": "A+B - 10 (제1편)",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>1 이상 9 이하의 정수 A, B에 대해 A+B의 값을 출력해야 한다. 단, 이 문제는 <strong>인터랙티브 (상호작용)</strong> 문제이다. 이 문제에서는 A와 B의 값이 바로 주어지지 않고, 채점기와의 상호작용을 통해 그 값을 알아내야 한다.</p>",
+  "input": "",
+  "output": "<p>여러분은 채점기에게 <strong>최대 18번</strong> 질문할 수 있다. 질문의 형태는 다음 중 하나이다.</p>\n<ul>\n<li><code>? A x</code> - A의 값이 x인지 물어본다.</li>\n<li><code>? B x</code> - B의 값이 x인지 물어본다.</li>\n</ul>\n<p>예를 들어 A의 값이 4인지 물어보려면 <code>? A 4</code>를 출력하면 된다. 이때 x는 1 이상 9 이하의 정수여야 한다.</p>\n<p>질문을 출력한 뒤 실제로 질문을 채점기에게 보내려면 <strong>표준 출력을 flush</strong>해야 한다. 자세한 내용은 아래의 <strong>노트</strong> 란을 참조하자.</p>\n<p>질문을 보낸 뒤에는 채점기로부터 정수 하나를 입력받는다. 그 수는 질문의 답이 \"예\"인 경우 1, \"아니요\"인 경우 0이다.</p>\n<p>A와 B의 값을 알아냈으면 A+B를 계산하여 다음과 같은 형태로 출력한다.</p>\n<ul>\n<li><code>! x</code> - A+B의 값은 x이다.</li>\n</ul>\n<p>예를 들어 A+B가 10인 경우 <code>! 10</code>을 출력하면 된다. 이는 질문 횟수에 포함되지 않는다.</p>\n<p>아래의 \"노트\" 란에 여러 언어에 대한 예시 코드가 작성되어 있다. 단, 완성되지 않은 코드이므로 빈 공간은 직접 채워 넣어야 한다.</p>",
+  "samples": [
+    {
+      "input": "\n​\n0\n\n0\n\n1\n\n0\n\n1\n",
+      "output": "? A 1\n\n? A 2\n\n? A 3\n\n? B 1\n\n? B 2\n\n! 5\n"
+    }
+  ],
+  "hint": "<p>상호작용 문제는 채점 방식이 복잡하기 때문에, 문제에 주어진 규약을 지키지 않았을 때 \"틀렸습니다\"가 아닌 다른 결과가 나올 수도 있음에 유의하자.</p>\n<p><strong>예시 코드</strong></p>\n<p>C</p>\n<pre>\n<code>#include &lt;stdio.h&gt;\nint main() {\n    int resp;\n    for(int a=1; a&lt;=9; a++){\n        // A가 a인지 물어보고 flush를 한다.\n        printf(\"? A %d\\n\", a); \n        fflush(stdout);\n\n        // 채점기의 답변을 입력받는다.\n        scanf(\"%d\", &amp;resp);\n\n        if(resp == 1){\n            // 답변이 \"예\"이므로 A의 값은 a이다.\n            // B의 값도 알아내야 하는데, 이 부분은 직접 채워보자.\n            int b = 0;\n            printf(\"! %d\", a + b);\n            break;\n        }\n    }\n}</code>\n</pre>\n<p>C++</p>\n<pre>\n<code>#include &lt;iostream&gt;\nint main() {\n    int resp;\n    for(int a=1; a&lt;=9; a++){\n        // A가 a인지 물어보고 flush를 한다.\n        // endl은 자동으로 flush도 해준다.\n        std::cout &lt;&lt; \"? A \" &lt;&lt; a &lt;&lt; std::endl;\n\n        // 채점기의 답변을 입력받는다.\n        std::cin &gt;&gt; resp;\n\n        if(resp == 1){\n            // 답변이 \"예\"이므로 A의 값은 a이다.\n            // B의 값도 알아내야 하는데, 이 부분은 직접 채워보자.\n            int b = 0;\n            std::cout &lt;&lt; \"! \" &lt;&lt; a + b;\n            break;\n        }\n    }\n}\n</code></pre>\n<p>Python</p>\n<pre>\n<code>for a in range(1, 10):\n    # A가 a인지 물어보고 flush를 한다.\n    # print에 flush 파라미터를 넣으면 된다.\n    print(\"? A\", a, flush=True)\n\n    # 채점기의 답변을 입력받는다.\n    resp = int(input())\n\n    if resp == 1:\n        # 답변이 \"예\"이므로 A의 값은 a이다.\n        # B의 값도 알아내야 하는데, 이 부분은 직접 채워보자.\n        b = 0\n        print(\"!\", a + b)\n        break</code>\n</pre>\n<p>Rust</p>\n<pre>\n<code>fn read_i32() -&gt; i32 {\n    let mut resp_s = String::new();\n    std::io::stdin().read_line(&amp;mut resp_s).unwrap();\n    resp_s.trim().parse().unwrap()\n}\n\nfn main() {\n    for a in 1..=9 {\n        // A가 a인지 물어보고 flush를 한다.\n        // println!은 자동으로 flush도 해준다.\n        println!(\"? A {a}\");\n\n        // 채점기의 답변을 입력받는다.\n        let resp = read_i32();\n\n        if resp == 1 {\n            // 답변이 \"예\"이므로 A의 값은 a이다.\n            // B의 값도 알아내야 하는데, 이 부분은 직접 채워보자.\n            let b = 0;\n            println!(\"! {}\", a + b);\n            break;\n        }\n    }\n}</code>\n</pre>\n<p>Java</p>\n<pre>\n<code>import java.io.*;\nimport java.util.*;\n \npublic class Main {\n    public static void main(String[] args) throws IOException{\n        Scanner sc = new Scanner(System.in);\n        for(int a=1; a&lt;=9; a++){\n            // A가 a인지 물어보고 flush를 한다.\n            // System.out.println은 자동으로 flush도 해준다.\n            System.out.println(\"? A \" + a);\n\n            // 채점기의 답변을 입력받는다.\n            int resp = sc.nextInt();\n\n            if(resp == 1){\n                // 답변이 \"예\"이므로 A의 값은 a이다.\n                // B의 값도 알아내야 하는데, 이 부분은 직접 채워보자.\n                int b = 0;\n                System.out.println(\"! \" + (a + b));\n                break;\n            }\n        }\n    }\n}</code>\n</pre>\n<p><strong>표준 출력을 flush해야 하는 이유</strong></p>\n<p>콘솔 혹은 파일 입출력은 사칙연산이나 값을 대입하는 등의 기본적인 연산에 비해 상대적으로 느린 작업이다. 따라서 많은 프로그래밍 언어의 기본 출력 기능은 출력을 요청받은 값들을 한 공간에 쌓아두고, 적당한 때에 한꺼번에 출력되도록 한다. 이 공간을 버퍼(buffer)라고 부른다.</p>\n<p>그러나 이 문제에서는 채점기가 프로그램의 출력을 실시간으로 확인해야 답변을 줄 수 있다. 따라서 버퍼를 직접 비우는 작업이 필요하고, 이 작업을 flush라고 한다.</p>\n<p><strong>예고편</strong></p>\n<p><a href=\"/problem/30924\">제2편</a>에서는 \"적응하는 채점기\"와 \"적응하지 않는 채점기\"의 차이를 다룬다. 제1편에 비해 어렵다는 점을 유의하자.</p>\n<p>이 문제의 채점기는 적응하지 않는다.</p>",
+  "source": "Contest, BOJ User Contest, BOJ Bundle, BOJ Bundle in Math. Vol 1, jh05013, ibm2006, kaorin, kiwiyou, sorohue, utilforever, wider93",
+  "level": 3,
+  "tags": [
+    "math",
+    "implementation",
+    "bruteforcing",
+    "arithmetic"
+  ],
+  "accepted_user_count": 1227,
+  "submission_count": null,
+  "average_tries": 1.6202000379562378
+}

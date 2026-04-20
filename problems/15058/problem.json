@@ -1,0 +1,38 @@
+{
+  "id": 15058,
+  "title": "Gates of uncertainty",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A NAND gate (negative-AND gate) is a digital electronic circuit which produces an output that is false only if all its inputs are true; in other words, the output of a NAND gate is the complement to the output of an AND gate for the same inputs. A two-input NAND gate is a NAND gate with two inputs. The following figure shows the usual symbol of a two-input NAND gate and its truth table, using 1 for true and 0 for false.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:86px; width:411px\"/></p>\n<p>In this problem we have a binary tree representing a circuit composed only by two-input NAND gates. In the tree, each internal node represents a NAND gate, which uses as inputs the values produced by its two children. Each leaf in the tree represents an external input to the circuit, and is a value in {0, 1}. The value produced by the circuit is the value produced by the gate at the root of the tree. The following picture shows a circuit with nine nodes, of which four are NAND gates and five are external inputs.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"2.png\" style=\"height:101px; width:167px\"/></p>\n<p>Each gate in the circuit may be stuck, meaning that it either only produce 0 or only produce 1, regardless of the gate’s inputs. A test pattern is an assignment of values to the external inputs so that the value produced by the circuit is incorrect, due to the stuck gates.</p>\n<p>Given the description of a circuit, you must write a program to determine the number of different test patterns for that circuit.</p>",
+  "input": "<p>The first line contains an integer N (1 ≤ N ≤ 10<sup>5</sup>) representing the number of gates in the circuit, which has the shape of a binary tree. Gates are identified by distinct integers from 1 to N, gate 1 being the root of the tree. For i = 1, 2, . . . , N, the i-th of the next N lines describes gate i with three integers X, Y and F (0 ≤ X, Y ≤ N and −1 ≤ F ≤ 1). The values X and Y indicate the two inputs to the gate. If X = 0 the first input is from an external input, otherwise the input is the output produced by gate X. Analogously, if Y = 0 the second input is from an external input, otherwise the input is the output produced by gate Y . The value F represents the state of the gate: −1 means the gate is well-behaved, 0 means the gate is stuck at 0, and 1 means the gate is stuck at 1.</p>",
+  "output": "<p>Output a single line with an integer indicating the number of different test patterns for the given circuit. Because this number can be very large, output the remainder of dividing it by 10<sup>9</sup> + 7.</p>",
+  "samples": [
+    {
+      "input": "4\n2 3 1\n0 0 -1\n4 0 0\n0 0 -1\n",
+      "output": "15\n"
+    },
+    {
+      "input": "2\n2 0 1\n0 0 -1\n",
+      "output": "3\n"
+    },
+    {
+      "input": "6\n5 4 -1\n0 0 -1\n0 0 0\n6 3 -1\n0 2 1\n0 0 -1\n",
+      "output": "93\n"
+    },
+    {
+      "input": "7\n2 3 -1\n4 5 -1\n6 7 -1\n0 0 1\n0 0 -1\n0 0 -1\n0 0 -1\n",
+      "output": "21\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2017",
+  "level": 18,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "trees"
+  ],
+  "accepted_user_count": 30,
+  "submission_count": null,
+  "average_tries": 1.7000000476837158
+}

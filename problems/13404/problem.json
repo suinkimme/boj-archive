@@ -1,0 +1,41 @@
+{
+  "id": 13404,
+  "title": "Three Kingdoms of Bourdelot",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are an archaeologist at the Institute for Cryptic Pedigree Charts, specialized in the study of the ancient Three Kingdoms of Bourdelot. One day, you found a number of documents on the dynasties of the Three Kingdoms of Bourdelot during excavation of an ancient ruin. Since the early days of the Kingdoms of Bourdelot are veiled in mystery and even the names of many kings and queens are lost in history, the documents are expected to reveal the blood relationship of the ancient dynasties.</p>\n<p>The documents have lines, each of which consists of a pair of names, presumably of ancient royal family members. An example of a document with two lines follows.</p>\n<p>Alice Bob Bob Clare</p>\n<p>Lines should have been complete sentences, but the documents are heavily damaged and therefore you can read only two names per line. At first, you thought that all of those lines described the true ancestor relations, but you found that would lead to contradiction. Later, you found that some documents should be interpreted negatively in order to understand the ancestor relations without contradiction. Formally, a document should be interpreted either as a positive document or as a negative document.</p>\n<ul>\n<li>In a positive document, the person on the left in each line is an ancestor of the person on the right in the line. If the document above is a positive document, it should be interpreted as “Alice is an ancestor of Bob, and Bob is an ancestor of Clare”.</li>\n<li>In a negative document, the person on the left in each line is NOT an ancestor of the person on the right in the line. If the document above is a negative document, it should be interpreted as “Alice is NOT an ancestor of Bob, and Bob is NOT an ancestor of Clare”.</li>\n</ul>\n<p>A single document can never be a mixture of positive and negative parts. The document above can never read “Alice is an ancestor of Bob, and Bob is NOT an ancestor of Clare”.</p>\n<p>You also found that there can be ancestor-descendant pairs that didn’t directly appear in the documents but can be inferred by the following rule: For any persons x, y and z, if x is an ancestor of y and y is an ancestor of z, then x is an ancestor of z. For example, if the document above is a positive document, then the ancestor-descendant pair of “Alice Clare” is inferred.</p>\n<p>You are interested in the ancestry relationship of two royal family members. Unfortunately, the interpretation of the documents, that is, which are positive and which are negative, is unknown. Given a set of documents and two distinct names p and q, your task is to find an interpretation of the documents that does not contradict with the hypothesis that p is an ancestor of q. An interpretation of the documents contradicts with the hypothesis if and only if there exist persons x and y such that we can infer from the interpretation of the documents and the hypothesis that</p>\n<ul>\n<li>x is an ancestor of y and y is an ancestor of x, or</li>\n<li>x is an ancestor of y and x is not an ancestor of y.</li>\n</ul>\n<p>We are sure that every person mentioned in the documents had a unique single name, i.e., no two persons have the same name and one person is never mentioned with different names.</p>\n<p>When a person A is an ancestor of another person B, the person A can be a parent, a grandparent, a great-grandparent, or so on, of the person B. Also, there can be persons or ancestor-descendant pairs that do not appear in the documents. For example, for a family tree shown in Figure F.1, there can be a positive document:</p>\n<p>A H B H D H F H E I</p>\n<p>where persons C and G do not appear, and the ancestor-descendant pairs such as “A E”, “D F”, and “C I” do not appear.</p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:152px; width:240px\"/></p>\n<p>Figure F.1. A Family Tree</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\np q\nn\nc<sub>1</sub>\n.\n.\n.\nc<sub>n</sub></pre>\n<p>The first line of a test case consists of two distinct names, p and q, separated by a space. The second line of a test case consists of a single integer n that indicates the number of documents. Then the descriptions of n documents follow.</p>\n<p>The description of the i-th document c<sub>i </sub>is formatted as follows:</p>\n<pre>\nm<sub>i</sub>\nx<sub>i,1</sub> y<sub>i,1</sub>\n.\n.\n.\nx<sub>i</sub>,m<sub>i</sub>\ny<sub>i</sub>,m<sub>i</sub></pre>\n<p>The first line consists of a single integer m<sub>i</sub> that indicates the number of pairs of names in the document. Each of the following m<sub>i</sub> lines consists of a pair of distinct names x<sub>i,j</sub> and y<sub>i,j</sub> (1 ≤ j ≤ mi), separated by a space.</p>\n<p>Each name consists of lowercase or uppercase letters and its length is between 1 and 5, inclusive.</p>\n<p>A test case satisfies the following constraints.</p>\n<ul>\n<li>1 ≤ n ≤ 1000.</li>\n<li>1 ≤ m<sub>i</sub>.</li>\n<li>\\( \\sum_{i=1}^{n} m_i ≤ 100000 \\) , that is, the total number of pairs of names in the documents does not exceed 100000.</li>\n<li>The number of distinct names that appear in a test case does not exceed 300.</li>\n</ul>",
+  "output": "<p>Output “Yes” (without quotes) in a single line if there exists an interpretation of the documents that does not contradict with the hypothesis that p is an ancestor of q. Output “No”, otherwise.</p>",
+  "samples": [
+    {
+      "input": "Alice Bob\n3\n2\nAlice Bob\nBob Clare\n2\nBob Clare\nClare David\n2\nClare David\nDavid Alice\n",
+      "output": "No\n"
+    },
+    {
+      "input": "Alice David\n3\n2\nAlice Bob\nBob Clare\n2\nBob Clare\nClare David\n2\nClare David\nDavid Alice\n",
+      "output": "Yes\n"
+    },
+    {
+      "input": "Alice Bob\n1\n2\nClare David\nDavid Clare\n",
+      "output": "Yes\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2016 in Tsukuba, Camp, Petrozavodsk Programming Camp, Winter 2017, Day 8: Japanese Contest",
+  "level": 21,
+  "tags": [
+    "graphs",
+    "greedy",
+    "bruteforcing",
+    "graph_traversal",
+    "shortest_path",
+    "dfs",
+    "dag",
+    "topological_sorting",
+    "floyd_warshall",
+    "bitset"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 2.61899995803833
+}

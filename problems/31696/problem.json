@@ -1,0 +1,26 @@
+{
+  "id": 31696,
+  "title": "Modernizacja Bajtocji",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Bajtocka wieś przechodzi modernizację. Celem najnowszego rządowego projektu jest dostarczanie komputerów do tych mieszkańców wsi i małych miasteczek, którzy ich nie posiadają. Bajtazar nadzoruje modernizację jednej z wsi objętych programem – Bajtoszyc – w której obecnie żaden mieszkaniec nie posiada komputera.</p>\n<p>W Bajtoszycach mieszka n mieszkańców, których Bajtazar dla ułatwienia ponumerował liczbami całkowitymi od 1 do n. Na początku żaden z mieszkańców nie ma komputera. Zadaniem Bajtazara jest przetwarzać wydarzenia trzech postaci:</p>\n<ul>\n<li>+ a<sub>i</sub> b<sub>i</sub> – Do mieszkańca Bajtoszyc zostaje dostarczony komputer. Bajtazar nie wie jednak, czy komputer zostaje dostarczony do mieszkańca o numerze a<sub>i</sub> czy b<sub>i</sub>. Może się zdarzyć, że a<sub>i</sub> = b<sub>i</sub> – wtedy komputer na pewno został dostarczony do mieszkańca o numerze a<sub>i</sub>. Pewnym jest, że komputer zostaje dostarczony do mieszkańca, który aktualnie go nie posiada.</li>\n<li>- c<sub>i</sub> – Mieszkańcowi o numerze c<sub>i</sub> psuje się komputer. Pewnym jest, że mieszkaniec ten posiadał dotychczas komputer (lecz teraz już nie będzie go miał, więc może w przyszłości otrzymać nowy).</li>\n<li>? d<sub>i</sub> – Bajtazar musi stwierdzić (korzystając z całej dostarczonej mu <strong>dotychczas</strong> wiedzy), czy mieszkaniec o numerze d<sub>i</sub>: na pewno posiada komputer, na pewno nie posiada komputera, czy też nie wiadomo, czy posiada komputer.</li>\n</ul>\n<p>Napisz program, który pomoże Bajtazarowi odpowiadać na zadawane mu pytania!</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajdują się dwie liczby całkowite n oraz q (1 ≤ n ≤ 300 000; 1 ≤ q ≤ 1 000 000), oznaczające odpowiednio liczbę mieszkańców Bajtoszyc oraz liczbę wydarzeń, które musi przetworzyć Bajtazar.</p>\n<p>W kolejnych q wierszach znajdują się opisy kolejnych wydarzeń opisanych w treści zadania. We wszystkich wydarzeniach zachodzi 1 ≤ a<sub>i</sub>, b<sub>i</sub>, c<sub>i</sub>, d<sub>i</sub> ≤ n.</p>\n<p>Gwarantowanym jest, że Bajtazar zostanie chociaż raz spytany o swój stan wiedzy, tzn. wejście zawiera przynajmniej jedno wydarzenie typu ‘?’. Gwarantowanym jest również, że istnieje przynajmniej jeden przebieg dostarczania komputerów, w którym komputer zawsze otrzymuje osoba, która aktualnie go nie posiada, i w którym komputer zawsze psuje się osobie, która aktualnie go posiada.</p>",
+  "output": "<p>Na wyjściu powinien znaleźć się ciąg znaków długości równej liczbie wydarzeń typu ‘?’. Jeśli przy i-tym zapytaniu ów mieszkaniec na pewno posiada komputer, to i-ty znak w tym ciągu powinien być równy ‘1’. Jeśli mieszkaniec ten na pewno nie posiada komputera, to i-ty znak w tym ciągu powinien być równy ‘0’. Jeśli ten mieszkaniec może, ale nie musi posiadać komputera, to i-ty znak w tym ciągu powinien być równy ‘?’.</p>",
+  "samples": [
+    {
+      "input": "5 11\n? 1\n+ 1 2\n+ 2 3\n? 2\n+ 3 1\n- 2\n? 1\n? 2\n? 3\n+ 2 2\n? 2\n",
+      "output": "0?1011\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: Na początku nikt nie posiada komputera, zatem odpowiedź na pierwsze pytanie jest przecząca, a pierwszym znakiem na wyjściu jest ‘0’. Następnie zostają dostarczone dwa komputery i jesteśmy pytani o to, czy drugi mieszkaniec posiada komputer. Jest możliwym, że jedna z dwóch dotychczasowych dostaw była do niego, ale mogło się też zdarzyć, że komputery dostawali odpowiednio mieszkaniec pierwszy i trzeci. Nie jesteśmy zatem w stanie jednoznacznie stwierdzić czy drugi mieszkaniec posiada komputer, odpowiedzią jest więc ‘?’. Zwróć uwagę na to, że po następnej dostawie stanie się jasnym, że drugi mieszkaniec musiał już posiadać komputer, jednak w momencie zapytania Bajtazar nie mógł tego wiedzieć.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2024",
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "offline_queries"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

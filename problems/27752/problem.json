@@ -1,0 +1,22 @@
+{
+  "id": 27752,
+  "title": "Mysterious Road Signs",
+  "time_limit": "10 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The town of Signfield is on a perfectly straight and infinitely long road running from west to east. Along that road, there is a sequence of <b>S</b> mysterious road signs with numbers on both sides. The i-th sign (numbered in order from west to east) is at a point <b>D<sub>i</sub></b> kilometers east of Signfield, and has a number <b>A<sub>i</sub></b> on the west-facing side and a number <b>B<sub>i</sub></b> on the east-facing side.</p>\n<p>Nobody in Signfield knows what these signs are trying to say. You think that the numbers on the west sides of the signs are intended for drivers traveling east, and that they represent distances to some particular destination. Similarly, you think that the numbers on the east sides of the signs are for drivers traveling west, and that they represent distances to some particular destination. You suspect that not all of the signs may be consistent with this theory, though.</p>\n<p>To start testing your theory, you are interested in finding valid sets of signs that obey the following rules:</p>\n<ul>\n<li>The set is a contiguous subsequence of the sequence of all road signs. (The entire sequence also counts as a contiguous subsequence.)</li>\n<li>There exist locations M and N kilometers east of Signfield, where M and N are (not necessarily positive and not necessarily distinct) numbers, such that for every sign in that set, at least one of the following is true:\n\t<ul>\n<li><b>D<sub>i</sub></b> + <b>A<sub>i</sub></b> = M.</li>\n<li><b>D<sub>i</sub></b> - <b>B<sub>i</sub></b> = N.</li>\n</ul>\n</li>\n</ul>\n<p>What is the largest possible number of signs in a valid set as described above, and how many different valid sets of that size are there?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each begins with one line containing one integer <b>S</b>: the number of road signs. Then, <b>S</b> more lines follow. The i-th of these lines represents the i-th sign (in west-to-east order), and contains three integers <b>D<sub>i</sub></b>, <b>A<sub>i</sub></b>, and <b>B<sub>i</sub></b>: the sign's distance (in kilometers) east of Signfield, the number on its west side, and the number on its east side.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y z</code>, where <code>x</code> is the test case number (starting from 1), and <code>y</code> and <code>z</code> are the largest possible number of signs in a valid set and the number of valid sets of that size, as described in the problem statement.</p>",
+  "samples": [
+    {
+      "input": "3\n1\n1 1 1\n5\n2 7 12\n6 3 11\n8 10 1\n11 11 12\n13 9 14\n5\n1 3 3\n2 2 2\n3 1 1\n4 2 2\n5 3 3\n",
+      "output": "Case #1: 1 1\nCase #2: 3 2\nCase #3: 5 1\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, there is only one sign. If we choose just that sign as our set, there are many possible values of M and N that work — for example:</p>\n<ul>\n<li>M = 2 and N = 0</li>\n<li>M = 1 and N = 0 (remember that each sign only needs to be correct for one of its values; also, M and N might be in the same place as one or more signs, or Signfield itself)</li>\n<li>M = 2 and N = -12345 (N might be west of Signfield)</li>\n<li>M = 0 and N = 0 (M and N are not necessarily distinct)</li>\n<li>M = 2 and N = 3 (N might be east of M)</li>\n</ul>\n<p>So, the set consisting of just that one sign is valid. That is the only set of that length, so the answer is <code>1 1</code>.</p>\n<p>In Sample Case #2, note that the first, second, fourth, and fifth signs would be consistent with M = 9 and N = -1, but they do not form a contiguous subsequence. (The 1 on the back of the third sign cannot be used as if it were on the front.) As it turns out, there is no valid set of four signs. There are two different valid sets of three signs. Note that although there are two different M/N pairs that make the second set of three signs valid, that set counts only once:</p>\n<ul>\n<li>the first, second, and third signs, with M = 9 and N = 7</li>\n<li>the third, fourth, and fifth signs, with M = 18 and N = -1 or with M = 22 and N = 7</li>\n</ul>\n<p>In Sample Case #3, the entire sequence is a valid set, with M = 4 and N = 2.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2018, Round 1B",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

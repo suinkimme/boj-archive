@@ -1,0 +1,33 @@
+{
+  "id": 16792,
+  "title": "Cats or Dogs",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Your son, JOI-kun, likes to have pets. There are N huts for a pet, numbered 1 through N, in your house garden. There are N − 1 paths connecting huts bidirectionary, and it is known that for any two huts, it is possible to move between them following some paths. Each hut can have at most one pet.</p>\n<p>JOI-kun wants to have cats and dogs, but he is worried that they would often fight each other. Then for a situation where each hut has one of the following states: having a cat, having a dog, and having no pet, he defines the danger level of the garden as follows:</p>\n<ul>\n<li>The minimum number of paths to block so that for each cat and for each dog, they cannot meet by moving along unblocked paths.</li>\n</ul>\n<p>After defining the danger level, JOI-kun starts making a plan to use the garden for Q days. Initially, no hut has an pet. The plan on the i-th day is one of the following:</p>\n<ul>\n<li>cat: To have a new cat in hut v, currently without an pet.</li>\n<li>dog: To have a new dog in hut v, currently without an pet.</li>\n<li>neighbor: To give the neighbor the pet in hut v (that is, there will be no pet in hut v).</li>\n</ul>\n<p>You, as a parent, are responsible to check if your son’s plan is dangerous or not. Specifically, you need to find the danger level of the garden after the plan on each day during the Q days.</p>",
+  "input": "<ul>\n<li>line 1: N, the number of huts in the garden.</li>\n<li>line 2 + i (0 ≤ i ≤ N − 2): A<sub>i</sub> B<sub>i</sub>,  arrays of length N − 1. These represent that there is a path between hut A<sub>i</sub> and hut B<sub>i</sub> for 0 ≤ i ≤ N − 2, It is<br/>\n\tassured that for any two distinct huts, it is possible to move between them following some paths.</li>\n<li>line N + 1: Q</li>\n<li>line N + 2 + j (0 ≤ j ≤ Q − 1): T<sub>j</sub> v<sub>j</sub></li>\n</ul>\n<p>Here, the plan on the (j + 1)-th day is cat if T<sub>j</sub> = 1, dog if T<sub>j</sub> = 2, and neighbor if T<sub>j</sub> = 3, with v<sub>j</sub>.</p>",
+  "output": "<ul>\n<li>line 1 + j (0 ≤ j ≤ Q − 1): the danger value after the plan on the (j+1)-th day.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3\n1 2\n2 3\n4\n1 1\n1 3\n2 2\n3 2\n",
+      "output": "0\n0\n2\n0\n"
+    },
+    {
+      "input": "5\n1 2\n2 3\n2 4\n4 5\n5\n1 3\n2 5\n1 2\n2 1\n3 2\n",
+      "output": "0\n1\n1\n2\n1\n"
+    }
+  ],
+  "hint": "<p>Consider the case where there are 5 huts and 4 paths, connecting between hut 1 and hut 2, between hut 2 and hut 3, between hut 2 and hut 4, and between hut 4 and hut 5.</p>\n<ol>\n<li>Assume that he first has a cat in hut 3 and a dog in hut 5. By blocking a path between hut 2 and hut 4, he can prevent the cat and the dog from meeting. Therefore, the danger level at this time is 1.</li>\n<li>Assume that he then has a new cat in hut 2 and a new dog in hut 1. By blocking a path between hut 2 and hut 4 and a path between hut 1 and hut 2, he can prevent the cats and the dogs from meeting. Therefore, the danger level at this time is 2.</li>\n<li>Assume that he finally give the neighbor the cat in hut 2. He only needs to block the path between hut 2 and hut 3, so the danger level is now 1.</li>\n</ol>",
+  "source": ", Contest, JOI Open Contest, JOI Open Contest 2018",
+  "level": 26,
+  "tags": [
+    "dp",
+    "data_structures",
+    "trees",
+    "segtree",
+    "dp_tree",
+    "hld"
+  ],
+  "accepted_user_count": 46,
+  "submission_count": null,
+  "average_tries": 2.717400074005127
+}

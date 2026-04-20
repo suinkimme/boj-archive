@@ -1,0 +1,37 @@
+{
+  "id": 16454,
+  "title": "Modificando SAT",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>O problema da Satisfatibilidade Booleana (conhecido como SAT) consiste em decidir, dada uma fórmula booleana na forma normal conjuntiva, se existe alguma atribuição de valores “verdadeiro” ou “falso” a suas variáveis de forma que a fórmula inteira seja verdadeira.</p>\n<p>Na forma normal conjuntiva, a fórmula é dada em um formato bem específico. Em primeiro lugar, as únicas operações lógicas utilizadas são o “E”, o “OU” e a negação, denotados por ∧, ∨ e ¬, respectivamente. Uma fórmula é formada através da operação “E” de diferentes partes, chamadas cláusulas, C<sub>1</sub>, . . . , C<sub>m</sub>. Desta forma, uma fórmula ϕ terá o seguinte formato:</p>\n<p style=\"text-align: center;\">ϕ = C<sub>1</sub> ∧ · · · ∧ C<sub>m</sub>.</p>\n<p>Além disso, cada uma das cláusulas também possui um formato específico. Em particular, cada uma das cláusulas é composta pelo “OU” de literais, que são variáveis ou negações de variáveis, cercada por parênteses. Assim, (x<sub>1</sub> ∨ ¬x<sub>2</sub>) é uma cláusula válida, enquanto (x<sub>1</sub> ∧ ¬x<sub>2</sub>) não o seria, por usar o operador “E”. Um exemplo completo de fórmula seria:</p>\n<p style=\"text-align: center;\">ϕ = (x<sub>1</sub> ∨ x<sub>2</sub> ∨ x<sub>3</sub>) ∧ (¬x<sub>1</sub>) ∧ (x<sub>1</sub> ∨ ¬x<sub>2</sub> ∨ x<sub>3</sub>) ∧ (x<sub>2</sub> ∨ ¬x<sub>3</sub>).</p>\n<p>Uma variação do problema SAT é conhecida como k-SAT, onde cada cláusula possui no máximo k literais. A fórmula acima seria um exemplo de instância do problema 3-SAT, mas não de 2-SAT. Note que, em todos estes problemas, para uma fórmula ser verdadeira, cada uma das cláusulas deve ser verdadeira e, portanto, pelo menos um dos literais (da forma x<sub>i</sub> ou ¬x<sub>i</sub>) de cada cláusula deve ser verdadeiro.</p>\n<p>Uma atribuição é um modo de definir as variáveis como verdadeiras ou falsas. Neste problema estamos interessados em numa variação do problema 3-SAT, no qual uma atribuição válida deve ter exatamente 1 ou exatamente 3 literais verdadeiros em cada cláusula. Dada uma fórmula, sua tarefa é decidir se existe uma atribuição válida, levando em conta tal restrição extra. Caso haja uma atribuição válida, você deve imprimir a lexicograficamente máxima. A ordem lexicográfica é definida do seguinte modo: dadas duas atribuições diferentes, podemos compará-las olhando para a variável de menor índice que difere nas duas atribuições; das duas, a maior atribuição é a que dá valor verdadeiro para tal variável.</p>",
+  "input": "<p>A primeira linha da entrada contém dois inteiros M e N (1 ≤ M, N ≤ 2000), descrevendo o número de cláusulas e variáveis, respectivamente. Em seguida, serão fornecidas M linhas, cada uma descrevendo uma cláusula (veja o exemplo para detalhes do formato). Cláusulas consecutivas são separadas pela string “ and”. Cada cláusula contém no máximo 3 literais. As variáveis são denotadas por “x” seguido de um número entre 1 e N. Não haverá dois espaços consecutivos, nem haverá espaço no final das linhas.</p>\n<p>O primeiro exemplo descreve a fórmula ϕ acima.</p>",
+  "output": "<p>Seu programa deve imprimir uma única linha contendo N caracteres correspondentes a atribuição válida lexicograficamente máxima, ou impossible caso não haja atribuição válida. O i-ésimo caractere deve ser T se a variável é verdadeira na atribuição e F caso contrário.</p>",
+  "samples": [
+    {
+      "input": "4 3\n(x1 or x2 or x3) and\n(not x1) and\n(x1 or not x2 or x3) and\n(x2 or not x3)\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "5 6\n(not x1) and\n(x1 or x2 or x4) and\n(x1 or x3 or x5) and\n(not x2 or x3 or x5) and\n(x2 or x3 or not x4)\n",
+      "output": "FTTFFT\n"
+    },
+    {
+      "input": "1 1\n(x1 or x1 or not x1)\n",
+      "output": "F\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Sub-Regional Brasil do ACM ICPC, A Primeira Fase da Maratona de Programação 2018",
+  "level": 19,
+  "tags": [
+    "math",
+    "string",
+    "parsing",
+    "linear_algebra",
+    "gaussian_elimination",
+    "xor_basis"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

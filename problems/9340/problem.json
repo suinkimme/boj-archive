@@ -1,0 +1,27 @@
+{
+  "id": 9340,
+  "title": "Network Planning",
+  "time_limit": "2 초",
+  "memory_limit": "64 MB",
+  "description": "<p>In petroleum retail industry, the locations of service stations are very important to the profit of their company. To maximize the profit, the company uses the concept of “Network Planning” to choose where to build new service stations.</p>\n<p>You are a consultant of this company. This company gives you the data which consists of the number of cities and how are they connected, number of liters of fuel demand, list of cities that already had a service station, and a total number of new service stations to be constructed in their plan this year.</p>\n<p>Of course, the result that they need from you is “which cities should they construct new service stations to maximize their profit”. Sounds simple, isn’t it? </p>\n<p>Here is a list of what you might need to know. </p>\n<ul>\n<li>There will be N cities in this country. Each city can own only one service station.</li>\n<li>Assuming each service station is able to supply unlimited fuel demand.</li>\n<li>Each service station will supply 70% of fuel demand (in liters) within its city, plus 10% of each neighboring city’s demand regardless of a fact that whether neighboring cities have their own service station or not.</li>\n<li>For example, if City A, City B, and City C are all connected; City A and City B has their own service stations, then City A will supply 70% fuel demand of itself plus 10% from City B and 10% from City C. So does City B.</li>\n<li>Due to geographical constraints, each city will have no more than three neighboring cities.</li>\n<li>Last, but not least, their total revenue is a direct variation of total fuel demand that they can supply</li>\n</ul>",
+  "input": "<p>First line of input is a number of test cases T ≤ 10. </p>\n<p>Each test case start with the number of cities N (1 ≤ N ≤ 100000). </p>\n<p>Following N lines has an Integer D<sub>i</sub> (0 ≤ D<sub>i</sub> ≤ 1000) the fuel demand in each city. </p>\n<p>Next line contains an integer E number of edges. </p>\n<p>Following E lines has 2 integers C<sub>1</sub> and C<sub>2</sub>, describe bi-directionally neighboring cities. There will not be any duplicated edges in the input (i.e. if there is an edge for (C<sub>1</sub>, C<sub>2</sub>), there will not be an edge for (C<sub>2</sub>, C<sub>1</sub>) in the same input set). Also note that all cities will be numbering from 1 to N. </p>\n<p>Next line contains an integer S (0 ≤ S &lt; N) the number of existing service stations </p>\n<p>Following S lines has an integer C the city which already owned service station </p>\n<p>Last line contains an integer M (1 ≤ M ≤ N–S) an exact number of new service stations they must construct this year. </p>",
+  "output": "<p>For each test case, display two lines of output. </p>\n<p>First line display a positive integer (using general rounding rules) the maximum total fuel demand they can supply including from both existing service stations and new service stations at the optimal cities. </p>\n<p>Second line display a list of the optimal cities that they must construct new service stations, given space-separated and in increasing order. The cities with existing service stations are not counted into this list. If there is more than one possible solution, output the one that is first in lexicographical order. </p>",
+  "samples": [
+    {
+      "input": "2\n3\n100\n200\n300\n3\n1 2\n2 3\n3 1\n1\n1\n1\n5\n326\n200\n200\n100\n400\n5\n1 2\n1 3\n2 4\n3 4\n4 5\n1\n4\n3\n",
+      "output": "360\n3\n891\n1 2 5\n"
+    }
+  ],
+  "hint": "<p>First Example </p>\n<p>In this illustration, you will see that if they construct a new service station in City 3 only, it will maximize the total supply to 360 liters.</p>\n<p><img alt=\"\" src=\"/upload/images/network1.png\" style=\"height:168px; width:477px\"/></p>\n<p>The second example</p>\n<p>In this example, there are two best solutions. Constructing new stations in city 1, city 2 and city 5 will give the same profit as constructing new stations in city 1, city 3 and city 5. We must answer 1 2 5 because it appear first in lexicographical order. The total supply will be 268.2 for the city 1, 182.6 for the city 2 and 290 for the city 5. The city 4 which we already have a service station supplies 150 liters. The total supply is 268.2 + 182.6 + 290 + 150 = 890.8. This is rounded to 891. </p>\n<p><img alt=\"\" src=\"/upload/images/network2.png\" style=\"height:173px; width:711px\"/></p>\n<p> </p>",
+  "source": "ICPC, Regionals, Asia Pacific, Thailand, Asia Thailand National Programming Contest, 2013 ACM-ICPC Thailand National Programming Contest",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "graphs",
+    "greedy",
+    "sorting"
+  ],
+  "accepted_user_count": 29,
+  "submission_count": null,
+  "average_tries": 2.482800006866455
+}

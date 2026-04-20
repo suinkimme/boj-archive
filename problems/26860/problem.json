@@ -1,0 +1,36 @@
+{
+  "id": 26860,
+  "title": "White-Black Tree",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The White-Black Tree is a game played by two players on a rooted tree of N nodes. The nodes are numbered from 1 to N and node 1 is the root. Each node in the tree has a color C<sub>i</sub> of either 0 (representing black) or 1 (representing white) that can be changed according to the rule of the game.</p>\n<p>Two opposing players play alternatingly. In their turn, the player chooses a white node in the tree; let the chosen node be x. First, the color of node x (C<sub>x</sub>) is changed from white to black. Then, in the same turn, the player is allowed to change the color of zero or more nodes that are a descendant of node x from white to black or black to white. A node y is a descendant of a node x if and only if the parent of node y is either node x or a descendant of node x. The player who cannot make any move loses and the opposing player wins the game.</p>\n<p>Your task in this problem is to determine who will win the game assuming both players play optimally; it means that if there exists a move that guarantees their win, then they will surely play that move.</p>\n<p>For example, consider the following game with a rooted tree of N = 7 nodes and let the initial colors be C<sub>1..7</sub> = {0, 1, 1, 0, 0, 0, 1}.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 197px; height: 200px;\"/></p>\n<p>There are three white nodes (node 2, 3, and 7) in which the first player can choose for their first move. In this example, there is a strategy for the first player to win the game. One of the optimal plays for the first player is to choose node 3, change C<sub>3</sub> into 0 (black), and then change the color of node 6 and node 7 (both are node 3’s descendant), i.e. C<sub>6</sub> becomes 1 (white) and C<sub>7</sub> becomes 0 (black). When it’s the second player’s turn, there are only two white nodes to choose from (node 2 and 6) and both of them do not have any descendants. No matter what the second player chooses for their turn, the first player will simply choose the remaining one white node so that the second player will not be able to make any move. Therefore, the second player loses and the first player wins this example game.</p>",
+  "input": "<p>Input begins with a line containing an integer N (2 ≤ N ≤ 100 000) representing the number of nodes in the given tree. The second line contains N − 1 integers P<sub>i</sub> (1 ≤ P<sub>i</sub> &lt; i) for i = 2..N representing the parent of node i. The third line contains N integers C<sub>i</sub> (C<sub>i</sub> ∈ {0, 1}) representing the initial color of node i. The color black is represented by the integer 0 while the color white is represented by the integer 1.</p>",
+  "output": "<p>Output a string “<code>First</code>” in a line if the first player will win the game assuming both players play the game optimally. Otherwise, output a string “<code>Second</code>” in a line.</p>",
+  "samples": [
+    {
+      "input": "7\n1 1 1 3 3 3\n0 1 1 0 0 0 1\n",
+      "output": "First\n"
+    },
+    {
+      "input": "5\n1 1 2 3\n0 1 1 0 0\n",
+      "output": "Second\n"
+    },
+    {
+      "input": "4\n1 1 1\n1 1 0 1\n",
+      "output": "First\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, The 2021 ICPC Asia Jakarta Regional Contest",
+  "level": 20,
+  "tags": [
+    "ad_hoc",
+    "trees",
+    "game_theory",
+    "parity",
+    "invariant"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 3.09089994430542
+}

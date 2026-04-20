@@ -1,0 +1,27 @@
+{
+  "id": 6720,
+  "title": "Simplified λ-evaluations",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Lambda calculus is the main theoretical core of functional languages. It is based on evaluating λ-expressions.</p>\n<p>A λ-expression is a string of characters consisting either of 1) a single constant (for example <em>t</em>), or 2) a function definition written as <em>L</em>&lt;<em>var</em>&gt;.&lt;<em>body</em>&gt;, where <em>L</em> denotes λ, &lt;<em>var</em>&gt; is always some variable (for example <em>x</em>) that can occur in the &lt;<em>body</em>&gt;, which is again some λ-expression, or 3) an application of some &lt;<em>function</em>&gt; (for example <em>f</em>) to an &lt;<em>argument</em>&gt; (for example <em>x</em>), in our case written as (<em>f</em>)<em>x</em>, both &lt;<em>function</em>&gt; and &lt;<em>argument</em>&gt; are λ-expressions.</p>\n<p>The occurences of variable &lt;<em>var</em>1&gt; in an expression <em>E</em> are called bound, if they are inside of the &lt;<em>body</em>&gt; of some sub-expression <em>L</em>&lt;<em>var</em>1&gt;.&lt;<em>body</em>&gt; of <em>E</em>. Variable occurences that are not bound are called unbound.</p>\n<p>Evaluation of λ-expression results in another λ-expression and is performed using the following rules:</p>\n<ol>\n<li>Constant is evaluated to itself,</li>\n<li>Function definition evaluates to itself,</li>\n<li>Function application (&lt;<em>function</em>&gt;)&lt;<em>argument</em>&gt; is evaluated as follows: first, the &lt;<em>function</em>&gt; is evaluated to <em>L</em>&lt;<em>var</em>&gt;.&lt;<em>body</em>&gt; or something else. In the latter case, the &lt;<em>argument</em>&gt; is evaluated, and the whole function application evaluates to (&lt;<em>evaluated function</em>&gt;)&lt;<em>evaluated argument</em>&gt;. If the &lt;<em>function</em>&gt; evaluates to <em>L</em>&lt;<em>var</em>&gt;.&lt;<em>body</em>&gt;, the &lt;<em>argument</em>&gt; is not evaluated, but all unbound occurences of variable &lt;<em>var</em>&gt; inside of the expression &lt;<em>body</em>&gt; are directly replaced by (substituted with) the argument &lt;<em>argument</em>&gt;. The result of the whole evaluation of function application is then the evaluated &lt;<em>body</em>&gt;, after the substitution was performed.</li>\n</ol>\n<p>We limit the expressions to contain a single-character lowercase (<em>a</em> ... <em>z</em>) variables and constants only. Sometimes the evaluation never stops. Your program should perform at most 1000 function applications when evaluating any λ-expression. During all evaluation steps, the evaluated λ-expression will not exceed 10000 characters.</p>\n<p>Here are some examples of evaluation of simple λ-expressions (shown in several steps, the text behind ; is a comment):</p>\n<pre>\n<code>1.\n  (Lx.x)y                        ; x &lt;- y\n  y\n\n2.\n  ((Lx.Ly.(x)y)Lz.z)Lq.q         ; x &lt;- Lz.z\n  (Ly.(Lz.z)y)Lq.q               ; y &lt;- Lq.q\n  (Lz.z)Lq.q                     ; z &lt;- Lq.q\n  Lq.q\n</code></pre>\n<p>Note that the scope of the variable next to λ covers only the body of the lambda expression, and the same variable can occur at other places of the expression, for example:</p>\n<pre>\n<code>3.\n  ((Lx.x)(Ly.y)Lx.x)x\n  ((Ly.y)Lx.x)x\n  (Lx.x)x\n  x\n</code></pre>\n<p>The body of the λ-expression can contain unbound variables - constants:</p>\n<pre>\n<code>4.\n  (((Lx.Ly.q)Lz.t)r)u      ; x &lt;- Lz.t\n  ((Ly.q)r)u               ; y &lt;- r\n  (q)u\n</code></pre>\n<p>Finally note that our evaluation is simplified as compared to the real λ-calculus: when the argument is substituted for all unbound occurences of some variable during function application, some of the variable occurences in the argument that were previously unbound can become bound... This is normally solved by renaming all the variables in the argument before the function application, and keeping track of correct substitutions. In this problem, you don't need to take care of this.</p>\n<pre>\n<code>5.\n  ((Ly.Lx.y)x)w            ; y &lt;- x\n  (Lx.x)w\n  w\n</code></pre>\n<p>The Department of Programming Languages decided to implement a new functional language. However, they first need a core engine that will evaluate λ-expressions. Write a program that will read a set of expressions from the input and output their evaluations.</p>",
+  "input": "<p>The input contains set of λ-expressions, one per line. Only the last line contains the expression consisting of a single constant z. You can assume that the input is correct.</p>",
+  "output": "<p>The output should contain the result of evaluation of the expressions on the input in the same order as they appear in the input including the last line. If the expression leads to more than 1000 function applications, the line should contain single word “unterminated\".</p>",
+  "samples": [
+    {
+      "input": "Lq.q\n((Lx.Ly.(x)y)Lz.z)Lq.q\n(Lx.x)x\n((((Lm.Ln.Lf.Lx.((m)f)((n)f)x)Lo.Lt.(o)t)Lu.Lv.(u)(u)v)a)b\n(Lx.(x)x)Lx.(x)x\n(q)(Lx.Lx.x)z\nz\n",
+      "output": "Lq.q\nLq.q\nx\n(a)(a)(a)b\nunterminated\n(q)Lx.x\nz\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2002",
+  "level": 16,
+  "tags": [
+    "implementation",
+    "string",
+    "parsing",
+    "recursion"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1
+}

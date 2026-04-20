@@ -1,0 +1,33 @@
+{
+  "id": 2826,
+  "title": "함수의 리턴값",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>창영이는 다음과 같은 함수를 작성했다.</p>\r\n\r\n<pre>\r\nint fun() {\r\n    int ret = 0;\r\n    for (int a = X<sub>1</sub>; a &lt;= Y<sub>1</sub>; ++a)\r\n        for (int b = X<sub>2</sub>; b &lt;= Y<sub>2</sub>; ++b)\r\n        ...\r\n            for (int &lt;n-th&gt; = X<sub>N</sub>; &lt;n-th&gt; &lt;= Y<sub>N</sub>; ++&lt;n-th&gt;)\r\n                ret = (ret + 1)  % 1000000007;\r\n    return ret;\r\n}\r\n</pre>\r\n\r\n<p>&lt;N-th&gt;는 영어 알파벳의 N번째 소문자이다. X<sub>i</sub>와 Y<sub>i</sub>는 100,000보다 작거나 같은 양의 정수 또는 해당 루프 바깥 쪽에서 등장한 변수가 될 수 있다.</p>\r\n\r\n<p>예를 들어, X<sub>3</sub>은 a, b, 또는 정수가 될 수 있다. X<sub>i</sub>와 Y<sub>i</sub>중 적어도 하나는 변수 이름이 아닌 정수이며, 이는 모든 i에 해당된다.</p>\r\n\r\n<p>X<sub>i</sub>, Y<sub>i</sub>의 값이 주어졌을 때, 함수의 리턴값을 출력하는 프로그램을 작성하시오.</p>\r\n\r\n<p>만약 (X<sub>1</sub>, Y<sub>1</sub>) = (1, 2), (X<sub>2</sub>, Y<sub>2</sub>) = (a, 3), (X<sub>3</sub>, Y<sub>3</sub>) = (1, b)라면, 함수는 다음과 같다.</p>\r\n\r\n<pre>\r\nint fun() {\r\n    int ret = 0;\r\n    for (int a = 1; a &lt;= 2; ++a)\r\n        for (int b = a; b &lt;= 3; ++b)\r\n            for (int c = 1; c &lt;= b; ++c)\r\n                ret = (ret + 1)  % 1000000007;\r\n    return ret;\r\n}\r\n</pre>\r\n",
+  "input": "<p>첫째 줄에 양의 정수 N(1 &le;&nbsp;N &le; 26)이 주어진다. 다음 N개의 줄에는 X<sub>i</sub>와 Y<sub>i</sub>가 X<sub>1</sub> Y<sub>1</sub>부터 차례대로 주어진다. 만약 X<sub>i</sub>와 Y<sub>i</sub>가 모두 정수라면 X<sub>i</sub> &le; Y<sub>i</sub>이다.</p>\r\n",
+  "output": "<p>첫째 줄에 함수의 리턴값을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2\n1 2\na 3\n",
+      "output": "5\n"
+    },
+    {
+      "input": "3\n2 3\n1 2\n1 a\n",
+      "output": "10\n"
+    },
+    {
+      "input": "3\n1 2\na 3\n1 b\n",
+      "output": "11\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2011/2012, Contest #2, baekjoon",
+  "level": 21,
+  "tags": [
+    "dp",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 4.22730016708374
+}

@@ -1,0 +1,26 @@
+{
+  "id": 33743,
+  "title": "Candidate Elimination",
+  "time_limit": "4 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>James has been learning how to solve sudoku puzzles recently. He had recently learned about a concept called \"Naked Pairs\". A pair of cells $P$ is called a <strong>Naked Pair</strong> when it satisfies the following conditions.</p>\n<ul>\n<li>The two cells lie in the same group. In sudoku, a group is a set of $n$ cells that must contain all integers from $1$ to $n$. </li>\n<li>Both cells contain a subset of the same set of candidates $S$, where $|S|=2$.</li>\n</ul>\n<p>Given a naked pair, one can remove the candidates in $S$ from all other cells in the group, since you know that in a valid sudoku each candidate in $S$ must appear in one of the two cells.</p>\n<p>While learning more about it, James realized that the concept of a \"Naked Subset\" can generalize the naked pairs. A set of cells $Q$ with $k$ cells is called a <strong>Naked Subset</strong> when it satisfies the following conditions.</p>\n<ul>\n<li>The $k$ cells lie in the same group.</li>\n<li>All cells in $Q$ contain a subset of the same set of candidates $S'$, where $|S'|=k$.</li>\n</ul>\n<p>Given a naked subset, one can remove the candidates in $S'$ from all other cells in the group, since you know that in a valid sudoku each candidate in $S'$ must appear in one of the $k$ cells.</p>\n<p>James has been whining about how hard it is to find naked subsets in very big sudoku puzzles. Given a group, your job is to find every candidate that can be eliminated using <strong>exactly one</strong> naked subset.</p>",
+  "input": "<p>The first line consists of one integer $n$, the size of one group. ($1 \\le n \\le 10^5$)</p>\n<p>The following $n$ lines represent cells that belong to the group. The $i$-th line consists of one integer $S_i$, followed by $S_i$ distinct integers. The $S_i$ integers represent the candidates possible on the $i$-th cell.</p>\n<p>It is guaranteed that the sum of $S_i$ is at most $5\\cdot 10^5$.</p>\n<p>Additionally, it is guaranteed that there is a valid assignment to all cells in the group. In other words, there exists at least one way to choose one candidate per cell, such that all integers chosen are distinct.</p>",
+  "output": "<p>Output $n$ lines. The $i$-th line must consist of the candidates that can be removed from the $i$-th cell <strong>in increasing order</strong>, with the format being same as the input format.</p>",
+  "samples": [
+    {
+      "input": "9\n3 2 4 5\n2 2 5\n2 2 4\n4 4 5 7 8\n2 5 7\n1 3\n1 6\n1 9\n4 1 2 7 8\n",
+      "output": "0\n0\n0\n3 4 5 7\n1 5\n0\n0\n0\n3 2 7 8\n"
+    }
+  ],
+  "hint": "<p>In the first sample, the cells in the group belong to the box with green digits. The removals are done using the following naked subsets.</p>\n<ul>\n<li>Cells $1,2,3$ have candidates $\\{2,4,5\\}$, so you can remove $\\{4,5\\}$ from cell $4$, $\\{5\\}$ from cell $5$ and $\\{2\\}$ from cell $9$.</li>\n<li>Cells $1,2,3,5$ have candidates $\\{2,4,5,7\\}$, so you can remove $\\{7\\}$ from cells $4$ and $9$.</li>\n<li>Cells $1,2,3,4,5$ have candidates $\\{2,4,5,7,8\\}$, so you can remove $\\{8\\}$ from cell $9$.</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 350px; height: 348px;\"/></p>\n<p style=\"text-align: center;\">The sudoku board corresponding to the sample. Generated using HoDoKu, an open source sudoku solver.</p>",
+  "source": "Camp, Osijek Competitive Programming Camp, Summer 2024, Day 5: OCPC Potluck Contest 2",
+  "level": 25,
+  "tags": [
+    "graphs",
+    "bipartite_matching",
+    "scc"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2.5
+}

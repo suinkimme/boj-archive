@@ -1,0 +1,28 @@
+{
+  "id": 21933,
+  "title": "LCM of GCDs",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given a sequence of positive integers, followed by a number of instructions specifying updates to be made and queries to be answered on the sequence. Updates and queries are given in an arbitrary order.</p>\n<p>Each of the updates replaces a single item in the sequence with a given value. Updates are accumulated: all the following instructions are on the sequence after the specified replacement.</p>\n<p>Each of the queries specifies a subsequence of the (possibly updated) sequence and the number of items to exclude from that subsequence. One or more sets of integers will result depending on which of the items are excluded. Each of such sets has the greatest common divisor (GCD) of its members. The answer to the query is the least common multiple (LCM) of the GCDs of all these sets.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 393px; height: 179px;\"/></p>\n<p style=\"text-align: center;\">Figure H.1. Answering the last query “<code>Q 2 5 2</code>” of the Sample Input 1</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\nn m\na<sub>1</sub> . . . a<sub>n</sub>\nc<sub>1</sub>\n.\n.\n.\nc<sub>m</sub></pre>\n<p>The first line has two integers, n and m. n (1 ≤ n ≤ 10<sup>5</sup>) is the length of the integer sequence, and m (1 ≤ m ≤ 10<sup>5</sup>) is the number of instructions. The original integer sequence a<sub>1</sub>, . . . , a<sub>n</sub> is given in the second line. 1 ≤ a<sub>i</sub> ≤ 10<sup>6</sup> holds for i = 1, . . . , n. Each of the following m lines has either an update instruction starting with a letter <code>U</code>, or a query instruction starting with a letter <code>Q</code>.</p>\n<p>An update instruction has the following format.</p>\n<p><code>U j x</code></p>\n<p>The instruction tells to replace the j-th item of the sequence with an integer x. 1 ≤ j ≤ n and 1 ≤ x ≤ 10<sup>6</sup> hold. Updates are accumulated: all the instructions below are on the sequence after the updates.</p>\n<p>A query instruction has the following format.</p>\n<p><code>Q l r k</code></p>\n<p>Here, l and r specify the start and the end positions of a subsequence, and k is the number of items to exclude from that subsequence, b<sub>l</sub>, . . . , b<sub>r</sub>, where b<sub>1</sub>, . . . , b<sub>n</sub> is the sequence after applying all the updates that come before the query. 1 ≤ l, 0 ≤ k ≤ 2, and l + k ≤ r ≤ n hold.</p>",
+  "output": "<p>No output is required for update instructions. For each of the query instructions, output a line with the LCM of the GCDs of the sets of the items in all the subsequences made by excluding k items from the sequence b<sub>l</sub>, . . . , b<sub>r</sub>.</p>",
+  "samples": [
+    {
+      "input": "5 10\n12 10 16 28 15\nQ 1 3 1\nQ 3 4 0\nQ 2 2 0\nQ 2 5 2\nU 3 21\nQ 1 3 1\nQ 2 4 1\nQ 3 5 1\nQ 4 4 0\nQ 2 5 2\n",
+      "output": "4\n4\n10\n20\n6\n14\n21\n28\n210\n"
+    }
+  ],
+  "hint": "<p>For the first query of this test case, “<code>Q 1 3 1</code>”, the subsequence is 12 10 16. Eliminating a single item results in three item sets, {12, 10} , {12, 16} , and {10, 16} . Their GCDs are 2, 4, and 2, respectively, and thus the output should be their LCM, 4.</p>\n<p>Note that, the update given as the fifth instruction, “<code>U 3 21</code>”, changes the answer to the same query, “<code>Q 1 3 1</code>”, given as the sixth instruction. The update makes the subsequence to 12 10 21. Thus the item sets after eliminating a single item are {12, 10} , {12, 21} , and {10, 21} . Their GCDs are 2, 3, and 1, respectively, and thus the output for this query should be their LCM, 6.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2020 Asia Yokohama Regional",
+  "level": 21,
+  "tags": [
+    "math",
+    "data_structures",
+    "number_theory",
+    "segtree",
+    "harmonic_number"
+  ],
+  "accepted_user_count": 68,
+  "submission_count": null,
+  "average_tries": 1.6470999717712402
+}

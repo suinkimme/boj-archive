@@ -1,0 +1,27 @@
+{
+  "id": 6045,
+  "title": "Driving Out the Piggies",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The Cows have constructed a randomized stink bomb for the purpose of driving away the Piggies. The Piggy civilization consists of N (2 &lt;= N &lt;= 300) Piggy cities conveniently numbered 1..N connected by M (1 &lt;= M &lt;= 44,850) bidirectional roads specified by their distinct endpoints A_j and B_j (1 &lt;= A_j &lt;= N; 1 &lt;= B_j &lt;= N). Piggy city 1 is always connected to at least one other city.</p>\n<p>The stink bomb is deployed in Piggy city 1. Each hour (including the first one), it has a P/Q (1 &lt;= P &lt;= 1,000,000; 1 &lt;= Q &lt;= 1,000,000; P &lt;= Q) chance of polluting the city it occupies. If it does not go off, it chooses a random road out of the city and follows it until it reaches a new city.  All roads out of a city are equally likely to be chosen.</p>\n<p>Because of the random nature of the stink bomb, the Cows are wondering which cities are most likely to be polluted. Given a map of the Piggy civilization and the probability that the stink bomb detonates in a given hour, compute for each city the probability that it will be polluted.</p>\n<p>For example, suppose that the Piggie civilization consists of two cities connected together and that the stink bomb, which starts in city 1, has a probability of 1/2 of detonating each time it enters a city:</p>\n<pre>\n                            1--2</pre>\n<p>We have the following possible paths for the stink bomb (where the last entry is the ending city):</p>\n<pre>\n1: 1\n2: 1-2\n3: 1-2-1\n4: 1-2-1-2\n5: 1-2-1-2-1\netc.</pre>\n<p>To find the probability that the stink bomb ends at city 1, we can add up the probabilities of taking the 1st, 3rd, 5th, ... paths above (specifically, every odd-numbered path in the above list). The probability of taking path number k is exactly (1/2)^k - the bomb must not remain in its city for k - 1 turns (each time with a probability of 1 - 1/2 = 1/2) and then land in the last city (probability 1/2).</p>\n<p>So our probability of ending in city 1 is represented by the sum 1/2 + (1/2)^3 + (1/2)^5 + ... . When we sum these terms infinitely, we will end up with exactly 2/3 as our probability, approximately 0.666666667. This means the probability of landing in city 2 is 1/3, approximately 0.333333333.</p>\n<p>Partial feedback will be provided for your first 50 submissions.</p>",
+  "input": "<ul>\n<li>Line 1: Four space separated integers: N, M, P, and Q</li>\n<li>Lines 2..M+1: Line i+1 describes a road with two space separated integers: A_j and B_j</li>\n</ul>",
+  "output": "<ul>\n<li>Lines 1..N: On line i, print the probability that city i will be destroyed as a floating point number. An answer with an absolute error of at most 10^-6 will be accepted (note that you should output at least 6 decimal places for this to take effect).</li>\n</ul>",
+  "samples": [
+    {
+      "input": "2 1 1 2\n1 2\n",
+      "output": "0.666666667\n0.333333333\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2009-2010 Season, USACO Holiday Bonus 2010 Contest, Gold",
+  "level": 18,
+  "tags": [
+    "math",
+    "probability",
+    "linear_algebra",
+    "gaussian_elimination"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

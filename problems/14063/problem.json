@@ -1,0 +1,35 @@
+{
+  "id": 14063,
+  "title": "Blokada",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Studenti nekog fakulteta su, zbog razmirica s dekanom, odlučili organizirati blokadu prostora fakulteta. To znači da odredeni broj studenata mora biti fizički prisutan na fakultetu tijekom 24 sata. Organizatoribi medu sobom željeli podijeliti dežurstva na blokadi što je moguće poštenije, pa su osmislili slijedećapravila:</p>\n<ul>\n<li> Svaki će dan raspored dežurstva biti isti.</li>\n<li>Svaki student može biti dežuran samo kada je slobodan od drugih obaveza.</li>\n<li>Svaki student sam ograničava koliko može ukupno vremena biti dežuran u jednom danu (od ponoći do ponoći).</li>\n<li>Zbog jednostavnosti, dežurstvo može početi i završiti samo na pola sata ili puni sat (na primjerb 16:00 ili 16:30, ali ne i 16:15).</li>\n<li>Student/ica moraju biti slobodni tijekom cijelog dežurstva (na primjer, ako studentica kaže da je slobodna tek od 16:05, ona u rasporedu ne može dežurati od 16:00).</li>\n<li>Minimalni broj studenata koji dežuraju tijekom bilo kojeg dijela dana je maksimiziran. To povećava izglede za uspješnu blokadu.</li>\n</ul>\n<p>Napišite program koji će omogućiti organizatorima blokade da utvrde koliki je maksimalan broj studenata M takav da je moguće napraviti raspored koji zadovoljava gornja ograničenja, a da u svakom trenutku dana (od ponoći do ponoći) dežura barem M studenata.</p>\n<p>Možete pretpostaviti da je zamjena studenata koji dežuraju trenutna, tj. da ako dvoje studenta napuste blokadu a zamijene ih drugo dvoje, možete smatrati da je tijekom smjene dežurstva na blokadi cijelo vrijeme bilo dvoje studenata.</p>",
+  "input": "<p>U prvom redu nalazi se cijeli broj n (1 ≤ n ≤ 50), broj studenata koji žele sudjelovati u blokadi. Nakon toga slijedi n blokova gdje svaki blok opisuje želje i mogućnosti jednog studenta.</p>\n<p>Svaki blok počinje s dva broja, k<sub>i</sub> (1 ≤ k ≤ 50) i m<sub>i</sub> (1 ≤ m<sub>i</sub> ≤ 1440), redom broj vremenskih perioda u kojima je i-ti student slobodan od drugih obaveza i može sudjelovati u blokadi te najveći ukupni broj minuta koje je spreman posvetiti dežuranju u jednom danu.</p>\n<p>U preostalih k<sub>i</sub> redova u bloku, nalaze se vremenski trenunci poˇcetka i kraja uzastopnog perioda kada je student slobodan, odvojeni razmakom. Periodi se mogu preklapati, a njihova unija predstavlja vrijeme kada student može biti prisutan na blokadi.</p>\n<p>Vremenski su trenuci formatirani kao “HH:MM” (00 ≤ HH ≤ 23, 00 ≤ MM ≤ 59). Ponoć je predstavljena s “00:00”. Kada je kraj prije početka, to znači da student može ostati na blokadi i preko ponoći. Na primjer, period “23:00 03:00” znači da student može biti prisutan od 23 sata do idućeg jutra u 3. Ako su početak i kraj jednaki, to znači da student može biti svih 24 sata na blokadi.</p>",
+  "output": "<p>Potrebno je ispisati jedan cijeli broj – traženi najveći broj studenata M koji može biti u svakom trenutku na blokadi, uz ranije opisane pretpostavke.</p>",
+  "samples": [
+    {
+      "input": "3\n1 540\n00:00 00:00\n3 480\n08:00 10:00\n09:00 12:00\n13:00 19:00\n1 420\n17:00 00:00\n",
+      "output": "1\n"
+    },
+    {
+      "input": "5\n1 720\n18:00 12:00\n1 1080\n00:00 23:00\n1 1080\n00:00 20:00\n1 1050\n06:00 00:00\n1 360\n18:00 00:00\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3\n1 1440\n00:00 00:00\n1 720\n00:00 12:15\n1 720\n12:05 00:15\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2016",
+  "level": 21,
+  "tags": [
+    "binary_search",
+    "flow",
+    "parametric_search",
+    "graphs"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3
+}

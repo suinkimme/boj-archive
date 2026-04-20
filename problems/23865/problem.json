@@ -1,0 +1,34 @@
+{
+  "id": 23865,
+  "title": "Diamond Hands",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The \"Diamond Hands\" corporation has a long and eventful history. Starting from its foundation, they had a lot of successful and unsuccessful days. For simplicity, let's consider a day successful if its stock price increased by one (in abstract units). Similarly, we consider a day unsuccessful if its stock price decreased by one. As it often happens, successful days come in long streaks, as do unsuccessful days. There is no middle ground: every day is either successful or unsuccessful.</p>\n<p>You would like to figure out which days were successful and unsuccessful for the corporation. To accomplish it, you obtained the historical stock price data: $n$ pairs  $(d_i, p_i)$, meaning that after $d_i$ days after issuing stock the difference with the starting stock price was $p_i$ units ($p_i$ can be an arbitrary integer, including any negative number).</p>\n<p>Represent the corporation's history with the <strong>minimum</strong> number of successful or unsuccessful day streaks, or report that data contains an error and it's impossible to achieve it. If there are multiple possible answer with the minimum number of streaks, output any one of them.</p>",
+  "input": "<p>The first line of the input contains an integer $n$ ($1 \\le n \\le 200\\,000$). Next $n$ lines contain a pair of integers $d_i \\; p_i$ each ($1 \\le d_i \\le 10^8$; $-10^8 \\le p_i \\le 10^8$; $d_i &lt; d_{i+1}$ for all $i$ from $1$ to $n - 1$). </p>",
+  "output": "<p>If there are errors in the historical stock price data, output $-1$. Otherwise, print $k$, the number of streaks, in the first line. Next, print $k$ lines describing successful or unsuccessful streaks. Each line should contain a pair $l_i \\; c_i$ ($1 \\le l_i \\le 10^8$; $c_i \\in \\{\\texttt{+}, \\texttt{-}\\}$), meaning that the next streak lasted for $l_i$ days, and was successful if $c_i = \\texttt{+}$, or unsuccessful if $c_i = \\texttt{-}$.</p>\n<p>The description of streaks must be done in chronological order, starting from the day stock was issued and ending on day $d_n$. This means that the sum of all $l_i$ must be equal to $d_n$.</p>",
+  "samples": [
+    {
+      "input": "4\n2 2\n3 3\n5 1\n7 1\n",
+      "output": "3\n3 +\n3 -\n1 +\n"
+    },
+    {
+      "input": "2\n3 -3\n7 -3\n",
+      "output": "2\n5 -\n2 +\n"
+    },
+    {
+      "input": "1\n1 0\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>In the first example, first three days are successful, so after 2 days the difference is 2, and after 3 days the difference is 3. Next three days are unsuccessful, so after 5 days the difference becomes 1, and after 6 days the stock price is back to the initial value. The last seventh day is successful, so the final difference after 7 days is 1.</p>",
+  "source": "Contest, Innopolis Open in Informatics, Innopolis Open in Informatics, 2020-2021, The Final",
+  "level": 13,
+  "tags": [
+    "constructive",
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.25
+}

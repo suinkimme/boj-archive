@@ -1,0 +1,28 @@
+{
+  "id": 28185,
+  "title": "Shared Memory Switch",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Your task is to build an optimal algorithm for the shared memory switch.</p>\n<p>A shared memory switch is one of the simplest nontrivial buffering architectures considered in the field of algorithms for networking. In this problem we consider a shared memory switch with multiple output queues and uniform (identical) packets. Incoming packets in this model are destined to one of the several output queues, which share a common buffer of finite size $B$. At the end of each second all nonempty queues transmit one packet each. When the buffer overflows your algorithm must decide which packet to drop. Your goal is to design an algorithm achieving maximal throughput (equivalently, dropping as few packets as possible).</p>\n<p>You will be given $n$ queries in the following format:</p>\n<ul>\n<li>$-1$: a single second passes.</li>\n<li>$k$ ($1 \\leq k \\leq n$): a packet arrives to the $k$-th queue.</li>\n</ul>\n<p>You can assume that all packets remaining in the buffer after all queries will be sent as well or, equivalently, that there is an infinite number of $-1$ queries that follow the queries in the input.</p>",
+  "input": "<p>The first line contains contains two non-negative integers $n$ and $B$ ($n, B \\leq 2 \\cdot 10^5$): the number of queries and the amount of memory available to the switch correspondingly.</p>\n<p>The second line contains $n$ queries in the format described above.</p>",
+  "output": "<p>On the first line, output the only integer: the number of transmitted packets.</p>\n<p>On the second line, output the numbers of queries ($1$-based) with arrivals of the packets that were transmitted. You can output these numbers in any order.</p>",
+  "samples": [
+    {
+      "input": "14 5\n1 1 1 2 2 2 -1 1 -1 1 -1 1 -1 1\n",
+      "output": "9\n3 6 8 5 10 4 12 14 2\n"
+    },
+    {
+      "input": "14 4\n1 1 1 2 2 2 -1 1 -1 1 -1 1 -1 1\n",
+      "output": "8\n3 6 8 5 10 4 12 14\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2023, Day 5: LOUD Enough Contest 2",
+  "level": 20,
+  "tags": [
+    "greedy"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2
+}

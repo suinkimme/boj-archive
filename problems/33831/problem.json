@@ -1,0 +1,22 @@
+{
+  "id": 33831,
+  "title": "Heavy Metal",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>Bajtazar, wokalista kapeli heavy-metalowej Algosia in Antichains, przygotowuje się do koncertu w Bajtoszycach. Oprócz przygotowania ulubionych piosenek fanów zgromadzonych na widowni, równie ważne jest przygotowanie sprzętu nagłaśniającego.</p>\n<p>Zestaw nagłaśniający składa się z $n$ ruterów oraz $m$ wzmacniaczy. Mikrofon jest podłączony do rutera numer $1$, a głośnik do rutera $n$. Każdy ze wzmacniaczy łączy dwa rutery (wejściowy i wyjściowy) oraz ma współczynnik wzmocnienia $w_i$. Każdy ruter ma także maksymalną przepustowość $p_i$.</p>\n<p>Sygnał z mikrofonu ma moc $1$. Bajtazar może tak skonfigurować zestaw, aby przesłać sygnał z mikrofonu przez dowolny ciąg ruterów połączonych wzmacniaczami. Moc sygnału po przejściu przez wzmacniacz przemnaża się przez współczynnik wzmocnienia danego wzmacniacza. Jeśli w dowolnym momencie moc aktualnie przesyłanego sygnału przekroczy przepustowość rutera, przez który przechodzi, dojdzie do przepalenia tego rutera, czego Bajtazar absolutnie chce uniknąć.</p>\n<p>Sygnał może przejść przez ten sam ruter lub wzmacniacz dowolną liczbę razy. Bajtazar chce przesłać sygnał docelowo do głośnika, osiągając maksymalne możliwe wzmocnienie, ale nie przekraczając przepustowości żadnego z ruterów. Pomóż mu to osiągnąć.</p>",
+  "input": "<p>W pierwszym wierszu znajduje się jedna liczba całkowita $T$ ($1 ≤ T ≤ 100$) oznaczająca liczbę zestawów nagłaśniających posiadanych przez Bajtazara. Dalej znajduje się $T$ opisów kolejnych zestawów nagłaśniających.</p>\n<p>W pierwszym wierszu opisu znajdują się dwie liczby całkowite $n$ i $m$ ($1 ≤ n, m$) oznaczające liczbę ruterów oraz liczbę wzmacniaczy.</p>\n<p>W kolejnym wierszu znajduje się ciąg $n$ liczb całkowitych $p_1, p_2, \\dots , p_n$ ($1 ≤ p_i ≤ 10^9$), oznaczających przepustowości kolejnych ruterów.</p>\n<p>W kolejnych $m$ wierszach znajdują się opisy wzmacniaczy, gdzie $i$-ty z nich składa się z trzech liczb całkowitych $a_i$, $b_i$ oraz $w_i$ ($1 ≤ a_i , b_i ≤ n$, $1 ≤ w_i ≤ 10^9$) oznaczających odpowiednio ruter wejściowy, ruter wyjściowy oraz współczynnik wzmocnienia $i$-tego wzmacniacza.</p>\n<p>Suma $n$ we wszystkich zestawach nie przekracza $100$, a suma m nie przekracza $200$.</p>",
+  "output": "<p>Na wyjście należy wypisać $T$ wierszy; w $i$-tym z nich powinna znaleźć się jedna liczba całkowita oznaczająca maksymalne możliwe wzmocnienie sygnału w $i$-tym zestawie nagłaśniającym. Jeśli nie jest możliwe przesłanie sygnału do głośnika przy pomocy $i$-tego zestawu, należy zamiast tego wypisać $-1$.</p>",
+  "samples": [
+    {
+      "input": "4\n2 3\n250 1000\n1 1 2\n1 2 3\n2 1 37\n3 5\n500 800 1100\n1 1 2\n1 2 1\n2 2 3\n2 3 1\n3 3 5\n2 2\n4 4\n1 1 2\n1 2 1\n2 1\n10 10\n1 2 1000000000\n",
+      "output": "666\n1080\n4\n-1\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie do przykładu: W pierwszym zestawie nagłaśniającym optymalne skonfigurowanie przesyła sygnał w następujący sposób:</p>\n<p style=\"text-align: center;\">$1$ → $1$ (sygnał o mocy $2$) → $2$ (sygnał o mocy $2 \\cdot 3 = 6$) → $1$ (sygnał o mocy $6 \\cdot 37 = 222$) → $2$ (sygnał o mocy $222 \\cdot 3 = 666$)</p>\n<p>W drugim zestawie optymalne rozwiązanie to:</p>\n<p style=\"text-align: center;\">$1$ → $1$ (sygnał o mocy $2$) → $1$ (sygnał o mocy $2 \\cdot 2 = 4$) → $1$ (sygnał o mocy $4 \\cdot 2 = 8$) → $2$ (sygnał o mocy $8 \\cdot 1 = 8$) → $2$ (sygnał o mocy $8 \\cdot 3 = 24$) → $2$ (sygnał o mocy $24 \\cdot 3 = 72$) → $2$ (sygnał o mocy $72 \\cdot 3 = 216$) → $3$ (sygnał o mocy $216 \\cdot 1 = 216$) → $3$ (sygnał o mocy $216 \\cdot 5 = 1080$)</p>\n<p>W trzecim zestawie:</p>\n<p style=\"text-align: center;\">$1$ → $1$ (sygnał o mocy $2$) → $1$ (sygnał o mocy $2 \\cdot 2 = 4$) → $2$ (sygnał o mocy $4 \\cdot 1 = 4$)</p>\n<p>W czwartym zestawie przesłanie sygnału wzmacniaczem skutkowałoby sygnałem o mocy $1\\, 000\\, 000\\, 000$ przekraczającej przepustowość rutera numer $2$. Stąd przekazanie sygnału o jakiejkolwiek mocy nie jest możliwe.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2025",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

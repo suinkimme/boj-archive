@@ -1,0 +1,28 @@
+{
+  "id": 27036,
+  "title": "Automatic Fence Gate",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Farmer John recently installed an electronic gate between his two fields.  He can control the gate from his home computer by sending it commands such as \"raise 10 inches\" and \"lower 5 inches\".</p>\n<p>The gate is considered to be open when it is raised up as high as possible and it is closed when it is lowered to the ground level. FJ had carefully planned the sequence of gate raising and lowering instructions to be sent over the course of the day, but unfortunately a lightning storm scrambled the contents of FJ's computer.  His list of N (1 ≤ N ≤ 1000) instructions now appear out of order, for example like the following:</p>\n<ul>\n<li>11:30pm raise the gate 5 inches</li>\n<li>10:05am lower the gate 3 inches</li>\n<li>12:03pm raise the gate 6 inches</li>\n<li>04:01am lower the gate 2 inches</li>\n<li>... and so on.</li>\n</ul>\n<p>FJ had planned to execute these instructions in chronological order starting at midnight (12:00am) and ending at 11:59pm the same day. He remembers that his instructions would have caused the gate to completely close at least once.  Help him determine the total number of minutes the gate would have been closed if he were to execute his instructions in the order he originally planned.</p>",
+  "input": "<ul>\n<li>Line 1: The single integer N</li>\n<li>Lines 2..1+N: Each line corresponds to an instruction and contains two space-separated fields.  The first is a 7-digit timestamp of the form HH:MMxx where HH denotes hours, MM denotes minutes, and xx is either am or pm. The second entry in each line is an integer indicating the number of inches to raise the gate (negative numbers mean lowering the gate).</li>\n</ul>",
+  "output": "<ul>\n<li>* Line 1: A single integer, giving the number of minutes during the day that the  gate is completely closed.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3\n1:30pm 1\n1:30am -10\n1:00am 5\n",
+      "output": "720\n"
+    }
+  ],
+  "hint": "<p>At 1:00am the gate is raised 5 inches, then it is lowered 10 inches at 1:30am, and finally it is raised 1 inch at 1:30pm.</p>\n<p>Since we know the gate is closed at some point in time, this must have been the interval from 1:30am to 1:30pm, which lasted for 12 hours (720 minutes).</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2003-2004 Season, USACO February 2004 Contest, Blue",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "string",
+    "sorting",
+    "simulation",
+    "parsing"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 5.105299949645996
+}

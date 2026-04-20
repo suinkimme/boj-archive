@@ -1,0 +1,29 @@
+{
+  "id": 10771,
+  "title": "Wait Time",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>You exchange text messages with your friends. Since you receive so many messages, you want to measure how long your friends have to wait for your replies.</p>\n<p>Your message device records each received and sent message in order using the following two kinds of entries:</p>\n<ul>\n<li><code>R X</code> indicates a message was received from a friend numbered X;</li>\n<li><code>S X</code> indicates a message was sent to a friend numbered X.</li>\n</ul>\n<p>Your message device sends and receives messages instantaneously, and for each consecutive pair of entries described above, either</p>\n<ul>\n<li>a single entry <code>W X</code> is recorded in between them indicating they occur X seconds apart, or</li>\n<li>there is no entry between them and they occur one second apart.</li>\n</ul>\n<p>Several rules of message etiquette are always followed:</p>\n<ul>\n<li>the only messages you send are replies to messages that you have received;</li>\n<li>you send at most one reply to any message from any particular friend;</li>\n<li>your friends do not send a subsequent message until you have replied to their previous message.</li>\n</ul>\n<p>The wait time for a message is the time that passes between when you receive it and the time you reply to it. If a friend X received a reply to each message they sent, the total wait time for friend X is the sum of all wait times for all messages from friend X. Otherwise, the total wait time for friend X is −1.</p>\n<p>Your job is to determine the total wait time for each friend.</p>",
+  "input": "<p>The input consists of the integer M (1 ≤ M ≤ 20), followed by M lines, where each line consists of one character (<code>W</code>, <code>R</code>, or <code>S</code>), followed by a space, followed by an integer X (1 ≤ X ≤ 100). These M lines are the entries described above (in order).</p>",
+  "output": "<p>Output one line for each friend that sent a message in the form X T where X is a friend number and T is the total wait time for friend X. The lines are in increasing order of the friend numbers.</p>",
+  "samples": [
+    {
+      "input": "5\nR 2\nR 3\nW 5\nS 2\nS 3\n",
+      "output": "2 6\n3 6\n"
+    },
+    {
+      "input": "14\nR 12\nW 2\nR 23\nW 3\nR 45\nS 45\nR 45\nS 23\nR 23\nW 2\nS 23\nR 34\nS 12\nS 34\n",
+      "output": "12 13\n23 8\n34 2\n45 -1\n"
+    }
+  ],
+  "hint": "<p>Explanation of Output for Sample Input 1</p>\n<p>Friend 2 sends a message at time 0 and Friend 3 sends a message at time 1. Friend 2 receives a reply at time 6 and Friend 3 receives a reply at time 7.</p>\n<p>Explanation of Output for Sample Input 2</p>\n<p>For Friend 12, a message is received at time 0 and replied to at time 13. For Friend 23, two messages are exchanged, with the first message having a wait time of 6 seconds and the second message having a wait time of 2 seconds. For Friend 34, a message is received at time 10 and replied to at time 12. Friend 45 sends a message which is never replied to.</p>",
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2015, CCC 2015 Junior Division",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 56,
+  "submission_count": null,
+  "average_tries": 1.517899990081787
+}

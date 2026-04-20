@@ -1,0 +1,29 @@
+{
+  "id": 30602,
+  "title": "Game of Nim",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Georgiy and Gennady are playing a new game they have just invented after learning about the classical game of Nim. This game is played with $n$ stones and consists of two stages.</p>\n<p>In the setup stage, Georgiy chooses a positive integer $p &lt; n$ and puts a pile of $p$ stones on a game field. After that, Gennady forms an arbitrary number of piles, each containing an arbitrary number of stones, using all $(n - p)$ stones not used by Georgiy.</p>\n<p>For example, if $n = 10$ and $p = 2$, Gennady can form:</p>\n<ul>\n<li>$8$ piles of $1$ stone each,</li>\n<li>or one pile of $5$ stones and one pile of $3$ stones,</li>\n<li>or $2$ piles of $2$ stones and $4$ piles of $1$ stone,</li>\n<li>or one pile of $8$ stones,</li>\n<li>etc.</li>\n</ul>\n<p>After the setup stage, the Nim stage comes. At this stage, the game of Nim is played. Players take turns, starting from Georgiy. On each turn, the player must remove at least one stone and may remove any number of stones, provided they all come from the same pile. The player who takes the last stone wins at Nim and, consequently, wins the entire game.</p>\n<p>Georgiy and Gennady have just started the game, and now it is the middle of the setup stage: Georgiy has already made his pile of $p$ stones, but Gennady has not divided the remaining $(n - p)$ stones into piles yet. Now Gennady wants to know what his chances are to win the game.</p>\n<p>You are to calculate the number of ways Gennady can divide $(n - p)$ stones into piles so that he will win the game, assuming that both players will play Nim optimally.</p>\n<p>As you may know, according to the Sprague-Grundy theory, Gennady will win if and only if the bitwise exclusive or (XOR) of all pile sizes (the pile of $p$ stones and all piles made from the remaining $(n-p)$ stones) is equal to zero.</p>\n<p>Since the answer can be large, please calculate it modulo $m$. Two ways are considered to be different if the corresponding multisets of pile sizes are different --- that is, the order of piles does not matter.</p>",
+  "input": "<p>The only line contains three integers $n$, $p$, and $m$, denoting the total number of stones in the game, the size of the pile chosen by Georgiy, and the value of the modulus ($1 \\le p &lt; n \\le 500$; $2 \\le m \\le 10^9$).</p>",
+  "output": "<p>Print the number of ways Gennady can divide the remaining $(n - p)$ stones into piles so that he will win the game, modulo $m$.</p>",
+  "samples": [
+    {
+      "input": "8 3 1000\n",
+      "output": "2\n"
+    },
+    {
+      "input": "5 2 1000\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p>In the first example, the only two winning ways for Gennady to divide the remaining $5$ stones are:</p>\n<ul>\n<li>one pile of $3$ stones and $2$ piles of $1$ stone,</li>\n<li>or one pile of $2$ stones and $3$ piles of $1$ stone.</li>\n</ul>\n<p>In the second example, no matter how Gennady divides the remaining $3$ stones, he is bound to lose.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2023-2024 Northwestern Russia Regional Contest",
+  "level": 15,
+  "tags": [
+    "dp",
+    "bitmask"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 2.2083001136779785
+}

@@ -1,0 +1,25 @@
+{
+  "id": 33798,
+  "title": "Permutation Recovery",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>There are two hidden permutations $a$ and $b$ of size $n$.</p>\n<p>A permutation of length $n$ is an array consisting of $n$ distinct integers from $1$ to $n$ in arbitrary order. For example, $[2, 3, 1, 5, 4]$ is a permutation, but $[1, 2, 2]$ is not a permutation ($2$ appears twice in the array), and $[1, 3, 4]$ is also not a permutation ($n=3$ but there is $4$ in the array).</p>\n<p>For each $i$ from $1$ to $n$, you are given the values $a_{b_i}$ and $b_{a_i}$. Recover any possible permutations $a$ and $b$, or determine that none exist.</p>",
+  "input": "<p>The first line of the input contains a single integer $t$ ($1 \\le t \\le 10^4$) --- the number of test cases. The description of the test cases follows.</p>\n<p>The first line of each test case contains a single integer $n$ ($1 \\le n \\le 2\\cdot 10^5$) --- the size of the two permutations.</p>\n<p>The second line of each test case contains $n$ integers. The $i$-th of these is $a_{b_i}$ ($1 \\le a_{b_i} \\le n$). It is guaranteed that these $n$ integers are distinct.</p>\n<p>The third line of each test case contains $n$ integers. The $i$-th of these is $b_{a_i}$ ($1 \\le b_{a_i} \\le n$). It is guaranteed that these $n$ integers are distinct.</p>\n<p>It is guaranteed that the sum of $n$ across all test cases is at most $2\\cdot 10^5$.</p>",
+  "output": "<p>For each test case, the first line of output should contain \"<code>YES</code>\" if there is a solution, and \"<code>NO</code>\" otherwise.</p>\n<p>If you print \"<code>YES</code>\", print two additional lines of output:</p>\n<p>The first line should contain $n$ integers $a_1, a_2, \\cdots a_n$ ($1 \\le a_i \\le n$) --- a valid permutation $a$.</p>\n<p>The second line should contain $n$ integers $b_1, b_2, \\cdots b_n$ ($1 \\le b_i \\le n$) --- a valid permutation $b$.</p>\n<p>If there are multiple solutions, you may print any.</p>",
+  "samples": [
+    {
+      "input": "6\n3\n3 1 2\n2 3 1\n2\n1 2\n2 1\n5\n1 2 3 4 5\n1 2 3 4 5\n1\n1\n1\n6\n4 5 1 2 3 6\n1 2 3 4 5 6\n10\n3 7 5 8 9 1 4 10 6 2\n7 8 1 5 10 9 2 3 4 6\n",
+      "output": "YES\n2 1 3 \n3 2 1 \nNO\nYES\n5 4 3 2 1 \n5 4 3 2 1 \nYES\n1 \n1 \nNO\nYES\n8 2 4 6 1 5 10 7 9 3 \n10 8 6 1 9 5 3 7 4 2 \n"
+    }
+  ],
+  "hint": "<p>The given solution to the first sample case is $a=[2, 1, 3]$, $b=[3, 2, 1]$. This gives $$a_{b_1} = a_3 = 3 \\quad\\quad a_{b_2} = a_2 = 1 \\quad\\quad a_{b_3} = a_1 = 2$$ $$b_{a_1} = b_2 = 2 \\quad\\quad b_{a_2} = b_1 = 3 \\quad\\quad b_{a_3} = b_3 = 1$$ which matches the input values $a_b=[3, 1, 2]$ and $b_a=[2, 3, 1]$.</p>\n<p>In the second sample case, it can be shown that there are no valid permutations $a$ and $b$.</p>",
+  "source": "University, Rutgers University, Rutgers University Programming Contest Spring 2025",
+  "level": 19,
+  "tags": [
+    "ad_hoc",
+    "permutation_cycle_decomposition"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

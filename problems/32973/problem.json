@@ -1,0 +1,36 @@
+{
+  "id": 32973,
+  "title": "Stablo",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Toni decided to create a task for HONI (and COCI). Since he doesn’t like kids, he decided to make the task as difficult as possible. He came up with a complex problem involving a tree that constantly changes, solely to make contestants suffer as much as possible.</p>\n<p>You are given a weightless tree with $N$ nodes, where the root of the tree is node $1$. Each node has an associated value $v[i]$. The structure of the tree is defined using an array $p[i]$, where for each $i$ from $1$ to $N - 1$, $p[i]$ denotes the parent of $i + 1$.</p>\n<p>A function $f(y)$ is defined for a node $y$ in the tree as:</p>\n<p>$$f(y) = \\sum_{x \\in S_y}{d(x, y) \\cdot v[x]}$$</p>\n<p>where $d(x, y)$ denotes the distance between nodes $x$ and $y$, while $S_y$ contains all nodes for which $y$ is an ancestor.</p>\n<p>You are given $Q$ queries with two nodes $x$ and $y$. For each query, the following transformation must be simulated in the tree, and the function $f(y)$ needs to be calculated:</p>\n<ol>\n<li>Attach all nodes for which $x$ is the parent to the parent of $x$</li>\n<li>Remove $x$ from the tree</li>\n<li>Insert node $x$ back into the tree, between $y$ and the descendant of $y$ from whose subtree $x$ was removed.</li>\n</ol>\n<p>If $y$ is the parent of $x$, the tree remains unchanged. It is always true that $x$ is in the subtree of $y$. For each query, the value of $f(y)$ must be calculated after the tree is temporarily modified according to the procedure described above. The tree modifications are not permanent, i.e. after each query, the tree returns to its original state.</p>",
+  "input": "<p>The first line contains two integers $N$ and $Q$ ($1 ≤ N, Q ≤ 5 \\cdot 10^5$), the number of nodes in the tree and the number of queries, respectively.</p>\n<p>The second line contains $N$ integers $v[i]$ ($1 ≤ v[i] ≤ 10^6$), representing the value of each node.</p>\n<p>The third line contains $N - 1$ integers $p[i]$ ($1 ≤ p[i] ≤ i$), where $p[i]$ denotes the parent of node $i + 1$.</p>\n<p>Each of the next $Q$ lines contains two integers $x$ and $y$ ($1 ≤ x, y ≤ N$), denoting the nodes involved in the operation described above.</p>",
+  "output": "<p>In the next $Q$ lines output the value of the function $f(y)$ on the modified tree.</p>",
+  "samples": [
+    {
+      "input": "3 1\n1 2 3\n1 2\n3 1\n",
+      "output": "7\n"
+    },
+    {
+      "input": "3 2\n4 5 6\n1 1\n2 1\n3 1\n",
+      "output": "11\n11\n"
+    },
+    {
+      "input": "5 3\n2 5 2 2 2\n1 2 3 2\n4 3\n3 2\n5 1\n",
+      "output": "2\n8\n26\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example: After applying the operation on a tree, node $3$ is at a distance of $1$ from node $1$, and node $2$ is at a distance of $2$ from node $1$. The result is $3 + 2 \\cdot 2 = 7$.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2024/2025, Contest #3",
+  "level": 17,
+  "tags": [
+    "dp",
+    "data_structures",
+    "trees",
+    "dp_tree",
+    "sparse_table"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.5217000246047974
+}

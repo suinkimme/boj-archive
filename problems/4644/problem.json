@@ -1,0 +1,26 @@
+{
+  "id": 4644,
+  "title": "Programmer, Rank Thyself",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Implement a ranking program similar to the one used for this programming contest.</p>",
+  "input": "<p>The input file contains one or more contests followed by a line containing only zero that signals the end of the file. Each contest begins with a line containing a positive integer c no greater than 20 indicating the number of teams in the contest, and is followed by c lines that contain a team name and the solution times for seven problems, separated by spaces. Team names consist of between one and ten letters. All team names within a contest are unique. Times are nonnegative integers no greater than 500.</p>\n<p>As described in the Notes to Teams, teams are ranked first by greatest number of problems solved, then by least total time, then by least geometric mean of all nonzero times. Teams that are still tied are given the same numeric ranking and are listed in alphabetical order, using case-sensitive string comparison. The numeric ranking for a team is always one more than the number of teams ranked ahead of (not tied with) that team. For this problem all geometric means will be rounded to an integer as described below, and only the rounded value will be used when computing rankings and displaying results.</p>\n<p>If all times are zero, then the geometric mean is also zero. Otherwise, if there are n nonzero times t<sub>1</sub>, ..., t<sub>n</sub>, then the geometric mean is defined to be</p>\n<p>exp ((ln t<sub>1</sub> + ln t<sub>2</sub> + ... + ln t<sub>n</sub>) / n)</p>\n<p>where exp x means e<sup>x</sup> and ln x means the natural logarithm of x. (There are other mathematically equivalent definitions of the geometric mean, but they may produce slightly different answers due to roundoff and/or overflow problems. Use this definition to get the same answers as the judges.) After computing the geometric mean, round it to an integer by adding 0.5 and truncating any fractional digits. (C/C++ and Java automatically truncate fractions when casting a floating-point type to an integral type. In Pascal use the trunc function.)</p>",
+  "output": "<p>For each contest you must output the rankings in a table. All tables will have the same width, with the length equal to the number of teams entered in the contest. Use the exact format shown in the examples. Each contest has a numbered header followed by a table with one team entry per line. Each entry contains the ranking, team name, problems solved, total time, geometric mean, and then the individual solution times in the same order they appeared in the input. In the first example all values completely fill their fields. In general you may need to pad values with spaces (never tabs) so that they have the correct field width. The team name is left-justified, and all other fields are right-justified. The ranking always has two digits, including a leading zero if necessary. Spaces will never appear at the beginning or end of lines.</p>",
+  "samples": [
+    {
+      "input": "1\nPlutonians 123 234 345 456 167 278 389\n4\nXap 0 0 0 0 0 0 0\nFoo 20 30 0 50 40 0 10\nBar 0 50 20 0 10 40 30\nBaz 0 0 0 0 0 0 0\n3\nVenus 213 0 0 57 0 0 0\nNeptune 0 0 0 117 153 0 0\nMars 0 150 0 0 0 0 120\n0\n",
+      "output": "CONTEST 1\n01 Plutonians 7 1992 261 123 234 345 456 167 278 389\nCONTEST 2\n01 Bar        5  150  26   0  50  20   0  10  40  30\n01 Foo        5  150  26  20  30   0  50  40   0  10\n03 Baz        0    0   0   0   0   0   0   0   0   0\n03 Xap        0    0   0   0   0   0   0   0   0   0\nCONTEST 3\n01 Venus      2  270 110 213   0   0  57   0   0   0\n02 Mars       2  270 134   0 150   0   0   0   0 120\n02 Neptune    2  270 134   0   0   0 117 153   0   0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Central Regional, 2002 Mid-Central Regional Programming Contest",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "math",
+    "sorting"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 3.25
+}

@@ -1,0 +1,26 @@
+{
+  "id": 18775,
+  "title": "Inverting bits (Hard)",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The wannabe scientist Kleofáš has recently developed a new processor. The processor has got 26 registers, labeled <code>A</code> to <code>Z</code>. Each register is an 8-bit unsigned integer variable.</p>\n<p>This new processor is incredibly simple. It only supports the instructions specified in the table below. (In all instructions, <code>R</code> is a name of a register, <code>C</code> is a constant, and <code>X</code> is either the name of a register or a constant. All constants are 8-bit unsigned integers, i.e., numbers from 0 to 255.)</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<td>syntax</td>\n<td>semantics</td>\n</tr>\n<tr>\n<td><code>and R X</code></td>\n<td>Compute the bitwise and of the values <code>R</code> and <code>X</code>, and store it in <code>R</code>.</td>\n</tr>\n<tr>\n<td><code>or R X</code></td>\n<td>Compute the bitwise or of the values <code>R</code> and <code>X</code>, and store it in <code>R</code>.</td>\n</tr>\n<tr>\n<td><code>not R</code></td>\n<td>Compute the bitwise not of the value <code>R</code>, and store it in <code>R</code>.</td>\n</tr>\n<tr>\n<td><code>shl R C</code></td>\n<td>Take the value in <code>R</code>, shift it to the left by <code>C</code> bits, and store the result in <code>R</code>.</td>\n</tr>\n<tr>\n<td><code>shr R C</code></td>\n<td>Take the value in <code>R</code>, shift it to the right by <code>C</code> bits, and store the result in <code>R</code>.</td>\n</tr>\n<tr>\n<td><code>mov R X</code></td>\n<td>Store the value <code>X</code> into <code>R</code>.</td>\n</tr>\n<tr>\n<td><code>get R</code></td>\n<td>Read an 8-bit unsigned integer and store it in <code>R</code>.</td>\n</tr>\n<tr>\n<td><code>put R</code></td>\n<td>Output the content of the register <code>R</code> as an 8-bit unsigned integer.</td>\n</tr>\n</tbody>\n</table>\n<p>Notes:</p>\n<ul>\n<li>After any instruction other than not, if the second argument was a register name, its content remains unchanged.</li>\n<li>Whenever <code>shl</code> or <code>shr</code> is called, the shifted value of the first argument is truncated on one end and padded with zeroes on the other end. For example, if <code>X</code> equals to binary 10110110, then <code>X shr 2</code> equals to 00101101.</li>\n</ul>\n<p><strong>Example task</strong></p>\n<p>Assume that the input contains an arbitrary two 8-bit unsigned integers a and b. Write a program that will read these numbers and produce an integer z such that z = 0 if and only if a = b. (That is, if a and b differ, z must be positive.)</p>\n<p><strong>Problem specification</strong></p>\n<p>For each data set, you have to write a program for Kleofáš’s processor that solves the following task: The input for your program is a sequence of integers, each of them a 0 or a 1. The output of your program must be a sequence of their negations, in order. (That is, change each 0 into a 1 and vice versa.)</p>\n<p>The sequence contains exactly 19 integers. In your program, you may only use the instruction <code>not</code> at most twice. Your program can have at most 300 instructions.</p>",
+  "input": "<p>This problem has no input.</p>",
+  "output": "<p>Send us your program as a plain ASCII text. Each line of the text may either contain one complete instruction, or just whitespace. If you submit anything that is not a proper program, it will be judged “Wrong answer” and you will get an appropriate error message.</p>",
+  "samples": [
+    {
+      "input": "",
+      "output": "get A\nget B\n\nmov C A\nnot C\nand C B\n\nmov D B\nnot D\nand D A\n\nmov Z C\nor Z D\n\nput Z\n"
+    }
+  ],
+  "hint": "<p>There are many possible solutions. In our solution, we read the input to registers A and B, compute their bitwise xor in register Z and output it.</p>\n<p>However, we do not have an instruction for xor. We have to assemble it from ands, ors, and nots. First, we create (not-A and B) in C and (not-B and A) in D. Finally, we store (C or D) in Z and we are done.</p>\n<p>Why does it work? If the two numbers are identical, then C and D will both be zero, and so will Z. If the two numbers are not identical, consider a digit d where the two numbers differ in their binary representations. If this digit is 0 in A, it has to be 1 in B. But then it is 1 in C and therefore it is 1 in Z. And if the digit is 1 in A, it has to be 0 in B, 1 in D, and 1 in Z.</p>",
+  "source": ", Contest, Internet Problem Solving Contest, IPSC 2011",
+  "level": 25,
+  "tags": [
+    "ad_hoc",
+    "bitmask",
+    "traceback"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 2.5199999809265137
+}

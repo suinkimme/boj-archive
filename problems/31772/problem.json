@@ -1,0 +1,29 @@
+{
+  "id": 31772,
+  "title": "Logical Moos",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Farmer John has a boolean statement that is $N$ keywords long ($1 \\leq N &lt; 2 \\cdot 10^5$, $N$ odd). Only <code>true</code> or <code>false</code> appear in odd positions, while only <code>and</code> and <code>or</code> appear in even positions.</p>\n<p>A phrase of the form $x\\text{ OPERATOR }y$, where $x$ and $y$ are either <code>true</code> or <code>false</code>, and $\\text{OPERATOR}$ is <code>and</code> or <code>or</code>, evaluates as follows:</p>\n<ul>\n<li>$x$<code> and </code>$y$: This evaluates to true if both $x$ and $y$ are true, and false otherwise.</li>\n<li>$x$<code> or </code>$y$: This evaluates to true if either $x$ or $y$ is true, and false otherwise.</li>\n</ul>\n<p>When evaluating the statement, FJ has to take the order of precedence in Moo Language into account. Similar to C++, <code>and</code> takes priority over <code>or</code>. More specifically, to evaluate the statement, repeat the following step until the statement consists of only one keyword.</p>\n<ol>\n<li>If the statement contains an <code>and</code>, choose any of them and replace the phrase surrounding it with its evaluation.</li>\n<li>Otherwise, the statement contains an <code>or</code>. Choose any of them and replace the phrase surrounding it with its evaluation.</li>\n</ol>\n<p>It may be proven that if multiple phrases can be evaluated during a given step, it does not matter which one is chosen; the statement will always evaluate to the same value.</p>\n<p>FJ has $Q$ $(1 \\leq Q \\leq 2 \\cdot 10^5)$ queries. In each query, he gives you two integers $l$ and $r$ ($1 \\leq l \\leq r \\leq N$, $l$ and $r$ are both odd), and deletes the segment from keyword $l$ to keyword $r$ inclusive. In turn, he wishes to replace the segment he just deleted with just one simple <code>true</code> or <code>false</code> so that the whole statement evaluates to a certain boolean value. Help FJ determine if it's possible!</p>",
+  "input": "<p>The first line contains $N$ and $Q$.</p>\n<p>The next line contains $N$ strings, a valid boolean statement.</p>\n<p>The following $Q$ lines contain two integers $l$ and $r$, and a string <code>true</code> or <code>false</code>, denoting whether he wants the whole statement to evaluate to true or false.</p>",
+  "output": "<p>Output a string of length $Q$, where the $i$'th character is Y if the $i$'th query is possible, otherwise N.</p>",
+  "samples": [
+    {
+      "input": "5 7\nfalse and true or true\n1 1 false\n1 3 true\n1 5 false\n3 3 true\n3 3 false\n5 5 false\n5 5 true\n",
+      "output": "NYYYNYY\n"
+    },
+    {
+      "input": "13 4\nfalse or true and false and false and true or true and false\n1 5 false\n3 11 true\n3 11 false\n13 13 true\n",
+      "output": "YNYY\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2023-2024 Season, USACO 2024 US Open Contest, Bronze",
+  "level": 17,
+  "tags": [
+    "implementation",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 48,
+  "submission_count": null,
+  "average_tries": 2.3125
+}

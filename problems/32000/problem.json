@@ -1,0 +1,38 @@
+{
+  "id": 32000,
+  "title": "Examination 2",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>JOI-kun goes to IOI High School, where the final exam is held soon. In the exam, students will be tested on whether they can correctly calculate the value of an <strong>IOI function</strong>. An IOI function is a string obtained by one of the following six rules defined by IOI High School, which maps integers between $1$ and $10^9$ (inclusive) to boolean values, either <code>True</code> or <code>False</code>.</p>\n<ol>\n<li>Let $a$ be an integer between $1$ and $10^9$ (inclusive), then <code>[a]</code> is an IOI function (<code>a</code> is the string representation of $a$ in decimal notation). This IOI function maps integers greater than or equal to $a$ to <code>True</code>, and integers less than $a$ to <code>False</code>.</li>\n<li>Let <code>f</code> be an IOI function, then <code>(f)</code> is also an IOI function. This IOI function maps the same integers to <code>True</code> and <code>False</code> as <code>f</code> does.</li>\n<li>Let <code>f</code> be an IOI function, then <code>!f</code> is also an IOI function. This IOI function maps integers that <code>f</code> maps to <code>True</code> to <code>False</code>, and vice versa.</li>\n<li>Let <code>f</code> and <code>g</code> be IOI functions, then <code>f&amp;g</code> is also an IOI function. This IOI function maps integers to <code>True</code> if both <code>f</code> and <code>g</code> map them to <code>True</code>, and to <code>False</code> otherwise.</li>\n<li>Let <code>f</code> and <code>g</code> be IOI functions, then <code>fˆg</code> is also an IOI function. This IOI function maps integers to <code>True</code> if exactly one of <code>f</code> or <code>g</code> maps them to <code>True</code>, and to <code>False</code> otherwise.</li>\n<li>Let <code>f</code> and <code>g</code> be IOI functions, then <code>f|g</code> is also an IOI function. This IOI function maps integers to <code>True</code> if at least one of <code>f</code> or <code>g</code> maps them to <code>True</code>, and to <code>False</code> otherwise.</li>\n</ol>\n<p>If an IOI function is obtained using multiple rules, the rule with the higher number determines the boolean value that the IOI function maps integers to. For example, for <code>[1]&amp;[2]|[3]</code>, rule 6 is applied to <code>f = [1]&amp;[2]</code> and <code>g = [3]</code> (rather than applying rule 4 to <code>f = [1]</code> and <code>g = [2]|[3]</code>). Additionally, for rules 4, 5, and 6, the rule is applied so that <code>f</code> becomes as long as possible. For example, for <code>[4]ˆ[5]ˆ[6]</code>, rule 5 is applied to <code>f = [4]ˆ[5]</code> and <code>g = [6]</code> (rather than applying rule 5 to <code>f = [4]</code> and <code>g = [5]ˆ[6]</code>).</p>\n<p>To prepare for the exam, JOI-kun has prepared an IOI function $S$ of length $N$ and intends to practice determining the boolean values that this IOI funcition maps $Q$ integers $X_1, X_2, \\dots , X_Q$ to. He askes for your help, as you are proficient with handling IOI functions, to create a sample solution.</p>\n<p>Write a program which, given $N$, $Q$, $S$ and $X_1, X_2, \\dots , X_Q$, determines the boolean values that the IOI function $S$ maps integers $X_1, X_2, \\dots , X_Q$ to.</p>",
+  "input": "<p>The input is given from Standard Input in the following format:</p>\n<blockquote>\n<p>$N$ $Q$</p>\n<p>$S$</p>\n<p>$X_1$</p>\n<p>$X_2$</p>\n<p>$\\vdots$</p>\n<p>$X_Q$</p>\n</blockquote>",
+  "output": "<p>Print $Q$ lines to Standard Output. $i$-th line ($1 ≤ i ≤ Q$) should contain a single boolean value which the IOI function $S$ maps the integer $X_i$ to.</p>",
+  "samples": [
+    {
+      "input": "15 5\n(![2]|[3])&![4]\n1\n2\n3\n4\n5\n",
+      "output": "True\nFalse\nTrue\nFalse\nFalse\n"
+    },
+    {
+      "input": "20 4\n(!![23])ˆ((([116])))\n54\n1\n200\n89\n",
+      "output": "True\nFalse\nFalse\nTrue\n"
+    },
+    {
+      "input": "32 4\n[2]|[5]&[1]|(([1000000000])|[7])\n4\n10\n6\n1\n",
+      "output": "True\nTrue\nTrue\nFalse\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, JOI Open Contest, JOI Open Contest 2024",
+  "level": 25,
+  "tags": [
+    "data_structures",
+    "hld",
+    "implementation",
+    "parsing",
+    "segtree",
+    "string",
+    "trees"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.25
+}

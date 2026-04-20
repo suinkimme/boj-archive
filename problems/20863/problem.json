@@ -1,0 +1,34 @@
+{
+  "id": 20863,
+  "title": "Lisp till C",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>C är ett gammalt programmeringsspråk från 70-talet, som trots dess ålder är väldigt välanvänt. I språket skrivs funktionsanrop till en funktion med namnet <code>namn</code> på formen <code>namn(parameter1, parameter2, ..., parameterN)</code>. En parameter kan antingen vara en variabel (som i vårt fall består av en sekvens av tecken <code>a-z</code>), eller ett funktionsanrop i sig. T.ex. kan ett fullständigt funktionsanrop se ut på följande vis:</p>\n<pre>\na(b, c(d), e(f, g(h, i, j)))</pre>\n<p>Ett funktionsanrop utan parametrar skrivs som <code>funktion()</code>.</p>\n<p>Lisp är ett annat programmeringsspråk från 50-talet. I språket skrivs funktionsanrop till en funktion med namnet <code>namn</code> på formen <code>(namn parameter1 parameter2 ... parameter N)</code>. Återigen kan en parameter i sig vara en variabel eller ett funktionsanrop. Funktionsanropet i C som beskrivs ovan kan istället skrivas</p>\n<pre>\n(a b (c d) (e f (g h i j)))</pre>\n<p>Ett funktionsanrop utan parametrar skrivs som <code>(funktion)</code>.</p>\n<p>Varför denna språkhistoria? Jo, det visar sig att domaren Simon gillar C, men inte Lisp. Domaren Johan, å andra sidan, gillar Lisp, men inte C.</p>\n<p>Simon blev därför väldigt sur när Johan programmerade alla sina exempellösningar i Lisp, och vill konvertera Johans program till C. Hjälp Simon med detta, genom att skriva ett program som, givet ett funktionsanrop i Lisp konverterar det till ett funktionsanrop i C.</p>",
+  "input": "<p>Indatan består av en rad med ett korrekt formaterat funktionsanrop i Lisp-format, högst $100\\,000$ tecken lång. Alla parametrar kommer att vara separerade med exakt ett blanksteg, och det finns inga extra blanksteg där det inte behövs.</p>",
+  "output": "<p>Skriv ut en enda rad, med funktionsanropet konverterat till C-format. Inkludera ett blanksteg efter varje kommatecken, som i exempelfallen.</p>",
+  "samples": [
+    {
+      "input": "(a b (c d) (e f (g h i j)))\n",
+      "output": "a(b, c(d), e(f, g(h, i, j)))\n"
+    },
+    {
+      "input": "(min alfa beta)\n",
+      "output": "min(alfa, beta)\n"
+    },
+    {
+      "input": "(prog (olymp (onlinekval)))\n",
+      "output": "prog(olymp(onlinekval()))\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2018, Online Qualification",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "string",
+    "recursion"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.2000000476837158
+}

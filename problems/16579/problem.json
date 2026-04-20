@@ -1,0 +1,35 @@
+{
+  "id": 16579,
+  "title": "Go Make It Complete",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Andi has a network G with N machines and M links; each link connects exactly two different machines. Due to some circumstances, Andi has to make his network “complete”, i.e. every machine is directly linked to every other machine. This means Andy has to add a new link between any pair of machines which are not already directly linked.</p>\n<p>In order to accomplish his goal, Andi outsources the work to a company, Go. Go accepts any work order on a network G with a requested integer k, i.e. go(G, k). The way Go works: First, it creates a list L containing all pair of machines which are not yet directly linked. Then, Go evaluates each pair of machines (a, b) from L and create a new link between them if δ<sub>a</sub> +δ<sub>b</sub> ≥ k. Note that δ<sub>a</sub> is the degree of machine a, i.e. the number of links a has at the time of evaluation. Similarly, δ<sub>b</sub> is for machine b.</p>\n<p>The problem with Go’s procedure is it evaluates each pair of machines in the order appeared in L. For example, let G be a network with N = 4 machines (machine 1, 2, 3, and 4) and M = 3 links; the links are {(1, 2),(2, 3),(3, 4)}. The degree of each machine before a work order is requested is: δ<sub>1</sub> = 1, δ<sub>2</sub> = 2, δ<sub>3</sub> = 2, δ<sub>4</sub> = 1, or simply can be written as [1, 2, 2, 1]. Let say a work order with k = 3 is requested (go(G, 3)).</p>\n<p>Consider these two lists:</p>\n<ul>\n<li>L<sub>1</sub> = ((1, 4),(1, 3),(2, 4)).\n\n\t<ul>\n<li class=\"problem-16579-li-x\">Evaluate (1, 4) and don’t create a new link since δ<sub>1</sub> + δ<sub>4</sub> = 1 + 1 = 2. The degree is still [1, 2, 2, 1].</li>\n<li class=\"problem-16579-li-o\">Evaluate (1, 3) and create a new link since δ<sub>1</sub> + δ<sub>3</sub> = 1 + 2 = 3. The degree becomes [2, 2, 3, 1].</li>\n<li class=\"problem-16579-li-o\">Evaluate (2, 4) and create a new link since δ<sub>2</sub> + δ<sub>4</sub> = 2 + 1 = 3. The degree becomes [2, 3, 3, 2].</li>\n</ul>\n</li>\n</ul>\n<p>The final result is a network with 5 links, which is not complete as it misses the (1, 4) link.</p>\n<ul>\n<li>L<sub>2</sub> = ((2, 4),(1, 3),(1, 4)).\n\n\t<ul>\n<li class=\"problem-16579-li-o\">Evaluate (2, 4) and create a new link since δ<sub>2</sub> + δ<sub>4</sub> = 2 + 1 = 3. The degree becomes [1, 3, 2, 2].</li>\n<li class=\"problem-16579-li-o\">Evaluate (1, 3) and create a new link since δ<sub>1</sub> + δ<sub>3</sub> = 1 + 2 = 3. The degree becomes [2, 3, 3, 2].</li>\n<li class=\"problem-16579-li-o\">Evaluate (1, 4) and create a new link since δ<sub>1</sub> + δ<sub>4</sub> = 2 + 2 = 4. The degree becomes [3, 3, 3, 3].</li>\n</ul>\n</li>\n</ul>\n<p>The final result is a network with 6 links and complete.</p>\n<p>As we can see, L<sub>2</sub> produces a complete network, while L<sub>1</sub> is not.</p>\n<p>Ordering a work to Go can be very expensive with lower k, thus, Andi has to make k as high as possible while maintaining the possibility that a complete network can be achieved with k. In other words, Andi wants the highest k such that there exists L such that go(G, k) can produce a complete network, and for any j (j &gt; k), there is no valid L for go(G, j) which can produce a complete network. Your task in this problem is to find such k.</p>",
+  "input": "<p>Input begins with a line containing two integers: N M (2 ≤ N ≤ 500; 0 ≤ M &lt; N×(N−1)/2) representing the number of machines and the number existing links, respectively. The machines are numbered from 1 to N. The next M lines, each contains two integers: a<sub>i</sub> b<sub>i</sub> (1 ≤ a<sub>i</sub> &lt; b<sub>i</sub> ≤ N) representing an existing link connecting machine a<sub>i</sub> and b<sub>i</sub>. You are guaranteed that each pair (a<sub>i</sub>, b<sub>i</sub>) will appear at most once in the input.</p>",
+  "output": "<p>Output contains an integer k in a line, as requested.</p>",
+  "samples": [
+    {
+      "input": "4 3\n1 2\n2 3\n3 4\n",
+      "output": "3\n"
+    },
+    {
+      "input": "5 0\n",
+      "output": "0\n"
+    },
+    {
+      "input": "5 2\n1 2\n3 4\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, The 2018 ICPC Asia Jakarta Regional Contest",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "priority_queue",
+    "parametric_search"
+  ],
+  "accepted_user_count": 42,
+  "submission_count": null,
+  "average_tries": 2.4286000728607178
+}

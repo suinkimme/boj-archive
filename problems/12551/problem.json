@@ -1,0 +1,31 @@
+{
+  "id": 12551,
+  "title": "Ninjutsu (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Ninjutsu is the martial art of the mysterious Japanese assassins, ninja. As a beginner in the practice of ninjutsu, your first task is to master the use of the grappling hook.</p>\n<p>A grappling hook is a technologically-advanced device consisting of a hook tied to some (very strong and very thin) rope. Proper use of a grappling hook involves throwing the hook at a target and hoping that it catches.</p>\n<p>This time, it did! You are now hooked onto a target that is located at (0, 0). Your rope extends to the left, and you're at the end of it; when you jump, you will start swinging counter-clockwise around the target. There are other targets located to the right and above (0, 0), at (x<sub>i</sub>, y<sub>i</sub>)) with x<sub>i</sub> ≥ 0 and y<sub>i</sub> ≥ 0 When an interior point of the rope (not either end) contacts one or more targets, the rope will bend around the target closest to its moving end. Ignore your starting velocity; because you are a ninja, it is fast enough that you will continue bending around targets until you are spinning around a single one.</p>\n<p>Your rope currently has length <strong>R</strong>, but you may choose to cut it down to any shorter length <strong>r</strong> (including non-integers) before you start swinging. As such, you will start at (-<strong>r</strong>, 0) and swing down (counter-clockwise) toward (0, -<strong>r</strong>).</p>\n<p>What is the maximum number of bends you can put into the rope with one swing? A bend happens when your rope touches a target and then rotates some non-zero number of degrees around that target. The rope will always remain perfectly straight (again, this is possible because you are a ninja), except at bends.</p>\n<p>Example</p>\n<p><img src=\"1.png\" style=\"vertical-align:middle\"/></p>\n<p>In the example above, there are 6 points:</p>\n<ul>\n<li>(0, 0),</li>\n<li>(3, 1),</li>\n<li>(12, 4),</li>\n<li>(14, 5),</li>\n<li>(13, 7), and</li>\n<li>(7, 10).</li>\n</ul>\n<p>You have a rope of length 24. If you do not cut the rope, then you will bend around point (12, 4), then around point (14, 5), then around point (13, 7), and finally, you will be stuck orbiting point (7, 10) with about 0.1705 units of rope remaining. This amounts to a total of 4 bends. Although you touch point (3, 1), it does not contribute a bend because it is collinear with the points (0, 0) and (12, 4).</p>\n<p>If, however, you cut the rope by 0.18 units, you will not have enough length to reach point (7, 10) and will instead follow the path</p>\n<pre>\n(0, 0)--(12, 4)--(14, 5)--(13, 7)--(12, 4)--(14, 5)\n</pre>\n<p>and will end up orbiting point (14, 5) with about 1.3004 units of rope remaining. This path amounts to 5 bends, in total, and is an optimal solution.</p>\n<p><img src=\"2.png\" style=\"vertical-align:middle\"/></p>\n<p>Case #1 in the sample input below represents this example.</p>",
+  "input": "<p>The input will start with a line containing <strong>T</strong>, the number of test cases to follow. Each test case will start with two integers together on a line: <strong>N</strong> and <strong>R</strong>. The next <strong>N</strong> lines will each contain a pair of integers -- <strong>x<sub>i</sub></strong> and <strong>y<sub>i</sub></strong> -- the coordinates of the targets, starting with the target at (0, 0).</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100</li>\n<li>All target coordinates are integers.</li>\n<li>All targets will be at different locations.</li>\n<li>The first target listed will be located at (0, 0).</li>\n<li>There will be at least one value of <strong>r</strong> that gives an optimal solution and has the property that a rope of length <strong>r</strong> - 0.999999 also gives the same solution (the same sequence of bends).</li>\n<li>1 ≤ <strong>N</strong> ≤ 10</li>\n<li>1 ≤ <strong>R</strong> ≤ 1,000</li>\n<li>0 ≤ <strong>x<sub>i</sub></strong> ≤ 1,000</li>\n<li>0 ≤ <strong>y<sub>i</sub></strong> ≤ 1,000</li>\n</ul>\n<div> </div>",
+  "output": "<p>For each test case, output a line of the form \"Case #<strong>C</strong>: <strong>k</strong>\", where <strong>C</strong> is the 1-based case number, and <strong>k</strong> is the maximum number of bends that can be made in the rope in one swing.</p>\n<div> </div>",
+  "samples": [
+    {
+      "input": "6\n6 24\n0 0\n3 1\n12 4\n14 5\n13 7\n7 10\n2 1\n0 0\n2 0\n2 1\n0 0\n1 0\n2 10\n0 0\n4 0\n3 50\n0 0\n9 0\n10 0\n3 12\n0 0\n3 0\n3 4\n",
+      "output": "Case #1: 5\nCase #2: 0\nCase #3: 0\nCase #4: 2\nCase #5: 12\nCase #6: 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Code Jam, Google Code Jam 2010, World Finals",
+  "level": 19,
+  "tags": [
+    "implementation",
+    "bruteforcing",
+    "sorting",
+    "geometry",
+    "simulation",
+    "backtracking",
+    "recursion",
+    "angle_sorting"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 6
+}

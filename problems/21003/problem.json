@@ -1,0 +1,27 @@
+{
+  "id": 21003,
+  "title": "Social Distancing",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Two things ought to be said about students: they hate to do more work than necessary, and love distancing themselves from others. The former is probably why the department forms a tree (building a corridor between two indirectly connected rooms would be a waste of time); the latter is why they thrive during the ongoing pandemic. Now social distancing is no longer a luxury - it's the norm!</p>\n<p>However, tree-structured buildings and distancing yourself from others don't exactly go hand-in-hand. Currently there are $k$ students in some of the rooms, and due to a distancing policy there is at most one student per room. What is more, no two students reside in rooms directly connected by a corridor.</p>\n<p>The ICPC competition is starting soon, and students rush to take seats at the computers scattered around the department. There are $k$ computers -- as many as there are students -- located in some of the rooms; moreover, to make distancing possible, no two computers are located in the same room and no two directly connected rooms both have a computer. The students can assign themselves to computers arbitrarily, but they have to maintain social distancing at all times -- so getting them to where they should be can be tricky, if not impossible.</p>\n<p>You are a ruthless ICPC organizer, and the creator of the ultimate killer problemset. Watching students run around frantically, you realize a horrible truth: if the students don't reach their rooms in time, they will not be able to take part in the competition, and thus all the hard work on preparing unsolvable problems will go to waste! Surely you cannot allow this.</p>\n<p>Given the current positions of students and the positions of computers, design a sequence of operations that moves every student to a room with a computer. Every such operation should move a student to an adjacent room; after every operation no two students should be in the same room or in two adjacent rooms. The remaining time before the competition starts permits you to perform at most $4n^2$ moves, where $n$ is the number of rooms. It may as well be that your task is impossible, but there's only one way to find out...</p>",
+  "input": "<p>The first line of input contains the number of test cases $z$ ($1 \\leq z \\leq 100\\,000$). The descriptions of the test cases follow.</p>\n<p>The first line of a test case contains a single integer $n$ ($2 \\leq n \\leq 2\\,000$) -- the number of rooms at the department.</p>\n<p>The next $n - 1$ lines contain two integers $u_i$, $v_i$ each ($1 \\leq u_i \\neq v_i \\leq n$) -- two rooms connected by a corridor. It is guaranteed that the described corridors form a tree (a connected graph without cycles).</p>\n<p>The next line contains a single integer $k$ ($1 \\leq k &lt; n$) -- the number of students (and computers).</p>\n<p>The next line contains integers $s_1, ..., s_k$ ($1 \\leq s_1 &lt; s_2 &lt; ... &lt; s_k \\leq n$) -- the initial locations of the students.</p>\n<p>The next line contains integers $c_1, ..., c_k$ in a similar format, denoting rooms with computers.</p>\n<p>It is guaranteed that there is at least one student located in a room without a computer.</p>\n<p>The sum of $n^2$ over all test cases does not exceed $4 \\cdot 10^7$.</p>",
+  "output": "<p>For each test case, output \"<code>YES</code>\" (without quotes) if it's possible to move students to rooms with computers while maintaining social distancing, and \"<code>NO</code>\" otherwise. In the former case, in the following lines print any valid solution. The solution description should start with a single integer $m$ ($1 \\leq m \\leq 4 \\cdot n^2$) denoting the number of moves. Then $m$ lines should follow, each describing a single move with two integers $a_i$, $b_i$ ($1 \\leq a_i \\neq b_i \\leq n$), with the meaning that a student who is currently in room $a_i$ should move to room $b_i$, which is connected with $a_i$ by a corridor. </p>\n<p><strong>You don't need to minimize solution length.</strong></p>",
+  "samples": [
+    {
+      "input": "2\n5\n1 2\n1 3\n2 4\n2 5\n2\n1 4\n1 5\n7\n1 2\n2 3\n2 4\n4 6\n6 5\n6 7\n3\n1 4 5\n3 4 7\n",
+      "output": "YES\n4\n1 3\n4 2\n2 5\n3 1\nNO\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 1: Jagiellonian U Contest, Grand Prix of Krakow, Contest, Open Cup, 2020/2021 Season, Stage 10: Grand Prix of Krakow",
+  "level": 27,
+  "tags": [
+    "constructive",
+    "dp",
+    "greedy",
+    "trees"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2
+}

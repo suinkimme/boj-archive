@@ -1,0 +1,31 @@
+{
+  "id": 26907,
+  "title": "TV-tittande",
+  "time_limit": "10 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Johan älskar att titta på TV hela dagarna, men klarar inte av reklampauser. När det blir en reklampaus i programmet han tittar på byter han till nästa kanal, och upprepar detta ända tills han hittar en kanal utan reklam. Om han tittar på den sista kanalen när detta händer så börjar han istället om på den första kanalen. Sedan tittar han på denna kanal tills det blir reklam, och så vidare.</p>\n<p>Johan undrar i efterhand hur mycket han faktiskt tittade på varje kanal under en dag. Givet mellan vilka tider det var reklampauser på varje kanal, räkna ut detta åt honom. Han tittade mellan tiderna <code>00:00</code> och ett dygn framåt, och började titta på den första kanalen. Du kan anta att ett kanalbyte tar 1 minut, och att under kanalbytet sker inget tv-tittande (för varje kanalbyte så försvinner alltså en minut av tv-tittande).</p>",
+  "input": "<p>Indata börjar med ett heltal $N$ ($1 \\leq N \\leq 1000$), antalet kanaler.</p>\n<p>Sedan följer en rad per kanal: varje rad börjar med ett heltal $r_i$, antalet reklampauser på kanalen. Sedan följer i kronologisk ordning $r_i$ ($0 \\leq r_i \\leq 1440$) reklampauser på samma rad, separerade av mellanslag. Varje reklampaus anges med sluttid och starttid på formen <code>HH:MM-HH:MM</code>, t.ex. betyder <code>05:24-22:23</code> att kanalen hade reklampaus från <code>05:24</code> fram till och med <code>22:23</code>, och den var exakt 17 timmar lång. Observera att under minut <code>22:23</code> så fortsätter reklamen, och den är slut först <code>22:24</code>. En reklampaus börjar tidigast vid midnatt och slutar senast vid midnatt (<code>00:00</code> och <code>23:59</code>, respektive). Inga reklampauser överlappar varandra på samma kanal.</p>",
+  "output": "<p>Skriv ut $N$ rader. För varje rad $1 \\leq k_i \\leq N$ så ska du skriva ut ett enda heltal: antalet minuter Johan tittade på kanal $k_i$.</p>",
+  "samples": [
+    {
+      "input": "3\n1 00:00-00:00\n1 00:01-00:01\n1 00:02-00:02\n",
+      "output": "1437\n0\n0\n"
+    },
+    {
+      "input": "3\n1 22:00-22:04\n3 06:00-06:04 12:00-12:04 18:00-18:04\n0\n",
+      "output": "1320\n119\n0\n"
+    }
+  ],
+  "hint": "<p>Det finns tre kanaler som Johan tittar på. Han börjar direkt med att titta på den första kanalen klockan 00.00, och råkar direkt ut för en reklampaus Han byter då kanal (vilket tar en minut), och stöter oturligt på en reklampaus igen. Han byter därför kanal igen, och samma sak upprepar sig på den tredje kanalen. Johan byter efter tre minuter kanal till första kanalen igen, och kan nu äntligen börja räkna minuterna av kvalitets-TV. Han tittar nu resten av tiden på första kanalen, dvs 1437 minuter.</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2014, Online Qualification",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "string",
+    "simulation",
+    "parsing"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 1.1363999843597412
+}

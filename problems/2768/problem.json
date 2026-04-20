@@ -1,0 +1,22 @@
+{
+  "id": 2768,
+  "title": "세금 계산",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>칼리가 살던 곳의 문명은 우리의 문명과는 다르지만 그 곳도 정부, 기업, 기술을 가지고 있었다. 가장 큰 차이는 세율의 결정 방법이었다. 그들은 흥정하는 것을 좋아했기 때문에 세율도 흥정으로 결정하였다.&nbsp;</p>\r\n\r\n<p>세금 계약을 작성할 때, 정부 관료들과 흥정하기 위해 수도로 가야한다. 계약에는 시작일, 만기일, 세율에 관한 내용이 있다. (부기 때문에 만기일은 항상 마지막달의 15일이다.) 계약 마지막 달과 새 계약이 시작하기 전 동안의 짧은 세금이 없는 기간을 즐기는 것은 칼리 가족의 전통이다. 이 기간 역시 흥정을 할 때이기도 하다.</p>\r\n\r\n<p>칼리가 살던 곳은 매우 번영하고 인구가 많아서 정부 관료들은 업무가 매우 많았다. 세금 흥정 거래가 성사되면 관료들은 속기로 써서 일이 진행될 수 있도록 전달한다. 이 속기 노트를 컴퓨터로 입력하려면 XML 형식으로 전환되어야 한다. 때때로 노트가 완성된 게 아니라 세금 계약을 하러 다시 수도로 사람이 불려오기도 했다. 이 일련의 과정은 굉장히 비효율적이지만 이 방식은 이 곳 사람들이 하던 방식이고, 그 방법을 바꿀 생각이 없다.</p>\r\n\r\n<p>노트를 XML 형식으로 바꾸는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>입력은 여러개의 데이터 세트로 구성되어 있으며, 각 세트는 한 줄로 구성되어 있다.</p>\r\n\r\n<p>각 줄은 3개의 정보로 구성되어 있다.</p>\r\n\r\n<ol>\r\n\t<li>세율\r\n\t<ul>\r\n\t\t<li>세율은 숫자 뒤에 %가 붙어있다. (예 5%)</li>\r\n\t\t<li>소수점이 없다.</li>\r\n\t\t<li>세율은 분수가 될 수 있지만 분모는 2,4,8 중에 하나이다.</li>\r\n\t\t<li>세율은 분자가 분모보다 작다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>계약 종료 날짜\r\n\t<ul>\r\n\t\t<li>계약이 끝나는 달과 연도의 두자리로 들어온다. 두 숫자는 붙어서 들어오거나 하이픈으로 연결되어 있다. 예를 들어, 12-05 또는 1205는 05년 12월 15일을 뜻한다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>계약 시작 날짜\r\n\t<ul>\r\n\t\t<li>종료 날짜와 마찬가지 형식이며, 현재 날짜보다 이후로 간주한다.</li>\r\n\t</ul>\r\n\t</li>\r\n</ol>\r\n\r\n<p>3개의 정보는 0개 이상의 공백으로 구분되어 있다.</p>\r\n\r\n<p>달력은 우리와 같이 12개의 달로 구성되어 있지만, 모든 달은 31일까지 있다.</p>\r\n\r\n<p>최고 세율은 99.875%이다.</p>\r\n",
+  "output": "<p>각 데이터 세트에 대해 들여쓰기를 올바르게 한 XML을 출력한다. (들여쓰기 하나는 4개의 공백)</p>\r\n\r\n<pre>\r\n&lt;Kalii Index=N&gt;\r\n    &lt;startdate&gt;&lt;start date)&lt;/startdate&gt;\r\n    &lt;rate&gt;(tax rate)&lt;/rate&gt;\r\n    &lt;enddate&gt;(end date)&lt;/enddate&gt;\r\n&lt;/Kalii&gt;</pre>\r\n\r\n<p>N은 데이터 세트 번호이며, (start date)는 시작일, (tax rate)는 세율, (end date)는 종료일을 뜻한다.</p>\r\n\r\n<p>데이터가 잘못되었거나 모호하여 출력할 수 없으면</p>\r\n\r\n<p><code>&lt;Kalii Index=N&gt;BAD INPUT&lt;/Kalii&gt;</code> 라고 출력한다. (N은 데이터 세트 번호)</p>\r\n\r\n<p>시작일은 DDMMMYY 형태이며, 종료일은 15MMMYY이다.</p>\r\n\r\n<p>DD는 01-31, MMM은 JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC로 구성되어 있다. YY는 00-99로 구성되어 있다.</p>\r\n\r\n<p>세율은 소수점 3자리까지 정확해야 한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "25/850812-31\n6%     02110122\n6.75% 2-11 4-23\n",
+      "output": "<Kalii Index=1>\n    <startdate>31DEC03</startdate>\n    <rate>2.625</rate>\n    <enddate>15MAY08</enddate>\n</Kalii>\n<Kalii Index=2>\n    <startdate>22JAN04</startdate>\n    <rate>6.000</rate>\n    <enddate>15FEB11</enddate>\n</Kalii>\n<Kalii Index=3>BAD DATA</Kalii>\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Greater New York Region, 2003 Greater New York Programming Contest, baekjoon, exupery, jh05013",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 6
+}

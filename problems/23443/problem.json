@@ -1,0 +1,22 @@
+{
+  "id": 23443,
+  "title": "Non-Maximum Suppression",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p><strong>Non-maximum suppression (NMS)</strong> has been widely used in several aspects of computer vision and is an integral part of many object detection algorithms. One of the most common problems in object detection is that an object might be detected multiple times. NMS technique ensures we get only a single detection per object.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>For each class, a list of bounding boxes is proposed by the algorithm. Each box is associated with a score, indicating the confidence the algorithm thinks there is an object of the given class inside the box. Now let's see how the NMS procedure works. In the beginning, all the boxes are unselected and non-suppressed.</p>\n<ol>\n<li>First, select the box with the highest confidence score among boxes that are unselected and non-suppressed.</li>\n<li>Then, look at all the unselected boxes in the image. If the <strong>IoU</strong> of an unselected box and a selected box is <strong>strictly</strong> larger than a given threshold, then the unselected box will be suppressed (discarded). We measure how two boxes are overlapped by the concept of <strong>Intersection over Union (IoU)</strong>.</li>\n</ol>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 300px; height: 234px;\"/></p>\n<ol start=\"3\">\n<li>Repeat the above procedure until all non-suppressed boxes are selected.</li>\n</ol>\n<p>In this problem, we assume there is only one class, and simplify the object detection algorithm by only proposing <strong>square shaped</strong> boxes of the <strong>same size</strong>. Given the IoU threshold and a list of congruent square boxes proposed by the algorithm, can you report all selected boxes after going through the NMS procedure?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $T$ ($1 \\le T \\le 10$). $T$ test cases follow.</p>\n<p>For each test case, the first line contains two integers $n$, $S$ ($1 \\le n \\le 10^5$, $1 \\le S \\le 10^7$) and a floating-point number $threshold$ ($0.300 \\le threshold \\le 0.700$), indicating the number of square bounding boxes proposed by the detection algorithm, the size of the squares, and the IoU threshold. The $threshold$ is exact and is given to the third digit after the decimal point.</p>\n<p>In the next $n$ lines, each line contains two integers $x$, $y$ ($0 \\le x &lt; x + S \\le 10^7$, $0 \\le y &lt; y + S \\le 10^7$) --- the coordinates of the bottom left corner of a square box, followed by a floating point number $score$ ($0.0 \\le score \\le 1.0$) --- the score of this box. Scores are exact and have at most six digits after the decimal point. Also, scores are distinct.</p>",
+  "output": "<p>For each test case, the output starts with a line containing \"<code>Case #x: y</code>\", where <code>x</code> is the test case number (starting from 1), and <code>y</code> is the number of selected bounding boxes after going through the NMS procedure. The next line contains <code>y</code> integers indicating the indices of the boxes (starting from 1) in <strong>ascending</strong> order.</p>",
+  "samples": [
+    {
+      "input": "1\n3 4 0.390\n0 0 0.9\n1 1 0.8\n2 2 0.7\n",
+      "output": "Case #1: 2\n1 3\n"
+    }
+  ],
+  "hint": "<p>There are $3$ boxes in the example: $[0, 4] \\times [0, 4]$, $[1, 5] \\times [1, 5]$ and $[2, 6] \\times [2, 6]$, which are already in descending order of score. The second box is suppressed because the IoU of the first and the second box is $\\frac{9}{23}$, which is strictly larger than $0.390$, the IoU threshold. The third box is selected because the IoU of the first and the third box is $\\frac{1}{7}$, which is smaller than the IoU threshold.</p>",
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 9: Grand Prix of Beijing",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

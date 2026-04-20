@@ -1,0 +1,30 @@
+{
+  "id": 3669,
+  "title": "Telephone Network",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A telephone company wants to build a new telephone network in a city. The company has the goal that each person in the city should be able to call each other person. Of course, it is not possible to build direct connections between every pair of persons. Instead, the company uses a network made up of several layers.</p>\n<p>We denote a network switch in layer j by S(j). A switch S(0) consists of one input, one output and a cable connecting the input to the output. A switch S(j) with j &gt; 0 consists of 2<sup>j</sup> inputs, 2<sup>j</sup> outputs and two switches S(j - 1). Input i of S(j) (0 ≤ i &lt; 2<sup>j</sup>) is connected via a cable to the inputs i mod 2<sup>j-1</sup> of each of the two switches S(j - 1). Similarly, output i of S(j) is connected to the outputs i mod 2<sup>j-1</sup> of each of the two switches S(j - 1).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images2/telephone.png\" style=\"height:163px; width:324px\"/></p>\n<p>The connections between a switch S(j) and the two switches S(j - 1) it consists of.</p>\n<p>We are considering a network with one switch S(n) in the outermost layer. It can be shown that any input and output of switch S(n) has a unique connection path to any of the S(0) switches. Therefore, any input of S(n) can be connected to any of its outputs, and the connection path is uniquely determined by specifying through which switch S(0) the connection is established.</p>\n<p>We number the switches S(0) belonging to the switch S(n) from 0 to 2<sup>n</sup> - 1. The i-th switch S(0) is defined as follows. Write the number i in binary as b<sub>n-1</sub>b<sub>n-2</sub>...b<sub>0</sub>. This defines a path from an input of S(n) to the i-th switch S(0) via the following procedure: for each j, b<sub>j</sub> = 0 indicates that the path extends from S(j + 1) to the first S(j) switch to which it is directly connected, and b<sub>j</sub> = 1 indicates that the path extends to the second S(j) switch. Note that regardless of which input of S(n) is selected, this path arrives at the same S(0) switch, which is given the number i. See also the figure below the sample data for details of how the numbering works.</p>\n<p>Sometimes multiple connections are needed at the same time. In order to avoid interference, each of the inputs and outputs of all switches S(j) (0 ≤ j ≤ n) can be used by at most one connection. Given a set of connection requests, can you find connection paths for each request such that the connection paths are disjoint?</p>",
+  "input": "<p>On the first line a positive integer: the number of test cases, at most 100. After that per test case:</p>\n<ul>\n<li>One line with two integers n (1 ≤ n ≤ 16) and m (1 ≤ m ≤ 2<sup>n</sup>): the layer of the outermost switch and the number of connection requests.</li>\n<li>m lines, each with two integers a<sub>i</sub> and b<sub>i</sub> (0 ≤ a<sub>i</sub>, b<sub>i</sub> &lt; 2<sup>n</sup>). Each such line represents a connection request from input number a<sub>i</sub> of S(n) to output number b<sub>i</sub>. You may assume that the integers a<sub>i</sub> are pairwise distinct, and the integers b<sub>i</sub> are pairwise distinct as well.</li>\n</ul>",
+  "output": "<p>Per test case:</p>\n<ul>\n<li>One line with m integers s<sub>1</sub>, . . . , s<sub>m</sub>, where s<sub>i</sub> is the number of the S(0) switch through which the connection of input a<sub>i</sub> to output bi is established.</li>\n</ul>\n<p>The connection paths should be disjoint. You may print any valid solution, and you may assume that there is at least one valid solution.</p>",
+  "samples": [
+    {
+      "input": "2\n1 1\n0 1\n3 5\n0 3\n1 4\n2 5\n3 6\n4 7\n",
+      "output": "0\n3 0 1 2 4\n"
+    }
+  ],
+  "hint": "<p><img alt=\"\" src=\"/upload/images2/telephonehint.png\" style=\"height:365px; width:506px\"/></p>\n<p>A possible connection scheme for the second sample case, with used cables in bold.</p>",
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2010, dotorya",
+  "level": 20,
+  "tags": [
+    "ad_hoc",
+    "bipartite_graph",
+    "bipartite_matching",
+    "dfs",
+    "graphs",
+    "graph_traversal",
+    "recursion"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 4.400000095367432
+}

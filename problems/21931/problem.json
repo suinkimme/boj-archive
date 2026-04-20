@@ -1,0 +1,26 @@
+{
+  "id": 21931,
+  "title": "Solar Car",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Alice and Bob are playing a game of baggage delivery using a toy solar car. A number of poles are placed here and there in the game field.</p>\n<p>At the start of a game, the solar car is placed right next to a pole, and the same or another pole is marked as the destination. Bob chooses one of the poles and places the baggage there. Then, Alice plans a route of the car to pick up the baggage and deliver it to the marked destination. Alice chooses the shortest possible route and Bob should choose a pole to maximize the route length.</p>\n<p>The solar car can drive arbitrary routes but, as it has no battery cells, it would stop as soon as it gets into shadows. In this game, a point light source is located on the surface of the field, and thus the poles cast infinitely long shadows in the directions opposite to the light source location. The drive route should avoid any of these shadows.</p>\n<p>When the initial positions of the solar car and the destination are given, assuming that both players make the best choices, the length of the drive route is uniquely determined.</p>\n<p>Let us think of all the possible game configurations with given two sets of poles, one for the start positions of the solar car and the other for the destinations. When both the initial car position and the destination are to be chosen uniformly at random from the corresponding sets, what is the expected route length?</p>\n<p>Your task is to compute the expected value of the route length, given the set of the initial positions of the car and that of the destinations.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\nn\nx<sub>1</sub> y<sub>1</sub>\n.\n.\n.\nx<sub>n</sub> y<sub>n</sub>\np\na<sub>1</sub> b<sub>1</sub> c<sub>1</sub> d<sub>1</sub>\n.\n.\n.\na<sub>p</sub> b<sub>p</sub> c<sub>p</sub> d<sub>p</sub></pre>\n<p>Here, n is the number of poles (3 ≤ n ≤ 2000). The poles are numbered 1 through n and the i-th pole is placed at integer coordinates (x<sub>i</sub>, y<sub>i</sub>) (−1000 ≤ x<sub>i</sub> ≤ 1000, −1000 ≤ y<sub>i</sub> ≤ 1000). The point light is at (0, 0). Poles are not placed at (0, 0) nor in a shadow of another pole, and no two poles are placed at the same coordinates.</p>\n<p>p is the number of pairs of sets (1 ≤ p ≤ 10<sup>5</sup>). The i-th pair of sets is specified by four integers (a<sub>i</sub>, b<sub>i</sub>, c<sub>i</sub>, d<sub>i</sub>) (1 ≤ a<sub>i</sub> ≤ b<sub>i</sub> ≤ n, 1 ≤ c<sub>i</sub> ≤ d<sub>i</sub> ≤ n). Specifically, the solar car is initially placed at the j-th pole, with j chosen uniformly at random from {a<sub>i</sub>, . . . , b<sub>i</sub>}, and the destination pole is also chosen uniformly at random from {c<sub>i</sub>, . . . , d<sub>i</sub>}.</p>",
+  "output": "<p>Output the answer for each pair of sets. Absolute or relative errors less than 10<sup>−7</sup> are permissible.</p>",
+  "samples": [
+    {
+      "input": "5\n7 0\n3 3\n0 7\n-3 3\n-7 0\n6\n1 1 3 3\n3 3 4 4\n1 1 5 5\n5 5 2 2\n2 2 4 4\n1 5 1 5\n",
+      "output": "24.000000000000\n20.440306508911\n20.000000000000\n19.000000000000\n15.440306508911\n21.606571644990\n"
+    }
+  ],
+  "hint": "<p>For the first set pair of this test case, the solar car is placed at (7, 0) and the flag is placed at (0, 7). Then, Bob places the baggage at (−7, 0). The length of the shortest route from (−7, 0) to (0, 7) is 10, because the straight path from (−7, 0) to (0, 7) crosses the shadow of pole 4. The length of the shortest route from (7, 0) to (−7, 0) is 14, so the total length is 24.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 608px; height: 402px;\"/></p>\n<p style=\"text-align: center;\">Figure F.1. Shortest routes for the first five set pairs of Sample Input 1. Black dots are the positions of the poles and gray lines are their shadows. The yellowish brown dots are the positions of the point lights. For each figure, the red lines indicate the shortest route from the initial car position to the destination.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2020 Asia Yokohama Regional",
+  "level": 23,
+  "tags": [
+    "dp",
+    "geometry",
+    "convex_hull"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.7000000476837158
+}

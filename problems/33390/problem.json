@@ -1,0 +1,36 @@
+{
+  "id": 33390,
+  "title": "Keychain",
+  "time_limit": "10 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Consider a two-dimensional plane and $n$ points $p_1, \\ldots, p_n$ on it. Consider $n$ circles $C_1, C_2, \\ldots, C_n$: the $i$-th circle is centered at $p_i$. All the radii of the $n$ circles are $R$.</p>\n<p>Determine the minimum value of $R$ such that one can draw another <em>generalized circle</em> $\\Gamma$ that intersects all the $n$ circles. Please find one such $\\Gamma$ as well.</p>\n<ul>\n<li>A circle $C$ with radius $r$ contains all points such that the Euclidean distance between the point and the center of the circle is exactly $r$.</li>\n<li>A <em>generalized circle</em> is either a circle or a straight line.</li>\n<li>We say two objects $A$ and $B$ intersect if they share a common point.</li>\n</ul>",
+  "input": "<p>The first line contains an integer $n$ ($1 \\le n \\le 3000$). On each of the next $n$ lines, there will be two integers $x_i$ and $y_i$ indicating the coordinates of point $p_i$ ($0 \\leq x_i, y_i \\leq 10^5$). It is guaranteed that no two given points coincide.</p>",
+  "output": "<p>On the first line, print the optimal answer $R_{\\mathit{opt}}$.</p>\n<p>Your output should satisfy $0 \\leq R_{\\mathit{opt}} \\leq 10^5$.</p>\n<p>It can be proved that the minimum value exists and is in this range.</p>\n<p>Suppose that $\\Gamma_{\\mathit{opt}}$ intersects all $C_1,\\ldots,C_n$ when $R = R_{opt}$.</p>\n<p>It can be shown that, under the constraints in this problem, $\\Gamma_{opt}$ can be chosen to be either a circle centered at a rational coordinate, or a straight line with integer coefficients.</p>\n<ul>\n<li>In the circle case, print \"<code>C</code> $X$ $Y$ $Z$ $r$\", which means that the radius is $r$, and the center of the circle is $O = (X/Z, Y/Z)$. The values $X$, $Y$, $Z$ must be integers with absolute value not greater than $10^{18}$. The value $r$ should be a non-negative real number not greater than $10^{18}$.</li>\n<li>In the straight line case, print \"<code>L</code> $a$ $b$ $c$\", which means that the line $L$ satisfies the equation $ax + by = c$. The values $a$, $b$, $c$ must be integers with absolute value not greater than $10^{18}$.</li>\n</ul>\n<p>When checking your answer, the jury will first check whether $\\Gamma_{opt}$ intersects each of the $C$'s. This will be judged by checking:</p>\n<ul>\n<li>if $|R-r|-\\varepsilon \\leq d(O, p_i) \\leq R+r+\\varepsilon$ in the circle case ($d(O, p_i)$ is the Euclidean distance between $p_i$ and $O$),</li>\n<li>or $R \\leq d(L, p_i) + \\varepsilon$ in the line case ($d(L, p_i)$ is the distance from point $p_i$ to line $L$).</li>\n</ul>\n<p>Here, $\\varepsilon = 10^{-6}$.</p>\n<p>After that, your answer will be considered correct if the absolute or relative error between your $R_{opt}$ and jury's $R_{opt}$ doesn't exceed $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "4\n2 1\n1 3\n2 4\n7 2\n",
+      "output": "0.27069063257455492223\nC 1152 720 288 2.77069063257455492234\n"
+    },
+    {
+      "input": "7\n26919 7739\n85584 91359\n47712 21058\n13729 26355\n16636 96528\n88747 93023\n46770 1150\n",
+      "output": "9663.87959749101919015857\nC 3605577680770432 5873755742321056 96368792608 50864.33205303458045065668\n"
+    },
+    {
+      "input": "10\n756 624\n252 208\n504 416\n378 312\n203 287\n329 391\n0 0\n707 703\n126 104\n581 599\n",
+      "output": "46.05915288207108030175\nL -1248 1512 90300\n"
+    }
+  ],
+  "hint": "<p>The first two examples:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 320px; height: 240px;\"/><img alt=\"\" src=\"2.png\" style=\"width: 320px; height: 240px;\"/></p>\n<p>Be careful of overflow. Consider using <code>long double</code> or <code>__int128</code>.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2023, Day 6: olmrgcsi And His Friends’ Contest",
+  "level": 29,
+  "tags": [
+    "geometry",
+    "convex_hull",
+    "half_plane_intersection",
+    "rotating_calipers",
+    "voronoi"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 4.375
+}

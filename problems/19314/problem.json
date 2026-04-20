@@ -1,0 +1,32 @@
+{
+  "id": 19314,
+  "title": "Swap",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In this problem, we are interested in undirected graphs with $n$ vertices labeled by integers from $1$ to $n$, without loops and parallel edges.</p>\n<p>For a given graph $G$, the following procedure can be executed.</p>\n<pre>\nfunction dfs(u) {\n  set u to active\n  for v in 1, 2, ..., n\n    if (u and v are adjacent in G) and (v is inactive) {\n      swap P[u] and P[v]\n      dfs(v)\n    }\n  set u to done\n}\n\nfor u in 1, 2, ..., n {\n  set u to inactive\n  set P[u] to u\n}\nfor u in 1, 2, ..., n\n  if u is inactive:\n    dfs(u)</pre>\n<p>Given $a_1, a_2, \\ldots, a_n$, find the number of different graphs $G$ such that after the procedure, $P[1] = a_1$, $P[2] = a_2$, $\\ldots$, and $P[n] = a_n$. Two graphs are different if there is a pair of vertices $(u, v)$ such that one of them contains such edge and the other one does not. As the number of such graphs may be very large, find it modulo $998\\,244\\,353$.</p>",
+  "input": "<p>The first line contains an integer $n$ ($1 \\leq n \\leq 500$).</p>\n<p>The second line contains $n$ integers $a_1, a_2, \\ldots, a_n$ ($1 \\leq a_i \\leq n$). It is guaranteed that each number from $1$ to $n$ occurs in the sequence exactly once.</p>",
+  "output": "<p>Print one integer: the number of different graphs $G$ satisfying the conditions, modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "3\n2 3 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "9\n7 2 9 1 3 8 6 5 4\n",
+      "output": "3528\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2018, Day 7: Ruyi Ji Contest 3",
+  "level": 22,
+  "tags": [
+    "dp",
+    "graphs",
+    "graph_traversal",
+    "dfs",
+    "permutation_cycle_decomposition"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.4285999536514282
+}

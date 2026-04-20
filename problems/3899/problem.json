@@ -1,0 +1,22 @@
+{
+  "id": 3899,
+  "title": "도로 지도",
+  "time_limit": "20 초",
+  "memory_limit": "128 MB",
+  "description": "<p>\r\n\t어떤 도시의 도로 지도가 주어졌을 때, 주어진 두 점 사이의 최단거리를 찾는 프로그램을 작성하시오.</p>\r\n\r\n<p>\r\n\t도로 지도는 평면 위의 선분의 집합으로 표현한다.</p>\r\n\r\n<p>\r\n\t<img alt=\"\" src=\"/upload/images/road.png\" style=\"width: 543px; height: 295px;\" /></p>\r\n\r\n<p>\r\n\t위의 그림은 도로 지도의 예이다. 어떤 선분은 도로를 나타내고, 나머지 선분은 어떤 방향으로 움직일 수 없는지를 나타내는 표지판이다. 위의 그림에서는 AE, AM, MQ, EQ, CP, HJ는 도로를 나타내고, 나머지는 표지판을 나타낸다. 어떤 선분의 양 끝점 중, 한 끝점은 선분과 만나고, 다른 끝점은 그렇지 않다면, 그 선분은 표지판을 나타내는 선분이다.</p>\r\n\r\n<p>\r\n\t그림에서 표지판 BF는 점 B에서 차는 왼쪽에서 오른쪽으로 움직일 수 있지만, 반대방향으로는 움직일 수 없다는 뜻이다. 표지판과 도로가 이루는 각 중, 둔각이 있는 방향에서 예각쪽으로는 이동할 수 없다. (각 CBF는 둔각이고, ABF는 예각이다) 따라서, 위의 지도에서 P에서 M으로 가거나, M에서 P로는 갈 수가 없다. 만약, 표지판과 도로가 직각을 이루는 경우에는 그 표지판을 지날 수 없다는 뜻이다. 위의 그림에서는 IL때문에, H에서 J로, J에서 H로 갈 수가 없다.</p>\r\n\r\n<p>\r\n\t두 점이 주어졌을 때, 위의 규칙을 지키면서 가장 짧은 경로를 찾는 프로그램을 작성하시오. 두 점 (x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>)사이의 거리는 루트((x<sub>2</sub>-x<sub>1</sub>)<sup>2</sup>+(y<sub>2</sub>-y<sub>1</sub>)<sup>2</sup>)와 같다.</p>\r\n",
+  "input": "<p>\r\n\t첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 다음과 같이 구성되어 있다.</p>\r\n\r\n<p>\r\n\t테스트 케이스의 첫째 줄에는 선분의 개수 n이 주어진다. n은 200보다 작거나 같은 자연수이다. 둘째 줄에는 x<sub>s</sub>와 y<sub>s</sub>가, 셋째 줄에는 x<sub>g</sub>와 y<sub>g</sub>가 우어진다. (x<sub>s</sub>,s<sub>y</sub>)는 시작점, (x<sub>g</sub>,y<sub>g</sub>)는 끝점이고, 두 점 사이의 최단 거리를 계산하면 된다. (x<sub>s</sub>,y<sub>s</sub>)는 (x<sub>g</sub>,y<sub>g</sub>)는 같지 않으며, 최단 경로는 항상 유일하다.</p>\r\n\r\n<p>\r\n\t다음 줄부터 n개의 줄에는 선분의 정보가 주어진다. 선분의 정보는 x<sub>1</sub><sup>k</sup> y<sub>1</sub><sup>k</sup> x<sub>2</sub><sup>k</sup> y<sub>2</sub><sup>k</sup>와 같은 형식으로 주어지며, k번째 선분의 양 끝점이다. (x<sub>1</sub><sup>k</sup>,y<sub>1</sub><sup>k</sup>)와 (x<sub>2</sub><sup>k</sup>,y<sub>2</sub><sup>k</sup>)는 같지 않고, 두 선분이 교차하는 경우는 없다. 즉, 선분은 항상 끝점을 공유한다.</p>\r\n\r\n<p>\r\n\t모든 좌표는 1000보다 작거나 같은 음이 아닌 정수이다.</p>\r\n",
+  "output": "<p>\r\n\t각각의 테스트 케이스에 대해서, 입력으로 주어진 시작점과 끝점사이의 최단 경로 중 교차점을 모두 출력한다. 각 테스트 케이스의 마지막 줄에는 0을 출력한다.</p>\r\n\r\n<p>\r\n\t교차점은 적어도 두 선분이 만나는 점을 말하며, x좌표와 y좌표를 공백으로 구분해서 출력한다. 만약 시작점에서 끝점으로 가는 경로가 없을 때는 -1을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3\n8\n1 1\n4 4\n1 1 4 1\n1 1 1 4\n3 1 3 4\n4 3 5 3\n2 4 3 5\n4 1 4 4\n3 3 2 2\n1 4 4 4\n9\n1 5\n5 1\n5 4 5 1\n1 5 1 1\n1 5 5 1\n2 3 2 4\n5 4 1 5\n3 2 2 1\n4 2 4 1\n1 1 5 1\n5 3 4 3\n11\n5 5\n1 0\n3 1 5 1\n4 3 4 2\n3 1 5 5\n2 3 2 2\n1 0 1 2\n1 2 3 4\n3 4 5 5\n1 0 5 2\n4 0 4 1\n5 5 5 1\n2 3 2 4\n",
+      "output": "1 1\n3 1\n3 4\n4 4\n0\n-1\n5 5\n5 2\n3 1\n1 0\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2007 in Tokyo, baekjoon",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

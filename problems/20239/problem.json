@@ -1,0 +1,41 @@
+{
+  "id": 20239,
+  "title": "Heroes of Coin Flipping",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>It is year 2030. Professional coin flipping has become the most popular game on the Internet. Latest coin flipping World Championship gathered the record amount of participants from around the world! There are $2^k$ participants, competing in a single-elimination tournament for the title of the Coin Flipping World Champion. For simplicity, we will refer to participants as numbers from $1$ to $2^k$.</p>\n<p>In the first stage, participants are split into pairs: 1 against 2, 3 against 4, ... $2^k - 1$ against $2^k$. The winner of each match advances to the next stage. Every next stage goes on similarly: remaining participants are sorted by their number, then split into pairs to play their matches. The last $k$-th stage is just one match that crowns the world's best coin flipper. All participants' coin-flipping skills are almost identical to each other: in a match with any two participants, the probability of one of them winning is exactly $\\frac 12$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 472px; height: 339px;\"/></p>\n<p style=\"text-align: center;\">An example of a single-elimination tournament with 8 participants. S$X$M$Y$ is a shorthand for the $Y$-th match of the $X$-th stage.</p>\n<p>Hedy missed the live broadcast of the tournament, so she's going to watch all the recordings after the fact. She already knows the list of all participants (and their numbers), but doesn't know any match outcomes. Friends suggested Hedy $n$ matches to watch first (without spoiling the result, of course!). First she is going to watch these $n$ matches in a specific order, then watch all the remaining matches in random order.</p>\n<p>Hedy considers a match <em>exciting</em> if she doesn't know the winner of that match before watching it. For example, after watching the final, both semifinals will not be exciting for her, because she will have already seen the semifinals winners competing in the final. </p>\n<p>Find the expected number of exciting matches, averaged over all possible tournament outcomes and watch orders.</p>",
+  "input": "<p>The first line of the input contains two integers $k$ and $n$ ($1 \\le k \\le 30$; $0 \\le n \\le \\min(2^k - 1, 10^5)$). Next $n$ lines describe the suggested matches in order Hedy is going to watch them. Each line contains two integers $s_i$ and $m_i$, the stage and the number of the match within that stage ($1 \\le s_i \\le k$; $1 \\le m_i \\le 2^{k-s_i}$; all pairs $(s_i, m_i)$ are distinct).</p>",
+  "output": "<p>Print a single real number --- the expected number of exciting matches. The absolute or relative error should not exceed $10^{-9}$.</p>",
+  "samples": [
+    {
+      "input": "2 3\n1 1\n2 1\n1 2\n",
+      "output": "2.0\n"
+    },
+    {
+      "input": "2 1\n1 1\n",
+      "output": "2.5\n"
+    },
+    {
+      "input": "3 2\n3 1\n1 4\n",
+      "output": "2.25\n"
+    },
+    {
+      "input": "4 0\n",
+      "output": "6.833333333333333\n"
+    }
+  ],
+  "hint": "<p>In the first example, there is no randomness. The first two matches are always exciting, the third one is always not.</p>\n<p>In the second example, the first match is exciting. There are two possible orders. In case the semifinal match comes before the final match, both matches are exciting. In the other case, the semifinal will not be exciting as Hedy watches it after the final. The expected value is $1 + \\frac 12 (2 + 1) = 2.5$.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2020-2021 North-Western Russia Regional Contest",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "linearity_of_expectation",
+    "math",
+    "probability",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 3.625
+}

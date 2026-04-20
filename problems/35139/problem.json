@@ -1,0 +1,28 @@
+{
+  "id": 35139,
+  "title": "Rectangular Pool",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are the owner of a land that can be represented as a grid $G$ of size $N \\times M$, with rows numbered from $1$ to $N$, and columns numbered from $1$ to $M$. Define $G_{i, j}$ as the cell of the grid on the row $i$ and column $j$. Each cell of $G$ has either of the following terrains: puddle represented as <code>.</code> and dirt represented as <code>#</code>. A connected component of puddles are defined as a <strong>pool</strong>. A connected component is a set of cells such that any two cells in the set are connected by traversing between cells that share a side.</p>\n<p>Your land is very bizarre that, for the next $Q$ days, exactly one cell will change its type. Formally, suppose cell at row $R$ and column $C$ change its type. If the cell $G_{R, C}$ is a puddle, it will transform into dirt; if the cell is dirt, it will transform into a puddle.</p>\n<p>You have an abnormal obsession to rectangles, so you will get sick if a pool is not rectangular. A rectangular pool is defined as follows: let $r_{min}$, $r_{max}$, $c_{min}$, and $c_{max}$ as the minimum row number, maximum row number, minimum column number, and maximum column number of all puddles in the pool respectively, then there are exactly $(r_{max} - r_{min} + 1) \\times (c_{max} - c_{min} + 1)$ puddles in the pool.</p>\n<p>At the end of each day, determine if there exists any non-rectangular pool in your land!</p>",
+  "input": "<p>The first line contains two integers $N$ and $M$ ($1 \\le N \\le M \\le 1000$). Each of the next $N$ lines contains $M$ characters of either <code>.</code> or <code>#</code>, where the character at $i$-th row and $j$-th column represents the type of cell $G_{i, j}$.</p>\n<p>The next line contains an integer $Q$ ($1 \\le Q \\le 300\\,000$). Each of the next $Q$ lines contains two integers $R$ and $C$ ($1 \\le R \\le N$; $1 \\le C \\le M$) meaning that the cell $G_{R, C}$ change its type.</p>",
+  "output": "<p>Output $Q$ lines representing the existence of non-rectangle pool at the end of each day. Each of the lines contains either <code>RECTANGLES</code> if all pools are rectangular, or <code>NO</code> if there exists a non-rectangular pool.</p>",
+  "samples": [
+    {
+      "input": "5 5\n#...#\n#...#\n#####\n#...#\n#####\n3\n4 3\n1 3\n2 3\n",
+      "output": "RECTANGLES\nNO\nRECTANGLES\n"
+    },
+    {
+      "input": "3 4\n####\n#.##\n####\n1\n2 2\n",
+      "output": "RECTANGLES\n"
+    }
+  ],
+  "hint": "<p><em>Explanation of Sample 1:</em> The following are the states of the land after each day:</p>\n<pre>\n#...#   #.#.#   #.#.#\n#...#   #...#   #.#.#\n#####   #####   #####\n#.#.#   #.#.#   #.#.#\n#####   #####   #####</pre>\n<p>After the first day, all three pools are rectangular pools. After the second day, the pool formed by cells $(1, 2)$, $(1, 4)$, $(2, 2)$, $(2, 3)$, $(2, 4)$ is not rectangular. All pools are rectangular again after the third day.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2025",
+  "level": 17,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

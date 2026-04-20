@@ -1,0 +1,32 @@
+{
+  "id": 25253,
+  "title": "Index Case",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The epidemiologist W. Andy wants to find the index case of an ongoing crisis. To do this, he modelled the city of the outbreak and its $n$ residents with a <em>cellular automaton</em>. The city is represented by $n$ cells numbered from $1$ to $n$ and each cell has two neighbouring cells, one to its left and one to its right. The left neighbour of cell $i$ is cell $i-1$ and the right neighbour is cell $i+1$. Additionally, the left neighbour of cell $1$ is cell $n$ and the right neighbour of cell $n$ is cell $1$. Thus, the city and the corresponding automaton form a simple cycle.</p>\n<p>Each cell contains an integer between $1$ and $m$ which represents how likely it is that this person is infected. Since the virus can only be transmitted by personal contact, the value in the $i$th cell on day $d$ only depends on the values of its neighbours and itself on the previous day. If we denote this value by $s_{d}[i]$, then the outbreak can be simulated by a function $f$ using the formula: \\[s_{d}[i]=f\\big(s_{d-1}[i-1],s_{d-1}[i],s_{d-1}[i+1]\\big).\\] Note that as the city is cyclic both $i+1$ and $i-1$ are calculated modulo $n$.</p>\n<p>Andy wants to find the index case, so he first has to find $s_0$, the state of the city on day zero. This poses a problem, however, as it is not known on which day the crisis started. Right now, Andy believes that he accomplished the task and found the state $s_0$, but you are not convinced. Therefore, you want to check if there may be a state previous to the initial state proposed by Andy, i.e. whether there exists any state $s_{-1}$ that gets transformed into $s_0$ by applying $f$.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two integers $n$ and $m$ $(3\\leq n \\leq 200, 2\\leq m \\leq 10)$, the number of cells and the number of states.</li>\n<li>$m^3$ lines describing the values $f(x,y,z)$ ($1 \\le f(x,y,z) \\le m$ for each $1 \\le x,y,z \\le m$) of the function $f$ modelling the automaton. The values are given in lexicographic order of the arguments: The first value is $f(1,1,1)$, the next is $f(1,1,2)$, and so on until $f(1,1,m)$, followed by $f(1,2,1)$ and so forth. The last value is $f(m,m,m)$.</li>\n<li>One line with $n$ integers $s_0[1],\\dots,s_0[n]$ ($1 \\le s_0[i] \\le m$ for each $i$), the initial state that has been proposed by Andy.</li>\n</ul>",
+  "output": "<p>Output <code>yes</code> if there exists at least one possible previous state and <code>no</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "4 2\n1\n2\n1\n2\n2\n1\n2\n1\n1 2 1 2\n",
+      "output": "yes\n"
+    },
+    {
+      "input": "6 2\n1\n2\n1\n2\n2\n1\n2\n1\n1 2 1 2 1 2\n",
+      "output": "no\n"
+    },
+    {
+      "input": "10 2\n1\n2\n1\n1\n2\n2\n2\n2\n1 2 2 2 1 2 1 2 1 2\n",
+      "output": "yes\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2021",
+  "level": 16,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 1.625
+}

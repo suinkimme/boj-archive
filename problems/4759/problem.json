@@ -1,0 +1,22 @@
+{
+  "id": 4759,
+  "title": "Auctions R Us",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Having run into trouble with current online auctions and buyers that win auctions and then back out, you decide to open a new enterprise that has the bidders deposit funds before they may bid on any item. If they win an auction, the amount they bid is immediately (that second!) deducted from their account. (The problem of sellers that don’t deliver the items will be left for another day.)</p>\n<p>You must write a program to implement the rules of this auction. You will be auctioning off a number of items, each of which will have a reserve price that must be met. Each of your bidders will deposit funds with you, and you must match these funds with items they successfully bid for. You will write a program that tracks the auctions during a single day and outputs the results of each auction.</p>\n<p style=\"margin-left: 40px;\">- Auction Rules</p>\n<p style=\"margin-left: 40px;\">You are guaranteed:</p>\n<ul>\n<li style=\"margin-left: 40px;\">No two items will have the same end time.</li>\n<li style=\"margin-left: 40px;\">No two bids will have the same bid time.</li>\n<li style=\"margin-left: 40px;\">No price, bid, or account balance will be negative.</li>\n</ul>\n<p style=\"margin-left: 40px;\">Bidder numbers and item numbers are unique within each category, but a bidder may have the same number as an item. Bidder and item numbers are not necessarily assigned sequentially.</p>\n<p style=\"margin-left: 40px;\">An auction is won by the highest bid that:</p>\n<ul>\n<li style=\"margin-left: 40px;\">arrives no later than the second the auction ends.</li>\n<li style=\"margin-left: 40px;\">is greater than or equal to the minimum price for the item</li>\n<li style=\"margin-left: 40px;\">has at least the bid amount remaining in the bidder’s account at the instant the auction ends.</li>\n</ul>",
+  "input": "<p>There are 3 sections in the data file, describing the items available for bid, the registered bidders, and the bids made during the auction.</p>\n<p style=\"margin-left: 40px;\">- Items<br/>\n </p>\n<ul>\n<li style=\"margin-left: 40px;\">A single line containing the number of items, i</li>\n<li style=\"margin-left: 40px;\">i lines, one for each item of the form:<br/>\n\t &lt;item number&gt; &lt;minimum price&gt; &lt;auction end time&gt;<br/>\n\tItem number is a non-negative integer, minimum price is specified to the penny (0.01), and auction end time is in 24 hour format of the form XX:YY:ZZ where XX is in hours from 00 to 23, YY is in minutes from 00 to 59, and ZZ is in seconds from 00 to 59.</li>\n</ul>\n<p style=\"margin-left: 40px;\">- Bidders</p>\n<ul>\n<li style=\"margin-left: 40px;\">A single line with the number of bidders registered, j</li>\n<li style=\"margin-left: 40px;\">j lines of bidder data of the form:<br/>\n\t  &lt;bidder number&gt; &lt;account balance&gt;<br/>\n\tWhere bidder number is a non-negative integer and account balance is specified to the penny (0.01).</li>\n</ul>\n<p style=\"margin-left: 40px;\">- Bids</p>\n<ul>\n<li style=\"margin-left: 40px;\">A single line with the number of bids received, k </li>\n<li style=\"margin-left: 40px;\">k lines of bid data of the form:<br/>\n\t &lt;item # being bid on&gt; &lt;bidder number&gt; &lt;bid amount&gt; &lt;bid time&gt;<br/>\n\twhere all fields are formatted as described above.</li>\n</ul>",
+  "output": "<p>Output one line for each item being auctioned, in order of their auction finish time, listing</p>\n<p>Item &lt;item number&gt; Bidder &lt;bidder number&gt; Price &lt;winning bid&gt;</p>\n<p>If there is not a winning bid for an item, for that item output</p>\n<p>Item &lt;item number&gt; Reserve not met.</p>",
+  "samples": [
+    {
+      "input": "2\n1 5.00 05:06:27\n2 25.00 15:30:11\n2\n11 37.37\n22 55.55\n3\n1 11 60.00 04:03:01\n2 11 26.00 00:18:03\n2 22 27.00 09:03:05\n",
+      "output": "Item 1 Reserve not met.\nItem 2 Bidder 22 Price 27.00\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 2004 Mid-Atlantic Regional Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

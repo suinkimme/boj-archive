@@ -1,0 +1,22 @@
+{
+  "id": 11127,
+  "title": "Robotic Encryption",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Due to suspicion of cheaters, one of the more paranoid problem setters has started encrypting all messages to the rest of the jury before sending them. He didn’t use any standard encryption, however, as he believes those are all part of a giant conspiracy network trying to crush IDI Open from the inside. Instead, he based it on the fact that the cheaters are likely to be the worst programmers. The decryption requires some programming skill, and should therefore be safe.</p>\n<p>Along with the encrypted message, he sent explanation of how to decrypt it. The only problem now is that not all jury members are able to implement the decryption. This is where we need your help. You need to help us decrypt these messages by writing a program that does the task.</p>\n<p>Decryption is performed by simulating a robots movement on a grid. The robot is initially placed in the north-west corner of the grid, facing south. The robot is a simple one, and only accepts three different commands:</p>\n<ul>\n<li><code>L</code> turns the robot 90<sup>◦</sup> to the left.</li>\n<li><code>R</code> turns the robot 90<sup>◦</sup> to the right.</li>\n<li><code>F</code> moves the robot one square forward. If moving forward would cause the robot to fall off the grid, the robot instead makes a 180<sup>◦</sup> turn without moving.</li>\n</ul>\n<p>Instructions to the robot is given in a series of commandsets. A commandset is a string of commands, with the possible addition of loops. A loop is given on the form ”(commandset)number” where number is the number of times the commandset inside the parentheses should be run. Longer sequences of commands can be built up recursively in this fashion. More formally:</p>\n<pre>\ncommandset ::= instruction+\ninstruction ::= command|loop\nloop ::= ”(” commandset ”)” number\ncommand ::= R | L | F\nnumber ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9</pre>\n<p>The decrypted text is the text string obtained by concatenating the characters on the grid positions the robot stands on after executing each commandline.</p>",
+  "input": "<p>The first line of input gives T, the number of test scenarios. Each scenario starts with a line containing W and H, separated by a single space, describing the dimensions of the grid. Then follows H lines, each consisting of W characters, making up the grid. After this comes a line containing N, the number of commandlines, followed by the N lines the robot will be executing.</p>\n<ul>\n<li>0 &lt; T ≤ 100</li>\n<li>0 &lt; W ≤ 50</li>\n<li>0 &lt; H ≤ 50</li>\n<li>0 &lt; N ≤ 20</li>\n<li>Commandlines will be no longer than 50 characters, and will follow the syntax given in the problem text.</li>\n<li>No character with ASCII value lower than 32 or higher than 126 will appear on the robots grid.</li>\n</ul>",
+  "output": "<p>One line per test scenario, containing the decrypted text.</p>",
+  "samples": [
+    {
+      "input": "1\n6 7\n012345\n6789AB\nCDEFGH\nIJKLMN\nOPQRST\nUVWXYZ\n_! .,&\n12\nFFL(F)5\n(F)4\n(LF)2\n(L(R)6L)9\nRFRFFF\n(L(F)2)2\nLF\nFLFF\nFFFF\nLF\nFLFF\nL(F)4\n",
+      "output": "HELLO WORLD!\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, IDI Open Contest, IDI Open 2009",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 4
+}

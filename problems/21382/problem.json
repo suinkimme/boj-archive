@@ -1,0 +1,26 @@
+{
+  "id": 21382,
+  "title": "Decompression",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Consider the following scheme: for permuting a string of letters: first we create all different rotations of the string, then we sort them in lexicographical order, and finally we take the last letter of each rotation and concatenate them to form a new string.</p>\n<p>For the string \"<code>LEIDEN.</code>\", for example, the seven rotation in lexicographical order are(where the period '<code>.</code>' comes before any letter):</p>\n<pre>\n.LEIDEN\nDEN.LEI\nEIDEN.L\nEN.LEID\nIDEN.LE\nLEIDEN.\nN.LEIDE</pre>\n<p>so this results in the string \"<code>NILDE.E</code>\"</p>\n<p>At first glance this permutation doesn't seem useful at all but it has an interesting property. If there are a lot of equal substrings in the original string (which might happen in case of a real language), the a lot of equal consecutive letters occur after the permutation. Therefor the resulting string is very suitable for block compression. where blocks of equals letters are replaced by that letter followed by a number which specifies how often that letter occurs. If the letter only occurs once, no number is added. For example the string \"<code>AAABCC</code>\" would be replaced by \"<code>A3BC2</code>\".</p>\n<p>Your task is now to decompress this final string to the original string. Note however, that permuting the string it not entirely reversible: you can only obtain the original string up to a rotation (i.e.: each rotation would lead to same permuted string). To overcome this, the original string will consist of uppercase letters followed by a single period('<code>.</code>'), this will define the initial rotation.</p>",
+  "input": "<p>The first line of the input contains a single number: the number of test cases to follow. Each test case has the following format:</p>\n<ul>\n<li>One line with the compressed string. This string will consist of uppercase letters, numbers and a single period, and will be a valid block compressed string. The length of the original string that resulted in the compressed one will be no more than 1,000,000 characters.</li>\n</ul>",
+  "output": "<p>For every test case in the input, the output should contain a single line with the decompressed string.</p>",
+  "samples": [
+    {
+      "input": "3\nNILDE.E\nN13.E13\nLRSGORTNOMOMAIOSROC2.GAPTE2NS\n",
+      "output": "LEIDEN.\nENENENENENENENENENENENENEN.\nPROGRAMMINGCONTESTSARESOCOOL.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2006",
+  "level": 0,
+  "tags": [
+    "dp",
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

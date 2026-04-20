@@ -1,0 +1,33 @@
+{
+  "id": 30318,
+  "title": "제우스",
+  "time_limit": "12 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>번개의 신 우제는 <a href=\"https://en.wikipedia.org/wiki/Treewidth\">Treewidth</a>가 2 이하인 무방향 연결 그래프를 가지고 있다. 임의의 두 정점을 직접 잇는 간선은 최대 하나이며, 모든 간선은 서로 다른 정점을 잇고, 각 간선에는 양의 정수 가중치가 붙어 있다. 그래프의 각 정점은 $1$ 이상 $N$ 이하의 서로 다른 정수로 표현된다.</p>\n<p>$dist(i, j)$ 를 $i$ 번 정점과 $j$ 번 정점 간의 최단 경로 길이라고 하자. 우제가 가지고 있는 그래프가 주어질 때, $\\sum_{1 \\le i &lt; j \\le N} dist(i, j)$ 를 출력하라.</p>",
+  "input": "<p>첫 번째 줄에 테스트 케이스의 개수 $T$ 가 주어진다. ($1 \\le T \\le 60$)</p>\n<p>이후 차례로 $T$ 개의 테스트 케이스가 주어진다.</p>\n<p>각 테스트 케이스의 첫 번째 줄에는 정점의 수 $N$ 과 간선의 수 $M$ 이 주어진다. ($3 \\le N \\le 50\\,000, 2 \\le M \\le 100\\,000$)</p>\n<p>이후 $M$ 개의 줄에 간선의 정보가 세 정수 $u, v, w$ 로 주어진다. 정점 $u$ 와 $v$ 를 잇는 가중치 $w$ 의 간선이 존재한다는 뜻이다. ($1 \\le u, v \\le N, u \\neq v, 0 \\le w \\le 1\\,000$)</p>\n<p>모든 테스트 케이스에 대한 $N + M$ 의 합은 $1\\,600\\,000$ 이하이다.</p>",
+  "output": "<p>각 테스트 케이스마다 첫 줄에는 “Case #C”를 출력하여야 한다. 이때 C는 테스트 케이스의 번호이다.</p>\n<p>다음 줄에 답을 정수로 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3\n6 6\n1 2 10\n2 3 10\n3 4 10\n2 5 5\n5 6 5\n2 6 8\n15 18\n1 2 1\n2 3 2\n3 4 1\n4 5 2\n5 6 1\n6 7 2\n7 8 1\n8 3 2\n2 9 1\n2 14 2\n9 14 1\n9 10 2\n10 15 1\n9 15 2\n10 11 1\n11 12 2\n12 13 1\n13 10 2\n6 9\n1 2 45\n2 3 42\n3 4 47\n4 5 35\n5 6 53\n6 1 49\n1 5 57\n2 4 46\n5 2 35\n",
+      "output": "Case #1\n237\nCase #2\n530\nCase #3\n970\n"
+    }
+  ],
+  "hint": "<p><a href=\"/problem/11737\">11737번: Cactus Jubilee</a>에서 1, 2번 예제 그래프의 그림을, <a href=\"/problem/11738\">11738번: Distance on Triangulation</a>에서 3번 예제 그래프의 그림을 볼 수 있다.</p>\n<p>어떠한 연결 그래프 $G$ 의 Treewidth가 2 이하라는 것은, 정점이 하나이고 간선이 없는 그래프에 다음 세 연산을 적절히 반복해서 $G$와 동일한 (<a href=\"https://en.wikipedia.org/wiki/Graph_isomorphism\">isomorphic</a>) 그래프를 얻을 수 있다는 것과 동치이다:</p>\n<ul>\n<li>연산 1: 이미 존재하는 정점 A와 정점 X를 간선으로 연결한다.</li>\n<li>연산 2: 이미 존재하며 간선으로 직접 연결된 두 정점 A와 B에 대해서 A와 정점 X를 간선으로 연결하고 B와 X를 간선으로 연결한다.</li>\n<li>연산 3: 이미 존재하며 간선으로 직접 연결된 두 정점 A와 B에 대해서 A와 정점 X를 간선으로 연결하고 B와 X를 간선으로 연결한다. 그리고, A와 B를 잇는 간선을 제거한다.</li>\n</ul>",
+  "source": "koosaga",
+  "level": 28,
+  "tags": [
+    "centroid",
+    "centroid_decomposition",
+    "data_structures",
+    "divide_and_conquer",
+    "dp",
+    "graphs",
+    "segtree",
+    "sweeping",
+    "trees",
+    "tree_decomposition"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 6
+}

@@ -1,0 +1,40 @@
+{
+  "id": 33726,
+  "title": "Mi Teleférico",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>La Paz, the capital city of Bolivia, is famous as a tourist spot and for an aerial cable car called Mi Teleférico. You are now visiting La Paz for sightseeing, and you want to visit as many sightseeing places as possible. In this task, we consider the following simplified situation.</p>\n<p>There are $N$ aerial cable car stations in La Paz, numbered from $1$ to $N$ in ascending order of altitude. There are $M$ <strong>one-way</strong> lines, numbered from $1$ to $M$. There are $P$ aerial cable car companies, numbered from $1$ to $P$. Each line is managed by a single company. Line $i$ ($1 ≤ i ≤ M$) is operated from station $A_i$ to station $B_i$, and is managed by the company $C_i$. Here, the line always runs from the lower altitude station to the higher altitude station. In other words, $A_i &lt; B_i$ holds.</p>\n<p>The Bureau of transportation of La Paz issued unlimited ride passes for convenience. Each ride pass contains $2$ integers $l$, $r$, which satisfy $1 ≤ l ≤ r ≤ P$. The pass enables the possessor to ride lines, which are managed by any one of company $l, l + 1, \\dots ,r$. In other words, for an integer $i$ which satisfies $1 ≤ i ≤ M$, the pass enables the possessor to ride line $i$ when $l ≤ C_i ≤ r$ holds. It is possible to use a single pass for several lines. Let a ride pass $(l,r)$ denote this ride pass.</p>\n<p>Now, $Q$ tourists, numbered from $1$ to $Q$, visit La Paz. Tourist $j$ ($1 ≤ j ≤ Q$) has a ride pass $(L_j, R_j)$ and $X_j$ boliviano cash.</p>\n<p>Each tourist’s goal is to ensure that no station cannot be travelled from station $1$, using only lines that can be ridden with the ride pass he or she has. Tourist $j$ ($1 ≤ j ≤ Q$) can exchange his or her ride pass described in the following process to achieve their goal. Here, each tourist can exchange at most once.</p>\n<ol>\n<li>He or she chooses $2$ integers $l'$, $r'$, which satisfy $1 ≤ l' ≤ r' ≤ P$.</li>\n<li>He or she exchanges a ride pass $(L_j, R_j)$ for a ride pass $(l', r')$. It costs $|L_j − l'| + |R_j − r'|$ boliviano as a fee.</li>\n</ol>\n<p>Your purpose is to determine, for each tourist, whether or not he or she can achieve his or her goal within the cash he or she has.</p>\n<p>Write a program which, given information about stations, lines, and tourists, determines whether or not he or she can achieve his or her goal within the cash he or she has for each tourist.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<blockquote>\n<p>$N$ $M$ $P$</p>\n<p>$A_1$ $B_1$ $C_1$</p>\n<p>$A_2$ $B_2$ $C_2$</p>\n<p>$\\vdots$</p>\n<p>$A_M$ $B_M$ $C_M$</p>\n<p>$Q$</p>\n<p>$L_1$ $R_1$ $X_1$</p>\n<p>$L_2$ $R_2$ $X_2$</p>\n<p>$\\vdots$</p>\n<p>$L_Q$ $R_Q$ $X_Q$</p>\n</blockquote>",
+  "output": "<p>Write $Q$ lines to the standard output. On the $j$-th line ($1 ≤ j ≤ Q$), output <code>Yes</code> if tourist $j$ can achieve his or her goal, and <code>No</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "4 6 10\n1 2 3\n2 4 7\n1 2 6\n2 3 5\n3 4 2\n3 4 8\n4\n3 7 0\n5 6 0\n3 4 0\n1 9 0\n",
+      "output": "Yes\nNo\nNo\nYes\n"
+    },
+    {
+      "input": "4 6 10\n1 2 3\n2 4 7\n1 2 6\n2 3 5\n3 4 2\n3 4 8\n3\n5 6 10\n3 4 1\n7 8 3\n",
+      "output": "Yes\nNo\nYes\n"
+    },
+    {
+      "input": "3 1 1000000000\n1 2 6\n1\n1 1000000000 1000000000\n",
+      "output": "No\n"
+    },
+    {
+      "input": "5 9 2000\n2 3 1814\n2 3 457\n1 2 1226\n3 4 1354\n1 5 1050\n1 2 1725\n2 3 1383\n1 5 1626\n1 4 1795\n5\n850 1872 128\n82 428 1217\n487 924 573\n1639 1926 202\n202 420 25\n",
+      "output": "Yes\nYes\nYes\nYes\nNo\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Japanese Olympiad in Informatics, JOI 2024/2025",
+  "level": 20,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "segtree",
+    "two_pointer",
+    "dag"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 3
+}

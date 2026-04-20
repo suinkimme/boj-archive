@@ -1,0 +1,33 @@
+{
+  "id": 24964,
+  "title": "Cancer DNA",
+  "time_limit": "10 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The <em>Investigation Center for Potential Cancer (ICPC)</em> found out patterns of a DNA sequence that cause cancer! We would like you to write a computer program that approximates the probability that a random DNA sequence matches one of the given patterns.</p>\n<p>A DNA sequence can be represented by a string consisting of four letters, ‘<code>A</code>’, ‘<code>G</code>’, ‘C’, and ‘<code>T</code>’. A DNA pattern is a string over the same four letters plus ‘<code>?</code>’. We say that a DNA pattern <em>matches</em> a DNA sequence of the same length if each of the characters in the pattern is either ‘<code>?</code>’ or is the same as the character at the corresponding position in the DNA sequence. For example, a pattern “<code>AC?</code>” matches DNA sequences “<code>ACA</code>”, “<code>ACG</code>”, “<code>ACC</code>”, and “<code>ACT</code>”.</p>\n<p>Your task is to write a program that, given a set of DNA patterns of the same length, computes the probability that a uniformly random DNA sequence of the same length matches any of the given patterns. A multiplicative error up to 5% is permissible.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<p>$\\begin{align*}&amp; n \\, m \\\\ &amp; P_1 \\\\ &amp; \\vdots \\\\ &amp; P_m\\end{align*}$</p>\n<p>The first line of the input contains two positive integers $n$ and $m$ such that $1 ≤ n ≤ 100$ and $1 ≤ m ≤ 30$ hold. The next $m$ lines contain $m$ patterns $P_1$, $\\dots$, $P_m$. Each pattern $P_i$ is a string of length $n$ over ‘<code>A</code>’, ‘<code>G</code>’, ‘<code>C</code>’, ‘<code>T</code>’, and ‘<code>?</code>’.</p>",
+  "output": "<p>Let $S$ be a DNA sequence of length $n$ chosen uniformly at random. Let $w$ be the probability that $S$ matches at least one of $P_1$, $\\dots$, and $P_m$. The output is a real number $v$ that approximates $w$.</p>\n<p>The output $v$ is judged to be correct if $v$ approximates $w$ within a multiplicative error of 5%, i.e.,</p>\n<p style=\"text-align: center;\">$0.95 × w ≤ v ≤ 1.05 × w$.</p>\n<p>$v$ should be represented either with or without exponent component. For example, $0.045$ can be represented as <code>4.5e-2</code> or <code>0.045</code>.</p>",
+  "samples": [
+    {
+      "input": "3 1\nAC?\n",
+      "output": "0.0625\n"
+    },
+    {
+      "input": "6 2\nAC??A?\nA??A?T\n",
+      "output": "0.0302734375\n"
+    },
+    {
+      "input": "30 1\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n",
+      "output": "8.673617379884035e-19\n"
+    }
+  ],
+  "hint": "<p>In the first sample, there are $4^3$ DNA sequences of length $3$. There are $4$ DNA sequences, “<code>ACA</code>”, “<code>ACG</code>”, “<code>ACC</code>”, and “<code>ACT</code>”, that match the pattern “<code>AC?</code>”. Thus, the probability is $4/4^3 = 0.0625$. Any real number between $0.059375$ and $0.065625$ is accepted as a correct output.</p>\n<p>As in the third sample, the probability can be a small real number. Note that “<code>0</code>” is not a correct output, as $0$ is less than 95% of the precise probability.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2021 Asia Yokohama Regional",
+  "level": 24,
+  "tags": [
+    "inclusion_and_exclusion",
+    "randomization"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 5.5
+}

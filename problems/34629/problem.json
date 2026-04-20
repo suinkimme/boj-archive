@@ -1,0 +1,26 @@
+{
+  "id": 34629,
+  "title": "Division Versus Addition",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>For an array $b=[b_1,b_2,\\ldots,b_m]$ of length $m$ ($b_i \\geq 2$), consider the following two-player game played by Poby and Rekkles.</p>\n<ul>\n<li>The players take turns, with Poby moving first.</li>\n<li>On Poby's turn, he must choose an element $x \\ge 2$ and replace it with $\\left\\lfloor \\frac{x}{2} \\right\\rfloor$. In other words, he picks $i$ ($1 \\leq i \\leq m$) such that $b_i \\ge 2$, then does $b_i := \\left\\lfloor \\frac{b_i}{2} \\right\\rfloor$.</li>\n<li>On Rekkles' turn, he must choose an element $x \\ge 2$ from the array $b$ and replace it with $x+1$. In other words, he picks $i$ ($1 \\leq i \\leq m$) such that $b_i \\ge 2$, then does $b_i := b_i+1$.</li>\n</ul>\n<p>The game ends once all elements in the array $b$ are equal to $1$.</p>\n<p>Define the <strong>score</strong> of the game as the number of moves that Poby makes. Poby's goal is to minimize the <strong>score</strong>, while Rekkles's goal is to maximize the <strong>score</strong>.</p>\n<p>Then, the <strong>value</strong> of the array $b$ is the score of the game when both players play optimally.</p>\n<p>You are given an integer array $a$ of length $n$ ($a_i \\ge 2$).</p>\n<p>Answer $q$ independent queries. In each query, you are given a range $1 \\leq l \\leq r \\leq n$ and must find the <strong>value</strong> of the array $[a_l, a_{l+1}, \\ldots, a_r]$.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains the number of test cases $t$ ($1 \\le t \\le 10^4$). The description of the test cases follows.</p>\n<p>The first line of each test case contains two integers $n$ and $q$ ($1 \\le n, q \\le 250\\,000$) --- the length of the array and the number of queries.</p>\n<p>The next line contains $n$ integers $a_1, a_2, \\ldots, a_n$ ($2 \\le a_i \\le 10^9$) --- the elements of the array $a$.</p>\n<p>Then $q$ lines follow. The $j$-th of them contains two integers $l_j$ and $r_j$ ($1 \\le l_j \\le r_j \\le n$) --- the range of the subarray for the $i$-th query.</p>\n<p>It is guaranteed that the sum of $n$ over all test cases does not exceed $250\\,000$.</p>\n<p>It is guaranteed that the sum of $q$ over all test cases does not exceed $250\\,000$.</p>",
+  "output": "<p>For each test case, output $q$ lines. The $i$-th line should contain a single integer representing the answer to the $i$-th query.</p>",
+  "samples": [
+    {
+      "input": "2\n5 5\n4 3 2 5 6\n1 1\n1 2\n2 4\n3 5\n1 5\n10 1\n314 159 265 358 979 323 846 264 338 327\n1 10\n",
+      "output": "2\n3\n5\n6\n10\n91\n"
+    }
+  ],
+  "hint": "<p><strong>Explanation of the first test case, first query (1 1):</strong></p>\n<p>The subarray is $[4]$.</p>\n<ol>\n<li>Poby: $4\\to \\left\\lfloor \\tfrac{4}{2}\\right\\rfloor=2$. The array is $[2]$.</li>\n<li>Rekkles: $2\\to 3$. The array is $[3]$.</li>\n<li>Poby: $3\\to \\left\\lfloor \\tfrac{3}{2}\\right\\rfloor=1$. The array is $[1]$, so the game ends.</li>\n</ol>\n<p>It can be shown that this strategy is optimal for both players. Therefore, the value of the array $[4]$ is $2$.</p>\n<p><strong>Explanation of the first test case, second query (1 2):</strong></p>\n<p>The subarray is $[4,3]$.</p>\n<ol>\n<li>Poby: $3\\to \\left\\lfloor \\tfrac{3}{2}\\right\\rfloor=1$. The array is $[4,1]$.</li>\n<li>Rekkles: $4\\to 5$. The array is $[5,1]$.</li>\n<li>Poby: $5\\to \\left\\lfloor \\tfrac{5}{2}\\right\\rfloor=2$. The array is $[2,1]$.</li>\n<li>Rekkles: $2\\to 3$. The array is $[3,1]$.</li>\n<li>Poby: $3\\to \\left\\lfloor \\tfrac{3}{2}\\right\\rfloor=1$. The array is $[1,1]$, so the game ends.</li>\n</ol>\n<p>It can be shown that this strategy is optimal for both players. Therefore, the value of the array $[4,3]$ is $3$.</p>",
+  "source": "Contest, Codeforces, Squarepoint Challenge (Codeforces Round 1055, Div. 1 + Div. 2), qwerasdfzxcl, djm03178, sadtreap, urd05",
+  "level": 18,
+  "tags": [
+    "ad_hoc",
+    "prefix_sum",
+    "game_theory"
+  ],
+  "accepted_user_count": 72,
+  "submission_count": null,
+  "average_tries": 1.0693999528884888
+}

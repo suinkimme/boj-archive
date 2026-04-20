@@ -1,0 +1,27 @@
+{
+  "id": 17957,
+  "title": "Find the Array",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>There is an array a of length n, consisting of <strong>distinct</strong> integers. It is guaranteed that every element of the array is a positive integer less than or equal to 10<sup>9</sup>. You have to find out the values of all the elements of it.</p>\n<p>To do so, you can make up to 30 queries of the following two types:</p>\n<ul>\n<li>“1 i” (1 ≤ i ≤ n) — ask the value of a<sub>i</sub></li>\n<li>“2 k i<sub>1</sub>, i<sub>2</sub>, . . . , i<sub>k</sub>” (2 ≤ k ≤ n, 1 ≤ i<sub>j</sub> ≤ n, all i<sub>j</sub> must be distinct) — the number k and k positions in the array. As the answer to this query you will receive k·(k−1)/2 integers — |a<sub>i<sub>c</sub></sub> − a<sub>i<sub>d</sub></sub>| for every c &lt; d. In other words, you will receive k·(k−1)/2 absolute values of differences between all pairs of elements that are on positions i<sub>1</sub>, i<sub>2</sub>, . . . , i<sub>k</sub>. Note that the answer on query 2 is randomly shuffled.</li>\n</ul>\n<p>Once you know the answer, print it using the following query:</p>\n<ul>\n<li>“3 a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub>” (1 ≤ a<sub>i</sub> ≤ 10<sup>9</sup>) — the elements of the array a. After this query, your program must terminate. This query doesn’t count (i.e. you can make up to 30 queries of either of the first two types plus 1 query of the third type).</li>\n</ul>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "3\n\n1\n\n2\n\n4 3 1\n\n",
+      "output": "\n\n1 1\n\n1 2\n\n2 3 1 2 3\n\n3 1 2 5\n"
+    }
+  ],
+  "hint": "<p>In the first query of type 1, we ask the value of a<sub>1</sub> and receive 1 as the answer.</p>\n<p>In the second query of type 2, we ask the value of a<sub>2</sub> and receive 2 as the answer.</p>\n<p>In the query of type 2, we ask all the possible differences between the elements of array with indexes 1, 2 and 3. And we get array 4, 3, 1 as the result. We know that the array contains values |a<sub>1</sub>−a<sub>2</sub>|, |a<sub>1</sub>−a<sub>3</sub>|, |a<sub>2</sub>−a<sub>3</sub>|. Since we already know that |a<sub>2</sub> − a<sub>1</sub>| = 1, one of the following is true: |a<sub>1</sub> − a<sub>3</sub>| = 3 and |a<sub>2</sub> − a<sub>3</sub>| = 4 or |a<sub>2</sub> − a<sub>3</sub>| = 3 and |a<sub>1</sub> − a<sub>3</sub>| = 4. The only case that is possible, taking into account the constraints of the problem, is when |a<sub>1</sub> − a<sub>3</sub>| = 4 and |a<sub>2</sub> − a<sub>3</sub>| = 3 with a<sub>3</sub> = 5.</p>\n<p>Since we know the values of all the elements of the array, we print them in the last query.</p>",
+  "source": "ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2019, Contest, Open Cup, 2019/2020 Season, Stage 6: Grand Prix of Southeastern Europe",
+  "level": 23,
+  "tags": [
+    "ad_hoc",
+    "binary_search",
+    "bitmask",
+    "divide_and_conquer"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 2.3478000164031982
+}

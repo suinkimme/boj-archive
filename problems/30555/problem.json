@@ -1,0 +1,45 @@
+{
+  "id": 30555,
+  "title": "Thwack!",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The game <em>Thwack</em> is played on a 1-dimensional grid of cells: the <em>game board</em>. Each grid cell contains either a black stone, a white stone, or is empty.</p>\n<p>Two players alternate taking turns. A turn consists of choosing two adjacent stones of opposite colours and then choosing one of these stones to <em>capture</em> the other. That is, one stone eliminates the other stone by moving to its position. A player loses when it is their turn to play but there are no available moves, i.e. there is no pair of adjacent stones of different colours.</p>\n<p>The interesting thing about Thwack is that there is no default \"initial setup\" of the game board. Any game can be made by simply placing stones randomly on the grid.</p>\n<p>Given the initial configuration of a game, your job is to list all the opening moves that would be winning moves for the first player assuming both players play optimally.</p>",
+  "input": "<p>The first line of input contains a single integer $N$ $(1 \\leq N \\leq 100)$ indicating the number of cells on the game board.</p>\n<p>The second line contains a single string of length $N$ consisting only of characters <code>B</code>, <code>W</code>, or <code>.</code> which indicate the initial contents of the cells on the game board at the start of the game.</p>",
+  "output": "<p>The first line of output displays the number $W$ of possible opening moves for the first player that would result in them winning, assuming both players play perfectly. Then $W$ lines follow, the $i$th of which contains two integers $A_i, D_i$ ($1 \\leq A_i, D_i \\leq N, |A_i - D_i| = 1$) indicating that moving the stone at $A_i$ to capture the stone at position $D_i$ is one possible opening move that would result in the first player winning. These lines should be presented in lexicographical ordering, i.e. for $1 \\leq i &lt; N$ we have either a) $A_i &lt; A_{i+1}$ or b) $A_i = A_{i+1}$ and $D_i &lt; D_{i+1}$.</p>",
+  "samples": [
+    {
+      "input": "4\nBWBW\n",
+      "output": "2\n2 3\n3 2\n"
+    },
+    {
+      "input": "11\n.BW.WB..W..\n",
+      "output": "0\n"
+    },
+    {
+      "input": "8\nBBBBW.BW\n",
+      "output": "1\n5 4\n"
+    },
+    {
+      "input": "9\nBBBBBW.BW\n",
+      "output": "0\n"
+    },
+    {
+      "input": "12\nWBBWBWWBBWBW\n",
+      "output": "5\n2 1\n4 5\n5 4\n10 11\n11 10\n"
+    },
+    {
+      "input": "11\nWBBWWWBBWBW\n",
+      "output": "5\n1 2\n4 3\n9 10\n10 9\n11 10\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Rocky Mountain Regional, 2023 Rocky Mountain Regional Contest",
+  "level": 20,
+  "tags": [
+    "game_theory",
+    "sprague_grundy"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.100000023841858
+}

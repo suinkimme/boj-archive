@@ -1,0 +1,38 @@
+{
+  "id": 20880,
+  "title": "Bilda ord",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Fatimeh studerar sitt hemspråk som använder det arabiska alfabetet. Just nu sitter hon med en övning där hon ska svara på hur många sätt hon kan bilda ett ord med de givna bokstäverna i uppgiften.</p>\n<p>Om det hade varit på svenska kunde övningen ha se ut så här:</p>\n<p style=\"text-align: center;\">r M e a</p>\n<p>Eftersom fyra bokstäver är givna vet Fatimeh att hon måste testa $4*3*2*1 = 24$ permutationer. Men eftersom bokstaven M är \"stor\" så vet vi att den måste placeras i ordets början. Med det villkoret kan bara $6$ ord bildas, exempelvis $Mera$, men inte $raMe$. I det arabiska alfabetet har man inte stora och små bokstäver på samma sätt, men man har andra regler om var i ordet bokstaven kan förekomma, även i relation till andra bokstäver. </p>\n<p>I denna uppgift antar vi att det finns två typer av restriktioner: Antingen måste en bokstav komma precis före någon annan bokstav, eller så kan en bokstav bara stå på vissa positioner. Exempel på dessa regler och den notation vi använder finns i följande tabell:</p>\n<table class=\"table table-bordered\">\n<thead>\n<tr>\n<th><strong>Regel</strong></th>\n<th><strong>Notation</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Bokstav $B$ måste stå på på plats $1$ eller plats $4$</td>\n<td><code>B@01,04</code></td>\n</tr>\n<tr>\n<td>Bokstav $D$ måste direkt föregå $C$ eller $B$</td>\n<td><code>D:CB</code></td>\n</tr>\n</tbody>\n</table>\n<p>Skriv ett program som beräknar på hur många sätt som $N$ olika bokstäver (för enkelhets skull kallade A, B, C,... etc.) kan placeras ut, givet ett antal regler av dessa två typer. </p>",
+  "input": "<p>På första raden står två heltal, antalet bokstäver $N$ och antalet regler $K$. Därefter följer $K$ rader vardera beskrivande en regel enligt notationen ovan. En viss bokstav kan inte stå först i mer än en regel av vardera typen. Observera att alla platsnummer skrivs med två siffror.</p>",
+  "output": "<p>Programmet ska skriva ut ett heltal: antalet sätt bokstäverna kan placeras ut. Svaret kommer alltid att understiga 10 miljoner.</p>",
+  "samples": [
+    {
+      "input": "4 2\nB@01,04\nD:CB\n",
+      "output": "6\n"
+    },
+    {
+      "input": "3 2\nB@02\nA:BC\n",
+      "output": "1\n"
+    },
+    {
+      "input": "3 2\nB@02\nA:C\n",
+      "output": "0\n"
+    },
+    {
+      "input": "8 4\nE@02,08,05\nA:CEF\nA@05,02,03\nC:ABCDH\n",
+      "output": "918\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2017, Qualification",
+  "level": 17,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

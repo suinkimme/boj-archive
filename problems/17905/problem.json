@@ -1,0 +1,34 @@
+{
+  "id": 17905,
+  "title": "Expecting Rain",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The Bluewater Geocloud Organization (BGO) has recently developed brand new software able to predict with pinpoint precision at which second any particular cloud will start and stop raining, and with what intensity. There is, however, some uncertainty about how a cloud will move around; for each zip code, each cloud will be over that zip code with some probability.</p>\n<p>You have scraped some information about your zip code from the BGO website, and want to use it to plan your walk to the bus stop. You wish to minimize the expected amount of rain that would fall on you. To reach the bus you must get to the bus stop within t seconds from now. You have timed your walking speed to be exactly 1m/s.</p>\n<p>To complicate matters, some parts of the walk to the bus are covered by roofs where it might be beneficial to make shorts breaks whilst waiting for the worst rain to pass. Your front door (at d meters from the bus stop) is always under a roof – but the bus stop need not be.</p>",
+  "input": "<p>The first line of input is four space-separated integers: d (1 ≤ d ≤ 1 000), the distance to the bus stop in meters, t (d ≤ t ≤ 10 000) the time until the bus leaves, c (0 ≤ c ≤ 1 000 000), the number of clouds tracked by BGO, and finally r (0 ≤ r ≤ d), the number of roofs. The next c lines describe the clouds; the i’th such line contains four numbers s<sub>i</sub>, e<sub>i</sub>, p<sub>i</sub> and a<sub>i</sub> describing the i’th cloud:</p>\n<ul>\n<li>s<sub>i</sub> (0 ≤ s<sub>i</sub> &lt; t) is an integer giving the number of seconds until the cloud starts its raining period,</li>\n<li>e<sub>i</sub> (si &lt; e<sub>i</sub> ≤ t) is an integer giving the number of seconds until the cloud ends its raining period,</li>\n<li>p<sub>i</sub> (0 ≤ p<sub>i</sub> ≤ 1) is a real number (with at most 6 digits after the decimal point) giving the probability that the cloud is in your zip code during its raining period, and</li>\n<li>a<sub>i</sub> (0 ≤ a<sub>i</sub> ≤ 100) is an integer indicating the amount of rain the cloud will release during its raining period, given as nm per second.</li>\n</ul>\n<p>Finally r roof segments follow, each on its own line; the j’th such line contains two integers x<sub>j</sub> and y<sub>j</sub> (0 ≤ x<sub>j</sub> &lt; y<sub>j</sub> ≤ d + 1), indicating that there is a roof segment starting at distance x<sub>j</sub> away from home, ending at distance y<sub>j</sub> away from home along the route to the bus stop. Both your home, the bus stop an the entire route between them are in the same zip code. No two roofs overlap, however one roof may start at the same exact location as another ends.</p>",
+  "output": "<p>The output consists of single a real value, the minimum amount of rain in nm you can expect on your route if you reach the bus stop in time. Answers with absolute or relative precision 10<sup>−5</sup> of the actual value will be accepted.</p>",
+  "samples": [
+    {
+      "input": "20 60 2 1\n5 15 0.33333 30\n22 60 0.66666 70\n0 10\n",
+      "output": "466.662\n"
+    },
+    {
+      "input": "3 4 2 1\n1 3 0.25 8\n2 4 0.66667 15\n1 2\n",
+      "output": "10.00005\n"
+    },
+    {
+      "input": "3 4 1 0\n0 2 0.25 8\n",
+      "output": "2.0\n"
+    },
+    {
+      "input": "3 5 2 1\n0 3 0.125 32\n2 5 0.5 32\n3 4\n",
+      "output": "28.0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Bergen Open, Bergen Open 2018",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2
+}

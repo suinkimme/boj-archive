@@ -1,0 +1,29 @@
+{
+  "id": 19457,
+  "title": "Downhill",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>A climber stands on top of a very steep mountain of height $H$ meters. He has a rope and wants to get down to the foothills. There are $n$ ledges on a mountain, $i$-th of them is $a_i$ meters over the foothills. A climber can stand on every ledge or on the top, but cannot stand anywhere else on the mountain. </p>\n<p>The climber uses his rope to go from one ledge to another. He can tie his rope to the ledge, go down and then cut it being on the ledge. In this case the cut part of the rope stays hanging forever because there is no possibility to untie it after getting down, but the remaining piece of rope stays with the climber and he can use it further.</p>\n<p>While hanging on a rope, the climber can cut it in the place he holds it and make a loop on its end, then push the remaining rope through the loop (this can also be done while standing on the ledge). Then he can go down by the second rope, folded in half, and pull it back after descending. Please refer to the <em>Notes</em> section for better understanding.</p>\n<p>What is the minimum length of the rope required for the climber to get to the foothills from the top? You may assume that the rope is infinitely thin and can be cut or tied with negligible (zero) loss of the material.</p>",
+  "input": "<p>First line of input contains two space-separated integers $n$ and $H$ ($0 \\leq n \\leq 10^6$, $0 \\leq H \\leq 10^9$) --- number of ledges and height of the mountain in meters.</p>\n<p>The next line contains $n$ space-separated integers $a_1$, $\\ldots$, $a_n$ --- heights of ledges ($H &gt; a_1 &gt; \\ldots &gt; a_n &gt; 0$).</p>",
+  "output": "<p>Print one real number --- required rope length with absolute or relative error not exceeding $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "1 100\n50\n",
+      "output": "75\n"
+    },
+    {
+      "input": "2 3\n2 1\n",
+      "output": "1.75\n"
+    }
+  ],
+  "hint": "<p>Consider three possible ways to get down for the first sample.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 212px; height: 400px;\"/><img alt=\"\" src=\"2.png\" style=\"width: 242px; height: 400px;\"/><img alt=\"\" src=\"3.png\" style=\"width: 242px; height: 400px;\"/></p>\n<p>The first way is to simply use 100 meters rope to get from the top to the bottom. The second way is to make a loop at the top, put double rope through the loop, get to the ledge and retrieve the rope. Repeating this to get from the ledge to the ground, we obtain another way to get down with 100 meters rope.</p>\n<p>If we combine two approaches, we can do much better and get down with only 75 meters of rope. Let us hang 25 meters from the top on a single rope, make a loop there and double-rope to the ledge. This way we forfeit 25 initial meters, but save 50 meters we used for double-roping. These 50 meters are just enough to single-rope to the ground.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2016, Day 3: Moscow IPT Contest",
+  "level": 14,
+  "tags": [
+    "greedy",
+    "ad_hoc"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.631600022315979
+}

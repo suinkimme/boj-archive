@@ -1,0 +1,27 @@
+{
+  "id": 23014,
+  "title": "Primes and Queries",
+  "time_limit": "90 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>You are given a prime number $P$.</p>\n<p>Let's define $V(x)$ as the degree of $P$ in the prime factorization of $x$. To be clearer, if $V(x)=y$ then $x$ is divisible by $P^y$, but not divisible by $P^{y+1}$. Also we define $V(0)=0$.</p>\n<p>For example, when $P=3$, and $x=45$, since $45=5 \\cdot 3^2$, therefore $V(45)=2$.</p>\n<p>You are also given an array $A$ with $N$ elements. You need to process $Q$ queries of $2$ types on this array:</p>\n<ul>\n<li>type $1$ query: <code>1 pos val</code> - assign a value $val$ to the element at $pos$, i.e. $A_{pos} := val$</li>\n<li>type $2$ query: <code>2 S L R</code> - print $\\displaystyle\\sum_{i=L}^{R}{V(A_i^S - (A_i \\bmod P)^S)}$.</li>\n</ul>",
+  "input": "<p>The first line of the input gives the number of test cases, $T$. $T$ test cases follow.</p>\n<p>The first line of each test case contains $3$ space separated positive integers $N$, $Q$ and $P$ - the number of elements in the array, the number of queries and a prime number.</p>\n<p>The next line contains $N$ positive integers $A_1$, $A_2$, $\\cdots$, $A_N$ representing elements of array $A$.</p>\n<p>Each of the next $Q$ lines describes a query, and contains either</p>\n<ul>\n<li>$3$ space separated positive integers: <code>1 pos val</code></li>\n<li>or $4$ space separated positive integers: <code>2 S L R</code></li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is a list of the answers for each query of type $2$.</p>",
+  "samples": [
+    {
+      "input": "2\n5 5 2\n16 94 62 67 91\n2 3 3 4\n1 1 69\n2 3 1 4\n2 1 1 1\n2 3 2 2\n5 5 5\n1 2 3 4 5\n2 1 1 5\n1 3 98\n2 3 2 4\n1 5 3\n2 2 1 5\n",
+      "output": "Case #1: 4 9 2 3\nCase #2: 1 1 1\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1</p>\n<p>The first query is a query of type $2$, where $S=3$, $L=3$, $R=4$. Let's calculate the result for this query:</p>\n<p>$i=3$, $V(62^3 - (62 \\bmod 2)^3)=3$</p>\n<p>$i=4$, $V(67^3 - (67 \\bmod 2)^3)=1$</p>\n<p>$\\displaystyle\\sum_{i=3}^{4}{V(A_i^3 - (A_i \\bmod P)^3)} = 3+1 = 4$</p>\n<p>The second query is of type $1$, where we need to assign $69$ to $A_1$, so our array $A$ now becomes: <code>69 94 62 67 91</code>.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2021, Round D",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "math",
+    "number_theory",
+    "segtree"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 2.799999952316284
+}

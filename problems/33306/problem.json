@@ -1,0 +1,22 @@
+{
+  "id": 33306,
+  "title": "Coin Game",
+  "time_limit": "90 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>Now it's time to play a real game! But, I don't have anything but just one little coin. So, let's do something fun with it!</p>\n<p>This isn't just any ordinary coin; it bears a unique image allowing me to interpret its rotational angle with remarkable ease. By selecting a specific point on this coin's face, I can draw an arrow from the center to that point. Intrigued? I thought you would be! Let's set the stage for our game.</p>\n<p>Imagine this: I place the coin right at the origin on a two-dimensional coordinate plane, poised to face along the positive $Oy$ axis. The game is turn-based. On each turn, the active player will rotate the coin by one of the four predetermined angles, then advance it by 1 unit in the direction defined by the arrow.</p>\n<p>The game lasts for $500$ full moves ($500$ turns for one player and $500$ for the other). After all moves, you win if the $x$ coordinate of the coin is <strong>negative</strong>, and I win otherwise.</p>\n<p>The rotation options available depend on the current coordinates of the coin $(x, y)$ and are computed with the following formulas:</p>\n<ol>\n<li>$\\alpha_1 = \\sqrt{x^2 + y^2} + x^2 + A \\cdot |x|$</li>\n<li>$\\alpha_2 = \\sqrt{x^2 + y^2} - x^2 - B \\cdot |x|$</li>\n<li>$\\alpha_3 = \\sqrt{x^2 + y^2} + y^2 + C \\cdot |y|$</li>\n<li>$\\alpha_4 = \\sqrt{x^2 + y^2} - y^2 - D \\cdot |y|$</li>\n</ol>\n<p>Here, $A$, $B$, $C$, and $D$ are some constants established before the game begins.</p>\n<p>Excited yet? What's that? You're unsure about how to conquer this challenge? You think just because I conceived this game, I have all the strategies figured out? Fear not! I'll grant you a small <strong>advantage</strong>: I'll make my moves in the blink of an eye.</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "1\n1 1 1 1\n0.00 0.00 1.57\n1\n0.00 1.00 1.57\n\n-0.84 1.54 2.57\n1\n0.08 1.14 5.88\n\n0.76 1.88 0.82\n2\n0.82 2.88 1.51\n\n-0.18 3.00 3.02\n1\n0.82 2.94 6.22\n\n0.37 3.84 2.04\n4\n1.37 3.74 -0.10\n\n",
+      "output": "\n\n\n\n1\n\n\n\n1\n\n\n\n2\n\n\n\n3\n\n\n\n3\n"
+    }
+  ],
+  "hint": "<p>The example is provided to demonstrate the format of input and output. In the actual validation of the solution, players will make $500$ moves and the jury's program will output all numbers with a precision of $18$ decimal places.</p>\n<p>To avoid precision issues, you may use the coin-moving function from the jury's program:</p>\n<pre>\ndouble pi = acos(-1.);\n\nvoid rotate_and_move(double &amp;x, double &amp;y, double &amp;a, int type) {\n    double diff = 0;\n    double s = sqrt(x * x + y * y);\n    if (type == 1) diff = s + x * x + A * fabs(x);\n    if (type == 2) diff = s - x * x - B * fabs(x);\n    if (type == 3) diff = s + y * y + C * fabs(y);\n    if (type == 4) diff = s - y * y - D * fabs(y);\n    a += diff;\n    a = fmod(a, 2 * pi);\n    x += cos(a);\n    y += sin(a);\n}\n</pre>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2024, Day 6: Nyatl’s Game Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

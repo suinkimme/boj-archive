@@ -1,0 +1,26 @@
+{
+  "id": 7008,
+  "title": "Double Trouble",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Alice Catherine Morris and her sister Irene Barbara frequently send each other e-mails. Ever wary of interceptions and wishing to keep their correspondence private, they encrypt their messages in two steps. After removing all nonalphabetic characters and converting all letters to upper case, they: 1)replace each letter by the letter s positions after it in the alphabet (1 &lt;= s &lt;= 25)|we call this a shift by s-and then, 2) divide the result of step 1 into groups of m letters and reverse the letters in each group (5 &lt;= m &lt;= 20). If the length of the message is not divisible by m, then the last k (less than m) letters are reversed. For example, suppose s = 2 and m = 6. If the plaintext were <br/>\nMeet me in St. Louis, Louis. after removing unwanted characters and changing to upper case we get </p>\n<p>MEETMEINSTLOUISLOUIS </p>\n<p>We will call this the modified plaintext. We then shift each letter by 2 (Y would be replaced with A and Z would be replaced by B, here), getting the intermediate result: </p>\n<p>OGGVOGKPUVNQWKUNQWKU </p>\n<p>And finally reverse every group of 6 letters: </p>\n<p>GOVGGOQNVUPKWQNUKWUK </p>\n<p>Note the last two letters made up the last reversed group. As is customary, we write the result in groups <br/>\nof 5 letters. So the ciphertext would be: </p>\n<p>GOVGG OQNVU PKWQN UKWUK </p>\n<p>Alas, it's not so hard to find the values for s and m when the ciphertext is intercepted. In fact it's even easier if you know a crib, which is a word in the modified plaintext. In the above example, LOUIS would be a crib. Your job here is to find s and m when presented with a ciphertext and a crib.</p>",
+  "input": "<p>Input will consist of multiple problem instances. The first line of input will contain a positive integer indicating the number of problem instances. The input for each problem will consist of multiple lines. The first line of input for a problem will contain the integer n (20 &lt;= n &lt;= 500) which is equal to the number of characters in the ciphertext. The following lines will contain the ciphertext, all upper case in groups of 5 letters separated by a single space. (The last group of letters may contain fewer than 5 letters.) There will be 10 groups of letters per line, except possibly for the last line of ciphertext. The input line following the last line of ciphertext will contain the crib; a single word consisting of between 4 and 10 (inclusive) upper case characters.</p>",
+  "output": "<p>Output will be two integers, s and m on a line, separated by a single space, indicating the encryption key that produces the crib, where s is the shift and m is the reversed group size. If there is more than one solution, output the one with smallest s. If there is more than one with the same s, output the one with smallest m. If no such s and m exist, output the message Crib is not encrypted.</p>",
+  "samples": [
+    {
+      "input": "4\n83\nFIQMF IISFN QMFIB EOPFH FNQMV PSFIU IZNGP UPEUS BFPEP PEPPE\nPPEPN QMFIP EOPIS FIQMF IBSFN QMFBE OPI\nRHONDA\n105\nVDBMN DQDGS LNQEM ZLZRZ RNGVX ZALNA TERZV CZDGD MZQHZ GENKK\nKONSC DJHKC KKZAD RZAXZ SNMRH GBHGV RZVDG XZRNS XZKOS ZCNNF\nSHFMH\nBOMBAY\n50\nQFNWX YQFNW YSAQX FYNWY XQFNW SXYQF FXNYS AXYQF NASXY QFNAX\nHEAVEN\n20\nGOVGG OQNVU PKWQN UKWUK\nLOUIS\n",
+      "output": "1 6\n25 6\nCrib is not encrypted.\n2 6\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Waterloo's local Programming Contests, 3 March, 2013, ICPC, Regionals, North America, East Central North America Regional, 2000 East Central Regional Contest",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "string",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 1.600000023841858
+}

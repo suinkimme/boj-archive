@@ -1,0 +1,32 @@
+{
+  "id": 15176,
+  "title": "Just Terraffic!",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The local council is recording traffic flow using a pressure pad laid across the road. The pressure pad tracks whenever the wheels on an axle of a vehicle cross the pressure pad. The only vehicles using the road are cars with two axles. Each vehicle may or may not have a single-axle trailer attached to it. When a car crosses the pressure pad, two times are recorded: one when the front wheels cross and another when the rear wheels cross. If the car is towing a trailer an additional time is recorded when the trailer wheels cross. Given a sequence of times from the recorder, the council wishes to know how many cars without trailers crossed the pad and how many cars with trailers crossed it.</p>\n<p>Obviously, there is some ambiguity. For example, a sequence of 6 recordings could be three cars without trailers or two cars with trailers. To reduce such ambiguity, we will make the following two assumptions:</p>\n<ol>\n<li>Any two successive times with a difference less than or equal to 1000 ms must belong to the same vehicle.</li>\n<li>Any two successive times with a difference greater than or equal to 2000 ms must be from different vehicles.</li>\n</ol>\n<p>Given a sequence of times, determine the number of cars with and without a trailer.</p>",
+  "input": "<p>The first line of the input contains a single integer n (1 ≤ n ≤ 300 000), which is the number of times the pressure pad was triggered. The second line contains n distinct integers t<sub>1</sub>, . . . , t<sub>n</sub> (0 ≤ t<sub>i</sub> &lt; 2<sup>30</sup>) in increasing order, the times that the pressure pad was triggered. The times are in milliseconds.</p>",
+  "output": "<p>Display the number of cars with and without trailers. If the number of cars of each type can be uniquely determined, then display two lines of the form</p>\n<pre>\nCars without trailers: X\nCars with trailers: Y</pre>\n<p>If there is no interpretation of the times that is consistent with the assumptions, then display Impossible.If there are multiple interpretations of the times that give different numbers of cars with and without trailers, then display Ambiguous.</p>",
+  "samples": [
+    {
+      "input": "7\n10 200 5000 6100 7200 8300 9400\n",
+      "output": "Cars without trailers: 2\nCars with trailers: 1\n"
+    },
+    {
+      "input": "6\n0 1100 2200 3300 4400 5500\n",
+      "output": "Ambiguous\n"
+    },
+    {
+      "input": "4\n0 1000 2000 3001\n",
+      "output": "Impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, 2016 ACM South Pacific Programming Contest",
+  "level": 15,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.5333000421524048
+}

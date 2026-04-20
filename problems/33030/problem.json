@@ -1,0 +1,39 @@
+{
+  "id": 33030,
+  "title": "DAG Serialization",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Consider a simple single-bit boolean register that supports two operations:</p>\n<ul>\n<li><strong>set</strong> --- sets the register to <strong>true</strong> if it was <strong>false</strong>, and returns <strong>true</strong>; otherwise, it returns <strong>false</strong>;</li>\n<li><strong>unset</strong> --- sets the register to <strong>false</strong> if it was <strong>true</strong>, and returns <strong>true</strong>; otherwise, it returns <strong>false</strong>.</li>\n</ul>\n<p>The initial state of the register is <strong>false</strong>. Suppose there were $n$ operations $op_i$ (for $1 \\le i \\le n$) where <strong>at most two operations returned true</strong>. Also, we are given the partial order of operations as a directed acyclic graph (DAG): an edge $i \\rightarrow j$ means that $op_i$ happened before $op_j$. You are asked whether it is possible to put these operations in some linear sequential order that satisfies the given partial order and such that if operations are applied to the register in that order, their results are the same as given.</p>",
+  "input": "<p>In the first line, you are given an integer $n$ --- the number of operations ($1 \\le n \\le 10^5$). In the following $n$ lines, you are given operations in the format \"<em>type</em> <em>result</em>\", where <em>type</em> is either \"<code>set</code>\" or \"<code>unset</code>\" and <em>result</em> is either \"<code>true</code>\" or \"<code>false</code>\". It is guaranteed that at most two operations have \"<code>true</code>\" results. </p>\n<p>In the next line, you are given an integer $m$ --- the number of arcs of the DAG ($0 \\le m \\le 10^5$). In the following $m$ lines, you are given arcs --- pairs of integers $a$ and $b$ ($1 \\leq a, b \\leq n$; $a \\neq b$). Each arc indicates that operation $op_a$ happened before operation $op_b$.</p>",
+  "output": "<p>Print any linear order of operations that satisfies the DAG constraints and ensures the results of the operations match the ones given in the input. If a correct operation order does not exist, print $-1$.</p>",
+  "samples": [
+    {
+      "input": "5\nset true\nunset true\nset false\nunset false\nunset false\n2\n1 4\n5 2\n",
+      "output": "5 1 3 2 4\n"
+    },
+    {
+      "input": "3\nunset true\nunset false\nset true\n0\n",
+      "output": "2 3 1\n"
+    },
+    {
+      "input": "2\nunset false\nset true\n1\n2 1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "2\nunset false\nset false\n0\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2024",
+  "level": 16,
+  "tags": [
+    "graphs",
+    "greedy",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 1.159999966621399
+}

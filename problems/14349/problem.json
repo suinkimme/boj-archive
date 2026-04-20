@@ -1,0 +1,27 @@
+{
+  "id": 14349,
+  "title": "Teaching Assistant (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are taking a programming course which is graded using problem sets of different types. The course goes for a positive even number of days. You start the course with no problem sets. On each day of the course, you must do exactly one of the following:</p>\n<ul>\n<li>Request a \"Coding\" problem set.</li>\n<li>Request a \"Jamming\" problem set.</li>\n<li>Submit a problem set for grading. You must have at least one problem set to choose this option. If you have multiple problem sets, you must submit the one among those that was requested most recently, regardless of its type.</li>\n</ul>\n<p>All problem sets are different. There is no requirement on how many sets of each type must be submitted. Once you submit a set, you no longer have that set. Any problem sets that you have not submitted before the end of the course get you no points.</p>\n<p>The problem sets are requested from and submitted to an artificially-intelligent teaching assistant. Strangely, the assistant has different moods — on each day it is in the mood for either \"Coding\" or \"Jamming\".</p>\n<ul>\n<li>When you request a problem set:\n\t<ul>\n<li>If the requested topic matches the assistant's mood, it assigns a problem set worth a maximum of 10 points.</li>\n<li>If the requested topic does not match its mood, it assigns a problem set worth a maximum of 5 points.</li>\n</ul>\n</li>\n<li>When you submit a problem set:\n\t<ul>\n<li>If the topic of the submitted set matches the assistant's mood that day, it gives you the maximum number of points for that set.</li>\n<li>If the topic of the submitted set does not match its mood that day, it gives you 5 points fewer than the maximum number of points for that set.</li>\n</ul>\n</li>\n</ul>\n<p>For example:</p>\n<ul>\n<li>If you request a \"Coding\" problem set on a day in which the assistant is in a \"Coding\" mood, and submit it on a day in which it is in a \"Jamming\" mood, you will earn 5 points: the problem set is worth a maximum of 10, but the assistant gives 5 points fewer than that.</li>\n<li>If you request a \"Jamming\" problem set on a day in which the assistant is in a \"Coding\" mood, and submit it on a day in which it is in a \"Jamming\" mood, you will earn 5 points: the set is worth a maximum of 5, and the assistant gives you the maximum number of points.</li>\n</ul>\n<p>Thanks to some help from a senior colleague who understands the assistant very well, you know what sort of mood the assistant will be in on each day of the course. What is the maximum total score that you will be able to obtain?</p>\n<ul>\n</ul>",
+  "input": "<p>The first line of the input gives the number of test cases, T; T test cases follow. Each test case consists of one line with a string S of <code>C</code> and/or <code>J</code> characters. The i-th character of Sdenotes the assistant's mood on the i-th day of the course. If it is <code>C</code>, it is in the mood for \"Coding\"; if it is <code>J</code>, it is in the mood for \"Jamming\".</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ T ≤ 100.</li>\n<li>The length of S is even.</li>\n<li>2 ≤ the length of S ≤ 20000.</li>\n<li>The sum of lengths of all S in the dataset is at most 150000.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the maximum number of points you can obtain for that case.</p>",
+  "samples": [
+    {
+      "input": "5\nCCJJ\nCJCJ\nCJJC\nCJJJ\nCCCCCC\n",
+      "output": "Case #1: 20\nCase #2: 10\nCase #3: 20\nCase #4: 15\nCase #5: 30\n\n"
+    }
+  ],
+  "hint": "<p>This strategy is optimal for sample case #1:<br/>\nDay 1: Request a \"Coding\" problem set (call it C1).<br/>\nDay 2: Submit C1.<br/>\nDay 3: Request a \"Jamming\" problem set (call it J1).<br/>\nDay 4: Submit J1.</p>\n<p>The following strategy is optimal for sample cases #2, #3, and #4: request C1, request J1, submit J1, submit C1.</p>\n<p>For case #2, for example, note that you could <em>not</em> request C1, request J1, and then submit C1. Only the most recently requested problem set can be submitted.</p>\n<p>In sample case #5, you can alternate between requesting a \"Coding\" problem set on one day, and submitting it on the next day.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2016, Round 3",
+  "level": 13,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "ad_hoc",
+    "stack"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 1.190500020980835
+}

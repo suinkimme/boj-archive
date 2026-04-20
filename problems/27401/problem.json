@@ -1,0 +1,25 @@
+{
+  "id": 27401,
+  "title": "Fishing Game",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Fishing is a card game that is played with a deck of cards consisting of 3N (1 ≤ N &lt; 100) pairs of cards, numbered from 1 to 3N (the deck contains 6N cards overall).</p>\n<p>Three friends (A, B and C) play Fishing. The rules are as follows:</p>\n<ol>\n<li>Initially, each player receives 2N cards.</li>\n<li>Then, each player discards all same-value pairs of cards they have.</li>\n<li>Rounds consisting of three steps are played until all remaining cards get discarded:\n\t<ol style=\"list-style-type:lower-alpha;\">\n<li>A passes one of his cards to B (unless A doesn't have any). If B now has a pair of same-value cards, it gets discarded.</li>\n<li>B passes one of his cards to C (unless B doesn't have any). If C now has a pair of same-value cards, it gets discarded.</li>\n<li>C passes one of his cards to A (unless C doesn't have any). If A now has a pair of same-value cards, it gets discarded.</li>\n</ol>\n</li>\n</ol>\n<p>You are given the hands of the three players at the end of step (1). It's known that at least one pair of same-value cards has to be discarded during each round described at point (3).</p>\n<p>Compute the number of different ways the game can play out. Since this number can be quite large, output it modulo 1 000 000 007.</p>\n<p>Two ways the game can play out are considered different if during one step the current player chooses to pass a different card.</p>",
+  "input": "<p>The first line of input contains two integers N and T (1 ≤ T ≤ 10), where T is the number of game scenarios to analyse.</p>\n<p>The description of T game scenarios follows. Each game scenario consists of three lines:</p>\n<p>The first line contains 2N card values - player A's hand at the end of step (1).</p>\n<p>The second line contains 2N card values - player B's hand at the end of step (1).</p>\n<p>The third line contains 2N card values - player C's hand at the end of step (1).</p>",
+  "output": "<p>For each game scenario, print the number of different ways the game can play out modulo 1 000 000 007 on a separate line.</p>",
+  "samples": [
+    {
+      "input": "1 1\n1 2\n3 3\n2 1\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p>First, during step (2), player B discards all their cards. At this point, the players' hands are:</p>\n<ul>\n<li>A : 1, 2</li>\n<li>B : no cards</li>\n<li>C : 1, 2</li>\n</ul>\n<p>There are two ways the game can play out from this point:</p>\n<ol>\n<li>A passes card 1 to B. Then, B passes it to C. This way, C discards the pair of cards with value 1. Then, C has to pass his remaining card to A, who discards it.</li>\n<li>A passes card 2 to B. Then, B passes it to C. This way, C discards the pair of cards with value 2. Then, C has to pass his remaining card to A, who discards it.</li>\n</ol>",
+  "source": "Olympiad, Romanian Master of Informatics, Romanian Master of Informatics 2019",
+  "level": 15,
+  "tags": [
+    "case_work",
+    "dp"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2
+}

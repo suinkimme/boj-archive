@@ -1,0 +1,22 @@
+{
+  "id": 5718,
+  "title": "Abwords",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>We call “word” every string, containing two or more capital letters A and B, starting with A. We define upon each word the following two actions, resulting in another word:</p>\n<ul>\n<li>R1: We keep all the letters untouched, except for the last one, which is changed: А becomes B and vice versa – B becomes A.</li>\n<li>R2: Let’s denote the starting word with w. We form a new word t out of w in the following way:\n\t<ul>\n<li>The first letter of t is A, of course.</li>\n<li>Each next letter at position i (i &gt; 1) t<sub>i</sub> depends on the letters at positions i-1 and i in the original word w, namely: if w<sub>i-1</sub> = w<sub>i</sub>, we make t<sub>i</sub> = B; otherwise t<sub>i</sub> = A.</li>\n<li>We replace w by t.</li>\n</ul>\n</li>\n</ul>\n<p>The N-time consecutive applying of actions of type R1 and R2 in some order, starting with a given word w is called “N- transformation” of w if:</p>\n<ul>\n<li>After the application of these actions the resulting word tallies with the given one (w);</li>\n<li>All words received in between, in the transformation process, are different from one another and differ from the given word, too.</li>\n</ul>\n<p>Consider a positive integer N, greater than 1. Write a program abwords, which finds out one word with as few letters as possible, which can be a start of an N-transformation, or ascertains that such word does not exist. </p>",
+  "input": "<p>One positive integer N &gt; 1 is read from the standard input.</p>",
+  "output": "<p>The program should write to the standard output:</p>\n<ul>\n<li>Line 1: one word with as few letters as possible, for which an N- transformation exists;</li>\n<li>Line 2: a string of N characters, each 1 or 2 with no delimiters. This should be the string of the rule numbers in the N-transformation. Applying all of them in the output order starting with the word in output line 1 should lead to its first reproduction without repeating words in the meantime.</li>\n</ul>\n<p>Or</p>\n<ul>\n<li>One line with the message NO if such word does not exist. </li>\n</ul>",
+  "samples": [
+    {
+      "input": "6\n",
+      "output": "AABB\n221212\n"
+    }
+  ],
+  "hint": "<p>There is no word shorter than 4 letters that can start a sequence of 6 actions which reproduce it without repeating words in the meantime. On the other hand, for example, the word AABB with four letters has such sequence of actions (i.e., a 6-transformation for it exists):</p>\n<p>AABB --2-&gt; ABAB --2-&gt; AAAA --1-&gt; AAAB --2-&gt; ABBA --1-&gt; ABBA --2-&gt; ABBB --2-&gt; AABB</p>",
+  "source": "Olympiad, International Autumn Tournament in Informatics, 2014, Group A (Seniors)",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2
+}

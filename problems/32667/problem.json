@@ -1,0 +1,38 @@
+{
+  "id": 32667,
+  "title": "Enchanted Maze",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Mila and her twin brother Liam have been trapped by an evil witch.  The witch put the twins at different locations in a maze, and they must find their way out of the maze before she releases her pet dragon. The twins have asked you to help them escape the maze in the least amount of time.</p>\n<p>To make things even more difficult, the witch has placed a curse on the twins.  Although the twins can attempt to move in any of the four compass directions (North, South, East, West), they must attempt to move in the same direction at the same time.  For example, if Mila attempts to walk North for a step, Liam must also attempt to walk North at the same time.  Each attempted move by the twins takes one second to complete, regardless of whether the move was successful or not.</p>\n<p>The maze is represented by a rectangular grid, where each location can be one of the following types:</p>\n<ul>\n<li>Start (<code>S</code>): the starting positions of the twins.  There are exactly two starting locations, one for each twin.</li>\n<li>Exit (<code>E</code>): the twins escape if they are both at exit locations at the same time.  There are exactly two exit locations.</li>\n<li>Open (<code>.</code>): the twins may freely move in and out of this location.</li>\n<li>Fixed Obstacle (<code>#</code>): the twins may not move into this location.</li>\n<li>Bottomless pit (<code>*</code>): a twin moving into a pit is lost forever.</li>\n<li>Raised obstacle (<code>A, B, C, D</code>): these obstacles can be lowered by stepping on the corresponding switch.</li>\n<li>Lowered obstacle (<code>a, b, c, d</code>): these locations are considered open, but they can be raised by stepping on the corresponding switch.</li>\n<li>Switch (<code>1, 2, 3, 4</code>): switches that control the obstacles. Switch 1 controls obstacles labelled <code>A</code> and <code>a</code>, switch 2 controls obstacles labelled <code>B</code> and <code>b</code>, switch 3 controls obstacles labelled <code>C</code> and <code>c</code>, and switch 4 controls obstacles labelled <code>D</code> and <code>d</code>.  There is at most one switch of each label, but each switch may control more than one obstacle.</li>\n</ul>\n<p>The twins may not be in the same location at the same time.  If a twin attempts to move into a fixed or raised obstacle, the twin will instead remain stationary.  A twin that moves outside of the boundary of the maze is lost forever.  They are also allowed to enter and leave the starting and exit locations throughout their journey.</p>\n<p>A switch is triggered when a twin moves onto a switch.  When a switch is triggered, the corresponding obstacles are raised (if currently lowered) or lowered (if currently raised).  The switch is not triggered if a twin is already on the switch and remains stationary after an attempted move.</p>\n<p>If a twin attempts to move into a raised obstacle at the same time the other twin steps on the corresponding switch, the obstacle is still considered raised and is only lowered at the end of the move.  A twin may not move onto a switch if the other twin is moving onto or remaining stationary at a corresponding lowered obstacle at the same time.</p>",
+  "input": "<p>The first line of input contains two integers, $2 \\leq R \\leq 10$ and $2 \\leq C \\leq 10$, specifying the number of rows and columns in the maze. The next R lines each contains C characters.  All possible characters are specified above.  It is always possible for the twins to escape the maze.</p>",
+  "output": "<p>Output the least number of seconds required for the twins to escape. </p>",
+  "samples": [
+    {
+      "input": "6 4\n...E\nS***\n#***\nS***\n...E\n.***\n",
+      "output": "6\n"
+    },
+    {
+      "input": "5 2\ncE\nE.\n..\n3.\nSS\n",
+      "output": "4\n"
+    },
+    {
+      "input": "3 10\n..........\n.SS....EE.\n..........\n",
+      "output": "6\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North Central North America Regional, 2024 North Central NA Regional Contest, ICPC, Regionals, North America, Rocky Mountain Regional, 2024 Rocky Mountain Regional Contest, ICPC, Regionals, North America, Mid-Central Regional, 2024 Mid-Central USA Programming Contest",
+  "level": 18,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "case_work",
+    "bitmask",
+    "grid_graph"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 5
+}

@@ -1,0 +1,27 @@
+{
+  "id": 34008,
+  "title": "아즈모스 협곡 탐험",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<blockquote>\n<p>...하지만, 이내 깨달았지. 그날 우리가 마주한 건 강력한 힘이 아닌, 거대한 절망이었음을.</p>\n<p>아즈모스, 이제 이 땅에 메아리치는 건, 저주로 물든...절규뿐이야.</p>\n</blockquote>\n<p>아즈모스 협곡은 모험과 위험이 가득한 신비로운 지역이다. 메린이 멘보롱은 귀중한 보상을 얻기 위해 이 험난한 협곡에 도전하기로 결심했다. 하지만 협곡은 함정과 몬스터로 가득 차 있기 때문에, 철저한 계획 없이는 끝까지 탐험할 수 없다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>아즈모스 협곡은 세 줄로 구성된 벌집 형태의 맵이다. 각 줄의 구조는 다음과 같다.</p>\n<ul>\n<li>윗줄은 총 $N$개의 칸으로 구성되며, $(1, i)$ 위치에 존재한다. $(1 \\le i \\le N)$</li>\n<li>중앙줄은 $(2, 0)$이 <strong>[START]</strong>, $(2, N+2)$가 <strong>[GOAL]</strong>이며, 그 사이에는 $(2, i)$ 위치의 칸들이 존재한다. $(1 \\le i \\le N+1)$</li>\n<li>아랫줄은 총 $N$개의 칸으로 구성되며, $(3, i)$ 위치에 존재한다. $(1 \\le i \\le N)$</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></p>\n<p>각 칸에서는 인접한 오른쪽 위, 오른쪽, 오른쪽 아래 셋 중 하나로 이동할 수 있다. 보다 엄밀한 표현으로는 다음과 같다:</p>\n<ul>\n<li><strong>[START]</strong>에서는 $(2, 1)$로만 이동 가능하다.</li>\n<li>$(2, N+1)$에서는<strong> [GOAL]</strong>으로만 이동 가능하다.</li>\n<li>$(1, i)$에서는 $(1, i+1)$ 또는 $(2, i+1)$로 이동 가능하다. $(1 \\leq i \\leq N-1)$</li>\n<li>$(2, i)$에서는 $(1, i)$, $(2, i+1)$, 또는 $(3, i)$로 이동 가능하다. $(1 \\leq i \\leq N)$</li>\n<li>$(3, i)$에서는 $(2, i+1)$ 또는 $(3, i+1)$로 이동 가능하다. $(1 \\leq i \\leq N-1)$</li>\n</ul>\n<p>현재 위치한 칸에서 다른 칸으로 이동할 때마다 저항력을 $1$ 소모하며, 도착한 칸 $(i. j)$에 해당하는 점수 $A_{ij}$를 얻는다. 단, <strong>[START]</strong>와 <strong>[GOAL]</strong>은 도착하더라도 별도의 점수를 주지 않는다.</p>\n<p><strong>[START]</strong>와 <strong>[GOAL]</strong>를 제외한 각 칸은 <span style=\"color:#4e5f70;\"><strong>일반 스테이지</strong>,</span> <span style=\"color:#f39c12;\"><strong>정예 스테이지</strong></span>, 그리고 <strong><span style=\"color:#8e44ad;\">최정예 스테이지</span></strong> 중 하나로 구성되어 있다. 중앙 라인은 모두 <span style=\"color:#4e5f70;\"><strong>일반 스테이지</strong></span>로 구성되어 있으며, 위 라인과 아래 라인은 <span style=\"color:#f39c12;\"><strong>정예 스테이지</strong></span> 또는 <strong><span style=\"color:#8e44ad;\">최정예 스테이지</span></strong>로 구성되어 있다. 각 스테이지를 지날 때마다 아래와 같은 효과를 받는다:</p>\n<ul>\n<li><span style=\"color:#4e5f70;\"><strong>일반 스테이지</strong></span>: 저항력 $1$을 회복한다.</li>\n<li><span style=\"color:#f39c12;\"><strong>정예 스테이지</strong></span>: 아무런 변화가 없다.</li>\n<li><strong><span style=\"color:#8e44ad;\">최정예 스테이지</span></strong>: 추가로 저항력 $1$을 소모한다.</li>\n</ul>\n<p>만약 이동 직전에 저항력이 $0$ 이하라면 더 이상 앞으로 나아갈 수 없어 아쉽지만 탐사를 중단해야 한다.</p>\n<p>메린이 멘보롱은 <strong>[START]</strong>에서 출발하여 <strong>[GOAL]</strong>에 도착했을 때의 최대 점수를 얻어 가능한 많은 보상을 받고 싶다! 그를 위해 <strong>[GOAL]</strong>에 도착했을 때의 최대 점수를 대신 구해주자!</p>",
+  "input": "<p>첫 번째 줄에 초기 $N$과 초기 저항력 $K$가 공백으로 구분되어 주어진다. $(1 \\leq N \\leq 300\\,000;$ $1 \\leq K \\leq 10^9)$</p>\n<p>두 번째 줄에 $N$번에 걸쳐 위치 $(1, i)$ 노드의 정예/최정예 여부가 공백으로 구분되어 주어진다. $1$은 <span style=\"color:#f39c12;\"><strong>정예 스테이지</strong></span>, $2$는 <strong><span style=\"color:#8e44ad;\">최정예 스테이지</span></strong>를 의미한다.</p>\n<p>세 번째 줄에 $N$번에 걸쳐 위치 $(3, i)$ 노드의 정예/최정예 여부가 공백으로 구분되어 주어진다. $1$은 <span style=\"color:#f39c12;\"><strong>정예 스테이지</strong></span>, $2$는 <strong><span style=\"color:#8e44ad;\">최정예 스테이지</span></strong>를 의미한다.</p>\n<p>네 번째 줄에 $N$번에 걸쳐 $A_{1i}$ 가 공백으로 구분되어 주어진다. $(1 \\leq A_{1i} \\leq 10^9)$</p>\n<p>다섯 번째 줄에 $N+1$번에 걸쳐 $A_{2i}$ 가 공백으로 구분되어 주어진다. $(1 \\leq A_{2i} \\leq 10^9)$</p>\n<p>여섯 번째 줄에 $N$번에 걸쳐 $A_{3i}$ 가 공백으로 구분되어 주어진다. $(1 \\leq A_{3i} \\leq 10^9)$</p>\n<p>입력으로 주어지는 모든 수는 정수이며, 항상 <strong>[START]</strong>에서 <strong>[GOAL]</strong>로 도달할 수 있는 경로가 존재하는 입력으로 주어진다.</p>",
+  "output": "<p><strong>[START]</strong>에서 출발해서 <strong>[GOAL]</strong>에 도착했을 때 얻을 수 있는 최대 점수를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3 5\n1 2 1\n1 1 2\n1 7 4\n2 3 1 4\n4 2 8\n",
+      "output": "25\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 임스의 메이플컵, 제2회 임스의 메이플컵, menborong, nflight11, pichulia, ruykun, tony9402",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "case_work",
+    "priority_queue"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 22.066699981689453
+}

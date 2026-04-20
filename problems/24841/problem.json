@@ -1,0 +1,26 @@
+{
+  "id": 24841,
+  "title": "Palindrome Free Strings",
+  "time_limit": "서브태스크 참고 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are given a string $S$ consisting of characters <code>0</code>, <code>1</code>, and <code>?</code>. You can replace each <code>?</code> with either <code>0</code> or <code>1</code>. Your task is to find if it is possible to assign each <code>?</code> to either <code>0</code> or <code>1</code> such that the resulting string has no <a href=\"https://en.wikipedia.org/wiki/Substring\" target=\"_blank\">substrings</a> that are <a href=\"https://en.wikipedia.org/wiki/Palindrome\" target=\"_blank\">palindromes</a> of length $5$ or more.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $T$. $T$ test cases follow.</p>\n<p>Each test case consists of two lines.</p>\n<p>The first line of each test case contains an integer $N$, denoting the length of the string $S$.</p>\n<p>The second line of each test case contains a string $S$ of length $N$.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is <code>POSSIBLE</code> if there is a possible resulting string that has no palindromic substrings of length $5$ or more, or <code>IMPOSSIBLE</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "2\n9\n100???001\n5\n100??\n",
+      "output": "Case #1: IMPOSSIBLE\nCase #2: POSSIBLE\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, to prevent the whole string from being a palindrome, the first and last question mark must be different characters.</p>\n<p>If we replace first question mark with <code>0</code> and replace the last question mark with <code>1</code>, we get <code>1000?1001</code>. If the remaining <code>?</code> is replaced by <code>1</code>, we get <code>100011001</code>, then the first $5$ characters form a palindrome of length $5$. Otherwise, we get <code>100001001</code>, the first $6$ characters are a palindrome of length $6$.</p>\n<p>If we replace first question mark with <code>1</code> we get <code>1001?0001</code>. If the remaining <code>?</code> is replaced by <code>1</code>, we get <code>100110001</code>, then the last $5$ characters form a palindrome of length $5$. Otherwise, we get <code>100100001</code>, the last $6$ characters are a palindrome of length $6$.</p>\n<p>Hence, there is no way to get a valid string.</p>\n<p>In Sample Case #2, one of the valid strings after replacing all the <code>?</code> is <code>10011</code>.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2022, Round A",
+  "level": 17,
+  "tags": [
+    "dp",
+    "bitmask",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 47,
+  "submission_count": null,
+  "average_tries": 2.5532000064849854
+}

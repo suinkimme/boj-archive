@@ -1,0 +1,25 @@
+{
+  "id": 29780,
+  "title": "Illumination Optimization",
+  "time_limit": "10 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Onyaomale is leading a project to exchange the lightbulbs from street lights along a freeway from incandescent ones to LED lightbulbs that are both more energy-efficient and powerful. She started by taking all the old incandescent lightbulbs out, and is now focused on installing the new LED ones. Because the new lightbulbs are more powerful, Onyaomale thinks it is possible that some street lights are not necessary and she can save even more energy by not using them.</p>\n<p>We model the freeway as a straight line measuring $\\mathbf{M}$ meters that goes from west to east. The $x$-th meter is a point that is $x$ meters to the east of the western end of the freeway. If a street light is located at the $x$-th meter, and a lightbulb with an illumination radius of $\\mathbf{R}$ meters is installed on it, then the street light illuminates the segment of freeway starting at the $\\max(0, x - \\mathbf{R})$-th meter and ending at the $\\min(\\mathbf{M}, x + \\mathbf{R})$-th meter, inclusive. Onyaomale needs to install lightbulbs in such a way that every point of the freeway is illuminated by at least one of them. Notice that this includes illuminating points that are not an integer number of meters away from the freeway endpoints. Street lights that are left without a lightbulb do not illuminate anything.</p>\n<p>Given the length of the freeway in meters $\\mathbf{M}$, the illumination radius of the new lightbulbs $\\mathbf{R}$ and the locations of all street lights, find the minimum number of lightbulbs Onyaomale needs to install to illuminate the whole freeway, or report that it is impossible to do so.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $\\mathbf{T}$. $\\mathbf{T}$ test cases follow. Each test case consists of two lines. The first line contains three integers $\\mathbf{M}$, $\\mathbf{R}$, and $\\mathbf{N}$: the length, in meters, of the freeway, the illumination radius, in meters, of the lightbulbs and the number of street lights, respectively. The second line of a test case contains $\\mathbf{N}$ sorted integers $\\mathbf{X_1}, \\mathbf{X_2}, \\dots, \\mathbf{X_N}$ representing the meters of the freeway where street lights are located.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is the minimum number of lightbulbs Onyaomale needs to install to illuminate the whole freeway, if it is possible. If there is no way to illuminate the entire freeway using the current street lights, $y$ should be <code>IMPOSSIBLE</code> instead.</p>",
+  "samples": [
+    {
+      "input": "3\n10 3 3\n2 7 9\n10 2 3\n2 7 9\n10 2 4\n2 3 7 9\n",
+      "output": "Case #1: 2\nCase #2: IMPOSSIBLE\nCase #3: 4\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, Onyaomale can illuminate the entire freeway by placing bulbs in the western-most and middle street lights only, leaving the eastern-most one unused. With these two lights covering $[0, 5]$ and $[4, 10]$, the entire freeway ($[0, 10]$) is illuminated.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>In Sample Case #2, Onyaomale has the same configuration as in Sample Case #1, but with weaker lightbulbs. In this case, there is no way for her to illuminate the entire freeway. In particular, even if all the street lights are lit, the middle point between the $4$-th and $5$-th meters would still not be illuminated.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></p>\n<p>For Sample Case #3 Onyaomale has an additional street light at the $3$-th meter, compared to Sample Case #2, while all other conditions are the same. In this case, installing a lightbulb in every street light is the only way to have the entire freeway illuminated.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\"/></p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam Farewell Round, Round A",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "greedy"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 1.8181999921798706
+}

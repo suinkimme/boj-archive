@@ -1,0 +1,22 @@
+{
+  "id": 29744,
+  "title": "Lockpicking",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The Hungarian State Treasury replaced the locking mechanism on one of their safes. This new lock can only be opened by custom keycards. The verification of a keycard follows a special protocol.</p>\n<p>The <strong>lock</strong> has $N$ internal <strong>states</strong> numbered from $0$ to $N - 1$. For each $i$ from $0$ to $N - 1$, inclusive, there is a <em>bit</em> $A[i]$ and there are two states $S[i][0]$ and $S[i][1]$ associated with state $i$. A <em>bit</em> is a binary digit that is either $0$ or $1$. States $S[i][0]$ and $S[i][1]$ may coincide, and a state may be associated with itself.</p>\n<p>Similarly to this, a <strong>keycard</strong> has $M$ states numbered from $0$ to $M - 1$, and for each $j$ from $0$ to $M - 1$, bit $B[j]$ and states $T[j][0]$ and $T[j][1]$ are associated with state $j$. Hereafter, lock states and keycard states are both referred to as states.</p>\n<p>In the verification process, the lock gets paired up with a keycard. Both of them are capable of <strong>output</strong>ting bits, as well as reading bits from the output of the <em>other</em>. At the start of the process, the lock sets to a specific <strong>initial state</strong> $i_0$. The keycard also sets to initial state $j_0$, specific to the keycard. They repeat the following steps at most $10^7$ times:</p>\n<ol>\n<li>Each of them outputs a single bit according to its current state. If the lock is in state $i$, it outputs the bit $A[i]$. Analogously, the keycard outputs $B[j]$ if it is in state $j$.</li>\n<li>They read the bit that was outputted by the other. The lock reads $B[j]$, and the keycard reads $A[i]$. If the two bits are different, they register an <strong>error</strong>.</li>\n<li>The devices change their states based on the bit they read and the states associated with the current one. The lock enters state $S[i][B[j]]$, and the keycard enters state $T[j][A[i]]$.</li>\n</ol>\n<p>If, at any point over the verification process, the number of errors reaches $K$, the verification fails, and the process terminates. Otherwise, if they complete $10^7$ iterations without registering at least $K$ errors, the verification succeeds, and the lock opens.</p>\n<p>Upon setting up the new lock, the mechanics made a mistake: they forgot to specify state $i_0$, the initial state used in the verification process. As a result, whenever the lock gets paired up with a keycard, it is set to an arbitrary (unknown) initial state.</p>\n<p>Your task is to construct a keycard capable of opening the lock despite the mistake.</p>",
+  "input": "",
+  "output": "",
+  "samples": [],
+  "hint": null,
+  "source": "Olympiad, International Olympiad in Informatics, IOI 2023, Practice",
+  "level": 21,
+  "tags": [
+    "ad_hoc",
+    "dfs",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

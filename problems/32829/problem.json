@@ -1,0 +1,36 @@
+{
+  "id": 32829,
+  "title": "Bottles",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>In the famous ICPC race, $n$ runners will participate. The course is $m$ kilometers long and for safety, it is divided into $m$ ranges. Each range is one kilometer long and Range $i$ ($1 ≤ i ≤ m$) is the interval $(i - 1, i)$, which is the section between $i - 1$ km and $i$ km from the starting point. We will ignore the case where the distance between the starting point and a runner is an integer. As the weather is quite hot, the organizers would like to put enough water. They will maintain a certain number of water bottles in each range. When a runner takes one bottle, they will put another immediately. They have found that the optimal number of water bottles could be obtained by calculating the maximum number of runners in that interval during the race. Based on the previous records of each runner, they have estimated how many seconds he/she will spend in each range.</p>\n<p>Consider the following example. There are three runners, and the length of the course is six kilometers. The table shows the amount of time runners will spend in each range (in seconds).</p>\n<table class=\"table table-bordered th-center td-center\">\n<tbody>\n<tr>\n<th>Runner</th>\n<th>Range $1$</th>\n<th>Range $2$</th>\n<th>Range $3$</th>\n<th>Range $4$</th>\n<th>Range $5$</th>\n<th>Range $6$</th>\n</tr>\n<tr>\n<th>$1$</th>\n<td>$350$s</td>\n<td>$360$s</td>\n<td>$370$s</td>\n<td>$380$s</td>\n<td>$390$s</td>\n<td>$400$s</td>\n</tr>\n<tr>\n<th>$2$</th>\n<td>$240$s</td>\n<td>$240$s</td>\n<td>$240$s</td>\n<td>$240$s</td>\n<td>$240$s</td>\n<td>$240$s</td>\n</tr>\n<tr>\n<th>$3$</th>\n<td>$480$s</td>\n<td>$480$s</td>\n<td>$520$s</td>\n<td>$600$s</td>\n<td>$600$s</td>\n<td>$600$s</td>\n</tr>\n</tbody>\n</table>\n<p>Now we will check the number of runners in each range during the race. Intentionally, the table below is not complete. When you fill the whole table and compute the maximum number of runners for each range, you can see that you need to put three bottles of water in Range $1$, two in Range $2$ and Range $3$, and one in Range $4$, Range $5$, and Range $6$. Note that at $480$s, Runner $2$ leaves Range $2$ and Runner $3$ arrives at Range $2$, both of which will be ignored as their distance from the starting point is an integer. At $480$s, no runner is in Range $1$ and in Range $3$ and Runner $1$ is in Range $2$. Then, for example, at $481$s, Runner $1$ and Runner $3$ will be in Range $2$.</p>\n<table class=\"table table-bordered th-center td-center\">\n<tbody>\n<tr>\n<th>Time elapsed</th>\n<th>Range $1$</th>\n<th>Range $2$</th>\n<th>Range $3$</th>\n<th>Range $4$</th>\n<th>Range $5$</th>\n<th>Range $6$</th>\n</tr>\n<tr>\n<th>($0$s, $240$s)</th>\n<td>$3$</td>\n<td>$0$</td>\n<td>$0$</td>\n<td>$0$</td>\n<td>$0$</td>\n<td>$0$</td>\n</tr>\n<tr>\n<th>($240$s, $350$s)</th>\n<td>$2$</td>\n<td>$1$</td>\n<td>$0$</td>\n<td>$0$</td>\n<td>$0$</td>\n<td>$0$</td>\n</tr>\n<tr>\n<th>($350$s, $480$s)</th>\n<td>$1$</td>\n<td>$2$</td>\n<td>$0$</td>\n<td>$0$</td>\n<td>$0$</td>\n<td>$0$</td>\n</tr>\n<tr>\n<th>($480$s, $710$s)</th>\n<td>$0$</td>\n<td>$2$</td>\n<td>$1$</td>\n<td>$0$</td>\n<td>$0$</td>\n<td>$0$</td>\n</tr>\n<tr>\n<th>($710$s, $720$s)</th>\n<td>$0$</td>\n<td>$1$</td>\n<td>$2$</td>\n<td>$0$</td>\n<td>$0$</td>\n<td>$0$</td>\n</tr>\n<tr>\n<th>$\\dots$</th>\n<td>$\\dots$</td>\n<td>$\\dots$</td>\n<td>$\\dots$</td>\n<td>$\\dots$</td>\n<td>$\\dots$</td>\n<td>$\\dots$</td>\n</tr>\n</tbody>\n</table>\n<p>Given the number of runners, the length of the course, and the amount of time each runner will spend in each range, write a program to compute the number of bottles to be put in each range.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing two integers, $n$ and $m$ ($1 ≤ n ≤ 100$, $1 ≤ m ≤ 300$), where $n$ is the number of runners and $m$ is the length of the course. In the following $n$ lines, the $i$-th line contains $m$ positive integers that represent the amount of time Runner $i$ will spend in each range. More precisely, the $j$-th number on the line is the time Runner $i$ will spend in Range $j$. No runner will spend more than $10\\,000$ seconds in any range.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line. The line should contain the numbers of bottles in each range from Range $1$ to Range $m$.</p>",
+  "samples": [
+    {
+      "input": "3 6\n350 360 370 380 390 400\n240 240 240 240 240 240\n480 480 520 600 600 600\n",
+      "output": "3 2 2 1 1 1\n"
+    },
+    {
+      "input": "4 5\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n",
+      "output": "4 4 4 4 4\n"
+    },
+    {
+      "input": "3 5\n1 1 1 1 1\n5 5 5 5 5\n25 25 25 25 25\n",
+      "output": "3 1 1 1 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, 2024 ICPC Asia Seoul Regional",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "sorting",
+    "simulation",
+    "prefix_sum",
+    "sweeping"
+  ],
+  "accepted_user_count": 143,
+  "submission_count": null,
+  "average_tries": 1.7132999897003174
+}

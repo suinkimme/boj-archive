@@ -1,0 +1,35 @@
+{
+  "id": 33537,
+  "title": "Breaking the Cipher",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>It has already been years since Alice moved into her new house in the countryside, but only a week ago she suddenly found a mysterious safe, requiring a secret combination to unlock, hidden in her basement. She jumped onto the internet to ask strangers for clues and she received a message from a mysterious man called Bob. He included the combination to Alice's safe, but noted that he had encrypted it with the RSA algorithm using Alice's public key. On the internet you find that the RSA algorithms works as follows:</p>\n<blockquote>\n<p><strong>Key generation</strong>:</p>\n<ol>\n<li>Choose two distinct prime numbers $p$ and $q$.</li>\n<li>Compute $n = pq$.</li>\n<li>Compute $\\phi(n) = \\phi(p)\\cdot \\phi(q) = (p - 1)\\cdot (q - 1) = n - (p + q - 1)$, where $\\phi$ is Euler's totient function.</li>\n<li>Choose an integer $e$ such that $1 &lt; e &lt; \\phi(n)$ and gcd$(e, \\phi(n)) = 1$; i.e., $e$ and $\\phi(n)$ are coprime.</li>\n<li>Determine $d$ as $d \\equiv e^{-1} \\pmod{\\phi(n)}$; i.e., $d \\cdot e \\equiv 1 \\pmod{\\phi(n)}$.</li>\n</ol>\n<p><strong>Encryption:</strong></p>\n<p>Suppose that Bob would like to send message $M$ to Alice. He then computes the ciphertext $C$, using Alice's public key $e$, corresponding to \\begin{equation*} C \\equiv M^e \\pmod{n} \\end{equation*}</p>\n<p><strong>Decryption:</strong></p>\n<p>Alice can recover $M$ from $C$ by using her private key exponent $d$ by computing \\begin{equation*} M \\equiv C^d \\pmod{n} \\end{equation*} Additionally, Alice has learned that the following congruence could prove to be useful for the decryption process: \\begin{equation*} (a \\cdot b) \\mod{n} \\equiv ((a \\mod{n}) \\cdot (b \\mod{n})) \\mod{n} \\end{equation*}</p>\n</blockquote>\n<p>Alice has already chosen the integers $p$, $q$, and $e$ accordingly and needs your help to decrypt the message $C$ she has received from Bob.</p>",
+  "input": "<p>The input to this problem is structured as follows: The first line contains three integers, $1 &lt; p, q, e &lt; 1000$, respectively. The second line contains one integer $C$, the encrypted secret combination to Alice's safe.</p>",
+  "output": "<p>One line with the (decrypted) combination $M$ to Alice's safe.</p>",
+  "samples": [
+    {
+      "input": "751 337 739\n735\n",
+      "output": "15075\n"
+    },
+    {
+      "input": "181 677 739\n567\n",
+      "output": "11662\n"
+    },
+    {
+      "input": "467 823 397\n802\n",
+      "output": "368133\n"
+    }
+  ],
+  "hint": null,
+  "source": ", University, Delft University of Technology, Freshmen Programming Contest 2016",
+  "level": 10,
+  "tags": [
+    "math",
+    "bruteforcing",
+    "number_theory",
+    "exponentiation_by_squaring"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.105299949645996
+}

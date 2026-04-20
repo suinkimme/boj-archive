@@ -1,0 +1,26 @@
+{
+  "id": 11040,
+  "title": "ICPC Calculator",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In mathematics, we usually specify the order of operations by using parentheses. For example, 7 × (3 + 2) always means multiplying 7 by the result of 3 + 2 and never means adding 2 to the result of 7 × 3. However, there are people who do not like parentheses. International Counter of Parentheses Council (ICPC) is attempting to make a notation without parentheses the world standard. They are always making studies of such no-parentheses notations.</p>\n<p>Dr. Tsukuba, a member of ICPC, invented a new parenthesis-free notation. In his notation, a single expression is represented by multiple lines, each of which contains an addition operator (+), a multiplication operator (*) or an integer. An expression is either a single integer or an operator application to operands. Integers are denoted in decimal notation in one line. An operator application is denoted by a line of its operator immediately followed by lines denoting its two or more operands, each of which is an expression, recursively. Note that when an operand is an operator application, it comprises multiple lines.</p>\n<p>As expressions may be arbitrarily nested, we have to make it clear which operator is applied to which operands. For that purpose, each of the expressions is given its nesting level. The top level expression has the nesting level of 0. When an expression of level n is an operator application, its operands are expressions of level n + 1. The first line of an expression starts with a sequence of periods (.), the number of which indicates the level of the expression.</p>\n<p>For example, 2 + 3 in the regular mathematics is denoted as in Figure 1. An operator can be applied to two or more operands. Operators + and * represent operations of summation of all operands and multiplication of all operands, respectively. For example, Figure 2 shows an expression multiplying 2, 3, and 4. For a more complicated example, an expression (2 + 3 + 4) × 5 in the regular mathematics can be expressed as in Figure 3 while (2 + 3) × 4 × 5 can be expressed as in Figure 4.</p>\n<pre>\n+\n.2\n.3</pre>\n<p>Figure 1: 2 + 3</p>\n<pre>\n*\n.2\n.3\n.4</pre>\n<p>Figure 2: An expression multiplying 2, 3, and 4</p>\n<pre>\n*\n.+\n..2\n..3\n..4\n.5</pre>\n<p>Figure 3: (2 + 3 + 4) × 5</p>\n<pre>\n*\n.+\n..2\n..3\n.4\n.5</pre>\n<p>Figure 4: (2 + 3) × 4 × 5</p>\n<p>Your job is to write a program that computes the value of expressions written in Dr. Tsukuba's notation to help him.</p>",
+  "input": "<p>The input consists of multiple datasets. Each dataset starts with a line containing a positive integer n, followed by n lines denoting a single expression in Dr. Tsukuba's notation.</p>\n<p>You may assume that, in the expressions given in the input, every integer comprises a single digit and that every expression has no more than nine integers. You may also assume that all the input expressions are valid in the Dr. Tsukuba's notation. The input contains no extra characters, such as spaces or empty lines.</p>\n<p>The last dataset is immediately followed by a line with a single zero.</p>",
+  "output": "<p>For each dataset, output a single line containing an integer which is the value of the given expression.</p>",
+  "samples": [
+    {
+      "input": "1\n9\n4\n+\n.1\n.2\n.3\n9\n+\n.0\n.+\n..*\n...1\n...*\n....1\n....2\n..0\n10\n+\n.+\n..6\n..2\n.+\n..1\n..*\n...7\n...6\n.3\n0\n",
+      "output": "9\n6\n2\n54\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2015 Japan Domestic Contest",
+  "level": 13,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "stack"
+  ],
+  "accepted_user_count": 42,
+  "submission_count": null,
+  "average_tries": 1.642899990081787
+}

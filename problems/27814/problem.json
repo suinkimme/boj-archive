@@ -1,0 +1,35 @@
+{
+  "id": 27814,
+  "title": "Emacs++",
+  "time_limit": "60 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>In 2016's Distributed Code Jam, we introduced the Lisp++ language for Lisp fans who prefer a higher density of parentheses. Here is a reminder of how the language's syntax works:</p>\n<p>A Lisp++ program is a string of balanced parentheses. More formally, a Lisp++ program consists of one of the following. (In this specification, <i>C</i> stands for some program code — not necessarily the same code each time.)</p>\n<ul>\n<li><code>()</code> Literally, just an opening parenthesis and a closing parenthesis. We say that this <code>(</code> matches this <code>)</code>, and vice versa.</li>\n<li><code>(</code><i>C</i><code>)</code> A program within a pair of enclosing parentheses. We say that this <code>(</code> matches this <code>)</code>, and vice versa.</li>\n<li><i>CC</i> Two programs (not necessarily the same), back to back.</li>\n</ul>\n<p>This year, we are pleased to announce Emacs++, a text viewer for Lisp++. Emacs++ displays a Lisp++ program of length <b>K</b> as a single long line with a cursor that you can move around. The cursor is a \"block cursor\" that is always located <i>on</i> one of the <b>K</b> characters in the program, rather than between characters.</p>\n<p>At any point, you can perform one of the following three actions to move the cursor. (i represents the current position of the cursor, counting starting from 1 for the leftmost position.)</p>\n<ul>\n<li>Move the cursor one character to the left (or, if the cursor is already on the leftmost character, does nothing). This takes <b>L<sub>i</sub></b> seconds.</li>\n<li>Move the cursor one character to the right (or, if the cursor is already on the rightmost character, does nothing). This takes <b>R<sub>i</sub></b> seconds.</li>\n<li>Teleport the cursor to the parenthesis matching (as described above) the parenthesis that is the i-th character. This takes <b>P<sub>i</sub></b> seconds.</li>\n</ul>\n<p>We think Emacs++ will be simple for power users, but we still need to understand how efficient it is. We have a single Lisp++ program and list of <b>Q</b> queries about that program; each query consists of a start position <b>S<sub>j</sub></b> and an end position <b>E<sub>j</sub></b>. To answer the j-th query, you must determine the smallest possible amount of time N<sub>j</sub> (in seconds) that it will take to take the cursor from position <b>S<sub>j</sub></b> to position <b>E<sub>j</sub></b>, if you make optimal decisions.</p>\n<p>Please output the sum of all of those N<sub>j</sub> values.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. The first line of a test case contains two integers <b>K</b>, which is the length of the Lisp++ program, and <b>Q</b>, which is the number of queries.</p>\n<p>The second line of a test case contains a string <b>P</b> of <b>K</b> characters, each of which is either <code>(</code> or <code>)</code>, representing a Lisp++ program (string of balanced parentheses), as described above.</p>\n<p>The third, fourth, and fifth lines of a test case each contain <b>K</b> integers. The i-th integers in these lines are the values <b>L<sub>i</sub></b>, <b>R<sub>i</sub></b>, and <b>P<sub>i</sub></b>, respectively, that are described above.</p>\n<p>The sixth and seventh lines of a test case each contain <b>Q</b> integers. The j-th integers in these lines are <b>S<sub>j</sub></b> and <b>E<sub>j</sub></b>, respectively, that are described above.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the sum of the N<sub>j</sub> values that are described above.</p>",
+  "samples": [
+    {
+      "input": "1\n12 5\n(()(((()))))\n1 1 1 1 1 1 1 1 1 1 1 1\n1 1 1 1 1 1 1 1 1 1 1 1\n1 1 1 1 1 1 1 1 1 1 1 1\n7 4 4 12 5\n12 11 10 1 6\n",
+      "output": "Case #1: 10\n"
+    }
+  ],
+  "hint": "<p>In the sample case, which obeys the limits for Test Set 1, all of the time costs are the same (1 second per move). The shortest times for the queries are as follows:</p>\n<ol>\n<li>Move right from 7 five times to 12 taking 5 seconds.</li>\n<li>Teleport from 4 to 11 taking 1 second.</li>\n<li>Teleport from 4 to 11, then move left to 10 taking 2 seconds.</li>\n<li>Teleport from 12 to 1, taking 1 second.</li>\n<li>Move right from 5 to 6 taking 1 second.</li>\n</ol>\n<p>Thus, the sum of query times is 5+1+2+1+1 = 10 seconds.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2020, Round 2",
+  "level": 26,
+  "tags": [
+    "implementation",
+    "dp",
+    "graphs",
+    "trees",
+    "shortest_path",
+    "dijkstra",
+    "dp_tree",
+    "divide_and_conquer",
+    "offline_queries",
+    "centroid",
+    "centroid_decomposition",
+    "tree_decomposition"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2.142899990081787
+}

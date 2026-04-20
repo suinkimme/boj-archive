@@ -1,0 +1,30 @@
+{
+  "id": 30662,
+  "title": "O Jogo",
+  "time_limit": "26 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Todas as pessoas do mundo estão jogando O Jogo, mesmo que não saibam disso. Aliás, as pessoas que não sabem dele, estão ganhando! O Jogo é um jogo muito simples, tendo apenas duas regras:</p>\n<ul>\n<li>Toda vez que alguém pensa no jogo, perde.</li>\n<li>Toda vez que alguém perde, deve alertar todos a sua volta que ele perdeu.</li>\n</ul>\n<p>Bom, você acaba de perder O Jogo... Mas não se preocupe, pois assim que esquecê-lo, voltará a jogá-lo!</p>\n<p>Obviamente, um jogo como esse nunca terá um vencedor já que as regras somente definem um critério de perda. Contudo, você como funcionário da maior rede de micro-blogging do mundo e inconformado de não haver um vencedor neste jogo resolveu criar um prêmio para o usuário da sua rede que menos pensou no jogo.</p>\n<p>Para alcançar seu objetivo, você terá que analisar o histórico de todos os eventos que aconteceram na rede. O funcionamento da sua rede é baseado numa arquitetura publish/subscribe e conta com as seguintes três primitivas:</p>\n<ul>\n<li>SUBSCRIBE A, B - usuário A passa a seguir B, ou seja, recebe mensagens dele</li>\n<li>UNSUBSCRIBE A, B - usuário A deixa de seguir B</li>\n<li>PUBLISH A - usuário A publica uma mensagem a todos que o seguem</li>\n</ul>\n<p>As mensagens de PUBLISH já fora filtradas e só aparecem no histórico aquelas que anunciam O Jogo, fazendo com que todos que a recebem lembrem-se dele. Parece que nem todas as pessoas obedecem as regras do jogo, sendo comum que alguém receba uma mensagem falando sobre O Jogo e não avise aos seus amigos que lembrou do jogo. Contudo, tanto quem publica uma mensagem quanto quem a recebe lembra do jogo.</p>\n<p>O seu histórico é dado em texto puro com uma primitiva por linha. Em toda linha, a primitiva é precedida por um inteiro, marcando o dia no qual a primitiva foi trocada. Nem todo dia há troca de mensagens. Como exemplo, é dado o trecho abaixo:</p>\n<pre>\n123 SUBSCRIBE alice, bob\n124 PUBLISH bob\n124 PUBLISH alice\n126 PUBLISH alice\n</pre>\n<p>No exemplo acima, no dia 123, alice passa a seguir bob sem que bob siga alice. No dia seguinte, bob lembra do jogo e acaba avisando alice através de uma mensagem. Nesse mesmo dia, alice publica uma mensagem sobre o jogo, lembrando também seus seguidores. Já no dia 126, somente alice lembra do jogo. Neste caso, alice lembrou do jogo dois dias e bob apenas um.</p>\n<p>Como sua rede possui muitos usuários, você não sabe exatamente quantos usuários aparecem no histórico e deve, portanto, estar preparado para suportar vários. Cada usuário é representado por uma string de no máximo 15 caracteres, somente letras minúsculas são usadas.</p>\n<p>Dado o histórico da rede em ordem cronológica, inclusive em relação 'as mensagens trocadas no mesmo dia, descubra qual usuário lembrou menos do jogo, ou seja, quem passou mais dias, não necessariamente consecutivos, sem lembrar do jogo.</p>",
+  "input": "<p>A entrada contém vários casos de teste. Cada caso de teste começa com um número 1 ≤ n ≤ 10.000 que representa a quantidade de mensagens no histórico. Essa linha é seguida de n linhas contendo primitivas como descrito anteriormente. O número de usuários distintos em um histórico será no máximo 10.000.</p>\n<p>A entrada termina com um caso de teste contendo um valor n = 0 e não deve ser processado.</p>",
+  "output": "<p>A saída deve conter uma linha para cada caso de teste. Para cada caso de teste, escreva na saída o usuário que pensou no jogo por menos dias. Em caso de empate, imprima todos os usuários em ordem alfabética e separados por um espaço.</p>",
+  "samples": [
+    {
+      "input": "4\n1 SUBSCRIBE ana, carlos\n1 SUBSCRIBE ana, sabrina\n2 PUBLISH sabrina\n3 SUBSCRIBE carlos, ana\n6\n1 SUBSCRIBE antonio, barbara\n2 SUBSCRIBE barbara, cristina\n3 SUBSCRIBE cristina, antonio\n4 PUBLISH antonio\n4 PUBLISH barbara\n4 PUBLISH cristina\n0\n",
+      "output": "carlos\nantonio barbara cristina\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Sub-Regional Brasil do ACM ICPC, Maratona de Programação da SBC 2022 - Extra Vitória Site",
+  "level": 9,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "hash_set",
+    "implementation",
+    "simulation",
+    "set"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 3.1666998863220215
+}

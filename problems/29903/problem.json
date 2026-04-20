@@ -1,0 +1,45 @@
+{
+  "id": 29903,
+  "title": "Lottery",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Jack spends a lot of time and money playing the lottery.</p>\n<p>The lottery machine consists of $N$ parallel ramps (as shown on the figure). Each ramp is divided into $M$ sections of equal lengths. Under the ramps are $M$ baskets, each labeled with an integer.</p>\n<p>The drawing works as follows. First some ramp sections from among the $N \\cdot M$ are removed. For each section, a $B$-sided die (with the sides numbered $1, \\ldots, B$) is rolled and if the result is at most $A$, the section is removed. After that, a ball is released from the top-left corner of the machine, above the topmost ramp. If the ball ends up in a basket, the player's prize is the amount written on the basket.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/><img alt=\"\" src=\"2.png\"/></p>\n<p>You try to explain to Jack that in general, he always loses money in such games. To prove your point, you want to compute the expected average value of the prize of this game.</p>\n<p>It can be shown that the expected value can be expressed as $\\frac{p}{q}$ where $p$ and $q$ are integers and $\\frac{p}{q}$ is an irreducible fraction. Compute the value $pr \\bmod (10^9 + 7)$ where $r$ is such an integer that $qr \\bmod (10^9 + 7) = 1$.</p>",
+  "input": "<p>The first line contains space-separated integers $N$ and $M$ ($2 \\le N, M \\le 5 \\cdot 10^5$), the dimensions of the lottery machine. The second line contains space-separated integers $A$ and $B$ ($0 \\le A \\le B &lt; 10^9 + 7$, $B \\ne 0$), the parameters of the die rolls.</p>\n<p>The third line contains $M$ space-separated integers $C_1, C_2, \\ldots, C_M$ ($0 \\le C_i \\le 10^9$ for each $i$), the values of the baskets from left to right.</p>",
+  "output": "<p>Output a single integer: the expected value of Jack's prize, in the format described above.</p>",
+  "samples": [
+    {
+      "input": "2 2\n1 2\n10 100\n",
+      "output": "500000031\n"
+    },
+    {
+      "input": "2 4\n2 5\n1 2 3 4\n",
+      "output": "483520005\n"
+    },
+    {
+      "input": "3 3\n0 1\n1 2 3\n",
+      "output": "0\n"
+    },
+    {
+      "input": "3 3\n1 1\n1 2 3\n",
+      "output": "1\n"
+    },
+    {
+      "input": "8 6\n17536540 365964399\n49 8 28 51 32 24\n",
+      "output": "214402328\n"
+    }
+  ],
+  "hint": "<p>To format your output in this task, you need to compute $r$ such that $qr \\equiv 1 \\pmod{K}$ (in our case, $K = 10^9 + 7$). This number is called the <em>inverse of $q$ modulo $K$</em>; it can be shown that if $q \\not\\equiv 0 \\pmod{K}$ and $K$ is prime, then $r$ can be computed as $r = q^{K - 2} \\bmod K$.</p>",
+  "source": "Olympiad, Estonian Informatics Olympiad, 2020-21, Final Round",
+  "level": 16,
+  "tags": [
+    "combinatorics",
+    "linearity_of_expectation",
+    "math",
+    "modular_multiplicative_inverse",
+    "number_theory",
+    "probability"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.5
+}

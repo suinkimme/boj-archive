@@ -1,0 +1,24 @@
+{
+  "id": 18563,
+  "title": "Glad You Came",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Steve has an integer array \\(a\\) of length \\(n\\) (1-based). He assigned all the elements as zero at the beginning. After that, he made \\(m\\) operations, each of which is to update an interval of a with some value. You need to figure out \\(\\oplus_{i=1}^{n}{(i \\cdot a_i)}\\) after all his operations are finished, where \\(\\oplus\\) means the bitwise exclusive-OR operator.</p>\n<p>In order to avoid huge input data, these operations are encrypted through some particular approach.</p>\n<p>There are three unsigned 32-bit integers <code>X</code>, <code>Y</code> and <code>Z</code> which have initial values given by the input. A random number generator function is described as following, where <code>∧</code> means the bitwise exclusive-OR operator, <code>&lt;&lt;</code> means the bitwise left shift operator and <code>&gt;&gt;</code> means the bitwise right shift operator. Note that function would change the values of <code>X</code>, <code>Y</code> and <code>Z</code> after calling.</p>\n<pre>\n 1: function RNG61()\n 2:     X ← X ∧ (X &lt;&lt; 11)       ▷ 32-bit unsigned integer overflow might occur\n 3:     X ← X ∧ (X &gt;&gt; 4)\n 4:     X ← X ∧ (X &lt;&lt; 5)        ▷ 32-bit unsigned integer overflow might occur\n 5:     X ← X ∧ (X &gt;&gt; 14)\n 6:     W ← X ∧ (Y ∧ Z)         ▷ as a partial 32-bit unsigned integer\n 7:     X ← Y\n 8:     Y ← Z\n 9:     Z ← W\n10:     return Z\n11: end function\n</pre>\n<p>Let the \\(i\\)-th result value of calling the above function as \\(f_i\\) (\\(i = 1, 2, \\dots , 3m\\)). The \\(i\\)-th operation of Steve is to update \\(a_j\\) as \\(v_i\\) if \\(a_j &lt; v_i\\) (\\(j = l_i, l_i + 1, \\dots , r_i\\)), where</p>\n<p>\\[\\begin{cases} l_i = \\min {((f_{3i-2} \\mod{n}) + 1, (f_{3i-1} \\mod{n}) + 1)} \\\\ r_i = \\max {((f_{3i-2} \\mod{n}) + 1, (f_{3i-1} \\mod{n}) + 1)} ~ (i = 1, 2, \\dots, m)\\text{.} \\\\ v_i = f_{3i} \\mod{2^{30}} \\end{cases}\\]</p>",
+  "input": "<p>The first line contains one integer T, indicating the number of test cases.</p>\n<p>Each of the following T lines describes a test case and contains five space-separated integers n, m, X, Y and Z.</p>\n<p>1 ≤ T ≤ 100, 1 ≤ n ≤ 10<sup>5</sup>, 1 ≤ m ≤ 5 · 10<sup>6</sup>, 0 ≤ X, Y, Z &lt; 2<sup>30</sup>.</p>\n<p>It is guaranteed that the sum of n in all the test cases does not exceed 10<sup>6</sup> and the sum of m in all the test cases does not exceed 5 · 10<sup>7</sup>.</p>",
+  "output": "<p>For each test case, output the answer in one line.</p>",
+  "samples": [
+    {
+      "input": "4\n1 10 100 1000 10000\n10 100 1000 10000 100000\n100 1000 10000 100000 1000000\n1000 10000 100000 1000000 10000000\n",
+      "output": "1031463378\n1446334207\n351511856\n47320301347\n"
+    }
+  ],
+  "hint": "<p>In the first sample, a = [1031463378] after all the operations.</p>\n<p>In the second sample, a = [1036205629, 1064909195, 1044643689, 1062944339, 1062944339, 1062944339, 1062944339, 1057472915, 1057472915, 1030626924] after all the operations.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2019, Day 2: Jingzhe Tang Contest",
+  "level": 22,
+  "tags": [
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1
+}

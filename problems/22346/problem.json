@@ -1,0 +1,24 @@
+{
+  "id": 22346,
+  "title": "일이 이어져야 좋다",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>양의 정수 N으로 만들어지는 문자열 S<sub>N</sub>은 다음과 같이 정의된다. 아래에서 ⌊N/2⌋은 N을 2로 나눈 몫이다.</p>\n<ol>\n<li>N = 1인 경우: S<sub>N</sub> = 1 (즉, 1 한 글자로 이루어진 문자열)</li>\n<li>N ≥ 2이고 N이 짝수인 경우: S<sub>N</sub> = S<sub>⌊N/2⌋</sub> 0 S<sub>⌊N/2⌋</sub> (즉, 0 한 글자 좌우에 S<sub>⌊N/2⌋</sub>가 이어진 문자열)</li>\n<li>N ≥ 2이고 N이 홀수인 경우: S<sub>N</sub> = S<sub>⌊N/2⌋</sub> 1 S<sub>⌊N/2⌋</sub> (즉, 1 한 글자 좌우에 S<sub>⌊N/2⌋</sub>가 이어진 문자열)</li>\n</ol>\n<p>위의 약속에 따라 S<sub>13</sub>을 구해보면 다음과 같다.</p>\n<ul>\n<li>위의 약속에서 적용이 가능한 것은 3번이므로 S<sub>13</sub> = S<sub>6</sub> 1 S<sub>6</sub>임을 알수 있다.</li>\n<li>S<sub>6</sub>은 위의 약속의 2번에 의해 S<sub>3</sub> 0 S<sub>3</sub>이 되므로 S<sub>13</sub> = S<sub>6</sub> 1 S<sub>6</sub> = S<sub>3</sub> 0 S<sub>3</sub> 1 S<sub>3</sub> 0 S<sub>3</sub>이다.</li>\n<li>S<sub>3</sub>은 위의 약속의 3번과 1번을 순서대로 적용하면 111이 된다.</li>\n<li>따라서 S<sub>13</sub> = 111011111110111이다.</li>\n</ul>\n<p>양의 정수 N이 주어질 때, 아래와 같은 형태의 질의 Q개를 해결하는 프로그램을 작성하라.</p>\n<p>q (1 ≤ q ≤ Q)번째 질의는 세 개의 정수 (i<sub>q</sub>, j<sub>q</sub>, k<sub>q</sub>)가 주어질 때 다음과 같다: S<sub>N</sub>[i<sub>q</sub>..j<sub>q</sub>]에서 0을 최대 k<sub>q</sub>개까지 포함하는 가장 긴 부분문자열의 길이는?</p>\n<p>위의 예에서 질의가 (1, 15, 0)이라면 가장 긴 부분문자열은 1로만 이루어져야 한다. 또, 질의가 S<sub>13</sub> 전체에서 찾기를 요구하고 있으므로 해당 문자열의 길이는 7이다.</p>\n<p>만약, (2, 14, 2)이라면 질의는 S<sub>13</sub>의 두번째부터 14번째 문자까지에서 0이 최대 2개인 가장 긴 부분문자열을 찾으라고 요구한다. 그런데 S<sub>13</sub>[2..14] = 1101111111011에는 0이 2개 뿐이므로 그 전체가 답이 되고, 그 길이는 13이다.</p>",
+  "input": "<p>첫 번째 줄에 N과 질의의 개수 Q가 정수로 주어진다.</p>\n<p>다음 Q개의 줄에 질의들이 한 줄에 하나씩 주어진다. 이 중 q (1 ≤ q ≤ Q)번째 줄에는 세 개의 정수 i<sub>q</sub>, j<sub>q</sub>, k<sub>q</sub>가 공백 하나씩을 사이로 두고 주어진다.</p>",
+  "output": "<p>각 질의에 대한 답을 질의가 주어진 순서대로 각각 한줄에 하나씩 출력한다.</p>",
+  "samples": [
+    {
+      "input": "13 3\n1 15 0\n2 14 2\n2 8 0\n",
+      "output": "7\n13\n4\n"
+    }
+  ],
+  "hint": "<p>부분문자열의 정의 길이가 l인 문자열 s와 1 ≤ i ≤ j ≤ l인 두 정수 i와 j에 대해, s[i..j]는 s의 i번째 문자에서부터 j번째 문자까지를 모두 순서대로 포함하는 문자열이며, 이러한 문자열들을 문자열 s의 <strong>부분문자열</strong>이라고 한다.</p>\n<p>예를 들어 s가 <code>0100101</code>이라면, s[3..5]는 <code>001</code>이고, s[4..7]은 <code>0101</code>이다. 따라서 <code>001</code>과 <code>0101</code>은 문자열 <code>0100101</code>의 부분문자열이다. 하지만 <code>1010</code>은 문자열 <code>0100101</code>의 부분문자열이 아니다.</p>",
+  "source": ", Olympiad, 한국정보올림피아드, KOI 2021 2차대회, 중등부",
+  "level": 20,
+  "tags": [
+    "divide_and_conquer"
+  ],
+  "accepted_user_count": 71,
+  "submission_count": null,
+  "average_tries": 5.098599910736084
+}

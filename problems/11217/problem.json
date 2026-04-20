@@ -1,0 +1,25 @@
+{
+  "id": 11217,
+  "title": "Spock",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Leo is participating in a friendly game of <em>rock-paper-scissors-lizard-Spock</em> against his computer.  The game proceeds in rounds.  In each round, Leo and his computer both choose, simultaneously, between five options: rock, paper, scissors, lizard, and Spock.  Each of these five options wins over two of the other options, as illustrated by Figure F.1.  For example, rock wins over lizard and scissors, but loses against paper and Spock. If both players choose the same option, the round is a draw. In the end, each of the two players gets a score which is the number of rounds they won.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 250px; height: 228px;\"/></p>\n<p style=\"text-align: center;\">Figure F.1: The mechanics of the game. Illustration by VidTheKid via <a href=\"https://commons.wikimedia.org/wiki/File:Rock_Paper_Scissors_Lizard_Spock_en.svg\">Wikimedia Commons</a></p>\n<p>Alas, Leo's computer is not the sharpest tool in the shed, and simply follows a strategy where in each round it selects one of the five options uniformly at random.  This makes the game quite boring, because regardless of Leo's strategy, each player is expected to win $40\\%$ of the rounds (and $20\\%$ of the rounds are expected to be draws).</p>\n<p>Did we mention that Leo's computer is a bit lacking in mental capacities already?  Well, it gets worse: in order to pick random options, Leo's computer uses a very simple linear congruential generator (LCG).  The LCG has three parameters: a <em>known</em> prime number $p = 127$, and two fixed but <em>unknown</em> integers $0 \\le a &lt; p$ and $0 \\le b &lt; p$.  Additionally, it has a state, an integer $0 \\le x &lt; p$. To generate a random option, Leo's computer first updates the state according to the rule \\[x \\leftarrow (a \\cdot x + b) \\bmod p,\\] and then chooses one of the five options based on the value of $x \\bmod 5$, according to the following table:</p>\n<table class=\"table table-bordered td-center th-center table-center-50\">\n<thead>\n<tr>\n<th>$x \\bmod 5$</th>\n<th>$0$</th>\n<th>$1$</th>\n<th>$2$</th>\n<th>$3$</th>\n<th>$4$</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Option chosen:</td>\n<td>rock</td>\n<td>paper</td>\n<td>scissors</td>\n<td>lizard</td>\n<td>Spock</td>\n</tr>\n</tbody>\n</table>\n<p>Logically, knowing how Leo's computer chooses its random numbers should give Leo an advantage in the game.  But unfortunately Leo died, so it is now up to you to finish this.  Write a program which, when playing against Leo's computer for several rounds, wins at least $80\\%$ of them.</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "500\n\nscissors\n\npaper\n\nscissors\n\nrock\n\nscissors\n\npaper\n\nSpock\n\nscissors\n\nrock\n\nscissors\n\n...\n",
+      "output": "\n\nSpock\n\nSpock\n\nSpock\n\nSpock\n\nSpock\n\nSpock\n\nSpock\n\nSpock\n\nSpock\n\nSpock\n\n...\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, KTH Challenge, KTH Challenge 2015",
+  "level": 21,
+  "tags": [
+    "greedy",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 4.3333001136779785
+}

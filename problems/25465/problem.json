@@ -1,0 +1,33 @@
+{
+  "id": 25465,
+  "title": "Kocka",
+  "time_limit": "1.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Zamisli kocku. Kocku dimenzije $N$ koja se sastoji od $N \\times N \\times N$ jediničnih kockica. Svaka jedinična kockica u kocki je u početku bezbojna tj. prozirna i vidi se kroz nju, a tijekom vremena na naš zahtjev cijela može promijeniti boju.</p>\n<p>Zamisli da ta kocka stoji na staklenoj rotirajućoj podlozi. Znamo da kocka ima šest strana: prednju, stražnju, lijevu, desnu, gornju i donju. U početku, prednja strana kocke je okrenuta prema tebi, stoji u razini očiju i gledaš u nju. Kroz prozirne kockice vidi se sve do prve obojene kockice.</p>\n<p>E sada, neka je dano $Q$ upita, a $i$-ti od njih je jednog od sljedećeg oblika:</p>\n<ul>\n<li>$1$ $X_i$ $Y_i$ $Z_i$ $C_i$ - jedinična kockica koja se nalazi u $X_i$-tom redu (brojeći od gornje strane prema donjoj), $Y_i$-tom stupcu (brojeći od lijeve strane prema desnoj) i na dubini $Z_i$ (brojeći od prednje strane prema stražnjoj) poprima boju $C_i$. Pazi, kocka je okrenuta prednjom stranom prema tebi.</li>\n<li>$2$ $S_i$ - zarotiraj kocku tako da strana $S_i$ dođe na prednju stranu (ispred tvojih očiju) te ispiši tablicu dimenzija $N \\times N$ boja koje sada vidiš. Ako se na nekom mjestu u potpunosti vidi kroz kocku, za to mjesto ispiši $0$. Vrati kocku u početni položaj, tj. da je prednja strana opet okrenuta prema tebi.</li>\n</ul>",
+  "input": "<p>U prvom su retku prirodni brojevi $N$ i $Q$ ($2 ≤ N ≤ 100$, $1 ≤ Q ≤ 2\\,000$), brojevi iz teksta zadatka.</p>\n<p>U $i$-tom od sljedećih $Q$ redaka nalazi se po jedan upit prve ili druge vrste.</p>\n<ul>\n<li>ako je prvi broj u upitu $1$, onda su u tom upitu još prirodni brojevi $X_i$ $Y_i$ $Z_i$ $C_i$ ($1 ≤ X_i ≤ N$, $1 ≤ Y_i ≤ N$, $1 ≤ Z_i ≤ N$, $1 ≤ C_i ≤ 1\\,000\\,000\\,000$), iz teksta zadatka;</li>\n<li>ako je prvi broj u upitu $2$ onda u tom upitu još dolazi niz znakova $S_i$ ($S_i$ bit će jedna od sljedećih riječi: “prednja”, “straznja”, “lijeva”, “desna” i označava stranu koju treba zarotirati pred sebe, tamo gdje je do tada bila prednja), iz teksta zadatka.</li>\n</ul>",
+  "output": "<p>Za svaki upit druge vrste ispiši tablicu veličine $N \\times N$, odgovor na taj upit.</p>",
+  "samples": [
+    {
+      "input": "2 5\n2 prednja\n1 1 1 1 1\n1 2 2 2 5\n2 straznja\n2 desna\n",
+      "output": "0 0\n0 0\n0 1\n5 0\n1 0\n0 5\n"
+    },
+    {
+      "input": "3 5\n1 2 1 2 1\n1 2 2 2 2\n1 2 3 2 3\n2 lijeva\n2 desna\n",
+      "output": "0 0 0\n0 1 0\n0 0 0\n0 0 0\n0 3 0\n0 0 0\n"
+    },
+    {
+      "input": "2 6\n1 2 1 2 1\n1 1 1 1 3\n1 2 1 2 2\n1 1 1 2 4\n2 prednja\n2 straznja\n",
+      "output": "3 0\n2 0\n0 4\n0 2\n"
+    }
+  ],
+  "hint": "<p>Opis prvog probnog primjera</p>\n<p>Na početku su sve kockice u kocki veličine $2 \\times 2 \\times 2$ bezbojne. Prvi upit: ispiši izgled prednje strane kocke. Rotacija nije potrebna jer je ta strane već okrenuta prema nama. Kako je cijela kocka prozirna, odgovor na prvi upit je tablica $2 \\times 2$ popunjena nulama.</p>\n<p>Nakon toga dolaze dva upita gdje kockica u gornjem lijevom prednjem kutu poprima boju $1$, a kockica u donjem desnom stražnjem kutu boju $5$. Nakon toga dolaze dva upita od kojih prvi traži izgled kocke kada okrenemo stražnju stranu ispred nas, a drugi kada okrenemo desnu stranu ispred nas. U prvom slučaju kockica obojena bojom $1$ će se nalaziti u gornjem desnom kutu, a kockica boje $5$ u donjem lijevom. U drugom slučaju bit će isto kao i pogled od naprijed.</p>\n<p>Opis drugog probnog primjera:</p>\n<p>U ovom primjeru imamo kocku veličine $3 \\times 3 \\times 3$ te na početku mijenjamo boje svih kockica u drugom redu na dubini dva. Gledajući s lijeva, vidjet ćemo samo onu kockicu boje $1$, a gledajući s desna onu boje $3$.</p>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2022, Junior Final Exam #2",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.899999976158142
+}

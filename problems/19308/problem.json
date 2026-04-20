@@ -1,0 +1,26 @@
+{
+  "id": 19308,
+  "title": "Forever and Always",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Consider an abstract voting procedure. For example, this might be voting for the best song of \"Bullet for My Valentine\" in 2019.</p>\n<p>There are $n$ persons taking part in voting, and there are $m$ options to vote for. Every person has formed their own <em>preference list</em> which includes some of the options, in order from most preferred to least preferred. Note that some options might be missing from the preference list --- such options are not just little preferred, but unacceptable.</p>\n<p>Voting is conducted in <em>iterations</em>.</p>\n<p>In the first iteration, every person votes for the first option on their preference list. The number of votes for every option is counted and announced to everyone.</p>\n<p>In every subsequent iteration, every person intends to vote for the option on their preference list which has received the most number of votes in the previous iteration. If there are several such options, the one that comes earlier on the preference list is chosen.</p>\n<p>Before every iteration, it's asked whether anyone is going to vote differently from the previous iteration. If this is not the case, the iteration is not conducted, and the results of the last iteration are declared to be the final vote results. Otherwise, voting takes place, and similarly to the first iteration, the number of votes for every option is counted and announced to everyone again. Note that votes of the previous iterations become ignored.</p>\n<p>This sort of voting procedure looks very cumbersome to you, and, most importantly, it looks like it may take forever to find out the results! To prove your point, propose values of $n$, $m$ and preference lists such that at least 100 iterations of voting will be conducted.</p>",
+  "input": "<p>The only line of the input contains a single integer $p$ --- the required number of iterations.</p>\n<p>There are two test cases. In test case 1, $p = 2$. In test case 2, $p = 100$.</p>",
+  "output": "<p>Output two integers $n$ and $m$ ($1 \\le n \\le 10^5$; $1 \\le m \\le 2 \\cdot 10^5$) --- the number of persons and the number of options, respectively, followed by $n$ preference lists.</p>\n<p>Each preference list must be described by $k_i$ ($1 \\le k_i \\le m$) --- the number of options on the list, followed by $k_i$ distinct integers $a_{i, j}$ ($1 \\le a_{i, j} \\le m$) --- option identifiers on the list, in order from most preferred to least preferred.</p>\n<p>The sum of all values of $k_i$ must not exceed $2 \\cdot 10^5$.</p>",
+  "samples": [
+    {
+      "input": "2\n",
+      "output": "4 5\n2 1 2\n1 2\n3 5 1 3\n2 2 3\n"
+    }
+  ],
+  "hint": "<p>Consider the example test case.</p>\n<p>In the first iteration everyone votes for the first option on their list. Thus, the first person votes for option 1, the second and the fourth persons vote for option 2, and the third person votes for option 5.</p>\n<p>In the second iteration, seeing that option 2 is now prevailing, the first person will change their vote from option 1 to option 2. Everyone else will keep their vote as is. In particular, the third person will keep his vote for option 5 since both option 5 and option 1 have had one vote in the first iteration, but option 5 is earlier on their list.</p>\n<p>Finally, the third iteration is not conducted since nobody is willing to change their vote anymore. Two iterations have been conducted, which satisfies $p = 2$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2018, Day 6: Gennady Korotkevich Contest 3, Grand Prix of Gomel, Contest, Open Cup, 2017/2018 Season, Stage 12: Grand Prix of Gomel",
+  "level": 15,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.8461999893188477
+}

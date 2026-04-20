@@ -1,0 +1,22 @@
+{
+  "id": 19824,
+  "title": "Linearization",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Bitwise \"and\" of two non-negative integers is calculated as follows: write both numbers in binary, then the $i$-th binary digit of the result is equal to $1$ if both arguments have the $i$-th digit equal to $1$. For example, $(14 \\text{ and } 7) = (1110_2 \\text{ and } 0111_2) = 110_2 = 6$.</p>\n<p>\"Exclusive or\" (xor) of two binary digits equals $1$ if they are unequal, and $0$ if they are equal. Thus, $0 \\text{ xor } 0 = 0$, $0 \\text{ xor } 1 = 1$, $1 \\text{ xor } 0 = 1$ and $1 \\text{ xor } 1 = 0$.</p>\n<p>Parity function $P(x)$ for a non-negative integer $x$ equals $1$ if the binary notation of $x$ has odd number of ones, and $0$ if the binary notation of $x$ has even number of ones. For example, $P(5) = P(101_2) = 0$, $P(7) = P(111_2) = 1$.</p>\n<p>Consider a binary string whose length is a power of two: $s = s_0s_1\\ldots s_{n-1}$, where $n = 2^k$. We will call this string <em>linear</em>, if there is an integer $x$, $0 \\le x &lt; n$, and a binary digit $b$, such that for all $i$ from $0$ to $n-1$ holds $s_i = P(i \\text{ and } x) \\text{ xor } b$.</p>\n<p>For example, a string \"<code>1100</code>\" is linear: take $x = 2 = 10_2$ and $b = 1$.</p>\n<ul>\n<li>$s_0 = P(0 \\text{ and } 2) \\text{ xor } 1 = P(0) \\text{ xor } 1 = 0 \\text{ xor } 1 = 1$</li>\n<li>$s_1 = P(1 \\text{ and } 2) \\text{ xor } 1 = P(0) \\text{ xor } 1 = 0 \\text{ xor } 1 = 1$</li>\n<li>$s_2 = P(2 \\text{ and } 2) \\text{ xor } 1 = P(2) \\text{ xor } 1 = 1 \\text{ xor } 1 = 0$</li>\n<li>$s_3 = P(3 \\text{ and } 2) \\text{ xor } 1 = P(2) \\text{ xor } 1 = 1 \\text{ xor } 1 = 0$</li>\n</ul>\n<p>Meanwhile, \"<code>0001</code>\" is not linear: whatever $x$ we chose, we would have $P(0 \\text{ and } x) = P(0) = 0$, therefore $b = 0$. We have $0 = P(1 \\text{ and } x)$ and $0 = P(2 \\text{ and } x)$, therefore $x = 0$. But $P(3 \\text{ and } 0) = 0 \\ne s_3 = 1$.</p>\n<p>Consider a binary string. In one action you can take a continuous segment of digits and invert them: change all zeros to ones and vice versa. Call <em>hardness of linearization</em> of this string the minimal number of actions one needs to make it linear.</p>\n<p>For example, the hardness of linearization for the string \"<code>0001</code>\" is $1$: you can invert the left three digits to get the string \"<code>1111</code>\" which is linear with $x = 0$, $b = 1$. There are other ways to linearize it in one action.</p>\n<p>You are given a string $t$ and $q$ queries $(l_i, r_i)$. For each query, consider a substring of $t$ from $l_i$-th digit to $r_i$-th digit, inclusive. Digits of $t$ are numbered from left to right, starting with $0$. It is guaranteed that the length of each query is a power of two. Calculate the hardness of linearization for every given substring.</p>",
+  "input": "<p>The first line of input contains a single integer $m$ --- the length of the string $t$ ($1 \\le m \\le 200\\,000)$. The second line contains a binary string $t$ of length $m$.</p>\n<p>The next line contains integer $q$ --- the number of queries ($1 \\le q \\le 200\\,000$). Each of the next $q$ lines contains two integers, $l_i$ and $r_i$ ($0 \\le l_i \\le r_i &lt; m$, $r_i - l_i + 1 \\ge 2$, substring length is a power of two).</p>",
+  "output": "<p>For each query, print one integer: the hardness of linearization of the corresponding substring of $t$.</p>",
+  "samples": [
+    {
+      "input": "8\n00000101\n3\n0 7\n2 5\n0 3\n",
+      "output": "2\n1\n0\n"
+    }
+  ],
+  "hint": "<p>In the first query we need to linearize the whole string. This can be done, for example, by inverting the segment from $4$-th to $6$-th digit, getting the string \"<code>00001011</code>\", and then inverting the $5$-th digit, getting \"<code>00001111</code>\" which is linear with  $x = 4$ and $b = 0$.</p>\n<p>In the second query, the string \"<code>0001\"</code> can be linearized in one action, as described in the problem statement.</p>\n<p>In the third query the string \"<code>0000</code>\" is already linear with $x = 0$, $b = 0$.</p>",
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia Team High School Programming Contest, Russia Team High School Programming Contest 2018",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,26 @@
+{
+  "id": 25670,
+  "title": "No!",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Given are $n$ walls, the $i$-th wall has height $h_i$ and strength $s_i$. You need to arrange them in a line from left to right.</p>\n<p>For the next $q$ days, the wind will blow every night. Due to the inaccuracy of the weather forecast, you cannot be sure of the strength of the wind blowing each night.</p>\n<p>On the morning of the $k$-th day, the security center will build an infinitely strong wall of height $h'_k$ on the far left side of the ground. You can then arrange the $n$ walls you have in any order to the right of this wall. Note that the wall built by the security center each day is only available for that day. The original one will be removed before a new wall is built the next day.</p>\n<p>In the evening, the wind with strength $v$ will blow from the far left. For each $i$, the $i$-th wall from the left will receive the impact of $\\Delta_i = v \\cdot \\max(0, h_i - \\max_{0 \\le j &lt; i} h_j)$. Here, wall $0$ is the wall that the security center built: its height on the $k$-th day is $h'_k$, and its strength is infinite. If $\\Delta_i &gt; s_i$ for some $i$, then the $i$-th wall will collapse and you will suffer a heavy economic loss.</p>\n<p>You want to know, for each day, the maximum strength of the wind you can sustain without suffering economic losses if you arrange your $n$ walls optimally.</p>\n<p>It can be shown that the answer is either infinite or can be expressed in the form $r = a/b$, where $a$ and $b$ are coprime positive integers. You only need to output the values of $a$ and $b$.</p>",
+  "input": "<p>The first line of the input consists two integers $n$ and $q$ ($1 \\le n,q \\le 5 \\cdot 10^5$).</p>\n<p>Each of the next $n$ lines contains two integers $h_i$ and $s_i$ ($1 \\le h_i \\le 4 \\cdot 10^6$, $1 \\le s_i \\le 10^9$), indicating the height and strength of the $i$-th wall.</p>\n<p>Each of the next $q$ lines contains an integer $h'_k$ ($1 \\le h'_k \\le 4 \\cdot 10^6$), indicating the height of the infinitely strong wall that the security center built on the $k$-th day.</p>",
+  "output": "<p>Output $q$ lines, each in the format of an irreducible fraction \"$a$<code>/</code>$b$\", with no spaces and a slash in between, indicating that the answer has the value $r=a/b$. If the walls can withstand wind of any strength, print the infinite answer as \"<code>1/0</code>\".</p>",
+  "samples": [
+    {
+      "input": "4 5\n3 5\n4 3\n2 5\n6 3\n5\n2\n3\n7\n2\n",
+      "output": "3/1\n3/2\n3/2\n1/0\n3/2\n"
+    },
+    {
+      "input": "5 6\n10 6\n3 7\n6 15\n7 6\n8 15\n5\n3\n9\n7\n7\n9\n",
+      "output": "3/1\n3/1\n6/1\n3/1\n3/1\n6/1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2022, Day 3: Qingyu, flower and their friends’ Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

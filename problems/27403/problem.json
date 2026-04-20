@@ -1,0 +1,26 @@
+{
+  "id": 27403,
+  "title": "Santa Claus",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>It's a well known fact that in the Christmas Eve it's Santa's job to take the gifts from the elves and give them to children, bringing joy and happiness to their hearts.</p>\n<p>In The City there are N (1 ≤ N ≤ 96 226) houses along the road, numbered from 1 to N. For each house i we are given the following information:</p>\n<ul>\n<li>X<sub>i</sub> (0 ≤ X<sub>1</sub> ≤ X<sub>2</sub> ≤ ... ≤ X<sub>N</sub> ≤ 1 000 000 000);</li>\n<li>H<sub>i</sub> (0 ≤ H<sub>i</sub> ≤ 1);</li>\n<li>V<sub>i</sub> (0 ≤ V<sub>i</sub> ≤ N).</li>\n</ul>\n<p>X<sub>i</sub> is the position of the i-th house along the road. If H<sub>i</sub> = 0, then in the i-th house there is an elf with a single gift of value V<sub>i</sub>. If H<sub>i</sub> = 1, then in the i-th house there is a single child waiting for a single gift of minimum value V<sub>i</sub>.</p>\n<p>There will be N scenarios. In the i-th scenario Santa enters the city at coordinate 0, carrying an empty gift bag. He first moves to the right until he reaches the i-th house (which is located at coordinate X<sub>i</sub>) and then he moves to the left until he reaches some other position XLeft<sub>i</sub> ≤ X<sub>i</sub>. Whenever Santa passes by an elf's house which he hasn't visited before, he takes their gift and puts it into the bag. Whenever Santa passes by a child's house which hasn't already received a gift, he can (but doesn't have to!) pick one of the gifts currently in the bag and hand it to the child, removing it from the bag. This can only be accomplished if the value of the chosen gift is at least as large as the minimum value V specified by the child.</p>\n<p>In the i-th scenario, Santa travels distance D<sub>i</sub> = 2X<sub>i</sub> - XLeft<sub>i</sub>. For each scenario it's your job to find the minimum distance D<sub>i</sub> Santa has to travel to distribute all the elves' gifts to children. Note that it may be the case that some children don't receive any gift - this is acceptable as long as all the gifts are distributed and no child receives more than one gift. If no such D<sub>i</sub> exists, take D<sub>i</sub> = -1. In particular, note that this will always be the case for scenarios where Santa can't reach all the elves' houses.</p>",
+  "input": "<p>The first line of input contains one integer T (1 ≤ T ≤ 10) - the number of tests to solve.</p>\n<p>The description of T tests follows. Each test consists of four lines:</p>\n<p>The first line contains one integer N - the number of houses in the city.</p>\n<p>The second line contains N integers: X<sub>1</sub>, X<sub>2</sub>, ..., X<sub>N</sub>.</p>\n<p>The third line contains N integers: H<sub>1</sub>, H<sub>2</sub>, ..., H<sub>N</sub>.</p>\n<p>The fourth line contains the N integers: V<sub>1</sub>, V<sub>2</sub>, ..., V<sub>N</sub>.</p>\n<p>The sum of the N values over all the T tests does not exceed 500 000.</p>",
+  "output": "<p>For each of the T tests output a single line containing N integers: D<sub>1</sub>, D<sub>2</sub>, ..., D<sub>N</sub>.</p>",
+  "samples": [
+    {
+      "input": "2\n8\n10 11 12 13 14 16 25 35\n1 0 0 0 1 1 1 1\n2 2 3 3 5 1 1 1\n16\n10 11 12 13 14 15 16 17 18 19 20 23 24 31 33 37\n1 0 0 0 1 0 0 0 1 1 1 1 1 1 1 1\n2 1 7 3 1 10 10 6 5 5 1 6 1 10 8 2\n",
+      "output": "-1 -1 -1 -1 -1 -1 40 35\n-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 36 24 31 33 37\n"
+    },
+    {
+      "input": "2\n9\n1 2 3 4 15 16 17 18 19\n0 0 1 1 1 0 0 1 1\n5 7 4 1 2 3 1 6 2\n9\n1 2 3 4 15 16 17 18 19\n0 0 1 1 1 0 0 1 1\n5 7 4 1 2 3 1 6 1\n",
+      "output": "-1 -1 -1 -1 -1 -1 -1 32 34\n-1 -1 -1 -1 -1 -1 -1 32 23\n"
+    }
+  ],
+  "hint": "<p>In the first test of the first input sample there are 8 houses.</p>\n<p>Inside houses 2, 3 and 4 there are 3 elves with presents of values 2, 3 and 3 respectively.</p>\n<p>Inside the 5-th house there is a child expecting a present of value 5. Since Santa can't get such a present from any of the elves, that child will receive no gift.</p>\n<p>In scenarios 1, 2 and 3, Santa doesn't visit all the elves, thus D<sub>1</sub> = D<sub>2</sub> = D<sub>3</sub> = -1.</p>\n<p>In scenarios 4, 5 and 6, Santa does not visit enough children that would accept his 3 gifts, thus D<sub>4</sub> = D<sub>5</sub> = D<sub>6</sub> = -1.</p>\n<p>In scenario 7, Santa needs to return to the first house (XLeft<sub>7</sub> = 10) to distribute all the 3 gifts, thus D<sub>7</sub> = 40.</p>\n<p>In scenario 8, Santa does not need to return at all (XLeft<sub>8</sub> = X<sub>8</sub> = 40) to distribute all the 3 gifts, thus D<sub>8</sub> = 35.</p>",
+  "source": "Olympiad, Romanian Master of Informatics, Romanian Master of Informatics 2019",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

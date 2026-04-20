@@ -1,0 +1,33 @@
+{
+  "id": 21341,
+  "title": "Endgame",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The boardgame Chaos is an exotic variant of Chess, played by two players in alternating turns on an $n\\times n$ playing board. All pieces have the same set of $n$ valid moves which are agreed on ahead of the game.</p>\n<p>In a single turn a player can pick exactly one of their pieces and perform one of the following actions:</p>\n<ul>\n<li>Perform up to two valid moves using the chosen piece, capturing any piece that the chosen piece lands on along the way.</li>\n<li>Teleport the chosen piece to any cell on the board that is not already occupied by another piece.</li>\n<li>Leave the chosen piece untouched in its current cell.</li>\n</ul>\n<p>Having recently discovered Chaos, Alice and Bob are currently in the endgame of a very exciting match. Each player has a single piece left on the board and there are only two turns left, with Alice going next.</p>\n<p>Having analysed the situation, she realises that the only way she can win is to capture Bob's piece in her turn. If that is not possible, Alice may be able to force a tie if she can teleport her piece to a cell that Bob cannot capture in his turn. Otherwise Bob will be able to win by capturing Alice's piece, no matter what she does in her turn. Help Alice determine her optimal outcome.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with an integer $n$ ($2 \\leq n \\leq 10^5$), the size of the playing board and the number of valid moves.</li>\n<li>One line with two integers $a_x$ and $a_y$ ($1 \\leq a_x, a_y \\leq n$), the column and row in which Alice's piece is currently located.</li>\n<li>One line with two integers $b_x$ and $b_y$ ($1 \\leq b_x, b_y \\leq n$), the column and row in which Bob's piece is currently located.</li>\n<li>$n$ lines, the $i$th of which contains two integers $x_i$ and $y_i$ ($-n &lt; x_i, y_i &lt; n$) representing one of the valid moves. This moves the given piece $x_i$ columns to the right and $y_i$ rows up, provided this does not take the piece outside of the board.</li>\n</ul>\n<p>Columns are numbered $1$ to $n$ from left to right and rows are numbered $1$ to $n$ from bottom to top. All valid moves are distinct.</p>",
+  "output": "<p>If Alice can capture Bob's piece in her turn, output \"<code>Alice wins</code>\".</p>\n<p>If Alice can use her turn to force a tie by teleporting her piece to a cell that Bob cannot capture in his turn output \"<code>tie</code>\" followed by two integers $a'_x$ and $a'_y$, the location of any such cell. If there are multiple valid solutions, you may output any one of them.</p>\n<p>Otherwise, if Bob is able to capture Alice's piece no matter what she does in her turn, output \"<code>Bob wins</code>\".</p>",
+  "samples": [
+    {
+      "input": "2\n2 1\n1 2\n1 0\n0 -1\n",
+      "output": "Bob wins\n"
+    },
+    {
+      "input": "3\n2 3\n1 3\n-2 1\n1 1\n1 0\n",
+      "output": "tie 3 1\n"
+    },
+    {
+      "input": "4\n1 1\n3 4\n0 3\n2 0\n0 -3\n-2 0\n",
+      "output": "Alice wins\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2020",
+  "level": 20,
+  "tags": [
+    "mitm",
+    "randomization"
+  ],
+  "accepted_user_count": 80,
+  "submission_count": null,
+  "average_tries": 3.5625
+}

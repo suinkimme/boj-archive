@@ -1,0 +1,30 @@
+{
+  "id": 5044,
+  "title": "코드 절도",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>연종이는 리포지토리에서 코드를 리뷰하던 중, 신입사원 규현이가 인터넷에서 찾아서 복사 붙여넣기한 소스를 발견했다. 만약, 소스 코드의 작성자가 이 사실을 알게될 경우, 연종이의 회사는 거액의 소송을 당할 수 있고, 지금까지 쌓아올린 공든 탑을 한 순간에 무너뜨릴 수 있다. 연종이는 긴급 회의를 열었고, 절대로 인터넷에서 찾은 소스를 사용하지 말 것을 당부했다.</p>\r\n\r\n<p>직원들은 연종이의 말을 들을리가 없으므로, 계속해서 인터넷에서 소스를 복사할 것이다. 따라서, 연종이는 다음과 같은 모니터링 시스템을 만들기로 했다.</p>\r\n\r\n<p>연종이가 만들 시스템은 다음과 같이 작동한다.</p>\r\n\r\n<p>매번 새로운 소스를 제출할 때 마다, 바뀐 소스의 전체 내용을 알려져있는 모든 오픈 소스 리포지토리와 비교한다. 각 파일에서 가장 많이 겹치는 연속된 줄이 기록될 것이다.</p>\r\n\r\n<p>이러한 소스 비교는 줄 단위로 이루어진다. 빈 줄, 공백만 포함한 줄은 비교를 하지 않고, 줄의 개수로 세지 않는다. 각 줄의 앞에 있는 공백과 뒤에 있는 공백도 또한 무시되고, 연속된 공백도 공백 1개로 생각한다. 모든 비교는 대소문자를 가린다.</p>\r\n\r\n<p>연종이가 만들려고 하는 프로그램을 만드는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>첫째 줄에는 알려져 있는 오픈 소스의 개수 N이 주어진다. (0 &le; N &le; 100) 그 다음 줄부터 오픈 소스의 정보가 주어진다. 각 오픈 소스의 첫째 줄에는 파일 이름이 주어진다. 파일 이름은 공백을 포함하지 않으며, 중복되지 않는다. 또한, 길이는 최대 254글자이다. 다음 줄부터 소스의 내용이 주어지며, 소스의 마지막 줄에는 &quot;***END***&quot;가 주어진다. 이것은 소스 코드의 일부가 아니며, 마지막을 표시하기 위한 줄이다.</p>\r\n\r\n<p>오픈 소스의 정보가 모두 주어진 이후에는 비교할 소스가 주어진다. 이 소스의 마지막 줄에도 &quot;***END***&quot;가 주어진다.</p>\r\n\r\n<p>모든 줄은 254글자 이내이다. 모든 소스 코드는 10000줄 이내이다. 코드와 파일 이름은 ASCII문자 32~126을 포함하며, 입력은 10<sup>6</sup>글자를 넘지 않는다.&nbsp;</p>\r\n",
+  "output": "<p>첫째 줄에 가장 많이 겹치는 연속된 줄의 수를 출력한다. (빈 줄은 세지 않는다) 그 다음, 공백을 출력한 뒤 해당하는 소스의 파일 이름을 출력한다. 소스 코드가 여러 개일 경우에는 공백으로 구분하여 출력하며, 입력으로 주어진 순서를 지켜야 한다. 만약, 겹치는 줄이 없을 때는 0을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2\nHelloWorld.c\nint Main() {\n    printf(\"Hello %d\\n\",i);\n}\n***END***\nAdd.c\nint Main() {\n  for (int i=0; i<10; i++)\n    sum += i;\n  printf(\"SUM %d\", sum);\n}\n***END***\nint Main() {\n  printf(\"Hello %d\\n\",i);\n  printf(\"THE END\\n\");\n}\n***END***\n",
+      "output": "2 HelloWorld.c\n"
+    },
+    {
+      "input": "2\nHelloWorld1.bas\n10 PRINT \"*******************\"\n20 PRINT \"*******************\"\n30 PRINT \"--- HELLO WORLD ---\"\n40 PRINT \"*******************\"\n50 PRINT \"*******************\"\n***END***\nHelloWorld2.bas\n10 PRINT \"-------------------\"\n20 PRINT \"*******************\"\n30 PRINT \"--- HELLO WORLD ---\"\n40 PRINT \"*******************\"\n50 PRINT \"-------------------\"\n***END***\n10 REM Hello ver 1.0 (c) Acme 2008\n20 PRINT \"*******************\"\n30 PRINT \"--- HELLO WORLD ---\"\n40 PRINT \"*******************\"\n50 END\n***END***\n",
+      "output": "3 HelloWorld1.bas HelloWorld2.bas\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2008, baekjoon, jh05013",
+  "level": 20,
+  "tags": [
+    "string",
+    "hashing",
+    "suffix_array"
+  ],
+  "accepted_user_count": 39,
+  "submission_count": null,
+  "average_tries": 8.359000205993652
+}

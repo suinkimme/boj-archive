@@ -1,0 +1,28 @@
+{
+  "id": 12621,
+  "title": "EZ-Sokoban (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Sokoban is a famous Japanese puzzle game. Sokoban is Japanese for \"warehouse keeper\". In this game, your goal is to push boxes to their designated locations in the warehouse. To push a box, the area behind the box and in front of the box must be empty. This is because you stand behind the box when pushing and you can push only one box at a time. You cannot push a box out of the board and you cannot stand outside the board when pushing a box.</p>\n<p>For example, in this picture:</p>\n<p><img alt=\"\" src=\"1.png\"/></p>\n<p>Box 1 can be pushed in any of the four directions because the four spaces adjacent to it are empty. Box 2 can only be pushed east or west; it cannot be pushed north or south because the space to its south is not empty. Box 3 cannot be pushed in any direction. Box 4 can only be pushed east or west because there is a wall south of it.</p>\n<p>Sokoban was proved to be a P-Space complete problem, but we deal with an easier variation here. In our variation of Sokoban, boxes have strong magnets inside and they have to stick together <em>almost</em> all the time. Under \"stable\" conditions, all boxes should be connected, edge to edge. This means that from any box we can get to any other box by going through boxes that share an edge. If you push a box and boxes are no longer connected, you are in \"dangerous mode\". In dangerous mode, the next push must make the boxes connected again.</p>\n<p>For example, in this picture:</p>\n<p><img src=\"2.png\" style=\"border:0px; height:164px; vertical-align:middle; width:183px\"/></p>\n<p>The situation is stable, since all 4 boxes are connected, edge to edge. Let's assume that you decided to push the northmost box west:</p>\n<p><img src=\"3.png\" style=\"border:0px; vertical-align:middle\"/></p>\n<p>Now, we are in dangerous mode since the northmost box is not connected to any other boxes. The next push must return us to a stable position. For example, we can push that northmost box south:</p>\n<p><img src=\"4.png\" style=\"border:0px; vertical-align:middle\"/></p>\n<p>Making the boxes stable again.</p>\n<p>A Sokoban puzzle consists of a board, initial configuration of the boxes and the final configuration (where we want the boxes to be at the end). Given an EZ-Sokoban puzzle, find a solution that makes the minimum number of box moves, or decide that it can't be solved. The final and initial configurations will not be in \"dangerous\" mode.</p>\n<p>To simplify things, we will assume that you, the warehouse keeper, can jump at any time to any empty spot on the board.</p>",
+  "input": "<p>The first line in the input file contains the number of cases, <strong>T</strong>. </p>\n<p>Each case consists of several lines. The first line contains <strong>R</strong> and <strong>C</strong>, the number of rows and columns of the board, separated by one space. This is followed by <strong>R</strong> lines. Each line contains <strong>C</strong> characters describing the board:</p>\n<ul>\n<li>'.' is an empty spot</li>\n<li>'#' is a wall</li>\n<li>'x' is a goal (where a box should be at the end)</li>\n<li>'o' is a box</li>\n<li>'w' is a both a box and a goal</li>\n</ul>\n<p>The number of boxes will be equal to the number of goals.</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 50</li>\n<li>1 ≤ <strong>R</strong>,<strong>C</strong> ≤ 12</li>\n<li>1 ≤ the number of boxes ≤ 2</li>\n</ul>",
+  "output": "<p>For each test case, output</p>\n<pre>\nCase #X: K</pre>\n<p>where <strong>X</strong> is the test case number, starting from 1, and <strong>K</strong> is the minimum number of box moves that are needed to solve the puzzle or <strong>-1</strong> if it cannot be solved.</p>\n<div> </div>",
+  "samples": [
+    {
+      "input": "6\n5 4\n....\n#..#\n#xx#\n#oo#\n#..#\n7 7\n.######\n.x....#\n.x....#\n..#oo.#\n..#...#\n.######\n.######\n7 7\n#######\n#x....#\n#xx.o.#\n#..oo.#\n#.#...#\n#######\n#######\n4 10\n##########\n#.x...o..#\n#.x...o..#\n##########\n7 7\n#######\n#x....#\n#x..o.#\n#x#oo.#\n#.#...#\n#######\n#######\n3 4\n.#x.\n.oww\n....\n",
+      "output": "Case #1: 2\nCase #2: 8\nCase #3: 12\nCase #4: 8\nCase #5: -1\nCase #6: 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Code Jam, Google Code Jam 2009, Round 3",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 2.076900005340576
+}

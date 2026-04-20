@@ -1,0 +1,33 @@
+{
+  "id": 30900,
+  "title": "Chair Dance",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>In a deterministic version of <em>Musical Chairs</em><sup>1</sup>, there are $n$ chairs placed in a circle. The chairs are numbered from $1$ to $n$ in clockwise order. Initially, the $i$th player sits on the $i$th chair. During the game, the game master gives commands to all players at once.</p>\n<p>The first type of command tells each player to move $x$ chairs farther in clockwise order, so they must move from chair $i$ to chair $i+x$.</p>\n<p>The second type of command tells each player to move from chair $i$ to chair $i\\cdot{}x$. Both these calculations are done modulo $n$, where a remainder of $0$ corresponds to chair $n$.</p>\n<p>If two or more people want to move to the same chair, then the player needing to travel the least in clockwise direction to reach the chair gets to take the seat, and the other players trying to reach the same chair are out of the game. This is illustrated in Figure C.1, where the larger circles represent the chairs and their numbers are written on their inside. The smaller circles represent the players. The next command (<code>* 10</code>) tells player $10$ (now on seat $11$) and player $4$ (now on seat $5$) to move to chair $2$. However, since player $10$ needs to travel less, this player gets to take the seat. Note that the other $10$ players will also move to some other chairs, but this is omitted from the figure for the sake of readability.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 279px; height: 300px;\"/></p>\n<p style=\"text-align: center;\">Figure C.1: Illustration of Sample Input 1 at the fourth command, where players $4$ and $10$ need to move to chair $2$. Because player $10$ needs to travel less in clockwise direction, this player gets to take the seat.</p>\n<p>The jury wasted most of their free time designing this game and now need to go back to work. Fortunately, the game is deterministic, so you can play the game without the help of the jury.</p>\n<hr/>\n<p><sup>1</sup>You do not need to know the original game, but you can try to play it after the contest is over.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two integers $n$ and $q$ ($2\\leq n,q\\leq5\\cdot10^5$), the number of chairs and the number of commands.</li>\n<li>$q$ lines, each containing one of three command types:\n\t<ul>\n<li>\"<code>+</code> $x$\": The player on chair $i$ moves to chair $i+x$.</li>\n<li>\"<code>*</code> $x$\": The player on chair $i$ moves to chair $i\\cdot{}x$.</li>\n<li>\"<code>?</code> $x$\": Tell us the number of the player on chair $x$.</li>\n</ul>\n</li>\n<li>All of the values $x$ will satisfy $1 \\leq x \\leq n$.</li>\n</ul>",
+  "output": "<p>For each command of type '<code>?</code>', output the number of the player on the requested chair. If the chair is currently empty, output $-1$ instead.</p>",
+  "samples": [
+    {
+      "input": "12 10\n? 12\n+ 1\n? 12\n* 10\n? 2\n* 5\n? 2\n* 6\n? 1\n? 12\n",
+      "output": "12\n11\n10\n6\n-1\n11\n"
+    },
+    {
+      "input": "32 11\n* 6\n? 8\n* 6\n+ 31\n* 28\n? 4\n+ 1\n* 2\n+ 1\n* 3\n? 1\n",
+      "output": "28\n32\n32\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2023",
+  "level": 21,
+  "tags": [
+    "math",
+    "data_structures",
+    "ad_hoc",
+    "number_theory",
+    "disjoint_set",
+    "extended_euclidean"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 1.9199999570846558
+}

@@ -1,0 +1,22 @@
+{
+  "id": 5494,
+  "title": "Comparing Code",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Racine Business Networks (RBN) has taken the Heuristic Algorithm Languages (HAL) company to court, claiming that HAL has taken source code from RBN UNIX™ and contributed it to the open-source operating system HALnix.</p>\n<p>RBN and HAL both use a programming language with one statement per line, each of the form: <code>STOREA = STOREB + STOREC</code> where <code>STOREA</code>, <code>STOREB</code>, and <code>STOREC</code> are variable names. In particular, the first variable name starts in the first column and is followed by a space, an equals sign, a space, a second variable name, a space, the addition symbol, a space, and a third variable name. The same variable name might appear more than one time on a single line. Variable names consist of 1…8 uppercase ASCII letters (‘A’…‘Z’).</p>\n<p>RBN claims that HAL copied a consecutive sequence of lines directly from RBN's source code, making only minor modifications:</p>\n<ul>\n<li>RBN claims that HAL changed some of the variable names in order to disguise their crime. That is, HAL took a series of lines from RBN’s program and, for each variable in it, changed all occurrences of that variable to a new variable name, although the new variable name might be the same as the original. Of course, no two variables were changed to the same new variable name.</li>\n<li>RBN also claims HAL might have changed the order of the right-hand side of some lines: <code>STOREA = STOREB + STOREC</code> might have been changed to <code>STOREA = STOREC + STOREB</code>.</li>\n<li>RBN claims that HAL did not change the order of the lines of RBN’s source code.</li>\n</ul>\n<p>Given source code for programs from RBN and HAL, find the longest consecutive sequence of lines from HAL's program that could have come from a consecutive sequence of lines from RBN's program using the modifications above. Note that the sequences of lines from the two programs do not have to start at the same line number in both files.</p>",
+  "input": "<ul>\n<li>The first line of input contains two space-separated integers, R and H (1 ≤ R ≤ 1000; 1 ≤ H ≤ 1000). R is the number of lines of source code in RBN's program; H is the number of lines of source code in HAL's program.</li>\n<li>The next R lines contain RBN's program.</li>\n<li>The next H lines contain HAL's program.</li>\n</ul>",
+  "output": "<p>The output file should contain a single line with a single integer that is the length of the longest consecutive sequence of lines that HAL might have copied from RBN and transformed.</p>",
+  "samples": [
+    {
+      "input": "4 3\nRA = RB + RC\nRC = D + RE\nRF = RF + RJ\nRE = RF + RF\nHD = HE + HF\nHM = HN + D\nHN = HA + HB\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p>Lines 1-2 of RBN's program are the same as lines 2-3 of HAL's program, if the following variable name substitutions are performed on RBN's program: RA → HM, RB → D, RC → HN, D → HA, RE → HB. There is no matching with three or more lines.</p>",
+  "source": "Olympiad, International Olympiad in Informatics, IOI 2003, Day 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

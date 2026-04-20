@@ -1,0 +1,50 @@
+{
+  "id": 31762,
+  "title": "LED Matrix",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>A LED matrix is a two-dimensional array of LEDs that is used to display information. This is achieved by turning on the LEDs that form a desired pattern. The figure below represents a LED matrix displaying a smiling-face pattern. LEDs that are turned off are shown in white, while LEDs that are turned on appear colored.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 169px; height: 150px;\"/></p>\n<p>Some LED matrices scroll the pattern from right to left across the matrix, turning on just the appropriate LEDs at each step. Thus, any pattern with the same height than the matrix can be displayed, even patterns that are wider than the matrix. The pattern scrolling works as follows: Initially, all the LEDs in the matrix are turned off. The next step, the last column of the matrix displays the first column of the pattern. At each new step the pattern is moved one column to the left across the matrix, until the first column of the matrix displays the last column of the pattern. Finally, all the LEDs in the matrix are turned off again. If a LED matrix is equipped with pattern scrolling, the scrolling occurs even if the pattern if not wider than the matrix.</p>\n<p>The picture below shows all the step required to display a pattern of an arrow that is pointing to the left.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 439px; height: 250px;\"/></p>\n<p>Astrid has just received an old LED matrix with pattern scrolling, and she thinks that some LEDs might be broken. Since broken LEDs cannot be turned on, she is worried that some patterns will not display properly. Given the description of the state of each LED, and the pattern to display, you must tell whether the appropriate LEDs can be turned on at every step of the pattern scrolling.</p>",
+  "input": "<p>The first line contains three integers $R$, $C$ and $K$ ($1 ≤ R, C, K ≤ 1000$), indicating respectively the number of rows of both the LED matrix and the pattern, the number of columns of the matrix, and the number of columns of the pattern.</p>\n<p>The next $R$ lines describe the matrix and the pattern from top to bottom. Each of these lines contains a string $M$ of length $C$ and a string $P$ of length $K$, describing respectively a row of the matrix and a row of the pattern. Each character of both $M$ and $P$ is either “<code>*</code>” (asterisk) or “<code>-</code>” (hyphen). For $M$, the character “<code>*</code>” indicates a good LED while the character “<code>-</code>” represents a broken LED. For $P$, the character “<code>*</code>” indicates a LED the must be turned on while the character “<code>-</code>” represents a LED that must be turned off.</p>",
+  "output": "<p>Output a single line with the uppercase letter “<code>Y</code>” if the appropriate LEDs can be turned on at every step of the pattern scrolling, and the uppercase letter “<code>N</code>” otherwise.</p>",
+  "samples": [
+    {
+      "input": "6 6 6\n****** --*---\n****** -**---\n****** ******\n****** ******\n****** -**---\n*****- --*---\n",
+      "output": "N\n"
+    },
+    {
+      "input": "2 4 6\n**** ------\n***- *-----\n",
+      "output": "N\n"
+    },
+    {
+      "input": "2 6 4\n****** ****\n*-**-* ----\n",
+      "output": "Y\n"
+    },
+    {
+      "input": "1 1 1\n* *\n",
+      "output": "Y\n"
+    },
+    {
+      "input": "1 1 1\n* -\n",
+      "output": "Y\n"
+    },
+    {
+      "input": "1 1 1\n- *\n",
+      "output": "N\n"
+    },
+    {
+      "input": "1 1 1\n- -\n",
+      "output": "Y\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Championship, The 2024 ICPC Latin America Championship",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "string",
+    "ad_hoc"
+  ],
+  "accepted_user_count": 62,
+  "submission_count": null,
+  "average_tries": 1.0967999696731567
+}

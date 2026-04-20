@@ -1,0 +1,42 @@
+{
+  "id": 25458,
+  "title": "M",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>M je kodno ime osobe koja obnaša jednu od ključnih funkcija britanske tajne službe (MI6). Jedna od glavnih zadaća na toj funkciji je analiza sigurnosnih svojstava neprijateljskih komunikacijskih mreža. Ovaj zadatak ocrtava jedan od tipičnih problema s kojima se M dnevno susreće.</p>\n<p>Neprijateljska komunikacijska mreža sastoji se od $N$ (naizgled običnih) poštanskih ureda i $M$ dvosmjernih prometnica koje direktno povezuju neke parove poštanskih ureda. Radi jednostavnosti, poštanske urede ćemo označiti prirodnim brojevima od $1$ do $N$.</p>\n<p>Kada neprijatelj želi poslati tajnu informaciju iz ureda s oznakom $a$ do ureda s oznakom $b$, tajni agent će sjesti u lažno vozilo pošte i provozati se nekim nizom prometnica koje tvore put između ta dva poštanska ureda. Par poštanskih ureda $(a, b)$ smatra se <em>ranjivim</em> ako postoji neka cesta po kojoj će tajni agent sigurno morati proći na svom putovanju od ureda $a$ do ureda $b$, ili ako uopće ne postoji put između ta dva ureda.</p>\n<p>M se danas bavi analizom povijesne ranjivosti jedne takve mreže. Naime, M je prikupio informacije o povijesnom razvoju mreže, što znači da zna kojim su se redoslijedom gradile prometnice između poštanskih ureda. Sada ga za neke parove ureda zanima u kojem su trenutku (ako uopće) prestali biti ranjivi.</p>",
+  "input": "<p>U prvom su retku brojevi $N$ i $M$ iz teksta zadatka.</p>\n<p>U $i$-tom od idućih $M$ redaka su $x_i$ i $y_i$ koji označavaju da je $i$-ta izgrađena prometnica povezivala poštanske urede s oznakama $x_i$ i $y_i$ ($x_i ≠ y_i$).</p>\n<p>Moguće je da više od jedne prometnice povezuje isti par poštanskih ureda.</p>\n<p>U sljedećem se retku nalazi prirodan broj $Q$ koji označava broj upita na koje $M$ želi dobiti odgovor.</p>\n<p>U $j$-tom od sljedećih $Q$ redaka su različiti brojevi $a_j$ i $b_j$ koji definiraju $j$-ti upit agenta M. Odnosno, M želi saznati u kojem je trenutku par ureda $(a_j , b_j )$ prestao biti ranjiv.</p>",
+  "output": "<p>U $j$-tom retku treba ispisati odgovor na $j$-ti upit agenta M.</p>\n<p>Ako je par ureda iz $j$-tog upita i dalje ranjiv, odgovor na $j$-ti upit je $-1$. Inače, odgovor je prirodan broj $k$ koji označava da je par ureda iz upita prestao biti ranjiv nakon izgradnje $k$-te prometnice.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2\n2 3\n3 1\n1\n1 2\n",
+      "output": "3\n"
+    },
+    {
+      "input": "3 4\n1 2\n1 2\n2 3\n2 3\n3\n1 2\n2 3\n3 1\n",
+      "output": "2\n4\n4\n"
+    },
+    {
+      "input": "6 7\n1 2\n2 3\n3 4\n2 5\n3 5\n4 5\n1 3\n5\n1 3\n2 3\n4 5\n1 4\n2 6\n",
+      "output": "7\n5\n6\n7\n-1\n"
+    }
+  ],
+  "hint": "<p>Pojašnjenje trećeg probnog primjera: Promatrajmo prvi upit. Do trenutka 6 (uključivo) između ureda 1 i 3 ili nije postojao put, ili je svaki takav put prolazio prometnicom 1. Tek u trenutku 7 to nije slučaj. Za peti upit, između ureda 2 i 6 nikada nije postojao put pa je odgovor -1.</p>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2022, Final Exam #2",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "trees",
+    "binary_search",
+    "dfs",
+    "disjoint_set",
+    "mst",
+    "lca",
+    "sparse_table",
+    "pbs"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 2.3845999240875244
+}

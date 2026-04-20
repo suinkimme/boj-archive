@@ -1,0 +1,30 @@
+{
+  "id": 29981,
+  "title": "Seif",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Arheoloogid leidsid merre uppunud laevalt seifi, millel on väga omapärane digitaalne lukk. Luku ekraanil on kaks ühepikkust täisarvu, mis aeg-ajalt muutuvad. Uurijad on märganud, et ekraani oleku muutusi on kolme liiki:</p>\n<ul>\n<li>kummalegi arvule lisandub paremale üks number;</li>\n<li>mõlemal arvul kustub paremalt mingi arv numbreid;</li>\n<li>ekraanile ilmub kolmas arv ja selle kõrvale ühe numbri suurune sisestusväli.</li>\n</ul>\n<p>Uurijatel tekkis hüpotees, et seifi avamiseks tuleb sisestusvälja sisestada kahe suure arvu summast see number, mille positsiooni näitab kolmas arv. Kuna andmed ekraanil muutuvad käsitsi arvutamiseks liiga kiiresti, on nüüd vaja programmi, mis küsimustele vastaks.</p>\n<p>Selle programmi põhikomponent on teek, mis reageerib seifi ekraanil toimuvatele sündmustele. Sinu ülesanne ongi kirjutada teek, mille järgnevaid funktsioone kutsutakse välja kokku $N$ korda:</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<th>Funktsioon</th>\n<th>Kirjeldus</th>\n</tr>\n<tr>\n<td><code>void Add(int f, int s)</code></td>\n<td>Esimesele pikale arvule lisandus paremale number $f$ ja teisele number $s$.</td>\n</tr>\n<tr>\n<td><code>void Del(int k)</code></td>\n<td>Mõlemast pikast arvust kadusid $k$ parempoolset numbrit. Võib eeldada, et selle funktsiooni kasutamise hetkel on suured arvud vähemalt $k$-kohalised. On võimalik, et sellega ei jäänud neisse üldse numbreid.</td>\n</tr>\n<tr>\n<td><code>int Get(int p)</code></td>\n<td>Ekraanile ilmus kolmas arv $p$. Funktsioon peab tagastama kahe pika arvu summas paremalt $p$. kohal oleva numbri. Võib eeldada, et selle funktsiooni kasutamise hetkel on summa vähemalt $p$-kohaline.</td>\n</tr>\n</tbody>\n</table>\n<p>Testimiskeskkonnas on näitefailid, kus vajalikud funktsioonid on juba kirjeldatud ja lahendusena on vaja kirjutada ainult nende realisatsioonid. Lisaks võib lahenduse faili kirjutada ka oma funktsioone. Oma lahenduse oma arvutis testimiseks on ka hindamisprogrammi näide, mille sisendi ja väljundi kirjeldus on toodud allpool (serveris on kasutusel teine hindamisprogramm, mis kontrollib ka lahenduse tagastatud vastuste õigsust). Oma lahenduse oma arvutis kompileerimiseks ja testimiseks:</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<th>Keel</th>\n<th>Lahendus</th>\n<th>Käsurida</th>\n</tr>\n<tr>\n<td>C++</td>\n<td><code>seif.cpp</code></td>\n<td>\n<p><code>g++ -o main main.cpp seif.cpp</code></p>\n<p><code>./main</code></p>\n</td>\n</tr>\n</tbody>\n</table>",
+  "input": "<p>Tekstifaili esimesel real on teegi funktsioonide väljakutsete arv $N$ ($1 \\le N \\le 10^6$) ja järgmisel $N$ real igaühel ühe väljakutse kirjeldus:</p>\n<ul>\n<li>Rida kujul <code>1</code> $F$ $S$ ($1 \\le F \\le 9$, $1 \\le S \\le 9$) tähendab kutset <code>Add(f, s)</code>.</li>\n<li>Rida kujul <code>2</code> $K$ ($1 \\le K$) tähendab kutset <code>Del(k)</code>.</li>\n<li>Rida kujul <code>3</code> $P$ ($1 \\le P$) tähendab kutset <code>Get(p)</code>.</li>\n</ul>",
+  "output": "<p>Tekstifaili väljastatakse hindamisprogrammi ja teegi vahelise suhtluse logi.</p>",
+  "samples": [
+    {
+      "input": "5\n1 1 1\n3 1\n1 3 9\n3 1\n3 2\n",
+      "output": "add(1, 1)\nget(1) = 2\nadd(3, 9)\nget(1) = 2\nget(2) = 3\n"
+    },
+    {
+      "input": "10\n1 1 1\n1 2 2\n1 3 3\n3 1\n3 2\n3 3\n2 2\n1 4 6\n3 1\n3 2\n",
+      "output": "add(1, 1)\nadd(2, 2)\nadd(3, 3)\nget(1) = 6\nget(2) = 4\nget(3) = 2\ndel(2)\nadd(4, 6)\nget(1) = 0\nget(2) = 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Estonian Informatics Olympiad, 2017-18, First Selection Competition",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "lazyprop"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 3
+}

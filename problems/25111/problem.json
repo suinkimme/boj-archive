@@ -1,0 +1,27 @@
+{
+  "id": 25111,
+  "title": "Repetitions",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Bob is an aspiring avant-garde writer. He disdains the use of spaces, punctuation, capital letters and the like; hence, his stories are nothing but long strings of lowercase letters of the English alphabet. Critics have also noted that his style is marked by a certain fondness for <em>repetitions</em>, in the sense that it sometimes happens that two instances of the same substring appear in his story twice in a row, without any other intervening characters.</p>\n<p>Bob has submitted his latest masterpiece, a string which happens to be $n$ characters long, to $q$ different literary magazines in the hopes that at least one of them might be willing to publish it. The response was more favourable than he had dared to hope. The editors of all $q$ magazines have expressed willingness to publish some part (i.e. a substring) of his story, but on the condition that he identify the longest repetition (i.e. a shorter substring appearing twice in a row) within that part of the story. The editors intend to remove that part to prevent the story from being too boring. Now Bob needs your help to answer these queries from the editors.</p>\n<p>Write a program that, given a string of $n$ letters, $s[1]s[2]\\dots s[n]$, answers $q$ queries of the form “given $a_i$ and $b_i$, how long is the longest string $t$ for which $tt$ appears as a substring of $s[a_i]s[a_i + 1]\\dots s[b_i - 1]s[b_i]$, and where does the leftmost such occurrence begin?”</p>",
+  "input": "<p>The first line contains two integers, $n$ and $q$. The second line contains the string $s$, which is $n$ characters long; all these characters are lowercase letters of the English alphabet. The remaining $q$ lines describe the queries; the $i$-th of these lines contains the integers $a_i$ and $b_i$, separated by a space.</p>",
+  "output": "<p>Output $q$ lines; the $i$-th of these lines must contain two space-separated integers $ℓ_i$ and $c_i$. $ℓ_i$ should be the length of the longest string $t$ for which $tt$ appears as a substring in $s[a_i ]s[a_i + 1] \\dots s[b_i - 1]s[b_i ]$, and $c_i$ should be the index at which the leftmost repetition of this length begins, i.e. the smallest integer such that $a_i ≤ c_i$, $c_i + 2ℓ_i - 1 ≤ b_i$ and $s[c_i ] \\dots s[c_i + ℓ_i - 1] = s[c_i + ℓ_i ] \\dots s[c_i + 2ℓ_i - 1]$. (If $ℓ_i = 0$, then $c_i = a_i$ by definition.)</p>",
+  "samples": [
+    {
+      "input": "10 4\ncabaabaaca\n4 8\n1 9\n5 9\n8 10\n",
+      "output": "1 4\n3 2\n1 7\n0 8\n"
+    }
+  ],
+  "hint": "<p>The four queries in the above example refer to the substrings <strong>a</strong>abaa, c<strong>aba</strong>abaac, ab<strong>a</strong>ac, and aca; the part shown in bold is the substring referred to by the result of that query (a substring of length $ℓ_i$, beginning at index $c_i$). In the last query there is no repetition, so $ℓ_4 = 0$.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2021",
+  "level": 23,
+  "tags": [
+    "divide_and_conquer",
+    "string",
+    "suffix_array",
+    "z"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 2.9166998863220215
+}

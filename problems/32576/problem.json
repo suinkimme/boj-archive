@@ -1,0 +1,31 @@
+{
+  "id": 32576,
+  "title": "Pigpartite Giraffe",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>There are two fenced areas next to each other: one houses a group of pigs, and the other houses a herd of giraffes. While pigs cannot visit the giraffes, and giraffes cannot visit the pigs, they can communicate over the fence. In fact, they have become such good friends that pigs prefer to talk to giraffes instead of other pigs, and giraffes feel the same way—they would rather talk to pigs than to other giraffes.</p>\n<p>This relationship is mutual: if a pig likes to talk to a specific giraffe, that giraffe likes to talk back to that same pig. However, no pig likes to talk to another pig, and no giraffe likes to talk to another giraffe.</p>\n<p>If an animal wants to send a message to another animal, even if it doesn’t like to talk to it directly, it can do so by passing the message through other animals. Messages can only be passed between animals that like to talk to each other.</p>\n<p>To quantify the amount of chatter, we define the <em>noise level</em> between two animals as the minimum number of talks required for a message to be passed from the source animal to the target animal. If a message cannot be passed between two animals, the noise level for that pair is $0$. For instance, if two animals like to talk directly to each other, their noise level is $1$. If the message must pass through one other animal, the noise level is $2$, and so on.</p>\n<p>We are interested in the total noise level, which is the sum of noise levels for all unordered pairs of different animals. Note that the noise level between two different animals is only counted once.</p>\n<p>The problem is, the number of animals keeps increasing. New animals are born by combining the properties of two existing animals of the same kind, referred to as the parents. The new animal will belong to the same kind as its parents (pig or giraffe). Additionally, the newborn animal can immediately start talking to other animals.</p>\n<p>The newborn animal likes to talk to exactly the animals that like to talk to exactly one of its parents. Along with the initial setup of animals and their talking preferences, you will be given a sequence of queries describing the birth of new animals. After each animal is born, your task is to calculate the total noise level.</p>",
+  "input": "<p>The first input line contains three integers $A$, $B$, $M$ ($1 ≤ A, B ≤ 8$, and $0 ≤ M ≤ A \\cdot B$), the number of pigs, the number of giraffes, and the number of initial pairs of animals that like to talk to each other, respectively.</p>\n<p>Each of the next $M$ lines each contains two integers $0 ≤ a &lt; A$, $0 ≤ b &lt; B$, indicating that pig number $a$ likes to talk to giraffe number $b$.</p>\n<p>The next line contains integer $Q$ ($1 ≤ Q ≤ 10^5$), the number of new animals to be born. Each of the following $Q$ lines describes birth of one animal, and it contains a character $X$ and two integers $p$ and $q$. The character $X$ is either “<code>A</code>” or “<code>B</code>”, indicating that the newborn is either a pig or a giraffe, while $p$ and $q$ are the numbers of its two parents. The newborn animal is assigned the smallest unused positive number within its kind. It is guaranteed that $p$ and $q$ always refer to existing animals.</p>",
+  "output": "<p>Output $Q$ lines. On the $i$-th line, print the total noise level after $i$-th birth of an animal.</p>",
+  "samples": [
+    {
+      "input": "4 4 4\n0 0\n1 1\n2 2\n3 3\n2\nA 0 1\nA 0 1\n",
+      "output": "22\n30\n"
+    },
+    {
+      "input": "3 3 5\n0 0\n1 0\n1 1\n2 1\n2 2\n3\nB 0 1\nB 3 2\nB 3 4\n",
+      "output": "42\n61\n82\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2024",
+  "level": 23,
+  "tags": [
+    "bfs",
+    "bipartite_graph",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

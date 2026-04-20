@@ -1,0 +1,41 @@
+{
+  "id": 31535,
+  "title": "재우의 재수강 1",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<blockquote>\r\n<p>이 문제는 <a href=\"/problem/31546\">재우의 재수강 2</a>와 <strong>굵은</strong> 글씨로 적힌 부분과 제한 조건만 다릅니다.</p>\r\n</blockquote>\r\n\r\n<p>재우는 <a href=\"/category/detail/3466\">제2회 MatKor Cup</a>에서 <a href=\"/problem/27309\">수영 과목의 F를 막지 못해</a> 결국 재수강을 하게 되었다. 재우는 이번 학기에는 성실히 수영 수업에 임했고, 이제 최종 평가만을 남겨두었다. 최종 평가는 다음과 같이 진행된다.</p>\r\n\r\n<p>먼저 수영장을 2차원 좌표계로 표현할 수 있다. 수영장은 왼쪽 아래의 점을 $(0,0)$, 오른쪽 위의 점을 $(w,h)$로 하는 각 변이 $x$축 혹은 $y$축과 평행한 직사각형이다. 여기서 &ldquo;수영 가능 영역&rdquo;이란 직사각형의 네 변과 그 변들로 둘러싸인 영역을 의미한다.</p>\r\n\r\n<p>수영장에는 $n$개의 레인이 있고, 각 레인은 $x$축과 평행한 선으로 구분되어 있다. 구체적으로, $0=a_0&lt;a_1&lt;a_2&lt;\\cdots &lt;a_n=h$일 때, $i$번째 레인은 $a_{i-1}\\le y&lt;a_{i}$인 구간이다. 단, 마지막인 $n$번째 레인은 $a_{n-1}\\le y\\le a_n$인 구간으로 정의한다.</p>\r\n\r\n<p>이 수영장은 최첨단 시스템이 적용되어, 레인별로 물의 밀도가 다르다. 따라서 재우가 이동하는 속도는 어떤 레인에서 수영하느냐에 따라 달라진다. 구체적으로 $i$번째 레인의 물의 밀도가 $p_i$일때, 재우는 $1$만큼을 이동하는 데 $p_i$초가 소요된다. 이때, $x$축에서 먼 레인일수록 물의 밀도는 감소한다. 즉, $p_1&gt;p_2&gt;\\cdots &gt;p_n$을 만족한다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 265px; width: 400px;\" /></p>\r\n\r\n<p>재우는 최종 평가를 진행할 때 $(0,0)$에서 출발해 수영 가능 영역에서 수영을 통해서만 이동하여 도착점에 도착해야 한다. 도착점은 $(w,d)$로 수영장의 오른쪽 세로 변 위에 있다. 재우는 출발점에서 출발해서 도착점에 도착할 때까지 걸리는 최단 시간을 알고 싶다.</p>\r\n\r\n<p>재우는 수영 가능 영역에서 <strong>$x$축 혹은 $y$축과 평행하게만</strong> 이동할 수 있다고 할 때, 답을 구해보자.</p>\r\n",
+  "input": "<p>첫 번째 줄에 수영장의 오른쪽 위의 점을 나타내는 정수 $w$와 $h$가 공백으로 구분되어 주어진다. $(1\\le w,h\\le 100)$</p>\r\n\r\n<p>두 번째 줄에 레인의 개수 $n$과 도착점의 $y$좌표를 나타내는 정수 $d$가 공백으로 구분되어 주어진다. $(1\\le n\\le 100;$ $0\\le d\\le h)$</p>\r\n\r\n<p>세 번째 줄에 레인의 구분을 나타내는 정수 $a_1$, $a_2$, $\\cdots$, $a_n$이 공백으로 구분되어 주어진다. $(0&lt;a_1&lt;a_2&lt;\\cdots &lt;a_n=h)$</p>\r\n\r\n<p>네 번째 줄에 레인별 물의 밀도 $p_1$, $p_2$, $\\cdots$, $p_n$이 공백으로 구분되어 주어진다. $(1\\le p_i\\le 1\\, 000;$ $p_1&gt;p_2&gt;\\cdots &gt;p_n)$</p>\r\n",
+  "output": "<p>도착점에 도착하기까지 걸리는 최단 시간을 출력한다.</p>\r\n\r\n<p><strong>답이 정수임이 보장된다.</strong></p>\r\n",
+  "samples": [
+    {
+      "input": "3 8\n1 4\n8\n2\n",
+      "output": "14\n"
+    },
+    {
+      "input": "10 10\n2 10\n4 10\n2 1\n",
+      "output": "24\n"
+    },
+    {
+      "input": "10 10\n2 3\n4 10\n2 1\n",
+      "output": "20\n"
+    },
+    {
+      "input": "15 28\n7 0\n1 3 6 10 15 21 28\n7 6 5 4 3 2 1\n",
+      "output": "104\n"
+    },
+    {
+      "input": "15 28\n7 28\n1 3 6 10 15 21 28\n7 6 5 4 3 2 1\n",
+      "output": "99\n"
+    }
+  ],
+  "hint": "<p>다행히도 재우는 이번에는 수영 과목에서 Pass를 받았다.</p>\r\n",
+  "source": "University, 고려대학교, MatKor Cup, 제4회 고려대학교 MatKor Cup: 2024 Winter/Spring, alex04, kidw0124, tikiliki0417, changhw, chlwnsgurb, coo001, eoaud0108, finimage, kevinlys00, leeminjae, lighter, sshs29hanul, tlsdydaud1, utilforever, w8385, yijw0930",
+  "level": 9,
+  "tags": [
+    "bruteforcing",
+    "implementation"
+  ],
+  "accepted_user_count": 115,
+  "submission_count": null,
+  "average_tries": 1.469599962234497
+}

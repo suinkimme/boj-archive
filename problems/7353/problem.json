@@ -1,0 +1,26 @@
+{
+  "id": 7353,
+  "title": "Web Navigation",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Standard web browsers contain features to move backward and forward among the pages recently visited. One way to implement these features is to use two stacks to keep track of the pages that can be reached by moving backward and forward. In this problem, you are asked to implement this.</p>\n<p>The following commands need to be supported:</p>\n<ul>\n<li>BACK: Push the current page on the top of the forward stack. Pop the page from the top of the backward stack, making it the new current page. If the backward stack is empty, the command is ignored.</li>\n<li>FORWARD: Push the current page on the top of the backward stack. Pop the page from the top of the forward stack, making it the new current page. If the forward stack is empty, the command is ignored.</li>\n<li>VISIT &lt;url&gt;: Push the current page on the top of the backward stack, and make the URL specified the new current page. The forward stack is emptied.</li>\n<li>QUIT: Quit the browser.</li>\n</ul>\n<p>Assume that the browser initially loads the web page at the URL http://www.acm.org/</p>",
+  "input": "<p><strong>The input begins with a single positive integer on a line by itself indicating the number of the cases following, each of them as described below. This line is followed by a blank line, and there is also a blank line between two consecutive inputs.</strong></p>\n<p>Input is a sequence of commands. The command keywords BACK, FORWARD, VISIT, and QUIT are all in uppercase. URLs have no whitespace and have at most 70 characters. You may assume that no problem instance requires more than 100 elements in each stack at any time. The end of input is indicated by the QUIT command.</p>",
+  "output": "<p><strong>For each test case, the output must follow the description below. The outputs of two consecutive cases will be separated by a blank line.</strong></p>\n<p>For each command other than QUIT, print the URL of the current page after the command is executed if the command is not ignored. Otherwise, print `Ignored'. The output for each command should be printed on its own line. No output is produced for the QUIT command.</p>",
+  "samples": [
+    {
+      "input": "1\n\nVISIT http://acm.ashland.edu/\nVISIT http://acm.baylor.edu/acmicpc/\nBACK\nBACK\nBACK\nFORWARD\nVISIT http://www.ibm.com/\nBACK\nBACK\nFORWARD\nFORWARD\nFORWARD\nQUIT\n",
+      "output": "http://acm.ashland.edu/\nhttp://acm.baylor.edu/acmicpc/\nhttp://acm.ashland.edu/\nhttp://www.acm.org/\nIgnored\nhttp://acm.ashland.edu/\nhttp://www.ibm.com/\nhttp://acm.ashland.edu/\nhttp://www.acm.org/\nhttp://acm.ashland.edu/\nhttp://www.ibm.com/\nIgnored\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, East Central North America Regional, 2001 East Central Regional Contest",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "stack"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 5.25
+}

@@ -1,0 +1,33 @@
+{
+  "id": 30217,
+  "title": "Let’s Portmanteau",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>From “yourdictionary.com”: Portmanteau, pronounced “port-man-tow,” refers to a new word made from two words and their meanings. For example, the portmanteau brunch refers to a combined meal of breakfast and lunch, and spork is a mix between a spoon and a fork.</p>\n<p>You are to combine two words using a simplified approach.</p>\n<p>Rules for combining:</p>\n<ol>\n<li>Get the first letter of the first word regardless of what (vowel or consonant) it is. Then, starting from the second letter of the first word, get letters moving right until you reach a vowel. If no vowels while moving right, all letters will be taken. If there is a vowel moving right, let’s call it v<sub>1</sub>.</li>\n<li>Get the last letter of the second word regardless of what (vowel or consonant) it is. Then, starting from the letter next to the last letter of the second word, get letters moving left until you reach a vowel. If no vowels while moving left, all letters will be taken. If there is a vowel moving left, let’s call it v<sub>2</sub>.</li>\n<li>Combine the two words by listing the letters taken from the first word (Step 1), followed by a vowel (let’s call it the merging vowel), followed by the letters taken from the second word (Step 2). The merging vowel is as follows:\n\t<ol>\n<li>If the second word has a vowel while moving left (i.e., v<sub>2</sub> exists), v<sub>2</sub> is the merging vowel.</li>\n<li>If the second word does not have a vowel while moving left (i.e., v<sub>2</sub> does not exist) but the first word has a vowel while moving right (i.e., v<sub>1</sub> exists), v<sub>1</sub> is the merging vowel.</li>\n<li>If v<sub>1</sub> and v<sub>2</sub> don’t exist (i.e., neither word has a vowel while moving right/left), use the letter “o” as the merging vowel.</li>\n</ol>\n</li>\n</ol>\n<p>Assume the vowels are “aeiou”.</p>",
+  "input": "<p>There are two input lines: the first line provides the first word and the second line provides the second word. Assume that each word starts in column 1, is at least 4 letters and at most 20 letters, and contains only lowercase letters.</p>",
+  "output": "<p>Print the combined word on one output line.</p>",
+  "samples": [
+    {
+      "input": "abcdefun\nghijku\n",
+      "output": "abcdijku\n"
+    },
+    {
+      "input": "abcdefun\nghmn\n",
+      "output": "abcdeghmn\n"
+    },
+    {
+      "input": "abycd\nfgyhu\n",
+      "output": "abycdofgyhu\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, University of Central Florida, 2023 Local Programming Contest (Qualifying Round)",
+  "level": 4,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 81,
+  "submission_count": null,
+  "average_tries": 1.617300033569336
+}

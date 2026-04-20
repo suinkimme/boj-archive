@@ -1,0 +1,26 @@
+{
+  "id": 31053,
+  "title": "Unterwave Distance",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The year is 2312, and Humanity’s Rush to the Stars is now $200$ years old. The problem of real-time communication between star systems remains, however, and the key is the unterwave.</p>\n<p>Unterwave (UW) communication works as follows: direct UW links have been set up between certain pairs of star systems, and two systems without a direct link communicate by hopping along existing links through intermediary systems. Although no system has more than $20$ direct links to other systems, any two systems can communicate, either directly or indirectly.</p>\n<p>You have been asked to select two star systems for your company’s new home offices—one in a human system, and one in an alien system. (Oh yeah, there are aliens.) You are to select them so that the UW distance (a measure of communication latency) is minimized.</p>\n<p>Every star system has a gravity value that affects UW communication. Just as no two snowflakes on earth have the same crystalline structure, no two star systems in the universe have the same gravity. If a communication path from from one system to another encounters the sequence $G = g_1, g_2, \\ldots , g_ n$ of gravity values, including the source and destination of the message, then three sequences of $n-1$ terms each may be defined, relating to physical characteristics of UW communication:</p>\n<p>$$\\begin{align*} \\operatorname {cap}(G) &amp; = g_2+g_1,\\ g_3+g_2,\\ \\ldots ,\\ g_ n+g_{n-1} &amp; \\textrm{(Capacitance)} \\\\ \\operatorname {pot}(G) &amp; = g_2-g_1,\\ g_3-g_2,\\ \\ldots ,\\ g_ n-g_{n-1} &amp; \\textrm{(Potential)} \\\\ \\operatorname {ind}(G) &amp; = g_2\\cdot g_1,\\ g_3\\cdot g_2,\\ \\ldots ,\\ g_ n\\cdot g_{n-1} &amp; \\textrm{(Inductance)} \\end{align*}$$</p>\n<p>For two sequences $A=a_1,\\ a_2,\\ \\ldots ,\\ a_ m$ and $B=b_1,\\ b_2,\\ \\ldots ,\\ b_ m$ we define:</p>\n<p>$$\\begin{align*} A\\cdot B &amp; = a_1\\cdot b_1,\\ a_2\\cdot b_2,\\ \\ldots ,\\ a_ m\\cdot b_ m &amp; A-B &amp; = a_1- b_1,\\ a_2- b_2,\\ \\ldots ,\\ a_ m- b_ m \\end{align*}$$</p>\n<p>Finally, the UW distance is given by the absolute value of the sum of the values of the sequence</p>\n<p>\\[ \\operatorname {pot}(G)\\cdot \\left(\\left[\\operatorname {cap}(G)\\cdot \\operatorname {cap}(G)\\right]-\\operatorname {ind}(G)\\right). \\]</p>\n<p>The UW distance can be quite large. Fortunately, your company has a gravity dispersal device, which may be placed in any single system (and remain there). It reduces by $1$ the gravity of that system, but increases by $1$ the gravities of all systems directly linked to it. Use of this device is optional.</p>",
+  "input": "<p>The first line has a single integer $2\\leq n\\leq 50\\, 000$, giving the number of star systems. The next $n$ lines describe the star systems, numbered $1$ to $n$. Each line has the form $g\\ d$ where $g$ is the gravity value of that system ($1\\leq g\\leq 1\\, 000\\, 000$) and $d$ is either ‘h’ or ‘a’, designating the system as human or alien (there is at least one system of each type). All values of $g$ are distinct. The next line has a positive integer $e$ giving the number of direct links between systems. Each of the next $e$ lines contains two integers separated by a single space, which are the numbers of two systems that are directly linked. Links are bidirectional, and no link appears more than once in the input. No system links directly to more than $20$ other systems.</p>",
+  "output": "<p>Output the minimum UW distance that can be achieved between an alien and human system.</p>",
+  "samples": [
+    {
+      "input": "9\n377 a\n455 h\n180 a\n211 a\n134 a\n46 h\n111 h\n213 h\n17 a\n15\n1 2\n1 4\n1 6\n2 3\n2 4\n2 5\n3 5\n4 6\n4 7\n4 9\n5 7\n5 8\n6 9\n7 9\n7 8\n",
+      "output": "85293\n"
+    },
+    {
+      "input": "3\n20 h\n21 h\n19 a\n3\n1 2\n2 3\n3 1\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 2018 ICPC South Central USA Regional Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

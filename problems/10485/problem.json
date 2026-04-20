@@ -1,0 +1,33 @@
+{
+  "id": 10485,
+  "title": "Plotting Polynomials",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Graphical calculators have become popular among high school students. They allow functions to be plotted on screen with minimal efforts by the students. These calculators generally do not possess very fast processors. In this problem, you are asked to implement a method to speed up the plotting of a polynomial.</p>\n<p>Given a polynomial p(x) = a<sub>n</sub>x<sup>n</sup> + ... + a<sub>1</sub>x + a<sub>0</sub> of degree n, we wish to plot this polynomial at the m integer points x = 0, 1, . . . , m−1. A straightforward evaluation at these points requires mn multiplications and mn additions.</p>\n<p>One way to speed up the computation is to make use of results computed previously. For example, if p(x) = a<sub>1</sub>x + a<sub>0</sub> and p(i) has already been computed, then p(i + 1) = p(i) + a<sub>1</sub>. Thus, each successive value of p(x) can be computed with one addition each.</p>\n<p>In general, we can compute p(i + 1) from p(i) with n additions, after the appropriate initialization has been done. If we initialize the constants C<sub>0</sub>, C<sub>1</sub>, . . ., C<sub>n</sub> appropriately, one can compute p(i) using the following pseudocode:</p>\n<pre>\np(0) = C_0; t_1 = C_1; ... t_n = C_n;\nfor i from 1 to m-1 do\n     p(i)    = p(i-1)  + t_1;\n     t_1     = t_1     + t_2;\n     t_2     = t_2     + t_3;\n              :\n              :\n     t_(n-1) = t_(n-1) + t_n;\nend</pre>\n<p>For example, if p(x) = a<sub>1</sub>x + a<sub>0</sub>, we can initialize C<sub>0</sub> = a<sub>0</sub> and C<sub>1</sub> = a<sub>1</sub>.</p>\n<p>Your task is to compute the constants C<sub>0</sub>, C<sub>1</sub>, . . . , C<sub>n</sub> for the above pseudocode to give the correct values for p(i) at i = 0, . . . , m − 1.</p>",
+  "input": "<p>The input consists of one case specified on a single line. The first integer is n, where 1 ≤ n ≤ 6. This is followed by n + 1 integer coefficients a<sub>n</sub>, . . . , a<sub>1</sub>, a<sub>0</sub>. You may assume that |a<sub>i</sub>| ≤ 50 for all i, and a<sub>n</sub> ≠ 0.</p>",
+  "output": "<p>Print the integers C<sub>0</sub>, C<sub>1</sub>, . . . , C<sub>n</sub>, separated by spaces.</p>",
+  "samples": [
+    {
+      "input": "1 5 2\n",
+      "output": "2 5\n"
+    },
+    {
+      "input": "2 2 -4 5\n",
+      "output": "5 -2 4\n"
+    },
+    {
+      "input": "6 1 -20 4 30 0 -1 2\n",
+      "output": "2 14 -302 -2136 -3144 -600 720\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Qualification Contest, ACM-ICPC North America Qualifier 2013",
+  "level": 13,
+  "tags": [
+    "implementation",
+    "math"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 1.041700005531311
+}

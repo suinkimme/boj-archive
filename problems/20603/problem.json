@@ -1,0 +1,30 @@
+{
+  "id": 20603,
+  "title": "Count on a Tree II Striking Back",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given a tree with $n$ nodes. The tree nodes are numbered from $1$ to $n$. The color of the $i$-th node is $\\mathit{col}_i$.</p>\n<p>You need to perform $m$ operations. Each operation is one of the following:</p>\n<ul>\n<li>\"1 $x$ $y$\" ($1 \\leq x,y \\leq n$): Change the color of the $x$-th node into $y$.</li>\n<li>\"2 $a$ $b$ $c$ $d$\" ($1 \\leq a,b,c,d \\leq n$): Let's denote $f(u,v)$ as the number of different colors which occur on the simple path from $u$ to $v$. You need to answer whether $f(a,b) &gt; f(c,d)$ is true.</li>\n</ul>",
+  "input": "<p>The first line contains a single integer $T$ ($1 \\leq T \\leq 4$), the number of test cases. For each test case:</p>\n<p>The first line contains two integers $n$ and $m$ ($1 \\leq n \\leq 500\\,000$, $1\\leq m\\leq 10\\,000$), denoting the number of nodes and the number of operations.</p>\n<p>The second line contains $n$ integers $\\mathit{col}_1,\\mathit{col}_2,\\dots,\\mathit{col}_n$ ($1\\leq \\mathit{col}_i\\leq n$) denoting the initial color of each node.</p>\n<p>Each of the following $n-1$ lines contains two integers $u_i$ and $v_i$ ($1 \\leq u_i,v_i \\leq n$, $u_i \\neq v_i$) denoting a bidirectional edge between the $u_i$-th node and the $v_i$-th node.</p>\n<p>Each of the next $m$ lines describes an operation in formats described in the statement above, except that some parameters are encrypted in order to enforce online processing.</p>\n<p>Let $\\mathit{cnt}$ be the number of queries that you answered \"<code>Yes</code>\" before in this test case. Note that $\\mathit{cnt}$ should be reset to $0$ in each new test case. For each operation, $x$, $y$, $a$, $b$, $c$, and $d$ are encrypted: their actual values are $x \\oplus \\mathit{cnt}$, $y \\oplus \\mathit{cnt}$, $a \\oplus \\mathit{cnt}$, $b \\oplus \\mathit{cnt}$, $c \\oplus \\mathit{cnt}$, and $d \\oplus \\mathit{cnt}$. In the expressions above, the symbol \"$\\oplus$\" denotes the bitwise exclusive-or operation. Also note that the constraints described in the statement above apply to the corresponding parameters only after decryption, the encrypted values are not subject to those constraints.</p>\n<p>It is guaranteed that $f(a,b) \\geq 2f(c,d)$ or $f(c,d) \\geq 2f(a,b)$ always holds for each query.</p>",
+  "output": "<p>For each query, print a single line. If $f(a,b) &gt; f(c,d)$ is true, print \"<code>Yes</code>\". Otherwise, print \"<code>No</code>\".</p>",
+  "samples": [
+    {
+      "input": "1\n8 4\n1 2 1 4 1 3 3 2\n1 2\n2 3\n3 4\n3 5\n1 6\n6 7\n6 8\n2 1 4 3 5\n2 7 6 5 9\n1 4 9\n2 2 4 7 6\n",
+      "output": "Yes\nNo\nYes\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2020, Day 3: Songyang Chen Contest 3",
+  "level": 26,
+  "tags": [
+    "math",
+    "data_structures",
+    "trees",
+    "segtree",
+    "probability",
+    "randomization",
+    "hld"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 10.880000114440918
+}

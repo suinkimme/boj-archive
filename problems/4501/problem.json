@@ -1,0 +1,27 @@
+{
+  "id": 4501,
+  "title": "Games R Us",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>GamesAreUs.com has just completed its outside audit for this year. One item that was caught was the lack of any business rules for assigning permissions to files on the company's shared file server. The analysts are working on setting up some roles for all employees and what permissions should be given to each role. Your team is to take a look at the existing situation so you can provide some input to the analysts.</p>\n<p>Fortunately permission assignment has not been completely random. The most common way to set up a new employee is to ask that they be set up \"just like Joe\", effectively making an ad-hoc prototype system.</p>\n<p>You will be given the access control lists (ACLs) for the top level directories of the shared file server. Using these, your team is to write a program to split the users up into equivalence classes where all members of a class have access to exactly the same directories.</p>\n<p>Because of the several departments in GamesAreUs.com, there are multiple access control lists to be processed: one set of lists per department.</p>",
+  "input": "<p>The first line of input to your program is a single integer n (0 &lt; n &lt; 100), by itself on the line without any white space, giving the number of departments. Following that are the data for those departments.</p>\n<p>ACLs associated with one department is a sequence of ACLs ended by \"-1\" by itself. Each ACL is a line of unsigned integers (1 &lt;= x &lt;= 2147483647) separated from each other by a single blank. The first integer on the line is the file id (FID) of the directory. The remaining numbers on the line are the user ids (UIDs) that have access. Each line will have a FID and at least one UID. There will be no duplicate UIDs on the line, but note the UIDs and FIDs are in separate spaces so a UID could be the same integer as a FID. The ACLs, and within an ACL the UIDs, appear in no particular order. In the full list of ACLs, a given FID will appear only once. There are at most 50 top-level directory ACLs and there are at most 100 UIDs. All FIDs and UIDs are greater than 0.</p>",
+  "output": "<p>For each department, the first line of output identifies which case is being processed, beginning with 1. That line contain the word \"Case\", one blank, and the integer identifying which case it is.</p>\n<p>For every class with at least 2 members, print a line with the number of members in the class with no sign or leading zeros, one space, and the smallest UID in the class with no sign, leading zeros, or trailing spaces. Sort the output by the number of members, descending, and then by the UIDs, ascending. If there are no such classes, print \"no prototypes found\".</p>",
+  "samples": [
+    {
+      "input": "2\n100 9 7 2 3 1 6\n200 9 6 7 1 2 5 3 8\n300 6 3 7 8 5\n400 4 5 8\n-1\n100 1\n200 37\n-1\n",
+      "output": "Case 1\n3 1\n3 3\n2 5\nCase 2\nno prototypes found\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2007 Pacific Northwest Region Programming Contest",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "set",
+    "hash_set"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.2222000360488892
+}

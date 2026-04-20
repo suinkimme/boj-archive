@@ -1,0 +1,35 @@
+{
+  "id": 18497,
+  "title": "Closest Pair Algorithm",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There is a classic problem about finding two closest points amongst a set of points on a plane. There is also a classic randomized <em>algorithm</em> to solve it, which goes like this:</p>\n<pre>\nrotate the plane around the origin by a random angle phi\nlet p be the array of points\nsort p by x coordinate in increasing order\nans = INF;\nfor (int i = 0; i &lt; n; i++) {\n    for (int j = i - 1; j &gt;= 0; j--) {\n        if (p[i].x - p[j].x &gt;= ans) break;\n        ans = min(ans, dist(p[i], p[j]));\n    }\n}</pre>\n<p>Here “<code>INF</code>” is some number greater than all distances. The function “<code>dist</code>” returns Euclidean distance between the given points. Note that all x coordinates are distinct after rotation with probability 1.</p>\n<p>I know that the algorithm works well in practice, but how well exactly? I ask you to compute the expected number of calls of the function “<code>dist</code>”, assuming that the angle “<code>phi</code>” is chosen uniformly at random from the range [0; 2 · π).</p>",
+  "input": "<p>The first line contains a single integer n (2 ≤ n ≤ 250) — the number of points.</p>\n<p>The next n lines contains coordinates of points, one per line.</p>\n<p>All the coordinates are not greater than 10<sup>6</sup> by absolute value.</p>\n<p>It is guaranteed that all points are distinct. It is guaranteed that no three points lie on the same line.</p>",
+  "output": "<p>Print one number — the expected number of calls of the function “dist”.</p>\n<p>Your answer is considered correct if its absolute or relative error does not exceed 10<sup>−6</sup>.</p>",
+  "samples": [
+    {
+      "input": "4\n0 0\n0 1\n1 0\n1 1\n",
+      "output": "5.0000000000000\n"
+    },
+    {
+      "input": "3\n0 0\n0 1\n1 0\n",
+      "output": "2.5000000000000\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2020, Day 8: Almost Algoritmic Contest",
+  "level": 27,
+  "tags": [
+    "math",
+    "implementation",
+    "sorting",
+    "geometry",
+    "sweeping",
+    "probability",
+    "linearity_of_expectation",
+    "rotating_calipers"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.2856999635696411
+}

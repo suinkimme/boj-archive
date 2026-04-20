@@ -1,0 +1,27 @@
+{
+  "id": 16793,
+  "title": "Collapse",
+  "time_limit": "6 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are N towns along a deep linear valley in JOI Country. Towns are numbered 0, 1, . . . , N −1 in order of distance from the sea.</p>\n<p>Mr. I, the chair of JOI Country Scientific Committee, is going to maintain bidirectional communication cables between the towns. Currently there are no cables in JOI Country.</p>\n<p>Mr. I has a cable construction plan for C days. The plan on the (i + 1)-th day (0 ≤ i ≤ C − 1) is represented by three integers T<sub>i</sub>, X<sub>i</sub>, Y<sub>i</sub>, which mean:</p>\n<ul>\n<li>If T<sub>i</sub> = 0, they construct a cable connecting town X<sub>i</sub> and town Y<sub>i</sub> (it is assured that there does not exist a cable connecting town X<sub>i</sub> and town Y<sub>i</sub> at the beginning of the (i + 1)-th day).</li>\n<li>If T<sub>i</sub> = 1, they remove a cable connecting town X<sub>i</sub> and town Y<sub>i</sub> (it is assured that there exists a cable connecting town X<sub>i</sub> and town Y<sub>i</sub> at the beginning of the (i + 1)-th day).</li>\n</ul>\n<p>Cliff collapse often happens in JOI Country. If collapse happens between town x and town x + 1 (0 ≤ x ≤ N − 2), any cable which connects a town numbered at most x and a town numbered at least x + 1 becomes unavailable. In JOI Country, when collapse happens, they choose some towns to install base stations. Base stations should be installed in such a way that, from any town, it is possible to reach a base station by following available cables.</p>\n<p>Mr. I is concerned with the number of towns to install base stations when collapse happens during the construction period. He has Q questions: the (j + 1)-th question is represented by two integers W<sub>j</sub>, P<sub>j</sub>, which mean that he wants to know the minimum number of base stations which should be installed if collapse happens between town P<sub>j</sub> and town P<sub>j</sub> + 1 at the end of the (W<sub>j</sub> + 1)-th day.</p>\n<p>You, as an assistant of Mr. I, are in charge of writing a program to answer Mr. I’s questions.</p>",
+  "input": "<ul>\n<li>line 1: N C Q</li>\n<li>line 2 + i (0 ≤ i ≤ C − 1): T<sub>i</sub> X<sub>i</sub> Y<sub>i</sub></li>\n<li>line 2 + C + j (0 ≤ j ≤ Q − 1): W<sub>j</sub> P<sub>j</sub></li>\n</ul>",
+  "output": "<ul>\n<li>line 1 + j (0 ≤ j ≤ Q − 1): the answer to the (j + 1)-th question.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "5 8 2\n0 0 1\n0 1 3\n0 2 4\n0 4 0\n1 1 3\n0 0 3\n0 1 2\n0 4 3\n3 1\n7 3\n",
+      "output": "3\n2\n"
+    }
+  ],
+  "hint": "<p>Consider the case where there are 5 towns. In the following, (x, y) denotes a cable connecting town x and town y.</p>\n<ul>\n<li>Assume that when there are 4 cables (0, 1), (1, 3), (2, 4) and (4, 0), collapse happens between town 1 and town 2. Cables (1, 3) and (4, 0) become unavailable, so the available cables are (0, 1) and (2, 4). You can install base stations at towns 0, 2 and 3. The minimum number of base stations needed is 3.</li>\n<li>Assume that when there are 6 cables (0, 1), (0, 3), (1, 2), (2, 4), (4, 0) and (4, 3), collapse happens between town 3 and town 4. Cables (2, 4), (4, 0) and (4, 3) become unavailable, so the available cables are (0, 1), (0, 3) and (1, 2). You can install base stations at towns 0 and 4. The minimum number of base stations needed is 2.</li>\n</ul>",
+  "source": ", Contest, JOI Open Contest, JOI Open Contest 2018",
+  "level": 26,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "offline_queries",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 7.423099994659424
+}

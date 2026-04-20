@@ -1,0 +1,24 @@
+{
+  "id": 26801,
+  "title": "Droga do domu",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Sieć drogowa Bajtogrodu składa się z n skrzyżowań połączonych m dwukierunkowymi drogami. Każda droga łączy dwa różne skrzyżowania. Każde dwa skrzyżowania połączone są co najwyżej jedną drogą. Drogi mogą prowadzić przez tunele i estakady.</p>\n<p>Przy skrzyżowaniu numer 1 znajduje się szkoła, do której chodzi Bajtek, a przy skrzyżowaniu numer n jego dom. Rano do szkoły podwożą go rodzice, ale do domu wraca już sam, korzystając z komunikacji miejskiej. Kolejny raz w tym roku zmienił się rozkład jazdy autobusów. Ponieważ w Bajtogrodzie obowiązują jedynie bilety jednorazowe kasowane przy każdym wejściu do autobusu, Bajtek postanowił opracować najszybszy plan powrotu do domu, w którym będzie co najwyżej k przesiadek. Pomóż mu!</p>\n<p>Każdy autobus danej linii jedzie po ustalonej trasie, przejeżdżając przez pewne skrzyżowania. Na każdym z tych skrzyżowań zatrzymuje się i można do niego wejść lub z niego wyjść. Autobusy danej linii odjeżdżają w równych odstępach czasu (szczegóły są opisane w sekcji Wejście).</p>\n<p>Zakładamy, że czas:</p>\n<ul>\n<li>postoju na skrzyżowaniach,</li>\n<li>przesiadki z autobusu do autobusu (o ile nie trzeba na niego czekać),</li>\n<li>przejścia od szkoły do skrzyżowania numer 1 oraz przejścia od skrzyżowania numer n do domu</li>\n</ul>\n<p>jest pomijalnie mały.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajduje się pięć liczb całkowitych n, m, s, k i t (2 ≤ n ≤ 10 000, 1 ≤ m ≤ 50 000, 1 ≤ s ≤ 25 000, 0 ≤ k ≤ 100, 0 ≤ t ≤ 10<sup>9</sup>) oznaczających kolejno: liczbę skrzyżowań, dróg i linii autobusowych w Bajtogrodzie, maksymalną liczbę przesiadek, które może zrobić Bajtek, oraz minutę, w której wychodzi ze szkoły. Skrzyżowania numerujemy od 1 do n.</p>\n<p>W kolejnych m wierszach znajdują się opisy dróg; każdy z nich zawiera trzy liczby całkowite a, b i c (1 ≤ a, b ≤ n, a ≠ b, 1 ≤ c ≤ 10<sup>9</sup>) oznaczające, że skrzyżowania o numerach a i b są połączone dwukierunkową drogą, której przejechanie (dowolnym autobusem, który jeździ tą drogą) zajmuje c minut. Każda para nieuporządkowana {a, b} pojawi się na wejściu co najwyżej raz.</p>\n<p>Kolejne 2s wierszy zawiera opisy linii autobusowych; każdy opis w dwóch wierszach. Pierwszy wiersz opisu zawiera trzy liczby całkowite ℓ, x i y (2 ≤ ℓ ≤ n, 0 ≤ x ≤ 10<sup>9</sup>, 1 ≤ y ≤ 10<sup>9</sup>), a drugi ciąg parami różnych liczb całkowitych v<sub>1</sub>, v<sub>2</sub>, . . . , v<sub>ℓ</sub> (1 ≤ v<sub>i</sub> ≤ n). Oznacza to, że autobus danej linii wyrusza ze skrzyżowania numer v<sub>1</sub> w minutach x + j · y dla j = 0, 1, 2, . . ., a następnie jedzie kolejno skrzyżowaniami o numerach v<sub>2</sub>, v<sub>3</sub>, . . . , v<sub>ℓ</sub>.</p>\n<p>Suma liczb ℓ dla wszystkich linii autobusowych nie przekracza 50 000.</p>",
+  "output": "<p>Twój program powinien wypisać na wyjście jeden wiersz zawierający liczbę całkowitą oznaczającą najwcześniejszą minutę, w której Bajtek może dotrzeć do domu, jeżeli wyszedł ze szkoły w minucie t. Jeśli Bajtkowi nie uda się w ogóle dotrzeć do domu, należy zamiast tego wypisać tylko jedno słowo <code>NIE</code>.</p>",
+  "samples": [
+    {
+      "input": "4 4 2 1 1\n1 2 2\n2 3 4\n1 3 3\n4 3 2\n4 0 10\n1 2 3 4\n3 2 7\n1 3 2\n",
+      "output": "8\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: Poniższy rysunek obrazuje sieć drogą Bajtogrodu z testu przykładowego. Kółka oznaczają skrzyżowania, liczby wewnątrz kółek to ich numery. Kreski oznaczają drogi, a liczby przy nich napisane oznaczają czas przejazdu daną drogą. Trasa przejazdu autobusu linii 1 jest oznaczona kolorem czerwonym, natomiast trasa autobusu linii 2 – kolorem niebieskim.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 186px; height: 100px;\"/></p>\n<p>Bajtek wychodzi ze szkoły w minucie t = 1, czeka na autobus linii 2, który przyjeżdża w minucie 2, jedzie nim do skrzyżowania numer 3, tam przesiada się w minucie 6 na autobus linii 1, który przyjeżdża do jego domu w minucie 8.</p>\n<p>Dla k = 0 Bajtek musiałby poczekać przy skrzyżowaniu 1 na autobus linii 1, który wyruszyłby w minucie 10 i dowiózł Bajtka do domu w minucie 18.</p>",
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2020/2021, Stage 3",
+  "level": 18,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3.09089994430542
+}

@@ -1,0 +1,26 @@
+{
+  "id": 14359,
+  "title": "The Gardener of Seville (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are the Gardener of Seville, a minor character in an opera. The setting for the opera is a courtyard which is a rectangle of unit cells, with R rows and C columns. You have been asked to install a maze of hedges in the courtyard: every cell must contain a hedge that runs diagonally from one corner to another. For any cell, there are two possible kinds of hedge: lower left to upper right, which we represent with <code>/</code>, and upper left to lower right, which we represent with <code>\\</code>. Wherever two hedges touch, they form a continuous wall.</p>\n<p>Around the courtyard is an outer ring of unit cells, one cell wide, with the four corners missing. Each of these outer cells is the home of a courtier. The courtiers in these outer cells are numbered clockwise, starting with 1 for the leftmost of the cells in the top row, and ending with 2 * (R + C) for the topmost cell in the left column. For example, for R = 2, C = 2, the numbering in the outer ring looks like this. (Note that no hedges have been added yet.)</p>\n<p><code> 12 <br/>\n8  3<br/>\n7  4<br/>\n 65 </code></p>\n<p>In this unusual opera, love is mutual and exclusive: each courtier loves exactly one other courtier, who reciprocally loves only them. Each courtier wants to be able to sneak through the hedge maze to his or her lover without encountering any other courtiers. That is, any two courtiers in love with each other must be connected by a path through the maze that is separated from every other path by hedge walls. It is fine if there are parts of the maze that are not part of any courtier's path, as long as all of the pairs of lovers are connected.</p>\n<p>Given a list of who loves who, can you construct the hedge maze so that every pair of lovers is connected, or determine that this is <code>IMPOSSIBLE</code>?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T test cases follow. Each consists of one line with two integers R and C, followed by another line with a permutation of all of the integers from 1 to 2 * (R + C), inclusive. Each integer is the number of a courtier; the first and second courtiers in the list are in love and must be connected, the third and fourth courtiers in the list are in love and must be connected, and so on.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ T ≤ 100.</li>\n<li>1 ≤ R * C ≤ 16.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing only <code>Case #x:</code>, where <code>x</code> is the test case number (starting from 1). Then, if it is impossible to satisfy the conditions, output one more line with the text <code>IMPOSSIBLE</code>. Otherwise, output R more lines of C characters each, representing a hedge maze that satisfies the conditions, where every character is <code>/</code> or <code>\\</code>. You may not leave any cells in the maze blank. If multiple mazes are possible, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "4\n1 1\n1 4 3 2\n1 3\n1 8 2 7 3 4 5 6\n2 2\n8 1 4 5 2 3 7 6\n1 1\n1 3 2 4\n",
+      "output": "Case #1:\n/\nCase #2:\n//\\\nCase #3:\n//\n\\/\nCase #4:\nIMPOSSIBLE\n\n"
+    }
+  ],
+  "hint": "<p>In Case #3, the following pairs of courtiers are lovers: (8, 1), (4, 5), (2, 3), (7, 6). Here is an illustration of our sample output:</p>\n<p><img src=\"1.png\" style=\"height:165px; width:153px\"/></p>\n<p>For Case #3, note that this would also be a valid maze:</p>\n<p><code>/\\<br/>\n\\/</code></p>\n<p>In Case #4, the courtyard consists of only one cell, so the courtiers living around it, starting from the top and reading clockwise, are 1, 2, 3, and 4. There are only two possible options to put in the one cell: <code>/</code> or <code>\\</code>. The first of these choices would form paths from 1 to 4, and from 2 to 3. The second of these choices would form paths from 1 to 2, and from 3 to 4. However, neither of these helps our lovesick courtiers, since in this case, 1 loves 3 and 2 loves 4. So this case is <code>IMPOSSIBLE</code>, and the opera will be full of unhappy arias!</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2016, Round 2, xiaowuc1",
+  "level": 12,
+  "tags": [
+    "bruteforcing",
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.100000023841858
+}

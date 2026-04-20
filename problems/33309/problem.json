@@ -1,0 +1,42 @@
+{
+  "id": 33309,
+  "title": "We Were Here to Code",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p><em>This is an interactive problem with multiple runs.</em></p>\n<p>Welcome, brave participants, to the ultimate challenge for your team that will test your collective problem-solving skills! How quickly can you comprehend your surroundings? Are you confident in your ability to coordinate effectively under pressure? Can you unite as a single, formidable entity and leverage each member's strengths? Let us embark on a journey to discover what you are truly capable of!</p>\n<p>In this game, one participant will assume the role of the <strong>Communicator</strong>, while two others will become <strong>Explorers</strong>. An essential rule to bear in mind is that each participant is completely isolated from one another --- there is no direct communication or visibility! However, brainstorming and strategizing before the game commences is encouraged.</p>\n<p>The Communicator sees the lock and the door. The lock consists of $10$ rolling discs, each disc containing $1$ to $10$ sections of <strong>different</strong> colors. Only one section from each disc is visible at any time. The door will open when the lock displays the same colors in the visible sections. Initially, the lock is closed: some of the visible colors are different. However, it is possible to open the lock: there is a color that is present on all $10$ discs. The total number of colors used in one lock cannot exceed $26$.</p>\n<p>To rotate the discs, a system of two parallel sequences of $30$ slots is employed. Explorer $1$ sets the first sequence, while Explorer $2$ sets the second one. There are cards that can be placed in the slots. Each card has a number written on it.</p>\n<p>The number may represent a <strong>binary mask</strong> of length $10$ or a <strong>multiplier</strong>. If it represents a mask, each bit in the binary number corresponds to a disc; the $0$-th bit denotes the first disc, while the last bit signifies the tenth disc. For example, the mask <code>1110000001</code> means \"select discs 0, 7, 8, and 9\".</p>\n<p>The discs can be rotated clockwise. For example, consider a disc with five sections which have colors denoted by \"<code>RGBPY</code>\" in clockwise direction, with the first section \"<code>R</code>\" visible. If we rotate the disc clockwise by $1$ section, the new configuration will be denoted by \"<code>YRGBP</code>\", with the new first section \"<code>Y</code>\" visible.</p>\n<p>When the team wants to open the lock, they run a simulation of the following process:</p>\n<ol>\n<li>Consider the <strong>initial</strong> state of the discs. Consecutively look at slots $1, 2, \\ldots, 30$.</li>\n<li>If the $i$-th slot of both sequences is empty, do nothing.</li>\n<li>If only the $i$-th slot of the first sequence is filled with card $a_i$, rotate each disc selected by mask $a_i$ clockwise by $1$ section.</li>\n<li>If only the $i$-th slot of the second sequence is filled with card $b_i$, do nothing.</li>\n<li>If the $i$-th slot of the first sequence is filled with card $a_i$ and the second slot with $b_i$, rotate each disc selected by mask $a_i$ clockwise by $b_i$ sections.</li>\n</ol>\n<p>Importantly, this is only a simulation: it always starts from the <strong>initial</strong> state of the lock, and the changes to the lock's state disappear after the simulation.</p>\n<p>The Communicator initially has a set of $1024$ cards with numbers from $0$ to $1023$ written on them. Each number is written exactly once.</p>\n<p>The challenge unfolds over several rounds. In each round, the Communicator will select $10$ cards from the set and hand them to Explorer $1$, then select $10$ more cards and hand them to Explorer $2$. After that, the Communicator will decide whose turn is next.</p>\n<p>Each Explorer has a sequence of $30$ slots, but only the first $10$ untouched slots are available during a single round. The Explorer has access to the $10$ slots and a screen displaying the current result of the simulation. At the beginning of their turn, they will receive cards from the Communicator and attempt to place them in the available slots. They can choose any subset of cards to place in any of the available slots, and observe the changes to the result of the simulation. (Remember that, after each simulation, the lock is restored to its initial state.) At the end of their turn, they are required to place all current cards into the slots, locking them in place and preventing any further removal or alteration.</p>\n<p>One round consists of three turns: the Communicator's turn, the turn of the Explorer chosen by the Communicator, and the other Explorer's turn. If at the end of the round, the simulation results in opening the lock, the team wins. Otherwise, a new round begins with a turn for the Communicator. If the team does not win in three rounds, they lose.</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "0\n0\nABCDEFGHIJ\n\n\n\n",
+      "output": "\n\n\n\n0 1022 1020 1016 1008 992 960 896 768 512\n1 2 3 4 5 6 7 8 9 10\n1\n"
+    },
+    {
+      "input": "1\n0 512 768 896 960 992 1008 1016 1020 1022\nFZAVTOBGJM\n\nFZAVTOBGJM\n\nFZZZAAVTTT\n\nFFFFFFFFFF\n\n",
+      "output": "\n\n\n\n? -1 -1 -1 -1 -1 -1 -1 -1 -1 -1\n\n? 1020 -1 1016 -1 992 -1 768 -1 512 -1\n\n? 0 1022 1020 1016 1008 992 960 896 768 512\n\n! 0 1022 1020 1016 1008 992 960 896 768 512\n"
+    },
+    {
+      "input": "2\n1 2 3 4 5 6 7 8 9 10\nNNNNNNNNNN\n\nNNNNNCFWZG\n\nNNNFWNCZNW\n\n",
+      "output": "\n\n\n\n? 1 -1 -1 -1 -1 5 -1 -1 -1 -1\n\n? 10 9 8 7 6 5 4 3 2 1\n\n! 1 2 3 4 5 6 7 8 9 10\n"
+    },
+    {
+      "input": "0\n10\n0 1022 1020 1016 1008 992 960 896 768 512\n1 2 3 4 5 6 7 8 9 10\nBTBUBYBCBV\n\n\n\n",
+      "output": "\n\n\n\n\n\n525 94 356 30 1019 34 737 925 351 370\n939 946 467 209 434 493 978 824 698 439\n2\n"
+    },
+    {
+      "input": "2\n209 434 439 467 493 698 824 939 946 978\nZBZQZJZMZG\n\nZBZQZJZMZG\n\n",
+      "output": "\n\n\n\n? 978 946 939 824 698 493 467 439 434 209\n\n! 939 946 467 209 434 493 978 824 698 439\n"
+    },
+    {
+      "input": "1\n30 34 94 351 356 370 525 737 925 1019\nITIXILIPIJ\n\nITIXLXPGXX\n\nITXXLJOXJG\n\n",
+      "output": "\n\n\n\n? 30 -1 -1 -1 -1 1019 -1 -1 -1 -1\n\n? 34 30 -1 -1 -1 370 1019 -1 -1 -1\n\n! 525 94 356 30 1019 34 737 925 351 370\n"
+    }
+  ],
+  "hint": "<p>Despite the discs showing the same colors in run $2$, the players don't win right there and then. To open the lock, you should finalize the choices of both Explorers, so that the lock opens on the Communicator's turn.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2024, Day 6: Nyatl’s Game Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

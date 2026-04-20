@@ -1,0 +1,30 @@
+{
+  "id": 17537,
+  "title": "Interplanetary",
+  "time_limit": "1.5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>It is year 2306 and with the advancement of nanotechnology, interplanetary travel is becoming generally available. Bibika works at the largest interplanetary travel agency in the universe and receives interested clients every day.</p>\n<p>Bibika customers are demanding and make several constraints before closing their travel itinerary, such as minimizing the total distance traveled. But the biggest constraints are on the temperatures of the planets visited on the route (excluding the source and destination planets). The temperature of a planet, measured in degrees Anidos, can range from 109 negative degrees Anidos to 109 positive degrees Anidos. Bibika’s clients come from planets of varying climates and, consequently, have different temperature preferences: some worry about very cold planets and others about very hot planets. Bibika needs to plan the travel route so as to save its customers from any discomfort, even if the total length of the route is not as short as possible (or even there is no route: in which case Bibika simply informs customers that the trip is impossible).</p>\n<p>Bibika provided you with the historical average temperature of each of the N planets and the R routes that connect pairs of planets directly (it is guaranteed that between two planets there is at most one direct route), along with their respective distances. She will also provide you with travel requests from Q customers. Each travel request consists of a source planet A, a destination planet B, and the customer’s restriction on intermediate planet temperatures: each customer may require only planets with temperatures between the lowest K or the highest K temperatures among all N planets.</p>\n<p>Your task is, for each travel request, to find the shortest possible distance given the restrictions described, or to say that such travel is impossible.</p>",
+  "input": "<p>The first line of input contains two integers N and R (2 ≤ N ≤ 400 and 0 ≤ R ≤ N · (N − 1)/2), which represent the number of known planets and number of direct routes between them. The first planet is represented by the number 1, the second by the number 2, . . ., up to N-th represented by the number N. The second line of input contains N integers T<sub>i</sub> (−10<sup>9</sup> ≤ T<sub>i</sub> ≤ 10<sup>9</sup>), which represents the average temperature of each of the planets. Then there will be R lines, each with three integers X, Y and D (1 ≤ X, Y ≤ N where X 6= Y and 1 ≤ D ≤ 10<sup>3</sup>), which represents a direct route of length D between planets X and Y . Then there will be an integer Q (1 ≤ Q ≤ 10<sup>5</sup>), which represents the number of customer travel orders. Finally, each of the following Q lines will contain four integers A, B, K and T (1 ≤ A, B, K ≤ N with A ≠ B and T ∈ {0, 1}), which represents a customer who wants to go from planet A to planet B going only through planets with temperatures that are among the coldest K temperatures if T = 0 or the hottest K temperatures if T = 1.</p>",
+  "output": "<p>Your program must print one line per customer request, containing an integer representing the shortest total travel distance between the two planets given the client’s restrictions, or −1 if the trip is impossible.</p>",
+  "samples": [
+    {
+      "input": "7 9\n-53 -180 456 420 -210 15 150\n1 2 2\n1 3 1\n2 3 4\n2 4 2\n2 5 5\n3 4 6\n6 4 10\n4 5 4\n3 7 2\n4\n1 5 2 1\n1 2 1 1\n5 6 1 0\n1 7 2 1\n",
+      "output": "11\n2\n-1\n3\n"
+    },
+    {
+      "input": "6 5\n5 10 20 10 10 8\n1 2 5\n2 3 5\n3 4 5\n4 5 5\n5 6 5\n4\n1 6 2 1\n1 6 1 1\n4 5 1 0\n2 4 1 1\n",
+      "output": "25\n-1\n5\n10\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Sub-Regional Brasil do ACM ICPC, Maratona de Programação SBC 2019",
+  "level": 17,
+  "tags": [
+    "floyd_warshall",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 2.5
+}

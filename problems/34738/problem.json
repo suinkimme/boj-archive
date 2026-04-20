@@ -1,0 +1,31 @@
+{
+  "id": 34738,
+  "title": "Game of Pieces",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>If you’ve ever played Tetris for long enough, you might have experienced the <em>Tetris effect</em> – seeing falling blocks even after you have stopped playing. To stay focused on solving problems and avoid such distractions, we will consider a simplified version of the game.</p>\n<p>The game is played on a board composed of square cells arranged in a grid. Columns of the grid are numbered sequentially from left to right. The board is infinite to the right and to the top. Each cell is either empty or filled, and initially, all cells are empty.</p>\n<p>A sequence of N rectangular pieces is given, and the pieces are dropped onto the board one at a time. Pieces have different sizes. A piece of size $L$ is either vertical ($L \\times 1$ cells) or horizontal ($1 \\times L$ cells). When a piece is dropped at a specified column, it starts at a location above all the currently filled cells and falls straight down until it either reaches the bottom of the board or lands on top of an already filled cell. Once a piece lands, it fills its final set of cells.</p>\n<p>Each time a piece lands, the game is considered <em>safe</em> if no empty cell has a filled cell above it; otherwise the game is <em>unsafe</em>, the offending piece is removed from the board, and the game continues with the next piece as if it had never been dropped.</p>\n<p>In the example below, corresponding to the first sample input, the game becomes unsafe once the second piece lands, hence the piece is removed and the next pieces keep the game safe.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 415px; height: 100px;\"/></p>\n<p>Given the sequence of pieces and their drop positions, your task is to determine, for each piece, whether it makes the board unsafe after landing.</p>",
+  "input": "<p>The first line contains an integer $N$ ($1 ≤ N ≤ 2 \\cdot 10^5$), indicating the number of pieces.</p>\n<p>Each of the next $N$ lines describes a piece with a character $C$ and two integers $L$ and $P$ ($1 ≤ L ≤ 10^9$ and $1 ≤ P ≤ 10^{18}$), representing respectively the type of the piece, its length, and the position where it is dropped. For a vertical piece, $C$ is the character “<code>|</code>” (pipe), the piece has $L \\times 1$ cells, and it is dropped at column $P$. For a horizontal piece, $C$ is the character “<code>-</code>” (hyphen), the piece has $1 \\times L$ cells, and it is dropped spanning columns $P, P + 1, \\dots , P + L − 1$.</p>",
+  "output": "<p>Output a single line with a string of length $N$. The $i$-th character of the string must be the uppercase letter “<code>U</code>” if the game becomes unsafe immediately after the $i$-th piece lands on the board, and the uppercase letter “<code>S</code>” otherwise.</p>",
+  "samples": [
+    {
+      "input": "4\n| 3 1\n- 2 1\n| 3 2\n- 2 1\n",
+      "output": "SUSS\n"
+    },
+    {
+      "input": "4\n| 3 1\n| 2 3\n| 1 2\n- 2 2\n",
+      "output": "SSSU\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Championship, The 2025 ICPC Latin America Championship",
+  "level": 18,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "lazyprop",
+    "coordinate_compression"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.4706000089645386
+}

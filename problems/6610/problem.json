@@ -1,0 +1,24 @@
+{
+  "id": 6610,
+  "title": "Rhinoceros Beetle",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Given a big strength, Rhinoceros Beetles have a natural tendency to fight. Because of that, they are even used for gambling fights in some countries, especially in Asia. Two male beetles fight against each other and the people watch them and bet which one would win. Recently, animal protection groups protested against such gambling events. Therefore, many gamblers started to play different games instead, like Texas Hold’em Poker. In this game, it may be hard to pick the winner among many players. Since a big tournament called the Arthropoda Card Marathon will be organized soon, please write a program to decide which hand is the strongest.</p>",
+  "input": "<p>The input consists of several instances. The first line of each instance contains one integer N (1 ≤ N ≤ 10), the number of players. The second line contains exactly five cards separated by a space — these are the Texas Hold’em “community” cards shared by all the players. Each of the following N lines contains two cards separated by a space — the cards held by individual players, the first such line being cards of Player 1, second line the cards of Player 2, etc.</p>\n<p>Each card is described by exactly 2 characters, first character being the card rank, one of {“2”,“3”,“4”,“5”,“6”,“7”,“8”,“9”,“X”,“J”,“Q”,“K”,“A”}, where “X” stands for the 10, second character being the card suit (sometimes called color), one of {“c”,“d”,“h”,“s”} for Clubs, Diamonds, Hearts, or Spades. For example, “Xh” is the Ten of Hearts and “As” is the Ace of Spades.</p>",
+  "output": "<p>For each input instance, output one single line containing numbers of all winners in ascending order, separated by a space. More specifically, output an ordered ascending sequence of indexes of players that hold the strongest hand for that given configuration of cards.</p>",
+  "samples": [
+    {
+      "input": "3\n2s 9c Ad 4h Xs\nAs Ac\n9h 7h\nXh 6h\n2\n3s 4s 5s As Ad\n6h 7h\n7d 6c\n",
+      "output": "1\n1 2\n"
+    }
+  ],
+  "hint": "<p><strong>Rules of Texas Hold’em Poker</strong></p>\n<p>Five cards (the community cards) are shared by all the players and each player holds 2 other cards that may be combined with the community cards, meaning that each player has 7 cards available, out of which 5 cards are chosen to make the best possible hand.</p>\n<p>Note that no more than 5 cards can be counted as a hand under any circumstances. For instance, if all players make the same hand using all 5 community cards, the two cards they are holding do not count.</p>\n<p>The hands in Texas Hold’em Poker are the usual poker hands (“figures”). Listed from strongest to the weakest figure, these are:</p>\n<ul>\n<li>Royal Flush\n\t<ul>\n<li>a Flush that is also a Straight</li>\n</ul>\n</li>\n<li>Poker\n\t<ul>\n<li>also known as Four of a kind — four cards of the same rank</li>\n</ul>\n</li>\n<li>Full House\n\t<ul>\n<li>A Three and a Pair together</li>\n</ul>\n</li>\n<li>Flush\n\t<ul>\n<li>five cards of the same suit (color)</li>\n</ul>\n</li>\n<li>Straight\n\t<ul>\n<li>5 consecutive cards (such as 7,8,9,X,J), where Ace may be the highest or lowest card, but not both — for example, A,2,3,4,5 or X,J,Q,K,A are Straights, but Q,K,A,2,3 is not</li>\n</ul>\n</li>\n<li>Three\n\t<ul>\n<li>3 cards of the same rank (value)</li>\n</ul>\n</li>\n<li>Two pairs\n\t<ul>\n<li>two pairs of cards of the same rank</li>\n</ul>\n</li>\n<li>Pair\n\t<ul>\n<li>two cards of the same rank</li>\n</ul>\n</li>\n<li>One card\n\t<ul>\n<li>anything else (no two cards of the same rank, and no Straight)</li>\n</ul>\n</li>\n</ul>\n<p>If two or more players have the same figure, the following tie-breaker rules are applied, in order:</p>\n<ol>\n<li>With Full House, the highest card of the Three wins (3,3,Q,Q,Q &gt; 9,9,9,K,K).</li>\n<li>If Ace plays low in a Straight, it is weaker than other Straights (5,6,7,8,9 &gt; A,2,3,4,5).</li>\n<li>The highest card of the figure wins (2,2,4,K,K &gt; X,X,Q,Q,A), or the other cards of the figure if necessary (4,4,5,K,K &gt; 3,3,K,K,A).</li>\n<li>Otherwise, the highest card that is not used in the figure decides (2,2,6,X,A &gt; 2,2,X,Q,K; 2,2,6,X,A &gt; 2,2,3,4,A; and 3,4,7,8,A &gt; 8,X,J,Q,K).</li>\n</ol>\n<p>If no tie-breaker can be used, both hands have the same strength. Specifically, all four suits have the same strength.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2012",
+  "level": 15,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

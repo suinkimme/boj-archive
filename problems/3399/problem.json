@@ -1,0 +1,24 @@
+{
+  "id": 3399,
+  "title": "Mutexes",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Modern programming languages allow writing programs that consist of several threads of execution. This is as if several programs are running in parallel in the same address space, accessing the same variables. Often the threads need to be synchronized with each other. For instance, one thread may need to wait for another to complete some computation and store the result into some variable.</p>\n<p>The simplest tool for thread synchronization is mutex. A mutex is a special object that can be in locked or unlocked state. A locked mutex is always owned by exactly one thread. There are two operations that a thread can apply to a mutex: LOCK and UNLOCK.</p>\n<p>When a thread applies LOCK to a mutex that is currently unlocked, the mutex becomes locked and the thread acquires ownership of the mutex. If a thread tries to apply LOCK to a mutex that is already locked by some other thread, the thread is blocked until the mutex is unlocked.</p>\n<p>When a thread applies UNLOCK to a mutex owned by the thread, the mutex becomes unlocked. If there were other threads waiting to LOCK the mutex, one of them is granted ownership of the mutex. If there were several threads waiting, one is selected arbitrarily.</p>\n<p>One of the common problems in multithreaded programs are deadlocks. A deadlock occurs when two or more threads are waiting for each other to release a mutex and none of them can continue. A deadlock occurs also when a thread is waiting for a mutex that was locked by another thread that has terminated without releasing the mutex.</p>\n<p>You are provided descriptions of some threads and your task is to decide whether deadlocks can occur.</p>\n<p>Each of the threads is a sequence of instructions of the following form:</p>\n<pre>\nLOCK &lt;mutex&gt;\nUNLOCK &lt;mutex&gt;</pre>\n<p>You may assume the following about the commands:</p>\n<ul>\n<li>names of mutexes are uppercase letters A...Z;</li>\n<li>no thread attempts to lock a mutex it already owns;</li>\n<li>no thread attempts to unlock a mutex it does not own.</li>\n</ul>",
+  "input": "<p>The first line of input contains the number of threads M,(1 ≤ M ≤ 5) and is followed by M blocks describing each thread. The first line of a block describing thread i contains the number of instructions in this thread N<sub>i</sub>, (1 ≤ N<sub>i</sub> ≤ 10) and is followed by N<sub>i</sub> lines with instructions. Instructions do not contain extraneous whitespace.</p>",
+  "output": "<p>The first line of output must contain one number: D. D must be 1 if deadlocks are possible, or 0 if not.</p>\n<p>If deadlocks are possible, the second line must describe a state of program in which a deadlock occurs. If there are several states with a deadlock, output any of them. In this case we are looking for complete deadlock, in which none of the threads can continue execution – a thread must be either terminated or blocked by a mutex. If deadlocks are not possible, the line must be empty.</p>\n<p>State of program is described by specifying the zero-based index of current instruction for each thread in the order in which the threads are presented in input file. For a terminated thread, output −1 as the index. The indexes must be on a single line and separated by spaces.</p>",
+  "samples": [
+    {
+      "input": "2\n1\nLOCK X\n2\nLOCK Y\nLOCK X\n",
+      "output": "1\n-1 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2000",
+  "level": 13,
+  "tags": [
+    "backtracking"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 3.200000047683716
+}

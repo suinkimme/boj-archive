@@ -1,0 +1,26 @@
+{
+  "id": 6235,
+  "title": "Argus",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A data stream is a real-time, continuous, ordered sequence of items. Some examples include sensor data, Internet traffic, financial tickers, on-line auctions, and transaction logs such as Web usage logs and telephone call records. Likewise, queries over streams run continuously over a period of time and incrementally return new results as new data arrives. For example, a temperature detection system of a factory warehouse may run queries like the following. </p>\n<ul>\n<li>Query-1: \"Every five minutes, retrieve the maximum temperature over the past five minutes.\" </li>\n<li>Query-2: \"Return the average temperature measured on each floor over the past 10 minutes.\"</li>\n</ul>\n<p>We have developed a Data Stream Management System called Argus, which processes the queries over the data streams. Users can register queries to the Argus. Argus will keep the queries running over the changing data and return the results to the corresponding user with the desired frequency. </p>\n<p>For the Argus, we use the following instruction to register a query: </p>\n<ul>\n<li>Register Q_num Period</li>\n</ul>\n<p>Q_num (0 &lt; Q_num &lt;= 3000) is query ID-number, and Period (0 &lt; Period &lt;= 3000) is the interval between two consecutive returns of the result. After Period seconds of register, the result will be returned for the first time, and after that, the result will be returned every Period seconds. </p>\n<p>Here we have several different queries registered in Argus at once. It is confirmed that all the queries have different Q_num. Your task is to tell the first K queries to return the results. If two or more queries are to return the results at the same time, they will return the results one by one in the ascending order of Q_num. </p>",
+  "input": "<p>The first part of the input are the register instructions to Argus, one instruction per line. You can assume the number of the instructions will not exceed 1000, and all these instructions are executed at the same time. This part is ended with a line of \"#\". </p>\n<p>The second part is your task. This part contains only one line, which is one positive integer K (&lt;= 10000). </p>",
+  "output": "<p>You should output the Q_num of the first K queries to return the results, one number per line.</p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "Register 2004 200\nRegister 2005 300\n#\n5\n",
+      "output": "2004\n2005\n2004\n2004\n2005\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia East Continent, China, Beijing, Beijing Regional Contest 2004",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "priority_queue"
+  ],
+  "accepted_user_count": 39,
+  "submission_count": null,
+  "average_tries": 1.5127999782562256
+}

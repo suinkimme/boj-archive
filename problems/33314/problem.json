@@ -1,0 +1,29 @@
+{
+  "id": 33314,
+  "title": "Triangle Tree",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p style=\"text-align: center;\"><em><small>One day, a giant tree grew in the countryside. Little John, with his childhood eagle, decided to make it his home. Little John will build a structure on the tree with galvanized square steel. However, little did he know, he could not build what is physically impossible.</small></em></p>\n<p>You are given a rooted tree<sup>1</sup> containing $n$ vertices rooted at vertex $1$. A pair of vertices $(u,v)$ is called a <em>good pair</em> if $u$ is not an ancestor<sup>2</sup> of $v$ and $v$ is not an ancestor of $u$. For any two vertices, $\\text{dist}(u,v)$ is defined as the number of edges on the unique simple path from $u$ to $v$, and $\\text{lca}(u,v)$ is defined as their <a href=\"https://en.wikipedia.org/wiki/Lowest_common_ancestor\">lowest common ancestor</a>.</p>\n<p>A function $f(u,v)$ is defined as follows.</p>\n<ul>\n<li>If $(u,v)$ is a good pair, $f(u,v)$ is the number of distinct integer values $x$ such that there exists a <strong>non-degenerate triangle</strong><sup>3</sup> formed by side lengths $\\text{dist}(u,\\text{lca}(u,v))$, $\\text{dist}(v,\\text{lca}(u,v))$, and $x$.</li>\n<li>Otherwise, $f(u,v)$ is $0$.</li>\n</ul>\n<p>You need to find the following value:</p>\n<p>$$\\sum_{i = 1}^{n-1} \\sum_{j = i+1}^n f(i,j).$$</p>\n<hr/>\n<p><sup>1</sup>A tree is a connected graph without cycles. A rooted tree is a tree where one vertex is special and called the root.</p>\n<p><sup>2</sup>An ancestor of vertex $v$ is any vertex on the simple path from $v$ to the root, including the root, but not including $v$. The root has no ancestors.</p>\n<p><sup>3</sup>A triangle with side lengths $a$, $b$, $c$ is non-degenerate when $a+b &gt; c$, $a+c &gt; b$, $b+c &gt; a$.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains the number of test cases $t$ ($1 \\le t \\le 10^4$). The description of the test cases follows.</p>\n<p>The first line of each test case contains a single integer $n$ ($1 \\le n \\le 3 \\cdot 10^5$).</p>\n<p>Each of the next $n-1$ lines contains two integers $u_i$ and $v_i$, denoting the two vertices connected by an edge ($1 \\le u_i,v_i \\le n$, $u_i \\neq v_i$).</p>\n<p>It is guaranteed that the given edges form a tree.</p>\n<p>It is guaranteed that the sum of $n$ over all test cases does not exceed $3 \\cdot 10^5$.</p>",
+  "output": "<p>For each test case, output the answer on a separate line.</p>",
+  "samples": [
+    {
+      "input": "4\n3\n1 2\n1 3\n3\n1 2\n3 2\n5\n2 3\n1 5\n4 2\n1 2\n11\n2 1\n2 3\n2 4\n4 5\n6 5\n5 7\n4 8\n8 9\n7 10\n10 11\n",
+      "output": "1\n0\n4\n29\n"
+    }
+  ],
+  "hint": "<p>On the first test case, the only good pair $(i,j)$ satisfying $i&lt;j$ is $(2,3)$. Here, $\\text{lca}(2,3)$ is $1$, and the two distances are $1$ and $1$.</p>\n<p>There is only one value of $x$ for two side lengths $1$ and $1$, which is $1$. Therefore, the answer for the first test case is $1$.</p>\n<p>On the second test case, there is no good pair. Therefore, the answer for the second test case is $0$.</p>\n<p>On the third test case, the good pairs $(i,j)$ satisfying $i&lt;j$ are as follows.</p>\n<ul>\n<li>$(2,5)$: $\\text{lca}(2,5)$ is $1$, distances are $1$ and $1$. There is only one possible value of $x$, which is $1$.</li>\n<li>$(3,4)$: $\\text{lca}(3,4)$ is $2$, distances are $1$ and $1$. There is only one possible value of $x$, which is $1$.</li>\n<li>$(3,5)$: $\\text{lca}(3,5)$ is $1$, distances are $2$ and $1$. There is only one possible value of $x$, which is $2$.</li>\n<li>$(4,5)$: $\\text{lca}(4,5)$ is $1$, distances are $2$ and $1$. There is only one possible value of $x$, which is $2$.</li>\n</ul>\n<p>Therefore, the answer for the third test case is $1+1+1+1=4$.</p>",
+  "source": "Contest, Codeforces, Codeforces Round 1000 (Div. 2)",
+  "level": 19,
+  "tags": [
+    "math",
+    "dp",
+    "trees",
+    "combinatorics",
+    "dp_tree",
+    "smaller_to_larger"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1
+}

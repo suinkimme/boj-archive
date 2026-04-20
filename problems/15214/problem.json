@@ -1,0 +1,30 @@
+{
+  "id": 15214,
+  "title": "Posters on the wall",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Deep in the top-secret base of Keepers of the Sacred Postulates, there's The Wall with many rectangular posters depicting deep knowledge derived from their most valuable postulates. They are quite rare, thus they are placed so that they don't overlap.</p>\n<p>Occasionally, a batch of new posters worthy of the honor of being placed on The Wall arrives. The Keepers then have to decide, where to place the new posters. It's a complicated process and you are to help with one of its steps.</p>\n<p>The Keepers are currently picking candidate positions for the posters. You are to quickly compute the total area of currently hanging posters that would be shadowed by placing a new poster at a given position.</p>\n<p>You are given a description of $n$ disjoint gray rectangles in a plane. You are to answer $q$ queries of the form: What is the total grey area in a given rectangle? Note that this doesn't affect the plane.</p>\n<p>The answer has to be produced online</p>",
+  "input": "<p>The first line contains five numbers, $r, c, n, q, m$, ($1 \\leq r, c &lt; m \\leq 10^9 + 9$, $0 \\leq n,q \\leq 50\\,000$), the height and width of the wall, number of posters on the wall, number of queries and a modulus for computing the queries (we will explain that below).</p>\n<p>Each of the next $n$ lines contains four numbers, $x_1, y_1, x_2, y_2$ ($0 \\leq x_1, x_2 \\leq r$, $0 \\leq y_1, y_2 \\leq c$), the coordinates of two opposite corners of the rectangle.</p>\n<p>The last $q$ lines contain five numbers $x_1', y_1', x_2', y_2', v$, each between $0$ and $m - 1$ (inclusive). You can compute the real coordinates $x_1, y_1, x_2, y_2$ using the formula below.</p>\n<p>Let's denote by $l$ the answer to the last query (with $l=0$ for the first query). Then $$x_i = (x_i' + l \\cdot v) \\pmod m$$ $$y_i = (y_i' + l \\cdot v) \\pmod m$$</p>\n<p>The decoded coordinates $x_1, y_1, x_2, y_2$ satisfy following conditions: $0 \\leq x_1, x_2 \\leq r$, $0 \\leq y_1, y_2 \\leq c$. </p>\n<p>There are several subtasks. In offline subtasks, the value $v$ will be zero for each query. </p>\n<table class=\"table table-bordered\" style=\"width:100%\">\n<thead>\n<tr>\n<th>subtask</th>\n<th>points</th>\n<th>maximum $r$</th>\n<th>maximum $c$</th>\n<th>maximum $n$ and $q$</th>\n<th>online</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>1</th>\n<td>10</td>\n<td>$500$</td>\n<td>$500$</td>\n<td>$500$</td>\n<td>no</td>\n</tr>\n<tr>\n<th>2</th>\n<td>10</td>\n<td>$5000$</td>\n<td>$5000$</td>\n<td>$5000$</td>\n<td>no</td>\n</tr>\n<tr>\n<th>3</th>\n<td>40</td>\n<td>$300\\,000$</td>\n<td>$300\\,000$</td>\n<td>$50\\,000$</td>\n<td>no</td>\n</tr>\n<tr>\n<th>4</th>\n<td>10</td>\n<td>$10^9$</td>\n<td>$200\\,000$</td>\n<td>$50\\,000$</td>\n<td>no</td>\n</tr>\n<tr>\n<th>5</th>\n<td>10</td>\n<td>$10^9$</td>\n<td>$10^9$</td>\n<td>$50\\,000$</td>\n<td>no</td>\n</tr>\n<tr>\n<th>6</th>\n<td>10</td>\n<td>$100\\,002$</td>\n<td>$100\\,002$</td>\n<td>$50\\,000$</td>\n<td>yes</td>\n</tr>\n<tr>\n<th>7</th>\n<td>10</td>\n<td>$10^9 + 8$</td>\n<td>$10^9 + 8$</td>\n<td>$50\\,000$</td>\n<td>yes</td>\n</tr>\n</tbody>\n</table>",
+  "output": "<p>For each query output one line containing a single number: Answer to the query.</p>",
+  "samples": [
+    {
+      "input": "8 11 3 4 13\n1 1 5 5\n7 7 5 4\n4 6 2 7\n1 1 7 8 0\n2 2 4 3 0\n3 4 6 7 0\n2 9 3 10 0\n",
+      "output": "24\n2\n6\n0\n"
+    },
+    {
+      "input": "8 11 3 4 13\n1 1 5 5\n7 7 5 4\n4 6 2 7\n1 1 7 8 4\n6 6 8 7 2\n2 3 5 6 7\n11 5 12 6 5\n",
+      "output": "24\n2\n6\n0\n"
+    }
+  ],
+  "hint": "<p>Sample 1: You can view the whole plane below.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:264px; width:350px\"/></p>\n<p>Sample 2: This is the same input as above, using online queries.</p>",
+  "source": "Camp, Czech, Polish and Slovak Preparation Camp, CPSPC 2017",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "pst",
+    "segtree"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.7856999635696411
+}

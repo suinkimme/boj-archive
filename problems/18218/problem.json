@@ -1,0 +1,39 @@
+{
+  "id": 18218,
+  "title": "One-Way Conveyors",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are working at a factory manufacturing many different products. Products have to be processed on a number of different machine tools. Machine shops with these machines are connected with conveyor lines to exchange unfinished products. Each unfinished product is transferred from a machine shop to another through one or more of these conveyors.</p>\n<p>As the orders of the processes required are not the same for different types of products, the conveyor lines are currently operated in two-way. This may induce inefficiency as conveyors have to be completely emptied before switching their directions. Kaizen (efficiency improvements) may be found here!</p>\n<p>Adding more conveyors is too costly. If all the required transfers are possible with currently installed conveyors operating in fixed directions, no additional costs are required. All the required transfers, from which machine shop to which, are listed at hand. You want to know whether all the required transfers can be enabled with all the conveyors operated in one-way, and if yes, directions of the conveyor lines enabling it.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\nn m\nx<sub>1</sub> y<sub>1</sub>\n.\n.\n.\nx<sub>m</sub> y<sub>m</sub>\nk\na<sub>1</sub> b<sub>1</sub>\n.\n.\n.\na<sub>k</sub> b<sub>k</sub></pre>\n<p>The first line contains two integers n (2 ≤ n ≤ 10 000) and m (1 ≤ m ≤ 100 000), the number of machine shops and the number of conveyors, respectively. Machine shops are numbered 1 through n. Each of the following m lines contains two integers x<sub>i</sub> and y<sub>i</sub> (1 ≤ x<sub>i</sub> &lt; y<sub>i</sub> ≤ n), meaning that the i-th conveyor connects machine shops x<sub>i</sub> and y<sub>i</sub>. At most one conveyor is installed between any two machine shops. It is guaranteed that any two machine shops are connected through one or more conveyors. The next line contains an integer k (1 ≤ k ≤ 100 000), which indicates the number of required transfers from a machine shop to another. Each of the following k lines contains two integers a<sub>i</sub> and b<sub>i</sub> (1 ≤ a<sub>i</sub> ≤ n, 1 ≤ b<sub>i</sub> ≤ n, a<sub>i</sub> ≠ b<sub>i</sub>), meaning that transfer from the machine shop a<sub>i</sub> to the machine shop b<sub>i</sub> is required. Either a<sub>i</sub> ≠ a<sub>j</sub> or b<sub>i</sub> ≠ b<sub>j</sub> holds for i ≠ j.</p>",
+  "output": "<p>Output “No” if it is impossible to enable all the required transfers when all the conveyors are operated in one-way. Otherwise, output “Yes” in a line first, followed by m lines each of which describes the directions of the conveyors. All the required transfers should be possible with the conveyor lines operated in these directions. Each direction should be described as a pair of the machine shop numbers separated by a space, with the start shop number on the left and the end shop number on the right. The order of these m lines do not matter as far as all the conveyors are specified without duplicates or omissions. If there are multiple feasible direction assignments, whichever is fine.</p>",
+  "samples": [
+    {
+      "input": "3 2\n1 2\n2 3\n3\n1 2\n1 3\n2 3\n",
+      "output": "Yes\n1 2\n2 3\n"
+    },
+    {
+      "input": "3 2\n1 2\n2 3\n3\n1 2\n1 3\n3 2\n",
+      "output": "No\n"
+    },
+    {
+      "input": "4 4\n1 2\n1 3\n1 4\n2 3\n7\n1 2\n1 3\n1 4\n2 1\n2 3\n3 1\n3 2\n",
+      "output": "Yes\n1 2\n2 3\n3 1\n1 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2019 Asia Yokohama Regional, Camp, Petrozavodsk Programming Camp, Winter 2020, Day 2: Greetings from Japan",
+  "level": 22,
+  "tags": [
+    "articulation",
+    "bcc",
+    "data_structures",
+    "disjoint_set",
+    "graphs",
+    "lca",
+    "prefix_sum",
+    "trees"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 3.8285999298095703
+}

@@ -1,0 +1,31 @@
+{
+  "id": 17643,
+  "title": "Amusement Park",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You have been hired to supervise the project of a new amusement park. The park will have a special gimmick: directed slides that can get customers from one attraction to another quickly and in an entertaining way.</p>\n<p>The park owner has given you the current project: a list of planned attractions and a list of slides that should be built between them. However, him being a businessman, he casually envisioned the impossible: among other things, he projected a slide coming from the Haunted Castle to the Roller Coaster, another from the Roller Coaster to the Drop Tower, and a third from the Drop Tower to the Haunted Castle. As the slides can only go downhill, it is evident why this is a problem. You don’t have the luxury of ignoring the laws of physics when building the park, so you have to request changes in the project. Maybe he would accept reversing the slide between the Drop Tower and the Haunted Castle?</p>\n<p>Formally:</p>\n<ul>\n<li>The <strong>project</strong> is a list of attractions and a list of directed slides. Each slide starts at one attraction and ends at another attraction.</li>\n<li>A <strong>proposal</strong> is obtained from the project by reversing the directions of some slides (possibly none or all of them).</li>\n<li>A proposal is <strong>legal</strong> if there is a way to assign an elevation to each attraction in such a way that every slide goes downhill.</li>\n<li>The <strong>cost</strong> of a proposal is the number of slides whose directions were reversed.</li>\n</ul>\n<p>For a given project, find and report the sum of costs all legal proposals. Since this number may be large, output it modulo 998, 244, 353.</p>",
+  "input": "<p>The first line contains two space-separated integers n, m (1 ≤ n ≤ 18, 0 ≤ m ≤ n(n − 1)/2) – the number of attractions and the number of slides, respectively. The attractions are numbered 1 through n.</p>\n<p>Then, m lines follow. The i-th of these lines contains two space-separated integers a<sub>i</sub>, b<sub>i</sub> (1 ≤ a<sub>i</sub>, b<sub>i</sub> ≤ n) denoting a slide from a<sub>i</sub> to b<sub>i</sub>. You may assume that:</p>\n<ul>\n<li>There are no self-loops. (For each i: a<sub>i</sub> ≠ b<sub>i</sub>.)</li>\n<li>No slide appears twice. (For all i ≠ j: a<sub>i</sub> ≠ a<sub>j</sub> or b<sub>i</sub> ≠ b<sub>j</sub>.)</li>\n<li>No pair of attractions is connected in both directions. (The unordered pairs {a<sub>i</sub>, b<sub>i</sub>} are distinct.)</li>\n</ul>",
+  "output": "<p>Output one line with a single integer, the sum of costs of all legal proposals modulo 998, 244, 353.</p>",
+  "samples": [
+    {
+      "input": "2 1\n1 2\n",
+      "output": "1\n"
+    },
+    {
+      "input": "3 3\n1 2\n2 3\n1 3\n",
+      "output": "9\n"
+    }
+  ],
+  "hint": "<p>In the first example, there are two proposals:</p>\n<ul>\n<li>The slide direction is not flipped. This proposal has cost 0.</li>\n<li>The slide direction is flipped. This proposal has cost 1.</li>\n</ul>\n<p>As both proposals are valid, the answer is 0 + 1 = 1.</p>\n<p>In the second example, there are eight proposals with the slide directions as follows:</p>\n<ul>\n<li>1 → 2, 2 → 3, 1 → 3 (cost 0)</li>\n<li>1 → 2, 2 → 3, 3 → 1 (cost 1)</li>\n<li>1 → 2, 3 → 2, 1 → 3 (cost 1)</li>\n<li>1 → 2, 3 → 2, 3 → 1 (cost 2)</li>\n<li>2 → 1, 2 → 3, 1 → 3 (cost 1)</li>\n<li>2 → 1, 2 → 3, 3 → 1 (cost 2)</li>\n<li>2 → 1, 3 → 2, 1 → 3 (cost 2)</li>\n<li>2 → 1, 3 → 2, 3 → 1 (cost 3)</li>\n</ul>\n<p>The second proposal is not legal, as there is a slide sequence 1 → 2 → 3 → 1. This means that the attraction 1 has to be strictly higher than ifself, which is clearly impossible. Similarly, the seventh proposal is not legal. The answer is thus 0 + 1 + 2 + 1 + 2 + 3 = 9.</p>",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2019, Day 2",
+  "level": 24,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield",
+    "inclusion_and_exclusion"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 2.4544999599456787
+}

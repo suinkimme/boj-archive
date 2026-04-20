@@ -1,0 +1,26 @@
+{
+  "id": 32325,
+  "title": "Please Please Please",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You aim to please, or at least you did. Now you are a teacher and you have students asking you to perform certain tasks some of which contradict each other. You want to be objective, but you also want to make your job easier. You will automate parts of your job. The first task is assigning letter grades at the end of the semester.</p>\n<p>Several students have sent you emails stating their overall grade in the class as an integer and their desired letter grade. Normally, you would disregard such pleas but, in this case, they have used the magic word “please”. Now you feel that you should cater to some of these requests.</p>\n<p>For simplicity, we assume there are five letter grades: A, B, C, D, and F. You will assign letter grade cutoffs such that each letter grade is achievable by some integer overall grade in the range of 0 to 100, inclusive, even if there is no student with that particular integer score. Additionally:</p>\n<ul>\n<li>Any possible overall grade that earns an A should be higher than any possible overall grade that earns a B.</li>\n<li>Any possible overall grade that earns a B should be higher than any possible overall grade that earns a C.</li>\n<li>Any possible overall grade that earns a C should be higher than any possible overall grade that earns a D.</li>\n<li>Finally, any possible overall grade that earns a D should be higher than any possible overall grade that earns an F.</li>\n</ul>\n<p>If a student asks for a letter grade, they will be disappointed if they receive any other letter grade (even a higher letter grade), e.g., if a student asks for a B, they will be disappointed if they receive a C or A or … (any grade other than B).</p>\n<p>Your grade assignment preference is as follows:</p>\n<ul>\n<li>You want to prioritize the student(s) that used the word please the most. That is, your letter grades will be assigned such that you maximize first the number of satisfied students that used please the most, then the students that used please the next most, and so on. Note that this criterion could result in satisfying only one student and making everyone else unhappy. Again, satisfying the student(s) that used please the most is the highest priority. Then, satisfying the students that used please the next most, and so on.</li>\n<li>If there are multiple assignments that can do the above, you want to choose the one that next maximizes the cutoff line for the A, i.e., the highest integer value for cutoff line for A.</li>\n<li>If multiple assignments for letter grades are still possible, you want to choose the one that maximizes the score for the B cutoff.</li>\n<li>If multiple cutoffs still exist, the one that maximizes the C cutoff should be selected next.</li>\n<li>Lastly, if multiple cutoffs still exist, the assignment that maximizes the D cutoff should be prioritized.</li>\n</ul>\n<p>Given the people that have sent emails requesting particular letter grades, their corresponding score, and the number of times they used the word please, determine the best fit letter grade cutoffs following the criteria listed above.</p>",
+  "input": "<p>The first input line contains an integer, n (1 ≤ n ≤ 10<sup>5</sup>), representing the number of students. The next n input lines provide information about the students, one student per line. Each of these input lines starts in column 1 and contains three tokens (separated by exactly one space) as follows:</p>\n<ul>\n<li>an integer, g (0 ≤ g ≤ 100), representing their grade,</li>\n<li>An uppercase letter, L (L is one of ‘A’, ‘B’, ‘C’, ‘D’, or ‘F’), representing their desired letter grade,</li>\n<li>and an integer, p (1 ≤ p ≤ 10<sup>5</sup>), representing the number of times they used the word “please” in their email.</li>\n</ul>",
+  "output": "<p>Print four integers on a single line representing the letter grade cutoffs for A, B, C, and D, respectively.</p>",
+  "samples": [
+    {
+      "input": "5\n90 A 1\n88 C 5\n85 B 3\n50 D 2\n89 F 3\n",
+      "output": "90 89 88 50\n"
+    },
+    {
+      "input": "3\n90 B 5\n90 A 4\n90 A 4\n",
+      "output": "100 90 89 88\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, University of Central Florida, 2024 Local Programming Contest (Final Round)",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

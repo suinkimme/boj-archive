@@ -1,0 +1,26 @@
+{
+  "id": 6901,
+  "title": "Jengaism",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Jenga is a popular game involving a tower constructed of $1 \\times 1 \\times 3$ blocks. Initially, this tower has $18$ levels, each consisting of three blocks laid side to side. The blocks on alternating levels are oriented at right angles. Thus, each block touches all three of the blocks in the levels above and below it. Here is a picture of the actual game:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>Play involves each player removing a block from somewhere in the tower, and putting it in a new position on top. The goal is to do this without knocking over the tower. Blocks are always removed from below the highest complete level, and the top level is always completed before a new level is started (at right angles, of course).</p>\n<p>Write a program which reads sequential moves of a Jenga game and determines at what point the tower (or any part of it) falls or topples.</p>\n<p>Note that a structure will topple if its center of gravity, projected onto its base, lies outside the convex hull of its support points. If the center of gravity lies exactly on the edge of this hull, we will assume that the structure is stable.</p>",
+  "input": "<p>The first line contains $N$, the number of moves. The next $N$ lines describe one move per line, with two locations separated by a single space. The first is the location of the block to be removed, and the second is where it will be put back. A location is specified as a number, specifying the level, and then a letter <code>A-C</code>, specifying its position in the level (left to right or front to back). For instance, the top level of the initial tower configuration consists of blocks at <code>18A</code>, <code>18B</code>, and <code>18C</code>. Below is a diagram of the pieces, labelled with a front and right side perspective.</p>\n<div class=\"row\">\n<div class=\"col-sm-6\">\n<table class=\"table table-bordered table-center-20 td-center\">\n<caption>Front</caption>\n<tbody>\n<tr>\n<td colspan=\"3\">18C</td>\n</tr>\n<tr>\n<td>17A</td>\n<td>17B</td>\n<td>17C</td>\n</tr>\n<tr>\n<td colspan=\"3\">16C</td>\n</tr>\n<tr>\n<td>15A</td>\n<td>15B</td>\n<td>15C</td>\n</tr>\n<tr>\n<td colspan=\"3\">14C</td>\n</tr>\n<tr>\n<td>13A</td>\n<td>13B</td>\n<td>13C</td>\n</tr>\n<tr>\n<td colspan=\"3\">12C</td>\n</tr>\n<tr>\n<td>11A</td>\n<td>11B</td>\n<td>11C</td>\n</tr>\n<tr>\n<td colspan=\"3\">10C</td>\n</tr>\n<tr>\n<td>9A</td>\n<td>9B</td>\n<td>9C</td>\n</tr>\n<tr>\n<td colspan=\"3\">8C</td>\n</tr>\n<tr>\n<td>7A</td>\n<td>7B</td>\n<td>7C</td>\n</tr>\n<tr>\n<td colspan=\"3\">6C</td>\n</tr>\n<tr>\n<td>5A</td>\n<td>5B</td>\n<td>5C</td>\n</tr>\n<tr>\n<td colspan=\"3\">4C</td>\n</tr>\n<tr>\n<td>3A</td>\n<td>3B</td>\n<td>3C</td>\n</tr>\n<tr>\n<td colspan=\"3\">2C</td>\n</tr>\n<tr>\n<td>1A</td>\n<td>1B</td>\n<td>1C</td>\n</tr>\n</tbody>\n</table>\n</div><div class=\"col-sm-6\">\n<table class=\"table table-bordered table-center-20 td-center\">\n<caption>Right Side</caption>\n<tbody>\n<tr>\n<td>18A</td>\n<td>18B</td>\n<td>18C</td>\n</tr>\n<tr>\n<td colspan=\"3\">17C</td>\n</tr>\n<tr>\n<td>16A</td>\n<td>16B</td>\n<td>16C</td>\n</tr>\n<tr>\n<td colspan=\"3\">15C</td>\n</tr>\n<tr>\n<td>14A</td>\n<td>14B</td>\n<td>14C</td>\n</tr>\n<tr>\n<td colspan=\"3\">13C</td>\n</tr>\n<tr>\n<td>12A</td>\n<td>12B</td>\n<td>12C</td>\n</tr>\n<tr>\n<td colspan=\"3\">11C</td>\n</tr>\n<tr>\n<td>10A</td>\n<td>10B</td>\n<td>10C</td>\n</tr>\n<tr>\n<td colspan=\"3\">9C</td>\n</tr>\n<tr>\n<td>8A</td>\n<td>8B</td>\n<td>8C</td>\n</tr>\n<tr>\n<td colspan=\"3\">7C</td>\n</tr>\n<tr>\n<td>6A</td>\n<td>6B</td>\n<td>6C</td>\n</tr>\n<tr>\n<td colspan=\"3\">5C</td>\n</tr>\n<tr>\n<td>4A</td>\n<td>4B</td>\n<td>4C</td>\n</tr>\n<tr>\n<td colspan=\"3\">3C</td>\n</tr>\n<tr>\n<td>2A</td>\n<td>2B</td>\n<td>2C</td>\n</tr>\n<tr>\n<td colspan=\"3\">1C</td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>",
+  "output": "<p>If the tower collapses after removing a block at location $L$, output <code>The tower collapses after removing L</code>.</p>\n<p>If the tower collapses after placing a block at location $L$, output <code>The tower collapses after placing L</code>.</p>\n<p>If all moves execute successfully (i.e., without causing the tower to fall), output <code>The tower never collapses</code>.</p>",
+  "samples": [
+    {
+      "input": "4\n6B 19B\n7B 19A\n17B 19C\n17A 20B\n",
+      "output": "The tower collapses after removing 17A\n"
+    },
+    {
+      "input": "2\n17C 19C\n17A 19A\n",
+      "output": "The tower never collapses\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2004, CCO 2004",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

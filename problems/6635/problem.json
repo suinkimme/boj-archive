@@ -1,0 +1,27 @@
+{
+  "id": 6635,
+  "title": "Intriguing Identifiers",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Corruptionists often use fictional persons to camouflage their illegal activities. They create fake database records containing non-existing names, addresses, or even personal identifiers. ACM would like to fight against such practices. They are going to examine several suspicious databases and search them for invalid records. Can you help them by checking validity of Personal IDs?</p>\n<p>(Please note: In reality, some of the facts stated below may not be true and some identifiers may violate them in exceptional cases. However, for the purpose of this problem, we will assume an ideal world without any such exceptions.)</p>\n<p>Personal ID (a.k.a. “rodné číslo” or simply RČ) is a unique identifier of a Czech (or Slovak) citizen. It is assigned once a child is born and remains unchanged for the whole life.</p>\n<p>The identifier has two numerical parts separated with a single slash character (“/”). The first part always consists of exactly six digits and it represents the birth date of the person in the form of “YYMMDD”: the first two digits specify a year (“modulo” 100), other two digits a month (01–12), and the last two digits a day in the month (01–31, but some months have less days, of course). Beside the birth date, this part stores also information about the gender: all girls get the month number increased by 50. Thus, for instance, 61 means November for them.</p>\n<p>The second part may have either 3 or 4 digits (all of them may be zero). For all identifiers assigned until December 31, 1953, there were only three digits. Starting from January 1, 1954, all children are assigned IDs with exactly four digits after the slash. The additional digit allows for a simple automated check — if we remove the slash, the whole ten-digits-long number must be divisible by 11.</p>",
+  "input": "<p>Each line of the input contains one string consisting of at least 1 and at most 20 characters, each of them being either a digit or a slash (“/”). The word “end” follows the last string.</p>",
+  "output": "<p>For each string, output the word “invalid” if the given string does not represent a valid Personal ID of a person born between January 1, 1920 and December 31, 2009, inclusive.</p>\n<p>For valid identifiers, print either “girl” or “boy”, depending on the gender of the child who could be assigned that ID.</p>",
+  "samples": [
+    {
+      "input": "531019/534\n541019/123\n535318/6663\n545318/6662\n545318/6666\n006231/5000\n000229/0002\n010229/0001\n/\n/3/\n200101/000\n191231/999\nend\n",
+      "output": "boy\ninvalid\ninvalid\ngirl\ninvalid\ngirl\nboy\ninvalid\ninvalid\ninvalid\nboy\ninvalid\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2009",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "string",
+    "case_work",
+    "parsing"
+  ],
+  "accepted_user_count": 30,
+  "submission_count": null,
+  "average_tries": 1.7000000476837158
+}

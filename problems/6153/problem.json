@@ -1,0 +1,28 @@
+{
+  "id": 6153,
+  "title": "Haybale Guessing",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The cows, who always have an inferiority complex about their intelligence, have a new guessing game to sharpen their brains.</p>\n<p>A designated 'Hay Cow' hides behind the barn and creates N (1 &lt;= N &lt;= 1,000,000) uniquely-sized stacks (conveniently numbered 1..N) of hay bales, each with 1..1,000,000,000 bales of hay.</p>\n<p>The other cows then ask the Hay Cow a series of Q (1 &lt;= Q &lt;= 25,000) questions about the the stacks, all having the same form:</p>\n<blockquote>\n<p>What is the smallest number of bales of any stack in the range of stack numbers Ql..Qh (1 &lt;= Ql &lt;= N; Ql &lt;= Qh &lt;= N)?</p>\n</blockquote>\n<p>The Hay Cow answers each of these queries with a single integer A whose truthfulness is not guaranteed.</p>\n<p>Help the other cows determine if the answers given by the Hay Cow are self-consistent or if certain answers contradict others.</p>",
+  "input": "<ul>\n<li>Line 1: Two space-separated integers: N and Q</li>\n<li>Lines 2..Q+1: Each line contains three space-separated integers that represent a single query and its reply: Ql, Qh, and A</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: Print the single integer 0 if there are no inconsistencies among the replies (i.e., if there exists a valid realization of the hay stacks that agrees with all Q queries).  Otherwise, print the index from 1..Q of the earliest query whose answer is inconsistent with the answers to the queries before it.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "20 4\n1 10 7\n5 19 7\n3 12 8\n11 15 12\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<p>Query 3 (\"3 12 8\") is the first that is inconsistent with those before it. From queries 1 and 2 and the fact that all hay stacks have a distinct number of bales, we deduce that one of stacks 5..10 must contain exactly 7 bales.  However, this stack contradicts the answer to query 3.</p>\n<p> </p>",
+  "source": "Olympiad, USA Computing Olympiad, 2007-2008 Season, USACO January 2008 Contest, Gold",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "sorting",
+    "segtree",
+    "binary_search",
+    "set"
+  ],
+  "accepted_user_count": 30,
+  "submission_count": null,
+  "average_tries": 4.466700077056885
+}

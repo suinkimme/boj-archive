@@ -1,0 +1,25 @@
+{
+  "id": 7693,
+  "title": "Nash Equilibrium",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A two-player normal form game between two individuals A and B is completely specified by</p>\n<ul>\n<li>{a<sub>1</sub>, . . . , a<sub>m</sub>}, a set of actions for player A,</li>\n<li>{b<sub>1</sub>, . . . , b<sub>n</sub>}, a set of actions for player B,</li>\n<li>PA, an m × n payoff matrix for player A, and</li>\n<li>PB, an m × n payoff matrix for player B.</li>\n</ul>\n<p>In such a game, both players simultaneously select actions to be played (say ai and bj for players A and B, respectively). Then payoffs for each player are determined according to the payoff matrices (PA[i,j] and PB[i,j] for players A and B, respectively). The goal of each player is to maximize his or her payoff.</p>\n<p>For player A, the set of best responses to a particular action b<sub>j</sub> by player B consists of any action a<sub>i</sub> which maximizes A’s payoff, that is, whose payoff is max<sub>i'</sub>PA[i',j]. Similarly, for player B, the set of best responses to a particular action a<sub>i</sub> by player A is any action b<sub>j</sub> whose payoff is max<sub>j'</sub>PB[i,j']. A pair of strategies (a<sub>i</sub>, b<sub>j</sub>) is said to be a pure strategy Nash equilibrium if a<sub>i</sub> is a best response to b<sub>j</sub> and b<sub>j</sub> is a best response to a<sub>i</sub>.</p>\n<p>In this problem, you are given the payoff matrices for two players A and B, and your task is to find and list all pure strategy Nash equilibria.</p>",
+  "input": "<p>The input test file will contain multiple test cases. Each test case begins with a single line containing two integers, m and n, where 1 ≤ m, n ≤ 20. The next m lines specify the m rows of payoff matrix PA. The m lines after that specify the m rows of payoff matrix PB. All payoff matrix values will be integers between -100 and 100, inclusive. The end-of-file is marked by a test case with m = n = 0 and should not be processed.</p>",
+  "output": "<p>For each input case, suppose that N is the number of Nash equilibria for the described normal form game. Then, the output of the program consists of (1) a line containing the single integer N, and (2) N lines containing two integers i and j, where (a<sub>i</sub>, b<sub>j</sub>) is the corresponding Nash equilibrium. Note that the program must list all Nash equilibria in lexicographical order, i.e., (a<sub>i<sub>1</sub></sub>, b<sub>j<sub>1</sub></sub>) is listed before (a<sub>i<sub>2</sub></sub>, b<sub>j<sub>2</sub></sub>) if i<sub>1</sub> &lt; i<sub>2</sub> or if i<sub>1</sub> = i<sub>2</sub> and j<sub>1</sub> &lt; j<sub>2</sub>.</p>",
+  "samples": [
+    {
+      "input": "3 4\n1 5 -3 2\n4 2 -1 -3\n3 -2 5 9\n0 -4 -1 -5\n-9 2 8 3\n-3 4 -2 3\n2 2\n1 10\n0 5\n1 0\n10 5\n2 2\n1 1\n1 1\n1 1\n1 1\n0 0\n",
+      "output": "0\n1\n1 1\n4\n1 1\n1 2\n2 1\n2 2\n"
+    }
+  ],
+  "hint": "<p>Consider the following two-player game in which A and B each have two possible actions, and the payoff matrices are:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:65px; width:238px\"/></p>\n<p>Here, if player A chooses a<sub>1</sub>, then choosing b<sub>1</sub> allows player B to maximize his payoff (PB[1, 1] = 1 &gt; 0 = PB[1, 2]). Similarly, if player B choose b<sub>1</sub>, then choosing a<sub>1</sub> allows player A to maximize his payoff (PA[1, 1] = 1 &gt; 0 = PA[2, 1]). Thus, a<sub>1</sub> is the best response for b<sub>1</sub> and vice versa, so (a<sub>1</sub>, b<sub>1</sub>) is a pure strategy Nash equilibrium of this game. However, note that (a<sub>2</sub>, b<sub>2</sub>) is not a Nash equilibrium; if player A chooses action a<sub>2</sub>, b<sub>1</sub> is the best response since PB[2, 1] = 5 &gt; 3 = PB[2, 2].</p>",
+  "source": "University, Stanford Local ACM Programming Contest, SLPC 2004",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "game_theory"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 1.3600000143051147
+}

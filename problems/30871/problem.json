@@ -1,0 +1,25 @@
+{
+  "id": 30871,
+  "title": "ChatGPT의 역작",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>대회가 다가오는데도 문제를 만들지 못한 하이비는 결국 AI의 힘을 빌려 다음과 같은 문제를 만들었다.</p>\r\n\r\n<p>정수 $x$, 길이 $N$의 정수로 이루어진 수열 $L$과 $R$에 대해, 다음과 같은 함수 $f$를 정의해 보자.</p>\r\n\r\n<pre>\r\n<code>f(x, L[1..N], R[1..N]):\r\n    value = x\r\n    for i = 1 to N\r\n        l = L[i]\r\n        r = R[i]\r\n        if l &le; x &le; r\r\n           value = value^(((x|l)+(x&amp;r)*(l^r)) mod (2**64))\r\n    return (value &gt;= 0x0123456789ABCDEF)</code></pre>\r\n\r\n<p>코드에 적힌 <span style=\"color:#e74c3c;\"><code>|</code></span>, <span style=\"color:#e74c3c;\"><code>&amp;</code></span>, <span style=\"color:#e74c3c;\"><code>^</code></span>, <span style=\"color:#e74c3c;\"><code>**</code></span>, <span style=\"color:#e74c3c;\"><code>0x</code></span>, <span style=\"color:#e74c3c;\"><code>mod</code></span>연산에 대해서는 노트를 참고하자.</p>\r\n\r\n<p>$L$과 $R$이 주어질 때, $f(x,L,R) =\\text{False}$이면서 $f(x+1,L,R) =\\text{True}$인 $x$를 찾으면 된다.</p>\r\n\r\n<p>하지만 AI가 만들어 준 이 문제가 너무 어려웠던 하이비는 이 문제를 풀지도 못한 채로 내야 할 위기에 처하게 되었다! 하이비를 위해 위 문제의 답을 찾아주자.</p>\r\n",
+  "input": "<p>첫 번째 줄에는 수열의 길이 $N$이 주어진다. $(1\\le N\\le 200\\, 000)$</p>\r\n\r\n<p>두 번째 줄에는 수열 $L_1,L_2,\\ldots ,L_N$이 공백으로 구분되어 주어진다.</p>\r\n\r\n<p>세 번째 줄에는 수열 $R_1,R_2,\\ldots ,R_N$이 공백으로 구분되어 주어진다. $(1\\le L_i\\le R_i\\le 10^{18})$</p>\r\n",
+  "output": "<p>첫 번째 줄에 문제의 답으로 가능한 $x$의 값을 출력한다. $(0\\le x\\le 10^{18})$</p>\r\n\r\n<p>만약 가능한 답이 여러 가지라면, 그중 아무거나 하나를 출력한다.</p>\r\n\r\n<p>만약 가능한 답이 없다면, $-1$을 출력한다.</p>\r\n\r\n",
+  "samples": [
+    {
+      "input": "3\n123 12 1283918464548864\n456 17 168377826559400929\n",
+      "output": "1283918464548863\n"
+    }
+  ],
+  "hint": "<ul>\r\n\t<li><span style=\"color:#e74c3c;\"><code>a&amp;b</code></span>는 두 수 $a$와 $b$의 Bitwise AND를 의미한다. 두 수의 Bitwise AND 연산은 두 수를 이진수로 변환한 뒤, 각 비트별로 두 수가 모두 $1$이라면 $1$을, 아니면 $0$을 적는 연산이다. 예로, $1100_{(2)}\\text{ &amp; } 0110_{(2)}=0100_{(2)}$가 된다.</li>\r\n\t<li><span style=\"color:#e74c3c;\"><code>a|b</code></span>는 두 수 $a$와 $b$의 Bitwise OR을 의미한다. 두 수의 Bitwise OR 연산은 두 수를 이진수로 변환한 뒤, 각 비트별로 두 수 중 하나라도 $1$이라면 $1$을, 아니면 $0$을 적는 연산이다. 예로, $1100_{(2)}\\text{ | } 0110_{(2)}=1110_{(2)}$가 된다.</li>\r\n\t<li><span style=\"color:#e74c3c;\"><code>a^b</code></span>는 두 수 $a$와 $b$의 Bitwise XOR을 의미한다. 두 수의 Bitwise XOR 연산은 두 수를 이진수로 변환한 뒤, 각 비트별로 다르다면 $1$을, 아니면 $0$을 적는 연산이다. 예로, $1100_{(2)}\\text{ ^ } 0110_{(2)}=1010_{(2)}$가 된다.</li>\r\n\t<li><span style=\"color:#e74c3c;\"><code>a**b</code></span>는 $a^b$를 의미한다. 즉, <span style=\"color:#e74c3c;\"><code>2**64</code></span>는 $2^{64} = 18\\,446\\,744\\,073\\,709\\,551\\,616$을 의미한다.</li>\r\n\t<li><span style=\"color:#e74c3c;\"><code>a mod b</code></span>는 $a$를 $b$로 나눈 나머지를 의미한다. 예로, $7 \\bmod 3 = 1$이다.</li>\r\n\t<li><span style=\"color:#e74c3c;\"><code>0x</code></span>는 16진수 표기법을 의미한다. 즉, <span style=\"color:#e74c3c;\"><code>0x0123456789ABCDEF</code></span>는 $0123456789ABCDEF_{(16)}=81\\, 985\\, 529\\, 216\\, 486\\, 895$이다.</li>\r\n</ul>\r\n",
+  "source": "University, 한양대학교, 제10회 한양대학교 프로그래밍 경시대회(HCPC), Beginner Division, University, 한양대학교, 제10회 한양대학교 프로그래밍 경시대회(HCPC), Advanced Division, hibye1217, cologne, hjroh0315, mjhmjh1104, mnx, my3, naeby, seonah, solvedac, yijw0930",
+  "level": 18,
+  "tags": [
+    "ad_hoc",
+    "parametric_search"
+  ],
+  "accepted_user_count": 95,
+  "submission_count": null,
+  "average_tries": 2.968400001525879
+}

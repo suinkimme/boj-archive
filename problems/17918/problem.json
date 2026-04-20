@@ -1,0 +1,41 @@
+{
+  "id": 17918,
+  "title": "Mutexes",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Anna loves coding multithreaded backend services. In such a service, multiple threads may sometimes need to read and write the same data structures in memory. To ensure all threads have a consistent view of a single datastructure, one can use so-called <em>mutexes</em> to protect access to it.</p>\n<p>A mutex is an object that threads can <em>acquire</em> and <em>release</em>. When a mutex is acquired, the mutex cannot be acquired again until it is released -- even by the same thread! If a thread attempts to acquire a mutex it has already acquired, the thread will <em>deadlock</em>, waiting for itself to release the mutex.</p>\n<p>Anna has written a program that consists of a number of functions. Each function consists of a list of commands that execute sequentially when the function is called. The commands are each one of:</p>\n<ul>\n<li>acquire the mutex named $X$</li>\n<li>release the mutex named $X$</li>\n<li>access a data structure protected by the mutex $X$</li>\n<li>call another function</li>\n</ul>\n<p>Anna is not sure if she implemented her mutexes correctly, and she wants your help to verify that three properties hold. Assuming a function <code>main</code> is called at the beginning of the program, you should check that:</p>\n<ul>\n<li>whenever a data structure protected by a mutex $X$ is to be accessed, the mutex $X$ is currently acquired,</li>\n<li>whenever a mutex is to be acquired, the program has not already acquired it (in order to avoid a deadlock),</li>\n<li>whenever a mutex is to be released, the program is currently holding it.</li>\n</ul>",
+  "input": "<p>The first line of the input contains an integer $N$, the number of functions. This is followed by a description of all the $N$ functions.</p>\n<p>The description of a function starts with an integer $M$ and a string $X$, meaning that there is a function named $X$ with $M$ commands. This is followed by $M$ lines, each containing a command. The commands will be of the form:</p>\n<ul>\n<li><code>acquire X</code> -- the mutex named $X$ is acquired</li>\n<li><code>release X</code> -- the mutex named $X$ is released</li>\n<li><code>access X</code> -- a data structure that must be protected by the mutex $X$ is accessed</li>\n<li><code>call F</code> -- the function called $F$ is called</li>\n</ul>\n<p>All functions and mutexes have names between $1-10$ characters in length containing only characters <code>a-z</code>. No two functions will have the same name, and there will always be a function called <code>main</code>.</p>\n<p>It is guaranteed that there is no infinite recursion: a function will never call itself, either directly or through a chain of other functions.</p>",
+  "output": "<p>If the program is free from errors, output <code>a-ok</code>.</p>\n<p>Otherwise, output the first error that occurs during execution. Specifically:</p>\n<ul>\n<li>if a data structure is accessed without the correct mutex being acquired, output <code>corruption</code>,</li>\n<li>if a deadlock occurs, output <code>deadlock</code>,</li>\n<li>if a mutex is released without being acquired, output <code>error</code>.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "3\n5 main\nacquire mutex\ncall foo\nacquire mutex\ncall foo\nacquire mutex\n2 foo\naccess mutex\nrelease mutex\n1 bar\nrelease mutex\n",
+      "output": "a-ok\n"
+    },
+    {
+      "input": "3\n2 f\nacquire x\ncall g\n2 g\naccess x\nacquire y\n2 main\ncall f\ncall g\n",
+      "output": "deadlock\n"
+    },
+    {
+      "input": "1\n3 main\nrelease x\nacquire x\naccess x\n",
+      "output": "error\n"
+    },
+    {
+      "input": "1\n3 main\naccess x\nacquire x\nrelease x\n",
+      "output": "corruption\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Swedish Coding Cup, Swedish Coding Cup Finals 2019",
+  "level": 0,
+  "tags": [
+    "dp",
+    "graphs",
+    "bitmask",
+    "dp_bitfield",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 5
+}

@@ -1,0 +1,35 @@
+{
+  "id": 34107,
+  "title": "Collecting Stamps 4",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>JOI-kun lives in the country of IOI, which is famous for its large lake. Today, a stamp rally competition will be held around the lake.</p>\n<p>Around the lake, there are $2N$ evenly spaced locations, numbered from $1$ to $2N$ in a clockwise manner. Additionally, there are $2N$ <strong>one-way</strong> roads connecting adjacent locations. Road $i$ ($1 ≤ i ≤ 2N - 1$) goes from location $i$ to location $i+1$, and road $2N$ goes from location $2N$ to location $1$. At the midpoint of each road, there is a stamp station.</p>\n<p>There are $N$ colors of stamps numbered from $1$ to $N$. The color of the stamp that can be obtained at the stamp station on road $i$ ($1 ≤ i ≤ 2N$) is given by $A_i$. For each color $j$ ($1 ≤ j ≤ N$), there are exactly $2$ stamp stations where the stamp of that color can be obtained.</p>\n<p>JOI-kun, equipped with many stamp cards, participates in the stamp rally competition. Each stamp card has two spaces, left and right, where stamps can be pressed. At most one stamp can be placed in each space. Initially, all stamp cards are blank.</p>\n<p>The process of the stamp rally competition for JOI-kun is as follows:</p>\n<ol>\n<li>First, he selects one of the $2N$ locations as the starting point and moves there. If he selects location $i$ ($1 ≤ i ≤ 2N$), he must pay a participation cost of $C_i$.</li>\n<li>Next, he can instruct the event organizers to swap adjacent stamp stations. Specifically, he can swap the stamp stations on roads $2N$ and $1$, or swap the stations on roads $i - 1$ and $i$ for any $i$ ($2 ≤ i ≤ 2N$). Each swap costs $X$, and JOI-kun can issue as many swap commands as he wants, possibly none. Swaps are executed immediately upon command. However, to prevent cheating, it is not allowed to exchange stamp stations that cross the starting location that JOI-kun has chosen. That is, if he starts at location $1$, swapping the stations on roads $2N$ and $1$ is forbidden. If he starts at location $i$ ($2 ≤ i ≤ 2N$), swapping the stations on roads $i - 1$ and $i$ is forbidden.</li>\n<li>After that, JOI-kun starts from his chosen location and moves clockwise, visiting each of the $2N$ stamp stations in sequence. When visiting a stamp station, he can press the stamp onto his stamp cards as many times as he likes. He can also stamp both the left and right spaces of a single card at the same station. However, for each stamp card, he must always stamp the left space before the right space; that is, he cannot stamp the right space if the left space of that stamp card is still empty.</li>\n</ol>\n<p>JOI-kun wants to collect many distinct types of stamp cards that are stamped on both spaces. Let stamped card $(a, b)$ be a stamp card with color $a$ stamped on the left and color $b$ stamped on the right. Two stamped cards $(a_1, b_1)$ and $(a_2, b_2)$ are considered the same type if and only if $a_1 = a_2$ and $b_1 = b_2$. Since there are $N$ colors of stamps, there are a total of $N^2$ possible types of stamped cards.</p>\n<p>You need to answer $Q$ queries to help JOI-kun. The $q$-th query ($1 ≤ q ≤ Q$) asks the following:</p>\n<ul>\n<li>What is the minimum total cost required for JOI-kun to collect at least $K_q$ types of stamped cards by the end of the rally? It is provable that under the given constraints, JOI-kun can always collect at least $K_q$ types of stamped cards by spending a sufficiently large cost.</li>\n</ul>\n<p>Given the information about stamp colors, participation costs, swap costs, and queries, write a program to answer JOI-kun’s $Q$ queries.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<blockquote>\n<p>$N$ $X$</p>\n<p>$A_1$ $A_2$ $\\cdots$ $A_{2N}$</p>\n<p>$C_1$ $C_2$ $\\cdots$ $C_{2N}$</p>\n<p>$Q$</p>\n<p>$K_1$</p>\n<p>$K_2$</p>\n<p>$\\vdots$</p>\n<p>$K_Q$</p>\n</blockquote>",
+  "output": "<p>Write $Q$ lines to the standard output, where the $q$-th line ($1 ≤ q ≤ Q$) contains the minimum total cost required to collect at least $K_q$ types of stamped cards.</p>",
+  "samples": [
+    {
+      "input": "3 2\n1 2 2 3 1 3\n6 1 4 5 4 7\n2\n8\n9\n",
+      "output": "3\n4\n"
+    },
+    {
+      "input": "8 1\n1 2 6 1 6 3 8 4 5 5 3 4 7 2 7 8\n4 5 3 6 2 9 1 4 6 3 8 5 2 9 4 7\n1\n64\n",
+      "output": "7\n"
+    },
+    {
+      "input": "9 4\n4 3 5 3 8 1 5 8 1 7 6 2 4 9 6 9 2 7\n12 9 4 8 7 1 20 5 8 7 4 13 5 9 10 3 7 8\n6\n39\n81\n73\n79\n64\n52\n",
+      "output": "1\n18\n3\n10\n1\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, JOI Spring Training Camp, JOI 2024/2025 Spring Training Camp",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "sweeping",
+    "offline_queries"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.4544999599456787
+}

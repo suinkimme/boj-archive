@@ -1,0 +1,53 @@
+{
+  "id": 1537,
+  "title": "새로운 연산자",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>양의 정수 N이 주어졌을 때, 다음과 같은 다섯 개의 함수를 정의 했다.</p>\n<ul>\n<li>Sum(N)은 N의 모든 자리수를 더한 값이다.</li>\n<li>Prod(N)은 N의 모든 자리수를 곱한 값이다.</li>\n<li>Prod3(N)은 N의 자리수중 가장 큰 3개를 곱한 값이다. 만약 N이 3자리보다 작다면 Prod3(N) = Prod(N)이다.</li>\n<li>Smallest(N)은 N의 가장 작은 자리수이다.</li>\n<li>First(N)은 N의 가장 맨 앞 자리수이다.</li>\n</ul>\n<p>세준이는 @라는 연산자를 정의 했다.</p>\n<p>X@Y = 5*Prod3(X) + First(X) * Sum(Y) + Smallest(Y)이다.</p>\n<ul>\n<li>Sum(47) = 4+7 = 11</li>\n<li>Prod(2322) = 2*3*2*2 = 24</li>\n<li>Prod3(2322) = 3*2*2 = 12</li>\n<li>Prod3(47) = Prod(47) = 4*7 = 28</li>\n<li>Smallest(427) = 2</li>\n<li>First(427) = 4</li>\n<li>12034@217 = 5 * (4*3*2) + 1 * (2+1+7) + 1 = 131</li>\n</ul>\n<p>올바른 식은 다음과 같이 재귀적으로 정의 된다.</p>\n<ol>\n<li>X는 올바른 식이다.</li>\n<li>만약, A가 올바른 식이고, B가 올바른 식이라면, A@B도 올바른 식이다.</li>\n<li>위의 규칙에 의해서 생성되지 않은 식은 모두 올바르지 않은 식이다.</li>\n</ol>\n<p>X와 G가 주어졌을 때, X를 G로 만드는 올바른 식을 구하는 프로그램을 작성하시오. 만약 불가능하다면 -1을 출력한다.</p>",
+  "input": "<p>첫째 줄에 X와 G가 주어진다. X는 1,000,000보다 작거나 같은 자연수이고, G는 2,000,000,000보다 작거나 같은 자연수이다.</p>",
+  "output": "<p>첫째 줄에 올바른 식에 들어가는 @의 최소 값을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "374 659\n",
+      "output": "2\n"
+    },
+    {
+      "input": "13 13\n",
+      "output": "0\n"
+    },
+    {
+      "input": "374 465\n",
+      "output": "1\n"
+    },
+    {
+      "input": "374 469\n",
+      "output": "2\n"
+    },
+    {
+      "input": "374 1024\n",
+      "output": "8\n"
+    },
+    {
+      "input": "654321 12\n",
+      "output": "10\n"
+    },
+    {
+      "input": "654321 1234567\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "baekjoon",
+  "level": 16,
+  "tags": [
+    "math",
+    "dp",
+    "graphs",
+    "arithmetic",
+    "shortest_path",
+    "dijkstra"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 4.875
+}

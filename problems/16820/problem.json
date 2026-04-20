@@ -1,0 +1,40 @@
+{
+  "id": 16820,
+  "title": "Endless BFS",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Mr. Endo wanted to write the code that performs breadth-first search (BFS), which is a search algorithm to explore all vertices on an undirected graph. An example of pseudo code of BFS is as follows:</p>\n<pre class=\"mathjax\">\n1: $current \\leftarrow \\{start\\_vertex\\}$\n2: $visited \\leftarrow current$\n3: while $visited \\ne$ the set of all the vertices\n4:   $found \\leftarrow \\{\\}$\n5:   for $v$ in $current$\n6:     for each $u$ adjacent to $v$\n7:       $found \\leftarrow found \\cup \\{u\\}$\n8:   $current \\leftarrow found \\setminus visited$\n9:   $visited \\leftarrow visited \\cup found$</pre>\n<p>However, Mr. Endo apparently forgot to manage visited vertices in his code. More precisely, he wrote the following code:</p>\n<pre class=\"mathjax\">\n1: $current \\leftarrow \\{start\\_vertex\\}$\n2: while $current \\ne$ the set of all the vertices\n3:   $found \\leftarrow \\{\\}$\n4:   for $v$ in $current$\n5:     for each $u$ adjacent to $v$\n6:       $found \\leftarrow found \\cup \\{u\\}$\n7:   $current \\leftarrow found$</pre>\n<p>You may notice that for some graphs, Mr. Endo's program will not stop because it keeps running infinitely. Notice that it does not necessarily mean the program cannot explore all the vertices within finite steps. See example 2 below for more details.Your task here is to make a program that determines whether Mr. Endo's program will stop within finite steps for a given graph in order to point out the bug to him. Also, calculate the minimum number of loop iterations required for the program to stop if it is finite.</p>",
+  "input": "<p>The input consists of a single test case formatted as follows.</p>\n<pre class=\"mathjax\">\n$N$ $M$\n$U_{1}$ $V_{1}$\n$\\vdots$\n$U_{M}$ $V_{M}$</pre>\n<p>The first line consists of two integers $N$ ($2 \\le N \\le 100{,}000$) and $M$ ($1 \\le M \\le 100{,}000$), where $N$ is the number of vertices and $M$ is the number of edges in a given undirected graph, respectively. The $i$-th line of the following $M$ lines consists of two integers $U_{i}$ and $V_{i}$ ($1 \\le U_{i}, V_{i} \\le N$), which means the vertices $U_{i}$ and $V_{i}$ are adjacent in the given graph. The vertex 1 is the start vertex, i.e. $start\\_vertex$ in the pseudo codes. You can assume that the given graph also meets the following conditions.</p>\n<ul>\n<li>The graph has no self-loop, i.e., $U_{i} \\ne V_{i}$ for all $1 \\le i \\le M$.</li>\n<li>The graph has no multi-edge, i.e., $\\{U_{i}, V_{i}\\} \\ne \\{U_{j}, V_{j}\\} $ for all $1 \\le i &lt; j \\le M$.</li>\n<li>The graph is connected, i.e., there is at least one path from $U$ to $V$ (and vice versa) for all vertices $1 \\le U, V \\le N$.</li>\n</ul>",
+  "output": "<p>If Mr. Endo's wrong BFS code cannot stop within finite steps for the given input graph, print -1 in a line. Otherwise, print the minimum number of loop iterations required to stop.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2\n1 3\n2 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 3\n1 2\n2 3\n3 4\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "4 4\n1 2\n2 3\n3 4\n4 1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "8 9\n2 1\n3 5\n1 6\n2 5\n3 1\n8 4\n2 7\n7 1\n7 4\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2017 Day 3",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "shortest_path",
+    "parity"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 1.3042999505996704
+}

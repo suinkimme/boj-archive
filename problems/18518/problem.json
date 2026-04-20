@@ -1,0 +1,26 @@
+{
+  "id": 18518,
+  "title": "Permutasino",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>At last, the famous spy and secret agent James Bond succeeded in finding his current nemesis, Dr. Zlo. They met at the roulette table of the casino Permutasino, and now 007 tries to guess the latest evil plan of his vicious enemy.</p>\n<p>The roulette table consists of n! cells containing all possible permutations of integers between 1 and n. Betting process in this roulette is rather unusual: player puts no more than n bets on some of the cells. Each bet is a non-negative number b<sub>π</sub> where π denotes the permutation it corresponds to. The sum of all bets should be equal to 1.</p>\n<p>After bets are made, the roulette mechanism picks a random permutation from the distribution defined by the numbers b<sub>π</sub>. Formally, the permutation π will be chosen with probability b<sub>π</sub> if there is a bet on permutation π, or with probability 0 otherwise.</p>\n<p>In order to beat Dr. Zlo in this mind battle and persuade him to disclose his evil plan, 007 has to make bets in such way that the expected value of the resulting permutation is a vector (x<sub>1</sub>, x<sub>2</sub>, . . . , x<sub>n</sub>). Consider expected value of a random permutation of length n to be defined as a vector of length n, where i-th element is the expected value of the i-th element of the random permutation.</p>\n<p>Help James Bond to make appropriate bets, or determine that it is not possible and he has to save the world by using different means (like shooting everyone and blasting every building on his way) this time.</p>",
+  "input": "<p>The first line of input contains a single integer n, the length of the permutations appearing at the roulette table (1 ≤ n ≤ 500).</p>\n<p>The second line contains n integers x<sub>1</sub>, x<sub>2</sub>, . . . , x<sub>n</sub> (1 ≤ x<sub>i</sub> ≤ n), the desired expected value of the resulting permutation.</p>",
+  "output": "<p>If there is no way to obtain the vector (x<sub>1</sub>, x<sub>2</sub>, . . . , x<sub>n</sub>) as the expected value of the game result, print −1.</p>\n<p>Otherwise, in the first line, print k (1 ≤ k ≤ n), the number of bets to be made by James Bond.</p>\n<p>In the i-th of the following k lines, print the bet value b<sub>π<sub>i</sub></sub> (0 ≤ b<sub>π<sub>i</sub></sub> ≤ 1) and n integers π<sub>i,1</sub>, π<sub>i,2</sub>, . . . , π<sub>i,n</sub> (1 ≤ π<sub>i,j</sub> ≤ n, all π<sub>i,j</sub> over all 1 ≤ j ≤ n are distinct), defining the corresponding permutation π<sub>i</sub>.</p>\n<p>The sum b<sub>π<sub>1</sub></sub> + b<sub>π<sub>2</sub></sub> + . . . + b<sub>π<sub>n</sub></sub> should be equal to 1 with an absolute error of no more than 10<sup>−6</sup>. The maximum value of |b<sub>π<sub>1</sub></sub> π<sub>1,j</sub> + b<sub>π<sub>2</sub></sub> π<sub>2,j</sub> + . . . + b<sub>π<sub>k</sub></sub> π<sub>k,j</sub> − x<sub>j</sub> | over all 1 ≤ j ≤ n should not exceed 10<sup>−2</sup>. All calculations to verify these facts will be performed using the double precision floating point data type.</p>\n<p>If there are several possible answers, print any one of them.</p>",
+  "samples": [
+    {
+      "input": "4\n2 2 3 3\n",
+      "output": "3\n0.5000000000 1 2 3 4\n0.1666666667 1 4 3 2\n0.3333333333 4 1 3 2\n"
+    },
+    {
+      "input": "2\n1 1\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>In the first sample test, the expected value of the resulting permutation is</p>\n<p>\\[\\left(  \\frac{1}{2}\\cdot 1 + \\frac{1}{6} \\cdot 1 + \\frac{1}{3} \\cdot 4, \\frac{1}{2} \\cdot 2 + \\frac{1}{6} \\cdot 4 + \\frac{1}{3} \\cdot 1, \\frac{1}{2} \\cdot 3 + \\frac{1}{6} \\cdot 3 + \\frac{1}{3} \\cdot 3, \\frac{1}{2} \\cdot 4 + \\frac{1}{6} \\cdot 2 + \\frac{1}{3} \\cdot 2  \\right) = (2, 2, 3, 3)\\]</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2019, Day 4: Yandex Cup",
+  "level": 28,
+  "tags": [],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

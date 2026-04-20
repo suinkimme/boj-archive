@@ -1,0 +1,40 @@
+{
+  "id": 17416,
+  "title": "Making Server",
+  "time_limit": "0.5 초",
+  "memory_limit": "256 MB",
+  "description": "<p>오늘도 무슨 장난을 칠지 고민하던 교준이는 새로운 DNS 서버를 만들어서 학교 내 GSHS2와 GSHS5에 접속하는 모든 사람들이 송죽에 접속하려고 하면, 다른 사이트에 접속하게 하려고 한다. 하지만 서버를 만드는 건 매우 귀찮은 일이기에 뭔가 부려먹기 쉬운 강민이를 데려다가 서버를 만들려고 한다. 교준이의 성공적인 장난을 도와주려는 강민이를 위해 서버를 만드는 작업을 도와주자.</p>\n<p>서버를 만들기 위해 필요한 것은 <strong>Domain</strong>과 <strong>IP</strong>다. <strong>Domain</strong>은 <em>www.acmicpc.net</em>과 같이 문자열로 이루어져 있고, <strong>IP</strong>는 <em>192.168.0.1</em>과 같이 0 이상 2<sup>31</sup>-1 이하의 정수 4개와 점 3개로 이루어져 있다. 그리고 <strong>올바른 IP</strong>는 0 이상 255 이하의 수를 사용한다. 우리가 쓰는 <strong>Domain</strong> 주소는 모두 <strong>IP</strong>로 변환되어 데이터를 받아온다. <strong>IP</strong>로 <em>0.0.0.0</em>는 쓰지 않는다. 입력에서 주어지는 <strong>Domain</strong>은 영어 알파벳으로 시작하고 알파벳과 숫자 및 마침표로 이루어진 공백이 없는 길이 50이하의 문자열이다.</p>",
+  "input": "<p>첫 번째 줄에 쿼리의 개수를 의미하는 정수 <em>Q</em>가 주어진다.</p>\n<p>두번째 줄부터 <em>Q</em>개의 줄에 걸쳐, 다음 네 가지 중 한 가지의 쿼리가 들어온다.</p>\n<ul>\n<li>\n<p><strong>URL</strong> <em>D</em> <em>I</em> : <em>D</em>라는 <strong>Domain</strong>의 <strong>IP</strong>는 <em>I</em>다. (<em>I</em>는 <strong>올바른 IP</strong>, <em>I</em> ≠ <em>0.0.0.0</em>)</p>\n<p>(<strong>URL</strong> <em>www.acmicpc.net</em> <em>104.26.10.18</em> : <em>www.acmicpc.net</em>의 <strong>IP</strong> = <em>104.26.10.18</em>)</p>\n</li>\n<li>\n<p><strong>IP</strong> <em>I</em> <em>S</em> : <em>I</em>라는 <strong>IP</strong>를 가진 곳에는 <em>S</em>라는 데이터가 있다. (<em>I</em>는 <strong>REDIRECT</strong>되지 않은 <strong>올바른 IP</strong>, <em>S</em>는 영어 알파벳과 숫자로 이루어진 공백 없는 길이 10 이하의 문자열)</p>\n<p>(<strong>IP</strong> <em>104.26.10.18</em> <em>MINJE</em> : <em>104.26.10.18</em>의 데이터 = <em>MINJE</em>)</p>\n</li>\n<li>\n<p><strong>REDIRECT</strong> <em>I</em><sub>1</sub> <em>I</em><sub>2</sub> : <em>I</em><sub>1</sub>의 <strong>IP</strong>를 가진 곳은 이제부터 <em>I</em><sub>2</sub>에 연결된다. 이때, <em>I</em><sub>1</sub>를 <strong>REDIRECT</strong>된 <strong>IP</strong>, <em>I</em><sub>2</sub>를 <strong>REDIRECT</strong>한 <strong>IP</strong>라고 한다. <em>I</em><sub>1</sub>는 <strong>REDIRECT</strong>되지 않은 <strong>IP</strong>다. <em>I</em><sub>2</sub>의 데이터는 <em>I</em><sub>1</sub>의 데이터로 갱신된다. (<em>I</em><sub>1</sub>과 <em>I</em><sub>2</sub>는 <strong>올바른 IP</strong>, <em>I</em><sub>1</sub> ≠ <em>0.0.0.0</em>, <em>I</em><sub>2</sub> ≠ <em>0.0.0.0</em>)</p>\n<p>(<strong>REDIRECT</strong> <em>104.26.10.18</em> <em>104.26.10.19</em> : 앞으로 <em>104.26.10.18</em>로 들어오는 요청은 <em>104.26.10.19</em>에 연결된다.)</p>\n</li>\n<li>\n<p><strong>HTTP</strong> <em>I</em> (<em>D</em>) : <em>D</em>라는 <strong>Domain</strong> 또는 <em>I</em>라는 <strong>IP</strong>를 가진 곳의 데이터를 다음 세 가지 경우로 나누어서 출력한다.</p>\n<ul>\n<li>\n<p>입력 : <strong>HTTP</strong> <em>www.acmicpc.net</em> (정상적인 경우)</p>\n<p>출력 :</p>\n<p>HTTP 200 OK</p>\n<p>Requested Data : MINJE (<strong>IP</strong> 쿼리에 의해 주어진 데이터)</p>\n</li>\n<li>\n<p>입력 : <strong>HTTP</strong> <em>19222.222.222.222</em> (<strong>IP</strong>의 수가 0 이상 255 이하가 아닌 경우)</p>\n<p>출력 :</p>\n<p>HTTP 400 Bad Request</p>\n</li>\n<li>\n<p>입력 : <strong>HTTP</strong> <em>www.acmicpcccc.net</em> (<strong>Domain</strong>이나 <strong>IP</strong>가 없는 경우, 또는 데이터가 없는 경우)</p>\n<p>출력 :</p>\n<p>HTTP 404 Not Found</p>\n</li>\n</ul>\n</li>\n</ul>",
+  "output": "<p><strong>HTTP</strong> 쿼리에 대한 값을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4\nURL www.acmicpc.net 104.26.10.18\nIP 104.26.10.18 MINJE\nHTTP www.acmicpc.net\nHTTP 104.26.10.18\n",
+      "output": "HTTP 200 OK\nRequested Data : MINJE\nHTTP 200 OK\nRequested Data : MINJE\n"
+    },
+    {
+      "input": "6\nURL www.acmicpc.net 9.9.9.9\nIP 9.9.9.9 IamCoder\nREDIRECT 9.9.9.9 10.10.10.10\nHTTP acmicpc.net\nHTTP 9.9.9.9\nHTTP 10.10.10.10\n",
+      "output": "HTTP 200 OK\nRequested Data : IamCoder\nHTTP 200 OK\nRequested Data : IamCoder\nHTTP 200 OK\nRequested Data : IamCoder\n"
+    },
+    {
+      "input": "9\nHTTP student.gs.hs.kr\nHTTP 12424.12.12.12\nHTTP 123.12.12.12\nIP 12.12.12.12 WOW\nHTTP 12.12.12.12\nURL www.student.gs.hs.kr 12.12.12.12\nURL student.gs.hs.kr 123.12.12.12\nHTTP 123.12.12.12\nHTTP student.gs.hs.kr\n",
+      "output": "HTTP 404 Not Found\nHTTP 400 Bad Request\nHTTP 404 Not Found\nHTTP 200 OK\nRequested Data : WOW\nHTTP 404 Not Found\nHTTP 200 OK\nRequested Data : WOW\n"
+    },
+    {
+      "input": "15\nURL LetGyojunGoIOI2018.org 20.18.6.10\nIP 20.18.6.10 IOI2018\nHTTP LetGyojunGoIOI2018.org\nHTTP www.LetGyojunGoIOI2018.org\nHTTP letgyojungoioi2018.org\nURL www.LetGyojunGoIOI2018.org 6.10.20.18\nIP 6.10.20.18 2018IOI\nHTTP LetGyojunGoIOI2018.org\nHTTP www.LetGyojunGoIOI2018.org\nHTTP WWW.LetGyojunGoIOI2018.org\nURL www.com 0.0.0.1\nIP 0.0.0.1 Possible\nHTTP www.com\nHTTP WWW.com\nHTTP com\n",
+      "output": "HTTP 200 OK\nRequested Data : IOI2018\nHTTP 404 Not Found\nHTTP 404 Not Found\nHTTP 200 OK\nRequested Data : IOI2018\nHTTP 200 OK\nRequested Data : 2018IOI\nHTTP 404 Not Found\nHTTP 200 OK\nRequested Data : Possible\nHTTP 404 Not Found\nHTTP 200 OK\nRequested Data : Possible\n"
+    }
+  ],
+  "hint": null,
+  "source": "lgm9",
+  "level": 17,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "hash_set",
+    "implementation",
+    "set"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 10.600000381469727
+}

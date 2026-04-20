@@ -1,0 +1,24 @@
+{
+  "id": 24011,
+  "title": "Matrix Cutting",
+  "time_limit": "서브태스크 참고 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Prof Shekhu has a matrix of <b>N</b> rows and <b>M</b> columns where rows are numbered from 0 to <b>N-1</b> from top to bottom, and columns are numbered from 0 to <b>M-1</b> from left to right. Each cell in the matrix contains a positive integer.</p>\n<p>He wants to cut this matrix into <b>N * M</b> submatrices (each of size 1 * 1) by making horizontal and vertical cuts. A cut can be made only on the boundary between two rows or two columns.</p>\n<p>Prof Shekhu invites his best student Akki for this job and makes an interesting proposition. Every time Akki makes a cut in a submatrix, before he makes the cut, he is awarded a number of coins equal to the minimum value in that submatrix. Note that with every cut, the total number of submatrices increases. Also, cuts in any two different submatrices are independent and likewise, Akki is awarded independently for the cuts in different submatrices.</p>\n<p>Now, Akki has various ways in which he can make the cuts. Can you help him by maximizing the total number of coins he can gain?</p>",
+  "input": "<p>The first line of the input contains an integer <b>T</b>, the number of test cases. <b>T</b> test cases follow. The first line of each test case contains two integers <b>N</b> and <b>M</b>, as described above.</p>\n<ol>\n<li>Next, there are <b>N</b> lines of <b>M</b> positive integers each; these describe the matrix.</li>\n</ol>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the maximum possible number of coins that Akki can be awarded, if he makes the cuts in optimal order.</p>",
+  "samples": [
+    {
+      "input": "3\n2 2\n1 2\n3 4\n2 3\n1 2 1\n2 3 2\n1 2\n1 2\n",
+      "output": "Case #1: 5\nCase #2: 7\nCase #3: 1\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, there are two possible ways in which Akki can make the cuts.</p>\n<ol>\n<li>Suppose that Akki first cuts the matrix horizontally. He is awarded the minimum value in the matrix: 1. Then he has to make vertical cuts in the two submatrices ([1, 2] and [3, 4]), for which he gets 1 and 3 coins, respectively.</li>\n<li>Suppose that Akki first cuts the matrix vertically. He is awarded the minimum value in the matrix: 1. Then he has to make horizontal cuts in the two submatrices (which have the transposes [1, 3] and [2, 4]), for which he gets 1 and 2 coins, respectively.</li>\n</ol>\n<p>The first strategy is better, and the answer is 5.</p>\n<p>In Sample Case #2, Akki can be awarded at most 7 coins. One of the optimal ways is to first make the only horizontal cut to earn 1 coin. Then, in the upper submatrix [1, 2, 1], Akki can first make the cut immediately to the right of first column and then the cut immediately to the right of second column to earn a total of 2 coins. Similarly, in the lower submatrix [2, 3, 2], Akki can first make the cut immediately to the right of second column and then the cut immediately to the right of first column to earn a total of 4 coins.</p>\n<p>In Sample Case #3, there is only one cut to be made.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2017, Round G",
+  "level": 14,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 2.2221999168395996
+}

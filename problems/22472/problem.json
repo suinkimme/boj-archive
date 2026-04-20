@@ -1,0 +1,34 @@
+{
+  "id": 22472,
+  "title": "Zero Division Checker",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>森下さんは困っていました... 姉原さんにプログラムを書いてもらったのですが、そのプログラムがクラッシュするのです。</p>\n<p>姉原さんに書いてもらったのは、逆ポーランド記法の式を読んで、その計算結果を出力するプログラムで、クラッシュログによると、 0 で割り算をしてしまったのが原因のようです。これは、森下さんが間違った式を入力してしまったからかもしれませんし、もしかしたら、もしかしたら、姉原さんの書いたプログラムにバグがあるのかもしれません。</p>\n<p>姉原さんの書いたプログラムを読んでみようと思いましたが、姉原さんのプログラムはアセンブリというよくわからないことばで書かれているようで、見ているだけで頭がガンガンしてきます。</p>\n<p>そこで、森下さんはあなたに、式が間違っていないかどうか調べるプログラムを書いてもらうことにしました。式が間違っている、とは、その式に従って計算すると、 0 での割り算をしてしまう可能性のあることをいいます。</p>\n<p>なお、姉原さんの書いたコードはとてもふるいコンピューターで動くもので、加減乗除は整数で行い、結果は 8 bit の符号なし整数として保存されます。 例えば、<code>255+1</code> は 0 になってしまうし、<code>3/2</code> は 1 になります。</p>\n<p>あ、姉原さんにはないしょですよ。</p>\n<p>(参考)逆ポーランド記法で表された式を計算する、擬似コード</p>\n<pre>\ns = 空のスタック\nn = 式の要素数\nfor i in 1..n:\n  if 式のi番目の要素が整数:\n    sにその整数をプッシュする\n  if 式のi番目の要素が変数:\n    sにその変数の値をプッシュする\n  if 式のi番目の要素が演算子:\n    sから値をポップし、bとする\n    sから値をポップし、aとする\n    if 演算子が'+':\n      r = (a + b) % 256 とする\n    if 演算子が'-':\n      r = (a - b + 256) % 256 とする\n    if 演算子が'*':\n      r = (a * b) % 256 とする\n    if 演算子が'/':\n      r = (a / b) % 256 とする\n    sにrをプッシュする\nsから値をポップし、式の計算結果とする\n</pre>",
+  "input": "<pre>\n<var>m</var>\n<var>name<sub>1</sub></var> <var>lb<sub>1</sub></var> <var>ub<sub>1</sub></var>\n...\n<var>name<sub>m</sub></var> <var>lb<sub>m</sub></var> <var>ub<sub>m</sub></var>\n<var>n</var>\n<var>e<sub>1</sub></var> <var>e<sub>2</sub></var> ... <var>e<sub>n</sub></var>\n</pre>\n<ul>\n<li><var>0 ≤ m ≤ 100</var></li>\n<li><var>0 ≤ lb<sub>i</sub> ≤ ub<sub>i</sub> ≤ 255</var></li>\n<li><var>1 ≤ name<sub>i</sub> (1 ≤ i ≤ m) の長さ ≤ 20</var></li>\n<li><var>1 ≤ n ≤ 100</var></li>\n<li><var>m</var> は変数の数、<var>name<sub>i</sub></var>, <var>lb<sub>i</sub></var>, <var>ub<sub>i</sub></var> はそれぞれ変数iの名前、下限、上限を表します。</li>\n<li><var>n</var> は式に含まれる要素の数を表し、<var>e<sub>i</sub></var> は式の <var>i</var> 番目の要素を表します。</li>\n<li>各変数は式の中に高々1回しか現れません。</li>\n</ul>",
+  "output": "<p>式が間違っているときには<code>error</code>、間違っていないときには<code>correct</code>と一行で出力してください。</p>",
+  "samples": [
+    {
+      "input": "1\na 1 10\n3\n10 a /\n",
+      "output": "correct\n"
+    },
+    {
+      "input": "2\na 1 10\nb 1 10\n5\n1 a b - /\n",
+      "output": "error\n"
+    },
+    {
+      "input": "1\na 0 255\n7\n1 a 2 * 1 + /\n",
+      "output": "correct\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2012 Day 3A",
+  "level": 14,
+  "tags": [
+    "data_structures",
+    "dp",
+    "stack"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

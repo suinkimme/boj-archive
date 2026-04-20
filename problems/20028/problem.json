@@ -1,0 +1,30 @@
+{
+  "id": 20028,
+  "title": "Min-hashing",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Consider an undirected simple graph $G = (V, E)$. The problem of finding a node with <em>similar connectivity</em> is a well-researched topic, because it acts as a good metric to determine which nodes are relevant to other nodes. Services such as \"friend recommendation\" in Facebook is a good example of its applications. To formalize the notion of similarity, the concept of <em>Jaccard similarity</em> can be used, which is defined as $|N(v_1) \\cap N(v_2)| / |N(v_1) \\cup N(v_2)|$, where $N(v) = \\{u | (u, v) \\in E\\}$. </p>\n<p>Here, we will instead discuss the <em>min-hashing</em> method. Assume each node $v$ has the label $l_v$. The <em>shingle value</em> $s_v$ of node $v$ is defined as $s_v = \\min \\{l_u | u \\in N(v) \\}$. This method is efficient enough to keep up with industrial needs, and it is also a great metric for similarity: the Jaccard similarity between the set of neighbors $N(v_1)$ and $N(v_2)$ is an unbiased estimator of the probability that nodes $v_1$ and $v_2$ have the same shingle values, for random unique labels.</p>\n<p>Let's think about a variant of min-hashing: we repeatedly perform min-hashing by taking the label as the previous iteration's shingle value. In this variant, for each node $v$ and the number of iterations $k$, the value $h^{(k)}_v$ is defined as</p>\n<p>$$<br/>\nh^{(k)}_v = \\begin{cases}<br/>\ns_v, &amp; \\text{if $k = 1$}\\\\<br/>\n\\min \\{h^{(k-1)}_u | u \\in N(v) \\}, &amp; \\text{if $k \\geq 2$} \\\\<br/>\n\\end{cases}<br/>\n$$</p>\n<p>For each $k$, let $c_k$ be the number of unordered pairs of distinct vertices $\\{u, v\\}$ such that $h^{(k)}_u = h^{(k)}_v$. Then, how does the value $c_k$ change as $k$ increases? In this problem, your task is to compute $\\max_{k  \\in \\mathbb{N}} c_k$.</p>",
+  "input": "<p>The first line contains two positive integers $n$ and $m$ $(1 \\leq n \\leq 100\\,000, 1 \\leq m \\leq 250\\,000)$ representing the number of nodes and the number of edges, respectively. The nodes are numbered from $1$ to $n$. Note that these are \\textbf{not} the labels of the nodes.</p>\n<p>The second line contains $n$ integers comprising a permutation of the first $n$ positive integers, where the $i$-th number in the line represents the initial label of node $i$.</p>\n<p>Each of the next $m$ lines contains two integers. The $i$-th of these lines contains two distinct integers $u_i$ and $v_i$ $(1 \\leq u_i, v_i \\leq n)$, which means $\\{u_i, v_i\\} \\in E$.</p>\n<p>The input will be set in a way such that there are no self-loops, parallel edges, or nodes with a degree of zero.</p>",
+  "output": "<p>Print the maximum value of $c_k$ over all positive integers $k$.</p>",
+  "samples": [
+    {
+      "input": "5 5\n1 2 3 4 5\n1 2\n2 3\n3 4\n4 5\n5 1\n",
+      "output": "10\n"
+    },
+    {
+      "input": "4 3\n1 2 3 4\n1 2\n2 3\n3 4\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, KAIST, KAIST ICPC Mock Competition, 2020 KAIST 10th ICPC Mock Competition, jihoon",
+  "level": 15,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bipartite_graph"
+  ],
+  "accepted_user_count": 42,
+  "submission_count": null,
+  "average_tries": 1.523800015449524
+}

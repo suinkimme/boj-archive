@@ -1,0 +1,26 @@
+{
+  "id": 15418,
+  "title": "Burglary",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The giant Candy-Bar Wall in the Royal Kitchen is used to store. . . well, candy bars. These are placed in jars on N equal-length shelves. The shelves are positioned in a vertical progression from the ground up, and perfectly aligned horizontally on their rightmost and leftmost edges. Each shelf is partitioned into M equal-sized slots, which can either be empty or occupied by a jar. A jar contains between 1 and 9 candy bars.</p>\n<p>Every shelf is connected to the one directly below (or to the floor, for the bottommost shelf) by one or more vertical ladders. A ladder connects a slot to the corresponding slot on the shelf below, or to the floor. There is at most one ladder directly under any given slot.</p>\n<p>The topmost shelf does not contain any jars, but just above it there is a huge open window leading to the Royal Kitchen rooftop. Mini-Fierce-And-Hungry Bandit has surprisingly managed to get into the Royal Kitchen via this top window and now plans a massive candy-bar burglary. More precisely, he intends to do a fun-and-profit “round trip” across the wall, that is:</p>\n<ul>\n<li>start from the topmost shelf;</li>\n<li>move down 0 or more shelves, possibly until reaching the floor;</li>\n<li>and then move up again, to the top window through which he will gracefully exit;</li>\n</ul>\n<p>while of course grabbing as many candy bars as possible during this trip.</p>\n<p>The major issue the bandit faces however is that he cannot enter a slot containing a candy jar more than once, since this would trigger a dreadful Candy Alarm.</p>\n<p>Your mission: help the bandit carefully plan his round trip across the Candy-Bar Wall so as to maximize the number of candy bars he grabs, without triggering any alarm.</p>",
+  "input": "<p>The first line consists of two integers: N (number of shelves) and M (number of slots on a shelf), separated by a space. The following 2N lines each consist of strings of length M depicting, in an ASCII art manner, the shelf and ladder configuration:</p>\n<ul>\n<li>Line 2k, for 1 ≤ k ≤ N, comprises the characters ‘-’, ‘1’, . . . , ‘9’, where a digit x represents a jar containing x candy bars, and ‘-’ denotes an empty slot.</li>\n<li>Line 2k + 1, for 1 ≤ k ≤ N, comprises the characters ‘.’ and ‘|’, where ‘|’ represents a ladder, and ‘.’ means empty wall space.</li>\n</ul>\n<p>Limits</p>\n<ul>\n<li>1 ≤ N ≤ 1 000;</li>\n<li>1 ≤ M ≤ 5 000;</li>\n<li>there are between 1 and 10 ladders directly under any shelf.</li>\n</ul>",
+  "output": "<p>The output consists of an integer on a single line, representing the maximum number of candy bars the bandit can collect without triggering any alarm.</p>",
+  "samples": [
+    {
+      "input": "5 20\n--------------------\n.|.....|...|......|.\n1-1--1115-3-1-1--1-1\n....|.........|.....\n---1-11-1-11---1--3-\n.......|.........|..\n-7----9-4-----------\n..|.................\n--------9-----------\n.|.................|\n",
+      "output": "38\n"
+    }
+  ],
+  "hint": "<p>Notes</p>\n<ul>\n<li>Slots corresponding to ladder endpoints may contain jars.</li>\n<li>A slot may be entered either by walking (left to right or right to left) on a shelf, or by reaching the endpoint of a ladder. Slots corresponding to a ladder’s endpoints are necessarily entered if the ladder is used.</li>\n<li>There are no candy jars on the topmost shelf and on the floor.</li>\n</ul>\n<p>Example</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:553px; width:468px\"/></p>",
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2017",
+  "level": 23,
+  "tags": [
+    "case_work",
+    "dp",
+    "implementation"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 3.4286000728607178
+}

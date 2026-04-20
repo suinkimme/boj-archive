@@ -1,0 +1,32 @@
+{
+  "id": 32469,
+  "title": "Mukjjippa",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>Two players A and B are playing a game called <strong>mukjjippa</strong>.</p>\n<p>The game consists of several turns.</p>\n<p>At the $i$-th turn ($1\\le i\\le n$):</p>\n<ul>\n<li>Each player chooses exactly one from $\\{\\mathrm R,\\mathrm S,\\mathrm P\\}$ (meaning rock, scissors, and paper, respectively).</li>\n<li>Let $X_i$ and $Y_i$ be the choices of A and B, respectively.</li>\n<li>If $(X_i,Y_i)\\in\\{(\\mathrm R,\\mathrm S) ,(\\mathrm S,\\mathrm P) ,(\\mathrm P,\\mathrm R)\\}$, then A becomes an attacker for the $(i+1)$-th turn and the game continues.</li>\n<li>Otherwise, if $(X_i,Y_i)\\in\\{(\\mathrm R,\\mathrm P) ,(\\mathrm S,\\mathrm R) ,(\\mathrm P,\\mathrm S)\\}$, then B becomes an attacker for the $(i+1)$-th turn and the game continues.</li>\n<li>Otherwise, if there is an attacker for the $i$-th turn, then the attacker becomes a winner and the game ends.</li>\n<li>Otherwise, there is no attacker for the $(i+1)$-th turn and the game continues.</li>\n</ul>\n<p>Note that there is no attacker for the first turn.</p>\n<p>If the game does not end until the beginning of the $(n+1)$-th turn, nobody is a winner.</p>\n<p>The probability distribution of each choice is given. All choices are independent.</p>\n<p>Find the probability that A wins.</p>",
+  "input": "<p>The first line contains an integer $n$.</p>\n<p>The $i$-th of the next $n$ lines contains three integers $r_i$, $s_i$, and $p_i$. This means that the probabilities that $X_i$ is $\\mathrm R$, $\\mathrm S$, and $\\mathrm P$ are $\\frac{r_i}{r_i+s_i+p_i}$, $\\frac{s_i}{r_i+s_i+p_i}$, and $\\frac{p_i}{r_i+s_i+p_i}$, respectively.</p>\n<p>The $i$-th of the next $n$ lines contains three integers $r_i'$, $s_i'$, and $p_i'$. This means that the probabilities that $Y_i$ is $\\mathrm R$, $\\mathrm S$, and $\\mathrm P$ are $\\frac{r_i'}{r_i'+s_i'+p_i'}$, $\\frac{s_i'}{r_i'+s_i'+p_i'}$, and $\\frac{p_i'}{r_i'+s_i'+p_i'}$, respectively.</p>",
+  "output": "<p>Let $\\frac{x}{y}$ be the probability that A wins, where $x$ and $y$ are coprime integers, and $x\\ge 0$ and $y&gt;0$.</p>\n<p>Print the integer $z$ such that $yz\\equiv x\\pmod{998\\, 244\\, 353}$ and $0\\le z&lt;998\\, 244\\, 353$.</p>\n<p>It can be proved that such an integer $z$ always exists and is uniquely determined, under the constraints of this problem.</p>",
+  "samples": [
+    {
+      "input": "2\n1 0 0\n0 1 0\n0 1 0\n0 1 0\n",
+      "output": "1\n"
+    },
+    {
+      "input": "2\n1 1 1\n1 1 1\n1 1 1\n1 1 1\n",
+      "output": "443664157\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, KAIST, KAIST ICPC Mock Competition, 2024 KAIST 14th ICPC Mock Competition, parkky, azberjibiou, blackking26, jhwest2, koosaga, leejseo, silverwolf, whqkrkt04",
+  "level": 15,
+  "tags": [
+    "math",
+    "dp",
+    "number_theory",
+    "probability",
+    "modular_multiplicative_inverse"
+  ],
+  "accepted_user_count": 58,
+  "submission_count": null,
+  "average_tries": 1.8966000080108643
+}

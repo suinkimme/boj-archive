@@ -1,0 +1,22 @@
+{
+  "id": 34914,
+  "title": "Busy Beaver's Dam Logs",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Busy Beaver has arranged $N$ logs in a line to form the base of his dam. Each log has an integer quality value between $-2$ and $2$. From time to time, some logs are replaced. He occasionally wants to know if there is a contiguous segment of logs whose total quality equals a given <strong>nonzero</strong> number $X$, and may also want to know the segment. Help Busy Beaver process all updates and queries efficiently.</p>",
+  "input": "<p>The first line of input contains an integer $T$ ($1 \\le T \\le 10^4$) --- the number of testcases.</p>\n<p>The first line of each test case contains two integers $N$ and $Q$ ($1 \\le N,Q \\le 2\\cdot 10^5$) --- the size of the array and the number of queries, respectively.</p>\n<p>The second line of each test case contains $N$ integers $a_1, a_2, \\dots, a_N$ ($-2 \\le a_i \\le 2$) --- the qualities of the logs.</p>\n<p>The next $Q$ lines of each test case are of two forms:</p>\n<ul>\n<li>$1\\ i\\ x$ ($1 \\le i \\le N$, $-2\\le x\\le 2$) --- set the quality of the $i$-th log to $x$.</li>\n<li>$2\\ X$ ($-2N\\le X \\le 2N$, $X\\ne 0$) --- find a contiguous segment of logs with total quality $X$.</li>\n</ul>\n<p>There is at least one query of the second type.</p>\n<p>The sum of $N$ over all test cases does not exceed $2\\cdot 10^5$.</p>\n<p>The sum of $Q$ over all test cases does not exceed $2\\cdot 10^5$.</p>",
+  "output": "<p>For each query of the second type, if a valid contiguous segment exists, print <code>YES</code> on the first line, followed by the left and right indices of that segment $l$ and $r$ on the next line ($1 \\le l \\le r \\le N$). If no such segment exists, print <code>NO</code> on a single line.</p>\n<p>You can output the answer in any case (upper or lower). For example, the strings \"<code>yEs</code>\", \"<code>yes</code>\", \"<code>Yes</code>\", and \"<code>YES</code>\" will be recognized as positive responses.</p>",
+  "samples": [
+    {
+      "input": "4\n5 5\n-1 2 0 -2 1\n1 2 1\n2 1\n1 4 2\n2 3\n2 -2\n4 3\n-1 -1 -1 -1\n1 4 1\n2 -1\n2 -4\n6 6\n1 -1 1 -1 1 -1\n1 3 0\n2 1\n2 -2\n2 3\n1 3 2\n2 1\n6 3\n0 0 0 0 0 0\n2 2\n1 1 1\n2 1\n",
+      "output": "YES\n2 2\nYES\n3 5\nNO\nYES\n2 2\nNO\nYES\n1 1\nYES\n2 4\nNO\nYES\n1 1\nNO\nYES\n1 1\n"
+    }
+  ],
+  "hint": "<p>For the first test case:</p>\n<ul>\n<li>The initial array is $[-1, 2, 0, -2, 1]$.</li>\n<li>After the first query $1\\ 2\\ 1$, the array becomes $[-1, 1, 0, -2, 1]$.</li>\n<li>The second query $2\\ 1$ asks for a contiguous segment summing to $1$, which can be achieved by $[1]$ (element $2$).</li>\n<li>After the third query $1\\ 4\\ 2$, the array becomes $[-1, 1, 0, 2, 1]$.</li>\n<li>The fourth query $2\\ 3$ asks for a contiguous segment summing to $3$, which can be achieved by $[1,0,2]$ (elements $2$--$4$).</li>\n<li>The fifth query $2\\ {-2}$ asks for a contiguous segment summing to $-2$. It can be checked that no such subarray exists.</li>\n</ul>\n<p>For the second test case:</p>\n<ul>\n<li>The initial array is $[-1, -1, -1, -1]$.</li>\n<li>After the first query $1\\ 4\\ 1$, the array becomes $[-1, -1, -1, 1]$.</li>\n<li>The second query $2\\ {-1}$ asks for a contiguous segment summing to $-1$, which can be achieved by $[-1]$ (any of the first three elements).</li>\n<li>The third query $2\\ {-4}$ asks for a contiguous segment summing to $-4$. It can be checked that no such subarray exists.</li>\n</ul>",
+  "source": "University, MIT, M(IT)^2, M(IT)^2 Winter 2025-26 Tournament, Advanced Team Round",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2
+}

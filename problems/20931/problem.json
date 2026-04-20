@@ -1,0 +1,26 @@
+{
+  "id": 20931,
+  "title": "혹 떼러 갔다 혹 붙여 온다",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"text-align: center;\"><em>\"혹 떼러 갔다 혹 붙여 온다 : 애드-혹\"</em></p>\n<p>혹부리 영감은 얼굴에 달린 커다란 혹을 떼고 싶어 도깨비를 찾아갔지만, 장난을 좋아하는 도깨비는 오히려 혹을 더 붙이려고 한다. 편의상 모든 혹은 선분으로 간주하며, <strong>최초에 혹부리 영감에게는 길이가 무한히 긴 $0$번 혹 한 개</strong>가 달려있다. 도깨비는 항상 모든 혹의 연결관계가 <strong>트리</strong> 구조를 이루도록 혹을 붙인다. 즉, $0$번 혹을 제외한 모든 혹의 윗부분은, 오직 정확히 하나의 혹의 아래에 닿아있다.</p>\n<p>도깨비는 혹을 붙이면서, 혹부리 영감에게 \"이 혹에서 이만큼 위에는 무슨 혹이 있을까~요?\" 라는 문제를 낸다. 이 문제를 전부 맞힌다면 마지막엔 모든 혹을 떼어주기로 약속하였다. 문제를 푸는 것에는 자신이 없는 혹부리 영감을 대신하여 여러분이 답을 알려주자. </p>\n<p>혹을 어떻게 붙일지 미리 예측하는 것을 막기 위해, 도깨비가 특이한 방법을 사용하여 혹을 붙일 위치를 정하는 것을 주의하자.</p>",
+  "input": "<p>첫째 줄에 도깨비의 행동의 횟수 $Q$ ($1 \\le Q \\le 150\\,000$)가 주어진다.</p>\n<p>$Q$개의 줄에 걸쳐, 도깨비가 하는 행동이 순서대로 \"<strong><code>query</code></strong> $x$ $L$\" 또는 \"<strong><code>ad-hoc</code></strong> $k$ $L$\" 의 형식으로 주어진다. 도깨비가 <strong>행동을 하려는 시점</strong>에서 혹부리 영감에게 <strong>달려있는 혹의 개수를 $M$개</strong>라고 하자.</p>\n<ul>\n<li>\"<strong><code>query</code></strong> $x$ $L$\" : $x$번 혹의 아래쪽 끝에서 시작해, 혹을 따라 $L$만큼 거슬러 올라갔을 때 어떤 혹이 있는지 대답해야 한다. 그 지점이 두 혹의 경계라면, 위쪽 혹의 번호를 답한다. 이때의 답이 지금부터의 <code><strong>\"마지막 정답\"</strong></code>이 된다. ($0 \\le x &lt; M$, $1 \\le L \\le 10^{18}$)</li>\n<li>\"<strong><code>ad-hoc</code></strong> $k$ $L$\" :  $x = (k +$<code><strong>\"마지막 정답\"</strong></code>$) \\mod M$ 을 계산한 후, 길이가 $L$인 $M$번 혹을 새로 만들어, $M$번 혹의 윗부분이 $x$번 혹의 아래에 닿도록 붙인다. $M$번 혹을 붙일 때에는 $x$번 혹 이외의 다른 혹에는 닿지 않게 한다. 아직 한 번도 <strong><code>query</code></strong>가 주어지지 않았다면, <code><strong>\"마지막 정답\"</strong></code>은 $0$으로 간주한다. 도깨비가 하는 모든 <strong><code>ad-hoc</code></strong>에서 주어지는 모든 $L$의 합은 $10^{18}$ 이하이다. ($0 \\le k&lt;M$)</li>\n</ul>\n<p>항상 하나 이상의 <strong><code>query</code></strong>가 주어진다.</p>",
+  "output": "<p>모든 <strong><code>query</code></strong>의 답을 순서대로 한 줄에 하나씩 출력한다.</p>",
+  "samples": [
+    {
+      "input": "6\nad-hoc 0 5\nquery 1 3\nad-hoc 0 3\nquery 2 2\nad-hoc 1 2\nquery 3 2\n",
+      "output": "1\n2\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, ICPC Sinchon Algorithm Camp, 2021 ICPC Sinchon Winter Algorithm Camp Contest, 중급, Green55, gratus907, iknoom1107, jwvg0425, tony9402",
+  "level": 17,
+  "tags": [
+    "data_structures",
+    "trees",
+    "sparse_table"
+  ],
+  "accepted_user_count": 87,
+  "submission_count": null,
+  "average_tries": 2.7011001110076904
+}

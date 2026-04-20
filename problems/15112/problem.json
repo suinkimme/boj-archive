@@ -1,0 +1,42 @@
+{
+  "id": 15112,
+  "title": "Long Long Strings",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>To store long DNA sequences, your company has developed a <code>LongLongString</code> class that can store strings with more than ten billion characters. The class supports two basic operations:</p>\n<ul>\n<li><code>Ins(p, c)</code>: Insert the character c at position p.</li>\n<li><code>Del(p)</code>: Delete the character at position p.</li>\n</ul>\n<p>A DNA editing program is written as a series of <code>Ins</code> and <code>Del</code> operations. Your job is to write a program that compare two DNA editing programs and determine if they are identical, i.e., when applied to any sufficiently long string, whether the end result is the same. For example:</p>\n<ul>\n<li><code>Del(1)</code> <code>Del(2)</code> and <code>Del(3)</code> <code>Del(1)</code> are identical.</li>\n<li><code>Del(2)</code> <code>Del(1)</code> and <code>Del(1)</code> <code>Del(2)</code> are different.</li>\n<li>An empty sequence and <code>Ins(1, x)</code> <code>Del(1)</code> are identical.</li>\n<li><code>Ins(14, b)</code> <code>Ins(14, a)</code> and <code>Ins(14, a)</code> <code>Ins(15, b)</code> are identical.</li>\n<li><code>Ins(14, a)</code> <code>Ins(15, b)</code> and <code>Ins(14, b)</code> <code>Ins(15, a)</code> are different.</li>\n</ul>",
+  "input": "<p>Input will consist of the descriptions of two DNA editing programs. Each program will consist of some number of operations (between 0 and 2,000). Each operation will be given on its own line. The first character of the line will be <code>D</code> for a <code>Del</code> operation, <code>I</code> for an <code>Ins</code> operation, or <code>E</code> marking the end of the program.</p>\n<p>A <code>Del</code> operation will have the <code>D</code> character, followed by a space, and then a single integer between 1 and 10<sup>10</sup>, indicating the character position to delete. All characters after this deleted character will be shifted one position lower.</p>\n<p>An <code>Ins</code> operation will have the <code>I</code> character, followed by a space, and then a single integer between 1 and 10<sup>10</sup>, indicating the location to insert the new character; all pre-existing characters with this index and higher will be shifted one position higher. Following this integer will be another space and then an uppercase alphabetic character that is the character to insert.</p>",
+  "output": "<p>If the two programs are identical, print “0” on a single line (without quotation marks). Otherwise, print “1” on a single line (without quotation marks).</p>",
+  "samples": [
+    {
+      "input": "D 1\nD 2\nE\nD 3\nD 1\nE\n",
+      "output": "0\n"
+    },
+    {
+      "input": "D 2\nD 1\nE\nD 1\nD 2\nE\n",
+      "output": "1\n"
+    },
+    {
+      "input": "I 1 X\nD 1\nE\nE\n",
+      "output": "0\n"
+    },
+    {
+      "input": "I 14 B\nI 14 A\nE\nI 14 A\nI 15 B\nE\n",
+      "output": "0\n"
+    },
+    {
+      "input": "I 14 A\nI 15 B\nE\nI 14 B\nI 15 A\nE\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2017 Pacific Northwest Region Programming Contest, Division 1, ICPC, Regionals, North America, Pacific Northwest Regional, 2017 Pacific Northwest Region Programming Contest, Division 2, ICPC, Regionals, North America, Southeast USA Regional, 2017 Southeast USA Regional Programming Contest, Division 1, ICPC, Regionals, North America, Southeast USA Regional, 2017 Southeast USA Regional Programming Contest, Division 2, ICPC, Regionals, North America, Mid-Atlantic Regional, 2017 Mid-Atlantic USA Regional Contest, jh05013",
+  "level": 19,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "simulation"
+  ],
+  "accepted_user_count": 29,
+  "submission_count": null,
+  "average_tries": 2.8276000022888184
+}

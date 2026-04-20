@@ -1,0 +1,26 @@
+{
+  "id": 27823,
+  "title": "Replace All",
+  "time_limit": "60 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Banana Rocks Inc is coming up with a revolutionary technology to perform the common edit operation \"replace all\". Their implementation replaces every occurrence of a character within a given text with another character. (If the character does not appear in the text, then the operation occurs but has no effect.)</p>\n<p>For example, if the starting text is <code>CODEJAMWORLDFINALS</code> and an operation is performed to replace <code>A</code> with <code>O</code>, the new text would be <code>CODEJOMWORLDFINOLS</code>. If another operation is performed on that result to replace <code>O</code> with <code>Y</code>, the final text would be <code>CYDEJYMWYRLDFINYLS</code>.</p>\n<p>Unfortunately, the implementation is incomplete, so it can only perform replacements from a specific list of <b>N</b> pairs of characters. Also, even if a replacement of a specific character c<sub>1</sub> with another character c<sub>2</sub> is implemented, the reverse replacement of c<sub>2</sub> with c<sub>1</sub> may or may not be implemented.</p>\n<p>You want to try all the implemented replacements. You are given some initial string <b>S</b> to use as the initial text. You can perform any number of replacements in sequential order: the first replacement is performed on <b>S</b>, and the (i+1)-th replacement is performed on the result of performing the i-th replacement. The only requirement is that each implemented replacement is performed at least once during this process. There is no upper limit on how many times you may perform each replacement.</p>\n<p>The allowed characters are decimal digits and uppercase and lowercase English alphabet letters. In this problem, uppercase and lowercase versions of the same letter are treated as distinct characters.</p>\n<p>What is the maximum number of unique characters that can appear in a text that is the result of the last replacement performed?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case consists of two lines. The first line contains a string <b>S</b> and an integer <b>N</b>: the initial text and the number of implemented replacements. The second line contains <b>N</b> two-character strings <b>R<sub>1</sub></b>, <b>R<sub>2</sub></b>, ..., <b>R<sub>N</sub></b>, representing the implemented replacements. <b>A<sub>i</sub></b> and <b>B<sub>i</sub></b> are the first and second characters of <b>R<sub>i</sub></b>, respectively. The i-th implemented replacement corresponds to replacing all occurrences of <b>A<sub>i</sub></b> with <b>B<sub>i</sub></b>.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the maximum number of unique characters that can appear in a text that is the result of performing all implemented replacements to <b>S</b> one or more times each, in some order.</p>",
+  "samples": [
+    {
+      "input": "4\nCODEJAMWORLDFINALS 2\nAO OY\nxyz 3\nxy zx yz\nCJ 4\n20 2O HC KS\nAB 2\nAb bA\n",
+      "output": "Case #1: 14\nCase #2: 2\nCase #3: 2\nCase #4: 2\n"
+    }
+  ],
+  "hint": "<p>The above cases meet the limits for Test Set 1. Another sample case that does not meet those limits appears at the end of this section.</p>\n<p>Sample Case #1 is the one in the statement. Notice that if we perform the replacements in the order mentioned in the statement, we get 13 different characters in the final text. If we perform them both once in the other order, however, we can get <code>CYDEJOMWYRLDFINOLS</code>, which has 14 different characters.</p>\n<p>In Sample Case #2, one way to get 2 different characters in the final text is to perform the replacements in the order given from left to right, once each.</p>\n<p>In Sample Case #3, none of the replacements affect the text at all, so it does not matter how we apply them. We will always be left with the original two letters. Notice that replacements can contain characters not appearing in the initial text, and the initial text can contain characters not appearing in the implemented replacements.</p>\n<p>In Sample Case #4, remember that uppercase <code>B</code> is not the same character as lowercase <code>b</code>.</p>\n<p>The following additional case could not appear in Test Set 1, but could appear in Test Set 2.</p>\n<pre>\n1\n1234 5\n12 2X X3 31 X2\n</pre>\n<p>The correct output is <code>Case #1: 4</code>.</p>\n<p>In this additional sample case, one possibility is to perform the replacements in the following order: <code>X3 2X X2 2X 12 31</code>. This process goes through the following strings, starting with <b>S</b>: <code>1234 1234 1X34 1234 1X34 2X34 2X14</code>.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2020, Virtual World Finals",
+  "level": 23,
+  "tags": [
+    "flow",
+    "graphs",
+    "scc"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

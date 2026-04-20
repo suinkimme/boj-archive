@@ -1,0 +1,36 @@
+{
+  "id": 26287,
+  "title": "Game of Questions",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Genie is taking part in an intellectual game. The game consists of $n$ questions, and there are $m$ participants numbered from $1$ to $m$. Genie is the participant number $1$.</p>\n<p>For each question $i$ and participant $j$, it is known whether the participant will answer the question correctly or not.</p>\n<p>The goal of the game is to be the last participant staying in the game.</p>\n<p>The game is conducted as follows. First, all $n$ questions get shuffled uniformly at random (all $n!$ permutations are equally likely). Then, the questions are asked one by one. Each participant answers the question. If all participants still in the game answer the question correctly, or if all of them answer the question incorrectly, nothing happens. Otherwise, those participants who answer the question incorrectly lose and leave the game.</p>\n<p>After all $n$ questions are asked, all participants who are still in the game are declared to be the winners.</p>\n<p>What is the probability that Genie will win the game?</p>",
+  "input": "<p>The first line contains two integers $n$ and $m$ --- the number of questions and the number of participants ($1 \\le n \\le 2 \\cdot 10^5$; $2 \\le m \\le 17$).</p>\n<p>The $i$-th of the next $n$ lines contains $m$ characters $s_{i, 1}, s_{i, 2}, \\ldots, s_{i, m}$. Character $s_{i, j}$ is '<code>1</code>' if participant $j$ answers question $i$ correctly or '<code>0</code>' otherwise.</p>",
+  "output": "<p>Print the probability that Genie will win the game. Your answer will be considered correct if its absolute or relative error does not exceed $10^{-9}$.</p>",
+  "samples": [
+    {
+      "input": "1 5\n11010\n",
+      "output": "1.0000000000000000\n"
+    },
+    {
+      "input": "3 3\n011\n101\n110\n",
+      "output": "0.3333333333333333\n"
+    },
+    {
+      "input": "6 4\n1011\n0110\n1111\n0110\n0000\n1101\n",
+      "output": "0.1666666666666667\n"
+    }
+  ],
+  "hint": "<p>In the first example, there is a single question and Genie will answer it correctly, thus winning the game (along with participants $2$ and $4$).</p>\n<p>In the second example, one participant will leave after the first asked question, and another participant will leave after the second asked question. Each participant will win with probability $\\frac{1}{3}$.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2022",
+  "level": 23,
+  "tags": [
+    "combinatorics",
+    "dp",
+    "dp_sum_over_subsets",
+    "math",
+    "probability"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 3
+}

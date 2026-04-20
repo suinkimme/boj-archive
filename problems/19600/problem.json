@@ -1,0 +1,26 @@
+{
+  "id": 19600,
+  "title": "이진 삼진 탐색 놀이 2",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>오늘도 서준이는 아빠와 함께 알고리즘 놀이를 하고 있다. 서준이는 이진 탐색, 아빠는 삼진 탐색 놀이를 하고 있다.</p>\n<p>서로 다른 정수가 오름차순으로 정렬된 크기가 N인 배열 A가 있다. 이진 탐색, 삼진 탐색으로 배열 A의 i번째 원소 A<sub>i</sub>를 찾을 때, A<sub>i</sub>를 찾기 전에 참조해야 하는 배열 A의 원소 개수를 각각 B<sub>i</sub> , T<sub>i</sub> 라고 하자. 서준이는 아빠로 부터 [i, j] 구간에 대한 T의 합 - B의 합을 출력하는 Q개의 질의를 받았다. N과 Q가 커서 괴로워 하는 우리 서준이를 도와주자.</p>\n<p>크기가 N인 배열에서 이진 탐색 알고리즘 의사 코드는 다음과 같다.</p>\n<pre>\n<code>binary_sea</code>rch(A[0..N-1], value, left, right) {\n    mid = (left + right) / 2\n    if (A[mid] == value)\n        return mid\n    else if (value &lt; A[mid])\n        return binary_search(A, value, left, mid - 1)\n    else\n        return binary_search(A, value, mid + 1, right)\n}</pre>\n<p>크기가 N인 배열에서 삼진 탐색 알고리즘 의사 코드는 다음과 같다.</p>\n<pre>\n<code>ternary_sea</code>rch(A[0..N-1], value, left, right) {\n    left_third = left + (right - left) / 3\n    right_third = right - (right - left) / 3\n    if (A[left_third] == value) \n        return left_third\n    else if (A[right_third] == value)\n        return right_third\n    else if (value &lt; A[left_third])\n        return ternary_search(A, value, left, left_third - 1)\n    else if (value &lt; A[right_third])\n        return ternary_search(A, value, left_third + 1, right_third - 1)\n    else\n        return ternary_search(A, value, right_third + 1, right)\n}</pre>",
+  "input": "<p>첫째 줄에 쿼리의 수 Q(1 ≤ Q ≤ 500,000)가 주어진다. 둘째 줄부터 Q+1줄까지 쿼리의 정보 N S E가 주어진다. N은 배열 A의 원소 개수, S는 구간의 시작, E는 구간의 끝을 나타낸다.</p>",
+  "output": "<p>첫번째 쿼리부터 Q번째 쿼리까지 각각의 쿼리 결과를 한줄씩 출력한다.</p>",
+  "samples": [
+    {
+      "input": "1\n5 0 4\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "MenOfPassion",
+  "level": 12,
+  "tags": [
+    "binary_search",
+    "prefix_sum",
+    "ternary_search"
+  ],
+  "accepted_user_count": 50,
+  "submission_count": null,
+  "average_tries": 2.7799999713897705
+}

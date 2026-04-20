@@ -1,0 +1,43 @@
+{
+  "id": 14152,
+  "title": "RSA",
+  "time_limit": "2 초",
+  "memory_limit": "64 MB",
+  "description": "<p>Mirka je počela zanimati kriptografija pa se bacio na izradu sustava javnog ključa baziranom na „Multiprime RSA“ algoritmu. Detalji sustava nisu bitni za potrebe ovog zadatka, bitno je samo da je važan dio svakog ključa takozvani modul – prirodni broj koji je umnožak dva ili više različitih prostih brojeva. Za sigurnost sustava nužno je (mada možda ne i dovoljno) da se modul teško može rastaviti na proste faktore u nekom normalnom vremenu.</p>\n<p>Kako je Mirko neiskusan, pogriješio je već u prvom koraku – generiraju slučajnih prostih brojeva. Naime, njegov generator nema dovoljno entropije pa može generirati ukupno samo 36 različitih prostih brojeva, nadalje svaki generirani prosti broj je manji od 10<sup>9</sup> . Dakle, svaki modul kojeg Mirko generira je umnožak nekih od tih 36 prostih brojeva.</p>\n<p>Mirko je generirao N različitih modula te zamolio prijatelja Slavka da mu pomogne testirati sigurnost tako da proba sve module do kraja rastaviti na proste faktore. Vješti Slavko, koji zna ograničenja Mirkovog generatora, ne samo da će ih sve potpuno rastaviti, nego i želi Mirku dojaviti faktorizaciju na što efikasniji način.</p>\n<p>Slavko će Mirku, kao odgovor na njegov izazov, poslati takozvani dokaz faktorizacije - skup prostih brojeva sa svojstvom da, kada se svaki modul podjeli sa svim prostim brojevima iz dokaza (sa kojima je djeljiv) kao rezultat se dobije ili broj jedan ili neki prosti broj. Kako Mirko zna faktorizaciju, kada primi od Slavka dokaz, može se lako uvjeriti da je Slavko stvarno uspio do kraja rastaviti sve module.</p>\n<p>Napišite program koji će na temelju niza od N različitih modula odrediti kolika je veličina najmanjeg dokaza faktorizacije. Primjetite da nije potrebno odrediti same proste brojeve u tom dokazu – samo nas zanima koliko ih je najmanje potrebno. </p>",
+  "input": "<p>U prvom retku nalazi se prirodan broj N (1 ≤ N ≤ 100 000), broj modula u Mirkovom izazovu Slavku. U sljedećih N redaka nalaze se prirodni brojevi X<sub>i</sub> (2 ≤ X<sub>i</sub> ≤ 10<sup>18</sup>), moduli koje Mirko šalje Slavku.</p>\n<p>Svaki X<sub>i</sub> je umnožak dva ili više različitih prostih brojeva manjih od 10<sup>9</sup> . Ukupan broj prostih brojeva koji se pojavljuju kao faktori je najviše 36. </p>",
+  "output": "<p>U prvi i jedini redak izlaza potrebno je ispisati veličinu najmanjeg dokaza faktorizacije. </p>",
+  "samples": [
+    {
+      "input": "2\n35\n77\n",
+      "output": "1\n"
+    },
+    {
+      "input": "3\n6\n35\n77\n",
+      "output": "2\n"
+    },
+    {
+      "input": "1\n999992936000441063\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": "<p>35 = 5*7, 77 = 7*11. Lako je primjetiti da je potreban samo jedan prosti broj kao dokaz faktorizacije, i to broj 7. Dijeljenjem s njime, ulazni moduli se pretvaraju u { 5, 11 } što su oba prosti brojevi. </p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2008",
+  "level": 24,
+  "tags": [
+    "math",
+    "dp",
+    "graphs",
+    "ad_hoc",
+    "number_theory",
+    "bitmask",
+    "primality_test",
+    "dp_bitfield",
+    "prime_factorization",
+    "mitm",
+    "miller_rabin",
+    "pollard_rho"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 4.3333001136779785
+}

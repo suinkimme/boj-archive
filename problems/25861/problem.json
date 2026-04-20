@@ -1,0 +1,26 @@
+{
+  "id": 25861,
+  "title": "Candy Land",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>A popular board game among young children is Candy Land. The game board has several squares in a row and each square is either a color or a special square. Several players can play and on a player’s turn, she turns over a card from the top of a deck, which is face down. Each of these cards will have either a square with a color, two squares with the same color, or a picture of a special square. If the card has a square with a color, the player advances (from their current location) to the next square on the board with that color. If the card has two squares with the same color, the player advances to the second square on the board with that color past their current location. Finally, if the card has a special square pictured, the player moves directly to that special square (this move could move the player ahead or behind where they currently are; assume all special squares are unique, i.e., there is exactly one occurrence of each special square on the board). Note that it is possible for multiple players to be in the same square at the same time.</p>\n<p>The last square of the board is multicolored (all colors) and whoever reaches that square first wins. Also, if a player pulls a card with two squares with the same color, but only the multicolored square at the end has that color on it, the player wins.</p>\n<p>Since young children don’t know how to shuffle cards, when they play the game, the cards are initially set in a particular order. After a player picks up a card and follows its move, she places that card, face down, at the bottom of the deck. Due to the lack of shuffling, what the children playing don’t realize is that the game is 100% deterministic!</p>\n<p>Given the layout of all the squares on a version of Candy Land, the number of players in the game, and the order of the cards in the deck, determine which player will win the game.</p>",
+  "input": "<p>The first line of input contains two positive integers: n (2 ≤ n ≤ 200), the number of squares on the Candy Land board and p (2 ≤ p ≤ 6), the number of players in the game. The following n-1 lines of input will each contain a single string of uppercase letters, indicating the contents of each square on the board, in order, except the last square. The last square is all colors and indicates where a player lands if there are no further squares of that color to land on. Note that players start directly prior to the first square of the board. Each of these strings will contain at most 20 uppercase letters. Each special square will start with the prefix “SPECIAL” followed by at least one uppercase letter (assume none of the colors will contain the substring “SPECIAL”).</p>\n<p>The input line following the board definition will contain a single positive integer, c (c ≤ 500), representing the number of cards in the deck for the game. The following c lines of input contain the contents of the deck, one card per line, with the top card of the deck first. Each card is described with a number (1, 2 or 3) followed by a space followed by a string of uppercase letters. The number 1 indicates a card with a single square. The number 2 indicates a card with two squares. Both of these types of cards are followed by a string guaranteed to be a color that appears on the board. The number 3 indicates a special square. This is followed by a string guaranteed to be a valid special square on the board.</p>",
+  "output": "<p>On a line by itself, output the 1-based number of the player who wins the game. Note: it is guaranteed that the input game finishes in fewer than 10,000 turns, though it’s possible that if play were infinitely extended, some of the players would never finish.</p>",
+  "samples": [
+    {
+      "input": "10 2\nRED\nBLUE\nSPECIALCANE\nGREEN\nRED\nBLUE\nBLUE\nGREEN\nRED\n4\n1 RED\n2 BLUE\n3 SPECIALCANE\n2 GREEN\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 5\nRED\nSPECIALLOLLIPOP\n2\n3 SPECIALLOLLIPOP\n1 RED\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": "<p>Sample Explanation: In the first sample game, the first player moves to the first square, a red square. Then, the second player moves to the second blue square, which is square number 6. Then, the first player moves to the cane square, which is square number 3. Finally, the second player gets to move 2 green squares forward. Since there is only one green square (#8) in front of player 2, she wins the game by getting to square number 10. Had there been another turn in the game, the first player would have gotten the card with 1 red square. In the second sample game, player #1 wins on her second turn. She pulls the special card followed by the red card.</p>",
+  "source": "University, University of Central Florida, 2019 Local Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

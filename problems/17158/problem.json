@@ -1,0 +1,29 @@
+{
+  "id": 17158,
+  "title": "Karel the Robot",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Did you know that the word “robot” is almost 100 years old? It was first introduced in 1920, in the science-fiction theatrical play R.U.R., written by Karel Capek. As a tribute to this Czech writer, an ˇ educational programming language was named Karel many years later at Stanford University. Your task is to implement an interpreter of a simplified version of this programming language.</p>\n<p>The Karel programming language controls a robot named Karel, who lives in a grid of unit squares. Some of the squares are free, while others contain a barrier. Karel always occupies one of the free squares and faces one of the four cardinal directions. The two basic commands are “move forward” and “turn left.” The language also provides simple conditional and looping statements. The main educational potential of the language lies in the possibility of defining new procedures for more complex tasks.</p>\n<p>Our simplified version of the language can be described by the following grammar:</p>\n<pre>\n&lt;program&gt;   :=  \"\" | &lt;command&gt; &lt;program&gt;\n&lt;command&gt;   :=  \"m\" | \"l\" | &lt;proc-call&gt; |\n                \"i\" &lt;condition&gt; \"(\" &lt;program&gt; \")(\" &lt;program&gt; \")\" |\n                \"u\" &lt;condition&gt; \"(\" &lt;program&gt; \")\"\n&lt;condition&gt; :=  \"b\" | \"n\" | \"s\" | \"e\" | \"w\"\n&lt;proc-call&gt; :=  &lt;uppercase-letter&gt;\n&lt;proc-def&gt;  :=  &lt;uppercase-letter&gt; \"=\" &lt;program&gt;</pre>\n<p>There are five types of commands:</p>\n<ul>\n<li><code>m</code> (“move forward”) advances Karel’s position by one grid square in its current heading, unless there is a barrier, in which case the command has no effect.</li>\n<li><code>l</code> (“turn left”) makes Karel turn left 90 degrees.</li>\n<li><code>X</code> where X is any uppercase letter, invokes the procedure named <code>X</code>.</li>\n<li><code>i</code> (“if”) followed by a single-letter condition, and two programs in parentheses. If the condition is satisfied, the first program is executed. Otherwise, the second program is executed.</li>\n<li><code>u</code> (“until”) followed by a single-letter condition, and a program in parentheses. If the condition is satisfied, nothing is done. Otherwise, the program is executed and then the command is repeated.</li>\n</ul>\n<p>A condition can be either ‘<code>b</code>’, which is satisfied if and only if there is a barrier in the next square in Karel’s current heading, or one of the four directional letters ‘<code>n</code>’, ‘<code>s</code>’, ‘<code>e</code>’, or ‘<code>w</code>’, which is satisfied if and only if Karel’s current heading is north, south, east, or west, respectively.</p>\n<p>For instance, a simple program <code>ub(m)</code> can be understood to mean: “keep moving forward until there is a barrier,” while <code>un(l)</code> means “turn to the north.” A procedure definition <code>R=lll</code> defines a new procedure ‘<code>R</code>’ which effectively means “turn right.”</p>",
+  "input": "<p>The first line of input contains four integers r, c, d, and e, where r and c (1 ≤ r, c ≤ 40) are the dimensions of the grid in which Karel lives, d (0 ≤ d ≤ 26) is the number of procedure definitions, and e (1 ≤ e ≤ 10) is the number of programs to be executed.</p>\n<p>Then follow r lines describing the grid (running north to south), each containing c characters (running west to east), each character being either ‘.’ (denoting a free square) or ‘#’ (denoting a barrier). All squares outside this given area are considered barriers, which means Karel may never leave the area.</p>\n<p>Each of the next d lines contains a procedure definition, associating a procedure name (one uppercase letter) with a program forming the procedure body. No procedure name is defined more than once. Procedure bodies may contain invocations of procedures that have not yet been defined.</p>\n<p>The last 2e lines describe the programs to be executed. Each such description consists of a pair of lines. The first line of each pair contains two integers i and j and a character h, where i (1 ≤ i ≤ r) is the row and j (1 ≤ j ≤ c) is the column of Karel’s initial position, and h ∈ {n, s, e, w} represents Karel’s initial heading. It is guaranteed that the initial position is a free square. The second line of each pair contains a program to be executed from that initial position.</p>\n<p>All procedure bodies and all programs to be executed are at least 1 and at most 100 characters long, syntactically correct, and only contain invocations of procedures that are defined. The lines with procedure definitions and programs to be executed contain no whitespace characters.</p>",
+  "output": "<p>For each program execution, output the final position of Karel after the complete program is executed from the respective initial position. Follow the format used to describe initial positions, that is, two numbers and a directional character. If a particular execution never terminates, output inf instead.</p>",
+  "samples": [
+    {
+      "input": "4 8 5 7\n.......#\n..#....#\n.###...#\n.....###\nR=lll\nG=ub(B)\nB=ub(m)lib(l)(m)\nH=ib()(mmHllmll)\nI=III\n1 1 w\nG\n1 1 e\nG\n2 2 n\nG\n2 6 w\nBR\n4 1 s\nib(lib()(mmm))(mmmm)\n1 1 e\nH\n2 2 s\nI\n",
+      "output": "1 1 w\ninf\n1 1 w\n2 4 s\n4 4 e\n1 4 e\ninf\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2019",
+  "level": 22,
+  "tags": [
+    "implementation",
+    "dp",
+    "graphs",
+    "string",
+    "graph_traversal",
+    "parsing"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 2.0416998863220215
+}

@@ -1,0 +1,24 @@
+{
+  "id": 6677,
+  "title": "Japan Plotter Driver",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The Japan company you are working for produce plotter devices that can draw nice pictures. To support customers who do not posses the special hardware, you were asked to write an emulation driver that simulates the work of the plotter and prints the picture on a computer screen.</p>\n<p>The plotter is driven with a simple language consisting of several drawing commands:</p>\n<ul>\n<li><code>POINT x y</code> -- makes a little circle at the given coordinates.</li>\n<li><code>TEXT x y txt</code> -- displays a line of text at the given coordinates.</li>\n<li><code>LINE x1 y1 x2 y2</code> -- draws a line between the specified points.</li>\n<li><code>CLEAR x1 y1 x2 y2</code> -- erases the given rectangle.</li>\n<li><code>PRINT</code> -- prints an output page and terminates the current job.</li>\n</ul>\n<p>The emulation driver uses few ASCII characters to represent the picture, one character being a basic unit of the coordinate system. The top-left character has coordinates (1,1). The X-axis aims to the right, the Y-axis goes down.</p>\n<p>The particular commands are emulated as follows:</p>\n<ul>\n<li><strong>POINT</strong>: The driver puts a lowercase letter \"o\" at the given coordinates.</li>\n<li><strong>TEXT</strong>: Shows a single line of text, the first character is positioned at the given coordinates and the text always goes right.</li>\n<li><strong>LINE</strong>: Simulates a straight line between two points. The line is formed by one of the following characters: dash (\"-\"), pipe (\"|\"), slash (\"/\"), or backslash (\"\\\"), according to its direction.</li>\n<li><strong>CLEAR</strong>: The driver fills the appropriate rectangular area with spaces, including the bounding rows and columns.</li>\n<li><strong>PRINT</strong>: This command causes the driver to print the picture surrounded with a nice frame made of plus (\"+\"), minus (\"-\"), and pipe (\"|\") characters.</li>\n</ul>\n<p>If more objects should be drawn across a single character, the following rules apply:</p>\n<ul>\n<li>If the same character is drawn several times, it is used without a change.</li>\n<li>If only pipe and minus characters are involved, they result in the plus sign (\"+\").</li>\n<li>If only slashes and backslashes are involved, the result is the lowercase letter \"x\".</li>\n<li>Otherwise, the asterisk (\"*\") is displayed.</li>\n</ul>\n<p>Before a script is given to the driver, it is checked by a special preprocessor, which rejects all invalid commands. Therefore, you may assume that all coordinates are within the range of the page. Also, with the LINE command, the two points are always different and the line is strictly either vertical, horizontal, or at the angle of 45o to the axes. There is no assumption on the relative position of the points used with the LINE and CLEAR commands. The text in the TEXT command is always composed only of uppercase letter and digits.</p>",
+  "input": "<p>The input consists of several scripts. Each script begins with a line containing two integers X and Y, separated with space, 1 &lt;= X, Y &lt;= 75. These numbers specify the dimensions of the page. Every other line contains exactly one of the above commands. The commands are always uppercase, command arguments are separated with one space.</p>\n<p>The PRINT command is always the last command of the script. After the PRINT command, a new script begins. The input is terminated with two zeros, which are not considered to be a script.</p>",
+  "output": "<p>For each script, output the emulated picture, created as specified above. After the picture, print one blank line.</p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "20 10\nLINE 3 2 11 10\nLINE 3 10 11 2\nLINE 20 3 8 3\nTEXT 6 8 TEST\nLINE 19 1 19 10\nLINE 17 10 17 1\nLINE 16 1 16 10\nLINE 13 6 20 6\nCLEAR 20 5 15 7\nLINE 18 1 18 10\nTEXT 12 10 NICEPICTURE\nPOINT 1 1\nPOINT 3 2\nPRINT\n1 1\nPOINT 1 1\nCLEAR 1 1 1 1\nPRINT\n3 3\nLINE 2 1 2 3\nLINE 1 2 3 2\nLINE 2 3 2 1\nLINE 3 2 1 2\nLINE 2 1 2 3\nLINE 1 2 3 2\nPRINT\n0 0\n",
+      "output": "+--------------------+\n|o              |||| |\n|  *       /    |||| |\n|   \\   --*-----++++-|\n|    \\   /      |||| |\n|     \\ /         |  |\n|      x     --   |  |\n|     / \\         |  |\n|    /TES*      |||| |\n|   /     \\     |||| |\n|  /       \\NICE****U|\n+--------------------+\n\n+-+\n| |\n+-+\n\n+---+\n| | |\n|-+-|\n| | |\n+---+\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2004",
+  "level": 14,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 2.6875
+}

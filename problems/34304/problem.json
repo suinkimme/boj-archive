@@ -1,0 +1,39 @@
+{
+  "id": 34304,
+  "title": "Warehouse Stocking",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>CS@Mines is restocking on supplies and is looking to make an inventory management system for a warehouse which keeps those supplies.</p>\n<p>Due to our warehouse constraints, we can only keep one item in any given location at a time! Therefore, we need to manage when items are taken and put into the warehouse inventory. Additionally, we only have at most $10$ copies of each item.</p>\n<p>Additionally, professors and students are actively using the warehouse! While we are still unloading shipments, items may be taken out of the warehouse before more come in. There are three distinct events which can occur in the warehouse:</p>\n<p>An item can be <code>PUT</code> into a specific location.</p>\n<p>Someone can <code>TAKE</code> the item currently in the specified location, which removes it from the location.</p>\n<p>Someone can <code>FIND</code> all of the locations that contain the specified item. Note that since there at most 10 copies of each item, this should return at most 10 locations.</p>",
+  "input": "<p>The first line of input will be an integer $1 \\leq N \\leq 10^5$ representing how many lines of input are to follow.</p>\n<p>The next $N$ lines will each consist of one of the following operations:</p>\n<p>A <code>PUT</code> operation, in the following format: <code>PUT [ITEM] [LOCATION]</code>.</p>\n<p>A <code>TAKE</code> operation, in the following format: <code>TAKE [LOCATION]</code>. There will never be a <code>TAKE</code> operation for a location that does not currently have an item.</p>\n<p>A <code>FIND</code> operation, in the following format: <code>FIND [ITEM]</code> indicating that someone wants to look up the locations of a specific item.</p>\n<p>All <code>LOCATION</code>s and <code>ITEM</code>s will be strings of uppercase Latin letters (A-Z) of length at most $10$.</p>",
+  "output": "<p>For each <code>FIND</code> operation, output the location(s) which contain the <code>ITEM</code> specified by the <code>FIND</code> as a lexicographically sorted, space-separated list. Or, if the item cannot be found, print out: \"NOT FOUND\" (without the quotes).</p>\n<p>The output of each <code>FIND</code> operation is based off previously seen operations; in other words, the <code>PUT</code> and <code>TAKE</code> operations are done in chronological order.</p>",
+  "samples": [
+    {
+      "input": "3\nPUT COMPUTER UPSTAIRS\nPUT COMPUTER DOWNSTAIRS\nFIND COMPUTER\n",
+      "output": "DOWNSTAIRS UPSTAIRS\n"
+    },
+    {
+      "input": "4\nPUT COMPUTER LECTUREHAL\nTAKE LECTUREHAL\nPUT COMPUTER CLOSET\nFIND COMPUTER\n",
+      "output": "CLOSET\n"
+    },
+    {
+      "input": "11\nPUT PENCIL A\nPUT PAPER B\nPUT LAPTOP C\nTAKE B\nPUT LAPTOP D\nPUT LAPTOP E\nTAKE E\nPUT PEN F\nTAKE A\nFIND LAPTOP\nFIND PAPER\n",
+      "output": "C D\nNOT FOUND\n"
+    },
+    {
+      "input": "22\nPUT DONUTS A\nPUT COFFEE B\nPUT TOAST C\nPUT KETTLE D\nPUT DONUTS E\nPUT MUG F\nPUT MICROWAVE G\nPUT MUG H\nPUT MILK I\nPUT COFFEE J\nFIND DONUTS\nTAKE A\nTAKE B\nTAKE C\nTAKE D\nTAKE E\nTAKE F\nFIND MUG\nTAKE G\nTAKE I\nTAKE J\nFIND MICROWAVE\n",
+      "output": "A E\nH\nNOT FOUND\n"
+    }
+  ],
+  "hint": null,
+  "source": ", School, CS@Mines, CS@Mines HSPC 2024",
+  "level": 9,
+  "tags": [
+    "data_structures",
+    "sorting",
+    "set",
+    "hash_set"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.149999976158142
+}

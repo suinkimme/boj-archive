@@ -1,0 +1,22 @@
+{
+  "id": 20229,
+  "title": "Evacuation Site",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The council of your home city decided to build a public evacuation site to prepare for natural disasters. The evacuation site is desired to be built at a location reachable from as many locations across the city as possible, even when many road segments are closed due to a natural disaster. Given the road network of the city, please find the best candidate locations.</p>\n<p>The road network is specified as an undirected graph. The nodes of the graph correspond to various locations in the city area, and the edges are two-way road segments connecting the locations. Each road segment is assigned a positive integer representing the <b>assumed strength</b> against disasters. A road segment with assumed strength <i>s</i> is expected to be available on a disaster of level below <i>s</i>, but will be closed on a disaster of level above or equal to <i>s</i>.</p>\n<p>Adequacy of a location as an evacuation site is assessed by the following ordering. Let us define <i>r</i><sub><i>s</i></sub>(<i>v</i>) as the number of locations that is directly or indirectly connected to the location <i>v</i> via road segments available even on the level-<i>s</i> disaster. We define the location <i>u</i> is more suitable than the location <i>v</i> as an evacuation site if and only if there exists some <i>k</i> ≥ 1 satisfying</p>\n<ul>\n<li><i>r</i><sub>1</sub>(<i>u</i>) = <i>r</i><sub>1</sub>(<i>v</i>),</li>\n<li><i>r</i><sub>2</sub>(<i>u</i>) = <i>r</i><sub>2</sub>(<i>v</i>),</li>\n<li>...</li>\n<li><i>r</i><sub><i>k</i>-1</sub>(<i>u</i>) = <i>r</i><sub><i>k</i>-1</sub>(<i>v</i>), and</li>\n<li><i>r</i><sub><i>k</i></sub>(<i>u</i>) &gt; <i>r</i><sub><i>k</i></sub>(<i>v</i>).</li>\n</ul>\n<p>Please find the best locations based on the above criterion. If two or more locations are rated equally as the best, enumerate all of them.</p>",
+  "input": "<p>The input consists of multiple datasets, each in the following format.</p>\n<blockquote><i>n</i> <i>m</i> <i>a</i><sub>1</sub> <i>b</i><sub>1</sub> <i>s</i><sub>1</sub> ... <i>a<sub>m</sub></i> <i>b<sub>m</sub></i> <i>s<sub>m</sub></i></blockquote>\n<p><i>n</i> is a positive integer less than or equal to 10<sup>5</sup>, representing the number of locations. <i>m</i> is a non-negative integer less than or equal to 10<sup>5</sup>, representing the number of road segments. The locations in the city are given ID numbers 1 through <i>n</i>. The <i>i</i>-th segment connects the locations <i>a<sub>i</sub></i> and <i>b<sub>i</sub></i>, and its assumed strength is <i>s<sub>i</sub></i>. Each of <i>a<sub>i</sub></i>, <i>b<sub>i</sub></i>, and <i>s<sub>i</sub></i> is an integer and they satisfy 1 ≤ <i>a<sub>i</sub></i> &lt; <i>b<sub>i</sub></i> ≤ <i>n</i> and 1 ≤ <i>s<sub>i</sub></i> ≤ 10<sup>5</sup>. When <i>i</i> ≠ <i>j</i>, either <i>a<sub>i</sub></i> ≠ <i>a<sub>j</sub></i> or <i>b<sub>i</sub></i> ≠ <i>b<sub>j</sub></i> holds. <b>The given graph is connected.</b> That is, there is at least one path between every pair of locations.</p>\n<p>The end of the input is indicated by a line containing two zeros. The number of datasets does not exceed 50.</p>",
+  "output": "<p>For each dataset, output the list of the ID numbers of all of the locations most suitable with the criterion described above separated by a space character, in the increasing order, in a line.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2 1\n1 3 2\n2 3 3\n3 3\n1 2 3\n1 3 3\n2 3 3\n5 5\n1 2 5\n2 3 1\n3 4 2\n3 5 1\n4 5 2\n0 0\n",
+      "output": "2 3\n1 2 3\n3 4 5\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2020 Japan Domestic Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

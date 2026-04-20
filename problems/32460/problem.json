@@ -1,0 +1,42 @@
+{
+  "id": 32460,
+  "title": "Lexicopolis",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Welcome to Lexicopolis, the ancient city of legends and treasures. The city is famous for its intricate network of one-way roads. There are $n$ intersections and $m$ one-way roads connecting the intersections. People can only travel from intersection $u_i$ to intersection $v_i$ along road $i$, and road $i$ is associated with a magical number $w_i$. A path of length $k$ from intersection $s$ to $t$ is a sequence of roads $e_1, e_2, \\dots ,e_k$ that allows travel from intersection $s$ to intersection $t$. A path is lexicographically smaller than another path if at the frst road where they have different magic numbers (not index), the number on the frst path is smaller than the number on the second path.</p>\n<p>It is rumored that the tourist who figures out the lexicographically smallest path of length $k$ from intersection s$ $to intersection $t$ can receive a gift from the Lexicopolis government. Please write a program to fnd the lexicographicall smallest path of length $k$ from intersection $s$ to $t$. If it is impossible to travel from intersection $s$ to $t$ with exactly $k$ roads, output <code>-1</code>.</p>",
+  "input": "<p>The first line contains six integers $n$, $m$, $s$, $t$, $x$, $k$. $n$ is the number of intersections. $m$ is the number of roads. $s$ is the starting intersection and $t$ is the ending intersection. $x$ is a number that will be used for outputting the answer. $k$ is the length of path. The $i$-th of the $m$ following lines contains three integers $u_i$, $v_i$ and $w_i$. That means road $i$ is from intersection $u_i$ to intersection $v_i$ and associated with magic number $w_i$.</p>",
+  "output": "<p>If there is no path of length $k$ from intersection $s$ to $t$, output <code>-1</code>. Otherwise, assume such a path exists. Consider the lexicographically smallest path $e_1, e_2, \\dots ,e_k$, and output $\\sum^k_{i=1}{w_{e_i}x^{k-i}}$ modulo $10^9+7$, where $x$ is the number provided as the fifth value in the first line of the input.</p>",
+  "samples": [
+    {
+      "input": "3 6 1 3 10 4\n1 2 2\n2 1 1\n1 3 1\n3 1 2\n2 3 1\n3 2 2\n",
+      "output": "1211\n"
+    },
+    {
+      "input": "3 6 1 3 10 5\n1 2 2\n2 1 1\n1 3 1\n3 1 2\n2 3 1\n3 2 2\n",
+      "output": "12121\n"
+    },
+    {
+      "input": "6 7 5 6 10 10\n1 2 1\n2 4 2\n3 4 1\n4 5 3\n5 3 5\n4 6 2\n6 5 1\n",
+      "output": "121513477\n"
+    },
+    {
+      "input": "6 7 1 6 123 2\n1 2 1000000000\n2 4 2\n3 4 3\n4 5 4\n5 3 1\n4 6 2\n6 5 1\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Taiwan, Taiwan Online Programming Contest, TOPC 2024",
+  "level": 18,
+  "tags": [
+    "binary_search",
+    "coordinate_compression",
+    "exponentiation_by_squaring",
+    "graphs",
+    "hashing",
+    "math",
+    "sorting"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 1.5333000421524048
+}

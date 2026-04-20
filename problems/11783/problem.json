@@ -1,0 +1,27 @@
+{
+  "id": 11783,
+  "title": "HAPPINESS",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Monetary system in X-land is a bit strange. There are banknotes with values of all integer numbers from 1 to M. There is another strange rule in the shops of X-land – the customer can never receive change, but also cannot leave a tip – in other words the customer must always pay the exact value of his purchases. If he does not have the exact sum for his purchase, then he cannot buy. Imagine what inconvenience this creates for the customers. </p>\n<p>Niya is a girl from X-land. Like all other persons, she constantly fights against the rules described above. She always knows her set of banknotes – let’s assume their values are a<sub>1</sub>, a<sub>2</sub>,…,a<sub>N</sub>. All those values are between 1 and M and she may possess more than one banknote of a kind. Also the sequence of values a<sub>1</sub>, a<sub>2</sub>,…….,a<sub>N</sub>, is not ordered in any way. Niya feels happy, when entering a shop, she may buy any combination of goods with total price equal to any number between 1 and the total sum of her banknotes a<sub>1</sub> + a<sub>2</sub> + ... + a<sub>N</sub>. In that case, when she is shopping, she must only consider her total amount of money without making complicated calculations of whether she can buy (or not) with her banknotes. </p>\n<p>Remark: Let us sort a<sub>1</sub>, a<sub>2</sub>,…….,a<sub>N</sub> in ascending order. Let us denote S<sub>i</sub> = 1+a<sub>1</sub>+ a<sub>2</sub>+…….+a<sub>i</sub>. Necessary and sufficient condition to be able to represent each number between 1 and a<sub>1</sub>+ a<sub>2</sub>+…….+a<sub>N</sub> as a sum of elements from the multiset a<sub>1</sub>, a<sub>2</sub>,…….,a<sub>N</sub>, is that the following inequality S<sub>i</sub> ≥ a<sub>i+1</sub> held true for each i&gt;1 and a<sub>1</sub> = 1. </p>\n<p>As expected, Niya’s set of banknotes is changing after each purchase and also after each wage she receives – that’s why her happiness is variable. You can help the girl with a program. Your program will receive as an input the initial set of Niya’s banknotes and all the events that happen – purchases and wages. The program should be able to determine if Niya is happy in the beginning and after each event.</p>\n<p>We should note that Niya feels happy also when she doesn’t have any money – then she just skips shopping and goes jogging.</p>\n<p>Task</p>\n<p>Write functions init() and is_happy(), which will be compiled with jury’s grader. These functions should serve to determine Niya’s happiness at the beginning and after each event. The functions will receive as parameters the starting set of banknotes and the sets of banknotes that are removed from the set (on purchases) and added to the set (on receiving wage).</p>\n<p>Implementation details</p>\n<p>You should submit to the grading system a file happiness.cpp, which contains functions:</p>\n<pre>\nbool init(int coinsCount, long long maxCoinSize, long long coins[]).\nbool is_happy(int event, int coinsCount, long long coins[]).</pre>\n<p>Parameters description:</p>\n<ul>\n<li>coinsCount – number of banknotes that are received (starting set or wage) or discarded (shopping).</li>\n<li>maxCoinSize – maximum value of one banknote. coins[] – array, in which in random order are given values of the banknotes (index starts from 0).</li>\n<li>event – event’s type :\n\t<ul>\n<li>−1 – Shopping;</li>\n<li>1 – Receiving wage.</li>\n</ul>\n</li>\n</ul>\n<p>The function init is called once by the grader at the beginning to set the starting set of Niya’s banknotes and then grader calls Q times function is_happy with event = −1 (shopping) or event = 1 (wage). After each call the called function should return true, if Niya feels happy with her current set of banknotes or false if she doesn’t.</p>\n<p>File happiness.cpp should NOT contain function main(), but can contain other declarations and functions, necessary for correct working of functions init and is_happy. Your program should contain #include \"happiness.h\" in the beginning</p>",
+  "input": "<p>Single positive integers N and M are given on the first row – initial count of Niya’s banknotes and maximum value of one banknote.</p>\n<p>N positive integers are given on the second row, separated by spaces – values of banknotes in the initial set.</p>\n<p>Non-negative integer Q is given on the third row – event’s count.</p>\n<p>On each of the next Q rows one event is described – first, a value for the event is given: −1 (shopping) or 1 (receiving of a wage). After that a positive integer K is given – number of banknotes that are removed or added to Niya’s set. Last K integers are given, separated by intervals – values for the banknotes which are removed or added.</p>",
+  "output": "<p>On the standard output the program will print Q+1 lines with 0 or 1 – \"happiness\" statuses of Niya at the beginning and after each event.</p>",
+  "samples": [
+    {
+      "input": "5 100\n4 8 1 2 16\n2\n-1 2 2 8\n1 3 7 9 2\n",
+      "output": "1\n0\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Balkan Olympiad in Informatics, BOI 2015",
+  "level": 22,
+  "tags": [
+    "coordinate_compression",
+    "data_structures",
+    "offline_queries",
+    "segtree"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 6.230800151824951
+}

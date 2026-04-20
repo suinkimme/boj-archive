@@ -1,0 +1,26 @@
+{
+  "id": 10344,
+  "title": "The Leprechaun Hunt",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In Irish mythology, a Leprechaun is a small sprite who stores all his treasure in a hidden pot of gold at the end of the rainbow. If someone is able to catch the Leprechaun, he must give that person his pot of gold. In this problem, we explore the difficulty of capturing a Leprechaun.</p>\n<p>We model a search with <em>V</em> villagers trying to catch a single Leprechaun as a game on a simple undirected graph having <em>N ≥ 1+V</em> nodes. To begin the game, the villagers position themselves at a subset of <em>V</em> distinct nodes. After that, the Leprechaun chooses a remaining node as a starting position. In each round of the game that follows, one villager moves from his or her current node to an adjacent node that is unoccupied by another villager. If that node has the Leprechaun, the villagers win the pot of gold. Otherwise, the Leprechaun now has the option of either staying at his current node, or moving to an adjacent, unoccupied node. Given a specific graph, and a fixed number of villagers, we are interested in the minimum number of turns the villagers need to capture the most clever of Leprechauns.</p>\n<p>As examples, consider the two figures below. For the graph in Figure 1, a single villager can never capture a Leprechaun, as the Leprechaun can easily stay away from the villager. However, two villagers can capture the Leprechaun after at most 2 turns. For example, the villagers might begin at nodes <code>A</code> and <code>D</code>, in which case a clever Leprechaun will start at node <code>F</code>. But after the villager at <code>A</code> moves to <code>G</code> the villagers can capture the Leprechaun on their second turn, no matter whether the Leprechaun moves to <code>E</code> or remains at <code>F</code>.</p>\n<p>For the graph in Figure 2, a single villager is unable to catch a clever Leprechaun. To see why this is the case, we describe a possible strategy of the Leprechaun, which is to always stay within the square made by BCDE, and opposite of the villager if the villager is in that square. If the villager were ever to go to A, the Leprechaun can remain still. In contrast, two villagers are able to capture the Leprechaun on their first move by picking initial positions such as B and E.</p>\n<table style=\"height:204px; text-align:center; width:406px\">\n<tbody>\n<tr>\n<td><img alt=\"cycle graph\" src=\"/upload/images2/cycle.png\" style=\"height:200px\"/></td>\n<td><img alt=\"house graph\" src=\"/upload/images2/house.png\" style=\"height:200px\"/></td>\n</tr>\n<tr>\n<td>Figure 1</td>\n<td>Figure 2</td>\n</tr>\n</tbody>\n</table>",
+  "input": "<p>Each tests begins with a line containing three integers: <em>V N E</em>. The value of <em>V</em> denotes the number of villagers such that 1 ≤ <em>V</em> ≤ 7. The number of nodes <em>N</em> in the graph will satisfy 1 + <em>V</em> ≤ <em>N</em> ≤ 15. The value 1 ≤ <em>E</em> ≤ 45 designates the number of edges in the graph. Following the initial line of parameters will be one or more lines describing the edges of the graph, with up to 15 edges per line. Nodes of the graph are implicitly denoted with the first <em>N</em> uppercase letters (<code>A</code>, <code>B</code>, <code>C</code>, ...), and edges are explicitly denoted as two-character strings; for example the string <code>AC</code> denotes an edge connecting nodes <code>A</code> and <code>C</code> to each other. The <em>E</em> edges will be distinct, each edge connects two distinct nodes, and any node will have at most 6 incident edges. A line with the single value <code>0</code> designates the end of the input.</p>",
+  "output": "<p>For each test case, output a line, prefaced with the case number as shown in the example output below, followed by the minimum number of moves that the villagers need to guarantee capture of the Leprechaun, or the word <code>NEVER</code> if the villagers are unable to capture the Leprechaun.</p>",
+  "samples": [
+    {
+      "input": "1 7 7\nAB BC CD DE EF FG GA\n2 7 7\nAB BC CD DE EF FG GA\n1 5 6\nAB AC BC BD DE EC\n2 5 6\nAB AC BC BD DE EC\n2 10 15\nAB BC CD DE EA AF BG CH DI EJ FH HJ JG GI IF\n3 10 15\nAB BC CD DE EA AF BG CH DI EJ FH HJ JG GI IF\n3 14 10\nAB BC CD EF FG GH IJ JK LM MN\n4 14 10\nAB BC CD EF FG GH IJ JK LM MN\n0\n",
+      "output": "CASE 1: NEVER\nCASE 2: 2\nCASE 3: NEVER\nCASE 4: 1\nCASE 5: NEVER\nCASE 6: 1\nCASE 7: NEVER\nCASE 8: 2\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Mid-Central Regional, 2014 Mid-Central Regional Programming Contest",
+  "level": 18,
+  "tags": [
+    "dp",
+    "bitmask",
+    "game_theory"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.5
+}

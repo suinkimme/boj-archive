@@ -1,0 +1,33 @@
+{
+  "id": 26862,
+  "title": "Maxdifficent Group",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Given an array of integers $A_{1..N}$ where $N ≥ 2$. Each element in A should be assigned into a group while satisfying the following rules.</p>\n<ul>\n<li>Each element belongs to exactly one group.</li>\n<li>If $A_i$ and $A_j$ where $i &lt; j$ belongs to the same group, then $A_k$ where $i ≤ k ≤ j$ also belongs to the same group as $A_i$ and $A_j$.</li>\n<li>There is at least one pair of elements that belong to a different group.</li>\n</ul>\n<p>Let $G_i$ denotes the group ID of element $A_i$. The cost of a group is equal to the sum of all elements in $A$ that belong to that group.</p>\n<p>$$\\text{cost}(x) = \\sum_{\\text{i s.t. }G_i = x}{A_i}$$</p>\n<p>Two different group IDs, $G_i$ and $G_j$ (where $G_i \\ne G_j$), are adjacent if and only if $G_k$ is either $G_i$ or $G_j$ for every $i ≤ k ≤ j$. Finally, the $\\text{diff}()$ value of two group IDs $x$ and $y$ is defined as the absolute difference between $\\text{cost}(x)$ and $\\text{cost}(y)$.</p>\n<p>$$\\text{diff}(x, y) = |\\text{cost}(x) − \\text{cost}(y)|$$</p>\n<p>Your task in this problem is to find a group assignment such that the largest $\\text{diff}()$ value between any pair of adjacent group IDs is maximized; you only need to output the largest $\\text{diff}()$ value.</p>\n<p>For example, let $A_{1..4} = \\{100, −30, −20, 70\\}$. There are $8$ ways to assign each element in $A$ into a group in this example; some of them are shown as follows.</p>\n<ul>\n<li>$G_{1..4} = \\{1, 2, 3, 4\\}$. There are $3$ pairs of group IDs that are adjacent and their $\\text{diff}()$ values are:\n\t<ul>\n<li>$\\text{diff}(1, 2) = |\\text{cost}(1) − \\text{cost}(2)| = |(100) − (−30)| = 130$,</li>\n<li>$\\text{diff}(2, 3) = |\\text{cost}(2) − \\text{cost}(3)| = |(−30) − (−20)| = 10$, and</li>\n<li>$\\text{diff}(3, 4) = |\\text{cost}(3) − \\text{cost}(4)| = |(−20) − (70)| = 90$.</li>\n<li>The largest $\\text{diff}()$ value in this group assignment is $130$.</li>\n</ul>\n</li>\n<li>$G_{1..4} = \\{1, 2, 2, 3\\}$. There are $2$ pairs of group IDs that are adjacent and their $\\text{diff}()$ values are:\n\t<ul>\n<li>$\\text{diff}(1, 2) = |\\text{cost}(1) − \\text{cost}(2)| = |(100) − (−30 + (−20))| = 150$, and</li>\n<li>$\\text{diff}(2, 3) = |\\text{cost}(2) − \\text{cost}(3)| = |(−30 + (−20)) − (−20)| = 70$.</li>\n<li>The largest $\\text{diff}()$ value in this group assignment is $150$.</li>\n</ul>\n</li>\n</ul>\n<p>The other $6$ group assignments are: $G_{1..4} = \\{1, 1, 1, 2\\}$, $G_{1..4} = \\{1, 1, 2, 2\\}$, $G_{1..4} = \\{1, 2, 2, 2\\}$, $G_{1..4} = \\{1, 1, 2, 2\\}$, $G_{1..4} = \\{1, 1, 2, 3\\}$, and $G_{1..4} = \\{1, 2, 3, 3\\}$. Among all possible group assignments in this example, the maximum largest $\\text{diff}()$ that can be obtained is $150$ from the group assignment $G_{1..4} = \\{1, 2, 2, 3\\}$.</p>",
+  "input": "<p>Input begins with a line containing an integer $N$ ($2 ≤ N ≤ 100\\,000$) representing the number of elements in array $A$. The next line contains $N$ integers $A_i$ ($-10^6 ≤ A_i ≤ 10^6$) representing the array $A$.</p>",
+  "output": "<p>Output contains an integer in a line representing the maximum possible largest $\\text{diff}()$ that can be obtained from a group assignment.</p>",
+  "samples": [
+    {
+      "input": "4\n100 -30 -20 50\n",
+      "output": "150\n"
+    },
+    {
+      "input": "5\n12 7 4 32 9\n",
+      "output": "46\n"
+    },
+    {
+      "input": "6\n-5 10 -5 45 -20 15\n",
+      "output": "70\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, The 2021 ICPC Asia Jakarta Regional Contest, ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, The 2022 ICPC Asia Jakarta Regional Contest 연습 세션",
+  "level": 12,
+  "tags": [
+    "dp",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 43,
+  "submission_count": null,
+  "average_tries": 1.1859999895095825
+}

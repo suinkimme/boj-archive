@@ -1,0 +1,29 @@
+{
+  "id": 13961,
+  "title": "Passwords",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>It's that time of the year again when you go back to work and need to choose new passwords for all your services. The rules enforced by the system administrators are very strict, and the password you choose must obey the following restrictions:</p>\n<ul>\n<li>It must contain only letters and digits.</li>\n<li>It must have between A and B characters (inclusive).</li>\n<li>It must have at least one lowercase letter, one uppercase letter and one digit.</li>\n<li>It cannot contain any word of a collection of forbidden words (the blacklist).</li>\n</ul>\n<p>A word of the blacklist is considered to be contained in the password if it appears as a substring, that is, if it occurs as a consecutive sequence of characters (regardless of it being upper or lower case). For instance, swerc is a substring of SwErC, 2016swerc2016 or SWERC2016, but it is not a substring of ICPC or sw16erc.</p>\n<p>Additionally, for the purposes of avoiding the blacklist, you cannot use l33t. Specifically, some digits can be interpreted as letters, namely the 0('o'), 1('i'), 3('e'), 5('s') and 7('t'). This implies that for example 5w3rC would be an occurrence of swerc, and that abcL337def contains the word leet.</p>\n<p>You cannot stop thinking about all these rules and you wonder how many different valid passwords there are... Can you calculate how many passwords would obey these rules?</p>\n<p>Given a blacklist with N words and two integers A and B, your task is to compute the number of different valid passwords that exist following the given constraints: made up of only letters and digits; length between A and B (inclusive); at least one lowercase letter, one uppercase letter, and one digit; no blacklisted substring. Since this number can be very big, compute it modulo 1 000 003.</p>",
+  "input": "<p>The first line contains two integers, A and B, specifying respectively the minimum and maximum length of the password. The second line contains an integer N, the number of words of the blacklist. The following N lines each contains a string W<sub>i</sub> indicating a word in the blacklist. These words are formed only by lowercase letters.</p>\n<ul>\n</ul>",
+  "output": "<p>The output should contain a single line with an integer indicating the number of valid passwords modulo 1 000 003. A valid password is one that respects all of the given constraints.</p>",
+  "samples": [
+    {
+      "input": "3 5\n9\nswerc\nicpc\nfbi\ncia\nbio\nz\nhi\nno\nyes\n",
+      "output": "607886\n"
+    }
+  ],
+  "hint": "<p>In this case there are exactly 378 609 020 valid passwords and </p>\n<p>378 609 020 mod 1 000 003 = 607 886.</p>\n<p>Some examples of valid passwords are: aA1, B23tT, 1g9K or B2j.</p>\n<p>Some examples of invalid passwords are: aaA (it does not contain digits), 12a (it does not contain upper case letters), a12A34 (length &gt; 5) or bB10 (contains bio as substring).</p>",
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2016",
+  "level": 21,
+  "tags": [
+    "aho_corasick",
+    "data_structures",
+    "dp",
+    "string",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 1.6857000589370728
+}

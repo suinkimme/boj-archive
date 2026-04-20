@@ -1,0 +1,35 @@
+{
+  "id": 9198,
+  "title": "Hierarchical Democracy",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The presidential election in Republic of Democratia is carried out through multiple stages as follows.</p>\n<ol>\n<li>There are exactly two presidential candidates.</li>\n<li>At the first stage, eligible voters go to the polls of his/her electoral district. The winner of the district is the candidate who takes a majority of the votes. Voters cast their ballots only at this first stage.</li>\n<li>A district of the k-th stage (k &gt; 1) consists of multiple districts of the (k − 1)-th stage. In contrast, a district of the (k − 1)-th stage is a sub-district of one and only one district of the k-th stage. The winner of a district of the k-th stage is the candidate who wins in a majority of its sub-districts of the (k − 1)-th stage.</li>\n<li>The final stage has just one nation-wide district. The winner of the final stage is chosen as the president.</li>\n</ol>\n<p>You can assume the following about the presidential election of this country.</p>\n<ul>\n<li>Every eligible voter casts a vote.</li>\n<li>The number of the eligible voters of each electoral district of the first stage is odd.</li>\n<li>The number of the sub-districts of the (k − 1)-th stage that constitute a district of the k-th stage (k &gt; 1) is also odd.</li>\n</ul>\n<p>This means that each district of every stage has its winner (there is no tie).</p>\n<p>Your mission is to write a program that finds a way to win the presidential election with the minimum number of votes. Suppose, for instance, that the district of the final stage has three sub-districts of the first stage and that the numbers of the eligible voters of the sub-districts are 123, 4567, and 89, respectively. The minimum number of votes required to be the winner is 107, that is, 62 from the first district and 45 from the third. In this case, even if the other candidate were given all the 4567 votes in the second district, s/he would inevitably be the loser. Although you might consider this election system unfair, you should accept it as a reality.</p>",
+  "input": "<p>The entire input looks like:</p>\n<pre>\nthe number of datasets (=n) \n1st dataset \n2nd dataset \n… \nn-th dataset </pre>\n<p>The number of datasets, n, is no more than 100.</p>\n<p>The number of the eligible voters of each district and the part-whole relations among districts are denoted as follows.</p>\n<ul>\n<li>An electoral district of the first stage is denoted as [c], where c is the number of the eligible voters of the district.</li>\n<li>A district of the k-th stage (k &gt; 1) is denoted as [d1d2…dm], where d1, d2, …, dm denote its sub-districts of the (k − 1)-th stage in this notation.</li>\n</ul>\n<p>For instance, an electoral district of the first stage that has 123 eligible voters is denoted as [123]. A district of the second stage consisting of three sub-districts of the first stage that have 123, 4567, and 89 eligible voters, respectively, is denoted as [[123][4567][89]].</p>\n<p>Each dataset is a line that contains the character string denoting the district of the final stage in the aforementioned notation. You can assume the following.</p>\n<ul>\n<li>The character string in each dataset does not include any characters except digits ('0', '1', …, '9') and square brackets ('[', ']'), and its length is between 11 and 10000, inclusive.</li>\n<li>The number of the eligible voters of each electoral district of the first stage is between 3 and 9999, inclusive.</li>\n</ul>\n<p>The number of stages is a nation-wide constant. So, for instance, [[[9][9][9]][9][9]] never appears in the input. [[[[9]]]] may not appear either since each district of the second or later stage must have multiple sub-districts of the previous stage.</p>",
+  "output": "<p>For each dataset, print the minimum number of votes required to be the winner of the presidential election in a line. No output line may include any characters except the digits with which the number is written.</p>",
+  "samples": [
+    {
+      "input": "6\n[[123][4567][89]]\n[[5][3][7][3][9]]\n[[[99][59][63][85][51]][[1539][7995][467]][[51][57][79][99][3][91][59]]]\n[[[37][95][31][77][15]][[43][5][5][5][85]][[71][3][51][89][29]][[57][95][5][69][31]][[99][59][65][73][31]]]\n[[[[9][7][3]][[3][5][7]][[7][9][5]]][[[9][9][3]][[5][9][9]][[7][7][3]]][[[5][9][7]][[3][9][3]][[9][5][5]]]]\n[[8231][3721][203][3271][8843]]\n",
+      "output": "107\n7\n175\n95\n21\n3599\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2013 Japan Domestic Contest",
+  "level": 12,
+  "tags": [
+    "dfs",
+    "divide_and_conquer",
+    "dp",
+    "dp_tree",
+    "graphs",
+    "graph_traversal",
+    "implementation",
+    "parsing",
+    "recursion",
+    "sorting",
+    "string",
+    "trees"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.100000023841858
+}

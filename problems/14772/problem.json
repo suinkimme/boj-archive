@@ -1,0 +1,25 @@
+{
+  "id": 14772,
+  "title": "Voter Depression",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Fake news is a powerful tool in the context of elections. Typically, the goal in disinformation campaigns is not so much to increase the vote for one’s own candidate as to depress the vote for the other side, getting those voters to stay home. The usual approach is to target specific populations with negative messages about their candidate that will exploit their own biases. For example, if one wanted to harm a Democratic presidential candidate, one could plant targeted “news” stories for the left-leaning wing that appear to confirm pre-conceived notions that the candidate is a war-mongering corporate shill; simultaneously, one could plant “news” stories for the centrist wing that report on the candidate’s socialist leanings.</p>\n<p>We model this problem as follows: the voters are located at real-valued locations x<sub>j</sub> (excluding 0), corresponding to the left–right political spectrum. Voters with negative x<sub>j</sub> will vote for the left candidate, and voters with positive x<sub>j</sub> for the right candidate. Each voter has an initial propensity to vote p<sub>j</sub>. Each fake news story i is characterized by an interval [ℓ<sub>i</sub> , r<sub>i</sub>] and a factor 0 ≤ d<sub>i</sub> ≤ 1. This means that for each voter located in the interval [ℓ<sub>i</sub> , r<sub>i</sub>], his/her propensity to vote if exposed to the story changes from p<sub>j</sub> to p<sub>j</sub> · d<sub>i</sub> . The campaign must select a set of fake news story to deploy such that no voter is exposed to more than one story. The goal is to maximize the difference between the final sum of propensities of people voting for the right candidate minus the sum of propensities of people voting for the left candidate.</p>",
+  "input": "<p>The first line contains a number K ≥ 1, which is the number of input data sets in the file. This is followed by K data sets of the following form:</p>\n<p>The first line of the data set contains two integers 1 ≤ n ≤ 200 (the number of voters) and 1 ≤ m ≤ 50 (the number of fake news stories you have at your disposal).</p>\n<p>This is followed by n lines, each describing a voter j with two floating point numbers x<sub>j</sub> , p<sub>j</sub> with −1 ≤ x<sub>j</sub> ≤ 1 and 0 ≤ p<sub>j</sub> ≤ 1. Voters will be sorted by non-decreasing x<sub>j</sub>.</p>\n<p>Next come m lines, each describing a fake news story i with three floating point numbers ℓ<sub>i</sub> , r<sub>i</sub> , d<sub>i</sub> , satisfying −1 ≤ ℓ<sub>i</sub> ≤ r<sub>i</sub> ≤ 1 and 0 ≤ d<sub>i</sub> ≤ 1. The news stories will be sorted by non-decreasing r<sub>i</sub> values. To avoid floating point problems, we will guarantee that none of the x<sub>j</sub> will be equal to any ℓ<sub>i</sub> or r<sub>i</sub>.</p>",
+  "output": "<p>For each data set, first output “Data Set x:” on a line by itself, where x is its number. Then, output the maximum difference you can achieve between the total propensity of people voting for the right candidate, minus the total propensity of people voting for the left candidate, rounded to two decimals.</p>\n<p>Each data set should be followed by a blank line.</p>",
+  "samples": [
+    {
+      "input": "1\n5 4\n-0.96 0.35\n-0.5 0.2\n-0.2 0.8\n0.3 0.4\n0.8 0.8\n-0.6 -0.4 0.95\n-1 0 0.8\n-0.3 0.4 0.5\n-0.98 0.9 0\n",
+      "output": "Data Set 1:\n0.12\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Spring 2017: Fake News",
+  "level": 13,
+  "tags": [
+    "dp",
+    "coordinate_compression"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.363600015640259
+}

@@ -1,0 +1,33 @@
+{
+  "id": 30383,
+  "title": "Major",
+  "time_limit": "1.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In this problem, the mode of a sequence is the number that appears strictly more than half the times in the sequence. Please refer to this definition in the problem.</p>\n<p>Initially, $n$ positive integer sequences of different lengths are given, numbered from $1$ to $n$, and the sequences can be empty. These $n$ sequences are considered to exist, and the sequences corresponding to other numbers are considered to be non-existent.</p>\n<p>There are $q$ operations, and operations are of the following types:</p>\n<ul>\n<li>$1\\ x\\ y$: Insert the number $y$ at the end of sequence $x$. It is guaranteed that sequence $x$ exists and $1 \\le x, y \\le n + q$.</li>\n<li>$2\\ x$: Delete the number at the end of sequence $x$. It is guaranteed that sequence $x$ exists, is not empty, and $1 \\le x \\le n + q$.</li>\n<li>$3\\ m\\ x_1\\ x_2\\ ...\\ x_m$: Concatenate sequences $x_1, x_2, \\ldots, x_m$ to get a new sequence and return its mode. Return <code>-1</code> if the mode does not exist. The data guarantees that for any $1 \\le i \\le m$ the sequence numbered $x_i$ still exists, $1 \\le x_i \\le n + q$, and the concatenated sequence is non-empty. There is no guarantee that $x_i$ are distinct. The concatenation done here won't affect future operations.</li>\n<li>$4\\ x_1\\ x_2\\ x_3$: Create a new sequence numbered $x_3$, which is the concatenation of sequence $x_1$ and sequence $x_2$. Then, delete the sequences numbered $x_1$ and $x_2$. After this operation, sequence $x_3$ is considered to exist, and the sequences $x_1$ and $x_2$ are considered to be non-existent and will not be used again in subsequent operations. It is guaranteed that $1 \\le x_1, x_2, x_3 \\le n + q$, $x_1 \\ne x_1$, the sequences $x_1$ and $x_2$ existed before the operation, and no operation used the sequence numbered $x_3$ before the operation.</li>\n</ul>",
+  "input": "<p>The first line of input contains two positive integers $n$ and $q$, which represent the number of initial sequences and the number of operations, respectively. It is guaranteed that $n, q \\le 5 \\times 10^5$.</p>\n<p>In the next $n$ lines, the $i$-th line represents the sequence numbered $i$. The first non-negative integer $l_i$ of each line represents the length of the $i$-th sequence, followed by $l_i$ non-negative integers $a_{i,j}$ representing the elements of the sequence in order. Let $C_l = \\Sigma l_i$ represent the sum of the input sequence lengths, then it is guaranteed that $C_l \\le 5 \\times 10^5$ and $a_{i,j} \\le n + q$.</p>\n<p>Each of the next $q$ lines represent an operation in the format described above, consisting of several integers. Let $C_m = \\Sigma m$ represent the sum of all sequences that need to be concatenated in operation 3, then it is guaranteed that $C_m \\leq 5 \\times 10^{5}$.</p>",
+  "output": "<p>For each type 3 query, output an integer on a new line, the answer to the query.</p>",
+  "samples": [
+    {
+      "input": "2 8\n3 1 1 2\n3 3 3 3\n3 1 1\n3 1 2\n4 2 1 3\n3 1 3\n2 3\n3 1 3\n1 3 1\n3 1 3\n",
+      "output": "1\n3\n-1\n3\n-1\n"
+    },
+    {
+      "input": "4 9\n1 1\n1 2\n1 3\n1 4\n3 4 1 2 3 4\n1 1 2\n3 2 1 2\n2 3\n3 3 1 2 3\n1 4 4\n1 4 4\n1 4 4\n3 4 1 2 3 4\n",
+      "output": "-1\n2\n2\n4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2022",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "smaller_to_larger",
+    "splay_tree",
+    "trees",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 4.5
+}

@@ -1,0 +1,26 @@
+{
+  "id": 5192,
+  "title": "Computer Science",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Computer Science studies ways of solving real-world problems using computers and related technology. This encompasses a lot of issues. One of the great success stories of recent years in computer science is organizing and searching information. Just think about the way everyone’s life has changed as a result of web search. Here, we are going to explore a very simple version of a web search engine.</p>\n<p>You will be given several documents, consisting of words and hyperlinks (in a simpler format than HTML, though). You will also be given queries (one word each), and are to find out the most relevant search results. A page P is relevant either because (1) the search term appears in the page, or (2) the search term appears in a page pointing to P, close to the hyperlink<sup>3</sup>. Specifically, if q is the query term, then P gets one point for each occurrence of q in P. In addition, if L is a hyperlink from P' to P, then P gets max(4−d, 0) points for each occurrence of q at distance d words of L (that is, the score is 4 − d if d &lt; 4, and 0 otherwise). If q appears in the hyperlink, then it is worth 4 points, as d = 0. Notice that the same occurrence in P' can count multiple times if it is close to multiple hyperlinks to P.</p>\n<p><sup>3</sup>The latter is actually more important. Often, what people linking to you say about you is a better description than what you yourself say. One reason is that web pages can otherwise use spamming to attract additional visits. Another is that web pages often don’t contain all relevant terms.</p>",
+  "input": "<p>The first line contains a number K ≥ 1, which is the number of input data sets in the file. This is followed by K data sets of the following form:</p>\n<p>The first line of a data set contains two numbers m and n, the number of queries, and the number of web pages. Both numbers will be between 1 and 100.</p>\n<p>Next are m queries. Each query will be a single word of no more than 20 letters, on a line by itself. All words will consist only of lowercase letters.</p>\n<p>This is followed by the description of n web pages. The description of web page i begins with the number ℓi of lines that page i consists of (between 1 and 100). This is followed by ℓi lines of text, each at most 255 characters. Text is a sequence of words, separated by spaces. Each word consists only of lowercase letters, and is at most 20 characters long. Some words can be marked as hyperlinks. This is done by enclosing them in square brackets, with the number of the page that the link goes to. For example, [usc,3] would describe a hyperlink to page 3 displaying the word usc. The number will always be between 1 and n, i.e., a legal page. Also, we will never have self-links.</p>",
+  "output": "<p>For each data set, first output “Data Set x:” on a line by itself, where x is its number. Then, for each of the queries, output the page with the highest score on a line by itself. If there are multiple pages with the same highest score, output all of them on one line (separated by spaces), sorted by increasing page number.</p>",
+  "samples": [
+    {
+      "input": "2\n3 3\nusc\ngreat\nsucks\n2\ni am a student at [usc,2] a great school\ni also think that [ucla,3] sucks\n3\nwe are usc the university of southern california\nwe are located in the same town as [ucla,3]\nwe have many excellent [students,1]\n2\nwe are ucla\nwe are a great great school\n1 2\nusc\n1\nempty page\n2\n[link,1] usc usc [usc,1] text text text text text\nusc usc usc usc usc usc usc usc usc usc usc usc\n",
+      "output": "Data Set 1:\n2\n2 3\n3\nData Set 2:\n1 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Fall 2006: 100 Years of Engineering",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "string",
+    "parsing"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

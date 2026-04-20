@@ -1,0 +1,22 @@
+{
+  "id": 29939,
+  "title": "Optimizing Mo's Algorithm",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Juku is preparing for the Especially Important Olympiad and discovered the following problem:</p>\n<blockquote>\n<div class=\"page-header\">\n<h1><span>Sums in an Array</span></h1>\n</div>\n<p>You are given an array $A$ with length $N$ and $Q$ queries of the form $(l, r)$.</p>\n<p>For each query give the result $A[l] + A[l + 1] + \\cdots + A[r]$ as answer.</p>\n<p>It is known that $N = Q = 10^5$.</p>\n</blockquote>\n<p>Juku wrote the following pseudocode to solve the problem:</p>\n<pre>\nlptr = 1, rptr = 1, sum = A[1], ops = 0\n\nfor each query (ql, qr):\n    while rptr &lt; qr:\n        rptr += 1\n        sum += A[rptr]\n        ops += 1\n    while lptr &gt; ql:\n        lptr -= 1\n        sum += A[lptr]\n        ops += 1\n    while rptr &gt; qr:\n        sum -= A[rptr]\n        rptr -= 1\n        ops += 1\n    while lptr &lt; ql:\n        sum -= A[lptr]\n        lptr += 1\n        ops += 1\n    print sum\n</pre>\n<p>The running time of this code exceeded the time limit. However, Juku vaguely remembered that in some lecture someone said something about some \"Mo's algorithm\" and started thinking: \"Could I reorder the queries such that the program would fit within time limit? Moreover, how fast could I make my program by just reordering queries?\"</p>\n<p>You're given $Q$ queries of the form $(l, r)$. Additionally, it is guaranteed that the queries are uniformly distributed (see the remark). Reorder queries such that by running the above pseudocode the final value of variable <code>ops</code> would be as small as possible.</p>",
+  "input": "<p>The first line of the input contains two space-separated integers $N$ and $Q$ ($N = Q = 10^5$). On the following $Q$ input lines there are two space-separated integers $l$ ja $r$ on each ($1 \\le l \\le r \\le N$).</p>",
+  "output": "<p>The output should contain $Q$ lines. Each line should have two space-separated integers $l$ and $r$. The queries in the output file must be a permutation of the queries in the input file.</p>",
+  "samples": [
+    {
+      "input": "7 6\n1 5\n2 7\n4 4\n1 2\n3 6\n1 2\n",
+      "output": "2 7\n1 2\n3 6\n1 2\n4 4\n1 5\n"
+    }
+  ],
+  "hint": "<p>The actual input files have been generated using the following code:</p>\n<pre>\nprint(100000, 100000)\nfor i in 1...100000:\n    l = random(1, 100000)\n    r = random(1, 100000)\n    if (l &lt; r):\n        print(l, r)\n    else:\n        print(r, l)\n</pre>\n<p>Here, <code>random(1, 100000)</code> returns an integer $x$ such that $1 \\le x \\le 100\\,000$ and all possible return values are equally probable.</p>",
+  "source": "Olympiad, Estonian Informatics Olympiad, 2018-19, Open Competition",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

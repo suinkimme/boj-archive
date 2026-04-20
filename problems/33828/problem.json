@@ -1,0 +1,35 @@
+{
+  "id": 33828,
+  "title": "Piracka Chciwość",
+  "time_limit": "6 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>Po wielomiesięcznym i pełnym niepowodzeń rejsie, piraci ze statku <em>Floating Point</em> przypadkowo odkryli skarb złożony z $m$ jednakowych złotych monet. Postanowili więc podzielić skarb i zakończyć rejs.</p>\n<p>Podczas rejsu piraci zdążyli się nawzajem poznać. Wszyscy oni wiedzą, że wszyscy piraci myślą perfekcyjnie logicznie (wielu z nich zaczęło swoją piracką karierę od łamania zabezpieczeń w oprogramowaniu), a także kierują się głównie chciwością, aczkolwiek niektórzy piraci są bardziej chciwi od innych. Została też jednoznacznie ustalona liniowa hierarchia – piraci zostali ponumerowani liczbami od $1$ do $n$.</p>\n<p>Do podziału skarbu piraci stosują tradycyjną piracką technikę. Pirat o najmniejszym numerze (wśród jeszcze niewyrzuconych za burtę) proponuje podział skarbu, czyli dla każdego niewyrzuconego pirata $i$ określa $b_i$, całkowitą nieujemną liczbę złotych monet, którą ten pirat otrzyma w proponowanym podziale (suma wszystkich wartości $b_i$ wynosi $m$). Następnie wszyscy piraci (włącznie z proponującym) głosują za lub przeciw zaproponowanemu podziałowi. Jeśli co najmniej $50\\%$ piratów zagłosuje za podziałem, to skarb jest rozdzielany zgodnie z propozycją. W przeciwnym przypadku pirat dzielący zostaje wyrzucany za burtę i nie bierze udziału w dalszych negocjacjach, ani nie otrzymuje żadnych złotych monet. Po czym procedura ta jest powtarzana (kolejny pirat w hierarchii proponuje podział pozostałym piratom).</p>\n<p>Każdy pirat $i$ głosuje za zaproponowanym podziałem, jeśli w przypadku odrzucenia podziału:</p>\n<ul>\n<li>zostałby wyrzucony za burtę po zaproponowaniu swojego podziału,</li>\n<li>lub $b_i ≥ d_i + a_i$, gdzie $d_i$ jest liczbą monet, które pirat dostałby po odrzuceniu podziału, zaś $a_i$ jest jego współczynnikiem chciwości.</li>\n</ul>\n<p>Wszyscy piraci znają wszystkie współczynniki chciwości oraz wiedzą, że wszyscy będą się kierować w swoich wyborach następującą deterministyczną strategią:</p>\n<ul>\n<li>Jeśli nie istnieje żaden akceptowalny podział (czyli taki, który byłby zaakceptowany przez co najmniej połowę niewyrzuconych za burtę piratów), to pirat proponuje, że sam weźmie cały skarb. Po czym pogodzony ze swoim losem daje się wyrzucić za burtę.</li>\n<li>Jeśli istnieje akceptowalny podział, to któryś z takich podziałów zostanie zaproponowany (lepiej otrzymać nawet $0$ monet niż zostać wyrzuconym za burtę).</li>\n<li>Spośród wielu możliwych akceptowalnych propozycji pirat wybiera podział, w którym zatrzyma największą część skarbu dla siebie.</li>\n<li>Piraci są skłonni do obwiniania piratów bliżej w hierarchii o wcześniejsze niepowodzenia, więc jeśli nadal podział nie jest jednoznaczny, to wolą przydzielać więcej monet piratom o większym numerze. A dokładniej: pirat $i$, wybierając spośród jeszcze dostępnych akceptowalnych podziałów, minimalizuje kolejno: liczbę monet otrzymanych przez pirata $i + 1$, następnie liczbę monet otrzymanych przez pirata $i + 2$ itd.</li>\n</ul>\n<p>Twoim zadaniem jest napisanie programu, który określi, ile złotych monet otrzyma każdy z piratów, zgodnie z powyższymi regułami.</p>",
+  "input": "<p>W pierwszym wierszu znajdują się dwie liczby całkowite $n$ oraz $m$ ($1 ≤ n ≤ 50\\, 000$, $1 ≤ m ≤ 5\\, 000\\, 000$) oznaczające odpowiednio liczbę piratów oraz liczbę złotych monet do podziału.</p>\n<p>W drugim wierszu znajduje się ciąg $n$ liczb całkowitych $a_1, a_2, \\dots , a_n$ ($1 ≤ a_i ≤ 64$), oznaczający współczynniki chciwości kolejnych piratów.</p>",
+  "output": "<p>Na wyjście należy wypisać jeden wiersz zawierający $n$ liczb całkowitych $b_1, b_2, \\dots , b_n$. Jeśli $i$-ty pirat zostanie wyrzucony za burtę po zastosowaniu procedury opisanej w zadaniu, to $b_i = -1$; w przeciwnym przypadku $b_i$ oznacza liczbę monet, które $i$-ty pirat otrzyma.</p>",
+  "samples": [
+    {
+      "input": "3 100\n28 1 56\n",
+      "output": "44 0 56\n"
+    },
+    {
+      "input": "5 1\n1 1 1 1 1\n",
+      "output": "-1 0 0 1 0\n"
+    },
+    {
+      "input": "6 6\n3 5 1 4 2 6\n",
+      "output": "2 0 0 0 4 0\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładów: W pierwszym przykładzie mamy trzech piratów: Algora, Bajtazara i Chara. Gdyby Algor został wyrzucony za burtę, to Bajtazar dokonałby podziału, w którym sam otrzymuje wszystkie $100$ monet, a Char nic nie otrzymuje. Wprawdzie Char nie zaakceptowałby takiego rozwiązania, ale zostałby przegłosowany przez Bajtazara.</p>\n<p>W związku z tym Algor nie jest w żaden sposób w stanie przekonać Bajtazara do głosowania za (musiałby mu zaproponować co najmniej $100 + 1$ monet). Zatem potrzebuje przekonać Chara, dając mu odpowiednio dużo monet (a konkretnie co najmniej $0 + 56$). W związku z tym Algor oferuje $56$ monet Charowi, a $44$ monety zostawia sobie – Algor i Char zagłosują za takim podziałem, przegłosowując Bajtazara.</p>\n<p>W drugim przykładzie pierwszy pirat ma za mało złotych monet do podziału, by usatysfakcjonować wystarczająco wielu piratów. Proponuje więc, że weźmie monetę dla siebie, po czym zostaje wyrzucony za burtę. Drugi pirat ma do wyboru dwa podziały, które są zaakceptowane. Może dać monetę trzeciemu albo czwartemu piratowi – zgodnie z regułami wybiera ten drugi podział.</p>\n<p>W trzecim przykładzie za podziałem zaproponowanym przez pierwszego pirata zagłosowali piraci o numerach $1$, $2$ oraz $5$.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2025",
+  "level": 26,
+  "tags": [
+    "implementation",
+    "dp",
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

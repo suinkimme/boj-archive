@@ -1,0 +1,31 @@
+{
+  "id": 31189,
+  "title": "Bipartitna Barikada",
+  "time_limit": "2.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>U <em>bipartitnom grafu</em>, čvorovi se mogu podijeliti u dva disjunktna skupa $A$ i $B$ tako da svaki brid povezuje čvor iz skupa $A$ s čvorom iz skupa $B$. <em>Sparivanje</em> $M$ je skup bridova gdje nijedna dva brida ne dijele zajednički čvor. Kažemo da sparivanje $M$ <em>barikadira</em> skup čvorova $V$ ako je svaki čvor iz $V$ krajnja točka barem jednog brida iz $M$.</p>\n<p>Zadan je bipartitan graf u kojem je svakom čvoru pridružena cjelobrojna <em>težina</em>. Pritom, težinu skupa čvorova definiramo kao sumu težina čvorova toga skupa.</p>\n<p>Za dani cijeli broj $t$, potrebno je pronaći broj skupova $V$ takvih da je njihova težina barem $t$ te da je skup $V$ barikadiran barem jednim sparivanjem $M$.</p>",
+  "input": "<p>U prvom su retku prirodni brojevi $n$ i $m$ ($1 ≤ n, m ≤ 20$) koji redom predstavljaju broj čvorova u skupovima $A$ i $B$. Označit ćemo čvorove u skupu $A$ s $a_1, a_2, \\dots , a_n$, a čvorove u skupu $B$ s $b_1, b_2, \\dots , b_m$.</p>\n<p>Svaki od idućih $n$ redaka sastoji se od $m$ znakova koji opisuju bridove bipartitnog grafa. Preciznije, $j$-ti znak u $i$-tom retku je '<code>1</code>' ako postoji brid koji spaja čvorove $a_i$ i $b_j$, odnosno '<code>0</code>' tako to nije slučaj.</p>\n<p>U idućem je retku $n$ prirodnih brojeva $v_1, v_2, \\dots , v_n$ ($1 ≤ v_k ≤ 10\\, 000\\, 000$) koji redom predstavljaju težine čvorova $a_1, a_2, \\dots , a_n$.</p>\n<p>U idućem je retku $m$ prirodnih brojeva $w_1, w_2, \\dots , w_m$ ($1 ≤ w_k ≤ 10\\, 000\\, 000$) koji redom predstavljaju težine čvorova $b_1, b_2, \\dots , b_m$.</p>\n<p>U posljednjem je retku prirodan broj $t$ ($1 ≤ t ≤ 400\\, 000\\, 000$) iz teksta zadatka.</p>",
+  "output": "<p>Ispišite broj skupova čvorova težine barem $t$ koji su barikadirani barem jednim sparivanjem.</p>",
+  "samples": [
+    {
+      "input": "3 3\n010\n111\n010\n1 2 3\n8 5 13\n21\n",
+      "output": "3\n"
+    },
+    {
+      "input": "3 2\n01\n11\n10\n1 2 3\n4 5\n8\n",
+      "output": "13\n"
+    }
+  ],
+  "hint": "<p>Pojašnjenje prvog probnog primjera:</p>\n<p>Skup $\\{a_1, a_2, b_2, b_3\\}$ je barikadiran sparivanjem $\\{(a_1, b_2),(a_2, b_3)\\}$ i ima težinu $21$. Skupovi $\\{a_3, b_2, b_3\\}$ i $\\{a_2, a_3, b_2, b_3\\}$ barikadirani su sparivanjem $\\{(a_2, b_3),(a_3, b_2)\\}$, te redom imaju težine $21$ i $23$. Preostali skupovi čvorova ili imaju težinu manju od $21$ ili nisu barikadirani niti jednim sparivanjem. Primjerice, skup $\\{a_2, a_3, b_1, b_3\\}$ ima težinu $26$, međutim ne postoji sparivanje koje ga barikadira.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2023",
+  "level": 22,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield",
+    "hall"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

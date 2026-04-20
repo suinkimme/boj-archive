@@ -1,0 +1,57 @@
+{
+  "id": 34357,
+  "title": "Wind Turbines",
+  "time_limit": "4 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Anna has been tasked with designing the wiring for a new offshore wind farm in the North Sea consisting of $N$ turbines, numbered $0, 1, \\ldots, N-1$. Her goal is to ensure that all turbines are connected to the shore as cheaply as possible.</p>\n<p>Anna has a list of $M$ potential connections, each linking two wind turbines and having a specific cost. Additionally, the nearby city has agreed to cover the costs of connecting a consecutive interval $[\\ell, r]$ of turbines to the shore. That is, each turbine $t$ in this range ($\\ell\\le t\\le r$) is directly connected to the shore for free. If all potential connections are built, there is a way to reach any wind turbine from any other wind turbine. That implies that as soon as one of the wind turbines is connected to the shore, it is possible to build connections such that the power from all the turbines can be transferred to the shore. Of course, more connections to the shore may allow for a cheaper total cost. Note that the free connections are the only direct ones to the shore.</p>\n<p>It is Anna's job to select a subset of the potential connections in a way that minimizes the sum of their costs, while ensuring that every wind turbine can reach the shore (possibly via other wind turbines).</p>\n<p>In order to make an informed decision, the city provides Anna with $Q$ possible options for the interval $[\\ell, r]$. The city asks Anna to compute the minimum cost for each of these scenarios.</p>",
+  "input": "<p>The first line of the input contains three integers, $N$, $M$ and $Q$.</p>\n<p>The following $M$ lines contain three integers each, $u_i$, $v_i$ and $c_i$. The $i$th line describes a potential connection between wind turbines $u_i$ and $v_i$ that has the cost $c_i$. These connections are undirected and connect two different turbines. No two connections are between the same pair of turbines. It is guaranteed that, if all potential connections are built, any wind turbine is reachable from any other (directly or indirectly).</p>\n<p>The next $Q$ lines contain two integers each, $\\ell_i$ and $r_i$, describing the scenario where the shore directly connects to the wind turbines $\\ell_i,\\ell_i+1,\\ldots,r_i$. Note that we can have $r_i = \\ell_i$ when the shore directly connects to a single wind turbine.</p>",
+  "output": "<p>Output $Q$ lines, one line per scenario, containing one integer each, the minimum cost of connecting the turbines such that every turbine can deliver its power to the shore.</p>",
+  "samples": [
+    {
+      "input": "5 5 3\n1 0 2\n0 2 5\n1 2 3\n3 0 6\n2 4 3\n1 1\n3 4\n1 4\n",
+      "output": "14\n8\n2\n"
+    },
+    {
+      "input": "5 4 4\n0 1 3\n1 2 1\n2 3 5\n3 4 2\n0 4\n2 3\n2 4\n2 2\n",
+      "output": "0\n6\n4\n11\n"
+    },
+    {
+      "input": "7 7 4\n6 4 3\n1 4 5\n3 2 4\n0 3 2\n5 2 3\n4 0 1\n1 3 1\n0 1\n2 3\n4 5\n5 6\n",
+      "output": "12\n10\n10\n10\n"
+    },
+    {
+      "input": "7 7 3\n2 6 1\n1 0 1\n0 5 1\n1 2 2\n3 4 1\n5 3 1\n5 4 1\n5 6\n1 3\n3 4\n",
+      "output": "5\n4\n6\n"
+    },
+    {
+      "input": "7 7 4\n6 4 3\n1 4 5\n3 2 4\n0 3 2\n5 2 3\n4 0 1\n1 3 1\n0 3\n0 6\n0 1\n0 4\n",
+      "output": "7\n0\n12\n6\n"
+    },
+    {
+      "input": "9 13 4\n0 1 1\n2 0 3\n1 2 4\n5 4 4\n2 5 6\n3 1 7\n8 1 4\n6 3 9\n0 3 5\n3 5 3\n4 3 2\n6 2 4\n7 8 5\n1 8\n4 7\n6 7\n1 2\n",
+      "output": "1\n14\n22\n2\n"
+    },
+    {
+      "input": "6 5 1\n0 1 1000000000\n1 2 1000000000\n2 3 1000000000\n3 4 1000000000\n4 5 1000000000\n1 1\n",
+      "output": "5000000000\n"
+    }
+  ],
+  "hint": "<p>In the first example, we are given the following graph of potential connections.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>We are given three scenarios. In the first scenario, turbine 1 is the only one with a connection to the shore. In this case, we need to keep all connections except for the connection between turbine $0$ and turbine $2$, giving a total cost of $2+3+6+3=14$. In the next scenario, the turbines 3 and 4 are connected to the shore. In this case, we keep the connections $(1,0)$, $(1,2)$ and $(2,4)$, giving a cost of 8. In the third scenario, all but turbine 0 are connected to the shore. In this case, we only need to connect this one to another turbine, which we do by choosing the connection $(0,1)$. The solutions to the scenarios are depicted below:</p>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"2.png\"/></td>\n<td><img alt=\"\" src=\"3.png\"/></td>\n<td><img alt=\"\" src=\"4.png\"/></td>\n</tr>\n</tbody>\n</table>\n<p>The first and the sixth samples satisfy the constraints of test groups 2, 5 and 7. The second and the seventh samples satisfy the constraints of test groups 1, 2, 5 and 7. The third sample satisfies the constraints of test groups 2, 3, 5 and 7. The fourth sample satisfies the constraints of test groups 2, 4, 5 and 7. The fifth sample satisfies the constraints of test groups 2, 5, 6 and 7.</p>",
+  "source": "Olympiad, European Girls' Olympiad in Informatics, EGOI 2025, Day 1",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "greedy",
+    "trees",
+    "segtree",
+    "set",
+    "sweeping",
+    "mst",
+    "lca",
+    "smaller_to_larger"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1
+}

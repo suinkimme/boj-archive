@@ -1,0 +1,42 @@
+{
+  "id": 21085,
+  "title": "Output Limit Exceeded",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>We all know that $\\binom{n}{k} = \\frac{n \\cdot (n-1) \\cdot \\ldots \\cdot (n-k+2) \\cdot (n-k+1)}{1 \\cdot 2 \\cdot \\ldots \\cdot (k-1) \\cdot k}$ is an integer number for any $0 \\le k \\le n$. But it would be nice if we could prove it by providing a matching between factors in numerator and denominator, wouldn't it?</p>\n<p>Let's build a bipartite graph with $k$ vertices in each part. The $i$-th vertex in the left part corresponds to factor $(n+1-i)$ from numerator and $j$-th vertex in the right part corresponds to factor $j$ from denominator. There is an edge $i$ --- $j$ if and only if $j$ divides $(n+1-i)$. The number $k$ is <em>provable</em> for $n$ if there is a perfect matching in this bipartite graph.</p>\n<p>Given $n$, check if $k$ is provable for each $k$ satisfying $0 \\le k \\le n$.</p>",
+  "input": "<p>The only line contains one integer $n$ ($0 \\le n \\le 10^{18}$).</p>",
+  "output": "<p>Print string of length $(n+1)$ consisting of '<code>0</code>' and '<code>1</code>', $(k+1)$-th character should be '<code>1</code>' if and only if $k$ is provable for $n$.</p>\n<p>What, you think this will get Output Limit Exceeded? Hmmmm... Okay. Let's compress the string.</p>\n<p>Let $s_0 = \\text{“0”}$ and $s_1 = \\text{“1”}$. You can define $s_{2}, s_{3}, \\ldots, s_{t}$. String $s_{i}$ should be a concatenation of several earlier defined strings. Formally, $\\forall \\: i \\: (2 \\le i \\le t): s_{i} = s_{j_{1}} + s_{j_{2}} + \\ldots + s_{j_{k_{i}}}$, here $1 \\le k_{i}$, $\\forall \\: r \\: (1 \\le r \\le k_{i}): j_{r} &lt; i$. String $s_{t}$ should be the answer to the problem.</p>\n<p>In the first line print one integer $t$ ($2 \\le t \\le 500$).</p>\n<p>In the next $t-1$ lines print the descriptions of $s_{i}$. Each description should have a form $k_{i} \\: j_{1} \\: j_{2} \\: \\ldots \\: j_{k_{i}}$, with $1 \\le k_{i}$ and $0 \\le j_{r} &lt; i$.</p>\n<p>Total length of all descriptions should not exceed $10\\,000$: $\\sum_{i=2}^{t} k_{i} \\le 10\\,000$.</p>\n<p>We can show that for all valid tests there exists a way to construct the answer string abiding all the limitations. If there are several possible ways to do so, print any one of them. Note that you don't have to minimize $t$ or total length of all descriptions.</p>",
+  "samples": [
+    {
+      "input": "1\n",
+      "output": "2\n2 1 1\n"
+    },
+    {
+      "input": "0\n",
+      "output": "2\n1 1\n"
+    },
+    {
+      "input": "7\n",
+      "output": "4\n2 1 1\n4 1 2 0 0\n3 3 1 2\n"
+    }
+  ],
+  "hint": "<p>In the third sample: $s_2 = s_1 + s_1 = \\text{\"<code>1</code>\"}+\\text{\"<code>1</code>\"} = \\text{\"<code>11</code>\"}$, $s_3 = s_1 + s_2 + s_0 + s_0 = \\text{\"<code>1</code>\"}+\\text{\"<code>11</code>\"}+\\text{\"<code>0</code>\"}+\\text{\"<code>0</code>\"} = \\text{\"<code>11100</code>\"}$, $s_4 = s_3 + s_1 + s_2 = \\text{\"<code>11100</code>\"}+\\text{\"<code>1</code>\"}+\\text{\"<code>11</code>\"} = \\text{\"<code>11100111</code>\"}$, </p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 5: Almost Retired Dandelion Contest, ICPC Camp Contest 2, Contest, Open Cup, 2020/2021 Season, Stage 11: Grand Prix of Nizhny Novgorod",
+  "level": 26,
+  "tags": [
+    "ad_hoc",
+    "bipartite_matching",
+    "constructive",
+    "dfs",
+    "graphs",
+    "graph_traversal",
+    "hall",
+    "math",
+    "miller_rabin",
+    "number_theory",
+    "primality_test"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 3.1666998863220215
+}

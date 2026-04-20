@@ -1,0 +1,26 @@
+{
+  "id": 18620,
+  "title": "Bulbasaur",
+  "time_limit": "6 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Bulbasaur is standing next to the field full of holes in the ground. There are n · k holes partitioned into n groups, each consisting of k holes. The groups are numbered with integers from 1 to n and the holes in each group are numbered from 1 to k. There are also some one-directional tunnels between the holes. They can only connect the holes in the i-th group with the holes in the (i + 1)-th group for any i from the range [1, n − 1].</p>\n<p>Bulbasaur wants to penetrate the holes and tunnels with its vines. Its vine can enter any hole, go through the tunnels and then finish in some other hole (without going out from the ground). Each taken tunnel must lead from the lower-indexed group to the higher-indexed group. As the holes and tunnels are rather tight, only one vine can be in any hole or any tunnel at the same time.</p>\n<p>Let’s denote by f(i, j) the maximum number of vines which Bulbasaur can simultaneously put in some of the holes in the i-th group and which can reach the holes in the j-th group.</p>\n<p>Your task is to calculate</p>\n<p>\\[\\sum_{i=1}^{n}{\\sum_{j=i+1}^{n}{f(i,j)}}\\]</p>",
+  "input": "<p>The first line contains two integers n and k (2 ≤ n ≤ 40 000, 1 ≤ k ≤ 9) — the number of groups and the number of holes in each group.</p>\n<p>Each of next n − 1 blocks describes the connections between the neighboring groups.</p>\n<p>Each block consists of k lines, and each line contains k characters. Blocks are separated with single empty lines.</p>\n<p>If there is a tunnel between the p-th hole in the i-th group and the q-th hole in the (i + 1)-th group, then the q-th character in the p-th line of the i-th block is ‘1’. Otherwise, this character is ‘0’.</p>",
+  "output": "<p>Output the value of the sum described in the task statement.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1000\n1100\n0110\n0011\n\n0100\n1100\n0010\n0001\n\n1000\n1100\n0000\n0011\n",
+      "output": "21\n"
+    },
+    {
+      "input": "5 3\n000\n100\n010\n\n000\n100\n010\n\n010\n101\n010\n\n010\n101\n010\n",
+      "output": "17\n"
+    }
+  ],
+  "hint": "<p>Here’s the illustration of the first sample test and a sample way to put 3 vines all the way from the first group to the last group:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 513px; height: 140px;\"/></p>\n<p>The holes in each group are numbered bottom-up. It’s impossible to use 4 vines, so f(1, 4) equals 3.</p>\n<p>In the second sample test, f(3, 4) = f(4, 5) = f(3, 5) = 2 as Bulbasaur cannot have more than one vine in any hole or tunnel.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 5: Radewoosh + mnbvmar Contest, Contest, Open Cup, 2019/2020 Season, Stage 2: Grand Prix of Warsaw",
+  "level": 28,
+  "tags": [],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

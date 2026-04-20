@@ -1,0 +1,26 @@
+{
+  "id": 10070,
+  "title": "벽",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>지안지아는 똑같은 크기의 벽돌을 쌓아서 벽을 만들고 있다. 이 벽은 n열의 벽돌로 되어 있는데, 각 열은 왼쪽부터 오른쪽으로 차례대로 0부터 n-1까지 번호가 매겨져 있다. 각 열의 높이는 서로 다를 수 있다. 열의 높이는 이 열에 쌓인 벽돌의 수이다.</p>\r\n\r\n<p>지안지아는 다음과 같이 벽을 만든다. 처음에는 어느 열에도 벽돌이 없다. 다음, 지안지아는 k 단계에 걸쳐 벽돌을 더하거나 또는 빼거나 한다. k 단계가 다 끝나면 벽을 다 쌓은 것이다. 매 단계마다 지안지아는 연속된 벽돌 열의 범위와 높이 h를 받고, 다음과 같은 절차에 따라 정해진 일을 한다.</p>\r\n\r\n<ul>\r\n\t<li>벽돌을 더하는 단계에서는, 지안지아는 주어진 범위에 해당하는 열들 중 h장 미만의 벽돌이 쌓인 열들에 벽돌을 더해서 정확히 벽돌 h장이 쌓이게 한다. h장 이상 벽돌이 있는 열에는 아무 일도 하지 않는다.</li>\r\n\t<li>벽돌을 빼는 단계에는, 지안지아는 주어진 범위에 해당하는 열들 중 h장 초과의 벽돌이 쌓인 열들에서 벽돌을 빼서 정확히 벽돌 h장이 쌓이게 한다. h장 이하 벽돌이 있는 열에는 아무 일도 하지 않는다.</li>\r\n</ul>\r\n\r\n<p>당신이 할 일은 벽의 최종 모양을 결정하는 것이다.</p>\r\n\r\n<p>10열의 벽돌이 있고 6단계를 거쳐 벽을 만든다고 가정하자. 아래 표의 모든 범위는 양 끝을 포함한다. 각 단계가 끝났을 때 벽의 모양은 아래 그림과 같다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:50%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>단계</th>\r\n\t\t\t<th>하는 일</th>\r\n\t\t\t<th>범위</th>\r\n\t\t\t<th>높이</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>0</td>\r\n\t\t\t<td>더하기</td>\r\n\t\t\t<td>1열부터 8열까지</td>\r\n\t\t\t<td>4</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>빼기</td>\r\n\t\t\t<td>4열부터 9열까지</td>\r\n\t\t\t<td>1</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>빼기</td>\r\n\t\t\t<td>3열부터 6열까지</td>\r\n\t\t\t<td>5</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>더하기</td>\r\n\t\t\t<td>0열부터 5열까지</td>\r\n\t\t\t<td>3</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>4</td>\r\n\t\t\t<td>더하기</td>\r\n\t\t\t<td>2열</td>\r\n\t\t\t<td>5</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>5</td>\r\n\t\t\t<td>빼기</td>\r\n\t\t\t<td>6열부터 7열까지</td>\r\n\t\t\t<td>0</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>처음에 모든 열에는 벽돌이 없기 때문에, 단계 0이 끝나면 1열부터 8열까지는 모두 4장의 벽돌이 있다. 0열과 9열은 비어 있다. 단계 1에서는, 4열부터 8열까지는 벽돌이 빠져서 모든 열에 각각 벽돌이 1장이 있고, 9열은 계속 비어 있다. 주어진 범위 밖인 0열부터 3열은 아무 변화가 없다. 단계 2는 아무 변화가 없는데, 3열부터 6열까지 5장을 초과하여 벽돌이 있는 열이 없기 때문이다. 단계 3이 끝나면 0, 4, 5열의 벽돌은 3장으로 늘어난다. 단계 4가 끝나면 2열에는 벽돌이 5장 있다. 단계 5는 6열과 7열의 모든 벽돌을 없앤다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 279px; height: 508px;\" /></p>\r\n\r\n<p>각 단계에서 하는 일이 주어졌을 때, 모든 단계가 끝난 다음 각 열에 남아 있는 벽돌의 수를 계산하시오.</p>\r\n",
+  "input": "<p>첫째 줄에 벽에 있는 열의 수 n과 단계의 수 k가 주어진다.</p>\r\n\r\n<p>둘째 줄부터 총 k개의 줄에 걸쳐서 단계 i에서 하는 일이 주어진다. op, left, right, height로 이루어져 있으며, 아래와 같은 의미를 갖는다.</p>\r\n\r\n<ul>\r\n\t<li>op: 1이면 더하는 단계, 2이면 빼는 단계이다.</li>\r\n\t<li>left와 right: 각 단계에 해당하는 열의 범위이다. left 열에서 시작하고, right 열에서 끝난다. (양 끝점 left와 right도 포함된다) 항상 left &le; right이다.</li>\r\n\t<li>height: 각 단계에서 주어지는 높이이다.</li>\r\n</ul>\r\n",
+  "output": "<p>모든 단계가 끝난 다음 각 열에 남아 있는 벽돌의 수를 한 줄에 하나씩 순서대로 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "10 6\n1 1 8 4\n2 4 9 1\n2 3 6 5\n1 0 5 3\n1 2 2 5\n2 6 7 0\n",
+      "output": "3\n4\n5\n4\n3\n3\n0\n0\n1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, International Olympiad in Informatics, IOI 2014, Day 1",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "lazyprop"
+  ],
+  "accepted_user_count": 459,
+  "submission_count": null,
+  "average_tries": 2.522900104522705
+}

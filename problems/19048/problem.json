@@ -1,0 +1,22 @@
+{
+  "id": 19048,
+  "title": "Movies",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Watching movies is a complicated affair. You have partitioned your available movies into two lists:</p>\n<ul>\n<li>the main list containing $N$ movies,</li>\n<li>the secondary list containing $K$ movies.</li>\n</ul>\n<p>You therefore have a total of $N + K$ movies. Each movie has a distinct integer rating, a value from the set $\\{1, 2, \\ldots, N + K\\}$.</p>\n<p>Because you don't want to watch too many bad movies in a row or too many good movies in a row, you have devised the following algorithm for watching them:</p>\n<ul>\n<li>At each step, you take a movie from the main list and watch it. It then disappears from the main list.</li>\n<li>The movies that you select must always alternate between the worst available movie and the best available movie. The first selection must be the best movie. The movie with the lowest rating is considered to be the worst. The movie with the highest rating is considered to be the best. A movie is available only if it is contained in the main list.</li>\n<li>After watching the selected movie, you will choose another movie from the secondary list and insert it into the main list at any position. Once the secondary list is empty, you will stop watching movies. Note that this means that the main list will always have exactly $N$ movies.</li>\n</ul>\n<p>You want your main list to become sorted in ascending order according to movie rating. Because you are too lazy to do this properly, you won't do anything to the list itself. Instead, at each step of the algorithm, you will decide which movie to insert into the main list and where to insert it, so that the number of steps after which the main list becomes sorted is minimized.</p>",
+  "input": "<p>The first line of input contains two integers $N$ and $K$ ($1 \\le N \\le 100\\,000$, $1 \\le K \\le 200\\,000$).</p>\n<p>The second line contains $N$ integers: the main list of movies.</p>\n<p>The third line contains $K$ integers: the secondary list of movies.</p>\n<p>It is guaranteed that the union of the main list ratings and the secondary list ratings equals to the set $\\{1, 2, \\ldots, N + K\\}$.</p>",
+  "output": "<p>Print a single line containing a single integer: the minimum number of steps needed to sort the main list, or the value $-1$ if it is not possible.</p>",
+  "samples": [
+    {
+      "input": "5 5\n3 1 5 2 4\n6 8 7 9 10\n",
+      "output": "4\n"
+    }
+  ],
+  "hint": "<p>During the first step, you will watch the movie with rating 5, because it is the best movie available. Then, you must replenish the main list. You do this by inserting the movie with rating 7 from the secondary list at the back of the main list. They now look like this:</p>\n<p style=\"text-align: center;\">$\\begin{eqnarray*} \\mathrm{Main} &amp; = &amp; [3~1~2~4~7] \\\\ \\mathrm{Secondary} &amp; = &amp; [6~8~9~10] \\end{eqnarray*}$</p>\n<p>During the second step, it is time you watch the worst movie, so you watch the movie with rating 1. You replace it with the movie with rating 8, which you again place at the end of the list.</p>\n<p style=\"text-align: center;\">$\\begin{eqnarray*} \\mathrm{Main} &amp; = &amp; [3~2~4~7~8] \\\\ \\mathrm{Secondary} &amp; = &amp; [6~9~10] \\end{eqnarray*}$</p>\n<p>During the third step, you watch the movie with rating 8 (best available), and add the movie with rating 9 at the end of the list.</p>\n<p style=\"text-align: center;\">$\\begin{eqnarray*} \\mathrm{Main} &amp; = &amp; [3~2~4~7~9] \\\\ \\mathrm{Secondary} &amp; = &amp; [6~10] \\end{eqnarray*}$</p>\n<p>During the fourth step, you watch the movie with rating 2 (worst available) and add the movie with rating 10 at the end of the list.</p>\n<p style=\"text-align: center;\">$\\begin{eqnarray*} \\mathrm{Main} &amp; = &amp; [3~4~7~9~10] \\\\ \\mathrm{Secondary} &amp; = &amp; [6] \\end{eqnarray*}$</p>\n<p>The main list is now sorted in ascending order, so the answer is 4. Note that, although all insertions in this example occurred at the end of the main list, this is not generally necessary. Movies may be inserted anywhere in the main list.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2017, Day 2: UniBuc Contest, Contest, Open Cup, 2017/2018 Season, Stage 1: Grand Prix of Romania",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

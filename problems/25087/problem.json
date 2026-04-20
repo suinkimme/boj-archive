@@ -1,0 +1,31 @@
+{
+  "id": 25087,
+  "title": "Hamiltonian Tour",
+  "time_limit": "25 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Hamilton is a Canadian city near Toronto, and a nice place to take a walking tour.</p>\n<p>In this problem, Hamilton is represented by a grid of unit cells with $2R$ rows and $2C$ columns, where each cell is either empty (represented by <code>*</code>) or contains a building (represented by <code>#</code>). The cell on the $i$-th row and $j$-th column is represented by $A_{i,j}$ where $1≤i≤2R$ and $1≤j≤2C$. It is not possible to enter cells containing buildings and you can only move to an adjacent cell that shares a side with the current cell (not just a corner). The grid is such that if it is divided evenly into $2×2$ blocks of unit cells, then in each of those blocks, either all four cells are empty, or all four cells are occupied by a building. Let us represent the block formed by $A_{2i-1,2j-1}$, $A_{2i-1,2j}$, $A_{2i,2j-1}$, and $A_{2i,2j}$ cells as $B_{i,j}$ where $1≤i≤R$ and $1≤j≤C$.</p>\n<p>Grace is a tourist in Hamilton and wants to visit all the empty cells in Hamilton. Grace is currently in cell $A_{1,1}$. Visiting the same cell twice could be boring for her. Hence, Grace wants to visit each of the empty cells exactly once and finally end in cell $A_{1,1}$. Can you help Grace by providing a string (consisting of directional moves {<code>N</code>, <code>E</code>, <code>S</code>, <code>W</code>} representing the unit moves to the north, east, south, or west respectively) which Grace can follow to visit every empty cell once and end again in $A_{1,1}$.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $T$. $T$ test cases follow. The first line of each test case contains two integers $R$ and $C$. The next $R$ lines of each test case contains $C$ characters each.</p>\n<p>The $j$-th character on the $i$-th of these lines represents the block $B_{i,j}$ formed by the following four cells: $A_{2i-1,2j-1}$, $A_{2i-1,2j}$, $A_{2i,2j-1}$, and $A_{2i,2j}$. If $B_{i,j}=$ <code>#</code>, all four of the cells in $B_{i,j}$ are occupied by a building. Otherwise, if $B_{i,j}=$ <code>*</code>, all four of the cells in $B_{i,j}$ are empty.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is the answer to the problem as follows.</p>\n<p>If there is no solution to the problem, $y$ should be <code>IMPOSSIBLE</code>. Otherwise, $y$ should be a sequence of characters from the set {<code>N</code>, <code>E</code>, <code>S</code>, <code>W</code>}, representing the unit moves (to the north, east, south, or west respectively) in a valid route, starting from $A_{1,1}$, as described in the statement above.</p>\n<p>Note that your last move should take you to $A_{1,1}$; this move does not count as visiting the same cell twice.</p>\n<p>If there are multiple valid solutions, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "3\n1 1\n*\n2 2\n**\n*#\n3 4\n****\n*#*#\n****\n",
+      "output": "Case #1: SENW\nCase #2: SSSENNEENWWW\nCase #3: ESSSSEEENNNWWNEEEEESWWSSSEESWWWWWWWNNNNN\n"
+    },
+    {
+      "input": "3\n3 1\n*\n*\n#\n1 3\n*#*\n3 4\n**#*\n**#*\n****\n",
+      "output": "Case #1: SSSENNNW\nCase #2: IMPOSSIBLE\nCase #3: ESSSSENNNNESSSSEEENNNNESSSSSWWWWWWWNNNNN\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Google, Kick Start, Google Kick Start 2022, Round B",
+  "level": 17,
+  "tags": [
+    "constructive",
+    "dfs",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

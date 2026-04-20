@@ -1,0 +1,31 @@
+{
+  "id": 33114,
+  "title": "Count DFS Tree",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are currently studying a tree traversal algorithm called the Depth First Search (DFS). Suppose you have a rooted tree of $n$ nodes (numbered from $1$ to $n$) with a depth of $K$ (numbered from $1$ to $K$). The root (the node at depth $1$) is located at node $1$. <strong>All leaves are located at the same depth</strong>, that is, at depth $K$. Node $i$ has an array of children nodes $c_i$, which could be empty if $i$ is a leaf node. The pseudocode of the algorithm is presented as follows.</p>\n<pre>\nDFS(u, depth):\n  let res be an empty array\n  append depth to res\n\n  for each v in c[u]:\n    let D be an array initialized with DFS(v, depth + 1)\n    for each x in D:\n      append x to res\n\nreturn res\n</pre>\n<p>Consider the trees in the following illustration. The return values of <code>DFS(1, 1)</code> for the tree on the left and the tree on the right are $[1, 2, 3, 3, 3]$ and $[1, 2, 3, 2, 3]$, respectively.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 254px; height: 125px;\"/></p>\n<p>Denote $f_K(n)$ as the number of <strong>distinct</strong> return values of <code>DFS(1, 1)</code> across all trees consisting of $n$ nodes and all leaves are located in depth $K$. You are given $M$ integers: $A_1, A_2, \\dots , A_M$. Determine the value of $f_K(A_1) \\times f_K(A_2) \\times \\cdots \\times f_K(A_M)$. As the answer can be very large, find the answer modulo $998\\, 244\\, 353$.</p>",
+  "input": "<p>The first line consists of two integers $K$ $M$ ($1 ≤ K, M ≤ 100\\, 000$).</p>\n<p>The following line consists of $M$ integers $A_i$ ($K ≤ A_i ≤ 200\\, 000$).</p>",
+  "output": "<p>Output a single integer representing the value of $f_K(A_1) \\times f_K(A_2) \\times \\cdots \\times f_K(A_M)$ modulo $998\\, 244\\, 353$.</p>",
+  "samples": [
+    {
+      "input": "3 2\n5 6\n",
+      "output": "6\n"
+    },
+    {
+      "input": "100000 1\n200000\n",
+      "output": "269130693\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2024",
+  "level": 15,
+  "tags": [
+    "math",
+    "dp",
+    "prefix_sum",
+    "combinatorics"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

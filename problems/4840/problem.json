@@ -1,0 +1,29 @@
+{
+  "id": 4840,
+  "title": "Tree Grafting",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Trees have many applications in computer science. Perhaps the most commonly used trees are rooted binary trees, but there are other types of rooted trees that may be useful as well. One example is ordered trees, in which the subtrees for any given node are ordered. The number of children of each node is variable, and there is no limit on the number. Formally, an ordered tree consists of a finite set of nodes T such that</p>\n<ul>\n<li>there is one node designated as the root, denoted root(T);</li>\n<li>the remaining nodes are partitioned into subsets T1, T2, ..., Tm, each of which is also a tree (subtrees).</li>\n</ul>\n<p>Also, define root(T1), ..., root(Tm) to be the children of root(T), with root(Ti) being the i−th child. The nodes root(T1), ..., root(Tm) are siblings.</p>\n<p>It is often more convenient to represent an ordered tree as a rooted binary tree, so that each node can be stored in the same amount of memory. The conversion is performed by the following steps:</p>\n<ol>\n<li>remove all edges from each node to its children;</li>\n<li>for each node, add an edge to its first child in T (if any) as the left child;</li>\n<li>for each node, add an edge to its next sibling in T (if any) as the right child.</li>\n</ol>\n<p>This is illustrated by the following:</p>\n<pre>\n         0                             0\n       / | \\                          /\n      1  2  3       ===&gt;             1\n        / \\                           \\\n       4   5                           2\n                                      / \\\n                                     4   3\n                                      \\\n                                       5\n</pre>\n<p>In most cases, the height of the tree (the number of edges in the longest root−to−leaf path) increases after the conversion. This is undesirable because the complexity of many algorithms on trees depends on its height.</p>\n<p>You are asked to write a program that computes the height of the tree before and after the conversion.</p>",
+  "input": "<p>The input is given by a number of lines giving the directions taken in a depth−first traversal of the trees. There is one line for each tree. For example, the tree above would give dudduduudu, meaning 0 down to 1, 1 up to 0, 0 down to 2, etc. The input is terminated by a line whose first character is #. You may assume that each tree has at least 2 and no more than 10000 nodes.</p>",
+  "output": "<p>For each tree, print the heights of the tree before and after the conversion specified above. Use the format:</p>\n<pre>\nTree t: h1 =&gt; h2</pre>\n<p>where t is the case number (starting from 1), h1 is the height of the tree before the conversion, and h2 is the height of the tree after the conversion.</p>",
+  "samples": [
+    {
+      "input": "dudduduudu\nddddduuuuu\ndddduduuuu\ndddduuduuu\n#\n",
+      "output": "Tree 1: 2 => 4\nTree 2: 5 => 5\nTree 3: 4 => 5\nTree 4: 4 => 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2007 Rocky Mountain Regional Contest",
+  "level": 14,
+  "tags": [
+    "dfs",
+    "dp",
+    "dp_tree",
+    "graphs",
+    "graph_traversal",
+    "trees"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.5
+}

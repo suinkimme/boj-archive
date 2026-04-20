@@ -1,0 +1,33 @@
+{
+  "id": 9915,
+  "title": "Cars",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>On a straight single-lane road, there are n cars parked with a space of d meters wide separating every two adjacent cars.  The cars will start to move successively in the same direction as follows.</p>\n<p>At the beginning, the first car moves at a speed of v meters per second, while the other cars are standing still.  After every 5 seconds from the beginning, every car checks the distance to the car in front or behind, and adapts its speed, if necessary.</p>\n<p>The first car adapts as follows.  If there is less than 80 meters space to the car behind it, it immediately increases its speed by 5 meters per second; if there is more than 100 meters space to the car behind it, it immediately decreases its speed by 5 meters per second; and otherwise it keeps its speed.</p>\n<p>All the other cars adapt as follows.  If there is less than 80 meters space to the car in front, it immediately decreases its speed by 5 meters per second; if there is more than 100 meters space to the car in front, it immediately increases its speed by 5 meters per second; and otherwise it keeps its speed.</p>\n<p>Against the laws of physics, any change of speed takes immediate effect.  If a car stands still and needs to decrease speed, it will remain standing still; the cars never go backwards.  A collision occurs, if the space between two cars becomes 0 or less.</p>\n<p>The goal is to find out, if a collision has occurred after t 5-second-intervals, and if not, how far the first car will have traveled.</p>\n<p>Note that the length of the cars is irrelevant.</p>",
+  "input": "<p>The input consists of a line containing the four integers n, v, d, and t in this order, and 1 ≤ n, v, d, t ≤ 1000.</p>",
+  "output": "<p>The output contains the number of meters traveled by the first car if there is no collision.  If there is a collision, the output file should contain -1.</p>",
+  "samples": [
+    {
+      "input": "5 10 80 3\n",
+      "output": "75\n"
+    },
+    {
+      "input": "2 60 100 14\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "20 5 5 100\n",
+      "output": "2550\n"
+    }
+  ],
+  "hint": "<p>Example 1.  There are n = 5 cars.  The first car starts with v = 10 meters per second, there are d = 80 meters between adjacent cars and there are t = 3 5-second-intervals.  First period: The first car will travel 10 × 5 = 50 meters in the first period, while all other cars stand still in this period.  Second period: At the beginning of the second period, the first car decelerates to a speed of 5 meters per second, because there is now 130 meters space to the car behind, and thus travels 5 × 5 = 25 meters in the second period.  At the beginning of the second period, the second car accelerates to a speed of 5 meters per second, because there is 130 meters space to the car in front, and thus travels 5 × 5 = 25 meters in the second period.  At the beginning of the second period, all other cars remain standing, because there still are 80 meters space to the car in front.  Third period: At the beginning of the third period, the first car decelerates to a speed of 0 meters per second, because there is again 130 meters space to the car behind, and thus travels 0 × 5 = 0 meter in the third period.  Answer: The first car will have traveled 50 + 25 + 0 = 75 meters after the first three periods.</p>\n<p>Example 2.  There are n = 2 cars.  The first car starts with v = 60 meters per second, there are d = 100 meters between adjacent cars and there are t = 14 5-second-intervals.  Answer: A collision occurs.</p>\n<p>Example 3.  There are n = 20 cars.  The first car starts with v = 5 meters per second, there are d = 5 meters between adjacent cars and there are t = 100 5-second-intervals.  Answer: The first car will have traveled 2550 meters.</p>",
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2001",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.583299994468689
+}

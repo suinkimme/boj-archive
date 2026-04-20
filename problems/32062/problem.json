@@ -1,0 +1,33 @@
+{
+  "id": 32062,
+  "title": "Grid Game",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Given a grid $A$ of size $N \\times M$. Each row is numbered from $1$ to $N$, and each column is numbered from $1$ to $M$. The cell at row $r$ and column $c$ is denoted as $(r, c)$.</p>\n<p>Cell $(r, c)$ contains an integer $A_{r,c}$, which can be either $-1$ or a non-negative integer. If $A_{r,c} = -1$, that means cell $(r, c)$ is <em>impassable</em>. Otherwise, cell $(r, c)$ is <em>passable</em>.</p>\n<p>Two players will alternately take turns playing on this grid. In one turn, a player will do the following.</p>\n<ol>\n<li>Choose a cell with <strong>positive</strong> integer on it, and the player starts standing on that cell. Let $x$ be the integer at this starting cell.</li>\n<li>Choose a <strong>non-negative</strong> integer $y$ such that $y &lt; x$.</li>\n<li>Suppose that the player is standing on cell $(r, c)$. Update the value of $A_{r,c}$ to $A_{r,c} \\oplus x \\oplus y$, where $\\oplus$ is the bitwise operator XOR.</li>\n<li>If either cell $(r + 1, c)$ or cell $(r, c + 1)$ is passable, the player must move to either passable cell of the player’s choosing. Then, repeat from step 3.</li>\n<li>If the player is no longer able to move, the player will step outside of the grid and end his turn.</li>\n</ol>\n<p>A player who is unable to play on his turn (i.e. no positive integer on his turn) loses the game, and the opposing player wins the game.</p>\n<p>If both players play optimally, determine who will win the game.</p>",
+  "input": "<p>Input begins with two integers $N$ $M$ ($1 ≤ N, M ≤ 500$) representing the size of grid $A$. Each of the next $N$ lines contains $M$ integers $A_{r,c}$ ($0 ≤ A_{r,c} ≤ 10^9$ or $A_{r,c} = -1$) representing the integer contained in cell $(r, c)$.</p>",
+  "output": "<p>If the first player win the game, output <code>first</code> in a single line. Otherwise, output <code>second</code> in a single line.</p>",
+  "samples": [
+    {
+      "input": "5 6\n0 0 0 0 0 0\n0 3 3 0 0 0\n0 0 3 -1 0 0\n0 0 3 3 3 3\n0 0 -1 -1 -1 -1\n",
+      "output": "first\n"
+    },
+    {
+      "input": "2 2\n1 1\n2 -1\n",
+      "output": "first\n"
+    },
+    {
+      "input": "1 1\n-1\n",
+      "output": "second\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, The 2022 ICPC Asia Jakarta Regional Contest",
+  "level": 21,
+  "tags": [
+    "game_theory",
+    "sprague_grundy"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 1.2592999935150146
+}

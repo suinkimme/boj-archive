@@ -1,0 +1,28 @@
+{
+  "id": 12150,
+  "title": "Typewriter Monkey (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Your publishing house has decided to use monkeys randomly typing at keyboards to write great works of literature. You are the supervisor for one monkey with a keyboard containing <strong>K</strong> keys, each of which is labeled with an uppercase English letter. (There may be multiple keys displaying the same letter.) The monkey will start with an empty string and repeat the following <strong>S</strong> times: choose a key from its keyboard uniformly at random and press it, adding a copy of that key's letter to the right end of the string. The final resulting string will have length <strong>S</strong>.<br/>\n<br/>\nYou have a <em>target word</em> of length <strong>L</strong> that you are hoping the monkey will type. (The target word will not necessarily be a real English word.) This target word may even appear multiple times in what the monkey types. (Overlapping instances count too -- for example, if \"ABA\" is the target word and the monkey types \"ABABA\", that contains two instances of the target.)<br/>\n<br/>\nYou plan to pay the monkey one banana for each instance of the target word that it types. When you go to inspect the monkey's work, you will bring along the minimum number of bananas that you need to <em>ensure</em> that you will always have enough bananas to pay the monkey, no matter what it has typed. Then, you will pay the monkey one banana for each instance of the target word that it <em>actually</em> typed. You will keep the remaining bananas that you brought with you.<br/>\n<br/>\nWhat is the expected number of bananas that you will get to keep?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>.  <strong>T</strong> test cases follow. Each consists of three lines. The first contains three space-separated positive integers: <strong>K</strong>, <strong>L</strong>, and <strong>S</strong>. The second contains a string of <strong>K</strong> uppercase English letters representing the monkey's keyboard. The third contains a string of <strong>L</strong> uppercase English letters representing the target word.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 100.</li>\n<li>1 ≤ <strong>K</strong> ≤ 100.</li>\n<li>1 ≤ <strong>L</strong> ≤ <strong>S</strong> ≤ 100.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #x: y\", where y is the expected number of bananas you will get to keep after paying the monkey.</p>\n<p>y will be considered correct if it is within an absolute or relative error of 10<sup>-6</sup> of the correct answer.</p>",
+  "samples": [
+    {
+      "input": "5\n7 6 6\nBANANAS\nMONKEY\n2 3 4\nAA\nAAA\n2 1 2\nAB\nB\n6 2 2\nGOOGLE\nGO\n26 11 100\nABCDEFGHIJKLMNOPQRSTUVWXYZ\nROSENCRANTZ\n",
+      "output": "Case #1: 0.0\nCase #2: 0.0\nCase #3: 1.0\nCase #4: 0.8888889\nCase #5: 9.0\n"
+    }
+  ],
+  "hint": "<p>Note that Case #5 is not within the limits for the Small dataset.<br/>\n<br/>\nIn Case #1, the monkey has no chance of typing the target word \"MONKEY\" even once (because his keyboard lacks most of the letters in \"MONKEY\"), so you do not bring any bananas along when you visit, and of course you do not pay any. Poor monkey!<br/>\n<br/>\nIn Case #2, the monkey is guaranteed to type \"AAAA\", which has two overlapping instances of the target word \"AAA\". You will bring two bananas and then pay both.<br/>\n<br/>\nIn Case #3, the monkey will produce the following outputs with equal probability (1/4 each): \"AA\", \"AB\", \"BA\", \"BB\". These have 0, 1, 1, and 2 instances of the target word, respectively. You must bring 2 bananas to be ready for the \"BB\" case, but you will on average pay (0 + 1 + 1 + 2) / 4 = 1.<br/>\n<br/>\nIn Case #4, the monkey has a 1/3 chance of typing a \"G\" first and a 1/3 chance of typing an \"O\" second, for a 1/9 chance of typing \"GO\". You will bring one banana and give it up 1/9 of the time.<br/>\n<br/>\nIn Case #5, the monkey could in theory type \"ROSENCRANTZ\" up to nine times, but the chances of this happening even once are so small that they are negligible compared to the acceptable margin of error for answers.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2015, Round 1C",
+  "level": 16,
+  "tags": [
+    "math",
+    "string",
+    "combinatorics",
+    "probability",
+    "linearity_of_expectation"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 1.8485000133514404
+}

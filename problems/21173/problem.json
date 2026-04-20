@@ -1,0 +1,31 @@
+{
+  "id": 21173,
+  "title": "ICPC Record Matching",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>When using \"software-as-a-service\" offerings, a user often has a problem of matching records stored by the different services and determining if they refer to the same entity (person, account, order, etc.)  The ICPC is no exception.  While each participant has a record in the central ICPC registration system, additional \"outside\" applications may be used to collect and process information for functionality not provided by the central system.</p>\n<p>Once an \"outside\" application is used, it becomes necessary to match the entries from both systems.  Unfortunately, in spite of careful directions, sometimes it is not clear if records correspond to the same person.  The primary sorts of mis-matches that occur are these:</p>\n<ol>\n<li> E-mail addresses do not match.  This could be due to a misspelling, such as <em>.eud</em> instead of <em>.edu,</em> or different e-mail addresses that a participant used in the central ICPC system and the outside system.</li>\n<li> Exact names do not match.  This could be due to a typing error, or varying use of legal names and nicknames.</li>\n</ol>\n<p>Your team is to write a program that will read lists of people from the ICPC system and an outside system and determine which records in each system do not match a record in the other system.  Two entries are considered matched if <em>either</em> the e-mail addresses are an exact match <em>or</em> the last name and first name are an exact match.</p>",
+  "input": "<p>Input to your program is two lists of name and e-mail address records.  Each record consists of a first name, a last name, and an e-mail address, one per line, separated from each other by tabs.  The first list is the records from the central ICPC registration system. This list ends with an empty line.  The second list is the records from the outside application.  The second list ends with the end-of-file. (These lists are suitable test data, not actual ICPC data.)</p>\n<p>E-mail addresses do not exceed $64$ characters in length. E-mail addresses consist of lower-case and upper-case English letters, digits, and the special characters at-sign, underscore, hyphen, and period.  E-mail addresses do not begin with special characters.</p>\n<p>First and last names do not exceed $24$ characters in length.  Names consist of lower-case and upper-case English letters and hyphens. Names do not begin with hyphens.</p>\n<p>Each input list will contain at least $1$ but not more than $2\\,000$ entries.  E-mail addresses and (first name, last name) pairings will be unique within each list.</p>",
+  "output": "<p>Your program is to print lines showing the records from each list that could not be matched to the other list. Your program is to first print the central ICPC registration records that could not be matched, one per line.  Each line should consist of the letter \"<code>I</code>\", a single space, the e-mail address, a single space, the last name, a single space, and the first name.  These are to be printed in lexicographical e-mail address order.  The e-mail addresses, last names, and first names are to be printed exactly the way they appear in the input.  Once all such records are printed, the outside application records that could not be matched are to be printed the same way, except that each line should begin with the letter \"<code>O</code>\".</p>\n<p>Case is to be ignored for all record matching comparisons and sorting.</p>\n<p>Should all records from each system have a match in the other system, your program is to print a line containing only the string \"<code>No mismatches.</code>\".</p>",
+  "samples": [
+    {
+      "input": "Bob        Smith   bsmith@gmail.com\nRandy   Nguyen  rnguyen@gmail.com\nBetty   Jones   jones123@gmail.com\nSallie  Li      SalLi@aol.com\n\nRobert  Smith   bsmith@abc.edu\nQuan    Nguyen  qnguy@xyz.edu\nBetty   Jones   jones123@gmail.com\nSarah   Leung   sleung@mno.edu\n",
+      "output": "I bsmith@gmail.com Smith Bob\nI rnguyen@gmail.com Nguyen Randy\nI SalLi@aol.com Li Sallie\nO bsmith@abc.edu Smith Robert\nO qnguy@xyz.edu Nguyen Quan\nO sleung@mno.edu Leung Sarah\n"
+    },
+    {
+      "input": "Camellia   Woodley Camellia_Woodley3398@deavo.com\nLeroy   Thomas  Leroy_Thomas7852@fuliss.net\nFreya   Campbell        Freya_Campbell9926@ubusive.com\nEduardo Allen   Eduardo_Allen3976@bauros.biz\nDanny   West    Danny_West6110@twipet.com\n\nEd      Allen   eduardo_allen3976@bauros.biz\nDaniel  West    Danny_West6110@twipet.com\ncamellia        woodley camellia_woodley3398@deavo.com\nLeroy   Thomas  Leroy_Thomas7852@fuliss.net\nfreya   Campbell        campbellf@deavo.net\n",
+      "output": "No mismatches.\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North Central North America Regional, NCNA 2020, ICPC, Regionals, North America, Southern California Regional, 2020 Southern California Regional",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "string",
+    "sorting",
+    "parsing"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

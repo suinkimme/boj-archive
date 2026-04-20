@@ -1,0 +1,34 @@
+{
+  "id": 14338,
+  "title": "Integeregex (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>In this problem, a valid regular expression is one of the following. In the following descriptions, E<sub>1</sub>, E<sub>2</sub>, etc. denote (not necessarily different) valid regular expressions.</p>\n<ul>\n<li>A decimal digit: that is, one of <code>0 1 2 3 4 5 6 7 8 9</code>.</li>\n<li>Concatenation: E<sub>1</sub>E<sub>2</sub>.</li>\n<li>Disjunction: <code>(</code>E<sub>1</sub><code>|</code>E<sub>2</sub> <code>|</code>...<code>|</code>E<sub>N</sub><code>)</code>, for at least two expressions. Note that the outer parentheses are required.</li>\n<li>Repetition: <code>(</code>E<sub>1</sub><code>)*</code>. Note that the outer parentheses are required.</li>\n</ul>\n<p>For example, <code>7</code>, <code>23</code>, <code>(7)*</code>, <code>(45)*</code>, <code>(1|2|3)</code>, <code>((2)*|3)</code>, <code>(1|2|3)</code>, and <code>((0|1))*</code> are valid expressions. <code>(7)</code>, <code>4|5</code>, <code>4*</code>, <code>(1|)</code>, and <code>(0|1)*</code> are not.</p>\n<p>We say that an expression E matches a string of digits D if and only if at least one of the following is true:</p>\n<ul>\n<li>E = D.</li>\n<li>E = E<sub>1</sub>E<sub>2</sub> and there exist D<sub>1</sub> and D<sub>2</sub> such that D = D<sub>1</sub>D<sub>2</sub> and E<sub>i</sub> matches D<sub>i</sub>.</li>\n<li>E = <code>(</code>E<sub>1</sub><code>|</code> E<sub>2</sub><code>|</code>...<code>|</code> E<sub>N</sub><code>)</code> and at least one of the E<sub>i</sub> matches D.</li>\n<li>E = <code>(</code>E<sub>1</sub><code>)*</code> and there exist D<sub>1</sub>, D<sub>2</sub>, ..., D<sub>N</sub> for some non-negative integer N such that D = D<sub>1</sub>D<sub>2</sub>...D<sub>N</sub> and E<sub>1</sub> matches each of the D<sub>i</sub>. In particular, note that <code>(</code>E<sub>1</sub><code>)*</code>matches the empty  string.</li>\n</ul>\n<p>For example, the expression <code>((1|2))*3</code> matches <code>3</code>, <code>13</code>, <code>123</code>, and <code>2221123</code>, among other strings. However, it does not match <code>1234</code>, <code>3123</code>, <code>12</code>, or <code>33</code>, among other strings.</p>\n<p>Given a valid regular expression R, for how many integers between A and B, inclusive, does R match the integer's base 10 representation (with no leading zeroes)?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T test cases follow; each consists of two lines. The first line has two positive integers A and B: the inclusive limits of the integer range we are interested in. The second has a string R consisting only of characters in the set <code>0123456789()|*</code>, which is guaranteed to be a valid regular expression as described in the statement above.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ T ≤ 100.</li>\n<li>1 ≤ A ≤ B ≤ 10<sup>18</sup>.</li>\n<li>1 ≤ length of R ≤ 30.</li>\n<li>R contains no <code>|</code> characters.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the number of integers in the inclusive range [A, B] that the the regular expression R matches.</p>",
+  "samples": [
+    {
+      "input": "8\n1 1000\n(0)*1(0)*\n379009 379009\n379009\n1 10000\n(12)*(34)*\n4 5\n45\n1 100\n((0|1))*\n1 50\n(01|23|45|67|23)\n1 1000000000000000000\n((0|1|2|3|4|5|6|7|8|9))*\n1 1000\n1(56|(((7|8))*9)*)\n",
+      "output": "Case #1: 4\nCase #2: 1\nCase #3: 5\nCase #4: 0\nCase #5: 4\nCase #6: 2\nCase #7: 1000000000000000000\nCase #8: 6\n"
+    }
+  ],
+  "hint": "<p>Note that sample cases 5 through 8 would not appear in the Small dataset.</p>\n<p>In sample case 1, the matches in range are 1, 10, 100, and 1000.</p>\n<p>In sample case 2, the match in range is 379009.</p>\n<p>In sample case 3, the matches in range are 12, 34, 1212, 1234, and 3434.</p>\n<p>In sample case 4, there are no matches in range.</p>\n<p>In sample case 5, the matches in range are 1, 10, 11, and 100.</p>\n<p>In sample case 6, the matches in range are 23 and 45.</p>\n<p>In sample case 7, it is possible to form any number in the range.</p>\n<p>In sample case 8, the matches in range are 1, 19, 156, 179, 189, and 199.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2016, World Finals",
+  "level": 25,
+  "tags": [
+    "data_structures",
+    "dp",
+    "dp_digit",
+    "graphs",
+    "graph_traversal",
+    "hash_set",
+    "parsing",
+    "regex",
+    "string",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.100000023841858
+}

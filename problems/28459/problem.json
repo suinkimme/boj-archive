@@ -1,0 +1,59 @@
+{
+  "id": 28459,
+  "title": "Judging Forbidden Moves",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>아티초크는 오목 AI 토너먼트 대회인 Gomocup에 참여하려고 한다. 아티초크가 참여하려고 하는 부문은 Renju 부문으로, 렌주룰을 기반으로 진행된다.</p>\n<p>렌주룰은 선 플레이어의 이점을 줄이기 위해 흑돌의 수를 제한하는 금수 규정을 두었는데, 자세한 내용은 다음과 같다.</p>\n<ul>\n<li>렌주룰에서 흑은 장목, 44, 33을 둘 수 없다. 이 규칙으로 인해 둘 수 없게 된 자리를 각각 <strong>장목금수</strong>, <strong>44금수</strong>, <strong>33금수</strong>라고 한다.</li>\n<li><strong>장목</strong>이란, 가로, 세로 또는 대각선의 일직선상에서 6개 이상의 돌이 나란히 붙어 있는 모양을 의미한다.</li>\n<li><strong>44</strong>란, 흑이 한 수를 뒀을 때, 2개 이상의 4가 동시에 만들어지는 모양을 의미한다.</li>\n<li><strong>4</strong>란, 다섯 칸의 범위 내에 같은 색의 돌이 4개 있고, 돌 하나를 더 붙여서 5목을 완성할 수 있는 자리가 한 군데 또는 두 군데 존재하는 모양을 의미하며, 4는 다시 열린4와 닫힌4로 나뉜다.</li>\n<li><strong>5목</strong>이란, 가로, 세로 또는 대각선의 일직선상에서 정확히 5개의 돌이 나란히 붙어 있는 모양을 의미한다.</li>\n<li><strong>열린4</strong>란, 돌 하나를 더 붙여서 5목을 완성할 수 있는 자리가 두 군데인 4를 의미한다.</li>\n<li><strong>닫힌4</strong>란, 돌 하나를 더 붙여서 5목을 완성할 수 있는 자리가 한 군데인 4를 의미한다.</li>\n<li><strong>33</strong>이란, 흑이 한 수를 뒀을 때, 2개 이상의 열린3이 동시에 만들어지는 모양을 의미한다.</li>\n<li><strong>열린3</strong>이란, 돌 하나를 더 붙여서 열린4를 완성할 수 있는 모양을 의미한다.</li>\n<li>5목은 다른 어떤 것보다도 우선순위가 높아, 5목을 완성한 경우 즉시 해당 플레이어의 승리로 게임이 종료되며, 해당 수로 인해 열린3, 열린4, 금수 등의 조건이 충족되더라도 그것을 인정하지 않는다.</li>\n</ul>\n<p>아티초크는 AI에게 금수 판정을 학습시키는 것을 최우선 과제로 삼았고, 학습을 위해 대량의 기보 데이터를 준비했다. 하지만 구현에 약한 아티초크는 금수 판정 로직을 구현하지 못하여, 준비한 데이터에 라벨이 잘 부여됐는지 판단할 수 없었다. 아티초크를 위해 데이터가 올바른지 대신 검증해 보자.</p>",
+  "input": "<p>처음 15줄에는 15개의 알파벳으로 기보 데이터, 즉 오목판의 상태가 주어진다. 검은 오목알이 놓인 자리는 <code>B</code>, 흰 오목알이 놓인 자리는 <code>W</code>, 오목알이 놓이지 않은 자리는 <code>X</code>로 표시되며, 각 알파벳은 <strong>붙어서</strong> 입력으로 주어진다. 이때, 주어진 오목판에는 장목과 오목이 존재하지 않음이 보장된다.</p>\n<p>16번째 줄에는 금수를 판정할 위치를 나타내는 두 정수 $x, y (1 \\le x, y \\le 15)$가 주어진다. 이는 x행 y열에 흑돌을 두었을 때 금수가 되는지 여부를 판정해야 함을 의미한다.</p>\n<p>17번째 줄에는 데이터의 라벨이 입력으로 하여 출력한 결과가 주어진다. 장목금수 데이터는 <code>6</code>, 44금수 데이터는 <code>44</code>, 33금수 데이터는 <code>33</code>, 금수가 아닌 데이터는 <code>X</code>가 입력으로 주어진다. 이때, 라벨의 우선순위는 장목금수, 44금수, 33금수 순으로 높으며, 16번째 줄에서 주어진 자리가 여러 종류의 금수 조건을 충족하는 경우, 그중 우선순위가 가장 높은 라벨을 부여하는 것을 원칙으로 한다.</p>",
+  "output": "<p>데이터가 올바르다면 <code>AC</code>를, 올바르지 않다면 <code>WA</code>를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "XXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXBXXXXX\nXXXXBXXWWXXXXXX\nXXXXXWBBWXXXXXX\nXXXXXXWBWWXXXXX\nXXXXXXXBXXBXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\n10 9\n33\n",
+      "output": "AC\n"
+    },
+    {
+      "input": "XXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXWBWWWBXXXXX\nXXXXXXBBXXXXXXX\nXXXXXXWXWWXXXXX\nXXXXXXWBBXXXXXX\nXXXXXXXBBXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\n9 8\n44\n",
+      "output": "AC\n"
+    },
+    {
+      "input": "XXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXBXXXXXXXXXX\nXXXXXWXXXWXXXXX\nXXXXBWXXBXXXXXX\nXXXXWXBWWXXXXXX\nXXXBXBWBWXXXXXX\nXXXXWWXBWBXXXXX\nXXBBBWBBBWXXXXX\nXXBBWWBWBBBXXXX\nXBWWXBWXXWXXXXX\nXXBWXBBWWWXXXXX\nXBWWWWBWBWXXXXX\nXWXWXBXBXWXXXXX\nXXXBXXXXXBXXXXX\n11 5\n6\n",
+      "output": "AC\n"
+    },
+    {
+      "input": "XXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXWXWXXXX\nXXXXBWBBXXXXXXX\nXXXXXWXBXXWXXXX\nXXXXXXBWXXXXXXX\nXXXXXXXBXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\n8 9\nX\n",
+      "output": "AC\n"
+    },
+    {
+      "input": "XXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXWXXXXXXXX\nXXXXXXWWBWXXXXX\nXXXXXXWBWBXXXXX\nXXXXXXXBXBXXXXX\nXXXXXXWBXXXXXXX\nXXXXXXBXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\n8 7\n33\n",
+      "output": "WA\n"
+    },
+    {
+      "input": "XXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXWXXXXXXXXX\nXXXXXBBXXWWXXXX\nXXXXXXXXBXXXXXW\nXXXXWXBBXXXXWBX\nXXXXWXWBWBBWBXX\nXXXXXXBXWXWXXXX\nXXXXXXXXXBBWXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\n7 9\nX\n",
+      "output": "WA\n"
+    },
+    {
+      "input": "XXXXXWXXXXXXXXX\nXXXXXBXXXXXXXXX\nXXXXXBWXXXXXXXX\nXBXXWBWBXXXXXXX\nXXWWBBXWBXXXXXX\nXXWWBWBWWWBXXXX\nXWBBWXXBBWWXXXX\nBXBWXXWBWBBBWXX\nXWBXXXBWXWBWBXX\nXBWXXBBXBBBWXXX\nWXWXWWBWWWWBWXX\nXXXBXBBWBWWWBXX\nXXXXBXWBBWBXBWX\nXXXBXXXXXXXXXXX\nXXWXXXXXXXXXXXX\n10 8\n6\n",
+      "output": "WA\n"
+    },
+    {
+      "input": "XXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXWXXXWXXX\nXXXXXXWBXXXBXXX\nXXXXXXWBWXWBXXX\nXXXXXXXBWBWBWXX\nXXXXXXXBWBWBWXX\nXXXXXXXXBXBXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\n9 10\n33\n",
+      "output": "WA\n"
+    },
+    {
+      "input": "XXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXWXBWBXXXXXX\nXXXXWWBBWXXXXXX\nXXXXXBXBBWXXXXX\nXXXXWBBXXWBXXXX\nXXXXBXWWXXXXXXX\nXXXBXXXXXXXXXXX\nXXWXXXXWXXXXXXX\nXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXX\n9 7\n44\n",
+      "output": "WA\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 유틸컵, 제1회 유틸컵 - Chapter 1, artichoke42, chogahui05, index, kiwiyou, snrnsidy, tony9402, utilforever",
+  "level": 19,
+  "tags": [
+    "implementation",
+    "simulation",
+    "case_work",
+    "backtracking"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 3.478300094604492
+}

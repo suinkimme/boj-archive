@@ -1,0 +1,33 @@
+{
+  "id": 21810,
+  "title": "MalnaRISC",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>It’s early in the morning and Croatian IOI team is starting to assemble at the Zagreb airport. The trip is long with the final destination being Singapore with a layover in Amsterdam. Mr. Malar drank the last drop of his grapefruit-based beverage and ordered the team to proceed to the gate. As it usually happens, he disappeared after the security check and somehow managed to show up just a few minutes before boarding.</p>\n<p><strong>Olympian 1:</strong> Where were you?! I swear you’re gonna miss the next flight if you keep doing this.</p>\n<p><strong>Mr. Malnar:</strong> It’s not my fault this time, the security wouldn’t let me through. They thought I might be a terrorist.</p>\n<p><strong>Olympian 2:</strong> A terrorist?! You wouldn’t hurt a fly. What happened?</p>\n<p><strong>Mr. Malnar:</strong> Ah, they found <em>MalnaRISC</em> (<em>Reduced Instruction Set Computer</em>) and refused to believe me that I am capable of building my own processor. They let me go once I explained how efficient it is at sorting integers.</p>\n<p><strong>Olympian 3:</strong> I also wouldn’t believe you. As a matter of fact, I still don’t. What makes your processor so interesting?</p>\n<p><strong>Mr. Malnar:</strong> You are members of our national IOI team, I shouldn’t need to explain anything to you. Here is the documentation, figure it out yourselves.</p>\n<p><strong>Olympian 4:</strong> Give that to me, I’ll solve this year’s COI on it using the assembly.</p>\n<p>The assembly language for <em>MalnaRISC</em> contains a single instruction:</p>\n<ul>\n<li><code>CMPSWP</code> $R_i$ $R_j$ – swaps the values in registers $R_i$ and $R_j$ if $R_i &gt; R_j$ holds.</li>\n</ul>\n<p>What’s special about <em>MalnaRISC</em> is that all instructions written in the same line will execute in parallel during a single nanosecond. Naturally, each register can only be used at most once as an argument in a single line.</p>\n<p>It is known that registers $R_1, R_2, \\dots , R_N$ contain some integers. Write an efficient code in assembly that sorts these values in non-descending order.</p>",
+  "input": "<p>The only line contains an integer $N$ from the task description.</p>",
+  "output": "<p>Output an integer $t$ into the first line denoting the execution time of your program (in nanoseconds).</p>\n<p>In the next $t$ lines output the assembly code that sorts the values in the $N$ registers. Each line should contain at least one instruction, and each register should only be mentioned once in a single line. Each instruction needs to be of the form \"<code>CMPSWP</code> $R_i$ $R_j$\" ($1 \\le i, j \\le N$), and the instructions in a single line need to be separated by a single space character.</p>",
+  "samples": [
+    {
+      "input": "2\n",
+      "output": "1\nCMPSWP R1 R2\n"
+    },
+    {
+      "input": "3\n",
+      "output": "3\nCMPSWP R1 R2\nCMPSWP R1 R3\nCMPSWP R2 R3\n"
+    },
+    {
+      "input": "4\n",
+      "output": "4\nCMPSWP R1 R3\nCMPSWP R2 R4\nCMPSWP R1 R2 CMPSWP R3 R4\nCMPSWP R2 R3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2021, Croatian Olympiad in Informatics 2021",
+  "level": 24,
+  "tags": [
+    "ad_hoc",
+    "sorting"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 3.5
+}

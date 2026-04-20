@@ -1,0 +1,30 @@
+{
+  "id": 5468,
+  "title": "Islands",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are visiting a park which has N islands. From each island i, exactly one bridge was constructed. The length of that bridge is denoted by L<sub>i</sub>. The total number of bridges in the park is N. Although each bridge was built from one island to another, now every bridge can be traversed in both directions. Also, for each pair of islands, there is a unique ferry that travels back and forth between them.</p>\n<p>Since you like walking better than riding ferries, you want to maximize the sum of the lengths of the bridges you cross, subject to the constraints below.</p>\n<ul>\n<li>You can start your visit at an island of your choice.</li>\n<li>You may not visit any island more than once.</li>\n<li>At any time you may move from your current island S to another island D that you have not visited before. You can go from S to D either by:\n\t<ul>\n<li>Walking: Only possible if there is a bridge between the two islands. With this option the length of the bridge is added to the total distance you have walked, or</li>\n<li>Ferry: You can choose this option only if D is not reachable from S using any combination of bridges and/or previously used ferries. (When checking whether it is reachable or not, you consider all paths, including paths passing through islands that you have already visited.)</li>\n</ul>\n</li>\n</ul>\n<p>Note that you do not have to visit all the islands, and it may be impossible to cross all the bridges.</p>\n<p>Write a program that, given the N bridges along with their lengths, computes the maximum distance you can walk over the bridges obeying the rules described above.</p>",
+  "input": "<p>Your program must read from the standard input the following data:</p>\n<ul>\n<li>Line 1 contains the integer N, the number of islands in the park. Islands are numbered from 1 to N, inclusive. (2 ≤ N ≤ 1,000,000)</li>\n<li>Each of the next N lines describes a bridge. The ith of these lines describes the bridge constructed from island i using two integers separated by a single space. The first integer represents the island at the other endpoint of the bridge, the second integer represents the length L<sub>i</sub> of the bridge. You may assume that for each bridge, its endpoints are always on two different islands. (1 ≤ L<sub>i</sub> ≤ 100,000,000)</li>\n</ul>",
+  "output": "<p>Your program must write to the standard output a single line containing one integer, the maximum possible walking distance.</p>\n<p>NOTE 1: For some of the test cases the answer will not fit in a 32‐bit integer, you might need int64 in Pascal or long long in C/C++ to score full points on this problem.  </p>\n<p>NOTE 2: When running Pascal programs in the contest environment, it is significantly slower to read in 64‐bit data types than 32‐bit data types from standard input even when the values being read in fit in 32 bits. We recommend that you read the input data into 32‐bit data types.</p>",
+  "samples": [
+    {
+      "input": "7\n3 8\n7 2\n4 2\n1 4\n1 9\n3 4\n2 3\n",
+      "output": "24\n"
+    }
+  ],
+  "hint": "<p><img alt=\"\" src=\"1.png\" style=\"height:190px; width:339px\"/></p>\n<p>The N=7 bridges in the sample are (1‐3), (2‐7), (3‐4), (4‐1), (5‐1), (6‐3) and (7‐2). Note that there are two different bridges connecting islands 2 and 7. </p>\n<p>One way that you can achieve maximum walking distance follows:</p>\n<ul>\n<li>Start on island 5.  </li>\n<li>Walk the bridge of length 9 to reach island 1.</li>\n<li>Walk the bridge of length 8 to reach island 3.</li>\n<li>Walk the bridge of length 4 to reach island 6.</li>\n<li>Take the ferry from island 6 to island 7.</li>\n<li>Walk the bridge of length 3 to reach island 2.</li>\n</ul>\n<p>By the end you are on island 2 and your total walking distance is 9+8+4+3 = 24. The only island that was not visited is island 4. Note that at the end of the trip described above you can not visit this island any more. More precisely:</p>\n<ul>\n<li>You are not able to visit it by walking, because there is no bridge connecting island 2 (where you currently stand) and island 4.</li>\n<li>You are not able to visit it using a ferry, because island 4 is reachable from island 2, where you currently stand. A way to reach it: use the bridge (2‐7), then use a ferry you already used to get from island 7 to island 6, then the bridge (6‐3), and finally the bridge (3‐4).</li>\n</ul>",
+  "source": "Olympiad, International Olympiad in Informatics, IOI 2008, Day 1",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "deque",
+    "dp",
+    "dp_tree",
+    "functional_graph",
+    "graphs",
+    "trees"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 4.529399871826172
+}

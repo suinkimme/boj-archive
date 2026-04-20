@@ -1,0 +1,29 @@
+{
+  "id": 2892,
+  "title": "심심한 준규",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>해빈이는 준규에게 메세지를 받았다. 준규는 세계 최고 수준의 암호학자이기 때문에 해빈이에게 암호로 메세지를 보낸다. 이번에 준규는 One Time Pad(OTP) 암호화 방식을 사용하기로 했다. 준규는 OTP방식을 제대로 적용하면 \b절대 해독할 수 없다는 것을 알기 때문에, 해빈이가 해석할 수 있도록 몇 가지 힌트를 같이 보내기로 했다.</p>\r\n\r\n<p>준규는 메세지에 항상 영소문자, 온점(&#39;.&#39;), 공백 (&#39; &#39;, ASCII코드 32)만 쓴다. 그리고 key값으로는 항상 &#39;0&#39;부터 &#39;9&#39;까지의 숫자만 쓴다. 이 사실을 알고 있는 해빈이는 이를 이용해 메세지에 있는 온점과 공백의 위치를 알 수 있다는 것을 깨닫고, 당신에게 프로그램으로 만들어달라고 부탁했다.</p>\r\n\r\n<p>준규가 이런 메세지를 보낸 게 한두 번이 아니기 때문에 해빈이는 OTP 암호화 방식을 알고 있다. 예를 들어&nbsp;&quot;0120123&quot;을 key로 사용해서&nbsp;&quot;abc efg&quot;라는 문자열을 암호화하면 아래와 같다.</p>\r\n\r\n<table class=\"table table-bordered td-center th-center\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\nabc efg\r\n0120123</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\n61 62 63 20 65 66 67\r\n30 31 32 30 31 32 33</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre>\r\n51 53 51 10 54 54 54</pre>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n\t<tfoot>\r\n\t\t<tr>\r\n\t\t\t<th>Start</th>\r\n\t\t\t<th>ASCII hexadecimal</th>\r\n\t\t\t<th>excrypted message</th>\r\n\t\t</tr>\r\n\t</tfoot>\r\n</table>\r\n\r\n<p>먼저 key와 메세지 원문을 ASCII 인코딩을 사용해&nbsp;16진수로 변환한다. 그리고 변환한 key와 원문을 각각 차례대로 XOR 연산한다. 그 결과가 암호화 된 메세지이다.</p>\r\n",
+  "input": "<p>입력에 첫 줄에는 암호화 된 메세지의 길이인 정수&nbsp;N (1 &le; N &le; 1000)이 주어진다.</p>\r\n\r\n<p>다음 줄에는 암호화 된 메세지가&nbsp;N개의 16진수 정수로 주어진다. 이 수는&nbsp;0(10진수)&nbsp;이상&nbsp;127(10진수)&nbsp;이하이다.</p>\r\n",
+  "output": "<p>N개의 문자를 한 줄에 출력한다. 만약 i번째 글자가 문자라면 &#39;-&#39;를, 아니라면 &#39;.&#39;을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "7\n51 53 51 10 54 54 54\n",
+      "output": "---.---\n"
+    },
+    {
+      "input": "7\n53 53 51 54 54 51 10\n",
+      "output": "------.\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2009/2010, Contest #6, arine",
+  "level": 10,
+  "tags": [
+    "ad_hoc",
+    "bitmask"
+  ],
+  "accepted_user_count": 289,
+  "submission_count": null,
+  "average_tries": 2.0518999099731445
+}

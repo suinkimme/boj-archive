@@ -1,0 +1,22 @@
+{
+  "id": 4833,
+  "title": "Papa",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>While cleaning your parents' attic, you discovered a box containing many documents describing the relationships among your ancestors. Given these documents, you are interested in answering a number of questions about the relationships implied by the document. Fortunately, all your ancestors have unique names so it is possible to make many inferences without any confusion.</p>\n<p>It is assumed that all relationships (implied or given) satisfy the following:</p>\n<ul>\n<li>A person can be either male, female, or have an unknown (undetermined by the data set) sex;</li>\n<li>a person can have at most one spouse (of the opposite sex), and X is Y's wife if and only if Y is X's husband;</li>\n<li>a person can have at most one mother and at most one father that can be inferred from the given data;</li>\n<li>if a person has a mother and father, then the mother and father are married;</li>\n<li>the children of a person's spouse are that person's children as well;</li>\n<li>the spouse of a son (or daughter) is not considered to be a daughter (or son). In other words, \"sons\" and \"daughters\" refer to biological sons and daughters.</li>\n</ul>\n<p>The information provided will be consistent, and you may assume there are no hidden relationships that are not explicitly stated or implied by the above rules of consistency.</p>",
+  "input": "<p>The first part of the input consists of a number of lines describing the known relationships. Each relationship is listed on one line in the form:</p>\n<pre>\nNAME is NAME's RELATIONSHIP.</pre>\n<p>where NAME is a lowercase alphabetic word (never 'is'), and RELATIONSHIP is one of</p>\n<ul>\n<li>wife</li>\n<li>husband</li>\n<li>daughter</li>\n<li>son</li>\n<li>mother</li>\n<li>father</li>\n</ul>\n<p>This first part is terminated by a blank line. You may assume that there is at least one known relationship given, and there are at most 100 distinct names mentioned in the known relationships.</p>\n<p>This is followed by a list of questions (one per line) of the form:</p>\n<pre>\nis NAME NAME's RELATIONSHIP?</pre>\n<p>where NAME is as before, but RELATIONSHIP is one of</p>\n<ul>\n<li>wife</li>\n<li>husband</li>\n<li>daughter</li>\n<li>son</li>\n<li>mother</li>\n<li>father</li>\n<li>niece: X is a niece of Y if there are W and Z such that X is a daughter of W, and W and Y are distinct children of Z.</li>\n<li>nephew: X is a nephew of Y if there are W and Z such that X is a son of W, and W and Y are distinct children of Z.</li>\n<li>grandfather: X is a grandfather of Y if there is Z such that X is a father of Z, and Z is the father or mother of Y.</li>\n<li>grandmother: X is a grandmother of Y if there is Z such that X is a mother of Z, and Z is the father or mother of Y.</li>\n<li>grandson: X is a grandson of Y if there is Z such that X is a son of Z, and Z is a child of Y.</li>\n<li>granddaughter: X is a granddaughter of Y if there is Z such that X is a daughter of Z, and Z is a child of Y.</li>\n</ul>\n<p>All names appearing in the questions will be mentioned in the list of known relationships. The list of questions is terminated by the end of file.</p>",
+  "output": "<p>For each question, print on a line yes or no if the answer of the question can be determined, or unknown if the answer may be yes or no because the sex of the relevant person(s) in the question cannot be determined from the known relationships.</p>",
+  "samples": [
+    {
+      "input": "john is mary's husband.\njohn is tom's father.\nmary is jane's mother.\njane is anna's mother.\n\nis mary john's wife?\nis jane mary's daughter?\nis tom mary's husband?\nis anna jane's daughter?\n",
+      "output": "yes\nyes\nno\nunknown\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2009 Rocky Mountain Regional Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

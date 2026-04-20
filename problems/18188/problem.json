@@ -1,0 +1,44 @@
+{
+  "id": 18188,
+  "title": "다오의 데이트",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>12월인 오늘, 크레이지 파크의 버블힐에는 첫 눈이 내렸다. 새하얗고 예쁜 첫 눈을 디지니와 함께 보고 싶은 다오는, 눈 오는 것을 핑계로 디지니와 데이트를 하고자 한다.</p>\n<p>버블힐은 세로 <em>H</em>칸, 가로 <em>W</em>칸인 격자 모양이다. 그중 몇몇 칸에는 블록이 놓여져 있기에 지나갈 수 없다.</p>\n<p>위에서 <em>i</em>번째 행, 왼쪽에서 <em>j</em>번째 열의 칸의 위치를 (<em>i</em>, <em>j</em>)라고 나타내자. 즉, 가장 왼쪽 위의 칸의 위치는 (1, 1)고, 가장 오른쪽 아래의 칸은 (<em>H</em>, <em>W</em>)다.</p>\n<p>현재, 다오와 디지니는 버블힐의 서로 다른 칸 위에 서 있다. 다오는 블록이 없고 상하좌우로 인접한 칸으로 이동할 수 있다. 다오는 이렇게 이동하면서 디지니에게 가고자 한다.</p>\n<p>모든 것이 다오의 생각대로 흘러가면 좋겠다만, 마리드는 다오를 짝사랑하기에, 다오와 디지니의 만남을 가만히 보고만 있지 않을 것이다. 마리드는 다오와 디지니가 서로 만나 데이트를 하는 것을 원하지 않는다. 고로 마리드는 다오의 움직임을 방해하면서, 다오가 디지니를 만나지 못하도록 할 것이다.</p>\n<p>마리드가 다오를 방해하는 방법은 다음과 같다.</p>\n<ul>\n<li>다오는 최대 <em>N</em>번 움직일 수 있다.</li>\n<li>다오의 <em>i</em>번째 움직임은 마리드가 정해준 두 방향 중 하나를 택하여, 그 방향을 향해야 한다. 예를 들어, 마리드가 \"세번째 움직임을 왼쪽과 윗쪽 중 한 방향으로 해라\"고 명령하면, 다오는 세번째로 움직일 때, 왼쪽으로 가거나 윗쪽으로 가야 한다. 만약 마리드가 제시한 두 방향 중 어느 방향으로도 다오가 갈 수 없다면, 다오는 더 이상 움직일 수 없다.</li>\n</ul>\n<p>만약 버블힐이 다음과 같이 생겼다고 하자. <em>H</em> = 2, <em>W</em> = 3, <em>N</em> = 2다. 현재, 다오는 (2, 1), 디지니는 (2, 3)에 위치해 있다. 또한 (1, 2)에는 블록이 있다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 400px; width: 670px;\"/></p>\n<p style=\"text-align: center;\"><strong>&lt;그림 1&gt;</strong> 다오와 디지니, 그리고 마리드</p>\n<p>마리드의 방해가 없었다면, 다오는 오른쪽으로 두 번 이동해서 사랑하는 디지니를 만날 수 있다. 그러나 마리드가 \"첫 번째 움직임은 윗쪽과 오른쪽, 두번째 움직임은 윗쪽과 아랫쪽 중 한 방향으로 해라\"고 명령한다면, 다오는 디지니를 만날 수 없다. 다오가 첫 번째 움직임으로 오른쪽을 택한다고 하더라도, 그 다음에 윗쪽이나 아랫쪽으로 움직일 수 없기 때문이다.</p>\n<p>블록이 있는 칸이나 버블힐 바깥으로는 이동할 수 없음에 유의하라.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 640px; height: 400px;\"/></p>\n<p style=\"text-align: center;\"><strong>&lt;그림 2&gt;</strong> 마리드가 없을 때, 행복한 다오와 디지니</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 681px; height: 250px;\"/></p>\n<p style=\"text-align: center;\"><strong>&lt;그림 3&gt;</strong> 마리드로 인해 만날 수 없는 다오와 디지니</p>\n<p>다오와 디지니는 서로를 너무 보고 싶어 한다. 버블힐의 정보와 마리드의 방해에 관한 정보가 전부 주어질 때, 다오가 디지니를 만날 수 있는지 판별하는 프로그램을 작성하시오.</p>",
+  "input": "<p>첫 번째 줄에 버블힐의 세로와 가로의 칸 수를 의미하는 두 자연수 <em>H</em>과 <em>W</em>가 사이에 공백을 두고 주어진다.</p>\n<p>두번째 줄부터 <em>H</em>개의 줄에 걸쳐, 버블힐의 정보가 주어진다. (<em>i</em>+1)번째 줄에는 길이 <em>W</em>의 문자열이 주어진다(1 ≤ <em>i</em> ≤ <em>H</em>). 이의 <em>j</em>번째 문자를 <em>A</em><sub><em>i</em>, <em>j</em></sub>라고 하자(1 ≤ <i>j</i> ≤ <i>W</i>). 이는 다음을 의미한다.</p>\n<ul>\n<li><em>A</em><sub><em>i</em>, <em>j</em></sub> = '<code>.</code>'인 경우, 이는 (<em>i</em>, <em>j</em>)에 아무것도 없음을 의미한다.</li>\n<li><em>A</em><sub><em>i</em>, <em>j</em></sub> = '<code>D</code>'인 경우, 이는 (<em>i</em>, <em>j</em>)에 다오가 있음을 의미한다.</li>\n<li><em>A</em><sub><em>i</em>, <em>j</em></sub> = '<code>Z</code>'인 경우, 이는 (<em>i</em>, <em>j</em>)에 디지니가 있음을 의미한다.</li>\n<li><em>A</em><sub><em>i</em>, <em>j</em></sub> = '<code>@</code>'인 경우, 이는 (<em>i</em>, <em>j</em>)에 블록이 있음을 의미한다.</li>\n</ul>\n<p>(<em>H</em>+2)번째 줄에는 다오가 움직일 수 있는 최대 횟수를 의미하는 자연수 <em>N</em>가 주어진다.</p>\n<p>(<em>H</em>+3)번째 줄부터 <em>N</em>개의 줄에 걸쳐, 마리드의 방해에 관한 정보가 주어진다. (<em>H</em>+<em>i</em>+2)번째 줄에는 두 문자 <em>B<sub>i</sub></em>와 <em>C<sub>i</sub></em>가 사이에 공백을 두고 주어진다(1 ≤ <em>i</em> ≤ <i>N</i>). 이는 다오가 <em>i</em>번째 움직임으로 <em>B<sub>i</sub></em> 방향이나 <em>C<sub>i</sub></em> 방향 중 하나를 택해야 함을 의미한다. 각 문자가 의미하는 방향은 다음과 같다(키보드에서 \"<code>WASD</code>\"의 배치를 생각하라).</p>\n<ul>\n<li>'<code>W</code>'는 윗쪽을 의미한다.</li>\n<li>'<code>A</code>'는 왼쪽을 의미한다.</li>\n<li>'<code>S</code>'는 아랫쪽을 의미한다.</li>\n<li>'<code>D</code>'는 오른쪽을 의미한다.</li>\n</ul>",
+  "output": "<p>만약 어떤 선택을 하더라도 다오가 디지니를 만날 수 없다면, 첫 번째 줄에 \"<code>NO</code>\"를 출력한다.</p>\n<p>만약 다오가 디지니를 만날 수 있다면, 첫 번째 줄에 \"<code>YES</code>\"를 출력한다. 또한 두번째 줄에 다오가 어떻게 움직여야 하는지를 출력한다. 자세한 출력 형식은 입출력 예제를 참고하라.</p>\n<p>다오가 디지니를 만날 수 있는 방법이 여러 가지라면, 그 중 아무거나 출력해도 정답으로 인정된다.</p>",
+  "samples": [
+    {
+      "input": "2 3\n.@.\nD.Z\n2\nW D\nW S\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "2 3\n.@.\nD.Z\n2\nA D\nA D\n",
+      "output": "YES\nDD\n"
+    },
+    {
+      "input": "2 3\n.Z.\n.@D\n3\nW D\nW S\nA S\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "2 3\n.Z.\n.@D\n3\nW S\nA S\nW D\n",
+      "output": "YES\nWA\n"
+    },
+    {
+      "input": "2 2\n@@\nZD\n4\nA D\nA D\nA D\nA D\n",
+      "output": "YES\nADA\n"
+    }
+  ],
+  "hint": null,
+  "source": "School, 경기과학고등학교, 나는코더다 송년대회, 나는코더다 2019 송년대회, yclock",
+  "level": 12,
+  "tags": [
+    "graphs",
+    "bruteforcing",
+    "graph_traversal",
+    "bfs",
+    "traceback"
+  ],
+  "accepted_user_count": 282,
+  "submission_count": null,
+  "average_tries": 2.1347999572753906
+}

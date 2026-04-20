@@ -1,0 +1,33 @@
+{
+  "id": 28698,
+  "title": "스트릭과 쿼리",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>solved.ac에서 정지당한 현제는 본인만의 새로운 스트릭 시스템을 만들어 MatKor에 적용하고자 한다.</p>\n<p>우선 현제의 스트릭 시스템은 유저별로 독립적으로 동작하며 서로 영향을 주지 않는다. 어떤 유저의 스트릭을 결정하는 것은 다음과 같다.</p>\n<ul>\n<li>먼저 유저는 문제를 풀면 그 문제의 풀이 코드를 한 번에 하나씩 제출할 수 있고, 채점 시스템은 정답일 경우 <span class=\"result-ac\">맞았습니다!!</span>를, 오답일 경우 다른 결과를 보여준다.</li>\n<li>특정 문제에 대한 “첫 정답 제출”이란, 시간순으로 나타냈을 때 기존에 그 문제에서 <span class=\"result-ac\">맞았습니다!!</span>를 받은 적이 없으며, 처음으로 <span class=\"result-ac\">맞았습니다!!</span>를 받은 제출이다.</li>\n<li>“재채점”이란 기존에 제출된 코드들을 다시 채점하는 것을 의미한다. 재채점을 통해 특정 문제의 정답 여부가 바뀌게 되었다면, 해당 문제에 대한 “첫 정답 제출”을 제출한 시간을 기준으로 다시 계산해 “첫 정답 제출”이 달라질 수 있다.</li>\n<li>유저가 어떤 연속한 $d$일 동안 모든 날짜에 “첫 정답 제출”이 존재한다면 해당 유저가 “$d$-스트릭 그룹”에 포함된다고 한다.</li>\n<li>유저별 최장 스트릭은 해당 유저가 포함되는 “$d$-스트릭 그룹” 중 가장 큰 $d$의 값이다.</li>\n</ul>\n<p>현제는 MatKor 부원 $n$명을 $1$번 부터 $n$번까지 번호를 매겼고, $10^5$개의 문제로 구성된 스트릭 시스템을 현제는 시간순으로 들어오는 $m$개의 쿼리를 통해 관리하고자 한다.</p>\n<ul>\n<li><span style=\"color:#e74c3c;\"><code>1 u p c</code></span>: <code>u</code>번 유저가 <code>p</code>번 문제의 풀이 코드를 제출하여 정답 여부는 <code>c</code>이다. <code>c</code>가 $1$이면 <span class=\"result-ac\">맞았습니다!!</span>, $0$이면 오답을 의미한다.($1\\le u\\le N$, $1\\le p\\le 10^5$, $c\\in\\{0,1\\}$)</li>\n<li><span style=\"color:#e74c3c;\"><code>2</code></span>: 날짜가 다음 날로 바뀐다.</li>\n<li><span style=\"color:#e74c3c;\"><code>3 i</code></span>: <code>i</code>번째 쿼리의 제출이 재채점되어 정답 여부가 반전된다. 즉, 기존의 정답은 오답으로, 오답은 정답으로 바뀐다.($1\\le i\\le m$, $i$번째 쿼리는 주어진 $1$번 쿼리이다.)</li>\n<li><span style=\"color:#e74c3c;\"><code>4 k</code></span>: 현재 시점에서 최장 스트릭이 <code>k</code>번째로 긴 유저의 최장 스트릭을 출력한다.($1\\le k\\le N$) 이 쿼리는 적어도 하나 이상 주어진다.</li>\n</ul>",
+  "input": "<p>첫 줄에 유저의 수 $n$($1\\le n\\le 10^5$)과 쿼리의 개수 $m$($1\\le m\\le 10^5$)이 주어진다.</p>\n<p>다음 $m$개의 줄에 시간순으로 다음 네 가지 중 하나의 쿼리가 한 줄에 하나씩 주어진다.</p>",
+  "output": "<p>4번 쿼리에 대해서 정답을 한 줄에 하나씩 순서대로 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 11\n1 1 1 1\n1 2 1 0\n1 3 2 1\n1 4 1 0\n2\n1 1 2 1\n4 1\n3 2\n4 3\n3 6\n4 1\n",
+      "output": "2\n1\n1\n"
+    },
+    {
+      "input": "3 25\n1 1 1 1\n1 1 2 0\n1 2 1 1\n1 3 4 1\n2\n1 1 2 1\n1 2 5 0\n4 1\n2\n1 1 3 1\n4 3\n1 2 5 1\n1 2 6 0\n2\n1 2 8 1\n4 1\n3 2\n4 1\n3 7\n4 1\n3 13\n4 1\n4 3\n3 4\n4 3\n",
+      "output": "2\n1\n3\n2\n2\n4\n1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, MatKor Cup, 제3회 고려대학교 MatKor Cup: 2023 Summer, Open Contest - Phase 2, yijw0930, azberjibiou, kidw0124, sshs29hanul, utilforever",
+  "level": 21,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "segtree",
+    "binary_search",
+    "set",
+    "tree_set"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3.81820011138916
+}

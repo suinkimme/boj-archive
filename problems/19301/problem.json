@@ -1,0 +1,25 @@
+{
+  "id": 19301,
+  "title": "Repeating Subsequence Tests",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>어떤 문자열의 부분열(subsequence)은, 문자열에서 몇몇 문자를 지웠을 때&nbsp;(혹은 하나도 지우지 않아도 되고, 모두 지워도 된다.) 얻어지는 문자열이다. 예를 들어,&nbsp;&quot;<code>ababA</code>&quot;의 서로 다른 부분열은 &quot;&quot;(빈 문자열), &quot;<code>a</code>&quot;, &quot;<code>b</code>&quot;, &quot;<code>A</code>&quot;, &quot;<code>ab</code>&quot;, &quot;<code>aa</code>&quot;, &quot;<code>aA</code>&quot;, &quot;<code>ba</code>&quot;, &quot;<code>bb</code>&quot;, &quot;<code>bA</code>&quot;, &quot;<code>aba</code>&quot;, &quot;<code>abb</code>&quot;, &quot;<code>abA</code>&quot;, &quot;<code>aab</code>&quot;, &quot;<code>aaA</code>&quot;, &quot;<code>bab</code>&quot;, &quot;<code>baA</code>&quot;, &quot;<code>bbA</code>&quot;, &quot;<code>abab</code>&quot;, &quot;<code>abaA</code>&quot;, &quot;<code>abbA</code>&quot; &quot;<code>aabA</code>&quot;, &quot;<code>babA</code>&quot;, &quot;<code>ababA</code>&quot;로 총 $24$개다. 이 문제에서는 대소문자를 구별하는 것에 유 의하라.</p>\r\n\r\n<p>길이가 $N$인 문자열 $S$가 주어진다. 이 때, 이 문자열의 연속한 부분문자열 $Q$개에 대해 각각의 서로 다른 부분열의 개수를 구하는 프로그램을 작성하라.</p>\r\n\r\n<p>입력을 받는 시간을 줄이기 위해 다음과 같은 의사 난수 생성기(PseudoRandom Generator)를 사용한다. $a_0$, $b_0$, $p$, $q$, $r$이 주어지면 $i &ge; 1$ 일&nbsp;때&nbsp; $a_i$, $b_i$, $x_i$, $y_i$, $z_i$는 다음과 같이 정의된다. 먼저 $z_0 = 0$, $X = 10^9 + 7$라고 하자.</p>\r\n\r\n<p>$$\\begin{align*} a_i &amp;= (p \\cdot a_{i-1} + q \\cdot b_{i-1} + z_{i-1} + r) \\bmod X \\\\ b_i &amp;= (p \\cdot b_{i-1} + q \\cdot a_{i-1} + z_{i-1} + r) \\bmod X \\\\ x_i &amp;= \\min(a_i \\bmod n, b_i \\bmod n) + 1 \\\\ y_i &amp;= \\max(a_i \\bmod n, b_i \\bmod n) + 1 \\\\ z_i &amp;= \\big(c_{x_i} c_{x_i+1} \\ldots c_{y_i-1} c_{y_i}\\text{의 서로 다른 부분열의 개수} \\big) \\bmod X \\end{align*} $$</p>\r\n\r\n<p>$u \\mod v$는 $u$를 $v$로 나눈 나머지를 의미한다.&nbsp;의사 난수 생성기가 난수를 생성하는 방식에는 의미가 없으며, 임의의 입력이 주어져도 적절한 시간 내에 정답을 출력해내는 알고리즘이 존재한다.</p>\r\n\r\n<p>$z_Q$를 구해보자.</p>\r\n",
+  "input": "<p>첫 번째 줄에 문자열 $S$가 주어진다.&nbsp;이 문자열의 길이 $N$은 $1$이상&nbsp;$10^6$이하이며, $S$는&nbsp;알파벳 대문자, 소문자만으로 구성되어 있다.</p>\r\n\r\n<p>두 번째 줄에는 $6$개의 정수&nbsp;$Q$, $a_0$, $b_0$, $p$, $q$, $r$이 공백 하나로 구분되어 주어진다.&nbsp;$1 \\leq Q \\leq 10^6$를 만족하며, $0 \\leq a_0, b_0, p, q, r &lt; X = 10^9 + 7$을 만족한다.</p>\r\n",
+  "output": "<p>첫째 줄에 $z_Q$를 출력한다..</p>\r\n",
+  "samples": [
+    {
+      "input": "ababA\n2 4 6 8 10 12\n",
+      "output": "7\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2018, Day 5: Grand Prix of Korea, Contest, kriiicon, 제5회 kriiicon, Contest, Open Cup, 2017/2018 Season, Stage 10: Grand Prix of Korea, august14",
+  "level": 26,
+  "tags": [
+    "dp",
+    "math"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

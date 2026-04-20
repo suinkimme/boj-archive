@@ -1,0 +1,36 @@
+{
+  "id": 31192,
+  "title": "Ekstravagantni Eksperiment",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ludi znanstvenik Matija radi eksperimente sa bijelim štakorima. Štakor se nalazi u kavezu čije je dno podijeljeno na $n \\times n$ kvadrata. Svaki kvadrat obojen je u bijelu ili crvenu boju. Redovi su pobrojani brojevima od $1$ do $n$ odozgo prema dolje, a stupci slijeva nadesno.</p>\n<p>Štakor se sa svakog kvadrata može pomaknuti na njemu susjedni kvadrat s kojim ima zajedničku stranicu, ali se plaši crvenih kvadrata, tako da ni u kojem trenutku neće stati na kvadrat crvene boje.</p>\n<p>Nakon što je štakor proveo neko vrijeme u kavezu i naučio kuda se smije kretati, Matija ga je prekrio kutijom koja je dimenzija $k \\times k$ kvadrata i to tako da su njene stranice paralelne stranicama kaveza. Iako je štakor sada u mraku on se, začudo, i dalje kreće samo po bijelim kvadratima.</p>\n<p>Dok se štakor kreće unutar kutije, to izvana nije moguće vidjeti. Izvana je vidljivo jedino kretanje kutije, a ono se događa kada se štakor nalazi uz rub kutije i pomakne se u smjeru u kojem se nalazi kutija. Tada se i kutija pomakne za jedan kvadrat u tom smjeru.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 500px; height: 123px;\"/></p>\n<p style=\"text-align: center;\">Ilustracija prvog probnog primjera – crni krug predstavlja štakora, a zatamnjeno područje kutiju.</p>\n<p>Matija je zapisao početnu poziciju kutije i za svaki njen pomak zapisao je znak '<code>L</code>' ako se kutija pomakla ulijevo, '<code>R</code>' ako se pomakla udesno, '<code>U</code>' ako se pomakla prema gore, te '<code>D</code>' ako se pomakla prema dolje.</p>\n<p>Napišite program koji će iz zapisanih podataka odrediti najmanji broj koraka koje je štakor mogao napraviti.</p>",
+  "input": "<p>U prvom su retku prirodni brojevi $n$ i $k$ ($2 ≤ k ≤ 10$, $k &lt; n ≤ 100$) iz teksta zadatka.</p>\n<p>U svakom od sljedećih $n$ redaka nalazi se $n$ znakova – svaki znak je ili malo slovo '<code>b</code>' ili malo slovo '<code>c</code>'. Slovo '<code>b</code>' predstavlja bijeli kvadrat, a slovo '<code>c</code>' crveni kvadrat.</p>\n<p>U sljedećem su redu dva prirodna broja $r$ i $s$ ($1 ≤ r, s ≤ n - k + 1$), redak i stupac gornjeg lijevog ruba kutije na početku ekstravagantnog eksperimenta.</p>\n<p>U sljedećem je retku prirodan broj $p$ ($1 ≤ p ≤ 1\\, 000\\, 000$), broj pomaka kutije.</p>\n<p>U sljedećem je retku niz od $p$ znakova. Svaki je znak jedno od četiri velika slova '<code>L</code>', '<code>R</code>', '<code>U</code>' ili '<code>D</code>' i odgovara smjeru pomaka kutije.</p>",
+  "output": "<p>U jedini redak potrebno je ispisati najmanji mogući broj štakorovih koraka.</p>",
+  "samples": [
+    {
+      "input": "5 3\nbbbbb\nbcbcb\nbbbbb\nbcccb\nbbbbb\n3 3\n2\nLU\n",
+      "output": "3\n"
+    },
+    {
+      "input": "5 3\nbbbbb\nbbccb\nbccbb\nbbbbb\nbbbbb\n3 1\n4\nURRU\n",
+      "output": "10\n"
+    },
+    {
+      "input": "6 4\nbbbbbc\nbbbccc\nbcbbbb\nbccccb\nbbbbcb\nbbbbbb\n1 1\n4\nDRUR\n",
+      "output": "18\n"
+    }
+  ],
+  "hint": "<p>Pojašnjenje drugog probnog primjera: Štakor se mogao nalaziti na polju $(3, 1)$ i zatim napraviti sljedećih $10$ koraka: gore, dolje, dolje, desno, desno, desno, gore, desno, gore, gore.</p>\n<p>Poašnjenje trećeg probnog primjera: Štakor se mogao nalaziti na polju $(4, 1)$ i zatim napraviti sljedećih $18$ koraka: dolje, gore, gore, gore, desno, desno, dolje, desno, desno, lijevo, lijevo, gore, gore, dolje, dolje, desno, desno, desno.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2023",
+  "level": 22,
+  "tags": [
+    "implementation",
+    "dp",
+    "graphs",
+    "graph_traversal",
+    "bfs"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 2
+}

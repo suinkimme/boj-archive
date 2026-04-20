@@ -1,0 +1,32 @@
+{
+  "id": 7166,
+  "title": "Värvipalett",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Tarkvarafirma Gold \\&amp; Silver Soft on arendamas uut graafikaprogrammi. Üks selle mooduleid on värvipaleti haldus. Programmi käivitudes on palett tühi. Edasi võib kasutaja lisada paletti uusi värve või küsida, milline paletis olevatest värvidest on antud värvile sarnaseim.</p>\n<p>Värve esitatakse $K$-bitiste arvudena (väärtustega $0$ kuni $2^K-1$) ja kahe värvi sarnasuseks loetakse nende esitustes kokkulangevate bittide arvu. Näiteks $K = 5$ korral on värvide <code>00110</code> ja <code>10101</code> sarnasus $2$, sest kokku langevad ainult vasakult teise ja kolmanda biti väärtused.</p>\n<p>Kirjutada programmile värvipaleti haldamise moodul, milles on järgmised funktsioonid:</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<th>Funktsioon</th>\n<th>Kirjeldus</th>\n</tr>\n<tr>\n<td><code>void init(int k, int n)</code></td>\n<td>Paleti initsialiseerimine $k$-bitiste värvide kasutamiseks. Seda funktsiooni kutsutakse välja üks kord programmi töö alguses ja sellele järgnevad kokku $n$ <code>add</code> ja <code>find</code> väljakutset.</td>\n</tr>\n<tr>\n<td><code>void add(int c)</code></td>\n<td>Värvi $c$ lisamine paletti.</td>\n</tr>\n<tr>\n<td><code>int find(int c)</code></td>\n<td>Värvile $c$ paletist parima vaste leidmine. Funktsioon peab tagastama paletis olevate värvide hulgast värviga $c$ maksimaalselt sarnase. Kui maksimaalselt sarnaseid on mitu, tagastada ükskõik milline neist. Seda funktsiooni kutsutakse välja ainult siis, kui paletis on juba vähemalt üks värv.</td>\n</tr>\n<tr>\n<td><code>void done()</code></td>\n<td>Töö lõpp. Seda funktsiooni kutsutakse välja üks kord programmi töö lõpus.</td>\n</tr>\n</tbody>\n</table>",
+  "input": "<p>Tekstifaili esimesel real on värvide esitamiseks kasutatavate bittide arv $K$ ($1 \\le K \\le 20$) ja operatsioonide arv $N$ ($1 \\le N \\le 10^6$). Järgmisel $N$ real on igaühel täisarvud $T_i$ ja $C_i$ ($0 \\le C_i &lt; 2^K$), kus $T_i = 1$ tähendab värvi $C_i$ lisamist paletti ja $T_i = 2$ värvile $C_i$ parima vaste leidmist paletist.</p>",
+  "output": "<p>Tekstifaili väljastatakse hindamisprogrammi ja mooduli vahelise suhtluse logi.</p>",
+  "samples": [
+    {
+      "input": "2 3\n1 1\n2 0\n2 1\n",
+      "output": "init(2, 3)\nadd(1)\nfind(0) = 1\nfind(1) = 1\ndone()\n"
+    },
+    {
+      "input": "3 5\n1 0\n1 7\n2 1\n1 1\n2 1\n",
+      "output": "init(3, 5)\nadd(0)\nadd(7)\nfind(1) = 0\nadd(1)\nfind(1) = 1\ndone()\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Estonian Informatics Olympiad, 2016-17, Second Selection Competition",
+  "level": 21,
+  "tags": [
+    "ad_hoc",
+    "bitmask",
+    "dfs",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 10
+}

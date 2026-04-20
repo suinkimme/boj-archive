@@ -1,0 +1,22 @@
+{
+  "id": 33334,
+  "title": "Bitsets",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Let us consider the following operations on bitsets of size $m$:</p>\n<ul>\n<li>$c = a\\, \\mathrm{ and }\\, b$. Here, $c_i=1$ if both $a_i$ and $b_i$ are equal to $1$. Otherwise, $c_i=0$.</li>\n<li>$c = a\\, \\mathrm{ or }\\, b$. Here, $c_i=1$ if either $a_i$ or $b_i$ is equal to $1$. Otherwise, $c_i=0$.</li>\n<li>$c = a\\, \\mathrm{ xor }\\, b$. Here, $c_i=1$ if exactly one of $a_i$ and $b_i$ is equal to $1$. Otherwise, $c_i=0$.</li>\n<li>$c = \\mathrm{ not }\\, a$. Here, $c_i=1$ if $a_i$ is equal to $0$. Otherwise, $c_i=0$.</li>\n</ul>\n<p>You are given an array of bitsets $s_1, s_2, \\ldots, s_n$. Write a program that can answer $k$ queries of the following form:</p>\n<ol>\n<li>Take two integers $\\ell$ and $r$.</li>\n<li>Find bitset $t$ using the formula: $t = (s_\\ell \\,\\mathrm{ and }\\, s_{\\ell+1} \\,\\mathrm{ and }\\, \\ldots \\,\\mathrm{ and }\\, s_r) \\,\\mathrm{ xor }\\, (\\mathrm{ not }\\, (s_\\ell \\,\\mathrm{ or }\\, s_{\\ell+1} \\,\\mathrm{ or }\\, \\ldots \\,\\mathrm{ or }\\, s_r))$.</li>\n<li>Count the number of ones in bitset $t$: it is the answer.</li>\n</ol>",
+  "input": "<p>The first line contains two integers $n$ and $m$ ($1 \\leq n, m \\leq 10^5$; $n \\cdot m \\leq 10^6$). The following $n$ lines describe the $n$ bitsets, where each line consists of $m$ characters $0$ and $1$ representing the bits of that bitset.</p>\n<p>The next line of the input contains a single integer $k$ ($1 \\leq k \\leq 2 \\cdot 10^7$), which denotes the number of queries. The following line contains three integers $x$, $y$, and $z$ ($1 \\leq x, y, z \\leq 10^9$).</p>\n<p>The queries are generated using pseudo-random numbers, with input parameters $x$, $y$, and $z$, and a sequence $q_1, q_2, \\ldots, q_{k - 1}$ of answers to the queries. Define two sequences $a$ and $b$ as follows:</p>\n<ul>\n<li>$a_1 = 1$.</li>\n<li>$b_1 = n$.</li>\n<li>For $i &gt; 1$, $a_i = (a_{i-1} \\cdot x + q_{i-1} \\cdot y + z) \\bmod n + 1$.</li>\n<li>For $i &gt; 1$, $b_i = (b_{i-1} \\cdot y + q_{i-1} \\cdot z + x) \\bmod n + 1$.</li>\n</ul>\n<p>For each query $i$, the parameters $\\ell$ and $r$ are defined as $\\ell=\\min(a_i, b_i)$ and $r=\\max(a_i, b_i)$.</p>",
+  "output": "<p>Output a single integer: the sum of the answers for all queries.</p>",
+  "samples": [
+    {
+      "input": "4 10\n1010110101\n0101111001\n1101101101\n1011010000\n4\n10 5 4\n",
+      "output": "9\n"
+    }
+  ],
+  "hint": "<p>The queries are listed below:</p>\n<table class=\"table table-bordered th-center td-center table-center-20\">\n<tbody>\n<tr>\n<th>#</th>\n<th>$\\ell$</th>\n<th>$r$</th>\n<th>answer</th>\n</tr>\n<tr>\n<td>1</td>\n<td>$1$</td>\n<td>$4$</td>\n<td>$1$</td>\n</tr>\n<tr>\n<td>2</td>\n<td>$3$</td>\n<td>$4$</td>\n<td>$3$</td>\n</tr>\n<tr>\n<td>3</td>\n<td>$2$</td>\n<td>$4$</td>\n<td>$2$</td>\n</tr>\n<tr>\n<td>4</td>\n<td>$1$</td>\n<td>$3$</td>\n<td>$3$</td>\n</tr>\n</tbody>\n</table>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2023, Day 2: Nyatl Contest 2023",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

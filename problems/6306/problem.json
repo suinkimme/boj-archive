@@ -1,0 +1,26 @@
+{
+  "id": 6306,
+  "title": "Reflections",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Rendering realistic images of imaginary environments or objects is an interesting topic in computer graphics. One of the most popular methods for this purpose is ray-tracing.</p>\n<p>To render images using ray-tracing, one computes (traces) the path that rays of light entering a scene will take. We ask you to write a program that computes such paths in a restricted environment.</p>\n<p>For simplicity, we will consider only two-dimensional scenes. All objects in the scene are totally reflective (mirror) spheres. When a ray of light hits such a sphere, it is reflected such that the angle of the incoming ray and the leaving ray against the tangent are the same:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images2/ray1.png\" style=\"height:272px; width:263px\"/></p>\n<p>The following figure shows a typical path that a ray of light may take in such a scene:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images2/ray2.png\" style=\"height:256px; width:314px\"/></p>\n<p>Your task is to write a program, that given a scene description and a ray entering the scene, determines which spheres are hit by the ray.</p>",
+  "input": "<p>The input consists of a series of scene descriptions. Each description starts with a line containing the number n (n ≤ 25) of spheres in the scene. The following n lines contain three integers x<sub>i</sub> y<sub>i</sub> r<sub>i</sub> each, where (x<sub>i</sub>, y<sub>i</sub>) is the center, and r<sub>i</sub> &gt; 0 is the radius of the i-th sphere. Following this is a line containing four integers x y d<sub>x</sub> d<sub>y</sub>, which describe the ray. The ray originates from the point (x, y) and initially points in the direction (d<sub>x</sub>, d<sub>y</sub>). At least one of d<sub>x</sub> and d<sub>y</sub> will be non-zero.</p>\n<p>The spheres will be disjoint and non-touching. The ray will not start within a sphere, and never touch a sphere tangentially.</p>\n<p>A test case starting with n = 0 terminates the input. This case should not be processed.</p>",
+  "output": "<p>For each scene first output the number of the scene. Then print the numbers of the spheres that the ray hits in its first ten deflections (the numbering of spheres is according to their order in the input).</p>\n<p>If the ray hits at most ten spheres (and then heads towards infinity), print inf after the last sphere it hits. If the ray hits more than 10 spheres, print three points (...) after the tenth sphere.</p>\n<p>Output a blank line after each test case.</p>",
+  "samples": [
+    {
+      "input": "3\n3 3 2\n7 7 1\n8 1 1\n3 8 1 -4\n2\n0 0 1\n5 0 2\n2 0 1 0\n0\n",
+      "output": "Scene 1\n1 2 1 3 inf\n\nScene 2\n2 1 2 1 2 1 2 1 2 1 ...\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 1998",
+  "level": 18,
+  "tags": [
+    "implementation",
+    "geometry",
+    "simulation"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.5
+}

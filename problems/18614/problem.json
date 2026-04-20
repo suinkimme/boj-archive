@@ -1,0 +1,28 @@
+{
+  "id": 18614,
+  "title": "Cosmic Crossroads",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<blockquote>\n<p style=\"text-align: right;\">There was some complicated legend about navigation in futuristic space roads, and large hubs where they intersect, called cosmic crossroads. It was decided later on to skip this part and leave it up to your imagination, so let’s imagine how awesome it could have been, and proceed to the formal statement immediately.</p>\n<hr/>\n<p style=\"text-align: right;\">Best regards from the problemsetter</p>\n</blockquote>\n<p>Consider two sets of n lines passing through the point (0; 0; 0) in Euclidean three-dimensional space. Instead of actual lines, you are given two sets, 2n points in each set: r<sub>i</sub> = (x<sub>i</sub>; y<sub>i</sub>; z<sub>i</sub>) and r<sub>j</sub>′ = (x<sub>j</sub>′; y<sub>j</sub>′; z<sub>j</sub>′). These are the points where the lines intersect the unit sphere (two opposite points for each line).</p>\n<p>It is known that the second set was obtained from the first one by some rotation around the origin and shuffling the order of the points. You have to find a permutation π<sub>1</sub>, . . . , π<sub>2n</sub> and the rotation φ of three-dimensional space such that, for all i,</p>\n<p style=\"text-align: center;\">r<sub>π<sub>i</sub></sub> − φ(r<sub>i</sub>′)| ≤ 10<sup>−6</sup>.</p>\n<p>The rotation φ should be described by point e = (x; y; z) and angle θ. It means we rotate the space around the axis from the origin to point e by angle θ following the right-hand rule (see notes).</p>\n<p>It is guaranteed that the directions of the first set of lines were chosen uniformly at random, independently from each other.</p>",
+  "input": "<p>The first line of input contains a single integer n (2 ≤ n ≤ 4 · 10<sup>4</sup>).</p>\n<p>Each of the next 2n lines contains three real numbers x<sub>i</sub>, y<sub>i</sub> and z<sub>i</sub> describing points from the first set.</p>\n<p>Each of the next 2n lines contains three real numbers x<sub>i</sub>′, y<sub>i</sub>′ and z<sub>i</sub>′ describing points from the second set.</p>\n<p>All real numbers are given with the precision of up to 12 digits after decimal point.</p>\n<p>It also holds that if point r<sub>i</sub> = (x<sub>i</sub>; y<sub>i</sub>; z<sub>i</sub>) lies in one of sets then the point −r<sub>i</sub> lies in that set as well.</p>\n<p>It is guaranteed that solution exists and would still exist even with precision of 10<sup>−9</sup> instead of 10<sup>−6</sup>.</p>",
+  "output": "<p>On the first line, print a single real number θ (−π ≤ θ ≤ π) describing the rotation angle.</p>\n<p>On the second line, print three real numbers x, y, z (10<sup>−3</sup> ≤ |x| + |y| + |z| ≤ 10<sup>3</sup>) describing the point e on the rotation axis.</p>\n<p>On the third line, print 2n integers π<sub>1</sub>, . . . , π<sub>2n</sub>.</p>\n<p>Assume that rotation occurs in the sense prescribed by the right-hand rule (see notes).</p>",
+  "samples": [
+    {
+      "input": "2\n0.923879533 0.382683432 0\n0.923879533 -0.382683432 0\n-0.923879533 -0.382683432 0\n-0.923879533 0.382683432 0\n0.382683432 0.923879533 0\n0.382683432 -0.923879533 0\n-0.382683432 -0.923879533 0\n-0.382683432 0.923879533 0\n",
+      "output": "-1.570796327\n0.000000000 0.000000000 1.000000000\n2 3 4 1\n"
+    }
+  ],
+  "hint": "<p>Just so you remember, rotation is done as follows:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 175px; height: 175px;\"/></p>\n<p>Example test case looks like this:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 242px; height: 242px;\"/></p>\n<p>The first set of points is {1, 2, 3, 4}, and the second set of points is {1′, 2′, 3′, 4′}. After the rotation of the second set of lines by −π/2 around axis (0; 0; 1), we obtain the following matching: {(1′; 2),(2′; 3),(3′; 4),(4′, 1)}.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 4: Oleksandr Kulkov Contest 2",
+  "level": 26,
+  "tags": [
+    "ad_hoc",
+    "divide_and_conquer",
+    "geometry",
+    "geometry_3d",
+    "math"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 22
+}

@@ -1,0 +1,22 @@
+{
+  "id": 17648,
+  "title": "Majorant",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Majorant of a multiset is an element which occurs more frequently than all other elements combined. Some multisets do not have majorant.</p>\n<p>Given is an array containing n positive integers a[1], a[2], ..., a[n]. A subarray of array a is the sequence a[l], a[l+1] … a[r], where 1 ≤ l ≤ r ≤ n.</p>\n<p>We consider m queries of two types:</p>\n<ol>\n<li>Update p q. At this query а[p] becomes equal to q</li>\n<li>Query p q, where p ≤ q. Let b[1]=a[p], b[2]=a[p+1] … b[q-p+1]=a[q]. At this query, you have to calculate by modulo 998244353 the sum, composed of summands of the form: i*(number of subarrays of b for which i is the majorant) for all different values of i, each i is a majorant for a subarray of b</li>\n</ol>",
+  "input": "<p>First line of the standard input contains the number n. The second line of the standard input contains n integers – the element of the given array. The third line of the standard input contains the number m. From each of the next m lines read 3 numbers: l, r and t - the query in an encrypted form.</p>\n<p>To decrypt the query: Let last_output be the last number on the standard output produced by your program (or 0, if there are no such)</p>\n<p>Compute type=((t+last_output) mod 2) +1</p>\n<p>If type=1 the query is \"Update\" with p=((l+last_output) mod n)+1, q=((r+last_output) mod 100 000 000)+1</p>\n<p>If type=2, the query is \"Query\" with p=((l+last_output) mod n)+1, q=((r+last_output) mod n)+1</p>",
+  "output": "<p>For every query of type 2, output on a separate line the answer to the query.</p>",
+  "samples": [
+    {
+      "input": "4\n1 2 2 1\n3\n4 3 1\n2 99999990 2\n4 2 1\n",
+      "output": "12\n6\n"
+    }
+  ],
+  "hint": "<p>After decrypting, the first query becomes “query, p=1, q=4”. There are 2 subarrays with majorant 1 and 5 with majorant 2 so the answer is 2*1+5*2=12.</p>\n<p>The second query becomes “update, p=3, q=3”. After that, the array becomes: 1, 2, 3, 1.</p>\n<p>The third query is: “query, p=1, q=3”. There is 1 subarray with majorant 1, 1 with majorant 2 and 1 with majorant 3.</p>",
+  "source": "Olympiad, International Autumn Tournament in Informatics, 2018, Group B (Juniors)",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,35 @@
+{
+  "id": 30940,
+  "title": "Pingvin",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Zrakoplović the penguin wants to learn how to fly!</p>\n<p>The space in which he will learn to fly can be imagined as a cube of dimensions $n \\times n \\times n$, divided into $n^3$ unit cubes. Each unit cube can be described with three coordinates $(x, y, z)$, where $x$, $y$ and $z$ are integers between $1$ and $n$. The coordinate $x$ denotes the distance from the left edge of the space, the coordinate $y$ denotes the distance from the front edge of the space, and the coordinate $z$ denotes the height.</p>\n<p>Some of these unit cubes contain clouds, and some do not.</p>\n<p>Zrakoplović is afraid of clouds, so he will learn to fly only where there are no clouds. He initially finds himself at a position $(x_s, y_s, z_s)$, such that $z_s = 1$ (i.e. at height $1$), and wants to get to position $(x_e, y_e, z_e)$.</p>\n<p>At the moment, he is perfecting the skill of flying in directions that are parallel to one of the axes of space (i.e. in the direction of the $x$-axis, $y$-axis or $z$-axis), and in one wing flap he can cross at most one unit cube.</p>\n<p>Before he decides to fly, Zrakoplović wants to know how many wing flaps he needs to get to the desired position. While he is preparing for the flight, help him answer that question.</p>",
+  "input": "<p>The first line contains an integer $n$ ($1 ≤ n ≤ 100$), the dimension of the space in which Zrakoplović learns to fly.</p>\n<p>The second line contains three integers $x_s$, $y_s$ and $z_s$ ($1 ≤ x_s, y_s ≤ n$, $z_s = 1$), the start position of Zrakoplović.</p>\n<p>The third line contains three integers $x_e$, $y_e$ and $z_e$ ($1 ≤ x_e, y_e, z_e ≤ n$), the end position of Zrakoplović.</p>\n<p>This is followed by $n$ binary matrices of dimensions $n \\times n$ that describe the space, where the $i$-th matrix describes the space at height $i$. The upper-left corner has the coordinates $(1, 1, i)$. The row and column of the matrix correspond to the $x$ and $y$ coordinates, respectively.</p>\n<p>'<code>0</code>' denotes a unit cube in which there are no clouds, and '<code>1</code>' denotes a unit cube in which there are clouds.</p>\n<p>The start and end position of Zrakoplović will not be a cloud.</p>",
+  "output": "<p>In the first and only line, print the smallest number of wing flaps that Zrakoplović must make to reach the desired position. If Zrakoplović cannot reach the desired position, print '<code>-1</code>'.</p>",
+  "samples": [
+    {
+      "input": "2\n1 1 1\n1 1 2\n00\n10\n01\n00\n",
+      "output": "1\n"
+    },
+    {
+      "input": "3\n2 3 1\n1 1 1\n000\n010\n000\n111\n111\n111\n111\n111\n111\n",
+      "output": "3\n"
+    },
+    {
+      "input": "3\n2 1 1\n3 2 2\n000\n010\n110\n010\n001\n001\n101\n110\n000\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example:</p>\n<p>Zrakoplović can reach the desired position in one wing flap by moving in the direction of the $z$-axis for one unit cube.</p>\n<p>Clarification of the third example: Zrakoplović can reach the desired position in three wing flaps by first moving to position $(2, 1, 2)$, then to $(2, 2, 2)$ and finally to $(3, 2, 2)$.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2023/2024, Contest #2",
+  "level": 11,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "grid_graph"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 2.228600025177002
+}

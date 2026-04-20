@@ -1,0 +1,27 @@
+{
+  "id": 27765,
+  "title": "Jurisdiction Restrictions",
+  "time_limit": "30 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The city of Gridtopia is a matrix of square cells (\"blocks\") with <b>R</b> rows and <b>C</b> columns; rows are numbered (starting from 1) from top to bottom, and columns are numbered (starting from 1) from left to right. The city is served by <b>S</b> different police stations; the i-th station is in the block located in the <b>R<sub>i</sub></b>th row and the <b>C<sub>i</sub></b>th column, and no block contains more than one station.</p>\n<p>Each station is only able to patrol blocks that are no more than <b>D<sub>i</sub></b> blocks away from that station, either horizontally or vertically. That is, the i-th station can only patrol the block in row R' and column C' if max(|R' - <b>R<sub>i</sub></b>|, |C'- <b>C<sub>i</sub></b>|) ≤ <b>D<sub>i</sub></b>. Put another way, the i-th station can patrol only blocks within the square of side length 2<b>D<sub>i</sub></b> + 1 centered on that station.</p>\n<p>As the new police commissioner, you need to assign some blocks within the city to exactly one station that is able to patrol it. Blocks that contain stations and blocks that no station is able to patrol should not be assigned. All other blocks have to be assigned. Moreover, you must distribute this assignment load as evenly as possible among stations. Let A<sub>i</sub> denote the number of blocks assigned to the i-th station; then your goal is to minimize the difference between the maximum of all the A<sub>i</sub> values and the minimum of all of the A<sub>i</sub> values. If you make optimal assignments, what is the smallest possible difference?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each case begins with one line with three integers <b>R</b>, <b>C</b>, and <b>S</b>: respectively, the numbers of rows and columns in the grid of cells, and the number of stations. Then, there are <b>S</b> more lines. The i-th of these has three integers <b>R<sub>i</sub></b>, <b>C<sub>i</sub></b>, and <b>D<sub>i</sub></b>: respectively, the row and column in which the i-th station is located, and the parameter that determines which blocks that station is able to patrol, as described above.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the difference described above.</p>",
+  "samples": [
+    {
+      "input": "2\n3 4 2\n1 1 1\n3 3 2\n5 5 2\n4 1 2\n3 2 2\n",
+      "output": "Case #1: 4\nCase #2: 0\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, the city consists of a grid with 3 rows and 4 columns, with one station in the upper left block and one station in the block to the left of the lower right block. The first station can only patrol the three blocks that touch the edge or corner of its block; every other block is at a horizontal or vertical distance of more than 1 away. The second station can patrol any block in the grid (except for the blocks containing the stations). The difference in number of blocks assigned is minimized if you assign station 1 all three of the blocks it can patrol, and then assign the remaining seven blocks to station 2.</p>\n<p>In Sample Case #2, one optimal strategy is to assign the blocks as follows. In this picture, <code>1</code> represents station 1, <code>2</code> represents station 2, <code>!</code> represents a block assigned to station 1, <code>@</code> represents a block assigned to station 2, and <code>.</code> represents a block assigned to neither station (because neither station can patrol it). Notice that a station's assigned blocks do not need to form a single continuous area.</p>\n<pre>\n<code>@@@@.\n!!!@.\n!2!@.\n1!!@.\n!@!@.</code></pre>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2018, World Finals",
+  "level": 23,
+  "tags": [
+    "binary_search",
+    "flow",
+    "graphs",
+    "mcmf"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 3
+}

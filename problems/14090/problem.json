@@ -1,0 +1,22 @@
+{
+  "id": 14090,
+  "title": "RAM",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Mirku su hakeri provalili u računalo iskorištavanjem Shellshock propusta te podizanjem voltaže u sustavu uništili gotovo sav RAM osim posljednja 2MB. Mirko u računalu ima točno 26 tvrdih diskova označenih velikim slovima engleske abecede od 'A' do 'Z'. Na sreću, Mirko ima ogroman dnevnik pristupa podacima na tvrdim diskovima koji se sastoji od niza oznaka tvrdih diskova. Analizirao je napad hakera na sljedeći način:</p>\n<ul>\n<li>Dnevnik je podijelio na N manjih datoteka S<sub>1</sub> do S<sub>N</sub>, koje može učitati u RAM. Svaka od njih je niz velikih slova engleske abecede.</li>\n<li>Datoteke je učitavo jednu za drugom te je nakon učitane datoteke S<sub>i</sub> izračunao približno koliko puta su hakeri pristupili tvrdom disku H<sub>i</sub> u posljednjih K<sub>i </sub>pristupa u cijelom dnevniku do datoteke S<sub>i</sub>, uključivo.</li>\n</ul>\n<p>Mirko je ponosan jer je vješto uspio izračunati odgovore na sve upite koji su ga zanimali te razotkrio namjere hakera. Kako vas hakeri ne bi uhvatili nespremne, vaš izazov je napisati program koji će dati približne odgovore na Mirkove upite uz samo 2MB RAM-a. </p>",
+  "input": "<p>U prvom retku nalazi se prirodan broj N (1 ≤ N ≤ 200 000).</p>\n<p>Sljedećih 2N redaka podijeljeni su na N grupa od 2 retka:</p>\n<ul>\n<li>U prvome od njih nalazi se niz velikih slova engleske abecede S<sub>i</sub> (1 ≤ |S<sub>i</sub>| ≤ 4 000)</li>\n<li>U drugome se nalaze znak H<sub>i</sub> (veliko slovo engleske abecede), oznaka tvrdog diska te broj pristupa K<sub>i</sub> (1 ≤ K<sub>i</sub> ≤ <span style=\"color:rgb(84, 84, 84); font-family:arial,sans-serif; font-size:small\">Σ<sup>i</sup><sub>j=1</sub>|s<sub>j</sub>|</span>)</li>\n</ul>\n<p>Napomena: Ukupna količina podataka u ulazu bit će manja od 200MB. </p>",
+  "output": "<p>U N redaka izlaza ispište približne odgovore na N Mirkovih upita. Neka je A<sub>i</sub> vaš odgovor, a T<sub>i</sub> točan odgovor. Vaš odgovor smatramo približnim ako vrijedi T<sub>i</sub> ≤ A<sub>i</sub> &lt; 2T<sub>i</sub>. Iznimno, ako je točan odgovor T<sub>i</sub> jednak nuli, tada i vaš odgovor A<sub>i</sub> mora biti jednak nuli.</p>\n<p>Napomena: Memorijsko ograničenje za ovaj zadatak je samo 2MB. </p>",
+  "samples": [
+    {
+      "input": "3\nBAAB\nB 2\nAABB\nA 6\nZA\nZ 1\n",
+      "output": "1\n3\n0\n"
+    }
+  ],
+  "hint": "<p>Pojašnjenje: Potpuni dnevnik možemo dobiti spajanjem datoteka:</p>\n<p style=\"text-align: center;\">BAAB|AABB|ZA</p>\n<p>Odgovor na 1. upit je broj pristupa tvrdom disku B u označenom podnizu: BA<u><strong>AB|</strong></u>AABB|ZA<br/>\nOdgovor na 2. upit je broj pristupa tvrdom disku A u označenom podnizu: BA<u><strong>AB|AABB|</strong></u>ZA<br/>\nOdgovor na 3. upit je broj pristupa tvrdom disku Z u označenom podnizu: BAAB|AABB|Z<u><strong>A</strong></u></p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2014 - 1st Round",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

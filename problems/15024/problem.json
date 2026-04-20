@@ -1,0 +1,36 @@
+{
+  "id": 15024,
+  "title": "Import Spaghetti",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You just graduated from programming school and nailed a Python programming job. The first day at work you realize that you have inherited a mess. The spaghetti design pattern was chosen by the previous maintainer, who recently fled the country. You try to make sense of the code, but immediately discover that different files depend cyclically on each other. Testing the code, in fact running the code, has not yet been attempted.</p>\n<p>As you sit down and think, you decide that the first thing to do is to eliminate the cycles in the dependency graph. So you start by finding a shortest dependency cycle.</p>",
+  "input": "<p>The first line of input contains a number n, 1 ≤ n ≤ 500, the number of files. Then follows one line with n names of files. Each name is a string with at least 1 and at most 8 lower case letters ‘a’ to ‘z’. Then follow n sections, one section per file name, in the order they were given on the second line. Each section starts with one line containing the name of the file and an integer k, followed by k lines, each starting with “import”.</p>\n<p>Each “import” line is a comma-space separated line of dependencies. No file imports the same file more than once, and every file imported is listed in the second line of the input. Comma-space separated means that every line will start with “import”, then have a list of class names separated by “, ” (see sample inputs for examples).</p>",
+  "output": "<p>If the code base has no cyclic dependencies, output “SHIP IT”. Otherwise, output a line containing the names of files in a shortest cycle, in the order of the cycle. If there are many shortest cycles, any one will be accepted.</p>",
+  "samples": [
+    {
+      "input": "4\na b c d\na 1\nimport d, b, c\nb 2\nimport d\nimport c\nc 1\nimport c\nd 0\n",
+      "output": "c\n"
+    },
+    {
+      "input": "5\nclassa classb myfilec execd libe\nclassa 2\nimport classb\nimport myfilec, libe\nclassb 1\nimport execd\nmyfilec 1\nimport libe\nexecd 1\nimport libe\nlibe 0\n",
+      "output": "SHIP IT\n"
+    },
+    {
+      "input": "5\nclassa classb myfilec execd libe\nclassa 2\nimport classb\nimport myfilec, libe\nclassb 1\nimport execd\nmyfilec 1\nimport libe\nexecd 1\nimport libe, classa\nlibe 0\n",
+      "output": "classa classb execd\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2017",
+  "level": 14,
+  "tags": [
+    "bfs",
+    "graphs",
+    "graph_traversal",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 50,
+  "submission_count": null,
+  "average_tries": 2.299999952316284
+}

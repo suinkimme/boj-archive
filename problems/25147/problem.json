@@ -1,0 +1,32 @@
+{
+  "id": 25147,
+  "title": "Okružen",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Mirko i Slavko igraju novu zanimljivu igru na ploči koja se sastoji od N x M redaka i stupaca te dvije figure: Mirkova figura i Slavkova nevidljiva figura. Mirkova figura na početku se nalazi u gornjem lijevom kutu ploče. Mirko ne zna točno gdje se nalazi Slavkova figura na početku, ali zna sve moguće početne pozicija te figure.</p>\n<p>Prvi na potezu je Mirko. On u svome potezu može napraviti do deset koraka. Jedan korak se sastoji od pomicanja figure na neko od susjednih polja. Za dva polja kažemo da su susjedna ako imaju zajedničku stranicu. Nakon Mirka na potezu je Slavko koji svojom figurom može napraviti jedan korak ili ostati na polju na kojem se nalazi. S obzirom da je Slavkova figura nevidljiva, Mirko tijekom partije ne zna gdje se ona nalazi i koje poteze Slavko povlači. Mirkova i Slavkova figura mogu se nalaziti na istom polju. Mirko smije stati na polje koje je već posjetio samo u zadnjem koraku cijele igre, dok Slavko može posjetiti svako polje koliko god puta to želi. Mirko i Slavko izmjenjuju poteze dok jedan od njih ne pobijedi.</p>\n<p>Slavku je cilj igre pobjeći svojom figurom na rub ploče, tj. Slavko pobjeđuje ako postavi svoju figuru u prvi ili posljednji red ploče ili u prvi ili posljednji stupac ploče. Mirko pobjeđuje ako svojom figurom uspije ograditi područje oko Slavkove figure. Kako Mirko može ograditi Slavkovu figuru? Kada (i ako) Mirko u zadnjem koraku stane na polje koje je već prije posjetio, tada na svakom polju na kojem se nalazio između prvog i drugog posjeta tom dvaput posjećenom polju nastaje zid, uključujući i to polje. Za Slavkovu figuru se smatra da je ograđena ako se nalazi strogo unutar Mirkovog zida.</p>\n<p>Pomozi Mirku pobijediti tako što ćeš napisati program koji će ispisati najmanji broj polja na kojima je potrebno izgraditi zid kako bi Mirko bio siguran da će ograditi Slavkovu figuru neovisno o Slavkovom izboru početne pozicije i njegovim potezima. U slučaju da to nije moguće napraviti ispiši -1.</p>",
+  "input": "<p>U prvom redu nalaze se dva prirodna broja N i M (1 ≤ N ≤ 200, 1 ≤ M ≤ 200) koji označavaju broj redaka i broj stupaca ploče.</p>\n<p>U sljedećih N redova nalazi se M znakova koji opisuju izgled ploče. Znakom točka (‘.’) označavamo prazno polje, malim slovom x (‘x’) označavamo moguću Slavkovu početnu poziciju.</p>",
+  "output": "<p>U prvi i jedini red ispiši traženi broj iz teksta zadatka.</p>",
+  "samples": [
+    {
+      "input": "5 5\n.....\n.....\n..x..\n.....\n.....\n",
+      "output": "8\n"
+    },
+    {
+      "input": "8 8\n........\n........\n...x....\n........\n..x.....\n........\n......x.\n........\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "9 8\n........\n........\n........\n...x....\n....x...\n...x....\n........\n........\n........\n",
+      "output": "30\n"
+    }
+  ],
+  "hint": "<p>Pojašnjenje prvog test podatka: Mirko u svom prvom potezu posjećuje polja redoslijedom navedenim na svakom polju:</p>\n<pre>\n01...\n.234.\n.9x5.\n.876.\n.....</pre>\n<p>te u svom 10. koraku prvog poteza ponovno staje na polje označeno brojem 2. Kada ponovno stane na polje označeno brojem 2, zid nastaje na 8 polja (polja s brojevima 2 - 9).</p>\n<p>Pojašnjenje drugog test podatka: Mirko ne može ograditi Slavkovu figuru jer ako Slavko postavi figuru na početnu poziciju u predzadnjem redu, nakon Mirkovih 10 koraka Slavko pomiče figuru u posljednji red i pobjeđuje.</p>\n<p>Pojašnjenje trećeg test podatka: Jedan od mogućih načina da Mirko ogradi Slavkovu figuru s 30 zidova je da se kreće navedenim redoslijedom:</p>\n<pre>\n 0  1  2  3  4  .  .  .\n29  .  .  .  5  6  7  .\n28  .  .  .  .  .  8  9\n27  .  .  x  .  .  . 10\n26  .  .  .  x  .  . 11\n25  .  .  x  .  .  . 12\n24  .  .  .  .  .  . 13\n23 22  .  .  .  .  . 14\n . 21 20 19 18 17 16 15</pre>\n<p>te u 30. koraku staje na polje označeno brojem 0. Mirku je potrebno 3 poteza da bi ogradio tih 30 polja pa Slavko može napraviti 2 poteza prije nego Mirko dovrši zid. Vidimo da se Slavko unutar ta 2 koraka sigurno nalazi unutar ograđenog područja.</p>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2016, Junior Croatian Olympiad in Informatics 2016",
+  "level": 14,
+  "tags": [
+    "bruteforcing"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

@@ -1,0 +1,28 @@
+{
+  "id": 15182,
+  "title": "Byte Me!",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Parity is an important concept in data transmission. Because the process is not error proof, parity is used to provide a check on whether or not data has been corrupted in transmission.</p>\n<p>If even parity is being used, each byte will have an even number of 1 characters. If odd parity is being used, each byte will have an odd number of 1 characters.</p>\n<p>In this problem, we are looking for a single bit that has been corrupted. To help you find it, the last byte is not part of the data being transmitted, but is a parity byte. Each bit of the parity byte will be used to make the corresponding bits in the data bytes odd or even depending on the parity being used.</p>",
+  "input": "<p>The first line of input is a single integer, N (3 &lt;= N &lt;= 10), the number of bytes of data to follow. The next N lines each contain a single byte of data consisting of 8 characters separated by spaces. Each character will be either 1 or 0. </p>\n<p>There will be one further line of 8 characters (again 1 or 0) which will be the parity byte. In the parity byte, each bit is a parity bit for the corresponding bits in the preceding N lines, using the same parity as is used by the data bytes. The parity byte itself may not show the same parity as the data bytes.</p>",
+  "output": "<p>Output 3 lines of information about the data in the input. </p>\n<ul>\n<li>Line 1: Either the word Even or the word Odd to describe the parity being used by the bytes which are not broken.</li>\n<li>Line 2: Byte is broken</li>\n<li>Line 3: Bit is broken</li>\n</ul>\n<p>is the number of the appropriate byte or bit, where the first of each is number 1.</p>",
+  "samples": [
+    {
+      "input": "3\n1 0 1 0 1 1 1 0\n1 1 0 1 1 1 0 0\n1 0 1 1 1 0 0 0\n0 0 1 1 1 1 0 1\n",
+      "output": "Odd\nByte 3 is broken\nBit 5 is broken\n"
+    },
+    {
+      "input": "4\n1 0 1 1 1 0 0 0\n1 0 1 1 0 0 0 0\n0 1 0 0 1 0 0 0\n1 0 1 1 1 0 1 1\n1 0 1 1 1 0 1 1\n",
+      "output": "Even\nByte 2 is broken\nBit 2 is broken\n"
+    }
+  ],
+  "hint": "<p>Explanation 1</p>\n<p>Bytes 1 and 2 have an odd number of 1s but byte 3 has an even number. So odd parity is being used but byte 3 is broken.</p>\n<p>The parity byte gives all columns of bits an odd number of 1s except for 5 where they are even, so bit 5 is broken. Bit 5 of byte 3 is corrupt. </p>\n<p>Explanation 2</p>\n<p>The first 4 bytes all have an even number of 1s except for byte 2 which is the broken byte.</p>\n<p>The parity byte gives all columns of bits an even number of 1s except for 2 where they are odd, so bit 2 is broken. Bit 2 of byte 2 is corrupt.</p>",
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, New Zealand Programming Contest, NZPC 2017",
+  "level": 5,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 75,
+  "submission_count": null,
+  "average_tries": 1.6533000469207764
+}

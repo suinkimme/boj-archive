@@ -1,0 +1,26 @@
+{
+  "id": 19210,
+  "title": "Collections In Containers",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>A <em>$d$-dimensional collection</em> is a set of vectors such that:</p>\n<ul>\n<li>Each coordinate of each vector in the set is a non-negative integer number.</li>\n<li>Let a vector $v = (v_1, \\ldots, v_d)$ belong to the set. Then every vector $u = (u_1, \\ldots, u_d)$ such that all $u_i$ are non-negative integers and $u$ does not exceed $v$ coordinate-wise (that is, for every index $i$ from $1$ to $d$ the inequality $0 \\leq u_i \\leq v_i$ must hold) must belong to the set as well.</li>\n</ul>\n<p>For example, $\\{(0, 0), (0, 1), (1, 0)\\}$ and $\\{(0, 0), (1, 0), (2, 0), (3, 0)\\}$ are <em>$2$-dimensional collections</em>, while $\\{(0, 1), (1, 0), (1, 1)\\}$, $\\{(0, 0), (-1, 0)\\}$, and $\\{(0, 0), (0, \\frac{1}{2}), (0, 1)\\}$ are not.</p>\n<p>You have to store two identical $d$-dimensional collections, each of size $n$. In order to do that, you gathered $n$ identical $d$-dimensional containers each of which has a capacity given by the <em>capacity vector</em> $c = (c_1, \\ldots, c_d)$. You decided to choose a container for each vector from each collection in such a way that every container would contain exactly one vector from the first collection and exactly one vector from the second collection. However, if two vectors $v = (v_1, \\ldots, v_d)$ and $u = (u_1, \\ldots, u_d)$ are placed in the same container, it must be verified that $v_i + u_i \\leq c_i$ for every $i$; that is, the vector $v + u$ must not exceed the capacity vector $c$ coordinate-wise.</p>\n<p>It is also guaranteed that each vector from each collection fits in any container by itself; that is, each vector $v$ of each collection does not exceed the capacity vector $c$ coordinate-wise.</p>\n<p>Finding an arrangement to place all those vectors in containers turned out to be hard, so you decided to write a program that will solve this problem.</p>",
+  "input": "<p>The first line of input contains two space-separated positive integers $n$ and $d$ ($1 \\leq n \\cdot d \\leq 10^5$) --- the size and the dimension of each collection.</p>\n<p>The second line of input contains $d$ space-separated integers $c_1$, $\\ldots$, $c_d$ ($0 \\leq c_i \\leq 10^9$).</p>\n<p>Next $n$ lines of input contain description of the collections; $i$-th of these lines contains $d$ space-separated integers $v_{i 1}$, $\\ldots$, $v_{i d}$ ($0 \\leq v_{i j} \\leq 10^9$) --- coordinates of $i$-th vector in the collection. It is guaranteed that the described set of vectors is indeed a $d$-dimensional collection according to the definition above, and $v_{i j} \\leq c_j$.</p>",
+  "output": "<p>Output $n$ lines, with two space-separated integers in each --- the numbers of vectors from the first and the second collection respectively that must be put in the $i$-th container. The numeration of vectors in the input is 1-based. Every vector from every collection must be assigned to exactly one container.</p>\n<p>If there is more than one possible arrangement, output any one of them. It is guaranteed that there is at least one arrangement that satisfies all the requirements.</p>",
+  "samples": [
+    {
+      "input": "4 2\n1 1\n0 0\n0 1\n1 0\n1 1\n",
+      "output": "1 4\n2 3\n3 2\n4 1\n"
+    },
+    {
+      "input": "4 2\n2 1\n0 0\n1 0\n2 0\n0 1\n",
+      "output": "1 4\n2 2\n3 1\n4 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2015, Day 9: Michael Tikhomirov Contest 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 2
+}

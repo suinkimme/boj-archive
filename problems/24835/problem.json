@@ -1,0 +1,25 @@
+{
+  "id": 24835,
+  "title": "1-Trees and Queries",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Gildong was hiking a mountain, walking by millions of trees. Inspired by them, he suddenly came up with an interesting idea for trees in data structures: <em>What if we add another edge in a tree?</em></p>\n<p>Then he found that such tree-like graphs are called <em>1-trees</em>. Since Gildong was bored of solving too many tree problems, he wanted to see if similar techniques in trees can be used in 1-trees as well. Instead of solving it by himself, he's going to test you by providing queries on 1-trees.</p>\n<p>First, he'll provide you a tree (not 1-tree) with $n$ vertices, then he will ask you $q$ queries. Each query contains $5$ integers: $x$, $y$, $a$, $b$, and $k$. This means you're asked to determine if there exists a path from vertex $a$ to $b$ that contains exactly $k$ edges after adding a bidirectional edge between vertices $x$ and $y$. <strong>A path can contain the same vertices and same edges multiple times</strong>. All queries are independent of each other; i.e. the added edge in a query is removed in the next query.</p>",
+  "input": "<p>The first line contains an integer $n$ ($3 \\le n \\le 10^5$), the number of vertices of the tree.</p>\n<p>Next $n-1$ lines contain two integers $u$ and $v$ ($1 \\le u,v \\le n$, $u \\ne v$) each, which means there is an edge between vertex $u$ and $v$. All edges are bidirectional and distinct.</p>\n<p>Next line contains an integer $q$ ($1 \\le q \\le 10^5$), the number of queries Gildong wants to ask.</p>\n<p>Next $q$ lines contain five integers $x$, $y$, $a$, $b$, and $k$ each ($1 \\le x,y,a,b \\le n$, $x \\ne y$, $1 \\le k \\le 10^9$) – the integers explained in the description. It is guaranteed that the edge between $x$ and $y$ does not exist in the original tree.</p>",
+  "output": "<p>For each query, print \"YES\" if there exists a path that contains exactly $k$ edges from vertex $a$ to $b$ after adding an edge between vertices $x$ and $y$. Otherwise, print \"NO\".</p>\n<p>You can print each letter in any case (upper or lower).</p>",
+  "samples": [
+    {
+      "input": "5\n1 2\n2 3\n3 4\n4 5\n5\n1 3 1 2 2\n1 4 1 3 2\n1 4 1 3 3\n4 2 3 3 9\n5 2 3 3 9\n",
+      "output": "YES\nYES\nNO\nYES\nNO\n"
+    }
+  ],
+  "hint": "<p>The image below describes the tree (circles and solid lines) and the added edges for each query (dotted lines).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 336px; width: 782px;\"/></p>\n<p>Possible paths for the queries with \"YES\" answers are:</p>\n<ul>\n<li>$1$-st query: $1$ – $3$ – $2$</li>\n<li>$2$-nd query: $1$ – $2$ – $3$</li>\n<li>$4$-th query: $3$ – $4$ – $2$ – $3$ – $4$ – $2$ – $3$ – $4$ – $2$ – $3$</li>\n</ul>",
+  "source": "Contest, Codeforces, Codeforces Round 620 (Div. 2), djm03178",
+  "level": 17,
+  "tags": [
+    "trees",
+    "lca"
+  ],
+  "accepted_user_count": 43,
+  "submission_count": null,
+  "average_tries": 1.395300030708313
+}

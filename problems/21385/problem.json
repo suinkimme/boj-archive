@@ -1,0 +1,27 @@
+{
+  "id": 21385,
+  "title": "Bus Pass",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You travel a lot by bus and the costs of all the seperate tickets are starting to add up. Therefore you want to see if it might be advantageous for you to buy a bus pass.</p>\n<p>The way the bus system works in your country (and also in the Netherlands) is as follows: when you buy a bus pass, you have to indicate a center zone and a star value. You are allowed to travel freely in any zone which has a distance to your center zone which is less than your star value. For example, if you have a star value of one, you can only travel in your center zone. If you have a star value of two, you can also travel in all adjacent zones, et cetera.</p>\n<p>You have a list of all bus trips you frequently make, and would like to determine the minimum star value you need to make all these trips using your buss pass. But this is not always an easy task. For example look at the following figure:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 470px; height: 467px;\"/></p>\n<p>Here you want to be able to travel from A to B and from B to D. The best center zone is 7400, for which you only need a star value of 4. Note that you do not even visit this zone on your trips!</p>",
+  "input": "<p>On the first line an integer t (1 ≤ t ≤ 100): the number of test cases. Then for each test case:</p>\n<ul>\n<li>One line with two integers nz (2 ≤ nz ≤ 9 999) and nr (1 ≤ nr ≤ 10): the number of zones and the number of bus trips, respectively.</li>\n<li>nz lines starting with two integers id<sub>i</sub> (1 ≤ id<sub>i</sub> ≤ 9 999) and mz<sub>i</sub> (1 ≤ mz<sub>i</sub> ≤ 10), a number identifying the i-th zone and the number of zones adjacent to it, followed by mz<sub>i</sub> integers: the numbers of the adjacent zones.</li>\n<li>nr lines starting with one integer mr<sub>i</sub> (1 ≤ mr<sub>i</sub> ≤ 20), indicating the number of zones the ith bus trip visits, followed by mr<sub>i</sub> integers: the numbers of the zones through which the bus passes in the order in which they are visited.</li>\n</ul>\n<p>All zones are connected, either directly or via other zones.</p>",
+  "output": "<p>For each test case:</p>\n<ul>\n<li>One line with two integers, the minimum star value and the id of a center zone which achieves this minimum star value. If there are multiple possibilities, choose the zone with the lowest number.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "1\n17 2\n7400 6 7401 7402 7403 7404 7405 7406\n7401 6 7412 7402 7400 7406 7410 7411\n7402 5 7412 7403 7400 7401 7411\n7403 6 7413 7414 7404 7400 7402 7412\n7404 5 7403 7414 7415 7405 7400\n7405 6 7404 7415 7407 7408 7406 7400\n7406 7 7400 7405 7407 7408 7409 7410 7401\n7407 4 7408 7406 7405 7415\n7408 4 7409 7406 7405 7407\n7409 3 7410 7406 7408\n7410 4 7411 7401 7406 7409\n7411 5 7416 7412 7402 7401 7410\n7412 6 7416 7411 7401 7402 7403 7413\n7413 3 7412 7403 7414\n7414 3 7413 7403 7404\n7415 3 7404 7405 7407\n7416 2 7411 7412\n5 7409 7408 7407 7405 7415\n6 7415 7404 7414 7413 7412 7416\n",
+      "output": "4 7400\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2007",
+  "level": 0,
+  "tags": [
+    "bfs",
+    "bruteforcing",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 3
+}

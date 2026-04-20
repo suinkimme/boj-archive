@@ -1,0 +1,33 @@
+{
+  "id": 35172,
+  "title": "Grid Game 2×2",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>There is a $10^9 \\times 10^9$ grid, with rows numbered from $1$ to $10^9$ and columns numbered from $1$ to $10^9$. Denote $(r, c)$ as the cell at row $r$ and column $c$.</p>\n<p>Initially, exactly $N$ of the cells are black, and the rest are white. The $i$-th black cell is located at $(R_i, C_i)$.</p>\n<p>Your childhood friends, Kita and Kami, will alternately take turns playing on this grid, with Kita moving first. A turn in the game proceeds as follows.</p>\n<ol>\n<li>Pick a black cell $(r, c)$.</li>\n<li>Pick a subset $K \\subseteq \\{1, 2, \\ldots, t\\}$ where $t$ is the largest integer such that $2^t \\leq \\min(r, c)$. The set $K$ may be empty.</li>\n<li>For each $k \\in K$, toggle the colour of <strong>all</strong> cells $(r-i, c-j)$ satisfying $0 \\leq i &lt; 2^k$, $0 \\leq j &lt; 2^k$, and $(i, j) \\neq (0, 0)$. Toggling a colour means changing black colour to white and vice versa.</li>\n<li>Toggle the colour of cell $(r, c)$. Note that the colour of cell $(r, c)$ becomes white after the toggle.</li>\n</ol>\n<p>A player who is unable to play on their turn, i.e., there are no black cells anymore, loses the game, and the opposing player wins the game. If both players play optimally, determine who will win the game.</p>",
+  "input": "<p>The first line contains an integer $N$ ($1 \\leq N \\leq 200\\,000$) representing the number of black cells. Each of the next $N$ lines contains two integers $R_i$ and $C_i$ ($1 \\leq R_i, C_i \\leq 10^9$) representing the location of the $i$-th black cell. All the given black cells are different.</p>",
+  "output": "<p>Output one line, containing either <code>Kita</code> if the first player will win the game, or <code>Kami</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "4\n1 2\n1 3\n2 2\n2 3\n",
+      "output": "Kita\n"
+    },
+    {
+      "input": "1\n8 8\n",
+      "output": "Kita\n"
+    },
+    {
+      "input": "2\n2 4\n4 2\n",
+      "output": "Kami\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, The 2025 ICPC Asia Jakarta Regional Contest",
+  "level": 20,
+  "tags": [
+    "game_theory",
+    "sprague_grundy"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

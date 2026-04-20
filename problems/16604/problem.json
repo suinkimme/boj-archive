@@ -1,0 +1,34 @@
+{
+  "id": 16604,
+  "title": "Date Pickup",
+  "time_limit": "8 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Richard and Janet are going on their first date. Richard has offered to meet her at home with his bicycle, and Janet tells him she will call when she is ready in 10 to 20 minutes. But Richard is an impatient person; while he could wait at home for Janet’s signal, he might also leave early and travel around the neighbourhood for a bit, in order to minimise the time it takes him to reach her once she calls. Due to his impatience, once Richard is on his bicycle, he does not want to ride any slower than the legal speed limit, stop at intersections, or wait outside Janet’s house (but he does not mind passing by Janet’s house and returning to it later).</p>\n<p>Given the directed graph representing the neighbourhood around Richard’s and Janet’s houses, Richard wants to devise a route around the neighbourhood (after an optional waiting period at his own house) which minimises the time that Janet has to wait in the worst case. He can travel for as long as he likes and visit each intersection as many times as he likes.</p>\n<p>Janet will call Richard as soon as she is ready, and at that point Richard will take the shortest path to her that he can. Richard does not know exactly when Janet will be ready, but he knows it will be in somewhere between a and b minutes (not necessarily at a whole minute).</p>\n<p>If Richard is passing through an intersection at the exact same instant Janet calls, the call is considered to happen before he chooses what to do at the intersection. For example, if he is passing by Janet’s house at the moment she calls, he can immediately stop there and she does not have to wait for him at all.</p>\n<p>It could happen that Janet never has to wait for w minutes, but that she might have to wait for w − ε minutes for arbitrarily small ε &gt; 0, if she calls Richard at some inopportune moment (say, nanoseconds after he has left an intersection). In this case, we still define the worst case waiting time to be w.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two integers a, b (0 ≤ a ≤ b ≤ 10<sup>12</sup>), indicating that Janet will be ready in at least a minutes and at most b minutes.</li>\n<li>One line with two integers n, m (2 ≤ n ≤ m ≤ 10<sup>5</sup>), the number of intersections and the number of roads in the neighbourhood. The intersections are numbered from 1 to n.</li>\n<li>m lines, each with three integers u, v and t (1 ≤ u, v ≤ n, 1 ≤ t ≤ 10<sup>6</sup>), indicating that there is a one-way road from intersection u to intersection v, and that it takes Richard exactly t minutes to travel along this road.</li>\n</ul>\n<p>Richard’s house is at intersection 1 and Janet’s house is at intersection n. It is guaranteed that it is possible to travel from Richard’s house to Janet’s house, and that it is possible to exit each intersection through at least one road, even if that road just loops back to the same intersection.</p>",
+  "output": "<p>Output the time Janet has to wait in the worst case assuming she will be ready in at least a minutes and at most b minutes and Richard plans his route optimally.</p>\n<p>It can be shown that the worst case waiting time is always an integer.</p>",
+  "samples": [
+    {
+      "input": "10 20\n3 5\n1 3 7\n2 1 1\n2 3 2\n2 3 5\n3 2 4\n",
+      "output": "6\n"
+    },
+    {
+      "input": "4 10\n5 7\n1 4 6\n4 5 5\n4 5 3\n5 5 30\n1 2 1\n2 3 1\n3 2 1\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2018",
+  "level": 24,
+  "tags": [
+    "binary_search",
+    "dag",
+    "dijkstra",
+    "dp",
+    "graphs",
+    "shortest_path",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 7.1875
+}

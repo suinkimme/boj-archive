@@ -1,0 +1,33 @@
+{
+  "id": 24589,
+  "title": "Stream Lag",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Live stream audiences often encounter undesired stream lag. The lag may occur for multiple reasons, such as slow network speed, high stream resolution, not enough processing power on the client hardware, etc. In this problem, we will model and compute the stream lag for one hypothetical stream.</p>\n<p>The stream has a video content that is segmented into n network packets to send, numbered from 1 to n. Each packet contains a small segment of the streamed video with a length of exactly one second. A stream lag is a time period in which the stream audience is not watching any content while waiting for the stream packets to arrive. Ideally, a stream audience experiencing zero lag shall receive packet i at the beginning of the ith second, in which case the audience can seamlessly watch the entire streamed video.</p>\n<p>In reality, any of the n packets may be received at any moment, and not necessarily in order from 1 to n. A stream client will only start playing packet i if it has played all its preceding packets. If this is not the case, the stream client will wait until all packets before i have been received and played. The stream client keeps all received packets that cannot yet be played in its buffer and is able to retrieve them in no time when they are ready to be played. If a packet is not available when the time to play it arrives, the stream lags and viewers fall behind from the live stream. The stream client plays each packet for exactly one second at its original speed. All packets are to be played even when the play time lags much behind the live stream.</p>\n<p>Given the arrival time of the n packets in chronological order, compute the total lag time that a stream audience will experience.</p>",
+  "input": "<p>The first line of input has a single integer n (1 ≤ n ≤ 1,000). This is followed by n lines. The ith line has two integers t<sub>i</sub> and i (1 ≤ t<sub>i</sub> ≤ 10<sup>9</sup>, 1 ≤ i ≤ n), which means that packet i arrives at the beginning of the t<sub>i</sub> th second. The values of t<sub>i</sub>’s are non-decreasing. Packets may arrive at the same time.</p>",
+  "output": "<p>Output the total lag time based on the given packet arrival time.</p>",
+  "samples": [
+    {
+      "input": "5\n1 1\n3 2\n4 5\n4 3\n5 4\n",
+      "output": "1\n"
+    },
+    {
+      "input": "4\n1 1\n3 3\n4 2\n8 4\n",
+      "output": "4\n"
+    },
+    {
+      "input": "3\n1 1\n2 2\n2 3\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Mid-Atlantic Regional, 2021 Mid-Atlantic USA Regional Contest, ICPC, Regionals, North America, North Central North America Regional, 2021 North Central NA Regional Contest",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 58,
+  "submission_count": null,
+  "average_tries": 1.4483000040054321
+}

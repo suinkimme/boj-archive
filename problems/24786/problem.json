@@ -1,0 +1,26 @@
+{
+  "id": 24786,
+  "title": "Cracking RSA",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<figure style=\"float: right;\"><img alt=\"\" src=\"1.png\" style=\"width: 200px; height: 100px;\"/>\n<figcaption>Image by Sean MacEntee (<a href=\"https://flic.kr/p/qi1eYu\">Flickr</a>) [<a href=\"http://creativecommons.org/licenses/by/2.0\">CC BY 2.0</a>]</figcaption>\n</figure>\n<p>RSA is a widely used public-key cryptosystem that allows two parties (such as people or computers) to exchange secret messages without revealing information to anyone else listening on the conversation. Many websites use RSA when visited over a secure <code>https</code> connection. In RSA, each party has two different keys: a <em>public</em> key that is published and a <em>private</em> key that is kept secret. To encrypt a message intended for a specific recipient, the sender will use the recipient's public key to encrypt the message. The recipient will use their private key to decrypt the message.</p>\n<p>An RSA public key $(n, e)$ consists of two numbers $n$ and $e$. The number $n$ is a product of two distinct prime numbers, $p$ and $q$. In real applications, $n$ would be hundreds of decimal digits long for security.</p>\n<p>Let $\\varphi(n)$ be Euler's <em>totient</em> function, which in this case is equal to $(p-1) (q-1)$. The private key consists of $(n, d)$, where $n$ is the same as in the public key and $d$ is the solution to the congruence \\[de \\equiv 1 \\bmod \\varphi(n)\\] Formally, a congruence \\[a \\equiv b \\bmod c\\] holds for three integers $a$, $b$, and $c$, if there exists an integer $k$ such that $a - b = k c$.</p>\n<p>The sender will encrypt a message $M$ (which, for simplicity, is assumed to be an integer smaller than both $p$ and $q$) by computing $M^e \\bmod n$ and sending it to the receiver. The recipient will calculate $(M^e)^d \\equiv M^{e d} \\equiv M^{k \\varphi(n) + 1} \\equiv M^{\\varphi(n) k} M \\equiv M \\bmod n$ since by Euler's theorem $M^{\\varphi(n)} \\equiv 1 \\bmod n$. This will reconstruct the original message. Without the private key, no practical way has been found for a potential attacker to recover $M$ from the knowledge of $M^e \\bmod n$ and $(n, e)$.</p>\n<p>Your task is to crack RSA by finding the private key related to a specific public key.</p>",
+  "input": "<p>The first line of input has the number of test cases $T$, ($1 \\le T \\le 50$). Each test case has one line that contains the two numbers $n$ and $e$. You may assume that $n$ is the product of two primes $p, q$ such that $2 \\le p,q &lt; 1000$. Also, $e$ will be chosen so that $d$ exists and is unique, and $1 &lt; d, e &lt; \\varphi(n)$. Note that the product $d e$ may not fit into a 32-bit integer (e.g. Java's <code>int</code> type).</p>",
+  "output": "<p>For each test case, output the single number $d$.</p>",
+  "samples": [
+    {
+      "input": "2\n33 3\n65 11\n",
+      "output": "7\n35\n"
+    }
+  ],
+  "hint": null,
+  "source": ", School, Virginia Tech High School Programming Contest, 2016 Virginia Tech High School Programming Contest",
+  "level": 9,
+  "tags": [
+    "bruteforcing",
+    "math",
+    "number_theory"
+  ],
+  "accepted_user_count": 47,
+  "submission_count": null,
+  "average_tries": 1.3830000162124634
+}

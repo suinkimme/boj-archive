@@ -1,0 +1,30 @@
+{
+  "id": 21217,
+  "title": "Daisy’s Mazes",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Daisy enjoys walking in mazes to evacuate the stress of a long day of work. The mazes that she likes are all composed of a set of rooms with one entry room, one exit room, and in each room there are several one-way doors leading to other rooms. Daisy's goal is to find a path from the entry to the exit.</p>\n<p>Daisy has a technique to solve mazes. She has noticed that the different doors of any room have different colors and thus she can remember her path by keeping track of the colors of doors along her path. For that, she looks at the plan before entering the maze and builds a deck of colored cards corresponding to the colors of doors she needs to take. Whenever she enters a room, she goes through the door that has the color of the topmost card in her deck and then she discards this card.</p>\n<p>It sometimes happens that Daisy's decks are \"incomplete\" and she arrives in a room with an empty deck or with a topmost card that has a color corresponding to none of the doors. In those cases, Daisy goes through one of the doors in the room and, instead of discarding the topmost card, she adds on top of her deck a card of the color of the door she took.</p>\n<p>Let us consider the following example maze with three rooms and three doors: a red door from the entry to room 1, a second red door from room 1 back to the entry, and a blue door between room 1 and the exit. In this example maze (also depicted below) then:</p>\n<ul>\n<li>if Daisy starts with a deck containing a red card on top and a blue card below, she will go to room 1 and discard the red card, then go to the exit and discard the blue card;</li>\n<li>if Daisy starts with a deck containing a single red card then she will necessarily go to room 1 as a first step, discard the red card and from there she can choose to take the blue door and exit (it does not matter whether her deck is empty at the end) or she can choose to take the red door and goes back to her initial situation: in the entry room with a single red card;</li>\n<li>if she starts or arrives in the entry room with an empty deck, she will necessarily loop indefinitely. Indeed, the entry has only one door that leads to room 1. Once she arrives in room 1, her deck contains a red card on top and thus she has to take the red door and discard this card, which leads her back to the entry room with an empty deck.</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 447px; height: 104px;\"/></p>\n<p>Daisy knows that, in all of her labyrinths, she can always go from the entry room to the exit room with the right deck.  However, some decks do not allow her to escape, whatever the choices she may ever do. She wonders: what is the minimal size of a deck that allows her to escape? Daisy gives you the plan of the maze and asks you to help her determine the minimal size of a deck that allows her go from the entry room to the exit if she makes the right choices.</p>",
+  "input": "<p>The first line contains three integers $R$, $D$, and $C$, separated by spaces. $R$ is the number of rooms, $D$ is the number of doors, and $C$ is the number of colors. Rooms are numbered from $0$ to $R-1$, and colors are numbered from $0$ to $C-1$.</p>\n<p>The next $D$ lines each describes a door with three integers $f$, $t$ and $c$, separated by spaces, and such that $0\\leq f \\leq R-1$, $0 \\leq t \\leq R-1$, $f\\neq t$, and $0\\leq c \\leq C-1$.  This indicates that there is a door from room $f$ to room $t$, and that this door has color $c$.</p>",
+  "output": "<p>The output should contain a single line with a single integer: the minimal integer $S$ such that there is a deck composed of $S$ cards that allows Daisy, if she makes the right choices, to go from the entry (the room numbered $0$) to the exit (the room numbered $R-1$).</p>",
+  "samples": [
+    {
+      "input": "4 4 2\n0 1 0\n1 2 0\n2 0 0\n1 3 1\n",
+      "output": "0\n"
+    },
+    {
+      "input": "3 3 2\n0 1 1\n1 0 1\n1 2 0\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2020-2021",
+  "level": 24,
+  "tags": [
+    "dp",
+    "graphs",
+    "graph_traversal"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 3.0713999271392822
+}

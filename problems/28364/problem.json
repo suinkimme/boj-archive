@@ -1,0 +1,30 @@
+{
+  "id": 28364,
+  "title": "ChatNOI",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Mary is fascinated by the power of large language models. With all the recent hype around chat bots and generative AI, she decided to design her own text generation model called ChatNOI (Chat, but Not Overly Intelligent).</p>\n<p>The model is trained on a large document consisting of $n$ words, where it will learn to recognise patterns in sequences of words. Specifically, for every distinct sequence of $k$ consecutive words appearing in the document, the model will keep track of the frequency of words that occur as the next word following this sequence of $k$ words.</p>\n<p>As an example, if the model is trained with the parameter $k = 2$ on the document</p>\n<pre style=\"text-align: center;\">\nrow row to the fishing rocks\nout in the ocean they go\na cow is sitting and rowing\nand the sun rises\nand the sun sets\nbut the cow and the boat are still there\n</pre>\n<p>it will learn that <code>row row</code> is followed once by the word <code>to</code>, <code>and the</code> is followed twice by the word <code>sun</code> and once by the word <code>boat</code>, <code>the sun</code> is followed once by the word <code>rises</code> and once by the word <code>sets</code>, and so on. We call the frequency of a word following a particular sequence of $k$ words the <em>likelihood</em> of that word following that sequence.</p>\n<p>Mary has figured out how she can use a trained model to rank the quality of a given sentence. She looks at every sequence of $k$ consecutive words in the sentence, and the word that follows that sequence. She then calculates the likelihood of that word following that sequence, as per the above definition. The minimum likeliness that she encounters out of all $k$ consecutive words is the quality of that sentence.</p>\n<p>Continuing with the above example, the sentence <code>cow and the sun rises</code> has a quality of $1$, because <code>cow and</code> is followed by <code>the</code> with a likelihood of $1$, <code>and the</code> is followed by <code>sun</code> with a likelihood of $2$, and <code>the sun</code> is followed by <code>rises</code> with a likelihood of $1$, the minimum of which is $1$. Similarly the sentence <code>and the sun</code> has a quality of $2$ and the sentence <code>row to the boat</code> has a quality of $0$.</p>\n<p>Now that Mary has designed the model and a way to <em>rank</em> the quality of a given sentence, she turns to you for help in using the model to <em>generate</em> sentences. Given the first $k$ words in a sentence and a number $m$, Mary asks you to finish the last $m$ words of that sentence so that it has the maximum quality possible according to the trained model. She is pretty excited so she may even ask you to do this multiple times.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two integers $n$ and $k$, the number of words in the training document and the training parameter $k$ as described above.</li>\n<li>One line with a sequence of $n$ words $w_1, w_2, \\ldots, w_n$, the training document. Each word consists of $1$ to $10$ lowercase characters from the English alphabet.</li>\n<li>One line with an integer $q$, the number of queries to follow.</li>\n<li>$q$ lines, the $i$th of which describes the $i$th query:\n\t<ul>\n<li>An integer $m_i$, where $1 \\leq m_i \\leq 5 \\cdot 10^5$, the number of words that should be generated to complete the sentence in the $i$th query, and</li>\n<li>a sequence of $k$ words $u_1, u_2, \\ldots, u_k$, the initial part of the sentence in the $i$th query. Each word is guaranteed to have appeared in the training document.</li>\n</ul>\n</li>\n</ul>\n<p>Let $M$ denote the sum of $m_i$ over all queries $i$. It is guaranteed that $M$ is at most $5 \\cdot 10^5$.</p>",
+  "output": "<p>Output $q$ lines, the $i$th line containing the generated words so that the complete sentence for the $i$th query has the maximum quality possible. You may only use words that appear in the training document. If there are multiple possible solutions for a given query then you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "13 2\nullen dullen doff kikke lane koff koffe lane bikke bane ullen dullen doff\n3\n1 ullen dullen\n2 ullen dullen\n3 ullen dullen\n",
+      "output": "doff \ndoff kikke \ndoff kikke lane \n"
+    },
+    {
+      "input": "8 1\nbuffalo buffalo buffalo buffalo buffalo buffalo buffalo buffalo\n1\n7 buffalo\n",
+      "output": "buffalo buffalo buffalo buffalo buffalo buffalo buffalo \n"
+    },
+    {
+      "input": "16 1\nhave you not heard about the bird the bird bird bird the bird is the word\n8\n1 have\n1 you\n1 not\n1 heard\n1 about\n1 the\n1 bird\n1 is\n",
+      "output": "you \nnot \nheard \nabout \nthe \nbird \nbird \nthe \n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Nordic Olympiad in Informatics, 2023",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 3.3333001136779785
+}

@@ -1,0 +1,25 @@
+{
+  "id": 15917,
+  "title": "노솔브 방지문제야!!",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>여러분은 Q개의 쿼리를 수행해야 합니다. 수행해야 하는 쿼리는 다음과 같습니다.</p>\n<p>어떤 수 a를 2의 거듭제곱 꼴로 나타낼 수 있는가?</p>",
+  "input": "<p>첫 줄에 Q가 주어집니다. (1 ≤ Q ≤ 10<sup>6</sup>)</p>\n<p>두 번째 줄부터 Q+1번째 줄까지 a가 주어집니다. a는 1이상 2<sup>31</sup>-1이하 자연수입니다.</p>",
+  "output": "<p>각 쿼리마다, 답이 Yes이면 1을, 그렇지 않으면 0을 출력합니다.</p>",
+  "samples": [
+    {
+      "input": "10\n1\n2\n7\n4\n14\n32\n33\n34\n35\n36\n",
+      "output": "1\n1\n0\n1\n0\n1\n0\n0\n0\n0\n"
+    }
+  ],
+  "hint": "<p>어떤 수 a가 2의 거듭제곱꼴로 나타내어진다고 해 봅시다. 그렇다면, a = 2<sup>n</sup> (단 n ≥ 0인 정수) 를 만족할 겁니다. 보통, 각 비트별로 검사를 하면서, 켜져 있는 비트의 개수를 알아내는 것도 좋은 방법입니다. 이때에는, 많아봤자 32번 정도 연산을 수행하고, 전체 쿼리가 Q개 있다면, 총 시간 복잡도는 O(32Q)가 됩니다.</p>\n<p>그런데, 더 좋은 방법이 없을까요? x (x ≥ 0)를 2진법으로 표현해 볼건데요. x가 홀수인 경우와 짝수인 경우로 나눠 봅시다.</p>\n<p style=\"text-align: center;\">...01</p>\n<p>이때 -x는 어떻게 표현이 될까요?</p>\n<p style=\"text-align: center;\">...11</p>\n<p>따라서, x&amp;(-x)를 하면 1이 나옵니다. x가 짝수라면 어떨까요?</p>\n<p style=\"text-align: center;\">...10…0</p>\n<p>으로 표현이 될 겁니다. 이때 -x는 어떻게 표현이 될까요? 일단 bit 반전 먼저 시켜봅시다.</p>\n<p style=\"text-align: center;\">...01...1</p>\n<p>이 되고, 여기에 1을 더한 것이 2의 보수 표현법입니다. 따라서 -x는</p>\n<p style=\"text-align: center;\">...10...0</p>\n<p>으로 표현됩니다. 따라서 x&amp;(-x)는 1이 있는 x의 최하위 bit와 관련이 있음을 알 수 있습니다. 예제를 하나 들어봅시다. x=6인 경우 x&amp;(-x)의 값은 어떻게 나올까요?</p>\n<p style=\"text-align: center;\">6 = ...0110</p>\n<p style=\"text-align: center;\">-6 = ...1010</p>\n<p>이므로 6&amp;(-6) = 2가 나옵니다.</p>\n<p>그러면, a가 2<sup>i</sup>꼴로 나타내어진다면, 어떤 성질이 있는지를 관찰해 봅시다.</p>\n<p style=\"text-align: center;\">a = 0...010...0</p>\n<p style=\"text-align: center;\">-a = 1...110...0</p>\n<p>따라서 (a&amp;(-a)) == a라면 2의 거듭제곱이고, 그렇지 않으면 2의 거듭제곱이 아닙니다.</p>",
+  "source": "School, 선린인터넷고등학교, 천하제일 코딩대회, 제2회 천하제일 코딩대회, chogahui05",
+  "level": 3,
+  "tags": [
+    "math",
+    "implementation"
+  ],
+  "accepted_user_count": 2092,
+  "submission_count": null,
+  "average_tries": 2.017199993133545
+}

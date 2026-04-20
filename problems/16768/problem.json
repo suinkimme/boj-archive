@@ -1,0 +1,29 @@
+{
+  "id": 16768,
+  "title": "Mooyo Mooyo",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>With plenty of free time on their hands (or rather, hooves), the cows on Farmer John's farm often pass the time by playing video games. One of their favorites is based on a popular human video game called Puyo Puyo; the cow version is of course called Mooyo Mooyo.</p>\n<p>The game of Mooyo Mooyo is played on a tall narrow grid $N$ cells tall ($1 \\leq N \\leq 100$) and 10 cells wide. Here is an example with $N = 6$:</p>\n<pre>\n0000000000\n0000000300\n0054000300\n1054502230\n2211122220\n1111111223\n</pre>\n<p>Each cell is either empty (indicated by a 0), or a haybale in one of nine different colors (indicated by characters 1..9). Gravity causes haybales to fall downward, so there is never a 0 cell below a haybale.</p>\n<p>Two cells belong to the same connected region if they are directly adjacent either horizontally or vertically, and they have the same nonzero color. Any time a connected region exists with at least $K$ cells, its haybales all disappear, turning into zeros. If multiple such connected regions exist at the same time, they all disappear simultaneously. Afterwards, gravity might cause haybales to fall downward to fill some of the resulting cells that became zeros. In the resulting configuration, there may again be connected regions of size at least $K$ cells. If so, they also disappear (simultaneously, if there are multiple such regions), then gravity pulls the remaining cells downward, and the process repeats until no connected regions of size at least $K$ exist.</p>\n<p>Given the state of a Mooyo Mooyo board, please output a final picture of the board after these operations have occurred.</p>",
+  "input": "<p>The first line of input contains $N$ and $K$ ($1 \\leq K \\leq 10N$). The remaining $N$ lines specify the initial state of the board.</p>",
+  "output": "Please output $N$ lines, describing a picture of the final board state.",
+  "samples": [
+    {
+      "input": "6 3\n0000000000\n0000000300\n0054000300\n1054502230\n2211122220\n1111111223\n",
+      "output": "0000000000\n0000000000\n0000000000\n0000000000\n1054000000\n2254500000\n"
+    }
+  ],
+  "hint": "<p>In the example above, if $K = 3$, then there is a connected region of size at least $K$ with color 1 and also one with color 2. Once these are simultaneously removed, the board temporarily looks like this:</p>\n<pre>\n0000000000\n0000000300\n0054000300\n1054500030\n2200000000\n0000000003\n</pre>\n<p>Then, gravity takes effect and the haybales drop to this configuration:</p>\n<pre>\n0000000000\n0000000000\n0000000000\n0000000000\n1054000300\n2254500333\n</pre>\n<p>Again, there is a region of size at least $K$ (with color 3). Removing it yields the final board configuration:</p>\n<pre>\n0000000000\n0000000000\n0000000000\n0000000000\n1054000000\n2254500000\n</pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2018-2019 Season, USACO 2018 December Contest, Silver",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "simulation",
+    "bfs",
+    "dfs"
+  ],
+  "accepted_user_count": 790,
+  "submission_count": null,
+  "average_tries": 2.0202999114990234
+}

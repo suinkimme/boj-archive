@@ -1,0 +1,32 @@
+{
+  "id": 23273,
+  "title": "Intact Intervals",
+  "time_limit": "6 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Gustav is an astronaut on the Nordic Celestial Planetary Craft (NCPC), a large space station in orbit around Mars. Today, one of Gustav's tasks is to look over the satefy routines on board.</p>\n<p>The space station consists of $n$ modules arranged in a circle, so that module $i$ is connected to module $i+1$ for $i = 1 \\ldots n-1$, and module $n$ is connected to module $1$. Each module $i$ has a non-negative integer type $a_i$, representing the kind of equipment that can be found there. Different modules can have the same type. In case of emergency, the equipment must be rearranged so that each module $i$ instead gets type $b_i$, for some list $b_1, b_2, \\cdots, b_n$. Here, the list $b$ is a rearrangement of the list $a$.</p>\n<p>Gustav has noticed that if some module connections are severed, causing the space station to split into separate parts, it may become impossible to perform this rearrangement of the equipment. He decides to estimate how likely it is that the safety routines can be followed, by calculating in how many ways the space station can be separated into two or more parts such that it is still possible to rearrange the equipment according to the emergency procedures.</p>\n<p>In other words, your task is to count in how many ways the circular list $a$ can be partitioned into <em>at least two</em> non-empty contiguous intervals, in such a way that the circular list $b$ can be obtained by rearranging elements within each interval. Since this number can be quite big, you should find its remainder modulo $10^9+7$.</p>\n<p>For example, consider Sample Input 1 below.  Here the list $a$ could be split into $[1 | 2 2 3 | 4]$, indicating that the connection between modules $1$ and $2$, and the connection between modules $4$ and $5$, are severed.  Note that the connection between module $5$ and $1$ remains in this split.  The second possible way in which $a$ could be split is $[1 2 | 2 | 3 4]$.</p>\n<p>In Sample Input 2 below, the only possible way to split the list $a$ into at least two non-empty parts is to separate the two modules. But then it is impossible to rearrange the parts to create the list $b$. Hence, the answer is $0$.</p>",
+  "input": "<p>The first line of input contains a single integer $n$ ($2 \\leq n \\leq 10^6$), the number of modules. The second line contains the $n$ integers $a_1, \\ldots a_n$ ($0 \\leq a_i \\leq 10^9$). The third and final line contains the $n$ integers $b_1, \\ldots, b_n$ ($0 \\leq b_i \\leq 10^9$).</p>\n<p>The list $b$ is guaranteed to be a rearrangement of the list $a$.</p>",
+  "output": "<p>Print one integer, the number of safe separations modulo $10^9+7$.</p>",
+  "samples": [
+    {
+      "input": "5\n1 2 2 3 4\n4 3 2 2 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "2\n1 2\n2 1\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2021, Camp, Petrozavodsk Programming Camp, Winter 2022, Day 4: NCPC+BAPC+CTU 2021 Selection",
+  "level": 21,
+  "tags": [
+    "combinatorics",
+    "hashing",
+    "math",
+    "rabin_karp",
+    "string"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 2.217400074005127
+}

@@ -1,0 +1,26 @@
+{
+  "id": 19161,
+  "title": "Performance Review",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Randall is a software engineer at a company with N employees. Every year, the company re-evaluates its employees. At the end of every year, the company replaces its several worst-performing employees and replaces with the same number of new employees, so that the company keeps having N employees. Each person has a constant performance and can be represented by an integer (higher integer means better performance), and no two people have the same performance.</p>\n<p>The performance of the initial employees are represented by an array of integers A = [A<sub>1</sub>, A<sub>2</sub>, . . . , A<sub>N</sub>] where A<sub>i</sub> is the performance of the i<sup>th</sup> employee. Randall is employee 1, so his performance is A<sub>1</sub>. We will consider the first M years. At the end of the i<sup>th</sup> year, the company replaces its R<sub>i</sub> worst-performing employees and replaces with R<sub>i</sub> new employees. The performance of these new employees are represented by an array of integers B<sub>i</sub> = [(B<sub>i</sub>)<sub>1</sub>,(B<sub>i</sub>)<sub>2</sub>, . . . ,(B<sub>i</sub>)<sub>R<sub>i</sub></sub>] where (B<sub>i</sub>)<sub>j</sub> is the performance of the j<sup>th</sup> new employee.</p>\n<p>He will consider Q scenarios. On the i<sup>th</sup> scenario, he will change the value of (B<sub>X<sub>i</sub></sub>)<sub>Y<sub>i</sub></sub> to Z<sub>i</sub>. For each scenario, Randall is wondering whether he will still be in the company after M years. Note that the changes in each scenario are kept for the subsequent scenarios.</p>",
+  "input": "<p>Input begins with a line containing three integers: N M Q (2 ≤ N ≤ 100 000; 1 ≤ M, Q ≤ 100 000) representing the number of employees, the number of years to be considered, and the number of scenarios, respectively. The next line contains N integers: A<sub>i</sub> (0 ≤ A<sub>i</sub> ≤ 10<sup>9</sup>) representing the performance of the initial employees. The next M lines each contains several integers: R<sub>i</sub> (B<sub>i</sub>)<sub>1</sub>, (B<sub>i</sub>)<sub>2</sub>, · · · , (B<sub>i</sub>)<sub>R<sub>i</sub></sub> (1 ≤ R<sub>i</sub> &lt; N; 0 ≤ (B<sub>i</sub>)<sub>j</sub> ≤ 10<sup>9</sup>) representing the number of employees replaced and the performance of the new employees, respectively. It is guaranteed that the sum of R<sub>i</sub> does not exceed 10<sup>6</sup>. The next Q lines each contains three integers: X<sub>i</sub> Y<sub>i</sub> Z<sub>i</sub> (1 ≤ X<sub>i</sub> ≤ M; 1 ≤ Y<sub>i</sub> ≤ R<sub>(X<sub>i</sub>)</sub> ; 0 ≤ Z<sub>i</sub> ≤ 10<sup>9</sup>) representing a scenario. It is guaranteed that all integers in all A<sub>i</sub>, (B<sub>i</sub>)<sub>j</sub>, and Z<sub>i</sub> (combined together) are distinct.</p>",
+  "output": "<p>For each scenario in the same order as input, output in a line an integer 0 if Randall will not be in the company after M years, or 1 if Randall will still be in the company after M years.</p>",
+  "samples": [
+    {
+      "input": "5 3 3\n50 40 30 20 10\n4 1 2 3 100\n1 4\n2 6 7\n1 3 300\n2 1 400\n2 1 5\n",
+      "output": "1\n0\n1\n"
+    }
+  ],
+  "hint": "<p>Randall performance is represented by 50. For the first scenario, the value of (B1)3 is updated to 300, causes the following:</p>\n<ul>\n<li>Initially, the performance of the employees is [50, 40, 30, 20, 10].</li>\n<li>At the end of the first year, 4 worst-performing employees are replaced by employees with performance [300, 100, 2, 1]. Therefore, the performance of the employees is [300, 100, 50, 2, 1].</li>\n<li>At the end of the second year, the performance of the employees is [300, 100, 50, 4, 2].</li>\n<li>At the end of the third year, the performance of the employees is [300, 100, 50, 7, 6].</li>\n</ul>\n<p>Therefore, Randall will still be in the company after 3 years.</p>\n<p>For the second scenario, the value of (B<sub>2</sub>)<sub>1</sub> is updated to 400, causes the following:</p>\n<ul>\n<li>Initially, the performance of the employees is [50, 40, 30, 20, 10].</li>\n<li>At the end of the first year, the performance of the employees is [300, 100, 50, 2, 1]. Recall that the change in the first scenario is kept for this scenario as well.</li>\n<li>At the end of the second year, the performance of the employees is [400, 300, 100, 50, 2].</li>\n<li>At the end of the third year, the performance of the employees is [400, 300, 100, 7, 6].</li>\n</ul>\n<p>Therefore, Randall will not be in the company after 3 years</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, The 2019 ICPC Asia Jakarta Regional Contest",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "lazyprop",
+    "segtree"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 1.6562999486923218
+}

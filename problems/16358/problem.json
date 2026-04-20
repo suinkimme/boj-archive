@@ -1,0 +1,34 @@
+{
+  "id": 16358,
+  "title": "Cosmetic Survey",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>ICP(International Cosmetic Perfection) Company plans to survey the preferences of new <em>m</em> cosmetics in order to know which cosmetic is the most preferred. For this survey, ICPC selected <em>n</em> people as evaluators. Each evaluator must submit an ordered list of the preferences on those <em>m</em> cosmetics. Each evaluator can rank the cosmetics as follows:</p>\n<ul>\n<li>An evaluator can rank cosmetics with positive integer numbers, but the positive integers are not necessarily consecutive. The cosmetics with the smallest positive number are the most preferred ones, and the ones with the second smallest positive number are the second most preferred ones, and so on.</li>\n<li>An evaluator can give the same preference to more than one cosmetic. This indicates that this evaluator has no preference among those cosmetics.</li>\n<li>An evaluator may not rank some cosmetics. The unranked cosmetics are marked with number 0 in the ordered list. This indicates that this evaluator strictly prefers all ranked to all unranked ones, and has no preference among all unranked ones.</li>\n</ul>\n<p><img alt=\"\" src=\"1.png\" style=\"width: 194px; height: 182px; float: right;\"/>For example, the right figure shows an ordered list of the preferences on six cosmetics A, B, C, D, E, F that an evaluator submitted. The cosmetics A, C, E, F are ranked with nonconsecutive integers of 1, 4, 1, 3, respectively. The other two cosmetics B and D are not ranked, thus they are marked with 0 . A and E have the same preference, which are the most preferred cosmetics because their preference number is the smallest positive integer. The unranked B and D are less preferred than the ranked ones. As a result, the preference order of this evaluator is A = E ≻ F ≻ C ≻ B = D, where X ≻ Y means that X is strictly preferred to Y and X = Y means the same preference.</p>\n<p>Which cosmetics are the most preferred ones from <em>n</em> evaluators in this preference survey? We must now define which one is preferred to another. Let d(X, Y) be the number of evaluators who strictly prefer X to Y. A path from X to Y is a sequence of distinct cosmetics C<sub>1</sub>, ..., C<sub>k</sub> such that C<sub>1</sub> = X, C<sub>k</sub> = Y, and d(C<sub>t</sub>, C<sub>t+1</sub>) &gt; d(C<sub>t+1</sub>, C<sub>t</sub>) for every t = 1, ... , k − 1. The preference index of this path is defined as the minimum of d(C<sub>t</sub>, C<sub>t+1</sub>) for 1 ≤ t &lt; k. For two distinct cosmetics X and Y that are connected by a path from X to Y, the preference strength S(X,Y) is the maximum preference index over all paths from X to Y. If there is no path from X to Y, then S(X,Y) is defined as zero. Cosmetic X is one of the most preferred cosmetics from this survey if and only if S(X,Y) ≥ S(Y,X) for every Y other than X. You note that it has been known for this type of surveys that there always exists at least one cosmetic that is preferred the most.</p>\n<p>Given preference lists of <em>n</em> evaluators for <em>m</em> cosmetics, write a program to output all the most preferred cosmetics.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing two integers, <em>m</em> and <em>n</em> (1 ≤ <em>m</em> ≤ 500, 1 ≤ <em>n</em> ≤ 500), where <em>m</em> is the number of cosmetics and <em>n</em> is the number of evaluators. The cosmetics are numbered from 1 to <em>m</em>, and the evaluators are numbered from 1 to <em>n</em>. In the following <em>n</em> lines, the <em>i</em>-th line contains <em>m</em> nonnegative integers that represent the preference values for the <em>m</em> cosmetics of the evaluator <em>i</em>. The preference values are ordered from the cosmetic 1 to the cosmetic <em>i</em>. The zero values in the list mean that the evaluator unranked the corresponding cosmetics. The preference values are no more than 10<sup>6</sup>.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line. The line should contain the numbers of the cosmetics that are preferred the most. Such cosmetic numbers must appear in increasing order.</p>",
+  "samples": [
+    {
+      "input": "3 4\n1 1 1\n0 0 0\n2 2 2\n3 3 3\n",
+      "output": "1 2 3\n"
+    },
+    {
+      "input": "4 5\n1 0 1 1\n1 1 5 2\n2 1 3 6\n0 1 0 1\n1 2 2 2\n",
+      "output": "1 2\n"
+    },
+    {
+      "input": "5 4\n0 1 0 2 1\n1 7 2 1 0\n4 5 2 3 3\n1 2 9 0 2\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2018, khsoo01",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "floyd_warshall"
+  ],
+  "accepted_user_count": 114,
+  "submission_count": null,
+  "average_tries": 2.885999917984009
+}

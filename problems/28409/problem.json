@@ -1,0 +1,29 @@
+{
+  "id": 28409,
+  "title": "산 색칠",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>히스토그램 모양의 도화지에 산 색칠을 반복하여 히스토그램 모양의 그림을 그리려고 한다.</p>\n<p>히스토그램은 밑변이 $x$축에 평행한 한 개 이상의 직사각형이 공통된 밑변을 가지면서 빈틈없이 좌우로 붙어있는 도형을 말한다. 각 직사각형의 너비와 높이는 정수이며 서로 다를 수 있다.</p>\n<p>한 번의 산 색칠은 다음과 같이 이루어진다.</p>\n<ul>\n<li>도화지의 윗변 중 한 곳을 산의 정상으로 잡는다.</li>\n<li>그에 맞는 산 모양 중 넓이가 <strong>최대</strong>인 모양으로 색칠한다.</li>\n</ul>\n<p>산은 도화지를 벗어날 수 없으며, 이전의 색칠은 현재 색칠에 영향을 주지 않는다. 또한 직사각형의 왼쪽이나 오른쪽 끝은 산의 정상이 될 수 없다.</p>\n<p><strong>산</strong>의 구체적인 정의는 다음과 같다.</p>\n<ul>\n<li>산의 정상이 가장 높은 히스토그램 모양이다.</li>\n<li>산의 정상을 포함하는 왼쪽 부분은 높이가 단조 증가한다.</li>\n<li>산의 정상을 포함하는 오른쪽 부분은 높이가 단조 감소한다.</li>\n</ul>\n<p>단, 함수 $f$가 $x_1&lt;x_2$인 모든 $x_1,x_2$에 대하여 $f(x_1)\\le f(x_2)$을 만족하면 단조 증가한다고 하고, $f(x_1)\\ge f(x_2)$을 만족하면 단조 감소한다고 한다.</p>\n<p>산 색칠을 반복하여 주어진 그림을 그릴 수 있다면 최소한의 색칠 횟수로 그리고, 불가능하다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력하시오.</p>",
+  "input": "<p>첫 번째 줄에 도화지의 히스토그램을 이루는 직사각형의 개수 $N$이 주어진다. $(1\\leq N\\leq 200\\, 000)$</p>\n<p>두 번째 줄부터 $N$개의 줄에 걸쳐 각 직사각형의 너비와 높이 $W_i,H_i$가 공백으로 구분되어 주어진다. $(1\\leq W_i,H_i\\leq 10^9)$</p>\n<p>그 다음 줄에 그림의 히스토그램을 이루는 직사각형의 개수 $M$이 주어진다. $(1\\leq M\\leq 200\\, 000)$</p>\n<p>그 다음 줄부터 $M$개의 줄에 걸쳐 각 직사각형의 너비와 높이 $w_j,h_j$가 공백으로 구분되어 주어진다. $(1\\leq w_j,h_j\\leq 10^9)$</p>\n<ul>\n<li>도화지와 그림의 총 너비는 같으며 $10^9$을 넘지 않는다. $(\\sum{W_i} =\\sum{w_j}\\le 10^9)$</li>\n<li>도화지는 그림을 포함한다.</li>\n<li>인접한 직사각형은 높이가 서로 다르다. $(H_i\\neq H_{i+1};$ $h_j\\neq h_{j+1})$</li>\n</ul>",
+  "output": "<p>첫 번째 줄에 필요한 산 색칠의 최소 횟수를 출력한다. 만일 그림을 완성할 수 없다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력하고 종료한다.</p>\n<p>두 번째 줄에 각 색칠에서 산의 정상이 도화지의 몇 번째 직사각형에 포함되는지 공백으로 구분하여 출력한다.</p>\n<p>정답이 여러 가지라면 그중 아무거나 출력한다.</p>",
+  "samples": [
+    {
+      "input": "7\n1 5\n1 3\n1 4\n2 1\n1 3\n2 2\n2 4\n5\n2 3\n1 4\n2 1\n1 3\n4 2\n",
+      "output": "2\n5 3\n"
+    },
+    {
+      "input": "2\n4 5\n4 7\n2\n4 5\n4 6\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"margin-left: auto; margin-right: auto\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 299px; width: 350px;\"/></td>\n<td style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height: 296px; width: 350px;\"/></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">(a) 예제 1의 도화지와 그림</td>\n<td style=\"text-align: center;\">(b) 예제 2의 도화지와 그림</td>\n</tr>\n</tbody>\n</table>",
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2023, amel, 99asdfg, asdarwin03, evenharder, hyperbolic, jh05013, kclee2172, tlsdydaud1, wapas, wider93",
+  "level": 16,
+  "tags": [
+    "implementation",
+    "sweeping"
+  ],
+  "accepted_user_count": 52,
+  "submission_count": null,
+  "average_tries": 4.730800151824951
+}

@@ -1,0 +1,26 @@
+{
+  "id": 6544,
+  "title": "Fixed Partition Contest Management",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A technique used in early programming contest strategies involved partitioning the available intellectual capacity of a team into a number of members with each member having a fixed amount of intelligence, different members potentially having different amounts. The sum of the brightness of all members equals the total intellectual capacity of the team.</p>\n<p>Given a set of problems, it was the task of the team to assign the problems to different team members, so that they could be solved concurrently. This was made difficult due to the fact that the solution time of a problem might depend on the amount of intelligence available to it. Every problem has a minimum intelligence requirement, but if assigned to a brighter member its solution time might increase or decrease.</p>\n<p>In this task, you have to determine optimal assignments of problems to team members. Your program is given the intellectual capacities of the team members available for the solution of problems, and for each problem a description of how its solution time depends on the amount of intelligence available to it. Your program has to find the solution schedule of the problems that minimizes the average solution time for the problems. A solution schedule is an assignment of problems to team members and times, such that no two problems use the same member at the same time, and no problem is assigned to a team member with less brightness than its minimum requirement. The solution time of the problem is the difference between the time when the problem was submitted to be solved (which is the start of the contest at time zero for all problems in this task), and the time that the problem is solved.</p>",
+  "input": "<p>The input data will contain multiple test cases. Each test case begins with a line containing a pair of integers <em>m</em> and <em>n</em>. The number <em>m</em> specifies the number of team members (<em>1 &lt;= m &lt;= 3</em>), and <em>n</em> specifies the number of problems to be solved (<em>1 &lt;= n &lt;= 10</em>).</p>\n<p>The next line contains <em>m</em> positive integers giving the intelligence amounts of the <em>m</em> team members. Following this are <em>n</em> lines, describing the time-brightness tradeoffs for each of the <em>n</em> problems. Each line starts with a positive integer <em>k</em> (<em>k &lt;= 10</em>), followed by <em>k</em> pairs of positive integers <em>s<sub>1</sub>,t<sub>1</sub>,s<sub>2</sub>,t<sub>2</sub>,...,s<sub>k</sub>,t<sub>k</sub></em> that satisfy <em>s<sub>i</sub> &lt; s<sub>i+1</sub></em> for <em>1 &lt;= i &lt; k</em>. The minimum intelligence requirement of the problem is <em>s<sub>1</sub></em>, i.e. it cannot be solved by a member with less intellectual capacity than this number. If the problem is solved by a team member with brightness <em>s</em>, where <em>s<sub>i</sub> &lt;= s &lt; s<sub>i+1</sub></em> for some <em>i</em>, then its solution time will be <em>t<sub>i</sub></em>. Finally, if the problem is solved by a team member with intellectual capacity <em>s<sub>k</sub></em> or more, then its execution time will be <em>t<sub>k</sub></em>.</p>\n<p>A pair of zeroes will follow the input for the last test case.</p>\n<p>You may assume that each problem will be solved in exactly the time specified for the given brightness, regardless of the number of other problems being solved by other team members at the same time. No problem will have an intelligence requirement larger than that of the brightest team member.</p>",
+  "output": "<p>For each test case, first display the case number (starting with <em>1</em> and increasing sequentially). Then print the minimum average solution time for the set of problems with two digits to the right of the decimal point. Follow this by the description of a solution schedule that achieves this average solution time. Display one line for each problem, in the order they were given in the input, that identifies the problem number, the member used to solve it (numbered in the order given in the input), the time when the member started to solve the problem, and the time when the problem was solved. Follow the format shown in the sample output, and print a blank line after each test case.</p>",
+  "samples": [
+    {
+      "input": "2 4\n40 60\n1 35 4\n1 20 3\n1 40 10\n1 60 7\n3 5\n10 20 30\n2 10 50 12 30\n2 10 100 20 25\n1 25 19\n1 19 41\n2 10 18 30 42\n0 0\n",
+      "output": "Case 1\nAverage solution time = 7.75\nProblem 1 is solved by member 2 from 0 to 4\nProblem 2 is solved by member 1 from 0 to 3\nProblem 3 is solved by member 1 from 3 to 13\nProblem 4 is solved by member 2 from 4 to 11\n\nCase 2\nAverage solution time = 35.40\nProblem 1 is solved by member 3 from 19 to 49\nProblem 2 is solved by member 2 from 0 to 25\nProblem 3 is solved by member 3 from 0 to 19\nProblem 4 is solved by member 2 from 25 to 66\nProblem 5 is solved by member 1 from 0 to 18\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, University of Ulm Local Contest, University of Ulm Local Contest 2003",
+  "level": 0,
+  "tags": [
+    "greedy",
+    "bruteforcing",
+    "sorting"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 4
+}

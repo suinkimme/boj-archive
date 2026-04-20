@@ -1,0 +1,26 @@
+{
+  "id": 32053,
+  "title": "Blocking the Way",
+  "time_limit": "8 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Alice is playing a puzzle game where she slides a tile piece to move it to its destination on a rectangular grid board consisting of unit squares. Only parallel moves of the piece on the game board are allowed; no rotations nor lifting up. Some squares on the board are marked <em>no-entry</em> where any parts of the tile piece should not enter.</p>\n<p>The tile piece is composed of a number of unit squares joined tightly along their edges. The tile piece is initially placed to touch both the left and the top ends of the board. The goal of Alice is to slide the tile piece to make it touch both the right and the bottom ends of the board.</p>\n<p>Bob, on the other hand, wants to make Alice's goal unachievable by changing some squares to <em>no-entry.</em> Each square, except for those initially covered by the tile piece, can be made no-entry by paying the specified number of coins. Compute the minimum number of coins Bob has to pay in total to make Alice's goal unachievable.</p>",
+  "input": "<p>The input consists of multiple datasets, each in the following format.</p>\n<blockquote>\n<p><i>r</i> <i>c</i></p>\n<p><i>a</i><sub>1,1</sub> ⋯ <i>a</i><sub>1,<i>c</i></sub></p>\n<p>⋮</p>\n<p><i>a</i><sub><i>r,</i>1</sub> ⋯ <i>a<sub>r,c</sub></i></p>\n</blockquote>\n<p>Here, <i>r</i> and <i>c</i> are integers between 2 and 100, inclusive, representing the numbers of rows and columns of the board, respectively. The following <i>a<sub>i,j</sub></i> (1 ≤ <i>i</i> ≤ <i>r,</i> 1 ≤ <i>j</i> ≤ <i>c</i>) are integers between −1 and 10<sup>9</sup>, inclusive. Here, <i>a<sub>i,j</sub></i> represents the state of the square (<i>i, j</i>) on row <i>i</i> and column <i>j,</i> as follows.</p>\n<ul>\n<li>If <i>a<sub>i,j</sub></i> = −1, the square is initially covered by the tile piece.</li>\n<li>If <i>a<sub>i,j</sub></i> = 0, the square is <em>no-entry</em> from the beginning.</li>\n<li>If <i>a<sub>i,j</sub></i> &gt; 0, Bob can make the square <em>no-entry</em> by paying <i>a<sub>i,j</sub></i> coins.</li>\n</ul>\n<p>The number of (<i>i, j</i>) satisfying <i>a<sub>i,j</sub></i> = −1 is <b>between 1 and 100,</b> inclusive. All the squares corresponding to them are connected directly or indirectly with one or more of their edges. Furthermore, they are <b>contiguous in each row and each column.</b> That is, if <i>a</i><sub><i>i,j</i><sub>1</sub></sub> = −1 and <i>a</i><sub><i>i,j</i><sub>2</sub></sub> = −1 for two columns <i>j</i><sub>1</sub> and <i>j</i><sub>2</sub> in the same row <i>i</i> where <i>j</i><sub>1</sub> &lt; <i>j</i><sub>2</sub>, then <i>a<sub>i,j</sub></i> = −1 for all <i>j</i> such that <i>j</i><sub>1</sub> &lt; <i>j</i> &lt; <i>j</i><sub>2</sub>. Similarly, if <i>a</i><sub><i>i</i><sub>1</sub>,<i>j</i></sub> = −1 and <i>a</i><sub><i>i</i><sub>2</sub>,<i>j</i></sub> = −1 for two rows <i>i</i><sub>1</sub> and <i>i</i><sub>2</sub> in the same column <i>j</i> where <i>i</i><sub>1</sub> &lt; <i>i</i><sub>2</sub>, then <i>a<sub>i,j</sub></i> = −1 for all <i>i</i> such that <i>i</i><sub>1</sub> &lt; <i>i</i> &lt; <i>i</i><sub>2</sub>.</p>\n<p>It is guaranteed that, in the initial state, the tile piece is placed so that some of its edges touch the left end of the board and some touch the top end. It is also guaranteed that Alice has not yet achieved her goal. That is, the following two conditions are satisfied.</p>\n<ul>\n<li>There exists at least one <i>i</i> satisfying <i>a</i><sub><i>i,</i>1</sub> = −1 and at least one <i>j</i> satisfying <i>a</i><sub>1,<i>j</i></sub> = −1.</li>\n<li><i>a<sub>i,c</sub></i> ≠ −1 for all <i>i</i> or <i>a<sub>r,j</sub></i> ≠ −1 for all <i>j.</i></li>\n</ul>\n<p>The end of the input is indicated by a line consisting of two zeros. The number of datasets does not exceed 50. The sum of <i>r</i> of all the datasets does not exceed 1000. The sum of <i>c</i> of all the datasets does not exceed 1000. The total number of (<i>i,</i> <i>j</i>) satisfying <i>a<sub>i,j</sub></i> = −1 of all the datasets does not exceed 1000.</p>",
+  "output": "<p>For each dataset, output on a single line the minimum number of coins Bob has to pay.</p>",
+  "samples": [
+    {
+      "input": "3 3\n-1 33 22\n99 0 99\n11 44 99\n4 3\n-1 90 10\n-1 90 20\n20 50 99\n10 20 99\n3 3\n-1 33 22\n99 99 99\n11 44 0\n3 4\n99 -1 10 99\n-1 -1 -1 99\n99 -1 99 99\n0 0\n",
+      "output": "33\n40\n0\n10\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2024 Japan Domestic Contest",
+  "level": 23,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "dijkstra"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 3.200000047683716
+}

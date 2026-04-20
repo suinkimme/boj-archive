@@ -1,0 +1,28 @@
+{
+  "id": 33037,
+  "title": "Knowns and Unknowns",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Two math professors have office hours on the same day. Students visit each professor to present their assignment solutions, one by one. For the whole semester, both professors established some fixed order of the students in which they should visit the professor. There are $n$ students denoted with integers from $1$ to $n$. Each professor's order of students is a permutation of numbers from $1$ to $n$.</p>\n<p>Today only some of the students visited the university; let $A$ be the set of numbers that denote the students that were at the university today. All of the students from the set $A$ have visited both professors, and all of the students outside of the set $A$ haven't visited any professor.</p>\n<p>Each of the professors made a list of the students they have talked with, in the same order the students have visited. Note that the list has to correspond to the order the professor has established, with the only difference that the students outside of the set $A$ are missing in it. It is the beginning of the year, so the professors didn't have a chance to get to know every student. So for the students that a professor knows, the list contains their identifier, but for those that the professor doesn't know, the list contains $-1$.</p>\n<p>Consider an example: the first professor's order is $[1, 2, 3, 4]$, and the second professor's --- $[3, 2, 4, 1]$. The list made by the first professor today is $[1, -1, -1]$, and the list made by the second professor is $[3, -1, 1]$. Based on the lists, we can immediately see that three students have visited the university today. We can infer that the set $A$ was either $\\{1, 2, 3\\}$ or $\\{1, 3, 4\\}$.</p>\n<p>You are given two permutations --- the orders established by each professor; you are also given two lists that professors made today. Your task is to help the professors. Based on the provided data, determine for each student whether they definitely visited the university, definitely did not, or whether this cannot be determined. Note that professors could have confused the students, so there is a possibility that the given data is inconsistent.</p>",
+  "input": "<p>The first line contains a single integer $T$ ($T \\ge 1$) --- the number of test cases to solve.</p>\n<p>Then the description of test cases follows.</p>\n<p>The first line of the test case contains a single integer $n$ --- the number of students ($1 \\le n \\le 2000$).</p>\n<p>The second line of the test case contains $n$ distinct integers $p_{1, 1}, p_{1, 2}, \\ldots, p_{1, n}$ --- the order established by the first professor, meaning that student $p_{1, 1}$ comes first, and $p_{1, n}$ comes last ($1 \\le p_{1, i} \\le n$).</p>\n<p>The third line of the test case contains $n$ distinct integers $p_{2, 1}, p_{2, 2}, \\ldots, p_{2, n}$ --- the order established by the second professor in the same format ($1 \\le p_{2, i} \\le n$).</p>\n<p>The fourth line of the test case contains an integer $k$ --- the number of students that visited the university today ($1 \\le k \\le n$).</p>\n<p>The fifth line of the test case contains $k$ integers $s_{1, 1}, s_{1, 2}, \\ldots, s_{1, k}$ --- the first professor's list. Each student appears in the list at most once ($s_{1, i} = -1$ or $1 \\le s_{1, i} \\le n$).</p>\n<p>The sixth line of the test case contains $k$ integers $s_{2, 1}, s_{2, 2}, \\ldots, s_{2, k}$ --- the second professor's list in the same format ($s_{2, i} = -1$ or $1 \\le s_{2, i} \\le n$).</p>\n<p>The total sum of $n$ in all $T$ test cases doesn't exceed 2000.</p>",
+  "output": "<p>For each test case, output a single string. If the given data is inconsistent, print a single word \"<code>Inconsistent</code>\". Otherwise, print a string consisting of $n$ characters, the $i$\\nobreakdash-th of which is '<code>Y</code>' if the $i$\\nobreakdash-th student visited the university today, '<code>N</code>' if the $i$-th student didn't visit the university today, or '<code>?</code>' if it cannot be determined.</p>",
+  "samples": [
+    {
+      "input": "2\n4\n1 2 3 4\n3 2 4 1\n3\n1 -1 -1\n3 -1 1\n4\n1 2 3 4\n3 2 4 1\n3\n1 -1 2\n3 -1 1\n",
+      "output": "Y?Y?\nInconsistent\n"
+    },
+    {
+      "input": "2\n3\n1 2 3\n2 1 3\n2\n-1 2\n-1 -1\n3\n1 2 3\n3 2 1\n2\n1 3\n2 -1\n",
+      "output": "YYN\nInconsistent\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2024",
+  "level": 22,
+  "tags": [
+    "bipartite_matching"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2
+}

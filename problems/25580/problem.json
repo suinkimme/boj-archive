@@ -1,0 +1,33 @@
+{
+  "id": 25580,
+  "title": "Next Level",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>걸그룹 aespa는 광야의 한 점에서 출발해 목적지인 KOSMO에 도달하고자 한다. 광야의 각 길에는 해당 길을 통과할 수 있는 최소 레벨 제한이 있어 aespa가 그 레벨 이상이어야 하며, 어떤 지점에 과제 마왕이 존재한다면 그 마왕을 처치해야 통과할 수 있다. aespa는 레벨 1로 시작하고, 과제 마왕의 고난을 이겨낼 때마다 Next Level로 나아가서 레벨이 1만큼 상승하고, 그만큼 강해진 aespa는 한층 더 자유롭게 움직일 수 있다.</p>\n<p>과제 마왕의 고난을 이겨내려면 과제 마왕의 과제에 사용되는 알고리즘을 사전에 알고 있어야 하며, 이겨내면 0개 또는 1개의 알고리즘을 익힐 수 있다. 과제에 필요한 알고리즘이 없을 수도 있다.</p>\n<p>그런데 aespa의 적 Black Mamba가 aespa를 방해하고자 지도를 조각조각 찢어버렸다. 다행히도 aespa의 멤버 카리나가 조각들이 처음에 어떻게 배열되어 있었는지를 기억해냈다. 카리나의 기억대로 지도를 다시 만들고 aespa가 지도의 맨 왼쪽 위 지점에서 출발하여 맨 오른쪽 아래 지점인 KOSMO에 닿을 수 있는지 알아보자.</p>\n<p>조각은 아래와 같이 네 종류가 있으며, 과제 마왕은 항상 조각의 중심에만 위치한다. aespa는 지도 상에 그려진 선을 통해서만 이동할 수 있다. 단, aespa는 절대 과거를 돌아보지 않기에 한 번 지난 지점은 다시 지나지 않는다. 파란 화살표로 표시된 길이 만큼 이동하는 데 하루가 걸리며, aespa를 방해하려고 따라오는 Black Mamba를 피하기 위해 18일 이내에 KOSMO에 도착해야 한다. 정확히 18일 후에 KOSMO에 도착해도 된다.</p>\n<p><img alt=\"\" src=\"1.png\" width=\"1000px/\"/></p>",
+  "input": "<p dir=\"auto\">첫 줄에 $N$이 주어진다. 지도는 $N \\times N$ 격자로 나누어져 있다. $(1 ≤ N ≤ 4)$</p>\n<p dir=\"auto\">다음 $N$개의 줄에 지도의 조각이 <code>A, B, C, D</code> 중 하나로 한 줄에 $N$개씩 주어진다.</p>\n<p dir=\"auto\">그 다음 $N$개의 줄에 걸쳐 각 조각의 최소 레벨 제한이 주어진다. 레벨 제한은 1 이상 16 이하의 정수이다. 어떤 조각에 있는 길을 건너려면 그 조각의 레벨 제한 이상이어야 한다. 길이 두 조각과 맞닿아 있을 경우, 두 레벨 제한 중 높은 쪽을 따른다.</p>\n<p dir=\"auto\">이어서 다음 $N$개의 줄에 걸쳐 각 조각의 과제 마왕에 대한 정보가 주어진다. 각 조각의 정보는 세 개의 문자열로 표현된다.</p>\n<ul dir=\"ltr\">\n<li>첫 번째 문자열은 조각의 중심에 과제 마왕이 존재할 경우 1, 아니면 0이다.</li>\n<li>두 번째 문자열은 해당 과제 마왕의 과제에 필요한 알고리즘이다. 과제 마왕이 없거나 필요한 알고리즘이 없으면 0으로 표현된다.</li>\n<li>세 번째 문자열은 해당 과제 마왕의 고난을 이겨냈을 때 배울 수 있는 알고리즘이다. 과제 마왕이 없거나 배울 수 있는 알고리즘이 없으면 0으로 표현된다.</li>\n</ul>\n<p dir=\"auto\">다음 줄에는 aespa가 처음에 익히고 있던 알고리즘의 개수 $a$가 주어지고, 다음 줄에 그러한 알고리즘이 나열된다. $(0 ≤ a ≤ 4)$</p>\n<p dir=\"auto\">모든 알고리즘은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있으며, 문제에 등장하는 서로 다른 알고리즘은 최대 10개이다.</p>",
+  "output": "<p>aespa가 KOSMO에 도달할 수 있으면 <code>Dreams Come True</code>를, 도달할 수 없으면 -1을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "2\nAB\nAC\n1 1\n1 4\n0 0 0 0 0 0\n0 0 0 0 0 0\n1\ndfs\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "2\nAB\nAC\n1 1\n1 3\n1 dfs greedy 1 greedy bfs\n0 0 0 1 dijkstra dfs\n1\ndfs\n",
+      "output": "Dreams Come True\n"
+    },
+    {
+      "input": "4\nABAD\nDDDD\nBBBB\nCCCC\n1 1 2 1\n1 1 2 1\n3 3 3 3\n1 1 1 4\n0 0 0 1 dp greedy 0 0 0 0 0 0\n0 0 0 1 dp sort 1 graph dfs 1 sort 0\n0 0 0 1 greedy sort 0 0 0 1 sort dp\n0 0 0 0 0 0 0 0 0 1 bfs graph\n1\ndp\n",
+      "output": "Dreams Come True\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 부산대학교, 2022 부산대학교 CodeRace, kmiiiaa, chansol, jh05013, lky7674, tony9402",
+  "level": 14,
+  "tags": [
+    "backtracking",
+    "implementation"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 4.444399833679199
+}

@@ -1,0 +1,35 @@
+{
+  "id": 11710,
+  "title": "Cost Performance Flow",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Yayoi is a professional of money saving. Yayoi does not select items just because they are cheap; her motto is “cost performance”. This is one of the reasons why she is good at cooking with bean sprouts. Due to her saving skill, Yayoi often receives requests to save various costs. This time, her task is optimization of “network flow”.</p>\n<p>Network flow is a problem on graph theory. Now, we consider a directed graph G = (V, E), where V = {1, 2, . . . , |V|} is a vertex set and E ⊂ V × V is an edge set. Each edge e in E has a capacity u(e) and a cost c(e). For two vertices s and t, a function f<sub>s,t</sub>: E → R, where R is the set of real numbers, is called an s-t flow if the following conditions hold:</p>\n<ul>\n<li>For all e in E, fs,t is non-negative and no more than u(e). Namely, 0 ≤ f<sub>s,t</sub>(e) ≤ u(e) holds.</li>\n<li>For all v in V \\ {s, t}, the sum of f<sub>s,t</sub> of out-edges from v equals the sum of f<sub>s,t</sub> of in-edges to v. Namely, ∑<sub>e=(u,v)∈E</sub>f<sub>s,t</sub>(e) = ∑<sub>e=(v,w)∈E</sub>f<sub>s,t</sub>(e) holds.</li>\n</ul>\n<p>Here, we define flow F(f<span style=\"font-size:10.8333px\">s,t</span>) and cost C(f<span style=\"font-size:10.8333px\">s,t</span>) of fs,t as F(f<span style=\"font-size:10.8333px\">s,t</span>) = ∑<sub>e=(s,v)∈E</sub>f<sub>s,t</sub>(e) − ∑<sub>e=(u,s)∈E</sub>f<span style=\"font-size:10.8333px\">s,t</span>(e) and C(f<span style=\"font-size:10.8333px\">s,t</span>) = ∑<sub>e∈E</sub>f<sub>s,t</sub>(e)c(e), respectively.</p>\n<p>Usually, optimization of network flow is defined as cost minimization under the maximum flow. However, Yayoi’s motto is “cost performance”. She defines a balanced function B(f<span style=\"font-size:10.8333px\">s,t</span>) for s-t flow as the sum of the square of the cost C(f<sub>s,t</sub>) and the difference between the maximum flow M = max<sub>f : s-t flow</sub>F(f) and the flow F(f<span style=\"font-size:10.8333px\">s,t</span>), i.e. B(f<span style=\"font-size:10.8333px\">s,t</span>) = C(f<span style=\"font-size:10.8333px\">s,t</span>)<sup>2</sup> + (M − F(f<span style=\"font-size:10.8333px\">s,t</span>))<sup>2</sup>. Then, Yayoi considers that the best cost performance flow yields the minimum of B(f<sub>s,t</sub>).</p>\n<p>Your task is to write a program for Yayoi calculating B(f<sup>∗</sup><sub>s,t</sub>) for the best cost performance flow f<sup>∗</sup><sub>s,t</sub>.</p>\n<p> </p>",
+  "input": "<p>The input consists of a single test case. The first line gives two integers separated by a single space: the number of vertices N (2 ≤ N ≤ 100) and the number of edges M (1 ≤ M ≤ 1,000). The second line gives two integers separated by a single space: two vertices s and t (1 ≤ s, t ≤ N, s , t). The i-th line of the following M lines describes the i-th edges as four integers a<sub>i</sub>, b<sub>i</sub>, u<sub>i</sub>, and c<sub>i</sub>: the i-th edge from a<sub>i</sub> (1 ≤ a<sub>i</sub> ≤ N) to b<sub>i</sub> (1 ≤ b<sub>i</sub> ≤ N) has the capacity u<sub>i</sub> (1 ≤ u<sub>i</sub> ≤ 100) and the cost c<sub>i</sub> (1 ≤ c<sub>i</sub> ≤ 100) . You can assume that a<sub>i</sub>, b<sub>i</sub> for all 1 ≤ i ≤ M, and a<sub>i</sub>, a<sub>j</sub> or b<sub>i</sub>, b<sub>j</sub> if i, j for all 1 ≤ i, j ≤ M.</p>",
+  "output": "<p>Display B(f<sup>∗</sup><sub>s,t</sub>), the minimum of balanced function under s-t flow, as a fraction in a line. More precisely, output “u/d”, where u is the numerator and d is the denominator of B(f<sup>∗</sup><sub>s,t</sub>), respectively. Note that u and d must be non-negative integers and relatively prime, i.e. the greatest common divisor of u and d is 1. You can assume that the answers for all the test cases are rational numbers.</p>",
+  "samples": [
+    {
+      "input": "2 1\n1 2\n1 2 1 1\n",
+      "output": "1/2\n"
+    },
+    {
+      "input": "3 3\n1 2\n1 2 1 1\n1 3 3 1\n3 2 3 2\n",
+      "output": "10/1\n"
+    },
+    {
+      "input": "3 3\n1 2\n1 2 1 1\n1 3 7 1\n3 2 7 1\n",
+      "output": "45/1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Spring Contest, JAG Spring Contest 2015",
+  "level": 22,
+  "tags": [
+    "math",
+    "graphs",
+    "flow",
+    "mcmf"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 4.75
+}

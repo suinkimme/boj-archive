@@ -1,0 +1,22 @@
+{
+  "id": 23434,
+  "title": "Olmec",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>Olmec is the boss in Spelunky, a computer game. You must beat Olmec in the last level of the game. Olmec moves in the game field, following the player. Every time he moves, he jumps high above and then falls down vertically. When the player is underneath the soaring Olmec, he drops down especially hard, intending to crush the player. The impact destroys the ground where he lands. The only way to beat Olmec is to make him drill a hole down to the very bottom of the level, which is filled with hot lava, and make him fall there.</p>\n<p>The Spelunky game happens on a rectangular grid, which is a side-view of the action. Each cell of the grid is either empty or filled with ground. Olmec is a $K \\times K$-sized square, although his height is irrelevant to us.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 768px; height: 432px;\"/></p>\n<p>Assume that Olmec's strike works as follows. Soaring high above the ground, where all cells are empty, Olmec chooses a vertical to fall along, thus defining his horizontal position. Next, he falls vertically until he collides with a ground cell. At the impact, $K$ adjacent cells underneath Olmec are affected and become empty. After that, Olmec rises back into the air and prepares for the next strike.</p>\n<p>The picture shows the moment of collision in the Olmec's strike with $K = 4$. The affected cells are crossed out. All these cells will become empty as the result of the impact, even though only one of these cells had ground before strike.</p>\n<p>You are given a state of the game field and a set of rectangular queries. Assume that we can completely control Olmec's actions and can make him perform any predefined series of strikes. For each query, define the minimal number of strikes necessary to empty all cells of the given rectangle.</p>",
+  "input": "<p>The first line defines four integers: $H$ --- height of game field, $W$ --- width of game field, $K$ --- size of Olmec, and $Q$ --- number of queries ($1 \\le H \\le 12$, $1 \\le K \\le W \\le 10^5$, $1 \\le Q \\le 10^5$).</p>\n<p>The following $H$ lines describe the game field, with $W$ symbols per line. The letter <code>'X'</code> (ASCII 88) defines a cell with ground, and the period symbol <code>'.'</code> (ASCII 46) defines an empty cell. Rows of the game field are provided from top to bottom.</p>\n<p>The remaining $Q$ lines list the queries, one per line. Each query contains three integers: $D$ --- rectangle depth, $L$ --- number of first column in the rectangle and $R$ --- number of last column in the rectangle ($1 \\le D \\le H$, $1 \\le L \\le R \\le W$). A cell located in the row $r$ and column $c$ belongs to the defined rectangle if $r \\le D$ and $L \\le c \\le R$. It is guaranteed that the rectangle width is not smaller than the width of Olmec (i.e. $R - L + 1 \\ge K$).</p>\n<p>Consider the queries to be theoretical: no real actions are performed in the field, and each query is analyzed independently from the others.</p>",
+  "output": "<p>In the output file, print $Q$ integers, one per line. Each number is the minimal number of strikes necessary to completely empty the corresponding rectangle. Answers to queries must be printed in the same order in which they are listed in the input file.</p>",
+  "samples": [
+    {
+      "input": "12 20 4 5\nXXXX...........XXXXX\nXXXX..........XXXXXX\nXXXXXX........XXXXXX\nXXXXXXXX....XXXXXXXX\nXXXXXXXX....XXXXXXXX\nXXXXXXXX....XXXXXXXX\nXXXXXXXX....XXXXXXXX\nXXXXXXXX...XXXXXXXXX\nXXXXXXXXX.XXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\n.................XXX\n.................XXX\n12 9 12\n3 6 11\n1 9 13\n5 4 10\n10 1 20\n",
+      "output": "3\n1\n0\n7\n41\n"
+    }
+  ],
+  "hint": "<p>The example is the same game field as the one shown in the picture in the problem description.</p>",
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 7: Grand Prix of Siberia",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 3
+}

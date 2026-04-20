@@ -1,0 +1,39 @@
+{
+  "id": 13731,
+  "title": "As Easy as CAB",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>We all know how to alphabetize a list when you know the alphabet: One word may be a prefix of another longer word, in which case the shorter word always comes before the longer word. With any other two words there must be a first place in the words where their letters differ. Then the order of the words is determine by the lexicographical order of these first differing letters.</p>\n<p>How about the reverse problem: Can you find the lexicographic order of the alphabet from an ordered list of words? Suppose an alphabet exists where the following list of word strings is given in lexicographical order:</p>\n<pre>\ncab \ncda \nccc \nbadca</pre>\n<p>It is clear that c comes before b in the underlying alphabet because cab comes before badca. Similarly, we know a comes before d, because cab &lt; cda, a comes before c because cab &lt; ccc, and d comes before c because cda &lt; ccc. The only ordering of the 4 alphabet characters that is possible is adcb.</p>\n<p>However, it may be that a list contains inconsistencies that make it impossible to be ordered under any proposed alphabet. For example, in the following list it must be that a comes before b in the alphabet since abc &lt; bca, yet it also must be that b comes before a in the alphabet since bca &lt; aca.</p>\n<pre>\nabc \nbca \ncab \naca</pre>\n<p>Finally, some lists may not provide enough clues to derive a unique alphabet order, such as the following:</p>\n<pre>\ndea \ncfb</pre>\n<p>In this list, d comes before c but we don’t know about the relative positions of any of the other letters, so we are unable to uniquely discern the order of the alphabet characters.</p>",
+  "input": "<p>The first line of input will contain L and N, separated by a space, where L is a lowercase character b ≤ L ≤ z representing the highest character in the traditional alphabet that appears in the derived alphabet, and N is a integer 1 ≤ N ≤ 1 000 that is equal to the number of strings in the list. Each of the next N lines will contain a single nonempty string of length at most 1 000, consisting only of characters in the derived alphabet. No two strings will be the same.</p>",
+  "output": "<p>If the input is consistent with a unique ordering of the alphabet, output a string that designates that ordered alphabet. If the data is inconsistent with any ordering, output IMPOSSIBLE. If the data is consistent with multiple orderings, output AMBIGUOUS.</p>",
+  "samples": [
+    {
+      "input": "d 4\ncab\ncda\nccc\nbadca\n",
+      "output": "adcb\n"
+    },
+    {
+      "input": "c 4\nabc\nbca\ncab\naca\n",
+      "output": "IMPOSSIBLE\n"
+    },
+    {
+      "input": "f 2\ndea\ncfb\n",
+      "output": "AMBIGUOUS\n"
+    },
+    {
+      "input": "e 5\nebbce\ndbe\nadcd\nbc\ncd\n",
+      "output": "edabc\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Mid-Central Regional, 2016 Mid-Central Regional Programming Contest, ICPC, Regionals, North America, Southeast USA Regional, 2016 Southeast USA Regional Programming Contest, Division 2",
+  "level": 15,
+  "tags": [
+    "graphs",
+    "string",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 2.0810999870300293
+}

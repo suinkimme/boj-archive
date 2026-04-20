@@ -1,0 +1,25 @@
+{
+  "id": 6020,
+  "title": "Cheese Towers",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Farmer John wants to save some blocks of his cows' delicious Wisconsin cheese varieties in his cellar for the coming winter. He has room for one tower of cheese in his cellar, and that tower's height can be at most T (1 &lt;= T &lt;= 1,000). The cows have provided him with a virtually unlimited number of blocks of each kind of N (1 &lt;= N &lt;= 100) different types of cheese (conveniently numbered 1..N). He'd like to store (subject to the constraints of height) the most valuable set of blocks he possibly can. The cows will sell the rest to support the orphan calves association.</p>\n<p>Each block of the i-th type of cheese has some value V_i (1 &lt;= V_i &lt;= 1,000,000) and some height H_i (5 &lt;= H_i &lt;= T), which is always a multiple of 5.</p>\n<p>Cheese compresses. A block of cheese that has height greater than or equal to K (1 &lt;= K &lt;= T) is considered \"large\" and will crush any and all of the cheese blocks (even other large ones) located below it in the tower. A crushed block of cheese doesn't lose any value, but its height reduces to just 4/5 of its old height. Because the height of a block of cheese is always a multiple of 5, the height of a crushed block of cheese will always be an integer. A block of cheese is either crushed or not crushed; having multiple large blocks above it does not crush it more. Only tall blocks of cheese crush other blocks; aggregate height of a tower does not affect whether a block is crushed or not.</p>\n<p>What is the total value of the best cheese tower FJ can construct?</p>\n<p>Consider, for example, a cheese tower whose maximum height can be 53 to be build from three types of cheese blocks. Large blocks are those that are greater than or equal to 25. Below is a chart of the values and heights of the various cheese blocks he stacks:</p>\n<pre>\n           Type    Value      Height\n             1      100         25\n             2       20          5\n             3       40         10</pre>\n<p>FJ constructs the following tower:</p>\n<pre>\n            Type Height Value\n      top -&gt; [1]   25    100\n             [2]    4     20   &lt;- crushed by [1] above\n             [3]    8     40   &lt;- crushed by [1] above\n             [3]    8     40   &lt;- crushed by [1] above\n   bottom -&gt; [3]    8     40   &lt;- crushed by [1] above</pre>\n<p>The topmost cheese block is so large that the blocks below it are crushed. The total height is:</p>\n<pre>\n        25 + 4 + 8 + 8 + 8 = 53</pre>\n<p>The total height does not exceed 53 and thus is 'legal'. The total value is:</p>\n<pre>\n       100 + 20 + 40 + 40 + 40 = 240.</pre>\n<p>This is the best tower for this particular set of cheese blocks.</p>",
+  "input": "<ul>\n<li>Line 1: Three space-separated integers: N, T, and K</li>\n<li>Lines 2..N+1: Line i+1 contains two space separated integers: V_i and H_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: The value of the best tower FJ can build</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "3 53 25\n100 25\n20 5\n40 10\n",
+      "output": "240\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2009-2010 Season, USACO January 2010 Contest, Silver",
+  "level": 12,
+  "tags": [
+    "dp",
+    "greedy"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 2.3157999515533447
+}

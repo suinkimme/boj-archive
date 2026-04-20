@@ -1,0 +1,31 @@
+{
+  "id": 28341,
+  "title": "Talk jail",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<blockquote>\n<p>How have you been?</p>\n<p>I want to play a game.</p>\n<p>This game will be played on a smartphone, on which you spend most of your time.</p>\n<p>On the ’Talk.’</p>\n<p>Are you happy because you got unlimited 3G?</p>\n<p>Tonight, we shall see how far you go in order not to turn your phone off.</p>\n<p>Will you get a push or turn it off?</p>\n<p>Your choice.</p>\n<p>— Jigsaw</p>\n</blockquote>\n<p>Jigsaw invited $N$ people to the “Talk jail” room. Here is a brief description of how Talk room works. Everyone can send messages, and all messages are delivered to everyone in the room, including the sender. However, a new message arrived on someone’s smartphone is not displayed immediately if the chat room window is not open. Instead, it is kept in the <strong>unread</strong> status. As soon as one <strong>opens</strong> the Talk jail room window, the status of all messages that have been arrived so far changes to the <strong>read</strong> status. Also, while the chat room window is open, newly arrived messages will be displayed and marked as read immediately. One can close the chat room window, but the messages will still arrive. One can send a message only when he/she has the chat room window open.</p>\n<p>Moreover, when one opens the chat room window, one can see $3$ pieces of information on each message: the sent time, the sender, and the number of people who have not read the message yet.</p>\n<p>This simple chatting service can actually serve as a jail as follows. When a lot of people send messages in the Talk jail room, everyone’s phone will keep beeping continuously, which makes it impossible for him/her to manage ordinary life. Even if someone tries to leave the room, Jigsaw invites him/her back immediately: so it is impossible to leave the room. As a result, people will complain in the room which yields more messages and more beeps…</p>\n<p>Jigsaw will never send any message to the room but will keep inviting leavers back to the room. Being so frustrated, people eventually choose one or the other: (A) just suck it up and live with it or (B) ignore the smartphone entirely and live free.</p>\n<p>Jigsaw just opened the chat room window and checked out the $M$ messages that have been sent ever since the room was created. Based on this, he can infer that certain people have not read certain messages with certainty. That is, for each message, he may be able to infer whether someone has read the message or not (sometimes, such inference may not be possible). He calls those who have not read the message for sure, “the wretched addict.”</p>\n<p>For each message, your job is to figure out how many people Jigsaw can identify as “the wretched addicts” because you can infer that they have not read the message.</p>",
+  "input": "<p>The input consists of $T$ test cases. The first line of the input contains $T$.</p>\n<p>Each test case starts with two integers $N$ ($1 ≤ N ≤ 60\\,000$) and $M$ ($1 ≤ M ≤ 60\\,000$), separated by a whitespace. The following $M$ lines contain three integers each: $t_i$, $p_i$, and $c_i$ where $t_i$ ($0 ≤ t_i &lt; 2^{31}$) denotes the sent time, $p_i$ ($1 ≤ p_i ≤ N$) denotes the sender, and $c_i$ ($0 ≤ c_i &lt; N$) denotes the number of people who have not read the message $i$. No two messages have the same value of $t_i$. The input is consistent and valid.</p>",
+  "output": "<p>For each test case, you must output “<code>#</code>Test case number” in the first line. You must output the number of people who are certain that have not read the $i$-th message yet in a separate line.</p>",
+  "samples": [
+    {
+      "input": "1\n3 3\n1 1 0\n2 2 1\n3 2 2\n",
+      "output": "#1\n0\n0\n2\n"
+    }
+  ],
+  "hint": "<p>Here comes the explanation of the first test case.</p>\n<p>Everybody read the first message (from the input data). Hence, the answer is $0$.</p>\n<p>There is one person who has not read the second message yet. Person $2$ must have read the message (as he sent it). Either Person $1$ or $3$ could have read the message, and Jigsaw cannot identify exactly who has not read it. The answer is $0$.</p>\n<p>The third message is again read by Person $2$. However, both Person $1$ and Person $3$ have not read it yet, and thus Jigsaw can be certain that those two have not read. The answer is $2$.</p>",
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2012",
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "sorting",
+    "trees",
+    "set",
+    "constructive",
+    "hash_set",
+    "tree_set"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.25
+}

@@ -1,0 +1,28 @@
+{
+  "id": 19641,
+  "title": "중첩 집합 모델",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>SQL은 릴레이션으로 나타낼 수 있는 데이터를 나타내기에는 훌륭한 표현력을 갖고 있지만, 계층적인 구조를 표현하기에는 한계가 있다. 이러한 한계를 보완하고자 나온 모델 중 하나가 중첩 집합 모델이다.</p>\n<p>중첩 집합 모델은 구간의 포함관계를 이용해서 계층적인 구조를 나타내는 방식이며, 각각의 데이터는 서로 겹치지 않거나 한 데이터가 다른 데이터를 포함하는 관계를 가진다. 중첩 집합 모델은 트리 구조로 구성된 각 노드의 <span style=\"color:#e74c3c;\"><code>left</code></span>, <span style=\"color:#e74c3c;\"><code>right</code></span> 필드에 <strong>트리의 방문 순서</strong>로 번호를 매겨서 <span style=\"color:#e74c3c;\"><code>left</code></span>, <span style=\"color:#e74c3c;\"><code>right</code></span> 필드가 구간을 나타내도록 한다. 이 때, 각 노드의 <span style=\"color:#e74c3c;\"><code>left</code></span> 필드와 <span style=\"color:#e74c3c;\"><code>right</code></span> 필드는 <span style=\"color:#e74c3c;\"><code> left &lt; right</code></span>임이 보장된다.</p>\n<p>중첩 집합 모델을 구성하는 A 노드와 B 노드가 있을 때, A.left &lt; B.left이고 B.right &lt; A.right이면 <strong>A는 B를 포함한다</strong>고 할 수 있다. A 노드가 포함하는 모든 노드들을 불러올 때는 SQL로는 <span style=\"color:#e74c3c;\"><code><strong>SELECT</strong> * <strong>FROM</strong> tree <strong>WHERE</strong> left &gt; A.left <strong>AND</strong> right &lt; A.right;</code></span> 명령을 수행하면 된다.</p>\n<p>예를 들면, 한 회사의 조직도를 나타낸다고 가정해 보자. HI-ARC라는 회사에는 여러 개의 부서가 있으며, 각 부서는 여러 개의 팀을 가질 수 있다. 그리고 각 팀은 여러 명의 사원을 포함할 수 있다.</p>\n<p>아래와 같이 조직이 구성되어 있다고 생각해 보자.</p>\n<blockquote>\n<p><strong>1레벨</strong></p>\n<ul>\n<li>HI-ARC - (경영지원실, 개발부)</li>\n</ul>\n<p><strong>2레벨</strong></p>\n<ul>\n<li>경영지원실 - (사업전략팀, 법무팀)</li>\n<li>개발부 - (개발1팀, 개발2팀, 운영팀)</li>\n</ul>\n<p><strong>3레벨</strong></p>\n<ul>\n<li>사업전략팀 - 사원1, 사원2</li>\n<li>법무팀 - 사원3</li>\n<li>개발1팀 - 사원4, 사원5</li>\n<li>개발2팀 - 사원6, 사원7, 사원8</li>\n<li>운영팀 - 사원9</li>\n</ul>\n</blockquote>\n<p>그렇다면, 위와 같은 조직 구성을 중첩 집합 모델로 아래와 같이 나타낼 수 있다.</p>\n<table class=\"table table-bordered table-center-30\">\n<tbody>\n<tr>\n<td><strong>부서명/이름</strong></td>\n<td><strong>left</strong></td>\n<td><strong>right</strong></td>\n<td><strong>level</strong></td>\n</tr>\n<tr>\n<td>HI-ARC</td>\n<td>1</td>\n<td>34</td>\n<td>1</td>\n</tr>\n<tr>\n<td>경영지원실</td>\n<td>2</td>\n<td>13</td>\n<td>2</td>\n</tr>\n<tr>\n<td>사업전략팀</td>\n<td>3</td>\n<td>8</td>\n<td>3</td>\n</tr>\n<tr>\n<td>사원1</td>\n<td>4</td>\n<td>5</td>\n<td>4</td>\n</tr>\n<tr>\n<td>사원2</td>\n<td>6</td>\n<td>7</td>\n<td>4</td>\n</tr>\n<tr>\n<td>법무팀</td>\n<td>9</td>\n<td>12</td>\n<td>3</td>\n</tr>\n<tr>\n<td>사원3</td>\n<td>10</td>\n<td>11</td>\n<td>4</td>\n</tr>\n<tr>\n<td>개발부</td>\n<td>14</td>\n<td>33</td>\n<td>2</td>\n</tr>\n<tr>\n<td>개발1팀</td>\n<td>15</td>\n<td>20</td>\n<td>3</td>\n</tr>\n<tr>\n<td>사원4</td>\n<td>16</td>\n<td>17</td>\n<td>4</td>\n</tr>\n<tr>\n<td>사원5</td>\n<td>18</td>\n<td>19</td>\n<td>4</td>\n</tr>\n<tr>\n<td>개발2팀</td>\n<td>21</td>\n<td>28</td>\n<td>3</td>\n</tr>\n<tr>\n<td>사원6</td>\n<td>22</td>\n<td>23</td>\n<td>4</td>\n</tr>\n<tr>\n<td>사원7</td>\n<td>24</td>\n<td>25</td>\n<td>4</td>\n</tr>\n<tr>\n<td>사원8</td>\n<td>26</td>\n<td>27</td>\n<td>4</td>\n</tr>\n<tr>\n<td>운영팀</td>\n<td>29</td>\n<td>32</td>\n<td>3</td>\n</tr>\n<tr>\n<td>사원9</td>\n<td>30</td>\n<td>31</td>\n<td>4</td>\n</tr>\n</tbody>\n</table>\n<p>사이클이 없는 임의의 그래프가 주어졌을 때, 한 노드를 루트 노드로 하여 구성된 트리를 중첩 집합으로 나타냈을 때 각 노드의 <span style=\"color:#e74c3c;\"><code>left</code></span> 필드, <span style=\"color:#e74c3c;\"><code>right</code></span> 필드를 출력한다.</p>",
+  "input": "<p>첫 번째 줄에는 트리를 구성하는 정점의 개수 <em>N</em> (2 ≤ <em>N</em> ≤ 10<sup>5</sup>)가 주어진다.</p>\n<p>두 번째 줄부터 <em>N </em>+ 1번째 줄까지는 정점에 연결된 간선에 대한 정보가 주어진다. 각 줄의 처음에는 간선이 연결될 정점의 번호 <em>V<sub>i</sub></em> (1 ≤ <em>V<sub>i</sub></em> ≤ <em>N</em>)가 주어지며, -1을 입력받기 전까지는 해당 노드에서 연결된 모든 노드에 대한 정보가 주어진다.</p>\n<p><em>N </em>+ 2 번째 줄에는 루트 노드의 역할을 하게 될 정점의 번호 <em>S</em>가 주어진다.</p>\n<p>이 때, 트리의 구성하는 간선은 단방향 그래프의 간선처럼 입력받지만, 양방향 그래프의 입력임이 보장된다. 2번 노드에서 3번 노드로의 간선을 입력받으면, 3번 노드에 연결된 노드의 정보를 입력받을 때는 3번 노드에서 2번 노드로의 간선이 입력으로 들어온다.</p>\n<p>트리를 구성하는 양방향 간선의 정보를 입력받기 때문에, 간선의 개수의 총합은 <strong>2 × (<em>N</em> - 1) </strong>개이며, 모든 정점들은 간선을 통해 서로 직/간접적으로 연결되있다.</p>",
+  "output": "<p><em>S</em>번 노드가 루트 노드일 때, <strong>번호가 가장 낮은 노드부터 오름차순으로 방문</strong>해서 중첩 집합을 구성했을 때, 각 노드의 번호 <span style=\"color:#e74c3c;\"><code>left</code></span> 필드와 <span style=\"color:#e74c3c;\"><code>right</code></span> 필드를 출력한다.</p>\n<p>총 <em>N</em>개의 줄에 걸쳐 <em>i</em>번째 줄에 <em>i</em>번 노드의 번호와 <span style=\"color:#e74c3c;\"><code>left </code></span>/ <span style=\"color:#e74c3c;\"><code>right</code></span> 필드를 출력한다.</p>\n<p>이 때, 출력되는 모든 <span style=\"color:#e74c3c;\"><code>left</code></span> 필드와 <span style=\"color:#e74c3c;\"><code>right</code></span> 필드는 <strong>1 이상</strong> <strong>2 × <em>N</em> 이하</strong>의 서로 다른 자연수이다.</p>",
+  "samples": [
+    {
+      "input": "3\n2 1 3 -1\n3 2 -1\n1 2 -1\n2\n",
+      "output": "1 2 3\n2 1 6\n3 4 5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, ICPC Sinchon Algorithm Camp, 2020 ICPC Sinchon Summer Algorithm Camp Contest, 초급, malkoring, gumgood, pichulia, rhs0266, shiftpsh",
+  "level": 11,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "trees",
+    "dfs",
+    "euler_tour_technique"
+  ],
+  "accepted_user_count": 267,
+  "submission_count": null,
+  "average_tries": 2.2135000228881836
+}

@@ -1,0 +1,34 @@
+{
+  "id": 16800,
+  "title": "Graph Automata Player",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You and your grandma are playing with graph automata, which is generalization of cell automata.</p>\n<p>A graph automaton is expressed by a graph. The vertices of the graph have a time-dependent value, which can be either 0 or 1. There is no more than one edge between any of two vertices, but self-loops might exist.</p>\n<p>The values of vertices change regularly according to the following rule: At time <var>t+1</var>, the value of vertex <var>i</var> will be 1 if and only if there are an odd number of edges from the vertex <var>i</var> to a vertex which has the value 1 at time <var>t</var>; otherwise 0.</p>\n<p>Now, your forgetful grandma forgot the past states of the automaton. Your task is to write a program which recovers the past states from the current time and states --- time machines are way too expensive. There may be multiple candidates or no consistent states. For such cases, you must print an appropriate error message.</p>",
+  "input": "<p>The input is formatted as follows:</p>\n<pre>\n<var>N</var>\n<var>a<sub>11</sub></var> ... <var>a<sub>1N</sub></var>\n:\n:\n<var>a<sub>N1</sub></var> ... <var>a<sub>NN</sub></var>\n<var>v<sub>1</sub></var>\n:\n:\n<var>v<sub>N</sub></var>\n<var>T</var>\n</pre>\n<p>The first line contains one integer <var>N</var> (<var>2 ≤ N ≤ 300</var>). <var>N</var> indicates the number of vertices. The following <var>N</var> lines indicate the adjacent matrix of the graph. When <var>(i,j)</var>-element is 1, there is an edge from vertex <var>i</var> to vertex <var>j</var>. Otherwise, there is no edge. The following <var>N</var> lines indicate the value vector of the vertices. The <var>i</var>-th element indicates the value of vertex <var>i</var> at time 0. Each element of the matrix and the vector can be 0 or 1. The last line contains one integer <var>T</var> (<var>1 ≤ T ≤ 100,000,000</var>). <var>-T</var> is the time your grandma wants to know the status at.</p>",
+  "output": "<p>Print the value vector at time <var>-T</var> separated one white space in one line as follows:</p>\n<pre>\n<var>v<sub>1</sub></var> ... <var>v<sub>N</sub></var></pre>\n<p>Each value must be separated with one white space. If there is no consistent value vectors, you should print <code>none</code> in one line. Or if there are multiple candidates and the solution is not unique (i.e. the solution is not unique), you should print <code>ambiguous</code> in one line.</p>",
+  "samples": [
+    {
+      "input": "2\n1 1\n0 1\n1\n1\n1\n",
+      "output": "0 1\n"
+    },
+    {
+      "input": "2\n0 1\n0 0\n1\n0\n1\n",
+      "output": "ambiguous\n"
+    },
+    {
+      "input": "2\n0 1\n0 0\n1\n0\n2\n",
+      "output": "none\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2013 Day 4",
+  "level": 16,
+  "tags": [
+    "math",
+    "linear_algebra",
+    "gaussian_elimination"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.5
+}

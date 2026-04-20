@@ -1,0 +1,26 @@
+{
+  "id": 10568,
+  "title": "Wormholes",
+  "time_limit": "5 초",
+  "memory_limit": "256 MB",
+  "description": "<p>With our time on Earth coming to an end, Cooper and Amelia have volunteered to undertake what could be the most important mission in human history: travelling beyond this galaxy to discover whether mankind has a future among the stars. Fortunately, astronomers have identified several potentially inhabitable planets and have also discovered that some of these planets have wormholes joining them, which effectively makes the travel distance between these wormhole connected planets zero. For all other planets, the travel distance between them is simply the Euclidean distance between the planets. Given the location of Earth, planets, and wormholes, find the shortest travel distance between any pairs of planets.</p>",
+  "input": "<ul>\n<li>The first line of input is a single integer, T (1 ≤ T ≤ 10) the number of test cases.</li>\n<li>Each test case consists of planets, wormholes, and a set of distance queries.</li>\n<li>The planets list for a test case starts with a single integer, p (1 ≤ p ≤ 60), the number of planets. Following this are p lines, where each line contains a planet name along with the planet’s integer coordinates, i.e. name x y z (0 ≤ x, y, z ≤ 2 · 10<sup>6</sup>) The names of the planets will consist only of ASCII letters and numbers, and will always start with an ASCII letter. Planet names are case-sensitive (Earth and earth are distinct planets). The length of a planet name will never be greater than 50 characters. All coordinates are given in parsecs.</li>\n<li>The wormholes list for a test case starts with a single integer, w (0 ≤ w ≤ 40), the number of wormholes, followed by the list of w wormholes. Each wormhole consists of two planet names separated by a space. The first planet name marks the entrance of wormhole, and the second planet name marks the exit from the wormhole. The planets that mark wormholes will be chosen from the list of planets given in the preceding section. Note: you can’t enter a wormhole at its exit.</li>\n<li>The queries list for a test case starts with a single integer, q (1 ≤ q ≤ 20), the number of queries. Each query consists of two planet names separated by a space. Both planets will have been listed in the planet list.</li>\n</ul>",
+  "output": "<p>For each test case, output a line, “Case i:”, the number of the ith test case. Then, for each query in that test case, output a line that states “The distance from planet<sub>1</sub> to planet<sub>2</sub> is d parsecs.”, where the planets are the names from the query and d is the shortest possible travel distance between the two planets. Round d to the nearest integer.</p>",
+  "samples": [
+    {
+      "input": "3\n4\nEarth 0 0 0\nProxima 5 0 0\nBarnards 5 5 0\nSirius 0 5 0\n2\nEarth Barnards\nBarnards Sirius\n6\nEarth Proxima\nEarth Barnards\nEarth Sirius\nProxima Earth\nBarnards Earth\nSirius Earth\n3\nz1 0 0 0\nz2 10 10 10\nz3 10 0 0\n1\nz1 z2\n3\nz2 z1\nz1 z2\nz1 z3\n2\nMars 12345 98765 87654\nJupiter 45678 65432 11111\n0\n1\nMars Jupiter\n",
+      "output": "Case 1:\nThe distance from Earth to Proxima is 5 parsecs.\nThe distance from Earth to Barnards is 0 parsecs.\nThe distance from Earth to Sirius is 0 parsecs.\nThe distance from Proxima to Earth is 5 parsecs.\nThe distance from Barnards to Earth is 5 parsecs.\nThe distance from Sirius to Earth is 5 parsecs.\nCase 2:\nThe distance from z2 to z1 is 17 parsecs.\nThe distance from z1 to z2 is 0 parsecs.\nThe distance from z1 to z3 is 10 parsecs.\nCase 3:\nThe distance from Mars to Jupiter is 89894 parsecs.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2014 Pacific Northwest Region Programming Contest, Division 1, ICPC, Regionals, North America, Pacific Northwest Regional, 2014 Pacific Northwest Region Programming Contest, Division 2, doju",
+  "level": 12,
+  "tags": [
+    "floyd_warshall",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 60,
+  "submission_count": null,
+  "average_tries": 2.516700029373169
+}

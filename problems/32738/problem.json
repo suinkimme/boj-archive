@@ -1,0 +1,27 @@
+{
+  "id": 32738,
+  "title": "Combination Lock",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are faced with a combination lock that consists of an $n$ by $m$ grid of dials. A $k$-dial is a dial that can display values $0, 1, \\cdots k-1$. A $k$-dial currently displaying value $v$ can be <em>incremented</em> to make it display value $(v + 1)\\mod k$.</p>\n<p>This particular lock consists of $3$-dials and $5$-dials in a checkerboard arrangement, with the top left dial being a $3$-dial. In a single move, you can increment a dial and all of its horizontal and vertical neighbors.</p>\n<p>For example, here is one possible sequence of moves on a grid with $n=3$, $m=4$ (where $3$-dials are gray and $5$-dials are white):</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 768px; height: 103px;\"/></p>\n<p>Initially, all of the dials are displaying $0$. You remember what positions the dials must be in for the lock to open, but you forgot the combination of moves to reach it. Find a sequence of moves that sets all dials to the correct positions. You do <strong>not</strong> need to minimize the number of moves, but you can use no more than $20nm$ moves.</p>\n<p>It can be shown that such a solution always exists.</p>",
+  "input": "<p>The first line of the input contains a single integer $t$ ($1 \\le t \\le 1000$) --- the number of test cases. The description of the test cases follows.</p>\n<p>The first line of each test case contains two integers $n$ and $m$ ($1 \\le n, m \\le 100$) --- the number of rows and columns in the grid, respectively.</p>\n<p>The $i$-th of the next $n$ lines contains $m$ integers describing the $i$-th row of the combination. The $j$-th of these is $a_{ij}$, the desired position of the dial at position $(i, j)$. If $i+j$ is even, $0 \\le a_{ij} &lt; 3$. Otherwise, $0 \\le a_{ij} &lt; 5$. </p>\n<p>It is guaranteed that the sum of $n\\cdot m$ over all test cases does not exceed $10^4$.</p>",
+  "output": "<p>The first line of output for each test case should contain a single integer $k$ ($0 \\le k \\le 20nm$) --- the number of moves you will perform.</p>\n<p>The next $k$ lines of output should each contain integers $i$ and $j$, indicating that the next move will be performed at position $(i, j)$.</p>\n<p>If there are multiple solutions, print any.</p>",
+  "samples": [
+    {
+      "input": "5\n3 3\n0 1 0\n1 1 1\n0 1 0\n2 3\n0 0 0\n0 0 0\n3 5\n0 1 2 3 0\n0 1 4 0 2\n0 0 1 2 0\n1 1\n1\n2 2\n2 4\n4 2\n",
+      "output": "1\n2 2\n0\n4\n1 3\n2 4\n2 4\n2 3\n1\n1 1\n4\n1 1\n1 1\n2 2\n2 2\n"
+    }
+  ],
+  "hint": "<p>Here is the move used in the first sample case:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 494px; height: 152px;\"/></p>\n<p>In the second sample case, the lock is already in the target position, so no moves are needed.</p>",
+  "source": "University, Rutgers University, Rutgers Programming Contest Fall 2024",
+  "level": 12,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "math",
+    "number_theory"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.384600043296814
+}

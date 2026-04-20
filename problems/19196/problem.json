@@ -1,0 +1,26 @@
+{
+  "id": 19196,
+  "title": "Shortest Accepted Word",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In this problem, we consider strings consisting of lowercase Latin letters \"<code>a</code>\", \"<code>b</code>\" and \"<code>c</code>\".</p>\n<p>For this problem, let us define a <em>regular expression</em> recursively as follows:</p>\n<ol>\n<li>A single character \"<code>$</code>\" is a regular expression accepting the empty string.</li>\n<li>Single characters \"<code>a</code>\", \"<code>b</code>\" and \"<code>c</code>\" are regular expressions accepting strings \"<code>a</code>\", \"<code>b</code>\" and \"<code>c</code>\", respectively.</li>\n<li>If $P$ is a regular expression, \"<code>(</code>$P$<code>)</code>\" is also a regular expression accepting  all strings accepted by $P$.</li>\n<li>If $P$ is a regular expression which is a <strong>direct</strong> result of applying any of the rules 1--4, its <em>iteration</em>, denoted as \"$P$<code>*</code>\", is also a regular expression accepting strings of the form $s = u_1 u_2 \\ldots u_k$ (a concatenation of zero or more strings) where $k$ is any non-negative integer and each string $u_i$ is accepted by $P$.</li>\n<li>If $P$ and $Q$ are regular expressions which are <strong>direct</strong> results of applying any of the rules 1--5, their <em>concatenation</em>, denoted simply as \"$P$<code>{}</code>$Q$\", is also a regular expression accepting strings of the form $s = u v$ (a concatenation of $u$ and $v$, each of which may be empty) where the prefix $u$ is accepted by $P$ and the suffix $v$ is accepted by $Q$.</li>\n<li>If $P$ and $Q$ are regular expressions which are <strong>direct</strong> results of applying any of the rules 1--6, their <em>union</em>, denoted as \"$P$<code>|</code>$Q$\", is also a regular expression accepting both strings accepted by $P$ and strings accepted by $Q$.</li>\n</ol>\n<p>The restrictions in rules 4--6 are imposed to prevent ambiguities and prioritize operations: when reading a regular expression, evaluate iteration, then concatenation, then union. Parentheses play the usual role of prioritizing operations enclosed in them. For example, the regular expression \"<code>a(bac|ac*)</code>\" is read as \"accept <code>a</code> followed by either (<code>b</code> followed by <code>a</code> followed by <code>c</code>) or (<code>a</code> followed by zero or more copies of <code>c</code>)\".</p>\n<p>Given a regular expression $r$, find the shortest string $s$ which is accepted by this regular expression $r$. If there are several such strings, find the lexicographicaly smallest one.</p>",
+  "input": "<p>The first line of input contains one integer $T$, the number of test cases ($1 \\le T \\le 300$).</p>\n<p>Each of the next $T$ lines describes a single test case. Each test case description consists of a regular expression $r$ which is a string constructed by the above rules. Its length is from $1$ to $300$ characters.</p>\n<p>The sum of all lengths of regular expressions is not greater than $300$.</p>",
+  "output": "<p>For each test case print a single line containing the shortest string accepted by the given regular expression $r$. If there is more than one such string, print the <strong>lexicographically smallest</strong> one.</p>\n<p>If the answer is an empty string, print a single character \"<code>$</code>\" instead.</p>",
+  "samples": [
+    {
+      "input": "3\na\nab|ac*(ca|cb)\n((ab|ac)a)*\n",
+      "output": "a\nab\n$\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2015, Day 7: Karelia Cup Day 1, Grand Prix of Karelia, Contest, Open Cup, 2014/2015 Season, Stage 8: Grand Prix of Karelia",
+  "level": 19,
+  "tags": [
+    "implementation",
+    "string",
+    "parsing"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.25
+}

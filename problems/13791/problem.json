@@ -1,0 +1,22 @@
+{
+  "id": 13791,
+  "title": "Full Text Search",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Mr. Don is an administrator of a famous quiz website named QMACloneClone. The users there can submit their own questions to the system as well as search for question texts with arbitrary queries. This search system employs bi-gram search method.</p>\n<p>The bi-gram search method introduces two phases, namely preprocessing and search:</p>\n<p>Preprocessing : Precompute the set of all the substrings of one or two characters long for each question text.<br/>\nSearch : Compute the set for the query string in the same way. Then find the question texts whose precomputed sets completely contain the set constructed from the query.</p>\n<p>Everything looked fine for a while after the feature was released. However, one of the users found an issue: the search results occasionally contained questions that did not include the query string as-is. Those questions are not likely what the users want. So Mr. Don has started to dig into the issue and asked you for help. For each given search query, your task is to find the length of the shortest question text picked up by the bi-gram method but not containing the query text as its substring.</p>",
+  "input": "<p>The input consists of multiple datasets. A dataset is given as a search query on each line. The input ends with a line containing only a hash sign (“#”), which should not be processed.</p>\n<p>A search query consists of no more than 1,000 and non-empty lowercase and/or uppercase letters. The question texts and queries are case-sensitive.</p>",
+  "output": "<p>For each search query, print the minimum possible length of a question text causing the issue. If there is no such question text, print “No Result” in one line (quotes only to clarify).</p>",
+  "samples": [
+    {
+      "input": "a\nQMAClone\nacmicpc\nabcdefgha\nabcdefgdhbi\nabcbcd\n#\n",
+      "output": "No Results\n9\n7\n9\n12\n6\n"
+    }
+  ],
+  "hint": "<p>Let’s consider the situation that one question text is “CloneQMAC”. In this situation, the set computed in the preprocessing phase is {“C”, “Cl”, “l”, “lo”, “o”, “on”, “n”, “ne”, “e”, “eQ”, “Q”, “QM”, “M”, “MA”, “A”, “AC”}.</p>\n<p>In the testcase 2, our input text (search query) is “QMAClone”. Thus the set computed by the program in the search phase is {“Q”, “QM”, “M”, “MA”, “A”, “AC”, “C”, “Cl”, “l”, “lo”, “o”, “on”, “n”, “ne”, “e”}.</p>\n<p>Since the first set contains all the elements in the second set, the question text “CloneQMAC” is picked up by the program when the search query is “QMAClone” although the text “CloneQMAC” itself does not contain the question text “QMAClone”. In addition, we can prove that there’s no such text of the length less than 9, thus, the expected output for this search query is 9.</p>",
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest 2011",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

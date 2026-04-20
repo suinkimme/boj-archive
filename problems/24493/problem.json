@@ -1,0 +1,28 @@
+{
+  "id": 24493,
+  "title": "Cereal 2",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Farmer John's cows like nothing more than cereal for breakfast! In fact, the cows have such large appetites that they will each eat an entire box of cereal for a single meal.</p>\n<p>The farm has recently received a shipment with $M$ different types of cereal $(2\\le M\\le 10^5)$. Unfortunately, there is only one box of each cereal! Each of the $N$ cows $(1\\le N\\le 10^5)$ has a favorite cereal and a second favorite cereal. When given a selection of cereals to choose from, a cow performs the following process:</p>\n<ol>\n<li>If the box of her favorite cereal is still available, take it and leave.</li>\n<li>Otherwise, if the box of her second-favorite cereal is still available, take it and leave.</li>\n<li>Otherwise, she will moo with disappointment and leave without taking any cereal.</li>\n</ol>\n<p>Find the minimum number of cows that go hungry if you permute them optimally. Also, find any permutation of the $N$ cows that achieves this minimum.</p>",
+  "input": "<p>The first line contains two space-separated integers $N$ and $M.$</p>\n<p>For each $1\\le i\\le N,$ the $i$-th line contains two space-separated integers $f_i$ and $s_i$ ($1\\le f_i,s_i\\le M$ and $f_i\\neq s_i$) denoting the favorite and second-favorite cereals of the $i$-th cow.</p>",
+  "output": "<p>Print the minimum number of cows that go hungry, followed by any permutation of $1\\ldots N$ that achieves this minimum. If there are multiple permutations, any one will be accepted.</p>",
+  "samples": [
+    {
+      "input": "8 10\n2 1\n3 4\n2 3\n6 5\n7 8\n6 7\n7 5\n5 8\n",
+      "output": "1\n1\n3\n2\n8\n4\n6\n5\n7\n"
+    }
+  ],
+  "hint": "<p>In this example, there are $8$ cows and $10$ types of cereal.</p>\n<p>Note that we can effectively solve for the first three cows independently of the last five, since they share no favorite cereals in common.</p>\n<p>If the first three cows choose in the order $[1,2,3]$, then cow $1$ will choose cereal $2$, cow $2$ will choose cereal $3$, and cow $3$ will go hungry.</p>\n<p>If the first three cows choose in the order $[1,3,2]$, then cow $1$ will choose cereal $2$, cow $3$ will choose cereal $3$, and cow $2$ will choose cereal $4$; none of these cows will go hungry.</p>\n<p>Of course, there are other permutations that result in none of the first three cows going hungry. For example, if the first three cows choose in the order $[3,1,2]$ then cow $3$ will choose cereal $2$, cow $1$ will choose cereal $1$, and cow $2$ will choose cereal $3$; again, none of cows $[1,2,3]$ will go hungry.</p>\n<p>It can be shown that out of the last five cows, at least one must go hungry.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2021-2022 Season, USACO 2022 January Contest, Silver",
+  "level": 20,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "ad_hoc",
+    "dfs",
+    "bipartite_matching"
+  ],
+  "accepted_user_count": 47,
+  "submission_count": null,
+  "average_tries": 5.106400012969971
+}

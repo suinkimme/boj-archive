@@ -1,0 +1,26 @@
+{
+  "id": 21006,
+  "title": "We apologize for any inconvenience",
+  "time_limit": "10 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Studying at the Jagiellonian University in Krakow has its pros and cons. Pros: Jagiellonian University. Cons: Krakow... Or, more precisely, a constant necessity to deal with tram track reconstructions.</p>\n<p>Initially, the public transport network consists of some number of tram lines. Then one of them gets suspended, then another one, and then another... As you may know yourself, the inviolable rule in Krakow is to always suspend a line before any of the previously suspended lines resumes its operation. Right now not all of the lines have been suspended (yet), and you sit in a tram, annoyed that your direct connection to the university has just disappeared. You look out of the window and you ask yourself: \"Am I actually the most unlucky passenger in this city? Or is there someone out there somewhere who needs to change lines even more times in order to get where they want?\"</p>\n<p>More precisely, we say that stop $B$ is reachable from stop $A$ with $c$ changes if there exist lines $l_0, \\ldots, l_c$ such that $l_0$ serves stop $A$, $l_c$ serves stop $B$, and for each $0 \\leq i &lt; c$ there exists some stop served by $l_i$ and $l_{i+1}$. At each point in time, you want to know the largest value of $c$ such that there exists a pair of stops $(A, B)$ where $B$ is reachable from $A$ with $c$ changes and $B$ is not reachable from $A$ with $c'$ changes for any $c'&lt;c$.</p>\n<p>Note that sometimes it might not be possible to travel between a pair of stops at all. As follows from the definition above, you decide not to take such pairs into consideration in your analysis -- you conclude that if someone wishes to travel between those stops, they will take an Uber anyway.</p>",
+  "input": "<p>The first line of input contains the number of test cases $z$ ($1 \\leq z \\leq 35$). The descriptions of the test cases follow.</p>\n<p>The first line of each test case contains the number of stops $n$ and the number of tram lines $k$ ($2 \\leq n, k \\leq 750$). The stops are numbered from $1$ to $n$ and the lines are numbered from $1$ to $k$.</p>\n<p>Then, $k$ lines follow. The $i$-th of those lines describes the route of the tram line number $i$. Each line starts with an integer $r_i$ ($2 \\leq r_i \\leq n$) followed by $r_i$ distinct integers $a_{i, j}$ ($1 \\leq a_{i,j} \\leq n$) -- the identifiers of stops served by the $i$-th tram line.  Any tram line runs in both directions.</p>\n<p>The next line contains a single integer $s$ ($1 \\leq s \\leq k -1$).</p>\n<p>Then, $s$ lines follow, describing the order in which the tram lines get suspended. Each of those lines contains a single integer $s_i$ ($1 \\leq s_i \\leq k$) -- the identifier of the suspended tram line. Any line can get suspended at most once.</p>\n<p>The sums of values of $n$ and $k$ in all test cases do not exceed 1000 each.</p>",
+  "output": "<p>For each test case, output $s+1$ lines, each containing a single integer. The $i+1$-th line should denote the largest number of line changes necessary after the $i$-th suspension event (the first line denoting the answer before any suspensions). </p>",
+  "samples": [
+    {
+      "input": "1\n5 4\n3 1 3 5\n2 1 4\n2 2 3\n2 2 4\n3\n1\n4\n3\n",
+      "output": "1\n2\n0\n0\n"
+    }
+  ],
+  "hint": "<p>Initially, one line change is required to travel, for example, from stop 4 to stop 5 (or vice versa). Such travel is possible by taking line 2, then line 1. There are no pairs of stops requiring 2 or more changes.</p>\n<p>After line 1 gets removed, two line changes are required to travel from stop 1 to stop 3 (or vice versa).</p>\n<p>When lines 1 and 4 get removed, the only pairs of stops still reachable one from another are (1, 4) and (2, 3), and in both cases no line changes are required to travel between them.</p>\n<p>When lines 1, 4 and 3 get removed, the only pair of stops still reachable one from another is (1, 4). No line changes are required to travel between these stops.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 1: Jagiellonian U Contest, Grand Prix of Krakow, Contest, Open Cup, 2020/2021 Season, Stage 10: Grand Prix of Krakow",
+  "level": 21,
+  "tags": [
+    "floyd_warshall",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.375
+}

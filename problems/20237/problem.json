@@ -1,0 +1,35 @@
+{
+  "id": 20237,
+  "title": "Futures Market Trends",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Fedor wants to earn some extra money out of oil futures. His analysis is based on <em>trends</em> and historical data of $d$ previous days.</p>\n<p>A cost sequence of at least three distinct days $c_0, c_1, c_2, \\cdots, c_n$ forms a <em>trend of power $P$</em> if average cost change is at least $P$ times bigger than the standard deviation of cost changes.</p>\n<p>Formally, average cost change is $A = \\frac{1}{n}\\sum\\limits_{i=1}^n \\left(c_i - c_{i-1}\\right)$. The standard deviation of cost changes is $D = \\sqrt{\\frac{1}{n}\\sum\\limits_{i=1}^n{\\left(c_i - c_{i-1} - A\\right)^2}}$. The sequence forms a <em>positive trend of power $P$</em> if $\\frac{A}{D} \\ge P$, and a <em>negative trend of power $P$</em> if $\\frac{A}{D} \\le -P$. </p>\n<p>We assume that if $A &gt; 0$ and $D = 0$ then a positive trend of any power is formed. Similarly, if $A &lt; 0$ and $D = 0$ then a negative trend of any power is formed. If $A = 0$ then no trend is formed, even if $D = 0$.  </p>\n<p>To check his theory, Fedor needs to count the number of subsegments of historical data which form positive and negative trends of the given power. Can you help him?</p>",
+  "input": "<p>The first line contains an integer $d$ ($3 \\le d \\le 3\\,000$) and a real number $P$ ($0.001 \\le P \\le 1000$) --- the number of days in Fedor's historical data and the required trend power. $P$ is given with at most 9 digits after the decimal point.  </p>\n<p>The next line contains $d$ integers $c_1, c_2, \\ldots, c_d$ ($-1000 \\le c_i \\le 1000$). For each $i$, $c_i$ is the cost of oil futures at the end of the $i$-th day. </p>",
+  "output": "<p>Print two integers --- the number of subsegments of historical data forming a positive and a negative trend of power $P$, respectively. It's guaranteed that the answer would not change if one changes $P$ by no more than $10^{-8}$.</p>",
+  "samples": [
+    {
+      "input": "6 0.2\n100 110 120 30 40 50\n",
+      "output": "2 8\n"
+    },
+    {
+      "input": "6 0.7\n100 110 120 30 40 50\n",
+      "output": "2 2\n"
+    },
+    {
+      "input": "10 1.234\n236 250 227 224 201 198 198 182 -376 100\n",
+      "output": "0 5\n"
+    }
+  ],
+  "hint": "<p>The third example test case demonstrates the real prices of oil futures in April 2020 (in dollars, multiplied by 10 and rounded). Be careful with theories like the one Fedor made. </p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2020-2021 North-Western Russia Regional Contest",
+  "level": 12,
+  "tags": [
+    "bruteforcing",
+    "math",
+    "prefix_sum",
+    "statistics"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 2.0416998863220215
+}

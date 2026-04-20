@@ -1,0 +1,27 @@
+{
+  "id": 21137,
+  "title": "Condorcet",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Consider an election where there are some candidates, one winner, and each voter has a complete ranked preference of the candidates. One possible method of determining the winner is to examine each pair of candidates and see which would win in a head-to-head matchup (<em>i.e.</em>, which candidate has more voters that rank them higher than their opponent) and then see if there is a single candidate that wins all their head-to-head matchups. This is called the <em>Condorcet Method</em>.</p>\n<p>For simplicity, let <code>ABC</code> denote a vote that prefers A over B, and B over C. As an example, imagine that there are three votes: <code>ABC</code>, <code>BAC</code>, and <code>CAB</code>. Then A wins in a head-to-head matchup against B 2:1, and A also wins against C 2:1, so we could declare A the winner overall.</p>\n<p>Note that a winner does not always exist; for example, imagine that the three votes were <code>ABC</code>, <code>BCA</code>, and <code>CAB</code> instead. Then A wins against B 2:1, B wins against C 2:1, and C wins against A 2:1. There is no single candidate that wins all their head-to-head matchups.</p>\n<p>You are given the candidates and a set of votes. What is the minimum number of additional voters you would need to add (whose preferences you can individually control) in order to ensure that no overall winner exists? Assume that ties are broken by some tiebreaker you do not control and cannot predict. Therefore, you need to have every candidate lose a head-to-head matchup with some other candidate.</p>",
+  "input": "<p>The first line of input contains two integers, $n$ ($3 \\le n \\le 5$) and $m$ ($1 \\le m \\le n!$), where $n$ is the number of candidates, and $m$ is the number of vote tally lines. The candidates are represented by the first $n$ upper-case letters of the alphabet.</p>\n<p>Each of the next $m$ lines contains a string $s$ and an integer $k$ ($1 \\le k \\le 10^6$). These are the vote tallies, which each consist of a string $s$ defining the vote, and an integer count $k$ indicating how many votes of type $s$ are represented by that tally line. The string $s$ describing a vote contains the first $n$ upper-case letters, each exactly once, in some order. The votes in the vote tally lines are unique.</p>",
+  "output": "<p>Output a single integer, which is the minimum number of additional voters needed to ensure that no overall winner exists.</p>",
+  "samples": [
+    {
+      "input": "3 6\nABC 1\nACB 2\nBAC 3\nBCA 4\nCAB 5\nCBA 6\n",
+      "output": "6\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Southeast USA Regional, 2020 Southeast USA Regional Programming Contest, ICPC, Regionals, North America, Mid-Central Regional, 2020 Mid-Central Regional Programming Contest, ICPC, Regionals, North America, Pacific Northwest Regional, 2020 ICPC Pacific Northwest Region, Division 1, ICPC, Regionals, North America, South Central USA Regional, 2020 South Central USA Regional Contest",
+  "level": 22,
+  "tags": [
+    "bruteforcing",
+    "graphs",
+    "math",
+    "parametric_search"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.25
+}

@@ -1,0 +1,30 @@
+{
+  "id": 3081,
+  "title": "프로세서 디자인",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>보섭이는 컴퓨터 구조와 논리 숙제로 작은 프로세서를 디자인했다. 이 프로세서는 총 N개의 레지스터를 가지고 있고, 1번부터 N번까지 번호가 매겨져 있다. 각 레지스터는 unsigned 32비트 정수를 일반적인 이진수 형태로 저장하고 있다. (0 ~ 2<sup>32</sup>-1) 프로세서는 다음과 같은 두 가지 명령을 수행할 수 있다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:100%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th style=\"width:10%\">명령어</th>\r\n\t\t\t<th style=\"width:25%\">설명</th>\r\n\t\t\t<th style=\"width:65%\">예제</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>1 <strong>K M</strong></td>\r\n\t\t\t<td>레지스터 <strong>K</strong>에 저장되어 있는 비트를 <strong>M</strong>만큼 오른쪽으로 회전시킨다음 다시 <strong>K</strong>에 저장한다.</td>\r\n\t\t\t<td>00000000000000000010001111111011 &rarr; (<strong>M</strong> = 1010) &rarr; 11111110110000000000000000001000<br />\r\n\t\t\t(10진법: 9211 &rarr; (<strong>M</strong> = 10) &rarr; 4273995784)</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>2 <strong> K L</strong></td>\r\n\t\t\t<td>레지스터 <strong>K</strong>와 <strong>L</strong>에 저장되어 있는 값을 XOR시킨 다음, 시스템 버스로 결과를 출력한다.</td>\r\n\t\t\t<td>00000000000000000000001111000111 XOR 00000000000001111100000000000111 = 00000000000001111100001111000000<br />\r\n\t\t\t(10진법: 967 XOR 507911 = 508864)</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>보섭이는 이미 프로세서를 만들었다. 하지만, 가장 중요한 연산인 레지스터에 저장된 값을 읽는 명령을 만들지 않았다는 사실을 알게 되었다. 특정 레지스터에 저장된 값을 알기 위해서는 1번과 2번 연산을 적절히 수행해서 알아내는 방법밖에 없다. 보섭이가 명령을 수행시킨 순서와 2번 연산의 출력값이 주어졌을 때, 처음에 레지스터에 저장되어 있는 값을 구하는 프로그램을 작성하시오.</p>\r\n\r\n<p>만약, 레지스터의 초기값이 여러 가지가 있다면, 사전순으로 가장 작은 것을 구한다.</p>\r\n",
+  "input": "<p>첫째 줄에 레지스터의 수 N과 프로세서가 수행한 명령의 수 E가 주어진다. (2 &le; N &le; 100,000, 1 &le; E &le; 100,000)</p>\r\n\r\n<p>다음 줄에는 프로세서가 수행한 연산이 하나씩 주어진다. 모든 명령은 올바른 명령이고 1 &le; K, L &le; N, 0 &le; M &lt; 32를 만족한다. 2번 명령이 주어진 경우에 다음 줄에는 시스템 버스가 출력한 결과가 10진수로 주어진다.</p>\r\n",
+  "output": "<p>첫째 줄에 N개 레지스터의 초기값을 공백으로 구분하여 1번 레지스터부터 출력한다.</p>\r\n\r\n<p>만약, 그러한 결과를 출력하는 레지스터의 초기값이 없는 경우에는 -1을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3 3\n2 1 2\n1\n2 1 3\n2\n2 2 3\n3\n",
+      "output": "0 1 2\n"
+    },
+    {
+      "input": "4 6\n2 4 2\n3\n2 4 1\n6\n1 3 1\n2 3 1\n2\n1 2 2\n2 2 3\n7\n",
+      "output": "5 0 14 3\n"
+    },
+    {
+      "input": "5 6\n2 4 2\n10\n2 5 3\n2\n2 2 3\n1\n2 1 4\n3\n1 3 1\n2 3 4\n2147483663\n",
+      "output": "15 6 7 12 5\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2012/2013, Contest #3, baekjoon",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3.90910005569458
+}

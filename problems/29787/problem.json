@@ -1,0 +1,25 @@
+{
+  "id": 29787,
+  "title": "Railroad Maintenance",
+  "time_limit": "40 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are in charge of the maintenance of a railroad network. The network consists of $\\mathbf{N}$ stations and $\\mathbf{L}$ train lines. Each train line serves a fixed list of stations bidirectionally (trains turn around in the first and last stations of the list). Transfers from one line to another in a station are possible, which means a trip in the network from station $a$ to station $b$ is possible if there is a list of train lines such that the first one serves station $a$, the last one serves station $b$, and for any consecutive pair of train lines in the list there is at least one station that they both serve.</p>\n<p>The easiest way to do maintenance is to shut down entire lines, one at a time. However, some train lines may be <i>essential</i>. A train line is essential if removing it would make at least one trip between a pair of stations not possible.</p>\n<p>Given the list of existing train lines, calculate how many of them are essential.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $\\mathbf{T}$. $\\mathbf{T}$ test cases follow. Each test case starts with a line containing two integers $\\mathbf{N}$ and $\\mathbf{L}$: the number of stations and train lines in the network. Then, $\\mathbf{L}$ groups of 2 lines follow. The first line of the $i$-th group contains a single integer $\\mathbf{K_i}$ the number of stations served by the $i$-th train line. The second line of the $i$-th group contains $\\mathbf{K_i}$ integers $\\mathbf{S_{i,1}}, \\mathbf{S_{i,2}}, \\dots, \\mathbf{S_{i,{K_i}}}$ representing the stations served by the $i$-th train line.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is the number of train lines that are essential.</p>",
+  "samples": [
+    {
+      "input": "4\n4 3\n3\n1 2 3\n2\n1 4\n3\n4 1 3\n4 4\n2\n1 2\n2\n3 4\n2\n3 2\n2\n4 1\n4 3\n2\n1 2\n2\n3 4\n2\n3 2\n4 3\n2\n1 2\n2\n3 4\n4\n4 1 2 3\n",
+      "output": "Case #1: 1\nCase #2: 0\nCase #3: 3\nCase #4: 1\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, the first train line is essential because it is the only one serving station $2$. Since shutting any other line down would not make travel between at least one pair of stations impossible, they are not essential.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>In Sample Case #2, no line is essential.</p>\n<p align=\"center\"><img alt=\"\" src=\"2.png\"/></p>\n<p>Sample Case #3 is similar to Sample Case #2, but missing the last train line. That makes all remaining train lines essential.</p>\n<p>In Sample Case #4, the last train line is essential as there is no way to go from station $1$ to station $4$ without it. As in Sample Case #1, since this train line already connects every station, no other line is essential.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\"/></p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam Farewell Round, Round B",
+  "level": 19,
+  "tags": [
+    "articulation",
+    "graphs"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

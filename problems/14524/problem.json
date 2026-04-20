@@ -1,0 +1,32 @@
+{
+  "id": 14524,
+  "title": "COWBASIC",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Bessie has invented a new programming language, but since there is no compiler yet, she needs your help to actually run her programs.</p>\n<p>COWBASIC is a simple, elegant language. It has two key features: addition and MOO loops. Bessie has devised a clever solution to overflow: all addition is done modulo \\(10^9+7\\). But Bessie's real achievement is the MOO loop, which runs a block of code a fixed number of times. MOO loops and addition can, of course, be nested.</p>\n<p>Given a COWBASIC program, please help Bessie determine what number it returns.</p>",
+  "input": "<p>You are given a COWBASIC program at most 100 lines long, with each line being at most 350 characters long. A COWBASIC program is a list of statements.</p>\n<p>There are three types of statements:</p>\n<pre>\n&lt;variable&gt; = &lt;expression&gt;\n\n&lt;literal&gt; MOO {\n  &lt;list of statements&gt;\n}\n\nRETURN &lt;variable&gt;\n</pre>\n<p>There are three types of expressions:</p>\n<pre>\n&lt;literal&gt;\n\n&lt;variable&gt;\n\n( &lt;expression&gt; ) + ( &lt;expression&gt; )\n</pre>\n<p>A literal is a positive integer at most 100,000.</p>\n<p>A variable is a string of at most 10 lowercase English letters.</p>\n<p>It is guaranteed that no variable will be used or RETURNed before it is defined. It is guaranteed that RETURN will happen exactly once, on the last line of the program.</p>",
+  "output": "<p>Output a single positive integer, giving the value of the RETURNed variable.</p>",
+  "samples": [
+    {
+      "input": "x = 1\n10 MOO {\n  x = ( x ) + ( x )\n}\nRETURN x\n",
+      "output": "1024\n"
+    },
+    {
+      "input": "n = 1\nnsq = 1\n100000 MOO {\n  100000 MOO {\n    nsq = ( nsq ) + ( ( n ) + ( ( n ) + ( 1 ) ) )\n    n = ( n ) + ( 1 )\n  }\n}\nRETURN nsq\n",
+      "output": "4761\n"
+    }
+  ],
+  "hint": "<p>This COWBASIC program computes \\((10^5*10^5+1)^2\\) (modulo \\(10^9 + 7\\)).</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2016-2017 Season, USACO 2017 US Open Contest, Platinum",
+  "level": 23,
+  "tags": [
+    "exponentiation_by_squaring",
+    "implementation",
+    "math",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 1.857100009918213
+}

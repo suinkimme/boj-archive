@@ -1,0 +1,27 @@
+{
+  "id": 4063,
+  "title": "Lemmings, Lemmings Everywhere. But Not For Long.",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>On an n × m board there is a lemming on each square. Every second, the lemmings try to move either north, south, east or west, according to rules which are explained below. To determine which direction to move in, each lemming has an agenda, which is an ordering of the four possible directions (for example, one possible agenda might be NWES). The rules for lemming movement are the following:</p>\n<ol>\n<li>Initially each lemming sets its direction of movement D to the first direction in its agenda.</li>\n<li>At each time step, each lemming tries to move in its direction D. Three things can happen to lemming L:\n\t<ol style=\"list-style-type:lower-alpha\">\n<li>If L’s current direction D causes it to move off the board, then the world has one less lemming in it. Otherwise, L’s target destination will be to another square.</li>\n<li>If L’s target square is empty or about to become empty as a result of another lemming leaving it, and no other lemming wants to move to the same square, then L moves into its target square. In this case, the lemming will use the same direction D in the next time step.</li>\n<li>Otherwise, if another lemming is trying to move into L’s target square, or if the target square contains a lemming which cannot move, then L stays put. In this case, it will update its D by going to the next direction in its agenda (wrapping around to the beginning if necessary).</li>\n</ol>\n</li>\n</ol>\n<p>Two lemmings which want to exchange squares can do so, unless of course some other lemming is trying to move into one of their two squares (in which case all three of the lemmings would stay in their current squares). Lemmings being lemmings, they continue to move until all of them have moved off the board. Your job is to determine how long that takes.</p>",
+  "input": "<p>Input will consist of multiple test cases. Each test case will consist of multiple lines. The first line will contain two positive integers n m, specifying the number of rows and columns in the board. The maximum value for each of these is 100. The board is situated so that square (0, 0) is in the southwest corner, and square (0,m − 1) is in the southeast corner. Following this will be several rows containing the agendas for the nm lemmings. Each agenda will be a permutation of the string NESW. There will be 16 agendas on each line (except perhaps the last), with a single space between each. The agendas are assigned row-wise to the lemmings, so that the first agenda is associated with the lemming on square (0, 0), the second with the lemming on square (0, 1), and so on. The last case will be followed by the line 0 0 which will terminate input.</p>",
+  "output": "<p>For each test case, output a single line containing the case number (using the format shown below) followed by the number of steps it takes until the last lemming(s) falls off the board. Use only single spaces to separate items on a line.</p>",
+  "samples": [
+    {
+      "input": "2 2\nENWS WSNE NESW WENS\n2 2\nENWS WSNE NESW SWEN\n0 0\n",
+      "output": "Case 1: 2\nCase 2: 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, East Central North America Regional, 2007 East Central Regional Contest",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "simulation"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

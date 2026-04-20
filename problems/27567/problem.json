@@ -1,0 +1,35 @@
+{
+  "id": 27567,
+  "title": "Bog of Eternal Stench",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are trying to reach the center of a Labyrinth, which means you must cross the Bog of Eternal Stench. Legend says that if you put so much as one toe in the Bog you will smell bad... forever. You would of course prefer to make it through the Bog with the minimum level of stench possible.</p>\n<p>Luckily, you have previously determined that the stench does eventually wear off, and that some areas of the Bog transfer more stench to you than others. There are also small islands where you can rest, without any effect on your stench level. The first island is the starting location of your journey through the Bog of Eternal Stench, and the last is your destination at the other side.</p>\n<p>From each island, established bridges allow you to travel to other islands, but these bridges can only be used in one direction. Because this is the Bog of Eternal Stench, traveling along most bridges will increase your overall stench by a specific amount. However, some bridges are quite pleasant, and will decrease your overall stench as you travel along them. But there is a catch---your stench level can never drop below $0$. (A bridge that would decrease your stench level below $0$ sets it to $0$ instead).</p>\n<p>You have carefully mapped out all of the islands and bridges, and measured the amount each bridge will increase or decrease your stench. As a result, it may be possible to traverse the Bog of Eternal Stench and emerge with no stench at all! </p>\n<p>Your top priority is reaching the destination island with minimum stench; you are willing to take a circuitous path that visits some islands multiple times if doing so achieves this goal. Your path must end at the destination island, but you don't have to leave the Bog immediately the first time you reach your destination, if taking an additional detour and returning to the island later would decrease your final stench value.</p>",
+  "input": "<p>The first line of input contains two integers $n$ and $m$ ($1 \\leq n, m \\leq 2\\,000$), where $n$ is the number of islands and $m$ is the number of direct bridges.</p>\n<p>Each of the next $m$ lines contains 3 integers $u$, $v$, and $s$ ($1 \\leq u, v \\leq n$, $-10^9 \\leq s \\leq 10^9$), indicating that there is a direct bridge from island $u$ to island $v$ that changes your overall stench level by $s$. It is guaranteed that $u \\neq v$, and that there is at most one direct bridge from $u$ to $v$ (but there can also be another direct bridge from $v$ to $u$).</p>\n<p>You may assume that it is possible to reach island $n$ (your destination) from island $1$ (your starting location).</p>",
+  "output": "<p>Output a single integer, which is the minimum stench level you can exit the Bog with, assuming you begin with $0$ stench.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2 5\n1 3 -2\n2 4 1\n3 4 10\n",
+      "output": "6\n"
+    },
+    {
+      "input": "5 5\n1 2 1000\n2 3 -3\n3 4 1\n4 2 0\n2 5 2\n",
+      "output": "3\n"
+    },
+    {
+      "input": "3 3\n1 3 -10\n3 2 2\n2 3 -1\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Mid-Central Regional, 2022 Mid-Central USA Regional Contest, ICPC, Regionals, North America, North Central North America Regional, 2022 North Central NA Regional Contest",
+  "level": 22,
+  "tags": [
+    "bellman_ford",
+    "binary_search",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1
+}

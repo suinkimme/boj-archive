@@ -1,0 +1,31 @@
+{
+  "id": 21154,
+  "title": "Over the Hill, Part 1",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Hill encryption (devised by mathematician Lester S. Hill in 1929) is a technique that makes use of matrices and modular arithmetic.  It is ideally used with an alphabet that has a prime number of characters, so we'll use the $37$ character alphabet <code>A</code>, <code>B</code>, $\\ldots$, <code>Z</code>, <code>0</code>, <code>1</code>, $\\ldots$, <code>9</code>, and the space character.  The steps involved are the following:</p>\n<ol>\n<li>Replace each character in the initial text (the <em>plaintext</em>) with the substitution <code>A</code>$\\rightarrow 0$, <code>B</code>$\\rightarrow 1$, $\\ldots$, <code>(space)</code>$ \\rightarrow 36$.  If the plaintext is <code>ATTACK AT DAWN</code> this becomes $$0\\ 19\\ 19\\ 0\\ 2\\ 10\\ 36\\ 0\\ 19\\ 36\\ 3\\ 0\\ 22\\ 13$$.</li>\n<li>Group these number into three-component vectors, padding with spaces at the end if necessary.  After this step we have \\[ \\left( \\begin{array}{c} 0 \\\\ 19 \\\\ 19 \\end{array} \\right) \\left( \\begin{array}{c} 0 \\\\ 2 \\\\ 10 \\end{array} \\right) \\left( \\begin{array}{c} 36 \\\\ 0 \\\\ 19 \\end{array} \\right) \\left( \\begin{array}{c} 36 \\\\ 3 \\\\ 0 \\end{array} \\right) \\left( \\begin{array}{c} 22 \\\\ 13 \\\\ 36 \\end{array} \\right) \\]</li>\n<li>Multiply each of these vectors by a predetermined $3 \\times 3$ encryption matrix using modulo $37$ arithmetic. If the encryption matrix is \\[ \\left( \\begin{array}{ccc} 30 &amp;  1 &amp;  9 \\\\ 4 &amp; 23 &amp;  7 \\\\ 5 &amp;  9 &amp; 13 \\end{array} \\right) \\] then the first vector is transformed as follows: \\[\\begin{eqnarray*} \\left( \\begin{array}{ccc} 30 &amp;  1 &amp;  9 \\\\ 4 &amp; 23 &amp;  7 \\\\ 5 &amp;  9 &amp; 13 \\end{array} \\right) \\left( \\begin{array}{c} 0 \\\\ 19 \\\\ 19 \\end{array} \\right) &amp; = &amp; \\left( \\begin{array}{c} (30 \\times 0 + 1 \\times 19 + 9 \\times 19) \\mod 37 \\\\ (4 \\times 0 + 23 \\times 19 + 7 \\times 19) \\mod 37 \\\\ (5 \\times 0 + 9 \\times 19 + 13 \\times 19) \\mod 37 \\end{array} \\right) \\\\ &amp; = &amp; \\left( \\begin{array}{c} 5 \\\\ 15 \\\\ 11 \\end{array} \\right) \\end{eqnarray*}\\]</li>\n<li>After multiplying all the vectors by the encryption matrix, convert the resulting values back to the $37$-character alphabet and concatenate the results to obtain the encrypted <em>ciphertext</em>.  In our example the ciphertext is <code>FPLSFA4SUK2W9K3</code>.</li>\n</ol>\n<p>This method can be generalized to work with any $n \\times n$ encryption matrix in which case the initial plaintext is broken up into vectors of length $n$.  For this problem you will be given an encryption matrix and a plaintext and must compute the corresponding ciphertext.</p>",
+  "input": "<p>Input begins with a line containing a positive integer $n \\leq 10$ indicating the size of the matrix and the vectors to use in the encryption.  After this are $n$ lines each containing $n$ non-negative integers specifying the encryption matrix. After this is a single line containing the plaintext consisting only of characters in the $37$-character alphabet specified above.</p>",
+  "output": "<p>Output the corresponding ciphertext on a single line.</p>",
+  "samples": [
+    {
+      "input": "3\n30 1 9\n4 23 7\n5 9 13\nATTACK AT DAWN\n",
+      "output": "FPLSFA4SUK2W9K3\n"
+    },
+    {
+      "input": "6\n26 11 23 14 13 16\n6 7 32 4 29 29\n26 19 30 10 30 11\n6 28 23 5 24 23\n6 24 1 27 24 20\n13 9 32 18 20 18\nMY HOVERCRAFT IS FULL OF EELS\n",
+      "output": "W4QVBO0NJG5 Y76H5A6XHR11BV670Z\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2020 East Central Regional Contest",
+  "level": 9,
+  "tags": [
+    "math",
+    "implementation",
+    "string",
+    "linear_algebra"
+  ],
+  "accepted_user_count": 49,
+  "submission_count": null,
+  "average_tries": 1.5917999744415283
+}

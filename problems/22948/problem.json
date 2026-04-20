@@ -1,0 +1,35 @@
+{
+  "id": 22948,
+  "title": "원 이동하기 2",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>좌표평면에 원의 중심이 x축 위에 있는 $N$개의 원이 존재한다. $N$개의 원 중 임의의 두개의 원을 선택했을 때 내접, 외접 등 교점이 존재하지 않도록 존재한다. 하나의 원이 다른 원 안에 포함될 수는 있다.</p>\n<p>하나의 원 내부에서 다른 원의 내부로 이동하려고 한다. 원 내부는 <strong>단 한 번만 방문 할 수 있으며</strong> 두 번 이상 방문을 할 수 없다.</p>\n<p>문제 편의상 좌표평면을 원점이 (0, 0)이고 반지름이 무수히 큰 하나의 원이라고 가정하자.</p>\n<p>좌표평면에 두 원 A, B만 존재한 상황에서 원 A 내부에서 원 B 내부로 올바르게 이동하는 경우는 아래와 같다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 283px; width: 500px;\"/></p>\n<p style=\"text-align: center;\">1. 원 A와 원 B가 서로 포함관계가 아니고 만나지 않는 경우</p>\n<p>첫 번째 경우는 원 A 내부 $\\rightarrow$ 좌표평면 $\\rightarrow$ 원 B 내부로 이동하였다. 이 경우를 제외한 올바른 경로는 존재하지 않는다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height: 298px; width: 300px;\"/></p>\n<p style=\"text-align: center;\">2. 원 B가 원 A안에 존재하는 경우</p>\n<p>두 번째 경우는 원 A 내부 $\\rightarrow$ 원 B 내부로 이동하였다. 이 경우를 제외한 올바른 경로는 존재하지 않는다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"height: 298px; width: 300px;\"/></p>\n<p style=\"text-align: center;\">3. 원 A가 원 B안에 존재하는 경우</p>\n<p>세 번째 경우도 원 A 내부 $\\rightarrow$ 원 B 내부로 이동하였다. 이 경우를 제외한 올바른 경로는 존재하지 않는다.</p>\n<p>아래 경우는 원 A 내부에서 원 B로 올바르게 이동하지 않은 경우들이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"height: 284px; width: 500px;\"/></p>\n<p style=\"text-align: center;\">4. 좌표평면 위에 원 A, B, C가 존재하고 서로 포함관계가 아니면서 만나지 않는 경우</p>\n<p>이 경우는 원 A 내부 $\\rightarrow$ 좌표평면 $\\rightarrow$ 원 C 내부 $\\rightarrow$ 좌표평면 $\\rightarrow$ 원 B 내부로 이동한 경로이다. 좌표평면을 2번 방문하였기 때문에 올바르게 이동한게 아니다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\" style=\"height: 310px; width: 500px;\"/></p>\n<p style=\"text-align: center;\">4. 좌표평면 위에 원 A, B가 존재하고 원 B가 원 A의 내부에 있을 경우</p>\n<p>이 경우는 원 A 내부 $\\rightarrow$ 좌표평면 $\\rightarrow$ 원 A 내부 $\\rightarrow$ 원 B 내부로 이동한 경로이다. 원 A 내부를 2번 방문하였기 때문에 올바르게 이동한게 아니다.</p>\n<p>좌표평면에 $N$개의 원이 있을 때, 원 A 내부에서 원 B 내부로 이동할 때 방문한 원의 개수를 구해보자.</p>",
+  "input": "<p>첫 번째 줄에는 원의 개수 $N$이 주어진다.</p>\n<p>두 번째 줄부터 $N + 1$번째 줄까지 원의 번호 $k$와 원의 중심 좌표 중 $x$좌표, 원의 반지름 $r$이 공백으로 구분되어 주어진다.</p>\n<p>마지막 줄에는 두 원의 번호 $A$와 $B$가 공백으로 구분되어 주어진다.</p>\n<p>주어지는 원의 번호 중 중복되는 수는 없다.</p>\n<p>좌표평면의 번호는 <code>0</code>으로 가정한다.</p>",
+  "output": "<p>첫 번째 줄에는 방문한 원의 개수를 출력한다.</p>\n<p>두 번째 줄에는 방문한 원의 번호를 순서대로 공백으로 구분하여 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4\n1 5 4\n2 3 1\n3 6 1\n4 13 3\n2 4\n",
+      "output": "4\n2 1 0 4\n"
+    },
+    {
+      "input": "4\n1 5 4\n2 3 1\n3 6 1\n4 13 3\n2 3\n",
+      "output": "3\n2 1 3\n"
+    }
+  ],
+  "hint": "<h3><strong>두 원의 위치관계</strong></h3>\n<p>두 원의 위치관계를 파악할 때 아래를 이용하면 된다.</p>\n<p>원 A의 반지름은 $r_A$, 원 B의 반지름은 $r_B$, 원 A와 원 B의 중심 사이의 거리를 $d$라고 가정하자.</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<td colspan=\"1\" rowspan=\"2\">두 점에서 만난다.</td>\n<td colspan=\"2\" rowspan=\"1\">한 점에서 만난다.</td>\n<td colspan=\"3\" rowspan=\"1\">만나지 않는다.</td>\n</tr>\n<tr>\n<td>외접</td>\n<td>내접</td>\n<td>외부에 있는 경우</td>\n<td>내부에 있는 경우</td>\n<td>동심원</td>\n</tr>\n<tr>\n<td>$|r_A-r_B|&lt;d&lt;r_A+r_B$</td>\n<td>$r_A+r_B=d$</td>\n<td>$|r_A-r_B|=d$</td>\n<td>$r_A+r_B&lt;d$</td>\n<td>$d&lt;|r_A-r_B|$</td>\n<td>$d=0$</td>\n</tr>\n</tbody>\n</table>\n<h3><strong>두 점 사이의 거리</strong></h3>\n<p>$(x_1, y_1)$와 $(x_2, y_2)$ 사이의 거리 $d$를 구하는 식은 아래와 같다.</p>\n<p>$d = \\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$</p>",
+  "source": "tony9402, melon940925, rhs0266",
+  "level": 14,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "sorting",
+    "trees",
+    "bfs",
+    "stack",
+    "traceback"
+  ],
+  "accepted_user_count": 121,
+  "submission_count": null,
+  "average_tries": 2.727299928665161
+}

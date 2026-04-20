@@ -1,0 +1,25 @@
+{
+  "id": 25097,
+  "title": "Controlled Inflation",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The lines at the air pump at your gas station are getting too long! You want to optimize the process to help customers more quickly inflate their tires, sports balls, giant parade balloon animals, and other products.</p>\n<p>The pump is automatic: you set the pressure to a specific number of pascals and plug the pump into the inflatable product, and it will inflate as needed to that exact pressure. There are only two buttons on the pump: up and down. They increase and decrease the target pressure, respectively, by exactly $1$ pascal.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>There is a line of $N$ customers, each of whom brings exactly $P$ products that they need to get inflated by the pump. You know the target pressure of each product. You can inflate the products from a customer in any order you want, but you cannot change the order of the customers. Specifically, you must inflate all products from the $i$⁠-th customer before inflating any from the $(i+1)$⁠-th customer. In between handling two products, if those two products have different target pressures, you need to use the buttons on the pump.</p>\n<p>The pump is initially set to $0$ pascals, and it can be left at any number after all products of all customers have been inflated. If you order the products of each customer optimally, what is the minimum number of button presses you need?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $T$. $T$ test cases follow. Each test case starts with a line containing two integers, $N$ and $P$: the number of customers and the number of products each customer brings, respectively. Then, $N$ lines follow. The $i$-th of these lines contains $P$ integers $X_{i,1},X_{i,2},\\dots,X_{i,P}$, representing that the $j$-th product that the $i$-th customer brings has a target pressure of $X_{i,j}$ pascals.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is the minimum number of button presses needed to inflate all products according to their specified pressures.</p>",
+  "samples": [
+    {
+      "input": "2\n3 3\n30 10 40\n20 50 60\n60 60 50\n5 2\n1 1000000000\n500000000 1000000000\n1 1000000000\n500000000 1\n1 1000000000\n",
+      "output": "Case #1: 110\nCase #2: 4999999996\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, an optimal way to use the pump is:</p>\n<ol>\n<li>press up $10$ times, setting the pump to $10$; pump the product (from customer 1) that needs $10$ pascals,</li>\n<li>press up $30$ times, setting the pump to $40$; pump the product (from customer 1) that needs $40$ pascals,</li>\n<li>press down $10$ times, setting the pump to $30$; pump the product (from customer 1) that needs $30$ pascals,</li>\n<li>press down $10$ times, setting the pump to $20$; pump the product (from customer 2) that needs $20$ pascals,</li>\n<li>press up $30$ times, setting the pump to $50$; pump the product (from customer 2) that needs $50$ pascals,</li>\n<li>press up $10$ times, setting the pump to $60$; pump the product (from customer 2) and the two products (from customer 3) that need $60$ pascals, and finally</li>\n<li>press down $10$ times, setting the pump to $50$; pump the product (from customer 3) that needs $50$ pascals.</li>\n</ol>\n<p>This is a total of $110$ button presses.</p>\n<p>In Sample Case #2, notice that the answer can be larger than $232$.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2022, Round 1B",
+  "level": 14,
+  "tags": [
+    "dp",
+    "greedy"
+  ],
+  "accepted_user_count": 71,
+  "submission_count": null,
+  "average_tries": 1.3238999843597412
+}

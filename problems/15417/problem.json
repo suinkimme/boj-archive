@@ -1,0 +1,24 @@
+{
+  "id": 15417,
+  "title": "Kabobs",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Anna wants to open a marvelous restaurant, “Candy Mountain”, serving only candy kabobs: sticks on which one puts various pieces of food, to be eaten from the tip to the base.</p>\n<p>Like other kabob enthusiasts, when Anna eats a pattern of consecutive types of food in a kabob, she expects to eat another pattern later in the kabob. For instance, once she eats a piece of apple immediately followed by a piece of banana, she expects to have a leaf of mint immediately followed by chocolate in the remaining part of the kabob. She is happy if she finds this mint-chocolate pattern anywhere in the remaining kabob pieces.</p>\n<p>Here is a kabob that Anna likes:</p>\n<p style=\"text-align:center\"><code>Apple-Banana-Watermelon-Plum-Watermelon-Plum-Watermelon-Mint-Chocolate</code></p>\n<p>or, graphically:</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:54px; width:654px\"/></p>\n<p>Anna has written down her perfect set of kabob patterns for the new restaurant, but she worries that these rules would give too many potential kabob types. This set of patterns is written down as a ruleset, where each rule is of the form “b implies e afterwards”, where b and e are non-empty sequences of characters, representing food pieces. A rule of the form b &gt; e with b = b<sub>1</sub> . . . b<sub>k</sub> and e = e<sub>1</sub> . . .e<sub>l</sub> means that, if the pattern b is encountered in the kabob, then the kabob should also contain e at some point after. Each b<sub>i+1</sub> must immediately follow b<sub>i</sub> to trigger the rule and similarly each e<sub>j+1</sub> must immediately follow e<sub>j</sub> to satisfy it, but b<sub>k</sub> and e<sub>1</sub> do not need to be consecutive. No food piece can appear more than once in a rule (i.e., there is no i, j such that e<sub>j</sub> = b<sub>i</sub> and no i ≠ j with b<sub>i</sub> = b<sub>j</sub> or e<sub>i</sub> = e<sub>j</sub>) but a food piece can appear in several rules.</p>\n<p>Note that if there are several occurrences of the word b in a kabob, they all need to be followed by an e. This can be a single e, as long as this e appears after all the b.</p>\n<p>In a ruleset, rules are separated by ‘|’ and are of the form u &gt; v meaning that each pattern u implies a pattern v afterwards. u and v are words composed of alphanumerical characters and no character can appear twice in a rule. For instance, the ruleset “<code>AB&gt;X|R&gt;A|T&gt;B</code>” describes three rules:</p>\n<ul>\n<li>for each <code>AB</code> there must be an X afterwards;</li>\n<li>for each <code>R</code> there must be an A afterwards; and</li>\n<li>for each <code>T</code> there must be a B afterwards.</li>\n</ul>\n<p>Using this ruleset, the kabobs <code>SBSB</code>, <code>REA</code>, <code>ABX</code>, <code>BA</code>, <code>ABXBA</code>, <code>RRA</code>, <code>TBTB</code>, and <code>RTABX</code> are valid; but <code>RAT</code>, <code>TAB</code>, and <code>ABXAB</code> are not.</p>\n<p>Anna asks you how many kabobs of a given size are compatible with her ruleset.</p>",
+  "input": "<ul>\n<li>The first line contains an integer K, the size of all kabobs, followed with a space, and a non-empty string S of alphanumerical characters (‘A’ to ‘Z’, ‘a’ to ‘z’, and ‘0’ to ‘9’), representing the elements that can be used in a kabob (no characters appear twice in S).</li>\n<li>The second line contains a non-empty string R, which contains no spaces and represents a ruleset as described above. The patterns in R are composed of characters from S only.</li>\n</ul>\n<p>Limits</p>\n<p>The input is such that 1 ≤ K ≤ 500 and 3 ≤ |R| ≤ 60.</p>",
+  "output": "<p>One integer: the number of kabobs of length K satisfying all the rules in R, modulo 10 000 000.</p>",
+  "samples": [
+    {
+      "input": "4 ABC\nA>B|B>C|CB>A\n",
+      "output": "9\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2017",
+  "level": 26,
+  "tags": [
+    "string"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3.90910005569458
+}

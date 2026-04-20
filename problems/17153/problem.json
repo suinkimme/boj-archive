@@ -1,0 +1,29 @@
+{
+  "id": 17153,
+  "title": "Circular DNA",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You have an internship with a bioinformatics research group studying DNA. A single strand of DNA consists of many genes, which fall into different categories called gene types. Gene types are delimited by specific nucleotide sequences known as gene markers. Each gene type i has a unique start marker s<sub>i</sub> and a unique end marker e<sub>i</sub>. After many dirty jobs (growing bacteria, cell extraction, protein engineering, and so on), your research group can convert DNA into a form consisting of only the gene markers, removing all the genetic material lying between the markers.</p>\n<p>Your research group came up with the interesting hypothesis that gene interpretation depends on whether the markers of some gene types form properly nested structures. To decide whether markers of gene type i form a proper nesting in a given sequence of markers w, one needs to consider the subsequence of w containing only the markers of gene type i (s<sub>i</sub> and e<sub>i</sub>), leaving none of them out. The following (and only the following) are considered to be properly nested structures:</p>\n<ul>\n<li>s<sub>i</sub>e<sub>i</sub></li>\n<li>s<sub>i</sub>Ne<sub>i</sub>, where N is a properly nested structure</li>\n<li>AB, where A and B are properly nested structures</li>\n</ul>\n<p>Given your computing background, you were assigned to investigate this property, but there is one further complication. Your group is studying a specific type of DNA called circular DNA, which is DNA that forms a closed loop. To study nesting in circular DNA, it is necessary to cut the loop at some location, which results in a unique sequence of markers (the direction of reading is fixed by molecular properties). Whether a gene type i forms a proper nesting now also depends on where the circular DNA is cut. Your task is to find the cutting location that maximizes the number of gene types that form a properly nested structure. Figure D.1 shows an example corresponding to Sample Input 1. The indicated cut results in the markers for gene type 1 being properly nested.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 162px; height: 161px;\"/></p>\n<p style=\"text-align: center;\">Figure D.1: Illustration of Sample Input 1 with its optimal cutting location.</p>",
+  "input": "<p>The first line of input contains an integer n (1 ≤ n ≤ 10<sup>6</sup>), the length of the DNA. The next line contains the DNA sequence, that is, n markers. Each marker is a character c followed by an integer i, where c ∈ {s, e} specifies whether it is a start or an end marker and i (1 ≤ i ≤ 10<sup>6</sup>) is the gene type of the marker. The given DNA sequence has been obtained from the circular DNA by cutting at an arbitrary location.</p>",
+  "output": "<p>Output one line with two integers p and m, where p is the cutting position that maximizes the number of different gene types that form a proper nesting, and m is this maximum number of gene types. The DNA is cut just before the p<sup>th</sup> input marker (for instance, the cut shown in Figure D.1 has p = 3). If more than one cutting position yields the same maximum value of m, output the smallest p that does so.</p>",
+  "samples": [
+    {
+      "input": "9\ne1 e1 s1 e2 s1 s2 e42 e1 s1\n",
+      "output": "3 1\n"
+    },
+    {
+      "input": "8\ns1 s1 e3 e1 s3 e1 e3 s3\n",
+      "output": "8 2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2019",
+  "level": 17,
+  "tags": [
+    "greedy",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 55,
+  "submission_count": null,
+  "average_tries": 1.836400032043457
+}

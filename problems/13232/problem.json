@@ -1,0 +1,29 @@
+{
+  "id": 13232,
+  "title": "Domain clusters",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>We are analyzing how the domains on the Internet connect to each other. A domain is the part of a URL that comes before the / character. Examples of domains are: twitter.com, aipo.computing.dcu.ieor google.com. A domain d1 is connected to a domain d2 if there is a link from d1 to d2 or if d1 is connected to a domain d3 and d3 is connected to d2. We consider that a domain is connected to itself. In the following structure of domains:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:218px; width:365px\"/></p>\n<ul>\n<li>D1 is connected to D2, D3 (through D2), D4 and D5 (through D3).</li>\n<li>D2 is connected to D3, D4 (through D3) and D5 (through D3).</li>\n<li>D3 is connected to D2, D4 and D5.</li>\n<li>D4 is not connected to any other domain.</li>\n<li>D5 is connected to D2, D3 (through D2) and D4 (through D3).</li>\n</ul>\n<p>We want to obtain the biggest subset of domains S where each domain in S is connected to all the other domains in S. In the example above we have the following subsets that meet this criteria:</p>\n<ul>\n<li>D1: Connected to itself.</li>\n<li>D2, D3, D5: We can arrive from D2 to D3 and D5, from D3 to D2 and D5 and from D5 to D2 and D3.</li>\n<li>D4: Connected to itself.</li>\n</ul>\n<p>Please, given the links of the Internet, compute the size of the biggest subset.</p>",
+  "input": "<p>The first line will contain an integer D representing the number of domains. The names of the domains will be integers from 1 to D. (1 ≤ D ≤ 5000)</p>\n<p>The second line will contain an integer L representing the number of links between domains. The following L lines will contain two integers each. The first integer is the source of the link and the second is the destination. Remember that a link from A to B does not imply a link from B to A and that every domain is connected to itself without the need of an explicit link. No link will appear more than once. (0 ≤ L ≤ D<sup>2</sup>)</p>",
+  "output": "<p>The size of the biggest subset of domains that meet the criteria above. If two or more subsets are tied for the biggest size, print the size of any of them.</p>",
+  "samples": [
+    {
+      "input": "5\n7\n1 2\n1 4\n2 3\n3 4\n3 2\n3 5\n5 2\n",
+      "output": "3\n"
+    },
+    {
+      "input": "4\n4\n1 2\n4 1\n3 4\n2 3\n",
+      "output": "4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, All-Ireland Programming Olympiad, 2015 AIPO National Finals - Senior",
+  "level": 16,
+  "tags": [
+    "graphs",
+    "scc"
+  ],
+  "accepted_user_count": 190,
+  "submission_count": null,
+  "average_tries": 1.4788999557495117
+}

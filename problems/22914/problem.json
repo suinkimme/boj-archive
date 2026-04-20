@@ -1,0 +1,27 @@
+{
+  "id": 22914,
+  "title": "Square Free",
+  "time_limit": "15 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>We have a matrix of square cells with R rows and C columns. We need to draw a diagonal in each cell. Exactly one of two possible diagonals must be drawn in each cell: the <i>forward slash</i> diagonal, which connects the bottom-left and the top-right corners of the cell, or the <i>backslash</i> diagonal, which connects the top-left and the bottom-right corners of the cell.</p>\n<p>For each row and column, we want to draw a specific number of diagonals of each type. Also, after all the diagonals are drawn, the matrix should be <i>square free</i>. That is, there should be no squares formed using the diagonals we added.</p>\n<p>For example, suppose we have a matrix with 4 rows and 4 columns. The number next to each row is the exact number of forward slash diagonals there must be in that row. The number below each column is the exact number of forward slash diagonals there must be in that column.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>There are multiple ways to fill the matrix respecting those per-row and per-column amounts. Below we depict three possibilities:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/><img alt=\"\" src=\"3.png\"/><img alt=\"\" src=\"4.png\"/></p>\n<p>The first two matrices are not square free, while the third matrix is. In the first matrix, there is a square of side-length 2 diagonals with its vertices in the middle of each side of the matrix. In the second matrix, there is a square of side-length 1 diagonal drawn in the bottom-right corner. In the third matrix, there is no square. The third matrix would then be a valid drawing according to all the rules.</p>\n<p>Given the size of the matrix and the exact number of forward slash diagonals that must be drawn in each row and column, produce any square free matrix that satisfies the row and column constraints, or say that one does not exist.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case consists of exactly three lines. The first line of a test case contains R and C, the number of rows and columns of the matrix. The second line of a test case contains R integers S<sub>1</sub>, S<sub>2</sub>, …, S<sub>R</sub>. S<sub>i</sub> is the exact number of forward slash diagonals that must be drawn in the i⁠-⁠th row from the top. The third line of a test case contains C integers D<sub>1</sub>, D<sub>2</sub>, …, D<sub>C</sub>. D<sub>i</sub> is the exact number of forward slash diagonals that must be drawn in the i⁠-⁠th column from the left.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where x is the test case number (starting from 1) and y is <code>IMPOSSIBLE</code> if there is no filled matrix that follows all rules and <code>POSSIBLE</code> otherwise. If you output <code>POSSIBLE</code>, output R more lines with C characters each. The j-⁠th character of the i-⁠th of these lines must be <code>/</code> if the diagonal drawn in the i-⁠th row from the top and j-⁠th column from the left in your proposed matrix is a forward slash diagonal, and <code>\\</code> otherwise. Your proposed matrix must be valid according to all rules.</p>",
+  "samples": [
+    {
+      "input": "4\n4 4\n3 2 3 3\n3 3 2 3\n2 3\n1 1\n1 1 1\n2 3\n1 2\n1 1 1\n3 3\n2 0 2\n2 0 2\n",
+      "output": "Case #1: POSSIBLE\n//\\/\n\\/\\/\n///\\\n/\\//\nCase #2: IMPOSSIBLE\nCase #3: POSSIBLE\n\\\\/\n//\\\nCase #4: POSSIBLE\n/\\/\n\\\\\\\n/\\/\n"
+    }
+  ],
+  "hint": "<p>Sample Case #1 is the one explained above.</p>\n<p>In Sample Case #2, there must be a total of 2 forward slash diagonals according to the sum of the row totals, but a total of 3 according to the sum of the column totals. It is therefore impossible to follow all rules.</p>\n<p>In Sample Case #3 the only matrices that follow the row and column totals are the following:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"5.png\"/><img alt=\"\" src=\"6.png\"/><img alt=\"\" src=\"7.png\"/></p>\n<p>Since the first two contain a square, the third one is the only valid output for this case.</p>\n<p>In Sample Case #4 there is only one way to fill the matrix that follows the row and column totals, shown in the picture below. Note that it produces a single rectangle, shown in blue in the picture. But, since that rectangle is not a square, the matrix is square free.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"8.png\"/></p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2021, Round 3",
+  "level": 21,
+  "tags": [
+    "constructive",
+    "flow",
+    "greedy",
+    "graphs"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 2.200000047683716
+}

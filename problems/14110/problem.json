@@ -1,0 +1,26 @@
+{
+  "id": 14110,
+  "title": "Agresor",
+  "time_limit": "5 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Mirko i Slavko su već tisuću puta odigrali igru Rizik, pa sad pokušavaju izmisliti novu igru zvanu Agresor koja se igra na istoj ploči u obliku zemljopisne karte. Ploča sadrži N zemalja označenih brojevima od 1 do N, te je poznato koji parovi zemalja su susjedi. Neke zemlje mogu biti susjedne čak i ako fizički ne dijele granicu.</p>\n<p>Prije početka igre, u svaku zemlju postavili su određen broj tenkića, te su neke zemlje proglasili “agresorima”, dok su preostale “miroljubive”. Kada to naprave, Mirko i Slavko će naizmjence igrati svaki po jedan potez. Igrač koji ne može odigrati svoj potez gubi igru. Mirko je prvi na potezu.</p>\n<p>Svaki put kada je igrač na potezu, bira jedan od dva tipa poteza:</p>\n<ol>\n<li>Napad:\n\t<ul>\n<li>Igrač prvo bira zemlju agresora A u kojoj je TA tenkića, te njoj susjednu miroljubivu zemlju M u kojoj je T<sub>M</sub> tenkića.</li>\n<li>Da bi potez bio dozvoljen mora vrijediti T<sub>M</sub> &gt; 0.</li>\n<li>Zatim svaki tenkić iz zemlje A projektilom uništava po jedan tenkić iz zemlje M.</li>\n<li>Na kraju poteza u zemlji M ostati će T<sub>M</sub> - T<sub>A</sub> tenkića, ili 0 u slučaju da je T<sub>A</sub> &gt; T<sub>M</sub>.</li>\n</ul>\n</li>\n<li>Pomoć:\n\t<ul>\n<li>Igrač bira dvije susjedne miroljubive zemlje M i O, u kojima je T<sub>M</sub> i T<sub>O</sub> tenkića.</li>\n<li>Da bi potez bio dozvoljen mora vrijediti T<sub>M</sub> &gt; 0.</li>\n<li>Ako je T<sub>M</sub> neparan, igrač prvo dodaje novi tenkić u zemlju M.</li>\n<li>Zatim se točno polovica tenkića iz zemlje M premješta u zemlju O.</li>\n</ul>\n</li>\n</ol>\n<p>Napomena: Zemlje ne pripadaju pojedinim igračima, tj. svaki igrač u svom potezu može odabrati bilo koje dvije susjedne zemlje, pod uvjetom da je potez dozvoljen.</p>\n<p>Pošto ploča sadrži N zemalja, postoji 2<sup>N</sup> načina da se zemlje raspodijele na agresore i miroljubive. Za svaku moguću raspodjelu, Mirko i Slavko će odigrati po jednu partiju igre. Zanima ih u koliko od tih 2<sup>N</sup> partija će pobijediti Mirko, a u koliko Slavko pod uvjetom da obojica igraju optimalno.</p>\n<p>Za neke raspodijele nijedan igrač ne može osigurati pobjedu. Na primjer, ako nijedna zemlja nije agresor, tada nije moguće uništiti nijedan tenkić, pa igra ne može završiti. </p>",
+  "input": "<p>U prvom redu nalazi se cijeli broj N (2 ≤ N ≤ 40), broj zemalja.</p>\n<p>U drugom redu nalazi se N prirodnih brojeva manjih od 40000 koji označavaju brojeve tenkića u zemljama na početku partije, redom od zemlje s oznakom 1 do zemlje s oznakom N.</p>\n<p>U trećem redu nalazi se cijeli broj M (1 ≤ M ≤ 780), broj parova susjednih zemalja.</p>\n<p>U svakom od sljedećih M redova nalaze se po dva prirodna broja koji označavaju par susjednih zemalja. Nijedan par zemalja neće se pojaviti više od jednom na ovom popisu. </p>",
+  "output": "<p>U prvi redak potrebno je ispisati ukupan broj partija u kojima pobjeđuje Mirko.</p>\n<p>U drugi redak potrebno je ispisati ukupan broj partija u kojima pobjeđuje Slavko. </p>",
+  "samples": [
+    {
+      "input": "2\n100 100\n1\n1 2\n",
+      "output": "2\n1\n"
+    },
+    {
+      "input": "5\n7 5 3 4 5\n5\n1 2\n2 3\n3 1\n3 4\n3 5\n",
+      "output": "5\n8\n"
+    }
+  ],
+  "hint": "<p>Četiri su partije od kojih Mirko pobjeđuje u dvije, a Slavko u jednoj:</p>\n<ol>\n<li>Zemlja 1 i zemlja 2 su agresori - Mirko ne može odigrat potez, pa Slavko pobjeđuje.</li>\n<li>Zemlja 1 je agresor, a zemlja 2 miroljubiva - Mirko može u jednom potezu uništit sve tenkiće u zemlji 2, nakon čega Slavko više ne može odigrati potez, pa Mirko pobjeđuje.</li>\n<li>Zemlja 1 je miroljubiva, a zemlja 2 agresor - Mirko pobjeđuje na isti način.</li>\n<li>Zemlja 1 i zemlja 2 su miroljubive - Broj tenkića se u potezu pomoći ne može smanjiti, pa kako nijedna zemlja nije agresor, uvijek će biti moguće odigrati potez pomoći kako god igrači igrali, pa igra nema pobjednika u ovom slučaju. </li>\n</ol>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, The Croatian Programming Contest, CPC 2012",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

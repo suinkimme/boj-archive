@@ -1,0 +1,29 @@
+{
+  "id": 17662,
+  "title": "GPA",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>For many students, at graduation, all that matters is one number: the GPA.<sup>3</sup> Except, then, many employers seem to be not so interested in how a CSCI or EE student did in “Introduction to Origami;” somehow, they seem to care more about performance in CSCI104 or CSCI270 or CSCI360. Strange! As a result, the “Major GPA” has become a thing, which only includes classes “in the major.” But if you are double- or triple-majoring, then computing all your multiple major GPAs becomes rather time-consuming. Isn’t that what computers are for? In fact, it is — thanks for pointing this out!</p>\n<p>You will be given the complete course catalog of a university (course names and units), as well as the major requirements for each of the majors. Then, you will be given a list of students, and for each student all the classes they have taken and the grades they received. You will output, for each student, the overall GPA, and the GPA for each major such that the student completed all requirements for this major. The GPA is weighted: for each class the student took, you multiply the student’s grade (a number between 0.0 and 4.0) by the number of units of the class. In the end, you divide the sum of all these weighted grades by the total number of units the student took. That’s the student’s GPA. Similarly for the major GPA, except you only sum the classes relevant for the major.</p>\n<p><sup>3</sup>Well, ok, there may also be the student debt.</p>",
+  "input": "<p>The first line contains a number 1 ≤ K ≤ 100, which is the number of input data sets in the file. This is followed by K data sets of the following form:</p>\n<p>The first line of the data set contains three integers 1 ≤ C ≤ 10000, 1 ≤ M ≤ 500, 1 ≤ s ≤ 1000 (the number of classes, the number of majors, and the number of students who are graduating).</p>\n<p>This is followed by C lines, each describing a class i, by giving its name n<sub>i</sub> and number of units u<sub>i</sub>. The name consists of 2–4 uppercase letters, followed immediately by exactly 3 digits. The number of units is an integer between 1 and 6, inclusive.</p>\n<p>Next come the M majors. The first line of a major j contains first a string of 2–4 uppercase letters (the name of the major), and then the number r<sub>j</sub> ≥ 1 of classes the major requires (an integer). This is followed by r<sub>j</sub> lines, each containing exactly one class name. The class name will be a legal name from the first C lines. The total number of units of any major will add up to at most 128.</p>\n<p>Finally, we have the s students. For each student k, you first get the integer t<sub>k</sub> ≥ 1 of classes the student has taken. This is followed by t<sub>k</sub> lines, each containing first the name of a class (a legal string from the first C lines), followed by the student’s grade in the class, a floating point number between 0.0 and 4.0. No student ever takes more than 200 units total. And no student will ever take the same class twice.</p>",
+  "output": "<p>For each data set, first output “Data Set x:” on a line by itself, where x is its number. Then, output the overall GPA and all applicable major GPAs, for each student, in the order the majors were listed in the input file. Specifically, first print a line “Student k”, where k is the student’s number. Then print a line with the student’s GPA. Then, for each major for which the student took all required classes, print the name of the major, followed by the student’s GPA in that major. (See below for the format.) All GPAs should be rounded to two decimals. Each data set should be followed by a blank line.</p>",
+  "samples": [
+    {
+      "input": "1\n5 3 1\nCSCI104 4\nCSCI109 2\nEE364 3\nISE330 4\nORIG101 1\nCSCI 3\nCSCI104\nCSCI109\nEE364\nCENG 2\nCSCI104\nEE364\nISE 3\nISE330\nEE364\nCSCI104\n4\nCSCI104 3.7\nCSCI109 4.0\nEE364 3.3\nORIG101 4.0\n",
+      "output": "Data Set 1:\nStudent 1\nGPA: 3.67\nCSCI: 3.63\nCENG: 3.53\n\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Spring 2019: Graduation",
+  "level": 10,
+  "tags": [
+    "math",
+    "implementation",
+    "data_structures",
+    "set",
+    "arithmetic",
+    "hash_set"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 3.0999999046325684
+}

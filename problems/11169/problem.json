@@ -1,0 +1,22 @@
+{
+  "id": 11169,
+  "title": "Battle Sheep",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The game of Battle Sheep is played with two players, and follows these rules:</p>\n<p>Each player has an N × N grid where they have placed four non-overlapping ships, each of the ships parallel to one of the axes. They place exactly one of each of the following ships:</p>\n<table class=\"table table-bordered\" style=\"width:30%\">\n<thead>\n<tr>\n<th>Name</th>\n<th>Length</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Pram</td>\n<td>1</td>\n</tr>\n<tr>\n<td>Sail Boat</td>\n<td>2</td>\n</tr>\n<tr>\n<td>Battle Ship</td>\n<td>3</td>\n</tr>\n<tr>\n<td>Hangar Ship</td>\n<td>4</td>\n</tr>\n</tbody>\n</table>\n<p>Starting with the first player, they call out cells in the grid. If the cell called out by Player A was covered by a ship on Player B’s grid, Player B has to tell Player A that it was a hit. If all cells covered by that ship have been hit by Player A, Player B has to announce that their ship sunk, and player A gets another turn. If no ship was sunk by Player A’s move, it’s Player B’s turn. This continues until one player has sunk all the other player’s ships. The player who managed to sink all the other player’s ships is the winner.</p>\n<p>Alice and Bob have played a few times, but they got tired of doing the actual moves and making the announcements, so they decided to automate the process a bit. Now they instead write down where they placed the ships and in what order they wanted to call out grid cells. They never call out the same grid cell twice.</p>\n<p>Given the moves by each player, output what the players would have announced if they actually played the game. In other words, you have to find out which ships sunk (and in what order) and who the winner is. Being a gentleman, Bob always lets Alice start.</p>",
+  "input": "<p>The first line of the input consists of a single integer, T, the number of test cases.</p>\n<p>Each of the following T cases begin with a line consisting of a single integer, N, the size of the grids.</p>\n<p>The following N lines represents Alice’s grid, and each line consists of N characters. These characters are either ’.’, ’1’, ’2’, ’3’ or ’4’. A ’.’ means that the cell is empty. ’1’, ’2’, ’3’ or ’4’ means that that cell is covered by one of Alice’s ships. All cells with the same number are covered by the same ship. The number does not necessarily correspond to the length of the ship.</p>\n<p>The next N lines represent Bob’s grid, and has the same format as Alice’s grid.</p>\n<p>The next N · N lines represent Alice’s planned moves. Each line has two integers, R<sub>i</sub> and C<sub>i</sub>, the row and column she calls out for that move (if the game gets that far).</p>\n<p>The next N · N lines represent Bob’s planned moves, and has the same format as Alice’s moves.</p>\n<ul>\n<li>1 ≤ T ≤ 20</li>\n<li>4 ≤ N ≤ 10</li>\n<li>1 ≤ R<sub>i</sub>, C<sub>i</sub> ≤ N</li>\n<li>Each ship will be represented as a contiguous line of the same character and be parallel to one of the axes.</li>\n</ul>",
+  "output": "<p>For each test case output one line for each ship that was sunk, on the format <code>PlayerX sank PlayerY’s ShipName</code>, in the order they were sunk. The last line of the output for each test case should be the name of the winner.</p>",
+  "samples": [
+    {
+      "input": "1\n4\n1..4\n22.4\n3334\n...4\n112.\n..2.\n.32.\n4444\n1 1\n1 2\n1 4\n2 3\n3 2\n4 3\n2 1\n3 3\n4 1\n4 2\n3 4\n4 4\n1 3\n2 2\n2 4\n3 1\n1 3\n4 4\n3 4\n1 1\n4 3\n4 1\n2 4\n2 2\n1 2\n4 2\n3 1\n3 2\n2 3\n1 4\n3 3\n2 1\n",
+      "output": "Alice sank Bob's Sail Boat\nAlice sank Bob's Pram\nBob sank Alice's Pram\nAlice sank Bob's Hangar Ship\nAlice sank Bob's Battle Ship\nAlice\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, IDI Open Contest, IDI Open 2014",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2
+}

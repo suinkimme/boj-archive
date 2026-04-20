@@ -1,0 +1,36 @@
+{
+  "id": 24191,
+  "title": "Boris",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>På tågen i Philips hemstad brukar man kunna hitta världens finaste reklamskylt. Denna skylt har en bild på ingen mindre än matteläraren Boris, tillsammans med texten \"Räkna med Boris\". Naturligtvis har Philip blivit helt besatt av att samla på dessa fina reklamskyltar, och nu behöver han din hjälp med att optimera sin rutt mellan tågstationerna i staden för att få tag på så många Borisar som möjligt.</p>\n<p>Genom sitt breda kontaktnät har Philip fått veta att i den närmaste framtiden kommer $N$ tåg att avgå från staden. För varje tåg vet han avgångstiden räknat i sekunder efter starten av hans jakt, antalet Borisar som kommer finnas på tåget samt koordinaterna för tågstationen, angett i meter. För att kunna ta Borisarna på tåget måste han som senast vara på plats exakt den sekunden som tåget ska gå, men om han vill kan han ju också komma dit i förväg och vänta på tåget i lugn och ro. Eftersom Philip älskar Boris så pass mycket, och inte heller vill råka fastna på ett tåg som kommer föra bort honom från sin hemstad, är han supersnabb med att plocka upp alla Borisar på tåget och grejar det på 0 sekunder. Notera att oavsett hur lång tid i förväg han kommer fram kan han ändå inte ta Borisarna innan tågets avgångstid, för det är först då som dörrarna in till tåget öppnas.</p>\n<p>I sådana stressiga situationer som att jaga efter Borisar blir det väldigt påfrestande för Philip att hålla någon noggrannare koll på väderstrecken. För att inte riskera att gå vilse vill han därför bara röra sig rakt norrut, söderut, österut eller västerut, så att han lättare vet vart han är på väg.</p>\n<p>Eftersom Philip har gott om tid till att förbereda sitt äventyr kan han börja vart som helst i staden. När han sedan börjar rör han sig med hastigheten 1 meter/sekund. Philip har en väldigt stor ryggsäck, så han kan bära hur många Borisar som helst på en gång.</p>\n<p>Vad är det största antalet Borisar som Philip kan samla på sig?</p>",
+  "input": "<p>Den första raden inehåller ett heltal $N$ ($1 \\le N \\le 2\\,000$), antalet tåg. </p>\n<p>Därefter följer en rad per tåg. Varje rad innehåller fyra heltal: avgångstiden $t$ i sekunder efter start ($0 \\le t \\le 5 \\cdot 10^8$), antalet Borisar $s$ på tåget ($1 \\le s \\le 500\\,000$), samt koordinaterna $x, y$ på den station tåget avgår från ($0 \\le x, y \\le 5 \\cdot 10^8$).</p>\n<p>Inga två tåg kommer avgå samtidigt från exakt samma station.</p>",
+  "output": "<p>Skriv ut en rad med ett heltal -- det största antalet Borisar som Philip kan samla på sig.</p>",
+  "samples": [
+    {
+      "input": "2\n10 1 0 0\n10 1 1 1\n",
+      "output": "1\n"
+    },
+    {
+      "input": "2\n10 1 0 0\n12 1 1 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4\n332 357 378 891\n312 911 650 384\n431 927 758 379\n148 952 493 377\n",
+      "output": "2790\n"
+    }
+  ],
+  "hint": "<p>I det tredje exempelfallet finns det fyra avgångar. Vi kallar dessa för tåg $0$ - tåg $3$, i den ordning de visas i indatan.</p>\n<p>Om Philip börjar i punkten $(493,377)$ kan han ta $952$ Borisar från tåg $3$ vid tiden $148$. Sedan har han exakt $164$ meter att gå (vilket tar $164$ sekunder) till tåg $1$. Det har avgångstid $312$, d.v.s. $164$ sekunder efter tåg $3$. Han hinner alltså precis till tåg $1$ och kan ta dess $911$ Borisar. Därifrån hinner han, med $6$ sekunders marginal, gå till tåg $2$ och ta $927$ Borisar därifrån. Totalt får han alltså $952+911+927=2790$ Borisar. </p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2022, Online Qualification",
+  "level": 14,
+  "tags": [
+    "dp",
+    "graphs",
+    "sorting",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.166700005531311
+}

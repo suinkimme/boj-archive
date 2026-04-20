@@ -1,0 +1,27 @@
+{
+  "id": 28204,
+  "title": "Classical Data Structure Problem",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You have an integer array $A = [a_0, a_1, \\ldots, a_{2^m-1}]$ of length $2^m$. Initially, the array consists of zeros.</p>\n<p>You also have an integer variable $x$. Initially, $x = 0$.</p>\n<p>For each $i = 1, 2, \\ldots, n$, you are given two integers $p_i$ and $q_i$, and you have to perform the following steps:</p>\n<ul>\n<li>Let $p' = (p_i + x) \\bmod 2^m$ and $q' = (q_i + x) \\bmod 2^m$.</li>\n<li>Let $l = \\min(p', q')$ and $r = \\max(p', q')$.</li>\n<li>For each $j = l, l+1, \\ldots, r$, increase $a_j$ by $i$, then increase $x$ by $a_j$.</li>\n</ul>\n<p>Find the value of $x \\bmod 2^{30}$ at the end of this process.</p>",
+  "input": "<p>The first line contains two integers $n$ and $m$ ($1 \\le n \\le 500\\,000$; $1 \\le m \\le 30$).</p>\n<p>The $i$-th of the following $n$ lines contains two integers $p_i$ and $q_i$ ($0 \\le p_i, q_i &lt; 2^m$).</p>",
+  "output": "<p>Print the value of $x \\bmod 2^{30}$.</p>",
+  "samples": [
+    {
+      "input": "5 2\n2 1\n1 3\n3 2\n1 0\n0 2\n",
+      "output": "87\n"
+    }
+  ],
+  "hint": "<p>In the example test, initially, $A = [0, 0, 0, 0]$ and $x = 0$. Then:</p>\n<ul>\n<li>For $i = 1$, we have $l = 1$ and $r = 2$. Then, $A = [0, 1, 1, 0]$ and $x = 2$.</li>\n<li>For $i = 2$, we have $l = 1$ and $r = 3$. Then, $A = [0, 3, 3, 2]$ and $x = 10$.</li>\n<li>For $i = 3$, we have $l = 0$ and $r = 1$. Then, $A = [3, 6, 3, 2]$ and $x = 19$.</li>\n<li>For $i = 4$, we have $l = 0$ and $r = 3$. Then, $A = [7, 10, 7, 6]$ and $x = 49$.</li>\n<li>For $i = 5$, we have $l = 1$ and $r = 3$. Then, $A = [7, 15, 12, 11]$ and $x = 87$.</li>\n</ul>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2023, Day 7: Gennady Korotkevich Contest 7",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "splay_tree",
+    "trees"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 4
+}

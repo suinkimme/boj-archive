@@ -1,0 +1,32 @@
+{
+  "id": 16652,
+  "title": "Email Destruction",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You have an account on ICPCorrespondence.com. This is an email service where emails are grouped into chains by their subject as follows.</p>\n<p>The first email in every chain has a non-empty subject consisting of lowercase English letters. Every succeeding email in the chain has a subject consisting of “<code>Re: </code>” followed by the subject of the previous email.</p>\n<p>For example, if the first email in the chain has subject “<code>subj</code>”, then the second email has subject “<code>Re: subj</code>”, the third one has subject “<code>Re: Re: subj</code>”, and so on. Formally, the subject of the k-th email in the chain consists of “<code>Re: </code>” repeated k − 1 times followed by the subject of the first email in the chain.</p>\n<p>In your mailbox, you had one or more chains of emails with unique subjects. You never removed any emails from your mailbox.</p>\n<p>Unfortunately, one day ICPCorrespondence.com was attacked by hackers. As a result of this attack, some emails were removed from the server, while the remaining emails were shuffled.</p>\n<p>You are not sure how many emails you had in the mailbox before the attack, but you guess that this number is n. Can you check whether this guess can be correct?</p>",
+  "input": "<p>The first line of the input contains two integers n and k — the number of emails that you think were in the mailbox before the attack, and the number of emails left after the attack, respectively (1 ≤ k ≤ n ≤ 100).</p>\n<p>The following k lines contain subjects of the emails left in your mailbox, one per line. The subject of each email consists of “<code>Re: </code>” repeated zero or more times, followed by at least one and no more than 10 lowercase English letters. The length of each subject does not exceed 500. All email subjects are pairwise distinct.</p>",
+  "output": "<p>If your guess about the number of emails in your mailbox prior to the attack can be correct, output a single word “YES”. Otherwise, output a single word “NO”.</p>",
+  "samples": [
+    {
+      "input": "7 3\nRe: Re: Re: hello\nRe: world\nhello\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "3 2\nRe: Re: pleasehelp\nme\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": "<p>In the first example, the guess can be correct. For example, you could have emails with subjects “<code>hello</code>”, “<code>Re: hello</code>”, “<code>Re: Re: hello</code>”, “<code>Re: Re: Re: hello</code>”, “<code>Re: Re: Re: Re: hello</code>”, “<code>world</code>”, and “<code>Re: world</code>”.</p>\n<p>In the second example, the guess is incorrect since there had to be at least three emails in the chain of “<code>pleasehelp</code>” and at least one email in the chain of “<code>me</code>”.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2018",
+  "level": 9,
+  "tags": [
+    "data_structures",
+    "string",
+    "set",
+    "hash_set",
+    "parsing"
+  ],
+  "accepted_user_count": 82,
+  "submission_count": null,
+  "average_tries": 1.9390000104904175
+}

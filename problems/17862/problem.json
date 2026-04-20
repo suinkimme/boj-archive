@@ -1,0 +1,34 @@
+{
+  "id": 17862,
+  "title": "Where Have You Bin?",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Ben Bean owns Ben Bean’s Bin Bonanza which offers storage bins to the five big companies in town: a rubber band company, a Mercedes Benz dealership, a bing cherry farm, a bonbon candy store and a bun bakery. Together they store their bands, Benzes, bings, bonbons and buns in Ben’s bins.</p>\n<p>Ben has n bins altogether arranged in a single row, numbered 1 to n. While not all of the bins may be in use at any given time, Ben finds it useful to keep all the bins for one company contiguous. Thus, when a company needs a new bin or relinquishes one it no longer needs, Ben may need to move items from one bin to another to make sure all of that company’s bins stay next to each other. Sometimes Ben has a choice of which bin to move, so he has assigned a cost to each bin equal to the number of items stored in the bin (removing items from a relinquished bin and/or moving items into a new bin are the company’s responsibility and do not add to Ben’s costs). Obviously when moving bins Ben wants to keep the cost as low as possible.</p>\n<p>If a single company has to make changes Ben can usually figure out the cheapest way to move items around, but typically at the end of each business quarter all of the five companies will make additions and deletions of bins as they reassess their product lines. In cases like this, deciding the lowest-cost set of moves is more difficult. Consider the situation in Figure K.1a which shows 6 bins storing items from the five companies labeled A, E, I, O and U. The numbers in parentheses indicate the number of items in that bin (and thus the cost of moving the items from that bin to another). Suppose that at the end of the quarter company U decides it no longer needs bin 6 and company A requests a second bin. One possibility is to move E’s items from bin 2 to the empty bin 6 which frees up bin 2 for company A (Figure K.1b)—the cost of this rearrangement to Ben is 4. The optimal move though is to move U’s items from bin 5 to bin 1 and move A’s items from bin 1 to bin 5 and giving company A bin 6 (Figure K.1c)—the cost of this move is 3. Ben could also have moved A’s items from bin 1 to bin 6 to achieve the same optimal cost. Notice that in all cases removing the three items from U’s bin 6 and adding the seven items to A’s second bin does not cost anything to Ben.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 626px; height: 71px;\"/></p>\n<p style=\"text-align: center;\">Figure K.1: Sample Input 1.</p>",
+  "input": "<p>Input starts with a string of characters of length n (1 ≤ n ≤ 150) indicating the initial usage of the bins. The characters will all be from the set {A, E, I, O, U, X} indicating either the company using the bin or an empty bin (X). Following this is a row of n integers indicating the number of items in each bin; values at locations corresponding to an empty bin will always be 0 and values at locations corresponding to a company’s bin will be positive and ≤ 100. Bins for any one company will always be contiguous.</p>\n<p>The next line starts with an integer d (0 ≤ d ≤ n) indicating the number of deletions for this quarter. Following this are d integers. Each integer specifies a bin which is no longer needed by a company. None will ever correspond to an already empty bin. On the final line is a positive-length string of characters indicating the new bins requested. If this string is a single X then no new bins are being requested. Otherwise the characters will all be in the set {A, E, I, O, U}, in no particular order, each character representing a request for a new bin by the corresponding company. There will always be enough bins to handle any set of changes.</p>",
+  "output": "<p>Output the minimal cost required to satisfy all the bin changes while keeping each company’s bins contiguous.</p>",
+  "samples": [
+    {
+      "input": "AEIOUU\n1 4 6 9 2 3\n1 6\nA\n",
+      "output": "3\n"
+    },
+    {
+      "input": "AEIOUU\n10 4 6 9 2 3\n1 6\nA\n",
+      "output": "4\n"
+    },
+    {
+      "input": "AEIOUU\n1 4 6 9 2 3\n4 5 1 4 3\nEUE\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2019 East Central Regional Contest",
+  "level": 18,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2
+}

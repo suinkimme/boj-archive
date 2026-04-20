@@ -1,0 +1,36 @@
+{
+  "id": 21844,
+  "title": "Keyboard",
+  "time_limit": "1.5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Juku is an alien. But of course, aliens also need to write texts on their computers. To optimize this task, Juku is planning to build his own ergonomic keyboard. This includes inventing the layout in which all of the $N$ different letters of his alien-alphabet are arranged.</p>\n<p>He has listed his $M$ most common words; each of these words should be comfortable to type on the keyboard. A word is comfortable to write on a keyboard if its letters alternate between the right and the left part of the keyboard. On the other hand, it is important that the keyboard is balanced: that is, the absolute difference between the number of keys on the right side and the number of keys on the left side of the keyboard is as small as possible.</p>\n<p>Your task is to decide whether such a keyboard can be constructed. If it is possible, calculate the smallest possible absolute difference between the number of keys on the two sides of the keyboard.</p>",
+  "input": "<p>The first line of input contains the numbers $N$ and $M$ described above. Then, $M$ lines follow. The first number in the $i$th of these lines is $K_i$, the number of characters in Juku’s $i$th most common word. The same line contains $K_i$ further integers between 1 and $N$ (inclusive), each of them denoting a character of the alphabet. In the order in which they appear in the line, they form Juku’s $i$th most common word.</p>",
+  "output": "<p>Your program should output a single line. If it is impossible to build a keyboard on which all given words are comfortable to write, print the string <code>impossible</code>. Otherwise, the output should consist of the minimum absolute difference of the number of keys on the left side of the keyboard and the number of keys on the right side, while all $M$ given words are comfortable to write.</p>",
+  "samples": [
+    {
+      "input": "26 3\n6 19 5 3 15 14 4\n7 22 9 18 20 21 1 12\n3 2 15 9\n",
+      "output": "0\n"
+    },
+    {
+      "input": "26 2\n5 8 5 12 12 15\n5 23 15 18 12 4\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "6 3\n4 1 2 3 4\n5 1 4 5 2 3\n3 2 6 4\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p>In the first sample, the alien’s alphabet consists of the same 26 characters as the English alphabet. When encoding <code>a</code> as 1, <code>b</code> as 2, and so on, the three words in the first input are <code>second</code>, <code>virtual</code>, and <code>boi</code>. The keyboard can be built as follows: the characters <code>e</code>, <code>d</code>, <code>l</code>, <code>o</code>, <code>r</code>, <code>u</code>, and <code>v</code> are on the left side, while the characters <code>a</code>, <code>b</code>, <code>c</code>, <code>i</code>, <code>n</code>, <code>s</code>, and <code>t</code> are on the right side, and the other 12 unused characters are distributed evenly.</p>\n<p>In the second sample, the same encoding is used for the words <code>hello</code> and <code>world</code>. Because the first word contains the character <code>l</code> twice without any character between the two occurrences, it is impossible to build a valid keyboard that alternates sides between the two corresponding keystrokes.</p>\n<p>In the third sample, one optimal possibility is to put the keys <code>1</code>, <code>3</code>, <code>5</code>, and <code>6</code> on the left side, and the keys <code>2</code> and <code>4</code> on the right side.</p>",
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2021, kyo20111",
+  "level": 21,
+  "tags": [
+    "dp",
+    "graphs",
+    "knapsack",
+    "bitset",
+    "bipartite_graph"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 3.894700050354004
+}

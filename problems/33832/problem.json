@@ -1,0 +1,22 @@
+{
+  "id": 33832,
+  "title": "Podciągi",
+  "time_limit": "15 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p>Dane jest słowo $s$ o długości $n$ nad alfabetem $\\{$<code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>, <code>e</code>, <code>f</code>$\\}$. Na słowie tym wykonywanych zostanie $q$ operacji. Każda operacja polega na zamianie dokładnie jednej litery w słowie.</p>\n<p>Rozważmy multizbiór $X_s$ wszystkich podciągów $s$, czyli słów powstających przez usunięcie pewnego podzbioru liter ze słowa $s$.</p>\n<p>Twoim zadaniem jest utrzymywać informację o liczbie różnych niepustych słów $t$, które w $X_s$ występują co najmniej dwa razy.</p>\n<p>Dla przykładu, w ciągu <code>ababa</code> jest $6$ takich słów:</p>\n<ul>\n<li>Słowo <code>a</code> występuje w $X_s$ trzy razy.</li>\n<li>Słowo <code>b</code> występuje w $X_s$ dwa razy.</li>\n<li>Słowo <code>ab</code> występuje w $X_s$ trzy razy (usuwając z $s$ litery na pozycjach $3$, $4$, $5$; $2$, $3$, $5$ lub $1$, $2$, $5$).</li>\n<li>Słowo <code>ba</code> występuje w $X_s$ trzy razy (usuwając z $s$ litery na pozycjach $1$, $4$, $5$; $1$, $3$, $4$ lub $1$, $2$, $3$).</li>\n<li>Słowo <code>aa</code> występuje w $X_s$ trzy razy (usuwając z $s$ litery na pozycjach $2$, $4$, $5$; $2$, $3$, $4$ lub $1$, $2$, $4$).</li>\n<li>Słowo <code>aba</code> występuje w $X_s$ cztery razy (usuwając z $s$ litery na pozycjach $4$, $5$; $3$, $4$; $2$, $3$ lub $1$, $2$).</li>\n</ul>\n<p>Oblicz liczbę takich słów $t$ w zbiorze $X_s$ dla początkowego słowa $s$ oraz dla słów $s$ po każdej z operacji. Ponieważ liczby te mogą być dość duże, wypisz ich reszty z dzielenia przez $998\\, 244\\, 353$.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajdują się dwie liczby całkowite $n$ oraz $q$ ($3 ≤ n ≤ 50\\, 000$, $0 ≤ q ≤ 50\\, 000$), gdzie $n$ oznacza długość słowa, a $q$ oznacza liczbę operacji.</p>\n<p>W drugim wierszu wejścia znajduje się $n$-literowe słowo złożone z małych liter alfabetu angielskiego. Ciąg ten składa się jedynie z liter od <code>a</code> do <code>f</code>.</p>\n<p>W kolejnych $q$ wierszach znajdują się opisy operacji. Każdy opis składa się z liczby całkowitej $p_i$ ($1 ≤ p_i ≤ n$) oraz litery $z_i$ ($z_i ∈ \\{$<code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>, <code>e</code>, <code>f</code>$\\}$) i oznacza zamianę litery na pozycji $p_i$ w słowie s na literę $z_i$.</p>",
+  "output": "<p>Na wyjściu powinno znaleźć się $q + 1$ wierszy; w $i$-tym wierszu powinna znaleźć się jedna liczba całkowita: liczba różnych słów $t$, które występują co najmniej dwa razy jako podciąg słowa $s$. Wszystkie wyniki należy podać modulo $998\\, 244\\, 353$.</p>",
+  "samples": [
+    {
+      "input": "4 3\nabca\n1 a\n4 d\n2 c\n",
+      "output": "1\n1\n0\n4\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: Oto stan słowa s po kolejnych aktualizacjach oraz słów $t$, które występują jako podciąg $s$ przynajmniej dwa razy:</p>\n<ul>\n<li>słowo: <code>abca</code>, podciągi: $\\{$<code>a</code>$\\}$,</li>\n<li>słowo: <code>abca</code>, podciągi: $\\{$<code>a</code>$\\}$,</li>\n<li>słowo: <code>abcd</code>, podciągi: $\\{\\}$,</li>\n<li>słowo: <code>accd</code>, podciągi: $\\{$<code>ac</code>, <code>acd</code>, <code>cd</code>, <code>c</code>$\\}$.</li>\n</ul>",
+  "source": "Contest, Algorithmic Engagements, PA 2025",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

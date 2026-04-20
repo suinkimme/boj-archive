@@ -1,0 +1,28 @@
+{
+  "id": 17513,
+  "title": "Hilbert's Hotel",
+  "time_limit": "1.5 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p><strong>Hilbert's Hotel</strong> has infinitely many rooms, numbered 0, 1, 2, ⋯. At most one guest occupies each room. Since people tend to check-in in groups, the hotel has a group counter variable $G$.</p>\n<p>Hilbert's Hotel had a grand opening today. Soon after, infinitely many people arrived at once, filling every room in the hotel. All guests got the group number 0, and $G$ is set to 1.</p>\n<p>Ironically, the hotel can accept more guests even though every room is filled:</p>\n<ul>\n<li>If $k$ ($k \\geq 1$) people arrive at the hotel, then for each room number $x$, the guest in room $x$ moves to room $x+k$. After that, the new guests fill all the rooms from 0 to $k-1$.</li>\n<li>If infinitely many people arrive at the hotel, then for each room number $x$, the guest in room $x$ moves to room $2x$. After that, the new guests fill all the rooms with odd numbers.</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 590px; height: 180px;\"/></p>\n<p>You have to write a program to process the following queries:</p>\n<ul>\n<li><code>1 k</code> - If $k \\geq 1$, then $k$ people arrive at the hotel. If $k = 0$, then infinitely many people arrive at the hotel. Assign the group number $G$ to the new guests, and then increment $G$ by 1.</li>\n<li><code>2 g x</code> - Find the $x$-th smallest room number that contains a guest with the group number $g$. Output it modulo $10^9 + 7$, followed by a newline.</li>\n<li><code>3 x</code> - Output the group number of the guest in room $x$, followed by a newline.</li>\n</ul>",
+  "input": "<p>In the first line, an integer $Q$ ($1 \\leq Q \\leq 300\\,000$) denoting the number of queries is given. Each of the next lines contains a query. All numbers in the queries are integers.</p>\n<ul>\n<li>For the <code>1 k</code> queries, $0 \\leq k \\leq 10^9$.</li>\n<li>For the <code>2 g x</code> queries, $g &lt; G$, $1 \\leq x \\leq 10^9$, and at least $x$ guests have the group number $g$.</li>\n<li>For the <code>3 x</code> queries, $0 \\leq x \\leq 10^9$.</li>\n</ul>",
+  "output": "<p>Process all queries and output as required. It is guaranteed that the output is not empty.</p>",
+  "samples": [
+    {
+      "input": "10\n3 0\n1 3\n2 1 2\n1 0\n3 10\n2 2 5\n1 5\n1 0\n3 5\n2 3 3\n",
+      "output": "0\n1\n0\n9\n4\n4\n"
+    }
+  ],
+  "hint": "<p>If you know about \"cardinals,\" please assume that \"infinite\" refers only to \"countably infinite.\" If you don't know about it, then you don't have to worry.</p>",
+  "source": "University, KAIST, KAIST ICPC Mock Competition, 2019 KAIST 9th ICPC Mock Competition, Contest, Open Cup, 2019/2020 Season, Stage 5: Grand Prix of Korea, jh05013",
+  "level": 22,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "segtree",
+    "binary_search",
+    "lazyprop"
+  ],
+  "accepted_user_count": 53,
+  "submission_count": null,
+  "average_tries": 6.094299793243408
+}

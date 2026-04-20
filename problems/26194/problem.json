@@ -1,0 +1,45 @@
+{
+  "id": 26194,
+  "title": "Money Laundering",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Consider a company A that made a 100 euros of profit this year. The company's owners are Ivan with 52.8% ownership share and Robi with a 47.2% ownership share. Naturally, the profits are shared proportionally to the shares with Ivan receiving 52.8 euros and Robi 47.2 euros.</p>\n<p>They will have to pay tax on the received profits, but would like to avoid doing so, if at all possible. Sadly, the ownership structure of their company is too simple and it's easily discoverable how much profits each of them received.</p>\n<p>For the next year, they prepare a plan. They make a shell company B and change the ownership shares. Ivan now only owns 1% of company A, Robi only 2%, the company B owns a 49% share of A and A owns 48% of itself. Company B has a similar ownership structure. 70% ownership share belongs to B itself, 25% to A, 3% to Ivan and 2% to Robi.</p>\n<p>Looking naively, Ivan and Robi have very small ownership shares. However, we are interested in the ownership shares of <em>ultimate beneficial owners</em>, the persons who will ultimately profit, which are Ivan and Robi in our case. We wish to determine their ultimate ownership shares, which turn out to be approximately equal to what they were before the introduction of B.</p>\n<p>Ultimate ownership shares can be determined as follows: let the company A have 100 euros of profit and B have 0 euros. The profits are paid out to all direct owners in proportion to their ownership share. However, since A and B are partial owners of themselves, they receive a part of the profit. To determine the ultimate share of the ultimate beneficial owners, we repeat the procedure – any profits that A and B receive are paid out again, with Ivan and Robi getting a share, as well as A and B. This is repeated ad infinitum until (theoretically, after an infinite number of steps) all money is paid out to the ultimate beneficial owners, and the ratio of the final sums received by Ivan and Robi is by definition equal to their ultimate share of A.</p>\n<p>For a given structure of companies, determine the shares of the ultimate beneficial owners. However, the companies do not form a random network of ownership, but are structured in industrial sectors. Companies within sectors may form arbitrary ownership structures, but this is not true for companies in different sectors. If companies P and Q belong to different sectors, it cannot happen that</p>\n<ul>\n<li>P would own a (potentially indirect) share of Q and</li>\n<li>Q would own a (potentially indirect) share of P.</li>\n</ul>\n<p>One or none of these statements could be true, but not both.</p>",
+  "input": "<p>The first line contains two space-separated integers $c$ and $p$, representing the number of companies and number of persons, respectively. Then $c$ lines follow, and $i$-th of them contains the description of $i$-th company. The line contains an integer $k_i$, the number of owners, and then $k_i$ entries of the form $o_{i,j}\\colon\\, p_{i, j}$, where $o_{i,j}$ is the designation of the $j$-th owner (person or company) and $p_{i, j}$ is their share in percentages. The share will have exactly one decimal place.</p>",
+  "output": "<p>Output the ultimate ownership shares of all persons in all companies. The $i$-th line should include shares of all persons in the $i$-th company, including persons with no share. The share is between 0 and 1. Shares in a line should be separated by a space. The answer will be considered correct if its absolute or relative error is less than $10^{-4}$.</p>",
+  "samples": [
+    {
+      "input": "2 2\n2 P1:50.1 P2:49.9\n2 P1:23.4 P2:76.6\n",
+      "output": "0.501000 0.499000\n0.234000 0.766000\n"
+    },
+    {
+      "input": "2 2\n2 P1:50.0 P2:50.0\n3 P1:20.0 P2:30.0 C1:50.0\n",
+      "output": "0.500000 0.500000\n0.450000 0.550000\n"
+    },
+    {
+      "input": "2 2\n4 P1:1.0 P2:2.0 C2:49.0 C1:48.0\n4 C2:70.0 C1:25.0 P1:3.0 P2:2.0\n",
+      "output": "0.528358 0.471642\n0.540299 0.459701\n"
+    },
+    {
+      "input": "3 2\n5 P1:1.0 P2:2.0 C2:49.0 C1:38.0 C3:10.0\n4 C2:70.0 C1:25.0 P1:3.0 P2:2.0\n2 P1:20.0 P2:80.0\n",
+      "output": "0.373228 0.626772\n0.411024 0.588976\n0.2 0.8\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2022",
+  "level": 23,
+  "tags": [
+    "math",
+    "implementation",
+    "dp",
+    "graphs",
+    "simulation",
+    "dag",
+    "linear_algebra",
+    "topological_sorting",
+    "scc",
+    "gaussian_elimination"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.375
+}

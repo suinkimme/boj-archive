@@ -1,0 +1,26 @@
+{
+  "id": 23429,
+  "title": "Game map",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Vasya still likes to play computer games, and he's still employed as a game tester. He's lost all hope of doing anything remotely interesting at work. To realize his creative potential, he is cooperating with his colleagues Petya and Kolya to work on a hobby project. Petya has told Vasya that there are a number of great indie games out there, and even a small team can do well in that business. He's not being entirely honest here --- he hasn't told the guys about what percentage of those indie games gains any popularity or how many of those projects are completed at all.</p>\n<p>The new game will be in the popular roguelike genre. The bearded Kolya keeps correcting Vasya: it's roguelite or roguelikelike. One of the most important components of a roguelike game is the randomly generated gameworld. The new adventure at each launch is the key to making \"Losing is fun\" motto work. The friends are working now on world map generation for their game.</p>\n<p>The game takes place in caves. The world map is a rectangular field of cells. Each cell is either traversable, containing a level that must be passed by the player, or non-traversable and does not contain anything. The player begins the game at the top left corner cell, which must be traversable. Having finished a level, the player can move down or right to an adjacent cell, if that cell is traversable. While in the last row or column of the field, the player can leave the field. This ends the game, and the player wins.</p>\n<p>For the purpose of balance, Petya has placed additional limitations on the map:</p>\n<ol>\n<li>The player can reach each traversable cell from the starting cell though only one path.</li>\n<li>The player can finish the game starting from any traversable cell, however, there can be several ways to do that.</li>\n</ol>\n<p>Kolya is the chief programmer of the game and he will write the generation code. He has noticed that if the field is generated randomly, it almost never satisfies the criteria. For this reason, he's randomly generating only some of the field cells, leaving the rest in an &lt;&lt;indefinite&gt;&gt; state. Next he must run an algorithm that defines the contents of the remaining cells in such a manner that the resulting map satisfies all of the conditions. To increase the amount of content in the game, the algorithm must maximize the number of traversable cells.</p>\n<p>The trouble is, Kolya is not a big expert on algorithmic programming and cannot implement the last step on his own. Help the friends make their dream come true!</p>",
+  "input": "<p>The first line of the input file contains two integers defining the size of the game field: $H$ --- the number of rows and $W$ --- the number of columns ($1 \\le H, W \\le 18$).</p>\n<p>It is followed by the field contents as $H$ lines with $W$ symbols in each. Traversable cells are defined by the period symbol <code>'.'</code> (ASCII 46), non-traversable --- by the letter <code>'X'</code> (ASCII 88), and indefinite --- by the question mark <code>'?'</code> (ASCII 63).</p>",
+  "output": "<p>If it is impossible to define the game field to a correct state, print the number $-1$ in the output file.</p>\n<p>Otherwise, in the first line of the output file print an integer $K$ --- the number of traversable cells in the define game field. This number must be as large as possible. Next, print the defined game field in the same format as that used in the input data --- naturally, without the question marks.</p>\n<p>If there are several optimal solutions, print any of them.</p>",
+  "samples": [
+    {
+      "input": "4 6\n??X???\n.?????\n????..\n?X?X?.\n",
+      "output": "13\n.XXXXX\n.....X\n.X.X..\n.X.XX.\n"
+    },
+    {
+      "input": "3 3\n??X\n?X?\nX??\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 7: Grand Prix of Siberia",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

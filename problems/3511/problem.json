@@ -1,0 +1,26 @@
+{
+  "id": 3511,
+  "title": "Electrification",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Ellen is a technologist at Advanced Circuit Mastership, and she’s currently designing an electrical scheme for a light management system in a luxury hotel room.</p>\n<p>A scheme will be embedded in the ceiling of the room. It will be a rectangular grid with each cell containing one element. Below we provide a list of all possible elements with the description of their functions, preceded by their one-character representations.</p>\n<ul>\n<li>‘<code>.</code>’ – empty cell; doesn’t have any input or output signals;</li>\n<li>‘<code>/</code>’ – wire; takes input signal from the lower left corner and transmits it to the upper right one;</li>\n<li>‘<code>\\</code>’ – wire; takes input signal from the upper left corner and transmits it to the lower right one;</li>\n<li>‘<code>X</code>’ – intersection; takes input signals from the upper left and the lower left corners and transmits it to the lower right and the upper right corner, correspondingly;</li>\n<li>‘<code>L</code>’ – wire splitter; takes input signal from the lower left corner and transmits it both to the upper left and to the lower right corners;</li>\n<li>‘<code>7</code>’ – exclusive or; takes input signals from the upper left and the lower left corners and transmits the XOR of these two signals to the upper right corner.</li>\n</ul>\n<p>The hotel room has n switches and m lamps. The switches will be connected to the n topmost corners of the left side of the scheme, and the lamps — to the m topmost corners of the right side. Ellen’s task is to create the scheme connecting the switches and lamps, satisfying the following scheme design guidelines.</p>\n<p>The room designers assigned each lamp with a set of switches. A lamp must change its state (turn on if it was off, and turn off if it was on) each time when a switch that is assigned to this lamp is flipped. A lamp mustn’t change its state when a switch that isn’t assigned to this lamp is flipped.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 547px; height: 180px;\"/></p>\n<p>The following wire connection rules must be satisfied:</p>\n<ul>\n<li>the lower left corner of the ‘<code>L</code>’ element must have exactly one input wire. Other two corners of this element must have exactly one output wire each;</li>\n<li>the upper right corner of the ‘<code>7</code>’ element must have exactly one output wire. Other two corners of this element must have exactly one input wire each;</li>\n<li>a corner that is connected to a switch must have exactly one output wire;</li>\n<li>a corner that is connected to a lamp must have exactly one input wire;</li>\n<li>a corner that is on the left border and isn’t connected to a switch, as well as a corner that is on the right border and isn’t connected to a lamp, must have no input and no output wires;</li>\n<li>each other corner must have either no input and no output wires, or exactly one input and exactly one output wire.</li>\n</ul>\n<p>Note that the set of possible elements is designed so that cyclic dependencies are impossible.</p>\n<p>Ellen is given the switches assignment. Help her design an appropriate scheme.</p>",
+  "input": "<p>The first line of the input file contains two integer numbers n and m — the number of switches and lamps located in the room being designed (1 ≤ n, m ≤ 10).</p>\n<p>The following n lines contains m characters each. The j-th character in the i-th line shows whether the i-th switch is assigned to the j-th lamp. Digit 1 denotes “assigned”, digit 0 denotes “not assigned”.</p>\n<p>Each lamp is assigned with at least one switch, and each switch is assigned to at least one lamp.</p>",
+  "output": "<p>The first line of the output file should contain two integer numbers h and w, the dimensions of the scheme (max(m, n) − 1 ≤ h ≤ 1000; 1 ≤ w ≤ 1000).</p>\n<p>The following h lines should contain w characters each. The only allowed characters are ‘<code>.</code>’, ‘<code>/</code>’, ‘<code>\\</code>’, ‘<code>X</code>’, ‘<code>L</code>’, and ‘<code>7</code>’.</p>\n<p>The scheme must be valid (in terms of wire connection rules), and satisfy the assignments given in the input file.</p>\n<p>If there are multiple satisfying schemes, output any one of them.</p>",
+  "samples": [
+    {
+      "input": "5 3\n101\n001\n010\n001\n001\n",
+      "output": "6 7\n\\./\\/\\/\n\\\\L./\\/\n\\\\.X../\n\\\\X.77.\n\\\\.7/..\n.\\X/...\n"
+    },
+    {
+      "input": "2 2\n01\n10\n",
+      "output": "1 1\nX\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2011",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

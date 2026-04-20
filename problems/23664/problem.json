@@ -1,0 +1,30 @@
+{
+  "id": 23664,
+  "title": "Immortal Universe",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Time flies fast. Days passed and the game finally ended. Rikka has never drunk with your help, so she is still a reputable Japanese citizen.</p>\n<p>The red and white left gracefully. Suddenly, Rikka realized that the white player is LCR rather than any elder --- or LCR is the one. She would never know why she didn't get it. Rikka ran after them, but she lost her way while passing fogs.</p>\n<p>Spaceships are making their epic voyages across the sky, row upon row of roads and buildings forming concentric circles, reminding humans of alters or Eight-Diagrams. At the end of the fogs, a holy incredible view shows in front of her. The big round planet soon attracts her --- Earth, the home of humankind, is hanging like a big mooncake. What a lunar metropolis!</p>\n<p>Rikka finds herself in front of a stock exchange. A boy, who is gazing at the screen and knocking on the keyboard, catches her eyes.</p>\n<p>There are two types of shares. Both are controlled by consortiums, so their trends are established.</p>\n<p>Each type of share can be divided into some stages, and the stages will process in order. One type has $n$ stages and the other one has $m$ of them. In each stage, one will gain or lose a unit of money. The boy has only one unit of money at first, and he has to process a stage of an arbitrary type (unless all stages of that type have processed, and if so, the other type will process) every day. After $(n + m)$ days all transactions will end and he will finally get his money.</p>\n<p>The poor boy knows nothing to help him to make decisions, so he chooses randomly. However, after countless bankruptcies, he has got a keen intuition: if he only has one unit of money, he will know the results of all available stages. A stage is available if and only if he can choose it immediately. In this case, he will never choose the type which will lead him to lose money unless all available types are so. But if he has at least two units of money, he will ignore any known information and choose randomly because he has chances. He has to process every day, and he cannot exit before all transactions have been completed because he can get cash only after $(n + m)$ days.</p>\n<p>He will go bankrupt whenever his money runs out. It happens if he only has one unit of money and every available type (which has at least one stage not processed) can lead him to lose it in the next stage.</p>\n<p>Of course, the kind-hearted girl will try her best to help. She finds something strange in the codes she got before. It is a hash value of the files from the consortiums!</p>\n<p>Soon after, Rikka gets two strings of lengths $n$ and $m$ respectively. Each string contains three types of characters '<code>P</code>', '<code>V</code>' and '<code>?</code>', which mean that the corresponding stage can lead to loss, gain or unknown, respectively. However, the boy doesn't believe her.</p>\n<p>Rikka gets anxious. She wonders, according to her information, how many possible trends will never lead him to bankruptcy, modulo $998244353$.</p>\n<p>A possible trend can be described by two strings of lengths $n$ and $m$ containing only '<code>P</code>' and '<code>V</code>', and they can be obtained by changing each '<code>?</code>' in Rikka's strings into '<code>P</code>' or '<code>V</code>'. It will never lead to bankruptcy if and only if no matter how he chooses each time, he can never go bankrupt.</p>",
+  "input": "<p>The first line contains a string $s$ of length $n (1\\le n \\le 5000)$, consisting of only '<code>P</code>', '<code>V</code>' and '<code>?</code>'.</p>\n<p>The second line contains a string $t$ of length $m (1\\le m \\le 5000)$, consisting of only '<code>P</code>', '<code>V</code>' and '<code>?</code>'.</p>\n<p>$s$ and $t$ make up Rikka's information.</p>",
+  "output": "<p>Output a single integer, the number of possible trends which will never lead the boy to bankruptcy, modulo $998244353$.</p>",
+  "samples": [
+    {
+      "input": "PV\n??\n",
+      "output": "1\n"
+    },
+    {
+      "input": "???\nP?P\n",
+      "output": "3\n"
+    },
+    {
+      "input": "?????\n?????\n",
+      "output": "326\n"
+    }
+  ],
+  "hint": "<p>In the first sample, there are $4$ possible ways to replace '<code>?</code>' with '<code>P</code>' or '<code>V</code>' as follows:</p>\n<ul>\n<li>\"<code>PV</code>\" and \"<code>PP</code>\": The boy has no chance but to lose all his money on the first day.</li>\n<li>\"<code>VV</code>\": On the first day, since the boy has only one unit of money, he would choose the second type to escape bankruptcy, and thus at the start of the second day, he has two units of money in his hand. It is impossible for him to go bankrupt because there is only one '<code>P</code>' left.</li>\n<li>\"<code>VP</code>\": On the first day, the boy can only choose the second type. But on the second day, both types can be chosen. If he chooses the second type, he will have to choose the first type on the third day, and then he will go bankrupt.</li>\n</ul>\n<p>Since only \"<code>VV</code>\" would never lead the boy to bankruptcy, the answer to the first sample should be $1$.</p>",
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 10: Grand Prix of Xi'An",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,37 @@
+{
+  "id": 2972,
+  "title": "KOLEKCIJA",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Igor has a huge collection of folk hits on his computer, containing N songs numbered 1 to N.</p>\n<p>The collection is so big that it is not possible to display all songs at once on his display. Because of this, while a song is playing, only K consecutive songs from the collectionare displayed on the screen. Of course, the K consecutive songs necessarily include the song currently playing.</p>\n<p>When a song first appears on the display, the software needs to access its file on disk and read metadata like artist and song name. This metadata is stored in the computer's memory so that, if the song reappears on display, the file doesn't need to be opened again.</p>\n<p>Your program will be given the songs Igor wants to listen to, in the order in which he wants to do it. For each song, determine the interval of songs which will be displayed while it is playing, so that the total number of files that need to be accessed on disk is the smallest possible.</p>\n<p>Note: The solution may not be unique.</p>",
+  "input": "<p>The first line contains two integers N and K (1 ≤ K &lt; N &lt; 1 000 000 000), the number of songs in the collection and the number of songs displayed.</p>\n<p>The second line contains the integer M (1 ≤ M ≤ 300 000), the number of songs Igor will listen to.</p>\n<p>The next M lines contain the indices of the songs Igor will listen to. All numbers will be between 1 and N and no song will appear more than once.</p>",
+  "output": "<p>Output should consist of M+1 lines.</p>\n<p>On the first line output the smallest possible number of files to access while playing Igor's playlist.</p>\n<p>After this, for each song S, in order in which they are given, output a pair of integers A and B, meaning that while song S is playing, songs A through B (inclusive) are displayed on screen. A and B must satisfy the conditions 1 ≤ A ≤ S ≤ B ≤ N, and B−A+1 = K.</p>",
+  "samples": [
+    {
+      "input": "10 3\n5\n4\n5\n8\n7\n6\n",
+      "output": "5\n4 6\n4 6\n6 8\n6 8\n6 8\n"
+    },
+    {
+      "input": "15 4\n6\n6\n14\n11\n3\n8\n5\n",
+      "output": "10\n3 6\n11 14\n11 14\n3 6\n5 8\n3 6\n"
+    },
+    {
+      "input": "1000 301\n3\n300\n500\n700\n",
+      "output": "401\n300 600\n350 650\n400 700\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2008, Croatian Olympiad in Informatics 2008",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "deque",
+    "deque_trick",
+    "dp",
+    "dp_deque",
+    "segtree"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2
+}

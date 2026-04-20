@@ -1,0 +1,29 @@
+{
+  "id": 20710,
+  "title": "Lookup Performance",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A <em>binary search tree</em> is a rooted binary tree whose nodes store keys so that each node's key is greater than all the keys in the node's left subtree and less than those in its right subtree.</p>\n<p>A binary search tree can be used to maintain sorted sets and allows to perform different types of queries on the set. A query that we are considering in this problem is finding the number of values in the range $[L, R]$ within the set. </p>\n<p>Let $S$ be the set of all keys in the binary search tree. You are given two values $L$ and $R$. The query is to find the number of such $x \\in S$ so that $L \\le x \\le R$. The following recursive function computes this value when called with the parameters <code>lookup(root, L, R)</code>, where <code>root</code> is the root of the binary search tree.</p>\n<pre>\nfunction lookup(v, L, R):\n  if v == null:\n    return 0\n  if L &lt;= v.min and v.max &lt;= R:\n    return v.count\n  if v.max &lt; L or R &lt; v.min:\n    return 0\n  res = 0\n  if L &lt;= v.key and v.key &lt;= R:\n    res += 1\n  res += lookup(v.left, L, R)\n  res += lookup(v.right, L, R)\n  return res\n</pre>\n<p>Values <code>v.left</code>, <code>v.right</code>, <code>v.min</code>, <code>v.max</code>, <code>v.key</code>, and  <code>v.count</code> are the fields of the nodes of the binary search tree. </p>\n<ul>\n<li><code>v.left</code> and <code>v.right</code> are the left and the right children of node $v$, respectively.</li>\n<li><code>v.min</code> and <code>v.max</code> are the minimum and the maximum keys in the subtree rooted at node $v$.</li>\n<li><code>v.key</code> is the key of node $v$.</li>\n<li><code>v.count</code> is the number of nodes in the subtree rooted at node $v$.</li>\n</ul>\n<p>You are given a binary search tree with integer keys. You are also given queries, each query consisting of two integers $L$ and $R$. Find the number of calls of the <code>lookup</code> function that are made when <code>lookup(root, L, R)</code> is called, including the initial <code>lookup(root, L, R)</code> call itself.</p>",
+  "input": "<p>The first line contains an integer $n$ ($1 \\le n \\le 200\\,000$) --- the number of nodes in the binary search tree.</p>\n<p>The next $n$ lines describe the nodes of the tree. The $i$-th of these lines contains three integers $l_i$, $r_i$, and $k_i$ denoting the left child, the right child and the key of the $i$-th node. If the node does not have the left or/and the right child, the corresponding value is 0 ($l_i = 0$ or $i &lt; l_i \\le n$; $r_i = 0$ or $i &lt; r_i \\le n$; $-10^9 \\le k_i \\le 10^9$). The root of the tree is at node 1 and it is guaranteed to be a well-formed binary search tree.</p>\n<p>Note that the values <code>v.min</code>, <code>v.max</code> and <code>v.count</code> are not given in the input explicitly, since they can be deduced from $l_i$, $r_i$ and $k_i$.</p>\n<p>The next line contains an integer $q$ ($1 \\le q \\le 200\\,000$) --- the number of the queries.</p>\n<p>Each of the next $q$ lines contains two integers $L$ and $R$ ($-10^9 \\le L \\le R \\le 10^9$) --- the parameters given to the <code>lookup</code> function.</p>",
+  "output": "<p>Output $q$ lines, the $i$-th line containing a single integer --- the number of calls of the <code>lookup</code> function that are made for the $i$-th query.</p>",
+  "samples": [
+    {
+      "input": "7\n2 3 4\n4 0 2\n5 6 8\n0 0 1\n0 7 5\n0 0 9\n0 0 6\n5\n2 7\n0 10\n2 8\n4 4\n3 3\n",
+      "output": "7\n1\n7\n3\n3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2020 (Online)",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "case_work",
+    "offline_queries",
+    "lca"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.384600043296814
+}

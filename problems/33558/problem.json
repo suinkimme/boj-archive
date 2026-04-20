@@ -1,0 +1,32 @@
+{
+  "id": 33558,
+  "title": "Texture Wrapping",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>세로 길이가 $N$, 가로 길이가 $M$인 평면에 세로 길이가 $U$, 가로 길이가 $V$인 텍스처를 씌우려고 한다. 평면의 제일 왼쪽 위 칸에 텍스처의 왼쪽 위 칸이 만나게 해서 씌우려고 한다. 하지만 평면의 가로 또는 세로의 길이가 텍스처의 가로 또는 세로의 길이보다 길 수 있어 세 가지 방법 중 하나를 사용해서 평면을 다 씌울 수 있도록 하려고 한다.</p>\n<p>세 가지의 방법은 다음과 같다.</p>\n<p>1. clamp-to-edge</p>\n<p>텍스처의 모서리를 늘려 빈 공간을 채우는 방식이다. 평면의 어떤 칸의 행 좌표가 텍스처의 세로 길이 이상이면 텍스처의 맨 아래 행에서 평면 칸과 동일한 열 좌표에 있는 칸을 해당 평면 칸에 씌운다. 열 좌표가 텍스처의 가로 길이 이상이면 텍스처의 맨 오른쪽 열에서 평면 칸과 동일한 행 좌표에 있는 칸을 해당 평면 칸에 씌운다. 행 좌표와 열 좌표가 각각 텍스처의 세로 길이, 가로 길이 이상이면 텍스처의 맨 아래 오른쪽 칸을 해당 평면 칸에 씌운다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 70%; width: 70%; margin-left: 0px; margin-right: 0px;\"/></p>\n<p>2. repeat</p>\n<p>텍스처를 반복적으로 붙이면서 씌우는 방식이다. 평면을 아래 그림과 같이 세로 길이가 $U$, 가로 길이가 $V$인 조각으로 쪼갠 후 각 조각의 맨 왼쪽 위 칸이 텍스처의 맨 왼쪽 위 칸이 오도록 텍스처를 씌운다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height: 70%; width: 70%; margin-left: 0px; margin-right: 0px;\"/></p>\n<p>3. mirrored-repeat</p>\n<p>텍스처를 텍스처 경계면에 대해 거울 반전 시키면서 붙여나가며 씌우는 방식이다. 평면을 아래 그림과 같이 세로 길이가 $U$, 가로 길이가 $V$인 조각으로 쪼갠 후 각 조각에서 왼쪽 조각을 씌울 때의 텍스처를 좌우반전, 아래쪽 조각을 씌울 때의 텍스처를 상하반전해서 해당 조각의 칸들을 씌운다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"height: 70%; width: 70%; margin-left: 0px; margin-right: 0px;\"/></p>\n<p>평면의 크기와 텍스처, 그리고 사용할 방법이 주어질 때 평면의 최종 모습을 출력하자.</p>",
+  "input": "<p>첫 번째 줄에 평면의 크기 $N$과 $M$이 공백으로 구분되어 주어진다. $(1 \\leq N \\leq 200; 1 \\leq M \\leq 200)$</p>\n<p>두 번째 줄에 텍스처의 크기 $U$와 $V$가 공백으로 구분되어 주어진다. $(1 \\leq U \\leq 200; 1 \\leq V \\leq 200)$</p>\n<p>세 번째 줄부터 $U$개의 줄에 걸쳐 텍스처의 정보가 주어진다. 텍스쳐의 각 줄은 알파벳 대소문자 또는 숫자로 구성된 길이가 $V$인 문자열이다</p>\n<p>$U+3$번째 줄에 텍스처를 씌울 방법이 주어진다. <code>clamp-to-edge</code>, <code>repeat</code>, <code>mirrored-repeat</code> 중 하나로 주어진다.</p>",
+  "output": "<p>텍스처를 씌운 평면의 최종 모습을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "7 7\n3 3\n123\n456\n789\nclamp-to-edge\n",
+      "output": "1233333\n4566666\n7899999\n7899999\n7899999\n7899999\n7899999\n"
+    },
+    {
+      "input": "7 7\n3 3\n123\n456\n789\nrepeat\n",
+      "output": "1231231\n4564564\n7897897\n1231231\n4564564\n7897897\n1231231\n"
+    },
+    {
+      "input": "7 7\n3 3\n123\n456\n789\nmirrored-repeat\n",
+      "output": "1233211\n4566544\n7899877\n7899877\n4566544\n1233211\n1233211\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 유틸컵, 제2회 유틸컵, starbow, chogahui05, dkim110807, dong5995, dongwook7, eoaud0108, jinhan814, playsworld16, tony9402, utilforever",
+  "level": 8,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 341,
+  "submission_count": null,
+  "average_tries": 2.1789000034332275
+}

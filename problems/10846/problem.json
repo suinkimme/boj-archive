@@ -1,0 +1,26 @@
+{
+  "id": 10846,
+  "title": "발리의 조각상",
+  "time_limit": "1 초",
+  "memory_limit": "64 MB",
+  "description": "<p>발리의 길에는 많은 조각상들이 있다. 큰길 하나에 있는 조각상들을 생각해 보자.</p>\r\n\r\n<p>그 길에는 <em>N</em>개의 조각상들이 있고 1부터 <em>N</em>까지 순서대로 번호가 붙어 있다. 조각상 <em>i</em>의 나이는 <em>Y</em><sub><em>i</em></sub>년이다, 즉, <em>Y</em><sub><em>i</em></sub>년 전에 만든 것이다. 길을 더 아름답게 만들기 위해 정부는 조각상들을 몇 개의 그룹으로 나누려고 한다. 그룹이 정해지고 나면 그룹들 사이에 아름다운 나무들을 심어서 관광객이 더 많이 오도록 만들려는 것이다.</p>\r\n\r\n<p>조각상을 그룹으로 분할하는 규칙은 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>조각상들은 정확히 <em>X</em>개의 그룹으로 분할되어야 한다. 단, <em>A</em> &le; <em>X</em> &le; <em>B</em>이다. 각 그룹에는 최소한 하나의 조각상이 있어야 한다. 각 조각상은 단 하나의 그룹에만 속해야 한다. 각 그룹의 조각상들은 도로 상에 연속으로 존재해야 한다.</li>\r\n\t<li>각 그룹에 대해서, 그룹에 속한 조각상들의 나이를 더한다.</li>\r\n\t<li>그룹 별 합에 대해서, 모든 그룹 별 합의 비트 OR를 계산한다. 이 값을 분할의 아름다움 정도라고 하자.</li>\r\n\t<li>아름다움 정도를 최소화 한다면 어떤 값이 될 것인가?</li>\r\n</ul>\r\n\r\n<p>주의; 음수가 아닌 두 정수 <em>P</em>와 <em>Q</em>의 비트 OR는 다음과 같이 계산한다:</p>\r\n\r\n<ul>\r\n\t<li><em>P</em>와 <em>Q</em>를 2진수로 변환.</li>\r\n\t<li><em>nP</em>를 <em>P</em>의 비트 수라고 하고, <em>nQ</em>를 <em>Q</em>의 비트 수라고 하자. <em>M</em>은 max(<em>nP</em>, <em>nQ</em>)이다.</li>\r\n\t<li><em>P</em>의 이진수 표현이 <em>p</em><sub><em>M</em> - 1</sub><em>p</em><sub><em>M</em><sub>2</sub></sub>... <em>p</em><sub>1</sub><em>p</em><sub>0</sub>이고 <em>Q</em>의 이진수 표현이 <em>q</em><sub><em>M</em> - 1</sub><em>q</em><sub><em>M</em><sub>2</sub></sub>... <em>q</em><sub>1</sub><em>q</em><sub>0</sub>라고 하자. 단, <em>p</em><sub><em>i</em></sub>와 <em>q</em><sub><em>i</em></sub>는 각각 <em>P</em>와 <em>Q</em>의 <em>i</em>번째 비트이다. 첨자가 (<em>M</em> - 1)인 비트가 가장 높은 자리수이며 첨자가 0인 비트가 가장 낮은 자리수이다.</li>\r\n\t<li>2진수로 <em>P</em> OR <em>Q</em>의 결과는 (<em>p</em><sub><em>M</em> - 1</sub><em> OR q</em><sub><em>M</em> - 1</sub>)(<em>p</em><sub><em>M</em> - 2</sub><em> OR q</em><sub><em>M</em> - 2</sub>)... (<em>p</em><sub>1</sub><em> OR q</em><sub>1</sub>)(<em>p</em><sub>0</sub><em> OR q</em><sub>0</sub>)이다. 단,\r\n\t<ul>\r\n\t\t<li>0 OR 0 = 0</li>\r\n\t\t<li>0 OR 1 = 1</li>\r\n\t\t<li>1 OR 0 = 1</li>\r\n\t\t<li>1 OR 1 = 1</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n",
+  "input": "<p>첫 줄에는 세 개의 정수 <em>N</em>, <em>A</em>, <em>B</em>가 주어진다. 둘째 줄에는 <em>N</em>개의 정수 <em>Y</em><sub>1</sub>, <em>Y</em><sub>2</sub>, ..., <em>Y</em><sub><em>N</em></sub>이 주어진다.</p>\r\n\r\n<ul>\r\n\t<li>1 &le; N &le; 2,000</li>\r\n\t<li>1 &le; A &le; B &le; N</li>\r\n\t<li>0 &le; Y<sub>i</sub> &le; 1, 000, 000, 000</li>\r\n\t<li>N이 100을 초과하는 경우, A = 1임이 보장된다.</li>\r\n</ul>\r\n",
+  "output": "<p>출력은 단 한 줄이며 최소로 가능한 아름다움 정도를 출력해야 한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "6 1 3\n8 1 2 1 5 4\n",
+      "output": "11\n"
+    }
+  ],
+  "hint": "<p>조각상들을 다음의 나이가 되도록 두 그룹으로 나눈다: (8 1 2) and (1 5 4). 그룹 별 합은 11과 10이다. 비트 OR을 계산하면 11이 된다.</p>\r\n",
+  "source": "Olympiad, Asia-Pacific Informatics Olympiad, APIO 2015",
+  "level": 20,
+  "tags": [
+    "dp",
+    "greedy",
+    "bitmask"
+  ],
+  "accepted_user_count": 136,
+  "submission_count": null,
+  "average_tries": 2.3675999641418457
+}

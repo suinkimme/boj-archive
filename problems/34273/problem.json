@@ -1,0 +1,32 @@
+{
+  "id": 34273,
+  "title": "Polygon Partition",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>A simple polygon is a polygon that is not self-intersecting and does not contain any holes. You are given the $N$ vertices of a simple polygon, $v_1$, $v_2$, \\ldots, $v_N$, where $v_i = (x_i, y_i)$, and $x_i$ and $y_i$ are the $x$-coordinate and $y$-coordinate of the $i^{\\textrm{th}}$ vertex, respectively. The vertices are distinct and given in counterclockwise order (so there is an edge between each pair of consecutive vertices; there is also an edge from $v_N$ back to $v_1$).</p>\n<p>The polygon's boundary does not pass through any <em>lattice points</em> (a lattice point is a point where both coordinates are integers). In addition, none of the $x_i$ or $y_i$ values are exactly an integer.</p>\n<p>A <em>semi-integer point</em> is a point where exactly one of its coordinates is an integer. Let $\\mathcal{P} = \\left\\{p_1, p_2, \\ldots, p_k\\right\\}$ be all of the semi-integer points that lie on the boundary of the polygon. For each semi-integer point $p_i$ in $\\mathcal{P}$, let $n_i$ be the floor of the non-integer coordinate of $p_i$. For a subset $\\mathcal{S}$ of $\\mathcal{P}$, let $\\sigma(\\mathcal{S})$ be the sum of the $n_i$ of the points in $\\mathcal{S}$ (with $\\sigma(\\emptyset) = 0$). Does there exist a partition of $\\mathcal{P}$ into two subsets $\\mathcal{S}_1$ and $\\mathcal{S}_2$ so that the $\\sigma(\\mathcal{S}_1) = \\sigma(\\mathcal{S}_2)$?</p>\n<p>(Two sets $\\mathcal{S}_1$ and $\\mathcal{S}_2$ are a partition of $\\mathcal{P}$ if $\\mathcal{P} = \\mathcal{S}_1 \\cup \\mathcal{S}_2$ and $\\mathcal{S}_1 \\cap \\mathcal{S}_2 = \\emptyset$. There are no other restrictions on $\\mathcal{S}_1$ and $\\mathcal{S}_2$ so long as these two conditions hold and $\\sigma(\\mathcal{S}_1) = \\sigma(\\mathcal{S}_2)$. In particular, empty sets are allowed, and the semi-integer points in each set <em>do not</em> have to be contiguous around the polygon boundary.)</p>",
+  "input": "<p>The first line of input contains one integer $N$ ($3 \\leq N \\leq 500$), the number of vertices of the polygon.</p>\n<p>Each of the next $N$ lines contains two space-separated real numbers $x_i$ and $y_i$ ($-500 &lt; x_i, y_i &lt; 500$): the coordinates of the polygon vertices, in counterclockwise order. Each coordinate will have exactly $6$ digits after the decimal point and will not be exactly an integer.</p>\n<p>It is guaranteed that the polygon does not self-intersect, that the vertices are distinct, and that the polygon boundary does not pass through any lattice points.</p>",
+  "output": "<p>If there is no solution, print $-1$ and no further output. </p>\n<p>Otherwise, print a single integer $M$ on its own line: the number of semi-integer points in one of the two subsets in a valid partition of $\\mathcal{P}$. On the next $M$ lines of output, print the values $n_i$ for the points in that subset, one per line. </p>\n<p>If there are multiple valid partitions, you may choose any of them. You may print either of its two subsets, and you may list the subset's $n_i$ values in any order.</p>",
+  "samples": [
+    {
+      "input": "4\n-0.950000 -0.850000\n-0.100000 0.999999\n0.111000 0.555000\n-0.200000 1.600000\n",
+      "output": "3\n0\n-1\n-1\n"
+    },
+    {
+      "input": "3\n0.500000 0.700000\n0.100000 0.200000\n0.800000 0.900000\n",
+      "output": "0\n"
+    },
+    {
+      "input": "4\n-360.000001 -24.000001\n-359.999999 -24.000001\n-359.999999 -23.999999\n-360.000001 -23.999999\n",
+      "output": "2\n-25\n-360\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Championship, North America Championship 2025",
+  "level": 20,
+  "tags": [
+    "ad_hoc"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,26 @@
+{
+  "id": 9312,
+  "title": "Triangular Matrices",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Let triangular matrices be defined as equilateral triangles with numbers in the form:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:68px; width:76px\"/></p>\n<p>Let triangular matrix addition be defined as:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height:266px; width:282px\"/></p>\n<p>Let triangular matrix multiplication be defined as:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"height:239px; width:301px\"/></p>\n<p>The multiplication operation is not commutative, and the first matrix, A, must be of size less than or equal to B. The elements in the resultant matrix will be determined by matching A with every triangle of size A within the matrix B. For each of these matchings, multiply the overlapping elements of A and B and then sum them. Each matching will have a corresponding place in the resulting matrix.</p>\n<p>In the example above, the A matches to the sub matrices formed by: {b<sub>1</sub>, b<sub>2</sub>, b<sub>3</sub>}, {b<sub>2</sub>, b<sub>4</sub>, b<sub>5</sub>} and {b<sub>3</sub>, b<sub>5</sub>, b<sub>6</sub>}. So taking the element wise multiplication and then sum of each sub matrix with matrix A gives the values c = a<sub>1</sub>b<sub>1</sub> + a<sub>2</sub>b<sub>2</sub> + a<sub>3</sub>b<sub>3</sub>, d = a<sub>1</sub>b<sub>2</sub> + a<sub>2</sub>b<sub>4</sub> + a<sub>3</sub>b<sub>5</sub> and e = a<sub>1</sub>b<sub>3</sub> + a<sub>2</sub>b<sub>5</sub> + a<sub>3</sub>b<sub>6</sub>. Since c corresponds to the top submatrix from B, it will be in the top position in the resulting matrix. d and e will be in the next row with d to the left of e because that is how the original corresponding submatrices of B were arranged.</p>\n<p>The input will be given in postfix notation. For example, if you were given:</p>\n<p>A B * A +</p>\n<p>That would correspond to:</p>\n<p>(A * B) + A</p>\n<p>To solve this expression, start from the left side. First you get A, then B, then *. Which means A*B, we'll call this result C. Replace A B * with C, since that operation has been done. That leaves C A +, which means A + C, giving you the final result.</p>",
+  "input": "<p>Input sets will be given by an integer N, the number of matrices involved in the operation. For the next N lines, the matrices will be specified. A matrix will be specified by a string identifier K followed by an integer L, the length of each side of the matrix. The next L lines will contain the values in the matrix, each value separated by a space. The first line will only contain 1 value, the second line will contain 2 values, the third line will contain three values, and so on until the L th line. The first line with one value signifies the top point of the triangle, and the Lth line of L values signifies the bottom of the triangle.</p>\n<p>After the matrices are given, there will be an expression, with spaces between the operators and symbols that needs to be evaluated. The expression will contain matrices that are represented by their string identifiers. The end of input will be given by N = 0.</p>",
+  "output": "<p>The output should be given by the resultant triangular matrix. It should be output in the same way the matrices were input. The top value on the first line, the next lowest values in order on the second line, all the way to the bottom row. If the expression is impossible to evaluate, output: “Invalid expression”.</p>",
+  "samples": [
+    {
+      "input": "2\nA 2\n1\n2 2\nB 3\n1\n3 1\n2 2 1\nA B * A +\n0\n",
+      "output": "10\n13 9\n"
+    }
+  ],
+  "hint": null,
+  "source": "School, University of Virginia High School Programming Contest, UVa HSPC 2011",
+  "level": 11,
+  "tags": [
+    "data_structures",
+    "implementation",
+    "stack"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 3.799999952316284
+}

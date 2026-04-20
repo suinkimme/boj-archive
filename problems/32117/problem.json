@@ -1,0 +1,33 @@
+{
+  "id": 32117,
+  "title": "$\\prod_{i=1}^N(R_i-L_i+1)$개의 트리",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>$1$번 정점을 루트로 하는 정점 $N$개의 트리가 주어진다. 우리는 각 정점에 쓰일 음이 아닌 정수 $a_i$를 정할 것이다.</p>\n<p>이때 $a_i$들은 다음 조건을 만족해야 한다. 모든 $1\\leq i\\leq N$에 대해서,</p>\n<ul>\n<li>$a_i\\leq p_i$</li>\n<li>$i$번 서브트리 내부의 정점 $j$에 대해서 $a_j$를 모두 더한 값을 $S_i$라고 했을 때, $S_i\\geq q_i$</li>\n</ul>\n<p>위의 조건을 만족하는 $(a_1,a_2,\\ldots ,a_N)$에 대해 $\\sum_{i=1}^Nc_{i}a_{i}$의 최솟값을 $f(c_1,c_2,\\ldots ,c_N)$으로 정의하자.</p>\n<p>다음 값을 $998\\, 244\\, 353$으로 나눈 나머지를 구하여라.</p>\n<p>\\[\\sum_{c_1=L_1}^{R_1}\\sum_{c_2=L_2}^{R_2}\\cdots\\sum_{c_N=L_N}^{R_N}f(c_1,c_2,\\cdots ,c_N)\\]</p>",
+  "input": "<p>첫 줄에 정점의 개수 $N$이 주어진다. ($1\\leq N\\leq 250$)</p>\n<p>둘째 줄부터 $(N-1)$개의 줄에 걸쳐 트리 간선에 대한 정보가 주어진다. 이중 $i$번째 줄에는 두 개의 정수 $s_i$, $e_i$가 공백으로 구분되어 주어진다. ($1\\leq s_i,e_i\\leq N$) 이는 $s_i$와 $e_i$를 잇는 간선이 존재한다는 것이다.</p>\n<p>$1\\leq i\\leq N$에 대해, $(N+i)$번째 줄에는 $p_i$, $q_i$, $L_i$, $R_i$가 공백을 사이에 두고 주어진다. ($1\\leq L_i\\leq R_i\\leq 250$; $0\\leq p_i,q_i\\leq 250$; $\\sum_{i=1}^Np_i\\leq 250$)</p>\n<p>주어진 그래프는 트리를 이루며, 주어진 조건을 만족하는 $(a_1,a_2,\\ldots ,a_N)$이 존재하는 입력만이 주어진다.</p>",
+  "output": "<p>문제에 주어진 값을 $998\\, 244\\, 353$으로 나눈 나머지를 출력한다. $998\\, 244\\, 353=119\\times 2^{23}+1$은 소수이다.</p>",
+  "samples": [
+    {
+      "input": "4\n1 2\n1 3\n1 4\n2 5 5 5\n1 1 2 2\n2 1 3 3\n1 1 1 1\n",
+      "output": "14\n"
+    },
+    {
+      "input": "6\n1 2\n1 3\n2 4\n2 5\n4 6\n1 7 1 3\n3 2 2 4\n2 1 1 4\n4 2 4 6\n2 0 1 5\n2 0 2 5\n",
+      "output": "39072\n"
+    }
+  ],
+  "hint": "<p>$j$번 정점이 $i$번 서브트리 내부에 포함된다는 것은 $j=i$이거나 $i$번 정점이 $j$번 정점의 조상이라는 것이다.</p>",
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2024, azberjibiou, cki86201, evenharder, functionx, mingyu331, qwerasdfzxcl",
+  "level": 24,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "fft",
+    "greedy",
+    "math",
+    "trees"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.727299928665161
+}

@@ -1,0 +1,33 @@
+{
+  "id": 26257,
+  "title": "std::shared_ptr",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><code>std::shared_ptr</code>은 C++11부터 추가된 스마트 포인터이다. 이는 참조 카운트 방식의 스마트 포인터로 객체를 가리키는 <code>std::shared_ptr</code>가 하나도 없으면 (참조 카운트가 $0$이 되면) 해당 객체를 소멸시키는 방식으로 동작한다. 유사한 개념으로는 Rust의 <code>std::rc::Rc</code>와 Swift의 자동 참조 카운트가 있다.</p>\n<p>$N$개의 객체가 메모리에 할당되어 있다. 하나의 객체는 적어도 하나의 <code>std::shared_ptr</code>(이하 포인터)가 가리키고 있다. $M$개의 포인터가 있고 각각의 포인터는 많아야 하나의 객체를 가리키고 있다.</p>\n<p>객체에는 $1$번부터 $N$번까지의 번호가 매겨져 있고 포인터도 $1$번부터 $M$번까지 번호가 매겨져 있다.</p>\n<p>이 문제에서 포인터는 다음의 세 가지 연산을 지원한다. <strong>$x$와 $y$는 포인터의 번호이다.</strong></p>\n<ol>\n<li>assign $x$ $y$ - 포인터 $x$는 기존에 가리키고 있던 객체 대신 포인터 $y$가 가리키는 객체를 가리킨다.</li>\n<li>swap $x$ $y$ - 포인터 $x$가 가리키던 객체를 포인터 $y$가 가리키고 포인터 $y$가 가리키던 객체를 포인터 $x$가 가리킨다.</li>\n<li>reset $x$ - 포인터 $x$는 가리키고 있던 객체를 더 이상 가리키지 않는다.</li>\n</ol>\n<p>포인터 $x$와 포인터 $y$가 같은 객체를 가리키고 있어도 assign 연산과 swap 연산은 잘 정의된다. 아무것도 가리키지 않는 포인터가 있어도 위의 모든 연산은 유효하다. 예를 들어 $y$가 아무것도 가리키지 않는 포인터일 때 assign $x$ $y$를 수행하면 $x$ 또한 아무것도 가리키지 않는 포인터가 된다.</p>\n<p>위의 연산이 $Q$개 주어진다. 주어진 연산을 모두 수행했을 때 소멸되지 않고 메모리에 남아 있는 객체를 모두 구하시오.</p>",
+  "input": "<p>첫 번째 줄에 $N,M,Q$가 공백으로 구분되어 주어진다. ($1\\leq N\\leq 2\\times 10^5;$ $N\\leq M\\leq 2\\times 10^5;$ $1\\leq Q\\leq 10^5$)</p>\n<p>두 번째 줄부터 $M$개의 줄에 걸쳐 $i+1$ 번째 줄에 $i$번 포인터가 가리키고 있는 객체의 번호 $e_i$가 주어진다. 포인터가 아무것도 가리키고 있지 않을 경우 $e_i=0$이다. ($0\\leq e_i\\leq N$)</p>\n<p>$M+2$ 번째 줄부터 $Q$개의 줄에 걸쳐 수행할 연산이 주어진다. ($1\\leq x_i,y_i\\leq M$)</p>\n<p>입력으로 주어지는 모든 수는 정수이다.</p>",
+  "output": "<p>첫 번째 줄에 소멸되지 않고 메모리에 남아있는 객체의 개수 $K$를 출력한다.</p>\n<p>두 번째 줄부터 $K$개의 줄에 걸쳐 남아 있는 객체의 번호를 오름차순으로 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 7 5\n1\n2\n3\n3\n4\n0\n5\nassign 5 6\nswap 4 5\nreset 3\nassign 3 2\nreset 6\n",
+      "output": "4\n1\n2\n3\n5\n"
+    },
+    {
+      "input": "1 2 5\n1\n1\nassign 1 1\nreset 1\nassign 2 1\nreset 2\nswap 1 1\n",
+      "output": "0\n"
+    },
+    {
+      "input": "10 11 10\n3\n3\n2\n5\n4\n1\n7\n10\n9\n6\n8\nswap 11 10\nassign 9 11\nassign 1 5\nreset 2\nassign 5 11\nreset 11\nreset 9\nswap 8 4\nreset 7\nassign 11 6\n",
+      "output": "7\n1\n2\n4\n5\n6\n8\n10\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, SW마에스트로, 제13기 알고리즘 대회, leeh18, chansol, jyheo98, man_of_learning, seungwuk98, tony9402",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 160,
+  "submission_count": null,
+  "average_tries": 1.5687999725341797
+}

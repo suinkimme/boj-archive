@@ -1,0 +1,26 @@
+{
+  "id": 33087,
+  "title": "Sorting Machine",
+  "time_limit": "1.5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Adrian knows that Morgan the robot is capable of sorting texts, but he is uncertain about Morgan’s efficiency in doing the task. Adrian decides to give Morgan a test on his efficiency.</p>\n<p>First, Adrian gives Morgan a list of $N$ equal-length texts, numbered from $1$ to $N$. Each text is a string $S_i$ that contains $M$ characters, indexed from $1$ to $M$. $S_{ij}$ represents character $j$ in string $S_i$.</p>\n<p>Adrian will give Morgan $Q$ tasks. Each task is represented by a tuple $&lt;A, B, L, R, X&gt;$ satisfying the following.</p>\n<ul>\n<li>$1 ≤ A ≤ B ≤ N$</li>\n<li>$1 ≤ L ≤ R ≤ M$</li>\n<li>$1 ≤ X ≤ B - A + 1$</li>\n</ul>\n<p>For each task, Morgan should perform the following procedures.</p>\n<ol>\n<li>Copy the original list of texts; let $T$ be the copied list. This list will be updated throughout the task.</li>\n<li>Remove all texts $i$ from $T$ that are <strong>not</strong> within the range of $A ≤ i ≤ B$.</li>\n<li>For all remaining texts in $T$, remove all characters at index $j$ that are <strong>not</strong> within the range of $L ≤ j ≤ R$;</li>\n<li>The remaining texts in $T$ is renumbered from $1$ to $B - A + 1$. Mark text $X$ in $T$.</li>\n<li>Sort $T$ lexicographically; let the result be $T'$. Note that the performed sort is a stable sort, meaning that if two texts are equal, then they maintain their order in the sorted list.</li>\n<li>Output the position of the marked text in $T'$. The lexicographically smallest text will be at position $1$ (one-based).</li>\n</ol>\n<p>The image below are the ilustrations how the procedure works.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 821px; height: 150px;\"/></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 821px; height: 177px;\"/></p>\n<p>It turns out that it takes Morgan a lot of time to solve those tasks. Therefore, Adrian asks for your help to improve Morgan’s program so that he can solve those tasks quickly and accurately.</p>\n<p>A string $s$ of length $n$ is lexicographically smaller than string $t$ with the same length if there exists an integer $1 ≤ i ≤ n$ such that $s_j = t_j$ for all $1 ≤ j &lt; i$, and $s_i &lt; t_i$.</p>",
+  "input": "<p>Input begins with two integers $N$ $M$ ($1 ≤ N, M ≤ 100\\, 000$; $1 ≤ N \\times M ≤ 100\\, 000$) representing the number of texts and the length of each text, respectively. Each of the next $N$ lines contains a string $S_i$ representing text $i$. Each text contains $M$ lower-case characters.</p>\n<p>The next line contains an integer $Q$ ($1 ≤ Q ≤ 100\\, 000$) representing the number of tasks. Each of the next $Q$ lines contains five integers $A$ $B$ $L$ $R$ $X$ ($1 ≤ A ≤ B ≤ N$; $1 ≤ L ≤ R ≤ M$; $1 ≤ X ≤ B - A + 1$) representing a task.</p>",
+  "output": "<p>For each task, output an integer in a single line representing the answer of that task.</p>",
+  "samples": [
+    {
+      "input": "5 6\nadrian\nmorgan\ngeorge\nundine\nstella\n5\n1 5 1 6 1\n1 5 1 6 2\n1 2 3 6 1\n2 4 3 5 3\n1 2 5 6 2\n",
+      "output": "1\n3\n2\n1\n2\n"
+    },
+    {
+      "input": "3 9\nindonesia\nnationaln\ncontestco\n3\n2 2 1 9 1\n1 2 3 7 2\n1 3 2 5 2\n",
+      "output": "1\n2\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2022",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

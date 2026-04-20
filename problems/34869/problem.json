@@ -1,0 +1,34 @@
+{
+  "id": 34869,
+  "title": "Mex Culpa",
+  "time_limit": "5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The mex (shorthand for <strong>m</strong>inimum <strong>ex</strong>cluded value) of a sequence is the smallest non-negative integer that is not in the sequence. For example:</p>\n<ul>\n<li>$\\text{mex}(\\{ \\}) = 0$</li>\n<li>$\\text{mex}(\\{1, 2, 3\\}) = 0$</li>\n<li>$\\text{mex}(\\{5, 0, 1, 1, 4\\}) = 2$</li>\n<li>$\\text{mex}(\\{0, 5, 2, 1, 5, 0, 1, 2\\}) = 3$</li>\n</ul>\n<p>While the mex function has applications in combinatorial game theory, it is still a rather niche method for mapping a sequence to an integer. In the absence of a more organic problem, we have repurposed this concept to construct a task of a somewhat artificial nature. Sorry!</p>\n<p>Write a program that, given two sequences of positive integers $a = [a_1, a_2, \\cdots , a_n ]$ and $b = [b_1, b_2, \\cdots , b_n ]$, evaluates the following recurrence: for $1 ≤ i ≤ n$,</p>\n<p style=\"text-align: center;\">$$f_i = \\text{mex}(\\{f_j | 1 ≤ j ≤ i − 1; a_i ≤ a_j + b_j ; a_j ≤ a_i + b_i \\})$$</p>",
+  "input": "<p>Your program is to read from standard input. The first line contains a single integer, $n$ ($1 ≤ n ≤ 250\\,000$), representing the length of the sequences. The second line contains $n$ positive integers $a_1, a_2, \\cdots , a_n$ ($1 ≤ a_i ≤ 10^9$) representing the sequence $a$. The third line contains $n$ positive integers $b_1, b_2, \\cdots , b_n$ ($1 ≤ b_i ≤ 10^9$), representing the sequence $b$.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line consisting of $n$ space-separated integers, denoting $f_1, f_2, \\cdots , f_n$.</p>",
+  "samples": [
+    {
+      "input": "3\n3 1 5\n2 2 4\n",
+      "output": "0 1 1\n"
+    },
+    {
+      "input": "8\n1 2 9 4 6 9 7 10\n9 3 7 1 1 7 1 1\n",
+      "output": "0 1 1 2 1 2 2 3\n"
+    },
+    {
+      "input": "15\n1 1 5 1 2 3 8 8 6 5 9 1 1 4 3\n2 5 7 4 6 4 1 3 4 8 3 4 2 10 1\n",
+      "output": "0 1 0 2 3 4 1 2 5 6 3 5 6 7 8\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, 2025 ICPC Asia Seoul Regional, koosaga",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "multi_segtree"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 5
+}

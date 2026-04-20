@@ -1,0 +1,33 @@
+{
+  "id": 32479,
+  "title": "Copycat Catcher",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Your university recently established the Graduate Code Plagiarism Control (GCPC) initiative to get hold of the ever-increasing load on the graders for the computer science assignments. Currently, the graders need to check the code of assignments manually for plagiarism. The GCPC aims to simplify this part of the graders' jobs by performing the plagiarism checks automatically.</p>\n<p>Code consists of tokens separated by spaces. Tokens are strings of alphabetical letters, numerals, and brackets. If a token consists of only a single alphabetical letter (upper or lowercase), it is a variable in the code.</p>\n<p>The GCPC wants the plagiarism checker to compare query pieces of code to a reference code. Specifically, it should check whether each query could have been obtained by selecting a contiguous string of tokens from the reference and consistently renaming variables.</p>\n<p>Variables are consistently renamed if no two occurrences of the same variable are renamed to different variables, and if no two different variables are renamed to the same variable.</p>\n<p>The GCPC has asked you to develop the plagiarism checker.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>A description of the reference, consisting of:\n\t<ul>\n<li>One line containing an integer $n$ ($1\\leq n \\leq 2\\,000$), the number of tokens in the reference.</li>\n<li>One line containing $n$ tokens, each consisting only of the characters '<code>a</code>'-'<code>z</code>', '<code>A</code>'-'<code>Z</code>', '<code>0</code>'-'<code>9</code>', '<code>(</code>' and '<code>)</code>'.</li>\n</ul>\n</li>\n<li>An integer $q$ ($1 \\leq q \\leq 2\\,000$), the number of queries.</li>\n<li>$2\\cdot q$ lines, each two lines in the same format as the reference.</li>\n</ul>\n<p>It is guaranteed that each query as well as the reference consist of at most $2\\,000$ characters (excluding spaces). Tokens are separated by single spaces.</p>",
+  "output": "<p>For each query, output \"<code>yes</code>\" if the query could have been obtained from the reference, and \"<code>no</code>\" otherwise.</p>",
+  "samples": [
+    {
+      "input": "9\nfor i in range(10) do print i j end\n4\n3\nprint j i\n2\ndo print\n6\nk in range(10) do print k\n6\nk in range(10) do print j\n",
+      "output": "yes\nyes\nyes\nno\n"
+    },
+    {
+      "input": "5\ni is i times j\n7\n5\ni is i times j\n5\na is a times b\n5\nj is j times c\n5\na is i times j\n5\nj is i times j\n5\n0 is 0 times j\n5\ni is i times i\n",
+      "output": "yes\nyes\nyes\nno\nno\nno\nno\n"
+    },
+    {
+      "input": "5\nA 1 ( ) b\n4\n2\nb 2\n2\nb 1\n3\n1 ) (\n5\na 1 ( ) F\n",
+      "output": "no\nyes\nno\nyes\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2024",
+  "level": 19,
+  "tags": [
+    "string",
+    "hashing"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 2
+}

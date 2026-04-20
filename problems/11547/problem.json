@@ -1,0 +1,43 @@
+{
+  "id": 11547,
+  "title": "Galactic taxes",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The year is 2115. The Interplanetary Commercial Planning Center (ICPC) is supported by the Autonomous Communication Ministry (ACM).</p>\n<p>A commercial operation is performed executing transactions between connected ACM offices throughout the galaxy. The execution of a transaction between two connected ACM offices involves a nonnegative tax whose value increases, or decreases, continuously as a linear function A × t + B of time t, where t is a real number measured in minutes during the day (0 ≤ t ≤ 24 × 60).</p>\n<p>The total tax of a commercial operation performed between a source ACM office and a destination ACM office at some time t, is calculated as the minimum possible sum of the taxes of the executed transactions between the ACM offices visited along some path from the source ACM office to the destination ACM office. The tax of each transaction is calculated at the same time t.</p>\n<p>Since the tax of the transactions between connected ACM offices is continually changing during the day, it would be better to perform the commercial operation at some specific time in the day, in order to maximize the collected tax. At that time, ACM decides to perform the commercial operation, and not before or after.</p>\n<p>Your task is to write a program that receives as input the description of the ACM office network and returns as output the maximum total tax of the commercial operation that can be achieved during the day, that is, the maximum total tax that ACM can collect.</p>",
+  "input": "<p>The first line contains two integers N and M, representing respectively the number of ACM offices in the network, and the number of connections (2 ≤ N ≤ 1000 and 1 ≤ M ≤ 10<sup>4</sup>). The ACM offices are identified with distinct integers from 1 to N, being 1 the source ACM office and N the destination ACM office. Each of the next M lines describes a connection with four integers I, J, A and B, indicating that there is a bidirectional connection between office I and office J (1 ≤ I &lt; J ≤ N), such that the tax of a transaction executed between office I and office J at time t is defined by the formula A × t + B (−100 ≤ A ≤ 100 and 0 ≤ B ≤ 10<sup>6</sup>). Taxes are non-negative, so A×t+B ≥ 0 for 0 ≤ t ≤ 24×60. There is at most one connection between each pair of ACM offices, and there is at least one path between the source ACM office and the destination ACM office.</p>",
+  "output": "<p>Output a line with a rational number representing the maximum total tax that ACM can collect. The result must be output as a rational number with exactly five digits after the decimal point, rounded if necessary.</p>",
+  "samples": [
+    {
+      "input": "2 1\n1 2 1 0\n",
+      "output": "1440.00000\n"
+    },
+    {
+      "input": "5 8\n1 2 27 610658\n2 3 -48 529553\n3 4 -6 174696\n4 5 47 158238\n3 5 84 460166\n1 3 -21 74502\n2 4 -13 858673\n1 5 -90 473410\n",
+      "output": "419431.27273\n"
+    },
+    {
+      "input": "3 3\n1 2 1 0\n2 3 1 0\n1 3 -1 1440\n",
+      "output": "960.00000\n"
+    },
+    {
+      "input": "4 5\n1 2 1 0\n2 4 2 0\n1 4 0 500\n1 3 -1 1440\n3 4 -2 2880\n",
+      "output": "500.00000\n"
+    },
+    {
+      "input": "2 1\n1 2 0 0\n",
+      "output": "0.00000\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2015, ntopia",
+  "level": 18,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "ternary_search"
+  ],
+  "accepted_user_count": 27,
+  "submission_count": null,
+  "average_tries": 3.2221999168395996
+}

@@ -1,0 +1,32 @@
+{
+  "id": 29885,
+  "title": "Magical Plants",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>John is growing plants on the windowsill. These are no ordinary plants: they are in telepathic communication with one another and will grow only if some other plants are already tall enough.</p>\n<p>There are $N$ pots on the windowsill, numbered $1 \\ldots N$. Initially there is nothing planted in any of the pots. Also, there are $M$ constraints of the form \"the plant in pot $U_i$ can grow $A_i$ metres tall only if the plant in $V_i$ is already at least $B_i$ metres tall\".</p>\n<p>Days consist of $N + 1$ minutes. Each day, the following happens:</p>\n<ol>\n<li>On the $i$-th minute (for every $1 \\le i \\le N$): if there is a plant growing in the $i$-th pot, it will grow 1 metre taller unless that would violate one of the constraints.</li>\n<li>On the $N + 1$-st minute: John can choose a pot with no plant in it, and plant a plant there. Initially, a plant is 1 metre tall.</li>\n</ol>\n<p>We need each plant to be at least $K$ metres tall to brew a potion. Find the minimum number of days necessary, assuming John plants the plants optimally. Find one optimal way to plant the plants.</p>\n<p>It is guaranteed that in all test cases it is possible to plant the plants so that all plants will grow $K$ metres tall in at most $10^{18}$ days.</p>",
+  "input": "<p>The first line of the input consists of three space-separated integers $N$, $M$ and $K$ ($1 \\le N, M \\le 2 \\cdot 10^5$, $2 \\le K \\le 10^9$).</p>\n<p>The next $M$ lines describe the constraints. The $i$-th such row consists of four integers $U_i$, $A_i$, $V_i$, $B_i$ ($1 \\le U_i, V_i \\le N$, $U_i \\ne V_i$, $2 \\le A_i, B_i \\le K$), describing a constraint.</p>",
+  "output": "<p>The first line of the output must consist of the minimum number of days needed for all plants to grow at least $K$ metres tall.</p>\n<p>The second line must consist of $N$ integers, each from the interval $1 \\ldots 10^9$. Of those, the $i$-th should be the day John plants the $i$-th plant.</p>\n<p>If there are multiple optimal solutions, you can print any one of them.</p>",
+  "samples": [
+    {
+      "input": "4 3 4\n4 4 3 4\n2 2 4 2\n1 3 3 2\n",
+      "output": "7\n2 4 3 1\n"
+    },
+    {
+      "input": "5 4 1000000000\n1 2 2 1000000000\n2 2 3 1000000000\n3 2 4 1000000000\n4 2 5 1000000000\n",
+      "output": "4999999996\n5 4 3 2 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Estonian Informatics Olympiad, 2020-21, Open Competition",
+  "level": 18,
+  "tags": [
+    "dp",
+    "graphs",
+    "greedy",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 2
+}

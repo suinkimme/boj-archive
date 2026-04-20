@@ -1,0 +1,28 @@
+{
+  "id": 19811,
+  "title": "Too Many Hyphens",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Document markup languages such as TeX and LaTeX, originally developed by Donald Knuth and Leslie Lamport, are often used in typesetting various articles, scientific texts, and even the statements for programming olympiads.</p>\n<p>They provide special macros which allow one to use special characters that aren't present on the keyboard. For example, several hyphens in a row are converted into dashes of various lengths. Thus, when it's necessary to get a line of several hyphens in a document, you need to make some special actions.</p>\n<p>In this case one can use braces to prevent a group of successive hyphens to be a macro. As in many programming languages (C++, for example) braces are used in TeX to group character blocks. Braces sequence should also form a correct parentheses sequence. That means that after removing all the characters from the line except braces, and then replacing the opening brace \"<code>{</code>\" with $+1$ and closing brace \"}\" with $-1$, the sum of all the elements of the resulting sequence should be equal to $0$, and the sum of any prefix of the resulting sequence should be non-negative.</p>\n<p>To prevent the sequence of hyphens from being replaced by a dash there should be at least one brace between any two consecutive hyphens. Note that the group of consecutive pluses, unlike hyphens, does not correspond to any macro and thus there are no extra conditions for two consecutive pluses.</p>\n<p>Let's consider the string $s$ consisting of pluses and hyphens. Let's add the minimum number of curly braces considering the rules described above, so that there are no two consecutive hyphens. Let's call the resulting string an <em>optimal escaped</em> string for $s$.</p>\n<p>For example, for the string \"<code>++-{-</code>}\" there are exactly five optimal escaped strings: \"<code>++-{-</code>}\", \"<code>++-{</code>-}\", \"<code>++{-</code>-}\", \"<code>+{+-</code>-}\", \"<code>{++-</code>-}\".</p>\n<p>The lines above are listed in <em>lexicographical order</em>: they are ordered by the first unequal character (by the first, then by the second in case the first characters are equal, etc). Characters are ordered as \"<code>+</code>\"$\\strut&lt;\\strut$\"<code>-</code>\"$\\strut&lt;\\strut$\"<code>{</code>\"$\\strut&lt;\\strut$\"}\".</p>\n<p>Let's consider all the minimal length strings that can be obtained from $s$ by adding bracers by the described rules, namely all optimal escaped strings for $s$. You must find the $k$-th in lexicographical order optimal escaped string or detect that the given $k$ is too great.</p>",
+  "input": "<p>The first line of input contains the string $s$, consisting of pluses and hyphens. It's guaranteed that $s$ is not empty and has a length of no more than $60$ characters.</p>\n<p>The second line contains a single integer $k$ ($1 \\le k \\le 10^{18}$).</p>",
+  "output": "<p>You need to print the $k$-th in lexicographical order optimal escaped string for the string $s$ specified in the input.</p>\n<p>If $k$ is greater than the number of optimal escaped strings, your program should print \"<code>Overflow</code>\".</p>",
+  "samples": [
+    {
+      "input": "++--\n2\n",
+      "output": "++-{}-\n"
+    },
+    {
+      "input": "-+-+-\n2\n",
+      "output": "Overflow\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia Team High School Programming Contest, Russia Team High School Programming Contest 2019",
+  "level": 17,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

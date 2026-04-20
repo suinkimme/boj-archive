@@ -1,0 +1,41 @@
+{
+  "id": 35002,
+  "title": "검은칠된 격자에 보내는 최단경로",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>$0$ 이상 $9$ 이하의 정수를 채워넣을 수 있는 $N$행 $M$열 크기의 격자가 있다. 격자의 $i$번째 행과 $j$번째 열이 만나는 칸을 $(i,j)$라고 한다. 격자의 어떤 칸은 정수를 채워넣을 수 없고 이동할 수 없도록 검은칠 되어 있고, 어떤 칸은 이미 정수가 채워져 있다.</p>\n<p>격자의 두 칸이 한 변을 공유한다면 두 칸이 인접하다고 정의한다. 격자 위의 경로는 인접한 칸으로 이동하면서 방문하는 칸의 나열이고, 경로의 가중치는 격자 위의 경로에 채워진 수의 합이다. $(S_i,S_j)$에서 $(E_i,E_j)$로 가는 최단 거리는 $(S_i,S_j)$에서 출발하여 $(E_i,E_j)$에 도착하는 경로들 중에 가중치가 가장 작은 경로의 가중치이다.</p>\n<p>격자의 처음 상태와 $(S_i,S_j)$, $(E_i,E_j)$가 주어질 때 격자의 채울 수 있는 칸을 모두 적절히 채워넣어 $(S_i,S_j)$에서 $(E_i,E_j)$로 가는 최단 거리가 정확히 $D$가 되게 하고 싶다. $(S_i,S_j)$에서 $(E_i,E_j)$로 가는 최단 거리가 정확히 $D$가 되도록 격자를 채울 수 있는지 확인하고, 가능하다면 그 중 한 가지를 출력해보자.</p>",
+  "input": "<p>첫째 줄에 격자의 크기를 나타내는 정수 $N$과 $M$ $(1 \\leq N, M \\leq 750)$이 공백으로 구분되어 주어진다.</p>\n<p>둘째 줄부터 $N+1$번째 줄까지 격자의 처음 상태를 나타내는 문자열이 주어진다. 각 문자열은 $0$ 이상 $9$ 이하의 정수, <span style=\"color:#e74c3c;\"><code>#</code></span>, <span style=\"color:#e74c3c;\"><code>.</code></span>만으로 이루어진 길이 $M$인 문자열이다. $i+1$번째 줄의 $j$번째 문자는 $(i,j)$의 상태를 의미한다. $0$ 이상 $9$ 이하의 정수이면 해당하는 정수가 채워져 있다는 것을, <span style=\"color:#e74c3c;\"><code>.</code></span>이면 채워넣을 수 있다는 것을, <code><span style=\"color:#e74c3c;\">#</span></code>이면 검은칠 되어있음을 의미한다.</p>\n<p>$N+2$번째 줄에는 시작점의 위치와 끝점의 위치를 나타내는 네 개의 정수 $S_i, S_j, E_i, E_j$ $(1 \\leq S_i, E_i \\leq N;$ $1 \\leq S_j, E_j \\leq M;$ $(S_i,S_j) \\neq (E_i,E_j))$가 공백으로 구분되어 주어진다. $(S_i, S_j)$와 $(E_i, E_j)$는 <span style=\"color:#e74c3c;\"><code>.</code></span>이다.</p>\n<p>$N+3$번째 줄에는 원하는 최단 거리를 나타내는 정수 $D$ $(0 \\leq D \\leq 4 \\times 10^5)$가 주어진다.</p>",
+  "output": "<p>만약 최단 거리가 정확히 $D$가 되도록 격자를 채울 수 있으면 $N$개의 줄에 걸쳐 격자의 상태를 출력한다. $(i,j)$에 정수가 채워져 있으면 $i$번째 줄 $j$번째 문자로 그 정수를 출력한다. $(i,j)$가 검은칠 되어있는 칸이면 $i$번째 줄 $j$번째 문자로 <span style=\"color:#e74c3c;\"><code>#</code></span>를 출력한다. 정수를 채울 수 있는 모든 칸에 정수를 채워야 하며, 이미 정수가 채워진 칸의 정수를 바꾸면 안 된다.</p>\n<p>만약 최단 거리가 정확히 $D$가 되도록 격자를 채울 수 없으면 대신 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "1 6\n......\n1 1 1 6\n6\n",
+      "output": "600000\n"
+    },
+    {
+      "input": "2 2\n.#\n#.\n1 1 2 2\n10\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "2 2\n.9\n9.\n1 1 2 2\n1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "5 5\n.#...\n.#.#.\n.#.#.\n.###.\n.....\n1 1 3 3\n12\n",
+      "output": "0#000\n0#0#0\n8#0#4\n0###0\n00000\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 카툰컵, Cartoon Cup: ONE, toycartoon, hibye1217, iktk, kaorin, ksoosung77, ohwphil, qvixnh22, utilforever, yyyy7089",
+  "level": 19,
+  "tags": [
+    "graphs",
+    "binary_search",
+    "shortest_path",
+    "dijkstra",
+    "grid_graph",
+    "dial"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.6875
+}

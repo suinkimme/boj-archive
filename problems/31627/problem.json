@@ -1,0 +1,43 @@
+{
+  "id": 31627,
+  "title": "Road Service 2",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In JOI city, there is a grid-shaped road network consisting of $H$ infinitely long east-west roads and $W$ infinitely long north-south roads. Intersection $(i, j)$ ($1 ≤ i ≤ H$, $1 ≤ j ≤ W$) is the intersection where the $i$-th northernmost east-west road and the $j$-th westernmost north-south road cross.</p>\n<p>Currently, part of the roads is closed due to poor road conditions. Specifically, the status of the roads is as follows:</p>\n<ul>\n<li>The segment in the $i$-th northernmost east-west road ($1 ≤ i ≤ H$) connecting intersection $(i, j)$ and intersection $(i, j + 1)$ ($1 ≤ j ≤ W - 1$) is closed if $A_{i, j} = 0$ and passable if $A_{i, j} = 1$.</li>\n<li>The segment in the $j$-th westernmost north-south road ($1 ≤ j ≤ W$) connecting intersection $(i, j)$ and intersection $(i + 1, j)$ ($1 ≤ i ≤ H - 1$) is closed if $B_{i, j} = 0$ and passable if $B_{i, j} = 1$.</li>\n<li>The other part of the roads (the part of roads outside the $H \\times W$ intersections) is closed.</li>\n</ul>\n<p>President K, the mayor of JOI city, decided to make a <strong>repair plan</strong> of the road network. A repair plan consists of zero or more <strong>repairs</strong>. A repair is done by choosing an integer $i$ satisfying $1 ≤ i ≤ H$ and doing the following:</p>\n<blockquote>\n<p>For <strong>every</strong> integer $j$ satisfying $1 ≤ j ≤ W - 1$, make the segment in the $i$-th northernmost east-west road connecting intersection $(i, j)$ and intersection $(i, j + 1)$ passable (if it is closed).</p>\n<p>The repair takes $C_i$ days. Note that $C_i$ is either $1$ or $2$.</p>\n</blockquote>\n<p>Since no two repairs in a repair plan can be done in parallel, the <strong>period</strong> of a repair plan is equal to the sum of the time taken by repairs consisting the repair plan.</p>\n<p>President K thinks that securing the route between city facilities is important and asks you $Q$ questions. The $k$-th questions ($1 ≤ k ≤ Q$) is as follows:</p>\n<blockquote>\n<p>Is there a repair plan that makes $T_k$ intersections $(X_{k,1}, Y_{k,1}), (X_{k,2}, Y_{k,2}), \\dots , (X_{k,T_k}, Y_{k,T_k})$ mutually reachable? If so, what is the minimum possible period of such a repair plan?</p>\n</blockquote>\n<p>Write a program which, given the status of the road network, the days taken by repairing each east-west road and the details of the questions by President K, answers all the questions.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<blockquote>\n<p>$H$ $W$ $Q$</p>\n<p>$A_{1,1}A_{1,2} \\cdots A_{1,W-1}$</p>\n<p>$A_{2,1}A_{2,2} \\cdots A_{2,W-1}$</p>\n<p>$\\vdots$</p>\n<p>$A_{H,1}A_{H,2} \\cdots A_{H,W-1}$</p>\n<p>$B_{1,1}B_{1,2} \\cdots B_{1,W}$</p>\n<p>$B_{2,1}B_{2,2} \\cdots B_{2,W}$</p>\n<p>$\\vdots$</p>\n<p>$B_{H-1,1}B_{H-1,2} \\cdots B_{H-1,W}$</p>\n<p>$C_1$ $C_2$ $\\cdots$ $C_H$</p>\n<p>$Query_1$</p>\n<p>$Query_2$</p>\n<p>$\\vdots$</p>\n<p>$Query_Q$</p>\n</blockquote>\n<p>Here, $Query_k$ ($1 ≤ k ≤ Q$) is as follows:</p>\n<blockquote>\n<p>$T_k$</p>\n<p>$X_{k,1}$ $Y_{k,1}$</p>\n<p>$X_{k,2}$ $Y_{k,2}$</p>\n<p>$\\vdots$</p>\n<p>$X_{k,T_k}$ $Y_{k,T_k}$</p>\n</blockquote>",
+  "output": "<p>Write $Q$ lines to the standard output. In the $k$-th line ($1 ≤ k ≤ Q$), output the minimum possible period, in days, of a repair plan that makes $T_k$ intersections $(X_{k,1}, Y_{k,1}), (X_{k,2}, Y_{k,2}), \\dots , (X_{k,T_k}, Y_{k,T_k})$ mutually reachable if such a repair plan exists. Otherwise, output <code>-1</code>.</p>",
+  "samples": [
+    {
+      "input": "4 3 4\n00\n00\n00\n00\n100\n001\n000\n1 1 1 1\n2\n1 1\n3 3\n2\n3 1\n1 2\n2\n2 3\n3 3\n2\n4 2\n3 2\n",
+      "output": "1\n3\n0\n-1\n"
+    },
+    {
+      "input": "4 4 4\n100\n110\n011\n010\n0010\n1001\n0101\n1 1 1 1\n2\n1 2\n3 1\n2\n1 4\n4 1\n2\n3 2\n1 2\n2\n4 3\n1 1\n",
+      "output": "1\n3\n2\n2\n"
+    },
+    {
+      "input": "7 3 3\n10\n00\n00\n10\n00\n01\n00\n110\n101\n011\n001\n110\n100\n1 1 1 1 1 1 1\n3\n7 2\n3 1\n3 2\n3\n3 1\n6 3\n2 3\n7\n2 2\n1 3\n7 3\n5 2\n1 2\n7 2\n3 1\n",
+      "output": "3\n2\n4\n"
+    },
+    {
+      "input": "4 3 3\n00\n00\n10\n00\n110\n011\n001\n1 2 2 2\n2\n1 1\n3 1\n2\n4 3\n2 1\n2\n4 1\n1 3\n",
+      "output": "1\n2\n5\n"
+    },
+    {
+      "input": "7 3 2\n01\n00\n00\n00\n00\n10\n01\n100\n110\n011\n001\n101\n001\n1 1 2 1 1 2 2\n3\n7 2\n1 3\n5 1\n5\n1 1\n2 2\n3 1\n2 3\n4 2\n",
+      "output": "4\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Japanese Olympiad in Informatics, JOI 2023/2024",
+  "level": 26,
+  "tags": [
+    "data_structures",
+    "dp",
+    "implementation",
+    "sparse_table"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 3.25
+}

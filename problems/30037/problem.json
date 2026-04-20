@@ -1,0 +1,27 @@
+{
+  "id": 30037,
+  "title": "K-Words Problem",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>아티초크는 교양과목 '한국 문화로 보는 프로그래밍 언어론'을 수강 중이다.</p>\n<p>아티초크는 지난주에 과제로 '아희가 한국 문화에 미친 영향'을 주제로 $5\\,000$단어 분량의 보고서를 작성했는데, 이번 주에는 이 보고서를 짧게 요약하는 과제가 나왔다.</p>\n<p>이번 학기에 전공과목만 $7$과목을 수강하고 있었던 아티초크는 보고서 요약을 직접 할 여유가 없었다.</p>\n<p>따라서 아래의 규칙에 따라 보고서를 요약해주는 프로그램을 만들기로 했다. 규칙은 다음과 같다.</p>\n<ol>\n<li>보고서에 단어 'Korea'가 등장할 경우, 다음에 나오는 단어와 합쳐 'K-단어'로 축약한다. (ex. Korea language → K-Language)\n\t<ul>\n<li>단어 'Korea'는 대문자와 소문자를 구분한다.</li>\n<li>단어 'Korea' 다음에 나오는 단어의 첫 글자가 소문자일 경우 대문자로 변환한다.</li>\n<li>이 규칙을 여러 번 연달아 적용할 수 있는 경우 뒤에서부터 적용한다.</li>\n<li>단어 'Korea' 뒤에 문장 부호가 붙어 있는 경우 이 규칙을 적용할 수 없다.</li>\n</ul>\n</li>\n<li>보고서에 단어 'of' 직후에 단어 'Korea'가 등장할 경우, 단어 'of' 직전에 나오는 단어와 합쳐 K-단어로 축약한다. (ex. Language of Korea → K-Language)\n\t<ul>\n<li>단어 'of'와 'Korea'는 대문자와 소문자를 구분한다.</li>\n<li>단어 'of' 직전에 나오는 단어의 첫 글자가 소문자일 경우 대문자로 변환한다.</li>\n<li>이 규칙을 여러 번 연달아 적용할 수 있는 경우 앞에서부터 적용한다.</li>\n<li>단어 'of' 뒤에 문장 부호가 붙어 있는 경우 이 규칙을 적용할 수 없다.</li>\n<li>단어 'of' 앞에 단어가 없거나, 단어 'of' 직전에 나오는 단어에 문장 부호가 붙어 있는 경우 이 규칙을 적용할 수 없다.</li>\n<li>단어 'Korea' 뒤에 문장 부호가 붙어있는 경우, 단어 'Korea' 뒤의 문장 부호를 단어 'of' 직전에 나오는 단어 뒤에 붙인다. </li>\n</ul>\n</li>\n<li>1번 규칙과 2번 규칙을 한 문장에 동시에 적용할 수 있는 경우, 2번 규칙을 먼저 적용한다.</li>\n</ol>\n<p>아티초크는 전공 과제가 너무 밀려, 보고서 요약 프로그램을 작성할 여유조차 없었다. 그런 아티초크를 대신하여 구현해 보자.</p>",
+  "input": "<p>첫 번째 줄에 문장의 개수 $N (1 \\le N \\le 5\\,000)$ 이 주어진다.</p>\n<p>다음 $N$개의 줄에 알파벳 대소문자와 문장부호 느낌표(!), 물음표(?), 쉼표(,), 마침표(.)로 구성된 문장이 주어진다.</p>\n<p>각 문장들은 하나 이상의 단어로 이루어져 있으며, 각 단어마다 하나 이상의 알파벳이 존재함이 보장된다.</p>\n<p>한 단어의 길이는 최대 $50$자, 입력으로 들어오는 단어들의 수의 합은 $5\\,000$을 넘지 않는다.</p>\n<p>단어들 사이는 하나의 공백(띄어쓰기)로 구분하며, 문장들 사이는 줄바꿈 문자로 구분한다.</p>\n<p>문장부호는 단어의 끝에서만 등장할 수 있으며, 단어 하나당 문장부호는 최대 $1$개까지 들어갈 수 있다.</p>\n<p>특히 마침표의 경우 문장의 마지막 단어에 반드시 등장하며, 이외의 위치에서는 등장하지 않는다.</p>",
+  "output": "<p>$N$개의 줄에 문제에서 제시된 규칙에 맞게 요약된 보고서를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "7\nArtichoke in Korea Army uses Aheui.\nAheui, the best language of Korea.\nKorea is our country.\nof Korea? Korea Korea Aheui of Korea.\nLanguage of, Korea Korea.\nAheui has shown the greatness of Korea of Korea.\nkorea Korea! koRea Of Korea of Korea oF kORea.\n",
+      "output": "Artichoke in K-Army uses Aheui.\nAheui, the best K-Language.\nK-Is our country.\nof Korea? K-K-K-Aheui.\nLanguage of, K-Korea.\nAheui has shown the K-K-Greatness.\nkorea Korea! koRea Of K-Korea oF kORea.\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 유틸컵, 제1회 유틸컵 - Chapter 2, artichoke42, chogahui05, heeda0528, index, kidw0124, snrnsidy, utilforever",
+  "level": 13,
+  "tags": [
+    "data_structures",
+    "implementation",
+    "stack",
+    "string"
+  ],
+  "accepted_user_count": 133,
+  "submission_count": null,
+  "average_tries": 3.4511001110076904
+}

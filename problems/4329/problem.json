@@ -1,0 +1,30 @@
+{
+  "id": 4329,
+  "title": "Genealogical Research",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>These days, everyone seems to be exploring their ancestry. This effort is supported by family history software, now marketed by a number of vendors. Unfortunately this software is expensive and runs only on the McDoze X operating system. You are to write an open-source equivalent.</p>",
+  "input": "<p>Your program accepts a series of commands, one per line. The commands are described by the following syntax:</p>\n<pre>\n   <em>command</em> ::= <em>birth</em>\n           ::= <em>death</em>\n           ::= <em>ancestors</em>\n           ::= <em>descendants</em> \n           ::= QUIT\n   \n   <em>birth</em> ::= BIRTH <em>child</em>: <em>date</em>: <em>mother</em>: <em>father</em>\n\n   <em>death</em> ::= DEATH <em>person</em>: <em>date</em>\n\n   <em>ancestors</em> ::= ANCESTORS <em>person</em>\n\n   <em>descendants</em> ::= DESCENDANTS <em>person</em>\n   \n   <em>child</em> ::= <em>name</em>\n\n   <em>mother</em> ::= <em>name</em>\n\n   <em>father</em> ::= <em>name</em>\n\n   <em>person</em> ::= <em>name</em>\n\n   <em>date</em> ::= <em>name</em>\n\n   <em>name</em> ::= <em>&lt;&lt;any sequence of characters not beginning or ending\n                       with a space or containing a colon&gt;&gt;</em>\n</pre>\n<p>Spaces in the input are ignored except where they appear within <em>name</em>. The BIRTH and DEATH commands record the birth and death of an individual. You may assume that each individual has a unique name. The ANCESTORS and DESCENDANTS commands are queries: they print a family tree or a reverse family tree for the named person, using the BIRTH and DEATH information entered by previous commands. The QUIT command indicates the end of input.</p>\n<p>The BIRTH, DEATH, and QUIT commands have no output. For each ANCESTORS (DESCENDANTS) command, print the following information:</p>\n<ul>\n<li>1. Print a line containing \"ANCESTORS of\" (\"DESCENDANTS of\") followed by the person's name</li>\n<li>2. Indented 2 spaces from the previous line, print the person's first parent (child) in alphabetical order, followed by the parent's (child's) birth date, followed by a space, followed by a hyphen, and, if the parent (child) has died, another space and the date of death. If there is no birth record for the parent (child), print the name alone.</li>\n<li>3. Print the ancestry (descendant) information for the parent (child), indented another 2 spaces, using these same steps (i.e. steps 2-4).</li>\n<li>4. Repeat steps 2-4 for the remaining parent (children). Indentation should be the same as for the previous parent (child).</li>\n</ul>\n<p>Leave an empty line between the output sequences for successive commands.</p>\n<p>You may assume that no input line exceeds 100 characters, and that there are not more than 250 lines of input. You may assume that DEATH, ANCESTORS, and DESCENDANTS commands refer to a name for which a BIRTH command has previously been given. QUIT appears only as the last line of input.</p>",
+  "output": "",
+  "samples": [
+    {
+      "input": "BIRTH John Doe : January 7, 1599 : Jane Doe : Adam Doe\nBIRTH Mary Worth : May 18, 1666 : Jane Doe : Adam Doe\nBIRTH Casper Ghost : Jan 2, 1959 : Mary Worth : John Doe\nDEATH Mary Worth : Jan 3, 1959\nANCESTORS Casper Ghost\nDESCENDANTS John Doe\nQUIT\n",
+      "output": "ANCESTORS of Casper Ghost\n  John Doe January 7, 1599 -\n    Adam Doe\n    Jane Doe\n  Mary Worth May 18, 1666 - Jan 3, 1959\n    Adam Doe\n    Jane Doe\n\nDESCENDANTS of John Doe\n  Casper Ghost Jan 2, 1959 -\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Waterloo's local Programming Contests, 20 September, 2003",
+  "level": 12,
+  "tags": [
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "parsing",
+    "recursion",
+    "string",
+    "set"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.5
+}

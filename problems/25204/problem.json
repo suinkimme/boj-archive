@@ -1,0 +1,26 @@
+{
+  "id": 25204,
+  "title": "문자열 정렬",
+  "time_limit": "1 초  (하단 참고)",
+  "memory_limit": "512 MB",
+  "description": "<p>Bob은 문자열 정렬기를 만들어야한다.</p>\r\n\r\n<p>문자열은 영문 알파벳 이외에도 붙임표 (&#39;<code>-</code>&#39;)가 들어가는 경우가 있기 때문에 처리가 까다롭다. 이 문제에 한해, 서로 다른 두 문자열 $X$, $Y$의 &quot;사전식&quot; 순서는 아래 규칙에 따라 정한다:</p>\r\n\r\n<ol>\r\n\t<li>$X$가 $Y$의 접두사인 (prefix) 경우 $X$가 $Y$보다 앞선다. 반대로, $Y$가 $X$의 접두사인 경우 $Y$가 $X$보다 앞선다.</li>\r\n\t<li>위 경우에 해당하지 않을 경우: 첫번째 문자부터 시작하여 $X$, $Y$가 처음으로 <em>달라지는 부분이</em> $i$번째 문자라 하자. $X$의 $i$번째 문자를 $X_i$, $Y$의 $i$번째 문자를 $Y_i$라 했을 때:\r\n\t<ol>\r\n\t\t<li>둘 중 하나만 붙임표 (&#39;<code>-</code>&#39;)인 경우, 붙임표가 들어간 문자열이 사전순에서 뒤진다. 예를 들어, $X_i$가 붙임표이고 $Y_i$가 붙임표가 아닌 경우, $Y$가 앞선다.</li>\r\n\t\t<li>둘 다 알파벳인 경우, 대소문자를 무시했을 때 서로 다른 알파벳이라면, 알파벳 순서를 따른다. 만약 같은 알파벳이지만 하나만 대문자인 경우 대문자가 들어간 문자열이 사전순에서 앞선다.</li>\r\n\t</ol>\r\n\t</li>\r\n</ol>\r\n\r\n<p>예를 들어, 아래와 같은 문자열 쌍을 비교해보자:</p>\r\n\r\n<ul>\r\n\t<li>$X = $&quot;<code>Santa-Mar</code>&quot; 과 $Y = $&quot;<code>Santa-Maria</code>&quot;: 이 경우 규칙 1에 따라 $X$가 앞선다. $X$가 $Y$의 접두사이기 때문이다.</li>\r\n\t<li>$X = $&quot;<code>San-Francisco</code>&quot; 와 $Y = $&quot;<code>Santa-Clara</code>&quot;: 이 경우 처음 $3$개의 문자는 같지만 $4$번째 문자가 &#39;<code>-</code>&#39;와 &#39;<code>t</code>&#39;로 다르다. 규칙 2-1에 따라 $X$가 $Y$에 뒤진다.</li>\r\n\t<li>$X = $&quot;<code>Seoul</code>&quot;과 $Y = $&quot;<code>seoul</code>&quot;: 이 경우 규칙 2-2에 따라 &quot;<code>Seoul</code>&quot;이 앞선다.</li>\r\n</ul>\r\n\r\n<p>입력으로 $n$개의 문자열이 주어졌을 때, 위 규칙에 따라 사전식 정렬 후 출력하는 문자열 정렬기를 만들어보자.</p>\r\n",
+  "input": "<p>첫 줄에 테스트 케이스의 수 $T$가 주어진다.</p>\r\n\r\n<p>각 테스트 케이스의 첫 줄에는 $n$이 주어진다. 다음 $n$줄에 걸쳐 각 줄에 문자열이 하나씩 주어진다.</p>\r\n",
+  "output": "<p>각 테스트 케이스의 정답을 $n$줄에 걸쳐 출력한다. 각 줄에는 사전순으로 정렬된 문자열 하나씩을 순서대로 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "4\n3\nAa-\na-A\nAa-\n7\nSan-Francisco\nSanta-Clara\nSanta-Clarita\nSan-Luis-Obispo\nSan-Pedro\nSaint-Paul\nSaint-Louis\n2\nSanta-mar\nSanta-Mar\n3\n-\n--\n---\n",
+      "output": "Aa-\nAa-\na-A\nSaint-Louis\nSaint-Paul\nSanta-Clara\nSanta-Clarita\nSan-Francisco\nSan-Luis-Obispo\nSan-Pedro\nSanta-Mar\nSanta-mar\n-\n--\n---\n"
+    }
+  ],
+  "hint": null,
+  "source": null,
+  "level": 7,
+  "tags": [
+    "implementation",
+    "string",
+    "sorting"
+  ],
+  "accepted_user_count": 170,
+  "submission_count": null,
+  "average_tries": 2.311800003051758
+}

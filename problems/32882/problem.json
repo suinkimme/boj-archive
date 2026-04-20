@@ -1,0 +1,25 @@
+{
+  "id": 32882,
+  "title": "Line-Based Matrix Addition",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>You are given an $N \\times N$ matrix $A$.</p>\n<p>Two types of lines exist on the matrix: rising and falling. There are $2N-1$ lines for each type, where rising lines are numbered $\\mathrm{RL}_i$ and falling lines are numbered $\\mathrm{FL}_i$ for each $1 \\le i \\le 2N-1$. The below picture illustrates the line layout when $N=5$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 100%; max-width: 540px;\"/></p>\n<p>You have to perform $Q$ cumulative queries in order on this matrix, which is given by the input as:</p>\n<ul>\n<li><span style=\"color:#e74c3c;\">$s_\\mathrm{R}$ $e_\\mathrm{R}$ $s_\\mathrm{F}$ $e_\\mathrm{F}$ $v$</span>.</li>\n</ul>\n<p>Each query specifies two line ranges of different types on the matrix, which is $\\left\\{ \\mathrm{RL}_i \\mid s_\\mathrm{R} \\le i \\le e_\\mathrm{R} \\right\\}$ and $\\left\\{ \\mathrm{FL}_i \\mid s_\\mathrm{F} \\le i \\le e_\\mathrm{F} \\right\\}$, and a value $v$. You should add the value $v$ to every element in the <strong>intersection</strong> of such range, i.e., $$\\left\\{ \\mathrm{RL}_i \\mid s_\\mathrm{R} \\le i \\le e_\\mathrm{R} \\right\\} \\quad \\cap \\quad \\left\\{ \\mathrm{FL}_i \\mid s_\\mathrm{F} \\le i \\le e_\\mathrm{F} \\right\\}.$$</p>\n<p>The following example illustrates the elements to update when $N=5$, $[s_\\mathrm{R},e_\\mathrm{R}]=[5,6]$, and $[s_\\mathrm{F},e_\\mathrm{F}]=[3,7]$:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 100%; max-width: 320px;\"/></p>\n<p>Write a program to perform the queries and output the final status of the matrix $A$.</p>",
+  "input": "<p>The first line of input contains a single integer, $N$, denoting the matrix size. ($1 \\le N \\le 1\\,000$)</p>\n<p>The next $N$ lines of input contain $N^2$ integers, where each line has $N$ space-separated integers, denoting the value of the matrix. Here, the $j$-th integer of the $i$-th line denotes $A_{ij}$. ($-10^9 \\le A_{ij} \\le 10^9$)</p>\n<p>The next line contains a single integer, $Q$, denoting the query count. ($1 \\le Q \\le 200\\,000$)</p>\n<p>The $i$-th of the next $Q$ lines of input contain five space-separated integers: $s_\\mathrm{R}$, $e_\\mathrm{R}$, $s_\\mathrm{F}$, $e_\\mathrm{F}$, and $v$, denoting the $i$-th query explained earlier. ($1 \\le s_\\mathrm{R} \\le e_\\mathrm{R} \\le 2N-1;$ $1 \\le s_\\mathrm{F} \\le e_\\mathrm{F} \\le 2N-1;$ $-10^9 \\le v \\le 10^9$)</p>",
+  "output": "<p>Output $N$ lines denoting the updated value of the matrix $A$. Each line should contain $N$ space-separated integers. The $j$-th integer of the $i$-th line should represent $A_{ij}$.</p>",
+  "samples": [
+    {
+      "input": "5\n110 120 130 140 150\n210 220 230 240 250\n310 320 330 340 350\n410 420 430 440 450\n510 520 530 540 550\n2\n5 6 3 7 15\n2 3 4 5 24\n",
+      "output": "110 144 130 140 150\n210 244 230 255 250\n310 320 345 355 350\n410 435 445 440 450\n510 520 530 540 550\n"
+    }
+  ],
+  "hint": "<p>(For Sogang students:) Note that this problem is an improvised version that matches the format of a problem in a general programming contest. While in the exam, the original scoring was:</p>\n<ul>\n<li>$40$ points for Subtask 1.</li>\n<li>$30$ points for Subtask 2.</li>\n<li>$25$ points for Subtask 3.</li>\n<li>$5$ points for Subtask 4.</li>\n</ul>",
+  "source": "University, 서강대학교, CSE4152 문제해결프로그래밍실습, 2024-2학기 중간고사 코딩 테스트, shiftpsh",
+  "level": 14,
+  "tags": [
+    "prefix_sum",
+    "difference_array"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 2.894700050354004
+}

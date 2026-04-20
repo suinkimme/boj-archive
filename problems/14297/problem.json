@@ -1,0 +1,22 @@
+{
+  "id": 14297,
+  "title": "Sorting Array (Large)",
+  "time_limit": "30 초",
+  "memory_limit": "512 MB",
+  "description": "<p>We are in the process of creating a somehow esoteric sorting algorithm to sort an array A of all integers between 1 and <b>N</b>. The integers in A can start in an arbitrary order. Besides the input order, the algorithm depends on two integers <b>P</b>(which would be at most 3) and <b>K</b>. Here is how the algorithms works:</p>\n<ol>\n<li>Partition A into <b>K</b> disjoint non-empty subarrays A<sub>1</sub>, A<sub>2</sub>, ..., A<sub><i>K</i></sub> such that such that concatenating them in order A<sub>1</sub>A<sub>2</sub> ... A<sub><i>K</i></sub> produces A.</li>\n<li>Sort each subarray individually.</li>\n<li>Choose up to <b>P</b> of the subarrays, and swap any two of them any number of times.</li>\n</ol>\n<p>For example, consider A = [1 5 4 3 2] and <b>P</b> = 2. A possible partition into <b>K</b> = 4 disjoint subarrays is:</p>\n<pre>\nA<sub><i>1</i></sub> = [1]\nA<sub><i>2</i></sub> = [5]\nA<sub><i>3</i></sub> = [4]\nA<sub><i>4</i></sub> = [3 2]\n\nAfter Sorting Each Subarray:\n\nA<sub><i>1</i></sub> = [1]\nA<sub><i>2</i></sub> = [5]\nA<sub><i>3</i></sub> = [4]\nA<sub><i>4</i></sub> = [2 3]\n\nAfter swapping A<sub><i>4</i></sub> and A<sub><i>2</i></sub>:\n\nA<sub><i>1</i></sub> = [1]\nA<sub><i>2</i></sub> = [2 3]\nA<sub><i>3</i></sub> = [4]\nA<sub><i>4</i></sub> = [5]\n</pre>\n<p>We want to show the algorithm is good for distributed environments by finding, for a fixed input and value of <b>P</b>, the maximum number of partitions <b>K</b> such that, choosing the partitions and swaps wisely, we can achieve a sorting of the original order. Can you help us to calculate that <b>K</b>?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>.</p>\n<p><b>T</b> test cases follow. Each test case consists of two lines. The first line contains two integers <b>N</b> and <b>P</b>, as described above.</p>\n<p>The second line of the test case contains <b>N</b> integers <b>X<sub>1</sub></b>, <b>X<sub>2</sub></b>, ..., <b>X<sub>N</sub></b> represting array A.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the maximum possible value for the parameter <b>K</b>.</p>",
+  "samples": [
+    {
+      "input": "5\n5 2\n1 5 4 3 2\n5 2\n4 5 1 2 3\n6 2\n6 3 5 2 4 1\n5 3\n4 5 1 2 3\n6 3\n1 2 6 4 5 3\n",
+      "output": "Case #1: 4\nCase #2: 2\nCase #3: 3\nCase #4: 3\nCase #5: 6\n"
+    }
+  ],
+  "hint": "<p>Case #1: Same as walk through in the statement.</p>\n<p>Case #2:</p>\n<pre>\n[4 5] [1 2 3]\nSwap the 2 blocks: [1 2 3] [4 5]</pre>\n<p>Case #3:</p>\n<pre>\n[6] [3 5 2 4] [1]\nSort [3 5 2 4], then swap [6] and [1], we get: [1] [2 3 4 5] [6]</pre>\n<p>Case #4:</p>\n<pre>\n[4 5] [1] [2 3]\nSwap [4 5] and [1], then swap [2 3] and [4 5]: [1] [2 3] [4 5]</pre>\n<p>Case #5:</p>\n<pre>\n[1] [2] [6] [4] [5] [3]\nSwap [6] and [3]: [1] [2] [3] [4] [5] [6]</pre>\n<p><b>Note:</b> First 3 sample cases would not appear in the Large dataset and the last 2 sample cases would not appear in the Small dataset.</p>",
+  "source": "Contest, Google, Google's Coding Competitions, Google APAC 2017 University Test, Round E APAC Test 2017, Contest, Google, Kick Start, Google Kick Start 2016, Round E",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

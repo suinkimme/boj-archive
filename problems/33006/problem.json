@@ -1,0 +1,37 @@
+{
+  "id": 33006,
+  "title": "Remodeling the Dungeon 2",
+  "time_limit": "8 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The Queen of the Kingdom of <em>Icpca</em> resides in a castle peacefully. One day, she decided to remodel the dungeon of the castle.</p>\n<p>The dungeon is a rectangular grid consisting of square cells. Some cells are enterable rooms, while others are duct spaces which are not enterable. All pairs of adjacent cells are separated by a wall. Some of the walls between two adjacent rooms are installed with a door to go back and forth. Any pair of rooms in the dungeon has connecting paths through these doors.</p>\n<p>The Queen wants to remodel the dungeon so that there is only one unique path between any pair of rooms. Additionally, any pair of rooms both with only one door should be connected with a path going through an even number of doors. Due to the cost limitation, what can be done in the remodeling is only to block some (possibly zero) doors.</p>\n<p>Your mission is to find a way to remodel the dungeon as the Queen wants.</p>",
+  "input": "<p>The input consists of a single test case in the following format.</p>\n<blockquote>\n<p>$h$ $w$</p>\n<p>$c_{1,1}c_{1,2} \\cdots c_{1,2w+1}$</p>\n<p>$c_{2,1}c_{2,2} \\cdots c_{2,2w+1}$</p>\n<p>$\\vdots$</p>\n<p>$c_{2h+1,1}c_{2h+1,2} \\cdots c_{2h+1,2w+1}$</p>\n</blockquote>\n<p>Two integers $h$ and $w$ mean that the dungeon size is $h \\times w$. They are between $1$ and $400$, inclusive.</p>\n<p>Each of the characters $c_{i,j}$ ($1 ≤ i ≤ 2h + 1$, $1 ≤ j ≤ 2w + 1$) is either ‘<code>.</code>’ or ‘<code>#</code>’. These characters represent the configuration of the dungeon as follows.</p>\n<ul>\n<li>When both $i$ and $j$ are even, $c_{i,j}$ represents the cell located at the $i/2$-th row from the north and the $j/2$-th column from the west of the dungeon, referred to as cell $(i/2, j/2)$. Being ‘<code>.</code>’ indicates that the cell is a room, while ‘<code>#</code>’ indicates a duct space.</li>\n<li>When $i$ is odd and $j$ is even, it represents a wall. When $i = 1$ or $i = 2h+ 1$, it is a part of the outer wall of the dungeon. In this case, $c_{i,j}$ is always ‘<code>#</code>’. Otherwise, $c_{i,j}$ represents the wall between cells $((i - 1)/2, j/2)$ and $((i + 1)/2, j/2)$. Being ‘<code>.</code>’ indicates that the wall has a door, while ‘<code>#</code>’ indicates that it does not. Doors are installed only in walls between two rooms.</li>\n<li>When $i$ is even and $j$ is odd, it also represents a wall. When $j = 1$ or $j = 2w + 1$, it is a part of the outer wall of the dungeon. In this case, $c_{i,j}$ is always ‘<code>#</code>’. Otherwise, $c_{i,j}$ represents the wall between cells $(i/2,(j - 1)/2)$ and $(i/2,(j + 1)/2)$. Being ‘<code>.</code>’ indicates that the wall has a door, while ‘<code>#</code>’ indicates that it does not. Doors are installed only in walls between two rooms.</li>\n<li>When both $i$ and $j$ are odd, $c_{i,j}$ is always ‘<code>#</code>’, corresponding to an intersection of walls.</li>\n</ul>\n<p>It is guaranteed that there is at least one room in the dungeon and any pair of rooms in the dungeon has one or more connecting paths.</p>",
+  "output": "<p>If it is impossible to remodel the dungeon as the Queen wants, output No. Otherwise, output Yes on the first line, followed by the configuration of the dungeon after the remodeling in the same format as the input. If there are multiple possible configurations, any one of them is acceptable.</p>",
+  "samples": [
+    {
+      "input": "3 3\n#######\n#.....#\n#.#.###\n#.#...#\n#.#.#.#\n#.....#\n#######\n",
+      "output": "Yes\n#######\n#.....#\n#.#####\n#.#...#\n#.###.#\n#.....#\n#######\n"
+    },
+    {
+      "input": "3 3\n#######\n#.....#\n###.###\n###...#\n###.#.#\n#.....#\n#######\n",
+      "output": "Yes\n#######\n#.....#\n###.###\n###...#\n#####.#\n#.....#\n#######\n"
+    },
+    {
+      "input": "3 3\n#######\n#.....#\n#.###.#\n#.###.#\n#.###.#\n#.....#\n#######\n",
+      "output": "No\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, 2024 ICPC Asia Yokohama Regional Contest",
+  "level": 28,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "disjoint_set",
+    "bipartite_matching"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2.142899990081787
+}

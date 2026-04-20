@@ -1,0 +1,41 @@
+{
+  "id": 22448,
+  "title": "Unordered Operators",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>小学生のイクタ君は、ある日おじいさんから数式が書かれた紙をもらった。 どうやらおじいさんは数式の答えの金額だけお小遣いをくれるらしい。 イクタ君はまだ足し算、引き算、掛け算しか習ってなかったので、数式にも足し算と引き算と掛け算しか使われていない。 通常の計算では足し算と引き算より掛け算を先に計算しなければならないのだが、イクタ君は演算子の優先順位についての理解があやふやだったので、とりあえず数式の計算結果が最大になるような都合の良い優先順位を考えることにした。</p>\n<p>$+-×$の3つの二項演算子と括弧を含む数式が与えられる。 3つの演算子の優先順位を任意に変更して、数式を最大化したときの計算結果を答えよ。</p>\n<p>ただし、以下の点に注意せよ。</p>\n<ul>\n<li>\n<p>演算子は必ず左結合である。 (同じ優先順位の演算子は必ず数式の左側から計算する。)</p>\n</li>\n<li>\n<p>異なる演算子が同じ優先順位であってもよい。</p>\n</li>\n<li>\n<p>一つの数式を計算している途中で優先順位を変更してはならない。</p>\n</li>\n</ul>",
+  "input": "<p>入力は以下の形式で与えられる。 0〜9の数字と演算子'+','-','*'、括弧'(',')'で構成された数式</p>\n<ul>\n<li>\n<p>正確に記述すると入力は以下のBNFで示される形式になっている</p>\n</li>\n</ul>\n<pre>\n&lt;expr&gt; ::= ( &lt;expr&gt; ) | &lt;number&gt; | &lt;expr&gt; &lt;op&gt; &lt;expr&gt; \n&lt;op&gt; ::= + | - | *\n</pre>\n<p>&lt;number&gt;は非負整数を表す。</p>",
+  "output": "<p>数式から得られる最大値を1行で出力せよ。\n\n\t\t\t\t\t</p>",
+  "samples": [
+    {
+      "input": "3-2*3\n",
+      "output": "3\n"
+    },
+    {
+      "input": "(5-3*4)*(0-2+1)\n",
+      "output": "21\n"
+    },
+    {
+      "input": "1-2+3-4+5-6*0\n",
+      "output": "3\n"
+    },
+    {
+      "input": "(1989967-3*1-211+4487)\n",
+      "output": "8511076028\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2013 Day 3",
+  "level": 15,
+  "tags": [
+    "data_structures",
+    "string",
+    "bruteforcing",
+    "parsing",
+    "stack",
+    "recursion"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.615399956703186
+}

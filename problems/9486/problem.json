@@ -1,0 +1,26 @@
+{
+  "id": 9486,
+  "title": "이름 남기기",
+  "time_limit": "12 초",
+  "memory_limit": "128 MB",
+  "description": "<p>꿍이 자기가 좋아하는 게임에서 최고득점을 달성했다! 이제 이름만 입력하면 되는데 몇 가지 귀찮은 과정이 남아있다.</p>\r\n\r\n<ul>\r\n\t<li>입력할 수 있는 글자는 A부터 Z까지 26개의 대문자밖에 없다. 숫자도, 공백도, 소문자도, 그 어떠한 다른 문자도 없다.</li>\r\n\t<li>UP과 DOWN을 누르면 입력하려는 문자가 바뀐다. 처음 문자는 A로 설정되어 있으며 A에서 DOWN을 누르면 Z로, Z에서 UP을 누르면 A로 바뀐다.&nbsp;</li>\r\n\t<li>LEFT와 RIGHT를 누르면 커서를 한 칸씩 움직일 수 있다. 커서가 한 쪽 끝에 있다면 커서는 그 방향으로는 더이상 움직일 수 없다.</li>\r\n\t<li>FIRE를 누르면 입력하려는 문자가 입력된다.</li>\r\n</ul>\r\n\r\n<p>예를 들어, &#39;ALMA&#39;라는 문자를 입력한다고 가정하자. 그렇다면 꿍은 다음과 같이 &#39;ALMA&#39;를 입력할 수 있다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:60%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th style=\"width:15%\">행동</th>\r\n\t\t\t<th style=\"width:15%\">누른 횟수</th>\r\n\t\t\t<th style=\"width:15%\">입력된 이름 (| = 커서)</th>\r\n\t\t\t<th style=\"width:15%\">입력하려는 문자</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>FIRE</td>\r\n\t\t\t<td>1</td><td>A|</td>\r\n\t\t\t<td>A</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>UP</td>\r\n\t\t\t<td>11</td>\r\n\t\t\t<td>A|</td>\r\n\t\t\t<td>L</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>FIRE</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>AL|</td>\r\n\t\t\t<td>L</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>UP</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>AL|</td>\r\n\t\t\t<td>M</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>FIRE</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>ALM|</td>\r\n\t\t\t<td>M</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>DOWN</td>\r\n\t\t\t<td>12</td>\r\n\t\t\t<td>ALM|</td>\r\n\t\t\t<td>A</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>FIRE</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>ALMA|</td>\r\n\t\t\t<td>A</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>이렇게 하면 28번을 눌러 이름을 입력할 수 있다. 하지만 다음과 같은 경우를 생각해보자.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:60%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th style=\"width:15%\">행동</th>\r\n\t\t\t<th style=\"width:15%\">누른 횟수</th>\r\n\t\t\t<th style=\"width:15%\">입력된 이름 (| = 커서)</th>\r\n\t\t\t<th style=\"width:15%\">입력하려는 문자</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>FIRE</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>A|</td>\r\n\t\t\t<td>A</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>FIRE</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>AA|</td>\r\n\t\t\t<td>A</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>LEFT</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>A|A</td>\r\n\t\t\t<td>A</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>UP</td>\r\n\t\t\t<td>11</td>\r\n\t\t\t<td>A|A</td>\r\n\t\t\t<td>L</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>FIRE</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>AL|A</td>\r\n\t\t\t<td>L</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>UP</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>AL|A</td>\r\n\t\t\t<td>M</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>FIRE</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>ALM|A</td>\r\n\t\t\t<td>M</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>이렇게 하면 17번만 눌러도 이름을 입력할 수 있다. 다른 이름을 입력할 때, 가장 적게 버튼을 눌러서 이름을 입력하려면 몇 번을 눌러야 할까? 입력하려는 문자는 A로 시작하며, 이름을 다 입력했을 때 커서의 위치는 상관없다고 하자.</p>\r\n",
+  "input": "<p>각 테스트 케이스에 대해 길이가 1~18인 대문자로만 이루어진 한 줄의 이름이 주어진다. 입력의 마지막은 0 하나만 주어진다.</p>\r\n",
+  "output": "<p>각 테스트 케이스에 대해 각 줄에&nbsp;이름을 입력할 때 가장 적게 버튼을 누르는 횟수가 몇번인지 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "ALMA\nYES\n0\n",
+      "output": "17\n21\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Southeast USA Regional, 2013 Southeast USA Regional Programming Contest, Division 1, seok9311",
+  "level": 16,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 2.142899990081787
+}

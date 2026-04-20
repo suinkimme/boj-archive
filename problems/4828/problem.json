@@ -1,0 +1,29 @@
+{
+  "id": 4828,
+  "title": "XML",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>인터넷프로그래밍 교수 이다솜은 XML이야말로 세상을 바꿀 혁신적인 언어라고 믿으며, 항상 학생들에게 XML의 장점을 어필한다. 그러나 잘못 사용되었다가는 지구를 파괴할 수도 있는 무시무시한 부작용도 존재하기에, 문법이 맞게 되었는지를 판정하는 파서가 필요하게 되었다. 그러나 이다솜은 XML을 할 줄 모르기에 여러분이 판독기를 구현해야 한다.</p>\r\n\r\n<p>우리가 XML 문서의 형식이 유효한지 판별하는 기준은 다음과 같다.</p>\r\n\r\n<ol>\r\n\t<li>평문---32~127 사이에 있는(32, 127도 포함) ASCII코드값으로 이루어지며, 다음 문자는 포함되면 안 된다: &lt;, &gt;, &amp;</li>\r\n\t<li>다음과 같은 문자열:\r\n\t<ul>\r\n\t\t<li>&amp;lt;</li>\r\n\t\t<li>&amp;gt;</li>\r\n\t\t<li>&amp;amp;</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>이것들은 각각 &lt;, &gt;, &amp;를 인코딩한다.</li>\r\n\t<li>&amp;xHEX; HEX는 양의 짝수 자릿수의 16진수여야 하며, 0~9 또는 알파벳 A~F 대소문자로 이루어진다.</li>\r\n\t<li>&lt;tag&gt; 여는 태그이다. 태그는 숫자 또는 알파벳 소문자로 이루어진 문자열이어야 한다. 이 태그는 context 스택에 push된다.</li>\r\n\t<li>&lt;tag/&gt; 이 태그는 context 스택에 push되지 않는다.</li>\r\n\t<li>&lt;/tag&gt; 닫는 태그이다. context 스택의 맨 위에 있는 태그를 pop하게 된다. 단, 이때 맨 위에 있는 태그와 이 태그의 문자열이 일치해야 한다.</li>\r\n</ol>\r\n\r\n<p>문서 전체가 파싱된 후에는 context 스택은 비어 있어야 한다. 또한, 빈 문자열 역시 유효하다고 판정한다.</p>\r\n",
+  "input": "<p>여러 줄의 입력이 주어진다. 각 줄에 대해 유효한 XML 문법인지를 판별한다. 각 줄은 ASCII 코드 값이 32~127인 문자로만 이루어져 있으며, 비어 있는 줄이 들어올 수도 있다. 입력은 파일 끝에서 종료된다.</p>\r\n",
+  "output": "<p>각 줄에 대하여, 해당 줄이 유효한 XML 문법을 가지고 있다면 valid를, 그렇지 않다면 invalid를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "the quick brown fox.\nthe <i><b>quick</b> brown</i> fox.\n<doc>fox &amp; socks.</doc>\n3x+5&gt;7\nNull: &x00;\n<doc>the quick brown fox.\nthe <i>quick <b>brown</i></b> fox\nfox & socks.\n3x+5>7\nNull: &x0;\n",
+      "output": "valid\nvalid\nvalid\nvalid\nvalid\ninvalid\ninvalid\ninvalid\ninvalid\ninvalid\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, 2009 Rocky Mountain Regional Contest, kks227, sait2000, spotky1004, yukariko",
+  "level": 16,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "parsing",
+    "stack",
+    "regex"
+  ],
+  "accepted_user_count": 143,
+  "submission_count": null,
+  "average_tries": 7.4475998878479
+}

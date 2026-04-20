@@ -1,0 +1,22 @@
+{
+  "id": 31113,
+  "title": "Data Structure",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In compute science, a stack $s$ is a data structure maintaining a list of elements with two operations:</p>\n<ol>\n<li>$s.\\mathtt{push}(e)$ appends an element $e$ to the right end of the list,</li>\n<li>$s.\\mathtt{pop}()$ removes the rightmost element in the list and returns the removed element.</li>\n</ol>\n<p>For convenience, Bobo denotes the number of elements in the stack $s$ by $\\mathtt{size}(s)$, and the rightmost element by $\\mathtt{right}(s)$.</p>\n<p>Bobo has $m$ stacks $s_1, \\dots, s_m$. Initially, the stack $s_i$ contains $k_i$ elements $a_{i, 1}, \\dots, a_{i, k_i}$ where $a_{i, j} \\in \\{1, \\dots, n\\}$. Furthermore, for each $e \\in \\{1, \\dots, n\\}$, the element $e$ occurs in the $m$ stacks <strong>exactly twice</strong>. Thus, $k_1 + \\dots + k_m = 2 n$.</p>\n<p>A sorting plan of length $l$ consists of $l$ pairs $(f_1, t_1), \\dots, (f_l, t_l)$. To execute a sorting plan, for each $i \\in \\{1, \\dots ,l\\}$ in the increasing order, Bobo performs $s_{t_i}.\\mathtt{push}(s_{f_i}.\\mathtt{pop}())$.</p>\n<p>A sorting plan is <em>valid</em> if the length does not exceed $\\lfloor \\frac{3n}{2} \\rfloor$, and for each $i \\in \\{1, \\dots, l\\}$, $1 \\leq f_i, t_i \\leq m$, $f_i \\neq t_i$. Before the $i$-th operation,</p>\n<ul>\n<li>$\\mathtt{size}(s_{f_i}) &gt; 0$,</li>\n<li>$\\mathtt{size}(s_{t_i}) &lt; 2$,</li>\n<li>either $\\mathtt{size}(s_{t_i}) = 0$ or $\\mathtt{right}(s_{f_i}) = \\mathtt{right}(s_{t_i})$.</li>\n</ul>\n<p>Also, after the execution of a valid sorting plan, each of the $m$ stacks either is empty or contains the two copies of the same element.</p>\n<p>Find a valid sorting plan, given the initial configuration of the $m$ stacks.</p>",
+  "input": "<p>The input consists of several test cases terminated by end-of-file. For each test case,</p>\n<p>The first line contains two integers $n$ and $m$.</p>\n<p>For the next $m$ lines, the $i$-th line contains an integer $k_i$, and $k_i$ integers $a_{i, 1}, \\dots, a_{i, k_i}$.</p>",
+  "output": "<p>For each test case, if there exists a valid sorting plan, output an integer $l$, which denotes the length of the sorting plan. Followed by $l$ lines, the $i$-th line contains two integers $f_i$ and $t_i$. Otherwise, output '-1'.</p>\n<p>If there are multiple valid sorting plans, any of them is considered correct.</p>",
+  "samples": [
+    {
+      "input": "2 3\n2 1 2\n2 1 2\n0\n1 1\n2 1 1\n3 4\n2 1 3\n2 2 3\n1 1\n1 2\n",
+      "output": "3\n1 3\n2 3\n2 1\n0\n-1\n"
+    }
+  ],
+  "hint": "<p>For the first test cases,</p>\n<ul>\n<li>Initially, $s_1 = [1, 2]$, $s_2 = [1, 2]$, $s_3 = [\\ ]$.</li>\n<li>After $s_3.\\mathtt{push}(s_1.\\mathtt{pop}())$. $s_1 = [1]$, $s_2 = [1, 2]$, $s_3 = [2]$.</li>\n<li>After $s_3.\\mathtt{push}(s_2.\\mathtt{pop}())$, $s_1 = [1]$, $s_2 = [1]$, $s_3 = [2, 2]$.</li>\n<li>After $s_1.\\mathtt{push}(s_2.\\mathtt{pop}())$, $s_1 = [1, 1]$, $s_2 = [\\ ]$, $s_3 = [2, 2]$.</li>\n</ul>\n<p>For the second test case, the initial configuration is already sorted.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 18: Grand Prix of Beijing",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

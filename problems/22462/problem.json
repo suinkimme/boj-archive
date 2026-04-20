@@ -1,0 +1,35 @@
+{
+  "id": 22462,
+  "title": "A Holiday of Miss Brute Force",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>全探索お姉さんはとても優秀な女性である。 お姉さんは格子状の道の経路の数え上げを数千程度なら簡単に数え上げてしまう。 あなたと全探索お姉さんは今、六角形のタイルが敷き詰められた部屋にいる。 お姉さんは初めて見る六角形にとても興奮している様子である。 六角形の並びを座標に表すことに不慣れなお姉さんは図1のような座標系で部屋を表した。</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 247px; height: 305px;\"/></p>\n<p style=\"text-align: center;\">図1</p>\n<p>あなたはこの座標系上である地点からある地点まで移動したい。 しかし、お姉さんは 1 分ごとに動きたい方向をあなたに指示する。 いつものお姉さんなら同じ座標の場所を通らないようにあなたに移動の指示を出すだろう。 しかし、この座標系に不慣れなお姉さんは<var>|x×y×t|</var>(<var>x</var>：<var>x</var> 座標、<var>y</var>：<var>y</var>座標、<var>t</var>:最初の指示からの経過時間[分])を 6 で割った余り に対応する方向（図で示す番号と対応）を指示するだけで、まったくのでたらめな方向にあなたを誘導する。</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 238px; height: 285px;\"/></p>\n<p style=\"text-align: center;\">図2</p>\n<p>お姉さんを傷つけたくないあなたは、お姉さんの指示をできるだけ守りつつ目的地までたどり着きたい。 あなたは許された行動は下の 7 つの行動である。</p>\n<ul>\n<li>方向 0 へ 1 タイル移動</li>\n<li>方向 1 へ 1 タイル移動</li>\n<li>方向 2 へ 1 タイル移動</li>\n<li>方向 3 へ 1 タイル移動</li>\n<li>方向 4 へ 1 タイル移動</li>\n<li>方向 5 へ 1 タイル移動</li>\n<li>その場に留まる</li>\n</ul>\n<p>お姉さんが指示を出した直後にあなたはこれら行動のうちの必ず1つを行う。 部屋には家具があり家具が配置されているタイルの中に移動することはできない。 また、<var>y</var> 座標の絶対値が <var>ly</var> を超えたり <var>x</var> 座標の絶対値が <var>lx</var> を超えるような移動は許されていない。 しかし、お姉さんはそのような移動を指示することがある。 指示を無視するとはお姉さんが示した方向と異なる方向へ移動するか、 もしくは、その場に留まることである。 目的地にたどり着くために最小で何度指示を無視すれば良いかを出力せよ。 目的地にたどり着くことが不可能な場合は -1 を出力せよ。</p>",
+  "input": "<p>入力は以下の形式で与えられる。</p>\n<pre>\n<var>sx</var> <var>sy</var> <var>gx</var> <var>gy</var>\n<var>n</var>\n<var>x<sub>1</sub></var> <var>y<sub>1</sub></var>\n...\n<var>x<sub>i</sub></var> <var>y<sub>i</sub></var>\n...\n<var>x<sub>n</sub></var> <var>y<sub>n</sub></var>\n<var>lx</var> <var>ly</var>\n</pre>\n<p>ここで、</p>\n<ul>\n<li><var>sx</var>, <var>sy</var> は出発地点の座標</li>\n<li><var>gx</var>, <var>gy</var> は目的地の座標</li>\n<li><var>n</var> は部屋に配置されている家具の数</li>\n<li><var>x<sub>i</sub></var>, <var>y<sub>i</sub></var> は家具があるタイルの座標</li>\n<li><var>lx</var>, <var>ly</var> は移動できる <var>X</var>, <var>Y</var> それぞれの座標の絶対値の上限 である。</li>\n</ul>",
+  "output": "<p>\n出力は1つの整数を含む1行で出力せよ。\n目的地にたどり着ける場合は、最小の指示を無視する回数を出力せよ。\n目的地にたどり着くことが不可能な場合は-1を出力せよ。\n</p>",
+  "samples": [
+    {
+      "input": "0 0 0 2\n0\n2 2\n",
+      "output": "0\n"
+    },
+    {
+      "input": "0 0 0 2\n6\n0 1\n1 0\n1 -1\n0 -1\n-1 -1\n-1 0\n2 2\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "0 0 0 2\n1\n0 1\n2 2\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2012 Day 2",
+  "level": 15,
+  "tags": [
+    "0_1_bfs",
+    "dijkstra",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.7143000364303589
+}

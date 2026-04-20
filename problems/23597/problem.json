@@ -1,0 +1,26 @@
+{
+  "id": 23597,
+  "title": "Rocket",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>The secret design bureau of the X Institution, or just the <em>Bureau</em>, is working on an ambitious project: they are building a rocket which must reach the Sun and land on its suface. The rocket design is very complicated, however, the blueprints are ready, and a set of the necessary structural parts has been approved. For the $i$-th detail, the Bureau is considering $K_i$ appropriate basic materials, each characterized by two values$m_{ij}$ and $c_{ij}$. $m_{ij}$ is the mass of the detail made completely of that particular basic material, and $c_{ij}$ is its cost in this case.</p>\n<p>The material for the $i$-th detail can be one of the $K_i$ basic materials or an alloy of two basic materials. In case of an alloy of two basic materials with the masses $m_1$, $m_2$ and the costs $c_1$, $c_2$ in the proportion of $\\alpha \\in (0; 1)$, the resulting part has the mass $\\alpha m_1 + (1 - \\alpha) m_2$ and the cost $\\alpha c_1 + (1 - \\alpha) c_2$. The engineers are not sure about the durability of three-material alloys. Perhaps we shouldn't bother with them, either.</p>\n<p>Your task is to decide for each of the $N$ parts, which material it should be made of in order to minimize its cost. The rocket must be able to take off, so the total mass of all parts must not be greater than $M$.</p>",
+  "input": "<p>The first line of the input file contains two positive integers $N$ and $M$  --- the number of parts necessary for building the rocket and the maximal total mass of all parts ($1 \\leq M \\leq 10^9$).</p>\n<p>Next come $N$ blocks of lines. The $i$-th block provides the description of the $i$-th part. The description of the $i$-th block begins from a line containing a positive integer $K_i$. It is followed by $K_i$ lines, with the $j$-th line containing two integers $m_{ij}$ and $c_{ij}$  --- the mass and cost of the $i$-th part made entirely of the $j$-th recommended basic material ($1 \\leq m_{ij}, c_{ij} \\leq 10^9$).</p>\n<p>It is guaranteed that $\\sum\\limits_{i=1}^N K_i \\leq 10^5$. It is also guaranteed that there is a solution.</p>",
+  "output": "<p>The first line of the output file must contain the minimal possible cost of the rocket as a real number. The $i$-th of the following lines must contain the description of the optimal material for the $i$-th part ($1 \\le i \\le N$).</p>\n<p>The description of the material for the $i$-th part must have the following structure.</p>\n<p>If the $i$-th part must be made of a basic material, the description line has the format \"$1$ $A$\", where the integer $A$ is the number of the basic material ($1 \\leq A \\leq K_i$).</p>\n<p>If the $i$-th part must be made of an alloy of two basic materials, the description line must have the format \"$2$ $A$ $B$ $X$ $Y$\", where the integers $A$ and $B$ are the numbers of basic materials ($1 \\leq A, B \\leq K_i$), and the integers $X$ и $Y$ are the numenator and denominator of the alloy proportion ($0 &lt; X &lt; Y \\leq 10^{9}$, $\\alpha = \\frac{X}{Y}$).</p>\n<p>It is required for proportions of all alloys in your answer to have the same denominator $Y$. It is guaranteed that solution satisfying this condition exists. The relative or absolute error of your answer (the minimal cost of the rocket) must be less than or equal $10^{-12}$.</p>",
+  "samples": [
+    {
+      "input": "2 11\n3\n4 3\n6 3\n7 8\n4\n9 5\n10 3\n6 5\n7 6\n",
+      "output": "7.5000000000\n1 1\n2 3 2 3 4\n"
+    },
+    {
+      "input": "2 4\n2\n1 2\n2 3\n2\n3 2\n2 5\n",
+      "output": "4.0\n1 1\n1 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 4: Grand Prix of Eurasia",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

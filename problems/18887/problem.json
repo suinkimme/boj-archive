@@ -1,0 +1,36 @@
+{
+  "id": 18887,
+  "title": "New Year and Conference",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Filled with optimism, Hyunuk will host a conference about how great this new year will be!</p>\n<p>The conference will have $n$ lectures. Hyunuk has two candidate venues $a$ and $b$. For each of the $n$ lectures, the speaker specified two time intervals $[sa_i, ea_i]$ ($sa_i \\le ea_i$) and $[sb_i, eb_i]$ ($sb_i \\le eb_i$). If the conference is situated in venue $a$, the lecture will be held from $sa_i$ to $ea_i$, and if the conference is situated in venue $b$, the lecture will be held from $sb_i$ to $eb_i$. Hyunuk will choose one of these venues and <strong>all</strong> lectures will be held at that venue.</p>\n<p>Two lectures are said to overlap if they share any point in time in common. Formally, a lecture held in interval $[x, y]$ overlaps with a lecture held in interval $[u, v]$ if and only if $\\max(x, u) \\le \\min(y, v)$.</p>\n<p>We say that a participant can <em>attend</em> a subset $s$ of the lectures if the lectures in $s$ do not pairwise overlap (i.e. no two lectures overlap). Note that the possibility of attending may depend on whether Hyunuk selected venue $a$ or venue $b$ to hold the conference.</p>\n<p>A subset of lectures $s$ is said to be <em>venue-sensitive</em> if, for one of the venues, the participant can attend $s$, but for the other venue, the participant cannot attend $s$.</p>\n<p>A venue-sensitive set is problematic for a participant who is interested in attending the lectures in $s$ because the participant cannot be sure whether the lecture times will overlap. Hyunuk will be happy if and only if there are no venue-sensitive sets. Determine whether Hyunuk will be happy.</p>",
+  "input": "<p>The first line contains an integer $n$ ($1 \\le n \\le 100\\,000$), the number of lectures held in the conference.</p>\n<p>Each of the next $n$ lines contains four integers $sa_i$, $ea_i$, $sb_i$, $eb_i$ ($1 \\le sa_i, ea_i, sb_i, eb_i \\le 10^9$, $sa_i \\le ea_i, sb_i \\le eb_i$).</p>",
+  "output": "<p>Print \"<code>YES</code>\" if Hyunuk will be happy. Print \"<code>NO</code>\" otherwise.</p>",
+  "samples": [
+    {
+      "input": "2\n1 2 3 6\n3 4 7 8\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "3\n1 3 2 4\n4 5 6 7\n3 4 5 5\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "6\n1 5 2 9\n2 4 5 8\n3 6 7 11\n7 10 12 16\n8 11 13 17\n9 12 14 18\n",
+      "output": "YES\n"
+    }
+  ],
+  "hint": "<p>In second example, lecture set $\\{1, 3\\}$ is venue-sensitive. Because participant can't attend this lectures in venue $a$, but can attend in venue $b$.</p>\n<p>In first and third example, venue-sensitive set does not exist.</p>",
+  "source": "Contest, Codeforces, Hello 2020, jwvg0425",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "sorting",
+    "segtree",
+    "sweeping",
+    "tree_set"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 1.3243000507354736
+}

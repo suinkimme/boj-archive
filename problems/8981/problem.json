@@ -1,0 +1,32 @@
+{
+  "id": 8981,
+  "title": "입력숫자",
+  "time_limit": "1 초",
+  "memory_limit": "32 MB",
+  "description": "<p>아래 mystery.c는 입력파일 X를 읽어서 그 안에 기록된 N개의 정수를 배열 NUM에 저장한 뒤에 이 N개의 수를 어떤 순서에 따라서 화면에 출력하는 프로그램이다. mystery.c가 X를 입력으로 받아 화면에 출력한 결과를 Y라고 하자. </p>\n<pre>\n#include &lt;stdio.h&gt;\nint NUM[101] ;\nFILE *fin ;\nint main(){\n    int i, token,N ;\n    int count=0, from= 0, value ;\n    fin = fopen(\"X\",\"r\");\n    fscanf(fin,\"%d\",&amp;N);\n    for(i=0; i&lt;N; i++){\n        fscanf(fin,\"%d\",&amp;token);\n        NUM[i]= token;\n    } /* end of for */\n    printf(\"%d\\n\", N ) ;\n    value = NUM[ from ] ;\n    while( count &lt; N ) {\n        while( value == 0 ) { \n            from = (from+1)%N; \n            value = NUM[ from ] ; \n        } /* end of inner while */ \n        printf(\"%d \", value ) ;\n        count++ ;\n        NUM[ from ] = 0 ; \n        from = (value +from )% N ; \n        value = NUM[ from ] ; \n    } /* end of outer while */\n    return(0);\n} /* end of main() */</pre>\n<p>여러분은 mystery.c에서 생성된 Y를 파일로 받아서 그것의 입력에 해당하는 X를 찾아내는 프로그램을 작성해야 한다. </p>",
+  "input": "<p>첫 줄에는 정수 N (1 ≤ N ≤ 30)이 주어진다. 그리고 두 번째 줄에는 100이하 양의 정수 N개가 빈칸을 사이에 두고 모두 나열되어 있다. 단 그 정수 중에는 같은 수가 있을 수도 있다.</p>",
+  "output": "<p>첫 줄에는 정수 N이 제시되어 있고, 그 다음 줄에는 N개의 양의 정수가 빈칸을 사이에 두고 기록되어 있어야 한다. 만일 입력을 생성하는 mystery.c의 입력파일 X가 없는 경우에는 음수인 -1 을 첫 줄에 출력하면 된다.</p>",
+  "samples": [
+    {
+      "input": "5\n1 2 4 3 5\n",
+      "output": "5\n1 2 3 4 5\n"
+    },
+    {
+      "input": "10\n1 2 4 8 6 3 7 5 10 9\n",
+      "output": "10\n1 2 3 4 5 6 7 8 9 10\n"
+    },
+    {
+      "input": "10\n5 5 7 4 33 10 9 3 2 6\n",
+      "output": "10\n5 7 33 2 6 5 10 9 4 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, 한국정보올림피아드, KOI 2013, 초등부, Olympiad, 한국정보올림피아드, KOI 2013, 중등부",
+  "level": 11,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 650,
+  "submission_count": null,
+  "average_tries": 1.5262000560760498
+}

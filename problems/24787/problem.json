@@ -1,0 +1,34 @@
+{
+  "id": 24787,
+  "title": "Cowboy Checkers",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 240px; height: 240px;\"/><img alt=\"\" src=\"2.png\" style=\"width: 240px; height: 240px;\"/></p>\n<p style=\"text-align: center;\">Figure 1: Left: the layout of the board at the beginning of the game. Right: a position that results in a win for White. Source: <a href=\"https://en.wikipedia.org/wiki/Nine_Men's_Morris\">Wikimedia Commons</a></p>\n<p>Theta likes to play a board game called Cowboy Checkers, also known under the name  \"Nine Men's Morris.\" This strategy board game, which dates at least to the Roman Empire, is played by two players on a grid with $24$ intersections, or points, as shown on the left in Figure 1. Each player has nine pieces represented by white and black colors. During the initial phase of the game, players take turns placing pieces on the board at unoccupied intersections. Once all pieces have been placed, players take turns moving pieces.  Pieces can be moved along the lines of the board from one intersection (or corner) to any connected open intersection (or corner).</p>\n<p>The goal of the game is to take one's opponent's pieces, which is accomplished by forming \"mills,\" which consist of three pieces that are either horizontally or vertically adjacent.  For instance, Figure 1 shows two mills: white has a mill consisting of the pieces on <code>e3</code>, <code>e4</code>, and <code>e5</code>, and black has a mill consisting of the pieces on <code>f2</code>, <code>f4</code>, and <code>f6</code>.</p>\n<p>Each time a player forms a mill they can take one piece from their opponent. Thus, a desirable position, which almost always results in a win, is a \"double mill\": in this position, the player whose turn it is can move one piece from one mill such that it closes (completes) another mill.  In the next move, the player can move back, closing the first mill again and reopening the second. For instance, in Figure 1, White has created a double mill: the move <code>e3</code> to <code>d3</code> would close a mill consisting of <code>d1</code>, <code>d2</code>, and <code>d3</code> while simultaneously creating an open mill <code>e4</code>, <code>e5</code>.</p>\n<p>Theta is pretty good at spotting double mills - can you write a program that does the same?</p>",
+  "input": "<p>The input consists of a single test case. This test case consists of $7$ lines with $7$ characters each.  The letters <code>B</code> and <code>W</code> denote black and white pieces, respectively.  The character <code>.</code> denotes an open corner or intersection, except in the center of the board, where it has no significance.  The characters <code>|</code> and <code>-</code> are used to denote connector lines that may not contain any pieces. All inputs represents valid positions as far as which points may contain pieces, as displayed on the left in Figure 1. There may be up to nine black and up to nine white pieces on the board.</p>",
+  "output": "<p>If White has at least one double mill, output <code>double mill</code>, else output <code>no double mill</code>!</p>",
+  "samples": [
+    {
+      "input": ".--.--.\n|.-.-B|\n||..W||\n.BB.WB.\n||..W||\n|B-W-B|\n.--W--.\n",
+      "output": "double mill\n"
+    },
+    {
+      "input": ".--.--.\n|.-.-.|\n||...||\n.......\n||...||\n|.-.-.|\n.--.--.\n",
+      "output": "no double mill\n"
+    },
+    {
+      "input": "B--.--.\n|W-.-.|\n||BBB||\n......B\n||WWW||\n|W-.-W|\n.--B--B\n",
+      "output": "double mill\n"
+    },
+    {
+      "input": "B--B--.\n|W-.-B|\n||BBB||\n.W....B\n||WWW||\n|W-W-W|\n.--B--B\n",
+      "output": "no double mill\n"
+    }
+  ],
+  "hint": null,
+  "source": ", School, Virginia Tech High School Programming Contest, 2016 Virginia Tech High School Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

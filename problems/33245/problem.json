@@ -1,0 +1,33 @@
+{
+  "id": 33245,
+  "title": "Halt and Catch Fire",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Research has led to the creating of a new super fast CPU called the Fast Processing Chip (FPC). This product has a never-before seen debugging function: an instruction called <code>hcf</code>, providing debugging power unmatched by any previously designed CPU.</p>\n<p>With the product becoming popular fast, companies can't wait to get their hands on the chip to start development immediately. One problem, however, is the chip is too expensive to just hand over to every developer all willy-nilly.</p>\n<p>You have been hired to design a program that runs as if it were a processor, so the programmers can write programs and easily test these programs without needing the hardware.</p>",
+  "input": "<ul>\n<li>One line with one integer: $1 \\leq n \\leq 1000$, the number of lines in the program.</li>\n<li>$n$ lines with three sections, separated with spaces:\n\t<ul>\n<li>The operation, always 3 characters</li>\n<li>An argument: Either an integer $-2^{31} \\leq a \\leq 2^{31}-1$ or a variable prepended with <code>$</code></li>\n<li>An argument: Either an integer $-2^{31} \\leq b \\leq 2^{31}-1$ or a variable prepended with <code>$</code></li>\n</ul>\n</li>\n</ul>\n<p>There are five possible operations:</p>\n<ul>\n<li><code>mov</code> -- Move value from the first argument to the second</li>\n<li><code>add</code> -- Add value from the second argument to the first and store in <code>$acc</code></li>\n<li><code>sub</code> -- Subtract value of the second argument from the first and store in <code>$acc</code></li>\n<li><code>jeq</code> -- Jump to the instruction on the value of the second argument if the value of the first argument equals <code>$cmp</code></li>\n<li><code>hcf</code> -- Halt and Catch Fire: Stop the program immediately, takes only integer arguments</li>\n</ul>\n<p>An argument can be noted as an integer immediate or a variable reference, in which case it's prepended by <code>$</code>. All variable names consist of at most 20 lowercase characters from the English alphabet (<code>a-z</code>) or underscores (<code>_</code>).</p>\n<p>There are four predefined variables:</p>\n<ul>\n<li><code>$acc</code> -- Contains the value of an <code>add</code> or <code>sub</code> operation</li>\n<li><code>$pc </code> -- Contains the address of the currently processed operation</li>\n<li><code>$cmp</code> -- Used to compare with the <code>jeq</code> operation</li>\n<li><code>$out</code> -- Should be output when the program finishes</li>\n</ul>\n<p>Any other variables are defined as soon as a value is moved to them.</p>\n<p>Assume any given input program to be syntactically correct.</p>\n<p>Integers will never over- or underflow.</p>",
+  "output": "<p>The program exits either when the value of the <code>$pc</code> variable reaches out of the bounds of the program, or when an <code>hcf</code> instruction is reached.</p>\n<ul>\n<li>In the first case, output one line containing the value of <code>$out</code> at the end of the program.</li>\n<li>In the second case, output the following:\n\t<ul>\n<li>One line containing the <code>hcf</code> instruction that was called.</li>\n<li>One line containing the content of the <code>$acc</code> variable.</li>\n<li>One line containing the content of the <code>$cmp</code> variable.</li>\n<li>One line containing the content of the <code>$out</code> variable.</li>\n</ul>\n</li>\n</ul>",
+  "samples": [
+    {
+      "input": "6\nmov 3 $cmp\njeq 3 3\njeq $cmp 5\nmov 42 $out\njeq $cmp 7\nmov 50 $out\n",
+      "output": "42\n"
+    },
+    {
+      "input": "4\nmov 3 $cmp\nmov 2 $out\nadd $cmp $out\nhcf 0 0\n",
+      "output": "hcf 0 0\n5\n3\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, Delft University of Technology, Freshmen Programming Contest 2020",
+  "level": 10,
+  "tags": [
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "simulation",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 3.25
+}

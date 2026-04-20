@@ -1,0 +1,30 @@
+{
+  "id": 23903,
+  "title": "Robot Path Decoding",
+  "time_limit": "10 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Your country's space agency has just landed a rover on a new planet. The planet's surface can be thought of as a grid of squares containing 10<sup>9</sup> columns (numbered starting from 1 from west to east) and 10<sup>9</sup> rows (numbered starting from 1 from north to south). Let (w, h) denote the square in the w-th column and the h-th row. The rover begins on the square (1, 1).</p>\n<p>The rover can be maneuvered around on the surface of the planet by sending it a <i>program</i>, which contains a string of characters representing movements in the four cardinal directions. The robot executes each character of the string in order. The rover moves according to the following rules:</p>\n<ul>\n<li><code>N</code>: Move one unit north.</li>\n<li><code>S</code>: Move one unit south.</li>\n<li><code>E</code>: Move one unit east.</li>\n<li><code>W</code>: Move one unit west.</li>\n</ul>\n<p>There is also a special instruction <code>X(Y)</code>, where <code>X</code> is a number between 2 and 9 (inclusive) and <code>Y</code> is a non-empty subprogram. This denotes that the robot should repeat the subprogram <code>Y</code> a total of <code>X</code> times. For example:</p>\n<ul>\n<li><code>2(NWE)</code> is equivalent to <code>NWENWE</code>.</li>\n<li><code>3(S2(E))</code> is equivalent to <code>SEESEESEE</code>.</li>\n<li><code>EEEE4(N)2(SS)</code> is equivalent to <code>EEEENNNNSSSS</code>.</li>\n</ul>\n<p>Since the planet is a spheroid, the first and last columns are adjacent, so moving east from column 10<sup>9</sup> will move the rover to column 1 and moving south from row 10<sup>9</sup> will move the rover to row 1. Similarly, moving west from column 1 will move the rover to column 10<sup>9</sup> and moving north from row 1 will move the rover to row 10<sup>9</sup>. Given a program that the robot will execute, determine the final position of the robot after it has finished all its movements.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> lines follow. Each line contains a single string: the program sent to the rover.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: w h</code>, where <code>x</code> is the test case number (starting from 1) and <code>w h</code> is the final square (w, h) the rover finishes in.</p>",
+  "samples": [
+    {
+      "input": "4\nSSSEEE\nN\nN3(S)N2(E)N\n2(3(NW)2(W2(EE)W))\n",
+      "output": "Case #1: 4 4\nCase #2: 1 1000000000\nCase #3: 3 1\nCase #4: 3 999999995\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, the rover moves three units south, then three units east.</p>\n<p>In Sample Case #2, the rover moves one unit north. Since the planet is a torus, this moves it into row 10<sup>9</sup>.</p>\n<p>In Sample Case #3, the program given to the rover is equivalent to <code>NSSSNEEN</code>.</p>\n<p>In Sample Case #4, the program given to the rover is equivalent to <code>NWNWNWWEEEEWWEEEEWNWNWNWWEEEEWWEEEEW</code>.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2020, Round B",
+  "level": 13,
+  "tags": [
+    "math",
+    "implementation",
+    "data_structures",
+    "string",
+    "simulation",
+    "parsing",
+    "stack"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.1175999641418457
+}

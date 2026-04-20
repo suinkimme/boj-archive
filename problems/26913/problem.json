@@ -1,0 +1,33 @@
+{
+  "id": 26913,
+  "title": "Fotografen",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>En fotograf har tagit många fina foton med sin digitalkamera och kopplar in den i sin dator för att överföra bilderna. Bilderna har tagits med olika vridningar av kameran så nu är vissa av bilderna roterade. Vi kallar de fyra möjliga rotationerna ett foto kan ha för <em>upp</em>, <em>höger</em>, <em>ner</em> och <em>vänster</em> och definierar det som den sida som motsvarar uppåt i bilden. En bild är vänd rätt om den är roterad <em>upp</em>. Datorn visar bilderna i en lista och har en funktion som roterar en bild $90^\\circ$ medurs. Rotationen sker alltså enligt följande ordning:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 475px; height: 100px;\"/></p>\n<p style=\"text-align: center;\">Hur en bild roteras</p>\n<p>Fotografen tycker det verkar tråkigt att rotera foton och bestämmer sig för att göra det till ett roligt spel. Fotografen väljer ett positivt heltal $k$ och bestämmer att det enda sättet att rotera foton är att markera exakt $k$ intill varandra liggande foton ur listan och rotera alla dessa samtidigt. Formellt har fotografen $N$ foton, kalla dem $a_1, a_2, \\dots a_N$. Fotografen kan nu välja ett index $i$ ($1 \\leq i \\leq N-k+1$) och bilderna $a_i, a_{i+1}, ... , a_{i+k-1}$ roteras då $90^\\circ$ medurs. Detta kallar vi en operation.</p>\n<p>Målet med spelet är att vända alla foton rätt med så få operationer som möjligt. Skriv ett program som beräknar det minsta antalet operationer som krävs.</p>",
+  "input": "<p>På första raden står två heltal $N$ och $k$ ($1 \\leq k \\leq N \\leq 100\\,000$), antalet foton totalt respektive antalet foton som måste roteras samtidigt.</p>\n<p>På andra raden står $N$ tecken som representerar fotografiernas rotation från början: <code>U</code> för upp, <code>H</code> för höger, <code>N</code> för ner och <code>V</code> för vänster.</p>",
+  "output": "<p>Skriv ut det minsta antalet operationer som krävs. Om det inte går att vända alla foton rätt, skriv ut $-1$.</p>",
+  "samples": [
+    {
+      "input": "4 2\nUVUH\n",
+      "output": "4\n"
+    },
+    {
+      "input": "8 5\nHUNVVNVH\n",
+      "output": "9\n"
+    },
+    {
+      "input": "5 2\nUUUUV\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>En möjlig optimal lösning är denna: Rotera tre gånger på position 3-4 för att få <code>UVVU</code>, rotera sedan en gång på position 2-3 för att slutligen få <code>UUUU</code>, och vi är klara med fyra operationer utförda.</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2014, Final",
+  "level": 12,
+  "tags": [
+    "greedy",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.1538000106811523
+}

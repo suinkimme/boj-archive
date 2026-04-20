@@ -1,0 +1,35 @@
+{
+  "id": 14639,
+  "title": "Replicate Replicate Rfplicbte",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The owner of the Automatic Cellular Manufacturing corporation has just patented a new process for the mass production of identical parts. Her approach uses a two-dimensional lattice of two-state cells, each of which is either “empty” or “filled.” The exact details are, of course, proprietary.</p>\n<p>Initially, a set of cells in the lattice is filled with a copy of the part that is to be reproduced. In a sequence of discrete steps, each cell in the lattice simultaneously updates its state by examining its own state and those of its eight surrounding neighbors. If an odd number of these nine cells are filled, the cell’s state in the next time step will be filled, otherwise it will be empty. Figure G.1 shows several steps in the replication process for a simple pattern consisting of three filled cells.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:117px; width:624px\"/></p>\n<p style=\"text-align:center\">Figure G.1: The replication process.</p>\n<p>However, a bug has crept into the process. After each update step, one cell in the lattice might spontaneously flip its state. For instance, Figure G.2 shows what might happen if a cell flipped its state after the first time step and another flipped its state after the third time step.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"2.png\" style=\"height:115px; width:624px\"/></p>\n<p style=\"text-align:center\">Figure G.2: Errors in the replication process. This figure corresponds to Sample Input 1.</p>\n<p>Unfortunately, the original patterns were lost, and only the (possibly corrupted) results of the replication remain. Can you write a program to determine a smallest possible nonempty initial pattern that could have resulted in a given final pattern?</p>",
+  "input": "<p>The first line of input contains two integers w (1 ≤ w ≤ 300) and h (1 ≤ h ≤ 300), where w and h are the width and height of the bounding box of the final pattern. Following that are h lines, each containing w characters, giving the final pattern. Each character is either ‘.’ (representing an empty cell) or ‘#’ (representing a filled cell). There is at least one filled cell in the first row, in the last row, in the first column, and in the last column.</p>",
+  "output": "<p>Display a minimum-size nonempty pattern that could have resulted in the given pattern, assuming that at each stage of the replication process at most one cell spontaneously changed state. The size of a pattern is the area of its bounding box. If there is more than one possible minimum-size nonempty starting pattern, any one will be accepted. Use the character ‘.’ for empty cells and ‘#’ for filled cells. Use the minimum number of rows and columns needed to display the pattern.</p>",
+  "samples": [
+    {
+      "input": "10 10\n.#...#...#\n##..##..##\n##.#.##...\n##.#.##...\n.#...#####\n...##..#.#\n......###.\n##.#.##...\n#..#..#..#\n##..##..##\n",
+      "output": ".#\n##\n"
+    },
+    {
+      "input": "8 8\n##..#.##\n#.####.#\n.#.#.#..\n.##.#.##\n.#.#.#..\n.##.#.##\n#..#.###\n##.#.##.\n",
+      "output": "####\n#..#\n#.##\n###.\n"
+    },
+    {
+      "input": "5 4\n#....\n..###\n..###\n..###\n",
+      "output": "#\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ACM-ICPC World Finals 2017",
+  "level": 24,
+  "tags": [
+    "math",
+    "implementation",
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 2.2105000019073486
+}

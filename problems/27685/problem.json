@@ -1,0 +1,27 @@
+{
+  "id": 27685,
+  "title": "Copier",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>We have a strange box with a big red button. There is a sequence of integers in the box. Whenever we push the big red button, the sequence in the box changes. We call the box a “copier”, because the new sequence is created from the old one by copying some contiguous section.</p>\n<p>More precisely, each time the red button is pushed the copier does the following: Suppose that the current sequence in the box is <span class=\"math\"><em>a</em><sub>0</sub>, <em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, …, <em>a</em><sub><em>m</em> − 1</sub></span>. The copier chooses some <span class=\"math\"><em>i</em></span>, <span class=\"math\"><em>j</em></span>, <span class=\"math\"><em>k</em></span> such that <span class=\"math\">0 ≤ <em>i</em> &lt; <em>j</em> ≤ <em>k</em> ≤ <em>m</em></span>. Then the copier inserts a copy of <span class=\"math\"><em>a</em><sub><em>i</em></sub>, …, <em>a</em><sub><em>j</em> − 1</sub></span> immediately after <span class=\"math\"><em>a</em><sub><em>k</em> − 1</sub></span>. Note that <span class=\"math\"><em>j</em> ≤ <em>k</em></span>: the copy is always inserted to the right of the original. Here is how the sequence looks like after the insertion:</p>\n<p><span class=\"math\">$$ a_0, \\dots, a_{i-1}, \\underbrace{a_i, \\dots, a_{j-1}}_{\\rm original}, a_j, \\dots, a_{k-1}, \\underbrace{a_i, \\dots, a_{j-1}}_{\\rm copy}, a_k, \\dots, a_{m-1} $$</span></p>\n<p>In the morning we had some <strong>permutation</strong> of <span class=\"math\">1…ℓ</span> in the box. Then we pushed the button zero or more times. Each time we pushed the button, a new (not necessarily different) triple <span class=\"math\">(<em>i</em>, <em>j</em>, <em>k</em>)</span> was chosen and the sequence was modified as described above. You are given the sequence <span class=\"math\"><em>S</em></span> that was in the copier at the end of the day. Reconstruct the original permutation.</p>",
+  "input": "<p>The first line of the input file contains an integer <em>t</em> ≤ 60 specifying the number of test cases. Each test case is preceded by a blank line.</p>\n<p>Each test case consists of two lines. The first line contains an integer <em>n</em> (3 ≤ <em>n</em> ≤ 100 000) – the length of the final sequence <em>S</em>. The second line contains <em>n</em> integers – the sequence <em>S</em>. For each test case, there is a positive integer ℓ such that <em>S</em> can be produced from some permutation of {1, 2, …, ℓ} using a finite sequence of copier operations.</p>",
+  "output": "<p>For each test case, output a single line with a space-separated list of integers: the original permutation. If there are multiple valid solutions, output any of them.</p>",
+  "samples": [
+    {
+      "input": "3\n\n7\n5 1 4 1 4 2 3\n\n11\n4 3 1 2 3 1 4 3 3 1 4\n\n7\n1 1 1 1 1 1 1\n",
+      "output": "5 1 4 2 3\n4 3 1 2\n1\n"
+    }
+  ],
+  "hint": "<p>The first test case satisfies the conditions for the easy subproblem, the copier duplicated the subsequence <code>1 4</code>. In the second test case we started with <code>4 3 1 2</code>, changed it into <code>(4 3) 1 2 (4 3)</code>, then changed that sequence into <code>4 (3 1) 2 (3 1) 4 3</code>, and finally changed that into <code>4 3 1 2 (3 1 4) 3 (3 1 4)</code>.</p>",
+  "source": ", Contest, Internet Problem Solving Contest, IPSC 2014",
+  "level": 5,
+  "tags": [
+    "implementation",
+    "greedy",
+    "ad_hoc",
+    "set"
+  ],
+  "accepted_user_count": 61,
+  "submission_count": null,
+  "average_tries": 1.114799976348877
+}

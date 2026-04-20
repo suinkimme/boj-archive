@@ -1,0 +1,30 @@
+{
+  "id": 32671,
+  "title": "Ardi, The Hungry Aardvark",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ardi the aardvark arrived at the pet shop tired and hungry. Ardi spotted an ant farm on the next shelf, already populated with lots of yummy-looking crispy ants. Amazingly, it was so 2-dimensional that she could see every tunnel and every ant. Immediately, Ardi begins plotting how to satisfy her hunger after the shop closes. Ardi knows the length of her tongue is 30 cm., which is typical for aardvarks. She can estimate the lengths of the tunnel sections and can count the number of ants in them. Her objective will be to get in and out as quickly as possible using a limited number of probes with her long tongue to reach the maximum number of ants. Ardi wants you to help with the analysis since aardvarks are not known for their computing prowess.</p>\n<p>In preparation for her meal, Ardi wants you to consider multiple (not necessarily all) maximal-length paths that her tongue can take into the tunnels of the ant farm. By doing these calculations in advance, she hopes you can help her to choose the optimal paths to probe during her limited feeding time.</p>\n<p>There is a single entrance to the ant hill that Ardi labels with an 'a'. At that point, there is an intersection where the tunnel forks into at most two branches, with tunnel segments leading to the left or right. Each branch may subdivide similarly at intersections further down. For each listed maximal-length path, Ardi records the length of each tunnel segment and the direction to take at each intersection using an L (for left) and R (for right), with left and right being relative to the direction her tongue would be probing. Ardi does not waste time recording data for segments that are entirely beyond the 30-centimeter reach of her tongue. Any probe with her long tongue down into a tunnel will be terminated at either a dead end or somewhere in the middle of a segment at the full reach of her tongue. Note that the tunnels are too narrow for her to double back with her tongue to go down a different branch during the same probe. Very importantly, Ardi records the number of reachable ants in each segment for a given path, the intent being for you to calculate the maximum total number of ants her tongue can reach. </p>",
+  "input": "<p>The first line of the input contains two integers, the first indicating the number of different paths Ardi has had time to research and record, and the second indicating how many probes with her tongue that she will have the time to complete once she gets her chance. Each subsequent line details one of the maximal-length paths that Ardi wants you to examine, given in no particular order. Each possible path begins with its number of segments. Following that is the sequence of tunnel segments, each segment represented by 4 components: the letter 'R' (for turn right) or 'L' (for turn left), the estimated full length (a positive integer) of the segment (even if its far end is beyond her reach), the number of reachable ants in the segment (there could be more beyond her reach), and finally a lowercase letter designating the node (which could either be an intersection or a dead end) at the far end of the segment. (Nodes are assigned in the order they are first examined, starting with 'a'.) Ardi will never ask about making more than 20 probes, no node or segment will be repeated in the same probe, no two candidate paths will merge further down a path, and there will never be more than 100 ants in any given tunnel segment.</p>\n<p>The ant farm figure shows the configuration for the sample inputs, which are the same except for the number of probes Ardi has time to make. The red annotations indicate the path details. Potential path 2 (abdef) can reach $4+7+3+1=15$ ants. So with time for only one probe as in sample 1, $15$ is the maximum count. But with time for two probes as in sample 2, note that paths 2 (abdef) and 6 (aik) are totally disjoint, and while paths 3 (abdeg) and 4 (abdh) each has more ants than path 2, many of them are already gobbled up in the probe of path 6. Therefore, the $27$ ants from paths 2 and 6 are optimal. Similar arguments can be made for sample 3.</p>",
+  "output": "<p>Print a single integer indicating the maximum number of ants Ardi can catch with the given number of probes through some combination of the provided maximal paths. This will at least get Ardi started.</p>",
+  "samples": [
+    {
+      "input": "6 1\n2 L 10 4 b   R 4 1 c  \n4 L 10 4 b   L 13 7 d   L 5 3 e  R 3 1 f  \n4 L 10 4 b   L 13 7 d   L 5 3 e  L 10 0 g  \n3 L 10 4 b   L 13 7 d   R 4 3 h  \n2 R 15 4 i   R 10 3 j  \n2 R 15 4 i   L 20 8 k  \n",
+      "output": "15\n"
+    },
+    {
+      "input": "6 2\n2 L 10 4 b   R 4 1 c  \n4 L 10 4 b   L 13 7 d   L 5 3 e  R 3 1 f  \n4 L 10 4 b   L 13 7 d   L 5 3 e  L 10 0 g  \n3 L 10 4 b   L 13 7 d   R 4 3 h  \n2 R 15 4 i   R 10 3 j  \n2 R 15 4 i   L 20 8 k  \n",
+      "output": "27\n"
+    },
+    {
+      "input": "6 3\n2 L 10 4 b   R 4 1 c  \n4 L 10 4 b   L 13 7 d   L 5 3 e  R 3 1 f  \n4 L 10 4 b   L 13 7 d   L 5 3 e  L 10 0 g  \n3 L 10 4 b   L 13 7 d   R 4 3 h  \n2 R 15 4 i   R 10 3 j  \n2 R 15 4 i   L 20 8 k  \n",
+      "output": "30\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North Central North America Regional, 2024 North Central NA Regional Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

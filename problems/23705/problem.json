@@ -1,0 +1,31 @@
+{
+  "id": 23705,
+  "title": "CTAHKEB** ANDREW",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p><strong>Cyclic shift</strong> of a sequence $s$ by $k$ ($0 \\leq k &lt; |s|$) positions is the following sequence $s_{k} s_{k+1} \\ldots s_{|s|-1} s_0 s_1 \\ldots s_{k-1}$. Note that 0-indexing is used. For example, cyclic shift by 0 positions is equal to the original sequence.                        </p>\n<p>There is a permutation which is initially equal to the identity permutation ($0, 1, \\ldots, n-1$).</p>\n<p>Process a number of the following queries. Replace a subarray of the permutation by its cyclic shift by some number of positions. Formally you are given $l, r, k$, such that $0\\leq l &lt; r \\leq n, 1 \\leq k &lt; r - l$ and replace the subarray between indices $l$ and $r$ (a half-interval, $l$-th element is included, $r$-th is not) by its cyclic shift by $k$ positions. For example, applying this operation to the permutation $[1, 0, 3, 4, 2]$ with parameters $l = 1, r = 4, k = 1$ results in a permutation $[1, 3, 4, 0, 2]$.</p>\n<p>After each query find the cyclic shift of the permutation which contains the minimal number of inversions.</p>\n<p>The changes of the permutation persist and <u>are not reverted</u> between queries.                </p>",
+  "input": "<p>The first line contains two integers $n$ and $q$ ($2 \\leq n \\leq 10^5,1 \\leq q \\leq 10^5$), length of the permutation and the number of queries, respectively.</p>\n<p>$q$ lines follow. $i$-th of them contains three integers $l_i, r_i, k_i$ ($0 \\leq l_i &lt; r_i \\leq n, 1 \\leq k_i &lt; r_i - l_i$), parameters of the $i$-th query.</p>",
+  "output": "<p>Print $q$ lines. $i$-th of them should contain an integer $k$ ($0 \\leq k &lt; n$), such that after the first $i$ queries cyclic shift of the permutation by $k$ positions contains the minimal number of inversions among cyclic shifts. <u>If there are multiple possible $k$ print the smallest one</u>.</p>",
+  "samples": [
+    {
+      "input": "8 1\n1 7 3\n",
+      "output": "4\n"
+    },
+    {
+      "input": "7 5\n1 7 2\n0 5 1\n2 6 3\n0 5 4\n0 7 5\n",
+      "output": "5\n4\n5\n3\n0\n"
+    }
+  ],
+  "hint": "<p>In the first example after the modification the permutation is $[0, 4, 5, 6, 1, 2, 3, 7]$. Its cyclic shift with the minimal number of inversions is $[1, 2, 3, 7, 0, 4, 5, 6]$.</p>",
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 16: Grand Prix of Moscow",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "trees",
+    "maximum_subarray",
+    "splay_tree"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2.1666998863220215
+}

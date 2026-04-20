@@ -1,0 +1,26 @@
+{
+  "id": 23924,
+  "title": "Merge Cards",
+  "time_limit": "40 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Panko is playing a game with <b>N</b> cards laid out in a row. The i-th card has the integer <b>A<sub>i</sub></b> written on it.</p>\n<p>The game is played in <b>N</b> - 1 rounds. During each round Panko will pick an adjacent pair of cards and <i>merge</i> them. Suppose that the cards have the integers X and Y written on them. To merge two cards, Panko creates a new card with X + Y written on it. He then removes the two original cards from the row and places the new card in their old position. Finally Panko receives X + Y points for the merge. During each round Panko will pick a pair of adjacent cards uniformly at random amongst the set of all available adjacent pairs.</p>\n<p>After all <b>N</b> - 1 rounds, Panko's total score is the sum of points he received for each merge. What is the <a href=\"https://en.wikipedia.org/wiki/Expected_value\">expected value</a> of Panko's total score at the end of the game?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case begins with a line containing the integer <b>N</b>. A second line follows containing <b>N</b> integers, describing the initial row of cards. The i-th integer is <b>A<sub>i</sub></b>.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the expected total score at the end of the game.</p>\n<p><code>y</code> will be considered correct if it is within an absolute or relative error of 10<sup>-6</sup> of the correct answer.</p>",
+  "samples": [
+    {
+      "input": "2\n3\n2 1 10\n5\n19 3 78 2 31\n",
+      "output": "Case #1: 20.000000\nCase #2: 352.33333333\n"
+    }
+  ],
+  "hint": "<p>In sample case #1, <b>N</b> = 3. The initial row of cards is <code>[2, 1, 10]</code>. In the first round, Panko has two choices, of which he will choose one at random.</p>\n<ul>\n<li>If Panko merges the first pair (<code>2, 1</code>), then the row of cards becomes <code>[3, 10]</code>, adding 2 + 1 = 3 points to his total score. In the second round, there is only one pair remaining (<code>3, 10</code>). If he merges them, the row of cards becomes <code>[13]</code>, adding 3 + 10 = 13 points to his total score. Panko ends the game with 3 + 13 = 16 points.</li>\n<li>If Panko merges the second pair (<code>1, 10</code>), then the row of cards becomes <code>[2, 11]</code>, adding 1 + 10 = 11 points to his total score. In the second round, there is only one pair remaining (<code>2, 11</code>). If he merges them, the row of cards becomes <code>[13]</code>, adding 2 + 11 = 13 points to his total score. Panko ends the game with 11 + 13 = 24 points.</li>\n</ul>\n<p>Thus, the expected number of points Panko ends the game with is (16 + 24)/2 = 20.</p>\n<p>In sample case #2, <b>N</b> = 5. The initial row of cards is <code>[19, 3, 78, 2, 31]</code>. There are too many possibilities to list here, so we will only go through one possible game:</p>\n<ul>\n<li>In the first round, if Panko merges the pair (<code>78, 2</code>), then the row of cards becomes <code>[19, 3, 80, 31]</code>, adding 78 + 2 = 80 to his score.</li>\n<li>In the second round, if Panko merges the pair (<code>80, 31</code>), then the row of cards becomes <code>[19, 3, 111]</code>, adding 80 + 31 = 111 to his score.</li>\n<li>In the third round, if Panko merges the pair (<code>19, 3</code>), then the row of cards becomes <code>[22, 111]</code>, adding 19 + 3 = 22 to his score.</li>\n<li>In the fourth round, if Panko merges the pair (<code>22, 111</code>), then the row of cards becomes <code>[133]</code>, adding 22 + 111 = 133 to his score.</li>\n</ul>\n<p>At the end of the game explained above, Panko's total score is 80 + 111 + 22 + 133 = 346.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2020, Round G",
+  "level": 19,
+  "tags": [
+    "math",
+    "probability",
+    "linearity_of_expectation"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.0769000053405762
+}

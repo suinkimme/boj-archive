@@ -1,0 +1,37 @@
+{
+  "id": 10376,
+  "title": "Expression",
+  "time_limit": "10 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In computing, regular expressions is a powerful tool for text search and string matching. In this problem a simplified version of regular expressions is used:</p>\n<ul>\n<li>An empty string “” is a regular expression, only the empty string matches it.</li>\n<li>A single lowercase letter “c” is a regular expression, a string consisting of a single letter c matches it.</li>\n<li>A dot “.” is a regular expression, a string consisting of any single letter matches it.</li>\n<li>Alternation: if α and β are regular expressions then “(α|β)” is a regular expression, a string s matches it only if s matches α or s matches β.</li>\n<li>Concatenation: if α and β are regular expressions then “(αβ)” is a regular expression, a string s matches it only if s = xy, x matches α and y matches β.</li>\n<li>Kleene star: if α is regular expression then “(α∗)” is a regular expression, a string s matches it only if s is empty or s = xy, x is nonempty and matches α and y matches (α∗). In other words, s consists of zero or more strings, each of them matches α.</li>\n</ul>\n<p>Parentheses can be omitted, in this problem Kleene star has the highest priority, concatenation has medium priority and alternation has lowest priority. Thus “abc*|de” means “(ab(c*))|(de)”.</p>\n<p>For example, string “abcabcab” matches “a(bc|a)*ab”, but string “abcbab” does not.</p>\n<p>Your task is to find the shortest string that matches the given regular expression E and contains the given substring S.</p>",
+  "input": "<p>The first line of the input file contains the regular expression E. The second line of the input file contains the substring S (1 ≤ |E| , |S| ≤ 10 000).</p>\n<p>String S consists of lowercase English letters. Expression E consists of lowercase English letters and special characters: dots (‘.’), parentheses (‘(’ and ‘)’), pipes (‘|’), and asterisks (‘*’).</p>",
+  "output": "<p>Output the shortest possible string T that both matches E and contains S as substring. If there are no such strings, output “NO”.</p>\n<p>The string T should contain only lowercase English letters.</p>",
+  "samples": [
+    {
+      "input": "a.*b\nbab\n",
+      "output": "abab\n"
+    },
+    {
+      "input": "(ab)*\nbb\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2014",
+  "level": 25,
+  "tags": [
+    "dp",
+    "graphs",
+    "string",
+    "graph_traversal",
+    "bfs",
+    "shortest_path",
+    "dijkstra",
+    "traceback",
+    "0_1_bfs",
+    "regex"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 4
+}

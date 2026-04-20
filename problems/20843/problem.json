@@ -1,0 +1,34 @@
+{
+  "id": 20843,
+  "title": "Brevoptimering",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Progolympkommittén, bestående av $N$ personer, ska skicka ut kuvert med affischer för kvalet till alla skolor. För att göra processen snabbare har de delat upp uppgifterna som behöver göras. Uppgifterna är bland annat att skriva adresser, sätta på frimärken, lägga i affischerna och stänga kuverten. När en person är klar med ett kuvert skickas det vidare till någon annan person. Det går inte lika snabbt som de hade hoppats på, och därför undrar de vilka som skulle kunna jobba snabbare.</p>\n<p>Varje person $p$ har en egen maximal produktionshastighet $M_p$ kuvert per sekund. Om vi låter $I_p$ vara antalet kuvert som skickas till person $p$ per sekund och låter $U_p$ vara antalet kuvert den blir klar med per sekund så är $U_p = \\min(I_p, M_p)$. En person blir alltså inte klar med fler än $M_p$ brev per sekund, även om hen får fler att arbeta med. Varje person har dessutom att antal personer den skickar de kuvert hen blir klar med. Den behöver inte skicka lika mycket kuvert till varje person, utan varje person får en viss procent av kuverten $p$ skickar. De personer som ingen skickar kuvert till och som därmed är i början av produktionslinjen har $I_p = \\infty$, och därmed $U_p = M_p$ (de har en oändlig hög med kuvert att ta av). Vissa personer skickar inte vidare några kuvert alls, utan lägger dem bara i hög bredvid sig när de är klara.</p>\n<p>För vilka personer gäller att $U_p = M_p$, det vill säga att de jobbar på sin maximala produktionshastighet?</p>",
+  "input": "<p>Den första raden innehåller ett heltal $1 \\le N \\le 10^5$, antalet personer. De nästa $N$ raderna beskriver personerna. Rad $i$ innehåller först heltalet $M_i$, den maximala produktionshastigheten för person $i$ ($1 \\le M_i \\le 10^5$). Därefter kommer ett heltal $k$, och sedan $k$ par av heltal $j$ $w$, som betyder att person $i$ skickar $w$ procent av sina kuvert till person $j$ ($1 \\le w \\le 100$, $1 \\le j \\le N, i \\neq j$). Inget $j$ kan förekomma mer än en gång på en given rad, och summan av $w$:na på raden kommer att vara $100$, såvida inte $k = 0$.</p>\n<p>Låt $S$ beteckna summan av alla $k$. Då gäller $0 \\le S \\le 10^5$.</p>\n<p>Produktionskedjan är designad på ett sådant sätt att ingen person kan få tillbaka ett brev de redan arbetat med.</p>",
+  "output": "<p>Skriv ut en rad med alla $i$ som uppfyller $U_p = M_p$, i stigande ordning.</p>\n<p>Det garanteras att om $U_p = M_p$ så kommer detta stämma med marginal, mer specifikt $I_p - M_p &gt; 10^{-4}$. Om tvärt om $U_p \\neq M_p$ så kommer det finnas marginal åt andra hållet: $M_p - I_p &gt; 10^{-4}$.</p>",
+  "samples": [
+    {
+      "input": "8\n7 0\n10 1 6 100\n8 1 4 100\n9 1 1 100\n11 0\n12 1 5 100\n10 1 3 100\n5 0\n",
+      "output": "1 2 3 7 8\n"
+    },
+    {
+      "input": "10\n16 3 2 50 4 25 6 25\n9 2 9 75 5 25\n2 1 8 100\n5 0\n1 0\n2 2 3 90 7 10\n1 0\n1 0\n5 1 10 100\n6 0\n",
+      "output": "1 5 6 8 9\n"
+    },
+    {
+      "input": "6\n10 3 2 25 3 25 4 50\n1000 1 5 100\n1000 1 5 100\n1000 1 6 100\n1 1 6 100\n1000 0\n",
+      "output": "1 5\n"
+    }
+  ],
+  "hint": "<p>Här följer tre grafer som representerar de tre exempelfallen. Varje person representeras av en nod. På varje kant är mängden kuvert som skickas utskrivet i enheten kps, kuvert per sekund.</p>\n<p>Notera att i testfallsgrupp $1$ skulle enbart exempelfall $1$ kunna förekomma, i testfallsgrupp $2$ enbart exempelfall $2$, och i testfallsgrupp $3$ enbart exempelfall $3$. I testfallsgrupp $4$ och $5$ skulle alla tre exempelfall kunna förekomma.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 632px; height: 268px;\"/></p>\n<p style=\"text-align: center;\">Figure 1: Sample $1$</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 625px; height: 353px;\"/></p>\n<p style=\"text-align: center;\">Figure 2: Sample $2$</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 743px; height: 296px;\"/></p>\n<p style=\"text-align: center;\">Figure 3: Sample $3$</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2019, Online Qualification",
+  "level": 14,
+  "tags": [
+    "graphs",
+    "dag",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1
+}

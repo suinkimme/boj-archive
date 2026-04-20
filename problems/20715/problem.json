@@ -1,0 +1,31 @@
+{
+  "id": 20715,
+  "title": "Island Archipelago",
+  "time_limit": "10 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You live on an island archipelago, where the islands are always changing due to rising and lowering of the sea level.</p>\n<p>You represent the archipelago as an $n\\times n$ grid, where each grid cell can either contain water or land. The archipelago starts out consisting of only water, and water completely surrounds the archipelago outside the boundaries of the grid. Over time, some of the water cells lower to reveal land, and some of the land cells might disappear back into rising water cells.</p>\n<p>If it is possible to walk from a land cell to another land cell by moving left, right, up, or down through only land cells, the two cells are said to be <em>edgewise-connected</em>. An <em>island</em> is a maximal edgewise-connected-component of land cells. Note that there might exist islands within island, i.e. islands within a lake enclosed in an island in the ocean.</p>\n<p>One concern to the archipelago's citizens is whether an island encloses a freshwater lake. A freshwater lake exists on an island if there is some closed loop of land (consisting of steps up, down, left, and right over land cells on the island) that encircles at least one water cell. For example, in the following diagram of an archipelago, where <code>#</code> denotes land and <code> </code> denotes water, there are five islands (two on the left, one in the middle, and two on the right), and only one of them (the outer island on the right) contains a freshwater lake.</p>\n<pre>\n           #####\n           #   #\n##   ####  # # #\n# #  ## #  #  ##\n ##  ###   #####</pre>\n<p>As the water levels are changing, you want to know the total number of islands, and the number of islands that do not contain a freshwater lake.</p>",
+  "input": "<p>The first line of input contains two space-separated integers $n$ and $m$ $(1 \\leq n \\leq 1\\,500, 1 \\leq m \\leq 5\\cdot 10^4)$, the size of the grid and the number of queries. The left-most column of the grid has index \\(c = 1\\) and the top-most row of the grid has index \\(r = 1\\). Then follow $m$ lines, each beginning with either the character <code>!</code> or <code>?</code>. </p>\n<p>The lines that begin with <code>!</code> indicate a change in the water level of a cell. On these lines are two additional space-separated integers $r$ and $c$ $(1 \\leq r,c\\leq n)$, indicating that the cell at coordinates $(r,c)$ on the grid has changed from water to land, or from land to water.</p>\n<p>The lines that begin with <code>?</code> contain no other input, and denote a request for a report on the status of the archipelago: how many islands there are, and how many islands do not contain a freshwater lake?</p>",
+  "output": "<p>Print a line for each <code>?</code> containing two space-separated integers: the number of islands currently in the archipelago, and the number of those islands that currently do not contain a freshwater lake.</p>",
+  "samples": [
+    {
+      "input": "3 18\n?\n! 1 1\n! 1 2\n! 1 3\n! 3 1\n?\n! 2 1\n?\n! 3 2\n! 3 3\n! 2 3\n?\n! 3 3\n?\n! 1 1\n?\n! 2 2\n?\n",
+      "output": "0 0\n2 2\n1 1\n1 0\n1 1\n2 2\n1 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, UT Invitational Programming Contest, UT Invitational Programming Contest 2020",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "disjoint_set",
+    "divide_and_conquer",
+    "euler_characteristic",
+    "geometry",
+    "graphs",
+    "offline_dynamic_connectivity",
+    "offline_queries"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

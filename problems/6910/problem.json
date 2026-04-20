@@ -1,0 +1,33 @@
+{
+  "id": 6910,
+  "title": "BFed",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>For this problem, you will write an interpreter for an extremely simple programming language. The language does have a name, but for various, ahem, reasons, we shall call it BF.</p>\n<p>A BF program operates on a simple $1$-dimensional array of memory cells; there is a pointer to a \"current\" memory cell. In \"vanilla\" BF, this array has a size of $30\\,000$, and each cell is an $8$-bit integer - that is, cells store values in the range of $0$-$255$. Incrementing a cell with a value of $255$ wraps around to $0$; decrementing a cell with a value of $0$ wraps around to $255$. All cells are initially set to $0$, and the pointer initially points to the leftmost cell.</p>\n<p>The BF program consists of a string. Each character can be one of $8$ \"commands\":</p>\n<table class=\"table table-bordered\">\n<thead>\n<tr>\n<th>Command</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>&gt;</code></td>\n<td>move the pointer right one cell</td>\n</tr>\n<tr>\n<td><code>&lt;</code></td>\n<td>move the pointer left one cell</td>\n</tr>\n<tr>\n<td><code>+</code></td>\n<td>increment the current cell by $1$</td>\n</tr>\n<tr>\n<td><code>-</code></td>\n<td>decrement the current cell by $1$</td>\n</tr>\n<tr>\n<td><code>[</code></td>\n<td>skips ahead to the matching <code>]</code> IF the current cell contains $0$</td>\n</tr>\n<tr>\n<td><code>]</code></td>\n<td>returns to the matching <code>[</code> UNLESS the current cell contains $0$</td>\n</tr>\n<tr>\n<td><code>.</code></td>\n<td>outputs the current cell as a character</td>\n</tr>\n<tr>\n<td><code>,</code></td>\n<td>inputs one character into the current cell</td>\n</tr>\n</tbody>\n</table>\n<p>You do not need to implement the <code>,</code> command.</p>\n<p>You should ignore any characters in the BF program except in the first $7$ commands listed above. The program ends when there are no more characters to be processed.</p>\n<p>Interestingly enough, these commands are powerful enough that a BF program can (given sufficient memory, time and programming patience) perform any computation that any other programming language can do!</p>",
+  "input": "<p>Your interpreter will be given a BF program in standard input. It may span multiple lines. The program will be terminated by a hash mark <code>#</code>.</p>\n<p>You may assume that no programs will be given to your interpreter that are invalid, run unreasonably long (or forever), or crash off the left or right end of the array. No input will be longer than $10\\,000$ characters.</p>",
+  "output": "<p>Your interpreter should print the output from the execution of the BF program. Do not print any characters other than the ones from the program.</p>",
+  "samples": [
+    {
+      "input": "++[>+++++++++++++<-]\n>>>++++++++[<++++++++>-]<+\n<[->.+<]\n++++++++++.\n#\n",
+      "output": "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n"
+    },
+    {
+      "input": "[+[>uh-oh<]+]------outer[+>------inter[+>-----<]<]>>.<++++++++++.#\n",
+      "output": "L\n"
+    },
+    {
+      "input": ">+[>[--------->]---[<]>+++]>>>>>[-]>>>.>>>++.>..>------.[<]<\n----.>>>>>>---.>>>.+++.<.<-.[<]<+.<<<+.#\n",
+      "output": "Hello World!\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2003, CCO 2003",
+  "level": 13,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2.5
+}

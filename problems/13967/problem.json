@@ -1,0 +1,44 @@
+{
+  "id": 13967,
+  "title": "Balls and Needles",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Joana Vasconcelos is a Portuguese artist who uses everyday objects in her creations, like electric irons or plastic cutlery. She is an inspiration to Ana, who wants to make ceiling hanging sculptures with straight knitting needles and balls of wool. For safety reasons, there will be a ball at each end of each needle. Knitting needles vary in colour, length and thickness (to allow intersections of needles).</p>\n<p>Sculptures are to be exhibited in room corners, which provide a 3D Cartesian coordinate system, with many lamps on the ceiling. Sculpture design are made with the coordinates of the centres of the balls of wool in which knitting needles are stuck. That is, each needle N is represented by a set of two different triples: N={(x,y,z), (x',y',z')}.</p>\n<p>Ana dislikes closed chains. A true closed chain is a sequence of k distinct needles, N<sub>1</sub>, N<sub>2</sub>, ..., N<sub>k</sub> (for some k ≥ 3), such that: </p>\n<ul>\n<li>N<sub>1</sub> = {(x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>), (x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>)}, N<sub>2</sub> = {(x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>), (x<sub>3</sub>,y<sub>3</sub>,z<sub>3</sub>)}, ..., N<sub>k</sub> = {(x<sub>k</sub>,y<sub>k</sub>,z<sub>k</sub>), (x<sub>k+1</sub>,y<sub>k+1</sub>,z<sub>k+1</sub>)}, and (x<sub>k+1</sub>,y<sub>k+1</sub>,z<sub>k+1</sub>) = (x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>).</li>\n</ul>\n<p>But her dislike of closed chains is so extreme that the shadow of the sculpture on the floor has to be free of \"floor closed chains\". Given any needle N={(x,y,z), (x',y',z')}, let N<span style=\"color:rgb(84, 84, 84); font-family:arial,sans-serif; font-size:small\"><sup>↓</sup> = {(x,y), (x',y')} denote the shadow of needle N on the floor. For Ana (who is an artist), a floor closed chain is also a sequence of k distinct needles, N<sub>1</sub>, N<sub>2</sub>, ..., N<sub>k</sub> (for some k ≥ 3), such that: </span></p>\n<ul>\n<li><span style=\"color:rgb(84, 84, 84); font-family:arial,sans-serif; font-size:small\">N<sub>i</sub><sup>↓ </sup>≠ N<sub>j</sub><sup>↓</sup>, for every 1 ≤ i &lt; j ≤ k (the k needle shadows are all distinct);</span></li>\n<li><span style=\"color:rgb(84, 84, 84); font-family:arial,sans-serif; font-size:small\">N<sub>1</sub><sup>↓</sup> = {(x<sub>1</sub>,y<sub>1</sub>), (x<sub>2</sub>,y<sub>2</sub>)}, </span>N<sub>2</sub><sup><span style=\"color:rgb(84, 84, 84); font-family:arial,sans-serif; font-size:small\">↓</span></sup> = {(x<sub>2</sub>,y<sub>2</sub>), (x<sub>3</sub>,y<sub>3</sub>)}, ..., N<sub>k</sub><sup><span style=\"color:rgb(84, 84, 84); font-family:arial,sans-serif; font-size:small\">↓</span> </sup>= {(x<sub>k</sub>,y<sub>k</sub>), (x<sub>k+1</sub>,y<sub>k+1</sub>)}, and (x<sub>k+1</sub>,y<sub>k+1</sub>) = (x<sub>1</sub>,y<sub>1</sub>,)</li>\n</ul>\n<p>Consider the sculpture depicted in the figure, which has the following four knittinf needles:</p>\n<p>A = {(12,12,8), (10,5,11)}, B = {(12,12,8), (4,14,21)}, C = {(12,12,8), (12,20,8)}, D = {(4,14,21), (10,5,21)}.</p>\n<p>This structure is not free of closed chains because, although there is no closed chain, the sequence of needles A,B,D is a floor closed chain.</p>\n<p>Write a program that, given the knitting needles of a sculpture, determines whether there is a true or a floor closed chain in the sculpture.</p>",
+  "input": "<p>The first line of the input has one integer, K, which is the number of knittinf needles in the sculpture. Each of the following K lines contains six integers, x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>, x<sub>2</sub>, y<sub>2</sub>, and z<sub>2</sub>, which indicate that {(x<sub>1</sub>,y<sub>1</sub>,z<sub>1</sub>), (x<sub>2</sub>,y<sub>2</sub>,z<sub>2</sub>)} is the set of triples of a needle. Any two distinct needles are represented by different sets of triples.</p>\n<ul>\n</ul>",
+  "output": "<p>The output has two lines, each one with a string. The string in the first line is: True closed chains, if there is some true closed chain in the sculpture; No true closed chains, otherwise. The string in the second line is: Floor closed chains, if there is some floor closed chain in the sculpture; No floor closed chains, otherwise.</p>",
+  "samples": [
+    {
+      "input": "4\n12 12 8 10 5 11\n12 12 8 4 14 21\n12 12 8 12 20 8\n4 14 21 10 5 21\n",
+      "output": "No true closed chains\nFloor closed chains\n"
+    },
+    {
+      "input": "4\n1 1 1 2 2 2\n2 2 2 1 5 5\n9 4 4 9 4 2\n9 4 4 9 9 4\n",
+      "output": "No true closed chains\nNo floor closed chains"
+    },
+    {
+      "input": "3\n50 50 50 100 100 100\n100 100 100 50 50 90\n50 50 90 50 50 50\n",
+      "output": "True closed chains\nNo floor closed chains\n"
+    },
+    {
+      "input": "3\n1 1 5 1 3 7\n1 3 7 4 4 5\n4 4 5 1 1 5\n",
+      "output": "True closed chains\nFloor closed chains\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2016",
+  "level": 12,
+  "tags": [
+    "data_structures",
+    "dfs",
+    "disjoint_set",
+    "geometry",
+    "graphs",
+    "graph_traversal",
+    "hash_set",
+    "tree_set",
+    "set"
+  ],
+  "accepted_user_count": 44,
+  "submission_count": null,
+  "average_tries": 1.40910005569458
+}

@@ -1,0 +1,35 @@
+{
+  "id": 3987,
+  "title": "보이저 1호",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>보이저 1호는 1977년에 발사된 NASA의 태양계 무인 탐사선이다. 현재 보이저 1호는 태양권덮개 (헬리오시스)에 있다.</p>\r\n\r\n<p>보이저 1호와 같이 오랜 기간동안 활동하는 탐사선은 경로를 항성계를 만날 때 마다 라디오 시그널 메시지를 이용해서 기록하고 있다.</p>\r\n\r\n<p>항성계를 N * M개의 직사각형으로 나누어져 있는 N행 M열의 직사각형 그리드라고 생각해보자. 각 칸은 행성, 블랙홀을 포함할 수 있으며, 비어있을 수도 있다. 탐사선은 인접한 네 칸(위, 아래, 오른쪽, 왼쪽)중에서 하나를 골라서 시그널을 보낸다.</p>\r\n\r\n<p>시그널은 항상 일직선으로 전파되며, 행성을 만났을 경우에는 전파되는 방향이 90도로 바뀌게 된다. 행성은 &#39;/&#39;와 &#39;\\&#39;로 표현되는 두 종류가 있으며, 반사되는 법칙은 아래 그림과 같다.</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"width: 641px; height: 134px;\" /></p>\r\n\r\n<p>시그널이 블랙홀이 있는 칸을 만나거나 항성계를 벗어날 때 까지 계속 전파된다. 시그널이 인접한 칸으로 이동하는데 걸리는 시간은 1초이다.</p>\r\n\r\n<p>탐사선이 어느 방향으로 시그널을 보내면, 시그널이 항성계 내부에 있는 시간이 최대가 되는지 구하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>첫째 줄에 N과 M이 주어진다. (1 &le; N, M &le; 500)</p>\r\n\r\n<p>다음 N개 줄에는 M개의 문자가 주어지며, &#39;/&#39;와 &#39;\\&#39;는 행성을, C는 블랙홀을, &#39;.&#39;는 빈 칸을 나타낸다.</p>\r\n\r\n<p>마지막 줄에는 탐사선이 있는 위치 PR과 PC가 주어진다. (1 &le; PR &le; N, 1 &le; PC &le; M)</p>\r\n",
+  "output": "<p>첫째 줄에 시그널을 보내는 방향을 출력한다. (U: 위, R: 오른쪽, D: 아래, L: 왼쪽)</p>\r\n\r\n<p>만약, 방향이 여러 가지가 존재한다면, U, R, D, L의 순서 중 앞서는 것을 출력한다.</p>\r\n\r\n<p>둘째 줄에는 가장 긴 시간을 출력한다. 만약, 시그널이 항성계 내에서 무한히 전파될 수 있다면 &quot;Voyager&quot;를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "5 5\n../.\\\n.....\n.C...\n...C.\n\\.../\n3 3\n",
+      "output": "U\n17\n"
+    },
+    {
+      "input": "5 5\n....\\\n\\..\\.\n./\\..\n\\../C\n.\\../\n1 1\n",
+      "output": "D\n12\n"
+    },
+    {
+      "input": "5 7\n/.....\\\n../..\\.\n\\...../\n/.....\\\n\\.\\.../\n3 3\n",
+      "output": "R\nVoyager\n"
+    }
+  ],
+  "hint": "<table class=\"table table-bordered\" style=\"width:100%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th style=\"text-align:center; width:20%\">초기 상태</th>\r\n\t\t\t<th style=\"text-align:center; width:20%\">위(U) 방향</th>\r\n\t\t\t<th style=\"text-align:center; width:20%\">오른쪽(R) 방향</th>\r\n\t\t\t<th style=\"text-align:center; width:20%\">아래(D) 방향</th>\r\n\t\t\t<th style=\"text-align:center; width:20%\">왼쪽(L) 방향</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<pre style=\"text-align:center\">\r\n../.\\\r\n.....\r\n.CS..\r\n...C.\r\n\\.../</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre style=\"text-align:center\">\r\n*.***\r\n*.*.*\r\n*C*.*\r\n*..C*\r\n*****</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre style=\"text-align:center\">\r\n../.\\\r\n.....\r\n.C***\r\n...C.\r\n\\.../</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre style=\"text-align:center\">\r\n../.\\\r\n.....\r\n.C*..\r\n..*C.\r\n\\.*./</pre>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<pre style=\"text-align:center\">\r\n../.\\\r\n.....\r\n.C*..\r\n...C.\r\n\\.../</pre>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td style=\"text-align:center\">&nbsp;</td>\r\n\t\t\t<td style=\"text-align:center\">17초</td>\r\n\t\t\t<td style=\"text-align:center\">3초</td>\r\n\t\t\t<td style=\"text-align:center\">3초</td>\r\n\t\t\t<td style=\"text-align:center\">1초</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2012/2013, Contest #4, baekjoon, aung, insect, seokjin1013",
+  "level": 11,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "simulation"
+  ],
+  "accepted_user_count": 1133,
+  "submission_count": null,
+  "average_tries": 3.8048999309539795
+}

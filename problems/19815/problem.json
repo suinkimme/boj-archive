@@ -1,0 +1,24 @@
+{
+  "id": 19815,
+  "title": "RotationAlmostSort",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A robot can execute a sequence of commands in an $n \\times n$ square filled with numbers. The only type of command the robot can execute is:</p>\n<p style=\"text-align: center;\"><code>[cell 1] &gt; [cell 2] ? [cell 3]</code></p>\n<p>Such command has the following effect: if the number in cell 1 is greater than the number in cell 2, then rotate counterclockwise a $2 \\times 2$ square whose upper left corner is cell 3.</p>\n<p>Each cell is described with a letter denoting its column and a digit denoting its row, concatenated without a space. The columns are marked from left to right staring with <code>a</code>, the rows are marked from top to bottom starting with 1.</p>\n<p>If one of the cells in one of the commands doesn't fit into the $n \\times n$ square, or if cell 3 is located in the bottommost row or the rightmost column, then the robot becomes broken.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 334px; height: 82px;\"/></p>\n<p style=\"text-align: center;\">An example of a single command execution. The condition is true ($9 &gt; 1$), therefore the rotation is made.</p>\n<p>After the execution of the entire program, the bottommost $n-2$ rows are written down concatenated in the order from top to bottom (the 3-rd row, the 4-th row, $\\ldots$, the $n$-th row). The resulting sequence consisting of $n\\cdot(n-2)$ numbers must be non-decreasing.</p>\n<p>You are given an integer $n$. Output a program containing only commands of the described type, such that when a robot executes this program on any initial square with numbers, it doesn't become broken and makes the square satisfy the desired state.</p>",
+  "input": "<p>The first line contains a positive integer $n$ ($2 \\le n \\le 9$) --- the size of the square with numbers.</p>",
+  "output": "<p>Output a correct program. It must contain no more than $100\\,000$ commands. Follow the output format shown in the example.</p>",
+  "samples": [
+    {
+      "input": "2\n",
+      "output": "a2 > b2 ? a1\na2 > b2 ? a1\na2 > b2 ? a1\n"
+    }
+  ],
+  "hint": "<p>In order not to give a hint to the contestants, an example for $n \\ge 3$ is not shown.</p>\n<p>For $n = 2$ it is enough to obtain 0 non-decreasing rows, thus any syntactically correct program is a correct solution. But the shown program obtains not just 0, but 1 non-decreasing row in the bottom part of the square: it rotates the only $2 \\times 2$ square counterclockwise until its bottom row becomes sorted non-decreasingly. It easy to prove that such situation will happen after 0, 1, 2 or 3 rotations.</p>",
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia Team High School Programming Contest, Russia Team High School Programming Contest 2019",
+  "level": 22,
+  "tags": [
+    "ad_hoc"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,33 @@
+{
+  "id": 21066,
+  "title": "Game on a Tree",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Some friends, numbered from $0$ to $m-1$, are playing a game. There are cards of $c$ different colors, where colors are numbered from $0$ to $c-1$. Each card of color $i$ has a fixed value $p_i$.  At the beginning of the game, each player chooses a certain amount of cards, without taking more than one card of the same color (though different friends may choose cards of the same color). We define the <em>score</em> of a deck as the GCD (greatest common divisor) of the values of its cards. Notice that an empty deck has a score of $0$ points. The game will be played on an undirected graph which is a tree consisting of $n$ nodes, numbered from $0$ to $n-1$. Each node $v$ contains a card with color $c_v$, and different nodes may have cards of the same color.</p>\n<p>The game has $m$ rounds. In round $i$, the $i$-th friend gets to play. First, he chooses two different vertices $v$ and $u$. Then, for each node $v_i$ on the path from $v$ to $u$ (including $v$ and $u$), each player (including himself) draws a card of color $c_{v_i}$. If they already had a card of color $c_{v_i}$, they will discard both cards. After doing this, player $i$ gets as many points as the sum of the points of each player's deck (including himself). Finally, he chooses a node of the graph and draws a new card from the pile. Then he changes the node's card for the card he has just drawn (and discards the old card), ending his round.</p>\n<p>Given the information of each round, print how many points each friend will have at the end of the game modulo $10^9 + 7$. </p>",
+  "input": "<p>The first line contains three integers $m$, $c$, $n$ ($2 \\leq n, m \\leq 10^5$; $1 \\leq c \\leq 20$): the number of friends (and hence, rounds), the number of different colors of the cards, and the number of nodes the tree will have.</p>\n<p>The second line contains $c$ integers $p_0, p_1, \\dots, p_{c-1}$ ($0 \\leq p_i \\leq 10^9$), where $p_i$ is the value of a card of color $i$.</p>\n<p>Each of the next $m$ lines starts with an integer $x$ ($0 \\leq x \\leq c$), the number of cards the $i$-th player starts with. It is followed by $x$ integers $y_0, y_1, \\dots, y_{x-1}$ ($0 \\leq y_i &lt; c$): the colors of all the player's cards.</p>\n<p>The next line contains $n$ integers $c_0, c_1, \\dots, c_{n-1}$ ($0 \\leq c_i &lt; c$), the color of the card in each node of the graph.</p>\n<p>Then $n-1$ lines follow, each one containing two integers $u$ and $v$ ($0 \\leq u, v &lt; n$), meaning that there is an edge between nodes $u$ and $v$. It is guaranteed that these edges form a tree.</p>\n<p>Finally, each of the last $m$ lines has four integers $u$, $v$, $w$, $y$ ($0 \\leq u, v, w &lt; n$; $u \\neq v$; $0 \\leq y &lt; c$) that encode the information about each of the $m$ rounds: the two chosen nodes ($u$ and $v$) and the node $w$ that will have its card changed for one with color $y$.</p>",
+  "output": "<p>Print one line with $m$ integers: $\\mathit{points}_0, \\mathit{points}_1, \\dots, \\mathit{points}_{m-1}$, where $\\mathit{points}_i$ is the number of points the $i$-th friend ends up with, modulo $10^9 + 7$.</p>",
+  "samples": [
+    {
+      "input": "3 4 7\n0 2 3 6\n2 1 2\n3 0 2 3\n2 0 1\n2 1 2 3 0 1 1\n0 1\n2 0\n3 0\n1 4\n6 4\n4 5\n5 2 4 1\n6 1 1 2\n4 2 0 3\n",
+      "output": "6 4 9\n"
+    },
+    {
+      "input": "7 4 8\n28 49 88 49\n1 1\n3 2 0 3\n0\n1 3\n0\n0\n1 0\n2 2 2 2 3 0 1 2\n0 2\n0 3\n2 6\n0 4\n3 7\n7 1\n2 5\n1 4 4 1\n3 6 4 2\n7 6 4 2\n6 2 2 2\n4 2 7 0\n2 3 5 3\n5 1 4 1\n",
+      "output": "207 13 121 253 13 253 106\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 2: UPC Contest",
+  "level": 24,
+  "tags": [
+    "math",
+    "data_structures",
+    "trees",
+    "segtree",
+    "fft",
+    "euler_tour_technique"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 1.5
+}

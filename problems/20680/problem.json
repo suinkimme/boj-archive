@@ -1,0 +1,33 @@
+{
+  "id": 20680,
+  "title": "Birds Rituals",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Birds are stupendous animals. Many species of them perform different rituals throughout their life; from courtship dances of peacocks to moonwalking of red-capped manakins. Among all, we are studying the <em>permutation dance</em> in this problem. This ritual is performed by a group of birds sitting in a row on a wire or tree branch, as shown in the figure.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 318px; height: 174px;\"/></p>\n<p>The ritual can be simplified to a performance based on a sequence of actions of these types:</p>\n<ul>\n<li>insertion: A new bird joins the group and inserts herself somewhere in the row of the birds.</li>\n<li>departure: A bird in the row leaves the group for rest of the ritual and flies away.</li>\n<li>relocation: A bird in the row flies from her position and sits (inserts herself) somewhere else in the row.</li>\n</ul>\n<p>Given the initial position of the birds in the row and the sequence of actions, your task is to compute the final position of the birds in the ritual.</p>",
+  "input": "<p>The input starts with a line containing two space-separated integers n (1 ⩽ n ⩽ 1000) and s (1 ⩽ s ⩽ 5000). The second line contains n space-separated bird names, as the initial configuration of the ritual (positioning of the birds in the row, from left to right). Each bird name is a non-empty string of at most 10 (lowercase) alphanumeric characters (<code>a</code> to <code>z</code>, and <code>0</code> to <code>9</code>).</p>\n<p>The sequence of actions is provided in the next s lines, one action per line. Each line is in one of the following formats based on the action type. The <code>bird-name</code> parameter in the actions has the similar format as the second line of the input.</p>\n<ul>\n<li>insertion: <code>insert bird-name position</code></li>\n</ul>\n<p>The <code>position</code> parameter is an integer showing the number of birds to the left of the insertion position. This parameter is in the range [0, M] where M is the total number of birds in the row before the insertion. Position 0 puts the bird in the beginning (leftmost position) of the row, and position M puts the bird in the end (rightmost position).</p>\n<ul>\n<li>departure: <code>depart bird-name</code></li>\n<li>relocation: <code>relocate bird-name displacement</code></li>\n</ul>\n<p>The <code>displacement</code> parameter is an integer that can be positive, negative, or zero. The bird flies to her own position if the displacement is 0. Otherwise, the bird flies over k birds on his right (left) if displacement is positive (negative), where k is the absolute value of displacement. This parameter is in the range [−L, +R] where L and R are respectively the numbers of birds to the left and to the right of the moving bird in the row before the relocation. Displacement −L puts the bird in the beginning (leftmost position) of the row, and displacement+R puts the bird in the end (rightmost position).</p>\n<p>No two participating birds share the same name. Moreover, it is guaranteed that all the actions are meaningful at the moment of execution and there is always at least one bird on the branch throughout the ritual.</p>",
+  "output": "<p>Print a single line in the output containing the final configuration of the ritual. The line should contain the space-separated list of the bird names in the row (from left to the right).</p>",
+  "samples": [
+    {
+      "input": "3 1\njuju ashi mashi\ninsert fifi 1\n",
+      "output": "juju fifi ashi mashi\n"
+    },
+    {
+      "input": "3 15\nm1 m2 f\ninsert m3 0\nrelocate m2 -2\nrelocate m1 -2\nrelocate m3 -2\nrelocate m2 -2\nrelocate m1 -2\nrelocate m3 -2\ndepart m2\nrelocate m1 1\nrelocate f 0\nrelocate m3 0\nrelocate f -1\nrelocate m3 -1\nrelocate m1 -2\nrelocate f -1\n",
+      "output": "m1 f m3\n"
+    },
+    {
+      "input": "4 5\nhedwig hermes fawkes errol\ninsert pigwidgeon 1\nrelocate hermes 2\ndepart fawkes\ninsert buckbeak 0\ndepart hedwig\n",
+      "output": "buckbeak pigwidgeon errol hermes\n"
+    }
+  ],
+  "hint": "<p>A video of the first two sample inputs is provided in the attachment package. Copyright notice: the images and videos of this problem are taken from the following addresses:</p>\n<ul>\n<li>Animation “For the Birds”, Pixar Animation Studios</li>\n<li><a href=\"https://www.instagram.com/p/BpBshBghJ54/\">https://www.instagram.com/p/BpBshBghJ54/</a></li>\n<li><a href=\"https://www.instagram.com/p/B1XWKQXgGKe/\">https://www.instagram.com/p/B1XWKQXgGKe/</a></li>\n</ul>",
+  "source": "ICPC, Regionals, Asia West Continent, Iran, Tehran Site 2020",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 40,
+  "submission_count": null,
+  "average_tries": 1.1749999523162842
+}

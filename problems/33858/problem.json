@@ -1,0 +1,30 @@
+{
+  "id": 33858,
+  "title": "Exponents",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The famous polymath Nicolaus Copernicus was born and grew up in Toruń in the 15th century. Archaeologists have recently discovered his notebook, and learned that he was fond of using powers of two to store large numbers. In particular, even when he added two powers of two:</p>\n<p>$$2^a + 2^b,$$</p>\n<p>Copernicus evaluated the result and then rounded up the result to the nearest power of two. That is, he would evaluate $2^a + 2^b$ to $2^{\\max(a,b)+1}$. To evaluate a longer expression of the form:</p>\n<p>$$2^{b_1} + 2^{b_2} + \\dots + 2^{b_k},$$</p>\n<p>he first inserted the brackets to make it well-parenthesised$^∗$. For example, an expression $2^5 + 2^4 + 2^4 + 2^4 + 2^5$ can be made well-parenthesised to obtain $((2^5 + 2^4 ) + (2^4 + (2^4 + 2^5 )))$. Finally, he evaluated the result of the obtained well-parenthesised expression, operating on powers of two as described above. Notice that the obtained result might vary depending on how he inserts the brackets. For example, here are two possible ways to evaluate $2^5 + 2^4 + 2^4 + 2^4 + 2^5$:</p>\n<p>$$(((2^5 + 2^4 ) + 2^4 ) + (2^4 + 2^5 )) = ((2^6 + 2^4 ) + 2^6 ) = (2^7 + 2^6 ) = 2^8$$</p>\n<p>$$((2^5 + (2^4 + 2^4 )) + (2^4 + 2^5 )) = ((2^5 + 2^5 ) + 2^6 ) = (2^6 + 2^6 ) = 2^7$$</p>\n<p>The first page of the Copernicus’ notebook contains only a single expression $2^{a_1} + 2^{a_2} + \\dots + 2^{a_n}$ called the main expression. Later pages of the notebook then reference fragments of the main expression, which are of the form $2^{a_ℓ} + 2^{a_{ℓ+1}} + \\dots + 2^{a_r}$, for some $1 ≤ ℓ ≤ r ≤ n$.</p>\n<p>You are not sure about their meaning, but suspect that you should calculate, for each such fragment, the smallest possible result that can be obtained when evaluating the result as described above for the fragment. Note that each fragment is evaluated independently of the other fragments.</p>\n<hr/>\n<p>$^∗$The formal definition of a well-parenthesised expression is as follows: $2^a$ is a well-parenthesised expression for any non-negative integer $a$; if $E_1$ and $E_2$ are well-parenthesised expressions then so is $(E_1 + E_2)$. No other expressions are well-parenthesised.</p>",
+  "input": "<p>The first line contains two integers $n$ and $q$ ($1 ≤ n, q ≤ 300\\, 000$) denoting the length of the main expression from the first page of the notebook and the number of queries, respectively.</p>\n<p>The second line contains $n$ integers $a_1, a_2, \\dots , a_n$ ($0 ≤ a_i ≤ 10^6$), where the $i$-th integer ai denotes the exponent of the $i$-th power of two in the main expression.</p>\n<p>The next $q$ lines describe the queries. Each query consists of two integers $ℓ$ and $r$ ($1 ≤ ℓ ≤ r ≤ n$) representing a fragment of the main expression starting at the $ℓ$-th power of two and ending at the $r$-th power of two.</p>",
+  "output": "<p>You should output $q$ lines. The $i$-th line should contain the smallest possible result that can be obtained when evaluating the fragment described in the $i$-th query. You should output only the exponent of the corresponding power of two.</p>",
+  "samples": [
+    {
+      "input": "8 4\n2 4 2 5 4 4 4 5\n4 8\n1 4\n2 5\n1 7\n",
+      "output": "7\n7\n7\n8\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2025",
+  "level": 26,
+  "tags": [
+    "implementation",
+    "dp",
+    "data_structures",
+    "greedy",
+    "segtree",
+    "simulation",
+    "divide_and_conquer"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 6.625
+}

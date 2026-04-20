@@ -1,0 +1,38 @@
+{
+  "id": 15105,
+  "title": "Enlarging Enthusiasm",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are watching a singing contest featuring n singers, and the final round has just finished. Currently, the ith singer has pi points. Each singer currently has a distinct number of points.</p>\n<p>It is time to determine the final rankings. The judges are about to award additional points to each of the singers. The total points given in the final round across all singers will sum to x. More specifically, for each singer, the judges will choose numbers q<sub>i</sub> ≥ 1 to assign each of the singers, so that q<sub>1</sub> + · · · + q<sub>n</sub> = x.</p>\n<p>The judges would like to make the announcement of final results as exciting as possible. To do this, they will announce the scores q<sub>i</sub> one by one, in increasing order. If they award the same number of points (q<sub>i</sub>) to more than one singer, they will announce those scores in order of increasing p<sub>i</sub> .</p>\n<p>After each score announcement, the rankings will get updated. The announcement is called exciting, if after each score update, the singer with the highest number of points changes. The judges want to avoid any sort of controversy, so they will assign the points so that at any point during the score announcements, there is a unique singer with the highest number of points.</p>\n<p>Help the judges determine the number of distinct final rankings that can be attained by assigning points in the final round such every score announcement is exciting.</p>",
+  "input": "<p>The first line of input contains two space-separated integers n and x (1 ≤ n ≤ 12; 1 ≤ x ≤ 700).</p>\n<p>The next line contains n integers p<sub>i</sub> (1 ≤ p<sub>i</sub> ≤ 700) separated by spaces.</p>\n<p>It is guaranteed that all pi are distinct.</p>",
+  "output": "<p>Print the number of different final rankings that can be achieved by assigning points such that every announcement is exciting.</p>",
+  "samples": [
+    {
+      "input": "3 12\n3 1 4\n",
+      "output": "3\n"
+    },
+    {
+      "input": "12 700\n1 2 3 4 5 6 7 8 9 10 11 12\n",
+      "output": "439084800\n"
+    },
+    {
+      "input": "12 1\n1 2 3 4 5 6 7 8 9 10 11 12\n",
+      "output": "0\n"
+    },
+    {
+      "input": "1 700\n123\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p>For the first sample, there are three contestants A, B, and C. A currently has 3 points, B currently has 1 point, and C currently has 4 points. The judges can assign 12 points.</p>\n<p>Suppose the judges chose to assign (q) 2 points to A, 7 points to B, and 3 points to C. The scores will be announced in increasing order of q. The following sequence of actions happen:</p>\n<ul>\n<li>A’s score is announced. Her score becomes 5, and she is the new leader.</li>\n<li>C’s score is announced. His score becomes 7, and he is the new leader.</li>\n<li>B’s score is announced. His score becomes 8, and he is the new leader.</li>\n</ul>\n<p>We can see this is an exciting set of announcements.</p>\n<p>On the other hand, the judges choosing q = [3, 3, 6] is not exciting, since the leader isn’t unique after the first announcement. (We announce B first since they have the minimum pi between the two contestants both getting 3 points from the judges.) Also, the q = [6, 5, 1] is not exciting, since the leader doesn’t change after the first announcement.</p>\n<p>Given this scenario, three distinct final rankings that are possible (from highest ranked to lowest ranked):</p>\n<ul>\n<li>C, B, A, with judges q = [2, 5, 5]</li>\n<li>B, C, A, with judges q = [2, 8, 2]</li>\n<li>C, A, B, with judges q = [4, 4, 4]</li>\n</ul>\n<p>Note that the order B, C, A is only counted once even though it can be realized in two different ways (q = [2, 8, 2] and q = [2, 7, 3]).</p>",
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2017 Pacific Northwest Region Programming Contest, Division 1, ICPC, Regionals, North America, Southeast USA Regional, 2017 Southeast USA Regional Programming Contest, Division 1",
+  "level": 24,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 3.75
+}

@@ -1,0 +1,27 @@
+{
+  "id": 27603,
+  "title": "Train Splitting",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There are $n$ big cities in Italy, and there are $m$ train routes between pairs of cities. Each route connects two different cities bidirectionally. Moreover, using the trains one can reach every city starting from any other city.</p>\n<p>Right now, all the routes are operated by the government-owned Italian Carriage Passenger Company, but the government wants to privatize the routes. The government does not want to give too much power to a single company, but it also does not want to make people buy a lot of different subscriptions. Also, it would like to give a fair chance to all companies. In order to formalize all these wishes, the following model was proposed.</p>\n<p>There will be $k ≥ 2$ private companies indexed by $1, 2, \\dots , k$. Each train route will be operated by exactly one of the $k$ companies. Then:</p>\n<ul>\n<li>For any company, there should exist two cities such that it is impossible to reach one from the other using only routes operated by that company.</li>\n<li>On the other hand, for any two companies, it should be possible to reach every city from any other city using only routes operated by these two companies.</li>\n</ul>\n<p>Find a plan satisfying all these criteria. It can be shown that a viable plan always exists. Please note that you can choose the number $k$ and you do not have to minimize or maximize it.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains an integer $t$ ($1 ≤ t ≤ 1000$) — the number of test cases. The descriptions of the $t$ test cases follow.</p>\n<p>The first line of each test case contains two integers $n$ and $m$ ($3 ≤ n ≤ 50$, $n-1 ≤ m ≤ n(n-1)/2$) — the number of cities and the number of train routes.</p>\n<p>The next $m$ lines contain two integers $u_i$ and $v_i$ each ($1 ≤ u_i , v_i ≤ n$, $u_i \\ne v_i$) — the $i$-th train route connects cities $u_i$ and $v_i$.</p>\n<p>It is guaranteed that the routes connect $m$ distinct pairs of cities. It is guaranteed that using the trains one can reach every city starting from any other city.</p>\n<p>The sum of the values of $n$ over all test cases does not exceed $5000$.</p>",
+  "output": "<p>For each test case, on the first line print an integer $k$ ($2 ≤ k ≤ m$) — the number of companies in your plan; on the second line print $m$ integers $c_1, c_2, \\dots , c_m$ ($1 ≤ c_i ≤ k$) — in your plan company $c_i$ operates the $i$-th route.</p>\n<p>If there are multiple valid plans, you may print any of them.</p>",
+  "samples": [
+    {
+      "input": "2\n5 9\n1 2\n1 3\n1 4\n1 5\n2 3\n2 4\n2 5\n3 4\n3 5\n3 3\n1 2\n3 1\n2 3\n",
+      "output": "4\n1 2 3 1 4 2 2 4 3\n3\n2 3 1\n"
+    }
+  ],
+  "hint": "<p>In the <strong>first test case</strong>, the output is illustrated in the following picture, where different colors correspond to different companies (blue for 1, red for 2, green for 3, and yellow for 4):</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 194px; height: 129px;\"/></p>\n<p>If we consider, for example, only companies $2$ and $3$, we can see that from any city it is possible to reach every other city (picture on the left below). However, if we restrict to company $2$ alone, it becomes impossible to reach city $5$ from city $1$ (picture on the right).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 425px; height: 129px;\"/></p>\n<p>In the <strong>second test case</strong>, the output is illustrated in the following picture:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 89px; height: 92px;\"/></p>",
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2022-2023",
+  "level": 14,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "constructive",
+    "disjoint_set"
+  ],
+  "accepted_user_count": 45,
+  "submission_count": null,
+  "average_tries": 1.9556000232696533
+}

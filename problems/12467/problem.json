@@ -1,0 +1,30 @@
+{
+  "id": 12467,
+  "title": "Rains Over Atlantis (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Rains fall on the isle of Atlantis, and will erode all the land to nothingness. What you want to know, so that you can organize the evacuation, is how soon it will happen.</p>\n<p>You have a map of Atlantis. The map is a square grid, and each square contains the height of the land in that square, in metres, above sea level. All squares outside the map have height 0; all squares with height 0 are water, and all squares with larger heights are land. There are no squares with lower height.</p>\n<p>Water can <em>flow</em> from a source square to a target square if the source square and target square share an edge, and if the height of the water in the target square is lower than or equal to the height of water in the source square.</p>\n<p>It's raining very quickly, which means that if there is nowhere for the rain water in a square to flow, water in that square will accumulate until there is a square to which the rain water can flow. Squares that are not on the map can accept any amount of flow. For example, the following map:</p>\n<pre>\n5 9 9 9 9 9\n0 8 9 0 2 5\n3 9 9 9 9 9\n</pre>\n<p>Will quickly fill up with water. We'll call the height of water in each square, plus the height of the land, the <em>water level</em>. It will be:</p>\n<pre>\n5 9 9 9 9 9\n0 8 9 <strong>5 5</strong> 5\n3 9 9 9 9 9\n</pre>\n<p>Note that the 0 in the middle of the land, although it's water, is not connected to the outside of the map and so just accumulates water. The 0 on the border of the land, however, is connected to the outside of the map, and so the water from the 8 can flow through it to the outside.</p>\n<p> </p>\n<p>The direction in which water flows is determined by the water level. If there are multiple possible squares where water could flow from one particular source square, the water from that source will flow to the square with the lowest water level (ties don't matter, as you will see).</p>\n<p>Now the erosion begins. Each day, a square is eroded—its height decreases—depending on how water is flowing from it. If water is flowing from S to T, then S's height decreases by <code>min(WaterLevel(S) - WaterLevel(T), <strong>M</strong>)</code>. All erosion happens at exactly the same time, at the end of the day. For example, with <strong>M</strong>=5, the map above will erode to:</p>\n<pre>\n0 4 4 4 4 4\n0 3 5 0 2 0\n0 4 4 4 4 4\n</pre>\n<p>After a day's erosion, excess water will flow away: squares with water level higher than a neighbour's water level will lose water until they are of the same height. Water will also accumulate in the same way that it did on the first day. After the first day, this map's water level will become:</p>\n<pre>\n0 4 4 4 4 4\n0 3 5 <strong>2</strong> 2 0\n0 4 4 4 4 4\n</pre>\n<p>After another day of erosion, the map will look like:</p>\n<pre>\n0 0 0 0 0 0\n0 0 2 0 0 0\n0 0 0 0 0 0\n</pre>\n<p>...and the Atlanteans will need to escape in a big hurry. Your task is to determine how many days it will take for all the heights to erode to 0.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>.  <strong>T</strong> test cases follow. Each test case begins with a line containing three space-separated integers: <strong>H</strong>, <strong>W</strong> and <strong>M</strong>. The first two denote the size of the map, while the third is the maximum amount a square can erode in one day, as described above.  <strong>H</strong> lines follow, each of which contains <strong>W</strong> space-separated integers. The i<sup>th</sup> integer on the j<sup>th</sup> line denotes the height of the square at (i, j).</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 40.</li>\n<li>1 ≤ <strong>H</strong>, <strong>W</strong> ≤ 10.</li>\n<li>1 ≤ <strong>M</strong> ≤ 100.</li>\n<li>0 ≤ all heights ≤ 100.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing \"Case #x: y\", where x is the case number (starting from 1) and y is the number of days it takes to erode all the island.</p>",
+  "samples": [
+    {
+      "input": "2\n3 6 5\n5 9 9 9 9 9\n0 8 9 0 2 5\n3 9 9 9 9 9\n3 6 3\n3 8 10 11 10 8\n7 5 2 12 8 8\n6 9 11 9 8 4\n",
+      "output": "Case #1: 3\nCase #2: 5\n"
+    }
+  ],
+  "hint": "<p>In the second case, the water height looks like: <br/>\n<code>3 8 10 11 10 8<br/>\n7 <strong>7 7</strong> 12 8 8<br/>\n6 9 11 9 8 4</code></p>\n<p>After one day the island looks as follows: <br/>\n<code>0 5 7 8 7 5<br/>\n4 5 2 9 8 5<br/>\n3 6 8 6 5 1</code></p>\n<p>And after the second day: <br/>\n<code>0 2 4 5 4 2<br/>\n1 4 2 6 5 2<br/>\n0 3 5 3 2 0</code></p>\n<p>And the third day: <br/>\n<code>0 0 1 2 1 0 <br/>\n0 1 2 3 2 0 <br/>\n0 0 2 0 0 0 </code></p>\n<p>After the fourth day, things are looking desperate for the Atlanteans: <br/>\n<code>0 0 0 0 0 0 <br/>\n0 0 1 0 0 0 <br/>\n0 0 0 0 0 0 </code></p>\n<p>Finally, on the fifth day the last square erodes away. Atlantis lasted for five days; they probably shouldn't have built their city out of brown sugar.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2011, World Finals",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "simulation",
+    "bfs",
+    "priority_queue"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.857100009918213
+}

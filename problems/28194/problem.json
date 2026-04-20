@@ -1,0 +1,37 @@
+{
+  "id": 28194,
+  "title": "Egor Has a Problem",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Egor has come up with a hard problem for a training camp! Here it is:</p>\n<p>Given an array $a$ of $n$ positive integers sorted in increasing order, find 4 indices $i &lt; j &lt; p &lt; q$ such that $a_i \\cdot a_q = a_j \\cdot a_p$.</p>\n<p>He then wrote the checker to this problem:</p>\n<pre>\n// returns true if the solution is found,\n// returns false if the solution is not found,\n// makes the verdict Wrong Answer right away if the found solution is not valid\nbool getAnswer(InStream &amp;stream, vector&lt;long long&gt; a) {\n    string s = stream.readToken(\"NO|YES\"); // PE if the string is not NO or YES\n    if (s == \"NO\") return false;\n    vector&lt;int&gt; b = stream.readInts(4, 1, (int)a.size()); // 4 indices between 1 and n\n    int i = b[0] - 1, j = b[1] - 1, p = b[2] - 1, q = b[3] - 1;  // -1 to make 0-indexed\n    stream.ensuref(i &lt; j &amp;&amp; j &lt; p &amp;&amp; p &lt; q, \"4 indices should be in increasing order\");\n    stream.ensuref(a[q] / a[p] == a[j] / a[i], \"the products are not equal\");\n    return true;\n}\n</pre>\n<p>The multiplication will overflow <code>long long</code>, so Egor used division instead. How smart! Although now Egor might have another problem...</p>",
+  "input": "<p>The first line contains one integer $n$ ($4 \\le n \\le 500\\,000$) --- the size of the array.</p>\n<p>The second line contains the array $a_1, a_2, \\ldots, a_n$ itself ($1 \\le a_1 &lt; a_2 &lt; \\ldots &lt; a_n \\le 10^{18}$).</p>",
+  "output": "<p>On the first line print \"<code>YES</code>\" if there is a solution and print \"<code>NO</code>\" otherwise.</p>\n<p>If a solution exists, print the 4 chosen indices in order $i, j, p, q$, separated by spaces. If there is more than one solution, you can print any one.</p>",
+  "samples": [
+    {
+      "input": "6\n2 6 11 21 47 120\n",
+      "output": "YES\n1 3 4 6\n"
+    },
+    {
+      "input": "5\n1 2 6 30 210\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "4\n7 13 77 143\n",
+      "output": "YES\n1 2 3 4\n"
+    },
+    {
+      "input": "4\n10 29 31 100\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2023, Day 6: Um_nik mod 998 244 353 Contest",
+  "level": 14,
+  "tags": [
+    "ad_hoc",
+    "pigeonhole_principle"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 2.434799909591675
+}

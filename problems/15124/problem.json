@@ -1,0 +1,45 @@
+{
+  "id": 15124,
+  "title": "Flipping Out",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Here is an interesting way of generating coin flips that looks random, but it’s not! First, generate a set of patterns (consecutive runs of coin flips) that are either heads or tails. Then, to generate each new coin flip, look back at all of the past coin flips in order, and count the number of times that each pattern occurs. Add them all up, and if that number is even, then the next flip is tails, otherwise the next flip is heads.</p>\n<p>Consider these three patterns:</p>\n<pre>\nHTH\nTHH\nT</pre>\n<p>They will generate this sequence of flips: THHTHTHT…</p>\n<ol>\n<li>T because at the start there are 0 occurrences of any of the patterns, and 0 is even.</li>\n<li>H because there is 1 occurrence of the pattern T</li>\n<li>H because there is still only 1 occurrence of the pattern T</li>\n<li>T because there is one T and one THH, so 2 total</li>\n<li>H because there are 2 Ts and one THH, 3 total</li>\n<li>T because there are 2 Ts, one THH and one HTH, 4 total</li>\n<li>H because there are 3 Ts, one THH and one HTH, 5 total</li>\n<li>T because there are 3 Ts, one THH and 2 HTHs, 6 total (it’s OK that the HTHs overlap)</li>\n</ol>\n<p>Suppose that a single pattern was missing from the set of patterns. From a sequence of flips, can you determine how many options there are for the missing pattern? Note that the missing pattern cannot be a duplicate of one of the given patterns, and also cannot be empty.</p>",
+  "input": "<p>Each input will consist of a single test case. Note that your program may be run multiple times on different inputs. Each test case will begin with a line containing a single integer n (1 ≤ n ≤ 100,000), representing the number of patterns.</p>\n<p>The next n lines will each contain a string consisting only of capital Ts and capital Hs. The first n-1 of these strings are the patterns, and the last is a sequence of generated flips. The sum of the lengths of all n strings will be ≤ 10<sup>6</sup>. All strings will be unique, and no strings will be empty.</p>",
+  "output": "<p>Output a single integer, which is the number of options for the missing pattern. Output - 1 if there are infinitely many options.</p>",
+  "samples": [
+    {
+      "input": "2\nH\nHTTTT\n",
+      "output": "0\n"
+    },
+    {
+      "input": "1\nTHHHHH\n",
+      "output": "1\n"
+    },
+    {
+      "input": "5\nH\nTTH\nHHTHT\nTH\nTTTHTT\n",
+      "output": "1\n"
+    },
+    {
+      "input": "5\nTTH\nH\nT\nHT\nTHTTHTTH\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Southeast USA Regional, 2017 Southeast USA Regional Programming Contest, Division 1",
+  "level": 23,
+  "tags": [
+    "aho_corasick",
+    "binary_search",
+    "data_structures",
+    "kmp",
+    "parametric_search",
+    "string",
+    "suffix_array",
+    "suffix_tree",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 4.3333001136779785
+}

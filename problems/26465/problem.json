@@ -1,0 +1,34 @@
+{
+  "id": 26465,
+  "title": "Sharp 2-SAT",
+  "time_limit": "8 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>This problem is about the special case of the Satisfiability Problem (SAT). Let's introduce the definition of SAT first.</p>\n<p>A SAT instance is a boolean logic formula consisting of several boolean variables combined by AND, OR, and NOT operators and parentheses. An assignment is a mapping from variable to boolean value. An assignment is satisfying a formula if and only if the formula is evaluated to be true with the given assignment. A literal is either a variable or its negation. A clause is a list of literals concatenated with OR. A formula is in Conjunctive Normal Form (CNF) if it consists of clauses concatenated with AND. In the following, we only consider CNF formulae as SAT inputs because every formula can be converted to the equivalent CNF formula. 2-SAT is a special case of SAT where the length of clauses are limited to 2. For example, $(x ∨ y) ∧ (¬x ∨ z)$ is a 2-SAT instance consisting of $3$ variables and $2$ clauses. $x =$ false, $y =$ true, $z =$ true is one of the satisfying assignments for this formula.</p>\n<p>You are given a 2-SAT instance in CNF with $N$ variables and $M$ clauses. The $i$-th variable is denoted by $x_i$ and this $i$ is called index. In all clauses, the difference between the indices of the two variables is less than or equal to $2$.</p>\n<p>Let $C_k$ be the number of satisfying assignments where exactly $k$ variables are true. Your task is to write a program that calculates $C_k$ for all $k$s $0$ from to $N$.</p>\n<p>Since the answer may be huge, print the answer modulo $998\\,244\\,353$.</p>",
+  "input": "<p>The input consists of a single test case with the following format.</p>\n<blockquote>\n<p>$N$ $M$</p>\n<p>$A_1$ $B_1$</p>\n<p>$\\vdots$</p>\n<p>$A_M$ $B_M$</p>\n</blockquote>\n<p>The first line consists of two integers, the number of variables $N$ ($1 ≤ N ≤ 100\\,000$) and the number of clauses $M$ ($1 ≤ M ≤ 100\\,000$).</p>\n<p>The following $M$ lines represent the clauses in the 2-SAT instance. Each line corresponds to one of the clauses. These lines contain $2$ integers $A_i$ and $B_i$ representing the literals in the clause. They satisfy $1 ≤ |A_i | , |B_i | ≤ N$ and $||A_i | − |B_i || ≤ 2$ and each of them has the following meaning: If it is a positive integer $a$, the literal is $x_a$ (without negation). If it is a negative integer $b$, the literal is $¬x_{-b}$ (with negation).</p>",
+  "output": "<p>Output $N+1$ lines. The $i$-th line contains a single integer $C_{i-1}$ modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "4 2\n2 2\n1 -3\n",
+      "output": "0\n1\n2\n2\n1\n"
+    },
+    {
+      "input": "2 4\n-2 2\n2 2\n2 1\n-1 2\n",
+      "output": "0\n1\n1\n"
+    },
+    {
+      "input": "40 10\n13 -12\n6 4\n-19 -17\n-6 4\n-10 -10\n16 17\n32 34\n-3 -2\n-11 -12\n37 -36\n",
+      "output": "0\n0\n0\n4\n130\n2052\n20958\n155678\n896220\n4160798\n16004412\n51999948\n144776190\n349181040\n735692490\n364558777\n233997014\n242620671\n184707628\n808271668\n924963778\n496489648\n654440271\n639886064\n690035227\n954668130\n474278220\n205649340\n77168754\n24784920\n6715462\n1505398\n271728\n37950\n3848\n252\n8\n0\n0\n0\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ICPC 2022 Asia Yokohama Regional, Camp, Petrozavodsk Programming Camp, Winter 2024, Day 1: Welcome Contest",
+  "level": 25,
+  "tags": [
+    "divide_and_conquer",
+    "fft",
+    "math"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 3.799999952316284
+}

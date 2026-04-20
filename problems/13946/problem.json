@@ -1,0 +1,31 @@
+{
+  "id": 13946,
+  "title": "Bipartite Blanket",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>In a bipartite graph, nodes are partitioned into two disjoint sets A and B such that every edge connects a node from A with a node from B. A matching M is a set of edges where no two edges share a common node. We say that a matching M blankets a set of nodes V if every node in V is an endpoint of at least one edge in M.</p>\n<p>We are given a bipartite graph where each node is assigned a weight — a positive integer. Weight of a set of nodes is simply the sum of the weights of the individual nodes.</p>\n<p>Given an integer threshold t, find the number of different sets of nodes V such that the weight of V is at least t and V is blanketed by at least one matching M.</p>",
+  "input": "<p>The first line contains two integers n and m (1 ≤ n, m ≤ 20) — the number of nodes in A and B respectively. Let us denote the nodes of A with a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub> and the nodes of B with b<sub>1</sub>, b<sub>2</sub>, . . . , b<sub>m</sub>.</p>\n<p>The following n lines contain m characters each that describe the edges of the graph. The j-th character in the i-th line is “1” if there is an edge between a<sub>i</sub> and b<sub>j</sub> and “0” otherwise.</p>\n<p>The following line contains n integers v<sub>1</sub>, v<sub>2</sub>, . . . , v<sub>n</sub> (1 ≤ v<sub>k</sub> ≤ 10 000 000) — the weights of the nodes a<sub>1</sub>, a<sub>2</sub>, . . . a<sub>n</sub>. The following line contains m integers w<sub>1</sub>, w<sub>2</sub>, . . . , w<sub>m</sub> (1 ≤ w<sub>k</sub> ≤ 10 000 000) — the weights of the nodes b<sub>1</sub>, b<sub>2</sub>, . . . b<sub>m</sub>.</p>\n<p>The following line contains an integer t (1 ≤ t ≤ 400 000 000) — the weight threshold.</p>",
+  "output": "<p>Output the number of sets of nodes whose weight is at least t and are blanketed by at least one matching M.</p>",
+  "samples": [
+    {
+      "input": "3 3\n010\n111\n010\n1 2 3\n8 5 13\n21\n",
+      "output": "3\n"
+    },
+    {
+      "input": "3 2\n01\n11\n10\n1 2 3\n4 5\n8\n",
+      "output": "13\n"
+    }
+  ],
+  "hint": "<p>In the first example above, subset {a<sub>1</sub>, a<sub>2</sub>, b<sub>2</sub>, b<sub>3</sub>} is blanketed by matching {(a<sub>1</sub>, b<sub>2</sub>),(a<sub>2</sub>, b<sub>3</sub>)} and has weight 21. Subsets {a<sub>3</sub>, b<sub>2</sub>, b<sub>3</sub>} and {a<sub>2</sub>, a<sub>3</sub>, b<sub>2</sub>, b<sub>3</sub>} are both blanketed by matching {(a<sub>2</sub>, b<sub>3</sub>),(a<sub>3</sub>, b<sub>2</sub>)}, and have weights 21 and 23 respectively. All the other subsets either weigh less than 21 or are not blanketed by any matching. For example, subset {a<sub>2</sub>, a<sub>3</sub>, b<sub>1</sub>, b<sub>3</sub>} has weight 26, but is not blanketed by any matching, so it’s not included in the count.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2016, Contest, Open Cup, 2016/2017 Season, Stage 8: Grand Prix of Europe",
+  "level": 22,
+  "tags": [
+    "dp",
+    "bitmask",
+    "dp_bitfield",
+    "hall"
+  ],
+  "accepted_user_count": 52,
+  "submission_count": null,
+  "average_tries": 1.4615000486373901
+}

@@ -1,0 +1,29 @@
+{
+  "id": 25832,
+  "title": "Making Connections",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Given that everything is online these days, connectivity is a must. A computer network can be modeled as a graph, where each computer is a vertex and each direct network connection between pairs of computers is an undirected edge.</p>\n<p>Consider the process of building a computer network. At the very beginning there will be n computers, with no connections between any of them. Then, as time goes on, pairs of computers are chosen, one pair at a time, and a direct network connection between them is added. In the middle of such a process, we might get the following graph modeling the current connections:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 187px; height: 100px;\"/></p>\n<p>This network currently has three groups: the first group has 4 computers that can communicate with each other directly or indirectly, the second group consists of 1 computer by itself, and the third group has 2 computers that can communicate with each other. So, a group is each of the separate components of the graph.</p>\n<p>We can define the average connectivity of a network as the sum of the group sizes squared, divided by the number of components. For the example graph shown above, the current connectivity equals (4<sup>2</sup> + 1<sup>2</sup> + 2<sup>2</sup>)/3 = 21/3 = 7.</p>\n<p>As a network is being built, the project manager would like to know the average connectivity of the network at that given snapshot of time. Write a program to handle the queries as the network is being constructed.</p>\n<p>Given a network of n initially separate computers, along with a sequence of steps, where each step is either a pair of computers being connected or a query about the average connectivity as of that moment, process each step (i.e., connect the two computers or answer the query).</p>",
+  "input": "<p>The first input line contains two space separated integers: n (1 ≤ n ≤ 10<sup>5</sup>), representing the number of computers, and m (1 ≤ m ≤ 3×10<sup>5</sup>), representing the total number of steps (each step being either connect two computers or a query on the average connectivity as of that moment). Assume that the computers are numbered 1 through n, inclusive.</p>\n<p>Each of the following m input lines contains information about one operation, in the order that they occur. Each of these lines will start with a single integer, either 1 or 2, providing the step type. If the step type is 1, it means that a pair of computers is being connected with a direct connection. The value of 1 will be followed by u and v (1 ≤ u, v ≤ n, u ≠ v), representing the pair of computers being connected with a direct connection. If the step type is 2, this is a query and no other information will be on that input line.</p>\n<p>Note: It’s possible that the input contains multiple direct connections for the same pair of computers; the extra direct connections between the same two computers do not have any effects. It’s also possible that, at the end of the process, not all n computers are connected in the same component, i.e., there may be more than one component even at the end of the process.</p>",
+  "output": "<p>For each query, output the average connectivity of the network at that point in time as a fraction in lowest terms on a line by itself. Specifically, output two integers, x and y, with the character ‘/’ in between, indicating that the average connectivity of the network at the time is x divided by y such that x and y share no common factors, e.g., 21/12 is not correct (should be 7/4).</p>",
+  "samples": [
+    {
+      "input": "7 9\n2\n1 1 2\n1 1 3\n2\n1 3 4\n1 2 3\n2\n1 6 7\n2\n",
+      "output": "1/1\n13/5\n19/4\n7/1\n"
+    },
+    {
+      "input": "4 9\n1 1 2\n2\n1 3 4\n2\n1 2 3\n2\n1 1 4\n1 2 4\n2\n",
+      "output": "2/1\n4/1\n16/1\n16/1\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, University of Central Florida, 2020 Local Programming Contest (Final Round)",
+  "level": 13,
+  "tags": [
+    "data_structures",
+    "disjoint_set"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 2.90910005569458
+}

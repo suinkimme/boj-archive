@@ -1,0 +1,22 @@
+{
+  "id": 31098,
+  "title": "Build the String",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Let us have some virtual machine. The machine has a memory stack that can infinitely widen and can contain strings of any finite non-zero length.</p>\n<p>The machine supports four operations:</p>\n<ul>\n<li><code>copy</code> --- copy a string at the stack's end and place it in the stack's end;</li>\n<li><code>swap</code> --- swap the last string in the stack and the one before the last;</li>\n<li><code>roll</code> --- cyclically shift three last strings in the stack away from the stack's end;</li>\n<li><code>fuse</code> --- extract two strings from the stack's end and then place their concatenation at the stack's end.</li>\n</ul>\n<p>More formally it looks like that: (<code>[...]</code> stands for some sequence of strings at the beginning of the stack, perhaps of zero length):</p>\n<ul>\n<li><code>copy</code>: <code>[...] x</code> $\\to$ <code>[...] x x</code>;</li>\n<li><code>swap</code>: <code>[...] x y</code> $\\to$ <code>[...] y x</code>;</li>\n<li><code>roll</code>: <code>[...] x y z</code> $\\to$ <code>[...] y z x</code>;</li>\n<li><code>fuse</code>: <code>[...] x y</code> $\\to$ <code>[...] xy</code>.</li>\n</ul>\n<p>Program for a given virtual machine is represented by a command sequence; the machine performs the commands one after another. If the stack doesn't have enough strings to perform the program's current command, then an event <code>CRASH</code> occurs and the machine stops functioning. The machine also stops if the program runs out of commands (in this case the <code>CRASH</code> event never occurs).</p>\n<p>Initially the virtual machine's stack contains two strings and has the form of \"<code>a b</code>\". You have to write a program for the given machine; the program's progress should result in an $s$ string located at the stack's end (at the end of the program's progress the stack can have more than one string left). The program should contain no more than $3 \\times |s|$ commands ($|s|$ --- is the $s$ string's length). Of course, the program's progress shouldn't lead to the <code>CRASH</code> event.</p>",
+  "input": "<p>The first line contains the $s$ string. It only consists of lowercase Latin letters \"<code>a</code>\" and \"<code>b</code>\" and has the length from $1$ to $10^5$ characters.</p>",
+  "output": "<p>Print on the first output line number $k$ the number of commands in the program ($0 \\le k \\le 3 \\times |s|$). Print on the next $k$ lines $k$ commands, one command per line. The acceptable commands are \"<code>copy</code>\", \"<code>swap</code>\", \"<code>roll</code>\" and \"<code>fuse</code>\". As the result of the program's progress the last element in the stack should be string $s$ (the stack can have more than one string left). The program shouldn't lead to the <code>CRASH</code> event. If there are several acceptable decisions, print any of them. See the samples for clarifications.</p>",
+  "samples": [
+    {
+      "input": "ababa\n",
+      "output": "9\nswap\ncopy\nroll\nfuse\ncopy\nfuse\ncopy\nroll\nfuse\n"
+    }
+  ],
+  "hint": "<p>During the sample program's progress the virtual machine's stack changes in the following manner:</p>\n<p><code>a b</code> $\\to$ <code>b a</code> $\\to$ <code>b a a</code> $\\to$ <code>a a b</code> $\\to$ <code>a ab</code> $\\to$ <code>a ab ab</code> $\\to$ <code>a abab</code> $\\to$ <code>a abab abab</code> $\\to$ <code>abab abab a</code> $\\to$ <code>abab ababa</code></p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 16: Grand Prix of Urals",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

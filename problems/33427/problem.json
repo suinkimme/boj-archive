@@ -1,0 +1,37 @@
+{
+  "id": 33427,
+  "title": "Submissions",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p><strong>The legend, example, and note of this problem are used fictitiously. Any resemblance to the actual contests, rules, submissions, or teams is coincidental.</strong></p>\n<p>In the International Challenging Puzzle Contest (ICPC), there are $m$ submissions. You are given the list of $m$ submissions ordered by time. A submission can be represented as a tuple $(c,p,t,s)$, which means team $c$ makes a submission on problem $p$ at time $t$ with status $s$. The status of a submission is either \"accepted\" or \"rejected\".</p>\n<p>The score of a team is the pair of the number of problems solved by the team and the total time consumed$^\\dagger$ by the team. The larger the number of problems solved is, the higher the score is. If a tie occurs, the smaller the total time consumed is, the higher the score is.</p>\n<p>If team $c$ makes at least one submission with status \"accepted\" on problem $p$, we say that team $c$ solves problem $p$. A team can get a gold medal if the number of teams with higher score is less than $\\min(\\lceil 0.1 \\cdot n \\rceil, 35)$, where $n$ is the number of teams that solved <strong>at least</strong> one problem and $\\lceil x \\rceil$ denotes the smallest integer that is not smaller than $x$.</p>\n<p>You need to find all the teams that can get a gold medal if <strong>at most</strong> one of the $m$ submissions changes its status.</p>\n<p>$\\dagger$ The total time consumed is the sum of times consumed for all solved problems ($0$ if no problems are solved). The time consumed for a solved problem is the time of the first submission with status  \"accepted\", plus $20$ times the number of submissions on this problem before the first submission with status  \"accepted\". Note that we say submission $i$ is before submission $j$ if and only if submission $i$ appears earlier than submission $j$ in the given list of $m$ submissions.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains a single integer $t$ ($1 \\le t \\le 10^5$) denoting the number of test cases. For each test case:</p>\n<p>The first line contains a single integer $m$ ($1 \\le m \\le 10^5$) denoting the number of submissions.</p>\n<p>The $i$-th of the following $m$ lines contains $c_i$, $p_i$, $t_i$, and $s_i$ which mean that team $c_i$ makes a submission on problem $p_i$ at time $t_i$ with status $s_i$. Specifically:</p>\n<ul>\n<li>$c_i$ is a string of length between $1$ and $20$ consisting of uppercase letters, lowercase letters, digits and underscores ('<code>_</code>'). Note that no two teams have the same name.</li>\n<li>$p_i$ is an uppercase letter.</li>\n<li>$t_i$ is a non-negative integer less than $300$.</li>\n<li>$s_i$ is a string, being either \"<code>accepted</code>\" or \"<code>rejected</code>\".</li>\n</ul>\n<p>It is guaranteed that $t_i \\le t_j$ for all $i &lt; j$. Recall that if $t_i = t_j$ and $i &lt; j$, we still say that the $i$-th submission came before the $j$-th submission.</p>\n<p>It is guaranteed that the sum of $m$ over all test cases does not exceed $10^5$.</p>",
+  "output": "<p>For each test case:</p>\n<p>Output one integer $k$ on the first line, denoting the number of teams that can get a gold medal if at most one of the $m$ submissions changes its status.</p>\n<p>On the second line, output $k$ distinct strings <strong>in any order</strong>, denoting the names of these $k$ teams.</p>",
+  "samples": [
+    {
+      "input": "2\n5\nTSxingxing10 G 0 rejected\nTSxingxing10 B 83 accepted\naoliaoligeiliao J 98 accepted\nTS1 J 118 accepted\nTS1 B 263 accepted\n12\nAllWayTheNorth A 0 rejected\nYaoYaoLingXian Y 10 accepted\nXuejunXinyoudui1 X 200 rejected\nXuejunXinyoudui1 X 200 accepted\nLetItRot L 215 accepted\nAllWayTheNorth W 250 accepted\nImYourFan I 257 accepted\nImYourFan Y 257 accepted\nAllWayTheNorth T 264 accepted\nXuejunXinyoudui1 J 294 accepted\nLetItRot I 299 accepted\nLetItRot I 299 rejected\n",
+      "output": "2\nTSxingxing10 TS1\n4\nAllWayTheNorth XuejunXinyoudui1 LetItRot ImYourFan\n"
+    },
+    {
+      "input": "2\n2\njiangly_fan A 1 accepted\njiangly B 23 accepted\n3\nconqueror_of_tourist A 1 accepted\nconqueror_of_tourist A 2 accepted\ntourist B 23 accepted\n",
+      "output": "2\njiangly_fan jiangly\n1\nconqueror_of_tourist\n"
+    },
+    {
+      "input": "2\n13\nA A 1 accepted\nA X 1 accepted\nK K 1 rejected\nB B 2 accepted\nC C 2 accepted\nD D 2 accepted\nE E 2 accepted\nF F 2 accepted\nG G 2 accepted\nH H 2 accepted\nI I 2 accepted\nJ J 2 accepted\nK K 2 rejected\n12\nA A 1 accepted\nA X 1 accepted\nB B 2 accepted\nC C 2 accepted\nD D 2 accepted\nE E 2 accepted\nF F 2 accepted\nG G 2 accepted\nH H 2 accepted\nI I 2 accepted\nJ J 2 rejected\nK K 2 rejected\n",
+      "output": "11\nA K B C D E F G H I J\n1\nA\n"
+    },
+    {
+      "input": "2\n11\nA A 1 accepted\nB B 1 accepted\nC C 2 accepted\nD D 2 accepted\nE E 2 accepted\nF F 2 accepted\nG G 2 accepted\nH H 2 accepted\nI I 2 accepted\nJ J 2 accepted\nK K 2 accepted\n12\nA A 1 accepted\nA X 1 accepted\nK K 1 rejected\nB B 2 accepted\nC C 2 accepted\nD D 2 accepted\nE E 2 accepted\nF F 2 accepted\nG G 2 accepted\nH H 2 accepted\nI I 2 accepted\nJ J 2 accepted\n",
+      "output": "2\nA B\n2\nA K\n"
+    }
+  ],
+  "hint": "<p>In the first case of the first example, <code>TS1</code> solves two problems, so they can get a gold medal. <code>TSxingxing10</code> can get a gold medal if their first submission changes its status to \"accepted\".</p>\n<p>In the second case of the first example, <code>AllWayTheNorth</code>, <code>XuejunXinyoudui1</code>, <code>LetItRot</code> and <code>ImYourFan</code> have the same score, two problems solved with $514$ total time consumed. They can get gold medals simultaneously if no submission changes its status.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2024, Day 3: ZJU Contest",
+  "level": 18,
+  "tags": [
+    "implementation",
+    "data_structures"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

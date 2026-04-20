@@ -1,0 +1,36 @@
+{
+  "id": 17155,
+  "title": "Directing Rainfall",
+  "time_limit": "15 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Porto and the nearby Douro Valley are famous for producing port wine. Wine lovers from all over the world come here to enjoy this sweet wine where it is made. The International Consortium of Port Connoisseurs (ICPC) is organizing tours to the vineyards that are upstream on the Douro River. To make visits more pleasurable for tourists, the ICPC has recently installed sun tarps above the vineyards. The tarps protect tourists from sunburn when strolling among the vines and sipping on a vintage port.</p>\n<p>Unfortunately, there is a small problem with the tarps. Grapes need sunlight and water to grow. While the tarps let through enough sunlight, they are entirely waterproof. This means that rainwater might not reach the vineyards below. If nothing is done, this year’s wine harvest is in peril!</p>\n<p>The ICPC wants to solve their problem by puncturing the tarps so that they let rainwater through to the vineyards below. Since there is little time to waste before the rainy season starts, the ICPC wants to make the minimum number of punctures that achieve this goal.</p>\n<p>We will consider a two-dimensional version of this problem. The vineyard to be watered is an interval on the x-axis, and the tarps are modeled as line segments above the x-axis. The tarps are slanted, that is, not parallel to the x- or y-axes (see Figure F.1 for an example). Rain falls straight down from infinitely high. When any rain falls on a tarp, it flows toward the tarp’s lower end and falls off from there, unless there is a puncture between the place where the rain falls and the tarp’s lower end—in which case the rain will fall through the puncture instead. After the rain falls off a tarp, it continues to fall vertically. This repeats until the rain hits the ground (the x-axis).</p>\n<table class=\"table table-bordered\" style=\"width: 100%;\">\n<tbody>\n<tr>\n<td style=\"width: 50%; text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 208px; height: 236px;\"/></td>\n<td style=\"width: 50%; text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 189px; height: 267px;\"/></td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">(a) Tarps are shown as black slanted line segments and the vineyard as a green line segment at the bottom.</td>\n<td style=\"text-align: center;\">(b) An optimal solution: by puncturing two tarps in the locations of the red circles, some rain (shown in blue) that starts above the vineyard will reach the vineyard.</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure F.1: Illustration of Sample Input 1.</p>\n<p>For legal reasons you have to ensure that at least some of the rain that reaches the vineyard originated from directly above the vineyard. This is to prevent any vineyard from stealing all their rain from neighboring vineyards (see the second sample input for an example).</p>",
+  "input": "<p>The first line of input contains three integers ℓ, r and n, where (ℓ, r) (0 ≤ ℓ &lt; r ≤ 10<sup>9</sup>) is the interval representing the vineyard and n (0 ≤ n ≤ 5 · 10<sup>5</sup>) is the number of tarps. Each of the following n lines describes a tarp and contains four integers x<sub>1</sub>, y<sub>1</sub>, x<sub>2</sub>, y<sub>2</sub>, where (x<sub>1</sub>, y<sub>1</sub>) is the position of the tarp’s lower end and (x<sub>2</sub>, y<sub>2</sub>) is the position of the higher end (0 ≤ x<sub>1</sub>, x<sub>2</sub> ≤ 10<sup>9</sup>, x<sub>1</sub> ≠ x<sub>2</sub>, and 0 &lt; y<sub>1</sub> &lt; y<sub>2</sub> ≤ 10<sup>9</sup>).</p>\n<p>The x-coordinates given in the input (`, r, and the values of x<sub>1</sub> and x<sub>2</sub> for all tarps) are all distinct. The tarps described in the input will not intersect, and no endpoint of a tarp will lie on another tarp.</p>",
+  "output": "<p>Output the smallest number of punctures that need to be made to get some rain falling from above the vineyard to the vineyard.</p>",
+  "samples": [
+    {
+      "input": "10 20 5\n32 50 12 60\n30 60 8 70\n25 70 0 80\n15 30 28 40\n5 20 14 25\n",
+      "output": "2\n"
+    },
+    {
+      "input": "2 4 2\n3 2 0 3\n5 2 1 5\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2019",
+  "level": 27,
+  "tags": [
+    "dag",
+    "data_structures",
+    "dp",
+    "geometry",
+    "graphs",
+    "implementation",
+    "segtree",
+    "sweeping",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 3.5833001136779785
+}

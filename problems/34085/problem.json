@@ -1,0 +1,31 @@
+{
+  "id": 34085,
+  "title": "일반 쿼리가 구간 쿼리에 온라인 쿼리인 수열과 쿼리는 좋아하세요?",
+  "time_limit": "4 초",
+  "memory_limit": "1536 MB",
+  "description": "<blockquote>\n<p><em><strong>“이제부터 이 엄마와 함께 실컷 쿼리를 처리하는 거야.”</strong></em></p>\n<p><em><strong>“맙소사......”</strong></em></p>\n<p>    — 영별이와 한별이</p>\n</blockquote>\n<p>여느때와 같이 한별이는 열심히 자신이 가장 좋아하는 문제인, \"수열과 쿼리\" 문제를 풀고 있었다. 코딩에 열중하다가 한별이는 잠에 들게 되었는데, 눈을 떠보니 정말 놀랍게도 한별이는 자신이 그토록 염원하던 세계인 \"수쿼월드\"에 있었음을 깨달았다! 수쿼월드는 쿼리를 통해 수열을 잡는, 그야말로 일반적으로 생각할법한 판타지 세계이다.</p>\n<p>그런데 맙소사, 한별이의 옆에는 자신의 엄마인 영별이도 있는것이 아니겠는가? 게다가 영별이는 아주 특수한 쿼리를 날리는 능력이 있었는데, 이는 바로 일반 쿼리가 구간 쿼리에 온라인 쿼리라는 것이다! 영별이는 자신의 능력을 시험하기 위해, 주변에 있는 길이 $N$의 수열 $a_1,a_2,...,a_{N}$에 바로 자신의 쿼리를 시험해보았다. 그 쿼리는 다음과 같다:</p>\n<ul>\n<li>$0$ $x$ $y$ $c$: $x\\le i\\le y$인 모든 정수 $i$에 대해서 $a_i$를 $c$로 바꾼다.</li>\n<li>$1$ $x$ $y$ $c$: 수열의 $[x,y]$구간에 있는 적절한 원소들의 합이 $c$ 이상 $2c-1$ 이하가 되도록 할 수 있다면 $1$을, 아니라면 $0$을 출력한다. 구체적으로, $ b_x,b_{x+1},...,b_{y}\\in \\left\\{ 0,1 \\right\\}$가 존재해서 $c\\le \\sum_{i=x}^y a_ib_i \\le 2c-1$을 만족하도록 할 수 있다면 $1$을, 아니라면 $0$을 출력한다. </li>\n</ul>\n<p>모든 쿼리는, 앞서 말했듯이 온라인으로 처리해야 한다. 영별이의 놀라운 쿼리가 수열을 간단하게 쓰러뜨린 것을 본 한별이는, 문득 영별이의 쿼리가 수열에 적용되는 동안 쿼리의 결과가 궁금해졌다. 한별이의 궁금증을 해소하기 위해 영별이가 사용한 쿼리의 결과를 전부 구해주자.</p>",
+  "input": "<p>첫 번째 줄에 수열의 길이 $N$과 쿼리의 개수 $Q$가 주어진다. ($1\\le N\\le 500 \\, 000 ; 1\\le Q\\le 100 \\, 000$)  </p>\n<p>두 번째 줄에 $N$개의 정수 $a_1,a_2,...,a_N$이 공백으로 구분되어 주어진다. ($1 \\le a_i \\le 2^{10}$)  </p>\n<p>이후 $Q$개의 줄에 걸쳐 쿼리가 주어진다. 각 쿼리는 $5$개의 정수 $\\textrm{typ}$, $s'$, $t'$, $k'$, $z$ ($\\textrm{typ} \\in \\{0, 1\\}$, $0 \\le s', t', k', z &lt; 2^{30}$)로 표현되며, 다음과 같은 의미이다.</p>\n<ul>\n<li>초기에 $\\text{ans}=0$이고, $\\textrm{typ}=1$인 쿼리를 수행할 때마다 $\\text{ans}$를 이 쿼리에 대한 답으로 갱신한다고 하자.</li>\n<li>또한 함수 $f(x,y,z)=(x\\oplus(y\\times z))$가 주어질 때, 변수 $s$, $t$, $k$를 다음과 같이 정의하자.\n\t<ul>\n<li>$s=f(s',\\text{ans},z) \\text{ mod } N+1$</li>\n<li>$t=f(t',\\text{ans},z) \\text{ mod } N+1$</li>\n<li>$k=f(k',\\text{ans},z) \\text{ mod } 1024+1$</li>\n<li>$\\oplus$는 비트 XOR 연산자이고, $\\text{mod}$는 나머지 연산자이다.\n\t\t<ul>\n</ul>\n<span style=\"display: none;\"> </span></li>\n</ul>\n</li>\n<li>이때 $\\text{$\\textrm{typ}$ $\\text{min}(s,t)$ $\\text{max}(s,t)$ $k$}$ 쿼리를 수행해야 한다.</li>\n</ul>",
+  "output": "<p>$\\textrm{typ}=1$인 각 쿼리들의 결과를 줄로 구분하여 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 3\n1 2 3 4 5\n1 1 3 9 0\n0 1 1 2 0\n1 1 3 9 0\n",
+      "output": "0\n1\n"
+    },
+    {
+      "input": "5 3\n1 3 3 4 5\n1 1 3 9 0\n0 1 1 2 0\n1 23 17 25 19\n",
+      "output": "1\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, 아니메컵, 아니메컵 2기 -chinoaww는 피드백이 아니에요-, ibm2006, djm03178, gubshig, hyperbolic, oh040411, pyb1031, woohyun_jng",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "lazyprop",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 5.4375
+}

@@ -1,0 +1,28 @@
+{
+  "id": 24612,
+  "title": "Sleeping in Class",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Bessie the cow was excited to recently return to in-person learning! Unfortunately, her instructor, Farmer John, is a very boring lecturer, and so she ends up falling asleep in class often.</p>\n<p>Farmer John has noticed that Bessie has not been paying attention in class. He has asked another student in class, Elsie, to keep track of the number of times Bessie falls asleep in a given class. There are $N$ class periods ($2\\le N\\le 10^5$), and Elsie logs that Bessie fell asleep $a_i$ times ($1\\le a_i\\le 10^{18}$) in the $i$-th class period. The total number of times Bessie fell asleep across all class periods is at most $10^{18}$.</p>\n<p>Elsie, feeling very competitive with Bessie, wants to make Farmer John feel like Bessie is consistently falling asleep the same number of times in every class -- making it appear that the issue is entirely Bessie's fault, with no dependence on Farmer John's sometimes-boring lectures.</p>\n<p>The only ways Elsie may modify the log are by combining two adjacent class periods or splitting a class period into two. For example, if $a=[1,2,3,4,5],$ then if Elsie combines the second and third class periods the log will become $[1,5,4,5]$. If Elsie then chooses to split the third class period into two, the log can become any of $[1,5,0,4,5]$, $[1,5,1,3,5]$, $[1,5,2,2,5]$, $[1,5,3,1,5]$, or $[1,5,4,0,5]$.</p>\n<p>Given $Q$ ($1\\le Q\\le 10^5$) candidates $q_1,\\ldots,q_Q$ for Bessie's least favorite number ($1\\le q_i\\le 10^{18}$), for each of them help Elsie compute the minimum number of modifications to the log that she needs to perform so that all the numbers in the log become the same.</p>",
+  "input": "<p>The first line of each test case contains $N$, and the second contains $a_1,a_2,\\ldots,a_N$. The third contains $Q$, followed by $Q$ lines each containing an integer $q_i$, a candidate for Bessie's least favorite number.</p>",
+  "output": "For each $q_i$, compute the minimum number of modifications required for Elsie\nto convert every entry of the log into $q_i$, or $-1$ if it is impossible.",
+  "samples": [
+    {
+      "input": "6\n1 2 3 1 1 4\n7\n1\n2\n3\n4\n5\n6\n12\n",
+      "output": "6\n6\n4\n5\n-1\n4\n5\n"
+    }
+  ],
+  "hint": "<p>Elsie needs at least four modifications to convert the log into all 3s.</p>\n<pre>\n   1 2 3 1 1 4\n-&gt; 3 3 1 1 4\n-&gt; 3 3 1 5\n-&gt; 3 3 6\n-&gt; 3 3 3 3\n</pre>\n<p>It is impossible for Elsie to convert the log into all 5s, which is why the correct output for that candidate is $-1$.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2021-2022 Season, USACO 2022 February Contest, Platinum",
+  "level": 23,
+  "tags": [
+    "math",
+    "number_theory",
+    "prefix_sum",
+    "prime_factorization",
+    "pollard_rho"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 3.3845999240875244
+}

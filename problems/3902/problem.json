@@ -1,0 +1,30 @@
+{
+  "id": 3902,
+  "title": "Bug Hunt",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In this problem, we consider a simple programming language that has only declarations of one- dimensional integer arrays and assignment statements. The problem is to find a bug in the given program.</p>\n<p>The syntax of this language is given in BNF as follows:</p>\n<pre>\n       &lt;program&gt; ::= &lt;declaration&gt; | &lt;program&gt;&lt;declaration&gt; | &lt;program&gt;&lt;assignment&gt;\n   &lt;declaration&gt; ::= &lt;array name&gt;[&lt;number&gt;]&lt;new line&gt;\n    &lt;assignment&gt; ::= &lt;array name&gt;[&lt;expression&gt;]=&lt;expression&gt;&lt;new line&gt;\n    &lt;expression&gt; ::= &lt;number&gt; | &lt;array name&gt;[&lt;expression&gt;]\n        &lt;number&gt; ::= &lt;digit&gt; | &lt;digit_positive&gt;&lt;digit_string&gt;\n  &lt;digit_string&gt; ::= &lt;digit&gt; | &lt;digit&gt;&lt;digit_string&gt;\n&lt;digit_positive&gt; ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9\n         &lt;digit&gt; ::= 0 | &lt;digit_positive&gt;\n    &lt;array_name&gt; ::= a | b | c | d | e | f | g | h | i | j | k | l | m | \n                     n | o | p | q | r | s | t | u | v | w | x | y | z |\n                     A | B | C | D | E | F | G | H | I | J | K | L | M |\n                     N | O | P | Q | R | S | T | U | V | W | X | Y | Z</pre>\n<p>where &lt;new_line&gt;a new line character (LF).</p>\n<p>Characters used in a program are alphabetical letters, decimal digits, =, [, ] and new line characters. No other characters appear in a program.</p>\n<p>A declaration declares an array and specifies its length. Valid indices of an array of length n are integers between 0 and n − 1, inclusive. Note that the array names are case sensitive, i.e. array a and array A are different arrays. The initial value of each element in the declared array is undefined.</p>\n<p>For example, array a of length 10 and array b of length 5 are declared respectively as follows.</p>\n<pre>\na[10]\nb[5]</pre>\n<p>An expression evaluates to a non-negative integer. A &lt;number&gt; is interpreted as a decimal integer. An &lt;array name&gt;[&lt;expression&gt;] evaluates to the value of the &lt;expression&gt;-th element of the array. An assignment assigns the value denoted by the right hand side to the array element specified by the left hand side.</p>\n<p>Examples of assignments are as follows.</p>\n<pre>\na[0]=3\na[1]=0\na[2]=a[a[1]]\na[a[0]]=a[1]</pre>\n<p>A program is executed from the first line, line by line. You can assume that an array is declared once and only once before any of its element is assigned or referred to.</p>\n<p>Given a program, you are requested to find the following bugs.</p>\n<ul>\n<li>An index of an array is invalid.</li>\n<li>An array element that has not been assigned before is referred to in an assignment as an index of array or as the value to be assigned.</li>\n</ul>\n<p>You can assume that other bugs, such as syntax errors, do not appear. You can also assume that integers represented by &lt;number&gt;s are between 0 and 2<sup>31</sup> − 1 (= 2147483647), inclusive.</p>",
+  "input": "<p>The input consists of multiple datasets followed by a line which contains only a single '.' (period). Each dataset consists of a program also followed by a line which contains only a single '.' (period). A program does not exceed 1000 lines. Any line does not exceed 80 characters excluding a new line character.</p>",
+  "output": "<p>For each program in the input, you should answer the line number of the assignment in which the first bug appears. The line numbers start with 1 for each program. If the program does not have a bug, you should answer zero. The output should not contain extra characters such as spaces.</p>",
+  "samples": [
+    {
+      "input": "a[3]\na[0]=a[1]\n.\nx[1]\nx[0]=x[0]\n.\na[0]\na[0]=1\n.\nb[2]\nb[0]=2\nb[1]=b[b[0]]\nb[0]=b[1]\n.\ng[2]\nG[10]\ng[0]=0\ng[1]=G[0]\n.\na[2147483647]\na[0]=1\nB[2]\nB[a[0]]=2\na[B[a[0]]]=3\na[2147483646]=a[2]\n.\n.\n",
+      "output": "2\n2\n2\n3\n4\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2007 in Tokyo",
+  "level": 13,
+  "tags": [
+    "data_structures",
+    "string",
+    "set",
+    "hash_set",
+    "parsing",
+    "stack",
+    "recursion"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.2856999635696411
+}

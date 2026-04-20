@@ -1,0 +1,26 @@
+{
+  "id": 6112,
+  "title": "Holiday Painting",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>To show their spirit for the holidays, the cows would like to paint a picture! Their picture will be represented as an R x C (1 &lt;= R &lt;= 50,000; 1 &lt;= C &lt;= 15) grid of unit squares, each of which is either 0 or 1. The grid rows are conveniently numbered 1..R; the columns are numbered 1..C.</p>\n<p>Being pressed for time, the cows have asked their neighbors north of the border for help. Under the very helpful supervision of Canmuu the moose, they constructed a machine to throw paint at the picture in entire buckets! Beginning with all 0's in the picture grid, the machine splashes a certain paint color (either 0 or 1) over a rectangle in the grid. In particular, Canmuu suggested that they perform Q (1 &lt;= Q &lt;= 10,000) operations; operation i consists of five integers R1_i, R2_i, C1_i, C2_i, and X_i (1 &lt;= R1_i &lt;= R2_i &lt;= R; 1 &lt;= C1_i &lt;= C2_i &lt;= C; 0 &lt;= X_i &lt;= 1), meaning that the cows will paint each unit square with a row index between R1_i and R2_i, inclusive, and a column index between C1_i and C2_i, inclusive, with color X_i.</p>\n<p>However, painting a picture like this is quite prone to mistakes. So Canmuu has enlisted you to determine, after each operation, the number of unit squares in the grid which are the correct color.</p>",
+  "input": "<ul>\n<li>Line 1: Three space-separated integers: R, C, and Q</li>\n<li>Lines 2..R+1: Line i+1 contains C characters, each '0' or '1', denoting the i-th row of the grid in the obvious way.</li>\n<li>Lines R+2..R+Q+1: Line R+i+1 contains five space-separated integers representing a paint operation: R1_i, R2_i, C1_i, C2_i, and X_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Lines 1..Q: On line i+1, print a single integer representing the number of matching unit squares after the i-th operation.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "17 15 10\n111111101111111\n111111000111111\n111110000011111\n111100000001111\n111000000000111\n111100000001111\n111000000000111\n110000000000011\n111000000000111\n110000000000011\n100000000000001\n110000000000011\n100000000000001\n000000000000000\n111111000111111\n111111000111111\n111111000111111\n5 8 2 14 1\n8 17 3 7 1\n4 5 10 15 0\n7 16 12 14 1\n2 17 13 14 0\n2 6 2 3 1\n13 14 4 8 1\n3 6 6 7 1\n1 16 10 11 0\n7 16 10 10 0\n",
+      "output": "113\n94\n95\n91\n87\n93\n91\n87\n93\n93\n"
+    }
+  ],
+  "hint": "<p>After the first operation, the picture grid looks as follows:</p>\n<pre>\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n011111111111110\n011111111111110\n011111111111110\n011111111111110\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000\n000000000000000</pre>\n<p>There are 113 unit squares which match the corresponding square in the tree image; they are denoted below by an 'x' (the other bits are shown as they appear after the first paint splash):</p>\n<pre>\n0000000x0000000\n000000xxx000000\n00000xxxxx00000\n0000xxxxxxx0000\n0xx111111111xx0\n0xxx1111111xxx0\n0xx111111111xx0\n0x11111111111x0\n000xxxxxxxxx000\n00xxxxxxxxxxx00\n0xxxxxxxxxxxxx0\n00xxxxxxxxxxx00\n0xxxxxxxxxxxxx0\nxxxxxxxxxxxxxxx\n000000xxx000000\n000000xxx000000\n000000xxx000000</pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2008-2009 Season, USACO Holiday Bonus 2009 Contest, Gold",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "lazyprop",
+    "segtree"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1
+}

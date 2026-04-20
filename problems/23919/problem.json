@@ -1,0 +1,27 @@
+{
+  "id": 23919,
+  "title": "Painters' Duel",
+  "time_limit": "40 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>A new art museum is about to open! It is a single-story building in the shape of a large equilateral triangle. That triangle is made up of many smaller identical equilateral-triangle-shaped rooms, and the side length of the museum is <b>S</b> times the side length of any one of the rooms. Each room has doors connecting it to all other rooms with which it shares a side (not just a vertex).</p>\n<p>Each room is identified by two numbers: the row of the building it is in (counting from top to bottom, starting from 1), followed by its position within that row (counting from left to right, starting from 1). Here is an example of how the rooms are connected and labeled when <b>S</b> = 3:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>Alma and Berthe are artists who are painting the rooms of the museum. Alma starts in the room (<b>R<sub>A</sub></b>, <b>P<sub>A</sub></b>), and Berthe starts in a different room (<b>R<sub>B</sub></b>, <b>P<sub>B</sub></b>). Each of them has already painted their starting room. <b>C</b> of the other rooms of the museum are under construction, and neither Alma nor Berthe is allowed to enter these rooms or paint them.</p>\n<p>Alma and Berthe are having a friendly competition and playing a turn-based game, with Alma starting first. On a painter's turn, if their current room is adjacent to at least one unpainted room that is not under construction, the painter must choose one of those rooms, move to it, and paint it. Otherwise, the painter cannot move and does nothing on their turn. Once both painters are unable to move, the game is over. The score of the game is the number of rooms painted by Alma minus the number of rooms painted by Berthe.</p>\n<p>Both painters make optimal decisions, with Alma trying to maximize the score and Berthe trying to minimize the score. Given this, determine the best score Alma can guarantee for the game, regardless of what Berthe does.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each case begins with one line containing six integers <b>S</b>, <b>R<sub>A</sub></b>, <b>P<sub>A</sub></b>, <b>R<sub>B</sub></b>, <b>P<sub>B</sub></b>, and <b>C</b>. Respectively, these are the side length of the museum (as a multiple of the side length of a room), the row and position of Alma's starting room, the row and position of Berthe's starting room, and the number of rooms that are under construction. Then, there are <b>C</b> more lines. The i-th of these lines (counting starting from 1) contains two integers <b>R<sub>i</sub></b> and <b>P<sub>i</sub></b>, representing the row and position of the i-th room that is under construction.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the best score that Alma can guarantee for the game, as described above.</p>",
+  "samples": [
+    {
+      "input": "2\n2 1 1 2 1 0\n2 2 2 1 1 2\n2 1\n2 3\n",
+      "output": "Case #1: 2\nCase #2: 0\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, the turns must proceed as follows:</p>\n<ol>\n<li>Alma moves to room (2, 2).</li>\n<li>Berthe cannot move.</li>\n<li>Alma moves to room (2, 3).</li>\n<li>Berthe still cannot move.</li>\n<li>Alma cannot move. Since neither painter can move, the game is now over.</li>\n</ol>\n<p>Alma has painted 3 rooms and Berthe has painted 1 room, so the score is 3 - 1 = 2.</p>\n<p>In Sample Case #2, neither painter can move. They only paint their starting rooms.</p>\n<p>The following additional cases could not appear in Test Set 1, but could appear in Test Set 2.</p>\n<pre>\n2\n3 3 4 2 1 2\n2 3\n3 1\n3 3 2 2 3 2\n2 1\n3 1\n</pre>\n<p>The correct output for these two cases would be:</p>\n<pre>\nCase #1: 0\nCase #2: -1\n</pre>\n<p>In Case #1, Alma can move to (3, 5) or (3, 3). She cannot move to (2, 3), which is under construction.</p>\n<ul>\n<li>If she moves to (3, 5), she will have no more moves and Berthe will go on to paint two more rooms. Score: 2 - 3 = -1.</li>\n<li>If Alma moves to (3, 3), then Berthe can do one of the following:\n\t<ul>\n<li>Move to (3, 2), leaving neither painter with any future moves. Score: 2 - 2 = 0.</li>\n<li>Move to (2, 2). Then the rest of the game must play out as follows: Alma moves to (3, 2), Berthe moves to (1, 1). Score: 3 - 3 = 0.</li>\n</ul>\n</li>\n</ul>\n<p>So Alma knows that moving to (3, 3) guarantees a score of 0 no matter what Berthe does, which is better than the score of -1 that she would get by moving to (3, 5). Therefore, Alma moves to (3, 3). Notice that:</p>\n<ul>\n<li>We do not know exactly how the rest of this game will play out, but we do know the best score that Alma can guarantee.</li>\n<li>It is possible that one or more rooms that are not under construction do not get painted.</li>\n</ul>\n<p>In Case #2, Alma must move to (3, 3), and then it is better for Berthe to move to (3, 4) than to (2, 2).</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2020, Round F",
+  "level": 18,
+  "tags": [
+    "implementation",
+    "graphs",
+    "backtracking",
+    "recursion"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2
+}

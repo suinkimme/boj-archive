@@ -1,0 +1,29 @@
+{
+  "id": 26117,
+  "title": "Tourists",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There are n cities in Utopia, numbered from 1 through n. There are also n − 1 two-way roads connecting the cities. It is possible to travel between each pair of cities using only these roads. Because Utopia is very beautiful, there are m tourists, numbered from 1 through m, who are currently visiting this country. Initially, the i<sup>th</sup> tourist is visiting city a<sub>i</sub>. It is possible that multiple tourists are in the same city; that is, it can be that a<sub>i</sub> = a<sub>j</sub> for a pair i, j such that i ≠ j.</p>\n<p>Each tourist has an opinion on how interesting their current visit in Utopia is, represented as a number. Initially each tourist's opinion is 0. In order to encourage further visits, Utopian government wants to increase the tourists' opinion of the country by organizing events in selected cities. When an event is held in city c, all tourists who are currently staying there will have their opinion increased by d, where d is a value depending on the type of the event.</p>\n<p>Some of the tourists have planned to travel between cities during their stay in Utopia. Although traveling from one city to another takes almost no time (thanks to efficient Utopian roads), it still is an inconvenience and thus results in a lower tourist opinion. To be exact, a tourist who traveled a path consisting of k roads will have their opinion decreased by k (tourists will always choose the shortest path between two cities).</p>\n<p>You are asked by the Utopian government to track the tourists' opinions, as they travel through the country. As part of this request, you will be given q queries as part of the input. You are supposed to carry out and answer all queries in the order they appear in the input.</p>",
+  "input": "<p>The first line contains three integers n,m, q (2 ≤ n ≤ 200 000, 1 ≤ m, q ≤ 200 000) - number of cities, tourists and queries, respectively.</p>\n<p>The second line contains m integers a<sub>1</sub>, a<sub>2 </sub>,..., a<sub>m</sub> (1 ≤ a<sub>i</sub> ≤ n), where a represents the starting city of the i<sup>th</sup> tourist.</p>\n<p>Next n − 1 lines contain 2 integers each: v<sub>i</sub> and w<sub>i</sub> (1 ≤ v<sub>i</sub>, w<sub>i</sub> ≤ n, v<sub>i</sub> ≠ w<sub>i</sub>) implying that there exists a road between city v<sub>i</sub> and w<sub>i</sub>.</p>\n<p>Next q lines describe queries in the order they are asked. Each line is in one of the following three forms:</p>\n<ul>\n<li>The letter 't' followed by three integers f<sub>i</sub>, g<sub>i</sub>, c<sub>i</sub> (1 ≤ f<sub>i</sub> ≤ g<sub>i</sub> ≤ m, 1 ≤ c<sub>i</sub> ≤ n), meaning that all tourists with numbers from f<sub>i</sub> to g<sub>i</sub> (inclusively) travel to city c<sub>i</sub>. Those who are already in city c<sub>i</sub> do not move, and their opinion does not change.</li>\n<li>The letter 'e' followed by two integers c<sub>i</sub>, d<sub>i</sub> (1 ≤ c<sub>i</sub> ≤ n, 0 ≤ d<sub>i</sub> ≤ 10<sup>9</sup>), meaning that in city c<sub>i</sub>, an event is being held that increases the tourists' opinion by d<sub>i</sub>.</li>\n<li>The letter 'q' followed by one integer v<sub>i</sub> (1 ≤ v<sub>i</sub> ≤ m), representing a question about the current opinion of the tourist v<sub>i</sub>.</li>\n</ul>\n<p>It is guaranteed that there is at least one 'q' query in the input.</p>",
+  "output": "<p>Print the answer for all 'q' queries, each in a separate line, in the order they were asked.</p>",
+  "samples": [
+    {
+      "input": "8 4 11\n1 4 8 1\n6 4\n6 3\n3 7\n6 5\n5 1\n1 2\n1 8\nq 4\nt 3 4 5\nt 2 2 7\nq 4\ne 5 10\ne 1 5\nq 4\nt 1 1 5\nt 2 2 1\nq 1\nq 2\n",
+      "output": "0\n-1\n9\n4\n-7\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, European Girls' Olympiad in Informatics, EGOI 2022, Day 1",
+  "level": 25,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "lazyprop",
+    "lca",
+    "sparse_table"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 6
+}

@@ -1,0 +1,49 @@
+{
+  "id": 11598,
+  "title": "Falling Blocks",
+  "time_limit": "4 초",
+  "memory_limit": "256 MB",
+  "description": "<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:156px; width:471px\"/></p>\n<p>FallingBlocks is a Tetris-like arcade game, played on a board with 3 columns and 10 rows according to the following rules. A known, indefinitely repeating sequence of pentominoes (simply called pieces) fall down from the top of the board, one at a time. The 8 pieces and their labels are shown above.</p>\n<p>The pieces can be rotated freely (by 0, 90, 180 or 270 degrees), but they cannot flipped.</p>\n<p>The rules are similar to that of Tetris. The newly introduced piece falls from the top of the board as far as possible until it hits the bottom of the board or an existing block in the board. Then, any rows that are completely full are removed and rows above are moved down, with no further change in the rows themselves.</p>\n<p>To illustrate this, consider an empty board, on which an <code>R</code> piece, followed by a <code>Z</code> piece, falls. If we drop the <code>R</code> piece without rotating, we end up with first board shown above. Dropping a rotated <code>Z</code> piece on top of it causes two rows to fill. These rows are removed, and the rows above are pushed downward. The final situation is as shown in the rightmost picture. The final position has a “hanging block;” this block does not fall any further at this point.</p>\n<p>Unlike Tetris, the top three rows of the board must be completely empty in order to place a piece, i.e., if any of the top three rows is not empty after removing all rows that are full, the game is over.</p>\n<p>The score is solely based on the number of pieces played on the board before the game is over. Given the sequence of pieces that repeats indefinitely, determine the maximum number of pieces that can be played.</p>\n<p>Below are some example sequences of pieces, followed by explanation.</p>\n<ul>\n<li><code>X</code>: Every drop of an <code>X</code> piece leaves two rows filled that cannot be removed by additional <code>X</code> pieces. After placing four pieces, we have eight non-empty rows left, so the next <code>X</code> piece cannot be placed. So the result is 4.</li>\n<li><code>XXXXR</code>: The <code>R</code> piece could be rotated to not overlap the square left in the highest non-empty row, but our rule is that the top three rows must be completely empty to place any piece. So the result is 4.</li>\n<li><code>VZV</code>: Two <code>V</code> pieces and a <code>Z</code> piece can be placed to clear the board, so this game can go on forever.</li>\n</ul>",
+  "input": "<p>The input consists of a single line that contains a single string, representing the sequence of pentominoes. The input sequence contains between 1 and 20 characters.</p>",
+  "output": "<p>Print, on a single line, the maximum number of pieces that can be played until no more piece can be placed on the board. If the game can continue indefinitely, print forever.</p>",
+  "samples": [
+    {
+      "input": "T\n",
+      "output": "forever\n"
+    },
+    {
+      "input": "W\n",
+      "output": "8\n"
+    },
+    {
+      "input": "VZ\n",
+      "output": "25\n"
+    },
+    {
+      "input": "VR\n",
+      "output": "forever\n"
+    },
+    {
+      "input": "VVTRX\n",
+      "output": "130\n"
+    },
+    {
+      "input": "XSVTVT\n",
+      "output": "forever\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2015 Pacific Northwest Region Programming Contest, Division 1",
+  "level": 23,
+  "tags": [
+    "case_work",
+    "dfs",
+    "graphs",
+    "graph_traversal",
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 2
+}

@@ -1,0 +1,27 @@
+{
+  "id": 6561,
+  "title": "Decode the Tree",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A tree (i.e. a connected graph without cycles) with vertices numbered by the integers <em>1, 2, ..., n</em> is given. The \"Prufer\" code of such a tree is built as follows: the leaf (a vertex that is incident to only one edge) with the minimal number is taken. This leaf, together with its incident edge is removed from the graph, while the number of the vertex that was adjacent to the leaf is written down. In the obtained graph, this procedure is repeated, until there is only one vertex left (which, by the way, always has number <em>n</em>). The written down sequence of <em>n-1</em> numbers is called the Prufer code of the tree.</p>\n<p>Your task is, to reconstruct a tree, given its Prufer code. The tree should be denoted by a word of the language specified by the following grammar:</p>\n<pre>\nT ::= \"(\" N S \")\"\nS ::= \" \" T S\n    | empty\nN ::= number\n</pre>\n<p>That is, trees have parentheses around them, and a number denoting the identifier of the root vertex, followed by arbitrarily many (maybe none) subtrees separated by a single space character. As an example, take a look at the tree in the figure below which is denoted in the first line of the sample output. To generate further sample input, you may use your solution to Problem C.</p>\n<p> </p>\n<p>Note that, according to the definition given above, the root of a tree may be a leaf as well. It is only for the ease of denotation that we designate some vertex to be the root. Usually, what we are dealing here with is called an \"unrooted tree\".</p>",
+  "input": "<p>The input contains several test cases. Each test case specifies the Prufer code of a tree on one line. You will find <em>n-1</em> numbers separated by a single space. Input is terminated by EOF. You may assume that <em>1&lt;=n&lt;=50</em>.</p>",
+  "output": "<p>For each test case generate a single line containing the corresponding tree, denoted as described above. Note that, in general, there are many ways to denote such a tree: choose your favourite one</p>",
+  "samples": [
+    {
+      "input": "5 2 5 2 6 2 8\n2 3\n2 1 6 2 6\n",
+      "output": "(8 (2 (3) (5 (1) (4)) (6 (7))))\n(3 (2 (1)))\n(6 (1 (4)) (2 (3) (5)))\n"
+    }
+  ],
+  "hint": "<p><img alt=\"\" src=\"/upload/images2/decode.gif\" style=\"height:222px; width:222px\"/></p>",
+  "source": "Contest, University of Ulm Local Contest, University of Ulm Local Contest 2001",
+  "level": 0,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "constructive",
+    "dfs"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 9.5
+}

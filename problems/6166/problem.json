@@ -1,0 +1,27 @@
+{
+  "id": 6166,
+  "title": "Meteor Shower",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Bessie hears that an extraordinary meteor shower is coming; reports say that these meteors will crash into earth and destroy anything they hit. Anxious for her safety, she vows to find her way to a safe location (one that is never destroyed by a meteor) . She is currently grazing at the origin in the coordinate plane and wants to move to a new, safer location while avoiding being destroyed by meteors along her way.</p>\n<p>The reports say that M meteors (1 &lt;= M &lt;= 50,000) will strike, with meteor i will striking point (X_i, Y_i) (0 &lt;= X_i &lt;= 300; 0 &lt;= Y_i &lt;= 300) at time T_i (0 &lt;= T_i &lt;= 1,000). Each meteor destroys the point that it strikes and also the four rectilinearly adjacent lattice points.</p>\n<p>Bessie leaves the origin at time 0 and can travel in the first quadrant and parallel to the axes at the rate of one distance unit per second to any of the (often 4) adjacent rectilinear points that are not yet destroyed by a meteor.  She cannot be located on a point at any time greater than or equal to the time it is destroyed).</p>\n<p>Determine the minimum time it takes Bessie to get to a safe place.</p>",
+  "input": "<ul>\n<li>Line 1: A single integer: M</li>\n<li>Lines 2..M+1: Line i+1 contains three space-separated integers: X_i, Y_i, and T_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: The minimum time it takes Bessie to get to a safe place or -1 if it is impossible.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "4\n0 0 2\n2 1 2\n1 1 2\n0 3 5\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": "<p>There are four meteors, which strike points (0, 0); (2, 1); (1, 1); and (0, 3) at times 2, 2, 2, and 5, respectively.</p>\n<pre>\n    t = 0                t = 2              t = 5\n5|. . . . . . .     5|. . . . . . .     5|. . . . . . .    \n4|. . . . . . .     4|. . . . . . .     4|# . . . . . .   * = meteor impact\n3|. . . . . . .     3|. . . . . . .     3|* # . . . . .  \n2|. . . . . . .     2|. # # . . . .     2|# # # . . . .   # = destroyed pasture\n1|. . . . . . .     1|# * * # . . .     1|# # # # . . .   \n0|B . . . . . .     0|* # # . . . .     0|# # # . . . .   \n  --------------      --------------      -------------- \n  0 1 2 3 4 5 6       0 1 2 3 4 5 6       0 1 2 3 4 5 6 </pre>\n<p><br/>\nExamining the plot above at t=5, the closest safe point is (3, 0) -- but Bessie's path to that point is too quickly blocked off by the second meteor. The next closest point is (4,0) -- also blocked too soon.  Next closest after that are lattice points on the (0,5)-(5,0) diagonal. Of those, any one of (0,5), (1,4), and (2,3) is reachable in 5 timeunits.</p>\n<pre>\n       5|. . . . . . .   \n       4|. . . . . . .   \n       3|3 4 5 . . . .    Bessie's locations over time\n       2|2 . . . . . .    for one solution\n       1|1 . . . . . .   \n       0|0 . . . . . .   \n         -------------- \n         0 1 2 3 4 5 6  </pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2007-2008 Season, USACO February 2008 Contest, Silver",
+  "level": 13,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "grid_graph"
+  ],
+  "accepted_user_count": 69,
+  "submission_count": null,
+  "average_tries": 3.420300006866455
+}

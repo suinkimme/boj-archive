@@ -1,0 +1,26 @@
+{
+  "id": 31586,
+  "title": "Test Data Creation",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>진우는 함수컵 예비소집에 나온 <a href=\"/problem/31575\">도시와 비트코인</a> 문제를 보고 아래와 같은 코드로 문제를 풀었다.</p>\n<!-- HTML generated using hilite.me -->\n<pre style=\"margin: 0; line-height: 125%\">\n<span style=\"color: #BC7A00\">#include &lt;stdio.h&gt;</span>\n\n<span style=\"color: #B00040\">int</span> N, M, arr[<span style=\"color: #666666\">301</span>][<span style=\"color: #666666\">301</span>];\n\n<span style=\"color: #B00040\">bool</span> <span style=\"color: #0000FF\">solve</span>() {\n    ... <span style=\"color: #408080; font-style: italic\">// 중략</span>\n}\n\n<span style=\"color: #B00040\">int</span> <span style=\"color: #0000FF\">main</span>() {\n    scanf(<span style=\"color: #BA2121\">\"%d%d\"</span>, <span style=\"color: #666666\">&amp;</span>N, <span style=\"color: #666666\">&amp;</span>M);\n    <span style=\"color: #008000; font-weight: bold\">for</span>(<span style=\"color: #B00040\">int</span> i<span style=\"color: #666666\">=0</span>; i<span style=\"color: #666666\">&lt;</span>N; i<span style=\"color: #666666\">++</span>) {\n        <span style=\"color: #008000; font-weight: bold\">for</span>(<span style=\"color: #B00040\">int</span> j<span style=\"color: #666666\">=0</span>; j<span style=\"color: #666666\">&lt;</span>M; j<span style=\"color: #666666\">++</span>) {\n            scanf(<span style=\"color: #BA2121\">\"%d\"</span>, <span style=\"color: #666666\">&amp;</span>arr[i][j]);\n        }\n    }\n    puts(solve() <span style=\"color: #666666\">?</span> <span style=\"color: #BA2121\">\"Yes\"</span> <span style=\"color: #666666\">:</span> <span style=\"color: #BA2121\">\"No\"</span>);\n    <span style=\"color: #008000; font-weight: bold\">return</span> <span style=\"color: #666666\">0</span>;\n}\n</pre>\n<p> </p>\n<p>진우가 코드를 제출한 후 채점 결과를 기다렸다가 <span style=\"color:#e74c3c;\">틀렸습니다</span> 결과를 보고 충격을 받았다. 진우는 4시간 동안 '맞았는데 왜 틀리지?'를 중얼거리면서 고민하다가, $N$과 $M$을 반대로 입력했다는 것을 깨달았다. 결국 진우는 $N$과 $M$을 입력하는 부분만 바꿔서 <span style=\"color:#16a085;\"><strong>맞았습니다!!</strong></span> 를 받았다.</p>\n<p>이러는 진우를 본 명준이는 이 문제를 C모 사이트 대회에 내면 재미있겠다는 생각이 들었다. 명준이는 프리테스트(Pretest, 대회 도중에 제공하는 데이터)에는 약한 데이터만을 넣어두어서 진우가 틀린 코드를 냈을 때 <span style=\"color:#16a085;\"><strong>맞았습니다!!</strong></span> 결과를 보고 방심했다가 시스템 테스트(Systest, 대회 이후에 추가로 채점하는 데이터)에서 결과가 바뀌는 것을 기대하고 있다.</p>\n<p>명준이는 진우의 코드를 통과시키는 약한 데이터를 제작하려고 한다. 명준이는 우선 $N \\times M$개의 격자 값을 모두 0으로 초기화했다. 이제 명준이는 격자의 일부 값을 1로 바꾸려는데 명준이의 컴퓨터는 별로 좋지 않기 때문에 각 격자의 값을 1로 바꾸는 데 좀 시간이 걸린다. $r$행 $c$열의 값을 1로 바꾸기 위해서는 $t_{r,c}$ 만큼의 시간이 필요하다.</p>\n<p>명준이는 답이 <code>No</code>인 약한 데이터는 금방 만들었으나 답이 <code>Yes</code>인 약한 데이터는 만드는 데 너무 많은 시간이 걸린다. 어쩔 수 없이 명준이는 당신에게 도움을 요청했다! 명준이를 도와 약한 데이터를 최대한 빨리 만드는 프로그램을 작성하여라.</p>",
+  "input": "<p>첫 번째 줄에 데이터의 가로 크기 $N$과 세로 크기 $M$이 주어진다. ($1 \\le N, M \\le 300$)</p>\n<p>두 번째 줄부터 $M$개의 줄에는 각 격자의 값을 1로 바꾸는 데 걸리는 시간 $t_{r,c}$ ($1 \\le t_{r,c} \\le 10\\,000$)가 주어진다.</p>",
+  "output": "<p>첫 번째 줄에는 약한 데이터를 만드는 데 걸리는 시간의 최솟값을 출력한다.</p>\n<p>두 번째 줄부터 $M$개의 줄에는 데이터를 나타내는 $N$개의 정수(<code>0</code> 또는 <code>1</code>)를 공백을 사이에 두고 출력한다. 이 데이터는 진우의 잘못된 코드와 정답 코드에서 모두 <code>Yes</code>가 나와야 한다.</p>\n<p>만약 만들 수 있는 데이터가 여러 개라면 그중 아무거나 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2 3 4\n5 6 7 8\n9 10 11 12\n13 14 15 16\n",
+      "output": "46\n1 1 1 1\n0 0 0 1\n0 0 0 1\n0 0 0 1\n"
+    },
+    {
+      "input": "5 4\n1 5 1 5 1\n5 1 5 1 5\n1 5 1 5 1\n5 1 5 1 5\n",
+      "output": "27\n1 1 1 1 1\n0 1 0 0 1\n1 0 0 0 1\n0 0 0 1 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, FunctionCup, FunctionCup 2017, functionx",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

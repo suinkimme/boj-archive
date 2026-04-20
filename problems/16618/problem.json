@@ -1,0 +1,26 @@
+{
+  "id": 16618,
+  "title": "Good Cable Management",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Clara has worked herself into a bit of a cable mess. It all started when she got a great deal on a bulk order for cables and switchboxes. Each switchbox has incoming and outgoing connectors. A cable connects an outgoing connector of one switchbox with an incoming connector of another switchbox. The cable allows communication between two switchboxes. Note that communication is one-way: from one switchbox, out an outgoing connector through the cable to the other switchbox through its incoming connector.</p>\n<p>Initially, Clara’s network was simply a single switchbox. But over time, she extended her network by inserting new cables and switchboxes as needed using the following two types of upgrades.</p>\n<ul>\n<li>Length Upgrade on switchbox x: She picks an existing switchbox x, unplugs all the outgoing cables from x and replugs them into the outgoing connectors of a new switchbox y. Afterwards she adds a new cable from an outgoing connector of x to an incoming connector of y.</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 369px; height: 155px;\"/></p>\n<ul>\n<li>Parallel Upgrade on switchbox x: She takes a new switchbox y and duplicates an existing switchbox x. That is, if there was a connection with switchbox x (either incoming or outgoing), then she connects that switchbox with y. Note that Clara does not add a new cable between x and y.</li>\n</ul>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 329px; height: 111px;\"/></p>\n<p>Unfortunately, her network of switchboxes and cables has grown to the point where it becomes difficult to tell which switchboxes can communicate with one another. Two switchboxes can communicate if there is a directed path from one switchbox to the other (in either direction). Can you help her?</p>",
+  "input": "<p>The input starts with a line containing two integers N (1 ≤ N ≤ 200 000), which is the number of upgrades Clara has done, and Q (1 ≤ Q ≤ 200 000), which is the number of queries.</p>\n<p>The next N lines describe the upgrades. Each of these lines starts with either the character L, for a length upgrade, or P, for a parallel upgrade. This is followed by x (1 ≤ x ≤ N), which is the index of the switchbox that Clara upgrades. The newly added switchbox is labelled with y, which is the smallest positive integer not already used. It is guaranteed that x was in the network prior to this upgrade (x &lt; y). The initial switchbox is labelled with 1.</p>\n<p>The next Q lines describe the queries. Each of these lines contains two integers u and v (1 ≤ u &lt; v ≤ N + 1), which are the two switchboxes for this query</p>",
+  "output": "<p>Display the number of queries for which the two switchboxes can communicate.</p>",
+  "samples": [
+    {
+      "input": "3 2\nL 1\nL 1\nP 2\n1 4\n2 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 2\nP 1\nL 2\nL 3\nP 3\n1 5\n3 5\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p>The left subfigure shows the resulting network after applying the upgrades in Sample Input 1. The right subfigure similarly shows Sample Input 2.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 367px; height: 111px;\"/></p>",
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, 2018 ACM South Pacific Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2
+}

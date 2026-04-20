@@ -1,0 +1,41 @@
+{
+  "id": 33443,
+  "title": "Deep Abyss",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Kieray has a hash function $h(x)$. She wants you to help her find a fixed point $x_0$ of $h$, such that $h(x_0) = x_0$.</p>",
+  "input": "<p>The input contains the description of $h(x)$.</p>\n<p>The function $h(x)$ is described by a procedure in Frog language. In this language, variables (for example, $x$, $y$, $z$) are 128-bit unsigned integers. At the beginning, the variable $x$ contains the input value to $h$, and the other variables are all initialized to zeroes. The result of $h(x)$ is the value of variable $x$ after the execution of the procedure.</p>\n<p>The procedure contains at most 500 lines. Each line is an assignment that stores the result of an expression into a variable. Frog language supports bitwise negation (<code>~</code>), and (<code>&amp;</code>), or (<code>|</code>), xor (<code>^</code>), and left/right shifting (<code>&lt;&lt;</code>/<code>&gt;&gt;</code>). The semantics of these operations are similar to those in C/C++.</p>\n<p>Each assignment contains at most one binary operation. (Hexa)decimal constant numbers are allowed in expressions. The bitwise negation (<code>~</code>) can be applied to each variable or constant at most once. Every expression except bitwise xor expression (<code>^</code>) contains at most one variable. The shift amount (right operand) of a shifting operation is non-negative and not greater than 128.</p>\n<p>Here is the extended BNF specification of the Frog language:</p>\n<p><img alt=\"\" src=\"1.png\" style=\"width: 375px; height: 392px;\"/></p>\n<p>Note: \"<code>*</code>\" means the preceding token appears zero or more times, and \"<code>{1,4</code>}\" means the preceding token appears one to four times. The symbol \"<code>␣</code>\" represents a single space character.</p>",
+  "output": "<p>Print the fixed point of $h(x)$ in hexadecimal without leading zeroes, conforming to the format of <code>Hexadecimal</code> in the extended BNF specification. If there are multiple fixed points, print the minimum one. If there is no fixed point, print \"<code>:(</code>\" (without quotes) instead.</p>",
+  "samples": [
+    {
+      "input": "x = x | 0x19260817\n",
+      "output": "0x19260817\n"
+    },
+    {
+      "input": "x = x ^ 0xdeadbeef\n",
+      "output": ":(\n"
+    },
+    {
+      "input": "y = ~x << 3\nz = ~x >> 2\nw = x & ~0xa\nk = ~x ^ 0xc\nk = k << 1\nk = k >> 2\nx = y ^ z\np = k ^ w\nx = x ^ p\n",
+      "output": "0x9a83dcd41ee6a0f73507b9a83dcd41ef\n"
+    },
+    {
+      "input": "x = x | 0x1\nx = x << 128\n",
+      "output": "0x0\n"
+    }
+  ],
+  "hint": "<p>This is an illustration from Kieray. It's lovely.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 300px; height: 331px;\"/></p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2024, Day 4: Peking U Contest 2",
+  "level": 22,
+  "tags": [
+    "math",
+    "string",
+    "number_theory",
+    "parsing",
+    "linear_algebra",
+    "gaussian_elimination"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 17.75
+}

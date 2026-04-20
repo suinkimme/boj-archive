@@ -1,0 +1,26 @@
+{
+  "id": 10706,
+  "title": "WTF",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Assume you are given an array A of N integers, array ID of N + 1 integers from the interval [1, N −1] and an integer R.</p>\n<p>We are doing a Warshall-Turing-Fourier transformation<sup>1</sup> on array A in the following way:</p>\n<pre>\nsum = 0\n\nfor i = 1 to N\n    index = min{ ID[i], ID[i+1] }\n    sum = sum + A[index]\n    rotate array A to the right by R places\n\nchange the signs of all elements in A\n\nfor i = 1 to N\n    index = max{ ID[i], ID[i+1] }\n    index = index + 1\n    sum = sum + A[index]\n    rotate array A to the right by R places</pre>\n<p>You are given the array A and constant R, but you are not familiar with the array ID. What is the largest possible value of variable sum after execution of the above algorithm?</p>\n<p><sup>1</sup>This doesn’t really exist.</p>",
+  "input": "<p>The first line of input contains the integers N and R (2 ≤ N ≤ 3 000, 1 ≤ R &lt; N) from the task.</p>\n<p>The second line of input contains the elements of array A, respectively from A[1] to A[N]. These are integers from the interval [−10<sup>4</sup>, 10<sup>4</sup>].</p>",
+  "output": "<p>The first line of output must contain the maximal value of sum. </p>\n<p>The second line of output must contain the array ID of N + 1 integers from the interval [1, N - 1] for which the algorithm outputs the maximal sum. If there are multiple such arrays, output any.</p>",
+  "samples": [
+    {
+      "input": "5 3\n1 -1 1 -1 1\n",
+      "output": "10\n1 1 1 2 2 3\n"
+    },
+    {
+      "input": "6 5\n2 5 4 1 3 5\n",
+      "output": "16\n3 2 1 1 5 4 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2014/2015, Contest #6",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.1110999584197998
+}

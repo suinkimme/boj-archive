@@ -1,0 +1,33 @@
+{
+  "id": 30357,
+  "title": "Gemini Tree (Ver.Jadeite)",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Consider a tree with a green or blue stone placed at each vertex. Such a tree is called a \"Gemini Tree\" if condition 3 can be satisfied after performing the following operations 1 and 2.</p>\n<ol>\n<li>First, operate \"selecting pairs of vertices that are directly connected by edges and exchanging the stones placed on each endpoint,\" any number of times from zero to more.</li>\n<li>Second, select one or fewer edges and delete them.</li>\n<li>At this time, the tree is divided into at most two connected components, and only one type of stone is placed in either.</li>\n</ol>\n<p>Consider a \"Gemini tree\" with a specified length for each edge, and define its value as follows.</p>\n<ol>\n<li>First, operate \"selecting pairs of vertices that are directly connected by edges and exchanging the stones placed on each endpoint\" any number of times from zero to more. Each exchange operation costs equal to the length of the edge.</li>\n<li>Second, select one or fewer edges and delete them.</li>\n<li>At this time, the tree is divided into at most two connected components, and only one type of stone is placed in either.</li>\n<li>The minimum value of the total cost of operation 1 required to achieve condition 3 is the value of \"Gemini Tree.\"</li>\n</ol>\n<p>Note that stones are not moved when calculating the value.</p>\n<p>You are given a \"Gemini tree\" with a specified length for each edge. It has $N$ vertices, where $N$ is an odd number. The $i$-th edge connects two vertices, $u_i$ and $v_i$, and has a length $w_i$. The stone colors placed on vertices represent the string $S = s_1s_2\\dots s_N$.</p>\n<p>You sequentially perform $Q$ operations on this tree. The $j$-th operation is defined by two integers $e_j$, $a_j$, which represents increasing the length of the $e_j$-th edge by $a_j$. The effect of the operation remains even in subsequent operations. Answer the value of the tree after each operation.</p>",
+  "input": "<blockquote>\n<p>$N$</p>\n<p>$s_1s_2 \\dots s_N$</p>\n<p>$u_1$ $v_1$ $w_1$</p>\n<p>$\\vdots$</p>\n<p>$u_{N-1}$ $v_{N-1}$ $w_{N-1}$</p>\n<p>$Q$</p>\n<p>$e_1$ $a_1$</p>\n<p>$\\vdots$</p>\n<p>$e_Q$ $a_Q$</p>\n</blockquote>",
+  "output": "<p>Output the answer in $Q$ lines. On the $j$-th line, output the value of the tree after the $j$-th operation. Add a new line at the end of each line.</p>",
+  "samples": [
+    {
+      "input": "5\nGBBBB\n1 2 0\n1 3 0\n2 4 0\n2 5 0\n5\n1 1\n2 3\n3 3\n4 10\n2 2\n",
+      "output": "0\n1\n1\n3\n4\n"
+    },
+    {
+      "input": "5\nBGBGB\n1 2 0\n1 3 0\n2 4 0\n2 5 1000\n4\n4 1\n3 1\n1 1\n2 1\n",
+      "output": "0\n1\n3\n4\n"
+    },
+    {
+      "input": "7\nGGGBBBB\n1 5 1\n2 5 1\n7 5 0\n7 6 0\n3 6 0\n4 6 0\n6\n5 1\n5 1\n5 1\n6 3\n3 3\n5 100000\n",
+      "output": "1\n2\n2\n3\n6\n11\n"
+    }
+  ],
+  "hint": "<p>In Sample Input 1, there is one green stone. Therefore, the problem is to move this to one of the leaves at a minimal cost.</p>",
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2023 Day 2, Camp, Petrozavodsk Programming Camp, Summer 2024, Day 1: Welcome Contest",
+  "level": 23,
+  "tags": [
+    "trees",
+    "euler_tour_technique"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

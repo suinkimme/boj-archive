@@ -1,0 +1,22 @@
+{
+  "id": 24251,
+  "title": "Miners",
+  "time_limit": "1.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There is a vertical mine with $N$ chambers, where each chamber has exactly one vertical tunnel that goes into it (from some other chamber which is closer to the surface). Chamber number one is connected directly to the outside. Formally, the mine is a <strong>tree</strong>, rooted in vertex number one.</p>\n<p>Every tunnel has some score associated with it (which depends on a lot of factors, but in this problem we’re given these scores directly). Unfortunately, sometimes going through a tunnel is risky, so these scores can also be <strong>negative</strong>.</p>\n<p>Currently we have some number of miners in each chamber. We want to create a mining assignment, which should include some of the miners (possibly none), and assign to each of them a vertical path. <strong>A vertical path can only go deeper</strong> - that is if a miner is in some chamber, he can only go to chambers which are further away from the surface. More formally, from a vertex in the tree, we can only go to its children. We define the score of such a path, as the sum of the scores in the tunnels we passed through. Similarly, the score of the assignment is the sum of the scores of the paths in it (if no miner was assigned a path, we consider the score being 0).</p>\n<p>However, we also have some additional constraints! We don’t want to have “crowded” chambers, that is, for each chamber we have a constraint on the maximal number of miners that can end their path there. The miners who weren’t assigned a path will just leave the mine and <strong>won’t be counted towards these constraints</strong>.</p>\n<p>We’re interested in the largest score of some mining assignment. Given the structure of the mine, the initial number of miners in each chamber, and the maximal number of miners that can end in each chamber, you should write a program, which computes this value.</p>",
+  "input": "<p>From the first line of the standard input, your program should read a single integer $N$ - the number of chambers (we consider chamber 1 as being connected to the outside). The second line lines contains $s_1$, ⋯, $s_N$ - the initial number of miners for each chamber. The third line lines contains $e_1$, ⋯, $e_N$ - the maximal number of miners that can end in each chamber. Finally, the last $N - 1$ lines contain a description of the tunnel: the $i$<sup>th</sup> of these lines contains $p_{i+1}$ and $w_{i+1}$, which means that there is a vertical tunnel from chamber number $p_{i+1}$ to chamber number $i + 1$ with a score of $w_{i+1}$.</p>",
+  "output": "<p>On a single line, your program should print the largest possible score of some mining assignment.</p>",
+  "samples": [
+    {
+      "input": "5\n5 1 0 0 0\n100 1 1 2 4\n1 6\n1 1\n2 2\n2 -1\n",
+      "output": "32\n"
+    }
+  ],
+  "hint": "<p>One possible solution is:</p>\n<ol>\n<li>1 → 2 → 4 with a score of 8</li>\n<li>1 → 2 → 4 with a score of 8</li>\n<li>1 → 2 with a score of 6</li>\n<li>1 → 2 → 5 with a score of 5</li>\n<li>1 → 2 → 5 with a score of 5</li>\n</ol>",
+  "source": "Olympiad, International Autumn Tournament in Informatics, 2021, Group A (Seniors)",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 4
+}

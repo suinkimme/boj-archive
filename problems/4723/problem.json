@@ -1,0 +1,27 @@
+{
+  "id": 4723,
+  "title": "Parlay Wagering",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Parlay wagering offers sports bettors the opportunity to win a large sum of money from a small initial wager. A parlay wager is a combination of individual independent wagers that only pays if no individual wager loses. The payout from each wager is applied or “parlayed” to the next wager in turn. If any individual wager loses, the bettor receives nothing. If any individual wager is a tie or “push”, that wager is effectively ignored, reducing the ultimate payout.</p>\n<p>The sports book quotes the payout rate for an individual wager as a “money line”, a non-zero integer in the range -2000 to 2000. To compute the payout for a successful wager, the money line is converted to a decimal multiplier as follows: if the money line is positive, it is divided by 100 to obtain the multiplier. If the money line is negative, the absolute value is divided into 100 to obtain the multiplier. The multiplier is always truncated to three digits after the decimal point. The wager is multiplied by this multiplier to determine the amount won. The amount won is truncated to the cent (the sports book keeps the fractional cents).</p>\n<p>Consider the following example for a five-way parlay wager:</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<td>Money Line</td>\n<td>Wager</td>\n<td>Result</td>\n<td>Multiplier</td>\n<td>Amount Won</td>\n</tr>\n<tr>\n<td>-170</td>\n<td>\\$10.00</td>\n<td>Win</td>\n<td>100/170</td>\n<td>\\$5.88</td>\n</tr>\n<tr>\n<td>-160</td>\n<td>\\$15.88</td>\n<td>Win</td>\n<td>100/160</td>\n<td>\\$9.92</td>\n</tr>\n<tr>\n<td>125</td>\n<td>\\$25.80</td>\n<td>Win</td>\n<td>125/100</td>\n<td>\\$32.25</td>\n</tr>\n<tr>\n<td>-135</td>\n<td>\\$58.05</td>\n<td>Win</td>\n<td>100/135</td>\n<td>\\$42.95</td>\n</tr>\n<tr>\n<td>-140</td>\n<td>\\$101.00</td>\n<td>Win</td>\n<td>100/140</td>\n<td>\\$72.11</td>\n</tr>\n<tr>\n<td colspan=\"4\" rowspan=\"1\" style=\"text-align:right\">Subtotal: </td>\n<td>\\$163.11</td>\n</tr>\n<tr>\n<td colspan=\"5\" style=\"text-align:right\">Original Wager: \\$10.00</td>\n</tr>\n<tr>\n<td colspan=\"5\" style=\"text-align:right\">Total Returned: \\$173.11</td>\n</tr>\n</tbody>\n</table>\n<p>The maximum payout for any parlay wager is \\$1 million. If the calculated total exceeds that amount, the actual total returned will be \\$1 million.</p>\n<p>Write a program that will calculate the total amount returned for a series of parlay wagers. <br/>\nFor each parlay wager, your program is to print the total amount returned in dollars and cents on a single line starting in the first column without embedded or trailing whitespace. Print the leading dollar sign and insert commas at the millions and thousands positions as needed.</p>",
+  "input": "<p>Input will consist of several wagers. The first line of input to your program will contain the total number of parlay wagers as a single positive integer.</p>\n<p>Each wager that follows will be represented by a series of lines.</p>\n<p>The first line of each parlay wager contains the initial bet and the count of individual wagers as integers separated from each other by a single space.</p>\n<p>The following lines represent the individual wagers, one per line. Each individual wager is given as its money line followed by a single space and the result of the wager (“Win”, “Tie”, or “Loss”).</p>",
+  "output": "<p>For each parlay wager, your program should print one line containing the total amount returned in dollars and cents. Print the leading dollar sign and insert commas at the millions and thousands positions as needed.</p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "3\n10 5\n-170 Win\n-160 Win\n125 Win\n-135 Win\n-140 Win\n15 8\n100 Win\n-100 Tie\n-250 Win\n135 Tie\n265 Tie\n1500 Win\n120 Win\n130 Win\n10 2\n100 Loss\n300 Tie\n",
+      "output": "$173.11\n$3,400.32\n$0.00\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 2009 Mid-Atlantic Regional Programming Contest",
+  "level": 9,
+  "tags": [
+    "arithmetic",
+    "implementation",
+    "math",
+    "string"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2
+}

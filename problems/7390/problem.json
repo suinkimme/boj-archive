@@ -1,0 +1,25 @@
+{
+  "id": 7390,
+  "title": "Easy Trading",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Frank is a professional stock trader for <em>Advanced Commercial Markets Limited</em> (<em>ACM Ltd</em>). He likes \"easy trading\" --- using a straightforward strategy to decide when to buy stock and when to sell it.</p>\n<p>Frank has a database of historical stock prices for each day. He uses two integer numbers $m$ and $n$ ($1 \\le m &lt; n \\le 100$) as parameters of his trading strategy. Every day he computes two numbers: $P(m)$ --- an average stock price for the previous $m$ days, and $P(n)$ --- an average stock price for the previous $n$ days. $P(m) &gt; P(n)$ is an indicator of the upward trend (traders call it <em>bullish</em> trend), and $P(m) &lt; P(n)$ is an indicator of the downward trend (traders call it <em>bearish</em> trend). In practice the values for $P(m)$ and $P(n)$ are never equal.</p>\n<p>When a trend reverses from bearish to bullish it is a signal for Frank to buy stock. When a trend reverses from bullish to bearish it is a signal to sell.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 581px; height: 227px;\"/></p>\n<p>Frank has different values for $m$ and $n$ in mind and he wants to <em>backtest</em> them using historical prices. He takes a set of $k$ ($n &lt; k \\le 10\\,000$) historical prices $p_i$ ($0 &lt; p_i &lt; 100$ for $1 \\le i \\le k$). For each $i$ ($n \\le i \\le k$) he computes $P_i(m)$ and $P_i(n)$ --- an arithmetic average of $p_{i-m+1} \\dots p_i$ and $p_{i-n+1} \\dots p_i$ respectively.</p>\n<p>Backtesting generates trading signals according to the following rules.</p>\n<ul>\n<li>If $P_i(m) &gt; P_i(n)$ there is a bullish trend for day $i$ and a \"<code>BUY ON DAY </code>$i$\" signal is generated if $i=n$ or there was a bearish trend on day $i-1$.</li>\n<li>If $P_i(m) &lt; P_i(n)$ there is a bearish tread for day $i$ and a \"<code>SELL ON DAY </code>$i$\" signal is generated if $i=n$ or there was a bullish trend on day $i-1$.</li>\n</ul>\n<p>Your task is to write a program that backtests a specified strategy for Frank --- you shall print a signal for the first tested day (day $n$) followed by the signals in increasing day numbers.</p>",
+  "input": "<p>The first line of the input file contains three integer numbers $m$, $n$, and $k$. It is followed by $k$ lines with stock prices for days 1 to $k$. Each stock price $p_i$ is specified with two digits after decimal point. Prices in the input file are such that $P_i(m) \\ne P_i(n)$ for all $i$ ($n \\le i \\le k$).</p>",
+  "output": "<p>Write to the output file a list of signals --- one signal on a line, as described in the problem statement. </p>",
+  "samples": [
+    {
+      "input": "3 5 17\n8.45\n9.10\n9.40\n10.15\n10.40\n11.08\n11.52\n12.12\n12.51\n12.15\n11.90\n11.25\n11.73\n10.77\n10.80\n10.01\n9.14\n",
+      "output": "BUY ON DAY 5\nSELL ON DAY 12\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2004",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 39,
+  "submission_count": null,
+  "average_tries": 2.4358999729156494
+}

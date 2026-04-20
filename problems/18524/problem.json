@@ -1,0 +1,30 @@
+{
+  "id": 18524,
+  "title": "Another Coin Weighing Puzzle",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>You have some bags of coins. Each bag contains exactly k coins. Exactly one bag contains only counterfeit coins (we’ll call this the fake bag), while all other bags contain only real coins. All real coins weigh exactly the same number of grams. All counterfeit coins weigh exactly the same number of grams. You don’t know the exact weights of a real or counterfeit coin. You do know a counterfeit coin is strictly heavier than a real coin, but you do not know exactly how much heavier it is. The weights of the coins are positive real numbers.</p>\n<p>You have a scale which you can use at most m times. The scale has a left and right side. To use the scale, you can place any number of coins, taken from any of the bags, on each side of the scale, as long as the total number of coins on the left and right sides are exactly equal. The scale will return a single real number s. If s is zero, both sides of the scale weigh exactly the same. If s is negative, the left side is |s| grams heavier than the right side. If s is positive, the right side is s grams heavier than the left side. Coins can be reused multiple times for different weighings, and you are able to keep track of which bag each coin came from. You must specify beforehand all weighings you want to perform (so you cannot adjust what gets weighed in future trials based on the results of previous trials). After using the scale m times, you would like to be able to determine which bag is the fake bag.</p>\n<p>You are now wondering: given m and k, what is the maximum number of bags for which you can always determine the fake bag? This number can get large, so output it modulo the large prime 998,244,353.</p>",
+  "input": "<p>The single line of input contains two space-separated integers m and k (1 ≤ m, k ≤ 10<sup>6</sup>), where m is the number of weighings available to you and k is the number of coins in each bag.</p>",
+  "output": "<p>Output a single integer, which is the maximum number of bags for which you can determine the fake bag in m weighings, modulo the large prime 998,244,353.</p>",
+  "samples": [
+    {
+      "input": "2 1\n",
+      "output": "9\n"
+    },
+    {
+      "input": "2 2\n",
+      "output": "17\n"
+    }
+  ],
+  "hint": "<p>One way we can use 2 weighings to determine the fake bag among 9 bags, each containing 1 coin, is as follows:</p>\n<ul>\n<li>On the first weighing, put the coins from bags 1,2,3 on the left, and the coins from bags 7,8,9 on the right.</li>\n<li>On the second weighing, put the coins from bags 1,4,7 on the left, and the coins from bags 3,6,9 on the right.</li>\n</ul>\n<p>We can determine the fake bag as follows:</p>\n<ul>\n<li>The first weighing tells us which group of bags (1, 2, 3), (4, 5, 6), (7, 8, 9) contains the fake bag (e.g. if the left side is heavier, then group (1, 2, 3) contains the fake bag, if both sides are equal, then group (4, 5, 6) contains the fake bag, otherwise group (7, 8, 9) contains the fake bag).</li>\n<li>The second weighing will tell us which group of bags (1, 4, 7), (2, 5, 8), (3, 6, 9) contains the fake bag. The resulting fake bag can be uniquely determined as a result.</li>\n</ul>",
+  "source": ", ICPC, Regionals, North America, North America Championship, North America Championship 2020, Contest, Open Cup, 2019/2020 Season, Stage 13: Grand Prix of America",
+  "level": 21,
+  "tags": [
+    "math",
+    "number_theory",
+    "mobius_inversion"
+  ],
+  "accepted_user_count": 44,
+  "submission_count": null,
+  "average_tries": 2
+}

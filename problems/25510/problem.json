@@ -1,0 +1,25 @@
+{
+  "id": 25510,
+  "title": "Lord of the Characteristic Polynomials (2)",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>$n \\times n$ 행렬 $A$의 행렬식(determinant) $\\det A$는 아래와 같이 정의한다. 아래 식에서 $a_{ij}$는 $A$의 $i$행 $j$열에 위치한 원소를 나타낸다. 또한 $S_{n}$는 $\\{1, \\cdots, n\\}$의 순열들의 집합으로, 각 $\\sigma \\in S_{n}$에 대해 $\\{1, \\cdots, n\\} = \\{\\sigma(1), \\cdots, \\sigma(n)\\}$을 만족한다.</p>\n<p>$$ \\det A = \\sum_{\\sigma \\in S_{n}} \\mathrm{sgn}(\\sigma) \\cdot \\left(\\prod_{i = 1}^{n} a_{i \\sigma(i)}\\right) $$</p>\n<p>$A$의 characteristic polynomial $\\phi_{A}(x)$는 $x$에 대한 $n$차 다항식으로, $\\phi_{A}(x) = \\det(x I - A) = c_{n}x^{n} + c_{n-1}x^{n-1} + \\cdots + c_{0}$로 정의한다.</p>\n<p>이번에는 행렬 $A$의 원소가 다소 특이하다. $1$보다 큰 제곱수로 나누어떨어지지 않는 정수 $D \\neq 1$가 주어진다. 이 때 $A$의 모든 원소는 두 정수 $a + b\\sqrt{D}$ 꼴로 나타낼 수 있는 수로, 아래와 같이 정의된 집합 $\\mathbb{Z}\\sqrt{D}$의 원소이다.</p>\n<p>$$ \\mathbb{Z}[\\sqrt{D}] = \\{a + b\\sqrt{D} \\mid a, b \\in \\mathbb{Z} \\} $$</p>\n<p>각 원소가 $\\mathbb{Z}[\\sqrt{D}]$에 속하는 행렬 $A$가 주어진다. 이 때 $\\phi_{A}(x)$의 계수 $c_{0}, \\cdots, c_{n}$ 또한 $\\mathbb{Z}[\\sqrt{D}]$의 원소임을 증명할 수 있다. 또한, $c_{i} = p_{i} + q_{i}\\sqrt{D}$를 만족하는 정수 $p_{i}, q_{i}$ 또한 유일하게 존재한다. 주어진 정수 $M$에 대해, 각 $p_{i}$와 $q_{i}$를 $M$으로 나눈 나머지를 구하는 프로그램을 작성하시오. </p>",
+  "input": "<p>입력의 첫 줄에 행렬의 크기를 나타내는 정수 $n$과 나눗셈에 사용되는 정수 $M$, 정수 $D$가 주어진다.</p>\n<p>둘째 줄부터 $n$개의 줄에 걸쳐 행렬 $A$의 원소가 주어진다. 각 줄에는 $2n$개의 정수가 주어지며, 이 중 $i$번째 줄의 $2j-1$번째 수를 $x$, $2j$번째 수를 $y$라고 하면 $a_{ij} = x + y\\sqrt{D}$를 만족한다.</p>",
+  "output": "<p>총 $n+1$개의 줄에 걸쳐, $i$번째 줄에는 $p_{i}$와 $q_{i}$를 $M$으로 나눈 나머지를 공백으로 구분지어 출력한다.</p>\n<p>정수 $a$를 $M$으로 나눈 나머지란, $a - b$가 $M$의 배수가 되는 가장 작은 음 아닌 정수 $b$를 의미한다.</p>",
+  "samples": [
+    {
+      "input": "3 107 -5\n3 1 4 1 5 9\n2 6 5 3 5 8\n9 7 9 3 2 3\n",
+      "output": "26 69\n2 31\n97 100\n1 0\n"
+    }
+  ],
+  "hint": "<ul>\n<li>각 $x \\in \\mathbb{Z}[\\sqrt{D}]$에 대해, $x = a + b\\sqrt{D}$ 를 만족하는 정수 $a, b$는 유일하게 존재한다.</li>\n<li>$(a + b\\sqrt{D}) + (c + d\\sqrt{D}) = (a + c) + (b + d)\\sqrt{D}$</li>\n<li>$(a + b\\sqrt{D})(c + d\\sqrt{D}) = (ac + bdD) + (ad + bc)\\sqrt{D}$</li>\n</ul>",
+  "source": "TAMREF, aeren, koosaga, topology",
+  "level": 27,
+  "tags": [
+    "math",
+    "linear_algebra"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 2.09089994430542
+}

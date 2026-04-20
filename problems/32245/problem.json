@@ -1,0 +1,26 @@
+{
+  "id": 32245,
+  "title": "Q - 금고 부수기(Vault Breaker)",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>유틸은 <code>MatKor</code> 임원인 세준이의 초대를 받아 <code>MatKor</code> 임원진의 방에 들어갈 수 있게 되었다. 세준이의 <a href=\"https://codeforces.com/\"><code>Codeforces</code></a>핸들이 <a href=\"https://codeforces.com/profile/SafeSpot\"><code>SafeSpot</code></a>인 만큼 임원진의 방에는 금고가 있다.</p>\n<p>이 금고의 비밀번호는 $N$자리의 $B$진수로 표시되며, $0$으로 시작할 수 있다. 현재 금고의 모니터에는 $N$자리의 $B$진수 $S=\\overline{S_{N-1}S_{N-2}\\cdots S_1S_0}_{\\left( B \\right)}$가 표시되어 있다. 모니터에 표시된 수는 두 종류의 버튼을 눌러서 조작할 수 있다. 버튼은 한 번에 하나씩만 누를 수 있고, 각 버튼을 눌렀을 때 다음과 같이 동작한다.</p>\n<ul>\n<li>버튼 <span style=\"color:#e74c3c;\"><code>A</code></span>. 현재 표시된 수에 $1$을 더한다. 만약 결과가 $N$자리 수를 넘어간다면 마지막 $N$자리만 표시된다. 즉, $S\\leftarrow\\left( S+1 \\right)\\bmod{B^N}$으로 바꾼다.</li>\n<li>버튼 <span style=\"color:#e74c3c;\"><code>B</code></span>. 현재 표시된 수의 각 자리 수에 각각 $1$을 더한다. 만약 결과가 $B$가 되면 $0$이 된다. 즉, 모든 $i$에 대해 $S_i\\leftarrow\\left( S_i+1 \\right)\\bmod B$로 바꾼다.</li>\n</ul>\n<p>세준이가 잠시 자리를 비운 사이 호기심이 많은 유틸은 버튼을 눌러서 금고를 조작해 보기로 했다. 한 가지 버튼만 계속 누르는 것은 재미없기 때문에 버튼 <span style=\"color:#e74c3c;\"><code>A</code></span>와 <span style=\"color:#e74c3c;\"><code>B</code></span>를 모두 최소한 한 번은 눌러 볼 것이다. 하지만 초기 상태에서 값이 바뀌어 있다면 세준이에게 자신이 금고를 조작한 것을 들킬 수 있기 때문에, 조작이 끝났을 때 모니터에 표시된 수가 다시 $S$가 되게 하려고 한다. 또한, 세준이가 언제 돌아올지 모르는 유틸은 버튼을 누르는 횟수를 최소화하고자 한다.</p>\n<p>유틸을 도와 금고의 버튼을 최소한으로 눌러 수가 다시 $S$가 되도록 해보자. <strong>단, 두 버튼 모두 최소 한 번 이상은 눌러야 한다.</strong></p>\n<p>$N$자리의 $B$진수 $S=\\overline{S_{N-1}S_{N-2}\\cdots S_1S_0}_{\\left( B \\right)}$는 아래의 수를 의미한다.</p>\n<p>\\[S=\\overline{S_{N-1}S_{N-2}\\cdots S_1S_0}_{\\left( B \\right)}=\\sum_{i=0}^{N-1}{S_iB^i}\\]</p>",
+  "input": "<p>첫 번째 줄에 비밀번호의 자릿수를 나타내는 정수 $N(1\\le N\\le 100\\, 000)$과 진법을 나타내는 정수 $B(2\\le B\\le 100\\, 000)$가 공백으로 구분되어 주어진다.</p>\n<p>두 번째 줄에 $S$의 각 자리를 나타내는 $N$개의 정수 $S_{N-1},S_{N-2},\\cdots ,S_1,S_0(0\\le S_i&lt;B)$가 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>첫 번째 줄에 버튼을 누르는 횟수의 최솟값 $V$를 출력한다. 만약 $V$가 $4\\, 000\\, 000$을 초과하는 경우 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 대신 출력한다.</p>\n<p>만약 $V$가 $4\\, 000\\, 000$ 이하인 경우, 두 번째 줄에 길이 $V$의 문자열을 출력한다. 문자열의 각 문자는 <span style=\"color:#e74c3c;\"><code>A</code></span> 또는 <span style=\"color:#e74c3c;\"><code>B</code></span>이며 버튼을 누르는 순서를 의미한다.</p>\n<p>횟수를 최소로 만드는 시행이 여러 개인 경우 아무거나 하나를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3 3\n2 0 1\n",
+      "output": "6\nBBAAAA\n"
+    }
+  ],
+  "hint": "<p>세준이의 <a href=\"https://codeforces.com/\"><code>Codeforces</code></a>핸들은 <a href=\"https://codeforces.com/profile/SafeSpot\"><code>SafeSpot</code></a>이고, <a href=\"/\"><code>BOJ</code></a>핸들은 <a href=\"/user/devluyten\"><code>devluyten</code></a>이다.</p>",
+  "source": "University, 고려대학교, MatKor Cup, 제5회 고려대학교 MatKor Cup: 2024 Summer/Fall, tlsdydaud1, changhw, devluyten, kidw0124, lighter, sshs29hanul, utilforever, yijw0930",
+  "level": 18,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 2
+}

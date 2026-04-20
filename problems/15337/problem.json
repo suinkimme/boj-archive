@@ -1,0 +1,35 @@
+{
+  "id": 15337,
+  "title": "Starting a Scenic Railroad Service",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Jim, working for a railroad company, is responsible for planning a new tourist train service. He is sure that the train route along a scenic valley will arise a big boom, but not quite sure how big the boom will be.</p>\n<p>A market survey was ordered and Jim has just received an estimated list of passengers’ travel sections. Based on the list, he’d like to estimate the minimum number of train seats that meets the demand.</p>\n<p>Providing as many seats as all of the passengers may cost unreasonably high. Assigning the same seat to more than one passenger without overlapping travel sections may lead to a great cost cutback.</p>\n<p>Two different policies are considered on seat assignments. As the views from the train windows depend on the seat positions, it would be better if passengers can choose a seat. One possible policy (named ‘policy-1’) is to allow the passengers to choose an arbitrary seat among all the remaining seats when they make their reservations. As the order of reservations is unknown, all the possible orders must be considered on counting the required number of seats.</p>\n<p>The other policy (named ‘policy-2’) does not allow the passengers to choose their seats; the seat assignments are decided by the railroad operator, not by the passengers, after all the reservations are completed. This policy may reduce the number of the required seats considerably.</p>\n<p>Your task is to let Jim know how different these two policies are by providing him a program that computes the numbers of seats required under the two seat reservation policies.</p>\n<p>Let us consider a case where there are four stations, S1, S2, S3, and S4, and four expected passengers p1, p2, p3, and p4 with the travel list below.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:107px; width:269px\"/></p>\n<p>The travel sections of p1 and p2 do not overlap, that of p3 overlaps those of p1 and p2, and that of p4 does not overlap those of any others.</p>\n<p>Let’s check if two seats would suffice under the policy-1. If p1 books a seat first, either of the two seats can be chosen. If p2 books second, as the travel section does not overlap that of p1, the same seat can be booked, but the other seat may look more attractive to p2. If p2 reserves a seat different from that of p1, there will remain no available seats for p3 between S1 and S3 (Figure I.1).</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"2.png\" style=\"height:120px; width:416px\"/></p>\n<p style=\"text-align:center\">Figure I.1. With two seats</p>\n<p>With three seats, p3 can find a seat with any seat reservation combinations by p1 and p2. p4 can also book a seat for there are no other passengers between S3 and S4 (Figure I.2).</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"3.png\" style=\"height:120px; width:415px\"/></p>\n<p style=\"text-align:center\">Figure I.2. With three seats</p>\n<p>For this travel list, only three seats suffice considering all the possible reservation orders and seat preferences under the policy-1.</p>\n<p>On the other hand, deciding the seat assignments after all the reservations are completed enables a tight assignment with only two seats under the policy-2 (Figure I.3).</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"4.png\" style=\"height:92px; width:417px\"/></p>\n<p style=\"text-align:center\">Figure I.3. Tight assignment to two seats</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<pre>\nn\na<sub>1</sub> b<sub>1</sub>\n.\n.\n.\na<sub>n</sub> b<sub>n</sub></pre>\n<p>Here, the first line has an integer n, the number of the passengers in the estimated list of passengers’ travel sections (1 ≤ n ≤ 200 000). The stations are numbered starting from 1 in their order along the route. Each of the following n lines describes the travel for each passenger by two integers, the boarding and the alighting station numbers, a<sub>i</sub> and b<sub>i</sub>, respectively (1 ≤ a<sub>i</sub> &lt; b<sub>i</sub> ≤ 100 000). Note that more than one passenger in the list may have the same boarding and alighting stations.</p>",
+  "output": "<p>Two integers s1 and s2 should be output in a line in this order, separated by a space. s1 and s2 are the numbers of seats required under the policy-1 and -2, respectively.</p>",
+  "samples": [
+    {
+      "input": "4\n1 3\n1 3\n3 6\n3 6\n",
+      "output": "2 2\n"
+    },
+    {
+      "input": "4\n1 2\n2 3\n1 3\n3 4\n",
+      "output": "3 2\n"
+    },
+    {
+      "input": "10\n84 302\n275 327\n364 538\n26 364\n29 386\n545 955\n715 965\n404 415\n903 942\n150 402\n",
+      "output": "6 5\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ACM-ICPC Asia Tsukuba Regional Contest 2017",
+  "level": 18,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "prefix_sum",
+    "sweeping"
+  ],
+  "accepted_user_count": 276,
+  "submission_count": null,
+  "average_tries": 1.6051000356674194
+}

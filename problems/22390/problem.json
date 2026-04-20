@@ -1,0 +1,29 @@
+{
+  "id": 22390,
+  "title": "知識の証明",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>あなたが住んでいる集合住宅の入口のドアには，パスワード式のロックがかけられている．このパスワードはちょうど 4 桁の 0 から 9 の範囲の数字で構成されており，あなたはいつも，集合住宅の管理人から伝えられたパスワード <i>P</i> を使って，このドアのロックを解除している．</p>\n<p>ある日，あなたは集合住宅の住民全員が，自分と同じパスワード <i>P</i> を使っているのかどうか気になり，同じ集合住宅に住む友人に尋ねることにした．あなたとあなたの友人は，自分のパスワードを互いに伝えあうことで，同じパスワードを使っているのかどうか確かめ合うことができる．しかしながら，パスワードがそれぞれの住民に個別に割り当てられている可能性を考えると，この方法は好ましくない．自分のパスワードを知っているのは自分だけであるべきで，他人に伝えるべきではないからである．</p>\n<p>この事態を防ぐために，あなたとあなたの友人は，自分のパスワードをハッシュ関数に入力し，得られたハッシュ値を互いに伝えあうことにした．ここで使用するハッシュ関数の計算式 <i>S</i> は小文字のアルファベット 'a', 'b', 'c', 'd' と記号 '[', ']', '+', '*', '^' からなり，以下のBNFで定義される &lt;Hash&gt; によって表される．</p>\n<blockquote>&lt;Hash&gt; ::= &lt;Letter&gt; | '['&lt;Op&gt;&lt;Hash&gt;&lt;Hash&gt;']' &lt;Op&gt; ::= '+' | '*' | '^' &lt;Letter&gt; ::= 'a' | 'b' | 'c' | 'd'</blockquote>\n<p>ここで 'a', 'b', 'c', 'd' はそれぞれ 4 桁のパスワードの先頭から 1 桁目，2 桁目，3 桁目，4 桁目の数字を表す．'+', '*', '^' は演算子であり，以下のような意味を表す．</p>\n<ul>\n<li>'+' : 続く 2 つの &lt;Hash&gt; を二進数で表したときの論理和を取る</li>\n<li>'*' : 続く 2 つの &lt;Hash&gt; を二進数で表したときの論理積を取る</li>\n<li>'^' : 続く 2 つの &lt;Hash&gt; を二進数で表したときの排他的論理和を取る</li>\n</ul>\n<p>ここで，論理和，論理積，排他的論理和の真理値表はそれぞれ以下のようになる．</p>\n<table class=\"table table-bordered table-center-20 td-center th-center\">\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n<th>[+AB]</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>0</td>\n<td>0</td>\n<td>0</td>\n</tr>\n<tr>\n<td>1</td>\n<td>0</td>\n<td>1</td>\n</tr>\n<tr>\n<td>0</td>\n<td>1</td>\n<td>1</td>\n</tr>\n<tr>\n<td>1</td>\n<td>1</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>\n<table class=\"table table-bordered table-center-20 td-center th-center\">\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n<th>[*AB]</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>0</td>\n<td>0</td>\n<td>0</td>\n</tr>\n<tr>\n<td>1</td>\n<td>0</td>\n<td>0</td>\n</tr>\n<tr>\n<td>0</td>\n<td>1</td>\n<td>0</td>\n</tr>\n<tr>\n<td>1</td>\n<td>1</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>\n<table class=\"table table-bordered table-center-20 td-center th-center\">\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n<th>[^AB]</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>0</td>\n<td>0</td>\n<td>0</td>\n</tr>\n<tr>\n<td>1</td>\n<td>0</td>\n<td>1</td>\n</tr>\n<tr>\n<td>0</td>\n<td>1</td>\n<td>1</td>\n</tr>\n<tr>\n<td>1</td>\n<td>1</td>\n<td>0</td>\n</tr>\n</tbody>\n</table>\n<p>例として，ハッシュ関数 [+c[+a[^bd]]] にパスワード 0404 を入力すると，ハッシュ値として 0 が得られる．同じハッシュ値が得られるパスワードとして 0000, 0101, 0202, 0303, 0505, 0606, 0707, 0808, 0909 がある．</p>\n<p>あなたのパスワード <i>P</i> をハッシュ関数 <i>S</i> に入力した結果を出力せよ．また，ハッシュ値からパスワードを一意に特定可能なハッシュ関数の使用を防ぐため，あなたのパスワードと同じハッシュ値になるパスワードの数も出力せよ．</p>",
+  "input": "<p>入力は最大で 50 個のデータセットから構成される．各データセットは次の形式で表される．</p>\n<pre>\n<i>S</i>\n<i>P</i></pre>\n<p>各データセットの1行目は，ハッシュ関数の計算式 <i>S</i> である．各データセットの2行目は，4 桁の 0 から 9 の範囲の数字で構成されるパスワード <i>P</i> である．ハッシュ関数 <i>S</i> の長さは 80 以下であると仮定してよい．</p>\n<p>入力の終了は '.' の1文字だけを含む行で表される．</p>",
+  "output": "<p>各データセットについて，<i>P</i> を <i>S</i> に入力して得られるハッシュ値と，<i>P</i> と同じハッシュ値が得られるパスワードの数を空白区切りで出力せよ．</p>",
+  "samples": [
+    {
+      "input": "[+c[+a[^bd]]]\n0404\n[*b[*[*cd]a]]\n7777\n[^[^ab][^cd]]\n1295\na\n9876\n[^dd]\n9090\n.\n",
+      "output": "0 10\n7 1\n15 544\n9 1000\n0 10000\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2018",
+  "level": 14,
+  "tags": [
+    "bruteforcing",
+    "data_structures",
+    "parsing",
+    "recursion",
+    "stack",
+    "string"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1
+}

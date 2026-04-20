@@ -1,0 +1,28 @@
+{
+  "id": 6462,
+  "title": "Risk",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Risk is a board game in which several opposing players attempt to conquer the world. The gameboard consists of a world map broken up into hypothetical countries. During a player's turn, armies stationed in one country are only allowed to attack only countries with which they share a common border. Upon conquest of that country, the armies may move into the newly conquered country.</p>\n<p>During the course of play, a player often engages in a sequence of conquests with the goal of transferring a large mass of armies from some starting country to a destination country. Typically, one chooses the intervening countries so as to minimize the total number of countries that need to be conquered. Given a description of the gameboard with 20 countries each with between 1 and 19 connections to other countries, your task is to write a function that takes a starting country and a destination country and computes the minimum number of countries that must be conquered to reach the destination. You do not need to output the sequence of countries, just the number of countries to be conquered including the destination. For example, if starting and destination countries are neighbors, then your program should return one.</p>\n<p>The following connection diagram illustrates the first sample input.</p>\n<p><img alt=\"\" src=\"/upload/images2/riskmap.gif\" style=\"height:154px; width:458px\"/></p>",
+  "input": "<p>Input to your program will consist of a series of country configuration test sets. Each test set will consist of a board description on lines 1 through 19. The representation avoids listing every national boundary twice by only listing the fact that country I borders country J when I &lt; J. Thus, the Ith line, where I is less than 20, contains an integer X indicating how many \"higher-numbered\" countries share borders with country I, then X distinct integers J greater than I and not exceeding 20, each describing a boundary between countries I and J. Line 20 of the test set contains a single integer (1 &lt;= N &lt;= 100) indicating the number of country pairs that follow. The next N lines each contain exactly two integers (1 &lt;= A,B &lt;= 20; A!=B) indicating the starting and ending countries for a possible conquest.</p>\n<p>There can be multiple test sets in the input file; your program should continue reading and processing until reaching the end of file. There will be at least one path between any two given countries in every country configuration.</p>",
+  "output": "<p>For each input set, your program should print the following message \"Test Set #T\" where T is the number of the test set starting with 1 (left-justified starting in column 11). The next NT lines each will contain the result for the corresponding test in the test set - that is, the minimum number of countries to conquer. The test result line should contain the start country code A right-justified in columns 1 and 2; the string \" to \" in columns 3 to 6; the destination country code B right-justified in columns 7 and 8; the string \": \" in columns 9 and 10; and a single integer indicating the minimum number of moves required to traverse from country A to country B in the test set left-justified starting in column 11. Following all result lines of each input set, your program should print a single blank line.</p>",
+  "samples": [
+    {
+      "input": "1 3\n2 3 4\n3 4 5 6\n1 6\n1 7\n2 12 13\n1 8\n2 9 10\n1 11\n1 11\n2 12 17\n1 14\n2 14 15\n2 15 16\n1 16\n1 19\n2 18 19\n1 20\n1 20\n5\n1 20\n2 9\n19 5\n18 19\n16 20\n4 2 3 5 6\n1 4\n3 4 10 5\n5 10 11 12 19 18\n2 6 7\n2 7 8\n2 9 10\n1 9\n1 10\n2 11 14\n3 12 13 14\n3 18 17 13\n4 14 15 16 17\n0\n0\n0\n2 18 20\n1 19\n1 20\n6\n1 20\n8 20\n15 16\n11 4\n7 13\n2 16\n",
+      "output": "Test Set #1\n 1 to 20: 7\n 2 to  9: 5\n19 to  5: 6\n18 to 19: 2\n16 to 20: 2\n\nTest Set #2\n 1 to 20: 4\n 8 to 20: 5\n15 to 16: 2\n11 to  4: 1\n 7 to 13: 3\n 2 to 16: 4\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 1997 South Central USA Regional Programming Contest",
+  "level": 10,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "shortest_path",
+    "floyd_warshall"
+  ],
+  "accepted_user_count": 49,
+  "submission_count": null,
+  "average_tries": 1.9592000246047974
+}

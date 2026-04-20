@@ -1,0 +1,41 @@
+{
+  "id": 10340,
+  "title": "L∞ Jumps",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Given two points (p, q) and (p′, q′) in the XY-plane, the L<sub>∞</sub> distance between them is defined as max(|p − p′|, |q − q′|). In this problem, you are given four integers n, d, s, t. Suppose that you are initially standing at point (0, 0) and you need to move to point (s, t). For this purpose, you perform jumps exactly n times. In each jump, you must move exactly d in the L<sub>∞</sub> distance measure. In addition, the point you reach by a jump must be a lattice point in the XY-plane. That is, when you are standing at point (p, q), you can move to a new point (p′, q′) by a single jump if p′ and q′ are integers and max(|p − p′|, |q − q′|) = d holds.</p>\n<p>Note that you cannot stop jumping even if you reach the destination point (s, t) before you perform the jumps n times.</p>\n<p>To make the problem more e interesting, suppose that some cost occurs for each jump. You are given 2n additional integers x<sub>1</sub>, y<sub>1</sub>, x<sub>2</sub>, y<sub>2</sub>, ... , x<sub>n</sub>, y<sub>n</sub> such that max(|x<sub>i</sub>|, |y<sub>i</sub>|) = d holds for each 1 ≤ i ≤ n. The cost of the i-th (1-indexed) jump is defined as follows: Let (p, q) be a point at which you are standing before the i-th jump. Consider a set of lattice points that you can jump to. Note that this set consists of all the lattice points on the edge of a certain square. We assign integer 1 to point (p + x<sub>i</sub> , q + y<sub>i</sub>). Then, we assign integers 2, 3, ... , 8d to the remaining points in the set in the counter-clockwise order. (Here, assume that the right direction is positive in the x-axis and the upper direction is positive in the y-axis.) These integers represent the costs when you perform a jump to these points.</p>\n<p>For example, Figure K.1 illustrates the points reachable by your i-th jump when d = 2 and you are at (3, 1). The numbers represent the costs for x<sub>i</sub> = −1 and y<sub>i</sub> = −2.</p>\n<p>Compute and output the minimum required sum of the costs for the objective.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/upload/images2/linf.png\" style=\"height:340px; width:397px\"/></p>\n<p style=\"text-align: center;\">Figure K.1. Reachable points and their costs</p>",
+  "input": "<p>The input consists of a single test case.</p>\n<pre>\nn d s t\nx<sub>1</sub> y<sub>1</sub>\nx<sub>2</sub> y<sub>2</sub>\n.\n.\n.\nx<sub>n</sub> y<sub>n</sub></pre>\n<p>The first line contains four integers. n (1 ≤ n ≤ 40) is the number of jumps to perform. d (1 ≤ d ≤ 10<sup>10</sup>) is the L<sub>∞</sub> distance which you must move by a single jump. s and t (|s|, |t| ≤ nd) are the x and y coordinates of the destination point. It is guaranteed that there is at least one way to reach the destination point by performing n jumps.</p>\n<p>Each of the following n lines contains two integers, x<sub>i</sub> and y<sub>i</sub> with max(|x<sub>i</sub>|, |y<sub>i</sub>|) = d.</p>",
+  "output": "<p>Output the minimum required cost to reach the destination point.</p>",
+  "samples": [
+    {
+      "input": "3 2 4 0\n2 2\n-2 -2\n-2 2\n",
+      "output": "15\n"
+    },
+    {
+      "input": "4 1 2 -2\n1 -1\n1 0\n1 1\n-1 0\n",
+      "output": "10\n"
+    },
+    {
+      "input": "6 5 0 2\n5 2\n-5 2\n5 0\n-3 5\n-5 4\n5 5\n",
+      "output": "24\n"
+    },
+    {
+      "input": "5 91 -218 -351\n91 91\n91 91\n91 91\n91 91\n91 91\n",
+      "output": "1958\n"
+    },
+    {
+      "input": "1 10000000000 -10000000000 -2527532346\n8198855077 10000000000\n",
+      "output": "30726387424\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2014 in Tokyo",
+  "level": 25,
+  "tags": [
+    "math",
+    "greedy"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

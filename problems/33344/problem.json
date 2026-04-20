@@ -1,0 +1,26 @@
+{
+  "id": 33344,
+  "title": "Linear Gradient",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>There is a trapezoid with vertices $(x_1, y_1)$, $(x_1, y_2)$, $(x_2, y_3)$, $(x_2, y_4)$ in the Euclidean plane that is painted with a linear gradient (defined below).</p>\n<p>Let a triple of real numbers $(r, g, b)$ represent a color of a point, and let us use this to define three colors:</p>\n<ul>\n<li><strong>red</strong>: $r \\geq 150$, $g \\leq 75$, $b \\leq 75$;</li>\n<li><strong>green</strong>: $g \\geq 150$, $r \\leq 75$, $b \\leq 75$;</li>\n<li><strong>blue</strong>: $b \\geq 150$, $r \\leq 75$, $g \\leq 75$.</li>\n</ul>\n<p>The trapezoid is colored using a set of lines which collectively cover the entire area of the trapezoid and produce a color gradient. The set is defined as follows:</p>\n<ul>\n<li>Each line in the set is defined by a value of $t$ ($t \\in [0, 1]$).</li>\n<li>The endpoints of the line are $(x_1, (1 - t) y_1 + t y_2)$ and $(x_2, (1 - t) y_3 + t y_4)$.</li>\n<li>The color of the left endpoint is ($r_{\\ell}, g_{\\ell}, b_{\\ell}$), and the color of the right endpoint is ($r_r, g_r, b_r$).</li>\n<li>The color of an inner point on the line is determined by linear interpolation (see Note for definition) between the left and right colors, based on the distance from the left endpoint to that point.</li>\n</ul>\n<p>Calculate the total area of the red, blue, and green parts of the trapezoid.</p>",
+  "input": "<p>The first line contains integers $x_1$, $y_1$, $y_2$, $r_{\\ell}$, $g_{\\ell}$, $b_{\\ell}$.</p>\n<p>The second line contains integers $x_2$, $y_3$, $y_4$, $r_r$, $g_r$, $b_r$.</p>",
+  "output": "<p>Output three real numbers: the red area, the blue area, and the green area, respectively. The absolute or relative error should not exceed $10^{-9}$.</p>",
+  "samples": [
+    {
+      "input": "0 0 50 255 0 0\n100 0 100 0 255 0\n",
+      "output": "1686.851211072\n2724.913494800\n0.000000000\n"
+    }
+  ],
+  "hint": "<p>Linear interpolation is a method of estimating values within an interval, based on known values at the endpoints. In the context of color interpolation, it means that the color components $(r, g, b)$ are calculated as a weighted average of the corresponding components of the left and right colors, with the weights determined by the relative distance of the point from the left endpoint and the right endpoint. This creates a smooth transition of colors along the line.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2023, Day 2: Nyatl Contest 2023",
+  "level": 11,
+  "tags": [
+    "math",
+    "geometry",
+    "calculus"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 2
+}

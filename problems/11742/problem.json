@@ -1,0 +1,32 @@
+{
+  "id": 11742,
+  "title": "Hypercube",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Consider a 4-hypercube also known as tesseract. A unit solid tesseract is a 4D figure that is equal to the convex hull of 16 points with Cartesian coordinates (±½, ±½, ±½, ±½) — its vertices. It has 32 edges (1D), 24 square faces (2D), and 8 cubic 3-faces (3D) also known as cells. We study hollow tesseracts and define a tesseract as a boundary of a solid tesseract. Thus, a tesseract is a connected union of 8 solid cubes (its cells) that intersect between each other at 24 tesseract’s square faces, 32 edges, and 16 vertices.</p>\n<p>Let’s cut a tesseract along 17 of its 24 faces, so that it still remains connected via 7 faces that were left intact. Unfold the tesseract into a 3D hyperplane by rotating its constituting cubes along the faces that were left intact until all its cells lie in the same 3D hyperplane. The result is called a 3-net of a tesseract. This process is a natural generalization of how a 3D cube is cut and unfolded onto a 2D plane to produce a 2-net of a cube that consists of 6 squares.</p>\n<p>In this problem you are given a tree-like 8-polycube in 3D space also known as octocube. An octocube is a collection of 8 unit cubical cells joined face-to-face. More formally, intersection of each pair of cubical cells constituting an octocube is either empty, a point, a unit line (1D), or a unit square (2D). The given octocube is tree-like in the following sense. Consider an adjacency graph of the octocube — a graph with 8 vertices corresponding to its 8 cells. There is an edge in the adjacency graph between pairs of adjacent cells. Two cells of an octocube are called adjacent when their intersection is a square. Cells that intersect at a point or a line are not considered adjacent. An octocube is called tree-like when its adjacency graph is a tree.</p>\n<p>Your task is to determine whether the given tree-like octocube constitutes a 3-net of a tesseract. That is, whether this octocube being put onto a hyperplane in 4D space can be folded in 4D space along the squares of intersection between its cells into a tesseract.</p>\n<p>For example, look at the leftmost picture below. It shows a wire-frame of the tree-like octocube. Rotate cell GHLKG<sub>1</sub>H<sub>1</sub>L<sub>1</sub>K<sub>1</sub> around a plane GHLK and cell FGKJF<sub>2</sub>G<sub>2</sub>K<sub>2</sub>J<sub>2</sub> around a plane FGKJ at angle 90 degrees in 4-th dimension outside of the original hyperplane. As a result, point G<sub>1</sub> joins with G<sub>2</sub> and K<sub>1</sub> joins with K<sub>2</sub>. The face GKK<sub>2</sub>G<sub>2</sub> is glued to face GKK<sub>1</sub>G<sub>1</sub>. The result is shown on the right. The 4-th dimension is orthographically projected onto the 3 shown in perspective. The points that have moved out of the original hyperplane are marked with hollow dots.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:359px; width:647px\"/></p>\n<p>Rotate EFJIE<sub>1</sub>F<sub>1</sub>J<sub>1</sub>I<sub>1</sub> around EFJI and EHLIE<sub>2</sub>H<sub>2</sub>L<sub>2</sub>I<sub>2</sub> around EHLI. The result is shown on the following picture on the left. The remaining steps are as follows. Rotate MNOPQRST around MNOP, then rotate both MNOPQRST and IJKLMNOP around IJKL and rotate ABCDEFGH around EFGH. The last step is to glue all faces that meet together to get a tesseract that is shown on the right.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height:355px; width:607px\"/></p>",
+  "input": "<p>The first line of the input file contains there integers m, n, k — the width, the depth, and the height of the box that contains the given octocube (1 ≤ m, n, k ≤ 8). The following k groups of lines describe rectangular slices of the box from top to bottom. Each slice is described by n rows with m characters each. The characters on a line are either ‘.’, denoting an empty space, or ‘x’, denoting a unit cube. The input file is guaranteed to describe a tree-like octocube.</p>",
+  "output": "<p>Write to the output file a single word “Yes” if the given octocube can be folded into a tesseract or “No” otherwise.</p>",
+  "samples": [
+    {
+      "input": "3 3 4\n...\n.x.\n...\n.x.\nxxx\n.x.\n...\n.x.\n...\n...\n.x.\n...\n",
+      "output": "Yes\n"
+    },
+    {
+      "input": "8 1 1\nxxxxxxxx\n",
+      "output": "No\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2015",
+  "level": 23,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "geometry",
+    "geometry_hyper"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 1.8485000133514404
+}

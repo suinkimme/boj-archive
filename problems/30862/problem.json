@@ -1,0 +1,37 @@
+{
+  "id": 30862,
+  "title": "Tandem Copy",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Tandem copy is an operation on a DNA where a consecutive sequence of one or more nucleotides is repeated, and the repetitions are directly adjacent to each other; in other words, the tandem copy operation makes a copy of a consecutive sequence of nucleotides and pastes the copy right after the copied sequence. For example, <code>ATCATCG</code> is resulted from the tandem copy of <code>ATC</code> in <code>ATCG</code>. Furthermore, we can continue another tandem copy on the resulted sequence <code>ATCATCG</code> and obtain <code>ATCATTCG</code>. The following example illustrates a series of tandem copies from <code>ATCG</code>, where the underlined sequence is copied at each step.</p>\n<p style=\"text-align: center;\"><code><u>ATC</u>G</code> $\\Rightarrow$ <code>ATCA<u>T</u>CG</code> $\\Rightarrow$ <code><u>AT</u>CATTCG</code> $\\Rightarrow$ <code>ATATC<u>ATT</u>CG</code> ⇒ $\\cdots$</p>\n<p>We say that <code>ATCG</code> produces all these sequences by tandem copy. It is easy to see that <code>ATCG</code> can produce different sequences by selecting a different portion of the sequence to tandem copy at each step. Furthermore, in principle, <code>ATCG</code> can produce infinitely many sequences by continuing tandem copies as many as it needs.</p>\n<p>Usually, it is more expensive to tandem copy a longer portion. For instance,</p>\n<p style=\"text-align: center;\"><code><u>ATC</u>G</code> $\\Rightarrow$ <code>ATCATCG</code></p>\n<p>is a tandem copy of three nucleotides and thus is more expensive than</p>\n<p style=\"text-align: center;\"><code>ATCA<u>T</u>CG</code> $\\Rightarrow$ <code>ATCATTCG</code>,</p>\n<p>which is a tandem copy of one nucleotide. In other words, the length of a copied portion at each step is crucial to determine the tandem copy cost.</p>\n<p>Since it is easy to tandem copy a single nucleotide, it is practical for the ICPC lab to store sequences such that two consecutive nucleotides in a sequence is always different; this helps the lab to reduce the storage space. For instance, since <code>ATTTG</code> can be produced by tandem copying <code>T</code> twice from <code>ATG</code>, it is better for the lab to only store the shorter sequence <code>ATG</code> instead of <code>ATTTG</code>.</p>\n<p>Because of a recent budget cut, the ICPC lab can only perform the tandem copy on at most two nucleotides at one time; namely, the length of a copied portion is at most two at each step. On the other hand, the lab can continue to repeat the tandem copy as many as it desires. For example, given a sequence <code>ABCD</code>, we can apply the tandem copy operation on <code>B</code> and obtain <code>ABBCD</code>, or apply it on the sequence <code>BC</code> and obtain <code>ABCBCD</code>. But we cannot tandem copy the consecutive sequence <code>ABC</code> because its length is longer than two.</p>\n<p>Given a source string $s$ and a target string $t$, your task is to count the number of all valid substrings $s'$ of $s$, where one can obtain a string $x$ from $s'$ by applying an appropriate number of the tandem copy operations such that $x$ contains $t$ as a substring. Please note that no two consecutive nucleotides in the source string are the same, whereas two consecutive nucleotides in the target string can be the same. For example, <code>CCA</code> or <code>ATTGC</code> cannot be source strings, but they can be target strings.</p>\n<p>Now, given $s =$ <code>ACATGCAT</code> and $t =$ <code>CCACATTT</code>, we take a substring $s' =$ <code>CATGC</code> of $s$ and run a series of tandem copies as follows:</p>\n<p style=\"text-align: center;\">$s' =$ <code><u>C</u>ATGC</code> $\\Rightarrow$ <code>C<u>CA</u>TGC</code> $\\Rightarrow$ <code>CCACA<u>T</u>GC</code> $\\Rightarrow$ <code>CCACAT<u>T</u>GC</code> $\\Rightarrow$ <code>CCACATTTGC</code>,</p>\n<p>which contains $t$ as its substring.</p>\n<p>Here is another substring example. For $s' =$ <code>CAT</code>,</p>\n<p style=\"text-align: center;\">$s' =$ <code><u>CA</u>T</code> $\\Rightarrow$ <code><u>C</u>ACAT</code> $\\Rightarrow$ <code>CCACA<u>T</u></code> $\\Rightarrow$ <code>CCACA<u>T</u>T</code> $\\Rightarrow$ <code>CCACATTT</code> $= t$,</p>\n<p>which shows that we can produce the target string from by a series of tandem copies.</p>\n<p>It is easy to verify that the total number of valid substrings of $s$ is $14$. Note that both the first and the second <code>CAT</code> in $s$ are counted as different valid substrings. Thus, you need to consider all substrings of $s$ and count all valid substrings individually.</p>\n<p>Here is another example. When $s =$ <code>AB</code> and $t =$ <code>BA</code>, you can take the substring <code>AB</code> and tandem copy <code>AB</code>. Then, the resulting string is <code>ABAB</code>, which contains <code>BA</code> as its substring. All other substrings of $s$ are unable to produce <code>BA</code> as a substring, and therefore the number of valid substrings is one.</p>\n<p>Given a source string $s$ and a target string $t$, where no two consecutive characters in $s$ are the same character, write a program that outputs the number of valid substrings $s'$ of $s$. $s'$ is a valid substring of $s$ if a series of tandem copies on $s'$ can produce a string that contains $t$ as its substring, where a tandem copy is restricted to at most two consecutive characters at each step</p>",
+  "input": "<p>Your program is to read from standard input. The input consists of two lines. The first line is the source string $s$, and the second line is the target string $t$. Each input consists of uppercase letters <code>A</code> to <code>Z</code>, and $1 ≤ |s|, |t| ≤ 2 \\times 10^4$.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line. The line should print the number of valid substrings in which a series of tandem copies can produce a string that contains the target string as its substring.</p>",
+  "samples": [
+    {
+      "input": "ACGCG\nCCG\n",
+      "output": "9\n"
+    },
+    {
+      "input": "TATCGC\nTTCCG\n",
+      "output": "6\n"
+    },
+    {
+      "input": "ABCABC\nABC\n",
+      "output": "7\n"
+    },
+    {
+      "input": "ABCABC\nABCABC\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2023, Camp, Petrozavodsk Programming Camp, Winter 2024, Day 6: K-ontest",
+  "level": 22,
+  "tags": [
+    "greedy",
+    "case_work"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 5.375
+}

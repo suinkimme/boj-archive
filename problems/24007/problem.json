@@ -1,0 +1,25 @@
+{
+  "id": 24007,
+  "title": "Dance Battle",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Your team is about to prove itself in a dance battle! Initially, your team has <b>E</b> points of energy, and zero points of honor. There are <b>N</b> rival teams who you must face; the i-th of these teams is the i-th in a lineup, and has a dancing skill of <b>S<sub>i</sub></b>.</p>\n<p>In each round of battle, you will face the next rival team in the lineup, and you can take one of the following actions:</p>\n<ol>\n<li><i>Dance</i>: Your team loses energy equal to the dancing skill of the rival team, and that team does not return to the lineup. You gain one point of honor. You cannot take this action if it would make your energy drop to 0 or less.</li>\n<li><i>Delay</i>: You make excuses (\"our shoes aren't tied!\") and the rival team returns to the back of the lineup. Your energy and honor do not change.</li>\n<li><i>Truce</i>: You declare a truce with the rival team, and that team does not return to the lineup. Your energy and honor do not change.</li>\n<li><i>Recruit</i>: You recruit the rival team onto your team, and that team does not return to the lineup. Your team gains energy equal to the dancing skill of the rival team, but you lose one point of honor. You cannot take this action if it would make your honor drop below 0.</li>\n</ol>\n<p>The battle is over when there are no more rival teams in the lineup. If you make optimal decisions, what is the maximum amount of honor you can have when the battle is over?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow; each consists of two lines. The first line consists of two integers <b>E</b> and <b>N</b>: your team's energy, and the number of rival teams. The second line consists of <b>N</b> integers <b>S<sub>i</sub></b>; the i-th of these represents the dancing skill of the rival team that is i-th in line at the start of the battle.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the maximum amount of honor you can have when the battle is over.</p>",
+  "samples": [
+    {
+      "input": "2\n100 1\n100\n10 3\n20 3 15\n",
+      "output": "Case #1: 0\nCase #2: 1\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, there is only one rival team. You cannot dance against them because it would make your energy fall to 0, and you cannot recruit them because it would make your honor fall below 0. Delaying does not help, so the only option is to declare a truce. You finish with 0 honor.</p>\n<p>In Sample Case #2, one optimal strategy is:</p>\n<ol>\n<li>Delay against the first rival team. They go to the back of the lineup.</li>\n<li>Dance against the second rival team. Your energy drops to 7, and your honor increases to 1.</li>\n<li>Recruit the third rival team. Your energy increases to 22, and your honor decreases to 0.</li>\n<li>Dance against the first rival team (which is now at the head of the lineup again). Your energy drops to 2, and your honor increases to 1.</li>\n</ol>\n<p>You finish with 1 point of honor.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2017, Round F",
+  "level": 12,
+  "tags": [
+    "greedy",
+    "sorting"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.5455000400543213
+}

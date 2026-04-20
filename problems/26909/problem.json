@@ -1,0 +1,34 @@
+{
+  "id": 26909,
+  "title": "Rövarspråket",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>I rövarspråket översätter man text man skrivit genom att ersätta alla konsonanter $x$ med $x$<code>o</code>$x$, medan alla vokaler är oförändrade. T.ex. översätts <code>hej</code> till <code>hohejoj</code>, <code>moo</code> till <code>momoo</code> och <code>ojoj</code> till <code>ojojojoj</code>.</p>\n<p>Oskar har precis lärt sig rövarspråket, men glömmer ibland bort att ändra vissa konsonanter. Oskar översätter alltså bara en <em>delmängd</em> av konsonanterna på ovanstående vis. Du kommer att få en ursprungstext och en potentiell översättning som Oskar har gjort. Du ska avgöra om det är möjligt att Oskar översatte den första strängen till den andra enligt beskrivningen ovan.</p>\n<p>Om Oskar hade skrivit <code>hejoj</code> kan den ursprungliga texten till exempel varit <code>hej</code> eller <code>hejoj</code>. För tydlighets skull så definierar vi följande bokstäver som vokaler: <code>a,e,i,o,u,y</code> och alla andra bokstäver är då konsonanter.</p>",
+  "input": "<p>Den första raden innehåller ordet som vi undrar om det kan ha varit usprungstexten. Den andra raden innehåller ett ord som Oskar har skrivit. Båda orden innehåller minst ett tecken och bara tecken <code>a-z</code> och endast små bokstäver. Ingen sträng är längre än 1000 tecken.</p>",
+  "output": "<p>Utdata ska bestå av ett enda ord: <code>ja</code> om det är möjligt att det andra ordet är en översättning av det första, annars <code>nej</code>. Svaret ska alltså vara <code>ja</code> om och endast om det går att välja någon delmängd av konsonanterna i det första ordet och applicera rövarspråktransform så att man får det senare ordet.</p>",
+  "samples": [
+    {
+      "input": "ojojoj\nojojojoj\n",
+      "output": "ja\n"
+    },
+    {
+      "input": "ojjoj\nojojojoj\n",
+      "output": "nej\n"
+    },
+    {
+      "input": "lolf\nlolfof\n",
+      "output": "ja\n"
+    }
+  ],
+  "hint": "<p>Förklaring av exempelfall 1: det spelar ingen roll vilken av konsonanterna som Oskar väljer att applicera rövarspråkstranform på - så länge han väljer precis ett av de <code>j</code> som finns. Låt säga att Oskar glömde att omvandla alla <code>j</code> utom det första - då förvandlas <code>ojojoj</code> till <code>ojojojoj</code>. Svaret är alltså \"<code>ja</code>\".</p>\n<p>Förklaring av exempelfall 2: det är omöjligt att omvandla den första strängen till den andra. Ett sätt att visa detta på är att observera att det i den första strängen finns två <code>j</code> intill varandra, vilket innebär att det alltid kommer finnas två <code>j</code> intill varandra. Alltså går det inte att omvandla den första strängen till den andra, och svaret är \"<code>nej</code>\".</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2014, Online Qualification",
+  "level": 13,
+  "tags": [
+    "dp",
+    "string",
+    "lcs"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.200000047683716
+}

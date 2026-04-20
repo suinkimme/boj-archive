@@ -1,0 +1,34 @@
+{
+  "id": 3619,
+  "title": "Equation",
+  "time_limit": "2 초",
+  "memory_limit": "64 MB",
+  "description": "<p>A few years ago Nick learned set theory, and liked it so much that sets became the subject of his bachelor’s thesis. Nick’s thesis describes a new kind of mathematical equations — <em>set equations</em>. Set equations are composed of <em>set variables</em>, which represent various subsets of a universal set Ω. The following four operations are defined for set variables:</p>\n<ul>\n<li>Intersection ∩: A ∩ B := {x : x ∈ A ∧ x ∈ B}.</li>\n<li>Union ∪: A ∪ B := {x : x ∈ A ∨ x ∈ B}.</li>\n<li>Difference −: A − B := {x : x ∈ A ∧ x ∉ B}.</li>\n<li>Symmetrical difference 4: A 4 B := (A − B) ∪ (B − A).</li>\n</ul>\n<p>The operations are listed in the order of their precedence, i.e. intersection has the highest precedence, union has lower precedence than intersection, difference has lower precedence than union, and symmetrical difference has the lowest precedence. Parentheses can be used to change operations precedence as usual.</p>\n<p>The thesis includes a chapter dedicated to automated solving of some specific classes of set equations. Nick has already elaborated a notation for storing equations in text files. Here is some quotation from the thesis:</p>\n<p>The following notation is used for describing set equations:</p>\n<pre>\n&lt;space or tab&gt; → space | tabulation symbol\n          &lt;ws&gt; → &lt;space or tab&gt; ∗\n        &lt;char&gt; → ‘A’ | ‘B’ | . . . | ‘Z’ | ‘a’ | ‘b’ | . . . | ‘z’\n         &lt;var&gt; → &lt;char&gt; &lt;char&gt; ∗\n        &lt;expr&gt; → &lt;var&gt;\n               | &lt;expr&gt; &lt;ws&gt; &lt;operator&gt; &lt;ws&gt; &lt;expr&gt;\n               | ‘(’ &lt;ws&gt; &lt;expr&gt; &lt;ws&gt; ‘)’\n    &lt;operator&gt; → ‘+’ | ‘*’ | ‘-’ | ‘^’\n    &lt;equation&gt; → &lt;expr&gt; &lt;ws&gt; ‘=’ &lt;ws&gt; &lt;expr&gt;</pre>\n<p>Operators ∪, ∩, − and 4 are encoded with tokens ‘<code>+</code>’, ‘<code>*</code>’, ‘<code>-</code>’ and ‘<code>^</code>’ respectively. The ‘<code>=</code>’ token denotes the operator of set equality.</p>\n<p>It is possible to assign values to some variable using the following notation:</p>\n<pre>\n         &lt;digit&gt; → ‘0’ | ‘1’ | . . . | ‘9’\n       &lt;element&gt; → &lt;digit&gt; ∗\n&lt;variable value&gt; → &lt;var&gt; &lt;ws&gt; ‘=’ &lt;ws&gt; &lt;values&gt;\n        &lt;values&gt; → &lt;element&gt;\n                 | &lt;element&gt; &lt;space or tab&gt; &lt;ws&gt; &lt;values&gt;</pre>\n<p>Unfortunately Nick is not very skilled in programming so he asks you to help and write a program module for automated solving of one specific simple class of equations — the equations where each variable, except Ω, occurs exactly one time.</p>",
+  "input": "<p>Input file is written in Nick’s notation.</p>\n<p>The first line of the input file contains an equation to solve. Total length of the equation does not exceed 1 000 characters. There is exactly one occurece of each variable, except ‘‘Omega’’, in the equation.</p>\n<p>The following lines contain definitions of variable values. Variable name lengths do not exceed ten characters each. There is always a variable called ‘‘Omega’’ that represents the universal set. Both the number of elements in the universal set and the value of each element does not exceed 500.</p>\n<p>The total length of all variable definitions does not exceed 100 000 characters.</p>",
+  "output": "<p>First line of the output file must contain ‘‘Solution’’ if there exists at least one solution of the given equation and ‘‘No Solution’’ otherwise.</p>\n<p>If the solution exists the following lines must contain such values of all undefined variables so that equation is satisfied. The variables may be listed in arbitrary order.</p>",
+  "samples": [
+    {
+      "input": "Omega - OneOrThree = Two\nOmega = 1 2 3\nTwo = 2\n",
+      "output": "Solution\nOneOrThree = 1 3\n"
+    },
+    {
+      "input": "Omega * result * result = Empty\nOmega = 1 2 3 4 5\nEmpty =\n",
+      "output": "Solution\nresult=\n"
+    },
+    {
+      "input": "(one+two) ^(TWO+three) = result\none =1\nTWO =1 3 4 5\ntwo =2\nthree=3\nOmega=1 2 3 4 5\nresult = 2 3 4 5\n",
+      "output": "Solution\n"
+    },
+    {
+      "input": "Omega ^Omega = Omega\nOmega=123 234 345 456\n",
+      "output": "No Solution\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2006",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

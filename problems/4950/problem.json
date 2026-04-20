@@ -1,0 +1,33 @@
+{
+  "id": 4950,
+  "title": "Identically Colored Panels Connection",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Dr. Fukuoka has invented fancy panels. Each panel has a square shape of a unit size and has one of the six colors, namely, yellow, pink, red, purple, green and blue. The panel has two remarkable properties. One property is that, when two or more panels with the same color are placed adjacently, their touching edges melt a little and they are fused each other. The fused panels are united into a polygonally shaped panel. The other property is that the color of a panel can be changed to one of six colors by giving an electrical shock. The resulting color can be controlled by its waveform. The electrical shock to an already united panel changes the color of the whole to a specified single color.</p>\n<p>Since he wants to investigate the strength with respect to the color and the size of a united panel compared to unit panels, he tries to unite panels into a polygonal panel with a specified color.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:111px; width:175px\"/></p>\n<p style=\"text-align:center\">Figure C-1: panels and their initial colors</p>\n<p>Since many panels are simultaneously synthesized and generated on a base plate through some complex chemical processes, the fabricated panels are randomly colored and they are arranged in a rectangular shape on the base plate (Figure C-1). Note that the two purple (color 4) panels in Figure C-1 are already united at the initial state since they are adjacent to each other.</p>\n<p>Installing electrodes to a panel, and changing its color several times by giving electrical shocks according to an appropriate sequence for a specified target color, he can make a united panel merge the adjacent panels to unite them step by step and can obtain a larger panel with the target color. Unfortunately, panels will be broken when they are struck by the sixth electrical shock. That is, he can change the color of a panel or a united panel only five times.</p>\n<p>Let us consider a case where the panel at the upper left corner of the panel configuration (Figure C-1) is attached with the electrodes. First, changing the color of the panel from yellow to blue, the two adjacent panels are fused into a united panel (Figure C-2).</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"2.png\" style=\"height:111px; width:175px\"/></p>\n<p style=\"text-align:center\">Figure C-2: Change of the color of the panel at the upper left corner, from yellow (color 1) to blue (color 6).</p>\n<p>Second, changing the color of the upper left united panel from blue to red, a united red panel that consists of three unit panels is newly formed (Figure C-3). Then, changing the color of the united panel from red to purple, panels are united again to form a united panel of five unit panels (Figure C-4).</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"3.png\" style=\"height:111px; width:175px\"/></p>\n<p style=\"text-align:center\">Figure C-3: Change of the color of the panel at the upper left corner, from blue (color 6) to red (color 3). </p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"4.png\" style=\"height:111px; width:175px\"/></p>\n<p style=\"text-align:center\">Figure C-4: Change of the color of the panel at the upper left corner, from red (color 3) to purple (color 4). </p>\n<p>Furthermore, through making a pink united panel in Figure C-5 by changing the color from purple to pink, then, the green united panel in Figure C-6 is obtained by changing the color from pink to green. The green united panel consists of ten unit panels.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"5.png\" style=\"height:111px; width:175px\"/></p>\n<p style=\"text-align:center\">Figure C-5: Change of the color of the panel at the upper left corner, from purple (color 4) to pink (color 2).</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"6.png\" style=\"height:111px; width:175px\"/></p>\n<p style=\"text-align:center\">Figure C-6: Change of the color of the panel at the upper left corner, from pink (color 2) to green (color 5).</p>\n<p>In order to check the strength of united panels with various sizes and colors, he needs to unite as many panels as possible with the target color. Your job is to write a program that finds a sequence to change the colors five times in order to get the largest united panel with the target color. Note that the electrodes are fixed to the panel at the upper left corner.</p>",
+  "input": "<p>The input consists of multiple datasets, each being in the following format.</p>\n<pre>\nh w c\np<sub>1,1</sub> p<sub>1,2</sub> ... p<sub>1,w</sub>\np<sub>2,1</sub> p<sub>2,2</sub> ... p<sub>2,w</sub>\n...\np<sub>h,1</sub> p<sub>h,2</sub> ... p<sub>h,w</sub></pre>\n<p>h and w are positive integers no more than 8 that represent the height and the width of the given rectangle. c is a positive integer no more than 6 that represents the target color of the finally united panel. p<sub>i,j</sub> is a positive integer no more than 6 that represents the initial color of the panel at the position (i, j).</p>\n<p>The end of the input is indicated by a line that consists of three zeros separated by single spaces.</p>",
+  "output": "<p>For each dataset, output the largest possible number of unit panels in the united panel at the upper left corner with the target color after five times of color changes of the panel at the upper left corner. No extra characters should occur in the output.</p>",
+  "samples": [
+    {
+      "input": "3 5 5\n1 6 3 2 5\n2 5 4 6 1\n1 2 4 1 5\n4 5 6\n1 5 6 1 2\n1 4 6 3 2\n1 5 2 3 2\n1 1 2 3 2\n1 1 5\n1\n1 8 6\n1 2 3 4 5 1 2 3\n8 1 1\n1\n2\n3\n4\n5\n1\n2\n3\n8 8 6\n5 2 5 2 6 5 4 2\n4 2 2 2 5 2 2 2\n4 4 4 2 5 2 2 2\n6 4 5 2 2 2 6 6\n6 6 5 5 2 2 6 6\n6 2 5 4 2 2 6 6\n2 4 4 4 6 2 2 6\n2 2 2 5 5 2 2 2\n8 8 2\n3 3 5 4 1 6 2 3\n2 3 6 4 3 6 2 2\n4 1 6 6 6 4 4 4\n2 5 3 6 3 6 3 5\n3 1 3 4 1 5 6 3\n1 6 6 3 5 1 5 3\n2 4 2 2 2 6 5 3\n4 1 3 6 1 5 5 4\n0 0 0\n",
+      "output": "10\n18\n1\n5\n6\n64\n33\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2011 Japan Domestic Contest",
+  "level": 14,
+  "tags": [
+    "backtracking",
+    "bfs",
+    "bruteforcing",
+    "data_structures",
+    "dfs",
+    "disjoint_set",
+    "graphs",
+    "graph_traversal",
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 16,
+  "submission_count": null,
+  "average_tries": 1.5
+}

@@ -1,0 +1,42 @@
+{
+  "id": 28052,
+  "title": "Maze in Bolt",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Usain has an online store specializing in selling 3D puzzles made by 3D printers. One of the best-selling puzzles these days is the Maze in Bolt. This puzzle is composed of two parts: a screw-shaped piece with an embossed labyrinth engraved on it, and a nut. The inner part of the nut may contain tips. These tips make the nut slide only through the corridors of the labyrinth.</p>\n<p>Initially, the two parts of the puzzle are separated. The challenge is to slide the nut all the way through the maze until it reaches the head of the bolt. The nut can be moved clockwise, counterclockwise, down (towards the head of the bolt), and up (away from the head). Each of these movements is only possible when every tip in the inner part of the nut is not prevented from sliding to the new position due to some wall of the maze. Besides the mentioned movements, another one is allowed: when the bolt and the nut are separated, the nut can be flipped. The illustration below shows both parts of the puzzle as well as all the allowed moves.</p>\n<table class=\"table table-bordered td-center td-middle\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"1.png\" style=\"width: 71px; height: 180px;\"/> </td>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 69px; height: 46px;\"/></td>\n<td><img alt=\"\" src=\"3.png\" style=\"width: 135px; height: 228px;\"/></td>\n</tr>\n<tr>\n<td>(a) Screw-shaped piece</td>\n<td>(b) Nut piece</td>\n<td>(c) Movements of the nut</td>\n</tr>\n</tbody>\n</table>\n<p>A customer placed an order for a large quantity of the Maze in Bolt. Each puzzle is designed by Usain himself in a random and unique way but, due to the size of the order and the tight deadline, he believes he will not be able to check whether the created puzzles have a solution or not. Usain asked for your help in devising an algorithm that quickly checks any given pair of nut and bolt. For doing so, the inner part of the nut will be modeled as a binary circular string. Regarding the bolt, each row of the maze will be modeled the same way.</p>",
+  "input": "<p>The first line contains two integers $R$ ($1 ≤ R ≤ 1000$) and $C$ ($3 ≤ C ≤ 100$), indicating respectively the number of rows and columns of the maze. The second line contains a circular string $S$ of length $C$, representing the inner part of the nut. Each character of $S$ is “<code>1</code>” if the nut has a tip in the corresponding position, while an empty space is indicated by character “<code>0</code>”. Each of the next $R$ lines contains a circular string describing a row of the maze. In this case, each character of the string is “<code>1</code>” if the maze has a wall in the corresponding position, while an empty space is indicated by character “<code>0</code>”. Rows are given from top (the tip of the bolt) to bottom (the head).</p>",
+  "output": "<p>Output a single line with the uppercase letter “<code>Y</code>” if the puzzle has a solution, and the uppercase letter “<code>N</code>” otherwise.</p>",
+  "samples": [
+    {
+      "input": "8 13\n0110010000000\n1100101110100\n1001101000100\n1100101110100\n1000100010000\n1010111011001\n0000001010000\n1001101111101\n0001001100100\n",
+      "output": "Y\n"
+    },
+    {
+      "input": "1 3\n100\n101\n",
+      "output": "Y\n"
+    },
+    {
+      "input": "2 3\n100\n101\n010\n",
+      "output": "N\n"
+    },
+    {
+      "input": "4 6\n001000\n011111\n010001\n010100\n110111\n",
+      "output": "Y\n"
+    },
+    {
+      "input": "1 6\n001011\n001011\n",
+      "output": "Y\n"
+    }
+  ],
+  "hint": "<p>The picture below explains the first sample. Images on the left represent 3D views of different stages of the game. In the middle, the images are flattened 2D versions of the corresponding 3D views. Finally, images on the right represent the stages of the game according to the described model (although for the sake of clarity, each character “<code>1</code>” has been replaced by a given symbol, and each character “<code>0</code>” is shown as an empty space).</p>\n<p>It can be seen in the top three images that the nut (having three pins) and the bolt start separated. The second group of three images shows the situation of the game after the nut has been moved four rows down (towards the head of the bolt). Then the nut is rotated one position, moved down two more rows, rotated four positions in the opposite direction, and finally moved down three rows, which solves the puzzle. Note that in this case the nut has not been flipped, nor moved up (away from the head of the bolt).</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 459px; height: 898px;\"/></p>",
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2022",
+  "level": 14,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs"
+  ],
+  "accepted_user_count": 57,
+  "submission_count": null,
+  "average_tries": 1.4737000465393066
+}

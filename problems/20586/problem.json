@@ -1,0 +1,27 @@
+{
+  "id": 20586,
+  "title": "Tokens",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>We are given a three-dimensional, long and thin board consisting of unit cubes arranged into an $A \\times B \\times C$ cuboid. Every cell can be described by a triple of integers $(i, j, k)$, where $1 \\leq i \\leq A$, $1 \\leq j \\leq B$ and $1 \\leq k \\leq C$. For every cell we know how many tokens are there initially --- in cell $(i, j, k)$ there are $a_{i, j, k}$ of them. In one move we can take one cell that has at least one token and move this token to one of cells $(i+1, j, k)$, $(i, j+1, k)$ or $(i, j, k+1)$, provided that such cell exists.</p>\n<p>Moreover, for every cell we are given a number $b_{i, j, k}$. Your task is to determine whether it is possible to perform some number of moves (possibly zero), so that for every cell $(i, j, k)$ number of tokens that end up there is exactly $b_{i, j, k}$.</p>",
+  "input": "<p>First line contains an integer $t$ ($1 \\leq t \\leq 10\\,000$), denoting the number of testcases. </p>\n<p>Then descriptions of $t$ testcases follow. Each of them starts with a line containing three integers $A$, $B$, $C$ ($1 \\leq A \\leq 10\\,000$, $1 \\leq B, C \\leq 6$), denoting dimensions of the board. Then there are $A$ blocks of $B$ rows. Each of these rows contains $C$ numbers --- $k$-th number in $j$-th row of $i$-th block is $a_{i, j, k}$ ($0 \\leq a_{i, j, k} \\leq 10^{12} $). Then, in analogous format, numbers $b_{i, j, k}$ are given ($0 \\leq b_{i, j, k} \\leq 10^{12}$).</p>\n<p>Every testcase contains $2A$ blocks in total. Every two consecutive blocks are separated by an empty line for the sake of readability. Within every testcase, the sum of values $a_{i, j, k}$ is equal to the sum of values $b_{i, j, k}$.</p>\n<p>Sum of values of $A$ over all testcases will not exceed $10\\,000$.</p>",
+  "output": "<p>Output should contain exactly $t$ lines, one per each testcase. $k$-th line should contain a word <code>TAK</code> if in $k$-th testcase it is possible to find a required sequence of moves from the initial to the final state, or a word <code>NIE</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "2\n2 3 4\n2 0 0 1\n0 0 1 0\n1 0 0 0\n\n0 1 0 0\n1 0 0 0\n0 0 0 0\n\n0 0 1 0\n0 1 0 0\n0 0 0 0\n\n1 0 0 0\n0 0 0 0\n0 0 0 4\n2 2 2\n2 2\n2 1\n\n2 1\n1 1\n\n1 1\n1 2\n\n1 2\n2 2\n",
+      "output": "NIE\nTAK\n"
+    }
+  ],
+  "hint": "<p><strong>Explanation to second sample test:</strong> Below we present sequence of moves leading from the initial to the final state:</p>\n<pre>\n2 2        2 2        2 1        2 1        1 1        1 1        1 1\n2 1        2 0        2 1        1 1        2 1        1 2        1 2\n      -&gt;         -&gt;         -&gt;         -&gt;         -&gt;         -&gt;   \n2 1        2 1        2 1        2 1        2 1        2 1        1 2\n1 1        1 2        1 2        2 2        2 2        2 2        2 2\n</pre>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2020, Day 1: Warsaw U Contest",
+  "level": 22,
+  "tags": [
+    "dp",
+    "flow",
+    "mfmc",
+    "graphs"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.375
+}

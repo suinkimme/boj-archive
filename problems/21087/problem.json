@@ -1,0 +1,34 @@
+{
+  "id": 21087,
+  "title": "Thanks to MikeMirzayanov",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>... for beautiful Codeforces and Polygon platforms. And thanks to XTX Markets for supporting Codeforces Global Rounds. And also big thanks to <span class=\"user-red\">dario2994</span> who was an author of Codeforces Global Round 11 and who has permitted to reuse his problem <a href=\"https://codeforces.com/contest/1427/problem/D\">https://codeforces.com/contest/1427/problem/D</a>. Yep, that's exactly the same problem apart from that doing it in $n$ operations is kinda boring, don't you agree?</p>\n<p>You are given a deck of $n$ cards numbered from 1 to $n$ (not necessarily in this order in the deck). You have to sort the deck by repeating the following operation.</p>\n<p>Choose $2 \\le k \\le n$ and split the deck in $k$ nonempty contiguous parts $D_{1}, D_{2}, \\ldots, D_{k}$ ($D_{1}$ contains the first $|D_{1}|$ cards of the deck, $D_{2}$ contains the following $|D_{2}|$ cards and so on). Then reverse the order of the parts, transforming the deck into $D_{k}, D_{k-1}, \\ldots, D_{2}, D_{1}$ (so, the first $|D_{k}|$ cards of the new deck are $D_{k}$, the following $|D_{k-1}|$ cards are $D_{k-1}$ and so on). The internal order of each packet of cards $D_{i}$ is unchanged by the operation.</p>\n<p>You have to obtain a sorted deck (that is, a deck where the first card is 1, the second is 2 and so on) performing at most $120$ operations. It can be proven that it is always possible to sort the deck performing at most $120$ operations under the limitations of this problem.</p>\n<p>Examples of operation: the following are three examples of valid operations (on three decks with different sizes).</p>\n<ul>\n<li>If the deck is <code>[3 6 2 1 4 5 7]</code> (so 3 is the first card and 7 is the last card), we may apply the operation with $k=4$ and $D_{1}=$<code>[3 6]</code>, $D_{2}=$<code>[2 1 4]</code>, $D_{3}=$<code>[5]</code>, $D_{4}=$<code>[7]</code>. Doing so, the deck becomes <code>[7 5 2 1 4 3 6]</code>.</li>\n<li>If the deck is <code>[3 1 2]</code>, we may apply the operation with $k=3$ and $D_{1}=$<code>[3]</code>, $D_{2}=$<code>[1]</code>, $D_{3}=$<code>[2]</code>. Doing so, the deck becomes <code>[2 1 3]</code>.</li>\n<li>If the deck is <code>[5 1 2 4 3 6]</code>, we may apply the operation with $k=2$ and $D_{1}=$<code>[5 1]</code>, $D_{2}=$<code>[2 4 3 6]</code>. Doing so, the deck becomes <code>[2 4 3 6 5 1]</code>.</li>\n</ul>",
+  "input": "<p>The first line of the input contains one integer $n$ ($1 \\le n \\le 20\\,000$) --- the number of cards in the deck.</p>\n<p>The second line contains $n$ integers $c_{1}, c_{2}, \\ldots, c_{n}$ --- the cards in the deck. The first card is $c_{1}$, the second is $c_{2}$ and so on.</p>\n<p>It is guaranteed that for all $i=1, \\ldots, n$ there is exactly one $j \\in \\{ 1, \\ldots, n \\}$ such that $c_{j} = i$.</p>",
+  "output": "<p>On the first line, print the number $q$ of operations you perform (it must hold that $0 \\le q \\le 120$).</p>\n<p>Then, print $q$ lines, each describing one operation.</p>\n<p>To describe an operation, print on a single line the number $k$ of parts you are going to split the deck in, followed by the sizes of the $k$ parts: $|D_{1}|, |D_{2}|, \\ldots, |D_{k}|$.</p>\n<p>It must hold that $2 \\le k \\le n$, and $|D_{i}| \\ge 1$ for all $i=1, \\ldots, k$, and $|D_{1}|+|D_{2}|+\\ldots+|D_{k}|=n$.</p>\n<p>It can be proven that it is always possible to sort the deck performing at most 120 operations under the limitations of this problem. If there are several ways to sort the deck you can output any one of them. Note that you don't have to minimize $q$.</p>",
+  "samples": [
+    {
+      "input": "4\n3 1 2 4\n",
+      "output": "2\n3 1 2 1\n2 1 3\n"
+    },
+    {
+      "input": "6\n6 5 4 3 2 1\n",
+      "output": "1\n6 1 1 1 1 1 1\n"
+    },
+    {
+      "input": "1\n1\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 5: Almost Retired Dandelion Contest, ICPC Camp Contest 2, Contest, Open Cup, 2020/2021 Season, Stage 11: Grand Prix of Nizhny Novgorod",
+  "level": 24,
+  "tags": [
+    "sorting",
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 2.176500082015991
+}

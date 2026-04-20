@@ -1,0 +1,26 @@
+{
+  "id": 26373,
+  "title": "Bliži",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Marin je veliki ljubitelj društvenih igara. Nedavno je saznao da će prema njegovom najdražem crtanom filmu biti napravljena nova igra pod nazivom “Avanture pčelice Maje”. Na njegovu žalost, igra će biti dostupna tek za dvije godine.</p>\n<p>Primoran da se u međuvremenu zabavlja sam, Marin je izmislio igru “Tko je bliži?”. Špil za igru sadrži karte s cijelim brojevima između 0 i 2<sup>N</sup> - 1, uključivo. U špilu se nalazi A<sub>i</sub> karata s brojem i.</p>\n<p>Igra je vrlo jednostavna: Marin zamisli neki cijeli broj X između 0 i 2<sup>N</sup> - 1, te izvuče jednu kartu iz špila. Neka je Y broj napisan na karti koju je izvukao, te Z = X xor Y, tj. broj dobiven kao ekskluzivno ili brojeva X i Y. Marin pobjeđuje ako je Z strogo bliže X nego Y, tj. ako |X - Z| &lt; |Y - Z|, ili ako je Z jednako udaljen od X i Y te je X manji od Y, tj. |X - Z| = |Y - Z|, X &lt; Y.</p>\n<p>Sada ga za svaki mogući X zanima broj karata u špilu koje može izvući i pobijediti.</p>\n<p>Napomena</p>\n<p>XOR operator uzima u obzir odgovarajuće bitove prvog i drugog broja te kao rezultat na njima ima vrijednost 1 ako su različiti, a 0 ako su jednaki.</p>\n<pre>\n142 xor 100 = 234\n142 = (10001110)<sub>2</sub>\n100 = (01100100)<sub>2</sub>\n234 = (11101010)<sub>2</sub></pre>",
+  "input": "<p>U prvom retku nalazi se prirodan broj N (1 ≤ N ≤ 18) iz teksta zadatka.</p>\n<p>U drugom retku nalazi se 2<sup>N</sup> cijelih brojeva A<sub>i</sub> (0 ≤ A<sub>i</sub> ≤ 10<sup>9</sup>) odvojenih razmakom koji predstavljaju broj karata s brojem i redom od 0 do 2<sup>N</sup> - 1.</p>",
+  "output": "<p>U 2<sup>N</sup> redaka ispišite po jedan cijeli broj. Broj u i-tom retku treba odgovarati broju karata koje Marin može izvući i pobijediti ako je zamislio broj i - 1.</p>",
+  "samples": [
+    {
+      "input": "1\n3 5\n",
+      "output": "0\n3\n"
+    },
+    {
+      "input": "2\n1 2 3 4\n",
+      "output": "0\n5\n7\n1\n"
+    }
+  ],
+  "hint": "<p>Opis drugog primjera:</p>\n<p>Pretpostavimo da je Marin zamislio broj X = 1:</p>\n<ul>\n<li>Izvučena je karta Y = 0 -&gt; Z = 1 xor 0 = 1, što je bliže X-u, pa Marin pobjeđuje</li>\n<li>Izvučena je karta Y = 1 -&gt; Z = 1 xor 1 = 0, što je jednako udaljeno od X i Y, no X nije manji od Y, pa Marin gubi</li>\n<li>Izvučena je karta Y = 2 -&gt; Z = 1 xor 2 = 3, što je bliže Y-u, pa Marin gubi</li>\n<li>Izvučena je karta Y = 3 -&gt; Z = 1 xor 3 = 2, što je jednako udaljeno od X i Y, te X je manji od Y, pa Marin pobjeđuje.</li>\n</ul>\n<p>Ukupno postoji 1 + 4 = 5 karata za koje Marin pobjeđuje ako je zamislio broj 1.</p>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2018, Junior Final Exam #2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

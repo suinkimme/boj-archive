@@ -1,0 +1,34 @@
+{
+  "id": 20831,
+  "title": "Låssmeden",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Låssmeden Lårs har blivit ansvarig för att dela ut nycklar till låsen i Mattelandet. Landet har $N$ lås, som numreras $1,2,\\ldots,N$. Varje invånare har en egen nyckel som öppnar vissa (de som invånaren har rätt att öppna) av låsen i landet.</p>\n<p>Varje gång en person flyttar till landet ger Lårs dem en nyckel som består av två tal $a,b$. Därefter kan personen öppna alla lås med nummer $m$ som uppfyller $m\\equiv a \\pmod{b}$ (Här betecknar $\\equiv$ kongruens. Två tal $x,y$ sägs vara kongruenta modulo $n$, betecknas $x\\equiv y \\pmod{n}$, om $n|(x-y)$, alltså att $x-y$ är jämnt delbart med $n$. Detta är samma sak som att $x$ och $y$ har samma rest när de delas med $n$. I de flesta programmeringsspråk kan det skrivas som att $x\\%n==y\\%n$). När en person flyttar från landet tar Lårs tillbaka deras nyckel. </p>\n<p>Det finns tre typer av händelser som Lårs, i egenskap av låsansvarig, behöver hantera -- svara på frågan om någon invånare kan öppna ett specifikt lås, någon som flyttar till landet och någon som flyttar från landet. Lårs ska på varje fråga om det finns någon invånare som kan öppna ett specifikt lås svara \"ja\" eller \"nej\". Från början bor ingen i landet.</p>",
+  "input": "<p>Den första raden innehåller två heltal $N,Q$, antalet lås och antalet händelser ($1\\leq N,Q \\leq 2\\cdot 10^5$).</p>\n<p>Därefter kommer $Q$ rader som är på någon av följande former:</p>\n<ul>\n<li>$1\\enspace x$, en fråga om det finns någon invånare som kan öppna lås $x$ ($1\\leq x \\leq N$).</li>\n<li>$2\\enspace a\\enspace b$, någon flyttar till landet, och får nyckel $a,b$ som fungerar som beskrivet ovan ($0\\leq a &lt; b \\leq N$).</li>\n<li>$3\\enspace a\\enspace b$, någon med nyckel $a,b$ flyttar från landet och Lårs tar tillbaka deras nyckel. Det är garanterat att en person med nyckel $a,b$ tidigare flyttat till landet ($0\\leq a &lt; b \\leq N$).</li>\n</ul>",
+  "output": "<p>För varje fråga om någon kan låsa upp ett specifikt lås (första siffran är 1) ska du skriva ut \"ja\" om låset kan öppnas av någon invånare som just nu bor i landet, eller \"nej\" om låset inte kan öppnas.</p>",
+  "samples": [
+    {
+      "input": "10 5\n1 7\n2 1 3\n1 7\n3 1 3\n1 7\n",
+      "output": "nej\nja\nnej\n"
+    },
+    {
+      "input": "7 7\n1 7\n2 1 3\n1 7\n2 1 3\n1 7\n3 1 3\n1 7\n",
+      "output": "nej\nja\nja\nja\n"
+    },
+    {
+      "input": "20 8\n2 2 3\n2 0 2\n1 7\n1 8\n1 9\n3 0 2\n1 8\n1 5\n",
+      "output": "nej\nja\nnej\nja\nja\n"
+    },
+    {
+      "input": "200000 7\n1 200000\n2 2 3\n1 200000\n2 0 1\n1 200000\n3 2 3\n1 200000\n",
+      "output": "nej\nja\nja\nja\n"
+    }
+  ],
+  "hint": "<p>I det första exemplet finns först ingen nyckel, därför kan inte lås $7$ öppnas. Därefter läggs en nyckel till som gör att alla heltal $m$ som har $m\\equiv 1 (\\mod 3)$ öppnar låsen, då kan lås $7$ öppnas. Slutligen tas nyckeln bort, då kan inte lås $7$ öppnas igen.</p>\n<p>I det andra exemplet delas två likadana nycklar ut. När den ena av dem tas in igen kan fortfarande lås $7$ öppnas (alla likadana nycklar tas alltså <u>inte</u> in samtidigt).</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2020, Programming Camp",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

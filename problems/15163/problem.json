@@ -1,0 +1,28 @@
+{
+  "id": 15163,
+  "title": "Intuidiff",
+  "time_limit": "7 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Nowadays, web applications let us compare revision history for posts and articles using some variant of the quintessential <code>diff</code> utility that finds a small set of insertions and deletions to transform one document into another.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:333px; width:568px\"/></p>\n<p>Here is a typical problem with it. Suppose the original document is made up of two paragraphs, <code>P1</code> <code>P2</code>, and we edit it to become <code>P2</code> <code>P1</code>. Then <code>diff</code> might describe the changes as: delete <code>P1</code>, leave <code>P2</code>, insert some new text. The fact that the new text is equal to <code>P1</code> is not used. So, in some sense, <code>diff</code> is “linear” and does not work in the most convenient way possible when we re-order parts of the document.</p>\n<p>Can we do better? (More importantly, can it be finished today?) We will adopt this basic requirement: when a part of the new version of a document has appeared somewhere in the old version, it should be highlighted to reflect this fact.</p>\n<p>To capture this idea, define the Intuidiff distance from one document to another as the smallest integer N, such that the second document is the concatenation of N blocks, where each block is either a substring of the original document or a single new character. (Note that we do not need to worry about deletions because, unlike <code>diff</code>, we do not implicitly begin with the original document—instead, it starts off empty. Thus, the Intuidiff distance from a document to itself is 1. But this is the only counter-intuitive thing about it.)</p>\n<p>Given two strings, compute and print the Intuidiff distance from the first to the second.</p>",
+  "input": "<p>The input consists of two lines. Each line contains a string whose length is between 1 and 500 000 inclusive. Each string only contains alphanumeric and underscore characters.</p>",
+  "output": "<p>Display the Intuidiff distance from the first string in the input to the second string in the input.</p>",
+  "samples": [
+    {
+      "input": "Paragraph_paragraph\nparagraph_edit3_Paragraph\n",
+      "output": "9\n"
+    }
+  ],
+  "hint": "<p>An optimal Intuidiff concatenation for Sample Input 1 is:</p>\n<p style=\"text-align:center\"><code>p + aragraph_ + e + d + i + t + 3 + _ + Paragraph</code></p>",
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, ACM ICPC South Pacific Divisionals, 2016 South Pacific Divisional Contest",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "dp",
+    "segtree",
+    "string",
+    "suffix_array"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.25
+}

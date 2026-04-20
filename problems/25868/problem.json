@@ -1,0 +1,22 @@
+{
+  "id": 25868,
+  "title": "Code Matching",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>James is a spy, working in a country where communication back to his headquarters is not easy. He receives instructions from his superiors over a radio signal, through the use of number stations. A number station is a radio station where a list of numbers are occasionally read out, that have some encrypted meaning. James has a codebook with a mapping of number sequences (e.g., “732736”) to instructions (e.g., “abort the mission”). Every sequence of numbers listed in his codebook maps to a unique instruction. However, James is a lazy spy; he only checks in on the radio occasionally. His superiors know this, and so they assume that he will start listening to their sequence at a random digit, each equally likely (as early as the first, as late as the last). Their instructions are very important though, so it’s essential that they figure out exactly how long it will take James to decode the message. As soon as James can be positive that there is only one message that matches what he is hearing (factoring in that he may have missed some digits before he tuned in), he will stop listening and take action.</p>\n<p>Each digit takes one second to read, and there will be silence one second after the last digit (telling James the message is complete). For each message that headquarters might send, you have to determine how long it will take James to understand the message on average. Note that it is possible that sometimes even after listening until the end of the message, James cannot be sure which message he heard. In that case, print “Impossible”.</p>\n<p>Given the codebook, and the code to be sent, find the expected amount of time that James will spend listening to his radio.</p>",
+  "input": "<p>You will be given an integer, N (≤ 100,000), specifying the number of sequences in James’s codebook. The next N lines will each contain one sequence, with total length not exceeding 100,000 (i.e., the length of all sequences together will not exceed 100,000).</p>",
+  "output": "<p>Output N lines. The ith line should contain the expected number of seconds James will spend listening before he can be certain of the message he is hearing if headquarters sends the ith message in his codebook. Your answer will be judged to a relative error of 10<sup>-5</sup>. If it’s possible that James might not ever be able to determine the message, print out “Impossible” for that line.</p>",
+  "samples": [
+    {
+      "input": "4\n17383\n126\n385\n485\n",
+      "output": "2\n1.333333333\nImpossible\nImpossible\n"
+    }
+  ],
+  "hint": "<p>Sample Explanation: For the first message (17383), there are 5 possible spots where James could tune in. If he tunes in at the first digit, it could still be the second sequence (126) since both contain a 1. Once he hears the following 7, it could only be the first sequence. Therefore, tuning in at this digit takes 2 seconds. If he tunes in on the second digit, it takes 1 second. The third digit takes 3 seconds, the fourth digit takes 2 seconds, and the fifth digit takes 2 seconds (he hears the 3, then hears silence). This gives an average of (2+1+3+2+2)/5 = 2.</p>\n<p>For the third sequence, if he tunes in on the 8 then he will hear “85_”, and therefore cannot tell it apart from the fourth sequence. Thus the answer here is “Impossible”.</p>",
+  "source": "University, University of Central Florida, 2019 Local Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

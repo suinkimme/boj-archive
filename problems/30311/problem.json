@@ -1,0 +1,34 @@
+{
+  "id": 30311,
+  "title": "Gathering Search Results",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are making a new search engine for algorithms, called the Benelux Algorithm Preview Collector. All the marketing has been done, and you have plenty of investors, but there is one small problem: you have not written any code yet! As there are only five hours left until the product launch, you decide that there is not enough time to implement your own ranking algorithm. Instead, whenever a user searches for an algorithm, you just forward it to the $k$ most popular other search engines and use their results.</p>\n<p>Each of these $k$ search engines gives a list of $n$ results, ordered by estimated relevance. Surprisingly, it turns out that for every search term you try, the different search engines always give the same $n$ results, only the order differs between the search engines! You just need to find a way to combine the $k$ different rankings into a single ranking.</p>\n<p>To do this, you decide to give each possible combined ranking a cost: for each result $r$ and search engine $s$, if your combined ranking puts $r$ at the position $i$, and search engine $s$ puts $r$ at position $j$, then you incur a cost of $(i-j)^2$. The total cost of a combined ranking is the sum of all $k \\cdot n$ costs computed this way.</p>\n<p>As an example, consider the second sample case. The first search engine returns the same result as the sample output, which has cost $0$. The second search engine swaps two adjacent results, which has cost $1+1=2$. For the third search engine, the first result is moved two positions back, and the other two are shifted one position to the front, which has cost $4+1+1=6$. The total cost is then $0+2+6=8$, which is the minimal possible cost over all possible orders.</p>\n<p>What is the order in which BAPC should output the results, such that the total cost is minimized?</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line containing two integers $n$ and $k$ ($1\\leq n\\leq 5000$, $1\\leq k\\leq 100$), the number of results, and the number of search engines.</li>\n<li>$k$ lines, each containing $n$ integers, denoting the results as ordered by one of the search engines. It is guaranteed that each line contains every integer from $1$ to $n$ exactly once.</li>\n</ul>",
+  "output": "<p>Output the combined order of the results, such that the cost is minimized.</p>\n<p>If there are multiple valid solutions, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "2 3\n1 2\n2 1\n2 1\n",
+      "output": "2 1\n"
+    },
+    {
+      "input": "3 3\n1 2 3\n1 3 2\n2 3 1\n",
+      "output": "1 2 3\n"
+    },
+    {
+      "input": "5 2\n2 1 3 5 4\n4 1 5 2 3\n",
+      "output": "1 2 4 5 3\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2023 Preliminaries",
+  "level": 16,
+  "tags": [
+    "math",
+    "greedy",
+    "sorting"
+  ],
+  "accepted_user_count": 33,
+  "submission_count": null,
+  "average_tries": 1.2121000289916992
+}

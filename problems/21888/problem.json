@@ -1,0 +1,34 @@
+{
+  "id": 21888,
+  "title": "Math Candies",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Little Max's most favorite activities are eating sweets and solving difficult mathematical riddles. The boy is happy when he finds a puzzle on a candy wrapper, which is a set of non-negative integers that he needs to sum up. Unfortunately, all the numbers on the wrapper are stuck together so that Max can't understand where one number ends, and where the next one starts.</p>\n<p>The boy remembers that there are always exactly $k$ numbers on a wrapper, none of them containing leading zeros. He decided to split this string of digits into numbers on his own. He just needs to insert $k - 1$ delimiters into the string. Max wants to get the most interesting puzzle, the one that has the maximum possible result.</p>\n<p>Your task is to find the maximum total sum of $k$ numbers that Max can get by splitting given string.</p>",
+  "input": "<p>The first line contains two integers $n$ and $k$ --- the number of digits in the string on the wrapper and the number of integers, in which string must be split ($1 \\le k \\le n \\le 5 \\cdot 10^5$).</p>\n<p>The second line contains a string of $n$ decimal digits.</p>\n<p>It's possible to split the string into integers without any leading zero.</p>",
+  "output": "<p>Output single integer --- maximum possible result.</p>",
+  "samples": [
+    {
+      "input": "3 2\n528\n",
+      "output": "60\n"
+    },
+    {
+      "input": "4 3\n9050\n",
+      "output": "95\n"
+    },
+    {
+      "input": "5 3\n07800\n",
+      "output": "807\n"
+    }
+  ],
+  "hint": "<p>In the first sample input splitting with the maximum sum is 52, 8;</p>\n<p>In the second sample input splitting with the maximum sum is 90, 5, 0;</p>\n<p>Consider all splitting for the third sample input:</p>\n<ol>\n<li>0, 7, 800 --- valid splitting, sum is 807;</li>\n<li>0, 78, 00 --- invalid splitting, there is a leading zero in $00$;</li>\n<li>0, 780, 0 --- valid splitting, sum is 780;</li>\n<li>07, 8, 00 --- invalid splitting, there are leading zeros in $00$ and $07$;</li>\n<li>07, 80, 0 --- invalid splitting, there is a leading zero in $07$;</li>\n<li>078, 0, 0 --- invalid splitting, there is a leading zero in $078$.</li>\n</ol>\n<p>Thus a splitting with the maximum sum is 0, 7, 800.</p>",
+  "source": "Contest, Innopolis Open in Informatics, Innopolis Open, Elimination round 1, 2017-2018",
+  "level": 20,
+  "tags": [
+    "math",
+    "string",
+    "suffix_array"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1
+}

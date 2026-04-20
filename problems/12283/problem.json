@@ -1,0 +1,27 @@
+{
+  "id": 12283,
+  "title": "Cross the maze (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Edison, a robot, does not have a right hand or eyes. As a brave robot, <strong>he always puts his left hand on the wall no matter he walks or turns around</strong>. Because he thinks it is too dangerous, Edison does not walk backward.</p>\n<p>Assume that Edison has found himself in a square-shaped maze of <strong>N</strong>x<strong>N</strong> square cells which is surrounded by walls from the outside. In the maze, some of the cells are also walls. Edison can only move between two empty cells in four directions, north, south, west and east. In order to get out of the maze, he drafts a plan. He uses his left hand to lean on the wall and goes by following the wall.</p>\n<p>Here is the question, is Edison able to get out of the maze in at most 10,000 steps? If he can make it, output the path. By getting out of the maze, he only needs to be in the exit cell. If the starting cell is the same as the exit, Edison won't need to move and can directly get out of the maze.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow. Each test case starts with an integer <strong>N</strong>. <strong>N</strong> is the size of the maze. The following <strong>N</strong> lines, each line contains <strong>N</strong> characters which may be '.' or '#'. '.' is an empty cell, '#' is a wall. Followed by a line which contains four integers: <strong>sx</strong>, <strong>sy</strong>, <strong>ex</strong>, <strong>ey</strong>. (<strong>sx</strong>, <strong>sy</strong>) means that Edison is standing on row <strong>sx</strong> and column <strong>sy</strong> as his starting cell, (<strong>ex</strong>, <strong>ey</strong>) is the exit of the maze. (<strong>sx</strong>, <strong>sy</strong>) is guaranteed to be at one of the 4 corners of the maze, and Edison can only touch the wall on 4 adjacent cells(not 8) initially. (<strong>ex</strong>, <strong>ey</strong>) can be anywhere in the maze. Note that the top-left corner is at position (1,1).</p>\n<p>Limits</p>\n<ul>\n<li>1 ≤ <strong>T</strong> ≤ 30.</li>\n<li>1 ≤ <strong>sx</strong>, <strong>sy</strong>, <strong>ex</strong>, <strong>ey</strong> ≤ <strong>N</strong>.</li>\n<li>The starting cell and the exit of the maze will always be an empty cell. And the starting cell and the exit of the maze won't be the same.</li>\n<li><span style=\"line-height:1.6em\">2 ≤ </span><strong style=\"line-height:1.6em\">N</strong><span style=\"line-height:1.6em\"> ≤ 100.</span></li>\n</ul>",
+  "output": "<p>For each test case, output a line containing \"Case #x: y\", where x is the case number (starting from 1) and y is \"Edison ran out of energy.\" (without the quotes) if Edison can't reach the exit of the maze in at most 10,000 steps, otherwise y should be the number of steps followed by another line which contains y characters to describe the path (each character should be E for east, S for south, W for west or N for north). There is no character to represent the turning around. We don't care about the turning around steps, please only output the path of how Edison will cross the maze.</p>",
+  "samples": [
+    {
+      "input": "3\n2\n.#\n#.\n1 1 2 2\n5\n.##.#\n.....\n...#.\n.###.\n...#.\n1 1 5 3\n3\n...\n.#.\n...\n1 1 3 3\n",
+      "output": "Case #1: Edison ran out of energy.\nCase #2: 22\nSEEENSESSSNNNWWSWWSSEE\nCase #3: 4\nEESS\n"
+    }
+  ],
+  "hint": "<p>Note: </p>\n<p>In the 2nd test case after moving 1 cell down from his starting cell, Edison will still be able to lean on the wall at the cell (1,2) by his left hand. </p>\n<p>In the third test case, due to Edison can't touch the wall at cell (2,2) initially, so he has to go east in his first step.</p>",
+  "source": "Contest, Google, Google's Coding Competitions, Google of Greater China Test for New Grads of 2014, Round A China New Grad Test 2014, Contest, Google, Kick Start, Google Kick Start 2013, Round A",
+  "level": 13,
+  "tags": [
+    "implementation",
+    "graphs",
+    "simulation",
+    "grid_graph"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

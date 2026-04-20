@@ -1,0 +1,27 @@
+{
+  "id": 27785,
+  "title": "New Elements: Part 2",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p><i>The first two paragraphs (not counting this one) of this problem and \"New Elements: Part 1\" are identical. The problems can otherwise be solved independently; you do not need to read or solve one in order to read or solve the other.</i></p>\n<p>Muriel is on the path to discovering two new elements that she has named Codium and Jamarium. She has not been able to isolate them yet, but she wants to start investigating some important properties, like their atomic weights, by indirect means. Since Muriel is working with a single isotope of Codium and a single isotope of Jamarium, their atomic weights are strictly positive integers.</p>\n<p>Muriel managed to create <b>N</b> different molecules, each of which contains one or more atoms of Codium and one or more atoms of Jamarium, and no other elements. For each molecule, she knows how many atoms of each element are present in it. The molecular weight of a molecule is the sum of the atomic weights of all the atoms it contains.</p>\n<p>As a first step, Muriel sorted the molecules by strictly increasing molecular weight. Now she wants to find out possible integer values for the atomic weights of both Codium and Jamarium that are consistent with the ordering. Since she is aware there could be many consistent pairs of values, she wants one that minimizes the atomic weight of Codium. If there are multiple pairs in which Codium's atomic weight is minimum, she wants the one in which Jamarium's atomic weight is minimum.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. The first line of a test case contains a single integer <b>N</b>, the number of molecules. Each of the next <b>N</b> lines describes a different molecule with two integers <b>C<sub>i</sub></b> and <b>J<sub>i</sub></b> that represent the number of Codium and Jamarium atoms in the i-th molecule, respectively. The molecules are given in strictly increasing order of molecular weight.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1), and <code>y</code> is <code>IMPOSSIBLE</code> (in uppercase) if there is no pair of integer atomic weights that would make the order of the molecules strictly increasing in molecular weight. Otherwise, <code>y</code> should be two integers <code>c j</code> where c is the atomic weight of Codium and j is the atomic weight of Jamarium, chosen according to the rules above.</p>",
+  "samples": [
+    {
+      "input": "3\n3\n1 1\n1 2\n2 1\n4\n1 2\n2 1\n4 2\n2 4\n3\n1 2\n1 3\n2 3\n",
+      "output": "Case #1: 2 1\nCase #2: IMPOSSIBLE\nCase #3: 1 1\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, the difference between the last two molecules is having an extra atom of one element or the other. Given that the one having the extra Codium is heavier overall, we conclude that Codium must be heavier than Jamarium. The values 2 and 1 for the atomic weights of Codium and Jamarium make the molecular weights 1 × 2 + 1 × 1 = 3, 1 × 2 + 2 × 1 = 4, and 2 × 2 + 1 × 1 = 5, respecting the strict ordering. Since Codium is heavier than Jamarium in this case, 2 is Codium's minimum atomic weight, and 1 is of course Jamarium's minimum atomic weight.</p>\n<p>Let a, b, c and d be the molecular weights of the molecules in Sample Case #2, in increasing order of molecular weight. By their atom contents, d = 2 × a and c = 2 × b. It follows from a &lt; b that d = 2 × a &lt; 2 × b = c, which means there is no pair of values for the atomic weights that would make the ordering strictly increasing.</p>\n<p>In Sample Case #3, notice that the molecules happen to be sorted in strictly increasing order of total number of atoms. Therefore, assigning both elements an atomic weight of 1 makes the atomic weights be sorted in strictly increasing order.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2019, Round 2",
+  "level": 23,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "number_theory",
+    "binary_search"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 4.4166998863220215
+}

@@ -1,0 +1,30 @@
+{
+  "id": 21286,
+  "title": "Brandvägg",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>On the Internet, there are many bad guys who always try to hack the computers of others. They steal cat pictures, bank logins and membership lists on programming dating sites. One of the first countermeasures against network-based attacks is the <em>firewall</em>. A firewall filters some network trafik based on different criteria, to shut out unauthorized access. In this problem, we are going to code the part of the firewall that determines of a certain message sent to a server over a network should be dropped or accepted.</p>\n<p>A firewall consists of a number of <em>rules</em> in a long list. A rule is on the form \"if [list of conditions] are true, perform an action\". These conditions are one of</p>\n<ul>\n<li><code>port=XYZ</code> - if the message was sent to port <code>XYZ</code>.</li>\n<li><code>ip=XYZ</code> - if the message was sent from the IP-address <code>XYZ</code>.</li>\n<li><code>limit=XYZ</code> - if at least <code>XYZ</code> of the last 1000 messages (including the one just received) was sent from this IP-address.</li>\n</ul>\n<p>and the actions are one of</p>\n<ul>\n<li><code>accept</code> - let the package through the firewall. Print <code>accept packet-ID</code>.</li>\n<li><code>log</code> - print <code>log packet-ID</code>.</li>\n<li><code>drop</code> - block the packet. Print <code>drop packet-ID</code>.</li>\n</ul>\n<p>Some examples of rules with explanations:</p>\n<ul>\n<li><code>accept</code> - always accept the packet.</li>\n<li><code>accept ip=127.0.0.1</code> - accept the packet if it comes from the IP-address <code>127.0.0.1</code>.</li>\n<li><code>drop port=22 ip=192.168.1.1</code> - drop the packet if its from the IP-address <code>192.168.1.1</code> and sent to port <code>22</code>.</li>\n<li><code>log port=80 limit=500</code> - log the packet if it was sent to port <code>80</code>, and at least half of the last 1000 messenges was sent from this IP-address.</li>\n</ul>\n<p>When a packet enters the firewall, it looks at every rule in the list, top to bottom, until it reaches a rule that matches the packet. The given firewall will always be constructed such that a packet will be accepted or dropped before the end of the list.</p>",
+  "input": "<p>The first line of input contains an integer $1 \\le N \\le 100$, the number of rules in the firewall.</p>\n<p>The next $N$ lines contains the rules in the list, one rule on each line.</p>\n<p>The next row contains an integer $P \\le 10\\,000$, the number of packets arriving to the firewall. They are given in the order of arrival. A packet is on the form <code>IP:port</code>, for example <code>127.0.0.1:123</code>. The packet ID is just the position of the packet in this list. The first packet has id $1$ and the last ID $P$.</p>\n<p>A port is an integer $1 \\le p \\le 65535$.</p>",
+  "output": "<p>For each packet, you are to run it through the firewall until it is accepted or dropped. Each action that is taken describes what to print. Note that since the action <code>log</code> doesn't stop the packet in the firewall, each packet could result in multiple lines of output.</p>",
+  "samples": [
+    {
+      "input": "6\naccept ip=127.0.0.1\ndrop port=22\naccept limit=5\naccept port=80\naccept port=10 port=11\ndrop\n16\n127.0.0.1:80\n127.0.0.1:22\n192.168.0.1:80\n192.168.0.1:11\n192.168.0.1:12\n192.168.0.1:13\n192.168.0.1:14\n192.168.0.1:15\n192.168.0.1:16\n192.168.0.1:22\n192.168.0.1:80\n154.135.0.5:22\n154.135.0.5:80\n127.0.0.1:8080\n215.215.5.8:5919\n215.215.5.9:5919\n",
+      "output": "accept 1\naccept 2\naccept 3\ndrop 4\ndrop 5\ndrop 6\naccept 7\naccept 8\naccept 9\ndrop 10\naccept 11\ndrop 12\naccept 13\naccept 14\ndrop 15\ndrop 16\n"
+    },
+    {
+      "input": "4\naccept ip=192.168.0.1\nlog port=22\naccept\ndrop\n16\n127.0.0.1:80\n127.0.0.1:22\n192.168.0.1:80\n192.168.0.1:11\n192.168.0.1:12\n192.168.0.1:13\n192.168.0.1:14\n192.168.0.1:15\n192.168.0.1:16\n192.168.0.1:22\n192.168.0.1:80\n154.135.0.5:22\n154.135.0.5:80\n127.0.0.1:8080\n215.215.5.8:5919\n215.215.5.9:5919\n",
+      "output": "accept 1\nlog 2\naccept 2\naccept 3\naccept 4\naccept 5\naccept 6\naccept 7\naccept 8\naccept 9\naccept 10\naccept 11\nlog 12\naccept 12\naccept 13\naccept 14\naccept 15\naccept 16\n"
+    },
+    {
+      "input": "5\nlog limit=1\nlog limit=2\nlog limit=3\ndrop limit=1\naccept\n16\n127.0.0.1:80\n127.0.0.1:22\n192.168.0.1:80\n192.168.0.1:11\n192.168.0.1:12\n192.168.0.1:13\n192.168.0.1:14\n192.168.0.1:15\n192.168.0.1:16\n192.168.0.1:22\n192.168.0.1:80\n154.135.0.5:22\n154.135.0.5:80\n127.0.0.1:8080\n215.215.5.8:5919\n215.215.5.9:5919\n",
+      "output": "log 1\ndrop 1\nlog 2\nlog 2\ndrop 2\nlog 3\ndrop 3\nlog 4\nlog 4\ndrop 4\nlog 5\nlog 5\nlog 5\ndrop 5\nlog 6\nlog 6\nlog 6\ndrop 6\nlog 7\nlog 7\nlog 7\ndrop 7\nlog 8\nlog 8\nlog 8\ndrop 8\nlog 9\nlog 9\nlog 9\ndrop 9\nlog 10\nlog 10\nlog 10\ndrop 10\nlog 11\nlog 11\nlog 11\ndrop 11\nlog 12\ndrop 12\nlog 13\nlog 13\ndrop 13\nlog 14\nlog 14\nlog 14\ndrop 14\nlog 15\ndrop 15\nlog 16\ndrop 16\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2016, Online Qualification",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.2222000360488892
+}

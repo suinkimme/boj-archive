@@ -1,0 +1,28 @@
+{
+  "id": 33038,
+  "title": "Legacy Screensaver",
+  "time_limit": "3 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>On a very old operating system, a screensaver consists of two rectangles flying around the screen. The screen is $W$ pixels wide and $H$ pixels high. Consider the origin to be in the top-left corner of the screen, the $x$-axis to go from the origin to the right, and the $y$-axis to go from the origin to the bottom.</p>\n<p>Rectangle $i$ ($i = 1, 2$) has a width of $w_i$ pixels, a height of $h_i$ pixels, initially its top-left corner has coordinates $(x_i, y_i)$, and its initial movement direction is $(\\delta x_i, \\delta y_i)$, where each of $\\delta x_i$ and $\\delta y_i$ is either $-1$ or $1$. At the end of each second, rectangle $i$'s top-left corner coordinates instantly change by $(\\delta x_i, \\delta y_i)$. </p>\n<p>Whenever rectangle $i$ touches the left or the right border of the screen, the value of $\\delta x_i$ changes sign before the next second. Similarly, whenever rectangle $i$ touches the top or the bottom border of the screen, the value of $\\delta y_i$ changes sign before the next second. Whenever rectangle $i$ touches two borders of the screen at the same time (which can only happen at the corner of the screen), both $\\delta x_i$ and $\\delta y_i$ change sign.</p>\n<p>As a result of the above, both rectangles stay fully within the screen at all times. Informally, collisions of the rectangles with the screen borders are perfectly elastic. Note, however, that rectangle movement is still discrete: each rectangle moves instantly by $1$ pixel in both directions at the end of each second.</p>\n<p>You are curious how often these two rectangles overlap. The rectangles are considered to be overlapping if their intersection has a positive area.</p>\n<p>Let $f(t)$ be the number of integers $\\tau = 0, 1, \\ldots, t - 1$ such that the rectangles overlap during second $\\tau$ (where second $0$ is before the rectangles start moving).</p>\n<p>Find the limit of $\\frac{f(t)}{t}$ as $t \\rightarrow \\infty$ as an irreducible fraction. It can be shown that this limit is a rational number.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line contains the number of test cases $T$ ($1 \\le T \\le 1000$). The description of the test cases follows.</p>\n<p>The first line of each test case contains two integers $W$ and $H$, denoting the width and the height of the screen ($3 \\le W, H \\le 4000$).</p>\n<p>The next two lines describe the two rectangles. Each rectangle is described by six integers $w_i$, $h_i$, $x_i$, $y_i$, $\\delta x_i$, $\\delta y_i$, describing the $i$-th rectangle and denoting its width, its height, the coordinates of its top-left corner, and its initial movement direction ($1 \\le w_i \\le W - 2$; $1 \\le h_i \\le H - 2$; $0 &lt; x_i &lt; W - w_i$; $0 &lt; y_i &lt; H - h_i$; $\\delta x_i, \\delta y_i \\in \\{-1, 1\\})$.</p>\n<p>The sum of the values of $W + H$ across all test cases is guaranteed to not exceed $8000$.</p>",
+  "output": "<p>For each test case, print a non-negative integer $p$ and a positive integer $q$, separated by a slash ('<code>/</code>') without spaces, meaning that the limit of $\\frac{f(t)}{t}$ as $t \\rightarrow \\infty$ is equal to $\\frac{p}{q}$. The fraction must be irreducible --- that is, the greatest common divisor of $p$ and $q$ must be equal to $1$.</p>",
+  "samples": [
+    {
+      "input": "2\n3 3\n1 1 1 1 1 1\n1 1 1 1 1 -1\n5 4\n2 2 1 1 -1 -1\n2 1 2 2 1 -1\n",
+      "output": "1/2\n1/3\n"
+    }
+  ],
+  "hint": "<p>For the second test case, the state of rectangles during the first few seconds is shown in the following pictures. The rectangles overlap during seconds $\\tau = 0$ and $\\tau = 6$. Thus, for example, $f(8) = 2$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 475px; height: 208px;\"/></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 473px; height: 208px;\"/></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 479px; height: 208px;\"/></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"4.png\" style=\"width: 475px; height: 208px;\"/></p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, Northern Eurasia Finals 2024",
+  "level": 18,
+  "tags": [
+    "math",
+    "implementation",
+    "number_theory",
+    "simulation",
+    "combinatorics"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.2777999639511108
+}

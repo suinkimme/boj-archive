@@ -1,0 +1,22 @@
+{
+  "id": 13951,
+  "title": "Geohash Grid",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Geohash is a procedure of coding map coordinates to scalar values for the purpose of efficient storage and querying of geographical data in databases. In this problem, a map is a 2<sup>n</sup> × 2<sup>n</sup> rectangular grid embedded in a standard coordinate system with the x coordinate growing rightwards and the y coordinate growing upwards. A map cell is a unit square aligned with the coordinate axes whose lower-left corner is a point with integer coordinates (x, y) such that 0 ≤ x, y &lt; 2<sup>n</sup> .</p>\n<p>There are a total of 2<sup>2n</sup> cells in a 2<sup>n</sup> × 2<sup>n</sup> map. Given a map cell c, its geohash h(c) is a 2n-bit nonnegative integer constructed bit by bit starting from the most significant bit by setting the viewport to the entire map and repeating the following two steps n times:</p>\n<ol>\n<li>We divide the viewport into two equal areas — the left half and the right half. If the cell c is in the left half, the next bit is 0, otherwise the next bit is 1. The new viewport is the area containing the cell c.</li>\n<li>We divide the viewport into two equal areas — the bottom half and the top half. If the cell c is in the bottom half the next bit is 0, otherwise the next bit is 1. The new viewport is the area containing the cell c.</li>\n</ol>\n<p>A geohash interval [a − b] is a set of cells whose geohash values are between a and b, both inclusive. Often, it is useful to approximate a map region with a set of geohash intervals. Given a set of cells C, and an integer t, an optimal t-approximation of C is a minimal-area region that contains C and can be described as an union of at most t geohash intervals. Formally, it is a set S of at most t geohash intervals such that:</p>\n<ul>\n<li>Each cell of C is contained in at least one interval in S.</li>\n<li>The total number of cells in the union of all intervals in S is minimal possible.</li>\n</ul>\n<p>You are given a map region C described as a set of cells in the interior of a polygon whose sides are aligned with the grid. You are also given q target integers t<sub>1</sub>, t<sub>2</sub>, . . . , t<sub>q</sub>. For each t<sub>k</sub> find the area of an optimal t<sub>k</sub> -approximation of C.</p>",
+  "input": "<p>The first line contains an integer n (1 ≤ n ≤ 30) — the binary logarithm of the map dimensions.</p>\n<p>The following line contains an even integer m (4 ≤ m ≤ 200) — the number of vertices of the polygon. The k-th of the following m lines contains two integers x<sub>k</sub> and y<sub>k</sub> (0 ≤ x<sub>k</sub> , y<sub>k</sub> ≤ 2<sup>n</sup> ) — the coordinates of one vertex of the polygon. The vertices are given in the counterclockwise order. Each polygon side is either vertical or horizontal. You may assume that the polygon does not intersect or touch itself, or contains consecutive parallel sides.</p>\n<p>The following line contains an integer q (1 ≤ q ≤ 100 000) — the number of queries. The k-the of the following q lines contains a single integer t<sub>k</sub> (1 ≤ t<sub>k</sub> ≤ 10<sup>9</sup> ) — the k-th query.</p>",
+  "output": "<p>The k-th line should contain the size of the optimal t<sub>k</sub> -approximation of the given region.</p>",
+  "samples": [
+    {
+      "input": "3\n8\n1 1\n5 1\n5 4\n3 4\n3 8\n0 8\n0 5\n1 5\n4\n2\n3\n5\n7\n",
+      "output": "32\n30\n26\n24\n"
+    }
+  ],
+  "hint": "<p><img alt=\"\" src=\"1.png\" style=\"height:259px; width:258px\"/></p>\n<p>In the example above, the intervals [3 − 29], [33 − 33] and [36 − 37] form an optimal 3-approximation of the given region. The total area of the union of the three intervals is 30.</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2016, Contest, Open Cup, 2016/2017 Season, Stage 8: Grand Prix of Europe",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 5.5
+}

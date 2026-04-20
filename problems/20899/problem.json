@@ -1,0 +1,26 @@
+{
+  "id": 20899,
+  "title": "Primärfaktor",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>“Vilket är världens högsta berg? Den högsta punkten på Mount Everests topp. OK, men vilket är världens näst högsta berg? Den näst högsta punkten på Mount Everests topp såklart.”</p>\n<p>Med den här logiken blir listan på världens högsta berg väldigt dum. Men det finns en lösning, man introducerar begreppet primärfaktor. Primärfaktorn hos ett berg är det minsta avståndet i höjdled man måste gå ner från berget för att komma till ett strikt högre berg. Det funkar som ett slags mått på hur självständigt ett berg är, och om man rensar bort alla punkter med primärfaktor mindre än 200 m, så blir man av med alla fåniga små berg som egentligen sitter på högre berg. Det här problemet handlar om att hitta alla primärfaktorer i en graf.</p>\n<p>Vi har en graf med $n$ noder och $m$ kanter, där varje nod $i$ har ett icke-negativt heltal $h(i)$, nodens höjd. En nods primärfaktor $P(i)$ är den minsta höjden man måste gå ner från noden för att komma till en nod med strikt högre höjd. Här kommer en lite mer matematisk definition: Låt $G(i)$ vara mängden av alla vägar från noden $i$ till någon annan nod $j$ sådan att $h(j) &gt; h(i)$. Primärfaktorn hos $i$ definieras som </p>\n<p>$$P(i) =  \\min_{\\gamma \\in G(i)}  \\left\\{   h(i) - \\min_{k\\in \\gamma}(h(k))  \\right\\}$$</p>\n<p>Om $G(i) = \\emptyset$, dvs om det överhuvudtaget inte går att ta sig till en nod med högre höjd, så säger vi att primärfaktorn är $h(i)$.</p>\n<p>Givet en graf, hitta alla noders primärfaktorer.</p>",
+  "input": "<p>En rad med två heltal, $n$ och $m$. En rad med $n$ heltal $0 \\leq h(i) \\leq 10^9$, nodernas höjder. $m$ rader med två heltal, $a$ och $b$ ($1 \\leq a,b \\leq n$), vilket betyder att en kant går mellan noderna $a$ och $b$.</p>",
+  "output": "<p>En rad med $n$ heltal, nodernas primärfaktorer.</p>",
+  "samples": [
+    {
+      "input": "5 4\n3 2 5 1 6\n1 2\n2 3\n3 4\n4 5\n",
+      "output": "1 0 4 0 6 \n"
+    },
+    {
+      "input": "6 7\n1 2 3 4 5 6\n1 2\n1 3\n1 6\n2 3\n2 4\n2 5\n3 4\n",
+      "output": "0 0 0 2 4 6 \n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2017, KATT2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

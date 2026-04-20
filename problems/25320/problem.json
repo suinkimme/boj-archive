@@ -1,0 +1,30 @@
+{
+  "id": 25320,
+  "title": "SCV 체인",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>블록체인 컨설팅 회사 SCVSoft에서는 두 대의 건설 로봇<span style=\"color: Gray\">(SCV)</span>이 일하고 있다. 두 로봇에게는 “A”와 “B”라는 멋진 이름이 붙어 있다.</p>\n<p>어느 날, 심심해진 두 로봇은 블록체인 만들기 놀이를 하기로 했다. 놀이의 규칙은 다음과 같다.</p>\n<p> </p>\n<ol>\n<li>$2N$개의 나무 블록에 $1$번부터 $2N$번까지 번호를 매기고, 각자 $N$개씩 나눠 갖는다.</li>\n<li>로봇 A부터 시작해 번갈아가며 다음의 두 동작 중 하나를 한다.\n\t<ul>\n<li>블록: 가지고 있는 블록 중 하나를 바닥에 놓는다.</li>\n<li>체인: 가지고 있는 블록 중 하나를 바로 전에 상대방이 놓은 블록 위에 올려놓는다. 이때, 새로 놓는 블록의 번호는 상대방이 놓은 블록의 번호보다 커야 한다.</li>\n</ul>\n<p>처음 놀이를 시작할 때는 상대방이 놓은 블록이 없으므로, A는 반드시 블록 동작을 한다.</p>\n<p> </p>\n</li>\n<li>각자 $N$번의 동작을 해서 가진 블록이 다 떨어지면 놀이가 끝난다.</li>\n</ol>\n<p>여기서 블록 동작은 새로운 블록체인의 시작을 본뜬 중요한 동작이기 때문에, 로봇들은 블록 동작을 할 때마다 어떤 블록을 놓았는지 작은 데이터베이스에 기록으로 남긴다. 데이터베이스는 기록들을 요청이 들어온 순서에 따라 안전하게 저장한다. 그러나 로봇과 데이터베이스 사이의 통신은 약간 불안정해서, 기록을 남기다 보면 기록 저장 요청을 보낸 로봇을 혼동하거나 요청을 누락하는 등의 오류가 발생하기도 한다.</p>\n<p>로봇들이 놀이를 한 차례 진행한 뒤 데이터베이스에 저장된 기록이 주어진다. 이때 이 기록이 통신에 오류가 없었다고 가정할 때 놀이에서 실제로 나올 수 있는 기록인지 판별하고, 만약 그렇다면 기록에 체인 동작을 적절히 추가해 놀이에서 있었던 모든 동작이 담긴 기록으로 만들어 보자.</p>",
+  "input": "<p>첫 번째 줄에 두 개의 정수 $N$과 $M$이 공백으로 구분되어 주어진다. $M$은 데이터베이스에 저장된 블록 동작 기록의 개수이다. $(1\\le N\\le 100\\, 000$; $1\\le M\\le 2N)$</p>\n<p>이후 $M$줄에 걸쳐 블록 동작 기록이 한 줄에 하나씩 주어진다. 기록은 <span style=\"color:#e74c3c;\"><code>&lt;robot&gt; BLOCK &lt;number&gt;</code></span> 꼴으로, <span style=\"color:#e74c3c;\"><code>&lt;robot&gt;</code></span>에는 동작을 한 로봇의 이름, <span style=\"color:#e74c3c;\"><code>&lt;number&gt;</code></span>에는 로봇이 놓은 블록의 번호가 들어간다.</p>\n<p>주어지는 기록의 순서는 데이터베이스에 저장된 순서를 따른다. 기록의 첫 번째 동작은 반드시 로봇 A의 동작이며, 기록에 등장하는 블록들의 번호는 모두 $1$ 이상 $2N$ 이하의 정수이고 중복되지 않음이 보장된다.</p>",
+  "output": "<p>첫 줄에 주어진 블록 동작 기록이 놀이에서 나올 수 있는 기록이라면 <span style=\"color:#e74c3c;\"><code>YES</code></span>, 그렇지 않다면 <span style=\"color:#e74c3c;\"><code>NO</code></span>를 출력한다.</p>\n<p><span style=\"color:#e74c3c;\"><code>YES</code></span>를 출력했을 경우, 이후 $2N$줄에 걸쳐 주어진 기록에 체인 동작을 추가한 전체 동작 기록을 입력과 같은 형식으로 출력한다. 체인 동작은 <span style=\"color:#e74c3c;\"><code>&lt;robot&gt; CHAIN &lt;number&gt;</code></span> 꼴으로 나타낸다. 주어진 기록으로부터 만들 수 있는 전체 동작 기록이 여러 가지일 경우 그중 아무것이나 출력한다.</p>",
+  "samples": [
+    {
+      "input": "6 5\nA BLOCK 8\nA BLOCK 1\nB BLOCK 3\nB BLOCK 6\nA BLOCK 4\n",
+      "output": "YES\nA BLOCK 8\nB CHAIN 9\nA BLOCK 1\nB CHAIN 2\nA CHAIN 10\nB BLOCK 3\nA CHAIN 5\nB BLOCK 6\nA CHAIN 7\nB CHAIN 11\nA BLOCK 4\nB CHAIN 12\n"
+    },
+    {
+      "input": "4 3\nA BLOCK 4\nB BLOCK 2\nA BLOCK 7\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2022 예선, doju, 99asdfg, bnb2011, heeda0528, ho94949, hyperbolic, jh05013, lky7674, man_of_learning, myungwoo, queued_q, quickn, shiftpsh",
+  "level": 17,
+  "tags": [
+    "greedy",
+    "set",
+    "constructive"
+  ],
+  "accepted_user_count": 141,
+  "submission_count": null,
+  "average_tries": 4.588699817657471
+}

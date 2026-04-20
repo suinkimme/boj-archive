@@ -1,0 +1,25 @@
+{
+  "id": 32787,
+  "title": "Auto-Coin-o-Matic",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>It's finally here! The day you unveil your new invention, the Auto-Coin-o-Matic! You watch with glee and anxiety as people insert their card into the machine, type in the amount they want, and get exact change out with the fewest number of coins.</p>\n<p>But was it actually the fewest number of coins? That's how it was programmed, but what if you had a bug? It's okay, you're watching. You decide to randomly pick some transactions and double check that what the machine gave out is indeed the fewest number of coins possible. But, oh no, the machine is running out of certain types of coins! Will it still work correctly?</p>",
+  "input": "<p>The input starts with two integers $n$ and $m$ ($1 \\le n \\le 2000$, $1 \\le m \\le 10^5$).</p>\n<p>The next line contains $n$ integers, $d_1, d_2, \\ldots, d_n$ ($1 \\le d_i \\le 10^5$) representing the denominations of coins available initially. It is guaranteed that all denominations are unique.</p>\n<p>The next $m$ lines contain a character $c$ ($c\\in \\{$<code>Q</code>, <code>X</code>$\\}$) and an integer $v$ ($1 \\le v \\le 10^5$), where $c$ is the type of event and $v$ is the value of the event.</p>\n<ul>\n<li>\n<p>If $c$ is the character <code>Q</code>, this is a query and the output should be the minimum number of coins needed to give out exactly $v$. It is guaranteed that there will be at least one query.</p>\n<p>If it is not possible to make $v$ exactly with the available denominations, output $-1$ instead.</p>\n</li>\n<li>\n<p>If $c$ is the character <code>X</code>, this means the machine is out of coins of denomination $v$. All queries after this point cannot use this denomination. It is guaranteed that each <code>X</code> event corresponds to a denomination $v$ which the machine currently has in stock.</p>\n</li>\n</ul>",
+  "output": "<p>Output $k$ lines, where $k$ is the number of query events ($c = $<code>Q</code>). On the $i$<sup>th</sup> line, output the fewest number of coins needed to give change for the $i$<sup>th</sup> query, or $-1$ if this is impossible.</p>",
+  "samples": [
+    {
+      "input": "4 7\n1 2 5 10\nQ 23\nX 1\nQ 23\nX 5\nQ 23\nX 10\nQ 22\n",
+      "output": "4\n6\n-1\n11\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Pacific Northwest Regional, 2024 ICPC Pacific Northwest Regional, Division 1",
+  "level": 15,
+  "tags": [
+    "dp",
+    "offline_queries"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 2.1538000106811523
+}

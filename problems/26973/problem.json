@@ -1,0 +1,30 @@
+{
+  "id": 26973,
+  "title": "Circular Barn",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "Farmer John and his archnemesis Farmer Nhoj are playing a game in a circular\nbarn. There are $N$ ($1 \\leq N \\leq 10^5$) rooms in the barn, and the $i$th room\ninitially contains  $a_i$ cows ($1 \\leq a_i \\leq 5\\cdot 10^6$). The game is\nplayed as follows:\n\n<p></p><ul><li>Both farmers will always be in the same room. After entering a room, each\nfarmer takes exactly one turn, with Farmer John going first. Both farmers\ninitially enter room $1$.</li><li>If there are zero cows in the current room, then the farmer to go loses.\nOtherwise, the farmer to go chooses an integer $P$, where $P$ must either be $1$\nor a prime number at most the number of cows in the current room, and removes\n$P$ cows from the current room.</li><li>After both farmers have taken turns, both farmers move to the next room  in\nthe circular barn. That is, if the farmers are in room $i$, then they move to\nroom $i+1$, unless they are in room $N$, in which case they move to room\n$1$.</li></ul>\n<p>Determine the farmer that wins the game if both farmers play optimally.\n\n\t\t\t\t</p>",
+  "input": "The input contains $T$ test cases. The first line contains  $T$\n($1 \\leq T \\leq 1000$).  Each of the $T$ test cases follow.\n\n<p>Each test case starts with a line containing $N$, followed by a line containing\n$a_1,\\dots,a_N$. \n\n</p><p>It is guaranteed that the sum of all $N$ is at most\n$2\\cdot 10^5$.\n\n\t\t\t\t\t</p>",
+  "output": "For each test case, output the farmer that wins the game, either \"Farmer John\"\nor \"Farmer Nhoj.\"",
+  "samples": [
+    {
+      "input": "5\n1\n4\n1\n9\n2\n2 3\n2\n7 10\n3\n4 9 4\n",
+      "output": "Farmer Nhoj\nFarmer John\nFarmer John\nFarmer John\nFarmer Nhoj\n"
+    }
+  ],
+  "hint": "<p>For the first test case, Farmer John can remove $1$, $2$, or $3$ cows from the first room. Whichever number he removes, Nhoj can remove the remaining cow(s), forcing FJ to lose when they circle back to the first room.</p>\n<p>For the second test case, FJ can remove $5$ cows, forcing Nhoj to work with only $4$ cows remaining. Now, Nhoj can either remove $1$, $2$, or $3$ cows. This is now similar to the first test case.</p>\n<p>For the third and fourth test cases, FJ can immediately remove all the cows from the first room, forcing Nhoj to lose.</p>\n<p>For the fifth test case, FJ can remove $1$, $2$, or $3$, cows from the first room, and Nhoj can remove the rest right after. When they circle back around to the first room, FJ will lose.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2022-2023 Season, USACO 2022 December Contest, Silver",
+  "level": 19,
+  "tags": [
+    "math",
+    "dp",
+    "ad_hoc",
+    "number_theory",
+    "game_theory",
+    "primality_test",
+    "sieve"
+  ],
+  "accepted_user_count": 100,
+  "submission_count": null,
+  "average_tries": 3.440000057220459
+}

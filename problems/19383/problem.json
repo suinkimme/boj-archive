@@ -1,0 +1,30 @@
+{
+  "id": 19383,
+  "title": "Those Russian Hackers",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>During the day, you are just a usual software engineer, doing usual software engineering duties: you write code, drink coffee and attend meetings. But during the night, you become a legend that everybody is afraid of and, at the same time, everybody admires you. You are the famous Russian Hacker!</p>\n<p>Several months ago, an important person asked you to rig an election in a small developing country far far away. Yesterday you logged into the main election server that is supposed to contain all the votes, and found out that during the election there will be a special security program which checks that nobody is connected to the server. To make the hackers' work even harder, it works in the following complicated manner.</p>\n<p>The whole election lasts for $k \\cdot n$ seconds. Time in this problem considered to be discrete: there are $k \\cdot n$ units of time numbered from $0$ to $k \\cdot n - 1$, and any possible event lasts for an integer number of these units.</p>\n<p>The time of election is divided into $k$ equal time frames: seconds $0$ to $n - 1$, seconds $n$ to $2n - 1$, and so on. The security program starts working exactly with the beginning of election, and it is going to perform $k$ security checks, one during each of the time frames. Each security check lasts exactly one second. For each check, the particular second when it happens is selected randomly using the probability distribution $p_0, p_1, \\ldots, p_{n-1}$. Formally, a security check will happen during the second $i \\cdot n + j$ with probability $p_j$. The security check times for different time frames are independent from each other.</p>\n<p>You may log into the system at any second, then you have to spend some time that is needed to perform your hacking business. You know the hacking time depends on lots of factors, and may be considered as an integer random value defined by the probability distribution $q_1, q_2, \\ldots, q_{2n - 2}$. Formally, the hacking process will take $j$ seconds with probability $q_j$. Of course, this random value is independent from the security check times. You have only one attempt of logging in, so once logged in, you have to finish your job.</p>\n<p>Fortunately, you succeeded to install a small backdoor program that sends you a message each time a security check is finished, and you may use this information to plan your further attack. In particular, you may choose to log in immediately after the message, at the next second after a security check happens.</p>\n<p>If during any second when you are logged into the election server, a security check happens, the election will be interrupted, meaning that you have failed. Also, if you don't finish your job during the election time, you also fail.</p>\n<p>What is the probability of your success if you choose the best possible strategy?</p>",
+  "input": "<p>The first line contains two integers $n$ and $k$ ($2 \\leq n \\leq 300\\,000$, $1 \\leq k \\leq 300\\,000$): the length of the time frame that each security check belongs to and the number of security checks.</p>\n<p>The second line contains $n$ space-separated real values $p_0, p_1, \\ldots, p_{n-1}$ ($0 \\leq p_i \\leq 1$, $\\sum\\limits_{i=0}^{n-1} p_i = 1$) that define the distribution of position of the exact time of security check during its time frame.</p>\n<p>The third line contains $2n - 2$ space-separated real values $q_1, q_2, \\ldots, q_{2n-2}$ ($0 \\leq q_i \\leq 1$, $\\sum\\limits_{i=1}^{2n-2} q_i = 1$) that define the distribution of the time you need to hack the election results.</p>\n<p>All probabilities are given with at most six digits after the decimal point.</p>",
+  "output": "<p>Output the maximum probability of success that you may get by choosing an appropriate strategy.</p>\n<p>Your result will be considered correct if its absolute error does not exceed $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "3 1\n0.5 0.25 0.25\n0.75 0.25 0.0 0.0\n",
+      "output": "0.6875000000\n"
+    },
+    {
+      "input": "3 2\n0.3 0.4 0.3\n0.0 0.0 0.0 1.0\n",
+      "output": "0.0900000000\n"
+    },
+    {
+      "input": "3 1\n0.5 0.2 0.3\n1.0 0.0 0.0 0.0\n",
+      "output": "0.8000000000\n"
+    }
+  ],
+  "hint": "<p>In the first sample case, there will be only one security check, and the best possible strategy is to wait until it is finished, then log in and try to hack the election before the time runs out. The probability of success equals to $0.5 \\cdot (0.75 + 0.25) + 0.25 \\cdot 0.75 + 0.25 \\cdot 0 = 0.6875$.</p>\n<p>In the second sample case, you know that in any case you have to spend exactly four seconds hacking, and this means that you have to log in and start hacking at second $1$ and finish by second $4$ irrespective of the security checks. You succeed only if the first check happens at second $0$ and the second check happens at second $5$. The probability of success is therefore $0.3 \\cdot 0.3 = 0.09$.</p>\n<p>In the third sample case the best strategy is to always hack during second $1$ that leads to a success probability of $0.8$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2017, Day 4: Yandex Cup 2017",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

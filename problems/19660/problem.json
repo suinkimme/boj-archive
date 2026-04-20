@@ -1,0 +1,38 @@
+{
+  "id": 19660,
+  "title": "Progression",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Damian is making a video game! It consists of N missions with the i<sup>th</sup> mission initially having a difficulty of D<sub>i</sub>. Featuring state-of-the-art game design, the game can be played both forwards and backwards. Of course, it is also important that players feel a sense of progression — there should be a constant increase in difficulty. As such, Damian carries out a series of operations.</p>\n<p>There are two types of operations that he does. The first type of operation is a <em>patch</em> operation defined by four integers L, R, S and C, meaning that mission i where L ≤ i ≤ R will have its difficulty D<sub>i</sub> increased by S + (i − L) × C.</p>\n<p>The second type of operation is a <em>rewrite</em> operation defined by four integers L, R, S and C, meaning that mission i where L ≤ i ≤ R will have its difficulty D<sub>i</sub> set to S + (i − L) × C.</p>\n<p>Damian decides that a contiguous subsequence of missions forms a <em>playable segment</em> if and only if their difficulties <strong>change</strong> at a constant rate (after all, players can always play the game backwards instead)! In other words, missions a to b where 1 ≤ a ≤ b ≤ N form a playable segment if and only if D<sub>i+1</sub> − D<sub>i</sub> = k for all a ≤ i &lt; b where k is some integer (possibly k ≤ 0). A single mission on its own forms a playable segment of length 1.</p>\n<p>Occasionally, Damian will run an <em>evaluate</em> query defined by two integers L and R, meaning that he wants to find the length of the longest playable segment between missions L and R at that point in time.</p>\n<p>Alas, Damian’s operations do not necessarily improve the gaming experience. As such, he needs your help to answer the queries so that he can develop the best game possible.</p>",
+  "input": "<p>Your program must read from standard input.</p>\n<p>The first line contains two integers, N and Q, representing the number of missions, and the total number of operations and queries.</p>\n<p>The second line contains N space-separated integers, D<sub>1</sub>, . . . , D<sub>N</sub>, defined above.</p>\n<p>Q lines will follow, each representing either an operation or a query.</p>\n<p>If the line begins with the integer 1, the next 4 integers are L, R, S and C, representing a <em>patch</em> operation.</p>\n<p>If the line begins with the integer 2, the next 4 integers are L, R, S and C, representing a <em>rewrite</em> operation.</p>\n<p>If the line begins with the integer 3, the next 2 integers are L and R, representing an <em>evaluate</em> query.</p>",
+  "output": "<p>Your program must print to standard output.</p>\n<p>The output should consist of a single integer on a single line for each <em>evaluate</em> query, the length of the longest playable segment between missions L and R at that point in time.</p>",
+  "samples": [
+    {
+      "input": "10 6\n1 2 3 4 1 2 3 4 5 5\n3 1 10\n1 1 4 -1 -1\n3 1 10\n3 9 10\n2 5 10 -2 -2\n3 1 10\n",
+      "output": "5\n6\n2\n7\n"
+    },
+    {
+      "input": "10 5\n1 2 3 4 1 2 3 4 5 5\n3 1 10\n1 1 10 1 2\n3 1 10\n2 1 10 3 4\n3 1 10\n",
+      "output": "5\n5\n10\n"
+    },
+    {
+      "input": "10 5\n1 2 3 4 1 2 3 4 5 5\n3 1 4\n3 4 5\n3 2 4\n3 5 9\n3 10 10\n",
+      "output": "4\n2\n3\n5\n1\n"
+    },
+    {
+      "input": "10 5\n1 2 3 4 1 2 3 4 5 5\n2 10 10 6 1\n3 5 10\n1 5 5 4 1\n3 1 5\n3 1 6\n",
+      "output": "6\n5\n5\n"
+    },
+    {
+      "input": "10 5\n1 2 3 4 1 2 3 4 5 5\n1 1 4 -1 -1\n3 1 5\n3 4 5\n1 5 10 -1 -1\n3 1 10\n",
+      "output": "4\n2\n9\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2020",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

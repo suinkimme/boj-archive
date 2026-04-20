@@ -1,0 +1,39 @@
+{
+  "id": 31699,
+  "title": "Grupa permutacji",
+  "time_limit": "15 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>W tym zadaniu będziemy zajmować się permutacjami n-elementowymi. Każda taka permutacja jest ciągiem n różnych liczb naturalnych od 1 do n włącznie. <em>Złożeniem</em> permutacji a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub> z permutacją b<sub>1</sub>, b<sub>2</sub>, . . . , b<sub>n</sub> jest permutacja a<sub>b<sub>1</sub></sub>, a<sub>b<sub>2</sub></sub>, . . . , a<sub>b<sub>n</sub></sub>. <em>Inwersją</em> w permutacji p<sub>1</sub>, p<sub>2</sub>, . . . , p<sub>n</sub> nazwiemy dowolną parę indeksów (i, j) taką, że i &lt; j oraz p<sub>i</sub> &gt; p<sub>j</sub>.</p>\n<p>Bajtek jest wielkim fanem permutacji n-elementowych. Uwielbia je na tyle, że ma nawet wśród nich swoje k ulubionych. Postanowił zacząć wypisywać na kartce wszystkie permutacje, jakie da się otrzymać, składając jego ulubione permutacje (w dowolnej kolejności i być może używając niektórych z nich wielokrotnie), przy czym skrupulatnie pilnował, by żadnej permutacji nie napisać więcej niż raz.</p>\n<p>Nie było zaskoczeniem, że dość szybko skończył mu się papier. Bajtka naszło wtedy pytanie: gdyby wypisał wszystkie osiągalne permutacje, to ile średnio miałyby one inwersji?</p>\n<p>Pomóż mu i napisz program, który obliczy tę wartość. Dokładniej, Twoim zadaniem jest podać szukaną wartość modulo 10<sup>9</sup> + 7 (więcej o tym w sekcji <em>Wyjście</em>).</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajdują się dwie liczby całkowite n i k (1 ≤ n, k ≤ 3000), oznaczające odpowiednio długość permutacji i liczbę ulubionych permutacji Bajtka.</p>\n<p>W kolejnych k wierszach znajdują się owe permutacje. W i-tym spośród tych wierszy znajduje się ciąg n różnych liczb całkowitych a<sub>i,1</sub>, a<sub>i,2</sub>, . . . , a<sub>i,n</sub> (1 ≤ a<sub>i,j</sub> ≤ n), równy i-tej ulubionej permutacji Bajtka.</p>",
+  "output": "<p>W jedynym wierszu wyjścia powinna się znaleźć jedna liczba całkowita równa średniej liczbie inwersji wśród wszystkich permutacji, które Bajtek mógłby wypisać, podana modulo 1 000 000 007.</p>\n<p>Formalnie, niech wynik będzie równy p/q , gdzie q ≠ 0 i NWD(p, q) = 1. Wówczas należy wypisać jedną liczbę p · q<sup>−1</sup> (mod 1 000 000 007), gdzie q<sup>−1</sup> jest jedyną liczbą ze zbioru 1, 2, . . . , 1 000 000 006 taką, że q · q<sup>−1</sup> ≡ 1 (mod 1 000 000 007).</p>\n<p>Można udowodnić, że dla wszystkich testów spełniających warunki zadania wynik jest liczbą wymierną, której mianownik w nieskracalnej postaci jest niepodzielny przez 1 000 000 007.</p>",
+  "samples": [
+    {
+      "input": "3 1\n2 3 1\n",
+      "output": "333333337\n"
+    },
+    {
+      "input": "5 2\n2 1 3 4 5\n2 3 4 5 1\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: W pierwszym teście przykładowym Bajtek wypisałby permutację {1, 2, 3}, mającą zero inwersji, {2, 3, 1}, mającą dwie inwersje, oraz {3, 1, 2}, również mającą dwie inwersje. Średnia liczba inwersji wynosi więc 4/3. Zachodzi 3<sup>−1</sup> ≡ 333333336 (mod 1 000 000 007), mamy więc 333333336 · 4 ≡ 1333333344 ≡ 333333337 (mod 1 000 000 007).</p>\n<p>W drugim teście przykładowym Bajtek wypisałby wszystkie permutacje o 5 elementach. Łatwo pokazać, że średnio mają one dokładnie 5 inwersji.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2024",
+  "level": 27,
+  "tags": [
+    "ad_hoc",
+    "bfs",
+    "data_structures",
+    "disjoint_set",
+    "functional_graph",
+    "graphs",
+    "graph_traversal",
+    "linearity_of_expectation",
+    "math",
+    "number_theory",
+    "probability",
+    "randomization"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

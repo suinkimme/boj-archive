@@ -1,0 +1,28 @@
+{
+  "id": 29779,
+  "title": "Colliding Encoding",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Alan just had his first cryptography class in school today. He decided to apply what he learned and come up with his own cipher. He will map each English letter from <code>A</code> to <code>Z</code> to a decimal digit $0$ through $9$. He will then try to encode each word to a string consisting of decimal digits by replacing each letter in the word with its mapped digit.</p>\n<p>In his excitement, Alan failed to notice that there are $26$ letters in the English alphabet and only $10$ decimal digits. As a result, there might be collisions, that is, pairs of different words whose encoding is the same.</p>\n<p>Given a list of $\\mathbf{N}$ words that Alan wants to encode and the mapping that he uses, can you find out if there would be any collisions between words on the list?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $\\mathbf{T}$. $\\mathbf{T}$ test cases follow.</p>\n<p>The first line of each test case contains $26$ decimal digits (integers between $0$ and $9$, inclusve) $\\mathbf{D_A}, \\mathbf{D_B}, \\dots, \\mathbf{D_Z}$, representing the mapping that Alan uses. A letter $\\alpha$ is mapped to digit $\\mathbf{D_\\alpha}$.</p>\n<p>The second line of each test case contains $\\mathbf{N}$, the number of words Alan will encode.</p>\n<p>The $i$-th of the last $\\mathbf{N}$ lines contains a string $\\mathbf{S_i}$, representing the $i$-th word Alan will encode.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is either <code>YES</code>, if there is at least one pair of different words from the list whose encoding coincides, and <code>NO</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "2\n0 1 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\n4\nABC\nBC\nBCD\nCDE\n0 1 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\n3\nCDE\nDEF\nEFG\n",
+      "output": "Case #1: NO\nCase #2: YES\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, the mapping for <code>A</code> is $0$, for <code>B</code> is $1$, for <code>C</code> is $2$, for <code>D</code> is $3$, and for <code>E</code> is $3$. With this mapping, <code>ABC</code> is encoded as $012$, <code>BC</code> is encoded as $12$, <code>BCD</code> as $123$, and <code>CDE</code> as $233$. Since all of these encodings are distinct, there are no collisions.</p>\n<p>In Sample Case #2, the mapping for <code>C</code> is $2$, for <code>D</code> is $3$, for <code>E</code> is $3$, for <code>F</code> is $3$, and for <code>G</code> is $3$. With this mapping, <code>CDE</code> is encoded as $233$, <code>DEF</code> as $333$, and <code>EFG</code> as $333$. Since the encoding for <code>DEF</code> and <code>EFG</code> is the same, there is a collision.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam Farewell Round, Round A",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "set",
+    "hash_set"
+  ],
+  "accepted_user_count": 45,
+  "submission_count": null,
+  "average_tries": 1.7110999822616577
+}

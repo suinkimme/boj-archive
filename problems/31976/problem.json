@@ -1,0 +1,38 @@
+{
+  "id": 31976,
+  "title": "Tycho",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The planetary exploration vehicle <em>Tycho VIII</em> needs to get back to the home base after collecting mineral samples. Tycho travels in a straight line from position $0$ to the home base at position $b$. While moving, it advances at a slow but steady pace of $1$ unit per second. Every second, Tycho takes $1$ unit of environmental damage from the harsh planetary conditions.</p>\n<p>The situation is made even worse by radiation from a nearby pulsar, which adds $d$ additional units of damage every $p$ seconds. However, the radiation damage can be avoided by seeking shelter in one of $n$ different hiding spots---caves, vegetation, large rocks, carcasses of the planet's megafauna---along the way. Tycho can choose to stand still at any point for any integer number of seconds.</p>\n<p>The starting position $0$ and the home base at $b$ are both sheltered, so Tycho takes no radiation damage there.</p>\n<p>What is the minumum damage Tycho will take on its journey back to the home base?</p>\n<p>Consider the situation where the home base is at position $18$ and there are shelters at positions $8$ and $15$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 239px; height: 60px;\"/></p>\n<p>Assume that the pulsar's period is $4$, so unsheltered Tycho would take damage at times $4$, $8$, $12$, etc. If Tycho leaves from the starting position (where it's sheltered) at time $0$, it can reach the first shelter after $8$ seconds, incurring radiation damage $d$ at time $4$ (but none at time $8$ because it's sheltered then). Continuing without stopping, it reaches the home base at time $18$, incurring $d+d$ more units of radiation damage (at times $12$ and $16$, respectively). This way it incurs $d+d+d=3d$ units of radiation damage and $18$ units of environmental damage. If instead Tycho waits at the $2$nd shelter (at position $15$) for $1$ second, the pulse at time $16$ causes it no damage, and it reaches the home base at time $19$ with a total of $2d + 19$ units of damage. This is better for most values of $d$. The two situations are shown here:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 524px; height: 75px;\"/></p>\n<p>If the pulsar's period is $10$, Tycho can wait at the starting position for $2$ seconds and then just go home without stopping at any shelter. Thus it passes the $1$st shelter (at position $8$) at just the right moment when the pulsar flares and arrives at the home base at time $20$, for a total of $20$ environmental damage and no radiation damage at all.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 257px; height: 65px;\"/></p>",
+  "input": "<p>The first line consists of four integers $b$, $p$, $d$, and $n$, separated by single spaces: the location $b$ of the home base, the pulsar's flare period $p$, the additional radiation damage $d$ caused by each flare of the pulsar, the number $n$ of the shelters. The following $n$ lines each contain an integer giving the shelter locations $a_1$, $\\ldots$, $a_n$, with $0&lt;a_1&lt;\\cdots &lt;a_n&lt; b$.</p>",
+  "output": "<p>Print a single integer: the minimum amount of damage Tycho must take to reach $b$.</p>",
+  "samples": [
+    {
+      "input": "18 4 5 2\n8\n15\n",
+      "output": "29\n"
+    },
+    {
+      "input": "18 4 0 2\n8\n15\n",
+      "output": "18\n"
+    },
+    {
+      "input": "18 10 100 2\n8\n15\n",
+      "output": "20\n"
+    },
+    {
+      "input": "18 4 100 0\n",
+      "output": "418\n"
+    },
+    {
+      "input": "65 20 100 3\n14\n25\n33\n",
+      "output": "172\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Baltic Olympiad in Informatics, BOI 2023",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 3.25
+}

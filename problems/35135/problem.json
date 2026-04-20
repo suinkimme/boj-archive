@@ -1,0 +1,25 @@
+{
+  "id": 35135,
+  "title": "Xordition Robot",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You have a robot that contains $N$ modules, numbered from $1$ to $N$. Each module accepts an integer and outputs an integer. The output of module $i$ becomes the input of module $i+1$ (for $1 \\le i \\le N - 1$).</p>\n<p>The specification of module $i$ is either:</p>\n<ul>\n<li><code>+</code> $k$: given an integer $x$ ($0 \\leq x &lt; 16$), the module outputs $(x + k) \\bmod 16$; or</li>\n<li>$x$ $k$: given an integer $x$ ($0 \\leq x &lt; 16$), the module outputs $x \\oplus k$, where $\\oplus$ represents the bitwise XOR operator.</li>\n</ul>\n<p>There are $Q$ replacements, and the $j$-th is of the form:</p>\n<ul>\n<li>$i$ $t$ $k$: replace module $i$ to a module with specification $t$ $k$, where $t$ is either <code>+</code> or <code>x</code>.</li>\n</ul>\n<p>Each time a replacement is done, find the output of module $N$ when module $1$ is given an input $0$.</p>",
+  "input": "<p>The first line contains two integers $N$ and $Q$ ($1 \\leq N, Q \\leq 200000$). Each of the next $N$ lines contains a character of either <code>+</code> or <code>x</code> followed by an integer $k$ ($0 \\leq k &lt; 16$) representing the module.</p>\n<p>The next $Q$ lines contains an integer $i$ ($1 \\leq i \\leq N$), followed by a character <code>+</code> or <code>x</code>, and finally an integer $k$ ($0 \\leq k &lt; 16$), meaning that you have to replace module $i$ to the specified module.</p>",
+  "output": "<p>Output $Q$ lines, each containing the output of module $N$, after each replacement, when given an input $0$ to module $1$.</p>",
+  "samples": [
+    {
+      "input": "4 2\n+ 3\nx 5\nx 9\n+ 15\n2 + 8\n1 x 10\n",
+      "output": "1\n10\n"
+    }
+  ],
+  "hint": "<p><em>Explanation of Sample 1:</em> After the first replacement, the modules are: <code>+</code> $3$, <code>+</code> $8$, <code>x</code> $9$, <code>+</code> $15$</p>\n<p>The output of module $N$ is then $(((0 + 3) + 8) \\oplus 9) + 15)$ is $1$.</p>\n<p>After the second replacement, the modules are: <code>x</code> $10$, <code>+</code> $8$, <code>x</code> $9$, <code>+</code> $15$</p>\n<p>The output of module $N$ is then $(((0 \\oplus 10) + 8) \\oplus 9) + 15)$ is $10$.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2025",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.833299994468689
+}

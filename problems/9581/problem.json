@@ -1,0 +1,37 @@
+{
+  "id": 9581,
+  "title": "Cactus Automorphisms",
+  "time_limit": "5 초",
+  "memory_limit": "256 MB",
+  "description": "<p>NEERC had featured a number of problems in previous years about cactuses — connected undirected graphs in which every edge belongs to at most one simple cycle. Intuitively, cactus is a generalization of a tree where some cycles are allowed.</p>\n<p>In 2005, the first year where problems about cactuses had appeared, the problem was called simply “Cactus”. In 2007 it was “Cactus Reloaded” and in 2010 it was called “Cactus Revolution”. An example of cactus from NEERC 2007 problem is given on the picture below.</p>\n<p><img alt=\"\" src=\"/upload/images2/cac.png\" style=\"height:245px; width:225px\"/></p>\n<p>The challenge that judges face when preparing test cases for those problems is that some wrong solutions may depend on the numbering of vertices in the input file. So, for the most interesting test cases judges typically include several inputs with the same graph, but having a different numbering of vertices. However, some graphs are so regular that the graph remains the same even if you renumber its vertices. Judges need some metric about the graph that tells how regular the given graph is in order to make an objective decision about the number of test cases that need to be created for this graph.</p>\n<p>The metric you have to compute is the number of graph automorphisms. Given an undirected graph (V, E), where V is a set of vertices and E is a set of edges, where each edge is a set of two distinct vertices {v<sub>1</sub>, v<sub>2</sub>} (v<sub>1</sub>, v<sub>2</sub> ∈ V ), graph automorphism is a bijection m from V onto V , such that for each pair of vertices v<sub>1</sub> and v<sub>2</sub> that are connected by an edge (so {v<sub>1</sub>, v<sub>2</sub>} ∈ E) the following condition holds: {m(v<sub>1</sub>), m(v<sub>2</sub>)} ∈ E.</p>\n<p>Each graph has at least one automorphism (one where m is an identity function) and may have up to n! automorphisms for a graph with n vertices. Because the number of automorphisms may be a very big number, the answer must be presented as a prime factorization ∏<sup>k</sup><sub>i=1</sub> p<sub>i</sub><sup>q<sub>i</sub></sup>, where p<sub>i</sub> are prime numbers in ascending order (p<sub>i</sub> ≥ 2, p<sub>i</sub> &lt; p<sub>i+1</sub>) and q<sub>i</sub> are their corresponding powers (q<sub>i</sub> &gt; 0).</p>",
+  "input": "<p>The first line of the input file contains two integer numbers n and m (1 ≤ n ≤ 50 000, 0 ≤ m ≤ 50 000). Here n is the number of vertices in the graph. Vertices are numbered from 1 to n. Edges of the graph are represented by a set of edge-distinct paths, where m is the number of such paths.</p>\n<p>Each of the following m lines contains a path in the graph. A path starts with an integer number k<sub>i</sub> (2 ≤ k<sub>i</sub> ≤ 1000) followed by k<sub>i</sub> integers from 1 to n. These k<sub>i</sub> integers represent vertices of a path. Adjacent vertices in a path are distinct. Path can go to the same vertex multiple times, but every edge is traversed exactly once in the whole input file. There are no multiedges in the graph (there is at most one edge between any two vertices).</p>\n<p>The graph in the input file is a cactus.</p>",
+  "output": "<p>On the first line of the output file write number k — the number of prime factors in the factorization of the number of graph automorphisms. Write 0 if the number of graph automorphisms is 1. On the following k lines write prime numbers p<sub>i</sub> and their powers qi separated by a space. Prime numbers must be given in ascending order.</p>",
+  "samples": [
+    {
+      "input": "15 3\n9 1 2 3 4 5 6 7 8 3\n7 2 9 10 11 12 13 10\n5 2 14 9 15 10\n",
+      "output": "1\n2 2\n"
+    },
+    {
+      "input": "2 1\n2 1 2\n",
+      "output": "1\n2 1\n"
+    },
+    {
+      "input": "15 7\n3 1 2 3\n3 4 2 5\n3 6 2 7\n3 8 2 9\n3 10 2 11\n3 12 2 13\n3 14 2 15\n",
+      "output": "6\n2 11\n3 5\n5 2\n7 2\n11 1\n13 1\n"
+    }
+  ],
+  "hint": "<p>The first sample input corresponds to the picture from the problem statement. This graphs has 4 = 2<sup>2</sup> automorphisms.</p>\n<p>The second sample input is a simple graph with two vertices and one edge between them that has 2 = 2<sup>1</sup> automorphisms.</p>\n<p>The third sample input is a “star” graph with a center vertex and 14 rays that has 14! = 87 178 291 200 = 2<sup>11</sup> × 3<sup>5</sup> × 5<sup>2</sup> × 7<sup>2</sup> × 11<sup>1</sup> × 13<sup>1</sup> automorphisms.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2013",
+  "level": 26,
+  "tags": [
+    "cactus",
+    "graphs",
+    "hashing",
+    "scc",
+    "trees",
+    "tree_isomorphism"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2.6666998863220215
+}

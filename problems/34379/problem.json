@@ -1,0 +1,39 @@
+{
+  "id": 34379,
+  "title": "Unit Rescue",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>One day, the Google unit converter disappeared without warning and for no apparent reason. This has thrown the entire campus into chaos, with students being unable to do their homework problems!  In this time of crisis, Colorado School of Mines tasked you with creating a new unit converter that can be just as flexible as the Google converter.</p>\n<p>Google's unit conversion is so useful in that it can convert from nearly any unit of measure to any other unit of measure, regardless of how esoteric the conversion is. For example, you could convert lightyears to furlongs to millimeters and then to AUs. To make your job easier, the physics department already hastily crafted a table of conversions for you to use in your program, organized as a list of entries consisting of a source unit, a destination unit, and a ratio to convert from the source unit to the destination unit.</p>\n<p>There's a catch though: creating every possible conversion of every possible unit would simply take too long, so there may not be a direct conversion from one unit to another using the list given to you. For example, a conversion from picograms to stellar masses will likely not be on the list. However, there may be some chain of other conversions that will allow you to convert between units that do not have a direct conversion. This can even work in reverse when only a \"destination to source\" conversion is available by simply taking the inverse $\\left(\\frac{1}{m}\\right)$ of the ratio. To continue the example given prior, you could use a chain of metric conversions to convert from picograms to kilograms, a unit that does have a direct conversion to stellar masses.</p>",
+  "input": "<p>The first line will contain a single number $n$ $\\left(0 &lt; n \\leq 10^{6}\\right)$. Then the $n$ following lines will contain four elements, separated by spaces:</p>\n<ol>\n<li>A lowercase alphabetical word giving the left hand unit of a particular conversion.</li>\n<li>A lowercase alphabetical word giving the right hand unit of a particular conversion.</li>\n<li>An integer $m$ $\\left(0 &lt; m \\leq 10^{19}\\right)$ giving the numerator of a ratio that can be applied to an amount in order to convert it from the left hand unit to the right hand unit.</li>\n<li>An integer $d$ $\\left(0 &lt; d \\leq 10^{19}\\right)$ giving the denominator of a ratio that can be applied to an amount in order to convert it from the left hand unit to the right hand unit.</li>\n</ol>\n<p>The input then ends a line containing the following three elements, separated by spaces:</p>\n<ol>\n<li>A real number $a$ $\\left(0 &lt; a \\leq 10^{10}\\right)$ giving the amount to be converted. The number contains at most $2$ digits after the decimal point.</li>\n<li>A lowercase alphabetical word giving the unit of the input amount (the \"source\" unit). This unit will exist within the list of conversions given prior.</li>\n<li>A lowercase alphabetical word giving the unit to convert to (the \"destination\" unit). This unit will exist within the list of conversions given prior.</li>\n</ol>",
+  "output": "<p>If the conversion can be made, output a single real number that is the amount $a$ converted from the source unit to the destination unit. Answers within $10^{-2}$ will be accepted.</p>",
+  "samples": [
+    {
+      "input": "3\ng kg 1 1000\nkg lb 441 200\noz g 567 20\n24.0 oz lb\n",
+      "output": "1.50\n"
+    },
+    {
+      "input": "6\ncm m 1 100\nft cm 762 25\nin ft 833334 10000000\nly km 9460730000000 1\nly mi 5878625000000 1\nmi in 63360 1\n1.73 km m\n",
+      "output": "1730.00\n"
+    },
+    {
+      "input": "6\ncmph cmps 1 3600\nkmph mph 1000 1\nmiph cmph 5588 125\nmph cmph 100 1\nmiph mph 80467 50\nrps rph 3600 1\n16913.1 miph mps\n",
+      "output": "IMPOSSIBLE\n"
+    }
+  ],
+  "hint": null,
+  "source": ", School, CS@Mines, CS@Mines HSPC 2023, Advanced",
+  "level": 10,
+  "tags": [
+    "math",
+    "data_structures",
+    "graphs",
+    "graph_traversal",
+    "set",
+    "arithmetic",
+    "bfs",
+    "dfs"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.2105000019073486
+}

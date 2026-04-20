@@ -1,0 +1,28 @@
+{
+  "id": 25219,
+  "title": "Alternating Heights",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Troy is planning to take a group photo of the students at CCO and has asked you for help.</p>\n<p>There are $K$ students, numbered from $1$ to $K$. Troy has forgotten the students' heights but remembers that no two students have the same height.</p>\n<p>Troy has prepared a sequence $A_1, A_2, \\ldots, A_N$ representing the order of students in the group photo, from left to right. It is possible for a student to appear multiple times in $A$. You aren't sure how this group photo would be taken, but you're unwilling to assume that Troy made a mistake.</p>\n<p>Troy will ask you $Q$ queries of the form <code>x y</code>, which is a compact way of asking \"Given the sequence of students, $A_x, A_{x + 1}, \\dots, A_y$, can their heights form an alternating sequence?\" More precisely, we denote the height of the $i^\\text{th}$ student as $h[i]$. If there exists an assignment of heights $h[1], h[2], \\ldots, h[K]$ such that $h[A_x] &gt; h[A_{x + 1}] &lt; h[A_{x + 2}] &gt; h[A_{x + 3}] &lt; \\ldots h[A_y]$, answer <code>YES</code>; otherwise, answer <code>NO</code>.</p>\n<p>Note that each of the $Q$ queries will be independent: that is, the assignment of heights for query $i$ is independent of the assignment of heights for query $j$ so long as $i \\ne j$.</p>",
+  "input": "<p>The first line of input will contain three space-separated integers $N$, $K$, and $Q$.</p>\n<p>The second line of input will contain the array $A_1, A_2, \\ldots, A_N$ $(1 \\le A_i \\le K)$.</p>\n<p>The next $Q$ lines will each contain a query of the form of two space-separated integers $x$ and $y$ $(1 \\le x &lt; y \\le N)$.</p>",
+  "output": "<p>Output $Q$ lines. On the $i^\\text{th}$ line, output the answer to Troy's $i^\\text{th}$ query. Note that the answer is either <code>YES</code> or <code>NO</code>.</p>",
+  "samples": [
+    {
+      "input": "6 3 3\n1 1 2 3 1 2\n1 2\n2 5\n2 6\n",
+      "output": "NO\nYES\nNO\n"
+    }
+  ],
+  "hint": "<p>For the first query, we will never have $h[1] &gt; h[1]$, so the answer is no.</p>\n<p>For the second query, one solution to $h[1] &gt; h[2] &lt; h[3] &gt; h[1]$ is $h[1] = 160cm, h[2] = 140cm, h[3] = 180cm$. Another solution could be $h[1] = 1.55m, h[2] = 1.473m, h[3] = 1.81m$.</p>\n<p>For the third query, we cannot have both $h[1] &gt; h[2]$ and $h[1] &lt; h[2]$.</p>",
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2022, CCO 2022",
+  "level": 16,
+  "tags": [
+    "dag",
+    "graphs",
+    "graph_traversal",
+    "topological_sorting",
+    "two_pointer"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 2.3438000679016113
+}

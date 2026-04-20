@@ -1,0 +1,36 @@
+{
+  "id": 23769,
+  "title": "Cutting Edge",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>In recent years, the automated manufacturing of various kinds of 3D objects has been a growing trend among hobbyists worldwide. Your friend Lewis has fully bought into this trend, in the sense that his garage is now lined with various kinds of 3D printers and other expensive machinery.</p>\n<p>The newest addition to his ever expanding collection is an automated cutting machine. The machine works by cutting off material from a workpiece that is initially in the shape of a rectangular cuboid. Each cut then slices through the workpiece along a plane and only keeps the material on one of the two sides of that plane. This means that the final shape of the workpiece is necessarily a convex polyhedron.</p>\n<p>The programming interface of Lewis' machine is fairly particular. Instead of directly specifying the planes along which the piece should be cut, the user inputs a list of points and the machine then computes the cutting planes such that all the points belong to the final shape and the volume of the shape is minimal. Formally, it computes the convex hull of the input points. While this setup can be quite convenient for many applications, it is also a bit restrictive because the machine only allows using integer multiples of $1\\text{ mm}$ for the coordinates of the points.</p>\n<p>Lewis wants to use his machine to cut gaming pieces for a tabletop game. He does not particularly care about the shape of the pieces, but he does require them to have a specific weight. The workpieces have constant density, so that he just needs to ensure that the final shape has a specific volume. Still, this proves to be challenging because of the machine's input requirements. Help Lewis find a valid input for his cutting machine.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with four integers $a$, $b$, $c$ and $v$ ($1 \\le a,b,c \\le 10^6, 1 \\le v \\le 6 \\cdot a\\cdot b\\cdot c$), where the workpiece has dimensions $a\\text{ mm}\\times b\\text{ mm}\\times c\\text{ mm}$ and the final shape must have a volume of $\\frac{v}{6}\\text{ mm}^3$.</li>\n</ul>",
+  "output": "<p>Output an integer $n$ ($4 \\le n \\le 100$), followed by $n$ points that specify the final shape. Each point is given by three integers $x$, $y$ and $z$ ($0 \\le x \\le a$, $0 \\le y \\le b$, $0 \\le z \\le c$). The shape is then calculated as the convex hull of these $n$ points and its volume needs to be exactly $\\frac{v}{6}\\text{ mm}^3$. If there is more than one valid solution, you may output any one of them. It is guaranteed that a solution always exists. Note that outputting duplicate points is allowed.</p>",
+  "samples": [
+    {
+      "input": "1 1 1 1\n",
+      "output": "4\n0 0 0\n1 0 0\n0 1 0\n0 0 1\n"
+    },
+    {
+      "input": "3 1 2 7\n",
+      "output": "5\n0 0 1\n2 0 0\n3 0 0\n3 0 2\n2 1 1\n"
+    },
+    {
+      "input": "2 2 2 25\n",
+      "output": "9\n0 0 2\n2 0 0\n0 2 0\n1 0 2\n2 1 2\n2 0 1\n0 2 2\n1 2 2\n2 1 2\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2021",
+  "level": 22,
+  "tags": [
+    "bruteforcing",
+    "case_work",
+    "constructive",
+    "geometry",
+    "geometry_3d"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

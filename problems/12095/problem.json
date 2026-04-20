@@ -1,0 +1,26 @@
+{
+  "id": 12095,
+  "title": "가장 오래 걸리는 스도쿠",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>백준이는 <a href=\"https://www.acmicpc.net/problem/2580\">2580번 스도쿠 문제</a>를 풀기 위해 아래와 같은 코드를 작성했다.</p>\n<pre class=\"brush:c++; toolbar:false;\">\n#include &lt;iostream&gt;\nusing namespace std;\nint a[10][10];\nbool c[10][10];\nbool c2[10][10];\nbool c3[10][10];\nint n=9;\nint cnt=0;\nint square(int x, int y) {\n    return (x/3)*3+(y/3);\n}\nbool go(int z) {\n    cnt += 1;\n    if (cnt &gt;= 10000000) {\n        return true;\n    }\n    if (z == 81) {\n        for (int i=0; i&lt;n; i++) {\n            for (int j=0; j&lt;n; j++) {\n                cout &lt;&lt; a[i][j] &lt;&lt; ' ';\n            }\n            cout &lt;&lt; '\\n';\n        }\n        return true;\n    }\n    int x = z/n;\n    int y = z%n;\n    if (a[x][y] != 0) {\n        return go(z+1);\n    } else {\n        for (int i=1; i&lt;=9; i++) {\n            if (c[x][i] == 0 &amp;&amp; c2[y][i] == 0 &amp;&amp; c3[square(x,y)][i]==0) {\n                c[x][i] = c2[y][i] = c3[square(x,y)][i] = true;\n                a[x][y] = i;\n                if (go(z+1)) {\n                    return true;\n                }\n                a[x][y] = 0;\n                c[x][i] = c2[y][i] = c3[square(x,y)][i] = false;\n            }\n        }\n    }\n    return false;\n}\nint main() {\n    for (int i=0; i&lt;n; i++) {\n        for (int j=0; j&lt;n; j++) {\n            cin &gt;&gt; a[i][j];\n            if (a[i][j] != 0) {\n                c[i][a[i][j]] = true;\n                c2[j][a[i][j]] = true;\n                c3[square(i,j)][a[i][j]] = true;\n            }\n        }\n    }\n    go(0);\n    return 0;\n}\n</pre>\n<p>변수 <code>cnt</code>에 저장된 값이 가장 큰 스도쿠 퍼즐을 출력하는 프로그램을 작성하시오. 문제의 점수는 <code>cnt</code>에 저장된 값이다.</p>",
+  "input": "<p>입력은 없다.</p>",
+  "output": "<p>총 9개의 줄에 스도쿠 퍼즐을 출력한다. 빈 칸은 0으로 출력한다. (2580번 문제의 입력을 출력한다)</p>\n<p>만약, 풀 수 없는 스도쿠 퍼즐을 출력한 경우에는 틀렸습니다를 받게 된다.</p>",
+  "samples": [
+    {
+      "input": "",
+      "output": "0 3 5 4 6 9 2 7 8\n7 8 2 1 0 5 6 0 9\n0 6 0 2 7 8 1 3 5\n3 2 1 0 4 6 8 9 7\n8 0 4 9 1 3 5 0 6\n5 9 6 8 2 0 4 1 3\n9 1 7 6 5 2 0 8 0\n6 0 3 7 0 1 9 5 2\n2 5 8 3 9 4 7 6 0\n"
+    }
+  ],
+  "hint": null,
+  "source": "baekjoon",
+  "level": 13,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "precomputation"
+  ],
+  "accepted_user_count": 699,
+  "submission_count": null,
+  "average_tries": 5.33050012588501
+}

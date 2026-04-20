@@ -1,0 +1,25 @@
+{
+  "id": 21593,
+  "title": "Simple Cron Spec",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>A <em>Cron Spec</em> is used by Linux to specify when to repeatedly execute a certain job. For this problem, consider a <em>Simple Cron Spec</em> that defines when a job needs to be run within a single day. A <em>Simple Cron Spec</em> has three space separated tokens:</p>\n<p style=\"text-align: center;\"><code>hours minutes seconds</code></p>\n<p>that specify at which hours/minutes/seconds a job will be run. Hour values are 0-23, minute and second values are 0-59.</p>\n<p>Each token consists of a single integer value, a value range (two values separated by a dash ‘<code>-</code>’), a comma-separated list of multiple values and/or value ranges, or an asterisk (‘<code>*</code>’). A value range represents all integer values between the low and high value, inclusive. An asterisk is a special token that represents all possible values. The specified values in any comma separated list must be non-overlapping.</p>\n<p>For example, the specification:</p>\n<p style=\"text-align: center;\"><code>* 30 20,25,30-33</code></p>\n<p>says the job will be run every hour, at minute 30, and second 20, 25, 30, 31, 32, and 33, for a total of 24 × 1 × 6 = 144 times each day.</p>\n<p>Given a list of <em>Simple Cron Specs</em>, determine two things: First, the number of seconds in the day that at least one job will start, and second, the total number of job starts during the day. Note that if a single job starts 24 times in a day, that counts as 24 job starts.</p>",
+  "input": "<p>The first line of input contains a single integer $n$ ($1 \\le n \\le 100$), which is the number of <em>Simple Cron Specs</em> that follow.</p>\n<p>Each of the next $n$ lines contains three strings $h$, $m$ and $s$. These are the hours, minutes, and seconds specifications of the <em>Simple Cron Specs</em>. Each $h$, $m$ and $s$ consists of either a single star (‘<code>*</code>’), or a comma-separated list of one or more values or value ranges (two values separated by ‘<code>-</code>’). The values/ranges are guaranteed to be within the appropriate limits (0 to 23 for hours, 0 to 59 for minutes and seconds), and are guaranteed to not overlap. All range specifications are guaranteed to consist of two distinct values, smallest first. All values specified in a comma-separated list are guaranteed to be in strictly increasing order. The whole is guaranteed to be a legitimate <em>Simple Cron Spec</em>. The only spaces in the line will be a single space between $h$ and $m$, and a single space between $m$ and $s$.</p>",
+  "output": "<p>Output two space separated integers. The first is the number of seconds in the 24 hour day with at least one job start, and the second is the total number of job starts.</p>",
+  "samples": [
+    {
+      "input": "2\n* 30 20,25,30-33\n9,15 30 *\n",
+      "output": "252 264\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, North America Division Championships, 2021 ICPC North America Division Championships",
+  "level": 9,
+  "tags": [
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 1.1785999536514282
+}

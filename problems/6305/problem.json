@@ -1,0 +1,26 @@
+{
+  "id": 6305,
+  "title": "It's not a Bug, it's a Feature!",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>It is a curious fact that consumers buying a new software product generally do not expect the software to be bug-free. Can you imagine buying a car whose steering wheel only turns to the right? Or a CD-player that plays only CDs with country music on them? Probably not. But for software systems it seems to be acceptable if they do not perform as they should do. In fact, many software companies have adopted the habit of sending out patches to fix bugs every few weeks after a new product is released (and even charging money for the patches).</p>\n<p>Tinyware Inc. is one of those companies. After releasing a new word processing software this summer, they have been producing patches ever since. Only this weekend they have realized a big problem with the patches they released. While all patches fix some bugs, they often rely on other bugs to be present to be installed. This happens because to fix one bug, the patches exploit the special behavior of the program due to another bug.</p>\n<p>More formally, the situation looks like this. Tinyware has found a total of n bugs B = {b<sub>1</sub>, b<sub>2</sub>, ..., b<sub>n</sub>} in their software. And they have released m patches p<sub>1</sub>, p<sub>2</sub>, ..., p<sub>m</sub>. To apply patch pi to the software, the bugs B<sub>i</sub><sup>+</sup> ⊆ B have to be present in the software, and the bugs B<sub>i</sub><sup>-</sup> ⊆ B must be absent (of course B<sub>i</sub><sup>+</sup> ∩ B<sub>i</sub><sup>-</sup> = ∅ holds). The patch then fixes the bugs F<sub>i</sub><sup>-</sup> ⊆ B (if they have been present) and introduces the new bugs F<sub>i</sub><sup>+</sup> ⊆ B (where, again, F<sub>i</sub><sup>-</sup> ∩ F<sub>i</sub><sup>+</sup> = ∅).</p>\n<p>Tinyware's problem is a simple one. Given the original version of their software, which contains all the bugs in B, it is possible to apply a sequence of patches to the software which results in a bugfree version of the software? And if so, assuming that every patch takes a certain time to apply, how long does the fastest sequence take?</p>",
+  "input": "<p>The input contains several product descriptions. Each description starts with a line containing two integers n and m, the number of bugs and patches, respectively. These values satisfy 1 ≤ n ≤ 20 and 1 ≤ m ≤ 100. This is followed by m lines describing the m patches in order. Each line contains an integer, the time in seconds it takes to apply the patch, and two strings of n characters each.</p>\n<p>The first of these strings describes the bugs that have to be present or absent before the patch can be applied. The i-th position of that string is a “+” if bug b<sub>i</sub> has to be present, a “-” if bug bi has to be absent, and a “0” if it doesn't matter whether the bug is present or not.</p>\n<p>The second string describes which bugs are fixed and introduced by the patch. The i-th position of that string is a “+” if bug b<sub>i</sub> is introduced by the patch, a “-” if bug b<sub>i</sub> is removed by the patch (if it was present), and a “0” if bug b<sub>i</sub> is not affected by the patch (if it was present before, it still is, if it wasn't, is still isn't).</p>\n<p>The input is terminated by a description starting with n = m = 0. This test case should not be processed.</p>",
+  "output": "<p>For each product description first output the number of the product. Then output whether there is a sequence of patches that removes all bugs from a product that has all n bugs. Note that in such a sequence a patch may be used multiple times. If there is such a sequence, output the time taken by the fastest sequence in the format shown in the sample output. If there is no such sequence, output “Bugs cannot be fixed.”.</p>\n<p>Print a blank line after each test case.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 000 00-\n1 00- 0-+\n2 0-- -++\n4 1\n7 0-0+ ----\n0 0\n",
+      "output": "Product 1\nFastest sequence takes 8 seconds.\n\nProduct 2\nBugs cannot be fixed.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 1998",
+  "level": 12,
+  "tags": [
+    "graphs",
+    "shortest_path",
+    "dijkstra"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.166700005531311
+}

@@ -1,0 +1,25 @@
+{
+  "id": 18637,
+  "title": "Shadow Companion",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given a number n in its binary representation with infinite number of leading zeroes. You can walk over its bits and do some operations with them.</p>\n<p>More precisely, you can make the following moves:</p>\n<ul>\n<li>“s”: summon a shadow. Your shadow will appear one bit to the left from your current position.</li>\n<li>“l”: walk one bit to the left. Your shadow, if it exists, does the same.</li>\n<li>“r”: walk one bit to the right. Your shadow, if it exists, does the same.</li>\n<li>“L”: if the bit you are standing at is 1 then walk one bit to the left, otherwise do nothing. Your shadow, if it exists and is standing at 1, also walks one bit to the left. Please note that you and your shadow behave independently of each other. You move if you are standing at 1, it moves if it is standing at 1.</li>\n<li>“R”: the same as the previous option, but you and your shadow move right instead of left.</li>\n<li>“x”: exchange positions with your shadow. If it does not exist, nothing happens.</li>\n<li>“f”: flip some bits (flipping means replacing 0 by 1 and vice versa). You flip two bits: the bit you are standing at and the bit to the left from you. Your shadow, if it exists, is not as strong as you, and flips only the bit it is standing at. <strong>Please note that during this move some bit may be flipped twice, thus remaining unchanged.</strong></li>\n</ul>\n<p>Initially you are at the rightmost (the least significant) bit, and 0 ≤ n &lt; 2<sup>10</sup> holds. You are asked to write a program (that is, a sequence of moves) which satisfies the following:</p>\n<ul>\n<li>Neither you nor your shadow ever try to move to the right from the least significant bit (in other words, don’t try to leave the number).</li>\n<li>Your program consists of no more than 500 000 commands.</li>\n<li>The number at the end is n<sup>2</sup>.</li>\n</ul>\n<p>Some technical details:</p>\n<ul>\n<li>If after some move you and your shadow have the same position then your shadow disappears.</li>\n<li>If you summon a shadow when you already have one then your previous shadow disappears.</li>\n<li>Your position at the end may be arbitrary.</li>\n<li>Your shadow is allowed to exist in the end, and its position may be arbitrary.</li>\n<li>During the execution, the number represented by the bits may be arbitrarily large. The only constraint on it is that it must equal n<sup>2</sup> in the end.</li>\n<li>Again, if you and your shadow flip the same bit simultaneously then it does not change.</li>\n</ul>",
+  "input": "<p>You will have no input.</p>",
+  "output": "<p>You should print a single string consisting of no more than 500 000 letters from the set “slrLRxf” representing your program.</p>",
+  "samples": [
+    {
+      "input": "",
+      "output": "lRLsfLLrfxsrLxfsrfRlfl\n"
+    }
+  ],
+  "hint": "<p>The sample output is incorrect. In fact, it is a program which, starting from the state where the two rightmost bits are x and y and the other bits are zeroes, comes to the state where all the bits are zeroes and the third bit (1-indexing) is the Sheffer stroke of x and y (which is ¬(x ∧ y)).</p>\n<p>Below is an example of how it works for x = y = 1:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 728px; height: 724px;\"/></p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 6: MIPT Contest",
+  "level": 27,
+  "tags": [
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.142899990081787
+}

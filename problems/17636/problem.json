@@ -1,0 +1,30 @@
+{
+  "id": 17636,
+  "title": "가로등",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>이노폴리스에서는 자율 주행 택시가 운행하고 있다. 이 도시의 도로망은 n + 1개의 택시를 탈 수 있는 정류 장과 이들을 잇는 n개의 도로로 이루어져 있다. 도로 하나마다 가로등이 있다. i 번 가로등이 켜져 있다면, 정류장 i와 정류장 i + 1를 잇는 도로를 밝힌다. 만약 꺼져 있다면, 이 도로는 어둡다.</p>\r\n\r\n<p>보안 문제로, 자율 주행 택시는 가로등이 켜진 도로만 달릴 수 있다. 다른 말로 하면, 택시가 정류장 a에서 정류장 b로 가려면 (a &lt; b), 정류장 a과 정류장 a + 1를 잇는 도로, 정류장 a + 1과 정류장 a + 2를 잇는 도로, . . . , 정류장 b &minus; 1과 정류장 b를 잇는 도로의 가로등이 켜져야 한다.</p>\r\n\r\n<p>고장이 나거나, 수리를 하면 가로등이 켜지거나 꺼질 수 있다.</p>\r\n\r\n<p>시점 0에서는 가로등의 초기 상황이 주어진다. 1, 2, . . . , q 시간이 지나면 다음 두 상황 중 하나가 벌어질 수 있다.</p>\r\n\r\n<ul>\r\n\t<li>&ldquo;<code>toggle i</code>&rdquo; &mdash; i 번 가로등이 반전된다. 즉, 이 가로등이 켜져 있었다면 꺼지고, 꺼져 있었다면 켜진다.</li>\r\n\t<li>&ldquo;<code>query a b</code>&rdquo; &mdash; 자율 주행 택시를 운영하는 곳의 대표가 다음을 궁금해한다. 시점 0에서 시작해서 현재에 이르기 까지 자율 주행 택시가 정류장 a에서 정류장 b까지 운행할 수 있었던 총 시간은 얼마일까?</li>\r\n</ul>\r\n\r\n<p>자율 주행 택시를 운영하는 곳이 이 질의를 답하는 것을 도와주자</p>\r\n",
+  "input": "<p>첫 번째 줄에는 두 정수 n, q가 주어진다. (1 &le; n, q &le; 300 000) &mdash; 이는 가로등의 수와 이벤트의 개수이다.</p>\r\n\r\n<p>두번째 줄에는 최초의 가로등 상태를 알려주는 문자열 s가 주어진다. (|s| = n), 만약 가로등 i가 켜져 있으면 s<sub>i</sub>는 &lsquo;1&rsquo;이고, 가로등 i가 꺼져 있으면 s<sub>i</sub>는 &lsquo;0&rsquo;이다.</p>\r\n\r\n<p>다음 q 줄 각각은 이벤트를 설명한다. 이 중 i 번째 줄은 i 시간이 지났을 때 이벤트를 설명한다.</p>\r\n\r\n<ul>\r\n\t<li>&ldquo;<code>toggle i</code>&rdquo; (1 &le; i &le; n) &mdash; 가로등 i이 반전된다.</li>\r\n\t<li>&ldquo;<code>query a b</code>&rdquo; (1 &le; a &lt; b &le; n + 1) &mdash; 정류장 a에서 정류장 b까지 자율 주행 택시가 운행할 수 있었던 총 시간 수를 계산한다.</li>\r\n</ul>\r\n\r\n<p>이벤트 중 최소 하나는 <code>query</code>이다.</p>\r\n",
+  "output": "<p>각각의 <code>query</code> 이벤트마다 하나의 정수를 출력하고, 이 수는 질의에 대한 답이다.</p>\r\n",
+  "samples": [
+    {
+      "input": "5 7\n11011\nquery 1 2\nquery 1 2\nquery 1 6\nquery 3 4\ntoggle 3\nquery 3 4\nquery 1 6\n",
+      "output": "1\n2\n0\n0\n1\n2\n"
+    }
+  ],
+  "hint": "<p>예제 입력의 결과는 다음과 같다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:50%;\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>시간</th>\r\n\t\t\t<th>가로등 상태</th>\r\n\t\t\t<th>이벤트</th>\r\n\t\t\t<th>응답</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td><code>11011</code></td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td><code>query 1 2</code></td>\r\n\t\t\t<td>1</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td><code>11011</code></td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td><code>query 1 2</code></td>\r\n\t\t\t<td>1 and 2</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td><code>11011</code></td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td><code>query 1 6</code></td>\r\n\t\t\t<td>None</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>4</td>\r\n\t\t\t<td><code>11011</code></td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td><code>query 3 4</code></td>\r\n\t\t\t<td>None</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>5</td>\r\n\t\t\t<td><code>11011</code></td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td><code>toggle 3</code></td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>6</td>\r\n\t\t\t<td><code>11111</code></td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td><code>query 3 4</code></td>\r\n\t\t\t<td>6</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>7</td>\r\n\t\t\t<td><code>11111</code></td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td>&nbsp;</td>\r\n\t\t\t<td><code>query 1 6</code></td>\r\n\t\t\t<td>6 and 7</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n",
+  "source": "Olympiad, Asia-Pacific Informatics Olympiad, APIO 2019",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "set",
+    "tree_set",
+    "divide_and_conquer",
+    "offline_queries",
+    "cdq"
+  ],
+  "accepted_user_count": 36,
+  "submission_count": null,
+  "average_tries": 3.9166998863220215
+}

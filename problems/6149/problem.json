@@ -1,0 +1,27 @@
+{
+  "id": 6149,
+  "title": "Card Stacking",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Bessie is playing a card game with her N-1 (2 &lt;= N &lt;= 100) cow friends using a deck with K (N &lt;= K &lt;= 100,000; K is a multiple of N) cards.  The deck contains M = K/N \"good\" cards and K-M \"bad\" cards. Bessie is the dealer and, naturally, wants to deal herself all of the \"good\" cards. She loves winning.</p>\n<p>Her friends suspect that she will cheat, though, so they devise a dealing system in an attempt to prevent Bessie from cheating. They tell her to deal as follows:</p>\n<ol>\n<li>Start by dealing the card on the top of the deck to the cow to her right</li>\n<li>Every time she deals a card, she must place the next P (1 &lt;= P &lt;= 10) cards on the bottom of the deck; and</li>\n<li>Continue dealing in this manner to each player sequentially in a counterclockwise manner</li>\n</ol>\n<p>Bessie, desperate to win, asks you to help her figure out where she should put the \"good\" cards so that she gets all of them. Notationally, the top card is card #1, next card is #2, and so on.</p>",
+  "input": "<ul>\n<li>Line 1: Three space-separated integers: N, K, and P</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Lines 1..M: Positions from top in ascending order in which Bessie should place \"good\" cards, such that when dealt, Bessie will obtain all good cards.</li>\n</ul>\n<p> </p>",
+  "samples": [
+    {
+      "input": "3 9 2\n",
+      "output": "3\n7\n8\n"
+    }
+  ],
+  "hint": "<p>Bessie is playing cards with two cow friends and a deck of 9 cards. She must place two cards on the bottom of the deck each time she deals one.</p>\n<p>Bessie should put the \"good\" cards in positions 3, 7, and 8. The cards will be dealt as follows; the card numbers are \"position in original deck\":</p>\n<pre>\n                                      Card Deck         P1      P2    Bessie\n Initial configuration           1 2 3 4 5 6 7 8 9  - - -   - - -   - - -\n Deal top card [1] to Player 1   2 3 4 5 6 7 8 9    1 - -   - - -   - - -\n Top card to bottom (#1 of 2)    3 4 5 6 7 8 9 2    1 - -   - - -   - - -\n Top card to bottom (#2 of 2)    4 5 6 7 8 9 2 3    1 - -   - - -   - - -\n Deal top card [4] to Player 2   5 6 7 8 9 2 3      1 - -   4 - -   - - -\n Top card to bottom (#1 of 2)    6 7 8 9 2 3 5      1 - -   4 - -   - - -\n Top card to bottom (#2 of 2)    7 8 9 2 3 5 6      1 - -   4 - -   - - -\n Deal top card [7] to Bessie     8 9 2 3 5 6        1 - -   4 - -   7 - -\n Top card to bottom (#1 of 2)    9 2 3 5 6 8        1 - -   4 - -   7 - -\n Top card to bottom (#2 of 2)    2 3 5 6 8 9        1 - -   4 - -   7 - -\n Deal top card [2] to Player 1   3 5 6 8 9          1 2 -   4 - -   7 - -\n Top card to bottom (#1 of 2)    5 6 8 9 3          1 2 -   4 - -   7 - -\n Top card to bottom (#2 of 2)    6 8 9 3 5          1 2 -   4 - -   7 - -\n Deal top card [6] to Player 2   8 9 3 5            1 2 -   4 6 -   7 - -\n Top card to bottom (#1 of 2)    9 3 5 8            1 2 -   4 6 -   7 - -\n Top card to bottom (#2 of 2)    3 5 8 9            1 2 -   4 6 -   7 - -\n Deal top card [3] to Bessie     5 8 9              1 2 -   4 6 -   7 3 -\n Top card to bottom (#1 of 2)    8 9 5              1 2 -   4 6 -   7 3 -\n Top card to bottom (#2 of 2)    9 5 8              1 2 -   4 6 -   7 3 -\n Deal top card [9] to Player 1   5 8                1 2 9   4 6 -   7 3 -\n Top card to bottom (#1 of 2)    8 5                1 2 9   4 6 -   7 3 -\n Top card to bottom (#2 of 2)    5 8                1 2 9   4 6 -   7 3 -\n Deal top card [5] to Player 2   8                  1 2 9   4 6 5   7 3 -\n Top card to bottom (#1 of 2)    8                  1 2 9   4 6 5   7 3 -\n Top card to bottom (#1 of 2)    8                  1 2 9   4 6 5   7 3 -\n Deal top card [8] to Bessie     -                  1 2 9   4 6 5   7 3 8</pre>\n<p>Bessie will end up with the \"good cards\" that have been placed in positions 3, 7, and 8 in the original deck.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2007-2008 Season, USACO December 2007 Contest, Bronze",
+  "level": 7,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "simulation",
+    "queue"
+  ],
+  "accepted_user_count": 105,
+  "submission_count": null,
+  "average_tries": 1.44760000705719
+}

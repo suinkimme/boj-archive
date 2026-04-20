@@ -1,0 +1,25 @@
+{
+  "id": 27745,
+  "title": "Trouble Sort",
+  "time_limit": "서브태스크 참고 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Deep in Code Jam's secret algorithm labs, we devote countless hours to wrestling with one of the most complex problems of our time: efficiently sorting a list of integers into non-decreasing order. We have taken a careful look at the classic <a href=\"https://en.wikipedia.org/wiki/Bubble_sort\">bubble sort</a> algorithm, and we are pleased to announce a new variant.</p>\n<p>The basic operation of the standard bubble sort algorithm is to examine a pair of adjacent numbers, and reverse that pair if the left number is larger than the right number. But our algorithm examines a group of <i>three</i> adjacent numbers, and if the leftmost number is larger than the rightmost number, it reverses that entire group. Because our algorithm is a \"triplet bubble sort\", we have named it Trouble Sort for short.</p>\n<pre>\n  TroubleSort(L): // L is a 0-indexed list of integers\n    let done := false\n    while not done:\n      done = true\n      for i := 0; i &lt; len(L)-2; i++:\n        if L[i] &gt; L[i+2]:\n          done = false\n          reverse the sublist from L[i] to L[i+2], inclusive\n</pre>\n<p>For example, for L = 5 6 6 4 3, Trouble Sort would proceed as follows:</p>\n<ul>\n<li>First pass:\n\t<ul>\n<li>inspect 5 6 6, do nothing: 5 6 6 4 3</li>\n<li>inspect 6 6 4, see that 6 &gt; 4, reverse the triplet: 5 4 6 6 3</li>\n<li>inspect 6 6 3, see that 6 &gt; 3, reverse the triplet: 5 4 3 6 6</li>\n</ul>\n</li>\n<li>Second pass:\n\t<ul>\n<li>inspect 5 4 3, see that 5 &gt; 3, reverse the triplet: 3 4 5 6 6</li>\n<li>inspect 4 5 6, do nothing: 3 4 5 6 6</li>\n<li>inspect 5 6 6, do nothing: 3 4 5 6 6</li>\n</ul>\n</li>\n<li>Then the third pass inspects the three triplets and does nothing, so the algorithm terminates.</li>\n</ul>\n<p>We were looking forward to presenting Trouble Sort at the Special Interest Group in Sorting conference in Hawaii, but one of our interns has just pointed out a problem: it is possible that Trouble Sort does not correctly sort the list! Consider the list 8 9 7, for example.</p>\n<p>We need your help with some further research. Given a list of <b>N</b> integers, determine whether Trouble Sort will successfully sort the list into non-decreasing order. If it will not, find the index (counting starting from 0) of the first sorting error after the algorithm has finished: that is, the first value that is larger than the value that comes directly after it when the algorithm is done.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case consists of two lines: one line with an integer <b>N</b>, the number of values in the list, and then another line with <b>N</b> integers <b>V<sub>i</sub></b>, the list of values.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is <code>OK</code> if Trouble Sort correctly sorts the list, or the index (counting starting from 0) of the first sorting error, as described above.</p>",
+  "samples": [
+    {
+      "input": "2\n5\n5 6 8 4 3\n3\n8 9 7\n",
+      "output": "Case #1: OK\nCase #2: 1\n"
+    }
+  ],
+  "hint": "<p>Sample Case #1 is similar to the first one described in the problem statement. Trouble Sort correctly sorts this list, so the answer is <code>OK</code>.</p>\n<p>Sample Case #2 is the second one described in the problem statement. Trouble Sort does not correctly sort this list, since it terminates with the list 7 9 8. The 9 is the first value in the list that is larger than the next value, so the index of the first sorting error is 1.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2018, Qualification Round",
+  "level": 13,
+  "tags": [
+    "ad_hoc",
+    "sorting"
+  ],
+  "accepted_user_count": 29,
+  "submission_count": null,
+  "average_tries": 1.3792999982833862
+}

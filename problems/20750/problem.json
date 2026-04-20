@@ -1,0 +1,25 @@
+{
+  "id": 20750,
+  "title": "#include<scoring>",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>As you may know, LTH Challenge is part of a series of seven competitions called the <em>Swedish Coding Cup</em>. Each contest in the series gives the contestants a number of points depending on how well they place in the contest.</p>\n<p>After each contest, scores are assigned according to the following table:</p>\n<table class=\"table table-bordered td-center th-center table-center-20\">\n<thead>\n<tr>\n<th><strong>Rank</strong></th>\n<th><strong>Score</strong></th>\n<th><strong>Rank</strong></th>\n<th><strong>Score</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>$1$</td>\n<td>$100$</td>\n<td>$16$</td>\n<td>$15$</td>\n</tr>\n<tr>\n<td>$2$</td>\n<td>$75$</td>\n<td>$17$</td>\n<td>$14$</td>\n</tr>\n<tr>\n<td>$3$</td>\n<td>$60$</td>\n<td>$18$</td>\n<td>$13$</td>\n</tr>\n<tr>\n<td>$4$</td>\n<td>$50$</td>\n<td>$19$</td>\n<td>$12$</td>\n</tr>\n<tr>\n<td>$5$</td>\n<td>$45$</td>\n<td>$20$</td>\n<td>$11$</td>\n</tr>\n<tr>\n<td>$6$</td>\n<td>$40$</td>\n<td>$21$</td>\n<td>$10$</td>\n</tr>\n<tr>\n<td>$7$</td>\n<td>$36$</td>\n<td>$22$</td>\n<td>$9$</td>\n</tr>\n<tr>\n<td>$8$</td>\n<td>$32$</td>\n<td>$23$</td>\n<td>$8$</td>\n</tr>\n<tr>\n<td>$9$</td>\n<td>$29$</td>\n<td>$24$</td>\n<td>$7$</td>\n</tr>\n<tr>\n<td>$10$</td>\n<td>$26$</td>\n<td>$25$</td>\n<td>$6$</td>\n</tr>\n<tr>\n<td>$11$</td>\n<td>$24$</td>\n<td>$26$</td>\n<td>$5$</td>\n</tr>\n<tr>\n<td>$12$</td>\n<td>$22$</td>\n<td>$27$</td>\n<td>$4$</td>\n</tr>\n<tr>\n<td>$13$</td>\n<td>$20$</td>\n<td>$28$</td>\n<td>$3$</td>\n</tr>\n<tr>\n<td>$14$</td>\n<td>$18$</td>\n<td>$29$</td>\n<td>$2$</td>\n</tr>\n<tr>\n<td>$15$</td>\n<td>$16$</td>\n<td>$30$</td>\n<td>$1$</td>\n</tr>\n</tbody>\n</table>\n<p>If a contestant get a worse rank than $30$, they get $0$ points.</p>\n<p>If two or more contestants get the same rank in the contest, they are instead assigned the average score of all the corresponding ranks. This score is always rounded up to the closest integer. For example, if three contestants share the second place they all recieve $\\lceil \\frac{75 + 60 + 50}{3} \\rceil = 62$ points.</p>\n<p>Contestants may participate in every contest either on-site or online. If they compete on-site, they get one extra point, no matter their original score. If a contestant does not participate in a contest, they are assigned a score of $0$.</p>\n<p>At LTH Challenge, the rank of each contestant is computed using what is called <em>ACM scoring</em>. Each contestant is ranked first on the number of problems they solve (in descending order), secondly on their time penalty (in ascending order) and finally the time at which they submitted their last accepted solution in minutes (in ascending order). If all these three properties are equal, the contestants are tied.</p>\n<p>As you may understand, it is really tedious to compute the scores of all the contestants after such a contest. The jury does not really want to program this themselves; they prefer to just use some existing library instead. However, it turns out that since this is the first time the Swedish Coding Cup is held, nobody had written such a library!</p>\n<p>Fortunately, they have you.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>one line with the integer $n$ ($1 \\le n \\le 1\\,000$), the number of contestants.</li>\n<li>$n$ lines with the integers $s$, $p$, $f$ and $o$, ($0 \\le s \\le 9$, $0 \\le p \\le 10^9$, $0 \\le f \\le 300$, $0 \\le o \\le 1$) -- the number of problems solved by a contestant, the time penalty of the contestant, the time at which they submitted their last accepted solution and the number of extra points the contestant should get due to competing on-site.</li>\n</ul>",
+  "output": "<p>Output $n$ lines containing the scores of all the contestants in the order they were listed in the input.</p>",
+  "samples": [
+    {
+      "input": "41\n6 179 65 1\n6 305 86 1\n6 324 96 0\n6 390 112 1\n5 280 97 0\n4 79 45 1\n4 94 49 1\n4 126 55 1\n4 160 100 1\n4 173 76 0\n4 214 106 1\n4 221 110 1\n4 226 96 1\n4 384 103 0\n3 35 26 1\n3 90 56 0\n3 113 83 1\n3 137 106 0\n3 171 101 1\n3 184 104 0\n3 195 65 1\n2 14 11 1\n2 15 10 1\n2 17 11 1\n2 19 12 1\n2 20 13 1\n2 21 14 0\n2 29 20 1\n2 30 19 0\n2 36 27 1\n2 39 13 1\n2 52 23 1\n2 52 31 1\n2 69 23 1\n2 86 17 0\n2 113 55 1\n2 125 62 1\n2 328 119 0\n1 10 10 0\n1 15 15 1\n1 33 33 0\n",
+      "output": "101\n76\n60\n51\n45\n41\n37\n33\n30\n26\n25\n23\n21\n18\n17\n15\n15\n13\n13\n11\n11\n10\n9\n8\n7\n6\n4\n4\n2\n2\n1\n1\n1\n1\n0\n1\n1\n0\n0\n1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Swedish Coding Cup, LTH Challenge 2017",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "sorting"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 2.227299928665161
+}

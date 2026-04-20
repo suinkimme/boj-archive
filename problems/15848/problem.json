@@ -1,0 +1,34 @@
+{
+  "id": 15848,
+  "title": "Make a Forest",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>In 1736, Leonhard Euler wrote a paper on the Seven Bridges of Königsberg which is regarded as the first paper in the history of graph theory. Nowadays, the study of graph theory is considered very important as indicated by the fact that most textbooks in discrete mathematics have a chapter on graph theory.</p>\n<p>This problem is related to graph theory, especially on tree and forest. Given N tuples (u<sub>i</sub>, v<sub>i</sub>, w<sub>i</sub>), your task is to construct a forest with a minimum number of trees which satisfies the following seven requirements:</p>\n<ol>\n<li>Each tree in the forest is a rooted tree;</li>\n<li>Each node x in the forest has a value x.A;</li>\n<li>Each edge (x, y) in the forest has a value (x, y).B;</li>\n<li>Each tuple (u<sub>i</sub>, v<sub>i</sub>, w<sub>i</sub>) appears exactly once in the forest as two nodes with a parent-child relationship (parent node p and child node c) where: u<sub>i</sub> = p.A, v<sub>i</sub> = c.A, and w<sub>i</sub> = (p, c).B;</li>\n<li>For any non-root and non-leaf node x in the forest, (p, x).B is smaller than any (x, c).B, where p is x's parent and c is x's child;</li>\n<li>All nodes in the forest have at most M children.</li>\n<li>The forest should contain exactly N edges.</li>\n</ol>\n<p>To simplify the problem, it is guaranteed that wi in any tuple is unique, i.e. no two tuples with the same wi.</p>\n<p>Output the number of trees in such forest (the forest should have the minimum number of trees).</p>",
+  "input": "<p>The first line contains two integers: N M(1 ≤ N, M ≤ 100,000) in a line denoting the number of tuples and the maximum number of children for each node in the forest. The next N following lines, each contains three integers: u<sub>i</sub> v<sub>i</sub> w<sub>i</sub> (1 ≤ u<sub>i</sub>, v<sub>i</sub> ≤ 2,000,000,000; 1 ≤ w<sub>i</sub> ≤ N) in a line denoting the tuple (u<sub>i</sub>, v<sub>i</sub>, w<sub>i</sub>). It is guaranteed that there will be no two tuples with the same w<sub>i</sub>. </p>",
+  "output": "<p>The output contains an integer denoting the number of trees in a forest with a minimum number of trees which satisfies the given requirements, in a line.</p>",
+  "samples": [
+    {
+      "input": "5 2\n2 4 3\n4 4 5\n4 7 1\n7 2 4\n4 8 2\n",
+      "output": "2\n"
+    },
+    {
+      "input": "5 1\n2 4 3\n4 4 5\n4 7 1\n7 2 4\n4 8 2\n",
+      "output": "3\n"
+    },
+    {
+      "input": "5 10\n1000 3000 3\n2000 4000 5\n1000 2000 1\n3000 2000 4\n2000 3000 2\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": "<p>Explanation for the 1st sample case</p>\n<p><img alt=\"\" src=\"1.png\" style=\"width: 239px; height: 189px;\"/></p>\n<p>For the first sample, this forest is the only forest which satisfies all the requirements. There are 2 trees in this forest.</p>\n<p><img alt=\"\" src=\"2.png\" style=\"width: 212px; height: 252px;\"/></p>\n<p>On the other hand, this forest does not satisfy the requirements due to:</p>\n<ol>\n<li>Node b violates requirement #5 as (a,b).B = 3 is larger than (b,c).B = 1 and (b,d).B = 2.</li>\n<li>Node b violates requirement #6 as it has 3 children (note that M is 2).</li>\n<li>There are 6 edges in the forest while N = 5 (violates requirement #7).</li>\n</ol>\n<p>Note that violating even one requirement already makes the forest invalid.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Jakarta, ACM-ICPC Regional Contest, Jakarta 2017",
+  "level": 15,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "sorting"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 1.840000033378601
+}

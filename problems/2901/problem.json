@@ -1,0 +1,29 @@
+{
+  "id": 2901,
+  "title": "CHUCK",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are given an matrix of R rows and C columns. All elements of the matrix are by their absolute value smaller than or equal to 10<sup>4</sup>.</p>\n<p>You may perform the following operations:</p>\n<table class=\"table table-bordered\" style=\"width:100%\">\n<thead>\n<tr>\n<th style=\"width:33%\">Operation</th>\n<th style=\"width:33%\">Notation</th>\n<th style=\"width:33%\">Example</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Rotate i-th row of he matrix k elements right</td>\n<td>rotR i k</td>\n<td>rotR 3 1<br/>\n\t\t\t\\(\\begin{pmatrix} 1 &amp; 2 &amp; 3 \\\\ 4 &amp; 5 &amp; 6 \\\\ 7 &amp; 8 &amp; 9 \\\\ 10 &amp; 11 &amp; 12 \\end{pmatrix}\\rightarrow \\begin{pmatrix} 1&amp;2&amp;3 \\\\ 4&amp;5&amp;6 \\\\ 9&amp;7&amp;8\\\\10&amp;11&amp;12 \\end{pmatrix} \\)</td>\n</tr>\n<tr>\n<td>Rotate j-th column of the matrix k elements down</td>\n<td>rotS j k</td>\n<td>rotS 3 2<br/>\n\t\t\t\\(\\begin{pmatrix} 1 &amp; 2 &amp; 3 \\\\ 4 &amp; 5 &amp; 6 \\\\ 7 &amp; 8 &amp; 9 \\\\ 10 &amp; 11 &amp; 12 \\end{pmatrix}\\rightarrow \\begin{pmatrix} 1&amp;2&amp;9 \\\\ 4&amp;5&amp;12 \\\\ 7&amp;8&amp;3\\\\10&amp;11&amp;6 \\end{pmatrix} \\)</td>\n</tr>\n<tr>\n<td>Multiply all elements in the i-th row by -1, if and only if none of them were multiplied before.</td>\n<td>negR i</td>\n<td>negR 2<br/>\n\t\t\t\\(\\begin{pmatrix} 1 &amp; 2 &amp; 3 \\\\ 4 &amp; 5 &amp; 6 \\\\ 7 &amp; 8 &amp; 9 \\\\ 10 &amp; 11 &amp; 12 \\end{pmatrix}\\rightarrow \\begin{pmatrix} 1 &amp; 2 &amp; 3 \\\\ -4 &amp; -5 &amp; -6 \\\\ 7 &amp; 8 &amp; 9 \\\\ 10 &amp; 11 &amp; 12 \\end{pmatrix}\\)</td>\n</tr>\n<tr>\n<td>Multiply all elements in the j-th column by -1, if and only if none of them were multiplied before.</td>\n<td>negS j</td>\n<td>negS 1<br/>\n\t\t\t\\(\\begin{pmatrix} 1 &amp; 2 &amp; 3 \\\\ 0&amp;0&amp;0 \\\\ 7 &amp; 8 &amp; 9 \\\\ 10 &amp; 11 &amp; 12 \\end{pmatrix}\\rightarrow \\begin{pmatrix} -1 &amp; 2 &amp; 3 \\\\ 0 &amp; 0 &amp; 0\\\\ -7 &amp; 8 &amp; 9 \\\\ -10 &amp; 11 &amp; 12 \\end{pmatrix}\\)</td>\n</tr>\n</tbody>\n</table>\n<p>Using limited number of these operations, you need to maximize the sum of all the elements of the matrix.</p>",
+  "input": "<p>The first line of input contains two integers R and C (1 ≤ R, C ≤ 100), number of rows and columns.</p>\n<p>The next R lines contain C integers each. All integers are by their absolute value smaller than 10<sup>4</sup>.</p>",
+  "output": "<p>The first line of output should contain two integers, the maximal sum obtainable and the number of operations used. We shall call this number T. The next T lines should contain any sequence of operations leading to the sum. Each operation should follow the notation defined in the table below. For details look at sample test cases.</p>\n<ul>\n<li>If the obtained sum is not maximal, one of the elements was multiplied more than once or the sequence of operations printed does not lead to the sum, 0 points are awarded.</li>\n<li>Otherwise, the number of points depends on the number of operations used\n\t<ul>\n<li>For T≤5×R×C, you are awarded 100% of points allocated to that test case</li>\n<li>For T&gt;5×R×C,  you are awarded 0 points for that test case</li>\n</ul>\n</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3 4\n1 -2 5 200\n-8 0 -4 -10\n11 4 0 100\n",
+      "output": "345 2\nrotS 2 1\nnegR 2\n"
+    },
+    {
+      "input": "3 3\n8 -2 7\n1 0 -3\n-4 -8 3\n",
+      "output": "34 4\nrotR 1 1\nrotS 3 1\nnegR 2\nnegR 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2009/2010, Contest #5, baekjoon",
+  "level": 22,
+  "tags": [
+    "implementation",
+    "greedy"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 4.214300155639648
+}

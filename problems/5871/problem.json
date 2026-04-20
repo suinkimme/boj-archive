@@ -1,0 +1,31 @@
+{
+  "id": 5871,
+  "title": "Balanced Trees",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Fascinated by his experience with balanced parentheses so far, Farmer John is curious if you can help him solve one final problem. As it turns out, FJ's farm is in the shape of a giant tree of N pastures (1 &lt;= N &lt;= 40,000), each of which he has labeled with either ( or ). For example:</p>\n<pre>\n'('--'('--')'--'('--')'\n |         |\n')'       ')'--'('--'(' \n |              |\n')'            '('--')'--')'--')'--'('\n</pre>\n<p>Recall that since his farm is a tree, this means that certain pairs of pastures are connected by corridors so that there is one unique path between any given pair of pastures. FJ believes that some of these paths represent balanced strings of parentheses. In particular, he would like to know, among all such balanced strings represented by paths through the tree, what is the maximum nesting depth one can find. The nesting depth of a balanced string of parentheses is the maximum, over all prefixes of the string, of the excess number of ('s within the prefix. For example, the string ()()() has nesting depth 1, but the string ((()))() has nesting depth 3, as we can see clearly if we count excess ('s for every prefix of the string:</p>\n<pre>\n((()))()\n12321010</pre>\n<p>For the example farm above, the deepest string is ((())) with a depth of 3, and can be obtained by taking the path from A to B below:</p>\n<pre>\n'('--'('--')'--'('--')'\n |         |\n')'       ')'--'('--'(' &lt; A\n |              |\n')'            '('--')'--')'--')'--'('\n ^C                            ^B\n</pre>\n<p>Note that this is different than the longest balanced string; for instance (())(()), starting at A and ending at C, has length 8.</p>\n<p>Your task is to output the nesting depth of the deepest balanced path in the tree.</p>",
+  "input": "<ul>\n<li>Line 1: A single integer N, the number of nodes in the tree.</li>\n<li>Lines 2..N: Line i+1: A single integer p_(i+1) (1 &lt;= p_(i+1) &lt;= i), denoting an edge between nodes i+1 and p_{i+1} in the tree.</li>\n<li>Lines N+1..2N: Line N+i: Either ( or ), the label of node i.</li>\n</ul>",
+  "output": "<ul>\n<li>Line 1: A single integer, giving the maximum nesting depth of a balanced path.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "15\n1\n2\n1\n4\n4\n6\n7\n5\n9\n9\n11\n12\n13\n14\n(\n)\n)\n(\n)\n)\n(\n)\n(\n(\n(\n)\n)\n)\n(\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<h4>Input Details</h4>\n<p>This is the example from the problem description, with the following node labels:</p>\n<pre>\n1'('--4'('--6')'--7'('--8')'\n  |     |\n2')'  5')'--9'('--10'('\n  |           |\n3')'       11'('--12')'--13')'--14')'--15'('</pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2012-2013 Season, USACO November 2012 Contest, Gold",
+  "level": 23,
+  "tags": [
+    "centroid",
+    "centroid_decomposition",
+    "dfs",
+    "divide_and_conquer",
+    "graphs",
+    "graph_traversal",
+    "greedy",
+    "trees"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 2.8889000415802
+}

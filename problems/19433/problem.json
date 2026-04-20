@@ -1,0 +1,24 @@
+{
+  "id": 19433,
+  "title": "Born Slippy",
+  "time_limit": "6 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Professor Zhang has a rooted tree with vertices conveniently labeled by $1, 2, \\ldots, n$. The $i$-th vertex has an integer weight $w_i$.</p>\n<p>For each $s \\in \\{1, 2, \\ldots, n\\}$, Professor Zhang wants to find a sequence of vertices $v_1, v_2, \\ldots, v_m$ such that:</p>\n<ul>\n<li>$v_1 = s$ and $v_i$ is the ancestor of $v_{i - 1}$ for each $1 &lt; i \\le m$,</li>\n<li>the value $f(s) = w_{v_1} + \\sum\\limits_{i = 2}^{m} (w_{v_i} \\mathrm{op} w_{v_{i - 1}})$ is maximum possible. Here, operation $x \\mathrm{op} y$ is the bitwise AND, OR, or XOR operation on two integers.</li>\n</ul>",
+  "input": "<p>There are multiple test cases. The first line of input contains an integer $T$ indicating the number of test cases. For each test case:</p>\n<p>The first line contains an integer $n$ and a string $\\mathrm{op}$ ($2 \\le n \\le 2^{16}$, $\\mathrm{op} \\in \\{\\mathtt{AND}, \\mathtt{OR}, \\mathtt{XOR}\\}$): the number of vertices and the operation. The second line contains $n$ integers $w_1, w_2, \\ldots, w_n$ ($0 \\le w_i &lt; 2^{16}$). The third line contains $n - 1$ integers $p_2, p_3, \\ldots, p_n$ ($1 \\le p_i &lt; i$) where $p_i$ is the parent of vertex $i$.</p>\n<p>There are about $300$ test cases, and the sum of $n$ in all the test cases is no more than $10^6$.</p>",
+  "output": "<p>For each test case, output the integer $S = (\\sum\\limits_{i = 1}^{n}{i \\cdot f(i)})$ modulo $10^9 + 7$.</p>",
+  "samples": [
+    {
+      "input": "3\n5 AND\n5 4 3 2 1\n1 2 2 4\n5 XOR\n5 4 3 2 1\n1 2 2 4\n5 OR\n5 4 3 2 1\n1 2 2 4\n",
+      "output": "91\n139\n195\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2016, Day 1: Zheijang U Contest 2",
+  "level": 22,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 3.266700029373169
+}

@@ -1,0 +1,29 @@
+{
+  "id": 24490,
+  "title": "Tests for Haybales",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Farmer John's cows have decided to offer a programming contest for the cows on Farmer Nhoj's farm. In order to make the problems as fun as possible, they have spent considerable time coming up with challenging input cases. For one problem in particular, \"Haybales\", the cows need your help devising challenging inputs. This involve solving the following somewhat intriguing problem:</p>\n<p>There is an array of sorted integers $x_1 \\leq x_2 \\leq \\dotsb \\leq x_N$ ($1 \\leq N \\leq 10^5$), and an integer $K$. You don't know the array or $K$, but you do know for each index $i$, the largest index $j_i$ such that $x_{j_i} \\leq x_i + K$. It is guaranteed that $i\\le j_i$ and $j_1\\le j_2\\le \\cdots \\le j_N\\le N$.</p>\n<p>Given this information, Farmer John's cows need to construct any array along with some integer $K$ that matches that information. The construction needs to satisfy $0 \\leq x_i \\leq 10^{18}$ for all $i$ and $1 \\leq K \\leq 10^{18}$.</p>\n<p>It can be proven that this is always possible. Help Farmer John's cows solve this problem!</p>",
+  "input": "<p>The first line of input contains $N$. The next line contains $j_1,j_2,\\ldots,j_N$.</p>",
+  "output": "<p>Print $K$, then $x_1,\\ldots,x_N$ on separate lines. Any valid output will be accepted.</p>",
+  "samples": [
+    {
+      "input": "6\n2 2 4 5 6 6\n",
+      "output": "6\n1\n6\n17\n22\n27\n32\n"
+    }
+  ],
+  "hint": "<p>The sample output is the array $a = [1, 6, 17, 22, 27, 32]$ with $K = 6$. $j_1 = 2$ is satisfied because $a_2 = 6 \\leq 1 + 6 = a_1 + K$ but $a_3 = 17 &gt; 1 + 6 = a_1 + K$, so $a_2$ is the largest element that is at most $a_1$. Similarly,</p>\n<ul>\n<li>$j_2 = 2$ is satisfied because $a_2 = 6 \\leq 6 + 6$ but $a_3 = 17 &gt; 6 + 6$</li>\n<li>$j_3 = 4$ is satisfied because $a_4 = 22 \\leq 17 + 6$ but $a_5 = 27 &gt; 17 + 6$</li>\n<li>$j_4 = 5$ is satisfied because $a_5 = 27 \\leq 22 + 6$ but $a_5 = 32 &gt; 22 + 6$</li>\n<li>$j_5 = 6$ is satisfied because $a_6 = 32 \\leq 27 + 6$ and $a_6$ is the last element of the array</li>\n<li>$j_6 = 6$ is satisfied because $a_6 = 32 \\leq 32 + 6$ and $a_6$ is the last element of the array</li>\n</ul>\n<p>This is not the only possible correct output for the sample input. For example, you could instead output the array $[1, 2, 4, 5, 6, 7]$ with $K = 1$.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2021-2022 Season, USACO 2022 January Contest, Gold",
+  "level": 21,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "ad_hoc",
+    "trees",
+    "constructive",
+    "dfs"
+  ],
+  "accepted_user_count": 44,
+  "submission_count": null,
+  "average_tries": 2.5
+}

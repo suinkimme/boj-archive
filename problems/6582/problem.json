@@ -1,0 +1,26 @@
+{
+  "id": 6582,
+  "title": "Artificial Intelligence?",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Physics teachers in high school often think that problems given as text are more demanding than pure computations. After all, the pupils have to read and understand the problem first!</p>\n<p>So they don't state a problem like \"U=10V, I=5A, P=?\" but rather like \"You have an electrical circuit that contains a battery with a voltage of U=10V and a light-bulb. There's an electrical current of I=5A through the bulb. Which power is generated in the bulb?\".</p>\n<p>However, half of the pupils just don't pay attention to the text anyway. They just extract from the text what is given: U=10V, I=5A. Then they think: \"Which formulae do I know? Ah yes, P=U*I. Therefore P=10V*5A=500W. Finished.\"</p>\n<p>OK, this doesn't always work, so these pupils are usually not the top scorers in physics tests. But at least this simple algorithm is usually good enough to pass the class. (Sad but true.)</p>\n<p>Today we will check if a computer can pass a high school physics test. We will concentrate on the P-U-I type problems first. That means, problems in which two of power, voltage and current are given and the third is wanted.</p>\n<p>Your job is to write a program that reads such a text problem and solves it according to the simple algorithm given above.</p>",
+  "input": "<p>The first line of the input file will contain the number of test cases.</p>\n<p>Each test case will consist of one line containing exactly two data fields and some additional arbitrary words. A data field will be of the form I=<em>x</em>A, U=<em>x</em>V or P=<em>x</em>W, where <em>x</em> is a real number. Directly before the unit (A,V or W) one of the prefixes m (milli), k (kilo) and M (Mega) may also occur. To summarize it: Data fields adhere to the following grammar:</p>\n<pre>\nDataField ::= Concept '=' RealNumber [Prefix] Unit\nConcept   ::= 'P' | 'U' | 'I'\nPrefix    ::= 'm' | 'k' | 'M'\nUnit      ::= 'W' | 'V' | 'A'\n</pre>\n<p>Additional assertions:</p>\n<ul>\n<li>The equal sign ('=') will never occur in an other context than within a data field.</li>\n<li>There is no whitespace (tabs,blanks) inside a data field.</li>\n<li>Either P and U, P and I, or U and I will be given.</li>\n</ul>",
+  "output": "<p>For each test case, print three lines:</p>\n<ul>\n<li>a line saying \"Problem #<em>k</em>\" where <em>k</em> is the number of the test case</li>\n<li>a line giving the solution (voltage, power or current, dependent on what was given), written without a prefix and with two decimal places as shown in the sample output</li>\n<li>a blank line</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3\nIf the voltage is U=200V and the current is I=4.5A, which power is generated?\nA light-bulb yields P=100W and the voltage is U=220V. Compute the current, please.\nbla bla bla lightning strike I=2A bla bla bla P=2.5MW bla bla voltage?\n",
+      "output": "Problem #1\nP=900.00W\n\nProblem #2\nI=0.45A\n\nProblem #3\nU=1250000.00V\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, University of Ulm Local Contest, University of Ulm Local Contest 1998",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 1.4473999738693237
+}

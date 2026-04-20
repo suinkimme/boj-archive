@@ -1,0 +1,27 @@
+{
+  "id": 5253,
+  "title": "Fan Groups",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>In the famous city of Vladičin Han near Surdulica, there are n city squares (labeled 1 through n) and m one-way streets between some of them. The city has n football teams as well and each of the teams has its fan group headquarters located at some city square - fan group i is located at city square i. Every 18th of the month, all fans organize a “city tour” with many interesting events, such as taking over the city squares and fighting. At the beginning, no square is taken over. Since all fan groups consist mostly of reasonable people, before the “city tour” begins, all n fan groups agree on an order in which the groups will cause riots.</p>\n<p>Suppose the “city tour” order has been established and let us describe what happens when fan group i takes turn (note that each group takes its turn only after the previous group ends theirs):</p>\n<ul>\n<li>If the square i is already taken over by a fan group j ≠ i, the fan group i does nothing. Otherwise, fan group i takes over the square i.</li>\n<li>When the fans of the group i take over the square v, some of the fans are sent throughout all streets starting from square v. If some of the ending city squares of those streets are taken over by some different fan group, fan group i cannot pass; instead in those streets a fight occurs. However, if the ending city square is not taken over, the fan group i takes over that city square and repeats the process, potentially yielding to new fights.</li>\n<li>The turn ends when there are no more reachable free squares.</li>\n</ul>\n<p>(For more detailed explanation see the given examples.)</p>\n<p>You are familiar with the city map and you know all streets in which fights have occurred. Determine the order in which fan groups made the riots through the city.</p>",
+  "input": "<p>The first line of input contains two integers n and m, denoting the number of city squares and oneway streets, respectively. Each of the following m lines contains 3 integers a, b, and c, denoting a one-way street from the city square a to the city square b; if c = 1, then a fight occurred in this street, and if c = 0 then it did not. For every two distinct city squares there is at most one street between them in one direction.</p>",
+  "output": "<p>If there is no ordering among fan groups in which fights occur in the marked streets (and only there), you should write -1 on the first line of the output. Otherwise, in the first and only line of the output write the requested order – a permutation P of numbers from 1 to n delimited by space – this  permutation means that fan group from city square P<sub>1</sub> moved first, then the group from city square P<sub>2</sub>, etc. In case of multiple solutions, write any one of them.</p>",
+  "samples": [
+    {
+      "input": "8 9\n1 4 1\n1 8 1\n2 3 0\n5 6 0\n6 5 0\n7 4 1\n6 4 0\n7 1 1\n4 5 0\n",
+      "output": "8 5 6 2 3 1 7 4\n"
+    }
+  ],
+  "hint": "<p>There are 8 city squares, 9 one-way streets, fights occurred in the streets 1 → 4, 1 → 8, 7 → 4 and 7 → 1, and the order of turns is (8, 5, 6, 2, 3, 7, 1, 4). The group from city square 8 moves first and takes over their square. Then, the group from square 5 moves next, takes over squares 5, 6 and 4 (only those are reachable via non-taken squares). Since square 6 is taken, the group from this square does nothing. After that, the group from square 2 takes over squares 2 and 3. Then, the group from taken square 3 does nothing. Next, the group from square 1 takes over square 1 and causes fights in streets 1 → 4 and 1 → 8. The group from square 7 takes over square 7 and causes fights in streets 7 → 1 and 7 → 4. Finally, group from square 4 does nothing.</p>\n<p>Since this permutation gives the correct street-fight list, it is a valid solution. Another valid permutation is (2, 3, 8, 4, 1, 7, 5, 6). Notice that, for example, permutation (8, 5, 6, 3, 2, 1, 7, 4) is not a valid solution because it produces a fight in the street 2 → 3, which is in contradiction with input data.</p>",
+  "source": "Olympiad, Balkan Olympiad in Informatics, BOI 2012",
+  "level": 21,
+  "tags": [
+    "graphs",
+    "dag",
+    "topological_sorting",
+    "scc"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 6.238100051879883
+}

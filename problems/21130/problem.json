@@ -1,0 +1,25 @@
+{
+  "id": 21130,
+  "title": "Business Semiconductor Units",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p><em>Business Semiconductor Units</em> (BSU) is a large international corporation that focuses on selling fast and reliable computers to business clients. Recently, they have decided to develop a new processor model which will work even faster and more reliably than its predecessors.</p>\n<p>The R&amp;D department of the company is responsible for designing the instruction set and processor architecture. After the deadline, they should demonstrate the working prototype to the head of the company. Unfortunately, the whole department was playing <em>Minecraft</em> most of the time instead of doing their job, so the presented prototype supports only three simple instructions.</p>\n<p>Let's take a closer look at their masterpiece. The new processor has $16$ registers named from <code>r0</code> to <code>r15</code>, each of them can store an unsigned $16$-bit integer. There is also main memory consisting of $2^{16} + 1$ eight-bit cells.</p>\n<p>The <em>program</em> for this processor is a sequence of instructions. The instructions are executed sequentially, neither jumps nor loops are supported. The processor executes the same sequence of instructions $5000$ times. That is, the following procedure is repeated $5000$ times: go over the instructions from the start to the end and execute them.</p>\n<p>Below you can see the list of available instructions. For clarity, let's call $x\\text{ mod } 2^8$ the <em>lower</em> part of the number $x$, and $\\left\\lfloor \\frac{x}{2^8} \\right\\rfloor$ the <em>upper</em> part of the number $x$. The number in the $i$-th main memory cell is denoted $mem_i$.</p>\n<ul>\n<li><code>imm r, b</code>: load the constant number $b$ ($0 \\le b &lt; 2^{16}$) into the register named $r$;</li>\n<li><code>ld x, y</code>: suppose that the register named $y$ stores the number $b$. Then, the number $mem_{b+1}\\cdot 2^8 + mem_b$ is put into the register $x$;</li>\n<li><code>st x, y</code>: suppose that the register named $x$ stores the number $a$, and the register $y$ stores the number $b$. Then, the lower part of $b$ is put into $mem_a$, and the upper part of $b$ is put into $mem_{a+1}$.</li>\n</ul>\n<p>As you can see, the instruction set is pretty lean, and the R&amp;D department is unsure whether the processor is capable of doing anything non-trivial or not. To make it run some useful programs, they hired you and gave you an assignment. Now, you need to write a program for the new processor that multiplies $n$ non-negative $16$-bit numbers modulo $2^{16}$.</p>",
+  "input": "<p>This problem has no input data.</p>",
+  "output": "<p>Output the required program in the following format.</p>\n<p>The first line must contain an integer $s$, the number of instructions in your program ($1 \\le s \\le 10^5$).</p>\n<p>Each of the following $s$ lines must contain a processor instruction. The format of instructions is described above. Be careful and follow the format strictly. All the register names must be valid (that means, from <code>r0</code> to <code>r15</code>).</p>",
+  "samples": [
+    {
+      "input": "",
+      "output": "4\nimm r3, 42\nimm r1, 6\nst r3, r1\nld r0, r3\n"
+    }
+  ],
+  "hint": "<p>The output in the example does not multiply integers, so submitting this program will give you the \"<code>Wrong Answer</code>\" verdict. The program is only provided to illustrate the output format.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 8: Belarusian SU Contest, Yandex Cup, Grand Prix of Belarud, Contest, Open Cup, 2020/2021 Season, Stage 12: Grand Prix of Belarus",
+  "level": 28,
+  "tags": [
+    "ad_hoc",
+    "implementation"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.2726999521255493
+}

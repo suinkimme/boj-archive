@@ -1,0 +1,26 @@
+{
+  "id": 24967,
+  "title": "Distributing the Treasure",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are the leader of a treasure hunting team. Under your great direction, your team has made a big success in a quest, and got a lot of treasure. The only, but crucial, remaining issue is how to distribute the obtained treasure to the team members.</p>\n<p>The excavated treasure includes a variety of precious items: gold ingots, jewelry with brilliant gem stones, exquisite craft works, etc. Each team member individually estimates the values of the items. The estimated values are consistent, in that, for any pair of two items, when some member estimates one to be strictly higher than the other, no member estimates oppositely, although some may give equal estimates.</p>\n<p>All the members are sensible and thus understand the difficulty of even distribution of the items. Hence, no member will complain simply because, based on the member’s own estimation, the sum of the values of the member’s share is lower than that of another member’s share. The members, however, may get angry if their own shares look unreasonably shabby compared to some other member’s; what they cannot stand is when their own shares are estimated strictly lower than the share of that other member even after getting rid of one item with the least estimated value.</p>\n<p>Your last mission as the leader is to decide who receives which items so that no member gets angry. Some of the members may receive nothing as long as they do not get angry.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<p>$\\begin{align*}&amp; n \\, m \\\\ &amp; v_{1,1} \\, \\cdots \\, v_{1, m} \\\\ &amp; \\vdots \\\\ &amp; v_{n,1} \\, \\cdots \\, v_{n,m} \\end{align*}$</p>\n<p>The first line of the input has two positive integers $n$ and $m$ whose product does not exceed $2 × 10^5$; $n$ is the number of members of your treasure hunting team, and $m$ is the number of treasure items. The members and items are numbered $1$ through $n$ and $1$ through $m$, respectively. The $i$-th of the following $n$ lines has $m$ positive integers not exceeding $2 × 10^5$ in descending order: $v_{i,1} ≥ v_{i,2} ≥ \\cdots ≥ v_{i,m}$. Here, $v_{i,j}$ is the value of the item $j$ estimated by the member $i$.</p>",
+  "output": "<p>If you can distribute the items to the members without making any member angry, output such a distribution in a line as $m$ positive integers $x_1$, $x_2$, $\\dots$, $x_m$ separated by spaces. Here, $x_j = i$ means that the member $i$ receives the item $j$. If two or more such distributions exist, any of them shall be deemed correct. If there is no way to distribute the items without making any member angry, just output <code>0</code> in a line.</p>",
+  "samples": [
+    {
+      "input": "2 3\n4 2 1\n3 3 3\n",
+      "output": "1 2 1\n"
+    },
+    {
+      "input": "1 7\n64 32 16 8 4 2 1\n",
+      "output": "1 1 1 1 1 1 1\n"
+    }
+  ],
+  "hint": "<p>Let $V_i(X)$ denote the sum of the values of items in the set $X$ estimated by the member $i$.</p>\n<p>In Sample 1, $V_1(\\{1, 3\\})$ is $4 + 1 = 5$, $V_1(\\{2\\})$ is $2$, $V_2(\\{1, 3\\})$ is $3 + 3 = 6$, and $V_2(\\{2\\})$ is $3$. The distribution shown as output does not make the member $1$ angry as $V_1(\\{1, 3\\}) ≥ V_1(\\{2\\})$. The member $2$ does not get angry either even though $V_2(\\{2\\}) &lt; V_2(\\{1, 3\\})$ holds. If the member $1$ waives one of the two items, the sum of the values of items received by the member $1$ would become $V_2(\\{1\\}) = 3$ or $V_2(\\{3\\}) = 3$, neither of which is higher than $V_2(\\{2\\}) = 3$.</p>\n<p>Note that their shares should not be exchanged. Suppose that the member $1$ receives $\\{2\\}$ and the member $2$ receives $\\{1, 3\\}$. This makes the member $1$ angry because $V_1(\\{2\\}) = 2 &lt; 4 = V_1(\\{1\\})$ holds, meaning that, even if the member $2$ waives the item $3$, which is estimated to be the lesser of $\\{1, 3\\}$, the value of the sole remaining item $1$ is still estimated higher than $V_1(\\{2\\}) = 2$.</p>\n<p>In Sample 2, you are the sole member of your team, so you can take them all. Congratulations!</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2021 Asia Yokohama Regional",
+  "level": 26,
+  "tags": [],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 3.375
+}

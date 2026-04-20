@@ -1,0 +1,27 @@
+{
+  "id": 6774,
+  "title": "Mhocskian Languages",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Linguists are currently studying Mhocskian, the language of the native inhabitants of Mhocsky island. The linguists have found a description of how the natives construct words in Mhocskian, and a list of words. The linguists would now like to know which of the words in the list are valid Mhocskian words.</p>\n<p><strong>Rules</strong></p>\n<p>Words in Mhocskian are constructed according to a set of rules. These rules involve two types of components: variables and terminals. A variable is an uppercase letter used in the description of the rules. A terminal is a lowercase letter that is part of a Mhocskian word.</p>\n<p>There are two types of rules. The first type of rule allows you to replace a variable V by two variables V<sub>1</sub>V<sub>2</sub> in that order, and we write V → V<sub>1</sub>V<sub>2</sub> as a short form for this type of rule. The second type of rule allows you to replace a variable V by a terminal t, and we write V → t as a short form for this type of rule.</p>\n<p>One of the variables is the start variable. A word w is composed of lowercase letters from the English alphabet. It is a valid Mhocskian word if, starting from the start variable, it is possible to follow a sequence of rules to obtain w.</p>\n<p><strong>Example</strong></p>\n<p>Suppose we have variables {S, A, B}, terminals {a, b}, and rules</p>\n<p style=\"text-align: center;\">{S → AB, S → a, A → a, B → b}.</p>\n<p>The word “ab” is a valid Mhocskian word because it can be constructed in the following way: S → AB → aB → ab. The word “a” can be constructed simply by S → a. The word “b” cannot be constructed.</p>",
+  "input": "<p>On the first line, two integers V and T in that order.</p>\n<p>On the second line, V space separated uppercase letters, the variables. The first variable on the line is always the start variable.</p>\n<p>On the third line, T space separated lowercase letters, the terminals.</p>\n<p>On the fourth line, there is an integer R<sub>1</sub>. R<sub>1</sub> lines follow, each of which is of the form V t, representing a rule V → t.</p>\n<p>On the next line, there is an integer R<sub>2</sub>. R<sub>2</sub> lines follow, each of the form V V<sub>1</sub> V<sub>2</sub>, representing the rule V → V<sub>1</sub>V<sub>2</sub>.</p>\n<p>On the next line, there is an integer W. W lines follow, each contains a single word made entirely of lowercase letters.</p>",
+  "output": "<p>The output must contain W lines. On line i, output a 1 if the ith word is a valid Mhocskian word, and 0 otherwise.</p>",
+  "samples": [
+    {
+      "input": "5 2\nI S A B C\na b\n2\nA a\nB b\n7\nI A B\nI A C\nC S B\nS A B\nS A C\nI S S\nS S S\n4\nabababaaabbbaabbaabb\nabab\nbbaa\naaabababbaaabbbb\n",
+      "output": "1\n1\n0\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2012, CCO 2012",
+  "level": 17,
+  "tags": [
+    "dp",
+    "string",
+    "bitmask",
+    "parsing"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.2000000476837158
+}

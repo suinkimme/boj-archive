@@ -1,0 +1,25 @@
+{
+  "id": 18475,
+  "title": "Two Teams",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>After five hours of intense battle, the final contest of XCPC is complete! Even though the standings were frozen during the last hour, it is obvious that there are just two contenders for the trophy, namely team A and team B. All other teams are ignored in this description from now on.</p>\n<p>In XCPC, teams are ranked according to the most problems solved. Teams who solve the same number of problems are ranked by the least total penalty time. In case of a tie, team A is ranked above team B.</p>\n<p>The number of problems solved and the penalty of both teams at the 4-hour mark are publicly known. You are responsible for showing the final standings at the closing ceremony, and you have been privately given a list of integers for each team. Each element of the list stands for a problem solved during the last hour, with its value denoting the amount of penalty the team will get for solving this problem.</p>\n<p>At the closing ceremony, the standings will be unfrozen by revealing who solved which problems during the last hour, one by one. The following sequence of actions will be repeated until the standings are final:</p>\n<ol>\n<li>Team X with the lowest rank and at least one more unrevealed solved problem is chosen.</li>\n<li>It is revealed that team X actually solved one of its unrevealed solved problems. In the standings, the number of problems solved by team X increases by 1, the total penalty of team X increases by the corresponding amount, and the ranking of the teams is recalculated.</li>\n</ol>\n<p>You have control over which problem will be chosen for revealing in step 2 at every moment. Every time teams A and B exchange their ranks, spectators will be excited. Find the maximum number of times you can make this happen.</p>",
+  "input": "<p>The input consists of two blocks of two lines each: a block for team A and a block for team B.</p>\n<p>The first line of the i-th block contains two integers s<sub>i</sub> and t<sub>i</sub> (1 ≤ s<sub>i</sub> ≤ 100; 1 ≤ t<sub>i</sub> ≤ 30 000), denoting the number of problems solved and the penalty time received by the team during the first four hours.</p>\n<p>The second line of the i-th block contains an integer n<sub>i</sub> (0 ≤ n<sub>i</sub> ≤ 100), denoting the number of problems solved by the team during the last hour, followed by n<sub>i</sub> integers a<sub>i,1</sub>, a<sub>i,2</sub>, . . . , a<sub>i,n<sub>i</sub></sub> (241 ≤ a<sub>i,j</sub> ≤ 1000), denoting penalty times the team will receive for solving each of these problems.</p>",
+  "output": "<p>Display the maximum number of times teams A and B can swap positions in the standings.</p>",
+  "samples": [
+    {
+      "input": "4 270\n3 458 245 386\n6 968\n1 430\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": "<p>In the example test case, initially team B is at the top of the standings. First, team A is chosen twice. It is optimal to choose problems with penalties 245 and 386, in any order; then team A gets ahead of team B, with 6 problems and penalty 901. After that team B gets ahead of team A, with 7 problems and penalty 1398. Finally, team A gets ahead of team B again, with 7 problems and penalty 1359.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2019, Day 5: Gennady Korotkevich Contest 4, Contest, Open Cup, 2018/2019 Season, Stage 11: Grand Prix of Gomel",
+  "level": 23,
+  "tags": [
+    "greedy",
+    "sorting"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.7691999673843384
+}

@@ -1,0 +1,35 @@
+{
+  "id": 24929,
+  "title": "Number Colosseum",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Welcome to the Number Colosseum, where two teams of integers are preparing to battle! On the left side of the number line we have team <i>Negatives</i> while on the right side we have team <i>Positives</i>. Every integer fighting in the colosseum is on one of these two teams.</p>\n<p>At the start of the battle, the contestants line up outside the colosseum. One by one, the contestants enter the colosseum and follow these rules:</p>\n<ul>\n<li>If there are no contestants from the other team, this contestant will wait and become the most recent contestant to have entered the colosseum.</li>\n<li>If at least one contestant of the opposing team is in the colosseum, this contestant will fight the contestant on the opposing team who has most recently entered the colosseum. The winner of a fight between a negative integer and positive integer is the one with the highest absolute value. After a fight occurs, the value of the winner becomes the sum of two fighting integers while the loser leaves. Note that if the two integers have the same absolute value, they both lose and both leave. If there is a winner, they will continue fighting as long as there are more opposing contestants. Otherwise, they will wait.</li>\n</ul>\n<p>After all of the integers have entered the colosseum, only one team may be declared the winners of the Number Colosseum! Given the lineup of contestants for the upcoming battle, write a program to determine which team will triumph as well as the state of the colosseum after all fights have occurred.</p>",
+  "input": "<p>The first line contains a single integer $N$ ($1≤N≤5⋅10^5$), which is the number of contestants who will enter the colosseum. The second line contains the lineup of contestants. This will contain $N$ space-separated integers $x_1,x_2, \\dots ,x_N$ ($1≤|x_i|≤10^6$ for each $1≤i≤N$), the value of the $i$th contestant entering the colosseum.</p>",
+  "output": "<p>Display the winning team with either <code>Positives win!</code> or <code>Negatives win!</code>. On the following line display the list of integers remaining in the colosseum after all fighting has finished. Display these integers in the order of arrival into the colosseum.</p>\n<p>If neither team wins, display <code>Tie!</code> instead.</p>",
+  "samples": [
+    {
+      "input": "4\n-3 -4 9 1\n",
+      "output": "Positives win!\n2 1\n"
+    },
+    {
+      "input": "7\n4 -2 -2 2 -1 -1 -1\n",
+      "output": "Negatives win!\n-1\n"
+    },
+    {
+      "input": "6\n10 -2 -2 -2 -2 -2\n",
+      "output": "Tie!\n"
+    }
+  ],
+  "hint": "<p>In Sample Input $1$, $N=4$ and the contestants have lined up in this order $[-3,-4,9,1]$.</p>\n<ul>\n<li>First, contestant $-3$ enters the colosseum which now contains $(-3)$.</li>\n<li>Next, contestant $-4$ enters the colosseum which now contains $(-3,-4)$.</li>\n<li>Then, $9$ enters and fights $-4$. Contestant $9$ wins and becomes $5$ while contestant $-4$ loses and leaves. Then $5$ fights $-3$, wins, and becomes $2$ while $-3$ loses and leaves. The colosseum now contains $(2)$.</li>\n<li>Finally, $1$ enters the colosseum. The final state of the Colosseum is $(2,1)$ and Positives win!</li>\n</ul>",
+  "source": ", University, University of Alberta Programming Contest, UAPC 2022, Division 1, University, University of Alberta Programming Contest, UAPC 2022, Division 2",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "simulation",
+    "stack"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 1.9737000465393066
+}

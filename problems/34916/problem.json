@@ -1,0 +1,28 @@
+{
+  "id": 34916,
+  "title": "RMQ",
+  "time_limit": "5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p><em>This is an interactive problem.</em></p>\n<p>Busy Beaver has a secret array $a_1,a_2,\\dots,a_N$ of <strong>distinct</strong> positive integers between $1$ and $10^9$. For $1 \\le l \\le r \\le N$, Busy Beaver defines $f(l,r)$ to be equal to $\\min(a_l,a_{l+1},\\dots,a_r)$.</p>\n<p>Busy Beaver allows you to ask some queries to uncover information about the array. In a query, you can specify $l$ and $r$ ($1 \\le l \\le r \\le N$), and Busy Beaver will tell you the value of $f(l,r)$ for a cost of $\\frac{1}{r-l+1}$. You must ensure that the total cost of all queries is at most $1$.</p>\n<p>After making all your queries, you report to Busy Beaver a list of pairs $(l,r)$ for which you determined the value of $f(l,r)$. If any of your answers are wrong, Busy Beaver will be displeased and award you $0$ points. Otherwise, your score will depend on the fraction of the $\\frac{N(N+1)}{2}$ pairs $(l,r)$ with $1 \\le l \\le r \\le N$ where you determined a value for $f(l,r)$ (see the Scoring section for more details).</p>\n<p>To reduce the size of the output, you report your knowledge using $k$ tuples of the form $(l_{min},l_{max},r_{min},r_{max},v)$, where $1 \\le l_{min} \\le l_{max} \\le r_{min} \\le r_{max} \\le N$ and $1 \\le v \\le 10^9$. Each tuple declares that $f(l,r) = v$ for all $l_{min} \\le l \\le l_{max}$ and $r_{min} \\le r \\le r_{max}$. Any pairs $(l,r)$ that do not correspond to any tuple are treated as unspecified. It is allowed to have multiple tuples that describe the same pair $(l,r)$, but you will receive $0$ points if these tuples indicate inconsistent values.</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "6\n\n31\n\n26\n\n53\n",
+      "output": "\n\n? 1 3\n\n? 1 6\n\n? 5 6\n\n! 4\n1 1 3 3 31\n1 4 4 6 26\n2 3 5 5 26\n5 5 6 6 53\n"
+    }
+  ],
+  "hint": "<p>Note that the sample does not satisfy $N = 10^5$, so it will not be included in the actual test cases. It is provided only to illustrate the interaction format.</p>\n<p>In the sample, Busy Beaver's secret array is $a = [31,41,59,26,53,58]$. You decide to make the following queries:</p>\n<ul>\n<li>$l = 1$, $r = 3$: Busy Beaver calculates $f(1,3) = \\min(31,41,59) = 31$ and tells you the value $31$.</li>\n<li>$l = 1$, $r = 6$: Busy Beaver calculates $f(1,6) = \\min(31,41,59,26,53,58) = 26$ and tells you the value $26$.</li>\n<li>$l = 5$, $r = 6$: Busy Beaver calculates $f(5,6) = \\min(53,58) = 53$ and tells you the value $53$.</li>\n</ul>\n<p>Note that the total cost of all your queries is $\\frac13+\\frac16+\\frac12 = 1$, which does not exceed $1$ as required.</p>\n<p>From this information, you report to Busy Beaver the following values of $f(l,r)$ you have deduced:</p>\n<ul>\n<li>$f(l,r) = 31$ for all $1 \\le l \\le 1$, $3 \\le r \\le 3$.</li>\n<li>$f(l,r) = 26$ for all $1 \\le l \\le 4$, $4 \\le r \\le 6$.</li>\n<li>$f(l,r) = 26$ for all $2 \\le l \\le 3$, $5 \\le r \\le 5$. This overlaps with the information in the previous line, but is a valid output.</li>\n<li>$f(l,r) = 53$ for all $5 \\le l \\le 5$, $6 \\le r \\le 6$.</li>\n</ul>\n<p>After removing overlaps, you reported $14$ of the values of $f(l,r)$ out of the $\\frac{N(N+1)}{2} = 21$ distinct pairs $(l,r)$. Therefore, Busy Beaver will calculate $x = \\frac{14}{21}$ and give you a score of $$ \\left\\lfloor 100 \\cdot \\frac{14/21}{0.8} \\right\\rfloor = \\left\\lfloor 83.\\bar{3} \\right\\rfloor = 83 $$ for this interaction.</p>",
+  "source": "University, MIT, M(IT)^2, M(IT)^2 Winter 2025-26 Tournament, Advanced Team Round",
+  "level": 0,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "binary_search",
+    "case_work",
+    "priority_queue"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 27
+}

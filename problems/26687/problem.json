@@ -1,0 +1,26 @@
+{
+  "id": 26687,
+  "title": "Bardzo skomplikowany test",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Bajtek właśnie przystąpił do egzaminu ustnego z Algorytmów i Struktur Danych. Nie uczył się do niego za długo, nie szło mu zatem najlepiej. Po kilku minutach rozmowy załamany wykładowca postanowił dać chłopcu ostatnią szansę.</p>\n<p>– Wiesz chociaż chłopcze, czym są drzewa BST? – zapytał profesor.</p>\n<p>Bajtek uśmiechnął się pod nosem, słysząc to, bowiem podczas jego drzemki na wykładzie trochę teorii zapadło mu w pamięć.</p>\n<p>– Tak, drzewo BST o rozmiarze n to ukorzenione drzewo, którego wierzchołki numerowane są liczbami całkowitymi od 1 do n. Każdy wierzchołek może mieć co najwyżej dwójkę dzieci; może mieć lewego (co najwyżej jednego) syna oraz prawego (co najwyżej jednego) syna. Dodatkowo, numer każdego wierzchołka musi być większy niż numery wszystkich wierzchołków w jego lewym poddrzewie oraz mniejszy niż numery wszystkich wierzchołków w jego prawym poddrzewie – odpowiedział Bajtek, sięgając do głębin swojej podświadomości.</p>\n<p>– Dobrze. Sprawdzimy, czy pamiętasz, jak się wykonuje na nich rotacje – odpowiedział, siedzący dotąd profesor, po czym wstał i ruszył w stronę tablicy.</p>\n<p>Bajtka zalał zimny pot. Momentalnie stracił pewność siebie, nie pamiętał bowiem, jak dokładnie działają rotacje (zapewne w tym momencie wykładu przewracał się na drugi bok, i to musiało zagłuszyć słowa wykładowcy). Egzaminator narysował na tablicy dwa drzewa BST tego samego rozmiaru i nakazał Bajtkowi za pomocą poprawnych rotacji przeobrazić pierwsze z nich w drugie.</p>\n<p>Bajtek pomyślał chwilę i założył, że lewa rotacja to wybranie pewnego wierzchołka v i jego prawego syna w oraz sprawienie, by to w był ojcem v. Intuicję Bajtka formalizuje następujący pseudokod:</p>\n<p><img alt=\"\" src=\"1.png\" style=\"width: 257px; height: 100px; float: right;\"/></p>\n<pre>\nif v.Ojciec != null then\n    if v.Ojciec.PrawySyn == v then\n        v.Ojciec.PrawySyn := w\n    else\n        v.Ojciec.LewySyn := w\nw.Ojciec := v.Ojciec\nv.Ojciec := w\nw.LewySyn := v\nv.PrawySyn := null</pre>\n<p>Analogicznie Bajtek rozumie prawą rotację, gdzie w jest lewym synem wierzchołka v:</p>\n<p><img alt=\"\" src=\"2.png\" style=\"width: 267px; height: 100px; float: right;\"/></p>\n<pre>\nif v.Ojciec != null then\n    if v.Ojciec.PrawySyn == v then\n        v.Ojciec.PrawySyn := w\n    else\n        v.Ojciec.LewySyn := w\nw.Ojciec := v.Ojciec\nv.Ojciec := w\nw.PrawySyn := v\nv.LewySyn := null</pre>\n<p>Jednak chłopiec szybko zauważył, że coś jest nie tak. Jeśli podczas lewej rotacji wierzchołek w miał jakieś lewe poddrzewo, to zostanie ono zgubione! To samo może stać się z ewentualnym prawym poddrzewem wierzchołka w podczas prawej rotacji.</p>\n<p>– Pospiesz się chłopcze, nie tylko Ty chciałbyś zdać ten egzamin – ponaglił go zniecierpliwiony profesor.</p>\n<p>Nie mając zbyt wiele czasu do namysłu, Bajtek założył, że rotację może wykonać tylko wtedy, gdy owe problematyczne poddrzewo jest puste, tzn. gdy nie zgubi żadnego wierzchołka, a drzewo pozostanie spójne.</p>\n<p>Chcąc jak najszybciej zakończyć swoje udręki, postanowił, że wykona minimalnie wiele rotacji, które pozwolą mu przeistoczyć pierwsze drzewo w drugie. Dasz radę stwierdzić, czy jest to możliwe, i jeśli tak, to ile rotacji będzie musiał wykonać? Ponieważ liczba ta może być dość duża, wystarczy jak podasz jej resztę z dzielenia przez 10<sup>9</sup> + 7.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajduje się jedna liczba całkowita n (1 ≤ n ≤ 5 · 10<sup>5</sup>) oznaczająca rozmiar drzew narysowanych przez profesora.</p>\n<p>W następnych dwóch wierszach znajdują się opisy tych drzew. Opis drzewa składa się z ciągu n liczb całkowitych a<sub>1</sub>, a<sub>2</sub>, . . . , a<sub>n</sub> (−1 ≤ a<sub>i</sub> ≤ n, a<sub>i</sub> ≠ 0); wartość ai ≥ 1 oznacza, że ojcem i-tego wierzchołka jest wierzchołek a<sub>i</sub>; wartość a<sub>i</sub> = −1 oznacza, że i-ty wierzchołek jest korzeniem całego drzewa.</p>\n<p>Możesz założyć, że oba drzewa są poprawnymi drzewami BST, tzn. nie ma w nich cykli, jest dokładnie jeden korzeń, a każdy wierzchołek ma co najwyżej jednego syna mniejszego od siebie i jednego syna większego od siebie (oraz zachodzi warunek z porównywaniem wierzchołka z jego poddrzewami).</p>",
+  "output": "<p>Na wyjściu powinna znaleźć się jedna liczba całkowita, oznaczająca resztę z dzielenia przez 10<sup>9</sup> + 7 minimalnej możliwej liczby rotacji (w rozumieniu Bajtka) potrzebnych do przekształcenia pierwszego drzewa w drugie, lub −1, jeśli takie przekształcenie nie jest możliwe.</p>",
+  "samples": [
+    {
+      "input": "4\n3 1 -1 3\n2 -1 4 2\n",
+      "output": "3\n"
+    },
+    {
+      "input": "8\n2 4 2 7 4 5 -1 7\n2 3 6 5 3 -1 6 7\n",
+      "output": "7\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie pierwszego przykładu: Na poniższym rysunku przedstawiono minimalną liczbę rotacji przekształcającą drzewa:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 519px; height: 77px;\"/></p>",
+  "source": "Contest, Algorithmic Engagements, PA 2020",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

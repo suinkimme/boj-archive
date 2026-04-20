@@ -1,0 +1,28 @@
+{
+  "id": 35140,
+  "title": "Mediation",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>You are the mayor of a tree-structured city with $N$ districts, numbered from $1$ to $N$, connected by $N - 1$ roads, numbered from $1$ to $N - 1$. Road $i$ connects district $U_i$ and district $V_i$ bidirectionally with weight $W_i$. Two districts $S_1$ and $S_2$ have been marked as <strong>mediator districts</strong>. The travel cost between district $x$ and district $y$, denoted by $d(x, y)$, is the minimum sum of weights of the roads you need to pass through.</p>\n<p>Whenever a conflict arise between any two districts, the mediator districts are required to travel to the conflicting districts. The <strong>mediation cost</strong> for two conflicting districts $u$ and $v$, denoted by $M(u, v)$, is the maximum travel cost of the mediator districts to the nearest conflicting district. Formally, $M(x, y)$ can be calculated as follows.</p>\n<p>\\[M(u, v) = \\max(\\min(d(u, S_1), d(v, S_1)), \\min(d(u, S_2), d(v, S_2)))\\]</p>\n<p>Calculate the sum of mediation cost $M(u, v)$ over all $1 \\leq u &lt; v \\leq N$.</p>",
+  "input": "<p>The first line contains three integers: $N$, $S_1$, and $S_2$ ($2 \\le N \\le 200\\,000$; $1 \\leq S_1 &lt; S_2 \\leq N$).</p>\n<p>The next $N-1$ lines contains integers $U_i$, $V_i$, and $W_i$ ($1 \\le U_i &lt; V_i \\le N$; $1 \\leq W_i \\leq 100$) describing an edge.</p>",
+  "output": "<p>Output the sum of mediation cost in a single line.</p>",
+  "samples": [
+    {
+      "input": "6 2 4\n1 4 5\n3 4 1\n4 5 1\n2 5 2\n2 6 2\n",
+      "output": "35\n"
+    }
+  ],
+  "hint": "<p><em>Explanation of Sample 1:</em> The city is illustrated as follows.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 200px; height: 158px;\"/></p>\n<p>The values of $M(u, v)$ over all $1 \\leq u &lt; v \\leq N$ are presented as follows.</p>\n<table class=\"table-center-30 th-center td-center table table-bordered\">\n<thead>\n<tr>\n<th>u \\ v</th>\n<th>1</th>\n<th>2</th>\n<th>3</th>\n<th>4</th>\n<th>5</th>\n<th>6</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>1</th>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td>3</td>\n<td>4</td>\n<td>3</td>\n<td>2</td>\n<td>5</td>\n</tr>\n<tr>\n<th>2</th>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td>1</td>\n<td>0</td>\n<td>1</td>\n<td>3</td>\n</tr>\n<tr>\n<th>3</th>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td>3</td>\n<td>2</td>\n<td>2</td>\n</tr>\n<tr>\n<th>4</th>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td>2</td>\n<td>2</td>\n</tr>\n<tr>\n<th>5</th>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td style=\"background-color:#EFEFEF;\"> </td>\n<td>2</td>\n</tr>\n</tbody>\n</table>\n<p>The sum of all $M(u, v)$ is 35.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2025",
+  "level": 20,
+  "tags": [
+    "math",
+    "graphs",
+    "graph_traversal",
+    "combinatorics",
+    "bfs"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

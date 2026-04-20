@@ -1,0 +1,22 @@
+{
+  "id": 31120,
+  "title": "Stringology",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>For a string $u = u_1 \\dots u_n$, Bobo denotes the prefix $u_1 \\dots u_i$ by $\\mathrm{pre}(u, i)$. Similarly, he denotes the suffix $u_{n - i + 1} \\dots u_n$ by $\\mathrm{suf}(u, i)$. In particular, $\\mathrm{pre}(u, 0)$ and $\\mathrm{suf}(u, 0)$ are empty strings.</p>\n<p>For two strings $u = u_1 \\dots u_n$ and $v = v_1 \\dots v_m$, Bobo denotes the concatenation $u_1 \\dots u_n v_1 \\dots v_m$ by $u + v$. Also, $$\\mathrm{presuf}(u, v) = \\max\\{i \\mid i &lt; n \\text{ and } i \\leq m \\text{ and } \\mathrm{pre}(u, i) = \\mathrm{suf}(v, i) \\}\\text{.}$$</p>\n<p>Given two strings $s = s_1 \\dots s_n$ and $t = t_1 \\dots t_m$, let $f(i) = \\mathrm{presuf}(s, \\mathrm{pre}(s, i) + t)$. Find the value of $f(0), \\dots, f(n - 1)$.</p>",
+  "input": "<p>The input consists of several test cases terminated by end-of-file. For each test case,</p>\n<p>The first line contains a string $s_1 \\dots s_n$.</p>\n<p>The second line contains a string $t_1 \\dots t_m$.</p>",
+  "output": "<p>For each test case, output $n$ integers which denote $f(0), \\dots, f(n - 1)$.</p>",
+  "samples": [
+    {
+      "input": "aaa\na\nababa\na\nab\ncd\n",
+      "output": "1 2 2\n1 1 3 1 3\n0 0\n"
+    }
+  ],
+  "hint": "<p>For the second case, $f(4) = \\mathrm{presuf}(s, \\mathrm{pre}(s, 4) + t) = \\mathrm{presuf}($<code>ababa</code>$, $<code>abab</code>$ + $<code>a</code>$) = \\mathrm{presuf}($<code>ababa</code>$, $<code>ababa</code>$)$.</p>\n<table class=\"table table-bordered th-center td-center table-center-50\">\n<tbody>\n<tr>\n<th>$i$</th>\n<th>$\\mathrm{pre}(\\mathtt{ababa}, i)$</th>\n<th>$\\mathrm{suf}(\\mathtt{ababa}, i)$</th>\n</tr>\n<tr>\n<td>$0$</td>\n<td>(an empty string)</td>\n<td>(an empty string)</td>\n</tr>\n<tr>\n<td>$1$</td>\n<td>$\\mathtt{a}$</td>\n<td>$\\mathtt{a}$</td>\n</tr>\n<tr>\n<td>$2$</td>\n<td>$\\mathtt{ab}$</td>\n<td>$\\mathtt{ba}$</td>\n</tr>\n<tr>\n<td>$3$</td>\n<td>$\\mathtt{aba}$</td>\n<td>$\\mathtt{aba}$</td>\n</tr>\n<tr>\n<td>$4$</td>\n<td>$\\mathtt{abab}$</td>\n<td>$\\mathtt{baba}$</td>\n</tr>\n</tbody>\n</table>\n<p>Therefore, $f(4) = 3$.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 18: Grand Prix of Beijing",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

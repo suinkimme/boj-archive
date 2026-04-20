@@ -1,0 +1,26 @@
+{
+  "id": 19346,
+  "title": "Knapsack",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p class=\"lead\" style=\"text-align: center;\"><code>To fit the best stuff in a sack<br/>\nwith limits on what you can pack<br/>\nrecursion will do<br/>\nif memoized too<br/>\nbut DP puts less on the stack.</code></p>\n<p>You are given a classic knapsack problem: a set of elements $(w_1, v_1), \\dots, (w_n, v_n)$ and a capacity $W$. Solve</p>\n<p>$$\\max_{\\substack{S \\subseteq [n]\\\\\\sum_{i\\in S} w_i \\leq W}} \\sum_{i \\in S} v_i\\text{.}$$</p>\n<p>Here, $[n]$ is the list of integers from $1$ through $n$.</p>\n<p>You are guaranteed that $0 \\leq n \\leq 500$, $0 \\leq w_i \\leq W \\leq 10^{17}$, and $0 \\leq v_i \\leq 10^{16}$. Furthermore, you are guaranteed that the $w_i$ have been \"smoothed\" as described in the next paragraph.</p>\n<p>A problem instance complying with the above bounds is constructed. Then a randomizing filter is applied to the problem instance as follows: Let $B$ be the weight of the element of maximum weight. Now the following update is applied to each weight:</p>\n<p>$$ w_i \\leftarrow \\min (w_i + \\mbox{rand}(\\lfloor .05 B \\rfloor), W) $$</p>\n<p>Here $\\mbox{rand}(A)$ is a function that generates a uniform random integer in $[0, A-1]$. This process is applied only to the $w_i$, not to $W$ or any of the other values.</p>",
+  "input": "<p>The first line contains the two space-separated integers $n$ and $W$. Each of the next $n$ lines contains two space-separated integers $w_i$ and $v_i$.  The element weights were generated as described above.  First the items are chosen in compliance with all the bounds.  Then the smoothing algorithm is applied.  The result is what your program will receive as input.</p>",
+  "output": "<p>Output one line with the value of the given knapsack problem instance.</p>",
+  "samples": [
+    {
+      "input": "3 5\n1 2\n2 3\n3 4\n",
+      "output": "7\n"
+    },
+    {
+      "input": "3 302000\n100588 2\n200421 1000\n30036 1\n",
+      "output": "1002\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2018, Day 9: Carnegie Mellon U Contest",
+  "level": 26,
+  "tags": [],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 4.6666998863220215
+}

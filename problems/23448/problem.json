@@ -1,0 +1,30 @@
+{
+  "id": 23448,
+  "title": "Wire-compatible Protocol buffer",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>Protocol buffers (or protobuf) are a flexible, efficient, automated mechanism for serializing structured data -- think XML, but smaller, faster and simpler. In this problem, we will discuss the wile-compatible problem on a simplified protocol buffer.</p>",
+  "input": "<p>The first line contains an integer $n$ indicates the number of lines of a protobuf descriptor.</p>\n<p>The following $n$ lines are the content of the protobuf descriptor which contains a set of messages. Each line will not contain more than 120 characters.</p>\n<p>Then follows a line with an integer $m$ ($1 \\le m \\le 50000$), indicating there are $m$ wire-format compatibility queries.</p>\n<p>Then follow $m$ lines, each of which is a wire-format compatibility query with two message names.</p>\n<p>It is guaranteed that the descriptor is valid, in other words, no two messages have the same name, no two fields in a message have the same field name or tag number, and each message type in a field must be one of the existing message names.</p>\n<p>There will be at most 1000 messages in the descriptor, and each message will have at most 16 fields.</p>\n<p>All tokens of the input are separated by spaces.</p>",
+  "output": "<p>For each query, output one line containing \"Wire-format compatible.\" (quotes for clarity) if the two messages in this query are wire-format compatible, or otherwise, \"Wire-format incompatible.\" (quotes for clarity)</p>",
+  "samples": [
+    {
+      "input": "18\nmessage Test1 {\n  optional string field = 1 ;\n}\nmessage Test2 {\n  optional string field_string = 1 ;\n}\nmessage Test3 {\n  optional string field = 2 ;\n}\nmessage Test4 {\n  required string field = 1 ;\n}\nmessage StringMessage {\n  optional string field = 1 ;\n}\nmessage Test5 {\n  optional StringMessage field = 1 ;\n}\n4\nTest1 Test2\nTest1 Test3\nTest1 Test4\nTest1 Test5\n",
+      "output": "Wire-format compatible.\nWire-format incompatible.\nWire-format incompatible.\nWire-format incompatible.\n"
+    },
+    {
+      "input": "5\nmessage A { optional B nest = 1 ; }\nmessage B { optional C nest = 1 ; }\nmessage C { }\nmessage D { optional E nest = 1 ; }\nmessage E { }\n2\nB D\nA D\n",
+      "output": "Wire-format compatible.\nWire-format incompatible.\n"
+    },
+    {
+      "input": "3\nmessage A { optional A nest = 1 ; }\nmessage B { optional C nest = 1 ; }\nmessage C { optional B nest = 1 ; }\n3\nA B\nA C\nB C\n",
+      "output": "Wire-format compatible.\nWire-format compatible.\nWire-format compatible.\n"
+    }
+  ],
+  "hint": "<p>In the first example:</p>\n<ul>\n<li>For Test1 and Test2, though the two messages have different field names, the serialized message just cares about their field numbers.</li>\n<li>For Test1 and Test3, the same field name as the two messages have, their field numbers do not match.</li>\n<li>For Test1 and Test4, obviously required is incompatible with optional.</li>\n<li>For Test1 and Test5, not all valid UTF-8 strings are valid messages, and vice versa.</li>\n</ul>",
+  "source": "Contest, Open Cup, 2019/2020 Season, Stage 9: Grand Prix of Beijing",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,26 @@
+{
+  "id": 7871,
+  "title": "Better and faster!",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You probably know this story already. You wake up in the morning and your head feels twice the size. You have a vague memory of a program your boss asked you to write. After you have logged in, you see a main piece of code you wrote yesterday.</p>\n<pre>\nunsigned int checksum (char str[], int len) {\n    unsigned int r = 0;\n    for (int k=0; k&lt;8*len; k++) {               // iterate over bits of str\n        if ((r &amp; (1&lt;&lt;31)) != 0) r = (r &lt;&lt; 1) ^ 0x04c11db7;\n                           else r = (r &lt;&lt; 1);   // do some magic\n        if (str[k/8] &amp; 1&lt;&lt;(7-k%8))              // if the k-th bit of str is set,\n            r ^= 1; // then flip the last bit of r\n    }\n    return r;\n}</pre>\n<p>“Good”, you think, “I commented it well”. Still, you have some issues with understanding the “do some magic” part. But well, the function is called <code>checksum</code>, and — lo and behold — it really computes a kind of a checksum of a given string.</p>\n<p>You recall the rest of your task. You were supposed to compute this checksum for a given string and then for slightly modified versions of this string. Actually, the rest of your program also looks quite decent.</p>\n<pre>\n#include &lt;stdio.h&gt;\n\nint main() {\n    char str[1000001],c;\n    int TESTS,n,changes,p;\n    for (scanf (\"%d\", &amp;TESTS); TESTS&gt;0; TESTS--) {\n        scanf (\"%d %s\", &amp;n, str);               // read the input\n        printf (\"%u\\n\", checksum(str, n));      // compute checksum for original string\n        for (scanf (\"%d\", &amp;changes); changes&gt;0; changes--) {\n            scanf (\"%d %c\", &amp;p, &amp;c);            // apply the change\n            str[p-1] = c;\n            printf (\"%u\\n\", checksum(str, n));  // compute checksum for modified string\n        }\n    }\n}</pre>\n<p>And then you recall the final issue. The program works perfectly well, but also terribly slow. You just have to make it work faster. Much faster. As you have heard that Java is a better and safer programming language, you even made an equivalent Java version (see the last page), which works even slower (strange, eh?).</p>",
+  "input": "<p>The input contains several test cases. The first line of the input contains a positive integer Z ≤ 20, denoting the number of test cases. Then Z test cases follow.</p>\n<p>Below by a character, we mean a single small or large letter, or a digit.</p>\n<p>In the first line of an input instance, there is a natural number n (1 ≤ n ≤ 10<sup>6</sup>) and a string s, separated by a single space. String s consists of n characters. The second line of the input contains one integer t (0 ≤ t ≤ 10<sup>5</sup>) denoting the number of changes to be applied to string s. Each of the next t lines consists of a natural number p ∈ [1, n] and a character c, separated by a single space. It encodes a change of a string: the p-th character of s has to be replaced by c.</p>",
+  "output": "<p>You have to produce the same output the program above would do. In other words, you have to output t + 1 lines, each containing a natural number being a checksum. The first checksum has to be computed for an original string s, the remaining ones are to be computed after each change made to s.</p>",
+  "samples": [
+    {
+      "input": "1\n5 ABcd3\n3\n1 B\n2 A\n1 d\n",
+      "output": "1914964467\n2137468714\n2087137066\n4274181240\n"
+    }
+  ],
+  "hint": "<p>Java Version of The Program</p>\n<pre>\nimport java.util.Scanner;\n\npublic class Compute {\n\n    static long checksum (byte[] str, int len) {\n        int r = 0;\n        for (int k=0; k&lt;8*len; k++) {                  // iterate over bits of str\n            if ((r &amp; (1&lt;&lt;31)) != 0) r = (r &lt;&lt; 1) ^ 0x04c11db7;\n            else r = (r &lt;&lt; 1);                         // do some magic\n            if ((str[k/8] &amp; 1&lt;&lt;(7-k%8)) != 0)          // if the k-th bit of str is set,\n                r ^= 1;                                // then flip the last bit of r\n        }\n        long rr = (r&lt;0 ? r+0x100000000L : r);          // Java does not have unsigned int\n        return rr;\n    }\n\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        for (int TESTS = in.nextInt(); TESTS&gt;0; TESTS--) {\n            int n = in.nextInt();                      // read the input\n            byte[] str = in.next().getBytes();         // compute checksum for\n            System.out.println (checksum(str,n));      // original string\n            for (int changes = in.nextInt(); changes&gt;0; changes--) {\n                int p = in.nextInt();                  // apply the change\n                byte c = in.next().getBytes()[0];\n                str[p-1] = c;\n                System.out.println (checksum(str,n));  // compute checksum for\n            } // modified string\n        }\n    }\n}</pre>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2009",
+  "level": 16,
+  "tags": [
+    "bitmask",
+    "dp",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 2.6666998863220215
+}

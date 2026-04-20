@@ -1,0 +1,27 @@
+{
+  "id": 14894,
+  "title": "퀵 소트 cnt++",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>구사과는 N개의 서로 다른 양의 정수를 정렬하기 위해 아래와 같은 C++ 코드를 작성했다.</p>\n<pre class=\"brush:c++; toolbar:false;\">\nlong long cnt = 0;\nvector&lt;int&gt; sort(vector&lt;int&gt; &amp;a) {\n    vector&lt;int&gt; less, greater;\n    if (a.size() &lt;= 1) return a;\n    int pivot = a[(a.size()-1)/2];\n    int n = a.size();\n    for (int i=0; i&lt;n; i++) {\n        cnt += 1;\n        if (a[i] &lt; pivot) {\n            less.push_back(a[i]);\n        } else if (a[i] &gt; pivot) {\n            greater.push_back(a[i]);\n        }\n    }\n    sort(less); sort(greater);\n    vector&lt;int&gt; ans;\n    ans.insert(ans.end(), less.begin(), less.end());\n    ans.push_back(pivot);\n    ans.insert(ans.end(), greater.begin(), greater.end());\n    return ans;\n}</pre>\n<p>서로 다른 자연수 N개로 이루어진 배열 <code>A</code>가 주어졌을 때, 이를 <code>sort</code> 함수를 이용해서 정렬했을 때, <code>cnt</code>에 들어있는 값을 구하는 프로그램을 작성하시오.</p>",
+  "input": "<p>첫째 줄에 N(1 ≤ N ≤ 500,000)이 주어진다. 둘째 줄에는 배열 A에 들어있는 수가 공백으로 구분해 주어진다. 주어지는 수는 1부터 N까지의 수로 이루어진 순열이다.</p>",
+  "output": "<p>입력으로 주어진 수를 <code>sort</code> 함수를 이용해 정렬했을 때, <code>cnt</code>에 들어있는 값을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5\n4 3 5 1 2\n",
+      "output": "11\n"
+    }
+  ],
+  "hint": null,
+  "source": "baekjoon, zych1751",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "divide_and_conquer",
+    "pst"
+  ],
+  "accepted_user_count": 88,
+  "submission_count": null,
+  "average_tries": 1.96589994430542
+}

@@ -1,0 +1,36 @@
+{
+  "id": 34113,
+  "title": "Migration Plan",
+  "time_limit": "7.5 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>JOI Kingdom consists of $N$ cities numbered from $1$ to $N$. There are $N − 1$ one-way roads connecting these cities. Specifically, for each $i = 2, 3, \\dots , N$, there is a road leading from city $i$ to city $P_i$. Here, it is guaranteed that $1 ≤ P_i &lt; i$.</p>\n<p>Each of the $N$ cities has a defined <strong>danger level</strong>. The capital city, city $1$, has a danger level of $0$. For city $i$ ($2 ≤ i ≤ N$), the danger level is defined as the number of roads traversed in the path from city $i$ to city $1$. Due to the structure of JOI Kingdom, there is exactly one unique path from any city $i$ to city $1$.</p>\n<p>Currently, there are $K_i$ beavers living in city $i$ ($1 ≤ i ≤ N$). The president of JOI Kingdom, Bitaro, has planned a beaver relocation program. This relocation plan will be executed over $Q$ days. On the $j$-th day ($1 ≤ j ≤ Q$), one of the following three types of events will occur:</p>\n<ul>\n<li>Relocation: All beavers living in a city with danger level $X_j$ at that moment will move to a city with danger level $Y_j$, which they can reach by traveling along one or more roads from their current city. It is guaranteed that $0 ≤ Y_j &lt; X_j$. Due to the structure of JOI Kingdom, the relocation destination for each beaver is uniquely determined.</li>\n<li>Immigration: The number of beavers living in city $A_j$ increases by $L_j$ due to immigration from outside JOI Kingdom.</li>\n<li>Survey: The number of beavers currently living in city $B_j$ is surveyed.</li>\n</ul>\n<p>As Bitaro’s subordinate, you realize that you can compute the number of beavers in each survey event based solely on the relocation plan’s information, without physically visiting the city.</p>\n<p>Given the structure of JOI Kingdom, the current number of beavers living in each city, and the details of the relocation plan, write a program to compute the results of each survey event.</p>",
+  "input": "<p>Read the following data from the standard input.</p>\n<blockquote>\n<p>$N$</p>\n<p>$P_2$ $P_3$ $\\cdots$ $P_N$</p>\n<p>$K_1$ $K_2$ $\\cdots$ $K_N$</p>\n<p>$Q$</p>\n<p>(Query $1$)</p>\n<p>(Query $2$)</p>\n<p>$\\vdots$</p>\n<p>(Query $Q$)</p>\n</blockquote>\n<p>Each (Query $j$) ($1 ≤ j ≤ Q$) consists of several integers separated by spaces. Let the first integer be $T_j$, then the content of this line is as follows:</p>\n<ul>\n<li>If $T_j = 1$, the line continues with two integers $X_j$, $Y_j$ in this order. This indicates that on day $j$, a relocation event occurs, where all beavers living in a city with danger level $X_j$ move to a city with danger level $Y_j$ that they can reach by traveling along one or more roads from their current city.</li>\n<li>If $T_j = 2$, the line continues with two integers $A_j$, $L_j$ in this order. This indicates that on day $j$, an immigration event occurs, increasing the number of beavers in city $A_j$ by $L_j$.</li>\n<li>If $T_j = 3$, the line continues with one integer $B_j$. This indicates that on day $j$, a survey event occurs, where the number of beavers currently living in city $B_j$ is surveyed.</li>\n</ul>",
+  "output": "<p>For each $j$ ($1 ≤ j ≤ Q$) where $T_j = 3$, output the number of beavers in city $B_j$ at that moment, one per line, in order.</p>",
+  "samples": [
+    {
+      "input": "4\n1 1 2\n1 3 4 3\n6\n3 1\n1 1 0\n3 1\n3 2\n1 2 1\n3 2\n",
+      "output": "1\n8\n0\n3\n"
+    },
+    {
+      "input": "3\n1 1\n3 1 4\n11\n2 2 5\n1 2 0\n3 1\n1 1 0\n3 1\n3 2\n2 3 4\n3 3\n1 1 0\n3 3\n3 1\n",
+      "output": "3\n13\n0\n4\n0\n1\n"
+    },
+    {
+      "input": "7\n1 2 1 3 3 2\n5 2 8 9 4 0 5\n10\n1 3 1\n2 4 10\n3 2\n1 6 3\n1 2 0\n3 1\n3 4\n2 5 6\n3 5\n3 3\n",
+      "output": "6\n18\n19\n6\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, JOI Spring Training Camp, JOI 2024/2025 Spring Training Camp",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "sweeping",
+    "euler_tour_technique"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 2.5999999046325684
+}

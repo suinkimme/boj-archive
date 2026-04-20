@@ -1,0 +1,31 @@
+{
+  "id": 26199,
+  "title": "Permutations",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Let $[n]$ denote the set $\\{1, 2, \\ldots, n\\}$. A <strong>permutation</strong> of order $n$ is a one-to-one mapping from the set $[n]$ to the set $[n]$. For example, let $\\pi \\colon [7] \\to [7]$ be a concrete permutation of order $7$. We usually represent it with a table like this:</p>\n<p>$\\pi = \\begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 \\\\ 3 &amp; 7 &amp; 4 &amp; 1 &amp; 6 &amp; 5 &amp; 2\\end{pmatrix}.$</p>\n<p>This means that $\\pi(1) = 3$, $\\pi(2) = 7$, $\\pi(3) = 4$ etc. Since the top row is always $1\\ 2\\ 3 \\ldots n$, we usually omit it and write down the permutation in the <strong>one-line notation</strong>:</p>\n<p>$\\pi = 3\\ 7\\ 4\\ 1\\ 6\\ 5\\ 2.$</p>\n<p>The <strong>cycle notation</strong> is also very popular. We start with element $1$ and determine its image $\\pi(1) = 3$. Next, we take the element $3$ and determine its image $\\pi(3) = 4$. If we keep doing this, we sooner or later arrive back at the element $1$. Indeed, $\\pi(4) = 1$. The permutation $\\pi$ contains the cycle $(1\\ 3\\ 4)$. Then we take the smallest number that has not yet appeared in any cycle - in our case it is $2$ - and repeat the process. Eventually, we obtain to the following:</p>\n<p>$\\pi = (1\\ 3\\ 4)\\ (2\\ 7)\\ (5\\ 6).$</p>\n<p>A permutation of order $n$ can also be represented by an <strong>inversion table</strong> $b_1\\ b_2\\ b_3 \\ldots b_n$ ($0 \\leq b_i \\leq n-i$), where $b_i$ is the number of those elements that are greater than $i$ and appear to the left of $i$ in the one-line notation. In our concrete example, the inversion table is:</p>\n<p>$3\\ 5\\ 0\\ 1\\ 2\\ 1\\ 0$.</p>\n<p>It is known that every permutation can be written in a unique way by an inversion table and that every inversion table $b_1\\ b_2\\ b_3 \\ldots b_n$ in which $0 \\leq b_i \\leq n-i$ holds for all $i \\in [n]$, represents a valid permutation.</p>\n<p>Write a program that will convert a inversion table to its corresponding cycle notation.</p>",
+  "input": "<p>The input data consists of two lines. The first line contains an integer $n$, i.e. the order of a permutation. The second line contains $n$ space-separated integers describing a valid inversion table.</p>",
+  "output": "<p>Output one line that contains the cycle notation of the permutation given by the given inversion table. Each cycle should be in parentheses. Cycles should be separated by one space. The numbers within the cycle should also be separated by one space. The smallest element should always be in the first place in the cycle. Cycles should be ordered according to the element in the first place. (See examples.)</p>",
+  "samples": [
+    {
+      "input": "7\n3 5 0 1 2 1 0\n",
+      "output": "(1 3 4) (2 7) (5 6)\n"
+    },
+    {
+      "input": "6\n4 2 1 1 0 0\n",
+      "output": "(1 5) (2 3) (4) (6)\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2022 연습 세션",
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "binary_search",
+    "permutation_cycle_decomposition"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.4443999528884888
+}

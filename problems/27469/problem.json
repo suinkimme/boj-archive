@@ -1,0 +1,33 @@
+{
+  "id": 27469,
+  "title": "퀸 움직이기",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>숙제를 하지 않고 체스와 조합론에 빠져있던 은재가 생활관에 체스판을 하나 들고 왔다. 이 체스판은 특이해서 $8 \\times 8$ 형태의 기본적인 판 뿐만 아니라 $17 \\times 19$ 크기나 심지어 $1 \\times 100$의 크기처럼 자유자재로 판의 크기를 조절할 수 있다.</p>\r\n\r\n<p>체스 고수가 되기 위해서 열심히 체스를 두던 은재는 수많은 패배 끝에, 상대 기물의 수비가 약한 약점 칸을 찾아서 공략하는 것이 중요하다는 걸 깨닫게 되었다. 조합론에 빠진 은재는 퀸을 움직여서 상대의 약점 칸으로 보내는 방법이 얼마나 있을지 궁금해서 하라는 체스는 두지 않고 다음과 같은 질문을 던지게 된다.</p>\r\n\r\n<blockquote>\r\n<p><em>체스에서 퀸이 가장 중요한 기물인데, 지금 내 퀸이 있는 위치에서 정확하게 $K$번 움직여서 원하는 위치로 보내는 방법이 얼마나 될까?</em></p>\r\n</blockquote>\r\n\r\n<p>현재 체스판에는 퀸의 이동을 방해하는 장애물들과 은재의 퀸이 있다. 장애물이 없을 수도 있다.</p>\r\n\r\n<p>체스판은 $N$행 $M$열로 구성되어 있고, $r$행 $c$열의 칸은 $(r, c)$로 나타낸다. $(1 \\le r \\le N$; $1 \\le c \\le M)$ 또한, 체스판의 각 칸은 장애물이 있는 칸이거나 없는 칸이다.</p>\r\n\r\n<p>초기에 퀸의 위치는 $(R_s, C_s)$, 퀸을 보내고자 하는 위치는 $(R_e, C_e)$이며, 아래 규칙에 따라 퀸을 움직일 수 있다.</p>\r\n\r\n<ul>\r\n\t<li>현재 칸을 $(R, C)$라고 할 때, 다음 $8$가지 방향 중 하나의 방향으로 원하는 거리만큼 움직일 수 있다.\r\n\t<ul>\r\n\t\t<li>위 &mdash; $(R - 1, C), (R - 2, C), (R - 3, C), \\cdots$</li>\r\n\t\t<li>아래 &mdash; $(R + 1, C), (R + 2, C), (R + 3, C), \\cdots$</li>\r\n\t\t<li>왼쪽 &mdash; $(R, C - 1), (R, C - 2), (R, C - 3), \\cdots$</li>\r\n\t\t<li>오른쪽 &mdash; $(R, C + 1), (R, C + 2), (R, C + 3), \\cdots$</li>\r\n\t\t<li>왼쪽 위 대각선 &mdash; $(R - 1, C - 1), (R - 2, C - 2), (R - 3, C - 3), \\cdots$</li>\r\n\t\t<li>오른쪽 위 대각선 &mdash; $(R - 1, C + 1), (R - 2, C + 2), (R - 3, C + 3), \\cdots$</li>\r\n\t\t<li>왼쪽 아래 대각선 &mdash; $(R + 1, C - 1), (R + 2, C - 2), (R + 3, C - 3), \\cdots$</li>\r\n\t\t<li>오른쪽 아래 대각선 &mdash; $(R + 1, C + 1), (R + 2, C + 2), (R + 3, C + 3), \\cdots$</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>정한 방향으로 움직일 때 장애물이 있는 칸을 지날 수 없다.</li>\r\n\t<li>체스판 밖으로 나가거나 장애물이 있는 칸으로 움직일 수 없다.</li>\r\n\t<li><strong>두 번 연속으로 같은 방향으로 움직일 수 없다.</strong></li>\r\n\t<li>퀸을 제자리에 두고 턴을 넘기는 것은 불가능하다.</li>\r\n</ul>\r\n\r\n<p>은재를 위해 은재가 퀸을 $K$번 움직여서 $(R_e, C_e)$ 칸으로 보낼 수 있는 경우의 수를 구하는 프로그램을 작성해보자!</p>\r\n",
+  "input": "<p>첫 번째 줄에 세 정수 $N$, $M$, $K$가 주어진다.</p>\r\n\r\n<p>$i + 1$번째 줄에 문자열 $S_i = S_{i1} S_{i2} \\cdots S_{iM}$이 주어진다. $(i, j)$ 칸에 장애물이 있으면 $S_{ij}=$<code><span style=\"color:#e74c3c;\">#</span></code>이고, $(i, j)$ 칸에 장애물이 없으면 $S_{ij}=$<code><span style=\"color:#e74c3c;\">.</span></code>이다. $(1 \\le i \\le N$; $1 \\le j \\le M)$</p>\r\n\r\n<p>$N+2$번째 줄에 두 정수 $R_s$, $C_s$가 주어진다.</p>\r\n\r\n<p>$N+3$번째 줄에 두 정수 $R_e$, $C_e$가 주어진다.</p>\r\n",
+  "output": "<p>문제의 정답을 $998\\,244\\,353$으로 나눈 나머지를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3 5 3\n#.#.#\n.#.#.\n#.#.#\n2 1\n2 5\n",
+      "output": "2\n"
+    },
+    {
+      "input": "8 8 3\n#...#...\n#.#.#...\n.#......\n........\n....#...\n..#.....\n##...###\n#.....#.\n4 5\n2 6\n",
+      "output": "75\n"
+    },
+    {
+      "input": "3 3 1\n###\n#.#\n###\n2 2\n2 2\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "School, 한국과학영재학교, 2023 KSA Automata Winter Contest, eric00513, eaststar, hjroh0315, kiwiyou, ssamt, tony9402, whqkrkt04, wizardrabbit",
+  "level": 17,
+  "tags": [
+    "dp",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 45,
+  "submission_count": null,
+  "average_tries": 2.5332999229431152
+}

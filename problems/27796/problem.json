@@ -1,0 +1,22 @@
+{
+  "id": 27796,
+  "title": "Go To Considered Helpful",
+  "time_limit": "서브태스크 참고 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Marlin is a fish who lost his son and is trying to find him. Fortunately, he ran into Cynthia, a turtle, as she swam around with her brothers, Wally and Seymour. Cynthia knows exactly where Marlin needs to go, and she can be very precise in giving directions. While Marlin is smart and can follow them perfectly, keeping track of a long list of directions can be problematic. Cynthia needs to find a way to make the list of directions short.</p>\n<p>Marlin lives in a matrix of <b>R</b> rows and <b>C</b> columns. Some cells of the matrix are dangerous and cannot be entered. Marlin and his son are currently in different non-dangerous cells. Marlin's son never moves to a different cell. Cynthia decided to give Marlin directions in the form of a program consisting of a list of instructions, each on a single line. Each instruction is of one of 5 types:</p>\n<ul>\n<li><code>N</code>: move one cell North (up),</li>\n<li><code>S</code>: move one cell South (down),</li>\n<li><code>W</code>: move one cell West (left),</li>\n<li><code>E</code>: move one cell East (right), and</li>\n<li><code>G(i)</code>: jump to the i-th line of the instruction list (counting starting from 1).</li>\n</ul>\n<p>After executing a line with any of the first 4 instructions, Marlin jumps to the next line on the list if there is one. If there is no next line, Marlin just stands still forever.</p>\n<p>For example, if Marlin were following the program</p>\n<pre>\n1: N\n2: E\n3: G(6)\n4: S\n5: G(1)\n6: W\n7: G(4)\n</pre>\n<p>he would move North (line 1), then East (2), then jump to line 6 without physically moving (3), then move West (6), then jump to line 4 (7), then move South (4), then jump to line 1 (5), then move North (1), etc.</p>\n<p>If at any point Marlin and his son are at the same cell, they will be reunited and Marlin will no longer follow any instructions. Cynthia the turtle wants to find out the smallest number of lines in a program that would get Marlin to the same cell as his son, without him ever going into a dangerous cell or moving outside of the matrix boundaries. All <code>G</code> instructions must jump to existing lines in the program.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case starts with a line containing <b>R</b> and <b>C</b>, the number of rows and columns in the matrix. Then, <b>R</b> lines follow containing a string of <b>C</b> characters each. The j-th character of the i-th of these lines <b>A<sub>ij</sub></b> represents the cell in the i-th row and j-th column of the matrix. The character is <code>#</code> if the cell is dangerous, an uppercase <code>M</code> if the cell is the one Marlin is currently at, an uppercase <code>N</code> if the cell is the one Marlin's son is currently at and <code>.</code> if the cell is an unoccupied non-dangerous cell.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is <code>IMPOSSIBLE</code> if there is no program that would get Marlin to his son under the conditions explained above, or the smallest number of instructions in such a program.</p>",
+  "samples": [
+    {
+      "input": "5\n2 5\nN...#\n....M\n2 5\nN#...\n...#M\n5 5\nN..##\n#.###\n#...#\n##.##\n##..M\n5 5\n..N##\n#.###\n#...#\n##.##\n##..M\n3 3\n#M#\n###\n#N#\n",
+      "output": "Case #1: 4\nCase #2: 7\nCase #3: 5\nCase #4: 6\nCase #5: IMPOSSIBLE"
+    }
+  ],
+  "hint": "<p>Below are some shortest programs for each of the possible sample case.</p>\n<ul>\n<li>Sample Case #1:\n\t<pre>\n1: W\n2: N\n3: S\n4: G(1)\n    </pre>\n\tor\n\n\t<pre>\n1: W\n2: N\n3: W\n4: G(3)\n    </pre>\n\t.</li>\n<li>Sample Case #2:\n\t<pre>\n1: N\n2: W\n3: W\n4: S\n5: W\n6: W\n7: N\n    </pre>\n\t.</li>\n<li>Sample Case #3:\n\t<pre>\n1: W\n2: W\n3: N\n4: N\n5: G(2)\n    </pre>\n\t.</li>\n<li>Sample Case #4:\n\t<pre>\n1: W\n2: W\n3: N\n4: N\n5: E\n6: G(1)\n    </pre>\n\t.</li>\n</ul>\n<p>Notice that even though the program must contain the smallest possible number of lines, it is not required to minimize the number of moves that Marlin makes.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2019, World Finals",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

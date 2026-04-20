@@ -1,0 +1,31 @@
+{
+  "id": 19728,
+  "title": "Preparing Tests",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Nick is preparing a problem for a programming contest. The contest is very soon, but he hasn't prepared tests yet. Nick has decided to use multitest concept to simplify the process of test generation: each input contains one or more tests, one immediately after another.</p>\n<p>Each test starts with an integer $m$, and then contains $m$ pairs of integers $a_i, b_i$. These pairs represent edges of undirected graph, the vertices of the graph are numbered from $0$ to infinity. The graph in the test must not contain loops nor multi-edges, and it must be a forest, no cycles are allowed.</p>\n<p>Let us consider some examples of correct and incorrect input data:</p>\n<p>One test, it contains a tree of 4 vertices 0, 1, 2 and 3, edges $(1, 2)$, $(2, 0)$, $(2, 3)$. Other vertices are isolated.Two tests, the first one contains a tree with two vertices 1 and 2, the second one contains a tree with three vertices: 0, 2 and 3.One test, two trees: one with vertices 0 and 1, another with vertices 2 and 3.One test, a graph with no edges.Three tests, each contains a graph with no edges.Incorrect test, a loop at vertex 1.Incorrect test, it contains a multi-edge.Incorrect test, it contains a multi-edge.Incorrect test, the graph contains a cycle.Incorrect input, the second test starts with 2, so it must contain two edges descriptions, but only one integer follows.</p>\n<table class=\"table table-bordered\" style=\"width:100%;\">\n<thead>\n<tr>\n<th>Input data</th>\n<th>Description</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>3 1 2 2 0 2 3</code></td>\n<td>One test, it contains a tree of 4 vertices 0, 1, 2 and 3, edges $(1, 2)$, $(2, 0)$, $(2, 3)$. Other vertices are isolated.</td>\n</tr>\n<tr>\n<td><code>1 2 1 2 2 0 2 3</code></td>\n<td>Two tests, the first one contains a tree with two vertices 1 and 2, the second one contains a tree with three vertices: 0, 2 and 3.</td>\n</tr>\n<tr>\n<td><code>2 0 1 2 3</code></td>\n<td>One test, two trees: one with vertices 0 and 1, another with vertices 2 and 3.</td>\n</tr>\n<tr>\n<td><code>0</code></td>\n<td>One test, a graph with no edges.</td>\n</tr>\n<tr>\n<td><code>0 0 0</code></td>\n<td>Three tests, each contains a graph with no edges.</td>\n</tr>\n<tr>\n<td><s><code>1 1 1</code></s></td>\n<td>Incorrect test, a loop at vertex 1.</td>\n</tr>\n<tr>\n<td><s><code>2 1 2 1 2</code></s></td>\n<td>Incorrect test, it contains a multi-edge.</td>\n</tr>\n<tr>\n<td><s><code>2 1 2 2 1</code></s></td>\n<td>Incorrect test, it contains a multi-edge.</td>\n</tr>\n<tr>\n<td><s><code>3 1 2 1 3 2 3</code></s></td>\n<td>Incorrect test, the graph contains a cycle.</td>\n</tr>\n<tr>\n<td><s><code>2 1 2 1 3 2 3</code></s></td>\n<td>Incorrect input, the second test starts with 2, so it must contain two edges descriptions, but only one integer follows.</td>\n</tr>\n</tbody>\n</table>\n<p>The task of generating tests got easier with multitest, but still the tests must be generated. Nick has decided to use an array of non-negative integers that he had previously used in another problem. He will choose subarrays of the array as tests for the current problem.</p>\n<p>Now Nick wants to know the answer to the question: how many different subarrays of the given arrays are correct inputs for the given problem. Two subarrays are different if their first or their last indices are different.</p>",
+  "input": "<p>The first line of input contains $n$ --- the number of elements in the array ($1 \\le n \\le 500\\,000$).</p>\n<p>The second line contains $n$ integers $a_i$ --- the array itself ($0 \\le a_i \\le 10^9$).</p>",
+  "output": "<p>Output one integer --- the number of different subarrays that are correct inputs for the given problem.</p>",
+  "samples": [
+    {
+      "input": "5\n2 1 3 4 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "8\n1 3 1 2 2 0 2 3\n",
+      "output": "5\n"
+    }
+  ],
+  "hint": "<p>The following subarrays are correct inputs in the first test (shown by brackets):</p>\n<ul>\n<li><code>[2 1 3 4 1]</code></li>\n<li><code>2 [1 3 4] 1</code></li>\n</ul>\n<p>The following subarrays are correct inputs in the second test:</p>\n<ul>\n<li><code>[1 3 1] 2 2 0 2 3</code></li>\n<li><code>1 [3 1 2 2 0 2 3]</code></li>\n<li><code>1 3 1 [2 2 0 2 3]</code></li>\n<li><code>1 3 1 2 2 [0] 2 3</code></li>\n<li><code>[1 3 1 2 2 0 2 3]</code></li>\n</ul>",
+  "source": "Olympiad, Russian Olympiad in Informatics, Russia High School Programming Contest, Russia High School Programming Contest 2019",
+  "level": 25,
+  "tags": [
+    "dp",
+    "trees",
+    "two_pointer",
+    "link_cut_tree"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 4.8333001136779785
+}

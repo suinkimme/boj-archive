@@ -1,0 +1,30 @@
+{
+  "id": 14695,
+  "title": "Shifty Grid",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given a rectangular grid of numbered tiles, with no empty spaces. This grid can only be manipulated using a sequence of <em>shift </em>operations. A shift involves either moving an entire row left or right by some number of units, or moving an entire column up or down by some number of units. Tiles which move outside of the rectangular boundaries wrap around to the opposite side of the grid. For example, in the grid</p>\n<pre>\n0   1   2   3\n4   5   6   7\n8   9   10  11\n12  13  14  15</pre>\n<p>a vertical shift downwards by one applied to the second column has the following result:</p>\n<pre>\n0  13   2   3\n4   1   6   7\n8   5  10  11\n12  9  14  15</pre>\n<p>Notice that a left shift by K units is the same a right shift by N − K units. Similarly, an upward shift by K units is a downward shift by M − K units. Thus, without loss of generality, we will restrict the shift directions to be only to the right or down.</p>\n<p>In a grid with N rows and M columns, there are NM tiles in total. You may assume that the tiles are numbered with distinct integers from 0 to NM − 1.</p>\n<p>You may have noticed that in the first example given above, the tiles are in a very organized formation. We call such arrangements solved. That is, a grid of tiles is solved when the first row contains the numbers from 0 to M −1 in order, the second row has the numbers from M to 2M −1 in order, and so on, with the last row having the number (N − 1)M to NM − 1 in order.</p>\n<p>Find a sequence of shift operations that restores a scrambled grid to a solved state.</p>",
+  "input": "<p>The first line will contain two space-separated integers N and M (2 ≤ N, M ≤ 100). The next N lines will contain M space-separated integers, representing the grid.</p>\n<p>Note that both N and M will always be even, and there will be a solution requiring at most 10<sup>5</sup> shift operations.</p>\n<p>For 5 of the available 25 marks, N · M ≤ 8.</p>\n<p>For an additional 10 of the available 25 marks, the puzzle is solvable in at most 2 moves.</p>",
+  "output": "<p>Output any sequence of moves that solves the puzzle, in the following format:</p>\n<ul>\n<li>The first line of output should contain a single integer K (1 ≤ K ≤ 10<sup>5</sup>), representing the number of moves in the sequence.</li>\n<li>The next K lines should be either of the form <code>1 i r</code> (1 ≤ i ≤ N, 0 ≤ r &lt; M) representing a right shift of the i-th row by r, or of the form <code>2 j d</code> (1 ≤ j ≤ M, 0 ≤ d &lt; N) representing a down shift of the j-th column by d.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "2 4\n4 2 3 0\n1 5 6 7\n",
+      "output": "2\n2 1 1\n1 1 1\n"
+    },
+    {
+      "input": "4 2\n2 3\n5 0\n4 1\n6 7\n",
+      "output": "7\n1 1 1\n2 1 1\n1 2 1\n1 3 1\n2 1 2\n1 1 1\n2 1 1\n"
+    }
+  ],
+  "hint": "<p>Explanation for Output for Sample Input 1</p>\n<p>We shift the first column down by one to obtain</p>\n<pre>\n1 2 3 0\n4 5 6 7</pre>\n<p>then shift the first row right by one to reach the state</p>\n<pre>\n0 1 2 3\n4 5 6 7</pre>\n<p>which is solved.</p>\n<p>Explanation for Output for Sample Input 2</p>\n<p>The sequence of shifts, starting from the input is:</p>\n<pre>\n2 3    3 2    6 2    6 2    6 2    1 2    2 1    0 1\n5 0 -&gt; 5 0 -&gt; 3 0 -&gt; 0 3 -&gt; 0 3 -&gt; 4 3 -&gt; 4 3 -&gt; 2 3\n4 1    4 1    5 1    5 1    1 5    6 5    6 5    4 5\n6 7    6 7    4 7    4 7    4 7    0 7    0 7    6 7</pre>",
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2017, CCO 2017, tlsdydaud1",
+  "level": 22,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "implementation"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 3.0869998931884766
+}

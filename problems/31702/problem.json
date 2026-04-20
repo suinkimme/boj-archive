@@ -1,0 +1,27 @@
+{
+  "id": 31702,
+  "title": "Splatanie ciągów",
+  "time_limit": "9 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Przedziałem w ciągu liczbowym C nazywamy każdy jego niepusty i spójny podciąg. W szczególności oznacza to, że każdy ciąg długości k posiada k(k+1)/2 przedziałów, ponieważ każdy przedział w nim jest wyznaczany przez początek oraz koniec owego przedziału.</p>\n<p>Dla danego ciągu liczb całkowitych jego stabilnością nazwiemy długość najdłuższego ściśle monotonicznego przedziału w nim. Dokładniej, stabilność ciągu [c<sub>1</sub>, c<sub>2</sub>, . . . , c<sub>k</sub>] to największa taka liczba całkowita s, że istnieje indeks i (1 ≤ i ≤ k − s + 1) taki, że c<sub>i</sub> &lt; c<sub>i+1</sub> &lt; . . . &lt; c<sub>i+s−1</sub> lub c<sub>i</sub> &gt; c<sub>i+1</sub> &gt; . . . &gt; c<sub>i+s−1</sub>. Przykładowo stabilnością ciągu [8, 6, 1, 3, 5, 7, 4, 2] jest 4, gdyż istnieje w nim ściśle monotoniczny przedział [1, 3, 5, 7], a nie istnieje dłuższy.</p>\n<p>Splotem dwóch ciągów A i B nazwiemy każdy ciąg długości |A| + |B|, który posiada taki podciąg (niekoniecznie spójny) równy A, że wszystkie elementy poza tym podciągiem tworzą ciąg B. Na przykład splotami ciągów [1, 2, 3] i [4, 5] są ciągi [1, 4, 2, 5, 3], [4, 5, 1, 2, 3] i [4, 1, 5, 2, 3], ale nie [1, 2, 3, 4, 3] i [1, 2, 3, 5, 4].</p>\n<p>Wreszcie przez f(A, B), gdzie A i B są ciągami liczb całkowitych, oznaczamy minimalną możliwą stabilność ich splotu.</p>\n<p>Mając dane dwa ciągi liczb całkowitych A i B, o długościach odpowiednio n i m, Twoim zadaniem jest policzyć <s>f(A, B)</s> dla każdej liczby całkowitej x od 1 do n + m włącznie liczbę par (A′, B′) takich, że A′ jest przedziałem w A, B′ jest przedziałem w B i zachodzi f(A′, B′) = x. Jako że opisane liczby mogą być bardzo duże, wystarczy, że podasz ich reszty z dzielenia przez 10<sup>9</sup> + 7.</p>\n<p>Możesz założyć, że wszystkie elementy ciągów A i B są parami różne.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajdują się dwie liczby całkowite n oraz m (1 ≤ n, m ≤ 300 000), oznaczające odpowiednio długości ciągów A oraz B.</p>\n<p>W drugim wierszu wejścia znajduje się ciąg n liczb całkowitych A<sub>1</sub>, A<sub>2</sub>, . . . , A<sub>n</sub> (1 ≤ A<sub>i</sub> ≤ n + m) – wspomniany ciąg A.</p>\n<p>W trzecim wierszu wejścia znajduje się ciąg m liczb całkowitych B<sub>1</sub>, B<sub>2</sub>, . . . , B<sub>m</sub> (1 ≤ B<sub>i</sub> ≤ n + m) – wspomniany ciąg B.</p>\n<p>Gwarantowanym jest, że wszystkie elementy z ciągów A oraz B są parami różne. Innymi słowy, konkatenacja ciągów A i B tworzy permutację liczb od 1 do n + m.</p>",
+  "output": "<p>W jedynym wierszu standardowego wyjścia powinno znaleźć się n + m liczb oddzielonych pojedynczymi odstępami; i-ta z tych liczb powinna być równa reszcie z dzielenia przez 10<sup>9</sup> + 7 liczby par (A′, B′) takich, że A′ jest przedziałem w ciągu A, B′ jest przedziałem w ciągu B i zachodzi f(A′, B′) = i.</p>",
+  "samples": [
+    {
+      "input": "5 3\n1 2 5 7 4\n8 3 6\n",
+      "output": "0 84 6 0 0 0 0 0\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie przykładu: Dla przedziałów będących całymi ciągami zachodzi f([1, 2, 5, 7, 4], [8, 3, 6]) = 2, a ich splotem o stabilności równej 2 jest na przykład ciąg [1, 8, 2, 5, 3, 7, 4, 6].</p>\n<p>Gdy rozważymy przedziały [1, 2, 5, 7] i [3], to otrzymamy f([1, 2, 5, 7], [3]) = 3, a ich splotem o stabilności równej 3 jest na przykład ciąg [1, 2, 5, 3, 7]. Można wykazać, że pary ciągów ([1, 2, 5, 7], [3]) nie można spleść tak, aby otrzymać ciąg o stabilności mniejszej niż 3.</p>\n<p>Dla przedziałów [4] i [6] zachodzi f([4], [6]) = 2, a dobrymi przykładami są oba ich możliwe sploty: [4, 6] i [6, 4].</p>\n<p>Każdą parę przedziałów w tym przykładzie można spleść tak, żeby stabilność otrzymanego splotu była nie większa niż 3. Stąd odpowiedzi dla x ≥ 4 są równe 0.</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2024",
+  "level": 27,
+  "tags": [
+    "divide_and_conquer",
+    "implementation",
+    "math",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.666700005531311
+}

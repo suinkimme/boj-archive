@@ -1,0 +1,22 @@
+{
+  "id": 18632,
+  "title": "Goldberg Machine",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Rube has constructed a brand new obscure contraption and is now testing it. The machine has n nodes numbered from 1 to n that can accomodate a marble, and n−1 tracks connecting the nodes. It is possible to get from any node to any other by following the tracks, that is, the tracks form an undirected tree.</p>\n<p>For every node, the tracks adjacent to it are ordered: if a node v has k<sub>v</sub> tracks adjacent to it, we will write e<sub>v,0</sub>, . . . , e<sub>v,k<sub>v</sub>−1</sub> for the order in question. Further, every node has an active adjacent track selected: we will write t<sub>v</sub> ∈ {0, . . . , k<sub>v</sub> − 1} to denote that the track e<sub>t<sub>v</sub></sub> is active for the node v.</p>\n<p>Here’s how the machine operates. First, a marble is placed at the node 1. Then, one or more steps take place. Each step proceeds as follows:</p>\n<ul>\n<li>If the marble is currently in a node v, it moves to the other endpoint of the track e<sub>v,t<sub>v</sub></sub> (the currently active track for the node v).</li>\n<li>After the ball has moved to the new node, t<sub>v</sub> becomes equal to (t<sub>v</sub> + 1) mod k<sub>v</sub> (that is, the node that contained the marble at the start of the step changes its active track to the next one in the cyclic ordering of its tracks).</li>\n</ul>\n<p>Rube wants you to process several queries of two kinds:</p>\n<ul>\n<li>“C v t” (1 ≤ v ≤ n, 0 ≤ t ≤ k<sub>v</sub> − 1): set t<sub>v</sub> = t;</li>\n<li>“Q x” (1 ≤ x ≤ 10<sup>18</sup>): determine the index of the node that will contain the marble after taking exactly x steps from the node 1 starting from the current configuration. Note that this query <strong>does not</strong> affect the starting configuration for any further queries.</li>\n</ul>\n<p>Rube is very busy tinkering with his device, so he wants to you answer fast!</p>",
+  "input": "<p>The first line contains a single integer n (2 ≤ n ≤ 10<sup>5</sup>): the number of nodes in the machine.</p>\n<p>The following n lines describe the tracks. The i-th of these lines contains two integers k<sub>i</sub> and t<sub>i</sub> (0 ≤ t<sub>i</sub> ≤ k<sub>i</sub> − 1), followed by k<sub>i</sub> distinct integers u<sub>i,0</sub>, . . . , u<sub>v,k<sub>v</sub>−1</sub> (u<sub>i,j</sub> ≠ i). This denotes:</p>\n<ul>\n<li>there are k<sub>i</sub> tracks adjacent to the node i;</li>\n<li>for any j ∈ {0, . . . , k<sub>i</sub> − 1} the track e<sub>i,j</sub> leads from i to u<sub>i,j</sub>;</li>\n<li>the track e<sub>i,t<sub>i</sub></sub> is currently active for the node i.</li>\n</ul>\n<p>It is guaranteed that the described tracks form an undirected tree, that is:</p>\n<ul>\n<li>for any pair of distinct nodes (u, v), the node u is an endpoint of a track adjacent to v if and only if v is an endpoint of a track adjacent to u;</li>\n<li>there are n − 1 distinct undirected tracks, that is, Σk<sub>i</sub> = 2(n − 1);</li>\n<li>it is possible to get from any node to any other by following the tracks.</li>\n</ul>\n<p>The following line contains a single integer q (1 ≤ q ≤ 10<sup>5</sup>): the number of queries.</p>\n<p>The following q lines describe the queries in the format described above, one per line.</p>",
+  "output": "<p>Print answers for all “Q x” queries in the order asked, one per line.</p>",
+  "samples": [
+    {
+      "input": "7\n2 0 2 3\n3 0 1 4 5\n3 0 1 6 7\n1 0 2\n1 0 2\n1 0 3\n1 0 3\n5\nQ 10\nC 2 1\nQ 10\nC 3 2\nQ 10\n",
+      "output": "1\n4\n1\n"
+    }
+  ],
+  "hint": "<p>Here are the paths of the marbles in the sample case:</p>\n<ol>\n<li>1 → 2 → 1 → 3 → 1 → 2 → 4 → 2 → 5 → 2 → 1</li>\n<li>1 → 2 → 4 → 2 → 5 → 2 → 1 → 3 → 1 → 2 → 4</li>\n<li>1 → 2 → 4 → 2 → 5 → 2 → 1 → 3 → 7 → 3 → 1</li>\n</ol>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2019, Day 6: MIPT Contest",
+  "level": 27,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2
+}

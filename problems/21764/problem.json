@@ -1,0 +1,45 @@
+{
+  "id": 21764,
+  "title": "Histogram Sequence 2",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>A 2-dimensional grid can be represented as a set of pairs of positive integers. Each cell can be numbered as in the figure below:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 339px; height: 233px;\"/></p>\n<p>Suppose you are given a histogram where the height of each column is $h_1, h_2, \\cdots, h_N$. Its area can be represented as a set containing cells $(i, 1), (i, 2), \\cdots, (i, h_i)$ for $i = 1, 2, \\cdots, N$. (If $h_i = 0$, it means the histogram's area does not contain any cell from the $i$-th column.)</p>\n<p>You may choose $N$ integers $x_1, x_2, \\cdots, x_N$ with $0 \\le x_i &lt; h_i$ and subtract a sub-histogram with heights $x_1, x_2, \\cdots, x_N$. After removing such a sub-histogram, the remaining area can be written as: $$ \\bigcup_{i=1}^N \\{ (i, j) : x_i &lt; j \\le h_i \\}. $$</p>\n<p>For example, the following figure shows an example of $h_1 = 4$, $h_2 = 5$, $h_3 = 4$, $h_4 = 4$ and $x_1 = 1$, $x_2 = 2$, $x_3 = 3$, $x_4 = 2$.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 141px; height: 172px;\"/></p>\n<p>The remaining area is called <em>connected</em> if for every pair of cells $((r_1, c_1), (r_2, c_2))$ in the remaining area, one can move from $(r_1, c_1)$ to $(r_2, c_2)$ using only the following moves without leaving the remaining area:</p>\n<ul>\n<li>$(r, c) \\to (r+1, c)$</li>\n<li>$(r, c) \\to (r-1, c)$</li>\n<li>$(r, c) \\to (r, c+1)$</li>\n<li>$(r, c) \\to (r, c-1)$</li>\n</ul>\n<p>Compute the number of ways to choose $(x_1, x_2, \\cdots, x_N)$ such that the remaining area is connected.</p>",
+  "input": "<p>The first line contains a single integer, $N$. The second line contains $N$ integers - $h_1, h_2, \\cdots, h_N$ in order.</p>",
+  "output": "<p>Output the number of ways to choose $(x_1, x_2, \\cdots, x_N)$ such that the remaining area is connected, modulo $10^9 + 7$.</p>",
+  "samples": [
+    {
+      "input": "1\n100\n",
+      "output": "100\n"
+    },
+    {
+      "input": "3\n2 3 4\n",
+      "output": "12\n"
+    },
+    {
+      "input": "3\n100 100 100\n",
+      "output": "1000000\n"
+    },
+    {
+      "input": "2\n100000 100000\n",
+      "output": "999999937\n"
+    },
+    {
+      "input": "2\n3 42\n",
+      "output": "9\n"
+    },
+    {
+      "input": "3\n1 1 1\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, KAIST, KAIST RUN Spring Contest, 2021 KAIST RUN Spring Contest, leejseo, tncks0121, aeren, cs71107, jhnah917, jwvg0425, koosaga",
+  "level": 8,
+  "tags": [
+    "math",
+    "combinatorics"
+  ],
+  "accepted_user_count": 120,
+  "submission_count": null,
+  "average_tries": 1.6749999523162842
+}

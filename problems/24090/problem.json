@@ -1,0 +1,33 @@
+{
+  "id": 24090,
+  "title": "알고리즘 수업 - 퀵 정렬 1",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>오늘도 서준이는 퀵 정렬 수업 조교를 하고 있다. 아빠가 수업한 내용을 학생들이 잘 이해했는지 문제를 통해서 확인해보자.</p>\n<p><em>N</em>개의 서로 다른 양의 정수가 저장된 배열 A가 있다. 퀵 정렬로 배열 A를 오름차순 정렬할 경우 배열 A에 <em>K </em>번째 교환되는 수를 구해서 우리 서준이를 도와주자.</p>\n<p>크기가 <em>N</em>인 배열에 대한 퀵 정렬 의사 코드는 다음과 같다.</p>\n<pre>\nquick_sort(A[p..r]) { # A[p..r]을 오름차순 정렬한다.\n    if (p &lt; r) then {\n        q &lt;- partition(A, p, r);  # 분할\n        quick_sort(A, p, q - 1);  # 왼쪽 부분 배열 정렬\n        quick_sort(A, q + 1, r);  # 오른쪽 부분 배열 정렬\n    }\n}\n\npartition(A[], p, r) {\n    x &lt;- A[r];    # 기준원소\n    i &lt;- p - 1;   # i는 x보다 작거나 작은 원소들의 끝지점\n    for j &lt;- p to r - 1  # j는 아직 정해지지 않은 원소들의 시작 지점\n        if (A[j] ≤ x) then A[++i] &lt;-&gt; A[j]; # i값 증가 후 A[i] &lt;-&gt; A[j] 교환\n    if (i + 1 != r) then A[i + 1] &lt;-&gt; A[r]; # i + 1과 r이 서로 다르면 A[i + 1]과 A[r]을 교환\n    return i + 1;\n}</pre>",
+  "input": "<p>첫째 줄에 배열 A의 크기 <em>N</em>(5 ≤ <em>N</em> ≤ 10,000), 교환 횟수 <em>K</em>(1 ≤ <em>K</em> ≤ 10<sup>8</sup>)가 주어진다.</p>\n<p>다음 줄에 서로 다른 배열 A의 원소 A<sub>1</sub>, A<sub>2</sub>, ..., A<sub>N</sub>이 주어진다. (1 ≤ A<sub>i</sub> ≤ 10<sup>9</sup>)</p>",
+  "output": "<p><em>K </em>번째 교환되는 두 개의 수를 작은 수부터 한 줄에 출력한다. 교환 횟수가 <em>K </em>보다 작으면 -1을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5 1\n2 5 1 4 3\n",
+      "output": "2 2\n"
+    },
+    {
+      "input": "5 2\n2 5 1 4 3\n",
+      "output": "1 5\n"
+    },
+    {
+      "input": "5 10\n2 5 1 4 3\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "MenOfPassion, eric00513, jhnah917, parkky, tony9402, WeissBlume",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "sorting"
+  ],
+  "accepted_user_count": 831,
+  "submission_count": null,
+  "average_tries": 4.584799766540527
+}

@@ -1,0 +1,31 @@
+{
+  "id": 5815,
+  "title": "HIPERPROSTOR",
+  "time_limit": "5 초",
+  "memory_limit": "64 MB",
+  "description": "<p>In the distant future, food is transported between planets via one-way trade routes. Each route directly connects two planets and has a known transit time. </p>\n<p>The traders' guild plans to add some new routes utilizing a recently discovered technology – hyperspace travel. Travelling via hyperspace is also one-directional. Since it is still experimental, hyperspace travel time is not yet known, however it is known not to depend on distances between planets, so each hyperspace route will take an equal amount of time to traverse. </p>\n<p>The picture below shows an example of three interconnected planets with transit times shown. The planets are labelled with positive integers, and the hyperspace travel time is denoted by “x” (the picture corresponds to the second example input): </p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 270px; height: 157px;\"/></p>\n<p>Transit time is measured in days and is always a positive integer. </p>\n<p>The traders' guild wishes to analyze the consequences of introducing the new routes: for some two planets A and B, they want to know what are all the possible values of the shortest path total transit time from A to B, for all possible values of x. For example, in the situaton above, shortest path travel from planet 2 to planet 1 could take 5 (if x ≥ 5), 4, 3, 2, or 1 day (if x &lt; 5). </p>",
+  "input": "<p>The first line of input contains the two integers P and R, the number of planets and the number of routes, respectively (1 ≤ P ≤ 500, 0 ≤ R ≤ 10 000). </p>\n<p>Each of the following R lines contains two integers C and D, the planet labels (1 ≤ C, D ≤ P, C ≠ D), and T, the travel time from C to D. For conventional routes, T is an integer (1 ≤ T ≤ 1 000 000), and for hyperspace routes, T is the character “x”. Multiple lines can exist between the same two planets. </p>\n<p>The following line contains the integer Q, the number of queries (1 ≤ Q ≤ 10). </p>\n<p>Each of the following Q lines contains two integers A and B, the planet labels (A ≠ B) representing a query by the traders' guild: “what are the possible values of shortest path transit time from A to B?”. </p>",
+  "output": "<p>The output must contain Q rows, one per query. </p>\n<p>Each row must contain two integers: the number of different values and their sum. If the number of different values is unbounded, output only \"inf\" in that row. If there is no path from A to B, the number of different values and their sum is 0.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2 x\n2 3 x\n3 4 x\n1 4 8\n3\n2 1\n1 3\n1 4\n",
+      "output": "0 0\ninf\n3 17\n"
+    },
+    {
+      "input": "3 5\n3 2 x\n2 1 x\n2 1 5\n1 3 10\n3 1 20\n6\n1 2\n2 3\n3 1\n2 1\n3 2\n1 3 \n",
+      "output": "inf\n5 65\n15 185\n5 15\ninf\n1 10\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example:</p>\n<ol>\n<li>There is no possible path from 2 to 1. </li>\n<li>For any positive integer x, the shortest path from 1 to 3 takes 2x time, so the solution is \"inf\". </li>\n<li>The shortest path from 1 to 4 can take 3 (for x = 1), 6 (for x = 2), or 8 (for x &gt;= 3) time. 3+6+8=17 </li>\n</ol>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 377px; height: 94px;\"/></p>",
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2013, Croatian Olympiad in Informatics 2013",
+  "level": 20,
+  "tags": [
+    "dijkstra",
+    "graphs",
+    "math",
+    "shortest_path"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 3.3684000968933105
+}

@@ -1,0 +1,26 @@
+{
+  "id": 7635,
+  "title": "Hidden Code",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>It’s time to put your hacking skills to the test! You’ve been called upon to help crack enemy codes in the current war on... something or another. Anyway, the point is that you have discovered the encryption technique used by the enemy; it is quite simple, and proceeds as follows. Note that all strings contain only uppercase letters of the alphabet.</p>\n<ol>\n<li>We are given a key K and a plaintext P which is encrypted character-by-character to produce a ciphertext C of the same length.</li>\n<li>If |K| is the length of the key K, then the first |K| characters of C are obtained by adding the first |K| characters of P to the characters of K, where adding two letters means interpreting them as numbers (A = 0, B = 1, and so on) and taking the sum modulo 26. That is, C<sub>i</sub> = (P<sub>i</sub> + K<sub>i</sub>) mod 26 for i = 1, . . . , |K|. If |K| &gt; |P|, then the extra characters in K are ignored.</li>\n<li>The remaining characters of P, i.e. P<sub>i</sub> for i &gt; |K|, are encrypted using the previous ciphertext characters by C<sub>i</sub> = (P<sub>i</sub> + C<sub>i−|K|</sub>) mod 26 for i = |K| + 1, . . . , |P|.</li>\n</ol>\n<p>As an example, consider the encryption of the string “STANFORD” using the key “ACM”:</p>\n<pre>\n  STA NFORD\n+ ACM SVMFA\n  ----------\n  SVM FAAWD</pre>\n<p>Knowing this, you are well on your way to being able to read the enemy’s communications. Luckily, you also have several pairs of plaintexts and ciphertexts which your team recovered, all of which are known to be encrypted with the same key. Help find the key that the enemy is using.</p>",
+  "input": "<p>The input consists of multiple test cases. Each test case begins with a line containing a single integer N, 1 ≤ N ≤ 100, the number of plaintext and ciphertext pairs you will receive. The next N lines each contain two strings P and C, the plaintext and ciphertext, respectively. P and C will contain only uppercase letters (A-Z) and have the same length (at most 100 characters). The input terminates with a line with N = 0.</p>",
+  "output": "<p>For each test case, print a single line that contains the shortest possible key or “Impossible” (quotes added for clarity) if no possible key could have produced all of the encryptions.</p>",
+  "samples": [
+    {
+      "input": "1\nA B\n3\nSTANFORD SVMFAAWD\nAVOWIENR AXAWFEJW\nVAMRI VCYMK\n3\nABCDEFGHIJKLMNOPQRSTUVWXYZ AAAAAAAAAAAAAAAAAAAAAAAAAA\nY Y\nZ Z\n2\nA B\nB A\n0\n",
+      "output": "B\nACM\nAZYXWVUTSRQPONMLKJIHGFEDCB\nImpossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, Stanford Local ACM Programming Contest, SLPC 2011",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "string",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.1818000078201294
+}

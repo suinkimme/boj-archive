@@ -1,0 +1,30 @@
+{
+  "id": 15055,
+  "title": "Daunting device",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In a recent trip to an excavation site in the Caribbean island of Saint Basil, you found a mysterious device with some instructions resembling a puzzle. Your local guide Vibenas tells you that if you solve the puzzle, the device might show you the place where a big treasure left by the old merciless pirate Lyerpes is hidden.</p>\n<p>The device has a tape with L cells indexed from 0 to L−1. Each cell has a color than can be changed with commands to the device. Each color is encoded by an integer, and initially all cells have the same color. The instructions that you found represent N steps to be performed before the device shows the way to the treasure. Each step is described using four integers P, X, A and B. The instructions say that to complete the step you must first count the number of cells currently having color P. Let this number be S. Then you must calculate the values</p>\n<p style=\"text-align:center\">M1 = (A + S<sup>2</sup>) mod L ,<br/>\nM2 = (A + (S + B)<sup>2</sup>) mod L .</p>\n<p>Finally you have to make all cells within the closed interval [min(M1, M2), max(M1, M2)] to be of color X.</p>\n<p>After the exhausting task of processing the N steps required by the device, you still have one job: given a color that appears the greatest number of times in the device tape after all steps (that is, a most frequent color), you must go to the shipwreck of Lyerpes’ legendary vessel and say aloud the number of cells having that color. Note that this number is unique even if more than one color appears the greatest number of times in the device tape after all steps.</p>\n<p>Doing all those calculations on the device will take ages but you, as a renowned programmer, can create a program that quickly indicates the answer for the puzzle. After that, the real hard part of your mission will be to find out where is the shipwreck of Lyerpes’ old vessel.</p>",
+  "input": "<p>The first line contains three integers L, C and N (1 ≤ L, C, N ≤ 10<sup>5</sup>), representing respectively the number of cells in the tape, the number of available colors, and the number of steps in the instructions. Colors are identified by distinct integers from 1 to C and initially all cells have color 1. Each of the next N lines describes a step of the instructions with four integers P, X, A and B (1 ≤ P, X ≤ C and 0 ≤ A, B ≤ 10<sup>8</sup>), indicating respectively the color whose number of cells is used to decide the range of the step, the color the cells in the range must have after the step is performed, and the other two values used to calculate the bounds of the range as described above.</p>",
+  "output": "<p>Given a color that appears the greatest number of times in the device tape after sequentially performing all steps described in the input, output a single line with an integer indicating the number of cells having that color.</p>",
+  "samples": [
+    {
+      "input": "7 5 2\n1 2 5 3\n3 3 0 1\n",
+      "output": "4\n"
+    },
+    {
+      "input": "7 10 8\n10 6 5 6\n5 1 7 5\n9 9 10 1\n3 2 6 7\n8 3 4 8\n3 7 7 4\n9 3 9 7\n1 1 8 1000\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Latin America, Latin America Regional Contests, Latin America Regional Contests 2017",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "tree_set",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 5.375
+}

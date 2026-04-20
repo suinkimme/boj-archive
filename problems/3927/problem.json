@@ -1,0 +1,22 @@
+{
+  "id": 3927,
+  "title": "Confusing Login Names",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Meikyokan University is very famous for its research and education in the area of computer science. This university has a computer center that has advanced and secure computing facilities including supercomputers and many personal computers connected to the Internet.</p>\n<p>One of the policies of the computer center is to let the students select their own login names. Unfortunately, students are apt to select similar login names, and troubles caused by mistakes in entering or specifying login names are relatively common. These troubles are a burden on the staff of the computer center.</p>\n<p>To avoid such troubles, Dr. Choei Takano, the chief manager of the computer center, decided to stamp out similar and confusing login names. To this end, Takano has to develop a program that detects confusing login names.</p>\n<p>Based on the following four operations on strings, the distance between two login names is determined as the minimum number of operations that transforms one login name to the other.</p>\n<ol>\n<li>Deleting a character at an arbitrary position.</li>\n<li>Inserting a character into an arbitrary position.</li>\n<li>Replacing a character at an arbitrary position with another character.</li>\n<li>Swapping two adjacent characters at an arbitrary position.</li>\n</ol>\n<p>For example, the distance between “omura” and “murai” is two, because the following sequence of operations transforms “omura” to “murai”.</p>\n<p>omura → (delete 'o') → mura → (insert 'i') → murai</p>\n<p>Another example is that the distance between “akasan” and “kaason” is also two.</p>\n<p>akasan → (swap 'a' and 'k') → kaasan → (replace 'a' with 'o') → kaason</p>\n<p>Takano decided that two login names with a small distance are confusing and thus must be avoided.</p>\n<p>Your job is to write a program that enumerates all the confusing pairs of login names</p>\n<p>Beware that the rules may combine in subtle ways. For instance, the distance between “ant” and “neat” is two.</p>\n<p>ant → (swap 'a' and 'n') → nat → (insert 'e') → neat</p>",
+  "input": "<p>The input consists of multiple datasets. Each dataset is given in the following format.</p>\n<pre>\nn\nd\nname<sub>1</sub>\nname<sub>2</sub>\n···\nname<sub>n</sub></pre>\n<p>The first integer n is the number of login names. Then comes a positive integer d. Two login names whose distance is less than or equal to d are deemed to be confusing. You may assume that 0 &lt; n ≤ 200 and 0 &lt; d ≤ 2. The i-th student’s login name is given by name<sub>i</sub>, which is composed of only lowercase letters. Its length is less than 16. You can assume that there are no duplicates in name<sub>i</sub> (1 ≤ i ≤ n).</p>\n<p>The end of the input is indicated by a line that solely contains a zero.</p>",
+  "output": "<p>For each dataset, your program should output all pairs of confusing login names, one pair per line, followed by the total number of confusing pairs in the dataset.</p>\n<p>In each pair, the two login names are to be separated only by a comma character (,), and the login name that is alphabetically preceding the other should appear first. The entire output of confusing pairs for each dataset must be sorted as follows. For two pairs “w<sub>1</sub>,w<sub>2</sub>” and “w<sub>3</sub>,w<sub>4</sub>”, if w<sub>1</sub> alphabetically precedes w<sub>3</sub>, or they are the same and w<sub>2</sub> precedes w<sub>4</sub>, then “w<sub>1</sub>,w<sub>2</sub>” must appear before “w<sub>3</sub>,w<sub>4</sub>”.</p>",
+  "samples": [
+    {
+      "input": "8\n2\nomura\ntoshio\nraku\ntanaka\nimura\nyoshoi\nhayashi\nmiura\n3\n1\ntasaka\nnakata\ntanaka\n1\n1\nfoo\n5\n2\npsqt\nabcdef\nabzdefa\npqrst\nabdxcef\n0\n",
+      "output": "imura,miura\nimura,omura\nmiura,omura\ntoshio,yoshoi\n4\ntanaka,tasaka\n1\n0\nabcdef,abdxcef\nabcdef,abzdefa\npqrst,psqt\n3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2004 in Ehime",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2.5
+}

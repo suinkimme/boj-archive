@@ -1,0 +1,26 @@
+{
+  "id": 20897,
+  "title": "PO-arkivering",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Efter varje tävling arkiverar Programmeringsolympiaden deltagarnas lösningar i all oändlighet. De flesta lösningarna som skickas in under en tävling är dock ganska lika. En tävlande som fixar en bugg kanske bara ändrar en enstaka rad i en lösning. I dessa fall är det onödigt att spara ner både den ursprungliga lösningen och den förändrade lösningen. Istället kan vi sparar ner den ena av lösningarna samt vilka ändringar som gjordes mellan de två lösningarna. Detta kan även ske i flera steg, så att man sparar ner en lösning $A$, sedan sparar ändringarna mellan $A$ och en annan lösning $B$, och slutligen ändringarna mellan $B$ och en tredje lösning $C$.</p>\n<p>Totalt skickades $N$ lösningar in under en tävling, med storlekarna $S[0], S[1], \\dots, S[N-1]$ bytes. Om den $i$:te lösningen antingen är nedsparad eller kan återkonstrueras, så kan den $j$:te lösningen återkonstrueras om ändringarna som är $D[i][j]$ bytes stora sparas ned.</p>\n<p>I de flesta testfallgrupper kommer diffstorlekarna att vara symmetriska, d.v.s. $D[i][j] = D[j][i]$ (i likhet med vanliga Unix-<code>diff</code>-filer). För den sista gruppen betraktar vi dock mer allmäna diffar där detta inte behöver stämma. T.ex. kan vi tänka oss att differensen mellan strängarna <code>abaabbaaa</code> och <code>aaaaaa</code> sparas som \"ta bort alla <code>b</code>\" i ena riktningen, och \"sätt in <code>b</code> på positionerna 2, 5, 6\" i den andra, där den senare ändringen kräver mer plats att spara ner än den första.</p>\n<p>Vad är den minimala mängden data (i bytes) som måste sparas ned för att samtliga lösningar ska kunna återkonstrueras?</p>",
+  "input": "<p>Den första raden innehåller heltalet $1 \\le N \\le 100$. Nästa rad innehåller de $N$ heltalen $1 \\le S[0], S[1], \\dots, S[N-1] \\le 1\\,000\\,000$. De nästa $N$ raderna innehåller $N$ heltal vardera. Den $i$:te av dessa rader innehåller talen $1 \\le D[i][0], D[i][1], \\dots, D[i][N-1] \\le 1\\,000\\,000$. $D[i][i] = 0$ för alla $i$.</p>",
+  "output": "<p>Skriv ut ett enda tal -- den minimala mängden data som måste sparas ned i bytes.</p>",
+  "samples": [
+    {
+      "input": "3\n20 10 30\n0 35 15\n35 0 45\n15 45 0\n",
+      "output": "45\n"
+    },
+    {
+      "input": "3\n100 101 102\n0 5 2\n30 0 1\n40 50 0\n",
+      "output": "106\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2017, KATT1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

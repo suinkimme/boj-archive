@@ -1,0 +1,30 @@
+{
+  "id": 31966,
+  "title": "이진 트리",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>모든 노드의 자식 노드가 $0$개 또는 $2$개인 이진 트리 $T$에 대해 $S(T)$의 값은 다음과 같이 정의한다.</p>\n<ul>\n<li>$T$에서 노드 $u$를 루트로 하는 <strong>서브 트리</strong>는, $u$와 $u$의 자손 노드들로만 구성된 집합이다.</li>\n<li>$T$의 <strong>중위 순회 수열</strong> $p(T)$는 $T$를 중위 순회하면서 방문하는 노드들을 순서대로 나열한 수열로, 아래와 같이 정의할 수 있다.\n\t<ul>\n<li>$T$의 루트 노드를 $r$이라 하자. $[r]$을 $r$ 하나로만 구성된 길이 $1$의 수열이라고 하자.</li>\n<li>만약 $r$의 자식 노드가 $0$개라면, $p(T)$는 $[r]$이다.</li>\n<li>만약 $r$의 자식 노드가 $2$개라면, $r$의 왼쪽 자식 노드를 루트로 하는 서브 트리가 $X$, $r$의 오른쪽 자식 노드를 루트로 하는 서브 트리가 $Y$일 때, $p(T)$는 $p(X)$, $[r]$, $p(Y)$을 순서대로 이어붙인 수열이다.</li>\n</ul>\n</li>\n<li>$T$의 리프 노드 개수를 $k$라고 하자. $T$의 리프 노드들에 $1, 2, \\cdots , k$의 번호를 $p(T)$에서 나타나는 순서대 로 (즉, 중위 순회 방문 순서대로) 붙였다고 하자.</li>\n<li>$T$의 서브 트리를 <strong>선택</strong>하면, 해당 서브 트리에 포함된 리프 노드들이 <strong>덮인다</strong>고 하자.</li>\n<li>$1 ≤ a ≤ b ≤ k$일 때, $f(a, b)$는 리프 노드들 중 번호가 $a$ 이상 $b$ 이하인 리프 노드들만을 덮고 다른 리프 노드들은 덮지 않기 위해, $T$에서 선택해야 하는 최소 서브 트리 개수이다.</li>\n<li>$S(T)$의 값은 $1 ≤ a ≤ b ≤ k$인 모든 $(a, b)$ 정수 순서쌍에 대한 $f(a, b)$의 합을 $10^9+7$로 나눈 나머지이다.</li>\n</ul>\n<p>예를 들어, 다음과 같은 이진 트리 $T$가 있다고 가정해보자.</p>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"1.png\" style=\"width: 164px; height: 200px;\"/></td>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 162px; height: 200px;\"/></td>\n</tr>\n<tr>\n<td>(a) 만든 트리</td>\n<td>(b) 리프 노드에 번호를 붙인 트리</td>\n</tr>\n</tbody>\n</table>\n<p>$f(5, 7)$의 값은 $2$이다. 다음과 같이 서브 트리 두 개를 선택하면 $5$, $6$, $7$번 리프 노드만 덮이기 때문이다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 195px; height: 240px;\"/></p>\n<p>이런 식으로 모든 $1 ≤ a ≤ b ≤ 7$에 대해 $f(a, b)$의 값의 합은 $47$이고, 이를 $10^9 + 7$로 나눈 나머지를 구하면 $S(T) = 47$이다.</p>\n<hr/>\n<p>정수열 $A_1, A_2, \\cdots , A_N$과 $B_1, B_2, \\cdots , B_N$이 주어진다.</p>\n<p>이진 트리 $T_0, T_1, \\cdots , T_N$을 다음과 같이 정의한다.</p>\n<ul>\n<li>$T_0$은 노드가 $1$개인 트리</li>\n<li>$T_i$ 는 루트의 왼쪽 자식 노드를 루트로 하는 서브 트리가 $T_{A_i}$이고, 루트의 오른쪽 자식 노드를 루트로 하는 서브 트리가 $T_{B_i}$인 트리 ($1 ≤ i ≤ N$, $0 ≤ A_i ≤ i - 1$, $0 ≤ B_i ≤ i - 1$)</li>\n</ul>\n<p>$S(T_1), S(T_2), \\cdots , S(T_N)$을 구하는 프로그램을 작성하라.</p>",
+  "input": "<p>첫 번째 줄에 정수 $N$이 주어진다.</p>\n<p>다음 $N$개의 줄 중 $i$ ($1 ≤ i ≤ N$)번째 줄에는 $A_i$와 $B_i$가 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>$N$개의 줄을 출력한다. $i$ ($1 ≤ i ≤ N$)번째 줄에는 $S(T_i)$를 출력해야 한다.</p>",
+  "samples": [
+    {
+      "input": "5\n0 0\n1 0\n1 2\n3 1\n4 4\n",
+      "output": "3\n7\n21\n47\n254\n"
+    },
+    {
+      "input": "7\n0 0\n1 1\n2 2\n3 3\n4 4\n5 5\n6 6\n",
+      "output": "3\n13\n65\n337\n1729\n8641\n41985\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, 한국정보올림피아드, KOI 2024 1차대회, 중등부, Olympiad, 한국정보올림피아드, KOI 2024 1차대회, 고등부, chansol, tncks0121",
+  "level": 17,
+  "tags": [
+    "math",
+    "dp",
+    "combinatorics"
+  ],
+  "accepted_user_count": 296,
+  "submission_count": null,
+  "average_tries": 1.8818000555038452
+}

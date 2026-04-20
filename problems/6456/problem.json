@@ -1,0 +1,22 @@
+{
+  "id": 6456,
+  "title": "Perfect Hash",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Perfect Software, Inc.\\ has obtained a government contract to examine text flowing through a high-speed network for the occurrence of certain words. Your boss, Wally Perfect, has designed a parallel processing system which checks each word against a group of small perfect hash tables.</p>\n<p>A perfect hash function maps its input directly to a fully occupied table. Your job is to construct the perfect hash functions from the lists of words in each table. The hash function is of the form \\(\\lfloor C / w \\rfloor \\bmod n\\), where \\(C\\) is a positive integer you are to discover, \\(w\\) is an integer representation of an input word, and \\(n\\) is the length of the table. \\(C\\) must be as small as possible.  Note that \\(\\lfloor \\rfloor\\) is the floor function and that \\(\\lfloor R \\rfloor\\) for some real number \\(R\\) is the largest integer that is \\(\\leq R\\).</p>\n<p>Here are Wally's notes on the subject:</p>\n<p>Let \\(W = \\lbrace w_{1}, w_{2}, \\ldots, w_{n} \\rbrace\\) consist of positive integers \\(w_{1} &lt; w_{2} &lt; \\ldots &lt; w_{n}\\). The problem is to find the smallest positive integer \\(C\\) such that</p>\n<p>\\(\\left\\lfloor \\frac{C}{w_{i}} \\right\\rfloor \\bmod n \\neq  \\left\\lfloor \\frac{C}{w_{j}} \\right\\rfloor \\bmod n\\)  for all \\(1 \\leq i &lt; j \\leq n\\).</p>\n<p><br/>\n\\(C\\) must be a multiple of at least one element of \\(W\\).</p>\n<p>If some</p>\n<p>\\(\\left\\lfloor \\frac{C}{w_{i}} \\right\\rfloor \\bmod n = \\left\\lfloor \\frac{C}{w_{j}} \\right\\rfloor \\bmod n\\) for all \\(i \\neq j\\),</p>\n<p>then the next largest \\(C\\) that could resolve the conflict is at least </p>\n<p>\\( \\min\\left( \\left( \\left \\lfloor \\frac{C}{w_{i}} \\right\\rfloor + 1\\right) \\cdot w_{i}, \\left(\\left\\lfloor \\frac{C}{w_{j}} \\right\\rfloor + 1\\right) \\cdot w_{j}\\right) \\)</p>\n<p>Since all such conflicts must be resolved, it is advantageous to choose the largest candidate from among the conflicts as the next \\(C\\) to test.</p>\n<p>You are to convert each word to a number by processing each letter from left to right. Consider 'a' to be 1, 'b' to be 2, \\(\\ldots\\), 'z' to be 26. Use 5 bits for each letter (shift left by 5 or multiply by 32). Thus 'a' = 1, 'bz' = \\((2 \\cdot 32) + 26 = 90\\).</p>",
+  "input": "<p>Input to your program will be a series of word lists, one per line, terminated by the end-of-file. Each line consists of between two and thirteen words of at most five lower case letters each, separated from each other by at least one blank. There will always be at least one one-letter word.</p>",
+  "output": "<p>For each list, you are to print the input line. On the next line, print the \\(C\\) for the hash function determined by the list. Print a blank line after each \\(C\\).</p>\n<p>\\(C\\) will always fit in a 32-bit integer.</p>",
+  "samples": [
+    {
+      "input": "this is a test of some words to try out\na bee see dee\nthe of and to a in that is i it with for as\n",
+      "output": "this is a test of some words to try out\n17247663\n\na bee see dee\n4427\n\nthe of and to a in that is i it with for as\n667241\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Southern California Regional, 1989 Southern California Regional",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

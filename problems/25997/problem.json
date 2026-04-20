@@ -1,0 +1,33 @@
+{
+  "id": 25997,
+  "title": "Failing Flagship",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ahoy! You are sailing towards the next \"Boats Are Pretty Cool\" convention to sell your latest gadget: a new type of compass.</p>\n<p>On a normal compass, it is difficult to read off the precise wind direction. However, your new type of compass lets you read off wind directions to a much higher precision! The display can display strings of at most $1000$ characters.</p>\n<p>Unfortunately, you have encountered some bad weather. After a few hours of heavy winds and big waves, you can finally look at your compass again. You read off the wind direction $X$ you are going and know in which wind direction $Y$ you need to go. However, to make the ship turn you have to enter the degrees of the angle the ship has to make in the control system. What is the smallest turn, in degrees, you have to make to get back on the right course?</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 250px; height: 257px;\"/></p>\n<p style=\"text-align: center;\">Figure F.1: Wind directions</p>\n<p>The conversion of a wind direction to degrees goes as follows. The four basic wind directions are N, E, S, and W pointing at $0$, $90$, $180$, and $270$ degrees, respectively. There are also four wind directions consisting of two letters: NE, SE, SW, and NW, pointing at $45$, $135$, $225$, and $315$ degrees, respectively.</p>\n<p>A wind direction can also consist of $k\\geq 3$ letters $l_1l_2\\ldots l_k$. In that case, the last two letters indicate one of the four two-letter wind directions, i.e., $l_{k-1}l_k \\in \\{\\text{NE}, \\text{SE}, \\text{SW}, \\text{NW}\\}$ and the other letters are equal to one of these, i.e., $l_i \\in \\{l_{k-1}, l_k\\}$ for all $i \\leq k-2$. This wind direction points precisely in the middle of the following two wind directions:</p>\n<ul>\n<li>wind direction $l_2\\ldots l_k$,</li>\n<li>the first wind direction of at most $k-1$ letters you encounter when starting in $l_2\\ldots l_k$ and move along the circle towards $l_1$.</li>\n</ul>\n<p>For example, the wind direction SSSE points in the middle of SSE and S, because S is the first wind direction with at most 3 letters when moving from SSE towards S, as can also been seen in Figure F.1.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two strings $X$ and $Y$ ($1 \\leq |X|, |Y| \\leq 1000$), indicating the wind directions as described above.</li>\n</ul>",
+  "output": "<p>Output the smallest turn you have to make to go from direction $X$ to $Y$.</p>\n<p>Your answer should have an <em>absolute</em> error of at most $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "N S\n",
+      "output": "180\n"
+    },
+    {
+      "input": "NNE SSSE\n",
+      "output": "146.25\n"
+    },
+    {
+      "input": "ENE NW\n",
+      "output": "112.5\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2022",
+  "level": 10,
+  "tags": [
+    "math",
+    "implementation"
+  ],
+  "accepted_user_count": 67,
+  "submission_count": null,
+  "average_tries": 2.985100030899048
+}

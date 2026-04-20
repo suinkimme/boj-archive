@@ -1,0 +1,25 @@
+{
+  "id": 6178,
+  "title": "Lake Making",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Farmer John wants his cows to help him make a lake. He has mapped the pasture where he wants to build the lake by creating a R (3 &lt;= R &lt;= 100) row by C (3 &lt;= C &lt;= 100) column grid of six foot by six foot squares and then by determining the average elevation (10 &lt;= elev_rc &lt;= 5000) in inches for each square.</p>\n<p>Additionally, he has trained the cows in \"stomp digging\". The burly bovines travel in a herd that just exactly covers a 3x3 grid of squares to a grid whose upper left coordinate is R_s,C_s (1 &lt;= R_s &lt;= R-2; 1 &lt;= C_s &lt;= C-2). The cows then stomp the ground to push it down D_s (1 &lt;= D_s &lt;= 40) inches. The cows are quite meticulous; the cows at lower elevations will not commence stomping until the rest of the herd has joined them. Thus, not all the 3x3 grid is necessarily stomped (or perhaps some part is stomped less than some other part).</p>\n<p>Given an initial set of elevations, an ordered set of N (1 &lt;= N &lt;= 20000) stomp digging instructions, and an elevation E (0 &lt;= E &lt;= 5000) for the lake's final water level, determine the volume of water (in cubic inches) that the lake will hold. It is guaranteed that the answer will not exceed 2,000,000,000.  Presume that the edge of the lake contains barriers so that water can not spill over the border.</p>\n<p>Consider a small 4 x 6 pasture to be turned into a lake. Its initial elevations (annotated with row/column numbers) are:</p>\n<pre>\n                      column\n                  1  2  3  4  5  6\n         row 1:  28 25 20 32 34 36\n         row 2:  27 25 20 20 30 34\n         row 3:  24 20 20 20 20 30\n         row 4:  20 20 14 14 20 20</pre>\n<p>Interpreting the map, we see a hill in the upper right corner that rises to elevation 36; a small hill also rises to elevation 28 in the upper left corner. The middle of row 4 has a slight depression. After the cow-stomping instruction \"1 4 4\", the pasture has these elevations:</p>\n<pre>\n                  1  2  3  4  5  6\n         row 1:  28 25 20 32 32 32\n         row 2:  27 25 20 20 30 32\n         row 3:  24 20 20 20 20 30\n         row 4:  20 20 14 14 20 20</pre>\n<p>Note that only three squares were stomped down. The other six sets of cows were waiting for the stompers to get to their level, which never happened.  After stomping down the upper left corner with this instruction \"1 1 10\", the pasture looks like this:</p>\n<pre>\n                  1  2  3  4  5  6\n         row 1:  18 18 18 32 32 32\n         row 2:  18 18 18 20 30 32\n         row 3:  18 18 18 20 20 30\n         row 4:  20 20 14 14 20 20</pre>\n<p>If the final elevation of the lake is to be 22 inches, the pasture has these depths:</p>\n<pre>\n                  1  2  3  4  5  6\n         row 1:   4  4  4 -- -- --\n         row 2:   4  4  4  2 -- --\n         row 3:   4  4  4  2  2 --\n         row 4:   2  2  8  8  2  2</pre>\n<p>for a total aggregated depth of 66. Calculate the volume by multiplying by 6 feet x 6 feet = 66 x 72 inches x 72 inches = 342,144 cubic inches.</p>\n<p>Write a program to automate this calculation.</p>",
+  "input": "<ul>\n<li>Line 1: Four space-separated integers: R, C, E, N</li>\n<li>Lines 2..R+1: Line i+1 describes row of squares i with C space-separated integers</li>\n<li>Lines R+2..R+N+1: Line i+R+1 describes stomp-digging instruction i with three integers: R_s, C_s, and D_s</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: A single integer that is the volume of the new lake in cubic inches</li>\n</ul>",
+  "samples": [
+    {
+      "input": "4 6 22 2\n28 25 20 32 34 36\n27 25 20 20 30 34\n24 20 20 20 20 30\n20 20 14 14 20 20\n1 4 4\n1 1 10\n",
+      "output": "342144\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2007-2008 Season, USACO March 2008 Contest, Bronze",
+  "level": 5,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 122,
+  "submission_count": null,
+  "average_tries": 1.24590003490448
+}

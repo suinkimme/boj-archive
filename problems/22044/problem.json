@@ -1,0 +1,34 @@
+{
+  "id": 22044,
+  "title": "Painting",
+  "time_limit": "1.5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Mitya has a rectangular canvas, which can be represented as a table of size $n \\times m$, and $k$ robots. We number the rows of the table from $1$ to $n$ from top to bottom, and the columns from $1$ to $m$ from left to right. Cell $(x, y)$ is at the intersection of row $x$ and column $y$.</p>\n<p>Initially, all the cells of the table are painted with white color, which has the number $0$. Robot number $i$ is filled with paint with color number $i$ ($1 \\le i \\le k$). For each robot, Mitya chose a rectangle, which is described by four integers $x_{i,1}$, $y_{i,1}$, $x_{i,2}$, and $y_{i,2}$. It contains all cells $(x, y)$, such that $x_{i,1} \\le x \\le x_{i,2}$ and $y_{i,1} \\le y \\le y_{i,2}$ ($1 \\le x_{i,1} \\le x_{i,2} \\le n$, $1 \\le y_{i,1} \\le y_{i,2} \\le m$). After that, the robots, one after another, in random order, painted their rectangle with their color. When painting, the robot changes the color of all cells on the rectangle to a new color. If the cell was painted before, the old color of this cell is changed to the new color, and can not be restored.</p>\n<p>The next day, his friend Lesha saw the canvas. He noticed that for each color from $1$ to $k$ there is at least one cell painted with that color. He is trying to determine for each robot, what rectangle was assigned to it. Namely, he is interested in whether it is possible to assign a rectangle to each robot in such a way that there is an order of robots that would result the same picture. And if Mitya could choose such rectangles, Lesha wonders if he could do it the only way. Two ways are considered different if there is a robot which has different rectangles in these methods. Two rectangles are considered different if they are different in at least one of the four coordinates $x_1$, $y_1$, $x_2$ or $y_2$.</p>",
+  "input": "<p>The first line contains three integers $n$, $m$, and $k$, the height and width of the canvas, and the number of robots ($1 \\le n, m \\le 2\\,000$; $1 \\le k \\le 1\\,000$).</p>\n<p>Each of the next $n$ lines contains $m$ integers $c_{ij}$, the colors of the cells of the table ($0 \\le c_{ij} \\le k$).</p>\n<p>It is guaranteed that for every color from $1$ to $k$ there is at least one cell painted with it.</p>",
+  "output": "<p>If there is no way that Mitya could assign rectangles to robots, so that there is an order of robots that would result in the same picture, print “<code>No solution</code>”.</p>\n<p>If there is only one way, print “<code>Single solution</code>” in the first line. In the next $k$ lines print four integers $x_{i,1}$, $y_{i,1}$, $x_{i,2}$, and $y_{i,2}$, which describe the rectangle for $i$-th robot ($1 \\le x_{i,1} \\le x_{i,2} \\le n$, $1 \\le y_{i,1} \\le y_{i,2} \\le m$). In the last line print a permutation of numbers from $1$ to $k$, the order of the robots, which would result in the given picture.</p>\n<p>If there is more than one way, print “<code>Multiple solutions</code>” in the first line. In the next line print “<code>First</code>”. In the next lines, print the description of the first way in the same format as in the previous paragraph. In the next line print “<code>Second</code>”. And in the next lines print a description of the second way. The first and second ways should be different. If there are more than two different ways, you can print any two different ones.</p>",
+  "samples": [
+    {
+      "input": "3 4 3\n0 3 3 0\n1 3 2 1\n1 1 2 1\n",
+      "output": "Single solution\n2 1 3 4\n2 3 3 3\n1 2 2 3\n1 3 2\n"
+    },
+    {
+      "input": "2 2 2\n1 2\n2 1\n",
+      "output": "No solution\n"
+    },
+    {
+      "input": "2 1 2\n2\n1\n",
+      "output": "Multiple solutions\nFirst\n2 1 2 1\n1 1 2 1\n2 1\nSecond\n1 1 2 1\n1 1 1 1\n1 2\n"
+    },
+    {
+      "input": "2 3 3\n0 3 0\n2 0 1\n",
+      "output": "Single solution\n2 3 2 3\n2 1 2 1\n1 2 1 2\n1 2 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Innopolis Open in Informatics, Innopolis Open 2019-2020 Finals",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

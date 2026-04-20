@@ -1,0 +1,28 @@
+{
+  "id": 8875,
+  "title": "장난감 정리 로봇",
+  "time_limit": "5 초",
+  "memory_limit": "64 MB",
+  "description": "<p>마리타의 남동생은 모든 장난감을 거실 바닥에 어질러놓았다! 다행히도 마리타는 장난감을 정리하는 특별한 로봇들을 개발하였다. 마리타는 어떤 로봇이 어떤 장난감을 집어야 하는지 결정하도록 당신에게 도움을 청했다.</p>\n<p>장난감은 총 T 개가 있으며, 각각은 정수 무게 W[i] 와 정수 크기 S[i] 를 가진다. 로봇들은 연약한 로봇과 작은 로봇 두 가지 종류가 있다.</p>\n<p>연약한 로봇은 총 A 개가 있다. 각 연약한 로봇에는 무게 제한 X[i] 가 있어서, X[i] 미만의 무게를 가진 장난감만을 운반할 수 있다. 장난감의 크기는 상관없다.</p>\n<p>작은 로봇은 총 B 개가 있다. 각 작은 로봇에는 크기 제한 Y[i] 가 있어서, Y[i] 미만의 크기를 가진 장난감만을 운반할 수 있다. 장난감의 무게는 상관없다.</p>\n<p>마리타의 로봇들 각각은 하나의 장난감을 정리하는 데 1분이 걸린다. 여러 로봇들이 서로 다른 장난감들을 동시에 정리할 수 있다.</p>\n<p>당신의 임무는 마리타의 로봇들이 모든 장난감들을 정리할 수 있는지 결정하고, 만약 가능하다면, 모든 장난감을 정리하는데 걸리는 가장 짧은 시간을 찾는 것이다.</p>\n<p>첫 번째 예시로, 무게 제한 X = [6, 2, 9] 를 가진 A = 3 개의 연약한 로봇과 크기 제한 Y = [4, 7] 을 가진 B = 2 개의 작은 로봇이 있고, T = 10 개의 장난감이 아래와 같이 있다고 하자:</p>\n<table class=\"table table-bordered\" style=\"width:45%\">\n<thead>\n<tr>\n<th style=\"width:15%\">장난감 번호</th>\n<th style=\"width:3%\">0</th>\n<th style=\"width:3%\">1</th>\n<th style=\"width:3%\">2</th>\n<th style=\"width:3%\">3</th>\n<th style=\"width:3%\">4</th>\n<th style=\"width:3%\">5</th>\n<th style=\"width:3%\">6</th>\n<th style=\"width:3%\">7</th>\n<th style=\"width:3%\">8</th>\n<th style=\"width:3%\">9</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>무게</th>\n<td>4</td>\n<td>8</td>\n<td>2</td>\n<td>7</td>\n<td>1</td>\n<td>5</td>\n<td>3</td>\n<td>8</td>\n<td>7</td>\n<td>10</td>\n</tr>\n<tr>\n<th>크기</th>\n<td>6</td>\n<td>5</td>\n<td>3</td>\n<td>9</td>\n<td>8</td>\n<td>1</td>\n<td>3</td>\n<td>7</td>\n<td>6</td>\n<td>5</td>\n</tr>\n</tbody>\n</table>\n<p>모든 장난감들을 정리하는 데 걸리는 가장 짧은 시간은 3분이다:</p>\n<table class=\"table table-bordered\" style=\"width:85%\">\n<thead>\n<tr>\n<th style=\"width:10%\"> </th>\n<th style=\"width:15%\">연약한 로봇 0</th>\n<th style=\"width:15%\">연약한 로봇 1</th>\n<th style=\"width:15%\">연약한 로봇 2</th>\n<th style=\"width:15%\">작은 로봇 0</th>\n<th style=\"width:15%\">작은 로봇 1</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>1분째</th>\n<td>장난감 0</td>\n<td>장난감 4</td>\n<td>장난감 1</td>\n<td>장난감 6</td>\n<td>장난감 2</td>\n</tr>\n<tr>\n<th>2분째</th>\n<td>장난감 5</td>\n<td> </td>\n<td>장난감 3</td>\n<td> </td>\n<td>장난감 8</td>\n</tr>\n<tr>\n<th>3분째</th>\n<td> </td>\n<td> </td>\n<td>장난감 7</td>\n<td> </td>\n<td>장난감 9</td>\n</tr>\n</tbody>\n</table>\n<p>두 번째 예시로, 무게 제한 X = [2, 5] 를 가진 A = 2 개의 연약한 로봇과 크기 제한 Y = [2] 를 가진 B = 1 개의 작은 로봇이 있고, T = 3 개의 장난감이 아래와 같이 있다고 하자</p>\n<table class=\"table table-bordered\" style=\"width:24%\">\n<thead>\n<tr>\n<th style=\"width:15%\">장난감 번호</th>\n<th style=\"width:3%\">0</th>\n<th style=\"width:3%\">1</th>\n<th style=\"width:3%\">2</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<th>무게</th>\n<td>3</td>\n<td>5</td>\n<td>2</td>\n</tr>\n<tr>\n<th>크기</th>\n<td>1</td>\n<td>3</td>\n<td>2</td>\n</tr>\n</tbody>\n</table>\n<p>어떤 로봇도 무게 5, 크기 3짜리의 장난감을 정리할 수 없기 때문에, 모든 장난감들을 치우는 것은 불가능하다.</p>",
+  "input": "<p>첫째 줄에 연약한 로봇의 개수 A, 작은 로봇의 개수 B, 장난감의 개수 T가 주어진다.</p>\n<p>둘째 줄에는 각 연약한 로봇의 무게 제한을 나타내는 길이가 A인 배열이 주어진다.</p>\n<p>셋째 줄에는 각 작은 로봇의 크기 제한을 나타나는 길이가 B인 배열이 주어진다.</p>\n<p>다음 T개 줄에는 각 장난감의 무게 W[i]와 크기 S[i]가 주어진다.</p>",
+  "output": "<p>모든 장난감을 정리하는데 걸리는 가장 짧은 시간(분)을 출력한다. 만약 정리하는 것이 불가능하다면, -1을 출력한다.</p>",
+  "samples": [
+    {
+      "input": "3 2 10\n6 2 9\n4 7\n4 6\n8 5\n2 3\n7 9\n1 8\n5 1\n3 3\n8 7\n7 6\n10 5\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, International Olympiad in Informatics, IOI 2013, Day 2",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "binary_search",
+    "priority_queue",
+    "parametric_search"
+  ],
+  "accepted_user_count": 172,
+  "submission_count": null,
+  "average_tries": 3.7732999324798584
+}

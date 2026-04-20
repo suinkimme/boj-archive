@@ -1,0 +1,34 @@
+{
+  "id": 13365,
+  "title": "Jumping Worm",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The forest where a little worm lives has N trees, neatly located at positions 1to N. The worm dreams to be the first ever being to place its slimy belly on the moon... Nah, not really. Well, he just wants to be at the top of the N th tree. Right now, the little worm is at the base of the 1st tree. He can move in one of the following two ways:</p>\n<ol>\n<li>When he is on the i<sup>th</sup> tree, he can climb up u<sub>i</sub> units at a time. The height after any climb will never be higher than the height of the tree.</li>\n<li>He can jump from the i<sup>th</sup> tree to an adjacent tree (the (i – 1)<sup>th</sup> or the (i + 1)<sup>th</sup> tree). The worm is a good jumper, so he can jump to the same height on the nearby tree. However, if the top of the adjacent tree is lower than the worm’s current height, the worm will end up on the top of this lower tree.</li>\n</ol>\n<p>Each move takes the worm 1 second. But, after each move, the worm has to rest for 1 second. During this time, he will fall down due to gravity for d<sub>i </sub>units if he is on the i<sup>th</sup> tree. Yet he cannot go below height 0. There is an exception to this rule: when he jumps to the top of atree, he does not have to rest;hecan continue moving right after his previous move. Because trees are generally different, the u<sub>i</sub> and d<sub>i</sub> of different tree can be different.</p>\n<p>Remarks: Each of the two maneuvers requires exactly 1 second, even in the cases where the movement does not go the full length because it reaches the top or the bottom of a tree.</p>\n<p>Example: There are 8 trees, whose heights from left to right are 5, 5, 3, 3, 3, 4, 5, and 5 units, as shown below. All the u<sub>i</sub> ’sare 3 units per second, and the d<sub>i</sub> ’sare 2 units per second. Figures a) to g) show one possible way for the little worm to move from the starting position, the base of the first tree, to the top of the 8<sup>th</sup> tree in Figure f). </p>\n<p><img alt=\"\" src=\"1.png\" style=\"height:98px; width:300px\"/></p>\n<p>a) The little worm begins at the base of the first tree.</p>\n<p><img alt=\"\" src=\"2.png\" style=\"height:101px; width:300px\"/></p>\n<p>b) After the worm climbed 3 units up and fell 2 units down during the wait, he ended up at the position of the flag.</p>\n<p><img alt=\"\" src=\"3.png\" style=\"height:108px; width:300px\"/></p>\n<p>c) He must spend 5 seconds to get to the top.</p>\n<p><img alt=\"\" src=\"4.png\" style=\"height:116px; width:300px\"/></p>\n<p>d) Then, he jumpped to the tree 2, 3, 4, 5 on the 6th, 7th, 8th, 9th seconds respectively without having to rest.</p>\n<p><img alt=\"\" src=\"5.png\" style=\"height:101px; width:300px\"/></p>\n<p>e) While on the 6th tree, the little worm was not at the top, so he must rest for 1 second. During the time, he fell down 2 units. Then, he moved to the top of the tree again.</p>\n<p><img alt=\"\" src=\"6.png\" style=\"height:115px; width:300px\"/></p>\n<p>f) The little worm continued its journey to the top of the 8th tree.</p>\n<p><img alt=\"\" src=\"7.png\" style=\"height:114px; width:300px\"/></p>\n<p>g) This figure summarized the trip of the little worm from Figure a) to Figure f). The total time required for this trip is 16 seconds.</p>\n<p>Now if the worm decides to instead jump from the base of one trees to the next as shown in the figure below, and only climbs up on the last tree, he will take a total of 19 seconds. Note that since the jump is not made at the top, he must rest for 1 second (shown as dots). Also, since the worm is at the base, he cannot fall further while resting.</p>\n<p><img alt=\"\" src=\"8.png\" style=\"height:102px; width:300px\"/></p>\n<p>It turns out for this particular example, the shortest possible travel time for the little worm is 14 seconds, as shown in the figure below.</p>\n<p><img alt=\"\" src=\"9.png\" style=\"height:112px; width:300px\"/></p>\n<p>Your task Given N trees, the u<sub>i</sub> and d<sub>i</sub> of all trees, find the shortest travel time (in seconds) from the base of the 1st tree to the top of the Nth tree.</p>",
+  "input": "<p>For the first line, there is a single integer, K, representing the number of test cases. For each test case, there are 4 lines. (1 ≤ K ≤ 10)</p>\n<ol>\n<li>The first line contains a single integer, N, the number of the trees (0 &lt; N ≤ 1000).</li>\n<li>The second line contains N numbers, h<sub>i </sub>, where i goes from 1 to N. Note that h<sub>i </sub>represents the height of each tree. (1 ≤ h<sub>i</sub> ≤ 1000)</li>\n<li>The third line contains N numbers, u<sub>i</sub> , where i goes from 1 to N. Note that u<sub>i</sub> represents the climb rate of each tree. (1 ≤ u<sub>i</sub> ≤ 1000)</li>\n<li>The fourth line contains N numbers, d<sub>i</sub> , where i goes from 1 to N. Note that d<sub>i </sub>represents the fall rate of each tree. (1 ≤ d<sub>i</sub> ≤ 1000)</li>\n</ol>",
+  "output": "<p>For each test case, you print out on a single line the shortest travel time of the little worm. However, if it is not possible to reach the top of the Nth tree, you must print, in capital letter, the word “NEVER”, without the quotation.</p>",
+  "samples": [
+    {
+      "input": "1\n8\n5 5 3 3 3 4 5 5\n3 3 3 3 3 3 3 3\n2 2 2 2 2 2 2 2\n",
+      "output": "14\n"
+    },
+    {
+      "input": "3\n8\n2 2 2 2 2 2 2 2\n1 1 1 1 1 1 1 1\n1 1 1 1 1 1 1 1\n8\n5 5 3 3 3 4 5 5\n6 6 6 6 6 6 6 6\n0 0 0 0 0 0 0 0\n8\n5 5 3 3 3 4 5 5\n3 3 1 1 1 1 3 1\n2 1 0 4 0 4 1 2\n",
+      "output": "NEVER\n11\n16\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Thailand, Thailand Central Group-A Programming Contest, Thailand Central Group-A Programming Contest 2016",
+  "level": 14,
+  "tags": [
+    "dp",
+    "graphs",
+    "greedy",
+    "graph_traversal",
+    "bfs",
+    "shortest_path",
+    "dial"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.2143000364303589
+}

@@ -1,0 +1,30 @@
+{
+  "id": 22456,
+  "title": "Equation",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>論理演算では，値は T と F の2種類だけを扱う．</p>\n<p>\"-\"を単項演算子（入力が 1 つの演算を表す記号）， \"*\", \"+\", \"-&gt;\" を 2 項演算子（入力が 2 つの演算を表す記号）とする． \"-\" は論理否定(NOT)， \"*\" は論理積(AND)， \"+\" は論理和(OR)， \"-&gt;\" は論理包含(IMP)を表す演算子である． これらの論理演算の真理値表を下の表に示す．</p>\n<table class=\"table table-bordered table-center-40\">\n<thead>\n<tr>\n<th>x</th>\n<th>y</th>\n<th>-x</th>\n<th>(x*y)</th>\n<th>(x+y)</th>\n<th>(x-&gt;y)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>T</td>\n<td>T</td>\n<td>F</td>\n<td>T</td>\n<td>T</td>\n<td>T</td>\n</tr>\n</tbody>\n<tbody>\n<tr>\n<td>T</td>\n<td>F</td>\n<td>F</td>\n<td>F</td>\n<td>T</td>\n<td>F</td>\n</tr>\n</tbody>\n<tbody>\n<tr>\n<td>F</td>\n<td>T</td>\n<td>T</td>\n<td>F</td>\n<td>T</td>\n<td>T</td>\n</tr>\n</tbody>\n<tbody>\n<tr>\n<td>F</td>\n<td>F</td>\n<td>T</td>\n<td>F</td>\n<td>F</td>\n<td>T</td>\n</tr>\n</tbody>\n</table>\n<p>論理式は以下のいずれかの形式である． X, Yは論理式とし， 2 項演算子は必ず括弧で囲むものとする．</p>\n<ul>\n<li>定数: T, F</li>\n<li>変数: a, b, c, d, e, f, g, h, i, j, k</li>\n<li>論理否定: -X</li>\n<li>論理積: (X*Y)</li>\n<li>論理和: (X+Y)</li>\n<li>論理包含: (X-&gt;Y)</li>\n</ul>\n<p>2 つの論理式を等号 \"=\" で結合した等式が与えられる． 恒等式とは，式に現れる変数がどのような値であっても成立する等式のことである． 与えられた等式が恒等式であるかを判定するプログラムを作りたい．</p>",
+  "input": "<p>入力は複数の行で構成され，各行は 1 つのデータセットである． データセットはT, F, a, b, c, d, e, f, g, h, i, j, k, (, ), =, -, +, *, &gt; から成る文字列であり， 空白など他の文字を含まない． 1 行の文字数は 1000 文字以下と仮定してよい．</p>\n<p>1 つのデータセットは等式ひとつを含む． 等式の文法は次の BNF で与えられる． すべての等式はこの構文規則に従う．</p>\n<pre>\n&lt;equation&gt; ::= &lt;formula&gt; \"=\" &lt;formula&gt;\n&lt;formula&gt;  ::= \"T\" | \"F\" |\n\"a\" | \"b\" | \"c\" | \"d\" | \"e\" | \"f\" |\n\"g\" | \"h\" | \"i\" | \"j\" | \"k\" |\n\"-\" &lt;formula&gt; |\n\"(\" &lt;formula&gt; \"*\" &lt;formula&gt; \")\" |\n\"(\" &lt;formula&gt; \"+\" &lt;formula&gt; \")\" |\n\"(\" &lt;formula&gt; \"-&gt;\" &lt;formula&gt; \")\"\n</pre>\n<p>入力の終わりは \"#\" だけからなる行で示されており，この行はデータセットではない．</p>",
+  "output": "<p>各データセットについて，等式が恒等式であれば“YES”を， そうでなければ“NO”をそれぞれ1行に出力しなさい． 出力には余分な文字を含んではならない．</p>",
+  "samples": [
+    {
+      "input": "-(a+b)=(-a*-b)\n(a->b)=(-a+b)\n((a*T)+b)=(-c+(a*-b))\n#\n",
+      "output": "YES\nYES\nNO\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2012",
+  "level": 9,
+  "tags": [
+    "bruteforcing",
+    "data_structures",
+    "implementation",
+    "parsing",
+    "recursion",
+    "stack",
+    "string"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 3.0713999271392822
+}

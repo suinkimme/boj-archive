@@ -1,0 +1,27 @@
+{
+  "id": 33053,
+  "title": "All Pairs Similarity",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Farmer John's $N$ ($1\\le N\\le 5\\cdot 10^5$) cows are each assigned a bitstring of length $K$ that is not all zero ($1\\le K\\le 20$). Different cows may be assigned the same bitstring.</p>\n<p>The Jaccard similarity of two bitstrings is defined as the number of set bits in their bitwise intersection divided by the number of set bits in their bitwise union. For example, the Jaccard similarity of the bitstrings <code>11001</code> and <code>11010</code> would be $2/4$.</p>\n<p>For each cow, output the sum of her bitstring's Jaccard similarity with each of the $N$ cows' bitstrings including her own, modulo $10^9+7$. Specifically, if the sum is equal to a rational number $a/b$ where $a$ and $b$ are integers sharing no common factors, output the unique integer $x$ in the range $[0,10^9+7)$ such that $bx-a$ is divisible by $10^9+7$.</p>",
+  "input": "<p>The first line contains $N$ and $K$.</p>\n<p>The next $N$ lines each contain an integer $i\\in (0,2^K)$, representing a cow associated with the length-$K$ binary representation of $i$.</p>",
+  "output": "<p>Output the sum modulo $10^9+7$ for each cow on a separate line.</p>",
+  "samples": [
+    {
+      "input": "4 2\n1\n1\n2\n3\n",
+      "output": "500000006\n500000006\n500000005\n500000006\n"
+    }
+  ],
+  "hint": "<p>The cows are associated with the following bitstrings: $[$<code>01</code>, <code>01</code>, <code>10</code>, <code>11</code>$]$.</p>\n<p>For the first cow, the sum is $\\text{sim}(1,1)+\\text{sim}(1,1)+\\text{sim}(1,2)+\\text{sim}(1,3)=1+1+0+1/2\\equiv 500000006\\pmod{10^9+7}$.</p>\n<p>The second cow's bitstring is the same as the first cow's, so her sum is the same as above.</p>\n<p>For the third cow, the sum is</p>\n<p>$\\text{sim}(2,1)+\\text{sim}(2,1)+\\text{sim}(2,2)+\\text{sim}(2,3)=0+0+1+1/2\\equiv 500000005\\pmod{10^9+7}$.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2024-2025 Season, USACO 2024 December Contest, Platinum",
+  "level": 23,
+  "tags": [
+    "dp",
+    "bitmask",
+    "dp_bitfield",
+    "dp_sum_over_subsets"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 2.5713999271392822
+}

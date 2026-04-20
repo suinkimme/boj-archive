@@ -1,0 +1,27 @@
+{
+  "id": 23767,
+  "title": "Access Denied",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Computer passwords have been around for a long time. In fact, 60 years ago \\href{https://en.wikipedia.org/wiki/Compatible_Time-Sharing_System}{CTSS} was one of the first computers with a password. The implementation of this was very simple. In CTSS the password was stored in plain text in a file on disk. When logging in, the user would enter a password. The computer would then compare the password to the password on disk. If the comparison failed, it would deny access, if it succeeded, access would be allowed. Researchers at MIT were quick to discover several security flaws in this password system. We will explore one of them, the timing attack.</p>\n<p>In a timing attack, we exploit that we can deduce a computation path from the time it takes to do the computation. In CTSS the password check was done using a simple string matching algorithm, similar to this:</p>\n<pre>\nbool CheckPassword(string pwd1, string pwd2) {\n    if (pwd1.Length != pwd2.Length) {\n        return false;\n    }\n    for (int i = 0; i &lt; pwd1.Length; i++) {\n        if (pwd1[i] != pwd2[i]) {\n            return false;\n        }\n    }\n    return true;\n}\n</pre>\n<p>For the purpose of this problem, we will use a (very) simplified timing model and the above algorithm. The timing model looks as follows:</p>\n<ul>\n<li>A branching statement (if or for) takes $1$ ms.</li>\n<li>An assignment, or update of a memory address takes $1$ ms.</li>\n<li>A comparison between two memory addresses takes $3$ ms.</li>\n<li>A return statement takes $1$ ms.</li>\n</ul>\n<p>The password consists of between $1$ and $20$ English letters, upper or lower case, and digits.</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "\n\nACCESS DENIED (5 ms)\n\nACCESS DENIED (41 ms)\n\nACCESS DENIED (68 ms)\n\nACCESS GRANTED\n",
+      "output": "A\n\nHunFhun\n\nHunter1\n\nHunter2\n\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2021",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "string",
+    "bruteforcing",
+    "parsing"
+  ],
+  "accepted_user_count": 72,
+  "submission_count": null,
+  "average_tries": 2.0971999168395996
+}

@@ -1,0 +1,35 @@
+{
+  "id": 33718,
+  "title": "[D] Digits",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>지금은 사라졌지만, 예전에는 New York Times에 Digits라는 게임이 있었다. 이 게임의 규칙은 다음과 같다.</p>\r\n\r\n<ol>\r\n\t<li>플레이어가 목표로 하는 양의 정수 $T$가 주어진다.</li>\r\n\t<li>게임판에 $6$개의 양의 정수가 적힌 상태로 시작한다.</li>\r\n\t<li>플레이어는 게임판에 수가 $2$개 이상 있는 동안 아래 연산을 시행할 수 있다. <strong>연산을 반드시 시행해야만 할 필요는 없다.</strong>\r\n\t<ul>\r\n\t\t<li>게임판에서 수 하나를 선택하고 지운다. 이때 지운 수를 $a$라고 하자.</li>\r\n\t\t<li>게임판에서 수 하나를 더 선택하고 지운다. 이때 지운 수를 $b$라고 하자.</li>\r\n\t\t<li>$a+b$, $a-b$, $a\\times b$, $a\\div b$ 중 하나를 선택하여 게임판에 적는다. 단, 양의 정수가 아닌 수를 게임판에 적을 수는 없다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>모든 연산을 끝낸 뒤 게임판에 $T$가 적혀 있다면 플레이어가 승리하고, 그렇지 않다면 패배한다.</li>\r\n</ol>\r\n\r\n<p>하이볘는 아직 이 게임을 더 즐기고 싶었기에 이를 직접 구현하였지만, 아직 주어진 게임판에서 플레이어가 승리할 수 있는지 판별하는 방법은 모른다. 이에 착한 여러분들이 게임판의 상태를 읽고, 어떻게 하면 게임에서 승리할 수 있는지 알려주는 프로그램을 작성해 주기로 했다.</p>\r\n",
+  "input": "<p>첫째 줄에는 목표로 하는 값인 양의 정수 $T$가 주어진다. $\\left( 1 \\le T \\le 10^{18} \\right)$</p>\r\n\r\n<p>둘째 줄에는 게임판에 적힌 $6$개의 양의 정수 $X_1, X_2, \\ldots, X_6$이 공백으로 구분되어 주어진다. $(1 \\le X_i \\le 1\\,000)$</p>\r\n",
+  "output": "<p>만약 플레이어가 승리할 수 없다면 첫째 줄에 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력한다.</p>\r\n\r\n<p>만약 플레이어가 승리할 수 있다면 첫째 줄에 사용한 연산의 수 $K$를 출력하고, 둘째 줄부터 $K$개의 줄에 걸쳐 플레이어가 승리하기 위해 수행해야 하는 연산을 순서대로 아래와 같이 출력한다.</p>\r\n\r\n<ul>\r\n\t<li>만약 게임판에서 $a$와 $b$를 지운 뒤 연산자 $op$를 사용하여 $c$를 적었다면, <span style=\"color:#e74c3c;\"><code>a op b = c</code></span>를 출력한다. $+$, $-$, $\\times$, $\\div$ 연산자는 각각 <span style=\"color:#e74c3c;\"><code>+</code></span>, <span style=\"color:#e74c3c;\"><code>-</code></span>, <span style=\"color:#e74c3c;\"><code>*</code></span>, <span style=\"color:#e74c3c;\"><code>/</code></span>로 출력한다.</li>\r\n</ul>\r\n\r\n<p>만약 플레이어가 승리하는 방법이 여러 가지라면 그중 아무거나 하나를 출력하면 되며, <strong>$K$를 최소화할 필요는 없다.</strong></p>\r\n",
+  "samples": [
+    {
+      "input": "86\n1 25 5 4 10 3\n",
+      "output": "5\n25 / 5 = 5\n5 + 4 = 9\n9 * 10 = 90\n90 - 1 = 89\n89 - 3 = 86\n"
+    },
+    {
+      "input": "10\n1 1 1 1 1 1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "10\n1 3 6 10 15 21\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "hibye1217, iamgamja, iktk, lms0806, mujigae, nflight11, pyb1031, utilforever, wider93",
+  "level": 11,
+  "tags": [
+    "math",
+    "bruteforcing",
+    "arithmetic",
+    "backtracking"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 1.5714000463485718
+}

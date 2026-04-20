@@ -1,0 +1,22 @@
+{
+  "id": 13859,
+  "title": "Exam",
+  "time_limit": "1.5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Some universities use an evaluation system according to which students can get from 0 to 100 points, out of which from 0 to 75 - during the semester, and from 0 to 25 - at the final exam. The final grade is determined based on the sum of the semester and the exam points as follows:</p>\n<table class=\"table table-bordered\" style=\"width:300px\">\n<tbody>\n<tr>\n<td style=\"text-align:center\">Sum of points</td>\n<td style=\"text-align:center\">European grade</td>\n</tr>\n<tr>\n<td>90-100</td>\n<td>A</td>\n</tr>\n<tr>\n<td>82-89</td>\n<td>B</td>\n</tr>\n<tr>\n<td>75-81</td>\n<td>C</td>\n</tr>\n<tr>\n<td>68-74</td>\n<td>D</td>\n</tr>\n<tr>\n<td>60-67</td>\n<td>E</td>\n</tr>\n<tr>\n<td>35-59</td>\n<td>FX</td>\n</tr>\n</tbody>\n</table>\n<p>If a student gets strictly less than 35 points during the semester, he or she is not allowed to pass the exam; we’ll assume in this problem that such students’ names have been previously crossed out from the list.</p>\n<p>If one reads the column of European grades in the exam list from top to bottom, he or she can find various “words”. For example, if there are consecutive sums of points such as 92, 75 and 66, they are marked as A, C and E respectively, and form the “word” ACE. In case of FX, both letters (first F, then X) appear in the “word”.</p>\n<p>It is impossible to know the exam results beforehand. But the lecturer knows both the approximate level of knowledge of each student and the difficulty of the exam. So, for all students, the lecturer can estimate the probabilities (in percentages) of each possible number of points the student can earn at the exam: i.e. the probability that the student will get 0 points, 1 point, ..., 25 points – for a total of 26 nonnegative integers, whose sum equals 100. Points, obtained by every student during the semester, are also known (as concrete numbers from 35 to 75, without any probabilities).</p>\n<p>The lecturer is a great esthete and dislikes situations when the “word”, produced by European marks, contains “unpleasant” substrings, according to his taste.</p>\n<p>Your task is to write a program to find the probability that no “unpleasant” substring will occur. </p>",
+  "input": "<p>The 1st line of the input file contains the number of students N (3 ≤ N ≤ 4096). Each of the following N lines contains 27 space-separated integers — the number of semester points (from 35 to 75), and 26 probabilities corresponding to 0, 1, 2, ..., 25 exam points (each probability is non-negative, their total sum is 100). The next line contains the number K (1 ≤ K ≤ 1024) of “unpleasant” words according to lecturer’s opinion. Each of the following K lines contains an “unpleasant” word. It is guaranteed that each of these K lines contains only uppercases and ends with the end-of-line symbol. The length of each “unpleasant” word is in the range 2...1024 and the total sum of lengths of all “unpleasant” words does not exceed 32768.</p>",
+  "output": "<p>Your program should write to standard output exactly one floating-point number on a single line – the probability (in percentages) that the lecturer will be satisfied. Floating-point format may be any of the standard ones (using decimal point, not decimal comma). The answer will be accepted iff its relative or absolute error does not exceed 1e–6.</p>",
+  "samples": [
+    {
+      "input": "3\n72 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 2 3 5 7 9 14 16 21 12 5 1\n55 0 0 0 1 2 3 4 5 6 7 8 8 9 8 8 7 6 5 4 3 2 2 1 1 0 0\n55 0 0 0 1 2 3 4 5 6 7 8 8 9 8 8 7 6 5 4 3 2 2 1 1 0 0\n2\nDE\nWAW\n",
+      "output": "79.5\n"
+    }
+  ],
+  "hint": "<p>The letter W may not occur in grades, so we can skip the word WAW and look for DE only. The 1st student’s sum will be at least 72+10=82 points, so his mark can’t be D. Thus, the “unpleasant” word DE will occur if and only if the 2nd student gets from 13 to 19 points (the probability is 8%+8%+7%+6%+5%+4%+3%=41%) and the 3rd – from 5 to 12 (the probability 3%+4%+5%+6%+7%+8%+8%+9%=50%). So, the word DE will appear with probability 0.41*0.5=0.205, and will not appear with probability 1–0.205=0.795 (i.e. 79.5%).</p>",
+  "source": "ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2016",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 1.5
+}

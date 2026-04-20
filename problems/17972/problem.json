@@ -1,0 +1,39 @@
+{
+  "id": 17972,
+  "title": "Network Vulnerability",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Network vulnerability refers to how much the network performance reduces in various cases of disruptions, such as natural disasters, element failures, or adversarial attacks. A network is frequently represented as a graph, in which the vertices and edges correspond to nodes and links, respectively. So the terms network and graph are used interchangeably here. The connectivity, which is defined to be the minimum number of vertices whose deletion results in a disconnected graph or a one-vertex graph, is recognized as the most important measure to evaluate the vulnerability of a network.</p>\n<p>Nonetheless, the connectivity only partly reflects the resistance of a graph to the deletion of vertices. Accordingly, there have been many studies proposing other metrics to account for the network vulnerability, among which the toughness and the scattering number appear to be the most popular. The underlying notion of the toughness and scattering number is the maximum number of connected components resulting from removing <em>k</em> vertices from a graph. Let <em>c<sub>k</sub></em>(<em>G</em>) denote the maximum number of connected components obtained by removing exactly <em>k</em> vertices from a graph <em>G</em>. It is unfortunate that given a graph <em>G</em> and a positive integer <em>k</em>, the problem of determining <em>c<sub>k</sub></em>(<em>G</em>) is computationally intractable.</p>\n<p>For some graph classes like interval graphs, however, <em>c<sub>k</sub></em>(<em>G</em>) can be computed in polynomial time. An interval graph is the intersection graph of a family of (closed) intervals on the real line, where two vertices are connected with an edge if and only if their corresponding intervals intersect. The family is usually called an interval representation for the graph. See Figure E.1 for an example of an interval graph and its interval representation.</p>\n<table class=\"table table-bordered\" style=\"width:100%;\">\n<tbody>\n<tr>\n<td style=\"width: 50%; text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 171px; height: 136px;\"/></td>\n<td style=\"width: 50%; text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 260px; height: 131px;\"/></td>\n</tr>\n<tr>\n<td style=\"width: 50%; text-align: center;\">(a) an interval graph</td>\n<td style=\"width: 50%; text-align: center;\">(b) an interval representation of the graph of (a)</td>\n</tr>\n</tbody>\n</table>\n<p>Given an interval representation of an interval graph <em>G</em> with <em>n</em> vertices, your job is to write an efficient running program for computing <em>c<sub>k</sub></em>(<em>G</em>) for all <em>k</em> included in {0, 1, … , <em>k</em> − 1}. If the interval representation shown in Figure E.1(b), for example, is given, then ܿ<em>c</em><sub>0</sub>(<em>G</em>), <em>c</em><sub>1</sub>(<em>G</em>), <em>c</em><sub>2</sub>(<em>G</em>), <em>c</em><sub>3</sub>(<em>G</em>), <em>c</em><sub>4</sub>(<em>G</em>), <em>c</em><sub>5</sub>(<em>G</em>), <em>c</em><sub>6</sub>(<em>G</em>), <em>c</em><sub>7</sub>(<em>G</em>) are 1, 1, 1, 2, 2, 3, 2, 1, respectively.</p>",
+  "input": "<p>Your program is to read from standard input. The first line contains a positive integer <em>n</em> representing the number of intervals, where <em>n</em> ≤ 2,000. In the following <em>n</em> lines, each contains a pair of left and right endpoints of an interval. You may assume that the endpoints, left or right, of intervals are integers between −100,000,000 and 100,000,000, inclusive.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line which contains the sequence ܿ<em>c</em><sub>0</sub>(<em>G</em>), <em>c</em><sub>1</sub>(<em>G</em>), ..., <em>c<sub>n</sub></em><sub>-1</sub>(<em>G</em>) of <em>n</em> numbers separated by a single space.</p>",
+  "samples": [
+    {
+      "input": "8\n3 8\n1 8\n1 7\n1 6\n4 8\n1 2\n3 5\n7 8\n",
+      "output": "1 1 1 2 2 3 2 1\n"
+    },
+    {
+      "input": "3\n-2 -2\n-2 7\n-2 7\n",
+      "output": "1 1 1\n"
+    },
+    {
+      "input": "4\n-1 -1\n3 4\n5 6\n7 8\n",
+      "output": "4 3 2 1\n"
+    },
+    {
+      "input": "5\n1 2\n2 3\n3 4\n6 7\n7 8\n",
+      "output": "2 3 3 2 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2019",
+  "level": 25,
+  "tags": [
+    "dp",
+    "data_structures",
+    "segtree",
+    "lazyprop"
+  ],
+  "accepted_user_count": 35,
+  "submission_count": null,
+  "average_tries": 3.7142999172210693
+}

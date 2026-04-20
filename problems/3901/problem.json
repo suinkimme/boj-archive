@@ -1,0 +1,27 @@
+{
+  "id": 3901,
+  "title": "The Morning after Halloween",
+  "time_limit": "9 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You are working for an amusement park as an operator of an obakeyashiki, or a haunted house, in which guests walk through narrow and dark corridors. The house is proud of their lively ghosts, which are actually robots remotely controlled by the operator, hiding here and there in the corridors. One morning, you found that the ghosts are not in the positions where they are supposed to be. Ah, yesterday was Halloween. Believe or not, paranormal spirits have moved them around the corridors in the night. You have to move them into their right positions before guests come. Your manager is eager to know how long it takes to restore the ghosts.</p>\n<p>In this problem, you are asked to write a program that, given a floor map of a house, finds the smallest number of steps to move all ghosts to the positions where they are supposed to be.</p>\n<p>A floor consists of a matrix of square cells. A cell is either a wall cell where ghosts cannot move into or a corridor cell where they can.</p>\n<p>At each step, you can move any number of ghosts simultaneously. Every ghost can either stay in the current cell, or move to one of the corridor cells in its 4-neighborhood (i.e. immediately left, right, up or down), if the ghosts satisfy the following conditions:</p>\n<ol>\n<li>No more than one ghost occupies one position at the end of the step.</li>\n<li>No pair of ghosts exchange their positions one another in the step.</li>\n</ol>\n<p>For example, suppose ghosts are located as shown in the following (partial) map, where a sharp sign (‘#’) represents a wall cell and ‘a’, ‘b’, and ‘c’ ghosts.</p>\n<pre>\n####\n ab#\n#c##\n####\n</pre>\n<p>The following four maps show the only possible positions of the ghosts after one step.</p>\n<pre>\n####   ####   ####   ####\n ab#   a b#   acb#   ab #\n#c##   #c##   # ##   #c##\n####   ####   ####   ####\n</pre>",
+  "input": "<p>The input consists of at most 10 datasets, each of which represents a floor map of a house. The format of a dataset is as follows.</p>\n<pre>\nw h n\nc11 c12 ··· c1w\nc21 c22 ··· c2w\n...\nch1 ch2 ··· chw\n</pre>\n<p> </p>\n<p>w, h and n in the first line are integers, separated by a space. w and h are the floor width and height of the house, respectively. n is the number of ghosts. They satisfy the following constraints.</p>\n<p>4 ≤ w ≤ 16, 4 ≤ h ≤ 16, 1 ≤ n ≤ 3</p>\n<p>Subsequent h lines of w characters are the floor map. Each of cij is either:</p>\n<ul>\n<li>a ‘#’ representing a wall cell,</li>\n<li>a lowercase letter representing a corridor cell which is the initial position of a ghost,</li>\n<li>an uppercase letter representing a corridor cell which is the position where the ghost corresponding to its lowercase letter is supposed to be, or</li>\n<li>a space representing a corridor cell that is none of the above.</li>\n</ul>\n<p>In each map, each of the first n letters from a and the first n letters from A appears once and only once. Outermost cells of a map are walls; i.e. all characters of the first and last lines are sharps; and the first and last characters on each line are also sharps. All corridor cells in a map are connected; i.e. given a corridor cell, you can reach any other corridor cell by following corridor cells in the 4-neighborhoods. Similarly, all wall cells are connected. Any 2 × 2 area on any map has at least one sharp. You can assume that every map has a sequence of moves of ghosts that restores all ghosts to the positions where they are supposed to be.</p>\n<p>The last dataset is followed by a line containing three zeros separated by a space.</p>",
+  "output": "<p>For each dataset in the input, one line containing the smallest number of steps to restore ghosts into the positions where they are supposed to be should be output. An output line should not contain extra characters such as spaces.</p>",
+  "samples": [
+    {
+      "input": "5 5 2 \n##### \n#A#B# \n#   # \n#b#a# \n##### \n16 4 3 \n################ \n## ########## ## \n#    ABCcba    # \n################ \n16 16 3 \n################ \n### ##    #   ## \n##  #  ##   # c# \n#  ## ########b# \n# ##  # #   #  # \n#  # ##   # # ## \n##  a#  # # #  # \n### ## #### ## # \n##   #   #  #  # \n#  ##### # ## ## \n####   #B# #   # \n##  C#   #   ### \n#  # # ####### # \n# ######  A##  # \n#        #    ## \n################ \n0 0 0\n",
+      "output": "7 \n36 \n77\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2007 in Tokyo",
+  "level": 16,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "grid_graph"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 3.09089994430542
+}

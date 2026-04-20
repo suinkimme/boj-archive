@@ -1,0 +1,26 @@
+{
+  "id": 25124,
+  "title": "Letter Blocks",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>It is a rainy day, so you are indoors building towers of letter blocks. A letter block is a wooden cube that has a letter printed on one of its sides. The font used for the letters makes the blocks have a clear orientation: that is, there is only one side that can be pointed down (toward the floor) and one side that can be pointed up (toward the ceiling).</p>\n<p>You have built multiple separate towers so far. Now you want to combine all of them into a single megatower by choosing one of your towers as the base, then picking up another tower (without changing the order of its blocks) and stacking the whole thing on top of that, and so on, until all towers have been used.</p>\n<p>As an additional constraint for the megatower, for any two blocks that have the same letter, all blocks between them must also have that letter. That is, each letter of the alphabet that appears in the megatower needs to appear in one contiguous group (of one or more blocks).</p>\n<p>For example, consider the following three possible megatowers. (These are separate examples, not built from the same original towers. Also note that the different block sizes are just for fun and are not part of the problem.)</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p>The leftmost two megatowers are valid, since each letter appears in a contiguous group. However, the rightmost megatower is not valid, because there is a <code>B</code> in between two <code>C</code>s.</p>\n<p>Given the towers that you have built so far, can you stack them all up into a valid megatower?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, $T$. $T$ test cases follow. Each test case is described by two lines. The first line consists of a single integer $N$, the number of towers that are currently built. The second line consists of $N$ strings $S_1,S_2,\\dots,S_N$ representing the towers. Each of these strings consists of only uppercase letters. The $i$-th letter of each of these strings is the letter on the $i$-th block from the bottom in the represented tower.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where $x$ is the test case number (starting from 1) and $y$ is a string representing a valid megatower as described above, or the word <code>IMPOSSIBLE</code> if no valid megatower can be built. (Notice that the string <code>IMPOSSIBLE</code> can never itself represent a valid megatower, since the two <code>I</code>s have other letters in between.)</p>",
+  "samples": [
+    {
+      "input": "6\n5\nCODE JAM MIC EEL ZZZZZ\n6\nCODE JAM MIC EEL ZZZZZ EEK\n2\nOY YO\n2\nHASH CODE\n6\nA AA BB A BA BB\n2\nCAT TAX\n",
+      "output": "Case #1: ZZZZZJAMMICCODEEEL\nCase #2: IMPOSSIBLE\nCase #3: IMPOSSIBLE\nCase #4: IMPOSSIBLE\nCase #5: BBBBBAAAAA\nCase #6: IMPOSSIBLE\n"
+    }
+  ],
+  "hint": "<p> </p>\n<p>In Sample Case #1, <code>JAMMICCODEEELZZZZZ</code> and <code>ZZZZZJAMMICCODEEEL</code> are the only two valid outputs.</p>\n<p>In Sample Case #2, recall that <i>all</i> towers must be used in the megatower, so even though the first five towers together would form a valid megatower (as in Sample Case #1), the additional <code>EEK</code> makes the case impossible. No matter how the <code>EEL</code> and <code>EEK</code> towers are stacked relative to each other, there will be at least two non-contiguous groups of <code>E</code>s.</p>\n<p>In Sample Case #3, no matter how you stack the towers, either the two <code>O</code>s are not contiguous or the two <code>Y</code>s are not contiguous.</p>\n<p>In Sample Case #4, there are non-<code>H</code> letters in between the <code>H</code>s of <code>HASH</code>, so this case is also impossible.</p>\n<p>In Sample Case #5, this answer is the only valid one. Also notice that the towers are not necessarily all distinct.</p>\n<p>In Sample Case #6, no matter how you stack the towers, the two <code>A</code>s cannot be contiguous.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2022, Round 1C",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "graphs",
+    "string"
+  ],
+  "accepted_user_count": 31,
+  "submission_count": null,
+  "average_tries": 1.871000051498413
+}

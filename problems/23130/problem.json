@@ -1,0 +1,26 @@
+{
+  "id": 23130,
+  "title": "Cactus",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A <em>cactus</em> is a simple undirected connected graph in which every edge belongs to at most one simple cycle.</p>\n<p>Now, there is a cactus accepting the following two operations:</p>\n<ol>\n<li>Select a vertex with an odd degree in the graph, and remove all edges connected to it.</li>\n<li>Make a copy of the current graph, and then draw additional edges between the corresponding vertices in the current graph and in the copy, forming a new graph. Formally speaking, suppose the current graph has $n$ vertices in total, labeled from $1$ to $n$. First, add $n$ new vertices labeled from $n + 1$ to $2n$. Then, for every edge $(u, v)$ in the current graph, add an edge $(u + n, v + n)$. Lastly, add the edges $(1, n + 1)$, $(2, n + 2)$, $\\ldots$, $(n, 2n)$. If the current graph has $n$ vertices and $m$ edges, the new graph has $2n$ vertices and $2m + n$ edges.</li>\n</ol>\n<p>Because the second operation is costly, it can only be used at most once. The first operation can be used any number of times in any order.</p>\n<p>Find a sequence of operations such that, after all operations in the sequence, the final graph has the least possible number of edges.</p>",
+  "input": "<p>The first line of input contains two integers $n$ and $m$, the number of vertices and the number of edges in the initial graph ($1 \\le n \\le 3 \\cdot 10^5$, $n - 1 \\le m \\le \\frac{3(n - 1)}{2}$).</p>\n<p>Each of the next $m$ lines contains two integers $u$ and $v$ denoting the endpoints of an edge ($1 \\le u, v \\le n$). The graph is connected and contains no parallel edges and no self-loops.</p>",
+  "output": "<p>On the first line, print two integers $m'$ and $K$, the number of edges left in the final graph and the total number of operations.</p>\n<p>Then print $K$ more lines. Each line represents an operation:</p>\n<ol>\n<li>When using the first operation on vertex $x$, print \"<code>1 x</code>\".</li>\n<li>When using the second operation, just print \"<code>2</code>\".</li>\n</ol>\n<p>If there are several optimal answers, print any one of them.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2\n1 3\n2 3\n",
+      "output": "0 6\n2\n1 1\n1 5\n1 2\n1 4\n1 3\n"
+    },
+    {
+      "input": "7 7\n1 2\n1 3\n2 3\n2 4\n2 5\n3 6\n3 7\n",
+      "output": "0 14\n1 4\n1 5\n1 6\n1 7\n2\n1 1\n1 4\n1 5\n1 6\n1 7\n1 9\n1 2\n1 8\n1 3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2021, Day 4: 2021 Shanghai ICPC Camp Onsite 1 by PKU",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 8
+}

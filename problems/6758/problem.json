@@ -1,0 +1,25 @@
+{
+  "id": 6758,
+  "title": "Tourney",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Don Cherry has been hired to run 24-hour coverage of a series of single-elimination, bracket-style, furniture disassembly tourneys (tournaments). Each competitor has a furniture disassembly skill level, an integer between 1 and 1 000 000 000. In every head-to-head match, the competitor with the larger skill level wins and moves on, while the other is eliminated from the tourney. It is guaranteed that, at any time, the skill levels of all competitors are distinct, so there are no ties.</p>\n<p>There are 2<sup>N</sup> (1 ≤ N ≤ 20) competitor positions in the tourney tree, numbered 1, 2, . . . , 2<sup>N</sup> from left to right. In the first round, competitors 1 and 2 face off in a furniture disassembly race, as do competitors 3 and 4, etc. In each subsequent round, the winners of the first two matches from the previous round compete, as do the winners of the following two, etc. After N rounds, a single winner remains. For example, when N = 2, the tourney tree looks like this:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 166px; height: 103px;\"/></p>\n<p>where A represents the winner of the match between competitors 1 and 2, B represents the winner of the match between competitors 3 and 4, and C represents the winner of the match between A and B. The winner of this tourney is C.</p>\n<p>Because of sponsorship contracts, some competitors will be replaced over time. After any new person comes in, a new tourney is held.</p>\n<p>In order to help Don Cherry, you must write a program to compute certain tourney statistics at various points in time, given a sequence of M (1 ≤ M ≤ 1 000 000) commands — see the input format below.</p>",
+  "input": "<p>The first line of input contains two integers, N (1 ≤ N ≤ 20) and M (1 ≤ M ≤ 1 000 000), separated by one space.</p>\n<p>The next 2<sup>N</sup> lines, for i from 1 to 2<sup>N</sup>, each contain one integer S<sub>i</sub>, indicating the skill level of the initial competitor at position i in the tourney tree.</p>\n<p>Each of the following M lines will be a command in one of three formats:</p>\n<ul>\n<li>“R i S” means that the competitor at position i is removed, and replaced with a new one with skill level S. A new tourney is then held.</li>\n<li>“W” means that your program should determine who won the current tourney. Print out the position i (between 1 and 2<sup>N</sup>) of this competitor.</li>\n<li>“S i” means that your program should print out the number of rounds that the competitor at position i won in the current tourney.</li>\n</ul>",
+  "output": "<p>For each “W” or “S i” command in the input, print out the corresponding integer on a line by itself.</p>",
+  "samples": [
+    {
+      "input": "2 8\n30\n20\n10\n40\nS 1\nW\nR 4 9\nS 4\nW\nR 2 35\nS 2\nW\n",
+      "output": "1\n4\n0\n1\n2\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2013, CCO 2013",
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "segtree"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.4118000268936157
+}

@@ -1,0 +1,35 @@
+{
+  "id": 24647,
+  "title": "Journey in Fog",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Julia and Jane are two friends living at the opposite ends of a long narrow street of length $L$.</p>\n<p>Today, Julia needs to meet Jane and return home as soon as possible.</p>\n<p>Jane has a list of speeds $v_1, v_2, \\ldots, v_n$. At time $0$, Jane picks an integer $i$ from $1$ to $n$ uniformly at random, and starts moving towards Julia at a constant speed of $v_i$.</p>\n<p>Julia is not as restricted in her movements, though. Starting from time $0$, Julia can freely move along the street in any direction at any speed not exceeding $V$. In particular, Julia can stay at the same place as long as she wants, move at speeds lower than $V$, and change her speed at any moment.</p>\n<p>It's foggy outside. Hence, Julia and Jane can not see each other unless they are at the same point of the street. Also note that Julia does not know Jane's speed, but she knows the list $v_1, v_2, \\ldots, v_n$.</p>\n<p>Suppose Julia meets Jane and arrives back home at time $t$. Julia will follow a strategy that minimizes the expected value of $t$. Find that expected value.</p>",
+  "input": "<p>The first line contains three integers $n$, $L$, and $V$ --- the number of speeds on Jane's list, the length of the street, and Julia's maximum speed ($1 \\le n \\le 10^5$; $1 \\le L \\le 10^9$; $1 \\le V \\le 10^6$).</p>\n<p>The second line contains $n$ integers $v_1, v_2, \\ldots, v_n$ --- the list of possible speeds of Jane in ascending order ($1 \\le v_1 &lt; v_2 &lt; \\dotsb &lt; v_n \\le 10^6$).</p>",
+  "output": "<p>Print a single real number --- the expected amount of time it will take Julia to meet Jane and return back home, if she follows an optimal strategy. Your answer will be considered correct if its absolute or relative error doesn't exceed $10^{-9}$.</p>",
+  "samples": [
+    {
+      "input": "1 1000 30\n10\n",
+      "output": "50.0000000000000\n"
+    },
+    {
+      "input": "1 1000 10\n30\n",
+      "output": "33.3333333333333\n"
+    },
+    {
+      "input": "4 1000 20\n10 20 30 40\n",
+      "output": "46.2500000000000\n"
+    }
+  ],
+  "hint": "<p>In the first example test, Julia is much faster than Jane. It's best for Julia to move towards Jane as fast as she can, meet her at time $25$ at distance $750$ away from home, and return back home at time $50$.</p>\n<p>In the second example test, Jane is much faster than Julia. It's best for Julia to just wait for Jane at home, where Jane will arrive at time $\\frac{1000}{30}$.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2021-2022 North-Western Russia Regional Contest",
+  "level": 21,
+  "tags": [
+    "math",
+    "greedy",
+    "prefix_sum",
+    "ternary_search"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 2.5
+}

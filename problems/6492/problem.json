@@ -1,0 +1,30 @@
+{
+  "id": 6492,
+  "title": "Shipping Routes",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The Slow Boat to China Shipping company needs a program to help them quickly quote costs to prospective customers. The cost of a shipment depends on the size of the shipment and on how many shipping legs it requires.  A shipping leg connects two warehouses, but since every pair of warehouses is not directly connected by a leg, it might require more than one leg to send a shipment from one warehouse to another.  </p>\n<p>Problem Statement:   A data set can represent from 1 to 30 warehouses. A two-letter code name will identify each warehouse (capital letters only).  Shipping legs can exist between any two distinct warehouses. All legs are bidirectional. </p>\n<p>The cost of a shipment is equal to the size of the shipment times the number of shipping legs required times \\$100.</p>\n<p>The input to the program identifies the warehouse code names and the existence of all shipping legs.  For a given shipping request, consisting of the size of the shipment, the source warehouse and the destination warehouse, the program will output the best (cheapest) cost for the shipment, if it is possible to send shipments from the requested source to the requested destination. Alternately, the program must state that the request cannot be fulfilled. </p>",
+  "input": "<p>The first line will contain an integer from 1 to 10 inclusive that represents the number of  data sets in the input file.  Each data set represents a new shipping configuration.</p>\n<p>The first line of data in a data set will contain three integers, say M, N, and P:  M is an integer from 1 to 30 inclusive representing the number of warehouses in the data set;  N is an integer from 0 to M*(M-1)/2 inclusive that represents the number of legs between warehouses in the data set; P is an integer from 0 to 10 inclusive that represents the number of shipping requests for which cost information is required.  </p>\n<p>The second line of data in a data set contains M two-letter code names for the M warehouses of the data sets.  Only capital letters are used. A single blank separates code names. </p>\n<p>N lines follow the line of code names, containing shipping leg information in the format: \"XX  YY\", with XX and YY being  the codes for two distinct warehouses in the set that have a  direct link (a shipping leg) between them. There will be a single  blank between the warehouse codes.  </p>\n<p>The N lines of shipping leg information are followed by P lines of shipping requests, one request per line.  Each shipping request will begin with an integer between 1 and 20 inclusive that represents the size of the shipment.  The shipment size will be followed by a pair of code names in the format \"AA  BB\", with AA and BB being the code for two distinct warehouses in the set which represent the source and destination of the requested shipment.</p>\n<p>The input will be valid and consistent.  A shipping leg will only be represented once within a data set.  Data about legs will always refer to warehouses that have been identified as belonging to the data set.  See the example below for clarification of the input format.</p>",
+  "output": "<p>The first line of output should read \"SHIPPING ROUTES OUTPUT\". For each data set there should be a section of output enumerating which data set the output section represents followed by P lines of the required information. Each of the P lines should list either the cheapest cost of the respective shipment or the phrase \"NO SHIPMENT POSSIBLE\". The end of the output should be noted also.  Produce output consistent with the example below.</p>",
+  "samples": [
+    {
+      "input": "2\n6  7  5\nAA CC QR FF DD AB\nAA CC\nCC QR\nDD CC\nAA DD\nAA AB\nDD QR\nAB DD\n5  AA AB\n14 DD CC\n1  CC DD\n2  AA FF\n13 AB QR\n3 0 1\nAA BB CC\n5  AA CC\n",
+      "output": "DATA SET 1\n\n$500\n$1400\n$100\nNO SHIPMENT POSSIBLE\n$2600\n\nDATA SET 2\n\nNO SHIPMENT POSSIBLE\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Mid-Atlantic Regional, 1996 Mid-Atlantic Regional Programming Contest",
+  "level": 10,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "graph_traversal",
+    "set",
+    "shortest_path",
+    "hash_set",
+    "floyd_warshall"
+  ],
+  "accepted_user_count": 31,
+  "submission_count": null,
+  "average_tries": 1.1612999439239502
+}

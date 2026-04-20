@@ -1,0 +1,25 @@
+{
+  "id": 22429,
+  "title": "JAG-channel",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>ネイサン・O・デイビスはJAG-channelという電子掲示板を運営している． 彼は現在，スレッドビューという新機能の追加に取り組んでいる．</p>\n<p>他の多くの電子掲示板と同じように，JAG-channelはスレッドベースである． ここで，スレッドとは，一連の投稿からなる一つの会話のまとまりを指す． 投稿には，以下の2種類が存在する．</p>\n<ul>\n<li>新しいスレッドを作る最初の投稿</li>\n<li>すでにあるスレッドの過去の投稿への返信</li>\n</ul>\n<p>スレッドビューは，投稿間の返信・被返信関係による論理的な構造を表す，ツリー状のビューである． それぞれの投稿はツリーのノードとなり，その投稿に対する返信を子ノードとして持つ． ある投稿に対する直接・間接の返信が，全体として部分木となることに注意してほしい．</p>\n<p>例を見てみよう．例えば， \"<samp>hoge</samp>\"という最初の投稿に対して \"<samp>fuga</samp>\"と\"<samp>piyo</samp>\"という2つの返信が付き， \"<samp>fuga</samp>\"に対してさらに\"<samp>foobar</samp>\"と\"<samp>jagjag</samp>\"という返信が付き， \"<samp>jagjag</samp>\"に対して\"<samp>zigzag</samp>\"という返信が付いたとする． このスレッドのツリーは次のようになる．</p>\n<pre>\nhoge\n├─fuga\n│　├─foobar\n│　└─jagjag\n│　　　└─zigzag\n└─piyo</pre>\n<p>ネイサン・O・デイビスはプログラマーを雇って機能を実装させていたが，このプログラマーが最後の段階で失踪してしまった． このプログラマーは，スレッドのツリーを作り，それを簡易フォーマットで表示するところまで完成させている． この簡易フォーマットでは，返信の深さが '<samp>.</samp>' (半角ドット) で表され，ある投稿に対する返信は，元の投稿より1つ多くの '<samp>.</samp>' が左につく．また，ある投稿に対する返信は必ず元の投稿よりも下に来る．返信元の投稿と返信の間には，返信元の投稿に対する他の返信 (および，それに対する直接・間接の返信) が現れることがあるが，それ以外の投稿が両者の間に現れることはない． 上のツリーの簡易フォーマット表示は次のようになる．</p>\n<pre>\nhoge\n.fuga\n..foobar\n..jagjag\n...zigzag\n.piyo</pre>\n<p>あなたの仕事は，この簡易フォーマット表示を受け取り，見やすく整形することである． すなわち，</p>\n<ul>\n<li>各投稿のすぐ左の '<samp>.</samp>' (各投稿の左についた '<samp>.</samp>' のうち，もっとも右のもの) を '<samp>+</samp>' (半角プラス)，</li>\n<li>同じ投稿に対する直接の返信について，それぞれのすぐ左にある '<samp>+</samp>' の間に位置する '<samp>.</samp>' を '<samp>|</samp>' (半角縦線)，</li>\n<li>それ以外の '<samp>.</samp>' は '<samp> </samp>' (半角スペース)</li>\n</ul>\n<p>に置き換えて欲しい．</p>\n<p>上の簡易フォーマット表示に対する整形済みの表示は次のようになる．</p>\n<pre>\nhoge\n+fuga\n|+foobar\n|+jagjag\n| +zigzag\n+piyo</pre>",
+  "input": "<p>入力は複数のデータセットから構成される．各データセットの形式は次の通りである．</p>\n<blockquote>\n<p>$n$</p>\n<p>$s_1$</p>\n<p>$s_2$</p>\n<p>...</p>\n<p>$s_n$</p>\n</blockquote>\n<p>$n$ は簡易フォーマット表示の行数を表す整数であり，$1$ 以上 $1{,}000$ 以下と仮定してよい． 続く $n$ 行にはスレッドツリーの簡易フォーマット表示が記載されている． $s_i$ は簡易フォーマット表示の $i$ 行目を表し，いくつかの '<samp>.</samp>' と，それに続く $1$ 文字以上 $50$ 文字以下のアルファベット小文字で構成された文字列からなる． $s_1$ はスレッドの最初の投稿であり，'<samp>.</samp>' を含まない． $s_2$, ..., $s_n$ はそのスレッドでの返信であり，必ず1つ以上の '<samp>.</samp>' を含む．</p>\n<p>$n=0$ は入力の終わりを示す．これはデータセットには含めない．</p>",
+  "output": "<p>各データセットに対する整形済みの表示を各 $n$ 行で出力せよ．</p>",
+  "samples": [
+    {
+      "input": "6\nhoge\n.fuga\n..foobar\n..jagjag\n...zigzag\n.piyo\n8\njagjag\n.hogehoge\n..fugafuga\n...ponyoponyo\n....evaeva\n....pokemon\n...nowawa\n.buhihi\n8\nhello\n.goodmorning\n..howareyou\n.goodafternoon\n..letshavealunch\n.goodevening\n.goodnight\n..gotobed\n3\ncaution\n.themessagelengthislessthanorequaltofifty\n..sothelengthoftheentirelinecanexceedfiftycharacters\n0\n",
+      "output": "hoge\n+fuga\n|+foobar\n|+jagjag\n| +zigzag\n+piyo\njagjag\n+hogehoge\n|+fugafuga\n| +ponyoponyo\n| |+evaeva\n| |+pokemon\n| +nowawa\n+buhihi\nhello\n+goodmorning\n|+howareyou\n+goodafternoon\n|+letshavealunch\n+goodevening\n+goodnight\n +gotobed\ncaution\n+themessagelengthislessthanorequaltofifty\n +sothelengthoftheentirelinecanexceedfiftycharacters\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2014",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.357100009918213
+}

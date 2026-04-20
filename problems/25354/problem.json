@@ -1,0 +1,27 @@
+{
+  "id": 25354,
+  "title": "트리 만들기 게임",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"text-align: justify;\">트리를 만드는 것은 상당히 지루한 일이다. 간선을 하나하나 추가해줘야 한다는 점은 말할 것도 없고, 끊어지지 않도록 잘 관리해줘야 하며, 그러다가 실수로 사이클이 생겨버리면 트리는 금세 죽어버린다! 그렇게 오랜 시간 공을 들여 만들어진 트리는 <em>Heavy-Light Decomposition, Centroid Decomposition </em>등에 의해 빠르게 분해돼버리기 십상이다. 트리를 만드는 과정이 이렇게 고되다 보니, 트리를 찾는 사람이 많은 것에 비해 트리를 만드는 사람의 수는 점차 줄어들어, 한 사람이 여러 명의 수요를 책임져야 하는 상황까지 이르게 되었다.</p>\n<p style=\"text-align: justify;\">오늘도 도내 최고의 공방 Semi-Game Shop의 목수 <em>stonejjun</em>은<i> </i>정점이 $N$개인 트리를 만들어 달라는 요청을 $M$개나 받았다. 예전 같았으면 트리에 들어가는 최고급 정점을 구하고 손수 연결하느라 하룻밤을 꼬박 새야 했겠지만, 최근 <em>stonejjun</em>은 무려 트리를 자동으로 만들어주는 기계를 하나 장만했다! 이제 트리의 설계도를 기계에 넣어주기만 하면 자동으로 트리가 완성되기 때문에, <em>stonejjun</em>은 남는 시간에 게임을 하면서 시간을 보낼 수 있게 되었다.</p>\n<p style=\"text-align: justify;\">하지만 트리의 설계도를 매번 넣는 것이 귀찮은 작업이라는 것은 여전하다. <em>stonejjun</em>은 게임에 더 많은 시간을 쓰기 위해, 다음과 같은 방법을 생각해냈다.</p>\n<ol>\n<li style=\"text-align: justify;\"><em>엄청나게 큰</em> 그래프의 설계도를 기계에 넣고, 반복 생산 버튼을 누른다.</li>\n<li style=\"text-align: justify;\">그래프가 나오면, 트리의 $1$번 정점을 그래프의 $A_1$번 정점, $2$번 정점을 그래프의 $A_2$번 정점, ..., $N$번 정점을 그래프의 $A_N$번 정점에 가져다 댄 다음 불필요한 정점과 간선들을 모두 잘라낸다.</li>\n<li style=\"text-align: justify;\">트리 완성!</li>\n</ol>\n<p style=\"text-align: justify;\">천재적인 방법을 생각해냈음에 감탄한 <em>stonejjun</em>은 이 계획을 실행에 옮기려고 했으나, 생각해보니 이 방법 대로라면 버려지는 정점과 간선들이 너무 많아 게임에 사용할 수 있는 돈이 줄어들고 말 것이다. 그래서 <em>stonejjun</em>은 설계도를 넣어주는 <em>엄청나게 큰 </em>그래프의 정점의 개수를 $N$으로 하고, 간선의 개수를 $7\\,000$개 이하로 사용하려고 한다. <em>stonejjun</em>의 계획이 성공하려면 어떤 그래프의 설계도를 넣어주어야 할까?</p>\n<p style=\"text-align: justify;\">다시 말해, 정점이 $N$개인 트리가 $M$개 주어질 때 $M$개의 트리를 모두 포함하는 그래프 $G$를 하나 찾아야 한다. 이때 $G$의 정점의 개수는 $N$이여야 하고, 간선의 개수는 $7\\,000$개를 넘으면 안 된다.</p>",
+  "input": "<p>첫째 줄에 정점의 개수 $N$과 트리의 개수 $M$이 주어진다.</p>\n<p>이어지는 $M(N - 1)$개의 줄에 트리에 대한 정보가 주어진다. $M$번에 걸쳐, $N - 1$개의 줄에 트리의 간선이 잇는 두 정점의 번호 $u, v$가 주어진다.</p>",
+  "output": "<p style=\"text-align: justify;\">첫째 줄에 $G$의 간선의 개수 $K$ ($0 \\leq K \\leq 7\\,000$)를 출력한다.</p>\n<p style=\"text-align: justify;\">이어지는 $K$개의 줄에 $G$의 간선이 잇는 두 정점의 번호 $u, v$ ($1 \\leq u, v \\leq N$) 를 출력한다.</p>\n<p style=\"text-align: justify;\">이어지는 $M$개의 줄에는 각각 $N$개의 정수 $A_1, \\dots, A_N$을 출력한다. 이는 $i$번째 트리의 $1$번 정점이 그래프의 $A_1$번 정점, ..., $N$번 정점이 그래프의 $A_N$번 정점에 대응된다는 뜻이다. 모든 줄에 대해 $\\{A_1, \\dots, A_N\\} = \\{1, \\dots, N\\}$ 이어야 한다. 즉, $\\{A_1, \\dots, A_N\\}$은 $\\{1, \\dots, N\\}$의 순열이어야 한다. 또 트리에서 정점 $u$와 $v$ 사이에 간선이 있었다면, $G$에서 정점 $A_u$와 $A_v$ 사이에도 간선이 있어야 한다.</p>",
+  "samples": [
+    {
+      "input": "5 2\n1 3\n3 4\n4 2\n2 5\n1 2\n2 3\n2 4\n2 5\n",
+      "output": "6\n1 2\n2 3\n3 4\n4 5\n3 1\n3 5\n1 4 2 3 5\n5 3 4 2 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, BOJ User Contest, Semi-Game Cup, Semi-Game Cup 3, jhwest2, aeren, topology",
+  "level": 30,
+  "tags": [
+    "graphs",
+    "trees",
+    "constructive",
+    "recursion"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 1.7777999639511108
+}

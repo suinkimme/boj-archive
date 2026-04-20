@@ -1,0 +1,28 @@
+{
+  "id": 10027,
+  "title": "CSS",
+  "time_limit": "10 초",
+  "memory_limit": "256 MB",
+  "description": "<p>오늘날 많이 사용되고 있는 HTML&nbsp;문서는&nbsp;계층 구조를 가지는 형식이다. 이 문서는 &#39;요소&#39;라 불리는 것들로 구성되어 있으며, 요소는&nbsp;이름과 함께&nbsp;특정 &#39;속성&#39;들을 가지고,&nbsp;또 다른 요소들을&nbsp;포함할 수도&nbsp;있다. 여기에서는&nbsp;div 요소로만 구성되어 있는 HTML 문서를 사용한다고 가정하자. 명확하게, 각 문서는 아래와 같은 형태의 라인들로 구성되어 있다.</p>\r\n\r\n<pre>\r\n&lt;div id=&rsquo;name&rsquo; class=&rsquo;class<sub>1</sub> class<sub>2</sub> . . . class<sub>K</sub>&rsquo;&gt; 요소의 시작\r\n...                                                요소의 내용\r\n&lt;/div&gt;                                             요소의 끝</pre>\r\n\r\n<p>따라서, 한 개의 요소는 그 <strong>시작</strong>을 나타내는 줄과, 그 <strong>끝</strong>을 나타내는 줄, 그리고 그 사이가&nbsp;비어 있거나, 혹은 그&nbsp;사이에&nbsp;또 다른 요소를 계속해서&nbsp;포함할 수&nbsp;있는&nbsp;요소가&nbsp;한 개 혹은 여러 개 존재하는 <strong>내용</strong>으로 구성되어 있다. 문서 또한 여러 요소의 집합으로 구성되어 있으며, 그 중 일부는 또 다른 요소를 포함할 수도 있다. 추가적으로 요소를 정의하기 위한 사항들은 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>요소의 이름(<strong>id</strong>)은 영문 알파벳 소문자로 구성되어 있다. 이름은 문서에서 해당&nbsp;요소를&nbsp;하나밖에 없는 것으로 정의하며, 다른 요소와 같은 이름을 사용할 수 없다.</li>\r\n\t<li>요소의 각 클래스(<strong>class</strong>) 역시 영문 알파벳 소문자로 구성되며, 요소의 초기 목록에 포함된 클래스가 있다면, 그 요소가 해당 클래스에 속한다고 할 수 있다. 각 요소는 하나 이상의 서로 다른 클래스에 속할 수 있다. 서로 다른 요소가 같은 클래스들에 속하는 것 역시 가능하다.</li>\r\n\t<li>요소를 나타내는 줄에서 공백이 올 수 있는&nbsp;곳은 id 바로 앞에 1개, class 바로 앞에 1개 그리고&nbsp;각각의 클래스 사이, 즉, 인접한 두 클래스 사이에&nbsp;1개다.</li>\r\n</ul>\r\n\r\n<p>만약 요소 E가 요소 F의 내용 (즉,&nbsp;시작을 나타내는 줄과, 끝을 나타내는 줄 사이의&nbsp;어느&nbsp;곳이든)&nbsp;에 작성되어 있다면, 우리는 F가 E를 포함하고 있다고 할 수 있고, 다시 말해, E가 F에 포함되어 있다고 할 수 있다.</p>\r\n\r\n<p>만약 요소 F가 E에 포함되어 있으며,&nbsp;&#39;F를 포함하고 E에 포함된&#39; G라는 요소가 없다면, E는 F의 <strong>부모</strong>라 할 수 있다.</p>\r\n\r\n<p>CSS는 웹브라우저에서 HTML 요소들이 보여질 때 그 요소들의 생김새와 형태를 기술하기 위해 사용되는 스타일 시트 언어다. 이 언어의 중요한 부분은 선택자와 분류자(classifier)다. 분류자는 점(<strong>.</strong>)으로 시작되며,&nbsp;점(.)으로 구분되는 하나 이상의&nbsp;클래스가 나열되는 형태를 가진다. 다시 말하지만 클래스는 영문 소문자 알파벳으로만 이루어져 있다. 분류자의 몇 가지 예를 들면 다음과 같다. &quot;.banana.apple&quot;, &quot;.banana&quot;, &quot;.apple.banana.mango&quot;. 이 분류자들은 순서대로 각각&nbsp;2개, 1개, 3개의 클래스로 이루어져 있다. 우리는 분류자에 나열된 모든 클래스에 속한 HTML 요소는 그 분류자에 <strong>속한다</strong>고 한다.</p>\r\n\r\n<p>선택자는 하나 이상의 분류자로 구성되며, 인접한 두 분류자는 공백,&nbsp;오른 꺽쇠(<strong>&quot; &gt; &quot;</strong>),&nbsp;공백 문자열로 구분된다. HTML 요소는 재귀적으로 정의된&nbsp;아래와 같은 방법으로 선택자에 의해 선택된다.</p>\r\n\r\n<ul>\r\n\t<li>선택자 S가 딱&nbsp;하나의 분류자 k로 구성되었다면, k에 해당하는 요소는&nbsp;S에&nbsp;해당한다.</li>\r\n\t<li>선택자 S가 &#39;T k&#39;의 형태이며 T가 선택자, k가 분류자라면, k에 해당하는 요소 E가&nbsp;T에 해당하는 요소 F에 포함되어 있다면(직접 포함일 필요는 없다), E는&nbsp;S에&nbsp;해당한다.</li>\r\n\t<li>선택자 S가 &#39;T &gt;&nbsp;k&#39;의 형태이며 T가 선택자, k가 분류자라면, k에 해당하는 요소 E의 부모 F가 T에 해당할 경우, E가 S에 해당한다.</li>\r\n</ul>\r\n\r\n<p>N 줄로 구성된 문서와 M 개의 선택자가 주어질 때, 각 선택자에 해당하는 모든 요소의 이름을 출력하는 프로그램을 작성하시오. 각각의 선택자에 대해 출력은&nbsp;주어진 문서&nbsp;상에 나타나는 순서와 반드시 일치해야 한다.</p>\r\n",
+  "input": "<p>입력의 첫 줄에는 짝수 정수, <strong>N</strong>(2 &le; N &le; 10 000)이 주어지며, 전체 문서의 줄 수를 나타낸다.</p>\r\n\r\n<p>이어지는 <strong>N</strong>개의&nbsp;줄에 문서의 내용이 주어진다. 각 줄은 위에서 설명한&nbsp;대로 한 요소의 시작이거나 끝에 해당한다.</p>\r\n\r\n<p>그 다음 줄에는 선택자의 개수 <strong>M</strong>(1 &le; M &le; 5)이 정수로 주어진다.</p>\r\n\r\n<p>그 다음 <strong>M</strong>개 줄에는 각각의 선택자가 주어진다.</p>\r\n\r\n<p>입력되는 데이터의 모든 요소의 이름과 클래스는 영문 알파벳 소문자로만 구성되며 20자를 넘지 않는다.</p>\r\n\r\n<p>추가적으로, 입력 데이터의 각 줄은 5,000 글자를 넘지 않으며, 입력에 포함된 모든 줄의 길이를 합해도 5,000,000&nbsp;글자를 넘지 않는다.</p>\r\n",
+  "output": "<p>입력 데이터의 각 선택자마다 한 줄을 출력한다.&nbsp;먼저&nbsp;그&nbsp;선택자에 해당하는 요소의 개수를 출력하고, 문서에 기술된 순서대로 요소의 이름(id)을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "22\n<div id='a' class='banana mango'>\n<div id='b' class='orange'>\n<div id='c' class='banana'>\n<div id='d' class='apple mango orange'>\n<div id='e' class='orange'>\n</div>\n</div>\n</div>\n</div>\n<div id='f' class='orange apple'>\n<div id='g' class='apple'>\n<div id='h' class='orange apple'>\n<div id='i' class='banana'>\n</div>\n</div>\n</div>\n<div id='j' class='banana'>\n</div>\n</div>\n</div>\n<div id='k' class='glupo voce daj mi sarme'>\n</div>\n5\n.banana\n.banana > .sarme\n.banana > .orange > .banana\n.banana .apple.orange > .orange\n.mango > .orange .banana\n",
+      "output": "4 a c i j\n0\n2 c j\n1 e\n3 c i j\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2014, Croatian Olympiad in Informatics 2014, imagine9, kks227",
+  "level": 22,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "parsing",
+    "string",
+    "trees"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 3.421099901199341
+}

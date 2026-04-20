@@ -1,0 +1,39 @@
+{
+  "id": 32600,
+  "title": "Failing Factory",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The gigafactory for your new range of Battery-Assisted Postal Cars is finally up and running. This manufacturing plant is a highly complex facility, consisting of many individual steps, where the parts of each car are milled, stamped, welded, soldered, screwed, glued, assembled, tested, detailed, layered, painted, and cleaned. Every step is optimized to the tiniest detail, making them very complicated.</p>\n<p>As you are preparing for a visit from your main investor, alarm bells start going off. One of the steps failed, causing a cascade of failures across the factory! After hurriedly resolving the failures, panic creeps up to you: what if a failure happens during the visit of the investor?</p>\n<p>Currently, all processes in the factory are working, but your engineers determined that each of them has some independent probability of failing before the visit. As the visit is soon, there will be no time for any repairs, and as soon as a step fails, this will quickly halt all dependent steps as well.</p>\n<p>Thus, you decide to show only a single processing step of your factory, and specifically, the one with the smallest probability of failing. As an example, consider the second sample case. The probability that step $1$ fails is $0.72$, but step $2$ is slightly more stable with a failure probability of $0.6$. Thus, you show step $2$ to your investor, with a probability of $0.4$ that it will <em>not</em> fail.</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two integers $n$ and $m$ ($1 \\leq n \\leq 10^5$, $0 \\leq m \\leq 10^5$), the number of steps and the number of dependencies between steps.</li>\n<li>One line with $n$ floating point numbers $p$ ($0 \\leq p \\leq 1$), the individual failure probability of each step. Each probability is given in decimal form<sup>1</sup> with exactly three digits after the decimal point.</li>\n<li>$m$ lines, each with two integers $a$ and $b$ ($1 \\leq a, b \\leq n$, $a \\neq b$), indicating that step $a$ depends on step $b$: failure of step $b$ will cause failure of step $a$. A direct dependency of one step on another occurs at most once. Cyclic dependencies are allowed.</li>\n</ul>\n<hr/>\n<p><sup>1</sup>When a floating-point number is written in decimal form, it is not in scientific notation.</p>",
+  "output": "<p>For the step with the smallest probability of failing, output the probability that it will <em>not</em> fail.</p>\n<p>Your answer should have an <em>absolute</em> error of at most $10^{-200}$ or a <em>relative</em> error of at most $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "2 2\n0.600 0.300\n1 2\n2 1\n",
+      "output": "0.28\n"
+    },
+    {
+      "input": "2 1\n0.300 0.600\n1 2\n",
+      "output": "0.4\n"
+    },
+    {
+      "input": "4 3\n0.999 0.994 0.998 0.996\n1 2\n2 3\n3 4\n",
+      "output": "0.004\n"
+    },
+    {
+      "input": "4 4\n0.999 0.994 0.998 0.996\n1 2\n2 3\n3 4\n4 1\n",
+      "output": "4.8e-11\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Benelux Algorithm Programming Contest, BAPC 2024",
+  "level": 18,
+  "tags": [
+    "graphs",
+    "math",
+    "probability",
+    "scc"
+  ],
+  "accepted_user_count": 29,
+  "submission_count": null,
+  "average_tries": 2.724100112915039
+}

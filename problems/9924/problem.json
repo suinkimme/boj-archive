@@ -1,0 +1,28 @@
+{
+  "id": 9924,
+  "title": "The Euclidean Algorithm",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The famous Euclidean algorithm is found in Book VII of the <em>Elements</em>. The <em>Elements</em> was written in 300 B.C.~by the Greek mathematician Euclid. It is rumored that King Ptolemy, having looked through the <em>Elements</em>, hopefully asked Euclid if there were not a shorter way to geometry, to which Euclid severely answered: \"In geometry there is no royal road!\" Probably we should not blame the King for looking for short cuts, for there are thirteen books in the <em>Elements</em>\\,! The books consist mainly of the mathematical knowledge amassed by Euclid, and possibly some discoveries of his own. The great achievement of Euclid is the beautifully systematic presentation of material as an organic whole. The <em>Elements</em> remained a standard work for over two thousand years. (see Episodes from the Early History of Mathematics, Asger Aaboe)</p>\n<p>The modern Euclidean algorithm is often presented as</p>\n<ol>\n<li>Let $A$ and $B$ be integers with $A &gt; B \\geq 0$.</li>\n<li>If $B = 0$, then the gcd is $A$ and the algorithm ends.</li>\n<li>Otherwise, find $q$ and $r$ such that \\[ A = q B + r \\mbox{ where } 0 \\leq r &lt; B \\] Note that we have $0 \\leq r &lt; B &lt; A$ and $\\gcd(A,B) = \\gcd(B,r)$. Replace $A$ by $B$, $B$ by $r$. Go to Step 2.</li>\n</ol>\n<p>But the original Euclidean algorithm uses subtraction instead of division. It is based on the observation that a common divisor of the positive integers $A$, $B$ is also a common divisor of the integers $\\min(A,B)$, $\\max(A,B)-\\min(A,B)$. Thus the gcd of two positive integers can be found as</p>\n<ol>\n<li>Let $A$ and $B$ be <strong>positive</strong> integers.</li>\n<li>If $A = B$ then the gcd is $B$ and the algorithm ends.</li>\n<li>Otherwise, replace $A$ by $\\max(A,B)-\\min(A,B)$, $B$ by $\\min(A,B)$. Go to Step 2.</li>\n</ol>\n<p>For example, given $A = 24, B = 15$, the original Euclidean algorithm produces</p>\n<ol>\n<li>$A = 24-15 = 9$, $B = 15$</li>\n<li>$A = 15-9 = 6$, $B = 9$</li>\n<li>$A = 9-6 = 3$, $B = 6$</li>\n<li>$A = 6-3 = 3$, $B = 3$</li>\n</ol>\n<p>That is, before finding $\\gcd(24,15) = 3$, the original Euclidean algorithm has to execute Step 3 four times.</p>",
+  "input": "<p>The input consists of one line containing two positive integers (each not larger than 32767) separated by one or more spaces.</p>",
+  "output": "<p>The output consists of one line containing one integer.</p>",
+  "samples": [
+    {
+      "input": "24 15\n",
+      "output": "4\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 1999",
+  "level": 3,
+  "tags": [
+    "math",
+    "implementation",
+    "number_theory",
+    "simulation",
+    "euclidean"
+  ],
+  "accepted_user_count": 338,
+  "submission_count": null,
+  "average_tries": 2.0355000495910645
+}

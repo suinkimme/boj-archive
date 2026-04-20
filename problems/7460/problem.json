@@ -1,0 +1,70 @@
+{
+  "id": 7460,
+  "title": "Beth Tableaux",
+  "time_limit": "2 초",
+  "memory_limit": "64 MB",
+  "description": "<p>Your program has to check the validity of a given logical formula. If the formula $E$ is invalid (i.e. evaluates to $\\mathbf{0}$ for some assignment of boolean values to the variables), you’ll also have to find such an assignment of values.</p>\n<p>Usually such tasks are solved just by processing all possible assignments of values to the variables occurring in $E$; if there are $k$ such variables, this requires considering $2^k$ such assignments. Of course, this is almost impossible for large values of $k$. Besides, this process is much different from the way people usually check (i.e. prove) logical formulae.</p>\n<p>In this task you are to implement a natural way of checking validity of logical formulae based on the so-called <em>Beth tableaux</em>. This way of checking validity of formulae models to a certain extent the process of finding proofs or contrary instances used by humans, at least, a short rigorous proof can be usually obtained quite immediately from constructed Beth tableaux.</p>\n<p>Let us fix the syntax of logical formulae considered:</p>\n<ul>\n<li>Constants $\\mathbf{1}$ and $\\mathbf{0}$;</li>\n<li>Variables — letters from A to Z and from a to z;</li>\n<li>Parentheses — if $E$ is a formula, then $(E)$ is another;</li>\n<li>Negation — $\\neg E$ is a formula for any formula $E$;</li>\n<li>Conjunction — $E_1 \\wedge E_2 \\wedge \\cdots \\wedge E_n$. Note that the conjunction is evaluated from left to right: $E_1 \\wedge E_2 \\wedge E_3 = (E_1 \\wedge E_2) \\wedge E_3$.</li>\n<li>Disjunction — $E_1 \\vee E_2 \\vee \\cdots \\vee E_n$. The same remark applies.</li>\n<li>Implication — $E_1 \\Rightarrow E_2$. Unlike the previous two operations it is evaluated from right to left: $E_1 \\Rightarrow E_2 \\Rightarrow E_3$ means $E_1 \\Rightarrow (E_2 \\Rightarrow E_3)$.</li>\n<li>Equivalence — $E_1 \\equiv E_2 \\equiv \\cdots \\equiv E_n$. This expression is by definition computed as follows: $(E_1 \\equiv E_2) \\wedge (E_2 \\equiv E_3) \\wedge \\cdots \\wedge (E_{n-1} \\equiv E_n)$.</li>\n</ul>\n<p>The operations are listed from the highest priority to the lowest.</p>\n<p>Let us define the <em>principal operation</em> of a compound formula $E$ as the operation in $E$ which is performed last (of course, formulae consisting just of one constant or variable have no principal operation). Also let us suppose that our formula does not contain equivalence operations since we can always replace $E_1 \\equiv E_2$with $(E_1 \\Rightarrow E_2) \\wedge (E_2 \\Rightarrow E_1)$.</p>\n<p>Now we define a <em>Beth tableau</em> to be a table with two columns with some formulae written in them. The order formulae are written in the columns and the number of times a formula appears in a column is irrelevant: we can assume for example that all formulae in a column are different and that they are ordered lexicographically.</p>\n<p>Informally the left column corresponds to formulae which we want to be true and the right column to those which we want to be false; the whole process can be considered then as an attempt to produce a contrary instance to given formula $E$. A Beth tableau is said to be <em>contradictory</em> if some formula $E_*$ occurs in both columns of this tableau, or if $\\mathbf{0}$ occurs in the left column, or if $\\mathbf{1}$ occurs in the right column.</p>\n<p>At every step of the process we have a collection of Beth tableaux. We start with a single Beth tableau with empty left column and the right column containing just the given formula $E$. A step of the process consists in choosing a compound formula $C$ from a non-contradictory Beth tableau from the collection and applying a rule chosen by the principal operation of $C$ and by the column (left or right) in which $C$ is situated. As a result some formulae are added to the left or right columns of this Beth tableau (or both); of course, if these formulae that we want to add are already there the Beth tableau won’t change, so in this case we say that the corresponding rule is <em>inapplicable</em>. There are also some rules that make two copies of the original Beth tableau and add some formulae into one of these copies and some other into the second one. In this case we say that the rule is inapplicable if both Beth tableaux thus obtained were already in the collection before applying the rule.</p>\n<p>The process stops when no rule is applicable. Note that all formulae occurring in all Beth tableaux constructed will be sub-formulae of the original formula, so there are only finitely many Beth tableaux that can be obtained and thus only finitely many collections of Beth tableaux can be obtained. Therefore the process will have to stop at some point. If at this point all Beth tableaux in the collection are contradictory, the original formula $E$ has been proved to be valid. Otherwise if $\\tau$ is a non-contradictory Beth tableau from the collection, any variable $x$ occurring in $E$ must occur in exactly one column of $\\tau$ (it cannot occur in both columns since $\\tau$ is not contradictory; it must occur in at least one column since otherwise a rule would be applicable to the shortest formula in $\\tau$ containing $x$). Then let us assign $\\mathbf{1}$ to all the variables from the left column and $\\mathbf{0}$ to the variables from the right column of $\\tau$. This would give us a contrary instance to $E$, i.e. an assignment of values to variables for which our original formula $E$ evaluates to $\\mathbf{0}$.</p>\n<p>Now let us list all possible rules. It has been already explained that a rule is defined by the principal operation $*$ of a formula $C$ and the column (left or right) in which $C$ was found. We shall label these rules by $*_l$ and $*_r$ where $*$ is the operation (one of $\\wedge$, $\\vee$, $\\Rightarrow$ or $\\neg$). If $*$ is binary, we shall assume that $C = A * B$; otherwise we assume $C = \\neg A$.</p>\n<p>Let us list the rules that do not increase the number of tableaux (i.e. they just add some formulae to the columns of selected Beth tableau):</p>\n<p>$$\\wedge_l : \\left. \\begin{matrix} A \\wedge B &amp;\\\\ \\cdots &amp;\\\\ (A) &amp; \\\\ (B) &amp; \\end{matrix} \\right\\vert \\begin{matrix} &amp; \\cdots &amp; \\\\ &amp;  &amp; \\\\ &amp;  &amp; \\\\ &amp;  &amp; \\end{matrix} ~~~ \\vee_r : \\begin{matrix} \\cdots &amp; \\\\ &amp;   \\\\ &amp;   \\\\ &amp;   \\end{matrix} \\left\\vert \\begin{matrix} &amp; A \\wedge B &amp; \\\\ &amp; \\cdots &amp; \\\\ &amp; (A) &amp; \\\\ &amp; (B) &amp; \\end{matrix} \\right. ~~~ \\Rightarrow_r : \\begin{matrix} &amp; \\cdots &amp; \\\\ &amp; (A) &amp;  \\\\ &amp; &amp;  \\end{matrix} \\left\\vert \\begin{matrix} &amp; A \\Rightarrow B \\\\ &amp; \\cdots \\\\  &amp; (B) \\end{matrix} \\right.$$</p>\n<p>$$\\neg_l : \\begin{matrix} &amp; \\neg A &amp; \\\\ &amp; \\cdots &amp;  \\end{matrix} \\left\\vert \\begin{matrix} &amp; \\cdots &amp; \\\\ &amp; (A) &amp; \\end{matrix} \\right. ~~~ \\neg_r : \\begin{matrix} &amp; \\cdots &amp; \\\\ &amp; (A)&amp;  \\end{matrix} \\left\\vert \\begin{matrix} &amp; \\neg A&amp; \\\\ &amp; \\cdots &amp; \\end{matrix} \\right.$$</p>\n<p>This means the following: for example, if we apply the rule $\\Rightarrow_r$ to the formula $A \\Rightarrow B$ in the right column of a Beth tableau, then we have to add formula $A$ to the left column and $B$ to the right column of this tableau.</p>\n<p>The next rules produce two Beth tableaux from one. A similar notation is used, but two Beth tableaux are shown for each rule:</p>\n<p>$$\\wedge_r : \\left. \\begin{matrix} \\cdots &amp;\\\\ &amp;\\\\  &amp;  \\end{matrix} \\right\\vert \\begin{matrix} &amp; A \\wedge B &amp; \\\\ &amp; \\cdots &amp; \\\\ &amp; (A) &amp;  \\end{matrix} ~ \\left. \\begin{matrix} \\cdots &amp;\\\\ &amp;\\\\  &amp;  \\end{matrix} \\right\\vert \\begin{matrix} &amp; A \\wedge B &amp; \\\\ &amp; \\cdots &amp; \\\\ &amp; (B) &amp;  \\end{matrix} ~~~ \\vee_l : \\left. \\begin{matrix} A \\vee B &amp; \\\\ \\cdots &amp; \\\\  (A) &amp; \\end{matrix} \\right\\vert \\begin{matrix} &amp; \\cdots &amp; \\\\ &amp; &amp; \\\\ &amp;  &amp;  \\end{matrix} ~ \\left. \\begin{matrix} A \\vee B &amp; \\\\ \\cdots &amp; \\\\  (B) &amp; \\end{matrix} \\right\\vert \\begin{matrix} &amp; \\cdots &amp; \\\\ &amp; &amp; \\\\ &amp;  &amp;  \\end{matrix} $$</p>\n<p>$$\\Rightarrow_l  : \\left. \\begin{matrix} A \\Rightarrow B &amp;\\\\ \\cdots &amp; \\\\  &amp;  \\end{matrix} \\right\\vert \\begin{matrix} &amp; \\cdots &amp; \\\\ &amp; (A) &amp; \\\\ &amp;  &amp;  \\end{matrix} ~ \\left. \\begin{matrix} A \\Rightarrow B&amp;\\\\ \\cdots &amp;\\\\ (B) &amp;  \\end{matrix} \\right\\vert \\begin{matrix} &amp; \\cdots &amp; \\\\ &amp; &amp; \\\\ &amp; &amp;  \\end{matrix}$$</p>\n<p>These three rules are interpreted as follows: if we apply for example $\\vee_l$ to the formula $A \\vee B$ in the left column of a Beth tableau $\\tau$, we have to replace $\\tau$ with two copies of itself $\\tau '$ and $\\tau ' '$, and then add $A$ to the left column of $\\tau '$ and $B$ to the left column of $\\tau ' '$.</p>",
+  "input": "<p>The only line of input contains the formula represented as a string consisting of tokens ‘<code>0</code>’, ‘<code>1</code>’, ‘<code>A</code>’. . . ‘<code>Z</code>’, ‘<code>a</code>’. . . ‘<code>z</code>’, ‘<code>(</code>’, ‘<code>)</code>’, ‘<code>~</code>’, ‘<code>&amp;</code>’, ‘<code>|</code>’, ‘<code>=&gt;</code>’, ‘<code>=</code>’. The last five tokens stand for $\\neg$, $\\wedge$, $\\vee$ , $\\Rightarrow$ and $\\equiv$ respectively. Tokens can be separated by an arbitrary number of spaces. The line will contain at most 1 000 characters. The formula in the file will be syntactically correct.</p>",
+  "output": "<p>The output file must contain exactly one line. Output just “<code>true</code>” if the formula is valid or “<code>false</code>” followed by an assignment of variables that invalidates the formula. List the variables in lexicographical order. Adhere to the sample output as strictly as possible.</p>",
+  "samples": [
+    {
+      "input": "0\n",
+      "output": "false\n"
+    },
+    {
+      "input": "1\n",
+      "output": "true\n"
+    },
+    {
+      "input": "A\n",
+      "output": "false: A=0\n"
+    },
+    {
+      "input": "A|B => A&B\n",
+      "output": "false: A=1, B=0\n"
+    },
+    {
+      "input": "A&B => A|B\n",
+      "output": "true\n"
+    },
+    {
+      "input": "r=>Y\n",
+      "output": "false: Y=0, r=1\n"
+    },
+    {
+      "input": "R=r\n",
+      "output": "false: R=0, r=1\n"
+    },
+    {
+      "input": "(A=>B)&(B=>C)=>(A=>C)\n",
+      "output": "true\n"
+    },
+    {
+      "input": "(A=>B)=>(~B=>~A)\n",
+      "output": "true\n"
+    },
+    {
+      "input": "(A=>B)=>(~A=>~B)\n",
+      "output": "false: A=0, B=1\n"
+    },
+    {
+      "input": "(A=a)&(B=b)=>(A&B=a&b)\n",
+      "output": "true\n"
+    },
+    {
+      "input": "K|~i|t|t|~e|~n\n",
+      "output": "false: K=0, e=1, i=1, n=1, t=0"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2004",
+  "level": 19,
+  "tags": [
+    "implementation",
+    "string",
+    "parsing"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 2
+}

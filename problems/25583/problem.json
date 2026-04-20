@@ -1,0 +1,33 @@
+{
+  "id": 25583,
+  "title": "첨탑 부수기",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>현기는 평소에 첨탑 부수기라는 게임을 즐겨한다. 첨탑 부수기 게임은 1층에 존재하는 첨탑의 입구로 들어가 꼭대기 층까지 한 층씩 등반하며 첨탑 내의 모든 괴물을 쓰러뜨리는 게임이다. 첨탑의 꼭대기까지 등반하여 게임을 클리어하더라도 다시 도전하면 그때마다 또 다른 괴물을 만날 수 있어 몇 번을 하더라도 새로운 재미를 선사한다.</p>\n<p>첨탑 부수기 게임은 새로운 게임을 시작할 때 무작위로 생성되는 시드$(=Seed)$를 바탕으로 각 층에 생성되는 괴물의 강함$(=Strength)$이 정해진다. 시드는 알파벳 대소문자와 0을 제외한 숫자로 이루어진 10자리 문자열이다. 괴물의 강함을 계산하기 위해 시드의 각 자리 문자를 사용할 때에는 아래의 표와 같이 다른 정숫값으로 바꿔 연산한다.</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<td style=\"text-align: center;\"><strong>$Seed$의 각 자리 문자</strong></td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">$\\cdots$</td>\n<td style=\"text-align: center;\">8</td>\n<td style=\"text-align: center;\">9</td>\n<td style=\"text-align: center;\">A</td>\n<td style=\"text-align: center;\">B</td>\n<td style=\"text-align: center;\">$\\cdots$</td>\n<td style=\"text-align: center;\">Y</td>\n<td style=\"text-align: center;\">Z</td>\n<td style=\"text-align: center;\">a</td>\n<td style=\"text-align: center;\">b</td>\n<td style=\"text-align: center;\">$\\cdots$</td>\n<td style=\"text-align: center;\">y</td>\n<td style=\"text-align: center;\">z</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\"><strong>값</strong></td>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">$\\cdots$</td>\n<td style=\"text-align: center;\">8</td>\n<td style=\"text-align: center;\">9</td>\n<td style=\"text-align: center;\">10</td>\n<td style=\"text-align: center;\">11</td>\n<td style=\"text-align: center;\">$\\cdots$</td>\n<td style=\"text-align: center;\">34</td>\n<td style=\"text-align: center;\">35</td>\n<td style=\"text-align: center;\">36</td>\n<td style=\"text-align: center;\">37</td>\n<td style=\"text-align: center;\">$\\cdots$</td>\n<td style=\"text-align: center;\">60</td>\n<td style=\"text-align: center;\">61</td>\n</tr>\n</tbody>\n</table>\n<p>예를 들어 시드가 \"AB1z8DcdT4\"일 경우에 시드의 첫 번째 문자$(=Seed[0])$인 'A'는 정수 10을 의미한다. 여기서, $Seed[i]$는 시드를 구성하는 문자 중 왼쪽에서 $i+1$번째 문자에 해당한다.</p>\n<p>층 수가 $N$인 첨탑 부수기 게임을 플레이할 때, 1층에서 마주치는 괴물의 강함은 1이고 $k(\\neq 1)$층에서 마주치는 괴물의 강함은 아래와 같이 계산한다.</p>\n<p>$\\begin{cases} f(i,k) = Seed[(i\\times k)\\ \\textrm{mod}\\ 10] \\\\ g(k) = \\sum_{i=1}^{10} f(i,k) \\times k \\\\ Strength(k) = g(k) ^ {Strength(k-1)} \\end{cases}$</p>\n<p>현기가 꼭대기 층이 $N$층인 첨탑 부수기 게임을 새로 시작할 때, 꼭대기 층에서 마주치는 괴물의 강함을 구하여라. 단, 괴물의 강함이 매우 클 수 있으므로 괴물의 강함을 $M$으로 나눈 나머지를 출력하라.</p>",
+  "input": "<p>첫째 줄에 두 정수 $N$과 $M$이 주어진다. $(1\\le N, M \\le10^9)$  </p>\n<p>둘째 줄에 $Seed$가 주어진다. $Seed$는 알파벳 대소문자와 0을 제외한 숫자로 이루어진 10자리 문자열이다.</p>",
+  "output": "<p>첫째 줄에 괴물의 강함을 $M$으로 나눈 나머지를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 37\nAB1z8DcdT4\n",
+      "output": "1\n"
+    },
+    {
+      "input": "8 22\n65n1Ad87oQ\n",
+      "output": "10\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 부산대학교, 2022 부산대학교 CodeRace, tykr0001, chansol, jh05013, lky7674, tony9402",
+  "level": 21,
+  "tags": [
+    "math",
+    "string",
+    "number_theory",
+    "parsing",
+    "exponentiation_by_squaring",
+    "euler_phi"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 4.875
+}

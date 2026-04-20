@@ -1,0 +1,38 @@
+{
+  "id": 34865,
+  "title": "CPEquivalence",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Given an integer array $x$ consisting of integers (namely, each item of $x$ is an integer), the Closest Position array (CP-array) $\\text{CP}(x)$ is an array of length $|x|$ defined to be</p>\n<p style=\"text-align: center;\">$\\text{CP}(x)[i] = \\max(\\{j ∣ j &lt; i; x[j] ≥ x[i]\\} ∪ \\{−1\\})$ for all $0 ≤ i &lt; |x|$,</p>\n<p>where $x[i]$ denotes the $i$-th integer in $x$, and the length $|x|$ is the number of integers in $x$. In other words, $\\text{CP}(x)[i]$ is the greatest index of $x$ that is smaller than $i$ and whose item at that index is greater than or equal to $x[i]$. For example, when $x = [64, 2, 5, 100, 100]$, its CP-array is $\\text{CP}(x) = [−1, 0, 0, −1, 3]$, and $|x| = 5$.</p>\n<p>We say that two integer arrays $x$ and $y$ are CP-equivalent if $\\text{CP}(x) = \\text{CP}(y)$. It is obvious that two CP-equivalent integer arrays $x$ and $y$ have the same length. For example, two arrays $x = [64, 2, 5, 100, 100]$ and $y = [3, 1, 2, 4, 1]$ are CP-equivalent because their CP-arrays are the same as $[−1, 0, 0, −1, 3]$.</p>\n<p>For an integer array $x$, an integer $a$ and a non-negative integer $i &lt; |x|$, a substitution operation on $x$ at position $i$ into $a$ returns the array $[x[0], x[1], \\cdots , x[i − 1], a, x[i + 1], \\cdots , x[|x| − 1]]$. For an integer array $x$ and a nonnegative integer $i &lt; |x|$, a deletion operation on $x$ at position $i$ returns the array $[x[0], x[1], \\cdots , x[i − 1], x[i + 1], \\cdots , x[|x| − 1]]$. Finally, for an integer array $x$, an integer $a$ and a non-negative integer $i ≤ |x|$, an insertion operation on $x$ at position $i$ returns the array $[x[0], x[1], \\cdots , x[i − 1], a, x[i], \\cdots , x[|x| − 1]]$. An edit operation on $x$ is one of an insertion, a deletion or a substitution at a single position.</p>\n<p>Given two integer arrays $x$ and $y$, compute the minimum number of edit operations on $y$ to obtain an array $y'$ satisfying $\\text{CP}(x) = \\text{CP}(y')$.</p>\n<p>For example, let $x = [64, 2, 5, 100, 100]$ and $y = [−5, −5, −5, −5]$. Consider the array $y' = [−5, −6, −5, −4, −5]$. Then, we have $\\text{CP}(y') = [−1, 0, 0, −1, 3]$ and therefore $x$ and $y'$ are CP-equivalent. Then, we can obtain the integer array $y'$ applying two edit operations on $y$ and it is minimum.</p>",
+  "input": "<p>Your program is to read from standard input. The input consists of three lines. The first line consists of two integers $n$ and $m$ ($1 ≤ n ≤ 40$; $1 ≤ m ≤ 40$) that indicate the length of $x$ and $y$, respectively. The second line consists of $n$ integers between $−1\\,000\\,000$ and $1\\,000\\,000$ (both inclusive), representing the array $x$. The third line consists of $m$ integers between $−1\\,000\\,000$ and $1\\,000\\,000$ (both inclusive), representing the array $y$.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line containing the minimum number of edit operations on $y$ to obtain an integer array $y'$ satisfying $\\text{CP}(x) = \\text{CP}(y')$.</p>",
+  "samples": [
+    {
+      "input": "5 5\n64 2 5 100 100\n3 1 2 4 1\n",
+      "output": "0\n"
+    },
+    {
+      "input": "5 4\n64 2 5 100 100\n-5 -5 -5 -5\n",
+      "output": "2\n"
+    },
+    {
+      "input": "6 5\n1 2 3 4 5 6\n2 5 3 4 5\n",
+      "output": "3\n"
+    },
+    {
+      "input": "6 3\n1 3 5 2 5 2\n5 5 6\n",
+      "output": "3\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, 2025 ICPC Asia Seoul Regional",
+  "level": 23,
+  "tags": [
+    "dp",
+    "trees",
+    "cartesian_tree"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.4544999599456787
+}

@@ -1,0 +1,22 @@
+{
+  "id": 11471,
+  "title": "Fygon",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Frederick is a young programmer. He participates in all programming contests he can find and always uses his favorite programming language Fygon. Unfortunately, he often receives Time Limit Exceeded outcome, even when his algorithm is asymptotically optimal. That’s because the Fygon interpreter is very slow. Nevertheless, Frederick likes Fygon so much, that he uses non-asymptotical optimizations to fit the solution into time limit. To make it easier, he asks you to write a program, which will be able to estimate the exact number of operations that his Fygon program makes.</p>\n<p>For simplicity, we will assume that Fygon has only two statements. The first statement is <code>lag</code>. It substitutes almost any other statement. The second statement is a <code>for</code> loop:</p>\n<pre>\nfor &lt;variable&gt; in range (&lt;limit&gt;):\n    &lt;body&gt;</pre>\n<p>This means that <code>&lt;variable&gt;</code> iterates over values from 0 to <code>&lt;limit&gt;</code>−1. In Fygon <code>&lt;variable&gt;</code> is a lowercase letter from a to z, and <code>&lt;limit&gt;</code> is either already defined <code>&lt;variable&gt;</code> or a positive integer constant. The <code>&lt;body&gt;</code> of the loop is indented by four spaces and contains at least one statement.</p>\n<p>The program receives the input in the variable n. This variable has special meaning and cannot be used as a loop variable.</p>\n<p>Your task is to find the formula that calculates the number of performed <code>lag</code> operations by the given Fygon program, depending on the value of the variable n.</p>",
+  "input": "<p>The input file contains the Fygon program. No two loops use the same variable as iterators. Each variable used inside a <code>range</code> is either n or declared in some outer loop.</p>\n<p>The program has at most 20 statements and at most 6 of them are loops. All integer constants are from 1 to 9. Outpu</p>",
+  "output": "<p>Output the formula for the number of performed <code>lag</code> operations depending on n. The length of the formula should be at most 100 characters (excluding spaces). The formula should correspond to the following grammar:</p>\n<pre>\n⟨Expression⟩ ::= ⟨Product⟩ ( (‘+’ | ‘-’) ⟨Product⟩) <sup>*</sup>\n   ⟨Product⟩ ::= ⟨Value⟩ (‘*’⟨Value⟩) <sup>*</sup>\n     ⟨Value⟩ ::= ‘n’ | ⟨Number⟩ | ‘-’⟨Value⟩ | ‘(’⟨Expression⟩‘)’\n    ⟨Number⟩ ::= [‘0’..‘9’] <sup>+</sup> (‘/’ [‘0’..‘9’] <sup>+</sup>) <sup>?</sup></pre>",
+  "samples": [
+    {
+      "input": "for i in range(n):\n    for j in range(i):\n        lag\nfor x in range(5):\n    for y in range(n):\n        for z in range(n):\n            lag\n    lag\n",
+      "output": "1/2 * n * (n-1) + 5 * (n*n + 1)\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, NEERC Northern Subregional 2015",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.75
+}

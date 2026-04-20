@@ -1,0 +1,31 @@
+{
+  "id": 20202,
+  "title": "Euklid",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>It is rarely mentioned that Euclid’s grandma was from Vrsi in Croatia. It is from there that Euclid’s less known (but equally talented in his youth) cousin Edicul<sup>∗</sup> comes from.</p>\n<p>It happened one day that they were playing “invent an algorithm”. Edicul writes two positive integers on the sand. Then he does the following: while neither number on the sand is 1, he marks them as \\((a, b)\\) so that \\(a \\ge b\\). Then the numbers are erased and he writes \\((\\left\\lfloor\\frac{a}{b}\\right\\rfloor, b)\\) on the sand, and repeats the process. When one of the two numbers becomes 1, the other is the results of his algorithm.</p>\n<p>Formally, if \\(a\\) and \\(b\\) are positive integers, the result \\(R(a, b)\\) of Edicul’s algorithm is:</p>\n<p>\\[R(a,b) = \\begin{cases} R(b,a) &amp; \\text{if } a &lt; b \\text{,} \\\\ R(\\left\\lfloor\\frac{a}{b}\\right\\rfloor, b) &amp; \\text{if } a \\ge b &gt; 1 \\text{,} \\\\ a &amp; \\text {if } a \\ge b = 1 \\text{.} \\end{cases}\\]</p>\n<p>Euclid thinks for a while, and says: “Edicul, I have a better idea...”, and the rest is history. Unfortunately, Edicul never became famous for his idea in number theory. This sad story inspires the following problem:</p>\n<p>Given positive integers \\(g\\) and \\(h\\), find positive integers \\(a\\) and \\(b\\) such that their <strong>greatest common divisor</strong> is \\(g\\), and <strong>the result of Edicul’s algorithm</strong> \\(R(a, b)\\) is \\(h\\).</p>\n<p><sup>∗</sup>This sets up a pun in Croatian. The translation is a bit bland, sorry for that.</p>",
+  "input": "<p>The first line contains a single integer \\(t\\) (\\(1 \\le t \\le 40\\)) – the number of independent test cases.</p>\n<p>Each of the following \\(t\\) lines contains two positive integers \\(g_i\\) and \\(h_i\\) (\\(h_i \\ge 2\\)).</p>",
+  "output": "<p>Output \\(t\\) lines in total. For the i-th testcase, output positive integers \\(a_i\\) and \\(b_i\\) such that \\(gcd(a_i, b_i) = g_i\\) and \\(R(a_i, b_i) = h_i\\).</p>\n<p>The numbers in the output must not be larget than 10<sup>18</sup>. It can be proven that for the given constraints, a solution always exists.</p>\n<p>If there are multiple solutions for some testcase, output any of them.</p>",
+  "samples": [
+    {
+      "input": "1\n1 4\n",
+      "output": "99 23\n"
+    },
+    {
+      "input": "2\n3 2\n5 5\n",
+      "output": "9 39\n5 5\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example:</p>\n<p>The integers \\(99\\) and \\(23\\) are coprime, i.e. their greatest common divisor is 1. We have \\(\\left\\lfloor\\frac{99}{23}\\right\\rfloor = 4\\), thus \\(R(99, 23) = R(4, 23) = R(23, 4)\\). Then \\(\\left\\lfloor\\frac{23}{4}\\right\\rfloor = 5\\), so \\(R(23, 4) = R(5, 4) = R(1, 4) = R(4, 1) = 4\\).</p>\n<p>Clarification of the second example:</p>\n<p>For the first testcase, \\(gcd(9, 39) = 3\\) and \\(R(9, 39) = 2\\).</p>\n<p>For the second testcase, \\(gcd(5, 5) = 5\\) and \\(R(5, 5) = 5\\).</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2020/2021, Contest #2",
+  "level": 21,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "number_theory",
+    "constructive"
+  ],
+  "accepted_user_count": 58,
+  "submission_count": null,
+  "average_tries": 3.293100118637085
+}

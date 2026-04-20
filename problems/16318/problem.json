@@ -1,0 +1,33 @@
+{
+  "id": 16318,
+  "title": "Delivery Delays",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Hannah recently discovered her passion for baking pizzas, and decided to open a pizzeria in downtown Stockholm. She did this with the help of her sister, Holly, who was tasked with delivering the pizzas. Their pizzeria is an instant hit with the locals, but, sadly, the pizzeria keeps losing money. Hannah blames the guarantee they put forth when they advertised the pizzeria:</p>\n<blockquote>\n<p>Do you have a craving for a delicious pizza? Do you want one right now? Order at Hannah’s pizzeria and we will deliver the pizza to your door. If more than 20 minutes elapse from the time you place your order until you receive your Hannah’s pizza, the pizza will be free of charge!</p>\n</blockquote>\n<p>Even though Holly’s delivery car can hold an arbitrary number of pizzas, she has not been able to keep up with the large number of orders placed, meaning they have had to give away a number of pizzas due to late deliveries.</p>\n<p>Hannah provides you with a map of the roads and road intersections of Stockholm. She also gives you the list of yesterday’s orders: order i was placed at time s<sub>i</sub> from road intersection u<sub>i</sub>, and the pizza for this order was out of the oven and ready to be picked up for delivery at time t<sub>i</sub>. Hannah is very strict about following the “first come, first served” principle: if order i was placed before order j (i.e. s<sub>i</sub> &lt; s<sub>j</sub>), then the pizza for order i will be out of the oven before the pizza for order j (i.e. t<sub>i</sub> &lt; t<sub>j</sub>), and the pizza for order i must be delivered before the pizza for order j.</p>",
+  "input": "<p>The first line of input contains two integers n and m (2 ≤ n ≤ 1 000, 1 ≤ m ≤ 5 000), where n is the number of road intersections in Stockholm and m is the number of roads. Then follow m lines, the i’th of which contains three integers u<sub>i</sub>, v<sub>i</sub> and d<sub>i</sub> denoting that there is a bidirectional road between intersections u<sub>i</sub> and v<sub>i</sub> (1 ≤ u<sub>i</sub>, v<sub>i</sub> ≤ n, u<sub>i</sub> ≠ v<sub>i</sub>), and it takes Holly’s delivery car d<sub>i</sub> time units to cross this road in either direction (0 ≤ d<sub>i</sub> ≤ 10<sup>8</sup>). There is at most one road between any pair of intersections.</p>\n<p>Then follows a line containing an integer k, the number of orders (1 ≤ k ≤ 1 000). Then follow k lines, the i’th of which contains three integers s<sub>i</sub>, u<sub>i</sub>, t<sub>i</sub> denoting that an order was made at time s<sub>i</sub> from road intersection u<sub>i</sub> (2 ≤ u<sub>i</sub> ≤ n), and that the order is ready for delivery at time t<sub>i</sub> (0 ≤ s<sub>i</sub> ≤ t<sub>i</sub> ≤ 10<sup>8</sup>). The orders are given in increasing order of when they were placed, i.e. s<sub>i</sub> &lt; s<sub>j</sub> and t<sub>i</sub> &lt; t<sub>j</sub> for all 1 ≤ i &lt; j ≤ k.</p>\n<p>Hannah’s pizzeria is located at road intersection 1, and Holly and her delivery car are stationed at the pizzeria at time 0. It is possible to reach any road intersection from the pizzeria.</p>",
+  "output": "<p>Output a single integer denoting the longest time a customer has to wait from the time they place their order until the order is delivered, assuming that Holly uses a delivery schedule minimizing this value.</p>",
+  "samples": [
+    {
+      "input": "4 4\n1 2 2\n2 3 4\n3 4 1\n4 1 2\n3\n1 4 2\n3 3 3\n4 3 6\n",
+      "output": "6\n"
+    },
+    {
+      "input": "3 2\n1 2 1\n3 2 2\n4\n0 3 1\n1 3 3\n2 2 4\n4 3 6\n",
+      "output": "8\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2018",
+  "level": 20,
+  "tags": [
+    "dp",
+    "graphs",
+    "binary_search",
+    "shortest_path",
+    "dijkstra",
+    "parametric_search"
+  ],
+  "accepted_user_count": 42,
+  "submission_count": null,
+  "average_tries": 2.142899990081787
+}

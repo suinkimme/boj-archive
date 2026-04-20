@@ -1,0 +1,28 @@
+{
+  "id": 25069,
+  "title": "The Locked Box",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>The password of a lockbox is determined by a sequence $\\{a_n\\}$. The sequence $\\{a_n\\}$ may be constructed as follows:</p>\n<ol>\n<li>Initially, the length of the sequence is 2 and $a_0 = 0$, $a_1 = 1$.</li>\n<li>Perform some operations on the sequence. Each operation must be one of the following two types:\n\t<ul>\n<li>Type <code>W</code> - add 1 to the <em>last term</em> of the sequence.</li>\n<li>Type <code>E</code> - if the <em>last term</em> of the sequence is 1, then add 1 to the second-to-last term. Otherwise, subtract 1 from the last term of the sequence, and append two terms to the end of the sequence. The values of the two new terms are both 1.</li>\n</ul>\n</li>\n</ol>\n<p>The lockbox cannot check the entire sequence, so the password is set to be the value of $\\{a_n\\}$ after transformation by function $f$. The function $f$ is defined as follows:</p>\n<p>$$\\displaystyle f(a_0,\\dots,a_{k-1},a_k) = \\begin{cases} a_0, &amp; k = 0 \\\\ f\\left(a_0,a_1,\\dots,a_{k-2},a_{k-1}+\\frac{1}{a_k}\\right), &amp; k \\ge 1. \\end{cases}$$</p>\n<p>You need to compute the password based on the sequence of operations. However, the sequence of operations may be updated. The updates are one of the following three types:</p>\n<ul>\n<li><code>APPEND c</code>: Append an operation of type <code>c</code> after the current sequence of operations (that is used to generate the sequence $\\{a_n\\}$). <code>c</code> will be either character <code>W</code> or <code>E</code>.</li>\n<li><code>FLIP l r</code>: Flip the operations between the $l$-th operation and the $r$-th operation in the current sequence of operations (the indices begin with 1, and the update will include the endpoints $l$ and $r$). Here, flipping means switching all <code>W</code> to <code>E</code> and switching all <code>E</code> to <code>W</code>.</li>\n<li><code>REVERSE l r</code>: Reverse the operations between the $l$-th operation and the $r$-th operation, which means reverse the order of operations in this interval.</li>\n</ul>",
+  "input": "<p>The first line of the input contains two integers $n,q$, denoting the length of the initial sequence of operations and the number of updates.</p>\n<p>The second line contains a string of length $n$ consisting of upper-case letters <code>E</code> and <code>W</code>, denoting the initial sequence of operations.</p>\n<p>For the following $q$ lines, each line specifies an operation. The format is defined in the problem description.</p>",
+  "output": "<p>The output consists of $q+1$ lines. Each line contains two integers. The first line denotes the password corresponding to the initial sequence of operations, and the following $q$ lines denote the passwords after each update.</p>\n<p>It is easy to see the password must be a positive rational number. If the password is $\\frac{a}{b}$ where $a,b &gt; 0$ and $\\gcd(a,b) = 1$, then you need output $a$ and $b$ modulo $998\\,244\\,353$ in the corresponding line.</p>",
+  "samples": [
+    {
+      "input": "2 3\nWE\nAPPEND E\nFLIP 1 2\nREVERSE 2 3\n",
+      "output": "2 3\n3 4\n5 3\n5 2\n"
+    }
+  ],
+  "hint": "<table class=\"table table-bordered th-center td-center table-center-40\">\n<tbody>\n<tr>\n<th>Operations</th>\n<th>${a_n}$</th>\n<th>Password</th>\n</tr>\n<tr>\n<td>Initial</td>\n<td><code>WE</code></td>\n<td>$(0,1,1,1)$</td>\n<td>$\\frac{2}{3}$</td>\n</tr>\n<tr>\n<td>After 1st update</td>\n<td><code>WEE</code></td>\n<td>$(0,1,2,1)$</td>\n<td>$\\frac{3}{4}$</td>\n</tr>\n<tr>\n<td>After 2nd update</td>\n<td><code>EWE</code></td>\n<td>$(1,1,1,1)$</td>\n<td>$\\frac{5}{3}$</td>\n</tr>\n<tr>\n<td>After 3rd update</td>\n<td><code>EEW</code></td>\n<td>$(2,2)$</td>\n<td>$\\frac{5}{2}$</td>\n</tr>\n</tbody>\n</table>",
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2021",
+  "level": 24,
+  "tags": [
+    "math",
+    "data_structures",
+    "trees",
+    "linear_algebra",
+    "splay_tree"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.25
+}

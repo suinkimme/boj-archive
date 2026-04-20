@@ -1,0 +1,32 @@
+{
+  "id": 20511,
+  "title": "Specijacija",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are given a positive integer $n$ and a sequence $a_1, a_2, \\dots , a_n$ of positive integers, such that $\\frac{i(i−1)}{2} &lt; a_i \\le \\frac{i(i+1)}{2}$.</p>\n<p>The sequence parameterizes a tree with $\\frac{(n+1)(n+2)}{2}$ vertices, consisting of $n + 1$ levels with $1, 2, \\dots , n + 1$ vertices, in the following way:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 193px; height: 136px;\"/></p>\n<p style=\"text-align: center;\">The tree parameterized by $a = (1, 2, 6)$.</p>\n<p>The $i$-th level contains vertices $\\frac{i(i−1)}{2} + 1, \\dots , \\frac{i(i+1)}{2}$. The vertex $a_i$ has two children, and the rest of the vertices on the level have one child each.</p>\n<p>We want to answer $q$ queries of the form “what is the largest common ancestor of $x$ and $y$”, i.e. the vertex with the largest label which is an ancestor of both $x$ and $y$.</p>",
+  "input": "<p>The first line contains integers $n$, $q$ and $t$ ($1 \\le n, q \\le 200 000, t \\in \\{0, 1\\}$), the number of parameters, the number of queries, and a value which will be used to determine the labels of vertices in the queries.</p>\n<p>The second line contains a sequence of $n$ integers $a_i$ ($\\frac{i(i−1)}{2} \\le a_i \\le \\frac{i(i+1)}{2}$) which parameterize the tree.</p>\n<p>The $i$-th of the following $q$ lines contains two integers $\\tilde{x}_i$ and $\\tilde{y}_i$ ($1 ≤ \\tilde{x}_i, \\tilde{y}_i ≤ \\frac{(n+1)(n+2)}{2}$) which will be used to determine the labels of vertices in the queries.</p>\n<p>Let $z_i$ be the answer to the $i$-th query, and let $z_0 = 0$. The labels in the $i$-th query $x_i$ and $y_i$ are:</p>\n<p style=\"text-align: center;\">$x_i = \\left(\\left(\\tilde{x}_i - 1 + t \\cdot z_{i-1}\\right) \\mod \\frac{(n+1)(n+2)}{2}\\right) + 1 \\text{,}$</p>\n<p style=\"text-align: center;\">$y_i = \\left(\\left(\\tilde{y}_i - 1 + t \\cdot z_{i-1}\\right) \\mod \\frac{(n+1)(n+2)}{2}\\right) + 1 \\text{,}$</p>\n<p>where $\\text{mod}$ is the remainder of integer divison.</p>\n<p>Remark: Note that if $t = 0$, it holds $x_i = \\tilde{x}_i$ and $y_i = \\tilde{y}_i$, so all queries are known from input. If $t = 1$, the queries are not known in advance, but are determined using answers to previous queries.</p>",
+  "output": "<p>Output $q$ lines. In the $i$-th line, output the largest common ancestor of $x_i$ and $y_i$.</p>",
+  "samples": [
+    {
+      "input": "3 5 0\n1 2 6\n7 10\n8 5\n6 2\n9 10\n2 3\n",
+      "output": "1\n5\n1\n6\n1\n"
+    },
+    {
+      "input": "3 5 1\n1 2 6\n7 10\n8 5\n6 2\n9 10\n2 3\n",
+      "output": "1\n6\n2\n1\n1\n"
+    }
+  ],
+  "hint": "<p>Clarification of the examples: The tree from both examples is shown on the figure in the statement. Labels of verticies in queries in the second example are: $x_1 = 7, y_1 = 10, \\\\ x_2 = 9, y_2 = 6,\\\\ x_3 = 2, y_3 = 8,\\\\ x_4 = 1, y_4 = 2,\\\\ x_5 = 3, y_5 = 4$.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2020/2021, Contest #3",
+  "level": 22,
+  "tags": [
+    "data_structures",
+    "lca",
+    "pst",
+    "segtree",
+    "trees"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 4.900000095367432
+}

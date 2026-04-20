@@ -1,0 +1,22 @@
+{
+  "id": 14872,
+  "title": "Strings",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>You have an initial string S = [s<sub>1</sub>, …, s<sub>n</sub>].</p>\n<p>By definition, S<sub>x,y</sub> is a part of string S as follows:</p>\n<ul>\n<li>S<sub>x,y</sub> = [s<sub>x</sub>, …, s<sub>y</sub>], if x ≤ y;</li>\n<li>S<sub>x,y</sub> is an empty string, if x &gt; y.</li>\n</ul>\n<p>You are given m queries of several types:</p>\n<ol>\n<li>A question query, given i; j (1 ≤ i ≤ j ≤ n), is the substring [s<sub>i</sub>, …, s<sub>j</sub>] a palindrome?</li>\n<li>A modication query which can be of 3 types:\n\t<ol style=\"list-style-type:lower-alpha\">\n<li>Cut the string into 3 (possibly empty) parts S<sub>1,i-1</sub>, S<sub>i,j</sub>, S<sub>j+1,n</sub>.<br/>\n\t\tConcatenate the first part with the last one into T= S<sub>1,i-1</sub> S and insert the middle one as follows S’=T S T<sub>k+1,n’</sub> (where n’=n-(j-i+1) respectively), then set S to be equal to S’.<br/>\n\t\tNote that 1 ≤ i ≤ j ≤ n; 0 ≤ k ≤ n - (j - i + 1).</li>\n<li>Reverse the substring S<sub>i,j</sub>. Note that 1 ≤ i ≤ j ≤ n.</li>\n<li> Insert a character c at position i, i.e. set S = S<sub>1,i-1</sub> c S<sub>i,n</sub>. Note that 1 ≤ i ≤ n+1.</li>\n</ol>\n</li>\n</ol>\n<p>Note that the value of n will change on modification queries of type (c).</p>\n<p>Write a program that runs the queries above.</p>",
+  "input": "<ul>\n<li>The first line contains two space-separated integers n, m.</li>\n<li>The second line contains n characters representing the initial string.</li>\n<li>The following m lines contain the description of the m queries.</li>\n<li>A question query is of the form:\n\t<ul>\n<li><code>Q i j</code> where 1 ≤ i ≤ j ≤ n.</li>\n</ul>\n</li>\n<li>A modification query is of the form:\n\t<ul>\n<li><code>M 1 i j k</code> – Modifcation query (a), where i ≤ j.</li>\n<li><code>M 2 i j</code> – Modification query (b), where i ≤ j.</li>\n<li><code>M 3 i c</code> – Modification query (c), where c is a character.</li>\n</ul>\n</li>\n</ul>\n<p>You can assume that the string will contain only lowercase characters of the English alphabet at all times.</p>\n<p>You may assume that the input is valid.</p>",
+  "output": "<p>For each question query, output a single line of \"YES\" or \"NO\" (without quotes).</p>",
+  "samples": [
+    {
+      "input": "6 10\nbanana\nQ 2 6\nQ 2 5\nM 2 2 3\nQ 2 5\nM 2 5 6\nQ 1 6\nM 3 7 b\nQ 1 7\nM 1 1 2 4\nQ 4 7\n",
+      "output": "YES\nNO\nYES\nNO\nYES\nNO\n"
+    }
+  ],
+  "hint": "<p>The modification queries will change the string in the following way:</p>\n<ul>\n<li>Initially : S = <code>banana</code></li>\n<li>Query 1: S = <code>bnaana</code></li>\n<li>Query 2: S = <code>bnaaan</code></li>\n<li>Query 3: S = <code>bnaaanb</code></li>\n<li>Query 4: S = <code>aaanbnb</code></li>\n</ul>",
+  "source": "Olympiad, Balkan Olympiad in Informatics, BOI 2017",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

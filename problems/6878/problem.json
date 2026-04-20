@@ -1,0 +1,28 @@
+{
+  "id": 6878,
+  "title": "Quantum Operations",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Quantum computing is currently a hot topic in research. If they can be built, quantum computers will have the ability to perform certain computing tasks much faster than any computer in existence today. Fortunately, you won't need a quantum computer to do this question.</p>\n<p>A fundamental concept in quantum computing is the idea of a quantum operation. A quantum operation can be essentially thought of as a matrix. Also, if you perform two quantum operations in parallel on separate quantum data, this can be thought of as a larger quantum operation. Thinking of these operations in terms of matrices again, the resulting matrix from performing two matrices in parallel is called the <em>tensor product</em> of the two matrices (using the symbol $\\otimes$). This is different than the normal product of matrices that you may have learned about.</p>\n<p>In a tensor product, you are given two matrices (which are essentially two-dimensional arrays). We will call them $A$ and $B$, and we will represent the individual elements of these two matrices this way:</p>\n<p>$$\\displaystyle A = \\begin{bmatrix} a_{11} &amp; a_{12} &amp; \\cdots &amp; a_{1n} \\\\ a_{21} &amp; a_{22} &amp; \\cdots &amp; a_{2n} \\\\ \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\ a_{m1} &amp; a_{m2} &amp; \\cdots &amp; a_{mn} \\end{bmatrix},\\ B = \\begin{bmatrix} b_{11} &amp; b_{12} &amp; \\cdots &amp; b_{1q} \\\\ b_{21} &amp; b_{22} &amp; \\cdots &amp; b_{2q} \\\\ \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\ b_{p1} &amp; b_{p2} &amp; \\cdots &amp; b_{pq} \\end{bmatrix}.$$</p>\n<p>Notice that the size of matrix $A$ is $m \\times n$ ($m$ rows and $n$ columns), and the size of $B$ is $p \\times q$.</p>\n<p>The tensor product of these two matrices will be an $mp \\times nq$ matrix (with $mp$ rows and $nq$ columns) that looks like:</p>\n<p>$$\\displaystyle A \\otimes B = \\begin{bmatrix} a_{11}[B] &amp; a_{12}[B] &amp; \\cdots &amp; a_{1n}[B] \\\\ a_{21}[B] &amp; a_{22}[B] &amp; \\cdots &amp; a_{2n}[B] \\\\ \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\ a_{m1}[B] &amp; a_{m2}[B] &amp; \\cdots &amp; a_{mn}[B] \\end{bmatrix},$$</p>\n<p>where $a_{ij}[B]$ simply indicates that each element in $B$ is being multiplied by $a_{ij}$.</p>\n<p>Finally notice that the tensor product is not <em>commutative</em>, which means that changing the order of matrices may change the answer $(A \\otimes B \\ne B \\otimes A)$.</p>\n<p>For more than two matrices, we will define $A \\otimes B \\otimes C = (A \\otimes B) \\otimes C$, although it does not technically matter, since the tensor product is <em>associative</em>.</p>\n<p>Your task is to compute and output the tensor product of two or more given matrices.</p>",
+  "input": "<p>The first line of input will contain the number of matrices, $N$, a positive integer. Then, there are $N$ blocks of lines describing the matrices in order.</p>\n<p>In each block, the first line will contain two positive integers, $r$ and $c$, separated by a space, indicating the number of rows and columns, respectively. Then, the next $r$ lines will denote the rows, in order. Each line will contain $c$ integers, separated by spaces.</p>",
+  "output": "<p>The output (to the screen) will be 6 integers in the following order:</p>\n<ul>\n<li>the maximum element in the tensor product</li>\n<li>the minimum element in the tensor product</li>\n<li>the maximum row sum (i.e., sum of entries in each row)</li>\n<li>the minimum row sum</li>\n<li>the maximum column sum</li>\n<li>the minimum column sum</li>\n</ul>\n<p>You may assume that the tensor product matrix will have no more than $1024$ rows and no more than $1024$ columns.</p>",
+  "samples": [
+    {
+      "input": "2\n2 2\n1 1\n1 -1\n2 2\n1 0\n0 1\n",
+      "output": "1\n-1\n2\n0\n2\n0\n"
+    },
+    {
+      "input": "3\n2 2\n1 0\n0 3\n2 2\n1 1\n1 -1\n2 2\n1 0\n0 1\n",
+      "output": "3\n-3\n6\n0\n6\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2005, CCC 2005 Senior Division",
+  "level": 8,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.09089994430542
+}

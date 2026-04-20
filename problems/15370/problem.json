@@ -1,0 +1,38 @@
+{
+  "id": 15370,
+  "title": "Pictionary",
+  "time_limit": "1.5 초",
+  "memory_limit": "64 MB",
+  "description": "<p>There is a planet, in a yet undiscovered part of the universe, with a country inhabited solely by mathematicians. In this country, there are a total of N mathematicians, and the interesting fact is that each mathematician lives in their own city. Is it also interesting that no two cities are connected with a road, because mathematicians can communicate online or by reviewing academic papers. Naturally, the cities are labeled with numbers from 1 to N.</p>\n<p>Life was perfect until one mathematician decided to write an academic paper on their smartphone. The smartphone auto-corrected the word “self-evident” to “Pictionary” and the paper was published as such. Soon after, the entire country discovered pictionary and wanted to meet up and play, so construction work on roads between cities began shortly.</p>\n<p>The road construction will last a total of M days, according to the following schedule: on the first day, construction is done on roads between all pairs of cities that have M as their greatest common divisor. On the second day, construction is done on roads between all pairs of cities that have M-1 as their greatest common divisor, and so on until the Mth day when construction is done on roads between all pairs of cities that are co-prime. More formally, on the ith day, construction is done on roads between cities a and b if gcd(a, b) = M - i + 1.</p>\n<p>Since the mathematicians are busy with construction work, they’ve asked you to help them determine the minimal number of days before a given pair of mathematicians can play pictionary together.</p>",
+  "input": "<p>The first line of input contains three positive integers N, M and Q (1 ≤ N, Q ≤ 100 000, 1 ≤ M ≤ N), the number of cities, the number of days it takes to build the roads, and the number of queries.</p>\n<p>Each of the following Q lines contains two distinct positive integers A and B (1 ≤ A, B ≤ N) that denote the cities of the mathematicians who want to find out the minimal number of days before they can play pictionary together.</p>",
+  "output": "<p>The ith line must contain the minimal number of days before the mathematicians from the ith query can play pictionary together.</p>",
+  "samples": [
+    {
+      "input": "8 3 3\n2 5\n3 6\n4 8\n",
+      "output": "3\n1\n2\n"
+    },
+    {
+      "input": "25 6 1\n20 9\n",
+      "output": "4\n"
+    },
+    {
+      "input": "9999 2222 2\n1025 2405\n3154 8949\n",
+      "output": "1980\n2160\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first test case:</p>\n<p>On the first day, road (3, 6) is built. Therefore the answer to the second query is 1.</p>\n<p>On the second day, roads (2, 4), (2, 6), (2, 8), (4, 6) and (6, 8) are built. Cities 4 and 8 are now connected (it is possible to get from the first to the second using city 6).</p>\n<p>On the third day, roads between relatively prime cities are built, so cities 2 and 5 are connected.</p>\n<p>Clarification of the second test case:</p>\n<p>On the second day, road (20, 15) is built, whereas on the fourth day, road (15, 9) is built. After the fourth day, cities 20 and 9 are connected via city 15.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2017/2018, Contest #5",
+  "level": 20,
+  "tags": [
+    "math",
+    "data_structures",
+    "number_theory",
+    "binary_search",
+    "disjoint_set",
+    "pbs",
+    "harmonic_number"
+  ],
+  "accepted_user_count": 42,
+  "submission_count": null,
+  "average_tries": 1.523800015449524
+}

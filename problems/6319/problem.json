@@ -1,0 +1,28 @@
+{
+  "id": 6319,
+  "title": "Island of Logic",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>The Island of Logic has three kinds of inhabitants: divine beings that always tell the truth, evil beings that always lie, and human beings that are truthful during the day and lie at night. Every inhabitant recognizes the type of every other inhabitant.</p>\n<p>A social scientist wants to visit the island. Because he is not able to distinguish the three kinds of beings only from their looks, he asks you to provide a communication analyzer that deduces facts from conversations among inhabitants. The interesting facts are whether it is day or night and what kind of beings the speakers are.</p>",
+  "input": "<p>The input file contains several descriptions of conversations. Each description starts with an integer n, the number of statements in the conversation. The following n lines each contain one statement by an inhabitant. Every statement line begins with the speaker’s name, one of the capital letters A, B, C, D, E, followed by a colon ‘:’. Next is one of the following kinds of statements:</p>\n<ul>\n<li>I am [not] ( divine | human | evil | lying ).</li>\n<li>X is [not] ( divine | human | evil | lying ).</li>\n<li>It is ( day | night ).</li>\n</ul>\n<p>Square brackets [] mean that the word in the brackets may or may not appear, round brackets () mean that exactly one of the alternatives separated by | must appear. X stands for some name from A, B, C, D, E. There will be no two consecutive spaces in any statement line, and at most 50 statements in a conversation.</p>\n<p>The input is terminated by a test case starting with n = 0.</p>",
+  "output": "<p>For each conversation, first output the number of the conversation in the format shown in the sample output. Then print “This is impossible.”, if the conversation cannot happen according to the rules or “No facts are deducible.”, if no facts can be deduced. Otherwise print all the facts that can be deduced. Deduced facts should be printed using the following formats:</p>\n<ul>\n<li>X is ( divine | human | evil ).</li>\n<li>It is ( day | night ).</li>\n</ul>\n<p>X is to be replaced by a capital letter speaker name. Facts about inhabitants must be given first (in alphabetical order), then it may be stated whether it is day or night.</p>\n<p>The output for each conversation must be followed by a single blank line.</p>",
+  "samples": [
+    {
+      "input": "1\nA: I am divine.\n1\nA: I am lying.\n1\nA: I am evil.\n3\nA: B is human.\nB: A is evil.\nA: B is evil.\n0\n",
+      "output": "Conversation #1\nNo facts are deducible.\n\nConversation #2\nThis is impossible.\n\nConversation #3\nA is human.\nIt is night.\n\nConversation #4\nA is evil.\nB is divine.\n"
+    }
+  ],
+  "hint": "<p>To make things clearer, we will show the reasoning behind the third input example, where A says “I am evil.”. What can be deduced from this? Obviously A cannot be divine, since she would be lying, similarly A cannot be evil, since she would tell the truth. Therefore, A must be human, moreover, since she is lying, it must be night. So the correct output is as shown.</p>\n<p>In the fourth input example, it is obvious that A is lying since her two statements are contradictory. So, B can be neither human nor evil, and consequently must be divine. B always tells the truth, thus A must be evil. Voil`a!</p>",
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 1997",
+  "level": 15,
+  "tags": [
+    "bruteforcing",
+    "case_work",
+    "implementation",
+    "parsing",
+    "string"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 3.9000000953674316
+}

@@ -1,0 +1,28 @@
+{
+  "id": 15859,
+  "title": "Citations",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Grace is going to read a certain scientific book. However, she is very careful about always reading the sources that books refer to, and also the sources of the sources, and so on. It usually ends up being the case that she reads quite a lot more books than just the one she originally intended to read. The librarians are constantly complaining about Grace’s excessive borrowing of books, and so she now wants to find an order in which to read the books that minimizes the total borrow time.</p>\n<p>There are N books that she eventually will need to read. The books are numbered from 1 to N, and book i takes K<sub>i</sub> minutes to read. Every book i has a citation list containing Fi books. The book Grace originally wants to read has index 1. Before starting with book 1 Grace has already borrowed all N books.</p>\n<p>When Grace reads a book she does the following:</p>\n<ul>\n<li>First she opens the book and reads the citation list, which takes a minute,</li>\n<li>then she reads all the books that are in the list, in some order of her own choosing,</li>\n<li>thereafter she reads the actual book and returns it to the library, which takes K<sub>i</sub> minutes.</li>\n</ul>\n<p>You now want to compute the minimum total borrow time for all books, given that Grace reads the books in an optimal order. Books may contain empty citation lists, and every book except book 1 will occur in exactly one citation list. There will be no cycles of citations.</p>",
+  "input": "<p>The first line contains the integer N (1 ≤ N ≤ 100000). Then follows N lines, one for each book 1 to N. On each such row there will be a number K<sub>i</sub> (1 ≤ K<sub>i</sub> ≤ 1000), the number of minutes the book takes to read. Then follows a number F<sub>i</sub> (0 ≤ F<sub>i</sub> &lt; N), followed by F<sub>i</sub> numbers, the indices of the books that book i refers to.</p>",
+  "output": "<p>Output a single positive integer, the minimum total borrow time for all books.</p>",
+  "samples": [
+    {
+      "input": "5\n1 2 2 3\n10 1 4\n20 1 5\n1 0\n1 0\n",
+      "output": "110\n"
+    }
+  ],
+  "hint": "<ul>\n<li>time 1: open book 1</li>\n<li>time 2: open book 2</li>\n<li>time 3: open book 4</li>\n<li>time 4: close book 4 (borrow time 4 minutes)</li>\n<li>time 14: close book 2 (borrow time 14 minutes)</li>\n<li>time 15: open book 3</li>\n<li>time 16: open book 5</li>\n<li>time 17: close book 5 (borrow time 17 minutes)</li>\n<li>time 37: close book 3 (borrow time 37 minutes)</li>\n<li>time 38: close book 1 (borrow time 38 minutes)</li>\n</ul>",
+  "source": ", Olympiad, Baltic Olympiad in Informatics, BOI 2018 연습 세션",
+  "level": 17,
+  "tags": [
+    "dp",
+    "greedy",
+    "sorting",
+    "trees",
+    "dp_tree"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 1.7691999673843384
+}

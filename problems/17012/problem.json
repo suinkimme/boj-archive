@@ -1,0 +1,25 @@
+{
+  "id": 17012,
+  "title": "Rule of Three",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A substitution rule describes how to take a sequence of symbols and convert it into a different sequence of symbols. For example, ABA → BBB, is a substitution rule which means that ABA can be replaced withBBB. Using this rule, the sequence A<strong>ABA</strong>A would be transformed into the sequence ABBBA (the substituted symbols are in bold).</p>\n<p>In this task, you will be given three substitution rules, a starting sequence of symbols and a final sequence of symbols. You are to use the substitution rules to convert the starting sequence into the final sequence, using a specified number of substitutions.</p>\n<p>For example, if the three substitution rules were:</p>\n<ol>\n<li>AA → AB</li>\n<li>AB → BB</li>\n<li>B → AA</li>\n</ol>\n<p>we could convert the sequence AB into AAAB in 4 steps, by the following substitutions:</p>\n<p><strong>AB</strong> → <strong>B</strong>B → AA<strong>B</strong> → AA<strong>AA</strong> → AAAB,</p>\n<p>where the symbols to be replaced are shown in bold. More specifically, from the initial sequence AB, substitute rule 2 starting at position 1, to get the result BB. From BB, substitute rule 3, starting at position 1, to get the result AAB. From AAB, substitute rule 3, starting at position 3, to get the result AAAA. From AAAA, substitute rule 1, starting at position 3, to get the result AAAB, which is the final sequence.</p>",
+  "input": "<p>The first three lines will contain the substitution rules. Each substitution rule will be a sequence of A's and B's, followed by a space following by another sequence of A's and B's. Both sequences will have between one and five symbols.</p>\n<p>The next line contains three space separated values, S, I and F. The value S (1 ≤ S ≤ 15) is an integer specifying the number of steps that must be used, and the values I (the initial sequence) and F (the final sequence) are sequences of A's and B's, where there are at least one and at most 5 symbols in I and at least one and at most 50 symbols in F.</p>\n<p>For 7 of the 15 marks available, S ≤ 6.</p>\n<p>For an additional 7 of the 15 available marks, S ≤ 12.</p>",
+  "output": "<p>The output will be S lines long and describes the substitutions in order.</p>\n<p>Line i of the output will contain three space-separated values, R<sub>i</sub>, P<sub>i</sub>, and W<sub>i</sub>:</p>\n<ul>\n<li>R<sub>i</sub> is the substitution rule number (either 1, 2 or 3) that will be used.</li>\n<li>P<sub>i</sub> is the starting position index of where the substitution rule will be applied in the sequence. Notice that the string is 1-indexed (i.e., the first character of the string is at index 1).</li>\n<li>W<sub>i</sub> is the sequence that results from this substitution. Specifically, W<sub>i</sub> is the sequence of symbols that results by applying substitution rule R<sub>i</sub> starting at position P<sub>i</sub> from the previous sequence of symbols, W<sub>i</sub>−1, where we define W<sub>0</sub> to be the initial sequence I. Note that W<sub>S</sub> = F, the final sequence.</li>\n</ul>\n<p>There will always be at least one sequence of S substitutions that will convert I into F. If there is more than one possible sequence of substitutions, any valid sequence will be accepted.</p>",
+  "samples": [
+    {
+      "input": "AA AB\nAB BB\nB AA\n4 AB AAAB\n",
+      "output": "2 1 BB\n3 1 AAB\n3 3 AAAA\n1 3 AAAB\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Canadian Computing Competition & Olympiad, 2019, CCC 2019 Junior Division",
+  "level": 0,
+  "tags": [
+    "string",
+    "backtracking"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.600000023841858
+}

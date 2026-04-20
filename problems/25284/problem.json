@@ -1,0 +1,38 @@
+{
+  "id": 25284,
+  "title": "Sjön Sjön Cleanup",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>The water in LTH's own lake <em>sjön Sjön</em> has for millennia been a source of intense disgust. Now, in preparation for next years nollning, an attempt will be made to clean up the water in sjön Sjön by pouring a special cleaning solution into the lake.</p>\n<p>The area around sjön Sjön can be modeled as a two dimensional grid where each cell is either water or land. Wind conditions cause the water in each water cell to flow in one of the four cardinal directions: north, south, east or west.</p>\n<p>There may be islands in sjön Sjön, which are made up of land cells that are not connected to the edge of the grid by other land cells. All cells at the edge of the grid are land cells, and a land cell is only directly connected to its four immediate neighbors (not its four diagonal neighbors).</p>\n<p>The cleaning solution will be poured into sjön Sjön from various points along the lake's shoreline. This means that the solution can only be poured into water cells that have at least one <strong>non-island</strong> land cell among its four immediate neighbors.</p>\n<p>Once poured into the lake, the cleaning solution will follow the flow of the water and clean the first $S$ water cells it enters (including the cell which the solution was initially poured into). Following the flow of the water means that solution repeatedly moves into the neighboring cell which the water in the current cell flows towards. If the solution reaches a land cell it stops moving.</p>\n<p>Given the map of sjön Sjön, help the LTH students to minimize the number of shoreline cells that they need to pour cleaning solution into, while still making sure that every water cell in sjön Sjön becomes cleaned.</p>",
+  "input": "<p>The first line contains three integers $N$, $M$, and $S$ ($3 \\leq N, M \\leq 2000$, $1 \\leq S \\leq 10^9$), the number of rows and columns of the map, and the number of water cells the solution travels.</p>\n<p>The following $N$ lines contain a map of Sjön-Sjøn. Each line consists of $M$ characters, each one of which is either \"<code>#</code>\", \"<code>&lt;</code>\", \"<code>&gt;</code>\", \"<code>^</code>\" or \"<code>v</code>\". These represent land, water flowing west, water flowing east, water flowing north and water flowing south respectively. Lines are given from northernmost to southernmost, and characters within a line are given from westernmost to easternmost.</p>",
+  "output": "<p>Output the minimum number of cells that need to have cleaning solution poured into them in order to clean all of sjön Sjön, or \"<code>impossible</code>\" if it's impossible to clean all of sjön Sjön no matter how many cells receive cleaning solution.</p>",
+  "samples": [
+    {
+      "input": "3 11 3\n###########\n#>>>><<#v<#\n###########\n",
+      "output": "3\n"
+    },
+    {
+      "input": "6 6 3\n######\n##v<v#\n#v<#v#\n#v#v<#\n#><<##\n######\n",
+      "output": "5\n"
+    },
+    {
+      "input": "17 14 5\n##############\n###########v^#\n########v<<>^#\n########>v^<##\n#######>^>^^##\n######>^v<<<##\n#####>>vvv<<<#\n####>v>v>v><<#\n####v>^>^<<<##\n###vv><<<<<###\n###v>^#<v<####\n###>v##^><####\n##>v>>>^<#####\n##^>>><<<#####\n#>>>v^<<######\n#^<<>>>>######\n##############\n",
+      "output": "22\n"
+    },
+    {
+      "input": "17 14 1000000000\n##############\n###########v^#\n########v<<>^#\n########>v^<##\n#######>^>^^##\n######>^v<<<##\n#####>>vvv<<<#\n####>v>v>v><<#\n####v>^>^<<<##\n###vv><<<<<###\n###v>^#<v<####\n###>v##^><####\n##>v>>>^<#####\n##^>>><<<#####\n#>>>v^<<######\n#^<<>>>>######\n##############\n",
+      "output": "18\n"
+    },
+    {
+      "input": "5 7 2\n#######\n##>>vv#\n#v#v<v#\n#>>><<#\n#######\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 224px; height: 272px;\"/></p>\n<p style=\"text-align: center;\">Visualization of sample input 3 with one possible selection of 22 cells to pour cleaning solution into shown in purple.</p>",
+  "source": ", Contest, Swedish Coding Cup, LTH Challenge 2022",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

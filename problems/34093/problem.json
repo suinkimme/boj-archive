@@ -1,0 +1,27 @@
+{
+  "id": 34093,
+  "title": "시간선 통합",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p style=\"text-align: center;\">&quot;과거를 지배하는 자가 미래를 지배한다.&quot;</p>\r\n\r\n<p style=\"text-align: center;\">- 조지 오웰, &#39;1984&#39;</p>\r\n\r\n<p>전 우주의 지성체로 구성된 UCPC (Universe Consistency Preservation Committee, 우주 균일성 유지 위원회)는 우주가 $N$개의 시간선으로 분기되어 있음을 발견했다. $i$번째 시간선은 $1$ 이상 $N$ 이하의 정수 시각 $a_i$를 가지며 각 시간선의 시각은 모두 다르다. 아직 각 시간선은 안정된 상태지만 언제든지 불안정해질 수 있으며, 불안정한 시간선은 전 우주에 인간의 인지 능력을 벗어난 악영향을 끼칠 수 있다. 최악의 경우 우주의 절멸까지 우려해야 하는 중대한 사태임에 따라, UCPC는 $N$개의 시간선을 현재 시각 $t$에 맞춰 하나로 통합해야 한다는 결론에 도달했다.</p>\r\n\r\n<p>시간선 통합은 인접한 두 시간선을 시각의 최댓값 또는 최솟값을 가지는 하나의 시간선으로 합치는 과정이다. $1 \\leq i &lt; N$일 때 $i$번째 시간선과 $i+1$번째 시간선은 인접해 있다. 시간선 통합은 우주적 규모의 비가역적 현상이기 때문에 극도로 신중히 결정되어야 하며, 두 시각의 최댓값을 선택하는 통합과 최솟값을 선택하는 통합의 수행 횟수에도 제약이 있다. 주어진 제약사항 속에서도 UCPC가 성공적으로 모든 시간선을 하나로 통합할 수 있을지 판단해보자.</p>\r\n",
+  "input": "<p>첫째 줄에 테스트 케이스의 개수 $T$가 주어진다. ($1 \\leq T \\leq 100\\,000$)</p>\r\n\r\n<p>각 테스트 케이스의 첫째 줄에는 시간선의 개수를 의미하는 정수 $N$, 현재 시각을 의미하는 정수 $t$, 가능한 최솟값 통합의 횟수를 의미하는 정수 $a$, 가능한 최댓값 통합의 횟수를 의미하는 정수 $b$가 공백으로 구분되어 주어진다. ($2 \\leq N \\leq 500\\,000$; $1 \\leq t \\leq N$; $0 \\leq a, b &lt; N$; $a + b \\geq N-1$)</p>\r\n\r\n<p>각 테스트 케이스의 둘째 줄에는 $N$개의 정수 $A_1, A_2, \\cdots, A_N$이 공백으로 구분되어 주어진다. $A_i$는 $i$번째 시간선의 시각을 의미한다. 각 $A_i$는 $1$ 이상 $N$ 이하의 정수이며 서로 다르다.</p>\r\n\r\n<p>모든 테스트 케이스에 대해 $N$의 합은 $500\\,000$ 이하이다.</p>\r\n",
+  "output": "<p>각 테스트 케이스에 대한 답을 순서대로 출력한다.</p>\r\n\r\n<p>조건에 맞는 시간선 통합이 불가능하면, 첫째 줄에 <span style=\"color:#e74c3c;\"><code>no</code></span>를 출력한다.</p>\r\n\r\n<p>가능하다면, 첫째 줄에는 <span style=\"color:#e74c3c;\"><code>yes</code></span>를 출력하고, 둘째 줄에는 <span style=\"color:#e74c3c;\"><code>m</code></span>과 <span style=\"color:#e74c3c;\"><code>M</code></span>으로만 구성된 길이 $N-1$의 문자열 $S$를 출력하며, 셋째 줄에는 $N-1$ 개의 정수 $b_i$를 공백으로 구분해 출력한다.</p>\r\n\r\n<p>$S_i$가 <span style=\"color:#e74c3c;\"><code>m</code></span>이면 $i$번째 통합은 최솟값 통합이며, <span style=\"color:#e74c3c;\"><code>M</code></span>이면 최댓값 통합이다. $b_i$는 $i$번째 통합에 $b_i$번째 시간선과 $b_i + 1$번째 시간선을 통합했음을 의미한다. 조건에 부합하는 시간선 통합 방법이 여러 가지 있으면 그중 아무 것이나 출력한다.</p>\r\n\r\n<p>$i$번째 시간선 통합을 할 때는 시간선이 총 $N-i+1$개 남아 있으므로, $1 \\leq b_i \\leq N-i$를 충족해야 함에 유의한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2\n4 2 2 3\n1 4 2 3\n3 3 2 0\n3 1 2\n",
+      "output": "yes\nmMm\n2 1 1\nno\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2025, evenharder, 79brue, functionx, hyperbolic, kipa00, leo020630, ncy09, queued_q, realpsdoingdamyoo, seonah",
+  "level": 18,
+  "tags": [
+    "implementation",
+    "ad_hoc",
+    "constructive",
+    "case_work"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 2.7894999980926514
+}

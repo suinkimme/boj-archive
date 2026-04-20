@@ -1,0 +1,37 @@
+{
+  "id": 3287,
+  "title": "CALC",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Hal has a symbolic calculator whose memory is organised as a list that can have at most 100 elements. Each element can contain an arithmetic expression. The calculator understands following commands:</p>\n<ul>\n<li>HASH - If the first element of a list contains expression s and the second element contain expression t then this command removes those two elements from list and creates new first element containing expression (t#s).</li>\n<li>DOLLAR - If the first element of a list contains expression s and the second element contain expression t then this command removes those two elements from list and creates new first element containing expression (t$s).</li>\n<li>SWAP - Exchanges the first and the second element of a list.</li>\n<li>DROP - Removes the first element from a list.</li>\n<li>DUP - New first element is created and expression from the second element of list (which was the first before the creation of new element) is copied to it.</li>\n<li>ROT - Rotates the first four elements of list so that the first becomes the second, the second becomes the third, the third becomes the fourth and the fourth becomes the first.</li>\n</ul>\n<p>List with two elements is given. The first element contains A and the second element contains B. </p>\n<p>Write a program which will for given expression e generate a sequence of commands for Hal’s calculator that will, starting with given list and executing all commands of the sequence without any error as a result leave a list whose first and only element contain expression e.</p>\n<p>An error occurs if list gets too long (attempt to add 101st element) or if there are not enough elements needed to perform a command. Commands DUP and DROP require that the first element has an expression; commands HASH, DOLLAR and SWAP require that the first two elements have expressions; command ROT requires that the first four elements of a list have expressions.</p>\n<p>Program should generate any sequence of commands that as result leaves given expression. Number of commands in a sequence should not exceed 10000.</p>",
+  "input": "<p>The first and only line of input file contains a given expression which is a sequence of characters A, B, #, $, (,) and nothing else (not even space characters).</p>\n<p>Length of expression will always be 100 or less.</p>\n<p>There will always be a solution to test data.</p>",
+  "output": "<p>The output file should contain a sequence of commands generating given expression. Each line should contain one command.</p>\n<p>Note: a solution needs not to be unique.</p>",
+  "samples": [
+    {
+      "input": "(B$A)\n",
+      "output": "SWAP\nDOLLAR\n"
+    },
+    {
+      "input": "(A$(A#B))\n",
+      "output": "SWAP\nDUP\nDUP\nROT\nHASH\nDOLLAR\nSWAP\nDROP\n"
+    },
+    {
+      "input": "((A$B)#(B$A))\n",
+      "output": "SWAP\nDUP\nDUP\nROT\nROT\nDROP\nDUP\nDUP\nROT\nROT\nDROP\nSWAP\nROT\nROT\nDOLLAR\nDUP\nROT\nROT\nROT\nDROP\nSWAP\nDOLLAR\nHASH\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2001, National Competition #1 - Seniors",
+  "level": 17,
+  "tags": [
+    "string",
+    "ad_hoc",
+    "trees",
+    "constructive",
+    "parsing",
+    "recursion"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1.25
+}

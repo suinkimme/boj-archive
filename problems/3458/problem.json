@@ -1,0 +1,26 @@
+{
+  "id": 3458,
+  "title": "Hang or not to hang",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Little Tome is learning how to program. He has just written some programs but is afraid to run them, because he does not know if they will ever stop. Please write a program to help him.</p>\n<p>This task is not as easy as it may seem, because Tom's programs may behave nondeterministically.</p>\n<p>Given a program written by Tom, your program should tell hime whether his program can stop and if so, what is the shortest possible time before it stops.</p>\n<p>Tom's computer consists of 32 1-bit registers and the program consists of <em>n</em> instructions. The registers are numbered from 0 to 31 and the instructions are numbered from 0 to <em>n</em>-1.</p>\n<p>Below, <code>MEM[a]</code> stands for the contents of a <code>a</code>-th register, 0 ≤ <code>a</code>, <code>b</code> &lt; 32, 0 ≤ <code>x</code> &lt; n, 0 ≤ <code>c</code> ≤ 1.</p>\n<p>The instruction set is as follows:</p>\n<table class=\"table table-bordered\" style=\"width: 100%;\">\n<thead>\n<tr>\n<th>Instruction</th>\n<th>Semantics</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>AND a b</code></td>\n<td><code>MEM[a] := MEM[a] and MEM[b]</code></td>\n</tr>\n<tr>\n<td><code>OR a b</code></td>\n<td><code>MEM[a] := MEM[a] or MEM[b]</code></td>\n</tr>\n<tr>\n<td><code>XOR a b</code></td>\n<td><code>MEM[a] := MEM[a] xor MEM[b]</code></td>\n</tr>\n<tr>\n<td><code>NOT a</code></td>\n<td><code>MEM[a] := not MEM[a]</code></td>\n</tr>\n<tr>\n<td><code>MOV a b</code></td>\n<td><code>MEM[a] := MEM[b]</code></td>\n</tr>\n<tr>\n<td><code>SET a c</code></td>\n<td><code>MEM[a] := c</code></td>\n</tr>\n<tr>\n<td><code>RANDOM a</code></td>\n<td><code>MEM[a] := </code>random value (0 or 1)</td>\n</tr>\n<tr>\n<td><code>JMP x</code></td>\n<td>jump to the instruction with the number <code>x</code></td>\n</tr>\n<tr>\n<td><code>JZ x a</code></td>\n<td>jump to the instruction with the number <code>x</code> if <code>MEM[a] = 0</code></td>\n</tr>\n<tr>\n<td><code>STOP</code></td>\n<td>stop the program</td>\n</tr>\n</tbody>\n</table>\n<p>The last instruction of every program is always <code>STOP</code> (although there can be more than one <code>STOP</code> instruction in a program). Every program starts with the instruction number0. Before the start, the contents of the registers can be arbitrary values. Each instruction (includeing <code>STOP</code>) takes 1 processor cycle to execute.</p>\n<p>Write a program that:</p>\n<ul>\n<li>reads the program,</li>\n<li>computes the shortest possible running itme of the program,</li>\n<li>writes the result.</li>\n</ul>",
+  "input": "<p>The first line of the input contains an integer <em>n</em> (1 ≤ <em>n</em> ≤ 16) being the number of instructions of the program. Each of the next <em>n</em> lines contains one instruction of the program in the format given above. You may assume that the only white characters in the program are single spaces between successive tokens of each instruction.</p>",
+  "output": "<p>The first and only line of the output should contain the shortest possible running time of the program, measured in processor cycles. If the program cannot stop, output should contain the word HANGS.</p>",
+  "samples": [
+    {
+      "input": "5\nSET 0 1\nJZ 4 0\nRANDOM 0\nJMP 1\nSTOP\n",
+      "output": "6\n"
+    },
+    {
+      "input": "5\nMOV 3 5\nNOT 3\nAND 3 5\nJZ 0 3\nSTOP\n",
+      "output": "HANGS\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2003",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

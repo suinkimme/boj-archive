@@ -1,0 +1,22 @@
+{
+  "id": 14331,
+  "title": "Imbalance Obviation",
+  "time_limit": "20 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You have a special balance scale, with two pans (left and right) that are both initially empty. You also have a box of identical 1-gram marbles. There are <b>N</b> of these marbles, and the marbles are numbered from 1 to <b>N</b>.</p>\n<p>Your scale is very sensitive, and you know that if the total weight on the left pan and the total weight on the right pan ever differ by strictly more than 1 gram, the scale will break. For example, if at some point there are 4 marbles in one of the pans, there must be either 3, 4, or 5 marbles in the other pan.</p>\n<p>Your friend Libra has challenged you to do the following, without breaking the scale at any point:</p>\n<ul>\n<li>First, put all of the marbles on the scale one at a time, in numerical order: marble 1, then marble 2, and so on up to marble <b>N</b>. For each marble, you choose whether to place it on the left pan or on the right pan.</li>\n<li>Then, remove all of the marbles from the scale one at a time, in an order <b>A<sub>1</sub></b>, <b>A<sub>2</sub></b>, ..., <b>A<sub>N</sub></b> specified by your friend. This order is a permutation of 1, 2, ..., <b>N</b>. The i-th marble you remove must be the marble numbered <b>A<sub>i</sub></b>.</li>\n</ul>\n<p>Can you find a way to do this?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case begins with one line with an integer <b>N</b>: the number of marbles. Then, there is one more line with <b>N</b> integers <b>A<sub>1</sub></b>, <b>A<sub>2</sub></b>, ..., <b>A<sub>N</sub></b>, which constitute a permutation of the first <b>N</b> natural numbers. The marble numbered <b>A<sub>i</sub></b> must be the i-th marble that you remove in the removal phase.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is a string of <b>N</b> characters. The i-th of these characters (counting starting from 1) should be uppercase <code>L</code> if the i-th numbered marble should be put on the left pan, or uppercase <code>R</code> if it should be put on the right pan.</p>\n<p>It is guaranteed that at least one answer exists. If there are multiple valid answers, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "2\n4\n3 1 2 4\n4\n1 2 3 4\n",
+      "output": "Case #1: LRRL\nCase #2: LRLR\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, we will put marble 1 on the left pan, then put marble 2 on the right pan, then put marble 3 on the right pan, then put marble 4 on the left pan. Notice that the total weights on the left and right pans — (1, 0), (1, 1), (1, 2), and (2, 2) — never differ by more than 1 throughout this process.</p>\n<p>Then, we must remove the marbles in the order 3, 1, 2, 4. Again, the total weights on the left and right pans — (2, 1), (1, 1), (1, 0), (0, 0) — never differ by more than 1 at any point. We have succeeded!</p>\n<p>Also notice that <code>RLLR</code> would be a valid answer for this case, per the same reasoning above (but with the two pans swapped).</p>\n<p>Notice that the following are examples of invalid answers for this case:</p>\n<ul>\n<li><code>LLRR</code>: breaks the scale when placing marble 2</li>\n<li><code>LRLR</code>: breaks the scale when removing marble 1 (which is the second marble to be removed)</li>\n</ul>\n<p>Although there are no samples with odd <b>N</b> (since that is only possible in Test Set 3), here are some examples:</p>\n<ul>\n<li><code>1</code>: Either <code>L</code> or <code>R</code> would be acceptable.</li>\n<li><code>2 3 1</code>: <code>LRR</code> and <code>RLL</code> are the only acceptable answers. <code>LLL</code>, <code>LLR</code>, <code>RRL</code>, and <code>RRR</code> would break the scale during the placement phase. <code>LRL</code> and <code>RLR</code> would break the scale during the removal phase.</li>\n</ul>",
+  "source": "Contest, Google, Code Jam to I/O for Women, Code Jam to I/O for Women 2020, Code Jam to I/O for Women 2020",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

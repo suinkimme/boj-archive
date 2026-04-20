@@ -1,0 +1,28 @@
+{
+  "id": 9677,
+  "title": "LED에 전원 같은 걸 끼얹기",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>여러분은 ACM ICPC의 클로징을 담당하는 사람입니다. 여러분은 감성적인 완벽주의자 디자이너를 고용해 강당에 화려한 장식을 하려고 합니다.</p>\r\n\r\n<p>몇 시간 뒤, 세레모니가 시작하기 몇 시간 전에 디자이너는 장식을 완료했다고 알립니다. 강당에 도착했을 때, 당신이 본 것은 신기하게 생긴 회로입니다. 디자이너는 삶의 의미와 회로 군데 군데에 숨어 있는 ACM ICPC에 대해 설명하기 시작합니다. 디자이너는 이 회로가 잘 작동한다고 자부하고 있습니다. 당신은 &quot;이 장식이 작동하지 않는다면 이 세레모니 완전히 잡칠 겁니다.&quot;라고 말하며 전원을 찾아봅니다.</p>\r\n\r\n<p><span style=\"font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,Tahoma,sans-serif\">당신 : 전원은 어디 있나요?</span></p>\r\n\r\n<p><span style=\"font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,Tahoma,sans-serif\">디자이너 : 네? 이건 제가 담당하는 부분이 아닙니다! 전원을 공급해야 하는 사람은 당신입니다. 그리고 절대 회로를 건드리지 마세요! 접점에 전원만 연결하면 됩니다. 제 매니저에게 제 완벽한 작업을 보고해야겠군요. 그럼 이만.</span></p>\r\n\r\n<p><img alt=\"LED의 구조 : Anode(어노드)와 Cathode(캐소드)\" src=\"1.png\" style=\"font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,Tahoma,sans-serif; height:90px; width:200px\" title=\"LED의 구조 : Anode(어노드)와 Cathode(캐소드)\" /></p>\r\n\r\n<p>LED의 구조 : Anode(어노드)와 Cathode(캐소드)</p>\r\n\r\n<p>여러분은 덩그라니 남겨진 회로를 조사합니다.</p>\r\n\r\n<p>극성과 무관하게 빛을 발하는 일반적인 전구와는 달리, LED는 올바른 극성에 연결되어야(즉, 어노드(Anode) 핀이 캐소드(Cathode) 핀보다 더 높은 전압을 가져야) 빛을 발합니다. 또한, LED는 최소 전압을 가지고 있기 때문에, 올바른 방향으로 전원이 연결되더라도 공급되는 전압이 최소 전압보다 낮다면 LED는 켜지지 않습니다. 그리고 LED는 최대 전압을 가지고 있어, 공급되는 전압이 최대 전압보다 높다면 LED소자가 타버리게 됩니다.</p>\r\n\r\n<p><span style=\"font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,Tahoma,sans-serif\">여러분이 회로를 확인해본 결과, 이 회로는 세 가지의 구성품으로 이루어져 있다는 사실을 알았습니다.</span></p>\r\n\r\n<ul>\r\n\t<li>LED : 다행히도, 회로의 모든 LED는 같은 종류이기 때문에, 최소 전압과 최대 전압 또한 동일하다.</li>\r\n\t<li>접점 : 회로에 연결된 LED의 두 핀은 접점에 연결되어 있다. 접점은 LED의 다리만이 아닌 전선의 끝점을 연결할 수도 있다.</li>\r\n\t<li>전선 : 모든 전선은 두 개의 끝점을 가지고 있으며, 전압을 유도하기 위해 다른 접점에 연결되어 있다.</li>\r\n</ul>\r\n\r\n<p>외부의 극성(다른 전압을 가진)을 연결함으로서 여러분은 회로에 전압을 공급할 수 있습니다. 주의할 점은 합선인데, 각 전선의 양 끝점은 <strong>반드시</strong> 같은 전위차에 연결되어야 합니다. 일반적으로 전자기학에서는 최소 전위차를 0으로 볼 수 있으며, 모든 전압은 음수가 아니라 판단할 수 있습니다.</p>\r\n\r\n<p><span style=\"font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,Tahoma,sans-serif\">이제, 여러분은 회로에 맞는 적절한 전원 공급기를 사야 합니다. 전원 공급기의 가격은 (전원 공급기가 최대한 공급할 수 있는 전압인) 최대 전압에 비례합니다.</span></p>\r\n\r\n<p><span style=\"font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,Tahoma,sans-serif\">LED회로의 특성이 주어질 때, 여러분은 (합선이나 LED를 태워먹는 일 없이) 모든 LED를 켤 수 있는지 확인하는 프로그램을 짜야 합니다. 또한, LED를 켤 수 있을 때, 여러분의 프로그램은 모든 LED를 켤 수 있는 최대전력의 최솟값을 제출할 수 있어야 합니다.</span></p>\r\n",
+  "input": "<p>입력은 여러 개의 테스트 케이스로 구성된다. 각각의 테스트 케이스는 5개의 변수가 공백을 사이에 두고 주어지며, J, L, W, m, M으로 나타낸다. J는 접점의 개수&nbsp;(2 &le; J &le; 500), L은 LED의 개수 (1 &le; L &le; 5000), W는 전선의 개수 (0 &le; W &nbsp;&le; 5000),&nbsp;m과 M은 각각 LED의 최소전압과 최대전압을 나타낸다&nbsp;(1 &le; m &lt; M &nbsp;&le; 1000). 모든 접점에는 1부터 J까지의 번호를 붙인다.</p>\r\n\r\n<p>다음 L개의 줄에는 두 개의 정수가 공백으로 분리되어 입력된다. 첫 번째 정수는 LED의 어노드 핀이 연결된 접점의 번호이며 두 번째 정수는 캐소드 핀이 연결된 접점의 번호이다.</p>\r\n\r\n<p>그 뒤에는 W개의 줄이 입력되는데, 각각의 줄에는 전선이 연결된 두 개의 접점이 두 개의 정수로 입력된다.</p>\r\n\r\n<p>&quot;0 0 0 0 0&quot;(큰따옴표는 생략)이 입력되면 프로그램을 종료한다.</p>\r\n",
+  "output": "<p>각각의 테스트 케이스에 대해 한 줄의 출력을 제출한다.</p>\r\n\r\n<p>만약 해당하는 테스트 케이스에 대해 모든 LED를 켤 수 있는 방법이 없다면,&nbsp;&ldquo;Impossible&rdquo;(큰따옴표는 생략)을 제출한다. 그렇지 않다면 하나의 정수를 출력한다: 모든 LED가 켜질 수 있는 최대전압의 최솟값을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "2 1 0 3 5\n1 2\n3 2 0 3 5\n1 2\n3 2\n3 2 0 3 5\n3 2\n1 3\n3 1 1 3 5\n1 2\n2 3\n3 1 2 3 5\n1 2\n2 3\n3 1\n3 3 0 3 5\n1 2\n2 3\n1 3\n3 3 0 3 6\n1 2\n2 3\n1 3\n4 2 2 2 7\n1 2\n3 4\n3 1\n2 4\n4 2 2 2 7\n1 2\n3 4\n3 2\n1 4\n0 0 0 0 0\n",
+      "output": "3\n3\n6\n3\nImpossible\nImpossible\n6\n2\nImpossible\n"
+    }
+  ],
+  "hint": "<p>번역 : 문제의 이해를 돕기 위해 [전위차] == [전압]으로 번역했습니다.</p>\r\n",
+  "source": "ICPC, Regionals, Asia West Continent, Iran, Tehran Site 2013, guardian_demon",
+  "level": 19,
+  "tags": [
+    "bellman_ford",
+    "data_structures",
+    "disjoint_set",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 3.25
+}

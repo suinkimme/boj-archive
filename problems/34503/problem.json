@@ -1,0 +1,22 @@
+{
+  "id": 34503,
+  "title": "Sequence Evaluation",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Let $K$, $P$, and $X$ be integers, where $P$ is prime and $0 \\le K \\le \\min(P-1, 8)$.</p>\n<p>Define a sequence $a$ of rational numbers as follows:</p>\n<ul>\n<li>$a_1 = 1$.</li>\n<li>For all $n \\ge 2$, $a_n = X \\sum_{i=1}^{n-1} \\frac{a_i}{n-i}$.</li>\n</ul>\n<p>Output $a_{P-K}$ modulo $P$ (<strong>note the unusual modulo</strong>). Formally, let $a_{P-K} = \\frac{x}{y}$ in lowest terms, and output an integer $0 \\le b &lt; P$ such that $by \\equiv x \\pmod{P}$. We can show that such a $b$ exists and is unique under the constraints of this problem.</p>\n<p>We recommend that C++ users use the following code, from <a href=\"https://github.com/kth-competitive-programming/kactl/blob/d5de3f6b6e985c6a170109ab6128a93fa0fcc324/content/various/FastMod.h\">KACTL</a>, to perform modulo operations faster. Note that creating <code>FastMod</code> instances is a relatively slow operation, so avoid repeatedly doing so for the same modulo.</p>\n<pre>\ntypedef unsigned long long ull;\nstruct FastMod {\n    ull b, m;\n    FastMod(ull b) : b(b), m(-1ULL / b) {}\n    ull reduce(ull a) {\n        ull q = (ull)((__uint128_t(m) * a) &gt;&gt; 64), r = a - q * b;\n        return r - (r &gt;= b) * b;\n    }\n};\n</pre>",
+  "input": "<p>Each test contains multiple test cases. The first line of input contains a single integer $T$ $(1 \\leq T \\leq 200)$, the number of test cases. The description of each test case follows.</p>\n<p>Each test case consists of one line of input with three integers $K$, $P$, and $X$ ($\\mathbf{0 \\le K \\le \\min(P-1, 8)}$, $3 \\le P &lt; 2 \\cdot 10^7$, $1 \\le X \\le 10^9$, $P$ is prime).</p>\n<p>It is guaranteed that the sum of $P$ over all test cases does not exceed $2 \\cdot 10^7$.</p>",
+  "output": "<p>For each test case, output a line with a single integer: $a_{P-K}$ modulo $P$.</p>",
+  "samples": [
+    {
+      "input": "2\n2 5 3\n8 199999 123456789\n",
+      "output": "3\n42180\n"
+    }
+  ],
+  "hint": "<p>In the first test case, we have $K = 2$, $P = 5$, $X = 3$, and we want to find $a_{P-K} = a_3$.</p>\n<p>We may evaluate the initial elements of $a$ as follows:</p>\n<ul>\n<li>$a_1 = 1$.</li>\n<li>$a_2 = Xa_1 = 3$.</li>\n<li>$a_3 = X(a_1/2 + a_2) = 3(7/2) = 21/2$.</li>\n</ul>\n<p>Since $2 \\cdot 3 \\equiv 21 \\pmod{5}$, the answer is $3 \\pmod 5$.</p>",
+  "source": "University, MIT, M(IT)^2, M(IT)^2 Spring 2025 Invitational, Qualification Round 2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

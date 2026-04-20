@@ -1,0 +1,32 @@
+{
+  "id": 23931,
+  "title": "Contention",
+  "time_limit": "15 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are selling tickets for the front row of seats at a movie theater. The front row has <b>N</b> seats, numbered 1 to <b>N</b> from left to right. You have been out of the office the last week, and upon your return, <b>Q</b> <i>bookings</i> for seats have piled up! The i-th booking requests all the seats from <b>L<sub>i</sub></b> to <b>R<sub>i</sub></b> inclusive. You now have the boring job of entering each booking into the system, one at a time.</p>\n<p>Since some of the bookings may overlap, the system might not be able to fulfill each booking entirely. When you enter a booking into the system, it will assign every seat requested by the booking that hasn't already been assigned to a booking entered into the system earlier.</p>\n<p>What is the largest integer k where there exists an order that you can enter the bookings into the system, such that each booking is assigned at least k seats?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each test case starts with a line containing two integers <b>N</b> and <b>Q</b>, the number of seats and the number of bookings, respectively. Then, there are <b>Q</b> more lines, the i-th of which contains the two integers <b>L<sub>i</sub></b> and <b>R<sub>i</sub></b>, indicating that the i-th booking would like to book all the seats from <b>L<sub>i</sub></b> to <b>R<sub>i</sub></b>, inclusive.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the largest value k, as described above.</p>",
+  "samples": [
+    {
+      "input": "3\n5 3\n1 2\n3 4\n2 5\n30 3\n10 11\n10 10\n11 11\n10 4\n1 8\n4 5\n3 6\n2 7\n",
+      "output": "Case #1: 1\nCase #2: 0\nCase #3: 2\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, there are <b>N</b> = 5 seats and <b>Q</b> = 3 bookings. One possible order is:</p>\n<ul>\n<li>Put in the second booking, where the system will book 2 seats (3 and 4).</li>\n<li>Put in the first booking, where the system will book 2 seats (1 and 2).</li>\n<li>Put in the third booking, where the system will book 1 seat (only seat 5, since seats 1, 2, 3 and 4 are already booked).</li>\n</ul>\n<p>Each booking is assigned at least 1 seat, and there is no order that assigns at least 2 seats to each booking, so the answer is 1.</p>\n<p>In Sample Case #2, there are <b>N</b> = 30 seats and <b>Q</b> = 3 bookings. No matter what order you assign the seats in, at least one booking will have no seats assigned to it. So the answer is 0. Notice that there can be seats that are not part of any bookings!</p>\n<p>In Sample Case #3, there are <b>N</b> = 10 seats and <b>Q</b> = 4 bookings. One possible order is:</p>\n<ul>\n<li>Put in the second booking, where the system will book 2 seats (4 and 5).</li>\n<li>Put in the third booking, where the system will book 2 seats (3 and 6, since 4 and 5 are already booked). Notice that the seats booked are not necessarily adjacent to each other.</li>\n<li>Put in the fourth booking, where the system will book 2 seats (2 and 7).</li>\n<li>Put in the first booking, where the system will book 2 seats (1 and 8).</li>\n</ul>\n<p>Each booking is assigned at least 2 seats, and there is no order that assigns at least 3 seats to each booking, so the answer is 2.</p>\n<p><b>Note</b>: We do not recommend using interpreted/slower languages for the Large dataset of this problem.</p>",
+  "source": "Contest, Google, Kick Start, Google Kick Start 2019, Round A",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "segtree",
+    "binary_search",
+    "set",
+    "tree_set",
+    "stack",
+    "lazyprop",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 5.400000095367432
+}

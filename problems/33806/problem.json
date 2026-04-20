@@ -1,0 +1,28 @@
+{
+  "id": 33806,
+  "title": "Sheriruth",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>이 문제는 <strong>인터랙티브 문제</strong>이다.</p>\r\n\r\n<p>주어진 양의 정수 $n\\le 15$과, $1\\le m\\le 2n$에 대해서, <strong>RUN game</strong>이라는 것은 &quot;방어자&quot;가 &quot;공격자&quot;의 공격을 방어하는 컨셉으로 이루어지는 2인용 경쟁 게임이다. 그 진행방식은 다음과 같이 기술된다:</p>\r\n\r\n<ol>\r\n\t<li><strong>방어자</strong>는 모든 $1\\le t\\le 2^n-1$에 대해서, $t$의 길이 $n$의 이진전개를 $A_t$이라고 할 때, $A_t$에서 $0$인 값들을 적절히 $2$로 바꾸어 어떤 $0$부터 $2$ 사이의 값을 가지는 길이 $n$의 수열 $B_t$를 만든다.</li>\r\n\t<li><strong>공격자</strong>는 세 정수 $1\\le x,y,z\\le 2^n-1$를 선택한다. 이 세 정수는 $x+y+z=2^n-1$을 만족해야 하며, $x,y,z$중 어느 두 정수를 뽑더라도 이 둘의 <strong>bitwise AND</strong>는 $0$이어야 한다. 즉, $x,y,z$는 $2^n-1$의 비트를 적절히 나누어가진 세 정수여야 한다. 만약 이렇게 선택한 $x,y,z$에 대해서, 다음의 <strong>조건</strong>이 성립하지 않는다면 공격자는 이 세 정수의 이진전개를 선언하고 승리한다. 그렇지 않다면 방어자가 승리한다.</li>\r\n</ol>\r\n\r\n<p><strong>조건</strong>: 임의의 $1\\le i\\le n$에 대해서, $B_x,B_y,B_z$중 적어도 하나는 $i$번째 원소가 $2$이다. 또한, $B_x,B_y,B_z$에 속한 $2$의 개수의 총합이 $m$ 이하여야 한다.</p>\r\n\r\n<p>히카리와 타이리츠는 RUN game을 플레이하려고 한다. 이들의 게임은 다음과 같이 진행될 것이다.</p>\r\n\r\n<p>일단, 맨 처음 $n,m$이 주어지고 나면 타이리츠는 공격자를 할지 방어자를 할지 결정한다.</p>\r\n\r\n<p>타이리츠가 방어자를 하기로 결정했다면, 일반적인 RUN game의 룰대로 타이리츠는 히카리에게 $2^n-1$개의 수열을 제공하고, 히카리는 그중 조건을 만족하지 않는 $x,y,z$를 찾는다.</p>\r\n\r\n<p>그러나, 타이리츠가 공격자를 하기로 결정했다면, 타이리츠는 $1$ 이상 $2^n-1$ 이하인 $x$에 대해 히카리에게 다음과 같은 질문을 최대 $20$개 할 수 있다:</p>\r\n\r\n<ul>\r\n\t<li><code>?</code> $A_x$: 히카리가 생각한 $B_x$를 반환받는다.</li>\r\n</ul>\r\n\r\n<p>최대 $20$번의 질문 이내에 만약 타이리츠가 조건을 만족하지 않는 $x,y,z$를 찾았다면, 타이리츠는 그 이진전개를 선언하고 승리할 수 있다. 만약 $20$번 이내에 이를 찾지 못했다면, 히카리가 승리한다.</p>\r\n\r\n<p>타이리츠의 전략을 수행하는 프로그램을 작성하여라.</p>\r\n",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "3 6\n",
+      "output": "\n\n0\n221\n212\n211\n122\n121\n112\n111\n"
+    },
+    {
+      "input": "3 2\n\n021\n\n212\n\n100\n",
+      "output": "\n\n1\n? 001\n\n? 010\n\n? 100\n\n! 010 001 100\n"
+    }
+  ],
+  "hint": "<p>어떤 정수 $0\\le t&lt;2^n$에 대해서, $t$의 길이 $n$의 이진전개라는 것은 길이 $n$의 이진수열 $a_na_{n-1}...a_1$인데, 이때 $a_i$는 $\\left\\lfloor \\frac{t}{2^{i-1}} \\right\\rfloor$가 홀수라면 $1$이고, 그렇지 않다면 $0$이다. 간단히 말해서, $a_i$는 $t$의 $i$번째 비트이다.</p>\r\n\r\n<p>출력 버퍼를 비우는 방법은 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>C: <span style=\"color:#e74c3c;\"><code>fflush(stdout)</code></span></li>\r\n\t<li>C++: <span style=\"color:#e74c3c;\"><code>std::cout &lt;&lt; std::flush</code></span></li>\r\n\t<li>Java: <span style=\"color:#e74c3c;\"><code>System.out.flush()</code></span></li>\r\n\t<li>Python: <span style=\"color:#e74c3c;\"><code>sys.stdout.flush()</code></span></li>\r\n</ul>\r\n\r\n<p>이외의 언어에 대해서는 언어별 명세를 참고해야 한다.</p>\r\n",
+  "source": "University, KAIST, KAIST RUN Spring Contest, 2025 KAIST RUN Spring Contest, ibm2006, ainta, gs22123, koosaga, moonrabbit2, silverwolf, urd05",
+  "level": 22,
+  "tags": [
+    "constructive"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 2.5
+}

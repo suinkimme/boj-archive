@@ -1,0 +1,26 @@
+{
+  "id": 14795,
+  "title": "Fashion Show (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are about to host a fashion show to show off three new styles of clothing. The show will be held on a stage which is in the most fashionable of all shapes: an <strong>N</strong>-by-<strong>N</strong> grid of cells.</p>\n<p>Each cell in the grid can be empty (which we represent with a <code>.</code> character) or can contain one fashion model. The models come in three types, depending on the clothing style they are wearing: <code>+</code>, <code>x</code>, and the super-trendy <code>o</code>. A cell with a <code>+</code> or <code>x</code> model in it adds 1 <em>style point</em> to the show. A cell with an <code>o</code> model in it adds 2 style points. Empty cells add no style points.</p>\n<p>To achieve the maximum artistic effect, there are rules on how models can be placed relative to each other.</p>\n<ul>\n<li>Whenever any two models share a row or column, at least one of the two must be a <code>+</code>.</li>\n<li>Whenever any two models share a diagonal of the grid, at least one of the two must be an <code>x</code>.</li>\n</ul>\n<p>Formally, a model located in row i<sub>0</sub> and column j<sub>0</sub> and a model located in row i<sub>1</sub> and column j<sub>1</sub> share a row if and only if i<sub>0</sub> = i<sub>1</sub>, they share a column if and only if j<sub>0</sub> = j<sub>1</sub>, and they share a diagonal if and only if i<sub>0</sub> + j<sub>0</sub> = i<sub>1</sub> + j<sub>1</sub> or i<sub>0</sub> - j<sub>0</sub> = i<sub>1</sub> - j<sub>1</sub>.</p>\n<p>For example, the following grid is not legal:</p>\n<pre>\n<code>...\nx+o\n.+.</code></pre>\n<p>The middle row has a pair of models (<code>x</code> and <code>o</code>) that does not include a <code>+</code>. The diagonal starting at the <code>+</code> in the bottom row and running up to the <code>o</code> in the middle row has two models, and neither of them is an <code>x</code>.</p>\n<p>However, the following grid is legal. No row, column, or diagonal violates the rules.</p>\n<pre>\n<code>+.x\n+x+\no..</code></pre>\n<p>Your artistic advisor has already placed <strong>M</strong> models in certain cells, following these rules. You are free to place any number (including zero) of additional models of whichever types you like. You may not remove existing models, but you may upgrade as many existing <code>+</code>and <code>x</code> models into <code>o</code> models as you wish, as long as the above rules are not violated.</p>\n<p>Your task is to find a legal way of placing and/or upgrading models that earns the maximum possible number of style points.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow. Each test case begins with one line with two integers <strong>N</strong> and <strong>M</strong>, as described above. Then, <strong>M</strong> more lines follow; the i-th of these lines has a <code>+</code>, <code>x</code>, or <code>o</code> character (the type of the model) and two integers <strong>R<sub>i</sub></strong> and <strong>C<sub>i</sub></strong> (the position of the model). The rows of the grid are numbered 1 through <strong>N</strong>, from top to bottom. The columns of the grid are numbered 1 through <strong>N</strong>, from left to right.</p>",
+  "output": "<p>For each test case, first output one line containing <code>Case #x: y z</code>, where <code>x</code> is the test case number (starting from 1), <code>y</code> is the number of style points earned in your arrangement, and <code>z</code> is the total number of models you have added and/or substituted in. Then, for each model that you have added or substituted in, output exactly one line in exactly the same format described in the Input section, where the character is the type of the model that you have added or substituted in. These <code>z</code> lines can be in any order.</p>\n<p>If there are multiple valid answers, you may output any one of them.</p>",
+  "samples": [
+    {
+      "input": "3\n2 0\n1 1\no 1 1\n3 4\n+ 2 3\n+ 2 1\nx 3 1\n+ 2 2\n",
+      "output": "Case #1: 4 3\no 2 2\n+ 2 1\nx 1 1\nCase #2: 2 0\nCase #3: 6 2\no 2 3\nx 1 2\n"
+    }
+  ],
+  "hint": "<p>The sample output displays one set of answers to the sample cases. Other answers may be possible. Note that the last sample case would not appear in the Small dataset.</p>\n<p>In sample case #1, the grid is 2-by-2 and is initially blank. The output corresponds to the following grid. (In these explanations, we will use <code>.</code> to denote a blank cell.)</p>\n<pre>\n<code>x.\n+o</code></pre>\n<p>In sample case #2, the only cell is already occupied by an <code>o</code> model, and it is impossible to add a new model or replace the <code>o</code> model.</p>\n<p>In sample case #3, the grid looks like this before you place any models:</p>\n<pre>\n<code>...\n+++\nx..</code></pre>\n<p>The output corresponds to this grid:</p>\n<pre>\n<code>.x.\n++o\nx..</code></pre>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2017, Qualification Round",
+  "level": 15,
+  "tags": [
+    "greedy",
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 2.200000047683716
+}

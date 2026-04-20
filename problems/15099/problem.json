@@ -1,0 +1,31 @@
+{
+  "id": 15099,
+  "title": "Honey Heist",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>0x67 is a scout ant searching for food and discovers a beehive nearby. As it approaches the honeycomb, 0x67 can sense an area inside packed with dried honey that can be easily carried back to the nest and stored for winter. However, it must burrow through the honeycomb to reach the cell containing the sweet loot. If 0x67 can create a passage to the honey to help the other ants find it, it will do so before returning to the nest.</p>\n<p>The cells of the honeycomb are numbered in row major order, so cell IDs can be assigned as shown below:</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:164px; width:162px\"/></p>\n<p>When 0x67 discovers the opening to the honeycomb, it enters the cell. Some ants are stronger than others, depending on their age, so 0x67 can only chew through at most N cells before its jaw wears out and must return to the nest to recuperate. The honeycomb is hexagonal, and each edge length is R cells. 0x67 enters through a hole at location A and must get to the honey at location B by chewing a path through no more than N adjacent cells. Because ants can be competitive, 0x67 wants to reach the honey by chewing through the fewest possible cells. 0x67 can also sense some of the cells are hardened with wax and impossible to penetrate, so it will have to chew around those to reach the cell at location B.</p>\n<p>Scout ants have rudimentary computational skills, and before 0x67 begins to chew, it will work out where it needs to go, and compute K, the least number of cells it needs to chew through to get from A to B, where B is the Kth cell. If K &gt; N, 0x67 will not be strong enough to make the tunnel. When 0x67 returns to the nest, it will communicate to its nestmates how many cells it chewed through to get to B, or will report that it could not get to the honey.</p>",
+  "input": "<p>The input contains two lines. The first line contains five blank separated integers: R N A B X</p>\n<ul>\n<li>R: the length (number of cells) of each edge of the grid, where 2 ≤ R ≤ 20. The total number of cells in the grid can be determined by taking a difference of cubes, R<sup>3</sup> − (R − 1)<sup>3</sup>.</li>\n<li>N: the maximum number of cells 0x67 can chew through, where 1 ≤ N &lt; R<sup>3</sup> − (R − 1)<sup>3</sup>.</li>\n<li>A: the starting cell ID, This cell is located on one of the grid edges: The cell has fewer than six neighbors.</li>\n<li>B: the cell ID of the cell containing the honey, where 1 ≤ B ≤ R<sup>3</sup> − (R − 1)<sup>3</sup>.</li>\n<li>X: the number of wax-hardened cells, where 0 ≤ X &lt; (R<sup>3</sup> − (R − 1)<sup>3</sup> ) − 1.</li>\n</ul>\n<p>The second line contains X integers separated by spaces, where each integer is the ID of a wax-hardened cell.</p>\n<p>The ID’s, A, B, and all the ID’s on the second line, are distinct positive integers less than or equal to R<sup>3</sup> − (R − 1)<sup>3</sup>.</p>",
+  "output": "<p>A single integer K if 0x67 reached the honey at cell B, where B is the Kth cell, otherwise the string No if it was impossible to reach the honey by chewing through N cells or less.</p>",
+  "samples": [
+    {
+      "input": "6 6 1 45 11\n15 16 17 19 26 27 52 53 58 65 74\n",
+      "output": "6\n"
+    },
+    {
+      "input": "6 3 1 45 11\n15 16 17 19 26 27 52 53 58 65 74\n",
+      "output": "No\n"
+    }
+  ],
+  "hint": "<p style=\"text-align:center\"><img alt=\"\" src=\"2.png\" style=\"height:242px; width:252px\"/></p>\n<p style=\"text-align:center\">Figure E.1: K=6</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"3.png\" style=\"height:249px; width:256px\"/></p>\n<p style=\"text-align:center\">Figure E.2: No</p>",
+  "source": ", ICPC, Regionals, North America, Mid-Central Regional, 2017 Mid-Central Regional Programming Contest, ICPC, Regionals, North America, South Central USA Regional, 2017 South Central USA Regional Programming Contest",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "bfs"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 1.75
+}

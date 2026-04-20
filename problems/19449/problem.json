@@ -1,0 +1,30 @@
+{
+  "id": 19449,
+  "title": "Experience is Worth It",
+  "time_limit": "5 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Pasha is playing the video game \"DiaBro III\". He is fighting against $n \\cdot m$ monsters in this game. The monsters are arranged into $n$ rows of $m$ columns each. Rows are numbered with sequential integers from $1$ to $n$ and columns --- with sequential integers from $1$ to $m$.</p>\n<p>Each monster has one of $k$ types. The $i$-th monster type is described by two integers $q_{i}$ and $g_{i}$: Pasha can kill a monster of $i$-th type only if amount of his experience is at least $q_{i}$, and after killing each monster of this type --- Pasha will gain $g_{i}$ units of experience.</p>\n<p>Pasha wants to choose a rectangle by fixing four integers $r_{1}$, $r_{2}$, $c_{1}$ and $c_{2}$ such that $1 \\leq r_{1} \\leq r_{2} \\leq n$ and $1 \\leq c_{1} \\leq c_{2} \\leq m$. Then Pasha starts to kill monsters in the chosen rectangle --- at cells $(r, c)$ such that $r_{1} \\leq r \\leq r_{2}$ and $c_{1} \\leq c \\leq c_{2}$. Initially, he has no experience at all. The rectangle is <em>good</em> if it is possible to kill all monsters inside the rectangle in some order without killing any monster which is not in the rectangle.</p>\n<p>You are to write a program that will find the number of different <em>good</em> rectangles.</p>",
+  "input": "<p>The first line of input contains two integers $n$ and $m$ ($1 \\leq n, m \\leq 200$) --- the number of rows and columns of monsters respectively.</p>\n<p>Each of the following $n$ lines contains exactly $m$ lowercase Latin letters. The $j$-th character of $i$-th line denotes the type of monster with row number $i$ and column number $j$. Monsters of the same type are denoted with the same lowercase Latin letter. </p>\n<p>The next line contain the only integer $k$ ($1 \\leq k \\leq 26$) --- the number of monster types.</p>\n<p>Each of the following $k$ lines contains the description of some monster type. The description of $i$-th monster type consists of character $l_{i}$ --- the lowercase Latin letter corresponding to this monster type --- and two integers $q_{i}$ and $g_{i}$ ($0 \\leq q_{i} \\leq 10^{9}, 1 \\leq g_{i} \\leq 10^{9}$) --- the amount of experience required to kill a monster of this type and the amount of experience obtained after killing each monster of this type respectively. The values of $l_{i}$, $q_{i}$ and $g_{i}$ are separated by single spaces.</p>\n<p>It is guaranteed that there is no monster of type that is not described in the input.</p>",
+  "output": "<p>The only line of output should contain one integer --- the number of ways to choose values $r_{1}$, $r_{2}$, $c_{1}$ and $c_{2}$ to satisfy all the conditions given above.</p>",
+  "samples": [
+    {
+      "input": "2 3\naba\nbaa\n2\na 0 2\nb 4 100\n",
+      "output": "11\n"
+    },
+    {
+      "input": "4 6\naaaaaa\nabbaaa\naaacba\naaabba\n3\na 0 1\nb 3 2\nc 12 5\n",
+      "output": "128\n"
+    }
+  ],
+  "hint": "<p>There are $11$ possible values of $r_{1}$, $r_{2}$, $c_{1}$ and $c_{2}$ in the first sample:</p>\n<ol>\n<li>$r_{1} = 1,~~~r_{2} = 1,~~~c_{1} = 1,~~~c_{2} = 1$;</li>\n<li>$r_{1} = 1,~~~r_{2} = 1,~~~c_{1} = 1,~~~c_{2} = 3$;</li>\n<li>$r_{1} = 1,~~~r_{2} = 1,~~~c_{1} = 3,~~~c_{2} = 3$;</li>\n<li>$r_{1} = 1,~~~r_{2} = 2,~~~c_{1} = 1,~~~c_{2} = 2$;</li>\n<li>$r_{1} = 1,~~~r_{2} = 2,~~~c_{1} = 1,~~~c_{2} = 3$;</li>\n<li>$r_{1} = 1,~~~r_{2} = 2,~~~c_{1} = 2,~~~c_{2} = 3$;</li>\n<li>$r_{1} = 1,~~~r_{2} = 2,~~~c_{1} = 3,~~~c_{2} = 3$;</li>\n<li>$r_{1} = 2,~~~r_{2} = 2,~~~c_{1} = 1,~~~c_{2} = 3$;</li>\n<li>$r_{1} = 2,~~~r_{2} = 2,~~~c_{1} = 2,~~~c_{2} = 2$;</li>\n<li>$r_{1} = 2,~~~r_{2} = 2,~~~c_{1} = 2,~~~c_{2} = 3$;</li>\n<li>$r_{1} = 2,~~~r_{2} = 2,~~~c_{1} = 3,~~~c_{2} = 3$.</li>\n</ol>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2016, Day 2: Pavel Khaustov Contest 2",
+  "level": 21,
+  "tags": [
+    "dp",
+    "prefix_sum",
+    "two_pointer"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

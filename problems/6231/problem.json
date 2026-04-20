@@ -1,0 +1,28 @@
+{
+  "id": 6231,
+  "title": "Gold Balanced Lineup",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Farmer John's N cows (1 &lt;= N &lt;= 100,000) share many similarities. In fact, FJ has been able to narrow down the list of features shared by his cows to a list of only K different features (1 &lt;= K &lt;= 30). For example, cows exhibiting feature #1 might have spots, cows exhibiting feature #2 might prefer C to Pascal, and so on.</p>\n<p>FJ has even devised a concise way to describe each cow in terms of its \"feature ID\", a single K-bit integer whose binary representation tells us the set of features exhibited by the cow. As an example, suppose a cow has feature ID = 13. Since 13 written in binary is 1101, this means our cow exhibits features 1, 3, and 4 (reading right to left), but not feature 2. More generally, we find a 1 in the 2^(i-1) place if a cow exhibits feature i.</p>\n<p>Always the sensitive fellow, FJ lined up cows 1..N in a long row and noticed that certain ranges of cows are somewhat \"balanced\" in terms of the features the exhibit. A contiguous range of cows i..j is balanced if each of the K possible features is exhibited by the same number of cows in the range. FJ is curious as to the size of the largest balanced range of cows. See if you can determine it.</p>",
+  "input": "<ul>\n<li>Line 1: Two space-separated integers, N and K.</li>\n<li>Lines 2..N+1: Line i+1 contains a single K-bit integer specifying the features present in cow i.  The least-significant bit of this integer is 1 if the cow exhibits feature #1, and the most-significant bit is 1 if the cow exhibits feature #K.</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: A single integer giving the size of the largest contiguous balanced group of cows.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "7 3\n7\n6\n7\n2\n1\n4\n2\n",
+      "output": "4\n"
+    }
+  ],
+  "hint": "<p>The line has 7 cows with 3 features; the table below summarizes the correspondence:</p>\n<pre>\n             Feature 3:   1   1   1   0   0   1   0\n             Feature 2:   1   1   1   1   0   0   1\n             Feature 1:   1   0   1   0   1   0   0\n             Key:         7   6   7   2   1   4   2\n             Cow #:       1   2   3   4   5   6   7</pre>\n<p>In the range from cow #3 to cow #6 (of size 4), each feature appears in exactly 2 cows in this range:</p>\n<pre>\n             Feature 3:     1   0   0   1  -&gt; two total\n             Feature 2:     1   1   0   0  -&gt; two total\n             Feature 1:     1   0   1   0  -&gt; two total\n             Key:           7   2   1   4\n             Cow #:         3   4   5   6</pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2006-2007 Season, USACO March 2007 Contest, Gold",
+  "level": 16,
+  "tags": [
+    "data_structures",
+    "set",
+    "prefix_sum",
+    "hash_set",
+    "tree_set"
+  ],
+  "accepted_user_count": 73,
+  "submission_count": null,
+  "average_tries": 2.3150999546051025
+}

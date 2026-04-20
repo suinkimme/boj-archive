@@ -1,0 +1,29 @@
+{
+  "id": 10921,
+  "title": "팀들",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>0번 부터 N-1번까지 번호가 매겨진 학생 N명이 있다. 선생님은 학생들을 위해 날마다 하나 이상의 프로젝트들을 준비한다. 각 프로젝트는 정해진 날에 학생들끼리 모인 팀에 의해 해결되어야한다. 물론 프로젝트들은 서로 다른 난이도를 가질 수 있다. 선생님은 각 프로젝트 별로 난이도에 따라 맡을 팀의 크기를 정해놓았다.</p>\r\n\r\n<p>학생들마다 서로 들어갈 수 있는 팀의 크기가 다를 수 있다. 자세히 말하자면 i번 학생은 자신이 속하는 팀의 크기가 A[i]이상 B[i]이하가 되어야 한다. 각 날 별로 한 학생은 최대 하나의 팀에만 속할 수 있으며, 어떤 팀에도 속하지 않은 학생이 나올 수도 있다. 그리고 구성된 하나의 팀은 하나의 프로젝트만 맡는다.</p>\r\n\r\n<p>선생님은 이미 다음 Q일 동안의 프로젝트들을 계획해놓았다. 선생님의 계획이 성사되도록 학생들이 팀을 구성할 수 있을지 판단하는 프로그램을 작성하시오.</p>\r\n\r\n<p>N = 4명의 학생이 있고, Q = 2일 동안의 계획이 잡혀있다. 그리고 학생들이 속하는 팀 크기의 제한은 아래 표와 같다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:30%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>학생</th>\r\n\t\t\t<th>0</th>\r\n\t\t\t<th>1</th>\r\n\t\t\t<th>2</th>\r\n\t\t\t<th>3</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th>A</th>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>2</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th>B</th>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>4</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>첫째 날에는 M = 2개의 프로젝트가 계획 되어있다. 그리고 프로젝트를 해결하기 위해 정해놓은 팀의 크기는 K[0] = 1, K[1] = 3이다. 이 계획은 0번 학생이 팀의 크기가 1인 프로젝트에 참여 하고, 나머지 학생들이 팀의 크기가 3인 프로젝트에 참여하면 성사될 수 있다.</p>\r\n\r\n<p>둘째 날에도 M = 2개의 프로젝트가 계획되어 있으며, 프로젝트를 해결하기 위해 정해놓은 팀의 크기는 K[0] = 1, K[1] = 1이다. 크기가 1인 팀에 들어갈 수 있는 학생이 한 명 밖에 없으므로이 경우에는 계획이 성사될 수 없다.</p>\r\n\r\n<p>모든 학생에 대한 정보가 주어진다: N, A, B와 총 Q개의 날에 해당하는 정보가 주어지는데, 하루 에 하나씩이다. 각 정보는 그날 주어진 프로젝트의 수 M과 길이 M인 수열 K로 이루어지는데, K는 각 프로젝트에 필요한 팀의 크기를 저장하고 있다. 각각의 날마다, 여러분의 프로그램은 모든 팀을 구성할 수 있는지 여부를 리턴해야 한다.</p>\r\n\r\n<p>다음 함수 init 와 can을 구현해야 한다:</p>\r\n\r\n<ul>\r\n\t<li>init(N, A, B) &mdash; 그레이더는 맨 처음 이 함수를 정확히 한 번만 호출한다.\r\n\t<ul>\r\n\t\t<li>N: 학생의 수.</li>\r\n\t\t<li>A: 길이가 N인 배열: A[i]는 학생 i가 들어갈 수 있는 최소의 팀 크기이다.</li>\r\n\t\t<li>B: 길이가 N인 배열: B[i]는 학생 i가 들어갈 수 있는 최대의 팀 크기이다.</li>\r\n\t\t<li>이 함수는 리턴 값이 없다.</li>\r\n\t\t<li>각 i = 0, ..., N-1 인 경우에 대하여 1 &le; A[i] &le; B[i] &le; N이 만족된다.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>can(M, K) &mdash; init을 일단 호출한 뒤, 그레이더는 이 함수를 차례로 Q번 연속으로 호출하는데, 각 날짜에 대해서 한번씩 호출한다.\r\n\t<ul>\r\n\t\t<li>M: 이날 잡혀 있는 프로젝트의 수.</li>\r\n\t\t<li>K: 길이 M인 배열로, 각각의 프로젝트에 정해진 팀 크기.</li>\r\n\t\t<li>이 함수의 리턴값은 만약 모든 팀을 구성할 수 있다면 1이고, 그렇지 못하면 0이다.</li>\r\n\t\t<li>1 &le; M &le; N 을 만족하며, 각각 i = 0, ..., M-1에 대하여 1 &le; K[i] &le; N 이다. 모든 K[i] 값들의 총합은 N을 넘을 수 있다.</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n",
+  "input": "<ul>\r\n\t<li>1번 줄: N</li>\r\n\t<li>2번 ~ N+1번 줄: A[i] B[i]</li>\r\n\t<li>N+2번 줄: Q</li>\r\n\t<li>N+3 ~ N+Q+2번 줄: M K[0] K[1] &hellip; K[M - 1]</li>\r\n</ul>\r\n",
+  "output": "<p>각 날짜에 대해서 can의 리턴값을 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "4\n2 4\n1 2\n2 3\n2 3\n2\n2 1 3\n2 1 1\n",
+      "output": "1\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, International Olympiad in Informatics, IOI 2015, Day 1, chan4928, onjo0127, yclock",
+  "level": 24,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "segtree",
+    "binary_search",
+    "stack",
+    "pst"
+  ],
+  "accepted_user_count": 32,
+  "submission_count": null,
+  "average_tries": 4.5625
+}

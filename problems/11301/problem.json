@@ -1,0 +1,22 @@
+{
+  "id": 11301,
+  "title": "Markleft",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>There are many markup notations – systems for annotating text with formatting instructions. Markleft is yet another such system. Your task is to implement it.</p>\n<p>Markleft takes text input in which punctuation characters are used as follows:</p>\n<ul>\n<li>Text between <code>^</code> characters should be converted to upper case<br/>\n\teg: <code>One^tWo^threE</code> will be converted to <code>OneTWOthreE</code></li>\n<li>Text between <code>\\</code> characters should have all double quotes prefixed with <code>\\</code> characters<br/>\n\teg: <code>Piglet \\said \"Hello\"\\</code> becomes <code>Piglet said \\\"Hello\\\"</code></li>\n<li>Text between <code>#</code> characters will have all embedded numbers (there will never be more than 6 digits in a number) converted to hexadecimal<br/>\n\teg: <code>#Text with 31 12 and 64#</code> becomes <code>Text with 1F C and 40</code></li>\n<li>Text between <code>&lt;</code> characters should be reversed<br/>\n\teg: <code>This &lt;be reversed&lt;odd</code> becomes <code>This desrever ebodd</code></li>\n<li>Text between <code>@</code> characters should be copied verbatim – ie: markup is ignored. Note that this means that there is no way of getting <code>@</code> characters into the output.<br/>\n\teg: <code>This is @\\&lt;&lt;#@ verbatim</code> becomes <code>This is \\&lt;&lt;# verbatim</code></li>\n</ul>\n<p>Markleft sections may be nested, but if so must be nested properly (like matching brackets).</p>\n<p><code>^aa&lt;bcd&lt;ee^</code> becomes <code>AADCBEE</code></p>\n<p>The following is illegal because the nesting is improper.</p>\n<p><code>One #reverse me ^uppercase me # and more^</code></p>\n<p>Markleft sections are closed by the first validly nested markleft character. There is no nesting in this example</p>\n<p><code>abc^def^ghi^jkl^mno</code> becomes <code>abcDEFghiJKLmno</code></p>\n<p>But nested marklefts of the same kind are possible sometimes. Usually they have little effect, but:</p>\n<p><code>ab&lt;cd^ef&lt;gh&lt;ij^kl&lt;mn</code> becomes <code>ablkJIGHFEdcmn</code></p>\n<p>The markleft application processes innermost nested sections first</p>\n<p><code>&lt;#31#&lt;</code> becomes <code>F1</code></p>",
+  "input": "<p>Input consists of a number of lines of “marked left” text to be formatted. Lines of input are no longer than 100 characters. Each line should be formatted independently. You may assume that lines have valid markup. The end of input is signalled by a line with just a <code>#</code> character.</p>",
+  "output": "<p>Lines of formatted text.</p>",
+  "samples": [
+    {
+      "input": "One^tWo^threE\nPiglet \\said \"Hello\"\\\n#Text with 31 12 and 64#\nThis <be reversed<odd\nThis is @\\<<#@ verbatim\n^aa<bcd<ee^\nabc^def^ghi^jkl^mno\nab<cd^ef<gh<ij^kl<mn\n<#31#<\n#\n",
+      "output": "OneTWOthreE\nPiglet said \\\"Hello\\\"\nText with 1F C and 40\nThis desrever ebodd\nThis is \\<<# verbatim\nAADCBEE\nabcDEFghiJKLmno\nablkJIGHFEdcmn\nF1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, South Pacific, South Pacific Region, New Zealand Programming Contest, NZPC 2015",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

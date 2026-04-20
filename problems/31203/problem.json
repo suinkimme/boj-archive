@@ -1,0 +1,30 @@
+{
+  "id": 31203,
+  "title": "Square Grid Puzzle",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>In this puzzle, you are given a $0$-indexed $N \\times N$ square grid consisting of distinct integers from $0$ to $N \\times N - 1$, inclusive. Your goal is to reach the ordered state where the number at the intersection of the $i$-th row and the $j$-th column is equal to $i \\times N + j$ for each $0 ≤ i, j &lt; N$. You can achieve this goal using two types of moves:</p>\n<ul>\n<li><strong>D</strong>own move: \"<strong>D</strong> $a[0]$ $a[1]$ $\\dots$ $a[N - 1]$\", where $a[0]$, $a[1]$, $\\dots$, $a[N - 1]$ is some rearrangement of the numbers from the topmost row of the grid. With this move, the topmost row is removed and the new row created with the numbers $a[0]$, $a[1]$, $\\dots$, $a[N - 1]$ from left to right is added to the bottom of the grid.</li>\n<li><strong>R</strong>ight move: \"<strong>R</strong> $b[0]$ $b[1]$ $\\dots$ $b[N - 1]$\", where $b[0]$, $b[1]$, $\\dots$, $b[N - 1]$ is some rearrangement of the numbers from the leftmost column of the grid. With this move, the leftmost column is removed and the new column created with the numbers $b[0]$, $b[1]$, $\\dots$, $b[N - 1]$ from top to bottom is added to the right of the grid.</li>\n</ul>\n<p>Rearrangement refers to changing the order of the numbers without adding or removing any of them, and it may preserve the original order.</p>\n<p>For example, if the current grid is:</p>\n<table class=\"table table-bordered table-center-20\">\n<tbody>\n<tr>\n<th>Row/Column</th>\n<th>$0$</th>\n<th>$1$</th>\n<th>$2$</th>\n</tr>\n<tr>\n<td>$0$</td>\n<td>$2$</td>\n<td>$4$</td>\n<td>$6$</td>\n</tr>\n<tr>\n<td>$1$</td>\n<td>$8$</td>\n<td>$1$</td>\n<td>$5$</td>\n</tr>\n<tr>\n<td>$2$</td>\n<td>$7$</td>\n<td>$3$</td>\n<td>$0$</td>\n</tr>\n</tbody>\n</table>\n<p>By performing the move \"<strong>D</strong> $6$ $2$ $4$\", we will obtain the following grid:</p>\n<table class=\"table table-bordered table-center-20\">\n<tbody>\n<tr>\n<th>Row/Column</th>\n<th>$0$</th>\n<th>$1$</th>\n<th>$2$</th>\n</tr>\n<tr>\n<td>$0$</td>\n<td>$8$</td>\n<td>$1$</td>\n<td>$5$</td>\n</tr>\n<tr>\n<td>$1$</td>\n<td>$7$</td>\n<td>$3$</td>\n<td>$0$</td>\n</tr>\n<tr>\n<td>$2$</td>\n<td><strong>$6$</strong></td>\n<td><strong>$2$</strong></td>\n<td><strong>$4$</strong></td>\n</tr>\n</tbody>\n</table>\n<p>However, if we instead execute move \"<strong>R</strong> $2$ $8$ $7$\", we would get:</p>\n<table class=\"table table-bordered table-center-20\">\n<tbody>\n<tr>\n<th>Row/Column</th>\n<th>$0$</th>\n<th>$1$</th>\n<th>$2$</th>\n</tr>\n<tr>\n<td>$0$</td>\n<td>$4$</td>\n<td>$6$</td>\n<td><strong>$2$</strong></td>\n</tr>\n<tr>\n<td>$1$</td>\n<td>$1$</td>\n<td>$5$</td>\n<td><strong>$8$</strong></td>\n</tr>\n<tr>\n<td>$2$</td>\n<td>$3$</td>\n<td>$0$</td>\n<td><strong>$7$</strong></td>\n</tr>\n</tbody>\n</table>\n<p>For $N = 3$, the target grid would look like this:</p>\n<table class=\"table table-bordered table-center-20\">\n<tbody>\n<tr>\n<th>Row/Column</th>\n<th>$0$</th>\n<th>$1$</th>\n<th>$2$</th>\n</tr>\n<tr>\n<td>$0$</td>\n<td>$0$</td>\n<td>$1$</td>\n<td>$2$</td>\n</tr>\n<tr>\n<td>$1$</td>\n<td>$3$</td>\n<td>$4$</td>\n<td>$5$</td>\n</tr>\n<tr>\n<td>$2$</td>\n<td>$6$</td>\n<td>$7$</td>\n<td>$8$</td>\n</tr>\n</tbody>\n</table>\n<p>You aim to solve the puzzle with fewer than $3 \\times N$ moves. However, partial points may be awarded in case you use more moves or not solve the puzzle. Refer to the scoring section for details.</p>",
+  "input": "<p>The first line contains a single integer: $N$.</p>\n<p>The following $N$ lines describe the initial grid, with $N$ numbers on each line.</p>",
+  "output": "<p>The first line should contain a single integer, $M$, the number of moves. Each of the following $M$ lines should contain a single move.</p>",
+  "samples": [
+    {
+      "input": "3\n1 4 2\n3 7 5\n6 8 0\n",
+      "output": "4\nR 3 6 1\nD 2 3 4\nD 5 6 7\nR 2 5 8\n"
+    },
+    {
+      "input": "2\n2 1\n0 3\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, European Junior Olympiad in Informatics, eJOI 2023",
+  "level": 21,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "backtracking"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 2.4000000953674316
+}

@@ -1,0 +1,27 @@
+{
+  "id": 22729,
+  "title": "X-Ray Screening System",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>これは 20XX 年の話である．再生発電網による安定したエネルギー供給，および液化合成燃料の発明によって航空旅客数は鰻登りに増加した．しかし，航空機によるテロリズムの脅威は依然として存在するため，高速でかつ高い信頼性をもつ自動手荷物検査システムの重要性が高まっている．検査官が全部の荷物を調べることは実際問題として困難であることから，自動検査において疑わしいと判断された手荷物だけを検査官で改めて調べるという仕組みを整えたいわけである．</p>\n<p>航空機業界からの要請を受け，国際客室保護会社（International Cabin Protection Company）では，新たな自動検査システムを開発するため，最近の旅客の手荷物について調査した．調査の結果，最近の旅客の手荷物には次のような傾向があることが判明した．</p>\n<ul>\n<li>手荷物は 1 辺だけが短い直方体のような形状をしている．</li>\n<li>一般の乗客が手荷物に詰めて航空機に持ち込む品物としてはノートパソコン，音楽プレイヤー，携帯ゲーム機，トランプなどがあり，これらはいずれも長方形である．</li>\n<li>個々の品物は，その長方形の辺が手荷物の辺と平行になるように詰めこまれる．</li>\n<li>一方，テロリズムに用いられるような武器は，長方形とは非常に異なる形状をもつ．</li>\n</ul>\n<p>上記の調査結果をふまえて，以下のような手荷物検査のためのモデルを考案した．それぞれの手荷物は X 線に対して透明である直方体の容器だとみなす．その中には X 線に対して不透明である複数の品物が入っている．ここで，直方体の 3 辺を x 軸，y 軸，z 軸とする座標系を考え，x 軸と平行な方向に X 線を照射して，y-z 平面に投影された画像を撮影する．撮影された画像は適当な大きさの格子に分割され，画像解析によって，それぞれの格子領域に映っている品物の材質が推定される．この会社には非常に高度の解析技術があり，材質の詳細な違いすらも解析することが可能であることから，品物の材質は互いに異なると考えることができる．なお，複数の品物が x 軸方向に関して重なっているときは，それぞれの格子領域について最も手前にある，すなわち x 座標が最小である品物の材質が得られる．また，2 つ以上の品物の x 座標が等しいことはないと仮定する．</p>\n<p>あなたの仕事は，画像解析の結果が与えられたときに，長方形ではない（武器であるかもしれない）品物が入っていることが断言できるか，あるいはその手荷物には長方形の品物以外のものは入っていないと推測されるかを判定するプログラムを作成することである．</p>",
+  "input": "<p>入力の先頭行には単一の正の整数が含まれ，これはデータセットの個数を表す．それぞれのデータセットは次の形式で与えられる．</p>\n<pre>\n<i>H</i> <i>W</i>\n解析結果その1\n解析結果その2\n...\n解析結果その<i>H</i>\n</pre>\n<p><i>H</i> は画像の縦の大きさ，<i>W</i> は横の大きさを表す整数である (1 ≤ <i>h</i> , <i>w</i> ≤ 50)．解析結果の各行は <i>W</i> 文字で構成されており，<i>i</i> 番目の文字は，行の左から <i>i</i> 番目にある格子領域における解析結果を表す．物質が検出された格子領域については，その材質が英大文字（A〜Z）によって表される．このとき，同じ材質であれば同じ文字が，また異なる材質であれば異なる文字が用いられる．物質が検出されなかった格子領域についてはドット（.）で表される．</p>\n<p>すべてのデータセットについて，材質の種類は 7 種類を超えないことが保証されている．</p>",
+  "output": "<p>それぞれのデータセットに対して，長方形以外の品物が確実に入っているときは「SUSPICIOUS」を，そうでないときは「SAFE」をそれぞれ 1 行に出力しなさい．</p>",
+  "samples": [
+    {
+      "input": "6\n1 1\n.\n3 3\n...\n.W.\n...\n10 10\n..........\n.DDDDCCC..\n.DDDDCCC..\n.DDDDCCC..\nADDDDCCC..\nAAA..CCC..\nAAABBBBC..\nAAABBBB...\n..BBBBB...\n..........\n10 10\n..........\n.DDDDDD...\n.DDDDCCC..\n.DDDDCCC..\nADDDDCCC..\nAAA..CCC..\nAAABBBBC..\nAAABBBB...\n..BBBBB...\n..........\n10 10\nR..E..C.T.\nR.EEE.C.T.\n.EEEEE....\nEEEEEEE...\n.EEEEEEE..\n..EEEEEEE.\n...EEEEEEE\n....EEEEE.\n.....EEE..\n......E...\n16 50\n..................................................\n.........AAAAAAAAAAAAAAAA.........................\n....PPP...AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.....\n....PPP...AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.....\n....PPP...AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA....\n....PPP..............AAAAA.AAAAAAAAAAAAAAAA.......\n....PPP................A....AAA.AAAAAAAAAA........\n....PPP...........IIIIIAAIIAIII.AAAAAAAAAA........\n..CCCCCCCCCCCCC...IIIIIIAAAAAAAAAAAAAAAAAA........\n..CCCCCCCCCCCCC...IIIIIIIIIIIII...AAAAAAAAAA......\n....PPP............................AAAAAAAAAA.....\nMMMMPPPMMMMMMMMMMMMMMM.............AAAAAAAAAAA....\nMMMMPPPMMMMMMMMMMMMMMM..............AAAAAAAAAAA...\nMMMMMMMMMMMMMMMMMMMMMM...............AAAAAAAAAA...\nMMMMMMMMMMMMMMMMMMMMMM...............AAAAAAAAAA...\nMMMMMMMMMMMMMMMMMMMMMM............................\n",
+      "output": "SAFE\nSAFE\nSAFE\nSUSPICIOUS\nSUSPICIOUS\nSUSPICIOUS\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2006",
+  "level": 15,
+  "tags": [
+    "graphs",
+    "implementation",
+    "topological_sorting",
+    "dag"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2.5
+}

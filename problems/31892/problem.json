@@ -1,0 +1,46 @@
+{
+  "id": 31892,
+  "title": "Zoo Management",
+  "time_limit": "5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>When managing a zoo, you sometimes want to move the animals between enclosures. You might figure out that the zebras will enjoy the spacier enclosure currently occupied by the penguins, while the penguins might want to move to the colder enclosure where the koalas currently live; and koalas will move to an empty enclosure that can be filled up with eucalyptus. So, you would move the koalas first, to free up the colder enclosure, then move the penguins there, and finally move the zebras.</p>\n<p>The way you move animals is by using special tunnels that connect the enclosures — you do not want the animals to move outside, both because of the risk that they will be scared, and because of the risk that they might run away and hurt themselves.</p>\n<p>Unfortunately, you have acquired more animals recently, and all the enclosures are now full, which makes moving animals around much harder. Imagine, for instance, that the koalas were to move to the former zebra enclosure — you cannot move any set of animals first. Instead, what you learned to do, is to move the animals at the same time — the zebras, koalas and penguins start moving down different tunnels at the same time, and arrive at their new enclosures at the same time — and thus they never meet. Note that you cannot just swap the animals in two connected enclosures this way (because they would meet in the tunnel and become scared).</p>\n<p>So, now you have a puzzle. You have a list of enclosures, each with an animal type inside; some of those enclosures are connected by tunnels. You can, any number of times, choose some set of animals and move each one to an enclosure adjacent by tunnel, as long as the animal in that enclosure is also moved as the part of the same move, and no tunnel is used more than once as a part of the same move. You also have your vision of the perfect way to position the animals. Is it possible to do so, in a series of moves?</p>",
+  "input": "<p>The first line of the input consists of two integers $n$ ($1 ≤ n ≤ 4 \\cdot 10^5$) and $m$ ($0 ≤ m ≤ 4 \\cdot 10^5$), indicating the number of enclosures and tunnels. Then follow $n$ lines, the $i$th of which contains two integers $b_i$ ($1 ≤ b_i ≤ 10^6$) and $e_i$ ($1 ≤ e ≤ 10^6$), indicating the type of animal that is in enclosure $i$ at the beginning, and the type of animal that you want to be in enclosure $i$ after all the moves. You may assume that $e_1, \\dots , e_n$ is a permutation of $b_1, \\dots , b_n$.</p>\n<p>Then follow $m$ lines describing the tunnels. Each line contains two integers $x$ and $y$ ($1 ≤ x &lt; y ≤ n$), indicating that enclosures $x$ and $y$ are connected by a two-way tunnel. No two enclosures are connected by more than one tunnel.</p>",
+  "output": "<p>If it is possible to move the animals so that every enclosure contains the desired animal type, output <code>possible</code>. Otherwise, output <code>impossible</code>.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 4\n4 7\n7 1\n1 2\n2 3\n1 3\n",
+      "output": "possible\n"
+    },
+    {
+      "input": "2 1\n1 2\n2 1\n1 2\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "5 6\n10 40\n20 30\n30 50\n40 20\n50 10\n1 2\n2 3\n1 3\n3 4\n3 5\n4 5\n",
+      "output": "possible\n"
+    },
+    {
+      "input": "4 4\n10 10\n10 20\n20 10\n20 20\n1 2\n2 3\n3 4\n1 4\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2022",
+  "level": 24,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "string",
+    "segtree",
+    "case_work",
+    "kmp",
+    "articulation",
+    "bcc",
+    "cactus",
+    "invariant",
+    "z"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 4.071400165557861
+}

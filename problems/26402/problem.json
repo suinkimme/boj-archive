@@ -1,0 +1,46 @@
+{
+  "id": 26402,
+  "title": "Aho-Parasick",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><em>We didn't come up with 5/10 or better joke, but some word mangling should suffice.</em></p>\n<p>The Aho-Corasick algorithm takes a set of strings, which we will denote <strong>the dictionary</strong> as the input. Then it constructs the following structure:</p>\n<p>There is a vertex corresponding to every prefix of one or more strings from the dictionary. There is also a vertex corresponding to the empty string. Two trees are formed from this set of vertices.</p>\n<p>The first one is called the <strong>trie</strong> and it consists of all edges between nodes corresponding to strings $s$ and $t$, such that $t$ can be obtained from $s$ by appending a single character.</p>\n<p>The second one is called the <strong>suffix links</strong> and it consists of all edges between nodes corresponding to different strings $s$ and $t$, such that $s$ is a suffix of $t$ and there is no string $w$ different from $s$ and $t$ with a corresponding trie node, such that $s$ is a suffix of $w$ and $w$ is a suffix of $t$.</p>\n<p>It can be shown that both the trie and the suffix links are trees. In this problem all edges are undirected.</p>\n<p>In this problem trees are treated as sets of edges, and edges are treated as unordered pairs of vertices.</p>\n<p>You are given two trees $A$ and $B$ on the same set of vertices $S$. Construct a dictionary, such that</p>\n<ol>\n<li>Applying the Aho-Corasick algorithm to this dictionary yields trees isomorphic to the given ones. In other words, let $V$ denote the set of nodes (vertices) of the constructed trie and suffix links, $T$ --- the constructed trie and $L$ --- the suffix links. There must exists a bijection $f:S \\to V$, such that $\\forall_{c1, c2 \\in S} \\{c1,c2\\} \\in A \\iff \\{f(c1), f(c2)\\} \\in T, \\{c1, c2\\} \\in B \\iff \\{f(c1), f(c2)\\} \\in L$.</li>\n<li>Total length of all strings in the dictionary doesn't exceed $3 \\cdot 10^5$.</li>\n</ol>\n<p>The alphabet size is limited by the total length of all strings. The answer is guaranteed to exist.</p>\n<p>Note that there are pairs of trees such that it is possible to construct a dictionary which will satisfy the first requirement, but it is not possible to satisfy both. Such test cases are not present in this problem, however, because the answer is guaranteed to exist. In other words, the second requirement is meaningful.</p>",
+  "input": "<p>The first line contains a single integer $n$ ($2 \\leq n \\leq 10^5$), the number of vertices.</p>\n<p>Next $n - 1$ lines describe the trie. $i$-th of them contains two integers $a$ and $b$, meaning that there is an edge between vertices $a$ and $b$ ($1 \\leq a, b \\leq n$).</p>\n<p>Next $n - 1$ lines describe the suffix links in the same format.</p>\n<p>It is guaranteed that both the trie and the suffix links are trees and an answer exists.</p>",
+  "output": "<p>The first line should contain a single integer $k$ ($1 \\leq k \\leq 3 \\cdot 10^5$) --- the number of the strings.</p>\n<p>Next $k$ lines should contain the strings. Each should start with a single integer $l$ ($1 \\leq l \\leq 3 \\cdot 10^5$), length of the string. $l$ integers $a_i$ ($1 \\leq a_i \\leq 3 \\cdot 10^5$) representing the letters of the string should follow. Same $a_i$ correspond to same letters and vice versa.</p>\n<p>The total length of all strings should not exceed $3 \\cdot 10^5$.</p>",
+  "samples": [
+    {
+      "input": "2\n1 2\n2 1\n",
+      "output": "1\n1 228\n"
+    },
+    {
+      "input": "3\n1 2\n2 3\n3 2\n2 1\n",
+      "output": "2\n1 1\n1 2\n"
+    },
+    {
+      "input": "3\n1 2\n2 3\n2 1\n3 2\n",
+      "output": "1\n2 1 1\n"
+    },
+    {
+      "input": "3\n1 2\n2 3\n3 1\n3 2\n",
+      "output": "2\n2 1 2\n1 1\n"
+    },
+    {
+      "input": "4\n1 2\n2 3\n4 1\n1 4\n4 3\n2 1\n",
+      "output": "2\n2 1 2\n1 2\n"
+    },
+    {
+      "input": "5\n1 2\n2 3\n3 4\n4 5\n1 2\n4 1\n3 2\n2 5\n",
+      "output": "2\n1 2\n3 1 2 3\n"
+    },
+    {
+      "input": "7\n1 2\n2 3\n3 4\n1 5\n5 6\n1 7\n1 2\n3 5\n4 6\n6 7\n1 5\n1 7\n",
+      "output": "3\n1 1\n2 2 1\n3 3 2 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Moscow Pre-Finals ACM ICPC Workshop, Moscow Pre-Finals ACM ICPC Workshop 2018",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

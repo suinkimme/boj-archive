@@ -1,0 +1,26 @@
+{
+  "id": 5951,
+  "title": "The Continental Cowngress",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Displeased with Farmer John's leadership, the cows have seceded from the farm and have formed the first Continental Cowngress. Built on the principle of \"every cow gets something they want,\" they've decided on the following voting system:</p>\n<p>The M (1 &lt;= M &lt;= 4000) cows in attendance will vote on  N (1 &lt;= N &lt;= 1,000) legislative bills. Each cow casts a \"yes\" or \"no\" vote (denoted as 'Y' or 'N' in the input file) on exactly two (distinct) bills B_i and C_i (1 &lt;= B_i &lt;= N; 1 &lt;= C_i &lt;= N). The votes are called VB_i (VB_i in {'Y', 'N'}) and VC_i (VC_i in {'Y', 'N'}) respectively.</p>\n<p>Finally, the bills are to be passed or not in such a way that every cow gets her way on at least one of her votes. For example, if Bessie votes \"yes\" on Bill 1, and \"no\" on Bill 2, then in any valid solution, it must be the case that either Bill 1 gets passed or Bill 2 gets rejected (or both).</p>\n<p>Given the votes of each of the cows, it's your job to figure out which bills will be passed and which bills will be rejected in order to conform to the rules above.  If there is no solution, print \"IMPOSSIBLE\". If there is at least one solution, then for each bill, display:</p>\n<pre>\n    Y  if in every solution this bill passes\n    N  if in every solution this bill fails\n    ?  if there are solutions where this bill passes and solutions where it does not pass</pre>\n<p>Consider the following set of votes (two for each cow):</p>\n<pre>\n       - - - - - BILL - - - - -\n         1        2        3\nCow 1   YES      NO\nCow 2   NO       NO\nCow 3   YES               YES\nCow 4   YES      YES</pre>\n<p>From this, two solutions satisfy every cow:</p>\n<ul>\n<li>Bill 1 passes (this then satisfies cows 1, 3, and 4)</li>\n<li>Bill 2 fails (this then satisfies cow 2)</li>\n<li>Bill 3 could pass or fail (and this is the reason there are two solutions)</li>\n</ul>\n<p>In fact, these are the only two solutions, so the answer is the three character string below:</p>\n<pre>\nYN?</pre>",
+  "input": "<ul>\n<li>Line 1: Two space-separated integers: N and M</li>\n<li>Lines 2..M+1: Line i+1 describes cow i's votes with four space-separated fields -- an integer, a vote, another integer, and another vote: B_i, VB_i, C_i, VC_i</li>\n</ul>\n<p> </p>",
+  "output": "<ul>\n<li>Line 1: A string with N characters, where the ith character is either a \"Y\" if the ith bill must pass, an \"N\" if the ith bill must fail, or a \"?\" if it cannot be determined whether the bill passes from these votes.</li>\n<li>If there is no solution which satisfies every cow, then output the single line \"IMPOSSIBLE\".</li>\n</ul>",
+  "samples": [
+    {
+      "input": "3 4\n1 Y 2 N\n1 N 2 N\n1 Y 3 Y\n1 Y 2 Y\n",
+      "output": "YN?\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, USA Computing Olympiad, 2010-2011 Season, USACO January 2011 Contest, Gold",
+  "level": 18,
+  "tags": [
+    "graphs",
+    "scc",
+    "2_sat"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 2
+}

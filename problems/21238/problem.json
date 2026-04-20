@@ -1,0 +1,26 @@
+{
+  "id": 21238,
+  "title": "Absenteeism",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<blockquote>\n<p>Absenteeism is a habitual pattern of absence from a duty or obligation without good reason.</p>\n<p>Wikipedia</p>\n</blockquote>\n<p>Alex works at work. $n$ employees work together with him. Unlike Alex, they strictly follow their schedule: the $i$-th employee comes to work at the time moment $a_i$ and leaves at the time moment $b_i$ ($a_i &lt; b_i$).</p>\n<p>Alex has to come to work not earlier the time moment 0, leave not later the time moment $m$ and work for $k$ hours a day ($k \\le m$). But, of course, he wants to work as less as possible. The problem is, his colleagues don't like lazy people, and if one of them discovers that Alex works less than $k$ hours a day, they complain to the boss and Alex will be fired.</p>\n<p>In other words, let's say Alex comes to work at the time moment $x$ and leaves work at the time moment $y$, where $0 \\le x &lt; y \\le m$. Then Alex is in danger if at least one of the following conditions is satisfied:</p>\n<ul>\n<li>$y - x &lt; k$, and there exists an employee $i$ such that $a_i \\le x$ and $y \\le b_i$ (the segment $[x, y]$ is entirely nested into $[a_i, b_i]$) --- in this case the $i$-th employee sees how Alex works less than $k$ hours with their own eyes;</li>\n<li>there exists an employee $i$ such that $x &lt; a_i \\le y \\le b_i$, and $y &lt; k$ --- in this case the $i$-th employee sees how Alex leaves work earlier than the time moment $k$;</li>\n<li>there exists an employee $i$ such that $a_i \\le x \\le b_i &lt; y$, and $x &gt; m - k$ --- in this case the $i$-th employee sees how Alex comes to work later than the time moment $m - k$;</li>\n<li>there exists an employee $i$ such that $y &lt; a_i$ or $b_i &lt; x$ (the segments $[x, y]$ and $[a_i, b_i]$ don't intersect), and $a_i \\le k$ and $b_i \\ge m - k$ --- in this case the $i$-th employee doesn't see Alex at work at all, but it's exactly the reason they conclude Alex couldn't work for $k$ hours.</li>\n</ul>\n<p>What is the minimal time Alex can spend at work such that nobody of his colleagues complains to the boss?</p>",
+  "input": "<p>The first line contains three integers $n$, $m$, $k$ ($1 \\le n \\le 10^5$, $1 \\le m \\le 10^9$, $1 \\le k \\le m$) --- the number of employees working together with Alex, the day length and the number of hours Alex has to work in a day.</p>\n<p>Each of the following $n$ lines contains two integers $a_i$ and $b_i$ ($0 \\le a_i &lt; b_i \\le m$) --- the moments of time when the $i$-th employee comes to work and leaves work.</p>",
+  "output": "<p>If Alex is able to not come to work at all, output \"<code>-1 -1</code>\".</p>\n<p>Otherwise, output two integers $x$, $y$ ($0 \\le x &lt; y \\le m$, $y - x \\le k$) --- the moments of time when Alex should come to work and leave work, so that nobody of his colleagues complain to the boss and the working time is minimal.</p>\n<p>If there are several possible solutions, output any of them.</p>",
+  "samples": [
+    {
+      "input": "2 20 10\n0 12\n8 20\n",
+      "output": "7 13\n"
+    },
+    {
+      "input": "2 20 18\n0 10\n10 20\n",
+      "output": "2 18\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 8: Grand Prix of Samara",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1
+}

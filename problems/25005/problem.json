@@ -1,0 +1,26 @@
+{
+  "id": 25005,
+  "title": "Caves",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Sophie is a treasure seeker. Right now she's looking for a treasure hidden in a system of $n$ caves, which are numbered from $1$ to $n$. She knows that the cave system contains exactly one treasure in one of the caves. Sophie has done some measurements using a georadar; this has not told her where the treasure is, but she has obtained, for each cave, a probability that the treasure is in that cave.</p>\n<p>Sophie will continue her search using a precise remote probe: after the probe enters a cave, it instantly finds out whether the cave contains the treasure. The probe starts its search in cave number $1$, and it is known that this cave does not contain the treasure. Sophie knows (from her georadar measurements) which pairs of caves are connected using bidirectional tunnels which the probe can traverse. Such a traversal takes the probe one minute. Unfortunately, there is no guarantee that the probe can make its way from cave $1$ to every other cave (even in many steps).</p>\n<p>As an alternative to traversing the tunnels, Sophie can choose to abandon her probe and insert a new probe into the system, which takes $t$ minutes. If she does so, communication with the old probe is lost and Sophie can no longer use it. Under these field conditions, inserting a new probe is very imprecise: it lands with uniform $\\frac 1n$ probability in any of the $n$ caves. Sophie instantly knows where the probe has landed. Sophie has infinitely many probes at her disposal.</p>\n<p>Help Sophie to find the treasure fast. Find a program which reads the size of the cave system, a description of the tunnels, the time $t$ of introducing a new probe, as well as the probability distribution of where the treasure is, computes the smallest (over all Sophie's strategies) expected time of finding the treasure, and writes the computed value to standard output. By finding the treasure we mean reaching the treasure cell with a probe.</p>",
+  "input": "<p>The first line of input contains three space-separated integers $n,m,t$ ($2 \\leq n \\leq 20$, $0 \\leq m \\leq \\frac{n(n+1)}{2}$, $1 \\leq t \\leq 100$). They denote the number of caves, the number of tunnels and the time needed to insert a new probe. The second line contains $n$ space-separated real numbers $p_1, p_2, \\ldots, p_n$ ($p_1=0$, $0 \\leq p_i \\leq 1$, $\\sum_{i=1}^{n}p_i=1$); the number $p_i$ is the probability that the treasure is in the $i$-th cave. These values are given with two decimal digits of precision. The next $m$ lines describe the tunnels. The description of each tunnel consists of two space-separated integers $i,j$ ($1\\leq i,j\\leq n$ and $i\\neq j$), which denote a tunnel between caves $i$ and $j$ that the probe can traverse in either direction. You can assume that all tunnels are distinct.</p>",
+  "output": "<p>The first and only line of output should contain a real number --- the minimum possible expected time of finding the treasure.</p>\n<p>The answer is considered correct if its absolute or relative error is at most $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "4 2 10\n0.00 0.00 0.50 0.50\n1 2\n2 3\n",
+      "output": "22.000000000\n"
+    },
+    {
+      "input": "6 5 2\n0.00 0.00 0.00 0.00 0.50 0.50\n1 2\n2 3\n3 4\n4 5\n5 6\n",
+      "output": "4.100000000\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 260px; height: 53px;\"/></p>\n<p>In sample 1, Sophie should first move the probe to cave $2$ and then to cave $3$. With probability $\\frac 12$ it has found the treasure in time $2$. If it has not, she should now start inserting new probes, until one gets inserted into the cave $4$. The expected number of insertions is $4$, so the expected total time in this case is $42$. On average, it takes Sophie $22$ seconds to find the treasure. (Note that after $2$ minutes, Sophie already knows where the treasure is, but she still needs to reach it with a probe.)</p>",
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, Poland Collegiate Programming Contest, AMPPZ 2015",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 3
+}

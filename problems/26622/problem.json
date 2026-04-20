@@ -1,0 +1,22 @@
+{
+  "id": 26622,
+  "title": "CNF-SAT",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Zbliża się kolejna Parada Równości P = NP. W tym roku nieformalny lider ruchu P = NP, Bajtazar, postanowił ostatecznie uciszyć swoich licznych przeciwników, ogłaszając na Paradzie dowód słynnej równości.</p>\n<p>Dowód Bajtazara polega na pokazaniu algorytmu rozwiązującego znany NP-trudny problem CNF-SAT w czasie wielomianowym. W tym problemie dane jest n zmiennych logicznych x<sub>1</sub>, . . . , x<sub>n</sub> i formuła logiczna w tak zwanej koniunkcyjnej postaci normalnej. Taka formuła jest postaci</p>\n<p style=\"text-align: center;\">(l<sub>1,1</sub> ∨ . . . ∨ l<sub>1,q<sub>1</sub></sub>) ∧ (l<sub>2,1</sub> ∨ . . . ∨ l<sub>2,q<sub>2</sub></sub>) ∧ . . . ∧ (l<sub>m,1</sub> ∨ . . . ∨ l<sub>m,q<sub>m</sub></sub>),</p>\n<p>dzie każde z wyrażeń (l<sub>i,1</sub> ∨ . . . ∨ l<sub>1,q<sub>i</sub></sub>) nazywamy klauzulą, a każde spośród wyrażeń l<sub>i,j</sub> jest literałem, czyli pewną zmienną lub zaprzeczeniem pewnej zmiennej spośród danych x<sub>1</sub>, . . . , x<sub>n</sub>. Przyjmujemy, że żadna poprawna klauzula nie zawiera dwóch identycznych literałów. Dla n = m = 3, przykładową formułą w koniunkcyjnej postaci normalnej może być (x<sub>1</sub> ∨ ¬x<sub>3</sub>) ∧ (x<sub>2</sub>) ∧ (¬x<sub>3</sub> ∨ ¬x<sub>1</sub> ∨ x<sub>2</sub>).</p>\n<p>Problem CNF-SAT polega na rozstrzygnięciu, czy istnieje pewne wartościowanie zmiennych x<sub>1</sub>, . . . , x<sub>n</sub>, dla którego dana formuła jest spełniona (to znaczy, jej wartością logiczną jest prawda).</p>\n<p>Niestety, do dokończenia dowodu Bajtazarowi brakuje jednego kroku. Twierdzi on, że udało mu się sprowadzić<sup>∗</sup> ogólny problem CNF-SAT do jego szczególnego przypadku, gdzie każda klauzula C danej formuły jest spójna, czyli ma następujące własności:</p>\n<ul>\n<li>Dla dowolnego i, x<sub>i</sub> i ¬x<sub>i</sub> nie mogą być jednocześnie literałami C.</li>\n<li>Jeśli i, j, k są takie, że i &lt; j &lt; k i zarówno zmienna xi (lub jej zaprzeczenie) jak i x<sub>k</sub> (lub ¬x<sub>k</sub>) występują w klauzuli C, to x<sub>j</sub> albo ¬x<sub>j</sub> także występuje w C.</li>\n</ul>\n<p>Przykładowo, dla n = 3 klauzule (x<sub>2</sub>) i (¬x<sub>3</sub> ∨ ¬x<sub>1</sub> ∨ x<sub>2</sub>) są spójne, a klauzule (x<sub>2</sub> ∨ ¬x<sub>2</sub>) i (x<sub>1</sub> ∨ ¬x<sub>3</sub>) – nie.</p>\n<p>Pomóż Bajtazarowi znaleźć efektywny algorytm rozwiązujący powyższy szczególny przypadek problemu CNF-SAT. Aby jeszcze bardziej go zadziwić, napisz program znajdujący liczbę wartościowań zmiennych x<sub>1</sub>, . . . , x<sub>n</sub> spełniających daną formułę CNF-SAT, składającą się z samych spójnych klauzul.</p>",
+  "input": "<p>W pierwszym wierszu wejścia znajduje się liczba całkowita n (1 ≤ n ≤ 1 000 000) oznaczająca liczbę zmiennych. W drugim wierszu wejścia mamy daną formułę CNF-SAT na zmiennych x<sub>1</sub>, . . . , x<sub>n</sub>, składającą się z samych spójnych klauzul. Formuła dana jest w następującym formacie (patrz także przykład poniżej).</p>\n<ul>\n<li>Każda klauzula zaczyna się nawiasem otwierającym (, a kończy nawiasem zamykającym ).</li>\n<li>Literał x<sub>i</sub> (dla 1 ≤ i ≤ n) reprezentowany jest jako <code>xi</code>, a literał ¬x<sub>i</sub> jako <code> xi</code>, np. <code>x2</code> lub <code> x15</code>.</li>\n<li>Sąsiednie literały w obrębie jednej klauzuli oddzielone są znakiem <code>v</code> (oznaczającym logiczne lub) otoczonym z obu stron pojedynczymi spacjami.</li>\n<li>Sąsiednie klauzule oddzielone są znakiem <code>^</code> (oznaczającym logiczne i) otoczonym z obu stron pojedynczymi spacjami.</li>\n</ul>\n<p>Sumaryczna liczba literałów we wszystkich klauzulach danej formuły nie przekroczy 1 000 000.</p>\n<hr/>\n<p><sup>∗</sup>Bajtazar zapomniał wspomnieć, czy jego redukcja działała w czasie wielomianowym...</p>",
+  "output": "<p>Na wyjście należy wypisać liczbę wartościowań zmiennych x<sub>1</sub>, . . . , x<sub>n</sub> spełniających daną na wejściu formułę, modulo 10<sup>9</sup> + 7.</p>",
+  "samples": [
+    {
+      "input": "3\n(x2) ^ (x3 v ~x2) ^ (x2 v x1 v ~x3)\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": "<p>Wyjaśnienie do przykładu: Dana formuła jest spełniona tylko dla dwóch wartościowań: (0, 1, 1) i (1, 1, 1).</p>",
+  "source": "Contest, Algorithmic Engagements, PA 2016",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

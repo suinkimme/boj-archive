@@ -1,0 +1,37 @@
+{
+  "id": 25385,
+  "title": "NPU 최적화",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>Furiosa AI에서는 인공지능 모델의 학습 및 추론을 기존의 처리 유닛(processing unit)보다 더욱 빠르게 할 수 있는 NPU(Neural Processing Unit)를 만들고 있다. 일반적인 처리 유닛에서 동작하는 프로그램은 호스트(host)에 저장된 데이터를 여러 종류의 연산자를 사용해 처리하여 원하는 값을 계산해 낸다. 이 문제에서는 이 과정을 단순화해, 다음과 같은 환경을 생각한다.</p>\n<ul>\n<li>호스트에는 $1\\, 000\\, 000$개의 데이터를 저장할 수 있는 공간이 있고, 각 공간에는 $0$번부터 $999\\, 999$번까지의 번호가 붙어 있다.</li>\n<li>각 연산자는 한 개 이상의 입력 데이터를 받아서 한 개의 출력 데이터를 계산한다. 연산자에도 $0$ 이상 $999\\, 999$ 이하의 번호가 붙어있다.</li>\n<li>프로그램은 다음과 같은 BNF(Backus-Naur Form)으로 표현된다.\n\t<p style=\"text-align:center;\"><code>&lt;number&gt; ::= 0 | 1 | ... | 999999</code> <code>&lt;value&gt; ::= &lt;number&gt; | &lt;number&gt;(&lt;list&gt;)</code> <code>&lt;list&gt; ::= &lt;value&gt; | &lt;list&gt;,&lt;value&gt;</code></p>\n</li>\n<li>프로그램은 값 하나를 계산한다. 즉 프로그램은 <code>&lt;value&gt;</code>에 해당하는 문자열이다.</li>\n<li><code>&lt;value&gt;</code>의 값은 다음과 같이 계산된다.\n\t<ul>\n<li><code>&lt;value&gt;</code>가 <code>&lt;number&gt;</code>로 표현되는 경우, 프로그램의 시작 전 호스트의 <code>&lt;number&gt;</code>번 공간에 저장된 데이터이다.</li>\n<li><code>&lt;value&gt;</code>가 <code>&lt;number&gt;(&lt;list&gt;)</code>로 표현되는 경우, <code>&lt;list&gt;</code> 안의 <code>&lt;value&gt;</code>들을 차례대로 입력 데이터로 하여 <code>&lt;number&gt;</code>번 연산자를 사용해 계산한 출력 데이터이다.</li>\n</ul>\n</li>\n<li>하나의 프로그램에는 같은 <code>&lt;number&gt;</code>가 여러 번 등장하지 않는다.</li>\n</ul>\n<p>Furiosa AI에서 개발하는 NPU는 같은 프로그램을 일반 처리 유닛보다 더 빠르게 실행할 수 있지만, 이를 위해서는 프로그램을 NPU가 사용하는 저수준의 명령어들로 새로 컴파일하는 컴파일러가 필요하다. 같은 프로그램이라도 어떻게 컴파일하느냐에 따라 프로그램의 메모리 사용량이나 실행 시간이 바뀌기 때문에, 효율적으로 NPU를 사용하기 위해서는 최적화된 컴파일러가 필요하다.</p>\n<p>NPU에는 $M$개의 데이터를 저장할 수 있는 메모리가 있으며, 메모리의 각 공간에는 $0$번부터 $M-1$번까지의 번호가 붙어 있다. NPU는 다음과 같은 세 종류의 명령어를 지원한다.</p>\n<ul>\n<li>$a$ <code>&gt;&gt;</code> $b$\n\n\t<ul>\n<li>호스트의 $a$번 데이터를 메모리의 $b$번 공간에 복사한다. $(0\\le a&lt;1\\, 000\\, 000;$ $0\\le b&lt;M)$ 데이터가 이미 있는 경우에는 덮어쓴다.</li>\n</ul>\n</li>\n<li>$a$ <code>&lt;&lt;</code> $b$\n\t<ul>\n<li>메모리의 $b$번 데이터를 호스트의 $a$번 공간에 복사한다. $(0\\le a&lt;1\\, 000\\, 000;$ $0\\le b&lt;M)$ 데이터가 이미 있는 경우에는 덮어쓴다.</li>\n</ul>\n</li>\n<li>$o$ <code>=</code> $w$ <code>|</code> $m_1$ $m_2$ $\\cdots$ $m_l$\n\t<ul>\n<li>메모리의 $m_1,m_2,\\cdots ,m_l$ 주소의 값을 차례대로 입력 데이터로 하는 $w$ 연산자의 출력 데이터를 메모리의 $o$ 공간에 저장한다.</li>\n<li>출력 데이터가 저장되는 공간은 입력 데이터가 저장된 공간과 달라야 한다. 즉 $o\\ne m_i$ $(1\\le i\\le l)$이어야 한다.</li>\n</ul>\n</li>\n</ul>\n<p>NPU 프로그램은 위의 명령어들의 나열으로, 프로그램을 실행하면 프로그램을 이루는 명령어들이 차례대로 실행된다.</p>\n<p>프로그램의 효율은 다양한 요인에 의해 결정되지만, 일단 사용하는 명령어 수가 적다면 효율적인 프로그램일 가능성이 높다. <code>&lt;value&gt;</code>에 해당하는 문자열이 주어지면, 명령어를 최대한 적게 사용해 <code>&lt;value&gt;</code>의 값을 계산해서 $0$번 메모리에 저장하는 NPU 프로그램으로 변환해 보자.</p>",
+  "input": "<p>첫 번째 줄에는 NPU의 메모리의 크기 $M$이 주어진다. $(1\\le M\\le 1\\, 000\\, 000)$</p>\n<p>두 번째 줄에는 계산해야 하는 <code>&lt;value&gt;</code>에 해당하는 문자열이 주어진다. 이 문자열의 길이는 $1\\, 000\\, 000$ 이하이다.</p>",
+  "output": "<p>NPU의 메모리가 부족해서 프로그램을 컴파일할 수 없는 경우에는 $-1$을 출력한다.</p>\n<p>프로그램을 컴파일할 수 있다면 첫 번째 줄에 명령어를 최소한으로 사용해 <code>&lt;value&gt;</code>를 계산하는 프로그램의 명령어 수를 출력한다. 다음 줄부터 프로그램을 구성하는 명령어들을 한 줄에 하나씩 순서대로 출력한다. 한 명령어의 모든 토큰 사이에는 공백이 하나씩 들어간다.</p>\n<p>여러 가지가 답으로 가능한 경우 아무거나 하나 출력한다.</p>",
+  "samples": [
+    {
+      "input": "7\n71(72(41,42),73(43,44))\n",
+      "output": "7\n41 >> 3\n42 >> 4\n43 >> 5\n44 >> 6\n1 = 72 | 3 4\n2 = 73 | 5 6\n0 = 71 | 1 2\n"
+    },
+    {
+      "input": "3\n71(72(41,42),73(43,44))\n",
+      "output": "9\n43 >> 2\n44 >> 0\n1 = 73 | 2 0\n59 << 1\n41 >> 2\n42 >> 0\n1 = 72 | 2 0\n59 >> 2\n0 = 71 | 1 2\n"
+    },
+    {
+      "input": "2\n71(72(41,42),73(43,44))\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2022, ho94949, bnb2011, doju, functionx, hyperbolic, jh05013",
+  "level": 25,
+  "tags": [
+    "dp",
+    "dp_tree",
+    "greedy",
+    "parsing",
+    "string",
+    "trees"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 7
+}

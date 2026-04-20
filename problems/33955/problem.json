@@ -1,0 +1,48 @@
+{
+  "id": 33955,
+  "title": "읽음",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>온라인상의 단체 대화방에서는 여러 사람들이 메시지를 보내고 읽을 수 있다.</p>\n<p>단체 대화방의 규칙은 다음과 같다:</p>\n<ul>\n<li>메시지는 한 줄에 하나씩 보낸 순서대로 나열된다. 더 먼저 보낸 메시지일수록 더 위에 위치한다.</li>\n<li>각각의 사람은 마지막으로 대화방에 접속한 시점에 올라온 모든 메시지를 읽고 그 아래의 메시지들을 아직 읽지 않았다. 모든 메시지를 읽지 않았거나 모든 메시지를 읽었을 수도 있다.</li>\n<li>메시지를 보낼 때는 대화방에 접속해야 하므로, 자신의 메시지를 포함하여 그 위의 모든 메시지를 읽게 된다. 한 사람이 여러 개의 메시지를 보내거나 메시지를 한 번도 보내지 않을 수도 있다.</li>\n</ul>\n<p>사람들은 자신이 보낸 메시지를 누가 읽었는지 매우 궁금해한다. 하지만 각각의 메시지를 읽은 사람의 목록을 유지하는 일은 매우 비효율적이므로, 단체 대화방에서는 사람들이 보낸 메시지 내용에 덧붙여 그 메시지를 아직까지 읽지 않은 사람의 수를 알려준다.</p>\n<p>단체 대화방에서 나열되는 메시지의 형식은 다음과 같다:</p>\n<p style=\"text-align: center;\"><code>[&lt;sender&gt;] &lt;text&gt; (&lt;unread_count&gt;)</code></p>\n<ul>\n<li><code>&lt;sender&gt;</code>는 보낸 사람의 이름이며, 알파벳 대소문자로 이루어져 있다.</li>\n<li><code>&lt;text&gt;</code>는 메시지의 본문이며, 알파벳 대소문자, 숫자, 공백 문자로 이루어져 있다. 빈 문자열이거나 공백 문자만으로 이루어져 있지 않다.</li>\n<li><code>&lt;unread_count&gt;</code>는 대화방에서 해당 메시지를 아직 읽지 않은 사람의 수이다.</li>\n</ul>\n<p>다음은 단체 대화방에 A, B, C 세 사람이 있고 두 개의 메시지가 있는 예시이다.</p>\n<table border=\"1\" cellpadding=\"1\" cellspacing=\"1\" class=\"table table-bordered\" style=\"width: 500px;\">\n<tbody>\n<tr>\n<td>[A] The meeting starts at 3 (1)</td>\n</tr>\n<tr>\n<td>[B] Yes I checked (2)</td>\n</tr>\n</tbody>\n</table>\n<ul>\n<li>A가 첫 번째 메시지를 보냈으며 읽지 않은 사람 수는 1명이다.</li>\n<li>B가 두 번째 메시지를 보냈으며 읽지 않은 사람 수는 2명이다.</li>\n<li>B가 메시지를 보낼 때 A의 메시지를 읽었으므로 유일하게 남은 사람인 C가 A의 메시지를 읽지 않았다.</li>\n<li>B의 메시지는 2명이 읽지 않았으므로 A와 C 모두 읽지 않았다.</li>\n</ul>\n<p>위의 예시는 간단하지만, 매우 많은 사람들이 있는 단체 대화방의 경우 각각의 메시지를 정확히 어떤 사람들이 읽었는지 알기 어렵다. $N$명의 사람이 있는 단체 대화방에서 $M$개의 메시지 목록이 보낸 순서대로 주어질 때, 단체 대화방에서 제공하는 읽지 않은 사람 수 정보를 만족하는 경우가 존재하는지 알아보자.</p>",
+  "input": "<p>첫 번째 줄에 단체 대화방에 속한 사람의 수 $N$과 대화 내역의 수 $M$이 공백으로 구분되어 주어진다. ($1 \\leq N, M \\leq 1\\,000$)</p>\n<p>다음으로 $N$개의 줄에 걸쳐 한 줄에 하나씩 대화방에 속한 사람들의 이름이 주어진다. 사람들의 이름은 모두 서로 다르며, 길이는 $1$자 이상 $20$자 이하이고 알파벳 대소문자만으로 이루어져 있다.</p>\n<p>다음으로 $M$개의 줄에 걸쳐 한 줄에 하나씩 대화방의 메시지가 주어진다. 메시지의 형식은 위의 설명을 따르며, 모든 메시지의 길이의 합은 $1\\,000\\,000$ 이하이다. 보낸 사람의 이름은 위에서 주어진 이름 목록에 있음이 보장되며, 아직 읽지 않은 사람의 수는 $0$ 이상 $N$ 이하의 정수이다.</p>",
+  "output": "<p>주어진 정보를 만족하는 것이 불가능하다면 <span style=\"color:#e74c3c;\"><code>IMPOSSIBLE</code></span>을 출력한다.</p>\n<p>주어진 정보를 만족하는 경우가 존재하지만 유일하지 않다면 <span style=\"color:#e74c3c;\"><code>POSSIBLE</code></span>을 출력한다.</p>\n<p>주어진 정보를 만족하는 경우가 유일하다면 <span style=\"color:#e74c3c;\"><code>UNIQUE</code></span>를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "1 1\nLiar\n[Liar] This statement is false (1)\n",
+      "output": "IMPOSSIBLE\n"
+    },
+    {
+      "input": "3 2\nAa\nBb\nCc\n[Aa] OK (0)\n[Bb] YES (1)\n",
+      "output": "POSSIBLE\n"
+    },
+    {
+      "input": "4 3\nA\nB\nC\nD\n[D] Some Text (1)\n[A] OK (2)\n[B] NO (3)\n",
+      "output": "UNIQUE\n"
+    },
+    {
+      "input": "4 5\nA\nB\nC\nD\n[A] 3 2 1 (0)\n[B] Rock (1)\n[C] Scissor (1)\n[D] Rock (1)\n[C] NO (3)\n",
+      "output": "UNIQUE\n"
+    },
+    {
+      "input": "4 5\nA\nB\nC\nD\n[A] 3 2 1 Go (0)\n[B] Rock (1)\n[C] Paper (1)\n[D] Rock (1)\n[C] YES (3)\n",
+      "output": "UNIQUE\n"
+    },
+    {
+      "input": "4 5\nA\nB\nC\nD\n[A] t eX t (0)\n[B] Te xt (1)\n[C] tEX t (1)\n[D] T exT (2)\n[C] T e X t (2)\n",
+      "output": "UNIQUE\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, POSTECH, 2025 POSTECH Programming Contest, Contest, University, POSTECH, 2025 POSTECH Programming Contest, Open Contest, slah007, hyperbolic, jthis, kwoncycle, leo020630, menborong, plast",
+  "level": 17,
+  "tags": [
+    "implementation",
+    "string",
+    "case_work",
+    "sweeping",
+    "parsing"
+  ],
+  "accepted_user_count": 15,
+  "submission_count": null,
+  "average_tries": 2.3333001136779785
+}

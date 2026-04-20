@@ -1,0 +1,26 @@
+{
+  "id": 25652,
+  "title": "Grammy Sorting",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Grammy has a connected undirected graph $G$ with $n$ vertices numbered $1, 2, \\ldots, n$. Among them are two special vertices $A$ and $B$. Each vertex $i$ has a number $p_i$ written on it, where $p_1, p_2, \\ldots, p_n$ is a permutation of $1, 2, \\ldots, n$.</p>\n<p>Grammy thinks these numbers on vertices are too chaotic. She wants to reorder the numbers such that, for each vertex $x$, there exists a path satisfying the following conditions:</p>\n<ul>\n<li>The path starts from $A$ and ends at $B$.</li>\n<li>The path contains vertex $x$.</li>\n<li>The numbers along the path are strictly increasing.</li>\n</ul>\n<p>Sadly, in each operation, Grammy can only choose a <strong>simple</strong> path starting from $A$ and ending at an arbitrary vertex, then shift the numbers on the simple path one position nearer to the start, and put the first number to the last position. Formally, if the vertices on the simple path chosen by Grammy contain numbers $a_1, a_2, \\ldots, a_{k-1}, a_k$, from start to end, then after Grammy's operation, these vertices will contain $a_2, a_3, \\ldots, a_k, a_1$.</p>\n<p>Additionally, Grammy can only operate no more than $10\\,000$ times.</p>\n<p>Grammy is out of ideas on how to solve this problem, so she asked you for help.</p>\n<p>Please help Grammy to determine whether she can reorder the numbers as required. You also need to output a solution if it exists.</p>",
+  "input": "<p>The first line contains four integers $n$, $m$, $A$, $B$ ($2 \\leq n \\leq 1000$, $1 \\leq m \\leq 2000$, $1 \\leq A, B \\leq n$, $A \\neq B$).</p>\n<p>The second line contains $n$ integers $p_1, p_2, \\ldots, p_n$ ($1 \\leq p_i \\leq n$). It is guaranteed that $p_1, p_2, \\ldots, p_n$ is a permutation.</p>\n<p>In each of the next $m$ lines, there are two integers $u_i$ and $v_i$ ($1 \\leq u_i, v_i \\leq n$, $u_i \\ne v_i$), denoting that there is a bidirectional edge between $u_i$ and $v_i$. It is guaranteed that the graph is connected and that there is at most one edge between any two pair of vertices.</p>",
+  "output": "<p>If Grammy cannot properly reorder the numbers, output \"<code>-1</code>\" (without quotes).</p>\n<p>Otherwise output an integer $\\mathit{op}$ ($0 \\leq \\mathit{op} \\leq 10\\,000$) on the first line, indicating the number of operations to perform.</p>\n<p>On each of the following $\\mathit{op}$ lines, first output an integer $k$ denoting the number of vertices on the chosen simple path. Then output $k$ integers $x_1, x_2, \\ldots, x_k$ ($x_1 = A$, $1 \\leq x_i \\leq n$), indicating the vertices on the simple path. These $x_i$ should be distinct and form a path in $G$.</p>\n<p>It can be shown that, if graph $G$ can be properly reordered, there exists a solution with no more than $10\\,000$ operations.</p>\n<p>Note that you don't have to minimize $\\mathit{op}$. If there are multiple solutions, output any one of them.</p>",
+  "samples": [
+    {
+      "input": "5 6 1 2\n1 2 3 4 5\n1 3\n2 3\n1 4\n2 4\n1 5\n3 5\n",
+      "output": "7\n4 1 3 2 4\n3 1 3 2\n3 1 3 5\n4 1 3 2 4\n3 1 3 2\n2 1 3\n1 1\n"
+    },
+    {
+      "input": "4 3 1 2\n1 4 2 3\n1 4\n2 4\n3 4\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2022, Day 2: ZJU Contest 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

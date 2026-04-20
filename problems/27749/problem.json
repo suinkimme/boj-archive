@@ -1,0 +1,22 @@
+{
+  "id": 27749,
+  "title": "Bit Party",
+  "time_limit": "15 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>These days, robots can drive cars, but can they throw a good party? The Code Jam team's research into this topic is still at an early stage. We just deployed <b>R</b> robot shoppers to our local supermarket to buy party supplies for our World Finals in Toronto, but their first-order model of a Canadian party was very simple: they just bought <b>B</b> \"bits\" (a bit being a small donut-like treat found in the area). We will work on improving their AI later, but for now, we want to help them purchase all of those bits as quickly as possible.</p>\n<p>The supermarket has <b>C</b> cashiers who can scan customers' purchases. The i-th cashier will:</p>\n<ul>\n<li>accept a maximum of <b>M<sub>i</sub></b> items per customer</li>\n<li>take <b>S<sub>i</sub></b> seconds to scan each item</li>\n<li>spend a further <b>P<sub>i</sub></b> seconds handling payment and packaging up the bits.</li>\n</ul>\n<p>That is, a customer who brings N bits to the i-th cashier (where N must be less than or equal to <b>M<sub>i</sub></b>) will spend a total of <b>S<sub>i</sub></b> × N + <b>P<sub>i</sub></b> seconds interacting with that cashier.</p>\n<p>Before the robots interact with any cashiers, you will distribute the bits among the robots however you want. (Bits must remain intact; you cannot break them up into fractional pieces!) Any robot that gets no bits will not get to interact with a cashier, and will go away disappointed.</p>\n<p>Then, for each robot with at least one bit, you will choose a <i>different</i> single cashier. (Two robots cannot use the same cashier, and a robot cannot use more than one cashier.) The robots all start interacting with their cashiers at time 0. Note that once a robot finishes interacting with its cashier, it cannot be given more bits and cannot interact with other cashiers.</p>\n<p>If you help the robots make optimal choices, what is the earliest time at which all of the robots can finish interacting with their cashiers?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. Each begins with one line with three integers <b>R</b>, <b>B</b>, and <b>C</b>: the numbers of robot shoppers, bits, and cashiers. Then, there are <b>C</b> more lines. The i-th of these represents the i-th cashier, and it has three integers <b>M<sub>i</sub></b>, <b>S<sub>i</sub></b>, and <b>P<sub>i</sub></b>: the maximum number of bits, scan time per bit (in seconds), and payment/packaging time (in seconds) for that cashier, as described above.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is the earliest time (in seconds) at which all robots can finish interacting with their cashiers.</p>",
+  "samples": [
+    {
+      "input": "3\n2 2 2\n1 2 3\n1 1 2\n2 2 2\n1 2 3\n2 1 2\n3 4 5\n2 3 3\n2 1 5\n2 4 2\n2 2 4\n2 5 1\n",
+      "output": "Case #1: 5\nCase #2: 4\nCase #3: 7\n"
+    }
+  ],
+  "hint": "<p>In Sample Case #1, there are two robots, two bits, and two cashiers, and each cashier can only handle one item. So, you must give one bit to each robot. Cashier 1 takes 5 seconds, and Cashier 2 takes 3 seconds, so the time required is 5 seconds.</p>\n<p>Sample Case #2 is similar to the previous case, except that now Cashier 2 can handle up to 2 items. So, it is best to give all the bits to one robot and have that robot use Cashier 2. This takes 1 second per item plus 2 seconds = 4 seconds.</p>\n<p>In Sample Case #3, the optimal strategy is to send one robot with 2 bits to cashier 2, and two robots with 1 bit each to any of the other cashiers.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2018, Round 1A",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

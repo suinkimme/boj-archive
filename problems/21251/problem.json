@@ -1,0 +1,26 @@
+{
+  "id": 21251,
+  "title": "Premove Checkmate",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p><em>Be careful, the premove description in this problem is not the same as used in a popular chess websites.</em></p>\n<p>You play chess in the internet. You got a position with a king and a queen versus alone opponent's king. The problem is, you don't have enough time on the clock not only to checkmate the opponent, but to make even one move.</p>\n<p>Luckily, there is a premove function. The premove mechanic works as follows. You enter a sequence of moves on the board (these can be arbitrary moves, described just by starting and ending squares, it's not necessary that your piece should stay on the starting square). These moves are stored in a queue. You can add moves to the queue only when it's your opponent move.</p>\n<p>Then, after your opponent makes a move, if your premove queue is not empty, the moves are popped out one by one. If the popped move is invalid, it's just skipped, and once a popped move is valid, it's done on the board immediately, and your clock time doesn't get decreased.</p>\n<p>In the current position, your king is on c3, your queen is on d4, and the opponent's king is on some square in the top-right quarter of the board (e5, e6, e7, e8, f5, f6, f7, f8, g5, g6, g7, g8, h5, h6, h7 or h8). You can't remember where exactly because it's too little time remaining on your clock and you are too stressed!</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 213px; height: 213px;\"/></p>\n<p>It's your opponent's move, and, as you don't have clock time remaining, you have to enter a premove queue leading straight to the checkmate. According to chess rules, the checkmate must be made in 50 moves (only your moves count for this rule). The premove queue can store more, up to 500, moves --- some of them can be skipped as invalid and therefore don't count.</p>",
+  "input": "<p>There is only one test in this problem. We placed a line \"<code>c3 d4</code>\" to the input. You don't need to read it.</p>",
+  "output": "<p>Output the sequence of moves. Each move should be a 4-character string, where the first 2 characters denote a starting square, and the last 2 characters denote an ending square. Examples of moves: \"<code>a1b1</code>\", \"<code>c6f3</code>\".</p>",
+  "samples": [
+    {
+      "input": "f6 e5\n",
+      "output": "f6f7 e5g7 g7g3 g3h4 f6g6 e5g7 g7c7 c7f7\n"
+    }
+  ],
+  "hint": "<p>The sample test describes a position with your king on f6, your queen on e5, and the opponent's king on one of these squares: f8, g8, h8, h7, h6. There is no such test in the testing system.</p>\n<p>In the sample test, after black's move, their king still can be only on one of the squares f8, g8, h8, h7, h6. These are all possible endings:</p>\n<ul>\n<li>For black king on f8: 1. Kf6-g6 Kf8-g8 2. Qe5-g7</li>\n<li>For black king on g8: 1. Kf6-g6 Kg8-f8 2. Qe5-g7 Kf8-e8 3. Qg7-c7 Ke8-f8 4. Qc7-f7</li>\n<li>For black king on h8: 1. Kf6-f7 Kh8-h7 2. Qe5-g7</li>\n<li>For black king on h7: 1. Kf6-f7 Kh7-h6 2. Qe5-g7 Kh6-h5 3. Qg7-g3 Kh5-h6 4. Qg3-h4</li>\n<li>For black king on h6: 1. Kf6-f7 Kh6-h7 2. Qe5-g7</li>\n</ul>\n<p>Note that in first two cases first four moves in the queue are skipped because they are invalid.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 8: Grand Prix of Samara",
+  "level": 22,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "case_work"
+  ],
+  "accepted_user_count": 23,
+  "submission_count": null,
+  "average_tries": 3.434799909591675
+}

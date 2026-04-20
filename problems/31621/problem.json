@@ -1,0 +1,40 @@
+{
+  "id": 31621,
+  "title": "庭園 2 (Garden 2)",
+  "time_limit": "4 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>JOI 庭園は縦 <var>N</var> 行，横 <var>N</var> 列のマス目状に区切られた正方形の形をしている． 上から <var>i</var> 行目 (<var>1 ≦ i ≦ N</var>)，左から <var>j</var> 列目 (<var>1 ≦ j ≦ N</var>) のマスは区画 <var>(i, j)</var> と呼ばれている．</p>\n<p>JOI 庭園は土壌にあまり恵まれていないため，各区画には特定の <var>1</var> 種類の色の花を，<strong>最大</strong> <var>1</var> 本しか植えることができない． 具体的には，区画 <var>(i, j)</var> には <var>A<sub>i, j</sub> =</var> <code>R</code> のとき赤，<var>A<sub>i, j</sub> =</var> <code>Y</code> のとき黄，<var>A<sub>i, j</sub> =</var> <code>B</code> のとき青の色の花を最大 <var>1</var> 本しか植えることができない．</p>\n<p>ここで，この庭園の管理者である K 理事長は，航空写真を撮った時の見栄えを良くするため，次の手順で花を植えようと思っている．</p>\n<ol>\n<li><strong>大きさ</strong>を表す整数 <var>r</var> を決める．ただし <var>0 ≦ r ≦ (N-1) ÷ 2</var> を満たさなければならない．</li>\n<li><strong>中心</strong>を表す区画 <var>(x, y)</var> を決める．ただし <var>r+1 ≦ x ≦ N-r</var>，<var>r+1 ≦ y ≦ N-r</var> を満たさなければならない．</li>\n<li>色 <var>c<sub>0</sub>, c<sub>1</sub>, c<sub>2</sub>, …, c<sub>r</sub></var> をそれぞれ赤・黄・青の中から選んで決める．</li>\n<li>それぞれの区画 <var>(x', y')</var> について，<var>d = |x'-x| + |y'-y|</var> に応じて以下の規則で花を植える．ただし，<var>|t|</var> は <var>t</var> の絶対値を表す．\n\t<ul>\n<li><var>d ≦ r</var> であるならば，区画 <var>(x', y')</var> には色 <var>c<sub>d</sub></var> の花を植える．</li>\n<li><var>d &gt; r</var> であるならば，区画 <var>(x', y')</var> には花を植えない．</li>\n</ul>\n</li>\n</ol>\n<p>庭園の大きさ，各区画に植えることができる花の色の情報が与えられたとき，K 理事長が植えることができる花の数の最大値を求めるプログラムを作成せよ．</p>",
+  "input": "<p>入力は以下の形式で与えられる．</p>\n<pre>\n<var>N</var>\n<var>A<sub>1,1</sub></var>   <var>A<sub>1,2</sub></var>   <var>…</var>   <var>A<sub>1,N</sub></var>\n<var>A<sub>2,1</sub></var>   <var>A<sub>2,2</sub></var>   <var>…</var>   <var>A<sub>2,N</sub></var>\n<var>︙</var>\n<var>A<sub>N,1</sub></var>   <var>A<sub>N,2</sub></var>   <var>…</var>   <var>A<sub>N,N</sub></var></pre>",
+  "output": "<p>K 理事長が植えることができる花の数の最大値を <var>1</var> 行で出力せよ．</p>",
+  "samples": [
+    {
+      "input": "3\nRYR\nYBY\nBYY\n",
+      "output": "5\n"
+    },
+    {
+      "input": "9\nYYRYBBBYR\nBYYRRBYBB\nRBRRBRBBY\nRYRBRYRBR\nYYBRYYYRB\nRRYBRYRBR\nRBYRBRBRB\nBRYYRBBBR\nRBBBYBRRY\n",
+      "output": "25\n"
+    },
+    {
+      "input": "6\nRBYRBY\nBYRBYR\nYRBYRB\nRBYRBY\nBYRBYR\nYRBYRB\n",
+      "output": "1\n"
+    },
+    {
+      "input": "20\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRBRRRRRRRRRRRRYRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRYRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRYRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRBR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\nRRRRRRRRRRRRRRRRRRRR\n",
+      "output": "85\n"
+    },
+    {
+      "input": "10\nRRRRRRRRRR\nRYRRRRRRRR\nRRRRYRRRRR\nRBRRRRRRRR\nRRRRRRRRYR\nRBRRRRRRRR\nRRRRBRRRRR\nRBRRRRRRRR\nRRRRRRRRYR\nRRRRRRRRRR\n",
+      "output": "25\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Olympiad, Japanese Olympiad in Informatics, Japanese Olympiad in Informatics Qualification Round, JOI 2023/2024 예선 2",
+  "level": 18,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 1.294100046157837
+}

@@ -1,0 +1,29 @@
+{
+  "id": 8980,
+  "title": "택배",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>아래 그림과 같이 직선 도로상에 왼쪽부터 오른쪽으로 1번부터 차례대로 번호가 붙여진 마을들이 있다. 마을에 있는 물건을 배송하기 위한 트럭 한 대가 있고, 트럭이 있는 본부는 1번 마을 왼쪽에 있다. 이 트럭은 본부에서 출발하여 1번 마을부터 마지막 마을까지 오른쪽으로 가면서 마을에 있는 물건을 배송한다. </p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 236px; height: 92px;\"/></p>\n<p>각 마을은 배송할 물건들을 박스에 넣어 보내며, 본부에서는 박스를 보내는 마을번호, 박스를 받는 마을번호와 보낼 박스의 개수를 알고 있다. 박스들은 모두 크기가 같다. 트럭에 최대로 실을 수 있는 박스의 개수, 즉 트럭의 용량이 있다. 이 트럭 한대를 이용하여 다음의 조건을 모두 만족하면서 최대한 많은 박스들을 배송하려고 한다.</p>\n<ul>\n<li>조건 1: 박스를 트럭에 실으면, 이 박스는 받는 마을에서만 내린다.</li>\n<li>조건 2: 트럭은 지나온 마을로 되돌아가지 않는다.</li>\n<li>조건 3: 박스들 중 일부만 배송할 수도 있다.</li>\n</ul>\n<p>마을의 개수, 트럭의 용량, 박스 정보(보내는 마을번호, 받는 마을번호, 박스 개수)가 주어질 때, 트럭 한 대로 배송할 수 있는 최대 박스 수를 구하는 프로그램을 작성하시오. 단, 받는 마을번호는 보내는 마을번호보다 항상 크다.</p>\n<p>예를 들어, 트럭 용량이 40이고 보내는 박스들이 다음 표와 같다고 하자.</p>\n<table class=\"table table-bordered\" style=\"width:30%;\">\n<thead>\n<tr>\n<th style=\"width:10%\">보내는 마을</th>\n<th style=\"width:10%\">받는 마을</th>\n<th style=\"width:10%\">박스 개수</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td>2</td>\n<td>10</td>\n</tr>\n<tr>\n<td>1</td>\n<td>3</td>\n<td>20</td>\n</tr>\n<tr>\n<td>1</td>\n<td>4</td>\n<td>30</td>\n</tr>\n<tr>\n<td>2</td>\n<td>3</td>\n<td>10</td>\n</tr>\n<tr>\n<td>2</td>\n<td>4</td>\n<td>20</td>\n</tr>\n<tr>\n<td>3</td>\n<td>4</td>\n<td>20</td>\n</tr>\n</tbody>\n</table>\n<p>이들 박스에 대하여 다음과 같이 배송하는 방법을 고려해 보자.</p>\n<p>(1) 1번 마을에 도착하면</p>\n<ul>\n<li>다음과 같이 박스들을 트럭에 싣는다. (1번 마을에서 4번 마을로 보내는 박스는 30개 중 10개를 싣는다.)</li>\n</ul>\n<table class=\"table table-bordered\" style=\"width:30%;\">\n<thead>\n<tr>\n<th style=\"width: 10%;\">보내는 마을</th>\n<th style=\"width: 10%;\">받는 마을</th>\n<th style=\"width: 10%;\">박스 개수</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1</td>\n<td>2</td>\n<td>10</td>\n</tr>\n<tr>\n<td>1</td>\n<td>3</td>\n<td>20</td>\n</tr>\n<tr>\n<td>1</td>\n<td>4</td>\n<td>10</td>\n</tr>\n</tbody>\n</table>\n<p>(2) 2번 마을에 도착하면</p>\n<ul>\n<li>트럭에 실려진 박스들 중 받는 마을번호가 2인 박스 10개를 내려 배송한다. (이때 트럭에 남아있는 박스는 30개가 된다.)</li>\n<li>그리고 다음과 같이 박스들을 싣는다. (이때 트럭에 실려 있는 박스는 40개가 된다.)</li>\n</ul>\n<table class=\"table table-bordered\" style=\"width:30%;\">\n<thead>\n<tr>\n<th style=\"width: 10%;\">보내는 마을</th>\n<th style=\"width: 10%;\">받는 마을</th>\n<th style=\"width: 10%;\">박스 개수</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>2</td>\n<td>3</td>\n<td>10</td>\n</tr>\n</tbody>\n</table>\n<p>(3) 3번 마을에 도착하면 </p>\n<ul>\n<li>트럭에 실려진 박스들 중 받는 마을번호가 3인 박스 30개를 내려 배송한다. (이때 트럭에 남아있는 박스는 10개가 된다.)</li>\n<li>그리고 다음과 같이 박스들을 싣는다. (이때 트럭에 실려 있는 박스는 30개가 된다.)</li>\n</ul>\n<table class=\"table table-bordered\" style=\"width:30%;\">\n<thead>\n<tr>\n<th style=\"width: 10%;\">보내는 마을</th>\n<th style=\"width: 10%;\">받는 마을</th>\n<th style=\"width: 10%;\">박스 개수</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>3</td>\n<td>4</td>\n<td>20</td>\n</tr>\n</tbody>\n</table>\n<p>(4) 4번 마을에 도착하면 </p>\n<ul>\n<li>받는 마을번호가 4인 박스 30개를 내려 배송한다</li>\n</ul>\n<p>위와 같이 배송하면 배송한 전체 박스는 70개이다. 이는 배송할 수 있는 최대 박스 개수이다.</p>",
+  "input": "<p>입력의 첫 줄은 마을 수 N과 트럭의 용량 C가 빈칸을 사이에 두고 주어진다. N은 2이상 2,000이하 정수이고, C는 1이상 10,000이하 정수이다. 다음 줄에, 보내는 박스 정보의 개수 M이 주어진다. M은 1이상 10,000이하 정수이다. 다음 M개의 각 줄에 박스를 보내는 마을번호, 박스를 받는 마을번호, 보내는 박스 개수(1이상 10,000이하 정수)를 나타내는 양의 정수가 빈칸을 사이에 두고 주어진다. 박스를 받는 마을번호는 보내는 마을번호보다 크다. </p>",
+  "output": "<p>트럭 한 대로 배송할 수 있는 최대 박스 수를 한 줄에 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 40\n6\n3 4 20\n1 2 10\n1 3 20\n1 4 30\n2 3 10\n2 4 20\n",
+      "output": "70\n"
+    },
+    {
+      "input": "6 60\n5\n1 2 30\n2 5 70\n5 6 60\n3 4 40\n1 6 40\n",
+      "output": "150\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, 한국정보올림피아드, KOI 2013, 초등부",
+  "level": 14,
+  "tags": [
+    "greedy",
+    "sorting"
+  ],
+  "accepted_user_count": 4406,
+  "submission_count": null,
+  "average_tries": 2.1960999965667725
+}

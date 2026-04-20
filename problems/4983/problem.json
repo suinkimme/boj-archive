@@ -1,0 +1,30 @@
+{
+  "id": 4983,
+  "title": "Curling 2.0",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>On Planet MM-21, after their Olympic games this year, curling is getting popular. But the rules are somewhat different from ours. The game is played on an ice game board on which a square mesh is marked. They use only a single stone. The purpose of the game is to lead the stone from the start to the goal with the minimum number of moves.</p>\n<p>Fig. D-1 shows an example of a game board. Some squares may be occupied with blocks. There are two special squares namely the start and the goal, which are not occupied with blocks. (These two squares are distinct.) Once the stone begins to move, it will proceed until it hits a block. In order to bring the stone to the goal, you may have to stop the stone by hitting it against a block, and throw again.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.gif\" style=\"height:220px; width:216px\"/></p>\n<p style=\"text-align:center\">Fig. D-1: Example of board (S: start, G: goal)</p>\n<p>The movement of the stone obeys the following rules:</p>\n<ul>\n<li>At the beginning, the stone stands still at the start square.</li>\n<li>The movements of the stone are restricted to x and y directions. Diagonal moves are prohibited.</li>\n<li>When the stone stands still, you can make it moving by throwing it. You may throw it to any direction unless it is blocked immediately(Fig. D-2(a)).</li>\n<li>Once thrown, the stone keeps moving to the same direction until one of the following occurs:\n\t<ul>\n<li>The stone hits a block (Fig. D-2(b), (c)).\n\t\t<ul>\n<li>The stone stops at the square next to the block it hit.</li>\n<li>The block disappears.</li>\n</ul>\n</li>\n<li>The stone gets out of the board.\n\t\t<ul>\n<li>The game ends in failure.</li>\n</ul>\n</li>\n<li>The stone reaches the goal square.\n\t\t<ul>\n<li>The stone stops there and the game ends in success.</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>You cannot throw the stone more than 10 times in a game. If the stone does not reach the goal in 10 moves, the game ends in failure.</li>\n</ul>\n<p style=\"text-align:center\"><img alt=\"\" src=\"2.gif\" style=\"height:166px; width:579px\"/></p>\n<p style=\"text-align:center\">Fig. D-2: Stone movements</p>\n<p>Under the rules, we would like to know whether the stone at the start can reach the goal and, if yes, the minimum number of moves required.</p>\n<p>With the initial configuration shown in Fig. D-1, 4 moves are required to bring the stone from the start to the goal. The route is shown in Fig. D-3(a). Notice when the stone reaches the goal, the board configuration has changed as in Fig. D-3(b).</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"3.gif\" style=\"height:215px; width:453px\"/></p>\n<p style=\"text-align:center\">Fig. D-3: The solution for Fig. D-1 and the final board configuration </p>",
+  "input": "<p>The input is a sequence of datasets. The end of the input is indicated by a line containing two zeros separated by a space. The number of datasets never exceeds 100.</p>\n<p>Each dataset is formatted as follows.</p>\n<pre>\nthe width(=w) and the height(=h) of the board \nFirst row of the board \n... \nh-th row of the board \n</pre>\n<p>The width and the height of the board satisfy: 2 &lt;= w &lt;= 20, 1 &lt;= h &lt;= 20. </p>\n<p>Each line consists of w decimal numbers delimited by a space. The number describes the status of the corresponding square.</p>\n<pre>\n0\tvacant square\n1\tblock\n2\tstart position\n3\tgoal position\n</pre>\n<p>The dataset for Fig. D-1 is as follows:</p>\n<pre>\n6 6 \n1 0 0 2 1 0 \n1 1 0 0 0 0 \n0 0 0 0 0 3 \n0 0 0 0 0 0 \n1 0 0 0 0 1 \n0 1 1 1 1 1 \n</pre>",
+  "output": "<p>For each dataset, print a line having a decimal integer indicating the minimum number of moves along a route from the start to the goal. If there are no such routes, print -1 instead. Each line should not have any character other than this number.</p>",
+  "samples": [
+    {
+      "input": "2 1\n3 2\n6 6\n1 0 0 2 1 0\n1 1 0 0 0 0\n0 0 0 0 0 3\n0 0 0 0 0 0\n1 0 0 0 0 1\n0 1 1 1 1 1\n6 1\n1 1 2 1 1 3\n6 1\n1 0 2 1 1 3\n12 1\n2 0 1 1 1 1 1 1 1 1 1 3\n13 1\n2 0 1 1 1 1 1 1 1 1 1 1 3\n0 0\n",
+      "output": "1\n4\n-1\n4\n10\n-1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2006 Japan Domestic Contest",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "graphs",
+    "bruteforcing",
+    "graph_traversal",
+    "simulation",
+    "dfs",
+    "backtracking"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 1.7273000478744507
+}

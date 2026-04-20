@@ -1,0 +1,36 @@
+{
+  "id": 24661,
+  "title": "Items and Heroes",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>There is a rooted tree of $N$ vertices. The vertices are numbered by integers from $1$ to $N$, with vertex $1$ as the root. The parent of vertex $i$ ($2 \\le i \\le N$) is denoted as $P_i$.</p>\n<p>Each vertex has a box with items. Also, there is a hero in each vertex.</p>\n<p>In the beginning, the box in vertex $i$ contains $A_i$ items.</p>\n<p>In each vertex $i$, the hero from that vertex has the quest to collect $C_i$ items. The hero in vertex $i$ can choose some vertices from the subtree rooted at vertex $i$ and take as many items as she wants from each of the selected vertices. One item cannot be taken by more than one hero.</p>\n<p>Determine if it is possible for the heroes to act in such a way that all $N$ quests will be completed.</p>\n<p>Additionally, $Q$ queries are given. In the $j$-th query, the integers $t_j$, $v_j$, $x_j$ are given, and the values are changed as follows:</p>\n<ul>\n<li>If $t_j=1$, change the value of $A_{v_j}$ to $x_j$.</li>\n<li>If $t_j=2$, change the value of $C_{v_j}$ to $x_j$.</li>\n</ul>\n<p>The queries are applied sequentially. The changes made in each query <strong>remain</strong> for all the subsequent queries as well. After each query, determine if it is possible to complete all $N$ quests.</p>",
+  "input": "<p>The first line of input contains one integer $N$ ($1 \\le N \\le 10^5$).</p>\n<p>The second line contains $N-1$ integers $P_2, P_3, \\ldots, P_N$: the parents of vertices $2, 3, \\ldots, N$ ($1 \\le P_i &lt; i$).</p>\n<p>The third line contains $N$ integers $A_1, A_2, \\ldots, A_N$ ($1 \\le A_i \\le 10^9$).</p>\n<p>The fourth line contains $N$ integers $C_1, C_2, \\ldots, C_N$ ($1 \\le C_i \\le 10^9$).</p>\n<p>The fifth line contains one integer $Q$ ($1 \\le Q \\le 10^5$).</p>\n<p>Each of the following $Q$ lines contains one query described by three integers $t_j$, $v_j$ and $x_j$ ($1 \\le t_i \\le 2$, $1 \\le v_i \\le N$, $1 \\le x_i \\le 10^9$): the type of the query, the number of vertex and the new value for $A_{v_i}$ (for the query of the first type) or $C_{v_i}$ (for the query of the second type), respectively.</p>",
+  "output": "<p>On the first line, print \"<code>Yes</code>\" if it is possible to complete all $N$ quests at once, or \"<code>No</code>\" otherwise.</p>\n<p>On the following $Q$ lines, print the answers for the queries in the same format, one per line.</p>",
+  "samples": [
+    {
+      "input": "3\n1 1\n2 1 3\n3 1 2\n2\n1 1 1\n2 3 1\n",
+      "output": "Yes\nNo\nYes\n"
+    },
+    {
+      "input": "5\n1 2 1 3\n1000000000 1000000000 1000000000 1000000000 1000000000\n1 1 1 1 1\n1\n1 1 1\n",
+      "output": "Yes\nYes\n"
+    },
+    {
+      "input": "5\n1 2 2 2\n109102235 645590056 708566822 497603443 131863700\n50073184 441114664 164994352 304489019 158100373\n8\n1 5 692234112\n1 3 610338520\n2 4 818442884\n2 4 164762830\n2 4 923652447\n2 4 197720766\n1 1 779302743\n1 1 222486377\n",
+      "output": "No\nYes\nYes\nNo\nYes\nNo\nYes\nYes\nYes\n"
+    }
+  ],
+  "hint": "<p>In Example 1, the hero from vertex 1 takes two items from the box at vertex 1 and one item from the box at vertex 3, the hero from vertex 2 takes an item from the box at vertex 2, and the hero from vertex 3 takes two items from the box at vertex 3. So, all three quests are completed.</p>\n<p>The first query changes the number of items in the box at vertex 1 from two to one. In this case, there are not enough items to complete all three quests.</p>\n<p>The second query changes the number of items to complete the quest for the hero at vertex 3 from two to one. In this case, the hero at vertex 1 takes one item from the box at vertex 1 and two items from the box at vertex 3, the hero at vertex 2 take one item from the box at vertex 2, the hero at vertex 3 takes one item from the box at vertex 3, and all three quests are again completed.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2022, Day 1: Kyoto U Contest 2, Contest, Open Cup, 2021/2022 Season, Stage 10: Grand Prix of Kyoto",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "lazyprop",
+    "hld"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 1.8378000259399414
+}

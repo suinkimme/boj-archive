@@ -1,0 +1,28 @@
+{
+  "id": 15772,
+  "title": "Segmentation",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>ZOYI는 사이트 내 온라인 유저과 대화할 수 있는 채널이라는 툴을 개발하고 있다. 최근에는 채널을 이용하는 온라인 유저를 분류하기 위해 RF(Recency / Frequency) 모델을 도입하였고 다음과 같은 계산을 통해 유저들을 분류하기로 하였다.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 654px; height: 352px;\" /></p>\r\n\r\n<p style=\"text-align: center;\">사진: RF채널에 따른 유저의 분류. 가로축이 Recency, 세로축이 Frequency 축이다.</p>\r\n\r\n<p style=\"text-align: center;\">단, &nbsp;0 &lt; <em>f</em><sub>1</sub> &lt; <em>f</em><sub>2</sub> &lt; <em>f</em><sub>3</sub> &lt; <em>f</em><sub>4</sub>, 0 &lt; <em>r</em><sub>1</sub> &lt; <em>r</em><sub>2</sub> &lt; <em>r</em><sub>3</sub> &lt; <em>r</em><sub>4</sub>이며, 모든 <em>f<sub>i</sub></em>값과 <em>r<sub>i</sub></em>값은 정수이다.</p>\r\n\r\n<p><em>x</em>축은 Recency, <em>y</em>축은 Frequency를 의미하며 각 온라인 유저는 접속 기록에 따라 <em>r</em>,&nbsp;<em>f</em>&nbsp;값이 정해지게 되며, 다음 12가지 중 하나로 분류하게 된다.</p>\r\n\r\n<ul>\r\n\t<li>&quot;<code>New Customer</code>&quot;</li>\r\n\t<li>&quot;<code>Promising</code>&quot;</li>\r\n\t<li>&quot;<code>About to Sleep</code>&quot;</li>\r\n\t<li>&quot;<code>Hibernating</code>&quot;</li>\r\n\t<li>&quot;<code>Lost</code>&quot;</li>\r\n\t<li>&quot;<code>Potential Loyalist</code>&quot;</li>\r\n\t<li>&quot;<code>Need Attention</code>&quot;</li>\r\n\t<li>&quot;<code>About to Leave</code>&quot;</li>\r\n\t<li>&quot;<code>Champion</code>&quot;</li>\r\n\t<li>&quot;<code>Loyal Customer</code>&quot;</li>\r\n\t<li>&quot;<code>Can&#39;t Lose Them</code>&quot;</li>\r\n\t<li>&quot;<code>None</code>&quot;</li>\r\n</ul>\r\n\r\n<p>이 중 &quot;<code>None</code>&quot;은 유저의 접속 기록이 없을 때를 뜻한다. 그림에서 (<em>r</em>,&nbsp;<em>f</em>)&nbsp;이 두 가지 이상의 분류 경계에 위치할 경우 (<em>r</em> - 0.5, <em>f</em> - 0.5)의 분류를 참고한다. 예를 들어 (<em>r</em>, <em>f</em>)의 값이 (<em>r</em><sub>4</sub>,&nbsp;<em>f</em><sub>2</sub>)인 경우는 &quot;<code>Hibernating</code>&quot; 으로 분류되고 (<em>r</em><sub>3</sub>,&nbsp;<em>f</em><sub>4</sub>)의 경우 &quot;<code>Loyal Customer</code>&quot;로 분류되는 식이다.</p>\r\n\r\n<p>당신은 RUN 에 관심있는 사이트 이용자 현황을 알고 싶어 RUN 지원 사이트에 채널을 설치하고 분석해보려고 한다. 이 사이트에서 접속 유저의 <em>r</em>, <em>f</em>&nbsp;는 다음과 같은 방식으로 하기로 결정했다.</p>\r\n\r\n<ul>\r\n\t<li><em>r</em>: 현재 시간이 <em>t</em>일 경우 <em>t</em> - (유저의 가장 최근 접속 시간)</li>\r\n\t<li><em>f</em>: 유저의 접속 횟수</li>\r\n</ul>\r\n\r\n<p>사이트 이용자들의 접속 이벤트가 주어질 때 고객을 위의 그림 기준으로 분류하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>첫 줄에는 <em>r</em><sub>1</sub>, <em>r</em><sub>2</sub>,&nbsp;<em>r</em><sub>3</sub>, <em>r</em><sub>4</sub> 를 나타내는 자연수 4개가 공백으로 구분되어 순서대로 주어진다.</p>\r\n\r\n<p>두 번째 줄에는 <em>f</em><sub>1</sub>, <em>f</em><sub>2</sub>,&nbsp;<em>f</em><sub>3</sub>, <em>f</em><sub>4</sub>를 나타내는 자연수 4개가 공백으로 구분되어 순서대로 주어진다.</p>\r\n\r\n<p>세 번째 줄에는 접속 이벤트의 수 <em>N</em>이 주어진다.</p>\r\n\r\n<p>다음 N개의 줄에는 일어난 이벤트의 정보가 순서대로 주어지며, <em>N</em>개의 줄 중 <em>i</em>번째 줄에 나타난 이벤트는 <em>i</em>시간 에 일어난 이벤트를 뜻한다.</p>\r\n\r\n<p>각 이벤트는 <em>A</em>와 <em>B</em>&nbsp;사이가 공백으로 구분 된 형태로 주어지며, <em>B</em>는 유저 이름을 나타내고 공백이 없는 길이 10 이하 알파벳 대소문자로 이루어져 있다. <em>A</em>는 1, 2 중 하나의 값을 가지게 되는데 1일 경우 유저가 사이트에 접속했다는 뜻이며, 2일 경우 그 순간 유저가 무엇으로 분류되었는지 출력 해야 한다.</p>\r\n",
+  "output": "<p>이벤트들 중 <em>A</em>가 2인 경우들에 대해 각 고객이 어떻게 분류 되었는지를 한 줄에 하나씩 출력한다. (따옴표는 제외하고 출력한다.)</p>\r\n",
+  "samples": [
+    {
+      "input": "1 2 3 4\n1 2 3 4\n8\n1 RUN\n1 Alex\n2 Alex\n1 RUN\n1 RUN\n1 Alex\n2 Alex\n2 RUN\n",
+      "output": "New Customer\nPotential Loyalist\nNeed Attention\n"
+    }
+  ],
+  "hint": "<p>시간 3에 <code>Alex</code>&nbsp;의 접속 상태는 <em>f</em> = 1&nbsp;(1번 접속), <em>r</em> = 1 (시간 3 - 2 = 1)이다. 따라 &quot;<code>New Customer</code>&quot; 로 분류된다.</p>\r\n\r\n<p>시간 7에 <code>Alex</code>&nbsp;의 접속 상태는 <em>f</em> = 2 (2번 접속), <em>r</em> = 1&nbsp;(시간 7 - 6 = 1)이다. 따라 &quot;<code>Potential Loyalist</code>&quot;로 분류된다.</p>\r\n\r\n<p>시간 8의 <code>RUN</code>&nbsp;의 접속 상태는 <em>f</em> = 3 (3번 접속), <em>r</em> = 3&nbsp;(시간 8 - 5 = 3)이다. 따라 &quot;<code>Need Attention</code>&quot; 으로 구분된다.</p>\r\n\r\n<p>해당 예제는 서브태스크 1에는 주어지지 않음을 유의하자.</p>\r\n",
+  "source": "University, KAIST, KAIST RUN Spring Contest, 2018 KAIST RUN Spring Contest, etaehyun4, jh05013, whquddn55",
+  "level": 12,
+  "tags": [
+    "case_work",
+    "data_structures",
+    "hash_set",
+    "implementation",
+    "set"
+  ],
+  "accepted_user_count": 108,
+  "submission_count": null,
+  "average_tries": 3.3241000175476074
+}

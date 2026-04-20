@@ -1,0 +1,27 @@
+{
+  "id": 9257,
+  "title": "Suspicious Orders",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>You may have heard about the case of a family that got a surprising visit from the FBI. It turns out that the wife had been using the family computer to search for pressure cookers, while the husband had been looking for backpacks. This was right after the Boston Marathon bombings, which had featured the use of improvised explosives using pressure cookers in backpacks. Naturally, a terrorist trying to evade detection will avoid searching for (or ordering) all materials for an attack directly — instead, a group of people may distribute the ordering of ingredients among themselves. Trying to detect such activities could be a use for the “social connections” data from the previous problems.</p>\n<p>Here, you will be given a list of all social connections. In addition, you will be given, for each person, the list of items they ordered (or looked at) online. The question is whether there are any cliques<sup>1</sup> of people whose orders together could be used to carry out an attack. To that end, you will be given lists of items that together can be used for an attack. If, say, items {1, 4, 6} together are enough to start an attack, then of course, if the group together buys {1, 2, 4, 6, 9}, that will also do. You are to decide how many such cliques are in your data set that could carry out attacks with what they ordered. (Notice that if one person alone already has all the materials, then each clique containing him also has all the materials, which means that you may count many such cliques. That’s correct.)</p>\n<p><sup>1</sup>Recall that a clique of people is a set such that each pair of people in this set are connected to each other.</p>",
+  "input": "<p>The first line is the number K of input data sets, followed by the K data sets, each of the following form:</p>\n<p>The first line contains four integers n, m, k, c, separated by spaces. 1 ≤ n ≤ 20 is the number of people in your network. 1 ≤ m ≤ 50 is the number of items whose purchases we are tracking, and 0 ≤ k ≤ 100 is the number of item combinations that can be used for an attack. 0 ≤ c ≤ 400 is the number of connections in the network.</p>\n<p>This is followed by k lines, each describing a combination of materials that can be used for an attack. Each such line contains as its first number an integer s<sub>i</sub>, 1 ≤ s<sub>i</sub> ≤ m, the number of items this combination contains. This is followed by s<sub>i</sub> integers on the same line, each between 1 and m.</p>\n<p>Next come n lines, describing the items that the corresponding person bought. Each such line starts with a number t<sub>j</sub> , 0 ≤ t<sub>j</sub> ≤ m, which is the number of items person j bought. Then follow t<sub>j</sub> integers between 1 and m, each giving an item.</p>\n<p>Finally, there are c lines, each containing two distinct integers between 1 and n, describing a connection between those two people.</p>",
+  "output": "<p>For each data set, output “Data Set x:” on a line by itself, where x is its number. Then, output the number of different cliques (of one or more person) which could carry out an attack by pooling their materials. This should be followed by an empty line.</p>",
+  "samples": [
+    {
+      "input": "1\n5 4 3 4\n2 1 2\n3 4 1 3\n2 2 4\n1 2\n2 1 4\n1 3\n4 4 2 1 3\n0\n1 2\n1 3\n2 3\n4 5\n",
+      "output": "Data Set 1:\n5\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, The USC Programming Contest, Fall 2013: PRISM",
+  "level": 17,
+  "tags": [
+    "dp",
+    "graphs",
+    "bitmask",
+    "dp_bitfield"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 3
+}

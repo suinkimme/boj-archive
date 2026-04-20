@@ -1,0 +1,27 @@
+{
+  "id": 27822,
+  "title": "Musical Cords",
+  "time_limit": "120 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Lauren is trying to play the most beautiful notes possible using a harp. The harp is a circle with a radius of <b>R</b> centimeters. To play a note, a cord must be attached to the harp in a way that connects two different <i>attachment points</i> on the perimeter of the circle. Lauren then plucks this cord to play a note.</p>\n<p>There are <b>N</b> attachment points on the perimeter of the circular harp at which a cord can be attached. The i-th such attachment point is at a location that is <b>D<sub>i</sub></b> nanodegrees (a nanodegree is 10<sup>-9</sup> degrees) clockwise around the perimeter of the circular harp, starting from the rightmost point on the perimeter.</p>\n<p>Not all attachment points use the same technology to properly fix the cords onto them. The i-th attachment point requires L<sub>i</sub> centimeters of cord to be used for attaching. A cord fixed between two different attachment points i and j needs to be exactly L<sub>i</sub> + L<sub>j</sub> + distance(i, j) centimeters long. By distance(i, j) we mean the length of the geometric <a href=\"https://en.wikipedia.org/wiki/Chord_(geometry)\" target=\"_blank\">chord</a> connecting the i-th and j-th attachment points, that is, the Euclidean distance between the two points.</p>\n<p>Lauren thinks that notes sound better when they come from longer cords. What are the <b>K</b> longest cords that can be used with Lauren's harp?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow. The first line of a test case contains three integers: <b>N</b>, <b>R</b> and <b>K</b>: the number of attachment points, the radius of the circular harp in centimeters, and the number of lengths of cords that Lauren is interested in knowing.</p>\n<p>The next <b>N</b> lines describe the attachment points. The i-th of these lines contains two integers, <b>D<sub>i</sub></b> and <b>L<sub>i</sub></b>, which describe the position (in number of nanodegrees clockwise from the rightmost point of the harp) and length of cord in centimeters needed at the i-th attachment point.</p>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y<sub>1</sub> y<sub>2</sub> ... y<sub><b>K</b></sub></code>, where <code>x</code> is the test case number (starting from 1), and <code>y<sub>n</sub></code> is the n-th value in the list of lengths of all <b>N</b>×(<b>N</b>-1)/2 cords that can be used in Lauren's harp, sorted in non-increasing order.</p>\n<p>Each <code>y<sub>n</sub></code> will be considered correct if it is within an absolute or relative error of 10<sup>-9</sup> of the correct answer.</p>",
+  "samples": [
+    {
+      "input": "2\n5 2 1\n0 3\n1234567890 3\n3154510113 3\n180000000000 3\n359999999999 3\n5 10 1\n90000000000 8\n180000000000 7\n260000000000 9\n260000000001 1\n260000000002 1\n",
+      "output": "Case #1: 10.0000000000\nCase #2: 36.9238939618\n"
+    }
+  ],
+  "hint": "<p>The above cases meet the limits for Test Set 1. Another sample case that does not meet those limits appears at the end of this section.</p>\n<p>Note: the <b>L<sub>i</sub></b> values in these sample cases for Test Set 1 were chosen for ease of understanding and were not randomly generated. Your solution will be run against these sample cases and must pass them.</p>\n<p>In Sample Case #1, all of the attachment points have the same value, so we should pick the pair connected by the longest chord, which in this case is a horizontal diameter of the circle that has a length of 4 centimeters. So the total length needed is 4 + 3 + 3 = 10 centimeters.</p>\n<p>In Sample Case #2, the fourth and fifth points are extremely close to the third point, but have much smaller <b>L</b> values. We can effectively rule them out and focus on the possible connections among the first three points, as follows:</p>\n<ul>\n<li>first and second points: length 10√2 + 8 + 7: ≈29.142136.</li>\n<li>first and third points: length ≈19.923894 + 8 + 9: ≈36.923894.</li>\n<li>second and third points: length ≈12.855726 + 7 + 9: ≈28.855726.</li>\n</ul>\n<p>Using the first and third points gives us the greatest total length.</p>\n<p>The following additional case could not appear in Test Set 1, but could appear in Test Set 2.</p>\n<pre>\n1\n6 1 10\n0 10\n15000000000 1\n30000000000 1\n45000000000 1\n60000000000 1\n75000000000 1\n</pre>\n<p>The correct output is <code>Case #1: 12.2175228580 12.0000000000 11.7653668647 11.5176380902 11.2610523844 3.0000000000 2.7653668647 2.7653668647 2.5176380902 2.5176380902</code></p>\n<p>Notice that there are three possible pairs of points tied for producing the 9th longest cord. Also, it is fine if lines connecting different pairs of points intersect, since Lauren will only be playing one note at a time.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2020, Virtual World Finals",
+  "level": 26,
+  "tags": [
+    "sorting",
+    "geometry",
+    "binary_search",
+    "sweeping"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 1
+}

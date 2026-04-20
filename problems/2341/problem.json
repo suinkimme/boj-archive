@@ -1,0 +1,24 @@
+{
+  "id": 2341,
+  "title": "팩스 문제",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>상근이는 팩스 이미지를 압축하는 계획을 만들려고 한다. 스캐너를 통해서 이미지를 입력받으면, 1과 256사이의 정수로 이루어진 수열로 변환된다. 예를 들어, 아래와 같은 수열로 이미지를 변환할 수 있다.</p>\r\n\r\n<p>1, 1, 1, 1, 1, 46, 1, 1, 1,1, 1, 1, 2, 1, 2, 1, 1, 25, 26, 25, 25, 255, 256, 256, 256, 255,...</p>\r\n\r\n<p>이미지를 반드시 정확하게 변환할 필요는 없다. 따라서, 상근이는 수열의 각 정수를 레벨 4개(1, 86, 172, 256)으로 나타내려고 한다. 그리고, 이 레벨은 다음과 같이 2-bit 코드로 나타낼 수 있다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:40%\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th style=\"width:8%\">Level</th>\r\n\t\t\t<td style=\"width:8%\">1</td>\r\n\t\t\t<td style=\"width:8%\">86</td>\r\n\t\t\t<td style=\"width:8%\">172</td>\r\n\t\t\t<td style=\"width:8%\">256</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th style=\"width:8%\">Code</th>\r\n\t\t\t<td style=\"width:8%\">00</td>\r\n\t\t\t<td style=\"width:8%\">01</td>\r\n\t\t\t<td style=\"width:8%\">10</td>\r\n\t\t\t<td style=\"width:8%\">11</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>그림 안에는 같은 색으로 이루어진 영역(예를 들면 공백)이 있다.&nbsp;이 영역을 변환하면 유사한 정수가 연속해서 나타난다. 이를 처리하기 위해서 다음과 같은 압축 방법을 사용하려고 한다.</p>\r\n\r\n<ol>\r\n\t<li>수열의 첫 번째 수는 위의 표에 나온 2bit 코드로 변환한다.</li>\r\n\t<li>그 다음에 나오는 다른 모든 수에 대해서는\r\n\t<ul>\r\n\t\t<li>만약 수열의 바로 앞에 있는 수가 같은 수라면 0으로 변환한다.</li>\r\n\t\t<li>앞에 있는 수와 다른 수라면 1을 앞에 붙인 뒤 위 표의 2bit 코드로 변환한다.</li>\r\n\t</ul>\r\n\t</li>\r\n</ol>\r\n\r\n<p>상근이는 작은&nbsp;양의 에러를 크게 신경쓰지 않기 때문에, 작은 양의 에러는 무시한다. 예를 들어, 입력된 수열이&nbsp;2, 2, 2, 2, 2, 46, 2, 2 라고 했을 때, 이를 1, 1, 1, 1, 1, 86, 1, 1로 나타낸 다음&nbsp;변환하면 0000001011000가 되고 전체 에러는 1+1+1+1+1+40+1+1=47 이 된다. 하지만 1, 1, 1, 1, 1, 1, 1, 1 로 나타낸 후 변환하면 전체 에러는 1+1+1+1+1+45+1+1=52가 되어 커지지만 코드가 000000000가 되어 더 짧아진다.</p>\r\n\r\n<p>상근이는 변환 비용을 최소로 하는 방법을 찾으려고 한다. 변환 비용은 전체 에러 + W &times; (변환 코드의 길이)로 계산할 수 있다.</p>\r\n\r\n<ol>\r\n\t<li>W는 에러와 코드의 길이 중 어느 것을 중요시 하느냐에 따라 입력으로 주어진다.</li>\r\n\t<li>이때 전체 에러는 입력 수열 x<sub>1</sub>, x<sub>2</sub>, , x<sub>N</sub> , 변환 수열 y<sub>1</sub>, y<sub>2</sub>, , y<sub>N</sub>에 대해서 다음과&nbsp;같다.&nbsp;&Sigma;|x<sub>i</sub>-y<sub>i</sub>|</li>\r\n</ol>\r\n\r\n<p>수열이 2, 2, 2, 2, 2, 46, 2, 2 이고,&nbsp;W가 100인 경우에&nbsp;y<sub>1</sub>,..., y<sub>8</sub> = 1, 1, 1, 1, 1, 86, 1, 1 로 변환하면 코드는 0000001011000이 되고,&nbsp;변환 비용은 47 + 100 &times; 13 = 1347이다. 하지만 y<sub>1</sub>,..., y<sub>8</sub> = 1, 1, 1, 1, 1, 1, 1, 1로 변환하면 코드는 000000000이고 변환 비용은 52 + 100 &times; 9 = 952이다.</p>\r\n",
+  "input": "<p>첫째 줄에&nbsp;수열의 길이 N(1 &le;&nbsp;N &le; 50), 가중치 W(0 &le; W &le; 100)가 주어진다. 다음 N개의 줄에는 수열을 이루는 정수가&nbsp;차례로 주어진다.</p>\r\n",
+  "output": "<p>첫줄에는 최소 변환 비용을 출력한다. 그리고 두 번째 줄에는 변환코드를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "8 100\n2\n2\n2\n2\n2\n46\n2\n2\n",
+      "output": "952\n000000000\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (Singapore), NOI 2001",
+  "level": 13,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 76,
+  "submission_count": null,
+  "average_tries": 4.986800193786621
+}

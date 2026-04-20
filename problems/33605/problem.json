@@ -1,0 +1,32 @@
+{
+  "id": 33605,
+  "title": "Pinball",
+  "time_limit": "5 초 (추가 시간 없음)",
+  "memory_limit": "2048 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 295px; height: 200px;\"/></p>\n<p>You are playing a pinball-like game on a $h \\times w$ grid.</p>\n<p>The game begins with a small ball located at the center of a specific cell marked as <code>S</code>. Each cell of the grid is either:</p>\n<ul>\n<li>A block-type wall (<code>#</code>) that prevents the ball from entering the cell, reflecting it instead.</li>\n<li>A thin oblique wall, either left-leaning (<code>\\</code>) or right-leaning (<code>/</code>), which reflects the ball according to its orientation.</li>\n<li>A free cell (<code>.</code>) where the ball can move freely.</li>\n</ul>\n<p>The goal is to make the ball escape the grid.</p>\n<p>At the start, you can nudge the ball in one of four directions: up (<code>U</code>), down (<code>D</code>), left (<code>L</code>), or right (<code>R</code>). The ball traverses a free cell in one second, it enters and exits a cell containing a thin oblique wall in one second, and it bounces off a block-type wall in no time (the block-type wall occupies all of its cell).</p>\n<p>Collisions between the ball and all walls, both block-type and oblique, are perfectly elastic, causing the ball to reflect upon contact.</p>\n<p>For example, the ball takes two seconds to enter a free cell, traverse it, bounce off an adjacent block-type wall, and traverse back the free cell until it exits.</p>\n<p>As the ball moves, you may destroy oblique walls at any time, permanently converting them into free cells. You may destroy multiple oblique walls throughout the game, at any given time.</p>\n<p>Determine whether it is possible for the ball to escape, and if so, find the <strong>minimum</strong> number of oblique walls that need to be destroyed, along with the precise time each chosen wall should be destroyed.</p>",
+  "input": "<p>The first line contains two integers $h$ and $w$ ($1 ≤ h, w ≤ 1000$) — the size of the grid.</p>\n<p>The next $h$ lines describe the grid at the beginning of the game.</p>\n<p>The $i$-th of these lines contains $w$ characters, describing the cells on the $i$-th row. A dot (<code>.</code>) denotes a free cell, a hash sign (<code>#</code>) denotes a block-type wall, a (<code>\\</code>) or (<code>/</code>) denotes a thin oblique wall, and an <code>S</code> denotes the starting position of the ball (the starting position is a free cell).</p>\n<p>It is guaranteed that all the $h \\cdot w$ characters describing the grid belong to the set {<code>.</code>, <code>#</code>, <code>\\</code>, <code>/</code>, <code>S</code>} and the character <code>S</code> appears exactly once.</p>",
+  "output": "<p>Print <code>YES</code> if it is possible to make the ball escape the grid. Otherwise, print <code>NO</code>.</p>\n<p>If it is possible, print the following extra information.</p>\n<p>On the second line, print a single character $d ∈ ${<code>U</code>, <code>D</code>, <code>L</code>, <code>R</code>} — the direction of the starting nudge of the ball.</p>\n<p>On the third line, print $k$ — the minimum number of oblique walls to be destroyed.</p>\n<p>On each of the following $k$ lines, print three integers $t_i$, $r_i$, and $c_i$ — the oblique wall in the cell on the $r_i$-th row from the top and on the $c_i$-th column from the left is destroyed $t_i$ seconds after the ball starts moving. Note that the corresponding wall is destroyed <strong>just before</strong> $t_i$ seconds have elapsed, essentially meaning that the corresponding cell acts as a free cell if the ball would have hit that wall exactly $t_i$ seconds after the start.</p>\n<p><strong>The operations must be printed in chronological order</strong> (i.e., $t_i ≤ t_{i+1}$ for all $1 ≤ i ≤ k - 1$). The same wall cannot be destroyed multiple times (i.e., $(r_i , c_i) \\ne (r_j , c_j )$ if $i \\ne j$). Initially, there must be an oblique wall at the cell identified by $(r_i , c_i)$ for all $1 ≤ i ≤ k$.</p>\n<p>All $t_i$ must satisfy $0 ≤ t_i ≤ 10^7$. It can be proved that, if there exists a solution, there exists a solution where no $t_i$ exceeds $10^7$.</p>",
+  "samples": [
+    {
+      "input": "4 6\n#\\###.\n#./S##\n#\\\\..#\n######\n",
+      "output": "YES\nL\n2\n7 3 3\n8 1 2\n"
+    },
+    {
+      "input": "3 3\n###\n.S.\n###\n",
+      "output": "YES\nR\n0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, European Championship, The 2025 ICPC European Championship",
+  "level": 24,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "grid_graph",
+    "traceback"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

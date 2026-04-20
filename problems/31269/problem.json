@@ -1,0 +1,33 @@
+{
+  "id": 31269,
+  "title": "Eurokod",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>This year, for the first time, the <em>Eurokod</em> is being held, an international competition in writing beautiful and readable code!</p>\n<p>There are $n$ contestants participating in the competition, labeled with numbers from $1$ to $n$, and each of them has written a code.</p>\n<p>Their codes are evaluated by an association of computer scientists. The association consists of a president and members of the association. The president awards points to codes in one way, and the members of the association award points in another way.</p>\n<p><strong>President’s points:</strong></p>\n<p>The president will rank the codes from the most beautiful to the least beautiful (in his opinion). The first code will be awarded $n$ points, and each subsequent code will be awarded one point less than the previous one.</p>\n<p><strong>Members of the association’s points:</strong></p>\n<p>Each member of the association will vote for the code he considers the most beautiful. After each member of the association has voted, the codes will be ranked in descending order according to the number of votes they received from the members of the association. The first code (the one with the most votes) will be awarded $n$ points, and each subsequent code will be awarded one point less than the previous one.</p>\n<p><strong>Total points:</strong></p>\n<p>The total number of points for each code is equal to the sum of the points awarded by the president and the number of points awarded by the members of the association.</p>\n<p>Your task is to print the order of codes in descending order according to the number of points.</p>\n<p>If more codes have the same number of points, then the better ranked one is the one that has won more points from the members of the association.</p>",
+  "input": "<p>The first line contains an integer $n$ ($1 ≤ n ≤ 50$), the number of contestants.</p>\n<p>The second line contains $n$ integers $a_i$ ($1 ≤ a_i ≤ n$), where the $i$-th integer represents the label of the code that the president ranked $i$-th. The ranking of the president is given in the order from the most beautiful to the least beautiful, it contains all the labels from $1$ to $n$ exactly once.</p>\n<p>The third line contains $n$ integers $b_i$ ($0 ≤ b_i ≤ 200$), where the $i$-th integer represents the number of <strong>votes</strong> that the $i$-th code received from the members of the association. There won’t be two codes that received the same number of votes.</p>",
+  "output": "<p>In $n$ lines, print the ranking of codes in descending order according to the number of points.</p>\n<p>Each line should be in the form \"<code>[rank]. Kod[label] ([number of points])</code>\", where <code>[rank]</code> is the rank of the code in the ranking, <code>[label]</code> is the label of the code written in two-digit form with leading zeros, and <code>[number of points]</code> is the number of points that the code won.</p>\n<p>For example, if the first place was won by the code with the label $3$ with $12$ points, then the first line is \"<code>1. Kod03 (12)</code>\".</p>",
+  "samples": [
+    {
+      "input": "3\n1 2 3\n50 10 20\n",
+      "output": "1. Kod01 (6)\n2. Kod03 (3)\n3. Kod02 (3)\n"
+    },
+    {
+      "input": "5\n5 2 4 1 3\n4 5 2 1 3\n",
+      "output": "1. Kod02 (9)\n2. Kod05 (8)\n3. Kod01 (6)\n4. Kod04 (4)\n5. Kod03 (3)\n"
+    },
+    {
+      "input": "7\n6 3 2 1 5 4 7\n200 56 11 0 13 105 12\n",
+      "output": "1. Kod06 (13)\n2. Kod01 (11)\n3. Kod02 (10)\n4. Kod03 (8)\n5. Kod05 (7)\n6. Kod07 (4)\n7. Kod04 (3)\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example: <code>Kod03</code> and <code>Kod02</code> have the same number of points, but <code>Kod03</code> has more votes from the members of the association, so it is better ranked.</p>\n<p>Clarification of the second example: The president ranked the <code>Kod05</code> as the most beautiful, so it won $n = 5$ points.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2023/2024, Contest #3",
+  "level": 6,
+  "tags": [
+    "implementation",
+    "sorting"
+  ],
+  "accepted_user_count": 53,
+  "submission_count": null,
+  "average_tries": 1.2074999809265137
+}

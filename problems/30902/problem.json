@@ -1,0 +1,30 @@
+{
+  "id": 30902,
+  "title": "Exponentiation",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>In her spare time, Zoe develops an online calculator. Unfortunately, the calculator was targeted by a denial-of-service attack last week. The attacker created a lot of integer variables, exponentiated them with each other, and tried to do a bunch of comparisons. The huge integers were too much for the server to handle, so it crashed. Before Zoe fixes the issue, she decides to actually perform the calculations that the attacker requested.</p>\n<p>There are $n$ integer variables $x_1, x_2, \\dots, x_n$. At the start, each variable is set to $2023$. You have to perform $m$ instructions of the following two types:</p>\n<ul>\n<li><em>Operations</em>, of the form \"<code>!</code> $i$ $j$\", where $i \\neq j$. This means that $x_i$ gets set to $x_i^{x_j}$.</li>\n<li><em>Queries</em>, of the form \"<code>?</code> $i$ $j$\", where $i \\neq j$. This means that you should print '<code>&gt;</code>' if $x_i$ is greater than $x_j$, '<code>=</code>' if $x_i$ is equal to $x_j$, and '<code>&lt;</code>' if $x_i$ is smaller than $x_j$.</li>\n</ul>\n<p>Consider the first sample. After the $5$ operations, the values of the variables are: $$\\begin{align*} x_1&amp;=\\left({2023}^{2023}\\right)^{{2023}^{2023}},&amp; x_2&amp;=\\left({2023}^{{2023}^{2023}}\\right)^{2023},&amp; x_3&amp;={2023},&amp; x_4&amp;={2023}^{2023}. \\end{align*}$$</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>One line with two integers $n$ and $m$ ($2 \\leq n \\leq 1000$, $1 \\leq m \\leq 1000$), the number of variables and the number of instructions.</li>\n<li>$m$ lines, each containing a character $c$ (either '<code>!</code>' or '<code>?</code>') and two integers $i$ and $j$ ($1 \\leq i, j \\leq n$, $i \\neq j$), describing the instructions.</li>\n</ul>",
+  "output": "<p>For every query in the input, output its answer.</p>",
+  "samples": [
+    {
+      "input": "4 8\n! 1 4\n! 2 1\n! 4 3\n! 1 4\n! 2 3\n? 3 4\n? 2 4\n? 2 1\n",
+      "output": "<\n>\n=\n"
+    },
+    {
+      "input": "4 9\n! 2 4\n! 1 2\n? 3 1\n? 1 2\n! 2 3\n? 1 2\n! 1 3\n! 3 2\n? 1 3\n",
+      "output": "<\n>\n>\n<\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, NWERC 2023",
+  "level": 23,
+  "tags": [
+    "math",
+    "data_structures",
+    "ad_hoc"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 1.5769000053405762
+}

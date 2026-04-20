@@ -1,0 +1,34 @@
+{
+  "id": 19548,
+  "title": "그건 망고가 아니라 고양이예요",
+  "time_limit": "3 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"고양이 '망고'\" src=\"1.png\" style=\"width: 320px; height: 240px;\" /></p>\r\n\r\n<p>망고는 이하의 집에 사는 고양이이다. 이름의 유래는 집에 있던 망고주스와 색깔이 유사해서이다. 망고는 이 이름을 마음에 들어하는지 모르겠다.</p>\r\n\r\n<p>삶은 힘들지만 고양이는 귀엽다. 그래서 몇몇 사람들은 망고를 칭송하기도 하며, &lsquo;망고가 얼망고?&rsquo; 같은 말장난을 하거나, &lsquo;망고 맛있겠다&rsquo; 같은 중의적인 농담을 펼치기도 한다. 이하는 망고가 망고라고 주장하지만 몇몇 사람들은 &lsquo;그건 망고가 아니라 고양이예요&rsquo;라 말하기에 이르었고, 어쩌다보니 여기에서 이하는 끊임없는 PS 문제 창작 욕구에 의해 다음과 같이 문제를 만들게 되었다.</p>\r\n\r\n<p>기본 문자열 $M_0$와 규칙 문자열 $S$가 있다고 하자. 이 때 양의 정수 $i$에 대해 $M_i$는 $S$에 있는 모든 <span style=\"color:#e74c3c;\"><code>$</code></span> 문자를 문자열 $M_{i-1}$로 대체한 문자열로 정의된다. 문자열이 길지 않다면 몇 개는 손으로 만들어볼 수도 있다. $M_0$를 &#39;<code>그건 망고가 아니라 고양이예요</code>&#39;라 하고, $S$를 &#39;<code>그건 &quot;$&quot;가 아니라 &quot;$&quot;예요</code>&#39;라 하면 $M_0$, $M_1$, $M_2$는 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>$M_0$ : <code>그건 망고가 아니라 고양이예요</code></li>\r\n\t<li>$M_1$ : <code>그건 &quot;그건 망고가 아니라 고양이예요&quot;가 아니라 &quot;그건 망고가 아니라 고양이예요&quot;예요</code></li>\r\n\t<li>$M_2$ : <code>그건 &quot;그건 &quot;그건 망고가 아니라 고양이예요&quot;가 아니라 &quot;그건 망고가 아니라 고양이예요&quot;예요&quot;가 아니라 &quot;그건 &quot;그건 망고가 아니라 고양이예요&quot;가 아니라 &quot;그건 망고가 아니라 고양이예요&quot;예요&quot;예요</code></li>\r\n</ul>\r\n\r\n<p>$M_3$, $M_4$뿐만 아니라 $M_{1\\ 000}$도 똑같은 원리로 만들어낼 수 있다. 그러나 문자열의 길이가 너무 길어질 수 있기 때문에 일반적으로는 전체를 만들 수는 없다. 그러나 꼭 전체를 구할 필요는 없지 않은가? 이하는 이렇게 생성되는 문자열의 연속한 부분을 구해보고자 한다.</p>\r\n",
+  "input": "<p>첫 번째 줄에는 기본 문자열 $M_0$가, 두 번째 줄에는 규칙 문자열 $S$가 주어진다. 입력으로 들어오는 문자열은 다음 조건을 만족한다.</p>\r\n\r\n<ul>\r\n\t<li>각 문자열의 길이는 $1$ 이상 $10^5$ 이하이다.</li>\r\n\t<li>각 문자열의 모든 문자는 줄바꿈을 제외하고 ASCII code 값이 33 이상 126 이하이다. 즉, 제어 문자(control character)가 아닌 출력 가능한 문자(printable character)로만 구성되어 있다.</li>\r\n\t<li>$M_0$에는 <span style=\"color:#e74c3c;\"><code>$</code></span> (ASCII code 36) 문자가 없다.</li>\r\n\t<li>$S$에는 <span style=\"color:#e74c3c;\"><code>$</code></span> (ASCII code 36) 문자가 최소 하나 있다.</li>\r\n</ul>\r\n\r\n<p>세 번째 줄에는 두 개의 양의 정수 $k$와 $Q$가 공백으로 구분되어 주어진다. ($1 \\leq k \\leq 10^5$, $1 \\leq Q \\leq 10^5$)</p>\r\n\r\n<p>네 번째 줄부터 $Q$개의 줄에 걸쳐 질의가 주어진다. 이 $Q$개의 줄 중 $i$번째 줄에는 두 개의 정수 $a_i$와 $b_i$가 공백으로 구분되어 주어진다. ($1 \\leq a_i \\leq b_i \\leq 10^{18}$, $b_i - a_i &lt; 10^5$)</p>\r\n\r\n<p>$b_i$는 $M_k$의 길이를 초과하지 않으며, $b_i - a_i + 1$의 합은 $5 \\times 10^5$을 넘지 않는다.</p>\r\n",
+  "output": "<p>$ Q $개의 줄에 걸쳐 $M_k$의 부분문자열을 출력한다.</p>\r\n\r\n<p>이 중 $i$번째 줄에는 $M_k$의 $a_i$번째 글자부터 $b_i$번째 글자까지, 총 $b_i-a_i+1$개의 문자를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "It's_a_cat,_not_a_mango\nIt's_\"$\",_not_\"$\"\n1 6\n1 20\n18 35\n49 61\n29 40\n41 50\n5 5\n",
+      "output": "It's_\"It's_a_cat,_no\n_not_a_mango\",_not\n_not_a_mango\"\no\",_not_\"It'\ns_a_cat,_n\n_\n"
+    },
+    {
+      "input": "Ad_finitum\n$\n100000 4\n1 10\n1 2\n4 10\n5 8\n",
+      "output": "Ad_finitum\nAd\nfinitum\ninit\n"
+    },
+    {
+      "input": "THE_END\n$_IS_NEVER_$_IS_NEVER_$\n88 5\n1 7\n3256 3257\n67706 67710\n111011 111017\n999999999999999968 999999999999999993\n",
+      "output": "THE_END\nIS\nNEVER\nTHE_END\n_THE_END_IS_NEVER_THE_END_\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2020, Camp, Petrozavodsk Programming Camp, Summer 2020, Day 6: Korean Contest, evenharder, kdh9949, pichulia, shiftpsh, tncks0121",
+  "level": 21,
+  "tags": [
+    "binary_search",
+    "case_work",
+    "recursion"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 5.214300155639648
+}

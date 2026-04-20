@@ -1,0 +1,30 @@
+{
+  "id": 32447,
+  "title": "Make Them Meet",
+  "time_limit": "9 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Mila and Laura have been friends online for a long time; they have never met in real life. Currently, they are both attending the same onsite event, which means that they will surely meet. However, the hotel where they both are staying is very big and confusing. Therefore, after several days, they still have not run into each other.</p>\n<p>The hotel consists of $N$ rooms, numbered $0$ to $N-1$. Each room has a lamp that can be changed into different colours. You have found the electrical service room of the hotel, allowing you to alter the colours of the lamps. Your goal is to guide Mila and Laura using the lamps to finally make them meet.</p>\n<p>The hotel can be represented as a graph with $N$ vertices (the rooms) and $M$ edges (the corridors connecting the rooms). Mila and Laura initially start in two different rooms but you do not know which ones. You can make a number of moves. Each move consists of printing a list of $N$ integers, $c_0, c_1, \\ldots, c_{N-1}$, meaning that the colour of the lamp in room $i$ becomes $c_i$ for every $i = 0,1,\\ldots,N-1$. Mila and Laura will then look at the colour of the lamp in the room they are currently in and walk to a neighbouring room whose lamp has the same colour. If there is no such neighbouring room, they will stay where they are. If there are several such neighbouring rooms, they will choose one arbitrarily.</p>\n<p>If Mila and Laura are in the same room or use the same corridor simultaneously at any point during your moves, you have succeeded in making them meet. You can make at most $20\\,000$ moves, but you will get a higher score if you use fewer moves.</p>\n<p>Note that you do not know which rooms Mila and Laura start in or how they walk if they have multiple rooms with the same colour to choose from. <strong>Your solution must be correct regardless of their starting rooms or how they walk.</strong></p>",
+  "input": "<p>The first line contains two integers, $N$ and $M$, the number of rooms and the number of corridors in the hotel respectively.</p>\n<p>The following $M$ lines each contain two integers, $u_i$ and $v_i$, meaning that rooms $u_i$ and $v_i$ are connected by a corridor.</p>",
+  "output": "<p>Print one line with an integer $K$, the number of moves.</p>\n<p>On each of the following $K$ lines, print $N$ integers, $c_0, c_1, \\ldots, c_{N-1}$, such that $0\\le c_i\\le N$ for all $i$. These $K$ lines represent your moves in the chronological order.</p>",
+  "samples": [
+    {
+      "input": "3 2\n0 1\n1 2\n",
+      "output": "5\n2 2 2\n2 2 3\n2 2 3\n1 2 2\n1 2 2\n"
+    }
+  ],
+  "hint": "<p>The sample case is a path of length $3$, so it could belong to test groups $3$, $4$, or $5$. If the lamps of the rooms are coloured according to the sample output, then Mila and Laura will always meet.</p>\n<p>For example, let us assume that Mila starts in room $0$ and Laura starts in room $1$:</p>\n<ul>\n<li>First move: Mila must walk to room $1$. If Laura walks to room $0$, then they will meet in the corridor between $0$ and $1$. Let us say that Laura walks to room $2$ instead.</li>\n<li>Second move: Mila walks back to room $0$ and Laura stays in room $2$.</li>\n<li>Third move: Mila walks to room $1$ again and Laura stays in room $2$.</li>\n<li>Fourth move: Mila walks to room $2$ and Laura walks to room $1$. Thus, they will meet on the corridor between rooms $1$ and $2$.</li>\n<li>Fifth move: Mila and Laura swaps places and meet again (but it does not matter since they already met).</li>\n</ul>\n<p>The figure below shows the first four moves of the sample.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 768px; height: 76px;\"/></p>\n<p>Note that this was only the case where the friends start in the rooms $0$ and $1$. One can verify that the same sequence of moves ensures that they will meet, regardless of where they start and how they walk.</p>",
+  "source": "Olympiad, European Girls' Olympiad in Informatics, EGOI 2024, Day 2",
+  "level": 26,
+  "tags": [
+    "implementation",
+    "graphs",
+    "graph_traversal",
+    "ad_hoc",
+    "trees",
+    "constructive",
+    "dfs"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 2
+}

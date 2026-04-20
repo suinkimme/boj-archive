@@ -1,0 +1,28 @@
+{
+  "id": 33551,
+  "title": "Deal or No Deal",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>In the popular television show <em>Deal or No Deal</em>, produced by Endemol, participants have a chance of winning high amounts of money. The game is derived from the Dutch game <em>Miljoenenjacht</em>. It is often played with 26 boxes containing certain sums of money. First, the player selects a random box which he keeps. The contestant then begins choosing boxes that are to be removed from play. The amount inside each chosen box is immediately revealed after the contestant has chosen a box. The amount revealed cannot be inside the case the contestant has initially chosen. Throughout the game, after a predetermined number of cases have been opened, the banker offers the contestant an amount of money to quit the game. The bank has the following simple formula for making a offer: they calculate the average of all amounts of money in the unopened boxes (excluding the chosen box by the contestant) and multiply this average by 0.9. This offer is presented to the player and he then answers the famous question, choosing:</p>\n<ul>\n<li><em>deal</em>, accepting the offer presented and ending the game. If the contestant accepts the offer, he or she cannot accept subsequent offers the bank makes later in the game.</li>\n<li><em>no deal</em>, rejecting the offer and continuing the game.</li>\n</ul>\n<p>This process of removing cases and receiving offers continues, until either the player deals, or all offers have been rejected and the values of all unselected boxes are revealed. Should a player end the game by taking a deal, the game is continued from that point to see how much the player could have won by continuing the game. Depending on subsequent choices and offers, it is determined whether or not the contestant made a good deal, i.e. won more than if the game were allowed to continue.</p>\n<p>The game producer keeps good track of the amount of money that has been paid to contestants and the amount of money contestants could have won by playing to the end of the game by refusing every offer the bank makes. Recently, this database got corrupted. Luckily, they found some documents in a hidden archive, describing the progress of each of their games and specifying the choices contestants make. Each documents gives information about a single game. Using this document, it is possible to reconstruct the amount of money that the contestant actually won and could have won by playing to the very end of the game. They hired you to write a program that computes these two amounts of money.</p>",
+  "input": "<ul>\n<li>On the first line there is one integer $ n $: the number of boxes in the game ($ 1 \\leq n \\leq 1000 $).</li>\n<li>After that, there are $ n $ space-separated numbers, each describing the amount of money in box $ i $ ($ 0.01 \\leq m[i] \\leq 5000000 $ where $ m[i] $ is the amount of money in box $ i $).</li>\n<li>After that, there are two space-seperated integers $ a $ and $ q $, $ a $ being the box that is chosen by the contestant (the first box has index 1) and $ q $ being the number of actions that have been executed during the game.</li>\n<li>After that, $ q $ lines follows with each line specifying a possible action during the game. Each action is specified by a single uppercase character. The several actions are:\n\t<ul>\n<li>The contestant opens a box, specified by the character <em>O</em>. The character is followed by the index of the box that is opened (the first box has index 1).</li>\n<li>The bank makes an offer. This is indicated by the character <em>B</em>, followed by the choice of the contestant (deal or no deal). A <em>D</em> follows if the contestant accepts the offer and a <em>N</em> follows if the contestant refuses the offer.</li>\n</ul>\n</li>\n</ul>",
+  "output": "<p>Two lines with on the first line, the amount of money the contestant could have won by playing to the end of the game. On the second line, output the amount of money that the contestant has actually won. The numbers should be rounded to two decimals.</p>",
+  "samples": [
+    {
+      "input": "7\n1.00 2.00 3.00 4.00 5.00 6.00 7.00\n4 8\nO 3\nO 2\nO 1\nB N\nO 7\nO 5\nB D\nO 6\n",
+      "output": "4.00\n5.40\n"
+    },
+    {
+      "input": "7\n100.00 500.00 1000.00 2000.00 10000.00 1000000.00 5000000.00\n7 8\nO 3\nO 2\nO 1\nB N\nO 7\nO 5\nB N\nO 6\n",
+      "output": "5000000.00\n5000000.00\n"
+    }
+  ],
+  "hint": null,
+  "source": ", University, Delft University of Technology, Sjaars Kampioenschap Programmeren 2015",
+  "level": 7,
+  "tags": [
+    "implementation"
+  ],
+  "accepted_user_count": 19,
+  "submission_count": null,
+  "average_tries": 1.8421000242233276
+}

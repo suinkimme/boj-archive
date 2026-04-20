@@ -1,0 +1,25 @@
+{
+  "id": 12059,
+  "title": "gRanks (Large)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There are many great athletes in the world, and it's very hard to say who is the best in the world at a particular sport, especially when different athletes have won different competitions. Here's one possible system for ranking athletes:</p>\n<ol>\n<li>Determine the number <strong>P</strong> of finishing places in any competition that will be worth points for athletes, and how many points <strong>S<sub>i</sub></strong> each of those finishing places is worth. For example, for <strong>P</strong> = 3, one possible assignment would be 1000 points for 1st place, 500 for 2nd place, and 300 for 3rd place, and 0 for anything below that. (We assume there are no ties within competitions.)</li>\n<li>Since not all competitions are equally important, assign a weight <strong>W<sub>i</sub></strong> to each one. The score gained by an athlete for a competition will be the points from step 1, modified by the weight for that competition. For example, we may decide that Olympics has a weight of 5, and, continuing with our example from above, the winner of the Olympics would receive 5 * 1000 = 5000 points.</li>\n<li>Since we don't want to reward athletes simply for participating in many competitions, we count only the <strong>M</strong> highest scores received by an athlete across all competitions. For example, if <strong>M</strong> = 2 and an athlete earns scores of 1000*5, 500*1, and 300*3 in three different competitions, only the 5000 and 900 would be counted.</li>\n</ol>\n<p>You are given the points per finishing place, the weights of the competitions, and the results of the competitions. Can you rank all of the athletes who appeared in the competitions? If multiple athletes have the same score, they will share the same rank and listed in alphabetical order of their names.</p>",
+  "input": "<p>The first line of the input gives the number of test cases, <strong>T</strong>. <strong>T</strong> test cases follow; each test case consists of the following:</p>\n<ol>\n<li>One line with an integer <strong>P</strong>, the number of top places for which points are awarded.</li>\n<li>One line consists with <strong>P</strong> integers representing the scores <strong>S<sub>i</sub></strong> for the top places, starting with first place and continuing down the places.</li>\n<li>One line with an integer <strong>N</strong>, the number of competitions.</li>\n<li><strong>N</strong> lines, each of which represents a competition. Each line begins with <strong>W<sub>i</sub></strong>, the weight of this competition, and continues with the <strong>P</strong> names of the athletes who finished in the top <strong>P</strong> places. They are listed in descending order starting from first place.</li>\n<li>One line with an integer <strong>M</strong>, the maximum number of competitions counted toward an athlete's score.</li>\n</ol>",
+  "output": "<p>For each test case, output one line containing \"Case #x:\", where x is the test case number (starting from 1). Then output one line for each athlete, from highest rank to lowest rank, with the format <code>r: name</code>, where <code>r</code> is the rank of the athlete and <code>name</code> is the name of the athlete. You need to rank all of the athletes that appeared in the input.</p>",
+  "samples": [
+    {
+      "input": "1\n2\n1000 500\n6\n5 BOLT GAY\n4 GAY BOLT\n1 GAY TIANBING\n1 GAY PEIMENG\n1 TIANBING LARRY\n1 PEIMENG LARRY\n2\n",
+      "output": "Case #1:\n1: BOLT\n2: GAY\n3: PEIMENG\n3: TIANBING\n5: LARRY\n"
+    }
+  ],
+  "hint": "<p>In the first case, Bolt scored a total of 7000 in his two competitions. Gay would have scored a total of 8500 if all competitions were counted, but since only the top 2 competitions are counted in this case, Gay scored 6500 and ranked second. Since Peimeng and Tianbing both scored 1500, they both ranked 3rd and listed by their names. Larry is last, since he scored only 1000.</p>",
+  "source": "Contest, Google, Google's Coding Competitions, Google APAC 2016 University Graduates Test, Round C APAC Test 2016, Contest, Google, Kick Start, Google Kick Start 2015, Round C",
+  "level": 9,
+  "tags": [
+    "implementation",
+    "sorting"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 1.9544999599456787
+}

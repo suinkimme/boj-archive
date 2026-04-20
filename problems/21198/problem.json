@@ -1,0 +1,30 @@
+{
+  "id": 21198,
+  "title": "Arithmetic Decoding",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Arithmetic coding is a method to represent a message as a real number $x$ such that $0 \\leq x &lt; 1$. We will assume that the message consists only of uppercase 'A's and 'B's.  The two letters have associated probabilities $p_A$ and $p_B = 1 - p_A$ such that $0 &lt; p_A &lt; 1$.</p>\n<p>The current interval $[a,b)$ is initially set to $[0,1)$ and we will update this interval one letter at a time.  To encode a letter, the current interval is divided into two subintervals as follows.  Let $c = a + p_A(b-a)$.  If the next letter is 'A', $[a,c)$ becomes the current interval.  Otherwise, the current interval is now $[c,b)$.  This process is repeated for each letter in the message.  If $[k,\\ell)$ is the final interval, the encoded message is chosen to be $k$.</p>\n<p>For example, if the original message is \"ABAB\" and $p_A = p_B = 0.5$, the sequence of intervals encountered in the algorithm is \\[ [0,1) \\xrightarrow{A} [0, 0.5) \\xrightarrow{B} [0.25, 0.5) \\xrightarrow{A} [0.25, 0.375) \\xrightarrow{B} [0.3125, 0.375). \\] The encoded message is therefore 0.3125, or 0.0101 in binary.</p>\n<p>Given the length of the message, the probabilities, and the encoded message, determine the original message.</p>",
+  "input": "<p>The first line contains the integer $N$ ($1 \\leq N \\leq 15$), which is the length of the original message.  The second line contains the integer $D$ ($1 \\leq D \\leq 7$), which indicates that $p_A = \\frac{D}{8}$. The third line contains the binary representation of the encoded message. It is guaranteed that the binary representation of the encoded message starts with \"0.\" and contains at most $3N+2$ characters.</p>\n<p>It is guaranteed that the encoded message came from an initial message of length $N$ consisting only of 'A' and 'B' using this value of $p_A$.</p>",
+  "output": "<p>Display the original message.</p>",
+  "samples": [
+    {
+      "input": "4\n4\n0.0101\n",
+      "output": "ABAB\n"
+    },
+    {
+      "input": "6\n5\n0.100100100100101\n",
+      "output": "ABBABA\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, Rocky Mountain Regional, 2020 Rocky Mountain Regional Contest",
+  "level": 8,
+  "tags": [
+    "math",
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 26,
+  "submission_count": null,
+  "average_tries": 1.0769000053405762
+}

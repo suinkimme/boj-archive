@@ -1,0 +1,26 @@
+{
+  "id": 25651,
+  "title": "Regular Expression",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Grammy has recently been interested in regular expressions while focusing on cases where the alphabet consists of characters from '<code>a</code>' to '<code>z</code>'. Today she asks NIO some questions. Each question gives string $A$, asking the minimum length of an expression matching string $A$ according to the matching rules, and also the number of such shortest expressions.</p>\n<p>To learn detailed rules about how regular expressions match strings, you can refer to <a href=\"https://en.wikipedia.org/wiki/Regular_expression\">https://en.wikipedia.org/wiki/Regular_expression</a>.</p>\n<p>Here we only consider characters from '<code>a</code>' to '<code>z</code>' and special characters '<code>.</code>', '<code>?</code>', '<code>*</code>', '<code>+</code>', '<code>|</code>', '<code>(</code>', '<code>)</code>'. It is assumed that the asterisk, the question mark and the plus sign have the highest priority, then follows concatenation and then alternation. Parentheses can be used to change the priority. For example, \"<code>a(b|c)</code>\" can match \"ab\" and \"ac\". Parentheses may be omitted when they don't change the priority. For example, \"<code>(ab)c</code>\" can be written as \"<code>abc</code>\", and \"<code>a|(b(c*))</code>\" can be written as \"<code>a|bc*</code>\".</p>\n<p>Here are some examples of matching:</p>\n<ul>\n<li>(or): \"<code>gray|grey</code>\" can match \"gray\" or \"grey\".</li>\n<li>(question mark): \"<code>colou?r</code>\" matches both \"color\" and \"colour\".</li>\n<li>(asterisk): \"<code>ab*c</code>\" matches \"ac\", \"abc\", \"abbc\", \"abbbc\", and so on.</li>\n<li>(plus sign): \"<code>ab+c</code>\" matches \"abc\", \"abbc\", \"abbbc\", and so on, but not \"ac\".</li>\n<li>(wildcard): \"<code>a.b</code>\" matches any string that contains an \"a\", then any single character, and then \"b\"; and \"<code>a.*b</code>\" matches any string that contains an \"a\", and then the character \"b\" at some later point. More precisely, \"ab\" can be matched by \"<code>a.*b</code>\" but not by \"<code>a.b</code>\".</li>\n<li>(concatenation): Consider expression $R =$ \"<code>(ab|c)</code>\" matching {\"ab\", \"c\"}, and expression $S =$ \"<code>(d|ef)</code>\" matching {\"d\", \"ef\"}. Then, $(RS) =$ \"<code>((ab|c)(d|ef))</code>\" matches {\"abd\", \"abef\", \"cd\", \"cef\"}.</li>\n</ul>",
+  "input": "<p>The input contains only a single case.</p>\n<p>The first line contains a single integer $Q$ ($1\\leq Q\\leq 100\\,000$) denoting the number of questions. The $i$-th line of the following $Q$ lines contains one string $A$ consisting of lowercase English letters ($1\\leq |A|\\leq 200\\,000$) denoting the string $A$ of the $i$-th question. It is guaranteed that $\\sum |A|\\leq 1\\,000\\,000$.</p>",
+  "output": "<p>For each question, output a single line containing two integers: the minimum length of a matching expression and the number of matching expressions of such length. Note that the answers may be extremely large, so please print them modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "2\na\nab\n",
+      "output": "1 2\n2 6\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2022, Day 2: ZJU Contest 1",
+  "level": 13,
+  "tags": [
+    "string",
+    "ad_hoc",
+    "regex"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.6363999843597412
+}

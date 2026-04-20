@@ -1,0 +1,30 @@
+{
+  "id": 19373,
+  "title": "Bit Operations",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given $N$ pairs of integers $(x_i, y_i)$. Construct a function $f$ that satisfies $y_i = f(x_i)$ for each $i$. It must be possible to write the function $f$ in the C programming language in the following form:</p>\n<pre>\nuint32_t f(uint32_t x) {\n  return Expression;\n}</pre>\n<p>Here, <code>uint32_t</code> is an unsigned 32-bit integer. The Expression must satisfy the following BNF:</p>\n<pre>\n&lt;expr&gt; ::= \"x\"\n         | &lt;num&gt;\n         | \"(~\" &lt;expr&gt; \")\"\n         | \"(\" &lt;expr&gt; &lt;op2&gt; &lt;expr&gt; \")\"\n&lt;op2&gt; ::= \"&amp;\" | \"|\" | \"^\" | \"+\" | \"-\" | \"*\"\n</pre>\n<p>Here, <code>&lt;num&gt;</code> is an unsigned 32-bit integer represented as a decimal number. It must not contain leading zeroes, except if it is zero itself which must be represented as $0$.</p>",
+  "input": "<p>The first line contains an integer $N$ ($1 \\le N \\le 8$).</p>\n<p>The $i$-th of the next $N$ lines contains two integers $x_i$ and $y_i$ ($0 \\le x_i, y_i &lt; 256$).</p>",
+  "output": "<p>Print an expression that satisfies the conditions.</p>\n<p>The output must strictly follow the BNF format in the statement. Extra whitespaces, newlines, parentheses, etc.~are not allowed. The output must contain at most $10^5$ characters. It is guaranteed that the answer exists for the given input.</p>",
+  "samples": [
+    {
+      "input": "8\n1 1\n2 2\n3 3\n4 0\n5 1\n6 2\n7 3\n8 0\n",
+      "output": "(x&3)\n"
+    },
+    {
+      "input": "8\n1 0\n2 0\n3 2\n4 0\n5 4\n6 4\n7 6\n8 0\n",
+      "output": "(x&(x-1))\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2017, Day 3: Japanese Contest, Head of Republic of Karelia Cup, Round I",
+  "level": 20,
+  "tags": [
+    "ad_hoc",
+    "constructive",
+    "bitmask"
+  ],
+  "accepted_user_count": 8,
+  "submission_count": null,
+  "average_tries": 5
+}

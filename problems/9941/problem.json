@@ -1,0 +1,24 @@
+{
+  "id": 9941,
+  "title": "One Move from Towers of Hanoi",
+  "time_limit": "3 초",
+  "memory_limit": "128 MB",
+  "description": "<p>For this problem, we are concerned with the classic problem of Towers of Hanoi. In this problem there are three posts and a collection of circular disks. Let’s call the number of disks n. The disks are of different sizes, with no two having the same radius, and the one main rule is to never put a bigger disk on top of a smaller one. We will number the disks from 1 (smallest) to n (biggest) and name the posts A, B, and C. If all the disks start on post A, and the goal is to move the disks to post C by moving one at a time, again, never putting a bigger one on top of a smaller one, there is a well-known solution that recursively calls for moving n–1 disks from A to B, then directly moves the bottom disk from A to C, then recursively calls for moving the n–1 disks from B to C.</p>\n<p>Pseudocode for a recursive solution to classic Towers of Hanoi problem:</p>\n<pre>\nmove(num_disks, from_post, spare_post, to_post)\n    if (num_disks == 0)\n        return\n    move(num_disks – 1, from_post, to_post, spare_post)\n    print (\"Move disk \", num_disks, \" from \",\n        from_post, \" to \", to_post)\n    move(num_disks – 1, spare_post, from_post, to_post)\n</pre>\n<p>The problem at hand is determining the k<sup>th</sup> move made by the above algorithm for a given k and n.</p>",
+  "input": "<p>Input will be two integers per line, k and n. End of file will be signified by a line with two zeros. All input will be valid, k and n will be positive integers with k less than 2<sup>n</sup> so that there is a k<sup>th</sup> move, and n will be at most 60 so that the answer will fit in a 64-bit integer type.</p>",
+  "output": "<p>Output the requested k<sup>th</sup> move made by the above algorithm. Follow this format exactly: “Case”, one space, the case number, a colon and one space, and the answer for that case given as the number of the disk, the name of the from_post, and the name of the to_post with one space separating the parts of the answer. Do not print any trailing spaces.</p>",
+  "samples": [
+    {
+      "input": "1 3\n5 3\n8 4\n0 0\n",
+      "output": "Case 1: 1 A C\nCase 2: 1 B A\nCase 3: 4 A C\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, North Central North America Regional, NCNA 2013",
+  "level": 12,
+  "tags": [
+    "recursion"
+  ],
+  "accepted_user_count": 59,
+  "submission_count": null,
+  "average_tries": 1.7458000183105469
+}

@@ -1,0 +1,26 @@
+{
+  "id": 23593,
+  "title": "Package",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "256 MB",
+  "description": "<p>To install packages in the Vinux OS, Vasya uses Vum, the modern package manager.</p>\n<p>Each package has several versions that can be installed. Only one of the application versions can be installed at once. Let's call a specific version of a specific application a <em>package</em>. Since specific versions of different applications can be mutually incompatible, there is such thing as <em>conflicts</em> in Vum. Every conflict is a set of packages, from which only one package can be installed. Attempting to install more than one package from the conflict list leads to a crash, and Vasya does not want that.</p>\n<p>Different versions of any application can conflict (or not). Several versions of an application can be in a conflict, including all versions of the application.</p>\n<p>Since the conflict description system in Vum is rather primitive, each package can be listed only in one conflict.</p>\n<p>Vasya wants to install $N$ different applications without crashing his Vinux. He must choose the application versions without breaking the rules above, but Vum's exhaustive dependency resolution algorithms cannot cope with this task. Vasya is asking for help with his package manager.</p>",
+  "input": "<p>The first line of the input file contains an integer $N$  --- the number of applications that Vasya wants to install ($1$ $\\le$ $N$ $\\le$ $200$).</p>\n<p>The following $N$ lines provide the descriptions of the applications, containing their version lists. An application description consists of the following space-separated fields:</p>\n<ul>\n<li>application name --- a line of lower case Latin letters from 1 to 10 symbols long;</li>\n<li>number of versions --- a positive integer smaller than or equalling $1\\,000$;</li>\n<li>numbers of versions --- positive integers listed in the ascending order.</li>\n</ul>\n<p>The numbers of applications are smaller than or equal $100\\,000$. All application names are different.</p>\n<p>The following line contains the number $K$ --- the number of conflicts ($0$ $\\le$ $K$ $\\le$ $500$).</p>\n<p>The following $K$ lines describe the conflicts. A conflict description begins with a positive integer $T$ --- the number of packages in the conflict. Next, $T$ space-separated packages are listed. For each package, the application name is provided, followed by the version number.</p>\n<p>It is guaranteed that packages listed in the conflicts are never repeated, and that all versions are mentioned in the application descriptions.</p>",
+  "output": "<p>If it is impossible to install all $N$ applications without conflicts, the only line of the output file must contain the word <code>No</code>. If it is possible, the first line must contain the word <code>Yes</code>, and the second line must list space-separated numbers of versions that must be installed to achieve that.</p>\n<p>The versions for $N$ applications must be printed in the same order in which the applications are described in the input file. If there are several possible ways of selecting the applications, print any one of them.</p>",
+  "samples": [
+    {
+      "input": "3\nvim 3 1 2 3\nnano 2 5 8\npython 2 2 3\n2\n2 vim 3 nano 8\n3 vim 1 nano 5 vim 2\n",
+      "output": "Yes\n2 8 2\n"
+    },
+    {
+      "input": "2\nfirefox 1 38\nchrome 1 46\n1\n2 firefox 38 chrome 46\n",
+      "output": "No\n"
+    }
+  ],
+  "hint": "<p>The first example contains two conflicts. The first conflict prevents installing the third version of vim and the eigth version of nano simultaneously. The second conflict states that only one of the following can be installed --- 1st version ov vim, 5th version of nano, and 2nd version of vim, or nothing at all. The correct solutions will be the following:</p>\n<ul>\n<li>1 8 2</li>\n<li>1 8 3</li>\n<li>2 8 2</li>\n<li>2 8 3</li>\n<li>3 5 2</li>\n<li>3 5 3</li>\n</ul>\n<p>In the second example, there are two applications, each with one version. However, the only conflict forbids installing both applications together.</p>",
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 4: Grand Prix of Eurasia",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2
+}

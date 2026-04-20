@@ -1,0 +1,32 @@
+{
+  "id": 23566,
+  "title": "Ant Colonies",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>A group of scientists analyzed an ant nest where several ant colonies live. They found that the ant nest is a tree structure in which each node represents the physical place where an ant colony lives, and each edge represents a tunnel connecting two ant colonies. The most interesting thing is that each colony has exactly one color and it sometimes changes its color. The color change mechanism depends on the closest pair of colonies with a certain color $c$ among the colonies lying on the path between two given colonies $A$ and $B$. The distance between two colonies is the number of tunnels of the path connecting them, that is, the number of edges of the path connecting two corresponding nodes in the tree structure.</p>\n<p>For example, Figure A.1 (a) shows a tree structure with five ant colonies numbered 1 to 5 of colors <span class=\"color\">1</span>, <span class=\"color\">2</span>, <span class=\"color\">2</span>, <span class=\"color\">2</span>, <span class=\"color\">1</span>, labelled in orange above the colonies, in order from colony 1 to colony 5, respectively. For color <span class=\"color\">2</span> and two colonies 2 and 5, the closest pair of colonies with color <span class=\"color\">2</span> on the path between colony 2 and colony 5 is the pair (colony 2, colony 3). But for colony 2 and colony 4, the closest pair with color <span class=\"color\">2</span> is the pair (colony 3, colony 4).</p>\n<p>Suppose now that the current color <span class=\"color\">2</span> of colony 3 changes to color <span class=\"color\">3</span> as shown in Figure A.1 (b). Then there is no closest pair of colonies with color 2 on the path between colony 2 and colony 5 because only one colony has color <span class=\"color\">2</span>. The closest pair with color <span class=\"color\">2</span> for colony 2 and colony 4 becomes (colony 2, colony 4).</p>\n<p>Given colors of ant colonies, a tree structure of the ant nest, and an ordered list of update commands for the color change and query commands for the closest pair, write a program to find the closest pair of colonies with color $c$ between the two colonies $A$ and $B$ for each query $(A, B, c)$.</p>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"1.png\" style=\"width: 153px; height: 164px;\"/></td>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 153px; height: 164px;\"/></td>\n</tr>\n<tr>\n<td>(a)</td>\n<td>(b)</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure A.1 An ant nest with five colonies. The numbers in orange represent colony colors.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing two integers, $n$ and $a$ ($2 ≤ n ≤ 100,000$, $2 ≤ q ≤ 100,000$), where $n$ is the number of ant colonies and $q$ is the number of update and query commands. Ant colonies are numbered from $1$ to $n$, and colors are identified with integers from $\\{1, 2, \\cdots , n\\}$. The next line consists of $n$ positive integers representing colors for ant colonies, in order from colony $1$ to colony $n$. In the following $n-1$ lines, the $i$-th line contains a pair of integers $a_i$, $b_i$ ($1 ≤ a_i , b_i ≤ n$, $a_i ≠ b_i$) specifying the numbers of two ant colonies connected by a tunnel, which corresponds to an edge in the tree structure. In the following $q$ lines, the $i$-th line has a form of $(S, A, c)$ or $(S, A, B, c)$, where $S$ is a single uppercase character either ‘<code>U</code>’ or ‘<code>Q</code>’, representing the update and the query, respectively. In the case that $S =$ <code>U</code>, it has the form of $(S, A, c)$ which is an update command to change (update) the current color of colony $A$ to color $c$ ($1 ≤ A, c ≤ n$). In the case of $S =$ <code>Q</code>, it has the form of $(S, A, B, c)$ which is a query command to output the distance of the closest pair of colonies with color $c$ on the path between colony $A$ and colony $B$ ($1 ≤ A, B, c ≤ n$). These commands must be executed in the order given in the input.</p>",
+  "output": "<p>Your program is to write to standard output. For every query $(S, A, B, c)$ with $S =$ <code>Q</code>, print exactly one line containing the distance of the closest pair of colonies with color $c$ on the path between colonies $A$ and $B$ under the current status of the ant nest. If there is no pair with color $c$ between them, print <code>-1</code>.</p>",
+  "samples": [
+    {
+      "input": "5 5\n1 2 2 2 1\n1 2\n3 1\n3 4\n3 5\nQ 2 5 2\nQ 2 4 2\nU 3 3\nQ 2 5 2\nQ 2 4 2\n",
+      "output": "2\n1\n-1\n3\n"
+    },
+    {
+      "input": "4 6\n2 1 1 1\n1 2\n1 3\n1 4\nQ 2 3 1\nQ 2 4 1\nQ 3 4 1\nU 1 1\nQ 2 3 1\nQ 2 4 1\n",
+      "output": "2\n2\n2\n1\n1\n"
+    }
+  ],
+  "hint": "<p>The first sample corresponds to Figure A.1.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2021",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "trees",
+    "segtree",
+    "offline_queries",
+    "hld"
+  ],
+  "accepted_user_count": 52,
+  "submission_count": null,
+  "average_tries": 4.173099994659424
+}

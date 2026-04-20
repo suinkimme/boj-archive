@@ -1,0 +1,36 @@
+{
+  "id": 23569,
+  "title": "Friendship Graphs",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Given a collection of people who interact, we can define a graph whose vertices are people, with an edge between two people if and only if they are friends with one another. Such graphs are called <em>social networks</em> and are well defined on any set of people, for example, the students in a college or the residents of a small town. An entire science analyzing social networks has sprung up in recent years, because many interesting aspects of people and their behavior are best understood as properties of this <em>friendship graph</em>.</p>\n<p>Given a friendship graph where the vertices are the students in the Problem Solving class, your job is to write a program that decomposes the students in the class into two groups, $A$ and $B$, so that the following three conditions are satisfied simultaneously:</p>\n<ul>\n<li>Each student in the class belongs to exactly one group, $A$ or $B$.</li>\n<li>Any two students in each group are friends with each other.</li>\n<li>The difference between the sizes of groups $A$ and $B$, denoted as $||A| - |B||$, is as small as possible.</li>\n</ul>\n<p>For example, suppose we are given a friendship graph shown in the figure below. Decomposing the students into $A = \\{u_1, u_2, u_3, u_6\\}$ and $B = \\{u_4, u_5, u_7\\}$ is not possible because $u_2$ and $u_6$ are not friends. On the other hand, in the decomposition into $A = \\{u_1, u_2\\}$ and $B = \\{u_3, u_4, u_5, u_6, u_7\\}$, any two students in each group are friends with each other; however, the size difference ($|2 - 5| = 3$) between the two groups is larger than the difference ($|3 - 4| = 1$) in the decomposition into $A = \\{u_1, u_2, u_3\\}$ and $B = \\{u_4, u_5, u_6, u_7\\}$. The last one is an optimal decomposition we want.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 255px; height: 125px;\"/></p>",
+  "input": "<p>Your program is to read from standard input. The first line contains two integers $n$ and $m$, respectively indicating the numbers of vertices and edges of a friendship graph, in which we assume $2 ≤ n ≤ 1,000$ and $0 ≤ m ≤ \\binom{n}{2}$. The vertices are indexed from $1$ to $n$. In the following $m$ lines, each line contains two integers $u$ and $v$ which represent an edge $(u, v)$ of the graph.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line that contains an integer. The integer should be the minimum of the size differences between two groups if the students can be decomposed into two groups satisfying the above three conditions; otherwise, the integer should be <code>-1</code>.</p>",
+  "samples": [
+    {
+      "input": "7 13\n1 2\n2 3\n3 1\n3 4\n3 5\n3 6\n3 7\n4 5\n5 7\n7 6\n6 4\n4 7\n5 6\n",
+      "output": "1\n"
+    },
+    {
+      "input": "5 5\n1 2\n2 3\n3 4\n4 5\n5 1\n",
+      "output": "-1\n"
+    },
+    {
+      "input": "4 4\n4 3\n3 2\n2 1\n1 4\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2021, amsminn, st42597",
+  "level": 18,
+  "tags": [
+    "dp",
+    "graphs",
+    "graph_traversal",
+    "knapsack",
+    "bipartite_graph"
+  ],
+  "accepted_user_count": 172,
+  "submission_count": null,
+  "average_tries": 2.09879994392395
+}

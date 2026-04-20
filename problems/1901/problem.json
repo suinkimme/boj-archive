@@ -1,0 +1,26 @@
+{
+  "id": 1901,
+  "title": "논리식",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>논리식은 컴퓨터 프로그램에 자주 사용된다. 논리식은 다음으로 구성된다.</p>\r\n\r\n<ul>\r\n\t<li>true 또는 false의 값을 가지는 변수</li>\r\n\t<li>단항 및 이항 논리 연산자</li>\r\n\t<li>연산의 순서에 영향을 줄 수 있는 괄호</li>\r\n</ul>\r\n\r\n<p>단항 연산자는 하나의 변수에 대해 동작하고, 이항 연산자는 두 개의 변수에 대해 동작한다. 자주 쓰이는 단항 연산자로 NOT이 있고, 자주 쓰이는 이항 연산자로 AND, OR, XOR, NAND, NOR 등이 있다.</p>\r\n\r\n<p>논리 연산자는 &#39;진리표&#39;로써 정의할 수 있다. 이 진리표는 단항 연산자의 경우 1차원, 이항 연산자의 경우 2차원이다. 예를 들어, 다음 그림을 보자.</p>\r\n\r\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" /></p>\r\n\r\n<p>위쪽 여백과 왼쪽 여백 모두&nbsp;첫 번째 피연산자가 false이고, 두 번째 피연산자가 true임에 주목하자.</p>\r\n\r\n<p>논리식의 예시는 다음과 같다.</p>\r\n\r\n<ol>\r\n\t<li>(x AND (NOT(y NAND z)))</li>\r\n\t<li>(x OR ((NOT y) XOR z))</li>\r\n</ol>\r\n\r\n<p>이 문제에서 논리식의 정확한 구조는 다음 문법으로 정의된다.</p>\r\n\r\n<pre>\r\n&lt;expression&gt; = &lt;variable&gt; | ( &lt;expression&gt; &lt;operator&gt; &lt;expression&gt; ) | ( &lt;operator&gt; &lt;expression&gt;)\r\n&lt;variable&gt; = &lt;lowercase_letter&gt;\r\n&lt;operator&gt; = &lt;uppercase_letter&gt; | &lt;operator&gt; &lt;uppercase_letter&gt;</pre>\r\n\r\n<p>(여기서 수직 막대 &#39;|&#39;는 &#39;or&#39;라고 발음하며, 문법을 정의할 때 사용하는 글자이다. 실제 식에서는 나타나지 않는다.) &lt;lowercase_letter&gt;와 &lt;uppercase_letter&gt;는 알파벳 대소문자이다.</p>\r\n\r\n<p>어떤 경우에서는 모든 변수의<em> </em>값이 정해지지 않아도 논리식을 계산할 수 있다. 위의 첫 번째 예시에서, y는 false이고, x와 z의 값은 모른다고 해 보자. 그러면 나머지 변수의 값이 무엇이든 해당 논리식은 항상 false로 계산됨을 알 수 있다. 반면, 같은 예시에서, x = true, y = true이고, z의 값은 모른다고 해보자. 그러면 z의 값을 알지 않고서는 논리식의 값을 결정할 수 없다.</p>\r\n",
+  "input": "<p>입력은 하나 이상의 테스트 케이스로 이루어져 있다. 각 테스트 케이스마다 첫 줄에 100 이하의 음이 아닌 정수가 2개 주어지며, 각각 그 케이스에서 사용할 단항 연산자와 이항 연산자의 종류이다.</p>\r\n\r\n<p>그 다음에는 아래 두 문단에서 설명하는 형식으로 각&nbsp;<strong>연산자의 이름</strong>과 진리표 형태의&nbsp;<strong>연산자 정의</strong>가 여러 줄에 걸쳐 주어진다. 모든 연산자의 이름은 20글자를 넘지 않으며, 서로 다르다.</p>\r\n\r\n<p>우선 단항 연산자를 각각 2줄씩에 걸쳐 정의한다. 첫째 줄에는 연산자의 이름이 주어지고, 둘째 줄에는 두 개의 참/거짓 값이 주어지며, 이것이 그 연산자의 진리표가 된다. 피연산자의 순서는 위 그림에 주어진 것과 같이 false, true이다.</p>\r\n\r\n<p>단항 연산자 다음에는 이항 연산자를 각각 3줄씩에 걸쳐 정의한다. 첫째 줄에는 연산자의 이름이 주어지고, 다음 두 줄에는 두 개씩의 참/거짓 값이 주어지며, 이것이 그 연산자의 진리표가 된다. 왼쪽 피연산자는 위 그림의 왼쪽 여백에, 오른쪽 피연산자는 위쪽 여백에 해당한다.</p>\r\n\r\n<p>연산자를 모두 정의한 다음에는 위의 문법을 만족하는 유효한 논리식을 한 줄에 입력받는다. 변수와 연산자는 하나 이상의 띄어쓰기로 구분되어 있으며, 괄호로 묶인 식과 연산자 사이에는 띄어쓰기가 있을 수도 없을 수도 있다. 논리식에는 같은 변수가 두 번 이상 등장하지 않음이 보장된다. 논리식의 길이는 1 이상 500 이하이다.</p>\r\n\r\n<p>논리식 다음에는 0개 이상의 변수의 값이 각각 한 줄로 주어진다. 각 줄은 아래 둘 중 하나의 형태이다.</p>\r\n\r\n<pre>\r\n&lt;variable&gt; true\r\n&lt;variable&gt; false\r\n</pre>\r\n\r\n<p>같은 변수는 두 번 이상 주어지지 않는다.</p>\r\n\r\n<p>각 테스트 케이스의 끝에는 별표(*) 하나가 주어지며, 입력의 끝에는 음의 정수 두 개가 한 줄로 주어진다.</p>\r\n",
+  "output": "<p>각 테스트 케이스마다 한 줄씩 케이스 번호를 표시하고, 그 뒤에&nbsp;<strong>true</strong>,&nbsp;<strong>false</strong>,&nbsp;<strong>unknown</strong>&nbsp;중 주어진 논리식에 알맞은 것을 문제에서 설명한 대로 출력한다.</p>\r\n\r\n<p>출력 포맷은 예제 출력을 통해 확인할 수 있다.</p>\r\n",
+  "samples": [
+    {
+      "input": "1 2\nNOT\ntrue false\nAND\nfalse false\nfalse true\nTWEEK\ntrue false\ntrue false\n(x AND (NOT(y TWEEK z)))\nx true\ny true\n*\n1 1\nMOCK\ntrue true\nNAND\ntrue true\ntrue false\n(x NAND (MOCK (y NAND z)))\nx false\ny false\n*\n0 2\nXOR\nfalse true\ntrue false\nFAKE\ntrue true\nfalse false\n((p XOR q) FAKE r)\np true\nq false\n*\n-1 -1\n",
+      "output": "Case 1: unknown\nCase 2: true\nCase 3: false\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Rocky Mountain Regional, Alberta Collegiate Programming Contest, ACPC 2012, dlaud5379, jh05013",
+  "level": 18,
+  "tags": [
+    "string",
+    "parsing",
+    "recursion"
+  ],
+  "accepted_user_count": 28,
+  "submission_count": null,
+  "average_tries": 2.142899990081787
+}

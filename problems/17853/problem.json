@@ -1,0 +1,30 @@
+{
+  "id": 17853,
+  "title": "Bio Trip",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Ollie MacDonald is in charge of a biological reserve used to study the nesting habits of birds. Scattered throughout the reserve are various types of nesting boxes, and one of Ollie’s tasks is to regularly check on the boxes. The only way to travel between the boxes is via a set of dirt roads which meet at various junctions in the reserve, and the only way for Ollie to travel on these roads is with an old, beat up tractor (funding hasn’t been the greatest for the past few years). Recently, a problem has developed with the steering mechanism of the tractor which limits the turning angles available. Since the junctions are relatively small, the roads that Ollie can take when entering a junction can be restricted. For example, in Figure B.1, if Ollie enters the junction from road A he may be able to leave on either roads B or C, but if he enters via road B, the constrained turning angle may only allow him to leave on road A (the same could happen if he entered on road C).</p>\n<p>In addition, due to uneven terrain, it is possible that traveling a road in one direction may take longer than traveling the road in the opposite direction.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 110px; height: 199px;\"/></p>\n<p style=\"text-align: center;\">Figure B.1: Sample junction.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 159px; height: 221px;\"/></p>\n<p style=\"text-align: center;\">Figure B.2: Map of Sample Input 1.</p>\n<p>As an example, Figure B.2 illustrates the map of the reserve described in the first sample input. In this map, there are two ways to reach junction 3 and return to the biostation: visit all junctions in order in 9 minutes, or travel to junction 3 first, turn left and travel to junction 2 and then back to the start, for a total of 7 minutes.</p>\n<p>Note that in this map, the travel times between two junctions is the same no matter which direction Ollie travels. This is not always the case with other maps.</p>\n<p>Note also that the tractor cannot travel from the start to junction 3 and then turn right and head for junction 4, since that would require a 135-degree turn but the tractor can only make a 90-degree turn. Ollie also cannot make a U-turn — a 180-degree turn — and return to the biostation directly.</p>\n<p>The junction at the biostation is large enough for Ollie to turn the tractor in any direction, so he can take any road leading from the biostation.</p>\n<p>Given a layout of the roads, turning restrictions on the tractor and a destination box which Ollie needs to visit, he would like to know the minimum time he needs in order to get to the box and back.</p>",
+  "input": "<p>Input starts with a line containing four integers n d α<sub>1</sub> α<sub>2</sub>, where n (2 ≤ n ≤ 1 000) is the number of junctions (numbered 1 to n), d is the junction containing the bird box to visit, and α<sub>1</sub> and α<sub>2</sub> (0 &lt; α<sub>1</sub>, α<sub>2</sub> ≤ 180) specify the allowed turning angles in degrees (see Figure B.3). The biostation is at junction 1 and is where Ollie’s journey both starts and ends. Following this are n lines specifying the dirt roads. Each of these lines has the form m d<sub>1</sub> t<sub>1</sub> a<sub>1</sub> d<sub>2</sub> t<sub>2</sub> a<sub>2</sub> . . . d<sub>m</sub> t<sub>m</sub> a<sub>m</sub>. The i<sup>th</sup> of these lines indicates that there are m dirt roads intersecting at junction i. The first of these roads ends at junction d<sub>1</sub>, needs t<sub>1</sub> minutes to travel and leaves junction i at angle a<sub>1</sub> (where 0 is east, 90 is north, etc.); the second of these roads ends at junction d<sub>2</sub>, needs t<sub>2</sub> minutes to travel and leaves junction i at angle a<sub>2</sub>, etc. The maximum value of m for any junction is 5 and the maximum value for any t<sub>i</sub> is 20.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 273px; height: 247px;\"/></p>\n<p style=\"text-align: center;\">Figure B.3: Turning angle specification.</p>",
+  "output": "<p>Output the minimum time for Ollie to travel from the biostation to the bird box at junction d and back to the biostation. If it is not possible for Ollie to complete the trip, output impossible.</p>",
+  "samples": [
+    {
+      "input": "4 3 90 90\n3 2 3 45 3 2 0 4 2 315\n2 1 3 135 3 2 270\n3 1 2 180 2 2 90 4 2 225\n2 1 2 135 3 2 270\n",
+      "output": "7\n"
+    },
+    {
+      "input": "2 2 90 90\n1 2 10 0\n1 1 15 180\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, North America, East Central North America Regional, 2019 East Central Regional Contest",
+  "level": 19,
+  "tags": [
+    "dijkstra",
+    "graphs",
+    "shortest_path"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.4285999536514282
+}

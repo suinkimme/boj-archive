@@ -1,0 +1,38 @@
+{
+  "id": 26005,
+  "title": "나뭇잎 학회",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>기선이는 퀴즈를 좋아해서 알고리즘 학회에 들어가고자 하이아크에 방문하였다. 하지만 학회 문 앞에는 단 한 개의 전구, 여러 개의 스위치와 함께 다음과 같은 쪽지가 붙어있었다. </p>\n<ul>\n<li>\n<p>보이는 것과 같이 하나의 전구와 $N \\times N$ 개의 스위치가 $N \\times N$ 배열로 있습니다.</p>\n</li>\n<li>\n<p>이 스위치 중 단 하나만 전구와 연결되어 있으며, 연결된 스위치를 누르면 전구가 깜빡입니다.</p>\n</li>\n<li>\n<p>스위치에는 특수 장치가 적용되어 있어서 상하좌우로 인접한 두 개의 스위치를 동시에 눌러야만 합니다.</p>\n</li>\n<li>\n<p>예를 들어 $N=3$일 때, 당신이 $5$번 스위치를 누르고 싶다면 인접한 스위치 상($2$), 하($8$), 좌($4$), 우($6$) 중 하나의 스위치와 같이 한 번에 눌러야 합니다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 200px; width: 200px;\"/></p>\n</li>\n<li>\n<p>당신은 전구와 연결된 스위치가 어느 것인지 알아내서 답을 제출해야 합니다.</p>\n</li>\n</ul>\n<p>'너무 쉽잖아' 생각하고 스위치를 누르려는 순간, 밑에 작게 쓰여있는 글씨를 보고 경악하고 말았다. </p>\n<ul>\n<li>\n<p>단, 두 개의 스위치를 한 번에 누를 때마다 나뭇잎 하나를 문틈으로 제출해야 합니다.</p>\n</li>\n</ul>\n<p>귀찮음이 많은 기선이는 밖에서 최소한의 나뭇잎만 주워오려고 한다. 어떤 경우에도 정답을 맞히는 데 필요한 나뭇잎의 최소 개수를 여러분이 대신 구해보자. </p>",
+  "input": "<p>$N$ 이 주어진다. ($1 \\le N \\le 1\\,000$)</p>",
+  "output": "<p>어떤 경우에도 정답을 맞히는 데 필요한 나뭇잎의 최소 개수를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "1\n",
+      "output": "0\n"
+    },
+    {
+      "input": "2\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3\n",
+      "output": "5\n"
+    },
+    {
+      "input": "4\n",
+      "output": "8\n"
+    }
+  ],
+  "hint": "<p>$N=2$ 일 때는 다음과 같다.</p>\n<p><strong>ⅰ) 전구가 $1$번 스위치와 연결되어 있는 경우 </strong></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height: 150px; width: 151px;\"/><img alt=\"\" src=\"3.png\" style=\"height: 150px; width: 149px;\"/></p>\n<ol>\n<li>$3$번 스위치와 $4$번 스위치를 누른다. 전구가 깜빡이지 않는다.</li>\n<li>$2$번 스위치와 $4$번 스위치를 누른다. 전구가 깜빡이지 않는다.</li>\n</ol>\n<p>$2$번, $3$번, $4$번 스위치를 눌렀으나 전구가 깜빡이지 않았으므로 $1$번 스위치가 전구와 연결되어 있다는 사실을 알 수 있다. </p>\n<p><strong>ⅱ) 전구가 $2$번 스위치와 연결되어 있는 경우</strong></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height: 150px; width: 151px;\"/><img alt=\"\" src=\"3.png\" style=\"height: 150px; width: 149px;\"/></p>\n<ol>\n<li>$3$번 스위치와 $4$번 스위치를 누른다. 전구가 깜빡이지 않는다.</li>\n<li>$2$번 스위치와 $4$번 스위치를 누른다. 전구가 깜빡인다.</li>\n</ol>\n<p>$2$번 스위치가 전구와 연결되어 있다는 사실을 알 수 있다. </p>\n<p><strong>ⅲ) 전구가 $3$번 스위치와 연결되어 있는 경우</strong></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height: 150px; width: 151px;\"/><img alt=\"\" src=\"3.png\" style=\"height: 150px; width: 149px;\"/></p>\n<ol>\n<li>$3$번 스위치와 $4$번 스위치를 누른다. 전구가 깜빡인다.</li>\n<li>$2$번 스위치와 $4$번 스위치를 누른다. 전구가 깜빡이지 않는다.</li>\n</ol>\n<p>$3$번 스위치가 전구와 연결되어 있다는 사실을 알 수 있다.</p>\n<p><strong>ⅳ) 전구가 $4$번 스위치와 연결되어 있는 경우</strong></p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"height: 150px; width: 151px;\"/><img alt=\"\" src=\"3.png\" style=\"height: 150px; width: 149px;\"/></p>\n<ol>\n<li>$3$번 스위치와 $4$번 스위치를 누른다. 전구가 깜빡인다.</li>\n<li>$2$번 스위치와 $4$번 스위치를 누른다. 전구가 깜빡인다.</li>\n</ol>\n<p>$4$번 스위치가 전구와 연결되어 있다는 사실을 알 수 있다.</p>\n<p>전구가 $1$번, $2$번, $3$번, $4$번 중 어떤 스위치와 연결되어 있든 최대 2개의 나뭇잎으로 전구의 위치를 찾을 수 있으니 필요한 나뭇잎의 최소 개수는 2개이다.</p>",
+  "source": "University, 홍익대학교, 2022 홍익대학교 HI-ARC 프로그래밍 경진대회, xkdlaldfjtnl, cs71107, dicohy27, Green55, jh05013, jwvg0425",
+  "level": 6,
+  "tags": [
+    "math",
+    "ad_hoc",
+    "arithmetic"
+  ],
+  "accepted_user_count": 544,
+  "submission_count": null,
+  "average_tries": 1.481600046157837
+}

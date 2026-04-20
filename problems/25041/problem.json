@@ -1,0 +1,35 @@
+{
+  "id": 25041,
+  "title": "Naboj",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Mr. Šikić, a chemistry teacher, is playing around with $n$ metal balls and $m$ copper wires. He joined together some pairs of balls with a wire so that all the balls are (directly or indirectly) linked to each other. He wants to teach his students about electric charge so he’ll demonstrate it by charging the metal balls in a sequence.</p>\n<p>Mr Šikić can either charge each of the balls positively or negatively. When a ball is charged negatively, the electrons in all the wires connected to the ball are repulsed to the other ball connected to that wire. Conversely, if a ball is positively charged, the electrons from all the wires connected to that ball are pulled towards it. Charging the balls has the same effect on the wires irrespective of the wire’s previous state.</p>\n<p>At the beginning of the class all the balls hold no charge and the electrons in all the wires are still. For every wire Mr. Šikić has a specific direction of the electron flow in mind. Help him find a sequence of ball chargings that results in the desired electron flows.</p>",
+  "input": "<p>The first line contains two integers $n$ and $m$ ($1 ≤ n ≤ 200\\,000$, $1 ≤ m ≤ 500\\,000$) from the task statement.</p>\n<p>The following $m$ lines contain integers $a_i$ and $b_i$ ($1 ≤ a_i , b_i ≤ n$, $a_i \\ne b_i$) denoting that the balls $a_i$ and $b_i$ are connected by a wire and the electrons in the wire should be closer to $a_i$, and not $b_i$. There is at most one wire between a pair of balls. All the balls are directly or indirectly connected by wires.</p>",
+  "output": "<p>If it is impossible to direct the flow of electrons according to Mr. Šikić’s wishes print $-1$. Otherwise print $k$, the required number of ball chargings. $k$ must be less than or equal $200\\,000$.</p>\n<p>In the following $k$ lines print integers $c_i$ and $d_i$ ($1 ≤ c_i ≤ n$, $0 ≤ d_i ≤ 1$), the number of the ball Mr. Šikić should charge in $i$-th step and whether it should be charged positively (denoted by $d_i = 1$) or negatively ($d_i = 0$). If there are multiple solutions, print any one of them.</p>",
+  "samples": [
+    {
+      "input": "3 3\n1 2\n2 3\n1 3\n",
+      "output": "3\n2 1\n3 0\n1 1\n"
+    },
+    {
+      "input": "4 3\n1 2\n3 2\n2 4\n",
+      "output": "4\n2 1\n4 0\n3 1\n1 1\n"
+    },
+    {
+      "input": "5 10\n2 4\n3 4\n1 4\n4 5\n3 2\n2 1\n5 2\n1 3\n5 3\n1 5\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>Clarification of the first example:</p>\n<p>First, we give the ball 2 a positive charge. The electrons on wires between balls 1 and 2, and balls 2 and 3 are now closer to the ball 2. The wire connecting balls 1 and 3 remains neutral.</p>\n<p>Now we give ball 3 a negative change. The arrangement of electrons between wires 2 and 3 remains unchanged, while the electrons on the wire between 1 and 3 are closer to the ball 1.</p>\n<p>Finally we give ball 1 a positive charge. The wire between 1 and 3 remains unchanged, but on the wire between balls 1 i 2 electrons are now closer to the ball 1 and the desired arrangement is achieved.</p>",
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2021/2022, Contest #6",
+  "level": 16,
+  "tags": [
+    "constructive",
+    "dag",
+    "graphs",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 2.142899990081787
+}

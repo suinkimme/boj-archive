@@ -1,0 +1,26 @@
+{
+  "id": 25501,
+  "title": "재귀의 귀재",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>정휘는 후배들이 재귀 함수를 잘 다루는 재귀의 귀재인지 알아보기 위해 재귀 함수와 관련된 문제를 출제하기로 했다.</p>\n<p>팰린드롬이란, 앞에서부터 읽었을 때와 뒤에서부터 읽었을 때가 같은 문자열을 말한다. 팰린드롬의 예시로 AAA, ABBA, ABABA 등이 있고, 팰린드롬이 아닌 문자열의 예시로 ABCA, PALINDROME 등이 있다.</p>\n<p>어떤 문자열이 팰린드롬인지 판별하는 문제는 재귀 함수를 이용해 쉽게 해결할 수 있다. 아래 코드의 isPalindrome 함수는 주어진 문자열이 팰린드롬이면 1, 팰린드롬이 아니면 0을 반환하는 함수다.</p>\n<pre>\n<code>#include &lt;stdio.h&gt;\n#include &lt;string.h&gt;</code>\n\n<code>int recursion(const char *s, int l, int r){\n    if(l &gt;= r) return 1;\n    else if(s[l] != s[r]) return 0;\n    else return recursion(s, l+1, r-1);\n}</code>\n\n<code>int isPalindrome(const char *s){\n    return recursion(s, 0, strlen(s)-1);\n}</code>\n\n<code>int main(){\n    printf(\"ABBA: %d\\n\", isPalindrome(\"ABBA\")); // 1\n    printf(\"ABC: %d\\n\", isPalindrome(\"ABC\"));   // 0\n}</code></pre>\n<p>정휘는 위에 작성된 isPalindrome 함수를 이용하여 어떤 문자열이 팰린드롬인지 여부를 판단하려고 한다.</p>\n<p>구체적으로는, 문자열 $S$를 isPalindrome 함수의 인자로 전달하여 팰린드롬 여부를 반환값으로 알아낼 것이다. 더불어 판별하는 과정에서 recursion 함수를 몇 번 호출하는지 셀 것이다.</p>\n<p>정휘를 따라 여러분도 함수의 반환값과 recursion 함수의 호출 횟수를 구해보자.</p>",
+  "input": "<p>첫째 줄에 테스트케이스의 개수 $T$가 주어진다. ($1 \\leq T \\leq 1\\,000$)</p>\n<p>둘째 줄부터 $T$개의 줄에 알파벳 대문자로 구성된 문자열 $S$가 주어진다. ($1 \\leq \\vert S\\vert \\leq 1\\,000$)</p>",
+  "output": "<p>각 테스트케이스마다, isPalindrome 함수의 반환값과 recursion 함수의 호출 횟수를 한 줄에 공백으로 구분하여 출력한다.</p>",
+  "samples": [
+    {
+      "input": "5\nAAA\nABBA\nABABA\nABCA\nPALINDROME\n",
+      "output": "1 2\n1 3\n1 3\n0 2\n0 1\n"
+    }
+  ],
+  "hint": "<p>Python 3</p>\n<pre>\n<code>def recursion(s, l, r):\n    if l &gt;= r: return 1\n    elif s[l] != s[r]: return 0\n    else: return recursion(s, l+1, r-1)</code>\n\n<code>def isPalindrome(s):\n    return recursion(s, 0, len(s)-1)</code>\n\n<code>print('ABBA:', isPalindrome('ABBA'))\nprint('ABC:', isPalindrome('ABC'))</code></pre>\n<p>Java 15</p>\n<pre>\n<code>public class Main{\n    public static int recursion(String s, int l, int r){\n        if(l &gt;= r) return 1;\n        else if(s.charAt(l) != s.charAt(r)) return 0;\n        else return recursion(s, l+1, r-1);\n    }\n    public static int isPalindrome(String s){\n        return recursion(s, 0, s.length()-1);\n    }\n    public static void main(String[] args){\n        System.out.println(\"ABBA: \" + isPalindrome(\"ABBA\"));\n        System.out.println(\"ABC: \" + isPalindrome(\"ABC\"));\n    }\n}</code></pre>",
+  "source": "School, 선린인터넷고등학교, 선린 정보 알고리즘경시대회, 2022 선린 정보 알고리즘경시대회, jhnah917, cgiosy, chansol, junseo, kyo20111, ryute, stonejjun03",
+  "level": 4,
+  "tags": [
+    "implementation",
+    "string",
+    "recursion"
+  ],
+  "accepted_user_count": 18304,
+  "submission_count": null,
+  "average_tries": 1.7661000490188599
+}

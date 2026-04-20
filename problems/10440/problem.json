@@ -1,0 +1,25 @@
+{
+  "id": 10440,
+  "title": "The Binary Search Efficiency Doubter",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The binary search is a classic algorithm in computer science. For this problem we will use the following pseudocode to define our binary search:</p>\n<pre>\nPerform a binary search on the array a with values in a[0] through\na[n-1] to find, if it exists, the value x. The values in the array a\nmay be assumed to be in strictly increasing order.\n\n    Low = 0\n    High = n – 1\n    While Low &lt;= High\n        Mid = (Low + High) / 2 [We assume integer division\n        truncates.]\n        If a[Mid] = x then return FOUND\n        If a[Mid] &lt; x then Low = Mid + 1\n        If a[Mid] &gt; x then High = Mid – 1\n    If we fall out of the while loop, return NOT_FOUND\n</pre>\n<p>Professors teach that this is an efficient algorithm with a worst case number of times through the loop of roughly log base 2 of n and an average case that is slightly better than that. A student who is not convinced decides to build lists of various sizes and search for every number in the list and keep track of how many times the loop is executed. In the following example, the number of times the loop is executed to find each value is indicated below the corresponding value.</p>\n<table class=\"table table-bordered\" style=\"width:60%\">\n<tbody>\n<tr>\n<th>the list</th>\n<td>12</td>\n<td>16</td>\n<td>23</td>\n<td>34</td>\n<td>42</td>\n<td>57</td>\n<td>65</td>\n</tr>\n<tr>\n<th>loop count</th>\n<td>3</td>\n<td>2</td>\n<td>3</td>\n<td>1</td>\n<td>3</td>\n<td>2</td>\n<td>3</td>\n</tr>\n</tbody>\n</table>\n<p>So, for this list, the total loop count is 17.</p>\n<p>It should be clear that any list of length 7 will have a total loop count of 17 under the assumptions that the list is sorted and all the values are different. That is, the length of the list determines the total loop count.</p>\n<p>The problem here is to determine the total loop count given the length of the list. You may assume that the answer for any test case in the input fits in a signed 64-bit integer.</p>",
+  "input": "<p>There may be multiple cases. Input for each case will consist of a single positive integer, n, which gives the length of the list. You may assume that 2 &lt; n &lt; 10,000,000 and that there are no more than 100 cases. Cases are delimited by arbitrary white space. Process until an end-of-file is detected.</p>",
+  "output": "<p>For each input case, print the total loop count to find all the values in a list of size n. Follow this format exactly: “Case”, one space, the case number, a colon and one space, and the answer for that case with no trailing spaces. (see next page for sample)</p>",
+  "samples": [
+    {
+      "input": "3       7\n\n    321\n124\n",
+      "output": "Case 1: 5\nCase 2: 17\nCase 3: 2387\nCase 4: 748\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, North Central North America Regional, NCNA 2014",
+  "level": 13,
+  "tags": [
+    "math",
+    "dp"
+  ],
+  "accepted_user_count": 21,
+  "submission_count": null,
+  "average_tries": 1.809499979019165
+}

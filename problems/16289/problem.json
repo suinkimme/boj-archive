@@ -1,0 +1,30 @@
+{
+  "id": 16289,
+  "title": "Path Embedding",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Given a guest graph <em>G</em> and a host graph <em>H</em> with the same number of vertices, the graph embedding problem is to find a one-to-one correspondence <em>σ</em> from the vertex set V(<em>G</em>) of <em>G</em> to the vertex set V(<em>H</em>) of <em>H</em>, along with a mapping from each edge in the edge set <em>E</em>(<em>G</em>) of <em>G</em> to a path in <em>H</em>. Many applications can be modeled as graph embedding. In particular, graph embedding has long been used to model the problem of arranging a parallel algorithm in a parallel architecture.</p>\n<p>The quality of an embedding can be measured by certain cost criteria. Among others, the dilation is the maximum of the lengths of paths mapped by all edges of <em>G</em>. If the host graph <em>H</em> is a tree in which any two vertices are joined by a unique path, an edge (<em>u</em>, <em>v</em>) of <em>G</em> is necessarily mapped to the unique path in <em>H</em> joining <em>σ</em>(<em>u</em>) and <em>σ</em>(<em>v</em>). So, the dilation of an embedding <em>σ</em> of graph <em>G</em> into tree <em>H</em> can be simply represented as max<sub>(<em>u</em>,<em>v</em>)𝜖<em>E</em>(<em>G</em>)</sub> <em>d</em><sub><em>H</em></sub>(<em>σ</em>(<em>u</em>), <em>σ</em>(<em>v</em>)), where <em>d</em><sub><em>H</em></sub>(<em>σ</em>(<em>u</em>), <em>σ</em>(<em>v</em>)) denotes the distance between <em>σ</em>(<em>u</em>) and <em>σ</em>(<em>v</em>) in <em>H</em>. The dilation of the embedding shown in Figure H.1 below, for example, is three.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 393px; height: 187px;\"/><br/>\n </p>\n<p style=\"text-align: center;\">Figure H.1: An embedding <em>σ</em> of a path graph into a tree both with 12 vertices, where <em>σ</em> can be written in two-line notation \\(\\begin{pmatrix} 1 &amp; 2 &amp;3&amp;4&amp;5&amp;6&amp;7&amp;8&amp;9&amp;10&amp;11&amp;12 \\\\ 7&amp;6&amp;5&amp;4&amp;1&amp;2&amp;3&amp;8&amp;9&amp;11&amp;12&amp;10 \\end{pmatrix}\\), meaning <em>σ</em>(1) = 7, <em>σ</em>(2) = 6, <em>σ</em>(3) = 5, …, and <em>σ</em>(12) = 10.</p>\n<p>We are concerned with the problem of embedding of a path graph into a tree, where a path graph is a tree that has at most two leaves. Given an embedding of a path graph into a tree, your job is to write an efficient program that finds the dilation of the embedding.</p>",
+  "input": "<p>Your program is to read from standard input. The first line contains an integer, <em>n</em>, representing the number of vertices of the host graph <em>H</em> which forms a tree, where 2 ≤ <em>n</em> ≤ 100,000. It is followed by <em>n</em> − 1 lines, each contains two positive integers <em>u</em> and <em>v</em> that represent an edge between vertex <em>u</em> and vertex <em>v</em> of <em>H</em>. It is assumed that the vertices are indexed from 1 to <em>n</em>. The last line contains an ordering <em>σ</em>(1), <em>σ</em>(2), …, <em>σ</em>(<em>n</em>) of the vertices of <em>H</em>, which represents the embedding of a path graph <em>G</em> into <em>H</em>, where V(<em>G</em>) = {1, 2, … , <em>n</em>} and <em>E</em>(<em>G</em>) = {(<em>u</em>, <em>v</em>) ∶ <em>v</em> = <em>u</em> + 1}.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line which contains an integer. The integer should be the dilation of the given embedding if the dilation is three or less; the integer should be <code>99</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "12\n4 1\n4 2\n4 3\n4 7\n5 6\n6 7\n7 8\n8 9\n9 10\n11 10\n12 10\n7 6 5 4 1 2 3 8 9 11 12 10\n",
+      "output": "3\n"
+    },
+    {
+      "input": "4\n1 2\n4 3\n2 3\n4 2 3 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "7\n1 2\n4 3\n2 3\n5 7\n6 5\n4 5\n7 6 1 2 3 4 5\n",
+      "output": "99\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Nationwide Internet Competition, Seoul Nationalwide Internet Competition 2018",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

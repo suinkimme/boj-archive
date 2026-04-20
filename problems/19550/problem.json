@@ -1,0 +1,38 @@
+{
+  "id": 19550,
+  "title": "빛의 전사 크리퓨어",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>여기는 평화로운 알고리즘 나라. 알고리즘 나라의 외곽에는 원 모양의 울타리가 쳐져 있다.</p>\n<p>원 둘레에는 같은 간격으로 $L$개의 기둥이 세워져 있고, 각 기둥은 $0$번부터 $L-1$번까지 시계방향 순으로 번호가 부여된 상태이다. 즉 $0$번 기둥의 시계방향에는 $1$번 기둥이 이웃해 있고, 반시계방향으로 $L-1$번 기둥이 이웃해 있다. ($L$은 홀수)</p>\n<p>편의상 $0$번 기둥이 12시 방향에 위치하도록 회전시킨 상태로 생각하자.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height: 279px; width: 280px;\"/></p>\n<p>알고리즘 나라에는 나라의 수호자 크리퓨어가 살고 있다. 그 어떤 악인도 크리퓨어를 보게 되면 “<code>그저 빛...</code>” 을 외치며 마음이 깨끗하게 정화된다. 때문에 이 마을에서는 그를 빛의 전사 <span style=\"color:#e74c3c;\">크</span><span style=\"color:#e67e22;\">리</span><span style=\"color:#3498db;\">퓨</span><span style=\"color:#1abc9c;\">어</span>라고 부르고, :fan: 클럽 등을 운영하며 그를 찬양하고 있다.</p>\n<p>오늘은 알고리즘 나라에서 UCPC 2020 본선 대회가 열리는 날. 평화롭게 UCPC 대회를 진행하던 어느 순간, 사악한 악당 pichulia가 알고리즘 나라를 습격했다! 평소 알고리즘 나라에 악감정이 있던 pichulia는 기둥간에 $N$개의 고무줄을 연결하는 장난을 쳤다. pichulia가 설치한 $N$개의 고무줄 중 하나라도 남아 있으면 <span style=\"color:#e74c3c;\">출력 초과</span>를 받게 되므로, 이들을 모두 끊어내야 한다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 280px; height: 279px;\"/></p>\n<p>알고리즘 나라의 수호자 크리퓨어는 이러한 장난을 그냥 두고 볼 수 없었다. 따라서 크리퓨어의 필살기인 <span style=\"color:rgb(255, 0, 98);\">루비빔</span>을 발사해서 모든 고무줄을 끊어내고자 한다.</p>\n<p>크리퓨어의 위치는 원의 중심에 있으며, 원의 중심에서 이동하지 않고 고정된 상태로 루비빔을 발사한다. 루비빔은 원의 중심에서 시작하는 반직선 형태로 표현할 수 있다. 이 반직선과 교차하면 빔에 맞은 것으로 취급되고, 빔에 한 번이라도 맞은 고무줄은 끊어진다. 고무줄을 고정시킨 기둥에 빔을 맞은 경우도 고무줄이 끊어진다. 빔의 두께와 고무줄의 두께는 무시할 수 있을 정도로 얇다.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 280px; height: 284px;\"/></p>\n<p>루비빔은 한 번 발사하는데 생각보다 많은 체력을 요구한다. 따라서 루비빔을 최소한으로 발사하는 것이 좋다.</p>\n<p>고무줄을 모두 끊어내기 위해 필요한 루비빔 발사 횟수의 최소값을 구해서 <span style=\"color:#e74c3c;\">크</span><span style=\"color:#e67e22;\">리</span><span style=\"color:#3498db;\">퓨</span><span style=\"color:#1abc9c;\">어</span>에게 알려주자!</p>",
+  "input": "<p>첫 번째 줄에는 $2$개의 정수 $N$과 $L$이 공백을 사이에 두고 주어진다. $N$은 고무줄의 개수이고 $L$은 원에 있는 기둥의 개수이다.<br/>\n($1\\leq N\\leq 10^5$, $3\\leq L\\leq 10^9$, $L$ 은 홀수)</p>\n<p>그 후 두 번째 줄부터 $N+1$번째 줄까지 $N$줄에 걸쳐서 고무줄의 정보를 나타내는 $2$개의 정수 $s$, $e$가 공백을 사이에 두고 주어진다. 이는 $s$번 기둥과 $e$번 기둥을 연결하는 고무줄을 설치했음을 의미한다. ($0\\leq s,e\\leq L-1$, $s\\neq e$) 두 개 이상의 고무줄이 서로 교차할 수 있다.</p>\n<p>$L$은 홀수이므로, 원의 중심을 지나는 고무줄은 존재하지 않는다.</p>",
+  "output": "<p>$N$개의 고무줄을 모두 끊어내기 위해 필요한 루비빔의 최소 발사 횟수를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 17\n3 16\n1 6\n10 5\n8 13\n",
+      "output": "2\n"
+    },
+    {
+      "input": "5 13\n10 2\n12 0\n0 12\n1 10\n2 9\n",
+      "output": "1\n"
+    },
+    {
+      "input": "7 27\n9 3\n21 2\n23 7\n1 3\n25 7\n2 18\n23 18\n",
+      "output": "2\n"
+    },
+    {
+      "input": "3 3\n0 1\n1 2\n2 0\n",
+      "output": "2\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 전국 대학생 프로그래밍 대회 동아리 연합, UCPC 2020, pichulia, queued_q, evenharder, shiftpsh, tncks0121",
+  "level": 21,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "sparse_table"
+  ],
+  "accepted_user_count": 55,
+  "submission_count": null,
+  "average_tries": 4.981800079345703
+}

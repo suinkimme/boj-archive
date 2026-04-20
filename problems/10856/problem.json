@@ -1,0 +1,35 @@
+{
+  "id": 10856,
+  "title": "Legacy Code",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Once again you lost days refactoring code, which never runs in the first place. Enough is enough – your time is better spent writing a tool that finds unused code!</p>\n<p>Your software is divided into packages and executables. A package is a collection of methods. Executables are packages defining among other methods exactly one method with name <code>PROGRAM</code>. This method is executed on the start of the corresponding executable. Ordinary packages have no method named <code>PROGRAM</code>.</p>\n<p>Each method is uniquely identified by the combination of package and method names. E.g. the method with the identifier <code>SuperGame::PROGRAM</code> would be the main method of the executable <code>SuperGame</code>.</p>\n<p>For every method in your software you are given a list of methods directly invoking it. Thus you can easily identify methods, that are never called from any method. However, your task is more challenging: you have to find unused methods. These are methods that are never reached by the control flow of any executable in your software.</p>",
+  "input": "<p>The first line of the input contains an integer N, the number of methods in your software (1 ≤ N ≤ 400).</p>\n<p>Each method is described by two lines, totaling in 2·N lines. The first line consists of the unique identifier of the method and k<sub>i</sub>, the number of methods directly invoking this one (0 ≤ k<sub>i</sub> ≤ N). The second line consists of a set of ki identifiers of these calling methods or is empty if there are no such methods, i.e. k<sub>i</sub> = 0.</p>\n<p>Method identifiers consist of a package name followed by two colons and a method name like <code>Packagename::Methodname</code>. Both strings, the package and the method name, each consist of up to 20 lowercase, uppercase characters or digits (a-z, A-Z, 0-9).</p>\n<p>There will be exactly N different method identifiers mentioned in the input.</p>",
+  "output": "<p>A line containing the number of unused methods in your software.</p>",
+  "samples": [
+    {
+      "input": "2\nSuperGame::PROGRAM 0\n\nHelpPackage::HelpFunction 2\nHelpPackage::HelpFunction SuperGame::PROGRAM\n",
+      "output": "0\n"
+    },
+    {
+      "input": "2\nLoop::CallA 1\nLoop::CallB\nLoop::CallB 1\nLoop::CallA\n",
+      "output": "2\n"
+    },
+    {
+      "input": "2\nSuperGame::PROGRAM 1\nSuperServer42::PROGRAM\nSuperServer42::PROGRAM 1\nSuperServer42::PROGRAM\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2015",
+  "level": 10,
+  "tags": [
+    "graphs",
+    "graph_traversal",
+    "bfs",
+    "dfs"
+  ],
+  "accepted_user_count": 43,
+  "submission_count": null,
+  "average_tries": 2.0929999351501465
+}

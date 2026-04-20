@@ -1,0 +1,25 @@
+{
+  "id": 10020,
+  "title": "Counting Friends",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Farmer John's N cows (2 &lt;= N &lt;= 500) have joined the social network \"MooBook\".</p><p>Each cow has one or more friends with whom they interact on MooBook.  Just for fun, Farmer John makes a list of the number of friends for each of his cows, but during the process of writing the list he becomes distracted, and he includes one extra number by mistake (so his list contains N+1 numbers, instead of N numbers as he intended).</p><p>Please help Farmer John figure out which numbers on his list could have been the erroneous extra number.</p>",
+  "input": "<ul><li>Line 1: The integer N.</li><li>Lines 2..2+N: Line i+1 contains the number of friends for one of FJ's cows, or possibly the extra erroneous number.</li></ul>",
+  "output": "<ul><li>Line 1: An integer K giving the number of entries in FJ's list that could be the extra number (or, K=0 means that there is no number on the list whose removal yields a feasible pairing of friends).</li><li>Lines 2..1+K: Each line contains the index (1..N+1) within the input ordering of a number of FJ's list that could potentially be the extra number -- that is, a number that can be removed such that the remaining N numbers admit a feasible set of friendships among the cows.  These lines should be in sorted order.</li></ul>",
+  "samples": [
+    {
+      "input": "4\n1\n2\n2\n1\n3\n",
+      "output": "3\n1\n4\n5\n"
+    }
+  ],
+  "hint": "<h4>Input Details</h4><p>Farmer John has 4 cows.  Two cows have only 1 friend each, two cows have 2 friends each, and 1 cow has 3 friends (of course, one of these numbers is extra and does not belong on the list).</p><h4>Output Details</h4><p>Removal of the first number in FJ's list (the number 1) gives a remaining list of 2,2,1,3, which does lead to a feasible friendship pairing -- for example, if we name the cows A..D, then the pairings (A,B), (A,C), (A,D), and (B,C) suffice, since A has 3 friends, B and C have 2 friends, and D has 1 friend.  Similarly, removing the other \"1\" from FJ's list also works, and so does removing the \"3\" from FJ's list.  Removal of either \"2\" from FJ's list does not work -- we can see this by the fact that the sum of the remaining numbers is odd, which clearly prohibits us from finding a feasible pairing.</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2013-2014 Season, USACO March 2014 Contest, Gold",
+  "level": 17,
+  "tags": [
+    "graphs",
+    "degree_sequence"
+  ],
+  "accepted_user_count": 40,
+  "submission_count": null,
+  "average_tries": 2.7249999046325684
+}

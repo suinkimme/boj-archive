@@ -1,0 +1,30 @@
+{
+  "id": 30853,
+  "title": "Black Box",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>The following <strong><code>Python</code></strong>-like pseudo code for function <strong><code>BlackBox()</code></strong> takes a list of positive integers and shuffles the integers in the list in a specific way, and returns the result as a list.</p>\n<p>Three list methods are used below; For a list <code>L</code>, <code>len(L)</code> returns the number of items in <code>L</code>. <code>L.append(x)</code> adds the item <code>x</code> to the end of <code>L</code>. <code>L.pop(idx)</code> removes the item at the specified index <code>idx</code> from the list <code>L</code> and returns the removed item.</p>\n<p>Given a list <strong><code>Z</code></strong> of positive integers, write a program to reconstruct a list <strong><code>I</code></strong> such that <strong><code>Z = BlackBox(I)</code></strong>.</p>\n<pre>\n<strong>function</strong> BlackBox( Banana ):\n    <strong>if</strong> len( Banana ) ≤ 4 :\n        exit(\"Too small Banana\")\n    Apple = [] # [] is an empty list\n    Mango = 0\n    Papaya = len( Banana )\n\n    <strong>while</strong>( Papaya &gt;= 2 ) :\n        Kiwi = Banana[ Mango ]\n        Apple.append( Kiwi )\n        Banana.pop( Mango )\n        Papaya = Papaya - 1\n        Mango = ( Kiwi + Mango - 1 ) % Papaya\n    # end of while\n\n    Apple.append( Banana[ 0 ] )\n    Pear = len( Apple ) - 1\n    Orange = Apple[ Pear ]\n    Lime = Apple[ 0 ]\n    Coconut = Orange % Pear\n    Melon = Apple[ Coconut ]\n    Apple[ 0 ] = Melon\n    Apple[ Coconut ] = Lime\n\n    <strong>return</strong> ( Apple )\n# end of function BlackBox\n</pre>\n<p> </p>",
+  "input": "<p>Your program is to read from standard input. The first line contains a positive integer $n$ representing the number of positive integers of a list <strong><code>Z</code></strong>, where $5 ≤ n ≤ 200\\,000$. The following $n$ lines contain $n$ positive integers of the list <strong><code>Z</code></strong> returned from <strong><code>BlackBox(I)</code></strong>; the $i$-th line contains the $i$-th integer of the list <strong><code>Z</code></strong> between $1$ and $100\\,000$, both inclusive.</p>",
+  "output": "<p>Your program is to write to standard output. Print $n$ integers of the list <strong><code>I</code></strong> where <strong><code>Z = BlackBox(I)</code></strong>, one per line; the $i$-th line should contain the $i$-th integer of <strong><code>I</code></strong>.</p>",
+  "samples": [
+    {
+      "input": "13\n113\n49\n68\n91\n10\n179\n2\n71\n78\n45\n57\n10\n88\n",
+      "output": "10\n113\n179\n68\n57\n45\n10\n2\n88\n71\n49\n78\n91\n"
+    },
+    {
+      "input": "9\n6\n8\n7\n9\n5\n1\n2\n4\n3\n",
+      "output": "9\n8\n7\n6\n5\n1\n2\n3\n4\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Asia Regional - Seoul 2023, Camp, Petrozavodsk Programming Camp, Winter 2024, Day 6: K-ontest",
+  "level": 18,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "binary_search"
+  ],
+  "accepted_user_count": 118,
+  "submission_count": null,
+  "average_tries": 1.3389999866485596
+}

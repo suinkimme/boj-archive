@@ -1,0 +1,25 @@
+{
+  "id": 32563,
+  "title": "Drone Control",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>You are designing a controller for an interesting aircraft called the <em>Single Copter</em>. It only has one propeller, but the outgoing air flow is further shaped by four <em>flaps</em> that control three Euler angles (pitch, roll and yaw) that help maintain the requested orientation of the craft. Each of these flaps can assume any angle requested by the flight controller, and the effects of the flaps being at certain angles should translate to exerting the requested forces on pitch, roll and yaw.</p>\n<table class=\"table table-bordered td-center\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"1.png\" style=\"width: 200px; height: 175px;\"/></td>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 200px; height: 155px;\"/></td>\n<td><img alt=\"\" src=\"3.png\" style=\"width: 200px; height: 171px;\"/></td>\n</tr>\n<tr>\n<td>Pitch</td>\n<td>Roll</td>\n<td>Yaw</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure D.1: Pitch, roll and yaw on a <em>Single Copter</em></p>\n<p>Define the angles of the flaps to be $n$, $e$, $s$, and $w$ (for \"north\", \"east\", \"south\" and \"west\" respectively). The forces in the directions of pitch, roll and yaw are defined by the following equations:</p>\n<p>\\begin{align*} p &amp;= e - w \\\\ r &amp;= n - s \\\\ y &amp;= n + e + s + w \\end{align*}</p>\n<p>As there are four variables and three constraints, you decided that, from the perspective of aerodynamics, it makes sense to make the maximum of the flap angles as small as possible, that is, you additionally want to minimise $\\max\\{ |n|, |e|, |s|, |w| \\}$.</p>\n<p>Find the best parameters to send to the <em>Single Copter</em> to achieve the desired pitch, yaw, and roll.</p>",
+  "input": "<ul>\n<li>One line containing the number $q$, $1 \\le q \\le 10^4$, the number of requests to follow.</li>\n<li>$i$ further lines, each containing three real numbers $p_i$, $r_i$, $y_i$ ($-1 \\le p_i, r_i, y_i \\le +1$).</li>\n</ul>",
+  "output": "<p>Output $q$ lines. In the $i$-th line, output the solution for the $i$-th request, four numbers $n_i$, $e_i$, $s_i$, $w_i$, separated by whitespace.</p>\n<p>Your answer will be considered correct if the resulting pitch, roll and yaw differ by at most $10^{-6}$ from the requested ones, and the maximum of the absolute values of flap outputs does not exceed the true value by more than $10^{-6}$.</p>",
+  "samples": [
+    {
+      "input": "8\n0 0 0\n1 0 0\n0 1 0\n0 0 1\n1 1 0\n1 0 1\n0 1 1\n1 1 1\n",
+      "output": "0.0 0.0 0.0 0.0\n0.0 0.5 0.0 -0.5\n0.5 0.0 -0.5 0.0\n0.25 0.25 0.25 0.25\n0.5 0.5 -0.5 -0.5\n0.5 0.5 0.5 -0.5\n0.5 0.5 -0.5 0.5\n0.75 0.75 -0.25 -0.25\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, The UK & Ireland Programming Contest, UKIEPC 2024",
+  "level": 11,
+  "tags": [
+    "math",
+    "ternary_search"
+  ],
+  "accepted_user_count": 17,
+  "submission_count": null,
+  "average_tries": 2.294100046157837
+}

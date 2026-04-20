@@ -1,0 +1,26 @@
+{
+  "id": 18501,
+  "title": "Y-Shaped Knife",
+  "time_limit": "3 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Serious debates often arise around chocolate cakes with cherries. Everyone likes cherries, so the cake must be cut in such a way that everyone receives a piece with the same number of cherries.</p>\n<p>Two people can easily divide a cake with one straight cut using a simple knife. Though less obvious, two straight cuts are always enough for four people. But what if you want to cut a cake for three people? We have a solution!</p>\n<p>You are given a cake with cherries and a Y-shaped knife. Cut the cake info three parts with equal number of cherries or report that it is impossible.</p>\n<p>Formally, you are given a set of points in a plane in general position. A Y-shaped knife is an apex point and three infinite straight rays going from the apex. The angle between any two rays equals 120<sup>◦</sup>(2π/3). The knife divides the plane into three sections. You have to find the position of the apex and the rotation of the first ray such that each of the sections contains equal number of points.</p>",
+  "input": "<p>In the first line of input there is a single integer n, the number of points (1 ≤ n ≤ 10<sup>5</sup>). Next n lines contain two integers each, x and y coordinates of the corresponding point. Coordinates do not exceed 10<sup>6</sup> by absolute value.</p>\n<p>It is guaranteed that no two points coincide and no three points lie on the same line.</p>",
+  "output": "<p>If it is impossible to make the desired cut, print “No” (without quotes).</p>\n<p>If it is possible, print “Yes” (without quotes). Then print three real numbers x, y, and r (|x|, |y| ≤ 10<sup>7</sup>, 0 ≤ r &lt; 2π/3), where x and y denote the coordinates of the apex and r denotes the counter-clockwise rotation of the knife in radians.</p>\n<p>The initial position of the knife (that is, corresponding to zero rotation) is when one of the rays points down. The position when the ray points to the right corresponds to the rotation of π/2.</p>\n<p>See “Notes” section for detailed explanation of the checker.</p>",
+  "samples": [
+    {
+      "input": "9\n3 -2\n-4 6\n0 -7\n-5 -6\n5 1\n1 6\n-5 0\n-3 -7\n-4 2\n",
+      "output": "Yes\n-1 0 0.9\n"
+    }
+  ],
+  "hint": "<p>All calculations are done in long double, an 80-bit floating-point type. Let the apex point be (x, y) with rotation r. For each input point (x<sub>i</sub>, y<sub>i</sub>):</p>\n<ul>\n<li>if |x − x<sub>i</sub>| &lt; 10<sup>−9</sup> and |y − y<sub>i</sub>| &lt; 10<sup>−9</sup>, the solution gets “Wrong Answer”;</li>\n<li>the angle of the direction from the apex point to the input point is calculated as atan2(y<sub>i</sub> − y, x<sub>i</sub> − x) + π/2 − r modulo 2π, where atan2(y, x) is the polar angle of point (x, y);</li>\n<li>if the absolute difference of the angle and 0, 2π/3, or 4π/3 is less than 10<sup>−9</sup>, the solution gets “Wrong answer”;</li>\n<li>finally, the section which the point belongs to is calculated straightforwardly.</li>\n</ul>",
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2020, Day 4: Yandex Cup 2020",
+  "level": 24,
+  "tags": [
+    "binary_search",
+    "geometry",
+    "sweeping"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 3.8889000415802
+}

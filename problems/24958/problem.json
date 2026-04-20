@@ -1,0 +1,29 @@
+{
+  "id": 24958,
+  "title": "Lottery Fun Time",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p><img alt=\"\" src=\"1.png\" style=\"width: 227px; height: 119px; float: right;\"/>The biggest fun of lottery is not in receiving the (usually a tiny amount of) prize money, but in dreaming of the big fortune you may possibly (that is, virtually never) receive.</p>\n<p>You have a number of lottery tickets at hand, each with a six-digit number. All the numbers are different, of course. Tomorrow is the drawing day and the prizes are the following.</p>\n<ul>\n<li>The first prize of 300,000 yen is won by the ticket with exact match of all the six digits with the six-digit first prize winning number.</li>\n<li>The second prizes of 4,000 yen are won by all of the tickets with their last four digits matching the four-digit second prize winning number.</li>\n<li>The third prizes of 500 yen are won by all of the tickets with their last two digits matching any of the three two-digit third prize winning numbers.</li>\n</ul>\n<p>The six digits on the lottery tickets and all of the winning numbers may start with zeros.</p>\n<p>The last two digits of all the prize winning numbers are made different so that tickets winning the third prize cannot also win the first nor the second prizes. Note that this rule also made the last two digits of the first and the second prize winning numbers different.</p>\n<p>To enjoy the climax of the lottery fun time, you decided to calculate the possible maximum amount you may win with your tickets. You have too many tickets to hand-calculate it, but it should also be your joy to write a program for making the calculation.</p>",
+  "input": "<p>The first line of the input has a positive integer $n$ ($n ≤ 10^5$), which is the number of tickets you have at hand. Each of the following $n$ lines has the six-digit number on one of your tickets. All the $n$ numbers are different from one another.</p>",
+  "output": "<p>Output in a line a single integer, which is the maximum possible total of winning prizes with the tickets you have.</p>",
+  "samples": [
+    {
+      "input": "7\n034207\n924837\n372745\n382947\n274637\n083907\n294837\n",
+      "output": "309500\n"
+    },
+    {
+      "input": "10\n012389\n456789\n234589\n678989\n890189\n567889\n123489\n263784\n901289\n345689\n",
+      "output": "304500\n"
+    }
+  ],
+  "hint": "<p>For the first sample, the following combination of prize winners allows the maximum total amount of 309500 yen.</p>\n<ul>\n<li>The first prize winner of 382947 makes one ticket with that number win 300000 yen.</li>\n<li>The second prize winner of 4837 makes two tickets, 924837 and 294837, win 4000 yen each.</li>\n<li>The third prize winners 07 and 45 make three tickets, 034207, 083907, and 372745, win 500 yen each. 37 cannot be a third prize winner, as the second prize winner, 4837, has the final two digits of 37. The ticket 274637, thus, wins nothing. You have no more tickets to win whatever the remaining third prize winner may be.</li>\n</ul>\n<p>For the second sample, nine out of the ten tickets have the same last two digits, 89, and thus the third prize winner of 89 allows nine third prizes, totaling 4500 yen. This is more than the second prize of 4000 yen possibly won by one of these nine tickets. The only remaining ticket 263784 should, of course, win the first prize.</p>",
+  "source": "ICPC, Regionals, Asia Pacific, Japan, ICPC 2021 Asia Yokohama Regional",
+  "level": 14,
+  "tags": [
+    "greedy",
+    "implementation"
+  ],
+  "accepted_user_count": 55,
+  "submission_count": null,
+  "average_tries": 1.90910005569458
+}

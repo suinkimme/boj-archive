@@ -1,0 +1,33 @@
+{
+  "id": 30376,
+  "title": "Odd trip plans",
+  "time_limit": "3 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>JAG is a country with $n$ airports numbered through $1$ to $n$. There are some airways, each of which connects two different airports bidirectionally. In other words, if an airway connects airports $u$ and $v$, a passenger can move either from $u$ to $v$ or from $v$ to $u$ in a single flight. Airways may be newly established or abolished.</p>\n<p>Mr. Oddytrip, who is a traveler loving odd numbers, plans a trip from an airport to another one by flights. Let’s say that he boards $k$ flights: A flight from $p_1$ airport to $p_2$, then from $p_2$ to $p_3$, then from $p_3$ to $p_4$, and so on, and finally from $p_k$ to $p_{k+1}$. This trip plan, which begins with $p_1$ and ends with $p_{k+1}$, is written as $p_1 \\rightarrow p_2 \\rightarrow p_3 \\rightarrow p_4 \\rightarrow \\cdots \\rightarrow p_k \\rightarrow p_{k+1}$. According to his aesthetics, a trip plan is <em>beautiful</em> if each of $n$ airports appear an odd number of times in the trip plan. For example, if $n = 6$, trip plans $3 \\rightarrow 4 \\rightarrow 5 \\rightarrow 6 \\rightarrow 1 \\rightarrow 2$ and $1 \\rightarrow 2 \\rightarrow 3 \\rightarrow 4 \\rightarrow 5 \\rightarrow 3 \\rightarrow 2 \\rightarrow 3 \\rightarrow 2 \\rightarrow 6$ are beautiful while $1 \\rightarrow 3 \\rightarrow 6$ and $1 \\rightarrow 2 \\rightarrow 3 \\rightarrow 4 \\rightarrow 1 \\rightarrow 5 \\rightarrow 6$ aren’t. In particular, each of the $n$ airports appears at least one in a beautiful trip plan.</p>\n<p>Initially, there are $m$ airways. Then, you are given $q$ queries, which should be processed in the order they are given. Each query is of one of the two kinds below:</p>\n<ul>\n<li>$1$ $x$ $y$: The existence of the airway between airports $x$ and $y$ changes. If there is already an airway between airports $x$ and $y$, then such an airway is abolished. In other words, Mr. Oddytrip is no longer able to board the direct flight between airports $x$ and $y$ (until it is newly established again). On the other hand, if there wasn’t such an airway before, an airway between airports $x$ and $y$ is newly established. In other words, Mr. Oddytrip can board a direct flight between airports $x$ and $y$ (until it is abolished again).</li>\n<li>$2$ $x$ $y$: You have to determine whether there can be a beautiful trip plan which begins with airport $x$ and ends with airport $y$ using the airways which are available at that time.</li>\n</ul>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<blockquote>\n<p>$n$ $m$ $q$</p>\n<p>$u_1$ $v_1$</p>\n<p>$\\vdots$</p>\n<p>$u_m$ $v_m$</p>\n<p>$t_1$ $x_1$ $y_1$</p>\n<p>$\\vdots$</p>\n<p>$t_q$ $x_q$ $y_q$</p>\n</blockquote>\n<p>The first line consists of three integers $n$, $m$ and $q$ ($2 \\le n \\le 100\\,000$, $0 \\le m \\le 100\\,000$, $1 \\le q \\le 100\\,000$), where $n$ is the number of airports in JAG country, $m$ is the number of airways which are initially available, and $q$ is the number of queries.</p>\n<p>The $i$-th of the following $m$ lines consists two integers $u_i$ and $v_i$ ($1 \\le u_i &lt; v_i \\le n$) representing that an airway between airports $u_i$ and $v_i$ is initially available. It is guaranteed that these $m$ airways are distinct.</p>\n<p>The $j$-th of the following $q$ lines consists of three integers $t_j$, $x_j$ and $y_j$ ($1 \\le t_j \\le 2$, $1 \\le x_j &lt; y_j \\le n$) representing the type of the query and the numbers of two airports as described above. It is guaranteed that there is at least one query where $t_j=2$.</p>",
+  "output": "<p>For each query where $t_j = 2$, print “<code>Yes</code>” in a single line if there can be a beautiful trip plan which begins with airport $x$ and ends with airport $y$. Otherwise, print “<code>No</code>” in a single line.</p>",
+  "samples": [
+    {
+      "input": "4 2 6\n1 2\n3 4\n2 1 2\n1 2 3\n2 1 2\n1 2 4\n1 2 3\n2 1 3\n",
+      "output": "No\nYes\nYes\n"
+    },
+    {
+      "input": "5 5 4\n1 2\n2 3\n3 4\n1 4\n4 5\n2 1 3\n2 1 4\n1 2 4\n2 1 4\n",
+      "output": "Yes\nNo\nYes\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2023 Day 3",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "graphs",
+    "disjoint_set",
+    "divide_and_conquer",
+    "offline_queries",
+    "offline_dynamic_connectivity"
+  ],
+  "accepted_user_count": 11,
+  "submission_count": null,
+  "average_tries": 1.8181999921798706
+}

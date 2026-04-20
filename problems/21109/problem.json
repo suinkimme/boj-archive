@@ -1,0 +1,26 @@
+{
+  "id": 21109,
+  "title": "Happiness",
+  "time_limit": "15 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are at a local amusement park, and notice a spinning teacup ride. After observing it for a bit, you notice a few interesting things about the ride. </p>\n<p>The ride consists of $N$ circular teacups, all equally spaced around the circumference of a turntable: for $i = 0, 1, \\ldots, N - 1$, the $i$-th teacup is centered at the point which is initially $i \\cdot \\frac{360}{N}$ degrees clockwise from North. The turntable is large enough to accommodate all of the teacups without them banging into each other. In each teacup, there are $N$ people, all equally spaced around the circumference of the teacup: for $i = 0, 1, \\ldots, N - 1$, the $i$-th person is located at the point which is initially $i \\cdot \\frac{360}{N}$ degrees clockwise from North. As teacups are large enough, consider people as points. In each teacup, for $i = 0, 1, \\ldots, N - 1$, the $i$-th person has <em>happiness value</em> $v_i$. Note that the people at the same initial position in different teacups have the same happiness value.</p>\n<p>Over the course of $Q$ milliseconds, one of two events happens every millisecond:</p>\n<ul>\n<li>The turntable rotates $k_i \\cdot \\frac{360}{N}$ degrees clockwise. The teacups compensate for that, so that their orientations relative to the exterior of the turntable are not affected.</li>\n<li>The teacup currently at $q_i \\cdot \\frac{360}{N}$ degrees clockwise from North rotates by $k_i \\cdot \\frac{360}{N}$ degrees clockwise around its center. The other teacups are not affected.</li>\n</ul>\n<p>You want to calculate the total happiness of all people, initially and after every event. The total happiness is the sum of individual people's happiness. If a person with happiness value $w$ is on a straight line formed by the centers of two teacups, their happiness is equal to $w$. Otherwise, their happiness is zero. As the total happiness may be large, please output it modulo $998\\,244\\,353$. </p>\n<p>Please write a program to track the total happiness of the participants!</p>",
+  "input": "<p>The first line contains two integers $N$ and $Q$ ($2 \\le N \\le 200\\,000$, $1 \\le Q \\le 200\\,000$).</p>\n<p>The next line contains $N$ integers, the values $v_0, v_1, \\ldots, v_{N - 1}$ ($1 \\le v_i \\le 1\\,000\\,000$).</p>\n<p>The next $Q$ lines describe the events. Each line is formatted as either \"<code>1</code> $k_i$\" ($1 \\le k_i \\le N$), indicating the turnable rotates $k_i \\cdot \\frac{360}{N}$ degrees clockwise, or \"<code>2</code> $q_i$ $k_i$\" ($0 \\le q_i &lt; N$, $1 \\le k_i \\le N$) indicating the teacup currently at $q_i \\cdot \\frac{360}{N}$ degrees (from the top) rotates by $k_i \\cdot \\frac{360}{N}$ degrees clockwise about its center.</p>",
+  "output": "<p>Output $Q + 1$ lines, each one containing the total happiness after $0, 1, 2, \\ldots, Q$ events.</p>\n<p>Remember to output the happiness modulo $998\\,244\\,353$.</p>",
+  "samples": [
+    {
+      "input": "6 3\n1 2 4 8 16 32\n2 1 4\n1 5\n2 4 2\n",
+      "output": "189\n168\n210\n252\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2021, Day 7: North American Contest 1",
+  "level": 24,
+  "tags": [
+    "fft",
+    "math",
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 3
+}

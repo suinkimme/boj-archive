@@ -1,0 +1,36 @@
+{
+  "id": 34152,
+  "title": "순열과 순열",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><strong>길이 </strong>$N$<strong>의 순열</strong> $A = \\left(A_1, \\, A_2 , \\, \\cdots, \\, A_N\\right)$이 주어진다. 이때, 다음을 만족하는 <strong>일대일 대응</strong> $f$의 개수를 구하라.</p>\n<ul>\n<li>$f : \\left\\{1,  \\, 2, \\, \\cdots, \\, N  \\right\\} \\rightarrow \\left\\{1,  \\, 2, \\, \\cdots, \\, N  \\right\\}$. 즉, $f$는 정의역과 공역(치역)으로 집합 $\\left\\{1,  \\, 2, \\, \\cdots, \\, N  \\right\\}$을 가진다.</li>\n<li>$1 \\leq i \\leq N$을 만족하는 모든 정수 $i$에 대해, $f(i) \\neq i$이고 $f(i) \\neq A_i$이다.</li>\n</ul>\n<p>이때, 답이 매우 커질 수 있으므로 $998 \\, 244 \\, 353$으로 나눈 나머지를 출력하라. $998 \\, 244 \\, 353$은 소수이다. </p>\n<p>순열 및 일대일 대응의 자세한 정의는 노트를 참고하라.</p>",
+  "input": "<p>첫 번째 줄에 순열의 크기를 나타내는 정수 $N$이 주어진다. ($2 \\leq N \\leq 5 \\, 000$)</p>\n<p>두 번째 줄에 순열 $A$의 원소 $A_1, \\, A_2, \\, \\cdots, \\, A_N$이 공백으로 구분되어 주어진다. ($1 \\leq A_i \\leq N$, $i \\neq j$이면 $A_i \\neq A_j$)</p>",
+  "output": "<p>조건을 만족하는 일대일 대응 $f$의 개수를 $998 \\, 244 \\, 353$으로 나눈 나머지를 출력하라.</p>",
+  "samples": [
+    {
+      "input": "4\n2 4 1 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4\n1 2 3 4\n",
+      "output": "9\n"
+    },
+    {
+      "input": "25\n11 13 9 22 19 4 3 12 16 7 21 8 14 2 1 24 23 18 17 20 10 25 5 6 15\n",
+      "output": "829913928\n"
+    }
+  ],
+  "hint": "<p>길이가 $N$인 <strong>순열</strong>이란 순열의 원소로 $1$부터 $N$까지의 정수가 모두 빠짐없이 단 한 번씩 나오는 수열을 의미한다. 즉, 순열 $A = \\left(A_1, \\, A_2 , \\, \\cdots, \\, A_N\\right)$는 아래 조건을 만족한다.</p>\n<ul>\n<li>$A_i$는 $1$ 이상 $N$ 이하의 정수</li>\n<li>$i \\neq j$이면 $A_i \\neq A_j$</li>\n</ul>\n<p>정의역이 $D$, 공역이 $C$인 <strong>함수</strong> $f : D \\rightarrow C$는 집합 $D$의 각 원소에 대해 집합 $C$의 원소를 하나씩 대응시키는 규칙이다. 이때 모든 대응값은 $C$에 속하며, 함수는 $D$의 모든 원소에 대해 정의되어야 한다. 즉, 모든 $x \\in D$에 대해 유일한 $f(x) \\in C$가 존재하는 대응 규칙을 의미한다. 함수 $f: D \\rightarrow C$의 <strong>치역</strong>은 정의역 $D$의 원소들이 $f$에 의해 실제로 대응되는 공역 $C$의 원소들의 집합이다. 즉, $f$의 치역은  $\\{ f(x) \\mid x \\in D \\} \\subseteq C$을 의미한다.</p>\n<p>함수 $f: D \\rightarrow C$가 <strong>일대일 함수</strong>(단사 함수)가 되기 위해서는, 임의의 $x_1, \\, x_2 \\in D$에 대하여</p>\n<p>$$f(x_1) = f(x_2) \\implies x_1 = x_2$$</p>\n<p>가 성립해야한다. 즉, 서로 다른 원소는 항상 서로 다른 함수값에 대응되는 함수를 의미한다.</p>\n<p>함수 $f: D \\rightarrow C$가 <strong>일대일 대응</strong>(전단사 함수)가 되기 위해서는, 함수 $f$가 일대일 함수이며 공역과 치역이 같아야 한다. 즉,</p>\n<p>$$\\forall y \\in C,  \\exists!  x \\in D \\, \\text{s.t.}  f(x) = y$$</p>\n<p data-pm-slice=\"1 1 []\">이면 $f$를 일대일 대응이라고 한다.</p>",
+  "source": "School, 경기과학고등학교, 나는코더다 반년대회, 나는코더다 2025 반년대회, Div.1, School, 경기과학고등학교, 나는코더다 반년대회, 나는코더다 2025 반년대회, Open Contest, dkim110807, denniskim, gs22059, gs22123, iccodly, kuhyaku, lighton",
+  "level": 22,
+  "tags": [
+    "math",
+    "dp",
+    "combinatorics",
+    "inclusion_and_exclusion",
+    "permutation_cycle_decomposition"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.2777999639511108
+}

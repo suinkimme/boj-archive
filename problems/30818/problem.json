@@ -1,0 +1,28 @@
+{
+  "id": 30818,
+  "title": "Batman Returns",
+  "time_limit": "2.5 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Gotham City consists of a single street, and there are $n$ skyscrapers located along it. They are numbered from west to east with integers from $1$ to $n$, the height of the $i$-th skyscraper is equal to $h_i$ meters.</p>\n<p>Every night Batman performs an observation flight over the city. He climbs on the roof of some skyscraper and glides down to the roof of some other skyscraper. Due to the strong permanent wind he is only able to flight westward, but his altitude remains almost the same. Thus, he is able to glide down from skyscraper $q$ to skyscraper $p$ if and only if $p &lt; q$ and $h_p &lt; h_q$. Moreover, Batman is very manoeuvrable, so the height of the buildings between $p$ and $q$ don't matter. Batman cares a lot about the crime level in the city so he chooses such pair of valid $p$ and $q$ that $q - p$ is maximum possible.</p>\n<p>City authorities have developed $m$ plans of city renewal. According to the $i$-th plan only skyscrapers from $l_i$ to $r_i$, inclusive will remain on this street, while others will be destroyed. For each plan $i$ Batman wants to know the optimal plan to observe the city, namely such $p_i$ and $q_i$ that $l_i \\leq p_i &lt; q_i \\leq r_i$, $h_{p_i} &lt; h_{q_i}$ and $q_i - p_i$ is maximum possible.</p>",
+  "input": "<p>The first line of the input contains one integer $n$ ($1 \\le n \\le 200\\,000$) --- number of skyscrapers on the street.</p>\n<p>The second line contains $n$ integers $h_i$($1 \\le h_i \\le 200\\,000$) --- heights of the skyscrapers.</p>\n<p>Third line contains integer $m$ ($1 \\le m \\le 200\\,000$) --- the number of plans designed by the city authorities.</p>\n<p>Each of the last $m$ lines contains two integers $l_i$ and $r_i$ ($1 \\leq l_i &lt; r_i \\leq n$), denoting the range of the skyscrapers that will remain according to the $i$-th plan.</p>",
+  "output": "<p>For each renewal plan you should print two integers --- optimal $p_i$ and $q_i$. If there is no possible observation flight at all, you should print <code>-1 -1</code>.</p>\n<p>If there are many optimal answers, you may print any one of them.</p>",
+  "samples": [
+    {
+      "input": "4\n2 3 1 4\n2\n2 3\n1 3\n",
+      "output": "-1 -1\n1 2\n"
+    },
+    {
+      "input": "7\n5 4 2 4 3 1 5\n4\n2 6\n2 7\n1 7\n3 7\n",
+      "output": "3 5\n2 7\n2 7\n3 7\n"
+    }
+  ],
+  "hint": "<p>Consider the first sample test. In the first query the only two available skyscrapers have heights $3$ and $1$ but they are not valid since $3 \\geq 1$. In the second query the pair consisting of the first and the second skyscrapers is valid since they have heights $2$ and $3$.</p>\n<p>Consider the second sample test. In the first query the pair of skyscrapers with heights $2$ and $3$, and the pair of skyscrapers with heights $2$ and $4$ are valid. The distance between first two of them is greater so this pair produces the answer for this query.</p>",
+  "source": "Olympiad, Moscow Open Olympiad in Informatics, Moscow Open Olympiad in Informatics 2015-16, Day 2",
+  "level": 22,
+  "tags": [
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 30
+}

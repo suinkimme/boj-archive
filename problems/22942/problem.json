@@ -1,0 +1,32 @@
+{
+  "id": 22942,
+  "title": "데이터 체커",
+  "time_limit": "1 초  (하단 참고)",
+  "memory_limit": "1024 MB",
+  "description": "<p>원 이동하기 2 문제를 만들고 만든 데이터가 문제의 조건에 맞는지 확인하는 코드를 작성해야한다.</p>\n<p>해당 문제의 데이터는 아래 조건들을 만족해야한다.</p>\n<ol>\n<li>모든 원의 중심 좌표는 $x$축 위에 존재해야 한다.</li>\n<li>$N$개의 원 중 임의의 두 원을 선택했을 때, 교점이 존재하지 않아야 한다. 즉, 하나의 원이 다른 원 안에 존재하거나 외부에 존재한다.</li>\n</ol>\n<p>데이터 형식은 원의 개수 $N$이랑 각 원의 중심 $x$좌표, 원의 반지름 $r$만 주어진다. 따라서, 2번 조건을 만족하는지만 확인하면 된다.</p>\n<p>주어진 데이터가 해당 조건을 만족하는지 확인해보자.</p>",
+  "input": "<p>첫 번째 줄에는 원의 개수 $N$이 주어진다.</p>\n<p>두 번째 줄부터 $N+1$번째 줄까지 원의 중심 $x$좌표, 원의 반지름 $r$이 공백으로 구분되어 주어진다.</p>",
+  "output": "<p>데이터가 조건에 맞는다면 <code>YES</code>, 조건에 만족하지 않는다면 <code>NO</code>를 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4\n5 4\n3 1\n6 1\n13 3\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "4\n3 1\n4 1\n5 1\n6 5\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": "<h3><strong>두 원의 위치관계</strong></h3>\n<p>두 원의 위치관계를 파악할 때 아래를 이용하면 된다.</p>\n<p>원 A의 반지름은 $r_A$, 원 B의 반지름은 $r_B$, 원 A와 원 B의 중심 사이의 거리를 $d$라고 가정하자.</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<td colspan=\"1\" rowspan=\"2\">두 점에서 만난다.</td>\n<td colspan=\"2\" rowspan=\"1\">한 점에서 만난다.</td>\n<td colspan=\"3\" rowspan=\"1\">만나지 않는다.</td>\n</tr>\n<tr>\n<td>외접</td>\n<td>내접</td>\n<td>외부에 있는 경우</td>\n<td>내부에 있는 경우</td>\n<td>동심원</td>\n</tr>\n<tr>\n<td>$|r_A-r_B|&lt;d&lt;r_A+r_B$</td>\n<td>$r_A+r_B=d$</td>\n<td>$|r_A-r_B|=d$</td>\n<td>$r_A+r_B&lt;d$</td>\n<td>$d&lt;|r_A-r_B|$</td>\n<td>$d=0$</td>\n</tr>\n</tbody>\n</table>\n<h3><strong>두 점 사이의 거리</strong></h3>\n<p>$(x_1, y_1)$와 $(x_2, y_2)$ 사이의 거리 $d$를 구하는 식은 아래와 같다.</p>\n<p>$d = \\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$</p>",
+  "source": "tony9402, eel0511, gkgg123, melon940925, rhs0266",
+  "level": 12,
+  "tags": [
+    "data_structures",
+    "sorting",
+    "geometry",
+    "sweeping",
+    "stack"
+  ],
+  "accepted_user_count": 916,
+  "submission_count": null,
+  "average_tries": 2.9967000484466553
+}

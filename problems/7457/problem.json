@@ -1,0 +1,26 @@
+{
+  "id": 7457,
+  "title": "Pixel Shuffle",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 230px; height: 228px;\"/></p>\n<p>Shuffling the pixels in a bitmap image sometimes yields random looking images. However, by repeating the shuffling enough times, one finally recovers the original images. This should be no surprise, since “shuffling” means applying a one-to-one mapping (or permutation) over the cells of the image, which come in finite number.</p>\n<p>Your program should read a number n, and a series of elementary transformations that define a “shuffling” φ of n × n images. Then, your program should compute the minimal number m (m &gt; 0), such that m applications of φ always yield the original n × n image.</p>\n<p>For instance if φ is counter-clockwise 90◦ rotation then m = 4.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 380px; height: 77px;\"/></p>",
+  "input": "<p>Input is made of two lines, the first line is number n (2 ≤ n ≤ 2<sup>10</sup> , n even). The number n is the size of images, one image is represented internally by a n × n pixel matrix (a<sub>i,j</sub>), where i is the row number and j is the column number. The pixel at the upper left corner is at row 0 and column 0.</p>\n<p>The second line is a non-empty list of at most 32 words, separated by spaces. Valid words are the keywords id, rot, sym, bhsym, bvsym, div and mix, or a keyword followed by “-”. Each keyword key designates an elementary transform (as defined by Figure 1), and key- designates the inverse of transform key. For instance, rot- is the inverse of counter-clockwise 90◦ rotation, that is clockwise 90◦ rotation. Finally, the list k<sub>1</sub>, k<sub>2</sub>, . . . , k<sub>p</sub> designates the compound transform φ = k<sub>1</sub> ◦ k<sub>2</sub> ◦ · · · ◦ k<sub>p</sub>. For instance, “bvsym rot-” is the transform that first performs clockwise 90◦ rotation and then vertical symmetry on the lower half of the image.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"3.png\" style=\"width: 154px; height: 77px;\"/></p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<td>id, identity. Nothing changes : b<sub>i,j</sub> = a<sub>i,j</sub>.</td>\n<td><img alt=\"\" src=\"4.png\" style=\"width: 76px; height: 73px;\"/></td>\n</tr>\n<tr>\n<td>rot, counter-clockwise 90<sup>◦</sup> rotation</td>\n<td><img alt=\"\" src=\"5.png\" style=\"width: 77px; height: 70px;\"/></td>\n</tr>\n<tr>\n<td>sym, horizontal symmetry : b<sub>i,j</sub> = a<sub>i,n−1−j</sub></td>\n<td><img alt=\"\" src=\"6.png\" style=\"width: 76px; height: 70px;\"/></td>\n</tr>\n<tr>\n<td>bhsym, horizontal symmetry applied to the lower half of image : when i ≥ n/2, then b<sub>i,j</sub> = a<sub>i,n−1−j</sub>. Otherwise b<sub>i,j</sub> = a<sub>i,j</sub>.</td>\n<td><img alt=\"\" src=\"7.png\" style=\"width: 76px; height: 70px;\"/></td>\n</tr>\n<tr>\n<td>bvsym, vertical symmetry applied to the lower half of image (i ≥ n/2)</td>\n<td><img alt=\"\" src=\"8.png\" style=\"width: 76px; height: 70px;\"/></td>\n</tr>\n<tr>\n<td>div, division. Rows 0, 2, . . . , n − 2 become rows 0, 1, . . . n/2 − 1, while rows 1, 3, . . . n − 1 become rows n/2, n/2 + 1, . . . n − 1.</td>\n<td><img alt=\"\" src=\"9.png\" style=\"width: 76px; height: 70px;\"/></td>\n</tr>\n<tr>\n<td>mix, row mix. Rows 2k and 2k + 1 are interleaved. The pixels of row 2k in the new image are a<sub>2k,0</sub>, a<sub>2k+1,0</sub>, a<sub>2k,1</sub>, a<sub>2k+1,1</sub>, . . . a<sub>2k,n/2−1</sub>, a<sub>2k+1,n/2−1</sub>, while the pixels of row 2k + 1 in the new image are a<sub>2k,n/2</sub>, a<sub>2k+1,n/2</sub>, a<sub>2k,n/2+1</sub>, a<sub>2k+1,n/2+1</sub>, . . . a<sub>2k,n−1</sub>, a<sub>2k+1,n−1 2k+1</sub></td>\n<td><img alt=\"\" src=\"10.png\" style=\"width: 76px; height: 70px;\"/></td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">Figure 1: Transformations of image (a<sub>i,j</sub>) into image (b<sub>i,j</sub>)</p>",
+  "output": "<p>Your program should output a single line whose contents is the minimal number m (m &gt; 0) such that φ m is the identity. You may assume that, for all test input, you have m &lt; 2<sup>31</sup>.</p>",
+  "samples": [
+    {
+      "input": "256\nrot- div rot div\n",
+      "output": "8\n"
+    },
+    {
+      "input": "256\nbvsym div mix\n",
+      "output": "63457\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 2005",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

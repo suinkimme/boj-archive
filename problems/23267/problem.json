@@ -1,0 +1,36 @@
+{
+  "id": 23267,
+  "title": "Customs Controls",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>With lifted restrictions, the border trade between Norway and Sweden will surely be back to its former glory. But the authorities are worried that this will also mean an increase of illegal smuggling of goods. The customs authorities of Norway and Sweden must cooperate to prevent this from becoming too big of a problem.</p>\n<p>To pass through the customs, one must visit a series of checkpoints, the Nordic Customs and Passport Control. There are $n$ checkpoints in total, numbered from $1$ to $n$, where $1$ is the entrance and $n$ is the exit. There are $m$ pairs of bidirectional roads that connect distinct checkpoints. The $i$th checkpoint takes some amount of time $t_i$ to pass through, and this is the bottleneck in crossing the border (the time it takes to walk the roads is negligible).</p>\n<p>Each checkpoint can be watched by one customs unit, either a Norwegian one or a Swedish one. There are $k$ Norwegian customs units available, and $n-k$ Swedish units. When a road has both of its endpoints watched by customs units from the same country, any smugglers using that road will be caught. Smugglers are of course always in a hurry, and will always attempt to go from $1$ to $n$ in as short amount of time as possible.</p>\n<p>Your task is to decide where to put the $n$ customs units, so that any smugglers who take a fastest possible route from $1$ to $n$ will be caught.</p>",
+  "input": "<p>The first line of input contains three integers $n$, $m$, and $k$ ($2 \\leq n \\leq 10^5$, $1 \\leq m \\leq 2 \\cdot 10^5$, $0 \\leq k \\leq n$), the number of checkpoints, roads, and Norwegian customs units. The second line of input contains $n$ positive integers $t_1, \\ldots, t_n$ ($1 \\leq t_i \\leq 10^4$), the time it takes to pass through each checkpoint. Then follow $m$ lines of input each containing two integers $u$ and $v$ ($1 \\leq u, v \\leq n$), meaning that there is a road between checkpoints $u$ and $v$.</p>\n<p>It is guaranteed that it is possible to go from any checkpoint to any other checkpoint using the roads. There is also at most one road between each pair of checkpoints, and no road connects a checkpoint to itself.</p>",
+  "output": "<p>If there is a way to place the customs units so that every smuggler is caught, output a string of length $n$, where the $i$th character indicates which type of customs unit to put at the $i$th checkpoint (an '<code>N</code>' for a Norwegian customs unit, and an '<code>S</code>' for a Swedish customs unit).  Otherwise, if there if there is no way to catch every smuggler, output \"<code>impossible</code>\".</p>",
+  "samples": [
+    {
+      "input": "3 2 0\n1 1 1\n1 2\n2 3\n",
+      "output": "SSS\n"
+    },
+    {
+      "input": "2 1 1\n1 1\n1 2\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "8 9 4\n3 3 1 2 2 3 2 1\n1 2\n1 3\n1 4\n2 5\n3 6\n4 7\n5 8\n6 8\n7 8\n",
+      "output": "SNSNSSNN\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2021, Camp, Petrozavodsk Programming Camp, Winter 2022, Day 4: NCPC+BAPC+CTU 2021 Selection",
+  "level": 19,
+  "tags": [
+    "graphs",
+    "ad_hoc",
+    "shortest_path",
+    "dijkstra",
+    "topological_sorting"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 2.8529000282287598
+}

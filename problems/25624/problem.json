@@ -1,0 +1,51 @@
+{
+  "id": 25624,
+  "title": "SNUPTI",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>마시로와 카루나는 MBTI에 대항할 새로운 심리검사 SNUPTI를 개발 중이다.</p>\n<p>SNUPTI는 <em>N</em>개의 척도를 사용하며, <em>i</em>번째 척도의 결과는 <em>S</em><sub><em>i</em></sub>개의 서로 다른 알파벳 대문자 중 하나로 나타낸다. (1 ≤ <em>N</em> ≤ 26, 1 ≤ <em>i</em> ≤ <em>N</em>, 1 ≤ <em>S</em><sub><em>i</em></sub> ≤ 26) SNUPTI의 결과는 각 척도의 결과를 나타내는 알파벳을 순서대로 나열한 문자열로 나타낸다. 지표를 이해하기 쉽게 하기 위해서 <strong>각 척도의 결과에 사용되는 알파벳은 모두 서로 다르다</strong>.</p>\n<p>마시로는 SNUPTI의 결과로 가능한 모든 문자열의 목록을 만들어서 카루나에게 전달하기로 했는데, 실수로 마시고 있던 달콤한 코코아를 흘려버려서 목록의 내용을 읽을 수 없게 되어버렸다. 결국 귀찮아진 마시로는 길이 <em>N</em>의 알파벳 대문자로만 이루어진 문자열 <em>M</em>개의 목록을 적당히 만들어서 카루나에게 전달했다. 게다가 각 척도에 대해 가능한 결과를 전달하지도 않아서, 카루나는 목록이 맞게 만들어졌는지 확인할 수가 없었다. 대신에 카루나는 문자열의 목록으로부터 각 척도의 가능한 결과를 거꾸로 만들어 내기로 했다.</p>\n<p>카루나는 <em>i</em>번째 척도에 대해 가능한 결과를 나타내는 알파벳의 집합 <em>A</em><sub><em>i</em></sub>를 만들어서, 이로부터 가능한 지표의 검사결과 문자열만이 마시로가 전달한 목록에서 모두 각각 한 번씩만 등장하도록 하고 싶다. (1 ≤ <em>i</em> ≤ <em>N</em>) 이때 각 척도의 결과에 사용되는 알파벳은 모두 서로 달라야 한다. 즉, 1 ≤ <em>i</em> &lt; <em>j</em> ≤ <em>N</em>에 대해 <em>A</em><sub><em>i</em></sub> ∩ <em>A</em><sub><em>j</em></sub> = ∅이어야 한다.</p>",
+  "input": "<p>첫째 줄에 SNUPTI에 사용되는 척도의 개수 <em>N</em>과 마시로가 카루나에게 전달한 문자열의 목록의 길이 <em>M</em>이 주어진다. (1 ≤ <em>N</em> ≤ 26; 1 ≤ <em>M</em> ≤ 20 000)</p>\n<p>둘째 줄부터 <em>M</em>개의 줄에 마시로가 전달한 문자열의 목록이 한 줄에 문자열 하나씩 주어진다. 각 문자열은 길이 <em>N</em>의 알파벳 대문자로만 이루어진 문자열이다.</p>",
+  "output": "<p>카루나가 각 척도의 가능한 결과를 거꾸로 만들어 낼 수 있다면 첫째 줄에 <code>YES</code>를, 아니라면 <code>NO</code>를 출력한다.</p>\n<p>카루나가 각 척도의 가능한 결과를 거꾸로 만들어 낼 수 있다면 둘째 줄부터 <em>N</em>개의 줄에 <em>A</em><sub>1</sub>, <em>A</em><sub>2</sub>, ⋯, <em>A</em><sub><em>N</em></sub>에 대해 각 집합의 원소를 알파벳 순으로 나열해 이어붙인 문자열을 한 줄에 하나씩 출력한다.</p>",
+  "samples": [
+    {
+      "input": "4 16\nENTP\nENFP\nINTP\nINFJ\nESTJ\nINTJ\nISFJ\nESFP\nESTP\nINFP\nENTJ\nISTP\nESFJ\nISFP\nISTJ\nENFJ\n",
+      "output": "YES\nEI\nNS\nFT\nJP\n"
+    },
+    {
+      "input": "2 6\nAA\nAO\nBB\nBO\nOO\nAB\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "2 4\nAA\nAB\nBA\nBB\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "2 4\nAD\nBC\nAC\nBD\n",
+      "output": "YES\nAB\nCD\n"
+    },
+    {
+      "input": "2 3\nAD\nBC\nAC\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "2 5\nAD\nBC\nAC\nBD\nBC\n",
+      "output": "NO\n"
+    },
+    {
+      "input": "4 7\nBAKE\nCAKE\nFAKE\nLAKE\nMAKE\nTAKE\nWAKE\n",
+      "output": "YES\nBCFLMTW\nA\nK\nE\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 서울대학교, 서울대학교 프로그래밍 경시대회, 2022 서울대학교 프로그래밍 경시대회, Division 2, jhwest2, sait2000, IHHI, junhopark, kipa00, sjimed",
+  "level": 8,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "set",
+    "hash_set"
+  ],
+  "accepted_user_count": 186,
+  "submission_count": null,
+  "average_tries": 2.9300999641418457
+}

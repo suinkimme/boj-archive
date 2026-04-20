@@ -1,0 +1,35 @@
+{
+  "id": 18023,
+  "title": "Flow Finder",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Last summer, Carla the Cartographer went on an expedition on behalf of the National Center for Positioning and Charting (the NCPC). The goal was to measure water flows of a river system far away in the north. However, the area is quite remote and Carla is not the adventurous type, so she was only able to measure the water flows in some of the locations. Carla is now worried that the NCPC will send her back to this wilderness next summer, so she consulted some algorithm experts (you) to see if it is possible to reconstruct the missing data.</p>\n<p>The river system is represented by a rooted tree with n vertices numbered from 1 to n. The leaves of this tree are the sources, and the other vertices correspond to confluences (places where multiple rivers join together). Water flows from higher-numbered vertices to lower-numbered vertices. Vertex 1, the root of the tree, is the mouth of the river system, where it flows into the ocean. The water flow of a source can be any positive integer, while the water flow of a confluence is the sum of the water flows of its children. You will be given this tree along with the water flows at some of its vertices, and your task is to find the water flows at all the vertices or determine that this is impossible</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 277px; height: 181px;\"/></p>\n<p>Figure F.1: Illustration of Sample Input 1 and its solution. Water flows from left to right. The flows shown in red, from vertices 1, 5, 7 and 9, are not given but can be deduced to be 9, 2, 3 and 1 respectively</p>",
+  "input": "<p>The first line of input contains an integer n (2 ≤ n ≤ 3 · 10<sup>5</sup>), the number of vertices in the tree. Then follows a line containing n − 1 integers p<sub>2</sub>, . . . , p<sub>n</sub> (1 ≤ p<sub>i</sub> &lt; i), where p<sub>i</sub> is the number of the parent of vertex i.</p>\n<p>Finally there is a line containing n integers a<sub>1</sub>, . . . , a<sub>n</sub> (0 ≤ a<sub>i</sub> ≤ 10<sup>9</sup>), where a<sub>i</sub> represents the water flow at vertex i. If a<sub>i</sub> is equal to 0, then the water flow at that vertex is unknown. Otherwise, a<sub>i</sub> is equal to the water flow at vertex i. Note that the upper bound 10<sup>9</sup> on a<sub>i</sub> does not apply to the unknown values, they can be any positive integer.</p>",
+  "output": "<p>If all the n water flows can be reconstructed uniquely, then output them in increasing order of vertex number. Otherwise, output “impossible”. Note that it is possible that there is no way of reconstructing the water flows (if the data provided by Carla is inconsistent somehow). In that case you should also output “impossible”.</p>",
+  "samples": [
+    {
+      "input": "10\n1 2 3 2 1 6 7 7 6\n0 4 2 2 0 5 0 2 0 2\n",
+      "output": "9\n4\n2\n2\n2\n5\n3\n2\n1\n2\n"
+    },
+    {
+      "input": "5\n1 2 2 1\n4 0 0 0 1\n",
+      "output": "impossible\n"
+    },
+    {
+      "input": "4\n1 1 1\n3 2 1 0\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": ", ICPC, Regionals, Europe, Northwestern European Regional Contest, Nordic Collegiate Programming Contest, NCPC 2019",
+  "level": 20,
+  "tags": [
+    "dp",
+    "greedy",
+    "trees",
+    "dp_tree"
+  ],
+  "accepted_user_count": 20,
+  "submission_count": null,
+  "average_tries": 4
+}

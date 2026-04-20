@@ -1,0 +1,26 @@
+{
+  "id": 17347,
+  "title": "Text Editor",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>A long, long time ago, DOS3.x programmers were starting to get tired of EDLIN. So they gradually switched to editors that they wrote themselves.</p>\n<p>Many years later, Alex has accidentally stumbled upon a text editor from back in these days. After some basic testing, he has made a shocking discovery: this software is able to perform tens of thousands of edit operations per second (of course, you cannot conduct these tests by hand)! So, Alex is spending sleepless nights trying to create a product like this himself. Can you help him?</p>\n<p>To clarify the objective, Alex has created some definitions to make the term \"text editor\" less abstract:</p>\n<ul>\n<li><b>text</b>: a sequence formed using 0 or more ASCII characters with values in the inclusive range [32, 126] (i.e. spaces and visible characters).</li>\n<li><b>cursor</b>: a mark within a block of text to indicate a position. It may be positioned at the beginning of the text, the end of the text, or between any two adjacent characters in the text.</li>\n<li><b>text editor</b>: a program containing a block of text and a single cursor, capable of performing the following six operations. If the block of text is empty, we will consider the text editor to be empty.</li>\n</ul>\n<table align=\"center\" class=\"table table-bordered\" id=\"operations\">\n<tbody>\n<tr>\n<th>Operation</th>\n<th>Input Format</th>\n<th>Function</th>\n</tr>\n<tr>\n<td>Move(k)</td>\n<td><code>Move k</code></td>\n<td>Moves the cursor's position to immediately after the <var>k</var>-th character in the text. If <var>k</var>= 0, then the cursor is moved to the start of the text.</td>\n</tr>\n<tr>\n<td>Insert(<var>n</var>, <var>s</var>)</td>\n<td><code>Insert n↵ \t\t\ts</code></td>\n<td>Inserts a string <var>s</var> of length <var>n</var> (<var>n</var> ≥ 1) at the position of the cursor. The position of the cursor does not change.</td>\n</tr>\n<tr>\n<td>Delete(<var>n</var>)</td>\n<td><code>Delete n</code></td>\n<td>Delete the <var>n</var> (<var>n</var> ≥ 1) characters following the cursor. The position of the cursor does not change.</td>\n</tr>\n<tr>\n<td>Get(<var>n</var>)</td>\n<td><code>Get n</code></td>\n<td>Outputs the <var>n</var> (<var>n</var> ≥ 1) characters following the cursor. The position of the cursor does not change.</td>\n</tr>\n<tr>\n<td>Prev</td>\n<td><code>Prev</code></td>\n<td>Moves the cursor backwards by one character.</td>\n</tr>\n<tr>\n<td>Next</td>\n<td><code>Next</code></td>\n<td>Moves the cursor forwards by one character.</td>\n</tr>\n</tbody>\n</table>\n<p>For example, an empty text editor when given the operations: Insert(13, \"<code>Balanced tree</code>\"), Move(2), Delete(5), Next(), Insert(7, \"<code>editor</code>\"), Move(0), and Get(16), will output \"<code>Bad editor tree</code>\".</p>\n<p>Your task is to:</p>\n<ul>\n<li>Create an empty text editor.</li>\n<li>Read some operations from the input and execute them.</li>\n<li>For each Get() operation, output the correct contents.</li>\n</ul>",
+  "input": "<p>The first line of input contains an integer <var>t</var>, the number of operations. The following lines contain <var>t</var> operations. To make text from the text editor easier to read, the string following the Insert() operation may contain multiple line breaks. You must ignore them (if this is hard to understand, please refer to the sample input and output below). Other than new line characters, all of the characters in the input will have ASCII values within the range [32, 126], inclusive. There will be no trailing spaces.</p>\n<p>You can assume that for each test case:</p>\n<ul>\n<li>The number of Move() operations will not exceed 50000. The total number of Insert() and Delete() operations will not exceed 4000. The total number of Prev() and Next() operations will not exceed 200000.</li>\n<li>The number of characters inserted in each Insert() operation will not exceed 2M (1M = 1024×1024). The length of the correct output will not exceed 3M.</li>\n<li>For each Delete() and Get() operation, there will always be sufficient characters following the cursor. The Move(), Prev(), and Next() operations will never move the cursor to an invalid position.</li>\n<li>All operations will be valid.</li>\n</ul>",
+  "output": "<p>Each line of the output should contain the text outputted by a single corresponding Get() operation.</p>",
+  "samples": [
+    {
+      "input": "15\nInsert 26\nabcdefghijklmnop\nqrstuv wxy\nMove 16\nDelete 11\nMove 5\nInsert 1\n^\nNext\nInsert 1\n_\nNext\nNext\nInsert 4\n.\\/.\nGet 4\nPrev\nInsert 1\n^\nMove 0\nGet 22\n",
+      "output": ".\\/.\nabcde^_^f.\\/.ghijklmno\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2003",
+  "level": 20,
+  "tags": [
+    "data_structures",
+    "string",
+    "rope"
+  ],
+  "accepted_user_count": 65,
+  "submission_count": null,
+  "average_tries": 2.1231000423431396
+}

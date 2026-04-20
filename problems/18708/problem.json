@@ -1,0 +1,31 @@
+{
+  "id": 18708,
+  "title": "Exciting Menus",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>In a restaurant, given $N$ menus, where the menus are represented by the strings $S^1, \\dots , S^N$. Each string $S^i$ is associated with an array $A^i$ (of the same length) of joy levels. In this problem, you should choose a submenu defined by three integers $(i, j, k)$, where $i$ is the index of one of the menus, and $j, k$ specify a substring of this chosen menu.</p>\n<p>We need to find the submenu of the highest quality, where the quality $Q$ is defined by the function:</p>\n<p>$$Q(i, j, k) = \\text{popularity}(S^i_{j,k}) \\cdot A^i_k \\cdot |S^i_{j,k}|$$</p>\n<ul>\n<li>$S^i_{j,k}$ = The substring $[j, k]$ (where $j, k$ are one-based, inclusive) of the string $S^i$.</li>\n<li>popularity($S^i_{j,k}$) = number of menus (from $S^1, \\dots , S^N$) that contain the submenu-string $S^i_{j,k}$ as a prefix.</li>\n<li>$|S^i_{j,k}|$ is the size of the submenu, which is the length of the substring representing the submenu.</li>\n<li>$A^i_k$ is the joy level of the submenu ($k$<sup>th</sup> entry of the $i$<sup>th</sup> array), please note that the index $j$ is not used here.</li>\n</ul>\n<p>Can you find the submenu of the highest quality? Please output the corresponding highest quality of the function $Q$.</p>",
+  "input": "<p>The first line of the input contains a single integer $T$ specifying the number of test cases.</p>\n<p>Each test case begins with a line containing an integer $N$ ($1 \\le N \\le 10^5$) specifying the number of menus in the restaurant.</p>\n<p>Then $N$ lines follow, the $i$<sup>th</sup> line contains a string $S^i$ representing the $i$<sup>th</sup> menu. All the menus are nonempty strings consisting of lowercase English letters, and the sum of their lengths will not exceed $10^5$ per test case.</p>\n<p>Then $N$ lines follow, the $i$<sup>th</sup> line contains array $A^i$, in which Ai has the same length as string $S^i$ and ($0 \\le A^i_k \\le 10^9$). The values of each array are space-separated.</p>",
+  "output": "<p>For each test case, print a single line containing an integer $Q$ representing the maximum quality corresponding to the best submenu $(i, j, k)$.</p>",
+  "samples": [
+    {
+      "input": "2\n2\naabaa\naa\n0 0 0 0 100\n0 1\n4\nbbbaa\naa\naab\naax\n0 0 0 0 100\n0 0\n0 0 0\n0 0 0\n",
+      "output": "500\n600\n"
+    }
+  ],
+  "hint": "<p>The triples corresponding to the answers of the two given cases are $(1, 1, 5)$ and $(1, 4, 5)$.</p>",
+  "source": "ICPC, Regionals, Africa and Arab, Arab Collegiate Programming Contest, 2018 Arab Collegiate Programming Contest",
+  "level": 22,
+  "tags": [
+    "aho_corasick",
+    "data_structures",
+    "dp",
+    "segtree",
+    "string",
+    "suffix_array",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 10,
+  "submission_count": null,
+  "average_tries": 2.4000000953674316
+}

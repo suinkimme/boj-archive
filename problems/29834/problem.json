@@ -1,0 +1,30 @@
+{
+  "id": 29834,
+  "title": "Metroovõrgu tsoonid",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Mõõdukalt Tähelepanuväärses Linnas on suur metroovõrk. Metroovõrk koosneb $N$ jaamast, mis on nummerdatud $1, \\ldots, N$, ning $M$ neid ühendavast raudteelõigust. On teada, et ükski raudteelõik ei ühenda jaama iseendaga, et ükski raudteelõikude paar ei ühenda sama jaamapaari ja et mööda neid raudteelõike on võimalik sõita igast jaamast igasse teise jaama. Iga jaama kohta on teada tema asukoht $(x; y)$ koordinaattasandil, kus linna keskpunkt asub punktis $(0; 0)$. Et metroojaamad asuvad maa all, võib ka juhtuda, et linnas on mitu samade koordinaatidega metroojaama, erinevatel sügavustel.</p>\n<p>Suurtes linnades on tavaks jaotada metroovõrk tsoonideks. Sama plaan on käiku minemas ka Mõõdukalt Tähelepanuväärses Linnas. Lihtsuse mõttes otsustati jaamad jaotada tsoonidesse selle järgi, kui kaugel on nad linna keskpunktist.</p>\n<p>Selleks joonistab planeerija linnakaardile $k - 1$ ringjoont, kõik keskpunktiga $(0; 0)$ ja iga järgmine eelmisest suurema raadiusega. Siis:</p>\n<ul>\n<li>1. tsoon koosneb jaamadest, mis jäävad 1. ringjoone sisse.</li>\n<li>2. tsoon koosneb jaamadest, mis jäävad 1. ringjoone peale või 1. ja 2. ringjoone vahele.</li>\n<li>3. tsoon koosneb jaamadest, mis jäävad 2. ringjoone peale või 2. ja 3. ringjoone vahele.</li>\n<li>$\\ldots$</li>\n<li>$k$. tsoon koosneb jaamadest, mis jäävad $(k-1)$. ringjoone peale või sellest väljapoole.</li>\n</ul>\n<p>Sinu ülesanne on planeerijat aidata. Tsoonisüsteemi heaks toimimiseks on veel mõned nõuded:</p>\n<ul>\n<li>Igas tsoonis peab olema vähemalt üks jaam.</li>\n<li>Igast $a$. tsooni jaamast peab olema võimalik liikuda mistahes $b$. tsooni jaama nii, et ei läbita ühtki jaama, mille tsooni number on suurem kui $\\max(a, b)$.</li>\n<li>Tsoonide arv peab olema maksimaalne, mille juures on veel võimalik mõlemad eelmised nõuded rahuldada.</li>\n</ul>\n<p>Joonisel 1 on näitena toodud üks võimalik metroovõrgustik ja tingimustele vastav tsoonideks jaotus. Esimesse tsooni kuuluvad jaamad 1, 2 ja 3; teise tsooni kuuluvad jaamad 5, 6 ja 7 ning kolmandasse tsooni ainult jaam 4. On selge, et igas tsoonis on vähemalt üks jaam.</p>\n<p>Samuti kehtib teine nõue. Vaatame näiteks jaamu 1 ja 6, mis asuvad vastavalt 1. ja 2. tsoonis. Näeme, et jaamast 1 on võimalik liikuda jaama 6 kasutades ainult 1. ja 2. tsooni jaamu, näiteks $1 \\to 5 \\to 6$ või $1 \\to 2 \\to 3 \\to 6$. Samuti on näiteks jaamast 1 võimalik liikuda jaama 3, läbides ainult 1. tsooni jaamu: $1 \\to 2 \\to 3$.</p>\n<p>Saab näidata, et 3 on antud metroovõrgu korral suurim võimalik tsoonide arv.</p>",
+  "input": "<p>Sisendi esimesel real on kaks täisarvu $N$ ($2 \\le N \\le 3 \\cdot 10^5$) ja $M$ ($1 \\le M \\le 3 \\cdot 10^5$).</p>\n<p>Neile järgnevad $N$ rida, mis kirjeldavad jaamade asukohti. Nendest $i$-s rida koosneb kahest täisarvust $x_i$ ja $y_i$ ($-10^9 \\le x_i, y_i \\le 10^9$), mis tähendavad, et jaam $i$ asub punktis $(x_i; y_i)$.</p>\n<p>Neile järgnevad $M$ rida, mis kirjeldavad jaamade vahelisi raudteelõike. Nendest $j$-s rida koosneb kahest täisarvust $u$ ja $v$ ($1 \\le u, v \\le N$, $u \\ne v$), mis tähendavad, et jaamad $u$ ja $v$ on omavahel raudteelõiguga ühendatud.</p>",
+  "output": "<p>Väljundi esimesele reale väljastada $K$ --- suurim võimalik tsoonide arv.</p>\n<p>Teisele reale väljastada $K - 1$ täisarvu $D_1, D_2, \\ldots, D_{K - 1}$ ($0 &lt; D_1 &lt; D_2 &lt; \\cdots &lt; D_{K - 1} \\le 2 \\cdot 10^{18}$), mis näitavad, et:</p>\n<ul>\n<li>tsoon number 1 koosneb jaamadest, mille kaugus keskpunktist on intervallis $\\left[0, \\sqrt{D_1}\\right)$;</li>\n<li>tsoon number $i$ ($1 &lt; i &lt; K$) koosneb jaamadest, mille kaugus keskpunktist on intervallis $\\left[\\sqrt{D_{i - 1}}, \\sqrt{D_i}\\right)$;</li>\n<li>tsoon number $K$ koosneb jaamadest, mille kaugus keskpunktist on intervallis $\\left[\\sqrt{D_{K - 1}}, \\infty\\right)$.</li>\n</ul>\n<p>Kui suurim võimalik tsoonide arv $K = 1$, siis peab teine rida olema tühi.</p>\n<p>Kui tsoonideks jaotamiseks on mitu võimalust, väljastada ükskõik milline neist.</p>",
+  "samples": [
+    {
+      "input": "7 8\n-1 0\n2 2\n1 0\n-6 2\n-4 -3\n-3 -4\n0 -5\n1 2\n2 3\n1 5\n1 7\n3 6\n4 5\n5 6\n6 7\n",
+      "output": "3\n12 30\n"
+    },
+    {
+      "input": "4 4\n2 2\n-2 -2\n3 -3\n-3 3\n1 3\n3 2\n1 4\n4 2\n",
+      "output": "1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Estonian Informatics Olympiad, 2022-23, Preliminary Round",
+  "level": 0,
+  "tags": [
+    "data_structures",
+    "geometry",
+    "disjoint_set"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,30 @@
+{
+  "id": 23580,
+  "title": "Graph and Machine",
+  "time_limit": "4 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>John's father recently passed away and left John a colored graph and a machine. The colored graph was simply a connected undirected graph with labels $0$ or $1$ on each of its vertices. The machine was something more peculiar.</p>\n<p>A machine of order $n$ is an acyclic directed graph with one source (a vertex with no incoming edges) and two sinks (vertices with no outgoing edges). One of the sinks is labeled with $0$ and the other is labeled with $1$. Each of the remaining vertices including the source is labeled with an integer from $\\{1, \\ldots, n\\}$ and has exactly two outer edges: one labeled with $0$ and the other labeled with $1$. Also <strong>on every path from the source to a sink, all labels of the non-sink vertices are distinct</strong>. </p>\n<p>A machine of order $n$ computes a function from $\\{0,1\\}^n$ to $\\{0,1\\}$. Let us define it recursively. For $0$-sink, the function is $0$ on every input, for $1$-sink, it is $1$ for every input. For a non-sink vertex $v$ labeled with $i$, $$f_v(x_1, \\ldots, x_n) = \\begin{cases} f_{t_0} (x_1, \\ldots, x_n) &amp; \\text{if } x_i = 0 \\\\ f_{t_1} (x_1, \\ldots, x_n) &amp; \\text{if } x_i = 1 \\end{cases}$$ where $t_j$ is the end of the edge from $v$ labeled with $j$ for $j \\in \\{0,1\\}$. The function calculated by a machine with the source $s$ is $f_s$.</p>\n<p>In his will, Jonh's father wrote that he had worked on the machine for years in order to calculate the edge-coloring function of the colored graph he had given to John. All he asks John is to check if the machine calculates this function correctly. </p>\n<p>The edge-coloring function $\\mathrm{EC}(x_1, \\ldots, x_m)$ of a colored graph $G$ with $\\ell$ vertices and $m$ edges with vertex-labels $c_1, \\ldots, c_{\\ell}$ is a function from $\\{0,1\\}^m$ to $\\{0,1\\}$. It equals $1$ if and only if for every vertex $v$ with incident edges $e_1, \\ldots, e_k$, the following equality holds: $c_v = \\bigoplus\\limits_{i=1}^k x_{e_i}$. In other words, the parity of the sum of values on edges incident to $v$ is $c_v$.</p>\n<p>You are asked to check if the given machine calculates the edge-coloring function of the given graph, and if it is not, find the coloring of edges $x$ such that $\\mathrm{EC}(x) \\neq f(x)$, where $f$ is the function calculated by the machine.</p>",
+  "input": "<p>The first line contains five integers $N$, $m$, $s$, $t_0$, and $t_1$: the number of nodes in the machine, the order of the machine, the index of the source and the indices of the $0$-sink and $1$-sink respectively ($1 \\le s, t_0, t_1 \\le N \\le 300\\,000$; $N \\ge 3$; $1 \\le m \\le 300\\,000$; $t_0 \\neq t_1$; $s \\neq t_0$; $s \\neq t_1$). The $i$-th of the next $N$ lines describes the $i$-th node of the machine. It contains three integers $o_0$, $o_1$ and $\\ell$: the index of the end node of the outer edge from the node $i$ labeled with $0$, this index for the edge labeled with $1$, and the label of the node $i$ itself ($-1 \\le o_0, o_1 \\le N$; $-1 \\le \\ell \\le m$). If $i$ is a sink, $o_0 = o_1 = \\ell = -1$. The values $o_0$, $o_1$ and $\\ell$ are never equal to zero.</p>\n<p>It is guaranteed that</p>\n<ul>\n<li>the graph of the machine is acyclic;</li>\n<li>$o_0$, $o_1$ or $\\ell$ are equal to $-1$ if and only if the node is a sink;</li>\n<li>on every path from the source to a sink, all labels of non-sink vertices are unique;</li>\n<li>all vertices except maybe one of the sinks are reachable from $s$.</li>\n</ul>\n<p>The next line contains one integer $k$, the number of vertices in the colored graph $G$ ($1 \\le k \\le 300\\,000$). The number of edges in this graph is $m$. The following line contains $k$ integers $c_1, c_2, \\ldots, c_k$, the labels of the vertices of $G$ (each $c_i$ is either $0$ or $1$).</p>\n<p>The last $m$ lines contain descriptions of the edges of $G$. The $i$-th of these lines contains two integers $a_i$ and $b_i$ which describe an edge connecting $a_i$ and $b_i$ ($1 \\le a_i, b_i \\le k$; $a_i \\neq b_i$). It is guaranteed that $G$ is connected, but it may contain parallel edges.</p>",
+  "output": "<p>Print \"<code>YES</code>\" on the first line if the machine calculates the edge-coloring function correctly. Otherwise, print \"<code>NO</code>\" on the first line, and on the next line, print $m$ characters $x_1, x_2, \\ldots, x_m$ such that $\\mathrm{EC}(x_1, x_2, \\ldots, x_m) \\neq f(x_1, x_2, \\ldots, x_m)$, where $f$ is the function computed by the machine. Each $x_i$ must be either $0$ or $1$.</p>",
+  "samples": [
+    {
+      "input": "7 3 1 6 7\n2 3 1\n6 4 2\n5 6 2\n6 7 3\n7 6 3\n-1 -1 -1\n-1 -1 -1\n3\n1 1 0\n1 2\n1 3\n2 3\n",
+      "output": "YES\n"
+    },
+    {
+      "input": "7 3 1 6 7\n2 3 1\n6 4 2\n5 6 2\n6 7 3\n6 7 3\n-1 -1 -1\n-1 -1 -1\n3\n1 1 0\n1 2\n1 3\n2 3\n",
+      "output": "NO\n101\n"
+    },
+    {
+      "input": "3 1 1 2 3\n2 3 1\n-1 -1 -1\n-1 -1 -1\n2\n1 1\n1 2\n",
+      "output": "YES\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 3: Grand Prix of SPb",
+  "level": 26,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

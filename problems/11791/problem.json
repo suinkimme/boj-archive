@@ -1,0 +1,25 @@
+{
+  "id": 11791,
+  "title": "Automatic Scholarship Calculation",
+  "time_limit": "4 초",
+  "memory_limit": "256 MB",
+  "description": "<p>A university gives scholarship to students based on their current CGPA. This waiver allocation follows some rules. At the beginning of a semester allotted scholarships for certain CGPA range is put on the notice board in tabular form. Two such tables are shown below: </p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"1.png\" style=\"height:125px; width:623px\"/></p>\n<p>In the table on the left it is said that students who have CGPA within 3.60 and 3.69 (inclusive) will get 10% of their tuition fee as scholarship. Similarly, those with CGPA range is within 3.90-3.99 will get 40% of their tuition fee as scholarship. Using the two tables above we will try to explain to you the rules and restrictions of allocating waiver:</p>\n<ol>\n<li>A fixed Scholarship is given to all the students within a CGPA Range.</li>\n<li>The range of each CGPA slab must be equal (Except the topmost one, which can be smaller). The slabs must go all the way up to 4.00.</li>\n<li>The scholarship percentage for the lowest slab is a positive integer. With the increase of CGPA range the amount of scholarship percentage must also increase by a fixed positive integer value. In the table on the left this fixed value is 10% and in the table on the right this fixed value is 30%.</li>\n<li>Scholarship percentage for each slab is always a positive integer with a maximum value of 100%.</li>\n<li>The scholarship amount that can give 1 student 1 % scholarship is called a unit. So to give 2 students 50% scholarship, 50*2 = 100 units is needed.</li>\n<li>All the scholarships given should use up a given amount, P units.</li>\n<li>A CGPA range for scholarship cannot start below 2.50. So 2.50-2.55 is a valid CGPA range but 2.45-2.55 is not valid.</li>\n<li>There must be at least 2 slabs for scholarship. But of course a slab can contain zero students.</li>\n</ol>\n<p>Given the number of students, total available scholarship units and their current CGPA, your job is to find out the number of different possible scholarship allocations that uses up all the scholarship units. Two scholarship allocations are different if their CGPA range is different or scholarship allocation in any slab is different. </p>",
+  "input": "<p>Input file contains at most 100 sets of inputs. The description of each set is given below:</p>\n<p>Each set starts with two integers N (N&lt;=10000) which indicates the total number of students and P which indicates the scholarship units that needs to be used up. Each of the next N lines contains the CGPA of one student.</p>\n<p>Input is terminated by a line containing two zeroes. </p>",
+  "output": "<p>For each test case produce one line of output which contains an integer D. This D denotes the total number of different scholarship allocations that uses up all P units. Input will be such that there will always be at least one possible allocation. </p>",
+  "samples": [
+    {
+      "input": "10 410\n3.29\n3.96\n2.61\n2.82\n3.93\n3.68\n3.70\n2.91\n3.28\n3.68\n0 0\n",
+      "output": "79554\n"
+    }
+  ],
+  "hint": "<p>//a = 10 d = 10 lowest = 2.88 nslab = 8 wslab = 14</p>\n<p>One possible solution to the sample input above is</p>\n<table class=\"table table-bordered\" style=\"width:50%\">\n<thead>\n<tr>\n<th>CGPARange</th>\n<th># of students</th>\n<th>Waiver %</th>\n<th>Total Units needed</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>3.93-4.00</td>\n<td>2</td>\n<td>80</td>\n<td>160</td>\n</tr>\n<tr>\n<td>3.78-3.92</td>\n<td>0</td>\n<td>70</td>\n<td> </td>\n</tr>\n<tr>\n<td>3.63-3.77</td>\n<td>3</td>\n<td>60</td>\n<td>180</td>\n</tr>\n<tr>\n<td>3.48-3.62</td>\n<td>0</td>\n<td>50</td>\n<td> </td>\n</tr>\n<tr>\n<td>3.33-3.47</td>\n<td>0</td>\n<td>40</td>\n<td> </td>\n</tr>\n<tr>\n<td>3.18-3.32</td>\n<td>2</td>\n<td>30</td>\n<td>60</td>\n</tr>\n<tr>\n<td>3.03-3.17</td>\n<td>0</td>\n<td>20</td>\n<td> </td>\n</tr>\n<tr>\n<td>2.88-3.02</td>\n<td>1</td>\n<td>10</td>\n<td>10</td>\n</tr>\n<tr>\n<td> </td>\n<td> </td>\n<td>Total Units</td>\n<td>410</td>\n</tr>\n</tbody>\n</table>\n<p>There is another 79553 different allocation which uses up all 410 units exactly. </p>",
+  "source": "ICPC, Regionals, Asia Pacific, Thailand, 2015 ACM-ICPC Asia Phuket Regional Programming Contest",
+  "level": 13,
+  "tags": [
+    "implementation",
+    "prefix_sum"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 2.7221999168395996
+}

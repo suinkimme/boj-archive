@@ -1,0 +1,28 @@
+{
+  "id": 33088,
+  "title": "Reporting Documents",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Each citizen in ICPC Kingdom must have their $N$ kingdom-issued documents, numbered from $1$ to $N$, on their hands at any time. The guards often ask random citizens for their documents during their patrol.</p>\n<p>As a citizen of ICPC Kingdom, Adrian also has these documents on his hands as well; however, some of them might be missing due to his negligence. The existence status of all of his documents are represented by a string $B$ where $B_i$ represents the existence of document $i$. If document $$i is on his hand, then $B_i = 1$. Otherwise, $B_i = 0$ if document $i$ is missing.</p>\n<p>For each of the next $Q$ days, exactly one of the following scenarios will happen.</p>\n<ul>\n<li>$1$ $x$. Adrian found his missing document $x$, so $B_x$ is updated to $1$ (it is guaranteed that $B_x = 0$ right before this scenario).</li>\n<li>$2$ $x$. Adrian lost his document $x$, so $B_x$ is updated to $0$ (it is guaranteed that $B_x = 1$ right before this scenario).</li>\n<li>$3$ $x$ $k$. A guard asks Adrian for document $x + k \\cdot i$, where $x ≤ k$, for all $i$ that satisfies $0 ≤ i$ and $1 ≤ x + k \\cdot i ≤ N$. For each document he couldn’t provide when the guard asked for it, Adrian will be fined for $1$ coin.</li>\n</ul>\n<p>For each scenarios involving a guard (i.e. scenario $3$), Adrian asks you to count how many coins he needs to pay for the fine.</p>",
+  "input": "<p>Input begins with an integer $N$ ($1 ≤ N ≤ 200\\, 000$) representing the number of documents. The next line contains a string $B$ of length $N$, where the $i$<sup>th</sup> character of $B$ is $B_i$ ($B_i \\in \\{ 0, 1\\}$), the initial existence status of document $i$.</p>\n<p>The next line contains an integer $Q$ ($1 ≤ Q ≤ 200\\, 000$) representing the number of days. Each of the next $Q$ lines contains a scenario. Each scenario begins with an integer $t$ ($t \\in \\{1, 2, 3\\}$). If $t = 1$ or $t = 2$, then it is followed by an integer $x$ ($1 ≤ x ≤ N$) representing scenario $1$ or $2$, respectively. It is guaranteed that integer $x$ in scenarios $1$ and $2$ satisfy the scenario description. If $t = 3$, then it is followed by two integers $x$ $k$ ($1 ≤ x ≤ k ≤ N$) representing scenario $3$. There will be at least one scenario of type $3$.</p>",
+  "output": "<p>For each scenario $3$, output an integer in a single line representing how many coins Adrian needs to pay for the fine for that day.</p>",
+  "samples": [
+    {
+      "input": "10\n1010001001\n5\n3 1 2\n2 1\n1 5\n1 9\n3 1 1\n",
+      "output": "2\n5\n"
+    },
+    {
+      "input": "25\n0010000010100110100000101\n10\n3 2 4\n1 5\n1 21\n2 11\n2 5\n3 1 5\n1 5\n3 5 5\n3 3 8\n3 1 25\n",
+      "output": "5\n4\n2\n2\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Indonesia, Indonesia National Contest, INC 2022",
+  "level": 18,
+  "tags": [
+    "sqrt_decomposition"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

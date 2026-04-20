@@ -1,0 +1,22 @@
+{
+  "id": 6311,
+  "title": "Single-Player Games",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Playing games is the most fun if other people take part. But other players are not always available if you need them, which led to the invention of single-player games. One of the most well-known examples is the infamous “Solitaire” packaged with Windows, probably responsible for more wasted hours in offices around the world than any other game.</p>\n<p>The goal of a single-player game is usually to make “moves” until one reaches a final state of the game, which results in a win or loss, or a score assigned to that final state. Most players try to optimize the result of the game by employing good strategies. In this problem we are interested in what happens if one plays randomly. After all, these games are mostly used to waste time, and playing randomly achieves this goal as well as any other strategy.</p>\n<p>Games can very compactly represented as (possibly infinite) trees. Every node of the tree represents a possible game state. The root of the tree corresponds to the starting position of the game. For an inner node, its children are the game states to which one can move in a single move. The leaf nodes are the final states, and every one of them is assigned a number, which is the score one receives when ending up at that leaf.</p>\n<p style=\"text-align:center\"><img alt=\"\" src=\"/upload/images2/game(1).png\" style=\"height:256px; width:414px\"/></p>\n<p>Trees are defined using the following grammar.</p>\n<pre>\nDefinition ::= Identifier \"=\" RealTree\n  RealTree ::= \"(\" Tree<sup>+</sup> \")\"\n      Tree ::= Identifier | Integer | \"(\" Tree<sup>+</sup> \")\"\nIdentifier ::= a | b | ... | z\n   Integer  ∈  {..., -3, -2, -1, 0, 1, 2, 3, ..., }</pre>\n<p>By using a Definition, the RealTree on the right-hand side of the equation is assigned to the Identifier on the left. A RealTree consists of a root node and one or more children, given as a sequence enclosed in brackets. And a Tree is either</p>\n<ul>\n<li>the tree represented by a given Identifier, or</li>\n<li>a leaf node, represented by a single Integer, or</li>\n<li>an inner node, represented by a sequence of one or more Trees (its children), enclosed in brackets.</li>\n</ul>\n<p>Your goal is to compute the expected score, if one plays randomly, i.e. at each inner node selects one of the children uniformly at random. This expected score is well-defined even for the infinite trees definable in our framework as long as the probability that the game ends (playing randomly) is 1.</p>",
+  "input": "<p>The input file contains several gametree descriptions. Each description starts with a line containing the number n of identifiers used in the description. The identifiers used will be the first n lowercase letters of the alphabet. The following n lines contain the definitions of these identifiers (in the order a, b, ...). Each definition may contain arbitrary whitespace (but of course there will be no spaces within a single integer). The right hand side of a definition will contain only identifiers from the first n lowercase letters.</p>\n<p>The inputs ends with a test case starting with n = 0. This test case should not be processed.</p>",
+  "output": "<p>For each gametree description in the input, first output the number of the game. Then, for all n identifiers in the order a, b, ..., output the following. If an identifier represents a gametree for which the probability of finishing the game is 1, print the expected score (when playing randomly). This value should be exact to three digits to the right of the decimal point.</p>\n<p>If the game described by the variable does not end with probability 1, print “Expected score of id undefined” instead.</p>\n<p>Output a blank line after each test case.</p>",
+  "samples": [
+    {
+      "input": "1\na = ((1 7) 6 ((8 3) 4))\n2\na = (1 b)\nb = (4 a)\n1\na = (a a a)\n0\n",
+      "output": "Game 1\nExpected score for a = 4.917\n\nGame 2\nExpected score for a = 2.000\nExpected score for b = 3.000\n\nGame 3\nExpected score for a undefined\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southwestern European Regional Contest, SWERC 1998",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 3
+}

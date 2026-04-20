@@ -1,0 +1,37 @@
+{
+  "id": 17909,
+  "title": "ISP Merger",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A number of regional Internet Service Providers (ISPs), both big and small have recently been forced into a merger by the government, in an effort to improve service for all. Of course this has been decided without consulting you, the chief network infrastructure officer, and a deadline for when the ISPs should be merged have already been set.</p>\n<p>You have a set of n servers, each with a limited number of network sockets that can be used for connecting physically to other servers. Some servers are already linked up in the existing network architecture, and if server 0 is linked to server 2, then 2 is also linked to server 0 (as you use full duplex ethernet Cat6 cables). No server is directly connected to itself, and no two servers are directly linked with more than one connection.</p>\n<p>You want to connect the servers to form a single network, such that all servers can reach each other through some sequence of connections. To make the set deadline, you have estimated that you only have time to make k edits to the existing network infrastructure. An edit is either to remove an existing connection between two servers, or to add a new connection between two servers.</p>\n<p>Can you connect all the servers to the same network using at most k edits, within the limitations on the number of network sockets in each server?</p>",
+  "input": "<p>The first line of the input is three space separated integers n (1 ≤ n ≤ 100 000), the number of servers, m (0 ≤ m ≤ 200 000), the number of existing connections and k (0 ≤ k ≤ 50 000), the number of edits you have time to make. Then follows a line with n integers c<sub>0</sub>, c<sub>1</sub>, . . . , c<sub>i</sub>, . . . , c<sub>n−1</sub>, with the i’th number giving the number of network sockets for the i’th server (for all i the capacity is bounded by 1 ≤ c<sub>i</sub> &lt; n). Then m lines follow, with two integers uj and vj each, giving the id’s of two servers that are connected in the old network architecture. Servers are 0-indexed, i.e. for every j, it holds that 0 ≤ u<sub>j</sub>, v<sub>j</sub> &lt; n. A server will never be connected to more servers than it has connection sockets.</p>",
+  "output": "<p>Output “yes” on a single line if the servers can be connected to one network by making k or less edits, and “no” if it is not possible.</p>",
+  "samples": [
+    {
+      "input": "4 5 2\n3 3 3 3\n0 1\n0 3\n1 3\n1 2\n2 3\n",
+      "output": "yes\n"
+    },
+    {
+      "input": "5 4 4\n1 1 2 2 2\n0 1\n2 3\n3 4\n4 2\n",
+      "output": "yes\n"
+    },
+    {
+      "input": "3 0 3\n1 1 1\n",
+      "output": "no\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Contest, Bergen Open, Bergen Open 2018",
+  "level": 19,
+  "tags": [
+    "data_structures",
+    "greedy",
+    "ad_hoc",
+    "case_work",
+    "disjoint_set",
+    "priority_queue"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 5
+}

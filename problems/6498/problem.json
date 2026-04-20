@@ -1,0 +1,24 @@
+{
+  "id": 6498,
+  "title": "엘리어스 감마 코드",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>엘리어스 감마 코드는 양의 정수로 이루어진 수열을 인코딩 하는데 사용하는 코드이다. 이 문제에서는 0도 인코딩할 수 있게 변형한 코드를 사용한다.</p>\r\n\r\n<p>정수 n을 인코딩하는 과정은 다음과 같다.</p>\r\n\r\n<ol>\r\n\t<li>n의 비트의 개수를 k라고 한다.</li>\r\n\t<li>0을 k-1개 쓰고, 그 뒤에 1을 쓴다.</li>\r\n\t<li>그 다음 n을 이진수로 쓴다.</li>\r\n</ol>\r\n\r\n<p>0부터 8까지 숫자를 인코딩한 결과는 아래와 같다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:50%\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>숫자</th>\r\n\t\t\t<th>이진수</th>\r\n\t\t\t<th>비트의 수</th>\r\n\t\t\t<th>Prefix</th>\r\n\t\t\t<th>코드</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>0</td>\r\n\t\t\t<td>0</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>10</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>1</td>\r\n\t\t\t<td>11</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>10</td>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>01</td>\r\n\t\t\t<td>0110</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>11</td>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>01</td>\r\n\t\t\t<td>0111</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>4</td>\r\n\t\t\t<td>100</td>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>001</td>\r\n\t\t\t<td>001100</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>5</td>\r\n\t\t\t<td>101</td>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>001</td>\r\n\t\t\t<td>001101</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>6</td>\r\n\t\t\t<td>110</td>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>001</td>\r\n\t\t\t<td>001110</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>7</td>\r\n\t\t\t<td>111</td>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>001</td>\r\n\t\t\t<td>001111</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>8</td>\r\n\t\t\t<td>1000</td>\r\n\t\t\t<td>4</td>\r\n\t\t\t<td>0001</td>\r\n\t\t\t<td>00011000</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>정수 수열을 인코딩하려면, 수열의 각 숫자를 코드로 변환한 뒤, 수열에서 나온 순서와 동일하게 이어 붙이면 된다.</p>\r\n\r\n<p>각각의 인코딩된 코드를 원래 숫자로 디코딩하려면, 이진수 표현 앞에 붙는 k개의 비트는 매우 중요하다. 인코딩된 수열을 읽을 때, 1을 읽기 전에 k-1개의 0을 읽었다면, 다음 k개의 비트가 인코딩된 숫자라는 뜻이다.</p>\r\n\r\n<p>인코딩된 정수 수열의 길이를 줄이려면, 다음과 같은 두 가지 최적화를 생각해 볼 수 있다.&nbsp;</p>\r\n\r\n<ol>\r\n\t<li>Prefix가 k비트를 나타내는데, 수열에 비트의 길이가 k인 숫자가 없는 경우가 있다. 이 경우에는, 이 prefix는 k+1비트를 나타내는 것으로 사용할 수 있다. 만약, k+1비트를 나타내는 prefix가 이미 있는 경우에는 k+2비트를 나타내는 prefix로 사용하고, 이와 같은 식으로 계속 한다.</li>\r\n\t<li>비트의 길이가 k인 모든 숫자의 앞에 0을 붙이면, 그 숫자는 모두 k+1개 비트를 가지게 만들고 첫 번째 최적화를 사용하는 방법도 있다. 이 방법은 k비트 숫자가 매우 적고, k비트 이상 숫자가 많은 경우에 효과적이다.</li>\r\n</ol>\r\n\r\n<p>정수 수열을 인코딩한 결과의 길이를 최소로 하려고 한다. 수열의 숫자가 주어지지 않으며, 수열에서 비트의 개수가 i인 수의 개수를 c<sub>i</sub>라고 한다.</p>\r\n\r\n<p>예를 들어, c<sub>1</sub>=2, c<sub>2</sub>=4, c<sub>3</sub>=0, c<sub>4</sub>=1인 경우를 생각해보자. (수열 2,1,3,8,0,2,3이 이 경우에 해당한다) 최적화를 하지 않은 엘리어스 감마 코딩의 길이는 2&times;(1+1) + 4&times;(2+2) + 0&times;(3+3) + 1&times;(4+4) = 28이 된다. 1번 최적화를 사용해 prefix 001을 4비트 숫자를 나타내는 것으로 사용해 1비트를 줄일 수 있다. 또, 최적화 2번을 사용해 1비트 앞에 0을 붙여 2비트로 만들 수 있다. 여기서 다시 최적화 1번을 사용해 prefix 1은 2비트 숫자에 사용하고, prefix 01은 4비트 숫자에 사용하면, 인코딩된 문자열의 길이는 6&times;(1+2) + 1&times;(2+4) = 24가 된다.</p>\r\n\r\n<p>두 최적화 방법은 여러 번 사용할 수 있다. 두 방법을 적절히 사용해 가능한 길이중 최솟값을 구하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>입력은 여러 개의 테스트 케이스로 이루어져 있다. 각 테스트 케이스의 첫째 줄에는 n이 주어진다. (1 &le; n &le; 128) 둘째 줄에는 c<sub>1</sub>부터 c<sub>n</sub>까지 값이 주어진다. (0 &le; c<sub>i</sub> &le; 10000) 입력은 n=0으로 끝난다.</p>\r\n",
+  "output": "<p>각 테스트 케이스 마다 입력으로 주어진 수열의 최소 엘리어스 감마 인코딩 길이를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "4\n2 4 0 1\n5\n9 4 2 4 3\n11\n44 56 96 26 73 80 77 50 33 16 78\n0\n",
+      "output": "24\n99\n5494\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, University of Ulm Local Contest, University of Ulm Local Contest 2009, baekjoon",
+  "level": 13,
+  "tags": [
+    "dp"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 2
+}

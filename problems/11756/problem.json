@@ -1,0 +1,30 @@
+{
+  "id": 11756,
+  "title": "Post Office Investigation",
+  "time_limit": "3 초",
+  "memory_limit": "256 MB",
+  "description": "<p>In this country, all international mails from abroad are first gathered to the central post office, and then delivered to each destination post office relaying some post offices on the way. The delivery routes between post offices are described by a directed graph G = (V, E), where V is the set of post offices and E is the set of possible mail forwarding steps. Due to the inefficient operations, you cannot expect that the mails are delivered along the shortest route.</p>\n<p>The set of post offices can be divided into a certain number of groups. Here, a group is defined as a set of post offices where mails can be forwarded from any member of the group to any other member, directly or indirectly. The number of post offices in such a group does not exceed 10.</p>\n<p>The post offices frequently receive complaints from customers that some mails are not delivered yet. Such a problem is usually due to system trouble in a single post office, but identifying which is not easy. Thus, when such complaints are received, the customer support sends staff to check the system of each candidate post office. Here, the investigation cost to check the system of the post office u is given by c<sub>u</sub>, which depends on the scale of the post office.</p>\n<p>Since there are many post offices in the country, and such complaints are frequently received, reducing the investigation cost is an important issue. To reduce the cost, the post service administration determined to use the following scheduling rule: When complaints on undelivered mails are received by the post offices w<sub>1</sub>, . . . , w<sub>k</sub> one day, staff is sent on the next day to investigate a single post office v with the lowest investigation cost among candidates. Here, the post office v is a candidate if all mails from the central post office to the post offices w<sub>1</sub>, . . . , w<sub>k</sub> must go through v. If no problem is found in the post office v, we have to decide the order of investigating other post offices, but the problem is left to some future days.</p>\n<p>Your job is to write a program that finds the cost of the lowest-cost candidate when the list of complained post offices in a day, described by w<sub>1</sub>, . . . , w<sub>k</sub>, is given as a query.</p>",
+  "input": "<p>The input consists of a single test case, formatted as follows.</p>\n<pre>\nn m\nu<sub>1</sub> v<sub>1</sub>\n.\n.\n.\nu<sub>m</sub> v<sub>m</sub>\nc<sub>1</sub>\n.\n.\n.\nc<sub>n</sub>\nq\nk<sub>1</sub> w<sub>1</sub>1 · · · w<sub>1</sub>k<sub>1</sub>\n.\n.\n.\nk<sub>q</sub> w<sub>q</sub>1 · · · w<sub>q</sub>k<sub>q</sub></pre>\n<p>n is the number of post offices (2 ≤ n ≤ 50, 000), which are numbered from 1 to n. Here, post office 1 corresponds to the central post office. m is the number of forwarding pairs of post offices (1 ≤ m ≤ 100, 000). The pair, ui and vi, means that some of the mails received at post office ui are forwarded to post office v<sub>i</sub> (i = 1, . . . , m). c<sub>j</sub> is the investigation cost for the post office j (j = 1, . . . , n, 1 ≤ c<sub>j</sub> ≤ 10<sup>9</sup>). q (q ≥ 1) is the number of queries, and each query is specified by a list of post offices which received undelivered mail complaints. k<sub>i</sub> (k<sub>i</sub> ≥ 1) is the length of the list and w<sub>i</sub>1, . . . , w<sub>i</sub>k<sub>i</sub> are the distinct post offices in the list. Σ<sup>q</sup><sub>i=1</sub>k<sub>i</sub> ≤ 50, 000.</p>\n<p>You can assume that there is at least one delivery route from the central post office to all the post offices.</p>",
+  "output": "<p>For each query, you should output a single integer that is the lowest cost of the candidate of troubled post office.</p>",
+  "samples": [
+    {
+      "input": "8 8\n1 2\n1 3\n2 4\n2 5\n2 8\n3 5\n3 6\n4 7\n1000\n100\n100\n10\n10\n10\n1\n1\n3\n2 8 6\n2 4 7\n2 7 8\n",
+      "output": "1000\n10\n100\n"
+    },
+    {
+      "input": "10 12\n1 2\n2 3\n3 4\n4 2\n4 5\n5 6\n6 7\n7 5\n7 8\n8 9\n9 10\n10 8\n10\n9\n8\n7\n6\n5\n4\n3\n2\n1\n3\n2 3 4\n3 6 7 8\n3 9 6 3\n",
+      "output": "8\n5\n8\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Asia Regional Contest 2015 in Tsukuba",
+  "level": 23,
+  "tags": [
+    "trees",
+    "lca",
+    "dominator_tree"
+  ],
+  "accepted_user_count": 18,
+  "submission_count": null,
+  "average_tries": 1.5
+}

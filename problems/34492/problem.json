@@ -1,0 +1,22 @@
+{
+  "id": 34492,
+  "title": "Not-So-Long Increasing Subsequence",
+  "time_limit": "2 초",
+  "memory_limit": "256 MB",
+  "description": "<p>Let $N, K$ be positive integers satisfying $K \\leq N$. Busy Beaver has a permutation<sup>1</sup> $a_1, \\ldots, a_N$ of $1, \\dots, N$. A length $K$ subsequence<sup>2</sup> of $a_1, \\ldots, a_N$ given by $b_1, \\ldots, b_K$ is <em>interesting</em> if the longest increasing<sup>3</sup> subsequence of $b_1, \\dots, b_K$ has length at most $\\frac{K+1}{2}$.</p>\n<p>Determine whether Busy Beaver's permutation has an interesting subsequence of length $K$, and if it exists, provide such an example of an interesting subsequence.</p>\n<hr/>\n<p><sup>1</sup>A permutation of length $N$ is an array consisting of $N$ distinct integers from $1$ to $N$ in arbitrary order. For example, $[2,3,1,5,4]$ is a permutation, but $[1,2,2]$ is not a permutation ($2$ appears twice in the array), and $[1,3,4]$ is also not a permutation ($N=3$ but there is $4$ in the array).</p>\n<p><sup>2</sup>A sequence $a$ is a subsequence of a sequence $b$ if $a$ can be obtained from $b$ by the deletion of several (possibly, zero or all) elements.</p>\n<p><sup>3</sup>A sequence $a_1, \\dots, a_m$ is increasing if $a_1 &lt; a_2 &lt; \\dots &lt; a_{m-1} &lt; a_m$. For instance, $[1, 2, 5]$ is increasing while $[2, 5, 1]$ is not.</p>",
+  "input": "<p>Each test contains multiple test cases. The first line of input contains a single integer $T$ $(1 \\leq T \\leq 10^5)$, the number of test cases. The description of each test case follows.</p>\n<p>The first line of each test case contains two space-separated integers $N, K$ ($1 \\leq K \\leq N \\leq 2 \\cdot 10^5$).</p>\n<p>The second line of each test case contains $N$ integers $a_1, a_2, \\ldots, a_N$ ($1 \\leq a_i \\leq N$, $a_i$ pairwise distinct) --- Busy Beaver's permutation.</p>\n<p>It is guaranteed that the sum of $N$ across all test cases is no more than $2 \\cdot 10^5$.</p>",
+  "output": "<p>For each test case, output \"<code>YES</code>\" (without quotes) if there exists an interesting subsequence, and \"<code>NO</code>\" (without quotes) otherwise. You can output \"<code>YES</code>\" and \"<code>NO</code>\" in any case (for example, strings \"<code>yES</code>\", \"<code>yes</code>\" and \"<code>Yes</code>\" will be recognized as a positive response).</p>\n<p>Then, if you responded with \"<code>YES</code>\", print a second line consisting of $K$ space-separated integers $i_1, \\dots, i_K$ ($1 \\leq i_1 &lt; \\dots &lt; i_K \\leq n$), the indices of the permutation such that $a_{i_1}, \\dots, a_{i_K}$ is an interesting subsequence. If there are multiple possible solutions, print any of them.</p>",
+  "samples": [
+    {
+      "input": "10\n4 2\n4 2 1 3\n7 3\n3 1 4 5 7 2 6\n8 8\n4 5 6 7 8 1 2 3\n6 4\n5 2 4 3 1 6\n9 8\n1 3 2 4 6 5 7 9 8\n9 7\n1 3 2 4 6 5 7 9 8\n9 5\n1 6 8 9 2 5 3 4 7\n3 2\n3 2 1\n3 2\n1 2 3\n1 1\n1\n",
+      "output": "YES\n2 3 \nYES\n5 6 7 \nNO\nYES\n1 2 4 5 \nNO\nYES\n2 3 5 6 7 8 9 \nYES\n3 4 6 7 8 \nYES\n2 3 \nNO\nYES\n1 \n"
+    }
+  ],
+  "hint": "<p>In the first test case, the subsequence $[a_2, a_3] = [2, 1]$ has two longest increasing subsequences $[2]$ and $[1]$, each of which has length at most $\\frac{2 + 1}{2} = \\frac 32.$ It is therefore an interesting subsequence.</p>\n<p>In the second test case, the subsequence $[a_5, a_6, a_7] = [7, 2, 6]$ has a unique longest increasing subsequence given by $[2, 6]$, which has length at most $\\frac{3 + 1}{2} = 2.$ It is therefore an interesting subsequence.</p>\n<p>In the third test case, the only subsequence of length $8$ is the entire sequence $[a_1, \\dots, a_8] = [4, 5, 6, 7, 8, 1, 2, 3]$. The longest increasing subsequence of this sequence is $[4, 5, 6, 7, 8]$. As its length is greater than $\\frac{8 + 1}{2} = \\frac 92$, there is no interesting subsequence.</p>",
+  "source": "University, MIT, M(IT)^2, M(IT)^2 Winter 2025 Tournament, Advanced Round 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,39 @@
+{
+  "id": 13158,
+  "title": "Maze",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Bob is the Captain of the USS Spacey McSpaceface, the pride of the space fleet of the Human Empire. Unfortunately, Bob is also the last one alive on his ship.</p>\n<p>Because of an unrecognized virus, the ship’s AI “Alpha 5” went rampant and killed everyone by funelling neurotoxin into the crew’s quarters. Bob was the only one on the bridge at that time, where he could grab a handy detoxication kit and a gas mask. But alas, Alpha 5 also blocked the ships’ controls, so Bob was now drifting in space, alone, caged with a rampant AI that just initiated the self-destruction mechanism.</p>\n<p>Bob remembered that some engineer once told him there was an override switch somewhere near the fusion reactor that powered the ship, so he started to make his way down into the engine quarters. Soon he noticed that the virus had also taken over the automatic door system — all doors seemed to open and close seemingly at random.</p>\n<p>At least, Bob does know three things:</p>\n<ul>\n<li>every door is labeled with a single big white letter;</li>\n<li>there is a huge display in every room which explains which doors will open and which will close (for example, if the displays show a big “A”, all doors labeled with “A” will open next, and all other doors will slam shut);</li>\n<li>every door will stay open for about half a second, just enough for Bob to dash into the next room.</li>\n</ul>\n<p>Bob wants to stay on the move (neurotoxin and all), so he will use a door whenever possible. However, Bob does not know the exact way to the core, so if there are multiple possible doors he could take, he just chooses one at random. Given the sequence of letters until the explosion, how high is the probability that Bob can reach the reactor core and shut it all down?</p>",
+  "input": "<p>The input consists of:</p>\n<ul>\n<li>one line with two integers n (1 ≤ n ≤ 10<sup>3</sup>) and m (1 ≤ m ≤ 5 · 10<sup>3</sup>), where n is the amount of rooms in the engine quarters and m is the amount of doors between them;</li>\n<li>m lines describing the doors. Each door is described by:\n\t<ul>\n<li>one line with two integers a and b (1 ≤ a, b ≤ n, a ≠ b) and a letter l between “A” and “Z” indicating a door from room a to room b labeled with l (on both sides);<br/>\n\t\tThere may be several doors between the same pair of rooms, which may or may not have the same letter written on them;</li>\n</ul>\n</li>\n<li>one line with the sequence the doors will open in. The sequence consists of of at most 200 letters from “A” to “Z”.</li>\n</ul>\n<p>After the last letter, all doors slam shut and the ship will explode if Bob has not reached the switch yet. Bob starts on the bridge, room 1, and the override switch is in room n.</p>",
+  "output": "<p>Output the percentage that Bob will reach the override switch in time.</p>\n<p>The answer should be correct up to an absolute or relative error of at most 10<sup>−3</sup>.</p>",
+  "samples": [
+    {
+      "input": "5 4\n1 2 A\n2 3 B\n1 4 A\n4 5 B\nAB\n",
+      "output": "50.0\n"
+    },
+    {
+      "input": "3 2\n1 2 A\n2 3 B\nAB\n",
+      "output": "100.0\n"
+    },
+    {
+      "input": "3 2\n1 2 A\n2 3 B\nACDEFGHIJKL\n",
+      "output": "0.0\n"
+    },
+    {
+      "input": "3 3\n1 2 A\n2 3 B\n1 3 C\nACB\n",
+      "output": "100.0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Northwestern European Regional Contest, German Collegiate Programming Contest, GCPC 2016",
+  "level": 14,
+  "tags": [
+    "math",
+    "dp",
+    "graphs",
+    "probability"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 3.157900094985962
+}

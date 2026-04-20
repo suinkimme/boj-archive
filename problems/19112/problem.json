@@ -1,0 +1,22 @@
+{
+  "id": 19112,
+  "title": "Master Zhu and Magic Numbers",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Master Zhu has $n$ magic numbers. The $i$-th number $a_i$ can be represented by a binary string of length $i$ which can contain leading zeroes. When we reverse and concatenate these binary strings, we get a long string $s$ of length $\\frac{n (n + 1)}{2}$. A substring from $s\\left[\\frac{i (i - 1)}{2}\\right]$ to $s\\left[\\frac{i (i + 1)}{2} - 1\\right]$ inclusive is the binary representation of $a_i$, <strong>from lowest to highest</strong> digit. Here, the long string $s$ is indexed starting from zero.</p>\n<p>One day, Rin inputs Master Zhu's magic numbers into a program to create $n$ new magic numbers. The $i$-th new number is $b_i$. Here is the code of the program in a C-like language.</p>\n<pre>\nfor (int i = 1; i &lt;= n; i++) {\n  b[i] = 0,\n  flag[i] = 0;\n}\n\nfor (int i = 1; i &lt;= n; i++) {\n  for (int j = 1; j &lt;= n; j++) {\n    if (((1 &lt;&lt; (j - 1)) &amp; a[i]) &gt; 0) {\n      if (!flag[i]) {\n        b[i] = b[j],\n        flag[i] = 1;\n      } else {\n        b[i] = b[i] &amp; b[j];\n      }\n    }\n  }\n  b[i] = b[i] ^ (1 &lt;&lt; (i - 1));\n}</pre>\n<p>In the code above, \"<code>x &lt;&lt; y</code>\" is bitwise shift to the left, which is equivalent to multiplying <code>x</code> by $2^{\\texttt{y}}$, \"<code>x &amp; y</code>\" is bitwise AND, and \"<code>x ^ y</code>\" is bitwise XOR. We assume that the numbers $a_i$ and $b_i$ can have arbitrarily many bits.</p>\n<p>After that, Rin wants to ask $q$ questions. The $i$-th question is a number $c_i$ which can be represented in binary notation as a string of length $\\mathit{len}_i$ and can contain leading zeroes. When we reverse and concatenate these binary strings, we get a long string $t$ of length $L_q$, where $L_k = \\sum\\limits_{i = 1}^{k} \\mathit{len}_i$. A substring from $t\\left[L_{i - 1}\\right]$ to $t\\left[L_i - 1\\right]$ inclusive is the binary representation of $c_i$, <strong>from lowest to highest</strong> digit. Here, the long string $t$ is indexed starting from zero.</p>\n<p>For each question, Rin requires Illya to calculate the number $d_i$:</p>\n<pre>\nfor (int i = 1; i &lt;= q; i++) {\n  d[i] = 0;\n  for (int j = 1; j &lt;= min (n, len[i]); j++) {\n    if (((1 &lt;&lt; (j - 1)) &amp; c[i]) &gt; 0) {\n      d[i] = d[i] | b[j];\n    }\n  }\n}</pre>\n<p>Here, \"<code>x | y</code>\" is bitwise OR. We assume that the numbers $c_i$ and $d_i$ can have arbitrarily many bits.</p>\n<p>The answer to the $i$-th question is the number of ones in the binary representation of $d_i$. Help Illya answer all the questions!</p>",
+  "input": "<p>The first line of the input contains two integers $n$ and $m$ denoting the number of magic numbers and the number of ones in the long string $s$ ($1 \\leq n \\leq 5000$, $1 \\leq m \\leq 10^6$).</p>\n<p>The second line contains $m$ integers, the $i$-th integer $p_i$ denotes that $s[p_i] = 1$, and all other digits of $s$ are equal to $0$ ($0 \\leq p_i &lt; \\frac{n (n + 1)}{2}$, all $p_i$ are distinct).</p>\n<p>The third line contains two integers $q$ and $r$ denoting the number of questions and the number of ones in the long string $t$ ($1 \\le q \\le 5000$, $1 \\le r \\le 10^6$).</p>\n<p>The fourth line contains $q$ integers, the $i$-th integer $\\mathit{len}_i$ denotes the length of binary representation of the $i$-th query $c_i$ ($1 \\leq \\mathit{len}_i \\leq 10^9$). It is guaranteed that $L_q = \\sum\\limits_{i = 1}^{q} \\mathit{len}_i$ is at most $10^9$.</p>\n<p>The fifth line contains $r$ integers, the $i$-th integer $z_i$ denotes that $t[z_i] = 1$, and all other digits of $t$ are equal to $0$ ($0 \\le z_i &lt; L_q$, all $z_i$ are distinct).</p>",
+  "output": "<p>For each question $i$, print a single line with a single integer: the number of ones in the binary representation of $d_i$.</p>",
+  "samples": [
+    {
+      "input": "3 4\n0 1 4 5\n3 6\n2 3 3\n0 1 2 4 6 7\n",
+      "output": "2\n3\n3\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2017, Day 8: UESTC Selection",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

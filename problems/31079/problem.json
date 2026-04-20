@@ -1,0 +1,22 @@
+{
+  "id": 31079,
+  "title": "Random Shuffle",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Prof. Pang is selecting teams that advance to the world final contest. As the regionals are cancelled, he uses random shuffle to rank the teams. There are $n$ teams in total. His code is as follows:</p>\n<pre>\nuint64_t x;//uint64_t represents 64-bit unsigned integer\nint n;\nuint64_t rand() {//this is a xor-shift random generator\n    x ^= x &lt;&lt; 13;\n    x ^= x &gt;&gt; 7;\n    x ^= x &lt;&lt; 17;\n    return x;\n}\nint main() {\n    cin &gt;&gt; n;\n    cin &gt;&gt; x;\n    for (int i = 1; i ≤ n; i++) {//random shuffle [1, 2,..., n]\n        a[i] = i;\n        swap(a[i], a[rand() % i + 1]);\n    }\n    for (int i = 1; i ≤ n; i++) {//print the result\n        cout &lt;&lt; a[i] &lt;&lt; (i == n ? '\\n' : ' ');\n    }\n}\n</pre>\n<p>He compiled and ran his code and then entered $n$ and some special nonnegative integer $x$. He printed the result on paper.</p>\n<p>One day later, Prof. Pang forgot his choice for $x$. You are given the result of the code and the integer $n$. Please recover the number $x$ that Prof. Pang had entered.</p>",
+  "input": "<p>The first line contains a single integer $n$ ($50\\le n\\le 100000$) -- the number of teams.</p>\n<p>The next line contains $n$ integers -- the result printed by Prof. Pang's code. It is guaranteed that the result is correct, i.e., there exists an integer $x$ ($0\\le x\\le 2^{64}-1$) that leads to the result.</p>",
+  "output": "<p>Output the integer $x$ ($0\\le x\\le 2^{64}-1$) Prof. Pang had entered. If there are multiple possible $x$'s, print any one.</p>",
+  "samples": [
+    {
+      "input": "50\n36 22 24 21 27 50 28 14 25 34 18 43 47 13 30 7 10 48 20 16 29 9 8 15 3 31 12 38 19 49 37 1 46 32 4 44 11 35 6 33 26 5 45 17 39 40 2 23 42 41\n",
+      "output": "16659580358178468547\n"
+    }
+  ],
+  "hint": "<p>Note that the second line of the sample input is wrapped to fit in the width of page.</p>",
+  "source": "Contest, Open Cup, 2020/2021 Season, Stage 15, Grand Prix of China, Division 1",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

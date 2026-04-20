@@ -1,0 +1,26 @@
+{
+  "id": 3591,
+  "title": "Japanese Writing",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Michael had visited ACM ICPC World Finals 2007 in Tokyo, Japan and became fascinated with Japanese writing. He decided to study hieroglyphs, but in order to check his knowledge he needs a piece of software that can verify correctness of his writing. This program takes a description of a correct shape of the hieroglyph, several Michael’s attempts to write it, and judges each attempt as correct or incorrect.</p>\n<p>In this problem hieroglyphs are represented as a collection of strokes, each stroke being a straight line on a Cartesian plane. The order of strokes is irrelevant for the hieroglyph shape, but the direction of each stroke is relevant. There are eight relevant directions: straight right, upper-right, straight up, upper-left, straight left, lower-left, straight down, and lower-right.</p>\n<p>Two writings are considered to represent the same shape if one-to-one correspondence can be established between the strokes and all the endpoints of the strokes, so that direction of strokes and relative positions of pairs of points are preserved. Preservation of relative positions is important for any pair of points, even if they are not connected with a stroke. However, relative positions are important only with respect to eight relevant directions described above.</p>\n<p>For example, here is a hieroglyph similar to Latin letter A with 5 endpoints connected with 3 strokes and several other correct writings of the same shape:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 443px; height: 117px;\"/></p>\n<p>Note, that intersections of strokes are not relevant. Here are several incorrect writings of the same shape:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 606px; height: 117px;\"/></p>\n<p>These writings are not correct for the following reasons:</p>\n<ul>\n<li>Writing 5 has an extra point, so one-to-one correspondence between endpoints cannot be established.</li>\n<li>In writing 6 point d is straight up from point a but it should be to the upper-right of it.</li>\n<li>In writing 7 stroke d − e goes in the wrong direction.</li>\n<li>In writing 8 point c is lower-right from point a but it should be straight to the right of it.</li>\n<li>Writing 9 has an extra a − d stroke, so one-to-one correspondence between strokes cannot be established.</li>\n</ul>",
+  "input": "<p>The first line of the input file contains a single integer n (2 ≤ n ≤ 20) — the number of writings in the input file. It is followed by descriptions of n writings.</p>\n<p>Each writing starts with a line with a single integer number m<sub>i</sub> (1 ≤ m<sub>i</sub> ≤ 100) — the number of strokes in i-th writing. It is followed by m<sub>i</sub> lines that describe strokes for i-th writing. Each stroke is represented by a line with four integer numbers xa<sub>ij</sub>, ya<sub>ij</sub>, xb<sub>ij</sub>, and yb<sub>ij</sub> (−1000 ≤ xa<sub>ij</sub>, ya<sub>ij</sub>, xb<sub>ij</sub>, yb<sub>ij</sub> ≤ 1000) — coordinates of endpoints. xa<sub>ij</sub>, ya<sub>ij</sub> are coordinates of the beginning of j-th stroke and xb<sub>ij</sub>, yb<sub>ij</sub> are coordinates of the end of j-th stroke. The beginning and the end of the stroke are distinct points. Any two endpoints are connected by at most one stroke.</p>",
+  "output": "<p>Compare the shapes of writings from 2-nd to n-th with the shape of the first writing and write to the output file n − 1 lines with the result of each comparison of a single line. Write <code>CORRECT</code> if the corresponding writing represents the same shape as the first one or <code>INCORRECT</code> otherwise.</p>",
+  "samples": [
+    {
+      "input": "9\n3\n0 0 10 20\n10 20 20 0\n5 10 15 10\n3\n0 0 10 20\n10 20 20 0\n2 10 13 10\n3\n0 0 10 15\n10 15 20 0\n5 10 15 10\n3\n8 10 12 10\n0 0 10 20\n10 20 14 0\n3\n0 0 8 20\n12 20 20 0\n5 10 15 10\n3\n0 0 10 20\n10 20 20 0\n0 10 15 10\n3\n0 0 10 20\n10 20 20 0\n15 10 5 10\n3\n2 4 10 20\n10 20 20 0\n5 10 15 10\n4\n0 0 10 20\n0 0 5 10\n10 20 20 0\n5 10 15 10\n",
+      "output": "CORRECT\nCORRECT\nCORRECT\nINCORRECT\nINCORRECT\nINCORRECT\nINCORRECT\nINCORRECT\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Northern Eurasia Finals, NEERC 2007",
+  "level": 14,
+  "tags": [
+    "implementation",
+    "graphs",
+    "sorting"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.5714000463485718
+}

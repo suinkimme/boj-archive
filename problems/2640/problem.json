@@ -1,0 +1,22 @@
+{
+  "id": 2640,
+  "title": "유전자",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>최근에 인간의 유전자 염기서열을 밝히는 인간게놈(genome) 프로젝트가 완료되었다. 염색체내의 유전자의 염기서열을 알아내는 방법은 다음과 같다. 한 염색체의 염기서열이 너무 길면 현재의 기술로는 그 내용을 알아낼 수 없다. 따라서, 이를 PCR이라는 방식을 이용하여 여러 벌로 복제한 다음, 효소를 가하게 되면 염색체 조각들로 나뉘어진다. 이 염색체 조각들은 길이가 충분히 짧으므로 현재의 기술로 그 내용을 밝혀 낼 수 있다. 내용이 밝혀진 염색체 조각들을 다시 이어서 여러 벌의 동일한 염색체로 복구하여, 원래 염색체의 염기서열을 알아낸다. 유전자의 염기는 <code>A</code>, <code>G</code>, <code>T</code>, <code>C</code>라는 네 종류가 있으며, 이 들의 조합으로 염기서열을 표시한다.</p>\n<p>예를 들어, 염색체의 염기서열이 있을 때, 이 염기서열을 3벌로 복제한 뒤, 효소를 가하여 11개로 나누고, 그 조각들의 내용을 밝힌 결과가 다음과 같다고 하자.</p>\n<ul>\n<li><code>CGATGCCA</code></li>\n<li><code>CAGGAAGCG</code></li>\n<li><code>AGGTGCCC</code></li>\n<li><code>CAGGA</code></li>\n<li><code>AGGTGCCCGATGC</code></li>\n<li><code>GGAAGCGATGGAGCTTT</code></li>\n<li><code>ATGGAGCTTT</code></li>\n<li><code>GATGC</code></li>\n<li><code>CCGTGGA</code></li>\n<li><code>AGCGATGG</code></li>\n<li><code>TTTCGA</code></li>\n</ul>\n<p>이 조각들을 다시 모아서 동일한 3벌의 염기서열로 재구성하면 다음과 같이 되고, 이를 통해서 전체 염색체의 염기서열을 알아낼 수 있다. 조각들은 그대로 사용할 수도 있고, 뒤집어서 사용할 수도 있다. 예를 들어 위의 마지막 조각인 TTTCGA는 AGCTTT로 뒤집어서 아래의 마지막 염기서열을 만드는데 사용하였다.</p>\n<ul>\n<li><code>AGGTGCCCGATGC CAGGAAGCG ATGGAGCTTT</code></li>\n<li><code>AGGTGCC CGATGCCA GGAAGCGATGGAGCTTT</code></li>\n<li><code>AGGTGCCC GATGC CAGGA AGCGATGG AGCTTT</code></li>\n</ul>\n<p>복제된 염색체의 벌 수와 내용이 밝혀진 염색체 조각들이 입력으로 주어져 있을 때 전체 염기서열을 구하는 프로그램을 작성하시오.</p>",
+  "input": "<p>첫 줄에는 복제한 염기서열의 벌 수 k(k는 2이상 20이하)가 주어진다. 그 다음 줄에는 염색체 조각 수 n이 주어진다(n은 200이하). 다음 n개의 줄에 염색체 조각들이 한 줄에 하나씩 주어진다(각 염색체 조각의 길이는 5이상 70이하). 주어진 염색체의 조각에 열거된 순서대로 1번부터 n번까지의 번호를 부여한다. 즉, 앞의 예에서 염색체 조각 CAGGA의 번호는 4이다. 전체 염기서열의 길이는 30이상 700이하이다.</p>",
+  "output": "<p>알아낸 k벌의 염기서열을 구성하는 조각의 개수와 조각 번호들을 한 줄에 한 벌씩 순서대로 출력한다. 만일 어떤 염색체 조각이 뒤집어서 사용된 경우는 그 조각 번호의 음의 값을 출력한다. 조각 번호 사이에는 빈 칸을 하나 씩 둔다. 알아낸 염기서열의 시작은 염색체 양 끝 어느 쪽에서 시작해도 무방하며 경우에 따라서 답은 하나 이상일 수가 있는데 이 경우에는 하나만 출력하면 된다. 그리고 출력되는 k벌의 염기서열들의 순서는 상관없다. 단, 출력된 조각번호 순서 대로 구성된 k벌의 염기서열들은 앞 뒤 순서가 모두 같아야 한다.</p>",
+  "samples": [
+    {
+      "input": "3\n11\nCGATGCCA\nCAGGAAGCG\nAGGTGCCC\nCAGGA\nAGGTGCCCGATGC\nGGAAGCGATGGAGCTTT\nATGGAGCTTT\nGATGC\nCCGTGC\nAGCGATGG\nTTTCGA\n",
+      "output": "3 5 2 7\n3 -9 1 6\n5 3 8 4 10 -11\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, 한국정보올림피아드, KOI 2000, 고등부",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

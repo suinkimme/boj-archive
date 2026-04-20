@@ -1,0 +1,29 @@
+{
+  "id": 9871,
+  "title": "The Bessie Shuffle",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Bessie is practicing her card tricks. She has already mastered the Bessie- shuffle -- a shuffle on M (2 &lt;= M &lt;= 100,000) cards that reorganizes the cards so the i-th card from the top is now the P[i]-th card from the top.</p>\n<p>Now Bessie is practicing shuffles on larger decks. She has a deck of N cards (M &lt;= N &lt;= 100,000) conveniently labeled 1 to N. She shuffles this deck by taking the first M cards and performing the Bessie-shuffle on them, placing the shuffled cards back on top of the deck. She then removes the top card from the deck and places it face down. She repeats this process, placing the top cards successively on top of each other, until she is out of cards. When Bessie has less than M cards left, she no longer performs the Bessie-shuffle, but continues to place the top card on top of the others.</p>\n<p>Bessie knows that the deck initially started in sorted order, with 1 on top, 2 next, and N on the bottom. Given the description of the Bessie-shuffle, help Bessie compute which cards end up located at Q different specified positions (1 &lt;= Q &lt;= N, Q &lt;= 5,000) in the deck.</p>",
+  "input": "<ul>\n<li>Line 1: A single line containing N, M and Q separated by a space.</li>\n<li>Lines 2..1+M: Line i+1 indicates the position from the top, P[i], of the i-th card in the Bessie-shuffle (1 &lt;= P[i] &lt;= M).</li>\n<li>Lines 2+M..1+M+Q: Line i+1+M contains a single integer q_i describing the i-th query. You are to compute the label on the card located in position q_i from the top (1 &lt;= q_i &lt;= N).</li>\n</ul>",
+  "output": "<ul>\n<li>Lines 1..Q: On the i-th line, print a single integer indicating the card at position q_i from the top.</li>\n</ul>",
+  "samples": [
+    {
+      "input": "5 3 5\n3\n1\n2\n1\n2\n3\n4\n5\n",
+      "output": "4\n5\n3\n1\n2\n"
+    }
+  ],
+  "hint": "<h4>Input Details</h4>\n<p>Bessie has a deck of 5 cards initially ordered as [1, 2, 3, 4, 5]. Her shuffle is on 3 cards and has the effect of moving the top card to the bottom. There are 5 queries querying each position in the deck.</p>\n<h4>Output Details</h4>\n<p>The shuffle proceeds as:</p>\n<ul>\n<li>[1, 2, 3, 4, 5] -&gt; [2, 3, 1, 4, 5] (put 2 face down)</li>\n<li>[3, 1, 4, 5] -&gt; [1, 4, 3, 5] (put 1 face down)</li>\n<li>[4, 3, 5] -&gt; [3, 5, 4] (put 3 face down)</li>\n<li>[5, 4] (put 5 face down)</li>\n<li>[4] (put 4 face down)</li>\n</ul>\n<p>This produces the final order of [4, 5, 3, 1, 2]</p>",
+  "source": "Olympiad, USA Computing Olympiad, 2013-2014 Season, USACO December 2013 Contest, Silver",
+  "level": 17,
+  "tags": [
+    "math",
+    "data_structures",
+    "graphs",
+    "ad_hoc",
+    "exponentiation_by_squaring",
+    "sparse_table"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 2.4595000743865967
+}

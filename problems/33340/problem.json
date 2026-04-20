@@ -1,0 +1,26 @@
+{
+  "id": 33340,
+  "title": "Hash Server",
+  "time_limit": "2 초",
+  "memory_limit": "2048 MB",
+  "description": "<p><em>This is an interactive, run-twice problem</em>.</p>\n<p>There is a hash server whose purpose is to hash strings of length $10$. However, it has a problem: it is about to stop working, as it can only handle $100$ more strings. Your task is to write a program that can replicate the server's behavior.</p>\n<p>A string $s$ is hashed as follows. Let $s_i$ be the $1$-based alphabetic number of the $i$-th letter. The hash is calculated using the following formula:</p>\n<p>$$ \\sum_{i=1}^{10}(s_i\\cdot x^{k_i})\\cdot(a_i + s_i) \\pmod {26^{10}}, $$</p>\n<p>where the parameters $a_i$, $k_i$ ($1 \\leq i \\leq 10$), and $x$ ($x &gt; \\max\\limits_{i=1}^{10}(\\max(a_i, k_i))$) are <strong>distinct prime</strong> numbers from $1$ to $10^9$, set on the hash server. These parameters are unknown constants.</p>\n<p>To generate a response, the hash server converts the number into a string of length $10$. It is written in the positional numeral system with base $26$, but every digit is represented by a letter: $a$ represents digit $0$, $b$ represents digit $1$, etc. If the resulting number is too short, leading zeroes are added to make it exactly $10$ digits long.</p>\n<p>Your program will run twice. During the first run, your program can make at most $100$ unique requests to the server. For every request, the hash server returns the hash of the given string.</p>\n<p>During the second run, your program will receive a list of server responses from the first run in an arbitrary order. Your program must then process $100$ hash requests from the jury's program and produce the same responses as the original server.</p>",
+  "input": "",
+  "output": "",
+  "samples": [
+    {
+      "input": "1\n\nwilyevxwyy\n\ngcfffvmuie\n\nnykaeyifai\n\nomhdftcmgu\n\nwqjmrukrfi\n\n",
+      "output": "\n\naaaaaaaaaa\n\nbbbbbbbbbb\n\nababababab\n\nbababababa\n\naaaaabbbbb\n\ndone\n"
+    },
+    {
+      "input": "2\n5\nnykaeyifai\nomhdftcmgu\ngcfffvmuie\nwilyevxwyy\nwqjmrukrfi\naaaaaaaaaa\n\nbbbbbbbbbb\n\ncccccccccc\n\ndddddddddd\n\neeeeeeeeee\n\nffffffffff\n\ngggggggggg\n\n                ...\n",
+      "output": "\n\n\n\n\n\n\n\n\nwilyevxwyy\n\ngcfffvmuie\n\ndhfvcyssbs\n\nnxntwfpqfo\n\nlzdblqdots\n\nxlzrxeinse\n\nwkdrewenay\n                ...\n"
+    }
+  ],
+  "hint": "<p>The example of the second run contains only $7$ requests for brevity. In the testing system, the jury's program will make $100$ requests in the first test.</p>\n<p>Here are the parameters that are used in the sample:</p>\n<ul>\n<li>$x = 73$.</li>\n<li>$a = (71, 67, 61, 59, 53, 47, 43, 41, 37, 31)$.</li>\n<li>$k = (29, 23, 19, 17, 13, 11, 7, 5, 3, 2)$.</li>\n</ul>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2023, Day 2: Nyatl Contest 2023",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

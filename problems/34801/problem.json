@@ -1,0 +1,30 @@
+{
+  "id": 34801,
+  "title": "Solidarity of the Happy Cats",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>Professor Pattengale has run into a huge problem - his robot is getting wrong digital signals, causing it to move around unpredictably! His circuitry students, the Happy Cats, conclude that the wires in the motherboard are too close together. As an electrical current passes through a wire, it creates a magnetic field that induces currents in other nearby wires, causing false signals.</p>\n<p>The Engineering Family finds that the motherboard has $N$ slots lined up in a row, and each slot has exactly one wire installed in it. Each wire has range $r_i$, covering $r_i$ slots both to the left and to the right of that wire; other wires contained in this range may be affected by its magnetic field. Each wire also has a type of signal $s_i$ running through it.</p>\n<p>There are also $M$ different types of signals being passed throughout the wires. Certain types of signals can impact other types of signals. For two different types $a$ and $b$, if a signal of type $b$ can impact a signal of type $a$, then a wire with signal type $a$ cannot be within the range of any wire of signal type $b$, otherwise there will be interference. If type $b$ does not impact a signal of type $a$, then wires with signal type $a$ are permitted to be within the range of any wire with signal type $b$. Interference only happens when a signal of type $b$ impacts a signal with type $a$, and the wire with signal type $a$ is within the range of the wire with signal type $b$.</p>\n<p>It is possible for a signal of type $a$ to impact a signal of type $b$, but for a signal of type $b$ to not impact a signal of type $a$. It is also possible for a signal of type $a$ to impact other wires of type $a$.</p>\n<p>The Engineering Family wants to create a new motherboard for the wires. The new motherboard will also comprise a single row of slots. All $N$ wires must be installed in the same order from left to right in the new motherboard as they were in the old motherboard. It is only possible to install at most one wire in any given slot. Some slots may be left empty. There must be no interference.</p>\n<p>Given the original layout of the $N$ wires, compute the minimum number of slots in the new motherboard such that there is no interference.</p>",
+  "input": "<p>The first line of input contains two positive integers, $N$ and $M$ ($1 \\le M \\le N \\le 200$).</p>\n<p>$N$ lines follow, each with a pair of integers $r_i$ and $s_i$ ($1 \\le r_i \\le 10^9, 1 \\le s_i \\le M$), the range and signal type of the $i$-th wire. The wires are presented in order from left to right as they are installed in the old motherboard.</p>\n<p>$M$ lines follow, each containing a binary string of length $M$. The $i$<sup>th</sup> line describes which signals impact signals of type $i$. If the $j$<sup>th</sup> digit is a $1$, then signals of type $j$ do not impact signals of type $i$. Otherwise, signals of type $j$ do impact signals of type $i$.</p>",
+  "output": "<p>Output a single integer: the minimum number of slots the new motherboard needs to have to avoid interference.</p>",
+  "samples": [
+    {
+      "input": "3 3\n6 1\n3 2\n4 3\n010\n101\n100\n",
+      "output": "6\n"
+    },
+    {
+      "input": "3 3\n6 1\n3 2\n4 3\n010\n100\n100\n",
+      "output": "7\n"
+    },
+    {
+      "input": "4 2\n4 2\n2 1\n1 1\n4 2\n11\n10\n",
+      "output": "6\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, Pacific Northwest Regional, 2025 ICPC Pacific Northwest Regional, Division 2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

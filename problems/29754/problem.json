@@ -1,0 +1,32 @@
+{
+  "id": 29754,
+  "title": "세상에는 많은 유튜버가 있고, 그중에서 버츄얼 유튜버도 존재한다",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>세상에는 많은 유튜버가 있고, 그중에는 버츄얼 유튜버도 존재한다. 매주 $5$회, 매주 총 $60$시간 이상 라이브 방송을 하는 버츄얼 유튜버를 <strong>진짜 버츄얼 유튜버</strong>라고 한다. 형식이는 버츄얼 유튜버를 좋아하는데 그중 <strong>진짜 버츄얼 유튜버</strong>들을 찾고 싶어 한다. $N$개의 줄에 유튜버의 이름, 방송 날짜, 방송 시작 시각, 방송 종료 시각이 주어질 때 <strong>진짜 버츄얼 유튜버</strong>의 이름을 사전 순으로 출력하시오.</p>\r\n\r\n<p>날짜는 $1$일부터 시작이고 $1$일은 일요일이다. 일주일은 일요일부터 토요일까지로 한다.</p>\r\n",
+  "input": "<p>첫 번째 줄에 방송의 수 $N$과 형식이가 방송을 마지막으로 본 날짜 $M$이 공백으로 구분되어 주어진다. $(1 \\leq N \\leq 36\\,400;$ $7 \\leq M \\leq 364;$ $M$은 $7$의 배수$)$</p>\r\n\r\n<p>두 번째 줄부터 $N$줄에 걸쳐 <span style=\"color:#e74c3c;\"><code>name day hh:mm hh:mm</code></span> 형식으로 버츄얼 유튜버의 이름, 방송 날짜, 방송 시작 시각, 방송 종료 시각이 공백으로 구분되어 주어진다. $(1 \\leq \\text{day} \\leq M)$ 시각 형식은 $24$시간제를 사용한다. $(0 \\le \\text{hh} \\le 23;$ $0 \\le \\text{mm} \\le 59)$</p>\r\n\r\n<p>이름(<span style=\"color:#e74c3c;\"><code>name</code></span>)은 길이가 최대 $20$자인 공백 없는 문자열이고, 영어 소문자로만 이루어져 있다. 버츄얼 유튜버의 이름은 서로 다르므로 이름으로 구분할 수 있으며, 최대 $100$명 존재한다.</p>\r\n\r\n<p>방송은 한 번에 최대 $23$시간 $59$분간 진행할 수 있으며, 전날에 방송을 시작하여 자정을 넘겨 다음 날까지 진행하는 경우는 없다. 즉, 방송 시작 날짜와 방송 종료 날짜는 항상 같다. 또한, 방송은 하루에 최대 한 번 진행한다.</p>\r\n",
+  "output": "<p><strong>진짜 버츄얼 유튜버</strong>의 이름을 사전 순으로 한 줄에 하나씩 출력하시오. 만약 <strong>진짜 버츄얼 유튜버</strong>가 없다면 <span style=\"color:#e74c3c;\"><code>-1</code></span>을 출력하시오.</p>\r\n",
+  "samples": [
+    {
+      "input": "24 7\nai 1 20:00 21:30\npolka 1 16:00 16:30\nange 1 22:00 23:30\ntsuna 1 00:00 05:00\nlita 1 05:00 06:30\ntsuna 2 03:00 20:00\npolka 2 00:00 20:01\nange 2 01:00 23:30\nlita 3 01:00 23:30\ntsuna 3 10:00 23:00\nai 3 10:00 23:00\nange 4 06:00 20:00\npolka 4 10:00 23:00\ntsuna 5 07:00 20:00\nange 5 11:00 23:00\npolka 5 07:00 13:00\nlita 5 03:00 23:00\nange 6 00:00 11:01\nai 6 00:00 20:00\ntsuna 6 14:00 23:00\nlita 6 00:00 17:00\npolka 6 13:00 20:00\ntsuna 7 16:00 22:00\npolka 7 06:00 09:28\n",
+      "output": "ange\ntsuna\n"
+    },
+    {
+      "input": "22 7\nai 1 20:00 21:30\npolka 1 16:00 16:30\nlita 1 05:00 06:30\ntsuna 2 03:00 20:00\npolka 2 00:00 20:01\nange 2 01:00 23:30\nlita 3 01:00 23:30\ntsuna 3 10:00 23:00\nai 3 10:00 23:00\nange 4 06:00 20:00\npolka 4 10:00 23:00\ntsuna 5 07:00 20:00\nange 5 11:00 23:00\npolka 5 07:00 13:00\nlita 5 03:00 23:00\nange 6 00:00 11:01\nai 6 00:00 20:00\ntsuna 6 14:00 23:00\nlita 6 00:00 17:00\npolka 6 13:00 20:00\ntsuna 7 16:00 22:00\npolka 7 06:00 09:28\n",
+      "output": "-1\n"
+    }
+  ],
+  "hint": "<p>00:01에 방송을 시작해서 01:20에 방송을 끝냈다면 1시간 19분 동안 방송을 한 것이다.</p>\r\n\r\n<p>방송 시작 시각이 방송 종료 시각보다 항상 이르다.</p>\r\n\r\n<p>입력 순서는 방송 날짜의 오름차순이 아닐 수 있다.</p>\r\n",
+  "source": "University, 국민대학교, 2023 국민대학교 알고리즘 콘테스트, 2023 국민대학교 알고리즘 콘테스트, University, 중앙대학교, 중앙대학교 프로그래밍 경진대회 (CPC), 2023 중앙대학교 프로그래밍 경진대회 (CPC), Division 1, University, 중앙대학교, 중앙대학교 프로그래밍 경진대회 (CPC), 2023 중앙대학교 프로그래밍 경진대회 (CPC), Division 2, University, 중앙대학교, 중앙대학교 프로그래밍 경진대회 (CPC), 2023 중앙대학교 프로그래밍 경진대회 (CPC), Open Contest, University, 국민대학교, 2023 국민대학교 알고리즘 콘테스트, Open Contest, smmaker118, chansol, halin, hibye1217, kiwiyou, koder0205, menborong, saywoo, shiftpsh, snowflake, tony9402, usb9245, utilforever, uyk0329, wapas, wider93",
+  "level": 10,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "string",
+    "set",
+    "hash_set"
+  ],
+  "accepted_user_count": 395,
+  "submission_count": null,
+  "average_tries": 3.291100025177002
+}

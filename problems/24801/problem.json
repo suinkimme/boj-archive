@@ -1,0 +1,29 @@
+{
+  "id": 24801,
+  "title": "Alien Codebreaking",
+  "time_limit": "13 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You've intercepted encrypted communications between Martian diplomats. Since Martian diplomats are often spies, you decide to decrypt the messages. While the Martians have skilled rocket tech, they lag behind in number theory considerably, which compromises their encryption protocol.</p>\n<p>Fortunately for you, spies friendly to you have reverse engineered the Martian protocol.  It turns out that the Martians are using a shift-based cipher combined with a very long one-time pad. More specifically, the decryption procedure works as follows:</p>\n<p><img alt=\"\" src=\"1.png\" style=\"width: 512px; height: 382px; float: right;\"/>Step 1: Define the function $f(x) = (33x + 1) \\mod 2^{20}$.</p>\n<p>Further define $f^1(x) = f(x)$, $f^2(x) = f(f(x))$, $f^3(x) = f(f(f(x)))$, and so on.</p>\n<p>Step 2: Create a $X$ by $X$ size grid, fill the upper left corner with $f^1(0)$, the next cell to the right with $f^2(0)$, $f^3(0)$ etc. Once the top row is filled, continue to the cell below the upper left cell, and fill with $f^{X+1}(0)$. Continue this process until all rows are filled.</p>\n<p>Step 3: Sum all the values in every column, and take those values mod $2^{20}$.</p>\n<p>Step 4: Concatenate the base-10 representations of the column sums together, to get a very long base-10 number. For instance, if you had column sums of <code>10</code> and <code>12</code> for the first and second column, the leftmost four digits of the resulting value would be <code>1012</code>.</p>\n<p>Step 5: Convert the result of step 4 from base $10$ to base $27$. This will yield the one-time pad the Martians used.</p>\n<p>Step 6: For each letter $l$ of the intercepted message, shift the letter by the amount given by the corresponding digit of step 5, base $27$. </p>\n<p>You know that the both the encrypted and the decrypted message consist of only uppercase English characters '<code>A</code>' through '<code>Z</code>' and spaces, which are assigned values $0 \\ldots 26$. (<code>A = 0</code>, <code>B = 1</code>, ... <code>Z = 25</code>, <code>SPACE = 26</code>.  Shifting means to add the digit at the corresponding position of the pad to the value of the letter in the encrypted message.  For instance, if the encrypted message has letter '<code>D</code>' in position $3$, and the $3^{\\text{rd}}$ base-27 digit of the pad is $25$, the decrypted letter would be $3 + 25 = 1 \\mod 27$ which is '<code>B</code>'.</p>\n<p>Step 7: Output the decrypted message.</p>",
+  "input": "<p>The first line of the input contains two positive integers, $N$ ($1 \\le N \\le 10^6$), and $X$ ($1 \\le X \\le 2.5 * 10^5$). It is guaranteed that the base $27$ result of step 5 will be longer or equal to the length of the intercepted message.  The second line of the input contains a string consisting of uppercase letters and spaces of length $N$, the encrypted text.</p>",
+  "output": "<p>Output the decrypted text.</p>",
+  "samples": [
+    {
+      "input": "14 4\nJQ IRKEYFG EXQ\n",
+      "output": "THIS IS A TEST\n"
+    },
+    {
+      "input": "43 100000\nBLNAMOTPRRNIXRNMPIWHXDZTRQJXRKIAIEEIIPJLGZP\n",
+      "output": "FRIENDS ROMANS COUNTRYMEN LEND ME YOUR EARS\n"
+    }
+  ],
+  "hint": null,
+  "source": ", School, Virginia Tech High School Programming Contest, 2017 Virginia Tech High School Programming Contest",
+  "level": 25,
+  "tags": [
+    "fft",
+    "math"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

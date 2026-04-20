@@ -1,0 +1,26 @@
+{
+  "id": 24194,
+  "title": "Örnattack",
+  "time_limit": "7 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ekorrarna och örnarna har krigat sedan urminnes tider. Gammelekorren är en mästare på astrologi och har förutspått att örnarna snart kommer försöka sig på en sista attack mot storträdet. Enligt gammelekorren kommer ett antal örnar flyga in i trädet i hög fart för att få hela trädet att skaka så att ekorrarna riskerar att ramla ned.</p>\n<p>Trädet består av $N - 1$ grenar, som går samman i $N$ olika punkter som vi kallar för <em>noder</em> (varav trädets stam är nod $1$). Varje gren i trädet går alltså mellan två av dessa noder. Gammelekorren har förutspått i vilken av trädets $N$ noder var och en av örnarna kommer krascha och med vilken fart. Han vill veta hur mycket varje nod kommer skaka under attacken för att kunna varna alla ekorrar om de farligaste noderna. Tyvärr är gammelekorren inte lika bra på programmering som på astrologi, så han har anställt dig för att räkna ut hur mycket varje nod kommer skaka under attacken.</p>\n<p>När en örn kraschar med fart $v$ i nod $u$ börjar nod $u$ skaka med styrkan $v$. Skakningen sprider sig sedan genom de grenar som utgår från nod $u$. När skakningen når en viss nod kommer den spridas genom alla grenar som möts i den nya node, förutom den som skakningen kom från. Skakstyrkan sprids i lika delar längs dessa nya grenar, så om skakningen hade styrka $v$ och sprids längs $k$ grenar kommer skakningen som färdas längs grenarna ha styrkan $\\frac{v}{k}$. Detta pågår ända tills skakningen till slut når noder som inte har några andra grenar än den från vilken skaningen kom från, där skakningen slutas spridas vidare.</p>\n<p>Du kan anta att skakningen från en krasch hinner sprida sig genom hela trädet och försvinna innan nästa örn kraschar. För var och en av noderna i trädet vill gammelekorren veta summan av alla skakningars styrkor som noden kommer utsättas för.</p>",
+  "input": "<p>På den första raden finns heltalet $N$ ($1 \\le N \\le 100\\,000$), antalet noder i trädet. De följande $N-1$ raderna innehåller två heltal $a$ och $b$ ($1 \\le a,b \\le N$), vilket betyder att det går en gren mellan nod $a$ och nod $b$.</p>\n<p>Därefter följer en rad med heltalet $K$ ($1 \\le K \\le 100\\,000$), antalet örnar som kommer attackera. Slutligen följer $K$ rader som beskriver örnarna i den ordning de kraschar in i trädet. På varje rad finns två heltal, noden $u$ ($1 \\le u \\le N$) där örnen kommer krascha och örnens fart $v$ ($1 \\le v \\le 10^9$).</p>",
+  "output": "<p>Skriv ut en rad för varje nod i ordningen $1$, $2$, $\\dots$ med summan av alla skakningars styrkor noden kommer utsättas för. Ditt svar anses korrekt om det har ett absolut eller relativt fel om högst $10^{-5}$.</p>",
+  "samples": [
+    {
+      "input": "4\n1 2\n2 3\n3 4\n3\n2 7\n3 4\n2 3\n",
+      "output": "7\n12\n9\n7\n"
+    },
+    {
+      "input": "5\n1 2\n1 3\n3 4\n3 5\n2\n4 5\n3 6\n",
+      "output": "4.5\n4.5\n11\n7\n4.5\n"
+    }
+  ],
+  "hint": "<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 425px; height: 290px;\"/></p>\n<p style=\"text-align: center;\">Figure 1: Första örnen.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\" style=\"width: 425px; height: 290px;\"/></p>\n<p style=\"text-align: center;\">Figure 2: Andra örnen.</p>\n<p>Den första örnen kraschar i nod $4$ med fart $5$. Från nod $4$ sprids skakningen endast till nod $3$ och från nod $3$ till både nod $1$ och $5$. Från nod $5$ har skakningen ingenstans att ta vägen men från nod $1$ sprids den till nod $2$.</p>\n<p>Den andra örnen kraschar i nod $3$ med fart $6$. Från nod $3$ sprids skakningen till nod $1$, $4$ och $5$. Skakningarna i nod $4$ och $5$ har ingenstans att ta vägen men skakningen i nod $1$ sprids till nod $2$.</p>\n<p>För att få svaren ska varje nods skakningar adderas, exempelvis blir svaret $2.5+2=4.5$ i nod $1$ och $5+6=11$ i nod $3$.</p>",
+  "source": ", Olympiad, Swedish Olympiad in Informatics, 2022, Online Qualification",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

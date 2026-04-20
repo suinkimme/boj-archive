@@ -1,0 +1,36 @@
+{
+  "id": 21786,
+  "title": "Food Court",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>IOI Center is a training center equipped with living facilities. There is a food court for large groups. In the food court, there are N shops in a row, numbered from 1 to N. In front of each shop, there is a queue for customers. Customers will make a line in each queue.</p>\n<p>Today, there are M groups staying in IOI Center, numbered from 1 to M. Members of groups will make lines in a rather strange way to enjoy chatting.</p>\n<p>In this food court, shops sometimes give free desserts to customers in their queue. JOI-kun, working in this food court, has a job to record the groups the customers who receive free desserts belong to.</p>\n<p>No customers were making lines in the queues when the shops were closed. Today, when the shops were open, Q events happened in the queues. The i-th event is one of the following.</p>\n<ul>\n<li><strong>Join</strong> For every shop whose number is between L<sub>i</sub> and R<sub>i</sub>, inclusive, K<sub>i</sub> customers from the group C<sub>i</sub> joined the queue at its end.</li>\n<li><strong>Leave</strong> For every shop whose number is between L<sub>i</sub> and R<sub>i</sub>, inclusive, if there were K<sub>i</sub> or more customers in the queue, K<sub>i</sub> customers from the beginning of the queue left. Otherwise, all the customers in the queue left.</li>\n<li><strong>Service</strong> If there were B<sub>i</sub> or more customers in the queue of the shop A<sub>i</sub>, the shop gave a free dessert to the B<sub>i</sub>-th customer from the beginning of the queue. Otherwise, the staff of the shop ate the free dessert.</li>\n</ul>\n<p>Unfortunately, JOI-kun lost the record of the groups the customers who received the desserts belong to. He plans to recover the record using information of the above Q events.</p>\n<p>Write a program which, given the number of shops, groups, events, and the details of the events, determines for each “Service” whether a customer received a free dessert or not. If a customer received a free dessert, the program should find the index of the group the customer belongs to.</p>",
+  "input": "<p>Read the following data from the standard input. Given values are all integers.</p>\n<pre>\nN M Q\n(Query 1)\n.\n.\n.\n(Query Q)</pre>\n<p>In (Query i) (1 ≤ i ≤ Q), space-separated integers are written. Let T<sub>i</sub> be the first integer. Then (Query i) means as follows.</p>\n<ul>\n<li>If T<sub>i</sub> = 1, four more integers L<sub>i</sub>, R<sub>i</sub>, C<sub>i</sub>, K<sub>i</sub> are written in this order. This means the i-th event is “Join”, and, for every shop whose number is between L<sub>i</sub> and R<sub>i</sub>, inclusive, K<sub>i</sub> customers from the group C<sub>i</sub> joined the queue at its end.</li>\n<li>If T<sub>i</sub> = 2, three more integers L<sub>i</sub>, R<sub>i</sub>, K<sub>i</sub> are written in this order. This means the i-th event is “Leave”, and, for every shop whose number is between L<sub>i</sub> and R<sub>i</sub>, inclusive, if there were K<sub>i</sub> or more customers in the queue, K<sub>i</sub> customers from the beginning of the queue left. Otherwise, all the customers in the queue left.</li>\n<li>If T<sub>i</sub> = 3, two more integers A<sub>i</sub>, B<sub>i</sub> are written in this order. This means the i-th event is “Service”, and, if there were B<sub>i</sub> or more customers in the queue of the shop A<sub>i</sub>, the shop gave a free dessert to the B<sub>i</sub>-th customer from the beginning of the queue. Otherwise, the staff of the shop ate the free dessert.</li>\n</ul>",
+  "output": "<p>Output one line to the standard output for each “Service”, i.e., for each event i (1 ≤ i ≤ Q) with T<sub>i</sub> = 3. If a customer received a free dessert in the i-th event, the output should contain the number which represents the group the customer belongs to. If the staff of the shop ate the free dessert in the event i, the output should contain 0.</p>",
+  "samples": [
+    {
+      "input": "3 5 7\n1 2 3 5 2\n1 1 2 2 4\n3 2 3\n2 1 3 3\n3 1 2\n1 2 3 4 2\n3 3 2\n",
+      "output": "2\n0\n4\n"
+    },
+    {
+      "input": "3 4 7\n1 1 2 1 1\n1 1 3 4 1\n2 2 3 1\n2 1 3 1\n1 1 2 2 1\n3 1 1\n3 3 2\n",
+      "output": "4\n0\n"
+    },
+    {
+      "input": "183326 218318 22\n1 106761 160918 151683 574906362\n3 68709 1\n1 29240 156379 22166 957318472\n1 14054 181502 82845 97183925\n2 112033 122908 587808357\n2 57819 160939 215041262\n3 36674 524274467\n1 35854 69866 32334 322730299\n1 1384 7230 115069 454256926\n1 44192 158235 8750 84192710\n3 54457 1077490708\n2 10592 110384 979714505\n2 44594 79244 311724477\n3 160965 97183926\n1 88748 101697 39148 373927458\n3 41166 58039001\n1 91501 137591 205480 958877326\n2 77775 169655 135756956\n1 12497 57047 60918 15666764\n1 47839 51716 144688 732270998\n3 114514 774994894\n3 48645 169986425\n",
+      "output": "0\n22166\n32334\n0\n82845\n8750\n60918\n"
+    }
+  ],
+  "hint": null,
+  "source": ", Camp, JOI Spring Training Camp, JOI 2020/2021 Spring Training Camp",
+  "level": 23,
+  "tags": [
+    "data_structures",
+    "segtree",
+    "binary_search",
+    "sweeping",
+    "offline_queries"
+  ],
+  "accepted_user_count": 36,
+  "submission_count": null,
+  "average_tries": 1.9443999528884888
+}

@@ -1,0 +1,26 @@
+{
+  "id": 23514,
+  "title": "Exact Number of Calls",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>Consider a flat rectangular field consisting of $r \\times c$ squares. Some squares of the field are free, while others are blocked.</p>\n<p>Arkadiy the Robot wants to cover the field with dominoes. In order to do that, he assigns the value $0$ to his internal variable <code>counter</code>, and then calls the recursive function <code>Tile</code> shown below.</p>\n<pre>\nFunction Tile acts as follows:\n1.  Increase counter by 1.\n2.  If no squares are free, return OK.\n3.  Let (row, col) be lexicographically first free square.\n4.  If square (row, col+1) exists and is free:\n4.1.    Put a domino on squares (row, col) and (row, col+1).\n4.2.    If call to Tile returns OK, return OK.\n4.3.    Remove the domino on squares (row, col) and (row, col+1).\n5.  If square (row+1, col) exists and is free:\n5.1.    Put a domino on squares (row, col) and (row+1, col).\n5.2.    If call to Tile returns OK, return OK.\n5.3.    Remove the domino on squares (row, col) and (row+1, col).\n6.  Return NO.</pre>\n<p>The variable <code>counter</code> is global (it is the same in all calls), while variables <code>row</code> and <code>col</code> are local (defined separately in each call). When a value is returned, the function terminates immediately. A \"call to <code>Tile</code>\" means a recursive call of the same function. The squares covered with dominoes are considered blocked.</p>\n<p>If function <code>Tile</code> returned <code>OK</code> to Arkadiy, the robot has successfully covered the field with dominoes. If the function returned <code>NO</code>, it means that Arkadiy tried all possible ways to cover the field, but was not successful.</p>\n<p>A friend of Arkadiy, Bertrand the Robot, heard from his hacker friends that Arkadiy is programmed to have some interesting behavior in case the field is covered by exactly $k$ calls to <code>Tile</code>, that is, the value of the <code>counter</code> variable at the end of the algorithm is exactly $k$. Help to make that happen: print a field which Arkadiy will successfully cover with dominoes in such a way that function <code>Tile</code> will be called exactly $k$ times.</p>",
+  "input": "<p>The first line of input contains one integer $k$: the required number of calls ($1 \\le k \\le 10\\,000\\,000$).</p>",
+  "output": "<p>On the first line, print two integers $r$ and $c$ separated by a space: the dimensions of the field ($1 \\le r, c \\le 100$). Starting from the second line, print $r$ lines, each containing $c$ characters: a rectangular field. Free squares are denoted by \"<code>.</code>\" (dot, ASCII code 46), and blocked squares are denoted by \"<code>x</code>\" (lowercase letter ex, ASCII code 120). If there are several possible solutions, print any one of them.</p>",
+  "samples": [
+    {
+      "input": "14\n",
+      "output": "4 6\n.....x\n.....x\n.x....\nxx.x..\n"
+    },
+    {
+      "input": "2\n",
+      "output": "3 3\nxxx\n..x\nxxx\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Open Cup, 2018/2019 Season, Stage 17: Grand Prix of Baltic Sea",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

@@ -1,0 +1,26 @@
+{
+  "id": 8206,
+  "title": "Plot",
+  "time_limit": "30 초",
+  "memory_limit": "128 MB",
+  "description": "<p>We call any sequence of points in the plane a plot. We intend to replace a given plot (P<sub>1</sub>,…,P<sub>n</sub>) with another that will have at most m points (m ≤ n) in such a way that it \"resembles\" the original plot best.</p>\n<p>The new plot is created as follows. The sequence of points P<sub>1</sub>,…,P<sub>n</sub> can be partitioned into  s (s ≤ m) contiguous subsequences:</p>\n<p>    (P_{ko+1},…,P_k1), (P_{k1+1},…,P_k2), …, (P_{k(s-1)+1},…,P_ks)</p>\n<p>where 0 = k<sub>0</sub> &lt; k<sub>1</sub> &lt; k<sub>2</sub> &lt; … &lt; k<sub>s</sub> = n, and afterwards each subsequence (P<sub>k(i-1)+1</sub>,…,P<sub>ki</sub>), for i=1,…,s, is replaced by a new point Q<sub>i</sub>. In that case we say that each of the points P<sub>k(i-1)+1</sub>,…,P<sub>ki </sub>has been contracted to the point Q<sub>i</sub>. As a result a new plot, represented by the points Q<sub>1</sub>,…,Q<sub>s</sub>, is created. The measure of such plot's resemblance to the original is the maximum distance of all the points P<sub>1</sub>,…,P<sub>n</sub> to the point it has been contracted to:</p>\n<p>    \\( \\max_{i=1Idots,s} {\\left(\\max_{j=k_{i-1}+1,...,k_i} {(d(P_j,Q_i))}\\right)} \\)</p>\n<p>where d(P<sub>j</sub>,Q<sub>i</sub>) denotes the distance between P<sub>j</sub> and Q<sub>i</sub>, given by the well-known formula:</p>\n<p>    \\( d((x_1,y_1),(x_2,y_2)) = \\sqrt{(x_2-x_1)^2+(y_2-y_1)^2} \\)</p>\n<p><img alt=\"\" src=\"1.jpg\" style=\"height:172px; width:580px\"/><br/>\nAn exemplary plot (P<sub>1</sub>,…,P<sub>7</sub>) and the new plot (Q<sub>1</sub>,Q<sub>2</sub>), where (P<sub>1</sub>,…,P<sub>4</sub>) are contracted to Q<sub>1,</sub> whereas (P<sub>5</sub>,P<sub>6</sub>,P<sub>7</sub>) to Q<sub>2</sub>.</p>\n<p>For a given plot consisting of n points, you are to find the plot that resembles it most while having at most m points, where the partitioning into contiguous subsequences is arbitrary. Due to limited precision of floating point operations, a result is deemed correct if its resemblance to the given plot is larger than the optimum resemblance by at most 0.000001.</p>",
+  "input": "<p>In the first line of the standard input there are two integers n and m, 1 ≤ m ≤ n ≤ 100,000, separated by a single space. Each of the following n lines holds two integers, separated by a single space. The (i+1)-th line gives x<sub>i</sub>,y<sub>i</sub>, -1,000,000 ≤ x<sub>i</sub>,y<sub>i</sub> ≤ 1,000,000, denoting the coordinates (x<sub>i</sub>,y<sub>i</sub>) of the point P<sub>i</sub>.</p>\n<p> </p>",
+  "output": "<p>In the first line of the standard output one real number d should be printed out, the resemblance measure of the plot found to the original one. In the second line of the standard output there should be another integer s, 1 ≤ s ≤ m. Next, the following s lines should specify the coordinates of the points Q<sub>1</sub>,…,Q<sub>s</sub>, one point per line. Thus the (i+2)-th line should give two real numbers u<sub>i</sub> and v<sub>i</sub>, separated by a single space, that denote the coordinates (u<sub>i</sub>,v<sub>i</sub>) of the point Q<sub>i</sub>. All the real numbers should be printed with at most 15 digits after the decimal point.</p>\n<p> </p>",
+  "samples": [
+    {
+      "input": "7 2\n2 0\n0 4\n4 4\n4 2\n8 2\n11 3\n14 2\n",
+      "output": "3.00000000\n2\n2.00000000 1.76393202\n11.00000000 1.99998199\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Polish Olympiad in Informatics, POI 2010/2011, Stage 1",
+  "level": 24,
+  "tags": [
+    "binary_search",
+    "geometry",
+    "randomization"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 15
+}

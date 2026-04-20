@@ -1,0 +1,32 @@
+{
+  "id": 26468,
+  "title": "Sloppy city planning",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Insane Connection Plan City is a city consisting of $N$ towns numbered from $1$ to $N$. The previous mayor of this city constructed a single road between each pair of towns. However, every road is not wide enough and hence is onedirectional. In other words, for any two different towns $i$ and $j$, there is a single road that you can pass either from $i$ to $j$ or from $j$ to $i$, but not both.</p>\n<p>Because of the sloppy city planning, you suspect that there may be two different towns where you cannot travel from one town to the other by passing through one or more roads. If so, as a new mayor of this city you have to resolve this problem. Unfortunately, there is not enough space to make each road bidirectional nor construct new roads. Therefore, you instead decided to reverse the directions of some roads.</p>\n<p>For each pair of towns, you are given the initial direction of the road between these two towns and the cost to reverse the direction. You can reverse the directions of zero or more roads. After that, you must be able to travel from any town to any other town by passing through roads. Your task is to calculate the minimal total cost to achieve it. Under the constraints of this problem, it can be proven that a solution always exists.</p>",
+  "input": "<p>The input consists of a single test case of the following format.</p>\n<blockquote>\n<p>$N$</p>\n<p>$c_{1,2}$ $c_{1,3}$ $\\dots$ $c_{1,N}$</p>\n<p>$c_{2,3}$ $c_{2,4}$ $\\dots$ $c_{2,N}$</p>\n<p>$\\vdots$</p>\n<p>$c_{N-1,N}$</p>\n</blockquote>\n<p>The first line consists of an integer $N$ between $3$ and $3\\,000$, inclusive. This represents the number of towns in this city.</p>\n<p>The $i$-th of the following $N-1$ lines consists of $N-i$ non-zero integers between $-10^9$ and $10^9$, inclusive. For each $i$, $j$ ($1 ≤ i &lt; j ≤ N$), $c_{i,j}$ represents the information of the road between towns $i$ and $j$. Here, if $c_{i,j}$ is positive, then you can initially pass through this road from $i$ to $j$ only. Otherwise, you can initially pass through this road from $j$ to $i$ only. In either case, the absolute value $|c_{i,j}|$ is the cost to reverse the direction of this road.</p>",
+  "output": "<p>Output in a line a single integer, which is the minimum total cost of roads of which you have to reverse the directions.</p>",
+  "samples": [
+    {
+      "input": "7\n-18 -77 -47 -95 84 -23\n54 -60 96 43 83\n-32 67 27 13\n72 97 57\n66 -30\n-24\n",
+      "output": "59\n"
+    },
+    {
+      "input": "7\n-18 -77 -47 -95 84 -23\n54 -60 96 43 83\n32 67 -27 13\n72 97 57\n66 -30\n-24\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": "<p>In the first example, the optional solution is to reverse the directions of a road between towns 3 and 4 and another road between towns 3 and 6, where the total cost is $|c_{3,4}| + |c_{3,6}| = |-32| + |27| = 59$. After reversing the directions of these two roads, the direction of every road becomes the same as the second example.</p>",
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Practice Contest for ICPC Asia Regional, JAG Practice Contest for ICPC 2022 Asia Yokohama Regional, Camp, Petrozavodsk Programming Camp, Winter 2024, Day 1: Welcome Contest",
+  "level": 21,
+  "tags": [
+    "dp",
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "scc"
+  ],
+  "accepted_user_count": 34,
+  "submission_count": null,
+  "average_tries": 1.9118000268936157
+}

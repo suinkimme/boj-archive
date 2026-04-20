@@ -1,0 +1,26 @@
+{
+  "id": 17337,
+  "title": "Olympic Logistics",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>The Beijing 2008 Olympics is about to open, and the entire nation is preparing for this grand event. To maximize efficiency when setting up and hosting a successful Olympics, the planning of logistics is essential.</p>\n<p>The logistics system consists of <var>N</var> total <b>stations</b> numbered from 1 to <var>N</var>. Each station <var>i</var> has exactly one <b>successor station</b> <var>S<sub>i</sub></var>, but can have many <b>predecessor stations</b>. Station <var>i</var> needs to continuously deliver materials to successor station <var>S<sub>i</sub></var>. Obviously, a station's successor station cannot be itself. Station 1 is known as the <b>control station</b>, and any other station can deliver materials to it. Note that the control station also has its own successor station to permit the flow of materials when necessary. In the design of this logistics system, high reliability and low costs are the main objectives. So for station <var>i</var>, we can define its \"<b>reliability</b>\" <var>R</var>(<var>i</var>) as follows:</p>\n<p>Let station <var>i</var> have <var>w</var> predecessor stations <var>P</var><sub>1</sub>, <var>P</var><sub>2</sub>, …, <var>P<sub>w</sub></var>, meaning that <var>i</var> is the sole successor of each of these station. Then, station <var>i</var>'s reliability <var>R</var>(<var>i</var>) is given by the following formula:</p>\n<p>$R(i) = C_i + k \\sum_{j = 1}^{w}{R(P_j)}$</p>\n<p>where <var>C<sub>i</sub></var> and <var>k</var> are positive real constants, and <var>k</var> &lt; 1.</p>\n<p>The reliability of the entire logistics system is directly based upon the reliability of the control station. Our goal is to maximize the control station's reliability value <var>R</var>(1) by modifying the successor stations of some other stations. However, our budget is also limited – we may only modify at most <var>m</var> successor stations. Furthermore, the successor of the control station cannot be modified. Thus, the overall problem we face is to maximize the control station's reliability <var>R</var>(1) by changing the successors of no more than <var>m</var> stations.</p>",
+  "input": "<p>The first line of input contains two integers <var>N</var> and <var>m</var>, followed by one real number <var>k</var>. <var>N</var> represents the number of stations, <var>m</var> represents the maximum number of successor stations that may be changed, and <var>k</var> is the constant used in the definition of the reliability formula.</p>\n<p>The second line contains <var>N</var> integers <var>S</var><sub>1</sub>, <var>S</var><sub>2</sub>, …, <var>S<sub>N</sub></var>, representing the successor stations of each station.</p>\n<p>The third line contains <var>N</var> positive real numbers <var>C</var><sub>1</sub>, <var>C</var><sub>2</sub>, …, <var>C<sub>N</sub></var>, representing the constant values used in the reliability formula.</p>",
+  "output": "<p>The output should contain one real number, the maximum possible value of <var>R</var>(1) rounded and displayed to 2 decimal places.</p>",
+  "samples": [
+    {
+      "input": "4 1 0.5\n2 3 1 3\n10.0 10.0 10.0 10.0\n",
+      "output": "30.00\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, National Olympiad in Informatics (China), NOI 2008",
+  "level": 23,
+  "tags": [
+    "dp",
+    "trees",
+    "dp_tree"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

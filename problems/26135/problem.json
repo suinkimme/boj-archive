@@ -1,0 +1,30 @@
+{
+  "id": 26135,
+  "title": "Islands from the Sky",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>You might never have heard of the island group of Iceepeecee, but that suits their inhabitants just fine. Located in a remote part of the South Pacific, they are truly off the beaten track, without any regular air or sea traffic, and they have remained a tropical paradise with unspoiled local fauna and flora.</p>\n<p>Being off the map is great when you don’t want to be overrun by hordes of tourists, but not so ideal when you actually do need a map for some reason. One such reason came up recently: Iceepeecee’s central government needs an exact map of the islands to apportion government funds. Even tropical paradises need money, so Iceepeecee needs a map!</p>\n<p>The easiest way to create a map would be an aerial survey. After dismissing chartering planes as too expensive, building an air balloon as too dangerous, and fitting carrier pigeons with cameras as too cruel to animals, they had a brilliant idea. Even with its remote location, there are still plenty of commercial airplanes crossing the skies above Iceepeecee. What if one mounted cameras on flights that are already scheduled to fly anyway? That would be a cheap solution to the problem!</p>\n<p>Iceepeecee’s plan is to install line-scan cameras on the planes. These cameras point straight downwards and collect images one line segment at a time, orthogonal to the flight path. The photographed line segment will be determined by the altitude that the plane is flying at, and the camera’s aperture angle θ (see Figure F.1). Greater angles θ mean that the camera can see more, but also that the camera is more expensive.</p>\n<p>Moreover, Iceepeecee wants to make sure that each island is observed in its entirety by at least one flight. That means it is not sufficient that an island is only partially photographed by multiple flights, even if the combination of the photographs covers the whole island.</p>\n<p>Flight paths follow straight line segments in three-dimensional space, that is, (x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>) − (x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>) (see Figure F.2), where the z-coordinates give the altitude of the plane. Photographs are taken only along these line segments.</p>\n<p>Given the location of their islands and flights, Iceepeecee wants to find the smallest aperture angle θ that allows for a successful survey. Can you help?</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 208px; height: 132px;\"/></p>\n<p style=\"text-align: center;\">Figure F.1: A view of the plane, shown head-on. Its camera points downward and can see the part of the ground underneath the plane that is shown in green. How much is visible depends on the aperture angle θ.</p>\n<table class=\"table table-bordered\">\n<tbody>\n<tr>\n<td><img alt=\"\" src=\"2.png\" style=\"width: 134px; height: 139px;\"/></td>\n<td><img alt=\"\" src=\"3.png\" style=\"width: 150px; height: 139px;\"/></td>\n</tr>\n<tr>\n<td>(a) Three islands (shown in black) and two flight paths (red and green). Altitudes are not shown.</td>\n<td>(b) The shaded areas represent the ground visible on the two flight paths for an optimally chosen θ.</td>\n</tr>\n<tr>\n<td colspan=\"2\">Figure F.2: Surveying three islands via two flight paths. This corresponds to the first sample input.</td>\n</tr>\n</tbody>\n</table>",
+  "input": "<p>The input describes a set of islands and flight paths. It starts with a line containing two integers n and m, the number n of islands, and the number m of flight paths, respectively (1 ≤ n, m ≤ 100). This is followed by descriptions of the n islands. Each island description starts with a line containing a single integer ni , the number of vertices of the polygon describing the i<sup>th</sup> island (3 ≤ n<sub>i</sub> ≤ 100). It is followed by ni lines, each containing two integers x<sub>ij</sub>, y<sub>ij</sub> (|x<sub>ij</sub>|, |y<sub>ij</sub>| ≤ 10<sup>6</sup>), specifying the vertices for the i<sup>th</sup> island in counterclockwise order. Each island’s polygon is simple, that is, its vertices are distinct and no two edges of the polygon intersect or touch, other than consecutive edges which touch at their common vertex. Different islands do not intersect or touch.</p>\n<p>The input concludes with another m lines, each describing a flight path. Each such line contains six integers x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>, x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub> (|x<sub>i</sub>|, |y<sub>i</sub>|, |z<sub>i</sub>| ≤ 10<sup>6</sup>, z<sub>i</sub> &gt; 0 and (x<sub>1</sub>, y<sub>1</sub>) ≠ (x<sub>2</sub>, y<sub>2</sub>)). They specify that a flight takes place from (x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>) to (x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>).</p>",
+  "output": "<p>Output the smallest angle θ (in degrees) that allows for a complete survey of the islands with the given flights. The answer should be exact to an absolute or relative error of 10<sup>-6</sup>. If there is no such angle, then output <code>impossible</code>. The input is chosen such that if the coordinates of the island vertices are changed by at most ±10<sup>-8</sup> , then the answer will not change more than the allowed rounding error.</p>",
+  "samples": [
+    {
+      "input": "3 2\n3\n20 30\n50 50\n10 50\n4\n40 20\n60 10\n75 20\n60 30\n4\n45 60\n55 55\n60 60\n55 65\n0 30 20 78 70 5\n55 0 20 70 60 10\n",
+      "output": "48.031693036\n"
+    },
+    {
+      "input": "1 1\n4\n0 0\n10 0\n10 10\n0 10\n5 5 10 15 5 10\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, World Finals, ICPC World Finals 2021",
+  "level": 18,
+  "tags": [
+    "geometry",
+    "binary_search",
+    "point_in_convex_polygon"
+  ],
+  "accepted_user_count": 30,
+  "submission_count": null,
+  "average_tries": 1.600000023841858
+}

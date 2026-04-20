@@ -1,0 +1,22 @@
+{
+  "id": 22304,
+  "title": "Optic Communications",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>After their plane crashes, 71 surviving passengers are stranded on a deserted island. They eventually start to explore the island, and they develop a strategy to communicate long distances to help with the exploration. Using mirrors found in the wreckage, they flash sunlight using Morse code. Unfortunately, this only allows them to communicate using line-of-sight.</p>\n<p>There are a few good vantage points on the island that allow one to see most of the island, and these are quite useful for relaying messages. Each of these vantage points has an outpost with a survivor on watch at all times. This survivor is responsible for sending new messages as well as relaying received messages to all other visible outposts. If an outpost receives a message that it has already sent or received, it is ignored and not considered to be received again (the survivors worked out a system for identifying messages).</p>\n<p>Due to obstacles like trees and mountains or weather like rain and fog, the set of survivors who can directly see a message occasionally changes. Write a program which will print the list of messages received by each survivor in each scenario. At the start of each test case, you can assume that nobody can see messages from anyone else.</p>",
+  "input": "<p>The first line of input will contain the number of test cases, <code>T</code> (<code>1 ≤ T ≤ 50</code>).</p>\n<p>The first line of each test case will contain the number of events, <code>E</code> (<code>1 ≤ E ≤ 50</code>). Each of the following <code>E</code> lines will contain one of the following:</p>\n<ul>\n<li><code>VISIBLE A B</code>: Survivor <code>A</code> and survivor <code>B</code> can see each other.</li>\n<li><code>OBSTACLE A B</code>: Survivor <code>A</code> and survivor <code>B</code> can no longer see each other due to an obstacle.</li>\n<li><code>WEATHER A B</code>: Survivor <code>A</code> and survivor <code>B</code> can no longer see each other due to weather.</li>\n<li><code>MESSAGE A \"HELLO\"</code>: Survivor <code>A</code> sends the message <code>HELLO</code> to all other visible outposts.</li>\n</ul>\n<p>Each survivor is represented by a single character <code>A-Z</code>.</p>\n<p>Each message consists of at least 1, but no more than 100 characters from the set consisting of <code>A-Z</code> and the space character. It is always surrounded with a single pair of quotation marks (<code>\"</code>).</p>",
+  "output": "<p>For each test case, output consists of a single line for each survivor that received a message, sorted alphabetically by the survivor's letter.</p>\n<p>Each line consists of <code>A: [\"MSG I\", \"MSG II\"]</code>, where <code>A</code> is the receiving survivor's letter and <code>\"MSG I\", \"MSG II\"</code> is a list of the messages (each in quotes) received by that survivor, separated by a comma and a space. Do not print a line for a survivor if they received zero messages.</p>\n<p>The messages received by each survivor should be printed in the order they were received.</p>\n<p>Print a single blank line between test cases.</p>",
+  "samples": [
+    {
+      "input": "2\n6\nVISIBLE B A\nMESSAGE A \"HELLO\"\nWEATHER A B\nMESSAGE A \"GOODBYE\"\nVISIBLE A B\nMESSAGE A \"WORLD\"\n11\nVISIBLE B A\nVISIBLE C A\nVISIBLE D A\nVISIBLE E A\nVISIBLE F A\nVISIBLE G H\nMESSAGE A \"YOU\"\nMESSAGE B \"ARE\"\nOBSTACLE B A\nMESSAGE C \"NOT\"\nMESSAGE G \"ALONE\"\n",
+      "output": "B: [\"HELLO\", \"WORLD\"]\n\nA: [\"ARE\", \"NOT\"]\nB: [\"YOU\"]\nC: [\"YOU\", \"ARE\"]\nD: [\"YOU\", \"ARE\", \"NOT\"]\nE: [\"YOU\", \"ARE\", \"NOT\"]\nF: [\"YOU\", \"ARE\", \"NOT\"]\nH: [\"ALONE\"]\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, North America, South Central USA Regional, 2014 South Central USA Regional Programming Contest",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

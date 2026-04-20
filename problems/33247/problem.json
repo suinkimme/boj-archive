@@ -1,0 +1,30 @@
+{
+  "id": 33247,
+  "title": "Alternative Blockchain Algorithms",
+  "time_limit": "1 초",
+  "memory_limit": "2048 MB",
+  "description": "<p>To reduce the amount of fraud in banking, the Financial Problems Committee (FPC) opted to use a blockchain, as they are a modern banking committee. For every account, a blockchain is kept with all the transactions that have been applied to it.</p>\n<p>The FPC determined encryption and \"proof of work\" to be cumbersome and not worth the hassle, so the blocks are trimmed down to contain only the bare essentials needed to track back to the beginning from any block in the chain. Despite this, accidents still happen, so a reference back to the parent node is included to verify the continuity of the chain.</p>\n<p>Your job is to verify the blockchain and return the balance on the account.</p>\n<p>A block is bad if the parent id of the block does not match the preceding block. Your program should also check if the account does not have a transaction that might cause it to become negative.</p>\n<p>The first block (aka \"genesis block\") should always have parent id 0.</p>",
+  "input": "<ul>\n<li>One line containing one integer $1 \\leq N \\leq 10^{6}$, the number of blocks on the chain\\\\</li>\n<li>$N$ lines containing three integers each: $1 \\leq i \\leq 10^{6}$, the block id; $1 \\leq p \\leq 10^{6}$, the parent id; $-10^{6} \\leq m \\leq 10^{6}$ the amount transferred to/from the account.</li>\n</ul>\n<p>All transactions can be assumed to not cause integer under- or overflows. Block ids can be assumed unique.</p>",
+  "output": "<p>If a transaction will result in the balance on the account being lower than 0, return <code>NO\\_MONEY</code>. If a block is bad, return <code>INVALID</code>. Otherwise, output the amount of money on the account as an integer.</p>",
+  "samples": [
+    {
+      "input": "2\n1 0 5\n2 1 -4\n",
+      "output": "1\n"
+    },
+    {
+      "input": "5\n1 0 5\n2 1 -1\n3 4 -1\n4 3 -1\n5 4 -1\n",
+      "output": "INVALID\n"
+    }
+  ],
+  "hint": null,
+  "source": ", University, Delft University of Technology, Freshmen Programming Contest 2019",
+  "level": 4,
+  "tags": [
+    "math",
+    "implementation",
+    "arithmetic"
+  ],
+  "accepted_user_count": 52,
+  "submission_count": null,
+  "average_tries": 3.75
+}

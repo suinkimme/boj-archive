@@ -1,0 +1,22 @@
+{
+  "id": 23146,
+  "title": "Nondeterministic Finite Automaton",
+  "time_limit": "1 초",
+  "memory_limit": "256 MB",
+  "description": "<p>A <em>nondeterministic finite automaton</em> (NFA) is defined as $G = (V, E_0, E_1, v_0, F)$, where $(V, E_0)$ and $(V, E_1)$ form two directed graphs, $v_0 \\in V$ is the initial vertex, and $F \\subseteq V$ is the set of accepting vertices.</p>\n<p>We say that NFA $G$ recognizes a $01$-string $s = s_1 s_2 \\ldots s_n$ if and only if there exists a sequence of vertices $u_0, u_1 \\ldots u_n$ such that $u_0 = v_0$, the edges $\\langle u_{i - 1}, u_{i} \\rangle \\in E_{s_i}$ for all $i = 1, 2, \\ldots, n$, and $u_n \\in F$.</p>\n<p>Define $L = L(G)$ as the minimal non-negative integer such that there exists a string $s$ of length $L$ which $G$ can not recognize. If no such $L$ exists for $G$, we define $L(G) = -1$.</p>\n<p>You are given $n$, and you need to construct an NFA $G = (V, E_0, E_1, v_0, F)$ such that $|V| = n$ and $L(G)$ is large enough. The exact constraints on $n$ and $L(G)$ are at the bottom.</p>",
+  "input": "<p>The first line of input contains an integer $n$.</p>",
+  "output": "<p>Output the NFA $G$ you found.</p>\n<p>Suppose the vertices in $V$ are labeled by integers $0, 1, \\ldots, n - 1$.</p>\n<p>Firstly, output $E_0$ in the following format: The first line contains an integer $e = |E_0|$ ($0 \\le e \\le 1000$). Then $e$ lines follow. The $i$-th of them contains two integers $x_i$ and $y_i$ ($0 \\le x_i, y_i &lt; n$), indicating that there is an edge $\\langle x_i, y_i \\rangle \\in E_0$. Note that $x_i = y_i$ is allowed.</p>\n<p>Secondly, print $E_1$ in the same format as $E_0$.</p>\n<p>Next, print a line with the integer $k$.</p>\n<p>After that, print a line containing $k$ integers $f_1, f_2, \\ldots, f_k$, indicating that $F = \\{f_1, f_2, \\ldots, f_k\\}$.</p>\n<p>The initial vertex $v_0$ is assumed to be $0$.</p>",
+  "samples": [
+    {
+      "input": "3\n",
+      "output": "2\n0 0\n2 2\n4\n0 1\n1 0\n0 2\n2 1\n3\n0 1 2\n"
+    }
+  ],
+  "hint": "<p>This problem has two tests: $n = 6$ and $n = 20$.</p>\n<p>When $n = 6$, your output's $L(G)$ should be strictly greater than $18$.</p>\n<p>When $n = 20$, your output's $L(G)$ should be strictly greater than $400$.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2021, Day 5: 2021 Shanghai ICPC Camp Onsite 2 by PKU",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

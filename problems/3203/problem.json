@@ -1,0 +1,38 @@
+{
+  "id": 3203,
+  "title": "프로그래밍 언어 Z",
+  "time_limit": "2 초",
+  "memory_limit": "128 MB",
+  "description": "<p>프로그래밍 언어 Z에는 변수를 26가지 사용할 수 있다. 이 변수는 모두 알파벳 소문자 (a-z)이고, 초기값은 0이다.</p>\r\n\r\n<p>프로그램이 수행되는 동안 각 변수에는 0보다 크거나 같고, 9999보다 작거나 같은 정수만 저장할 &nbsp;수 있다. 만약, 범위를 넘어가는 값을 변수에 저장하려 한다면, 10,000으로 나눈 나머지를 저장한다.</p>\r\n\r\n<p>프로그램의 각 줄에는 명령어가 하나만 등장하며, 아래 5가지 중 하나이다.</p>\r\n\r\n<table class=\"table table-bordered\" style=\"width:100%\">\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th style=\"width:20%\">BEGIN</th>\r\n\t\t\t<td style=\"width:60%\">프로그램의 가장 첫 줄에 나온다.</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th>=</th>\r\n\t\t\t<td>연산자의 왼쪽에 있는 변수에, 오른쪽에 있는 식의 결과를 저장한다. 식은 하나 또는 그 이상의 덧셈, 뺄셈으로 이루어져 있고, 각 항은 상수 또는 변수이다. 이때, 변수의 앞에 상수가 붙어있을 수도 있고 이때는 그 변수를 상수만큼 곱하면 된다. (a = 2b + 4 - c) 모든 연산자의 앞, 뒤는 공백이다. 상수는 0보다 크거나 같고, 999보다 작거나 같은 정수이다.</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th>REPEAT n</th>\r\n\t\t\t<td>블록의 시작을 나타내며, 그 블록을 n번 반복한다. (1 &lt;= n &lt;= 100,000)</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th>STOP</th>\r\n\t\t\t<td>블록의 끝을 나타낸다.</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th>PRINT var</th>\r\n\t\t\t<td>변수 var에 저장되어 있는 값을 &#39;var = value&#39;와 같은 형태로 출력한다.</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>프로그래밍 언어 Z로 된 프로그램이 주어졌을 때, 화면에 출력되는 내용을 출력하는 프로그램을 작성하시오.</p>\r\n",
+  "input": "<p>입력은 프로그래밍 언어 Z로 되어있는 프로그램이 주어진다. 이 프로그램은 최대 50줄이다. 각 줄에는 명령어가 하나씩 있고, 이 명령은 100자 이내이다. BEGIN&hellip;STOP, REPEAT&hellip;STOP은 공백 3칸씩 인덴트 되어 있다.&nbsp;PRINT는 최대 20번 실행&nbsp;된다.</p>\r\n",
+  "output": "<p>프로그램을 수행하면서 PRINT가 나올 때 마다, 그 결과를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "BEGIN\n   n = 10\n   k = 1\n   REPEAT 3\n      REPEAT 2\n         n = n + k\n         PRINT n\n      STOP\n      k = 3 - k\n   STOP\nSTOP\n",
+      "output": "n = 11\nn = 12\nn = 14\nn = 16\nn = 17\nn = 18\n"
+    },
+    {
+      "input": "BEGIN\n   a = 1\n   b = a\n   PRINT a\n   PRINT b\n   REPEAT 10\n      c = a + b\n      a = b\n      b = c\n      PRINT c\n   STOP\nSTOP\n",
+      "output": "a = 1\nb = 1\nc = 2\nc = 3\nc = 5\nc = 8\nc = 13\nc = 21\nc = 34\nc = 55\nc = 89\nc = 144\n"
+    },
+    {
+      "input": "BEGIN\n   x = 1\n   REPEAT 4\n      REPEAT 99999\n         x = 2x\n      STOP\n      PRINT x\n   STOP\nSTOP\n",
+      "output": "x = 4688\nx = 7344\nx = 8672\nx = 4336\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, Croatian Highschool Competitions in Informatics, 2005, Final Exam #1, baekjoon, doju, sys7961",
+  "level": 23,
+  "tags": [
+    "math",
+    "implementation",
+    "string",
+    "simulation",
+    "parsing",
+    "exponentiation_by_squaring",
+    "linear_algebra"
+  ],
+  "accepted_user_count": 63,
+  "submission_count": null,
+  "average_tries": 6
+}

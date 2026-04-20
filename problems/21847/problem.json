@@ -1,0 +1,35 @@
+{
+  "id": 21847,
+  "title": "From Hacks to Snitches",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>As one can’t make a living from the prizes awarded at computer science competitions, you have decided to get into the art business—or, more precisely, into a certain museum you have chosen for your debut as an art thief. Unfortunately, this museum is guarded quite well: there are $K$ watchmen patrolling the building, each touring on his own simple closed path through the museum.</p>\n<p>To coordinate your operation, you use a map of the area which describes the museum as a set of $M$ corridors connecting $N$ corners, numbered from 1 to $N$. You start at corner 1, whereas your target—a valuable exhibit—is located at corner $N$. Of course, one can reach any corner of the museum from any other corner, but you are not sure whether this is possible <em>without getting noticed</em>, that is, without ever being at the same corner as a watchman and without passing a watchman in a corridor.</p>\n<p>Fortunately, you got your hands on the guard roster. So you know for each watchman where he is located at the beginning and which route he is taking. Each minute, a watchman moves from his current position to the next corner on his route, and you can either stay at your current position or move to an adjacent corner. You observed that <em>no two of the watchmen’s routes intersect</em> and that neither your starting position nor your target is contained in any of them.</p>\n<p>Write a program that uses this information to either calculate the minimum amount of time in minutes you need to safely reach your target<sup>*</sup> without being noticed<sup>†</sup> or to decide that this is impossible.</p>\n<p><sup>*</sup> Once you reach the exhibit, you will open a window and leave the museum by means of the fancy wingsuit you won in your national computer science competition, so there is no need to plan a safe route back.</p>\n<p><sup>†</sup> Of course, you are a gentleman thief who would never lay a finger on the watchmen!</p>",
+  "input": "<p>The first line of input contains the integers $N$ and $M$ described above. The following $M$ lines each contain two integers $u$ and $v$ ($1 \\le u, v \\le N$, $u \\ne v$), meaning that there is a corridor directly connecting corners $u$ and $v$. It is guaranteed that at most one corridor directly connects any two given corners.</p>\n<p>The next line contains the single integer $K$ described above. Then $K$ lines follow; the $i$<sup>th</sup> of these lines contains a sequence of integers, describing the route of the $i$<sup>th</sup> watchman as follows: The first integer $\\ell_i$ gives the number of distinct corners on the route. Then $\\ell_i$ pairwise distinct integers $v_1, \\cdots , v_{\\ell_i}$specify the sequence of corners the watchman passes on his route. More precisely, the watchman starts at corner $v_1$, in one minute he will be at $v_2$, and so on; after $\\ell_i$ minutes he will be at $v_1$ again.</p>",
+  "output": "<p>Your program should output a single line. This should consist of an integer, the minimum amount of time in minutes you need to safely reach your target, or the string <code>impossible</code> if there is no way to achieve this.</p>",
+  "samples": [
+    {
+      "input": "6 6\n1 2\n2 3\n3 4\n4 5\n5 2\n5 6\n1\n4 3 2 5 4\n",
+      "output": "4\n"
+    },
+    {
+      "input": "6 6\n1 2\n2 3\n3 4\n4 5\n5 2\n5 6\n1\n4 4 5 2 3\n",
+      "output": "5\n"
+    },
+    {
+      "input": "11 13\n1 2\n2 3\n3 4\n4 2\n3 5\n5 6\n6 7\n7 5\n6 8\n8 9\n9 10\n10 8\n9 11\n3\n3 4 2 3\n3 7 6 5\n3 10 8 9\n",
+      "output": "impossible\n"
+    }
+  ],
+  "hint": "<p>The following picture corresponds to the situation of the first sample case above:</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"width: 171px; height: 191px;\"/></p>\n<p>Here, the corner where the watchman is located at the beginning is shown in bold and his route is indicated by shoe prints. An optimal route for you would be the following: you wait at your starting location (corner 1) for one minute, and then go to corners 2, 5, and finally 6 without further delay.</p>\n<p>The second sample has the same museum layout, but the starting location and direction of the watchman differ. A possible optimal route: go from 1 to 2, 3, 4, 5, and finally 6.</p>",
+  "source": "Olympiad, Baltic Olympiad in Informatics, BOI 2021",
+  "level": 26,
+  "tags": [
+    "dijkstra",
+    "graphs",
+    "implementation",
+    "shortest_path"
+  ],
+  "accepted_user_count": 9,
+  "submission_count": null,
+  "average_tries": 6.3333001136779785
+}

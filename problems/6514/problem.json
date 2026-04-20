@@ -1,0 +1,26 @@
+{
+  "id": 6514,
+  "title": "Expressions",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Arithmetic expressions are usually written with the operators in\nbetween the\ntwo operands (which is called infix notation). For example, <i>(x+y)*(z-w)</i>\nis an arithmetic expression in infix notation.\nHowever, it is easier to write a program to evaluate an expression if\nthe expression is written in postfix notation (also known as reverse\npolish\nnotation). In postfix notation, an operator is written behind its two\noperands, which may be expressions themselves. For example, <i>x y + z\nw\n- *</i> is a postfix notation of the arithmetic expression\ngiven above. Note that in this case parentheses are not required. </p>\n<p>To evaluate an expression written in postfix notation, an algorithm\noperating on a stack can be used. A stack is a data structure which\nsupports two operations: </p>\n<ol>\n<li>push: a number is inserted at the top of the\nstack.</li>\n<li>pop: the number from the top of the stack is\ntaken out.</li>\n</ol>\n<p>During the evaluation, we process the expression from left to right.\nIf we encounter a number, we push it onto the stack. If we encounter an\noperator, we pop the first two numbers from the stack, apply the\noperator\non them, and push\nthe result back onto the stack. More specifically, the following\npseudocode\nshows how to handle the case when we encounter an operator O: </p>\n<pre>a := pop();\nb := pop();\npush(b O a);</pre>\n<p>The result of the expression will be left as the only number on the\nstack. </p>\n<p>Now imagine that we use a queue instead of the stack. A queue also\nhas a\npush and pop operation, but their meaning is different: </p>\n<ol>\n<li>push: a number is inserted at the end of the\nqueue.</li>\n<li>pop: the number from the front of the queue\nis taken out of the queue.</li>\n</ol>\n<p>Can you rewrite the given expression such that the result of the\nalgorithm\nusing the queue is the same as the result of the original expression\nevaluated\nusing the algorithm with the stack? </p>",
+  "input": "<p>The first line of the input contains a number T (<i>T\n≤ 200</i>). The following T\nlines each\ncontain one expression in postfix notation. Arithmetic operators are\nrepresented by uppercase letters, numbers are represented by lowercase\nletters.\nYou may assume that the length of each expression is less than <i>10000</i>\ncharacters. </p>",
+  "output": "<p>For each given expression, print the expression with the equivalent\nresult\nwhen using the algorithm with the queue instead of the stack. To make\nthe\nsolution unique, you are not allowed to assume that the operators are\nassociative or commutative. </p>",
+  "samples": [
+    {
+      "input": "2\nxyPzwIM\nabcABdefgCDEF\n",
+      "output": "wzyxIPM\ngfCecbDdAaEBF\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, University of Ulm Local Contest, University of Ulm Local Contest 2007",
+  "level": 11,
+  "tags": [
+    "data_structures",
+    "stack",
+    "queue"
+  ],
+  "accepted_user_count": 14,
+  "submission_count": null,
+  "average_tries": 1.9285999536514282
+}

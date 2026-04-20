@@ -1,0 +1,28 @@
+{
+  "id": 24971,
+  "title": "262144 Revisited",
+  "time_limit": "2 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Bessie likes downloading games to play on her cell phone, even though she does find the small touch screen rather cumbersome to use with her large hooves.</p>\n<p>She is particularly intrigued by the current game she is playing. The game starts with a sequence of $N$ positive integers $a_1,a_2,\\ldots,a_N$ ($2\\le N\\le 262,144$), each in the range $1\\ldots 10^6$. In one move, Bessie can take two adjacent numbers and replace them with a single number equal to one greater than the maximum of the two (e.g., she might replace an adjacent pair $(5,7)$ with an $8$). The game ends after $N-1$ moves, at which point only a single number remains. The goal is to <em>minimize</em> this final number.</p>\n<p>Bessie knows that this game is too easy for you. So your job is not just to play the game optimally on $a$, but for every contiguous subsequence of $a$.</p>\n<p>Output the sum of the minimum possible final numbers over all $\\frac{N(N+1)}{2}$ contiguous subsequences of $a$.</p>",
+  "input": "<p>First line contains $N$.</p>\n<p>The next line contains $N$ space-separated integers denoting the input sequence.</p>",
+  "output": "<p>A single line containing the sum.</p>",
+  "samples": [
+    {
+      "input": "6\n1 3 1 2 1 10\n",
+      "output": "115\n"
+    }
+  ],
+  "hint": "<p>There are $\\frac{6\\cdot 7}{2}=21$ contiguous subsequences in total. For example, the minimum possible final number for the contiguous subsequence $[1,3,1,2,1]$ is $5$, which can be obtained via the following sequence of operations:</p>\n<pre>\noriginal    -&gt; [1,3,1,2,1]\ncombine 1&amp;3 -&gt; [4,1,2,1]\ncombine 2&amp;1 -&gt; [4,1,3]\ncombine 1&amp;3 -&gt; [4,4]\ncombine 4&amp;4 -&gt; [5]\n</pre>\n<p>Here are the minimum possible final numbers for each contiguous subsequence:</p>\n<pre>\nfinal(1:1) = 1\nfinal(1:2) = 4\nfinal(1:3) = 5\nfinal(1:4) = 5\nfinal(1:5) = 5\nfinal(1:6) = 11\nfinal(2:2) = 3\nfinal(2:3) = 4\nfinal(2:4) = 4\nfinal(2:5) = 5\nfinal(2:6) = 11\nfinal(3:3) = 1\nfinal(3:4) = 3\nfinal(3:5) = 4\nfinal(3:6) = 11\nfinal(4:4) = 2\nfinal(4:5) = 3\nfinal(4:6) = 11\nfinal(5:5) = 1\nfinal(5:6) = 11\nfinal(6:6) = 10\n</pre>",
+  "source": "Olympiad, USA Computing Olympiad, 2021-2022 Season, USACO 2022 US Open Contest, Platinum",
+  "level": 25,
+  "tags": [
+    "data_structures",
+    "trees",
+    "divide_and_conquer",
+    "linked_list",
+    "cartesian_tree"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 1.166700005531311
+}

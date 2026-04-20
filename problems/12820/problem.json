@@ -1,0 +1,27 @@
+{
+  "id": 12820,
+  "title": "Cubic Art",
+  "time_limit": "1 초",
+  "memory_limit": "1024 MB",
+  "description": "<p>Modern art is unpredictable. When Bob was tidying his room he found his old Rubik’s cube. Then the moment came. He closed his eyes, listened to his inner voice, made a few moves (up to 65 000) and the masterpiece was nearly complete. But the final state was not to his liking. He realized he did some of the moves incorrectly. If only he could go back in time and change them!</p>\n<p>All he now needs to do is a few changes (again, up to 65 000 of them). Each of the changes consists of replacing one move with some other move. Bob would like to see what each change does. But it is annoying to repeat the entire sequence of moves again and again.</p>\n<p>You are given the initial state of Bob’s Rubik’s cube. (The cube is not necessarily solved in its initial state.) You are also given the original sequence of moves Bob performed.</p>\n<p>Finally, you are given a sequence of changes. Each change is of the form “change the k-th move into this new move”. For each change, output the state of the cube at the end of the entire sequence of moves.</p>\n<p>Note that the changes are permanent – for example, the second change should be applied to the sequence of moves with the first change, not to the original sequence.</p>",
+  "input": "<p>Cube’s I/O</p>\n<p>Let the cube’s colors be A,B,C,D,E,F. When you are playing with the cube, the middle squares of its faces do not move. Therefore, we will always use A as the color of the center of the top face, B, C, D, E as the centers of the side faces (in order), and F as the center of the bottom face. The surface of the cube can then be unfolded into the following form:</p>\n<pre>\n???\n?A?\n???\n????????????\n?B??C??D??E?\n????????????\n???\n?F?\n???</pre>\n<p>First 9 lines of the input contain the description of the starting state of the cube. The description is given in the above form. You may assume that the centers of the six faces are labeled as shown above.</p>\n<p>Then there is a line with two integers n and m: n is the number of moves and m is number of subsequent changes.</p>\n<p>Next n lines are describing Bob’s original moves. They have the form “C<sub>i</sub> d<sub>i</sub>”, where C<sub>i</sub> is the color of the center of the rotated side and d<sub>i</sub> is −1 in case of a clockwise move and 1 in case of a counterclockwise move.</p>\n<p>The last m lines describe the changes, in order. Each one has the form “a<sub>j</sub> C<sub>j</sub> d<sub>j</sub>”, where a<sub>j</sub> is the (1-based) index of the move that is being replaced and C<sub>j</sub> d<sub>j</sub> describes the new move.</p>\n<p>In all test cases, n, m ≤ 65 000. </p>",
+  "output": "<p>Let S<sub>i</sub> be the sequence of moves obtained from the initial sequence by applying the first i changes. For each i between 1 and m, inclusive, output 9 lines: the final state of the cube obtained by starting in the initial configuration and performing the sequence of moves S<sub>i</sub>. Use the same format as in the input.</p>",
+  "samples": [
+    {
+      "input": "AAA\nAAA\nAAA\nBBBCCCDDDEEE\nBBBCCCDDDEEE\nBBBCCCDDDEEE\nFFF\nFFF\nFFF\n8 4\nE 1\nE -1\nF 1\nF -1\nB 1\nB -1\nE 1\nE -1\n8 C -1\n2 C -1\n6 D -1\n4 A -1\n",
+      "output": "BAB\nBAB\nBAB\nFBFCCCADAEEE\nFBFCCCADAEEE\nFBFCCCADAEEE\nDFD\nDFD\nDFD\nFAF\nFAF\nFAF\nDBDCCCBDBEEE\nDBDCCCBDBEEE\nDBDCCCBDBEEE\nAFA\nAFA\nAFA\nFCF\nBAB\nFCF\nEFEDFDCACBAB\nDBDCCCBDBEEE\nEFEDFDCACBAB\nAEA\nDFD\nAEA\nCCC\nCAC\nCCC\nFFFDDDAAABBB\nFBFDCDADABEB\nFFFDDDAAABBB\nEEE\nEFE\nEEE\n"
+    }
+  ],
+  "hint": "<p>The original moves cancel each other out. At the end of the original sequence of moves, the cube is back in its initial state.</p>\n<p>After we make the four changes described in the input, we obtain a sequence of moves that flips everything except for the centers of all sides.</p>",
+  "source": "Camp, Visegrad Programming Contests Preparation Camp, VPCPC 2014",
+  "level": 20,
+  "tags": [
+    "ad_hoc",
+    "data_structures",
+    "implementation",
+    "segtree"
+  ],
+  "accepted_user_count": 5,
+  "submission_count": null,
+  "average_tries": 1.399999976158142
+}

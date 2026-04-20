@@ -1,0 +1,42 @@
+{
+  "id": 16813,
+  "title": "Live Programming",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A famous Japanese idol group, JAG48, is planning the program for its next live performance. They have $N$ different songs, $\\mathit{song}_1$, $\\mathit{song}_2$, ..., and $\\mathit{song}_N$. Each song has three integer parameters, $t_i$, $p_i$, and $f_i$: $t_i$ denotes the length of $\\mathit{song}_i$, $p_i$ denotes the basic satisfaction points the audience will get when $\\mathit{song}_i$ is performed, and $f_i$ denotes the feature value of $\\mathit{song}_i$ that affects the audience's satisfaction. During the live performance, JAG48 can perform any number (but at least one) of the $N$ songs, unless the total length of the chosen songs exceeds the length of the live performance $T$. They can decide the order of the songs to perform, but they cannot perform the same song twice or more.</p>\n<p>The goal of this live performance is to maximize the total satisfaction points that the audience will get. In addition to the basic satisfaction points of each song, the difference between the feature values of the two songs that are performed consecutively affects the total satisfaction points. If there is no difference, the audience will feel comfortable. However, the larger the difference will be, the more frustrated the audience will be.</p>\n<p>Thus, the total satisfaction points will be calculated as follows:</p>\n<ul>\n<li>If $\\mathit{song}_x$ is the first song of the live performance, the total satisfaction points just after $\\mathit{song}_x$ is equal to $p_x$.</li>\n<li>If $\\mathit{song}_x$ is the second or subsequent song of the live performance and is performed just after $\\mathit{song}_y$, $p_x - (f_x - f_y)^2$ is added to the total satisfaction points, because the audience will get frustrated if $f_x$ and $f_y$ are different.</li>\n</ul>\n<p>Help JAG48 find a program with the maximum total satisfaction points.</p>",
+  "input": "<p>The input is formatted as follows.</p>\n<pre class=\"mathjax\">$N$ $T$<br/>\n$t_1$ $p_1$ $f_1$<br/>\n$\\ldots$<br/>\n$t_N$ $p_N$ $f_N$</pre>\n<p>The first line contains two integers $N$ and $T$: the number of the available songs $N$ ($1 \\le N \\le 4{,}000$), and the length of the live performance $T$ ($1 \\le T \\le 4{,}000$).</p>\n<p>The following $N$ lines represent the parameters of the songs. The $i$-th line of them contains three integers, which are the parameters of $\\mathit{song}_i$: the length $t_i$ ($1 \\le t_i \\le 4{,}000$), the basic satisfaction points $p_i$ ($1 \\le p_i \\le 10^8$), and the feature value $f_i$ ($1 \\le f_i \\le 10^4$).</p>\n<p>You can assume that there is at least one song whose length is less than or equal to $T$.</p>",
+  "output": "<p>Output the maximum total satisfaction points that the audience can get during the live performance.</p>",
+  "samples": [
+    {
+      "input": "2 10\n10 200 1\n10 100 100\n",
+      "output": "200\n"
+    },
+    {
+      "input": "3 15\n5 100 1\n5 100 2\n5 100 4\n",
+      "output": "295\n"
+    },
+    {
+      "input": "3 10\n5 200 200\n5 200 201\n5 300 1\n",
+      "output": "399\n"
+    },
+    {
+      "input": "3 20\n5 100 200\n5 100 201\n5 300 1\n",
+      "output": "300\n"
+    },
+    {
+      "input": "5 61\n14 49 7\n31 46 4\n30 55 5\n52 99 1\n34 70 3\n",
+      "output": "103\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2015 Day 4",
+  "level": 22,
+  "tags": [
+    "cht",
+    "dp",
+    "knapsack"
+  ],
+  "accepted_user_count": 22,
+  "submission_count": null,
+  "average_tries": 1.9544999599456787
+}

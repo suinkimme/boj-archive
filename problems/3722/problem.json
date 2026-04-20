@@ -1,0 +1,27 @@
+{
+  "id": 3722,
+  "title": "Term Generator",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>A formula has the syntax shown in figure 1(a). If a formula has the particular syntax given in figure 1(b) we say that the formula is in Normal Form (NF).</p>\n<pre>\n&lt;formula&gt;::= &lt;variable&gt; | (+&lt;formulae&gt;) | (*&lt;formulae&gt;)\n&lt;variable&gt;::= a lower case letter from the English alphabet\n&lt;formulae&gt;::= &lt;formula&gt; | &lt;formula&gt;&lt;formulae&gt;</pre>\n<p>Figure 1. Formular syntax, Figure 1(a) The general syntax of a formula</p>\n<pre>\n&lt;NF_formula&gt;::= &lt;term&gt; | (+&lt;terms&gt;)\n&lt;term&gt;::= &lt;variable&gt; | (*&lt;variables&gt;)\n&lt;terms&gt;::= &lt;term&gt;&lt;term&gt; | &lt;term&gt;&lt;terms&gt;\n&lt;variables&gt;::= &lt;variable&gt;&lt;variable&gt; | &lt;variable&gt;&lt;variables&gt;</pre>\n<p>Figure 1. Formular syntax, Figure 1(b) The syntax of a NF formula</p>\n<p>A formula is converted to NF according to the rewriting rules given below, where F represents a formula, S stands for a non empty sequence of formulae, and s and s' denote possibly empty sequences of formulae. Applying a rewriting rule q→r on a formula F means to substitute by r a part of F that matches the pattern q, as shown in figure 2. The conversion terminates when no rewriting rule can be applied. The conversion terminates for any formula, and the result is unique regardless which rules are applied on which parts of the formula and in which order.</p>\n<ol>\n<li>(+F)→F</li>\n<li>(*F)→F</li>\n<li>(+s(+S)s')→(+sSs')</li>\n<li>(*s(*S)s')→(*sSs')</li>\n<li>(*s(+FS)s')→(+(*sFs')(*s(+S)s'))</li>\n</ol>\n<pre>\n(+(*(+(*ab)(+a))b)) -1-&gt;\n(+(*(+(*ab)a)b)) -5-&gt;\n(+(+(*(*ab)b)(*(+a) b))) -1-&gt;\n(+(+(*(*ab)b)(*ab))) -4-&gt;\n(+(+(*abb)(*ab))) -1-&gt;\n(+(*abb)(*ab))</pre>\n<p>Figure 2. Converting a formula to NF</p>\n<p>Let NF(F) be the normal form of the formula F. The problem is to write a term generator that for a given formula F and a number k outputs the next k terms from NF(F) in the order in which they appear in NF(F). If the terms are exhausted, the generator continues from the first term of NF(F). For example, consider F=(+(*(+(*ab)(+a))b)), and NF(F)=(+(*abb)(*ab)) as in figure 2. Generating the first term from NF(F) yields (*abb). Generating two more terms produces (*ab), (*abb). Notice that if NF(F) contains similar terms, as in the last example in figure 3, these terms are considered distinct.</p>\n<p>Write a term generator that reads sets of data from the standard input.</p>",
+  "input": "<p>The content of a data set is F k<sub>1</sub>...k<sub>n</sub> 0, n&gt;0, where F is a formula, and k<sub>1</sub>...k<sub>n</sub> are long integers different than 0.</p>\n<p>White spaces are used freely in the input.</p>\n<p>Each formula F in the input has at most 150 characters and each term of NF(F) is at most 80 characters long, not counting white spaces.</p>\n<p>The input data terminate with an end of file, and are correct.</p>",
+  "output": "<p>For each k<sub>i</sub>, i=1, n, the program generates the next |k<sub>i</sub>| terms from NF(F) and, if k<sub>i</sub> &gt; 0, prints these terms on the standard output.</p>\n<p>Each printed term starts from the beginning of a line and there are no white spaces between the characters of the term.</p>\n<p>The generated terms are not printed if k<sub>i</sub> &lt; 0.</p>",
+  "samples": [
+    {
+      "input": "(+(*(+(*ab)(+a))b))\n-3 1 1 0\n(+xyy) -2 1 0\n",
+      "output": "(*ab)\n(*abb)\ny\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Southeastern European Regional Contest, SEERC 2011, bupjae",
+  "level": 20,
+  "tags": [
+    "implementation",
+    "string",
+    "parsing",
+    "recursion"
+  ],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,25 @@
+{
+  "id": 6645,
+  "title": "Stock Exchange",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>All stock exchanges in the world have been hit very hardly by the crisis. To keep their profit, they now try to cut down all expenses. Prague Stock Exchange would like to employ new computer software to run their operations.</p>\n<p>Will you help them to develop such a system? Your task is to detect all pairs of buyers and sellers that are able to make a deal together.</p>",
+  "input": "<p>The input contains a description of several issuers.1 Each of them begins with a line containing an integer N, one space, and a code of the stock issuer. After the first one, there are N other lines, each representing one bid. A bid consists of an agent name, one space character, a word specifying the bid type in lowercase letters (either “buy” or “sell”) another space character, and a price given as a decimal number with exactly three digits after the decimal point. All buy bids always specify the maximal price, sell bids list the minimal price for which the agent wants to sell the stocks.</p>\n<p>Every issuer code consist of 1–10 uppercase letters (“A”–“Z”). Agent names have at least 1 and at most 20 characters and may be composed of both lowercase and uppercase letters. For one issuer, all agent names are always unique, but the same agents may post bids for several issuers. The number of bids (N) will never exceed 1000. No price will be higher than 10 000.</p>\n<p>The last line of the input contains the string “0 END”.</p>",
+  "output": "<p>For each issuer, print its code on a separate line. Then, for each agent’s bid (in the same order they were given in the input), output the name of the agent, a colon (“:”), one space, and a list of all agents that are potential counter-parties for the issuer in concern, i.e., one of them wants to buy, the other to sell and the selling price is less or equal to the buying price.</p>\n<p>The agent names must be separated by a space and listed in the same order that was used in the input for that issuer. If there is no matching bid, output the string “NO-ONE” instead.</p>",
+  "samples": [
+    {
+      "input": "3 IBM\nOneBuyer buy 10.600\nTooExpensive sell 12.000\nThisWillWork sell 10.600\n4 ACM\none sell 129.999\ntwo buy 130.000\nthree buy 131.000\nfour sell 129.888\n4 CVUT\nseller sell 121.110\ntoopoor buy 121.109\nsellertwo sell 121.111\niamok buy 121.112\n0 END\n",
+      "output": "IBM\nOneBuyer: ThisWillWork\nTooExpensive: NO-ONE\nThisWillWork: OneBuyer\nACM\none: two three\ntwo: one four\nthree: one four\nfour: two three\nCVUT\nseller: iamok\ntoopoor: NO-ONE\nsellertwo: iamok\niamok: seller sellertwo\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2008",
+  "level": 5,
+  "tags": [
+    "implementation",
+    "string"
+  ],
+  "accepted_user_count": 81,
+  "submission_count": null,
+  "average_tries": 1.2592999935150146
+}

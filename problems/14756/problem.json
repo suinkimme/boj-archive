@@ -1,0 +1,29 @@
+{
+  "id": 14756,
+  "title": "Telescope",
+  "time_limit": "1 초",
+  "memory_limit": "512 MB",
+  "description": "<p>A company named ICPC (Interstellar Cosmology Progress Corporation) is working on a new telescope. It receives optical signals with an m × l grid of sensors. Each sensor detects the color and the intensity of light it receives. Then it filters noises and multiplies the intensity of light by some constant. All the lights sensors received are then merged on a rectangular film. ICPC believes that this telescope can easily beat current optical or radar telescopes because traditional noises are filtered.</p>\n<p>However, an engineer found a critical flaw in design. The film can withstand the light with intensity up to W. If it is exposed to the light with intensity greater than W, the telescope may break down.</p>\n<p>Consider what will happen in practice.</p>\n<ol>\n<li>The telescope is on one spot in the sky and as time goes on, it moves to the right. Or, it scans the sky from left to right.</li>\n<li>The telescope is considered as an m × l grid. The sensor at cell (i, j) of the telescope (1 ≤ i ≤ m, 1 ≤ j ≤ l) amplifies the light it receives by P(i, j) where 0 ≤ P(i, j) ≤ 100.</li>\n<li>The path where the telescope scans in the sky is an m × n grid. T(i, j) is the intensity of light at cell (i, j) of the path (1 ≤ i ≤ m, 1 ≤ j ≤ n).</li>\n<li>Initially, the telescope is at position 1 of the path: that is, the sensor at cell (i, j) (1 ≤ i ≤ m, 1 ≤ j ≤ l) of the telescope is aligned with cell (i, j) of the path. Note that one cell of the path is covered by exactly one cell of the telescope.</li>\n<li>In k minutes, the telescope is at position k + 1 : the sensor at cell (i, j) of the telescope is aligned with cell (i, j + k) of the path.</li>\n<li>The intensity of light at position k + 1 is W<sub>k</sub> = ∑ ∑ T(i, j + k)P(i, j). If W<sub>k</sub> &gt; W, then the telescope may break down. Note that the last position of the telescope is n - l + 1.</li>\n</ol>\n<p>Consider the following example. The path is a 3 × 5 grid, the telescope is a 3 × 3 grid, and W = 20. Each T(i, j) is written on the left upper side of the grid and each P(i, j) is written on the lower right side of the grid. At position 1, the intensity of light is 1 × 1 + 4 × 1 + 11 × 1 = 16 &lt; W. At position 2, it is 3 × 1 + 3 × 1 + 3 × 1 = 9 &lt; W. You can see that it is smaller than W at position 3 too.</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:172px; width:648px\"/></p>\n<p style=\"text-align: center;\">Figure L.1: An example of a telescope moving the path from left to right. (left) The telescope is at position 1 of the path. (right) Now the telescope moved to position 2.</p>\n<p>Now you want to know how many times the telescope receives light with intensity greater than W, given the information on the sky and the telescope.</p>",
+  "input": "<p>Your program is to read from standard input. The input starts with a line containing three integers, n (l ≤ n ≤ 10,000), l (2 ≤ l ≤ 3,000), m (2 ≤ m ≤ 100), and W (0 ≤ W ≤ 10<sup>4 </sup>lm), where n is the number of columns in the path, l is the number of columns in the telescope, m is that of rows, and W is the threshold defined above. In the following m lines, information on each row of the path is given line by line. That is, T(i, j) is the jth number of line i + 1. Also, 0 ≤ T(i, j) ≤ 100. In the following m lines, information on each row of the sensors is given line by line. That is, P(i, j) is the jth number of line i + m + 1.</p>",
+  "output": "<p>Your program is to write to standard output. Print exactly one line for the input. The line should contain the number of times when the intensity of light on the film is greater than W.</p>",
+  "samples": [
+    {
+      "input": "4 2 2 40\n1 2 3 4\n1 0 0 0\n10 10\n10 10\n",
+      "output": "2\n"
+    },
+    {
+      "input": "5 3 2 20\n1 3 5 7 9\n2 4 3 5 2\n1 0 0\n0 1 0\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Korea, Nationwide Internet Competition, Daejeon Nationalwide Internet Competition 2017, gumgood",
+  "level": 21,
+  "tags": [
+    "math",
+    "fft"
+  ],
+  "accepted_user_count": 197,
+  "submission_count": null,
+  "average_tries": 3.989799976348877
+}

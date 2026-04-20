@@ -1,0 +1,33 @@
+{
+  "id": 17165,
+  "title": "Gosu",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Ho is an expert in martial arts called <em>Taebo</em>. She runs a Taebo school, and there are $N$ students in her school. Since Ho is too old to teach Taebo, she is going to hand over her school to one of her students. To find a suitable candidate, Ho made all $\\frac{N(N-1)}{2}$ pairs of students do a Taebo matchup with each other. In a Taebo matchup, exactly one person wins the match, and another person loses the match. Ho thinks that a student is good enough to receive her school if the student is a <strong>Gosu</strong> of Taebo.</p>\n<p><strong>Gosu</strong> is a Korean word which means a person who is very good at games, sports, competitive programming, etc. In Taebo, Gosu has a different meaning. </p>\n<p>Let's define a <strong>winning path</strong> from player $x$ to player $y$ as a sequence of $K+1$ integers $a_0 = x,\\ a_1,\\ \\cdots ,\\ a_K = y$, where student $a_i$ has won student $a_{i+1}$ for all $0 \\le i &lt; K$. We call $K$ as the <strong>length </strong>of this winning path. For example, if there exists a <strong>winning path</strong> of length 1, we can immediately know that $x$ has won student $y$. If there exists a winning path of length 2, then $x$ may not have won $y$ directly, but there exists some other player $z$ that $x$ has won, and has won $y$.</p>\n<p>The <strong>distance</strong> $d(x,\\ y)$ is defined as a minimum length of winning path from $x$ to $y$, if such exists. There could be a case that $x$ can not find a winning path to $y$. In that case, we define $d(x,\\ y) = 9000$. Note that, the path can have zero length, thus $d(i,\\ i)$ is always $0$. </p>\n<p>Ho wants her student to be strong to all kind of opponents, so she defines the <strong>weakness</strong> of student $i$, as a maximum value among $d(i,\\ 1),\\ d(i,\\ 2),\\ \\cdots,\\ d(i,\\ N)$. A student $i$ is a <strong>Gosu</strong> in Taebo when the weakness of student $i$ is minimum among all weakness values. By this definition, there can be multiple Gosu-s.</p>\n<p>Since Ho is too old to tell who is Gosu, your task is to find a Gosu and weakness value of Gosu to help Ho. If there exist multiple Gosu-s, you can print any of them.  </p>",
+  "input": "<p>In the first line, the number of students $N$ is given.</p>\n<p>In the $i$-th line of next $N$ lines, a string $s_i$ consists of <kbd>W</kbd>, <kbd>L</kbd>, and <kbd>-</kbd>. Let's denote $j$-th character of $s_i$ as $s_{i,j}$. $s_{i,j}$ is given as follows:</p>\n<ul>\n<li>$s_{i,j}=$ <kbd>-</kbd>, if $i=j$.</li>\n<li>$s_{i,j}=$ <kbd>W</kbd>, if student $i$ won student $j$.</li>\n<li>$s_{i,j}=$ <kbd>L</kbd>, if student $j$ won student $i$.</li>\n</ul>",
+  "output": "<p>Print two space-separated integers, <s>u and d</s> ${\\color{red}d}$ <span style=\"color:#e74c3c;\">and</span> ${\\color{red}u}$, where student $u$ is Gosu, and $d$ is weakness of student $u$.</p>\n<p>If there are multiple answers, you can print any of them.</p>",
+  "samples": [
+    {
+      "input": "2\n-W\nL-",
+      "output": "1 1"
+    },
+    {
+      "input": "3\n-LW\nW-L\nLW-",
+      "output": "2 1"
+    },
+    {
+      "input": "5\n-WLLW\nL-LLW\nWW-LL\nWWW-W\nLLWL-",
+      "output": "1 4"
+    }
+  ],
+  "hint": null,
+  "source": "University, KAIST, KAIST RUN Spring Contest, 2019 KAIST RUN Spring Contest, ainta",
+  "level": 20,
+  "tags": [
+    "graphs",
+    "ad_hoc"
+  ],
+  "accepted_user_count": 111,
+  "submission_count": null,
+  "average_tries": 2.8197999000549316
+}

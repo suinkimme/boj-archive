@@ -1,0 +1,25 @@
+{
+  "id": 9144,
+  "title": "Gnome",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Jednou z nejméně příjemných věcí v životě policisty během občanských nepokojů je čekání. Představte si několik hodin strávených v dešti čekáním na to, kterým směrem se pohne rozlícený dav. Svým způsobem je to horší než v čekárně u zubaře, kde obvykle alespoň neprší. Proto vedení Policie rozhodlo, že všechny policisty vybaví vodovzdorným herním automatem, který bude simulovat jednu z variant legendární hry Gnome, tzv. <em>Same-Gnome</em>.</p>\n<p>Vaším úkolem je napsat simulátor stejnojmenné hry, který by byl dostatečně jednoduchý, aby mohl být implementován v přenosné verzi počítače PMD-85 (takzvaný <em>PMD-Pilot</em>). Pravidla jsou poměrně jednoduchá. Hrací pole se skládá z <var>N x M</var> políček, na každém políčku je umístěn právě jeden kámen určité barvy. Cílem hry je odstranit co nejvíce kamenů a především získat přitom co nejvíce bodů. Pravidla pro odstraňování kamenů jsou následující:</p>\n<ul>\n<li>Lze odstranit pouze takový kámen, který sousedí s alespoň jedním kamenem stejné barvy (sousední kameny jsou nahoře, dole, vlevo a vpravo, ale ne šikmo).</li>\n<li>Při odstranění kamene je současně odstraněna celá souvislá oblast sousedních kamenů stejné barvy.</li>\n<li>Hrací pole se nachází v gravitačním poli, tzn. po odstranění kamenů propadnou výše umístěné kameny dolů, takže zaplní vzniklý prázdný prostor.</li>\n<li>Pokud po odstranění kamenů a případném propadnutí výše položených kamenů vzniknou prázdné sloupce, jsou sloupce napravo posunuty doleva tak, aby prazdné sloupce zanikly.</li>\n<li>Jestliže je v rámci jednoho tahu odstraněno <var>K</var> kamenů, získá hráč (<var>K</var>-2)<sup>2</sup> bodů.</li>\n<li>Pokud jsou během hry odstraněny popsaným způsobem všechny kameny, získá hráč dodatečnou prémii ve výši 1000 bodů.</li>\n</ul>",
+  "input": "<p>První řádek vstupního souboru obsahuje celé kladné číslo <var>Z</var>, za kterým následuje postupně <var>Z</var>zadání. Každé zadání začíná řádkem obsahujícím dvě celá čísla <var>C</var> a <var>R</var> (1 &lt;= <var>R</var>&lt;150, 1 &lt;=<var>C</var>&lt;300) oddělená mezerou, která udávají počet sloupců a řádků hracího pole. Poté následuje<var>R</var> řádků popisujících postupně řádky hracího pole shora dolů. Na každém z těchto řádků je právě <var>C</var> písmen velké abecedy, tedy znaků od <code>A</code> do <code>Z</code>, které udávají různé barvy kamenů na daném řádku postupně zleva doprava.</p>\n<p>Za popisem hracího pole následuje seznam tahů, které hráč provedl, tedy souřadnice kamenů, které mají být odstraněny. Nejprve je na samostatném řádku uveden počet tahů <var>M</var>. Poté následuje <var>M</var> řádků, z nichž každý obsahuje dvě celá čísla <var>I</var> a <var>J</var> oddělená mezerou. <var>I</var> (1 &lt;= <var>I</var>&lt;= <var>C</var>) určuje číslo sloupce vybraného kamene zleva počínaje od jedné, <var>J</var> (1 &lt;= <var>J</var> &lt;= <var>R</var>) číslo řádku zespoda počínaje také od jedné.</p>",
+  "output": "<p>Vaším úkolem je simulovat celou hru a odstraňovat souvislé oblasti kamenů stejné barvy podle sekvence zadané na vstupu. Pokud na dané pozici není žádný kámen nebo pokud nelze vybraný kámen odstranit, tah ignorujte a pokračujte dalším v řadě. Pro každé zadání musí program vypsat tento text: </p>\n<pre>\n\"<code>Game over! \nScore dosazene v teto hre je </code><var>S</var><code> bodu. \nByli bychom radi, kdybyste si zahrali jeste jednou. \nPrejete si hrat znovu? \nPrijemnou zabavu Vam preje firma ACMTENDO.</code>\", </pre>\n<p>kde <var>S</var> je počet bodů získaný podle uvedených pravidel. Každá věta je na samostatném řádku.</p>",
+  "samples": [
+    {
+      "input": "2\n3 2\nGZZ\nZZG\n2\n2 1\n2 1\n6 3\nABABAB\nBABABA\nABABAA\n11\n6 1\n5 1\n4 1\n3 1\n2 1\n1 1\n2 1\n3 1\n4 1\n5 1\n6 1\n",
+      "output": "Game over!\nScore dosazene v teto hre je 1004 bodu.\nByli bychom radi, kdybyste si zahrali jeste jednou.\nPrejete si hrat znovu?\nPrijemnou zabavu Vam preje firma ACMTENDO.\nGame over!\nScore dosazene v teto hre je 5 bodu.\nByli bychom radi, kdybyste si zahrali jeste jednou.\nPrejete si hrat znovu?\nPrijemnou zabavu Vam preje firma ACMTENDO.\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CTU Open Contest, CTU Open Contest 2000",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "simulation"
+  ],
+  "accepted_user_count": 4,
+  "submission_count": null,
+  "average_tries": 3.75
+}

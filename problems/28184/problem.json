@@ -1,0 +1,26 @@
+{
+  "id": 28184,
+  "title": "Good and Lucky Matrices",
+  "time_limit": "2 초",
+  "memory_limit": "1024 MB",
+  "description": "<p><em>This is a run-twice problem: your solution will be executed twice on each test. See the rest of the statement and the input format section for more details.</em></p>\n<p>A square binary matrix is <em>good</em> if and only if it has an odd determinant.</p>\n<p>A binary matrix of size $n \\times n$ is <em>lucky</em> if and only if the greedy matching algorithm described below successfully finds a matching of size $n$. The algorithm reads the matrix line-by-line, from top to bottom. On each line, if there is a $1$ in a column that was never chosen before, the algorithm greedily chooses the leftmost such column.</p>\n<p>Your task is to compare numbers of good and lucky matrices of size $n \\times n$. In order to do that, you have to produce a bijection between the smaller set and an equinumerous subset of the larger set.</p>",
+  "input": "<p>On each run, the first line contains an integer $t$: the number of test cases. The test cases follow.</p>\n<p>The first line of each test case contains a string \"<code>good</code>\" or \"<code>lucky</code>\" denoting the type of matrix.</p>\n<p>The next line contains a single integer $n$ ($1 \\leq n \\leq 2000$): the size of the matrix.</p>\n<p>Then follow $n$ lines: $i$-th of them contains a binary string of length exactly $n$ denoting the $i$-th row of the matrix.</p>\n<p>The matrices given to your program on the second run will be the exactly the same as the matrices printed by your program on the first run, in the same order.</p>\n<p>In is guaranteed that the sum of $n$ over all test cases does not exceed $2000$.</p>",
+  "output": "<p>On each run, you have to print $t$ answers. Each answer should be either a single integer $-1$ printed on a separate line or a matrix of the opposite type formatted similarly to the input: a line with size $n$ followed by $n$ lines describing the rows.</p>\n<p>The mapping produced by your program should be a bijection. In other words, all the matrices printed on the second run should correspond to preimage of the corresponding matrix on the first run. Additionally, the number of $-1$ should be not greater than the difference in the sizes of the sets.</p>\n<p>Formally, if on the first run your answer for matrix $A$ of some type was matrix $B$, and on the second run your answer for matrix $B$ of the opposite type was matrix $C$, then $A = C$ must hold. Additionally, for each $n$ and each matrix type, let $U$ be the set of all $n \\times n$ matrices of this type, and $V$ the set of $n \\times n$ matrices of the other type. Then you can answer $-1$ for at most $\\max (\\lvert U \\rvert - \\lvert V \\rvert, 0)$ different matrices from $U$.</p>",
+  "samples": [
+    {
+      "input": "3\nlucky\n2\n11\n11\ngood\n2\n11\n01\nlucky\n2\n01\n10\n",
+      "output": "2\n11\n10\n2\n11\n01\n2\n01\n10\n"
+    },
+    {
+      "input": "3\ngood\n2\n11\n10\nlucky\n2\n11\n01\ngood\n2\n01\n10\n",
+      "output": "2\n11\n11\n2\n11\n01\n2\n01\n10\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2023, Day 5: LOUD Enough Contest 2",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 1.5
+}

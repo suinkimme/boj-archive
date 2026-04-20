@@ -1,0 +1,22 @@
+{
+  "id": 22545,
+  "title": "Immortal Jewels",
+  "time_limit": "8 초 (추가 시간 없음)",
+  "memory_limit": "512 MB",
+  "description": "<p>ある時ある貴族が，ある貧乏な国のおてんばで勇敢なお姫様に惚れ込み結婚を申し込んだ．お姫様は貴族にある条件を出した．その条件とは「不死の宝石」と呼ばれている宝石を大量に持ってくることであった．不死の宝石は，ある山の特定の場所でしか取ることができない非常に希少な宝石である．しかも大変壊れやすいため，採取するには特別な方法が必要だった．</p>\n<p>不死の宝石は円形をしており，二次元空間上に複数存在している．この宝石を取るには，ある特別な金属の棒でそれらを吸着する必要がある．金属の棒は無限の長さを持つ直線であり，太さは無視することができる．宝石は一つ一つ異なる強さの磁力を持っており，金属がその磁力に反応するほど十分に近ければ宝石は吸着される．具体的には，金属と宝石の表面との距離を <i>d</i> ，宝石の磁力の強さを <i>m</i> としたとき，</p>\n<blockquote>0 ≤ <i>d</i> ≤ <i>m</i></blockquote>\n<p>であれば宝石は金属に吸着される．逆に，金属の棒と宝石がその磁力よりも離れている場合は吸着できない．また，棒が少しでも宝石を貫通してしまった場合にも，その宝石が壊れてしまうため吸着できない．</p>\n<p>例を見てみよう．下の図は二次元空間上に置かれた宝石の例である．宝石1から宝石6まであり，磁力はそれぞれ1, 0, 1, 1, 1, 2であるとする．</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\"/></p>\n<p style=\"text-align: center;\">図 E-1: 宝石の配置例</p>\n<p>上の図に加えて金属の棒を配置した例が下の図である．宝石を吸着した結果も表に示してある．この例の場合，宝石3は磁力の届く範囲より離れており，また宝石4は棒に貫通されているため吸着できないが，残りの4つは全て吸着することができる．</p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"2.png\"/></p>\n<p style=\"text-align: center;\">図 E-2: 金属の棒の配置例</p>\n<table class=\"table table-bordered table-center-40\">\n<tbody>\n<tr>\n<th>宝石名</th>\n<th>磁力</th>\n<th>金属との距離</th>\n<th>吸着できるか</th>\n</tr>\n<tr>\n<td>宝石1</td>\n<td>1</td>\n<td>約0.21</td>\n<td>できる</td>\n</tr>\n<tr>\n<td>宝石2</td>\n<td>0</td>\n<td>0</td>\n<td>できる</td>\n</tr>\n<tr>\n<td>宝石3</td>\n<td>1</td>\n<td>約5.37</td>\n<td>できない</td>\n</tr>\n<tr>\n<td>宝石4</td>\n<td>1</td>\n<td>貫通している</td>\n<td>できない</td>\n</tr>\n<tr>\n<td>宝石5</td>\n<td>1</td>\n<td>約0.97</td>\n<td>できる</td>\n</tr>\n<tr>\n<td>宝石6</td>\n<td>2</td>\n<td>約0.53</td>\n<td>できる</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-align: center;\">表 E-3: 吸着結果</p>\n<p>貴族は全財産を注ぎ込み，特別な金属の棒を必死に探し求めた．しかしながら，この金属も非常に貴重であったため，結局たった一本しか入手することができなかった．したがって吸着のチャンスはただ一回しか無い．</p>\n<p>あなたはある貴族に仕えるプログラマーである．あなたの仕事は，与えられた二次元上の宝石の配置に対して，金属の棒をうまく配置したときに，最大で何個の宝石を吸着することができるかを求めるプログラムを書くことである．</p>",
+  "input": "<p>入力は複数のデータセットから成り， 1つのデータセットは以下の形式で与えられる．</p>\n<pre>\n<i>N</i>\n<i>x<sub>1</sub></i> <i>y<sub>1</sub></i> <i>r<sub>1</sub></i> <i>m<sub>1</sub></i>\n<i>x<sub>2</sub></i> <i>y<sub>2</sub></i> <i>r<sub>2</sub></i> <i>m<sub>2</sub></i>\n...\n<i>x<sub>N</sub></i> <i>y<sub>N</sub></i> <i>r<sub>N</sub></i> <i>m<sub>N</sub></i>\n</pre>\n<p>データセットの最初の行は宝石の数 <i>N</i> (1 ≤ <i>N</i> ≤ 50) を表している．続く <i>N</i> 行の各行には4つの整数 <i>x<sub>i</sub></i>, <i>y<sub>i</sub></i>, <i>r<sub>i</sub></i>, <i>m<sub>i</sub></i> (-1000 ≤ <i>x<sub>i</sub></i>, <i>y<sub>i</sub></i> ≤ 1000, 1 ≤ <i>r<sub>i</sub></i> ≤ 100, 0 ≤ <i>m<sub>i</sub></i> ≤ 100) が記述されており，宝石の位置，大きさ，および磁力を表す．すなわち，宝石 <i>i</i> は中心を(<i>x<sub>i</sub></i>, <i>y<sub>i</sub></i>)とし半径が <i>r<sub>i</sub></i> であるような円形をしており，その磁力は <i>m<sub>i</sub></i> である．宝石は互いに重なり合うことは無い．</p>\n<p>入力の終わりは，0のみからなる行で表される．</p>",
+  "output": "<p>各データセットについて， 一度に吸着することができる宝石の最大数を1行に出力せよ．</p>",
+  "samples": [
+    {
+      "input": "6\n-2 -2 1 1\n2 2 2 0\n5 7 1 1\n8 0 3 1\n13 4 1 1\n16 1 1 2\n3\n0 0 2 1\n10 0 2 1\n0 10 2 1\n3\n0 0 2 1\n10 0 2 1\n0 6 2 1\n3\n0 0 2 1\n10 0 2 1\n0 4 2 1\n1\n0 0 1 1\n0\n",
+      "output": "4\n2\n3\n3\n1\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Domestic Contest, JAG Domestic Contest 2010",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 0,
+  "submission_count": null,
+  "average_tries": 0
+}

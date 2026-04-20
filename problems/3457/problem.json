@@ -1,0 +1,22 @@
+{
+  "id": 3457,
+  "title": "Which is Next",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Every computer science student knows binary trees. Here is one of many possible definitions of binary trees. Binary trees are defined inductively. A binary tree t is either an external node (leaf) ○ or an ordered pair t = (t<sub>1</sub>, t<sub>2</sub>) representing an internal node ● with two subtrees attached, left subtree t<sub>1</sub> and right subtree t<sub>2</sub>. Under this definition the number of nodes in any binary tree is odd. Given an odd integer n let B(n) denote the set of all binary trees with n nodes, both internal and external. For instance B(1) consists of only one tree ○, B(3) = {(○,○)} and B(5) = {(○, (○,○)), ((○,○),○)}. The trees of B(5) are depicted in the figure below. </p>\n<p style=\"text-align: center;\"><img alt=\"\" src=\"1.png\" style=\"height:97px; width:256px\"/></p>\n<p>Denote by |t| the number of nodes in a tree t. Given a tree t we define its unique integer identifier N(t) as follows: </p>\n<ul>\n<li>N(○) = 0 </li>\n<li>N(t<sub>1</sub>, t<sub>2</sub>) = 2<sup>|t<sub>1</sub>|+|t<sub>2</sub>|</sup> + 2<sup>|t<sub>2</sub>|</sup> · N(t<sub>1</sub>) + N(t<sub>2</sub>)</li>\n</ul>\n<p>For instance, N (○,○) = 2<sup>2</sup> + 2<sup>1</sup> · 0 + 0 = 4, N (○,(○,○)) = 2<sup>4</sup> + 2<sup>3</sup> · 0 + 4 = 20, N ((○,○),○) = 2<sup>4</sup> + 2<sup>1</sup> · 4 + 0 = 24. </p>\n<p>Consider the following linear order on all binary trees: </p>\n<ul>\n<li>○ ⪯ t </li>\n<li>(t<sub>1</sub>, t<sub>2</sub>) ⪯ (u<sub>1</sub>, u<sub>2</sub>) when t<sub>1</sub> ≺ u<sub>1</sub>, or t<sub>1</sub> = u<sub>1</sub> and t<sub>2</sub> ⪯ u<sub>2</sub> </li>\n</ul>\n<p>In this order a single leaf is the smallest tree and given two nonleaf trees, the smaller one is that with the smaller left tree, if the left subtrees are different, and that with the smaller right subtree, otherwise. Hence for instance (○,(○,○)) ≺ ((○,○),○), since we have ○ ≺ (○,○). Assume now that the trees in B(n) were sorted using the relation ⪯. Then, for each tree t in B(n) we define the successor of t as the tree that immediately follows t in B(n). If t is the largest one in B(n) then the successor of t is the smallest tree in set B(n). For instance, the successor of (○,○) in B(3) is the same tree (○,○) and the successor of (○,(○,○)) in B(5) is ((○,○),○). </p>\n<p>Given the integer identifier of some tree t can you give the identifier of the successor of t in B(|t|)? </p>\n<p>Write a program that: </p>\n<ul>\n<li>reads the identifier of some binary tree t, </li>\n<li>computes the identifier of the successor of t in B(|t|), </li>\n<li>writes the result. </li>\n</ul>\n<p> </p>",
+  "input": "<p>The first and only line of the input contains one integer n (0 ≤ n ≤ 2<sup>30</sup>) - the identifier of some binary tree</p>",
+  "output": "<p>The first and only line of the output should contain one integer s - the identifier of the successor of t in B(|t|).</p>",
+  "samples": [
+    {
+      "input": "20\n",
+      "output": "24\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2003",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2
+}

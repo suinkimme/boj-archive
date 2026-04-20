@@ -1,0 +1,30 @@
+{
+  "id": 7857,
+  "title": "Simple prefix compression",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>Many databases store the data in the character fields (and especially indices) using prefix compression. This technique compresses a sequence of strings A<sub>1</sub>, ..., A<sub>N</sub> by the following method: if there are strings A<sub>i</sub> = a<sub>i,1</sub>a<sub>i,2</sub>...a<sub>i,p</sub> and A<sub>i + 1</sub> = a<sub>i+1,1</sub>a<sub>i+1,2</sub>...a<sub>i+1,q</sub> such that for some j ≤ min(p, q) a<sub>i,1</sub> = a<sub>i+1,1</sub>, a<sub>i,2</sub> = a<sub>i+1,2</sub>, ... a<sub>i,j</sub> = a<sub>i+1,j</sub>, then the second string is stored as [j]a<sub>i+1,j+1</sub>a<sub>i+1,j+2</sub>... a<sub>i+1,q</sub>, where [j] is a single character with code j.</p>\n<p>If j = 0, that is, strings do not have any common prefix, then the second string is prefixed with zero byte, and so the total length actually increases. </p>",
+  "input": "<p>First line of input file contains integer number N, with following N lines containing strings A<sub>1</sub> ... A<sub>N</sub></p>",
+  "output": "<p>Output file must contain a single integer — minimal total length of compressed strings. </p>",
+  "samples": [
+    {
+      "input": "3\nabc\natest\natext\n",
+      "output": "11\n"
+    },
+    {
+      "input": "2\ntest\nnotest\n",
+      "output": "11\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Northern Eurasia, Far Eastern Russia Regional Contest, NEERC Far-Eastern Subregional 2003",
+  "level": 5,
+  "tags": [
+    "implementation",
+    "string",
+    "bruteforcing"
+  ],
+  "accepted_user_count": 72,
+  "submission_count": null,
+  "average_tries": 1.6110999584197998
+}

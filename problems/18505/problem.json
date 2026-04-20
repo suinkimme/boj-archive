@@ -1,0 +1,40 @@
+{
+  "id": 18505,
+  "title": "Tree of Charge",
+  "time_limit": "4 초",
+  "memory_limit": "512 MB",
+  "description": "<p>There is a rooted tree. Each vertex contains some non-negative amount of charge c<sub>v</sub>. You have to process three kinds of queries:</p>\n<ul>\n<li><strong>Move the charge up</strong>: all vertices simultaneously transfer all their charge to their direct parent. The charge from the root is not transferred anywhere. That is, if vertex v had children u<sub>1</sub>, . . . , u<sub>k</sub>, then its new charge becomes c<sub>u<sub>1</sub></sub> + . . . + c<sub>u<sub>k</sub></sub> for a non-root vertex v, or c<sub>u<sub>1</sub></sub> + . . . + c<sub>u<sub>k</sub></sub> + c<sub>v</sub> if v is the root.</li>\n<li><strong>Move the charge down</strong>: all vertices simultaneously transfer all their charge to their children in equal proportions. That is, if vertex v had children u<sub>1</sub>, . . ., u<sub>k</sub>, then the new charge of each u<sub>i</sub> becomes c<sub>v</sub>/k.<br/>\n\tThere is a virtual line tree of sufficient length attached to each leaf. That is, if the charge is moved down from the leaf and then moved up the same number of times, then the leaf retains its original charge.</li>\n<li><strong>Add charge to a vertex</strong>: add a certain amount of charge to a certain vertex.</li>\n</ul>\n<p>At the end, you should print the value of charge in each vertex.</p>",
+  "input": "<p>In the first line of input there is a single integer n, the number of vertices in the tree (2 ≤ n ≤ 500 000).</p>\n<p>The next line contains n integers c<sub>i</sub>, i-th of them denoting the initial charge of the tree (0 ≤ c<sub>i</sub> &lt; 10<sup>9</sup> + 7).</p>\n<p>Each of the next n − 1 lines contains two integers u<sub>i</sub> and v<sub>i</sub> denoting the edge between vertices u<sub>i</sub> and v<sub>i</sub> (1 ≤ u<sub>i</sub>, v<sub>i</sub> ≤ n).</p>\n<p>Next line contain a single integer q, the number of queries (0 ≤ q ≤ 500 000). Then q lines follow with the description of queries. “Move up” query is denoted with a character “ˆ”. “Move down” query is denoted with a character “v”. “Add charge” query is denoted with a character “+” followed by two integers v<sub>i</sub> and x<sub>i</sub>, meaning that you should add charge x<sub>i</sub> to vertex v<sub>i</sub> (1 ≤ v<sub>i</sub> ≤ n, 0 ≤ x<sub>i</sub> &lt; 10<sup>9</sup> + 7).</p>\n<p>It is guaranteed that the graph in the input is a tree.</p>",
+  "output": "<p>Print n numbers, i-th of them being the final charge of vertex i modulo 10<sup>9</sup> + 7.</p>\n<p>Formally, let the charge be p/q. Then you should print a unique number x, 0 ≤ x &lt; 10<sup>9</sup> + 7, such that p ≡ x · q mod 10<sup>9</sup> + 7.</p>",
+  "samples": [
+    {
+      "input": "5\n4 3 3 6 0\n1 2\n1 3\n2 4\n4 5\n5\nv\n+ 1 7\n^\n+ 2 1\nv\n",
+      "output": "0 500000009 500000009 4 6\n"
+    },
+    {
+      "input": "2\n5 10\n1 2\n5\nv\nv\nv\n^\n^\n",
+      "output": "0 5\n"
+    },
+    {
+      "input": "4\n0 1 0 0\n1 2\n1 3\n1 4\n2\n^\nv\n",
+      "output": "0 333333336 333333336 333333336\n"
+    }
+  ],
+  "hint": null,
+  "source": "Camp, Petrozavodsk Programming Camp, Winter 2020, Day 4: Yandex Cup 2020",
+  "level": 23,
+  "tags": [
+    "graphs",
+    "data_structures",
+    "graph_traversal",
+    "trees",
+    "segtree",
+    "bfs",
+    "offline_queries",
+    "sparse_table",
+    "smaller_to_larger"
+  ],
+  "accepted_user_count": 12,
+  "submission_count": null,
+  "average_tries": 3
+}

@@ -1,0 +1,30 @@
+{
+  "id": 22474,
+  "title": "DNA",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>遺伝子は、<code>A</code>, <code>T</code>, <code>G</code>, <code>C</code> からなる文字列です。 この世界の遺伝子は奇妙なことに、ある構文規則に従うことが知られています。</p>\n<p>構文規則は、次のような形で与えられます。</p>\n<pre>\n非終端記号1: 記号1_1 記号1_2 ... 記号1_n1\n非終端記号2: 記号2_1 記号2_2 ... 記号2_n2\n...\n非終端記号m: 記号m_1 記号m_2 ... 記号m_nm\n</pre>\n<p>記号は非終端記号または終端記号のどちらかです。 非終端記号は小文字文字列で表され、終端記号は<code>A</code>, <code>T</code>, <code>G</code>, <code>C</code>のうちのいくつかの文字が、\"<code>[</code>\"と\"<code>]</code>\"に囲まれた文字列で表されます。</p>\n<p>構文規則の例は次のようになります。</p>\n<pre>\ndna: a a b b\na: [AT]\nb: [GC]\n</pre>\n<p>\"<code>非終端記号i: 記号i_1 記号i_2 ... 記号i_ni</code>\" を非終端記号 <var>i</var> のルールと呼び、ルールは、構文規則に現れる各非終端記号に対して、ちょうど 1 つづつ存在します。</p>\n<p>文字列 <var>s</var> が非終端記号 <var>i</var> に「<code>マッチする</code>」とは、 <var>s = s<sub>1</sub> + s<sub>2</sub> + ... + s<sub>ni</sub></var> となるような <var>s</var> の部分文字列 <var>{s<sub>j</sub>}</var> が存在し、<var>s<sub>j</sub></var> (<var>1 ≤ j ≤ n<sub>i</sub></var>)がルール内の記号 <var>j</var> にマッチすることをいいます。</p>\n<p>文字列 <var>s</var> が終端記号に「<code>マッチする</code>」とは、文字列が 1 文字からなり、その文字が終端記号を表す文字列に含まれることをいいます。</p>\n<p>文字列が構文規則に従うとは、非終端記号 <var>1</var> にその文字列がマッチすることをいいます。</p>\n<p>ルール <var>i</var> は、記号のうちに、非終端記号 <var>j</var> (<var>j ≤ i</var>) を含みません。</p>\n<p>構文規則と、4つの整数 <var>Na</var> , <var>Nt</var>, <var>Ng</var>, <var>Nc</var> が与えられます。 構文規則に従い、A をちょうど <var>Na</var> 個、T をちょうど <var>Nt</var> 個、G をちょうど <var>Ng</var> 個、C をちょうど <var>Nc</var> 個含むような遺伝子の総数を 1,000,000,007 で割った余りを求めなさい。</p>",
+  "input": "<pre>\n<var>Na</var> <var>Nt</var> <var>Ng</var> <var>Nc</var>\n<var>m</var>\n非終端記号1: 記号 <var>1<sub>1</sub></var> 記号 <var>1<sub>2</sub></var> ... 記号 <var>1<sub>n1</sub></var>\n非終端記号2: 記号 <var>2<sub>1</sub></var> 記号 <var>2<sub>2</sub></var> ... 記号 <var>2<sub>n2</sub></var>\n...\n非終端記号 <var>m</var>: 記号 <var>m<sub>1</sub></var> 記号 <var>m<sub>2</sub></var> ... 記号 <var>m<sub>nm</sub></var>\n</pre>\n<ul>\n<li><var>0 ≤ Na, Nt, Ng, Nc ≤ 50</var></li>\n<li><var>1 ≤ m ≤ 50</var></li>\n<li><var>1 ≤ ni ≤ 10</var></li>\n<li><var>1 ≤ </var> 記号を表す文字列の長さ <var> ≤ 20</var> (※記号にマッチする文字列の長さではないことに注意)</li>\n</ul>",
+  "output": "<p>総数を 1,000,000,007 で割った余り</p>",
+  "samples": [
+    {
+      "input": "1 0 1 0\n3\ndna: a b\na: [AT]\nb: [GC]\n",
+      "output": "1\n"
+    },
+    {
+      "input": "1 1 1 2\n1\nk: [ATG] [ATG] [ATG] [C] [C]\n",
+      "output": "6\n"
+    },
+    {
+      "input": "3 1 1 1\n3\ninv: at b b b\nat: [ATG] b\nb: [C]\n",
+      "output": "0\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, ICPC Japanese Alumni Group, JAG Summer Camp, JAG Summer Camp 2012 Day 3A",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 1,
+  "submission_count": null,
+  "average_tries": 1
+}

@@ -1,0 +1,37 @@
+{
+  "id": 20664,
+  "title": "Patkice II",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>After Holywood got its hands on the fascinating story of the successful umbrella voyage between two islands, Netflix executives decided to make a series adaptation of the three ducks' travels.</p>\n<p>As you may remember from the first round of COCI 20/21, the ducks have a map of ocean currents. The ducks travel together. The island where the ducks live is marked by the letter '<code>o</code>'. The ducks can start their voyage in any of the four directions. Ocean currents in these seas move in one of the four directions, and are marked in the following way: west-east '<code>&gt;</code>', east-west '<code>&lt;</code>', north-south '<code>v</code>' and south-north '<code>^</code>'. When the ducks are located on a cell with a current, they will move one cell in the direction of the current.</p>\n<p>Calm sea is marked by a dot '<code>.</code>'. If the currents bring the ducks to a cell with calm sea, outside the map, or back to the starting island, they will stop their voyage. The island that the ducks want to visit is marked by '<code>x</code>'.</p>\n<p>In order to make the series more appealing, Netflix made a few changes to the story: the sea now may contain wild vortexes (the ducks can get stuck in a cycle) and sea currents that carry the ducks outside the map. (The ducks also form a heartbreaking love triangle, but that is not important right now.)</p>\n<p>Therefore, the original map of currents has been changed. But under heavy deadline pressure, the director has made some mistakes: the ducks cannot arrive from the initial to the target island via sea currents anymore.</p>\n<p>Netflix directors are very important persons, so they don't really spend time contemplating plot holes. Thus it is your task now to replace as few as possible characters on the map, so that the ducks can go from the initial to the target island.</p>\n<p>For story purposes, the cells with ('<code>o</code>' and '<code>x</code>') cannot be modified. All other cells are either sea currents or calm sea (characters '<code>&lt;&gt;v^.</code>'). You can replace characters in those cells with characters from the same set '<code>&lt;&gt;v^.</code>'.</p>",
+  "input": "<p>The first line contains integers r and s (3 ≤ r, s ≤ 2000), the number of rows and columns of the map.</p>\n<p>Each of the following r lines contains s characters from the set '<code>o&lt;&gt;v^.x</code>', that represent the map of ocean currents. There will always be exactly one character '<code>o</code>' and exactly one character '<code>x</code>' on the map, and they will not be adjacent.</p>",
+  "output": "<p>In the first line output k, the minimum number of changes so that the ducks can go from the initial to the target island.</p>\n<p>In the each of the next r lines, output s characters, describing a map which differs from the input map in exactly k cells, satisfying the requirements of the problem.</p>\n<p>If there are multiple valid maps, output any of them.</p>",
+  "samples": [
+    {
+      "input": "3 3\n>vo\nvv>\nx>>\n",
+      "output": "1\n>vo\nvv>\nx<>\n"
+    },
+    {
+      "input": "3 6\n>>vv<<\n^ovvx^\n^<<>>^\n",
+      "output": "2\n>>vv<<\n^o>>x^\n^<<>>^\n"
+    },
+    {
+      "input": "4 4\nx.v.\n.>.<\n>.<.\n.^.o\n",
+      "output": "4\nx<<.\n.>^<\n>.<^\n.^.o\n"
+    }
+  ],
+  "hint": null,
+  "source": "Contest, Croatian Open Competition in Informatics, COCI 2020/2021, Contest #4",
+  "level": 15,
+  "tags": [
+    "implementation",
+    "graphs",
+    "shortest_path",
+    "dijkstra",
+    "traceback",
+    "0_1_bfs"
+  ],
+  "accepted_user_count": 24,
+  "submission_count": null,
+  "average_tries": 2.2083001136779785
+}

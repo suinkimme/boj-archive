@@ -1,0 +1,26 @@
+{
+  "id": 16545,
+  "title": "Crypto",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Pesho is crypting a sequence of N numbers where each integer from 1 to N appears exactly once. He is using the following algorithm:</p>\n<ol>\n<li>Replace each initial number X with the Xth prime number.</li>\n<li>Choose a random positive integer K, not greater than N.</li>\n<li>Consider all subsequences with consecutive elements. For each subsequence with at least K elements write down the product of the smallest K numbers.</li>\n<li>Let P be the number of unique products written in the previous step.</li>\n<li>The code is “N K P”.</li>\n</ol>\n<p>Let us see how Pesho should crypt the sequence {4, 1, 3, 2}:</p>\n<ol>\n<li>The first 4 prime numbers are 2, 3, 5 and 7. In the initial sequence he replaces</li>\n</ol>\n<ul>\n<li>4 with the fourth prime number which is 7;</li>\n<li>1 with the first prime number which is 2;</li>\n<li>3 with the third prime number which is 5;</li>\n<li>2 with the second prime number which is 3.</li>\n</ul>\n<p>Pesho obtains the new sequence {7, 2, 5, 3}.</p>\n<ol start=\"2\">\n<li>He chooses a random number K. Say K=2.</li>\n<li>All contiguous subsequences are:</li>\n</ol>\n<p style=\"text-align: center;\">{7}, {2}, {5}, {3}, {7, 2}, {2, 5}, {5, 3}, {7, 2, 5}, {2, 5, 3}, {7, 2, 5 ,3}</p>\n<p>Pesho removes all subsequences with less than K=2 elements and for each of the rest he computes the product of the smallest K=2 elements.</p>\n<ul>\n<li>{7, 2} 2.7 = 14</li>\n<li>{2, 5} 2.5 = 10</li>\n<li>{5, 3} 3.5 = 15</li>\n<li>{7, 2, 5} 2.5 = 10</li>\n<li>{2, 5, 3} 2.3 = 6</li>\n<li>{7, 2, 5 ,3} 2.3 = 6</li>\n</ul>\n<p>He writes the numbers {14, 10, 15, 10, 6, 6}</p>\n<ol start=\"4\">\n<li>There are four unique numbers {6, 10, 14, 15}, thus P = 4.</li>\n<li>The code is “4 2 4”.</li>\n</ol>\n<p>Pesho quickly figured out that the algorithm is much better than he expected. He cannot always decrypt the code unambiguously.</p>\n<p>Write a program crypto, which given a code calculates the number of possible initial sequences. Find the answer modulo 1 000 000 007.</p>",
+  "input": "<p>The first line contains the positive integers N, K and P.</p>",
+  "output": "<p>Print the number of possible initial sequences with code “N K P”. Print the answer modulo 1 000 000 007. </p>",
+  "samples": [
+    {
+      "input": "3 2 3\n",
+      "output": "2\n"
+    },
+    {
+      "input": "4 2 4\n",
+      "output": "12\n"
+    }
+  ],
+  "hint": null,
+  "source": "Olympiad, International Autumn Tournament in Informatics, 2017, Group A (Seniors)",
+  "level": 0,
+  "tags": [],
+  "accepted_user_count": 2,
+  "submission_count": null,
+  "average_tries": 2.5
+}

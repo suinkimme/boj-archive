@@ -1,0 +1,31 @@
+{
+  "id": 7870,
+  "title": "Accountant notes",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You had an accountant, who recorded all your expenses. Each day you sent her notes on expenses and she appended them to a single big summary file. Each of your notes consisted of several rows, like the following:</p>\n<pre>\nbed = 100\ntable = 150\nfurniture = bed + table\nfurniture = furniture + 10</pre>\n<p>which (probably) meant that you spent 250 on furniture and 10 on transport (probably). More generally, each row in your note was one of the following:</p>\n<pre>\nname = number\nname = item + item</pre>\n<p>where item was either <code>number</code> or <code>name</code>, <code>number</code> was a natural number not exceeding 10<sup>9</sup> (with no leading zeroes) and <code>name</code> was an arbitrary sequence of small and capital letters.</p>\n<p>While transferring your notes to the summary file, the accountant neither changed the order of rows of a note nor shuffled rows of different notes. But sometimes she changed names... She did it consistently though, changing all occurrences of the name in a single note to the same new one. Also, different names from the same note were rewritten as different names in the summary file. But there is no guarantee that it was consistent with your other notes — the name <em>beer</em> from one note could have been rewritten as <em>drink</em>, the name <em>tee</em> from the other note could have been rewritten as <em>drink</em> as well, while the <em>beer</em> from the next note could have been rewritten as <em>food</em>. Lets call her version of your note a <em>transcription</em> of it.</p>\n<p>The problem is that your accountant has just quit (and, as it turned out, took most of your savings) and you are left with the summary file and a huge unsorted pile of notes. You want to check if it is possible that some of your notes were not recorded in the summary, so for each note you are searching for a piece of summary that can be its transcription.</p>",
+  "input": "<p>The input contains several test cases. The first line of the input contains a positive integer Z ≤ 15, denoting the number of test cases. Then Z test cases follow.</p>\n<p>The first line of an input instance contains an integer k, the number of notes (1 ≤ k ≤ 50000). The following lines first contain the descriptions of k notes, then the description of the summary file follows. The description of each note and the summary starts with a line consisting of a single integer d (1 ≤ d). Then d lines follow, each containing a single row of a note or the summary. The format of each row is as described in the problem statement above. You can assume that names, numbers, signs ”=” and ”+” are separated by single spaces and each line is at most 100 characters long. Both the length of the text and the sum of all patterns lengths will be at most 3 × 10<sup>6</sup>.</p>",
+  "output": "<p>The output for a single instance should consist of k lines. In the i-th line there should be the answer for the i-th note. It should be the number of the first row in the summary file, where a possible transcription of the i-th note starts (the first row of the summary file has number 1) or word <code>NONE</code> if no fragment of the summary file could be such possible transcription.</p>",
+  "samples": [
+    {
+      "input": "2\n3\n4\nbed = 100\ntable = 150\nfurniture = bed + table\nfurniture = furniture + 10\n1\nbeer = 100\n2\na = a + a\na = a + 10\n10\nfurniture = 100\ntable = 150\nfurniture = furniture + table\nfurniture = furniture + 10\nsofa = 100\nstol = 150\nmeble = sofa + stol\nmeble = meble + 10\npicie = 100\ndrink = 0100\n2\n1\na = 100 + 200\n1\na = 100\n2\nx = 100 + 200\ny = 100\n",
+      "output": "5\n1\nNONE\n1\n2\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Europe, Central European Regional Contest, CERC 2009",
+  "level": 24,
+  "tags": [
+    "aho_corasick",
+    "data_structures",
+    "dp",
+    "hashing",
+    "implementation",
+    "string",
+    "trees",
+    "trie"
+  ],
+  "accepted_user_count": 6,
+  "submission_count": null,
+  "average_tries": 3.8333001136779785
+}

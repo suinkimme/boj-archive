@@ -1,0 +1,29 @@
+{
+  "id": 14373,
+  "title": "Technobabble (Small)",
+  "time_limit": "5 초",
+  "memory_limit": "512 MB",
+  "description": "<p>Every year, your professor posts a blank sign-up sheet for a prestigious scientific research conference on her door. If a student wants to give a lecture at the conference, they choose a two-word topic that is not already on the sheet and write it on the sheet. Once the deadline has passed, the professor has one of her grad students put the topics in a random order, to avoid biasing for or against students who signed up earlier. Then she presents the topics to you for review.</p>\n<p>Since the snacks at the conference are excellent, some students try to fake their way into the conference. They choose the first word of some topic already on the sheet and the second word of some topic already on the sheet, and combine them (putting the first word first, and the second word second) to create a new \"topic\" (as long as it isn't already on the sheet). Since your professor is open-minded, sometimes this strategy actually works!</p>\n<p>The fakers are completely unoriginal and can't come up with any new first or second words on their own; they must use existing ones from the sheet. Moreover, they won't try to use an existing first word as their own second word (unless the word also already exists on the sheet as a second word), or vice versa.</p>\n<p>You have a list of all N of the submitted topics, in some arbitrary order; you don't know the order in which they were actually written on the sheet. What's the largest number of them that could have been faked?</p>",
+  "input": "<p>The first line of the input gives the number of test cases, T. T test cases follow. Each consists of one line with an integer N, followed by N lines, each of which represents a different topic and has two strings of uppercase English letters: the two words of the topic, in order.</p>\n<h3>Limits</h3>\n<ul>\n<li>1 ≤ T ≤ 100.</li>\n<li>1 ≤ length of each word ≤ 20.</li>\n<li>No topic is repeated within a case.</li>\n<li>1 ≤ N ≤ 16.</li>\n</ul>",
+  "output": "<p>For each test case, output one line containing <code>Case #x: y</code>, where <code>x</code> is the test case number (starting from 1) and <code>y</code> is an integer: the largest number of topics that could have possibly been faked.</p>",
+  "samples": [
+    {
+      "input": "3\n3\nHYDROCARBON COMBUSTION\nQUAIL BEHAVIOR\nQUAIL COMBUSTION\n3\nCODE JAM\nSPACE JAM\nPEARL JAM\n2\nINTERGALACTIC PLANETARY\nPLANETARY INTERGALACTIC\n",
+      "output": "Case #1: 1\nCase #2: 0\nCase #3: 0\n"
+    }
+  ],
+  "hint": "<p>In sample case #1, one possibility is that the topics were added to the sheet in this order:</p>\n<p><code>QUAIL BEHAVIOR</code> (real)<br/>\n<code>HYDROCARBON COMBUSTION</code> (real)<br/>\n<code>QUAIL COMBUSTION</code> (fake)</p>\n<p>There is no scenario in which more than one of the topics can be fake.</p>\n<p>In sample case #2, all of the topics must be real. Whatever order they were written in, at no point would it have been possible to use existing words to create a new topic that was not already on the list.</p>\n<p>In sample case #3, neither topic can be fake. For example, if <code>INTERGALACTIC PLANETARY</code> had been the first and only topic written on the sheet, a faker could only have used <code>INTERGALACTIC</code> as the first word of a new topic and could only have used <code>PLANETARY</code> as the second word of a new topic... but the only topic that the faker could have formed would have been <code>INTERGALACTIC PLANETARY</code>, which would have been off limits since it was already on the sheet. So <code>PLANETARY INTERGALACTIC</code> must have also been a real topic.</p>",
+  "source": "Contest, Google, Code Jam, Google Code Jam 2016, Round 1B",
+  "level": 12,
+  "tags": [
+    "implementation",
+    "data_structures",
+    "bruteforcing",
+    "set",
+    "hash_set",
+    "backtracking"
+  ],
+  "accepted_user_count": 38,
+  "submission_count": null,
+  "average_tries": 2
+}

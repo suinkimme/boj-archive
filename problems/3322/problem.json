@@ -1,0 +1,33 @@
+{
+  "id": 3322,
+  "title": "정렬의 시간복잡도",
+  "time_limit": "1 초",
+  "memory_limit": "128 MB",
+  "description": "<p>꿍은 자료구조를 공부할때 각 정렬마다 비교횟수를 구해보라는 문제를 볼때마다 화가난 나머지 세상에서 제일 거지같은 문제를 만들어보고자 다음과 같은 문제를 만들었다.</p>\r\n\r\n<p>N과 X가 주어질 때, 삽입정렬이 퀵정렬보다 비교를 최대 X번 더 하는&nbsp;{1,2,...,N} 으로 구성된 순열의 개수를 구해야 한다. 단, 숫자가 매우 커질수 있으므로 출력값은 1234567로 나눈 나머지를 출력한다.</p>\r\n\r\n<p>아래 코드는 삽입정렬 코드이며 비교횟수도 계산해준다.</p>\r\n\r\n<pre>\r\nprocedure insertionSort(int N, array A[1..N]) defined as:\r\n    A[0] := -Infinity\r\n    for i := 2 to N do:\r\n        j := i\r\n        <strong>Increment(comparison_count)</strong>\r\n        while A[j - 1] &gt; A[j] do:\r\n        SWAP(A[j - 1], A[j])\r\n        j := j - 1\r\n        <strong>Increment(comparison_count)</strong>\r\n    end while\r\nend for</pre>\r\n\r\n<p>아래코드는 퀵정렬 코드다. 만약 정렬하려는&nbsp;배열의 길이가 L이라면, partition 알고리즘은 L-1번의 비교를 한다.</p>\r\n\r\n<pre>\r\nprocedure quickSort(list A) defined as:\r\n    list less, greater\r\n    if length(A) &lt;= 1 then\r\n        return A\r\n\r\n    pivot := A[1]\r\n    for i := 2 to length(A) do:\r\n        <strong>Increment(comparison_count)</strong>\r\n        if A[i] &lt; pivot then append A[i] to less\r\n                        else append A[i] to greater\r\n        end if\r\n    end for\r\n    return concatenate(quickSort(less), pivot, quickSort(greater))</pre>\r\n\r\n<p>예를 들어, 순열 (3,1,4,2)를 생각하자. 삽입정렬의 비교횟수는 총 6회로 i=2일때 2번, i=3일때 1번, i=4일때 3번의 비교가 이루어진다. 반면 퀵정렬의 비교횟수는 총 4회로 3이 pivot일때 3회의 비교를 한 후 (1,2)와 (4)로 partition이 이루어진다. 이후 (1,2)에서 1번의 비교가 이루어지므로 총 4회의 비교가 이루어진다.</p>\r\n",
+  "input": "<p>입력의 첫 번째 줄에 두 개의 정수 N과 X가 주어지며 각각의 범위는 1 &lt; N &lt; 32, 1 &le; X &le; N^2 이다.</p>\r\n",
+  "output": "<p>삽입정렬이 퀵정렬보다 최대 X번 비교를 더 하게되는 순열의 개수를 1234567로 나눈 나머지를 출력한다.</p>\r\n",
+  "samples": [
+    {
+      "input": "3 1\n",
+      "output": "2\n"
+    },
+    {
+      "input": "6 2\n",
+      "output": "719\n"
+    },
+    {
+      "input": "21 3\n",
+      "output": "660773\n"
+    }
+  ],
+  "hint": "<p>N=3 일때 가능한 6개의 순열과 각 경우의 정렬별 비교횟수는 아래와 같다.</p>\r\n\r\n<pre>\r\n1 2 3 - NI = 2, NQ = 3\r\n1 3 2 - NI = 3, NQ = 3\r\n2 1 3 - NI = 3, NQ = 2\r\n2 3 1 - NI = 4, NQ = 2\r\n3 1 2 - NI = 4, NQ = 3\r\n3 2 1 - NI = 5, NQ = 3</pre>\r\n\r\n<p>이 문제의 데이터는 총 10개이고, 다음과 같다.</p>\r\n\r\n<ul>\r\n\t<li>N = 5, X = 1</li>\r\n\t<li>N = 12, X = 2</li>\r\n\t<li>N = 18, X = 3</li>\r\n\t<li>N = 20, X = 1</li>\r\n\t<li>N = 22, X = 5</li>\r\n\t<li>N = 23, X = 3</li>\r\n\t<li>N = 24, X = 4</li>\r\n\t<li>N = 29, X = 2</li>\r\n\t<li>N = 30, X = 5</li>\r\n\t<li>N = 31, X = 1</li>\r\n</ul>\r\n",
+  "source": "Olympiad, Central European Olympiad in Informatics, CEOI 2009, Day 2, seok9311",
+  "level": 20,
+  "tags": [
+    "dp",
+    "precomputation"
+  ],
+  "accepted_user_count": 7,
+  "submission_count": null,
+  "average_tries": 1.2856999635696411
+}

@@ -1,0 +1,25 @@
+{
+  "id": 14970,
+  "title": "Almost Identical Programs",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>The programming contest named <em>Concours de Programmation Comtemporaine Interuniversitaire</em> (CPCI) has a judging system similar to that of ICPC; contestants have to submit correct outputs for two different inputs to be accepted as a correct solution. Each of the submissions should include the program that generated the output. A pair of submissions is judged to be a correct solution when, in addition to the correctness of the outputs, they include an identical program.</p>\n<p>Many contestants, however, do not stop including a different version of their programs in their second submissions, after modifying a single string literal in their programs representing the input file name, attempting to process different input. The organizers of CPCI are exploring the possibility of showing a special error message for such <em>close</em> submissions, indicating contestants what's wrong with such submissions. Your task is to detect such close submissions.</p>",
+  "input": "<p>The input consists of at most 100 datasets, each in the following format.</p>\n<pre>\n<em>s</em><sub>1</sub> \n<em>s</em><sub>2</sub> \n</pre>\n<p>Each of <em>s</em><sub>1</sub> and <em>s</em><sub>2</sub> is a string written in a line, with the length between 1 and 200, inclusive. They are the first and the second submitted programs respectively. A program consists of lowercase letters (<code>a</code>, <code>b</code>, ..., <code>z</code>), uppercase letters (<code>A</code>, <code>B</code>, ..., <code>Z</code>), digits (<code>0</code>, <code>1</code>, ..., <code>9</code>), double quotes (<code>\"</code>), and semicolons (<code>;</code>). When double quotes occur in a program, there are always even number of them.</p>\n<p>The end of the input is indicated by a line containing one ‘<code>.</code>’ (period).</p>",
+  "output": "<p>For each dataset, print the judge result in a line.</p>\n<p>If the given two programs are identical, print <code>IDENTICAL</code>. If two programs differ with only one corresponding string literal, print <code>CLOSE</code>. Otherwise, print <code>DIFFERENT</code>. A string literal is a possibly empty sequence of characters between an odd-numbered occurrence of a double quote and the next occurrence of a double quote.</p>",
+  "samples": [
+    {
+      "input": "print\"hello\";print123\nprint\"hello\";print123\nread\"B1input\";solve;output;\nread\"B2\";solve;output;\nread\"C1\";solve;output\"C1ans\";\nread\"C2\";solve;output\"C2ans\";\n\"\"\"\"\"\"\"\"\n\"\"\"42\"\"\"\"\"\nslow\"program\"\nfast\"code\"\n\"super\"fast\"program\"\n\"super\"faster\"program\"\nX\"\"\nX\nI\"S\"\"CREAM\"\nI\"CE\"\"CREAM\"\n11\"22\"11\n1\"33\"111\n.\n",
+      "output": "IDENTICAL\nCLOSE\nDIFFERENT\nCLOSE\nDIFFERENT\nDIFFERENT\nDIFFERENT\nCLOSE\nDIFFERENT\n"
+    }
+  ],
+  "hint": null,
+  "source": "ICPC, Regionals, Asia Pacific, Japan, Japan Domestic Contest, 2017 Japan Domestic Contest",
+  "level": 9,
+  "tags": [
+    "string",
+    "parsing"
+  ],
+  "accepted_user_count": 37,
+  "submission_count": null,
+  "average_tries": 1.3783999681472778
+}

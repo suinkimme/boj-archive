@@ -1,0 +1,25 @@
+{
+  "id": 25667,
+  "title": "Kitten's Computer",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB",
+  "description": "<p>Kitten recently planned to build a computer of his own. The computer has $400$ registers, each of which can store a $64$-bit binary integer, that is, an integer in the range $[0, 2^{64} - 1]$. The value stored in the $i$-th ($i \\in [1, 400]$) register is denoted as $a_i$. This computer supports 7 assembly instructions:</p>\n<ul>\n<li><code>SET i j </code>: Let $a_i := a_j$.</li>\n<li><code>XOR i j k </code>: Let $a_i := a_j \\oplus a_k$ ($\\oplus$ is the bitwise XOR operation).</li>\n<li><code>AND i j k </code>: Let $a_i := a_j \\operatorname{\\&amp;} a_k$ ($\\operatorname{\\&amp;}$ is the bitwise AND operation).</li>\n<li><code>OR i j k </code>: Let $a_i := a_j \\operatorname{|} a_k$ ($\\operatorname{|}$ is the bitwise OR operation).</li>\n<li><code>NOT i j </code>: Let $a_i := \\operatorname{\\sim} a_j$ ($\\sim$ is the unary bitwise NOT operation).</li>\n<li><code>LSH i x </code>: Shift $a_i$ left by $x$ bits. The vacant bit-positions are filled with $0$.</li>\n<li><code>RSH i x </code>: Shift $a_i$ right by $x$ bits. The vacant bit-positions are filled with $0$.</li>\n</ul>\n<p>Note that you have to ensure that $1 \\le i,j,k \\le 400$ and $0 \\le x &lt; 64$.</p>\n<p>You may think that this computer is not powerful enough, but the kitten's computer is not an ordinary computer! This computer has a powerful parallel computing method that can compute all non-interfering instructions simultaneously.</p>\n<p>Formally, let us track $t_1, t_2, \\ldots, t_{400}$, denoting the times when the register values were assigned. Initially, all $t_i$ are zeroes. Whenever you execute a command, if it requires $a_{j_1}, a_{j_2}, \\ldots, a_{j_n}$ as arguments to calculate, and outputs the result to $a_i$, then assign $t_i$ to $\\max\\{ t_{j_1}, t_{j_2}, \\ldots, t_{j_n} \\} + 1$. The <em>runtime</em> of your program is the maximum value of all $t_i$ generated during the sequential execution of all instructions.</p>\n<p>Today, Kitten wants to use his computer to design a calculator. This calculator is used to quickly calculate the multiplication of 64-bit unsigned integers. At the beginning, registers $a_1$ and $a_2$ are set to two 64-bit unsigned integers $x$ and $y$, respectively, while the other registers are set to $0$. You need to help Kitten design a series of instructions for his program so that the final value of $a_1$ is the result of multiplying $x$ and $y$, modulo $2^{64}$.</p>\n<p>Kitten requires that the total number of your instructions does not exceed $100\\,000$, and the <em>runtime</em> of your program does not exceed $70$.</p>",
+  "input": "<p>There is no input for this problem.</p>",
+  "output": "<p>Output any number of lines (from $0$ to $100\\,000$), each containing exactly one instruction formatted as shown above.</p>",
+  "samples": [
+    {
+      "input": "<no input>\n",
+      "output": "NOT 2 1\nRSH 2 63\nNOT 3 1\nRSH 3 62\nNOT 4 1\nRSH 4 61\nLSH 2 1\nLSH 3 9\nLSH 4 3\nOR 5 2 3\nOR 1 5 4\n"
+    }
+  ],
+  "hint": "<p>The example output does not solve the problem, it is given only to demonstrate the format.</p>\n<p>When checking your output, the checker will perform the following checks.</p>\n<ol>\n<li>If your output exceeds $100\\,000$ lines, return WA and exit immediately.</li>\n<li>If your output contains an illegal instruction, return WA and exit immediately.</li>\n<li>Perform the following process $5000$ times:\n\t<ol style=\"list-style-type: lower-alpha;\">\n<li>Given are two 64-bit unsigned integers $x$ and $y$.</li>\n<li>Clear all registers to zero and make $a_1 = x$ and $a_2 = y$.</li>\n<li>Execute your program.</li>\n<li>If the <em>runtime</em> exceeds $70$, return WA and exit immediately.</li>\n<li>Check if the value of $a_1$ is $(x \\cdot y) \\bmod 2^{64}$. If not, return WA and exit immediately.</li>\n</ol>\n</li>\n<li>Return OK and exit immediately.</li>\n</ol>\n<p>Note that the checker will only check the register $a_1$. The final values of all other registers can be arbitrary.</p>\n<p>The $5000$ pairs of $x$ and $y$ for the checker are fixed in advance.</p>",
+  "source": "Camp, Petrozavodsk Programming Camp, Summer 2022, Day 3: Qingyu, flower and their friends’ Contest",
+  "level": 25,
+  "tags": [
+    "ad_hoc",
+    "constructive"
+  ],
+  "accepted_user_count": 3,
+  "submission_count": null,
+  "average_tries": 1.333299994468689
+}

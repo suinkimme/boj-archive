@@ -1,0 +1,34 @@
+{
+  "id": 20238,
+  "title": "Grammar Path",
+  "time_limit": "2 초",
+  "memory_limit": "512 MB",
+  "description": "<p>You are given a context-free formal grammar in Chomsky reduced form (see Notes section for an explanation of these terms), and a directed graph with each edge labeled with a terminal of the grammar.</p>\n<p>Find the length of the shortest path in the graph from vertex $s$ to vertex $t$ such that concatenation of the labels on this path is in the language of the grammar, or state that there is no such path.</p>",
+  "input": "<p>The first line contains the number of productions in the grammar $p$ ($1 \\le p \\le 100$).</p>\n<p>Each of the next $p$ lines contains a production in the form of either '<code>A -&gt; BC</code>' or '<code>A -&gt; a</code>'. The lowercase English letters are terminals, the uppercase English letters are nonterminals, and the uppercase letter '<code>S</code>' is the starting nonterminal. It's guaranteed that <code>S</code> appears as left hand side of at least one production. </p>\n<p>The next line contains four integers $n$, $m$, $s$, and $t$ ($1 \\le s, t \\le n \\le 26$; $0 \\le m \\le n^2$), denoting the number of vertices in the graph, the number of edges in the graph, and indices of the start and the finish.</p>\n<p>Each of the next $m$ lines contains a description of an edge in the form '<code>u v x</code>', denoting an edge from vertex $u$ to vertex $v$ labeled with $x$ ($1 \\le u, v \\le n$; $x$ is a lowercase English letter). There are no multiedges in the graph, but there might be loops and different edges from $u$ to $v$ and from $v$ to $u$.</p>",
+  "output": "<p>If there is no path from $s$ to $t$ with labels forming a string from the language, output '<code>NO</code>'. Otherwise, output the length of the shortest such path.</p>",
+  "samples": [
+    {
+      "input": "5\nS -> AB\nA -> a\nA -> AA\nB -> BB\nB -> b\n8 8 1 4\n1 2 a\n2 3 b\n3 4 a\n1 5 a\n5 6 a\n6 7 a\n7 8 b\n8 4 b\n",
+      "output": "5\n"
+    },
+    {
+      "input": "6\nS -> SS\nS -> LA\nS -> LR\nA -> SR\nL -> c\nR -> j\n4 5 1 1\n1 2 c\n2 3 c\n3 1 j\n1 4 j\n4 3 j\n",
+      "output": "12\n"
+    },
+    {
+      "input": "6\nS -> SS\nS -> LA\nS -> LR\nA -> SR\nL -> c\nR -> j\n4 5 1 4\n1 2 c\n2 1 c\n2 3 c\n3 4 j\n4 3 j\n",
+      "output": "NO\n"
+    }
+  ],
+  "hint": "<p>Informally speaking, a context-free formal grammar is a set of terminals (lowercase English letters in this problem), a set of nonterminals (uppercase English letters in this problem), and a set of rules of how a nonterminal can be replaced with a string of nonterminals or terminals.</p>\n<p>Chomsky reduced form is a form where each rule is a replacement with either a single terminal or exactly two nonterminals. In fact, any context-free grammar which does not generate the empty string can be converted to Chomsky reduced form.</p>\n<p>A string of terminals is in the language of the grammar if one can use the rules to convert a string of a single starting nonterminal into the given string. You can get some formal details at <a href=\"https://en.wikipedia.org/wiki/Context-free_grammar\">https://en.wikipedia.org/wiki/Context-free_grammar</a>. </p>\n<p>The formal grammar in the two last examples defines all non-empty correct bracket sequences, with opening brackets denoted with '<code>c</code>' and closing brackets denoted with '<code>j</code>'.</p>",
+  "source": "ICPC, Regionals, Northern Eurasia, Northwestern Russia Regional Contest, ICPC 2020-2021 North-Western Russia Regional Contest",
+  "level": 22,
+  "tags": [
+    "arbitrary_precision",
+    "dp",
+    "graphs"
+  ],
+  "accepted_user_count": 13,
+  "submission_count": null,
+  "average_tries": 5
+}

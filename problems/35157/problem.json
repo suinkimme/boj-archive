@@ -1,0 +1,31 @@
+{
+  "id": 35157,
+  "title": "점 세 개 돌리기",
+  "time_limit": "1 초 (추가 시간 없음)",
+  "memory_limit": "1024 MB (추가 메모리 없음)",
+  "description": "<p>$3$차원 공간에 세 개의 점 $\\left( 1,0,0 \\right)$, $\\left( 0,1,0 \\right)$, $\\left( 0,0,1 \\right)$가 있다.</p>\r\n\r\n<p>어떤 점 $\\left( x,y,z \\right)$에 대해 다음 연산들을 적용할 수 있다.</p>\r\n\r\n<ul>\r\n<li>$x$축 회전(<span style=\"color:#e74c3c;\"><code>X</code></span>) : $\\left( x,y,z \\right)\\mapsto\\left( x,-z,y \\right)$</li>\r\n<li>$y$축 회전(<span style=\"color:#e74c3c;\"><code>Y</code></span>) : $\\left( x,y,z \\right)\\mapsto\\left( z,y,-x \\right)$</li>\r\n<li>$z$축 회전(<span style=\"color:#e74c3c;\"><code>Z</code></span>) : $\\left( x,y,z \\right)\\mapsto\\left( -y,x,z \\right)$</li>\r\n<li>$x$축 대칭(<span style=\"color:#e74c3c;\"><code>XX</code></span>) : $\\left( x,y,z \\right)\\mapsto\\left( x,-y,-z \\right)$</li>\r\n<li>$y$축 대칭(<span style=\"color:#e74c3c;\"><code>YY</code></span>) : $\\left( x,y,z \\right)\\mapsto\\left( -x,y,-z \\right)$</li>\r\n<li>$z$축 대칭(<span style=\"color:#e74c3c;\"><code>ZZ</code></span>) : $\\left( x,y,z \\right)\\mapsto\\left( -x,-y,z \\right)$</li>\r\n<li>$xy$평면 대칭(<span style=\"color:#e74c3c;\"><code>XY</code></span> 혹은 <span style=\"color:#e74c3c;\"><code>YX</code></span>) : $\\left( x,y,z \\right)\\mapsto\\left( x,y,-z \\right)$</li>\r\n<li>$yz$평면 대칭(<span style=\"color:#e74c3c;\"><code>YZ</code></span> 혹은 <span style=\"color:#e74c3c;\"><code>ZY</code></span>) : $\\left( x,y,z \\right)\\mapsto\\left( -x,y,z \\right)$</li>\r\n<li>$xz$평면 대칭(<span style=\"color:#e74c3c;\"><code>ZX</code></span> 혹은 <span style=\"color:#e74c3c;\"><code>XZ</code></span>) : $\\left( x,y,z \\right)\\mapsto\\left( x,-y,z \\right)$</li>\r\n</ul>\r\n\r\n<p>서현이는 $1$번부터 $N$번까지 $N$개의 연산을 가지고 있다.</p>\r\n\r\n<p>다음과 같은 쿼리 $Q$개를 독립적으로 처리해 보자. 즉, 모든 쿼리에 대해 세 점의 초기 위치는 각각 $\\left( 1,0,0 \\right)$, $\\left( 0,1,0 \\right)$, $\\left( 0,0,1 \\right)$에서 시작한다.</p>\r\n\r\n<ul>\r\n<li>$l$ $r$: $l$번째 연산부터 $r$번째 연산까지 차례대로 세 점에 모두 적용했을 때 각 점의 좌표를 출력한다.</li>\r\n</ul>\r\n",
+  "input": "<p>첫 번째 줄에 연산의 개수 $N(1\\le N\\le 100\\, 000)$이 주어진다.</p>\r\n\r\n<p>두 번째 줄에 $N$개의 연산 $O_1,O_2,\\cdots ,O_N$이 공백으로 구분되어 주어진다. $O_i$는 <span style=\"color:#e74c3c;\"><code>X</code></span>, <span style=\"color:#e74c3c;\"><code>Y</code></span>, <span style=\"color:#e74c3c;\"><code>Z</code></span>, <span style=\"color:#e74c3c;\"><code>XX</code></span>, <span style=\"color:#e74c3c;\"><code>YY</code></span>, <span style=\"color:#e74c3c;\"><code>ZZ</code></span>, <span style=\"color:#e74c3c;\"><code>XY</code></span>, <span style=\"color:#e74c3c;\"><code>YX</code></span>, <span style=\"color:#e74c3c;\"><code>YZ</code></span>, <span style=\"color:#e74c3c;\"><code>ZY</code></span>, <span style=\"color:#e74c3c;\"><code>ZX</code></span>, <span style=\"color:#e74c3c;\"><code>XZ</code></span> 중 하나이다.</p>\r\n\r\n<p>세 번째 줄에 쿼리의 개수 $Q(1\\le Q\\le 100\\, 000)$가 주어진다.</p>\r\n\r\n<p>네 번째 줄부터 $Q$줄에 걸쳐 $i$번째 쿼리를 의미하는 정수 $l_i,r_i(1\\le l_i\\le r_i\\le N)$가 공백으로 구분되어 주어진다.</p>\r\n",
+  "output": "<p>첫 번째 줄부터 $3\\times Q$줄에 걸쳐 각 쿼리에 대한 답을 다음과 같이 출력한다.</p>\r\n\r\n<ul>\r\n<li>$\\left( 3i-2 \\right)$번째 줄에 $i$번째 쿼리를 $\\left( 1,0,0 \\right)$에 적용했을 때의 좌표를 공백으로 구분하여 출력한다.</li>\r\n<li>$\\left( 3i-1 \\right)$번째 줄에 $i$번째 쿼리를 $\\left( 0,1,0 \\right)$에 적용했을 때의 좌표를 공백으로 구분하여 출력한다.</li>\r\n<li>$3i$번째 줄에 $i$번째 쿼리를 $\\left( 0,0,1 \\right)$에 적용했을 때의 좌표를 공백으로 구분하여 출력한다.</li>\r\n</ul>\r\n",
+  "samples": [
+    {
+      "input": "4\nX Y XY Z\n3\n1 2\n2 4\n3 4\n",
+      "output": "0 0 -1\n1 0 0\n0 -1 0\n0 0 1\n-1 0 0\n0 1 0\n0 1 0\n-1 0 0\n0 0 -1\n"
+    },
+    {
+      "input": "5\nXY YX Z Z ZZ\n3\n1 2\n2 3\n3 5\n",
+      "output": "1 0 0\n0 1 0\n0 0 1\n0 1 0\n-1 0 0\n0 0 -1\n1 0 0\n0 1 0\n0 0 1\n"
+    }
+  ],
+  "hint": null,
+  "source": "University, 고려대학교, 고려대학교 프로그래밍 경시대회, 2025 고려대학교 프로그래밍 경시대회 (KCPC), Div. 2, austin0817, foxpython, cywohoy, dong0625, ezh8n, kidw0124, leeminjae, mathjuny, sshs29hanul, tlsdydaud1, utilforever, w8385, wnguscjf01",
+  "level": 14,
+  "tags": [
+    "math",
+    "implementation",
+    "prefix_sum",
+    "linear_algebra"
+  ],
+  "accepted_user_count": 25,
+  "submission_count": null,
+  "average_tries": 1.3600000143051147
+}
