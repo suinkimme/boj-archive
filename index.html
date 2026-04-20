@@ -340,6 +340,9 @@ function applyFilter() {
   });
   page = 1;
   render();
+  const params = new URLSearchParams();
+  if (query) params.set('q', query);
+  history.replaceState(null, '', params.toString() ? `?${params}` : location.pathname);
 }
 
 function render() {
@@ -583,15 +586,6 @@ fetch('index.json')
     document.getElementById('content').innerHTML = '<div class="empty">index.json 로딩 실패</div>';
   });
 
-// 검색 시 URL 업데이트 (뒤로가기/북마크 지원)
-const origApplyFilter = applyFilter;
-function applyFilter() {
-  origApplyFilter();
-  const params = new URLSearchParams();
-  if (query) params.set('q', query);
-  const newUrl = params.toString() ? `?${params}` : location.pathname;
-  history.replaceState(null, '', newUrl);
-}
 </script>
 </body>
 </html>
