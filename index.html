@@ -878,10 +878,17 @@ function attachRunnerListeners(samples, problemId) {
     saveCode(lang);
     const chips = [...document.querySelectorAll('.py-chip-case')];
     const statusEl = document.getElementById('py-status');
-    runAllBtn.disabled = true;
     if (statusEl) statusEl.textContent = '';
-    for (const chip of chips) await runTestCase(+chip.dataset.idx, code, lang);
-    runAllBtn.disabled = false;
+    runAllBtn.disabled = true;
+    try {
+        for (const chip of chips) {
+            await runTestCase(+chip.dataset.idx, code, lang);
+        }
+    } catch (err) {
+        console.error("실행 중 오류 발생:", err);
+    } finally {
+        runAllBtn.disabled = false;
+    }
     let passed = 0, total = 0;
     document.querySelectorAll('.py-chip-case').forEach(c => {
       const v = c.dataset.verdict;
