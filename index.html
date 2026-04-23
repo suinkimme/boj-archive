@@ -316,6 +316,14 @@
       .py-detail-grid { grid-template-columns:1fr; }
       .py-detail-col + .py-detail-col { border-left:none; border-top:1px solid var(--border); }
     }
+    .runner-lang-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .runner-lang-select {
+      background:var(--surface2); border:1px solid var(--border);
+      color:var(--text); border-radius:6px; padding:5px 10px;
+      font-size:13px; font-family:'JetBrains Mono',monospace; cursor:pointer; outline:none;
+    }
+    .runner-lang-select:focus { border-color:var(--accent); }
+    .runner-lang-hint { font-size:11px; color:var(--text-muted); }
 
     /* Loading / Error */
     .loading { text-align: center; padding: 60px; color: var(--text-muted); }
@@ -548,10 +556,15 @@ function renderModal(p) {
     ${p.source ? `<div class="modal-section"><div class="modal-section-title">출처</div><div style="color:var(--text-muted);font-size:14px">${escHtml(p.source)}</div></div>` : ''}
     <hr class="modal-divider">
     <div class="modal-section py-runner" id="py-runner">
-      <div class="modal-section-title">Python 실행기</div>
-      <textarea class="py-textarea" id="py-code" rows="12"
-        placeholder="# Python 코드를 여기에 입력하세요&#10;import sys&#10;input = sys.stdin.readline"
-        spellcheck="false"></textarea>
+      <div class="modal-section-title">코드 실행기</div>
+      <div class="runner-lang-row">
+        <select class="runner-lang-select" id="runner-lang">
+          <option value="python">Python 3</option>
+          <option value="cpp">C / C++</option>
+        </select>
+        <span class="runner-lang-hint" id="runner-lang-hint"></span>
+      </div>
+      <textarea class="py-textarea" id="py-code" rows="12" spellcheck="false"></textarea>
       <div class="py-top-actions">
         <button class="py-run-all-btn" id="py-run-all-btn">▶▶ 전체 실행</button>
         <span class="py-status" id="py-status"></span>
@@ -573,7 +586,7 @@ function renderModal(p) {
     });
   });
 
-  attachPyRunnerListeners(currentSamples);
+  attachRunnerListeners(currentSamples, p.id);
 }
 
 function fixImgPaths(html, id) {
@@ -601,73 +614,103 @@ function closeModal() {
   setMeta('og:title', 'BOJ Archive — 백준 온라인 저지 문제 아카이브');
 }
 
-// ── Python Runner ────────────────────────────────────────────────
-let pyWorker      = null;
-let workerReady   = false;
-let workerQueue   = [];
-let pendingRuns   = new Map();
-let runSeq        = 0;
-let runTimeout    = null;
+// ── Multi-Language Runner ─────────────────────────────────────────
 let currentSamples = [];
 const RUN_TIMEOUT_MS = 10000;
 
-function createWorker() {
-  pyWorker = new Worker('pyodide-worker.js');
-  pyWorker.onmessage = ({ data }) => {
+const langWorkers  = {};
+const langReady    = {};
+const langQueues   = {};
+const langPending  = {};
+const langSeq      = {};
+const langTimeout  = {};
+const langCodeStore = {};
+
+const LANG_PLACEHOLDERS = {
+  python: '# Python 코드를 여기에 입력하세요\nimport sys\ninput = sys.stdin.readline',
+  cpp:    '#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    \n    return 0;\n}',
+};
+const LANG_HINTS = {
+  python: 'Pyodide WASM',
+  cpp:    'JSCPP 인터프리터 (일부 제한)',
+};
+const LANG_WORKER_FILES = {
+  python: 'pyodide-worker.js',
+  cpp:    'jscpp-worker.js',
+};
+const LANG_LOADING_MSG = {
+  python: 'Pyodide 로딩 중... (최초 실행 시 수십 초 소요)',
+  cpp:    'JSCPP 로딩 중...',
+};
+
+function createLangWorker(lang) {
+  const opts = lang === 'cpp' ? { type: 'module' } : undefined;
+  const w = new Worker(LANG_WORKER_FILES[lang], opts);
+  langWorkers[lang]  = w;
+  langReady[lang]    = false;
+  langPending[lang]  = langPending[lang] ?? new Map();
+  langSeq[lang]      = langSeq[lang] ?? 0;
+  langQueues[lang]   = langQueues[lang] ?? [];
+  w.onmessage = ({ data }) => {
     if (data.type === 'ready') {
-      workerReady = true;
-      workerQueue.splice(0).forEach(cb => cb());
+      langReady[lang] = true;
+      (langQueues[lang] ?? []).splice(0).forEach(cb => cb());
       return;
     }
     if (data.type === 'result') {
-      const resolve = pendingRuns.get(data.id);
+      const resolve = langPending[lang].get(data.id);
       if (resolve) {
-        pendingRuns.delete(data.id);
+        langPending[lang].delete(data.id);
         resolve({ output: data.output, error: data.error });
       }
     }
   };
-  pyWorker.onerror = (e) => {
+  w.onerror = (e) => {
     const msg = 'Worker 오류: ' + (e.message ?? '');
-    pendingRuns.forEach(resolve => resolve({ output: null, error: msg }));
-    pendingRuns.clear();
-    resetWorker();
+    langPending[lang].forEach(resolve => resolve({ output: null, error: msg }));
+    langPending[lang].clear();
+    resetLangWorker(lang);
   };
 }
 
-function resetWorker() {
-  if (pyWorker) { pyWorker.terminate(); pyWorker = null; }
-  workerReady = false;
-  workerQueue = [];
-  clearTimeout(runTimeout);
-  runTimeout = null;
-  pendingRuns.forEach(resolve => resolve({ output: null, error: '시간 초과 (10초)' }));
-  pendingRuns.clear();
+function resetLangWorker(lang) {
+  if (langWorkers[lang]) { langWorkers[lang].terminate(); langWorkers[lang] = null; }
+  langReady[lang] = false;
+  langQueues[lang] = [];
+  clearTimeout(langTimeout[lang]);
+  langTimeout[lang] = null;
+  if (langPending[lang]) {
+    langPending[lang].forEach(resolve => resolve({ output: null, error: '시간 초과 (10초)' }));
+    langPending[lang].clear();
+  }
 }
 
-function ensureWorker(onReady) {
-  if (workerReady) { onReady(); return; }
-  workerQueue.push(onReady);
-  if (!pyWorker) createWorker();
+function ensureLangWorker(lang, onReady) {
+  if (langReady[lang]) { onReady(); return; }
+  if (!langQueues[lang]) langQueues[lang] = [];
+  langQueues[lang].push(onReady);
+  if (!langWorkers[lang]) createLangWorker(lang);
 }
 
-function runPyCode(code, stdinData) {
+function runCode(lang, code, stdinData) {
   return new Promise(resolve => {
     const statusEl = document.getElementById('py-status');
-    if (!workerReady && statusEl) statusEl.textContent = 'Pyodide 로딩 중... (최초 실행 시 수십 초 소요)';
-    ensureWorker(() => {
+    if (!langReady[lang] && statusEl) statusEl.textContent = LANG_LOADING_MSG[lang] ?? '';
+    ensureLangWorker(lang, () => {
       if (statusEl) statusEl.textContent = '';
-      const id = ++runSeq;
-      pendingRuns.set(id, resolve);
-      clearTimeout(runTimeout);
-      runTimeout = setTimeout(() => {
-        if (pendingRuns.has(id)) {
-          pendingRuns.delete(id);
+      if (!langPending[lang]) langPending[lang] = new Map();
+      if (!(lang in langSeq)) langSeq[lang] = 0;
+      const id = ++langSeq[lang];
+      langPending[lang].set(id, resolve);
+      clearTimeout(langTimeout[lang]);
+      langTimeout[lang] = setTimeout(() => {
+        if (langPending[lang].has(id)) {
+          langPending[lang].delete(id);
           resolve({ output: null, error: '시간 초과 (10초)' });
-          resetWorker();
+          resetLangWorker(lang);
         }
       }, RUN_TIMEOUT_MS);
-      pyWorker.postMessage({ id, code, stdin: stdinData });
+      langWorkers[lang].postMessage({ id, code, stdin: stdinData });
     });
   });
 }
@@ -735,7 +778,7 @@ function addCase(label, inputVal, expectedVal, isCustom, autoOpen = false) {
   if (autoOpen) { detail.classList.add('open'); chip.classList.add('active'); }
 }
 
-async function runTestCase(idx, code) {
+async function runTestCase(idx, code, lang) {
   const chip   = document.querySelector(`.py-chip-case[data-idx="${idx}"]`);
   const detail = document.querySelector(`.py-detail[data-idx="${idx}"]`);
   if (!chip || !detail) return;
@@ -749,7 +792,7 @@ async function runTestCase(idx, code) {
   chip.className = 'py-chip py-chip-case running';
   chip.querySelector('.py-chip-icon').textContent = '';
 
-  const { output, error } = await runPyCode(code, stdin);
+  const { output, error } = await runCode(lang, code, stdin);
 
   chip.classList.remove('running');
 
@@ -778,11 +821,38 @@ async function runTestCase(idx, code) {
   }
 }
 
-function attachPyRunnerListeners(samples) {
+function attachRunnerListeners(samples, problemId) {
   const codeEl    = document.getElementById('py-code');
+  const langSel   = document.getElementById('runner-lang');
+  const hintEl    = document.getElementById('runner-lang-hint');
   const addBtn    = document.getElementById('py-add-btn');
   const runAllBtn = document.getElementById('py-run-all-btn');
   if (!codeEl) return;
+
+  const getLang = () => langSel?.value ?? 'python';
+
+  function restoreCode(lang) {
+    const key = lang + ':' + problemId;
+    codeEl.value = langCodeStore[key] ?? '';
+    codeEl.placeholder = LANG_PLACEHOLDERS[lang] ?? '';
+    if (hintEl) hintEl.textContent = LANG_HINTS[lang] ?? '';
+  }
+
+  function saveCode(lang) {
+    langCodeStore[lang + ':' + problemId] = codeEl.value;
+  }
+
+  const savedLang = sessionStorage.getItem('runner-lang') ?? 'python';
+  if (langSel) langSel.value = savedLang;
+  restoreCode(savedLang);
+
+  langSel?.addEventListener('change', () => {
+    const prev = sessionStorage.getItem('runner-lang') ?? 'python';
+    saveCode(prev);
+    const lang = getLang();
+    sessionStorage.setItem('runner-lang', lang);
+    restoreCode(lang);
+  });
 
   caseIdx = 0;
   samples.forEach((s, i) => addCase(`예제 ${i + 1}`, s.input ?? '', s.output ?? '', false));
@@ -803,12 +873,14 @@ function attachPyRunnerListeners(samples) {
   });
 
   runAllBtn.addEventListener('click', async () => {
+    const lang = getLang();
     const code = codeEl.value;
+    saveCode(lang);
     const chips = [...document.querySelectorAll('.py-chip-case')];
     const statusEl = document.getElementById('py-status');
     runAllBtn.disabled = true;
     if (statusEl) statusEl.textContent = '';
-    for (const chip of chips) await runTestCase(+chip.dataset.idx, code);
+    for (const chip of chips) await runTestCase(+chip.dataset.idx, code, lang);
     runAllBtn.disabled = false;
     let passed = 0, total = 0;
     document.querySelectorAll('.py-chip-case').forEach(c => {
