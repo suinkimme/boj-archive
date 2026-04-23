@@ -1,5 +1,8 @@
-const CACHE = 'pyodide-v0.27.5';
-const PYODIDE_ORIGIN = 'https://cdn.jsdelivr.net/pyodide/v0.27.5/full/';
+const CACHE = 'boj-runners-v1';
+const CACHED_ORIGINS = [
+  'https://cdn.jsdelivr.net/pyodide/v0.27.5/full/',
+  'https://esm.sh/',
+];
 
 self.addEventListener('install', () => self.skipWaiting());
 
@@ -12,7 +15,7 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  if (!e.request.url.startsWith(PYODIDE_ORIGIN)) return;
+  if (!CACHED_ORIGINS.some(o => e.request.url.startsWith(o))) return;
   e.respondWith(
     caches.open(CACHE).then(cache =>
       cache.match(e.request).then(hit => {
