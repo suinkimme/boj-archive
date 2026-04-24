@@ -259,7 +259,6 @@
     .py-run-all-btn:hover:not(:disabled) { opacity:.85; }
     .py-run-all-btn:disabled { opacity:.45; cursor:default; }
     .py-status { font-size:13px; font-weight:600; color:var(--text-muted); }
-    .py-status.error { color:#f87171; }
     .py-chips-row { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:12px; }
     .py-chip {
       display:inline-flex; align-items:center; gap:5px;
@@ -809,7 +808,7 @@ async function runTestCase(idx, code, lang) {
     actualEl.textContent = output;
     actualEl.className = 'py-detail-pre py-detail-actual';
     if (expected.trim() !== '') {
-      const pass = output.trim() === expected.trim();
+      const pass = (output ?? '').trim() === expected.trim();
       chip.className = 'py-chip py-chip-case ' + (pass ? 'pass' : 'fail');
       chip.querySelector('.py-chip-icon').textContent = pass ? '✓' : '✗';
       chip.dataset.verdict = pass ? 'pass' : 'fail';
@@ -879,7 +878,7 @@ function attachRunnerListeners(samples, problemId) {
     saveCode(lang);
     const chips = [...document.querySelectorAll('.py-chip-case')];
     const statusEl = document.getElementById('py-status');
-    if (statusEl) { statusEl.textContent = ''; statusEl.classList.remove('error'); }
+    if (statusEl) statusEl.textContent = '';
     runAllBtn.disabled = true;
     try {
         for (const chip of chips) {
@@ -887,10 +886,6 @@ function attachRunnerListeners(samples, problemId) {
         }
     } catch (err) {
         console.error("실행 중 오류 발생:", err);
-        if (statusEl) {
-            statusEl.textContent = `오류: ${err?.toString() ?? err}`;
-            statusEl.classList.add('error');
-        }
     } finally {
         runAllBtn.disabled = false;
     }
@@ -900,7 +895,7 @@ function attachRunnerListeners(samples, problemId) {
       if (v === 'pass' || v === 'fail' || v === 'error') total++;
       if (v === 'pass') passed++;
     });
-    if (statusEl && total > 0) { statusEl.textContent = `${passed} / ${total} 통과`; statusEl.classList.remove('error'); }
+    if (statusEl && total > 0) statusEl.textContent = `${passed} / ${total} 통과`;
   });
 }
 
