@@ -512,8 +512,13 @@ async function runTestCase(idx, code, lang) {
   chip.classList.remove('running');
 
   if (error) {
-    actualEl.textContent = error;
-    actualEl.className = 'py-detail-pre py-detail-actual py-stderr';
+    if (output) {
+      actualEl.innerHTML = `<span>${escHtml(output)}</span><span class="py-stderr">${escHtml(error)}</span>`;
+      actualEl.className = 'py-detail-pre py-detail-actual';
+    } else {
+      actualEl.textContent = error;
+      actualEl.className = 'py-detail-pre py-detail-actual py-stderr';
+    }
     chip.className = 'py-chip py-chip-case error';
     chip.querySelector('.py-chip-icon').textContent = '!';
     chip.dataset.verdict = 'error';
@@ -618,9 +623,6 @@ function attachRunnerListeners(samples, problemId) {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(() => {});
 }
-
-// Pyodide 워커를 페이지 로드 시점에 미리 초기화
-createLangWorker('python');
 
 // Init
 document.getElementById('modal-close').addEventListener('click', closeModal);

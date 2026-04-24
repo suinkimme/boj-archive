@@ -47,7 +47,7 @@ _stderr_buf = io.StringIO()
 sys.stdout  = _stdout_buf
 sys.stderr  = _stderr_buf
 try:
-    exec(compile(_user_code, '<stdin>', 'exec'), {})
+    exec(compile(_user_code, '<stdin>', 'exec'), {"__builtins__": __builtins__})
 except Exception:
     traceback.print_exc(file=_stderr_buf)
 `,
@@ -59,7 +59,7 @@ except Exception:
     self.postMessage({
       type: "result",
       id,
-      output: stderr ? null : output,
+      output: output || null,
       error: stderr || null,
     });
   } catch (err) {
@@ -67,7 +67,9 @@ except Exception:
     let stderr = null;
     try {
       stderr = namespace?.get("_stderr_buf")?.getvalue();
-    } catch {}
+    } catch (e) {
+      console.warn("stderr 버퍼 읽기 실패:", e);
+    }
     self.postMessage({
       type: "result",
       id,
