@@ -512,8 +512,13 @@ async function runTestCase(idx, code, lang) {
   chip.classList.remove('running');
 
   if (error) {
-    actualEl.textContent = error;
-    actualEl.className = 'py-detail-pre py-detail-actual py-stderr';
+    if (output) {
+      actualEl.innerHTML = `<span>${escHtml(output)}</span><span class="py-stderr">${escHtml(error)}</span>`;
+      actualEl.className = 'py-detail-pre py-detail-actual';
+    } else {
+      actualEl.textContent = error;
+      actualEl.className = 'py-detail-pre py-detail-actual py-stderr';
+    }
     chip.className = 'py-chip py-chip-case error';
     chip.querySelector('.py-chip-icon').textContent = '!';
     chip.dataset.verdict = 'error';
@@ -523,7 +528,7 @@ async function runTestCase(idx, code, lang) {
     actualEl.textContent = output;
     actualEl.className = 'py-detail-pre py-detail-actual';
     if (expected.trim() !== '') {
-      const pass = output.trim() === expected.trim();
+      const pass = (output ?? '').trim() === expected.trim();
       chip.className = 'py-chip py-chip-case ' + (pass ? 'pass' : 'fail');
       chip.querySelector('.py-chip-icon').textContent = pass ? '✓' : '✗';
       chip.dataset.verdict = pass ? 'pass' : 'fail';
@@ -593,10 +598,17 @@ function attachRunnerListeners(samples, problemId) {
     saveCode(lang);
     const chips = [...document.querySelectorAll('.py-chip-case')];
     const statusEl = document.getElementById('py-status');
-    runAllBtn.disabled = true;
     if (statusEl) statusEl.textContent = '';
-    for (const chip of chips) await runTestCase(+chip.dataset.idx, code, lang);
-    runAllBtn.disabled = false;
+    runAllBtn.disabled = true;
+    try {
+        for (const chip of chips) {
+            await runTestCase(+chip.dataset.idx, code, lang);
+        }
+    } catch (err) {
+        console.error("실행 중 오류 발생:", err);
+    } finally {
+        runAllBtn.disabled = false;
+    }
     let passed = 0, total = 0;
     document.querySelectorAll('.py-chip-case').forEach(c => {
       const v = c.dataset.verdict;
