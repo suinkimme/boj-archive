@@ -904,6 +904,9 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(() => {});
 }
 
+// Pyodide 워커를 페이지 로드 시점에 미리 초기화
+createWorker();
+
 // Init
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal-overlay').addEventListener('click', e => {
