@@ -37,24 +37,35 @@ self.onmessage = async ({ data: { id, code, stdin } }) => {
     namespace.set("_stdin_data", stdin ?? "");
     namespace.set("_user_code", code);
 
+    // catch exception in Python so traceback is always written to _stderr_buf
     await pyodide.runPythonAsync(
       `
-import sys, io
-sys.stdin  = io.StringIO(_stdin_data)
+import sys, io, traceback
+sys.stdin   = io.StringIO(_stdin_data)
 _stdout_buf = io.StringIO()
 _stderr_buf = io.StringIO()
-sys.stdout = _stdout_buf
-sys.stderr = _stderr_buf
-exec(compile(_user_code, '<stdin>', 'exec'), {})
+sys.stdout  = _stdout_buf
+sys.stderr  = _stderr_buf
+try:
+    exec(compile(_user_code, '<stdin>', 'exec'), {})
+except Exception:
+    traceback.print_exc(file=_stderr_buf)
 `,
       { globals: namespace },
     );
 
     const output = namespace.get("_stdout_buf").getvalue();
     const stderr = namespace.get("_stderr_buf").getvalue();
-    self.postMessage({ type: "result", id, output, error: stderr || null });
+
+    // non-empty stderr means a Python exception was caught and formatted
+    self.postMessage({
+      type: "result",
+      id,
+      output: stderr ? null : output,
+      error: stderr || null,
+    });
   } catch (err) {
-    // prefer the Python traceback from stderr; fall back to the JS error message
+    // only JS/worker-level errors reach here (e.g. loadPackagesFromImports failure)
     let stderr = null;
     try {
       stderr = namespace?.get("_stderr_buf")?.getvalue();
