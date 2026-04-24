@@ -29,15 +29,15 @@ self.onmessage = async ({ data: { id, code, stdin } }) => {
 
   let namespace = null;
   try {
-    // download any third-party packages the code imports (numpy, pandas, etc.)
+    // 코드에서 import한 서드파티 패키지를 자동으로 다운로드 (numpy, pandas 등)
     await pyodide.loadPackagesFromImports(code);
 
-    // fresh namespace per run — prevents globals leaking across submissions
+    // 실행마다 새 namespace 생성 — 이전 제출의 전역 변수가 남지 않도록 격리
     namespace = pyodide.globals.get("dict")();
     namespace.set("_stdin_data", stdin ?? "");
     namespace.set("_user_code", code);
 
-    // catch exception in Python so traceback is always written to _stderr_buf
+    // Python 레벨에서 예외를 잡아 traceback을 _stderr_buf에 기록
     await pyodide.runPythonAsync(
       `
 import sys, io, traceback
@@ -56,8 +56,6 @@ except Exception:
 
     const output = namespace.get("_stdout_buf").getvalue();
     const stderr = namespace.get("_stderr_buf").getvalue();
-
-    // non-empty stderr means a Python exception was caught and formatted
     self.postMessage({
       type: "result",
       id,
@@ -65,7 +63,7 @@ except Exception:
       error: stderr || null,
     });
   } catch (err) {
-    // only JS/worker-level errors reach here (e.g. loadPackagesFromImports failure)
+    // JS/Worker 레벨 오류만 여기 도달 (예: loadPackagesFromImports 실패)
     let stderr = null;
     try {
       stderr = namespace?.get("_stderr_buf")?.getvalue();
@@ -77,7 +75,7 @@ except Exception:
       error: stderr || err.message || String(err),
     });
   } finally {
-    // Python proxy objects live in WASM memory and must be destroyed explicitly
+    // Python 프록시는 WASM 메모리에 남으므로 명시적으로 해제해야 함
     if (namespace?.destroy) namespace.destroy();
   }
 };
