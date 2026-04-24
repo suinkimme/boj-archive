@@ -1,4 +1,4 @@
-const CACHE = "boj-runners-v2";
+const CACHE = "boj-runners-v1";
 const CACHED_ORIGINS = [
   "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/",
   "https://esm.sh/",
