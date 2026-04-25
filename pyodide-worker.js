@@ -20,6 +20,6 @@ exec(compile(_user_code, '<cell>', 'exec'), {})
 `);
     self.postMessage({ type: 'result', id, output: py.globals.get('_buf').getvalue(), error: null });
   } catch (e) {
-    self.postMessage({ type: 'result', id, output: null, error: e.message ?? String(e) });
+    self.postMessage({ type: 'result', id, output: null, error: e.message || String(e) || 'Python error' });
   }
 };

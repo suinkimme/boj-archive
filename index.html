@@ -808,7 +808,7 @@ async function runTestCase(idx, code, lang) {
     actualEl.textContent = output;
     actualEl.className = 'py-detail-pre py-detail-actual';
     if (expected.trim() !== '') {
-      const pass = output.trim() === expected.trim();
+      const pass = (output ?? '').trim() === expected.trim();
       chip.className = 'py-chip py-chip-case ' + (pass ? 'pass' : 'fail');
       chip.querySelector('.py-chip-icon').textContent = pass ? '✓' : '✗';
       chip.dataset.verdict = pass ? 'pass' : 'fail';
