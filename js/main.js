@@ -36,7 +36,7 @@ function applyFilter() {
 }
 
 function render() {
-  const { items, total, totalPages, start } = getPaginationSlice(
+  const { items, total, totalPages, start, end } = getPaginationSlice(
     filtered,
     page,
   );
@@ -104,7 +104,7 @@ function render() {
     `<button class="page-btn" ${page === totalPages ? "disabled" : ""} id="next-btn">›</button>`,
   );
   pages.push(
-    `<span class="page-info">${start + 1}–${Math.min(start + PER_PAGE, total)} / ${total.toLocaleString()}</span>`,
+    `<span class="page-info">${start + 1}–${end} / ${total.toLocaleString()}</span>`,
   );
   document.getElementById("pagination").innerHTML = pages.join("");
 
