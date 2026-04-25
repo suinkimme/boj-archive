@@ -1,31 +1,20 @@
-const PER_PAGE = 50;
+import {
+  PER_PAGE,
+  TIER_NAMES,
+  TIER_COLORS,
+  escHtml,
+  fmtCount,
+  matchesTier,
+  fixImgPaths,
+  filterProblems,
+  getPaginationSlice,
+} from "./utils.js";
+
 // prettier-ignore
 let all = [], filtered = [], page = 1;
 
 // prettier-ignore
 let tierFilter = "all", tagFilter = "", query = "";
-
-// prettier-ignore
-const TIER_COLORS = [
-  "#64748b",
-  "#ad5600","#ad5600","#ad5600","#ad5600","#ad5600",
-  "#435f7a","#435f7a","#435f7a","#435f7a","#435f7a",
-  "#d97706","#d97706","#d97706","#d97706","#d97706",
-  "#059669","#059669","#059669","#059669","#059669",
-  "#0284c7","#0284c7","#0284c7","#0284c7","#0284c7",
-  "#e11d48","#e11d48","#e11d48","#e11d48","#e11d48",
-];
-
-// prettier-ignore
-const TIER_NAMES = [
-  "Unrated",
-  "Bronze V","Bronze IV","Bronze III","Bronze II","Bronze I",
-  "Silver V","Silver IV","Silver III","Silver II","Silver I",
-  "Gold V",  "Gold IV",  "Gold III",  "Gold II",  "Gold I",
-  "Platinum V","Platinum IV","Platinum III","Platinum II","Platinum I",
-  "Diamond V","Diamond IV","Diamond III","Diamond II","Diamond I",
-  "Ruby V",  "Ruby IV",  "Ruby III",  "Ruby II",  "Ruby I",
-];
 
 function tierBadge(level) {
   const name = TIER_NAMES[level] ?? "Unrated";
@@ -33,28 +22,8 @@ function tierBadge(level) {
   return `<span class="tier-badge" style="color:${color};background:${color}18;border:1px solid ${color}44">${name}</span>`;
 }
 
-function fmtCount(n) {
-  if (!n) return "-";
-  return n >= 10000 ? (n / 1000).toFixed(0) + "k" : n.toLocaleString();
-}
-
-function matchesTier(level, f) {
-  if (f === "all") return true;
-  if (f === "0") return level === 0 || level == null;
-  const [a, b] = f.split("-").map(Number);
-  return level >= a && level <= b;
-}
-
 function applyFilter() {
-  filtered = all.filter((p) => {
-    if (!matchesTier(p.level, tierFilter)) return false;
-    if (tagFilter && !p.tags?.includes(tagFilter)) return false;
-    if (query) {
-      const q = query.toLowerCase();
-      return String(p.id).includes(q) || p.title?.toLowerCase().includes(q);
-    }
-    return true;
-  });
+  filtered = filterProblems(all, { tierFilter, tagFilter, query });
   page = 1;
   render();
   const params = new URLSearchParams();
@@ -67,10 +36,10 @@ function applyFilter() {
 }
 
 function render() {
-  const total = filtered.length;
-  const totalPages = Math.ceil(total / PER_PAGE);
-  const start = (page - 1) * PER_PAGE;
-  const items = filtered.slice(start, start + PER_PAGE);
+  const { items, total, totalPages, start } = getPaginationSlice(
+    filtered,
+    page,
+  );
 
   document.getElementById("stat").textContent =
     `${total.toLocaleString()} 문제`;
@@ -278,23 +247,9 @@ function renderModal(p) {
   attachRunnerListeners(currentSamples, p.id);
 }
 
-function fixImgPaths(html, id) {
-  return html.replace(
-    /(<img\s[^>]*src=["'])(?!https?:\/\/|\/\/|\/|problems\/)(.*?)(["'])/gi,
-    (_, pre, src, suf) => `${pre}problems/${id}/${src}${suf}`,
-  );
-}
-
 function section(title, html, id) {
   if (!html) return "";
   return `<div class="modal-section"><div class="modal-section-title">${title}</div><div class="problem-content">${fixImgPaths(html, id)}</div></div>`;
-}
-
-function escHtml(s) {
-  return String(s)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
 }
 
 function closeModal() {
