@@ -18,12 +18,17 @@ self.onmessage = ({ data: { id, code, stdin } }) => {
       },
     };
     JSCPP.run(src, stdin ?? "", cfg);
-    self.postMessage({ type: "result", id, output, error: null });
+    self.postMessage({
+      type: "result",
+      id,
+      output: output || null,
+      error: null,
+    });
   } catch (e) {
     self.postMessage({
       type: "result",
       id,
-      output: null,
+      output: output || null,
       error: e.message ?? String(e),
     });
   }

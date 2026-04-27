@@ -1,10 +1,8 @@
 import {
-  PER_PAGE,
   TIER_NAMES,
   TIER_COLORS,
   escHtml,
   fmtCount,
-  matchesTier,
   fixImgPaths,
   filterProblems,
   getPaginationSlice,
