@@ -8,6 +8,8 @@ import {
   getPaginationSlice,
 } from "./utils.js";
 
+import { tags as tagMap } from "./tags.js";
+
 // prettier-ignore
 let all = [], filtered = [], page = 1;
 
@@ -31,6 +33,10 @@ function applyFilter() {
     "",
     params.toString() ? `?${params}` : location.pathname,
   );
+}
+
+function getTagLabel(tag) {
+  return tagMap[tag] ?? tag;
 }
 
 function render() {
@@ -58,7 +64,7 @@ function render() {
       <td>${tierBadge(p.level ?? 0)}</td>
       <td class="tag-list">${(p.tags ?? [])
         .slice(0, 3)
-        .map((t) => `<span class="tag">${t}</span>`)
+        .map((t) => `<span class="tag">${getTagLabel(t)}</span>`)
         .join("")}</td>
       <td class="accept-count">${fmtCount(p.accepted_user_count)}</td>
     </tr>`,
@@ -147,11 +153,13 @@ async function openProblem(id, pushState = true) {
     renderModal(p);
     // 제목 및 메타 업데이트
     const tierName = TIER_NAMES[p.level ?? 0] ?? "Unrated";
+    const tags = (p.tags ?? []).map((t) => getTagLabel(t)).join(", ");
+
     document.title = `${p.id}번 ${p.title} — BOJ Archive`;
     setMeta("og:title", `${p.id}번 ${p.title} [${tierName}] — BOJ Archive`);
     setMeta(
       "og:description",
-      `${p.time_limit ?? ""} | ${p.memory_limit ?? ""} | 태그: ${(p.tags ?? []).join(", ")}`,
+      `${p.time_limit ?? ""} | ${p.memory_limit ?? ""} | 태그: ${tags}`,
     );
     setMeta(
       "twitter:title",
@@ -187,7 +195,9 @@ function renderModal(p) {
     .join("");
 
   const tags = (p.tags ?? [])
-    .map((t) => `<span class="modal-tag" data-tag="${t}">${t}</span>`)
+    .map(
+      (t) => `<span class="modal-tag" data-tag="${t}">${getTagLabel(t)}</span>`,
+    )
     .join("");
 
   document.getElementById("modal-content").innerHTML = `
@@ -668,7 +678,7 @@ fetch("index.json")
     topTags.forEach((t) => {
       const o = document.createElement("option");
       o.value = t;
-      o.textContent = `${t} (${tagCount[t]})`;
+      o.textContent = `${getTagLabel(t)} (${tagCount[t]})`;
       sel.appendChild(o);
     });
 
