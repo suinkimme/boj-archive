@@ -77,6 +77,8 @@ function render() {
       <tbody>${rows}</tbody>
     </table>`;
 
+  renderMath("content");
+
   // Pagination
   const pages = [];
   pages.push(
@@ -235,7 +237,7 @@ function renderModal(p) {
     </div>
   `;
 
-  renderMath();
+  renderMath("modal-content");
 
   // Tag click → filter
   document.querySelectorAll(".modal-tag").forEach((el) => {
@@ -250,9 +252,10 @@ function renderModal(p) {
   attachRunnerListeners(currentSamples, p.id);
 }
 
-function renderMath() {
-  const el = document.getElementById("modal-content");
+function renderMath(id) {
+  const el = document.getElementById(id);
   if (!el || typeof renderMathInElement !== "function") return;
+
   renderMathInElement(el, {
     delimiters: [
       { left: "$$", right: "$$", display: true },
