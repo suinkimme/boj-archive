@@ -235,6 +235,8 @@ function renderModal(p) {
     </div>
   `;
 
+  renderMath();
+
   // Tag click → filter
   document.querySelectorAll(".modal-tag").forEach((el) => {
     el.addEventListener("click", () => {
@@ -246,6 +248,21 @@ function renderModal(p) {
   });
 
   attachRunnerListeners(currentSamples, p.id);
+}
+
+function renderMath() {
+  const el = document.getElementById("modal-content");
+  if (!el || typeof renderMathInElement !== "function") return;
+  renderMathInElement(el, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "\\[", right: "\\]", display: true },
+      { left: "$", right: "$", display: false },
+      { left: "\\(", right: "\\)", display: false },
+    ],
+    throwOnError: false,
+    ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+  });
 }
 
 function section(title, html, id) {
