@@ -1,0 +1,81 @@
+'use client'
+
+import type { Level } from './types'
+
+interface ProblemItemProps {
+  id: number
+  title: string
+  level: Level
+  completedCount: number
+  rate: number
+  done: boolean
+  onToggleDone: () => void
+}
+
+const LEVEL_COLOR: Record<Level, string> = {
+  0: 'text-text-muted',
+  1: 'text-status-success',
+  2: 'text-status-success',
+  3: 'text-status-warning',
+  4: 'text-status-danger',
+  5: 'text-status-danger',
+}
+
+export function ProblemItem({
+  title,
+  level,
+  completedCount,
+  rate,
+  done,
+  onToggleDone,
+}: ProblemItemProps) {
+  return (
+    <li className="list-none">
+      <button
+        type="button"
+        onClick={onToggleDone}
+        aria-pressed={done}
+        className="w-full text-left group flex items-center gap-4 px-3 py-4 hover:bg-surface-page transition-colors"
+      >
+        <div className="flex-1 min-w-0">
+          <h3 className="text-[15px] font-semibold text-text-primary mb-1 truncate m-0 group-hover:text-brand-red transition-colors">
+            {title}
+          </h3>
+          <p className="text-xs text-text-muted leading-normal m-0">
+            <span className={`font-medium ${LEVEL_COLOR[level]}`}>Lv. {level}</span>
+            <span className="mx-2 text-border-key" aria-hidden="true">
+              ·
+            </span>
+            완료{' '}
+            <span className="text-text-secondary tabular-nums">
+              {completedCount.toLocaleString()}명
+            </span>
+            <span className="mx-2 text-border-key" aria-hidden="true">
+              ·
+            </span>
+            정답률{' '}
+            <span className="text-text-secondary tabular-nums">{rate.toFixed(1)}%</span>
+          </p>
+        </div>
+
+        {done && (
+          <span
+            aria-label="완료"
+            className="flex items-center justify-center w-5 h-5 rounded-full bg-brand-red flex-shrink-0"
+          >
+            <svg
+              className="w-3 h-2.5 text-white"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={3}
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+        )}
+      </button>
+    </li>
+  )
+}
