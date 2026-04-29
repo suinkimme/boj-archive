@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boj-archive.local/schemas/counterexample-result.schema.json",
+  "title": "Counterexample Finder Result",
+  "type": "object",
+  "required": ["schemaVersion", "status", "problem", "run", "limits", "result", "counterexample", "error"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "status": {
+      "enum": ["counterexample_found", "not_found", "unsupported", "harness_error"]
+    },
+    "problem": {
+      "type": "object",
+      "required": ["id", "title", "supportLevel", "artifactVersion"],
+      "properties": {
+        "id": { "type": "integer" },
+        "title": { "type": ["string", "null"] },
+        "supportLevel": {
+          "type": ["string", "null"],
+          "enum": ["full", "oracle-lite", "metamorphic", "edge-only", "unsupported", null]
+        },
+        "artifactVersion": { "type": ["integer", "null"] }
+      }
+    },
+    "run": {
+      "type": "object",
+      "required": ["language", "codePath", "runsRequested", "runsExecuted", "seed"],
+      "properties": {
+        "language": { "enum": ["javascript", "python"] },
+        "codePath": { "type": "string" },
+        "runsRequested": { "type": "integer", "minimum": 1 },
+        "runsExecuted": { "type": "integer", "minimum": 0 },
+        "seed": { "type": "string" }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "required": ["timeoutMs", "maxOutputBytes"],
+      "properties": {
+        "timeoutMs": { "type": "integer", "minimum": 1 },
+        "maxOutputBytes": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "result": {
+      "type": "object",
+      "required": ["guarantee", "message"],
+      "properties": {
+        "guarantee": { "const": "not_found_does_not_prove_correctness" },
+        "message": { "type": "string" }
+      }
+    },
+    "counterexample": {
+      "type": ["object", "null"],
+      "properties": {
+        "runIndex": { "type": "integer", "minimum": 0 },
+        "failureKind": { "enum": ["wrong_answer", "runtime_error", "timeout", "output_limit"] },
+        "input": { "type": "string" },
+        "expectedOutput": { "type": "string" },
+        "actualOutput": { "type": "string" },
+        "normalizedExpected": { "type": "string" },
+        "normalizedActual": { "type": "string" },
+        "stderr": { "type": "string" },
+        "timedOut": { "type": "boolean" },
+        "outputTruncated": { "type": "boolean" },
+        "shrunk": { "type": "boolean" }
+      }
+    },
+    "error": {
+      "type": ["object", "null"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "invalid_args",
+            "missing_problem_data",
+            "missing_code_file",
+            "unsupported_problem",
+            "generator_error",
+            "oracle_error",
+            "runner_error",
+            "missing_runtime"
+          ]
+        },
+        "message": { "type": "string" }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "save": {
+      "type": "object",
+      "required": ["status", "path"],
+      "properties": {
+        "status": { "enum": ["saved", "skipped", "failed"] },
+        "path": { "type": "string" },
+        "overwritten": { "type": "boolean" },
+        "reason": { "type": "string" },
+        "error": {
+          "type": "object",
+          "required": ["kind", "message"],
+          "properties": {
+            "kind": { "type": "string" },
+            "message": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
