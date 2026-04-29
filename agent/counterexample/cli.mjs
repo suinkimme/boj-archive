@@ -1,6 +1,8 @@
 import { promises as fs, constants as fsConstants } from 'node:fs';
 import path from 'node:path';
+import { createReplayCase, writeReplayCaseFile } from './case-file.mjs';
 import { runCounterexample } from './harness.mjs';
+import { loadProblemArtifact } from './registry.mjs';
 import { makeRandomSeed } from './rng.mjs';
 import { EXIT_CODES, exitCodeForReport, makeBaseReport, writeReport } from './report.mjs';
 
@@ -21,6 +23,7 @@ Options:
       --json                 print exactly one JSON object to stdout
       --timeout-ms <n>       per-execution timeout (default: ${DEFAULT_TIMEOUT_MS})
       --max-output-bytes <n> combined stdout/stderr cap (default: ${DEFAULT_MAX_OUTPUT_BYTES})
+      --save <path>          write a replay case JSON when a counterexample is found
       --no-shrink            skip counterexample minimization
       --help                 print this help
 
@@ -82,7 +85,8 @@ export function parseArgs(argv) {
         flag === '--seed' ||
         flag === '-s' ||
         flag === '--timeout-ms' ||
-        flag === '--max-output-bytes'
+        flag === '--max-output-bytes' ||
+        flag === '--save'
       ) {
         const next = readValue(argv, i, flag);
         i += 1;
@@ -121,6 +125,9 @@ export function parseArgs(argv) {
         break;
       case '--max-output-bytes':
         options.maxOutputBytes = parseInteger(value, '--max-output-bytes');
+        break;
+      case '--save':
+        options.savePath = value;
         break;
       case '--json':
         options.json = true;
@@ -162,6 +169,16 @@ async function readableFile(filePath) {
   } catch {
     return false;
   }
+}
+
+async function saveCounterexampleCase({ report, savePath }) {
+  const artifact = await loadProblemArtifact(report.problem.id);
+  if (!artifact) {
+    throw new Error(`No counterexample artifact is available for problem ${report.problem.id}.`);
+  }
+
+  const replayCase = createReplayCase({ report, artifact });
+  return writeReplayCaseFile(savePath, replayCase);
 }
 
 function missingCodeFileReport({ problemId, language, codePath, runs, seed, timeoutMs, maxOutputBytes }) {
@@ -208,6 +225,13 @@ export async function runCli(argv, { cwd = process.cwd(), stdout = process.stdou
       timeoutMs: options.timeoutMs,
       maxOutputBytes: options.maxOutputBytes,
     });
+    if (options.savePath) {
+      report.save = {
+        status: 'skipped',
+        path: path.resolve(cwd, options.savePath),
+        reason: 'result status is harness_error',
+      };
+    }
     writeReport(report, { json: options.json, stdout });
     return EXIT_CODES.harness_error;
   }
@@ -224,6 +248,40 @@ export async function runCli(argv, { cwd = process.cwd(), stdout = process.stdou
     shrink: options.shrink,
   });
 
+  let exitCode = exitCodeForReport(report);
+  if (options.savePath) {
+    const absoluteSavePath = path.resolve(cwd, options.savePath);
+    if (report.status === 'counterexample_found') {
+      try {
+        const saveResult = await saveCounterexampleCase({
+          report,
+          savePath: absoluteSavePath,
+        });
+        report.save = {
+          status: 'saved',
+          path: saveResult.path,
+          overwritten: saveResult.overwritten,
+        };
+      } catch (error) {
+        report.save = {
+          status: 'failed',
+          path: absoluteSavePath,
+          error: {
+            kind: 'save_failed',
+            message: error.message,
+          },
+        };
+        exitCode = EXIT_CODES.harness_error;
+      }
+    } else {
+      report.save = {
+        status: 'skipped',
+        path: absoluteSavePath,
+        reason: `result status is ${report.status}`,
+      };
+    }
+  }
+
   writeReport(report, { json: options.json, stdout });
-  return exitCodeForReport(report);
+  return exitCode;
 }

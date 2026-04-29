@@ -117,6 +117,17 @@ export function formatHumanReport(report) {
     }
   }
 
+  if (report.save) {
+    if (report.save.status === 'saved') {
+      lines.push('', `Saved case: ${report.save.path}`);
+      if (report.save.overwritten) {
+        lines.push('Save note: overwritten existing file');
+      }
+    } else if (report.save.status === 'failed') {
+      lines.push('', `Save failed: ${report.save.error?.message ?? 'unknown error'}`);
+    }
+  }
+
   return `${lines.join('\n')}\n`;
 }
 

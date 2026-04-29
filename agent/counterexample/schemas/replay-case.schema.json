@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boj-archive.local/schemas/counterexample-replay-case.schema.json",
+  "title": "Counterexample Replay Case",
+  "type": "object",
+  "required": [
+    "caseVersion",
+    "kind",
+    "createdAt",
+    "problemId",
+    "languageAgnostic",
+    "source",
+    "limits",
+    "artifact",
+    "counterexample"
+  ],
+  "properties": {
+    "caseVersion": { "type": "integer" },
+    "kind": { "type": "string" },
+    "createdAt": { "type": "string" },
+    "problemId": { "type": "integer", "minimum": 1 },
+    "languageAgnostic": { "type": "boolean" },
+    "problem": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "title": { "type": ["string", "null"] },
+        "supportLevel": { "type": ["string", "null"] },
+        "artifactVersion": { "type": ["integer", "null"] }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["seed", "runIndex", "runs", "runsExecuted", "shrinkApplied"],
+      "properties": {
+        "originalLanguage": { "type": ["string", "null"] },
+        "seed": { "type": "string" },
+        "runIndex": { "type": "integer", "minimum": 0 },
+        "runs": { "type": "integer", "minimum": 1 },
+        "runsExecuted": { "type": "integer", "minimum": 0 },
+        "shrinkApplied": { "type": "boolean" }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "required": ["timeoutMs", "maxOutputBytes"],
+      "properties": {
+        "timeoutMs": { "type": "integer", "minimum": 1 },
+        "maxOutputBytes": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "required": ["problemId", "artifactVersion", "compareMode"],
+      "properties": {
+        "problemId": { "type": "integer", "minimum": 1 },
+        "artifactVersion": { "type": "integer", "minimum": 1 },
+        "compareMode": { "type": "string" },
+        "oracleKind": { "type": ["string", "null"] },
+        "strategies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "generator": { "type": "boolean" },
+        "oracle": { "type": "boolean" },
+        "shrinker": { "type": "boolean" }
+      }
+    },
+    "counterexample": {
+      "type": "object",
+      "required": ["failureKind", "input", "expectedOutput", "actualOutput", "stderr"],
+      "properties": {
+        "failureKind": { "type": "string" },
+        "input": { "type": "string" },
+        "expectedOutput": { "type": "string" },
+        "actualOutput": { "type": "string" },
+        "normalizedExpected": { "type": "string" },
+        "normalizedActual": { "type": "string" },
+        "stderr": { "type": "string" },
+        "timedOut": { "type": "boolean" },
+        "outputTruncated": { "type": "boolean" },
+        "shrunk": { "type": "boolean" },
+        "originalInput": { "type": ["string", "null"] },
+        "caseMeta": { "type": "object" }
+      }
+    }
+  }
+}

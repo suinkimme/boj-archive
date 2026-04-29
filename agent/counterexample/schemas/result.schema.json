@@ -86,6 +86,24 @@
     "warnings": {
       "type": "array",
       "items": { "type": "string" }
+    },
+    "save": {
+      "type": "object",
+      "required": ["status", "path"],
+      "properties": {
+        "status": { "enum": ["saved", "skipped", "failed"] },
+        "path": { "type": "string" },
+        "overwritten": { "type": "boolean" },
+        "reason": { "type": "string" },
+        "error": {
+          "type": "object",
+          "required": ["kind", "message"],
+          "properties": {
+            "kind": { "type": "string" },
+            "message": { "type": "string" }
+          }
+        }
+      }
     }
   }
 }
