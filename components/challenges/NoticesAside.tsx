@@ -36,7 +36,7 @@ const NOTICES: Notice[] = [
 
 export function NoticesAside() {
   return (
-    <aside className="w-full lg:w-[280px] lg:flex-shrink-0">
+    <aside className="hidden lg:block lg:w-[280px] lg:flex-shrink-0">
       <div className="flex items-center gap-3 mb-5">
         <div className="w-1 h-5 bg-brand-red flex-shrink-0" aria-hidden="true" />
         <h2 className="text-[22px] font-bold tracking-tight text-text-primary m-0">
