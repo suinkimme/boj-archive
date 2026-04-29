@@ -2,117 +2,63 @@
 
 백준 온라인 저지(acmicpc.net) 서비스 종료에 따라 공익 목적으로 수집한 문제 아카이브입니다.
 
-## 기능
+이 저장소는 두 개의 트랙을 동시에 운영합니다.
 
-### Python 실행기
+| 트랙 | 위치 | 상태 |
+|------|------|------|
+| **현행 정식 서비스** (정적 사이트) | [`legacy/`](./legacy) | 운영 중 — GitHub Pages 배포 |
+| **v1.0 신규 프론트엔드** (Next.js + TS) | 저장소 루트 | 개발 중 |
 
-![Python 실행기 데모](demo.gif)
-
-문제 모달 하단에서 Python 코드를 직접 작성하고 실행할 수 있습니다.
-
-- 문제에 포함된 **예제 입출력**을 기준으로 채점합니다
-- **전체 실행**으로 모든 예제를 한 번에 실행하고 `X / N 통과` 요약을 확인할 수 있습니다
-- 틀린 케이스는 자동으로 펼쳐져 입력 / 기대 출력 / 실제 출력을 비교합니다
-- **커스텀 테스트 케이스**를 직접 추가해 예제에 없는 엣지 케이스를 검증할 수 있습니다
-- 코드 실행은 브라우저 안에서만 이루어지며 서버로 전송되지 않습니다
-
-> **현재 제한사항**
-> 예제로 공개된 테스트 케이스에 대해서만 채점이 가능합니다. 실제 BOJ처럼 숨겨진 케이스까지 검증하려면 직접 엣지 케이스를 추가해야 합니다.
+신규 트랙이 v1.0으로 릴리즈될 때까지 `legacy/`가 단독 배포 대상입니다.
 
 ---
 
-## 다운로드
-
-| 파일 | 내용 | 크기 |
-|------|------|------|
-| [problems.tar.gz](../../releases/latest) | 전체 문제 JSON + 이미지 (33,828개) | 560MB |
+## 신규 프론트엔드 (Next.js)
 
 ```bash
-tar -xzf problems.tar.gz
+npm install
+npm run dev      # http://localhost:3000
+npm run build
+npm run lint
+npm run type-check
 ```
 
-## 빠른 탐색
-
-[`index.json`](./index.json) — 전체 문제의 메타데이터 목록 (문제 본문 제외, 9MB)
-
-```json
-[
-  {
-    "id": 1000,
-    "title": "A+B",
-    "time_limit": "2 초",
-    "memory_limit": "128 MB",
-    "level": 1,
-    "tags": ["math", "implementation"],
-    "accepted_user_count": 120000,
-    "average_tries": 1.5
-  },
-  ...
-]
-```
-
-## 폴더 구조
+### 폴더 구조
 
 ```
-problems/
-├── 1000/
-│   └── problem.json
-├── 1003/
-│   └── problem.json
-├── 13232/
-│   ├── problem.json
-│   └── 1.png          ← 이미지가 있는 경우 같은 폴더에 저장
-└── ...
+app/                  # Next.js App Router
+components/ui/        # DESIGN.md §3 UI 컴포넌트
+public/               # 정적 자산
+tailwind.config.ts    # DESIGN.md 색상·타이포 토큰
+DESIGN.md             # 디자인 시스템 단일 소스 — UI 작업 전 반드시 참조
 ```
 
-## 문제 JSON 스키마
+UI를 새로 만들 때는 [`DESIGN.md`](./DESIGN.md) §7의 의사결정 트리를 따릅니다 — 기존 컴포넌트 재사용 → 조합 → 신규 생성 순.
 
-`problems/{id}/problem.json` 파일 구조:
+---
 
-```json
-{
-  "id": 1003,
-  "title": "피보나치 함수",
-  "time_limit": "0.25 초",
-  "memory_limit": "128 MB",
-  "description": "<p>...</p>",
-  "input": "<p>...</p>",
-  "output": "<p>...</p>",
-  "samples": [
-    { "input": "3\n0\n1\n3\n", "output": "1 0\n0 1\n1 2\n" }
-  ],
-  "hint": null,
-  "source": "baekjoon",
-  "level": 8,
-  "tags": ["dp"],
-  "accepted_user_count": 70460,
-  "submission_count": null,
-  "average_tries": 2.86
-}
+## 현행 서비스 (legacy/)
+
+운영 중인 정적 사이트입니다. 이 폴더만으로 자체 완결된 빌드/테스트가 가능합니다.
+
+```bash
+cd legacy
+npm install
+npm run test:unit
+npm run test:e2e
+npx serve .          # 로컬 미리보기
 ```
 
-이미지 src는 `problem.json`과 같은 폴더 기준 상대경로입니다. (예: `src="1.png"`)
+자세한 내용은 [`legacy/README.md`](./legacy/README.md)를 참조하세요.
 
-### `level` 난이도 티어 (solved.ac 기준)
+### 배포
 
-| 값 | 티어 |
-|----|------|
-| 0 | Unrated |
-| 1–5 | Bronze V–I |
-| 6–10 | Silver V–I |
-| 11–15 | Gold V–I |
-| 16–20 | Platinum V–I |
-| 21–25 | Diamond V–I |
-| 26–30 | Ruby V–I |
+`main` 브랜치의 `legacy/` 변경 시 [`.github/workflows/deploy-legacy.yml`](./.github/workflows/deploy-legacy.yml)이 GitHub Pages로 자동 배포합니다.
 
-## 저작권 고지
+> **One-time setup:** 저장소 Settings → Pages → **Source: GitHub Actions** 로 변경되어 있어야 합니다. (기존 "Deploy from a branch" 모드를 사용 중이었다면 한 번 전환이 필요합니다.)
 
-- 각 문제의 저작권은 원 출제자 및 해당 대회 주최 기관에 있습니다.
-- 이 아카이브는 비상업적 공익 목적으로만 제공됩니다.
-- 원 저작권자의 요청 시 해당 문제를 삭제합니다.
+---
 
-## 수집 정보
+## 라이선스
 
-- 수집 일시: 2026년 4월
-- 수집 출처: acmicpc.net, solved.ac API
-- 총 문제 수: 33,828개
+[MIT](./LICENSE) — 각 문제의 저작권은 원 출제자 및 해당 대회 주최 기관에 귀속됩니다.
