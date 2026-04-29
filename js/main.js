@@ -52,13 +52,13 @@ function render() {
   const rows = items
     .map(
       (p) => `
-    <tr class="problem-row" data-id="${p.id}">
-      <td class="problem-num">#${p.id}</td>
+    <tr class="problem-row" data-id="${escHtml(p.id)}">
+      <td class="problem-num">#${escHtml(p.id)}</td>
       <td class="problem-title">${escHtml(p.title ?? "")}</td>
       <td>${tierBadge(p.level ?? 0)}</td>
       <td class="tag-list">${(p.tags ?? [])
         .slice(0, 3)
-        .map((t) => `<span class="tag">${t}</span>`)
+        .map((t) => `<span class="tag">${escHtml(t)}</span>`)
         .join("")}</td>
       <td class="accept-count">${fmtCount(p.accepted_user_count)}</td>
     </tr>`,
@@ -102,7 +102,7 @@ function render() {
     `<button class="page-btn" ${page === totalPages ? "disabled" : ""} id="next-btn">›</button>`,
   );
   pages.push(
-    `<span class="page-info">${start + 1}–${end} / ${total.toLocaleString()}</span>`,
+    `<span class="page-info">${start + 1}–${end} / ${escHtml(total.toLocaleString())}</span>`,
   );
   document.getElementById("pagination").innerHTML = pages.join("");
 
@@ -187,19 +187,22 @@ function renderModal(p) {
     .join("");
 
   const tags = (p.tags ?? [])
-    .map((t) => `<span class="modal-tag" data-tag="${t}">${t}</span>`)
+    .map(
+      (t) =>
+        `<span class="modal-tag" data-tag="${escHtml(t)}">${escHtml(t)}</span>`,
+    )
     .join("");
 
   document.getElementById("modal-content").innerHTML = `
     <div class="modal-header">
-      <div class="modal-num">문제 #${p.id}</div>
+      <div class="modal-num">문제 #${escHtml(p.id)}</div>
       <div class="modal-title">${escHtml(p.title ?? "")}</div>
       <div class="modal-meta">
         ${tierBadge(p.level ?? 0)}
-        ${p.time_limit ? `<span class="meta-item">시간 <span>${p.time_limit}</span></span>` : ""}
-        ${p.memory_limit ? `<span class="meta-item">메모리 <span>${p.memory_limit}</span></span>` : ""}
-        ${p.accepted_user_count ? `<span class="meta-item">정답자 <span>${p.accepted_user_count.toLocaleString()}</span></span>` : ""}
-        ${p.average_tries ? `<span class="meta-item">평균 시도 <span>${p.average_tries.toFixed(1)}</span></span>` : ""}
+        ${p.time_limit ? `<span class="meta-item">시간 <span>${escHtml(p.time_limit)}</span></span>` : ""}
+        ${p.memory_limit ? `<span class="meta-item">메모리 <span>${escHtml(p.memory_limit)}</span></span>` : ""}
+        ${p.accepted_user_count ? `<span class="meta-item">정답자 <span>${escHtml(Number(p.accepted_user_count).toLocaleString())}</span></span>` : ""}
+        ${p.average_tries ? `<span class="meta-item">평균 시도 <span>${escHtml(Number(p.average_tries).toFixed(1))}</span></span>` : ""}
       </div>
       ${tags ? `<div class="modal-tags">${tags}</div>` : ""}
     </div>

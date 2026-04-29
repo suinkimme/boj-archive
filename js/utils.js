@@ -26,12 +26,18 @@ export function escHtml(s) {
   return String(s)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 export function fmtCount(n) {
-  if (!n) return "-";
-  return n >= 10000 ? (n / 1000).toFixed(0) + "k" : n.toLocaleString();
+  if (n == null || n === "") return "-";
+  const num = Number(n);
+  if (isNaN(num) || num === 0) {
+    return isNaN(num) ? escHtml(String(n)) : "-";
+  }
+  return num >= 10000 ? (num / 1000).toFixed(0) + "k" : num.toLocaleString();
 }
 
 export function matchesTier(level, f) {
@@ -42,9 +48,10 @@ export function matchesTier(level, f) {
 }
 
 export function fixImgPaths(html, id) {
+  const safeId = encodeURIComponent(String(id));
   return html.replace(
     /(<img\s[^>]*src=["'])(?!https?:\/\/|\/\/|\/|problems\/)(.*?)(["'])/gi,
-    (_, pre, src, suf) => `${pre}problems/${id}/${src}${suf}`,
+    (_, pre, src, suf) => `${pre}problems/${safeId}/${src}${suf}`,
   );
 }
 
