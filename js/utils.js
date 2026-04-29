@@ -34,7 +34,9 @@ export function escHtml(s) {
 export function fmtCount(n) {
   if (n == null || n === "") return "-";
   const num = Number(n);
-  if (isNaN(num)) return escHtml(String(n));
+  if (isNaN(num) || num === 0) {
+    return isNaN(num) ? escHtml(String(n)) : "-";
+  }
   return num >= 10000 ? (num / 1000).toFixed(0) + "k" : num.toLocaleString();
 }
 
