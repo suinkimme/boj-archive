@@ -5,8 +5,25 @@ on:
     branches: [main, develop]
 
 jobs:
+  format:
+    name: Legacy Format Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: legacy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: legacy/package-lock.json
+      - run: npm ci
+      - run: npm run format:check
+
   unit:
     name: Legacy Unit Tests
+    needs: format
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,6 +40,7 @@ jobs:
 
   e2e:
     name: Legacy E2E Tests
+    needs: format
     runs-on: ubuntu-latest
     defaults:
       run:
