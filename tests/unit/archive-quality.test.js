@@ -7,7 +7,13 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { promisify } from "node:util";
 import { afterEach, describe, expect, it } from "vitest";
 import {
+  calculateRiskReport,
+  compareBaseline,
+  createBaseline,
+  createIssueFingerprint,
   extractImageRefs,
+  normalizeComparablePath,
+  parseArgs,
   scanArchive,
 } from "../../scripts/archive-quality.mjs";
 
@@ -233,6 +239,152 @@ describe("archive quality scanner", () => {
     expect(result.riskyHtml.map((issue) => issue.id)).toEqual([10, 20]);
     expect(result.summary.largestProblemJson).toHaveLength(2);
   });
+
+  it("creates stable fingerprints from structured fields instead of message text or snippets", () => {
+    const baseIssue = {
+      severity: "error",
+      category: "image",
+      type: "missing-image",
+      id: 1,
+      field: "description",
+      path: "/tmp/archive/problems/1/missing.png",
+      src: "missing.png",
+    };
+    const first = createIssueFingerprint({
+      ...baseIssue,
+      message: "old wording",
+    }, { root: "/tmp/archive" });
+    const second = createIssueFingerprint({
+      ...baseIssue,
+      message: "new wording",
+    }, { root: "/tmp/archive" });
+    const snippetA = createIssueFingerprint({
+      severity: "warning",
+      category: "html",
+      type: "script-tag",
+      id: 1,
+      field: "description",
+      snippet: "<script>alert(1)</script>",
+    });
+    const snippetB = createIssueFingerprint({
+      severity: "warning",
+      category: "html",
+      type: "script-tag",
+      id: 1,
+      field: "description",
+      snippet: "<script>alert(2)</script>",
+    });
+
+    expect(first.fingerprint).toBe(second.fingerprint);
+    expect(first.hash).toBe(second.hash);
+    expect(snippetA.fingerprint).toBe(snippetB.fingerprint);
+    expect(createIssueFingerprint({ ...baseIssue, id: 2 }, { root: "/tmp/archive" }).fingerprint)
+      .not.toBe(first.fingerprint);
+    expect(createIssueFingerprint({
+      severity: "error",
+      category: "image",
+      type: "missing-image",
+      id: 1,
+      field: "input",
+      path: "/tmp/archive/problems/1/missing.png",
+      src: "missing.png",
+    }, { root: "/tmp/archive" }).fingerprint).not.toBe(first.fingerprint);
+    expect(createIssueFingerprint({
+      severity: "error",
+      category: "image",
+      type: "missing-image",
+      id: 1,
+      field: "description",
+      path: "/tmp/archive/problems/1/other.png",
+      src: "other.png",
+    }, { root: "/tmp/archive" }).fingerprint).not.toBe(first.fingerprint);
+  });
+
+  it("normalizes comparable paths and strips absolute roots from baselines", async () => {
+    expect(normalizeComparablePath("C:\\repo\\problems\\1\\problem.json", "C:\\repo"))
+      .toBe("problems/1/problem.json");
+    expect(normalizeComparablePath("/tmp/repo/problems/1/problem.json", "/tmp/repo"))
+      .toBe("problems/1/problem.json");
+
+    const root = await createArchive({
+      index: [indexEntry({ id: 1 })],
+      problems: {
+        1: problemEntry({ id: 1, description: '<img src="missing.png">' }),
+      },
+    });
+    const absoluteResult = await scanArchive({ root });
+    const relativeResult = await scanArchive({ root: path.relative(process.cwd(), root) });
+    const absoluteBaseline = createBaseline(absoluteResult);
+    const relativeBaseline = createBaseline(relativeResult);
+
+    expect(absoluteBaseline.issues.map((issue) => issue.fingerprint))
+      .toEqual(relativeBaseline.issues.map((issue) => issue.fingerprint));
+    expect(JSON.stringify(absoluteBaseline)).not.toContain(root);
+  });
+
+  it("compares baselines into new, resolved, and unchanged issues", async () => {
+    const root = await createArchive({
+      index: [indexEntry({ id: 1 }), indexEntry({ id: 2 })],
+      problems: {
+        1: problemEntry({ id: 1, description: '<img src="missing.png">' }),
+        2: problemEntry({ id: 2 }),
+      },
+    });
+    const baseline = createBaseline(await scanArchive({ root }));
+
+    await fs.writeFile(path.join(root, "problems/1/missing.png"), "");
+    await fs.writeFile(
+      path.join(root, "problems/2/problem.json"),
+      `${JSON.stringify(problemEntry({
+        id: 2,
+        description: '<img src="new-missing.png">',
+      }), null, 2)}\n`,
+    );
+
+    const comparison = compareBaseline(await scanArchive({ root }), baseline);
+
+    expect(comparison.exitCode).toBe(1);
+    expect(comparison.newIssues.map((issue) => issue.type)).toEqual(["missing-image"]);
+    expect(comparison.resolvedIssues.map((issue) => issue.type)).toEqual(["missing-image"]);
+    expect(comparison.unchangedIssues).toEqual([]);
+  });
+
+  it("calculates heuristic risk scores deterministically", async () => {
+    const root = await createArchive({
+      index: [indexEntry({ id: 1 }), indexEntry({ id: 2 })],
+      problems: {
+        1: problemEntry({
+          id: 1,
+          description: [
+            '<img src="missing.png">',
+            "<script>alert(1)</script>",
+            '<a href="javascript:alert(1)">x</a>',
+            "<style>.x{}</style>",
+          ].join(""),
+        }),
+        2: problemEntry({
+          id: 2,
+          description: "x".repeat(70 * 1024),
+        }),
+      },
+    });
+
+    const result = await scanArchive({ root });
+    const report = calculateRiskReport(result, { top: 2 });
+
+    expect(report.topProblems.map((problem) => problem.id)).toEqual([1, 2]);
+    expect(report.topProblems[0].score).toBe(130);
+    expect(report.topProblems[0].reasons.map((reason) => reason.type)).toEqual([
+      "javascript-url",
+      "missing-image",
+      "script-tag",
+      "style-tag",
+    ]);
+    expect(report.topProblems[1].reasons).toEqual([
+      expect.objectContaining({ type: "very-large-problem-json", score: 5 }),
+    ]);
+    expect(report.byReason["script-tag"]).toEqual({ count: 1, score: 50 });
+  });
 });
 
 describe("archive quality CLI", () => {
@@ -264,6 +416,223 @@ describe("archive quality CLI", () => {
     expect(exitCode).toBe(1);
     expect(parsed.exitCode).toBe(1);
     expect(parsed.issues[0].type).toBe("invalid-index-json");
+  });
+
+  it("rejects invalid --top values as JSON-mode argument errors", async () => {
+    expect(() => parseArgs(["--top", "0"])).toThrow("--top requires a positive integer");
+    expect(() => parseArgs(["--top", "1.5"])).toThrow("--top requires a positive integer");
+
+    const { stdout, stderr, exitCode } = await execNode([cliPath, "--top", "0", "--json"]);
+    const parsed = JSON.parse(stdout);
+
+    expect(stderr).toBe("");
+    expect(exitCode).toBe(1);
+    expect(parsed.issues[0].type).toBe("argument-error");
+  });
+
+  it("--write-baseline writes deterministic JSON and reports write status separately", async () => {
+    const root = await createArchive({
+      index: [indexEntry({ id: 1 })],
+      problems: {
+        1: problemEntry({ id: 1, description: '<img src="missing.png">' }),
+      },
+    });
+    const baselinePath = path.join(root, "archive-quality.baseline.json");
+
+    const first = await execNode([
+      cliPath,
+      "--root",
+      root,
+      "--write-baseline",
+      baselinePath,
+      "--json",
+    ]);
+    const firstParsed = JSON.parse(first.stdout);
+    const firstText = await fs.readFile(baselinePath, "utf8");
+    const second = await execNode([
+      cliPath,
+      "--root",
+      root,
+      "--write-baseline",
+      baselinePath,
+      "--json",
+    ]);
+    const secondText = await fs.readFile(baselinePath, "utf8");
+
+    expect(first.stderr).toBe("");
+    expect(second.stderr).toBe("");
+    expect(first.exitCode).toBe(1);
+    expect(firstParsed.exitCode).toBe(1);
+    expect(firstParsed.baselineWrite).toMatchObject({
+      status: "written",
+      issueCount: 1,
+      errorCount: 1,
+      warningCount: 0,
+    });
+    expect(JSON.parse(firstText).issues.map((issue) => issue.type)).toEqual(["missing-image"]);
+    expect(firstText).toBe(secondText);
+    expect(firstText).not.toContain(root);
+  });
+
+  it("--compare-baseline passes unchanged known errors and reports resolved errors", async () => {
+    const root = await createArchive({
+      index: [indexEntry({ id: 1 })],
+      problems: {
+        1: problemEntry({ id: 1, description: '<img src="missing.png">' }),
+      },
+    });
+    const baselinePath = path.join(root, "archive-quality.baseline.json");
+    await execNode([cliPath, "--root", root, "--write-baseline", baselinePath, "--json"]);
+
+    const unchanged = await execNode([
+      cliPath,
+      "--root",
+      root,
+      "--compare-baseline",
+      baselinePath,
+      "--json",
+    ]);
+    const unchangedParsed = JSON.parse(unchanged.stdout);
+
+    await fs.writeFile(path.join(root, "problems/1/missing.png"), "");
+    const resolved = await execNode([
+      cliPath,
+      "--root",
+      root,
+      "--compare-baseline",
+      baselinePath,
+      "--json",
+    ]);
+    const resolvedParsed = JSON.parse(resolved.stdout);
+
+    expect(unchanged.stderr).toBe("");
+    expect(unchanged.exitCode).toBe(0);
+    expect(unchangedParsed.baselineCompare.counts.unchangedIssues.total).toBe(1);
+    expect(unchangedParsed.baselineCompare.counts.newIssues.total).toBe(0);
+    expect(resolved.stderr).toBe("");
+    expect(resolved.exitCode).toBe(0);
+    expect(resolvedParsed.baselineCompare.counts.resolvedIssues.total).toBe(1);
+  });
+
+  it("--compare-baseline fails new errors but not new warnings", async () => {
+    const root = await createArchive({
+      index: [indexEntry({ id: 1 }), indexEntry({ id: 2 })],
+      problems: {
+        1: problemEntry({ id: 1 }),
+        2: problemEntry({ id: 2 }),
+      },
+    });
+    const baselinePath = path.join(root, "archive-quality.baseline.json");
+    await execNode([cliPath, "--root", root, "--write-baseline", baselinePath, "--json"]);
+
+    await fs.writeFile(
+      path.join(root, "problems/1/problem.json"),
+      `${JSON.stringify(problemEntry({
+        id: 1,
+        description: "<script>alert(1)</script>",
+      }), null, 2)}\n`,
+    );
+    const warningOnly = await execNode([
+      cliPath,
+      "--root",
+      root,
+      "--compare-baseline",
+      baselinePath,
+      "--json",
+    ]);
+    const warningParsed = JSON.parse(warningOnly.stdout);
+
+    await fs.writeFile(
+      path.join(root, "problems/2/problem.json"),
+      `${JSON.stringify(problemEntry({
+        id: 2,
+        description: '<img src="new-missing.png">',
+      }), null, 2)}\n`,
+    );
+    const newError = await execNode([
+      cliPath,
+      "--root",
+      root,
+      "--compare-baseline",
+      baselinePath,
+      "--json",
+    ]);
+    const newErrorParsed = JSON.parse(newError.stdout);
+
+    expect(warningOnly.stderr).toBe("");
+    expect(warningOnly.exitCode).toBe(0);
+    expect(warningParsed.baselineCompare.counts.newIssues.bySeverity.warning).toBe(1);
+    expect(newError.stderr).toBe("");
+    expect(newError.exitCode).toBe(1);
+    expect(newErrorParsed.baselineCompare.counts.newIssues.bySeverity.error).toBe(1);
+  });
+
+  it("--compare-baseline reports missing, invalid, wrong-kind/version, and malformed baselines as JSON failures", async () => {
+    const root = await createArchive({
+      index: [indexEntry({ id: 1 })],
+      problems: {
+        1: problemEntry({ id: 1 }),
+      },
+    });
+    const cases = [
+      ["missing", path.join(root, "missing-baseline.json"), null],
+      ["invalid-json", path.join(root, "invalid-baseline.json"), "{"],
+      ["wrong-kind", path.join(root, "wrong-kind.json"), JSON.stringify({
+        kind: "not-archive-quality",
+        version: 1,
+        issues: [],
+      })],
+      ["wrong-version", path.join(root, "wrong-version.json"), JSON.stringify({
+        kind: "boj-archive-quality-baseline",
+        version: 999,
+        issues: [],
+      })],
+      ["malformed-issue", path.join(root, "malformed-issue.json"), JSON.stringify({
+        kind: "boj-archive-quality-baseline",
+        version: 1,
+        issues: [{ severity: "error", type: "missing-image" }],
+      })],
+    ];
+
+    for (const [, baselinePath, content] of cases) {
+      if (content != null) await fs.writeFile(baselinePath, content);
+      const { stdout, stderr, exitCode } = await execNode([
+        cliPath,
+        "--root",
+        root,
+        "--compare-baseline",
+        baselinePath,
+        "--json",
+      ]);
+      const parsed = JSON.parse(stdout);
+
+      expect(stderr).toBe("");
+      expect(exitCode).toBe(1);
+      expect(parsed.issues[0].type).toBe("baseline-error");
+    }
+  });
+
+  it("--risk-report appears in JSON only when requested", async () => {
+    const root = await createArchive({
+      index: [indexEntry({ id: 1 })],
+      problems: {
+        1: problemEntry({
+          id: 1,
+          description: "<script>alert(1)</script>",
+        }),
+      },
+    });
+
+    const plain = await execNode([cliPath, "--root", root, "--json"]);
+    const withRisk = await execNode([cliPath, "--root", root, "--risk-report", "--json"]);
+    const plainParsed = JSON.parse(plain.stdout);
+    const riskParsed = JSON.parse(withRisk.stdout);
+
+    expect(plainParsed.riskReport).toBeUndefined();
+    expect(riskParsed.riskReport.topProblems[0]).toMatchObject({
+      id: 1,
+      score: 50,
+    });
   });
 
   it("human output includes summary headings and capped examples", async () => {

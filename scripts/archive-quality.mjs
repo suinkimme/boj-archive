@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import process from "node:process";
@@ -17,8 +18,27 @@ export const IMAGE_EXTENSIONS = new Set([
 ]);
 
 const VERSION = 1;
+const BASELINE_VERSION = 1;
+const BASELINE_KIND = "boj-archive-quality-baseline";
 const DEFAULT_TOP = 10;
 const ISSUE_PREVIEW_LIMIT = 20;
+const LARGE_PROBLEM_JSON_THRESHOLDS = [
+  [512 * 1024, 30],
+  [256 * 1024, 20],
+  [128 * 1024, 10],
+  [64 * 1024, 5],
+];
+const RISK_WEIGHTS = {
+  "missing-image": 30,
+  "image-path-traversal": 35,
+  "script-tag": 50,
+  "iframe-tag": 45,
+  "object-tag": 45,
+  "embed-tag": 45,
+  "inline-event-handler": 25,
+  "javascript-url": 40,
+  "style-tag": 10,
+};
 const METADATA_FIELDS = [
   "id",
   "title",
@@ -55,10 +75,20 @@ export function parseArgs(argv = process.argv.slice(2)) {
       const value = argv[++i];
       if (!value) throw argumentError("--top requires a number");
       const top = Number(value);
-      if (!Number.isInteger(top) || top < 0) {
-        throw argumentError("--top requires a non-negative integer");
+      if (!Number.isInteger(top) || top <= 0) {
+        throw argumentError("--top requires a positive integer");
       }
       options.top = top;
+    } else if (arg === "--write-baseline") {
+      const value = argv[++i];
+      if (!value) throw argumentError("--write-baseline requires a path");
+      options.writeBaseline = value;
+    } else if (arg === "--compare-baseline") {
+      const value = argv[++i];
+      if (!value) throw argumentError("--compare-baseline requires a path");
+      options.compareBaseline = value;
+    } else if (arg === "--risk-report") {
+      options.riskReport = true;
     } else if (arg === "--help" || arg === "-h") {
       options.help = true;
     } else {
@@ -72,6 +102,12 @@ export function parseArgs(argv = process.argv.slice(2)) {
 function argumentError(message) {
   const error = new Error(message);
   error.code = "ARGUMENT_ERROR";
+  return error;
+}
+
+function baselineError(message) {
+  const error = new Error(message);
+  error.code = "BASELINE_ERROR";
   return error;
 }
 
@@ -237,6 +273,13 @@ async function scanProblemJson({ id, root, problemsDir, indexEntry, result }) {
     bytes: stat.size,
     path: `problems/${id}/problem.json`,
   });
+  if (largeProblemJsonScore(stat.size) > 0) {
+    result.summary.largeProblemJson.push({
+      id: idAsNumber(id),
+      bytes: stat.size,
+      path: `problems/${id}/problem.json`,
+    });
+  }
 
   let problem;
   try {
@@ -613,6 +656,7 @@ function createEmptyResult(root, options) {
         nonZero: 0,
       },
       largestProblemJson: [],
+      largeProblemJson: [],
     },
     imageRefs: {
       total: 0,
@@ -657,6 +701,7 @@ export function createFailureResult({
 function finalizeResult(result) {
   result.summary.largestProblemJson = sortLargestProblemJson(result.summary.largestProblemJson)
     .slice(0, result.options.top);
+  result.summary.largeProblemJson = sortLargestProblemJson(result.summary.largeProblemJson);
   result.issues.sort(compareIssues);
   result.riskyHtml.sort(compareRiskyHtml);
   result.exitCode = result.issues.some((issue) => issue.severity === "error") ? 1 : 0;
@@ -759,6 +804,380 @@ function truncate(value, maxLength) {
   return value.length > maxLength ? `${value.slice(0, maxLength - 3)}...` : value;
 }
 
+export function normalizeComparablePath(value, root) {
+  if (value == null || value === "") return null;
+  let normalized = normalizePathSeparators(String(value).trim());
+  const normalizedRoot = root ? normalizePathSeparators(String(root)).replace(/\/+$/, "") : "";
+
+  if (normalizedRoot) {
+    if (normalized === normalizedRoot) {
+      normalized = ".";
+    } else if (normalized.startsWith(`${normalizedRoot}/`)) {
+      normalized = normalized.slice(normalizedRoot.length + 1);
+    }
+  }
+
+  return normalized.replace(/^\.\//, "");
+}
+
+function normalizePathSeparators(value) {
+  return String(value).replace(/\\/g, "/").replace(/\/+/g, "/");
+}
+
+function normalizeSourceValue(value) {
+  if (value == null || value === "") return null;
+  return decodeHtmlEntities(String(value)).trim().replace(/\\/g, "/");
+}
+
+function sanitizeBaselineMessage(value, root) {
+  if (value == null) return null;
+  let message = String(value);
+  if (!root) return message;
+
+  const rawRoot = String(root);
+  const normalizedRoot = normalizePathSeparators(rawRoot);
+  message = message.split(rawRoot).join("<root>");
+  if (normalizedRoot !== rawRoot) {
+    message = message.split(normalizedRoot).join("<root>");
+  }
+  return message;
+}
+
+function normalizeIssueIdentity(issue, options = {}) {
+  const severity = String(issue.severity ?? "warning").toLowerCase();
+  const category = String(issue.category ?? "unknown").toLowerCase();
+  const type = String(issue.type ?? "unknown").toLowerCase();
+  const field = issue.field == null ? null : String(issue.field).toLowerCase();
+  const normalizedPath = normalizeComparablePath(issue.path, options.root);
+
+  let source = null;
+  if (issue.src != null) {
+    source = `src:${normalizeSourceValue(issue.src)}`;
+  } else if (issue.source != null) {
+    source = `source:${normalizeSourceValue(issue.source)}`;
+  } else if (issue.detail != null) {
+    source = `detail:${String(issue.detail).toLowerCase()}`;
+  } else if (type === "metadata-mismatch") {
+    source = `values:${valueKind(issue.indexValue)}->${valueKind(issue.problemValue)}`;
+  }
+
+  return {
+    severity,
+    category,
+    type,
+    id: issue.id == null ? null : String(issue.id),
+    field,
+    path: normalizedPath,
+    source,
+  };
+}
+
+function valueKind(value) {
+  if (value == null) return "null";
+  if (Array.isArray(value)) return "array";
+  return typeof value;
+}
+
+export function createIssueFingerprint(issue, options = {}) {
+  const identity = normalizeIssueIdentity(issue, options);
+  const fingerprint = identityToFingerprint(identity);
+  return {
+    fingerprint,
+    hash: hashFingerprint(fingerprint),
+  };
+}
+
+function identityToFingerprint(identity) {
+  return [
+    ["severity", identity.severity],
+    ["category", identity.category],
+    ["type", identity.type],
+    ["id", identity.id],
+    ["field", identity.field],
+    ["path", identity.path],
+    ["source", identity.source],
+  ]
+    .map(([key, value]) => `${key}:${fingerprintPart(value)}`)
+    .join("|");
+}
+
+function fingerprintPart(value) {
+  return String(value ?? "")
+    .replace(/\\/g, "\\\\")
+    .replace(/\|/g, "\\|");
+}
+
+function hashFingerprint(fingerprint) {
+  return `sha256:${createHash("sha256").update(fingerprint).digest("hex").slice(0, 12)}`;
+}
+
+export function normalizeFindings(result, options = {}) {
+  const root = options.root ?? result.root;
+  const rawFindings = [
+    ...(result.issues ?? []),
+    ...(result.riskyHtml ?? []).map((issue) => ({
+      severity: "warning",
+      category: "html",
+      message: issue.snippet,
+      ...issue,
+    })),
+  ].map((issue) => normalizeFinding(issue, { root }));
+
+  rawFindings.sort((a, b) => compareStrings(a.fingerprint, b.fingerprint)
+    || compareStrings(a.message, b.message));
+
+  const occurrences = new Map();
+  return rawFindings.map((issue) => {
+    const occurrence = (occurrences.get(issue.fingerprint) ?? 0) + 1;
+    occurrences.set(issue.fingerprint, occurrence);
+    if (occurrence === 1) return issue;
+
+    const fingerprint = `${issue.fingerprint}|occurrence:${occurrence}`;
+    return {
+      ...issue,
+      fingerprint,
+      hash: hashFingerprint(fingerprint),
+    };
+  });
+}
+
+function normalizeFinding(issue, options) {
+  const identity = normalizeIssueIdentity(issue, options);
+  const { fingerprint, hash } = createIssueFingerprint(issue, options);
+  const normalized = {
+    fingerprint,
+    hash,
+    severity: identity.severity,
+    category: identity.category,
+    type: identity.type,
+  };
+
+  if (identity.id != null) normalized.id = idAsNumber(identity.id);
+  if (identity.field != null) normalized.field = identity.field;
+  if (identity.path != null) normalized.path = identity.path;
+  if (identity.source != null) normalized.source = identity.source;
+  if (issue.message != null) normalized.message = sanitizeBaselineMessage(issue.message, options.root);
+  return normalized;
+}
+
+export function createBaseline(result, options = {}) {
+  const issues = normalizeFindings(result, { root: result.root });
+  const errorCount = issues.filter((issue) => issue.severity === "error").length;
+  const warningCount = issues.filter((issue) => issue.severity === "warning").length;
+
+  return {
+    kind: BASELINE_KIND,
+    version: BASELINE_VERSION,
+    scannerVersion: VERSION,
+    createdFrom: {
+      root: ".",
+      options: {
+        top: options.top ?? result.options?.top ?? DEFAULT_TOP,
+      },
+    },
+    summary: {
+      issueCount: issues.length,
+      errorCount,
+      warningCount,
+      stats: {
+        summary: result.summary,
+        imageRefs: result.imageRefs,
+      },
+      bySeverity: countBy(issues, "severity"),
+      byType: countBy(issues, "type"),
+    },
+    issues,
+  };
+}
+
+export function stableJson(value) {
+  return `${JSON.stringify(sortObjectKeys(value), null, 2)}\n`;
+}
+
+export async function writeBaselineFile(filePath, baseline) {
+  await fs.writeFile(filePath, stableJson(baseline), "utf8");
+}
+
+export async function readBaselineFile(filePath) {
+  let text;
+  try {
+    text = await fs.readFile(filePath, "utf8");
+  } catch (error) {
+    throw baselineError(`baseline file is missing or unreadable: ${error.message}`);
+  }
+
+  let baseline;
+  try {
+    baseline = JSON.parse(text);
+  } catch (error) {
+    throw baselineError(`baseline file is not valid JSON: ${error.message}`);
+  }
+
+  validateBaseline(baseline);
+  return baseline;
+}
+
+function validateBaseline(baseline) {
+  if (!baseline || typeof baseline !== "object" || Array.isArray(baseline)) {
+    throw baselineError("baseline must be a JSON object");
+  }
+  if (baseline.kind !== BASELINE_KIND) {
+    throw baselineError(`baseline kind must be ${BASELINE_KIND}`);
+  }
+  if (baseline.version !== BASELINE_VERSION) {
+    throw baselineError(`baseline version must be ${BASELINE_VERSION}`);
+  }
+  if (!Array.isArray(baseline.issues)) {
+    throw baselineError("baseline issues must be an array");
+  }
+
+  for (const [index, issue] of baseline.issues.entries()) {
+    if (!issue || typeof issue !== "object" || Array.isArray(issue)) {
+      throw baselineError(`baseline issue ${index} must be an object`);
+    }
+    if (typeof issue.fingerprint !== "string" || issue.fingerprint.length === 0) {
+      throw baselineError(`baseline issue ${index} must include a fingerprint`);
+    }
+    if (typeof issue.severity !== "string" || typeof issue.type !== "string") {
+      throw baselineError(`baseline issue ${index} must include severity and type`);
+    }
+  }
+}
+
+export function compareBaseline(result, baseline) {
+  const currentIssues = normalizeFindings(result, { root: result.root });
+  const currentByFingerprint = mapIssuesByFingerprint(currentIssues);
+  const baselineByFingerprint = mapIssuesByFingerprint(baseline.issues);
+
+  const newIssues = currentIssues.filter((issue) => !baselineByFingerprint.has(issue.fingerprint));
+  const resolvedIssues = baseline.issues.filter((issue) => !currentByFingerprint.has(issue.fingerprint));
+  const unchangedIssues = currentIssues.filter((issue) => baselineByFingerprint.has(issue.fingerprint));
+  const exitCode = newIssues.some((issue) => issue.severity === "error") ? 1 : 0;
+
+  return {
+    newIssues,
+    resolvedIssues,
+    unchangedIssues,
+    counts: {
+      newIssues: issueSummary(newIssues),
+      resolvedIssues: issueSummary(resolvedIssues),
+      unchangedIssues: issueSummary(unchangedIssues),
+    },
+    exitCode,
+  };
+}
+
+function mapIssuesByFingerprint(issues) {
+  return new Map(issues.map((issue) => [issue.fingerprint, issue]));
+}
+
+function issueSummary(issues) {
+  return {
+    total: issues.length,
+    bySeverity: countBy(issues, "severity"),
+    byType: countBy(issues, "type"),
+  };
+}
+
+export function calculateRiskReport(result, options = {}) {
+  const top = options.top ?? result.options?.top ?? DEFAULT_TOP;
+  const byProblem = new Map();
+  const byReason = new Map();
+
+  for (const issue of result.issues ?? []) {
+    if (!Object.hasOwn(RISK_WEIGHTS, issue.type) || issue.id == null) continue;
+    addRiskReason({
+      byProblem,
+      byReason,
+      id: issue.id,
+      path: issue.path ?? `problems/${issue.id}/problem.json`,
+      type: issue.type,
+      score: RISK_WEIGHTS[issue.type],
+    });
+  }
+
+  for (const issue of result.riskyHtml ?? []) {
+    if (!Object.hasOwn(RISK_WEIGHTS, issue.type) || issue.id == null) continue;
+    addRiskReason({
+      byProblem,
+      byReason,
+      id: issue.id,
+      path: `problems/${issue.id}/problem.json`,
+      type: issue.type,
+      score: RISK_WEIGHTS[issue.type],
+    });
+  }
+
+  for (const entry of result.summary.largeProblemJson ?? result.summary.largestProblemJson ?? []) {
+    const score = largeProblemJsonScore(entry.bytes);
+    if (score === 0) continue;
+    addRiskReason({
+      byProblem,
+      byReason,
+      id: entry.id,
+      path: entry.path,
+      type: "very-large-problem-json",
+      score,
+      bytes: entry.bytes,
+    });
+  }
+
+  const problems = [...byProblem.values()]
+    .map((problem) => ({
+      ...problem,
+      reasons: [...problem.reasons.values()]
+        .sort((a, b) => compareStrings(a.type, b.type)),
+    }))
+    .sort((a, b) => compareNumbers(b.score, a.score) || compareIds(a.id, b.id));
+
+  return {
+    topProblems: problems.slice(0, top),
+    problemCount: problems.length,
+    byReason: Object.fromEntries(
+      [...byReason.entries()]
+        .sort(([a], [b]) => compareStrings(a, b))
+        .map(([type, value]) => [type, value]),
+    ),
+  };
+}
+
+function addRiskReason({ byProblem, byReason, id, path: issuePath, type, score, bytes }) {
+  const key = String(id);
+  if (!byProblem.has(key)) {
+    byProblem.set(key, {
+      id: idAsNumber(id),
+      path: issuePath ?? `problems/${id}/problem.json`,
+      score: 0,
+      reasons: new Map(),
+    });
+  }
+
+  const problem = byProblem.get(key);
+  problem.score += score;
+  const reason = problem.reasons.get(type) ?? {
+    type,
+    count: 0,
+    score: 0,
+    ...(bytes == null ? {} : { bytes }),
+  };
+  reason.count += 1;
+  reason.score += score;
+  if (bytes != null) reason.bytes = bytes;
+  problem.reasons.set(type, reason);
+
+  const aggregate = byReason.get(type) ?? { count: 0, score: 0 };
+  aggregate.count += 1;
+  aggregate.score += score;
+  byReason.set(type, aggregate);
+}
+
+function largeProblemJsonScore(bytes) {
+  for (const [threshold, score] of LARGE_PROBLEM_JSON_THRESHOLDS) {
+    if (bytes >= threshold) return score;
+  }
+  return 0;
+}
+
 export function formatHumanReport(result) {
   const errors = result.issues.filter((issue) => issue.severity === "error");
   const warnings = result.riskyHtml;
@@ -799,6 +1218,9 @@ export function formatHumanReport(result) {
     lines.push(`  ${type}: ${count}`);
   }
 
+  appendBaselineReport(lines, result);
+  appendRiskReport(lines, result);
+
   lines.push(
     "",
     "Data Quality",
@@ -829,6 +1251,50 @@ export function formatHumanReport(result) {
 
   lines.push("", `Exit code: ${result.exitCode}`);
   return `${lines.join("\n")}\n`;
+}
+
+function appendBaselineReport(lines, result) {
+  if (!result.baselineWrite && !result.baselineCompare) return;
+
+  lines.push("", "Baseline");
+  if (result.baselineWrite) {
+    const write = result.baselineWrite;
+    lines.push(`  write: ${write.status} ${write.path}`);
+    if (write.status === "written") {
+      lines.push(`  issues: ${write.issueCount} (${write.errorCount} errors, ${write.warningCount} warnings)`);
+      if (write.errorCount > 0) {
+        lines.push(`  scan still has ${write.errorCount} error(s); preserving scan exit code ${result.exitCode}`);
+      }
+    } else if (write.message) {
+      lines.push(`  message: ${write.message}`);
+    }
+  }
+
+  if (result.baselineCompare) {
+    const compare = result.baselineCompare;
+    lines.push(`  new: ${compare.counts.newIssues.total}`);
+    lines.push(`  resolved: ${compare.counts.resolvedIssues.total}`);
+    lines.push(`  unchanged: ${compare.counts.unchangedIssues.total}`);
+    lines.push(`  new errors: ${compare.counts.newIssues.bySeverity.error ?? 0}`);
+    lines.push(`  new warnings: ${compare.counts.newIssues.bySeverity.warning ?? 0}`);
+  }
+}
+
+function appendRiskReport(lines, result) {
+  if (!result.riskReport) return;
+
+  lines.push("", "Heuristic Archive Risk");
+  if (result.riskReport.topProblems.length === 0) {
+    lines.push("  none");
+    return;
+  }
+
+  for (const problem of result.riskReport.topProblems) {
+    const reasons = problem.reasons
+      .map((reason) => `${reason.type} x${reason.count}`)
+      .join(", ");
+    lines.push(`  ${problem.id}  score ${problem.score}  ${reasons}`);
+  }
 }
 
 function appendExamples(lines, title, entries, formatter) {
@@ -863,6 +1329,18 @@ function countBy(entries, key) {
   return counts;
 }
 
+function failureType(error) {
+  if (error.code === "ARGUMENT_ERROR") return "argument-error";
+  if (error.code === "BASELINE_ERROR") return "baseline-error";
+  return "internal-error";
+}
+
+function failureCategory(error) {
+  return error.code === "ARGUMENT_ERROR" || error.code === "BASELINE_ERROR"
+    ? "cli"
+    : "internal";
+}
+
 export async function main(argv = process.argv.slice(2)) {
   let options = {
     root: ".",
@@ -875,20 +1353,57 @@ export async function main(argv = process.argv.slice(2)) {
     options = parseArgs(argv);
     if (options.help) {
       const help = [
-        "Usage: node scripts/archive-quality.mjs [--root <path>] [--json] [--top <n>]",
+        "Usage: node scripts/archive-quality.mjs [--root <path>] [--json] [--top <n>] [--write-baseline <path>] [--compare-baseline <path>] [--risk-report]",
+        "",
+        "--top <n> controls both largest problem JSON preview and risk report top count.",
         "",
       ].join("\n");
       process.stdout.write(help);
       process.exitCode = 0;
       return;
     }
+    const baselineForCompare = options.compareBaseline
+      ? await readBaselineFile(path.resolve(options.compareBaseline))
+      : null;
+
     result = await scanArchive(options);
+
+    if (options.riskReport) {
+      result.riskReport = calculateRiskReport(result, { top: options.top });
+    }
+
+    if (options.writeBaseline) {
+      const baseline = createBaseline(result, { top: options.top });
+      const baselinePath = path.resolve(options.writeBaseline);
+      try {
+        await writeBaselineFile(baselinePath, baseline);
+        result.baselineWrite = {
+          status: "written",
+          path: normalizePathSeparators(options.writeBaseline),
+          issueCount: baseline.summary.issueCount,
+          errorCount: baseline.summary.errorCount,
+          warningCount: baseline.summary.warningCount,
+        };
+      } catch (error) {
+        result.baselineWrite = {
+          status: "error",
+          path: normalizePathSeparators(options.writeBaseline),
+          message: error.message,
+        };
+        result.exitCode = 1;
+      }
+    }
+
+    if (baselineForCompare) {
+      result.baselineCompare = compareBaseline(result, baselineForCompare);
+      result.exitCode = result.baselineCompare.exitCode;
+    }
   } catch (error) {
     result = createFailureResult({
       root: options.root,
       options,
-      type: error.code === "ARGUMENT_ERROR" ? "argument-error" : "internal-error",
-      category: error.code === "ARGUMENT_ERROR" ? "cli" : "internal",
+      type: failureType(error),
+      category: failureCategory(error),
       message: error.message,
     });
   }
