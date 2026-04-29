@@ -45,9 +45,9 @@ describe("escHtml", () => {
     expect(escHtml("")).toBe("");
   });
 
-  it("따옴표는 이스케이프하지 않음 (innerHTML 용도이므로)", () => {
-    expect(escHtml('"hello"')).toBe('"hello"');
-    expect(escHtml("'hello'")).toBe("'hello'");
+  it("따옴표도 이스케이프해야 함 (attribute context 보안을 위해)", () => {
+    expect(escHtml('"hello"')).toBe("&quot;hello&quot;");
+    expect(escHtml("'hello'")).toBe("&#039;hello&#039;");
   });
 });
 
@@ -58,6 +58,7 @@ describe("fmtCount", () => {
     expect(fmtCount(0)).toBe("-");
     expect(fmtCount(null)).toBe("-");
     expect(fmtCount(undefined)).toBe("-");
+    expect(fmtCount("")).toBe("-");
   });
 
   it("10000 미만은 로케일 형식으로 반환", () => {
