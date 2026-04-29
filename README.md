@@ -23,8 +23,8 @@
 
 ## 다운로드
 
-| 파일 | 내용 | 크기 |
-|------|------|------|
+| 파일                                     | 내용                               | 크기  |
+| ---------------------------------------- | ---------------------------------- | ----- |
 | [problems.tar.gz](../../releases/latest) | 전체 문제 JSON + 이미지 (33,828개) | 560MB |
 
 ```bash
@@ -78,9 +78,7 @@ problems/
   "description": "<p>...</p>",
   "input": "<p>...</p>",
   "output": "<p>...</p>",
-  "samples": [
-    { "input": "3\n0\n1\n3\n", "output": "1 0\n0 1\n1 2\n" }
-  ],
+  "samples": [{ "input": "3\n0\n1\n3\n", "output": "1 0\n0 1\n1 2\n" }],
   "hint": null,
   "source": "baekjoon",
   "level": 8,
@@ -95,15 +93,15 @@ problems/
 
 ### `level` 난이도 티어 (solved.ac 기준)
 
-| 값 | 티어 |
-|----|------|
-| 0 | Unrated |
-| 1–5 | Bronze V–I |
-| 6–10 | Silver V–I |
-| 11–15 | Gold V–I |
+| 값    | 티어         |
+| ----- | ------------ |
+| 0     | Unrated      |
+| 1–5   | Bronze V–I   |
+| 6–10  | Silver V–I   |
+| 11–15 | Gold V–I     |
 | 16–20 | Platinum V–I |
-| 21–25 | Diamond V–I |
-| 26–30 | Ruby V–I |
+| 21–25 | Diamond V–I  |
+| 26–30 | Ruby V–I     |
 
 ## 저작권 고지
 
