@@ -57,13 +57,13 @@ export function FilterDropdown<T extends string | number>({
   const isDefault = !single && selected.length === 0
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative w-full">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        className={`flex items-center gap-2 px-5 py-3.5 text-sm bg-surface-card border transition-colors min-w-[160px] ${
+        className={`w-full flex items-center gap-2 px-5 py-3.5 text-sm bg-surface-card border transition-colors min-w-[120px] ${
           open
             ? 'border-text-primary text-text-primary'
             : isDefault

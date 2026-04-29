@@ -191,53 +191,59 @@ function ChallengesPage() {
       <TopNav />
 
       <header className="bg-surface-notice bg-[url('/hero-bg.png')] bg-cover bg-center bg-no-repeat">
-        <div className="max-w-[1200px] mx-auto px-10 pt-20 pb-16">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-red mb-4">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-12 sm:pt-16 xl:pt-20 pb-10 sm:pb-14 xl:pb-16">
+          <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-brand-red mb-3 sm:mb-4">
             BEYOND BOJ · OPEN ARCHIVE
           </p>
-          <h1 className="text-[40px] font-extrabold leading-tight tracking-tight text-text-primary m-0 mb-6">
+          <h1 className="text-[22px] sm:text-[28px] md:text-[32px] xl:text-[40px] font-extrabold leading-tight tracking-tight text-text-primary m-0 mb-5 sm:mb-6">
             백준의 다음을 잇는,
             <br />
             <span className="text-brand-red">모두에게 열린 알고리즘 저지</span>를
             만나보세요.
           </h1>
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-10 xl:mb-12">
             <Badge variant="dark">
               NEXT JUDGE<span className="text-brand-red">.</span>
             </Badge>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <div className="basis-full lg:basis-auto lg:flex-1 lg:min-w-[280px]">
+            <div className="basis-full xl:flex-1 xl:basis-auto xl:min-w-[280px]">
               <SearchInput value={query} onChange={handleQueryChange} />
             </div>
-            <FilterDropdown
-              defaultLabel="모든 정렬"
-              icon={SortIcon}
-              items={ORDER_ITEMS}
-              selected={[order]}
-              onToggle={handleOrderChange}
-              single
-            />
-            <FilterDropdown
-              defaultLabel="모든 난이도"
-              icon={LevelIcon}
-              items={LEVEL_ITEMS}
-              selected={levels}
-              onToggle={handleLevelToggle}
-            />
-            <FilterDropdown
-              defaultLabel="모든 상태"
-              icon={StatusIcon}
-              items={STATUS_ITEMS}
-              selected={statuses}
-              onToggle={handleStatusToggle}
-            />
+            <div className="basis-full sm:flex-1 sm:basis-auto xl:flex-none">
+              <FilterDropdown
+                defaultLabel="모든 정렬"
+                icon={SortIcon}
+                items={ORDER_ITEMS}
+                selected={[order]}
+                onToggle={handleOrderChange}
+                single
+              />
+            </div>
+            <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+              <FilterDropdown
+                defaultLabel="모든 난이도"
+                icon={LevelIcon}
+                items={LEVEL_ITEMS}
+                selected={levels}
+                onToggle={handleLevelToggle}
+              />
+            </div>
+            <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+              <FilterDropdown
+                defaultLabel="모든 상태"
+                icon={StatusIcon}
+                items={STATUS_ITEMS}
+                selected={statuses}
+                onToggle={handleStatusToggle}
+              />
+            </div>
             <button
               type="button"
               onClick={handleReset}
               disabled={!hasFilters}
-              className="text-sm text-text-secondary hover:text-text-primary underline-offset-4 hover:underline disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:no-underline transition-colors px-2"
+              className="hidden sm:inline-block text-sm text-text-secondary hover:text-text-primary underline-offset-4 hover:underline disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:no-underline transition-colors px-2 flex-shrink-0"
             >
               초기화
             </button>
@@ -245,7 +251,7 @@ function ChallengesPage() {
         </div>
       </header>
 
-      <main className="max-w-[1200px] mx-auto px-10 pt-12 pb-12">
+      <main className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-12 pb-12">
         <div className="flex flex-col lg:flex-row lg:items-start gap-10">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-3 mb-5 px-3">
@@ -285,7 +291,7 @@ function ChallengesPage() {
         </div>
       </main>
 
-      <footer className="max-w-[1200px] mx-auto px-10 py-10">
+      <footer className="max-w-[1200px] mx-auto px-6 sm:px-10 py-10">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-secondary mb-3">
           <span className="text-text-muted">© 2026 NEXT JUDGE</span>
           <span className="text-border-key" aria-hidden="true">·</span>
