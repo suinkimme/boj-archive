@@ -138,13 +138,9 @@ export default function MePage() {
             {hasHandle && (
               <div className="mt-1.5 flex items-center gap-2 flex-wrap">
                 {solvedAc ? (
-                  <TierBadge
-                    tier={solvedAc.tier}
-                    size={18}
-                    className="relative -bottom-[2px] flex-shrink-0"
-                  />
+                  <TierBadge tier={solvedAc.tier} className="text-[13px] flex-shrink-0" />
                 ) : (
-                  <span className="block w-[18px] h-[18px] bg-surface-page rounded animate-pulse flex-shrink-0 relative -bottom-[2px]" />
+                  <span className="block w-12 h-3.5 bg-surface-page rounded animate-pulse flex-shrink-0" />
                 )}
                 <span className="text-[13px] text-text-secondary">
                   BOJ <strong className="text-text-primary">@{bojHandle}</strong>
@@ -187,7 +183,7 @@ export default function MePage() {
                     rel="noreferrer"
                     className="h-12 flex items-center gap-3 px-4 hover:bg-surface-page transition-colors"
                   >
-                    <TierBadge tier={item.level} size={18} className="flex-shrink-0" />
+                    <TierBadge tier={item.level} className="text-[13px] flex-shrink-0" />
                     <span className="text-[13px] text-text-muted tabular-nums flex-shrink-0">
                       {item.problemId}
                     </span>
@@ -336,7 +332,7 @@ function RecentSolvedPlaceholder() {
       <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
         {Array.from({ length: 5 }).map((_, i) => (
           <li key={i} className="h-12 flex items-center gap-3 px-4">
-            <span className="block w-[18px] h-[18px] bg-surface-page rounded animate-pulse flex-shrink-0" />
+            <span className="block h-3.5 w-12 bg-surface-page rounded animate-pulse flex-shrink-0" />
             <span className="block h-3.5 w-10 bg-surface-page rounded animate-pulse flex-shrink-0" />
             <span className="block h-3.5 flex-1 max-w-[240px] bg-surface-page rounded animate-pulse" />
           </li>

@@ -197,7 +197,7 @@ export default function OnboardingPage() {
           {preview && (
             <div className="mt-2 mb-8 p-4 sm:p-5 border border-border-list bg-surface-page">
               <div className="flex items-center gap-3">
-                <TierBadge tier={preview.tier} size={28} />
+                <TierBadge tier={preview.tier} className="text-[18px]" />
                 <div className="flex-1 min-w-0">
                   <p className="text-[15px] font-bold text-text-primary truncate leading-tight">
                     @{preview.handle}
