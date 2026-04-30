@@ -1,12 +1,16 @@
 import {
+  index,
   integer,
   jsonb,
   pgTable,
   primaryKey,
+  real,
   text,
   timestamp,
 } from 'drizzle-orm/pg-core'
 import type { AdapterAccountType } from 'next-auth/adapters'
+
+export type SolvedSource = 'solvedac' | 'local'
 
 export const users = pgTable('users', {
   id: text('id')
@@ -87,3 +91,38 @@ export const solvedAcSnapshots = pgTable('solved_ac_snapshots', {
   raw: jsonb('raw').notNull(),
   fetchedAt: timestamp('fetched_at', { mode: 'date' }).notNull().defaultNow(),
 })
+
+// Global problem catalog. Populated lazily as we import users' solved
+// problems; rows are upserted with the latest metadata seen.
+export const problems = pgTable('problems', {
+  problemId: integer('problem_id').primaryKey(),
+  titleKo: text('title_ko').notNull(),
+  level: integer('level').notNull(),
+  acceptedUserCount: integer('accepted_user_count'),
+  averageTries: real('average_tries'),
+  raw: jsonb('raw'),
+  fetchedAt: timestamp('fetched_at', { mode: 'date' }).notNull().defaultNow(),
+})
+
+// Per-user solve history. source=solvedac for imports from the
+// solved.ac API; source=local for problems solved on this judge.
+export const userSolvedProblems = pgTable(
+  'user_solved_problems',
+  {
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    problemId: integer('problem_id')
+      .notNull()
+      .references(() => problems.problemId, { onDelete: 'cascade' }),
+    source: text('source').$type<SolvedSource>().notNull(),
+    solvedAt: timestamp('solved_at', { mode: 'date' }),
+    importedAt: timestamp('imported_at', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.userId, t.problemId] }),
+    index('user_solved_problems_user_idx').on(t.userId),
+  ],
+)
