@@ -5,6 +5,9 @@ import { auth } from '@/auth'
 import { db } from '@/db'
 import { users } from '@/db/schema'
 import { getUserCached } from '@/lib/solvedac/cache'
+import { fetchSolvedProblems } from '@/lib/solvedac/client'
+
+const RECENT_SOLVED_LIMIT = 5
 
 export async function GET() {
   const session = await auth()
@@ -27,7 +30,14 @@ export async function GET() {
     return NextResponse.json({ error: 'user_not_found' }, { status: 404 })
   }
 
-  const solvedAc = me.bojHandle ? await getUserCached(me.bojHandle) : null
+  const [solvedAc, recentSearch] = me.bojHandle
+    ? await Promise.all([
+        getUserCached(me.bojHandle),
+        fetchSolvedProblems(me.bojHandle, 1).catch(() => null),
+      ])
+    : [null, null]
+
+  const recentSolved = recentSearch?.items.slice(0, RECENT_SOLVED_LIMIT) ?? []
 
   return NextResponse.json({
     user: {
@@ -36,5 +46,6 @@ export async function GET() {
       onboardedAt: me.onboardedAt,
     },
     solvedAc,
+    recentSolved,
   })
 }
