@@ -8,15 +8,14 @@ export interface Problem {
   tags?: string[]
   completedCount: number
   rate: number
+  done: boolean
 }
 
 interface ProblemListProps {
   problems: Problem[]
-  doneIds: Set<number>
-  onToggleDone: (id: number) => void
 }
 
-export function ProblemList({ problems, doneIds, onToggleDone }: ProblemListProps) {
+export function ProblemList({ problems }: ProblemListProps) {
   if (problems.length === 0) {
     return (
       <div className="py-20 text-center text-sm text-text-muted">
@@ -36,8 +35,7 @@ export function ProblemList({ problems, doneIds, onToggleDone }: ProblemListProp
           tags={p.tags}
           completedCount={p.completedCount}
           rate={p.rate}
-          done={doneIds.has(p.id)}
-          onToggleDone={() => onToggleDone(p.id)}
+          done={p.done}
         />
       ))}
     </ul>

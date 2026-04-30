@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useCallback, useMemo, useState } from 'react'
+import { Suspense, useCallback, useMemo } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import { FilterDropdown } from '@/components/challenges/FilterDropdown'
@@ -142,13 +142,6 @@ function ChallengesPage() {
   const page = parsePage(searchParams.get('page'))
   const query = searchParams.get('q') ?? ''
 
-  const [doneIds, setDoneIds] = useState<Set<number>>(
-    () =>
-      new Set(
-        mockProblems.filter((p) => p.defaultStatus === 'solved').map((p) => p.id),
-      ),
-  )
-
   const updateParams = useCallback(
     (updates: Record<string, string | null>) => {
       const next = new URLSearchParams(searchParams.toString())
@@ -179,14 +172,6 @@ function ChallengesPage() {
   }
   const handlePageChange = (next: number) =>
     updateParams({ page: next === 1 ? null : String(next) })
-  const handleToggleDone = (id: number) => {
-    setDoneIds((prev) => {
-      const out = new Set(prev)
-      if (out.has(id)) out.delete(id)
-      else out.add(id)
-      return out
-    })
-  }
   const handleReset = () => {
     router.replace('/', { scroll: false })
   }
@@ -205,21 +190,14 @@ function ChallengesPage() {
     if (levels.length > 0) list = list.filter((p) => levels.includes(p.level))
     if (tags.length > 0) list = list.filter((p) => tags.some((t) => p.tags.includes(t)))
     if (statuses.length > 0) {
-      list = list.filter((p) => {
-        const effective: Status = doneIds.has(p.id)
-          ? 'solved'
-          : p.defaultStatus === 'solved'
-            ? 'unsolved'
-            : p.defaultStatus
-        return statuses.includes(effective)
-      })
+      list = list.filter((p) => statuses.includes(p.defaultStatus))
     }
     const sorted = [...list]
     if (order === 'solved') sorted.sort((a, b) => b.completedCount - a.completedCount)
     else if (order === 'rate') sorted.sort((a, b) => b.rate - a.rate)
     else sorted.sort((a, b) => b.createdAt - a.createdAt)
     return sorted
-  }, [query, levels, statuses, tags, order, doneIds])
+  }, [query, levels, statuses, tags, order])
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
   const safePage = Math.min(page, totalPages)
@@ -324,9 +302,7 @@ function ChallengesPage() {
             </div>
 
             <ProblemList
-              problems={visible}
-              doneIds={doneIds}
-              onToggleDone={handleToggleDone}
+              problems={visible.map((p) => ({ ...p, done: p.defaultStatus === 'solved' }))}
             />
 
             <Pagination

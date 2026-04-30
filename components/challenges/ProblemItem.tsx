@@ -10,7 +10,6 @@ interface ProblemItemProps {
   completedCount: number
   rate: number
   done: boolean
-  onToggleDone: () => void
 }
 
 const LEVEL_COLOR: Record<Level, string> = {
@@ -29,22 +28,14 @@ export function ProblemItem({
   completedCount,
   rate,
   done,
-  onToggleDone,
 }: ProblemItemProps) {
   return (
     <li className="list-none">
-      <button
-        type="button"
-        onClick={onToggleDone}
-        aria-pressed={done}
-        className="w-full text-left group flex items-center gap-3 px-3 py-4 hover:bg-surface-page transition-colors"
-      >
+      <div className="group flex items-center gap-3 px-3 py-4 hover:bg-surface-page transition-colors">
         <span
           aria-label={done ? '완료' : '미완료'}
-          className={`flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 transition-colors ${
-            done
-              ? 'bg-brand-red'
-              : 'border border-border-key group-hover:border-text-secondary'
+          className={`flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 ${
+            done ? 'bg-brand-red' : 'border border-border-key'
           }`}
         >
           {done && (
@@ -94,7 +85,7 @@ export function ProblemItem({
             ))}
           </ul>
         )}
-      </button>
+      </div>
     </li>
   )
 }
