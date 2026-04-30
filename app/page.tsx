@@ -341,6 +341,7 @@ function ChallengesPage() {
           해당 대회 주최 기관에 있습니다.
         </p>
       </footer>
+
     </div>
   )
 }
