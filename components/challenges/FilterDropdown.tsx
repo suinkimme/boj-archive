@@ -54,6 +54,21 @@ export function FilterDropdown<T extends string | number>({
     return `${first} 외 ${selected.length - 1}개`
   })()
 
+  // Compute the longest possible display text to lock minimum width.
+  // This prevents the box from resizing as the selection changes.
+  const widthAnchor = (() => {
+    if (items.length === 0) return defaultLabel
+    const longestLabel = items.reduce(
+      (max, it) => (it.label.length > max.length ? it.label : max),
+      '',
+    )
+    const longestDisplay =
+      !single && items.length > 1
+        ? `${longestLabel} 외 ${items.length - 1}개`
+        : longestLabel
+    return longestDisplay.length > defaultLabel.length ? longestDisplay : defaultLabel
+  })()
+
   const isDefault = !single && selected.length === 0
 
   return (
@@ -72,7 +87,15 @@ export function FilterDropdown<T extends string | number>({
         }`}
       >
         {icon && <span className="flex-shrink-0">{icon}</span>}
-        <span className="flex-1 text-left truncate">{display}</span>
+        <span className="flex-1 grid text-left">
+          <span
+            className="col-start-1 row-start-1 invisible whitespace-nowrap"
+            aria-hidden="true"
+          >
+            {widthAnchor}
+          </span>
+          <span className="col-start-1 row-start-1 truncate">{display}</span>
+        </span>
         <svg
           className={`w-4 h-4 flex-shrink-0 transition-transform ${
             open ? 'rotate-180' : ''
