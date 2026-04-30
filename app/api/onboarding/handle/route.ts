@@ -5,9 +5,6 @@ import { auth } from '@/auth'
 import { db } from '@/db'
 import { users } from '@/db/schema'
 import { getUserCached } from '@/lib/solvedac/cache'
-import { importSolvedHandle } from '@/lib/solvedac/import'
-
-const INITIAL_SYNC_PAGES = 2
 
 export async function POST(req: Request) {
   const session = await auth()
@@ -55,17 +52,7 @@ export async function POST(req: Request) {
     })
     .where(eq(users.id, session.user.id))
 
-  // Best-effort initial sync so /me has data on first visit. Failures
-  // here shouldn't block onboarding — user can retry via /api/solvedac/sync.
-  let initialSync: { nextPage: number | null; totalCount: number } | null = null
-  try {
-    const result = await importSolvedHandle(session.user.id, handle, {
-      maxPages: INITIAL_SYNC_PAGES,
-    })
-    initialSync = { nextPage: result.nextPage, totalCount: result.totalCount }
-  } catch {
-    // swallow — handle save already succeeded
-  }
-
-  return NextResponse.json({ handle, onboardedAt: now, initialSync })
+  // Initial import is driven by the /me page (it polls /api/solvedac/sync
+  // and shows progress to the user). Saving the handle returns fast.
+  return NextResponse.json({ handle, onboardedAt: now })
 }
