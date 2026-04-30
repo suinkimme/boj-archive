@@ -7,6 +7,21 @@ import type {
 const BASE = 'https://solved.ac/api/v3'
 const UA = 'NextJudge/0.1 (+https://github.com/suinkimme/boj-archive)'
 
+const DEV_MOCK = process.env.SOLVEDAC_DEV_MOCK === '1'
+
+function devMockUser(handle: string): SolvedAcUser {
+  const seed = [...handle].reduce((s, c) => s + c.charCodeAt(0), 0)
+  return {
+    handle: handle.toLowerCase(),
+    bio: '',
+    tier: (seed % 25) + 1,
+    rating: 1000 + (seed % 2000),
+    solvedCount: 100 + (seed % 1000),
+    class: (seed % 7) + 1,
+    profileImageUrl: null,
+  }
+}
+
 export class SolvedAcError extends Error {
   constructor(
     public readonly status: number,
@@ -40,6 +55,7 @@ type RawUser = {
 }
 
 export async function fetchUser(handle: string): Promise<SolvedAcUser | null> {
+  if (DEV_MOCK) return devMockUser(handle)
   try {
     const raw = await request<RawUser>(
       `/user/show?handle=${encodeURIComponent(handle)}`,
@@ -71,6 +87,7 @@ export async function fetchSolvedProblems(
   handle: string,
   page = 1,
 ): Promise<SolvedAcSearchResult> {
+  if (DEV_MOCK) return { count: 0, items: [] }
   const params = new URLSearchParams({
     query: `solved_by:${handle}`,
     page: String(page),
