@@ -287,10 +287,10 @@ function ChallengesPage() {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-3 mb-3 sm:mb-5 px-3">
               <div
-                className="w-1 h-5 bg-brand-red flex-shrink-0"
+                className="w-1 h-4 sm:h-5 bg-brand-red flex-shrink-0"
                 aria-hidden="true"
               />
-              <h2 className="text-[22px] font-bold tracking-tight text-text-primary m-0">
+              <h2 className="text-[18px] sm:text-[22px] font-bold tracking-tight text-text-primary m-0">
                 문제 목록
               </h2>
               <span className="hidden xl:inline text-[10px] font-bold uppercase tracking-[0.18em] text-text-muted">
@@ -322,8 +322,15 @@ function ChallengesPage() {
 
       <footer className="max-w-[1200px] mx-auto px-6 sm:px-10 py-10">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-secondary mb-3">
-          <span className="text-text-muted">© 2026 NEXT JUDGE</span>
-          <span className="text-border-key" aria-hidden="true">·</span>
+          <span className="text-text-muted basis-full min-[425px]:basis-auto">
+            © 2026 NEXT JUDGE
+          </span>
+          <span
+            className="hidden min-[425px]:inline text-border-key"
+            aria-hidden="true"
+          >
+            ·
+          </span>
           <a
             href="https://github.com/suinkimme/boj-archive"
             target="_blank"
