@@ -6,7 +6,10 @@ import { db } from '@/db'
 import { users } from '@/db/schema'
 import { importSolvedHandle } from '@/lib/solvedac/import'
 
-const MAX_PAGES_PER_REQUEST = 4
+// 1 page per request keeps progress updates frequent on the client —
+// even small accounts (~79 problems) get at least one mid-import tick
+// instead of jumping from 0% to 100%.
+const MAX_PAGES_PER_REQUEST = 1
 
 export async function POST(req: Request) {
   const session = await auth()
