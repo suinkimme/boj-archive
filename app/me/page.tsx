@@ -27,34 +27,25 @@ export default function MePage() {
   const showPending = usePendingFeature()
 
   const [me, setMe] = useState<MeData | null>(null)
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (status !== 'authenticated') return
     let cancelled = false
-    setLoading(true)
     void (async () => {
-      try {
-        const res = await fetch('/api/me')
-        if (!res.ok) return
-        const data = (await res.json()) as MeData
-        if (!cancelled) setMe(data)
-      } finally {
-        if (!cancelled) setLoading(false)
-      }
+      const res = await fetch('/api/me')
+      if (!res.ok || cancelled) return
+      const data = (await res.json()) as MeData
+      setMe(data)
     })()
     return () => {
       cancelled = true
     }
   }, [status])
 
-  if (status === 'loading' || (status === 'authenticated' && loading && !me)) {
+  if (status === 'loading') {
     return (
       <div className="min-h-screen bg-surface-card">
         <TopNav />
-        <main className="max-w-[760px] mx-auto px-6 sm:px-10 pt-12">
-          <div className="h-6 w-40 bg-surface-page animate-pulse" />
-        </main>
       </div>
     )
   }
@@ -161,10 +152,11 @@ export default function MePage() {
           </div>
         </div>
 
-        {!hasHandle && <NoHandleCard />}
-        {hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
+        {!me && <SectionPlaceholder />}
+        {me && !hasHandle && <NoHandleCard />}
+        {me && hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
 
-        {hasHandle && solvedAc && (
+        {me && hasHandle && solvedAc && (
           <section className="mb-10">
             <SectionHeading>활동 요약</SectionHeading>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
@@ -175,7 +167,7 @@ export default function MePage() {
           </section>
         )}
 
-        {hasHandle && !solvedAc && !loading && (
+        {me && hasHandle && !solvedAc && (
           <div className="mb-10 p-5 border border-border-list bg-surface-page text-center">
             <p className="text-[13px] text-text-secondary">
               저장된 아이디 <strong className="text-text-primary">@{bojHandle}</strong>의
@@ -267,6 +259,26 @@ function Stat({ label, value }: { label: string; value: string }) {
       <p className="text-[20px] sm:text-[22px] font-extrabold text-text-primary tabular-nums leading-none">
         {value}
       </p>
+    </div>
+  )
+}
+
+function SectionPlaceholder() {
+  return (
+    <div className="mb-10 p-5 sm:p-6 border border-border-list bg-surface-page">
+      <p className="text-[14px] sm:text-[15px] font-bold mb-1">
+        <span className="inline-block bg-border rounded animate-pulse">
+          <span className="invisible">백준 아이디 등록하실래요?</span>
+        </span>
+      </p>
+      <p className="text-[13px] leading-relaxed mb-4">
+        <span className="inline-block bg-border rounded animate-pulse">
+          <span className="invisible">등록하면 백준에서 푸신 문제를 여기서 한눈에 볼 수 있어요.</span>
+        </span>
+      </p>
+      <span className="inline-block bg-border rounded animate-pulse px-4 py-2.5 text-[13px] font-bold">
+        <span className="invisible">등록하러 가기</span>
+      </span>
     </div>
   )
 }

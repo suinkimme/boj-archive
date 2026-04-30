@@ -119,6 +119,8 @@ export default function OnboardingPage() {
     }
   }
 
+  const alreadyOnboarded = !!session?.user?.onboardedAt
+
   const handleClose = () => {
     router.back()
   }
@@ -130,13 +132,15 @@ export default function OnboardingPage() {
           <a href="/" className="text-text-primary text-lg font-bold tracking-[0.06em]">
             NEXT JUDGE<span className="text-brand-red">.</span>
           </a>
-          <button
-            type="button"
-            onClick={handleClose}
-            className="text-[13px] text-text-secondary hover:text-text-primary transition-colors"
-          >
-            닫기
-          </button>
+          {alreadyOnboarded && (
+            <button
+              type="button"
+              onClick={handleClose}
+              className="text-[13px] text-text-secondary hover:text-text-primary transition-colors"
+            >
+              닫기
+            </button>
+          )}
         </div>
       </header>
 

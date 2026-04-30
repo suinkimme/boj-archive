@@ -1,4 +1,5 @@
 import { DrizzleAdapter } from '@auth/drizzle-adapter'
+import { eq } from 'drizzle-orm'
 import NextAuth from 'next-auth'
 import GitHub from 'next-auth/providers/github'
 
@@ -20,12 +21,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [GitHub],
   session: { strategy: 'jwt' },
   callbacks: {
-    async jwt({ token, profile, user }) {
+    async jwt({ token, profile, user, trigger }) {
       if (profile) {
         token.login = (profile as { login?: string }).login
       }
       if (user?.id) {
         token.userId = user.id
+      }
+      // Refresh onboardedAt from DB until it's set, or on explicit update().
+      const userId = typeof token.userId === 'string' ? token.userId : null
+      if (userId && (!token.onboardedAt || trigger === 'update')) {
+        const [row] = await db
+          .select({ onboardedAt: users.onboardedAt })
+          .from(users)
+          .where(eq(users.id, userId))
+          .limit(1)
+        if (row?.onboardedAt) {
+          token.onboardedAt = row.onboardedAt.toISOString()
+        }
       }
       return token
     },
@@ -36,6 +49,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
         if (typeof token.userId === 'string') {
           session.user.id = token.userId
+        }
+        if (typeof token.onboardedAt === 'string') {
+          session.user.onboardedAt = token.onboardedAt
         }
       }
       return session
