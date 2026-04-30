@@ -1,3 +1,5 @@
+import { logEvent } from '@/lib/log'
+
 import { acquireGlobalSolvedAcSlot } from './rate-limit'
 import { acquireSolvedAcToken } from './throttle'
 import type {
@@ -11,6 +13,7 @@ const UA = 'NextJudge/0.1 (+https://github.com/suinkimme/boj-archive)'
 
 const MAX_RETRIES = 3
 const BACKOFF_MS = [500, 1500, 4000]
+const SLOW_REQUEST_MS = 3_000
 
 const DEV_MOCK = process.env.SOLVEDAC_DEV_MOCK === '1'
 
@@ -39,6 +42,7 @@ export class SolvedAcError extends Error {
 }
 
 async function request<T>(path: string): Promise<T> {
+  const startedAt = Date.now()
   let attempt = 0
   for (;;) {
     await acquireGlobalSolvedAcSlot()
@@ -48,14 +52,24 @@ async function request<T>(path: string): Promise<T> {
       cache: 'no-store',
     })
     if (res.ok) {
+      const elapsedMs = Date.now() - startedAt
+      if (elapsedMs >= SLOW_REQUEST_MS) {
+        logEvent('solvedac_slow', { path, elapsedMs, attempt })
+      }
       return (await res.json()) as T
     }
     const transient = res.status === 429 || res.status >= 500
     if (transient && attempt < MAX_RETRIES) {
+      logEvent('solvedac_transient_error', {
+        path,
+        status: res.status,
+        attempt,
+      })
       await new Promise((r) => setTimeout(r, BACKOFF_MS[attempt]))
       attempt += 1
       continue
     }
+    logEvent('solvedac_error', { path, status: res.status, attempt })
     throw new SolvedAcError(res.status, path)
   }
 }
