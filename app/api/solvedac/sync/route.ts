@@ -27,13 +27,20 @@ export async function POST(req: Request) {
     typeof body.fromPage === 'number' && body.fromPage > 0 ? body.fromPage : 1
 
   const [me] = await db
-    .select({ bojHandle: users.bojHandle })
+    .select({
+      bojHandle: users.bojHandle,
+      bojHandleVerifiedAt: users.bojHandleVerifiedAt,
+    })
     .from(users)
     .where(eq(users.id, session.user.id))
     .limit(1)
 
   if (!me?.bojHandle) {
     return NextResponse.json({ error: 'no_handle' }, { status: 400 })
+  }
+
+  if (!me.bojHandleVerifiedAt) {
+    return NextResponse.json({ error: 'not_verified' }, { status: 403 })
   }
 
   const result = await importSolvedHandle(session.user.id, me.bojHandle, {

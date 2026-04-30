@@ -60,8 +60,11 @@ export default function MePage() {
   }, [status])
 
   // Drive the import poll loop while the DB lags solved.ac.
+  // Only runs after the user has verified ownership of the handle —
+  // otherwise we'd burn solved.ac quota on unverified claims.
   useEffect(() => {
     if (!me?.user.bojHandle || !me.solvedAc) return
+    if (!me.user.bojHandleVerifiedAt) return
     if (me.importedCount >= me.solvedAc.solvedCount) return
 
     let cancelled = false
@@ -114,7 +117,12 @@ export default function MePage() {
       cancelled = true
       setSyncSlow(false)
     }
-  }, [me?.user.bojHandle, me?.importedCount, me?.solvedAc?.solvedCount])
+  }, [
+    me?.user.bojHandle,
+    me?.user.bojHandleVerifiedAt,
+    me?.importedCount,
+    me?.solvedAc?.solvedCount,
+  ])
 
   const disconnect = async () => {
     if (disconnecting) return
@@ -181,7 +189,11 @@ export default function MePage() {
     (me?.importedCount ?? 0) + syncedSoFar,
   )
   const isImporting =
-    !!me && hasHandle && !!solvedAc && importedDisplay < totalSolved
+    !!me &&
+    hasHandle &&
+    isVerified &&
+    !!solvedAc &&
+    importedDisplay < totalSolved
 
   return (
     <div className="min-h-screen bg-surface-card">
