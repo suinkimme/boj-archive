@@ -23,15 +23,7 @@ type MeData = {
   importedCount: number
 }
 
-type SyncResult = {
-  pagesFetched: number
-  problemsImported: number
-  totalCount: number
-  nextPage: number | null
-}
-
 const SYNC_PAGE_SIZE = 50
-const SLOW_SYNC_AFTER_MS = 5_000
 
 export default function MePage() {
   const router = useRouter()
@@ -41,8 +33,6 @@ export default function MePage() {
   const [me, setMe] = useState<MeData | null>(null)
   const [disconnectOpen, setDisconnectOpen] = useState(false)
   const [disconnecting, setDisconnecting] = useState(false)
-  const [syncedSoFar, setSyncedSoFar] = useState(0)
-  const [syncSlow, setSyncSlow] = useState(false)
 
   useEffect(() => {
     if (status !== 'authenticated') return
@@ -52,70 +42,49 @@ export default function MePage() {
       if (!res.ok || cancelled) return
       const data = (await res.json()) as MeData
       setMe(data)
-      setSyncedSoFar(0)
     })()
     return () => {
       cancelled = true
     }
   }, [status])
 
-  // Drive the import poll loop while the DB lags solved.ac.
-  // Only runs after the user has verified ownership of the handle —
-  // otherwise we'd burn solved.ac quota on unverified claims.
+  // Drive the import one chunk per effect cycle. Each chunk:
+  //   1. POST /api/solvedac/sync (1 page)
+  //   2. GET /api/me to refresh recentSolved + importedCount
+  // Updating me re-triggers this effect with the new importedCount,
+  // which kicks off the next chunk until importedCount === solvedCount.
   useEffect(() => {
     if (!me?.user.bojHandle || !me.solvedAc) return
     if (!me.user.bojHandleVerifiedAt) return
     if (me.importedCount >= me.solvedAc.solvedCount) return
 
     let cancelled = false
-    let nextPage: number | null = Math.max(
+    const fromPage = Math.max(
       1,
       Math.floor(me.importedCount / SYNC_PAGE_SIZE) + 1,
     )
 
     void (async () => {
-      while (nextPage !== null && !cancelled) {
-        let slowTimer: ReturnType<typeof setTimeout> | null = setTimeout(() => {
-          if (!cancelled) setSyncSlow(true)
-        }, SLOW_SYNC_AFTER_MS)
-
-        try {
-          const res = await fetch('/api/solvedac/sync', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ fromPage: nextPage }),
-          })
-          if (slowTimer) {
-            clearTimeout(slowTimer)
-            slowTimer = null
-          }
-          if (!res.ok || cancelled) break
-          const result = (await res.json()) as SyncResult
-          if (cancelled) break
-          setSyncedSoFar((prev) => prev + result.problemsImported)
-          setSyncSlow(false)
-          nextPage = result.nextPage
-        } catch {
-          break
-        } finally {
-          if (slowTimer) clearTimeout(slowTimer)
-        }
-      }
-
-      if (!cancelled && nextPage === null) {
-        const res = await fetch('/api/me')
-        if (res.ok && !cancelled) {
-          const data = (await res.json()) as MeData
-          setMe(data)
-          setSyncedSoFar(0)
-          setSyncSlow(false)
-        }
+      try {
+        const syncRes = await fetch('/api/solvedac/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fromPage }),
+        })
+        if (cancelled || !syncRes.ok) return
+        await syncRes.json()
+        const meRes = await fetch('/api/me')
+        if (cancelled || !meRes.ok) return
+        const data = (await meRes.json()) as MeData
+        if (cancelled) return
+        setMe(data)
+      } catch {
+        // ignore — next render will retry
       }
     })()
 
     return () => {
       cancelled = true
-      setSyncSlow(false)
     }
   }, [
     me?.user.bojHandle,
@@ -184,10 +153,7 @@ export default function MePage() {
   const solvedAc = me?.solvedAc ?? null
   const recentSolved = me?.recentSolved ?? []
   const totalSolved = solvedAc?.solvedCount ?? 0
-  const importedDisplay = Math.min(
-    totalSolved,
-    (me?.importedCount ?? 0) + syncedSoFar,
-  )
+  const importedDisplay = Math.min(totalSolved, me?.importedCount ?? 0)
   const isImporting =
     !!me &&
     hasHandle &&
@@ -262,36 +228,49 @@ export default function MePage() {
         )}
 
         {!me && <RecentSolvedPlaceholder />}
-        {isImporting && (
-          <ImportProgressCard
-            imported={importedDisplay}
-            total={totalSolved}
-            slow={syncSlow}
-          />
-        )}
         {me && hasHandle && !isVerified && <LockedRecentSolved />}
-        {me && isVerified && !isImporting && hasHandle && recentSolved.length > 0 && (
+        {me && isVerified && hasHandle && (isImporting || recentSolved.length > 0) && (
           <section className="mb-10">
-            <SectionHeading>최근 푼 문제</SectionHeading>
-            <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
-              {recentSolved.map((item) => (
-                <li key={item.problemId}>
-                  <button
-                    type="button"
-                    onClick={() => showPending('에디터')}
-                    className="w-full text-left h-12 flex items-center gap-3 px-4 hover:bg-surface-page transition-colors"
-                  >
-                    <TierBadge tier={item.level} className="text-[13px] flex-shrink-0" />
-                    <span className="text-[13px] text-text-muted tabular-nums flex-shrink-0">
-                      {item.problemId}
-                    </span>
-                    <span className="flex-1 min-w-0 text-[14px] font-medium text-text-primary truncate">
-                      {item.titleKo}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <SectionHeading
+              side={
+                isImporting && totalSolved > 0
+                  ? `가져오는 중 ${importedDisplay.toLocaleString()} / ${totalSolved.toLocaleString()}`
+                  : null
+              }
+            >
+              최근 푼 문제
+            </SectionHeading>
+            {recentSolved.length > 0 ? (
+              <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
+                {recentSolved.map((item) => (
+                  <li key={item.problemId}>
+                    <button
+                      type="button"
+                      onClick={() => showPending('에디터')}
+                      className="w-full text-left h-12 flex items-center gap-3 px-4 hover:bg-surface-page transition-colors"
+                    >
+                      <TierBadge tier={item.level} className="text-[13px] flex-shrink-0" />
+                      <span className="text-[13px] text-text-muted tabular-nums flex-shrink-0">
+                        {item.problemId}
+                      </span>
+                      <span className="flex-1 min-w-0 text-[14px] font-medium text-text-primary truncate">
+                        {item.titleKo}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <li key={i} className="h-12 flex items-center gap-3 px-4">
+                    <span className="block h-3.5 w-12 bg-surface-page rounded animate-pulse flex-shrink-0" />
+                    <span className="block h-3.5 w-10 bg-surface-page rounded animate-pulse flex-shrink-0" />
+                    <span className="block h-3.5 flex-1 max-w-[240px] bg-surface-page rounded animate-pulse" />
+                  </li>
+                ))}
+              </ul>
+            )}
           </section>
         )}
 
@@ -386,46 +365,6 @@ export default function MePage() {
   )
 }
 
-function ImportProgressCard({
-  imported,
-  total,
-  slow,
-}: {
-  imported: number
-  total: number
-  slow: boolean
-}) {
-  const percent = total > 0 ? Math.min(100, (imported / total) * 100) : 0
-  return (
-    <div className="mb-10 border border-border-list bg-surface-page p-5 sm:p-6">
-      <p className="text-[14px] sm:text-[15px] font-bold text-text-primary mb-1">
-        백준 풀이 가져오는 중
-      </p>
-      <p className="text-[13px] text-text-secondary leading-relaxed mb-4">
-        지금까지 푸셨던 문제를 정리하고 있어요. 잠깐만 기다려주세요.
-      </p>
-      <div className="h-2 bg-surface-card border border-border-list overflow-hidden">
-        <div
-          className="h-full bg-brand-red transition-[width] duration-300 ease-out"
-          style={{ width: `${percent}%` }}
-        />
-      </div>
-      <div className="mt-2 flex items-center justify-between text-[12px] tabular-nums">
-        <span className="text-text-secondary">
-          <strong className="text-text-primary">{imported.toLocaleString()}</strong>
-          <span className="text-text-muted"> / {total.toLocaleString()}</span>
-        </span>
-        <span className="text-text-muted">{percent.toFixed(0)}%</span>
-      </div>
-      {slow && (
-        <p className="mt-4 text-[12px] text-text-muted leading-relaxed">
-          다른 분들도 같이 가져오고 있어서 평소보다 오래 걸릴 수 있어요.
-        </p>
-      )}
-    </div>
-  )
-}
-
 function LockIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -484,13 +423,22 @@ function LockedRecentSolved() {
   )
 }
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
+function SectionHeading({
+  children,
+  side,
+}: {
+  children: React.ReactNode
+  side?: React.ReactNode
+}) {
   return (
     <div className="flex items-center gap-3 mb-3 px-1">
       <div className="w-1 h-4 bg-brand-red flex-shrink-0" aria-hidden="true" />
       <h2 className="text-[15px] sm:text-[17px] font-bold tracking-tight text-text-primary m-0">
         {children}
       </h2>
+      {side && (
+        <span className="text-[12px] text-text-muted tabular-nums">{side}</span>
+      )}
     </div>
   )
 }
