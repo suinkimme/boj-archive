@@ -229,10 +229,8 @@ export default function MePage() {
             )}
             {hasHandle && (
               <div className="mt-1.5 flex items-center gap-2 flex-wrap">
-                {solvedAc ? (
+                {isVerified && solvedAc && (
                   <TierBadge tier={solvedAc.tier} className="text-[13px] flex-shrink-0" />
-                ) : (
-                  <span className="block w-12 h-3.5 bg-surface-page rounded animate-pulse flex-shrink-0" />
                 )}
                 <span className="text-[13px] text-text-secondary">
                   BOJ <strong className="text-text-primary">@{bojHandle}</strong>
