@@ -5,6 +5,7 @@ import {
   pgTable,
   primaryKey,
   real,
+  serial,
   text,
   timestamp,
 } from 'drizzle-orm/pg-core'
@@ -103,6 +104,20 @@ export const problems = pgTable('problems', {
   raw: jsonb('raw'),
   fetchedAt: timestamp('fetched_at', { mode: 'date' }).notNull().defaultNow(),
 })
+
+// Cross-instance rate-limit log. One row per outbound solved.ac
+// request; we count rows in a sliding 1s window to gate further calls.
+// Old rows are cleaned up opportunistically on insert.
+export const solvedAcRequestLog = pgTable(
+  'solved_ac_request_log',
+  {
+    id: serial('id').primaryKey(),
+    requestedAt: timestamp('requested_at', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [index('solved_ac_request_log_requested_at_idx').on(t.requestedAt)],
+)
 
 // Per-user solve history. source=solvedac for imports from the
 // solved.ac API; source=local for problems solved on this judge.

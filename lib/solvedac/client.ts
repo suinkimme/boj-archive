@@ -1,3 +1,4 @@
+import { acquireGlobalSolvedAcSlot } from './rate-limit'
 import { acquireSolvedAcToken } from './throttle'
 import type {
   SolvedAcProblem,
@@ -40,6 +41,7 @@ export class SolvedAcError extends Error {
 async function request<T>(path: string): Promise<T> {
   let attempt = 0
   for (;;) {
+    await acquireGlobalSolvedAcSlot()
     await acquireSolvedAcToken()
     const res = await fetch(`${BASE}${path}`, {
       headers: { 'User-Agent': UA, Accept: 'application/json' },
