@@ -1,23 +1,18 @@
-import { tierName } from '@/lib/solvedac/tier'
+import { tierColor, tierName } from '@/lib/solvedac/tier'
 
 export function TierBadge({
   tier,
-  size = 20,
   className,
 }: {
   tier: number
-  size?: number
   className?: string
 }) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`https://static.solved.ac/tier_small/${tier}.svg`}
-      alt={tierName(tier)}
-      width={size}
-      height={size}
-      className={className}
-      style={{ width: size, height: size }}
-    />
+    <span
+      className={`font-bold tabular-nums ${tierColor(tier)} ${className ?? ''}`}
+      title={tierName(tier)}
+    >
+      Lv. {tier}
+    </span>
   )
 }
