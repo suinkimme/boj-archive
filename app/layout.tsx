@@ -10,7 +10,18 @@ const notoSansKr = Noto_Sans_KR({
 
 export const metadata: Metadata = {
   title: 'NEXT JUDGE',
-  description: '백준 온라인 저지(acmicpc.net) 문제 아카이브',
+  description: '백준의 다음을 잇는, 모두에게 열린 알고리즘 저지',
+  openGraph: {
+    title: 'NEXT JUDGE',
+    description: '백준의 다음을 잇는, 모두에게 열린 알고리즘 저지',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NEXT JUDGE',
+    description: '백준의 다음을 잇는, 모두에게 열린 알고리즘 저지',
+    images: ['/og-image.png'],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
