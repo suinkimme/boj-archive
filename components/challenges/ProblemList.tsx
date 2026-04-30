@@ -5,6 +5,7 @@ export interface Problem {
   id: number
   title: string
   level: Level
+  tags?: string[]
   completedCount: number
   rate: number
 }
@@ -32,6 +33,7 @@ export function ProblemList({ problems, doneIds, onToggleDone }: ProblemListProp
           id={p.id}
           title={p.title}
           level={p.level}
+          tags={p.tags}
           completedCount={p.completedCount}
           rate={p.rate}
           done={doneIds.has(p.id)}

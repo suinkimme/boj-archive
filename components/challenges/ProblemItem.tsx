@@ -6,6 +6,7 @@ interface ProblemItemProps {
   id: number
   title: string
   level: Level
+  tags?: string[]
   completedCount: number
   rate: number
   done: boolean
@@ -24,6 +25,7 @@ const LEVEL_COLOR: Record<Level, string> = {
 export function ProblemItem({
   title,
   level,
+  tags,
   completedCount,
   rate,
   done,
@@ -57,6 +59,19 @@ export function ProblemItem({
             <span className="text-text-secondary tabular-nums">{rate.toFixed(1)}%</span>
           </p>
         </div>
+
+        {tags && tags.length > 0 && (
+          <ul className="flex flex-wrap justify-end gap-1 max-w-[260px] m-0 p-0 list-none flex-shrink-0">
+            {tags.map((tag) => (
+              <li
+                key={tag}
+                className="inline-flex px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
+              >
+                {tag}
+              </li>
+            ))}
+          </ul>
+        )}
 
         {done && (
           <span
