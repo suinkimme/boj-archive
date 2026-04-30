@@ -29,28 +29,32 @@ export async function GET() {
     return NextResponse.json({ error: 'user_not_found' }, { status: 404 })
   }
 
-  const [solvedAc, recentRows, importedRow] = me.bojHandle
-    ? await Promise.all([
-        getUserCached(me.bojHandle),
-        db
-          .select({
-            problemId: userSolvedProblems.problemId,
-            titleKo: problems.titleKo,
-            level: problems.level,
-            acceptedUserCount: problems.acceptedUserCount,
-            averageTries: problems.averageTries,
-          })
-          .from(userSolvedProblems)
-          .innerJoin(problems, eq(problems.problemId, userSolvedProblems.problemId))
-          .where(eq(userSolvedProblems.userId, session.user.id))
-          .orderBy(desc(userSolvedProblems.problemId))
-          .limit(RECENT_SOLVED_LIMIT),
-        db
-          .select({ count: sql<number>`count(*)::int` })
-          .from(userSolvedProblems)
-          .where(eq(userSolvedProblems.userId, session.user.id)),
-      ])
-    : [null, [], [{ count: 0 }]]
+  // Don't load any solved.ac data (or DB-derived solve history) until
+  // the user has verified ownership of the handle.
+  const isVerified = !!me.bojHandleVerifiedAt
+  const [solvedAc, recentRows, importedRow] =
+    me.bojHandle && isVerified
+      ? await Promise.all([
+          getUserCached(me.bojHandle),
+          db
+            .select({
+              problemId: userSolvedProblems.problemId,
+              titleKo: problems.titleKo,
+              level: problems.level,
+              acceptedUserCount: problems.acceptedUserCount,
+              averageTries: problems.averageTries,
+            })
+            .from(userSolvedProblems)
+            .innerJoin(problems, eq(problems.problemId, userSolvedProblems.problemId))
+            .where(eq(userSolvedProblems.userId, session.user.id))
+            .orderBy(desc(userSolvedProblems.problemId))
+            .limit(RECENT_SOLVED_LIMIT),
+          db
+            .select({ count: sql<number>`count(*)::int` })
+            .from(userSolvedProblems)
+            .where(eq(userSolvedProblems.userId, session.user.id)),
+        ])
+      : [null, [], [{ count: 0 }]]
 
   const recentSolved = recentRows.map((r) => ({
     problemId: r.problemId,
