@@ -4,8 +4,6 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 
-const STORAGE_KEY = 'next-judge:onboarding'
-
 export function OnboardingRedirect() {
   const router = useRouter()
   const pathname = usePathname()
@@ -14,11 +12,25 @@ export function OnboardingRedirect() {
   useEffect(() => {
     if (status !== 'authenticated') return
     if (pathname.startsWith('/onboarding')) return
-    if (typeof window === 'undefined') return
 
-    const seen = window.localStorage.getItem(STORAGE_KEY)
-    if (!seen) {
-      router.replace('/onboarding')
+    let cancelled = false
+    void (async () => {
+      try {
+        const res = await fetch('/api/me')
+        if (!res.ok || cancelled) return
+        const data = (await res.json()) as {
+          user: { onboardedAt: string | null }
+        }
+        if (!data.user.onboardedAt) {
+          router.replace('/onboarding')
+        }
+      } catch {
+        // ignore — best-effort soft redirect
+      }
+    })()
+
+    return () => {
+      cancelled = true
     }
   }, [status, pathname, router])
 

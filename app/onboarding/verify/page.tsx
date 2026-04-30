@@ -3,13 +3,10 @@
 import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 
-import { useOnboardingState } from '@/lib/onboarding/state'
-
-const TOKEN_TTL_SECONDS = 30 * 60
-
-function generateToken() {
-  const rand = Math.random().toString(36).slice(2, 10)
-  return `njv-${rand}`
+type VerifyState = {
+  bojHandle: string
+  token: string
+  expiresAt: number
 }
 
 function formatRemaining(seconds: number) {
@@ -20,59 +17,156 @@ function formatRemaining(seconds: number) {
 
 export default function VerifyPage() {
   const router = useRouter()
-  const { state, save } = useOnboardingState()
 
-  const [token] = useState(() => generateToken())
-  const [createdAt] = useState(() => Date.now())
-  const [now, setNow] = useState(() => Date.now())
+  const [state, setState] = useState<VerifyState | null>(null)
+  const [loading, setLoading] = useState(true)
   const [verifying, setVerifying] = useState(false)
   const [verified, setVerified] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
+  const [now, setNow] = useState(() => Date.now())
 
-  const remaining = useMemo(
-    () => Math.max(0, TOKEN_TTL_SECONDS - Math.floor((now - createdAt) / 1000)),
-    [now, createdAt],
-  )
+  useEffect(() => {
+    let cancelled = false
+    void (async () => {
+      try {
+        const meRes = await fetch('/api/me')
+        if (!meRes.ok) {
+          if (!cancelled) router.replace('/')
+          return
+        }
+        const meData = (await meRes.json()) as {
+          user: { bojHandle: string | null }
+        }
+        if (!meData.user.bojHandle) {
+          if (!cancelled) router.replace('/onboarding')
+          return
+        }
+
+        const startRes = await fetch('/api/verify/start', { method: 'POST' })
+        if (!startRes.ok) {
+          if (!cancelled) {
+            setError('코드를 발급할 수 없었어요. 잠시 후 다시 시도해주세요.')
+            setLoading(false)
+          }
+          return
+        }
+        const startData = (await startRes.json()) as {
+          token: string
+          expiresAt: string
+        }
+        if (cancelled) return
+        setState({
+          bojHandle: meData.user.bojHandle,
+          token: startData.token,
+          expiresAt: new Date(startData.expiresAt).getTime(),
+        })
+        setLoading(false)
+      } catch {
+        if (!cancelled) {
+          setError('연결에 문제가 있어요. 잠시 후 다시 시도해주세요.')
+          setLoading(false)
+        }
+      }
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [router])
 
   useEffect(() => {
     const id = setInterval(() => setNow(Date.now()), 1000)
     return () => clearInterval(id)
   }, [])
 
-  useEffect(() => {
-    if (state === null) return
-    if (!state.bojHandle) {
-      router.replace('/onboarding')
-    }
-  }, [state, router])
+  const remaining = useMemo(
+    () => (state ? Math.max(0, Math.floor((state.expiresAt - now) / 1000)) : 0),
+    [state, now],
+  )
 
-  if (state === null || !state.bojHandle) {
-    return null
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-surface-card flex flex-col">
+        <header className="border-b border-border-list">
+          <div className="max-w-[1200px] mx-auto h-[60px] px-6 sm:px-10 flex items-center">
+            <a href="/" className="text-text-primary text-lg font-bold tracking-[0.06em]">
+              NEXT JUDGE<span className="text-brand-red">.</span>
+            </a>
+          </div>
+        </header>
+        <main className="flex-1 flex items-start justify-center px-6 sm:px-10 pt-12">
+          <div className="w-full max-w-[440px]">
+            <div className="h-6 w-32 bg-surface-page animate-pulse mb-4" />
+            <div className="h-10 w-full bg-surface-page animate-pulse" />
+          </div>
+        </main>
+      </div>
+    )
+  }
+
+  if (!state) {
+    return (
+      <div className="min-h-screen bg-surface-card flex flex-col">
+        <header className="border-b border-border-list">
+          <div className="max-w-[1200px] mx-auto h-[60px] px-6 sm:px-10 flex items-center">
+            <a href="/" className="text-text-primary text-lg font-bold tracking-[0.06em]">
+              NEXT JUDGE<span className="text-brand-red">.</span>
+            </a>
+          </div>
+        </header>
+        <main className="flex-1 flex items-center justify-center px-6 sm:px-10 pb-12">
+          <div className="w-full max-w-[440px] text-center">
+            <p className="text-[14px] text-status-danger mb-6">{error}</p>
+            <button
+              type="button"
+              onClick={() => router.push('/me')}
+              className="text-[13px] text-text-secondary hover:text-text-primary underline underline-offset-4"
+            >
+              내 정보로 돌아가기
+            </button>
+          </div>
+        </main>
+      </div>
+    )
   }
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(token)
+      await navigator.clipboard.writeText(state.token)
       setCopied(true)
       setTimeout(() => setCopied(false), 1500)
     } catch {
-      // noop — fallback could be selectionRange
+      // noop
     }
   }
 
   const verify = async () => {
     setVerifying(true)
     setError(null)
-    await new Promise((r) => setTimeout(r, 700))
-    const success = Math.random() > 0.4
-    if (success) {
+    try {
+      const res = await fetch('/api/verify/check', { method: 'POST' })
+      if (res.status === 400) {
+        setError('확인 시간이 지났어요. 페이지를 새로고침하고 다시 시도해주세요.')
+        return
+      }
+      if (!res.ok) {
+        setError('확인에 실패했어요. 잠시 후 다시 시도해주세요.')
+        return
+      }
+      const data = (await res.json()) as {
+        verified: boolean
+        error?: string
+      }
+      if (!data.verified) {
+        setError('자기소개에서 코드를 못 찾았어요. 저장하셨는지 한 번만 더 확인해주세요.')
+        return
+      }
       setVerified(true)
-      save({ bojHandle: state.bojHandle, verifiedAt: new Date().toISOString() })
-    } else {
-      setError('자기소개에서 코드를 못 찾았어요. 저장하셨는지 한 번만 더 확인해주세요.')
+    } catch {
+      setError('확인에 실패했어요. 잠시 후 다시 시도해주세요.')
+    } finally {
+      setVerifying(false)
     }
-    setVerifying(false)
   }
 
   if (verified) {
@@ -162,7 +256,7 @@ export default function VerifyPage() {
               </p>
               <div className="flex gap-2">
                 <code className="flex-1 px-4 py-3 bg-surface-page border border-border-list font-mono text-[14px] text-text-primary tracking-wider select-all">
-                  {token}
+                  {state.token}
                 </code>
                 <button
                   type="button"

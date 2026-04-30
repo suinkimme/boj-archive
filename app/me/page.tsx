@@ -8,45 +8,47 @@ import { useEffect, useState } from 'react'
 
 import { TierBadge } from '@/components/auth/TierBadge'
 import { TopNav } from '@/components/challenges/TopNav'
-import {
-  fetchRecentAcMock,
-  fetchSolvedAcUserMock,
-  tierName,
-  type RecentAc,
-  type SolvedAcUser,
-} from '@/lib/mock/solvedac'
-import { clearOnboardingState, useOnboardingState } from '@/lib/onboarding/state'
+import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
+import { tierName } from '@/lib/solvedac/tier'
+import type { SolvedAcUser } from '@/lib/solvedac/types'
+
+type MeData = {
+  user: {
+    bojHandle: string | null
+    bojHandleVerifiedAt: string | null
+    onboardedAt: string | null
+  }
+  solvedAc: SolvedAcUser | null
+}
 
 export default function MePage() {
   const router = useRouter()
   const { data: session, status } = useSession()
-  const { state } = useOnboardingState()
+  const showPending = usePendingFeature()
 
-  const [solvedAc, setSolvedAc] = useState<SolvedAcUser | null>(null)
-  const [recent, setRecent] = useState<RecentAc[]>([])
-  const [loading, setLoading] = useState(false)
+  const [me, setMe] = useState<MeData | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (state === null) return
-    if (!state.bojHandle) {
-      setSolvedAc(null)
-      setRecent([])
-      return
-    }
+    if (status !== 'authenticated') return
     let cancelled = false
     setLoading(true)
-    fetchSolvedAcUserMock(state.bojHandle).then((user) => {
-      if (cancelled) return
-      setSolvedAc(user)
-      setRecent(user ? fetchRecentAcMock(state.bojHandle!) : [])
-      setLoading(false)
-    })
+    void (async () => {
+      try {
+        const res = await fetch('/api/me')
+        if (!res.ok) return
+        const data = (await res.json()) as MeData
+        if (!cancelled) setMe(data)
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    })()
     return () => {
       cancelled = true
     }
-  }, [state])
+  }, [status])
 
-  if (status === 'loading' || state === null) {
+  if (status === 'loading' || (status === 'authenticated' && loading && !me)) {
     return (
       <div className="min-h-screen bg-surface-card">
         <TopNav />
@@ -79,8 +81,10 @@ export default function MePage() {
 
   const user = session!.user!
   const displayName = user.name ?? user.login ?? 'GitHub 사용자'
-  const isVerified = !!state.verifiedAt
-  const hasHandle = !!state.bojHandle
+  const bojHandle = me?.user.bojHandle ?? null
+  const isVerified = !!me?.user.bojHandleVerifiedAt
+  const hasHandle = !!bojHandle
+  const solvedAc = me?.solvedAc ?? null
 
   return (
     <div className="min-h-screen bg-surface-card">
@@ -131,7 +135,7 @@ export default function MePage() {
                 )}
                 <span className="text-text-muted">·</span>
                 <span className="text-[13px] text-text-secondary">
-                  BOJ <strong className="text-text-primary">@{state.bojHandle}</strong>
+                  BOJ <strong className="text-text-primary">@{bojHandle}</strong>
                 </span>
                 {isVerified ? (
                   <span className="inline-flex items-center gap-1 text-[11px] font-bold text-status-success bg-status-success-bg px-1.5 py-0.5">
@@ -158,57 +162,23 @@ export default function MePage() {
         </div>
 
         {!hasHandle && <NoHandleCard />}
-        {hasHandle && !isVerified && <UnverifiedCard handle={state.bojHandle!} />}
+        {hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
 
-        {hasHandle && (solvedAc || loading) && (
+        {hasHandle && solvedAc && (
           <section className="mb-10">
             <SectionHeading>활동 요약</SectionHeading>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
-              {solvedAc ? (
-                <>
-                  <Stat label="푼 문제" value={solvedAc.solvedCount.toLocaleString()} />
-                  <Stat label="레이팅" value={solvedAc.rating.toLocaleString()} />
-                  <Stat label="클래스" value={String(solvedAc.class)} suffix="" />
-                </>
-              ) : (
-                <>
-                  <StatSkeleton />
-                  <StatSkeleton />
-                  <StatSkeleton />
-                </>
-              )}
+              <Stat label="푼 문제" value={solvedAc.solvedCount.toLocaleString()} />
+              <Stat label="레이팅" value={solvedAc.rating.toLocaleString()} />
+              <Stat label="클래스" value={String(solvedAc.class)} />
             </div>
-          </section>
-        )}
-
-        {hasHandle && (solvedAc || loading) && (
-          <section className="mb-10">
-            <SectionHeading>최근에 푼 문제</SectionHeading>
-            <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
-              {solvedAc
-                ? recent.map((item) => (
-                    <li key={item.id} className="h-12 flex items-center gap-3 px-4">
-                      <TierBadge tier={item.tier} size={18} />
-                      <span className="text-[13px] text-text-muted tabular-nums">
-                        {item.id}
-                      </span>
-                      <span className="flex-1 min-w-0 text-[14px] font-medium text-text-primary truncate">
-                        {item.title}
-                      </span>
-                      <span className="text-[12px] text-text-secondary flex-shrink-0">
-                        {item.solvedAt}
-                      </span>
-                    </li>
-                  ))
-                : Array.from({ length: 5 }).map((_, i) => <RecentItemSkeleton key={i} />)}
-            </ul>
           </section>
         )}
 
         {hasHandle && !solvedAc && !loading && (
           <div className="mb-10 p-5 border border-border-list bg-surface-page text-center">
             <p className="text-[13px] text-text-secondary">
-              저장된 아이디 <strong className="text-text-primary">@{state.bojHandle}</strong>의
+              저장된 아이디 <strong className="text-text-primary">@{bojHandle}</strong>의
               <br />
               solved.ac 정보를 가져올 수 없었어요.
             </p>
@@ -238,10 +208,7 @@ export default function MePage() {
             {hasHandle && (
               <button
                 type="button"
-                onClick={() => {
-                  clearOnboardingState()
-                  router.push('/me')
-                }}
+                onClick={() => showPending('백준 아이디 연결 끊기')}
                 className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between"
               >
                 <span className="text-[14px] font-medium text-text-primary">
@@ -291,15 +258,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
   )
 }
 
-function Stat({
-  label,
-  value,
-  suffix,
-}: {
-  label: string
-  value: string
-  suffix?: string
-}) {
+function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="border border-border-list bg-surface-card px-4 py-4">
       <p className="text-[11px] font-bold text-text-secondary uppercase tracking-wider mb-1.5">
@@ -307,29 +266,8 @@ function Stat({
       </p>
       <p className="text-[20px] sm:text-[22px] font-extrabold text-text-primary tabular-nums leading-none">
         {value}
-        {suffix && <span className="text-[12px] text-text-muted ml-0.5">{suffix}</span>}
       </p>
     </div>
-  )
-}
-
-function StatSkeleton() {
-  return (
-    <div className="border border-border-list bg-surface-card px-4 py-4">
-      <div className="h-4 w-12 bg-surface-page rounded animate-pulse mb-1.5" />
-      <div className="h-[20px] sm:h-[22px] w-20 bg-surface-page rounded animate-pulse" />
-    </div>
-  )
-}
-
-function RecentItemSkeleton() {
-  return (
-    <li className="h-12 flex items-center gap-3 px-4">
-      <span className="block w-[18px] h-[18px] bg-surface-page rounded animate-pulse flex-shrink-0" />
-      <span className="block h-3.5 w-10 bg-surface-page rounded animate-pulse flex-shrink-0" />
-      <span className="block h-3.5 flex-1 max-w-[240px] bg-surface-page rounded animate-pulse" />
-      <span className="block h-3.5 w-12 bg-surface-page rounded animate-pulse flex-shrink-0" />
-    </li>
   )
 }
 
