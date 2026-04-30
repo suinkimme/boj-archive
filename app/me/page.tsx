@@ -26,7 +26,6 @@ export default function MePage() {
   const { data: session, status } = useSession()
 
   const [me, setMe] = useState<MeData | null>(null)
-  const [refreshing, setRefreshing] = useState(false)
   const [disconnectOpen, setDisconnectOpen] = useState(false)
   const [disconnecting, setDisconnecting] = useState(false)
 
@@ -43,19 +42,6 @@ export default function MePage() {
       cancelled = true
     }
   }, [status])
-
-  const refresh = async () => {
-    if (refreshing) return
-    setRefreshing(true)
-    try {
-      const res = await fetch('/api/solvedac/refresh', { method: 'POST' })
-      if (!res.ok) return
-      const data = (await res.json()) as { solvedAc: SolvedAcUser }
-      setMe((prev) => (prev ? { ...prev, solvedAc: data.solvedAc } : prev))
-    } finally {
-      setRefreshing(false)
-    }
-  }
 
   const disconnect = async () => {
     if (disconnecting) return
@@ -186,28 +172,6 @@ export default function MePage() {
                     아직 확인 전
                   </span>
                 )}
-                <button
-                  type="button"
-                  onClick={() => void refresh()}
-                  disabled={refreshing}
-                  aria-label="solved.ac 정보 새로고침"
-                  className="text-text-muted hover:text-text-primary transition-colors disabled:opacity-50"
-                >
-                  <svg
-                    className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 4v5h5M20 20v-5h-5M5.5 9A7 7 0 0 1 18 7M18.5 15A7 7 0 0 1 6 17"
-                    />
-                  </svg>
-                </button>
               </div>
             )}
           </div>
@@ -258,18 +222,6 @@ export default function MePage() {
               </span>
               <span className="text-text-muted">→</span>
             </button>
-            {hasHandle && isVerified && (
-              <button
-                type="button"
-                onClick={() => router.push('/onboarding/verify')}
-                className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between"
-              >
-                <span className="text-[14px] font-medium text-text-primary">
-                  본인 확인 다시 하기
-                </span>
-                <span className="text-text-muted">→</span>
-              </button>
-            )}
             {hasHandle && (
               <button
                 type="button"
