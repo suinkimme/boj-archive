@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react'
 import { TierBadge } from '@/components/auth/TierBadge'
 import { TopNav } from '@/components/challenges/TopNav'
 import { AlertDialog } from '@/components/ui/AlertDialog'
-import { tierName } from '@/lib/solvedac/tier'
 import type { SolvedAcUser } from '@/lib/solvedac/types'
 
 type MeData = {
@@ -137,39 +136,20 @@ export default function MePage() {
             {hasHandle && (
               <div className="mt-1.5 flex items-center gap-2 flex-wrap">
                 {solvedAc ? (
-                  <>
-                    <TierBadge tier={solvedAc.tier} size={18} />
-                    <span className="text-[13px] font-bold text-text-primary">
-                      {tierName(solvedAc.tier)}
-                    </span>
-                  </>
+                  <TierBadge
+                    tier={solvedAc.tier}
+                    size={18}
+                    className="relative -bottom-[2px] flex-shrink-0"
+                  />
                 ) : (
-                  <>
-                    <span className="block w-[18px] h-[18px] bg-surface-page rounded animate-pulse flex-shrink-0" />
-                    <span className="block w-16 h-3.5 bg-surface-page rounded animate-pulse" />
-                  </>
+                  <span className="block w-[18px] h-[18px] bg-surface-page rounded animate-pulse flex-shrink-0 relative -bottom-[2px]" />
                 )}
-                <span className="text-text-muted">·</span>
                 <span className="text-[13px] text-text-secondary">
                   BOJ <strong className="text-text-primary">@{bojHandle}</strong>
                 </span>
-                {isVerified ? (
-                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-status-success bg-status-success-bg px-1.5 py-0.5">
-                    <svg
-                      className="w-3 h-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={3}
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                    확인됨
-                  </span>
-                ) : (
+                {!isVerified && (
                   <span className="text-[11px] font-bold text-status-warning bg-status-warning-bg px-1.5 py-0.5">
-                    아직 확인 전
+                    인증 필요
                   </span>
                 )}
               </div>
