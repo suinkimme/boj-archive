@@ -20,7 +20,18 @@ type MeData = {
   }
   solvedAc: SolvedAcUser | null
   recentSolved: SolvedAcProblem[]
+  importedCount: number
 }
+
+type SyncResult = {
+  pagesFetched: number
+  problemsImported: number
+  totalCount: number
+  nextPage: number | null
+}
+
+const SYNC_PAGE_SIZE = 50
+const SLOW_SYNC_AFTER_MS = 5_000
 
 export default function MePage() {
   const router = useRouter()
@@ -30,6 +41,8 @@ export default function MePage() {
   const [me, setMe] = useState<MeData | null>(null)
   const [disconnectOpen, setDisconnectOpen] = useState(false)
   const [disconnecting, setDisconnecting] = useState(false)
+  const [syncedSoFar, setSyncedSoFar] = useState(0)
+  const [syncSlow, setSyncSlow] = useState(false)
 
   useEffect(() => {
     if (status !== 'authenticated') return
@@ -39,11 +52,69 @@ export default function MePage() {
       if (!res.ok || cancelled) return
       const data = (await res.json()) as MeData
       setMe(data)
+      setSyncedSoFar(0)
     })()
     return () => {
       cancelled = true
     }
   }, [status])
+
+  // Drive the import poll loop while the DB lags solved.ac.
+  useEffect(() => {
+    if (!me?.user.bojHandle || !me.solvedAc) return
+    if (me.importedCount >= me.solvedAc.solvedCount) return
+
+    let cancelled = false
+    let nextPage: number | null = Math.max(
+      1,
+      Math.floor(me.importedCount / SYNC_PAGE_SIZE) + 1,
+    )
+
+    void (async () => {
+      while (nextPage !== null && !cancelled) {
+        let slowTimer: ReturnType<typeof setTimeout> | null = setTimeout(() => {
+          if (!cancelled) setSyncSlow(true)
+        }, SLOW_SYNC_AFTER_MS)
+
+        try {
+          const res = await fetch('/api/solvedac/sync', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fromPage: nextPage }),
+          })
+          if (slowTimer) {
+            clearTimeout(slowTimer)
+            slowTimer = null
+          }
+          if (!res.ok || cancelled) break
+          const result = (await res.json()) as SyncResult
+          if (cancelled) break
+          setSyncedSoFar((prev) => prev + result.problemsImported)
+          setSyncSlow(false)
+          nextPage = result.nextPage
+        } catch {
+          break
+        } finally {
+          if (slowTimer) clearTimeout(slowTimer)
+        }
+      }
+
+      if (!cancelled && nextPage === null) {
+        const res = await fetch('/api/me')
+        if (res.ok && !cancelled) {
+          const data = (await res.json()) as MeData
+          setMe(data)
+          setSyncedSoFar(0)
+          setSyncSlow(false)
+        }
+      }
+    })()
+
+    return () => {
+      cancelled = true
+      setSyncSlow(false)
+    }
+  }, [me?.user.bojHandle, me?.importedCount, me?.solvedAc?.solvedCount])
 
   const disconnect = async () => {
     if (disconnecting) return
@@ -104,6 +175,13 @@ export default function MePage() {
   const hasHandle = !!bojHandle
   const solvedAc = me?.solvedAc ?? null
   const recentSolved = me?.recentSolved ?? []
+  const totalSolved = solvedAc?.solvedCount ?? 0
+  const importedDisplay = Math.min(
+    totalSolved,
+    (me?.importedCount ?? 0) + syncedSoFar,
+  )
+  const isImporting =
+    !!me && hasHandle && !!solvedAc && importedDisplay < totalSolved
 
   return (
     <div className="min-h-screen bg-surface-card">
@@ -173,7 +251,14 @@ export default function MePage() {
         )}
 
         {!me && <RecentSolvedPlaceholder />}
-        {me && hasHandle && recentSolved.length > 0 && (
+        {isImporting && (
+          <ImportProgressCard
+            imported={importedDisplay}
+            total={totalSolved}
+            slow={syncSlow}
+          />
+        )}
+        {me && !isImporting && hasHandle && recentSolved.length > 0 && (
           <section className="mb-10">
             <SectionHeading>최근 푼 문제</SectionHeading>
             <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
@@ -285,6 +370,46 @@ export default function MePage() {
           },
         ]}
       />
+    </div>
+  )
+}
+
+function ImportProgressCard({
+  imported,
+  total,
+  slow,
+}: {
+  imported: number
+  total: number
+  slow: boolean
+}) {
+  const percent = total > 0 ? Math.min(100, (imported / total) * 100) : 0
+  return (
+    <div className="mb-10 border border-border-list bg-surface-page p-5 sm:p-6">
+      <p className="text-[14px] sm:text-[15px] font-bold text-text-primary mb-1">
+        백준 풀이 가져오는 중
+      </p>
+      <p className="text-[13px] text-text-secondary leading-relaxed mb-4">
+        지금까지 푸셨던 문제를 정리하고 있어요. 잠깐만 기다려주세요.
+      </p>
+      <div className="h-2 bg-surface-card border border-border-list overflow-hidden">
+        <div
+          className="h-full bg-brand-red transition-[width] duration-300 ease-out"
+          style={{ width: `${percent}%` }}
+        />
+      </div>
+      <div className="mt-2 flex items-center justify-between text-[12px] tabular-nums">
+        <span className="text-text-secondary">
+          <strong className="text-text-primary">{imported.toLocaleString()}</strong>
+          <span className="text-text-muted"> / {total.toLocaleString()}</span>
+        </span>
+        <span className="text-text-muted">{percent.toFixed(0)}%</span>
+      </div>
+      {slow && (
+        <p className="mt-4 text-[12px] text-text-muted leading-relaxed">
+          다른 분들도 같이 가져오고 있어서 평소보다 오래 걸릴 수 있어요.
+        </p>
+      )}
     </div>
   )
 }
