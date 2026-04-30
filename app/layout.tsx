@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_KR } from 'next/font/google'
 
+import { auth } from '@/auth'
+import { SessionProvider } from '@/components/auth/SessionProvider'
 import { PendingFeatureProvider } from '@/components/ui/PendingFeatureProvider'
 
 import './globals.css'
@@ -31,11 +33,18 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await auth()
+
   return (
-    <html lang="ko" className={notoSansKr.variable}>
-      <body className="font-sans bg-surface-page text-text-primary antialiased">
-        <PendingFeatureProvider>{children}</PendingFeatureProvider>
+    <html lang="ko" className={notoSansKr.variable} suppressHydrationWarning>
+      <body
+        className="font-sans bg-surface-page text-text-primary antialiased"
+        suppressHydrationWarning
+      >
+        <SessionProvider session={session}>
+          <PendingFeatureProvider>{children}</PendingFeatureProvider>
+        </SessionProvider>
       </body>
     </html>
   )

@@ -1,7 +1,10 @@
 'use client'
 
+import Image from 'next/image'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
+import { UserMenu } from '@/components/auth/UserMenu'
 import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 
 const NAV_LINKS = [
@@ -13,6 +16,7 @@ const NAV_LINKS = [
 
 export function TopNav() {
   const showPending = usePendingFeature()
+  const { data: session, status } = useSession()
   const [open, setOpen] = useState(false)
 
   // Close drawer on Escape and lock body scroll while open.
@@ -35,6 +39,19 @@ export function TopNav() {
     showPending(label)
   }
 
+  const handleSignIn = () => {
+    void signIn('github')
+  }
+
+  const handleSignOut = () => {
+    setOpen(false)
+    void signOut()
+  }
+
+  const isAuthed = status === 'authenticated' && !!session?.user
+  const user = session?.user
+  const mobileDisplayName = user?.name ?? user?.login ?? 'GitHub 사용자'
+
   return (
     <nav className="bg-brand-dark relative">
       <div className="max-w-[1200px] mx-auto h-[60px] px-6 sm:px-10 flex items-center justify-between">
@@ -56,13 +73,18 @@ export function TopNav() {
             </li>
           ))}
           <li className="ml-2">
-            <button
-              type="button"
-              onClick={() => showPending('로그인')}
-              className="bg-brand-red text-white border-0 px-3 py-1.5 text-[13px] font-medium hover:opacity-90 transition-opacity"
-            >
-              로그인
-            </button>
+            {isAuthed && user ? (
+              <UserMenu user={user} />
+            ) : (
+              <button
+                type="button"
+                onClick={handleSignIn}
+                disabled={status === 'loading'}
+                className="bg-brand-red text-white border-0 px-3 py-1.5 text-[13px] font-medium hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                로그인
+              </button>
+            )}
           </li>
         </ul>
 
@@ -117,13 +139,53 @@ export function TopNav() {
             ))}
           </ul>
           <div className="p-6 border-t border-border-list">
-            <button
-              type="button"
-              onClick={() => handleNavPress('로그인')}
-              className="block w-full bg-brand-red text-white border-0 px-4 py-3.5 text-[15px] font-bold hover:opacity-90 transition-opacity"
-            >
-              로그인
-            </button>
+            {isAuthed && user ? (
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-3">
+                  {user.image ? (
+                    <Image
+                      src={user.image}
+                      alt={mobileDisplayName}
+                      width={40}
+                      height={40}
+                      className="w-10 h-10 rounded-full object-cover"
+                      unoptimized
+                    />
+                  ) : (
+                    <span className="w-10 h-10 rounded-full bg-surface-page text-text-primary text-[14px] font-bold flex items-center justify-center">
+                      {mobileDisplayName.slice(0, 1).toUpperCase()}
+                    </span>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-text-primary text-[15px] font-bold truncate">
+                      {mobileDisplayName}
+                    </p>
+                    {user.login && (
+                      <p className="text-text-secondary text-[13px] truncate">@{user.login}</p>
+                    )}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleSignOut}
+                  className="block w-full bg-surface-page text-text-primary border border-border-list px-4 py-3.5 text-[15px] font-bold hover:bg-border-list transition-colors"
+                >
+                  로그아웃
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false)
+                  handleSignIn()
+                }}
+                disabled={status === 'loading'}
+                className="block w-full bg-brand-red text-white border-0 px-4 py-3.5 text-[15px] font-bold hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                로그인
+              </button>
+            )}
           </div>
         </div>
       )}
