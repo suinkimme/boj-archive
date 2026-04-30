@@ -220,6 +220,7 @@ function renderModal(p) {
         <select class="runner-lang-select" id="runner-lang">
           <option value="python">Python 3</option>
           <option value="cpp">C / C++</option>
+          <option value="javascript">JavaScript</option>
         </select>
         <span class="runner-lang-hint" id="runner-lang-hint"></span>
       </div>
@@ -280,22 +281,31 @@ const LANG_PLACEHOLDERS = {
   python:
     "# Python 코드를 여기에 입력하세요\nimport sys\ninput = sys.stdin.readline",
   cpp: "#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    \n    return 0;\n}",
+  javascript:
+    "// JavaScript (QuickJS) 코드를 입력하세요\nconst input = _stdin.trim().split(/\\s+/);\nconsole.log(input);",
 };
+
 const LANG_HINTS = {
   python: "Pyodide WASM",
   cpp: "JSCPP 인터프리터 (일부 제한)",
+  javascript: "QuickJS WASM (안전한 샌드박스)",
 };
+
 const LANG_WORKER_FILES = {
   python: "js/pyodide-worker.js",
   cpp: "js/jscpp-worker.js",
+  javascript: "js/quickjs-worker.js",
 };
+
 const LANG_LOADING_MSG = {
   python: "Pyodide 로딩 중... (최초 실행 시 수십 초 소요)",
   cpp: "JSCPP 로딩 중...",
+  javascript: "QuickJS 로딩 중...",
 };
 
 function createLangWorker(lang) {
-  const opts = lang === "cpp" ? { type: "module" } : undefined;
+  const opts =
+    lang === "cpp" || lang === "javascript" ? { type: "module" } : undefined;
   const w = new Worker(LANG_WORKER_FILES[lang], opts);
   langWorkers[lang] = w;
   langReady[lang] = false;
