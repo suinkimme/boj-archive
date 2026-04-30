@@ -94,10 +94,42 @@ export default function VerifyPage() {
             </a>
           </div>
         </header>
-        <main className="flex-1 flex items-start justify-center px-6 sm:px-10 pt-12">
+        <main className="flex-1 flex items-start justify-center px-6 sm:px-10 pt-8 sm:pt-12 pb-12">
           <div className="w-full max-w-[440px]">
-            <div className="h-6 w-32 bg-surface-page animate-pulse mb-4" />
-            <div className="h-10 w-full bg-surface-page animate-pulse" />
+            {/* eyebrow */}
+            <div className="h-[14px] w-16 bg-surface-page animate-pulse mb-3" />
+            {/* heading */}
+            <div className="h-[34px] sm:h-[38px] w-56 bg-surface-page animate-pulse mb-2" />
+            <div className="h-[34px] sm:h-[38px] w-44 bg-surface-page animate-pulse mb-3" />
+            {/* description */}
+            <div className="h-[18px] w-full bg-surface-page animate-pulse mb-2" />
+            <div className="h-[18px] w-3/4 bg-surface-page animate-pulse mb-10" />
+
+            {/* step 1: code + copy */}
+            <div className="space-y-6 mb-10">
+              <div>
+                <div className="h-[18px] w-24 bg-surface-page animate-pulse mb-2" />
+                <div className="flex gap-2">
+                  <div className="flex-1 h-[46px] bg-surface-page animate-pulse" />
+                  <div className="h-[46px] w-16 bg-surface-page animate-pulse" />
+                </div>
+              </div>
+              {/* step 2: profile link */}
+              <div>
+                <div className="h-[18px] w-44 bg-surface-page animate-pulse mb-2" />
+                <div className="h-[18px] w-32 bg-surface-page animate-pulse" />
+              </div>
+              {/* step 3: instruction */}
+              <div>
+                <div className="h-[18px] w-44 bg-surface-page animate-pulse mb-2" />
+                <div className="h-[16px] w-56 bg-surface-page animate-pulse" />
+              </div>
+            </div>
+
+            {/* error placeholder */}
+            <div className="min-h-[20px] mb-3" />
+            {/* confirm button */}
+            <div className="h-[58px] w-full bg-surface-page animate-pulse" />
           </div>
         </main>
       </div>

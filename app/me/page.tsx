@@ -229,10 +229,8 @@ export default function MePage() {
             )}
             {hasHandle && (
               <div className="mt-1.5 flex items-center gap-2 flex-wrap">
-                {solvedAc ? (
+                {isVerified && solvedAc && (
                   <TierBadge tier={solvedAc.tier} className="text-[13px] flex-shrink-0" />
-                ) : (
-                  <span className="block w-12 h-3.5 bg-surface-page rounded animate-pulse flex-shrink-0" />
                 )}
                 <span className="text-[13px] text-text-secondary">
                   BOJ <strong className="text-text-primary">@{bojHandle}</strong>
@@ -251,7 +249,8 @@ export default function MePage() {
         {me && !hasHandle && <NoHandleCard />}
         {me && hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
 
-        {me && hasHandle && solvedAc && (
+        {me && hasHandle && !isVerified && <LockedActivity />}
+        {me && hasHandle && isVerified && solvedAc && (
           <section className="mb-10">
             <SectionHeading>활동 요약</SectionHeading>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
@@ -270,7 +269,8 @@ export default function MePage() {
             slow={syncSlow}
           />
         )}
-        {me && !isImporting && hasHandle && recentSolved.length > 0 && (
+        {me && hasHandle && !isVerified && <LockedRecentSolved />}
+        {me && isVerified && !isImporting && hasHandle && recentSolved.length > 0 && (
           <section className="mb-10">
             <SectionHeading>최근 푼 문제</SectionHeading>
             <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
@@ -295,7 +295,7 @@ export default function MePage() {
           </section>
         )}
 
-        {me && hasHandle && !solvedAc && (
+        {me && isVerified && hasHandle && !solvedAc && (
           <div className="mb-10 p-5 border border-border-list bg-surface-page text-center">
             <p className="text-[13px] text-text-secondary">
               저장된 아이디 <strong className="text-text-primary">@{bojHandle}</strong>의
@@ -423,6 +423,64 @@ function ImportProgressCard({
         </p>
       )}
     </div>
+  )
+}
+
+function LockIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z"
+      />
+    </svg>
+  )
+}
+
+function LockedActivity() {
+  return (
+    <section className="mb-10">
+      <SectionHeading>활동 요약</SectionHeading>
+      <div className="grid grid-cols-3 gap-3 sm:gap-4">
+        <LockedStat label="푼 문제" />
+        <LockedStat label="레이팅" />
+        <LockedStat label="클래스" />
+      </div>
+    </section>
+  )
+}
+
+function LockedStat({ label }: { label: string }) {
+  return (
+    <div className="border border-border-list bg-surface-card px-4 py-4">
+      <p className="text-[11px] font-bold text-text-secondary uppercase tracking-wider mb-1.5">
+        {label}
+      </p>
+      <div className="h-[20px] sm:h-[22px] flex items-center text-text-muted">
+        <LockIcon className="w-[18px] h-[18px] sm:w-5 sm:h-5" />
+      </div>
+    </div>
+  )
+}
+
+function LockedRecentSolved() {
+  return (
+    <section className="mb-10">
+      <SectionHeading>최근 푼 문제</SectionHeading>
+      <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <li key={i} className="h-12 flex items-center px-4 text-text-muted">
+            <LockIcon className="w-4 h-4" />
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }
 

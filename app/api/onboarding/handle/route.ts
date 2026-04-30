@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
 import { db } from '@/db'
-import { users } from '@/db/schema'
+import { userSolvedProblems, users } from '@/db/schema'
 import { logEvent } from '@/lib/log'
 import { getUserCached } from '@/lib/solvedac/cache'
 
@@ -42,6 +42,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'handle_taken' }, { status: 409 })
   }
 
+  const [current] = await db
+    .select({ bojHandle: users.bojHandle })
+    .from(users)
+    .where(eq(users.id, session.user.id))
+    .limit(1)
+
+  const handleChanged = current?.bojHandle !== handle
+
   const now = new Date()
   await db
     .update(users)
@@ -52,6 +60,14 @@ export async function POST(req: Request) {
       updatedAt: now,
     })
     .where(eq(users.id, session.user.id))
+
+  // Different handle ⇒ wipe stale solve history. Old rows belonged to
+  // the previous handle and would mix into the new account's view.
+  if (handleChanged) {
+    await db
+      .delete(userSolvedProblems)
+      .where(eq(userSolvedProblems.userId, session.user.id))
+  }
 
   logEvent('onboarding_handle_saved', {
     userId: session.user.id,
