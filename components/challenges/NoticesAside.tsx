@@ -1,4 +1,7 @@
+'use client'
+
 import { Card } from '@/components/ui/Card'
+import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 
 interface Notice {
   id: number
@@ -35,6 +38,7 @@ const NOTICES: Notice[] = [
 ]
 
 export function NoticesAside() {
+  const showPending = usePendingFeature()
   return (
     <aside className="hidden lg:block lg:w-[280px] lg:flex-shrink-0">
       <div className="flex items-center gap-3 mb-5">
@@ -45,20 +49,22 @@ export function NoticesAside() {
         <span className="hidden xl:inline text-[10px] font-bold uppercase tracking-[0.18em] text-text-muted">
           UPDATES
         </span>
-        <a
-          href="#"
+        <button
+          type="button"
+          onClick={() => showPending('업데이트 전체 보기')}
           className="ml-auto text-xs text-text-secondary hover:text-brand-red transition-colors flex-shrink-0"
         >
           전체 보기 →
-        </a>
+        </button>
       </div>
 
       <div className="flex flex-col gap-3">
         {NOTICES.map((n) => (
-          <a
+          <button
             key={n.id}
-            href="#"
-            className="block group hover:border-brand-red transition-colors"
+            type="button"
+            onClick={() => showPending('업데이트 상세')}
+            className="text-left block group hover:border-brand-red transition-colors"
           >
             <Card className="group-hover:border-brand-red transition-colors">
               <h3 className="text-sm font-bold text-text-primary mb-2 leading-snug m-0 group-hover:text-brand-red transition-colors">
@@ -66,7 +72,7 @@ export function NoticesAside() {
               </h3>
               <p className="text-xs text-text-muted m-0 tabular-nums">{n.date}</p>
             </Card>
-          </a>
+          </button>
         ))}
       </div>
     </aside>

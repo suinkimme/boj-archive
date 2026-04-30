@@ -1,5 +1,7 @@
 'use client'
 
+import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
+
 import type { Level } from './types'
 
 interface ProblemItemProps {
@@ -29,9 +31,14 @@ export function ProblemItem({
   rate,
   done,
 }: ProblemItemProps) {
+  const showPending = usePendingFeature()
   return (
     <li className="list-none">
-      <div className="group flex items-center gap-3 px-3 py-4 hover:bg-surface-page transition-colors">
+      <button
+        type="button"
+        onClick={() => showPending('에디터')}
+        className="w-full text-left group flex items-center gap-3 px-3 py-4 hover:bg-surface-page transition-colors"
+      >
         <span
           aria-label={done ? '완료' : '미완료'}
           className={`flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 ${
@@ -85,7 +92,7 @@ export function ProblemItem({
             ))}
           </ul>
         )}
-      </div>
+      </button>
     </li>
   )
 }

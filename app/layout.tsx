@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_KR } from 'next/font/google'
+
+import { PendingFeatureProvider } from '@/components/ui/PendingFeatureProvider'
+
 import './globals.css'
 
 const notoSansKr = Noto_Sans_KR({
@@ -28,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className={notoSansKr.variable}>
       <body className="font-sans bg-surface-page text-text-primary antialiased">
-        {children}
+        <PendingFeatureProvider>{children}</PendingFeatureProvider>
       </body>
     </html>
   )
