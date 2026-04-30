@@ -26,7 +26,6 @@ export default function MePage() {
   const { data: session, status } = useSession()
 
   const [me, setMe] = useState<MeData | null>(null)
-  const [refreshing, setRefreshing] = useState(false)
   const [disconnectOpen, setDisconnectOpen] = useState(false)
   const [disconnecting, setDisconnecting] = useState(false)
 
@@ -43,19 +42,6 @@ export default function MePage() {
       cancelled = true
     }
   }, [status])
-
-  const refresh = async () => {
-    if (refreshing) return
-    setRefreshing(true)
-    try {
-      const res = await fetch('/api/solvedac/refresh', { method: 'POST' })
-      if (!res.ok) return
-      const data = (await res.json()) as { solvedAc: SolvedAcUser }
-      setMe((prev) => (prev ? { ...prev, solvedAc: data.solvedAc } : prev))
-    } finally {
-      setRefreshing(false)
-    }
-  }
 
   const disconnect = async () => {
     if (disconnecting) return
@@ -186,34 +172,12 @@ export default function MePage() {
                     아직 확인 전
                   </span>
                 )}
-                <button
-                  type="button"
-                  onClick={() => void refresh()}
-                  disabled={refreshing}
-                  aria-label="solved.ac 정보 새로고침"
-                  className="text-text-muted hover:text-text-primary transition-colors disabled:opacity-50"
-                >
-                  <svg
-                    className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 4v5h5M20 20v-5h-5M5.5 9A7 7 0 0 1 18 7M18.5 15A7 7 0 0 1 6 17"
-                    />
-                  </svg>
-                </button>
               </div>
             )}
           </div>
         </div>
 
-        {!me && <SectionPlaceholder />}
+        {!me && <ActivityPlaceholder />}
         {me && !hasHandle && <NoHandleCard />}
         {me && hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
 
@@ -258,18 +222,6 @@ export default function MePage() {
               </span>
               <span className="text-text-muted">→</span>
             </button>
-            {hasHandle && isVerified && (
-              <button
-                type="button"
-                onClick={() => router.push('/onboarding/verify')}
-                className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between"
-              >
-                <span className="text-[14px] font-medium text-text-primary">
-                  본인 확인 다시 하기
-                </span>
-                <span className="text-text-muted">→</span>
-              </button>
-            )}
             {hasHandle && (
               <button
                 type="button"
@@ -355,22 +307,32 @@ function Stat({ label, value }: { label: string; value: string }) {
   )
 }
 
-function SectionPlaceholder() {
+function ActivityPlaceholder() {
   return (
-    <div className="mb-10 p-5 sm:p-6 border border-border-list bg-surface-page">
-      <p className="text-[14px] sm:text-[15px] font-bold mb-1">
-        <span className="inline-block bg-border rounded animate-pulse">
-          <span className="invisible">백준 아이디 등록하실래요?</span>
+    <section className="mb-10">
+      <SectionHeading>활동 요약</SectionHeading>
+      <div className="grid grid-cols-3 gap-3 sm:gap-4">
+        <StatPlaceholder label="푼 문제" valueWidth="9,999" />
+        <StatPlaceholder label="레이팅" valueWidth="9,999" />
+        <StatPlaceholder label="클래스" valueWidth="9" />
+      </div>
+    </section>
+  )
+}
+
+function StatPlaceholder({ label, valueWidth }: { label: string; valueWidth: string }) {
+  return (
+    <div className="border border-border-list bg-surface-card px-4 py-4">
+      <p className="text-[11px] font-bold uppercase tracking-wider mb-1.5">
+        <span className="inline-block bg-surface-page rounded animate-pulse">
+          <span className="invisible">{label}</span>
         </span>
       </p>
-      <p className="text-[13px] leading-relaxed mb-4">
-        <span className="inline-block bg-border rounded animate-pulse">
-          <span className="invisible">등록하면 백준에서 푸신 문제를 여기서 한눈에 볼 수 있어요.</span>
+      <p className="text-[20px] sm:text-[22px] font-extrabold tabular-nums leading-none">
+        <span className="inline-block bg-surface-page rounded animate-pulse">
+          <span className="invisible">{valueWidth}</span>
         </span>
       </p>
-      <span className="inline-block bg-border rounded animate-pulse px-4 py-2.5 text-[13px] font-bold">
-        <span className="invisible">등록하러 가기</span>
-      </span>
     </div>
   )
 }

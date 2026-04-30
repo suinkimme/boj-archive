@@ -7,6 +7,8 @@ import { bojVerifications, users } from '@/db/schema'
 import { invalidateUser } from '@/lib/solvedac/cache'
 import { fetchUser } from '@/lib/solvedac/client'
 
+const DEV_MOCK = process.env.SOLVEDAC_DEV_MOCK === '1'
+
 export async function POST() {
   const session = await auth()
   if (!session?.user?.id) {
@@ -30,16 +32,20 @@ export async function POST() {
     return NextResponse.json({ error: 'no_active_code' }, { status: 400 })
   }
 
-  const fresh = await fetchUser(pending.handle)
-  if (!fresh) {
-    return NextResponse.json({ error: 'handle_not_found' }, { status: 404 })
-  }
+  // Dev mock mode can't reach solved.ac to read the bio, so skip the
+  // check and let the post-verify flow stay testable locally.
+  if (!DEV_MOCK) {
+    const fresh = await fetchUser(pending.handle)
+    if (!fresh) {
+      return NextResponse.json({ error: 'handle_not_found' }, { status: 404 })
+    }
 
-  if (!fresh.bio.includes(pending.token)) {
-    return NextResponse.json(
-      { verified: false, error: 'code_not_in_bio' },
-      { status: 200 },
-    )
+    if (!fresh.bio.includes(pending.token)) {
+      return NextResponse.json(
+        { verified: false, error: 'code_not_in_bio' },
+        { status: 200 },
+      )
+    }
   }
 
   const now = new Date()
