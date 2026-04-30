@@ -297,7 +297,7 @@ export default function MePage() {
           </section>
         )}
 
-        {me && hasHandle && !solvedAc && (
+        {me && isVerified && hasHandle && !solvedAc && (
           <div className="mb-10 p-5 border border-border-list bg-surface-page text-center">
             <p className="text-[13px] text-text-secondary">
               저장된 아이디 <strong className="text-text-primary">@{bojHandle}</strong>의

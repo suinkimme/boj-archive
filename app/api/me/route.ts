@@ -1,4 +1,4 @@
-import { desc, eq, sql } from 'drizzle-orm'
+import { and, desc, eq, sql } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
@@ -49,10 +49,18 @@ export async function GET() {
             .where(eq(userSolvedProblems.userId, session.user.id))
             .orderBy(desc(userSolvedProblems.problemId))
             .limit(RECENT_SOLVED_LIMIT),
+          // Only count solvedac-sourced rows so import progress isn't
+          // inflated by local solves (and re-sync triggers when the
+          // solved.ac total grows past what we've imported).
           db
             .select({ count: sql<number>`count(*)::int` })
             .from(userSolvedProblems)
-            .where(eq(userSolvedProblems.userId, session.user.id)),
+            .where(
+              and(
+                eq(userSolvedProblems.userId, session.user.id),
+                eq(userSolvedProblems.source, 'solvedac'),
+              ),
+            ),
         ])
       : [null, [], [{ count: 0 }]]
 
