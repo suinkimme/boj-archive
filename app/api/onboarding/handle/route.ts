@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/auth'
 import { db } from '@/db'
 import { users } from '@/db/schema'
+import { logEvent } from '@/lib/log'
 import { getUserCached } from '@/lib/solvedac/cache'
 
 export async function POST(req: Request) {
@@ -51,6 +52,11 @@ export async function POST(req: Request) {
       updatedAt: now,
     })
     .where(eq(users.id, session.user.id))
+
+  logEvent('onboarding_handle_saved', {
+    userId: session.user.id,
+    handle,
+  })
 
   // Initial import is driven by the /me page (it polls /api/solvedac/sync
   // and shows progress to the user). Saving the handle returns fast.

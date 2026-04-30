@@ -2,6 +2,7 @@ import { sql } from 'drizzle-orm'
 
 import { db } from '@/db'
 import { problems, userSolvedProblems } from '@/db/schema'
+import { logEvent } from '@/lib/log'
 
 import { fetchSolvedProblems } from './client'
 
@@ -29,6 +30,7 @@ export async function importSolvedHandle(
   { fromPage = 1, maxPages = 4 }: ImportOptions = {},
 ): Promise<ImportResult> {
   const normalized = handle.toLowerCase().trim()
+  const startedAt = Date.now()
 
   let page = fromPage
   let pagesFetched = 0
@@ -42,6 +44,16 @@ export async function importSolvedHandle(
     pagesFetched += 1
 
     if (result.items.length === 0) {
+      logEvent('import_batch', {
+        userId,
+        handle: normalized,
+        fromPage,
+        pagesFetched,
+        problemsImported,
+        totalCount,
+        elapsedMs: Date.now() - startedAt,
+        done: true,
+      })
       return { pagesFetched, problemsImported, totalCount, nextPage: null }
     }
 
@@ -86,12 +98,33 @@ export async function importSolvedHandle(
 
     const totalPages = Math.ceil(totalCount / PAGE_SIZE)
     if (page >= totalPages) {
+      logEvent('import_batch', {
+        userId,
+        handle: normalized,
+        fromPage,
+        pagesFetched,
+        problemsImported,
+        totalCount,
+        elapsedMs: Date.now() - startedAt,
+        done: true,
+      })
       return { pagesFetched, problemsImported, totalCount, nextPage: null }
     }
 
     page += 1
   }
 
+  logEvent('import_batch', {
+    userId,
+    handle: normalized,
+    fromPage,
+    pagesFetched,
+    problemsImported,
+    totalCount,
+    elapsedMs: Date.now() - startedAt,
+    done: false,
+    nextPage: page,
+  })
   return { pagesFetched, problemsImported, totalCount, nextPage: page }
 }
 
