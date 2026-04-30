@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans_KR } from 'next/font/google'
 
 import { auth } from '@/auth'
+import { OnboardingRedirect } from '@/components/auth/OnboardingRedirect'
 import { SessionProvider } from '@/components/auth/SessionProvider'
 import { PendingFeatureProvider } from '@/components/ui/PendingFeatureProvider'
 
@@ -40,6 +41,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="ko" className={notoSansKr.variable}>
       <body className="font-sans bg-surface-page text-text-primary antialiased">
         <SessionProvider session={session}>
+          <OnboardingRedirect />
           <PendingFeatureProvider>{children}</PendingFeatureProvider>
         </SessionProvider>
       </body>

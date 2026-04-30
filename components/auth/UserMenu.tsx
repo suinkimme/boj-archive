@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { signOut } from 'next-auth/react'
 import { useEffect, useRef, useState } from 'react'
 import type { Session } from 'next-auth'
@@ -66,6 +67,14 @@ export function UserMenu({ user }: { user: NonNullable<Session['user']> }) {
               <p className="text-text-secondary text-[12px] truncate">@{user.login}</p>
             )}
           </div>
+          <Link
+            href="/me"
+            role="menuitem"
+            onClick={() => setOpen(false)}
+            className="block w-full text-left px-4 py-2.5 text-text-primary text-[13px] font-medium hover:bg-surface-page transition-colors"
+          >
+            내 정보
+          </Link>
           <button
             type="button"
             role="menuitem"
@@ -73,7 +82,7 @@ export function UserMenu({ user }: { user: NonNullable<Session['user']> }) {
               setOpen(false)
               void signOut()
             }}
-            className="w-full text-left px-4 py-2.5 text-text-primary text-[13px] font-medium hover:bg-surface-page transition-colors"
+            className="w-full text-left px-4 py-2.5 text-text-primary text-[13px] font-medium hover:bg-surface-page transition-colors border-t border-border-list"
           >
             로그아웃
           </button>
