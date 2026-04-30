@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
 import { db } from '@/db'
-import { users } from '@/db/schema'
+import { userSolvedProblems, users } from '@/db/schema'
 import { invalidateUser } from '@/lib/solvedac/cache'
 
 export async function POST() {
@@ -26,6 +26,10 @@ export async function POST() {
       updatedAt: new Date(),
     })
     .where(eq(users.id, session.user.id))
+
+  await db
+    .delete(userSolvedProblems)
+    .where(eq(userSolvedProblems.userId, session.user.id))
 
   if (me?.bojHandle) {
     await invalidateUser(me.bojHandle)
