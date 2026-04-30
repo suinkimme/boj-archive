@@ -177,7 +177,7 @@ export default function MePage() {
           </div>
         </div>
 
-        {!me && <SectionPlaceholder />}
+        {!me && <ActivityPlaceholder />}
         {me && !hasHandle && <NoHandleCard />}
         {me && hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
 
@@ -307,22 +307,32 @@ function Stat({ label, value }: { label: string; value: string }) {
   )
 }
 
-function SectionPlaceholder() {
+function ActivityPlaceholder() {
   return (
-    <div className="mb-10 p-5 sm:p-6 border border-border-list bg-surface-page">
-      <p className="text-[14px] sm:text-[15px] font-bold mb-1">
-        <span className="inline-block bg-border rounded animate-pulse">
-          <span className="invisible">백준 아이디 등록하실래요?</span>
+    <section className="mb-10">
+      <SectionHeading>활동 요약</SectionHeading>
+      <div className="grid grid-cols-3 gap-3 sm:gap-4">
+        <StatPlaceholder label="푼 문제" valueWidth="9,999" />
+        <StatPlaceholder label="레이팅" valueWidth="9,999" />
+        <StatPlaceholder label="클래스" valueWidth="9" />
+      </div>
+    </section>
+  )
+}
+
+function StatPlaceholder({ label, valueWidth }: { label: string; valueWidth: string }) {
+  return (
+    <div className="border border-border-list bg-surface-card px-4 py-4">
+      <p className="text-[11px] font-bold uppercase tracking-wider mb-1.5">
+        <span className="inline-block bg-surface-page rounded animate-pulse">
+          <span className="invisible">{label}</span>
         </span>
       </p>
-      <p className="text-[13px] leading-relaxed mb-4">
-        <span className="inline-block bg-border rounded animate-pulse">
-          <span className="invisible">등록하면 백준에서 푸신 문제를 여기서 한눈에 볼 수 있어요.</span>
+      <p className="text-[20px] sm:text-[22px] font-extrabold tabular-nums leading-none">
+        <span className="inline-block bg-surface-page rounded animate-pulse">
+          <span className="invisible">{valueWidth}</span>
         </span>
       </p>
-      <span className="inline-block bg-border rounded animate-pulse px-4 py-2.5 text-[13px] font-bold">
-        <span className="invisible">등록하러 가기</span>
-      </span>
     </div>
   )
 }
