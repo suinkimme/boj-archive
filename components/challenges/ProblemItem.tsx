@@ -37,8 +37,30 @@ export function ProblemItem({
         type="button"
         onClick={onToggleDone}
         aria-pressed={done}
-        className="w-full text-left group flex items-center gap-4 px-3 py-4 hover:bg-surface-page transition-colors"
+        className="w-full text-left group flex items-center gap-3 px-3 py-4 hover:bg-surface-page transition-colors"
       >
+        <span
+          aria-label={done ? '완료' : '미완료'}
+          className={`flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 transition-colors ${
+            done
+              ? 'bg-brand-red'
+              : 'border border-border-key group-hover:border-text-secondary'
+          }`}
+        >
+          {done && (
+            <svg
+              className="w-3 h-2.5 text-white"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={3}
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          )}
+        </span>
+
         <div className="flex-1 min-w-0">
           <h3 className="text-[15px] font-semibold text-text-primary mb-1 truncate m-0 group-hover:text-brand-red transition-colors">
             {title}
@@ -71,24 +93,6 @@ export function ProblemItem({
               </li>
             ))}
           </ul>
-        )}
-
-        {done && (
-          <span
-            aria-label="완료"
-            className="flex items-center justify-center w-5 h-5 rounded-full bg-brand-red flex-shrink-0"
-          >
-            <svg
-              className="w-3 h-2.5 text-white"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={3}
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-          </span>
         )}
       </button>
     </li>
