@@ -1,4 +1,4 @@
-import { desc, eq, sql } from 'drizzle-orm'
+import { and, desc, eq, sql } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
@@ -29,28 +29,40 @@ export async function GET() {
     return NextResponse.json({ error: 'user_not_found' }, { status: 404 })
   }
 
-  const [solvedAc, recentRows, importedRow] = me.bojHandle
-    ? await Promise.all([
-        getUserCached(me.bojHandle),
-        db
-          .select({
-            problemId: userSolvedProblems.problemId,
-            titleKo: problems.titleKo,
-            level: problems.level,
-            acceptedUserCount: problems.acceptedUserCount,
-            averageTries: problems.averageTries,
-          })
-          .from(userSolvedProblems)
-          .innerJoin(problems, eq(problems.problemId, userSolvedProblems.problemId))
-          .where(eq(userSolvedProblems.userId, session.user.id))
-          .orderBy(desc(userSolvedProblems.problemId))
-          .limit(RECENT_SOLVED_LIMIT),
-        db
-          .select({ count: sql<number>`count(*)::int` })
-          .from(userSolvedProblems)
-          .where(eq(userSolvedProblems.userId, session.user.id)),
-      ])
-    : [null, [], [{ count: 0 }]]
+  // Don't load any solved.ac data (or DB-derived solve history) until
+  // the user has verified ownership of the handle.
+  const isVerified = !!me.bojHandleVerifiedAt
+  const [solvedAc, recentRows, importedRow] =
+    me.bojHandle && isVerified
+      ? await Promise.all([
+          getUserCached(me.bojHandle),
+          db
+            .select({
+              problemId: userSolvedProblems.problemId,
+              titleKo: problems.titleKo,
+              level: problems.level,
+              acceptedUserCount: problems.acceptedUserCount,
+              averageTries: problems.averageTries,
+            })
+            .from(userSolvedProblems)
+            .innerJoin(problems, eq(problems.problemId, userSolvedProblems.problemId))
+            .where(eq(userSolvedProblems.userId, session.user.id))
+            .orderBy(desc(userSolvedProblems.problemId))
+            .limit(RECENT_SOLVED_LIMIT),
+          // Only count solvedac-sourced rows so import progress isn't
+          // inflated by local solves (and re-sync triggers when the
+          // solved.ac total grows past what we've imported).
+          db
+            .select({ count: sql<number>`count(*)::int` })
+            .from(userSolvedProblems)
+            .where(
+              and(
+                eq(userSolvedProblems.userId, session.user.id),
+                eq(userSolvedProblems.source, 'solvedac'),
+              ),
+            ),
+        ])
+      : [null, [], [{ count: 0 }]]
 
   const recentSolved = recentRows.map((r) => ({
     problemId: r.problemId,
