@@ -12,6 +12,7 @@ design system and should be removed once everything it covers ships.
 | Location | Trigger | Feature label shown |
 | --- | --- | --- |
 | `components/challenges/ProblemItem.tsx` | row click | `에디터` |
+| `app/me/page.tsx` | 최근 푼 문제 row click | `에디터` |
 | `components/challenges/TopNav.tsx` | each menu item | `프로젝트 소개` / `커뮤니티` / `기여하기` / `랭킹` |
 | `components/challenges/TopNav.tsx` | login button | `로그인` |
 | `components/challenges/NoticesAside.tsx` | "전체 보기" link | `업데이트 전체 보기` |
