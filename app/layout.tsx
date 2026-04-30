@@ -38,8 +38,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const session = await auth()
 
   return (
-    <html lang="ko" className={notoSansKr.variable}>
-      <body className="font-sans bg-surface-page text-text-primary antialiased">
+    <html lang="ko" className={notoSansKr.variable} suppressHydrationWarning>
+      <body
+        className="font-sans bg-surface-page text-text-primary antialiased"
+        suppressHydrationWarning
+      >
         <SessionProvider session={session}>
           <OnboardingRedirect />
           <PendingFeatureProvider>{children}</PendingFeatureProvider>
