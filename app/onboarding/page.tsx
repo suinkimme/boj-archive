@@ -5,7 +5,6 @@ import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
 import { TierBadge } from '@/components/auth/TierBadge'
-import { tierName } from '@/lib/solvedac/tier'
 import type { SolvedAcUser } from '@/lib/solvedac/types'
 
 export default function OnboardingPage() {
@@ -196,17 +195,14 @@ export default function OnboardingPage() {
 
           {preview && (
             <div className="mt-2 mb-8 p-4 sm:p-5 border border-border-list bg-surface-page">
-              <div className="flex items-center gap-3">
-                <TierBadge tier={preview.tier} className="text-[18px]" />
-                <div className="flex-1 min-w-0">
-                  <p className="text-[15px] font-bold text-text-primary truncate leading-tight">
-                    @{preview.handle}
-                  </p>
-                  <p className="text-[12px] text-text-secondary mt-0.5">
-                    {tierName(preview.tier)} · {preview.solvedCount.toLocaleString()}개 풀이
-                  </p>
-                </div>
-              </div>
+              <p className="text-[15px] font-bold text-text-primary truncate leading-tight">
+                @{preview.handle}
+              </p>
+              <p className="text-[12px] text-text-secondary mt-0.5">
+                <TierBadge tier={preview.tier} className="text-[12px]" />
+                {' · '}
+                {preview.solvedCount.toLocaleString()}개 풀이
+              </p>
             </div>
           )}
 
