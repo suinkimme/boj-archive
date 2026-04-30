@@ -37,7 +37,7 @@ export function ProblemItem({
       <button
         type="button"
         onClick={() => showPending('에디터')}
-        className="w-full text-left group flex items-center gap-3 px-3 py-4 hover:bg-surface-page transition-colors"
+        className="w-full text-left group flex items-center gap-3 px-6 sm:px-3 py-4 hover:bg-surface-page transition-colors"
       >
         <span
           aria-label={done ? '완료' : '미완료'}
@@ -78,10 +78,17 @@ export function ProblemItem({
             정답률{' '}
             <span className="text-text-secondary tabular-nums">{rate.toFixed(1)}%</span>
           </p>
+          {/* Mobile: tags as plain inline text below meta line */}
+          {tags && tags.length > 0 && (
+            <p className="sm:hidden mt-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted leading-normal m-0 truncate">
+              {tags.join(' · ')}
+            </p>
+          )}
         </div>
 
+        {/* Desktop / tablet: tag chips right-aligned */}
         {tags && tags.length > 0 && (
-          <ul className="flex flex-wrap justify-end gap-1 max-w-[260px] m-0 p-0 list-none flex-shrink-0">
+          <ul className="hidden sm:flex flex-wrap justify-end gap-1 max-w-[260px] m-0 p-0 list-none flex-shrink-0">
             {tags.map((tag) => (
               <li
                 key={tag}

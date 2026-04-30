@@ -208,27 +208,26 @@ function ChallengesPage() {
       <TopNav />
 
       <header className="bg-surface-notice bg-[url('/hero-bg.png')] bg-cover bg-center bg-no-repeat">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-12 sm:pt-16 xl:pt-20 pb-10 sm:pb-14 xl:pb-16">
-          <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-brand-red mb-3 sm:mb-4">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-10 sm:pt-16 xl:pt-20 pb-8 sm:pb-14 xl:pb-16">
+          <p className="hidden sm:block text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-brand-red mb-3 sm:mb-4">
             BEYOND BOJ · OPEN ARCHIVE
           </p>
-          <h1 className="text-[22px] sm:text-[28px] md:text-[32px] xl:text-[40px] font-extrabold leading-tight tracking-tight text-text-primary m-0 mb-5 sm:mb-6">
+          <h1 className="text-[24px] sm:text-[28px] md:text-[32px] xl:text-[40px] font-extrabold leading-tight tracking-tight text-text-primary m-0 mb-6 sm:mb-6">
             백준의 다음을 잇는,
             <br />
             <span className="text-brand-red">모두에게 열린 알고리즘 저지</span>를
             만나보세요.
           </h1>
-          <div className="mb-8 sm:mb-10 xl:mb-12">
+          <div className="hidden sm:block mb-8 sm:mb-10 xl:mb-12">
             <Badge variant="dark">
               NEXT JUDGE<span className="text-brand-red">.</span>
             </Badge>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <div className="basis-full xl:flex-1 xl:basis-auto xl:min-w-[280px]">
-              <SearchInput value={query} onChange={handleQueryChange} />
-            </div>
-            <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+            {/* Filter dropdowns appear before search on mobile (toss-style),
+                after search from xl up. */}
+            <div className="order-1 xl:order-2 basis-full sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
                 defaultLabel="모든 난이도"
                 icon={LevelIcon}
@@ -237,7 +236,7 @@ function ChallengesPage() {
                 onToggle={handleLevelToggle}
               />
             </div>
-            <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+            <div className="order-2 xl:order-3 basis-full sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
                 defaultLabel="모든 유형"
                 icon={TagIcon}
@@ -247,16 +246,17 @@ function ChallengesPage() {
                 widthAnchor="모든 유형"
               />
             </div>
-            <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+            <div className="order-3 xl:order-4 basis-full min-[380px]:basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
                 defaultLabel="모든 상태"
                 icon={StatusIcon}
                 items={STATUS_ITEMS}
                 selected={statuses}
                 onToggle={handleStatusToggle}
+                widthAnchor="모든 상태"
               />
             </div>
-            <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+            <div className="order-4 xl:order-5 basis-full min-[380px]:basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
                 defaultLabel="모든 정렬"
                 icon={SortIcon}
@@ -264,13 +264,17 @@ function ChallengesPage() {
                 selected={[order]}
                 onToggle={handleOrderChange}
                 single
+                widthAnchor="모든 정렬"
               />
+            </div>
+            <div className="order-5 xl:order-1 basis-full xl:flex-1 xl:basis-auto xl:min-w-[280px]">
+              <SearchInput value={query} onChange={handleQueryChange} />
             </div>
             <button
               type="button"
               onClick={handleReset}
               disabled={!hasFilters}
-              className="hidden sm:inline-block text-sm text-text-secondary hover:text-text-primary underline-offset-4 hover:underline disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:no-underline transition-colors px-2 flex-shrink-0"
+              className="order-6 hidden xl:inline-block text-sm text-text-secondary hover:text-text-primary underline-offset-4 hover:underline disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:no-underline transition-colors px-2 flex-shrink-0"
             >
               초기화
             </button>
@@ -278,10 +282,10 @@ function ChallengesPage() {
         </div>
       </header>
 
-      <main className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-12 pb-12">
+      <main className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-6 pb-10 sm:pt-12 sm:pb-12">
         <div className="flex flex-col lg:flex-row lg:items-start gap-10">
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-3 mb-5 px-3">
+            <div className="flex items-center gap-3 mb-3 sm:mb-5 px-3">
               <div
                 className="w-1 h-5 bg-brand-red flex-shrink-0"
                 aria-hidden="true"
