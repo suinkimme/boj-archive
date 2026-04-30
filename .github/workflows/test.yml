@@ -5,27 +5,53 @@ on:
     branches: [main, develop]
 
 jobs:
-  unit:
-    name: Unit Tests
+  format:
+    name: Legacy Format Tests
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: legacy
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: legacy/package-lock.json
+      - run: npm ci
+      - run: npm run format:check
+
+  unit:
+    name: Legacy Unit Tests
+    needs: format
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: legacy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: legacy/package-lock.json
       - run: npm ci
       - run: npm run test:unit
 
   e2e:
-    name: E2E Tests
+    name: Legacy E2E Tests
+    needs: format
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: legacy
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: legacy/package-lock.json
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
@@ -35,5 +61,5 @@ jobs:
         if: failure()
         with:
           name: playwright-report
-          path: playwright-report/
+          path: legacy/playwright-report/
           retention-days: 7
