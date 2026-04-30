@@ -25,7 +25,7 @@ export function ProblemList({ problems }: ProblemListProps) {
   }
 
   return (
-    <ul className="m-0 p-0 list-none">
+    <ul className="m-0 p-0 list-none -mx-6 sm:mx-0">
       {problems.map((p) => (
         <ProblemItem
           key={p.id}
