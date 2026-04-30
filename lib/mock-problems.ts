@@ -1,14 +1,20 @@
+import { ALL_TAGS } from '@/components/challenges/tags.generated'
 import type { Level, Status } from '@/components/challenges/types'
 
 export interface MockProblem {
   id: number
   title: string
   level: Level
+  tags: string[]
   completedCount: number
   rate: number
   createdAt: number
   defaultStatus: Status
 }
+
+// Pull from the most-used real tags so filtering against mock data
+// stays meaningful.
+const COMMON_TAG_VALUES = ALL_TAGS.slice(0, 30).map((t) => t.value)
 
 const TITLES = [
   '두 수의 합', '문자열 뒤집기', '소수 찾기', '배열의 합', '피보나치 수',
@@ -27,6 +33,17 @@ function pseudoRandom(seed: number): number {
   return ((seed * 9301 + 49297) % 233280) / 233280
 }
 
+function pickTags(seed: number): string[] {
+  const count = 1 + Math.floor(pseudoRandom(seed) * 4) // 1–4 tags
+  const picked: string[] = []
+  for (let i = 0; i < count * 2 && picked.length < count; i++) {
+    const idx = Math.floor(pseudoRandom(seed + i * 17 + 31) * COMMON_TAG_VALUES.length)
+    const tag = COMMON_TAG_VALUES[idx]
+    if (!picked.includes(tag)) picked.push(tag)
+  }
+  return picked
+}
+
 export const mockProblems: MockProblem[] = TITLES.map((title, i) => {
   const seed = i + 1
   const r1 = pseudoRandom(seed)
@@ -40,6 +57,7 @@ export const mockProblems: MockProblem[] = TITLES.map((title, i) => {
     id: 1000 + i,
     title,
     level,
+    tags: pickTags(seed + 300),
     completedCount: Math.floor(r1 * 80000) + 200,
     rate: Math.round((r2 * 60 + 30) * 10) / 10,
     createdAt: TITLES.length - i,

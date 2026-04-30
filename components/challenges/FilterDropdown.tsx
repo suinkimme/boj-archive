@@ -15,6 +15,12 @@ interface FilterDropdownProps<T extends string | number> {
   selected: readonly T[]
   onToggle: (value: T) => void
   single?: boolean
+  /**
+   * Optional override for the invisible spacer that locks minimum width.
+   * Useful when the auto-computed anchor (longest item + " 외 N개") would
+   * blow up the box for very large item lists.
+   */
+  widthAnchor?: string
 }
 
 export function FilterDropdown<T extends string | number>({
@@ -24,6 +30,7 @@ export function FilterDropdown<T extends string | number>({
   selected,
   onToggle,
   single = false,
+  widthAnchor: widthAnchorProp,
 }: FilterDropdownProps<T>) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -56,7 +63,9 @@ export function FilterDropdown<T extends string | number>({
 
   // Compute the longest possible display text to lock minimum width.
   // This prevents the box from resizing as the selection changes.
+  // Caller can override via `widthAnchor` for very large item lists.
   const widthAnchor = (() => {
+    if (widthAnchorProp) return widthAnchorProp
     if (items.length === 0) return defaultLabel
     const longestLabel = items.reduce(
       (max, it) => (it.label.length > max.length ? it.label : max),
@@ -87,14 +96,14 @@ export function FilterDropdown<T extends string | number>({
         }`}
       >
         {icon && <span className="flex-shrink-0">{icon}</span>}
-        <span className="flex-1 grid text-left">
-          <span
-            className="col-start-1 row-start-1 invisible whitespace-nowrap"
-            aria-hidden="true"
-          >
+        <span className="flex-1 text-left relative min-w-0">
+          {/* Invisible spacer locks the text area's width to widthAnchor.
+              Visible display is absolutely positioned so longer selections
+              cannot push the box wider — they truncate instead. */}
+          <span className="block invisible whitespace-nowrap" aria-hidden="true">
             {widthAnchor}
           </span>
-          <span className="col-start-1 row-start-1 truncate">{display}</span>
+          <span className="absolute inset-0 truncate">{display}</span>
         </span>
         <svg
           className={`w-4 h-4 flex-shrink-0 transition-transform ${
@@ -113,7 +122,7 @@ export function FilterDropdown<T extends string | number>({
       {open && (
         <div
           role="listbox"
-          className="absolute left-0 right-0 top-full mt-2 bg-surface-card border border-border-key z-20 max-h-72 overflow-auto min-w-[200px]"
+          className="absolute left-0 top-full mt-2 bg-surface-card border border-border-key z-20 max-h-72 overflow-auto min-w-full w-max max-w-[min(20rem,calc(100vw-2rem))]"
         >
           {items.map((it) => {
             const active = selected.includes(it.value)
@@ -156,7 +165,7 @@ export function FilterDropdown<T extends string | number>({
                   </span>
                 )}
                 <span
-                  className={`flex-1 truncate ${active && !single ? 'text-text-primary font-medium' : ''}`}
+                  className={`flex-1 whitespace-nowrap ${active && !single ? 'text-text-primary font-medium' : ''}`}
                 >
                   {it.label}
                 </span>

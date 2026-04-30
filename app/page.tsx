@@ -8,6 +8,7 @@ import { NoticesAside } from '@/components/challenges/NoticesAside'
 import { Pagination } from '@/components/challenges/Pagination'
 import { ProblemList } from '@/components/challenges/ProblemList'
 import { SearchInput } from '@/components/challenges/SearchInput'
+import { ALL_TAGS } from '@/components/challenges/tags.generated'
 import { TopNav } from '@/components/challenges/TopNav'
 import type { Level, Order, Status } from '@/components/challenges/types'
 import { Badge } from '@/components/ui/Badge'
@@ -36,6 +37,14 @@ const STATUS_ITEMS = [
   { value: 'tried' as const, label: '풀었던 문제' },
   { value: 'solved' as const, label: '완료한 문제' },
 ]
+
+const TAG_ITEMS = ALL_TAGS.map((t) => ({
+  value: t.value,
+  label: t.value,
+  count: t.count,
+}))
+
+const ALL_TAG_VALUES = new Set(ALL_TAGS.map((t) => t.value))
 
 const SortIcon = (
   <svg
@@ -77,6 +86,24 @@ const StatusIcon = (
   </svg>
 )
 
+const TagIcon = (
+  <svg
+    className="w-4 h-4 text-text-secondary"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.1 18.1 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"
+    />
+    <circle cx="7.5" cy="7.5" r="1.25" fill="currentColor" stroke="none" />
+  </svg>
+)
+
 function parseLevels(raw: string | null): Level[] {
   if (!raw) return []
   return raw
@@ -88,6 +115,11 @@ function parseLevels(raw: string | null): Level[] {
 function parseStatuses(raw: string | null): Status[] {
   if (!raw) return []
   return raw.split(',').filter((s): s is Status => ALL_STATUSES.includes(s as Status))
+}
+
+function parseTags(raw: string | null): string[] {
+  if (!raw) return []
+  return raw.split(',').filter((t) => ALL_TAG_VALUES.has(t))
 }
 
 function parseOrder(raw: string | null): Order {
@@ -106,6 +138,7 @@ function ChallengesPage() {
   const order = parseOrder(searchParams.get('order'))
   const levels = parseLevels(searchParams.get('levels'))
   const statuses = parseStatuses(searchParams.get('status'))
+  const tags = parseTags(searchParams.get('tags'))
   const page = parsePage(searchParams.get('page'))
   const query = searchParams.get('q') ?? ''
 
@@ -140,6 +173,10 @@ function ChallengesPage() {
     const next = statuses.includes(s) ? statuses.filter((x) => x !== s) : [...statuses, s]
     updateParams({ status: next.length ? next.join(',') : null, page: null })
   }
+  const handleTagToggle = (t: string) => {
+    const next = tags.includes(t) ? tags.filter((x) => x !== t) : [...tags, t]
+    updateParams({ tags: next.length ? next.join(',') : null, page: null })
+  }
   const handlePageChange = (next: number) =>
     updateParams({ page: next === 1 ? null : String(next) })
   const handleToggleDone = (id: number) => {
@@ -158,13 +195,15 @@ function ChallengesPage() {
     query !== '' ||
     order !== DEFAULT_ORDER ||
     levels.length > 0 ||
-    statuses.length > 0
+    statuses.length > 0 ||
+    tags.length > 0
 
   const filtered = useMemo(() => {
     let list = mockProblems
     const q = query.trim().toLowerCase()
     if (q) list = list.filter((p) => p.title.toLowerCase().includes(q))
     if (levels.length > 0) list = list.filter((p) => levels.includes(p.level))
+    if (tags.length > 0) list = list.filter((p) => tags.some((t) => p.tags.includes(t)))
     if (statuses.length > 0) {
       list = list.filter((p) => {
         const effective: Status = doneIds.has(p.id)
@@ -180,7 +219,7 @@ function ChallengesPage() {
     else if (order === 'rate') sorted.sort((a, b) => b.rate - a.rate)
     else sorted.sort((a, b) => b.createdAt - a.createdAt)
     return sorted
-  }, [query, levels, statuses, order, doneIds])
+  }, [query, levels, statuses, tags, order, doneIds])
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
   const safePage = Math.min(page, totalPages)
@@ -211,16 +250,6 @@ function ChallengesPage() {
             <div className="basis-full xl:flex-1 xl:basis-auto xl:min-w-[280px]">
               <SearchInput value={query} onChange={handleQueryChange} />
             </div>
-            <div className="basis-full sm:flex-1 sm:basis-auto xl:flex-none">
-              <FilterDropdown
-                defaultLabel="모든 정렬"
-                icon={SortIcon}
-                items={ORDER_ITEMS}
-                selected={[order]}
-                onToggle={handleOrderChange}
-                single
-              />
-            </div>
             <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
                 defaultLabel="모든 난이도"
@@ -232,11 +261,31 @@ function ChallengesPage() {
             </div>
             <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
+                defaultLabel="모든 유형"
+                icon={TagIcon}
+                items={TAG_ITEMS}
+                selected={tags}
+                onToggle={handleTagToggle}
+                widthAnchor="모든 유형"
+              />
+            </div>
+            <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+              <FilterDropdown
                 defaultLabel="모든 상태"
                 icon={StatusIcon}
                 items={STATUS_ITEMS}
                 selected={statuses}
                 onToggle={handleStatusToggle}
+              />
+            </div>
+            <div className="basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+              <FilterDropdown
+                defaultLabel="모든 정렬"
+                icon={SortIcon}
+                items={ORDER_ITEMS}
+                selected={[order]}
+                onToggle={handleOrderChange}
+                single
               />
             </div>
             <button
