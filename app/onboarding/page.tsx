@@ -5,26 +5,51 @@ import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
 import { TierBadge } from '@/components/auth/TierBadge'
-import { fetchSolvedAcUserMock, tierName, type SolvedAcUser } from '@/lib/mock/solvedac'
-import { useOnboardingState } from '@/lib/onboarding/state'
+import { tierName } from '@/lib/solvedac/tier'
+import type { SolvedAcUser } from '@/lib/solvedac/types'
 
 export default function OnboardingPage() {
   const router = useRouter()
   const { data: session, status } = useSession()
-  const { state, save } = useOnboardingState()
 
   const [input, setInput] = useState('')
   const [preview, setPreview] = useState<SolvedAcUser | null>(null)
   const [checking, setChecking] = useState(false)
+  const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [prefilled, setPrefilled] = useState(false)
 
   useEffect(() => {
     if (prefilled) return
     if (status !== 'authenticated') return
-    const guess = session?.user?.login ?? ''
-    if (guess) setInput(guess)
-    setPrefilled(true)
+    let cancelled = false
+
+    void (async () => {
+      try {
+        const res = await fetch('/api/me')
+        if (cancelled) return
+        if (res.ok) {
+          const data = (await res.json()) as {
+            user: { bojHandle: string | null }
+          }
+          if (data.user.bojHandle) {
+            setInput(data.user.bojHandle)
+            setPrefilled(true)
+            return
+          }
+        }
+      } catch {
+        // ignore — fall back to session guess
+      }
+      if (cancelled) return
+      const guess = session?.user?.login ?? ''
+      if (guess) setInput(guess)
+      setPrefilled(true)
+    })()
+
+    return () => {
+      cancelled = true
+    }
   }, [status, session?.user?.login, prefilled])
 
   const handle = input.trim()
@@ -35,33 +60,66 @@ export default function OnboardingPage() {
     setError(null)
     setPreview(null)
     try {
-      const user = await fetchSolvedAcUserMock(handle)
-      if (!user) {
+      const res = await fetch(
+        `/api/solvedac/user?handle=${encodeURIComponent(handle)}`,
+      )
+      if (res.status === 404) {
         setError('이 아이디로 가입된 분을 못 찾았어요. 한 번 더 확인해주세요.')
+      } else if (!res.ok) {
+        setError('잠시 후 다시 시도해주세요.')
       } else {
-        setPreview(user)
+        const data = (await res.json()) as { user: SolvedAcUser }
+        setPreview(data.user)
       }
+    } catch {
+      setError('잠시 후 다시 시도해주세요.')
     } finally {
       setChecking(false)
     }
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const finalHandle = preview?.handle ?? handle
     if (!finalHandle) return
-    save({ bojHandle: finalHandle, verifiedAt: null })
-    router.push('/me')
+    setSaving(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/onboarding/handle', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ handle: finalHandle }),
+      })
+      if (res.status === 409) {
+        setError('이 아이디는 다른 분이 이미 쓰고 있어요.')
+        return
+      }
+      if (res.status === 404) {
+        setError('이 아이디로 가입된 분을 못 찾았어요. 한 번 더 확인해주세요.')
+        return
+      }
+      if (!res.ok) {
+        setError('저장에 실패했어요. 잠시 후 다시 시도해주세요.')
+        return
+      }
+      router.push('/me')
+    } catch {
+      setError('저장에 실패했어요. 잠시 후 다시 시도해주세요.')
+    } finally {
+      setSaving(false)
+    }
   }
 
-  const handleSkip = () => {
-    save({ bojHandle: null, verifiedAt: null })
-    router.push('/')
+  const handleSkip = async () => {
+    setSaving(true)
+    try {
+      await fetch('/api/onboarding/skip', { method: 'POST' })
+      router.push('/')
+    } finally {
+      setSaving(false)
+    }
   }
 
   const handleClose = () => {
-    if (!state?.bojHandle) {
-      save({ bojHandle: null, verifiedAt: null })
-    }
     router.back()
   }
 
@@ -151,16 +209,17 @@ export default function OnboardingPage() {
           <div className="mt-12 flex flex-col gap-2">
             <button
               type="button"
-              onClick={handleSave}
-              disabled={!handle && !preview}
+              onClick={() => void handleSave()}
+              disabled={(!handle && !preview) || saving}
               className="w-full bg-brand-red text-white border-0 px-4 py-4 text-[15px] font-bold hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
             >
-              이 아이디로 시작할게요
+              {saving ? '저장중...' : '이 아이디로 시작할게요'}
             </button>
             <button
               type="button"
-              onClick={handleSkip}
-              className="w-full text-text-secondary text-[14px] py-3 hover:text-text-primary transition-colors"
+              onClick={() => void handleSkip()}
+              disabled={saving}
+              className="w-full text-text-secondary text-[14px] py-3 hover:text-text-primary transition-colors disabled:opacity-50"
             >
               지금은 건너뛸게요
             </button>

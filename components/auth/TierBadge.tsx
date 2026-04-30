@@ -1,4 +1,4 @@
-import { tierName } from '@/lib/mock/solvedac'
+import { tierName } from '@/lib/solvedac/tier'
 
 export function TierBadge({
   tier,
