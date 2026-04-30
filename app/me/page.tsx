@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import { TierBadge } from '@/components/auth/TierBadge'
 import { TopNav } from '@/components/challenges/TopNav'
 import { AlertDialog } from '@/components/ui/AlertDialog'
-import type { SolvedAcUser } from '@/lib/solvedac/types'
+import type { SolvedAcProblem, SolvedAcUser } from '@/lib/solvedac/types'
 
 type MeData = {
   user: {
@@ -18,6 +18,7 @@ type MeData = {
     onboardedAt: string | null
   }
   solvedAc: SolvedAcUser | null
+  recentSolved: SolvedAcProblem[]
 }
 
 export default function MePage() {
@@ -100,6 +101,7 @@ export default function MePage() {
   const isVerified = !!me?.user.bojHandleVerifiedAt
   const hasHandle = !!bojHandle
   const solvedAc = me?.solvedAc ?? null
+  const recentSolved = me?.recentSolved ?? []
 
   return (
     <div className="min-h-screen bg-surface-card">
@@ -169,6 +171,33 @@ export default function MePage() {
               <Stat label="레이팅" value={solvedAc.rating.toLocaleString()} />
               <Stat label="클래스" value={String(solvedAc.class)} />
             </div>
+          </section>
+        )}
+
+        {!me && <RecentSolvedPlaceholder />}
+        {me && hasHandle && recentSolved.length > 0 && (
+          <section className="mb-10">
+            <SectionHeading>최근 푼 문제</SectionHeading>
+            <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
+              {recentSolved.map((item) => (
+                <li key={item.problemId}>
+                  <a
+                    href={`https://www.acmicpc.net/problem/${item.problemId}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="h-12 flex items-center gap-3 px-4 hover:bg-surface-page transition-colors"
+                  >
+                    <TierBadge tier={item.level} size={18} className="flex-shrink-0" />
+                    <span className="text-[13px] text-text-muted tabular-nums flex-shrink-0">
+                      {item.problemId}
+                    </span>
+                    <span className="flex-1 min-w-0 text-[14px] font-medium text-text-primary truncate">
+                      {item.titleKo}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
 
@@ -296,6 +325,23 @@ function ActivityPlaceholder() {
         <StatPlaceholder label="레이팅" valueWidth="9,999" />
         <StatPlaceholder label="클래스" valueWidth="9" />
       </div>
+    </section>
+  )
+}
+
+function RecentSolvedPlaceholder() {
+  return (
+    <section className="mb-10">
+      <SectionHeading>최근 푼 문제</SectionHeading>
+      <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <li key={i} className="h-12 flex items-center gap-3 px-4">
+            <span className="block w-[18px] h-[18px] bg-surface-page rounded animate-pulse flex-shrink-0" />
+            <span className="block h-3.5 w-10 bg-surface-page rounded animate-pulse flex-shrink-0" />
+            <span className="block h-3.5 flex-1 max-w-[240px] bg-surface-page rounded animate-pulse" />
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
