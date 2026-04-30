@@ -1,3 +1,4 @@
+import { acquireSolvedAcToken } from './throttle'
 import type {
   SolvedAcProblem,
   SolvedAcSearchResult,
@@ -6,6 +7,9 @@ import type {
 
 const BASE = 'https://solved.ac/api/v3'
 const UA = 'NextJudge/0.1 (+https://github.com/suinkimme/boj-archive)'
+
+const MAX_RETRIES = 3
+const BACKOFF_MS = [500, 1500, 4000]
 
 const DEV_MOCK = process.env.SOLVEDAC_DEV_MOCK === '1'
 
@@ -34,14 +38,24 @@ export class SolvedAcError extends Error {
 }
 
 async function request<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE}${path}`, {
-    headers: { 'User-Agent': UA, Accept: 'application/json' },
-    cache: 'no-store',
-  })
-  if (!res.ok) {
+  let attempt = 0
+  for (;;) {
+    await acquireSolvedAcToken()
+    const res = await fetch(`${BASE}${path}`, {
+      headers: { 'User-Agent': UA, Accept: 'application/json' },
+      cache: 'no-store',
+    })
+    if (res.ok) {
+      return (await res.json()) as T
+    }
+    const transient = res.status === 429 || res.status >= 500
+    if (transient && attempt < MAX_RETRIES) {
+      await new Promise((r) => setTimeout(r, BACKOFF_MS[attempt]))
+      attempt += 1
+      continue
+    }
     throw new SolvedAcError(res.status, path)
   }
-  return (await res.json()) as T
 }
 
 type RawUser = {
