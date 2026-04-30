@@ -1,4 +1,4 @@
-import { desc, eq } from 'drizzle-orm'
+import { desc, eq, sql } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
@@ -29,7 +29,7 @@ export async function GET() {
     return NextResponse.json({ error: 'user_not_found' }, { status: 404 })
   }
 
-  const [solvedAc, recentRows] = me.bojHandle
+  const [solvedAc, recentRows, importedRow] = me.bojHandle
     ? await Promise.all([
         getUserCached(me.bojHandle),
         db
@@ -45,8 +45,12 @@ export async function GET() {
           .where(eq(userSolvedProblems.userId, session.user.id))
           .orderBy(desc(userSolvedProblems.problemId))
           .limit(RECENT_SOLVED_LIMIT),
+        db
+          .select({ count: sql<number>`count(*)::int` })
+          .from(userSolvedProblems)
+          .where(eq(userSolvedProblems.userId, session.user.id)),
       ])
-    : [null, []]
+    : [null, [], [{ count: 0 }]]
 
   const recentSolved = recentRows.map((r) => ({
     problemId: r.problemId,
@@ -56,6 +60,8 @@ export async function GET() {
     averageTries: r.averageTries ?? 0,
   }))
 
+  const importedCount = importedRow[0]?.count ?? 0
+
   return NextResponse.json({
     user: {
       bojHandle: me.bojHandle,
@@ -64,5 +70,6 @@ export async function GET() {
     },
     solvedAc,
     recentSolved,
+    importedCount,
   })
 }
