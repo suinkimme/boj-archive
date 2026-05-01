@@ -6,6 +6,7 @@ import {
   eq,
   ilike,
   inArray,
+  or,
   sql,
 } from 'drizzle-orm'
 
@@ -89,7 +90,20 @@ export async function fetchProblemsForList(
   const page = parsePage(params.page)
 
   const conditions = []
-  if (query) conditions.push(ilike(problems.titleKo, `%${query}%`))
+  if (query) {
+    // 제목 부분일치 + 숫자 입력이면 problem_id 정확 일치도 포함 (OR).
+    const titleMatch = ilike(problems.titleKo, `%${query}%`)
+    if (/^\d+$/.test(query)) {
+      const id = Number.parseInt(query, 10)
+      if (Number.isFinite(id)) {
+        conditions.push(or(titleMatch, eq(problems.problemId, id))!)
+      } else {
+        conditions.push(titleMatch)
+      }
+    } else {
+      conditions.push(titleMatch)
+    }
+  }
   if (levels.length > 0) conditions.push(inArray(problems.level, levels))
   if (tagFilter.length > 0) conditions.push(arrayOverlaps(problems.tags, tagFilter))
 
