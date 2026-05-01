@@ -1,17 +1,20 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+
 import { useImportSync } from './ImportSyncProvider'
 
 export function GlobalImportProgressBar() {
+  const pathname = usePathname()
   const { isImporting, imported, total } = useImportSync()
   if (!isImporting) return null
+  // verify 페이지는 자체 카드에서 진행률을 더 풍부하게 보여주므로 숨김.
+  if (pathname?.startsWith('/onboarding/verify')) return null
 
   const pct =
     total && total > 0 && imported != null
       ? Math.min(100, (imported / total) * 100)
       : 0
-  // total을 아직 모르는 동안엔 indeterminate 느낌만 — 0%로 두고 width transition으로
-  // 진행률이 채워지면 자연스럽게 늘어남.
 
   return (
     <div
@@ -20,10 +23,10 @@ export function GlobalImportProgressBar() {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={Math.round(pct)}
-      className="fixed top-0 left-0 right-0 h-[3px] z-50 bg-transparent pointer-events-none"
+      className="fixed top-0 left-0 right-0 h-[3px] z-50 bg-brand-red/10 pointer-events-none"
     >
       <div
-        className="h-full bg-brand-red transition-[width] duration-500"
+        className="h-full bg-brand-red transition-[width] duration-1000 ease-out"
         style={{ width: `${pct}%` }}
       />
     </div>
