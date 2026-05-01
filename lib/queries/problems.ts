@@ -11,13 +11,17 @@ import {
 
 import { db } from '@/db'
 import { problems, userSolvedProblems } from '@/db/schema'
-import type { Level, Order, Status } from '@/components/challenges/types'
+import {
+  ALL_LEVELS,
+  ALL_ORDERS,
+  ALL_STATUSES,
+  DEFAULT_ORDER,
+  type Level,
+  type Order,
+  type Status,
+} from '@/components/challenges/types'
 
 export const PAGE_SIZE = 12
-export const ALL_LEVELS: Level[] = [0, 1, 2, 3, 4, 5]
-export const ALL_STATUSES: Status[] = ['unsolved', 'tried', 'solved']
-export const ALL_ORDERS: Order[] = ['recent', 'solved', 'rate']
-export const DEFAULT_ORDER: Order = 'recent'
 
 export interface ListedProblem {
   id: number
