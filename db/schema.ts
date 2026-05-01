@@ -8,10 +8,12 @@ import {
   serial,
   text,
   timestamp,
+  unique,
 } from 'drizzle-orm/pg-core'
 import type { AdapterAccountType } from 'next-auth/adapters'
 
 export type SolvedSource = 'solvedac' | 'local'
+export type TestcaseSource = 'testcase_ac' | 'sample' | 'community_report'
 
 export const users = pgTable('users', {
   id: text('id')
@@ -93,8 +95,13 @@ export const solvedAcSnapshots = pgTable('solved_ac_snapshots', {
   fetchedAt: timestamp('fetched_at', { mode: 'date' }).notNull().defaultNow(),
 })
 
-// Global problem catalog. Populated lazily as we import users' solved
-// problems; rows are upserted with the latest metadata seen.
+// Global problem catalog. Two ingestion paths upsert into this table:
+//   1. solved.ac lazy import — fills metadata (title, level, counts) when a
+//      user's solve history references a problem we haven't seen yet.
+//   2. scripts/import-problems.ts — bulk-loads canonical body content
+//      (description, samples, tags, limits) from problems/<id>/problem.json.
+// Body columns are nullable because lazy-imported rows may exist before
+// canonical content has been ingested.
 export const problems = pgTable('problems', {
   problemId: integer('problem_id').primaryKey(),
   titleKo: text('title_ko').notNull(),
@@ -103,6 +110,17 @@ export const problems = pgTable('problems', {
   averageTries: real('average_tries'),
   raw: jsonb('raw'),
   fetchedAt: timestamp('fetched_at', { mode: 'date' }).notNull().defaultNow(),
+  // Body content (from problem.json)
+  description: text('description'),
+  inputFormat: text('input_format'),
+  outputFormat: text('output_format'),
+  samples: jsonb('samples').$type<{ input: string; output: string }[]>(),
+  hint: text('hint'),
+  source: text('source'),
+  tags: text('tags').array(),
+  timeLimit: text('time_limit'),
+  memoryLimit: text('memory_limit'),
+  submissionCount: integer('submission_count'),
 })
 
 // Cross-instance rate-limit log. One row per outbound solved.ac
@@ -117,6 +135,36 @@ export const solvedAcRequestLog = pgTable(
       .defaultNow(),
   },
   (t) => [index('solved_ac_request_log_requested_at_idx').on(t.requestedAt)],
+)
+
+// Curated testcases used by the in-browser judge. Sources:
+//   testcase_ac      — auto-generated from testcase-ac (generator + correct)
+//   sample           — sample I/O from the original problem statement
+//   community_report — accepted from a user submission via problem_reports
+// problem_id intentionally has no FK: testcases may exist for problems
+// before the lazy `problems` row is populated. source_report_id is reserved
+// for the upcoming problem_reports table — FK will be added in a later
+// migration once that table lands.
+export const testcases = pgTable(
+  'testcases',
+  {
+    id: serial('id').primaryKey(),
+    problemId: integer('problem_id').notNull(),
+    caseIndex: integer('case_index').notNull(),
+    stdin: text('stdin').notNull(),
+    expectedStdout: text('expected_stdout').notNull(),
+    source: text('source').$type<TestcaseSource>().notNull(),
+    sourceReportId: integer('source_report_id'),
+    createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+  },
+  (t) => [
+    unique('testcases_problem_source_case_uniq').on(
+      t.problemId,
+      t.source,
+      t.caseIndex,
+    ),
+    index('testcases_problem_idx').on(t.problemId),
+  ],
 )
 
 // Per-user solve history. source=solvedac for imports from the

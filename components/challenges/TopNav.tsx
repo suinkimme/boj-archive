@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
@@ -165,6 +166,13 @@ export function TopNav() {
                     )}
                   </div>
                 </div>
+                <Link
+                  href="/me"
+                  onClick={() => setOpen(false)}
+                  className="block w-full bg-brand-dark text-white border-0 px-4 py-3.5 text-[15px] font-bold text-center hover:opacity-90 transition-opacity"
+                >
+                  내 정보
+                </Link>
                 <button
                   type="button"
                   onClick={handleSignOut}
