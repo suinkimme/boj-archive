@@ -86,10 +86,12 @@ export function ProblemItem({
           )}
         </div>
 
-        {/* Desktop / tablet: tag chips right-aligned, capped at 3 with overflow indicator */}
+        {/* Desktop / tablet: tag chips right-aligned, wrap allowed up to ~2 lines.
+            Cap visible count to 5 + overflow indicator so very-tagged rows
+            don't blow past two lines. */}
         {tags && tags.length > 0 && (
-          <ul className="hidden sm:flex justify-end gap-1 max-w-[260px] m-0 p-0 list-none flex-shrink-0 overflow-hidden">
-            {tags.slice(0, 3).map((tag) => (
+          <ul className="hidden sm:flex flex-wrap justify-end gap-1 max-w-[260px] m-0 p-0 list-none flex-shrink-0">
+            {tags.slice(0, 5).map((tag) => (
               <li
                 key={tag}
                 className="inline-flex px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
@@ -97,12 +99,12 @@ export function ProblemItem({
                 {tag}
               </li>
             ))}
-            {tags.length > 3 && (
+            {tags.length > 5 && (
               <li
                 className="inline-flex px-1.5 py-0.5 text-[10px] font-bold tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
-                aria-label={`그 외 ${tags.length - 3}개`}
+                aria-label={`그 외 ${tags.length - 5}개`}
               >
-                +{tags.length - 3}
+                +{tags.length - 5}
               </li>
             )}
           </ul>
