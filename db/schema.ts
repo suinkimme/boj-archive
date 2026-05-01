@@ -8,10 +8,12 @@ import {
   serial,
   text,
   timestamp,
+  unique,
 } from 'drizzle-orm/pg-core'
 import type { AdapterAccountType } from 'next-auth/adapters'
 
 export type SolvedSource = 'solvedac' | 'local'
+export type TestcaseSource = 'testcase_ac' | 'sample' | 'community_report'
 
 export const users = pgTable('users', {
   id: text('id')
@@ -117,6 +119,36 @@ export const solvedAcRequestLog = pgTable(
       .defaultNow(),
   },
   (t) => [index('solved_ac_request_log_requested_at_idx').on(t.requestedAt)],
+)
+
+// Curated testcases used by the in-browser judge. Sources:
+//   testcase_ac      — auto-generated from testcase-ac (generator + correct)
+//   sample           — sample I/O from the original problem statement
+//   community_report — accepted from a user submission via problem_reports
+// problem_id intentionally has no FK: testcases may exist for problems
+// before the lazy `problems` row is populated. source_report_id is reserved
+// for the upcoming problem_reports table — FK will be added in a later
+// migration once that table lands.
+export const testcases = pgTable(
+  'testcases',
+  {
+    id: serial('id').primaryKey(),
+    problemId: integer('problem_id').notNull(),
+    caseIndex: integer('case_index').notNull(),
+    stdin: text('stdin').notNull(),
+    expectedStdout: text('expected_stdout').notNull(),
+    source: text('source').$type<TestcaseSource>().notNull(),
+    sourceReportId: integer('source_report_id'),
+    createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+  },
+  (t) => [
+    unique('testcases_problem_source_case_uniq').on(
+      t.problemId,
+      t.source,
+      t.caseIndex,
+    ),
+    index('testcases_problem_idx').on(t.problemId),
+  ],
 )
 
 // Per-user solve history. source=solvedac for imports from the
