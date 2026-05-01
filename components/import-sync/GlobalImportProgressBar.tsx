@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation'
 
 import { useImportSync } from './ImportSyncProvider'
 
-const LINGER_AFTER_DONE_MS = 1500
+// 100%까지 차오르는 transition(2s) + 그 후 사용자가 인지할 시간(1.5s).
+const LINGER_AFTER_DONE_MS = 3500
 
 export function GlobalImportProgressBar() {
   const pathname = usePathname()
