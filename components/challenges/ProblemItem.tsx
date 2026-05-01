@@ -2,7 +2,7 @@
 
 import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 
-import type { Level } from './types'
+import { getLevelColor, getLevelLabel, type Level } from './types'
 
 interface ProblemItemProps {
   id: number
@@ -12,15 +12,6 @@ interface ProblemItemProps {
   completedCount: number
   rate: number
   done: boolean
-}
-
-const LEVEL_COLOR: Record<Level, string> = {
-  0: 'text-text-muted',
-  1: 'text-status-success',
-  2: 'text-status-success',
-  3: 'text-status-warning',
-  4: 'text-status-danger',
-  5: 'text-status-danger',
 }
 
 export function ProblemItem({
@@ -64,7 +55,7 @@ export function ProblemItem({
             {title}
           </h3>
           <p className="text-xs text-text-muted leading-normal m-0">
-            <span className={`font-medium ${LEVEL_COLOR[level]}`}>Lv. {level}</span>
+            <span className={`font-medium ${getLevelColor(level)}`}>{getLevelLabel(level)}</span>
             <span className="mx-2 text-border-key" aria-hidden="true">
               ·
             </span>

@@ -13,6 +13,7 @@ import { TopNav } from '@/components/challenges/TopNav'
 import {
   ALL_LEVELS,
   DEFAULT_ORDER,
+  getLevelLabel,
   type Level,
   type Order,
   type Status,
@@ -167,7 +168,7 @@ export function ChallengesView({
 
   const LEVEL_ITEMS = ALL_LEVELS.map((lv) => ({
     value: lv,
-    label: `Lv. ${lv}`,
+    label: getLevelLabel(lv),
     count: totalByLevel[lv],
   }))
 
