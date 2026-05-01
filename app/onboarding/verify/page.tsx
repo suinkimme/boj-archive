@@ -303,7 +303,7 @@ export default function VerifyPage() {
                     {importProgress.total.toLocaleString()}
                   </>
                 ) : (
-                  <span className="text-text-muted">계산 중...</span>
+                  <span className="text-text-muted animate-pulse">계산 중...</span>
                 )}
               </p>
               <div className="mt-3 h-1 bg-border-list overflow-hidden">
