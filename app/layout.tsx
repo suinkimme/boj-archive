@@ -3,6 +3,8 @@ import { Noto_Sans_KR } from 'next/font/google'
 
 import { auth } from '@/auth'
 import { SessionProvider } from '@/components/auth/SessionProvider'
+import { GlobalImportProgressBar } from '@/components/import-sync/GlobalImportProgressBar'
+import { ImportSyncProvider } from '@/components/import-sync/ImportSyncProvider'
 import { PendingFeatureProvider } from '@/components/ui/PendingFeatureProvider'
 
 import './globals.css'
@@ -43,7 +45,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         suppressHydrationWarning
       >
         <SessionProvider session={session}>
-          <PendingFeatureProvider>{children}</PendingFeatureProvider>
+          <ImportSyncProvider>
+            <GlobalImportProgressBar />
+            <PendingFeatureProvider>{children}</PendingFeatureProvider>
+          </ImportSyncProvider>
         </SessionProvider>
       </body>
     </html>
