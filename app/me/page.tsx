@@ -338,7 +338,7 @@ export default function MePage() {
                     ? '풀이 정보 업데이트 중...'
                     : '풀이 정보 업데이트'}
                 </span>
-                <span className="text-text-muted">↻</span>
+                <span className="text-text-muted">→</span>
               </button>
             )}
             <button
