@@ -33,6 +33,7 @@ export default function MePage() {
   const [me, setMe] = useState<MeData | null>(null)
   const [disconnectOpen, setDisconnectOpen] = useState(false)
   const [disconnecting, setDisconnecting] = useState(false)
+  const [syncConfirmOpen, setSyncConfirmOpen] = useState(false)
 
   useEffect(() => {
     if (status !== 'authenticated') return
@@ -280,7 +281,7 @@ export default function MePage() {
             {hasHandle && isVerified && (
               <button
                 type="button"
-                onClick={() => void handleSync()}
+                onClick={() => setSyncConfirmOpen(true)}
                 disabled={isImporting}
                 className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-surface-card"
               >
@@ -354,6 +355,21 @@ export default function MePage() {
             label: disconnecting ? '끊는 중...' : '연결 끊기',
             style: 'destructive',
             onPress: () => void disconnect(),
+          },
+        ]}
+      />
+
+      <AlertDialog
+        open={syncConfirmOpen}
+        onClose={() => setSyncConfirmOpen(false)}
+        title="풀이 정보를 업데이트할까요?"
+        description="solved.ac에서 새 풀이를 가져옵니다. 페이지를 이동하셔도 화면 위쪽 진행률 표시줄에서 계속 확인하실 수 있어요."
+        buttons={[
+          { label: '취소', style: 'cancel' },
+          {
+            label: '시작',
+            style: 'default',
+            onPress: () => void handleSync(),
           },
         ]}
       />
