@@ -1,26 +1,26 @@
-'use client'
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react";
 
 export interface DropdownItem<T extends string | number> {
-  value: T
-  label: string
-  count?: number
+  value: T;
+  label: string;
+  count?: number;
 }
 
 interface FilterDropdownProps<T extends string | number> {
-  defaultLabel: string
-  icon?: React.ReactNode
-  items: DropdownItem<T>[]
-  selected: readonly T[]
-  onToggle: (value: T) => void
-  single?: boolean
+  defaultLabel: string;
+  icon?: React.ReactNode;
+  items: DropdownItem<T>[];
+  selected: readonly T[];
+  onToggle: (value: T) => void;
+  single?: boolean;
   /**
    * Optional override for the invisible spacer that locks minimum width.
    * Useful when the auto-computed anchor (longest item + " 외 N개") would
    * blow up the box for very large item lists.
    */
-  widthAnchor?: string
+  widthAnchor?: string;
 }
 
 export function FilterDropdown<T extends string | number>({
@@ -32,53 +32,57 @@ export function FilterDropdown<T extends string | number>({
   single = false,
   widthAnchor: widthAnchorProp,
 }: FilterDropdownProps<T>) {
-  const [open, setOpen] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!open) return
+    if (!open) return;
     function handleDoc(e: MouseEvent) {
-      if (!ref.current?.contains(e.target as Node)) setOpen(false)
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
     }
     function handleKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpen(false)
+      if (e.key === "Escape") setOpen(false);
     }
-    document.addEventListener('mousedown', handleDoc)
-    document.addEventListener('keydown', handleKey)
+    document.addEventListener("mousedown", handleDoc);
+    document.addEventListener("keydown", handleKey);
     return () => {
-      document.removeEventListener('mousedown', handleDoc)
-      document.removeEventListener('keydown', handleKey)
-    }
-  }, [open])
+      document.removeEventListener("mousedown", handleDoc);
+      document.removeEventListener("keydown", handleKey);
+    };
+  }, [open]);
 
   const display = (() => {
     if (single) {
-      return items.find((i) => selected.includes(i.value))?.label ?? defaultLabel
+      return (
+        items.find((i) => selected.includes(i.value))?.label ?? defaultLabel
+      );
     }
-    if (selected.length === 0) return defaultLabel
-    const first = items.find((i) => selected.includes(i.value))?.label ?? ''
-    if (selected.length === 1) return first
-    return `${first} 외 ${selected.length - 1}개`
-  })()
+    if (selected.length === 0) return defaultLabel;
+    const first = items.find((i) => selected.includes(i.value))?.label ?? "";
+    if (selected.length === 1) return first;
+    return `${first} 외 ${selected.length - 1}개`;
+  })();
 
   // Compute the longest possible display text to lock minimum width.
   // This prevents the box from resizing as the selection changes.
   // Caller can override via `widthAnchor` for very large item lists.
   const widthAnchor = (() => {
-    if (widthAnchorProp) return widthAnchorProp
-    if (items.length === 0) return defaultLabel
+    if (widthAnchorProp) return widthAnchorProp;
+    if (items.length === 0) return defaultLabel;
     const longestLabel = items.reduce(
       (max, it) => (it.label.length > max.length ? it.label : max),
-      '',
-    )
+      "",
+    );
     const longestDisplay =
       !single && items.length > 1
         ? `${longestLabel} 외 ${items.length - 1}개`
-        : longestLabel
-    return longestDisplay.length > defaultLabel.length ? longestDisplay : defaultLabel
-  })()
+        : longestLabel;
+    return longestDisplay.length > defaultLabel.length
+      ? longestDisplay
+      : defaultLabel;
+  })();
 
-  const isDefault = !single && selected.length === 0
+  const isDefault = !single && selected.length === 0;
 
   return (
     <div ref={ref} className="relative w-full">
@@ -89,10 +93,10 @@ export function FilterDropdown<T extends string | number>({
         aria-haspopup="listbox"
         className={`w-full flex items-center gap-2 px-5 py-3.5 text-sm bg-surface-card border transition-colors min-w-[120px] ${
           open
-            ? 'border-text-primary text-text-primary'
+            ? "border-text-primary text-text-primary"
             : isDefault
-              ? 'border-border-key text-text-secondary hover:border-text-secondary hover:text-text-primary'
-              : 'border-text-primary text-text-primary'
+              ? "border-border-key text-text-secondary hover:border-text-secondary hover:text-text-primary"
+              : "border-text-primary text-text-primary"
         }`}
       >
         {icon && <span className="flex-shrink-0">{icon}</span>}
@@ -100,15 +104,18 @@ export function FilterDropdown<T extends string | number>({
           {/* Invisible spacer locks the text area's width to widthAnchor.
               Visible display is absolutely positioned so longer selections
               cannot push the box wider — they truncate instead. */}
-          <span className="block invisible whitespace-nowrap" aria-hidden="true">
+          <span
+            className="block invisible whitespace-nowrap"
+            aria-hidden="true"
+          >
             {widthAnchor}
           </span>
           <span className="absolute inset-0 truncate">{display}</span>
         </span>
         <svg
           className={`w-4 h-4 flex-shrink-0 transition-transform ${
-            open ? 'rotate-180' : ''
-          } ${isDefault ? 'text-text-muted' : 'text-text-secondary'}`}
+            open ? "rotate-180" : ""
+          } ${isDefault ? "text-text-muted" : "text-text-secondary"}`}
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
@@ -120,65 +127,71 @@ export function FilterDropdown<T extends string | number>({
       </button>
 
       {open && (
-        <div
-          role="listbox"
-          className="absolute left-0 top-full mt-2 bg-surface-card border border-border-key z-20 max-h-72 overflow-auto min-w-full w-max max-w-[min(20rem,calc(100vw-2rem))]"
-        >
-          {items.map((it) => {
-            const active = selected.includes(it.value)
-            return (
-              <button
-                key={String(it.value)}
-                type="button"
-                role="option"
-                aria-selected={active}
-                onClick={() => {
-                  onToggle(it.value)
-                  if (single) setOpen(false)
-                }}
-                className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-left transition-colors ${
-                  active && single
-                    ? 'bg-surface-page text-text-primary font-medium'
-                    : 'text-text-secondary hover:bg-surface-page hover:text-text-primary'
-                }`}
-              >
-                {!single && (
-                  <span
-                    aria-hidden="true"
-                    className={`flex items-center justify-center w-4 h-4 border flex-shrink-0 transition-colors ${
-                      active
-                        ? 'bg-brand-red border-brand-red'
-                        : 'bg-surface-card border-border-key'
-                    }`}
-                  >
-                    {active && (
-                      <svg
-                        className="w-3 h-3 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    )}
-                  </span>
-                )}
-                <span
-                  className={`flex-1 whitespace-nowrap ${active && !single ? 'text-text-primary font-medium' : ''}`}
+        <div className="absolute left-0 top-full mt-2 bg-surface-card border border-border-key z-20 min-w-full w-max max-w-[min(20rem,calc(100vw-2rem))]">
+          <div
+            role="listbox"
+            className="max-h-72 overflow-auto overscroll-contain"
+          >
+            {items.map((it) => {
+              const active = selected.includes(it.value);
+              return (
+                <button
+                  key={String(it.value)}
+                  type="button"
+                  role="option"
+                  aria-selected={active}
+                  onClick={() => {
+                    onToggle(it.value);
+                    if (single) setOpen(false);
+                  }}
+                  className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-left transition-colors ${
+                    active && single
+                      ? "bg-surface-page text-text-primary font-medium"
+                      : "text-text-secondary hover:bg-surface-page hover:text-text-primary"
+                  }`}
                 >
-                  {it.label}
-                </span>
-                {it.count !== undefined && (
-                  <span className="text-xs tabular-nums text-text-muted">
-                    {it.count.toLocaleString()}
+                  {!single && (
+                    <span
+                      aria-hidden="true"
+                      className={`flex items-center justify-center w-4 h-4 border flex-shrink-0 transition-colors ${
+                        active
+                          ? "bg-brand-red border-brand-red"
+                          : "bg-surface-card border-border-key"
+                      }`}
+                    >
+                      {active && (
+                        <svg
+                          className="w-3 h-3 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={3}
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      )}
+                    </span>
+                  )}
+                  <span
+                    className={`flex-1 whitespace-nowrap ${active && !single ? "text-text-primary font-medium" : ""}`}
+                  >
+                    {it.label}
                   </span>
-                )}
-              </button>
-            )
-          })}
+                  {it.count !== undefined && (
+                    <span className="text-xs tabular-nums text-text-muted">
+                      {it.count.toLocaleString()}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
-  )
+  );
 }
