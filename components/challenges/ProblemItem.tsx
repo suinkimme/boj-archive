@@ -39,7 +39,7 @@ export function ProblemItem({
             done
               ? 'bg-brand-red'
               : tried
-                ? 'bg-text-muted'
+                ? 'bg-brand-dark'
                 : 'border border-border-key'
           }`}
         >
