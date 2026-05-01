@@ -215,15 +215,7 @@ export default function MePage() {
         {me && hasHandle && !isVerified && <LockedRecentSolved />}
         {me && isVerified && hasHandle && (isImporting || recentSolved.length > 0) && (
           <section className="mb-10">
-            <SectionHeading
-              side={
-                isImporting && totalSolved > 0
-                  ? `가져오는 중 ${importedDisplay.toLocaleString()} / ${totalSolved.toLocaleString()}`
-                  : null
-              }
-            >
-              최근 푼 문제
-            </SectionHeading>
+            <SectionHeading>최근 푼 문제</SectionHeading>
             {recentSolved.length > 0 ? (
               <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
                 {recentSolved.map((item) => (
@@ -435,22 +427,13 @@ function LockedRecentSolved() {
   )
 }
 
-function SectionHeading({
-  children,
-  side,
-}: {
-  children: React.ReactNode
-  side?: React.ReactNode
-}) {
+function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 mb-3 px-1">
       <div className="w-1 h-4 bg-brand-red flex-shrink-0" aria-hidden="true" />
       <h2 className="text-[15px] sm:text-[17px] font-bold tracking-tight text-text-primary m-0">
         {children}
       </h2>
-      {side && (
-        <span className="text-[12px] text-text-muted tabular-nums">{side}</span>
-      )}
     </div>
   )
 }
