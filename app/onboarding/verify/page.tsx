@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 
 import { useImportSync } from '@/components/import-sync/ImportSyncProvider'
+import { useAnimatedNumber } from '@/components/import-sync/useAnimatedNumber'
 import { AlertDialog } from '@/components/ui/AlertDialog'
 
 type VerifyState = {
@@ -90,8 +91,13 @@ export default function VerifyPage() {
   // 재발화되며 isImporting이 잠깐씩 다시 true로 튐 → 완료 후에도 confirm
   // dialog가 떠버리는 버그가 있었다. 안정 reference인 startSync만 의존.
   const startSync = importSync.startSync
+  // started=true인 시점부터 provider 값을 신뢰. useEffect 실행 전에는 직전
+  // 사이클 값(예: 100%)이 있을 수 있어 카드가 잠깐 가득 찬 채로 떴다가 0으로
+  // 떨어지는 깜빡임이 발생한다. 이 플래그로 첫 렌더에선 무시.
+  const [started, setStarted] = useState(false)
   useEffect(() => {
     if (!verified) return
+    setStarted(true)
     startSync()
   }, [verified, startSync])
 
@@ -260,40 +266,7 @@ export default function VerifyPage() {
               NEXT JUDGE의 모든 기능을 쓰실 수 있어요.
             </p>
 
-            {(() => {
-              const total = importSync.total
-              const imported = importSync.imported
-              const importDone =
-                total != null && imported != null && total > 0 && imported >= total
-              const pct =
-                total && total > 0 && imported != null
-                  ? Math.min(100, (imported / total) * 100)
-                  : 0
-              return (
-                <div className="mb-8 px-4 py-4 border border-border-list bg-surface-page text-left">
-                  <p className="text-[12px] font-bold uppercase tracking-wider text-text-secondary mb-2">
-                    {importDone ? '가져오기 완료' : '풀이 정보 가져오는 중'}
-                  </p>
-                  <p className="text-[14px] tabular-nums text-text-primary leading-[20px] h-[20px] m-0">
-                    {imported != null && total != null ? (
-                      <>
-                        <strong className="font-bold">{imported.toLocaleString()}</strong>
-                        <span className="text-text-muted"> / </span>
-                        {total.toLocaleString()}
-                      </>
-                    ) : (
-                      <span className="text-text-muted animate-pulse">계산 중...</span>
-                    )}
-                  </p>
-                  <div className="mt-3 h-1 bg-border-list overflow-hidden">
-                    <div
-                      className="h-full bg-brand-red transition-[width] duration-1000 ease-out"
-                      style={{ width: `${pct}%` }}
-                    />
-                  </div>
-                </div>
-              )
-            })()}
+            <ImportProgressCard started={started} />
 
             <button
               type="button"
@@ -468,6 +441,49 @@ export default function VerifyPage() {
           </details>
         </div>
       </main>
+    </div>
+  )
+}
+
+function ImportProgressCard({ started }: { started: boolean }) {
+  const importSync = useImportSync()
+  // started가 false면 직전 사이클의 stale 값을 무시하고 항상 "계산 중..."로.
+  const rawImported = started ? importSync.imported : null
+  const rawTotal = started ? importSync.total : null
+  // 50건 단위 jump를 rAF 보간으로 부드럽게 채움.
+  const animatedImported = useAnimatedNumber(rawImported, 1500)
+
+  const importDone =
+    rawTotal != null && rawImported != null && rawTotal > 0 && rawImported >= rawTotal
+  const pct =
+    rawTotal && rawTotal > 0 && animatedImported != null
+      ? Math.min(100, (animatedImported / rawTotal) * 100)
+      : 0
+
+  return (
+    <div className="mb-8 px-4 py-4 border border-border-list bg-surface-page text-left">
+      <p className="text-[12px] font-bold uppercase tracking-wider text-text-secondary mb-2">
+        {importDone ? '가져오기 완료' : '풀이 정보 가져오는 중'}
+      </p>
+      <p className="text-[14px] tabular-nums text-text-primary leading-[20px] h-[20px] m-0">
+        {animatedImported != null && rawTotal != null ? (
+          <>
+            <strong className="font-bold">
+              {Math.floor(animatedImported).toLocaleString()}
+            </strong>
+            <span className="text-text-muted"> / </span>
+            {rawTotal.toLocaleString()}
+          </>
+        ) : (
+          <span className="text-text-muted animate-pulse">계산 중...</span>
+        )}
+      </p>
+      <div className="mt-3 h-1 bg-border-list overflow-hidden">
+        <div
+          className="h-full bg-brand-red transition-[width] duration-300 ease-out"
+          style={{ width: `${pct}%` }}
+        />
+      </div>
     </div>
   )
 }
