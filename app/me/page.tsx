@@ -200,7 +200,8 @@ export default function MePage() {
         {me && hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
 
         {me && hasHandle && !isVerified && <LockedActivity />}
-        {me && hasHandle && isVerified && solvedAc && (
+        {me && hasHandle && isVerified && isImporting && <ActivityPlaceholder />}
+        {me && hasHandle && isVerified && !isImporting && solvedAc && (
           <section className="mb-10">
             <SectionHeading>활동 요약</SectionHeading>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
