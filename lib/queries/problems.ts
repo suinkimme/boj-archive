@@ -32,6 +32,7 @@ export interface ListedProblem {
   completedCount: number
   rate: number
   done: boolean
+  tried: boolean
 }
 
 export interface ProblemsListResult {
@@ -180,15 +181,22 @@ export async function fetchProblemsForList(
     }
   }
 
-  const visible: ListedProblem[] = rows.map((r) => ({
-    id: r.problemId,
-    title: r.titleKo,
-    level: r.level as Level,
-    tags: r.tags ?? [],
-    completedCount: r.acceptedUserCount ?? 0,
-    rate: deriveRate(r.averageTries),
-    done: Number(r.done) === 1,
-  }))
+  const visible: ListedProblem[] = rows.map((r) => {
+    const done = Number(r.done) === 1
+    // SENTINEL: 디자인 검토용 — 로컬 채점 시도 추적이 들어오기 전 임시.
+    // 1003 ("피보나치 수열")이 정답 아닐 때만 tried로 표시.
+    const triedSentinel = r.problemId === 1003 && !done
+    return {
+      id: r.problemId,
+      title: r.titleKo,
+      level: r.level as Level,
+      tags: r.tags ?? [],
+      completedCount: r.acceptedUserCount ?? 0,
+      rate: deriveRate(r.averageTries),
+      done,
+      tried: triedSentinel,
+    }
+  })
 
   return { visible, totalCount, totalPages, totalByLevel, page }
 }
