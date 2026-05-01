@@ -114,11 +114,11 @@ export async function fetchProblemsForList(
     const wantsUnsolved = statuses.includes('unsolved')
     if (wantsSolved && !wantsUnsolved) {
       conditions.push(
-        sql`exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = ${problems.problemId})`,
+        sql`exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id)`,
       )
     } else if (wantsUnsolved && !wantsSolved) {
       conditions.push(
-        sql`not exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = ${problems.problemId})`,
+        sql`not exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id)`,
       )
     }
   }
@@ -147,8 +147,10 @@ export async function fetchProblemsForList(
         averageTries: problems.averageTries,
         // exists가 'f'/'t' 문자열로 떨어지는 driver 동작에 의존하지 않도록
         // 명시적으로 0/1 정수로 캐스팅. r.done === 1 비교로 확정 변환.
+        // problems.problem_id는 drizzle 인터폴레이션이 prefix를 빠뜨려
+        // subquery 안에서 모호해지는 문제가 있어 raw로 표 접두 명시.
         done: userId
-          ? sql<number>`(case when exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = ${problems.problemId}) then 1 else 0 end)`
+          ? sql<number>`(case when exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id) then 1 else 0 end)`
           : sql<number>`0`,
       })
       .from(problems)
