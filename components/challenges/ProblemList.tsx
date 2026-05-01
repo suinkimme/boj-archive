@@ -9,6 +9,7 @@ export interface Problem {
   completedCount: number
   rate: number
   done: boolean
+  tried: boolean
 }
 
 interface ProblemListProps {
@@ -36,6 +37,7 @@ export function ProblemList({ problems }: ProblemListProps) {
           completedCount={p.completedCount}
           rate={p.rate}
           done={p.done}
+          tried={p.tried}
         />
       ))}
     </ul>

@@ -12,6 +12,7 @@ interface ProblemItemProps {
   completedCount: number
   rate: number
   done: boolean
+  tried: boolean
 }
 
 export function ProblemItem({
@@ -22,6 +23,7 @@ export function ProblemItem({
   completedCount,
   rate,
   done,
+  tried,
 }: ProblemItemProps) {
   const showPending = usePendingFeature()
   return (
@@ -32,9 +34,13 @@ export function ProblemItem({
         className="w-full text-left group flex items-center gap-3 px-6 sm:px-3 py-4 hover:bg-surface-page transition-colors"
       >
         <span
-          aria-label={done ? '완료' : '미완료'}
+          aria-label={done ? '완료' : tried ? '시도함' : '미완료'}
           className={`flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 ${
-            done ? 'bg-brand-red' : 'border border-border-key'
+            done
+              ? 'bg-brand-red'
+              : tried
+                ? 'bg-brand-dark'
+                : 'border border-border-key'
           }`}
         >
           {done && (
@@ -47,6 +53,18 @@ export function ProblemItem({
               aria-hidden="true"
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          )}
+          {!done && tried && (
+            <svg
+              className="w-2.5 h-2.5 text-white"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={3}
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           )}
         </span>
