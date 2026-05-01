@@ -108,20 +108,25 @@ export async function fetchProblemsForList(
   if (levels.length > 0) conditions.push(inArray(problems.level, levels))
   if (tagFilter.length > 0) conditions.push(arrayOverlaps(problems.tags, tagFilter))
 
-  // Status filter only meaningful for authed users; 'tried' has no schema
-  // backing yet (we only track solved), so it falls through.
+  // 인증된 사용자에 한해 의미 있음. "풀었던 문제"(tried)는 실패한 시도와
+  // 성공한 시도의 합집합이지만 실패 추적 데이터가 아직 없어 현재는 solved와
+  // 동등하게 매핑. 실패 시도 테이블이 도입되면 OR로 확장.
   if (userId && statuses.length > 0) {
+    const wantsTried = statuses.includes('tried')
     const wantsSolved = statuses.includes('solved')
     const wantsUnsolved = statuses.includes('unsolved')
-    if (wantsSolved && !wantsUnsolved) {
+    const showsAttempted = wantsTried || wantsSolved
+
+    if (showsAttempted && !wantsUnsolved) {
       conditions.push(
         sql`exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id)`,
       )
-    } else if (wantsUnsolved && !wantsSolved) {
+    } else if (wantsUnsolved && !showsAttempted) {
       conditions.push(
         sql`not exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id)`,
       )
     }
+    // 그 외(둘 다 선택 / 아무것도 선택 안 됨)는 필터 적용 안 함.
   }
 
   const whereClause = conditions.length > 0 ? and(...conditions) : undefined
