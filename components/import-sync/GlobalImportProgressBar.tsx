@@ -1,15 +1,10 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
-
 import { useImportSync } from './ImportSyncProvider'
 
 export function GlobalImportProgressBar() {
-  const pathname = usePathname()
   const { isImporting, imported, total } = useImportSync()
   if (!isImporting) return null
-  // verify 페이지는 자체 카드에서 진행률을 더 풍부하게 보여주므로 숨김.
-  if (pathname?.startsWith('/onboarding/verify')) return null
 
   const pct =
     total && total > 0 && imported != null
