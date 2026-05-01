@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 
 import { TierBadge } from '@/components/auth/TierBadge'
 import { TopNav } from '@/components/challenges/TopNav'
+import { useImportSync } from '@/components/import-sync/ImportSyncProvider'
 import { AlertDialog } from '@/components/ui/AlertDialog'
 import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 import type { SolvedAcProblem, SolvedAcUser } from '@/lib/solvedac/types'
@@ -23,19 +24,15 @@ type MeData = {
   importedCount: number
 }
 
-const SYNC_PAGE_SIZE = 50
-
 export default function MePage() {
   const router = useRouter()
   const { data: session, status } = useSession()
   const showPending = usePendingFeature()
+  const importSync = useImportSync()
 
   const [me, setMe] = useState<MeData | null>(null)
   const [disconnectOpen, setDisconnectOpen] = useState(false)
   const [disconnecting, setDisconnecting] = useState(false)
-  // syncRequested: 사용자가 "업데이트" 버튼을 눌렀을 때만 true. 이 상태일
-  // 때 폴링 효과가 importedCount < solvedCount면 sync를 진행한다.
-  const [syncRequested, setSyncRequested] = useState(false)
 
   useEffect(() => {
     if (status !== 'authenticated') return
@@ -51,74 +48,32 @@ export default function MePage() {
     }
   }, [status])
 
-  // 폴링은 사용자가 "업데이트"를 눌러 syncRequested=true가 된 상태에서만
-  // 굴린다. 첫 가져오기는 /onboarding/verify가 끝낸 직후에 거기서 처리.
+  // 글로벌 sync provider가 importedCount를 갱신할 때마다 me도 새로고침.
   useEffect(() => {
-    if (!me?.user.bojHandle || !me.solvedAc) return
-    if (!me.user.bojHandleVerifiedAt) return
-
-    if (me.importedCount >= me.solvedAc.solvedCount) {
-      // 다 따라잡았다 — 진행 중이던 sync 요청 플래그도 정리.
-      if (syncRequested) setSyncRequested(false)
-      return
-    }
-
-    if (!syncRequested) return
-
+    if (status !== 'authenticated') return
+    if (importSync.isImporting) return
+    if (importSync.imported == null) return
     let cancelled = false
-    const fromPage = Math.max(
-      1,
-      Math.floor(me.importedCount / SYNC_PAGE_SIZE) + 1,
-    )
-
     void (async () => {
-      try {
-        const syncRes = await fetch('/api/solvedac/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ fromPage }),
-        })
-        if (cancelled || !syncRes.ok) return
-        await syncRes.json()
-        const meRes = await fetch('/api/me')
-        if (cancelled || !meRes.ok) return
-        const data = (await meRes.json()) as MeData
-        if (cancelled) return
-        setMe(data)
-      } catch {
-        // ignore — next render will retry
-      }
+      const res = await fetch('/api/me')
+      if (!res.ok || cancelled) return
+      const data = (await res.json()) as MeData
+      setMe(data)
     })()
-
     return () => {
       cancelled = true
     }
-  }, [
-    me?.user.bojHandle,
-    me?.user.bojHandleVerifiedAt,
-    me?.importedCount,
-    me?.solvedAc?.solvedCount,
-    syncRequested,
-  ])
+  }, [importSync.isImporting, importSync.imported, status])
 
+  // "풀이 정보 업데이트" 버튼 — 스냅샷 무효화 후 글로벌 sync 트리거.
   const handleSync = async () => {
-    if (syncRequested) return
-    setSyncRequested(true)
+    if (importSync.isImporting) return
     try {
       await fetch('/api/solvedac/refresh', { method: 'POST' })
     } catch {
-      // ignore — /api/me 호출은 어쨌든 시도
+      // ignore — startSync 안에서 /api/me 다시 호출함
     }
-    try {
-      const res = await fetch('/api/me')
-      if (!res.ok) return
-      const data = (await res.json()) as MeData
-      setMe(data)
-      // 새로 받은 solvedCount > importedCount면 위 폴링 effect가 이어 받음.
-      // 새로운 풀이가 없으면 effect가 즉시 syncRequested를 false로 돌림.
-    } catch {
-      // ignore
-    }
+    importSync.startSync()
   }
 
   const disconnect = async () => {
@@ -182,12 +137,11 @@ export default function MePage() {
   const recentSolved = me?.recentSolved ?? []
   const totalSolved = solvedAc?.solvedCount ?? 0
   const importedDisplay = Math.min(totalSolved, me?.importedCount ?? 0)
+  // 글로벌 폴링 상태를 우선 신뢰. provider 비활성 상태에서도 데이터가
+  // 부족하면 진행률 카드를 노출(예: 사용자가 직전에 페이지를 떠난 경우).
   const isImporting =
-    !!me &&
-    hasHandle &&
-    isVerified &&
-    !!solvedAc &&
-    importedDisplay < totalSolved
+    importSync.isImporting ||
+    (!!me && hasHandle && isVerified && !!solvedAc && importedDisplay < totalSolved)
 
   return (
     <div className="min-h-screen bg-surface-card">
@@ -327,13 +281,11 @@ export default function MePage() {
               <button
                 type="button"
                 onClick={() => void handleSync()}
-                disabled={syncRequested || isImporting}
+                disabled={isImporting}
                 className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-surface-card"
               >
                 <span className="text-[14px] font-medium text-text-primary">
-                  {syncRequested || isImporting
-                    ? '풀이 정보 업데이트 중...'
-                    : '풀이 정보 업데이트'}
+                  {isImporting ? '풀이 정보 업데이트 중...' : '풀이 정보 업데이트'}
                 </span>
                 <span className="text-text-muted">→</span>
               </button>
