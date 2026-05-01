@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation'
 
 import { useImportSync } from './ImportSyncProvider'
 
-// 폴링 종료(=isImporting false) 후에도 사용자에게 채움이 인지될 시간 동안
-// 바만 따로 유지. 스켈레톤/버튼 disabled는 isImporting과 함께 즉시 풀림.
-const BAR_LINGER_MS = 3500
+// 바가 시각적으로 100%에 도달한 시점부터 더 보여줄 시간. provider가 이미
+// CSS transition 시간(~2s)을 잡아두므로 이 값은 "100%에서 머무는 시간"만 의미.
+const BAR_LINGER_MS = 1500
 
 export function GlobalImportProgressBar() {
   const pathname = usePathname()
