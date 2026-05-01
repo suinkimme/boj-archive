@@ -10,12 +10,15 @@ import { ProblemList } from '@/components/challenges/ProblemList'
 import { SearchInput } from '@/components/challenges/SearchInput'
 import { ALL_TAGS } from '@/components/challenges/tags.generated'
 import { TopNav } from '@/components/challenges/TopNav'
-import type { Level, Order, Status } from '@/components/challenges/types'
+import {
+  ALL_LEVELS,
+  DEFAULT_ORDER,
+  type Level,
+  type Order,
+  type Status,
+} from '@/components/challenges/types'
 import { Badge } from '@/components/ui/Badge'
 import type { ListedProblem } from '@/lib/queries/problems'
-
-const ALL_LEVELS: Level[] = [0, 1, 2, 3, 4, 5]
-const DEFAULT_ORDER: Order = 'recent'
 
 const ORDER_ITEMS = [
   { value: 'recent' as const, label: '최신순' },
