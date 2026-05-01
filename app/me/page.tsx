@@ -33,6 +33,9 @@ export default function MePage() {
   const [me, setMe] = useState<MeData | null>(null)
   const [disconnectOpen, setDisconnectOpen] = useState(false)
   const [disconnecting, setDisconnecting] = useState(false)
+  // syncRequested: 사용자가 "업데이트" 버튼을 눌렀을 때만 true. 이 상태일
+  // 때 폴링 효과가 importedCount < solvedCount면 sync를 진행한다.
+  const [syncRequested, setSyncRequested] = useState(false)
 
   useEffect(() => {
     if (status !== 'authenticated') return
@@ -48,15 +51,22 @@ export default function MePage() {
     }
   }, [status])
 
-  // Drive the import one chunk per effect cycle. Each chunk:
-  //   1. POST /api/solvedac/sync (1 page)
-  //   2. GET /api/me to refresh recentSolved + importedCount
-  // Updating me re-triggers this effect with the new importedCount,
-  // which kicks off the next chunk until importedCount === solvedCount.
+  // 폴링은 두 경우에만 굴린다:
+  //   1) 최초 가져오기 (importedCount === 0)
+  //   2) 사용자가 "업데이트"를 눌러 syncRequested=true가 된 상태
+  // 그 외에는 단순 /me 진입에서 외부 요청을 만들지 않는다.
   useEffect(() => {
     if (!me?.user.bojHandle || !me.solvedAc) return
     if (!me.user.bojHandleVerifiedAt) return
-    if (me.importedCount >= me.solvedAc.solvedCount) return
+
+    if (me.importedCount >= me.solvedAc.solvedCount) {
+      // 다 따라잡았다 — 진행 중이던 sync 요청 플래그도 정리.
+      if (syncRequested) setSyncRequested(false)
+      return
+    }
+
+    const isInitial = me.importedCount === 0
+    if (!isInitial && !syncRequested) return
 
     let cancelled = false
     const fromPage = Math.max(
@@ -91,7 +101,28 @@ export default function MePage() {
     me?.user.bojHandleVerifiedAt,
     me?.importedCount,
     me?.solvedAc?.solvedCount,
+    syncRequested,
   ])
+
+  const handleSync = async () => {
+    if (syncRequested) return
+    setSyncRequested(true)
+    try {
+      await fetch('/api/solvedac/refresh', { method: 'POST' })
+    } catch {
+      // ignore — /api/me 호출은 어쨌든 시도
+    }
+    try {
+      const res = await fetch('/api/me')
+      if (!res.ok) return
+      const data = (await res.json()) as MeData
+      setMe(data)
+      // 새로 받은 solvedCount > importedCount면 위 폴링 effect가 이어 받음.
+      // 새로운 풀이가 없으면 effect가 즉시 syncRequested를 false로 돌림.
+    } catch {
+      // ignore
+    }
+  }
 
   const disconnect = async () => {
     if (disconnecting) return
@@ -175,6 +206,7 @@ export default function MePage() {
                 width={80}
                 height={80}
                 className="w-full h-full object-cover"
+                priority
                 unoptimized
               />
             ) : (
@@ -294,6 +326,21 @@ export default function MePage() {
         <section>
           <SectionHeading>내 정보</SectionHeading>
           <div className="border border-border-list bg-surface-card divide-y divide-border-list">
+            {hasHandle && isVerified && (
+              <button
+                type="button"
+                onClick={() => void handleSync()}
+                disabled={syncRequested || isImporting}
+                className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-surface-card"
+              >
+                <span className="text-[14px] font-medium text-text-primary">
+                  {syncRequested || isImporting
+                    ? '풀이 정보 업데이트 중...'
+                    : '풀이 정보 업데이트'}
+                </span>
+                <span className="text-text-muted">→</span>
+              </button>
+            )}
             <button
               type="button"
               onClick={() => router.push('/onboarding')}
