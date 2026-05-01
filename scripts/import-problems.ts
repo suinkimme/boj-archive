@@ -113,19 +113,19 @@ async function main() {
       continue
     }
 
-    if (
-      typeof parsed.title !== 'string' ||
-      typeof parsed.level !== 'number' ||
-      !Array.isArray(parsed.tags)
-    ) {
+    if (typeof parsed.title !== 'string' || !Array.isArray(parsed.tags)) {
       invalid++
       continue
     }
 
+    // solved.ac uses 0 to mean "Unrated"; map untiered (null) problems
+    // to that bucket so they're queryable rather than dropped.
+    const level = typeof parsed.level === 'number' ? parsed.level : 0
+
     buffer.push({
       problemId,
       titleKo: parsed.title,
-      level: parsed.level,
+      level,
       acceptedUserCount: parsed.accepted_user_count ?? null,
       averageTries: parsed.average_tries ?? null,
       description: parsed.description ?? '',
