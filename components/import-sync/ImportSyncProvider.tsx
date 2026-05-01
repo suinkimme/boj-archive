@@ -100,9 +100,16 @@ export function ImportSyncProvider({ children }: { children: ReactNode }) {
         }
       }
       runningRef.current = false
-      // 폴링이 끝나면 즉시 active=false. 바의 linger는 BAR 컴포넌트 자체에서
-      // 처리 — 스켈레톤/버튼 disabled는 사용자 의도대로 즉시 해제됨.
-      if (!cancelRef.current) setActive(false)
+      if (cancelRef.current) {
+        setActive(false)
+        return
+      }
+      // 폴링은 끝났지만 바가 시각적으로 100%에 도달할 때까지(CSS transition
+      // duration) isImporting을 유지. 이래야 사용자 시야에서 "바가 100% 됐다 →
+      // 그제야 스켈레톤/disabled 해제"가 자연스럽게 이어짐.
+      setTimeout(() => {
+        if (!cancelRef.current) setActive(false)
+      }, 2000)
     })()
   }, [])
 
