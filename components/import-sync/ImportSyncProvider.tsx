@@ -11,6 +11,10 @@ import {
 } from 'react'
 
 const SYNC_PAGE_SIZE = 50
+// 폴링이 끝난 뒤에도 isImporting을 일정 시간 유지 — 바가 100%까지 차오르는
+// CSS transition(2s) + 그 후 사용자가 인지할 시간(1.5s). 이 기간에는
+// 스켈레톤/버튼 disabled도 함께 유지되어 모든 표시가 같은 시점에 풀린다.
+const LINGER_AFTER_DONE_MS = 3500
 
 interface StartSyncOptions {
   /** true면 첫 폴링 직전에 solved.ac 스냅샷을 강제 무효화한다. */
@@ -40,9 +44,13 @@ export function useImportSync(): ImportSyncValue {
 export function ImportSyncProvider({ children }: { children: ReactNode }) {
   const [imported, setImported] = useState<number | null>(null)
   const [total, setTotal] = useState<number | null>(null)
+  // active = "사용자에게 진행 중으로 보여야 하는 상태". 실제 폴링 종료 후에도
+  // LINGER_AFTER_DONE_MS 동안 true 유지. polling은 내부 추적용.
   const [active, setActive] = useState(false)
+  const [polling, setPolling] = useState(false)
   const cancelRef = useRef(false)
   const runningRef = useRef(false)
+  const lingerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const startSync = useCallback((options?: StartSyncOptions) => {
     if (runningRef.current) return
@@ -53,6 +61,12 @@ export function ImportSyncProvider({ children }: { children: ReactNode }) {
     setImported(null)
     setTotal(null)
     setActive(true)
+    setPolling(true)
+    // 이전 사이클의 linger 타이머가 살아있을 수 있으니 정리.
+    if (lingerTimerRef.current) {
+      clearTimeout(lingerTimerRef.current)
+      lingerTimerRef.current = null
+    }
 
     void (async () => {
       // 호출자가 요청하면 폴링 직전에 스냅샷 무효화. 이전엔 호출자가 await
@@ -100,13 +114,25 @@ export function ImportSyncProvider({ children }: { children: ReactNode }) {
         }
       }
       runningRef.current = false
-      if (!cancelRef.current) setActive(false)
+      if (cancelRef.current) {
+        setActive(false)
+        setPolling(false)
+        return
+      }
+      // 실제 폴링은 끝났지만 active는 linger 끝까지 유지 — 바/스켈레톤/
+      // 버튼 disabled가 한 시점에 같이 풀리도록.
+      setPolling(false)
+      lingerTimerRef.current = setTimeout(() => {
+        lingerTimerRef.current = null
+        setActive(false)
+      }, LINGER_AFTER_DONE_MS)
     })()
   }, [])
 
   useEffect(
     () => () => {
       cancelRef.current = true
+      if (lingerTimerRef.current) clearTimeout(lingerTimerRef.current)
     },
     [],
   )
