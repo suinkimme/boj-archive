@@ -15,6 +15,7 @@ interface ProblemItemProps {
 }
 
 export function ProblemItem({
+  id,
   title,
   level,
   tags,
@@ -55,6 +56,10 @@ export function ProblemItem({
             {title}
           </h3>
           <p className="text-xs text-text-muted leading-normal m-0">
+            <span className="text-text-secondary tabular-nums font-medium">{id}번</span>
+            <span className="mx-2 text-border-key" aria-hidden="true">
+              ·
+            </span>
             <span className={`font-medium ${getLevelColor(level)}`}>{getLevelLabel(level)}</span>
             <span className="mx-2 text-border-key" aria-hidden="true">
               ·
