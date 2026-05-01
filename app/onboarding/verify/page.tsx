@@ -480,7 +480,7 @@ function ImportProgressCard({ started }: { started: boolean }) {
       </p>
       <div className="mt-3 h-1 bg-border-list overflow-hidden">
         <div
-          className="h-full bg-brand-red transition-[width] duration-300 ease-out"
+          className="h-full bg-brand-red"
           style={{ width: `${pct}%` }}
         />
       </div>
