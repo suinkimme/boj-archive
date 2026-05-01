@@ -86,10 +86,14 @@ export default function VerifyPage() {
 
   // 검증 성공 시점에 글로벌 import 폴링 시작. 이후 페이지를 떠나도
   // ImportSyncProvider가 layout 레벨이라 폴링이 끊기지 않는다.
+  // importSync 객체 전체를 dep에 넣으면 매 렌더마다 새 reference라 effect가
+  // 재발화되며 isImporting이 잠깐씩 다시 true로 튐 → 완료 후에도 confirm
+  // dialog가 떠버리는 버그가 있었다. 안정 reference인 startSync만 의존.
+  const startSync = importSync.startSync
   useEffect(() => {
     if (!verified) return
-    importSync.startSync()
-  }, [verified, importSync])
+    startSync()
+  }, [verified, startSync])
 
   // 가져오기 진행 중 브라우저 닫기/새로고침 경고.
   useEffect(() => {
@@ -235,9 +239,9 @@ export default function VerifyPage() {
         </header>
         <main className="flex-1 flex items-center justify-center px-6 sm:px-10 pb-12">
           <div className="w-full max-w-[440px] text-center">
-            <div className="w-16 h-16 mx-auto mb-6 bg-status-success-bg flex items-center justify-center">
+            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-brand-red ring-8 ring-brand-red/10 flex items-center justify-center">
               <svg
-                className="w-8 h-8 text-status-success"
+                className="w-8 h-8 text-white"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={2.5}
@@ -283,7 +287,7 @@ export default function VerifyPage() {
                   </p>
                   <div className="mt-3 h-1 bg-border-list overflow-hidden">
                     <div
-                      className="h-full bg-brand-red transition-[width] duration-500"
+                      className="h-full bg-brand-red transition-[width] duration-1000 ease-out"
                       style={{ width: `${pct}%` }}
                     />
                   </div>

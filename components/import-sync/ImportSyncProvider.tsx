@@ -43,6 +43,10 @@ export function ImportSyncProvider({ children }: { children: ReactNode }) {
     if (runningRef.current) return
     runningRef.current = true
     cancelRef.current = false
+    // 새 사이클을 시작할 때마다 진행률을 비워 첫 fetch 응답이 올 때까지
+    // "계산 중..." 상태를 보여준다. 안 비우면 직전 사이클의 100%가 잠깐 노출됨.
+    setImported(null)
+    setTotal(null)
     setActive(true)
 
     void (async () => {
