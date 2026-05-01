@@ -95,8 +95,13 @@ export const solvedAcSnapshots = pgTable('solved_ac_snapshots', {
   fetchedAt: timestamp('fetched_at', { mode: 'date' }).notNull().defaultNow(),
 })
 
-// Global problem catalog. Populated lazily as we import users' solved
-// problems; rows are upserted with the latest metadata seen.
+// Global problem catalog. Two ingestion paths upsert into this table:
+//   1. solved.ac lazy import — fills metadata (title, level, counts) when a
+//      user's solve history references a problem we haven't seen yet.
+//   2. scripts/import-problems.ts — bulk-loads canonical body content
+//      (description, samples, tags, limits) from problems/<id>/problem.json.
+// Body columns are nullable because lazy-imported rows may exist before
+// canonical content has been ingested.
 export const problems = pgTable('problems', {
   problemId: integer('problem_id').primaryKey(),
   titleKo: text('title_ko').notNull(),
@@ -105,6 +110,17 @@ export const problems = pgTable('problems', {
   averageTries: real('average_tries'),
   raw: jsonb('raw'),
   fetchedAt: timestamp('fetched_at', { mode: 'date' }).notNull().defaultNow(),
+  // Body content (from problem.json)
+  description: text('description'),
+  inputFormat: text('input_format'),
+  outputFormat: text('output_format'),
+  samples: jsonb('samples').$type<{ input: string; output: string }[]>(),
+  hint: text('hint'),
+  source: text('source'),
+  tags: text('tags').array(),
+  timeLimit: text('time_limit'),
+  memoryLimit: text('memory_limit'),
+  submissionCount: integer('submission_count'),
 })
 
 // Cross-instance rate-limit log. One row per outbound solved.ac
