@@ -145,9 +145,11 @@ export async function fetchProblemsForList(
         tags: problems.tags,
         acceptedUserCount: problems.acceptedUserCount,
         averageTries: problems.averageTries,
+        // exists가 'f'/'t' 문자열로 떨어지는 driver 동작에 의존하지 않도록
+        // 명시적으로 0/1 정수로 캐스팅. r.done === 1 비교로 확정 변환.
         done: userId
-          ? sql<boolean>`exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = ${problems.problemId})`
-          : sql<boolean>`false`,
+          ? sql<number>`(case when exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = ${problems.problemId}) then 1 else 0 end)`
+          : sql<number>`0`,
       })
       .from(problems)
       .where(whereClause)
@@ -183,7 +185,7 @@ export async function fetchProblemsForList(
     tags: r.tags ?? [],
     completedCount: r.acceptedUserCount ?? 0,
     rate: deriveRate(r.averageTries),
-    done: Boolean(r.done),
+    done: Number(r.done) === 1,
   }))
 
   return { visible, totalCount, totalPages, totalByLevel, page }
