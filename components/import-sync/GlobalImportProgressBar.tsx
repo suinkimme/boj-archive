@@ -5,15 +5,14 @@ import { usePathname } from 'next/navigation'
 
 import { useImportSync } from './ImportSyncProvider'
 
-// 100%까지 차오르는 transition(2s) + 그 후 사용자가 인지할 시간(1.5s).
-const LINGER_AFTER_DONE_MS = 3500
+// 바가 시각적으로 100%에 도달한 시점부터 더 보여줄 시간. provider가 이미
+// CSS transition 시간(~2s)을 잡아두므로 이 값은 "100%에서 머무는 시간"만 의미.
+const BAR_LINGER_MS = 1500
 
 export function GlobalImportProgressBar() {
   const pathname = usePathname()
   const { isImporting, imported, total } = useImportSync()
 
-  // isImporting이 true→false로 빠르게 떨어지더라도 사용자가 채움을 인지할
-  // 시간(LINGER_AFTER_DONE_MS) 동안은 100%인 채로 노출 후 숨김.
   const [visible, setVisible] = useState(false)
   useEffect(() => {
     if (isImporting) {
@@ -21,7 +20,7 @@ export function GlobalImportProgressBar() {
       return
     }
     if (!visible) return
-    const t = setTimeout(() => setVisible(false), LINGER_AFTER_DONE_MS)
+    const t = setTimeout(() => setVisible(false), BAR_LINGER_MS)
     return () => clearTimeout(t)
   }, [isImporting, visible])
 
@@ -29,10 +28,10 @@ export function GlobalImportProgressBar() {
   // verify 페이지는 자체 in-page 카드에서 진행률을 노출하므로 숨김.
   if (pathname?.startsWith('/onboarding/verify')) return null
 
-  const pct =
-    total && total > 0 && imported != null
-      ? Math.min(100, (imported / total) * 100)
-      : 0
+  const dataReady = total != null && imported != null && total > 0
+  const pct = dataReady
+    ? Math.min(100, ((imported as number) / (total as number)) * 100)
+    : 0
 
   return (
     <div
@@ -43,10 +42,16 @@ export function GlobalImportProgressBar() {
       aria-valuenow={Math.round(pct)}
       className="fixed top-0 left-0 right-0 h-[3px] z-50 pointer-events-none"
     >
-      <div
-        className="h-full bg-brand-red transition-[width] duration-[2000ms] ease-linear"
-        style={{ width: `${pct}%` }}
-      />
+      {/* 첫 fetch 응답 전엔 indeterminate pulse로 사용자에게 즉시 피드백.
+          데이터 도착 후엔 실제 % width로 전환되며 CSS transition이 채움. */}
+      {dataReady ? (
+        <div
+          className="h-full bg-brand-red transition-[width] duration-[2000ms] ease-linear"
+          style={{ width: `${pct}%` }}
+        />
+      ) : (
+        <div className="h-full w-full bg-brand-red animate-pulse" />
+      )}
     </div>
   )
 }
