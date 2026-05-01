@@ -66,15 +66,11 @@ export default function MePage() {
     }
   }, [importSync.isImporting, importSync.imported, status])
 
-  // "풀이 정보 업데이트" 버튼 — 스냅샷 무효화 후 글로벌 sync 트리거.
-  const handleSync = async () => {
+  // "풀이 정보 업데이트" 버튼 — startSync 안에서 스냅샷 무효화도 묶어
+  // 처리하므로 await가 끝날 때까지 바를 못 띄우는 지연 없이 즉시 노출.
+  const handleSync = () => {
     if (importSync.isImporting) return
-    try {
-      await fetch('/api/solvedac/refresh', { method: 'POST' })
-    } catch {
-      // ignore — startSync 안에서 /api/me 다시 호출함
-    }
-    importSync.startSync()
+    importSync.startSync({ refreshSnapshot: true })
   }
 
   const disconnect = async () => {

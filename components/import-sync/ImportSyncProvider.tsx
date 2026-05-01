@@ -12,6 +12,11 @@ import {
 
 const SYNC_PAGE_SIZE = 50
 
+interface StartSyncOptions {
+  /** true면 첫 폴링 직전에 solved.ac 스냅샷을 강제 무효화한다. */
+  refreshSnapshot?: boolean
+}
+
 interface ImportSyncValue {
   // 폴링이 한 사이클이라도 돌고 있으면 true. 마지막 사이클이 끝나도
   // imported/total은 마지막 값으로 유지 — 진행률 카드/바가 깜빡이지 않음.
@@ -19,7 +24,7 @@ interface ImportSyncValue {
   imported: number | null
   total: number | null
   /** 새 사이클 시작. 이미 동작 중이면 무시. */
-  startSync: () => void
+  startSync: (options?: StartSyncOptions) => void
 }
 
 const Context = createContext<ImportSyncValue | null>(null)
@@ -39,7 +44,7 @@ export function ImportSyncProvider({ children }: { children: ReactNode }) {
   const cancelRef = useRef(false)
   const runningRef = useRef(false)
 
-  const startSync = useCallback(() => {
+  const startSync = useCallback((options?: StartSyncOptions) => {
     if (runningRef.current) return
     runningRef.current = true
     cancelRef.current = false
@@ -50,6 +55,16 @@ export function ImportSyncProvider({ children }: { children: ReactNode }) {
     setActive(true)
 
     void (async () => {
+      // 호출자가 요청하면 폴링 직전에 스냅샷 무효화. 이전엔 호출자가 await
+      // 한 뒤 startSync를 불러서 바가 1~2초 늦게 떴음.
+      if (options?.refreshSnapshot) {
+        try {
+          await fetch('/api/solvedac/refresh', { method: 'POST' })
+        } catch {
+          // 실패해도 폴링은 계속 — 다음 /api/me가 어쨌든 호출됨
+        }
+      }
+
       while (!cancelRef.current) {
         let curImported = 0
         let curTotal = 0
