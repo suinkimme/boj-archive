@@ -25,6 +25,13 @@ export default function VerifyPage() {
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
   const [now, setNow] = useState(() => Date.now())
+  // 검증 성공 직후 본 페이지에서 첫 가져오기를 끝낸다. /me 진입 시점엔
+  // 다시 자동 폴링이 일어나지 않으므로 사용자에게 진행률을 직접 보여줌.
+  const [importProgress, setImportProgress] = useState<{
+    imported: number
+    total: number
+  } | null>(null)
+  const [importDone, setImportDone] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -78,6 +85,54 @@ export default function VerifyPage() {
     const id = setInterval(() => setNow(Date.now()), 1000)
     return () => clearInterval(id)
   }, [])
+
+  // 검증 성공 직후 첫 가져오기를 1페이지(50건)씩 폴링.
+  useEffect(() => {
+    if (!verified) return
+    let cancelled = false
+
+    void (async () => {
+      while (!cancelled) {
+        let total = 0
+        let imported = 0
+        try {
+          const meRes = await fetch('/api/me')
+          if (cancelled || !meRes.ok) return
+          const me = (await meRes.json()) as {
+            solvedAc: { solvedCount: number } | null
+            importedCount: number
+          }
+          total = me.solvedAc?.solvedCount ?? 0
+          imported = me.importedCount
+        } catch {
+          return
+        }
+
+        setImportProgress({ imported, total })
+        if (total > 0 && imported >= total) {
+          setImportDone(true)
+          return
+        }
+
+        const fromPage = Math.max(1, Math.floor(imported / 50) + 1)
+        try {
+          const syncRes = await fetch('/api/solvedac/sync', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fromPage }),
+          })
+          if (cancelled || !syncRes.ok) return
+          await syncRes.json()
+        } catch {
+          return
+        }
+      }
+    })()
+
+    return () => {
+      cancelled = true
+    }
+  }, [verified])
 
   const remaining = useMemo(
     () => (state ? Math.max(0, Math.floor((state.expiresAt - now) / 1000)) : 0),
@@ -228,11 +283,37 @@ export default function VerifyPage() {
             <h1 className="text-[26px] sm:text-[28px] font-extrabold text-text-primary leading-tight mb-3">
               확인됐어요!
             </h1>
-            <p className="text-[14px] text-text-secondary leading-relaxed mb-10">
+            <p className="text-[14px] text-text-secondary leading-relaxed mb-8">
               이제 <strong className="text-text-primary">@{state.bojHandle}</strong> 님으로
               <br />
               NEXT JUDGE의 모든 기능을 쓰실 수 있어요.
             </p>
+
+            {importProgress && (
+              <div className="mb-8 px-4 py-4 border border-border-list bg-surface-page text-left">
+                <p className="text-[12px] font-bold uppercase tracking-wider text-text-secondary mb-2">
+                  {importDone ? '가져오기 완료' : '풀이 정보 가져오는 중'}
+                </p>
+                <p className="text-[14px] tabular-nums text-text-primary">
+                  <strong className="font-bold">
+                    {importProgress.imported.toLocaleString()}
+                  </strong>
+                  <span className="text-text-muted"> / </span>
+                  {importProgress.total.toLocaleString()}
+                </p>
+                {!importDone && importProgress.total > 0 && (
+                  <div className="mt-3 h-1 bg-border-list overflow-hidden">
+                    <div
+                      className="h-full bg-brand-red transition-[width] duration-500"
+                      style={{
+                        width: `${Math.min(100, (importProgress.imported / importProgress.total) * 100)}%`,
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+            )}
+
             <button
               type="button"
               onClick={() => router.push('/me')}
@@ -242,6 +323,14 @@ export default function VerifyPage() {
             </button>
             <p className="mt-6 text-[12px] text-text-muted">
               아까 붙여두셨던 코드는 이제 지우셔도 돼요.
+              {!importDone && importProgress && (
+                <>
+                  <br />
+                  지금 이동하셔도 괜찮아요. 나머지는 내 정보 페이지의
+                  <br />
+                  업데이트 버튼으로 마저 받아오실 수 있어요.
+                </>
+              )}
             </p>
           </div>
         </main>

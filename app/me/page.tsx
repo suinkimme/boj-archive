@@ -51,10 +51,8 @@ export default function MePage() {
     }
   }, [status])
 
-  // 폴링은 두 경우에만 굴린다:
-  //   1) 최초 가져오기 (importedCount === 0)
-  //   2) 사용자가 "업데이트"를 눌러 syncRequested=true가 된 상태
-  // 그 외에는 단순 /me 진입에서 외부 요청을 만들지 않는다.
+  // 폴링은 사용자가 "업데이트"를 눌러 syncRequested=true가 된 상태에서만
+  // 굴린다. 첫 가져오기는 /onboarding/verify가 끝낸 직후에 거기서 처리.
   useEffect(() => {
     if (!me?.user.bojHandle || !me.solvedAc) return
     if (!me.user.bojHandleVerifiedAt) return
@@ -65,8 +63,7 @@ export default function MePage() {
       return
     }
 
-    const isInitial = me.importedCount === 0
-    if (!isInitial && !syncRequested) return
+    if (!syncRequested) return
 
     let cancelled = false
     const fromPage = Math.max(
