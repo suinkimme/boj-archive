@@ -289,30 +289,35 @@ export default function VerifyPage() {
               NEXT JUDGE의 모든 기능을 쓰실 수 있어요.
             </p>
 
-            {importProgress && (
-              <div className="mb-8 px-4 py-4 border border-border-list bg-surface-page text-left">
-                <p className="text-[12px] font-bold uppercase tracking-wider text-text-secondary mb-2">
-                  {importDone ? '가져오기 완료' : '풀이 정보 가져오는 중'}
-                </p>
-                <p className="text-[14px] tabular-nums text-text-primary">
-                  <strong className="font-bold">
-                    {importProgress.imported.toLocaleString()}
-                  </strong>
-                  <span className="text-text-muted"> / </span>
-                  {importProgress.total.toLocaleString()}
-                </p>
-                {!importDone && importProgress.total > 0 && (
-                  <div className="mt-3 h-1 bg-border-list overflow-hidden">
-                    <div
-                      className="h-full bg-brand-red transition-[width] duration-500"
-                      style={{
-                        width: `${Math.min(100, (importProgress.imported / importProgress.total) * 100)}%`,
-                      }}
-                    />
-                  </div>
+            <div className="mb-8 px-4 py-4 border border-border-list bg-surface-page text-left">
+              <p className="text-[12px] font-bold uppercase tracking-wider text-text-secondary mb-2">
+                {importDone ? '가져오기 완료' : '풀이 정보 가져오는 중'}
+              </p>
+              <p className="text-[14px] tabular-nums text-text-primary">
+                {importProgress ? (
+                  <>
+                    <strong className="font-bold">
+                      {importProgress.imported.toLocaleString()}
+                    </strong>
+                    <span className="text-text-muted"> / </span>
+                    {importProgress.total.toLocaleString()}
+                  </>
+                ) : (
+                  <span className="text-text-muted">계산 중...</span>
                 )}
+              </p>
+              <div className="mt-3 h-1 bg-border-list overflow-hidden">
+                <div
+                  className="h-full bg-brand-red transition-[width] duration-500"
+                  style={{
+                    width:
+                      importProgress && importProgress.total > 0
+                        ? `${Math.min(100, (importProgress.imported / importProgress.total) * 100)}%`
+                        : '0%',
+                  }}
+                />
               </div>
-            )}
+            </div>
 
             <button
               type="button"
