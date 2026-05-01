@@ -1,16 +1,30 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 import { useImportSync } from './ImportSyncProvider'
+
+// 폴링 종료(=isImporting false) 후에도 사용자에게 채움이 인지될 시간 동안
+// 바만 따로 유지. 스켈레톤/버튼 disabled는 isImporting과 함께 즉시 풀림.
+const BAR_LINGER_MS = 3500
 
 export function GlobalImportProgressBar() {
   const pathname = usePathname()
   const { isImporting, imported, total } = useImportSync()
 
-  // isImporting은 provider가 폴링 종료 후 linger까지 포함해 유지하므로
-  // 여기선 단순히 그 값으로 visibility 판단.
-  if (!isImporting) return null
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    if (isImporting) {
+      setVisible(true)
+      return
+    }
+    if (!visible) return
+    const t = setTimeout(() => setVisible(false), BAR_LINGER_MS)
+    return () => clearTimeout(t)
+  }, [isImporting, visible])
+
+  if (!visible) return null
   // verify 페이지는 자체 in-page 카드에서 진행률을 노출하므로 숨김.
   if (pathname?.startsWith('/onboarding/verify')) return null
 
