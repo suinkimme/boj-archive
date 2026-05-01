@@ -200,7 +200,8 @@ export default function MePage() {
         {me && hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
 
         {me && hasHandle && !isVerified && <LockedActivity />}
-        {me && hasHandle && isVerified && solvedAc && (
+        {me && hasHandle && isVerified && isImporting && <ActivityPlaceholder />}
+        {me && hasHandle && isVerified && !isImporting && solvedAc && (
           <section className="mb-10">
             <SectionHeading>활동 요약</SectionHeading>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
@@ -216,7 +217,17 @@ export default function MePage() {
         {me && isVerified && hasHandle && (isImporting || recentSolved.length > 0) && (
           <section className="mb-10">
             <SectionHeading>최근 푼 문제</SectionHeading>
-            {recentSolved.length > 0 ? (
+            {isImporting || recentSolved.length === 0 ? (
+              <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <li key={i} className="h-12 flex items-center gap-3 px-4">
+                    <span className="block h-3.5 w-12 bg-surface-page rounded animate-pulse flex-shrink-0" />
+                    <span className="block h-3.5 w-10 bg-surface-page rounded animate-pulse flex-shrink-0" />
+                    <span className="block h-3.5 flex-1 max-w-[240px] bg-surface-page rounded animate-pulse" />
+                  </li>
+                ))}
+              </ul>
+            ) : (
               <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
                 {recentSolved.map((item) => (
                   <li key={item.problemId}>
@@ -233,16 +244,6 @@ export default function MePage() {
                         {item.titleKo}
                       </span>
                     </button>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <li key={i} className="h-12 flex items-center gap-3 px-4">
-                    <span className="block h-3.5 w-12 bg-surface-page rounded animate-pulse flex-shrink-0" />
-                    <span className="block h-3.5 w-10 bg-surface-page rounded animate-pulse flex-shrink-0" />
-                    <span className="block h-3.5 flex-1 max-w-[240px] bg-surface-page rounded animate-pulse" />
                   </li>
                 ))}
               </ul>
