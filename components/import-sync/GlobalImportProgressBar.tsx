@@ -29,10 +29,10 @@ export function GlobalImportProgressBar() {
   // verify 페이지는 자체 in-page 카드에서 진행률을 노출하므로 숨김.
   if (pathname?.startsWith('/onboarding/verify')) return null
 
-  const pct =
-    total && total > 0 && imported != null
-      ? Math.min(100, (imported / total) * 100)
-      : 0
+  const dataReady = total != null && imported != null && total > 0
+  const pct = dataReady
+    ? Math.min(100, ((imported as number) / (total as number)) * 100)
+    : 0
 
   return (
     <div
@@ -43,10 +43,16 @@ export function GlobalImportProgressBar() {
       aria-valuenow={Math.round(pct)}
       className="fixed top-0 left-0 right-0 h-[3px] z-50 pointer-events-none"
     >
-      <div
-        className="h-full bg-brand-red transition-[width] duration-[2000ms] ease-linear"
-        style={{ width: `${pct}%` }}
-      />
+      {/* 첫 fetch 응답 전엔 indeterminate pulse로 사용자에게 즉시 피드백.
+          데이터 도착 후엔 실제 % width로 전환되며 CSS transition이 채움. */}
+      {dataReady ? (
+        <div
+          className="h-full bg-brand-red transition-[width] duration-[2000ms] ease-linear"
+          style={{ width: `${pct}%` }}
+        />
+      ) : (
+        <div className="h-full w-full bg-brand-red animate-pulse" />
+      )}
     </div>
   )
 }
