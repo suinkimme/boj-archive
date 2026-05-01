@@ -181,22 +181,18 @@ export async function fetchProblemsForList(
     }
   }
 
-  const visible: ListedProblem[] = rows.map((r) => {
-    const done = Number(r.done) === 1
-    // SENTINEL: 디자인 검토용 — 로컬 채점 시도 추적이 들어오기 전 임시.
-    // 1003 ("피보나치 수열")이 정답 아닐 때만 tried로 표시.
-    const triedSentinel = r.problemId === 1003 && !done
-    return {
-      id: r.problemId,
-      title: r.titleKo,
-      level: r.level as Level,
-      tags: r.tags ?? [],
-      completedCount: r.acceptedUserCount ?? 0,
-      rate: deriveRate(r.averageTries),
-      done,
-      tried: triedSentinel,
-    }
-  })
+  const visible: ListedProblem[] = rows.map((r) => ({
+    id: r.problemId,
+    title: r.titleKo,
+    level: r.level as Level,
+    tags: r.tags ?? [],
+    completedCount: r.acceptedUserCount ?? 0,
+    rate: deriveRate(r.averageTries),
+    done: Number(r.done) === 1,
+    // 실제 시도 추적 데이터 경로 도입 전까지 항상 false. 채점 시도
+    // 기록이 들어오면 user_solved_problems와 같은 EXISTS 패턴으로 채움.
+    tried: false,
+  }))
 
   return { visible, totalCount, totalPages, totalByLevel, page }
 }
