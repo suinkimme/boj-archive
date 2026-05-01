@@ -3,6 +3,9 @@
 import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 
+import { useImportSync } from '@/components/import-sync/ImportSyncProvider'
+import { AlertDialog } from '@/components/ui/AlertDialog'
+
 type VerifyState = {
   bojHandle: string
   token: string
@@ -17,6 +20,7 @@ function formatRemaining(seconds: number) {
 
 export default function VerifyPage() {
   const router = useRouter()
+  const importSync = useImportSync()
 
   const [state, setState] = useState<VerifyState | null>(null)
   const [loading, setLoading] = useState(true)
@@ -25,13 +29,7 @@ export default function VerifyPage() {
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
   const [now, setNow] = useState(() => Date.now())
-  // 검증 성공 직후 본 페이지에서 첫 가져오기를 끝낸다. /me 진입 시점엔
-  // 다시 자동 폴링이 일어나지 않으므로 사용자에게 진행률을 직접 보여줌.
-  const [importProgress, setImportProgress] = useState<{
-    imported: number
-    total: number
-  } | null>(null)
-  const [importDone, setImportDone] = useState(false)
+  const [leaveOpen, setLeaveOpen] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -86,53 +84,22 @@ export default function VerifyPage() {
     return () => clearInterval(id)
   }, [])
 
-  // 검증 성공 직후 첫 가져오기를 1페이지(50건)씩 폴링.
+  // 검증 성공 시점에 글로벌 import 폴링 시작. 이후 페이지를 떠나도
+  // ImportSyncProvider가 layout 레벨이라 폴링이 끊기지 않는다.
   useEffect(() => {
     if (!verified) return
-    let cancelled = false
+    importSync.startSync()
+  }, [verified, importSync])
 
-    void (async () => {
-      while (!cancelled) {
-        let total = 0
-        let imported = 0
-        try {
-          const meRes = await fetch('/api/me')
-          if (cancelled || !meRes.ok) return
-          const me = (await meRes.json()) as {
-            solvedAc: { solvedCount: number } | null
-            importedCount: number
-          }
-          total = me.solvedAc?.solvedCount ?? 0
-          imported = me.importedCount
-        } catch {
-          return
-        }
-
-        setImportProgress({ imported, total })
-        if (total > 0 && imported >= total) {
-          setImportDone(true)
-          return
-        }
-
-        const fromPage = Math.max(1, Math.floor(imported / 50) + 1)
-        try {
-          const syncRes = await fetch('/api/solvedac/sync', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ fromPage }),
-          })
-          if (cancelled || !syncRes.ok) return
-          await syncRes.json()
-        } catch {
-          return
-        }
-      }
-    })()
-
-    return () => {
-      cancelled = true
+  // 가져오기 진행 중 브라우저 닫기/새로고침 경고.
+  useEffect(() => {
+    if (!importSync.isImporting) return
+    const handler = (e: BeforeUnloadEvent) => {
+      e.preventDefault()
     }
-  }, [verified])
+    window.addEventListener('beforeunload', handler)
+    return () => window.removeEventListener('beforeunload', handler)
+  }, [importSync.isImporting])
 
   const remaining = useMemo(
     () => (state ? Math.max(0, Math.floor((state.expiresAt - now) / 1000)) : 0),
@@ -289,39 +256,50 @@ export default function VerifyPage() {
               NEXT JUDGE의 모든 기능을 쓰실 수 있어요.
             </p>
 
-            <div className="mb-8 px-4 py-4 border border-border-list bg-surface-page text-left">
-              <p className="text-[12px] font-bold uppercase tracking-wider text-text-secondary mb-2">
-                {importDone ? '가져오기 완료' : '풀이 정보 가져오는 중'}
-              </p>
-              <p className="text-[14px] tabular-nums text-text-primary leading-[20px] h-[20px] m-0">
-                {importProgress ? (
-                  <>
-                    <strong className="font-bold">
-                      {importProgress.imported.toLocaleString()}
-                    </strong>
-                    <span className="text-text-muted"> / </span>
-                    {importProgress.total.toLocaleString()}
-                  </>
-                ) : (
-                  <span className="text-text-muted animate-pulse">계산 중...</span>
-                )}
-              </p>
-              <div className="mt-3 h-1 bg-border-list overflow-hidden">
-                <div
-                  className="h-full bg-brand-red transition-[width] duration-500"
-                  style={{
-                    width:
-                      importProgress && importProgress.total > 0
-                        ? `${Math.min(100, (importProgress.imported / importProgress.total) * 100)}%`
-                        : '0%',
-                  }}
-                />
-              </div>
-            </div>
+            {(() => {
+              const total = importSync.total
+              const imported = importSync.imported
+              const importDone =
+                total != null && imported != null && total > 0 && imported >= total
+              const pct =
+                total && total > 0 && imported != null
+                  ? Math.min(100, (imported / total) * 100)
+                  : 0
+              return (
+                <div className="mb-8 px-4 py-4 border border-border-list bg-surface-page text-left">
+                  <p className="text-[12px] font-bold uppercase tracking-wider text-text-secondary mb-2">
+                    {importDone ? '가져오기 완료' : '풀이 정보 가져오는 중'}
+                  </p>
+                  <p className="text-[14px] tabular-nums text-text-primary leading-[20px] h-[20px] m-0">
+                    {imported != null && total != null ? (
+                      <>
+                        <strong className="font-bold">{imported.toLocaleString()}</strong>
+                        <span className="text-text-muted"> / </span>
+                        {total.toLocaleString()}
+                      </>
+                    ) : (
+                      <span className="text-text-muted animate-pulse">계산 중...</span>
+                    )}
+                  </p>
+                  <div className="mt-3 h-1 bg-border-list overflow-hidden">
+                    <div
+                      className="h-full bg-brand-red transition-[width] duration-500"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                </div>
+              )
+            })()}
 
             <button
               type="button"
-              onClick={() => router.push('/me')}
+              onClick={() => {
+                if (importSync.isImporting) {
+                  setLeaveOpen(true)
+                } else {
+                  router.push('/me')
+                }
+              }}
               className="w-full bg-brand-red text-white border-0 px-4 py-4 text-[15px] font-bold hover:opacity-90 transition-opacity"
             >
               내 정보로 이동
@@ -331,6 +309,20 @@ export default function VerifyPage() {
             </p>
           </div>
         </main>
+        <AlertDialog
+          open={leaveOpen}
+          onClose={() => setLeaveOpen(false)}
+          title="이동하시겠어요?"
+          description="이동하셔도 풀이 정보 가져오기는 계속 진행돼요. 화면 위쪽에 진행률 표시줄이 떠 있어요."
+          buttons={[
+            { label: '계속 보기', style: 'cancel' },
+            {
+              label: '이동',
+              style: 'default',
+              onPress: () => router.push('/me'),
+            },
+          ]}
+        />
       </div>
     )
   }
