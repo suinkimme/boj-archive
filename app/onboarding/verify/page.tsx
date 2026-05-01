@@ -293,7 +293,7 @@ export default function VerifyPage() {
               <p className="text-[12px] font-bold uppercase tracking-wider text-text-secondary mb-2">
                 {importDone ? '가져오기 완료' : '풀이 정보 가져오는 중'}
               </p>
-              <p className="text-[14px] tabular-nums text-text-primary">
+              <p className="text-[14px] tabular-nums text-text-primary leading-[20px] h-[20px] m-0">
                 {importProgress ? (
                   <>
                     <strong className="font-bold">
@@ -328,14 +328,6 @@ export default function VerifyPage() {
             </button>
             <p className="mt-6 text-[12px] text-text-muted">
               아까 붙여두셨던 코드는 이제 지우셔도 돼요.
-              {!importDone && importProgress && (
-                <>
-                  <br />
-                  지금 이동하셔도 괜찮아요. 나머지는 내 정보 페이지의
-                  <br />
-                  업데이트 버튼으로 마저 받아오실 수 있어요.
-                </>
-              )}
             </p>
           </div>
         </main>
