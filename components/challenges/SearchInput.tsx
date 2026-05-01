@@ -1,27 +1,63 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 interface SearchInputProps {
   value: string
   onChange: (value: string) => void
   placeholder?: string
+  /** Idle delay before pushing onChange. Default 300ms. */
+  debounceMs?: number
 }
 
 export function SearchInput({
   value,
   onChange,
-  placeholder = '문제 제목으로 검색',
+  placeholder = '제목 또는 문제 번호로 검색',
+  debounceMs = 300,
 }: SearchInputProps) {
   // Mirror the controlled value locally so an in-flight Korean IME
-  // composition is not blown away when the parent re-renders (e.g.
-  // because we're updating the URL on every keystroke).
+  // composition is not blown away when the parent re-renders.
   const [local, setLocal] = useState(value)
   const composingRef = useRef(false)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const onChangeRef = useRef(onChange)
 
   useEffect(() => {
-    if (!composingRef.current) setLocal(value)
+    onChangeRef.current = onChange
+  }, [onChange])
+
+  // Sync prop → local when not composing (e.g., URL changed externally).
+  useEffect(() => {
+    if (composingRef.current) return
+    setLocal((prev) => (prev === value ? prev : value))
   }, [value])
+
+  const cancel = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current)
+      timerRef.current = null
+    }
+  }
+
+  const flush = useCallback((next: string) => {
+    cancel()
+    onChangeRef.current(next)
+  }, [])
+
+  const schedule = useCallback(
+    (next: string) => {
+      cancel()
+      timerRef.current = setTimeout(() => {
+        timerRef.current = null
+        onChangeRef.current(next)
+      }, debounceMs)
+    },
+    [debounceMs],
+  )
+
+  // Cancel any pending debounce on unmount.
+  useEffect(() => () => cancel(), [])
 
   return (
     <div className="relative w-full">
@@ -38,18 +74,25 @@ export function SearchInput({
       </svg>
       <input
         type="text"
+        inputMode="search"
         value={local}
         onChange={(e) => {
           const next = e.target.value
           setLocal(next)
-          if (!composingRef.current) onChange(next)
+          if (!composingRef.current) schedule(next)
         }}
         onCompositionStart={() => {
           composingRef.current = true
         }}
         onCompositionEnd={(e) => {
           composingRef.current = false
-          onChange(e.currentTarget.value)
+          schedule(e.currentTarget.value)
+        }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !composingRef.current) {
+            // Push immediately on submit.
+            flush(e.currentTarget.value)
+          }
         }}
         placeholder={placeholder}
         className="w-full pl-12 pr-12 py-3.5 text-sm font-sans bg-surface-card text-text-primary placeholder:text-text-muted border border-border-key focus:outline-none focus:border-brand-red transition-colors"
@@ -60,7 +103,7 @@ export function SearchInput({
           aria-label="검색어 지우기"
           onClick={() => {
             setLocal('')
-            onChange('')
+            flush('')
           }}
           className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors"
         >

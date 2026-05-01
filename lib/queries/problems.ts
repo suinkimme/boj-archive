@@ -6,18 +6,23 @@ import {
   eq,
   ilike,
   inArray,
+  or,
   sql,
 } from 'drizzle-orm'
 
 import { db } from '@/db'
 import { problems, userSolvedProblems } from '@/db/schema'
-import type { Level, Order, Status } from '@/components/challenges/types'
+import {
+  ALL_LEVELS,
+  ALL_ORDERS,
+  ALL_STATUSES,
+  DEFAULT_ORDER,
+  type Level,
+  type Order,
+  type Status,
+} from '@/components/challenges/types'
 
 export const PAGE_SIZE = 12
-export const ALL_LEVELS: Level[] = [0, 1, 2, 3, 4, 5]
-export const ALL_STATUSES: Status[] = ['unsolved', 'tried', 'solved']
-export const ALL_ORDERS: Order[] = ['recent', 'solved', 'rate']
-export const DEFAULT_ORDER: Order = 'recent'
 
 export interface ListedProblem {
   id: number
@@ -85,7 +90,20 @@ export async function fetchProblemsForList(
   const page = parsePage(params.page)
 
   const conditions = []
-  if (query) conditions.push(ilike(problems.titleKo, `%${query}%`))
+  if (query) {
+    // 제목 부분일치 + 숫자 입력이면 problem_id 정확 일치도 포함 (OR).
+    const titleMatch = ilike(problems.titleKo, `%${query}%`)
+    if (/^\d+$/.test(query)) {
+      const id = Number.parseInt(query, 10)
+      if (Number.isFinite(id)) {
+        conditions.push(or(titleMatch, eq(problems.problemId, id))!)
+      } else {
+        conditions.push(titleMatch)
+      }
+    } else {
+      conditions.push(titleMatch)
+    }
+  }
   if (levels.length > 0) conditions.push(inArray(problems.level, levels))
   if (tagFilter.length > 0) conditions.push(arrayOverlaps(problems.tags, tagFilter))
 

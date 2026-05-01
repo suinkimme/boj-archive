@@ -2,7 +2,7 @@
 
 import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 
-import type { Level } from './types'
+import { getLevelColor, getLevelLabel, type Level } from './types'
 
 interface ProblemItemProps {
   id: number
@@ -14,16 +14,8 @@ interface ProblemItemProps {
   done: boolean
 }
 
-const LEVEL_COLOR: Record<Level, string> = {
-  0: 'text-text-muted',
-  1: 'text-status-success',
-  2: 'text-status-success',
-  3: 'text-status-warning',
-  4: 'text-status-danger',
-  5: 'text-status-danger',
-}
-
 export function ProblemItem({
+  id,
   title,
   level,
   tags,
@@ -64,7 +56,11 @@ export function ProblemItem({
             {title}
           </h3>
           <p className="text-xs text-text-muted leading-normal m-0">
-            <span className={`font-medium ${LEVEL_COLOR[level]}`}>Lv. {level}</span>
+            <span className="text-text-secondary tabular-nums font-medium">{id}번</span>
+            <span className="mx-2 text-border-key" aria-hidden="true">
+              ·
+            </span>
+            <span className={`font-medium ${getLevelColor(level)}`}>{getLevelLabel(level)}</span>
             <span className="mx-2 text-border-key" aria-hidden="true">
               ·
             </span>
@@ -86,10 +82,12 @@ export function ProblemItem({
           )}
         </div>
 
-        {/* Desktop / tablet: tag chips right-aligned */}
+        {/* Desktop / tablet: tag chips right-aligned, wrap allowed up to ~2 lines.
+            Cap visible count to 5 + overflow indicator so very-tagged rows
+            don't blow past two lines. */}
         {tags && tags.length > 0 && (
           <ul className="hidden sm:flex flex-wrap justify-end gap-1 max-w-[260px] m-0 p-0 list-none flex-shrink-0">
-            {tags.map((tag) => (
+            {tags.slice(0, 3).map((tag) => (
               <li
                 key={tag}
                 className="inline-flex px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
@@ -97,6 +95,14 @@ export function ProblemItem({
                 {tag}
               </li>
             ))}
+            {tags.length > 3 && (
+              <li
+                className="inline-flex px-1.5 py-0.5 text-[10px] font-bold tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
+                aria-label={`그 외 ${tags.length - 3}개`}
+              >
+                +{tags.length - 3}
+              </li>
+            )}
           </ul>
         )}
       </button>
