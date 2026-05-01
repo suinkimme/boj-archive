@@ -11,27 +11,12 @@ export const ALL_STATUSES: readonly Status[] = ['unsolved', 'tried', 'solved']
 export const ALL_ORDERS: readonly Order[] = ['recent', 'solved', 'rate']
 export const DEFAULT_ORDER: Order = 'solved'
 
-const TIER_NAMES = [
-  'Unrated',
-  '브론즈',
-  '실버',
-  '골드',
-  '플래티넘',
-  '다이아몬드',
-  '루비',
-] as const
-
-// pos within tier: 1 → V (lowest), 5 → I (highest)
-const ROMAN = ['', 'V', 'IV', 'III', 'II', 'I'] as const
-
+// 이 사이트는 티어(브론즈/실버/...) 없이 0~30 레벨제 단일 표기를 쓴다.
 export function getLevelLabel(level: Level): string {
-  if (level === 0) return 'Unrated'
-  const tier = Math.ceil(level / 5)
-  const pos = ((level - 1) % 5) + 1
-  return `${TIER_NAMES[tier]} ${ROMAN[pos]}`
+  return `Lv. ${level}`
 }
 
-// Three-band color mapping kept simple to fit existing status tokens.
+// 색상은 난이도 체감을 돕는 3-band(쉬움/중간/어려움). 티어 명칭과 무관.
 export function getLevelColor(level: Level): string {
   if (level === 0) return 'text-text-muted'
   if (level <= 10) return 'text-status-success'
