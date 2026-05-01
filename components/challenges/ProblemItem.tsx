@@ -91,7 +91,7 @@ export function ProblemItem({
             don't blow past two lines. */}
         {tags && tags.length > 0 && (
           <ul className="hidden sm:flex flex-wrap justify-end gap-1 max-w-[260px] m-0 p-0 list-none flex-shrink-0">
-            {tags.slice(0, 5).map((tag) => (
+            {tags.slice(0, 3).map((tag) => (
               <li
                 key={tag}
                 className="inline-flex px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
@@ -99,12 +99,12 @@ export function ProblemItem({
                 {tag}
               </li>
             ))}
-            {tags.length > 5 && (
+            {tags.length > 3 && (
               <li
                 className="inline-flex px-1.5 py-0.5 text-[10px] font-bold tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
-                aria-label={`그 외 ${tags.length - 5}개`}
+                aria-label={`그 외 ${tags.length - 3}개`}
               >
-                +{tags.length - 5}
+                +{tags.length - 3}
               </li>
             )}
           </ul>
