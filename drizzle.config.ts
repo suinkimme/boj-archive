@@ -8,7 +8,9 @@ export default {
   out: './db/migrations',
   dialect: 'postgresql',
   dbCredentials: {
-    url: process.env.DATABASE_URL!,
+    // Migrations need a direct connection — the pooler doesn't allow some
+    // statements (advisory locks, `CREATE TYPE`, etc.) drizzle-kit emits.
+    url: process.env.POSTGRES_URL_NON_POOLING!,
   },
   strict: true,
   verbose: true,

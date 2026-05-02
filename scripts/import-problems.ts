@@ -45,12 +45,15 @@ interface ProblemFile {
 }
 
 async function main() {
-  if (!process.env.DATABASE_URL) {
-    console.error('DATABASE_URL is not set. Aborting.')
+  // Use the direct (non-pooled) URL for bulk upserts — pgbouncer transaction
+  // pooling forces `prepare: false` and adds round-trip overhead we don't want
+  // for batched inserts.
+  if (!process.env.POSTGRES_URL_NON_POOLING) {
+    console.error('POSTGRES_URL_NON_POOLING is not set. Aborting.')
     process.exit(1)
   }
 
-  const client = postgres(process.env.DATABASE_URL, { prepare: false })
+  const client = postgres(process.env.POSTGRES_URL_NON_POOLING)
   const db = drizzle(client, { schema })
 
   const entries = await readdir(PROBLEMS_DIR, { withFileTypes: true })
