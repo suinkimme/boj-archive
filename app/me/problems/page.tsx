@@ -90,7 +90,7 @@ export default function MyProblemsPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="문제 번호 또는 제목으로 찾기"
-            className="w-full max-w-[420px] border border-border-list bg-surface-card px-3 py-2 text-[13px] text-text-primary placeholder:text-text-muted focus:outline-none focus:border-text-primary transition-colors"
+            className="w-full max-w-[420px] border border-border-key bg-surface-card px-3 py-2 text-[13px] text-text-primary placeholder:text-text-muted focus:outline-none focus:border-brand-red transition-colors"
           />
         </div>
 
