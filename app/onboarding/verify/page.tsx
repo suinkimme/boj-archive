@@ -263,7 +263,7 @@ export default function VerifyPage() {
             <p className="text-[14px] text-text-secondary leading-relaxed mb-8">
               이제 <strong className="text-text-primary">@{state.bojHandle}</strong> 님으로
               <br />
-              NEXT JUDGE의 모든 기능을 쓰실 수 있어요.
+              NEXT JUDGE.의 모든 기능을 쓰실 수 있어요.
             </p>
 
             <ImportProgressCard started={started} />
@@ -436,7 +436,7 @@ export default function VerifyPage() {
             <div className="mt-3 pl-4 text-[12px] text-text-muted leading-relaxed space-y-2">
               <p>solved.ac 자기소개는 본인만 바꿀 수 있어요. 거기에 코드가 보이면 본인이라고 확신할 수 있어요.</p>
               <p>코드는 30분 동안만 유효하고, 우리 서버에만 저장돼요. 자기소개에 두는 시간이 짧을수록 안전해요.</p>
-              <p>본인 확인을 마친 분만 랭킹 같은 경쟁 기능에 참여할 수 있어요.</p>
+              <p>본인 확인을 마친 분만 랭킹·풀이 통계 같은 기능에 참여할 수 있어요.</p>
             </div>
           </details>
         </div>

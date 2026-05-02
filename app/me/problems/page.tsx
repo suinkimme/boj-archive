@@ -70,7 +70,7 @@ export default function MyProblemsPage() {
     <div className="min-h-screen bg-surface-card">
       <TopNav />
 
-      <main className="max-w-[1080px] mx-auto px-6 sm:px-10 pt-10 sm:pt-14 pb-16">
+      <main className="max-w-[760px] mx-auto px-6 sm:px-10 pt-10 sm:pt-14 pb-16">
         <div className="mb-6">
           <Link
             href="/me"

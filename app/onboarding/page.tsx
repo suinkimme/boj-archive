@@ -226,7 +226,7 @@ export default function OnboardingPage() {
           </div>
 
           <p className="mt-10 text-[12px] text-text-muted leading-relaxed">
-            등록한 아이디는 본인 확인 전까진 &lsquo;인증 필요&rsquo;로 표시돼요. 랭킹 같은 기능을 쓰려면 내 정보 페이지에서 본인 확인을 완료해주세요.
+            등록한 아이디는 본인 확인 전까진 &lsquo;인증 필요&rsquo;로 표시돼요. 랭킹과 풀이 기록 기능을 사용하시려면 내 정보 페이지에서 본인 확인을 완료해주세요.
           </p>
         </div>
       </main>
