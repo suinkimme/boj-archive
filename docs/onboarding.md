@@ -59,8 +59,8 @@
 ## 3. 남은 작업
 
 ### 우선순위 1 — 백엔드 인프라
-- [ ] Neon Postgres 프로젝트 생성 → `DATABASE_URL` 발급
-- [ ] Drizzle ORM 설치 (`drizzle-orm`, `drizzle-kit`, `@neondatabase/serverless`)
+- [ ] Supabase Postgres 프로젝트 생성 → `POSTGRES_URL` / `POSTGRES_URL_NON_POOLING` 발급
+- [ ] Drizzle ORM 설치 (`drizzle-orm`, `drizzle-kit`, `postgres`)
 - [ ] `db/schema.ts` 작성:
   - `users` (id, githubId unique, login, name, email, image, bojHandle nullable unique, bojHandleVerifiedAt nullable, onboardedAt nullable, createdAt, updatedAt)
   - `accounts` (Auth.js 표준)
@@ -68,7 +68,7 @@
   - `solvedAcSnapshots` (handle pk, tier, solvedCount, rating, raw jsonb, fetchedAt)
 - [ ] `@auth/drizzle-adapter` 설치 + `auth.ts`에 연결 (세션은 JWT 유지)
 - [ ] 마이그레이션 (`drizzle-kit push:pg` → 본격 운영 시 generate+migrate)
-- [ ] Vercel Environment Variables에 `DATABASE_URL` (Production + Preview)
+- [ ] Vercel Marketplace의 Supabase 통합으로 `POSTGRES_URL` / `POSTGRES_URL_NON_POOLING` 자동 주입 (Production + Preview)
 
 ### 우선순위 2 — solved.ac 연동
 - [ ] `lib/solvedac/client.ts` — rate-limit-aware API 클라이언트
