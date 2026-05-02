@@ -11,10 +11,10 @@
 import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
-import { neon } from '@neondatabase/serverless'
 import { config } from 'dotenv'
 import { sql } from 'drizzle-orm'
-import { drizzle } from 'drizzle-orm/neon-http'
+import { drizzle } from 'drizzle-orm/postgres-js'
+import postgres from 'postgres'
 
 import * as schema from '../db/schema'
 import { testcases, type TestcaseSource } from '../db/schema'
@@ -31,12 +31,13 @@ interface RawCase {
 }
 
 async function main() {
-  if (!process.env.DATABASE_URL) {
-    console.error('DATABASE_URL is not set. Aborting.')
+  if (!process.env.POSTGRES_URL_NON_POOLING) {
+    console.error('POSTGRES_URL_NON_POOLING is not set. Aborting.')
     process.exit(1)
   }
 
-  const db = drizzle(neon(process.env.DATABASE_URL), { schema })
+  const client = postgres(process.env.POSTGRES_URL_NON_POOLING)
+  const db = drizzle(client, { schema })
 
   const entries = await readdir(PROBLEMS_DIR, { withFileTypes: true })
   const problemDirs = entries
@@ -119,6 +120,8 @@ async function main() {
   console.log(`missing files: ${missing}`)
   console.log(`empty/invalid: ${empty}`)
   console.log(`parse errors:  ${parseErrors}`)
+
+  await client.end()
 }
 
 main().catch((e) => {
