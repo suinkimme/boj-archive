@@ -4,7 +4,6 @@ import { useCallback } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import { FilterDropdown } from '@/components/challenges/FilterDropdown'
-import { NoticesAside } from '@/components/challenges/NoticesAside'
 import { Pagination } from '@/components/challenges/Pagination'
 import { ProblemList } from '@/components/challenges/ProblemList'
 import { SearchInput } from '@/components/challenges/SearchInput'
@@ -108,6 +107,9 @@ interface ChallengesViewProps {
   levels: Level[]
   statuses: Status[]
   tags: string[]
+  /** Server에서 렌더된 NoticesAside 트리. ChallengesView가 client component라
+   *  async server component를 직접 import할 수 없어 slot 패턴으로 받는다. */
+  noticesAside: React.ReactNode
 }
 
 export function ChallengesView({
@@ -121,6 +123,7 @@ export function ChallengesView({
   levels,
   statuses,
   tags,
+  noticesAside,
 }: ChallengesViewProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -277,14 +280,14 @@ export function ChallengesView({
             <Pagination page={page} totalPages={totalPages} onChange={handlePageChange} />
           </div>
 
-          <NoticesAside />
+          {noticesAside}
         </div>
       </main>
 
       <footer className="max-w-[1200px] mx-auto px-6 sm:px-10 py-10">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-secondary mb-3">
           <span className="text-text-muted basis-full min-[425px]:basis-auto">
-            © 2026 NEXT JUDGE
+            © 2026 NEXT JUDGE.
           </span>
           <span
             className="hidden min-[425px]:inline text-border-key"

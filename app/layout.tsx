@@ -20,16 +20,16 @@ const SITE_URL =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'NEXT JUDGE',
+  title: 'NEXT JUDGE.',
   description: '백준의 다음을 잇는, 모두에게 열린 알고리즘 저지',
   openGraph: {
-    title: 'NEXT JUDGE',
+    title: 'NEXT JUDGE.',
     description: '백준의 다음을 잇는, 모두에게 열린 알고리즘 저지',
     images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NEXT JUDGE',
+    title: 'NEXT JUDGE.',
     description: '백준의 다음을 잇는, 모두에게 열린 알고리즘 저지',
     images: ['/og-image.png'],
   },
