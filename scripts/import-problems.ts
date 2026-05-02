@@ -13,10 +13,10 @@
 import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
-import { neon } from '@neondatabase/serverless'
 import { config } from 'dotenv'
 import { sql } from 'drizzle-orm'
-import { drizzle } from 'drizzle-orm/neon-http'
+import { drizzle } from 'drizzle-orm/postgres-js'
+import postgres from 'postgres'
 
 import * as schema from '../db/schema'
 import { problems } from '../db/schema'
@@ -50,7 +50,8 @@ async function main() {
     process.exit(1)
   }
 
-  const db = drizzle(neon(process.env.DATABASE_URL), { schema })
+  const client = postgres(process.env.DATABASE_URL, { prepare: false })
+  const db = drizzle(client, { schema })
 
   const entries = await readdir(PROBLEMS_DIR, { withFileTypes: true })
   const problemDirs = entries
@@ -149,6 +150,8 @@ async function main() {
   console.log(`missing:      ${missing}`)
   console.log(`parse errors: ${parseErrors}`)
   console.log(`invalid:      ${invalid}`)
+
+  await client.end()
 }
 
 main().catch((e) => {
