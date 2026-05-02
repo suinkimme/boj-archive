@@ -1,4 +1,4 @@
-import { desc, eq } from 'drizzle-orm'
+import { asc, eq } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
@@ -48,7 +48,7 @@ export async function GET() {
     .from(userSolvedProblems)
     .innerJoin(problems, eq(problems.problemId, userSolvedProblems.problemId))
     .where(eq(userSolvedProblems.userId, session.user.id))
-    .orderBy(desc(userSolvedProblems.problemId))
+    .orderBy(asc(userSolvedProblems.problemId))
 
   // 실패한 문제는 우리 in-browser judge가 제출 기록을 DB에 남기기 시작하면
   // 같은 형태로 채운다 (예: user_submissions where verdict != 'ok'). 그
