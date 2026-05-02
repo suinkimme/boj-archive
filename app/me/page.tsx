@@ -212,20 +212,8 @@ export default function MePage() {
         {me && hasHandle && !isVerified && <LockedRecentSolved />}
         {me && isVerified && hasHandle && (isImporting || recentSolved.length > 0) && (
           <section className="mb-10">
-            <div className="flex items-end justify-between mb-3 px-1">
-              <div className="flex items-center gap-3">
-                <div className="w-1 h-4 bg-brand-red flex-shrink-0" aria-hidden="true" />
-                <h2 className="text-[15px] sm:text-[17px] font-bold tracking-tight text-text-primary m-0">
-                  최근 푼 문제
-                </h2>
-              </div>
-              <Link
-                href="/me/problems"
-                className="text-[12px] font-bold text-text-secondary hover:text-text-primary transition-colors"
-              >
-                전체 보기 →
-              </Link>
-            </div>
+            <RecentSolvedHeader disabled={false} />
+
             {isImporting || recentSolved.length === 0 ? (
               <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -425,7 +413,7 @@ function LockedStat({ label }: { label: string }) {
 function LockedRecentSolved() {
   return (
     <section className="mb-10">
-      <SectionHeading>최근 푼 문제</SectionHeading>
+      <RecentSolvedHeader disabled />
       <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
         {Array.from({ length: 5 }).map((_, i) => (
           <li key={i} className="h-12 flex items-center px-4 text-text-muted">
@@ -477,7 +465,7 @@ function ActivityPlaceholder() {
 function RecentSolvedPlaceholder() {
   return (
     <section className="mb-10">
-      <SectionHeading>최근 푼 문제</SectionHeading>
+      <RecentSolvedHeader disabled />
       <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
         {Array.from({ length: 5 }).map((_, i) => (
           <li key={i} className="h-12 flex items-center gap-3 px-4">
@@ -488,6 +476,34 @@ function RecentSolvedPlaceholder() {
         ))}
       </ul>
     </section>
+  )
+}
+
+function RecentSolvedHeader({ disabled }: { disabled: boolean }) {
+  return (
+    <div className="flex items-end justify-between mb-3 px-1">
+      <div className="flex items-center gap-3">
+        <div className="w-1 h-4 bg-brand-red flex-shrink-0" aria-hidden="true" />
+        <h2 className="text-[15px] sm:text-[17px] font-bold tracking-tight text-text-primary m-0">
+          최근 푼 문제
+        </h2>
+      </div>
+      {disabled ? (
+        <span
+          aria-disabled="true"
+          className="text-[12px] font-bold text-text-muted cursor-not-allowed"
+        >
+          전체 보기 →
+        </span>
+      ) : (
+        <Link
+          href="/me/problems"
+          className="text-[12px] font-bold text-text-secondary hover:text-text-primary transition-colors"
+        >
+          전체 보기 →
+        </Link>
+      )}
+    </div>
   )
 }
 

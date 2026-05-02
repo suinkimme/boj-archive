@@ -15,8 +15,6 @@ design system and should be removed once everything it covers ships.
 | `app/me/page.tsx` | 최근 푼 문제 row click | `에디터` |
 | `components/challenges/TopNav.tsx` | each menu item | `프로젝트 소개` / `커뮤니티` / `기여하기` / `랭킹` |
 | `components/challenges/TopNav.tsx` | login button | `로그인` |
-| `components/challenges/NoticesAside.tsx` | "전체 보기" link | `업데이트 전체 보기` |
-| `components/challenges/NoticesAside.tsx` | each notice card | `업데이트 상세` |
 
 The provider itself is mounted in `app/layout.tsx` so any descendant
 client component can call `usePendingFeature(label?)`.

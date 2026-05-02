@@ -1,80 +1,69 @@
-'use client'
+// 사이드바 — 최근 공지사항 5건. Notion → /api/notices 응답을 server fetch.
+// 캐시 태그가 'notices'라 글 발행 시 webhook으로 즉시 무효화된다.
+
+import Link from 'next/link'
 
 import { Card } from '@/components/ui/Card'
-import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
+import { listPublishedNotices } from '@/lib/notion/notices'
 
-interface Notice {
-  id: number
-  title: string
-  date: string
-}
+const ASIDE_LIMIT = 5
 
-const NOTICES: Notice[] = [
-  {
-    id: 1,
-    title: 'v1.0 Next.js + TypeScript 마이그레이션 진행 중',
-    date: '2026.04.30',
-  },
-  {
-    id: 2,
-    title: 'BOJ Archive에서 NEXT JUDGE로 프로젝트 리브랜딩',
-    date: '2026.04.27',
-  },
-  {
-    id: 3,
-    title: '로컬 채점기(Pyodide · JSCPP) 베타 오픈',
-    date: '2026.04.20',
-  },
-  {
-    id: 4,
-    title: 'legacy/ 폴더로 정적 사이트 분리 완료',
-    date: '2026.04.15',
-  },
-  {
-    id: 5,
-    title: '문제 데이터 33,828개 v0.3.3 업데이트',
-    date: '2026.04.10',
-  },
-]
+export async function NoticesAside() {
+  const all = await listPublishedNotices()
+  const recent = all.slice(0, ASIDE_LIMIT)
 
-export function NoticesAside() {
-  const showPending = usePendingFeature()
   return (
     <aside className="hidden lg:block lg:w-[280px] lg:flex-shrink-0">
       <div className="flex items-center gap-3 mb-5">
         <div className="w-1 h-5 bg-brand-red flex-shrink-0" aria-hidden="true" />
         <h2 className="text-[22px] font-bold tracking-tight text-text-primary m-0">
-          업데이트
+          공지사항
         </h2>
         <span className="hidden xl:inline text-[10px] font-bold uppercase tracking-[0.18em] text-text-muted">
-          UPDATES
+          NOTICES
         </span>
-        <button
-          type="button"
-          onClick={() => showPending('업데이트 전체 보기')}
+        <Link
+          href="/notices"
           className="ml-auto text-xs text-text-secondary hover:text-brand-red transition-colors flex-shrink-0"
         >
           전체 보기 →
-        </button>
+        </Link>
       </div>
 
-      <div className="flex flex-col gap-3">
-        {NOTICES.map((n) => (
-          <button
-            key={n.id}
-            type="button"
-            onClick={() => showPending('업데이트 상세')}
-            className="text-left block group hover:border-brand-red transition-colors"
-          >
-            <Card className="group-hover:border-brand-red transition-colors">
-              <h3 className="text-sm font-bold text-text-primary mb-2 leading-snug m-0 group-hover:text-brand-red transition-colors">
-                {n.title}
-              </h3>
-              <p className="text-xs text-text-muted m-0 tabular-nums">{n.date}</p>
-            </Card>
-          </button>
-        ))}
-      </div>
+      {recent.length === 0 ? (
+        <p className="text-[13px] text-text-muted leading-relaxed m-0 px-1">
+          준비되는 대로 알려드릴게요.
+        </p>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {recent.map((n) => (
+            <Link
+              key={n.id}
+              href={`/notices/${n.slug}`}
+              className="text-left block group hover:border-brand-red transition-colors"
+            >
+              <Card className="group-hover:border-brand-red transition-colors">
+                <h3 className="text-sm font-bold text-text-primary mb-2 leading-snug m-0 group-hover:text-brand-red transition-colors line-clamp-2">
+                  {n.title}
+                </h3>
+                <p className="text-xs text-text-muted m-0 tabular-nums">
+                  {n.publishedAt ? formatDate(n.publishedAt) : ''}
+                </p>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      )}
     </aside>
   )
+}
+
+function formatDate(iso: string): string {
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return ''
+  return d.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 }
