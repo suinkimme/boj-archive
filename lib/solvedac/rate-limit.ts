@@ -1,4 +1,4 @@
-import { lt, sql } from 'drizzle-orm'
+import { gt, lt, sql } from 'drizzle-orm'
 
 import { db } from '@/db'
 import { solvedAcRequestLog } from '@/db/schema'
@@ -23,7 +23,7 @@ export async function acquireGlobalSolvedAcSlot(): Promise<void> {
     const [{ count }] = await db
       .select({ count: sql<number>`count(*)::int` })
       .from(solvedAcRequestLog)
-      .where(sql`${solvedAcRequestLog.requestedAt} > ${since}`)
+      .where(gt(solvedAcRequestLog.requestedAt, since))
 
     if (count < MAX_PER_WINDOW) {
       await db.insert(solvedAcRequestLog).values({})
