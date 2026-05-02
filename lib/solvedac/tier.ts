@@ -9,14 +9,13 @@ export function tierName(tier: number): string {
   return `${TIER_NAMES[family]} ${TIER_NUMERALS[sub]}`
 }
 
-// solved.ac canonical tier color (1-5: Bronze, 6-10: Silver, ..., 31: Master)
+// 사이트 전체에서 통일된 3-band 난이도 색. List row의 getLevelColor와
+// 동일한 토큰 매핑이고, 여기서는 31(Master)까지 커버하도록 확장한다.
+// solved.ac canonical 7-band 색은 일부러 쓰지 않는다 — 우리 사이트는
+// 티어 명칭 없이 단일 레벨제 표기를 쓰는 디자인이라 색도 단순화했다.
 export function tierColor(tier: number): string {
   if (tier === 0) return 'text-text-muted'
-  if (tier <= 5) return 'text-[#ad5600]'
-  if (tier <= 10) return 'text-[#435f7a]'
-  if (tier <= 15) return 'text-[#ec9a00]'
-  if (tier <= 20) return 'text-[#27e2a4]'
-  if (tier <= 25) return 'text-[#00b4fc]'
-  if (tier <= 30) return 'text-[#ff0062]'
-  return 'text-[#b300e0]'
+  if (tier <= 10) return 'text-status-success'
+  if (tier <= 20) return 'text-status-warning'
+  return 'text-status-danger'
 }

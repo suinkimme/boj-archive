@@ -1,5 +1,6 @@
 import { auth } from '@/auth'
 import { ChallengesView } from '@/components/challenges/ChallengesView'
+import { NoticesAside } from '@/components/challenges/NoticesAside'
 import {
   fetchProblemsForList,
   parseLevels,
@@ -38,6 +39,7 @@ export default async function Page({ searchParams }: PageProps) {
       levels={parseLevels(sp.levels)}
       statuses={parseStatuses(sp.status)}
       tags={parseTags(sp.tags)}
+      noticesAside={<NoticesAside />}
     />
   )
 }
