@@ -49,7 +49,7 @@ export default function NotFound() {
       <footer className="max-w-[1200px] mx-auto w-full px-6 sm:px-10 py-10">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-secondary">
           <span className="text-text-muted basis-full min-[425px]:basis-auto">
-            © 2026 NEXT JUDGE
+            © 2026 NEXT JUDGE.
           </span>
           <span
             className="hidden min-[425px]:inline text-border-key"
