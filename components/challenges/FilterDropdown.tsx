@@ -16,6 +16,11 @@ interface FilterDropdownProps<T extends string | number> {
   onToggle: (value: T) => void;
   single?: boolean;
   /**
+   * Visual size. Default = filter sidebar (px-5 py-3.5). Compact =
+   * editor toolbar / dense contexts (px-3 py-1.5).
+   */
+  size?: "default" | "compact";
+  /**
    * Optional override for the invisible spacer that locks minimum width.
    * Useful when the auto-computed anchor (longest item + " 외 N개") would
    * blow up the box for very large item lists.
@@ -30,8 +35,17 @@ export function FilterDropdown<T extends string | number>({
   selected,
   onToggle,
   single = false,
+  size = "default",
   widthAnchor: widthAnchorProp,
 }: FilterDropdownProps<T>) {
+  const compact = size === "compact";
+  const buttonSizing = compact
+    ? "px-2.5 py-1.5 text-[13px] min-w-0"
+    : "px-5 py-3.5 text-sm min-w-[120px]";
+  const chevronSize = compact ? "w-3.5 h-3.5" : "w-4 h-4";
+  const itemSizing = compact
+    ? "gap-2 px-3 py-1.5 text-[13px]"
+    : "gap-2.5 px-4 py-2.5 text-sm";
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -91,7 +105,7 @@ export function FilterDropdown<T extends string | number>({
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        className={`w-full flex items-center gap-2 px-5 py-3.5 text-sm bg-surface-card border transition-colors min-w-[120px] ${
+        className={`w-full flex items-center gap-2 bg-surface-card border transition-colors ${buttonSizing} ${
           open
             ? "border-text-primary text-text-primary"
             : isDefault
@@ -113,7 +127,7 @@ export function FilterDropdown<T extends string | number>({
           <span className="absolute inset-0 truncate">{display}</span>
         </span>
         <svg
-          className={`w-4 h-4 flex-shrink-0 transition-transform ${
+          className={`${chevronSize} flex-shrink-0 transition-transform ${
             open ? "rotate-180" : ""
           } ${isDefault ? "text-text-muted" : "text-text-secondary"}`}
           fill="none"
@@ -144,7 +158,7 @@ export function FilterDropdown<T extends string | number>({
                     onToggle(it.value);
                     if (single) setOpen(false);
                   }}
-                  className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-left transition-colors ${
+                  className={`w-full flex items-center text-left transition-colors ${itemSizing} ${
                     active && single
                       ? "bg-surface-page text-text-primary font-medium"
                       : "text-text-secondary hover:bg-surface-page hover:text-text-primary"
