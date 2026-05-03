@@ -85,7 +85,7 @@ export default async function NoticesPage({ searchParams }: PageProps) {
         </nav>
 
         {paged.length === 0 ? (
-          <div className="px-1 py-10">
+          <div className="py-6 sm:py-7 px-3 sm:px-4">
             {all.length === 0 ? (
               <>
                 <p className="text-[13px] font-bold text-text-primary mb-1">
