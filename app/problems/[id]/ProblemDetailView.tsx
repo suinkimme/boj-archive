@@ -17,7 +17,6 @@ import { ProblemHeader } from '@/components/problems/ProblemHeader'
 import { ProblemHtml } from '@/components/problems/ProblemHtml'
 import { ProblemTopNav } from '@/components/problems/ProblemTopNav'
 import { TestcasePanel } from '@/components/problems/TestcasePanel'
-import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 import type { ProblemDetail } from '@/lib/queries/problems'
 
 interface Props {
@@ -67,42 +66,20 @@ export default function ProblemDetailView({ problem }: Props) {
   )
 }
 
-// "기여하기" 탭은 폼 UI는 작성됐지만(API 미연결) 일단 PendingFeature
-// 알럿으로 가려둔다. API가 붙으면 탭 상태(useState)와 ContributePanel
-// 렌더로 되돌리면 된다 — 컴포넌트는 components/problems/ContributePanel.tsx에 그대로 있음.
+// 좌측 패널 상단의 "문제 설명" 탭 헤더.
+//
+// 외곽엔 padding을 두지 않고 내부 span의 py-3.5로 바 높이를 결정한다 — 그래야
+// span 하단의 `border-b-2 border-brand-red -mb-px`가 외곽 `border-b`와 정확히
+// 1px 겹쳐 "선택된 탭"의 빨간 underline 인디케이터로 보인다 (분리되면 떠 보임).
+// 우측 CodeEditor 툴바의 자연 높이(py-2 + 드롭다운 border 포함 ~47px)와 같은
+// 픽셀이 되도록 py-3.5(28px)를 골랐다.
 function LeftPanelTabBar() {
-  const showPending = usePendingFeature()
   return (
-    <div className="flex items-center gap-1 border-b border-border-list px-3 flex-shrink-0">
-      <LeftTabButton active>문제 설명</LeftTabButton>
-      <LeftTabButton active={false} onClick={() => showPending('기여하기')}>
-        기여하기
-      </LeftTabButton>
+    <div className="flex items-stretch px-3 border-b border-border-list flex-shrink-0">
+      <span className="flex items-center px-3 py-3.5 text-[13px] font-bold text-text-primary border-b-2 border-brand-red -mb-px">
+        문제 설명
+      </span>
     </div>
-  )
-}
-
-function LeftTabButton({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean
-  onClick?: () => void
-  children: React.ReactNode
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`px-3 py-2.5 text-[13px] font-bold transition-colors border-b-2 -mb-px ${
-        active
-          ? 'border-brand-red text-text-primary'
-          : 'border-transparent text-text-muted hover:text-text-secondary'
-      }`}
-    >
-      {children}
-    </button>
   )
 }
 
