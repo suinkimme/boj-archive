@@ -13,8 +13,9 @@ import { TopNav } from '@/components/challenges/TopNav'
 import { MarkdownRenderer } from '@/components/notices/MarkdownRenderer'
 import { getNoticeBySlug } from '@/lib/notion/notices'
 
-const SITE_URL =
+const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.next-judge.com'
+).replace(/\/+$/, '')
 const AUTHOR_NAME = '김민규'
 
 interface PageProps {
