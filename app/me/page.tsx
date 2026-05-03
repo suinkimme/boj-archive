@@ -10,7 +10,6 @@ import { TierBadge } from '@/components/auth/TierBadge'
 import { TopNav } from '@/components/challenges/TopNav'
 import { useImportSync } from '@/components/import-sync/ImportSyncProvider'
 import { AlertDialog } from '@/components/ui/AlertDialog'
-import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 import type { SolvedAcProblem, SolvedAcUser } from '@/lib/solvedac/types'
 
 type MeData = {
@@ -27,7 +26,6 @@ type MeData = {
 export default function MePage() {
   const router = useRouter()
   const { data: session, status } = useSession()
-  const showPending = usePendingFeature()
   const importSync = useImportSync()
 
   const [me, setMe] = useState<MeData | null>(null)
@@ -228,9 +226,8 @@ export default function MePage() {
               <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
                 {recentSolved.map((item) => (
                   <li key={item.problemId}>
-                    <button
-                      type="button"
-                      onClick={() => showPending('에디터')}
+                    <Link
+                      href={`/problems/${item.problemId}`}
                       className="w-full text-left h-12 flex items-center gap-3 px-4 hover:bg-surface-page transition-colors"
                     >
                       <TierBadge tier={item.level} className="text-[13px] flex-shrink-0" />
@@ -240,7 +237,7 @@ export default function MePage() {
                       <span className="flex-1 min-w-0 text-[14px] font-medium text-text-primary truncate">
                         {item.titleKo}
                       </span>
-                    </button>
+                    </Link>
                   </li>
                 ))}
               </ul>

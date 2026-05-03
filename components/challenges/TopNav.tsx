@@ -17,6 +17,29 @@ const NAV_LINKS: { label: string; href?: string }[] = [
   { label: '랭킹' },
 ]
 
+// 페이지별 nav에서 재사용하는 로그인/유저 메뉴 버튼.
+// 메인 TopNav는 자체 인라인 처리하지만, 페이지마다 새로 만드는 nav에서는
+// 이 버튼을 그대로 끼워 쓸 수 있도록 별도 export.
+export function NavAuthButton() {
+  const { data: session, status } = useSession()
+  const user = session?.user
+  const isAuthed = status === 'authenticated' && !!user
+
+  if (isAuthed && user) {
+    return <UserMenu user={user} />
+  }
+  return (
+    <button
+      type="button"
+      onClick={() => void signIn('github')}
+      disabled={status === 'loading'}
+      className="bg-brand-red text-white border-0 px-3 py-1.5 text-[13px] font-medium hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
+    >
+      로그인
+    </button>
+  )
+}
+
 export function TopNav() {
   const showPending = usePendingFeature()
   const { data: session, status } = useSession()
