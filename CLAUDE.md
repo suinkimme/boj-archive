@@ -14,6 +14,7 @@ design system and should be removed once everything it covers ships.
 | `components/challenges/TopNav.tsx` | each non-routed menu item | `프로젝트 소개` / `커뮤니티` / `기여하기` / `랭킹` (공지사항은 실 라우트) |
 | `components/challenges/TopNav.tsx` | login button | `로그인` |
 | `components/problems/CodeEditor.tsx` | "제출하기" button | `제출하기` (채점 백엔드 연결 시 제거) |
+| `app/problems/[id]/ProblemDetailView.tsx` | 좌측 패널의 "기여하기" 탭 | `기여하기` (API 연결 시 `components/problems/ContributePanel.tsx` 렌더로 교체) |
 
 The provider itself is mounted in `app/layout.tsx` so any descendant
 client component can call `usePendingFeature(label?)`.

@@ -1,4 +1,5 @@
-// 문제 디테일 좌측 상단 헤더: 번호, 제목, 티어, 제한, 태그, 출처.
+// 문제 디테일 좌측 상단 헤더: 번호, 제목, 티어, 제한, 태그.
+// 출처는 본문 하단의 아코디언(ProblemSource)에서 별도로 노출한다.
 
 import { TierBadge } from '@/components/auth/TierBadge'
 import type { Level } from '@/components/challenges/types'
@@ -10,7 +11,6 @@ interface Props {
   timeLimit: string | null
   memoryLimit: string | null
   tags: string[]
-  source: string | null
   done: boolean
 }
 
@@ -21,7 +21,6 @@ export function ProblemHeader({
   timeLimit,
   memoryLimit,
   tags,
-  source,
   done,
 }: Props) {
   return (
@@ -86,12 +85,6 @@ export function ProblemHeader({
             </li>
           ))}
         </ul>
-      )}
-
-      {source && (
-        <p className="mt-3 text-[12px] text-text-muted">
-          출처 · <span className="text-text-secondary">{source}</span>
-        </p>
       )}
     </header>
   )
