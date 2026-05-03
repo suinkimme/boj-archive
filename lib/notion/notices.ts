@@ -21,6 +21,7 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints'
 import { unstable_cache } from 'next/cache'
 import { NotionToMarkdown } from 'notion-to-md'
+import type { MdBlock } from 'notion-to-md/build/types'
 
 export const NOTICES_CACHE_TAG = 'notices'
 
@@ -110,11 +111,21 @@ function pageToMeta(page: PageObjectResponse): NoticeMeta | null {
 // 두 인접 단락 사이에 빈 줄을 보장. 리스트 아이템(`- `, `1. `), 인용(`> `),
 // 헤딩(`# `), HTML 블록(`<...`), 코드 펜스(```` ``` ````) 같은 "구조적" 줄은
 // 그대로 두고, 일반 텍스트 줄과 일반 텍스트 줄이 인접한 케이스만 분리한다.
+//
+// 단, 같은 paragraph 안의 shift+enter 줄바꿈(softenParagraphLineBreaks가
+// `  \n` markdown hard line break로 바꿔둔 것)은 paragraph break로 격상하면
+// 안 된다 — 그건 한 단락 안의 <br>로 남아야 함. cur 줄이 두 칸으로 끝나면
+// 그 자체가 next 줄과의 soft break 시그널이므로 빈 줄을 끼우지 않는다.
 function ensureBlockSeparators(md: string): string {
   const lines = md.split('\n')
   const out: string[] = []
   let inFence = false
-  const isStructural = (l: string) =>
+  const isStructuralAsCur = (l: string) =>
+    l.trim() === '' ||
+    l.endsWith('  ') ||
+    /^\s*([-*+]|\d+[.)])\s/.test(l) ||
+    /^\s*(>|#{1,6}\s|`{3,}|<)/.test(l)
+  const isStructuralAsNext = (l: string) =>
     l.trim() === '' ||
     /^\s*([-*+]|\d+[.)])\s/.test(l) ||
     /^\s*(>|#{1,6}\s|`{3,}|<)/.test(l)
@@ -128,10 +139,28 @@ function ensureBlockSeparators(md: string): string {
     if (inFence) continue
     const next = lines[i + 1]
     if (next == null) continue
-    if (isStructural(cur) || isStructural(next)) continue
+    if (isStructuralAsCur(cur) || isStructuralAsNext(next)) continue
     out.push('')
   }
   return out.join('\n')
+}
+
+// 노션 paragraph 블록 안의 shift+enter 줄바꿈은 같은 단락 안의 soft break
+// 인데, notion-to-md는 그냥 `\n` 한 개로 출력한다. 그대로 두면
+// ensureBlockSeparators가 paragraph break로 격상해 버리고, 격상하지 않더라도
+// CommonMark는 단순한 `\n`을 공백으로 흡수해 줄바꿈이 사라진다. 둘 다 노션에서
+// 보던 것과 다른 모양이라 paragraph 블록의 내부 `\n`을 markdown hard line
+// break(`  \n`)로 치환해 `<br>`이 그려지게 한다. 단락 사이의 `\n`(다른 블록과의
+// 경계)는 그대로 두고 ensureBlockSeparators가 빈 줄로 격상.
+function softenParagraphLineBreaks(blocks: MdBlock[]): MdBlock[] {
+  return blocks.map((b) => ({
+    ...b,
+    parent:
+      b.type === 'paragraph' && typeof b.parent === 'string'
+        ? b.parent.trimEnd().replace(/\n/g, '  \n')
+        : b.parent,
+    children: b.children ? softenParagraphLineBreaks(b.children) : b.children,
+  }))
 }
 
 function slugifyFromTitle(title: string): string {
@@ -235,7 +264,11 @@ async function fetchNoticeDetailBySlug(slug: string): Promise<NoticeDetail | nul
     n2m.setCustomTransformer('link_preview', bookmarkTransformer('link_preview'))
 
     const blocks = await n2m.pageToMarkdown(page.id)
-    const raw = n2m.toMarkdownString(blocks).parent ?? ''
+    // 단락 안의 shift+enter 줄바꿈을 markdown hard line break로 보존(<br> 렌더).
+    // 그래야 ensureBlockSeparators가 같은 단락의 줄바꿈을 paragraph break로
+    // 격상하지 않고, CommonMark도 그냥 `\n`을 공백으로 삼키지 않는다.
+    const softened = softenParagraphLineBreaks(blocks)
+    const raw = n2m.toMarkdownString(softened).parent ?? ''
     // notion-to-md는 인접 paragraph 블록을 한 줄(`\n`)로만 이어 붙여 CommonMark가
     // 이를 soft break(공백)로 해석한다. 결과적으로 두 단락이 하나의 <p>로 합쳐
     // 보이는 문제가 생긴다. 코드 펜스 안이 아닐 때, 두 인접 비-구조적 텍스트
