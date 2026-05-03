@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 
+import { getTagLabel } from './tag-labels'
 import { getLevelColor, getLevelLabel, type Level } from './types'
 
 interface ProblemItemProps {
@@ -93,7 +94,7 @@ export function ProblemItem({
           {/* Mobile: tags as plain inline text below meta line */}
           {tags && tags.length > 0 && (
             <p className="sm:hidden mt-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted leading-normal m-0 truncate">
-              {tags.join(' · ')}
+              {tags.map(getTagLabel).join(' · ')}
             </p>
           )}
         </div>
@@ -108,7 +109,7 @@ export function ProblemItem({
                 key={tag}
                 className="inline-flex px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
               >
-                {tag}
+                {getTagLabel(tag)}
               </li>
             ))}
             {tags.length > 3 && (

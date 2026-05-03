@@ -7,6 +7,7 @@ import { FilterDropdown } from '@/components/challenges/FilterDropdown'
 import { Pagination } from '@/components/challenges/Pagination'
 import { ProblemList } from '@/components/challenges/ProblemList'
 import { SearchInput } from '@/components/challenges/SearchInput'
+import { getTagLabel } from '@/components/challenges/tag-labels'
 import { ALL_TAGS } from '@/components/challenges/tags.generated'
 import { TopNav } from '@/components/challenges/TopNav'
 import {
@@ -34,7 +35,7 @@ const STATUS_ITEMS = [
 
 const TAG_ITEMS = ALL_TAGS.map((t) => ({
   value: t.value,
-  label: t.value,
+  label: getTagLabel(t.value),
   count: t.count,
 }))
 

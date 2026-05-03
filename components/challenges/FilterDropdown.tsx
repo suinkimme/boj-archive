@@ -141,10 +141,10 @@ export function FilterDropdown<T extends string | number>({
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full mt-2 bg-surface-card border border-border-key z-20 min-w-full w-max max-w-[min(20rem,calc(100vw-2rem))]">
+        <div className="absolute left-0 top-full mt-2 bg-surface-card border border-border-key z-20 min-w-full w-max max-w-full sm:max-w-[min(28rem,calc(100vw-2rem))]">
           <div
             role="listbox"
-            className="max-h-72 overflow-auto overscroll-contain"
+            className="max-h-72 overflow-y-auto overflow-x-hidden overscroll-contain"
           >
             {items.map((it) => {
               const active = selected.includes(it.value);
@@ -191,7 +191,7 @@ export function FilterDropdown<T extends string | number>({
                     </span>
                   )}
                   <span
-                    className={`flex-1 whitespace-nowrap ${active && !single ? "text-text-primary font-medium" : ""}`}
+                    className={`flex-1 break-keep ${active && !single ? "text-text-primary font-medium" : ""}`}
                   >
                     {it.label}
                   </span>
