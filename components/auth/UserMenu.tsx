@@ -80,7 +80,7 @@ export function UserMenu({ user }: { user: NonNullable<Session['user']> }) {
             role="menuitem"
             onClick={() => {
               setOpen(false)
-              void signOut()
+              void signOut({ callbackUrl: '/' })
             }}
             className="w-full text-left px-4 py-2.5 text-text-primary text-[13px] font-medium hover:bg-surface-page transition-colors border-t border-border-list"
           >
