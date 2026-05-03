@@ -182,10 +182,10 @@ export function ChallengesView({
       <header className="bg-surface-notice bg-[url('/hero-bg.png')] bg-cover bg-center bg-no-repeat">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-10 sm:pt-16 xl:pt-20 pb-8 sm:pb-14 xl:pb-16">
           <p className="hidden sm:block text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-brand-red mb-3 sm:mb-4">
-            BEYOND BOJ · OPEN ARCHIVE
+            OPEN ALGORITHM JUDGE
           </p>
           <h1 className="text-[24px] sm:text-[28px] md:text-[32px] xl:text-[40px] font-extrabold leading-tight tracking-tight text-text-primary m-0 mb-6 sm:mb-6">
-            백준의 다음을 잇는,
+            직접 풀고, 직접 채점하는,
             <br />
             <span className="text-brand-red">모두에게 열린 알고리즘 저지</span>를
             만나보세요.
