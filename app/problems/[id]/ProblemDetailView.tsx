@@ -17,6 +17,7 @@ import { ProblemHeader } from '@/components/problems/ProblemHeader'
 import { ProblemHtml } from '@/components/problems/ProblemHtml'
 import { ProblemTopNav } from '@/components/problems/ProblemTopNav'
 import { TestcasePanel } from '@/components/problems/TestcasePanel'
+import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 import type { ProblemDetail } from '@/lib/queries/problems'
 
 interface Props {
@@ -37,48 +38,10 @@ export default function ProblemDetailView({ problem }: Props) {
       >
         {/* 왼쪽: 본문 */}
         <Panel defaultSize={50} minSize={25} className="bg-surface-card">
-          <div className="h-full overflow-y-auto overflow-x-hidden">
-            <div className="max-w-[760px] px-4 py-6 sm:px-6 sm:py-10">
-              <ProblemHeader
-                id={problem.id}
-                title={problem.title}
-                level={problem.level}
-                timeLimit={problem.timeLimit}
-                memoryLimit={problem.memoryLimit}
-                tags={problem.tags}
-                source={problem.source}
-                done={problem.done}
-              />
-
-              <Section title="문제">
-                {problem.description ? (
-                  <ProblemHtml html={problem.description} />
-                ) : (
-                  <EmptyBody />
-                )}
-              </Section>
-
-              <Section title="입력">
-                {problem.inputFormat ? (
-                  <ProblemHtml html={problem.inputFormat} />
-                ) : (
-                  <EmptyBody />
-                )}
-              </Section>
-
-              <Section title="출력">
-                {problem.outputFormat ? (
-                  <ProblemHtml html={problem.outputFormat} />
-                ) : (
-                  <EmptyBody />
-                )}
-              </Section>
-
-              {problem.hint && (
-                <Section title="힌트">
-                  <ProblemHtml html={problem.hint} />
-                </Section>
-              )}
+          <div className="h-full flex flex-col">
+            <LeftPanelTabBar />
+            <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
+              <DescriptionContent problem={problem} />
             </div>
           </div>
         </Panel>
@@ -101,6 +64,119 @@ export default function ProblemDetailView({ problem }: Props) {
         </Panel>
       </PanelGroup>
     </div>
+  )
+}
+
+// "기여하기" 탭은 폼 UI는 작성됐지만(API 미연결) 일단 PendingFeature
+// 알럿으로 가려둔다. API가 붙으면 탭 상태(useState)와 ContributePanel
+// 렌더로 되돌리면 된다 — 컴포넌트는 components/problems/ContributePanel.tsx에 그대로 있음.
+function LeftPanelTabBar() {
+  const showPending = usePendingFeature()
+  return (
+    <div className="flex items-center gap-1 border-b border-border-list px-3 flex-shrink-0">
+      <LeftTabButton active>문제 설명</LeftTabButton>
+      <LeftTabButton active={false} onClick={() => showPending('기여하기')}>
+        기여하기
+      </LeftTabButton>
+    </div>
+  )
+}
+
+function LeftTabButton({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean
+  onClick?: () => void
+  children: React.ReactNode
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`px-3 py-2.5 text-[13px] font-bold transition-colors border-b-2 -mb-px ${
+        active
+          ? 'border-brand-red text-text-primary'
+          : 'border-transparent text-text-muted hover:text-text-secondary'
+      }`}
+    >
+      {children}
+    </button>
+  )
+}
+
+function DescriptionContent({ problem }: { problem: ProblemDetail }) {
+  return (
+    <div className="max-w-[760px] px-4 py-6 sm:px-6 sm:py-10">
+      <ProblemHeader
+        id={problem.id}
+        title={problem.title}
+        level={problem.level}
+        timeLimit={problem.timeLimit}
+        memoryLimit={problem.memoryLimit}
+        tags={problem.tags}
+        done={problem.done}
+      />
+
+      <Section title="문제">
+        {problem.description ? (
+          <ProblemHtml html={problem.description} />
+        ) : (
+          <EmptyBody />
+        )}
+      </Section>
+
+      <Section title="입력">
+        {problem.inputFormat ? (
+          <ProblemHtml html={problem.inputFormat} />
+        ) : (
+          <EmptyBody />
+        )}
+      </Section>
+
+      <Section title="출력">
+        {problem.outputFormat ? (
+          <ProblemHtml html={problem.outputFormat} />
+        ) : (
+          <EmptyBody />
+        )}
+      </Section>
+
+      {problem.hint && (
+        <Section title="힌트">
+          <ProblemHtml html={problem.hint} />
+        </Section>
+      )}
+
+      {problem.source && <ProblemSource source={problem.source} />}
+    </div>
+  )
+}
+
+// 출처는 보조 정보라 기본은 접혀 있고, 사용자가 펼치면 보이게 한다.
+// 제목/태그 영역에 같이 두면 시선이 분산되는 데다, 디테일 페이지 진입
+// 직후엔 문제 본문이 우선이다.
+function ProblemSource({ source }: { source: string }) {
+  return (
+    <details className="mt-10 border-t border-border-list group">
+      <summary className="flex items-center justify-between cursor-pointer list-none py-3 text-[12px] font-bold uppercase tracking-[0.18em] text-text-muted hover:text-text-secondary transition-colors">
+        <span>출처</span>
+        <svg
+          className="w-3 h-3 transition-transform group-open:rotate-180"
+          viewBox="0 0 12 12"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.6}
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5l3 3 3-3" />
+        </svg>
+      </summary>
+      <p className="pb-4 text-[13px] text-text-secondary leading-[1.6]">
+        {source}
+      </p>
+    </details>
   )
 }
 
