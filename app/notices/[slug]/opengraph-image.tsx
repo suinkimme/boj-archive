@@ -110,14 +110,15 @@ export default async function OgImage({
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'baseline',
             fontSize: '28px',
             fontWeight: 700,
             letterSpacing: '0.06em',
           }}
         >
           <span>NEXT JUDGE</span>
-          <span style={{ color: '#F9423A' }}>.</span>
+          {/* letter-spacing 0.06em이 마지막 'E' 뒤에도 적용되어 점이 떨어져 보임 — 동일량만큼 당겨 사이트 워드마크와 같은 모양으로 */}
+          <span style={{ color: '#F9423A', marginLeft: '-0.06em' }}>.</span>
         </div>
       </div>
     ),
