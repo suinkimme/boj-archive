@@ -112,7 +112,7 @@ export default function ProblemDetailView({ problem }: Props) {
 // 모두 떨어진다. 핸들을 항상 위에 올린다.
 function VerticalResizeHandle() {
   return (
-    <PanelResizeHandle className="group relative z-10 w-px bg-border data-[resize-handle-state=hover]:bg-brand-red data-[resize-handle-state=drag]:bg-brand-red transition-colors">
+    <PanelResizeHandle className="group relative z-20 w-px bg-border data-[resize-handle-state=hover]:bg-brand-red data-[resize-handle-state=drag]:bg-brand-red transition-colors">
       {/* 잡기 쉬운 hit area (보이지 않음) */}
       <div className="absolute inset-y-0 -left-1.5 -right-1.5" />
       {/* 항상 보이는 grip 인디케이터 */}
