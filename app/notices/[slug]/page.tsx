@@ -5,6 +5,7 @@
 //   - eyebrow line (카테고리 · 날짜) → 큰 제목 → 본문 → 하단 back link
 //   - 디자인 토큰만 사용 (DESIGN.md)
 
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -12,8 +13,41 @@ import { TopNav } from '@/components/challenges/TopNav'
 import { MarkdownRenderer } from '@/components/notices/MarkdownRenderer'
 import { getNoticeBySlug } from '@/lib/notion/notices'
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.next-judge.com'
+const AUTHOR_NAME = '김민규'
+
 interface PageProps {
   params: Promise<{ slug: string }>
+}
+
+// Excerpt는 화면에는 노출하지 않고 메타 description / OG description으로만 사용한다.
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const notice = await getNoticeBySlug(slug)
+  if (!notice) return {}
+  const description = notice.excerpt ?? undefined
+  const url = `${SITE_URL}/notices/${notice.slug}`
+  return {
+    title: notice.title,
+    description,
+    alternates: { canonical: url },
+    authors: [{ name: AUTHOR_NAME }],
+    openGraph: {
+      title: notice.title,
+      description,
+      type: 'article',
+      url,
+      publishedTime: notice.publishedAt ?? undefined,
+      modifiedTime: notice.updatedAt,
+      authors: [AUTHOR_NAME],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: notice.title,
+      description,
+    },
+  }
 }
 
 export default async function NoticeDetailPage({ params }: PageProps) {
@@ -21,8 +55,36 @@ export default async function NoticeDetailPage({ params }: PageProps) {
   const notice = await getNoticeBySlug(slug)
   if (!notice) notFound()
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: notice.title,
+    description: notice.excerpt ?? undefined,
+    datePublished: notice.publishedAt ?? notice.updatedAt,
+    dateModified: notice.updatedAt,
+    author: {
+      '@type': 'Person',
+      name: AUTHOR_NAME,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'NEXT JUDGE.',
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/notices/${notice.slug}`,
+    },
+    articleSection: notice.category ?? undefined,
+  }
+
   return (
     <div className="min-h-screen bg-surface-card">
+      {/* JSON-LD: 검색엔진 리치 결과(저자/날짜/카테고리) 노출용 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <TopNav />
 
       <main className="max-w-[760px] mx-auto px-6 sm:px-10 pt-10 sm:pt-14 pb-16">
@@ -43,11 +105,6 @@ export default async function NoticeDetailPage({ params }: PageProps) {
           <h1 className="text-[32px] sm:text-[44px] font-extrabold text-text-primary tracking-tight leading-[1.15] m-0">
             {notice.title}
           </h1>
-          {notice.excerpt && (
-            <p className="mt-5 text-[16px] sm:text-[17px] text-text-secondary leading-relaxed m-0">
-              {notice.excerpt}
-            </p>
-          )}
         </header>
 
         <article>
