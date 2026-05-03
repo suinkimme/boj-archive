@@ -15,8 +15,9 @@ const notoSansKr = Noto_Sans_KR({
   variable: '--font-noto-sans-kr',
 })
 
-const SITE_URL =
+const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://boj-archive.vercel.app'
+).replace(/\/+$/, '')
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
