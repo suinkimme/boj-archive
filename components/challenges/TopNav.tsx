@@ -17,30 +17,16 @@ const NAV_LINKS: { label: string; href?: string }[] = [
   { label: '랭킹' },
 ]
 
-// 페이지별 nav에서 재사용하는 로그인/유저 메뉴 버튼.
-// 메인 TopNav는 자체 인라인 처리하지만, 페이지마다 새로 만드는 nav에서는
-// 이 버튼을 그대로 끼워 쓸 수 있도록 별도 export.
-export function NavAuthButton() {
-  const { data: session, status } = useSession()
-  const user = session?.user
-  const isAuthed = status === 'authenticated' && !!user
-
-  if (isAuthed && user) {
-    return <UserMenu user={user} />
-  }
-  return (
-    <button
-      type="button"
-      onClick={() => void signIn('github')}
-      disabled={status === 'loading'}
-      className="bg-brand-red text-white border-0 px-3 py-1.5 text-[13px] font-medium hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
-    >
-      로그인
-    </button>
-  )
+interface TopNavProps {
+  /**
+   * 'default'  — 메인 페이지용. max-w-[1200px] mx-auto + px-6 sm:px-10.
+   * 'fullbleed' — 문제 디테일처럼 전체 너비를 쓰는 페이지용. 좌측 로고가
+   *               본문 좌측 패딩(px-4 sm:px-6)과 픽셀 단위로 정렬된다.
+   */
+  variant?: 'default' | 'fullbleed'
 }
 
-export function TopNav() {
+export function TopNav({ variant = 'default' }: TopNavProps = {}) {
   const showPending = usePendingFeature()
   const { data: session, status } = useSession()
   const [open, setOpen] = useState(false)
@@ -78,9 +64,14 @@ export function TopNav() {
   const user = session?.user
   const mobileDisplayName = user?.name ?? user?.login ?? 'GitHub 사용자'
 
+  const containerClass =
+    variant === 'fullbleed'
+      ? 'h-[60px] px-4 sm:px-6 flex items-center justify-between'
+      : 'max-w-[1200px] mx-auto h-[60px] px-6 sm:px-10 flex items-center justify-between'
+
   return (
     <nav className="bg-brand-dark relative">
-      <div className="max-w-[1200px] mx-auto h-[60px] px-6 sm:px-10 flex items-center justify-between">
+      <div className={containerClass}>
         <a href="/" className="text-white text-lg font-bold tracking-[0.06em]">
           NEXT JUDGE<span className="text-brand-red">.</span>
         </a>
