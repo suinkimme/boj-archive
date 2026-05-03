@@ -112,7 +112,7 @@ export default function MePage() {
         <main className="max-w-[440px] mx-auto px-6 sm:px-10 pt-20 text-center">
           <h1 className="text-[22px] font-extrabold text-text-primary mb-3">로그인이 필요해요</h1>
           <p className="text-[14px] text-text-secondary mb-8">
-            프로필을 보려면 먼저 GitHub으로 로그인해주세요.
+            프로필을 보려면 먼저 로그인해주세요.
           </p>
           <Link
             href="/"
@@ -305,7 +305,7 @@ export default function MePage() {
             )}
             <button
               type="button"
-              onClick={() => void signOut()}
+              onClick={() => void signOut({ callbackUrl: '/' })}
               className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between"
             >
               <span className="text-[14px] font-medium text-text-primary">로그아웃</span>
