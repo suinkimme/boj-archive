@@ -11,10 +11,9 @@ design system and should be removed once everything it covers ships.
 
 | Location | Trigger | Feature label shown |
 | --- | --- | --- |
-| `components/challenges/ProblemItem.tsx` | row click | `에디터` |
-| `app/me/page.tsx` | 최근 푼 문제 row click | `에디터` |
 | `components/challenges/TopNav.tsx` | each non-routed menu item | `프로젝트 소개` / `커뮤니티` / `기여하기` / `랭킹` (공지사항은 실 라우트) |
 | `components/challenges/TopNav.tsx` | login button | `로그인` |
+| `components/problems/CodeEditor.tsx` | "제출하기" button | `제출하기` (채점 백엔드 연결 시 제거) |
 
 The provider itself is mounted in `app/layout.tsx` so any descendant
 client component can call `usePendingFeature(label?)`.

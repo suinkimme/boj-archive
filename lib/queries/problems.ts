@@ -206,3 +206,72 @@ function deriveRate(averageTries: number | null): number {
   if (averageTries == null || averageTries <= 0) return 0
   return Math.min(100, 100 / averageTries)
 }
+
+export interface ProblemDetail {
+  id: number
+  title: string
+  level: Level
+  description: string | null
+  inputFormat: string | null
+  outputFormat: string | null
+  hint: string | null
+  source: string | null
+  tags: string[]
+  timeLimit: string | null
+  memoryLimit: string | null
+  samples: { input: string; output: string }[]
+  acceptedUserCount: number
+  rate: number
+  done: boolean
+}
+
+export async function fetchProblemDetail(
+  problemId: number,
+  userId: string | null,
+): Promise<ProblemDetail | null> {
+  const rows = await db
+    .select({
+      problemId: problems.problemId,
+      titleKo: problems.titleKo,
+      level: problems.level,
+      description: problems.description,
+      inputFormat: problems.inputFormat,
+      outputFormat: problems.outputFormat,
+      hint: problems.hint,
+      source: problems.source,
+      tags: problems.tags,
+      timeLimit: problems.timeLimit,
+      memoryLimit: problems.memoryLimit,
+      samples: problems.samples,
+      acceptedUserCount: problems.acceptedUserCount,
+      averageTries: problems.averageTries,
+      // fetchProblemsForList와 동일한 EXISTS 패턴으로 done 플래그 결정.
+      done: userId
+        ? sql<number>`(case when exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id) then 1 else 0 end)`
+        : sql<number>`0`,
+    })
+    .from(problems)
+    .where(eq(problems.problemId, problemId))
+    .limit(1)
+
+  const row = rows[0]
+  if (!row) return null
+
+  return {
+    id: row.problemId,
+    title: row.titleKo,
+    level: row.level as Level,
+    description: row.description,
+    inputFormat: row.inputFormat,
+    outputFormat: row.outputFormat,
+    hint: row.hint,
+    source: row.source,
+    tags: row.tags ?? [],
+    timeLimit: row.timeLimit,
+    memoryLimit: row.memoryLimit,
+    samples: row.samples ?? [],
+    acceptedUserCount: row.acceptedUserCount ?? 0,
+    rate: deriveRate(row.averageTries),
+    done: Number(row.done) === 1,
+  }
+}

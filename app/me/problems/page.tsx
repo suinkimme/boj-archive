@@ -7,7 +7,6 @@ import { useEffect, useMemo, useState } from 'react'
 import type { MyProblem, MyProblemsResponse } from '@/app/api/me/problems/route'
 import { TierBadge } from '@/components/auth/TierBadge'
 import { TopNav } from '@/components/challenges/TopNav'
-import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 
 export default function MyProblemsPage() {
   const { status } = useSession()
@@ -184,20 +183,18 @@ function ProblemSection({
 }
 
 function TileGrid({ problems }: { problems: MyProblem[] }) {
-  const showPending = usePendingFeature()
   return (
     <ul className="flex flex-wrap gap-1 sm:gap-1.5">
       {problems.map((p) => (
         <li key={p.problemId}>
-          <button
-            type="button"
-            onClick={() => showPending('에디터')}
+          <Link
+            href={`/problems/${p.problemId}`}
             title={`${p.problemId}번 · ${p.titleKo}`}
             className="h-7 sm:h-9 px-1.5 sm:px-2.5 inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-[12px] font-bold tabular-nums border border-border-list bg-surface-card text-text-primary hover:bg-surface-page transition-colors"
           >
             <TierBadge tier={p.level} className="text-[10px] sm:text-[11px]" />
             <span>{p.problemId}</span>
-          </button>
+          </Link>
         </li>
       ))}
     </ul>
