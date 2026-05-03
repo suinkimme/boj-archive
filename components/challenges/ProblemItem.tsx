@@ -1,6 +1,6 @@
 'use client'
 
-import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
+import Link from 'next/link'
 
 import { getLevelColor, getLevelLabel, type Level } from './types'
 
@@ -25,12 +25,10 @@ export function ProblemItem({
   done,
   tried,
 }: ProblemItemProps) {
-  const showPending = usePendingFeature()
   return (
     <li className="list-none">
-      <button
-        type="button"
-        onClick={() => showPending('에디터')}
+      <Link
+        href={`/problems/${id}`}
         className="w-full text-left group flex items-center gap-3 px-6 sm:px-3 py-4 hover:bg-surface-page transition-colors"
       >
         <span
@@ -123,7 +121,7 @@ export function ProblemItem({
             )}
           </ul>
         )}
-      </button>
+      </Link>
     </li>
   )
 }

@@ -1,62 +1,85 @@
-// CodeMirror 5 기반 read-only 코드 블록.
+// CodeMirror 6 기반 read-only 코드 블록.
 //
-// CodeMirror 5는 import 시점에 document를 참조해 SSR에서 깨지므로
-// 이 파일은 next/dynamic + ssr:false로만 import해야 한다.
+// MarkdownRenderer가 next/dynamic + ssr:false로 이 파일을 import하므로 모듈
+// 최상위에서 CM6 패키지를 정적 import해도 안전하다. 외부 props
+// `{ code, language }`는 그대로 유지해 caller(MarkdownRenderer.pre)는 무변경.
 //
-// 운영자가 자주 쓰는 언어 mode만 정적 import. 그 외 언어는 plain text로.
+// 새 언어를 추가할 때는 langExtensions()의 switch에 한 줄만 더 넣으면 된다.
+// 공식 lang-* 패키지가 없는 언어는 @codemirror/legacy-modes의 stream mode를
+// StreamLanguage.define으로 감싸서 쓴다 (Ruby, shell 등).
 
 'use client'
 
-import 'codemirror/lib/codemirror.css'
-import 'codemirror/theme/material-darker.css'
-import 'codemirror/mode/javascript/javascript'
-import 'codemirror/mode/python/python'
-import 'codemirror/mode/clike/clike'
-import 'codemirror/mode/rust/rust'
-import 'codemirror/mode/go/go'
-import 'codemirror/mode/ruby/ruby'
-import 'codemirror/mode/shell/shell'
-import 'codemirror/mode/sql/sql'
-import 'codemirror/mode/css/css'
-import 'codemirror/mode/htmlmixed/htmlmixed'
-import 'codemirror/mode/xml/xml'
-import 'codemirror/mode/markdown/markdown'
+import { StreamLanguage } from '@codemirror/language'
+import { cpp } from '@codemirror/lang-cpp'
+import { css } from '@codemirror/lang-css'
+import { go } from '@codemirror/lang-go'
+import { html } from '@codemirror/lang-html'
+import { java } from '@codemirror/lang-java'
+import { javascript } from '@codemirror/lang-javascript'
+import { markdown } from '@codemirror/lang-markdown'
+import { python } from '@codemirror/lang-python'
+import { rust } from '@codemirror/lang-rust'
+import { sql } from '@codemirror/lang-sql'
+import { xml } from '@codemirror/lang-xml'
+import { ruby } from '@codemirror/legacy-modes/mode/ruby'
+import { shell } from '@codemirror/legacy-modes/mode/shell'
+import type { Extension } from '@codemirror/state'
+import { oneDark } from '@codemirror/theme-one-dark'
+import { EditorView } from '@codemirror/view'
+import CodeMirror from '@uiw/react-codemirror'
+import { useState } from 'react'
 
-import CodeMirror from 'codemirror'
-import { useEffect, useRef, useState } from 'react'
-
-type CodeMirrorMode = string | { name: string; [k: string]: unknown }
-
-const MODE_MAP: Record<string, CodeMirrorMode> = {
-  javascript: 'javascript',
-  js: 'javascript',
-  jsx: { name: 'javascript', jsx: true },
-  typescript: { name: 'javascript', typescript: true },
-  ts: { name: 'javascript', typescript: true },
-  tsx: { name: 'javascript', typescript: true, jsx: true },
-  python: 'python',
-  py: 'python',
-  c: 'text/x-csrc',
-  cpp: 'text/x-c++src',
-  java: 'text/x-java',
-  csharp: 'text/x-csharp',
-  cs: 'text/x-csharp',
-  kotlin: 'text/x-kotlin',
-  rust: 'rust',
-  rs: 'rust',
-  go: 'go',
-  ruby: 'ruby',
-  rb: 'ruby',
-  bash: 'shell',
-  sh: 'shell',
-  shell: 'shell',
-  sql: 'sql',
-  css: 'css',
-  scss: 'css',
-  html: 'htmlmixed',
-  xml: 'xml',
-  markdown: 'markdown',
-  md: 'markdown',
+function langExtensions(lang?: string): Extension[] {
+  const key = (lang ?? '').toLowerCase()
+  switch (key) {
+    case 'python':
+    case 'py':
+      return [python()]
+    case 'c':
+    case 'cpp':
+    case 'c++':
+      return [cpp()]
+    case 'javascript':
+    case 'js':
+      return [javascript()]
+    case 'jsx':
+      return [javascript({ jsx: true })]
+    case 'typescript':
+    case 'ts':
+      return [javascript({ typescript: true })]
+    case 'tsx':
+      return [javascript({ jsx: true, typescript: true })]
+    case 'java':
+      return [java()]
+    case 'rust':
+    case 'rs':
+      return [rust()]
+    case 'go':
+      return [go()]
+    case 'sql':
+      return [sql()]
+    case 'css':
+    case 'scss':
+      return [css()]
+    case 'html':
+    case 'htmlmixed':
+      return [html()]
+    case 'xml':
+      return [xml()]
+    case 'markdown':
+    case 'md':
+      return [markdown()]
+    case 'ruby':
+    case 'rb':
+      return [StreamLanguage.define(ruby)]
+    case 'bash':
+    case 'sh':
+    case 'shell':
+      return [StreamLanguage.define(shell)]
+    default:
+      return []
+  }
 }
 
 interface Props {
@@ -65,33 +88,8 @@ interface Props {
 }
 
 export default function CodeBlock({ code, language }: Props) {
-  const containerRef = useRef<HTMLDivElement | null>(null)
   const [copied, setCopied] = useState(false)
   const langKey = (language ?? '').toLowerCase()
-  const mode = MODE_MAP[langKey] ?? null
-
-  useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-    el.replaceChildren()
-    const editor = CodeMirror(el, {
-      value: code,
-      readOnly: 'nocursor',
-      theme: 'material-darker',
-      lineNumbers: true,
-      lineWrapping: true,
-      mode: mode ?? undefined,
-      tabSize: 2,
-      indentUnit: 2,
-      viewportMargin: Infinity, // 컨텐츠 높이에 맞춰 자동 확장
-    })
-    return () => {
-      // editor.toTextArea() 는 CM이 textarea에서 만들어졌을 때만 동작.
-      // div에서 만들었으므로 wrapper element를 직접 제거.
-      const wrapper = editor.getWrapperElement()
-      if (wrapper.parentNode === el) el.removeChild(wrapper)
-    }
-  }, [code, mode])
 
   const handleCopy = async () => {
     if (!code) return
@@ -126,7 +124,21 @@ export default function CodeBlock({ code, language }: Props) {
           )}
         </button>
       </div>
-      <div ref={containerRef} className="text-[13px] leading-relaxed [&_.CodeMirror]:!h-auto [&_.CodeMirror]:!bg-transparent [&_.CodeMirror-gutters]:!bg-transparent [&_.CodeMirror-gutters]:!border-r-0" />
+      <div className="text-[13px] leading-relaxed [&_.cm-editor]:!bg-transparent [&_.cm-gutters]:!bg-transparent [&_.cm-gutters]:!border-r-0 [&_.cm-focused]:!outline-none">
+        <CodeMirror
+          value={code}
+          theme={oneDark}
+          editable={false}
+          extensions={[...langExtensions(language), EditorView.lineWrapping]}
+          basicSetup={{
+            lineNumbers: true,
+            foldGutter: false,
+            highlightActiveLine: false,
+            highlightActiveLineGutter: false,
+            highlightSelectionMatches: false,
+          }}
+        />
+      </div>
     </div>
   )
 }
