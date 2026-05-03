@@ -5,8 +5,11 @@ import type { MetadataRoute } from 'next'
 
 import { listPublishedNotices } from '@/lib/notion/notices'
 
-const SITE_URL =
+// trailing slash 정규화 — env에 끝 슬래시가 박혀 있으면 `${SITE_URL}/path`가
+// `//path`로 더블 슬래시가 되어 sitemap이 깨진다.
+const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.next-judge.com'
+).replace(/\/+$/, '')
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const notices = await listPublishedNotices()
