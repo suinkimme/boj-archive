@@ -7,6 +7,7 @@
 //   - 본문: 각 row = [카테고리][제목][날짜] 3-column,  하단 옅은 divider
 //   - 디자인 토큰만 사용 (DESIGN.md)
 
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import { TopNav } from '@/components/challenges/TopNav'
@@ -16,8 +17,23 @@ import {
   listPublishedNotices,
 } from '@/lib/notion/notices'
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.next-judge.com'
+
 const PAGE_SIZE = 20
 const ALL_CATEGORIES: NoticeCategory[] = ['공지', '업데이트']
+
+export const metadata: Metadata = {
+  title: '공지사항',
+  description: 'NEXT JUDGE.의 업데이트, 점검, 안내 소식을 한곳에 모았어요.',
+  alternates: { canonical: `${SITE_URL}/notices` },
+  openGraph: {
+    title: '공지사항 · NEXT JUDGE.',
+    description: 'NEXT JUDGE.의 업데이트, 점검, 안내 소식을 한곳에 모았어요.',
+    url: `${SITE_URL}/notices`,
+    type: 'website',
+  },
+}
 
 interface PageProps {
   searchParams: Promise<{
