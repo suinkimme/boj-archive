@@ -8,8 +8,10 @@ import { useEffect, useState } from 'react'
 import { UserMenu } from '@/components/auth/UserMenu'
 import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 
-const NAV_LINKS = [
+// href가 있는 항목은 실제 라우트, 없는 항목은 아직 준비 중인 메뉴라 PendingFeature로 처리.
+const NAV_LINKS: { label: string; href?: string }[] = [
   { label: '프로젝트 소개' },
+  { label: '공지사항', href: '/notices' },
   { label: '커뮤니티' },
   { label: '기여하기' },
   { label: '랭킹' },
@@ -46,7 +48,7 @@ export function TopNav() {
 
   const handleSignOut = () => {
     setOpen(false)
-    void signOut()
+    void signOut({ callbackUrl: '/' })
   }
 
   const isAuthed = status === 'authenticated' && !!session?.user
@@ -64,13 +66,22 @@ export function TopNav() {
         <ul className="hidden md:flex items-center gap-1 list-none">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <button
-                type="button"
-                onClick={() => showPending(link.label)}
-                className="text-white/60 text-[14px] font-medium hover:text-white transition-colors px-3 py-1.5"
-              >
-                {link.label}
-              </button>
+              {link.href ? (
+                <Link
+                  href={link.href}
+                  className="block text-white/60 text-[14px] font-medium hover:text-white transition-colors px-3 py-1.5"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => showPending(link.label)}
+                  className="text-white/60 text-[14px] font-medium hover:text-white transition-colors px-3 py-1.5"
+                >
+                  {link.label}
+                </button>
+              )}
             </li>
           ))}
           <li className="ml-2">
@@ -129,13 +140,23 @@ export function TopNav() {
           <ul className="flex-1 overflow-y-auto list-none m-0 p-0">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
-                <button
-                  type="button"
-                  onClick={() => handleNavPress(link.label)}
-                  className="block w-full text-left text-text-primary text-[18px] font-bold hover:bg-surface-page transition-colors px-6 py-5"
-                >
-                  {link.label}
-                </button>
+                {link.href ? (
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="block w-full text-left text-text-primary text-[18px] font-bold hover:bg-surface-page transition-colors px-6 py-5"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => handleNavPress(link.label)}
+                    className="block w-full text-left text-text-primary text-[18px] font-bold hover:bg-surface-page transition-colors px-6 py-5"
+                  >
+                    {link.label}
+                  </button>
+                )}
               </li>
             ))}
           </ul>
