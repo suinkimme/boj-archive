@@ -33,6 +33,9 @@ export type NoticeMeta = {
   excerpt: string | null
   category: NoticeCategory | null
   publishedAt: string | null // ISO
+  /** Notion 페이지의 last_edited_time. sitemap의 lastModified, JSON-LD의
+   *  dateModified로 노출해 검색엔진 신선도 신호로 쓴다. */
+  updatedAt: string // ISO
 }
 
 export type NoticeDetail = NoticeMeta & {
@@ -100,7 +103,35 @@ function pageToMeta(page: PageObjectResponse): NoticeMeta | null {
     excerpt: excerpt || null,
     category: readCategory(categoryRaw),
     publishedAt: publishedAt ?? null,
+    updatedAt: page.last_edited_time,
   }
+}
+
+// 두 인접 단락 사이에 빈 줄을 보장. 리스트 아이템(`- `, `1. `), 인용(`> `),
+// 헤딩(`# `), HTML 블록(`<...`), 코드 펜스(```` ``` ````) 같은 "구조적" 줄은
+// 그대로 두고, 일반 텍스트 줄과 일반 텍스트 줄이 인접한 케이스만 분리한다.
+function ensureBlockSeparators(md: string): string {
+  const lines = md.split('\n')
+  const out: string[] = []
+  let inFence = false
+  const isStructural = (l: string) =>
+    l.trim() === '' ||
+    /^\s*([-*+]|\d+[.)])\s/.test(l) ||
+    /^\s*(>|#{1,6}\s|`{3,}|<)/.test(l)
+  for (let i = 0; i < lines.length; i++) {
+    const cur = lines[i]
+    out.push(cur)
+    if (/^\s*`{3,}/.test(cur)) {
+      inFence = !inFence
+      continue
+    }
+    if (inFence) continue
+    const next = lines[i + 1]
+    if (next == null) continue
+    if (isStructural(cur) || isStructural(next)) continue
+    out.push('')
+  }
+  return out.join('\n')
 }
 
 function slugifyFromTitle(title: string): string {
@@ -204,7 +235,12 @@ async function fetchNoticeDetailBySlug(slug: string): Promise<NoticeDetail | nul
     n2m.setCustomTransformer('link_preview', bookmarkTransformer('link_preview'))
 
     const blocks = await n2m.pageToMarkdown(page.id)
-    const md = n2m.toMarkdownString(blocks).parent ?? ''
+    const raw = n2m.toMarkdownString(blocks).parent ?? ''
+    // notion-to-md는 인접 paragraph 블록을 한 줄(`\n`)로만 이어 붙여 CommonMark가
+    // 이를 soft break(공백)로 해석한다. 결과적으로 두 단락이 하나의 <p>로 합쳐
+    // 보이는 문제가 생긴다. 코드 펜스 안이 아닐 때, 두 인접 비-구조적 텍스트
+    // 줄 사이에 빈 줄을 끼워 넣어 단락이 분리되도록 정리한다.
+    const md = ensureBlockSeparators(raw)
     return { ...meta, markdown: md }
   } catch (e) {
     console.error('[notices] detail failed', { slug }, e)
