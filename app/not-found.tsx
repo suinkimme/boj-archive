@@ -1,79 +1,34 @@
-import Link from 'next/link'
+// 404 페이지 — 헤더/푸터 없이 화면 정중앙에 미니멀 배치.
+//
+// 위에서 아래로: 워드마크 → 404 eyebrow → 헤딩 → 설명 → CTA.
+// 각 요소 사이 간격을 넉넉히 잡아 "심플하지만 정돈된" 톤을 유지한다.
 
-import { TopNav } from '@/components/challenges/TopNav'
+import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-surface-card font-sans text-text-primary flex flex-col">
-      <TopNav />
+    <main className="min-h-screen bg-surface-card font-sans text-text-primary flex items-center justify-center px-6">
+      <div className="text-center max-w-[440px]">
+        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-red">
+          ERROR · 404
+        </p>
 
-      <main className="flex-1 flex items-center justify-center bg-surface-notice bg-[url('/hero-bg.png')] bg-cover bg-center bg-no-repeat">
-        <div className="max-w-[1200px] w-full mx-auto px-6 sm:px-10 py-16 sm:py-24">
-          <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-brand-red mb-4">
-            ERROR · 404 NOT FOUND
-          </p>
+        <h1 className="mt-3 text-[20px] sm:text-[22px] font-extrabold tracking-tight text-text-primary m-0">
+          여기엔 아무것도 없어요
+        </h1>
+        <p className="mt-3 text-[13px] sm:text-[14px] text-text-secondary leading-relaxed">
+          주소가 잘못되었거나 페이지가 이동·삭제되었을 수 있어요.
+          <br />
+          주소를 다시 한번 확인해주세요.
+        </p>
 
-          <p
-            className="text-[96px] sm:text-[140px] xl:text-[180px] font-extrabold leading-none tracking-tight text-text-primary m-0"
-            aria-hidden="true"
-          >
-            404<span className="text-brand-red">.</span>
-          </p>
-
-          <h1 className="text-[22px] sm:text-[28px] xl:text-[32px] font-extrabold leading-tight tracking-tight text-text-primary m-0 mt-6">
-            찾으시는 페이지가 <span className="text-brand-red">사라졌어요</span>.
-          </h1>
-
-          <p className="text-sm sm:text-base text-text-secondary mt-3 leading-relaxed max-w-xl">
-            주소가 잘못 입력되었거나, 페이지가 이동 또는 삭제되었을 수 있어요.
-            아래에서 다시 시작해 보세요.
-          </p>
-
-          <div className="mt-8 sm:mt-10 flex flex-wrap gap-3">
-            <Link
-              href="/"
-              className="bg-brand-red text-white px-6 py-[14px] text-sm sm:text-base font-bold tracking-tight hover:opacity-90 transition-opacity"
-            >
-              홈으로 돌아가기
-            </Link>
-            <Link
-              href="/me"
-              className="bg-surface-card text-text-primary border border-border-key px-6 py-[14px] text-sm sm:text-base font-bold tracking-tight hover:bg-surface-page transition-colors"
-            >
-              내 활동 보기
-            </Link>
-          </div>
-        </div>
-      </main>
-
-      <footer className="max-w-[1200px] mx-auto w-full px-6 sm:px-10 py-10">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-secondary">
-          <span className="text-text-muted basis-full min-[425px]:basis-auto">
-            © 2026 NEXT JUDGE.
-          </span>
-          <span
-            className="hidden min-[425px]:inline text-border-key"
-            aria-hidden="true"
-          >
-            ·
-          </span>
-          <a
-            href="https://github.com/suinkimme/boj-archive"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-brand-red transition-colors"
-          >
-            GitHub
-          </a>
-          <span className="text-border-key" aria-hidden="true">·</span>
-          <a
-            href="mailto:contact@suinkim.me"
-            className="hover:text-brand-red transition-colors"
-          >
-            contact@suinkim.me
-          </a>
-        </div>
-      </footer>
-    </div>
+        <Link
+          href="/"
+          className="inline-block mt-9 bg-brand-dark text-white px-6 py-3 text-[14px] font-bold hover:opacity-90 transition-opacity"
+        >
+          홈으로 돌아가기
+        </Link>
+      </div>
+    </main>
   )
 }
