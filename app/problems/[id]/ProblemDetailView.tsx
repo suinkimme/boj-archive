@@ -4,18 +4,19 @@
 // 직접 드래그해 비율을 조정. react-resizable-panels 사용.
 // 우측은 위 에디터 + 아래 테스트케이스 세로 분할.
 //
-// 컨테이너 min-w를 425px로 두어, 그보다 좁은 뷰포트에서 자연스럽게 가로
-// 스크롤이 생긴다. 컨테이너 높이는 calc(100vh - 52px) — 슬림 헤더 제외.
+// 가로 스크롤은 헤더가 아니라 분할 콘텐츠 영역에만 걸리도록 둔다 — 425px
+// 미만 뷰포트에서 분할 패널이 너무 좁아져 두 패널 모두 사용 불가능해지므로,
+// 콘텐츠 wrapper에 min-w-[425px]를 두고 그 안에서만 가로 스크롤이 생긴다.
+// 헤더(TopNav)는 디바이스 폭에 그대로 맞춰진다.
 
 'use client'
 
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 
-import { NavAuthButton } from '@/components/challenges/TopNav'
+import { TopNav } from '@/components/challenges/TopNav'
 import { CodeEditor } from '@/components/problems/CodeEditor'
 import { ProblemHeader } from '@/components/problems/ProblemHeader'
 import { ProblemHtml } from '@/components/problems/ProblemHtml'
-import { ProblemTopNav } from '@/components/problems/ProblemTopNav'
 import { TestcasePanel } from '@/components/problems/TestcasePanel'
 import type { ProblemDetail } from '@/lib/queries/problems'
 
@@ -25,43 +26,47 @@ interface Props {
 
 export default function ProblemDetailView({ problem }: Props) {
   return (
-    <div className="h-screen bg-surface-card flex flex-col min-w-[425px] overflow-hidden">
+    <div className="h-screen bg-surface-card flex flex-col overflow-hidden">
       <div className="flex-shrink-0">
-        <ProblemTopNav rightSlot={<NavAuthButton />} />
+        <TopNav variant="fullbleed" />
       </div>
 
-      <PanelGroup
-        direction="horizontal"
-        autoSaveId="problem-detail:h"
-        className="flex-1 min-h-0"
-      >
-        {/* 왼쪽: 본문 */}
-        <Panel defaultSize={50} minSize={25} className="bg-surface-card">
-          <div className="h-full flex flex-col">
-            <LeftPanelTabBar />
-            <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
-              <DescriptionContent problem={problem} />
-            </div>
-          </div>
-        </Panel>
-
-        <VerticalResizeHandle />
-
-        {/* 오른쪽: 에디터 + 테스트케이스 */}
-        <Panel defaultSize={50} minSize={25}>
-          <PanelGroup direction="vertical" autoSaveId="problem-detail:v">
-            <Panel defaultSize={60} minSize={20}>
-              <CodeEditor problemId={problem.id} />
+      <div className="flex-1 min-h-0 overflow-x-auto overflow-y-hidden">
+        <div className="h-full min-w-[425px]">
+          <PanelGroup
+            direction="horizontal"
+            autoSaveId="problem-detail:h"
+            className="h-full"
+          >
+            {/* 왼쪽: 본문 */}
+            <Panel defaultSize={50} minSize={25} className="bg-surface-card">
+              <div className="h-full flex flex-col">
+                <LeftPanelTabBar />
+                <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
+                  <DescriptionContent problem={problem} />
+                </div>
+              </div>
             </Panel>
 
-            <HorizontalResizeHandle />
+            <VerticalResizeHandle />
 
-            <Panel defaultSize={40} minSize={15}>
-              <TestcasePanel samples={problem.samples} />
+            {/* 오른쪽: 에디터 + 테스트케이스 */}
+            <Panel defaultSize={50} minSize={25}>
+              <PanelGroup direction="vertical" autoSaveId="problem-detail:v">
+                <Panel defaultSize={60} minSize={20}>
+                  <CodeEditor problemId={problem.id} />
+                </Panel>
+
+                <HorizontalResizeHandle />
+
+                <Panel defaultSize={40} minSize={15}>
+                  <TestcasePanel samples={problem.samples} />
+                </Panel>
+              </PanelGroup>
             </Panel>
           </PanelGroup>
-        </Panel>
-      </PanelGroup>
+        </div>
+      </div>
     </div>
   )
 }
