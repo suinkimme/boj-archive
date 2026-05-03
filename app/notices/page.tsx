@@ -17,8 +17,9 @@ import {
   listPublishedNotices,
 } from '@/lib/notion/notices'
 
-const SITE_URL =
+const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.next-judge.com'
+).replace(/\/+$/, '')
 
 const PAGE_SIZE = 20
 const ALL_CATEGORIES: NoticeCategory[] = ['공지', '업데이트']
