@@ -71,8 +71,11 @@ const components: Components = {
     />
   ),
   p: (props) => (
+    // 노션 본문의 단락 간격에 맞춰 my-4(16px) → my-2(8px). 단락 안의
+    // shift+enter(softenParagraphLineBreaks가 만들어준 hard line break)는
+    // <br> 한 줄만 그려져 line-height로만 떨어진다.
     <p
-      className="text-[15px] leading-relaxed text-text-secondary my-4"
+      className="text-[15px] leading-relaxed text-text-secondary my-2"
       {...props}
     />
   ),
