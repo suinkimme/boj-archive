@@ -22,17 +22,16 @@ const SITE_URL = (
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'NEXT JUDGE.',
-  description: '백준의 다음을 잇는, 모두에게 열린 알고리즘 저지',
+  description: '직접 풀고, 직접 채점하는 모두에게 열린 알고리즘 저지',
   openGraph: {
     title: 'NEXT JUDGE.',
-    description: '백준의 다음을 잇는, 모두에게 열린 알고리즘 저지',
-    images: ['/og-image.png'],
+    description: '직접 풀고, 직접 채점하는 모두에게 열린 알고리즘 저지',
+    // images는 app/opengraph-image.tsx에서 동적 생성된 이미지가 자동 사용됨.
   },
   twitter: {
     card: 'summary_large_image',
     title: 'NEXT JUDGE.',
-    description: '백준의 다음을 잇는, 모두에게 열린 알고리즘 저지',
-    images: ['/og-image.png'],
+    description: '직접 풀고, 직접 채점하는 모두에게 열린 알고리즘 저지',
   },
 }
 
