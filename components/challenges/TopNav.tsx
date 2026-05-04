@@ -24,9 +24,14 @@ interface TopNavProps {
    *               본문 좌측 패딩(px-4 sm:px-6)과 픽셀 단위로 정렬된다.
    */
   variant?: 'default' | 'fullbleed'
+  /**
+   * true 시 메뉴 링크·햄버거·모바일 드로어를 숨기고 로고 + 프로필만 노출.
+   * 문제 에디터 화면처럼 내비게이션이 필요 없는 페이지에 사용.
+   */
+  hideLinks?: boolean
 }
 
-export function TopNav({ variant = 'default' }: TopNavProps = {}) {
+export function TopNav({ variant = 'default', hideLinks = false }: TopNavProps = {}) {
   const showPending = usePendingFeature()
   const { data: session, status } = useSession()
   const [open, setOpen] = useState(false)
@@ -76,29 +81,9 @@ export function TopNav({ variant = 'default' }: TopNavProps = {}) {
           NEXT JUDGE<span className="text-brand-red">.</span>
         </a>
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-1 list-none">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              {link.href ? (
-                <Link
-                  href={link.href}
-                  className="block text-white/60 text-[14px] font-medium hover:text-white transition-colors px-3 py-1.5"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => showPending(link.label)}
-                  className="text-white/60 text-[14px] font-medium hover:text-white transition-colors px-3 py-1.5"
-                >
-                  {link.label}
-                </button>
-              )}
-            </li>
-          ))}
-          <li className="ml-2">
+        {hideLinks ? (
+          /* 링크 없는 모드: 프로필/로그인만 노출 */
+          <div className="flex items-center">
             {isAuthed && user ? (
               <UserMenu user={user} />
             ) : (
@@ -111,45 +96,71 @@ export function TopNav({ variant = 'default' }: TopNavProps = {}) {
                 로그인
               </button>
             )}
-          </li>
-        </ul>
+          </div>
+        ) : (
+          <>
+            {/* Desktop links */}
+            <ul className="hidden md:flex items-center gap-1 list-none">
+              {NAV_LINKS.map((link) => (
+                <li key={link.label}>
+                  {link.href ? (
+                    <Link
+                      href={link.href}
+                      className="block text-white/60 text-[14px] font-medium hover:text-white transition-colors px-3 py-1.5"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => showPending(link.label)}
+                      className="text-white/60 text-[14px] font-medium hover:text-white transition-colors px-3 py-1.5"
+                    >
+                      {link.label}
+                    </button>
+                  )}
+                </li>
+              ))}
+              <li className="ml-2">
+                {isAuthed && user ? (
+                  <UserMenu user={user} />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleSignIn}
+                    disabled={status === 'loading'}
+                    className="bg-brand-red text-white border-0 px-3 py-1.5 text-[13px] font-medium hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    로그인
+                  </button>
+                )}
+              </li>
+            </ul>
 
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          aria-label={open ? '메뉴 닫기' : '메뉴 열기'}
-          aria-expanded={open}
-          onClick={() => setOpen((o) => !o)}
-          className="md:hidden -mr-2 p-2 text-white/80 hover:text-white transition-colors"
-        >
-          {open ? (
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-              aria-hidden="true"
+            {/* Mobile hamburger */}
+            <button
+              type="button"
+              aria-label={open ? '메뉴 닫기' : '메뉴 열기'}
+              aria-expanded={open}
+              onClick={() => setOpen((o) => !o)}
+              className="md:hidden -mr-2 p-2 text-white/80 hover:text-white transition-colors"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16" />
-            </svg>
-          )}
-        </button>
+              {open ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+                </svg>
+              )}
+            </button>
+          </>
+        )}
       </div>
 
-      {/* Mobile drawer — full-viewport white panel below the nav bar. */}
-      {open && (
+      {/* Mobile drawer — hideLinks 모드에서는 렌더하지 않음 */}
+      {!hideLinks && open && (
         <div className="md:hidden fixed inset-x-0 top-[60px] bottom-0 z-40 bg-surface-card flex flex-col">
           <ul className="flex-1 overflow-y-auto list-none m-0 p-0">
             {NAV_LINKS.map((link) => (
