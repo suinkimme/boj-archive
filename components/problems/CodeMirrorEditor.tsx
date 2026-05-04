@@ -47,7 +47,10 @@ const lightTheme = EditorView.theme(
       borderRight: '1px solid #F0F0F1',
     },
     '.cm-activeLineGutter': { backgroundColor: '#EFEFEF' },
-    '.cm-activeLine': { backgroundColor: '#FAFAFA' },
+    // 불투명 색을 칠하면 .cm-selectionLayer (z-index 낮은 layer) 가 가려져
+    // 활성 줄에서 드래그 선택이 보이지 않는다. rgba 로 alpha 를 두어 선택
+    // 영역이 비치게 함. CodeMirror 기본도 같은 이유로 #cceeff44 사용.
+    '.cm-activeLine': { backgroundColor: 'rgba(0, 0, 0, 0.025)' },
     '&.cm-focused': { outline: 'none' },
   },
   { dark: false },
@@ -69,7 +72,9 @@ export default function CodeMirrorEditor({ value, language, onChange }: Props) {
       basicSetup={{
         lineNumbers: true,
         highlightActiveLine: true,
-        autocompletion: true,
+        // 알고리즘 푸는 맥락에서 자동완성 팝업이 빠른 타이핑을 방해해서 끔.
+        // BOJ 본 IDE 와 동일하게 사용자가 직접 치는 경험.
+        autocompletion: false,
         bracketMatching: true,
         closeBrackets: true,
         indentOnInput: true,
