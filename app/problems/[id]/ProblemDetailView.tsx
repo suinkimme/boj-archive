@@ -11,13 +11,16 @@
 
 'use client'
 
+import { useEffect, useMemo, useState } from 'react'
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 
 import { TopNav } from '@/components/challenges/TopNav'
 import { CodeEditor } from '@/components/problems/CodeEditor'
 import { ProblemHeader } from '@/components/problems/ProblemHeader'
 import { ProblemHtml } from '@/components/problems/ProblemHtml'
-import { TestcasePanel } from '@/components/problems/TestcasePanel'
+import { TestcasePanel, type UserCase } from '@/components/problems/TestcasePanel'
+import { decryptString, type EncryptedPayload } from '@/lib/judge/cipher'
+import type { TestCaseResult } from '@/lib/judge/types'
 import type { ProblemDetail } from '@/lib/queries/problems'
 
 interface Props {
@@ -25,6 +28,61 @@ interface Props {
 }
 
 export default function ProblemDetailView({ problem }: Props) {
+  // 사용자 추가 케이스 + 채점 결과를 둘 다 여기서 보유.
+  // CodeEditor는 samples + userCases를 합쳐 채점하고,
+  // TestcasePanel은 userCases를 편집하고 judgeResults를 표시한다.
+  const [userCases, setUserCases] = useState<UserCase[]>([])
+  const [judgeResults, setJudgeResults] = useState<TestCaseResult[] | null>(null)
+  const [judging, setJudging] = useState(false)
+
+  // 채점 시점의 userCases 스냅샷. 결과 탭은 항상 이 스냅샷 기준으로 케이스 탭과
+  // 본문을 그리므로, 사용자가 채점 후 입력 탭에서 케이스를 추가/삭제/수정해도
+  // 결과 탭은 영향받지 않는다. 채점 시작 시점(onJudgingChange가 true로 전환될 때)에
+  // 갱신.
+  const [judgedUserCases, setJudgedUserCases] = useState<UserCase[]>([])
+
+  // hidden test cases (testcase_ac)의 stdin을 AES-GCM 암호문으로 받아 복호화.
+  // expectedStdout은 응답에 포함되지 않고, 채점 시 actual outputs를 verify에
+  // POST해서 verdict만 받는다.
+  // 비로그인(401), hidden 케이스 없음, 복호화 실패 등은 빈 배열로 graceful degrade.
+  const [hiddenInputs, setHiddenInputs] = useState<string[]>([])
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      try {
+        const res = await fetch(`/api/problems/${problem.id}/judge/inputs`)
+        if (!res.ok) return
+        const json = (await res.json()) as { data: EncryptedPayload | null }
+        if (cancelled || !json.data) return
+        const plaintext = await decryptString(json.data)
+        const inputs = JSON.parse(plaintext) as unknown
+        if (cancelled) return
+        if (
+          Array.isArray(inputs) &&
+          inputs.every((x) => typeof x === 'string')
+        ) {
+          setHiddenInputs(inputs as string[])
+        }
+      } catch {
+        // 네트워크/JSON/복호화 오류 → hidden 채점 비활성화로 graceful degrade.
+      }
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [problem.id])
+
+  // 채점기는 {input, output} 페어만 보면 되므로 UserCase의 `expected`를
+  // `output`으로 매핑해 합친다. 결과 배열의 인덱스는
+  // [샘플 0..N-1, 사용자 0..M-1]로 일관되어 TestcasePanel의 activeIdx와 일치.
+  const judgeCases = useMemo(
+    () => [
+      ...problem.samples,
+      ...userCases.map((u) => ({ input: u.input, output: u.expected })),
+    ],
+    [problem.samples, userCases],
+  )
+
   return (
     <div className="h-screen bg-surface-card flex flex-col overflow-hidden">
       <div className="flex-shrink-0">
@@ -54,13 +112,37 @@ export default function ProblemDetailView({ problem }: Props) {
             <Panel defaultSize={50} minSize={25}>
               <PanelGroup direction="vertical" autoSaveId="problem-detail:v">
                 <Panel defaultSize={60} minSize={20}>
-                  <CodeEditor problemId={problem.id} />
+                  <CodeEditor
+                    problemId={problem.id}
+                    samples={judgeCases}
+                    hiddenInputs={hiddenInputs}
+                    onJudgeResult={setJudgeResults}
+                    onJudgingChange={(j) => {
+                      setJudging(j)
+                      if (j) {
+                        // 채점 시작: 이전 결과를 비워 verdict 점을 사라지게 하고,
+                        // 결과 탭이 채점 동안 보여줄 케이스 구조를 현 시점으로
+                        // 스냅샷한다 (이후 입력 탭에서 추가/삭제해도 결과 탭에
+                        // 반영되지 않도록).
+                        setJudgeResults(null)
+                        setJudgedUserCases(userCases)
+                      }
+                    }}
+                  />
                 </Panel>
 
                 <HorizontalResizeHandle />
 
                 <Panel defaultSize={40} minSize={15}>
-                  <TestcasePanel samples={problem.samples} />
+                  <TestcasePanel
+                    samples={problem.samples}
+                    userCases={userCases}
+                    judgedUserCases={judgedUserCases}
+                    onUserCasesChange={setUserCases}
+                    hiddenCount={hiddenInputs.length}
+                    judgeResults={judgeResults}
+                    judging={judging}
+                  />
                 </Panel>
               </PanelGroup>
             </Panel>
