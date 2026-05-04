@@ -13,8 +13,10 @@
 
 import dynamic from 'next/dynamic'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { useSession } from 'next-auth/react'
 
 import { FilterDropdown } from '@/components/challenges/FilterDropdown'
+import { AlertDialog } from '@/components/ui/AlertDialog'
 import { useJudge } from '@/hooks/useJudge'
 import type { TestCaseResult } from '@/lib/judge/types'
 
@@ -47,8 +49,10 @@ export function CodeEditor({
   const [language, setLanguage] = useState<Lang>('python')
   const [code, setCode] = useState('')
   const [mounted, setMounted] = useState(false)
+  const [loginDialog, setLoginDialog] = useState(false)
   const dirtyRef = useRef(false)
 
+  const { status } = useSession()
   const { phase, results, supported, judge, retry } = useJudge(language)
   // 표시용 언어 라벨. 미지원 언어(아직 워커 없는 C/C++ 등)도 'C', 'C++' 대로
   // 노출되도록 LANGUAGES 의 label 을 우선 사용. runtime 도 동일 라벨을 쓰지만,
@@ -96,6 +100,10 @@ export function CodeEditor({
   )
 
   const handleSubmit = () => {
+    if (status !== 'authenticated') {
+      setLoginDialog(true)
+      return
+    }
     if (!supported) return
     if (phase === 'error') {
       retry()
@@ -129,6 +137,12 @@ export function CodeEditor({
 
   return (
     <div className="flex flex-col h-full bg-surface-card">
+      <AlertDialog
+        open={loginDialog}
+        onClose={() => setLoginDialog(false)}
+        title="로그인이 필요합니다"
+        description="문제를 제출하려면 로그인해주세요."
+      />
       <div className="flex items-center justify-between gap-2 px-3 py-2 border-b border-border-list bg-surface-card">
         <div className="w-[104px]">
           <FilterDropdown<Lang>

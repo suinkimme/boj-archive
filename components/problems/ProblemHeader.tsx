@@ -4,6 +4,7 @@
 import { TierBadge } from '@/components/auth/TierBadge'
 import { getTagLabel } from '@/components/challenges/tag-labels'
 import type { Level } from '@/components/challenges/types'
+import { Tooltip } from '@/components/ui/Tooltip'
 
 interface Props {
   id: number
@@ -55,24 +56,44 @@ export function ProblemHeader({
       </h1>
 
       {(timeLimit || memoryLimit) && (
-        <dl className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-[12px]">
-          {timeLimit && (
-            <div className="flex items-center gap-2">
-              <dt className="font-bold uppercase tracking-[0.12em] text-text-muted">
-                시간 제한
-              </dt>
-              <dd className="text-text-primary tabular-nums">{timeLimit}</dd>
-            </div>
-          )}
-          {memoryLimit && (
-            <div className="flex items-center gap-2">
-              <dt className="font-bold uppercase tracking-[0.12em] text-text-muted">
-                메모리 제한
-              </dt>
-              <dd className="text-text-primary tabular-nums">{memoryLimit}</dd>
-            </div>
-          )}
-        </dl>
+        <div className="mt-4 flex items-center text-[12px]">
+          <dl className="flex flex-wrap gap-x-6 gap-y-1 mr-2">
+            {timeLimit && (
+              <div className="flex items-center gap-2">
+                <dt className="font-bold uppercase tracking-[0.12em] text-text-muted">
+                  시간 제한
+                </dt>
+                <dd className="text-text-primary tabular-nums">{timeLimit}</dd>
+              </div>
+            )}
+            {memoryLimit && (
+              <div className="flex items-center gap-2">
+                <dt className="font-bold uppercase tracking-[0.12em] text-text-muted">
+                  메모리 제한
+                </dt>
+                <dd className="text-text-primary tabular-nums">{memoryLimit}</dd>
+              </div>
+            )}
+          </dl>
+          <Tooltip content="시간·메모리 제한은 브라우저 실행에서 적용되지 않습니다.">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-text-muted/60 cursor-default flex-shrink-0"
+              aria-hidden="true"
+            >
+              <circle cx="8" cy="8" r="6.5" />
+              <path d="M8 7.5v4" />
+              <circle cx="8" cy="5" r="0.5" fill="currentColor" stroke="none" />
+            </svg>
+          </Tooltip>
+        </div>
       )}
 
       {tags.length > 0 && (

@@ -71,7 +71,7 @@ export function TopNav({ variant = 'default', hideLinks = false }: TopNavProps =
 
   const containerClass =
     variant === 'fullbleed'
-      ? 'h-[60px] px-4 sm:px-6 flex items-center justify-between'
+      ? 'h-[60px] pl-4 sm:pl-6 pr-3 flex items-center justify-between'
       : 'max-w-[1200px] mx-auto h-[60px] px-6 sm:px-10 flex items-center justify-between'
 
   return (
