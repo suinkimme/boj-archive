@@ -28,7 +28,7 @@ export default function ProblemDetailView({ problem }: Props) {
   return (
     <div className="h-screen bg-surface-card flex flex-col overflow-hidden">
       <div className="flex-shrink-0">
-        <TopNav variant="fullbleed" />
+        <TopNav variant="fullbleed" hideLinks />
       </div>
 
       <div className="flex-1 min-h-0 overflow-x-auto overflow-y-hidden">
