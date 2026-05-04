@@ -15,7 +15,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { FilterDropdown } from '@/components/challenges/FilterDropdown'
-import { usePythonJudge } from '@/hooks/usePythonJudge'
+import { useJudge } from '@/hooks/useJudge'
 import type { TestCaseResult } from '@/lib/judge/types'
 
 import { BOILERPLATE, draftKey, LANGUAGES, type Lang } from './codeBoilerplate'
@@ -49,7 +49,12 @@ export function CodeEditor({
   const [mounted, setMounted] = useState(false)
   const dirtyRef = useRef(false)
 
-  const { phase, results, judge, retry } = usePythonJudge()
+  const { phase, results, supported, judge, retry } = useJudge(language)
+  // 표시용 언어 라벨. 미지원 언어(아직 워커 없는 C/C++ 등)도 'C', 'C++' 대로
+  // 노출되도록 LANGUAGES 의 label 을 우선 사용. runtime 도 동일 라벨을 쓰지만,
+  // runtime 이 없을 때를 대비해 LANGUAGES 가 단일 진실 소스.
+  const langLabel =
+    LANGUAGES.find((l) => l.id === language)?.label ?? language
 
   // 결과가 도착하고 phase가 다시 'ready'로 돌아왔을 때만 부모로 리프트한다.
   // 케이스가 한 건씩 들어올 때마다 호출되면 부모가 그 때마다 리렌더링되므로,
@@ -91,6 +96,7 @@ export function CodeEditor({
   )
 
   const handleSubmit = () => {
+    if (!supported) return
     if (phase === 'error') {
       retry()
       return
@@ -104,10 +110,14 @@ export function CodeEditor({
     )
   }
 
-  const submitDisabled = phase === 'loading' || phase === 'running'
-  const submitLabel =
-    phase === 'loading'
-      ? 'Python 준비 중...'
+  // 채점 워커가 없는 언어(C/C++ 등 아직 미구현) 는 버튼을 비활성. 기여 받기 전까지
+  // 사용자에게 명확히 안내.
+  const submitDisabled =
+    !supported || phase === 'loading' || phase === 'running'
+  const submitLabel = !supported
+    ? `${langLabel} 채점 준비 중`
+    : phase === 'loading'
+      ? `${langLabel} 준비 중...`
       : phase === 'running'
         ? '채점 중...'
         : phase === 'error'
