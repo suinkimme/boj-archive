@@ -18,6 +18,7 @@
 import { useEffect, useState } from 'react'
 
 import type { JudgeVerdict, TestCaseResult } from '@/lib/judge/types'
+import { Tooltip } from '@/components/ui/Tooltip'
 
 interface Sample {
   input: string
@@ -445,6 +446,8 @@ function VerdictHeader({
     )
   }
 
+  const elapsed = formatElapsed(result.elapsedMs, result.verdict)
+
   return (
     <div className="flex items-baseline gap-3 flex-wrap">
       <h2
@@ -452,9 +455,29 @@ function VerdictHeader({
       >
         {VERDICT_EN_LABEL[result.verdict]}
       </h2>
-      <span className="text-[12px] text-text-muted font-medium">
-        {formatElapsed(result.elapsedMs, result.verdict)}
-      </span>
+      {elapsed && (
+        <span className="inline-flex items-center gap-1 text-[12px] text-text-muted font-medium">
+          {elapsed}
+          <Tooltip content="브라우저 환경 측정값으로 실제 채점 기준과 다를 수 있습니다.">
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-text-muted/50 cursor-default"
+              aria-hidden="true"
+            >
+              <circle cx="8" cy="8" r="6.5" />
+              <path d="M8 7.5v4" />
+              <circle cx="8" cy="5" r="0.5" fill="currentColor" stroke="none" />
+            </svg>
+          </Tooltip>
+        </span>
+      )}
     </div>
   )
 }
