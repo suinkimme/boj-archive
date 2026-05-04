@@ -25,6 +25,23 @@ export interface WorkerCase {
 
 export type JudgePhase = 'idle' | 'loading' | 'ready' | 'running' | 'error'
 
+// 언어별 채점 워커의 런타임 메타데이터. lib/judge/runtimes/<lang>.ts 가
+// 이 형태로 워커 위치/표시 라벨을 export하면 hooks/useJudge.ts 가
+// language → runtime 매핑으로 적절한 워커를 띄운다.
+//
+// 새 언어 추가 절차는 lib/judge/README.md 참고.
+export interface JudgeRuntime {
+  // codeBoilerplate.ts 의 Lang 유니온과 일치해야 함.
+  id: string
+  // 사용자에게 노출되는 표시 라벨 (예: "Python", "C++").
+  label: string
+  // 정적 자산 경로. public/judge-workers/<file>.js 를 가리킨다.
+  workerPath: string
+  // 첫 방문 시 다운로드되는 대략적 크기 (UI에서 안내 시 사용). 0 또는 미지정이면
+  // 안내 생략.
+  approxDownloadBytes?: number
+}
+
 export type WorkerOutMessage =
   | { type: 'ready' }
   | { type: 'result'; caseIndex: number; result: TestCaseResult }
