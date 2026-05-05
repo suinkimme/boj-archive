@@ -54,9 +54,8 @@ export function CodeEditor({
 
   const { status } = useSession()
   const { phase, results, supported, judge, retry } = useJudge(language)
-  // 표시용 언어 라벨. 미지원 언어(아직 워커 없는 C/C++ 등)도 'C', 'C++' 대로
-  // 노출되도록 LANGUAGES 의 label 을 우선 사용. runtime 도 동일 라벨을 쓰지만,
-  // runtime 이 없을 때를 대비해 LANGUAGES 가 단일 진실 소스.
+  // 표시용 언어 라벨. 등록된 runtime 이 없는 언어도 셀렉트에 라벨이 보이도록
+  // LANGUAGES 를 단일 진실 소스로 둔다.
   const langLabel =
     LANGUAGES.find((l) => l.id === language)?.label ?? language
 
@@ -118,22 +117,24 @@ export function CodeEditor({
     )
   }
 
-  // 채점 워커가 없는 언어(C/C++ 등 아직 미구현) 는 버튼을 비활성. 기여 받기 전까지
-  // 사용자에게 명확히 안내.
+  // 채점 워커가 등록 안 된 언어는 버튼을 비활성화하고 사용자에게 명확히 안내.
+  // loading 은 워커 wasm 다운로드(~60MB) + 컴파일 중인 상태 — 사용자가 "지원 안 됨"
+  // 으로 오해하지 않도록 진행 중임을 명확히 표시.
   const submitDisabled =
     !supported || phase === 'loading' || phase === 'running'
+  const showSpinner = phase === 'loading' || phase === 'running'
   const submitLabel = !supported
-    ? `${langLabel} 채점 준비 중`
+    ? `${langLabel} 지원 예정`
     : phase === 'loading'
-      ? `${langLabel} 준비 중...`
+      ? `${langLabel} 런타임 받는 중`
       : phase === 'running'
-        ? '채점 중...'
+        ? '채점 중'
         : phase === 'error'
           ? '로드 실패 · 다시 시도'
           : '제출하기'
   const submitClass = submitDisabled
-    ? 'px-3 py-1.5 text-[13px] font-bold bg-surface-page text-text-muted cursor-not-allowed'
-    : 'px-3 py-1.5 text-[13px] font-bold bg-brand-red text-white hover:opacity-90 transition-opacity'
+    ? 'px-3 py-1.5 text-[13px] font-bold bg-surface-page text-text-muted cursor-not-allowed inline-flex items-center gap-1.5'
+    : 'px-3 py-1.5 text-[13px] font-bold bg-brand-red text-white hover:opacity-90 transition-opacity inline-flex items-center gap-1.5'
 
   return (
     <div className="flex flex-col h-full bg-surface-card">
@@ -161,6 +162,29 @@ export function CodeEditor({
           onClick={handleSubmit}
           className={submitClass}
         >
+          {showSpinner && (
+            <svg
+              className="w-3 h-3 animate-spin"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeOpacity="0.25"
+                strokeWidth="4"
+              />
+              <path
+                d="M22 12a10 10 0 0 1-10 10"
+                stroke="currentColor"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+            </svg>
+          )}
           {submitLabel}
         </button>
       </div>
