@@ -5,12 +5,13 @@ import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
+import { getLogoutCallbackUrl } from '@/components/auth/logoutCallback'
 import { UserMenu } from '@/components/auth/UserMenu'
 import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 
 // href가 있는 항목은 실제 라우트, 없는 항목은 아직 준비 중인 메뉴라 PendingFeature로 처리.
 const NAV_LINKS: { label: string; href?: string }[] = [
-  { label: '프로젝트 소개' },
+  { label: '프로젝트 소개', href: '/about' },
   { label: '공지사항', href: '/notices' },
   { label: '커뮤니티' },
   { label: '기여하기' },
@@ -62,7 +63,7 @@ export function TopNav({ variant = 'default', hideLinks = false }: TopNavProps =
 
   const handleSignOut = () => {
     setOpen(false)
-    void signOut({ callbackUrl: '/' })
+    void signOut({ callbackUrl: getLogoutCallbackUrl() })
   }
 
   const isAuthed = status === 'authenticated' && !!session?.user
