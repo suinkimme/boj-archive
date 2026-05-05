@@ -14,6 +14,8 @@ import type { AdapterAccountType } from 'next-auth/adapters'
 
 export type SolvedSource = 'solvedac' | 'local'
 export type TestcaseSource = 'testcase_ac' | 'sample' | 'community_report'
+export type SubmissionLanguage = 'python' | 'c' | 'cpp'
+export type SubmissionVerdict = 'AC' | 'WA' | 'RE' | 'TLE'
 
 export const users = pgTable('users', {
   id: text('id')
@@ -187,5 +189,40 @@ export const userSolvedProblems = pgTable(
   (t) => [
     primaryKey({ columns: [t.userId, t.problemId] }),
     index('user_solved_problems_user_idx').on(t.userId),
+  ],
+)
+
+// 이 사이트 채점기에서 발생한 제출 1건 = 1 row. AC/WA/RE/TLE 모두 기록한다.
+// solved.ac에서 가져온 풀이 이력은 시도 정보(언어/시각)가 없어 여기 들어오지
+// 않는다 — 그쪽은 user_solved_problems만 채운다.
+//
+// 활용처:
+//   - 문제 디테일의 모든 사용자 히스토리 탭 (problemId 기준 최신순)
+//   - 마이페이지의 내 제출 이력
+//   - 문제 리스트의 tried 플래그/필터 (EXISTS by userId+problemId)
+export const submissions = pgTable(
+  'submissions',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    problemId: integer('problem_id')
+      .notNull()
+      .references(() => problems.problemId, { onDelete: 'cascade' }),
+    language: text('language').$type<SubmissionLanguage>().notNull(),
+    verdict: text('verdict').$type<SubmissionVerdict>().notNull(),
+    submittedAt: timestamp('submitted_at', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [
+    // 마이페이지 본인 제출 이력 + tried 플래그용 EXISTS 빠르게.
+    index('submissions_user_problem_idx').on(t.userId, t.problemId),
+    // 문제 디테일 히스토리 탭은 problemId로 최신순 페이지네이션한다.
+    index('submissions_problem_submitted_at_idx').on(
+      t.problemId,
+      t.submittedAt,
+    ),
   ],
 )
