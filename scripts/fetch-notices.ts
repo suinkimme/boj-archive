@@ -9,10 +9,12 @@
 // NOTION_TOKEN / NOTION_NOTICES_DB_ID 가 없으면 빈 index.json 만 쓰고 종료.
 // 빌드가 죽지 않도록 — 로컬에서 Notion 없이 작업할 때도 안전하게 동작.
 
+import { createHash } from 'crypto'
 import { config } from 'dotenv'
 import { mkdirSync, writeFileSync } from 'fs'
 import { join } from 'path'
 
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { Client } from '@notionhq/client'
 import type {
   PageObjectResponse,
@@ -22,6 +24,87 @@ import { NotionToMarkdown } from 'notion-to-md'
 import type { MdBlock } from 'notion-to-md/build/types'
 
 config({ path: '.env.local' })
+
+// ─── R2 이미지 미러링 ─────────────────────────────────────────────────────────
+// Notion 이 자체 호스팅하는 파일 이미지는 AWS 서명 URL 이라 만료된다.
+// 빌드 타임에 R2 로 미러링해 영구 URL 로 교체한다.
+
+const IMG_URL_RE = /!\[([^\]]*)\]\((https?:\/\/[^)]+)\)/g
+
+// Notion S3 파일 이미지 URL 패턴 (만료되는 것들만 미러링)
+const NOTION_S3_ORIGINS = [
+  'prod-files-secure.s3.us-west-2.amazonaws.com',
+  'prod-files-secure.s3.us-east-1.amazonaws.com',
+  's3.us-west-2.amazonaws.com', // legacy notion static
+]
+
+function isVolatileNotionUrl(url: string): boolean {
+  try {
+    const { hostname, pathname } = new URL(url)
+    if (NOTION_S3_ORIGINS.some((o) => hostname === o)) return true
+    // legacy: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/...
+    if (hostname.endsWith('.amazonaws.com') && pathname.includes('notion')) return true
+  } catch { /* ignore */ }
+  return false
+}
+
+function r2Client(): S3Client | null {
+  const id = process.env.R2_ACCOUNT_ID
+  const key = process.env.R2_ACCESS_KEY_ID
+  const secret = process.env.R2_SECRET_ACCESS_KEY
+  if (!id || !key || !secret) return null
+  return new S3Client({
+    region: 'auto',
+    endpoint: `https://${id}.r2.cloudflarestorage.com`,
+    credentials: { accessKeyId: key, secretAccessKey: secret },
+  })
+}
+
+async function mirrorMarkdownImages(markdown: string, slug: string): Promise<string> {
+  const r2 = r2Client()
+  const bucket = process.env.R2_BUCKET
+  const publicUrl = process.env.R2_PUBLIC_URL
+
+  if (!r2 || !bucket || !publicUrl) return markdown
+
+  const matches = [...markdown.matchAll(IMG_URL_RE)]
+  if (matches.length === 0) return markdown
+
+  let result = markdown
+  for (const match of matches) {
+    const [full, alt, src] = match
+    if (!isVolatileNotionUrl(src)) continue
+
+    try {
+      const res = await fetch(src)
+      if (!res.ok) {
+        console.warn(`[fetch-notices] 이미지 다운로드 실패 (${res.status}): ${src.slice(0, 80)}`)
+        continue
+      }
+
+      const buf = Buffer.from(await res.arrayBuffer())
+      const ext = (res.headers.get('content-type') ?? 'image/png')
+        .split('/')[1]?.split(';')[0]?.split('+')[0] ?? 'png'
+      const hash = createHash('sha256').update(buf).digest('hex').slice(0, 16)
+      const key = `notices/images/${slug}/${hash}.${ext}`
+
+      await r2.send(new PutObjectCommand({
+        Bucket: bucket,
+        Key: key,
+        Body: buf,
+        ContentType: res.headers.get('content-type') ?? `image/${ext}`,
+        CacheControl: 'public, max-age=31536000, immutable',
+      }))
+
+      const stable = `${publicUrl}/${key}`
+      result = result.replace(full, `![${alt}](${stable})`)
+      console.log(`  [img] mirrored → ${stable}`)
+    } catch (e) {
+      console.warn(`[fetch-notices] 이미지 미러링 오류: ${e}`)
+    }
+  }
+  return result
+}
 
 // ─── 타입 ───────────────────────────────────────────────────────────────────
 
@@ -203,8 +286,8 @@ async function fetchDetail(
     const blocks = await n2m.pageToMarkdown(page.id)
     const softened = softenParagraphLineBreaks(blocks)
     const raw = n2m.toMarkdownString(softened).parent ?? ''
-    const markdown = ensureBlockSeparators(raw)
-    return { ...meta, markdown }
+    const mirrored = await mirrorMarkdownImages(ensureBlockSeparators(raw), meta.slug)
+    return { ...meta, markdown: mirrored }
   } catch (e) {
     console.error(`[fetch-notices] detail failed for "${meta.slug}"`, e)
     return null
