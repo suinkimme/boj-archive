@@ -99,7 +99,7 @@ export default function MyProblemsPage() {
           problems={filteredSolved}
           loading={solved === null}
           emptyTitle="아직 푼 문제가 없어요"
-          emptyHint="solved.ac에서 가져오는 동안 잠시만 기다려주세요."
+          emptyHint="여기서 문제를 풀거나 백준 아이디를 연동하면 모아드릴게요."
           noMatchTitle="검색 결과 없음"
         />
 
