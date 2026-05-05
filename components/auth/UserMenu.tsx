@@ -6,6 +6,8 @@ import { signOut } from 'next-auth/react'
 import { useEffect, useRef, useState } from 'react'
 import type { Session } from 'next-auth'
 
+import { getLogoutCallbackUrl } from './logoutCallback'
+
 export function UserMenu({ user }: { user: NonNullable<Session['user']> }) {
   const [open, setOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -80,7 +82,7 @@ export function UserMenu({ user }: { user: NonNullable<Session['user']> }) {
             role="menuitem"
             onClick={() => {
               setOpen(false)
-              void signOut({ callbackUrl: '/' })
+              void signOut({ callbackUrl: getLogoutCallbackUrl() })
             }}
             className="w-full text-left px-4 py-2.5 text-text-primary text-[13px] font-medium hover:bg-surface-page transition-colors border-t border-border-list"
           >

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
+import { getLogoutCallbackUrl } from '@/components/auth/logoutCallback'
 import { TierBadge } from '@/components/auth/TierBadge'
 import { TopNav } from '@/components/challenges/TopNav'
 import { useImportSync } from '@/components/import-sync/ImportSyncProvider'
@@ -21,6 +22,7 @@ type MeData = {
   solvedAc: SolvedAcUser | null
   recentSolved: SolvedAcProblem[]
   importedCount: number
+  localSolvedCount: number
 }
 
 export default function MePage() {
@@ -29,40 +31,76 @@ export default function MePage() {
   const importSync = useImportSync()
 
   const [me, setMe] = useState<MeData | null>(null)
+  const [loadError, setLoadError] = useState(false)
+  const [retrying, setRetrying] = useState(false)
+  const [reloadKey, setReloadKey] = useState(0)
   const [disconnectOpen, setDisconnectOpen] = useState(false)
   const [disconnecting, setDisconnecting] = useState(false)
   const [syncConfirmOpen, setSyncConfirmOpen] = useState(false)
 
+  // 최초 로드 + 사용자 재시도. reloadKey가 바뀌면 다시 fetch.
+  // 실패 시 me는 그대로 두고(재시도 중에도 직전 데이터 유지) loadError만 켠다.
   useEffect(() => {
     if (status !== 'authenticated') return
     let cancelled = false
     void (async () => {
-      const res = await fetch('/api/me')
-      if (!res.ok || cancelled) return
-      const data = (await res.json()) as MeData
-      setMe(data)
+      try {
+        const res = await fetch('/api/me')
+        if (cancelled) return
+        if (!res.ok) {
+          setLoadError(true)
+          setRetrying(false)
+          return
+        }
+        const data = (await res.json()) as MeData
+        setMe(data)
+        setLoadError(false)
+        setRetrying(false)
+      } catch {
+        if (cancelled) return
+        setLoadError(true)
+        setRetrying(false)
+      }
     })()
     return () => {
       cancelled = true
     }
-  }, [status])
+  }, [status, reloadKey])
 
   // 글로벌 sync provider가 importedCount를 갱신할 때마다 me도 새로고침.
+  // 이 재조회가 실패해도 직전 me는 유지(stale-but-shown). 동기화 실패 자체는
+  // ImportSyncProvider.syncError로 별도 노출되므로 여기선 조용히 넘긴다.
   useEffect(() => {
     if (status !== 'authenticated') return
     if (importSync.isImporting) return
     if (importSync.imported == null) return
     let cancelled = false
     void (async () => {
-      const res = await fetch('/api/me')
-      if (!res.ok || cancelled) return
-      const data = (await res.json()) as MeData
-      setMe(data)
+      try {
+        const res = await fetch('/api/me')
+        if (!res.ok || cancelled) return
+        const data = (await res.json()) as MeData
+        setMe(data)
+      } catch {
+        // 직전 me 유지
+      }
     })()
     return () => {
       cancelled = true
     }
   }, [importSync.isImporting, importSync.imported, status])
+
+  const handleRetryLoad = () => {
+    if (retrying) return
+    setRetrying(true)
+    setReloadKey((k) => k + 1)
+  }
+
+  const handleRetrySync = () => {
+    if (importSync.isImporting) return
+    importSync.clearSyncError()
+    importSync.startSync({ refreshSnapshot: true })
+  }
 
   // "풀이 정보 업데이트" 버튼 — startSync 안에서 스냅샷 무효화도 묶어
   // 처리하므로 await가 끝날 때까지 바를 못 띄우는 지연 없이 즉시 노출.
@@ -130,6 +168,7 @@ export default function MePage() {
   const hasHandle = !!bojHandle
   const solvedAc = me?.solvedAc ?? null
   const recentSolved = me?.recentSolved ?? []
+  const localSolvedCount = me?.localSolvedCount ?? 0
   const totalSolved = solvedAc?.solvedCount ?? 0
   const importedDisplay = Math.min(totalSolved, me?.importedCount ?? 0)
   // 글로벌 폴링 상태를 우선 신뢰. provider 비활성 상태에서도 데이터가
@@ -189,30 +228,54 @@ export default function MePage() {
           </div>
         </div>
 
-        {!me && <ActivityPlaceholder />}
+        {!me && !loadError && <ActivityPlaceholder />}
+        {!me && loadError && <LoadErrorCard onRetry={handleRetryLoad} retrying={retrying} />}
         {me && !hasHandle && <NoHandleCard />}
         {me && hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
+        {me && importSync.syncError && (
+          <SyncErrorBanner
+            onRetry={handleRetrySync}
+            onDismiss={importSync.clearSyncError}
+            retrying={importSync.isImporting}
+          />
+        )}
 
-        {me && hasHandle && !isVerified && <LockedActivity />}
+        {/* 활동 요약 — solvedac 임포트 중에만 placeholder. 그 외에는 항상
+             표시한다. solvedAc가 있으면 BOJ 전체 통계, 없으면 이 사이트
+             기준 푼 문제 수 + 잠긴 레이팅/클래스 슬롯. */}
         {me && hasHandle && isVerified && isImporting && <ActivityPlaceholder />}
-        {me && hasHandle && isVerified && !isImporting && solvedAc && (
+        {me && !(hasHandle && isVerified && isImporting) && (
           <section className="mb-10">
             <SectionHeading>활동 요약</SectionHeading>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
-              <Stat label="푼 문제" value={solvedAc.solvedCount.toLocaleString()} />
-              <Stat label="레이팅" value={solvedAc.rating.toLocaleString()} />
-              <Stat label="클래스" value={String(solvedAc.class)} />
+              <Stat
+                label="푼 문제"
+                value={(solvedAc?.solvedCount ?? localSolvedCount).toLocaleString()}
+              />
+              {solvedAc ? (
+                <Stat label="레이팅" value={solvedAc.rating.toLocaleString()} />
+              ) : (
+                <LockedStat label="레이팅" />
+              )}
+              {solvedAc ? (
+                <Stat label="클래스" value={String(solvedAc.class)} />
+              ) : (
+                <LockedStat label="클래스" />
+              )}
             </div>
           </section>
         )}
 
-        {!me && <RecentSolvedPlaceholder />}
-        {me && hasHandle && !isVerified && <LockedRecentSolved />}
-        {me && isVerified && hasHandle && (isImporting || recentSolved.length > 0) && (
+        {/* 최근 푼 문제 — me가 로드된 이후엔 항상 섹션을 띄운다.
+             임포트 중엔 스켈레톤, 풀이가 없으면 빈 상태, 있으면 리스트.
+             BOJ 미연동/미인증 사용자도 이 사이트에서 풀어 row가 쌓이면 노출.
+             초기 로드 실패 시엔 LoadErrorCard(위)로 통합 노출되므로 여기선 생략. */}
+        {!me && !loadError && <RecentSolvedPlaceholder />}
+        {me && (
           <section className="mb-10">
             <RecentSolvedHeader disabled={false} />
 
-            {isImporting || recentSolved.length === 0 ? (
+            {isImporting ? (
               <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <li key={i} className="h-12 flex items-center gap-3 px-4">
@@ -222,6 +285,15 @@ export default function MePage() {
                   </li>
                 ))}
               </ul>
+            ) : recentSolved.length === 0 ? (
+              <div className="border border-border-list bg-surface-card px-5 py-8 text-center">
+                <p className="text-[13px] font-bold text-text-primary mb-1">
+                  아직 푼 문제가 없어요
+                </p>
+                <p className="text-[12px] text-text-muted leading-relaxed">
+                  문제를 풀면 여기에 최근 풀이가 나와요.
+                </p>
+              </div>
             ) : (
               <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
                 {recentSolved.map((item) => (
@@ -302,7 +374,7 @@ export default function MePage() {
             )}
             <button
               type="button"
-              onClick={() => void signOut({ callbackUrl: '/' })}
+              onClick={() => void signOut({ callbackUrl: getLogoutCallbackUrl() })}
               className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between"
             >
               <span className="text-[14px] font-medium text-text-primary">로그아웃</span>
@@ -381,19 +453,6 @@ function LockIcon({ className }: { className?: string }) {
   )
 }
 
-function LockedActivity() {
-  return (
-    <section className="mb-10">
-      <SectionHeading>활동 요약</SectionHeading>
-      <div className="grid grid-cols-3 gap-3 sm:gap-4">
-        <LockedStat label="푼 문제" />
-        <LockedStat label="레이팅" />
-        <LockedStat label="클래스" />
-      </div>
-    </section>
-  )
-}
-
 function LockedStat({ label }: { label: string }) {
   return (
     <div className="border border-border-list bg-surface-card px-4 py-4">
@@ -404,21 +463,6 @@ function LockedStat({ label }: { label: string }) {
         <LockIcon className="w-[18px] h-[18px] sm:w-5 sm:h-5" />
       </div>
     </div>
-  )
-}
-
-function LockedRecentSolved() {
-  return (
-    <section className="mb-10">
-      <RecentSolvedHeader disabled />
-      <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <li key={i} className="h-12 flex items-center px-4 text-text-muted">
-            <LockIcon className="w-4 h-4" />
-          </li>
-        ))}
-      </ul>
-    </section>
   )
 }
 
@@ -559,6 +603,84 @@ function UnverifiedCard({ handle }: { handle: string }) {
       >
         지금 확인하기
       </button>
+    </div>
+  )
+}
+
+// 최초 /api/me 통신 실패용. 활동 요약 + 최근 푼 문제 두 섹션을 묶어서
+// 한 카드로 대체 — 같은 endpoint 한 번 실패니까 카드도 하나면 충분.
+function LoadErrorCard({
+  onRetry,
+  retrying,
+}: {
+  onRetry: () => void
+  retrying: boolean
+}) {
+  return (
+    <section className="mb-10" aria-live="polite">
+      <div className="border border-border-list bg-surface-card px-5 py-10 text-center">
+        <p className="text-[14px] sm:text-[15px] font-bold text-text-primary mb-1.5">
+          내 정보를 불러오지 못했어요
+        </p>
+        <p className="text-[12px] sm:text-[13px] text-text-muted leading-relaxed mb-5">
+          잠시 뒤 다시 시도해주세요.
+        </p>
+        <button
+          type="button"
+          onClick={onRetry}
+          disabled={retrying}
+          className="bg-text-primary text-white border-0 px-4 py-2.5 text-[13px] font-bold hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {retrying ? '다시 불러오는 중...' : '다시 시도'}
+        </button>
+      </div>
+    </section>
+  )
+}
+
+// 동기화 폴링이 통신 실패로 중단됐을 때. me는 이미 로드된 상태이므로
+// 활동 요약/최근 푼 문제는 stale 데이터로 그대로 두고, 헤더 아래 배너로만
+// 알림. dismiss 가능.
+function SyncErrorBanner({
+  onRetry,
+  onDismiss,
+  retrying,
+}: {
+  onRetry: () => void
+  onDismiss: () => void
+  retrying: boolean
+}) {
+  return (
+    <div
+      role="status"
+      className="mb-10 p-4 sm:p-5 border border-status-warning/30 bg-status-warning-bg flex items-start gap-3"
+    >
+      <div className="flex-1 min-w-0">
+        <p className="text-[13px] sm:text-[14px] font-bold text-text-primary mb-0.5">
+          풀이 정보 동기화에 실패했어요
+        </p>
+        <p className="text-[12px] sm:text-[13px] text-text-secondary leading-relaxed">
+          최근 풀이가 빠져 있을 수 있어요. 잠시 후 다시 시도해주세요.
+        </p>
+      </div>
+      <div className="flex items-center gap-3 flex-shrink-0 pt-0.5">
+        <button
+          type="button"
+          onClick={onRetry}
+          disabled={retrying}
+          className="text-[12px] sm:text-[13px] font-bold text-text-primary hover:text-brand-red transition-colors underline underline-offset-4 disabled:opacity-60 disabled:cursor-not-allowed disabled:no-underline"
+        >
+          {retrying ? '시도 중...' : '다시 시도'}
+        </button>
+        <button
+          type="button"
+          onClick={onDismiss}
+          aria-label="배너 닫기"
+          className="text-text-muted hover:text-text-primary transition-colors text-[18px] leading-none"
+        >
+          ×
+        </button>
+      </div>
     </div>
   )
 }
