@@ -11,29 +11,68 @@
 
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 
 import { TopNav } from '@/components/challenges/TopNav'
 import { CodeEditor } from '@/components/problems/CodeEditor'
 import { ProblemHeader } from '@/components/problems/ProblemHeader'
 import { ProblemHtml } from '@/components/problems/ProblemHtml'
+import {
+  SubmissionHistory,
+  type OptimisticSubmission,
+} from '@/components/problems/SubmissionHistory'
 import { TestcasePanel, type UserCase } from '@/components/problems/TestcasePanel'
 import { decryptString, type EncryptedPayload } from '@/lib/judge/cipher'
 import type { TestCaseResult } from '@/lib/judge/types'
 import type { ProblemDetail } from '@/lib/queries/problems'
 
+export type LeftTab = 'description' | 'history'
+
 interface Props {
   problem: ProblemDetail
+  // 서버에서 ?tab= 을 읽어 내려준 초기 탭. 새로고침 시 같은 탭 유지의 핵심.
+  initialTab: LeftTab
 }
 
-export default function ProblemDetailView({ problem }: Props) {
+export default function ProblemDetailView({ problem, initialTab }: Props) {
   // 사용자 추가 케이스 + 채점 결과를 둘 다 여기서 보유.
   // CodeEditor는 samples + userCases를 합쳐 채점하고,
   // TestcasePanel은 userCases를 편집하고 judgeResults를 표시한다.
   const [userCases, setUserCases] = useState<UserCase[]>([])
   const [judgeResults, setJudgeResults] = useState<TestCaseResult[] | null>(null)
   const [judging, setJudging] = useState(false)
+  const [leftTab, setLeftTabState] = useState<LeftTab>(initialTab)
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  // 탭 변경 = state 갱신 + URL 동기화. push 가 아니라 replace 로 history 가
+  // 쌓이지 않게 한다 (탭 토글로 뒤로가기가 망가지면 안 되므로).
+  const setLeftTab = useCallback(
+    (next: LeftTab) => {
+      setLeftTabState(next)
+      const params = new URLSearchParams(searchParams.toString())
+      if (next === 'description') {
+        params.delete('tab')
+      } else {
+        params.set('tab', next)
+      }
+      const qs = params.toString()
+      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false })
+    },
+    [router, pathname, searchParams],
+  )
+
+  // 새 제출이 서버에 영구 저장되면 1씩 증가시키면 SubmissionHistory 가
+  // background refresh (스켈레톤 X, 기존 items 유지) 로 1페이지를 다시 fetch.
+  const [historyRefreshKey, setHistoryRefreshKey] = useState(0)
+  // optimistic 행들 — 제출 클릭 시점에 추가, verdict 결정 시 갱신,
+  // 서버 refresh 가 끝나면 (그 row 가 서버 응답에 포함되었으니) 정리한다.
+  const [optimisticSubmissions, setOptimisticSubmissions] = useState<
+    OptimisticSubmission[]
+  >([])
 
   // 채점 시점의 userCases 스냅샷. 결과 탭은 항상 이 스냅샷 기준으로 케이스 탭과
   // 본문을 그리므로, 사용자가 채점 후 입력 탭에서 케이스를 추가/삭제/수정해도
@@ -99,9 +138,25 @@ export default function ProblemDetailView({ problem }: Props) {
             {/* 왼쪽: 본문 */}
             <Panel defaultSize={50} minSize={25} className="bg-surface-card">
               <div className="h-full flex flex-col">
-                <LeftPanelTabBar />
+                <LeftPanelTabBar active={leftTab} onChange={setLeftTab} />
                 <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
-                  <DescriptionContent problem={problem} />
+                  {leftTab === 'description' ? (
+                    <DescriptionContent problem={problem} />
+                  ) : (
+                    <SubmissionHistory
+                      problemId={problem.id}
+                      refreshKey={historyRefreshKey}
+                      optimisticItems={optimisticSubmissions}
+                      onRefreshed={() => {
+                        // refresh 가 성공한 시점이면 verdict 가 결정된 (= 서버에도
+                        // 적재됐을 것으로 기대되는) optimistic 행은 모두 정리한다.
+                        // pending(verdict===null) 행은 아직 채점 중이므로 유지.
+                        setOptimisticSubmissions((prev) =>
+                          prev.filter((o) => o.verdict === null),
+                        )
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </Panel>
@@ -128,6 +183,33 @@ export default function ProblemDetailView({ problem }: Props) {
                         setJudgedUserCases(userCases)
                       }
                     }}
+                    onSubmissionStart={(info) => {
+                      // 제출 즉시 히스토리 탭으로 자동 전환 — pending row 가
+                      // 사용자 눈에 바로 보이도록.
+                      setLeftTab('history')
+                      setOptimisticSubmissions((prev) => [
+                        {
+                          tempId: info.tempId,
+                          handle: info.handle,
+                          language: info.language,
+                          verdict: null,
+                          submittedAt: info.submittedAt,
+                        },
+                        ...prev,
+                      ])
+                    }}
+                    onSubmissionResolved={(info) => {
+                      setOptimisticSubmissions((prev) =>
+                        prev.map((o) =>
+                          o.tempId === info.tempId
+                            ? { ...o, verdict: info.verdict }
+                            : o,
+                        ),
+                      )
+                    }}
+                    onSubmissionRecorded={() =>
+                      setHistoryRefreshKey((k) => k + 1)
+                    }
                   />
                 </Panel>
 
@@ -153,20 +235,54 @@ export default function ProblemDetailView({ problem }: Props) {
   )
 }
 
-// 좌측 패널 상단의 "문제 설명" 탭 헤더.
+// 좌측 패널 상단 탭. "문제 설명" / "제출 기록" 토글.
 //
-// 외곽엔 padding을 두지 않고 내부 span의 py-3.5로 바 높이를 결정한다 — 그래야
-// span 하단의 `border-b-2 border-brand-red -mb-px`가 외곽 `border-b`와 정확히
+// 외곽엔 padding을 두지 않고 내부 버튼의 py-3.5로 바 높이를 결정한다 — 그래야
+// 활성 탭 하단의 `border-b-2 border-brand-red -mb-px`가 외곽 `border-b`와 정확히
 // 1px 겹쳐 "선택된 탭"의 빨간 underline 인디케이터로 보인다 (분리되면 떠 보임).
 // 우측 CodeEditor 툴바의 자연 높이(py-2 + 드롭다운 border 포함 ~47px)와 같은
 // 픽셀이 되도록 py-3.5(28px)를 골랐다.
-function LeftPanelTabBar() {
+function LeftPanelTabBar({
+  active,
+  onChange,
+}: {
+  active: LeftTab
+  onChange: (next: LeftTab) => void
+}) {
   return (
     <div className="flex items-stretch px-3 border-b border-border-list flex-shrink-0">
-      <span className="flex items-center px-3 py-3.5 text-[13px] font-bold text-text-primary border-b-2 border-brand-red -mb-px">
-        문제 설명
-      </span>
+      <TabButton
+        label="문제 설명"
+        isActive={active === 'description'}
+        onClick={() => onChange('description')}
+      />
+      <TabButton
+        label="제출 기록"
+        isActive={active === 'history'}
+        onClick={() => onChange('history')}
+      />
     </div>
+  )
+}
+
+function TabButton({
+  label,
+  isActive,
+  onClick,
+}: {
+  label: string
+  isActive: boolean
+  onClick: () => void
+}) {
+  const baseClass =
+    'flex items-center px-3 py-3.5 text-[13px] font-bold transition-colors -mb-px'
+  const stateClass = isActive
+    ? 'text-text-primary border-b-2 border-brand-red'
+    : 'text-text-muted hover:text-text-secondary border-b-2 border-transparent'
+  return (
+    <button type="button" onClick={onClick} className={`${baseClass} ${stateClass}`}>
+      {label}
+    </button>
   )
 }
 
