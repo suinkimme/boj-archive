@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_KR } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 
 import { auth } from '@/auth'
 import { SessionProvider } from '@/components/auth/SessionProvider'
@@ -48,6 +49,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <PendingFeatureProvider>{children}</PendingFeatureProvider>
           </ImportSyncProvider>
         </SessionProvider>
+        <Analytics />
       </body>
     </html>
   )
