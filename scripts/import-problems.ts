@@ -10,6 +10,7 @@
 // the JSON, since BOJ snapshots in problem.json supersede stale
 // solved.ac lazy-cached values.
 
+import { existsSync } from 'node:fs'
 import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
@@ -25,6 +26,58 @@ config({ path: '.env.local' })
 
 const PROBLEMS_DIR = 'problems'
 const BATCH_SIZE = 200
+const IMAGE_CACHE_PATH = 'scripts/problem-image-urls.json'
+
+type ImageCache = Record<string, string>
+
+async function loadImageCache(): Promise<ImageCache> {
+  if (!existsSync(IMAGE_CACHE_PATH)) return {}
+  const raw = await readFile(IMAGE_CACHE_PATH, 'utf8')
+  return JSON.parse(raw) as ImageCache
+}
+
+// 일부 BOJ 본문이 macOS case-insensitive 파일시스템 기준 케이스로 src 를
+// 적어 둔 경우(예: 디스크는 fig1.png, HTML 은 Fig1.png) 케이스만 다른 매칭을
+// 잡아주기 위해 lowercase 인덱스를 만들어 둔다.
+function buildLowercaseIndex(cache: ImageCache): ImageCache {
+  const idx: ImageCache = {}
+  for (const [k, v] of Object.entries(cache)) idx[k.toLowerCase()] = v
+  return idx
+}
+
+// 본문 HTML 의 <img src="1.png" /> 등 상대 경로를 cache 의 Blob URL 로 치환.
+// 절대 URL(http/https/data:)은 그대로 둠. cache 에 없는 키는 그대로 둠 (경고
+// 로그만 한 번 — 누락된 이미지는 운영자가 upload 스크립트를 다시 돌려야 한다).
+function rewriteImageSrc(
+  html: string | null | undefined,
+  problemId: number,
+  cache: ImageCache,
+  cacheLower: ImageCache,
+  missingRef: { count: number },
+): string {
+  if (!html) return ''
+  return html.replace(
+    /(<img\b[^>]*\bsrc=)(["'])([^"']+)\2/gi,
+    (full, prefix, quote, src) => {
+      if (
+        src.startsWith('http://') ||
+        src.startsWith('https://') ||
+        src.startsWith('//') || // protocol-relative
+        src.startsWith('data:') ||
+        src.startsWith('file:') // BOJ 일부 본문에 남은 워드/오피스 잔여물 — 어차피 깨진 src
+      ) {
+        return full
+      }
+      const key = `${problemId}/${src}`
+      const url = cache[key] ?? cacheLower[key.toLowerCase()]
+      if (!url) {
+        missingRef.count++
+        return full
+      }
+      return `${prefix}${quote}${url}${quote}`
+    },
+  )
+}
 
 interface ProblemFile {
   id: number
@@ -56,6 +109,10 @@ async function main() {
   const client = postgres(process.env.POSTGRES_URL_NON_POOLING)
   const db = drizzle(client, { schema })
 
+  const imageCache = await loadImageCache()
+  const imageCacheLower = buildLowercaseIndex(imageCache)
+  console.log(`image cache: ${Object.keys(imageCache).length} entries`)
+
   const entries = await readdir(PROBLEMS_DIR, { withFileTypes: true })
   const problemDirs = entries
     .filter((e) => e.isDirectory())
@@ -67,6 +124,7 @@ async function main() {
   let missing = 0
   let parseErrors = 0
   let invalid = 0
+  const missingRef = { count: 0 } // cache 에 없는 src 의 누계
   let buffer: (typeof problems.$inferInsert)[] = []
 
   async function flush() {
@@ -126,17 +184,49 @@ async function main() {
     // to that bucket so they're queryable rather than dropped.
     const level = typeof parsed.level === 'number' ? parsed.level : 0
 
+    const description = rewriteImageSrc(
+      parsed.description,
+      problemId,
+      imageCache,
+      imageCacheLower,
+      missingRef,
+    )
+    const inputFormat = rewriteImageSrc(
+      parsed.input,
+      problemId,
+      imageCache,
+      imageCacheLower,
+      missingRef,
+    )
+    const outputFormat = rewriteImageSrc(
+      parsed.output,
+      problemId,
+      imageCache,
+      imageCacheLower,
+      missingRef,
+    )
+    const hint =
+      parsed.hint != null
+        ? rewriteImageSrc(
+            parsed.hint,
+            problemId,
+            imageCache,
+            imageCacheLower,
+            missingRef,
+          )
+        : null
+
     buffer.push({
       problemId,
       titleKo: parsed.title,
       level,
       acceptedUserCount: parsed.accepted_user_count ?? null,
       averageTries: parsed.average_tries ?? null,
-      description: parsed.description ?? '',
-      inputFormat: parsed.input ?? '',
-      outputFormat: parsed.output ?? '',
+      description,
+      inputFormat,
+      outputFormat,
       samples: Array.isArray(parsed.samples) ? parsed.samples : [],
-      hint: parsed.hint ?? null,
+      hint,
       source: parsed.source ?? null,
       tags: parsed.tags,
       timeLimit: parsed.time_limit ?? null,
@@ -149,10 +239,16 @@ async function main() {
   await flush()
 
   console.log('---')
-  console.log(`imported:     ${imported}`)
-  console.log(`missing:      ${missing}`)
-  console.log(`parse errors: ${parseErrors}`)
-  console.log(`invalid:      ${invalid}`)
+  console.log(`imported:        ${imported}`)
+  console.log(`missing:         ${missing}`)
+  console.log(`parse errors:    ${parseErrors}`)
+  console.log(`invalid:         ${invalid}`)
+  console.log(`unmapped images: ${missingRef.count}`)
+  if (missingRef.count > 0) {
+    console.log(
+      '  → cache 에 없는 src — npm run db:upload-problem-images 다시 돌려서 매핑 보강 후 재 import.',
+    )
+  }
 
   await client.end()
 }
