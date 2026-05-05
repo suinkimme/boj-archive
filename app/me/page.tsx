@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
+import { getLogoutCallbackUrl } from '@/components/auth/logoutCallback'
 import { TierBadge } from '@/components/auth/TierBadge'
 import { TopNav } from '@/components/challenges/TopNav'
 import { useImportSync } from '@/components/import-sync/ImportSyncProvider'
@@ -373,7 +374,7 @@ export default function MePage() {
             )}
             <button
               type="button"
-              onClick={() => void signOut({ callbackUrl: '/' })}
+              onClick={() => void signOut({ callbackUrl: getLogoutCallbackUrl() })}
               className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between"
             >
               <span className="text-[14px] font-medium text-text-primary">로그아웃</span>
