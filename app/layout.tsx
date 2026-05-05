@@ -6,6 +6,7 @@ import { auth } from '@/auth'
 import { SessionProvider } from '@/components/auth/SessionProvider'
 import { ImportSyncProvider } from '@/components/import-sync/ImportSyncProvider'
 import { PendingFeatureProvider } from '@/components/ui/PendingFeatureProvider'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site'
 
 import './globals.css'
 
@@ -15,23 +16,59 @@ const notoSansKr = Noto_Sans_KR({
   variable: '--font-noto-sans-kr',
 })
 
-const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://boj-archive.vercel.app'
-).replace(/\/+$/, '')
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'NEXT JUDGE.',
-  description: '직접 풀고, 직접 채점하는 모두에게 열린 알고리즘 저지',
+  title: {
+    default: SITE_NAME,
+    template: `%s · ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    '알고리즘',
+    '백준',
+    'BOJ',
+    'PS',
+    '코딩테스트',
+    '문제 풀이',
+    'solved.ac',
+    'NEXT JUDGE',
+  ],
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: {
+    email: false,
+    telephone: false,
+    address: false,
+  },
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'NEXT JUDGE.',
-    description: '직접 풀고, 직접 채점하는 모두에게 열린 알고리즘 저지',
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'ko_KR',
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: '/',
     // images는 app/opengraph-image.tsx에서 동적 생성된 이미지가 자동 사용됨.
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NEXT JUDGE.',
-    description: '직접 풀고, 직접 채점하는 모두에게 열린 알고리즘 저지',
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
 }
 
