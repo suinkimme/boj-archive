@@ -1,18 +1,28 @@
-// 동적 sitemap. 정적 라우트와 Notion에서 가져오는 공지글을 한 번에 노출한다.
-// 검색엔진 색인 속도를 올리기 위해 Notion 발행 시점이 lastModified에 그대로 반영된다.
+// 동적 sitemap. 정적 라우트 + Notion 공지글 + 본문이 채워진 문제 페이지를
+// 한 번에 노출한다. 검색엔진 색인 속도를 올리기 위해 컨텐츠의 최신 변경
+// 시점이 lastModified에 그대로 반영된다.
 
+import { isNotNull } from 'drizzle-orm'
 import type { MetadataRoute } from 'next'
 
+import { db } from '@/db'
+import { problems } from '@/db/schema'
 import { listPublishedNotices } from '@/lib/notion/notices'
-
-// trailing slash 정규화 — env에 끝 슬래시가 박혀 있으면 `${SITE_URL}/path`가
-// `//path`로 더블 슬래시가 되어 sitemap이 깨진다.
-const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.next-judge.com'
-).replace(/\/+$/, '')
+import { SITE_URL } from '@/lib/site'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const notices = await listPublishedNotices()
+  const [notices, problemRows] = await Promise.all([
+    listPublishedNotices(),
+    // description이 채워진 문제만 노출 — solved.ac lazy import만 된 row는
+    // 본문이 비어 있어 검색 결과로 도달해도 가치가 적다.
+    db
+      .select({
+        problemId: problems.problemId,
+        fetchedAt: problems.fetchedAt,
+      })
+      .from(problems)
+      .where(isNotNull(problems.description)),
+  ])
 
   const staticEntries: MetadataRoute.Sitemap = [
     {
@@ -21,9 +31,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
+      url: `${SITE_URL}/about`,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
       url: `${SITE_URL}/notices`,
       changeFrequency: 'daily',
-      priority: 0.8,
+      priority: 0.6,
       lastModified: notices[0]?.updatedAt
         ? new Date(notices[0].updatedAt)
         : undefined,
@@ -34,8 +49,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}/notices/${n.slug}`,
     lastModified: new Date(n.updatedAt),
     changeFrequency: 'weekly',
-    priority: 0.6,
+    priority: 0.5,
   }))
 
-  return [...staticEntries, ...noticeEntries]
+  const problemEntries: MetadataRoute.Sitemap = problemRows.map((p) => ({
+    url: `${SITE_URL}/problems/${p.problemId}`,
+    lastModified: p.fetchedAt,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
+  return [...staticEntries, ...noticeEntries, ...problemEntries]
 }
