@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback } from 'react'
+import { useCallback, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import { FilterDropdown } from '@/components/challenges/FilterDropdown'
@@ -108,6 +108,8 @@ interface ChallengesViewProps {
   levels: Level[]
   statuses: Status[]
   tags: string[]
+  /** server-side 데이터 로드가 실패했는지. true면 리스트 영역만 에러 카드로 교체 */
+  loadError?: boolean
   /** Server에서 렌더된 NoticesAside 트리. ChallengesView가 client component라
    *  async server component를 직접 import할 수 없어 slot 패턴으로 받는다. */
   noticesAside: React.ReactNode
@@ -124,10 +126,20 @@ export function ChallengesView({
   levels,
   statuses,
   tags,
+  loadError = false,
   noticesAside,
 }: ChallengesViewProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const [retrying, startRetryTransition] = useTransition()
+
+  const handleRetryLoad = useCallback(() => {
+    // router.refresh()는 promise를 안 돌려주지만 transition으로 감싸면
+    // RSC 페이로드 재수신 완료까지 isPending이 true로 유지된다.
+    startRetryTransition(() => {
+      router.refresh()
+    })
+  }, [router])
 
   const updateParams = useCallback(
     (updates: Record<string, string | null>) => {
@@ -267,18 +279,25 @@ export function ChallengesView({
               <span className="hidden xl:inline text-[10px] font-bold uppercase tracking-[0.18em] text-text-muted">
                 PROBLEMS
               </span>
-              <span className="ml-auto text-xs text-text-secondary">
-                총{' '}
-                <strong className="text-text-primary font-bold tabular-nums">
-                  {totalCount.toLocaleString()}
-                </strong>
-                개
-              </span>
+              {!loadError && (
+                <span className="ml-auto text-xs text-text-secondary">
+                  총{' '}
+                  <strong className="text-text-primary font-bold tabular-nums">
+                    {totalCount.toLocaleString()}
+                  </strong>
+                  개
+                </span>
+              )}
             </div>
 
-            <ProblemList problems={visible} />
-
-            <Pagination page={page} totalPages={totalPages} onChange={handlePageChange} />
+            {loadError ? (
+              <ProblemListErrorCard onRetry={handleRetryLoad} retrying={retrying} />
+            ) : (
+              <>
+                <ProblemList problems={visible} />
+                <Pagination page={page} totalPages={totalPages} onChange={handlePageChange} />
+              </>
+            )}
           </div>
 
           {noticesAside}
@@ -317,6 +336,35 @@ export function ChallengesView({
           해당 대회 주최 기관에 있습니다.
         </p>
       </footer>
+    </div>
+  )
+}
+
+// 서버에서 문제 목록을 못 가져왔을 때 ProblemList + Pagination 자리를 대체.
+// 헤더/필터는 그대로 남겨 페이지 chrome을 유지하고, 리스트 영역만 카드로 교체.
+function ProblemListErrorCard({
+  onRetry,
+  retrying,
+}: {
+  onRetry: () => void
+  retrying: boolean
+}) {
+  return (
+    <div role="alert" aria-live="polite" className="py-20 text-center">
+      <p className="text-[14px] sm:text-[15px] font-bold text-text-primary mb-1.5">
+        문제 목록을 불러오지 못했어요
+      </p>
+      <p className="text-[12px] sm:text-[13px] text-text-muted leading-relaxed mb-5">
+        잠시 뒤 다시 시도해주세요.
+      </p>
+      <button
+        type="button"
+        onClick={onRetry}
+        disabled={retrying}
+        className="bg-text-primary text-white border-0 px-4 py-2.5 text-[13px] font-bold hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        {retrying ? '다시 불러오는 중...' : '다시 시도'}
+      </button>
     </div>
   )
 }
