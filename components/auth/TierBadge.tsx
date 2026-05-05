@@ -1,4 +1,4 @@
-import { tierColor, tierName } from '@/lib/solvedac/tier'
+import { tierColor } from '@/lib/solvedac/tier'
 
 export function TierBadge({
   tier,
@@ -10,7 +10,6 @@ export function TierBadge({
   return (
     <span
       className={`font-bold tabular-nums ${tierColor(tier)} ${className ?? ''}`}
-      title={tierName(tier)}
     >
       Lv. {tier}
     </span>

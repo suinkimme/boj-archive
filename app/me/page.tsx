@@ -21,6 +21,7 @@ type MeData = {
   solvedAc: SolvedAcUser | null
   recentSolved: SolvedAcProblem[]
   importedCount: number
+  localSolvedCount: number
 }
 
 export default function MePage() {
@@ -130,6 +131,7 @@ export default function MePage() {
   const hasHandle = !!bojHandle
   const solvedAc = me?.solvedAc ?? null
   const recentSolved = me?.recentSolved ?? []
+  const localSolvedCount = me?.localSolvedCount ?? 0
   const totalSolved = solvedAc?.solvedCount ?? 0
   const importedDisplay = Math.min(totalSolved, me?.importedCount ?? 0)
   // 글로벌 폴링 상태를 우선 신뢰. provider 비활성 상태에서도 데이터가
@@ -193,26 +195,41 @@ export default function MePage() {
         {me && !hasHandle && <NoHandleCard />}
         {me && hasHandle && !isVerified && <UnverifiedCard handle={bojHandle!} />}
 
-        {me && hasHandle && !isVerified && <LockedActivity />}
+        {/* 활동 요약 — solvedac 임포트 중에만 placeholder. 그 외에는 항상
+             표시한다. solvedAc가 있으면 BOJ 전체 통계, 없으면 이 사이트
+             기준 푼 문제 수 + 잠긴 레이팅/클래스 슬롯. */}
         {me && hasHandle && isVerified && isImporting && <ActivityPlaceholder />}
-        {me && hasHandle && isVerified && !isImporting && solvedAc && (
+        {me && !(hasHandle && isVerified && isImporting) && (
           <section className="mb-10">
             <SectionHeading>활동 요약</SectionHeading>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
-              <Stat label="푼 문제" value={solvedAc.solvedCount.toLocaleString()} />
-              <Stat label="레이팅" value={solvedAc.rating.toLocaleString()} />
-              <Stat label="클래스" value={String(solvedAc.class)} />
+              <Stat
+                label="푼 문제"
+                value={(solvedAc?.solvedCount ?? localSolvedCount).toLocaleString()}
+              />
+              {solvedAc ? (
+                <Stat label="레이팅" value={solvedAc.rating.toLocaleString()} />
+              ) : (
+                <LockedStat label="레이팅" />
+              )}
+              {solvedAc ? (
+                <Stat label="클래스" value={String(solvedAc.class)} />
+              ) : (
+                <LockedStat label="클래스" />
+              )}
             </div>
           </section>
         )}
 
+        {/* 최근 푼 문제 — me가 로드된 이후엔 항상 섹션을 띄운다.
+             임포트 중엔 스켈레톤, 풀이가 없으면 빈 상태, 있으면 리스트.
+             BOJ 미연동/미인증 사용자도 이 사이트에서 풀어 row가 쌓이면 노출. */}
         {!me && <RecentSolvedPlaceholder />}
-        {me && hasHandle && !isVerified && <LockedRecentSolved />}
-        {me && isVerified && hasHandle && (isImporting || recentSolved.length > 0) && (
+        {me && (
           <section className="mb-10">
             <RecentSolvedHeader disabled={false} />
 
-            {isImporting || recentSolved.length === 0 ? (
+            {isImporting ? (
               <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <li key={i} className="h-12 flex items-center gap-3 px-4">
@@ -222,6 +239,15 @@ export default function MePage() {
                   </li>
                 ))}
               </ul>
+            ) : recentSolved.length === 0 ? (
+              <div className="border border-border-list bg-surface-card px-5 py-8 text-center">
+                <p className="text-[13px] font-bold text-text-primary mb-1">
+                  아직 푼 문제가 없어요
+                </p>
+                <p className="text-[12px] text-text-muted leading-relaxed">
+                  문제를 풀면 여기에 최근 풀이가 나와요.
+                </p>
+              </div>
             ) : (
               <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
                 {recentSolved.map((item) => (
@@ -381,19 +407,6 @@ function LockIcon({ className }: { className?: string }) {
   )
 }
 
-function LockedActivity() {
-  return (
-    <section className="mb-10">
-      <SectionHeading>활동 요약</SectionHeading>
-      <div className="grid grid-cols-3 gap-3 sm:gap-4">
-        <LockedStat label="푼 문제" />
-        <LockedStat label="레이팅" />
-        <LockedStat label="클래스" />
-      </div>
-    </section>
-  )
-}
-
 function LockedStat({ label }: { label: string }) {
   return (
     <div className="border border-border-list bg-surface-card px-4 py-4">
@@ -404,21 +417,6 @@ function LockedStat({ label }: { label: string }) {
         <LockIcon className="w-[18px] h-[18px] sm:w-5 sm:h-5" />
       </div>
     </div>
-  )
-}
-
-function LockedRecentSolved() {
-  return (
-    <section className="mb-10">
-      <RecentSolvedHeader disabled />
-      <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <li key={i} className="h-12 flex items-center px-4 text-text-muted">
-            <LockIcon className="w-4 h-4" />
-          </li>
-        ))}
-      </ul>
-    </section>
   )
 }
 

@@ -110,7 +110,9 @@ export async function fetchProblemsForList(
 
   // 인증된 사용자에 한해 의미 있음.
   //   - tried  ("풀었던 문제")   : 이 사이트에서 채점을 시도한 적 있음 (verdict 무관)
-  //   - solved ("완료한 문제")   : AC 받은 적 있음 (이 사이트의 local AC + solved.ac import)
+  //   - solved ("완료한 문제")   : 한 번이라도 성공한 적 있음
+  //                              = solved.ac 임포트로 들어온 row OR
+  //                                submissions 에 AC verdict 1건 이상
   //   - unsolved ("안 푼 문제")  : 시도도 없고 import된 풀이도 없음
   // tried/solved 둘 다 선택되면 합집합. unsolved와 동시에 선택되면 모순이라
   // 필터를 풀어 전체를 보여준다.
@@ -120,7 +122,7 @@ export async function fetchProblemsForList(
     const wantsUnsolved = statuses.includes('unsolved')
 
     const triedExists = sql`exists (select 1 from ${submissions} s where s.user_id = ${userId} and s.problem_id = problems.problem_id)`
-    const solvedExists = sql`exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id)`
+    const solvedExists = sql`(exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id) or exists (select 1 from ${submissions} ac where ac.user_id = ${userId} and ac.problem_id = problems.problem_id and ac.verdict = 'AC'))`
 
     const inclusive = wantsTried && wantsSolved
     if (wantsUnsolved && !wantsTried && !wantsSolved) {
@@ -165,8 +167,10 @@ export async function fetchProblemsForList(
         // 명시적으로 0/1 정수로 캐스팅. r.done === 1 비교로 확정 변환.
         // problems.problem_id는 drizzle 인터폴레이션이 prefix를 빠뜨려
         // subquery 안에서 모호해지는 문제가 있어 raw로 표 접두 명시.
+        // done: 두 소스 중 하나라도 성공이면 true — solvedac 임포트 row 있거나
+        //       submissions 에 AC verdict 가 한 건이라도 있으면 풀었다고 본다.
         done: userId
-          ? sql<number>`(case when exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id) then 1 else 0 end)`
+          ? sql<number>`(case when (exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id) or exists (select 1 from ${submissions} ac where ac.user_id = ${userId} and ac.problem_id = problems.problem_id and ac.verdict = 'AC')) then 1 else 0 end)`
           : sql<number>`0`,
         tried: userId
           ? sql<number>`(case when exists (select 1 from ${submissions} s where s.user_id = ${userId} and s.problem_id = problems.problem_id) then 1 else 0 end)`
@@ -256,9 +260,10 @@ export async function fetchProblemDetail(
       samples: problems.samples,
       acceptedUserCount: problems.acceptedUserCount,
       averageTries: problems.averageTries,
-      // fetchProblemsForList와 동일한 EXISTS 패턴으로 done 플래그 결정.
+      // fetchProblemsForList와 동일한 OR 패턴으로 done 플래그 결정 —
+      // solvedac 임포트 row 있거나 submissions 에 AC verdict 1건 이상.
       done: userId
-        ? sql<number>`(case when exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id) then 1 else 0 end)`
+        ? sql<number>`(case when (exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id) or exists (select 1 from ${submissions} ac where ac.user_id = ${userId} and ac.problem_id = problems.problem_id and ac.verdict = 'AC')) then 1 else 0 end)`
         : sql<number>`0`,
     })
     .from(problems)
