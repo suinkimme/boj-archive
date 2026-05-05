@@ -10,12 +10,16 @@ import type { Lang } from '@/components/problems/codeBoilerplate'
 
 import type { JudgeRuntime } from '../types'
 
+import { cRuntime } from './c'
+import { cppRuntime } from './cpp'
 import { pythonRuntime } from './python'
 
 // 현재 워커가 구현된 언어만 포함. 나머지는 Lang 에 등재돼 있어도 채점 시
 // hasRuntime(lang) === false 가 된다.
 const ENTRIES: ReadonlyArray<readonly [Lang, JudgeRuntime]> = [
   ['python', pythonRuntime],
+  ['c', cRuntime],
+  ['cpp', cppRuntime],
 ]
 
 export const RUNTIMES = Object.fromEntries(ENTRIES) as Partial<

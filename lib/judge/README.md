@@ -19,8 +19,16 @@ lib/judge/
   README.md             ← 이 문서
 
 public/judge-workers/
-  python.js             각 언어 워커. 정적 자산이라 바로 새 언어 추가 가능
-  ...
+  python.js             Pyodide 기반 (단일 파일, 자체 완결)
+  c.js                  C 채점기 — clang-worker-base 의 thin wrapper
+  cpp.js                C++ 채점기 — 동일
+  clang-worker-base.js  C/C++ 공통 컴파일·실행 로직 (importScripts)
+  clang-shared.js       binji/wasm-clang 의 패치본 (hostWrite (fd,str) 시그니처)
+  clang/                binji 정적 자산
+    memfs                  가상 파일시스템 WASM
+    sysroot.tar            stdio.h, iostream 등 표준 라이브러리
+    LICENSE / LICENSE.llvm Apache-2.0 원문 (의무 배포)
+    config.json            (선택) Vercel Blob 의 clang/lld URL — 없으면 same-origin 폴백
 
 hooks/useJudge.ts       Lang 인자 받아 RUNTIMES 에서 워커를 띄우고
                         결과 라이프사이클을 관리하는 React 훅
@@ -132,6 +140,30 @@ export const BOILERPLATE = {
 
 이게 끝. UI(케이스 탭, 결과 탭, 스켈레톤) 와 hidden testcase 채점은 모든 언어가
 공유하므로 추가로 손댈 게 없다.
+
+## C / C++ 워커 (binji/wasm-clang 기반)
+
+`c.js` / `cpp.js` 는 `clang-worker-base.js` 를 importScripts 한 후
+언어별 컴파일 플래그(`-x`, `-std`, link libs)를 주입한다. 새 언어가 같은
+clang 툴체인을 쓰면(예: Objective-C) `setupClangWorker({...})` 한 줄짜리
+래퍼 파일만 추가하면 된다.
+
+큰 바이너리(`clang` 31MB / `lld` 19MB)는 git 에 두지 않고 Vercel Blob 으로
+서빙한다. 업로드 절차:
+
+```bash
+git clone https://github.com/binji/wasm-clang.git /tmp/wasm-clang
+# .env.local 에 BLOB_READ_WRITE_TOKEN 추가 후
+npm run judge:upload-clang
+```
+
+스크립트가 `public/judge-workers/clang/config.json` 을 만들고 거기에 URL 을
+기록한다. 워커는 init 시 이 파일을 fetch 해서 큰 자산 위치를 결정.
+config.json 부재 시 동일 origin (`/judge-workers/clang/clang` 등) 으로 폴백 —
+로컬에서 Blob 없이 테스트하고 싶을 때만 두 바이너리를 직접 가져다 두면 된다.
+
+라이선스: Apache-2.0 (main) + Apache-2.0 with LLVM Exceptions (clang, lld).
+`public/judge-workers/clang/LICENSE` 와 `LICENSE.llvm` 을 같이 배포한다.
 
 ## 메시지 프로토콜
 
