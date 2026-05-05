@@ -34,6 +34,13 @@ interface UseJudgeReturn {
   retry: () => void
 }
 
+// 채점 1 사이클이 "완전히" 끝났을 때 한 번만 호출. hidden 케이스가 있으면
+// 서버 verify 응답(또는 그 실패) 까지 끝난 시점, 없으면 worker done 시점.
+// results는 그 시점의 최종 verdict 배열.
+interface UseJudgeOptions {
+  onComplete?: (results: TestCaseResult[]) => void
+}
+
 // 워커에 보내는 케이스 단위. hidden=true면 워커는 비교를 스킵.
 interface InternalCase {
   input: string
@@ -53,7 +60,10 @@ const tlePlaceholder = (c: InternalCase): TestCaseResult => ({
   hidden: c.hidden,
 })
 
-export function useJudge(lang: Lang): UseJudgeReturn {
+export function useJudge(
+  lang: Lang,
+  options: UseJudgeOptions = {},
+): UseJudgeReturn {
   const runtime: JudgeRuntime | undefined = getRuntime(lang)
   const supported = runtime !== undefined
 
@@ -61,6 +71,21 @@ export function useJudge(lang: Lang): UseJudgeReturn {
     supported ? 'loading' : 'idle',
   )
   const [results, setResults] = useState<TestCaseResult[] | null>(null)
+
+  // results 상태를 ref 로도 미러링한다. setState 의 functional updater 는
+  // React 18 에서 다음 commit 에 실행되므로 reducer 안에서 캡처한 snapshot 을
+  // 같은 task 안에서 즉시 읽을 수 없다. ref 로 동기 갱신해두면 worker.onmessage
+  // 핸들러 내에서 최신 results 를 그 자리에서 읽고 onComplete 에 넘길 수 있다.
+  const resultsRef = useRef<TestCaseResult[] | null>(null)
+  const writeResults = useCallback((next: TestCaseResult[] | null) => {
+    resultsRef.current = next
+    setResults(next)
+  }, [])
+
+  // onComplete는 ref로 안정화. 사용자가 매 렌더에 새 함수를 넘겨도
+  // verifyHiddenResults/done 핸들러가 stale 콜백을 잡지 않도록 한다.
+  const onCompleteRef = useRef<UseJudgeOptions['onComplete']>(options.onComplete)
+  onCompleteRef.current = options.onComplete
 
   // 언어별 워커 캐시. 한 번 만들어진 워커는 페이지 unmount 전까지 유지되어,
   // 사용자가 같은 언어로 돌아왔을 때 재초기화 비용을 다시 치르지 않는다.
@@ -88,89 +113,101 @@ export function useJudge(lang: Lang): UseJudgeReturn {
     }
   }
 
+  // 콜백을 한 번만 호출하기 위한 가드. judge() 진입 시 false로 리셋.
+  const completedRef = useRef(false)
+  const fireComplete = useCallback((finalResults: TestCaseResult[] | null) => {
+    if (completedRef.current) return
+    if (!finalResults) return
+    completedRef.current = true
+    onCompleteRef.current?.(finalResults)
+  }, [])
+
   // hidden 케이스의 actual outputs를 서버에 보내 verdict을 받아 results에 머지.
   // RE/TLE는 client-side에서 결정된 그대로 두고, AC placeholder만 서버 응답으로 덮는다.
+  // 성공/실패 어느 쪽으로 끝나든 마지막에 fireComplete으로 onComplete를 1회 호출.
+  // 모든 results 변경은 writeResults 로 ref+state 동기 갱신해 직후 라인에서 최신
+  // 값을 그대로 fireComplete 에 넘길 수 있게 한다.
   const verifyHiddenResults = useCallback(async () => {
     const hidden = hiddenOptionsRef.current
     if (!hidden) return
 
-    setResults((prev) => {
-      if (!prev) return prev
-
-      // hidden 슬롯의 인덱스와 actual을 모은다 (RE/TLE는 서버 검증 스킵).
-      const hiddenIndices: number[] = []
-      const outputsToSend: string[] = []
-      for (let i = visibleCountRef.current; i < prev.length; i++) {
-        const r = prev[i]
-        if (r.verdict === 'RE' || r.verdict === 'TLE') continue
-        hiddenIndices.push(i)
-        outputsToSend.push(r.actual ?? '')
-      }
-
-      // hidden 결과가 아예 없으면 (전부 RE/TLE이거나 hidden 자체가 0개) 호출 생략.
-      if (hiddenIndices.length === 0) {
-        return prev
-      }
-
-      // 서버 호출은 setResults 콜백 밖에서. 여기선 prev 그대로 반환.
-      void postVerify(hidden.problemId, outputsToSend, hiddenIndices)
-      return prev
-    })
-
-    async function postVerify(
-      problemId: number,
-      outputs: string[],
-      indices: number[],
-    ) {
-      try {
-        const res = await fetch(
-          `/api/problems/${problemId}/judge/verify`,
-          {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ outputs }),
-          },
-        )
-        if (!res.ok) throw new Error(`verify failed: ${res.status}`)
-        const data = (await res.json()) as { verdicts: ('AC' | 'WA')[] }
-        if (
-          !Array.isArray(data.verdicts) ||
-          data.verdicts.length !== indices.length
-        ) {
-          throw new Error('verify response shape mismatch')
-        }
-
-        setResults((prev) => {
-          if (!prev) return prev
-          const next = [...prev]
-          indices.forEach((idx, k) => {
-            const v = data.verdicts[k]
-            const r = next[idx]
-            // AC/WA만 덮어쓰고 elapsed/actual/hidden은 그대로 유지.
-            next[idx] = { ...r, verdict: v }
-          })
-          return next
-        })
-      } catch (e) {
-        // verify 실패 시 hidden 슬롯들을 RE 처리 + 사용자에게 사유 노출.
-        const message = e instanceof Error ? e.message : '서버 검증 실패'
-        setResults((prev) => {
-          if (!prev) return prev
-          const next = [...prev]
-          indices.forEach((idx) => {
-            const r = next[idx]
-            next[idx] = {
-              ...r,
-              verdict: 'RE',
-              errorMessage: `채점 서버 오류: ${message}`,
-              actual: undefined,
-            }
-          })
-          return next
-        })
-      }
+    const current = resultsRef.current
+    if (!current) {
+      fireComplete(null)
+      return
     }
-  }, [])
+
+    // hidden 슬롯의 인덱스와 actual을 모은다 (RE/TLE는 서버 검증 스킵).
+    const hiddenIndices: number[] = []
+    const outputsToSend: string[] = []
+    for (let i = visibleCountRef.current; i < current.length; i++) {
+      const r = current[i]
+      if (r.verdict === 'RE' || r.verdict === 'TLE') continue
+      hiddenIndices.push(i)
+      outputsToSend.push(r.actual ?? '')
+    }
+
+    // hidden 결과가 아예 없으면 (전부 RE/TLE이거나 hidden 자체가 0개) 호출 생략 +
+    // 현재 results 그대로 onComplete.
+    if (hiddenIndices.length === 0) {
+      fireComplete(current)
+      return
+    }
+
+    try {
+      const res = await fetch(
+        `/api/problems/${hidden.problemId}/judge/verify`,
+        {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ outputs: outputsToSend }),
+        },
+      )
+      if (!res.ok) throw new Error(`verify failed: ${res.status}`)
+      const data = (await res.json()) as { verdicts: ('AC' | 'WA')[] }
+      if (
+        !Array.isArray(data.verdicts) ||
+        data.verdicts.length !== hiddenIndices.length
+      ) {
+        throw new Error('verify response shape mismatch')
+      }
+
+      const prev = resultsRef.current
+      if (!prev) {
+        fireComplete(null)
+        return
+      }
+      const next = [...prev]
+      hiddenIndices.forEach((idx, k) => {
+        const v = data.verdicts[k]
+        const r = next[idx]
+        // AC/WA만 덮어쓰고 elapsed/actual/hidden은 그대로 유지.
+        next[idx] = { ...r, verdict: v }
+      })
+      writeResults(next)
+      fireComplete(next)
+    } catch (e) {
+      // verify 실패 시 hidden 슬롯들을 RE 처리 + 사용자에게 사유 노출.
+      const message = e instanceof Error ? e.message : '서버 검증 실패'
+      const prev = resultsRef.current
+      if (!prev) {
+        fireComplete(null)
+        return
+      }
+      const next = [...prev]
+      hiddenIndices.forEach((idx) => {
+        const r = next[idx]
+        next[idx] = {
+          ...r,
+          verdict: 'RE',
+          errorMessage: `채점 서버 오류: ${message}`,
+          actual: undefined,
+        }
+      })
+      writeResults(next)
+      fireComplete(next)
+    }
+  }, [fireComplete, writeResults])
 
   // 워커에 메시지 핸들러 부착. 핸들러는 자기 runtimeId 가 active 인 동안만
   // React 상태를 갱신하므로, 사용자가 언어를 전환한 후에 도착한 stale 메시지는
@@ -193,19 +230,15 @@ export function useJudge(lang: Lang): UseJudgeReturn {
         }
 
         if (msg.type === 'result') {
-          setResults((prev) => {
-            // First result of the run: allocate the array prefilled with TLE
-            // placeholders so that if the worker is killed mid-run, missing
-            // slots already render as TLE.
-            if (!prev) {
-              const next = judgeCasesRef.current.map(tlePlaceholder)
-              next[msg.caseIndex] = msg.result
-              return next
-            }
-            const next = [...prev]
-            next[msg.caseIndex] = msg.result
-            return next
-          })
+          // First result of the run: allocate the array prefilled with TLE
+          // placeholders so that if the worker is killed mid-run, missing
+          // slots already render as TLE.
+          const prev = resultsRef.current
+          const next = prev
+            ? [...prev]
+            : judgeCasesRef.current.map(tlePlaceholder)
+          next[msg.caseIndex] = msg.result
+          writeResults(next)
           return
         }
 
@@ -216,6 +249,10 @@ export function useJudge(lang: Lang): UseJudgeReturn {
           // "채점 중"에서 풀리도록 한다.
           if (hiddenOptionsRef.current) {
             void verifyHiddenResults()
+          } else {
+            // hidden 없으면 done 시점이 곧 최종 결과. ref 가 이전 result 메시지들의
+            // 누적값을 보존하고 있어 그 자리에서 onComplete 에 그대로 넘긴다.
+            fireComplete(resultsRef.current)
           }
           setPhase('ready')
         }
@@ -227,7 +264,7 @@ export function useJudge(lang: Lang): UseJudgeReturn {
         setPhase('error')
       }
     },
-    [verifyHiddenResults],
+    [verifyHiddenResults, fireComplete, writeResults],
   )
 
   // 캐시된 워커를 가져오거나 없으면 만든다. 새로 만든 경우 ready 메시지를
@@ -309,17 +346,19 @@ export function useJudge(lang: Lang): UseJudgeReturn {
       const allCases = [...visibleCases, ...hiddenCases]
 
       if (allCases.length === 0) {
-        setResults([])
+        writeResults([])
         return
       }
 
       const worker = ensureWorker(runtime)
 
       setPhase('running')
-      setResults(null)
+      writeResults(null)
       judgeCasesRef.current = allCases
       hiddenOptionsRef.current = hiddenCases.length > 0 ? hidden : undefined
       visibleCountRef.current = visibleCases.length
+      // 새 채점 사이클 시작 — onComplete 가드 리셋.
+      completedRef.current = false
 
       worker.postMessage({
         type: 'run',
@@ -334,17 +373,17 @@ export function useJudge(lang: Lang): UseJudgeReturn {
         // 초기 TLE placeholder가 그대로 남는다.
         discardWorker(runtime.id)
 
-        setResults((prev) => {
-          if (!prev) {
-            return judgeCasesRef.current.map(tlePlaceholder)
-          }
-          return prev
-        })
+        const next =
+          resultsRef.current ?? judgeCasesRef.current.map(tlePlaceholder)
+        writeResults(next)
+        // TLE로 강제 종료된 사이클도 사용자 입장에선 "제출 1건" — TLE verdict로
+        // onComplete 호출.
+        fireComplete(next)
         setPhase('loading')
         ensureWorker(runtime)
       }, TLE_TIMEOUT_MS)
     },
-    [runtime, phase, ensureWorker, discardWorker],
+    [runtime, phase, ensureWorker, discardWorker, fireComplete, writeResults],
   )
 
   const retry = useCallback(() => {

@@ -11,7 +11,7 @@ import {
 } from 'drizzle-orm'
 
 import { db } from '@/db'
-import { problems, userSolvedProblems } from '@/db/schema'
+import { problems, submissions, userSolvedProblems } from '@/db/schema'
 import {
   ALL_LEVELS,
   ALL_ORDERS,
@@ -108,25 +108,35 @@ export async function fetchProblemsForList(
   if (levels.length > 0) conditions.push(inArray(problems.level, levels))
   if (tagFilter.length > 0) conditions.push(arrayOverlaps(problems.tags, tagFilter))
 
-  // 인증된 사용자에 한해 의미 있음. "풀었던 문제"(tried)는 실패한 시도와
-  // 성공한 시도의 합집합이지만 실패 추적 데이터가 아직 없어 현재는 solved와
-  // 동등하게 매핑. 실패 시도 테이블이 도입되면 OR로 확장.
+  // 인증된 사용자에 한해 의미 있음.
+  //   - tried  ("풀었던 문제")   : 이 사이트에서 채점을 시도한 적 있음 (verdict 무관)
+  //   - solved ("완료한 문제")   : AC 받은 적 있음 (이 사이트의 local AC + solved.ac import)
+  //   - unsolved ("안 푼 문제")  : 시도도 없고 import된 풀이도 없음
+  // tried/solved 둘 다 선택되면 합집합. unsolved와 동시에 선택되면 모순이라
+  // 필터를 풀어 전체를 보여준다.
   if (userId && statuses.length > 0) {
     const wantsTried = statuses.includes('tried')
     const wantsSolved = statuses.includes('solved')
     const wantsUnsolved = statuses.includes('unsolved')
-    const showsAttempted = wantsTried || wantsSolved
 
-    if (showsAttempted && !wantsUnsolved) {
+    const triedExists = sql`exists (select 1 from ${submissions} s where s.user_id = ${userId} and s.problem_id = problems.problem_id)`
+    const solvedExists = sql`exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id)`
+
+    const inclusive = wantsTried && wantsSolved
+    if (wantsUnsolved && !wantsTried && !wantsSolved) {
       conditions.push(
-        sql`exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id)`,
+        sql`(not (${triedExists}) and not (${solvedExists}))`,
       )
-    } else if (wantsUnsolved && !showsAttempted) {
-      conditions.push(
-        sql`not exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id)`,
-      )
+    } else if (!wantsUnsolved && (wantsTried || wantsSolved)) {
+      if (inclusive) {
+        conditions.push(sql`(${triedExists} or ${solvedExists})`)
+      } else if (wantsTried) {
+        conditions.push(triedExists)
+      } else {
+        conditions.push(solvedExists)
+      }
     }
-    // 그 외(둘 다 선택 / 아무것도 선택 안 됨)는 필터 적용 안 함.
+    // unsolved + (tried/solved) 동시 선택 또는 셋 다 선택 = 모든 상태 = no-op.
   }
 
   const whereClause = conditions.length > 0 ? and(...conditions) : undefined
@@ -157,6 +167,9 @@ export async function fetchProblemsForList(
         // subquery 안에서 모호해지는 문제가 있어 raw로 표 접두 명시.
         done: userId
           ? sql<number>`(case when exists (select 1 from ${userSolvedProblems} usp where usp.user_id = ${userId} and usp.problem_id = problems.problem_id) then 1 else 0 end)`
+          : sql<number>`0`,
+        tried: userId
+          ? sql<number>`(case when exists (select 1 from ${submissions} s where s.user_id = ${userId} and s.problem_id = problems.problem_id) then 1 else 0 end)`
           : sql<number>`0`,
       })
       .from(problems)
@@ -194,9 +207,7 @@ export async function fetchProblemsForList(
     completedCount: r.acceptedUserCount ?? 0,
     rate: deriveRate(r.averageTries),
     done: Number(r.done) === 1,
-    // 실제 시도 추적 데이터 경로 도입 전까지 항상 false. 채점 시도
-    // 기록이 들어오면 user_solved_problems와 같은 EXISTS 패턴으로 채움.
-    tried: false,
+    tried: Number(r.tried) === 1,
   }))
 
   return { visible, totalCount, totalPages, totalByLevel, page }
