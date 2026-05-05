@@ -77,6 +77,8 @@ function render() {
       <tbody>${rows}</tbody>
     </table>`;
 
+  renderMath("content");
+
   // Pagination
   const pages = [];
   pages.push(
@@ -235,6 +237,8 @@ function renderModal(p) {
     </div>
   `;
 
+  renderMath("modal-content");
+
   // Tag click → filter
   document.querySelectorAll(".modal-tag").forEach((el) => {
     el.addEventListener("click", () => {
@@ -246,6 +250,22 @@ function renderModal(p) {
   });
 
   attachRunnerListeners(currentSamples, p.id);
+}
+
+function renderMath(id) {
+  const el = document.getElementById(id);
+  if (!el || typeof renderMathInElement !== "function") return;
+
+  renderMathInElement(el, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "\\[", right: "\\]", display: true },
+      { left: "$", right: "$", display: false },
+      { left: "\\(", right: "\\)", display: false },
+    ],
+    throwOnError: false,
+    ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+  });
 }
 
 function section(title, html, id) {
