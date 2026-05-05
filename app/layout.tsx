@@ -3,7 +3,6 @@ import { Noto_Sans_KR } from 'next/font/google'
 
 import { auth } from '@/auth'
 import { SessionProvider } from '@/components/auth/SessionProvider'
-import { GlobalImportProgressBar } from '@/components/import-sync/GlobalImportProgressBar'
 import { ImportSyncProvider } from '@/components/import-sync/ImportSyncProvider'
 import { PendingFeatureProvider } from '@/components/ui/PendingFeatureProvider'
 
@@ -46,7 +45,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       >
         <SessionProvider session={session}>
           <ImportSyncProvider>
-            <GlobalImportProgressBar />
             <PendingFeatureProvider>{children}</PendingFeatureProvider>
           </ImportSyncProvider>
         </SessionProvider>
