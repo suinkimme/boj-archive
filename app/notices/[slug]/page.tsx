@@ -12,10 +12,8 @@ import { notFound } from 'next/navigation'
 import { TopNav } from '@/components/challenges/TopNav'
 import { MarkdownRenderer } from '@/components/notices/MarkdownRenderer'
 import { getNoticeBySlug } from '@/lib/notion/notices'
+import { SITE_NAME, SITE_URL } from '@/lib/site'
 
-const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.next-judge.com'
-).replace(/\/+$/, '')
 const AUTHOR_NAME = '김민규'
 
 interface PageProps {
@@ -69,7 +67,7 @@ export default async function NoticeDetailPage({ params }: PageProps) {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'NEXT JUDGE.',
+      name: SITE_NAME,
       url: SITE_URL,
     },
     mainEntityOfPage: {
