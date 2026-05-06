@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 
 import ReactMarkdown from 'react-markdown'
@@ -228,19 +228,40 @@ function DescriptionContent({ challenge }: { challenge: ChallengeDetail }) {
                   rel="noreferrer noopener"
                   className="hover:opacity-75 transition-opacity"
                 >
-                  <img
-                    src={`https://github.com/${login}.png?size=48`}
-                    alt={login}
-                    width={28}
-                    height={28}
-                    className="rounded-full"
-                  />
+                  <ContributorAvatar login={login} />
                 </a>
               </Tooltip>
             ))}
           </div>
         </div>
       )}
+    </div>
+  )
+}
+
+function ContributorAvatar({ login }: { login: string }) {
+  const [loaded, setLoaded] = useState(false)
+  const imgRef = useRef<HTMLImageElement>(null)
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setLoaded(true)
+  }, [])
+
+  return (
+    <div className="relative w-7 h-7">
+      {!loaded && (
+        <div className="absolute inset-0 rounded-full bg-border animate-pulse" />
+      )}
+      <img
+        ref={imgRef}
+        src={`https://github.com/${login}.png?size=48`}
+        alt={login}
+        width={28}
+        height={28}
+        className={`rounded-full transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
+      />
     </div>
   )
 }
