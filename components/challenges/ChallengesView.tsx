@@ -3,7 +3,7 @@
 import { useCallback, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import { ContributionBanner } from '@/components/challenges/ContributionBanner'
+import { ContributionNudge } from '@/components/challenges/ContributionNudge'
 import { FilterDropdown } from '@/components/challenges/FilterDropdown'
 import { Pagination } from '@/components/challenges/Pagination'
 import { ProblemList } from '@/components/challenges/ProblemList'
@@ -203,8 +203,6 @@ export function ChallengesView({
               )}
             </div>
 
-            <ContributionBanner />
-
             {loadError ? (
               <ProblemListErrorCard onRetry={handleRetryLoad} retrying={retrying} />
             ) : (
@@ -232,6 +230,8 @@ export function ChallengesView({
           </a>
         </div>
       </footer>
+
+      <ContributionNudge />
     </div>
   )
 }
