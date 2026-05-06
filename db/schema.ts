@@ -9,6 +9,7 @@ import {
   text,
   timestamp,
   unique,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core'
 import type { AdapterAccountType } from 'next-auth/adapters'
 
@@ -104,6 +105,7 @@ export const standardProblems = pgTable('standard_problems', {
 
 export const challenges = pgTable('challenges', {
   id: serial('id').primaryKey(),
+  slug: text('slug').notNull().unique(),
   title: text('title').notNull(),
   description: text('description').notNull(),
   inputFormat: text('input_format').notNull(),
@@ -151,6 +153,22 @@ export const challengeSubmissions = pgTable(
   (t) => [
     index('challenge_submissions_user_challenge_idx').on(t.userId, t.challengeId),
     index('challenge_submissions_challenge_submitted_at_idx').on(t.challengeId, t.submittedAt),
+  ],
+)
+
+export const challengeContributors = pgTable(
+  'challenge_contributors',
+  {
+    id: serial('id').primaryKey(),
+    challengeId: integer('challenge_id')
+      .notNull()
+      .references(() => challenges.id, { onDelete: 'cascade' }),
+    githubLogin: text('github_login').notNull(),
+    contributedAt: timestamp('contributed_at', { mode: 'date' }).notNull().defaultNow(),
+  },
+  (t) => [
+    index('challenge_contributors_challenge_idx').on(t.challengeId),
+    uniqueIndex('challenge_contributors_unique').on(t.challengeId, t.githubLogin),
   ],
 )
 
