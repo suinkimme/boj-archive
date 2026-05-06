@@ -1,10 +1,8 @@
 import { ProblemItem } from './ProblemItem'
-import type { Level } from './types'
 
-export interface Problem {
-  id: number
+export interface Challenge {
+  slug: string
   title: string
-  level: Level
   tags?: string[]
   completedCount: number
   rate: number
@@ -13,7 +11,7 @@ export interface Problem {
 }
 
 interface ProblemListProps {
-  problems: Problem[]
+  problems: Challenge[]
 }
 
 export function ProblemList({ problems }: ProblemListProps) {
@@ -29,10 +27,9 @@ export function ProblemList({ problems }: ProblemListProps) {
     <ul className="m-0 p-0 list-none -mx-6 sm:mx-0">
       {problems.map((p) => (
         <ProblemItem
-          key={p.id}
-          id={p.id}
+          key={p.slug}
+          slug={p.slug}
           title={p.title}
-          level={p.level}
           tags={p.tags}
           completedCount={p.completedCount}
           rate={p.rate}

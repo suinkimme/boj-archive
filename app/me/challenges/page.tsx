@@ -187,12 +187,9 @@ function ProblemList({ problems }: { problems: MyProblem[] }) {
       {problems.map((p) => (
         <li key={p.challengeId}>
           <Link
-            href={`/challenges/${p.challengeId}`}
+            href={`/challenges/${p.slug}`}
             className="w-full h-12 flex items-center gap-3 px-4 hover:bg-surface-page transition-colors"
           >
-            <span className="text-[13px] text-text-muted tabular-nums flex-shrink-0 w-6 text-right">
-              {p.challengeId}
-            </span>
             <span className="flex-1 min-w-0 text-[14px] font-medium text-text-primary truncate">
               {p.title}
             </span>

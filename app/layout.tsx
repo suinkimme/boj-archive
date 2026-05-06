@@ -7,6 +7,7 @@ import { SessionProvider } from '@/components/auth/SessionProvider'
 import { PendingFeatureProvider } from '@/components/ui/PendingFeatureProvider'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site'
 
+import 'katex/dist/katex.min.css'
 import './globals.css'
 
 const notoSansKr = Noto_Sans_KR({

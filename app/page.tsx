@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 import { ChallengesView } from '@/components/challenges/ChallengesView'
 import { NoticesAside } from '@/components/challenges/NoticesAside'
-import { ALL_LEVELS, type Level } from '@/components/challenges/types'
+import { auth } from '@/auth'
+import { fetchChallengesForList } from '@/lib/queries/challenges'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -16,14 +17,6 @@ export const metadata: Metadata = {
     url: '/',
   },
 }
-
-const EMPTY_LEVEL_COUNTS: Record<Level, number> = ALL_LEVELS.reduce(
-  (acc, lv) => {
-    acc[lv] = 0
-    return acc
-  },
-  {} as Record<Level, number>,
-)
 
 const websiteJsonLd = {
   '@context': 'https://schema.org',
@@ -39,7 +32,23 @@ const websiteJsonLd = {
   },
 }
 
-export default function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string>>
+}) {
+  const session = await auth()
+  const params = await searchParams
+
+  let result
+  let loadError = false
+  try {
+    result = await fetchChallengesForList(params, session?.user?.id ?? null)
+  } catch {
+    loadError = true
+    result = { visible: [], totalCount: 0, totalPages: 1 }
+  }
+
   return (
     <>
       <script
@@ -47,11 +56,10 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
       <ChallengesView
-        visible={[]}
-        totalCount={0}
-        totalPages={1}
-        totalByLevel={EMPTY_LEVEL_COUNTS}
-        loadError={false}
+        visible={result.visible}
+        totalCount={result.totalCount}
+        totalPages={result.totalPages}
+        loadError={loadError}
         noticesAside={<NoticesAside />}
       />
     </>
