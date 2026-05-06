@@ -14,6 +14,8 @@
 
 ## 앞으로의 방향
 
+![NEXT JUDGE](./public/og-image.png)
+
 NEXT JUDGE는 처음부터 다시 시작합니다.
 
 ### 무엇이 달라지나요?
