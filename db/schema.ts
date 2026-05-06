@@ -125,6 +125,59 @@ export const problems = pgTable('problems', {
   submissionCount: integer('submission_count'),
 })
 
+// Problems cleared under merger doctrine — expression merges with idea,
+// no fictional characters or branded settings. Safe basis for original
+// problem authorship in a commercial context.
+export const standardProblems = pgTable('standard_problems', {
+  problemId: integer('problem_id')
+    .primaryKey()
+    .references(() => problems.problemId, { onDelete: 'cascade' }),
+  // Rewritten descriptions for problems whose original BOJ text is non-exempt.
+  // null = use problems.description as-is (exempt cases).
+  description: text('description'),
+  inputFormat: text('input_format'),
+  outputFormat: text('output_format'),
+  createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+})
+
+// Service-native problem catalog. Completely independent of BOJ's schema:
+//   - id: our own sequential number (1, 2, 3, ...)
+//   - no difficulty/level (BOJ tier removed)
+//   - titles renamed away from BOJ-specific creative names
+//   - boj_problem_id: internal only, used to join testcases table
+export const challenges = pgTable('challenges', {
+  id: serial('id').primaryKey(),
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  inputFormat: text('input_format').notNull(),
+  outputFormat: text('output_format').notNull(),
+  samples: jsonb('samples').$type<{ input: string; output: string }[]>(),
+  tags: text('tags').array(),
+  timeLimit: text('time_limit'),
+  memoryLimit: text('memory_limit'),
+  bojProblemId: integer('boj_problem_id').notNull(),
+  createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+})
+
+// Hidden test cases for challenges. Fully decoupled from BOJ's testcases table —
+// no problem_id, no source field exposed. Seeded from testcases where source='testcase_ac'.
+export const challengeTestcases = pgTable(
+  'challenge_testcases',
+  {
+    id: serial('id').primaryKey(),
+    challengeId: integer('challenge_id')
+      .notNull()
+      .references(() => challenges.id, { onDelete: 'cascade' }),
+    caseIndex: integer('case_index').notNull(),
+    stdin: text('stdin').notNull(),
+    expectedStdout: text('expected_stdout').notNull(),
+    createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+  },
+  (t) => [
+    index('challenge_testcases_challenge_idx').on(t.challengeId),
+  ],
+)
+
 // Cross-instance rate-limit log. One row per outbound solved.ac
 // request; we count rows in a sliding 1s window to gate further calls.
 // Old rows are cleaned up opportunistically on insert.
