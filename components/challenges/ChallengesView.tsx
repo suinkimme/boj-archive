@@ -214,19 +214,21 @@ export function ChallengesView({
               <FilterDropdown
                 defaultLabel="모든 난이도"
                 icon={LevelIcon}
-                items={LEVEL_ITEMS}
+                items={[]}
                 selected={levels}
                 onToggle={handleLevelToggle}
+                emptyMessage="난이도가 측정된 문제가 없어요"
               />
             </div>
             <div className="order-2 xl:order-3 basis-full sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
                 defaultLabel="모든 유형"
                 icon={TagIcon}
-                items={TAG_ITEMS}
+                items={[]}
                 selected={tags}
                 onToggle={handleTagToggle}
                 widthAnchor="모든 유형"
+                emptyMessage="등록된 유형이 없어요"
               />
             </div>
             <div className="order-3 xl:order-4 basis-full min-[380px]:basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
