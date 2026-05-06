@@ -62,7 +62,7 @@ export function ContributionNudge() {
           </button>
         </div>
         <p className="px-4 pb-4 text-[12px] text-text-secondary leading-relaxed break-keep">
-          풀어보고 싶었던 문제가 있으신가요? 출제해보세요! 제발... 살려줏메.
+          풀어보고 싶었던 문제가 있으신가요? 출제해보세요! 제발... 살려줏메
         </p>
         <div className="border-t border-border-list px-4 py-3">
           <a
