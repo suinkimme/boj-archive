@@ -55,15 +55,6 @@ export default async function OgImage() {
           }}
         />
 
-        {/* 가독성을 위한 어두운 오버레이 */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundColor: 'rgba(28, 31, 40, 0.55)',
-          }}
-        />
-
         {/* 워드마크 */}
         <div
           style={{
@@ -73,7 +64,7 @@ export default async function OgImage() {
             fontSize: '120px',
             fontWeight: 700,
             letterSpacing: '0.06em',
-            color: '#FFFFFF',
+            color: '#1C1F28',
           }}
         >
           <span>NEXT JUDGE</span>
