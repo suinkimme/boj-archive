@@ -1,0 +1,47 @@
+name: Record Contributors
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+    paths:
+      - 'challenges/**'
+
+jobs:
+  record:
+    name: Record PR author as contributor
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Get changed challenge slugs
+        id: changed
+        run: |
+          slugs=$(git diff --name-only \
+            ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} \
+            | grep '^challenges/' \
+            | cut -d'/' -f2 \
+            | sort -u \
+            | tr '\n' ' ')
+          echo "slugs=$slugs" >> $GITHUB_OUTPUT
+          echo "Changed: $slugs"
+
+      - name: Record contributor
+        if: steps.changed.outputs.slugs != ''
+        run: |
+          for slug in ${{ steps.changed.outputs.slugs }}; do
+            npx tsx scripts/record-contributor.ts "$slug" "${{ github.event.pull_request.user.login }}"
+          done
+        env:
+          POSTGRES_URL_NON_POOLING: ${{ secrets.POSTGRES_URL_NON_POOLING }}

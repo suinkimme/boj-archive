@@ -1,0 +1,42 @@
+name: Validate Challenges
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'challenges/**'
+
+jobs:
+  validate:
+    name: Schema & Solution Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - run: npm ci
+
+      - name: Get changed challenge slugs
+        id: changed
+        run: |
+          slugs=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
+            | grep '^challenges/' \
+            | cut -d'/' -f2 \
+            | sort -u \
+            | tr '\n' ' ')
+          echo "slugs=$slugs" >> $GITHUB_OUTPUT
+          echo "Changed: $slugs"
+
+      - name: Validate challenges
+        if: steps.changed.outputs.slugs != ''
+        run: npx tsx scripts/validate.ts ${{ steps.changed.outputs.slugs }}
