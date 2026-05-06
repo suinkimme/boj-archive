@@ -19,7 +19,7 @@ import {
   type Status,
 } from '@/components/challenges/types'
 import { Badge } from '@/components/ui/Badge'
-import type { ListedProblem } from '@/lib/queries/problems'
+import { type ListedProblem, parseOrder, parseLevels, parseStatuses, parseTags, parsePage } from '@/lib/queries/params'
 
 const ORDER_ITEMS = [
   { value: 'recent' as const, label: '최신순' },
@@ -102,12 +102,6 @@ interface ChallengesViewProps {
   totalCount: number
   totalPages: number
   totalByLevel: Record<Level, number>
-  page: number
-  query: string
-  order: Order
-  levels: Level[]
-  statuses: Status[]
-  tags: string[]
   /** server-side 데이터 로드가 실패했는지. true면 리스트 영역만 에러 카드로 교체 */
   loadError?: boolean
   /** Server에서 렌더된 NoticesAside 트리. ChallengesView가 client component라
@@ -120,17 +114,17 @@ export function ChallengesView({
   totalCount,
   totalPages,
   totalByLevel,
-  page,
-  query,
-  order,
-  levels,
-  statuses,
-  tags,
   loadError = false,
   noticesAside,
 }: ChallengesViewProps) {
-  const router = useRouter()
   const searchParams = useSearchParams()
+  const query = searchParams.get('q') ?? ''
+  const order = parseOrder(searchParams.get('order') ?? undefined)
+  const levels = parseLevels(searchParams.get('levels') ?? undefined)
+  const statuses = parseStatuses(searchParams.get('status') ?? undefined)
+  const tags = parseTags(searchParams.get('tags') ?? undefined)
+  const page = parsePage(searchParams.get('page') ?? undefined)
+  const router = useRouter()
   const [retrying, startRetryTransition] = useTransition()
 
   const handleRetryLoad = useCallback(() => {
