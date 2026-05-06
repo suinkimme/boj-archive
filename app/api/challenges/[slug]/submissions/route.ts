@@ -78,7 +78,7 @@ export async function GET(
     language: r.language,
     verdict: r.verdict,
     submittedAt: r.submittedAt,
-    handle: r.name ?? r.login ?? '익명',
+    handle: r.login ?? r.name ?? '익명',
   }))
 
   const last = items[items.length - 1]
