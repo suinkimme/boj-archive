@@ -312,7 +312,7 @@ export function ChallengesView({
             ·
           </span>
           <a
-            href="https://github.com/suinkimme/boj-archive"
+            href="https://github.com/suinkimme/next-judge"
             target="_blank"
             rel="noreferrer"
             className="hover:text-brand-red transition-colors"
@@ -328,8 +328,7 @@ export function ChallengesView({
           </a>
         </div>
         <p className="text-xs text-text-muted leading-relaxed">
-          비상업적 공익 목적의 알고리즘 문제 아카이브입니다. 각 문제의 저작권은 원 출제자 및
-          해당 대회 주최 기관에 있습니다.
+          비상업적 학습 목적으로 제작된 알고리즘 저지 서비스입니다.
         </p>
       </footer>
     </div>
