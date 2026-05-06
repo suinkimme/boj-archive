@@ -26,7 +26,6 @@ const STATUS_ITEMS = [
   { value: 'solved' as const, label: '완료한 문제' },
 ]
 
-const TAG_ITEMS = ALL_TAGS.map((t) => ({ value: t.value, label: t.value }))
 
 const SortIcon = (
   <svg className="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
@@ -52,6 +51,7 @@ interface ChallengesViewProps {
   visible: ListedChallenge[]
   totalCount: number
   totalPages: number
+  tagCounts: Record<string, number>
   loadError?: boolean
   noticesAside: React.ReactNode
 }
@@ -60,6 +60,7 @@ export function ChallengesView({
   visible,
   totalCount,
   totalPages,
+  tagCounts,
   loadError = false,
   noticesAside,
 }: ChallengesViewProps) {
@@ -105,6 +106,10 @@ export function ChallengesView({
   const handleReset = () => { router.replace('/', { scroll: false }) }
 
   const hasFilters = query !== '' || order !== DEFAULT_ORDER || statuses.length > 0 || tags.length > 0
+
+  const TAG_ITEMS = ALL_TAGS
+    .filter((t) => (tagCounts[t.value] ?? 0) > 0)
+    .map((t) => ({ value: t.value, label: t.value, count: tagCounts[t.value] ?? 0 }))
 
   return (
     <div className="min-h-screen bg-surface-card font-sans text-text-primary">

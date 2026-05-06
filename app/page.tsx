@@ -46,7 +46,7 @@ export default async function Page({
     result = await fetchChallengesForList(params, session?.user?.id ?? null)
   } catch {
     loadError = true
-    result = { visible: [], totalCount: 0, totalPages: 1 }
+    result = { visible: [], totalCount: 0, totalPages: 1, tagCounts: {} }
   }
 
   return (
@@ -56,6 +56,7 @@ export default async function Page({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
       <ChallengesView
+        tagCounts={result.tagCounts}
         visible={result.visible}
         totalCount={result.totalCount}
         totalPages={result.totalPages}

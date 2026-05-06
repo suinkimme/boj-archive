@@ -19,6 +19,7 @@ export interface ChallengesListResult {
   visible: ListedChallenge[]
   totalCount: number
   totalPages: number
+  tagCounts: Record<string, number>
 }
 
 export interface ChallengeDetail {
@@ -66,7 +67,7 @@ export async function fetchChallengesForList(
 
   const where = conditions.length > 0 ? and(...conditions) : undefined
 
-  const [rows, countRows] = await Promise.all([
+  const [rows, countRows, tagCountRows] = await Promise.all([
     db
       .select({
         slug: challenges.slug,
@@ -108,10 +109,21 @@ export async function fetchChallengesForList(
       .select({ count: sql<number>`count(*)::int` })
       .from(challenges)
       .where(where),
+
+    db.execute<{ tag: string; count: number }>(sql`
+      SELECT unnest(tags) AS tag, count(*)::int AS count
+      FROM ${challenges}
+      GROUP BY tag
+    `),
   ])
 
   const totalCount = countRows[0]?.count ?? 0
   const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE))
+
+  const tagCounts: Record<string, number> = {}
+  for (const row of tagCountRows) {
+    tagCounts[row.tag] = row.count
+  }
 
   const visible: ListedChallenge[] = rows.map((r) => ({
     slug: r.slug,
@@ -123,7 +135,7 @@ export async function fetchChallengesForList(
     tried: r.tried === 1,
   }))
 
-  return { visible, totalCount, totalPages }
+  return { visible, totalCount, totalPages, tagCounts }
 }
 
 export async function fetchChallengeBySlug(
