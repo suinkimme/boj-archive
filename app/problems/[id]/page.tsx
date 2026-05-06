@@ -55,8 +55,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     `${SITE_NAME}에서 ${problem.id}번 ${problem.title} 문제를 직접 풀고 채점해보세요.`
   const url = `${SITE_URL}/problems/${problem.id}`
   const keywords = [
-    '백준',
-    'BOJ',
     `${problem.id}번`,
     problem.title,
     '알고리즘',

@@ -160,9 +160,9 @@ const FEATURES: { title: string; description: string; icon: React.ReactNode }[] 
     ),
   },
   {
-    title: '백준 연동',
+    title: '풀이 연동',
     description:
-      'solved.ac를 통해 백준 풀이 정보를 자동 동기화하고, 그동안 풀어온 기록까지 NEXT JUDGE에서 함께 관리해요.',
+      'solved.ac를 통해 기존 풀이 정보를 자동 동기화하고, 그동안 풀어온 기록까지 NEXT JUDGE에서 함께 관리해요.',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1.5 1.5M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1.5-1.5" />
@@ -179,7 +179,7 @@ const STEPS: { step: string; title: string; description: string }[] = [
   },
   {
     step: '02',
-    title: '백준 아이디 연동',
+    title: '아이디 연동',
     description: 'solved.ac 인증으로 기존 풀이 기록까지 한 번에 가져옵니다.',
   },
   {
