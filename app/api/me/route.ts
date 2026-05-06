@@ -30,7 +30,9 @@ export async function GET() {
 
   type RecentActivityRow = {
     challenge_id: number
+    slug: string
     title: string
+    tags: string[]
   }
   const recentActivityResult = await db.execute<RecentActivityRow>(sql`
     WITH latest AS (
@@ -41,7 +43,9 @@ export async function GET() {
     )
     SELECT
       c.id AS challenge_id,
-      c.title
+      c.slug,
+      c.title,
+      c.tags
     FROM ${challenges} c
     INNER JOIN latest ON latest.challenge_id = c.id
     ORDER BY latest.last_at DESC
@@ -63,7 +67,9 @@ export async function GET() {
 
   const recentSolved = recentRows.map((r) => ({
     challengeId: r.challenge_id,
+    slug: r.slug,
     title: r.title,
+    tags: r.tags ?? [],
   }))
 
   return NextResponse.json({

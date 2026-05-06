@@ -11,7 +11,9 @@ import { TopNav } from '@/components/challenges/TopNav'
 
 type RecentProblem = {
   challengeId: number
+  slug: string
   title: string
+  tags: string[]
 }
 
 type MeData = {
@@ -164,15 +166,33 @@ export default function MePage() {
                 {recentSolved.map((item) => (
                   <li key={item.challengeId}>
                     <Link
-                      href={`/challenges/${item.challengeId}`}
-                      className="w-full text-left h-12 flex items-center gap-3 px-4 hover:bg-surface-page transition-colors"
+                      href={`/challenges/${item.slug}`}
+                      className="w-full text-left flex items-center gap-3 px-4 py-3 hover:bg-surface-page transition-colors"
                     >
-                      <span className="text-[13px] text-text-muted tabular-nums flex-shrink-0">
-                        {item.challengeId}
-                      </span>
-                      <span className="flex-1 min-w-0 text-[14px] font-medium text-text-primary truncate">
-                        {item.title}
-                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[14px] font-medium text-text-primary truncate m-0">
+                          {item.title}
+                        </p>
+                        {item.tags.length > 0 && (
+                          <p className="sm:hidden mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted truncate m-0">
+                            {item.tags.join(' · ')}
+                          </p>
+                        )}
+                      </div>
+                      {item.tags.length > 0 && (
+                        <ul className="hidden sm:flex flex-wrap justify-end gap-1 max-w-[200px] m-0 p-0 list-none flex-shrink-0">
+                          {item.tags.slice(0, 2).map((tag) => (
+                            <li key={tag} className="inline-flex px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap">
+                              {tag}
+                            </li>
+                          ))}
+                          {item.tags.length > 2 && (
+                            <li className="inline-flex px-1.5 py-0.5 text-[10px] font-bold tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap">
+                              +{item.tags.length - 2}
+                            </li>
+                          )}
+                        </ul>
+                      )}
                     </Link>
                   </li>
                 ))}
@@ -271,11 +291,17 @@ function RecentSolvedPlaceholder() {
   return (
     <section className="mb-10">
       <RecentSolvedHeader disabled />
-      <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
+      <ul className="border border-border-list divide-y divide-border-list bg-surface-card animate-pulse">
         {Array.from({ length: 5 }).map((_, i) => (
-          <li key={i} className="h-12 flex items-center gap-3 px-4">
-            <span className="block h-3.5 w-10 bg-surface-page rounded animate-pulse flex-shrink-0" />
-            <span className="block h-3.5 flex-1 max-w-[240px] bg-surface-page rounded animate-pulse" />
+          <li key={i} className="flex items-center gap-3 px-4 py-3">
+            <div className="flex-1 min-w-0">
+              <span className="block h-3.5 w-[180px] max-w-full bg-surface-page rounded" />
+              <span className="sm:hidden block mt-2 h-2.5 w-[100px] bg-surface-page rounded" />
+            </div>
+            <div className="hidden sm:flex gap-1 flex-shrink-0">
+              <span className="block h-5 w-14 bg-surface-page rounded" />
+              <span className="block h-5 w-14 bg-surface-page rounded" />
+            </div>
           </li>
         ))}
       </ul>
