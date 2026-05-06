@@ -17,7 +17,7 @@ export function ContributionNudge() {
     <div className="fixed bottom-6 right-6 z-40 w-[300px] bg-surface-card border border-border-list shadow-lg">
       <div className="flex items-start justify-between gap-3 px-4 pt-4 pb-1">
         <p className="text-[13px] font-bold text-text-primary leading-snug">
-          문제를 직접 기여할 수 있어요
+          직접 문제를 만들 수 있습니다
         </p>
         <button
           type="button"
@@ -31,7 +31,7 @@ export function ContributionNudge() {
         </button>
       </div>
       <p className="px-4 pb-4 text-[12px] text-text-secondary leading-relaxed">
-        PR 한 번으로 즉시 서비스에 반영됩니다. 알고리즘 문제를 직접 만들어보세요.
+        풀어보고 싶었던 문제가 있으신가요? PR 한 번으로 바로 서비스에 올라갑니다.
       </p>
       <div className="border-t border-border-list px-4 py-3">
         <a
