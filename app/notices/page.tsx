@@ -159,13 +159,13 @@ function NoticeRow({ notice }: { notice: NoticeMeta }) {
         <span className="text-[12px] sm:text-[13px] text-text-muted">
           {notice.category ?? ''}
         </span>
-        <h2 className="text-[14px] sm:text-[15px] text-text-primary leading-snug m-0 truncate flex items-center gap-2">
-          {notice.title}
+        <h2 className="text-[14px] sm:text-[15px] text-text-primary leading-snug m-0 flex items-center gap-2 min-w-0">
           {notice.isNew && (
-            <span className="shrink-0 text-[10px] font-bold text-white bg-blue-500 rounded px-1.5 py-0.5 leading-none">
-              New
+            <span className="shrink-0 inline-flex items-center justify-center w-[15px] h-[15px] pb-[2px] text-[9px] font-black text-white bg-brand-red leading-none">
+              N
             </span>
           )}
+          <span className="truncate">{notice.title}</span>
         </h2>
         <time className="text-[12px] sm:text-[13px] text-text-muted tabular-nums">
           {notice.publishedAt ? formatDate(notice.publishedAt) : ''}
