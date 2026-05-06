@@ -1,7 +1,8 @@
-import { and, arrayOverlaps, asc, desc, eq, ilike, sql } from 'drizzle-orm'
+import { and, arrayOverlaps, asc, desc, eq, ilike, or, sql } from 'drizzle-orm'
 
 import { db } from '@/db'
 import { challengeContributors, challengeSubmissions, challengeTestcases, challenges } from '@/db/schema'
+import { parseStatuses, parseTags, parsePage, parseOrder } from '@/lib/queries/params'
 
 export const PAGE_SIZE = 12
 
@@ -38,20 +39,12 @@ export interface ChallengeDetail {
 
 export interface ListParams {
   q?: string
+  order?: string
   tags?: string
   status?: string
   page?: string
 }
 
-function parsePage(raw: string | undefined): number {
-  const n = Number.parseInt(raw ?? '1', 10)
-  return Number.isFinite(n) && n > 0 ? n : 1
-}
-
-function parseTags(raw: string | undefined): string[] {
-  if (!raw) return []
-  return raw.split(',').filter(Boolean)
-}
 
 export async function fetchChallengesForList(
   params: ListParams,
@@ -59,11 +52,40 @@ export async function fetchChallengesForList(
 ): Promise<ChallengesListResult> {
   const query = (params.q ?? '').trim()
   const tagFilter = parseTags(params.tags)
+  const statuses = parseStatuses(params.status)
+  const order = parseOrder(params.order)
   const page = parsePage(params.page)
 
   const conditions = []
   if (query) conditions.push(ilike(challenges.title, `%${query}%`))
   if (tagFilter.length > 0) conditions.push(arrayOverlaps(challenges.tags, tagFilter))
+
+  if (userId && statuses.length > 0) {
+    const statusConditions = statuses.map((s) => {
+      if (s === 'solved') {
+        return sql`exists (
+          select 1 from ${challengeSubmissions} ac
+          where ac.user_id = ${userId}
+          and ac.challenge_id = challenges.id
+          and ac.verdict = 'AC'
+        )`
+      }
+      if (s === 'tried') {
+        return sql`exists (
+          select 1 from ${challengeSubmissions} cs
+          where cs.user_id = ${userId}
+          and cs.challenge_id = challenges.id
+        )`
+      }
+      // unsolved
+      return sql`not exists (
+        select 1 from ${challengeSubmissions} cs
+        where cs.user_id = ${userId}
+        and cs.challenge_id = challenges.id
+      )`
+    })
+    conditions.push(or(...statusConditions)!)
+  }
 
   const where = conditions.length > 0 ? and(...conditions) : undefined
 
@@ -101,7 +123,15 @@ export async function fetchChallengesForList(
       })
       .from(challenges)
       .where(where)
-      .orderBy(asc(challenges.id))
+      .orderBy(
+        order === 'recent'
+          ? desc(challenges.id)
+          : order === 'solved'
+            ? sql`(select count(distinct cs.user_id) from ${challengeSubmissions} cs where cs.challenge_id = challenges.id and cs.verdict = 'AC') desc`
+            : order === 'rate'
+              ? sql`case when (select count(distinct cs.user_id) from ${challengeSubmissions} cs where cs.challenge_id = challenges.id) = 0 then 0 else (select count(distinct cs.user_id) from ${challengeSubmissions} cs where cs.challenge_id = challenges.id and cs.verdict = 'AC')::float / (select count(distinct cs.user_id) from ${challengeSubmissions} cs where cs.challenge_id = challenges.id) end desc`
+              : asc(challenges.id),
+      )
       .limit(PAGE_SIZE)
       .offset((page - 1) * PAGE_SIZE),
 
