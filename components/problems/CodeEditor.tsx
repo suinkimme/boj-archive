@@ -59,36 +59,34 @@ const CodeMirrorEditor = dynamic(() => import('./CodeMirrorEditor'), {
 })
 
 interface Props {
-  problemId: number
+  draftId: string | number
+  submissionsUrl: string
+  verifyUrl: string
   samples: { input: string; output: string }[]
-  // hidden test cases (testcase_ac)의 stdin 배열. 부모가 mount 시 fetch해서
-  // 내려준다. 비로그인이거나 문제에 hidden 케이스가 없으면 빈 배열.
   hiddenInputs: string[]
+  langs?: Lang[]
   onJudgeResult: (results: TestCaseResult[]) => void
-  // 채점이 시작되면 true, 끝나거나 idle이면 false. 결과 탭이 스켈레톤을
-  // 그릴지 결정하는 데 쓰인다.
   onJudgingChange?: (judging: boolean) => void
-  // optimistic UI: 제출 즉시 호출 — 부모가 히스토리 상단에 pending 행을 깐다.
   onSubmissionStart?: (info: SubmissionStartInfo) => void
-  // optimistic UI: 케이스별 verdict 가 결정된 시점 (POST 보내기 전). 부모가
-  // 같은 tempId 의 pending 행에서 verdict 셀만 업데이트한다.
   onSubmissionResolved?: (info: SubmissionResolveInfo) => void
-  // POST 까지 성공해 서버에 영구 저장된 시점. 부모가 백그라운드 refresh 를
-  // 트리거해 optimistic 행을 서버 row 로 매끄럽게 교체한다.
   onSubmissionRecorded?: () => void
 }
 
 export function CodeEditor({
-  problemId,
+  draftId,
+  submissionsUrl,
+  verifyUrl,
   samples,
   hiddenInputs,
+  langs,
   onJudgeResult,
   onJudgingChange,
   onSubmissionStart,
   onSubmissionResolved,
   onSubmissionRecorded,
 }: Props) {
-  const [language, setLanguage] = useState<Lang>('python')
+  const allowedLangs = langs ?? LANGUAGES.map((l) => l.id)
+  const [language, setLanguage] = useState<Lang>(allowedLangs[0] ?? 'python')
   const [code, setCode] = useState('')
   const [mounted, setMounted] = useState(false)
   const [loginDialog, setLoginDialog] = useState(false)
@@ -114,7 +112,7 @@ export function CodeEditor({
       if (tempId) onSubmissionResolved?.({ tempId, verdict })
 
       // 2) 서버에 영구 저장 — 성공 시 부모가 background refresh 로 optimistic 정리
-      void fetch(`/api/problems/${problemId}/submissions`, {
+      void fetch(submissionsUrl, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ language, verdict }),
@@ -129,7 +127,7 @@ export function CodeEditor({
     },
     [
       status,
-      problemId,
+      submissionsUrl,
       language,
       onSubmissionResolved,
       onSubmissionRecorded,
@@ -159,19 +157,19 @@ export function CodeEditor({
   }, [phase, onJudgingChange])
 
   useEffect(() => {
-    const stored = localStorage.getItem(draftKey(problemId, language))
+    const stored = localStorage.getItem(draftKey(draftId, language))
     setCode(stored ?? BOILERPLATE[language])
     dirtyRef.current = false
     setMounted(true)
-  }, [language, problemId])
+  }, [language, draftId])
 
   useEffect(() => {
     if (!mounted || !dirtyRef.current) return
     const t = window.setTimeout(() => {
-      localStorage.setItem(draftKey(problemId, language), code)
+      localStorage.setItem(draftKey(draftId, language), code)
     }, 300)
     return () => window.clearTimeout(t)
-  }, [code, language, problemId, mounted])
+  }, [code, language, draftId, mounted])
 
   const handleChange = (next: string) => {
     dirtyRef.current = true
@@ -179,8 +177,8 @@ export function CodeEditor({
   }
 
   const langItems = useMemo(
-    () => LANGUAGES.map((l) => ({ value: l.id, label: l.label })),
-    [],
+    () => LANGUAGES.filter((l) => allowedLangs.includes(l.id)).map((l) => ({ value: l.id, label: l.label })),
+    [allowedLangs],
   )
 
   const handleSubmit = () => {
@@ -211,7 +209,7 @@ export function CodeEditor({
       code,
       samples,
       hiddenInputs.length > 0
-        ? { problemId, inputs: hiddenInputs }
+        ? { verifyUrl, inputs: hiddenInputs }
         : undefined,
     )
   }

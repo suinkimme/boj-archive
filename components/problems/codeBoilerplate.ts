@@ -17,5 +17,5 @@ export const BOILERPLATE: Record<Lang, string> = {
   cpp: '#include <iostream>\nusing namespace std;\n\nint main() {\n    \n    return 0;\n}\n',
 }
 
-export const draftKey = (problemId: number, lang: Lang): string =>
-  `next-judge:draft:v1:${problemId}:${lang}`
+export const draftKey = (id: string | number, lang: Lang): string =>
+  `next-judge:draft:v1:${id}:${lang}`

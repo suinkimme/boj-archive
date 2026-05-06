@@ -2,7 +2,6 @@
 // 출처는 본문 하단의 아코디언(ProblemSource)에서 별도로 노출한다.
 
 import { TierBadge } from '@/components/auth/TierBadge'
-import { getTagLabel } from '@/components/challenges/tag-labels'
 import type { Level } from '@/components/challenges/types'
 import { Tooltip } from '@/components/ui/Tooltip'
 
@@ -103,7 +102,7 @@ export function ProblemHeader({
               key={tag}
               className="inline-flex px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
             >
-              {getTagLabel(tag)}
+              {tag}
             </li>
           ))}
         </ul>

@@ -19,7 +19,7 @@ interface Sample {
 // hidden 케이스를 함께 채점하기 위한 옵션. inputs는 expected가 없는 stdin 배열로,
 // 워커는 비교 없이 actual만 캡처하고 hook이 done 이후 verify API에 POST한다.
 interface HiddenJudgeOptions {
-  problemId: number
+  verifyUrl: string
   inputs: string[]
 }
 
@@ -101,7 +101,7 @@ export function useJudge(
   const tleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   // 현재 실행 중인 케이스 스냅샷.
   const judgeCasesRef = useRef<InternalCase[]>([])
-  // 현재 실행의 hidden 옵션. done 이후 verify API에 POST할 때 problemId 필요.
+  // 현재 실행의 hidden 옵션. done 이후 verify API에 POST할 때 사용.
   const hiddenOptionsRef = useRef<HiddenJudgeOptions | undefined>(undefined)
   // visible(samples + userCases)의 길이. done 이후 hidden 결과만 추출할 때 사용.
   const visibleCountRef = useRef(0)
@@ -156,7 +156,7 @@ export function useJudge(
 
     try {
       const res = await fetch(
-        `/api/problems/${hidden.problemId}/judge/verify`,
+        hidden.verifyUrl,
         {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
