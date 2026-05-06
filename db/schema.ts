@@ -178,6 +178,28 @@ export const challengeTestcases = pgTable(
   ],
 )
 
+export const challengeSubmissions = pgTable(
+  'challenge_submissions',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    challengeId: integer('challenge_id')
+      .notNull()
+      .references(() => challenges.id, { onDelete: 'cascade' }),
+    language: text('language').$type<SubmissionLanguage>().notNull(),
+    verdict: text('verdict').$type<SubmissionVerdict>().notNull(),
+    submittedAt: timestamp('submitted_at', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [
+    index('challenge_submissions_user_challenge_idx').on(t.userId, t.challengeId),
+    index('challenge_submissions_challenge_submitted_at_idx').on(t.challengeId, t.submittedAt),
+  ],
+)
+
 // Cross-instance rate-limit log. One row per outbound solved.ac
 // request; we count rows in a sliding 1s window to gate further calls.
 // Old rows are cleaned up opportunistically on insert.
