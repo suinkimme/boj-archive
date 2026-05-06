@@ -220,15 +220,15 @@ function DescriptionContent({ challenge }: { challenge: ChallengeDetail }) {
             기여자
           </p>
           <div className="flex flex-wrap gap-2">
-            {challenge.contributors.map((login) => (
-              <Tooltip key={login} content={login}>
+            {challenge.contributors.map((login, i) => (
+              <Tooltip key={login} content={i === 0 ? `${login} · Owner` : login}>
                 <a
                   href={`https://github.com/${login}`}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="hover:opacity-75 transition-opacity"
                 >
-                  <ContributorAvatar login={login} />
+                  <ContributorAvatar login={login} isFirst={i === 0} />
                 </a>
               </Tooltip>
             ))}
@@ -239,7 +239,7 @@ function DescriptionContent({ challenge }: { challenge: ChallengeDetail }) {
   )
 }
 
-function ContributorAvatar({ login }: { login: string }) {
+function ContributorAvatar({ login, isFirst }: { login: string; isFirst?: boolean }) {
   const [loaded, setLoaded] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
 
@@ -258,7 +258,7 @@ function ContributorAvatar({ login }: { login: string }) {
         alt={login}
         width={28}
         height={28}
-        className={`rounded-full transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        className={`rounded-full transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'} ${isFirst ? 'ring-2 ring-brand-red ring-offset-1' : ''}`}
         onLoad={() => setLoaded(true)}
         onError={() => setLoaded(true)}
       />
