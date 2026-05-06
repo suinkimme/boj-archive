@@ -195,12 +195,25 @@ function ProblemList({ problems }: { problems: MyProblem[] }) {
                 {p.title}
               </p>
               {p.tags.length > 0 && (
-                <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.1em] text-text-muted truncate m-0">
-                  {p.tags.slice(0, 3).join(' · ')}
-                  {p.tags.length > 3 && ` +${p.tags.length - 3}`}
+                <p className="sm:hidden mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted truncate m-0">
+                  {p.tags.join(' · ')}
                 </p>
               )}
             </div>
+            {p.tags.length > 0 && (
+              <ul className="hidden sm:flex flex-wrap justify-end gap-1 max-w-[240px] m-0 p-0 list-none flex-shrink-0">
+                {p.tags.slice(0, 3).map((tag) => (
+                  <li key={tag} className="inline-flex px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap">
+                    {tag}
+                  </li>
+                ))}
+                {p.tags.length > 3 && (
+                  <li className="inline-flex px-1.5 py-0.5 text-[10px] font-bold tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap">
+                    +{p.tags.length - 3}
+                  </li>
+                )}
+              </ul>
+            )}
           </Link>
         </li>
       ))}
