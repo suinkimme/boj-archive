@@ -37,15 +37,9 @@ export interface OptimisticSubmission {
 }
 
 interface Props {
-  problemId: number
-  // 부모가 새 제출이 기록됐을 때마다 1씩 증가시키면 자동으로 리프레시한다.
-  // 첫 로드와 달리 refresh 는 background fetch 로 진행되어 기존 items 와
-  // optimistic 행이 그대로 노출된 채 깜박임 없이 교체된다.
+  submissionsUrl: string
   refreshKey?: number
-  // 상단에 노출할 optimistic 행들 (최신순). 부모가 제출 라이프사이클을 관리.
   optimisticItems?: OptimisticSubmission[]
-  // background refresh 가 성공적으로 끝났을 때 호출. 부모가 이 시점에서
-  // optimistic 행을 정리해 서버 row 와의 시각적 중복을 없앤다.
   onRefreshed?: () => void
 }
 
@@ -73,7 +67,7 @@ const LANGUAGE_LABEL: Record<SubmissionLanguage, string> = {
 const INITIAL_LIMIT = 60
 
 export function SubmissionHistory({
-  problemId,
+  submissionsUrl,
   refreshKey = 0,
   optimisticItems,
   onRefreshed,
@@ -109,7 +103,7 @@ export function SubmissionHistory({
         // 첫 인상을 채우기 위해 limit=60 으로 더 많이 받아온다. 이후 더 보기는
         // 기본 30씩 누적.
         const res = await fetch(
-          `/api/problems/${problemId}/submissions?limit=${INITIAL_LIMIT}`,
+          `${submissionsUrl}?limit=${INITIAL_LIMIT}`,
         )
         if (!res.ok) throw new Error(`status ${res.status}`)
         const json = (await res.json()) as HistoryResponse
@@ -126,7 +120,7 @@ export function SubmissionHistory({
         }
       }
     },
-    [problemId],
+    [submissionsUrl],
   )
 
   const loadMore = useCallback(async () => {
@@ -136,7 +130,7 @@ export function SubmissionHistory({
     setLoadMoreError(null)
     try {
       const res = await fetch(
-        `/api/problems/${problemId}/submissions?cursor=${encodeURIComponent(nextCursor)}`,
+        `${submissionsUrl}?cursor=${encodeURIComponent(nextCursor)}`,
       )
       if (!res.ok) throw new Error(`status ${res.status}`)
       const json = (await res.json()) as HistoryResponse
@@ -149,7 +143,7 @@ export function SubmissionHistory({
     } finally {
       if (cycleRef.current === cycle) setLoadingMore(false)
     }
-  }, [problemId, nextCursor, loadingMore])
+  }, [submissionsUrl, nextCursor, loadingMore])
 
   // 첫 로드는 'initial' (스켈레톤), refreshKey 변경은 'refresh' (백그라운드).
   const initialLoadedRef = useRef(false)

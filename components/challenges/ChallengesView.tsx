@@ -3,23 +3,17 @@
 import { useCallback, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
+import { ContributionNudge } from '@/components/challenges/ContributionNudge'
 import { FilterDropdown } from '@/components/challenges/FilterDropdown'
 import { Pagination } from '@/components/challenges/Pagination'
 import { ProblemList } from '@/components/challenges/ProblemList'
 import { SearchInput } from '@/components/challenges/SearchInput'
-import { getTagLabel } from '@/components/challenges/tag-labels'
-import { ALL_TAGS } from '@/components/challenges/tags.generated'
+import { ALL_TAGS } from '@/components/challenges/tags'
 import { TopNav } from '@/components/challenges/TopNav'
-import {
-  ALL_LEVELS,
-  DEFAULT_ORDER,
-  getLevelLabel,
-  type Level,
-  type Order,
-  type Status,
-} from '@/components/challenges/types'
+import { DEFAULT_ORDER, type Order, type Status } from '@/components/challenges/types'
 import { Badge } from '@/components/ui/Badge'
-import type { ListedProblem } from '@/lib/queries/problems'
+import type { ListedChallenge } from '@/lib/queries/challenges'
+import { parseOrder, parseStatuses, parseTags, parsePage } from '@/lib/queries/params'
 
 const ORDER_ITEMS = [
   { value: 'recent' as const, label: '최신순' },
@@ -33,85 +27,33 @@ const STATUS_ITEMS = [
   { value: 'solved' as const, label: '완료한 문제' },
 ]
 
-const TAG_ITEMS = ALL_TAGS.map((t) => ({
-  value: t.value,
-  label: getTagLabel(t.value),
-  count: t.count,
-}))
 
 const SortIcon = (
-  <svg
-    className="w-4 h-4 text-text-secondary"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
+  <svg className="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 6h13M3 12h9M3 18h5M16 18l4-4-4-4" />
   </svg>
 )
 
-const LevelIcon = (
-  <svg
-    className="w-4 h-4 text-text-secondary"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M5 20V10M12 20V4M19 20v-7" />
-  </svg>
-)
-
 const StatusIcon = (
-  <svg
-    className="w-4 h-4 text-text-secondary"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
+  <svg className="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
     <path strokeLinecap="round" strokeLinejoin="round" d="m9 12 2 2 4-4" />
     <circle cx="12" cy="12" r="9" />
   </svg>
 )
 
 const TagIcon = (
-  <svg
-    className="w-4 h-4 text-text-secondary"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.1 18.1 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"
-    />
+  <svg className="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.1 18.1 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
     <circle cx="7.5" cy="7.5" r="1.25" fill="currentColor" stroke="none" />
   </svg>
 )
 
 interface ChallengesViewProps {
-  visible: ListedProblem[]
+  visible: ListedChallenge[]
   totalCount: number
   totalPages: number
-  totalByLevel: Record<Level, number>
-  page: number
-  query: string
-  order: Order
-  levels: Level[]
-  statuses: Status[]
-  tags: string[]
-  /** server-side 데이터 로드가 실패했는지. true면 리스트 영역만 에러 카드로 교체 */
+  tagCounts: Record<string, number>
   loadError?: boolean
-  /** Server에서 렌더된 NoticesAside 트리. ChallengesView가 client component라
-   *  async server component를 직접 import할 수 없어 slot 패턴으로 받는다. */
   noticesAside: React.ReactNode
 }
 
@@ -119,26 +61,21 @@ export function ChallengesView({
   visible,
   totalCount,
   totalPages,
-  totalByLevel,
-  page,
-  query,
-  order,
-  levels,
-  statuses,
-  tags,
+  tagCounts,
   loadError = false,
   noticesAside,
 }: ChallengesViewProps) {
-  const router = useRouter()
   const searchParams = useSearchParams()
+  const query = searchParams.get('q') ?? ''
+  const order = parseOrder(searchParams.get('order') ?? undefined)
+  const statuses = parseStatuses(searchParams.get('status') ?? undefined)
+  const tags = parseTags(searchParams.get('tags') ?? undefined)
+  const page = parsePage(searchParams.get('page') ?? undefined)
+  const router = useRouter()
   const [retrying, startRetryTransition] = useTransition()
 
   const handleRetryLoad = useCallback(() => {
-    // router.refresh()는 promise를 안 돌려주지만 transition으로 감싸면
-    // RSC 페이로드 재수신 완료까지 isPending이 true로 유지된다.
-    startRetryTransition(() => {
-      router.refresh()
-    })
+    startRetryTransition(() => { router.refresh() })
   }, [router])
 
   const updateParams = useCallback(
@@ -157,10 +94,6 @@ export function ChallengesView({
   const handleQueryChange = (q: string) => updateParams({ q: q || null, page: null })
   const handleOrderChange = (next: Order) =>
     updateParams({ order: next === DEFAULT_ORDER ? null : next, page: null })
-  const handleLevelToggle = (lv: Level) => {
-    const next = levels.includes(lv) ? levels.filter((l) => l !== lv) : [...levels, lv].sort()
-    updateParams({ levels: next.length ? next.join(',') : null, page: null })
-  }
   const handleStatusToggle = (s: Status) => {
     const next = statuses.includes(s) ? statuses.filter((x) => x !== s) : [...statuses, s]
     updateParams({ status: next.length ? next.join(',') : null, page: null })
@@ -171,22 +104,13 @@ export function ChallengesView({
   }
   const handlePageChange = (next: number) =>
     updateParams({ page: next === 1 ? null : String(next) })
-  const handleReset = () => {
-    router.replace('/', { scroll: false })
-  }
+  const handleReset = () => { router.replace('/', { scroll: false }) }
 
-  const hasFilters =
-    query !== '' ||
-    order !== DEFAULT_ORDER ||
-    levels.length > 0 ||
-    statuses.length > 0 ||
-    tags.length > 0
+  const hasFilters = query !== '' || order !== DEFAULT_ORDER || statuses.length > 0 || tags.length > 0
 
-  const LEVEL_ITEMS = ALL_LEVELS.map((lv) => ({
-    value: lv,
-    label: getLevelLabel(lv),
-    count: totalByLevel[lv],
-  }))
+  const TAG_ITEMS = ALL_TAGS
+    .filter((t) => (tagCounts[t.value] ?? 0) > 0)
+    .map((t) => ({ value: t.value, label: t.value, count: tagCounts[t.value] ?? 0 }))
 
   return (
     <div className="min-h-screen bg-surface-card font-sans text-text-primary">
@@ -212,24 +136,16 @@ export function ChallengesView({
           <div className="flex flex-wrap items-center gap-3">
             <div className="order-1 xl:order-2 basis-full sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
-                defaultLabel="모든 난이도"
-                icon={LevelIcon}
-                items={LEVEL_ITEMS}
-                selected={levels}
-                onToggle={handleLevelToggle}
-              />
-            </div>
-            <div className="order-2 xl:order-3 basis-full sm:flex-1 sm:basis-auto xl:flex-none">
-              <FilterDropdown
                 defaultLabel="모든 유형"
                 icon={TagIcon}
                 items={TAG_ITEMS}
                 selected={tags}
                 onToggle={handleTagToggle}
                 widthAnchor="모든 유형"
+                emptyMessage="등록된 유형이 없어요"
               />
             </div>
-            <div className="order-3 xl:order-4 basis-full min-[380px]:basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+            <div className="order-2 xl:order-3 basis-full min-[380px]:basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
                 defaultLabel="모든 상태"
                 icon={StatusIcon}
@@ -239,7 +155,7 @@ export function ChallengesView({
                 widthAnchor="모든 상태"
               />
             </div>
-            <div className="order-4 xl:order-5 basis-full min-[380px]:basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
+            <div className="order-3 xl:order-4 basis-full min-[380px]:basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
                 defaultLabel="모든 정렬"
                 icon={SortIcon}
@@ -250,14 +166,14 @@ export function ChallengesView({
                 widthAnchor="모든 정렬"
               />
             </div>
-            <div className="order-5 xl:order-1 basis-full xl:flex-1 xl:basis-auto xl:min-w-[280px]">
+            <div className="order-4 xl:order-1 basis-full xl:flex-1 xl:basis-auto xl:min-w-[280px]">
               <SearchInput value={query} onChange={handleQueryChange} />
             </div>
             <button
               type="button"
               onClick={handleReset}
               disabled={!hasFilters}
-              className="order-6 hidden xl:inline-block text-sm text-text-secondary hover:text-text-primary underline-offset-4 hover:underline disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:no-underline transition-colors px-2 flex-shrink-0"
+              className="order-5 hidden xl:inline-block text-sm text-text-secondary hover:text-text-primary underline-offset-4 hover:underline disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:no-underline transition-colors px-2 flex-shrink-0"
             >
               초기화
             </button>
@@ -269,10 +185,7 @@ export function ChallengesView({
         <div className="flex flex-col lg:flex-row lg:items-start gap-10">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-3 mb-3 sm:mb-5 px-3">
-              <div
-                className="w-1 h-4 sm:h-5 bg-brand-red flex-shrink-0"
-                aria-hidden="true"
-              />
+              <div className="w-1 h-4 sm:h-5 bg-brand-red flex-shrink-0" aria-hidden="true" />
               <h2 className="text-[18px] sm:text-[22px] font-bold tracking-tight text-text-primary m-0">
                 문제 목록
               </h2>
@@ -306,49 +219,24 @@ export function ChallengesView({
 
       <footer className="max-w-[1200px] mx-auto px-6 sm:px-10 py-10">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-secondary mb-3">
-          <span className="text-text-muted basis-full min-[425px]:basis-auto">
-            © 2026 NEXT JUDGE.
-          </span>
-          <span
-            className="hidden min-[425px]:inline text-border-key"
-            aria-hidden="true"
-          >
-            ·
-          </span>
-          <a
-            href="https://github.com/suinkimme/boj-archive"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-brand-red transition-colors"
-          >
+          <span className="text-text-muted basis-full min-[425px]:basis-auto">© 2026 NEXT JUDGE.</span>
+          <span className="hidden min-[425px]:inline text-border-key" aria-hidden="true">·</span>
+          <a href="https://github.com/suinkimme/next-judge" target="_blank" rel="noreferrer" className="hover:text-brand-red transition-colors">
             GitHub
           </a>
           <span className="text-border-key" aria-hidden="true">·</span>
-          <a
-            href="mailto:contact@suinkim.me"
-            className="hover:text-brand-red transition-colors"
-          >
+          <a href="mailto:contact@suinkim.me" className="hover:text-brand-red transition-colors">
             contact@suinkim.me
           </a>
         </div>
-        <p className="text-xs text-text-muted leading-relaxed">
-          비상업적 공익 목적의 알고리즘 문제 아카이브입니다. 각 문제의 저작권은 원 출제자 및
-          해당 대회 주최 기관에 있습니다.
-        </p>
       </footer>
+
+      <ContributionNudge />
     </div>
   )
 }
 
-// 서버에서 문제 목록을 못 가져왔을 때 ProblemList + Pagination 자리를 대체.
-// 헤더/필터는 그대로 남겨 페이지 chrome을 유지하고, 리스트 영역만 카드로 교체.
-function ProblemListErrorCard({
-  onRetry,
-  retrying,
-}: {
-  onRetry: () => void
-  retrying: boolean
-}) {
+function ProblemListErrorCard({ onRetry, retrying }: { onRetry: () => void; retrying: boolean }) {
   return (
     <div role="alert" aria-live="polite" className="py-20 text-center">
       <p className="text-[14px] sm:text-[15px] font-bold text-text-primary mb-1.5">

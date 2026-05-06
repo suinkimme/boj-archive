@@ -8,7 +8,7 @@
 //   ?cursor=<submittedAtMs>_<id> 로 그 이후 row 만 잘라온다. cursor 미지정 = 맨 앞.
 //   응답의 nextCursor 가 null 이면 더 이상 row 없음. 깊은 페이지에서도 OFFSET
 //   누적 비용이 없고, totalCount/totalPages 계산을 안 해 count(*) 풀스캔도 없다.
-//   닉네임은 bojHandle 우선 → name → login 순 fallback. 코드는 저장하지 않는다.
+//   닉네임은 name → login 순 fallback. 코드는 저장하지 않는다.
 
 import { and, desc, eq, lt, or } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
@@ -179,7 +179,6 @@ export async function GET(
       language: submissions.language,
       verdict: submissions.verdict,
       submittedAt: submissions.submittedAt,
-      bojHandle: users.bojHandle,
       name: users.name,
       login: users.login,
     })
@@ -197,7 +196,7 @@ export async function GET(
     language: r.language,
     verdict: r.verdict,
     submittedAt: r.submittedAt,
-    handle: r.bojHandle ?? r.name ?? r.login ?? '익명',
+    handle: r.name ?? r.login ?? '익명',
   }))
 
   const last = items[items.length - 1]

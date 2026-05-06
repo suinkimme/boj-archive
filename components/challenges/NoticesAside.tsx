@@ -42,7 +42,10 @@ export async function NoticesAside() {
               href={`/notices/${n.slug}`}
               className="text-left block group hover:border-brand-red transition-colors"
             >
-              <Card className="group-hover:border-brand-red transition-colors">
+              <Card className="group-hover:border-brand-red transition-colors overflow-hidden">
+                {n.isNew && (
+                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-brand-red" aria-hidden="true" />
+                )}
                 <h3 className="text-sm font-bold text-text-primary mb-2 leading-snug m-0 group-hover:text-brand-red transition-colors line-clamp-2">
                   {n.title}
                 </h3>

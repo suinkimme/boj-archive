@@ -30,7 +30,7 @@ export function MarkdownRenderer({ markdown }: Props) {
   return (
     <div className="font-sans text-text-primary">
       <ReactMarkdown
-        components={components}
+        components={markdownComponents}
         remarkPlugins={remarkPlugins}
         rehypePlugins={rehypePlugins}
       >
@@ -51,7 +51,7 @@ function extractText(node: ReactNode): string {
   return ''
 }
 
-const components: Components = {
+export const markdownComponents: Components = {
   h1: (props) => (
     <h1
       className="text-[26px] sm:text-[30px] font-extrabold tracking-tight text-text-primary mt-10 mb-4"

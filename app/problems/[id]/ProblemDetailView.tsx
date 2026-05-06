@@ -144,7 +144,7 @@ export default function ProblemDetailView({ problem, initialTab }: Props) {
                     <DescriptionContent problem={problem} />
                   ) : (
                     <SubmissionHistory
-                      problemId={problem.id}
+                      submissionsUrl={`/api/problems/${problem.id}/submissions`}
                       refreshKey={historyRefreshKey}
                       optimisticItems={optimisticSubmissions}
                       onRefreshed={() => {
@@ -168,7 +168,9 @@ export default function ProblemDetailView({ problem, initialTab }: Props) {
               <PanelGroup direction="vertical" autoSaveId="problem-detail:v">
                 <Panel defaultSize={60} minSize={20}>
                   <CodeEditor
-                    problemId={problem.id}
+                    draftId={problem.id}
+                    submissionsUrl={`/api/problems/${problem.id}/submissions`}
+                    verifyUrl={`/api/problems/${problem.id}/judge/verify`}
                     samples={judgeCases}
                     hiddenInputs={hiddenInputs}
                     onJudgeResult={setJudgeResults}

@@ -1,0 +1,27 @@
+name: Sync Challenges to DB
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'challenges/**'
+
+jobs:
+  sync:
+    name: Upsert to DB
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync challenges
+        run: npx tsx scripts/sync-challenges.ts
+        env:
+          POSTGRES_URL_NON_POOLING: ${{ secrets.POSTGRES_URL_NON_POOLING }}

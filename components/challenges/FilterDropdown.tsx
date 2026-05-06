@@ -26,6 +26,8 @@ interface FilterDropdownProps<T extends string | number> {
    * blow up the box for very large item lists.
    */
   widthAnchor?: string;
+  /** items가 비어 있을 때 드롭다운 안에 표시할 메시지 */
+  emptyMessage?: string;
 }
 
 export function FilterDropdown<T extends string | number>({
@@ -37,6 +39,7 @@ export function FilterDropdown<T extends string | number>({
   single = false,
   size = "default",
   widthAnchor: widthAnchorProp,
+  emptyMessage,
 }: FilterDropdownProps<T>) {
   const compact = size === "compact";
   const buttonSizing = compact
@@ -146,6 +149,9 @@ export function FilterDropdown<T extends string | number>({
             role="listbox"
             className="max-h-72 overflow-y-auto overflow-x-hidden overscroll-contain"
           >
+            {items.length === 0 && emptyMessage && (
+              <p className="px-4 py-3 text-sm text-text-muted">{emptyMessage}</p>
+            )}
             {items.map((it) => {
               const active = selected.includes(it.value);
               return (

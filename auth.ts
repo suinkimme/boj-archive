@@ -28,27 +28,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user?.id) {
         token.userId = user.id
       }
-      // onboardedAt 은 한번 set 되면 안 바뀌므로 캐싱해도 되지만, bojHandle 은
-      // 온보딩에서 변경 가능하니 update 트리거 시 함께 갱신한다. 둘 다 한 쿼리로.
       const userId = typeof token.userId === 'string' ? token.userId : null
-      if (
-        userId &&
-        (!token.onboardedAt ||
-          token.bojHandle === undefined ||
-          trigger === 'update')
-      ) {
+      if (userId && (!token.onboardedAt || trigger === 'update')) {
         const [row] = await db
-          .select({
-            onboardedAt: users.onboardedAt,
-            bojHandle: users.bojHandle,
-          })
+          .select({ onboardedAt: users.onboardedAt })
           .from(users)
           .where(eq(users.id, userId))
           .limit(1)
         if (row?.onboardedAt) {
           token.onboardedAt = row.onboardedAt.toISOString()
         }
-        token.bojHandle = row?.bojHandle ?? null
       }
       return token
     },
@@ -62,10 +51,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
         if (typeof token.onboardedAt === 'string') {
           session.user.onboardedAt = token.onboardedAt
-        }
-        if (token.bojHandle !== undefined) {
-          // JWT augmentation 이 callback param 추론에 항상 반영되진 않아 명시 캐스팅.
-          session.user.bojHandle = token.bojHandle as string | null
         }
       }
       return session

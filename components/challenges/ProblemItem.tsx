@@ -2,13 +2,10 @@
 
 import Link from 'next/link'
 
-import { getTagLabel } from './tag-labels'
-import { getLevelColor, getLevelLabel, type Level } from './types'
 
-interface ProblemItemProps {
-  id: number
+interface ChallengeItemProps {
+  slug: string
   title: string
-  level: Level
   tags?: string[]
   completedCount: number
   rate: number
@@ -17,19 +14,18 @@ interface ProblemItemProps {
 }
 
 export function ProblemItem({
-  id,
+  slug,
   title,
-  level,
   tags,
   completedCount,
   rate,
   done,
   tried,
-}: ProblemItemProps) {
+}: ChallengeItemProps) {
   return (
     <li className="list-none">
       <Link
-        href={`/problems/${id}`}
+        href={`/challenges/${slug}`}
         className="w-full text-left group flex items-center gap-3 px-6 sm:px-3 py-4 hover:bg-surface-page transition-colors"
       >
         <span
@@ -73,35 +69,21 @@ export function ProblemItem({
             {title}
           </h3>
           <p className="text-xs text-text-muted leading-normal m-0">
-            <span className="text-text-secondary tabular-nums font-medium">{id}번</span>
-            <span className="mx-2 text-border-key" aria-hidden="true">
-              ·
-            </span>
-            <span className={`font-medium ${getLevelColor(level)}`}>{getLevelLabel(level)}</span>
-            <span className="mx-2 text-border-key" aria-hidden="true">
-              ·
-            </span>
             완료{' '}
             <span className="text-text-secondary tabular-nums">
               {completedCount.toLocaleString()}명
             </span>
-            <span className="mx-2 text-border-key" aria-hidden="true">
-              ·
-            </span>
+            <span className="mx-2 text-border-key" aria-hidden="true">·</span>
             정답률{' '}
             <span className="text-text-secondary tabular-nums">{rate.toFixed(1)}%</span>
           </p>
-          {/* Mobile: tags as plain inline text below meta line */}
           {tags && tags.length > 0 && (
             <p className="sm:hidden mt-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted leading-normal m-0 truncate">
-              {tags.map(getTagLabel).join(' · ')}
+              {tags.join(' · ')}
             </p>
           )}
         </div>
 
-        {/* Desktop / tablet: tag chips right-aligned, wrap allowed up to ~2 lines.
-            Cap visible count to 5 + overflow indicator so very-tagged rows
-            don't blow past two lines. */}
         {tags && tags.length > 0 && (
           <ul className="hidden sm:flex flex-wrap justify-end gap-1 max-w-[260px] m-0 p-0 list-none flex-shrink-0">
             {tags.slice(0, 3).map((tag) => (
@@ -109,7 +91,7 @@ export function ProblemItem({
                 key={tag}
                 className="inline-flex px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted bg-surface-page whitespace-nowrap"
               >
-                {getTagLabel(tag)}
+                {tag}
               </li>
             ))}
             {tags.length > 3 && (
