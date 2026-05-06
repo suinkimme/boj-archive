@@ -23,7 +23,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, profile, user, trigger }) {
       if (profile) {
-        token.login = (profile as { login?: string }).login
+        const login = (profile as { login?: string }).login
+        token.login = login
+        if (user?.id && login) {
+          await db.update(users).set({ login }).where(eq(users.id, user.id))
+        }
       }
       if (user?.id) {
         token.userId = user.id
