@@ -197,7 +197,7 @@ export function CodeEditor({
     // optimistic 행을 위한 핸들 결정. 서버 GET 응답의 fallback (bojHandle ?? name
     // ?? login) 과 동일한 우선순위로 맞춰 refresh 후 시각적 차이를 최소화.
     const u = session?.user
-    const handle = u?.bojHandle ?? u?.name ?? u?.login ?? '나'
+    const handle = u?.name ?? u?.login ?? '나'
     const tempId = `tmp-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
     inflightTempIdRef.current = tempId
     onSubmissionStart?.({
