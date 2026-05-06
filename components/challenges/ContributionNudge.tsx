@@ -5,12 +5,26 @@
 // 일반 토스트(시스템 피드백용)와 다른 패턴으로, 사용자의 특정 행동을 유도한다.
 // - 모바일: 화면 하단 전체 너비 바
 // - 데스크톱: 우하단 고정 카드
-// X 버튼으로 세션 중 닫을 수 있으며, 페이지 재진입 시 다시 표시된다.
+// X 버튼으로 닫으면 7일간 다시 표시되지 않는다.
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+const STORAGE_KEY = 'nudge_dismissed_until'
+const DISMISS_DURATION_MS = 7 * 24 * 60 * 60 * 1000
 
 export function ContributionNudge() {
-  const [dismissed, setDismissed] = useState(false)
+  const [dismissed, setDismissed] = useState(true)
+
+  useEffect(() => {
+    const until = Number(localStorage.getItem(STORAGE_KEY) ?? 0)
+    if (Date.now() < until) return
+    setDismissed(false)
+  }, [])
+
+  const dismiss = () => {
+    localStorage.setItem(STORAGE_KEY, String(Date.now() + DISMISS_DURATION_MS))
+    setDismissed(true)
+  }
 
   if (dismissed) return null
 
@@ -33,7 +47,7 @@ export function ContributionNudge() {
           </a>
           <button
             type="button"
-            onClick={() => setDismissed(true)}
+            onClick={dismiss}
             aria-label="닫기"
             className="flex-shrink-0 text-text-muted hover:text-text-primary transition-colors"
           >
@@ -52,7 +66,7 @@ export function ContributionNudge() {
           </p>
           <button
             type="button"
-            onClick={() => setDismissed(true)}
+            onClick={dismiss}
             aria-label="닫기"
             className="flex-shrink-0 text-text-muted hover:text-text-primary transition-colors -mt-0.5"
           >

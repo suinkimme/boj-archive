@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 
 import ReactMarkdown from 'react-markdown'
@@ -220,27 +220,48 @@ function DescriptionContent({ challenge }: { challenge: ChallengeDetail }) {
             기여자
           </p>
           <div className="flex flex-wrap gap-2">
-            {challenge.contributors.map((login) => (
-              <Tooltip key={login} content={login}>
+            {challenge.contributors.map((login, i) => (
+              <Tooltip key={login} content={i === 0 ? `${login} · Owner` : login}>
                 <a
                   href={`https://github.com/${login}`}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="hover:opacity-75 transition-opacity"
                 >
-                  <img
-                    src={`https://github.com/${login}.png?size=48`}
-                    alt={login}
-                    width={28}
-                    height={28}
-                    className="rounded-full"
-                  />
+                  <ContributorAvatar login={login} isFirst={i === 0} />
                 </a>
               </Tooltip>
             ))}
           </div>
         </div>
       )}
+    </div>
+  )
+}
+
+function ContributorAvatar({ login, isFirst }: { login: string; isFirst?: boolean }) {
+  const [loaded, setLoaded] = useState(false)
+  const imgRef = useRef<HTMLImageElement>(null)
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setLoaded(true)
+  }, [])
+
+  return (
+    <div className="relative w-7 h-7">
+      {!loaded && (
+        <div className="absolute inset-0 rounded-full bg-border animate-pulse" />
+      )}
+      <img
+        ref={imgRef}
+        src={`https://github.com/${login}.png?size=48`}
+        alt={login}
+        width={28}
+        height={28}
+        className={`rounded-full transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'} ${isFirst ? 'ring-2 ring-brand-red ring-offset-1' : ''}`}
+        onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
+      />
     </div>
   )
 }
