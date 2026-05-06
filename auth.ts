@@ -35,12 +35,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       const userId = typeof token.userId === 'string' ? token.userId : null
       if (userId && (!token.onboardedAt || trigger === 'update')) {
         const [row] = await db
-          .select({ onboardedAt: users.onboardedAt })
+          .select({ onboardedAt: users.onboardedAt, login: users.login })
           .from(users)
           .where(eq(users.id, userId))
           .limit(1)
         if (row?.onboardedAt) {
           token.onboardedAt = row.onboardedAt.toISOString()
+        }
+        if (!row?.login && typeof token.login === 'string' && !token.loginSynced) {
+          await db.update(users).set({ login: token.login }).where(eq(users.id, userId))
+          token.loginSynced = true
         }
       }
       return token
