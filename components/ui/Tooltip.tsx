@@ -28,7 +28,7 @@ export function Tooltip({ content, children, className = '' }: Props) {
     <span
       className={`relative inline-flex items-center ${className}`}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => { setVisible(false); setOffset(0) }}
+      onMouseLeave={() => setVisible(false)}
     >
       {children}
       <span
@@ -36,6 +36,7 @@ export function Tooltip({ content, children, className = '' }: Props) {
         role="tooltip"
         style={{ transform: `translateX(calc(-50% + ${offset}px))` }}
         className={`pointer-events-none absolute bottom-full left-1/2 mb-2.5 w-max max-w-[200px] px-2.5 py-1.5 text-[11px] leading-snug text-white bg-[#1C1F28] transition-opacity duration-150 z-50 whitespace-normal text-center ${visible ? 'opacity-100' : 'opacity-0'}`}
+        onTransitionEnd={() => { if (!visible) setOffset(0) }}
       >
         {content}
         <span
