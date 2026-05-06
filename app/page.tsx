@@ -1,17 +1,9 @@
 import type { Metadata } from 'next'
 
-import { auth } from '@/auth'
 import { ChallengesView } from '@/components/challenges/ChallengesView'
 import { NoticesAside } from '@/components/challenges/NoticesAside'
 import { ALL_LEVELS, type Level } from '@/components/challenges/types'
-import {
-  fetchProblemsForList,
-  parseLevels,
-  parseOrder,
-  parseStatuses,
-  parseTags,
-  type ProblemsListResult,
-} from '@/lib/queries/problems'
+import { parseOrder, parseLevels, parseStatuses, parseTags } from '@/lib/queries/problems'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -49,17 +41,6 @@ const EMPTY_LEVEL_COUNTS: Record<Level, number> = ALL_LEVELS.reduce(
 
 export default async function Page({ searchParams }: PageProps) {
   const sp = await searchParams
-  const session = await auth()
-  const userId = session?.user?.id ?? null
-
-  // DB 쿼리 실패는 page 전체를 박살내지 않고 ChallengesView에 loadError로
-  // 넘겨, 헤더/필터는 살리고 리스트 영역만 에러 카드로 교체한다.
-  let data: ProblemsListResult | null = null
-  try {
-    data = await fetchProblemsForList(sp, userId)
-  } catch (err) {
-    console.error('[home] failed to load problems', err)
-  }
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',
@@ -82,17 +63,17 @@ export default async function Page({ searchParams }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
       <ChallengesView
-        visible={data?.visible ?? []}
-        totalCount={data?.totalCount ?? 0}
-        totalPages={data?.totalPages ?? 1}
-        totalByLevel={data?.totalByLevel ?? EMPTY_LEVEL_COUNTS}
-        page={data ? Math.min(data.page, data.totalPages) : 1}
+        visible={[]}
+        totalCount={0}
+        totalPages={1}
+        totalByLevel={EMPTY_LEVEL_COUNTS}
+        page={1}
         query={sp.q ?? ''}
         order={parseOrder(sp.order)}
         levels={parseLevels(sp.levels)}
         statuses={parseStatuses(sp.status)}
         tags={parseTags(sp.tags)}
-        loadError={!data}
+        loadError={false}
         noticesAside={<NoticesAside />}
       />
     </>

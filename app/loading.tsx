@@ -247,7 +247,7 @@ export default function Loading() {
           </a>
         </div>
         <p className="text-xs text-text-muted leading-relaxed">
-          비상업적 공익 목적의 백준 문제 아카이브입니다. 각 문제의 저작권은 원
+          비상업적 공익 목적의 알고리즘 문제 아카이브입니다. 각 문제의 저작권은 원
           출제자 및 해당 대회 주최 기관에 있습니다.
         </p>
       </footer>

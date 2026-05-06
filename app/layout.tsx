@@ -26,8 +26,6 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   keywords: [
     '알고리즘',
-    '백준',
-    'BOJ',
     'PS',
     '코딩테스트',
     '문제 풀이',
