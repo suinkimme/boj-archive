@@ -327,9 +327,6 @@ export function ChallengesView({
             contact@suinkim.me
           </a>
         </div>
-        <p className="text-xs text-text-muted leading-relaxed">
-          비상업적 학습 목적으로 제작된 알고리즘 저지 서비스입니다.
-        </p>
       </footer>
     </div>
   )
