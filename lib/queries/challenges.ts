@@ -75,18 +75,18 @@ export async function fetchChallengesForList(
         completedCount: sql<number>`(
           select count(distinct cs.user_id)::int
           from ${challengeSubmissions} cs
-          where cs.challenge_id = ${challenges.id} and cs.verdict = 'AC'
+          where cs.challenge_id = challenges.id and cs.verdict = 'AC'
         )`,
         totalCount: sql<number>`(
           select count(distinct cs.user_id)::int
           from ${challengeSubmissions} cs
-          where cs.challenge_id = ${challenges.id}
+          where cs.challenge_id = challenges.id
         )`,
         done: userId
           ? sql<number>`(case when exists (
               select 1 from ${challengeSubmissions} ac
               where ac.user_id = ${userId}
-              and ac.challenge_id = ${challenges.id}
+              and ac.challenge_id = challenges.id
               and ac.verdict = 'AC'
             ) then 1 else 0 end)`
           : sql<number>`0`,
@@ -94,7 +94,7 @@ export async function fetchChallengesForList(
           ? sql<number>`(case when exists (
               select 1 from ${challengeSubmissions} cs
               where cs.user_id = ${userId}
-              and cs.challenge_id = ${challenges.id}
+              and cs.challenge_id = challenges.id
             ) then 1 else 0 end)`
           : sql<number>`0`,
       })
@@ -144,13 +144,13 @@ export async function fetchChallengeBySlug(
       memoryLimit: challenges.memoryLimit,
       hiddenCount: sql<number>`(
         select count(*)::int from ${challengeTestcases} ct
-        where ct.challenge_id = ${challenges.id}
+        where ct.challenge_id = challenges.id
       )`,
       done: userId
         ? sql<number>`(case when exists (
             select 1 from ${challengeSubmissions} ac
             where ac.user_id = ${userId}
-            and ac.challenge_id = ${challenges.id}
+            and ac.challenge_id = challenges.id
             and ac.verdict = 'AC'
           ) then 1 else 0 end)`
         : sql<number>`0`,

@@ -9,6 +9,7 @@ export type MyProblem = {
   challengeId: number
   slug: string
   title: string
+  tags: string[]
 }
 
 export type MyProblemsResponse = {
@@ -20,6 +21,7 @@ type ChallengeRow = {
   challenge_id: number
   slug: string
   title: string
+  tags: string[]
 }
 
 export async function GET() {
@@ -36,13 +38,13 @@ export async function GET() {
         SELECT DISTINCT challenge_id FROM ${challengeSubmissions}
         WHERE user_id = ${userId} AND verdict = 'AC'
       )
-      SELECT c.id AS challenge_id, c.slug, c.title
+      SELECT c.id AS challenge_id, c.slug, c.title, c.tags
       FROM ${challenges} c
       INNER JOIN solved_ids ON solved_ids.challenge_id = c.id
       ORDER BY c.id ASC
     `),
     db.execute<ChallengeRow>(sql`
-      SELECT DISTINCT c.id AS challenge_id, c.slug, c.title
+      SELECT DISTINCT c.id AS challenge_id, c.slug, c.title, c.tags
       FROM ${challenges} c
       INNER JOIN ${challengeSubmissions} cs ON cs.challenge_id = c.id
       WHERE cs.user_id = ${userId}
@@ -60,6 +62,7 @@ export async function GET() {
     challengeId: r.challenge_id,
     slug: r.slug,
     title: r.title,
+    tags: r.tags ?? [],
   })
 
   return NextResponse.json({

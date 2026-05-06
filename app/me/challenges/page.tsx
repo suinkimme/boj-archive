@@ -188,11 +188,19 @@ function ProblemList({ problems }: { problems: MyProblem[] }) {
         <li key={p.challengeId}>
           <Link
             href={`/challenges/${p.slug}`}
-            className="w-full h-12 flex items-center gap-3 px-4 hover:bg-surface-page transition-colors"
+            className="w-full flex items-center gap-3 px-4 py-3 hover:bg-surface-page transition-colors"
           >
-            <span className="flex-1 min-w-0 text-[14px] font-medium text-text-primary truncate">
-              {p.title}
-            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-[14px] font-medium text-text-primary truncate m-0">
+                {p.title}
+              </p>
+              {p.tags.length > 0 && (
+                <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.1em] text-text-muted truncate m-0">
+                  {p.tags.slice(0, 3).join(' · ')}
+                  {p.tags.length > 3 && ` +${p.tags.length - 3}`}
+                </p>
+              )}
+            </div>
           </Link>
         </li>
       ))}
