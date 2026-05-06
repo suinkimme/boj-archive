@@ -1,4 +1,4 @@
-// 문제 본문(BOJ에서 스크랩한 raw HTML) 렌더러.
+// 문제 본문(raw HTML) 렌더러.
 //
 // `description`, `inputFormat`, `outputFormat`, `hint` 컬럼은 markdown이 아닌
 // HTML이라 react-markdown을 거치지 않고 dangerouslySetInnerHTML로 직접

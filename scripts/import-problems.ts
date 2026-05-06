@@ -7,7 +7,7 @@
 //
 // Idempotent: re-running upserts. Body columns are overwritten with
 // fresh content; metadata fields (level, counts) are kept in sync with
-// the JSON, since BOJ snapshots in problem.json supersede stale
+// the JSON, since snapshots in problem.json supersede stale
 // solved.ac lazy-cached values.
 
 import { existsSync } from 'node:fs'
@@ -36,7 +36,7 @@ async function loadImageCache(): Promise<ImageCache> {
   return JSON.parse(raw) as ImageCache
 }
 
-// 일부 BOJ 본문이 macOS case-insensitive 파일시스템 기준 케이스로 src 를
+// 일부 문제 본문이 macOS case-insensitive 파일시스템 기준 케이스로 src 를
 // 적어 둔 경우(예: 디스크는 fig1.png, HTML 은 Fig1.png) 케이스만 다른 매칭을
 // 잡아주기 위해 lowercase 인덱스를 만들어 둔다.
 function buildLowercaseIndex(cache: ImageCache): ImageCache {
@@ -64,7 +64,7 @@ function rewriteImageSrc(
         src.startsWith('https://') ||
         src.startsWith('//') || // protocol-relative
         src.startsWith('data:') ||
-        src.startsWith('file:') // BOJ 일부 본문에 남은 워드/오피스 잔여물 — 어차피 깨진 src
+        src.startsWith('file:') // 일부 본문에 남은 워드/오피스 잔여물 — 어차피 깨진 src
       ) {
         return full
       }

@@ -73,7 +73,7 @@ export default function CodeMirrorEditor({ value, language, onChange }: Props) {
         lineNumbers: true,
         highlightActiveLine: true,
         // 알고리즘 푸는 맥락에서 자동완성 팝업이 빠른 타이핑을 방해해서 끔.
-        // BOJ 본 IDE 와 동일하게 사용자가 직접 치는 경험.
+        // 자동완성 없이 사용자가 직접 타이핑하는 경험.
         autocompletion: false,
         bracketMatching: true,
         closeBrackets: true,

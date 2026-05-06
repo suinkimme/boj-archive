@@ -146,7 +146,7 @@ export default function OnboardingPage() {
       <main className="flex-1 flex items-start justify-center px-6 sm:px-10 pt-8 sm:pt-16 pb-12">
         <div className="w-full max-w-[440px]">
           <h1 className="text-[28px] sm:text-[32px] font-extrabold text-text-primary leading-[1.25] tracking-tight mb-3">
-            백준 혹은 solved.ac에서<br />
+            solved.ac에서<br />
             쓰시던 아이디가 있으세요?
           </h1>
           <p className="text-[14px] sm:text-[15px] text-text-secondary leading-relaxed mb-10">
@@ -160,7 +160,7 @@ export default function OnboardingPage() {
               <input
                 id="boj-handle"
                 type="text"
-                aria-label="백준 아이디"
+                aria-label="solved.ac 아이디"
                 value={input}
                 onChange={(e) => {
                   setInput(e.target.value)

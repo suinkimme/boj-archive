@@ -216,7 +216,7 @@ export default function MePage() {
                   <TierBadge tier={solvedAc.tier} className="text-[13px] flex-shrink-0" />
                 )}
                 <span className="text-[13px] text-text-secondary">
-                  BOJ <strong className="text-text-primary">@{bojHandle}</strong>
+                  <strong className="text-text-primary">@{bojHandle}</strong>
                 </span>
                 {!isVerified && (
                   <span className="text-[11px] font-bold text-status-warning bg-status-warning-bg px-1.5 py-0.5">
@@ -241,7 +241,7 @@ export default function MePage() {
         )}
 
         {/* 활동 요약 — solvedac 임포트 중에만 placeholder. 그 외에는 항상
-             표시한다. solvedAc가 있으면 BOJ 전체 통계, 없으면 이 사이트
+             표시한다. solvedAc가 있으면 전체 통계, 없으면 이 사이트
              기준 푼 문제 수 + 잠긴 레이팅/클래스 슬롯. */}
         {me && hasHandle && isVerified && isImporting && <ActivityPlaceholder />}
         {me && !(hasHandle && isVerified && isImporting) && (
@@ -268,7 +268,7 @@ export default function MePage() {
 
         {/* 최근 푼 문제 — me가 로드된 이후엔 항상 섹션을 띄운다.
              임포트 중엔 스켈레톤, 풀이가 없으면 빈 상태, 있으면 리스트.
-             BOJ 미연동/미인증 사용자도 이 사이트에서 풀어 row가 쌓이면 노출.
+             미연동/미인증 사용자도 이 사이트에서 풀어 row가 쌓이면 노출.
              초기 로드 실패 시엔 LoadErrorCard(위)로 통합 노출되므로 여기선 생략. */}
         {!me && !loadError && <RecentSolvedPlaceholder />}
         {me && (
@@ -356,7 +356,7 @@ export default function MePage() {
               className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between"
             >
               <span className="text-[14px] font-medium text-text-primary">
-                {hasHandle ? '백준 아이디 바꾸기' : '백준 아이디 등록하기'}
+                {hasHandle ? '아이디 바꾸기' : '아이디 등록하기'}
               </span>
               <span className="text-text-muted">→</span>
             </button>
@@ -367,7 +367,7 @@ export default function MePage() {
                 className="w-full text-left px-4 py-4 hover:bg-surface-page transition-colors flex items-center justify-between"
               >
                 <span className="text-[14px] font-medium text-text-primary">
-                  백준 아이디 연결 끊기
+                  아이디 연결 끊기
                 </span>
                 <span className="text-text-muted">→</span>
               </button>
@@ -402,7 +402,7 @@ export default function MePage() {
       <AlertDialog
         open={disconnectOpen}
         onClose={() => setDisconnectOpen(false)}
-        title="백준 아이디 연결을 끊을까요?"
+        title="아이디 연결을 끊을까요?"
         description={
           <>
             <strong className="text-text-primary">@{bojHandle}</strong> 연결을 끊으면 활동 요약과 본인 확인 상태가 사라져요. 같은 아이디든 다른 아이디든 다시 등록할 수 있어요.
@@ -570,10 +570,10 @@ function NoHandleCard() {
   return (
     <div className="mb-10 p-5 sm:p-6 border border-border-list bg-surface-page">
       <p className="text-[14px] sm:text-[15px] font-bold text-text-primary mb-1">
-        백준 아이디 등록하실래요?
+        solved.ac 아이디 등록하실래요?
       </p>
       <p className="text-[13px] text-text-secondary leading-relaxed mb-4">
-        등록하면 백준에서 푸신 문제를 여기서 한눈에 볼 수 있어요.
+        등록하면 그동안 푸신 문제를 여기서 한눈에 볼 수 있어요.
       </p>
       <button
         type="button"
