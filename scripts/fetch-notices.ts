@@ -118,6 +118,7 @@ type NoticeMeta = {
   category: NoticeCategory | null
   publishedAt: string | null
   updatedAt: string
+  isNew: boolean
 }
 
 type NoticeDetail = NoticeMeta & { markdown: string }
@@ -165,6 +166,8 @@ function pageToMeta(page: PageObjectResponse): NoticeMeta | null {
   const categoryRaw: string | undefined = props.Category?.select?.name
   // @ts-expect-error narrow
   const excerpt = plainText(props.Excerpt?.rich_text).trim()
+  // @ts-expect-error narrow
+  const isNew: boolean = props.IsNew?.checkbox ?? false
 
   if (!title) return null
   if (!statusName || !PUBLISHED_NAMES.has(statusName)) return null
@@ -179,6 +182,7 @@ function pageToMeta(page: PageObjectResponse): NoticeMeta | null {
     category: readCategory(categoryRaw),
     publishedAt: publishedAt ?? null,
     updatedAt: page.last_edited_time,
+    isNew,
   }
 }
 

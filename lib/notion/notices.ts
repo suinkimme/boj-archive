@@ -25,6 +25,7 @@ export type NoticeMeta = {
   category: NoticeCategory | null
   publishedAt: string | null
   updatedAt: string
+  isNew: boolean
 }
 
 export type NoticeDetail = NoticeMeta & {

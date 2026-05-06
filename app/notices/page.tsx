@@ -159,8 +159,13 @@ function NoticeRow({ notice }: { notice: NoticeMeta }) {
         <span className="text-[12px] sm:text-[13px] text-text-muted">
           {notice.category ?? ''}
         </span>
-        <h2 className="text-[14px] sm:text-[15px] text-text-primary leading-snug m-0 truncate">
+        <h2 className="text-[14px] sm:text-[15px] text-text-primary leading-snug m-0 truncate flex items-center gap-2">
           {notice.title}
+          {notice.isNew && (
+            <span className="shrink-0 text-[10px] font-bold text-white bg-blue-500 rounded px-1.5 py-0.5 leading-none">
+              New
+            </span>
+          )}
         </h2>
         <time className="text-[12px] sm:text-[13px] text-text-muted tabular-nums">
           {notice.publishedAt ? formatDate(notice.publishedAt) : ''}
