@@ -1,0 +1,36 @@
+export interface TagInfo {
+  value: string
+}
+
+export const ALL_TAGS: readonly TagInfo[] = [
+  { value: '수학' },
+  { value: '구현' },
+  { value: '다이나믹 프로그래밍' },
+  { value: '자료 구조' },
+  { value: '그래프' },
+  { value: '그래프 탐색' },
+  { value: '그리디' },
+  { value: '문자열' },
+  { value: '브루트포스' },
+  { value: '정렬' },
+  { value: '이분 탐색' },
+  { value: '분할 정복' },
+  { value: '백트래킹' },
+  { value: '재귀' },
+  { value: '시뮬레이션' },
+  { value: '투 포인터' },
+  { value: '누적 합' },
+  { value: '해시' },
+  { value: '스택' },
+  { value: '큐' },
+  { value: '덱' },
+  { value: '우선순위 큐' },
+  { value: '트리' },
+  { value: '세그먼트 트리' },
+  { value: '트라이' },
+  { value: '최단 경로' },
+  { value: '기하학' },
+  { value: '정수론' },
+  { value: '조합론' },
+  { value: '확률론' },
+]
