@@ -3,6 +3,7 @@
 import { useCallback, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
+import { ContributionBanner } from '@/components/challenges/ContributionBanner'
 import { FilterDropdown } from '@/components/challenges/FilterDropdown'
 import { Pagination } from '@/components/challenges/Pagination'
 import { ProblemList } from '@/components/challenges/ProblemList'
@@ -201,6 +202,8 @@ export function ChallengesView({
                 </span>
               )}
             </div>
+
+            <ContributionBanner />
 
             {loadError ? (
               <ProblemListErrorCard onRetry={handleRetryLoad} retrying={retrying} />
