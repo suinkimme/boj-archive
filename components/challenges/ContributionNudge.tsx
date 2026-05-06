@@ -31,7 +31,7 @@ export function ContributionNudge() {
         </button>
       </div>
       <p className="px-4 pb-4 text-[12px] text-text-secondary leading-relaxed">
-        풀어보고 싶었던 문제가 있으신가요? PR 한 번으로 바로 서비스에 올라갑니다.
+        풀어보고 싶었던 문제가 있으신가요? 출제해보세요!
       </p>
       <div className="border-t border-border-list px-4 py-3">
         <a
