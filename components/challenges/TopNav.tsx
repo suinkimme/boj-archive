@@ -9,11 +9,12 @@ import { getLogoutCallbackUrl } from '@/components/auth/logoutCallback'
 import { UserMenu } from '@/components/auth/UserMenu'
 import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 
-// href가 있는 항목은 실제 라우트, 없는 항목은 아직 준비 중인 메뉴라 PendingFeature로 처리.
-const NAV_LINKS: { label: string; href?: string }[] = [
+// href가 있는 항목은 실제 라우트, external=true면 새 창으로 열림.
+// href 없는 항목은 PendingFeature로 처리.
+const NAV_LINKS: { label: string; href?: string; external?: boolean }[] = [
   { label: '공지사항', href: '/notices' },
   { label: '커뮤니티' },
-  { label: '기여하기' },
+  { label: '기여하기', href: 'https://github.com/suinkimme/next-judge/blob/main/CONTRIBUTING.md', external: true },
   { label: '랭킹' },
 ]
 
@@ -103,7 +104,16 @@ export function TopNav({ variant = 'default', hideLinks = false }: TopNavProps =
             <ul className="hidden md:flex items-center gap-1 list-none">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
-                  {link.href ? (
+                  {link.href && link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="block text-white/60 text-[14px] font-medium hover:text-white transition-colors px-3 py-1.5"
+                    >
+                      {link.label}
+                    </a>
+                  ) : link.href ? (
                     <Link
                       href={link.href}
                       className="block text-white/60 text-[14px] font-medium hover:text-white transition-colors px-3 py-1.5"
@@ -165,7 +175,17 @@ export function TopNav({ variant = 'default', hideLinks = false }: TopNavProps =
           <ul className="flex-1 overflow-y-auto list-none m-0 p-0">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
-                {link.href ? (
+                {link.href && link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    onClick={() => setOpen(false)}
+                    className="block w-full text-left text-text-primary text-[18px] font-bold hover:bg-surface-page transition-colors px-6 py-5"
+                  >
+                    {link.label}
+                  </a>
+                ) : link.href ? (
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
