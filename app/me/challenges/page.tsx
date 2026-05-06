@@ -4,8 +4,7 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { useEffect, useMemo, useState } from 'react'
 
-import type { MyProblem, MyProblemsResponse } from '@/app/api/me/problems/route'
-import { TierBadge } from '@/components/auth/TierBadge'
+import type { MyProblem, MyProblemsResponse } from '@/app/api/me/challenges/route'
 import { TopNav } from '@/components/challenges/TopNav'
 
 export default function MyProblemsPage() {
@@ -18,7 +17,7 @@ export default function MyProblemsPage() {
     if (status !== 'authenticated') return
     let cancelled = false
     void (async () => {
-      const res = await fetch('/api/me/problems')
+      const res = await fetch('/api/me/challenges')
       if (!res.ok || cancelled) return
       const data = (await res.json()) as MyProblemsResponse
       setSolved(data.solved ?? [])
@@ -88,7 +87,7 @@ export default function MyProblemsPage() {
             inputMode="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="문제 번호 또는 제목으로 찾기"
+            placeholder="번호 또는 제목으로 찾기"
             className="w-full max-w-[420px] border border-border-key bg-surface-card px-3 py-2 text-[13px] text-text-primary placeholder:text-text-muted focus:outline-none focus:border-brand-red transition-colors"
           />
         </div>
@@ -99,7 +98,7 @@ export default function MyProblemsPage() {
           problems={filteredSolved}
           loading={solved === null}
           emptyTitle="아직 푼 문제가 없어요"
-          emptyHint="여기서 문제를 풀거나 solved.ac 아이디를 연동하면 모아드릴게요."
+          emptyHint="문제를 풀면 여기에 모아드릴게요."
           noMatchTitle="검색 결과 없음"
         />
 
@@ -126,8 +125,8 @@ function filterByQuery(
   if (!q) return problems
   return problems.filter(
     (p) =>
-      String(p.problemId).includes(q) ||
-      p.titleKo.toLowerCase().includes(q),
+      String(p.challengeId).includes(q) ||
+      p.title.toLowerCase().includes(q),
   )
 }
 
@@ -162,7 +161,7 @@ function ProblemSection({
         )}
       </div>
 
-      {loading && <TileGridSkeleton count={24} />}
+      {loading && <ProblemListSkeleton count={8} />}
 
       {!loading && problems !== null && problems.length === 0 && total === 0 && (
         <div className="px-1 py-2">
@@ -176,24 +175,27 @@ function ProblemSection({
       )}
 
       {!loading && problems !== null && problems.length > 0 && (
-        <TileGrid problems={problems} />
+        <ProblemList problems={problems} />
       )}
     </section>
   )
 }
 
-function TileGrid({ problems }: { problems: MyProblem[] }) {
+function ProblemList({ problems }: { problems: MyProblem[] }) {
   return (
-    <ul className="flex flex-wrap gap-1 sm:gap-1.5">
+    <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
       {problems.map((p) => (
-        <li key={p.problemId}>
+        <li key={p.challengeId}>
           <Link
-            href={`/problems/${p.problemId}`}
-            title={`${p.problemId}번 · ${p.titleKo}`}
-            className="h-7 sm:h-9 px-1.5 sm:px-2.5 inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-[12px] font-bold tabular-nums border border-border-list bg-surface-card text-text-primary hover:bg-surface-page transition-colors"
+            href={`/challenges/${p.challengeId}`}
+            className="w-full h-12 flex items-center gap-3 px-4 hover:bg-surface-page transition-colors"
           >
-            <TierBadge tier={p.level} className="text-[10px] sm:text-[11px]" />
-            <span>{p.problemId}</span>
+            <span className="text-[13px] text-text-muted tabular-nums flex-shrink-0 w-6 text-right">
+              {p.challengeId}
+            </span>
+            <span className="flex-1 min-w-0 text-[14px] font-medium text-text-primary truncate">
+              {p.title}
+            </span>
           </Link>
         </li>
       ))}
@@ -201,12 +203,13 @@ function TileGrid({ problems }: { problems: MyProblem[] }) {
   )
 }
 
-function TileGridSkeleton({ count }: { count: number }) {
+function ProblemListSkeleton({ count }: { count: number }) {
   return (
-    <ul className="flex flex-wrap gap-1 sm:gap-1.5">
+    <ul className="border border-border-list divide-y divide-border-list bg-surface-card">
       {Array.from({ length: count }).map((_, i) => (
-        <li key={i}>
-          <span className="block w-[56px] sm:w-[64px] h-7 sm:h-9 bg-surface-page animate-pulse" />
+        <li key={i} className="h-12 flex items-center gap-3 px-4">
+          <span className="block h-3.5 w-6 bg-surface-page rounded animate-pulse flex-shrink-0" />
+          <span className="block h-3.5 flex-1 max-w-[240px] bg-surface-page rounded animate-pulse" />
         </li>
       ))}
     </ul>

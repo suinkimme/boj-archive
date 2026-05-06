@@ -4,7 +4,6 @@ import { Analytics } from '@vercel/analytics/next'
 
 import { auth } from '@/auth'
 import { SessionProvider } from '@/components/auth/SessionProvider'
-import { ImportSyncProvider } from '@/components/import-sync/ImportSyncProvider'
 import { PendingFeatureProvider } from '@/components/ui/PendingFeatureProvider'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site'
 
@@ -29,7 +28,6 @@ export const metadata: Metadata = {
     'PS',
     '코딩테스트',
     '문제 풀이',
-    'solved.ac',
     'NEXT JUDGE',
   ],
   authors: [{ name: SITE_NAME }],
@@ -80,9 +78,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         suppressHydrationWarning
       >
         <SessionProvider session={session}>
-          <ImportSyncProvider>
-            <PendingFeatureProvider>{children}</PendingFeatureProvider>
-          </ImportSyncProvider>
+          <PendingFeatureProvider>{children}</PendingFeatureProvider>
         </SessionProvider>
         <Analytics />
       </body>

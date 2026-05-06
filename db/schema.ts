@@ -12,7 +12,7 @@ import {
 } from 'drizzle-orm/pg-core'
 import type { AdapterAccountType } from 'next-auth/adapters'
 
-export type SolvedSource = 'solvedac' | 'local'
+export type SolvedSource = 'local'
 export type TestcaseSource = 'testcase_ac' | 'sample' | 'community_report'
 export type SubmissionLanguage = 'python' | 'c' | 'cpp'
 export type SubmissionVerdict = 'AC' | 'WA' | 'RE' | 'TLE'
@@ -27,8 +27,6 @@ export const users = pgTable('users', {
   email: text('email').notNull(),
   emailVerified: timestamp('email_verified', { mode: 'date' }),
   image: text('image'),
-  bojHandle: text('boj_handle').unique(),
-  bojHandleVerifiedAt: timestamp('boj_handle_verified_at', { mode: 'date' }),
   onboardedAt: timestamp('onboarded_at', { mode: 'date' }),
   createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { mode: 'date' }).notNull().defaultNow(),
@@ -74,36 +72,6 @@ export const verificationTokens = pgTable(
   (vt) => [primaryKey({ columns: [vt.identifier, vt.token] })],
 )
 
-export const bojVerifications = pgTable('boj_verifications', {
-  id: text('id')
-    .primaryKey()
-    .$defaultFn(() => crypto.randomUUID()),
-  userId: text('user_id')
-    .notNull()
-    .references(() => users.id, { onDelete: 'cascade' }),
-  handle: text('handle').notNull(),
-  token: text('token').notNull().unique(),
-  expiresAt: timestamp('expires_at', { mode: 'date' }).notNull(),
-  consumedAt: timestamp('consumed_at', { mode: 'date' }),
-  createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
-})
-
-export const solvedAcSnapshots = pgTable('solved_ac_snapshots', {
-  handle: text('handle').primaryKey(),
-  tier: integer('tier').notNull(),
-  solvedCount: integer('solved_count').notNull(),
-  rating: integer('rating').notNull(),
-  raw: jsonb('raw').notNull(),
-  fetchedAt: timestamp('fetched_at', { mode: 'date' }).notNull().defaultNow(),
-})
-
-// Global problem catalog. Two ingestion paths upsert into this table:
-//   1. solved.ac lazy import — fills metadata (title, level, counts) when a
-//      user's solve history references a problem we haven't seen yet.
-//   2. scripts/import-problems.ts — bulk-loads canonical body content
-//      (description, samples, tags, limits) from problems/<id>/problem.json.
-// Body columns are nullable because lazy-imported rows may exist before
-// canonical content has been ingested.
 export const problems = pgTable('problems', {
   problemId: integer('problem_id').primaryKey(),
   titleKo: text('title_ko').notNull(),
@@ -112,7 +80,6 @@ export const problems = pgTable('problems', {
   averageTries: real('average_tries'),
   raw: jsonb('raw'),
   fetchedAt: timestamp('fetched_at', { mode: 'date' }).notNull().defaultNow(),
-  // Body content (from problem.json)
   description: text('description'),
   inputFormat: text('input_format'),
   outputFormat: text('output_format'),
@@ -125,28 +92,68 @@ export const problems = pgTable('problems', {
   submissionCount: integer('submission_count'),
 })
 
-// Cross-instance rate-limit log. One row per outbound solved.ac
-// request; we count rows in a sliding 1s window to gate further calls.
-// Old rows are cleaned up opportunistically on insert.
-export const solvedAcRequestLog = pgTable(
-  'solved_ac_request_log',
+export const standardProblems = pgTable('standard_problems', {
+  problemId: integer('problem_id')
+    .primaryKey()
+    .references(() => problems.problemId, { onDelete: 'cascade' }),
+  description: text('description'),
+  inputFormat: text('input_format'),
+  outputFormat: text('output_format'),
+  createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+})
+
+export const challenges = pgTable('challenges', {
+  id: serial('id').primaryKey(),
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  inputFormat: text('input_format').notNull(),
+  outputFormat: text('output_format').notNull(),
+  samples: jsonb('samples').$type<{ input: string; output: string }[]>(),
+  tags: text('tags').array(),
+  timeLimit: text('time_limit'),
+  memoryLimit: text('memory_limit'),
+  createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+})
+
+export const challengeTestcases = pgTable(
+  'challenge_testcases',
   {
     id: serial('id').primaryKey(),
-    requestedAt: timestamp('requested_at', { mode: 'date' })
+    challengeId: integer('challenge_id')
+      .notNull()
+      .references(() => challenges.id, { onDelete: 'cascade' }),
+    caseIndex: integer('case_index').notNull(),
+    stdin: text('stdin').notNull(),
+    expectedStdout: text('expected_stdout').notNull(),
+    createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+  },
+  (t) => [
+    index('challenge_testcases_challenge_idx').on(t.challengeId),
+  ],
+)
+
+export const challengeSubmissions = pgTable(
+  'challenge_submissions',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    challengeId: integer('challenge_id')
+      .notNull()
+      .references(() => challenges.id, { onDelete: 'cascade' }),
+    language: text('language').$type<SubmissionLanguage>().notNull(),
+    verdict: text('verdict').$type<SubmissionVerdict>().notNull(),
+    submittedAt: timestamp('submitted_at', { mode: 'date' })
       .notNull()
       .defaultNow(),
   },
-  (t) => [index('solved_ac_request_log_requested_at_idx').on(t.requestedAt)],
+  (t) => [
+    index('challenge_submissions_user_challenge_idx').on(t.userId, t.challengeId),
+    index('challenge_submissions_challenge_submitted_at_idx').on(t.challengeId, t.submittedAt),
+  ],
 )
 
-// Curated testcases used by the in-browser judge. Sources:
-//   testcase_ac      — auto-generated from testcase-ac (generator + correct)
-//   sample           — sample I/O from the original problem statement
-//   community_report — accepted from a user submission via problem_reports
-// problem_id intentionally has no FK: testcases may exist for problems
-// before the lazy `problems` row is populated. source_report_id is reserved
-// for the upcoming problem_reports table — FK will be added in a later
-// migration once that table lands.
 export const testcases = pgTable(
   'testcases',
   {
@@ -169,8 +176,6 @@ export const testcases = pgTable(
   ],
 )
 
-// Per-user solve history. source=solvedac for imports from the
-// solved.ac API; source=local for problems solved on this judge.
 export const userSolvedProblems = pgTable(
   'user_solved_problems',
   {
@@ -192,14 +197,6 @@ export const userSolvedProblems = pgTable(
   ],
 )
 
-// 이 사이트 채점기에서 발생한 제출 1건 = 1 row. AC/WA/RE/TLE 모두 기록한다.
-// solved.ac에서 가져온 풀이 이력은 시도 정보(언어/시각)가 없어 여기 들어오지
-// 않는다 — 그쪽은 user_solved_problems만 채운다.
-//
-// 활용처:
-//   - 문제 디테일의 모든 사용자 히스토리 탭 (problemId 기준 최신순)
-//   - 마이페이지의 내 제출 이력
-//   - 문제 리스트의 tried 플래그/필터 (EXISTS by userId+problemId)
 export const submissions = pgTable(
   'submissions',
   {
@@ -217,9 +214,7 @@ export const submissions = pgTable(
       .defaultNow(),
   },
   (t) => [
-    // 마이페이지 본인 제출 이력 + tried 플래그용 EXISTS 빠르게.
     index('submissions_user_problem_idx').on(t.userId, t.problemId),
-    // 문제 디테일 히스토리 탭은 problemId로 최신순 페이지네이션한다.
     index('submissions_problem_submitted_at_idx').on(
       t.problemId,
       t.submittedAt,

@@ -19,7 +19,7 @@ import {
   type Status,
 } from '@/components/challenges/types'
 import { Badge } from '@/components/ui/Badge'
-import type { ListedProblem } from '@/lib/queries/problems'
+import { type ListedProblem, parseOrder, parseLevels, parseStatuses, parseTags, parsePage } from '@/lib/queries/params'
 
 const ORDER_ITEMS = [
   { value: 'recent' as const, label: '최신순' },
@@ -102,12 +102,6 @@ interface ChallengesViewProps {
   totalCount: number
   totalPages: number
   totalByLevel: Record<Level, number>
-  page: number
-  query: string
-  order: Order
-  levels: Level[]
-  statuses: Status[]
-  tags: string[]
   /** server-side 데이터 로드가 실패했는지. true면 리스트 영역만 에러 카드로 교체 */
   loadError?: boolean
   /** Server에서 렌더된 NoticesAside 트리. ChallengesView가 client component라
@@ -120,17 +114,17 @@ export function ChallengesView({
   totalCount,
   totalPages,
   totalByLevel,
-  page,
-  query,
-  order,
-  levels,
-  statuses,
-  tags,
   loadError = false,
   noticesAside,
 }: ChallengesViewProps) {
-  const router = useRouter()
   const searchParams = useSearchParams()
+  const query = searchParams.get('q') ?? ''
+  const order = parseOrder(searchParams.get('order') ?? undefined)
+  const levels = parseLevels(searchParams.get('levels') ?? undefined)
+  const statuses = parseStatuses(searchParams.get('status') ?? undefined)
+  const tags = parseTags(searchParams.get('tags') ?? undefined)
+  const page = parsePage(searchParams.get('page') ?? undefined)
+  const router = useRouter()
   const [retrying, startRetryTransition] = useTransition()
 
   const handleRetryLoad = useCallback(() => {
@@ -214,19 +208,21 @@ export function ChallengesView({
               <FilterDropdown
                 defaultLabel="모든 난이도"
                 icon={LevelIcon}
-                items={LEVEL_ITEMS}
+                items={[]}
                 selected={levels}
                 onToggle={handleLevelToggle}
+                emptyMessage="난이도가 측정된 문제가 없어요"
               />
             </div>
             <div className="order-2 xl:order-3 basis-full sm:flex-1 sm:basis-auto xl:flex-none">
               <FilterDropdown
                 defaultLabel="모든 유형"
                 icon={TagIcon}
-                items={TAG_ITEMS}
+                items={[]}
                 selected={tags}
                 onToggle={handleTagToggle}
                 widthAnchor="모든 유형"
+                emptyMessage="등록된 유형이 없어요"
               />
             </div>
             <div className="order-3 xl:order-4 basis-full min-[380px]:basis-[calc(50%-6px)] sm:flex-1 sm:basis-auto xl:flex-none">
@@ -316,7 +312,7 @@ export function ChallengesView({
             ·
           </span>
           <a
-            href="https://github.com/suinkimme/boj-archive"
+            href="https://github.com/suinkimme/next-judge"
             target="_blank"
             rel="noreferrer"
             className="hover:text-brand-red transition-colors"
@@ -331,10 +327,6 @@ export function ChallengesView({
             contact@suinkim.me
           </a>
         </div>
-        <p className="text-xs text-text-muted leading-relaxed">
-          비상업적 공익 목적의 알고리즘 문제 아카이브입니다. 각 문제의 저작권은 원 출제자 및
-          해당 대회 주최 기관에 있습니다.
-        </p>
       </footer>
     </div>
   )

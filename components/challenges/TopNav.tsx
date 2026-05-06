@@ -11,7 +11,6 @@ import { usePendingFeature } from '@/components/ui/PendingFeatureProvider'
 
 // href가 있는 항목은 실제 라우트, 없는 항목은 아직 준비 중인 메뉴라 PendingFeature로 처리.
 const NAV_LINKS: { label: string; href?: string }[] = [
-  { label: '프로젝트 소개', href: '/about' },
   { label: '공지사항', href: '/notices' },
   { label: '커뮤니티' },
   { label: '기여하기' },

@@ -18,4 +18,4 @@ export const BOILERPLATE: Record<Lang, string> = {
 }
 
 export const draftKey = (problemId: number, lang: Lang): string =>
-  `boj-archive:draft:v1:${problemId}:${lang}`
+  `next-judge:draft:v1:${problemId}:${lang}`
